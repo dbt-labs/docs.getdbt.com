@@ -5,6 +5,12 @@ id: "sl-partner-integration-guide"
 
 # dbt Semantic Layer partner integration
 
+:::info Contact us
+
+This guide describes dbt Semantic Layer guidelines, product roadmap, and connectivity.  If you're interested in becoming a formal partner, would like to integrate via the API, or have questions/feedback, [contact us](mailto:semantic-layer@dbtlabs.com) for more info.
+
+:::
+
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, like metrics, models, and entities. It helps organizations manage complexities like data, tools, and teams to make more efficient and trustworthy decisions.
 
 ## Overview
@@ -13,12 +19,13 @@ The rapid growth of different tools in the modern data stack has largely been a 
 
 To solve this, the dbt Semantic Layer provides a platform where users can confidently leverage their data from within their tools. dbt Cloud's change management capabilities ensure that any user modifications made to core business constructs, like metrics or entities, are distributed into all the tools connected to the data platform.
 
-The dbt Semantic Layer is unopinionated about specific tools, use cases, or applications of data. Review some of the common use cases for the  dbt Semantic Layer below:
+The dbt Semantic Layer is unopinionated about specific tools, use cases, or applications of data. The following summarizes some of the common use cases for the dbt Semantic Layer:
 
-* BI, analytics, and data science
+* BI, reporting, and analytics
 * Data quality and monitoring
 * Governance and privacy
 * Data discovery and cataloging
+* Machine learning and data science
 
 <!-- rewrite below little and would like to see if i can include a button or callout -->
 
@@ -35,54 +42,56 @@ The dbt Semantic Layer product architecture includes four primary components:
 
 | Components | Information | Developer plans | Team plans | Enterprise plans | License |
 | --- | --- | :---: | :---: | :---: | --- |
-| **[dbt Project](/docs/build/metrics)** | Define models and metrics in dbt Core. | ✅ | ✅ |  ✅  | Open source, Core |
-| **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
-| **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja-like query models and metrics, use macros), compiles the query into pure SQL, and executes the query against the data platform. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
-| **[dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, and metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise |
+| **[dbt Project](/docs/build/metrics)** | Define models and metrics in dbt Core. | ✅ | ✅ |  ✅  | Open source in dbt Core |
+| **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt Core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
+| **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja-like query models and metrics, use macros), compiles the query into pure SQL, executes the query in the data platform, and returns the data. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary in dbt Cloud |
+| **[Metadata API](/docs/dbt-cloud-apis/metadata-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, and metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary in dbt Cloud |
     
 Review the current architecture below to understand how the components work together:
   
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture-flow.png" title="dbt Semantic Layer components" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture-flow.png" title="Current product architecture" />
 
 
 ## Integration guidelines
 
-In collaboration with dbt Labs, partners can build a dbt Semantic Layer integration that can import model metadata and metric definitions, connect with the dbt Semantic Layer, query metrics, and more. For more details, review the Roadmap and Integration best practices guidance below.
+In collaboration with dbt Labs, partners and users can build dbt Semantic Layer integrations that can import model metadata and metric definitions, query metrics, use macros, and more. For more details, review the Partner integration roadmap and [Integration best practices](#integration-best-practice) guidance.
 
 ### Partner integration roadmap
 
-Integration partners generally build and approach their roadmap as follows:
+Integration partners generally build and approach their roadmap in the following stages:
 
 | Feature  |  Info | Availability |
 |----------|-------|:------------:|
-| **Model metadata**  |  Import/sync model metadata (descriptions, dimensions, test, freshness, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
-| ** Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
-| **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros. Review **dbt Semantic Layer connector** for more info. | ✅ |
-| **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
-| **Entity definitions**  | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _Coming soon, review the [Product Roadmap](#product-roadmap) for more details_ |
-|**dbt Semantic Layer connector** * | A dedicated Semantic Layer connector with the ability to query any data platform supported in dbt Cloud. | _Coming soon, review the [Product Roadmap](#product-roadmap) for more details_ |
+|1. **Model metadata**  |  Import/sync model metadata (descriptions, dimensions, test, freshness, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
+|2. **Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
+|3. **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros.* | ✅ |
+|4. **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
+|5. **Entity definitions** *  | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
+|6. **dbt Semantic Layer connector** *  | A dedicated Semantic Layer connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
 
 The _coming soon_ features above are expected to launch in 2023. Review the [Product Roadmap](#product-roadmap) for more details and timelines.
 
 ### Integration best practice
 
-To build a successful and seamless dbt Semantic Layer integration, it should include the following:
+To build a successful and seamless dbt Semantic Layer integration, it should express the following:
 
-- Have a consistent user experience (UX) &mdash; The integration shouldn’t be a hidden appendage.
-- Treat dbt assets (like metrics, models, entities) as first-class objects and indicate that the definitions and resulting dataset come from dbt Cloud.
-- Include a self-serve experience so a data consumer can ask questions via the user interface (UI), if applicable.
-- Clarify the difference between the dbt Semantic Layer (more efficient) and the current approach in setting up metrics/analyses in the tool.
+- **Consistent**: Have a consistent user experience (UX) incorporated into existing core user workflows.
+- **Trustworthy**: Treat dbt assets (metrics, models, and entities) as first-class objects and indicate that their definitions and resulting datasets come from dbt Cloud.
+- **Efficient**: Provide a clear advantage over the current approach to setting up metrics and analyses, and finding dimensions/datasets in the tool.
+- **Accessible**: Include a self-serve component so a data consumer can ask questions via the user interface (UI), if applicable.
 
 
-## Connect and query the Metadata API
+## Use the Metadata API
 
 To get started, you must meet the dbt Semantic Layer [prerequisites](/docs/use-dbt-semantic-layer/dbt-semantic-layer#prerequisites). This section will explain how to connect to and query the [Metadata API](/docs/dbt-cloud-apis/metadata-api) for model and metric definitions.
 
 ### Metadata API authorization
 
-To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/metadata-querying#authorization). Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to fetch model metadata will work perfectly in the context of metrics. 
+To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/metadata-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to fetch model metadata will work perfectly in the context of metrics. 
 
-Test out the Metadata API by using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql). 
+### Query the Metadata API
+
+Test out the Metadata API by using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql) and use this [Python client](https://github.com/transform-data/dbt-metadata-client) as a starting point to develop. 
 
 
 ### Fetch models for a project
@@ -182,7 +191,7 @@ This is an example of fetching details about a specific model, `model.jaffle_sho
 
 ### Fetch metrics for a project
 
-Fetch and query metrics for a project from a given job. To fetch the full list of metrics defined in a user’s project via the dbt Cloud Metadata API, use the [Metrics query](/docs/dbt-cloud-apis/metadata-schema-metrics). Review the [metrics docs](https://docs.getdbt.com/docs/build/metrics#available-properties) for information about the metric properties. 
+Fetch and query metrics for a project from a given job. To fetch the full list of metrics defined in a user’s project via the dbt Cloud Metadata API, use the [metrics query](/docs/dbt-cloud-apis/metadata-schema-metrics). Review the [dbt Metrics docs](https://docs.getdbt.com/docs/build/metrics#available-properties) for information about the metric properties. 
 
 Test out the API using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql). 
 
@@ -329,7 +338,7 @@ metrics:
 <!--- End tabs for listing, fetching, example, and querying metrics --->
 
 
-## Query the Semantic Layer
+## Query the dbt Semantic Layer
 
 This section explains how to connect to or query the dbt Semantic Layer Proxy Server to return model data, metric data, and so on. 
 
@@ -339,7 +348,7 @@ When the dbt Semantic Layer is configured, dbt Cloud provides a Proxy Server end
 2. Execute that compiled SQL against the Snowflake data platform
 3. Return the results to the client
 
-Replace the hostname in your existing Snowflake connection with the relevant dbt Cloud Proxy Server URL (for example, `abc123.proxy.cloud.getdbt.com`), and all queries submitted through the endpoint will be compiled en route to the data platform. 
+Replace the hostname in your existing Snowflake connection with the relevant dbt Cloud Proxy Server URL (for example, `abc123.proxy.cloud.getdbt.com`), and all queries you submit through the endpoint will be compiled en route to the data platform. 
 
 _Note: This approach will change with the new Semantic Layer connection, which will be able to query all data platforms supported in dbt Cloud via dedicated JDBC/ODBC drivers (and eventually an API)._
 
@@ -360,8 +369,9 @@ from {{ ref('orders') }}
 <TabItem value="metrics" label="Metric queries">
 
 Users can compile and execute metric queries using macros defined in the [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics).  This package:
-* generates the SQL required to accurately calculate the metric definition,
-* supplies helper macros for derived calculations (like month over month, year to date, and so on) time series operations
+
+* Generates the SQL required to accurately calculate the metric definition,
+* Supplies helper macros for derived calculations (like month over month, year to date, and so on) time series operations
 
 
 ```
@@ -395,20 +405,20 @@ The dbt Semantic Layer product roadmap details what features are coming soon and
 ### Entities 
 <!-- rewrite a little and include a summary for each tab entry -->
 
-dbt Labs is introducing a new node type, [the entity](https://github.com/dbt-labs/dbt-core/issues/6379), when dbt Core version 1.5 launches. This introduces a new and efficient way to define metrics by reusing logic, for example, `time_grains`.  Entities are semantic objects made up of curated dimensions from models with more metadata defined. Over time, users can standardize metric and entity definitions with packages to speed up development. 
+dbt Labs will introduce a new node type, [the entity](https://github.com/dbt-labs/dbt-core/issues/6379) when dbt Core version 1.5 launches. It introduces a new and efficient way to define metrics by reusing logic (for example, `time_grains`).  Entities are semantic objects made up of curated dimensions from models with more metadata defined. Over time, users can standardize metric and entity definitions with packages to speed up development. 
 
 For integrations, entities will provide information like:
 
 - a way to organize metrics based on the entity they reference, and 
 - a new consumable and dynamically generated dataset (versus finding a table in the data platform). 
 
-This information will be available alongside the Metadata API and entities can be directly queried through the Semantic Layer. 
+This information will be available alongside the Metadata API and entities can be directly queried through the dbt Semantic Layer. 
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/entity-lineage.jpg" title="Entity lineage" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/entity-lineage.jpg" title="Entity lineage graph" />
 
 :::caution 🚧
 
-Note this is a work in progress and anticipate continuous changes and improvements.
+This is a work in progress and you can anticipate continuous improvements. P
 
 :::
 
@@ -595,20 +605,20 @@ from {{ entities.calculate(
 
 ### dbt Semantic Layer Connector 
 
-To support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/get-started/connect-your-database) with the dbt Semantic Layer. Integration partners will need to install the [Arrow FlightSQL](https://arrow.apache.org/docs/format/FlightSql.html) JDBC/ODBC driver which will authenticate with dbt Cloud and the data platform that it queries. 
+In order to support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/get-started/connect-your-database) with the dbt Semantic Layer. Integration partners will need to install the [Arrow FlightSQL](https://arrow.apache.org/docs/format/FlightSql.html) JDBC/ODBC driver which will authenticate with dbt Cloud and the data platform that it queries. 
 
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/connection-architecture.jpg" title="New architecture envisioned" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/connection-architecture.jpg" title="Envisioned connection architecture" />
 
 
 ### dbt Semantic Layer API 
 
 dbt Cloud will provide a REST-based API that supports:
 
-- Compiling dbt-SQL queries to return their compiled SQL
-- Executing dbt-SQL queries and returning the queried results from the data platform
+- Compiling dbt-SQL queries to return their compiled SQL,
+- Executing dbt-SQL queries and returning the queried results from the data platform.
 
-The API will be a viable integration point with the dbt Semantic Layer. It will be authorized by a dbt Cloud service token. It will eventually also support the invocation of dbt commands (e.g., `dbt run`, `dbt test`, etc.) in the future.
+The API will be a viable integration point with the dbt Semantic Layer. It will be authorized by a [dbt Cloud service token](/docs/dbt-cloud-apis/service-tokens). It will eventually also support the invocation of dbt commands (e.g., `dbt run`, `dbt test`, etc.) in the future.
 
 
 ## Contact us
