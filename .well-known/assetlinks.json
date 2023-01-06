@@ -1,0 +1,11 @@
+[
+    {
+      "relation": ["lookalikes/allowlist"],
+      "target": { "namespace": "web", "site": "https://getdbt.com" }
+    },
+    {
+      "relation": ["lookalikes/allowlist"],
+      "target": { "namespace": "web", "site": "https://docs.getdbt.com" }
+    }
+  ]
+  
