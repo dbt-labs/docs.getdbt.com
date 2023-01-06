@@ -70,8 +70,8 @@ You’ll most commonly see the BETWEEN condition used in data work to:
 
 ```sql
 case when time_engaged between 0 and 9 then 'low_engagement'
-         when time_engaged between 10 and 29 then 'medium_engagement'
-         else 'high_engagement' end as engagement
+     when time_engaged between 10 and 29 then 'medium_engagement'
+     else 'high_engagement' end as engagement
 
 ```
 
