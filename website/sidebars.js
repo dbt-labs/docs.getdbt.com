@@ -980,6 +980,7 @@ guides: [
             "sql-reference/date-functions/dateadd",
             "sql-reference/date-functions/datediff",
             "sql-reference/date-functions/datepart",
+            "sql-reference/date-functions/datetrunc",
           ],
         },
         {
@@ -1008,6 +1009,9 @@ guides: [
             "sql-reference/operators/in",
             "sql-reference/operators/or",
             "sql-reference/operators/ilike",
+            "sql-reference/operators/like",
+            "sql-reference/operators/and",
+            "sql-reference/operators/not",
           ],
         },
         {
