@@ -17,7 +17,7 @@ In this page, we’ll dive into how to use the NOT operator, demonstrate an exam
 
 ## How to use the SQL NOT operator
 
-The NOT boolean is kind of similar to an adjective—it’s often put in front of another operator, such as [BETWEEN](/sql-reference/between), [LIKE](sql-reference/like)/[ILIKE](/sql-reference/ilike), IS, and [IN](/sql-reference/in), to return rows that do not meet the specified criteria. Below is an example of how to use NOT in front of a LIKE operator:
+The NOT boolean is kind of similar to an adjective—it’s often put in front of another operator, such as [BETWEEN](/sql-reference/between), [LIKE](/sql-reference/like)/[ILIKE](/sql-reference/ilike), IS, and [IN](/sql-reference/in), to return rows that do not meet the specified criteria. Below is an example of how to use NOT in front of a LIKE operator:
 
 `where <field_name> not like <value>`
 
