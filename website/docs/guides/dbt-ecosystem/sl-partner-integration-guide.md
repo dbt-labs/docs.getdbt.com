@@ -1,6 +1,7 @@
 ---
 title: "dbt Semantic Layer integration" 
 id: "sl-partner-integration-guide"
+description: Learn about partner integration guidelines, roadmap, and connectivity. 
 ---
 
 # dbt Semantic Layer partner integration
