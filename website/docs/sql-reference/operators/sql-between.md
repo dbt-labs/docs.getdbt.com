@@ -72,7 +72,6 @@ You’ll most commonly see the BETWEEN condition used in data work to:
 case when time_engaged between 0 and 9 then 'low_engagement'
      when time_engaged between 10 and 29 then 'medium_engagement'
      else 'high_engagement' end as engagement
-
 ```
 
 This isn’t an extensive list of where your team may be using the BETWEEN condition throughout your dbt models or ad hoc analyses, but contains some common scenarios analytics engineers may encounter.
