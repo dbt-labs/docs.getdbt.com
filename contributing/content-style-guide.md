@@ -39,23 +39,35 @@ If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs
 - Think about where you want to locate the file in the leftbar. This will help catch and avoid redundancy. Remain consistent with the surrounding leftbar items.
 - Be as descriptive as possible so readers have an idea as to what they’re about to read.
 
-| ✅ User | ❌ Avoid|
+| ✅ Use | ❌ Avoid|
 |:-------:|:-------:|
 |`/docs/deploy/architecture` | `/docs/deploy/how-we-think-about-architecture`|
 
 
 ## Using Markdown
 
-docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax[document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the table below: 
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax[document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the following table: 
 
 | Element                                     | Syntax                                                |
 |---------------------------------------------|-------------------------------------------------------|
 | Link - external site                        | `[Title](https://www.example.com)`                    |
-| Link - topic in same folder                 | `[Title](/docs/file-name) without file extension`   |
-| Link - topic in different folder            | `[Title](/docs/file-name) without file extension`   |
-| Link - section in topic in same folder      | `[Title](/docs/file-name#section-name)`             |
-| Link - section in topic in different folder | `[Title](/docs/file-name#section-name)`             |
+| Link - topic in same folder                 | `[Title](/folder/file-name) without file extension`*   |
+| Link - topic in different folder            | `[Title](/folder/file-name) without file extension`*   |
+| Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`*             |
+| Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`*            |
 | Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`|
+
+*docs.getdbt.com uses specific folders when linking to topics or sections. A successful link syntax begins with one of the following folder paths:
+
+- `/docs` 
+- `/guides` 
+- `/references`
+
+**Example**
+
+:white_check_mark: `[Title](/guides/file-name)` 
+
+:x: `[Title](/blog/file-name)` 
 
 ## Callouts
 
