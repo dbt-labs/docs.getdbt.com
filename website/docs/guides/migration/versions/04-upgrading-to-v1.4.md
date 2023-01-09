@@ -1,6 +1,6 @@
 ---
 title: "Upgrading to v1.4 (prerelease)"
-description: New features and breaking changes for dbt Core v1.4
+description: New features and changes in dbt Core v1.4
 ---
 ### Resources
 
