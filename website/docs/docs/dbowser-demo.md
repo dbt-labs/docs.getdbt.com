@@ -32,7 +32,7 @@ For the sake of this tutorial, we’re loading in our sources as [seeds](https:/
 
 Use this first IDE to explore these raw data sources, perform some exploratory data analysis (EDA), and get familiar with your dbt project. No wrong answers here 🙂
 
-<dbtEditor project="dbt_sample_project" />
+<dbtEditor project="dbt_sample_project" step="1" />
 
 ## Step 2: Build your staging models
 

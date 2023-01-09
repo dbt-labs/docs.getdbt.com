@@ -1,8 +1,13 @@
 // Util: Get packages
-export const buildSidebar = (nodes) => {
+export const buildSidebar = (nodes, step) => {
   const projectData = []
   for(let node in nodes) {
     const thisNode = nodes[node]
+
+    // If node not included in current step, continue to next node
+    console.log('thisNode', thisNode, thisNode.tags)
+    if(!thisNode?.tags?.includes(`step_${step}`)) continue
+
     const nodePath = thisNode?.path?.split('/')
     // If path not available in node, skip item in loop
     if(!nodePath) continue
