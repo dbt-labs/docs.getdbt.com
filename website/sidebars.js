@@ -948,6 +948,7 @@ guides: [
           label: "Statements",
           items: [
             "sql-reference/statements/select",
+            "sql-reference/statements/from",
           ],
         },
         {
@@ -979,6 +980,7 @@ guides: [
             "sql-reference/date-functions/dateadd",
             "sql-reference/date-functions/datediff",
             "sql-reference/date-functions/datepart",
+            "sql-reference/date-functions/datetrunc",
           ],
         },
         {
@@ -1003,9 +1005,19 @@ guides: [
           type: "category",
           label: "Operators",
           items: [
+            "sql-reference/operators/between",
             "sql-reference/operators/in",
             "sql-reference/operators/or",
+            "sql-reference/operators/ilike",
+            "sql-reference/operators/like",
+            "sql-reference/operators/and",
+            "sql-reference/operators/not",
           ],
+        },
+        {
+          type: "doc",
+          label: "Data types",
+          id: "sql-reference/data-types",
         },
         {
           type: "doc",
