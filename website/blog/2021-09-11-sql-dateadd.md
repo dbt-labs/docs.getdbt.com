@@ -2,6 +2,7 @@
 title: "DATEADD SQL Function Across Data Warehouses"
 description: "DATEADD Function syntax varies across data warehouses. Learn how to standardize your syntax no matter the container."
 slug: sql-dateadd
+canonical_url: https://docs.getdbt.com/sql-reference/dateadd
 
 authors: david_krevitt
 
