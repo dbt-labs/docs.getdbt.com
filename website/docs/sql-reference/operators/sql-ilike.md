@@ -1,7 +1,7 @@
 ---
 id: ilike
 title: SQL ILIKE
-description: The ILIKE operator helps you easily match, find, and filter out string values of a specified pattern by using SQL wildcards without having to worry about case sensitivity
+description: The ILIKE operator helps you easily match, find, and filter out case-insensitive string values of a specified pattern by using SQL wildcards.
 slug: /sql-reference/ilike
 ---
 
@@ -62,4 +62,4 @@ Most modern data warehouses, with the exception of Google BigQuery, support the 
 
 ## ILIKE operator example use cases
 
-The ILIKE operator has very similar use cases to the LIKE operator, so we won’t repeat ourselves here. The important thing to understand when using the LIKE or ILIKE operators is what the casing variations look like in your data: if casing is inconsistent within a column, ILIKE will be your friend; if your backend engineers and analytics engineers rigorously follow a style-guide (and our source data is magically of the same case), the LIKE operator is there for you if you need it.
+The ILIKE operator has very similar use cases to the [LIKE operator](/sql-reference/like), so we won’t repeat ourselves here. The important thing to understand when using the LIKE or ILIKE operators is what the casing variations look like in your data: if casing is inconsistent within a column, ILIKE will be your friend; if your backend engineers and analytics engineers rigorously follow a style-guide (and our source data is magically of the same case), the LIKE operator is there for you if you need it.
