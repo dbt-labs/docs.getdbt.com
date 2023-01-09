@@ -298,7 +298,24 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
 
 **`insert_overwrite strategy`** 
 
-If `partition_by` is specified, overwrite partitions in the table with new data. If 	no `partition_by` is specified, overwrite the entire table with new data. 
+Vertica doesn’t support overwrite by default. so, when user specifies `insert_overwrite` strategy  then it behaves as` delete+insert`.
+
+this strategy needs `partition_by_string` and `partitions` parameters.
+
+`partition_by_string` parameter accepts `column_name` as a string.
+if not specified then performs as `full-refresh` (truncate the target table and insert the data to target with source.) 
+
+`partitions` parameter accept list of partitions to be updated.
+if not specified then it will drop all the partitions which exists in source from the target and insert the source to target.
+
+ 
+:::info Note:
+
+ you have to specify the partitions along with the `partition_by_string`.
+
+:::
+
+
 
 <Tabs
   defaultValue="source"
@@ -314,8 +331,10 @@ If `partition_by` is specified, overwrite partitions in the table with new data.
 <File name='vertica_incremental.sql'>
 
 ```sql
-{{ config( materialized = 'incremental', incremental_strategy = 'delete+insert', unique_key='id') }}
-select  * from  {{ ref('seed') }}
+{{config(materialized = 'incremental',incremental_strategy = 'insert_overwrite',partition_by_string='YEAR(cc_open_date)',partitions=['2023'])}}
+
+
+        select * from online_sales.call_center_dimension
 ```
 </File>
 </TabItem>
@@ -326,11 +345,28 @@ select  * from  {{ ref('seed') }}
 
 ```sql
 
-        delete from "VMart"."public"."delete"   where ( id) in (  select (id)  from "delete__dbt_tmp" );
+        select PARTITION_TABLE('online_sales.update_call_center_dimension');
+
+        SELECT DROP_PARTITIONS('online_sales.update_call_center_dimension', '2023', '2023');
+      
+        SELECT PURGE_PARTITION('online_sales.update_call_center_dimension', '2023');
+      
+        insert into "VMart"."online_sales"."update_call_center_dimension"
+
+        ("call_center_key", "cc_closed_date", "cc_open_date", "cc_name", "cc_class", "cc_employees",
+       
+        "cc_hours", "cc_manager", "cc_address", "cc_city", "cc_state", "cc_region")
+      
+        (
+
+            select "call_center_key", "cc_closed_date", "cc_open_date", "cc_name", "cc_class", "cc_employees",
         
-        insert into "VMart"."public"."delete" ("id", "name", "some_date")   
-        
-        ( select "id", "name", "some_date" from "delete__dbt_tmp" );
+            "cc_hours", "cc_manager", "cc_address", "cc_city", "cc_state", "cc_region"
+
+            from "update_call_center_dimension__dbt_tmp"
+        );
+
+
   ```
  </File>
 </TabItem>
