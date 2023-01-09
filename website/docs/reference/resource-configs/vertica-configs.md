@@ -6,7 +6,7 @@ id: "vertica-configs"
 
 ### Using the on_schema_change config parameter
 
-You can use `on_schema_change` parameter with values `ignore` and `fail`.  Values `append_new_columns` and `sync_all_columns` are not supported at this time.
+You can use `on_schema_change` parameter with values `ignore`, `fail` and `append_new_columns`  Values  `sync_all_columns` are not supported at this time.
 
 #### Configuring the `ignore` (default) parameter
 
@@ -98,6 +98,54 @@ You can use `on_schema_change` parameter with values `ignore` and `fail`.  Value
 </TabItem>
 </Tabs>
 
+
+#### Configuring the `apppend_new_columns` (default) parameter
+
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+  ]
+}>
+
+<TabItem value="source">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+    
+   
+{{ config( materialized='incremental', on_schema_change='append_new_columns') }}
+
+
+
+    select * from  public.seed_added
+
+
+```
+
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+    
+          insert into "VMart"."public"."over" ("id", "name", "some_date", "w", "w1", "t1", "t2", "t3")
+          (
+                select "id", "name", "some_date", "w", "w1", "t1", "t2", "t3"
+                from "over__dbt_tmp"
+          )
+
+
+
+```
+</File>
+</TabItem>
+</Tabs>
 
 ### Using the `incremental_strategy` config ​parameter
 
@@ -304,7 +352,7 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
                 select (date_key)
                 from "samp__dbt_tmp"
             );
-            
+
         insert into "VMart"."public"."samp" (
              "date_key", "date", "full_date_description", "day_of_week", "day_number_in_calendar_month", "day_number_in_calendar_year", "day_number_in_fiscal_month", "day_number_in_fiscal_year", "last_day_in_week_indicator", "last_day_in_month_indicator", "calendar_week_number_in_year", "calendar_month_name", "calendar_month_number_in_year", "calendar_year_month", "calendar_quarter", "calendar_year_quarter", "calendar_half_year", "calendar_year", "holiday_indicator", "weekday_indicator", "selling_season")
         (
