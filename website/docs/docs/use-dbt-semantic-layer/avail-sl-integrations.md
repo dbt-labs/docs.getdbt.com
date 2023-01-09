@@ -9,9 +9,9 @@ sidebar_label: "Available integrations"
 
 A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics &mdash; from Business Intelligence tools to notebooks, data catalogs, and more.
 
-The dbt Semantic Layer integrations are capable of interactively querying dbt metrics, surfacing the underlying data in partner tools. This refers to a group of dbt Labs partners who have full end-to-end integrations with the dbt Semantic Layer and leverage the dbt Server. 
+The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and leveraging the dbt Server. 
 
-For information on the partner integrations, their documentation, and more &mdash; review the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
+For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
 
