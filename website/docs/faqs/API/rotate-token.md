@@ -6,15 +6,29 @@ id: rotate-token
 ---
 
 
-If you want to change your account's credit card details, select the gear menu in the upper right corner of dbt Cloud. Go to Account Settings  &#8594; Billing  &#8594; Payment Information. In the upper right corner of Payment Information, click **Edit** to enter the new credit card details. Only the _account owner_ can make this change. 
+To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens):
 
-To change your billing name or location address, send our Support team a message at support@getdbt.com with the newly updated information, and we can make that change for you! 
+1. Send the following request: 
 
 ```
 curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/<your-user-id>/apikey/' \
 --header 'Authorization: Token <your-current-token>'
 ```
 
-They will need to swap in their **user_id** and **existing token** for authentication, and they can then grab the new key from the response or the cloud UI.
+2. You will need to replace your **user_id** and **existing token** for authentication. 
 
-Note, for single tenant users they will also need to modify the URL to point to their specific instance (ex: `http://cloud.mycompany.getdbt.com/...` rather than `http://cloud.getdbt.com/...`)
+    - To find your `user_id`, refer to [Where can I find my user id](/faqs/Accounts/find-user-id) for more info. 
+    - To find your `existing token`:
+        * Go to **Account Settings** and then **API Access** and copy the API key.
+
+
+3. Find the new key in the API response or in dbt Cloud by going to **Account Settings** and then **API Access**.
+
+
+**dbt Cloud deployment**
+
+If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance. For example:
+
+- For Virtual Private dbt &mdash; ✅ `http://cloud.customizedurl.getdbt.com/`  ❌ `http://cloud.getdbt.com/`<br />
+- For EMEA region &mdash; ✅ `https://emea.dbt.com/` ❌ `http://cloud.getdbt.com/`, and so on. 
+
