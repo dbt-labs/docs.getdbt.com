@@ -23,6 +23,7 @@ You can use `on_schema_change` parameter with values `ignore` and `fail`.  Value
 <File name='vertica_incremental.sql'>
 
 ```sql
+    
     {{config(materialized = 'incremental',on_schema_change='ignore')}} 
     
     select * from {{ ref('seed_added') }}
@@ -118,17 +119,19 @@ Insert new records without updating or overwriting any existing data. append onl
 <File name='vertica_incremental.sql'>
 
 ```sql
+
 {{ config(  materialized='incremental',     incremental_strategy='append'  ) }} 
 
 
-    select * from {{ ref('seed_added') }} 
+    select * from  public.product_dimension
 
 
     {% if is_incremental() %} 
-
-        where id > (select max(id) from {{this }}) 
-
-    {% endif %} 
+    
+        where product_key > (select max(product_key) from {{this }}) 
+    
+    
+    {% endif %}
 ```
 
 </File>
@@ -139,14 +142,19 @@ Insert new records without updating or overwriting any existing data. append onl
 
 ```sql
     
-    insert into "VMart"."public"."append_data" ("id", "name", "some_date")
-    ( 
+   insert into "VMart"."public"."samp" (
 
-        select "id", "name", "some_date"
-            
-            from "append_data__dbt_tmp"
-    
+        "product_key", "product_version", "product_description", "sku_number", "category_description", 
+        "department_description", "package_type_description", "package_size", "fat_content", "diet_type",
+        "weight", "weight_units_of_measure", "shelf_width", "shelf_height", "shelf_depth", "product_price",
+        "product_cost", "lowest_competitor_price", "highest_competitor_price", "average_competitor_price", "discontinued_flag")
+    (
+          select "product_key", "product_version", "product_description", "sku_number", "category_description", "department_description", "package_type_description", "package_size", "fat_content", "diet_type", "weight", "weight_units_of_measure", "shelf_width", "shelf_height", "shelf_depth", "product_price", "product_cost", "lowest_competitor_price", "highest_competitor_price", "average_competitor_price", "discontinued_flag"
+
+          from "samp__dbt_tmp"
     )
+
+
 ```
 </File>
 </TabItem>
@@ -173,10 +181,10 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 ```sql
 
-{{ config( materialized = 'incremental', incremental_strategy = 'merge',  unique_key='id'   )  }}
-
-
-    select * FROM {{ ref('seed') }}
+      {{ config( materialized = "incremental", incremental_strategy = 'merge',  unique_key='promotion_key'   )  }}
+      
+      
+          select * FROM  public.promotion_dimension
 
 
 ```
@@ -187,19 +195,23 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 <File name='vertica_incremental.sql'>
 
 ```sql
-        merge into "VMart"."public"."merge" as DBT_INTERNAL_DEST
-        
-        using "merge__dbt_tmp" as DBT_INTERNAL_SOURCE   on  DBT_INTERNAL_DEST."id" =DBT_INTERNAL_SOURCE."id"  
+       
 
+      merge into "VMart"."public"."samp" as DBT_INTERNAL_DEST using "samp__dbt_tmp" as DBT_INTERNAL_SOURCE
+          on DBT_INTERNAL_DEST."promotion_key" = DBT_INTERNAL_SOURCE."promotion_key"
+  
         when matched then update set
-      
-        "id" = DBT_INTERNAL_SOURCE."id", "name" = DBT_INTERNAL_SOURCE."name", "some_date" = DBT_INTERNAL_SOURCE."some_date"
-
+        "promotion_key" = DBT_INTERNAL_SOURCE."promotion_key", "price_reduction_type" = DBT_INTERNAL_SOURCE."price_reduction_type", "promotion_media_type" = DBT_INTERNAL_SOURCE."promotion_media_type", "display_type" = DBT_INTERNAL_SOURCE."display_type", "coupon_type" = DBT_INTERNAL_SOURCE."coupon_type", "ad_media_name" = DBT_INTERNAL_SOURCE."ad_media_name", "display_provider" = DBT_INTERNAL_SOURCE."display_provider", "promotion_cost" = DBT_INTERNAL_SOURCE."promotion_cost", "promotion_begin_date" = DBT_INTERNAL_SOURCE."promotion_begin_date", "promotion_end_date" = DBT_INTERNAL_SOURCE."promotion_end_date"
+        
         when not matched then insert
-     
-        ("id", "name", "some_date")
-        values(  DBT_INTERNAL_SOURCE."id", DBT_INTERNAL_SOURCE."name", DBT_INTERNAL_SOURCE."some_date"
+          ("promotion_key", "price_reduction_type", "promotion_media_type", "display_type", "coupon_type",
+           "ad_media_name", "display_provider", "promotion_cost", "promotion_begin_date", "promotion_end_date")
+        values
+        (
+          DBT_INTERNAL_SOURCE."promotion_key", DBT_INTERNAL_SOURCE."price_reduction_type", DBT_INTERNAL_SOURCE."promotion_media_type", DBT_INTERNAL_SOURCE."display_type", DBT_INTERNAL_SOURCE."coupon_type", DBT_INTERNAL_SOURCE."ad_media_name", DBT_INTERNAL_SOURCE."display_provider", DBT_INTERNAL_SOURCE."promotion_cost", DBT_INTERNAL_SOURCE."promotion_begin_date", DBT_INTERNAL_SOURCE."promotion_end_date"
         )
+
+
 ```
 </File>
 </TabItem>
@@ -273,9 +285,10 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
 
 ```sql
 
-      {{ config( materialized = 'incremental', incremental_strategy = 'delete+insert', unique_key='id') }}
+    {{ config( materialized = "incremental", incremental_strategy = 'delete+insert',  unique_key='date_key'   )  }}
 
-        select  * from  {{ ref('seed') }}
+
+          select * FROM  public.date_dimension
 
 ```
 </File>
@@ -285,11 +298,19 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
 <File name='vertica_incremental.sql'>
 
 ```sql
-        delete from "VMart"."public"."delete"   where ( id) in (  select (id)  from "delete__dbt_tmp" );
-    
-        insert into "VMart"."public"."delete" ("id", "name", "some_date")   
-    
-        ( select "id", "name", "some_date" from "delete__dbt_tmp" );
+        delete from "VMart"."public"."samp"
+            where (
+                date_key) in (
+                select (date_key)
+                from "samp__dbt_tmp"
+            );
+            
+        insert into "VMart"."public"."samp" (
+             "date_key", "date", "full_date_description", "day_of_week", "day_number_in_calendar_month", "day_number_in_calendar_year", "day_number_in_fiscal_month", "day_number_in_fiscal_year", "last_day_in_week_indicator", "last_day_in_month_indicator", "calendar_week_number_in_year", "calendar_month_name", "calendar_month_number_in_year", "calendar_year_month", "calendar_quarter", "calendar_year_quarter", "calendar_half_year", "calendar_year", "holiday_indicator", "weekday_indicator", "selling_season")
+        (
+            select "date_key", "date", "full_date_description", "day_of_week", "day_number_in_calendar_month", "day_number_in_calendar_year", "day_number_in_fiscal_month", "day_number_in_fiscal_year", "last_day_in_week_indicator", "last_day_in_month_indicator", "calendar_week_number_in_year", "calendar_month_name", "calendar_month_number_in_year", "calendar_year_month", "calendar_quarter", "calendar_year_quarter", "calendar_half_year", "calendar_year", "holiday_indicator", "weekday_indicator", "selling_season"
+            from "samp__dbt_tmp"
+        );
 
   ```
   </File>
