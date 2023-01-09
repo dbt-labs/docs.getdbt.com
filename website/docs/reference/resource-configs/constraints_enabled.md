@@ -12,11 +12,12 @@ You can manage data type constraints on your models using the `constraints_enabl
 
 ## Configuring Constraints
 
-You can configure `constraints_enabled` in `dbt_project.yml` to apply constraints to many resources at once—all models in your project, a package, or a subfolder—and you can also configure grants one-by-one for specific resources, in yaml config: blocks or right within their `.sql` files. You'll receive dynamic error messages if you do not configure constraints based on the criteria below.
+You can configure `constraints_enabled` in `schema.yml` files to apply constraints one-by-one for specific dbt models in yaml config blocks. You'll receive dynamic error messages if you do not configure constraints based on the criteria below.
 
 - Constraints must be defined in a `yml` schema configuration file like `schema.yml`.
 - Only the `SQL` **table** materialization is supported for constraints.
 - `data_type` values must be defined for all columns and NOT be null or blank.
+- `constraints_enabled=true` can only be configured within `schema.yml` files NOT within a model file(ex: .sql, .py) or `dbt_project.yml`. *(Note: Current parsing mechanics require all constraints configs be written in schema files to be implemented exactly as configured. This may change in the future.)*
 
 > Note: constraints and data type inheritance across downstream tables depends on database-specific functionality. Bias towards defining constraints for all tables in scope where desired.
 
@@ -56,7 +57,7 @@ models:
 
 The `constraints_enabled` config can also be defined:
 
-- under the `models` config block in `dbt_project.yml`
+- under the `models` config block in `dbt_project.yml` only for `false` configs
 
 <File name='dbt_project.yml'>
 
@@ -70,13 +71,13 @@ models:
 
     marts:
       core:
-        +constraints_enabled: true # enforce data type constraints across all models in the "/marts/core" subfolder
+        +constraints_enabled: false # enforce data type constraints across all models in the "/marts/core" subfolder
         materialized: table
 ```
 
 </File>
 
-- in a `config()` Jinja macro within a model's SQL file
+- in a `config()` Jinja macro within a model's SQL file only for `false` configs
 
 <File name='models/constraints_example.sql'>
 
@@ -84,7 +85,7 @@ models:
 {{
   config(
     materialized = "table",
-    constraints_enabled = true
+    constraints_enabled = false
   )
 }}
 
