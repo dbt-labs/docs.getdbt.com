@@ -33,7 +33,6 @@ function dbtEditor({ project }) {
   const [packageOpen, setPackageOpen] = useState(true)
   const [currentNodeId, setCurrentNodeId] = useState(null);
   const handle = useFullScreenHandle();
-  console.log('handle', handle)
   useEffect(() => {
     setError(false)
     async function buildData() {
@@ -44,6 +43,7 @@ function dbtEditor({ project }) {
         const { nodes } = res.data
         setManifest(res.data)
 
+        console.log('nodes', nodes)
         const sidebarData = buildSidebar(nodes)
         if(!sidebarData) throw new Error('Unable to get sidebar data.')
 
