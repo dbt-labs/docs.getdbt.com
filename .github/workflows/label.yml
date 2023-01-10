@@ -5,7 +5,7 @@ on:
     types: [ opened, closed ]
     
 jobs:
-    add_new_contributor_label:
+  add_new_contributor_label:
     if: github.event.action == 'opened'
     permissions:
       contents: read
