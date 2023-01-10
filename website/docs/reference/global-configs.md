@@ -405,7 +405,34 @@ Turning on the `WARN_ERROR` config will convert dbt warnings into errors. Any ti
 $ dbt --warn-error run
 ...
 ```
+</File>
 
+Turning on the WARN_ERROR_OPTIONS config will convert specific dbt warnings into errors. Warnings that should be converted into errors can be specified through ‘include’ and/or ‘exclude’ parameters. Warning names can be found in [https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py](dbt-core's types.py file), where each class name that inherits from `WarnLevel` corresponds to a warning name (ex: `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
+
+<File name='Usage'>
+
+```text
+$ dbt --warn-error-options ‘{“include”: “all”}’ run
+...
+```
+
+```text
+$ dbt --warn-error-options ‘{“include”: “all”, “exclude”:[NoNodesForSelectionCriteria]}’ run
+...
+```
+
+```text
+$ dbt --warn-error-options ‘{“include”: [NoNodesForSelectionCriteria]}’ run
+...
+```
+
+```
+config:
+  warn_error_options:
+    include: all
+    exclude: 
+      - NoNodesForSelectionCriteria
+```
 </File>
 
 ### Writing JSON artifacts
