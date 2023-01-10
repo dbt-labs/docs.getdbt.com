@@ -44,7 +44,7 @@ var siteSettings = {
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
@@ -62,6 +62,19 @@ var siteSettings = {
       appId: ALGOLIA_APP_ID ? ALGOLIA_APP_ID : "dbt",
       //debug: true,
     },
+    announcementBar: {
+      id: "live_qa",
+      content:
+        "Take the 5-minute dbt Community Survey!",
+      backgroundColor: "#047377",
+      textColor: "#fff",
+      isCloseable: true,
+    },
+    announcementBarActive: false,
+    announcementBarLink: "",
+    // Set community spotlight member on homepage
+    // This is the ID for a specific file under docs/community/spotlight
+    communitySpotlightMember: "",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -144,6 +157,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
+            // {
+            //   label: "Spotlight",
+            //   to: "/community/spotlight",
+            // },
           ],
         },
         {
@@ -218,6 +235,7 @@ var siteSettings = {
     path.resolve("plugins/customWebpackConfig"),
     [path.resolve("plugins/buildGlobalData"), { versionedPages }],
     path.resolve("plugins/buildAuthorPages"),
+    // path.resolve("plugins/buildSpotlightIndexPage"),
   ],
   scripts: [
     {

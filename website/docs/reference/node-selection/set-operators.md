@@ -16,7 +16,7 @@ Run snowplow_sessions, all ancestors of snowplow_sessions, fct_orders, and all a
 
 ### Intersections
 
-If multiple arguments to `--select`, `--exclude`, and `--select` can be comma-separated (with no whitespace in between),
+If multiple arguments to `--select`, `--exclude`, and `--selector` can be comma-separated (with no whitespace in between),
 dbt will select only resources which satisfy _all_ arguments.
 
 Run all the common ancestors of snowplow_sessions and fct_orders:

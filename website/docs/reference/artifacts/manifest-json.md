@@ -9,7 +9,7 @@ title: Manifest
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
-Today, dbt uses this file to populate the [docs site](documentation), and to perform [state comparison](understanding-state). Members of the community have used this file to run checks on how many models have descriptions and tests.
+Today, dbt uses this file to populate the [docs site](documentation), and to perform [state comparison](/docs/deploy/about-state). Members of the community have used this file to run checks on how many models have descriptions and tests.
 
 ### Top-level keys
 
