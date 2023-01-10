@@ -19,7 +19,7 @@ To become a formal partner, integrate with the API, or have questions/feedback &
 
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics, models, and entities. It helps organizations manage complexities such as data, tools, and teams to make more efficient and trustworthy decisions.
 
-The rapid growth of different tools in the modern data stack has helped data professionals. The various tools help solve the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads. 
+The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads. 
 
 To solve this, the dbt Semantic Layer provides a platform where users can confidently leverage their data from within their tools. dbt Cloud's change management capabilities ensure that any user modifications made to core business constructs, like metrics or entities, are distributed into all the tools connected to the data platform.
 
