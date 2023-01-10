@@ -35,7 +35,7 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 </VersionBlock>
 <Changelog>
 
-- **v1.4**: Added the `--favor-state` option, which enables `--defer` to favor using the `--state` node even if the node exists in the current target. Using the `--favor-state` flag renders number 2 in following the criteria optional.
+- **v1.4**: Added the `--favor-state` option, which enables `--defer` to favor using the `--state` node even if the node exists in the current target. Using the `--favor-state` flag renders number 2 in the following criteria optional.
 
 
 </Changelog>
