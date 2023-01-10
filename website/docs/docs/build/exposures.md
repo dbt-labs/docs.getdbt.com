@@ -34,6 +34,7 @@ version: 2
 exposures:
 
   - name: weekly_jaffle_metrics
+    label: Jaffles by the Week
     type: dashboard
     maturity: high
     url: https://bi.tool/dashboards/1
