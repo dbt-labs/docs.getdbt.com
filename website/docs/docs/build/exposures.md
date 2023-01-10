@@ -47,7 +47,7 @@ exposures:
       - metric('count_orders')
 
     owner:
-      name: Claire from Data
+      name: Callum McData
       email: data@jaffleshop.com
 ```
 
