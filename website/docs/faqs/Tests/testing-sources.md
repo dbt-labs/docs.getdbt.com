@@ -26,4 +26,3 @@ And, to run tests on one source <Term id="table" /> only:
 $ dbt test --select source:jaffle_shop.orders
 ```
 
-Yep, we know this syntax is a little less than ideal, so we're hoping to improve it in a future release. Check out the [model selection syntax](node-selection/syntax) for more examples!
