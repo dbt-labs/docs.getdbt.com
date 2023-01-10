@@ -5,7 +5,6 @@ export const buildSidebar = (nodes, step) => {
     const thisNode = nodes[node]
 
     // If node not included in current step, continue to next node
-    console.log('thisNode', thisNode, thisNode.tags)
     if(!thisNode?.tags?.includes(`step_${step}`)) continue
 
     const nodePath = thisNode?.path?.split('/')
