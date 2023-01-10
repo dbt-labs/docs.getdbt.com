@@ -187,7 +187,7 @@ This is an example of querying all models that utilize the schema`analytics` fro
 
 <TabItem value="details" label="Query details about a specific model">
 
-This is an example of querying details about a specific model, `model.jaffle_shop.customers` from a given job.
+This is an example of querying details about a specific model, `model.jaffle_shop.customers`, from a given job.
 
 ```
 {
