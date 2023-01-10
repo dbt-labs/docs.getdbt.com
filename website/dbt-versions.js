@@ -53,4 +53,5 @@ exports.versionedPages = [
    { 
    "page": "reference/dbt-jinja-functions/local-md5",
     "firstVersion": "1.4",
+ }
 ]
