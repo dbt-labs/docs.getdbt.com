@@ -346,7 +346,7 @@ Note that `value` must be defined as a string in YAML, because it will be compil
 ```
 
 ### Calendar
-The dbt_metrics package contains a [basic calendar table](/models/dbt_metrics_default_calendar.sql) that is created as part of your `dbt run`. It contains dates between 2010-01-01 and 2029-12-31. 
+The dbt_metrics package contains a [basic calendar table](https://github.com/dbt-labs/dbt_metrics/blob/main/models/dbt_metrics_default_calendar.sql) that is created as part of your `dbt run`. It contains dates between 2010-01-01 and 2029-12-31. 
 
 If you want to use a custom calendar, you can replace the default with any table which meets the following requirements:
 - Contains a `date_day` column. 
