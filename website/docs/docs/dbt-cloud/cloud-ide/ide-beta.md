@@ -32,7 +32,7 @@ To use the dbt Cloud IDE, you need to log in with a dbt Cloud account and click 
 You can refer to [Getting Started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) to quickly get set up and perform some key tasks. For more information, see the following articles:
 
 - [What is dbt?](docs/introduction#what-else-can-dbt-do)
-- [Building your first project](/docs/get-started/getting-started/building-your-first-project)
+- [Building your first project](/docs/get-started/getting-started/building-your-first-project/build-your-first-models)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Using Git](https://docs.github.com/en/github/getting-started-with-github/using-git)
 
