@@ -125,7 +125,7 @@ Test out the Metadata API by using the [GraphQL sandbox](https://studio.apollogr
 
 ### Query models for a project
 
-You can query model definitions or details about a specific model, for a project from a given job.
+You can query model definitions or details about a specific model for a project from a given job.
 
  
 <!--- tabs for listing models and fetching details about specific model --->
