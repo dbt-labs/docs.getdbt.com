@@ -133,7 +133,7 @@ You can query model definitions or details about a specific model for a project 
 
 <TabItem value="list" label="Listing models for a job">
 
-This is an example of querying all models that utilize the schema,`analytics` from a given job.
+This is an example of querying all models that utilize the schema`analytics` from a given job.
 
 ```
 {  
