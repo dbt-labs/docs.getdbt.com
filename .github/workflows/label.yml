@@ -1,4 +1,9 @@
-  add_new_contributor_label:
+name: Add/Remove Labels
+
+on:
+  pull_request_target:
+    types: [ opened, closed ]
+    add_new_contributor_label:
     if: github.event.action == 'opened'
     permissions:
       contents: read
