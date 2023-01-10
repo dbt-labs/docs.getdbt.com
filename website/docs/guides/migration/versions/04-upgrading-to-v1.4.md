@@ -12,13 +12,6 @@ description: New features and changes in dbt Core v1.4
 
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
-### For those on versions .20 or .21
-
-As of June 30, 2022, dbt Cloud has ceased all support for dbt Core versions older than v1.0. With the release of v1.4, dbt Labs removed the older versions from the version menu on the docs site as well. 
-
-If you're on a version lower than v1.1, it's strongly recommended to upgrade as soon as possible.
-Please visit [About dbt Core Versions](/dbt-versions/core) for more information
-
 ### For consumers of dbt artifacts (metadata)
 
 The manifest schema version has updated to `v8`.
