@@ -374,7 +374,7 @@ When you configure the dbt Semantic Layer, dbt Cloud provides a Proxy Server end
 
 Replace the hostname in your existing data platform connection with the relevant dbt Cloud Proxy Server URL (for example, `abc123.proxy.cloud.getdbt.com`). All queries you submit through the endpoint will be compiled en route to the data platform.* 
 
-*_Note: This approach will change with the new Semantic Layer connection, which will be able to query all data platforms supported in dbt Cloud through dedicated JDBC/ODBC drivers, and eventually an API._
+*_Note: This approach will change with the new Semantic Layer connection in mid-2023, which will be able to query all data platforms supported in dbt Cloud through dedicated JDBC/ODBC drivers, and eventually an API._
 
 
 <!--- tabs for running models and running metrics --->
@@ -641,7 +641,7 @@ Integration partners need to install the [Arrow FlightSQL](https://arrow.apache.
 
 ### dbt Semantic Layer API 
 
-dbt Cloud will provide a REST-based API that supports:
+dbt Cloud will provide a web API that supports:
 
 - Compiling dbt-SQL queries to return their compiled SQL.
 - Executing dbt-SQL queries and returning the queried results from the data platform.
