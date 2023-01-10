@@ -9,6 +9,11 @@ The `local_md5` context variable calculates an [MD5 hash](https://en.wikipedia.o
 It should not be confused with the `md5` SQL function, supported by many SQL dialects, which runs remotely in the data platform. You should always use SQL hashing functions when generating <Term id="surrogate-key">surrogate keys</Term>.
 
 Usage:
-```
-{% set value_hash = local_md5("hello world") %}
-```
+```sql
+-- source
+{%- set value_hash = local_md5("hello world") -%}
+'{{ value_hash }}'
+
+-- compiled
+'5eb63bbbe01eeed093cb22bb8f5acdc3'
+<delete this line and replace with ```>
