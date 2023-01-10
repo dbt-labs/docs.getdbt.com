@@ -23,7 +23,7 @@ The rapid growth of different tools in the modern data stack has helped data pro
 
 To solve this, the dbt Semantic Layer provides a platform where users can confidently leverage their data from within their tools. dbt Cloud's change management capabilities ensure that any user modifications made to core business constructs, like metrics or entities, are distributed into all the tools connected to the data platform.
 
-The dbt Semantic Layer is unopinionated about specific tools, use cases, or applications of data. The following summarizes some of the common use cases:
+The dbt Semantic Layer can be used for a variety of tools and applications of data. Here are some common use cases
 
 * Business intelligence (BI), reporting, and analytics,
 * Data quality and monitoring,
