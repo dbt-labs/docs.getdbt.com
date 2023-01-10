@@ -39,9 +39,7 @@ Some core functionality may be limited. If you're interested in contributing, ch
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
-pip is the easiest way to install the adapter:
-
-<code>pip install {frontMatter.meta.pypi_package}</code>
+pip is the easiest way to install the adapter: <code>pip install {frontMatter.meta.pypi_package}</code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
@@ -97,7 +95,7 @@ your-profile:
 password   |The password to use for authenticating to the server. |Yes|None|my_password|
 database |The name of the database running on the server. |Yes | None | my_db |
 schema|	The schema to build models into.|	No|	None	|VMart|
-connection_load_balance|	A Boolean value that indicates whether the connection can be redirected to a host in the database other than host.|	No|	TRUE	|TRUE|
+connection_load_balance|	A Boolean value that indicates whether the connection can be redirected to a host in the database other than host.|	No|	True	|True|
 backup_server_node|	List of hosts to connect to if the primary host specified in the connection (host, port) is unreachable. Each item in the list should be either a host string (using default port 5433) or a (host, port) tuple. A host can be a host name or an IP address.|	No|	None	|['123.123.123.123','www.abc.com',('123.123.123.124',5433)]|
 retries	|The retry times after an unsuccessful connection.|	No|	1	|3|
 threads	|The number of threads the dbt project will run on.|	No|	1|	3|
