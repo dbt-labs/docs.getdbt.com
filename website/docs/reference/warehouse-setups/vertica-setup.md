@@ -6,7 +6,7 @@ meta:
   authors: Vertica (Former authors:- Matthew Carter, Andy Regan, Andrew Hedengren)
   github_repo: 'https://github.com/vertica/dbt-vertica/'
   pypi_package: 'dbt-vertica'
-  min_core_version: 'v0.21.0'
+  min_core_version: 'v1.3.0'
   cloud_support: Not Supported
   min_supported_version: 'Vertica v12.0'
   slack_channel_name: '#adapter-ecosystem'
