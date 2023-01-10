@@ -155,7 +155,7 @@ As of v0.14.0, dbt will warn you if you install a package using the `git` syntax
 
 ### Internally hosted tarball URL
 
-As the security needs of organizations rapidly evolve, there are increasingly strict requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, internally hosted tarball URLs are supported for installing packages. 
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, internally hosted tarball URLs are supported for installing packages. 
 
 
 ```yaml
