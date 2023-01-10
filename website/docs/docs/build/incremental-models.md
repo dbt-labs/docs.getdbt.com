@@ -324,7 +324,8 @@ models:
     config:
       materialized: incremental
       unique_key: id
-      cluster_by: ['session_start']  # this will affect how the data is stored on disk, and indexed to limit scans
+      # this will affect how the data is stored on disk, and indexed to limit scans
+      cluster_by: ['session_start']  
       incremental_strategy: merge
       # limit scan of the existing table to the last 7 days of data
       incremental_predicates: "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
