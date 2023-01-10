@@ -14,7 +14,7 @@ For example:
 {% endif %}
 ```
 
-To see the contents of `model` for a given model, you can use [log()](/reference/dbt-jinja-functions/log)
+To view the contents of `model` for a given model, use [log()](/reference/dbt-jinja-functions/log)
 to print the full contents:
 
 ```jinja
