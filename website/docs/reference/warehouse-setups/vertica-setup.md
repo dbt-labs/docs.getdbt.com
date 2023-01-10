@@ -61,6 +61,7 @@ Configure your dbt profile for using Vertica:
 ##### Vertica connection information
 
 <File name='profiles.yml'>
+
 ```yaml
 your-profile:
   outputs:
@@ -74,7 +75,7 @@ your-profile:
       schema: [dbt schema]
       connection_load_balance: True
       backup_server_node: [list of backup hostnames or IPs]
-      retries: [1 or more]
+      retries: [1 or more]  
       threads: [1 or more]
   target: dev
 ```
