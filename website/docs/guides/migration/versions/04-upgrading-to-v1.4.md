@@ -42,7 +42,7 @@ These changes are relevant for users who:
 
 According to the Python maintainers, "Python 3.11 is between 10-60% faster than Python 3.10." We encourage you to try a `dbt parse` with dbt Core v1.4 + Python 3.11, and compare it to the result of dbt parse on dbt Core v1.3 + Python 3.10. If you notice a significant speed increase, let us know!
 - [Install packages from tarball URLs](/docs/build/packages) &mdash; Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, installing packages now support **[internally hosted tarball URLs](/docs/build/packages)**. 
-- **The [local_md5](/referencedbt-jinja-functions/local-md5)** context variable is a new Jinja function that calculates an [MD5 hash](https://en.wikipedia.org/wiki/MD5).
+- **The [local_md5](/reference/dbt-jinja-functions/local-md5)** context variable is a new Jinja function that calculates an [MD5 hash](https://en.wikipedia.org/wiki/MD5).
 - **[Exposures](/docs/build/exposures)** can now depend on `metrics`.
 - Placeholder `--favor-state`
 - Placeholder `incremental_predicates`
