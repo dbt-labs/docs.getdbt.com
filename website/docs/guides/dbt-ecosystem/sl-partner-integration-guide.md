@@ -263,7 +263,8 @@ This is an example listing metrics from a given job:
 
 <TabItem value="query" label="Query details about a specific metric">
 
-The `metric` query support all metric properties listed in **Listing metrics**, however, refer to the following abbreviated query as an example.
+The `metric` query supports all metric properties listed in **Listing metrics**. 
+The following abbreviated example is querying details about the metric `new_customers` from job `123`:
 
 This is an example of querying details about a specific metric `new_customers` from a given job `123`.
 
