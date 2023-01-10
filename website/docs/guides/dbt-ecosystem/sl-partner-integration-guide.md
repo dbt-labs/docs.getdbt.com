@@ -385,7 +385,7 @@ Replace the hostname in your existing data platform connection with the relevant
 Users can compile and execute metric queries using macros defined in the [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics).  This package:
 
 - Generates the SQL required to accurately calculate the metric definition,
-* Supplies helper macros for derived calculations (like month over month, year to date, and so on) time series operations
+- Supplies helper macros for derived calculations (like month over month, year to date, and so on) time series operations
 
 
 ```
