@@ -43,12 +43,12 @@ According to the Python maintainers, "Python 3.11 is between 10-60% faster than 
 - [Install packages from tarball URLs](/docs/build/packages) &mdash; Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, installing packages now support **[internally hosted tarball URLs](/docs/build/packages)**. 
 - **The [local_md5](/reference/dbt-jinja-functions/local-md5)** context variable is a new Jinja function that calculates an [MD5 hash](https://en.wikipedia.org/wiki/MD5).
 - **[Exposures](/docs/build/exposures)** can now depend on `metrics`.
-- Placeholder `--favor-state`
-- Placeholder `incremental_predicates`
-- Placeholder incremental modeling docs for BigQuery.
+- [Coming soon] `--favor-state` ([dbt-labs/docs.getdbt.com/issues/2021](https://github.com/dbt-labs/docs.getdbt.com/issues/2021))
+- [Coming soon] `incremental_predicates` ([dbt-labs/docs.getdbt.com/issues/2636](https://github.com/dbt-labs/docs.getdbt.com/issues/2636))
+- [Coming soon] BigQuery: `time_ingestion_partitioning` + `insert_overwrite` ([dbt-labs/docs.getdbt.com/issues/2426](https://github.com/dbt-labs/docs.getdbt.com/issues/2426))
 
 
-### Quick hits
+### Python updates
 
 - **[Stored procedures](/docs/build/python-models##Specific-data-platforms)** for Python models will be enabled for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
 
