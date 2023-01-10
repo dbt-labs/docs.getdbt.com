@@ -42,7 +42,6 @@ exposures:
       - source('name', 'table')
       - metric('metric_name')
       
-    # added in dbt Core v1.3
     label: "Human-Friendly Name for this Exposure!"
     [config](resource-properties/config):
       enabled: true | false
