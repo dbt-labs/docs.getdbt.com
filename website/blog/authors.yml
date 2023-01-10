@@ -126,9 +126,8 @@ emily_riederer:
   name: Emily Riederer
   organization: Capital One
   links:
-  - icon: fa-linkedin
-    url: https://www.linkedin.com/in/emilyriederer/
-
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/emilyriederer/
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
   job_title: Analytics Engineer
