@@ -14,7 +14,9 @@ We are committed to providing backward compatibility for all versions 1.x. If yo
 
 ### For those on versions .20 or .21
 
-As of June 30, 2022, dbt Cloud has ceased all support for dbt Core versions older than v1.0. With the release of v1.4, these older versions have been removed from the docs site version menu as well. It is strongly recommded that anyone on a version lower than 1.1 upgrade as soon as possible.
+As of June 30, 2022, dbt Cloud has ceased all support for dbt Core versions older than v1.0. With the release of v1.4, dbt Labs removed the older versions from the version menu on the docs site as well. 
+
+If you're on a version lower than v1.1, it's strongly recommended to upgrade as soon as possible.
 Please visit [About dbt Core Versions](/dbt-versions/core) for more information
 
 ### For consumers of dbt artifacts (metadata)
