@@ -119,6 +119,16 @@ doug_beatty:
   job_title: Senior Developer Experience Advocate
   name: Doug Beatty
   organization: dbt Labs
+emily_riederer:
+  description: Emily is very smart.
+  image_url: /img/blog/authors/emily-riederer.jpeg
+  job_title: Senior Manager Analytics
+  name: Emily Riederer
+  organization: Capital One
+  links:
+  - icon: fa-linkedin
+    url: https://www.linkedin.com/in/emilyriederer/
+
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
   job_title: Analytics Engineer
