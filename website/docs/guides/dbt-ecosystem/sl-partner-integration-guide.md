@@ -667,6 +667,3 @@ The API will be a viable integration point with the dbt Semantic Layer. It will 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
 
 
-## Troubleshooting
-
-This is a troubleshooting section - tbd
