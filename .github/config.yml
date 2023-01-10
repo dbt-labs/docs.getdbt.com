@@ -1,12 +1,12 @@
  # Comment to be posted to on PRs from first time contributors in your repository
 
 newPRWelcomeComment: >
-  Hello there!👋 Thanks for your contribution and congrats on opening this pull request! ✨
+  Hello there!👋 Thanks for your contribution and congrats on opening this pull request! ✨ <br /><br />
   
-  The dbt Labs docs are written in Markdown and sometimes HTML. When writing content, refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com#:~:text=refer%20to%20the-,style%20guide,-and%20content%20types) and [content types](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.
+  The dbt Labs docs are written in Markdown and sometimes HTML. When writing content, refer to the [style guide](https://github.com/dbt-labs/docs.getdbt.com#:~:text=refer%20to%20the-,style%20guide,-and%20content%20types) and [content types](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-types.md) to help you understand our writing standards and how we break down information in the product documentation.<br /><br />
   
-  We get a lot of pull requests and we'll do our best to get back to you as soon as we can.😄
+  We get a lot of pull requests and we'll do our best to get back to you as soon as we can. 😄
 
 
-# *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given but using this for first time contributor
-requestInfoLabelToAdd: first-time-contributor
+# *OPTIONAL* Label to be added to Issues and Pull Requests to first time contributor
+requestInfoLabelToAdd: good first issue
