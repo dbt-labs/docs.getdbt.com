@@ -9,6 +9,12 @@ id: install-python-compatibility
 
 The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10, and 3.11.
 
+:::info
+
+Full support of Python 3.11 across adapters is a work in progress since adapter plugins have additional third-party dependencies. As of January 2023, dbt-snowflake does not yet support Python 3.11 (relevant issue in snowflake-connector-python).
+
+:::
+
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1" lastVersion="1.3">
