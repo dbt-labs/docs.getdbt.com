@@ -62,7 +62,7 @@ All dbt Core versions are available as _prereleases_ before the final release. "
 
 Like many software projects, dbt Core releases follow [semantic versioning](https://semver.org/), which defines three types of version releases.
 
-- **Major versions:** To date, dbt Core has had one major version release: v1.0.0. When v2.0.0 is released, it will introduce new features and backwards compatibility for functionality that has been deprecated will no longer work.
+- **Major versions:** To date, dbt Core has had one major version release: v1.0.0. When v2.0.0 is released, it will introduce new features, and functionality that has been announced for deprecation will stop working.
 - **Minor versions**, also called "feature" releases, include a mix of new features, behind-the-scenes improvements, and changes to existing capabilities that are **backwards compatible** with previous minor versions. They will not break code in your project that relies on documented functionality.
 - **Patch versions**, also called "bugfix" or "security" releases, include **fixes _only_**. These fixes could be needed to restore previous (documented) behavior, fix obvious shortcomings of new features, or offer critical fixes for security or installation issues. We are judicious about which fixes are included in patch releases, to minimize the surface area of changes.
 
