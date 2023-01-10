@@ -41,7 +41,7 @@ According to the Python maintainers, "Python 3.11 is between 10-60% faster than 
 - [Coming soon] BigQuery: `time_ingestion_partitioning` + `insert_overwrite` ([dbt-labs/docs.getdbt.com/issues/2426](https://github.com/dbt-labs/docs.getdbt.com/issues/2426))
 
 
-### Python updates
+### Updates to Python models
 
 - **[Stored procedures](/docs/build/python-models##Specific-data-platforms)** for Python models will be enabled for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
 
