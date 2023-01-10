@@ -92,8 +92,10 @@ exposures:
 <File name='models/jaffle/exposures.yml'>
 
 ```yaml
+version: 2
+
 exposures:
-  
+
   - name: weekly_jaffle_metrics
     label: Jaffles by the Week              # optional, new in dbt Core v1.3
     type: dashboard                         # required
@@ -101,15 +103,17 @@ exposures:
     url: https://bi.tool/dashboards/1       # optional
     description: >                          # optional
       Did someone say "exponential growth"?
-    
+
     depends_on:                             # expected
       - ref('fct_orders')
       - ref('dim_customers')
       - source('gsheets', 'goals')
+      - metric('count_orders')
 
     owner:
-      name: Claire from Data                # optional
-      email: data@jaffleshop.com            # required
+      name: Callum McData
+      email: data@jaffleshop.com
+
 
       
   - name: jaffle_recommender
