@@ -51,7 +51,7 @@ Let’s get started by accessing your AWS account and setting up Redshift.
 9. Click on your cluster name in the list and fill out the credentials from the output of the stack.
 - Database: `dbtworkshop`
 - User Name: `dbtadmin`
-- Password: *choose your own password and save it for later*
+- Password: MasterUserPassword from [cloudformation json file](https://github.com/aws-samples/aws-modernization-with-dbtlabs/blob/main/resources/cloudformation/create-dbtworkshop-infr)
 
 <Lightbox src="/img/redshift_tutorial/images/redshift_query_editor.png" title="Redshift Query Editor v2" />
 
@@ -185,7 +185,7 @@ Now let's set up the connection between dbt Cloud and Redshift
 
 4. Set your development credentials. These credentials will be used by dbt Cloud to connect to Redshift. Those credentials (as provided in your cloudformation output) will be:
     - Username: `dbtadmin`
-    - password: *this was the password that you set earlier in the guide*
+    - password: MasterUserPassword from [cloudformation json file](https://github.com/aws-samples/aws-modernization-with-dbtlabs/blob/main/resources/cloudformation/create-dbtworkshop-infr)
     - Schema: You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/redshift_tutorial/images/dbt_cloud_redshift_development_credentials.png" title="dbt Cloud - Redshift Development Credentials" />
