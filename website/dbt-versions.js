@@ -49,7 +49,7 @@ exports.versionedPages = [
   {
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
-  }
+  },
     "page": "reference/dbt-jinja-functions/local-md5",
     "firstVersion": "1.4",
 ]
