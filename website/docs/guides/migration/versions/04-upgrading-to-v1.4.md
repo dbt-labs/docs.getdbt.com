@@ -4,7 +4,7 @@ description: New features and changes in dbt Core v1.4
 ---
 ### Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.3.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.4.latest/CHANGELOG.md)
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
