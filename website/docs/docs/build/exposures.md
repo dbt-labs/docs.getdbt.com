@@ -44,7 +44,7 @@ exposures:
       - ref('fct_orders')
       - ref('dim_customers')
       - source('gsheets', 'goals')
-      - metric('example_metric_name')
+      - metric('count_orders')
 
     owner:
       name: Claire from Data
