@@ -237,7 +237,7 @@ Query metrics definitions or details for a project from a given job and refer to
 
 <TabItem value="list" label="Listing metrics">
 
-This is an example listing metrics from a given job.
+This is an example listing metrics from a given job:
 
 ```
 {
