@@ -2,7 +2,7 @@
 title: Manifest
 ---
 <VersionBlock firstVersion="1.4">
-**Current schema**: [`v8`](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
+**dbt Core v1.4 produces schema**: [`v8`](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
 </VersionBlock>
 
 <VersionBlock lastVersion="1.3">
