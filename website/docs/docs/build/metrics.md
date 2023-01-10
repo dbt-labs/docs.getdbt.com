@@ -511,7 +511,7 @@ The period to date secondary calculation performs an aggregation on a defined **
 
 | Input                  | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
-| `aggregate`                | `max`, `average` | The aggregation to use in the window function. Options vary based on the primary aggregation and are enforced in [validate_aggregate_coherence()](/macros/secondary_calculations/validate_aggregate_coherence.sql). | Yes |
+| `aggregate`                | `max`, `average` | The aggregation to use in the window function. Options vary based on the primary aggregation and are enforced in [validate_aggregate_coherence()](https://github.com/dbt-labs/dbt_metrics/blob/main/macros/validation/validate_aggregate_coherence.sql). | Yes |
 | `period`                   | `"day"`, `"week"` | The time grain to aggregate to. One of [`"day"`, `"week"`, `"month"`, `"quarter"`, `"year"`]. Must be at equal or coarser (higher, more aggregated) granularity than the metric's grain (see [Time Grains](#time-grains) below). In example grain of `month`, the acceptable periods would be `month`, `quarter`, or `year`. | Yes |
 | `alias`                    | `month_to_date` | The column alias for the resulting calculation | No |
 | `metric_list`              | `base_sum_metric` | List of metrics that the secondary calculation should be applied to. Default is all metrics selected | No |
@@ -523,7 +523,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 
 | Input                      | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
-| `aggregate`                | `max`, `average` | The aggregation to use in the window function. Options vary based on the primary aggregation and are enforced in [validate_aggregate_coherence()](/macros/secondary_calculations/validate_aggregate_coherence.sql). | Yes |
+| `aggregate`                | `max`, `average` | The aggregation to use in the window function. Options vary based on the primary aggregation and are enforced in [validate_aggregate_coherence()](https://github.com/dbt-labs/dbt_metrics/blob/main/macros/validation/validate_aggregate_coherence.sql). | Yes |
 | `interval`                 | 1 | Integer - the number of time grains to look back | No |
 | `alias`                    | `month_to_date` | The column alias for the resulting calculation | No |
 | `metric_list`              | `base_sum_metric` | List of metrics that the secondary calculation should be applied to. Default is all metrics selected | No |
@@ -534,7 +534,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 
 | Input                      | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
-| `aggregate`                | `max`, `average` | The aggregation to use in the window function. Options vary based on the primary aggregation and are enforced in [validate_aggregate_coherence()](/macros/secondary_calculations/validate_aggregate_coherence.sql). | Yes |
+| `aggregate`                | `max`, `average` | The aggregation to use in the window function. Options vary based on the primary aggregation and are enforced in [validate_aggregate_coherence()](https://github.com/dbt-labs/dbt_metrics/blob/main/macros/validation/validate_aggregate_coherence.sql). | Yes |
 | `interval`                 | 1 | Integer - the number of time grains to look back | Yes |
 | `alias`                    | `month_to_date` | The column alias for the resulting calculation | No |
 | `metric_list`              | `base_sum_metric` | List of metrics that the secondary calculation should be applied to. Default is all metrics selected | No |
