@@ -361,7 +361,7 @@ with large_source_table as (
 ```
 
 :::info
-- You do need to explicitly alias any columns with either `DBT_INTERNAL_DEST` ("old" data) or `DBT_INTERNAL_SOURCE` ("new" data).
+- You don't need to explicitly alias any columns with either `DBT_INTERNAL_DEST` ("old" data) or `DBT_INTERNAL_SOURCE` ("new" data).
 - There's a decent amount of conceptual overlap with the `insert_overwrite` incremental strategy.
 :::
 
