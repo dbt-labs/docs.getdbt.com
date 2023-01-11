@@ -20,9 +20,8 @@ function ReportAProblem() {
             <div>
               <HubSpotForm
                 region="na1"
-                portalId="21770202"
-                formId="51549be8-d959-419b-950d-bd2b085942fc"
-                sfdcCampaignId="7014v0000022cGhAAI"
+                portalId="8698602"
+                formId="ca4d617f-af4f-4f9d-ba69-97dba802a5b1"
                 containerId="report-hubspot-form"
               />
             </div>
