@@ -25,8 +25,8 @@ If you're using an On-Premises GitHub deployment, this method will not work for 
 
 ## Prerequisites
 
-- You _must_ be a **GitHub org admin** in order to [install the dbt Cloud application](/docs/collaborate/git/connect-github#installing-dbt-cloud-in-your-github-account).
-- A GitHub org admin _must_ log into dbt Cloud with _Owner_ or _Account Admin_ [permissions](/docs/collaborate/manage-access/self-service-permissions) to integrate a GitHub environment that uses Organizations.
+- You _must_ be a **GitHub org admin** in order to [install the dbt Cloud application](/docs/collaborate/git/connect-github#installing-dbt-cloud-in-your-github-account). 
+- The GitHub org admin _must_ log into dbt Cloud with _Owner_ or _Account Admin_ [permissions](/docs/collaborate/manage-access/self-service-permissions) to integrate a GitHub environment that uses Organizations.
 - You may need to provide an extra dbt Cloud user account for your GitHub org admin until they complete the installation.
 
 ## Installing dbt Cloud in your GitHub account
