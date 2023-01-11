@@ -366,7 +366,7 @@ vars:
 
 ### Configuration 
 
-Metric nodes now accept `config` dictionaries like other dbt resources. Metric configs can specified in the metric yml itself or for groups of metrics in the `dbt_project.yml` file.
+Metric nodes now accept `config` dictionaries like other dbt resources. Specify Metric configs in the metric yml itself, or for groups of metrics in the `dbt_project.yml` file.
 
 ```yml
 # in metrics.yml
