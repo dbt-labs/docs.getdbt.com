@@ -950,6 +950,7 @@ guides: [
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/group-by",
           ],
         },
         {
@@ -969,9 +970,10 @@ guides: [
           type: "category",
           label: "Clauses",
           items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
             "sql-reference/clauses/limit",
             "sql-reference/clauses/order-by",
-            "sql-reference/clauses/where",
           ],
         },
         {
@@ -1013,6 +1015,14 @@ guides: [
             "sql-reference/operators/like",
             "sql-reference/operators/and",
             "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
+          ],
+        },
+        {
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
           ],
         },
         {
