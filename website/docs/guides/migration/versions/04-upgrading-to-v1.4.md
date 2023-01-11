@@ -16,7 +16,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 
 The manifest schema version has updated to `v8`.
 These changes are relevant for users who:
-- parse/analyze contents of `manifest.json`
+- parse or analyze the contents of the `manifest.json` file
 - have custom code accessing the [`model`](https://docs.getdbt.com/reference/dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) variables. For example:
 
 ```
