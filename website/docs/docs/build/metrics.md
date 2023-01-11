@@ -396,7 +396,7 @@ metrics:
 
 #### Accepted Metric Configurations
 
-Below is the list of metric configs currently accepted.
+The following is the list of currently accepted metric configs:
 
 | Config | Type | Accepted Values | Default Value | Description |
 |--------|------|-----------------|---------------|-------------|
