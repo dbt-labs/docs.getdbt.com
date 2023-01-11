@@ -87,7 +87,9 @@ async function createDiscourseTopic(title, slug) {
         const response = await axios.post(`${discourse_endpoint}/posts`, {
             title: title,
             raw: `This is a companion discussion topic for the original entry at ${DEVBLOG_URL}${slug}`,
-            category: DISCOURSE_TOPIC_ID
+            category: DISCOURSE_TOPIC_ID,
+            embed_url: `${DEVBLOG_URL}${slug}`,
+            external_id: `${slug}`
         }, { headers })
 
         const topicId = response?.data?.topic_id

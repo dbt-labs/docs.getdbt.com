@@ -35,6 +35,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
             setComments(data.comments)
             setTopicId(data.topicId)
             setLoading(false)
+            
           }
           
         } catch(err) {
