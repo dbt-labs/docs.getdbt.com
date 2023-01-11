@@ -151,19 +151,21 @@ function dbtEditor({ project, step }) {
                     />
                   </div>
                 )}
-                <div className={styles.dbtEditorActions}>
-                  {/* <button className={styles.editorAction}>Preview</button>
-                  <button className={styles.editorAction}>Save</button>
-                  <button className={styles.editorAction}>Run</button>
-                  <button className={styles.editorAction}>Test</button>
-                  <button 
-                    className={styles.editorAction}
-                    onClick={() => setShowLineage((isShowing) => !isShowing)}
-                  >
-                    Lineage
-                  </button> */}
-                </div>
-                {csvData && csvData.length > 0 && (
+                {showLineage && (
+                  <div className={styles.dbtEditorActions}>
+                    {/* <button className={styles.editorAction}>Preview</button>
+                    <button className={styles.editorAction}>Save</button>
+                    <button className={styles.editorAction}>Run</button>
+                    <button className={styles.editorAction}>Test</button>
+                    <button 
+                      className={styles.editorAction}
+                      onClick={() => setShowLineage((isShowing) => !isShowing)}
+                    >
+                      Lineage
+                    </button> */}
+                  </div>
+                )}
+                {!showLineage && csvData && csvData.length > 0 && (
                   <div className={styles.dbtEditorResults}>
                     {/* {!csvData && (
                       <div className={styles.resultsHeader}>
