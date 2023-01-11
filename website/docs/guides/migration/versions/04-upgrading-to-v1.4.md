@@ -10,7 +10,7 @@ description: New features and changes in dbt Core v1.4
 
 ## What to know before upgrading
 
-We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
+dbt Labs is committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### For consumers of dbt artifacts (metadata)
 
