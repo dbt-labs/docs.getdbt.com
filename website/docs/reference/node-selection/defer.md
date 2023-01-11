@@ -9,7 +9,7 @@ title: "Defer"
 
 </Changelog>
 
-**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/dbt-labs/dbt-core/issues/2968).
+Deferral is a powerful, complex feature that enables compelling workflows. As the use cases for `--defer` evolve, dbt Labs could make enhancements to the feature, but commit to providing backward compatibility for supported versions of dbt Core.  For details, see [dbt#5095](https://github.com/dbt-labs/dbt-core/discussions/5095).
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
@@ -33,6 +33,12 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 ```
 
 </VersionBlock>
+<Changelog>
+
+- **v1.4**: Added the `--favor-state` option, which enables `--defer` to favor using the `--state` node even if the node exists in the current target. Using the `--favor-state` option renders the second criteria in the following optional.
+
+
+</Changelog>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
