@@ -530,7 +530,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 </VersionBlock>
 
 <VersionBlock lastVersion="1.2" >
-The rolling secondary calculation performs an aggregation on a number of rows in metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4` then the value returned will be a rolling 4 week calculation of whatever aggregation type was selected.
+The rolling secondary calculation performs an aggregation on a number of rows in the metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4`, then the value returned will be a rolling 4-week calculation of whatever aggregation type was selected.
 
 | Input                      | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
