@@ -496,7 +496,7 @@ The supported Secondary Calculations are:
 
 #### Period over Period:
 
-The period over period secondary calculation performs a calculation against the metric(s) in question by either determining the difference or the ratio between two points of time. This other point in time is determined by the input variable which looks at the grain selected in the macro. 
+The period over period secondary calculation performs a calculation against the metric(s) in question by either determining the difference or the ratio between two points in time. The input variable, which looks at the grain selected in the macro, determines the other point. 
 
 | Input                  | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
