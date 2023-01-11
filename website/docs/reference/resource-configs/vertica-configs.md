@@ -6,7 +6,7 @@ id: "vertica-configs"
 
 ### Using the on_schema_change config parameter
 
-You can use `on_schema_change` parameter with values `ignore`, `fail` and `append_new_columns`  Values  `sync_all_columns` are not supported at this time.
+You can use `on_schema_change` parameter with values `ignore`, `fail` and `append_new_columns`.  Value  `sync_all_columns` is not supported at this time.
 
 #### Configuring the `ignore` (default) parameter
 
@@ -99,7 +99,7 @@ You can use `on_schema_change` parameter with values `ignore`, `fail` and `appen
 </Tabs>
 
 
-#### Configuring the `apppend_new_columns` (default) parameter
+#### Configuring the `apppend_new_columns` parameter
 
 
 <Tabs
@@ -149,9 +149,9 @@ You can use `on_schema_change` parameter with values `ignore`, `fail` and `appen
 
 ### Using the `incremental_strategy` config ​parameter
 
-**`Append strategy (Default)`**
+**`Append strategy (default)`**:
 
-Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block.
+Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block. The unique_key config parameter is required for using the merge strategy, the value accepted by this parameter is a single table column.
 
 <Tabs
   defaultValue="source"
@@ -208,11 +208,11 @@ Insert new records without updating or overwriting any existing data. append onl
 </TabItem>
 </Tabs>
 
-### Merge strategy 
+
 
 **`Merge strategy`**:
 
-Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to append.)
+Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to  the append.)
 
 <Tabs
   defaultValue="source"
@@ -229,7 +229,7 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 ```sql
 
-      {{ config( materialized = "incremental", incremental_strategy = 'merge',  unique_key='promotion_key'   )  }}
+      {{ config( materialized = 'incremental', incremental_strategy = 'merge',  unique_key='promotion_key'   )  }}
       
       
           select * FROM  public.promotion_dimension
@@ -268,6 +268,8 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 
 #### Using the `merge_update_columns` config parameter
+
+The merge_update_columns config parameter is used for __complete description___ and accepts a coma separated list of table columns.
 
 
 <Tabs
@@ -316,7 +318,9 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 **`delete+insert strategy`**: 
 
-Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and re-insert them. 
+Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and then re-insert them.
+
+Is the unique_key parameter required? What happens if it is not provided?
 
 <Tabs
   defaultValue="source"
@@ -333,7 +337,7 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
 
 ```sql
 
-    {{ config( materialized = "incremental", incremental_strategy = 'delete+insert',  unique_key='date_key'   )  }}
+    {{ config( materialized = 'incremental', incremental_strategy = 'delete+insert',  unique_key='date_key'   )  }}
 
 
           select * FROM  public.date_dimension
@@ -365,14 +369,14 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
 </TabItem>
 </Tabs>
 
-**`insert_overwrite strategy`** 
+**`insert_overwrite strategy`**:
 
 Vertica doesn’t support overwrite by default. so, when user specifies `insert_overwrite` strategy  then it behaves as` delete+insert`.
 
-this strategy needs `partition_by_string` and `partitions` parameters.
+This strategy needs `partition_by_string` and `partitions` parameters.
 
 `partition_by_string` parameter accepts `column_name` as a string.
-if not specified then performs as `full-refresh` (truncate the target table and insert the data to target with source.) 
+if not specified then performs as `full-refresh` (truncate the target table and insert the data to target from source.) 
 
 `partitions` parameter accept list of partitions to be updated.
 if not specified then it will drop all the partitions which exists in source from the target and insert the source to target.
@@ -447,7 +451,7 @@ if not specified then it will drop all the partitions which exists in source fro
 
 There are multiple optimizations that can be used when materializing models as tables. Each config parameter applies a Vertica specific clause in the generated `CREATE TABLE` DDL. 
 
-For more information see [Vertica](https://www.vertica.com/docs/12.0.x/HTML/Content/Authoring/SQLReferenceManual/Statements/CREATETABLE.htm) options for table optimization.]
+For more information see [Vertica](https://www.vertica.com/docs/12.0.x/HTML/Content/Authoring/SQLReferenceManual/Statements/CREATETABLE.htm) options for table optimization.
 
 You can configure these optimizations in your model SQL file as described in the examples below: 
 
@@ -590,6 +594,7 @@ To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, u
 
 #### Using the `no_segmentation` config parameter
 
+
 <Tabs
   defaultValue="source"
   values={[
@@ -604,10 +609,35 @@ To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, u
 <File name='vertica_incremental.sql'>
 
 ```sql
-        {{  config(  materialized='table',   no_segmentation='True'  ) }} 
+      
+     {{config(materialized='table',no_segmentation='true')}}
 
-        select * from  public.product_dimension
+
+          select * from public.product_dimension
+
 ```
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='vertica_incremental.sql'>
+
+```sql
+       
+  
+           create  table
+                      "VMart"."public"."ww__dbt_tmp"
+    
+                   INCLUDE SCHEMA PRIVILEGES as (
+    
+                select * from public.product_dimension )
+                
+                        UNSEGMENTED ALL NODES ;
+    
+  
+
+ ```
+
 </File>
 </TabItem>
 </Tabs>
@@ -804,8 +834,3 @@ To leverage the `KSAFE` clause of the `CREATE TABLE` statement, use the `ksafe` 
 </TabItem>
 </Tabs>
 
-
-
-
-
-If you'd like to contribute to data platform-specifc configuration information, refer to [Documenting a new adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter)
