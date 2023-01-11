@@ -506,7 +506,10 @@ You can configure these optimizations in your model SQL file as described in the
 
 ### Configuring the `SEGMENTED BY` clause
 
-To leverage the `SEGMENTED BY` clause of the `CREATE TABLE` statement, use the `segmented_by_string` or `segmented_by_all_nodes` config parameters in your model. 
+To leverage the `SEGMENTED BY` clause of the `CREATE TABLE` statement, use the `segmented_by_string` or `segmented_by_all_nodes` config parameters in your model. By default  ALL NODES are used to segment tables, so the ALL NODES clause in the  SQL  statement will be added when using `segmented_by_string` config parameter. You can disable ALL NODES using `no_segmentation` parameter.
+
+To learn more about segmented by clause check [here](https://www.vertica.com/docs/12.0.x/HTML/Content/Authoring/SQLReferenceManual/Statements/hash-segmentation-clause.htm).
+
 
 #### Using the `segmented_by_string` config parameter
 
@@ -553,6 +556,14 @@ To leverage the `SEGMENTED BY` clause of the `CREATE TABLE` statement, use the `
 </Tabs>
 
 #### Using the `segmented_by_all_nodes` config  parameter
+
+`segmented_by_all_nodes` config parameter  can be used to segment projection data for distribution across all cluster nodes.
+
+:::info Note:
+
+ If you want to pass `segmented_by_all_nodes` parameter then you have to segment  the table by passing `segmented_by_string` parameter.
+
+:::
 
 <Tabs
   defaultValue="source"
