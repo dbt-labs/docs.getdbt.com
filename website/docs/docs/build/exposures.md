@@ -89,7 +89,7 @@ exposures:
 ### Available properties
 
 _Required:_
-- **name** (must be unique among exposures and you must use the [snake case](https://en.wikipedia.org/wiki/Snake_case) naming convention)
+- **name**: a unique exposure name written in [snake case](https://en.wikipedia.org/wiki/Snake_case)
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
 - **owner**: email
 
