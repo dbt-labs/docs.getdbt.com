@@ -25,7 +25,7 @@ const errorEditorValue = "/*\n  Unable to get CSV data. \n Try selecting another
 
 function dbtEditor({ project, step }) {
   const [manifest, setManifest] = useState({})
-  const [showLineage, setShowLineage] = useState(false);
+  const [showLineage, setShowLineage] = useState(true);
   const [sidebar, setSidebar] = useState([])
   const [csvData, setCsvData] = useState()
   const [currentSql, setCurrentSql] = useState(defaultEditorValue)
@@ -153,11 +153,13 @@ function dbtEditor({ project, step }) {
                   {/* <button className={styles.editorAction}>Preview</button>
                   <button className={styles.editorAction}>Save</button>
                   <button className={styles.editorAction}>Run</button>
-                  <button className={styles.editorAction}>Test</button> */}
-                  <button className={styles.editorAction}
-                          onClick={() => setShowLineage((isShowing) => !isShowing)}>
+                  <button className={styles.editorAction}>Test</button>
+                  <button 
+                    className={styles.editorAction}
+                    onClick={() => setShowLineage((isShowing) => !isShowing)}
+                  >
                     Lineage
-                  </button>
+                  </button> */}
                 </div>
                 {!showLineage && <div className={styles.dbtEditorResults}>
                   {/* {!csvData && (
@@ -166,7 +168,7 @@ function dbtEditor({ project, step }) {
                     </div>
                   )} */}
                   <table>
-                    {csvData && csvData.length > 0 ? (
+                    {csvData && csvData.length > 0 && (
                       <>
                         {csvData.map((row, i) => (
                           i === 0
@@ -188,38 +190,6 @@ function dbtEditor({ project, step }) {
                               </tbody>
                             )
                         ))}
-                      </>
-                    ) : (
-                      <>
-                        <thead>
-                          <tr>
-                            <th>customer_id</th>
-                            <th>orders</th>
-                            <th>payments</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>21532</td>
-                            <td>12</td>
-                            <td>12</td>
-                          </tr>
-                          <tr>
-                            <td>49823</td>
-                            <td>4</td>
-                            <td>3</td>
-                          </tr>
-                          <tr>
-                            <td>89234</td>
-                            <td>2</td>
-                            <td>2</td>
-                          </tr>
-                          <tr>
-                            <td>12546</td>
-                            <td>11</td>
-                            <td>11</td>
-                          </tr>
-                        </tbody>
                       </>
                     )}
                   </table>
