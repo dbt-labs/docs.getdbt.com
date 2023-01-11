@@ -159,7 +159,7 @@ metrics:
 ### Available properties
 Metrics can have many declared **properties**, which define aspects of your metric. More information on [properties and configs can be found here](https://docs.getdbt.com/reference/configs-and-properties).
 
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.3">
 
 | Field       | Description                                                 | Example                         | Required? |
 |-------------|-------------------------------------------------------------|---------------------------------|-----------|
@@ -168,28 +168,8 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | label       | A short for name / label for the metric                     | New Customers                   | yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
-| timestamp   | The time-based component of the metric                      | signup_date                     | no       |
-| time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | no       |
-| dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
-| window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`, `all_time`] |  {count: 14, period: day}        | no        |
-| filters     | A list of filters to apply before calculating the metric    | See below                       | no        |
-| config      | [Optional configurations](https://github.com/dbt-labs/dbt_metrics#accepted-metric-configurations) for calculating this metric         | {treat_null_values_as_zero: true} | no      |
-| meta        | Arbitrary key/value store                                   | {team: Finance}                 | no        |
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3" lastVersion="1.3">
-
-| Field       | Description                                                 | Example                         | Required? |
-|-------------|-------------------------------------------------------------|---------------------------------|-----------|
-| name        | A unique identifier for the metric                          | new_customers                   | yes       |
-| model       | The dbt model that powers this metric                       | dim_customers                   | yes (no for `derived` metrics)|
-| label       | A short for name / label for the metric                     | New Customers                   | yes        |
-| description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
-| calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | yes       |
-| timestamp   | The time-based component of the metric                      | signup_date                     | yes       |
+| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock> |
+| timestamp   | The time-based component of the metric                      | signup_date                     | <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock>        |
 | time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | yes       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`, `all_time`] |  {count: 14, period: day}        | no        |
