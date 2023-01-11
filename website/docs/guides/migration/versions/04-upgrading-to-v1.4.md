@@ -34,7 +34,7 @@ Relevant changes are:
 According to the Python maintainers, "Python 3.11 is between 10-60% faster than Python 3.10." We encourage you to try a `dbt parse` with dbt Core v1.4 + Python 3.11, and compare it to the result of dbt parse on dbt Core v1.3 + Python 3.10.
 - Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments (such as Artifactory or cloud storage buckets), packages now support [installing from internally hosted tarball URLs](/docs/build/packages). 
 - **The [local_md5](/reference/dbt-jinja-functions/local-md5)** context variable is a new Jinja function that calculates an [MD5 hash](https://en.wikipedia.org/wiki/MD5).
-- **[Exposures](/docs/build/exposures)** can now depend on `metrics`.
+- [Exposures](/docs/build/exposures) can now depend on `metrics`.
 - [Coming soon] `--favor-state` ([dbt-labs/docs.getdbt.com/issues/2021](https://github.com/dbt-labs/docs.getdbt.com/issues/2021))
 - [Coming soon] `incremental_predicates` ([dbt-labs/docs.getdbt.com/issues/2636](https://github.com/dbt-labs/docs.getdbt.com/issues/2636))
 - [Coming soon] BigQuery: `time_ingestion_partitioning` + `insert_overwrite` ([dbt-labs/docs.getdbt.com/issues/2426](https://github.com/dbt-labs/docs.getdbt.com/issues/2426))
