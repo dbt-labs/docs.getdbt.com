@@ -14,7 +14,7 @@ You can use `on_schema_change` parameter with values `ignore`, `fail` and `appen
   defaultValue="source"
   values={[
     { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', },
+    { label: 'Run code', value: 'run', }
   ]
 }>
 
