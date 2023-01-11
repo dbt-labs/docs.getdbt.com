@@ -164,7 +164,7 @@ packages:
     name: 'dbt_utils'
 ```
 
-Where `name: 'dbt_utils'` specifies the sub-folder of `dbt_packages` that will be created for the package source code to be installed within.
+Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's created for the package source code to be installed within.
 
 </VersionBlock>
 
