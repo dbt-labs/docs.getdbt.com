@@ -140,7 +140,6 @@ function dbtEditor({ project, step }) {
                 {currentSql && (
                   <div className={styles.dbtEditorCli}>
                     <Editor
-                      height="300px"
                       width="100%"
                       defaultLanguage="sql"
                       defaultValue={defaultEditorValue}
