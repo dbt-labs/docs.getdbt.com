@@ -507,7 +507,7 @@ The period over period secondary calculation performs a calculation against the 
 
 #### Period to Date:
 
-The period to date secondary calculation performs an aggregation on a defined **period** of time that is equal to or coarser (higher, more aggregated) than the grain selected. Great example of this is when you want to display a month_to_date value alongside your weekly grained metric.
+The period to date secondary calculation performs an aggregation on a defined period of time that is equal to or higher than the grain selected. For example, when you want to display a month_to_date value alongside your weekly grained metric.
 
 | Input                  | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
