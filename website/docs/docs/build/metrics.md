@@ -543,7 +543,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 <VersionBlock firstVersion="1.3" >
 
 #### Prior: 
-The prior secondary calculation returns the value from a specified number of intervals prior to the row. 
+The prior secondary calculation returns the value from a specified number of intervals before the row. 
 
 | Input                      | Example | Description | Required |
 | -------------------------- | ----------- | ----------- | -----------|
