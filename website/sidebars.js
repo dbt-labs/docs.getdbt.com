@@ -819,7 +819,7 @@ guides: [
         type: "generated-index",
         title: "dbt Ecosystem guides",
         description:
-          "Learn about the dbt ecosystem and how to build with dbt",
+          "Learn about the dbt ecosystem and how to build with dbt.",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -839,10 +839,11 @@ guides: [
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
-        }
+        },
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
-    {
+  {
       type: "category",
       label: "Advanced",
       items: [
@@ -944,9 +945,12 @@ guides: [
       },
       items: [
         {
-          type: "doc",
-          label: "SELECT",
-          id: "sql-reference/select"
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+            "sql-reference/statements/from",
+          ],
         },
         {
           type: "category",
@@ -958,6 +962,7 @@ guides: [
             "sql-reference/aggregate-functions/min",
             "sql-reference/aggregate-functions/round",
             "sql-reference/aggregate-functions/sum",
+            "sql-reference/aggregate-functions/array-agg",
           ],
         },
         {
@@ -970,9 +975,70 @@ guides: [
           ],
         },
         {
+          type: "category",
+          label: "Date Functions",
+          items: [
+            "sql-reference/date-functions/dateadd",
+            "sql-reference/date-functions/datediff",
+            "sql-reference/date-functions/datepart",
+            "sql-reference/date-functions/datetrunc",
+          ],
+        },
+        {
+          type: "category",
+          label: "String Functions",
+          items: [
+            "sql-reference/string-functions/upper",
+            "sql-reference/string-functions/lower",
+            "sql-reference/string-functions/concat",
+            "sql-reference/string-functions/trim",
+          ],
+        },
+        {
+          type: "category",
+          label: "Window Functions",
+          items: [
+            "sql-reference/window-functions/rank",
+            "sql-reference/window-functions/row-number",
+          ],
+        },
+        {
+          type: "category",
+          label: "Operators",
+          items: [
+            "sql-reference/operators/between",
+            "sql-reference/operators/in",
+            "sql-reference/operators/or",
+            "sql-reference/operators/ilike",
+            "sql-reference/operators/like",
+            "sql-reference/operators/and",
+            "sql-reference/operators/not",
+          ],
+        },
+        {
+          type: "doc",
+          label: "Data types",
+          id: "sql-reference/data-types",
+        },
+        {
           type: "doc",
           label: "DISTINCT",
           id: "sql-reference/distinct",
+        },
+        {
+          type: "doc",
+          label: "Comments",
+          id: "sql-reference/comments",
+        },
+        {
+          type: "doc",
+          label: "CAST",
+          id: "sql-reference/cast",
+        },
+        {
+          type: "doc",
+          label: "Strings",
+          id: "sql-reference/strings",
         },
       ],
     },

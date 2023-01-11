@@ -3,11 +3,14 @@ title: "adapter"
 id: "adapter"
 ---
 
-## Overview
 
-`adapter` is a wrapper around the internal database adapter used by dbt. It allows users to make calls to the database in their dbt models. The adapter methods below will be translated into specific SQL statements depending on the type of adapter your project is using.
+Your database communicates with dbt using an internal database adapter object. For example, BaseAdapter and SnowflakeAdapter. The Jinja object `adapter` is a wrapper around this internal database adapter object.
 
-The following functions are available:
+`adapter` grants the ability to invoke adapter methods of that internal class via:
+* `{% do adapter.<method name> %}` -- invoke internal adapter method 
+* `{{ adapter.<method name> }}` -- invoke internal adapter method and capture its return value for use in materialization or other macros
+
+For example, the adapter methods below will be translated into specific SQL statements depending on the type of adapter your project is using:
 
 - [adapter.dispatch](dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
@@ -120,7 +123,7 @@ A convenience wrapper for [get_relation](#get_relation). Returns the cached vers
 
 ```sql
 
-{% set relation_exists = (load_relation(ref('my_model')) is not none %}
+{% set relation_exists = load_relation(ref('my_model')) is not none %}
 {% if relation_exists %}
       {{ log("my_model has already been built", info=true) }}
 {% else %}
