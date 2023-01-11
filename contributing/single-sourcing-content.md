@@ -109,6 +109,7 @@ You see this block when the selected version is >= 0.21:
 
 ```markdown
 
+<VersionBlock firstVersion="0.21">
 
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
@@ -116,7 +117,7 @@ $ dbt test --select [...] --defer --state path/to/artifacts
 \```
 
 ```
-
+</VersionBlock>
 You see this version block when the selected version is <= 0.20
 
 ```markdown
