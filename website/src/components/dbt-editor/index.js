@@ -89,6 +89,7 @@ function dbtEditor({ project, step }) {
       // Show seed data from CSV
       setCurrentSql("")
       setCsvData(csvRes)
+      setShowLineage(false)
     } else {
       // Show SQL code in editor
       let thisSql = ""
@@ -99,6 +100,7 @@ function dbtEditor({ project, step }) {
       }
       setCurrentSql(thisSql)
       setCsvData(undefined)
+      setShowLineage(true)
     }
   }
 
@@ -161,14 +163,14 @@ function dbtEditor({ project, step }) {
                     Lineage
                   </button> */}
                 </div>
-                {!showLineage && <div className={styles.dbtEditorResults}>
-                  {/* {!csvData && (
-                    <div className={styles.resultsHeader}>
-                      <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
-                    </div>
-                  )} */}
-                  <table>
-                    {csvData && csvData.length > 0 && (
+                {csvData && csvData.length > 0 && (
+                  <div className={styles.dbtEditorResults}>
+                    {/* {!csvData && (
+                      <div className={styles.resultsHeader}>
+                        <span>17.0sec</span>{' '}|{' '}Results limited to 500 rows. <img src="/img/info-icon.svg" />
+                      </div>
+                    )} */}
+                    <table>
                       <>
                         {csvData.map((row, i) => (
                           i === 0
@@ -191,9 +193,9 @@ function dbtEditor({ project, step }) {
                             )
                         ))}
                       </>
-                    )}
-                  </table>
-                </div>}
+                    </table>
+                  </div>
+                )}
                 {showLineage && <div className={styles.dbtLineageContainer}>
                   <Lineage
                     nodes={manifest.nodes}
