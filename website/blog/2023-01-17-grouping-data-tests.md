@@ -21,7 +21,7 @@ Between these two extremes lies a gap where human intelligence goes. Analytics e
 
 ## Grouped checks
 
-Group-based checks can be important for fully articulating good "business rules" against which to assess data quality. For example, groups could reflect either computationally-relevant dimensions of the <Term id="ETL"/> process (e.g. data loaded from different sources) or semantically-relevant dimensions of the real-world process that our data captures (e.g. repeated measures pertaining to many individual customers, patients, product lines, etc.) Such checks can make existing tests more rigorous while others are only expressible at the grouped level.
+Group-based checks can be important for fully articulating good "business rules" against which to assess data quality. For example, groups could reflect either computationally-relevant dimensions of the <Term id="etl"/> process (e.g. data loaded from different sources) or semantically-relevant dimensions of the real-world process that our data captures (e.g. repeated measures pertaining to many individual customers, patients, product lines, etc.) Such checks can make existing tests more rigorous while others are only expressible at the grouped level.
 
 ### Only expressible
 Some types of checks can only be expressed by group. For example, in a dataset containing train schedules across a transit system, an `ARRIVAL_TIME` field might not be unique; however, it would (hopefully) always be unique for a specific `TRACK` and `STATION`! 
