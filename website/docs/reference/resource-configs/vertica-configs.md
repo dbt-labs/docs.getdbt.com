@@ -267,7 +267,7 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 
 
-#### Using the `merge_update_columns` config parameter
+###### Using the `merge_update_columns` config parameter
 
 The `merge_update_columns` config parameter is passed to only merge the columns specified and it accepts list of  table columns.
 
