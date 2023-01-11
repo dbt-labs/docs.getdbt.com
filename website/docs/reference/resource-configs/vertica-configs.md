@@ -269,8 +269,9 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 #### Using the `merge_update_columns` config parameter
 
-The merge_update_columns config parameter is used for __complete description___ and accepts a coma separated list of table columns.
+The `merge_update_columns` config parameter is passed to only merge the columns specified and it accepts list of  table column.
 
+ 
 
 <Tabs
   defaultValue="source"
@@ -373,18 +374,21 @@ Is the unique_key parameter required? What happens if it is not provided?
 
 Vertica doesn’t support overwrite by default. so, when user specifies `insert_overwrite` strategy  then it behaves as` delete+insert`.
 
-This strategy needs `partition_by_string` and `partitions` parameters.
+This strategy may accept `partition_by_string` and `partitions` parameter (optional)
 
-`partition_by_string` parameter accepts `column_name` as a string.
-if not specified then performs as `full-refresh` (truncate the target table and insert the data to target from source.) 
+Provide these parameter when you want to overwrite a part of the table.
 
-`partitions` parameter accept list of partitions to be updated.
-if not specified then it will drop all the partitions which exists in source from the target and insert the source to target.
+If both the `partition_by_string` and `partition` parameter are not provided then `insert_overwrite` strategy truncate the target table and insert the source table data into target
 
+`partition_by_string` accepts string value of a any one specific `column_name` based on which partitioning of the table data takes place.
+
+`partitions` parameter (optional) accepts a list of group names in the partition table.
+
+To understand more on partition by clause check [here](https://www.vertica.com/docs/9.2.x/HTML/Content/Authoring/SQLReferenceManual/Statements/partition-clause.htm)
  
 :::info Note:
 
- you have to specify the partitions along with the `partition_by_string`.
+If you want to pass `partitions` parameter then you have to partition the table by passing `partition_by_string` parameter.
 
 :::
 
@@ -649,6 +653,8 @@ To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the p
 
 #### Using the `partition_by_string` config parameter
 
+`partition_by_string` (optinal) accepts a string value of a any one specific `column_name` based on which partitioning of the table data takes place.
+
 <Tabs
   defaultValue="source"
   values={[
@@ -693,6 +699,15 @@ To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the p
 </Tabs>
 
 #### Using the `partition_by_active_count` config parameter
+
+`partition_by_active_count` (optional): Specifies how many partitions are active for this table.
+
+:::info Note:
+
+ If you want to pass partition_by_active_count parameter then you have to partition the table by passing partition_by_string parameter.
+ 
+:::
+
 
 <Tabs
   defaultValue="source"
@@ -749,6 +764,20 @@ To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the p
 </Tabs>
 
 #### Using the `partition_by_group_by_string` config parameter
+
+`partition_by_group_by_string` parameter(optional):- It accepts the string, in which user should specify the each group case as string.
+
+ This is derived from the `partition_by_string` value.
+
+`partition_by_group_by_string` parameter is used to merge partitions into separate partition groups. 
+
+ 
+ :::info Note:
+
+ If you want to pass `partition_by_group_by_string` parameter then you have to partition the table by passing `partition_by_string` parameter.
+
+:::
+
 
 
 <Tabs
