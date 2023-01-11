@@ -43,5 +43,5 @@ According to the Python maintainers, "Python 3.11 is between 10-60% faster than 
 
 ### Updates to Python models
 
-- **[Stored procedures](/docs/build/python-models##Specific-data-platforms)** for Python models will be enabled for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
+- [Stored procedures](/docs/build/python-models##Specific-data-platforms) for Python models will be enabled for all dbt + Snowpark Python models starting with the release of dbt Core version 1.4.
 
