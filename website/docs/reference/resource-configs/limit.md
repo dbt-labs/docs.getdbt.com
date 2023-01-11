@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: integer
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `limit` config
-* `v0.21.0`: Introduced `config` property for tests
-
-</Changelog>
-
 Limit the number of failures that will be returned by a test query. We recommend using this config when working with large datasets and [storing failures in the database](store_failures).
 
 <Tabs
