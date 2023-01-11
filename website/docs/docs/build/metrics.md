@@ -686,7 +686,7 @@ from {{ metrics.develop(
     }}
 ```
 
-The above example will return a dataset that contains the metric provided in the metric list (derived_metric) and the parent metric (develop_metric). It will not contain some_other_metric_not_using as it is not designated in the metric list or a parent of the metrics included.
+The above example will return a dataset that contains the metric provided in the metric list (`derived_metric`) and the parent metric (`develop_metric`). It will not contain `some_other_metric_not_using` as it is not designated in the metric list or a parent of the metrics included.
 
 **Important caveat** - The `expression` property for `derived` metrics must be contained within double quotes in order for it to be rendered correctly. 
 
