@@ -16,23 +16,10 @@ Defer is a powerful feature that makes it possible to run a subset of models or 
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/about-state).
 ### Usage
 
-<VersionBlock firstVersion="0.21">
-
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
 ```
-
-</VersionBlock>
-
-<VersionBlock lastVersion="0.20">
-
-```shell
-$ dbt run --models [...] --defer --state path/to/artifacts
-$ dbt test --models [...] --defer --state path/to/artifacts
-```
-
-</VersionBlock>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -72,9 +59,7 @@ group by 1
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
 ### test
-:::info
-Before dbt v0.21, use the `--models` flag instead of `--select`.
-:::
+
 </File>
 
 <Tabs
@@ -159,10 +144,6 @@ models:
 ```
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
-
-:::info
-Before dbt v0.21, use the `--models` flag instead of `--select`.
-:::
 
 </File>
 

@@ -37,7 +37,7 @@ dispatch:
 
 I've reimplemented certain macros from the `dbt_utils` package in my root project (`'my_root_project'`), and I want my versions to take precedence. Otherwise, fall back to the versions in `dbt_utils`.
 
-_Note: As of v0.21.1, this is the default behavior. You may optionally choose to express that search order explicitly as:_
+_Note: This is the default behavior. You may optionally choose to express that search order explicitly as:_
 
 <File name='dbt_project.yml'>
 
