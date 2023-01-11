@@ -17,7 +17,9 @@ When thinking about real-world scenarios, we're naturally inclined to think abou
 
 Between these two extremes lies a gap where human intelligence goes. Analytics engineers can create more effective tests by embedding their understanding of how the data was created, and especially how this data can go awry (a topic I've [written about previously](https://emilyriederer.com/post/data-error-gen/)). While such expressive tests will be unique to our domain, modest tweaks to our mindset can help us implement them with our standard tools. This post demonstrates how the simple act of conducting tests _by group_ can expand the universe of possible tests, boost the sensitivity of the existing suite, and help keep our data "on track". This feature is [now available in dbt-utils](https://github.com/dbt-labs/dbt-utils#grouping-in-tests). 
 
-## Grouped Checks
+<!--truncate-->
+
+## Grouped checks
 
 Group-based checks can be important for fully articulating good "business rules" against which to assess data quality. For example, groups could reflect either computationally-relevant dimensions of the <Term id="ETL"/> process (e.g. data loaded from different sources) or semantically-relevant dimensions of the real-world process that our data captures (e.g. repeated measures pertaining to many individual customers, patients, product lines, etc.) Such checks can make existing tests more rigorous while others are only expressible at the grouped level.
 
