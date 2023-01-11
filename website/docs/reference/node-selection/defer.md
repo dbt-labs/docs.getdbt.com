@@ -21,7 +21,6 @@ $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
 ```
 
-</VersionBlock>
 
 <VersionBlock lastVersion="0.20">
 
