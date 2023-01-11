@@ -407,6 +407,8 @@ $ dbt --warn-error run
 ```
 </File>
 
+<VersionBlock firstVersion="1.4">
+
 Converting any and all warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot.
 
 The `WARN_ERROR_OPTIONS` config gives you more granular control over _exactly which types of warnings_ are treated as errors. Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
@@ -450,6 +452,8 @@ config:
 
 ```
 </File>
+
+</VersionBlock>
 
 ### Writing JSON artifacts
 
