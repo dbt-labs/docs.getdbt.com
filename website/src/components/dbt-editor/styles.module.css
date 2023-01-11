@@ -79,6 +79,8 @@
 .dbtEditorMain {
   flex: 1 1 100%;
   overflow: auto;
+  height: 570px;
+  width: 100%;
 }
 .dbtEditor.fullHeight .dbtEditorMain {
   height: 100%;
@@ -86,6 +88,8 @@
 @media (min-width: 1200px) {
   .dbtEditorMain {
     flex: 1 1 calc(100% - 256px);
+    height: initial;
+    max-width: initial;
   }
 }
 
