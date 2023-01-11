@@ -107,7 +107,7 @@ Type | Supported? | Details
 
 ### Indexes
 
-Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of [`indexes`](resource-configs/materialize-configs/indexes) defined.
+Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of [`indexes`](/reference/resource-configs/materialize-configs#indexes) defined.
 
 ### Seeds
 
