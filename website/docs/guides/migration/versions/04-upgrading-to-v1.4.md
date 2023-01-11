@@ -31,6 +31,7 @@ Link to GH discussion forthcoming
 
 ## New and changed documentation
 
+- [**Events and structured logging**](events-logging): dbt's event system got a makeover. Expect more consistency in the availability and structure of information, backed by type-safe event schemas.
 - [**Python support**](/faqs/Core/install-python-compatibility): Python 3.11 was released in October 2022. It is officially supported in dbt-core v1.4, although full support depends also on the adapter plugin for your data platform. According to the Python maintainers, "Python 3.11 is between 10-60% faster than Python 3.10." We encourage you to try [`dbt parse`](parse) with dbt Core v1.4 + Python 3.11, and compare the timing with dbt Core v1.3 + Python 3.10. Let us know what you find!
 - [**Metrics**](/docs/build/metrics): `time_grain` is optional, to provide better ergonomics around metrics that aren't time-bound.
 - **dbt-Jinja context:** The [local_md5](/reference/dbt-jinja-functions/local-md5) context method will calculate an [MD5 hash](https://en.wikipedia.org/wiki/MD5) for use _within_ dbt. (Not to be confused with SQL md5!)
