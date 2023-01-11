@@ -18,7 +18,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
   [printer_width](global-configs#printer-width): <integer>
   [write_json](global-configs#writing-json-artifacts): <true | false>
   [warn_error](global-configs#warnings-as-errors): <true | false>
-  [warn_error_options](global-configs#warnings-as-errors-options): < include: all | include: [<error-name>] | include: all, exclude: [<error-name>] >
+  [warn_error_options](global-configs#warnings-as-errors): <include: all | include: [<error-name>] | include: all, exclude: [<error-name>]>
   [log_format](global-configs#log-formatting): <text | json | default>
   [debug](global-configs#debug-level-logging): <true | false>
   [version_check](global-configs#checking-version-compatibility): <true | false>
