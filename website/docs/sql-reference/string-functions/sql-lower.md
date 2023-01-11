@@ -10,7 +10,7 @@ slug: /sql-reference/lower
 </head>
 
 We’ve all been there:
-- In a user signup form, user A typed in their name as `Kira Furuich`i, user B typed it in as` john blust`, and user C wrote `DAvid KrevitT` (what’s up with that, David??)
+- In a user signup form, user A typed in their name as `Kira Furuichi`, user B typed it in as` john blust`, and user C wrote `DAvid KrevitT` (what’s up with that, David??)
 - Your backend application engineers are adamant customer emails are in all caps
 - All of your event tracking names are lowercase
 
