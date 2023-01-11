@@ -2,11 +2,6 @@
 title: Seed configurations
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure seeds in all `.yml` files
-</Changelog>
-
-
 ## Available configurations
 ### Seed-specific configurations
 
