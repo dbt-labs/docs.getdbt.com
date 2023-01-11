@@ -9,21 +9,18 @@ title: "Defer"
 
 </Changelog>
 
-**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/dbt-labs/dbt-core/issues/2968).
+Deferral is a powerful, complex feature that enables compelling workflows. As the use cases for `--defer` evolve, dbt Labs might make enhancements to the feature, but commit to providing backward compatibility for supported versions of dbt Core.  For details, see [dbt#5095](https://github.com/dbt-labs/dbt-core/discussions/5095).
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/about-state).
 ### Usage
 
-<VersionBlock firstVersion="0.21">
-
 ```shell
 $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
 ```
 
-</VersionBlock>
 
 <VersionBlock lastVersion="0.20">
 
@@ -33,6 +30,12 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 ```
 
 </VersionBlock>
+<Changelog>
+
+- **v1.4**: Added the `--favor-state` option, which enables `--defer` to favor using the `--state` node even if the node exists in the current target. Using the `--favor-state` option renders the second criteria in the following optional.
+
+
+</Changelog>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -72,9 +75,7 @@ group by 1
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
 ### test
-:::info
-Before dbt v0.21, use the `--models` flag instead of `--select`.
-:::
+
 </File>
 
 <Tabs
@@ -159,10 +160,6 @@ models:
 ```
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
-
-:::info
-Before dbt v0.21, use the `--models` flag instead of `--select`.
-:::
 
 </File>
 
