@@ -718,7 +718,7 @@ To learn more about partition by clause check [here](https://www.vertica.com/doc
 
 :::info Note:
 
- If you want to pass partition_by_active_count parameter then you have to partition the table by passing partition_by_string parameter.
+ If you want to pass `partition_by_active_count` parameter then you have to partition the table by passing `partition_by_string` parameter.
 
 :::
 
