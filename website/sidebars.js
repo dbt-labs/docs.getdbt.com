@@ -689,6 +689,7 @@ const sidebarSettings = {
       label: "Database Permissions",
       items: ["reference/snowflake-permissions"],
     },
+    "reference/dbt-core-python-api",
   ],
 guides: [
     {
