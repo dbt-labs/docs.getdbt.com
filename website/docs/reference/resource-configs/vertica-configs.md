@@ -151,7 +151,7 @@ You can use `on_schema_change` parameter with values `ignore`, `fail` and `appen
 
 **`Append strategy (default)`**:
 
-Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block. The unique_key config parameter is required for using the merge strategy, the value accepted by this parameter is a single table column.
+Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block.
 
 <Tabs
   defaultValue="source"
@@ -212,7 +212,7 @@ Insert new records without updating or overwriting any existing data. append onl
 
 **`Merge strategy`**:
 
-Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to  the append.)
+Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to append.) The unique_key config parameter is required for using the merge strategy, the value accepted by this parameter is a single table column.
 
 <Tabs
   defaultValue="source"
@@ -269,7 +269,7 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 #### Using the `merge_update_columns` config parameter
 
-The `merge_update_columns` config parameter is passed to only merge the columns specified and it accepts list of  table column.
+The `merge_update_columns` config parameter is passed to only merge the columns specified and it accepts list of  table columns.
 
  
 
@@ -319,9 +319,10 @@ The `merge_update_columns` config parameter is passed to only merge the columns 
 
 **`delete+insert strategy`**: 
 
-Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and then re-insert them.
+Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and then re-insert them. The `unique_key` is  a required parameter for using `delete+instert` strategy which specifies how to update the records  when there is duplicate data. The value accepted by this parameter is a single table column.
 
-Is the unique_key parameter required? What happens if it is not provided?
+
+
 
 <Tabs
   defaultValue="source"
@@ -649,7 +650,9 @@ To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, u
 
 ### Configuring the `PARTITION BY` clause
 
-To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the partition_by_string, `partition_by_active_count` or the `partition_by_group_by_string` config parameters in your model. 
+To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the `partition_by_string`, `partition_by_active_count` or the `partition_by_group_by_string` config parameters in your model. 
+
+To learn more about partition by clause check [here](https://www.vertica.com/docs/9.2.x/HTML/Content/Authoring/SQLReferenceManual/Statements/partition-clause.htm)
 
 #### Using the `partition_by_string` config parameter
 
@@ -700,12 +703,12 @@ To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the p
 
 #### Using the `partition_by_active_count` config parameter
 
-`partition_by_active_count` (optional): Specifies how many partitions are active for this table.
+`partition_by_active_count` (optional) specifies how many partitions are active for this table. It accepts an integer value.
 
 :::info Note:
 
  If you want to pass partition_by_active_count parameter then you have to partition the table by passing partition_by_string parameter.
- 
+
 :::
 
 
@@ -765,11 +768,11 @@ To leverage the `PARTITION BY` clause of the `CREATE TABLE` statement, use the p
 
 #### Using the `partition_by_group_by_string` config parameter
 
-`partition_by_group_by_string` parameter(optional):- It accepts the string, in which user should specify the each group case as string.
+`partition_by_group_by_string` parameter(optional) accepts  a string, in which user should specify  each group cases as a single string.
 
  This is derived from the `partition_by_string` value.
-
-`partition_by_group_by_string` parameter is used to merge partitions into separate partition groups. 
+ 
+ `partition_by_group_by_string` parameter is used to merge partitions into separate partition groups. 
 
  
  :::info Note:
