@@ -10,7 +10,14 @@ export const buildSidebar = (nodes, step) => {
     const nodePath = thisNode?.path?.split('/')
     // If path not available in node, skip item in loop
     if(!nodePath) continue
-    const filename = nodePath[nodePath.length - 1]
+
+    // Build node object
+    const nodeObject = {
+      node,
+      name: thisNode.name,
+      isNode: true,
+      resourceType: thisNode.resource_type
+    }
 
     // Set top-level directories
     let thisPackage = projectData.find(project => project?.project === thisNode.package_name)
@@ -36,37 +43,30 @@ export const buildSidebar = (nodes, step) => {
 
     // Set directories
     const directory = thisNode.path.substr(0, thisNode.path.indexOf('/'))
+   
     if(!directory) {
       // Add node to top level
       let packageNodes = packagesResources?.nodes?.find(node => node.name === thisNode.name)
       if(!packageNodes) {
-        packageNodes = {
-          node,
-          name: thisNode.name,
-          isNode: true,
-          resourceType: thisNode.resource_type
-        }
+        packageNodes = nodeObject
         packagesResources.nodes.push(packageNodes)
       }
     } else {
       // Add node to directory
       let directoryNode = packagesResources?.directories?.find(dir => {
-          if(dir.name === directory) return true
-        }
-      )
+        if(dir.name === directory) return true
+      })
+      // If this directory does not exist
+      // create new directory and add current node
+      // Else, add node to existing directory
       if(!directoryNode && directory) {
         directoryNode = {
           name: directory,
-          nodes: []
+          nodes: [nodeObject]
         }
         packagesResources.directories.push(directoryNode)
       } else {
-        directoryNode.nodes.push({
-          node,
-          name: thisNode.name,
-          isNode: true,
-          resourceType: thisNode.resource_type
-        })
+        directoryNode.nodes.push(nodeObject)
       }
     }
   } 
