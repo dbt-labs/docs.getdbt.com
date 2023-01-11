@@ -12,8 +12,8 @@ function ReportAProblem() {
           style={{ padding: "0", background: "#FFF" }}
         >
           <Hero
-            heading="Report a problem"
-            subheading="Lorem ipsum, report a problem about the docs site subtext belongs here."
+            heading="Report a problem with our website"
+            subheading="Experiencing a problem on our website? Fill out the form below and we'll look into it."
             showGraphic
           />
           <section className="report-a-problem">
