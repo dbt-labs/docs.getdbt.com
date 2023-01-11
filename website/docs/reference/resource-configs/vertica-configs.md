@@ -513,6 +513,10 @@ To learn more about segmented by clause check [here](https://www.vertica.com/doc
 
 #### Using the `segmented_by_string` config parameter
 
+`segmented_by_string` config parameter  can be used to segment projection data using a SQL expression like hash segmentation.
+
+
+
 <Tabs
   defaultValue="source"
   values={[
