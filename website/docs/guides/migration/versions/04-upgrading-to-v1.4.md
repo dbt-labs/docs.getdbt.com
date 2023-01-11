@@ -23,7 +23,7 @@ These changes are relevant for users who:
 {{ model.root_path }}
 ```
 
-**Relevant changes:**
+Relevant changes are: 
 - The `root_path` attribute is removed for all nodes to reduce duplicative information.
 - Unused attributes have been removed from seed `nodes`, including `depends_on`, and from `macros`, including `tags`.
 - The `unique_id` of docs blocks now start with `doc` for consistency with other resource types.
