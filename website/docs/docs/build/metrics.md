@@ -351,7 +351,7 @@ The dbt_metrics package contains a [basic calendar table](https://github.com/dbt
 If you want to use a custom calendar, you can replace the default with any table which meets the following requirements:
 - Contains a `date_day` column. 
 - Contains the following columns: `date_week`, `date_month`, `date_quarter`, `date_year`, or equivalents. 
-- Additional date columns need to be prefixed with `date_`, e.g. `date_4_5_4_month` for a 4-5-4 retail calendar date set. Dimensions can have any name (see [dimensions on calendar tables](#dimensions-on-calendar-tables)).
+- Additional date columns need to be prefixed with `date_`, e.g. `date_4_5_4_month` for a 4-5-4 retail calendar date set. Dimensions can have any name (see following section).
 
 To do this, set the value of the `dbt_metrics_calendar_model` variable in your `dbt_project.yml` file: 
 ```yaml
@@ -362,37 +362,56 @@ vars:
     dbt_metrics_calendar_model: my_custom_calendar
 ```
 
+#### Dimensions from calendar tables
+You may want to aggregate metrics by a dimension in your custom calendar table, for example is_weekend. You can include this within the list of dimensions in the macro call without it needing to be defined in the metric definition.
+
+To do so, set a list variable at the project level called custom_calendar_dimension_list, as shown in the example below.
+
+```yaml
+#dbt_project.yml
+vars:
+  custom_calendar_dimension_list: ["is_weekend"]
+```
+
 <VersionBlock firstVersion="1.3">
 
 ### Configuration 
 
 Metric nodes now accept `config` dictionaries like other dbt resources. Specify Metric configs in the metric yml itself, or for groups of metrics in the `dbt_project.yml` file.
 
-```yml
+<!--tabs for config and project.yml -->
+
+<Tab>
+<TabItem value=“config” label=“Metric yml”>
+
+yml
 # in metrics.yml
 version: 2
-
 metrics:
   - name: config_metric
     label: Example Metric with Config
-    model: ref('my_model')
+    model: ref(‘my_model’)
     calculation_method: count
     timestamp: date_field
     time_grains: [day, week, month]
-
     config:
       enabled: True
-```
 
-Or:
+</TabItem>
 
-```yml
+<TabItem value=“project” label=“dbt_project.yml”>
+
+yml
 # in dbt_project.yml
-
 metrics: 
   your_project_name: 
     +enabled: true
-```
+
+</TabItem>
+</Tabs>
+
+<!--End of tabs for config and project.yml -->
+
 
 #### Accepted Metric Configurations
 
