@@ -1,6 +1,6 @@
 ---
 id: monotonically-increasing
-title: Monotonically Increasing
+title: Monotonically increasing
 description: Monotonicity means unchanging (think monotone). A monotonically-increasing value is a value which increases at a constant rate, for example the values 1, 2, 3, 4.
 displayText: monotonically increasing 
 hoverSnippet: Monotonicity means unchanging (think monotone). A monotonically-increasing value is a value which increases at a constant rate, for example the values 1, 2, 3, 4.

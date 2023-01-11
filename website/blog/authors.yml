@@ -134,7 +134,7 @@ doug_beatty:
   organization: dbt Labs
 
 emily_riederer:
-  description: Emily is very smart.
+  description: Emily Riederer is a Senior Analytics Manager at Capital One where she leads a team delivering a portfolio of data products, enterprise analysis tools, and data science solutions to business partners. As part of the dbt community, she develops and maintains the dbtplyr package. In her spare time, Emily frequently writes about data (see emilyriederer.com, The R Markdown Cookbook, and 97 Things Every Data Engineer Should Know), reviews technical manuscripts for CRC Press, and supports open research software engineering as a member of the rOpenSci editorial board.
   image_url: /img/blog/authors/emily-riederer.jpeg
   job_title: Senior Manager Analytics
   name: Emily Riederer
@@ -142,7 +142,12 @@ emily_riederer:
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/emilyriederer/
-
+    - icon: fa-twitter
+      url: https://twitter.com/emilyriederer
+    - icon: fa-github
+      url: https://twitter.com/emilyriederer
+    - icon: fa-readme
+      url: https://emilyriederer.com
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
   job_title: Analytics Engineer
