@@ -847,7 +847,7 @@ To leverage the `KSAFE` clause of the `CREATE TABLE` statement, use the `ksafe` 
   defaultValue="source"
   values={[
     { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', },+
+    { label: 'Run code', value: 'run', },
   ]
 }>
 
