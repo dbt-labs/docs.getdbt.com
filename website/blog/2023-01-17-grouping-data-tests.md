@@ -47,7 +47,7 @@ Testing for monotonicity, we find many poorly behaved turnstiles. Unlike the wel
 
 Similarly, while no expected timestamp is missing from the data altogether, a more rigorous test of timestamps _by turnstile_ reveals between roughly 50-100 missing observations for any given period.
 
-<Lightbox src="/img/blog/2023-01-17-grouping-data-tests/2-missing.png" title="Number of Missing Turnstiles by Recording Time Period" alt="A dot plot showing 60-100 turnstiles are missing entries for each period between January and May, the range shown on the x axis."/>
+<Lightbox src="/img/blog/2023-01-17-grouping-data-tests/2-missing.png" title="Number of Missing Turnstiles by Recording Time Period" alt="A dot plot showing 50-100 turnstiles are missing entries for each period between January and May, the range shown on the x axis."/>
 
 _Check out this [GitHub gist](https://gist.github.com/emilyriederer/4dcc6a05ea53c82db175e15f698a1fb6) to replicate these views locally._
 
