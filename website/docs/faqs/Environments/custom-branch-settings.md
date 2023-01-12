@@ -13,7 +13,7 @@ To specify a custom branch:
 3. Specify the **branch name or tag**
 
 
-## In development
+## Development
 
 In a development environment, dbt Cloud will reference the default branch in connected repositories (most commonly the `main` branch) in the IDE as the read only brnach that developers will create development branches from. The `Custom Branch` setting overrides that behavior if there is another branch that should be used. Users will not be able to make commits to the branch specified by this setting.  
 
