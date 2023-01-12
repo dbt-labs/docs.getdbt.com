@@ -17,7 +17,7 @@ To specify a custom branch:
 
 In a development environment, the default branch (commonly the `main` branch) is a read-only branch found in the IDE's connected repositories, which you can use to create development branches. Identifying a custom branch overrides this default behavior. Instead, your custom branch becomes read-only and can be used to create development branches. You will no longer be able to make commits to the custom branch from within the dbt Cloud IDE.
 
-For example, you can use the `develop` branch of a connected repository. Edit an environment, then in "General settings" select  **Only run on a custom branch** , and in "Custom branch" type **develop** or the name of your custom branch.
+For example, you can use the `develop` branch of a connected repository. Edit an environment, select  **Only run on a custom branch** in **General settings** , enter **develop** as the name of your custom branch.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="Configuring a custom base repository branch"/>
 
