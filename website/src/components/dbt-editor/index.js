@@ -56,7 +56,7 @@ function dbtEditor({ project, step }) {
     buildData()
 
     // Add missing 'dbt-dag' class on component load
-    const elements = document.querySelectorAll('.lineage-container > divss')
+    const elements = document.querySelectorAll('.lineage-container > div')
     if(!elements) return
     for(const ele of elements) {
       ele.classList.add('dbt-dag')
