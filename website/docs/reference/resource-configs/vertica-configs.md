@@ -623,9 +623,7 @@ To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, u
   ]
 }>
 
-
 <TabItem value="source">
-
 <File name='vertica_incremental.sql'>
 
 ```sql
