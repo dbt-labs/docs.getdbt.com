@@ -4,7 +4,14 @@ description: "Use custom code from your repository"
 sidebar_label: 'Custom Branch settings'
 id: custom-branch-settings
 ---
-dbt Cloud environments allow users to specify custom git settings to use different versions of their dbt project repositories other than their default branch. After checking off the `Only run on a custom branch` checkbox in the `General Settings` section of the environment settings page, users can specify the particular **branch name or tag** in the`Custom Branch` setting that dbt will use when executing in that environment. Depending on the type of environment, this setting will have slightly different effects.
+
+In dbt Cloud environments, you can change your git settings to use a different branch in your dbt project repositories besides the default branch. When you make this change, you run dbt on a custom branch. When specified, dbt Cloud executes models using the custom branch setting for that environment. Development and deployment environments have slightly different effects.
+
+To specify a custom branch:
+1. Edit an existing environment or create a new one
+2. Select **Only run on a custom branch** under General Settings
+3. Specify the **branch name or tag**
+
 
 ## In development
 
