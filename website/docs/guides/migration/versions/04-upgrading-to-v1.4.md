@@ -27,7 +27,7 @@ Relevant changes:
 
 ### For maintainers of adapter plugins
 
-Link TK
+Link to GH discussion forthcoming
 
 ## New and changed documentation
 

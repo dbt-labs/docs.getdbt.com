@@ -37,10 +37,7 @@ For users of [state-based selection](/docs/deploy/about-state): This release inc
 
 ### For maintainers of adapter plugins
 
-_GitHub discussion forthcoming_
-
-**Notes:**
-- The `statement` and `create_table_as` macros accept a new argument, `language`, with a default value of `'sql'`
+GitHub discussion with details: [dbt-labs/dbt-core#6011](https://github.com/dbt-labs/dbt-core/discussions/6011)
 
 ## New and changed documentation
 
