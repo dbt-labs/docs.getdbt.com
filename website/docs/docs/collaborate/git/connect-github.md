@@ -13,7 +13,6 @@ Connecting your GitHub account to dbt Cloud provides convenience and another lay
 - Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when pull requests are opened in GitHub.
 
 
-If you are the GitHub organization owner tasked with the installation of the dbt Cloud app in step 1, you will also be automatically personally authenticated after completion, so step 2 will be taken care of. This means teams of one only need to complete step 1.
 
 **GitHub On-Premise**
 
