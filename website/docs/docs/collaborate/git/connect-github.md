@@ -12,7 +12,6 @@ Connecting your GitHub account to dbt Cloud provides convenience and another lay
 - Clone repos using HTTPS rather than SSH.
 - Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when pull requests are opened in GitHub.
 
-To connect GitHub in dbt Cloud:
 1. A GitHub organization owner must first [install the dbt Cloud application](/docs/collaborate/git/connect-github#installing-dbt-cloud-in-your-github-account) in your team's GitHub account.
 2. All other dbt Cloud developers on the account need to [personally authenticate with GitHub](/docs/collaborate/git/connect-github#personally-authenticate-with-github) from dbt Cloud.
 
