@@ -27,6 +27,11 @@
   padding: 10px;
 }
 
+.dbtLineageContainer > div {
+  height: 100%;
+  width: 100%;
+}
+
 /* Sidebar */
 .dbtEditorSidebar {
   flex: 1 0 100%;
