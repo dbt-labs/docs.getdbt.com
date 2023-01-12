@@ -8,7 +8,7 @@ meta:
   pypi_package: 'dbt-vertica'
   min_core_version: 'v1.3.0'
   cloud_support: Not Supported
-  min_supported_version: 'Vertica v12.0'
+  min_supported_version: 'Vertica 10.0'
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
