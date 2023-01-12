@@ -54,6 +54,13 @@ function dbtEditor({ project, step }) {
       }
     }
     buildData()
+
+    // Add missing 'dbt-dag' class on component load
+    const elements = document.querySelectorAll('.lineage-container > divss')
+    if(!elements) return
+    for(const ele of elements) {
+      ele.classList.add('dbt-dag')
+    }
   }, [])  
 
   // Get selected node from sidebar
@@ -198,7 +205,7 @@ function dbtEditor({ project, step }) {
                     </table>
                   </div>
                 )}
-                {showLineage && <div className={styles.dbtLineageContainer}>
+                {showLineage && <div className={`${styles.dbtLineageContainer} lineage-container`}>
                   <Lineage
                     nodes={manifest.nodes}
                     currentNodeId={currentNodeId}
