@@ -619,7 +619,7 @@ To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, u
   defaultValue="source"
   values={[
     { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', }
+    { label: 'Run code', value: 'run', },
   ]
 }>
 
@@ -729,7 +729,7 @@ To learn more about partition by clause check [here](https://www.vertica.com/doc
 
 <Tabs
   defaultValue="source"
-  values={[
+  values= {[
     { label: 'Source code', value: 'source', },
     { label: 'Run code', value: 'run', },
   ]
