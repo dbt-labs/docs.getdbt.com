@@ -42,7 +42,7 @@ To connect your dbt Cloud account to your GitHub account:
 
 4. Select the GitHub organization and repositories dbt Cloud should access.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-app-install.png" title="Installing the dbt Cloud application into a GitHub organization"/>
+   <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-github/github-app-install.png" title="Installing the dbt Cloud application into a GitHub organization"/>
 
 The dbt Cloud GitHub App requires the following permissions:
    - Read access to metadata
