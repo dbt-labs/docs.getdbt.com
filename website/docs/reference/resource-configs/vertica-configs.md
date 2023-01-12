@@ -619,7 +619,7 @@ To leverage the`UNSEGMENTED ALL NODES` clause of the `CREATE TABLE` statement, u
   defaultValue="source"
   values={[
     { label: 'Source code', value: 'source', },
-    { label: 'Run code', value: 'run', },
+    { label: 'Run code', value: 'run', }
   ]
 }>
 
