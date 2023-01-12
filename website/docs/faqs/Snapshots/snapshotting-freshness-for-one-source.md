@@ -6,7 +6,6 @@ id: snapshotting-freshness-for-one-source
 
 ---
 
-:::info As of dbt Core v0.21, you need to prefix sources with the source: selection method. In previous versions of dbt, sources were specified by name only. :::
 
 Use the `--select` flag to snapshot freshness for specific sources. Eg:
 
