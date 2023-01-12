@@ -669,7 +669,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
         "reference/warehouse-setups/infer-setup",
-        "reference/warehouse-setups/databend-setup"
+        "reference/warehouse-setups/databend-setup",
+        "reference/warehouse-setups/fal-setup",
       ],
     },
     {
