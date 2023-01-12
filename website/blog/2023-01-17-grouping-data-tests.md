@@ -29,7 +29,7 @@ Some types of checks can only be expressed by group. For example, in a dataset c
 ### More rigorous
 Consider a recency check (i.e. that the maximum date represented in the data is appropriately close to the present); if the data loads from multiple sources (e.g. tickets purchases through web, a mobile app, or a station kiosk), a check of the maximum date could pass the check if any one source loaded, but unless the data is grouped by source and _each_ group's maximum date is checked, stale data could go undetected.
 
-## Case Study: NYC subway data
+## Case study: NYC subway data
 
 To demonstrate the utility (or, should I say, necessity) of group-level checks, let's consider some real-world open data from the [NYC subway system](http://web.mta.info/developers/turnstile.html) which I can always count on to have plenty of data quality quirks (which, to be clear, I do not say as a criticism; there's nothing unexpected about this in real-world "data as residue" data.). Cumulative entries through each turnstile across all subway stations are recorded 4x daily, creating a structure with one record for each turnstile and timestamp combination. 
 
