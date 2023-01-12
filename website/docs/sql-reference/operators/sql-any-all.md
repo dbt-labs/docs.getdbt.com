@@ -17,7 +17,7 @@ Use this page to better understand how to use ANY and ALL operators, use cases f
 
 The ANY and ALL operators have very simple syntax and are often passed in the LIKE/ILIKE operator or <Term id="subquery" />:
 
-`where <field_name> like/ilike any/all '(array_of_options)'`
+`where <field_name> like/ilike any/all (array_of_options)`
 
 `where <field_name> = any/all (subquery)`
 
