@@ -37,7 +37,7 @@ from {{ ref('orders') }}
 where status like any ('return%', 'ship%')
 ```
 
-This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return orders whose status is like the patterns `start with return` or `start with ship`:
+This simple query using the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return orders whose status is like the patterns `start with 'return'` or `start with 'ship'`:
 
 | order_id | status |
 |:---:|:---:|

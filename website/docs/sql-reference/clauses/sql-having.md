@@ -11,7 +11,7 @@ slug: /sql-reference/having
 
 SQL HAVING is just one of those little things that are going to make your ad hoc data work a little easier.
 
-A not-so-fun fact about the WHERE clause is that you can’t filter on aggregates with it…that’s where HAVING comes in. With HAVING, you can not only define an aggregate in a [select](/sql-reference/select) statement, but also filter on that newly created aggregate within the HAVING clause.
+A not-so-fun fact about the [WHERE clause](/sql-reference/where) is that you can’t filter on aggregates with it…that’s where HAVING comes in. With HAVING, you can not only define an aggregate in a [select](/sql-reference/select) statement, but also filter on that newly created aggregate within the HAVING clause.
 
 This page will walk through how to use HAVING, when you should use it, and discuss data warehouse support for it.
 
@@ -73,7 +73,7 @@ where num_orders > 1
 </TabItem>
 </Tabs>
 
-This simple query using the sample dataset [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `order` table will return customers who have had more than one order:
+This simple query using the sample dataset [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` table will return customers who have had more than one order:
 
 | customer_id | num_orders |
 |:---:|:---:|
@@ -83,7 +83,7 @@ This simple query using the sample dataset [Jaffle Shop’s](https://github.com/
 | 64 | 2 |
 | 54 | 4 |
 
-The query above using the CTE utilizes more lines compared to the simpler query using HAVING, but will produce the same result.
+The query above using the <Term id="cte" /> utilizes more lines compared to the simpler query using HAVING, but will produce the same result.
 
 ## SQL HAVING clause syntax in Snowflake, Databricks, BigQuery, and Redshift
 
