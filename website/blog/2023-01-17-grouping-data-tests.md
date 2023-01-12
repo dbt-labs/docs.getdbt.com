@@ -1,5 +1,5 @@
 ---
-title: "Make grouping a first-class citizen in your data quality checks"
+title: "Power up your data quality with grouped checks"
 description: "Which of these numbers doesn't belong? [-1, 0, 1, null]. You can't judge data quality without data context, so our tools should enable as much context as possible."
 slug: grouping-data-tests
 
@@ -63,9 +63,7 @@ Even when grouped checks have merit, their need might be a "code smell" that sug
 
 ## Now in dbt-utils!
 
-If you're intrigued by the prospect of grouped checks, it's now easier than ever to implement in [dbt-utils](https://github.com/dbt-labs/dbt-utils). The 1.0.0 release brings [grouping in tests](https://github.com/dbt-labs/dbt-utils#grouping-in-tests) to all relevant tests.
-
-Specifically:
+If you're intrigued by the prospect of grouped checks, it's now possible to [run these tests from dbt-utils](https://github.com/dbt-labs/dbt-utils#grouping-in-tests). The 1.0.0 release [brings grouping in tests to all relevant tests](https://www.emilyriederer.com/post/grouping-data-quality-update/), specifically:
 
 - equal_rowcount()
 - fewer_rows_than()
@@ -75,7 +73,7 @@ Specifically:
 - sequential_values()
 - non_null_proportion()
 
-Each check now has an argument `group_by_columns` which accepts one or more column names. For example, to check for a valid daily record for each turnstile in each station, we could add to our `schema.yml` file:
+Each check now has a `group_by_columns` argument which accepts one or more column names. For example, to check for a valid daily record for each turnstile in each station, we could add to our `schema.yml` file:
 
 ```yaml
 models:
