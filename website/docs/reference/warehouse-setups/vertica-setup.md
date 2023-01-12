@@ -50,7 +50,7 @@ pip is the easiest way to install the adapter: <code>pip install {frontMatter.me
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
 
-### Connecting to Vertica with {frontMatter.meta.pypi_package} 
+<h3> Connecting to {frontMatter.meta.platform_name}   with {frontMatter.meta.pypi_package} </h3>
 
 #### Username / password authentication
 
