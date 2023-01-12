@@ -29,6 +29,7 @@ If you're using an On-Premises GitHub deployment, this method will not work for 
 
 ## Installing dbt Cloud in your GitHub account
 
+You can connect your dbt Cloud account to GitHub by installing the dbt Cloud application in your GitHub organization and providing access to the appropriate repositories. 
 To connect your dbt Cloud account to your GitHub account: 
 
 1. Navigate to **Your Profile** settings by clicking the gear icon in the top right. 
