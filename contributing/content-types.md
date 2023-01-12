@@ -27,7 +27,7 @@ If relevant, describe how the feature or topic works without getting into too mu
 Highlight any details the reader needs to know to use the feature
 Include next steps for getting started with the feature (whether through further reading links or content within the article itself)
 
-### Titles for conceptual content
+### Titles for conceptual content 
 
 Conceptual articles or headers of conceptual sections should always start with “About [topic]”
 Always use a noun in the place of the topic, not a gerund
