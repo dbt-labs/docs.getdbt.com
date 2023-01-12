@@ -361,11 +361,12 @@ Metric nodes now accept `config` dictionaries like other dbt resources. Specify 
 
 <!--tabs for config and project.yml -->
 
-<Tab>
-<TabItem value=“config” label=“Metric yml”>
+<Tabs>
+<TabItem value="config" label="Metric yml">
 
-yml
-# in metrics.yml
+<File name="models/metrics.yml">
+
+```yml
 version: 2
 metrics:
   - name: config_metric
@@ -375,18 +376,23 @@ metrics:
     timestamp: date_field
     time_grains: [day, week, month]
     config:
-      enabled: True
+      enabled: true
+```
 
+</File>
 </TabItem>
 
-<TabItem value=“project” label=“dbt_project.yml”>
+<TabItem value="project" label="dbt_project.yml">
 
-yml
-# in dbt_project.yml
+<File name="dbt_project.yml">
+
+```yml
 metrics: 
   your_project_name: 
     +enabled: true
+```
 
+</File>
 </TabItem>
 </Tabs>
 
