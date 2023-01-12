@@ -106,8 +106,8 @@ function useDocTOC() {
       } else {
         setTocReady(true)
       }
+      useHashLink()
     }
-    useHashLink()
     fetchElements()
   }, [toc, dbtVersion])
   // end dbt Custom
