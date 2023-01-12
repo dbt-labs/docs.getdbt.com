@@ -2,10 +2,6 @@
 title: Configs, properties, what are they?
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure certain resource types in all `.yml` files
-</Changelog>
-
 Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also define **configurations**, which are a special kind of property that bring extra abilities. What's the distinction?
 - Properties are declared for resources one-by-one in `.yml` files. Configs can be defined there, nested under a `config` property. They can also be set one-by-one via a `config()` macro (right within `.sql` files), and for many resources at once in `dbt_project.yml`.
 - Because configs can be set in multiple places, they are also applied hierarchically. An individual resource might _inherit_ or _override_ configs set elsewhere.
@@ -68,7 +64,7 @@ Previous versions of the docs referred to these as `schema.yml` files — we've 
 
 ### Which properties are _not_ also configs?
 
-In v0.21, dbt added the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
+dbt has the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
 
 Certain properties are special, because:
 - They have a unique Jinja rendering context
