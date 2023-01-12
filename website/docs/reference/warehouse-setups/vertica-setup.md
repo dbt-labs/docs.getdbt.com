@@ -9,8 +9,8 @@ meta:
   min_core_version: 'v1.3.0'
   cloud_support: Not Supported
   min_supported_version: 'Vertica v12.0'
-  slack_channel_name: '#adapter-ecosystem'
-  slack_channel_link: 'https://app.slack.com/client/T0VLPD22H/C030A0UF5LM/thread/C030A0UF5LM-1669649490.022339'
+  slack_channel_name: 'n/a'
+  slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
   
 
