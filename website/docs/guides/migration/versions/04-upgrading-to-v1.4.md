@@ -32,7 +32,6 @@ Relevant changes are:
 
 - [Python 3.11](/faqs/Core/install-python-compatibility) was released in October 2022. It is officially supported in dbt-core v1.4, though full support depends also on your data platform adapter plugin.
 According to the Python maintainers, "Python 3.11 is between 10-60% faster than Python 3.10." We encourage you to try a `dbt parse` with dbt Core v1.4 + Python 3.11, and compare it to the result of dbt parse on dbt Core v1.3 + Python 3.10.
-- The [event and structured logging](events-logging) system underwent a significant overhaul. The result: more consistency in the availability and structure of information, following type-safe event schemas.
 - Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments (such as Artifactory or cloud storage buckets), packages now support [installing from internally hosted tarball URLs](/docs/build/packages#Internally-hosted-tarball-URL). 
 - The [local_md5](/reference/dbt-jinja-functions/local-md5) context variable is a new Jinja function that calculates an [MD5 hash](https://en.wikipedia.org/wiki/MD5).
 - [Exposures](/docs/build/exposures) can now depend on `metrics`.
