@@ -23,4 +23,4 @@ For example, you can use the `develop` branch of a connected repository. Edit an
 
 ## Deployment
 
-When running jobs in a deployment environment, dbt will clone your project from your connected repository before executing your models. By default, dbt will pull from the default branch of your repository (most commonly the `main` branch). To control which version of your project is executed during job runs for a particular environment you can edit the `Custom Branch` setting as above to specify a different version of the project. Accepted values for this setting are **a branch name or a tag name.**
+When running jobs in a deployment environment, dbt will clone your project from your connected repository before executing your models. By default, dbt uses the default branch of your repository (commonly the `main` branch). To specify a different version of your project for dbt to execute during job runs in a particular environment, you can edit the Custom Branch setting as shown in the previous steps. 
