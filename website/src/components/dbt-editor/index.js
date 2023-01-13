@@ -23,7 +23,7 @@ const editorOptions = {
 const defaultEditorValue = "/*\n  Welcome to the dbt editor!\n  Select a file on the left to get started.\n*/"
 const errorEditorValue = "/*\n  Unable to get CSV data. \n Try selecting another seed.\n*/"
 
-function dbtEditor({ project, step }) {
+function dbtEditor({ project, tag }) {
   const [manifest, setManifest] = useState({})
   const [showLineage, setShowLineage] = useState(true);
   const [sidebar, setSidebar] = useState([])
@@ -43,7 +43,7 @@ function dbtEditor({ project, step }) {
         const { nodes } = res.data
         setManifest(res.data)
 
-        const sidebarData = buildSidebar(nodes, step)
+        const sidebarData = buildSidebar(nodes, tag)
         if(!sidebarData) throw new Error('Unable to get sidebar data.')
 
         setSidebar(sidebarData)
