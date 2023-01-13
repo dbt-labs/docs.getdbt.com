@@ -819,7 +819,7 @@ guides: [
         type: "generated-index",
         title: "dbt Ecosystem guides",
         description:
-          "Learn about the dbt ecosystem and how to build with dbt",
+          "Learn about the dbt ecosystem and how to build with dbt.",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -839,10 +839,11 @@ guides: [
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
-        }
+        },
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
-    {
+  {
       type: "category",
       label: "Advanced",
       items: [
@@ -949,6 +950,7 @@ guides: [
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/group-by",
           ],
         },
         {
@@ -968,9 +970,10 @@ guides: [
           type: "category",
           label: "Clauses",
           items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
             "sql-reference/clauses/limit",
             "sql-reference/clauses/order-by",
-            "sql-reference/clauses/where",
           ],
         },
         {
@@ -1012,6 +1015,14 @@ guides: [
             "sql-reference/operators/like",
             "sql-reference/operators/and",
             "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
+          ],
+        },
+        {
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
           ],
         },
         {
