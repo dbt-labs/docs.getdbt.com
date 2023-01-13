@@ -951,7 +951,6 @@ guides: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
             "sql-reference/statements/group-by",
-            "sql-reference/statements/comments",
             "sql-reference/statements/distinct",
           ],
         },
@@ -1040,6 +1039,7 @@ guides: [
           label: "Other",
           items: [
             "sql-reference/other/cast",
+            "sql-reference/statements/comments",
           ],
         },
       ],
