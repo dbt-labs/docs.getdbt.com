@@ -339,7 +339,7 @@ merge into <existing_table> DBT_INTERNAL_DEST
     when not matched then insert ...
 ```
 
-You will still want to limit the data scan of _upstream_ tables within the body of their incremental model SQL. This is to limit the amount of "new" data that's processed/transformed
+Limit the data scan of _upstream_ tables within the body of their incremental model SQL, which will limit the amount of "new" data processed/transformed.
 
 ```sql
 with large_source_table as (
