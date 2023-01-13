@@ -325,6 +325,11 @@ a.code-link:hover {
   color: var(--color-white);
   border: none;
 }
+
+.navbarHiddenOnLoad {
+  transform: translate3d(0, calc(-100% - 2px), 0)
+}
+
 @media(max-width: 996px) {
   .navbar-sidebar .menu__link.nav-create-account {
     width: fit-content;
