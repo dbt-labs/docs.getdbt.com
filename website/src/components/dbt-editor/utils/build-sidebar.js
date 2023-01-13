@@ -4,8 +4,6 @@ export const buildSidebar = (nodes, tag) => {
   for(let node in nodes) {
     const thisNode = nodes[node]
     
-    console.log('tag', tag)
-    console.log('thisNode?.tags', thisNode.tags)
     // If node does not included the current tag, continue to next node
     if(!thisNode?.tags?.includes(tag)) continue
 
