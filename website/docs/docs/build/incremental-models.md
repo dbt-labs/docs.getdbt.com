@@ -322,6 +322,7 @@ models:
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
       incremental_predicates: "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
 
 This will template (in the `dbt.log` file) a `merge` statement like:
