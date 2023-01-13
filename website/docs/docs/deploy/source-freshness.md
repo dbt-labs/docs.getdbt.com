@@ -21,13 +21,6 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](/doc
 
 To enable source freshness snapshots, firstly make sure to configure your sources to [snapshot freshness information](/docs/build/sources#snapshotting-source-data-freshness). You can add source freshness to the list of commands in the job run steps or enable the checkbox. However, expect different outcomes when you configure a job using the checbkox, compared to when you add the command to the run steps.
 
-<Changelog>
-
-  - **v0.21.0:** Renamed `dbt source snapshot-freshness` to `dbt source freshness`. If using an older version of dbt, the command is `snapshot-freshness`.  
-  To have dbt Cloud display data source freshness as a rendered user interface, you will still need to use the pre-v0.21 syntax of `dbt source snapshot-freshness`.
-
-</Changelog>
-
 Review the following options and outcomes:
 
 | Options | Outcomes |
