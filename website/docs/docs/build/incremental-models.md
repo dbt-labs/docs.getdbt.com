@@ -324,7 +324,7 @@ models:
       incremental_predicates: "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
 ```
 
-This will template a `merge` statement like:
+This will template (in the `dbt.log` file) a `merge` statement like:
 ```sql
 merge into <existing_table> DBT_INTERNAL_DEST
     from <temp_table_with_new_records> DBT_INTERNAL_SOURCE
