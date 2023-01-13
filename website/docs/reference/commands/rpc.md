@@ -370,7 +370,7 @@ Several of the following request types accept these additional parameters:
  ```json
  {
  	"jsonrpc": "2.0",
- 	"method": "build",
+ 	"method": "ls",
  	"id": "<request id>",
  	"params": {
          "select": "<str> (optional)",
