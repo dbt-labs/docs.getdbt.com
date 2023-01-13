@@ -7,7 +7,7 @@ With dbt Cloud, you can set up outbound webhooks to send events (notifications) 
 
 A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your data in real time. Without it, you would need to make API calls repeatedly to check if there are any data updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and often used for infrastructure development. 
 
-Currently, dbt Labs installs webhooks at the account level, not at the project or job level; though, we might add suport for that in the future. When a webhook is triggered, dbt Cloud sends a JSON payload to the URL you specified. You can send a Slack notification, open a PagerDuty incident when a dbt job fails, and more. You can set up webhooks for:
+Currently, dbt Labs installs webhooks at the account level, not at the project or job level; though, we might add support for that in the future. When a webhook is triggered, dbt Cloud sends a JSON payload to the URL you specified. You can send a Slack notification, open a PagerDuty incident when a dbt job fails, and more. You can set up webhooks for these events:
 
 - `job.run.started` &mdash; Run is started.
 - `job.run.canceled` &mdash; Run is canceled.
