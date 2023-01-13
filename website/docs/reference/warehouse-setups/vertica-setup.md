@@ -19,7 +19,7 @@ meta:
 
 :::info VENDOR-SUPPORTED PLUGIN
 
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
+If you're interested in contributing, check out the source code for each repository listed below.
 
 :::
 
