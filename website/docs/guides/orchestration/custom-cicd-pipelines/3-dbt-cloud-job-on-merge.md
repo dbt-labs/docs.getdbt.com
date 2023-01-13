@@ -10,7 +10,7 @@ The setup below shows how to call the dbt Cloud API to run a job every time ther
 
 ### 1. Get your dbt Cloud API key
 
-When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](https://docs.getdbt.com/docs/dbt-cloud/dbt-cloud-api/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
+When running a CI/CD pipeline you’ll want to use a service token instead of any individual’s API key. There are [detailed docs](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) available on this, but below is a quick rundown (this must be performed by an Account Admin):
 
 - Login to your dbt Cloud account
 - In the upper left, click the menu button, then *Account Settings*
@@ -35,6 +35,7 @@ This next part will happen in you code hosting platform. We need to save your AP
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
 <TabItem value="github">
@@ -75,6 +76,25 @@ In GitLab:
     Here’s a video showing these steps:
     
     <WistiaVideo id="rgqs14f816" />
+    
+</TabItem>
+<TabItem value="bitbucket">
+
+In Bitbucket:
+
+- Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
+- In the left menu, click *Repository Settings*
+- Scroll to the bottom of the left menu, and select *Repositoy variables*
+- In the *Name* field, input `DBT_API_KEY`
+    - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
+- In the *Value* section, paste in the key you copied from dbt Cloud
+- Make sure the check box next to *Secured* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
+- Click *Add* to save the variable
+    
+    ![View of the Bitbucket window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-bitbucket.png)
+    
+    Here’s a video showing these steps:
+    <WistiaVideo id="1fddpsqpfv" />
     
 </TabItem>
 </Tabs>
@@ -122,6 +142,7 @@ In order to call the dbt Cloud API, there are a few pieces of info the script ne
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
 <TabItem value="github">
@@ -263,6 +284,70 @@ run-dbt-cloud-job:
 
 
 </TabItem>
+<TabItem value="bitbucket">
+
+For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the prior step (see Step 1 of the linting setup for more info). The yaml file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
+
+<Tabs
+  defaultValue="single-job"
+  values={[
+    { label: 'Only dbt Cloud job', value: 'single-job', },
+    {label: 'Lint and dbt Cloud job', value: 'multi-job', },
+  ]
+}>
+<TabItem value="single-job">
+
+```yaml
+image: python:3.11.1
+
+
+pipelines:
+  branches:
+    'master': # override if your default branch doesn't run on a branch named "master"
+      - step:
+          name: 'Run dbt Cloud Job'
+          script:
+            - export DBT_URL="https://cloud.getdbt.com" # if you have a single-tenant deployment, adjust this accordingly
+            - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
+            - export DBT_ACCOUNT_ID=00000 # enter your account id here
+            - export DBT_PROJECT_ID=00000 # enter your project id here
+            - export DBT_PR_JOB_ID=00000 # enter your job id here
+            - python python/run_and_monitor_dbt_job.py
+```
+
+</TabItem>
+<TabItem value="multi-job">
+
+```yaml
+image: python:3.11.1
+
+
+pipelines:
+  branches:
+    '**': # this sets a wildcard to run on every branch unless specified by name below
+      - step:
+          name: Lint dbt project
+          script:
+            - pip install sqlfluff==0.13.1
+            - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
+
+    'master': # override if your default branch doesn't run on a branch named "master"
+      - step:
+          name: 'Run dbt Cloud Job'
+          script:
+            - export DBT_URL="https://cloud.getdbt.com" # if you have a single-tenant deployment, adjust this accordingly
+            - export DBT_JOB_CAUSE="Bitbucket Pipeline CI Job"
+            - export DBT_ACCOUNT_ID=00000 # enter your account id here
+            - export DBT_PROJECT_ID=00000 # enter your project id here
+            - export DBT_PR_JOB_ID=00000 # enter your job id here
+            - python python/run_and_monitor_dbt_job.py
+```
+
+</TabItem>
+</Tabs>
+
+
+</TabItem>
 </Tabs>
 
 ### 5. Test your new action
@@ -276,6 +361,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
 <TabItem value="github">
@@ -287,9 +373,16 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 </TabItem>
 <TabItem value="gitlab">
 
-![dbt run on merge job in GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
+![dbt run on merge job in GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
 
-![dbt Cloud job showing it was triggered by GitLub](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
+![dbt Cloud job showing it was triggered by GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
+
+</TabItem>
+<TabItem value="bitbucket">
+
+![dbt run on merge job in Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-bitbucket.png)
+
+![dbt Cloud job showing it was triggered by Bitbucket](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-bitbucket-triggered.png)
 
 </TabItem>
 </Tabs>

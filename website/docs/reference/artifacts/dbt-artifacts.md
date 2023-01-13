@@ -4,8 +4,8 @@ title: Overview
 
 With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
 - [documentation](documentation)
-- [state](understanding-state)
-- [visualizing source freshness](cloud-snapshotting-source-freshness)
+- [state](/docs/deploy/about-state)
+- [visualizing source freshness](/docs/build/sources#snapshotting-source-data-freshness)
 
 They could also be used to:
 - calculate project-level test coverage
@@ -18,8 +18,8 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- [manifest](manifest-json): produced by `build`, `compile`, `run`, `test`, `docs generate`, `ls`
-- [run results](run-results-json): produced by `build`, `run`, `test`, `seed`, `snapshot`, `docs generate`
+- [manifest](manifest-json): produced by commands that read and understand your project
+- [run results](run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
 - [sources](sources-json): produced by `source freshness`
 
