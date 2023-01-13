@@ -23,7 +23,7 @@ There are two primary ways modern data teams are using to extract data: <Term id
 - **Extraction via ETL tools**: SaaS ETL tools like Fivetran, Airbyte, and more, allow data folks to select connectors or data sources and sync their required data directly to their data warehouses. These platforms reduce the need to write custom API calls to data sources and instead allow data folks to worry more on transforming their data when it hits their data warehouse. 
 - **Extraction via custom scripts**: It’s probably inevitable, but at one point, you’re likely to find yourself hacking together a Python script to make API calls to a data source that doesn’t have a connector in an ETL tool. But let’s be real: while this is intimidating, it isn’t the end of the world. Writing and maintaining custom scripts for extracting data from data source APIs is not the most fun and there are real concerns (API limits, access tokens, lack of documentation, changing APIs, writing to external storage or directly to your data warehouse) to look out for, but gear up, read up on some basic curl requests and Python, and you got this.
 
-These two methods above are for automated extraction, processes that you only need to run once (in theory) to get the data you need on a regular basis. For non-automated processes, such as one-time extractions or uploads to your data warehouse, data folks can upload their data to external storage, such as S3 buckets, to load to your data warehouse, or leverage [dbt seeds](https://docs.getdbt.com/docs/building-a-dbt-project/seeds).
+These two methods above are for automated extraction, processes that you only need to run once (in theory) to get the data you need on a regular basis. For non-automated processes, such as one-time extractions or uploads to your data warehouse, data folks can upload their data to external storage, such as S3 buckets, to load to your data warehouse, or leverage [dbt seeds](/docs/build/seeds).
 
 ## Commonly extracted data
 
@@ -61,7 +61,7 @@ There are definitely some considerable considerations in data extraction, mainly
 - **Data accuracy**: This is less of a concern for data extracted via ETL tools or custom scripts, but for internal sources, such as static CSV files manually input by someone on your marketing team, you’re going to want to ensure that data is accurate (ideally before it hits your data warehouse). Not the end of the world if it does, but more of a nuisance than anything and something to look out for.
 
 :::tip Testing your data sources
-Using dbt, data folks can run automated tests on their raw data that is loaded into their data warehouse via [sources](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources).
+Using dbt, data folks can run automated tests on their raw data that is loaded into their data warehouse via [sources](https://docs.getdbt.com/docs/build/sources).
 :::
 
 ## Conclusion

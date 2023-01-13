@@ -2,10 +2,6 @@
 title: Model configurations
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
-</Changelog>
-
 ## Related documentation
 * [Models](/docs/build/models)
 * [`run` command](run)
