@@ -674,10 +674,12 @@ models:
 
 Any user or service account that runs dbt Python models will need the following permissions(in addition to the required BigQuery permissions) ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
 ```
+dataproc.batches.create
 dataproc.clusters.use
 dataproc.jobs.create
 dataproc.jobs.get
 dataproc.operations.get
+dataproc.operations.list
 storage.buckets.get
 storage.objects.create
 storage.objects.delete
