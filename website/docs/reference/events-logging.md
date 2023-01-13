@@ -180,18 +180,14 @@ If available, `node_info` will include:
 }
 ```
 
+</VersionBlock>
+
 ## Python interface
 
 :::warning
 The `EVENT_HISTORY` object has been deprecated and removed in dbt Core v1.4+
 :::
 
-`dbt-core` makes available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object:
-
-```python
-from dbt.events.functions import EVENT_HISTORY
-```
+Older versions of `dbt-core` made available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object.
 
 The Python interface into events is significantly less mature than the structured logging interface. For all use cases, we recommend parsing JSON-formatted logs.
-
-</VersionBlock>
