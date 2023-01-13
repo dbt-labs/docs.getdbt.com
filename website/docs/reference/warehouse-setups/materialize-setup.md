@@ -3,11 +3,12 @@ title: "Materialize setup"
 id: "materialize-setup"
 meta:
   maintained_by: Materialize  Inc.
+  pypi_package: 'dbt-materialize'
   authors: 'Materialize team'
   github_repo: 'MaterializeInc/materialize/blob/main/misc/dbt-materialize'
-  min_core_version: 'v0.18.0'
+  min_core_version: 'v0.18.1'
+  min_supported_version: 'v0.28.0'
   cloud_support: Not Supported
-  min_supported_version: 'n/a'
   slack_channel_name: '#db-materialize'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Materialize'
@@ -43,7 +44,7 @@ pip is the easiest way to install the adapter:
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+<p>For {frontMatter.meta.platform_name}-specifc configuration, please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration.</a> </p>
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
@@ -54,7 +55,7 @@ Once you have set up a [Materialize account](https://materialize.com/register/),
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
-dbt-materialize:
+materialize:
   target: dev
   outputs:
     dev:
@@ -67,9 +68,9 @@ dbt-materialize:
       cluster: [cluster] # default 'default'
       schema: [dbt schema]
       sslmode: require
-      keepalives_idle: 0 # default 0, indicating the system default
-      connect_timeout: 10 # default 10 seconds
-      retries: 1 # default 1 retry on error/timeout when opening connections
+      keepalives_idle: 0 # default: 0, indicating the system default
+      connect_timeout: 10 # default: 10 seconds
+      retries: 1 # default: 1, retry on error/timeout when opening connections
 ```
 
 </File>
@@ -114,7 +115,7 @@ Running [`dbt seed`](commands/seed) will create a static materialized <Term id="
 
 ### Tests
 
-Running [`dbt test`](commands/test) with the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures) will create a materialized view for each test you've chosen to store. This view is a continuously updating representation of failures.
+Running [`dbt test`](commands/test) with the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures) will create a materialized view for each configured test that can keep track of failures over time.
 
 ## Resources
 
