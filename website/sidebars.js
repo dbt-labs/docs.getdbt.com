@@ -1039,7 +1039,7 @@ guides: [
           label: "Other",
           items: [
             "sql-reference/other/cast",
-            "sql-reference/statements/comments",
+            "sql-reference/other/comments",
           ],
         },
       ],
