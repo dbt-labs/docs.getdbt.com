@@ -32,12 +32,7 @@ We will continue to update this table so that customers know when we plan to sto
 
 <Snippet src="core-versions-table" />
 
-
-:::warning ⚠️ v0.X Non-Supported Period
- Accounts had until the end of June 2022 to upgrade to dbt 1.0 or later. Pre-dbt 1.0 versions will no longer receive patch fixes, and our support team will no longer assist with dbt version specific help on non-supported versions of dbt. Additionally, jobs running dbt versions prior to 1.0 may experience service disruptions before the end of the year and may be removed from the dbt Cloud context by year end. You will receive additional notification before any planned disruption to your production jobs.
-:::
-
-Starting in v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may also choose to try prereleases of those patch releases before they are generally available.
+Starting with v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may also choose to try prereleases of those patch releases before they are generally available.
 
 <!--- TODO: Include language to reflect:
   - notifying users when new minor versions are available
