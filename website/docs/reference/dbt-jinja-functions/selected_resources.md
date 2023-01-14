@@ -49,7 +49,7 @@ is selected or not.
 
     {% do log("model1 is not included based on the current selection", info=true) %}
 
-  {% endfor %}
+  {% endif %}
 {% endif %}
 
 /*
