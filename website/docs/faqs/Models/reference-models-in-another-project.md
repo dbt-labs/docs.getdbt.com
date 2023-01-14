@@ -6,6 +6,6 @@ id: reference-models-in-another-project
 
 ---
 
-You can use [packages]/docs/build/packages) to add another project to your dbt
+You can use [packages](/docs/build/packages) to add another project to your dbt
 project, including other projects you've created. Check out the [docs](/docs/build/packages)
 for more information!

@@ -32,7 +32,7 @@ To use the dbt Cloud IDE, you need to log in with a dbt Cloud account and click 
 You can refer to [Getting Started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) to quickly get set up and perform some key tasks. For more information, see the following articles:
 
 - [What is dbt?](docs/introduction#what-else-can-dbt-do)
-- [Building your first project](/docs/get-started/getting-started/building-your-first-project)
+- [Building your first project](/docs/get-started/getting-started/building-your-first-project/build-your-first-models)
 - [dbt Learn courses](https://courses.getdbt.com/collections)
 - [Using Git](https://docs.github.com/en/github/getting-started-with-github/using-git)
 
@@ -42,7 +42,7 @@ Not at all! You can use dbt Cloud when you sign up for the Free [Developer plan]
 
 **Can I be a contributor to dbt Cloud?**
 
-Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See [Contributing](/docs/contributing/oss-expectations) for details on what to expect when contributing to the dbt open source software (OSS).
+Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See [Contributing](/community/resources/oss-expectations) for details on what to expect when contributing to the dbt open source software (OSS).
 
 **What is the difference between developing on the dbt Cloud IDE and on the CLI?**
 
@@ -167,7 +167,7 @@ The status icon on the lower right corner of the IDE gives you an indicator of t
 
 To generate your project’s documentation (docs) in the IDE, enter `docs generate` or `dbt docs generate` in the command bar.  This command generates the docs for your dbt project as it currently exists in development.
 
-After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
+After you generate a successful run, you can view your [documentation](https://docs.getdbt.com/docs/collaborate/documentation) for your dbt project in real time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production.
 
 Click **View Docs** on top of the file explorer to see the latest version of your documentation rendered in a new browser window.
 

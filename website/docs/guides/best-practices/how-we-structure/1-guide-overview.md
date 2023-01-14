@@ -1,6 +1,9 @@
 ---
-title: How we structure our dbt projects
+title: "How we structure our dbt projects"
 id: 1-guide-overview
+description: Learn how we structure our dbt projects.
+displayText: How we structure our dbt projects
+hoverSnippet: Learn how we structure our dbt projects.
 ---
 
 ## Why does structure matter?
