@@ -1,0 +1,63 @@
+:root {
+  --docusaurus-announcement-bar-height: auto;
+}
+
+.announcementBar {
+  display: flex;
+  align-items: center;
+  height: auto;
+
+  /*
+  Unfortunately we can't make announcement bar render above the navbar
+  IE need to use border-bottom instead of shadow
+  See https://github.com/facebookincubator/infima/issues/275
+
+  box-shadow: var(--ifm-global-shadow-lw);
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+  */
+}
+
+html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
+  display: none;
+}
+
+.announcementBarPlaceholder {
+  flex: 0 0 10px;
+}
+
+.announcementBarClose {
+  flex: 0 0 30px;
+  align-self: stretch;
+  color: var(--ifm-color-white);
+  opacity: 1;
+}
+
+.announcementBarContent {
+  flex: 1 1 auto;
+  font-size: 1.125rem;
+  text-align: center;
+  padding: 15px 0;
+}
+
+@media print {
+  .announcementBar {
+    display: none;
+  }
+}
+
+@media (min-width: 997px) {
+  .announcementBarPlaceholder,
+  .announcementBarClose {
+    flex-basis: 50px;
+  }
+}
+
+.announcementBarLink {
+  color: var(--ifm-color-white);
+  width: 100%;
+}
+
+.announcementBarLink:hover {
+  color: var(--ifm-color-white);
+  text-decoration: none;
+}

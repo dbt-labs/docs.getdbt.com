@@ -3,8 +3,9 @@ title: Seed properties
 ---
 
 <Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure seeds in all `.yml` files
-    - **v1.0.0:** The default path for [`seed-paths`](seed-paths) (formerly `data-paths`) is now `seeds`.
+  
+  **v1.0.0:** The default path for [`seed-paths`](seed-paths) (formerly `data-paths`) is now `seeds`.
+  
 </Changelog>
 
 Seed properties can be declared in `.yml` files under a `seed` key.
@@ -19,7 +20,7 @@ version: 2
 seeds:
   - name: <string>
     [description](description): <markdown_string>
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
       [<seed_config>](seed-configs): <config_value>
