@@ -8,4 +8,4 @@ tags: [Sept-29-2022]
 
 In order to make the metadata API more scalable and improve its latency, we’ve implemented data retention limits. The metadata API can now query data from the previous three months. For example, if today was March 1, you could query data back to January 1st.
 
-For more information, see "[Metadata API](/docs/dbt-cloud-apis/metadata-api)"
+For more information, see [Metadata API](/docs/dbt-cloud-apis/metadata-api)
