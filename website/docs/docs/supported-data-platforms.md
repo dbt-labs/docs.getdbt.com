@@ -36,8 +36,9 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 | [DuckDB](duckdb-setup)                     | [iomete](iomete-setup)           | [SQL Server & Azure SQL](mssql-setup) |
 | [Dremio](dremio-setup)                     | [Layer](layer-setup)             | [AzureSynapse](azuresynapse-setup)   |
 | [Exasol Analytics](exasol-setup)           | [Materialize](materialize-setup) | [Teradata](teradata-setup)           |
-| [Firebolt](firebolt-setup)                 | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup).                  |
+| [Firebolt](firebolt-setup)                 | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup)                   |
 | [AWS Glue](glue-setup)                     | [MySQL](mysql-setup)             | [Vertica](vertica-setup)             |
+| [Databend Cloud](databend-setup)           |                                  |                                      |
 
 ## Adapter Installation
 
