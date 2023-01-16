@@ -90,7 +90,7 @@ This component can be added directly to a markdown file in a similar way as othe
 Both properties can be used together to set a range where the content should show. In the example below, this content will only show if the selected version is between **0.21** and **1.0**:
 
 ```markdown
-<VersionBlock firstVersion="0.21" lastVersion="1.0">
+<VersionBlock lastVersion="1.0">
 
 	Versioned content here
 
@@ -116,9 +116,8 @@ $ dbt run --select [...] --defer --state path/to/artifacts
 $ dbt test --select [...] --defer --state path/to/artifacts
 \```
 
-</VersionBlock>
 ```
-
+</VersionBlock>
 You see this version block when the selected version is <= 0.20
 
 ```markdown
