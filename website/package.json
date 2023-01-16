@@ -30,6 +30,7 @@
     "raw-loader": "^4.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-full-screen": "^1.1.1",
     "react-is": "^18.1.0",
     "react-tooltip": "^4.2.21",
     "redoc": "^2.0.0-rc.57",
@@ -39,6 +40,9 @@
     "styled-components": "5.3.3",
     "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
+  },
+  "optionalDependencies": {
+    "@dbt-labs/react-dbt-dag": "0.7.14"
   },
   "devDependencies": {
     "@swc/core": "^1.2.174",

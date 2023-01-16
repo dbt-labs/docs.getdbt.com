@@ -155,7 +155,7 @@ Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 
 ### Debug-level logging
 
-The `DEBUG` config redirects dbt's debug logs to standard out. The has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
+The `DEBUG` config redirects dbt's debug logs to standard output. This has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
 
 The `--debug` flag is also available via shorthand as `-d`.
 
@@ -307,7 +307,7 @@ config:
   send_anonymous_usage_stats: False
 ```
 
-You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/docs/build/environment-variables).
+You can also use the DO_NOT_TRACK environment variable to enable or disable sending anonymous data. For more information, see [Environment variables](/docs/build/environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
 `DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`

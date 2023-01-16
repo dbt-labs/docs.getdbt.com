@@ -151,7 +151,7 @@ metrics:
 
 :::caution
 
-- You cannot define metrics on [ephemeral models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations#ephemeral). To define a metric, the materialization must have a representation in the data warehouse.
+- You cannot define metrics on [ephemeral models](https://docs.getdbt.com/docs/build/materializations#ephemeral). To define a metric, the materialization must have a representation in the data warehouse.
 
 :::
 
@@ -325,7 +325,7 @@ Note that `value` must be defined as a string in YAML, because it will be compil
 ```
 
 ## Querying Your Metric
-You can dynamically query metrics directly in dbt and verify them before running a job in the deployment environment.  To query your defined metric, you must have the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) installed. Information on how to [install packages can be found here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#how-do-i-add-a-package-to-my-project).
+You can dynamically query metrics directly in dbt and verify them before running a job in the deployment environment.  To query your defined metric, you must have the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) installed. Information on how to [install packages can be found here](https://docs.getdbt.com/docs/build/packages#how-do-i-add-a-package-to-my-project).
 
 Use the following [metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) installation code in your packages.yml file and run `dbt deps` to install the metrics package:
 
@@ -359,7 +359,7 @@ packages:
 
 </VersionBlock>
 
-Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_calendar_model` model as this is required for macros used to query metrics. More information on this, and additional calendar functionality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
+Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_default_calendar` model as this is required for macros used to query metrics. More information on this, and additional calendar functionality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
 
 ### Querying metrics with `metrics.calculate`
 Use the `metrics.calculate` macro along with defined metrics to generate a SQL statement that runs the metric aggregation to return the correct metric dataset. Example below:

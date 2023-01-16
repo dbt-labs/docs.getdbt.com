@@ -60,8 +60,8 @@ State comparison works by identifying discrepancies between two manifests.  Thos
 1. Changes made to a project in development
 2. Env-aware logic that causes different behavior based on the `target`, env vars, etc.
 
-dbt will do its best to capture *only* changes that are the result of modifications made in development. In projects with intricate env-aware logic, dbt will err on the side of running too many models (i.e. false positives). Over the next several versions of dbt, We're working on:
-- iterative improvements to dbt's built-in dectective abilities
+dbt will do its best to capture *only* changes that are the result of modifications made in development. In projects with intricate env-aware logic, dbt will err on the side of running too many models (i.e. false positives). Over the next several versions of dbt, we're working on:
+- iterative improvements to dbt's built-in detective abilities
 - better options for more complex projects, in the form of more-specific subselectors (see [this issue](https://github.com/dbt-labs/dbt-core/issues/2704))
 
 <Changelog>
