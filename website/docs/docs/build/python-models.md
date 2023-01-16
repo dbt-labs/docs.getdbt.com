@@ -215,7 +215,7 @@ def model(dbt, session):
 ### Materializations
 
 Python models support these materializations:
-- `table`
+- `table` <VersionBlock firstVersion="1.4">(default)</VersionBlock>
 - `incremental`
 
 Incremental Python models support all the same [incremental strategies](/docs/build/incremental-models#about-incremental_strategy) as their SQL counterparts. The specific strategies supported depend on your adapter. As an example, incremental models are supported on BigQuery with Dataproc for the `merge` incremental strategy; the `insert_overwrite` strategy is not yet supported.
@@ -674,10 +674,12 @@ models:
 
 Any user or service account that runs dbt Python models will need the following permissions(in addition to the required BigQuery permissions) ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
 ```
+dataproc.batches.create
 dataproc.clusters.use
 dataproc.jobs.create
 dataproc.jobs.get
 dataproc.operations.get
+dataproc.operations.list
 storage.buckets.get
 storage.objects.create
 storage.objects.delete
