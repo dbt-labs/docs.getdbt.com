@@ -114,9 +114,22 @@ A service user account must have the following Azure DevOps permissions for all 
 
 Some of these permissions are only accessible via the Azure DevOps API, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
 
-:::info  Provide the service user with required permissions before setting up a dbt Cloud project
-This service user's permissions will also power which repositories a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user before setting up a project in dbt Cloud.
-:::
+<!-- tabs for service user permissions and turning off MFA for service users -->
+<Tabs>
+
+<TabItem value="permission" label="Required permissions for service users">
+
+The service user's permissions will also power which repositories a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user _before_ creating a new project in dbt Cloud. If you are migrating an existing dbt project to use the native Azure DevOps integration, the dbt Cloud account's service user must have proper permissions on the repository before migration.
+</TabItem>
+
+<TabItem value="mfa" label="Turn off MFA for service user">
+
+While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
+</TabItem>
+
+</Tabs>
+
+<!-- End tabs for service user permissions and turning off MFA for service users-->
 
 <details>
 <summary>  <b>ViewSubscriptions</b> </summary>
