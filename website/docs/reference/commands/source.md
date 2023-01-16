@@ -11,21 +11,9 @@ If you're using an older version of dbt Core (before v0.21), the old name of the
 
 ### dbt source freshness
 
-<Changelog>
-
-  - **v0.21.0:** Renamed `dbt source snapshot-freshness` to `dbt source freshness`. If using an older version of dbt, the command is `snapshot-freshness`.
-
-</Changelog>
-
 If your dbt project is [configured with sources](/docs/build/sources), then the `dbt source freshness` command will query all of your defined source tables, determining the "freshness" of these tables. If the tables are stale (based on the `freshness` config specified for your sources) then dbt will report a warning or error accordingly. If a source <Term id="table" /> is in a stale state, then dbt will exit with a nonzero exit code.
 
 ### Specifying sources to snapshot
-
-<Changelog>
-
-  - **v0.21.0:** Selection syntax for the `freshness` task now mirrors other tasks. Sources need to be prefixed with the `source:` selection method. In previous versions of dbt, sources were specified by name only.
-
-</Changelog>
 
 By default, `dbt source freshness` will calculate freshness information for all of the sources in your project. To snapshot freshness for a subset of these sources, use the `--select` flag.
 

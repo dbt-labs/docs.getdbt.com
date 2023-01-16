@@ -190,7 +190,7 @@ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 </VersionBlock>
 
-To learn more, read the docs on [state](understanding-state).
+To learn more, read the docs on [state](/docs/deploy/about-state).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development
