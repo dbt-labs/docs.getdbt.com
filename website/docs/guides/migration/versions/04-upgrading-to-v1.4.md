@@ -42,7 +42,7 @@ Link to GH discussion forthcoming
 
 ### Advanced configurations for incremental models
 
-- The most popular adapters now support an `incremental_predicates` config, to enable greater flexibility when tuning performance in `merge` and `delete` statements for large datasets. ([dbt-labs/docs.getdbt.com/issues/2636](https://github.com/dbt-labs/docs.getdbt.com/issues/2636))
+- [**`incremental_predicates`** config](/docs/build/incremental-models#about-incremental_predicates) is now supported on the most popular adapters, enabling greater flexibility when tuning performance in `merge` and `delete` statements against large datasets.
 - **BigQuery:** The `insert_overwrite` incremental strategy supports a new (old) mechanism, [`time_ingestion_partitioning`](bigquery-configs#partitioning-by-an-ingestion-date-or-timestamp) + [`copy_partitions`](#copying-ingestion-time-partitions), that can yield significant savings in cost + time for large datasets.
 
 ### Updates to Python models
