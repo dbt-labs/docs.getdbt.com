@@ -30,12 +30,6 @@ $ dbt test --models [...] --defer --state path/to/artifacts
 ```
 
 </VersionBlock>
-<Changelog>
-
-- **v1.4**: Added the `--favor-state` option, which enables `--defer` to favor using the `--state` node even if the node exists in the current target. Using the `--favor-state` option renders the second criteria in the following optional.
-
-
-</Changelog>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -50,6 +44,14 @@ When using defer, you may be selecting from production datasets, development dat
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
 Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
+
+<VersionBlock firstVersion="1.4">
+
+#### Favor state
+
+You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
+
+</VersionBlock>
 
 ### Example
 
