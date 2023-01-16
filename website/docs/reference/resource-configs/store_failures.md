@@ -20,7 +20,7 @@ Optionally set a test to always or never store its failures in the database.
 
 This logic is encoded in the [`should_store_failures()`](https://github.com/dbt-labs/dbt-core/blob/98c015b7754779793e44e056905614296c6e4527/core/dbt/include/global_project/macros/materializations/helpers.sql#L77) macro.
 
-When true, `store_failures` save all the record(s) that failed the test only if [limit](/reference/resource-configs/limit) is not set or if there are fewer records than the limit. `store_failures` are saved in a new table with the name of the test and in a schema named `dbt_test__audit`. You can configure the schema to a different value. 
+When true, `store_failures` save all the record(s) that failed the test only if [limit](/reference/resource-configs/limit) is not set or if there are fewer records than the limit. `store_failures` are saved in a new table with the name of the test. By default, `store_failures` use a schema named `dbt_test__audit`, but, you can configure the schema to a different value. 
 
 
 <Tabs
