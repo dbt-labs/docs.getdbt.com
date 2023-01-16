@@ -98,9 +98,11 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
     </div>
 2. We will be setting up a SQL warehouse now.  Select `SQL Warehouses` from the left hand side console.  You will see that a default SQL Warehouse exists.  
+    <!--
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL Endpoints" /> 
     </div>
+    -->
 3. Click **Start** on the Starter Warehouse.  This will take a few minutes to get the necessary resources spun up.
 
 4. While you're waiting, download the three CSV files locally that you will need for this tutorial. You can find them here:
