@@ -21,6 +21,7 @@ datatype: "[column_name] | all"
 snapshots:
   [<resource-path>](resource-path):
     +strategy: check
+    +unique_key: column_name
     +check_cols: [column_name] | all
 
 ```
