@@ -940,7 +940,7 @@ guides: [
       link: {
         type: "generated-index",
         title: "SQL Reference",
-        description: "The SQL Reference is a collection of SQL syntaxes that you can use and reference during your daily data work.",
+        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
         slug: "/sql-reference",
       },
       items: [
@@ -950,6 +950,8 @@ guides: [
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/group-by",
+            "sql-reference/statements/distinct",
           ],
         },
         {
@@ -969,9 +971,10 @@ guides: [
           type: "category",
           label: "Clauses",
           items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
             "sql-reference/clauses/limit",
             "sql-reference/clauses/order-by",
-            "sql-reference/clauses/where",
           ],
         },
         {
@@ -1013,32 +1016,31 @@ guides: [
             "sql-reference/operators/like",
             "sql-reference/operators/and",
             "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
           ],
         },
         {
-          type: "doc",
-          label: "Data types",
-          id: "sql-reference/data-types",
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
+          ],
         },
         {
-          type: "doc",
-          label: "DISTINCT",
-          id: "sql-reference/distinct",
+          type: "category",
+          label: "Data type",
+          items: [
+            "sql-reference/data-type/data-types",
+            "sql-reference/data-type/strings",
+          ],
         },
         {
-          type: "doc",
-          label: "Comments",
-          id: "sql-reference/comments",
-        },
-        {
-          type: "doc",
-          label: "CAST",
-          id: "sql-reference/cast",
-        },
-        {
-          type: "doc",
-          label: "Strings",
-          id: "sql-reference/strings",
+          type: "category",
+          label: "Other",
+          items: [
+            "sql-reference/other/cast",
+            "sql-reference/other/comments",
+          ],
         },
       ],
     },
