@@ -135,6 +135,14 @@ Add the Git URL for the package, and optionally specify a revision. The revision
 - a tagged release
 - a specific commit (full 40-character hash)
 
+Example of a revision specifying a 40-character hash:
+
+```yaml
+packages:
+  - git: "https://github.com/dbt-labs/dbt-utils.git"
+    revision: 4e28d6da126e2940d17f697de783a717f2503188
+```
+
 We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
 
 If you do not provide a revision, or if you use `master`, then any updates to the package will be incorporated into your project the next time you run `dbt deps`. While we generally try to avoid making breaking changes to these packages, they are sometimes unavoidable. Pinning a package revision helps prevent your code from changing without your explicit approval.
@@ -142,6 +150,23 @@ If you do not provide a revision, or if you use `master`, then any updates to th
 To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
+
+<VersionBlock firstVersion="1.4">
+
+### Internally hosted tarball URL
+
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
+
+
+```yaml
+packages:
+  - tarball: https://codeload.github.com/dbt-labs/dbt-utils/tar.gz/0.9.6
+    name: 'dbt_utils'
+```
+
+Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's created for the package source code to be installed within.
+
+</VersionBlock>
 
 ### Private packages
 

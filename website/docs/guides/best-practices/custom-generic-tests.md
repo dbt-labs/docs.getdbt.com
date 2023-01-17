@@ -13,7 +13,7 @@ hoverSnippet: Learn how to define your own custom generic tests.
 
 </Changelog>
 
-dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests in the [global project](https://github.com/dbt-labs/dbt-core/tree/HEAD/core/dbt/include/global_project/).
+dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests in the [global project](https://github.com/dbt-labs/dbt-core/tree/main/core/dbt/include/global_project/macros/generic_test_sql).
 
 :::info
 There are tons of generic tests defined in open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — the test you're looking for might already be here!
