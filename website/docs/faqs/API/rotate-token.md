@@ -29,6 +29,6 @@ curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/<your-user
 
 If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance. For example:
 
-- For Virtual Private dbt &mdash; Use `http://cloud.customizedurl.getdbt.com/`, not `http://cloud.getdbt.com/`<br />
+- For Virtual Private dbt Cloud &mdash; Use `http://cloud.customizedurl.getdbt.com/`, not `http://cloud.getdbt.com/`<br />
 - For EMEA region &mdash; Use `https://emea.dbt.com/`, not `http://cloud.getdbt.com/`, and so on. 
 
