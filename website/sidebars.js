@@ -433,7 +433,8 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
-        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/vertica-configs",
+        "reference/resource-configs/doris-configs"
       ],
     },
     {
@@ -667,6 +668,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
+        "reference/warehouse-setups/infer-setup",
+        "reference/warehouse-setups/databend-setup"
       ],
     },
     {
@@ -688,7 +691,7 @@ const sidebarSettings = {
       items: ["reference/snowflake-permissions"],
     },
   ],
-guides: [
+  guides: [
     {
       type: "category",
       label: "Best practices",
@@ -817,7 +820,7 @@ guides: [
         type: "generated-index",
         title: "dbt Ecosystem guides",
         description:
-          "Learn about the dbt ecosystem and how to use build with dbt",
+          "Learn about the dbt ecosystem and how to build with dbt.",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -837,14 +840,15 @@ guides: [
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
-        }
+        },
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
-    {
+  {
       type: "category",
       label: "Advanced",
       items: [
-         "guides/advanced/creating-new-materializations",
+        "guides/advanced/creating-new-materializations",
       ],
     },
     {
@@ -937,10 +941,20 @@ guides: [
       link: {
         type: "generated-index",
         title: "SQL Reference",
-        description: "The SQL Reference is a collection of SQL syntaxes that you can use and reference during your daily data work.",
+        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
         slug: "/sql-reference",
       },
       items: [
+        {
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+            "sql-reference/statements/from",
+            "sql-reference/statements/group-by",
+            "sql-reference/statements/distinct",
+          ],
+        },
         {
           type: "category",
           label: "Aggregate Functions",
@@ -951,6 +965,82 @@ guides: [
             "sql-reference/aggregate-functions/min",
             "sql-reference/aggregate-functions/round",
             "sql-reference/aggregate-functions/sum",
+            "sql-reference/aggregate-functions/array-agg",
+          ],
+        },
+        {
+          type: "category",
+          label: "Clauses",
+          items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
+            "sql-reference/clauses/limit",
+            "sql-reference/clauses/order-by",
+          ],
+        },
+        {
+          type: "category",
+          label: "Date Functions",
+          items: [
+            "sql-reference/date-functions/dateadd",
+            "sql-reference/date-functions/datediff",
+            "sql-reference/date-functions/datepart",
+            "sql-reference/date-functions/datetrunc",
+          ],
+        },
+        {
+          type: "category",
+          label: "String Functions",
+          items: [
+            "sql-reference/string-functions/upper",
+            "sql-reference/string-functions/lower",
+            "sql-reference/string-functions/concat",
+            "sql-reference/string-functions/trim",
+          ],
+        },
+        {
+          type: "category",
+          label: "Window Functions",
+          items: [
+            "sql-reference/window-functions/rank",
+            "sql-reference/window-functions/row-number",
+          ],
+        },
+        {
+          type: "category",
+          label: "Operators",
+          items: [
+            "sql-reference/operators/between",
+            "sql-reference/operators/in",
+            "sql-reference/operators/or",
+            "sql-reference/operators/ilike",
+            "sql-reference/operators/like",
+            "sql-reference/operators/and",
+            "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
+          ],
+        },
+        {
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
+          ],
+        },
+        {
+          type: "category",
+          label: "Data type",
+          items: [
+            "sql-reference/data-type/data-types",
+            "sql-reference/data-type/strings",
+          ],
+        },
+        {
+          type: "category",
+          label: "Other",
+          items: [
+            "sql-reference/other/cast",
+            "sql-reference/other/comments",
           ],
         },
       ],

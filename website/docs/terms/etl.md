@@ -3,7 +3,7 @@ id: etl
 title: ETL
 description: ETL is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 displayText: ETL
-hoverSnippet: Extract, Transform, Load (ETL)is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
+hoverSnippet: Extract, Transform, Load (ETL) is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 ---
 
 <head>

@@ -25,7 +25,7 @@ profile: 'jaffle_shop'
 
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-<VersionBlock firstVersion="0.20" lastVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
 
@@ -141,7 +141,7 @@ While the target schema represents the default schema that dbt will use, it may 
 
 ## Understanding threads
 
-When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
+When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is [4 threads](/docs/dbt-versions/release-notes/Dec-2022/default-thread-value).
 
 For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
@@ -157,7 +157,7 @@ You can use a different number of threads than the value defined in your target 
 
 The parent directory for `profiles.yml` is determined using the following precedence:
 
-<VersionBlock firstVersion="0.20"  lastVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 1. `--profiles-dir` option
 1. `DBT_PROFILES_DIR` environment variable

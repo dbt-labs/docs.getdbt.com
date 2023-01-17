@@ -11,7 +11,7 @@ meta:
   slack_channel_name: '#db-synapse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Synapse'
-  config_page: 'no-configs'
+  config_page: 'azuresynapse-configs'
 ---
 
 :::info Community plugin
