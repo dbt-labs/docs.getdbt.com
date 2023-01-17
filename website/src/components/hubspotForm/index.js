@@ -11,7 +11,7 @@ export const HubSpotForm = (props) => {
   } = props
   const formatContainerId = '#' + containerId
   useEffect(() => {
-    // Only add hubpsot script if not already exists
+    // Only add hubspot script if not already exists
     let script = document.getElementById('hubspot-v2-script')
     if (!script) {
       const newScript = document.createElement('script')
