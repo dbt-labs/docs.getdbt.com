@@ -8,7 +8,7 @@ datatype: string | [string]
 </Changelog>
 
 <Tabs
-  defaultValue="yaml"
+  defaultValue="project-yaml"
   values={[
     { label: 'Project file', value: 'project-yaml', },
     { label: 'Config property', value: 'other-yaml', },
@@ -84,6 +84,7 @@ These tags can be used as part of the [resource selection syntax](node-selection
 - `dbt run --select tag:my_tag`
 - `dbt seed --select tag:my_tag`
 - `dbt snapshot --select tag:my_tag`
+- `dbt test --select tag:my_tag` (indirectly runs all tests associated with the models that are tagged)
 
 ## Examples
 ### Use tags to run parts of your project
@@ -134,10 +135,10 @@ Then, run part of your project like so:
 
 ```
 # Run all models tagged "daily"
-$ dbt run --model tag:daily
+$ dbt run --select tag:daily
 
 # Run all models tagged "daily", except those that are tagged hourly
-$ dbt run --model tag:daily --exclude tag:hourly
+$ dbt run --select tag:daily --exclude tag:hourly
 ```
 
 ### Apply tags to seeds
@@ -200,7 +201,7 @@ sources:
 
     tables:
       - name: table_name
-        tags: [<string>]
+        tags: ['table_level']
 
         columns:
           - name: column_name
@@ -212,9 +213,10 @@ sources:
 
 </File>
 
-In the example above, the `unique` test would be selected by any of the three tags:
+In the example above, the `unique` test would be selected by any of these four tags:
 ```bash
 $ dbt test --select tag:top_level
+$ dbt test --select tag:table_level
 $ dbt test --select tag:column_level
 $ dbt test --select tag:test_level
 ```

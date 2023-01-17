@@ -10,21 +10,25 @@ datatype: boolean
 
 </Changelog>
 
-The configured test(s) will never store their failures when `dbt test --store-failures` is invoked.
+The configured test(s) will store their failures when `dbt test --store-failures` is invoked.
 
 ## Description
 Optionally set a test to always or never store its failures in the database.
 - If specified as `true` or `false`, the
 `store_failures` config will take precedence over the presence or absence of the `--store-failures` flag.
 - If the `store_failures` config is `none` or omitted, the resource will use the value of the `--store-failures` flag.
+- When true, `store_failures` save all the record(s) that failed the test only if [limit](/reference/resource-configs/limit) is not set or if there are fewer records than the limit. `store_failures` are saved in a new table with the name of the test. By default, `store_failures` use a schema named `dbt_test__audit`, but, you can configure the schema to a different value. 
 
-This logic is encoded in the [`should_store_failures()`](https://github.com/fishtown-analytics/dbt/blob/98c015b7754779793e44e056905614296c6e4527/core/dbt/include/global_project/macros/materializations/helpers.sql#L77) macro.
+This logic is encoded in the [`should_store_failures()`](https://github.com/dbt-labs/dbt-core/blob/98c015b7754779793e44e056905614296c6e4527/core/dbt/include/global_project/macros/materializations/helpers.sql#L77) macro.
+
+
+
 
 <Tabs
   defaultValue="specific"
   values={[
     { label: 'Specific test', value: 'specific', },
-    { label: 'One-off test', value: 'one_off', },
+    { label: 'Singular test', value: 'singular', },
     { label: 'Generic test block', value: 'generic', },
     { label: 'Project level', value: 'project', },
   ]
@@ -49,16 +53,16 @@ models:
                 store_failures: true  # always store failures
           - not_null:
               config:
-                store_failures: fail  # never store failures
+                store_failures: false  # never store failures
 ```
 
 </File>
 
 </TabItem>
 
-<TabItem value="one_off">
+<TabItem value="singular">
 
-Configure a one-off (data) test:
+Configure a singular (data) test:
 
 <File name='tests/<filename>.sql'>
 

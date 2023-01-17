@@ -1,5 +1,8 @@
 ---
 title: Do hooks run with snapshots?
+description: "Run hooks with snapshots"
+sidebar_label: 'Use hooks to run with snapshots'
+id: snapshot-hooks
 ---
 
 Yes! The following hooks are available for snapshots:
