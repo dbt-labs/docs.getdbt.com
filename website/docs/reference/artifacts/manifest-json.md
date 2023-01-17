@@ -33,6 +33,7 @@ Today, dbt uses this file to populate the [docs site](documentation), and to per
 - [`metadata`](dbt-artifacts#common-metadata)
 - `nodes`: Dictionary of all analyses, models, seeds, snapshots, and tests.
 - `sources`: Dictionary of sources.
+- `metrics`: Dictionary of metrics.
 - `exposures`: Dictionary of exposures.
 - `macros`: Dictionary of macros.
 - `docs`: Dictionary of `docs` blocks.
@@ -43,7 +44,7 @@ Today, dbt uses this file to populate the [docs site](documentation), and to per
 
 ### Resource details
 
-All resources nested within `nodes`, `sources`, `exposures`, `macros`, and `docs` have the following base properties:
+All resources nested within `nodes`, `sources`, `metrics`, `exposures`, `macros`, and `docs` have the following base properties:
 
 - `name`: Resource name.
 - `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
