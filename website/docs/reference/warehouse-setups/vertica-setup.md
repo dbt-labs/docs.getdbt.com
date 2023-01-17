@@ -4,7 +4,7 @@ id: "vertica-setup"
 meta:
   maintained_by: Vertica
   authors: Vertica (Former authors:- Matthew Carter, Andy Regan, Andrew Hedengren)
-  github_repo: 'vertica/dbt-vertica/'
+  github_repo: 'vertica/dbt-vertica'
   pypi_package: 'dbt-vertica'
   min_core_version: 'v1.3.0'
   cloud_support: Not Supported
@@ -39,7 +39,7 @@ If you're interested in contributing, check out the source code for each reposit
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
-pip is the easiest way to install the adapter: <code>pip install {frontMatter.meta.pypi_package}</code>
+pip is the easiest way to install the adapter: <code>pip install {frontMatter.meta.pypi_package}. </code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
