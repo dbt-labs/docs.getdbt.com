@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>dbt Cloud Release Notes</title>
+        <link>http://localhost:3000</link>
+        <description>dbt provides release notes for dbt Cloud so you can see recent and historical changes.</description>
+        <lastBuildDate>Tue, 17 Jan 2023 16:14:31 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <image>
+            <title>dbt Cloud Release Notes</title>
+            <url>https://www.getdbt.com/ui/img/blog/dbt-card.jpg</url>
+            <link>http://localhost:3000</link>
+        </image>
+        <copyright>Copyright © 2023 dbt Labs™, Inc. All Rights Reserved.</copyright>
+        <item>
+            <title><![CDATA[Threads default value changed to 4]]></title>
+            <guid>default-thread-value</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Threads now default to 4 users' profile.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Creating a new job no longer triggers a run by default]]></title>
+            <guid>new-jobs-default-as-off.md</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[You need to click **Run on schedule** before a job will be scheduled to run]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Private packages must be cloned using access tokens provided by environment variables]]></title>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Private GitHub packages must be cloned using access tokens provided by environment variables.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[The dbt Cloud + Databricks experience is getting even better]]></title>
+            <guid>cloud-databricks-unitycatalog</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[The dbt-databricks adapter is now available for use with dbt Cloud]]></description>
+        </item>
+        <item>
+            <title><![CDATA[New IDE features and classic IDE deprecation]]></title>
+            <guid>ide-features-ide-deprecation</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Announcing dbt Cloud’s native integration with Azure DevOps]]></title>
+            <guid>cloud-integration-azure</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[dbt Cloud native integration with Azure DevOps]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Enhancement: New Cloud IDE launch]]></title>
+            <guid>new-ide-launch</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Enhancement: New Cloud IDE launch]]></description>
+        </item>
+        <item>
+            <title><![CDATA[List Steps API endpoint deprecation warning]]></title>
+            <guid>liststeps-endpoint-deprecation.md</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[List Steps API deprecation]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Query the previous three months of data using the metadata API]]></title>
+            <guid>metadata-api-data-retention-limits.md</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Metadata API data retention limits]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Enhancement: New Cloud IDE beta]]></title>
+            <guid>ide-improvements-beta.md</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Adding IDE performance and reliability improvements]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Enhancement: Support for cross-database sources on Redshift RA3 instances]]></title>
+            <guid>support-redshift-ra3.md</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Adding support for cross-database queries for RA3]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Enhancement: Large DAG feature]]></title>
+            <guid>render-lineage-feature</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Add a render button to visualize large DAGs]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Refresh expired access tokens in the IDE when using GitLab]]></title>
+            <guid>gitlab-auth</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Adding support for expiring OAuth access tokens.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Audit log]]></title>
+            <guid>audit-log</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Review actions performed by people in your organization.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Credentials no longer accidentally wiped when editing an environment]]></title>
+            <guid>credentials-saved</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Credentials are now saved when editing an environment.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Email verification]]></title>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[dbt Cloud users created via SAML JIT will now confirm identity via email to activate their account.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Scheduler performance improvements]]></title>
+            <guid>scheduler-improvements</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[scheduler, which has much faster prep times, especially at the top of the hour.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Spotty internet issues no longer cause a session time out message]]></title>
+            <guid>ide-timeout-message</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Dividing queue time into waiting and prep time]]></title>
+            <guid>prep-and-waiting-time</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[dbt Cloud now shows waiting time and prep time for a run.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[DAG updates and performance improvements]]></title>
+            <guid>DAG-updates-more</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Clicking a node in the DAG opens a model or config file in new tab in the IDE.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Service tokens and bug fixes]]></title>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Service tokens can now be assigned granular permissions to enforce least privilege access.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Autocomplete snippets for SQL and YAML files in IDE]]></title>
+            <guid>ide-timeout-message</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Autocomplete snippets for SQL and YAML files in IDE]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Model timing for Multi-tenant Team and Enterprise accounts]]></title>
+            <guid>model-timing-more</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[Model timing is now available for Multi-tenant Team and Enterprise accounts, plus performance improvements.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Changelog 2019 and 2020]]></title>
+            <guid>dbt-cloud-changelog-2019-2020</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[2019 and 2020 Changelog for the dbt Cloud application]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Changelog 2021]]></title>
+            <guid>dbt-cloud-changelog-2021</guid>
+            <pubDate>Tue, 17 Jan 2023 16:14:31 GMT</pubDate>
+            <description><![CDATA[2021 Changelog for the dbt Cloud application]]></description>
+        </item>
+    </channel>
+</rss>
