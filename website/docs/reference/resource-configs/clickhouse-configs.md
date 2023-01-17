@@ -10,6 +10,7 @@ id: "clickhouse-configs"
 | view materialization        | YES        | Creates a [view](https://clickhouse.com/docs/en/sql-reference/table-functions/view/).                                            |
 | table materialization       | YES        | Creates a [table](https://clickhouse.com/docs/en/operations/system-tables/tables/). See below for the list of supported engines. |
 | incremental materialization | YES        | Creates a table if it doesn't exist, and then writes only updates to it.                                                         |
+| ephemeral materialized      | YES        | Creates a ephemeral/CTE materialization.  This does model is internal to dbt and does not create any database objects            |
 
 ### View Materialization
 
