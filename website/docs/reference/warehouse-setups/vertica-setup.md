@@ -45,9 +45,9 @@ pip is the easiest way to install the adapter: <code>pip install {frontMatter.me
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
-<p>For {frontMatter.meta.pypi_package} specific configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+<p>For {frontMatter.meta.pypi_package} specific configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration.</a> </p>
 
-<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
+<p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}.</a></p>
 
 
 <h3> Connecting to {frontMatter.meta.platform_name}   with {frontMatter.meta.pypi_package} </h3>
