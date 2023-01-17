@@ -139,6 +139,10 @@ your_profile_name:
       auth: [e.g. KERBEROS]
       kerberos_service_name: [e.g. hive]
       use_ssl: [true|false]   # value of hive.server2.use.SSL, default false
+      server_side_parameters:
+      # cluster configuration parameters, otherwise applied via `SET` statements
+      # for example:
+      # "spark.databricks.delta.schema.autoMerge.enabled": True
 ```
 
 </File>
