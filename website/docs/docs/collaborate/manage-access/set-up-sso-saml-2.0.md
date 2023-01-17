@@ -260,7 +260,7 @@ Expected **Attributes**:
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
-9. To use role-based access control in dbt Cloud,enter the groups in the **Group membership** field during configuration:
+9. To use [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control) in dbt Cloud,  enter the groups in the **Group membership** field during configuration:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
