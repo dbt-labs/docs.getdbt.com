@@ -303,7 +303,7 @@ select ...
 
 </File>
 
-<VersionBlock firstVersiont="1.4">
+<VersionBlock firstVersion="1.4">
 
 ### About incremental_predicates
 
