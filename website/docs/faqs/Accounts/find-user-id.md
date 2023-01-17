@@ -5,7 +5,7 @@ sidebar_label: 'Where can I find my user id'
 id: find-user-id
 ---
 
-You may need to find your user id to rotate your API token, and so on. Refer to the following steps to find your user id in dbt Cloud:
+Refer to the following steps to find your user ID in dbt Cloud:
 
 1. Go to **Account Settings**, **Team**, and then **Users**,
 2. Select your user, <br />
