@@ -53,7 +53,7 @@ By creating a new macro instead of updating the behavior of the old one, we are 
 
 :::caution Warning to package maintainers
 
-You can not assume one behavior or the other, as each project can customise their behavior.
+You can not assume one behavior or the other, as each project can customize its behavior.
 
 :::
 
