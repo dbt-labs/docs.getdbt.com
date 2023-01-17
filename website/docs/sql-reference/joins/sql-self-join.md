@@ -29,7 +29,7 @@ from <table_1> as t1
 on t1.id = t2.id
 ```
 
-Since you can choose the dialect of join for a self join, you can specify if you want to do a [left](/sql-reference/left), [outer](/sql-reference/outer-join), [inner](/sql-reference/inner-join), [cross](/sql-reference/cross-join), or [right join](/sql-reference/right-join) in the join statement.
+Since you can choose the dialect of join for a self join, you can specify if you want to do a [left](/sql-reference/left-join), [outer](/sql-reference/outer-join), [inner](/sql-reference/inner-join), [cross](/sql-reference/cross-join), or [right join](/sql-reference/right-join) in the join statement.
 
 ### SQL self join example
 

@@ -49,7 +49,7 @@ select
    car_type.car_type as type,
    car_color.car_color as color
 from {{ ref('car_type') }} as car_type
-right join {{ ref('car_color') } as car_color
+right join {{ ref('car_color') }} as car_color
 on car_type.user_id = car_color.user_id
 ```
 

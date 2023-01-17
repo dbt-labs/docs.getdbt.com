@@ -28,7 +28,7 @@ where status != 'returned'
 
 In this query, you’re filtering for any order from the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` model whose status is not `returned` by adding a WHERE clause after the FROM statement. You could additionally filter on string, numeric, date, or other data types to meet your query conditions.
 
-You will likely see WHERE clauses show up 99.99%  of the time in a typical query or dbt model. The other .01% is probably in a <Term id='dml' />  statement, such as DELETE or ALTER, to modify specific rows in tables.
+You will likely see WHERE clauses show up 99.99%  of the time in a typical query or dbt model. The other .01% is probably in a <Term id="dml" />  statement, such as DELETE or ALTER, to modify specific rows in tables.
 
 ## SQL WHERE clause syntax in Snowflake, Databricks, BigQuery, and Redshift
 
