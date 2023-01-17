@@ -246,7 +246,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    - **ACS URL**: `https://cloud.getdbt.com/complete/saml`
    - **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
    - **Start URL**: `<login slug`
-5. Check the **Signed response** checkbox.
+5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
 dbt Cloud expects.
