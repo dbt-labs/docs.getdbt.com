@@ -1734,6 +1734,13 @@ section > h2:not(.resource-section) {
   padding: 0 var(--ifm-spacing-horizontal);
 }
 
+/* Report a Problem page styles */
+.report-a-problem {
+  margin: 0 auto;
+  max-width: var(--ifm-container-width-xl);
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
 
 /* utilities */
 .grid--3-col {
