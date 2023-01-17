@@ -1,3 +1,4 @@
+/dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api 301
 /docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
 /docs/deploy/regions  /docs/deploy/regions-ip-addresses 301
 
@@ -26,8 +27,10 @@
 # add new redirects to the top because they will override later ones
 # getting started guide
 /guides/getting-started /docs/get-started/getting-started/overview 301
+/docs/get-started/getting-started/building-your-first-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
 /docs/get-started/getting-started/create-a-project  /docs/get-started/getting-started/set-up-dbt-cloud 301
 /guides/getting-started/building-your-first-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
+
 /guides/getting-started/building-your-first-project/build-your-first-models /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
 /guides/getting-started/building-your-first-project/schedule-a-job /docs/get-started/getting-started/building-your-first-project/schedule-a-job 301
 /guides/getting-started/building-your-first-project/test-and-document-your-project /docs/get-started/getting-started/building-your-first-project/test-and-document-your-project 301
