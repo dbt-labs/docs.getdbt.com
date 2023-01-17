@@ -97,7 +97,7 @@ You can also use `run_query` to perform SQL queries that aren't select statement
 </File>
 
 
-Use the `length` filter to verify whether `run_query` returned any rows or not.  Make sure to wrap the logic in an [if execute]([/reference/dbt-jinja-functions/execute) block to avoid unexpected behavior during parsing. 
+Use the `length` filter to verify whether `run_query` returned any rows or not.  Make sure to wrap the logic in an [if execute](/reference/dbt-jinja-functions/execute) block to avoid unexpected behavior during parsing. 
 
 ```sql
 {% if execute %}
