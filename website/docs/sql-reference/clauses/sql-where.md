@@ -9,9 +9,9 @@ slug: /sql-reference/where
     <title>Working with the SQL WHERE clause</title>
 </head>
 
-If the humble [SELECT statement](/sql-reference/select) is an analytics engineer kitchen knife, the WHERE clause is the corresponding knife sharpener: no (good) cooking (or data) is happening without it.
+If the humble [SELECT statement](/sql-reference/select) is an analytics engineer kitchen knife, the WHERE clause is the corresponding knife sharpener: no (good) cooking (or data modeling) is happening without it.
 
-The WHERE clause is a fundamental SQL statement—it allows you to appropriately filter your data models and queries, so you can create datasets that make sense and look at specific subsets of data based on your requirements.
+The WHERE clause is a fundamental SQL statement—it allows you to appropriately filter your data models and queries, so you can look at specific subsets of data based on your requirements.
 
 ## How to use the SQL WHERE clause
 
@@ -26,7 +26,7 @@ from {{ ref('orders') }}
 where status != 'returned'
 ```
 
-In this query, you’re filtering for any order from the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` model whose status is not returned by adding a WHERE clause after the FROM statement. You could additionally filter on string, numeric, date, or other data types to meet your query conditions.
+In this query, you’re filtering for any order from the [Jaffle Shop’s](https://github.com/dbt-labs/jaffle_shop) `orders` model whose status is not `returned` by adding a WHERE clause after the FROM statement. You could additionally filter on string, numeric, date, or other data types to meet your query conditions.
 
 You will likely see WHERE clauses show up 99.99%  of the time in a typical query or dbt model. The other .01% is probably in a <Term id='dml' />  statement, such as DELETE or ALTER, to modify specific rows in tables.
 
