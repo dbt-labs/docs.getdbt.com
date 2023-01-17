@@ -375,7 +375,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
    - **ACS (Consumer) URL Validator:** https://cloud.getdbt.com/complete/saml
    - **ACS (Consumer) URL:** https://cloud.getdbt.com/complete/saml
 
-4. Next, go to the **Parameters tab**. You must have a parameter for the Email, First Name, and Last Name attributes and include all parameters in the SAML assertions. When you add the custom parameters, make sure you check the **Include in SAML assertion** checkbox.
+4. Next, go to the **Parameters tab**. You must have a parameter for the Email, First Name, and Last Name attributes and include all parameters in the SAML assertions. When you add the custom parameters, make sure you select the **Include in SAML assertion** checkbox.
 
 We recommend using the following values:
 
