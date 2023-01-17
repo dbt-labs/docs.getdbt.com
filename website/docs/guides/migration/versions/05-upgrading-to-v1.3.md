@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to v1.3 (latest)"
+description: New features and changes in dbt Core v1.3
 ---
 ### Resources
 
@@ -7,7 +8,7 @@ title: "Upgrading to v1.3 (latest)"
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
@@ -32,18 +33,15 @@ We have updated the manifest schema version to `v7`. This includes the changes t
 - Renamed `compiled_sql` to `compiled_code`
 - A new top-level node property, `language` (`'sql'` or `'python'`)
 
-For users of [state-based selection](understanding-state): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
+For users of [state-based selection](/docs/deploy/about-state): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
 
 ### For maintainers of adapter plugins
 
-_GitHub discussion forthcoming_
-
-**Notes:**
-- The `statement` and `create_table_as` macros accept a new argument, `language`, with a default value of `'sql'`
+GitHub discussion with details: [dbt-labs/dbt-core#6011](https://github.com/dbt-labs/dbt-core/discussions/6011)
 
 ## New and changed documentation
 
-- **[Python models](building-models/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
+- **[Python models](/docs/build/python-models)** are natively supported in `dbt-core` for the first time, on data warehouses that support Python runtimes.
 - Updates made to **[Metrics](build/metrics)** reflect their new syntax for definition, as well as additional properties that are now available.
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
 

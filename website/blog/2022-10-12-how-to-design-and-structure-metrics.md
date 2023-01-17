@@ -34,7 +34,7 @@ We developed these recommendations by combining the overall philosophy of dbt, w
 
 <!--truncate-->
 
-**Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties.
+**Pre-reading:** We recommend reading through the [metrics documentation](/docs/build/metrics), which contains a table of all the required/optional properties.
 
 ### When to put business logic in the semantic layer vs the modeling layer
 
@@ -100,7 +100,7 @@ metrics:
     ##     value: 'completed
 ```
 
-Each of the properties of the above definition are defined [in the metrics documentation](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), but let’s dig into the two that might require some additional explanation. The two in question are `expression` and `dimensions`.
+Each of the properties of the above definition are defined [in the metrics documentation](/docs/build/metrics), but let’s dig into the two that might require some additional explanation. The two in question are `expression` and `dimensions`.
 
 In plain english, the `expression` property is the sql column (or expression) that we are applying the calculation method on. In our example above, this simplifies to `sum(amount)`. However, this doesn’t **need** to be a field in the model. It could also be a sql expression like `case when condition = true then field else 0 end` .
 
