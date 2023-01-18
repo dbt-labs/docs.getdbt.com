@@ -5,12 +5,6 @@ const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 // const siteUrl = 'https://docs.getdbt.com'
 const siteUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
 // const siteUrl = 'http://localhost:3000'
-console.log('process.env.CONTEXT', process.env.CONTEXT)
-// if (!process.env.CONTEXT || process.env.CONTEXT == "production") {
-//   SITE_URL = "https://docs.getdbt.com";
-// } else {
-//   SITE_URL = process.env.DEPLOY_URL;
-// }
 
 module.exports = function buildRSSFeedsPlugin(context, options) {
   return {
@@ -83,7 +77,6 @@ function getLink(data) {
   // Remove leading number/dash from path
   // For example, the path: docs/dbt-versions/release-notes/12-January-2022
   // is converted to docs/dbt-versions/release-notes/January-2022
-  // urlPath = urlPath.replace(/release-notes\/(.\d\-)(.*[a-zA-Z]\-)(\d{4})(.*.md)/g, 'release-notes/$2$3')
   urlPath = urlPath.replace(/release-notes\/(\d{2}-)/g, 'release-notes/')
 
   // Remove file name from path
