@@ -16,7 +16,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 | [AlloyDB](alloydb-setup)                  | (same as `dbt-postgres`) |
 | [Azure Synapse](azuresynapse-setup)       | 1.3.0 :construction:     |
 | [BigQuery](bigquery-setup)                | 1.2.0                    |
-| [Databricks](databricks-setup)            | 1.2.0 :construction:     |
+| [Databricks](databricks-setup)            | 1.3.0 :construction:     |
 | [Dremio](dremio-setup)                    | 1.3.0 :construction:     |
 | [Postgres](postgres-setup)                | 1.2.0                    |
 | [Redshift](redshift-setup)                | 1.2.0                    |
