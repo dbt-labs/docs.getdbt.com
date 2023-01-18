@@ -30,6 +30,7 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         image: "https://www.getdbt.com/ui/img/blog/dbt-card.jpg",
         favicon: `${siteUrl}/img/favicon.svg`,
         copyright: `Copyright © ${today.getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
+        updated: new Date(2023, 1, 18),
         feedLinks: {
           rss2: `${siteUrl}/rss.xml`,
           atom: `${siteUrl}/atom.xml`,

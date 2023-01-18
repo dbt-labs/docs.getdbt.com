@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://deploy-preview-2713--docs-getdbt-com.netlify.app</id>
     <title>dbt Cloud Release Notes</title>
-    <updated>2023-01-18T19:48:40.231Z</updated>
+    <updated>2023-02-18T05:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://deploy-preview-2713--docs-getdbt-com.netlify.app"/>
     <link rel="self" href="https://deploy-preview-2713--docs-getdbt-com.netlify.app/atom.xml"/>
