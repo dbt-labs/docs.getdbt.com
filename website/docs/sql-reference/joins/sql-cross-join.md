@@ -29,6 +29,7 @@ Cross joins are one of those SQL concepts that is easier to understand with a ta
 ### SQL cross join example
 
 Table A `date_spine`
+
 | date |
 |:---:|
 | 2022-01-01 |
@@ -36,6 +37,7 @@ Table A `date_spine`
 | 2022-01-03 |
 
 Table B `users`
+
 | user_id |
 |:---:|
 | 1 |

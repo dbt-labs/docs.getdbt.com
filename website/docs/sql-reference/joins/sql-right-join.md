@@ -30,6 +30,7 @@ In this example above, there’s only one field from each table being used to jo
 ### SQL right join example
 
 Table A `car_type`
+
 | **user_id** | **car_type** |
 |:---:|:---:|
 | 1 | van |
@@ -37,6 +38,7 @@ Table A `car_type`
 | 3 | truck |
 
 Table B `car_color`
+
 | **user_id** | **car_color** |
 |:---:|:---:|
 | 1 | red |

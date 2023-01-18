@@ -1,7 +1,7 @@
 ---
 id: outer-join
 title: SQL OUTER JOIN
-description: A SQL full outer join is a join between two tables that returns all rows from both tables, regardless of join key match success
+description: A SQL full outer join is a join between two tables that returns all rows from both tables, regardless of join key match success.
 slug: /sql-reference/outer-join
 ---
 
@@ -32,6 +32,7 @@ A note on full outer joins: it may sound obvious, but because full outer joins c
 ### SQL full outer join example
 
 Table A `car_type`
+
 | user_id | car_type |
 |:---:|:---:|
 | 1 | van |
@@ -39,6 +40,7 @@ Table A `car_type`
 | 3 | truck |
 
 Table B `car_color`
+
 | user_id | car_color |
 |:---:|:---:|
 | 1 | red |

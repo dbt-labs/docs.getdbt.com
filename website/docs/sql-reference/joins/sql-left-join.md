@@ -69,7 +69,7 @@ Because there’s no `user_id` = 2 in Table B, there is no `color` available, th
 
 Left joins are a fundamental in data modeling and analytics engineering work—they allow you to easily join database objects onto each other while  maintaining an original table’s row count (in the from statement). Compared to right joins, that return all rows in a right join database object (and not the from statement), we find left joins a little more intuitive to understand and build off of.
 
-:::tip Ensure your joins are just ~left~ right
+:::tip Ensure your joins are just ~~left~~ right
 Something to note if you use left joins: if there are multiple records for an individual key in the left join database object, be aware that duplicates can potentially be introduced in the final query result. This is where dbt tests, such as testing for <Term id="primary-key" /> uniqueness and [equal row count](https://github.com/dbt-labs/dbt-utils#equal_rowcount-source) across upstream source tables and downstream child models, can help you identify faulty data modeling logic and improve data quality.
 :::
 

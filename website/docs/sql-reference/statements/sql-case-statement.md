@@ -33,7 +33,7 @@ Some notes on case statement functionality:
 - The results in each scenario need to be of the same data type; if scenario 1 results in a string, all other scenarios need to be [strings](/sql-reference/strings).
 - Oftentimes data teams will omit a final `else` scenario since the `else [fallback result]`is optional and defaulted to `else null`.
 - In general, case statement performance in select statements is relatively efficient (compared to other SQL functionality like aggregates or clunky joins involving ANDs and ORs); this isn’t to say it’s efficient (or smart) to be comparing a ton of scenarios, but it likely won’t be the bottleneck in your data models.
-- Case when statement results can also be passed into aggregate functions, such as MAX, MIN, and COUNT, or even date functions (ex. `date_trunc('month', <case when statement>`)
+- Case when statement results can also be passed into aggregate functions, such as [MAX](/sql-reference/max), [MIN](/sql-reference/min), and [COUNT](/sql-reference/count), or even date functions (ex. `date_trunc('month', <case when statement>`)
 
 Below, let’s take a look at a practical example using a case statement.
 
