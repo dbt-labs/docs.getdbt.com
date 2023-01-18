@@ -5,7 +5,7 @@
     <updated>2022-12-23T05:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.getdbt.com"/>
-    <link rel="self" href="http://localhost:3000/atom.xml"/>
+    <link rel="self" href="https://deploy-preview-2713--docs-getdbt-com.netlify.app/atom.xml"/>
     <subtitle>dbt provides release notes for dbt Cloud so you can see recent and historical changes.</subtitle>
     <logo>https://www.getdbt.com/ui/img/blog/dbt-card.jpg</logo>
     <icon>https://docs.getdbt.com/img/favicon.svg</icon>
