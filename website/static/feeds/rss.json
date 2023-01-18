@@ -2,10 +2,16 @@
     "version": "https://jsonfeed.org/version/1",
     "title": "dbt Cloud Release Notes",
     "home_page_url": "https://docs.getdbt.com",
-    "feed_url": "https://deploy-preview-2713--docs-getdbt-com.netlify.app/rss.json",
+    "feed_url": "http://localhost:3000/rss.json",
     "description": "dbt provides release notes for dbt Cloud so you can see recent and historical changes.",
     "icon": "https://www.getdbt.com/ui/img/blog/dbt-card.jpg",
     "items": [
+        {
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token",
+            "title": "Private packages must be cloned using access tokens provided by environment variables",
+            "summary": "Private GitHub packages must be cloned using access tokens provided by environment variables.",
+            "date_modified": "2022-12-23T05:00:00.000Z"
+        },
         {
             "id": "default-thread-value",
             "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/default-thread-value",
@@ -21,10 +27,11 @@
             "date_modified": "2022-12-05T05:00:00.000Z"
         },
         {
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token",
-            "title": "Private packages must be cloned using access tokens provided by environment variables",
-            "summary": "Private GitHub packages must be cloned using access tokens provided by environment variables.",
-            "date_modified": "2022-12-23T05:00:00.000Z"
+            "id": "ide-features-ide-deprecation",
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Nov-2022/ide-features-ide-deprecation",
+            "title": "New IDE features and classic IDE deprecation",
+            "summary": "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation",
+            "date_modified": "2022-11-29T05:00:00.000Z"
         },
         {
             "id": "cloud-databricks-unitycatalog",
@@ -34,11 +41,11 @@
             "date_modified": "2022-11-17T05:00:00.000Z"
         },
         {
-            "id": "ide-features-ide-deprecation",
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Nov-2022/ide-features-ide-deprecation",
-            "title": "New IDE features and classic IDE deprecation",
-            "summary": "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation",
-            "date_modified": "2022-11-29T05:00:00.000Z"
+            "id": "new-ide-launch",
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Oct-2022/new-ide-launch",
+            "title": "Enhancement: New Cloud IDE launch",
+            "summary": "Enhancement: New Cloud IDE launch",
+            "date_modified": "2022-10-18T04:00:00.000Z"
         },
         {
             "id": "cloud-integration-azure",
@@ -48,11 +55,11 @@
             "date_modified": "2022-10-11T04:00:00.000Z"
         },
         {
-            "id": "new-ide-launch",
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Oct-2022/new-ide-launch",
-            "title": "Enhancement: New Cloud IDE launch",
-            "summary": "Enhancement: New Cloud IDE launch",
-            "date_modified": "2022-10-18T04:00:00.000Z"
+            "id": "metadata-api-data-retention-limits.md",
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Sept-2022/metadata-api-data-retention-limits.md",
+            "title": "Query the previous three months of data using the metadata API",
+            "summary": "Metadata API data retention limits",
+            "date_modified": "2022-09-29T04:00:00.000Z"
         },
         {
             "id": "liststeps-endpoint-deprecation.md",
@@ -62,11 +69,11 @@
             "date_modified": "2022-09-15T04:00:00.000Z"
         },
         {
-            "id": "metadata-api-data-retention-limits.md",
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Sept-2022/metadata-api-data-retention-limits.md",
-            "title": "Query the previous three months of data using the metadata API",
-            "summary": "Metadata API data retention limits",
-            "date_modified": "2022-09-29T04:00:00.000Z"
+            "id": "support-redshift-ra3.md",
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Aug-2022/support-redshift-ra3.md",
+            "title": "Enhancement: Support for cross-database sources on Redshift RA3 instances",
+            "summary": "Adding support for cross-database queries for RA3",
+            "date_modified": "2022-08-31T04:00:00.000Z"
         },
         {
             "id": "ide-improvements-beta.md",
@@ -74,13 +81,6 @@
             "title": "Enhancement: New Cloud IDE beta",
             "summary": "Adding IDE performance and reliability improvements",
             "date_modified": "2022-08-16T04:00:00.000Z"
-        },
-        {
-            "id": "support-redshift-ra3.md",
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/Aug-2022/support-redshift-ra3.md",
-            "title": "Enhancement: Support for cross-database sources on Redshift RA3 instances",
-            "summary": "Adding support for cross-database queries for RA3",
-            "date_modified": "2022-08-31T04:00:00.000Z"
         },
         {
             "id": "render-lineage-feature",
@@ -97,18 +97,18 @@
             "date_modified": "2022-05-19T04:00:00.000Z"
         },
         {
-            "id": "audit-log",
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/audit-log",
-            "title": "Audit log",
-            "summary": "Review actions performed by people in your organization.",
-            "date_modified": "2022-04-26T04:00:00.000Z"
-        },
-        {
             "id": "credentials-saved",
             "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/credentials-saved",
             "title": "Credentials no longer accidentally wiped when editing an environment",
             "summary": "Credentials are now saved when editing an environment.",
             "date_modified": "2022-04-29T04:00:00.000Z"
+        },
+        {
+            "id": "audit-log",
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/audit-log",
+            "title": "Audit log",
+            "summary": "Review actions performed by people in your organization.",
+            "date_modified": "2022-04-26T04:00:00.000Z"
         },
         {
             "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/email-verification",
@@ -138,17 +138,17 @@
             "date_modified": "2022-03-02T05:00:00.000Z"
         },
         {
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/February-2022/service-tokens-more",
+            "title": "Service tokens and bug fixes",
+            "summary": "Service tokens can now be assigned granular permissions to enforce least privilege access.",
+            "date_modified": "2022-02-16T05:00:00.000Z"
+        },
+        {
             "id": "DAG-updates-more",
             "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/February-2022/DAG-updates-more",
             "title": "DAG updates and performance improvements",
             "summary": "Clicking a node in the DAG opens a model or config file in new tab in the IDE.",
             "date_modified": "2022-02-02T05:00:00.000Z"
-        },
-        {
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/February-2022/service-tokens-more",
-            "title": "Service tokens and bug fixes",
-            "summary": "Service tokens can now be assigned granular permissions to enforce least privilege access.",
-            "date_modified": "2022-02-16T05:00:00.000Z"
         },
         {
             "id": "ide-timeout-message",
@@ -165,18 +165,18 @@
             "date_modified": "2022-01-05T05:00:00.000Z"
         },
         {
-            "id": "dbt-cloud-changelog-2019-2020",
-            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/dbt-cloud-changelog-2019-2020",
-            "title": "Changelog 2019 and 2020",
-            "summary": "2019 and 2020 Changelog for the dbt Cloud application",
-            "date_modified": "2020-01-01T05:00:00.000Z"
-        },
-        {
             "id": "dbt-cloud-changelog-2021",
             "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/dbt-cloud-changelog-2021",
             "title": "Changelog 2021",
             "summary": "2021 Changelog for the dbt Cloud application",
             "date_modified": "2021-01-01T05:00:00.000Z"
+        },
+        {
+            "id": "dbt-cloud-changelog-2019-2020",
+            "url": "https://docs.getdbt.com/docs/dbt-versions/release-notes/dbt-cloud-changelog-2019-2020",
+            "title": "Changelog 2019 and 2020",
+            "summary": "2019 and 2020 Changelog for the dbt Cloud application",
+            "date_modified": "2020-01-01T05:00:00.000Z"
         }
     ]
 }

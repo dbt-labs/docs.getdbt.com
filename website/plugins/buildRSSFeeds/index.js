@@ -3,7 +3,8 @@ const Feed = require('feed').Feed
 const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 
 const siteUrl = 'https://docs.getdbt.com'
-const previewUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
+// const previewUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
+const previewUrl = 'http://localhost:3000'
 
 module.exports = function buildRSSFeedsPlugin(context, options) {
   return {
@@ -19,26 +20,9 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         return null
       
       // Generate RSS feeds
-      const today = new Date()
-      const feed = new Feed({
-        title: "dbt Cloud Release Notes",
-        description: "dbt provides release notes for dbt Cloud so you can see recent and historical changes.",
-        id: siteUrl,
-        link: siteUrl,
-        language: "en",
-        image: "https://www.getdbt.com/ui/img/blog/dbt-card.jpg",
-        favicon: `${siteUrl}/img/favicon.svg`,
-        copyright: `Copyright © ${today.getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
-        updated: new Date(2023, 1, 18),
-        feedLinks: {
-          rss2: `${previewUrl}/rss.xml`,
-          atom: `${previewUrl}/atom.xml`,
-          json: `${previewUrl}/rss.json`,
-        }
-      });
 
-      // Prepare data and add all release notes to feeds
-      await releaseNotesFiles.map(note => {
+      // Prepare data and sort by update date
+      const releaseNotesData = releaseNotesFiles.map(note => {
         const { data } = note
 
         // Set properties for feed
@@ -56,8 +40,38 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
           ? getDate(data?.date ? data.date : data.tags) 
           : new Date()
 
-        feed.addItem(feedItemObj)
-      })
+        return feedItemObj
+      }).sort((a, b) => (a.date > b.date) ? -1 : 1)
+      
+      const today = new Date()
+      const feedObj = {
+        title: "dbt Cloud Release Notes",
+        description: "dbt provides release notes for dbt Cloud so you can see recent and historical changes.",
+        id: siteUrl,
+        link: siteUrl,
+        language: "en",
+        image: "https://www.getdbt.com/ui/img/blog/dbt-card.jpg",
+        favicon: `${siteUrl}/img/favicon.svg`,
+        copyright: `Copyright © ${today.getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
+        updated: new Date(2023, 1, 18),
+        feedLinks: {
+          rss2: `${previewUrl}/rss.xml`,
+          atom: `${previewUrl}/atom.xml`,
+          json: `${previewUrl}/rss.json`,
+        }
+      }
+
+      // Set feed date to latest date 
+      const latestUpdate = releaseNotesData[0]
+      feedObj.updated = latestUpdate?.date
+        ? latestUpdate.date
+        : new Date(2023, 1, 18)
+
+      // Initialize feed
+      const feed = new Feed(feedObj);
+
+      // Add all release notes to feeds
+      releaseNotesData.map(item => feed.addItem(item))
 
       // Create/update static feed files 
       fs.writeFileSync('./static/feeds/rss.xml', feed.rss2())
