@@ -11,7 +11,7 @@ slug: /sql-reference/case
 
 SQL case statements are the backbone of analytics engineers and dbt projects. They help add context to data, make fields more readable or usable, and allow you to create specified buckets with your data.
 
-To informally formalize it, case statements are the SQL equivalent of an if statement in other programming languages. They allow you to cascade through multiple scenarios (or cases) in your data, evaluate them if they’re true, and output a corresponding value for each case.
+To informally formalize it, case statements are the SQL equivalent of an if-then statement in other programming languages. They allow you to cascade through multiple scenarios (or cases) in your data, evaluate them if they’re true, and output a corresponding value for each case.
 
 In this page, we’ll break down how to use SQL case statements and demonstrate why they’re valuable to modern data teams.
 
