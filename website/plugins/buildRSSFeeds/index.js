@@ -3,8 +3,8 @@ const Feed = require('feed').Feed
 const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 
 const siteUrl = 'https://docs.getdbt.com'
-// const previewUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
-const previewUrl = 'http://localhost:3000'
+const previewUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
+// const previewUrl = 'http://localhost:3000'
 
 module.exports = function buildRSSFeedsPlugin(context, options) {
   return {
