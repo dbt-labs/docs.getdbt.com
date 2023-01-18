@@ -50,10 +50,15 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         if(data?.id) feedItemObj.id = data.id
         if(data?.description) feedItemObj.description = data.description
 
-        // Add url field
+        // Set link property
         feedItemObj.link = getLink(data)
 
-        console.log('feedItemObj', feedItemObj.link)
+        // Set post date
+        feedItemObj.date = data?.tags 
+          ? getDate(data.tags) 
+          : new Date()
+
+        // console.log('feedItemObj', feedItemObj)
         feed.addItem(feedItemObj)
       })
 
@@ -85,4 +90,14 @@ function getLink(data) {
   return id
     ? `${siteUrl}/${urlPath}/${id}`
     : `${siteUrl}/${urlPath}/${file.replace('.md', '')}`
+}
+
+function getDate(tags) {
+  // Find tag with the format 'day-year'
+  const expr = /(-.*\d-\d{4})/g
+  const dateTag = tags.find(str => expr.test(str))
+
+  return dateTag
+    ? new Date(dateTag)
+    : new Date()
 }
