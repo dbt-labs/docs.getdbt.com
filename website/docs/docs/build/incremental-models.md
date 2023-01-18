@@ -307,7 +307,7 @@ select ...
 
 ### About incremental_predicates
 
-`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts any valid SQL expression, however dbt does not check the syntax. 
+`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
 
 For example, this is a pattern we might expect to see on Snowflake:
 
@@ -321,7 +321,8 @@ models:
       cluster_by: ['session_start']  
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
+      # incremental_predicates takes a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
 
