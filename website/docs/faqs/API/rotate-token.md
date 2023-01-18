@@ -5,30 +5,41 @@ sidebar_label: 'How to rotate your user API token'
 id: rotate-token
 ---
 
+For security reasons and best practices, you should aim to rotate API keys every so often.
 
-To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens):
+### Steps to rotate API keys
 
-1. Send the following request: 
+1. To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens), send the following request: 
 
 ```
-curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/<your-user-id>/apikey/' \
---header 'Authorization: Token <your-current-token>'
+curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/your_user_id/apikey/' \
+--header 'Authorization: Token your_current_token'
 ```
 
-2. You will need to replace your **user_id** and **existing token** for authentication. 
+2. Replace your **user_id** and **existing token** for authentication. 
 
-    - To find your `user_id`, refer to [Where can I find my user id](/faqs/Accounts/find-user-id) for more info. 
-    - To find your `existing token`:
-        * Go to **Account Settings** and then **API Access** and copy the API key.
+    - Read [how to find your](/faqs/Accounts/find-user-id) `user_id`. 
+    - Find your `existing token` by going to **Account Settings** -> **API Access** and copying the API key.
+
+:::infoExample
+If your_user_id is `123` and your_current_token is `abcf9g`, your curl request will be:
+    
+```
+curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
+--header 'Authorization: Token abcf9g'
+```
+:::
 
 
-3. Find the new key in the API response or in dbt Cloud by going to **Account Settings** and then **API Access**.
+3. You can find the new key in the API response or in dbt Cloud. To find the new key in dbt Cloud, go to **Account Settings** -> **API Access**.
 
 
-**dbt Cloud deployment**
 
-If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance. For example:
+### dbt Cloud deployments
 
-- For Virtual Private dbt Cloud &mdash; Use `http://cloud.customizedurl.getdbt.com/`, not `http://cloud.getdbt.com/`<br />
-- For EMEA region &mdash; Use `https://emea.dbt.com/`, not `http://cloud.getdbt.com/`, and so on. 
+If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance. 
 
+For example, if your deployment is Virtual Private dbt: 
+
+✅ `http://cloud.customizedurl.getdbt.com/` <br />
+❌ `http://cloud.getdbt.com/`<br />
