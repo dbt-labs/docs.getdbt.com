@@ -17,7 +17,7 @@ In this page, we’ll break down how to use SQL case statements and demonstrate 
 
 ## How to use the SQL case statements
 
-Case when statements are created in SELECT statements along with other fields you choose to select. The general syntax for SQL case when statements is as follows:
+Case when statements are created in [SELECT statements](/sql-reference/select) along with other fields you choose to select. The general syntax for SQL case when statements is as follows:
 
 ```sql
 case when [scenario 1] then [result 1]
