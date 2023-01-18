@@ -5,6 +5,12 @@ const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 // const siteUrl = 'https://docs.getdbt.com'
 const siteUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
 // const siteUrl = 'http://localhost:3000'
+console.log('process.env.CONTEXT', process.env.CONTEXT)
+// if (!process.env.CONTEXT || process.env.CONTEXT == "production") {
+//   SITE_URL = "https://docs.getdbt.com";
+// } else {
+//   SITE_URL = process.env.DEPLOY_URL;
+// }
 
 module.exports = function buildRSSFeedsPlugin(context, options) {
   return {
