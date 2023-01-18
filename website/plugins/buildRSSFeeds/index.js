@@ -96,7 +96,7 @@ function getDate(tags) {
   // Find tag with the format 'day-year'
   const expr = /(-.*\d-\d{4})/g
   const dateTag = tags.find(str => expr.test(str))
-
+  
   return dateTag
     ? new Date(dateTag)
     : new Date()

@@ -4,7 +4,7 @@
         <title>dbt Cloud Release Notes</title>
         <link>http://localhost:3000</link>
         <description>dbt provides release notes for dbt Cloud so you can see recent and historical changes.</description>
-        <lastBuildDate>Wed, 18 Jan 2023 19:04:31 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 18 Jan 2023 19:08:14 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -116,7 +116,7 @@
             <title><![CDATA[Credentials no longer accidentally wiped when editing an environment]]></title>
             <link>http://localhost:3000/docs/dbt-versions/release-notes/April-2022/credentials-saved</link>
             <guid>credentials-saved</guid>
-            <pubDate>Invalid Date</pubDate>
+            <pubDate>Fri, 29 Apr 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Credentials are now saved when editing an environment.]]></description>
         </item>
         <item>
@@ -179,14 +179,14 @@
             <title><![CDATA[Changelog 2019 and 2020]]></title>
             <link>http://localhost:3000/docs/dbt-versions/release-notes/dbt-cloud-changelog-2019-2020</link>
             <guid>dbt-cloud-changelog-2019-2020</guid>
-            <pubDate>Wed, 18 Jan 2023 19:04:31 GMT</pubDate>
+            <pubDate>Wed, 01 Jan 2020 05:00:00 GMT</pubDate>
             <description><![CDATA[2019 and 2020 Changelog for the dbt Cloud application]]></description>
         </item>
         <item>
             <title><![CDATA[Changelog 2021]]></title>
             <link>http://localhost:3000/docs/dbt-versions/release-notes/dbt-cloud-changelog-2021</link>
             <guid>dbt-cloud-changelog-2021</guid>
-            <pubDate>Wed, 18 Jan 2023 19:04:31 GMT</pubDate>
+            <pubDate>Fri, 01 Jan 2021 05:00:00 GMT</pubDate>
             <description><![CDATA[2021 Changelog for the dbt Cloud application]]></description>
         </item>
     </channel>

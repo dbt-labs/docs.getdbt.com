@@ -11,172 +11,172 @@
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/default-thread-value",
             "title": "Threads default value changed to 4",
             "summary": "Threads now default to 4 users' profile.",
-            "date_modified": "2023-01-18T18:48:57.020Z"
+            "date_modified": "2022-12-12T05:00:00.000Z"
         },
         {
             "id": "new-jobs-default-as-off.md",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/new-jobs-default-as-off.md",
             "title": "Creating a new job no longer triggers a run by default",
             "summary": "You need to click **Run on schedule** before a job will be scheduled to run",
-            "date_modified": "2023-01-18T18:48:57.020Z"
+            "date_modified": "2022-12-05T05:00:00.000Z"
         },
         {
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token",
             "title": "Private packages must be cloned using access tokens provided by environment variables",
             "summary": "Private GitHub packages must be cloned using access tokens provided by environment variables.",
-            "date_modified": "2023-01-18T18:48:57.020Z"
+            "date_modified": "2022-12-23T05:00:00.000Z"
         },
         {
             "id": "cloud-databricks-unitycatalog",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Nov-2022/cloud-databricks-unitycatalog",
             "title": "The dbt Cloud + Databricks experience is getting even better",
             "summary": "The dbt-databricks adapter is now available for use with dbt Cloud",
-            "date_modified": "2023-01-18T18:48:57.020Z"
+            "date_modified": "2022-11-17T05:00:00.000Z"
         },
         {
             "id": "ide-features-ide-deprecation",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Nov-2022/ide-features-ide-deprecation",
             "title": "New IDE features and classic IDE deprecation",
             "summary": "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation",
-            "date_modified": "2023-01-18T18:48:57.020Z"
+            "date_modified": "2022-11-29T05:00:00.000Z"
         },
         {
             "id": "cloud-integration-azure",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Oct-2022/cloud-integration-azure",
             "title": "Announcing dbt Cloud’s native integration with Azure DevOps",
             "summary": "dbt Cloud native integration with Azure DevOps",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-10-11T04:00:00.000Z"
         },
         {
             "id": "new-ide-launch",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Oct-2022/new-ide-launch",
             "title": "Enhancement: New Cloud IDE launch",
             "summary": "Enhancement: New Cloud IDE launch",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-10-18T04:00:00.000Z"
         },
         {
             "id": "liststeps-endpoint-deprecation.md",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Sept-2022/liststeps-endpoint-deprecation.md",
             "title": "List Steps API endpoint deprecation warning",
             "summary": "List Steps API deprecation",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-09-15T04:00:00.000Z"
         },
         {
             "id": "metadata-api-data-retention-limits.md",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Sept-2022/metadata-api-data-retention-limits.md",
             "title": "Query the previous three months of data using the metadata API",
             "summary": "Metadata API data retention limits",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-09-29T04:00:00.000Z"
         },
         {
             "id": "ide-improvements-beta.md",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Aug-2022/ide-improvements-beta.md",
             "title": "Enhancement: New Cloud IDE beta",
             "summary": "Adding IDE performance and reliability improvements",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-08-16T04:00:00.000Z"
         },
         {
             "id": "support-redshift-ra3.md",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/Aug-2022/support-redshift-ra3.md",
             "title": "Enhancement: Support for cross-database sources on Redshift RA3 instances",
             "summary": "Adding support for cross-database queries for RA3",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-08-31T04:00:00.000Z"
         },
         {
             "id": "render-lineage-feature",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/July-2022/render-lineage-feature",
             "title": "Enhancement: Large DAG feature",
             "summary": "Add a render button to visualize large DAGs",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-07-05T04:00:00.000Z"
         },
         {
             "id": "gitlab-auth",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/May-2022/gitlab-auth",
             "title": "Refresh expired access tokens in the IDE when using GitLab",
             "summary": "Adding support for expiring OAuth access tokens.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-05-19T04:00:00.000Z"
         },
         {
             "id": "audit-log",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/April-2022/audit-log",
             "title": "Audit log",
             "summary": "Review actions performed by people in your organization.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-04-26T04:00:00.000Z"
         },
         {
             "id": "credentials-saved",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/April-2022/credentials-saved",
             "title": "Credentials no longer accidentally wiped when editing an environment",
             "summary": "Credentials are now saved when editing an environment.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-04-29T04:00:00.000Z"
         },
         {
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/April-2022/email-verification",
             "title": "Email verification",
             "summary": "dbt Cloud users created via SAML JIT will now confirm identity via email to activate their account.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-04-26T04:00:00.000Z"
         },
         {
             "id": "scheduler-improvements",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/April-2022/scheduler-improvements",
             "title": "Scheduler performance improvements",
             "summary": "scheduler, which has much faster prep times, especially at the top of the hour.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-04-19T04:00:00.000Z"
         },
         {
             "id": "ide-timeout-message",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/March-2022/ide-timeout-message",
             "title": "Spotty internet issues no longer cause a session time out message",
             "summary": "We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-03-10T05:00:00.000Z"
         },
         {
             "id": "prep-and-waiting-time",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/March-2022/prep-and-waiting-time",
             "title": "Dividing queue time into waiting and prep time",
             "summary": "dbt Cloud now shows waiting time and prep time for a run.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-03-02T05:00:00.000Z"
         },
         {
             "id": "DAG-updates-more",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/February-2022/DAG-updates-more",
             "title": "DAG updates and performance improvements",
             "summary": "Clicking a node in the DAG opens a model or config file in new tab in the IDE.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-02-02T05:00:00.000Z"
         },
         {
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/February-2022/service-tokens-more",
             "title": "Service tokens and bug fixes",
             "summary": "Service tokens can now be assigned granular permissions to enforce least privilege access.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-02-16T05:00:00.000Z"
         },
         {
             "id": "ide-timeout-message",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/January-2022/ide-timeout-message",
             "title": "Autocomplete snippets for SQL and YAML files in IDE",
             "summary": "Autocomplete snippets for SQL and YAML files in IDE",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-01-19T05:00:00.000Z"
         },
         {
             "id": "model-timing-more",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/January-2022/model-timing-more",
             "title": "Model timing for Multi-tenant Team and Enterprise accounts",
             "summary": "Model timing is now available for Multi-tenant Team and Enterprise accounts, plus performance improvements.",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2022-01-05T05:00:00.000Z"
         },
         {
             "id": "dbt-cloud-changelog-2019-2020",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/dbt-cloud-changelog-2019-2020",
             "title": "Changelog 2019 and 2020",
             "summary": "2019 and 2020 Changelog for the dbt Cloud application",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2020-01-01T05:00:00.000Z"
         },
         {
             "id": "dbt-cloud-changelog-2021",
             "url": "http://localhost:3000/docs/dbt-versions/release-notes/dbt-cloud-changelog-2021",
             "title": "Changelog 2021",
             "summary": "2021 Changelog for the dbt Cloud application",
-            "date_modified": "2023-01-18T18:48:57.021Z"
+            "date_modified": "2021-01-01T05:00:00.000Z"
         }
     ]
 }
