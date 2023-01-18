@@ -243,7 +243,7 @@ On some adapters, an optional `incremental_strategy` config controls the code th
 to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
 the reliability of your `unique_key`, or the availability of certain features.
 
-* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional)
+* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
 * [BigQuery](bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
 * [Spark](spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
 
