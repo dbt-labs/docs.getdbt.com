@@ -323,14 +323,14 @@ models:
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
       incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
-      # incremental_predicates takes a list of SQL statements. 
+      # `incremental_predicates` accepts a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
 
-Alternatively, we could apply these same configurations within a model file:
+Alternatively, here are the same same configurations configured within a model file:
 
 ```sql
-# in models/my_incremental_model.sql
+-- in models/my_incremental_model.sql
 
 {{
   config(
@@ -338,7 +338,7 @@ Alternatively, we could apply these same configurations within a model file:
     unique_key = 'id',
     cluster_by = ['session_start'],  
     incremental_strategy = 'merge',
-    incremental_predicates: [
+    incremental_predicates = [
       "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
     ]
   )
