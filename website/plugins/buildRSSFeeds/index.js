@@ -1,10 +1,10 @@
 const fs = require('fs')
-const matter = require('gray-matter')
 const Feed = require('feed').Feed
 const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 
 // const siteUrl = 'https://docs.getdbt.com'
-const siteUrl = 'http://localhost:3000'
+const siteUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
+// const siteUrl = 'http://localhost:3000'
 
 module.exports = function buildRSSFeedsPlugin(context, options) {
   return {
@@ -15,7 +15,6 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
 
       // Get all files and file data within all release notes directories
       const releaseNotesFiles = getDirectoryFiles(releaseNotesDirectory, [], true)
-      console.log('releaseNotesFiles', releaseNotesFiles)
 
       if(!releaseNotesFiles || !releaseNotesFiles.length) 
         return null
@@ -29,7 +28,7 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         link: siteUrl,
         language: "en",
         image: "https://www.getdbt.com/ui/img/blog/dbt-card.jpg",
-        favicon: `${siteUrl}/img/favicon.png`,
+        favicon: `${siteUrl}/img/favicon.svg`,
         copyright: `Copyright © ${today.getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
         feedLinks: {
           rss2: `${siteUrl}/rss.xml`,
@@ -42,11 +41,8 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
       await releaseNotesFiles.map(note => {
         const { data } = note
 
-        // TODO: Set date by date in frontmatter tags array
-        let feedItemObj = {
-          title: data.title,
-          date: new Date(),
-        }
+        // Set properties for feed
+        let feedItemObj = { title: data.title }
         if(data?.id) feedItemObj.id = data.id
         if(data?.description) feedItemObj.description = data.description
 
@@ -54,11 +50,12 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         feedItemObj.link = getLink(data)
 
         // Set post date
-        feedItemObj.date = data?.tags 
-          ? getDate(data.tags) 
+        // If date not set within `date` or `tags` properties
+        // Set default date to today
+        feedItemObj.date = data?.date || data?.tags 
+          ? getDate(data?.date ? data.date : data.tags) 
           : new Date()
 
-        // console.log('feedItemObj', feedItemObj)
         feed.addItem(feedItemObj)
       })
 

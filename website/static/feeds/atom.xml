@@ -2,13 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://localhost:3000</id>
     <title>dbt Cloud Release Notes</title>
-    <updated>2023-01-18T19:08:14.619Z</updated>
+    <updated>2023-01-18T19:42:09.489Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://localhost:3000"/>
     <link rel="self" href="http://localhost:3000/atom.xml"/>
     <subtitle>dbt provides release notes for dbt Cloud so you can see recent and historical changes.</subtitle>
     <logo>https://www.getdbt.com/ui/img/blog/dbt-card.jpg</logo>
-    <icon>http://localhost:3000/img/favicon.png</icon>
     <rights>Copyright © 2023 dbt Labs™, Inc. All Rights Reserved.</rights>
     <entry>
         <title type="html"><![CDATA[Threads default value changed to 4]]></title>
