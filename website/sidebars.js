@@ -1035,7 +1035,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Data type",
+          label: "Data Types",
           items: [
             "sql-reference/data-type/data-types",
             "sql-reference/data-type/strings",
