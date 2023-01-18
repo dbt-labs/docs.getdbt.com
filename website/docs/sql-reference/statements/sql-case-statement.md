@@ -1,6 +1,6 @@
 ---
 id: case
-title: SQL CASE
+title: SQL CASE WHEN
 description: CASE statements allow you to cascade through multiple scenarios (or cases) in your data, evaluate them if they’re true, and output a corresponding value for each case.
 slug: /sql-reference/case
 ---
