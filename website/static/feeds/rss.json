@@ -2,7 +2,7 @@
     "version": "https://jsonfeed.org/version/1",
     "title": "dbt Cloud Release Notes",
     "home_page_url": "https://docs.getdbt.com",
-    "feed_url": "http://localhost:3000/rss.json",
+    "feed_url": "https://deploy-preview-2713--docs-getdbt-com.netlify.app/rss.json",
     "description": "dbt provides release notes for dbt Cloud so you can see recent and historical changes.",
     "icon": "https://www.getdbt.com/ui/img/blog/dbt-card.jpg",
     "items": [
