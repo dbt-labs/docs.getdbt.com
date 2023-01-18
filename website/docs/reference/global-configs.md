@@ -155,7 +155,7 @@ Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 
 ### Debug-level logging
 
-The `DEBUG` config redirects dbt's debug logs to standard out. The has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
+The `DEBUG` config redirects dbt's debug logs to standard output. This has the effect of showing debug-level log information in the terminal in addition to the `logs/dbt.log` file. This output is verbose.
 
 The `--debug` flag is also available via shorthand as `-d`.
 
@@ -186,7 +186,7 @@ config:
 
 ### Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models. 
+Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
@@ -214,7 +214,7 @@ FailFast Error in model model_1 (models/model_1.sql)
 
 ### Log Formatting
 
-The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in JSON format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
+The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the value of this config is `json`, dbt will output fully structured logs in <Term id="json" /> format; otherwise, it will output text-formatted logs that are sparser for the CLI and more detailed in `logs/dbt.log`.
 
 <File name='Usage'>
 
@@ -307,7 +307,7 @@ config:
   send_anonymous_usage_stats: False
 ```
 
-You can also use the DO_NOT_TRACK environmental variable to enable or disable sending anonymous data. For more information, see [Environmental variables](/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
+You can also use the DO_NOT_TRACK environment variable to enable or disable sending anonymous data. For more information, see [Environment variables](/docs/build/environment-variables).
 
 `DO_NOT_TRACK=1` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=False`
 `DO_NOT_TRACK=0` is the same as `DBT_SEND_ANONYMOUS_USAGE_STATS=True`
@@ -405,8 +405,55 @@ Turning on the `WARN_ERROR` config will convert dbt warnings into errors. Any ti
 $ dbt --warn-error run
 ...
 ```
-
 </File>
+
+<VersionBlock firstVersion="1.4">
+
+Converting any and all warnings to errors may suit your needs perfectly, but there may be some warnings you just don't care about, and some you care about a lot.
+
+The `WARN_ERROR_OPTIONS` config gives you more granular control over _exactly which types of warnings_ are treated as errors. Warnings that should be treated as errors can be specified through `include` and/or `exclude` parameters. Warning names can be found in [dbt-core's types.py file](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/events/types.py), where each class name that inherits from `WarnLevel` corresponds to a warning name (e.g. `AdapterDeprecationWarning`, `NoNodesForSelectionCriteria`).
+
+The `include` parameter can set to `"all"` or `"*"` to treat all warnings as exceptions, or to a list of specific warning names to treat as exceptions. When include is set to `"all"` or `"*"`, the optional `exclude` parameter can be set to exclude specifc warnings from being treated as exceptions.
+
+:::info `WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive
+`WARN_ERROR` and `WARN_ERROR_OPTIONS` are mutually exclusive. You can only specify one, even when you're specifying the config in multiple places (e.g. env var + CLI flag), otherwise you'll see a usage error.
+:::
+
+```text
+$ dbt --warn-error-options '{"include": "all"}' run
+...
+```
+
+```text
+$ dbt --warn-error-options '{"include": "all", "exclude":[NoNodesForSelectionCriteria]}' run
+...
+```
+
+
+```text
+$ dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
+...
+```
+
+```text
+$ WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
+...
+```
+
+<File name='profiles.yml'>
+
+```yaml
+
+config:
+  warn_error_options:
+    include: all
+    exclude: 
+      - NoNodesForSelectionCriteria
+
+```
+</File>
+
+</VersionBlock>
 
 ### Writing JSON artifacts
 

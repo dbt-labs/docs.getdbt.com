@@ -465,7 +465,7 @@ A lineage graph of the entire pipeline can now be viewed in Marquez, which shows
 
 This is the simplest part, by far. Since we have a set of tables with clearly-defined measures and dimensions, getting everything working in a system like Apache Superset is straightforward.
 
-Configuring the data source and adding each table to a Preset Workspace was easy. First, I connected my BigQuery database by uploading a JSON key for my service account. 
+Configuring the data source and adding each table to a Preset Workspace was easy. First, I connected my BigQuery database by uploading a <Term id="json" /> key for my service account. 
 
 Once the database connection was in place, I created datasets for each of my `*_daily_summary` tables by  selecting the database/schema/table from a dropdown.
 

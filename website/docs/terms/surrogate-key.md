@@ -1,9 +1,14 @@
 ---
 id: surrogate-key
 title: Surrogate key
+description: A surrogate key is a unique identifier derived from the data itself. It's commonly a hashed value of multiple columns that will create a unique id for each row.
 displayText: surrogate key  
 hoverSnippet: A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row.
 ---
+
+<head>
+  <title>What is a surrogate key in database table? - dbt Labs</title>
+</head>
 
 A surrogate key is a unique identifier derived from the data itself. It often takes the form of a hashed value of multiple columns that will create a uniqueness constraint for each row. You will need to create a surrogate key for every table that doesn't have a natural <Term id="primary-key" />. 
 
@@ -172,7 +177,7 @@ After executing this, the table would now have the `unique_id` field now uniquel
 
 Amazing, you just made a surrogate key! You can just move on to the next data model, right? No!! It’s  critically important to test your surrogate keys for uniqueness and non-null values to ensure that the correct fields were chosen to create the surrogate key.
 
-In order to test for null and unique values you can utilize code-based tests like [dbt tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests), that can check fields for nullness and uniqueness. You can additionally utilize simple SQL queries or unit tests to check if surrogate key count and non-nullness is correct.
+In order to test for null and unique values you can utilize code-based tests like [dbt tests](/docs/build/tests), that can check fields for nullness and uniqueness. You can additionally utilize simple SQL queries or unit tests to check if surrogate key count and non-nullness is correct.
 
 ## A note on hashing algorithms
 
@@ -239,7 +244,7 @@ dbt supports several macros to help data folks write DRY (don’t repeat yoursel
 
 ## Performance concerns for surrogate keys
 
-In the past, you may have seen surrogate keys take the form of monotonically increasing integers (ex. 1, 2, 3, 4). These surrogate keys were often limited to 4-bit integers that could be indexed quickly. However, in the practice of analytics engineering, surrogate keys derived from the data often take the form of a hashed string value. Given this form, these surrogate keys are not necessarily optimized for performance for large table scans and complex joins. For large data models (millions, billions, trillions of rows) that have surrogate keys, you should materialize them as tables or [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) to help make joining entities more efficient.
+In the past, you may have seen surrogate keys take the form of <Term id="monotonically-increasing"/> integers (ex. 1, 2, 3, 4). These surrogate keys were often limited to 4-bit integers that could be indexed quickly. However, in the practice of analytics engineering, surrogate keys derived from the data often take the form of a hashed string value. Given this form, these surrogate keys are not necessarily optimized for performance for large table scans and complex joins. For large data models (millions, billions, trillions of rows) that have surrogate keys, you should materialize them as tables or [incremental models](https://docs.getdbt.com/docs/build/incremental-models) to help make joining entities more efficient.
 
 ## Conclusion
 

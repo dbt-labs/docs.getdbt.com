@@ -17,9 +17,9 @@ name: jaffle_shop
 
 seeds:
   jaffle_shop:
-    schema: mappings # all seeds in this project will use the mapping schema by default
+    schema: mappings # all seeds in this project will use the schema "mappings" by default
     marketing:
-      schema: marketing # seeds in the `seeds/mapping/ subdirectory will use the marketing schema
+      schema: marketing # seeds in the "seeds/marketing/" subdirectory will use the schema "marketing"
 ```
 
 </File>
