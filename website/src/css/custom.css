@@ -99,7 +99,6 @@ html[data-theme="dark"] {
 
   /* admonition icon */
   --ifm-color-info-contrast-foreground: var(--ifm-color-gray-900);
-
   --ifm-table-cell-color: var(--color-green-blue);
 }
 
@@ -149,12 +148,17 @@ html[data-theme="dark"] .api-content table td p {
   color: var(--color-orange);
 }
 
+
+html[data-theme="dark"] details table td {
+  color: inherit;
+}
+
 table td {
   vertical-align: top;
 }
 
 html[data-theme="dark"] table td {
-  filter: brightness(1.25);
+  filter: brightness(1.5);
   color: white;
 }
 
@@ -320,6 +324,16 @@ a.code-link:hover {
 .navbar-sidebar .menu__link.nav-create-account {
   color: var(--color-white);
   border: none;
+}
+
+.navbarHiddenOnLoad {
+  transform: translate3d(0, calc(-100% - 2px), 0)
+}
+
+@media(max-width: 996px) {
+  .navbar-sidebar .menu__link.nav-create-account {
+    width: fit-content;
+  }
 }
 
 .navbar-sidebar .menu__link.nav-create-account:hover {
@@ -648,6 +662,10 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   color: var(--ifm-color-gray-900);
 }
 
+html[data-theme="dark"] .alert * {
+  --ifm-alert-foreground-color: var(--ifm-color-gray-900);
+}
+
 /* for dark mode */
 .alert--info a,
 .alert--success a,
@@ -847,6 +865,9 @@ td,
   font-size: 1.125rem;
   line-height: 1.5;
 }
+.faqs > div {
+  margin: 1em 0;
+}
 .pagination-nav__link {
   font-size: 1rem;
 }
@@ -953,6 +974,11 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
   line-height: 1.25;
 }
 
+/* BlogPostItem header h2 size */
+article[itemprop="blogPost"] h2 {
+  font-size: 2rem;
+}
+
 /* footer styles */
 .footer {
   font-weight: var(--ifm-font-weight-narrow);
@@ -1028,7 +1054,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 
 @media (min-width: 997px) and (max-width: 2560px) {
-  .container > .row .col {
+  .container > .row > .col {
     padding-left: 2.5rem;
   }
   /* for non row divs like on /category/adapter-development  */
@@ -1162,7 +1188,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
     max-width: inherit;
   }
 
-  html.docs-version-current .navbar__brand {
+  .dbt__brand {
     background-color: var(--ifm-background-color);
     border-right: 1px solid var(--ifm-toc-border-color);
   }
@@ -1173,7 +1199,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 
 @media (min-width: 997px) {
-  html.docs-version-current .navbar__brand {
+  .dbt__brand {
     padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
     min-height: var(--ifm-navbar-height);
     max-height: var(--ifm-navbar-height);
@@ -1473,6 +1499,10 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 .docs-cta .docs-cta-btn:hover {
   background: var(--ifm-menu-color-active);
 }
+/* CTA dark-mode styles */
+[data-theme='dark'] .docs-cta {
+  background: var(--ifm-navbar-background-color);
+}
 
 @media (max-width: 996px) {
   .docs-cta {
@@ -1615,12 +1645,25 @@ section > h2:not(.resource-section) {
     "popResources";
 }
 
+.home .resource-section.has-spotlight-member {
+  grid-template-areas:
+    "popH2"
+    "popResources"
+    "featH2"
+    "featResource";
+}
+
 @media (min-width: 996px) {
   .home .resource-section {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 25px;
     column-gap: calc(var(--ifm-spacing-horizontal) * 4);
+    grid-template-areas:
+      "popH2 featH2"
+      "popResources  featResource";
+  }
+  .home .resource-section.has-spotlight-member {
     grid-template-areas:
       "popH2 featH2"
       "popResources  featResource";
@@ -1696,6 +1739,13 @@ section > h2:not(.resource-section) {
   padding: 0 var(--ifm-spacing-horizontal);
 }
 
+/* Report a Problem page styles */
+.report-a-problem {
+  margin: 0 auto;
+  max-width: var(--ifm-container-width-xl);
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
 
 /* utilities */
 .grid--3-col {
@@ -1726,4 +1776,12 @@ section > h2:not(.resource-section) {
 
 .justify-content-center {
   justify-content: center !important;
+}
+
+/* Community Spotlight Page */
+#spotlight-members-section {
+  padding: 3rem 0;
+}
+.community-spotlight-hero p {
+  font-size: 1.25rem;
 }
