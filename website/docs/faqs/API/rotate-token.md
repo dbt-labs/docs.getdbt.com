@@ -1,7 +1,7 @@
 ---
 title: How can I rotate my user API token?
 description: "Instructions on how to rotate API token"
-sidebar_label: 'How to rotate your user API token'
+sidebar_label: 'Rotate your user API token'
 id: rotate-token
 ---
 
