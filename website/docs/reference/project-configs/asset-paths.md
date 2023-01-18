@@ -16,12 +16,12 @@ Optionally specify a custom list of directories to copy to the `target` director
 
 <Changelog>
 
-* `v0.18.0`: This configuration was introduced — see the [migration guide for 0.18.0](upgrading-to-0-18-0) for more details.
+* `v0.18.0`: This configuration was introduced — see the [migration guide](/guides/migration/versions) for more details.
 
 </Changelog>
 
 ## Default
-By default, dbt will not compile any additional files as part of `docs generate`, i.e. `analysis-paths: []`
+By default, dbt will not copy any additional files as part of docs generate, i.e. `asset-paths: []`
 
 ## Examples
 ### Compile files in the `assets` subdirectory as part of `docs generate`

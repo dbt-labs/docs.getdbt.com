@@ -125,6 +125,7 @@ Once an exposure is defined, you can run commands that reference it:
 ```
 dbt run -s +exposure:weekly_jaffle_report
 dbt test -s +exposure:weekly_jaffle_report
+
 ```
 
 When we generate our documentation site, you'll see the exposure appear:

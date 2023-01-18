@@ -1,11 +1,14 @@
 ---
 id: elt
 title: ELT
+description: ELT is the process of first extraction data from different sources, then loading it into a data warehouse, and finally transforming it.
 displayText: ELT  
 hoverSnippet: Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, loading it into a target data warehouse, and finally transforming it.
 ---
-
-Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, then loading it into a target data warehouse, and finally transforming it.
+<head>
+    <title>ELT: What it is and why it's often better than ETL</title>
+</head>
+Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, then loading it into a target <Term id="data-warehouse" />, and finally transforming it.
 
 ELT has emerged as a paradigm for how to manage information flows in a modern data warehouse. This represents a fundamental shift from how data previously was handled when <Term id="etl">Extract, Transform, Load (ETL)</Term> was the data workflow most companies implemented.
 
@@ -44,8 +47,8 @@ In the final transformation step, the raw data that has been loaded into your da
 - Some columns are potentially the incorrect data type
 - Tables are not joined to other tables
 - Timestamps may be in the incorrect timezone for your reporting
-- JSON fields may need to be unnested
-- Tables may be missing primary keys
+- <Term id="json" /> fields may need to be unnested
+- Tables may be missing <Term id="primary-key">primary keys</Term>
 - And more!
 
 ...hence the need for transformation! During the transformation process, data from your data sources is usually:
@@ -76,7 +79,7 @@ Why has ELT adoption grown so quickly in recent years? A few reasons:
 
 ## Benefits of ELT
 
-You often hear about the benefits of the ELT workflow, but you can sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. We'll also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
+You often hear about the benefits of the ELT workflow to data, but you can sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. We'll also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
 
 ### Data as code
 
@@ -119,7 +122,7 @@ As mentioned earlier, the recent development of certain technologies and product
 |---|---|---|---|
 | Fivetran/HVR | E, some T, L | Fivetran is a SaaS company that helps data teams extract, load, and perform some transformation on their data. Fivetran easily integrates with modern data warehouses and dbt. They also offer transformations that leverage dbt Core. | :x: |
 | Stitch by Talend | E, L | Stitch (part of Talend) is another SaaS product that has many data connectors to extract data and load it into data warehouses. | :x: |
-| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create data extraction and load pipelines. | :white_check_mark: |
+| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create <Term id="data-extraction" /> and load pipelines. | :white_check_mark: |
 | Funnel | E, some T, L | Funnel is another product that can extract and load data. Funnel’s data connectors are primarily focused around marketing data sources. | :x: |
 | dbt | T | dbt is the transformation tool that enables data analysts and engineers to transform, test, and document data in the cloud data warehouse. dbt offers both an open-source and cloud-based product. | :white_check_mark: |
 
@@ -131,9 +134,9 @@ The past few years have been a whirlwind for the data world. The increased acces
 
 Here's some of our favorite content about the ELT workflow:
 
-- [The Case for the ELT Workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
-- [A Love Letter to ETL Tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
+- [The case for the ELT workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
+- [A love letter to ETL tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
 - [What, exactly, is dbt?](https://blog.getdbt.com/what-exactly-is-dbt/)
-- [What is Analytics Engineering?](https://www.getdbt.com/what-is-analytics-engineering/)
-- [How Fivetran Operationalizes Data Transformations](https://www.getdbt.com/coalesce-2021/how-fivetran-operationalizes-data-transformations/)
+- [What is analytics engineering?](https://www.getdbt.com/what-is-analytics-engineering/)
+- [How Fivetran operationalizes data transformations](https://www.getdbt.com/coalesce-2021/how-fivetran-operationalizes-data-transformations/)
 
