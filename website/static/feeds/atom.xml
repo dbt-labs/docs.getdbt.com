@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://localhost:3000</id>
     <title>dbt Cloud Release Notes</title>
-    <updated>2023-01-17T16:14:31.177Z</updated>
+    <updated>2023-01-18T17:49:10.499Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://localhost:3000"/>
     <link rel="self" href="http://localhost:3000/atom.xml"/>
@@ -13,176 +13,176 @@
     <entry>
         <title type="html"><![CDATA[Threads default value changed to 4]]></title>
         <id>default-thread-value</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/default-thread-value"/>
+        <updated>2023-01-18T17:49:10.496Z</updated>
         <summary type="html"><![CDATA[Threads now default to 4 users' profile.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Creating a new job no longer triggers a run by default]]></title>
         <id>new-jobs-default-as-off.md</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/new-jobs-default-as-off.md"/>
+        <updated>2023-01-18T17:49:10.496Z</updated>
         <summary type="html"><![CDATA[You need to click **Run on schedule** before a job will be scheduled to run]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Private packages must be cloned using access tokens provided by environment variables]]></title>
-        <id/>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <id>http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token</id>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token"/>
+        <updated>2023-01-18T17:49:10.496Z</updated>
         <summary type="html"><![CDATA[Private GitHub packages must be cloned using access tokens provided by environment variables.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[The dbt Cloud + Databricks experience is getting even better]]></title>
         <id>cloud-databricks-unitycatalog</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Nov-2022/cloud-databricks-unitycatalog"/>
+        <updated>2023-01-18T17:49:10.496Z</updated>
         <summary type="html"><![CDATA[The dbt-databricks adapter is now available for use with dbt Cloud]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[New IDE features and classic IDE deprecation]]></title>
         <id>ide-features-ide-deprecation</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Nov-2022/ide-features-ide-deprecation"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Announcing dbt Cloud’s native integration with Azure DevOps]]></title>
         <id>cloud-integration-azure</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Oct-2022/cloud-integration-azure"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[dbt Cloud native integration with Azure DevOps]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Enhancement: New Cloud IDE launch]]></title>
         <id>new-ide-launch</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Oct-2022/new-ide-launch"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Enhancement: New Cloud IDE launch]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[List Steps API endpoint deprecation warning]]></title>
         <id>liststeps-endpoint-deprecation.md</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Sept-2022/liststeps-endpoint-deprecation.md"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[List Steps API deprecation]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Query the previous three months of data using the metadata API]]></title>
         <id>metadata-api-data-retention-limits.md</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Sept-2022/metadata-api-data-retention-limits.md"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Metadata API data retention limits]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Enhancement: New Cloud IDE beta]]></title>
         <id>ide-improvements-beta.md</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Aug-2022/ide-improvements-beta.md"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Adding IDE performance and reliability improvements]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Enhancement: Support for cross-database sources on Redshift RA3 instances]]></title>
         <id>support-redshift-ra3.md</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/Aug-2022/support-redshift-ra3.md"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Adding support for cross-database queries for RA3]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Enhancement: Large DAG feature]]></title>
         <id>render-lineage-feature</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/July-2022/render-lineage-feature"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Add a render button to visualize large DAGs]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Refresh expired access tokens in the IDE when using GitLab]]></title>
         <id>gitlab-auth</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/May-2022/gitlab-auth"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Adding support for expiring OAuth access tokens.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Audit log]]></title>
         <id>audit-log</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/April-2022/audit-log"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Review actions performed by people in your organization.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Credentials no longer accidentally wiped when editing an environment]]></title>
         <id>credentials-saved</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/April-2022/credentials-saved"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Credentials are now saved when editing an environment.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Email verification]]></title>
-        <id/>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <id>http://localhost:3000/docs/dbt-versions/release-notes/April-2022/email-verification</id>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/April-2022/email-verification"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[dbt Cloud users created via SAML JIT will now confirm identity via email to activate their account.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Scheduler performance improvements]]></title>
         <id>scheduler-improvements</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/April-2022/scheduler-improvements"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[scheduler, which has much faster prep times, especially at the top of the hour.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Spotty internet issues no longer cause a session time out message]]></title>
         <id>ide-timeout-message</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/March-2022/ide-timeout-message"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Dividing queue time into waiting and prep time]]></title>
         <id>prep-and-waiting-time</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/March-2022/prep-and-waiting-time"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[dbt Cloud now shows waiting time and prep time for a run.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[DAG updates and performance improvements]]></title>
         <id>DAG-updates-more</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/February-2022/DAG-updates-more"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Clicking a node in the DAG opens a model or config file in new tab in the IDE.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Service tokens and bug fixes]]></title>
-        <id/>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <id>http://localhost:3000/docs/dbt-versions/release-notes/February-2022/service-tokens-more</id>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/February-2022/service-tokens-more"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Service tokens can now be assigned granular permissions to enforce least privilege access.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Autocomplete snippets for SQL and YAML files in IDE]]></title>
         <id>ide-timeout-message</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/January-2022/ide-timeout-message"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Autocomplete snippets for SQL and YAML files in IDE]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Model timing for Multi-tenant Team and Enterprise accounts]]></title>
         <id>model-timing-more</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/January-2022/model-timing-more"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[Model timing is now available for Multi-tenant Team and Enterprise accounts, plus performance improvements.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Changelog 2019 and 2020]]></title>
         <id>dbt-cloud-changelog-2019-2020</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/dbt-cloud-changelog-2019/dbt-cloud-changelog-2019-2020"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[2019 and 2020 Changelog for the dbt Cloud application]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Changelog 2021]]></title>
         <id>dbt-cloud-changelog-2021</id>
-        <link/>
-        <updated>2023-01-17T16:14:31.176Z</updated>
+        <link href="http://localhost:3000/docs/dbt-versions/release-notes/dbt-cloud-changelog-2021/dbt-cloud-changelog-2021"/>
+        <updated>2023-01-18T17:49:10.497Z</updated>
         <summary type="html"><![CDATA[2021 Changelog for the dbt Cloud application]]></summary>
     </entry>
 </feed>
