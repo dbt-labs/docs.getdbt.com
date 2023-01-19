@@ -669,7 +669,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
-        "reference/warehouse-setups/infer-setup"
+        "reference/warehouse-setups/infer-setup",
+        "reference/warehouse-setups/databend-setup"
       ],
     },
     {
@@ -691,7 +692,7 @@ const sidebarSettings = {
       items: ["reference/snowflake-permissions"],
     },
   ],
-guides: [
+  guides: [
     {
       type: "category",
       label: "Best practices",
@@ -848,7 +849,7 @@ guides: [
       type: "category",
       label: "Advanced",
       items: [
-         "guides/advanced/creating-new-materializations",
+        "guides/advanced/creating-new-materializations",
       ],
     },
     {
@@ -941,7 +942,7 @@ guides: [
       link: {
         type: "generated-index",
         title: "SQL Reference",
-        description: "The SQL Reference is a collection of SQL syntaxes that you can use and reference during your daily data work.",
+        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
         slug: "/sql-reference",
       },
       items: [
@@ -951,6 +952,9 @@ guides: [
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/case",
+            "sql-reference/statements/group-by",
+            "sql-reference/statements/distinct",
           ],
         },
         {
@@ -970,9 +974,10 @@ guides: [
           type: "category",
           label: "Clauses",
           items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
             "sql-reference/clauses/limit",
             "sql-reference/clauses/order-by",
-            "sql-reference/clauses/where",
           ],
         },
         {
@@ -1014,32 +1019,36 @@ guides: [
             "sql-reference/operators/like",
             "sql-reference/operators/and",
             "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
           ],
         },
         {
-          type: "doc",
-          label: "Data types",
-          id: "sql-reference/data-types",
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
+            "sql-reference/joins/outer-join",
+            "sql-reference/joins/self-join",
+            "sql-reference/joins/cross-join",
+            "sql-reference/joins/left-join",
+            "sql-reference/joins/right-join",
+          ],
         },
         {
-          type: "doc",
-          label: "DISTINCT",
-          id: "sql-reference/distinct",
+          type: "category",
+          label: "Data Types",
+          items: [
+            "sql-reference/data-type/data-types",
+            "sql-reference/data-type/strings",
+          ],
         },
         {
-          type: "doc",
-          label: "Comments",
-          id: "sql-reference/comments",
-        },
-        {
-          type: "doc",
-          label: "CAST",
-          id: "sql-reference/cast",
-        },
-        {
-          type: "doc",
-          label: "Strings",
-          id: "sql-reference/strings",
+          type: "category",
+          label: "Other",
+          items: [
+            "sql-reference/other/cast",
+            "sql-reference/other/comments",
+          ],
         },
       ],
     },

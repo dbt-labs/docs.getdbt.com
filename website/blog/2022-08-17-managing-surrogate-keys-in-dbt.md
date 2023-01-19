@@ -20,7 +20,7 @@ Sometimes, we are lucky enough to have data sources with these keys built right 
 
 ## How were surrogate keys managed in the past?
 
-Before the advent of the analytical warehouse tools we use today, the data warehouse architecture had a few key constraints that led to the rise of the Kimball-style warehouse with a snowflake schema. This was because storage was expensive — it was more efficient to store data as few times as possible, and rely on joins to connect data tog   ether when a report required it. And to make those joins efficient, it became standard practice to use **monotonically increasing integer surrogate keys (MIISKs)**, a fancy way to say “count each record starting at one” so that your data model would look something like this (you are a cheesemonger):
+Before the advent of the analytical warehouse tools we use today, the data warehouse architecture had a few key constraints that led to the rise of the Kimball-style warehouse with a snowflake schema. This was because storage was expensive — it was more efficient to store data as few times as possible, and rely on joins to connect data tog   ether when a report required it. And to make those joins efficient, it became standard practice to use **<Term id="monotonically-increasing"/> integer surrogate keys (MIISKs)**, a fancy way to say “count each record starting at one” so that your data model would look something like this (you are a cheesemonger):
 
 | product_id | product_name | created_by | created_at |
 | --- | --- | --- | --- |
