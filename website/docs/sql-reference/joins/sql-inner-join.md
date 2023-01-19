@@ -1,7 +1,7 @@
 ---
 id: inner-join
 title: SQL INNER JOINS
-description: The ORDER BY clause allows you to specify the resulting row order for a query.
+description: An inner join between two database objects returns all rows that have matching join keys; any keys that don’t match are omitted from the query result.
 slug: /sql-reference/inner-join
 ---
 
