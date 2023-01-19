@@ -20,6 +20,8 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         return null
       
       // Generate RSS feeds
+      console.log('Generating RSS Feeds for dbt Cloud Release Notes')
+
       // Prepare data and sort by update date
       const releaseNotesData = releaseNotesFiles.map(note => {
         const { data } = note
@@ -61,6 +63,8 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
 
       // Set feed date to latest date 
       const latestUpdate = releaseNotesData[0]
+      console.log(`Latest release note: ${latestUpdate.title}`)
+      
       feedObj.updated = latestUpdate?.date
         ? latestUpdate.date
         : new Date(2023, 1, 18)
@@ -75,6 +79,8 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
       fs.writeFileSync('./static/feeds/rss.xml', feed.rss2())
       fs.writeFileSync('./static/feeds/atom.xml', feed.atom1())
       fs.writeFileSync('./static/feeds/rss.json', feed.json1())
+
+      console.log('RSS Feeds for dbt Cloud Release Notes created successfully.')
     },
 
   };
