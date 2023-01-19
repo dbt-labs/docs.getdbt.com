@@ -1,0 +1,1 @@
+When you develop in dbt Cloud, you can leverage [Git](/docs/collaborate/git-version-control) to version control your code.  To connect to a repository, you can either set up a dbt Cloud-hosted [managed repository](/docs/collaborate/git/managed-repository) or directly connect to a [supported git provider](/docs/collaborate/git/connect-github).
