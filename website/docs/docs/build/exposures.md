@@ -64,8 +64,8 @@ exposures:
 version: 2
 
 exposures:
-
-  - name: weekly_jaffle_metrics
+  
+  - name: weekly_jaffle_report
     type: dashboard
     maturity: high
     url: https://bi.tool/dashboards/1
@@ -123,8 +123,9 @@ We plan to add more subtypes and optional properties in future releases.
 
 Once an exposure is defined, you can run commands that reference it:
 ```
-dbt run -s +exposure:weekly_jaffle_metrics
-dbt test -s +exposure:weekly_jaffle_metrics
+dbt run -s +exposure:weekly_jaffle_report
+dbt test -s +exposure:weekly_jaffle_report
+
 ```
 
 When we generate our documentation site, you'll see the exposure appear:
