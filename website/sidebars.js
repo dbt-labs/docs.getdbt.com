@@ -953,6 +953,7 @@ const sidebarSettings = {
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/case",
             "sql-reference/statements/group-by",
             "sql-reference/statements/distinct",
           ],
@@ -1027,11 +1028,16 @@ const sidebarSettings = {
           label: "Joins",
           items: [
             "sql-reference/joins/inner-join",
+            "sql-reference/joins/outer-join",
+            "sql-reference/joins/self-join",
+            "sql-reference/joins/cross-join",
+            "sql-reference/joins/left-join",
+            "sql-reference/joins/right-join",
           ],
         },
         {
           type: "category",
-          label: "Data type",
+          label: "Data Types",
           items: [
             "sql-reference/data-type/data-types",
             "sql-reference/data-type/strings",
