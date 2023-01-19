@@ -69,7 +69,7 @@ function dbtEditor({ project, tag }) {
       resource_type, 
       node_name, 
       file_name 
-    } = e?.target?.dataset
+    } = e?.currentTarget?.dataset
 
     if(!resource_type || !node_name) {
       setError(true)
