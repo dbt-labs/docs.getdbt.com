@@ -666,6 +666,12 @@ html[data-theme="dark"] .alert * {
   --ifm-alert-foreground-color: var(--ifm-color-gray-900);
 }
 
+html[data-theme="dark"] .alert table {
+  background-color: black;
+  color: white;
+  border-radius: var(--ifm-code-border-radius);
+}
+
 /* for dark mode */
 .alert--info a,
 .alert--success a,
