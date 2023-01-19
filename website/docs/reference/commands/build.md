@@ -3,12 +3,6 @@ title: "build"
 id: "build"
 ---
 
-<Changelog>
-
-- Introduced in **v0.21.0**
-    
-</Changelog>
-
 The `dbt build` command will:
 - run models
 - test tests

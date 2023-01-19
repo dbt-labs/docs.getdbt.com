@@ -1,83 +1,85 @@
 ---
-title: "Supported Data Platforms"
+title: "Supported data platforms"
 id: "supported-data-platforms"
 ---
 
-dbt connects to and runs SQL against your database, warehouse, platform, or query engine. It works by using a dedicated **adapter** for each technology. All the adapters listed below are open source and free to use, just like dbt.
+dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. dbt can be extended to any data platform using a dedicated _adapter plugin_. These plugins are built as Python modules that dbt Core discovers if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core.
 
-If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter)  for more information.
+To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
 
-### Installation
+## Supported Data Platforms
 
-Most adapters can be installed from PyPi using `pip`. The installation will include `dbt-core` and any other required dependencies, which may include other adapter plugins. Read more about [installing dbt](dbt-cli/install/overview).
+### Verified Adapters
 
-Some vendor or community adapters may not exist in PyPi. However, you can still install an adapter hosted on GitHub with `pip install`, by replacing MAINTAINER_NAME with the person or company maintaining the adapter on GitHub and ADAPTER_NAME with the git repository's name (these can be taken directly from the adapter's url):
+| Data Platform (click to view setup guide) | latest verified version  |
+| ----------------------------------------- | ------------------------ |
+| [AlloyDB](alloydb-setup)                  | (same as `dbt-postgres`) |
+| [Azure Synapse](azuresynapse-setup)       | 1.3.0 :construction:     |
+| [BigQuery](bigquery-setup)                | 1.2.0                    |
+| [Databricks](databricks-setup)            | 1.3.0 :construction:     |
+| [Dremio](dremio-setup)                    | 1.3.0 :construction:     |
+| [Postgres](postgres-setup)                | 1.2.0                    |
+| [Redshift](redshift-setup)                | 1.2.0                    |
+| [Snowflake](snowflake-setup)              | 1.2.0                    |
+| [Spark](spark-setup)                      | 1.2.0                    |
+| [Starburst & Trino](trino-setup)          | 1.2.0 :construction:     |
+:construction:: Verification in progress
 
-```shell
-pip install git+https://github.com/MAINTAINER_NAME/ADAPTER_NAME.git
-```
+### Community Adapters
 
-### dbt Labs Supported
+| Data Platforms (click to view setup guide) |                                  |                                      |                                                                   
+|--------------------------------------------|----------------------------------|--------------------------------------|
+| [Athena](athena-setup)                     | [Greenplum](greenplum-setup)     | [Oracle](oracle-setup)               |
+| [Clickhouse](clickhouse-setup)             | [Hive](hive-setup)               | [Rockset](rockset-setup)             |
+| [IBM DB2](ibmdb2-setup)                    | [Impala](impala-setup)           | [SingleStore](singlestore-setup)     |
+| [Doris & SelectDB](doris-setup)            | [Infer](infer-setup)             | [SQLite](sqlite-setup)               |
+| [DuckDB](duckdb-setup)                     | [iomete](iomete-setup)           | [SQL Server & Azure SQL](mssql-setup) |
+| [Dremio](dremio-setup)                     | [Layer](layer-setup)             | [AzureSynapse](azuresynapse-setup)   |
+| [Exasol Analytics](exasol-setup)           | [Materialize](materialize-setup) | [Teradata](teradata-setup)           |
+| [Firebolt](firebolt-setup)                 | [MindsDB](mindsdb-setup)         | [TiDB](tidb-setup)                   |
+| [AWS Glue](glue-setup)                     | [MySQL](mysql-setup)             | [Vertica](vertica-setup)             |
+| [Databend Cloud](databend-setup)           |                                  |                                      |
 
-In addition to maintaining `dbt-core`, [dbt Labs](https://github.com/dbt-labs) maintains a set of adapters for some of the most common databases, warehouses, and platforms. (✅ indicates "full support.")
+## Adapter Installation
 
-| Adapter for  | Documentation | Core features | dbt Cloud | Install from PyPi |
-| ------------ | ------------- | ------------- | --------- | ----------------- |
-| Postgres     | [Profile Setup](postgres-profile) | ✅ | ✅  | `pip install dbt-postgres` |
-| Redshift     | [Profile Setup](redshift-profile), [Configuration](redshift-configs) | ✅ | ✅  | `pip install dbt-redshift` |
-| BigQuery     | [Profile Setup](bigquery-profile), [Configuration](bigquery-configs) | ✅  | ✅  | `pip install dbt-bigquery` |
-| Snowflake    | [Profile Setup](snowflake-profile), [Configuration](snowflake-configs) | ✅ | ✅  | `pip install dbt-snowflake` |
-| Apache Spark | [Profile Setup](spark-profile), [Configuration](spark-configs) | ✅ | ✅ | `pip install dbt-spark[PyHive]` |
+With a few exceptions [^1], all adapters listed below can be installed from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/get-started/installation).
 
-### Vendor Supported
+## Adapter Taxonomy
 
-These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.
+### Verified by dbt Labs
 
+In order to provide a more consistent and reliable experience, dbt Labs has a rigorous process by which we verify adapter plugins. The process covers aspects of development, documentation, user experience, and maintenance. These adapters earn a **Verified** designation so that users can have a certain level of trust and expectation when they use them. To learn more, see [Verifying a new adapter](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter).
 
-| Adapter for                                                                                                   | Documentation                                                                               | Install from PyPi |
-|---------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------| ----------------- |
-| AlloyDB (via [dbt-postgres](https://github.com/dbt-labs/dbt-postgres))                                        | [Profile Setup](alloydb-profile)                                                           | `pip install dbt-postgres` |
-| ClickHouse ([dbt-clickhouse](https://github.com/ClickHouse/dbt-clickhouse))                                   | [Profile Setup](clickhouse-profile), [Configuration](clickhouse-configs)                    | `pip install dbt-clickhouse` |
-| Databricks ([dbt-databricks](https://github.com/databricks/dbt-databricks))                                   | [Profile Setup](databricks-profile), [Configuration](spark-configs#databricks-configurations) | `pip install dbt-databricks` |
-| Firebolt ([dbt-firebolt](https://github.com/firebolt-db/dbt-firebolt))                                        | [Profile Setup](firebolt-profile), [Configuration](firebolt-configs)                        | `pip install dbt-firebolt` |
-| Hive ([dbt-hive](https://github.com/cloudera/dbt-hive))                                                     | [Profile Setup](hive-profile), [Configuration](hive-configs)                                | `pip install dbt-hive` |
-| Impala ([dbt-impala](https://github.com/cloudera/dbt-impala))                                                 | [Profile Setup](impala-profile), [Configuration](impala-configs)                            | `pip install dbt-impala` |
-| iomete ([dbt-iomete](https://github.com/iomete/dbt-iomete))                                                   | [Profile Setup](iomete-profile)                                                             | `pip install dbt-iomete` |
-| Layer Bigquery ([dbt-layer](https://github.com/layerai/dbt-layer))                                            | [Profile Setup](layer-profile)                                                              | `pip install dbt-layer-bigquery` |
-| Materialize ([dbt-materialize](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize)) | [Profile Setup](materialize-profile), [Configuration](materialize-configs)                  | `pip install dbt-materialize` |
-| MindsDB ([dbt-mindsdb](https://github.com/mindsdb/dbt-mindsdb))                                               | [Profile Setup](mindsdb-profile), [Configuration](mindsdb-configs)                          | `pip install dbt-mindsdb`     |
-| Oracle ([dbt-oracle](https://github.com/oracle/dbt-oracle))                                                   | [Profile Setup](oracle-profile)                                                             | `pip install dbt-oracle`     |
-| Rockset ([dbt-rockset](https://github.com/rockset/dbt-rockset))                                               | [Profile Setup](rockset-profile)                                                            | `pip install dbt-rockset` |
-| SingleStore ([dbt-singlestore](https://github.com/memsql/dbt-singlestore))                                    | [Profile Setup](singlestore-profile)                                                        | `pip install dbt-singlestore` |
-| Starburst & Trino ([dbt-trino](https://github.com/starburstdata/dbt-trino))                                   | [Profile Setup](trino-profile)                                                              | `pip install dbt-trino` |
-| Teradata ([dbt-teradata](https://github.com/teradata/dbt-teradata))                                           | [Profile Setup](teradata-profile), [Configuration](teradata-configs)                        | `pip install dbt-teradata` |
-| TiDB ([dbt-tidb](https://github.com/pingcap/dbt-tidb))                                                        | [Profile Setup](tidb-profile)                                                               | `pip install dbt-tidb` |
+We also welcome and encourage adapter plugins from the dbt community (see the below [Contributing to a pre-existing adapter](#contributing-to-a-pre-existing-adapter)). Please be mindful that these community maintainers are intrepid volunteers who donate their time and effort &mdash; so be kind, understanding, and help out where you can!
 
-### Community Supported
+### Maintainers
 
-These adapter plugins are contributed and maintained by members of the community 🌱
+Who made and maintains an adapter is certainly relevant, but we recommend using an adapter's verification status to determine the quality and health of an adapter. So far there are three categories of maintainers:
 
-| Adapter for            | Documentation                                                                | Notes                     | Install with pip             |
-|------------------------|------------------------------------------------------------------------------|---------------------------|------------------------------|
-| SQL Server & Azure SQL | [Profile Setup](mssql-profile), [Configuration](mssql-configs)               | SQL Server 2016 and later | `pip install dbt-sqlserver`  |
-| Azure Synapse          | [Profile Setup](azuresynapse-profile), [Configuration](azuresynapse-configs) | Azure Synapse 10+         | `pip install dbt-synapse`    |
-| Exasol Analytics       | [Profile Setup](exasol-profile)                                              | Exasol 6.x and later      | `pip install dbt-exasol`     |
-| Dremio                 | [Profile Setup](dremio-profile)                                              | Dremio 4.7+               | `pip install dbt-dremio`     |
-| Athena                 | [Profile Setup](athena-profile)                                              | Athena engine version 2   | `pip install dbt-athena-adapter` |
-| Vertica                | [Profile Setup](vertica-profile)                                             | Vertica 10.0+             | `pip install dbt-vertica`    |
-| AWS Glue               | [Profile Setup](glue-profile), [Configuration](glue-configs)                 | Glue 2.0+                 | `pip install dbt-glue`       |
-| Greenplum              | [Profile Setup](greenplum-profile), [Configuration](greenplum-configs)       | Greenplum 6.0+            | `pip install dbt-greenplum`  |
-| DuckDB                 | [Profile Setup](duckdb-profile)                                              | DuckDB 0.3.2              | `pip install dbt-duckdb`     |
-| SQLite                 | [Profile Setup](sqlite-profile)                                              | SQlite Version 3.0+       | `pip install dbt-sqlite`     |
-| MySQL                  | [Profile Setup](mysql-profile)                                               | MySQL 5.7 and 8.0         | `pip install dbt-mysql`      |
-| IBM DB2                | [Profile Setup](ibmdb2-profile)                                              | IBM DB2 V9fp2+            | `pip install dbt-ibmdb2`     |
+| Supported by | Maintained By                                                                                                                                                                                                                                  |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter) |
+| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.                                                                                                                     |
+| Community    | These adapter plugins are contributed and maintained by members of the community. 🌱                                                                                                                                                           |
+
+## Contributing to dbt-core adapters
+
+### Contributing to a pre-existing adapter
 
 Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
-- Join both the dedicated #adapter-ecosystem channel in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (e.g. #db-sqlserver, #db-athena) 
-- Check out the open issues in the plugin's source repository
 
-Note that, while no community plugins are currently supported in dbt Cloud, we expect this to change in the near future.
+- Join both the dedicated channel, [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM), in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (see **Slack Channel** column of above tables)
+- Check out the open issues in the plugin's source repository (follow relevant link in **Adapter Repository** column of above tables)
 
-## Creating a new adapter
+### Creating a new adapter
 
-dbt can be extended to any SQL-speaking database, warehouse, data lake, query engine, or analytical platform by means of an _adapter plugin_. These plugins can be built as separate Python modules, and dbt will discover them if they are installed on your system. If you see something missing from the lists above, and you're interested in developing an integration, read more about [building a new adapter](/docs/contributing/adapter-development/3-building-a-new-adapter).
+If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  [Adapter Development](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) section.
+
+If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter) for more information.
+
+[^1]: Here are the two different adapters. Use the PyPI package name when installing with `pip`
+
+    | Adapter repo name | PyPI package name    |
+    | ----------------- | -------------------- |
+    | `dbt-athena`      | `dbt-athena-adapter` |
+    | `dbt-layer`       | `dbt-layer-bigquery` |

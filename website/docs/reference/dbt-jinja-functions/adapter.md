@@ -3,11 +3,14 @@ title: "adapter"
 id: "adapter"
 ---
 
-## Overview
 
-`adapter` is a wrapper around the internal database adapter used by dbt. It allows users to make calls to the database in their dbt models. The adapter methods below will be translated into specific SQL statements depending on the type of adapter your project is using.
+Your database communicates with dbt using an internal database adapter object. For example, BaseAdapter and SnowflakeAdapter. The Jinja object `adapter` is a wrapper around this internal database adapter object.
 
-The following functions are available:
+`adapter` grants the ability to invoke adapter methods of that internal class via:
+* `{% do adapter.<method name> %}` -- invoke internal adapter method 
+* `{{ adapter.<method name> }}` -- invoke internal adapter method and capture its return value for use in materialization or other macros
+
+For example, the adapter methods below will be translated into specific SQL statements depending on the type of adapter your project is using:
 
 - [adapter.dispatch](dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
@@ -18,6 +21,7 @@ The following functions are available:
 - [adapter.drop_schema](#drop_schema)
 - [adapter.drop_relation](#drop_relation)
 - [adapter.rename_relation](#rename_relation)
+- [adapter.quote](#quote)
 
 ### Deprecated adapter functions
 
@@ -74,7 +78,7 @@ Expand the `to_relation` <Term id="table" />'s column types to match the schema 
 {% set tmp_relation = adapter.get_relation(...) %}
 {% set target_relation = adapter.get_relation(...) %}
 
-{% do adapter.expand_target_column_types(tmp_realtion, target_relation) %}
+{% do adapter.expand_target_column_types(tmp_relation, target_relation) %}
 ```
 
 </File>
@@ -119,7 +123,7 @@ A convenience wrapper for [get_relation](#get_relation). Returns the cached vers
 
 ```sql
 
-{% set relation_exists = (load_relation(ref('my_model')) is not none %}
+{% set relation_exists = load_relation(ref('my_model')) is not none %}
 {% if relation_exists %}
       {{ log("my_model has already been built", info=true) }}
 {% else %}
@@ -235,6 +239,26 @@ Renames a Relation the database.  The `rename_relation` method will rename the s
       identifier=this.identifier ~ "__dbt_backup") -%}
 
 {% do adapter.rename_relation(old_relation, backup_relation) %}
+```
+
+</File>
+
+
+## quote
+__Args__:
+
+ * `identifier`: A string to quote
+
+Encloses `identifier` in the correct quotes for the adapter when escaping reserved column names etc.
+
+**Usage:**
+
+<File name='example.sql'>
+
+```sql
+select 
+      'abc' as {{ adapter.quote('table_name') }},
+      'def' as {{ adapter.quote('group by') }} 
 ```
 
 </File>

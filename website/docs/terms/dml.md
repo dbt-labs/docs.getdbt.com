@@ -1,10 +1,14 @@
 ---
 id: dml
 title: DML
+description: Data Manipulation Language (DML) is a class of SQL statements that are used to query, edit, add and delete row-level data from database tables or views.
 displayText: DML  
 hoverSnippet: Data Manipulation Language (DML) is a class of SQL statements that are used to query, edit, add and delete row-level data from database tables or views. The main DML statements are SELECT, INSERT, DELETE, and UPDATE. 
-
 ---
+
+<head>
+	<title>DML: The SQL statements that make the data world go 'round</title>
+</head>
 
 Data Manipulation Language (DML) is a class of SQL statements that are used to query, edit, add and delete row-level data from database <Term id="table">tables</Term> or <Term id="view">views</Term>. The main DML statements are `SELECT`, `INSERT`, `DELETE`, and `UPDATE`.
 
@@ -81,7 +85,7 @@ UPDATE orders SET status = 'returned' WHERE order_id = 7;
 ```
 
 :::tip Tip
-The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. You'll see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-incremental-models-work-behind-the-scenes).
+The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. You'll see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/build/incremental-models#how-do-incremental-models-work-behind-the-scenes).
 :::
 
 ## Conclusion

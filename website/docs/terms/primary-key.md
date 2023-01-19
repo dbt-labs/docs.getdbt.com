@@ -1,9 +1,14 @@
 ---
 id: primary-key
 title: Primary key
+description: A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or surrogate key.
 displayText: primary key  
 hoverSnippet: A primary key is a non-null column in a database object that uniquely identifies each row.
 ---
+
+<head>
+  <title>Primary key in SQL (AKA Constraints) — dbt Labs</title>
+</head>
 
 A primary key is a non-null column in a database object that uniquely identifies each row. Primary keys take the form of a natural or <Term id="surrogate-key" />. It’s important to note that for each <Term id="table" /> or <Term id="view" /> in your database, there must only be one primary key column per database object.
 
@@ -28,7 +33,7 @@ Primary keys can be established two ways: naturally or derived through the data 
 A note on primary key data types: natural keys will often  take the form of an integer or other numeric value (ex. 45932). Surrogate keys, on the other hand, are usually alphanumeric strings since they are hashed values (ex. ‘62aef884fbe3470ce7d9a92140b09b17’).
 
 :::tip Tip
-dbt supports [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management), libraries of open-source macros and data models, to help data teams avoid doing duplicative work. One of these packages, [dbt_utils](https://github.com/dbt-labs/dbt-utils), contains a series of macros that are built to alleviate common struggles in data modeling. The [surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) macro offers a DRY (don’t repeat yourself) solution to creating surrogate keys across different data warehouses in the event that your data doesn’t contain natural keys.
+dbt supports [packages](https://docs.getdbt.com/docs/build/packages), libraries of open-source macros and data models, to help data teams avoid doing duplicative work. One of these packages, [dbt_utils](https://github.com/dbt-labs/dbt-utils), contains a series of macros that are built to alleviate common struggles in data modeling. The [surrogate_key](https://github.com/dbt-labs/dbt-utils#surrogate_key-source) macro offers a DRY (don’t repeat yourself) solution to creating surrogate keys across different data warehouses in the event that your data doesn’t contain natural keys.
 :::
 
 ## Data warehouse support for primary keys
@@ -103,7 +108,7 @@ In general for Redshift, it’s still good practice to define your primary keys 
 
 ### Google BigQuery
 
-BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid testing](https://docs.getdbt.com/docs/building-a-dbt-project/tests) in place to ensure your primary key fields are unique and non-null.
+BigQuery is pretty unique here in that it doesn’t support or enforce primary keys. If your team is on BigQuery, you’ll need to have some [pretty solid testing](/docs/build/tests) in place to ensure your primary key fields are unique and non-null.
 
 ### Databricks
 
@@ -136,7 +141,7 @@ If you don't have a field in your table that would act as a natural primary key,
 If your data warehouse doesn’t provide out-of-the box support and enforcement for primary keys, it’s important to clearly label and put your own constraints on primary key fields. This could look like:
 
 * **Creating a consistent naming convention for your primary keys**: You may see an `id` field or fields prefixed with `pk_` (ex. `pk_order_id`) to identify primary keys. You may also see the primary key be named as the obvious table grain (ex. In the jaffle shop’s `orders` table, the primary key is called `order_id`).
-* **Adding automated [tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
+* **Adding automated [tests](/docs/build/tests) to your data models**: Use a data tool, such as dbt, to create not null and unique tests for your primary key fields.
 
 ## Testing primary keys
 
@@ -146,7 +151,7 @@ When we talk about testing our primary keys, we really mean testing their unique
 2.  For databases that don’t offer support and enforcement of primary keys, you’re going to need to regularly test that primary keys aren’t violating their golden rule of uniqueness and non-nullness. To do this, we recommend implementing a tool like dbt that allows you to define version-controlled and code-based tests on your data models. Using these tests, you should create <code>[not null](https://docs.getdbt.com/reference/resource-properties/tests#not_null)</code> and <code>[unique](https://docs.getdbt.com/reference/resource-properties/tests#unique)</code> tests for every primary key field throughout your dbt project. Other methods for primary key testing may look like writing custom tests or ad hoc queries that check for uniqueness and non-nullness.
 
 :::tip Tip
-You can use dbt’s [documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) and [testing](https://docs.getdbt.com/reference/resource-properties/tests) capabilities to clearly identify and QA primary keys in your data models. For your primary key column, you should mention that the field is the unique identifier for that table and test for uniqueness and non-nullness.
+You can use dbt’s [documentation](https://docs.getdbt.com/docs/collaborate/documentation) and [testing](https://docs.getdbt.com/reference/resource-properties/tests) capabilities to clearly identify and QA primary keys in your data models. For your primary key column, you should mention that the field is the unique identifier for that table and test for uniqueness and non-nullness.
 :::
 
 ## Conclusion

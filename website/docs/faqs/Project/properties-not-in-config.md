@@ -6,7 +6,7 @@ id: properties-not-in-config
 
 ---
 
-In v0.21, dbt added the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
+dbt has the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
 
 Certain properties are special, because:
 - They have a unique Jinja rendering context
@@ -17,7 +17,7 @@ Certain properties are special, because:
 These properties are:
 - [`description`](resource-properties/description)
 - [`tests`](resource-properties/tests)
-- [`docs`](resource-properties/docs)
+- [`docs`](/reference/resource-configs/docs)
 - `columns`
 - [`quote`](resource-properties/quote)
 - [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
