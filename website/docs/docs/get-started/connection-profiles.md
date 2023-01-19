@@ -202,6 +202,13 @@ Specifying this environment variable overrides the directory that dbt looks for 
 ```
 $ export DBT_PROFILES_DIR=path/to/directory
 ```
+If you use WSL or Linux based system. You can edit your `~/.bashrc` file and the system always use even you closed your session.
+ 
+`$ vi ~/.bashrc` open the `~/.bashrc` file
+ 
+`$ export DBT_PROFILES_DIR=path/to/directory` add the export statement and save your changes.
+  
+`$ source ~/.bashrc` define your enviroment variables for current session.
 
 ## Advanced: Using environment variables
 
