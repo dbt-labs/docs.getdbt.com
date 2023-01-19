@@ -25,7 +25,7 @@ Review the following options and outcomes:
 
 | Options | Outcomes |
 |--------| ------- |
-| **1. Select checkbox <a id="checkbox"></a>** | The **Run source freshness** checkbox in your **Execution Settings** will run `dbt source freshness` as the first step in your job and won't break subsequent steps if the  fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`. |
+|  **Select checkbox <a id="checkbox"></a>** | The **Run source freshness** checkbox in your **Execution Settings** will run `dbt source freshness` as the first step in your job and won't break subsequent steps if the  fails. If you wanted your job dedicated *exclusively* to running freshness checks, you still need to include at least one placeholder step, such as `dbt compile`. |
 | **2. Add as a run step** | Add the `dbt source freshness` command to a job anywhere in your list of run steps. However, if your source data is out of date &mdash; this step will "fail', and subsequent steps will not run. dbt Cloud will trigger email notifications (if configured) based on the end state of this step. <br /><br /> You can create a new job to snapshot source freshness. <br /><br /> If you *do not* want your models to run if your source data is out of date, then it could be a good idea to run `dbt source freshness` as the first step in your job. Otherwise, we recommend adding `dbt source freshness` as the last step in the job, or creating a separate job just for this task.  |
 
 
