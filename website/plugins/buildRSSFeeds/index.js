@@ -20,7 +20,6 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         return null
       
       // Generate RSS feeds
-
       // Prepare data and sort by update date
       const releaseNotesData = releaseNotesFiles.map(note => {
         const { data } = note
