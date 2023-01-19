@@ -83,7 +83,7 @@ Remember, it’s important to only look for duplicate rows for the values that i
 
 To build our `grain_id` key, we use the pure gold of the *[dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)*. If you’re unsure of what this package is, stop reading right now and make sure this is installed in your dbt project. It will bring joy to your life and ease to your struggling!
 
-`dbt_utils.get_filtered_columns_in_relation` is the star of the show here, which allows you to grab all the columns, *except* the ones you put into the exclude list. If you only have a couple columns, it may be easier just to list them for the `cols` variable instead of using the this function.
+`dbt_utils.get_filtered_columns_in_relation` is the star of the show here, which allows you to grab all the columns from a [relation](/reference/dbt-classes#relation) (reference/source), *except* the ones you specify, and put them into a list. If you only have a couple columns, it may be easier just to list them for the `cols` variable instead of using the this function.
 
 ```sql
 {%- macro build_key_from_columns(dbt_relation, exclude=[]) -%}
