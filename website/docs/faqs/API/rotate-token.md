@@ -16,7 +16,7 @@ curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/your_user_
 --header 'Authorization: Token your_current_token'
 ```
 
-2. Replace the fields, `your_user_id` and `your_current_token`, with your information.  
+2. Replace the fields `your_user_id` and `your_current_token` with your information.  
 
     - Learn [how to find your](/faqs/Accounts/find-user-id) `your_user_id`. 
     - To find your `your_current_token`, go to **Account Settings** -> **API Access** and copy the API key.
