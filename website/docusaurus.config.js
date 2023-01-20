@@ -248,7 +248,7 @@ var siteSettings = {
     },
     "/js/gtm.js",
     "/js/onetrust.js",
-    "https://kit.fontawesome.com/7110474d41.js"
+    "https://kit.fontawesome.com/7110474d41.js",
   ],
   stylesheets: [
     "/css/fonts.css",
