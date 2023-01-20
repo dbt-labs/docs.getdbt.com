@@ -1,6 +1,6 @@
 ---
 id: data-types
-title: SQL data types
+title: SQL Data Types
 description: The different data types in SQL are numeric, string, date, booleans, and semi-structured. This content covers the differences between them and their subcategories.
 slug: /sql-reference/data-types
 ---
