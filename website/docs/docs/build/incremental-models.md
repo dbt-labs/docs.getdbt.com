@@ -309,7 +309,7 @@ select ...
 
 `incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
 
-For example, this an example of a model configuration in a `yml` file we might expect to see on Snowflake:
+This an example of a model configuration in a `yml` file we might expect to see on Snowflake:
 
 ```yml
 
