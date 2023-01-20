@@ -40,7 +40,7 @@ function Lightbox({
           </a>
         </span>
         {title && (
-          <p className={styles.title}>{ title }</p>
+          <span className={styles.title}>{ title }</span>
         )}
       </div>
     </>
