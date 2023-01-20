@@ -12,7 +12,7 @@ dbt Cloud provides a helpful interface around dbt's [source data freshness](/doc
 
 ### Enabling source freshness snapshots
 
-[`dbt build`](reference/commands/build) does _not_ include source freshness checks when it builds and tests resources in your DAG. As such, here's a common pattern for defining jobs:
+[`dbt build`](reference/commands/build) does _not_ include source freshness checks when building and testing resources in your DAG. Instead, you can use one of these common patterns for defining jobs:
 - Add `dbt build` to the run step to run models, tests, and so on. 
 - Select the **Generate docs on run** checkbox to automatically [generate project docs](/docs/collaborate/build-and-view-your-docs#set-up-a-documentation-job)
 - Select the **Run on source freshness** checkbox to enable [source freshness](#checkbox) as the first to step of the job. 
