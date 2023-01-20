@@ -21,7 +21,7 @@ function Lightbox({
   return (
     <>
       <link href="/css/featherlight-styles.css" type="text/css" rel="stylesheet" />
-      <div 
+      <span 
         className={`
           ${styles.docImage} 
           ${collapsed ? styles.collapsed : ''}
@@ -42,7 +42,7 @@ function Lightbox({
         {title && (
           <span className={styles.title}>{ title }</span>
         )}
-      </div>
+      </span>
     </>
   );
 }
