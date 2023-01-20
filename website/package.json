@@ -11,6 +11,7 @@
     "@docusaurus/preset-classic": "2.2.0",
     "@docusaurus/theme-search-algolia": "2.2.0",
     "@mdx-js/react": "^1.6.21",
+    "@monaco-editor/react": "^4.4.6",
     "@svgr/webpack": "^6.0.0",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
@@ -24,9 +25,12 @@
     "js-yaml": "^4.1.0",
     "mobx": "^6.3.9",
     "node-polyfill-webpack-plugin": "^1.1.4",
+    "papaparse": "^5.3.2",
     "prism-react-renderer": "^1.2.1",
+    "raw-loader": "^4.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-full-screen": "^1.1.1",
     "react-is": "^18.1.0",
     "react-tooltip": "^4.2.21",
     "redoc": "^2.0.0-rc.57",
@@ -36,6 +40,9 @@
     "styled-components": "5.3.3",
     "swiper": "^8.4.3",
     "url-loader": "^4.1.1"
+  },
+  "optionalDependencies": {
+    "@dbt-labs/react-dbt-dag": "0.8.7"
   },
   "devDependencies": {
     "@swc/core": "^1.2.174",
