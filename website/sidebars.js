@@ -1,6 +1,5 @@
 const sidebarSettings = {
   docs: [
-    "docs/dbowser-demo",
     "docs/introduction",
     "docs/supported-data-platforms",
     {
