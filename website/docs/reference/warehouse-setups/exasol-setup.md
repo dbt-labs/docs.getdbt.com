@@ -73,4 +73,15 @@ dbt-exasol:
       schema: SCHEMA
 ```
 
+#### Optional parameters
+<ul>
+  <li><strong>connection_timeout</strong>: defaults to pyexasol default</li>
+  <li><strong>socket_timeout</strong>: defaults to pyexasol default</li>
+  <li><strong>query_timeout</strong>: defaults to pyexasol default</li>
+  <li><strong>compression</strong>: default: False</li>
+  <li><strong>encryption</strong>: default: False</li>
+  <li><strong>protocol_version</strong>: default: v3</li>
+  <li><strong>row_separator</strong>: default: CRLF for windows - LF otherwise</li>
+  <li><strong>timestamp_format</strong>: default: YYYY-MM-DDTHH:MI:SS.FF6</li>
+</ul>
 </File>
