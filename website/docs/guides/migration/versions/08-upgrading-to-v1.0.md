@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to v1.0"
+description: New features and changes in dbt Core v1.0
 ---
 ### Resources
 
@@ -8,7 +9,7 @@ title: "Upgrading to v1.0"
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 dbt Core major version 1.0 includes a number of breaking changes! Wherever possible, we have offered backwards compatibility for old behavior, and (where necessary) made migration simple.
 
