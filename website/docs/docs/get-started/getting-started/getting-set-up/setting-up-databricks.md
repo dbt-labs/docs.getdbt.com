@@ -241,8 +241,9 @@ To generate a user token for your development credentials in dbt Cloud, click on
 6. If the connection test succeeds, click **Next**. If it fails, you may need to check your Databricks settings and credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
-If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
 ### Setting up a managed repository
 
