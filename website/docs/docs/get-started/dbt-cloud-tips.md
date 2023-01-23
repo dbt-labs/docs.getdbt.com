@@ -9,7 +9,7 @@ sidebar_label: "dbt Cloud tips"
 
 The Cloud IDE provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. Use this Cloud IDE cheat sheet to help you quickly reference some common operations.
 
-## IDE Keyboard shortcuts
+## Cloud IDE Keyboard shortcuts
 
 There are default keyboard shortcuts that can help make development more productive and easier for everyone.
 
@@ -57,4 +57,5 @@ There are default keyboard shortcuts that can help make development more product
 ## Related docs
 
 - [Getting started](/docs/get-started/getting-started/overview)
+- [About dbt Cloud](/docs/get-started/dbt-cloud-features)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
