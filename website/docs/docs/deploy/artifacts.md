@@ -1,5 +1,5 @@
 ---
-title: "Building and configuring artifacts"
+title: "Artifacts"
 id: "artifacts"
 description: "Use artifacts to power your automated docs site and source freshness data." 
 ---
