@@ -293,7 +293,7 @@ nate_sooter:
 noah_kennedy:
   image_url: /img/blog/authors/noah-kennedy.png
   job_title: Software Developer
-  description: Noah Kennedy is a Senior Software Developer at Tempus Labs, helping manage the worlds largest repository of clinical and molecular patient data. Noah picked up dbt at Tempus 2 years ago, and has worked extensively on internal dbt development for Tempus — creating macros, custom materializations, and testing frameworks that allow scientists to experiment more and data engineer less. Outside of Tempus, Noah spends his time running, biking, playing music, and exploring coffee shops. You can find more of his writing at https://noahkennedy.co/about/.
+  description: Noah Kennedy is a Software Developer at Tempus Labs, helping manage the worlds largest repository of clinical and molecular patient data. Noah picked up dbt at Tempus 2 years ago, and has worked extensively on internal dbt development for Tempus — creating macros, custom materializations, and testing frameworks that allow scientists to experiment more and data engineer less. Outside of Tempus, Noah spends his time running, biking, playing music, and exploring coffee shops. You can find more of his writing at https://noahkennedy.co/about/.
   organization: Tempus
   name: Noah Kennedy
 
