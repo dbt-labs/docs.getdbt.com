@@ -9,34 +9,6 @@ sidebar_label: "dbt Cloud tips"
 
 The Cloud IDE provides keyboard shortcuts, features, and development tips to help you work faster and be more productive. Use this Cloud IDE cheat sheet to help you quickly reference some common operations.
 
-## Most popular
-
-**Organize tabs**
-
-You can move your tabs around to reorganize your work in the IDE. You can also right-click on a tab to close multiple tabs or view and select a list of actions to take. Right-click in the editor to access other options, including text wrap.
-
-**Drag and drop**
-
-You can also drag and drop files in the file tree or in the editor. Use the file breadcrumb on the top of the IDE for quicker navigation. You can access adjacent files in the same file by right-clicking on the breadcrumb file.
-
-**Search across files**
-
-You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O to find text across all files in your current project and write your filename. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view them in the IDE.
-
-**Command bar and status**
-
-You can run commands from the command bar at the bottom of the IDE or by using the **Build** button. Use the [rich model selection syntax](/docs/reference/node-selection/syntax) to run [dbt commands](/docs/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking **Runs**.
-
-The status icon on the lower right corner of the IDE gives you an indicator of the health of your project. You can identify errors by clicking on the status icon for more details or by clicking **Restart the IDE**.
-
-**Find and replace**
-
-Press Command-F or Control-F to open the find-and-replace bar in the upper right corner of the current file in the IDE. The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
-
-**DAG in the IDE**
-
-Double-click a node in the directed acyclic graph (DAG) to open that file in a new tab. Click **Expand** on the upper right side of the DAG and use node selection syntax (`select` or `exclude`) to view a subset of your DAG.
-
 ## IDE Keyboard shortcuts
 
 There are default keyboard shortcuts that can help make development more productive and easier for everyone.
@@ -50,13 +22,6 @@ There are default keyboard shortcuts that can help make development more product
 - Highlight a portion of code and use the above shortcuts to Preview or Compile code
 - Enter two underscores (__) in the IDE to reveal a list of dbt functions
 
-## Multiple selections
-
-You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
-
-- Option-Command-Down  arrow
-- Option-Command-Up arrow
-- Press Option and click on an area
 
 ## Package tips
 
