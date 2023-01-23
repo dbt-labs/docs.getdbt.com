@@ -49,9 +49,10 @@ The dbt Cloud IDE comes with features that make it easier for you to develop, bu
 | **Formatting** | Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/). 
 | **Git diff view**  | Ability to see what has been changed in a file before you make a pull request. 
 | **dbt autocomplete**  |  There are four new types of autocomplete features to help you develop faster:<br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var 
-| **Dark mode**  | Use dark mode in the Cloud IDE for a great viewing experience in low-light environments. 
 | **DAG in the IDE** | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. Double-click a node in the directed acyclic graph (DAG) to open that file in a new tab. Expand the DAG and use node selection syntax (select or exclude) to view a subset of your DAG. Note: The default view is +model+, however, you can change it to 2+model+2.  |
-| **Status bar** | This area provides you with useful information about your IDE and project status. You also have additional options like restarting or [recloning your repo](/docs/collaborate/git/version-control-basics).
+| **Status bar** | This area provides you with useful information about your IDE and project status. You also have additional options like enabling light or dark mode, restarting the IDE or [recloning your repo](/docs/collaborate/git/version-control-basics).
+| **Dark mode**  | Use dark mode in the Cloud IDE for a great viewing experience in low-light environments. 
+
 
 **Start up process**
 
