@@ -2,16 +2,22 @@
 title: "PR template"
 id: "pr-template"
 ---
-
 ## Configure pull request (PR) template URLs
 
 When changes are committed on a branch in the IDE, dbt Cloud can prompt users to
 open a new Pull Request for the code changes. To enable this functionality, ensure
 that a PR Template URL is configured in the Repository details page in your
-Account Settings. **Note:** If this template URL is unset, then the IDE will
-instead show a prompt to merge the changes directly into the `master` branch.
+Account Settings. If this setting is blank, the IDE will prompt users to merge the changes directly into their default branch.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url-new-ide.png" title="Open a PR in the IDE"/>
+
+### PR Template URL by git provider
+
+The PR Template URL setting will be automatically set for most repositories, depending on the connection method.
+
+ - If you are connecting to your repository using in-app integrations with your git provider, this URL setting will be automatically populated and non-editable.
+ - If you are connecting to your repository using the `Git Clone` method via SSH, this URL will be autopopulated, but editable. 
+ - If you are using a dbt Cloud Managed repository, this URL will not be set, and IDE will prompt users to merge the changes directly into their default branch.
 
 The PR template URL supports two variables which can be used to build a URL string.
 These variables, `{{source}}` and `{{destination}}` return branch names based on the
