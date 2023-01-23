@@ -111,7 +111,6 @@ The model timing dashboard can only be viewed for jobs that have successfully co
 
 <Lightbox src="/img/docs/dbt-cloud/Model-timing-tab.png" title="Model timing tab"/>
 
-
 ## Related questions
 
 <details>
