@@ -43,9 +43,9 @@ models:
         description: Unique ID associated with the record
         tests:
           - unique:
-              alias: patient_ _id_ _unique
+              alias: patient__id__unique
           - not_null:
-              alias: patient_ _id_ _not_null
+              alias: patient__id__not_null
 ```
 <center><i>Example Data Integrity Tests in a YAML file — the alias argument is an important piece that will be touched on later.</i></center><br />
 
