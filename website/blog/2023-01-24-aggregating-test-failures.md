@@ -1,5 +1,5 @@
 ---
-title: "Aggregating test failures with dbt"
+title: "How we cut our tests by 80% while increasing data quality: the power of aggregating test failures in dbt"
 description: "A singular data quality test just failed...whew things are still ok — when *many* dbt tests fail, how do you make those failures actionable? Noah explores how aggregating test failures in dbt led to more informative, actionable, and self-service testing initiatives for end data users."
 slug: aggregating-test-failures-with-dbt
 
