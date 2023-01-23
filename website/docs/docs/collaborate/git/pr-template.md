@@ -15,8 +15,7 @@ Account Settings. If this setting is blank, the IDE will prompt users to merge t
 
 The PR Template URL setting will be automatically set for most repositories, depending on the connection method.
 
- - If you are connecting to your repository using in-app integrations with your git provider, this URL setting will be automatically populated and non-editable.
- - If you are connecting to your repository using the `Git Clone` method via SSH, this URL will be autopopulated, but editable. 
+- If you are connecting to your repository using in-app integrations with your git provider or using the `Git Clone` method via SSH, this URL setting will be automatically populated and can be edited.
  - If you are using a dbt Cloud Managed repository, this URL will not be set, and IDE will prompt users to merge the changes directly into their default branch.
 
 The PR template URL supports two variables which can be used to build a URL string.
