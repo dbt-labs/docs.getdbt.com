@@ -51,7 +51,27 @@ BigQuery supports public data sets that can be directly queried, so we will show
 
 1. Navigate to the [BigQuery Console](https://console.cloud.google.com/bigquery) again. Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify your are using the correct email account.
 
-2. Copy and paste the below queries into the Query Editor to validate that you are able to run them successfully.
+2. Download the three CSV files locally that you will need for this tutorial. You can find them here:
+
+    * [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
+    * [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
+    * [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
+
+3. In [BigQuery Console](https://console.cloud.google.com/bigquery), follow the instructions : 
+    1. Right-click the three vertical points next to the "jaffle_shop" dataset, and then select "Create Table"
+    2. Configure the table :
+        * Create table from : Upload
+        * Select file : select the file "jaffle_shop_customers.csv" from your local machine
+        * Dataset : jaffle_shop
+        * Table : customers
+        * Schema : select "Auto detect"
+        * In Advanced options : 
+            * Field Delimiter : Comma
+            * Header rows to skip : 1
+        * (Leave the remaining fields with the default values)
+    3. Repeat step 3 for files "jaffle_shop_orders.csv" and "stripe_payments.csv".
+
+4. Copy and paste the below queries into the Query Editor to validate that you are able to run them successfully.
 
     ```sql
     select * from `dbt-tutorial.jaffle_shop.customers`;
@@ -59,11 +79,11 @@ BigQuery supports public data sets that can be directly queried, so we will show
     select * from `dbt-tutorial.stripe.payment`;
     ```
 
-3. Verify you can see an output:
+5. Verify you can see an output:
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/bigquery/query-results.png" title="Bigquery Query Results" />
     </div>
-4. Create datasets. Datasets in BigQuery are equivalent to schemas in a traditional database.
+6. Create datasets. Datasets in BigQuery are equivalent to schemas in a traditional database.
 
     1. Find your project in the picker. Click the three dots to expose options.
     2. Click **Create dataset**.
