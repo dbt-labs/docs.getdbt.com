@@ -26,7 +26,7 @@ seeds:
 
 
 
-Or (as of v0.21):
+Or:
 
 <File name='seeds/properties.yml'>
 
@@ -79,3 +79,6 @@ seeds:
 
 ## Recommendation
 Use this configuration only when required, i.e. when the type inference is not working as expected. Otherwise you can omit this configuration.
+
+## Troubleshooting
+Note: The `column_types` configuration is case-sensitive, regardless of quoting configuration. If you specify a column as `Country_Name` in your Seed, you should reference it as `Country_Name`, and not `country_name`.  
