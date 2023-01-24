@@ -12,8 +12,6 @@ An optional seed configuration, used to determine whether column names in the se
 
 <Changelog>
 
-* `v0.15.0`: Introduced in v0.15.0, with a default of False
-* `v0.21.0`: Introduced `config` property for seeds
 * Future: The default value may change in a future release. If you're using seed files, it is recommended that you set this configuration explicitly to avoid breaking changes in the future.
 
 </Changelog>
