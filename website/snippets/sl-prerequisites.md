@@ -1,6 +1,6 @@
 <VersionBlock firstVersion="1.3" >
 
-- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America.
+- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions-ip-addresses">hosted</a> in North America.
   * Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition. 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
 - Have both your production and development environments running dbt version 1.3 or higher <br />
@@ -13,7 +13,7 @@
 
 <VersionBlock lastVersion="1.2">
 
-- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America.
+- Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions-ip-addresses">hosted</a> in North America.
   * Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definition. 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API. <br />
 - Have both your production and development environments running dbt version 1.2 (latest) <br />

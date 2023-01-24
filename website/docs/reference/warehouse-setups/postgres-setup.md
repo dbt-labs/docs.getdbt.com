@@ -4,7 +4,7 @@ id: "postgres-setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
-  github_repo: 'dbt-labs/dbt-postgres'
+  github_repo: 'dbt-labs/dbt-core'
   pypi_package: 'dbt-postgres'
   min_core_version: 'v0.4.0'
   cloud_support: Supported
@@ -60,9 +60,9 @@ company-name:
       user: [username]
       password: [password]
       port: [port]
-      dbname: [database name]
+      dbname: [database name] # or database instead of dbname
       schema: [dbt schema]
-      threads: [1 or more]
+      threads: [optional, 1 or more]
       [keepalives_idle](#keepalives_idle): 0 # default 0, indicating the system default. See below
       connect_timeout: 10 # default 10 seconds
       [retries](#retries): 1  # default 1 retry on error/timeout when opening connections
