@@ -27,7 +27,7 @@ It's one of the best weeks of the year - it's [Coalesce](https://coalesce.getdbt
 We shipped environment variables in dbt Cloud. Environment variables create a way to separate code from configuration - allowing you to set config based on context and keep secrets like git tokens securely stored.
 
 #### New products and features
-- You can now add environment variables to your dbt Cloud project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in dbt Core. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables). 
+- You can now add environment variables to your dbt Cloud project. Why does this matter? Environment variables are a fundamental building block of a dbt project, which until now, we only enabled in dbt Core. They power many use cases such as cloning private packages, limiting the amount of data that is processed in development environments, changing your data sources depending on the environment, and more. Read about environment variables in our [blog post](https://blog.getdbt.com/introducing-environment-variables-in-dbt-cloud/) or [docs](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables).
 
 
 ## dbt Cloud v1.1.38 (October 27, 2021)
@@ -103,8 +103,8 @@ We’ve improved the tabbing experience in the IDE. Tabs now work much more intu
 
 #### Performance improvements and enhancements
 - We've been working on some nice improvements to tabs in our IDE. We’ve fixed deficiencies with tabs that caused users to lose work if they didn’t hit save regularly enough. Additionally, opening, closing, and the order of the tabs work much more smoothly.
-- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness).
-- Added a new endpoint to allow API key rotation via `POST https://cloud.getdbt.com/api/v2/users/{user-id}/apiKey`
+- You may have noticed that there is now a source freshness checkbox in your execution settings when you configure a job on dbt Cloud. Selecting this checkbox will run `dbt source freshness` as the first step in your job, but it will not break subsequent steps if it fails. Updated source freshness documentation available [here](/docs/deploy/source-freshness).
+- Added a new endpoint to allow API key rotation via `POST https://cloud.getdbt.com/api/v2/users/{user-id}/apikey`
 
 
 ## dbt Cloud v1.1.30 (July 7, 2021)
@@ -139,7 +139,7 @@ We shipped a far better experience for GitLab users. Be sure to check out new CI
 
 #### New products and features
 
-- `Slim CI`: We’ve made Slim CI available for all our cloud customers! With Slim CI, you don't have to rebuild and test all your models; you can instruct dbt Cloud to run jobs on only modified or new resources. If you are a GitHub or GitLab user, try creating a new job that runs on pull requests and you can signal to dbt to run only on these modified resources by including the `state:modified+` argument. Read more about Slim CI [here](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github#slim-ci).
+- `Slim CI`: We’ve made Slim CI available for all our cloud customers! With Slim CI, you don't have to rebuild and test all your models; you can instruct dbt Cloud to run jobs on only modified or new resources. If you are a GitHub or GitLab user, try creating a new job that runs on pull requests and you can signal to dbt to run only on these modified resources by including the `state:modified+` argument. Read more about Slim CI [here](/docs/deploy/cloud-ci-job).
 
 - Native GitLab authentication for dbt Cloud Developer and Team Tiers: We’ve shipped native GitLab auth into GA. You can now import new GitLab repos with a couple clicks, trigger CI builds when Merge Requests are opened in GitLab, and carry GitLab permissions through to dbt Cloud IDE's git actions. Read how to set up native GitLab auth [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab).
 
@@ -178,7 +178,7 @@ A lot of improvements coming for GitLab webhooks and native auth. We also fixed 
 - Fix SSO re-auth page
 - Fix blank verify email page
 - Resolve git refresh regression
-- Fix missing "Run on Merge" button in Job creation/edit form- 
+- Fix missing "Run on Merge" button in Job creation/edit form-
 - Warn users they have unsaved changes
 - Updates test command suggestions and regex for common action suggestions
 - Updates order of stylesheet import to fix missing border bug
@@ -243,7 +243,7 @@ Exciting things coming down the pipe - ongoing enhancements to the command bar e
 
 ## dbt Cloud v1.1.24 (April 14, 2021)
 
-Phew! As our company grows, so too does our changelog! Look at all these! The big chunks you'll see here are related to some ongoing in-IDE work, focused on the command bar experience, as well as some partner & connection work (see the Gits, Databricks, and so forth), and of course ongoing longer-term bets around metadata! 
+Phew! As our company grows, so too does our changelog! Look at all these! The big chunks you'll see here are related to some ongoing in-IDE work, focused on the command bar experience, as well as some partner & connection work (see the Gits, Databricks, and so forth), and of course ongoing longer-term bets around metadata!
 
 #### Enhancements
 
@@ -282,7 +282,7 @@ Phew! As our company grows, so too does our changelog! Look at all these! The bi
 
 ## dbt Cloud v1.1.23 (March 31, 2021)
 
-Some backend work, some frontend work, some bug fixes: a nice mix for this release. A few user facing changes you may have noticed already are the persistence of dark/light mode settings across refresh (no more blinding IDE!), branches in the IDE being categorized by Active vs. Removed from Remote, and a tidier new file creation flow, with the file tree expanding to show the new file and opening a new tab to populate the said file! 
+Some backend work, some frontend work, some bug fixes: a nice mix for this release. A few user facing changes you may have noticed already are the persistence of dark/light mode settings across refresh (no more blinding IDE!), branches in the IDE being categorized by Active vs. Removed from Remote, and a tidier new file creation flow, with the file tree expanding to show the new file and opening a new tab to populate the said file!
 
 #### Enhancements
 
@@ -291,11 +291,11 @@ Some backend work, some frontend work, some bug fixes: a nice mix for this relea
 - Upgrade to Tailwind 2.0 and FUI 0.0.5
 - Allow users to create metadata tokens from the UI
 - Support manually-managed group memberships
-- SSO: resolve bug w/ first & last names acting up 
+- SSO: resolve bug w/ first & last names acting up
 - Integrate Delighted for NPS surveys
-- Add dbt 0.19.1rc1 to Cloud 
+- Add dbt 0.19.1rc1 to Cloud
 - Add an account-level setting to require users to re-authenticate via SSO
-- Read-only metadata ServiceToken for Cloud 
+- Read-only metadata ServiceToken for Cloud
 - Persist IDE light mode / dark mode across refresh
 - Categorize & order git branches
 - Improve new file creation flow
@@ -336,7 +336,7 @@ Rolling out a few long-term bets to ensure that our beloved dbt Cloud does not f
 
 ## dbt Cloud v1.1.21 (March 3, 2021)
 
-This changelog wraps up work on what we've been calling the SQL Drawer in the IDE - some design nudges, some interface adjustments, overall a cleaner and snappier experience. If you haven't dipped into the IDE in a while it's worth taking a look! Some back-end work as well, making SSO and role based admin easier and more broadly available for Enterprise level folks, along with your usual assortment of bug squashes and iterations. 
+This changelog wraps up work on what we've been calling the SQL Drawer in the IDE - some design nudges, some interface adjustments, overall a cleaner and snappier experience. If you haven't dipped into the IDE in a while it's worth taking a look! Some back-end work as well, making SSO and role based admin easier and more broadly available for Enterprise level folks, along with your usual assortment of bug squashes and iterations.
 
 
 #### Enhancements
@@ -359,7 +359,7 @@ This changelog wraps up work on what we've been calling the SQL Drawer in the ID
 
 ## dbt Cloud v1.1.20 (February 17, 2021)
 
-Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE. 
+Continued stability and quality of life improvements for folks with multiple accounts and projects - no longer will you have to remember the chronological order of birth of your accounts and projects, as they'll be ordered by the much easier to parse (for human brains anyway) alphabetical order. We're also shipping some experience improvements in the SQL Drawer at the bottom half of the IDE.
 
 #### Enhancements
 
@@ -377,7 +377,7 @@ Continued stability and quality of life improvements for folks with multiple acc
 
 ## dbt Cloud v1.1.19 (February 3, 2021)
 
-The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment on dbt Cloud! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release! 
+The latest release of dbt (Oh Nineteen Oh) is now available for your enjoyment on dbt Cloud! We're also releasing some service token pieces here, though they're not quite ready for wide release yet. Moving forward, Oh Nineteen Oh will probably end up being the minimum version required to run the Metadata API & Metadata Toolkit, so, this is a big release!
 
 #### Enhancements
 
@@ -417,4 +417,3 @@ Most notable things here are around foundational work toward future feature rele
 - Add DBT_CLOUD_CONTEXT environment variable
 - Add logic to hide IP whitelist message for on-prem customers
 - fix 0.19.0rc1 run image dependencies
-

@@ -3,12 +3,14 @@ title: "About the CLI"
 id: "about-the-cli"
 ---
 
-dbt ships with a Command Line Interface (CLI) for running your dbt project. This way of running dbt a dbt project is free and open source.
+dbt ships with a command line interface (CLI) for running your dbt project. This way of running dbt a dbt project is free and open source.
 
 To use the CLI, your workflow generally looks like:
 * **Build your dbt project in a code editor:** popular choices include VSCode and Atom.
 * **Run your project from the command line:**
   * macOS ships with a default Terminal program, however you can also use iTerm or the command line prompt within a code editor to execute dbt commands
+
+The CLI is also available for dbt Cloud.  Additional components must be installed for the CLI to communicate via dbt Cloud APIs.  For more information, visit the [dbt Cloud CLI GitHub repository](https://github.com/data-mie/dbt-cloud-cli)
 
 :::info How we set up our computers for working on dbt projects
 

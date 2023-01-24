@@ -5,21 +5,65 @@ id: "materialize-configs"
 
 ## Performance optimizations
 
-### Incremental models
-Materialize, at its core, is a real-time database that delivers incremental view updates without ever compromising on latency or correctness.
-Materialized views are incremental models, defined once. 
+### Clusters
+
+<Changelog>
+
+- **v1.2.0:** Enable the configuration of [clusters](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize/CHANGELOG.md#120---2022-08-31).
+
+</Changelog>
+
+The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that is used to maintain materialized views or indexes can be configured in your [profile](/reference/profiles.yml) using the `cluster` connection parameter. To override the cluster that is used for specific models (or groups of models), use the `cluster` configuration parameter.
+
+<File name='my_view_cluster.sql'>
+
+```sql
+{{ config(materialized='materializedview', cluster='not_default') }}
+
+select ...
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  project_name:
+    +materialized: materializedview
+    +cluster: not_default
+```
+
+</File>
+
+
+
+### Incremental models: Materialized Views
+
+Materialize, at its core, is a real-time database that delivers incremental view updates without ever compromising on latency or correctness. Use [materialized views](https://materialize.com/docs/overview/key-concepts/#materialized-views) to compute and incrementally update the results of your query.
 
 ### Indexes
 
+<Changelog>
+
+- **v1.2.0:** Enable additional configuration for [indexes](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize/CHANGELOG.md#120---2022-08-31).
+
+</Changelog>
+
+Like in any standard relational database, you can use [indexes](https://materialize.com/docs/overview/key-concepts/#indexes) to optimize query performance in Materialize. Improvements can be significant, reducing response times down to single-digit milliseconds.
+
 Materialized views (`materializedview`), views (`view`) and sources (`source`) may have a list of `indexes` defined. Each [Materialize index](https://materialize.com/docs/sql/create-index/) can have the following components:
 
-- `columns` (list, required): one or more columns on which the index is defined
-- `type` (string, optional): a supported index type. The only supported type is [`arrangement`](https://materialize.com/docs/overview/arrangements/).
+- `columns` (list, required): one or more columns on which the index is defined. To create an index that uses _all_ columns, use the `default` component instead.
+- `name` (string, optional): the name for the index. If unspecified, Materialize will use the materialization name and column names provided.
+- `cluster` (string, optional): the cluster to use to create the index. If unspecified, indexes will be created in the cluster used to create the materialization.
+- `default` (bool, optional): Default: `False`. If set to `True`, creates a default index that uses all columns.
 
-<File name='my_view.sql'>
+<File name='my_view_index.sql'>
 
 ```sql
 {{ config(materialized='view',
+          indexes=[{'columns': ['col_a'], 'cluster': 'cluster_a'}]) }}
           indexes=[{'columns': ['symbol']}]) }}
 
 select ...
@@ -27,25 +71,13 @@ select ...
 
 </File>
 
-If one or more indexes are configured on a resource, dbt will run `create index` <Term id="ddl" /> statement(s) as part of that resource's <Term id="materialization" />, within the same transaction as its main `create` statement. For the index's name, dbt uses a hash of its properties and the current timestamp, in order to guarantee uniqueness and avoid namespace conflict with other indexes.
+<File name='my_view_default_index.sql'>
 
 ```sql
-create index if not exists
-"3695050e025a7173586579da5b27d275"
-on "my_target_database"."my_target_schema"."view_model"
-(symbol);
-```
+{{ config(materialized='view',
+    indexes=[{'default': True}]) }}
 
-You can also configure indexes for a number of resources at once:
-
-<File name='dbt_project.yml'>
-
-```yaml
-models:
-  project_name:
-    subdirectory:
-      +indexes:
-        - columns: ['symbol']
+select ...
 ```
 
 </File>
@@ -54,12 +86,11 @@ models:
 
 <Changelog>
 
-- **v1.1.1:** Provide support for storing the results of a test query in a materialized view, using the `store_failures` config.
+- **v1.1.1:** Provide support for storing the results of a test query in a materialized view using the `store_failures` config.
 
 </Changelog>
 
-If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view using the test query. This view is a continuously updating representation of failures.
-
+If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view for each configured test that can keep track of failures over time. By default, test views are created in a schema suffixed with `dbt_test__audit`. To specify a custom suffix, use the `schema` config.
 <File name='dbt_project.yml'>
 
 ```yaml

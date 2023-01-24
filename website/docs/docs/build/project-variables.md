@@ -98,3 +98,6 @@ The order of precedence for variable declaration is as follows (highest priority
 4. The variable's default argument (if one is provided).
 
 If dbt is unable to find a definition for a variable after checking these four places, then a compilation error will be raised.
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="variables"/>

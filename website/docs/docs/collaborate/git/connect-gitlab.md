@@ -9,11 +9,11 @@ Connecting your GitLab account to dbt Cloud provides convenience and another lay
 - Import new GitLab repos with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
 - Carry GitLab user permissions through to dbt Cloud IDE's git actions.
-- Trigger [Continuous integration](cloud-enabling-continuous-integration-with-github) builds when merge requests are opened in GitLab.
+- Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when merge requests are opened in GitLab.
 
 The steps to integrate GitLab in dbt Cloud depend on your plan. If you are on:
-- the Developer or Team plan, read these [instructions](/connecting-gitlab#for-dbt-cloud-developer-and-team-tiers).
-- the Enterprise plan, jump ahead to these [instructions](/connecting-gitlab#for-the-dbt-cloud-enterprise-tier).
+- the Developer or Team plan, read these [instructions](#for-dbt-cloud-developer-and-team-tiers).
+- the Enterprise plan, jump ahead to these [instructions](#for-the-dbt-cloud-enterprise-tier).
 
 ## For dbt Cloud Developer and Team tiers
 
@@ -38,11 +38,11 @@ dbt Cloud enterprise customers have the added benefit of bringing their own GitL
 - Carry GitLab's user repository permissions (read / write access) through to dbt Cloud IDE's git actions.
 
 In order to connect GitLab in dbt Cloud, a GitLab account admin must:
-1. [Set up a GitLab OAuth application](/cloud-configuring-dbt-cloud/connecting-gitlab#setting-up-a-gitlab-oauth-application).
-2. [Add the GitLab app to dbt Cloud](/connecting-gitlab#adding-the-gitlab-oauth-application-to-dbt-cloud).
+1. [Set up a GitLab OAuth application](#setting-up-a-gitlab-oauth-application).
+2. [Add the GitLab app to dbt Cloud](#adding-the-gitlab-oauth-application-to-dbt-cloud).
 
 Once the admin completes those steps, dbt Cloud developers need to:
-1. [Personally authenticate with GitLab](cloud-configuring-dbt-cloud/connecting-gitlab#personally-authenticating-with-gitlab) from dbt Cloud.
+1. [Personally authenticate with GitLab](#personally-authenticating-with-gitlab) from dbt Cloud.
 
 
 ### Setting up a GitLab OAuth application
@@ -85,7 +85,7 @@ In dbt Cloud, input the following values:
 | **Application ID** | *copy value from GitLab app* |
 | **Secret** | *copy value from GitLab app* |
 
-Note, if you have a special hosted version of GitLab, modify the **GitLab Instance** to use the hostname provided for your organization instead - for example https://gitlab.yourgreatcompany.com/.
+Note, if you have a special hosted version of GitLab, modify the **GitLab Instance** to use the hostname provided for your organization instead - for example `https://gitlab.yourgreatcompany.com/`.
 
 Once the form is complete in dbt Cloud, click **Save**.
 
@@ -93,7 +93,7 @@ You will then be redirected to GitLab and prompted to sign into your account. Gi
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Auth.png" title="GitLab Authorization Screen" />
 
-Once you've accepted, you should be redirected back to dbt Cloud, and your integration is ready for developers on your team to [personally authenticate with](/connecting-gitlab#personally-authenticating-with-gitlab).
+Once you've accepted, you should be redirected back to dbt Cloud, and your integration is ready for developers on your team to [personally authenticate with](#personally-authenticating-with-gitlab).
 
 ### Personally authenticating with GitLab
 dbt Cloud developers on the Enterprise plan must each connect their GitLab profiles to dbt Cloud, as every developer's read / write access for the dbt repo is checked in the dbt Cloud IDE.

@@ -7,7 +7,7 @@ id: "code-of-conduct"
 
 dbt has a supportive, active community of thousands of smart, kind, and helpful people who share a commitment to elevating the analytics profession.
 
-You can get involved in the dbt community by connecting at [events](/events), getting or giving help in any of our many channels, contributing to dbt or a dbt package, and many other ways.
+You can get involved in the dbt community by connecting at [events](/community/events), getting or giving help in any of our many channels, contributing to dbt or a dbt package, and many other ways.
 
 People genuinely love this community, and we are committed to maintaining the spirit of it. As such have written this Code of Conduct to help all participants understand how to best participate in our community.
 
@@ -68,6 +68,8 @@ Ways to demonstrate this value:
 - Share things you have learned on Discourse
 - Host events
 
+Be mindful that others may not want their image or name on social media, and when attending or hosting an in-person event, ask permission prior to posting about another person.
+
 ### Be curious.
 
 Always ask yourself “why?” and strive to be continually learning.
@@ -101,7 +103,7 @@ As a short summary:
 
 If you are a vendor (i.e. you represent an organization that sells a product or service relevant to our community), then there are additional guidelines you should be aware of.
 
-Most importantly — do not solicit members of our community as lead generation. You can find the rest of these [here](/community/vendor-guidelines).
+Most importantly — do not solicit members of our community as lead generation. You can find the rest of these [here](/community/resources/vendor-guidelines).
 
 ### Guideline violations — 3 strikes method
 

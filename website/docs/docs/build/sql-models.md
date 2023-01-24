@@ -13,24 +13,24 @@ id: "sql-models"
 
 :::info Building your first models
 
-If you're new to dbt, we recommend that you read the [Getting Started guide](/docs/get-started/overview) to build your first dbt project with models.
+If you're new to dbt, we recommend that you read the [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project with models.
 
 :::
 
 <VersionBlock firstVersion="1.3">
 
-In v1.3, dbt Core is adding support for **Python models**.
+Starting in v1.3, dbt Core adds support for **Python models**.
 
-dbt's Python capabilities are an extension of its capabilities with SQL models, which are introduced in the discussion and examples below. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](python-models)
+dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](python-models)
 
 </VersionBlock>
 
-A model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
+A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
-- The name of the file is used as the model name
+- The model name is inherited from the filename.
 - Models can be nested in subdirectories within the `models` directory
 
-When you execute the [`dbt run` command](run), dbt will build this model in your <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
+When you execute the [`dbt run` command](run), dbt will build this model <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
 
 For example, consider this `customers` model:
 
@@ -64,7 +64,7 @@ left join customer_orders using (customer_id)
 
 </File>
 
-When you execute `dbt run`, dbt will build this as a <Term id="view" /> named `customers` in your target schema:
+When you execute `dbt run`, dbt will build this as a _view_ named `customers` in your target schema:
 
 ```sql
 create view dbt_alice.customers as (
@@ -95,11 +95,11 @@ create view dbt_alice.customers as (
 ```
 
 Why a _view_ named `dbt_alice.customers`? By default dbt will:
-* create models as <Term id="view">views</Term>
-* build models in a target schema you define
-* use your file name as the view or <Term id="table" /> name in the database
+* Create models as <Term id="view">views</Term>
+* Build models in a target schema you define
+* Use your file name as the view or <Term id="table" /> name in the database
 
-You can use _configurations_ to change any of these behaviors — more on that below.
+You can use _configurations_ to change any of these behaviors — more on that later.
 
 ### FAQs
 <FAQ src="Runs/checking-logs" />
@@ -110,8 +110,9 @@ You can use _configurations_ to change any of these behaviors — more on that b
 
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
-* Change the [materialization](materializations) that a model uses — a <Term id="materialization" /> determines the SQL that dbt uses to create the model in your warehouse.
-* Build models into separate [schemas](using-custom-schemas).
+
+* Changing the <Term id="materialization" /> that a model uses &mdash; a [materialization](materializations) determines the SQL that dbt uses to create the model in your warehouse.
+* Build models into separate [schemas](/docs/build/custom-schemas).
 * Apply [tags](resource-configs/tags) to a model.
 
 Here's an example of model configuration:
@@ -151,7 +152,7 @@ with customer_orders as ...
 
 </File>
 
-Importantly, configurations are applied hierarchically — a configuration applied to a subdirectory will override any general configurations.
+It is important to note that configurations are applied hierarchically — a configuration applied to a subdirectory will override any general configurations.
 
 You can learn more about configurations in the [reference docs](model-configs).
 
@@ -161,7 +162,7 @@ You can learn more about configurations in the [reference docs](model-configs).
 
 
 ## Building dependencies between models
-By using the [`ref` function](ref) in the place of table names in a query, you can build dependencies between models. Use the name of another model as the argument for `ref`.
+You can build dependencies between models by using the [`ref` function](ref) in place of table names in a query. Use the name of another model as the argument for `ref`.
 
 <Tabs
   defaultValue="model"
@@ -251,16 +252,16 @@ create view analytics.customers as (
 
 
 dbt uses the `ref` function to:
-* Determine the order to run models in by creating a dependent acyclic graph (DAG).
+* Determine the order to run the models by creating a dependent acyclic graph (DAG).
 <Lightbox src="/img/dbt-dag.png" title="The DAG for our dbt project" />
 
-* Manage separate environments — dbt will replace the model specified in the `ref` function with the database name for the <Term id="table" /> (or view). Importantly, this is environment-aware — if you're running dbt with a target schema named `dbt_alice`, it will select from an upstream table in the same schema. Check out the tabs above to see this in action.
+* Manage separate environments &mdash; dbt will replace the model specified in the `ref` function with the database name for the <Term id="table" /> (or view). Importantly, this is environment-aware &mdash; if you're running dbt with a target schema named `dbt_alice`, it will select from an upstream table in the same schema. Check out the tabs above to see this in action.
 
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
-You can also document and test models — skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
 
+You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
 
 ## Additional FAQs
 <FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />

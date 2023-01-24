@@ -150,7 +150,7 @@ group by 1
 Getting whitespace control right is often a lot of trial and error! We recommend that you prioritize the readability of your model code over the readability of the compiled code, and only do this as an extra polish.
 
 ## Use a macro to return payment methods
-Here, we've hardcoded the list of payment methods in our model. We may need to access this list from another model. A good solution here is to use a [variable](using-variables), but for the purpose of this tutorial, we're going to instead use a macro!
+Here, we've hardcoded the list of payment methods in our model. We may need to access this list from another model. A good solution here is to use a [variable](/docs/build/project-variables), but for the purpose of this tutorial, we're going to instead use a macro!
 
 [Macros](jinja-macros#macros) in Jinja are pieces of code that can be called multiple times – they are analogous to a function in Python, and are extremely useful if you find yourself repeating code across multiple models.
 
@@ -243,7 +243,7 @@ This is actually an [Agate table](https://agate.readthedocs.io/page/api/table.ht
 {% set payment_methods_query %}
 select distinct
 payment_method
-from app_data.payments
+from {{ ref('raw_payments') }}
 order by 1
 {% endset %}
 
@@ -311,7 +311,7 @@ Macros let analysts bring software engineering principles to the SQL they write.
 
 A number of useful dbt macros have already been written in the [dbt-utils package](https://github.com/dbt-labs/dbt-utils). For example, the [get_column_values](https://github.com/dbt-labs/dbt-utils#get_column_values-source) macro from dbt-utils could be used instead of the `get_column_values` macro we wrote ourselves (saving us a lot of time, but at least we learnt something along the way!).
 
-Install the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package in your project (docs [here](package-management)), and then update your model to use the macro from the package instead:
+Install the [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) package in your project (docs [here](/docs/build/packages)), and then update your model to use the macro from the package instead:
 
 <File name='models/order_payment_method_amounts.sql'>
 

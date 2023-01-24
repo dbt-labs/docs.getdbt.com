@@ -11,7 +11,7 @@ that a PR Template URL is configured in the Repository details page in your
 Account Settings. **Note:** If this template URL is unset, then the IDE will
 instead show a prompt to merge the changes directly into the `master` branch.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url.png" title="Open a PR in the IDE"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url-new-ide.png" title="Open a PR in the IDE"/>
 
 The PR template URL supports two variables which can be used to build a URL string.
 These variables, `{{source}}` and `{{destination}}` return branch names based on the
@@ -43,14 +43,6 @@ https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 
 </TabItem>
 </Tabs>
-
-## Configure custom branches
-
-By default in Development Environments, dbt Cloud attempts to reference the `main` branch in connected repositories. If you want to use a different default branch name, you can configure dbt Cloud with a custom branch setting.
-
-For example, you can use the `develop` branch of a connected repository. Edit an environment, then in "General settings" select  **Only run on a custom branch** , and in "Custom branch" type **develop** or the name of your custom branch.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="Configuring a custom base repository branch"/>
 
 ## Example templates
 

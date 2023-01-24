@@ -15,11 +15,11 @@ dbt Cloud supports developer [OAuth](https://cloud.google.com/bigquery/docs/auth
 
 
 To set up BigQuery OAuth in dbt Cloud, a BigQuery admin must:
-1. [Create a BigQuery OAuth 2.0 client ID and secret](/cloud-setting-up-bigquery-oauth#creating-a-bigquery-oauth-20-client-id-and-secret) in BigQuery.
-2. [Configure the connection](/cloud-setting-up-bigquery-oauth#configure-the-connection-in-dbt-cloud) in dbt Cloud.
+1. [Create a BigQuery OAuth 2.0 client ID and secret](#creating-a-bigquery-oauth-20-client-id-and-secret) in BigQuery.
+2. [Configure the connection](#configure-the-connection-in-dbt-cloud) in dbt Cloud.
 
 To use BigQuery in the dbt Cloud IDE, all developers must:
-1. [Authenticate to BigQuery](/cloud-setting-up-bigquery-oauth#authenticating-to-bigquery) in the their profile credentials.
+1. [Authenticate to BigQuery](#authenticating-to-bigquery) in the their profile credentials.
 
 
 ### Creating a BigQuery OAuth 2.0 client ID and secret

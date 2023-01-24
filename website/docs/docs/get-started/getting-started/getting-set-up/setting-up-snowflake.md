@@ -175,7 +175,7 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 
 ### Option 1: Connect dbt Cloud and Snowflake with partner connect
 
-1. With your Snowflake account up and running with data, we’re ready to connect it with dbt Cloud. We’re going to use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to set up your dbt Cloud account and project. Using Partner Connect will allow you to create a complete dbt account with your [Snowflake connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake), [a managed repository](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository), [environments](https://docs.getdbt.com/docs/guides/managing-environments), and credentials. 
+1. With your Snowflake account up and running with data, we’re ready to connect it with dbt Cloud. We’re going to use [Snowflake Partner Connect](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html) to set up your dbt Cloud account and project. Using Partner Connect will allow you to create a complete dbt account with your [Snowflake connection](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 2. There’s a couple of ways you can access the Partner Connect page depending on if you’re navigating in the classic Snowflake UI or the new UI. 
 
   * **Snowflake Classic UI:** If you’re using the classic version of the Snowflake UI, you can click the Partner Connect button in the top bar of your account. From there, click on the dbt tile to open up the connect box. 
@@ -271,8 +271,9 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 5. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
-If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repository already. If not, you will need to create your repository connection. 
 
 ### Setting up a managed repository
 

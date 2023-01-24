@@ -2,10 +2,6 @@
 title: Snapshot properties
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure snapshots in all `.yml` files
-</Changelog>
-
 Snapshots properties can be declared in `.yml` files in:
 - your `snapshots/` directory (as defined by the [`snapshot-paths` config](snapshot-paths))
 - your `models/` directory (as defined by the [`model-paths` config](model-paths))
@@ -21,7 +17,7 @@ snapshots:
   - name: <snapshot name>
     [description](description): <markdown_string>
     [meta](meta): {<dictionary>}
-    [docs](resource-properties/docs):
+    [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
       [<snapshot_config>](snapshot-configs): <config_value>

@@ -11,7 +11,8 @@ id: "documentation"
 * If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](/docs/get-started/getting-started/overview) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
-* [Tests](building-a-dbt-project/tests)
+
+* [Tests](/docs/build/tests)
 
 ## Overview
 
@@ -28,7 +29,7 @@ Here's an example docs site:
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-screenshot.png" title="Auto-generated dbt documentation website"/>
 
 ## Adding descriptions to your project
-To add descriptions to your project, use the `description:` key in the same files where you declare [tests](building-a-dbt-project/tests), like so:
+To add descriptions to your project, use the `description:` key in the same files where you declare [tests](/docs/build/tests), like so:
 
 <File name='models/<filename>.yml'>
 
@@ -196,7 +197,7 @@ The `dbt docs serve` command is only intended for local/development hosting of t
 
 dbt's documentation website was built to make it easy to host on the web. The site is "static,” meaning you don't need any "dynamic" servers to serve the docs. You can host your documentation in several ways:
 
-* Use [dbt Cloud](cloud-generating-documentation)
+* Use [dbt Cloud](/docs/collaborate/documentation)
 * Host on [Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) (optionally [with IP access restrictions](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3))
 * Publish with [Netlify](https://discourse.getdbt.com/t/publishing-dbt-docs-to-netlify/121)
 * Use your own web server like Apache/Nginx

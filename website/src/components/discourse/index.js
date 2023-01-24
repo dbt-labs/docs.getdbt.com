@@ -96,7 +96,7 @@ export const DiscourseFeed = ({
   // Set initial min-height
   // This is to avoid layout shifts
   // which affects Lighthouse performance scores
-  const setMinHeight = isError
+  const setMinHeight = isError || !topics?.length > 0
     ? 'auto'
     : 414
   
@@ -112,9 +112,9 @@ export const DiscourseFeed = ({
           className={feedStyles.loadingIcon} 
           data-testid="feed-loader"
         />
-      ) : isError || !topics?.length > 0 ? (
-        <p data-testid='error-text'>Unable to load forum topics at this time.</p>
-      ) : (
+        ) : isError || !topics?.length > 0 ? (
+          <p data-testid='error-text'>No recent forum posts for this topic. Ask a question!</p>
+        ) : (
         <ul data-testid="topics-list">
           {topics.map(topic => (
             <li key={topic.id}>
@@ -147,7 +147,7 @@ export const DiscourseFeed = ({
         </ul>
       )}
       {show_cta && (
-        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" data-testid='feed-cta'>{link_text}</a>
+        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" rel="noopener noreferrer" data-testid='feed-cta'>{link_text}</a>
       )}
     </div>
   )
@@ -163,7 +163,7 @@ export const DiscourseHelpFeed = ({
   show_cta = true,
   link_text = 'Ask the Community',
   link_href = `https://discourse.getdbt.com/new-topic${category ? `?category=${category}` : ''}${tags ? (!category ? `?tags=${tags}` : `&tags=${tags}`) : ''}`,
-  after,
+  after = '2000-01-01',
   before,
   inString, 
   min_posts,
@@ -172,13 +172,14 @@ export const DiscourseHelpFeed = ({
   max_views,
   term,
   title,
-  topic_count = 5,
+  topic_count = 3,
   styles = {}
 }) => {
   return <DiscourseFeed 
     order={order}
     status={status}
     category={category}
+    tags={tags}
     link_text={link_text}
     link_href={link_href}
     show_cta={show_cta}
@@ -200,7 +201,7 @@ export const DiscourseHelpFeed = ({
 function TopicWrapper({ topic, children }) {
   if(topic?.slug && topic?.id) {
     return (
-      <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank">{children}</a>
+      <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank" rel="noopener noreferrer">{children}</a>
     )
   } else {
     return (
@@ -209,6 +210,7 @@ function TopicWrapper({ topic, children }) {
   }
 }
 
+// Format date by YYYY-MM-DD
 function formatDate(date) {
   return `${date.getFullYear()}-${('0'+ (date.getMonth()+1)).slice(-2)}-${('0'+ date.getDate()).slice(-2)}`
 }

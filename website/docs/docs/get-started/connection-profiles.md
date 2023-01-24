@@ -25,7 +25,7 @@ profile: 'jaffle_shop'
 
 dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
-<VersionBlock firstVersion="0.20" lastVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 By default, dbt expects the `profiles.yml` file to be located in the `~/.dbt/` directory.
 
@@ -71,7 +71,7 @@ A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses &mdash sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
+The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
@@ -97,7 +97,7 @@ Use the [debug](debug) command to check whether you can successfully connect to 
 
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [Managing Environments](managing-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [Managing Environments](/docs/collaborate/environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
@@ -137,11 +137,11 @@ In development, a pattern we’ve found to work well is to name the schema in yo
 
 Note that there’s no need to create your target schema beforehand – dbt will check if the schema already exists when it runs, and create it if it doesn’t.
 
-While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](using-custom-schemas).
+While the target schema represents the default schema that dbt will use, it may make sense to split your models into separate schemas, which can be done by using [custom schemas](/docs/build/custom-schemas).
 
 ## Understanding threads
 
-When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.
+When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is [4 threads](/docs/dbt-versions/release-notes/Dec-2022/default-thread-value).
 
 For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
@@ -157,7 +157,7 @@ You can use a different number of threads than the value defined in your target 
 
 The parent directory for `profiles.yml` is determined using the following precedence:
 
-<VersionBlock firstVersion="0.20"  lastVersion="1.2">
+<VersionBlock lastVersion="1.2">
 
 1. `--profiles-dir` option
 1. `DBT_PROFILES_DIR` environment variable

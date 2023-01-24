@@ -18,7 +18,7 @@ This guide will walk you through:
 
 ## Prerequisites
 
-Before beginning this guide, make sure that you have access to **new or existing Google account**. You can use a personal or work account to set up BigQuery through Google Cloud Platform (GCP).
+Before beginning this guide, make sure that you have access to [new or existing Google account](https://support.google.com/accounts/answer/27441?hl=en). You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
 
 ## Setting up
 
@@ -120,6 +120,7 @@ Now let's set up the connection between dbt Cloud and BigQuery.
 5. If you see "Connection test Succeeded!" then click **Continue**. If it fails, you might need to go back and regenerate your BigQuery credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
 ### Setting up a managed repository
 

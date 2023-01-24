@@ -44,7 +44,8 @@ var siteSettings = {
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
     image: "/img/avatar.png",
@@ -64,13 +65,16 @@ var siteSettings = {
     announcementBar: {
       id: "live_qa",
       content:
-        "Register now for Coalesce 2022. The Analytics Engineering Conference!",
+        "Take the 5-minute dbt Community Survey!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
-    announcementBarActive: true,
-    announcementBarLink: "https://coalesce.getdbt.com/",
+    announcementBarActive: false,
+    announcementBarLink: "",
+    // Set community spotlight member on homepage
+    // This is the ID for a specific file under docs/community/spotlight
+    communitySpotlightMember: "",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -153,6 +157,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
+            // {
+            //   label: "Spotlight",
+            //   to: "/community/spotlight",
+            // },
           ],
         },
         {
@@ -171,13 +179,12 @@ var siteSettings = {
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
-            <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
-            <button id=\"ot-sdk-btn\" class=\"ot-sdk-show-settings\">Cookie Settings</button>
+            <button id=\"ot-sdk-btn\" onclick="openPreferenceCenter()">Cookie Settings</button>
           </div>
 
           <div class='footer__items--right'>
             <a href='https://twitter.com/getdbt'><i class="fa-brands fa-twitter"></i></a>
-            <a href='https://www.getdbt.com/community/'><i class="fa-brands fa-slack"></i></a>
+            <a href='https://www.getdbt.com/community/join-the-community/'><i class="fa-brands fa-slack"></i></a>
             <a href='https://github.com/dbt-labs/dbt-core'><i class="fa-brands fa-github"></i></a>
           </div>
           `,
@@ -228,6 +235,7 @@ var siteSettings = {
     path.resolve("plugins/customWebpackConfig"),
     [path.resolve("plugins/buildGlobalData"), { versionedPages }],
     path.resolve("plugins/buildAuthorPages"),
+    // path.resolve("plugins/buildSpotlightIndexPage"),
   ],
   scripts: [
     {
@@ -239,6 +247,7 @@ var siteSettings = {
       defer: true,
     },
     "/js/gtm.js",
+    "/js/onetrust.js",
     "https://kit.fontawesome.com/7110474d41.js",
   ],
   stylesheets: [
@@ -255,8 +264,8 @@ var siteSettings = {
         "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
       crossorigin: "anonymous",
     },
-    {rel: 'icon', href: 'img/favicon.png', type: 'image/png'},
-    {rel: 'icon', href: 'img/favicon.svg', type: 'image/svg+xml'},
+    {rel: 'icon', href: '/img/favicon.png', type: 'image/png'},
+    {rel: 'icon', href: '/img/favicon.svg', type: 'image/svg+xml'},
   ],
 };
 

@@ -44,7 +44,7 @@ To the right of the `Project Default` column are all your environments. Values s
 
 **Overriding environment variables at the job level**
 
-You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpretted differently depending on the job.
+You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpreted differently depending on the job.
 
 When setting up or editing a job, you will see a section where you can override environment variable values defined at the environment or project level.
 
@@ -88,7 +88,7 @@ While all environment variables are encrypted at rest in dbt Cloud, dbt Cloud ha
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Environment Variables/DBT_ENV_SECRET.png" title="DBT_ENV_SECRET prefix obfuscation"/>
 
-**Note**: An environment variable can be used to store a [git token for repo cloning](/cloud-environment-variables#clone-private-packages). We recommend you make the git token's permissions read only and consider using a machine account or service user's PAT with limited repo access in order to practice good security hygiene.
+**Note**: An environment variable can be used to store a [git token for repo cloning](/docs/build/environment-variables#clone-private-packages). We recommend you make the git token's permissions read only and consider using a machine account or service user's PAT with limited repo access in order to practice good security hygiene.
 
 ### Special environment variables
 
@@ -118,7 +118,7 @@ PR builds triggered via a webhook_
 Environment variables can be used in many ways, and they give you the power and flexibility to do what you want to do more easily in dbt Cloud.
 
 #### Clone private packages
-Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/building-a-dbt-project/package-management#private-packages).
+Now that you can set secrets as environment variables, you can pass git tokens into your package HTTPS URLs to allow for on-the-fly cloning of private repositories. Read more about enabling [private package cloning](/docs/build/packages#private-packages).
 
 #### Dynamically set your warehouse in your Snowflake connection
 Environment variables make it possible to dynamically change the Snowflake virtual warehouse size depending on the job. Instead of calling the warehouse name directly in your project connection, you can reference an environment variable which will get set to a specific virtual warehouse at runtime.

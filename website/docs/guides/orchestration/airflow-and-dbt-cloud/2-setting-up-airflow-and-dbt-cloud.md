@@ -13,7 +13,7 @@ In this example, we’re using Homebrew to install Astro CLI. Follow the instruc
 brew install astronomer/cloud/astrocloud
 ```
 
-<WistiaVideo id="uosszw1qul" />
+<WistiaVideo id="uosszw1qul" paddingTweak="62.25%" />
 
 ## 2. Install and start Docker Desktop
 
@@ -21,7 +21,7 @@ Docker allows us to spin up an environment with all the apps and dependencies we
 
 Follow the instructions [here](https://docs.docker.com/desktop/) to install Docker desktop for your own operating system. Once Docker is installed, ensure you have it up and running for the next steps.
 
-<WistiaVideo id="qr84pa8k9f" />
+<WistiaVideo id="qr84pa8k9f" paddingTweak="62.25%" />
 
 ## 3. Clone the airflow-dbt-cloud repository
 
@@ -32,13 +32,16 @@ git clone https://github.com/sungchun12/airflow-dbt-cloud.git
 cd airflow-dbt-cloud
 ```
 
-<WistiaVideo id="oo1yel115i" />
+<WistiaVideo id="oo1yel115i" paddingTweak="62.25%" />
 
 ## 4. Start the Docker container
 
-1. Run the following command to spin up the Docker container and start your local Airflow deployment:
+You can initialize an Astronomer project in an empty local directory using a Docker container, and then run your project locally using the `start` command.
+
+1. Run the following commands to initialize your project and start your local Airflow deployment:
 
     ```bash
+    astrocloud dev init
     astrocloud dev start
     ```
 
@@ -46,9 +49,9 @@ cd airflow-dbt-cloud
 
     ```bash
     Airflow is starting up! This might take a few minutes…
-        
+
     Project is running! All components are now available.
-        
+
     Airflow Webserver: http://localhost:8080
     Postgres Database: localhost:5432/postgres
     The default Airflow UI credentials are: admin:admin
@@ -64,17 +67,17 @@ cd airflow-dbt-cloud
 
     ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-login.png)
 
-<WistiaVideo id="2rzsjo0uml" />
+<WistiaVideo id="2rzsjo0uml" paddingTweak="62.25%" />
 
 ## 5. Create a dbt Cloud service token
 
 Create a service token from within dbt Cloud using the instructions [found here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). Ensure that you save a copy of the token, as you won’t be able to access this later. In this example we use `Account Admin`, but you can also use `Job Admin` instead for token permissions.
 
-<WistiaVideo id="amubh6qmwq" />
+<WistiaVideo id="amubh6qmwq" paddingTweak="62.25%" />
 
 ## 6. Create a dbt Cloud job
 
-In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-quickstart/#create-a-new-job).
+In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/schedule-a-job).
 
 - Configure the job with the commands that you want to include when this job kicks off, as Airflow will be referring to the job’s configurations for this rather than being explicitly coded in the Airflow DAG. This job will run a set of commands rather than a single command.
 - Ensure that the schedule is turned **off** since we’ll be using Airflow to kick things off.
@@ -84,4 +87,4 @@ In your dbt Cloud account create a job, paying special attention to the informat
 https://cloud.getdbt.com/#/accounts/{account_id}/projects/{project_id}/jobs/{job_id}/
 ```
 
-<WistiaVideo id="qiife5rzlp" />
+<WistiaVideo id="qiife5rzlp" paddingTweak="62.25%" />

@@ -43,6 +43,9 @@ const sidebarSettings = {
               ],
             },
             "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
@@ -50,7 +53,7 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-          "docs/get-started/getting-started-dbt-core",
+            "docs/get-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
@@ -86,8 +89,9 @@ const sidebarSettings = {
               type: "category",
               label: "Models",
               items: [
+                "docs/build/models",
                 "docs/build/sql-models",
-                "docs/building-a-dbt-project/building-models/python-models",
+                "docs/build/python-models",
               ],
             },
             "docs/build/seeds",
@@ -191,6 +195,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
+        "docs/deploy/regions-ip-addresses",
         {
           type: "category",
           label: "dbt Cloud deploy options",
@@ -210,20 +215,24 @@ const sidebarSettings = {
             "docs/deploy/dashboard-status-tiles",
           ],
         },
+        "docs/deploy/about-state",
         "docs/deploy/cloud-ci-job",
       ],
     },
     {
       type: "category",
-      label: "Collaborate",
+      label: "Collaborate with others",
       items: [
         "docs/collaborate/environments",
         {
           type: "category",
           label: "Git version control",
           items: [
+            "docs/collaborate/git-version-control",
+            "docs/collaborate/git/version-control-basics",
+            "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/resolve-merge-conflicts",
+            "docs/collaborate/git/merge-conflicts",
             {
               type: "category",
               label: "Supported git providers",
@@ -257,7 +266,7 @@ const sidebarSettings = {
           type: "category",
           label: "Manage access",
           items: [
-            "docs/collaborate/manage-access/licenses-and-groups",
+            "docs/collaborate/manage-access/about-access",
             "docs/collaborate/manage-access/seats-and-users",
             {
               type: "category",
@@ -293,10 +302,22 @@ const sidebarSettings = {
     },
     {
       type: "category",
+      label: "Use the dbt Semantic Layer",
+      collapsed: true,
+      items: [
+        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
+        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/avail-sl-integrations",
+      ],
+    },
+    {
+      type: "category",
       label: "Available dbt versions",
       items: [
         "docs/dbt-versions/core",
         "docs/dbt-versions/upgrade-core-in-cloud",
+        "docs/dbt-versions/product-lifecycles",
         {
           type: "category",
           label: "dbt Cloud Release Notes",
@@ -329,29 +350,22 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt CLI": ["dbt-cli/cli-overview"],
   "dbt Cloud": [
     {
       type: "category",
       label: "Overview",
       link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: ["docs/dbt-cloud/cloud-quickstart"],
+      items: [],
     },
     {
       type: "category",
       label: "dbt Cloud IDE",
-      items: [
-        "docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide",
-        "docs/dbt-cloud/cloud-ide/the-ide-git-button",
-        "docs/dbt-cloud/cloud-ide/ide-beta",
-      ],
+      items: ["docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide"],
     },
     {
       type: "category",
       label: "Configuring dbt Cloud",
       items: [
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database",
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository",
         "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
       ],
     },
@@ -367,7 +381,6 @@ const sidebarSettings = {
       items: [
         "docs/dbt-cloud/using-dbt-cloud/artifacts",
         "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer",
       ],
     },
   ],
@@ -377,6 +390,7 @@ const sidebarSettings = {
       label: "Project configs",
       items: [
         "reference/dbt_project.yml",
+        "reference/dbtignore",
         "reference/project-configs/analysis-paths",
         "reference/project-configs/asset-paths",
         "reference/project-configs/clean-targets",
@@ -419,6 +433,8 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
+        "reference/resource-configs/vertica-configs",
+        "reference/resource-configs/doris-configs"
       ],
     },
     {
@@ -651,6 +667,9 @@ const sidebarSettings = {
         "reference/warehouse-setups/mysql-setup",
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
+        "reference/warehouse-setups/doris-setup",
+        "reference/warehouse-setups/infer-setup",
+        "reference/warehouse-setups/databend-setup"
       ],
     },
     {
@@ -698,6 +717,8 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        "guides/best-practices/debugging-errors",
+        "guides/best-practices/writing-custom-generic-tests",
       ],
     },
     {
@@ -734,7 +755,8 @@ const sidebarSettings = {
           items: [
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
       ],
@@ -786,41 +808,57 @@ const sidebarSettings = {
                 "guides/migration/tools/migrating-from-stored-procedures/6-migrating-from-stored-procedures-conclusion",
               ],
             },
-          ],
-        },
-        {
-          type: "category",
-          label: "Advanced",
-          items: [
-            {
-              type: "category",
-              label: "Adapter development",
-              items: [
-                "guides/advanced/adapter-development/1-what-are-adapters",
-                "guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter",
-                "guides/advanced/adapter-development/3-building-a-new-adapter",
-                "guides/advanced/adapter-development/4-testing-a-new-adapter",
-                "guides/advanced/adapter-development/5-documenting-a-new-adapter",
-                "guides/advanced/adapter-development/6-promoting-a-new-adapter",
-                "guides/advanced/adapter-development/7-verifying-a-new-adapter",
-              ],
-            },
+            "guides/migration/tools/migrating-from-spark-to-databricks",
           ],
         },
       ],
     },
     {
       type: "category",
+      label: "dbt Ecosystem",
+      link: {
+        type: "generated-index",
+        title: "dbt Ecosystem guides",
+        description:
+          "Learn about the dbt ecosystem and how to build with dbt.",
+        slug: "/guides/dbt-ecosystem/",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Adapter development",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+          },
+          items: [
+            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+            "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
+          ],
+        },
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
+      ],
+    },
+  {
+      type: "category",
+      label: "Advanced",
+      items: [
+        "guides/advanced/creating-new-materializations",
+      ],
+    },
+    {
+      type: "category",
       label: "Legacy",
       items: [
-        "guides/legacy/debugging-errors",
         "guides/legacy/debugging-schema-names",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
-        "guides/legacy/creating-new-materializations",
-        "guides/legacy/understanding-state",
         "guides/legacy/videos",
       ],
     },
@@ -892,6 +930,124 @@ const sidebarSettings = {
         {
           type: "autogenerated",
           dirName: "terms",
+        },
+      ],
+    },
+  ],
+  SQLReference: [
+    {
+      type: "category",
+      label: "SQL Reference",
+      link: {
+        type: "generated-index",
+        title: "SQL Reference",
+        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
+        slug: "/sql-reference",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+            "sql-reference/statements/from",
+            "sql-reference/statements/case",
+            "sql-reference/statements/group-by",
+            "sql-reference/statements/distinct",
+          ],
+        },
+        {
+          type: "category",
+          label: "Aggregate Functions",
+          items: [
+            "sql-reference/aggregate-functions/avg",
+            "sql-reference/aggregate-functions/count",
+            "sql-reference/aggregate-functions/max",
+            "sql-reference/aggregate-functions/min",
+            "sql-reference/aggregate-functions/round",
+            "sql-reference/aggregate-functions/sum",
+            "sql-reference/aggregate-functions/array-agg",
+          ],
+        },
+        {
+          type: "category",
+          label: "Clauses",
+          items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
+            "sql-reference/clauses/limit",
+            "sql-reference/clauses/order-by",
+          ],
+        },
+        {
+          type: "category",
+          label: "Date Functions",
+          items: [
+            "sql-reference/date-functions/dateadd",
+            "sql-reference/date-functions/datediff",
+            "sql-reference/date-functions/datepart",
+            "sql-reference/date-functions/datetrunc",
+          ],
+        },
+        {
+          type: "category",
+          label: "String Functions",
+          items: [
+            "sql-reference/string-functions/upper",
+            "sql-reference/string-functions/lower",
+            "sql-reference/string-functions/concat",
+            "sql-reference/string-functions/trim",
+          ],
+        },
+        {
+          type: "category",
+          label: "Window Functions",
+          items: [
+            "sql-reference/window-functions/rank",
+            "sql-reference/window-functions/row-number",
+          ],
+        },
+        {
+          type: "category",
+          label: "Operators",
+          items: [
+            "sql-reference/operators/between",
+            "sql-reference/operators/in",
+            "sql-reference/operators/or",
+            "sql-reference/operators/ilike",
+            "sql-reference/operators/like",
+            "sql-reference/operators/and",
+            "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
+          ],
+        },
+        {
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
+            "sql-reference/joins/outer-join",
+            "sql-reference/joins/self-join",
+            "sql-reference/joins/cross-join",
+            "sql-reference/joins/left-join",
+            "sql-reference/joins/right-join",
+          ],
+        },
+        {
+          type: "category",
+          label: "Data Types",
+          items: [
+            "sql-reference/data-type/data-types",
+            "sql-reference/data-type/strings",
+          ],
+        },
+        {
+          type: "category",
+          label: "Other",
+          items: [
+            "sql-reference/other/cast",
+            "sql-reference/other/comments",
+          ],
         },
       ],
     },

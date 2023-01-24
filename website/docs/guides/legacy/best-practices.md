@@ -16,7 +16,7 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 :::
 
 ### Use separate development and production environments
-dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](managing-environments).
+dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](/docs/collaborate/environments).
 
 ### Use a style guide and for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
@@ -38,7 +38,7 @@ Your dbt project will depend on raw data stored in your database. Since this dat
 
 :::info Using sources for raw data references
 
-As of v0.13.0, we recommend defining your raw data as [sources](using-sources), and selecting from the source rather than using the direct relation reference. Our dbt projects no longer contain any direct relation references in any models.
+As of v0.13.0, we recommend defining your raw data as [sources](/docs/build/sources), and selecting from the source rather than using the direct relation reference. Our dbt projects no longer contain any direct relation references in any models.
 
 :::
 
@@ -57,7 +57,7 @@ All subsequent data models should be built on top of these models, reducing the 
 
 Earlier versions of this documentation recommended implementing “base models” as the first layer of transformation, and gave advice on the SQL within these models. We realized that while the reasons behind this convention were valid, the specific advice around "base models" represented an opinion, so we moved it out of the official documentation.
 
-You can instead find our opinions on how we structure our dbt projects in [this Discourse article](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355).
+You can instead find our opinions on [how we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
 
 :::
 
@@ -87,7 +87,8 @@ Our [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md)
 
 ### Consider the information architecture of your data warehouse
 When a user connects to a <Term id="data-warehouse" /> via a SQL client, they often rely on the names of schemas, relations, and columns, to understand the data they are presented with. To improve the information architecture of a data warehouse, we:
-* Use [custom schemas](using-custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
+
+* Use [custom schemas](/docs/build/custom-schemas) to separate relations into logical groupings, or hide intermediate models in a separate schema. Generally, these custom schemas align with the directories we use to group our models, and are configured from the `dbt_project.yml` file.
 * Use prefixes in <Term id="table" /> names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely
@@ -107,7 +108,7 @@ We often:
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
-To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](cloud-enabling-continuous-integration-with-github).)
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
@@ -118,7 +119,7 @@ which models are modified and build them on top of of their unmodified parents.
 
 ```bash
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
-dbt test -s state:modified+
+dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
 <Changelog>New in v1.0.0</Changelog>
@@ -189,7 +190,7 @@ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 </VersionBlock>
 
-To learn more, read the docs on [state](understanding-state).
+To learn more, read the docs on [state](/docs/deploy/about-state).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development

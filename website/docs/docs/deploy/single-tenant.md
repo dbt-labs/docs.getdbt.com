@@ -13,5 +13,5 @@ _To learn more about setting up a dbt Cloud Single Tenant deployment, [please co
 
 For more information about the dbt Cloud Single Tenant deployment see the below.
 
-- [Application Data Flows](/docs/dbt-cloud/deployments/deployment-architecture#application-data-flows)
-- [Hosted Network Architecture](/docs/dbt-cloud/deployments/deployment-architecture#hosted-network-architecture)
+- [Application Data Flows](/docs/deploy/architecture#application-data-flows)
+- [Hosted Network Architecture](/docs/deploy/architecture#hosted-network-architecture)

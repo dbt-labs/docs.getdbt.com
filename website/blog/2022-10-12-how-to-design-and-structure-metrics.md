@@ -34,7 +34,7 @@ We developed these recommendations by combining the overall philosophy of dbt, w
 
 <!--truncate-->
 
-**Pre-reading:** We recommend reading through the [metrics documentation](/docs/building-a-dbt-project/metrics), which contains a table of all the required/optional properties.
+**Pre-reading:** We recommend reading through the [metrics documentation](/docs/build/metrics), which contains a table of all the required/optional properties.
 
 ### When to put business logic in the semantic layer vs the modeling layer
 
@@ -91,7 +91,7 @@ metrics:
 
     dimensions:
       - customer_status
-			- order_country
+      - order_country
 
     ## We don't need this section because we chose option 1
     ## filters:
@@ -100,7 +100,7 @@ metrics:
     ##     value: 'completed
 ```
 
-Each of the properties of the above definition are defined [in the metrics documentation](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), but let’s dig into the two that might require some additional explanation. The two in question are `expression` and `dimensions`.
+Each of the properties of the above definition are defined [in the metrics documentation](/docs/build/metrics), but let’s dig into the two that might require some additional explanation. The two in question are `expression` and `dimensions`.
 
 In plain english, the `expression` property is the sql column (or expression) that we are applying the calculation method on. In our example above, this simplifies to `sum(amount)`. However, this doesn’t **need** to be a field in the model. It could also be a sql expression like `case when condition = true then field else 0 end` .
 
@@ -178,47 +178,47 @@ metrics:
       - account_plan
       - user_type
 
-	- name: total_promoter_respondents
-		......... ##same as total_respondents
+  - name: total_promoter_respondents
+    ......... ##same as total_respondents
     filters:
     - field: nps_category
       operator: '='
       value: "'promoter'"
 
-	- name: total_detractor_respondents
-		......... ##same as total_respondents
+  - name: total_detractor_respondents
+    ......... ##same as total_respondents
     filters:
     - field: nps_category
       operator: '='
       value: "'detractor'"
 
-	- name: promoters_pct
-	    label: Percent Promoters (Cloud)
-	    description: 'The percent of dbt Cloud users in the promoters segment.'
-	    calculation_method: expression
-	    expression: "{{metric('total_promoter_respondents')}} / {{metric('total_respondents')}}"
-	    timestamp: created_at
-	    time_grains: [day, month, quarter, year]
-	    dimensions:
-	      - feedback_source
-	      - account_plan
-	      - user_type
+  - name: promoters_pct
+    label: Percent Promoters (Cloud)
+    description: 'The percent of dbt Cloud users in the promoters segment.'
+    calculation_method: expression
+    expression: "{{metric('total_promoter_respondents')}} / {{metric('total_respondents')}}"
+    timestamp: created_at
+    time_grains: [day, month, quarter, year]
+    dimensions:
+      - feedback_source
+      - account_plan
+      - user_type 
 
-	- name: detractor_pct
-			... ##same as promoters_pct
-	    expression: "{{metric('total_detractor_respondents')}} / {{metric('total_respondents')}}"
+  - name: detractor_pct
+    ... ##same as promoters_pct
+    expression: "{{metric('total_detractor_respondents')}} / {{metric('total_respondents')}}"
 
-	- name: nps_score
-	    label: Net Promoter Score
-	    description: 'The NPS (-1 to 1) of all dbt Cloud users.'
-	    calculation_method: expression
-	    expression: "{{metric('promoters_pct')}} - {{metric('detractors_pct')}}"
-	    timestamp: created_at
-	    time_grains: [day, month, quarter, year]
-	    dimensions:
-	      - feedback_source
-	      - account_plan
-	      - user_type
+  - name: nps_score
+    label: Net Promoter Score
+    description: 'The NPS (-1 to 1) of all dbt Cloud users.'
+    calculation_method: expression
+    expression: "{{metric('promoters_pct')}} - {{metric('detractors_pct')}}"
+    timestamp: created_at
+    time_grains: [day, month, quarter, year]
+    dimensions:
+      - feedback_source
+      - account_plan
+      - user_type
 
 ```
 
@@ -301,9 +301,9 @@ If you follow [dbt’s best practices for structuring your project](https://docs
 
 ```yaml
 models:
-	staging:
-	intermediate:
-	marts:
+  staging:
+  intermediate:
+  marts:
 ```
 
 Your marts folder would most likely contain your end-state models ready for business consumption. Given that metrics are meant for business consumption, we are presented with two options - staying within the same framework or representing metrics as their own level.
@@ -316,10 +316,10 @@ Create a metrics folder within marts and use this to contain all of your metric 
 
 ```yaml
 models:
-	staging:
-	intermediate:
-	marts:
-		metrics:
+  staging:
+  intermediate:
+  marts:
+    metrics:
 ```
 
 **B. Metrics within models**
@@ -328,10 +328,10 @@ Create a metrics folder within models and use this to contain all of your metric
 
 ```yaml
 models:
-	staging:
-	intermediate:
-	marts:
-	metrics:
+  staging:
+  intermediate:
+  marts:
+  metrics:
 ```
 
 ### File structure
@@ -346,14 +346,14 @@ In practice, the all-in-one YML method would look like the following:
 ```yaml
 ## Metrics within Marts
 models:
-	marts: 
-		metrics:
-			- metrics.yml
+  marts: 
+    metrics:
+      - metrics.yml
 ------
 ## Metrics within Models
 models:
-	metrics:
-		- metrics.yml
+  metrics:
+    - metrics.yml
 ```
 
 **Option B: The single-metric-per-file method**
@@ -370,11 +370,11 @@ The single-file-code-owner method would look like this:
 
 ```yaml
 models:
-	metrics:
-		marts:
-			- revenue.yml
-			- average_order_value.yml
-			- some_other_metric_name.yml
+  metrics:
+    marts:
+      - revenue.yml
+      - average_order_value.yml
+      - some_other_metric_name.yml
 ```
 
 ### Folder and file structure is a preference, not a hard rule

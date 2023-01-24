@@ -16,7 +16,7 @@ If that sounds like you, great! Homebrew makes it significantly easier to instal
 - Installation with Homebrew can take longer than installing with other methods, because `brew` takes care of more setup behind the scenes
 - If you're using an M1 Mac, we recommend that you install dbt via Homebrew with [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
 
-If you're someone who prefers to manage Python environments yourself, such as having multiple versions of Python to switch between, we recommend you install dbt Core via [`pip` instead](install/pip).
+If you're someone who prefers to manage Python environments yourself, such as having multiple versions of Python to switch between, we recommend you install dbt Core via [`pip` instead](/docs/get-started/pip-install).
 
 ### Installing with Homebrew
 
@@ -36,7 +36,7 @@ brew install dbt-postgres
 
 Everywhere below that you see `<adapter>`, replace it with the adapter name you're using.
 
-**Note**: If you're using an adapter that isn't available as a Homebrew formula, we recommend you use [pip](install/pip) instead.
+**Note**: If you're using an adapter that isn't available as a Homebrew formula, we recommend you use [pip](/docs/get-started/pip-install) instead.
 
 ### Upgrading dbt and your adapter
 
