@@ -44,7 +44,7 @@ To the right of the `Project Default` column are all your environments. Values s
 
 **Overriding environment variables at the job level**
 
-You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpretted differently depending on the job.
+You may have multiple jobs that run in the same environment, and you'd like the environment variable to be interpreted differently depending on the job.
 
 When setting up or editing a job, you will see a section where you can override environment variable values defined at the environment or project level.
 
