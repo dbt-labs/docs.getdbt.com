@@ -12,9 +12,7 @@ Meetups are all about knowledge sharing, they are a place to connect and learn w
 #### Contribution opportunities
 
 - Become a Meetup organizer
-
 - Speak at an event
-
 - Sponsor an event or provide your office space
 
 For all of these opportunities, please fill out an [interest form](https://docs.google.com/forms/d/e/1FAIpQLScdzuz9Ouo1b07BMHveEBJsJ3rJAYuFvbTKep2fXDL0iZTZUg/viewform) and we will get back to you.
