@@ -244,7 +244,7 @@ dbt supports several macros to help data folks write DRY (don’t repeat yoursel
 
 ## Performance concerns for surrogate keys
 
-In the past, you may have seen surrogate keys take the form of monotonically increasing integers (ex. 1, 2, 3, 4). These surrogate keys were often limited to 4-bit integers that could be indexed quickly. However, in the practice of analytics engineering, surrogate keys derived from the data often take the form of a hashed string value. Given this form, these surrogate keys are not necessarily optimized for performance for large table scans and complex joins. For large data models (millions, billions, trillions of rows) that have surrogate keys, you should materialize them as tables or [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) to help make joining entities more efficient.
+In the past, you may have seen surrogate keys take the form of <Term id="monotonically-increasing"/> integers (ex. 1, 2, 3, 4). These surrogate keys were often limited to 4-bit integers that could be indexed quickly. However, in the practice of analytics engineering, surrogate keys derived from the data often take the form of a hashed string value. Given this form, these surrogate keys are not necessarily optimized for performance for large table scans and complex joins. For large data models (millions, billions, trillions of rows) that have surrogate keys, you should materialize them as tables or [incremental models](https://docs.getdbt.com/docs/build/incremental-models) to help make joining entities more efficient.
 
 ## Conclusion
 

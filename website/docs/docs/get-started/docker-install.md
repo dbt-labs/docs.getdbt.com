@@ -3,7 +3,7 @@ title: "Install with Docker"
 description: "You can use Docker to install dbt and adapter plugins from the command line."
 ---
 
-dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages).
+dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages) in a [public registry](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core).
 
 Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `pip install dbt-core dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
 
