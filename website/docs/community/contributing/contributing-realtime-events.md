@@ -7,7 +7,7 @@ id: "contributing-realtime-events"
 
 #### Overview
 
-Meetups are all about knowledge sharing, they are a place to connect and learn with your fellow dbt Community members. They usually take place in person with some happening virtually. The Meetups take place across the globe and you can check them all out [here](https://www.meetup.com/pro/dbt/).
+Meetups are all about knowledge sharing; they are a place to connect and learn with your fellow dbt Community members. They usually take place in person, with some happening virtually. The Meetups take place across the globe, and you can check them all out [here](https://www.meetup.com/pro/dbt/).
 
 #### Contribution opportunities
 
