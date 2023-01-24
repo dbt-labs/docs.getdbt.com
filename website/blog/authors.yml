@@ -133,6 +133,17 @@ doug_beatty:
   name: Doug Beatty
   organization: dbt Labs
 
+doug_guthrie:
+  image_url: /img/blog/authors/dguthrie.jpeg
+  job_title: Solutions Architect
+  links:
+    - icon: fa-github
+      url: https://github.com/dpguthrie
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/doug-guthrie-07994a48/
+  name: Doug Guthrie
+  organization: dbt Labs
+
 emily_riederer:
   description: Emily Riederer is a Senior Analytics Manager at Capital One where she leads a team delivering a portfolio of data products, enterprise analysis tools, and data science solutions to business partners. As part of the dbt community, she develops and maintains the dbtplyr package. In her spare time, Emily frequently writes about data (see emilyriederer.com, The R Markdown Cookbook, and 97 Things Every Data Engineer Should Know), reviews technical manuscripts for CRC Press, and supports open research software engineering as a member of the rOpenSci editorial board.
   image_url: /img/blog/authors/emily-riederer.jpeg
