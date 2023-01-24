@@ -14,3 +14,8 @@ You can find your User API token in the Profile page under the `API Access`
 label.
 
 <Lightbox src="/img/api-access-profile.png" title="Finding your API token in your dbt Cloud Profile" />
+
+## FAQs
+
+<FAQ src="API/rotate-token" />
+<FAQ src="Accounts/find-user-id" />

@@ -49,7 +49,7 @@ Client Secret for use in dbt Cloud.
 | ---------------------- | ------------ | ------ |
 | **Application type**   | internal     | required |
 | **Application name**   | dbt Cloud    | required |
-| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank">here</a> | optional |
+| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank" rel="noopener noreferrer">here</a> | optional |
 | **Authorized domains** | `getdbt.com` | If deploying into a VPC, use the domain for your deployment |
 | **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
@@ -89,13 +89,6 @@ and ensure that the API is enabled.
 ## Configuration in dbt Cloud
 
 To complete setup, follow the steps below in the dbt Cloud application.
-
-### Enable GSuite Native Auth (beta)
-
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the GSuite Native auth configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_gsuite`
-  feature flag in the dbt Cloud admin backend.
 
 ### Supply your OAuth Client ID and Client Secret
 

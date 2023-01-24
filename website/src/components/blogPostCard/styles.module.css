@@ -18,15 +18,25 @@
   padding: 0;
 }
 
-.contentContainer {
+.contentContainer.imageContentContainer {
   padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  display: block;
 }
 
-.imageContainer {
+.contentContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+  overflow-wrap: anywhere;
+}
+
+.imageContentContainer {
   width: 100%;
   border-radius: var(--border-radius) var(--border-radius) 0px 0px;
   min-height: 200px;
 }
+
 
 .cardWrapper, .cardWrapper article {
   height: 100%;
@@ -47,9 +57,11 @@
 a.ctaLink {
   color: #009999;
   font-weight: 600;
+  margin-top: auto;
 }
 a.ctaLink:after {
   content: ' →';
+  margin-left: 5px;
 }
 
 .icon {
