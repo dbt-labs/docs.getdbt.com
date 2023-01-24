@@ -3,8 +3,6 @@ const Feed = require('feed').Feed
 const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 
 const siteUrl = 'https://docs.getdbt.com'
-const previewUrl = 'https://deploy-preview-2713--docs-getdbt-com.netlify.app'
-// const previewUrl = 'http://localhost:3000'
 
 module.exports = function buildRSSFeedsPlugin(context, options) {
   return {
@@ -55,9 +53,9 @@ module.exports = function buildRSSFeedsPlugin(context, options) {
         favicon: `${siteUrl}/img/favicon.svg`,
         copyright: `Copyright © ${today.getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
         feedLinks: {
-          rss2: `${previewUrl}/rss.xml`,
-          atom: `${previewUrl}/atom.xml`,
-          json: `${previewUrl}/rss.json`,
+          rss2: `${siteUrl}/rss.xml`,
+          atom: `${siteUrl}/atom.xml`,
+          json: `${siteUrl}/rss.json`,
         }
       }
 
