@@ -184,7 +184,7 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 </p>
 
-  * **Snowflake New UI:** If you’re using the new web interface, if you're not already on the home screen you’ll want to click on the home icon in the upper left hand corner and then click on Admin title and then Partner Connect.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
+  * **[Snowflake New UI](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html):** If you’re using the new web interface, click on the home icon in the upper left-hand corner and then click on Admin title, and then Partner Connect.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_partner_connect.png" title="Snowflake New UI - Partner Connect" />
