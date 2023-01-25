@@ -7,25 +7,25 @@ title: Manifest
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.3">
+<VersionBlock firstVersion="1.3" lastVersion="1.3">
 
 **dbt Core v1.3 produces schema**: [`v7`](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.2">
+<VersionBlock firstVersion="1.2" lastVersion="1.2">
 
 **dbt Core v1.2 produces schema**: [`v6`](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.1">
+<VersionBlock firstVersion="1.1" lastVersion="1.1">
 
 **dbt Core v1.1 produces schema**: [`v5`](https://schemas.getdbt.com/dbt/manifest/v5/index.html)
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.0">
+<VersionBlock firstVersion="1.0" lastVersion="1.0">
 
 **dbt Core v1.0 produces schema**: [`v4`](https://schemas.getdbt.com/dbt/manifest/v4/index.html)
 
