@@ -256,9 +256,11 @@ In order to mimic the native Slim CI behavior within dbt Cloud, it's important t
 
 ### Benefits
 
-After adding this file to your repository, your CI jobs will no longer stack up behind one another. A job that’s now irrelevant because of a new commit will be cancelled and triggered again automatically. I can enumerate some of the benefits below, but I think it’s a bit more powerful coming from Erica Louie, dbt Labs’ Head of Data. This is what she said after seeing her team implement this solution in our own internal dbt project:
+After adding this file to your repository, your CI jobs will no longer stack up behind one another. A job that’s now irrelevant because of a new commit will be cancelled and triggered again automatically.  Some benefits that I think you'll begin to realize include:
 
-<Lightbox src="/img/blog/2023-01-27-autoscaling-ci/02-ric-slack.png" title="Cross-team collaboration FTW!" />
+- Lower costs in your data warehouse from cancelling irrelevant (and potentially long-running) CI jobs
+- A faster, more efficient, development workflow that ensures a quick feedback loop from your CI process
+- Increased ability to open up development work that encourages more cross-team collaboration
 
 ### Watch it in action
 
