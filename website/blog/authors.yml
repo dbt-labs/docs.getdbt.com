@@ -81,6 +81,12 @@ christine_berger:
   name: Christine Berger
   organization: dbt Labs
 
+christophe_oudar:
+  image_url: /img/blog/authors/christophe-oudar.png
+  job_title: Staff Software Engineer
+  name: Christophe Oudar
+  organization: Teads
+
 claire_carroll:
   image_url: /img/blog/authors/claire.jpeg
   job_title: Analytics Engineer
