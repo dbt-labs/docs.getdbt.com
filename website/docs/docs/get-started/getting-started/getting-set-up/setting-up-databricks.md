@@ -97,18 +97,20 @@ Our next step is to load some data to transform. Luckily for us, Databricks make
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
     </div>
-2. We will be setting up a SQL endpoint now.  Select `SQL Endpoints` from the left hand side console.  You will see that a default SQL Endpoint exists.  
+2. We will be setting up a SQL warehouse now.  Select `SQL Warehouses` from the left hand side console.  You will see that a default SQL Warehouse exists.  
+    <!--
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL Endpoints" />
+    <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL Endpoints" /> 
     </div>
-3. Click **Start** on the Starter Endpoint.  This will take a few minutes to get the necessary resources spun up.
+    -->
+3. Click **Start** on the Starter Warehouse.  This will take a few minutes to get the necessary resources spun up.
 
 4. While you're waiting, download the three CSV files locally that you will need for this tutorial. You can find them here:
     - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
     - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
     - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
 
-5. Once the SQL Endpoint is up, click on the `Create` and then `Table` on the drop down menu. 
+5. Once the SQL Warehouse is up, click on the `Create` and then `Table` on the drop down menu. 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/create_table_using_databricks_SQL.png" title="Create Table Using Databricks SQL" />
     </div>
@@ -239,8 +241,9 @@ To generate a user token for your development credentials in dbt Cloud, click on
 6. If the connection test succeeds, click **Next**. If it fails, you may need to check your Databricks settings and credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
-If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
 ### Setting up a managed repository
 
