@@ -25,6 +25,14 @@ Targets offer the flexibility to decide how to implement your separate environme
 
 In practice, this means that most of the details in a target will be consistent across all targets, except for the `schema` and user credentials. If you have multiple dbt users writing code, it often makes sense for _each user_ to have their own _development_ environment. A pattern we've found useful is to set your dev target schema to be `dbt_<username>`. User credentials should also differ across targets so that each dbt user is using their own data warehouse user.
 
+
+## Related questions
+
+<FAQ src="Environments/diff-database-environment" />
+<FAQ src="Environments/delete-environment-job" />
+<FAQ src="Environments/profile-name" />
+<FAQ src="Environments/target-names" />
+
 ## Related docs
 - [About dbt Core versions](/docs/dbt-versions/core)
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
