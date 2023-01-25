@@ -1,7 +1,5 @@
 # How to set up your Databricks + dbt project
 
-# Setting up your Databricks + dbt Project
-
 Databricks and dbt Labs are partnering to help data teams think like software engineering teams and ship trusted data, faster. The dbt-databricks adapter enables both dbt users to leverage the latest Databricks features from their dbt project. Hundreds of customers are now using dbt and Databricks to build expressive and reliable data pipelines on the Lakehouse, generating data assets that enable analytics, ML, and AI use cases throughout the business.
 
 In this guide, we discuss how to set up your dbt project on the Databricks Lakehouse Platform so that it scales from a small team all the way up to a large organization.
@@ -16,11 +14,11 @@ Our dev catalog will be the development environment that analytics engineers int
 
 Only production runs will have access to data in the **prod** catalog. In a future guide, we will discuss a **test** catalog where our continuous integration/continuous deployment (CI/CD) system (such as GitHub Actions) can run `dbt test`.
 
-For now, let’s keep things simple and [creat](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-catalog.html)e two catalogs either using the Data Explorer or in the SQL editor with these commands:
+For now, let’s keep things simple and [create](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-catalog.html) two catalogs either using the Data Explorer or in the SQL editor with these commands:
 
 ```sql
-**create** **catalog** **if not exists dev;
-create** **catalog** **if not exists prod;**
+create catalog if not exists dev;
+create catalog if not exists prod;
 ```
 
 As long as your developer is given write access to the dev data catalog, there is no need to create the sandbox schemas ahead of time.
@@ -33,9 +31,9 @@ Service principals are used to remove humans from deploying to production for co
 
 Let’s [create a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) in Databricks:
 
-1. Have your Databricks Account admin [add a service princip](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account)al to your account. The service principal’s name should differentiate itself from a user ID and make its purpose clear (eg dbt_prod_sp).
+1. Have your Databricks Account admin [add a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) to your account. The service principal’s name should differentiate itself from a user ID and make its purpose clear (eg dbt_prod_sp).
 2. Add the service principal added to any groups it needs to be a member of at this time. There are more details on permissions at the end of this guide.
-3. A[dd the service principal to your workspace](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace) and apply any [necessary entitlements](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace-using-the-admin-console), such as Databricks SQL access and Workspace access.
+3. [Add the service principal to your workspace](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace) and apply any [necessary entitlements](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace-using-the-admin-console), such as Databricks SQL access and Workspace access.
 
 ## Setting up Databricks Compute
 
@@ -58,7 +56,7 @@ Now that the Databricks components are in place, we can configure our dbt projec
 
 If you are migrating an existing dbt project from the dbt-spark adapter to dbt-databricks, follow this [migration guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-spark-to-databricks#migration) to switch adapters without needing to update developer credentials and other existing configs.
 
-If you’re starting a new dbt project, follow the steps below. For a more detailed setup flow, check out our [Getting started guide.](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks)
+If you’re starting a new dbt project, follow the steps below. For a more detailed setup flow, check out our [getting started guide.](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks)
 
 ### Connect dbt to Databricks
 
@@ -66,12 +64,13 @@ First, you’ll need to connect your dbt project to Databricks so it can send tr
 
 Each developer must generate their Databricks PAT and use the token in their development credentials. They will also specify a unique developer schema that will store the tables and views generated by dbt runs executed from their IDE. This provides isolated developer environments and ensures data access is fit for purpose.
 
-Let’s generate a [Databricks PAT token](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for Development:
+Let’s generate a [Databricks personal access token (PAT)](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for Development:
 
 1. In Databricks, click on your Databricks username in the top bar and select User Settings in the drop down.
 2. On the Access token tab, click Generate new token.
 3. Click Generate.
 4. Copy the displayed token and click Done. (don’t lose it!)
+
 
 For your development credentials/profiles.yml:
 
@@ -90,15 +89,15 @@ Let’s set up our deployment environment:
 
 1. In Databricks, [set up your service principal’s token](https://docs.databricks.com/dev-tools/service-principals.html#use-curl-or-postman). To do this, you will need to open up your terminal.
 2. In your terminal, define 2 environment variables:
-    1. DATABRICKS_HOST - the url used to log into your Databricks workspace
-    2. DATABRICKS_TOKEN - your [personal access token](https://docs.databricks.com/dev-tools/auth.html#pat) (also used for dbt Cloud developer credentials)
+    1. **DATABRICKS_HOST** - the url used to log into your Databricks workspace
+    2. **DATABRICKS_TOKEN** - your [personal access token](https://docs.databricks.com/dev-tools/auth.html#pat) (also used for dbt Cloud developer credentials)
 
 ```bash
 export DATABRICKS_HOST="https://dbc-a1b2345c-d6e78.cloud.databricks.com"
 export DATABRICKS_TOKEN="dapi1234567890b2cd34ef5a67bc8de90fa12b"
 ```
 
-1. Next, run a curl command to get the “application_id” of your service principal. You can also get this value from the Databricks workspace admin console > Service Principals > Edit
+3. Next, run a curl command to get the “application_id” of your service principal. You can also get this value from the Databricks workspace admin console > Service Principals > Edit
 
 ```bash
 curl -X GET \
@@ -107,7 +106,7 @@ ${DATABRICKS_HOST}/api/2.0/preview/scim/v2/ServicePrincipals \
 | jq .
 ```
 
-1. Then you create a JSON file with the application ID retrieved from the above command, a comment to describe what the token will be used for, and the amount of time the token will be valid (in seconds) before it expires and will need to be regenerated.
+4. Then you create a JSON file with the application ID retrieved from the above command, a comment to describe what the token will be used for, and the amount of time the token will be valid (in seconds) before it expires and will need to be regenerated.
 
 ```bash
 vim create-service-principal.json
@@ -121,7 +120,7 @@ vim create-service-principal.json
 }
 ```
 
-1. Run one more curl command to get the service principal’s token:
+5. Run one more curl command to get the service principal’s token:
 
 ```bash
 curl -X POST \
@@ -132,10 +131,10 @@ ${DATABRICKS_HOST}/api/2.0/token-management/on-behalf-of/tokens \
 | jq .
 ```
 
-1. Now let’s pop back over to dbt Cloud to fill out the environment fields. Click on environments in the dbt Cloud UI or define a new target in your profiles.yml.
-2. Set the Production environment’s *catalog* to the **prod** catalog created above. Provide the [service token](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-access-tokens-for-a-service-principal) for your **prod** service principal and set that as the *token* in your production environment’s deployment credentials.
-3. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
-4. Provide your Service Principal token.
+6. Now let’s pop back over to dbt Cloud to fill out the environment fields. Click on environments in the dbt Cloud UI or define a new target in your profiles.yml.
+7. Set the Production environment’s *catalog* to the **prod** catalog created above. Provide the [service token](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-access-tokens-for-a-service-principal) for your **prod** service principal and set that as the *token* in your production environment’s deployment credentials.
+8. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
+9. Provide your Service Principal token.
 
 ### Connect dbt to your git repository
 
@@ -157,11 +156,11 @@ If you use multiple Databricks workspaces to isolate development from production
 
 To do so, use [environment variable syntax](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#special-environment-variables) for Server Hostname of your Databricks workspace URL and HTTP Path for the SQL warehouse in your connection settings. Note that Server Hostname still needs to appear to be a valid domain name to pass validation checks, so you will need to hard-code the domain suffix on the URL, eg {{env_var('DBT_HOSTNAME')}}.cloud.databricks.com and the path prefix for your warehouses, eg /sql/1.0/warehouses/{{env_var('DBT_HTTP_PATH')}}.
 
-[https://lh4.googleusercontent.com/VqP2UMI6d15UKbHvrfh9XGESoDtm1cw0zfkgr9SP6v7E2qlWbylhZLQSvkHuBfhy-R8Kl8bbyVyqbmi-PbNcujOMlPjNHpmdTvkOHSbNohvvXnN7tryjBDbgUsexusDumwBZK9UgZqCsVjAa80r9NHVY-U7b9MFtCrKjw9f3o4V1RVtEk4CcEfmAYo0e8Q](https://lh4.googleusercontent.com/VqP2UMI6d15UKbHvrfh9XGESoDtm1cw0zfkgr9SP6v7E2qlWbylhZLQSvkHuBfhy-R8Kl8bbyVyqbmi-PbNcujOMlPjNHpmdTvkOHSbNohvvXnN7tryjBDbgUsexusDumwBZK9UgZqCsVjAa80r9NHVY-U7b9MFtCrKjw9f3o4V1RVtEk4CcEfmAYo0e8Q)
+<Lightbox src="/img/guides/databricks-guides/databricks-connection-env-vars.png" title="Using environment variable syntax in connection configs" />
 
 When you create environments in dbt Cloud, you can assign environment variables to populate the connection information dynamically. Don’t forget to make sure the tokens you use in the credentials for those environments were generated from the associated workspace.
 
-[https://lh6.googleusercontent.com/gcmAjXJ6qHgZ33L5b2L84nGxHr5HT-XENhiGjZbN33jSmZqFY7XmALq8j9cU3-65udiOA0n9kew9OCsHiPr5F1sKkA2kZvP037jMrlfKnfsCejS2kvM7sQVvDHMsWStr-yXAvTIoSBV9vn4Lo5S2KPQT35hO5XRhKQ0dM-WUVGJvb54Pn9Swi5dQvQckZw](https://lh6.googleusercontent.com/gcmAjXJ6qHgZ33L5b2L84nGxHr5HT-XENhiGjZbN33jSmZqFY7XmALq8j9cU3-65udiOA0n9kew9OCsHiPr5F1sKkA2kZvP037jMrlfKnfsCejS2kvM7sQVvDHMsWStr-yXAvTIoSBV9vn4Lo5S2KPQT35hO5XRhKQ0dM-WUVGJvb54Pn9Swi5dQvQckZw)
+<Lightbox src="/img/guides/databricks-guides/databricks-env-variables.png" title="Defining default environment variable values" />
 
 ### Access Control
 
@@ -171,6 +170,7 @@ As for permissions to run dbt and read non-consumer-facing data sources, the tab
 
 The **prod** service principal should have “read” access to raw source data, and “write” access to the prod catalog. If you add a **test** catalog and associated dbt environment, you should create a  dedicated service principal. The test service principal should have *read* on raw source data, and *write* on the **test** catalog but no permissions on the prod or dev catalogs. A dedicated test environment should be used for [CI testing](https://www.getdbt.com/blog/adopting-ci-cd-with-dbt-cloud/) only.
 
+
 **Table-level grants:**
 
 |  | Source Data | Development catalog | Production catalog | Test catalog |
@@ -179,6 +179,7 @@ The **prod** service principal should have “read” access to raw source data,
 | production service principal | select | none | select & modify | none |
 | Test service principal | select | none | none | select & modify |
 
+
 **Schema-level grants:**
 
 |  | Source Data | Development catalog | Production catalog | Test catalog |
@@ -186,6 +187,7 @@ The **prod** service principal should have “read” access to raw source data,
 | developers | use | use, create table & create view | use or none | none |
 | production service principal | use | none | use, create table & create view | none |
 | Test service principal | use | none | none | use, create table & create view |
+
 
 ## Next steps
 
