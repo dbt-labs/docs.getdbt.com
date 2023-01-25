@@ -195,6 +195,7 @@ Now let's set up the connection between dbt Cloud and Redshift
 5. If the connection test succeeds, click **Next**. If it fails, you may need to check your Redshift settings and credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
 ### Setting up a managed repository
 
