@@ -6,10 +6,10 @@ on:
 
 jobs:
   add-to-project:
-    name: Add issue to project
+    name: Add pr to project
     runs-on: ubuntu-latest
     steps:
       - uses: actions/add-to-project@v0.4.0
         with:
-          project-url: https://github.com/orgs/dbt-labs/projects/14
+          project-url: https://github.com/orgs/dbt-labs/projects/37
           github-token: ${{ secrets.DOCS_SECRET }}
