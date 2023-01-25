@@ -19,7 +19,7 @@ This project will walk you through:
 - Connecting dbt Cloud and Databricks
 
 :::info Note 📌 
-Databricks SQL Endpoints are now called [**SQL Warehouses**](https://docs.databricks.com/sql/admin/sql-endpoints.html). 
+Databricks SQL Endpoints' name has changed and is now called [**SQL Warehouses**](https://docs.databricks.com/sql/admin/sql-endpoints.html). 
 ::: 
 
 ## Prerequisites
