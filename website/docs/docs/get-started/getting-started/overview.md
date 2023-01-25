@@ -1,7 +1,7 @@
 ---
-title: About getting started
+title: About get started
 id: overview
-sidebar_label: "About getting started"
+sidebar_label: "About get started"
 description: "Create your first dbt project using a SQL query."
 ---
 <section className="community-home">

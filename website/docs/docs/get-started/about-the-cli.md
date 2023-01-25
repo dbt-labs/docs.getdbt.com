@@ -1,6 +1,7 @@
 ---
-title: "About the CLI"
+title: "Develop from the command line"
 id: "about-the-cli"
+sidebar_label: "Develop from the command line"
 ---
 
 dbt ships with a command line interface (CLI) for running your dbt project. This way of running dbt a dbt project is free and open source.

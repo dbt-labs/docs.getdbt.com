@@ -10,48 +10,17 @@ const sidebarSettings = {
         "docs/get-started/getting-started/overview",
         {
           type: "category",
-          label: "Get started with dbt Cloud",
+          label: "dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
-            {
-              type: "category",
-              label: "Getting set up",
-              items: [
-                "docs/get-started/getting-started/get-started-with-big-query",
-                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
-                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
-                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
-              ],
-            },
-            {
-              type: "category",
-              label: "Building your first project",
-
-              items: [
-                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
-                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
-              ],
-            },
-            {
-              type: "category",
-              label: "Learning more",
-              items: [
-                "docs/get-started/learning-more/using-jinja",
-                "docs/get-started/learning-more/refactoring-legacy-sql",
-              ],
-            },
-            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/getting-started/get-started-with-bigquery",
+            "docs/get-started/getting-started/get-started-with-databricks",
             "docs/get-started/connect-your-database",
-            "docs/get-started/develop-in-the-cloud",
-            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
           type: "category",
-          label: "Get started with dbt Core",
+          label: "dbt Core",
           collapsed: true,
           items: [
             "docs/get-started/getting-started-dbt-core",
@@ -67,11 +36,22 @@ const sidebarSettings = {
                 "docs/get-started/source-install",
               ],
             },
-            "docs/get-started/about-the-cli",
             "docs/get-started/connection-profiles",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Run dbt projects",
+      collapsed: true,
+      items: [
         "docs/get-started/run-your-dbt-projects",
+        "docs/get-started/develop-in-the-cloud",
+        "docs/get-started/about-the-cli",
+        "docs/get-started/dbt-cloud-features",
+        "docs/get-started/dbt-cloud-tips",
+
       ],
     },
     {
