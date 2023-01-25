@@ -1,0 +1,201 @@
+# How to set up your Databricks + dbt project
+
+# Setting up your Databricks + dbt Project
+
+Databricks and dbt Labs are partnering to help data teams think like software engineering teams and ship trusted data, faster. The dbt-databricks adapter enables both dbt users to leverage the latest Databricks features from their dbt project. Hundreds of customers are now using dbt and Databricks to build expressive and reliable data pipelines on the Lakehouse, generating data assets that enable analytics, ML, and AI use cases throughout the business.
+
+In this guide, we discuss how to set up your dbt project on the Databricks Lakehouse Platform so that it scales from a small team all the way up to a large organization.
+
+## Configuring the Databricks Environments
+
+To get started, we will use Databricks’s Unity Catalog. Without it, we would not be able to design separate [environments](https://docs.getdbt.com/docs/collaborate/environments) for development and production per our [best practices](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview). It also allows us to ensure the proper access controls have been applied using SQL. You will need to be using the dbt-databricks adapter to use it (as opposed to the dbt-spark adapter).
+
+We will set up two different *catalogs* in Unity Catalog: **dev** and **prod**. A catalog is a top-level container for *schemas* (previously known as databases in Databricks), which in turn contain tables and views.
+
+Our dev catalog will be the development environment that analytics engineers interact with through their IDE. Developers should have their own sandbox to build and test objects in without worry of overwriting or dropping a coworker’s work; we recommend creating personal schemas for this purpose. In terms of permissions, they should only have access to the **dev** catalog.
+
+Only production runs will have access to data in the **prod** catalog. In a future guide, we will discuss a **test** catalog where our continuous integration/continuous deployment (CI/CD) system (such as GitHub Actions) can run `dbt test`.
+
+For now, let’s keep things simple and [creat](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-catalog.html)e two catalogs either using the Data Explorer or in the SQL editor with these commands:
+
+```sql
+**create** **catalog** **if not exists dev;
+create** **catalog** **if not exists prod;**
+```
+
+As long as your developer is given write access to the dev data catalog, there is no need to create the sandbox schemas ahead of time.
+
+## Setting up Service Principals
+
+When an analytics engineer runs a dbt project from their IDE, it is perfectly fine for the resulting queries to execute with that user’s identity. However, we want production runs to execute with a *service principal's* identity. As a reminder, a service principal is a headless account that does not belong to an actual person.
+
+Service principals are used to remove humans from deploying to production for convenience and security. Personal identities should not be used to build production pipelines because they could break if the user leaves the company or changes their credentials. Also, there should not be ad hoc commands modifying production data. Only scheduled jobs and running code that has passed CI tests and code reviews should be allowed to modify production data. If something breaks, there is an auditable trail of changes to find the root cause, can easily revert to the last working version of the code, and minimize the impact on end users.
+
+Let’s [create a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) in Databricks:
+
+1. Have your Databricks Account admin [add a service princip](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account)al to your account. The service principal’s name should differentiate itself from a user ID and make its purpose clear (eg dbt_prod_sp).
+2. Add the service principal added to any groups it needs to be a member of at this time. There are more details on permissions at the end of this guide.
+3. A[dd the service principal to your workspace](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace) and apply any [necessary entitlements](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-a-workspace-using-the-admin-console), such as Databricks SQL access and Workspace access.
+
+## Setting up Databricks Compute
+
+When you run a dbt project, it generates SQL, which can run on All Purpose Clusters or SQL warehouses. We strongly recommend running dbt-generated SQL on a Databricks SQL warehouse. Since SQL warehouses are optimized for executing SQL queries, you can save on the cost with lower uptime needed for the cluster to run the queries. If you need to debug, you will also have access to a Query Profile. We recommend using a serverless cluster if you want to minimize the time spent on spinning up a cluster and removing the need to change cluster sizes depending on workflows.
+
+Let’s [create a Databricks SQL warehouse](https://docs.databricks.com/sql/admin/sql-endpoints.html#create-a-sql-warehouse):
+
+1. Click **SQL Warehouses** in the sidebar.
+2. Click Create SQL Warehouse.
+3. Enter a name for the warehouse.
+4. Accept the default warehouse settings or edit them.
+5. Click Create
+6. Configure warehouse permissions to ensure our service principal and developer have the right access.
+
+We are not covering python in this post but if you want to learn more, check out these [docs](https://docs.getdbt.com/docs/build/python-models#specific-data-platforms). Depending on your workload, you may wish to create a larger SQL Warehouse for production workflows while having a smaller development SQL Warehouse (if you’re not using Serverless SQL Warehouses).
+
+## Configure your dbt project
+
+Now that the Databricks components are in place, we can configure our dbt project. This involves connecting dbt to our Databricks SQL warehouse to run SQL queries and using a version control system like GitHub to store our transformation code.
+
+If you are migrating an existing dbt project from the dbt-spark adapter to dbt-databricks, follow this [migration guide](https://docs.getdbt.com/guides/migration/tools/migrating-from-spark-to-databricks#migration) to switch adapters without needing to update developer credentials and other existing configs.
+
+If you’re starting a new dbt project, follow the steps below. For a more detailed setup flow, check out our [Getting started guide.](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks)
+
+### Connect dbt to Databricks
+
+First, you’ll need to connect your dbt project to Databricks so it can send transformation instructions and build objects in Unity Catalog. Follow the instructions for [dbt Cloud](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks#connecting-to-dbt-cloud) or [Core](https://docs.getdbt.com/reference/warehouse-setups/databricks-setup) to configure your project’s connection credentials.
+
+Each developer must generate their Databricks PAT and use the token in their development credentials. They will also specify a unique developer schema that will store the tables and views generated by dbt runs executed from their IDE. This provides isolated developer environments and ensures data access is fit for purpose.
+
+Let’s generate a [Databricks PAT token](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for Development:
+
+1. In Databricks, click on your Databricks username in the top bar and select User Settings in the drop down.
+2. On the Access token tab, click Generate new token.
+3. Click Generate.
+4. Copy the displayed token and click Done. (don’t lose it!)
+
+For your development credentials/profiles.yml:
+
+1. Set your default catalog to dev.
+2. Your developer schema should be named after yourself. We recommend dbt_<first_name_initial><last_name>.
+
+By doing this, dbt will create the developer schemas if it doesn’t already exist in the **dev** catalog but can be overridden to specify sources or production targets.
+
+### Defining your dbt deployment environment
+
+Last, we need to give dbt a way to deploy code outside of development environments. To do so, we’ll use dbt [environments](https://docs.getdbt.com/docs/collaborate/environments) to define the production targets that end users will interact with.
+
+Core projects can use [targets in profiles](https://docs.getdbt.com/docs/get-started/connection-profiles#understanding-targets-in-profiles) to separate environments. [dbt Cloud environments](https://docs.getdbt.com/docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide) allow you to define environments via the UI and [schedule jobs](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/schedule-a-job) for specific environments.
+
+Let’s set up our deployment environment:
+
+1. In Databricks, [set up your service principal’s token](https://docs.databricks.com/dev-tools/service-principals.html#use-curl-or-postman). To do this, you will need to open up your terminal.
+2. In your terminal, define 2 environment variables:
+    1. DATABRICKS_HOST - the url used to log into your Databricks workspace
+    2. DATABRICKS_TOKEN - your [personal access token](https://docs.databricks.com/dev-tools/auth.html#pat) (also used for dbt Cloud developer credentials)
+
+```bash
+export DATABRICKS_HOST="https://dbc-a1b2345c-d6e78.cloud.databricks.com"
+export DATABRICKS_TOKEN="dapi1234567890b2cd34ef5a67bc8de90fa12b"
+```
+
+1. Next, run a curl command to get the “application_id” of your service principal. You can also get this value from the Databricks workspace admin console > Service Principals > Edit
+
+```bash
+curl -X GET \
+${DATABRICKS_HOST}/api/2.0/preview/scim/v2/ServicePrincipals \
+--header "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+| jq .
+```
+
+1. Then you create a JSON file with the application ID retrieved from the above command, a comment to describe what the token will be used for, and the amount of time the token will be valid (in seconds) before it expires and will need to be regenerated.
+
+```bash
+vim create-service-principal.json
+```
+
+```json
+{
+  "application_id": "<application-id>",
+  "comment": "<comment>",
+  "lifetime_seconds": 1209600
+}
+```
+
+1. Run one more curl command to get the service principal’s token:
+
+```bash
+curl -X POST \
+${DATABRICKS_HOST}/api/2.0/token-management/on-behalf-of/tokens \
+--header "Content-type: application/json" \
+--header "Authorization: Bearer ${DATABRICKS_TOKEN}" \
+--data @create-service-principal-token.json \
+| jq .
+```
+
+1. Now let’s pop back over to dbt Cloud to fill out the environment fields. Click on environments in the dbt Cloud UI or define a new target in your profiles.yml.
+2. Set the Production environment’s *catalog* to the **prod** catalog created above. Provide the [service token](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-access-tokens-for-a-service-principal) for your **prod** service principal and set that as the *token* in your production environment’s deployment credentials.
+3. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
+4. Provide your Service Principal token.
+
+### Connect dbt to your git repository
+
+Next, you’ll need somewhere to store and version control your code that allows you to collaborate with teammates. Connect your dbt project to a git repository with [dbt Cloud](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks#initialize-your-repository-and-start-development). [Core](https://docs.getdbt.com/docs/get-started/getting-started-dbt-core#create-a-repository) projects will use the git CLI.
+
+## Best practices for dbt and Unity Catalog
+
+Everything should now be configured, and we’re ready to start building a dbt project using Unity Catalog. However, we should first consider how we want to allow dbt users to interact with our different catalogs. We recommend the following best practices to ensure the integrity of your production data:
+
+### Isolate your Bronze (aka source) data
+
+We recommend using Unity Catalog because it allows you to reference data across your organization from any other catalog, legacy Hive metastore, external metastore, or Delta Live Table pipeline outputs. Additionally, Databricks offers the capability to [interact with external data](https://docs.databricks.com/external-data/index.html#interact-with-external-data-on-databricks) and supports query federation to many [database solutions](https://docs.databricks.com/query-federation/index.html#what-is-query-federation-for-databricks-sql). This means your dev and prod environments will have access to your source data, even if it is defined in another catalog or external data source.
+
+Raw data in your Bronze layer should be defined as dbt [sources](https://docs.getdbt.com/docs/build/sources) and should be read-only for all dbt interactions in both development and production. By default, we recommend that all of these inputs should be accessible by all dbt users in all dbt environments. This ensures that transformations in all environments begin with the same input data, and the results observed in development will be replicated when that code is deployed. That being said, there are times when your company’s data governance requirements necessitate using multiple workspaces or data catalogs depending on the environment.
+
+If you have different data catalogs/schemas for your source data depending on your environment, you can use the [target.name](https://docs.getdbt.com/reference/dbt-jinja-functions/target#use-targetname-to-change-your-source-database) to change the data catalog/schema you’re pulling from depending on the environment.
+
+If you use multiple Databricks workspaces to isolate development from production, you can use dbt Cloud’s [environment variables](https://docs.getdbt.com/docs/build/environment-variables) in your connection config strings to reference multiple workspaces from one dbt Cloud project. You can also do the same thing for your SQL warehouse (so you can have different sizes based on your environments.
+
+To do so, use [environment variable syntax](https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables#special-environment-variables) for Server Hostname of your Databricks workspace URL and HTTP Path for the SQL warehouse in your connection settings. Note that Server Hostname still needs to appear to be a valid domain name to pass validation checks, so you will need to hard-code the domain suffix on the URL, eg {{env_var('DBT_HOSTNAME')}}.cloud.databricks.com and the path prefix for your warehouses, eg /sql/1.0/warehouses/{{env_var('DBT_HTTP_PATH')}}.
+
+[https://lh4.googleusercontent.com/VqP2UMI6d15UKbHvrfh9XGESoDtm1cw0zfkgr9SP6v7E2qlWbylhZLQSvkHuBfhy-R8Kl8bbyVyqbmi-PbNcujOMlPjNHpmdTvkOHSbNohvvXnN7tryjBDbgUsexusDumwBZK9UgZqCsVjAa80r9NHVY-U7b9MFtCrKjw9f3o4V1RVtEk4CcEfmAYo0e8Q](https://lh4.googleusercontent.com/VqP2UMI6d15UKbHvrfh9XGESoDtm1cw0zfkgr9SP6v7E2qlWbylhZLQSvkHuBfhy-R8Kl8bbyVyqbmi-PbNcujOMlPjNHpmdTvkOHSbNohvvXnN7tryjBDbgUsexusDumwBZK9UgZqCsVjAa80r9NHVY-U7b9MFtCrKjw9f3o4V1RVtEk4CcEfmAYo0e8Q)
+
+When you create environments in dbt Cloud, you can assign environment variables to populate the connection information dynamically. Don’t forget to make sure the tokens you use in the credentials for those environments were generated from the associated workspace.
+
+[https://lh6.googleusercontent.com/gcmAjXJ6qHgZ33L5b2L84nGxHr5HT-XENhiGjZbN33jSmZqFY7XmALq8j9cU3-65udiOA0n9kew9OCsHiPr5F1sKkA2kZvP037jMrlfKnfsCejS2kvM7sQVvDHMsWStr-yXAvTIoSBV9vn4Lo5S2KPQT35hO5XRhKQ0dM-WUVGJvb54Pn9Swi5dQvQckZw](https://lh6.googleusercontent.com/gcmAjXJ6qHgZ33L5b2L84nGxHr5HT-XENhiGjZbN33jSmZqFY7XmALq8j9cU3-65udiOA0n9kew9OCsHiPr5F1sKkA2kZvP037jMrlfKnfsCejS2kvM7sQVvDHMsWStr-yXAvTIoSBV9vn4Lo5S2KPQT35hO5XRhKQ0dM-WUVGJvb54Pn9Swi5dQvQckZw)
+
+### Access Control
+
+For granting access to data consumers, use dbt’s [grants config](https://docs.getdbt.com/reference/resource-configs/grants) to apply permissions to database objects generated by dbt models. This lets you configure grants as a structured dictionary rather than writing all the SQL yourself and lets dbt take the most efficient path to apply those grants.
+
+As for permissions to run dbt and read non-consumer-facing data sources, the table below summarizes an access model. Effectively, all developers should get no more than read access on the prod catalog and write access in the dev catalog. When using dbt, schema creation is taken care of for you; unlike traditional data warehousing workflows, you do not need to manually create any Unity Catalog assets other than the top-level catalogs.
+
+The **prod** service principal should have “read” access to raw source data, and “write” access to the prod catalog. If you add a **test** catalog and associated dbt environment, you should create a  dedicated service principal. The test service principal should have *read* on raw source data, and *write* on the **test** catalog but no permissions on the prod or dev catalogs. A dedicated test environment should be used for [CI testing](https://www.getdbt.com/blog/adopting-ci-cd-with-dbt-cloud/) only.
+
+**Table-level grants:**
+
+|  | Source Data | Development catalog | Production catalog | Test catalog |
+| --- | --- | --- | --- | --- |
+| developers | select | select & modify | select or none | none |
+| production service principal | select | none | select & modify | none |
+| Test service principal | select | none | none | select & modify |
+
+**Schema-level grants:**
+
+|  | Source Data | Development catalog | Production catalog | Test catalog |
+| --- | --- | --- | --- | --- |
+| developers | use | use, create table & create view | use or none | none |
+| production service principal | use | none | use, create table & create view | none |
+| Test service principal | use | none | none | use, create table & create view |
+
+## Next steps
+
+Ready to start transforming your Unity Catalog datasets with dbt?
+
+Check out the resources below for guides, tips, and best practices:
+
+- [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
+- [Self-paced dbt fundamentals training videos](https://courses.getdbt.com/courses/fundamentals)
+- [Customizing CI/CD](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/1-cicd-background) & [SQL linting](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/2-lint-on-push)
+- [Debugging errors](https://docs.getdbt.com/guides/best-practices/debugging-errors)
+- [Writing custom generic tests](https://docs.getdbt.com/guides/best-practices/writing-custom-generic-tests)
+- [dbt packages hub](https://hub.getdbt.com/)
