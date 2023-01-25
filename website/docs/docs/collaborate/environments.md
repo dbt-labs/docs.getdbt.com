@@ -27,7 +27,7 @@ In practice, this means that most of the details in a target will be consistent 
 
 ## Deleting environments
 
-Deleting an environment will not automatically delete the associated job(s). Before you completely delete your environment, first delete any jobs associated to that environment. Once you've deleted the job(s), you can completely delete the environment. 
+Deleting an environment doesn't automatically delete its associated job(s). To completely delete your environment, first delete all jobs associated with that environment. Then, delete the environment. 
 
 ## Related docs
 - [About dbt Core versions](/docs/dbt-versions/core)
