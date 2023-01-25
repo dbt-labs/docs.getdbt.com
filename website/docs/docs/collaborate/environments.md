@@ -25,7 +25,7 @@ Targets offer the flexibility to decide how to implement your separate environme
 
 In practice, this means that most of the details in a target will be consistent across all targets, except for the `schema` and user credentials. If you have multiple dbt users writing code, it often makes sense for _each user_ to have their own _development_ environment. A pattern we've found useful is to set your dev target schema to be `dbt_<username>`. User credentials should also differ across targets so that each dbt user is using their own data warehouse user.
 
-## Deleting environments
+## Delete environments
 
 Deleting an environment doesn't automatically delete its associated job(s). To completely delete your environment, first delete all jobs associated with that environment. Then, delete the environment. 
 
