@@ -15,7 +15,7 @@ This project will walk you through:
 
 - Setting up a Databricks account
 - Loading training data into your Databricks account
-- Configuring a SQL endpoint in Databricks
+- Configuring a SQL warehouse [(formerly SQL endpoint)](https://docs.databricks.com/sql/admin/sql-endpoints.html) in Databricks
 - Connecting dbt Cloud and Databricks
 
 ## Prerequisites
