@@ -17,6 +17,7 @@ Optionally specify a custom directory where dbt will write logs.
 By default, dbt will write to the `logs` directory, i.e. `log-path: logs`
 
 <VersionBlock firstVersion="1.2">
+
 ## Configuration
 
 In the manner of a ["global" config](global-configs), the log path can be set in three places:

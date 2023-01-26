@@ -223,7 +223,7 @@ When you return to the BigQuery console, you can `select` from this model.
 You can also explore:
 
 * The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
-* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the selects statements that are running and the python logging happening when dbt runs.
+* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
 
 ## Test and document your project
 
