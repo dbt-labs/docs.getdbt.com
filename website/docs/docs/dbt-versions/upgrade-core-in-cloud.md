@@ -75,7 +75,7 @@ If you want more advice on how to upgrade your dbt projects, check out our [migr
 
 This Q&A guide should help you figure out what changes you might need to make to successfully upgrade your version of dbt Core in dbt Cloud. As a reminder, we recommend everyone upgrade to the most recent version of dbt, as we will not support all versions of dbt in Cloud indefinitely. We document which versions of dbt Core we support [here](docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version#supported-versions).
 
-There aren't many breaking changes between minor versions, and it may be the case that you don't need to change any code to upgrade to a newer version of dbt in dbt Cloud. There are only breaking changes between minor versions of dbt before dbt 1.0. Minor releases starting with dbt 1.0, do not have breaking code changes. If there are no code changes needed, all you have to do is [change the settings](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version.md) in your environment or job to run a more recent version of dbt.
+There aren't many breaking changes between minor versions, and it may be the case that you don't need to change any code to upgrade to a newer version of dbt in dbt Cloud. There are only breaking changes between minor versions of dbt before dbt 1.0. Minor releases starting with dbt 1.0, do not have breaking code changes. If there are no code changes needed, all you have to do is [change the settings](/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version) in your environment or job to run a more recent version of dbt.
 
 #### Changes between minor versions of dbt that will affect your project
 
