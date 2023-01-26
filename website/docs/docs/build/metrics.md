@@ -307,7 +307,7 @@ Filters should be defined as a list of dictionaries that define predicates for t
 
 All three properties (`field`, `operator`, `value`) are required for each defined filter.
 
-Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query (e.g. text or dates), use `"'nested'"` quotes:
+Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded by quotes inside the query (e.g. text or dates), use `"'nested'"` quotes:
 
 ```yml
     filters:

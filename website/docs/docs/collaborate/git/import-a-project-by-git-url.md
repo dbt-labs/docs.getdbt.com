@@ -9,7 +9,7 @@ In dbt Cloud, you can import a git repository from any valid git URL that points
 You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. dbt Cloud uses the SSH protocol to clone repositories, so dbt Cloud will be unable to clone repos supplied with the HTTP protocol.
 
 ## Managing Deploy Keys
-After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. You must provide this Deploy Key in the Repository configuration of your Git host. This Deploy Key should be be configured to allow *read and write access* to the specified repositories.
+After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. You must provide this Deploy Key in the Repository configuration of your Git host. This Deploy Key should be configured to allow *read and write access* to the specified repositories.
 
 **Note**: Each dbt Cloud project will generate a different deploy key when connected to a repo, even if two projects are connected to the same repo. Both deploy keys will need to be supplied to your git provider.
 
