@@ -7,7 +7,6 @@ In order to query the dbt Metadata API, you must have the following:
 * [Multi-tenant](https://github.com/docs/deploy/regions) dbt Cloud account
   Note: The Metadata API is currently not available to accounts on [Single Tenant deployments](/docs/deploy/single-tenant).
 
-_Note that this API is currently not available to accounts on [Single Tenant deployments](/docs/deploy/single-tenant)._
 
 ## Authorization
 
