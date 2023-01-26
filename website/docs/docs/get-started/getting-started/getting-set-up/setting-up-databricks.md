@@ -184,7 +184,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
     </div>
 
 2. Select the dbt tile under `Data preparation and transformation`.
-3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL warehouse for the dbt Cloud account to use. This does mean that you will have two SQL Warehouses at your disposal from the previous step and from using Partner Connect.
+3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL warehouse for the dbt Cloud account to use. This does mean that you will have two SQL warehouses at your disposal from the previous step and from using Partner Connect.
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
