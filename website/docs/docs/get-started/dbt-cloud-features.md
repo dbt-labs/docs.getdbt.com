@@ -3,13 +3,13 @@ title: "About dbt Cloud"
 id: "dbt-cloud-features"
 ---
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. It comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated developer environment (IDE). 
+dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. In addition to providing a hosted architecture for running dbt across your organization, dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated developer environment (IDE).
 
 dbt Cloud's flexible [plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14 day trial](https://www.getdbt.com/signup/)!
 
 ## dbt Cloud IDE
 
-The dbt Cloud integrated development environment (IDE) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the easiest and most efficient way to develop dbt models, allowing you to write, compile, preview and commit your code all in one user-friendly experience - no command line or multiple windows required! Anyone can use the IDE, from new dbt developers to seasoned practitioners.
+The dbt Cloud integrated development environment (IDE) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the easiest and most efficient way to develop dbt models, allowing you to write, compile, preview, and commit your code all in one user-friendly experience - no command line or multiple windows required! Anyone can use the IDE, from new dbt developers to seasoned practitioners.
 
 Learn more about the [dbt Cloud IDE.](/docs/get-started/develop-in-the-cloud)
 
@@ -20,16 +20,23 @@ Set up and manage separate production and development environments in dbt Cloud 
 
 Learn more about [Environments](/docs/collaborate/environments).
 
+## Schedule and run dbt jobs
 
-## Schedule and run dbt jobs in production
-
-Set up custom schedules to run your production dbt jobs. dbt Cloud's comprehensive scheduling interface makes it possible to schedule jobs by day of the week, time of day, or a recurring interval. 
+Set up custom schedules to run your production dbt jobs. dbt Cloud's comprehensive scheduling interface makes it possible to schedule jobs by day of the week, time of day, or a recurring interval.
 
 Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs from an external orchestrator.
 
 Learn more about [scheduling jobs](/docs/get-started/getting-started/building-your-first-project/schedule-a-job), [API](/docs/dbt-cloud-apis/overview), and [webhooks.](/docs/deploy/cloud-ci-job#using-a-webhook-trigger) 
 
 <Lightbox src="/img/docs/dbt-cloud/overview-job-schedule.gif" title="Scheduling jobs with dbt Cloud"/>
+
+## Notifications
+
+Set up and customize job notifications in dbt Cloud and receive alerts via Email or a chosen Slack channel when a job run succeeds, fails, or is cancelled. The notification will include the job run name, and the run's status (including successful, failed, and canceled runs). 
+
+Notifications alert the right people when something goes wrong instead of waiting for a user to report it.
+
+Learn more about [job notifications](/docs/deploy/job-notifications).
 
 ## Host & share documentation
 
@@ -38,14 +45,6 @@ dbt Cloud hosts and authorizes access to dbt project documentation. After enabli
 Learn more about [enabling docs](/docs/collaborate/build-and-view-your-docs) for your jobs.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/viewing-docs.gif" title="Viewing documentation in dbt Cloud"/>
-
-## Notifications
-
-Set up and customize job notifications in dbt Cloud and receive alerts via Email or a chosen Slack channel when a job run succeeds, fails, or is cancelled.
-
-If you enable notifications for dbt Cloud job runs, you can receive a notification when any job run succeeds, fails, or is cancelled. The notification will include the job run name, and the run's status (including successful, failed, and canceled runs). 
-
-Learn more about [job notifications](/docs/deploy/job-notifications).
 
 ## Democratize access to logs
 
