@@ -178,12 +178,6 @@ The `meta` field can be used to set metadata for a resource. This metadata is co
 
 Depending on the resource you're configuring, `meta` may be available within the `config` property, or as a top-level key. (For backwards compatibility, `meta` is always supported as a top-level key, though without the capabilities of config inheritance.)
 
-<Changelog>
-
-* `v0.16.0`: This property was introduced
-* `v0.21.0`: Introduced the `config` property, and gave `meta` the capabilities of a config
-
-</Changelog>
 
 ## Examples
 ### Designate a model owner
@@ -242,7 +236,7 @@ seeds:
 
 ### Override one meta attribute for a single model
 
-<File name='models/my_model.yml'>
+<File name='models/my_model.sql'>
 
 ```sql
 {{ config(meta = {

@@ -2,11 +2,11 @@
 title: Sources
 ---
 
-_Current schema_: [`v3`](https://schemas.getdbt.com/dbt/sources/v3/index.html)
+**Current schema:** [`v3`](https://schemas.getdbt.com/dbt/sources/v3/index.html)
 
-_Produced by:_ `dbt source freshness`
+**Produced by:** [`source freshness`](commands/source)
 
-This file contains information about [sources with freshness checks](using-sources#snapshotting-source-data-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](cloud-snapshotting-source-freshness).
+This file contains information about [sources with freshness checks](/docs/build/sources#checking-source-freshness). Today, dbt Cloud uses this file to power its [Source Freshness visualization](/docs/build/sources#snapshotting-source-data-freshness).
 
 ### Top-level keys
 
@@ -17,7 +17,7 @@ This file contains information about [sources with freshness checks](using-sourc
 Each entry in `results` is a dictionary with the following keys:
 
 - `unique_id`: Unique source node identifier, which map results to `sources` in the [manifest](manifest-json)
-- `max_loaded_at`: Max value of `loaded_at_field` timestamp in the source table when queried.
+- `max_loaded_at`: Max value of `loaded_at_field` timestamp in the source <Term id="table" /> when queried.
 - `snapshotted_at`: Current timestamp when querying.
 - `max_loaded_at_time_ago_in_s`: Interval between `max_loaded_at` and `snapshotted_at`, calculated in python to handle timezone complexity.
 - `criteria`: The freshness threshold(s) for this source, defined in the project.

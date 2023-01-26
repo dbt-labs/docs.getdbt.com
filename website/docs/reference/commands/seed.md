@@ -10,7 +10,7 @@ id: "seed"
 </Changelog>
 
 
-The `dbt seed` command will load `csv` files located in the `seed-paths` directory of your dbt project into your data warehouse.
+The `dbt seed` command will load `csv` files located in the `seed-paths` directory of your dbt project into your <Term id="data-warehouse" />.
 
 
 ### Selecting seeds to run

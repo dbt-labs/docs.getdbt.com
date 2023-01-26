@@ -5,66 +5,25 @@ title: "Graph operators"
 ### The "plus" operator
 If placed at the front of the model selector, `+` will select all parents of the selected model. If placed at the end of the string, `+` will select all children of the selected model.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
 
-  ```bash
+   ```bash
   $ dbt run --select my_model+          # select my_model and all children
   $ dbt run --select +my_model          # select my_model and all parents
   $ dbt run --select +my_model+         # select my_model, and all of its parents and children
   ```
 
-</TabItem>
-<TabItem value="legacy">
-
-  ```bash
-  $ dbt run --models my_model+          # select my_model and all children
-  $ dbt run --models +my_model          # select my_model and all parents
-  $ dbt run --models +my_model+         # select my_model, and all of its parents and children
-  ```
-
-</TabItem>
-</Tabs>
-
 
 ### The "n-plus" operator
-<Changelog>New in v0.18.0</Changelog>
 
 You can adjust the behavior of the `+` operator by quantifying the number of edges
 to step through.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
 
   ```bash
   $ dbt run --select my_model+1          # select my_model and its first-degree children
   $ dbt run --select 2+my_model          # select my_model, its first-degree parents, and its second-degree parents ("grandparents")
   $ dbt run --select 3+my_model+4        # select my_model, its parents up to the 3rd degree, and its children down to the 4th degree
   ```
-
-</TabItem>
-<TabItem value="legacy">
-
-  ```bash
-  $ dbt run --models my_model+1          # select my_model and its first-degree children
-  $ dbt run --models 2+my_model          # select my_model, its first-degree parents, and its second-degree parents ("grandparents")
-  $ dbt run --models 3+my_model+4        # select my_model, its parents up to the 3rd degree, and its children down to the 4th degree
-  ```
-
-</TabItem>
-</Tabs>
 
 
 ### The "at" operator
@@ -79,27 +38,8 @@ $ dbt run --models @my_model          # select my_model, its children, and the p
 ### The "star" operator
 The `*` operator matches all models within a package or directory.
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
 
   ```bash
   $ dbt run --select snowplow.*      # run all of the models in the snowplow package
   $ dbt run --select finance.base.*  # run all of the models in models/finance/base
   ```
-
-</TabItem>
-<TabItem value="legacy">
-
-  ```bash
-  $ dbt run --models snowplow.*      # run all of the models in the snowplow package
-  $ dbt run --models finance.base.*  # run all of the models in models/finance/base
-  ```
-
-</TabItem>
-</Tabs>

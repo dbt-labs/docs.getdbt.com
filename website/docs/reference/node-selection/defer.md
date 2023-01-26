@@ -9,40 +9,27 @@ title: "Defer"
 
 </Changelog>
 
-**N.B.** Deferral is a powerful, complex feature that enables compelling workflows. We reserve the right to change the name and syntax in a future version of dbt to make the behavior clearer and more intuitive. For details, see [dbt#2968](https://github.com/fishtown-analytics/dbt/issues/2968).
+Deferral is a powerful, complex feature that enables compelling workflows. As the use cases for `--defer` evolve, dbt Labs might make enhancements to the feature, but commit to providing backward compatibility for supported versions of dbt Core.  For details, see [dbt#5095](https://github.com/dbt-labs/dbt-core/discussions/5095).
 
-Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](managing-environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
+Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
-Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](understanding-state).
-
+Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/about-state).
 ### Usage
 
-<Tabs
-  defaultValue="modern"
-  values={[
-    { label: 'v0.21.0 and later', value: 'modern', },
-    { label: 'v0.20.x and earlier', value: 'legacy', }
-  ]
-}>
-<TabItem value="modern">
-
-  ```shell
-  $ dbt run --select [...] --defer --state path/to/artifacts
-  $ dbt test --select [...] --defer --state path/to/artifacts
-  ```
-
-</TabItem>
-<TabItem value="legacy">
-
-  ```shell
-  $ dbt run --models [...] --defer --state path/to/artifacts
-  $ dbt test --models [...] --defer --state path/to/artifacts
-  ```
-
-</TabItem>
-</Tabs>
+```shell
+$ dbt run --select [...] --defer --state path/to/artifacts
+$ dbt test --select [...] --defer --state path/to/artifacts
+```
 
 
+<VersionBlock lastVersion="0.20">
+
+```shell
+$ dbt run --models [...] --defer --state path/to/artifacts
+$ dbt test --models [...] --defer --state path/to/artifacts
+```
+
+</VersionBlock>
 
 When the `--defer` flag is provided, dbt will resolve `ref` calls differently depending on two criteria:
 1. Is the referenced node included in the model selection criteria of the current run?
@@ -56,7 +43,15 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
-Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](cloud-enabling-continuous-integration-with-github).
+Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
+
+<VersionBlock firstVersion="1.4">
+
+#### Favor state
+
+You can optionally skip the second criterion by passing the `--favor-state` flag. If passed, dbt will favor using the node defined in your `--state` namespace, even if the node exists in the current target.
+
+</VersionBlock>
 
 ### Example
 
@@ -82,9 +77,7 @@ group by 1
 I want to test my changes. Nothing exists in my development schema, `dev_alice`.
 
 ### test
-:::info
-Before dbt v0.21, use the `--models` flag instead of `--select`.
-:::
+
 </File>
 
 <Tabs
@@ -169,10 +162,6 @@ models:
 ```
 
 (A bit silly, since all the data in `model_b` had to come from `model_a`, but suspend your disbelief.)
-
-:::info
-Before dbt v0.21, use the `--models` flag instead of `--select`.
-:::
 
 </File>
 

@@ -20,7 +20,3 @@ build:
 	cat ../_redirects | grep 'docs/' | awk '{ print "/v0.10" $$1 "\t" $$2 "\t" $$3 }' >> build/_redirects
 
 	cat ../_headers > build/_headers
-	
-build-prerelease:
-	make build
-	cat ../_headers > build/_headers
