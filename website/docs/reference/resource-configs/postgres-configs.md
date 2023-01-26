@@ -3,6 +3,7 @@ title: "Postgres configurations"
 id: "postgres-configs"
 ---
 
+
 ## Performance Optimizations
 
 ### Unlogged
@@ -36,6 +37,8 @@ models:
 
 ### Indexes
 
+While Postgres works reasonably well for datasets smaller than about 10mm rows, database tuning is sometimes required. It's important to create indexes for columns that are commonly used in joins or where clauses.
+
 <Changelog>
 
   - **v0.20.0:** Introduced native support for `indexes` config
@@ -63,7 +66,7 @@ select ...
 
 </File>
 
-If one or more indexes are configured on a resource, dbt will run `create index` DDL statement(s) as part of that resource's materialization, within the same transaction as its main `create` statement. For the index's name, dbt uses a hash of its properties and the current timestamp, in order to guarantee uniqueness and avoid namespace conflict with other indexes.
+If one or more indexes are configured on a resource, dbt will run `create index` <Term id="ddl" /> statement(s) as part of that resource's <Term id="materialization" />, within the same transaction as its main `create` statement. For the index's name, dbt uses a hash of its properties and the current timestamp, in order to guarantee uniqueness and avoid namespace conflict with other indexes.
 
 ```sql
 create index if not exists

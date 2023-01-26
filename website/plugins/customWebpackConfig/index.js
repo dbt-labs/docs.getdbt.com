@@ -6,7 +6,6 @@ module.exports = function customWebpackConfigPlugin(context, options) {
   return {
     name: 'docusaurus-custom-webpack-config-plugin',
     configureWebpack(config, isServer, utils) {   
-         
       return {        
         resolve: {     
           fallback: {
@@ -24,6 +23,11 @@ module.exports = function customWebpackConfigPlugin(context, options) {
           }),
           new NodePolyfillPlugin({}),
         ],
+        module: {
+          rules: [
+            { test: /\.py$/, loader: 'raw-loader' }
+          ]
+        }
       }
     }
   }

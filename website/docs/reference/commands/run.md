@@ -7,7 +7,7 @@ id: "run"
 
 `dbt run` executes compiled sql model files against the current `target`
 database. dbt connects to the target database and runs the relevant SQL required
-to materialize all data models using the specified materialization strategies.
+to materialize all data models using the specified <Term id="materialization" /> strategies.
 Models are run in the order defined by the dependency graph generated during
 compilation. Intelligent multi-threading is used to minimize execution time
 without violating dependencies.
@@ -21,7 +21,7 @@ support transactions.
 
 ## Refresh incremental models
 
-If you provide the `--full-refresh` argument to `dbt run`, dbt will treat incremental models as table models. This is useful when
+If you provide the `--full-refresh` flag to `dbt run`, dbt will treat incremental models as <Term id="table" /> models. This is useful when
 
 1. The schema of an incremental model changes and you need to recreate it.
 2. You want to reprocess the entirety of the incremental model because of new logic in the model code.
@@ -33,6 +33,12 @@ dbt run --full-refresh
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.3">
+
+You can also supply the flag by its short name: `dbt run -f`.
+
+</VersionBlock>
 
 In the dbt compilation context, this flag will be available as [flags.FULL_REFRESH](flags). Further, the `is_incremental()` macro will return `false` for *all* models in response when the `--full-refresh` flag is specified.
 
@@ -58,6 +64,8 @@ select * from all_events
 dbt will also allow you select which specific models you'd like to materialize. This can be useful during special scenarios where you may prefer running a different set of models at various intervals. This can also be helpful when you may want to limit the tables materialized while you develop and test new models.
 
 For more information, see the [Model Selection Syntax Documentation](node-selection/syntax).
+
+For more information on running parents or children of specific models, see the [Graph Operators Documentation](node-selection/graph-operators).
 
 ## Treat warnings as errors
 

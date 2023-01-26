@@ -2,12 +2,8 @@
 title: Model configurations
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure models in all `.yml` files
-</Changelog>
-
 ## Related documentation
-* [Models](building-models)
+* [Models](/docs/build/models)
 * [`run` command](run)
 
 ## Available configurations
@@ -108,6 +104,7 @@ models:
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
+    [+](plus-prefix)[grants](grants): {<dictionary>}
 
 ```
 
@@ -136,7 +133,7 @@ models:
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
-
+      [grants](grants): {<dictionary>}
 ```
 
 </File>
@@ -161,6 +158,7 @@ models:
     [alias](resource-configs/alias)="<string>",
     [persist_docs](persist_docs)={<dict>},
     [meta](meta)={<dict>}
+    [grants](grants)={<dict>}
 ) }}
 
 ```
