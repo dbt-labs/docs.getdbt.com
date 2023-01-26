@@ -6,7 +6,7 @@ id: modify-owner-column
 ---
 
 
-Unfortunately, you're unable to modify the owner column your generated documentation. 
+Due to the nature of the field, you won't be able to change the owner column in your generated documentation. 
  
 The _owner_ field in `dbt-docs` is pulled from database metdata (`catalog.json`), meaning the owner of that table in the database. With the exception of exposures, it's not pulled from an `owner` field set within dbt.
  
