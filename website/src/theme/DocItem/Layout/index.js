@@ -26,6 +26,7 @@ import TOCCollapsible from '@theme/TOCCollapsible';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import VersionContext from '../../../stores/VersionContext'
 import getElements from '../../../utils/get-html-elements';
+import useHashLink from '../../../utils/use-hash-link';
 
 /**
  * Decide if the toc should be rendered, on mobile or desktop viewports
@@ -105,6 +106,7 @@ function useDocTOC() {
       } else {
         setTocReady(true)
       }
+      useHashLink()
     }
     fetchElements()
   }, [toc, dbtVersion])

@@ -120,6 +120,7 @@ Now let's set up the connection between dbt Cloud and BigQuery.
 5. If you see "Connection test Succeeded!" then click **Continue**. If it fails, you might need to go back and regenerate your BigQuery credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
 ### Setting up a managed repository
 
