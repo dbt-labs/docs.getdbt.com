@@ -4,7 +4,7 @@ id: "regions-ip-addresses"
 description: "Available regions and ip addresses"
 ---
 
-dbt Cloud is hosted in the multiple regions and will always connect to your data platform from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
+dbt Cloud is hosted in multiple regions and will always connect to your data platform or git provider from the below IP addresses. Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
 [dbt Cloud Enterprise](https://www.getdbt.com/pricing/) plans can choose to have their account hosted in any of the below regions. Organizations **must** choose a single region per dbt Cloud account. If you need to run dbt Cloud in multiple regions, we recommend using multiple dbt Cloud accounts. 
 
