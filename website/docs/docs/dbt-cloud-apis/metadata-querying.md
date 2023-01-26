@@ -5,7 +5,7 @@ id: "metadata-querying"
 
 In order to query the dbt Metadata API, you must have the following:
 * Team or Enterprise dbt Cloud account
-* [Multi-tenant](/docs/deploy/regions) dbt Cloud account
+* [Multi-tenant](/docs/deploy/regions-ip-addresses) dbt Cloud account
   Note: The Metadata API is currently not available to accounts on [Single Tenant deployments](/docs/deploy/single-tenant).
 
 ## Authorization
