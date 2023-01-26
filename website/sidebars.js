@@ -14,7 +14,6 @@ const sidebarSettings = {
           collapsed: true,
           items: [
             "docs/get-started/getting-started/set-up-dbt-cloud",
-            "docs/get-started/dbt-cloud-features",
             {
               type: "category",
               label: "Getting set up",
@@ -43,6 +42,7 @@ const sidebarSettings = {
                 "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
+            "docs/get-started/dbt-cloud-features",
             "docs/get-started/connect-your-database",
             "docs/get-started/develop-in-the-cloud",
             "docs/get-started/dbt-cloud-tips",

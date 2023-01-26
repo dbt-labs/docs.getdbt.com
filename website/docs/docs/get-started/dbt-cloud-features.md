@@ -1,5 +1,5 @@
 ---
-title: "About dbt Cloud"
+title: "dbt Cloud benefits"
 id: "dbt-cloud-features"
 ---
 
@@ -40,7 +40,7 @@ Learn more about [job notifications](/docs/deploy/job-notifications).
 
 ## Host & share documentation
 
-dbt Cloud hosts and authorizes access to dbt project documentation. After enabling documentation for a given job, you can click the "View Documentation" button to see the latest documentation for that job. Because these docs are generated on a schedule, they're always up to date! Simply invite your coworkers to dbt Cloud to share your project's documentation with the rest of your team. 
+dbt Cloud hosts and authorizes access to dbt project documentation. After enabling documentation for a given job, you can click the "View Documentation" button to see the latest documentation for that job. Because these docs are generated on a schedule, they're always up to date! Simply invite your coworkers to dbt Cloud to share your project's documentation with the rest of your team.
 
 Learn more about [enabling docs](/docs/collaborate/build-and-view-your-docs) for your jobs.
 
@@ -48,13 +48,13 @@ Learn more about [enabling docs](/docs/collaborate/build-and-view-your-docs) for
 
 ## Democratize access to logs
 
-dbt Cloud makes it easy to view in-progress and historical logs for your dbt runs. From dbt Cloud, you can view and download the run logs for your dbt invocations. 
+dbt Cloud makes it easy to view and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently.
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-run-logs.png" title="Viewing logs for a dbt run"/>
 
 ## Supports GitHub, GitLab, AzureDevOPs
 
-Seamlessly connect your git account to dbt Cloud and provide another layer of security to dbt Cloud”
+Seamlessly connect your git account to dbt Cloud and provide another layer of security to dbt Cloud:
 
 - Import new repositories with a couple clicks during dbt Cloud project setup.
 - Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when pull requests are opened in your git provider.
@@ -64,7 +64,7 @@ Learn more about our [supported git providers.](/docs/collaborate/git/connect-gi
 
 ## Enable Continuous Integration
 
-dbt Cloud can be configured to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. When the Cloud job completes, a status will be shown for the PR inside of GitHub. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool in any analyst's belt. 
+dbt Cloud can be configured to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. When the Cloud job completes, a status will be shown for the PR inside of GitHub. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool in any analyst's belt.
 
 Use dbt Cloud to run Slim CI, which only builds models that were modified in your PR. Slim CI allows you to only run certain portions of your code tree based on the activity of your last job run.
 
@@ -80,7 +80,6 @@ Refer to our [Security page](https://www.getdbt.com/security/) for more informa
 
 ## dbt Semantic Layer
 >**📌 Available on [specific plans](https://www.getdbt.com/pricing/)**.
-
 
 With the dbt Semantic Layer, you can define metrics alongside your dbt models, and query them from any integrated analytics tool. Get the same answers, everywhere, every time.
 
@@ -100,7 +99,7 @@ Learn more about the [Metadata API](/docs/dbt-cloud-apis/metadata-api).
 
 >**📌 Available for multi-tenant Enterprise and Team [plans](https://www.getdbt.com/pricing/)**.
 
-The Model timing dashboard displays the model composition, order, and run time for every job run in dbt Cloud. You can access the dashboard on the ***Run Overview** page in dbt Cloud. The top 1% of model durations are automatically highlighted for quick reference. This visualization is displayed after the run completes.
+The Model timing dashboard displays the model composition, order, and run time for every job run in dbt Cloud. You can access the dashboard on the **Run Overview** page in dbt Cloud. The top 1% of model durations are automatically highlighted for quick reference. This visualization is displayed after the run completes.
 
 This is a very visual way to explore your run and surface model bottlenecks. Longest-running models *may* be ripe for further exploration -- which can lead to refactoring or reducing run cadence.
 
@@ -128,6 +127,6 @@ The model timing dashboard can only be viewed for jobs that have successfully co
 
 ## Related docs
 
+- [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Get started guides](/docs/get-started/getting-started/set-up-dbt-cloud)
-- [Run your dbt projects](/docs/get-started/run-your-dbt-projects)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
