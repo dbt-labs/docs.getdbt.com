@@ -20,7 +20,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 
-When building out the structure of your project, you should consider these impacts to your organization's workflow:
+When building out the structure of your project, you should consider these impacts on your organization's workflow:
 
 * **How would people run dbt commands** &mdash; Selecting a path
 * **How would people navigate within the project** &mdash; Whether as developers in the IDE or stakeholders from the docs

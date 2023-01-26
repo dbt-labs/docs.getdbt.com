@@ -10,7 +10,7 @@ But in reality, you probably already have some queries or stored procedures that
 
 There are two parts to accomplish this: migration and refactoring. In this guide we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
 
-When migrating and refactoring code, it’s of course important to stay organized. We'll do this is by following several steps (jump directly from the right sidebar):
+When migrating and refactoring code, it’s of course important to stay organized. We'll do this by following several steps (jump directly from the right sidebar):
 
 1. Migrate your code 1:1 into dbt
 2. Implement dbt sources rather than referencing raw database tables
