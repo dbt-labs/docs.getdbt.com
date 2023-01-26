@@ -133,6 +133,33 @@ doug_beatty:
   name: Doug Beatty
   organization: dbt Labs
 
+doug_guthrie:
+  image_url: /img/blog/authors/dguthrie.jpeg
+  job_title: Solutions Architect
+  links:
+    - icon: fa-github
+      url: https://github.com/dpguthrie
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/doug-guthrie-07994a48/
+  name: Doug Guthrie
+  organization: dbt Labs
+
+emily_riederer:
+  description: Emily Riederer is a Senior Analytics Manager at Capital One where she leads a team delivering a portfolio of data products, enterprise analysis tools, and data science solutions to business partners. As part of the dbt community, she develops and maintains the dbtplyr package. In her spare time, Emily frequently writes about data (see emilyriederer.com, The R Markdown Cookbook, and 97 Things Every Data Engineer Should Know), reviews technical manuscripts for CRC Press, and supports open research software engineering as a member of the rOpenSci editorial board.
+  image_url: /img/blog/authors/emily-riederer.jpeg
+  job_title: Senior Manager Analytics
+  name: Emily Riederer
+  organization: Capital One
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/emilyriederer/
+    - icon: fa-twitter
+      url: https://twitter.com/emilyriederer
+    - icon: fa-github
+      url: https://twitter.com/emilyriederer
+    - icon: fa-readme
+      url: https://emilyriederer.com
+      
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
   job_title: Analytics Engineer
@@ -273,6 +300,13 @@ nate_sooter:
       url: https://www.linkedin.com/in/nathansooter
   name: Nate Sooter
   organization: Smartsheet
+
+noah_kennedy:
+  image_url: /img/blog/authors/noah-kennedy.png
+  job_title: Software Developer
+  description: Noah Kennedy is a Software Developer at Tempus Labs, helping manage the worlds largest repository of clinical and molecular patient data. Noah picked up dbt at Tempus 2 years ago, and has worked extensively on internal dbt development for Tempus — creating macros, custom materializations, and testing frameworks that allow scientists to experiment more and data engineer less. Outside of Tempus, Noah spends his time running, biking, playing music, and exploring coffee shops. You can find more of his writing at https://noahkennedy.co/about/.
+  organization: Tempus
+  name: Noah Kennedy
 
 pat_kearns:
   image_url: /img/blog/authors/pkearns.png

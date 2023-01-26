@@ -434,7 +434,8 @@ const sidebarSettings = {
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/vertica-configs",
-        "reference/resource-configs/doris-configs"
+        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/fal-configs",
       ],
     },
     {
@@ -668,7 +669,9 @@ const sidebarSettings = {
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
-        "reference/warehouse-setups/infer-setup"
+        "reference/warehouse-setups/infer-setup",
+        "reference/warehouse-setups/databend-setup",
+        "reference/warehouse-setups/fal-setup",
       ],
     },
     {
@@ -690,7 +693,7 @@ const sidebarSettings = {
       items: ["reference/snowflake-permissions"],
     },
   ],
-guides: [
+  guides: [
     {
       type: "category",
       label: "Best practices",
@@ -847,7 +850,7 @@ guides: [
       type: "category",
       label: "Advanced",
       items: [
-         "guides/advanced/creating-new-materializations",
+        "guides/advanced/creating-new-materializations",
       ],
     },
     {
@@ -950,6 +953,7 @@ guides: [
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/case",
             "sql-reference/statements/group-by",
             "sql-reference/statements/distinct",
           ],
@@ -1024,11 +1028,16 @@ guides: [
           label: "Joins",
           items: [
             "sql-reference/joins/inner-join",
+            "sql-reference/joins/outer-join",
+            "sql-reference/joins/self-join",
+            "sql-reference/joins/cross-join",
+            "sql-reference/joins/left-join",
+            "sql-reference/joins/right-join",
           ],
         },
         {
           type: "category",
-          label: "Data type",
+          label: "Data Types",
           items: [
             "sql-reference/data-type/data-types",
             "sql-reference/data-type/strings",
