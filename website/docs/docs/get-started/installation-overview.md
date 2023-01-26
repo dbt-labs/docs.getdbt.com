@@ -11,7 +11,10 @@ You can install dbt Core on the command line by using one of these recommended m
 - [Use a Docker image to install dbt](/docs/get-started/docker-install)
 - [Install dbt from source](/docs/get-started/source-install)
 
+## Upgrading dbt Core
 
-## About dbt adapters
+To upgrade dbt using `pip`, see the [pip upgrading instructions](/docs/get-started/pip-install#change-dbt-core-versions). dbt Labs provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/guides/migration/versions/upgrading-to-v1.4) highlighting the changes required for each minor and major release.
 
-dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](supported-data-platforms).
+## About dbt data platforms and adapters
+
+dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt Core, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](supported-data-platforms).
