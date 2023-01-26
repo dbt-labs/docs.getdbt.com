@@ -4,7 +4,7 @@ id: "metadata-querying"
 ---
 Accounts on the _Team_ and _Enterprise_ plans can query the dbt Metadata API. 
 
-_Note that this API is currently not available to accounts on [Single Tenant deployments](https://docs.getdbt.com/docs/dbt-cloud/deployments/single-tenant-deployment)._
+_Note that this API is currently not available to accounts on [Single Tenant deployments](/docs/deploy/single-tenant)._
 
 ## Authorization
 
