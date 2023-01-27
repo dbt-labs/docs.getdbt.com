@@ -13,8 +13,11 @@ const sidebarSettings = {
           label: "dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/get-started-with-bigquery",
-            "docs/get-started/getting-started/get-started-with-databricks",
+            "docs/get-started/dbt-cloud/bigquery",
+            "docs/get-started/dbt-cloud/databricks",
+            "docs/get-started/dbt-cloud/redshift",
+            "docs/get-started/dbt-cloud/snowflake",
+            "docs/get-started/dbt-cloud/exercises",
             "docs/get-started/connect-your-database",
           ],
         },

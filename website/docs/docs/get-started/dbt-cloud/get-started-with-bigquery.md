@@ -1,6 +1,7 @@
 ---
 title: "Get started with dbt Cloud and BigQuery"
 description: "Get started with dbt Cloud and BigQuery."
+id: "bigquery"
 sidebar_label: "Get started with BigQuery"
 ---
 For the BigQuery project in the getting started guide, you'll learn how to set up BigQuery and connect it to dbt Cloud.
@@ -177,6 +178,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 3. Click the link above the file tree in the Develop interface to launch documentation in a new tab.
 
+Now that tests and docs are set up for your project, you can check out [these exercises](/docs/get-started/dbt-cloud/exercises#tests-docs) to learn more about what you can do with dbt.
+
 #### FAQs
 
 <FAQ src="Docs/long-descriptions" />
@@ -217,6 +220,8 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 :::tip
 Congratulations 🎉! You've just deployed your first dbt project!
 :::
+
+Now that you have a runnable dbt project, you can check out [these exercises](/docs/get-started/dbt-cloud/exercises#advanced) to learn more about what you can do with dbt.
 
 ### FAQs
 
