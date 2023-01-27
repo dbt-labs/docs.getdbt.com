@@ -222,8 +222,15 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [
-        "docs/collaborate/environments",
+      items: [{
+          type: "category",
+          label: "Environments",
+          items: [
+            "docs/collaborate/environments/environments",
+            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/collaborate/environments/dbt-core-environments",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",

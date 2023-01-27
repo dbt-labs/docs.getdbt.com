@@ -1,6 +1,6 @@
 ---
-title: "Environments in dbt Core"
-id: "environments-in-dbt-core"
+title: "dbt Core Environments"
+id: "dbt-core-environments"
 ---
 
 ## How do I maintain different environments with dbt Core?

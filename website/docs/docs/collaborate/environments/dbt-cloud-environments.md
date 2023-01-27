@@ -1,6 +1,6 @@
 ---
-title: "Environments in dbt Cloud"
-id: "environments-in-dbt-cloud"
+title: "dbt Cloud Environments"
+id: "dbt-cloud-environments"
 ---
 
 ## dbt Cloud Environments
