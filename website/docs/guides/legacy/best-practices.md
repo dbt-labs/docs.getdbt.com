@@ -16,7 +16,7 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 :::
 
 ### Use separate development and production environments
-dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](/docs/collaborate/environments).
+dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments here](/docs/collaborate/environments/what-are-environments).
 
 ### Use a style guide and for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.

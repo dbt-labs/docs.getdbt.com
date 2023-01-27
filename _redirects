@@ -81,7 +81,7 @@
 /docs/dbt-cloud/access-control/access-control-overview /docs/collaborate/manage-access/about-access 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation /docs/collaborate/build-and-view-your-docs 301
 /docs/building-a-dbt-project/documentation /docs/collaborate/documentation 301
-/docs/building-a-dbt-project/managing-environments /docs/collaborate/environments 301
+/docs/building-a-dbt-project/managing-environments /docs/collaborate/environments/what-are-environments 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url /docs/collaborate/git/import-a-project-by-git-url 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure /docs/collaborate/git/authenticate-azure 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure /docs/collaborate/git/setup-azure 301
