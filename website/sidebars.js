@@ -226,7 +226,7 @@ const sidebarSettings = {
           type: "category",
           label: "Environments",
           items: [
-            "docs/collaborate/environments/environments",
+            "docs/collaborate/environments/what-are-environments",
             "docs/collaborate/environments/dbt-cloud-environments",
             "docs/collaborate/environments/dbt-core-environments",
           ],
