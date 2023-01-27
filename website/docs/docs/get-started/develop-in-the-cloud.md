@@ -1,8 +1,8 @@
 ---
-title: "Develop in the Cloud"
+title: "Develop in Cloud"
 id: develop-in-the-cloud
 description: "Develop, test, run, and build in the Cloud IDE."
-sidebar_label: Develop in the Cloud
+sidebar_label: Develop in Cloud
 ---
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
@@ -15,9 +15,9 @@ With the Cloud IDE, you can:
 - Generate and view documentation of your dbt project,
 - Leverage git and version-control your code from your browser with a couple of clicks,
 - Create and test Python models:
-  * You can compile Python models to see the full function that gets executed in your data platform,
-  * You can see Python models in DAG in dbt version 1.3 and higher,
-- You can't preview python models, currently,
+    * Compile Python models to see the full function that gets executed in your data platform
+    * See Python models in DAG in dbt version 1.3 and higher
+    * Currently you can't preview python models
 - Visualize a directed acyclic graph (DAG), and more.
 
 ## Prerequisites
@@ -25,10 +25,10 @@ With the Cloud IDE, you can:
 To develop in the Cloud IDE, make sure you have the following:
 
 - Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
-- You must have a [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
-- You must have a git repository set up and your git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
-- Your dbt project must be connected to a [data platform](/docs/get-started/connect-your-database)
-- You must have set up a [development environment and development credentials](#set-up-the-cloud-ide)
+- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
+- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
+- A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
+- Set up a [development environment and development credentials](#set-up-the-cloud-ide)
 - The environment must be on dbt version 1.0 or higher
 
 ## Cloud IDE features
@@ -116,7 +116,7 @@ Great job, you should now be able to access the Cloud IDE by clicking **Develop*
 
 ## Access the Cloud IDE
 
-Now that you've set up your development environment and credentails, you should be able to access the Cloud IDE:
+Now that you've set up your development environment and credentials, you should be able to access the Cloud IDE:
 
 1. Log in with your [dbt Cloud account](https://cloud.getdbt.com/). If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free.
 2. Click **Develop** at the top of the page
@@ -125,7 +125,7 @@ Now that you've set up your development environment and credentails, you should 
 
 ## Build, compile, and run projects
 
-You can *build*, *compile*, *run* *, and test* dbt projects by using the command bar. The Cloud IDE will update in real time when you run models, tests, seeds, and operations.
+You can *build*, *compile*, *run* *, and test* dbt projects by using the command bar. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations.
 
 If a model or test fails, you can review the logs to find and fix the issue.
 
@@ -137,13 +137,7 @@ You can also use dbt's [rich model selection syntax](/reference/node-selection/s
 
 ## Build and view your project's docs
 
-The dbt Cloud IDE makes it possible to view documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production.
-
-To generate your project’s documentation (docs) in the IDE, run `dbt docs generate` in the command bar. This command generates the docs for your dbt project as it currently exists in development.
-
-After you generate a successful run, you can view your documentation for your dbt project in real time by clicking **View Docs** or the book icon above the file tree.
-
-You can view the latest version of your documentation rendered in a new browser window, and inspect and verify what your project's documentation will look like before you deploy your changes to production.
+The dbt Cloud IDE makes it possible to [build and view](/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production. 
 
 
 ## Related docs
