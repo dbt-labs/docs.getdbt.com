@@ -145,7 +145,6 @@ This section allows you to determine the credentials that should be used when co
 <div warehouse="Redshift">
 
 <Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" title="Redshift Deployment Credentials Settings"/>
-<!-- postgres and redshift use the same settings  -->
 
 #### Editable fields
 
@@ -198,7 +197,6 @@ This section allows you to determine the credentials that should be used when co
 <div warehouse="Databricks">
 
 <Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" title="Databricks Deployment Credentials Settings"/>
-<!-- spark and databricks use the same settings  -->
 
 #### Editable fields
 
