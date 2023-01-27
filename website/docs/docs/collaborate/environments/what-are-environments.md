@@ -1,6 +1,6 @@
 ---
-title: "Environments"
-id: "environments"
+title: "What are environments?"
+id: "what-are-environments"
 ---
 
 ## What are environments?
