@@ -1,14 +1,11 @@
-#
-# To use this workflow, you will need to set up a .github/teams.yml
-# file with configuration.  For more information, see:
-# https://github.com/yj7/team-labeler-action
-
-on: pull_request
 name: team-label
+
+on: [pull_request_target]
+
 jobs:
   team-labeler:
     runs-on: ubuntu-latest
     steps:
     - uses: JulienKode/team-labeler-action@v0.1.1
       with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
