@@ -1,7 +1,5 @@
-name: team-label
-
 on: [pull_request_target]
-
+name: team-label
 jobs:
   team-labeler:
     runs-on: ubuntu-latest
