@@ -8,4 +8,4 @@ jobs:
     steps:
     - uses: JulienKode/team-labeler-action@v0.1.1
       with:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
