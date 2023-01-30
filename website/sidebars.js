@@ -401,7 +401,8 @@ const sidebarSettings = {
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/vertica-configs",
-        "reference/resource-configs/doris-configs"
+        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/fal-configs",
       ],
     },
     {
@@ -636,7 +637,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
         "reference/warehouse-setups/infer-setup",
-        "reference/warehouse-setups/databend-setup"
+        "reference/warehouse-setups/databend-setup",
+        "reference/warehouse-setups/fal-setup",
       ],
     },
     {

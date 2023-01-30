@@ -307,7 +307,7 @@ Filters should be defined as a list of dictionaries that define predicates for t
 
 All three properties (`field`, `operator`, `value`) are required for each defined filter.
 
-Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded in quotes inside the query (e.g. text or dates), use `"'nested'"` quotes:
+Note that `value` must be defined as a string in YAML, because it will be compiled into queries as part of a string. If your filter's value needs to be surrounded by quotes inside the query (e.g. text or dates), use `"'nested'"` quotes:
 
 ```yml
     filters:
@@ -487,10 +487,10 @@ You may find some pieces of functionality, like secondary calculations, complica
 | <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
 | grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`, `'all_time'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
 | dimensions  | [`'plan'`,<br /> `'country'`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
-| secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calcultions, and period to date calculations. | Optional |
+| secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calculations, and period to date calculations. | Optional |
 | start_date  | `'2022-01-01'` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
-| end_date    | `'2022-12-31'` | Limits the date range of data used in the metric claculation by not querying data after this date | Optional |
-| where       | `plan='paying_customer'` | A sql statment, or series of sql statements, that alter the **final** CTE in the generated sql. Most often used to limit the data to specific values of dimensions provided | Optional |
+| end_date    | `'2022-12-31'` | Limits the date range of data used in the metric calculation by not querying data after this date | Optional |
+| where       | `plan='paying_customer'` | A sql statement, or series of sql statements, that alter the **final** CTE in the generated sql. Most often used to limit the data to specific values of dimensions provided | Optional |
 
 ### Secondary Calculations
 Secondary calculations are window functions you can add to the metric calculation and perform on the primary metric or metrics. 
