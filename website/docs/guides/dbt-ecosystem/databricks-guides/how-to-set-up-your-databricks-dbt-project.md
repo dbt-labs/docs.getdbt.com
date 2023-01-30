@@ -114,8 +114,8 @@ vim create-service-principal.json
 
 ```json
 {
-  "application_id": "<application-id>",
-  "comment": "<comment>",
+  "application_id": "<APPLICATION_ID_FROM_STEP_3>",
+  "comment": "Service Principal Token for dbt deployment",
   "lifetime_seconds": 1209600
 }
 ```
