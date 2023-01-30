@@ -42,7 +42,7 @@ When you run a dbt project, it generates SQL, which can run on All Purpose Clust
 Let’s [create a Databricks SQL warehouse](https://docs.databricks.com/sql/admin/sql-endpoints.html#create-a-sql-warehouse):
 
 1. Click **SQL Warehouses** in the sidebar.
-2. Click Create SQL Warehouse.
+2. Click *Create SQL Warehouse*.
 3. Enter a name for the warehouse.
 4. Accept the default warehouse settings or edit them.
 5. Click Create
