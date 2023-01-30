@@ -15,8 +15,12 @@ This project will walk you through:
 
 - Setting up a Databricks account
 - Loading training data into your Databricks account
-- Configuring a SQL endpoint in Databricks
+- Configuring a SQL warehouse (formerly SQL endpoint) in Databricks
 - Connecting dbt Cloud and Databricks
+
+:::info Note 📌 
+Databricks SQL Endpoints' name has changed and is now called [**SQL warehouses**](https://docs.databricks.com/sql/admin/sql-endpoints.html). 
+::: 
 
 ## Prerequisites
 
@@ -35,7 +39,7 @@ Before starting this tutorial, you will need the following:
 
 2. For the purpose of this tutorial, you will be selecting AWS as our cloud provider but if you use Azure or GCP internally, please choose one of them. The setup process will be similar.
 3. Check your email to complete the verification process.
-4. After setting up your password, you will be guided to choose a subscription plan. You will need to select either the `Premium` or `Enterprise` plan to access the SQL Compute functionality, required for using the SQL Endpoint for dbt. We have chosen `Premium` for this tutorial. Click `Continue` after selecting your plan.
+4. After setting up your password, you will be guided to choose a subscription plan. Select the `Premium` or `Enterprise` plan to access the SQL Compute functionality required for using the SQL warehouse for dbt. We have chosen `Premium` for this tutorial. Click `Continue` after selecting your plan.
     
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/choose_plan.png" title="Choose Databricks Plan" />
@@ -50,7 +54,7 @@ Before starting this tutorial, you will need the following:
     <Lightbox src="/img/databricks_tutorial/images/validate_2.png" />
     </div>
 
-6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL Endpoints, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of `I have data in S3 that I want to query with Databricks`. You do not need to check this off for the purpose of this tutorial. 
+6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of `I have data in S3 that I want to query with Databricks`. You do not need to check this off for the purpose of this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
@@ -93,14 +97,14 @@ Congrats! You are now ready to start working in the workspace.
 
 Our next step is to load some data to transform. Luckily for us, Databricks makes it really easy for us to upload data.
 
-1. First we need a SQL endpoint. Find the drop down menu and toggle into the SQL space.
+1. First we need a SQL warehouse. Find the drop down menu and toggle into the SQL space.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
     </div>
 2. We will be setting up a SQL warehouse now.  Select `SQL Warehouses` from the left hand side console.  You will see that a default SQL Warehouse exists.  
     <!--
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL Endpoints" /> 
+    <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL warehouses" /> 
     </div>
     -->
 3. Click **Start** on the Starter Warehouse.  This will take a few minutes to get the necessary resources spun up.
@@ -180,7 +184,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
     </div>
 
 2. Select the dbt tile under `Data preparation and transformation`.
-3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL Endpoint for the dbt Cloud account to use. This does mean that you will have two SQL Endpoints at your disposal from the previous step and from using Partner Connect.
+3. Click on `Next` when prompted to `Connect to partner`. This action will create a service principal, PAT token for that service principle, and SQL warehouse for the dbt Cloud account to use. This does mean that you will have two SQL warehouses at your disposal from the previous step and from using Partner Connect.
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
@@ -204,7 +208,7 @@ Congratulations! At this point, you have created a Databricks account, loaded tr
 
 #### Get endpoint and token information
 
-To manually setup dbt Cloud, you will need the SQL Endpoint connection information and to generate a user token. You can find your SQL endpoint connection information by going to the `Databricks UI > SQL > SQL Endpoints > Starter Endpoint > Connection details`. Save this information because you will need it later.
+To manually setup dbt Cloud, you will need the SQL warehouse connection information and to generate a user token. You can find your SQL warehouse connection information by going to the `Databricks UI > SQL > SQL warehouses > Starter Endpoint > Connection details`. Save this information because you will need it later.
 
 <Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
 
@@ -223,7 +227,7 @@ To generate a user token for your development credentials in dbt Cloud, click on
     <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_start.png" title="dbt Cloud - Choose Databricks Connection" />
     
 2. For the name, write `Databricks` or another simple title.    
-3. For Databricks settings, reference your SQL endpoint connection details from step 6 of the previous section for each of the following fields:
+3. For Databricks settings, reference your SQL warehouse connection details from step 6 of the previous section for each of the following fields:
 
     - Method will be ODBC
     - Hostname comes from Server hostname
@@ -241,8 +245,9 @@ To generate a user token for your development credentials in dbt Cloud, click on
 6. If the connection test succeeds, click **Next**. If it fails, you may need to check your Databricks settings and credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
-If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip to [initializing your dbt project](/setting-up-databricks#initialize-your-dbt-project) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
 ### Setting up a managed repository
 
@@ -256,7 +261,7 @@ Congratulations! You have successfully completed the following:
 
 - Set up a Databricks account
 - Loaded training data into your Databricks account
-- Configured a SQL endpoint in Databricks
+- Configured a SQL warehouse in Databricks
 - Connected dbt Cloud and Databricks
 
 ## Next steps
