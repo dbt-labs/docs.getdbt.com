@@ -2,6 +2,7 @@
 title: "DATE_TRUNC SQL function: Why we love it"
 description: "The DATE_TRUNC function will truncate a date or time to the first instance for a given date part maintaining a date format. Wordy, wordy, wordy! What does this really mean?"
 slug: date-trunc-sql
+canonical_url: https://docs.getdbt.com/sql-reference/date-trunc
 
 authors: [kira_furuichi]
 

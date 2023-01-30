@@ -1,5 +1,6 @@
 ---
-title: "Upgrading to v1.3 (latest)"
+title: "Upgrading to v1.3"
+description: New features and changes in dbt Core v1.3
 ---
 ### Resources
 
@@ -7,7 +8,7 @@ title: "Upgrading to v1.3 (latest)"
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
@@ -36,10 +37,7 @@ For users of [state-based selection](/docs/deploy/about-state): This release inc
 
 ### For maintainers of adapter plugins
 
-_GitHub discussion forthcoming_
-
-**Notes:**
-- The `statement` and `create_table_as` macros accept a new argument, `language`, with a default value of `'sql'`
+GitHub discussion with details: [dbt-labs/dbt-core#6011](https://github.com/dbt-labs/dbt-core/discussions/6011)
 
 ## New and changed documentation
 
