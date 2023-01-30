@@ -14,13 +14,13 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 <Card
     title="dbt Cloud IDE"
     body="The dbt Cloud integrated development environment (IDE) allows you to build, test, run, and version control your dbt projects directly from your browser."
-link="/docs/get-started/getting-started/set-up-dbt-cloud"
+link="/docs/get-started/develop-in-the-cloud"
     icon="pencil-paper"/>
 
 <Card
     title="Manage Environments"
     body="Set up and manage separate production and development environments in dbt Cloud to help engineers develop and test code more efficiently, without impacting users or data."
-    link="/docs/get-started/getting-started-dbt-core"
+    link="/docs/collaborate/environments"
     icon="pencil-paper"/>
 
   <Card
