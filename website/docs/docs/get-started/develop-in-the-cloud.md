@@ -125,15 +125,13 @@ Now that you've set up your development environment and credentials, you should 
 
 ## Build, compile, and run projects
 
-You can *build*, *compile*, *run* *, and test* dbt projects by using the command bar. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations.
+You can *build*, *compile*, *run* *, and test* dbt projects using the command bar or **Build** button. Use the **Build** button to quickly build, run, or test the model you're working on. The Cloud IDE will update in real-time when you run models, tests, seeds, and operations. 
 
-If a model or test fails, you can review the logs to find and fix the issue.
+If a model or test fails, dbt Cloud makes it easy for you to view and download the run logs for your dbt invocations to fix the issue.
 
-You can also use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
+Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
-
- <Lightbox src="/img/docs/dbt-cloud/cloud-ide/build.png" title="Build, run and test your dbt project"/>
 
 ## Build and view your project's docs
 
