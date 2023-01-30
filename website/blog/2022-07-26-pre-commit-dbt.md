@@ -91,7 +91,7 @@ A normal next step after installing pre-commit is to run a `pre-commit install` 
 
 Instead, we can do a `pre-commit run --all-files`, which will run all the tests defined in our configuration file on all the files in our dbt project.
 
-[![Animation showing the output in the Terminal after running the above commands](https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF.svg)](https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF)
+![Animation showing the output in the Terminal after running the above commands](/img/blog/2022-07-26-pre-commit-dbt/pre-commit-run-all-files.gif)
 
 In my case, I can see that my model called `customers.sql` has not been added to any YAML file and has no test defined.
 

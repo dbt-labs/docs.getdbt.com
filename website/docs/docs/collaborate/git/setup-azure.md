@@ -17,7 +17,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 1. [Connecting a Service User](#connecting-a-service-user).
 
 
@@ -36,7 +36,7 @@ Many customers ask why they need to select Multitenant instead of Single tenant,
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
 
-Here's what your app should look before registering it:
+Here's what your app should look like before registering it:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering an Active Directory app"/>
 
@@ -288,7 +288,7 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 
 </details>
 
-You must connect your service user before setting up a dbt Cloud project, as the the service user's permissions determine which projects dbt Cloud can import.
+You must connect your service user before setting up a dbt Cloud project, as the service user's permissions determine which projects dbt Cloud can import.
 
 To connect the service user:
 1. An admin must first be signed into the service user's Azure DevOps account.
