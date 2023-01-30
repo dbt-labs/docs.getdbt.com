@@ -12,7 +12,7 @@ We will set up two different *catalogs* in Unity Catalog: **dev** and **prod**. 
 
 Our dev catalog will be the development environment that analytics engineers interact with through their IDE. Developers should have their own sandbox to build and test objects in without worry of overwriting or dropping a coworker’s work; we recommend creating personal schemas for this purpose. In terms of permissions, they should only have access to the **dev** catalog.
 
-Only production runs will have access to data in the **prod** catalog. In a future guide, we will discuss a **test** catalog where our continuous integration/continuous deployment (CI/CD) system (such as GitHub Actions) can run `dbt test`.
+Only production runs will have access to data in the **prod** catalog. In a future guide, we will discuss a **test** catalog where our continuous integration/continuous deployment (CI/CD) system can run `dbt test`.
 
 For now, let’s keep things simple and [create](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-catalog.html) two catalogs either using the Data Explorer or in the SQL editor with these commands:
 
