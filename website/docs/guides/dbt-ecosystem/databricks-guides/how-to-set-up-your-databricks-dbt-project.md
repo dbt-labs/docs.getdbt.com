@@ -106,7 +106,7 @@ ${DATABRICKS_HOST}/api/2.0/preview/scim/v2/ServicePrincipals \
 | jq .
 ```
 
-4. Then you create a JSON file with the application ID retrieved from the above command, a comment to describe what the token will be used for, and the amount of time the token will be valid (in seconds) before it expires and will need to be regenerated.
+4. Create a JSON file with the application ID retrieved from the above command, a comment to describe what the token will be used for, and the amount of time the token will be valid (in seconds) before it expires and will need to be regenerated.
 
 ```bash
 vim create-service-principal.json
