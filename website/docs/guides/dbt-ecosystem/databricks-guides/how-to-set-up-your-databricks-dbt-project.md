@@ -14,7 +14,7 @@ Our dev catalog will be the development environment that analytics engineers int
 
 Only production runs will have access to data in the **prod** catalog. In a future guide, we will discuss a **test** catalog where our continuous integration/continuous deployment (CI/CD) system can run `dbt test`.
 
-For now, let’s keep things simple and [create](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-catalog.html) two catalogs either using the Data Explorer or in the SQL editor with these commands:
+For now, let’s keep things simple and [create two catalogs](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-create-catalog.html)  either using the Data Explorer or in the SQL editor with these commands:
 
 ```sql
 create catalog if not exists dev;
