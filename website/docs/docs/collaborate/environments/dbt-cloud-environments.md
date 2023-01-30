@@ -124,7 +124,7 @@ This section will not appear if you are using Bigquery, as all values are inferr
 </WHCode>
 
 
-****Deployment Credentials****
+**Deployment Credentials**
 
 This section allows you to determine the credentials that should be used when connecting to your warehouse. The authentication methods may differ depending on the warehouse and dbt Cloud tier you are on.
 
