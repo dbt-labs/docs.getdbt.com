@@ -29,7 +29,7 @@ When an analytics engineer runs a dbt project from their IDE, it is perfectly fi
 
 Service principals are used to remove humans from deploying to production for convenience and security. Personal identities should not be used to build production pipelines because they could break if the user leaves the company or changes their credentials. Also, there should not be ad hoc commands modifying production data. Only scheduled jobs and running code that has passed CI tests and code reviews should be allowed to modify production data. If something breaks, there is an auditable trail of changes to find the root cause, easily revert to the last working version of the code, and minimize the impact on end users.
 
-Let’s [create a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) in Databricks:
+[Let’s create a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) in Databricks:
 
 1. Have your Databricks Account admin [add a service principal](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#add-a-service-principal-to-your-databricks-account) to your account. The service principal’s name should differentiate itself from a user ID and make its purpose clear (eg dbt_prod_sp).
 2. Add the service principal added to any groups it needs to be a member of at this time. There are more details on permissions in our ["Unity Catalog best practices" guide](dbt-unity-catalog-best-practices).
