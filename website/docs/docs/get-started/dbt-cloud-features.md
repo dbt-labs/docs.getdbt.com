@@ -69,20 +69,19 @@ link="/docs/get-started/develop-in-the-cloud"
 
    <Card
     title="dbt Semantic Layer"
-    body="Use the dbt Semantic Layer to define metrics alongside your dbt models and query them from any integrated analytics tool. Get the same answers everywhere, every time.  📌 Available on specific plans. "
+    body="Use the dbt Semantic Layer to define metrics alongside your dbt models and query them from any integrated analytics tool. Get the same answers everywhere, every time.  Available on specific plans. "
     link="/docs/use-dbt-semantic-layer/dbt-semantic-layer"
     icon="pencil-paper"/>  
 
    <Card
     title="Metadata API"
-    body="Use the Metadata API to enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries. 📌 Available on specific plans."
+    body="Use the Metadata API to enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries. Available on specific plans."
     link="/docs/dbt-cloud-apis/metadata-api"
     icon="pencil-paper"/> 
 
    <Card
     title="Model timing dashboard"
-    body="The Model timing dashboard visualizes and lets you explore your run and surface model bottlenecks. The dashboard shows model info, order, and run time for each job completed. The display only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud. 
-    📌 Available for multi-tenant Enterprise and Team plans."
+    body="The Model timing dashboard visualizes and lets you explore your run and surface model bottlenecks. The dashboard shows model info, order, and run time for each job completed. The display only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud. Available for multi-tenant Enterprise and Team plans."
     icon="pencil-paper"/> 
 </div>
 
