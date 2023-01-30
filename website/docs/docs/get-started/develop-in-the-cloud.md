@@ -135,7 +135,7 @@ Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [ru
 
 ## Build and view your project's docs
 
-The dbt Cloud IDE makes it possible to [build and view](/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production. 
+The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-and-view-your-docs#generating-documentation) documentation for your dbt project while your code is still in development. With this workflow, you can inspect and verify what your project's generated documentation will look like before your changes are released to production. 
 
 
 ## Related docs
