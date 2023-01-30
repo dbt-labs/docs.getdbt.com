@@ -81,7 +81,8 @@ link="/docs/get-started/develop-in-the-cloud"
 
    <Card
     title="Model timing dashboard"
-    body="The Model timing dashboard visualizes and lets you explore your run and surface model bottlenecks. The dashboard shows model info, order, and run time for each job completed. The display only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud. *Available for multi-tenant Enterprise and Team plans."
+    body="The Model timing dashboard visualizes and lets you explore your run and surface model bottlenecks. The dashboard shows model info, order, and run time for each job completed. The display only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud.  
+    *Available for multi-tenant Enterprise and Team plans."
     icon="pencil-paper"/> 
 </div>
 
