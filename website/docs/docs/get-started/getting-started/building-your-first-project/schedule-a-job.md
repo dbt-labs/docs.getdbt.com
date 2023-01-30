@@ -66,7 +66,6 @@ Here are some ways to learn more essential dbt skills:
 
 
 ## Related docs
-- [Artifacts](/docs/deploy/artifacts)
 - [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
 - [Job triggers](/docs/deploy/job-triggers)
 - [Job notifications](/docs/deploy/job-notifications)
