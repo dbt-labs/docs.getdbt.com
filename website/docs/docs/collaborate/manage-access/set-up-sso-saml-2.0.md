@@ -245,7 +245,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 4. Enter the following values on the **Service Provider Details** window:
    - **ACS URL**: `https://cloud.getdbt.com/complete/saml`
    - **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
-   - **Start URL**: `<login slug`
+   - **Start URL**: `<login slug>`
 5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.
 7. Use the **Attribute mapping** page to map your organization's Google Directory Attributes to the format that
@@ -275,7 +275,9 @@ Expected **Attributes**:
 2. Select your SAML app.
 3. Click **User access**.
 4. To turn on or off a service for everyone in your organization, click **On for everyone** or **Off for everyone**, and then click **Save**.
-5. Ensure that the email addresses your users use to sign in to the SAML app match the email addresses they use to sign in to your Google domain (Changes typically take effect in minutes, but can take up to 24 hours).
+5. Ensure that the email addresses your users use to sign in to the SAML app match the email addresses they use to sign in to your Google domain.
+
+**Note:** Changes typically take effect in minutes, but can take up to 24 hours.
 
 ### Finish setup
 
