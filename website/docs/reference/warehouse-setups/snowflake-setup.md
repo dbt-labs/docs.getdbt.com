@@ -77,7 +77,8 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false 
       retry_all: False  # default: false
-```
+      release_connection: True # default: true
+  ```
 
 </File>
 
@@ -111,6 +112,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false 
       retry_all: False  # default: false
+      release_connection: True # default: true
 ```
 
 Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authenatication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
@@ -147,6 +149,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false 
       retry_all: False  # default: false 
+      release_connection: True # default: true
 ```
 
 </File>
@@ -186,6 +189,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false 
       retry_all: False  # default: false 
+      release_connection: True # default: true
 ```
 
 </File>
@@ -212,6 +216,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | retry_on_database_errors | No | A boolean flag indicating whether to retry after encountering errors of type [snowflake.connector.errors.DatabaseError](https://github.com/snowflakedb/snowflake-connector-python/blob/ffdd6b3339aa71885878d047141fe9a77c4a4ae3/src/snowflake/connector/errors.py#L361-L364) |
 | connect_retries | No | The number of times to retry after an unsuccessful connection |
 | connect_timeout | No | The number of seconds to sleep between failed connection retries |
+| release_connection | No | Drop and reestablish connections to Snowflake for each . |
 
 ### account
 For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1` or `abc123.eu-west-2.aws`. For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documention: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)" and "[Account Identifier Formats by Cloud Platform and Region](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#account-identifier-formats-by-cloud-platform-and-region)".
@@ -227,6 +232,11 @@ The `client_session_keep_alive` feature is intended to keep Snowflake sessions a
 
 [Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
+
+
+### release_connection
+
+dbt opens numerous connections against Snowflake warehouses during runtime. To reduce the logins to what is absolutely necessary and gain some efficiency in the process, set this parameter to `False`. Warning: Setting this parameter to `False` may result in hanging threads that last for upwards of hours when `client_session_keep_alive` is `True` simultaneously.
 
 
 ### retry_on_database_errors
