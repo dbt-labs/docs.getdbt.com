@@ -31,7 +31,7 @@ To develop in the Cloud IDE, make sure you have the following:
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
-- Set up a [development environment and development credentials](#set-up-the-cloud-ide)
+- Set up a [development environment and development credentials](#set-up-environments)
 - The environment must be on dbt version 1.0 or higher
 
 ## Cloud IDE features
@@ -74,7 +74,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 - Saved but uncommitted code &mdash; When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
 - Committed code &mdash; This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-## Set up environments
+## Set up Environments
 
 :::info📌
 
