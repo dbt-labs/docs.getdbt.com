@@ -92,7 +92,7 @@ async function getDiscourseTopicbyID(topicId) {
 }
 
 async function searchDiscourseExternalId(slug) {
-    console.log(`Searching for external_id in Discourse - ${slug}`);
+    console.log(`Searching for external_id in Discourse - ${slug}${DISCOURSE_EXTERNAL_ID_SUFFIX}`);
     try {
         const data = await axios.get(`${discourse_endpoint}/t/external_id/${slug}${DISCOURSE_EXTERNAL_ID_SUFFIX}.json`, { headers });
         return data.data.id;
