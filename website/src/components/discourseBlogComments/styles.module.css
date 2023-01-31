@@ -17,6 +17,11 @@
     margin-bottom: 2rem;
 }
 
+.commentContainer ul li pre {
+    max-height: 400px;
+    height: 100%;
+}
+
 .commentContainer .username {
     font-weight: 700;
 }

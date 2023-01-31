@@ -70,7 +70,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
       } else {
         return (
           <div>
-            <ul data-testid="topics-list">
+            <ul data-testid="comments-list">
               {comments.map(comment => (
                 <li key={comment.id} className={styles.discourseComments} >
                   {' '}
@@ -82,7 +82,6 @@ export const DiscourseBlogComments = ({title,slug}) => {
               ))}
                <a href={sanitizeHtml(`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`)} target="_blank" rel="noopener noreferrer" title='Continue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
             </ul>
-           
           </div>
         )
       }
