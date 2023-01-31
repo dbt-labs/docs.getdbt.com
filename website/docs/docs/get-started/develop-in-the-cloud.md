@@ -82,9 +82,12 @@ New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-star
 
 :::
 
-<!-- the link to dbt Cloud environments isn't live just yet, see pr https://github.com/dbt-labs/docs.getdbt.com/pull/2777 -->
+<!-- the link to dbt Cloud environments isn't live just yet, see pr https://github.com/dbt-labs/docs.getdbt.com/pull/2777 
 
-In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](docs/collaborate/environments/dbt-cloud-environments#dbt-cloud-environments). Follow the steps in [Development environment](#development-environment) and [Development credentials](#developer-credentials) for more details. 
+In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](/docs/collaborate/environments/dbt-cloud-environments#dbt-cloud-environments). 
+-->
+
+In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](/docs/collaborate/environments). Follow the steps in [Development environment](#development-environment) and [Development credentials](#developer-credentials) for more details. 
 
 If you’re new to dbt, you will automatically add this during the project setup. However, if you have an existing dbt Cloud account, you may need to create a development environment and credentials manually to use the Cloud IDE.
 
@@ -124,7 +127,7 @@ Great job, you should now be able to access the Cloud IDE by clicking **Develop*
 
 Now that you've set up your development environment and credentials, you should be able to access the Cloud IDE:
 
-1. Log in with your [dbt Cloud account](https://cloud.getdbt.com/). If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free.
+1. Log in with your dbt Cloud account. If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free.
 2. Click **Develop** at the top of the page to take you to the IDE.
 3. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
 4. Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
