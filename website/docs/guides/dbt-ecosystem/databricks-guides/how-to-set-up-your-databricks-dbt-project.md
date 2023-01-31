@@ -87,54 +87,11 @@ Core projects can use [targets in profiles](https://docs.getdbt.com/docs/get-sta
 
 Let’s set up our deployment environment:
 
-1. In Databricks, [set up your service principal’s token](https://docs.databricks.com/dev-tools/service-principals.html#use-curl-or-postman). To do this, you will need to open up your terminal.
-2. In your terminal, define 2 environment variables:
-    1. **DATABRICKS_HOST** - the url used to log into your Databricks workspace
-    2. **DATABRICKS_TOKEN** - your [personal access token](https://docs.databricks.com/dev-tools/auth.html#pat) (also used for dbt Cloud developer credentials)
-
-```bash
-export DATABRICKS_HOST="https://dbc-a1b2345c-d6e78.cloud.databricks.com"
-export DATABRICKS_TOKEN="dapi1234567890b2cd34ef5a67bc8de90fa12b"
-```
-
-3. Next, run a curl command to get the “application_id” of your service principal. You can also get this value from the Databricks workspace admin console > Service Principals > Edit
-
-```bash
-curl -X GET \
-${DATABRICKS_HOST}/api/2.0/preview/scim/v2/ServicePrincipals \
---header "Authorization: Bearer ${DATABRICKS_TOKEN}" \
-| jq .
-```
-
-4. Create a JSON file with the application ID retrieved from the above command, a comment to describe what the token will be used for, and the amount of time the token will be valid (in seconds) before it expires and will need to be regenerated.
-
-```bash
-vim create-service-principal.json
-```
-
-```json
-{
-  "application_id": "<APPLICATION_ID_FROM_STEP_3>",
-  "comment": "Service Principal Token for dbt deployment",
-  "lifetime_seconds": 1209600
-}
-```
-
-5. Run one more curl command to get the service principal’s token:
-
-```bash
-curl -X POST \
-${DATABRICKS_HOST}/api/2.0/token-management/on-behalf-of/tokens \
---header "Content-type: application/json" \
---header "Authorization: Bearer ${DATABRICKS_TOKEN}" \
---data @create-service-principal-token.json \
-| jq .
-```
-
-6. Now let’s pop back over to dbt Cloud to fill out the environment fields. Click on environments in the dbt Cloud UI or define a new target in your profiles.yml.
-7. Set the Production environment’s *catalog* to the **prod** catalog created above. Provide the [service token](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-access-tokens-for-a-service-principal) for your **prod** service principal and set that as the *token* in your production environment’s deployment credentials.
-8. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
-9. Provide your Service Principal token.
+1. Follow the Databricks instructions to [set up your service principal’s token](https://docs.databricks.com/dev-tools/service-principals.html#use-curl-or-postman). Note that the `lifetime_seconds` will define how long this credential stays valid. You should use a large number here to avoid regenerating tokens frequently and production job failures.
+2. Now let’s pop back over to dbt Cloud to fill out the environment fields. Click on environments in the dbt Cloud UI or define a new target in your profiles.yml.
+3. Set the Production environment’s *catalog* to the **prod** catalog created above. Provide the [service token](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-access-tokens-for-a-service-principal) for your **prod** service principal and set that as the *token* in your production environment’s deployment credentials.
+4. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
+5. Provide your Service Principal token.
 
 ### Connect dbt to your git repository
 
