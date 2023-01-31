@@ -47,8 +47,8 @@ models
 When structuring your YAML configuration files in a dbt project, you want to balance centralization and file size to make specific configs as easy to find as possible. It’s important to note that while the top-level YAML files (`dbt_project.yml`, `packages.yml`) need to be specifically named and in specific locations, the files containing your `sources` and `models` dictionaries can be named, located, and organized however you want. It’s the internal contents that matter here. As such, we’ll lay out our primary recommendation, as well as the pros and cons of a popular alternative. Like many other aspects of structuring your dbt project, what’s most important here is consistency, clear intention, and thorough documentation on how and why you do what you do.
 
 - ✅ **Config per folder.** As in the example above, create a `_[directory]__models.yml` per directory in your models folder that configures all the models in that directory. for staging folders, also include a `_[directory]__sources.yml` per directory.
-  - The leading underscore ensure your YAML files will be sorted to the top of every folder to make them easy to separate from your models.
-  - YAML files don’t need unique names in the way that SQL model files do, but including the directory (instead of simply `_sources.yml` in each folder), means you can fuzzy find for the right file more quickly.
+  - The leading underscore ensures your YAML files will be sorted to the top of every folder to make them easy to separate from your models.
+  - YAML files don’t need unique names in the way that SQL model files do, but including the directory (instead of simply `_sources.yml` in each folder), means you can fuzzy find the right file more quickly.
   - We’ve recommended several different naming conventions over the years, most recently calling these `schema.yml` files. We’ve simplified to recommend that these simply be labelled based on the YAML dictionary that they contain.
   - If you utilize [doc blocks](https://docs.getdbt.com/docs/collaborate/documentation#using-docs-blocks) in your project, we recommend following the same pattern, and creating a `_[directory]__docs.md` markdown file per directory containing all your doc blocks for that folder of models.
 - ❌ **Config per project.** Some people put *all* of their source and model YAML into one file.  While you can technically do this, and while it certainly simplifies knowing what file the config you’re looking for will be in (as there is only one file), it makes it much harder to find specific configurations within that file. We recommend balancing those two concerns.
@@ -81,7 +81,7 @@ One of the many benefits this consistent approach to project structure confers t
 ```yaml
 jaffle_shop
 ├── analysis
-├── data
+├── seeds
 │   └── employees.csv
 ├── macros
 │   ├── _macros.yml
@@ -107,7 +107,7 @@ One important, growing consideration in the analytics engineering ecosystem is h
 - ❌ **Business groups or departments.** Conceptual separations within the project are not a good reason to split up your project. Splitting up, for instance, marketing and finance modeling into separate projects will not only add unnecessary complexity, but destroy the unifying effect of collaborating across your organization on cohesive definitions and business logic.
 - ❌ **ML vs Reporting use cases.** Similarly to the point above, splitting a project up based on different use cases, particularly more standard BI versus ML features, is a common idea. We tend to discourage it for the time being. As with the previous point, a foundational goal of implementing dbt is to create a single source of truth in your organization. The features you’re providing to your data science teams should be coming from the same marts and metrics that serve reports on executive dashboards. There are a growing number of tools like [fal](https://blog.fal.ai/introducing-fal-dbt/) and [Continual.ai](http://Continual.ai) that make excellent use of this unified viewpoint.
 - ✅ **Data governance.** Structural, organizational needs — such as data governance and security — are one of the few worthwhile reasons to split up a project. If, for instance, you work at a healthcare company with only a small team cleared to access raw data with PII in it, you may need to split out your staging models into their own project to preserve those policies. In that case, you would import your staging project into the project that builds on those staging models as a [private package](https://docs.getdbt.com/docs/build/packages/#private-packages).
-- ✅ **Project size.** At a certain point, your project may grow to have simply too many models to present a viable development experiment. If you have 1000s of models, it absolutely makes sense to find a way to split up your project.
+- ✅ **Project size.** At a certain point, your project may grow to have simply too many models to present a viable development experience. If you have 1000s of models, it absolutely makes sense to find a way to split up your project.
 
 ## Final considerations
 
