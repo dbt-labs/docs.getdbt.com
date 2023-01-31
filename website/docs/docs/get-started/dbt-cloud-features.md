@@ -86,7 +86,7 @@ link="/docs/get-started/develop-in-the-cloud"
     icon="pencil-paper"/> 
 </div> <br />
 
- ***These feature are available on [select plans](https://www.getdbt.com/pricing/).**
+ ***These features are available on [select plans](https://www.getdbt.com/pricing/).**
 
 ## Related questions
 
