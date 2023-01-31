@@ -13,10 +13,10 @@ The Cloud IDE provides keyboard shortcuts, features, and development tips to hel
 
 There are default keyboard shortcuts that can help make development more productive and easier for everyone.
 
+- Press Fn-F1 to view a full list of the editor shortcuts
 - Command-O or Control-O to select a file to open
 - Command-P or Control-P to see command palette
 - Hold Option-click-on-an-area to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
-- Press Fn-F1 to view a list of the other editor shortcuts
 -  Command-Enter or Control-Enter to Preview your code
 - Command-Shift-Enter or Control-Shift-Enter to Compile
 - Highlight a portion of code and use the above shortcuts to Preview or Compile code
