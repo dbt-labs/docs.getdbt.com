@@ -34,6 +34,8 @@ When a [dbt Cloud CI job is set up](/docs/deploy/cloud-ci-job#configuring-a-dbt-
 
 After completing the dbt run, dbt Cloud will update the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message will state whether the models and tests ran successfully or not. You can enable a setting in your git provider that makes "successful pull request checks" a requirement to merge code. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
 
+Note: dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more info, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
+
 ### GitHub pull request example
 
 The green checkmark means the dbt builds and tests were successful. The _Details_ link shown here will navigate you to the relevant CI run in dbt Cloud.
@@ -120,7 +122,9 @@ dbt build --select source_status:fresher+
 
 More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
 
-Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the PR.
+Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the PR. 
+
+Note: dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more info, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
 
 ## Troubleshooting
 
@@ -178,7 +182,7 @@ If you're experiencing any issues, review some of the common questions and answe
    </div>
 </details>
 
-### Limitation on temporary PR schemas
+### Temp PR schema limitations
 
 If your temporary PR schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
