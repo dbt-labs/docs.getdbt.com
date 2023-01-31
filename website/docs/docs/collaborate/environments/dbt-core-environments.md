@@ -3,8 +3,6 @@ title: "dbt Core Environments"
 id: "dbt-core-environments"
 ---
 
-## How do I maintain different environments with dbt Core?
-
 dbt makes it easy to maintain separate production and development environments through the use of [targets](/reference/dbt-jinja-functions/target.md) within a [profile](/reference/profiles.yml.md). A typical profile when using dbt locally (i.e. running from your command line) will have a target named `dev`, and have this set as the default. This means that while making changes, your objects will be built in your _development_ target, without affecting production queries made by your end users. Once you are confident in your changes, you can deploy the code to _production_, by running your dbt project with a _prod_ target.
 
 :::info Running dbt in production

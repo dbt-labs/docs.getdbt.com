@@ -1,15 +1,14 @@
 ---
-title: "dbt Cloud Environments"
+title: "dbt Cloud environments"
 id: "dbt-cloud-environments"
 ---
 
-## dbt Cloud Environments
 
-An **environment** in dbt Cloud determines how dbt Cloud will execute your project in both the dbt Cloud IDE and scheduled jobs. Critically, in order to execute dbt, environments define three variables:
+An environment in dbt Cloud determines how dbt Cloud will execute your project in both the dbt Cloud IDE and scheduled jobs. Critically, in order to execute dbt, environments define three variables:
 
-1. The **version of dbt Core** that will be used to run your project
-2. The **warehouse connection** information (including the target database/schema settings)
-3. The **version of your code** to execute
+1. The version of dbt Core that will be used to run your project
+2. The warehouse connection information (including the target database/schema settings)
+3. The version of your code to execute
 
 For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments.md).
 
