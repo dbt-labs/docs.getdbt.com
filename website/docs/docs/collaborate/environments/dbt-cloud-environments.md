@@ -12,16 +12,16 @@ An environment in dbt Cloud determines how dbt Cloud will execute your project i
 
 For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments.md).
 
-### Development vs Deployment Environments
+## Types of environments
 
-In dbt Cloud, there are two types of environments: **deployment** and **development. Deployment** environments determine the settings that will be used when jobs created within that environment are executed. Development environments determine the settings that will be used in the dbt Cloud IDE for that particular dbt Cloud Project. Each dbt Cloud project can only have one single development environment, but can have any number of deployment environments.
+In dbt Cloud, there are two types of environments: deployment and development. Deployment environments determine the settings that will be used when jobs created within that environment are executed. Development environments determine the settings that will be used in the dbt Cloud IDE for that particular dbt Cloud Project. Each dbt Cloud project can only have one single development environment, but can have any number of deployment environments.
 
 |  | Development Environments | Deployment Environments |
 | --- | --- | --- |
 | Determines settings for | dbt Cloud IDE | dbt Cloud Job runs |
 | How many can I have in my project? | 1 | Any number |
 
-## Environment Setup
+## Common Environment Settings
 
 To create a new dbt Cloud environment, navigate to the `Environments` page under the `Deploy` header menu, and click `Create Environment` . There is some commonality in settings between deployment and development environments, and some settings that are specific to each type.
 
@@ -30,7 +30,6 @@ To create a new dbt Cloud environment, navigate to the `Environments` page under
 
 </aside>
 
-### Common Environment Settings
 
 Both development and deployment environments have a section called `General Settings`, which has some basic settings that all environments will define:
 
@@ -56,11 +55,11 @@ By default, all environments will use the default branch in your repository (usu
 
 For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/custom-branch-settings)!
 
-### Creating a Development Environment
+## Create a Development Environment
 
 After setting the `General Settings`, there’s nothing more that needs to be done on the environments page! In order to make use of the IDE, each developer will need to set up personal development credentials to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
-### Creating a Deployment Environment
+## Create a Deployment Environment
 
 **Semantic Layer**
 
