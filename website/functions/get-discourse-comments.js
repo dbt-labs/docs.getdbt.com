@@ -14,11 +14,12 @@ let headers = {
 }    
 
 async function getDiscourseComments(event) {
-  let postTitle, postSlug, topicId, comments;
+  let topicId, comments;
+
+  postTitle = event.queryStringParameters.title;
+  postSlug = event.queryStringParameters.slug;
 
   try {
-    postTitle = event.queryStringParameters.title;
-    postSlug = event.queryStringParameters.slug;
 
     postTitle.trim()
 
