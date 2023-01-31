@@ -77,7 +77,7 @@ For your development credentials/profiles.yml:
 1. Set your default catalog to dev.
 2. Your developer schema should be named after yourself. We recommend dbt_<first_name_initial><last_name>.
 
-By doing this, dbt will create the developer schemas if it doesn’t already exist in the **dev** catalog but can be overridden to specify sources or production targets.
+During your first invocation of `dbt run`, dbt will create the developer schema if it doesn't already exist in the dev catalog.
 
 ### Defining your dbt deployment environment
 
