@@ -62,8 +62,7 @@ link="/docs/get-started/develop-in-the-cloud"
 
    <Card
     title="Security"
-    body="Manage risk with SOC-2 compliance, CI/CD deployment, RBAC, and ELT architecture. 
-"
+    body="Manage risk with SOC-2 compliance, CI/CD deployment, RBAC, and ELT architecture."
     link="https://www.getdbt.com/security/"
     icon="pencil-paper"/>  
 
@@ -79,13 +78,15 @@ link="/docs/get-started/develop-in-the-cloud"
     link="/docs/dbt-cloud-apis/metadata-api"
     icon="pencil-paper"/> 
 
-   <Card
+
+<Card
     title="Model timing dashboard"
     body="The Model timing dashboard visualizes and lets you explore your run and surface model bottlenecks. The dashboard shows model info, order, and run time for each job completed. The display only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud.  
     *Available for multi-tenant Enterprise and Team plans."
+    link="/docs/dbt-versions/release-notes/January-2022/model-timing-more"
     icon="pencil-paper"/> 
-</div>
 
+</div> 
 
 ## Related questions
 
