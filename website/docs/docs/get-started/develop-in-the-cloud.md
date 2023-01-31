@@ -96,7 +96,7 @@ Review the steps below to set up your development environment and credentials:
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment.png" width="100" height="100" title="Creating a new environment for the Analytics project"/>
 
-2. Enter an environment name that would help you identify it among your other environments (for example, `Nate's Development Environment`).
+2. Enter an environment name that would help you identify it among your other environments (for example, `Dev Environment`).
 3. Choose **Development** as the **Environment Type**.
 4. You can also select which **dbt Version** to use at this time. For compatibility reasons, we recommend that you select the same dbt version that you plan to use in your deployment environment.
 5. Click **Save** to finish creating your **Development environment**.
