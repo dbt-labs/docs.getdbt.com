@@ -54,4 +54,4 @@ To delete an environment in dbt Cloud:
 
 Refresh your page, and the deleted environment should now be gone. If you want to delete multiple environments, you'll need to perform these steps to delete each one. 
 
-If you're having any issues, feel free to [contact](mailto:support@getdbt.com) us for additional help.
+If you're having any issues, feel free to [contact us](mailto:support@getdbt.com) for additional help.
