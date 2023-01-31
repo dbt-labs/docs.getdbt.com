@@ -13,7 +13,11 @@ You can install dbt Core on the command line by using one of these recommended m
 
 ## Upgrading dbt Core
 
-To upgrade dbt using `pip`, see the [pip upgrading instructions](/docs/get-started/pip-install#change-dbt-core-versions). dbt Labs provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/guides/migration/versions/upgrading-to-v1.4) highlighting the changes required for each minor and major release.
+dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/guides/migration/versions/upgrading-to-v1.4) highlighting the changes required for each minor and major release, and [core versions](/docs/dbt-versions/core)
+
+- [Upgrade Homebrew](/docs/get-started/homebrew-install#upgrading-dbt-and-your-adapter)
+- [Upgrade `pip`](/docs/get-started/pip-install#change-dbt-core-versions)
+
 
 ## About dbt data platforms and adapters
 
