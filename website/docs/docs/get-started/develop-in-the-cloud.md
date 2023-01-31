@@ -87,9 +87,7 @@ New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-star
 In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](/docs/collaborate/environments/dbt-cloud-environments#dbt-cloud-environments). 
 -->
 
-In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](/docs/collaborate/environments). Follow the steps in [Development environment](#development-environment) and [Development credentials](#developer-credentials) for more details. 
-
-If you’re new to dbt, you will automatically add this during the project setup. However, if you have an existing dbt Cloud account, you may need to create a development environment and credentials manually to use the Cloud IDE.
+In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](/docs/collaborate/environments). Follow the steps in [Development environment](#development-environment) and [Development credentials](#developer-credentials) for more details. If you're creating a new project, you will automatically add this during the project setup. 
 
 Review the steps below to set up your development environment and credentials:
 
