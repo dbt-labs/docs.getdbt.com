@@ -1,5 +1,5 @@
 ---
-title: "dbt Cloud benefits"
+title: "dbt Cloud features"
 id: "dbt-cloud-features"
 ---
 
