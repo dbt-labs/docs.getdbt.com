@@ -6,12 +6,19 @@ import sanitizeHtml from 'sanitize-html';
 export const DiscourseBlogComments = ({title,slug}) => {
 
     const DISCOURSE_TOPIC_ENDPOINT = `https://discourse.getdbt.com/t/`
+    const commentsToLoad = 6
 
     const [postSlug, setPostSlug] = useState(slug)
     const [comments, setComments] = useState([])
     const [topicId, setTopicId] = useState(null)
     const [loading, setLoading] = useState(true)
     const [isError, setIsError] = useState(false)
+    const [next, setNext] = useState(commentsToLoad)
+
+    // Handle loading more comments
+    const loadMoreComments = () => {
+      setNext(next + commentsToLoad)
+    }
   
     useEffect(() => {
       let isMounted = true
@@ -71,19 +78,46 @@ export const DiscourseBlogComments = ({title,slug}) => {
         return (
           <div>
             <ul className={styles.commentList} data-testid="comments-list">
-              {comments.map(comment => (
-                <li key={comment.id} className={styles.discourseComments} >
-                  {' '}
+              {comments?.slice(0, next)?.map((comment) => (
+                <li key={comment.id} className={styles.discourseComments}>
+                  {" "}
                   <div>
-                    <span className={styles.username}>{comment.username}</span> <span className={styles.userTitle}>{comment.user_title}</span>
+                    <span className={styles.username}>{comment.username}</span>{" "}
+                    <span className={styles.userTitle}>
+                      {comment.user_title}
+                    </span>
                   </div>
-                  <div dangerouslySetInnerHTML={{__html: sanitizeHtml(comment.cooked, {allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])})}} />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeHtml(comment.cooked, {
+                        allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+                          "img",
+                        ]),
+                      }),
+                    }}
+                  />
                 </li>
               ))}
-               <a href={sanitizeHtml(`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`)} target="_blank" rel="noopener noreferrer" title='Continue discussion' className={`button button--primary ${styles.discourseCta}`}>Continue discussion</a>
+              {next < comments?.length && (
+                <button
+                  className={`button button--link ${styles.loadMoreCta}`}
+                  onClick={loadMoreComments}
+                >
+                  View more comments
+                </button>
+              )}
+              <a
+                href={sanitizeHtml(`${DISCOURSE_TOPIC_ENDPOINT}${topicId}`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Continue discussion"
+                className={`button button--primary ${styles.discourseCta}`}
+              >
+                Continue discussion
+              </a>
             </ul>
           </div>
-        )
+        );
       }
     }
 

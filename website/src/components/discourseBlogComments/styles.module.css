@@ -63,3 +63,17 @@
   color: #fff;
 }
 
+.loadMoreCta {
+    display: block;
+    padding: .5rem 0;
+    margin-bottom: 3rem;
+}
+
+.loadMoreCta:hover {
+    text-decoration: none;
+}
+
+.loadMoreCta:after {
+    content: ' »';
+}
+
