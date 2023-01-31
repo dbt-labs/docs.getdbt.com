@@ -15,7 +15,7 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
-In the following examples,  we use the `|` symbol to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) will accept a single SQL statement as a string, while the second (with brackets) will accept multiple SQL statements as an array of strings.
+<Snippet src="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -23,8 +23,8 @@ In the following examples,  we use the `|` symbol to separate two different form
 
 models:
   [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -35,8 +35,8 @@ models:
 ```sql
 
 {{ config(
-    pre_hook="<sql-statement>" | ["<sql-statement>"],
-    post_hook="<sql-statement>" | ["<sql-statement>"],
+    pre_hook="SQL-statement" | ["SQL-statement"],
+    post_hook="SQL-statement" | ["SQL-statement"],
 ) }}
 
 select ...
@@ -50,7 +50,7 @@ select ...
 
 <TabItem value="seeds">
 
-**Note**: In the following examples, the `|` symbol is meant to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) will accept a single SQL statement as a string, while the second (with brackets) will accept multiple SQL statements as an array of strings.
+<Snippet src="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -58,8 +58,8 @@ select ...
 
 seeds:
   [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -69,7 +69,7 @@ seeds:
 
 <TabItem value="snapshots">
 
-**Note**: In the following examples, the `|` symbol is meant to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) will accept a single SQL statement as a string, while the second (with brackets) will accept multiple SQL statements as an array of strings.
+<Snippet src="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -77,8 +77,8 @@ seeds:
 
 snapshots:
   [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -89,8 +89,8 @@ snapshots:
 ```sql
 {% snapshot snapshot_name %}
 {{ config(
-    pre_hook="<sql-statement>" | ["<sql-statement>"],
-    post_hook="<sql-statement>" | ["<sql-statement>"],
+    pre_hook="SQL-statement" | ["SQL-statement"],
+    post_hook="SQL-statement" | ["SQL-statement"],
 ) }}
 
 select ...
@@ -259,8 +259,8 @@ To achieve this, you can use one of the following syntaxes. (Note: You should NO
 ```sql
 {{
   config(
-    pre_hook=before_begin("<sql-statement>"),
-    post_hook=after_commit("<sql-statement>")
+    pre_hook=before_begin("SQL-statement"),
+    post_hook=after_commit("SQL-statement")
   )
 }}
 
@@ -277,11 +277,11 @@ select ...
 {{
   config(
     pre_hook={
-      "sql": "<sql-statement>",
+      "SQL": "SQL-statement",
       "transaction": False
     },
     post_hook={
-      "sql": "<sql-statement>",
+      "SQL": "SQL-statement",
       "transaction": False
     }
   )
@@ -301,10 +301,10 @@ select ...
 
 models:
   +pre-hook:
-    sql: "<sql-statement>"
+    SQL: "SQL-statement"
     transaction: false
   +post-hook:
-    sql: "<sql-statement>"
+    SQL: "SQL-statement"
     transaction: false
 
 
