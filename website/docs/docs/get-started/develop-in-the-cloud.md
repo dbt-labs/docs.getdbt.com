@@ -36,7 +36,7 @@ To develop in the Cloud IDE, make sure you have the following:
 
 ## Cloud IDE features
 
-The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and features that make it easier for you to develop, build, compile, run and test data models.
+The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and features that make it easier for you to develop, build, compile, run, and test data models.
 
 | Feature  |  Info |
 |---|---|
