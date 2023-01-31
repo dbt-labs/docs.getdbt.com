@@ -19,7 +19,7 @@ link="/docs/get-started/develop-in-the-cloud"
     icon="pencil-paper"/>
 
 <Card
-    title="Manage Environments"
+    title="Manage environments"
     body="Set up and manage separate production and development environments in dbt Cloud to help engineers develop and test code more efficiently, without impacting users or data."
     link="/docs/collaborate/environments"
     icon="pencil-paper"/>
