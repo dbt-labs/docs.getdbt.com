@@ -13,7 +13,7 @@ An **environment** in dbt Cloud determines how dbt Cloud will execute your proje
 
 For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments.md).
 
-### Development vs Deployment Environments
+## Types of environments
 
 In dbt Cloud, there are two types of environments: **deployment** and **development. Deployment** environments determine the settings that will be used when jobs created within that environment are executed. Development environments determine the settings that will be used in the dbt Cloud IDE for that particular dbt Cloud Project. Each dbt Cloud project can only have one single development environment, but can have any number of deployment environments.
 
