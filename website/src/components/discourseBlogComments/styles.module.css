@@ -30,7 +30,13 @@
 
 .commentContainer ul li aside {
     margin: 1rem;
-    opacity: .8;
+    padding: .5rem;
+    opacity: .7;
+    border-left: var(--ifm-blockquote-border-left-width) solid var(--ifm-blockquote-border-color);
+}
+
+.commentContainer ul li aside blockquote {
+    border-left: 0;
 }
 
 .commentContainer ul li aside img{
