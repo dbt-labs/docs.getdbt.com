@@ -70,7 +70,7 @@ export const DiscourseBlogComments = ({title,slug}) => {
       } else {
         return (
           <div>
-            <ul data-testid="comments-list">
+            <ul className={styles.commentList} data-testid="comments-list">
               {comments.map(comment => (
                 <li key={comment.id} className={styles.discourseComments} >
                   {' '}

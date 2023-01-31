@@ -1,5 +1,7 @@
-.commentContainer {
-
+.commentList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .commentContainer h4 {
@@ -7,19 +9,32 @@
     margin-top: 3rem;
 }
 
-.commentContainer ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.commentContainer ul li {
+.commentList > li {
     margin-bottom: 2rem;
 }
 
 .commentContainer ul li pre {
     max-height: 400px;
     height: 100%;
+}
+
+.commentContainer ul li ul {
+    list-style: disc;
+    margin-bottom: 1rem;
+}
+
+.commentContainer ul li ol {
+    list-style: number;
+    margin-bottom: 1rem;
+}
+
+.commentContainer ul li aside {
+    margin: 1rem;
+    opacity: .8;
+}
+
+.commentContainer ul li aside img{
+    display: none;
 }
 
 .commentContainer .username {
