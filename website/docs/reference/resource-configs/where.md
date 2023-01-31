@@ -57,6 +57,10 @@ models:
               values: ["a", "b", "c"]
               config:
                 where: "date_column = current_date"
+      - name: other_column
+        tests:
+          - not_null:
+              where: "date_column < current_date"
 ```
 
 </File>

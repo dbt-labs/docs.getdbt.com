@@ -16,23 +16,16 @@ curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/your_user_
 --header 'Authorization: Token your_current_token'
 ```
 
-2. Replace the fields `your_user_id` and `your_current_token`, with your information.  
+2. Replace the fields `your_user_id` and `your_current_token` with your information. Read [how to find your user ID](/faqs/Accounts/find-user-id) for more info. To find your `your_current_token`, go to **Account Settings** -> **API Access** and copy the API key.
 
-    - Read [how to find your](/faqs/Accounts/find-user-id) `your_user_id`. 
-    - Find your `your_current_token` by going to **Account Settings** -> **API Access** and copying the API key.
-
-:::infoExample
-If your_user_id is `123` and your_current_token is `abcf9g`, your curl request will be:
-    
-```
-curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
---header 'Authorization: Token abcf9g'
-```
-:::
+> 📌 **Example**: If your_user_id is `123` and your_current_token is `abcf9g`, your curl request will be:
+>```
+>curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
+>--header 'Authorization: Token abcf9g'
+>```
 
 
 3. You can find the new key in the API response or in dbt Cloud. To find the new key in dbt Cloud, go to **Account Settings** -> **API Access**.
-
 
 
 ### dbt Cloud deployments

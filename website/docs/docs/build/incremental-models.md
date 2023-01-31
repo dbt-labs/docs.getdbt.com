@@ -81,7 +81,7 @@ Not specifying a `unique_key` will result in append-only behavior, which means d
 
 <VersionBlock lastVersion="1.0">
 
-The optional `unique_key` parameter specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
+The optional `unique_key` parameter specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as a unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
 
 </VersionBlock>
 
@@ -227,6 +227,12 @@ The possible values for `on_schema_change` are:
 
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
+:::caution `on_schema_change` tracks top-level changes
+
+Currently, `on_schema_change` only tracks top-level column changes. It does not track nested column changes. For example, on BigQuery, adding, removing, or modifying a nested column will not trigger a schema change, even if `on_schema_change` is set appropriately.
+
+:::
+
 ### Default behavior
 
 This is the behavior if `on_schema_change: ignore`, which is set by default, and on older versions of dbt.
@@ -307,11 +313,12 @@ select ...
 
 ### About incremental_predicates
 
-`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts any valid SQL expression, however dbt does not check the syntax. 
+`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
 
-For example, this is a pattern we might expect to see on Snowflake:
+This an example of a model configuration in a `yml` file we might expect to see on Snowflake:
 
 ```yml
+
 models:
   - name: my_incremental_model
     config:
@@ -321,8 +328,30 @@ models:
       cluster_by: ['session_start']  
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
+      # `incremental_predicates` accepts a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
+```
+
+Alternatively, here are the same same configurations configured within a model file:
+
+```sql
+-- in models/my_incremental_model.sql
+
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    cluster_by = ['session_start'],  
+    incremental_strategy = 'merge',
+    incremental_predicates = [
+      "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+    ]
+  )
+}}
+
+...
+
 ```
 
 This will template (in the `dbt.log` file) a `merge` statement like:
