@@ -49,7 +49,7 @@ To delete an environment in dbt Cloud:
 <figcaption align = "center">Delete an environment</figcaption>
 </figure>
 
-5. Confirm your action in the **Confirm Delete** pop up by clicking **Confirm Delete** in the bottom right to immediately delete the environment. This action cannot be undone. However, you can create a new job with the same information if the deletion was made in error. <br /><br />
+5. Confirm your action in the **Confirm Delete** pop-up by clicking **Confirm Delete** in the bottom right to delete the environment immediately. This action cannot be undone. However, you can create a new environment with the same information if the deletion was made in error. <br /><br />
 
 
 Nice going! Refresh your page and the deleted environment should now be gone. If you want to delete multiple environments, you'll need to perform these steps to delete each one. 
