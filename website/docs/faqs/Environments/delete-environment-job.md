@@ -31,7 +31,7 @@ To delete a job or multiple jobs in dbt Cloud:
 <figcaption align = "center">Delete a job</figcaption>
 </figure>
 
-5. Confirm your action in the **Confirm Delete** pop up by clicking **Confirm Delete** in the bottom right to immediately delete the job. This action cannot be undone. However, you can create a new job with the same information if the deletion was made in error. 
+5. Confirm your action in the **Confirm Delete** pop-up by clicking **Confirm Delete** in the bottom right to delete the job immediately. This action cannot be undone. However, you can create a new job with the same information if the deletion was made in error. 
 
 Great job! Refresh your page and the deleted job should now be gone. If you want to delete multiple jobs, you'll need to perform these steps to delete each job. 
 
