@@ -3,11 +3,11 @@ title: "Webhooks for your jobs"
 description: "Get notifications about your dbt jobs with webhooks."
 ---
 
-With dbt Cloud, you can create outbound webhooks to send events (notifications) about your dbt jobs to your other systems. You can listen to these events on your other systems to further automate your workflows or to help trigger automation flows you have set up.
+With dbt Cloud, you can create outbound webhooks to send events (notifications) about your dbt jobs to your other systems. Your other systems can listen for these events to further automate your workflows or to help trigger automation flows you have set up.
 
 A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your dbt jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and often used for infrastructure development.
 
-When a webhook is triggered, dbt Cloud sends a JSON payload to the endpoint URL you specified. You can send a Slack notification, open a PagerDuty incident when a dbt job fails, and more. 
+dbt Cloud sends a JSON payload to the endpoint URL you specify when your webhook is triggered. You can send a Slack notification, open a PagerDuty incident when a dbt job fails, and more. 
 
 You can create webhooks for these events:
 
@@ -25,7 +25,7 @@ From your **Account Settings** in dbt Cloud (using the gear menu in the top righ
 
 - **Name** &mdash; Enter a name for your outbound webhook.
 - **Description** &mdash; Enter a short description of what this webhook is.
-- **Events** &mdash; Choose the triggering event(s) you want to subscribe to for this webhook. You can select more than one.
+- **Events** &mdash; Choose the event you want to trigger this webhook. You can subscribe to more than one event.
 - **Jobs** &mdash; Specify the job(s) you want the webhook to trigger on if you want. By default, dbt Cloud configures your webhook at the account level.
 - **Endpoint** &mdash; Enter the endpoint URL you want to send the event(s) to.
 
