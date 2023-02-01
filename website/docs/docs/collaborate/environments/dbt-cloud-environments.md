@@ -59,7 +59,7 @@ For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/c
 
 After setting the `General Settings`, there’s nothing more that needs to be done on the environments page. To use the IDE, each developer will need to set up personal development credentials to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
-## Create a Deployment Environment
+## Create a deployment environment
 
 **Semantic Layer**
 
