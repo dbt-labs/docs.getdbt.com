@@ -26,7 +26,7 @@ link="/docs/get-started/develop-in-the-cloud"
 
   <Card
     title="Schedule and run dbt jobs"
-    body="Set up custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
+    body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
     link="/docs/get-started/getting-started/building-your-first-project/schedule-a-job"
     icon="pencil-paper"/>
 
@@ -44,7 +44,7 @@ link="/docs/get-started/develop-in-the-cloud"
 
    <Card
     title="Democratize access to logs"
-    body="dbt Cloud makes it easy to view and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
+    body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
     link="/docs/get-started/develop-in-the-cloud#build-compile-and-run-projects"
     icon="pencil-paper"/>      
 
@@ -74,14 +74,14 @@ link="/docs/get-started/develop-in-the-cloud"
 
    <Card
     title="Metadata API*"
-    body="Use the Metadata API to enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries."
+    body="Enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries."
     link="/docs/dbt-cloud-apis/metadata-api"
     icon="pencil-paper"/> 
 
 
 <Card
     title="Model timing dashboard*"
-    body="The Model timing dashboard visualizes and lets you explore your run and surface model bottlenecks. The dashboard shows model info, order, and run time for each job completed. The display only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud."
+    body="Visualize and explore your runs and surface model bottlenecks. The Model timing dashboard displays model info, order, and run time for each job completed. The visualization only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud."
     link="/docs/dbt-versions/release-notes/January-2022/model-timing-more"
     icon="pencil-paper"/> 
 </div> <br />
