@@ -120,7 +120,6 @@ function truncateString(str) {
     if (str.length <= 50) {
         return str
     }
-    // remove characters from the beginning of the string
     return str.slice(str.length - 50, str.length)
 }
 
