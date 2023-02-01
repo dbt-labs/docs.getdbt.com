@@ -9,7 +9,7 @@ In software engineering, environments are used to enable engineers to develop an
 
 In traditional software engineering, different environments often use completely separate architecture. For example, the dev and prod versions of a website may use different servers and databases.
 
-<Term id="data-warehouse">Data warehouses</Term> can also be designed to have separate environments – the _production_ environment refers to the relations (i.e. schemas, tables, and <Term id="view">views</Term>) that your end users query (often through a BI tool).
+<Term id="data-warehouse">Data warehouses</Term> can also be designed to have separate environments – the _production_ environment refers to the relations (for example, schemas, tables, and <Term id="view">views</Term>) that your end users query (often through a BI tool).
 
 
 ## Related docs
