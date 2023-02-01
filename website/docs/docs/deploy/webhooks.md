@@ -17,7 +17,7 @@ You can create webhooks for these events:
 
 :::tip Join our private beta!
 
-Access to webhooks in dbt Cloud is currently limited to beta users. If you want to try it out, please [sign up](https://docs.google.com/forms/u/1/d/e/1FAIpQLScmSH5GhFKq1L0vp1nhzF4zapIEtFX4ViRoUiTbTEqkScgqTA/viewform) for the private beta. After you sign up, you will be invited into the private beta.
+Access to webhooks in dbt Cloud is currently limited to beta users. If you want to try it out, please [sign up](https://docs.google.com/forms/u/1/d/e/1FAIpQLScmSH5GhFKq1L0vp1nhzF4zapIEtFX4ViRoUiTbTEqkScgqTA/viewform) for the private beta. After you sign up, a Product Manager from dbt Labs will email you in the next few days if they decide to include you in the private beta.
 :::
 
 ## Create a webhook
