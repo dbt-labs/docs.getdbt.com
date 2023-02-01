@@ -36,7 +36,7 @@ If you want dbt Cloud to run the job whenever a pull request or commit is made, 
 
 To set up a webhook:
 
-1. Naviaget to the **Triggers** section of the jobs settings page
+1. Navigate to the **Triggers** section of the jobs settings page
 2. Select **Webhooks**. 
 3. Select **Run on Pull Requests?** as shown in the following image.
 4. If you don't also want this job running on a time-based cadence, make sure to turn the scheduled run off by clicking **Schedule** and making sure to toggle **Run on schedule** off.
