@@ -19,10 +19,11 @@ async function getDiscourseComments(event) {
   try {
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
+    externalId = truncateString(`${postSlug}${DISCOURSE_EXTERNAL_ID_SUFFIX}`)
 
     if (!postSlug) throw new Error("Unable to query Discourse API. Error reading slug.");
 
-    topicId = await searchDiscourseExternalId(postSlug);
+    topicId = await searchDiscourseExternalId(externalId);
 
     // First check if the dev blog post exists in Discourse
     // Get the comments if it does
@@ -31,7 +32,7 @@ async function getDiscourseComments(event) {
     } else {
       // If the dev blog post does not exist in Discourse
       // Create a new topic and get the comments
-      topicId = await createDiscourseTopic(postTitle, postSlug);
+      topicId = await createDiscourseTopic(postTitle, externalId, postSlug);
       if (typeof topicId === "number") {
         comments = await getDiscourseTopicbyID(topicId);
         comments.shift();
@@ -55,7 +56,7 @@ async function getDiscourseComments(event) {
   }
 }
 
-async function createDiscourseTopic(title, slug) {
+async function createDiscourseTopic(title, externalId, slug) {
     console.log(`No topics found. Creating a new topic in Discourse - ${title}`)
     try  {
         const response = await axios.post(`${discourse_endpoint}/posts`, {
@@ -63,7 +64,8 @@ async function createDiscourseTopic(title, slug) {
             raw: `This is a companion discussion topic for the original entry at ${DEVBLOG_URL}${slug}`,
             category: DISCOURSE_TOPIC_ID,
             embed_url: `${DEVBLOG_URL}${slug}`,
-            external_id: `${slug}${DISCOURSE_EXTERNAL_ID_SUFFIX}`
+            external_id: externalId,
+            tags: ['devblog'],
         }, { headers })
 
         let topicId = await response.data.topic_id
@@ -89,10 +91,10 @@ async function getDiscourseTopicbyID(topicId) {
     }
 }
 
-async function searchDiscourseExternalId(slug) {
-    console.log(`Searching for external_id in Discourse - ${slug}${DISCOURSE_EXTERNAL_ID_SUFFIX}`);
+async function searchDiscourseExternalId(externalId) {
+    console.log(`Searching for external_id in Discourse - ${externalId}`);
     try {
-        const data = await axios.get(`${discourse_endpoint}/t/external_id/${slug}${DISCOURSE_EXTERNAL_ID_SUFFIX}.json`, { headers });
+        const data = await axios.get(`${discourse_endpoint}/t/external_id/${externalId}.json`, { headers });
         return data.data.id;
     } catch (err) {
         return await returnResponse(500, { error: 'Unable to search Discourse topics.' });
@@ -113,5 +115,14 @@ async function returnResponse(status, res) {
   }
   return resObj
 }
+
+function truncateString(str) {
+    if (str.length <= 50) {
+        return str
+    }
+    // remove characters from the beginning of the string
+    return str.slice(str.length - 50, str.length)
+}
+
 
 exports.handler = getDiscourseComments
