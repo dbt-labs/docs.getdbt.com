@@ -16,12 +16,10 @@ let headers = {
 async function getDiscourseComments(event) {
   let topicId, comments;
 
-  postTitle = event.queryStringParameters.title;
-  postSlug = event.queryStringParameters.slug;
-
   try {
 
-    postTitle.trim()
+    postTitle = event.queryStringParameters.title;
+    postSlug = event.queryStringParameters.slug;
 
     if (!postSlug) throw new Error("Unable to query Discourse API.");
 
