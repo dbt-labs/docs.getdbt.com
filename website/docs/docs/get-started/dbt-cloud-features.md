@@ -12,6 +12,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 <div className="grid--2-col">
 
+
 <Card
     title="dbt Cloud IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
