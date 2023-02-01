@@ -34,7 +34,7 @@ group by 1
 The SQL for each payment method amount is repetitive, which can be difficult to maintain for a number of reasons:
 * If the logic or field name were to change, the code would need to be updated in three places.
 * Often this code is created by copying and pasting, which may lead to mistakes.
-* Other analysts that review the code are less likely to notice errors as its common to only scan through repeated code.
+* Other analysts that review the code are less likely to notice errors as it's common to only scan through repeated code.
 
 So we're going to use Jinja to help us clean it up, or to make our code more "DRY" ("Don't Repeat Yourself").
 

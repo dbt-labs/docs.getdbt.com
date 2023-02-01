@@ -4,10 +4,6 @@ title: "dispatch"
 
 <Changelog>
 
-- **v0.18.0:** Introduced `dispatch` as a replacement for deprecated `adapter_macro`
-- **v0.19.2:** Limited rendering context for `dispatch` arguments. Includes backwards compatibility for widely used packages.
-- **v0.20.0:** Parent adapters' macro implementations are included in search order. Formalized supported arguments.
-- **v0.21.0:** All dispatched macros in the dbt global project include `dbt` namespace
 - **v1.0.0:** The 'packages' argument is fully deprecated. Use `macro_namespace` and project-level `dispatch` config instead.
 
 </Changelog>
