@@ -26,7 +26,7 @@ In dbt Cloud, there are two types of environments: deployment and development. D
 To create a new dbt Cloud environment, navigate to the `Environments` page under the `Deploy` header menu, and click `Create Environment` . There is some commonality in settings between deployment and development environments, and some settings that are specific to each type.
 
 <aside>
-🌐 **A note on warehouse connections:** Warehouse connections are set at the Project-level for dbt Cloud accounts, and each Project can have one connection (Snowflake account, Redshift host, Bigquery project, Databricks host etc). Some details of that connection (databases/schemas/etc) can be overridden within the dbt Cloud environment settings.
+🌐 **A note on warehouse connections:** Warehouse connections are set at the Project level for dbt Cloud accounts, and each Project can have one connection (Snowflake account, Redshift host, Bigquery project, Databricks host, etc.). Some details of that connection (databases/schemas/etc.) can be overridden within the dbt Cloud environment settings.
 
 </aside>
 
