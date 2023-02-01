@@ -63,7 +63,7 @@ After setting the `General Settings`, there’s nothing more that needs to be do
 
 **Semantic Layer**
 
-For Semantic-Layer eligible customers, the next section of environment settings are the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer) has the most up to date setup instructions!
+For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer) has the most up-to-date setup instructions!
 
 **Deployment Connection**
 
