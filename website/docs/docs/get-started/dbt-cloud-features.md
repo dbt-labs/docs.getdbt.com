@@ -88,24 +88,10 @@ link="/docs/get-started/develop-in-the-cloud"
 
  ***These features are available on [select plans](https://www.getdbt.com/pricing/).**
 
-## Related questions
-
-<details>
-  <summary>How can I contribute to dbt Cloud?</summary>
-  <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
-  </div>
-</details>
-<details>
-  <summary>What type of support is provided with dbt Cloud?</summary>
-  <div>
-    <div>The global dbt Support team is available to dbt Cloud customers by email or in-product live chat. Developer and Team accounts offer 24x5 support, while Enterprise customers have priority access and options for custom coverage. <br></br><br></br>Additionally, Enterprise plan customers receive implementation assistance, dedicated account management, and a dbt Labs Security and Legal review. <br></br><br></br> If you have project-related or modeling questions, review <a href="https://docs.getdbt.com/docs/dbt-cloud/cloud-dbt-cloud-support">our Support page</a> or <a href="http://getdbt.slack.com/">dbt Community Slack</a> to get help as well. </div>
-  </div>
-</details>
-
-
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Get started guides](/docs/get-started/getting-started/set-up-dbt-cloud)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
+- [dbt Cloud support](/docs/dbt-support)
+- [Become a contributor](https://docs.getdbt.com/community/contribute)
