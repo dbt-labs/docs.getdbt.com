@@ -21,7 +21,7 @@ In dbt Cloud, there are two types of environments: deployment and development. D
 | Determines settings for | dbt Cloud IDE | dbt Cloud Job runs |
 | How many can I have in my project? | 1 | Any number |
 
-## Common Environment Settings
+## Common environment settings
 
 To create a new dbt Cloud environment, navigate to the `Environments` page under the `Deploy` header menu, and click `Create Environment` . There is some commonality in settings between deployment and development environments, and some settings that are specific to each type.
 
