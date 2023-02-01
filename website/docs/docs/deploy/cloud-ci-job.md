@@ -5,7 +5,7 @@ description: "You can enable continuous integration (CI) to test every single ch
 ---
 
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository by setting up a webhook. For more information, refer to [Configuring a webhook](#configuring-a-webhook)
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository by setting up a webhook. For more information, refer to [Configuring a webhook](#configuring-a-webhook).
 
 Draft pull requests do _not_ trigger jobs. If you would like jobs to run on each new commit, please mark your pull request as **Ready for review**.
 
