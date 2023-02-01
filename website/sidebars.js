@@ -843,6 +843,18 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
         },
+        {
+          type: "category",
+          label: "Databricks and dbt",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+          },
+          items: [
+            "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices"
+          ],
+        },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
