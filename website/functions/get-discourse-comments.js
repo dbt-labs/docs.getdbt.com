@@ -97,7 +97,7 @@ async function getDiscourseTopicbyID(topicId) {
             }, { headers })
         }
 
-        // Remove any posts that are empty. This is usually and actions set in Discourse (e.g. Unlisting a topic).
+        // Remove any posts that are empty. This is usually an action set in Discourse (e.g. unlisting/listing a topic).
         post_stream.posts = post_stream.posts.filter(post => post.cooked)
         
         return post_stream.posts
