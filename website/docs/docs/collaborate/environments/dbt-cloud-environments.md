@@ -209,3 +209,4 @@ This section allows you to determine the credentials that should be used when co
 ## Related docs
 
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
+- [Delete a job or environment in dbt Cloud](/docs/faqs/Environments/delete-environment-job)
