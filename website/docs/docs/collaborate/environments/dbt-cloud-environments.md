@@ -14,7 +14,7 @@ For users familiar with development on the CLI, each environment is roughly anal
 
 ## Types of environments
 
-In dbt Cloud, there are two types of environments: deployment and development. Deployment environments determine the settings that will be used when jobs created within that environment are executed. Development environments determine the settings that will be used in the dbt Cloud IDE for that particular dbt Cloud Project. Each dbt Cloud project can only have one single development environment, but can have any number of deployment environments.
+In dbt Cloud, there are two types of environments: deployment and development. Deployment environments determine the settings used when jobs created within that environment are executed. Development environments determine the settings used in the dbt Cloud IDE for that particular dbt Cloud Project. Each dbt Cloud project can only have a single development environment but can have any number of deployment environments.
 
 |  | Development Environments | Deployment Environments |
 | --- | --- | --- |
