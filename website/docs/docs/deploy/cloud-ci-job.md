@@ -6,19 +6,16 @@ description: "You can enable continuous integration (CI) to test every single ch
 
 ## Overview
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure jobs to run when new pull requests are opened against your dbt repo.
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository.
 
-dbt Cloud will build the models affected by the new pull request code change in a temp schema, which acts as a quasi-staging environment, and will also run the tests that you've written for these models as a check. When the continuous integration (CI) job completes, the run status will be shown directly in the pull request. This makes it possible to deploy new code to production with confidence.
+Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema and runs the tests for these models as a check. This process provides a staging environment where you can check the run status. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence.
 
-:::info Draft Pull Requests
+Draft pull requests do _not_ trigger jobs. If you would like jobs to run on each new commit, please mark your pull request as **Ready for review**.
 
-Jobs will _not_ be triggered by draft pull requests. If you would like jobs to run on each new commit, please mark your pull request as **Ready for review**.
-
-:::
 
 :::info GitLab Compatibility
 
-GitLab Webhooks are available to only GitLab users who have a paid or self-hosted GitLab account.
+Only GitLab users with a paid or self-hosted GitLab account can use GitLab webhooks.
 
 :::
 
@@ -26,7 +23,9 @@ GitLab Webhooks are available to only GitLab users who have a paid or self-hoste
 If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to [reconfigure the project](/docs/deploy/cloud-ci-job#reconnecting-your-dbt-project-to-use-dbt-clouds-native-integration-with-github-gitlab-or-azure-devops) to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead.
 :::
 
-## Understanding dbt Cloud Slim CI
+## Configuring continuous integration in dbt Cloud
+
+Setting up a CI job is very similiar to setting up a normal production job that runs on a schedule; however, a CI job has some notable differences.
 
 When a [dbt Cloud CI job is set up](/docs/deploy/cloud-ci-job#configuring-a-dbt-cloud-ci-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new PR has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit. The unique schema name can be found in the run details for the given run, as shown below.
 
@@ -34,7 +33,8 @@ When a [dbt Cloud CI job is set up](/docs/deploy/cloud-ci-job#configuring-a-dbt-
 
 After completing the dbt run, dbt Cloud will update the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message will state whether the models and tests ran successfully or not. You can enable a setting in your git provider that makes "successful pull request checks" a requirement to merge code. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
 
-Note: dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more info, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
+dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
+
 
 ### GitHub pull request example
 
@@ -51,19 +51,19 @@ The green checkmark means the dbt builds and tests were successful. Clicking the
 The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" title="Azure DevOps pull request"/>
 
-## Configuring a dbt Cloud CI job
+## Configuring a Slim CI job
 
-Setting up a CI job is very similiar to setting up a normal production job that runs on a schedule; however, a CI job has some notable differences.
+Slim CI offers an alternative to running and testing all models in your project, which costs time (and money) and feels especially painful if your pull request only proposes changes to a handful of models. Slim CI enables you to run modified models so you can focus on testing those changes. 
 
-There are a few components that define a Slim CI job.
+These components distinguish a Slim CI job:
 
-- The Slim CI job must defer to a production job.
-- The Slim CI job commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
-- The Slim CI job must be triggered by pull request.
+- Must defer to a production job.
+- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Defferral and state comparision](#deferral-and-state-comparison)
+- Must be triggered by pull request.
 
-#### Deferral and State Comparison  
+### Deferral and state comparison  
 
-When creating a job in dbt Cloud, you can set your execution settings to defer to a previous run state. Use the dropdown menu to select which _production_ job you want to defer to.
+When creating a job in dbt Cloud, you can configure your Execution settings to defer to a previous run state. Using the dropdown menu to select which _production_ job you want to defer to.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
 on pull requests can select another job from the same project for deferral and comparison"/>
@@ -82,13 +82,17 @@ Because dbt Cloud manages deferral and state environment variables, there is no 
 
 To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
 
-#### Using a webhook trigger
+### Configuring a webhook trigger
 
-In the **Triggers** section of the jobs settings, switch to the **Webhooks** tab, and then check the box next to **Run on Pull Requests?** as shown below.
+If you want dbt Cloud to run the job whenever a pull request or commit is made, rather than on a schedule.You can set up a webhook. If you set up a webhook to trigger a job and you don't also want it running on a time-based cadence, make sure to turn the schedule of the job off by clicking **Schedule** and making sure to toggle **Run on schedule** off.
+
+To set up a webhook:
+
+1. Naviaget to the **Triggers** section of the jobs settings page
+2. Select **Webhooks**. 
+3. Select **Run on Pull Requests?** as shown in the following image.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title="Configuring webhooks for a dbt Cloud Job"/>
-
-This tells dbt Cloud to run the job whenever a pull request or commit is made, rather than on a schedule. Be sure to turn the schedule of the job off if you don't want it to also run on a time-based cadence.
 
 ## Fresh Rebuilds
 
@@ -122,7 +126,7 @@ dbt build --select source_status:fresher+
 
 More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
 
-Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the PR. 
+Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the pull request. 
 
 Note: dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more info, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
 
