@@ -17,11 +17,10 @@ async function getDiscourseComments(event) {
   let topicId, comments;
 
   try {
-
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
 
-    if (!postSlug) throw new Error("Unable to query Discourse API.");
+    if (!postSlug) throw new Error("Unable to query Discourse API. Error reading slug.");
 
     topicId = await searchDiscourseExternalId(postSlug);
 
@@ -58,7 +57,6 @@ async function getDiscourseComments(event) {
 
 async function createDiscourseTopic(title, slug) {
     console.log(`No topics found. Creating a new topic in Discourse - ${title}`)
-
     try  {
         const response = await axios.post(`${discourse_endpoint}/posts`, {
             title: title,
@@ -71,7 +69,6 @@ async function createDiscourseTopic(title, slug) {
         let topicId = await response.data.topic_id
 
         console.log('Topic successfully created with topic_id', topicId)
-        console.log(response)
 
         return topicId
     
