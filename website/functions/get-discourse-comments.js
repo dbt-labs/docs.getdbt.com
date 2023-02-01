@@ -3,7 +3,7 @@ const axios = require('axios')
 const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DEVBLOG_URL = 'https://docs.getdbt.com/blog/'
 const DISCOURSE_TOPIC_ID = 2
-const DISCOURSE_EXTERNAL_ID_SUFFIX = '-testing2'
+const DISCOURSE_EXTERNAL_ID_SUFFIX = '-testing3'
 
 // Set API endpoint and headers
 let discourse_endpoint = `https://discourse.getdbt.com`
@@ -66,6 +66,7 @@ async function createDiscourseTopic(title, externalId, slug) {
             embed_url: `${DEVBLOG_URL}${slug}`,
             external_id: externalId,
             tags: ['devblog'],
+            visible: false
         }, { headers })
 
         let topicId = await response.data.topic_id
@@ -83,7 +84,22 @@ async function createDiscourseTopic(title, externalId, slug) {
 async function getDiscourseTopicbyID(topicId) {
     console.log(`Topic found setting topic id - ${topicId}`)
     try {
-        let { data: { post_stream } } = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
+        let response = await axios.get(`${discourse_endpoint}/t/${topicId}.json`, { headers })
+        let { data } = await response
+        let post_stream = data.post_stream
+        let post_count = data.posts_count
+
+        // If there is more than one comment make the topic visibile in Discourse
+        if (post_count > 1 && data.visible === false) {
+            console.log(`Topic has more than one comment. Changing visibility to visible.`)
+            await axios.put(`${discourse_endpoint}/t/${topicId}`, {
+                visible: true
+            }, { headers })
+        }
+
+        // Remove any posts that are empty. This is usually and actions set in Discourse (e.g. Unlisting a topic).
+        post_stream.posts = post_stream.posts.filter(post => post.cooked)
+        
         return post_stream.posts
     } catch(err) {
         console.log('err', err.response)
