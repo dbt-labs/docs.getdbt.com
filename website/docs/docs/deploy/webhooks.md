@@ -24,7 +24,7 @@ Access to webhooks in dbt Cloud is currently limited to beta users. If you want 
 From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. For a new webhook: 
 
 - **Name** &mdash; Enter a name for your outbound webhook.
-- **Description** &mdash; Enter a short description of what this webhook is.
+- **Description** &mdash; Enter a short description of the webhook.
 - **Events** &mdash; Choose the event you want to trigger this webhook. You can subscribe to more than one event.
 - **Jobs** &mdash; Specify the job(s) you want the webhook to trigger on if you want. By default, dbt Cloud configures your webhook at the account level.
 - **Endpoint** &mdash; Enter the endpoint URL you want to send the event(s) to.
