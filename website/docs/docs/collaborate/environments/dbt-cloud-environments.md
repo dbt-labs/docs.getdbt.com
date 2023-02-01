@@ -111,7 +111,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 <Lightbox src="/img/docs/collaborate/databricks-deploy-env-deploy-connection.png" title="Databricks Deployment Connection Settings"/>
 
-This section will not appear if you are using Bigquery, as all values are inferred from the project's connection. The `dataset` will be set in the `Deployment Credentials` section below.
+This section will not appear if you are using BigQuery, as all values are inferred from the project's connection. The `dataset` will be set in the `Deployment Credentials` section below.
 
 #### Editable fields
 
