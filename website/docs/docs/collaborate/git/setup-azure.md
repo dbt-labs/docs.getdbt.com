@@ -20,6 +20,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 Once the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 1. [Connecting a Service User](#connecting-a-service-user).
 
+Note: It is currently not possible to use a "Service Principal" with this integration.  This is due to a lack of support by Microsoft of the necessary permissions in Azure AD.  You can see Microsoft's timeline for these permissions [here](https://learn.microsoft.com/en-us/azure/devops/release-notes/features-timeline).  Also note that additional development will be necessary on the dbt Cloud side, even once Microsoft enables the permissions. Due to these constraints, dbt Labs has no available timeline for when it will become possible to use a "Service Principal" instead of a "Service User".  We recommend that Azure AD customers plan on using a "Service User" for the forseeable future.
 
 Once the Azure AD app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/collaborate/git/authenticate-azure).
 
