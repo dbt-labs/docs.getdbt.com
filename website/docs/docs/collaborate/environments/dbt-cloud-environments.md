@@ -57,7 +57,23 @@ For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/c
 
 ## Create a development environment
 
-After setting the `General Settings`, there’s nothing more that needs to be done on the environments page. To use the IDE, each developer will need to set up personal development credentials to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
+In order to start experiencing the great features of the Cloud IDE, you need to first set up a development environment. To set up your development environment:
+
+<!-- commented this out because i don't think this fits After setting the `General Settings`, there’s nothing more that needs to be done on the environments page. 
+-->  
+
+1. Create a development environment and choose **Deploy** and then **Environments** from the top left. Click **Create Environment**.
+
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment.png" width="100" height="100" title="Creating a new environment for the Analytics project"/>
+
+2. Enter an environment name that would help you identify it among your other environments (for example, `Dev Environment`).
+3. Choose **Development** as the **Environment Type**.
+4. You can also select which **dbt Version** to use at this time. For compatibility reasons, we recommend that you select the same dbt version that you plan to use in your deployment environment.
+5. Click **Save** to finish creating your **Development environment**.
+
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
+
+To use the IDE, each developer will need to set up [personal development credentials](/docs/get-started/develop-in-the-cloud#developer-credentials) to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
 ## Create a deployment environment
 
