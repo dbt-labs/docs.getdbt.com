@@ -5,7 +5,7 @@ description: "You can enable continuous integration (CI) to test every single ch
 ---
 
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository. For more information, refer to [Configuring a webhook](#configuring-a-webhook).
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository. For more information, refer to [Configuring a job trigger](#configuring-a-job-trigger).
 
 Draft pull requests do _not_ trigger jobs. If you want jobs to run on each new commit, you need to mark your pull request as **Ready for review**.
 
@@ -32,9 +32,9 @@ After completing the dbt run, dbt Cloud will update the pull request in GitHub, 
 
 dbt Cloud might not drop the temporary schema from your data warehouse if your project has database / schema customization using the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
 
-### Configuring a webhook
+### Configure a job trigger
 
-If you want dbt Cloud to run the job whenever a pull request or commit is made, you can set up a webhook. 
+If you want dbt Cloud to run the job whenever a pull request or commit is made, you can set up a job trigger. 
 
 To set up a webhook:
 
