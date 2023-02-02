@@ -97,8 +97,8 @@ async function getDiscourseTopicbyID(topicId) {
             }, { headers })
         }
 
-        // Remove any posts that are empty. This is usually an action set in Discourse (e.g. unlisting/listing a topic).
-        post_stream.posts = post_stream.posts.filter(post => post.cooked)
+        // Filter only 'regular' posts in Discourse. (e.g. not moderator actions, small_actions, whispers)
+        post_stream.posts = post_stream.posts.filter(post => post.post_type === 1)
         
         return post_stream.posts
     } catch(err) {
