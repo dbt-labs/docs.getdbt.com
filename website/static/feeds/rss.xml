@@ -4,7 +4,7 @@
         <title>dbt Cloud Release Notes</title>
         <link>https://docs.getdbt.com</link>
         <description>dbt provides release notes for dbt Cloud so you can see recent and historical changes.</description>
-        <lastBuildDate>Fri, 23 Dec 2022 08:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 23 Dec 2022 05:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -18,175 +18,175 @@
             <title><![CDATA[Private packages must be cloned using access tokens provided by environment variables]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token</link>
             <guid>https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/private-packages-clone-git-token</guid>
-            <pubDate>Fri, 23 Dec 2022 08:00:00 GMT</pubDate>
+            <pubDate>Fri, 23 Dec 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Private GitHub packages must be cloned using access tokens provided by environment variables.]]></description>
         </item>
         <item>
             <title><![CDATA[Threads default value changed to 4]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/default-thread-value</link>
             <guid>default-thread-value</guid>
-            <pubDate>Mon, 12 Dec 2022 08:00:00 GMT</pubDate>
+            <pubDate>Mon, 12 Dec 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Threads now default to 4 users' profile.]]></description>
         </item>
         <item>
             <title><![CDATA[Creating a new job no longer triggers a run by default]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Dec-2022/new-jobs-default-as-off.md</link>
             <guid>new-jobs-default-as-off.md</guid>
-            <pubDate>Mon, 05 Dec 2022 08:00:00 GMT</pubDate>
+            <pubDate>Mon, 05 Dec 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[You need to click **Run on schedule** before a job will be scheduled to run]]></description>
         </item>
         <item>
             <title><![CDATA[New IDE features and classic IDE deprecation]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Nov-2022/ide-features-ide-deprecation</link>
             <guid>ide-features-ide-deprecation</guid>
-            <pubDate>Tue, 29 Nov 2022 08:00:00 GMT</pubDate>
+            <pubDate>Tue, 29 Nov 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation]]></description>
         </item>
         <item>
             <title><![CDATA[The dbt Cloud + Databricks experience is getting even better]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Nov-2022/cloud-databricks-unitycatalog</link>
             <guid>cloud-databricks-unitycatalog</guid>
-            <pubDate>Thu, 17 Nov 2022 08:00:00 GMT</pubDate>
+            <pubDate>Thu, 17 Nov 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[The dbt-databricks adapter is now available for use with dbt Cloud]]></description>
         </item>
         <item>
             <title><![CDATA[Enhancement: New Cloud IDE launch]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Oct-2022/new-ide-launch</link>
             <guid>new-ide-launch</guid>
-            <pubDate>Tue, 18 Oct 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 18 Oct 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Enhancement: New Cloud IDE launch]]></description>
         </item>
         <item>
             <title><![CDATA[Announcing dbt Cloud’s native integration with Azure DevOps]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Oct-2022/cloud-integration-azure</link>
             <guid>cloud-integration-azure</guid>
-            <pubDate>Tue, 11 Oct 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 11 Oct 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[dbt Cloud native integration with Azure DevOps]]></description>
         </item>
         <item>
             <title><![CDATA[Query the previous three months of data using the metadata API]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Sept-2022/metadata-api-data-retention-limits.md</link>
             <guid>metadata-api-data-retention-limits.md</guid>
-            <pubDate>Thu, 29 Sep 2022 07:00:00 GMT</pubDate>
+            <pubDate>Thu, 29 Sep 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Metadata API data retention limits]]></description>
         </item>
         <item>
             <title><![CDATA[List Steps API endpoint deprecation warning]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Sept-2022/liststeps-endpoint-deprecation.md</link>
             <guid>liststeps-endpoint-deprecation.md</guid>
-            <pubDate>Thu, 15 Sep 2022 07:00:00 GMT</pubDate>
+            <pubDate>Thu, 15 Sep 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[List Steps API deprecation]]></description>
         </item>
         <item>
             <title><![CDATA[Enhancement: Support for cross-database sources on Redshift RA3 instances]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Aug-2022/support-redshift-ra3.md</link>
             <guid>support-redshift-ra3.md</guid>
-            <pubDate>Wed, 31 Aug 2022 07:00:00 GMT</pubDate>
+            <pubDate>Wed, 31 Aug 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Adding support for cross-database queries for RA3]]></description>
         </item>
         <item>
             <title><![CDATA[Enhancement: New Cloud IDE beta]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/Aug-2022/ide-improvements-beta.md</link>
             <guid>ide-improvements-beta.md</guid>
-            <pubDate>Tue, 16 Aug 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 16 Aug 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Adding IDE performance and reliability improvements]]></description>
         </item>
         <item>
             <title><![CDATA[Enhancement: Large DAG feature]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/July-2022/render-lineage-feature</link>
             <guid>render-lineage-feature</guid>
-            <pubDate>Tue, 05 Jul 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 05 Jul 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Add a render button to visualize large DAGs]]></description>
         </item>
         <item>
             <title><![CDATA[Refresh expired access tokens in the IDE when using GitLab]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/May-2022/gitlab-auth</link>
             <guid>gitlab-auth</guid>
-            <pubDate>Thu, 19 May 2022 07:00:00 GMT</pubDate>
+            <pubDate>Thu, 19 May 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Adding support for expiring OAuth access tokens.]]></description>
         </item>
         <item>
             <title><![CDATA[Credentials no longer accidentally wiped when editing an environment]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/credentials-saved</link>
             <guid>credentials-saved</guid>
-            <pubDate>Fri, 29 Apr 2022 07:00:00 GMT</pubDate>
+            <pubDate>Fri, 29 Apr 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Credentials are now saved when editing an environment.]]></description>
         </item>
         <item>
             <title><![CDATA[Audit log]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/audit-log</link>
             <guid>audit-log</guid>
-            <pubDate>Tue, 26 Apr 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 26 Apr 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[Review actions performed by people in your organization.]]></description>
         </item>
         <item>
             <title><![CDATA[Email verification]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/email-verification</link>
             <guid>https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/email-verification</guid>
-            <pubDate>Tue, 26 Apr 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 26 Apr 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[dbt Cloud users created via SAML JIT will now confirm identity via email to activate their account.]]></description>
         </item>
         <item>
             <title><![CDATA[Scheduler performance improvements]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/April-2022/scheduler-improvements</link>
             <guid>scheduler-improvements</guid>
-            <pubDate>Tue, 19 Apr 2022 07:00:00 GMT</pubDate>
+            <pubDate>Tue, 19 Apr 2022 04:00:00 GMT</pubDate>
             <description><![CDATA[scheduler, which has much faster prep times, especially at the top of the hour.]]></description>
         </item>
         <item>
             <title><![CDATA[Spotty internet issues no longer cause a session time out message]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/March-2022/ide-timeout-message</link>
             <guid>ide-timeout-message</guid>
-            <pubDate>Thu, 10 Mar 2022 08:00:00 GMT</pubDate>
+            <pubDate>Thu, 10 Mar 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue.]]></description>
         </item>
         <item>
             <title><![CDATA[Dividing queue time into waiting and prep time]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/March-2022/prep-and-waiting-time</link>
             <guid>prep-and-waiting-time</guid>
-            <pubDate>Wed, 02 Mar 2022 08:00:00 GMT</pubDate>
+            <pubDate>Wed, 02 Mar 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[dbt Cloud now shows waiting time and prep time for a run.]]></description>
         </item>
         <item>
             <title><![CDATA[Service tokens and bug fixes]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/February-2022/service-tokens-more</link>
             <guid>https://docs.getdbt.com/docs/dbt-versions/release-notes/February-2022/service-tokens-more</guid>
-            <pubDate>Wed, 16 Feb 2022 08:00:00 GMT</pubDate>
+            <pubDate>Wed, 16 Feb 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Service tokens can now be assigned granular permissions to enforce least privilege access.]]></description>
         </item>
         <item>
             <title><![CDATA[DAG updates and performance improvements]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/February-2022/DAG-updates-more</link>
             <guid>DAG-updates-more</guid>
-            <pubDate>Wed, 02 Feb 2022 08:00:00 GMT</pubDate>
+            <pubDate>Wed, 02 Feb 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Clicking a node in the DAG opens a model or config file in new tab in the IDE.]]></description>
         </item>
         <item>
             <title><![CDATA[Autocomplete snippets for SQL and YAML files in IDE]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/January-2022/ide-timeout-message</link>
             <guid>ide-timeout-message</guid>
-            <pubDate>Wed, 19 Jan 2022 08:00:00 GMT</pubDate>
+            <pubDate>Wed, 19 Jan 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Autocomplete snippets for SQL and YAML files in IDE]]></description>
         </item>
         <item>
             <title><![CDATA[Model timing for Multi-tenant Team and Enterprise accounts]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/January-2022/model-timing-more</link>
             <guid>model-timing-more</guid>
-            <pubDate>Wed, 05 Jan 2022 08:00:00 GMT</pubDate>
+            <pubDate>Wed, 05 Jan 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Model timing is now available for Multi-tenant Team and Enterprise accounts, plus performance improvements.]]></description>
         </item>
         <item>
             <title><![CDATA[Changelog 2021]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/dbt-cloud-changelog-2021</link>
             <guid>dbt-cloud-changelog-2021</guid>
-            <pubDate>Fri, 01 Jan 2021 08:00:00 GMT</pubDate>
+            <pubDate>Fri, 01 Jan 2021 05:00:00 GMT</pubDate>
             <description><![CDATA[2021 Changelog for the dbt Cloud application]]></description>
         </item>
         <item>
             <title><![CDATA[Changelog 2019 and 2020]]></title>
             <link>https://docs.getdbt.com/docs/dbt-versions/release-notes/dbt-cloud-changelog-2019-2020</link>
             <guid>dbt-cloud-changelog-2019-2020</guid>
-            <pubDate>Wed, 01 Jan 2020 08:00:00 GMT</pubDate>
+            <pubDate>Wed, 01 Jan 2020 05:00:00 GMT</pubDate>
             <description><![CDATA[2019 and 2020 Changelog for the dbt Cloud application]]></description>
         </item>
     </channel>
