@@ -40,4 +40,4 @@ Learn more about the [January changes](https://getdbt.slack.com/archives/C03SAHK
 
 - dbt Labs will roll out a series of features that should improve the quality of life within the IDE over the next several months, such as autosave, the ability to revert individual files, and user experience improvements, like right-clicking.
 
-- dbt Labs is researching ways to include Linting/SQL Fluff in the IDE. If anyone is interested in sharing how you're using SQL Fluff today, please reach out to dbt Labs Product Manager, [Nate Nunta](bossman's email or dm?).
+- dbt Labs is researching ways to include Linting/SQL Fluff in the IDE. If anyone is interested in sharing how you're using SQL Fluff today, please reach out to [dbt Labs IDE team](mailto:cloud-ide-feedback@dbtlabs.com).
