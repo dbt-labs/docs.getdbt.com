@@ -41,7 +41,6 @@ To set up a webhook:
 1. Navigate to the **Triggers** section of the jobs settings page
 2. Select **Webhooks**. 
 3. Select **Run on Pull Requests?** as shown in the following image.
-4. If you don't also want this job running on a time-based cadence, make sure to turn the scheduled run off by clicking **Schedule** and making sure to toggle **Run on schedule** off.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title="Configuring webhooks for a dbt Cloud Job"/>
 
