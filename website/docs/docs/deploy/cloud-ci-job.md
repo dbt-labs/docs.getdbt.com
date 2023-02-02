@@ -63,7 +63,7 @@ The green checkmark means the dbt builds and tests were successful. Clicking on 
 
 ## Configuring a Slim CI job
 
-Slim CI offers an alternative to dbt Cloud for running and testing all models in your project, which costs time (and money) and feels especially painful if your pull request only proposes changes to a handful of models. Slim CI enables you to run modified models so you can focus on testing those changes. 
+Slim CI offers an alternative in dbt Cloud for running and testing all models in your project. When you're only changing a few handful of models, Slim CI can decrease the time it takes by running and testing only modified models. Slim CI enables you to focus on testing changed models and reduces your overall cost. 
 
 Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema and runs the tests for these models as a check. This process provides a staging environment where you can check the run status. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence.
 
