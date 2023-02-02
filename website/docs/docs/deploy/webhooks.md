@@ -89,7 +89,7 @@ An example of a webhook payload for a completed run:
     "runId": "12345",
     "environmentId": "1234",
     "environmentName": "Production",
-    "dbtVersion": "",
+    "dbtVersion": "1.0.0",
     "projectName": "Snowflake Github Demo",
     "runReason": "",
     "runStartedAt": "2023-01-31T19:28:07Z",
