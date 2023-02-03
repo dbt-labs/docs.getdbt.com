@@ -27,7 +27,7 @@ Learn more about the [January changes](https://getdbt.slack.com/archives/C03SAHK
 - Changed “commit and push” to “commit and sync” to better reflect the action
 - Improved error message when saving or renaming files to duplicate names
 
-## Bugs fixed 
+## Bug fixes
 
 - Users running into `RPC server got an unknown async ID` arbitrarily
 - The build button dropdown was hidden behind the placeholder DAG screen
