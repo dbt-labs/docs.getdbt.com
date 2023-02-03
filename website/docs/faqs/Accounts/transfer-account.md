@@ -10,10 +10,10 @@ You can transfer your dbt Cloud [access control](/docs/collaborate/manage-access
 
 | Account plan| Steps | 
 | ------ | ---------- | 
-| **Developer** |  You can transfer ownership by changing the email directly on your dbt Cloud [profile page](https://cloud.getdbt.com/#/profile/). | 
+| **Developer** |  You can transfer ownership by changing the email directly on your dbt Cloud [profile page]([https://cloud.getdbt.com/#/profile/). | 
 | **Team** | Existing account admins with account access can add users to, or remove users from the owner group. | 
 | **Enterprise** | Account admins can add users to, or remove users from a group with Account Admin permissions. | 
-| **If all account owners left the company** | If the account owner has left your organization, you will need to work with _your_ IT department to have incoming emails forwarded to the new account owner. Once your IT department has redirected the emails, you can request to reset the user password. Once you log in - you can change the email on the [Profile page](https://cloud.getdbt.com/#/profile/). |
+| **If all account owners left the company** | If the account owner has left your organization, you will need to work with _your_ IT department to have incoming emails forwarded to the new account owner. Once your IT department has redirected the emails, you can request to reset the user password. Once you log in - you can change the email on the [Profile page](https://cloud.getdbt.com/settings/profile). |
 
 When you make any account owner and email changes:
 
