@@ -23,14 +23,6 @@ In dbt Cloud, there are two types of environments: deployment and development. D
 
 ## Common environment settings
 
-To create a new dbt Cloud environment, navigate to the `Environments` page under the `Deploy` header menu, and click `Create Environment` . There is some commonality in settings between deployment and development environments, and some settings that are specific to each type.
-
-<aside>
-🌐 **A note on warehouse connections:** Warehouse connections are set at the Project level for dbt Cloud accounts, and each Project can have one connection (Snowflake account, Redshift host, Bigquery project, Databricks host, etc.). Some details of that connection (databases/schemas/etc.) can be overridden within the dbt Cloud environment settings.
-
-</aside>
-
-
 Both development and deployment environments have a section called `General Settings`, which has some basic settings that all environments will define:
 
 | Setting | Example Value | Definition | Accepted Values |
@@ -57,7 +49,13 @@ For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/c
 
 ## Create a development environment
 
-After setting the `General Settings`, there’s nothing more that needs to be done on the environments page. To use the IDE, each developer will need to set up personal development credentials to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
+To create a new dbt Cloud development environment, navigate to the `Environments` page under the `Deploy` header menu, and click `Create Environment` . Select `Development` as the environemnt type.
+
+After setting the `General Settings` as above, there’s nothing more that needs to be done on the environments page. Click `Save` to create the environment.
+
+### Setting developer credentials
+
+To use the IDE, each developer will need to set up personal development credentials to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
 ## Create a deployment environment
 
@@ -66,6 +64,12 @@ After setting the `General Settings`, there’s nothing more that needs to be do
 For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer) has the most up-to-date setup instructions!
 
 **Deployment Connection**
+
+:::info Warehouse Connections
+
+ Warehouse connections are set at the Project level for dbt Cloud accounts, and each Project can have one connection (Snowflake account, Redshift host, Bigquery project, Databricks host, etc.). Some details of that connection (databases/schemas/etc.) can be overridden within this section of the dbt Cloud environment settings.
+
+:::
 
 This section determines the exact location in your warehouse dbt should target when building warehouse objects! This section will look a bit different depending on your warehouse provider.
 
