@@ -29,7 +29,7 @@ Learn more about the [January changes](https://getdbt.slack.com/archives/C03SAHK
 
 ## Bug fixes
 
-- Users running into `RPC server got an unknown async ID` arbitrarily
+- You no longer arbitrarily encounter an `RPC server got an unknown async ID` message
 - The build button dropdown was hidden behind the placeholder DAG screen
 - Unable to close toast notifications for command failure when the history drawer is open
 - Users ran into `Something went wrong` when previewing a model
