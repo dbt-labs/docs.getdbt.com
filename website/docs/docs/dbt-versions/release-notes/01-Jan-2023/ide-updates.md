@@ -2,7 +2,7 @@
 title: "Cloud IDE updates and fixes"
 id: "ide-updates"
 description: "Cloud IDE enhancements"
-sidebar_label: "IDE updates and fixes"
+sidebar_label: "Update and Fixes: IDE"
 tags: [Feb-1-2023]
 ---
 
