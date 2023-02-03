@@ -185,10 +185,83 @@ models:
 
 <div warehouse="Spark">
 
-- OSS Apache Spark / Delta Lake do not support `grants`.
-- Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
-  - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
-  - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
+Spark allows you to define:
+
+- a `not null` constraint
+- and/or additional constraint checks on your columns
+
+As Spark does not support transactions nor allows using `create or replace table` with a schema, the table is first created without a schema and `alter` statements are then executed to add the different constraints. 
+
+This means that:
+
+- the names and order of columns is checked but not their type
+- if the `constraints` and/or `constraint_check` fails, the table with the failing data will still exist in the Warehouse
+
+See [this page](https://docs.databricks.com/tables/constraints.html) with more details about the support of constraints on Spark.
+
+<File name='models/constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select 
+  1 as id, 
+  'blue' as color, 
+  cast('2019-01-01' as date) as date_day
+```
+
+</File>
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: constraints_example
+    docs:
+      node_color: black
+    config:
+      constraints_enabled: true
+    columns:
+      - name: id
+        data_type: integer
+        description: hello
+        constraints: ['not null']
+        constraints_check: "(id > 0)"
+        tests:
+          - unique
+      - name: color
+        data_type: text
+      - name: date_day
+        data_type: date
+```
+
+</File>
+
+Expected DDL to enforce constraints:
+<File name='target/run/.../constraints_example.sql'>
+
+```sql
+  create or replace table schema_name.my_model 
+  using delta 
+  as
+    select
+      1 as id,
+      'blue' as color,
+      cast('2019-01-01' as date) as date_day
+```
+
+</File>
+
+Followed by the statements
+
+```sql
+alter table schema_name.my_model change column id set not null;
+alter table schema_name.my_model add constraint 472394792387497234 check (id > 0);
+```
 
 </div>
 
