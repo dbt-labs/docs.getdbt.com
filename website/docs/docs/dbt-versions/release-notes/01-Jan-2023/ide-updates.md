@@ -34,7 +34,7 @@ Learn more about the [January changes](https://getdbt.slack.com/archives/C03SAHK
 - You can now close toast notifications for command failure when the history drawer is open
 - You no longer encounter a `Something went wrong` message when previewing a model
 - Unable to retrieve repository status in the IDE due to inability to find SSH folder
-- Scroll bars and download CSV flicker within the preview pane
+- Scroll bars and download CSV no longer flicker within the preview pane. 
 
 ## Coming soon 
 
