@@ -651,7 +651,7 @@ The API will be a viable integration point with the dbt Semantic Layer. It will 
 
 ## Contact us
 
-### For dbt Semantic Layer Support
+### For dbt Semantic Layer support
 For partner and customer support, please reach out via [support@dbtlabs.com](mailto:support@dbtlabs.com). Please ensure the message includes:
 
 - "Semantic Layer"
