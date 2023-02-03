@@ -151,7 +151,7 @@ snapshots:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](resource-configs/tags)="<string>" | ["<string>"],
-    [alias](resource-configs/alias)"<string>", 
+    [alias](resource-configs/alias)="<string>", 
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}
