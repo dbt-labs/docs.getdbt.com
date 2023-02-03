@@ -53,45 +53,25 @@ New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-star
 
 :::
 
-In order to start experiencing the great features of the Cloud IDE, you need to first set up your **Development environment** and **Development credentials.**
+In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud environment](/docs/collaborate/environments/dbt-cloud-environments) and [developer credentials](#developer-credentials). If you're creating a new project, you will automatically configure this during the project setup. 
 
-If you’re new to dbt, you will automatically add this during the project setup. However, if you have an existing dbt Cloud account, you may need to create a development environment and credentials manually to use the Cloud IDE.
+Review the steps below to set up your developer credentials:
 
-Review the steps below to set up your development environment and credentials:
-
-
-**Development environment**
-
-1. Create a development environment and choose **Deploy** and then **Environments** from the top left. Click **Create Environment**.
-
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment.png" width="100" height="100" title="Creating a new environment for the Analytics project"/>
-
-2. Enter an environment name that would help you identify it among your other environments (for example, `Nate's Development Environment`).
-3. Choose **Development** as the **Environment Type**.
-4. You can also select which **dbt Version** to use at this time. For compatibility reasons, we recommend that you select the same dbt version that you plan to use in your deployment environment.
-5. Click **Save** to finish creating your **Development environment**.
-
-
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
-
-
-**Developer credentials**
+### Developer credentials
 
 The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
 Follow the below steps to set up your developer credentials:
 
 1. Go to the [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials) section.
-
 2. Select the relevant project in the list.
-
-3. Click **Edit** on the bottom right of the page
-
+3. Click **Edit** on the bottom right of the page.
 4. Enter your developer credentials and then click **Save.**
 
 Great job, you should now be able to access the Cloud IDE by clicking **Develop** on the navigation to start developing!
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="100" height="100" title="Configure developer credentials in your Profile"/>
+
 
 ### Access the Cloud IDE
 
