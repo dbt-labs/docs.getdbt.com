@@ -39,7 +39,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Create, delete, and modify Groups
 - Create, delete, and modify Group Memberships
 - Manage Notification Settings
-- Manage account-level [artifacts](dbt-cloud/using-dbt-cloud/artifacts)
+- Manage account-level [artifacts](/docs/deploy/artifacts)
 - View and modify Account Settings
 - Use the IDE
 - Run and cancel jobs

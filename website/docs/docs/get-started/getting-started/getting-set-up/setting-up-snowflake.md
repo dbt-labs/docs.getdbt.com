@@ -273,7 +273,7 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 ## Initialize your repository and start development
 <Snippet src="available-git-providers" />
 
-If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repository already. If not, you will need to create your repository connection. 
+If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with a managed repository already. If not, you will need to create your repository connection. 
 
 ### Setting up a managed repository
 
