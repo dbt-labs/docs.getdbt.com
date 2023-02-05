@@ -37,6 +37,10 @@ For more information on these deployment models, refer to:
 
 If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
 
+### Webhooks for your jobs
+
+With [webhooks in dbt Cloud](/docs/deploy/webhooks), you can send events (notifications) about your dbt jobs to your other systems like Slack, PagerDuty, and so on. This can be useful for automating some of your workflows. 
+
 ## Airflow
 
 If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:

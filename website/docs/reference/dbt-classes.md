@@ -52,7 +52,7 @@ class Relation:
 -- Return true if the relation is a table
 {{ relation.is_table }}
 
--- Return true if the relation is a <Term id="table" />
+-- Return true if the relation is a view
 {{ relation.is_view }}
 
 -- Return true if the relation is a cte
