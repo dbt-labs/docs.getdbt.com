@@ -101,6 +101,7 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 - `Role`: Snowflake Role
 - `Database`: Target Database
+- `Warehouse`: Snowflake Warehouse
 
 </div>
 
@@ -176,7 +177,7 @@ This section allows you to determine the credentials that should be used when co
   - `Username`: username to use (most likely a service account)
   - `Private Key`: value of the Private SSH Key (optional)
   - `Private Key Passphrase`: value of the Private SSH Key Passphrase (optional, only if required)
-- Schema: Target Schema for this environment
+- `Schema`: Target Schema for this environment
 
 </div>
 
