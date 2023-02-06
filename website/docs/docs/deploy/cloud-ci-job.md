@@ -30,7 +30,7 @@ Once you open a pull request, dbt Cloud builds the models affected by the code c
 
 After completing the dbt run, dbt Cloud will update the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message will state whether the models and tests ran successfully or not. You can enable a setting in your git provider that makes "successful pull request checks" a requirement to merge code. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
 
-dbt Cloud might not drop the temporary schema from your data warehouse if your project has database / schema customization using the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
+dbt Cloud might not drop the temporary schema from your data warehouse if your project has database or schema customization using the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) or [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
 
 ### Configure a job trigger
 
