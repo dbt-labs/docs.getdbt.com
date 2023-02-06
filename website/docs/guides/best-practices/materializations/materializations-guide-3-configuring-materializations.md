@@ -6,6 +6,9 @@ displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Configuring materializations
 
 Choosing which materialization is as simple as setting any other configuration in dbt. We’ll look first at how we select our materializations for individual models, then at more powerful ways of setting materializations for entire folders of models.
@@ -19,19 +22,21 @@ Let’s look at how we can use tables and views to get started with materializat
 - 😌 This is one of the many valuable aspects of dbt: it lets us use a **declarative** approach, specifying the _outcome_ that we want in our code, rather than _specific steps_ to achieve it (the latter is an _imperative_ approach if you want to get computer science-y about it 🤓).
 - 🔍 In the below case, we want to create a **view**, and can **declare** that in a **single line of code**.
 
-```sql
-{{
-    config(
-        materialized='view'
-    )
-}}
+<Tabs>
+<TabItem value="sql" label="SQL" default>
 
-select ...
+```sql
+    {{
+        config(
+            materialized='view'
+        )
+    }}
+
+    select ...
 ```
 
-In a very similar way, when in a python model (not all adapters support python yet, check the [docs here to be sure](https://docs.getdbt.com/docs/build/python-models#specific-data-platforms) before spending time writing python models), we can configure an individual model’s materialization with the `dbt.config()` method, and passing in the `materialized` keyword argument.
-
-TODO: tab the above example and the below
+</TabItem>
+<TabItem value="python" label="Python">
 
 ```python
 def model(dbt, session):
@@ -43,7 +48,17 @@ def model(dbt, session):
     return model_df
 ```
 
-Configuring a model to materialize as a `table` is simple, and the same as a `view` for both SQL and python models.
+</TabItem>
+</Tabs>
+
+:::info
+🐍 **Not all adapters support python yet**, check the [docs here to be sure](https://docs.getdbt.com/docs/build/python-models#specific-data-platforms) before spending time writing python models)
+:::
+
+- Configuring a model to materialize as a `table` is simple, and the same as a `view` for both SQL and python models.
+
+<Tabs>
+<TabItem value="sql" label="SQL">
 
 ```sql
 {{
@@ -55,6 +70,9 @@ Configuring a model to materialize as a `table` is simple, and the same as a `vi
 select ...
 ```
 
+</TabItem>
+<TabItem value="python" label="Python">
+
 ```python
 def model(dbt, session):
 
@@ -64,5 +82,8 @@ def model(dbt, session):
 
     return model_df
 ```
+
+</TabItem>
+</Tabs>
 
 Go ahead and try some of these out!
