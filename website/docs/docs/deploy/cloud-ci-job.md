@@ -38,9 +38,10 @@ If you want dbt Cloud to run the job whenever a pull request or commit is made, 
 
 To set up CI:
 
-1. Navigate to the **Triggers** section of the jobs settings page
-2. Select **Continuous Integration (CI)**. 
-3. Select **Run on Pull Requests?** as shown in the following image.
+1. Create a new job or edit an existing job to open the settings page.
+2. Navigate to the **Triggers** section.
+3. Select **Continuous Integration (CI)**. 
+4. Select **Run on Pull Requests?** as shown in the following image.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-tab.png" title="Configuring continuous integration for a dbt Cloud Job"/>
 
