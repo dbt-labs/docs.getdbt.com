@@ -36,7 +36,7 @@ dbt Cloud might not drop the temporary schema from your data warehouse if your p
 
 If you want dbt Cloud to run the job whenever a pull request or commit is made, you can set up continuous integration (CI) for the job. 
 
-To set up a webhook:
+To set up CI:
 
 1. Navigate to the **Triggers** section of the jobs settings page
 2. Select **Continuous Integration (CI)**. 
