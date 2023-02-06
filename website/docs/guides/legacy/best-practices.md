@@ -119,7 +119,7 @@ which models are modified and build them on top of of their unmodified parents.
 
 ```bash
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
-dbt test -s state:modified+
+dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
 <Changelog>New in v1.0.0</Changelog>

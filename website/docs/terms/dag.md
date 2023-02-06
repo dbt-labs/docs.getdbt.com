@@ -39,7 +39,7 @@ What can you learn from this DAG? Immediately, you may notice a handful of thing
 - `stg_users`and `stg_user_groups` models are the parent models for `int_users`
 - A join is happening between `stg_users` and `stg_user_groups` to form the `int_users` model
 - `stg_orgs` and `int_users` are the parent models for `dim_users`
-- `dim_users` is a the end of the DAG and is therefore downstream from a total of four different models
+- `dim_users` is at the end of the DAG and is therefore downstream from a total of four different models
 
 Within 10 seconds of looking at this DAG, you can quickly unpack some of the most important elements about a project: dependencies and data lineage. Obviously, this is a simplified version of DAGs you may see in real life, but the practice of identifying relationships and data flows remains very much the same, regardless of the size of the DAG.
 
