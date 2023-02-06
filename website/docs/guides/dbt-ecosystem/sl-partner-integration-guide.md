@@ -656,7 +656,7 @@ For partner and customer support, please reach out via [support@dbtlabs.com](mai
 
 - "Semantic Layer"
 - The name of the partner software
-- The dbt Cloud account ID of the customer, if the partner is making the inquiry
+- The dbt Cloud account ID of the customer, if you are a partner making the inquiry
 
 ### For Product and Partnerships
 [Reach out](mailto:semantic-layer@dbtlabs.com) to us if you:
