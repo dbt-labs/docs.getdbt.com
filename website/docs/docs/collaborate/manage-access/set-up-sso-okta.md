@@ -161,10 +161,10 @@ To complete setup, follow the steps below in dbt Cloud.
 
 ### Enable Okta Native Auth (beta)
 
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the Okta configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_okta`
-  feature flag in the dbt Cloud admin backend.
+There are two ways to enable Okta depending on how you access dbt Cloud:
+
+- If you access dbt Cloud using an [Access URL](/docs/deploy/regions-ip-addresses), such as `cloud.getdbt.com`, contact your account manager to gain access to the Okta configuration UI.
+* If you access dbt Cloud using a virtual private cloud (VPC), enable the `native_okta` feature flag in the dbt Cloud admin backend.
 
 ### Supplying credentials
 
@@ -197,12 +197,9 @@ configured in the steps above.
     test logging in with Okta. Additionally, users added the the Okta app
     will be able to log in to dbt Cloud from Okta directly.
 
-:::success Logging in
-Users in your Okta account will now be able to log into the application
-by navigating to the URL:
+Users in your Okta account will now be able to log into the application by navigating to the URL, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
 
-`https://cloud.getdbt.com/enterprise-login/<login-slug>`
-:::
+`https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Okta, the next steps will be to set up

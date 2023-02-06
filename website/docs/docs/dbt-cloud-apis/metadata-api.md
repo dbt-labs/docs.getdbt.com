@@ -5,7 +5,7 @@ id: "metadata-api"
 
 ## About the metadata API
 
-Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata; the endpoint for this API is `https://metadata.cloud.getdbt.com/graphql`. This API is an incredibly rich resource for evaluating data health longitudinally or at a point in time.
+Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata; the endpoint for this API is `https://metadata.YOUR_ACCESS_URL/graphql`. Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. . This API is an incredibly rich resource for evaluating data health longitudinally or at a point in time.
 
 ## Prerequisites
 
