@@ -23,7 +23,7 @@ The new features are:
     - Use `env var` to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the dbt Cloud IDE for low-light environments.
 
-Read more about all the [Cloud IDE features](/docs/get-started/dbt-cloud-features).
+Read more about all the [Cloud IDE features](/docs/get-started/develop-in-the-cloud#cloud-ide-features).
 
 ### Classic IDE deprecation notice
 
