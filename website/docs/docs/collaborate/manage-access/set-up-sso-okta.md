@@ -65,10 +65,7 @@ Click **Next** to continue.
 
 ### Configure SAML Settings
 
-The SAML Settings page configures how Okta and dbt Cloud communicate. If your
-dbt Cloud instance is _not_ running at `cloud.getdbt.com`, you will want to replace
-the domain names shown below with the domain name where your instance is running. If you
-aren't sure which values you should use, please contact support (support@getdbt.com).
+The SAML Settings page configures how Okta and dbt Cloud communicate. You will want to use an [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. If you aren't sure which values you should use, please contact support (support@getdbt.com).
 
 To complete this section, you will need a _login slug_. This slug controls the
 URL where users on your account can log into your application via Okta. Login
@@ -77,10 +74,11 @@ dashes. For example, the _login slug_ for dbt Labs would be
 `dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
-On the **SAML Settings** page, enter the following values:
+On the **SAML Settings** page, enter the following values, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+:
 
-* **Single sign on URL**: `https://cloud.getdbt.com/complete/okta`
-* **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+* **Single sign on URL**: `https://YOUR_ACCESS_URL/complete/okta`
+* **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
 * **Relay State**: `<login slug>`
 
 <Lightbox
@@ -186,7 +184,7 @@ configured in the steps above.
 | **Identity&nbsp;Provider&nbsp;SSO&nbsp;Url** | Paste the **Identity Provider Single Sign-On URL** shown in the Okta setup instructions |
 | **Identity&nbsp;Provider&nbsp;Issuer** | Paste the **Identity Provider Issuer** shown in the Okta setup instructions |
 | **X.509&nbsp;Certificate** | Paste the **X.509 Certificate** shown in the Okta setup instructions |
-| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 <Lightbox
     collapsed={false}

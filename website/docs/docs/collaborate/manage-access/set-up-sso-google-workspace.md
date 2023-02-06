@@ -57,20 +57,14 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials:
-
-:::caution Authorized URIs
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the _Authorized Javascript origins_ and _Authorized Redirect URIs_ configurations.
-:::
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 
 | Config | Value |
 | ------ | ----- |
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
-| **Authorized Javascript origins** | `https://cloud.getdbt.com` |
-| **Authorized Redirect URIs** | `https://cloud.getdbt.com/complete/gsuite` |
+| **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
+| **Authorized Redirect URIs** | `https://YOUR_ACCESS_URL/complete/gsuite` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
@@ -103,7 +97,7 @@ Settings.
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
-      Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must
+      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. . Login slugs must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
       identifies your company.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
@@ -120,7 +114,7 @@ Settings.
 
 If the verification information looks appropriate, then you have completed
 the configuration of GSuite SSO. Members of your team should now be able to log
-into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
+into the dbt Cloud application at `https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. .
 
 **Note:** Changes typically take effect in minutes, but can take up to 24 hours.
 

@@ -41,15 +41,14 @@ need to select the appropriate directory and then register a new application.
 
 4. Configure the **Redirect URI**. The table below shows the appropriate
    Redirect URI values for single-tenant and multi-tenant deployments. For most
-   enterprise use-cases, you will want to use the single-tenant Redirect URI.
+   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 
 
 | Application Type | Redirect URI |
 | ----- | ----- |
-| Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
-| Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
+| Single-Tenant _(recommended)_ | `https://YOUR_ACCESS_URL/complete/azure_single_tenant` |
+| Multi-Tenant | `https://YOUR_ACCESS_URL/complete/azure_multi_tenant` |
 
-*Note:* If your dbt account instance is a VPC deployment or is based [outside the US](/docs/deploy/regions-ip-addresses), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
 5. Save the App registration to continue setting up Azure AD SSO
 
@@ -139,7 +138,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
 
 ### Supplying credentials
 
-24. Go to [Settings](https://cloud.getdbt.com/next/settings/profile). On the left side, select **Single Sign On** under **Account Settings**.
+24. Click the gear icon at the top right and select **Profile settings**. To the left, select **Single Sign On** under **Account Settings**.
 25. Click the **Edit** button and supply the following SSO details:
 
 | Field | Value |
@@ -149,7 +148,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure |
-| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Azure AD SSO in dbt Cloud" />
@@ -160,13 +159,10 @@ To complete setup, follow the steps below in the dbt Cloud application.
 
 :::success Logging in
 Users in your Azure AD account will now be able to log into the application
-by navigating to the URL:
+by navigating to the URL, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
 
-`https://cloud.getdbt.com/enterprise-login/<login-slug>`
+`https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`
 :::
-
-*Note:* If your dbt account instance is a VPC deployment or is [based outside the US](/docs/deploy/regions-ip-addresses), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
-
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Azure AD, the next steps will be to set up
