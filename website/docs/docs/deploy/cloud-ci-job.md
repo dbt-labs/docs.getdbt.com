@@ -42,7 +42,7 @@ To set up a webhook:
 2. Select **Continuous Integration (CI)**. 
 3. Select **Run on Pull Requests?** as shown in the following image.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-tab.png" title="Configuring webhooks for a dbt Cloud Job"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-tab.png" title="Configuring continuous integration for a dbt Cloud Job"/>
 
 
 ### GitHub pull request example
