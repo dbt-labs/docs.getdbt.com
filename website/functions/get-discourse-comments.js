@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM, CONTEXT } = process.env
+const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DISCOURSE_TOPIC_ID = 2
 
 // Set API endpoint and headers
@@ -14,17 +14,21 @@ let headers = {
 async function getDiscourseComments(event) {
   let topicId, comments, blogUrl;
 
+  const environment = process.env.CONTEXT
+
   try {
     blogUrl = getBlogUrl(event)
 
-    if (!CONTEXT || CONTEXT == "production") {
+    console.log(environment)
+
+    if (!environment || environment == "production") {
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
     cleanSlug = cleanUrl(postSlug);
     externalId = truncateString(cleanSlug)
     } else {
-      postTitle = `${CONTEXT} - ${event.queryStringParameters.title}`;
-      postSlug = `${CONTEXT}-${event.queryStringParameters.slug}`;
+      postTitle = `${environment} - ${event.queryStringParameters.title}`;
+      postSlug = `${environment}-${event.queryStringParameters.slug}`;
       cleanSlug = cleanUrl(postSlug);
       externalId = truncateString(cleanSlug)
     }
