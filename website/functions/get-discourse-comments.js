@@ -30,7 +30,7 @@ async function getDiscourseComments(event) {
       externalId = truncateString(cleanSlug)
     }
 
-    console.log(NODE_ENV)
+    console.log(APP_ENV)
 
     // console log postTitle, postSlug, cleanSlug, externalId in table format
     console.table({
