@@ -4,8 +4,8 @@ require("dotenv").config();
 const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DEVBLOG_PROD_URL = 'https://docs.getdbt.com/blog/'
 const DISCOURSE_TOPIC_ID = 2
-const DEV_ENV = 'dev'
-const PREVIEW_ENV = 'deploy-preview'
+const DEV_ENV = 'dev-'
+const PREVIEW_ENV = 'deploy-preview-'
 
 // Set API endpoint and headers
 let discourse_endpoint = `https://discourse.getdbt.com`
@@ -21,22 +21,12 @@ async function getDiscourseComments(event) {
   try {
     blogUrl = getBlogUrl(event)
 
-    if (blogUrl === DEVBLOG_PROD_URL) {
-    postTitle = event.queryStringParameters.title;
-    postSlug = event.queryStringParameters.slug;
+    const env = blogUrl === DEVBLOG_PROD_URL ? '' : 
+    blogUrl.includes('localhost') ? DEV_ENV : PREVIEW_ENV;
+    postTitle = `${env}${event.queryStringParameters.title}`;
+    postSlug = `${env}${event.queryStringParameters.slug}`;
     cleanSlug = cleanUrl(postSlug);
     externalId = truncateString(cleanSlug)
-    } else if (blogUrl === 'https://localhost:8888/blog/') {
-      postTitle = `${DEV_ENV} - ${event.queryStringParameters.title}`;
-      postSlug = `${DEV_ENV}-${event.queryStringParameters.slug}`;
-      cleanSlug = cleanUrl(postSlug);
-      externalId = truncateString(cleanSlug)
-    } else {
-      postTitle = `${PREVIEW_ENV} - ${event.queryStringParameters.title}`;
-      postSlug = `${PREVIEW_ENV}-${event.queryStringParameters.slug}`;
-      cleanSlug = cleanUrl(postSlug);
-      externalId = truncateString(cleanSlug)
-    }
 
     // console log postTitle, postSlug, cleanSlug, externalId in table format
     console.table({
