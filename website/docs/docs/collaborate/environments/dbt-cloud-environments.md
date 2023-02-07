@@ -123,7 +123,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 #### Editable fields
 
-- `Catalog` (optional): [Unity Catalog namespace](/reference/warehouse-setups/databricks-setup.md)
+- **Catalog** (optional): [Unity Catalog namespace](/reference/warehouse-setups/databricks-setup.md)
 
 </div>
 
@@ -195,7 +195,7 @@ This section allows you to determine the credentials that should be used when co
 
 #### Editable fields
 
-- **Token**: Access Token
+- **Token**: Access token
 - **Schema**: Target schema
 
 </div>
