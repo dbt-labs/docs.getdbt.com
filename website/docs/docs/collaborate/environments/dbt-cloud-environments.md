@@ -40,7 +40,7 @@ Both development and deployment environments have a section called **General Set
 
 **Custom branch behavior**
 
-By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the `Default to Custom Branch` option. This setting have will have slightly different behavior depending on the environment type:
+By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting have will have slightly different behavior depending on the environment type:
 
 - **Development**: determines which branch in the dbt Cloud IDE developers create branches from and open PRs against
 - **Deployment:** determines the branch is cloned during job executions for each environment.
