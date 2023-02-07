@@ -38,7 +38,7 @@ Both development and deployment environments have a section called **General Set
 - dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 
-**Custom Branch Behavior**
+**Custom branch behavior**
 
 By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the `Default to Custom Branch` option. This setting have will have slightly different behavior depending on the environment type:
 
