@@ -53,7 +53,7 @@ To create a new dbt Cloud development environment, navigate to **Deploy** -> **E
 
 After setting the **General Settings** as above, there’s nothing more that needs to be done on the environments page. Click **Save** to create the environment.
 
-### Setting developer credentials
+### Set developer credentials
 
 To use the IDE, each developer will need to set up [personal development credentials](/docs/get-started/develop-in-the-cloud#developer-credentials) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
@@ -68,7 +68,7 @@ To create a new dbt Cloud development environment, navigate to **Deploy** -> **E
 
 For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer) has the most up-to-date setup instructions!
 
-### Deployment Connection
+### Deployment connection
 
 :::info Warehouse Connections
 
