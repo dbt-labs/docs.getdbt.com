@@ -169,15 +169,15 @@ This section allows you to determine the credentials that should be used when co
 #### Editable fields
 
 - **Auth Method**: This determines the way dbt connects to your warehouse
-  - One of: [`Username & Password`, `Key Pair`]
-- If `Username & Password`:
-  - `Username`: username to use (most likely a service account)
-  - `Password`: password for the listed user
-- If `Key Pair`
-  - `Username`: username to use (most likely a service account)
-  - `Private Key`: value of the Private SSH Key (optional)
-  - `Private Key Passphrase`: value of the Private SSH Key Passphrase (optional, only if required)
-- `Schema`: Target Schema for this environment
+  - One of: [**Username & Password**, **Key Pair**]
+- If **Username & Password**:
+  - **Username**: username to use (most likely a service account)
+  - **Password**: password for the listed user
+- If **Key Pair**:
+  - **Username**: username to use (most likely a service account)
+  - **Private Key**: value of the Private SSH Key (optional)
+  - **Private Key Passphrase**: value of the Private SSH Key Passphrase (optional, only if required)
+- **Schema**: Target Schema for this environment
 
 </div>
 
@@ -220,3 +220,4 @@ This section allows you to determine the credentials that should be used when co
 
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Delete a job or environment in dbt Cloud](/docs/faqs/Environments/delete-environment-job)
+- [Develop in Cloud](/docs/get-started/develop-in-the-cloud)
