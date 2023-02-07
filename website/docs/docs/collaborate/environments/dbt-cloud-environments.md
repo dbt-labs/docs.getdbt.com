@@ -33,7 +33,7 @@ Both development and deployment environments have a section called **General Set
 | Default to Custom Branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom Branch | dev | Custom Branch name | See below |
 
-**dbt Version Notes**
+**dbt Version notes**
 
 - dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
