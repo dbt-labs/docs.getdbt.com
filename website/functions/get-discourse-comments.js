@@ -3,7 +3,6 @@ const axios = require('axios')
 const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DEVBLOG_URL = 'https://docs.getdbt.com/blog/'
 const DISCOURSE_TOPIC_ID = 2
-const DISCOURSE_EXTERNAL_ID_SUFFIX = '-testing3'
 
 // Set API endpoint and headers
 let discourse_endpoint = `https://discourse.getdbt.com`
@@ -19,7 +18,8 @@ async function getDiscourseComments(event) {
   try {
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
-    externalId = truncateString(`${postSlug}${DISCOURSE_EXTERNAL_ID_SUFFIX}`)
+    cleanSlug = cleanUrl(postSlug);
+    externalId = truncateString(cleanSlug)
 
     if (!postSlug) throw new Error("Unable to query Discourse API. Error reading slug.");
 
@@ -32,7 +32,7 @@ async function getDiscourseComments(event) {
     } else {
       // If the dev blog post does not exist in Discourse
       // Create a new topic and get the comments
-      topicId = await createDiscourseTopic(postTitle, externalId, postSlug);
+      topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug);
       if (typeof topicId === "number") {
         comments = await getDiscourseTopicbyID(topicId);
         comments.shift();
@@ -132,11 +132,17 @@ async function returnResponse(status, res) {
   return resObj
 }
 
+// Truncate external_id to 50 characters per Discourse API requirements
 function truncateString(str) {
-    if (str.length <= 50) {
-        return str
-    }
-    return str.slice(str.length - 50, str.length)
+  if (str.length <= 50) {
+    return str
+  }
+  return str.slice(0, 50)
+}
+
+// Remove query params and hash from URL to prevent duplicate topics
+function cleanUrl(url) {
+  return url.split("?")[0].split("#")[0];
 }
 
 
