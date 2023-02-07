@@ -5,7 +5,7 @@ description: "You can enable continuous integration (CI) to test every single ch
 ---
 
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository by setting up a webhook. For more information, refer to [Configuring a webhook](#configuring-a-webhook).
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository. For more information, refer to [Configure CI for a job](#configure-ci-for-a-job).
 
 Draft pull requests do _not_ trigger jobs. If you want jobs to run on each new commit, you need to mark your pull request as **Ready for review**.
 
@@ -22,27 +22,28 @@ If you previously configured your dbt project by providing a generic git URL tha
 
 ## Configuring continuous integration in dbt Cloud
 
-When you set up a dbt Cloud CI job with a [webhook configured](#configuring-a-webhook), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new pull request has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. 
+When you [set up CI for a job](#configure-ci-for-a-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new pull request has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. 
 
-Crucially, this run will build into a temporary schema using the prefix `dbt_cloud_pr_`. This schema isolation acts as a quasi-staging environment, so that you can see the builds resulting from the code associated with the PR's commit. The unique schema name can be found in the run details for the given run, as shown in the following image:
+Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. dbt Cloud then  runs the tests for these models as a check. This process provides a staging environment where you can check the run status and builds resulting from the code associated with the pull request's commit. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence. The unique schema name, your project ID, and pull request ID (`dbt_cloud_pr_1862_917`) can be found in the run details for the given run as shown in the following image:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
 After completing the dbt run, dbt Cloud will update the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message will state whether the models and tests ran successfully or not. You can enable a setting in your git provider that makes "successful pull request checks" a requirement to merge code. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
 
-dbt Cloud might not drop the temporary schema from your data warehouse if your project has database / schema customization using the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
+dbt Cloud might not drop the temporary schema from your data warehouse if your project has database or schema customization using the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) or [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
 
-### Configuring a webhook
+### Configure CI for a job
 
-If you want dbt Cloud to run the job whenever a pull request or commit is made, rather than on a schedule, you can set up a webhook. 
+If you want dbt Cloud to run the job whenever a pull request or commit is made, you can set up continuous integration (CI) for the job. 
 
-To set up a webhook:
+To set up CI:
 
-1. Navigate to the **Triggers** section of the jobs settings page
-2. Select **Webhooks**. 
-3. Select **Run on Pull Requests?** as shown in the following image.
+1. Create a new job or edit an existing job to open the settings page.
+2. Navigate to the **Triggers** section.
+3. Select **Continuous Integration (CI)**. 
+4. Select **Run on Pull Requests?** as shown in the following image.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/61536c9-Screen_Shot_2019-02-08_at_9.46.29_PM.png" title="Configuring webhooks for a dbt Cloud Job"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-tab.png" title="Configuring continuous integration for a dbt Cloud Job"/>
 
 
 ### GitHub pull request example
@@ -62,9 +63,7 @@ The green checkmark means the dbt builds and tests were successful. Clicking on 
 
 ## Configuring a Slim CI job
 
-Slim CI offers an alternative in dbt Cloud for running and testing all models in your project. When you're only changing a few handful of models, Slim CI can decrease the time it takes by running and testing only modified models. Slim CI enables you to focus on testing changed models and reduces your overall cost. 
-
-Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema and runs the tests for these models as a check. This process provides a staging environment where you can check the run status. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence.
+Slim CI offers an alternative to running and testing all models in your project, even when you're only changed a couple of things. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
 
 These components distinguish a Slim CI job from a dbt CI job:
 
