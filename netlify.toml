@@ -1,2 +1,11 @@
 [build]
   functions = "functions"
+
+[context.production]
+  NODE_ENV = "production"
+
+[context.deploy-preview]
+  NODE_ENV = "deploy-preview"
+
+[context.dev.environment]
+  NODE_ENV = "development"
