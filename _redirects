@@ -1,3 +1,17 @@
+
+/faqs/connecting-to-two-dbs-not-allowed  /faqs/warehouse/connecting-to-two-dbs-not-allowed 301
+/docs/dbt-cloud/cloud-ide/ide-beta  /docs/get-started/develop-in-the-cloud 301
+
+## dbt cloud feature page changes
+
+/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/get-started/dbt-cloud-features#model-timing-dashboard 301
+/docs/dbt-cloud  /docs/get-started/getting-started/set-up-dbt-cloud 
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version  /docs/dbt-versions/upgrade-core-in-cloud 301
+/docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide  /docs/get-started/develop-in-the-cloud 301
+/docs/dbt-cloud/cloud-overview /docs/get-started/getting-started/set-up-dbt-cloud 301
+/docs/dbt-cloud/using-dbt-cloud/artifacts  /docs/deploy/artifacts 301
+/dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api 301
+
 /docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
 /docs/deploy/regions  /docs/deploy/regions-ip-addresses 301
 
