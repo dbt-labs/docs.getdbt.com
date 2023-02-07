@@ -26,7 +26,7 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 <VersionBlock lastVersion="1.2">
 
 - Have a multi-tenant dbt Cloud account, <a href="https://docs.getdbt.com/docs/deploy/regions">hosted</a> in North America <br /> 
-- Have both your production and development environments running dbt version 1.2 (latest) <br />
+- Have both your production and development environments running dbt version 1.2 <br />
 - Use Snowflake data platform <br />
 - Install the <a href="https://hub.getdbt.com/dbt-labs/metrics/latest/">dbt metrics package</a> version <code>">=0.3.0", "<0.4.0"</code> in your dbt project <br />
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/metadata-api">Metadata API</a> in the integrated tool to import metric definitions 

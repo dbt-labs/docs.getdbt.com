@@ -161,4 +161,4 @@ In the `generate_schema_name` macro examples shown above, the `target.name` cont
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 
-For more information, consult the [Managing environments](/docs/collaborate/environments) guide.
+For more information, consult the [managing environments in dbt Core](/docs/collaborate/environments/dbt-core-environments) guide.
