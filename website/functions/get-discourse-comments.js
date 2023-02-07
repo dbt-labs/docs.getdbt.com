@@ -21,12 +21,16 @@ async function getDiscourseComments(event) {
   try {
     blogUrl = getBlogUrl(event)
 
-    const env = blogUrl === DEVBLOG_PROD_URL ? '' : 
-    blogUrl.includes('localhost') ? DEV_ENV : PREVIEW_ENV;
+    const env =
+      blogUrl === DEVBLOG_PROD_URL
+        ? ""
+        : blogUrl.includes("localhost")
+        ? DEV_ENV
+        : PREVIEW_ENV;
     postTitle = `${env}${event.queryStringParameters.title}`;
     postSlug = `${env}${event.queryStringParameters.slug}`;
     cleanSlug = cleanUrl(postSlug);
-    externalId = truncateString(cleanSlug)
+    externalId = truncateString(cleanSlug);
 
     // console log postTitle, postSlug, cleanSlug, externalId in table format
     console.table({
