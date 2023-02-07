@@ -137,7 +137,7 @@ Job Admins can perform the following actions in projects they are assigned to:
 - View, edit, and create environments
 - View connections
 - Create, delete, and modify Jobs
-- Trigger runs
+- Run and cancel jobs
 - View historical runs
 
 ### Job Viewer
@@ -155,7 +155,7 @@ Job Viewers can perform the following actions in projects they are assigned to:
 
 Developers can perform the following actions in projects they are assigned to:
 - Create, delete, and modify Jobs
-- Trigger runs
+- Run and cancel jobs
 - Use the IDE
 - Configure personal developer credentials
 
