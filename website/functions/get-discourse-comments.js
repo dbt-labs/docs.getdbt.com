@@ -1,4 +1,5 @@
 const axios = require('axios')
+require("dotenv").config();
 
 const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DISCOURSE_TOPIC_ID = 2
