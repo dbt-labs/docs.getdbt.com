@@ -1,8 +1,11 @@
 const axios = require('axios')
 require("dotenv").config();
 
-const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM, APP_ENV } = process.env
+const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
+const DEVBLOG_PROD_URL = 'https://docs.getdbt.com/blog/'
 const DISCOURSE_TOPIC_ID = 2
+const DEV_ENV = 'dev'
+const PREVIEW_ENV = 'deploy-preview'
 
 // Set API endpoint and headers
 let discourse_endpoint = `https://discourse.getdbt.com`
@@ -18,19 +21,22 @@ async function getDiscourseComments(event) {
   try {
     blogUrl = getBlogUrl(event)
 
-    if (APP_ENV == "production") {
+    if (blogUrl === DEVBLOG_PROD_URL) {
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
     cleanSlug = cleanUrl(postSlug);
     externalId = truncateString(cleanSlug)
+    } else if (blogUrl === 'https://localhost:8888/blog/') {
+      postTitle = `${DEV_ENV} - ${event.queryStringParameters.title}`;
+      postSlug = `${DEV_ENV}-${event.queryStringParameters.slug}`;
+      cleanSlug = cleanUrl(postSlug);
+      externalId = truncateString(cleanSlug)
     } else {
-      postTitle = `${APP_ENV} - ${event.queryStringParameters.title}`;
-      postSlug = `${APP_ENV}-${event.queryStringParameters.slug}`;
+      postTitle = `${PREVIEW_ENV} - ${event.queryStringParameters.title}`;
+      postSlug = `${PREVIEW_ENV}-${event.queryStringParameters.slug}`;
       cleanSlug = cleanUrl(postSlug);
       externalId = truncateString(cleanSlug)
     }
-
-    console.log(APP_ENV)
 
     // console log postTitle, postSlug, cleanSlug, externalId in table format
     console.table({
