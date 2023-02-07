@@ -16,11 +16,11 @@ let headers = {
 }    
 
 async function getDiscourseComments(event) {
-  let topicId, comments, blogUrl;
+  let topicId, comments;
+
+  blogUrl = await getBlogUrl(event)
 
   try {
-    blogUrl = getBlogUrl(event)
-
     const env =
       blogUrl === DEVBLOG_PROD_URL
         ? ""
@@ -167,7 +167,7 @@ function cleanUrl(url) {
 }
 
 // create a function to get the host name from the request and add /blog/ to the end
-function getBlogUrl(request) {
+async function getBlogUrl(request) {
   const host = request.headers.host
   return `https://${host}/blog/`
 }
