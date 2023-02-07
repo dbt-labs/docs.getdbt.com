@@ -23,7 +23,7 @@ In dbt Cloud, there are two types of environments: deployment and development. D
 
 ## Common environment settings
 
-Both development and deployment environments have a section called `General Settings`, which has some basic settings that all environments will define:
+Both development and deployment environments have a section called **General Settings**, which has some basic settings that all environments will define:
 
 | Setting | Example Value | Definition | Accepted Values |
 | --- | --- | --- | --- |
