@@ -1,7 +1,7 @@
 const axios = require('axios')
 require("dotenv").config();
 
-const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM, NODE_ENV } = process.env
+const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM, APP_ENV } = process.env
 const DISCOURSE_TOPIC_ID = 2
 
 // Set API endpoint and headers
@@ -18,14 +18,14 @@ async function getDiscourseComments(event) {
   try {
     blogUrl = getBlogUrl(event)
 
-    if (NODE_ENV == "production") {
+    if (APP_ENV == "production") {
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
     cleanSlug = cleanUrl(postSlug);
     externalId = truncateString(cleanSlug)
     } else {
-      postTitle = `${NODE_ENV} - ${event.queryStringParameters.title}`;
-      postSlug = `${NODE_ENV}-${event.queryStringParameters.slug}`;
+      postTitle = `${APP_ENV} - ${event.queryStringParameters.title}`;
+      postSlug = `${APP_ENV}-${event.queryStringParameters.slug}`;
       cleanSlug = cleanUrl(postSlug);
       externalId = truncateString(cleanSlug)
     }

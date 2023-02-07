@@ -2,13 +2,13 @@
   functions = "functions"
 
 [context.production.environment]
-  NODE_ENV = "production"
+  APP_ENV = "production"
 
 [context.deploy-preview.environment]
-  NODE_ENV = "deploy-preview"
+  APP_ENV = "preview"
 
 [context.branch-deploy.environment]
-  NODE_ENV = "development"
+  APP_ENV = "preview"
 
 [context.dev.environment]
-  NODE_ENV = "development"
+  APP_ENV = "dev"
