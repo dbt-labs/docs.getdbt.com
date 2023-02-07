@@ -51,18 +51,18 @@ For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/c
 
 To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Development** as the environment type.
 
-After setting the `General Settings` as above, there’s nothing more that needs to be done on the environments page. Click `Save` to create the environment.
+After setting the **General Settings** as above, there’s nothing more that needs to be done on the environments page. Click **Save** to create the environment.
 
 ### Setting developer credentials
 
-To use the IDE, each developer will need to set up [personal development credentials](/docs/get-started/develop-in-the-cloud#developer-credentials) to your warehouse connection in their `Profile Settings`. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
+To use the IDE, each developer will need to set up [personal development credentials](/docs/get-started/develop-in-the-cloud#developer-credentials) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
 
 ## Create a deployment environment
 
-To create a new dbt Cloud development environment, navigate to the `Environments` page under the `Deploy` header menu, and click `Create Environment` . Select `Deployment` as the environemnt type.
+To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type.
 
 ### Semantic Layer
 
@@ -99,9 +99,9 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 #### Editable fields
 
-- `Role`: Snowflake Role
-- `Database`: Target Database
-- `Warehouse`: Snowflake Warehouse
+- **Role**: Snowflake role
+- **Database**: Target database
+- **Warehouse**: Snowflake warehouse
 
 </div>
 
@@ -121,7 +121,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 <Lightbox src="/img/docs/collaborate/databricks-deploy-env-deploy-connection.png" title="Databricks Deployment Connection Settings"/>
 
-This section will not appear if you are using BigQuery, as all values are inferred from the project's connection. The `dataset` will be set in the `Deployment Credentials` section below.
+This section will not appear if you are using BigQuery, as all values are inferred from the project's connection. The **dataset** will be set in the [**Deployment credentials**](#deployment-credentials) section below.
 
 #### Editable fields
 
@@ -132,7 +132,7 @@ This section will not appear if you are using BigQuery, as all values are inferr
 </WHCode>
 
 
-### Deployment Credentials
+### Deployment credentials
 
 This section allows you to determine the credentials that should be used when connecting to your warehouse. The authentication methods may differ depending on the warehouse and dbt Cloud tier you are on.
 
@@ -144,9 +144,9 @@ This section allows you to determine the credentials that should be used when co
 
 #### Editable fields
 
-- `Username`: Postgres username to use (most likely a service account)
-- `Password`: Postgres password for the listed user
-- `Schema`: Target schema
+- **Username**: Postgres username to use (most likely a service account)
+- **Password**: Postgres password for the listed user
+- **Schema**: Target schema
 
 </div>
 
@@ -156,9 +156,9 @@ This section allows you to determine the credentials that should be used when co
 
 #### Editable fields
 
-- `Username`: Redshift username to use (most likely a service account)
-- `Password`: Redshift password for the listed user
-- `Schema`: Target schema
+- **Username**: Redshift username to use (most likely a service account)
+- **Password**: Redshift password for the listed user
+- **Schema**: Target schema
 
 </div>
 
@@ -187,7 +187,7 @@ This section allows you to determine the credentials that should be used when co
 
 #### Editable fields
 
-- `Dataset`: Target dataset
+- **Dataset**: Target dataset
 
 </div>
 
@@ -197,8 +197,8 @@ This section allows you to determine the credentials that should be used when co
 
 #### Editable fields
 
-- `Token`: Access Token
-- `Schema`: Target schema
+- **Token**: Access Token
+- **Schema**: Target schema
 
 </div>
 
@@ -208,8 +208,8 @@ This section allows you to determine the credentials that should be used when co
 
 #### Editable fields
 
-- `Token`: Access Token
-- `Schema`: Target schema
+- **Token**: Access token
+- **Schema**: Target schema
 
 </div>
 
