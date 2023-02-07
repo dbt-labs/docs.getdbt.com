@@ -1,14 +1,2 @@
 [build]
   functions = "functions"
-
-[context.production.environment]
-  APP_ENV = "production"
-
-[context.deploy-preview.environment]
-  APP_ENV = "preview"
-
-[context.branch-deploy.environment]
-  APP_ENV = "preview"
-
-[context.dev.environment]
-  APP_ENV = "dev"
