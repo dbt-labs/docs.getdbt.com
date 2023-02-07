@@ -1,7 +1,6 @@
 const axios = require('axios')
 
-const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
-const DEVBLOG_URL = 'https://docs.getdbt.com/blog/'
+const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM, CONTEXT } = process.env
 const DISCOURSE_TOPIC_ID = 2
 
 // Set API endpoint and headers
@@ -13,13 +12,32 @@ let headers = {
 }    
 
 async function getDiscourseComments(event) {
-  let topicId, comments;
+  let topicId, comments, blogUrl;
 
   try {
+    blogUrl = getBlogUrl(event)
+
+    if (!CONTEXT || CONTEXT == "production") {
     postTitle = event.queryStringParameters.title;
     postSlug = event.queryStringParameters.slug;
     cleanSlug = cleanUrl(postSlug);
     externalId = truncateString(cleanSlug)
+    } else {
+      postTitle = `${CONTEXT} - ${event.queryStringParameters.title}`;
+      postSlug = `${CONTEXT}-${event.queryStringParameters.slug}`;
+      cleanSlug = cleanUrl(postSlug);
+      externalId = truncateString(cleanSlug)
+    }
+
+    // console log postTitle, postSlug, cleanSlug, externalId in table format
+    console.table({
+      blogUrl,
+      postTitle,
+      postSlug,
+      cleanSlug,
+      externalId,
+    });
+
 
     if (!postSlug) throw new Error("Unable to query Discourse API. Error reading slug.");
 
@@ -32,7 +50,7 @@ async function getDiscourseComments(event) {
     } else {
       // If the dev blog post does not exist in Discourse
       // Create a new topic and get the comments
-      topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug);
+      //topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug);
       if (typeof topicId === "number") {
         comments = await getDiscourseTopicbyID(topicId);
         comments.shift();
@@ -61,9 +79,9 @@ async function createDiscourseTopic(title, externalId, slug) {
     try  {
         const response = await axios.post(`${discourse_endpoint}/posts`, {
             title: title,
-            raw: `This is a companion discussion topic for the original entry at ${DEVBLOG_URL}${slug}`,
+            raw: `This is a companion discussion topic for the original entry at ${blogUrl}${slug}`,
             category: DISCOURSE_TOPIC_ID,
-            embed_url: `${DEVBLOG_URL}${slug}`,
+            embed_url: `${blogUrl}${slug}`,
             external_id: externalId,
             tags: ['devblog'],
             visible: false
@@ -143,6 +161,12 @@ function truncateString(str) {
 // Remove query params and hash from URL to prevent duplicate topics
 function cleanUrl(url) {
   return url.split("?")[0].split("#")[0];
+}
+
+// create a function to get the host name from the request and add /blog/ to the end
+function getBlogUrl(request) {
+  const host = request.headers.host
+  return `https://${host}/blog/`
 }
 
 
