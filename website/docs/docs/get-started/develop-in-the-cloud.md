@@ -93,10 +93,11 @@ The IDE uses developer credentials to connect to your data platform. These devel
 
 Follow the below steps to set up your developer credentials:
 
-1. Go to the [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials) section.
+1. In the upper right corn, click on gear icon -> **Profile Settings** -> [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials).
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
-4. Enter your developer credentials and then click **Save.**
+4. Fill in the details in **Development Credentials**, including Dataset and Target Name. 
+5. Click **Save.**
 
 Great job, you should now be able to access the Cloud IDE by clicking **Develop** on the navigation to start developing!
 
