@@ -15,8 +15,6 @@ let headers = {
 async function getDiscourseComments(event) {
   let topicId, comments, blogUrl;
 
-  console.log(NODE_ENV)
-
   try {
     blogUrl = getBlogUrl(event)
 
