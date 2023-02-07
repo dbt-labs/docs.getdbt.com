@@ -37,7 +37,6 @@ async function getDiscourseComments(event) {
     cleanSlug = cleanUrl(postSlug);
     externalId = truncateString(`${env}${cleanSlug}`);
 
-    // console log postTitle, postSlug, cleanSlug, externalId in table format
     console.table({
       blogUrl,
       postTitle,
@@ -171,7 +170,7 @@ function cleanUrl(url) {
   return url.split("?")[0].split("#")[0];
 }
 
-// create a function to get the host name from the request and add /blog/ to the end
+// Create a function to get the host name from the request and add /blog/ to the end
 async function getBlogUrl(request) {
   const host = request.headers.host
   return `https://${host}/blog/`
