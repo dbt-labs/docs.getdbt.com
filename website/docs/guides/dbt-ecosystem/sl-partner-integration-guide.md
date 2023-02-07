@@ -652,18 +652,16 @@ The API will be a viable integration point with the dbt Semantic Layer. It will 
 ## Contact us
 
 ### For dbt Semantic Layer support
-For partner and customer support, please reach out via [support@dbtlabs.com](mailto:support@dbtlabs.com). Please ensure the message includes:
+
+For ustomer support, please reach out to the [Support team](mailto:support@getdbt.com). Please ensure the message includes:
 
 - "Semantic Layer"
 - The name of the partner software
 - The dbt Cloud account ID of the customer, if you are a partner making the inquiry
 
-### For Product and Partnerships
-[Reach out](mailto:semantic-layer@dbtlabs.com) to us if you:
+### For product and partnerships
 
-- would like to become a formal partner, 
-- have product feedback or questions, or 
-- are interested in integrating, including via the API
+If you'd like to become a formal partner, have product feedback/questions, or are interested in integrating, [reach out](mailto:semantic-layer@dbtlabs.com) to the Product and Partnership team. 
 
 <!-- rewrite a little and would like to see if i can include a button -->
 
