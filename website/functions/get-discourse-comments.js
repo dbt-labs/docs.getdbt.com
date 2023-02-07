@@ -3,7 +3,6 @@ require("dotenv").config();
 
 const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DEVBLOG_PROD_URL = 'https://docs.getdbt.com/blog/'
-const DISCOURSE_TOPIC_ID = 2
 const DEV_ENV = 'dev-'
 const PREVIEW_ENV = 'deploy-preview-'
 
@@ -19,6 +18,12 @@ async function getDiscourseComments(event) {
   let topicId, comments;
 
   blogUrl = await getBlogUrl(event)
+  
+  if (blogUrl === DEVBLOG_PROD_URL) {
+    DISCOURSE_TOPIC_ID = 21
+  } else {
+    DISCOURSE_TOPIC_ID = 2
+  }
 
   try {
     const env =
@@ -28,9 +33,9 @@ async function getDiscourseComments(event) {
         ? DEV_ENV
         : PREVIEW_ENV;
     postTitle = `${env}${event.queryStringParameters.title}`;
-    postSlug = `${env}${event.queryStringParameters.slug}`;
+    postSlug = event.queryStringParameters.slug;
     cleanSlug = cleanUrl(postSlug);
-    externalId = truncateString(cleanSlug);
+    externalId = truncateString(`${env}${cleanSlug}`);
 
     // console log postTitle, postSlug, cleanSlug, externalId in table format
     console.table({
