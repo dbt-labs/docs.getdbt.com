@@ -53,7 +53,7 @@ async function getDiscourseComments(event) {
     } else {
       // If the dev blog post does not exist in Discourse
       // Create a new topic and get the comments
-      //topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug);
+      topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug);
       if (typeof topicId === "number") {
         comments = await getDiscourseTopicbyID(topicId);
         comments.shift();
