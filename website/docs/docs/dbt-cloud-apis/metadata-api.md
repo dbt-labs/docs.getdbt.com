@@ -8,11 +8,11 @@ The dbt Cloud Metadata API helps organizations analyze and improve their data. Y
  - Ensure data quality 
  - Increase the efficiency of dbt operations
 
-Metadata is data that provides information about other data and it's generated every time dbt Cloud runs a project. The metadata contains information on the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.
+Metadata provides information about other data.  Every time dbt Cloud runs a project, it generates metadata that contains information on the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.
 
 <!-- reworded original: Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. -->
 
- dbt Cloud serves a [GraphQL API](https://metadata.cloud.getdbt.com/graphql) which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
+dbt Cloud serves a [GraphQL API](https://metadata.cloud.getdbt.com/graphql) which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
  
  The endpoint for this API is `https://metadata.YOUR_ACCESS_URL/graphql`. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. 
 
@@ -21,7 +21,7 @@ Metadata is data that provides information about other data and it's generated e
 The Metadata API is available to:
 - [Multi tenant](/docs/deploy/regions-ip-addresses) accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/), 
 - Projects on dbt version v0.19.0 or higher. 
-    * Artifacts generated on dbt version lower tha v0.19.0 will not be accessible via the Metadata API. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade. 
+    * The Metadata API cannot access artifacts generated on dbt version lower than v0.19.0. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade. 
     
 ## Use cases
 
