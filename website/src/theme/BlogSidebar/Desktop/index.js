@@ -61,6 +61,6 @@ export default function BlogSidebarDesktop({sidebar, tagData}) {
           ))}
         </ul>
       </nav>
-    </aside>
+    :::
   );
 }
