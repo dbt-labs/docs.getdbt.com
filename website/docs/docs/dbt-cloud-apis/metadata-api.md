@@ -8,11 +8,34 @@ The dbt Cloud Metadata API helps organizations analyze and improve their data. Y
  - ensure data quality, and 
  - increase the efficiency of dbt operations.
 
-dbt Cloud generates metadata every time it runs a dbt project. The metadata pertains to the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata; the endpoint for this API is `https://metadata.cloud.getdbt.com/graphql`. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time.
+Metadata is data that provides information about other data and it's generated every time dbt Cloud runs a project. The metadata contains information on the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.
+
+<!-- reworded original: Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. -->
+
+ dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
+ 
+ The endpoint for this API is `https://metadata.cloud.getdbt.com/graphql`. 
 
 ## Prerequisites
 
-The metadata API is available to accounts on the _Team_ and _Enterprise_ plans, for any version >= dbt v0.19.0. Please note that artifacts generated with a version of dbt _less than_ v0.19.0 will not be accessible via the dbt Cloud metadata API. For information on upgrading, see "[Version migration guides](https://docs.getdbt.com/guides/migration/versions)."
+The Metadata API is available to:
+- [Multi tenant](/docs/deploy/regions-ip-addresses) accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/), 
+- Projects on dbt version v0.19.0 or higher. 
+    * Artifacts generated on dbt version lower tha v0.19.0 will not be accessible via the Metadata API. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade. 
+    
+## Use cases
+
+Use the Metadata API to solve the following use cases:
+
+**Discovery**: Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage.
+   * [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide)
+   * _Catalog integration guide coming soon_
+
+**Quality**: Ensure that end-users have fresh and accurate data for their analyses by monitoring tests, source freshness, run status, exposures, and dependencies.
+  * _Integration guide coming soon_
+
+**Operations**: Help data teams run dbt efficiently and effectively to reduce costs by using historical run data
+  * _Integration guide coming soon_
 
 ## How to browse the API
 
