@@ -211,6 +211,7 @@ const sidebarSettings = {
           items: [
             "docs/deploy/artifacts",
             "docs/deploy/webhooks",
+            "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
             "docs/deploy/source-freshness",
