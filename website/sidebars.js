@@ -4,21 +4,19 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
-      label: "Get started with dbt",
+      label: "Quickstarts",
       collapsed: true,
       items: [
-        "docs/get-started/getting-started/overview",
+        "docs/quickstarts/overview",
         {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/dbt-cloud/bigquery",
-            "docs/get-started/dbt-cloud/databricks",
-            "docs/get-started/dbt-cloud/redshift",
-            "docs/get-started/dbt-cloud/snowflake",
-            "docs/get-started/dbt-cloud/exercises",
-            "docs/get-started/connect-your-database",
+            "docs/quickstarts/dbt-cloud/bigquery",
+            "docs/quickstarts/dbt-cloud/databricks",
+            "docs/quickstarts/dbt-cloud/redshift",
+            "docs/quickstarts/dbt-cloud/snowflake",
           ],
         },
         {
@@ -26,7 +24,32 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started-dbt-core",
+            "docs/quickstarts/dbt-core/quickstart",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Get started with dbt",
+      collapsed: true,
+      items: [
+        {
+          type: "category",
+          label: "Get started with dbt Cloud",
+          collapsed: true,
+          items: [
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/dbt-cloud-tips",
+          ],
+        },
+        {
+          type: "category",
+          label: "Get started with dbt Core",
+          collapsed: true,
+          items: [
             {
               type: "category",
               label: "Install dbt Core",
@@ -39,22 +62,11 @@ const sidebarSettings = {
                 "docs/get-started/source-install",
               ],
             },
+            "docs/get-started/about-the-cli",
             "docs/get-started/connection-profiles",
           ],
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Run dbt projects",
-      collapsed: true,
-      items: [
         "docs/get-started/run-your-dbt-projects",
-        "docs/get-started/develop-in-the-cloud",
-        "docs/get-started/about-the-cli",
-        "docs/get-started/dbt-cloud-features",
-        "docs/get-started/dbt-cloud-tips",
-
       ],
     },
     {

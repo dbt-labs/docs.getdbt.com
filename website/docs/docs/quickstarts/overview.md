@@ -1,8 +1,8 @@
 ---
-title: About get started
+title: About quickstarts
 id: overview
-sidebar_label: "About get started"
-description: "Create your first dbt project using a SQL query."
+sidebar_label: "About quickstarts"
+description: "Quickly create your first dbt project with SQL."
 ---
 <section className="community-home">
 
@@ -18,21 +18,21 @@ Before you begin, you will need:
 <div className="grid--3-col">
 
 <Card
-    title="Get started with dbt Cloud and BigQuery"
+    title="Quickstart for dbt Cloud and BigQuery"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    link="/docs/get-started/dbt-cloud/bigquery"
+    link="/docs/quickstarts/dbt-cloud/bigquery"
     icon="pencil-paper"/>
 
 <Card
-    title="Get started with dbt Cloud and Databricks"
+    title="Quickstart for dbt Cloud and Databricks"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    link="/docs/get-started/dbt-cloud/databricks"
+    link="/docs/quickstarts/dbt-cloud/databricks"
     icon="pencil-paper"/>
 
 <Card
-    title="Get started with dbt Cloud and Redshift"
+    title="Quickstart for dbt Cloud and Redshift"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    link="/docs/get-started/dbt-cloud/redshift"
+    link="/docs/quickstarts/dbt-cloud/redshift"
     icon="pencil-paper"/>
 
 </div>
@@ -40,14 +40,15 @@ Before you begin, you will need:
 <div className="grid--3-col">
 
 <Card
-    title="Get started with dbt Cloud and Snowflake"
+    title="Quickstart for dbt Cloud and Snowflake"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    link="/docs/quickstarts/dbt-cloud/snowflake"
     icon="pencil-paper"/>
 
 <Card
-    title="Get started with dbt Core"
+    title="Quickstart for dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface"
-    link="/docs/get-started/getting-started-dbt-core"
+    link="/docs/quickstarts/getting-started-dbt-core"
     icon="pencil-paper"/>
 
 </div>
