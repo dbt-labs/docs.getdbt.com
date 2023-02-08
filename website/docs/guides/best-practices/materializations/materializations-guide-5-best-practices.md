@@ -8,11 +8,11 @@ hoverSnippet: Learn how to utilize materializations in dbt.
 
 First, let’s consider some properties of various levels of our dbt project and materializations.
 
-- 🔍 **Views** return the freshest, real-time state of their input data when they’re query, this makes them ideal as **building blocks** for larger models.
+- 🔍 **Views** return the freshest, real-time state of their input data when they’re queried, this makes them ideal as **building blocks** for larger models.
   - 🧶  When we’re building a model that stitches lots of other models together, we don’t want to worry about all those models having different states of freshness because they were built into tables at different times. We want all those inputs to give us all the underlying source data available.
 - 🤏 **Views** are also great for **small datasets** with minimally intensive logic that we want **near realtime** access to.
 - 🛠️ **Tables** are the **most performant** materialization, as they just return the transformed data when they’re queried, with no need to reprocess it.
-  - 📊  This makes tables great for **things endusers touch**, like a mart that services a popular dashboard.
+  - 📊  This makes tables great for **things end users touch**, like a mart that services a popular dashboard.
   - 💪 Tables are also ideal for **frequently used, compute intensive** transformations. Making a table allows us to ‘freeze’ those transformations in place.
 - 📚  **Incremental models** are useful for the **same purposes as tables**, they just enable us to build them on larger datasets, so they can be **built** _and_ **accessed** in a **performant** way.
 

@@ -19,7 +19,7 @@ That’s where dbt Cloud’s Model Timing visualization comes in extremely handy
 
 ![dbt Cloud's Model Timing diagram](/img/guides/best-practices/materializations/model-timing-diagram.png)
 
-- 🧵 This view lets us see our **mapped out in threads** (up to 16 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
+- 🧵 This view lets us see our **mapped out in threads** (up to 64 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
 - ⌛ We can see above that `customer_status_histories` is **taking by far the most time**, so we may want to go ahead and **make that incremental**.
 
 If you aren’t using dbt Cloud, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the dbt CLI to check our model times, and it’s a great opportunity to become familiar with that output.

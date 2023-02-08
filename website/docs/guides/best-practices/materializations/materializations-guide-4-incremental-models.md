@@ -41,7 +41,7 @@ We did our last `dbt build` job on `2022-01-31`, so any new orders since that ru
 Let’s think through the information we’d need to build such a model that only processes new and updated data. We would need:
 
 - 🕜  **a timestamp indicating when a record was last updated**, let’s call it our `updated_at` timestamp, as that’s a typical convention and what we have in our example above.
-- ⌛ the **most recent timestamp from this table _in our warehouse_** _—_ that is, the one created by the previous run — to act as a cutoff point. We’ll call the model we’re working in`this`, for ‘this model we’re working in’.
+- ⌛ the **most recent timestamp from this table _in our warehouse_** _—_ that is, the one created by the previous run — to act as a cutoff point. We’ll call the model we’re working in `this`, for ‘this model we’re working in’.
 
 That would lets us construct logic like this:
 
@@ -57,7 +57,7 @@ Let’s break down that `where` clause a bit, because this where the action is w
 1. Get our **cutoff.**
    1. Select the `max(updated_at)` timestamp — the **most recent record**
    2. from `{{ this }}` — the table for this model as it exists in the warehouse, as **built in our last run**,
-   3. so `max(udated_at) from {{ this }}` the **_most recent record processed in our last run,_**
+   3. so `max(updated_at) from {{ this }}` the **_most recent record processed in our last run,_**
    4. that’s exactly what we want as a **cutoff**!
 2. **Filter** the rows we’re selecting to add in this run.
    1. Use the `updated_at` timestamp from our input, the equivalent column to the one in the warehouse, but in the up-to-the-minute **source data we’re selecting from** and
