@@ -27,15 +27,11 @@ The Metadata API is available to:
 
 Use the Metadata API to solve the following use cases:
 
-**Discovery**: Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage.
-   * [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide)
-   * _Catalog integration guide coming soon_
+- **Discovery*** &mdash; Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage. Refer to [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide) for more info. 
+- **Quality*** &mdash; Make sure users have correct and up-to-date data for their analyses by monitoring tests, source freshness, run status, exposures, and dependencies.
+- **Operations*** &mdash;  Help data teams run dbt efficiently and effectively to reduce costs by using historical run data.
 
-**Quality**: Ensure that end-users have fresh and accurate data for their analyses by monitoring tests, source freshness, run status, exposures, and dependencies.
-  * _Integration guide coming soon_
-
-**Operations**: Help data teams run dbt efficiently and effectively to reduce costs by using historical run data
-  * _Integration guide coming soon_
+*_Integration guides coming soon_
 
 ## How to browse the API
 
