@@ -12,7 +12,7 @@ Metadata is data that provides information about other data and it's generated e
 
 <!-- reworded original: Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. -->
 
- dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
+ dbt Cloud serves a [GraphQL API](https://metadata.cloud.getdbt.com/graphql) which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
  
  The endpoint for this API is `https://metadata.cloud.getdbt.com/graphql`. 
 
