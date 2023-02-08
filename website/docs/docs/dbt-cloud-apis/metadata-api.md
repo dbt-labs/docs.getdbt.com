@@ -4,9 +4,9 @@ id: "metadata-api"
 ---
 
 The dbt Cloud Metadata API helps organizations analyze and improve their data. You can use the API to:
- - power downstream integrations so users discover and understand data for analysis, 
- - ensure data quality, and 
- - increase the efficiency of dbt operations.
+ - Power downstream integrations so users discover and understand data for analysis
+ - Ensure data quality 
+ - Increase the efficiency of dbt operations
 
 Metadata is data that provides information about other data and it's generated every time dbt Cloud runs a project. The metadata contains information on the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.
 
@@ -14,7 +14,7 @@ Metadata is data that provides information about other data and it's generated e
 
  dbt Cloud serves a [GraphQL API](https://metadata.cloud.getdbt.com/graphql) which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
  
- The endpoint for this API is `https://metadata.cloud.getdbt.com/graphql`. 
+ The endpoint for this API is `https://metadata.YOUR_ACCESS_URL/graphql`. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. 
 
 ## Prerequisites
 
