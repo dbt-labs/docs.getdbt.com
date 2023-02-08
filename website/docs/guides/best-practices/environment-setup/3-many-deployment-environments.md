@@ -15,11 +15,11 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 3. You have a **Production deployment environment,** running scheduled jobs from the `main` branch that deploys your dbt project to your production warehouse location.
 4. You have **multiple Slim CI jobs** (one in each deployment environment) to ensure changes to each branch are tested.  
 
-![Untitled](Branches%20and%20Environments%20and%20dbt%20Projects,%20oh%20my!%2079979f54702d4a2db2059257cc413670/Untitled%201.png)
+![Table of basic setup for many deployment environment](/img/guides/best-practices/environment-setup/many-deployments-table.png)
 
 ### git workflow
 
-![Untitled](Branches%20and%20Environments%20and%20dbt%20Projects,%20oh%20my!%2079979f54702d4a2db2059257cc413670/Untitled%202.png)
+![git flow diagram for many deployment environments](/img/guides/best-practices/environment-setup/many-branch-git.png)
 
 1. In the dbt Cloud IDE, developers work on feature branches, **created from the `qa` branch** (`feature_a`, `feature_b`, `feature_c` above).
 2. When code is ready, developer opens a PR to merge feature branch into `qa`.

@@ -20,11 +20,12 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 :::
 
-![Untitled](Branches%20and%20Environments%20and%20dbt%20Projects,%20oh%20my!%2079979f54702d4a2db2059257cc413670/Untitled.png)
+![Table of basic setup for one deployment environment](/img/guides/best-practices/environment-setup/one-deployment-table.png)
 
 ### `git` workflow
 
-![Screen Shot 2023-01-03 at 11.16.06 AM.png](Branches%20and%20Environments%20and%20dbt%20Projects,%20oh%20my!%2079979f54702d4a2db2059257cc413670/Screen_Shot_2023-01-03_at_11.16.06_AM.png)
+![git flow diagram for one deployment environment](/img/guides/best-practices/environment-setup/one-branch-git.png)
+
 
 1. In the dbt Cloud IDE, developers work on feature branches, created from the `main` branch (`feature_a`, `feature_b`, `feature_c` above)
 2. When code is ready, developer opens a PR to merge feature branch into `main`
