@@ -13,7 +13,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code on feature branches created off of your default branch in your repository (most often the `main` branch)
 2. You have a **single *deployment* environment** (let’s call it “Production”) where your scheduled jobs run referencing the `main` branch
-3. You also have a [**Slim CI job](https://docs.getdbt.com/docs/deploy/cloud-ci-job)** that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment
+3. You also have a [**Slim CI job](docs/deploy/cloud-ci-job)** that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment
 
 :::info
 ☁️ Slim CI jobs run in a dedicated custom schema for each PR, so there will no collision with your production schemas!
@@ -28,19 +28,19 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 1. In the dbt Cloud IDE, developers work on feature branches, created from the `main` branch (`feature_a`, `feature_b`, `feature_c` above)
 2. When code is ready, developer opens a PR to merge feature branch into `main`
-3. [**Slim CI Job](https://docs.getdbt.com/docs/deploy/cloud-ci-job)** automatically kicks off, and tests the changes made in the PR
+3. [**Slim CI Job](docs/deploy/cloud-ci-job)** automatically kicks off, and tests the changes made in the PR
 4. When Slim CI Job is successful ******and****** team is ready to deploy changes to Production, the PR is merged directly into the `main` branch! The next time a production job runs, these changes will be incorporated and executed!
 
 ### dbt Cloud setup
 
-1. Create your [**development environment**](https://docs.getdbt.com/docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE. No extra customization needed!
-2. Create your **[production deployment environment](https://docs.getdbt.com/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**.
+1. Create your [**development environment**](docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE. No extra customization needed!
+2. Create your **[production deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**.
 3. Define your **dbt Cloud jobs** in the production deployment environment from step 2!
     1. **Production job(s)** — You will need to set up **at least one scheduled job** that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
     2. **Slim CI Job —** Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Enable this option by selecting`Run on Pull Requests?` under the `Webhooks` tab under the `Triggers` section.
 
         :::info
-        💡 This job will also need to **[defer to one of the Production jobs](https://docs.getdbt.com/docs/deploy/cloud-ci-job#deferral-and-state-comparison)** created in step 3a. This enables the use of the `[**state](https://docs.getdbt.com/docs/deploy/about-state)` modifiers** in your selection syntax to only run changes introduced by your PR.
+        💡 This job will also need to **[defer to one of the Production jobs](docs/deploy/cloud-ci-job#deferral-and-state-comparison)** created in step 3a. This enables the use of the `[**state](docs/deploy/about-state)` modifiers** in your selection syntax to only run changes introduced by your PR.
 
         :::
 

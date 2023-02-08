@@ -10,7 +10,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 ### **What this looks like**
 
-1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code. However, you’ll want to update the **[custom branch settings](https://docs.getdbt.com/faqs/Environments/custom-branch-settings)** to ensure that developers create feature branches off of the a non-production branch. For this example, we’ll refer to this as the `qa` branch.
+1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code. However, you’ll want to update the **[custom branch settings](faqs/Environments/custom-branch-settings)** to ensure that developers create feature branches off of the a non-production branch. For this example, we’ll refer to this as the `qa` branch.
 2. You have a **QA deployment environment**, running scheduled jobs from the `qa` branch that deploys your dbt project to a pre-production warehouse location.
 3. You have a **Production deployment environment,** running scheduled jobs from the `main` branch that deploys your dbt project to your production warehouse location.
 4. You have **multiple Slim CI jobs** (one in each deployment environment) to ensure changes to each branch are tested.  
@@ -32,17 +32,17 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 9. Monitor scheduled jobs in Prod environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders!
 
 <aside>
-💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](https://docs.getdbt.com/blog/the-case-against-git-cherry-picking)
+💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](blog/the-case-against-git-cherry-picking)
 
 </aside>
 
 ### dbt Cloud Setup
 
-1. Create your [**development environment**](https://docs.getdbt.com/docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE.
+1. Create your [**development environment**](docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE.
 
     ‼️ Here, we’ll set a **custom branch** so that users in the IDE create their feature branches from `qa` instead of `main`. Click **Only run on a custom branch** in **General settings**, enter `qa` into **Custom Branch.**
 
-2. Set up your **QA [deployment environment](https://docs.getdbt.com/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
+2. Set up your **QA [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
 
     Here, we’ll apply the same custom branch settings as the development environment in Step 1. All scheduled jobs in the QA deployment environment will use the code from the `qa` branch during execution!
 
@@ -52,7 +52,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
         This job will also need to defer to one of the QA jobs created in step 3a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
-4. Set up your **Production [deployment environment](https://docs.getdbt.com/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
+4. Set up your **Production [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
 
     Here, we’ll *********also********* use the same custom branch settings as the other environments, but set the custom branch as `main`. Even thought the `main` branch is the default, setting this value enables us to properly set up the CI Job in the next step.
 
