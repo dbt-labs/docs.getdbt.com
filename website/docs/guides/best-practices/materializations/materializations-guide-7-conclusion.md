@@ -1,7 +1,7 @@
 ---
 title: "Conclusion"
 id: materializations-guide-7-conclusion
-slug: guides/best-practices/materializations/1-guide-overview
+slug: guides/best-practices/materializations/7-conclusion
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
