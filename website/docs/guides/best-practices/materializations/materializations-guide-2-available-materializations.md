@@ -31,13 +31,13 @@ Views and tables and incremental models, oh my! In this section we’ll start ge
 
 - 🏗️ **Tables store the data itself** as opposed to views which store the query logic. This means we can pack all of the transformation compute into a single run. A view is storing a _query_ in the warehouse. Even to preview that data we have to query it. A table is storing the literal rows and columns on disk.
 - 🏎️ Querying lets us **access that transformed data directly**, so we get better performance. Tables feel **faster and more responsive** compared to views of the same logic.
-- 💸 **Improves compute costs.** Compute is significantly more expensive than storage. So while tables use much more storage, it’s generally an economical tradeoff, as you only pay for the transformation compute when you build a table during a job, rather than every time you query it.
+- 💸 **Improves compute costs.** Compute is significantly more expensive than storage. So while tables use much more storage, it’s generally an economical tradeoff, as you only pay for the transformation compute when you build a table during a job, rather than every time you query it. 
 - 🔍 **Ideal for models that get queried regularly**, due to the combination of these qualities.
 - 👎 **Limited to the source data that was available when we did our most recent run.** We’re ‘freezing’ the transformation logic into a table. So if we run a model as a table every hour, at 10:59a we still only have data up to 10a, because that was what was available in our source data when we ran the table last at 10a. Only at the next run will the newer data be included in our rebuild.
 
 ### Incremental models
 
-- 🧱 **Incremental** models build a **table** in **pieces over time.**
+- 🧱 **Incremental** models build a **table** in **pieces over time.** 
 - 🏎️  **Builds more quickly** than a regular table of the same logic.
 - 🐢 **Initial runs are slow.** Typically we use incremental models on very large datasets, so building the initial table on the full dataset is time consuming and equivalent to the table materialization.
 - 👎 **Add complexity.** Incremental models require deeper consideration of layering and timing.
@@ -51,6 +51,7 @@ Views and tables and incremental models, oh my! In this section we’ll start ge
 | 🛠️💸 **build costs** | 💚  lowest — no data processed       | ❤️  highest — all data processed       | 💛  medium — some data processed       |
 | 📊💸 **query costs** | ❤️  higher — reprocess every query   | 💚  lower — data in warehouse          | 💚  lower — data in warehouse          |
 | 🍅🌱 **freshness**   | 💚  best — up-to-the-minute of query | 💛  moderate — up to most recent build | 💛  moderate — up to most recent build |
+
 
 :::info
 🔑 **Time is money.** Notice in the above chart that the time and costs rows contain the same results. This is to highlight that when we’re talking about time in warehouses, we’re talking about compute time, which is the primary driver of costs.
