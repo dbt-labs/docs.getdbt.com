@@ -75,7 +75,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 - Saved but uncommitted code &mdash; When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
 - Committed code &mdash; This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-## Set up Environments
+## Access the Cloud IDE
 
 :::info📌
 
@@ -85,13 +85,9 @@ New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-star
 
 In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud development environment](/docs/collaborate/environments/dbt-cloud-environments) and [developer credentials](#developer-credentials). If you're creating a new project, you will automatically configure this during the project setup. 
 
-Review the following steps to set up your developer credentials:
-
-### Developer credentials
-
 The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
-Follow the below steps to set up your developer credentials:
+Review the following steps to set up your developer credentials:
 
 1. Go to your [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials) under the **Your Profile** settings.
 2. Select the relevant project in the list.
@@ -99,19 +95,13 @@ Follow the below steps to set up your developer credentials:
 4. Fill in the details in **Development Credentials**, including Dataset and Target Name. 
 5. Click **Save.**
 
-Great job, you should now be able to access the Cloud IDE by clicking **Develop** on the navigation to start developing!
-
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="100" height="100" title="Configure developer credentials in your Profile"/>
-
-
-### Access the Cloud IDE
 
 Now that you've set up your development environment and credentials, you should be able to access the Cloud IDE:
 
-1. Log in with your dbt Cloud account. If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free.
-2. Click **Develop** at the top of the page to take you to the IDE.
-3. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
-4. Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
+1. Click **Develop** at the top of the page to take you to the IDE.
+2. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
+3. Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
 
 ## Build, compile, and run projects
 
