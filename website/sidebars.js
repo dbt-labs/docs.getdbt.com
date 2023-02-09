@@ -224,8 +224,15 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [
-        "docs/collaborate/environments",
+      items: [{
+          type: "category",
+          label: "Environments",
+          items: [
+            "docs/collaborate/environments/environments-in-dbt",
+            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/collaborate/environments/dbt-core-environments",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",
@@ -687,6 +694,22 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        {
+          type: "category",
+          label: "Materializations best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
+          },
+          items: [
+            "guides/best-practices/materializations/materializations-guide-2-available-materializations",
+            "guides/best-practices/materializations/materializations-guide-3-configuring-materializations",
+            "guides/best-practices/materializations/materializations-guide-4-incremental-models",
+            "guides/best-practices/materializations/materializations-guide-5-best-practices",
+            "guides/best-practices/materializations/materializations-guide-6-examining-builds",
+            "guides/best-practices/materializations/materializations-guide-7-conclusion",
+          ],
+        },
         "guides/best-practices/debugging-errors",
         "guides/best-practices/writing-custom-generic-tests",
       ],
@@ -789,8 +812,7 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "dbt Ecosystem guides",
-        description:
-          "Learn about the dbt ecosystem and how to build with dbt.",
+        description: "Learn about the dbt ecosystem and how to build with dbt.",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -820,18 +842,16 @@ const sidebarSettings = {
           },
           items: [
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
-            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices"
+            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
-  {
+    {
       type: "category",
       label: "Advanced",
-      items: [
-        "guides/advanced/creating-new-materializations",
-      ],
+      items: ["guides/advanced/creating-new-materializations"],
     },
     {
       type: "category",
@@ -923,7 +943,8 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "SQL Reference",
-        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
+        description:
+          "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
         slug: "/sql-reference",
       },
       items: [
@@ -1026,10 +1047,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Other",
-          items: [
-            "sql-reference/other/cast",
-            "sql-reference/other/comments",
-          ],
+          items: ["sql-reference/other/cast", "sql-reference/other/comments"],
         },
       ],
     },
