@@ -34,6 +34,6 @@ By the end of this guide you should have a solid understanding of:
 
 We’ll explore this in-depth throughout, but the basic guideline is **start as simple as possible**. We’ll follow a tiered approached, only moving up a tier when it’s necessary.
 
-- 🔍 **Start with a view.** When the view gets too long to _query_ for endusers,
+- 🔍 **Start with a view.** When the view gets too long to _query_ for end users,
 - ⚒️ **Make it a table.** When the table gets too long to _build_ in your dbt Jobs,
 - 📚 **Build it incrementally.** That is, layer the data on in chunks as it comes in.

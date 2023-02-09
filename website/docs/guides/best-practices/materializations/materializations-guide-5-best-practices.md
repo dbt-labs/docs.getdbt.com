@@ -41,7 +41,7 @@ models:
 
 We’ll start off simple with staging models. Lets consider some aspects of staging models to determine the ideal materialization strategy:
 
-- 🙅‍♀️ Staging models are **rarely accessed** directly by our own **endusers.**
+- 🙅‍♀️ Staging models are **rarely accessed** directly by our **end users.**
 - 🧱 They need to be always up-to-date and in sync with our source data as a **building blocks** for later models
 - 🔍  It’s clear we’ll want to keep our **staging models as views**.
 - 👍  Since views are the **default materialization** in dbt, we don’t _have_ to do any specific configuration for this.
@@ -64,8 +64,8 @@ Our marts are slow to query!
 
 Let’s contrast the same aspects of marts that we considered for staging models to assess the best materialization strategy:
 
-- 📊  Marts are **frequently accessed directly by our endusers**, and need to be **performant.**
-- ⌛  Can often **function with intermittently refreshed data**, enduser decision making in many domains is **fine with hourly or daily data.**
+- 📊  Marts are **frequently accessed directly by our end users**, and need to be **performant.**
+- ⌛  Can often **function with intermittently refreshed data**, end user decision making in many domains is **fine with hourly or daily data.**
 - 🛠️  Given the above properties we’ve got a great use case for **building the data itself** into the warehouse, not the logic. In other words, **a table**.
 - ❓ The only decision we need to make with our marts is whether we can **process the whole table at once or do we need to do it in chunks**, that is, are we going to use the `table` materialization or `incremental`.
 

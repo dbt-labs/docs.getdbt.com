@@ -29,7 +29,7 @@ We did our last `dbt build` job on `2022-01-31`, so any new orders since that ru
 - 🏔️ build the table from the **beginning of time again — a _table materialization_**
   - Simple and solid, if we can afford to do it (in terms of time, compute, and money — which are all directly correlated in a cloud warehouse). It’s the easiest and most accurate option.
 - 🤏 find a way to run **just new and updated rows since our previous run — _an_ _incremental materialization_**
-  - If we _can’t_ realistically afford to run the whole table — due to complex transformations or big source data, it takes too long — then we want to build incrementally. We want to just transform and add the row highlighted in green below, _not_ the previous two that are already in the table, highlighted in yellow. 
+  - If we _can’t_ realistically afford to run the whole table — due to complex transformations or big source data, it takes too long — then we want to build incrementally. We want to just transform and add the row with id 567 below, _not_ the previous two with ids 123 and 456 that are already in the table.
 
 | order_id | order_status | customer_id | order_item_id | ordered_at | updated_at |
 | -------- | ------------ | ----------- | ------------- | ---------- | ---------- |
@@ -50,7 +50,7 @@ That would lets us construct logic like this:
 select * from orders
 
 where
-  updated_at > (select max(updated_at) from {{ this }}) 
+  updated_at > (select max(updated_at) from {{ this }})
 ```
 
 Let’s break down that `where` clause a bit, because this where the action is with incremental models. Stepping through the code **_right-to-left_** we:
@@ -156,4 +156,4 @@ Late arriving facts point to the biggest tradeoff with incremental models:
 - 🪟 We can slow this entropy with the lookback window described above — **the longer the window the less efficient the model, but the slower the drift.** It’s important to not it will still occur though, however slowly. If we have a lookback window of 3 days, and a record comes in 4 days late from the loader, we’re still going to miss it.
 - 🌍 Thankfully, there is a way we can reset the relationship of the model to the source data. We can run the model with the **`--full-refresh` flag passed** (such as `dbt build --full-refresh -s orders`). As we saw in the `is_incremental` conditions above, that will make our logic return false, and our `where` clause filter will not be applied, running the whole table.
 - 🏗️ This will let us **rebuild the entire table from scratch,** a good practice to do regularly **if the size of the data will allow**.
-- 📆 A common pattern for incremental models of manageable size is to run a **full refresh on the weekend** (or any low point in activity), either **weekly or monthly**, to consistently reset the drift from late arriving facts. 
+- 📆 A common pattern for incremental models of manageable size is to run a **full refresh on the weekend** (or any low point in activity), either **weekly or monthly**, to consistently reset the drift from late arriving facts.
