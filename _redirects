@@ -1,4 +1,8 @@
 
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-redshift-and-postgres  /docs/get-started/connect-your-database#connecting-to-postgres-redshift-and-alloydb 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake /docs/get-started/connect-your-database#connecting-to-snowflake 301
+
+
 /faqs/connecting-to-two-dbs-not-allowed  /faqs/warehouse/connecting-to-two-dbs-not-allowed 301
 /docs/dbt-cloud/cloud-ide/ide-beta  /docs/get-started/develop-in-the-cloud 301
 
@@ -70,6 +74,7 @@
 /guides/migration/versions/Older%20versions/understanding-state /docs/deploy/about-state 301!
 
 /docs/collaborate/git/resolve-merge-conflicts  /docs/collaborate/git/merge-conflicts 301
+/docs/collaborate/environments  /docs/collaborate/environments/environments-in-dbt 301
 /docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications /docs/deploy/job-notifications 301
 /docs/dbt-cloud/using-dbt-cloud /docs/develop/develop-in-the-cloud 301
@@ -93,7 +98,7 @@
 /docs/dbt-cloud/access-control/access-control-overview /docs/collaborate/manage-access/about-access 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation /docs/collaborate/build-and-view-your-docs 301
 /docs/building-a-dbt-project/documentation /docs/collaborate/documentation 301
-/docs/building-a-dbt-project/managing-environments /docs/collaborate/environments 301
+/docs/building-a-dbt-project/managing-environments /docs/collaborate/environments/environments-in-dbt 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url /docs/collaborate/git/import-a-project-by-git-url 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure /docs/collaborate/git/authenticate-azure 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure /docs/collaborate/git/setup-azure 301
@@ -587,6 +592,8 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/dbt-cloud/cloud-ide/ide-beta  /docs/getting-started/develop-in-the-cloud 301!
 /docs/running-a-dbt-project/using-the-dbt-ide  /docs/getting-started/develop-in-the-cloud 301!
 /dbt-cloud/cloud-ide/the-ide-git-button  /docs/collaborate/git/version-control-basics 301!
+/docs/building-a-dbt-project/setting-up /guides/legacy/building-packages 301!
+/docs/building-a-dbt-project/dbt-jinja-functions /reference/dbt-jinja-functions 301!
 
 # Community docs
 /docs/contributing/long-lived-discussions-guidelines /community/resources/forum-guidelines 301
@@ -599,4 +606,13 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
 /docs/getting-started/develop-in-the-cloud#creating-a-development-environment  /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
+/docs/cloud-developer-ide /docs/build/custom-target-names#dbt-cloud-ide 301
+/website/docs/docs/contributing/building-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
 
+# Blog docs
+/blog/tags/release-notes /docs/dbt-versions/dbt-cloud-release-notes 301
+
+# Faq docs
+/faqs/dbt-jinja-functions /reference/dbt-jinja-functions 301
+
+/website/docs/docs/contributing/documenting-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301
