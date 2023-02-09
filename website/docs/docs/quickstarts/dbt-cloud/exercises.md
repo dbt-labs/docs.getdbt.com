@@ -4,7 +4,7 @@ description: "Learn more about dbt by trying some exercises."
 sidebar_label: "More exercises"
 ---
 
-If you want to learn more about dbt, the following are additional exercises for you to check out. For sample data, refer to the [get started guides](/docs/get-started/getting-started/overview). 
+If you want to learn more about dbt, the following are additional exercises for you to check out. For sample data, refer to the [get started guides](/docs/quickstarts/overview). 
 
 
 ## Models in your project {#models}
