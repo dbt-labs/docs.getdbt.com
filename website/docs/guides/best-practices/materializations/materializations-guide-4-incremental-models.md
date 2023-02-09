@@ -1,6 +1,7 @@
 ---
 title: "Incremental models in-depth"
 id: materializations-guide-4-incremental-models
+slug: guides/best-practices/materializations/4-incremental-models
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
@@ -28,7 +29,7 @@ We did our last `dbt build` job on `2022-01-31`, so any new orders since that ru
 - 🏔️ build the table from the **beginning of time again — a _table materialization_**
   - Simple and solid, if we can afford to do it (in terms of time, compute, and money — which are all directly correlated in a cloud warehouse). It’s the easiest and most accurate option.
 - 🤏 find a way to run **just new and updated rows since our previous run — _an_ _incremental materialization_**
-  - If we _can’t_ realistically afford to run the whole table — due to complex transformations or big source data, it takes too long — then we want to build incrementally. We want to just transform and add the row highlighted in green below, _not_ the previous two that are already in the table, highlighted in yellow.
+  - If we _can’t_ realistically afford to run the whole table — due to complex transformations or big source data, it takes too long — then we want to build incrementally. We want to just transform and add the row with id 567 below, _not_ the previous two with ids 123 and 456 that are already in the table.
 
 | order_id | order_status | customer_id | order_item_id | ordered_at | updated_at |
 | -------- | ------------ | ----------- | ------------- | ---------- | ---------- |
@@ -41,7 +42,7 @@ We did our last `dbt build` job on `2022-01-31`, so any new orders since that ru
 Let’s think through the information we’d need to build such a model that only processes new and updated data. We would need:
 
 - 🕜  **a timestamp indicating when a record was last updated**, let’s call it our `updated_at` timestamp, as that’s a typical convention and what we have in our example above.
-- ⌛ the **most recent timestamp from this table _in our warehouse_** _—_ that is, the one created by the previous run — to act as a cutoff point. We’ll call the model we’re working in`this`, for ‘this model we’re working in’.
+- ⌛ the **most recent timestamp from this table _in our warehouse_** _—_ that is, the one created by the previous run — to act as a cutoff point. We’ll call the model we’re working in `this`, for ‘this model we’re working in’.
 
 That would lets us construct logic like this:
 
@@ -57,14 +58,14 @@ Let’s break down that `where` clause a bit, because this where the action is w
 1. Get our **cutoff.**
    1. Select the `max(updated_at)` timestamp — the **most recent record**
    2. from `{{ this }}` — the table for this model as it exists in the warehouse, as **built in our last run**,
-   3. so `max(udated_at) from {{ this }}` the **_most recent record processed in our last run,_**
+   3. so `max(updated_at) from {{ this }}` the **_most recent record processed in our last run,_**
    4. that’s exactly what we want as a **cutoff**!
 2. **Filter** the rows we’re selecting to add in this run.
    1. Use the `updated_at` timestamp from our input, the equivalent column to the one in the warehouse, but in the up-to-the-minute **source data we’re selecting from** and
    2. check if it’s **greater than our cutoff,**
    3. if so it will satisfy our where clause, so we’re **selecting all the rows more recent than our cutoff.**
 
-This logic would let us isolate and apply our transformations to just the records that have come in since our last run, and I’ve got some great news: that magic `{{ this }}` keyword [does in fact exist in dbt](https://docs.getdbt.com/reference/dbt-jinja-functions/this), so we can write exactly this logic in our models.
+This logic would let us isolate and apply our transformations to just the records that have come in since our last run, and I’ve got some great news: that magic `{{ this }}` keyword [does in fact exist in dbt](reference/dbt-jinja-functions/this), so we can write exactly this logic in our models.
 
 ### Configuring incremental models
 
@@ -78,7 +79,7 @@ So we’ve found a way to isolate the new rows we need to process. How then do w
 ![Diagram visualizing how incremental models work](/img/guides/best-practices/materializations/incremental-diagram.png)
 
 :::info
-😌 Incremental models can be confusing at first, **take your time reviewing** this visual and the previous steps until you have a **clear mental model.** Be patient with yourself. This materialization will become second nature soon, but it’s tough at first. If you’re feeling confused the [dbt Community is here for you on the Forum and Slack](https://docs.getdbt.com/community/join).
+😌 Incremental models can be confusing at first, **take your time reviewing** this visual and the previous steps until you have a **clear mental model.** Be patient with yourself. This materialization will become second nature soon, but it’s tough at first. If you’re feeling confused the [dbt Community is here for you on the Forum and Slack](community/join).
 :::
 
 Thankfully dbt has some additional configuration and special syntax just for incremental models.
@@ -110,11 +111,11 @@ So we’re going to use an **if statement** to apply our cutoff filter **only wh
 - ➕  we’ve set the materialization **config** to incremental,
 - 🛠️  there is an **existing table** for this model in the warehouse to build on,
 - 🙅‍♀️  and the `--full-refresh` **flag was _not_ passed.**
-  - [full refresh](https://docs.getdbt.com/reference/resource-configs/full_refresh) is a configuration and flag that is specifically designed to let us override the incremental materialization and build a table from scratch again.
+  - [full refresh](reference/resource-configs/full_refresh) is a configuration and flag that is specifically designed to let us override the incremental materialization and build a table from scratch again.
 
 Thankfully, we don’t have to dig into the guts of dbt to sort out each of these conditions individually.
 
-- ⚙️  dbt provides us with a **macro `[is_incremental](https://docs.getdbt.com/docs/build/incremental-models#understanding-the-is_incremental-macro)`** that checks all of these conditions for this exact use case.
+- ⚙️  dbt provides us with a **macro [`is_incremental`](docs/build/incremental-models#understanding-the-is_incremental-macro)** that checks all of these conditions for this exact use case.
 - 🔀  By **wrapping our cutoff logic** in this macro, it will only get applied when the macro returns true for all of the above conditions.
 
 Let’s take a look at all these pieces together:
