@@ -45,7 +45,7 @@ Depending on your desired outcome, the number of deployment environments in your
 
 | Setup option | Works well if you | Relative complexity level  |
 | --- | --- | --- |
-| One deployment environment | - only scheduled runs for one set of data object<br>- development branches are merged directly to main | Low |
+| One deployment environment | - only scheduled runs for one set of data object - development branches are merged directly to main | Low |
 | Many Deployment Environments | - feature branches move through several promotion stages | High |
 
 **One deployment environment** We usually recommended folks start with the basics; having one deployment environment is usually the simplest and most maintainable approach to start. This approach works well if:
