@@ -64,7 +64,7 @@ https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_
 
 ### Sigma
 
-Sigma does not require you to embed an iFrame. Add a new embed ui element in your Sigma Workbook in the following format:
+Sigma does not require you to embed an iFrame. Add a new embedded UI element in your Sigma Workbook in the following format:
 
 ```
 https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
