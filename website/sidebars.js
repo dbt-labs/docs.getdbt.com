@@ -36,6 +36,16 @@ const sidebarSettings = {
             },
             {
               type: "category",
+              label: "PrivateLink",
+              items: [
+                "docs/get-started/getting-started/privatelink/about-private-link",
+                "docs/get-started/getting-started/privatelink/snowflake-privatelink",
+                "docs/get-started/getting-started/privatelink/snowflake-privatelink",
+                "docs/get-started/getting-started/privatelink/snowflake-privatelink",
+              ],
+            },
+            {
+              type: "category",
               label: "Learning more",
               items: [
                 "docs/get-started/learning-more/using-jinja",
