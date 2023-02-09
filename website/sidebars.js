@@ -715,12 +715,12 @@ const sidebarSettings = {
           label: "dbt Cloud Environment best practices",
           link: {
             type: "doc",
-            id: "guides/best-practices/environment-setup/1-env-guide-overview.md",
+            id: "guides/best-practices/environment-setup/1-env-guide-overview",
           },
           items: [
-            "guides/best-practices/environment-setup/3-many-deployment-environments.md",
-            "guides/best-practices/environment-setup/2-one-deployment-environment.md",
-            "guides/best-practices/environment-setup/4-env-guide-conclusion.md",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
+            "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/4-env-guide-conclusion",
           ],
         },
         "guides/best-practices/debugging-errors",
