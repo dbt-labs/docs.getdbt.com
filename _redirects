@@ -1,3 +1,5 @@
+/docs/get-started/getting-started/overview /docs/quickstarts/overview 301
+/docs/get-started/getting-started-dbt-core /docs/quickstarts/dbt-core/quickstart 301
 
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-redshift-and-postgres  /docs/get-started/connect-your-database#connecting-to-postgres-redshift-and-alloydb 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake /docs/get-started/connect-your-database#connecting-to-snowflake 301
