@@ -38,10 +38,10 @@ const sidebarSettings = {
               type: "category",
               label: "PrivateLink",
               items: [
-                "docs/get-started/getting-started/privatelink/about-private-link",
-                "docs/get-started/getting-started/privatelink/snowflake-privatelink",
-                "docs/get-started/getting-started/privatelink/snowflake-privatelink",
-                "docs/get-started/getting-started/privatelink/snowflake-privatelink",
+                "docs/get-started/privatelink/about-private-link",
+                "docs/get-started/privatelink/snowflake-privatelink",
+                "docs/get-started/privatelink/snowflake-privatelink",
+                "docs/get-started/privatelink/snowflake-privatelink",
               ],
             },
             {
