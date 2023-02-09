@@ -1,6 +1,7 @@
 ---
 title: "Materializations best practices"
 id: materializations-guide-1-guide-overview
+slug: guides/best-practices/materializations/1-overview
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
@@ -25,14 +26,14 @@ By the end of this guide you should have a solid understanding of:
 
 ### Prerequisites
 
-- 📒 You’ll want to have worked through the [Getting Started Guide](https://docs.getdbt.com/docs/get-started/getting-started/overview) and have a project setup to work through these concepts.
+- 📒 You’ll want to have worked through the [Getting Started Guide](docs/get-started/getting-started/overview) and have a project setup to work through these concepts.
 - 🏃🏻‍♀️ Concepts like dbt runs, `ref()` statements, and models should be familiar to you.
-- 🔧 [**Optional**] Reading through the [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) Guide will be beneficial for the last section of this guide, when we review best practices for materializations using the dbt project approach of staging models and marts.
+- 🔧 [**Optional**] Reading through the [How we structure our dbt projects](guides/best-practices/how-we-structure/1-guide-overview) Guide will be beneficial for the last section of this guide, when we review best practices for materializations using the dbt project approach of staging models and marts.
 
 ### Guiding principle
 
 We’ll explore this in-depth throughout, but the basic guideline is **start as simple as possible**. We’ll follow a tiered approached, only moving up a tier when it’s necessary.
 
-- 🔍 **Start with a view.** When the view gets too long to _query_ for endusers,
+- 🔍 **Start with a view.** When the view gets too long to _query_ for end users,
 - ⚒️ **Make it a table.** When the table gets too long to _build_ in your dbt Jobs,
 - 📚 **Build it incrementally.** That is, layer the data on in chunks as it comes in.

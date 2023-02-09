@@ -1,6 +1,7 @@
 ---
 title: "Available materializations"
 id: materializations-guide-2-available-materializations
+slug: guides/best-practices/materializations/2-available-materializations
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
@@ -37,7 +38,7 @@ Views and tables and incremental models, oh my! In this section we’ll start ge
 
 ### Incremental models
 
-- 🧱 **Incremental** models build a **table** in **pieces over time.**
+- 🧱 **Incremental** models build a **table** in **pieces over time**, only adding and updating new or changed records.
 - 🏎️  **Builds more quickly** than a regular table of the same logic.
 - 🐢 **Initial runs are slow.** Typically we use incremental models on very large datasets, so building the initial table on the full dataset is time consuming and equivalent to the table materialization.
 - 👎 **Add complexity.** Incremental models require deeper consideration of layering and timing.
@@ -51,6 +52,7 @@ Views and tables and incremental models, oh my! In this section we’ll start ge
 | 🛠️💸 **build costs** | 💚  lowest — no data processed       | ❤️  highest — all data processed       | 💛  medium — some data processed       |
 | 📊💸 **query costs** | ❤️  higher — reprocess every query   | 💚  lower — data in warehouse          | 💚  lower — data in warehouse          |
 | 🍅🌱 **freshness**   | 💚  best — up-to-the-minute of query | 💛  moderate — up to most recent build | 💛  moderate — up to most recent build |
+| 🧠🤔 **complexity**  | 💚 simple - maps to warehouse object | 💚 simple - map to warehouse concept   | 💛 moderate - adds logical complexity  |
 
 :::info
 🔑 **Time is money.** Notice in the above chart that the time and costs rows contain the same results. This is to highlight that when we’re talking about time in warehouses, we’re talking about compute time, which is the primary driver of costs.
