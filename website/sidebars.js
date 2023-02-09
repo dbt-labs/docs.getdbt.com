@@ -718,8 +718,8 @@ const sidebarSettings = {
             id: "guides/best-practices/environment-setup/1-env-guide-overview",
           },
           items: [
-            "guides/best-practices/environment-setup/3-many-deployment-environments",
             "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
             "guides/best-practices/environment-setup/4-env-guide-conclusion",
           ],
         },

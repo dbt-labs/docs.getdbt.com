@@ -45,20 +45,17 @@ Depending on your desired outcome, the number of deployment environments in your
 
 | Setup option | Works well if you | Relative complexity level  |
 | --- | --- | --- |
-| One deployment environment | - only scheduled runs for one set of data object
+| One deployment environment | - only scheduled runs for one set of data object<br>- development branches are merged directly to main | Low |
+| Many Deployment Environments | - feature branches move through several promotion stages | High |
 
-- development branches are merged directly to main | Low |
-| Many Deployment Environments | - feature branches move through several promotion stages
-- | High |
-
-**One deployment environment -** We usually recommended folks start with the basics; having one deployment environment is usually the simplest and most maintainable approach to start. This approach works well if:
+**One deployment environment** We usually recommended folks start with the basics; having one deployment environment is usually the simplest and most maintainable approach to start. This approach works well if:
 
 - You only need to have **scheduled jobs running in a single environment** within your data warehouse.
 - You use a **single primary branch** and follow a direct promotion (**Dev —> Prod**) strategy
 
 With this option, you can manage your production deployments and your **[Slim CI jobs](docs/deploy/cloud-ci-job)** to ensure code integrity in one single deployment environment!
 
-**Many deployment environments -** This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that is often worth the tradeoff. This approach works well if:
+**Many deployment environments** This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that is often worth the tradeoff. This approach works well if:
 
 - Your organization maintains **several long-lived git branches** to control how and when changes are tested and promoted to production.
   - Many orgs follow a **Dev —> QA —>  Prod release cycle** — if that sounds like your org, this approach is probably right for you!

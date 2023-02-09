@@ -31,10 +31,10 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 8. When **second Slim CI Job** is successful and team is ready to deploy changes, the **PR is merged into `main`**.
 9. Monitor scheduled jobs in Prod environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders!
 
-<aside>
+:::info
 💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](blog/the-case-against-git-cherry-picking)
 
-</aside>
+:::
 
 ### dbt Cloud Setup
 
@@ -54,7 +54,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 4. Set up your **Production [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
 
-    Here, we’ll *********also********* use the same custom branch settings as the other environments, but set the custom branch as `main`. Even thought the `main` branch is the default, setting this value enables us to properly set up the CI Job in the next step.
+    Here, we’ll *also* use the same custom branch settings as the other environments, but set the custom branch as `main`. Even thought the `main` branch is the default, setting this value enables us to properly set up the CI Job in the next step.
 
 5. **Define production jobs**
     1. **Production job(s)** —You will need to set up at least one scheduled job that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
@@ -62,10 +62,10 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
         This job will also need to defer to one of the QA jobs created in step 5a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
-### **When this works well**
+### When this works well
 
-This approach works well when it’s critical to **apply user acceptance and integration testing to your project in a pre-production environment**. This approach allows you to have scheduled jobs running in many ************environments on your data warehouse.
+This approach works well when it’s critical to **apply user acceptance and integration testing to your project in a pre-production environment**. This approach allows you to have scheduled jobs running in **many environments** on your data warehouse.
 
-### **When this doesn’t work so well**
+### When this doesn’t work so well
 
 This approach may slow down the time it takes to get new feature into production, since it requires additional steps in the deployment process and additional branches to maintain. Keep in mind that adding complexity to your deployment process might cause some slowdown in your release cycle!
