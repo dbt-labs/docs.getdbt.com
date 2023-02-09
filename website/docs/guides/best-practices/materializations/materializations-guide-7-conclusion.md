@@ -7,7 +7,7 @@ displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
 ---
 
-You're now following best practices in our project, and have optimized the materializations of our DAG. You’re equipped with the 3 main materializations that cover almost any analytics engineering situation!
+You're now following best practices in your project, and have optimized the materializations of your DAG. You’re equipped with the 3 main materializations that cover almost any analytics engineering situation!
 
 There are more configs and materializations available, as well as specific materializations for certain platforms and adapters — and like everything with dbt, materializations are extensible, meaning you can create your own [custom materializations](guides/advanced/creating-new-materializations) for your needs. So this is just the beginning of what you can do with these powerful configurations.
 
