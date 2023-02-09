@@ -13,7 +13,7 @@ A dbt Cloud job is a set of commands and configurations that help you to run it 
 - Option to defer to a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#types-of-environments)
 - Job triggers, like an optional schedule, continuous integration, and API
 
-## Commands
+## Type of Commands
 
 Commands are specific tasks you set in your dbt Cloud jobs. You can configure [certain dbt commands](/reference/dbt-commands), which are executed by the job.  dbt Cloud jobs also come with built-in commands. 
 
@@ -23,7 +23,7 @@ Commands are specific tasks you set in your dbt Cloud jobs. You can configure [c
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/job-commands.gif" title="Configuring checkbox and commands list"/>
 
-### Command behavior
+## How Commands interact
 
 When you configure your job under **Commands**, you can add as many dbt commands as necessary, with at least one command listed. 
 
@@ -39,7 +39,7 @@ Diagram with example:
 
 (entire job is considered “failed” )
 
-### Command troubleshooting
+## Command troubleshooting
 
 Failures mean different things for different commands
 
