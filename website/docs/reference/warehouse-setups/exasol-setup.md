@@ -76,7 +76,7 @@ dbt-exasol:
 #### Optional parameters
 
 | Parameters | Info |
-| --------- | -----|
+| --------- | ----- |
 | `connection_timeout` | defaults to pyexasol default |
 | `socket_timeout` | defaults to pyexasol default |
 | `query_timeout` | defaults to pyexasol default |
@@ -85,3 +85,4 @@ dbt-exasol:
 | `protocol_version` | default: v3 |
 | `row_separator` | default: CRLF for windows - LF otherwise |
 | `timestamp_format` | default: YYYY-MM-DDTHH:MI:SS.FF6 |
+
