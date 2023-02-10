@@ -18,10 +18,11 @@ $ dbt run-operation {macro} --args '{args}'
                         eg. '{my_variable: my_value}'
 ```
 ### Command line examples
-```
+
 Example 1:
-$ dbt run-operation grant_select --args '{role: reporter}'
+
+`$ dbt run-operation grant_select --args '{role: reporter}'`
 
 Example 2:
-$ dbt run-operation clean_stale_models --args '{days: 7, dry_run: True}'
-```
+
+`$ dbt run-operation clean_stale_models --args '{days: 7, dry_run: True}'`
