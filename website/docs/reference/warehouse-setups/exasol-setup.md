@@ -85,7 +85,3 @@ dbt-exasol:
 | `protocol_version` | default: v3 |
 | `row_separator` | default: CRLF for windows - LF otherwise |
 | `timestamp_format` | default: YYYY-MM-DDTHH:MI:SS.FF6 |
-
-
-
-
