@@ -208,8 +208,8 @@ packages:
   # use this format when accessing your repository via a classical personal access token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
  
-   # use this format when accessing your repository via a fine-grained personal access token
-  - git: "https://<user>:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+   # use this format when accessing your repository via a fine-grained personal access token (username sometimes required)
+  - git: "https://<username>:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
