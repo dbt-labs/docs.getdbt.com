@@ -4,7 +4,7 @@ id: "dbt-cloud-changelog-2019-2020"
 sidebar_label: Changelog (2019 and 2020)
 description: "2019 and 2020 Changelog for the dbt Cloud application"
 
-tags: [v1.1.16, v1.1.15, v1.1.14, v1.1.13, v1.1.12, v1.1.11, v1.1.10, v1.1.09, v1.1.08, v1.1.07, v1.1.06, v1.1.05, v1.1.04, v1.1.03, v1.1.02, v1.1.01, v0.5.0]
+tags: [v1.1.16, v1.1.15, v1.1.14, v1.1.13, v1.1.12, v1.1.11, v1.1.10, v1.1.09, v1.1.08, v1.1.07, v1.1.06, v1.1.05, v1.1.04, v1.1.03, v1.1.02, v1.1.01, v0.5.0, Jan-1-2020]
 ---
 
 Welcome to the 2019 and 2020 changelog for the dbt Cloud application! You can use this changelog to see the highlights of what was new, fixed, and enhanced during this time period.
@@ -218,7 +218,7 @@ This release includes security enhancements and improvements across the entire
 dbt Cloud application.
 
 #### Enhancements
-- Support for viewing development docs inside of the IDE ([docs](viewing-docs-in-the-ide))
+- Support for viewing development docs inside of the IDE ([docs](/docs/get-started/develop-in-the-cloud))
 - Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
 - Change coloring and iconography to improve accessibility and UX across the application
 - [Enterprise] Support the specification of multiple authorized domains in SSO configuration

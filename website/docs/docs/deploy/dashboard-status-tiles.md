@@ -61,3 +61,13 @@ https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_
 ```
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png"/>
+
+### Sigma
+
+Sigma does not require you to embed an iFrame. Add a new embedded UI element in your Sigma Workbook in the following format:
+
+```
+https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
+```
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/sigma-embed.gif"/>

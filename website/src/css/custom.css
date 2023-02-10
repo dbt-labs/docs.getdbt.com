@@ -325,6 +325,11 @@ a.code-link:hover {
   color: var(--color-white);
   border: none;
 }
+
+.navbarHiddenOnLoad {
+  transform: translate3d(0, calc(-100% - 2px), 0)
+}
+
 @media(max-width: 996px) {
   .navbar-sidebar .menu__link.nav-create-account {
     width: fit-content;
@@ -659,6 +664,12 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 
 html[data-theme="dark"] .alert * {
   --ifm-alert-foreground-color: var(--ifm-color-gray-900);
+}
+
+html[data-theme="dark"] .alert table {
+  background-color: black;
+  color: white;
+  border-radius: var(--ifm-code-border-radius);
 }
 
 /* for dark mode */

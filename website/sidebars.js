@@ -209,6 +209,8 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
+            "docs/deploy/artifacts",
+            "docs/deploy/webhooks",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
             "docs/deploy/source-freshness",
@@ -222,8 +224,15 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [
-        "docs/collaborate/environments",
+      items: [{
+          type: "category",
+          label: "Environments",
+          items: [
+            "docs/collaborate/environments/environments-in-dbt",
+            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/collaborate/environments/dbt-core-environments",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",
@@ -350,40 +359,6 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt Cloud": [
-    {
-      type: "category",
-      label: "Overview",
-      link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: [],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud IDE",
-      items: ["docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide"],
-    },
-    {
-      type: "category",
-      label: "Configuring dbt Cloud",
-      items: [
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      ],
-    },
-    {
-      type: "category",
-      label: "Using dbt Cloud",
-      link: {
-        type: "generated-index",
-        title: "Using dbt Cloud",
-        description: "Learn how you can use dbt Cloud.",
-        slug: "/docs/dbt-cloud",
-      },
-      items: [
-        "docs/dbt-cloud/using-dbt-cloud/artifacts",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
-      ],
-    },
-  ],
   reference: [
     {
       type: "category",
@@ -434,7 +409,8 @@ const sidebarSettings = {
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
         "reference/resource-configs/vertica-configs",
-        "reference/resource-configs/doris-configs"
+        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/fal-configs",
       ],
     },
     {
@@ -669,7 +645,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/alloydb-setup",
         "reference/warehouse-setups/doris-setup",
         "reference/warehouse-setups/infer-setup",
-        "reference/warehouse-setups/databend-setup"
+        "reference/warehouse-setups/databend-setup",
+        "reference/warehouse-setups/fal-setup",
       ],
     },
     {
@@ -715,6 +692,22 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/3-intermediate",
             "guides/best-practices/how-we-structure/4-marts",
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
+          ],
+        },
+        {
+          type: "category",
+          label: "Materializations best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
+          },
+          items: [
+            "guides/best-practices/materializations/materializations-guide-2-available-materializations",
+            "guides/best-practices/materializations/materializations-guide-3-configuring-materializations",
+            "guides/best-practices/materializations/materializations-guide-4-incremental-models",
+            "guides/best-practices/materializations/materializations-guide-5-best-practices",
+            "guides/best-practices/materializations/materializations-guide-6-examining-builds",
+            "guides/best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
         "guides/best-practices/debugging-errors",
@@ -819,8 +812,7 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "dbt Ecosystem guides",
-        description:
-          "Learn about the dbt ecosystem and how to build with dbt.",
+        description: "Learn about the dbt ecosystem and how to build with dbt.",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -841,15 +833,25 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
         },
+        {
+          type: "category",
+          label: "Databricks and dbt",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+          },
+          items: [
+            "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+          ],
+        },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
-  {
+    {
       type: "category",
       label: "Advanced",
-      items: [
-        "guides/advanced/creating-new-materializations",
-      ],
+      items: ["guides/advanced/creating-new-materializations"],
     },
     {
       type: "category",
@@ -941,7 +943,8 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "SQL Reference",
-        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
+        description:
+          "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
         slug: "/sql-reference",
       },
       items: [
@@ -951,6 +954,7 @@ const sidebarSettings = {
           items: [
             "sql-reference/statements/select",
             "sql-reference/statements/from",
+            "sql-reference/statements/case",
             "sql-reference/statements/group-by",
             "sql-reference/statements/distinct",
           ],
@@ -1025,11 +1029,16 @@ const sidebarSettings = {
           label: "Joins",
           items: [
             "sql-reference/joins/inner-join",
+            "sql-reference/joins/outer-join",
+            "sql-reference/joins/self-join",
+            "sql-reference/joins/cross-join",
+            "sql-reference/joins/left-join",
+            "sql-reference/joins/right-join",
           ],
         },
         {
           type: "category",
-          label: "Data type",
+          label: "Data Types",
           items: [
             "sql-reference/data-type/data-types",
             "sql-reference/data-type/strings",
@@ -1038,10 +1047,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Other",
-          items: [
-            "sql-reference/other/cast",
-            "sql-reference/other/comments",
-          ],
+          items: ["sql-reference/other/cast", "sql-reference/other/comments"],
         },
       ],
     },
