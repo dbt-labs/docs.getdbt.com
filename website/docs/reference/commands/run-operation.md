@@ -17,7 +17,7 @@ $ dbt run-operation {macro} --args '{args}'
                         selected macro. This argument should be a YAML string,
                         eg. '{my_variable: my_value}'
 ```
-### Example Command Lines
+### Command line examples
 ```
 Example 1:
 $ dbt run-operation grant_select --args '{role: reporter}'
