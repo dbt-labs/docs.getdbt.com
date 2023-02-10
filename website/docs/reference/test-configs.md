@@ -6,14 +6,6 @@ title: Test configurations
 
 * [Tests](/docs/build/tests)
 
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to configure tests from `dbt_project.yml`, and to configure `enabled` for generic tests. Introduced `fail_calc`, `where`, `error_if`, `warn_if`, `store_failures`, and `where` configs.
-* `v0.21.0`: Introduced the `config()` dictionary, making it easier and clearer to configure specific instances of generic tests
-
-
-</Changelog>
-
 Tests can be configured in a few different ways:
 1. Properties within `.yml` definition (generic tests only, see [test properties](resource-properties/tests) for full syntax)
 2. A `config()` block within the test's SQL definition

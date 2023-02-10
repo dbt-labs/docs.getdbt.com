@@ -1,15 +1,88 @@
-/docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
+
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-redshift-and-postgres  /docs/get-started/connect-your-database#connecting-to-postgres-redshift-and-alloydb 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake /docs/get-started/connect-your-database#connecting-to-snowflake 301
+
+
+/faqs/connecting-to-two-dbs-not-allowed  /faqs/warehouse/connecting-to-two-dbs-not-allowed 301
+/docs/dbt-cloud/cloud-ide/ide-beta  /docs/get-started/develop-in-the-cloud 301
+
+## dbt cloud feature page changes
+
+/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/get-started/dbt-cloud-features#model-timing-dashboard 301
+/docs/dbt-cloud  /docs/get-started/getting-started/set-up-dbt-cloud 
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version  /docs/dbt-versions/upgrade-core-in-cloud 301
+/docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide  /docs/get-started/develop-in-the-cloud 301
+/docs/dbt-cloud/cloud-overview /docs/get-started/getting-started/set-up-dbt-cloud 301
+/docs/dbt-cloud/using-dbt-cloud/artifacts  /docs/deploy/artifacts 301
+/dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api 301
+
+/docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
+/docs/deploy/regions  /docs/deploy/regions-ip-addresses 301
+
+## adapter redirects using diff formats
+
+/advanced/adapter-development/1-what-are-adapters  /guides/dbt-ecosystem/adapter-development/1-what-are-adapters 301!
+/advanced/adapter-development/2-prerequisites-for-a-new-adapter  /guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter 301!
+/advanced/adapter-development/3-building-a-new-adapter  /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301!
+/advanced/adapter-development/4-testing-a-new-adapter /guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter 301!
+/advanced/adapter-development/5-documenting-a-new-adapter  /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301!
+/advanced/adapter-development/6-promoting-a-new-adapter /guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter 301!
+/advanced/adapter-development/7-verifying-a-new-adapter /guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter 301!
+/guides/advanced/adapter-development/1-what-are-adapters  /guides/dbt-ecosystem/adapter-development/1-what-are-adapters 301!
+/guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter  /guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter 301!
+/guides/advanced/adapter-development/3-building-a-new-adapter  /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301!
+/guides/advanced/adapter-development/4-testing-a-new-adapter /guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter 301!
+/guides/advanced/adapter-development/5-documenting-a-new-adapter  /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301!
+/guides/advanced/adapter-development/6-promoting-a-new-adapter /guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter 301!
+/guides/advanced/adapter-development/7-verifying-a-new-adapter /guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter 301!
+
+
+/guides/legacy/debugging-errors /guides/best-practices/debugging-errors 301!
+/guides/legacy/writing-custom-generic-tests /guides/best-practices/writing-custom-generic-tests 301!
+/guides/legacy/creating-new-materializations /guides/advanced/creating-new-materializations 301!
+
+# add new redirects to the top because they will override later ones
+# getting started guide
+/guides/getting-started /docs/get-started/getting-started/overview 301
+/docs/get-started/getting-started/building-your-first-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
+/docs/get-started/getting-started/create-a-project  /docs/get-started/getting-started/set-up-dbt-cloud 301
+/guides/getting-started/building-your-first-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
+
+/guides/getting-started/building-your-first-project/build-your-first-models /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
+/guides/getting-started/building-your-first-project/schedule-a-job /docs/get-started/getting-started/building-your-first-project/schedule-a-job 301
+/guides/getting-started/building-your-first-project/test-and-document-your-project /docs/get-started/getting-started/building-your-first-project/test-and-document-your-project 301
+/guides/getting-started/create-a-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models301
+/guides/getting-started/getting-set-up /docs/get-started/getting-started/set-up-dbt-cloud 301
+/guides/getting-started/getting-set-up/setting-up-bigquery /docs/get-started/getting-started/getting-set-up/setting-up-bigquery 301
+/guides/getting-started/getting-set-up/setting-up-databricks /docs/get-started/getting-started/getting-set-up/setting-up-databricks 301
+/guides/getting-started/getting-set-up/setting-up-redshift /docs/get-started/getting-started/getting-set-up/setting-up-redshift 301
+/guides/getting-started/getting-set-up/setting-up-snowflake /docs/get-started/getting-started/getting-set-up/setting-up-snowflake 301
+/guides/getting-started/getting-started /docs/get-started/getting-started/set-up-dbt-cloud 301
+/guides/getting-started/learning-more /docs/get-started/getting-started-dbt-core 301
+/guides/getting-started/learning-more/getting-started-dbt-core /docs/get-started/getting-started-dbt-core 301
+/guides/getting-started/learning-more/refactoring-legacy-sql /docs/get-started/learning-more/refactoring-legacy-sql 301
+/guides/getting-started/learning-more/using-jinja /docs/get-started/learning-more/using-jinja 301
+/docs/dbt-cloud/cloud-quickstart /docs/get-started/getting-started/set-up-dbt-cloud 301
+/docs/cloud-quickstart /docs/dbt-cloud/cloud-quickstart 302
+/docs/dbt-cloud/cloud-configuring-dbt-cloud /docs/get-started/getting-started/set-up-dbt-cloud 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database /docs/get-started/connect-your-database 301
 /docs/running-a-dbt-project/profile /docs/get-started/connection-profiles 301
+
+# other redirects
+/docs/deploy/understanding-state  /docs/deploy/about-state 301!
+/guides/legacy/understanding-state  /docs/deploy/about-state 301!
+/guides/migration/versions/Older%20versions/understanding-state /docs/deploy/about-state 301!
+
+/docs/collaborate/git/resolve-merge-conflicts  /docs/collaborate/git/merge-conflicts 301
+/docs/collaborate/environments  /docs/collaborate/environments/environments-in-dbt 301
+/docs/running-a-dbt-project/running-dbt-in-production /docs/deploy/deployments 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications /docs/deploy/job-notifications 301
 /docs/dbt-cloud/using-dbt-cloud /docs/develop/develop-in-the-cloud 301
 /docs/dbt-cloud/january-2020-pricing-updates https://www.getdbt.com/pricing/  301
 /docs/dbt-cloud/dbt-cloud-enterprise https://www.getdbt.com/pricing/  301
-/docs/dbt-cloud/cloud-quickstart /docs/get-started/getting-started/set-up-dbt-cloud 301
-/docs/dbt-cloud/cloud-configuring-dbt-cloud /docs/develop/getting-started/getting-set-up 301
 /docs/building-a-dbt-project/archival /docs/build/snapshots 301
 /docs/about/license /community/resources/contributor-license-agreements 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-using-a-managed-repository /docs/collaborate/git/managed-repository 301
-/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database /docs/get-started/connect-your-database 301
 /docs/dbt-cloud/release-notes /docs/dbt-versions/dbt-cloud-release-notes 301
 /docs/dbt-cloud/dbt-cloud-enterprise/audit-log /docs/collaborate/manage-access/audit-log 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-setting-up-bigquery-oauth /docs/collaborate/manage-access/set-up-bigquery-oauth 301
@@ -25,7 +98,7 @@
 /docs/dbt-cloud/access-control/access-control-overview /docs/collaborate/manage-access/about-access 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation /docs/collaborate/build-and-view-your-docs 301
 /docs/building-a-dbt-project/documentation /docs/collaborate/documentation 301
-/docs/building-a-dbt-project/managing-environments /docs/collaborate/environments 301
+/docs/building-a-dbt-project/managing-environments /docs/collaborate/environments/environments-in-dbt 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url /docs/collaborate/git/import-a-project-by-git-url 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/authenticate-azure /docs/collaborate/git/authenticate-azure 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/setup-azure /docs/collaborate/git/setup-azure 301
@@ -153,7 +226,6 @@
 /docs/cloud-installing-the-github-application /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application 302
 /docs/cloud-managing-permissions /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions 302
 /docs/cloud-overview /docs/dbt-cloud/cloud-overview 302
-/docs/cloud-quickstart /docs/dbt-cloud/cloud-quickstart 302
 /docs/cloud-seats-and-users /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users 302
 /docs/cloud-setting-a-custom-target-name /docs/dbt-cloud/using-dbt-cloud/cloud-setting-a-custom-target-name 302
 /docs/cloud-snapshotting-source-freshness /docs/dbt-cloud/using-dbt-cloud/cloud-snapshotting-source-freshness 302
@@ -386,6 +458,7 @@
 /reference/resource-configs/post-hook /reference/resource-configs/pre-hook-post-hook 302
 /reference/resource-configs/pre-hook /reference/resource-configs/pre-hook-post-hook 302
 /reference/resource-properties/tags /reference/resource-configs/tags 302
+/reference/resource-properties/meta /reference/resource-configs/meta 302
 /reference/runs /dbt-cloud/api 302
 /reference/using-the-dbt-cloud-api /dbt-cloud/api 302
 https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
@@ -404,9 +477,9 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /tutorial/deploy-your-project /guides/getting-started/building-your-first-project/schedule-a-job 302
 /tutorial/using-jinja /guides/getting-started/learning-more/using-jinja 302
 /tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql 302
-/tutorial/2b-create-a-project-dbt-cli.md /guides/getting-started/learning-more/getting-started-dbt-core 302
+/tutorial/2b-create-a-project-dbt-cli /guides/getting-started/learning-more/getting-started-dbt-core 302
 /tutorial/create-a-project-dbt-cli /guides/getting-started/learning-more/getting-started-dbt-core 302
-/tutorial/2a-create-a-project-dbt-cloud.md /guides/getting-started 302
+/tutorial/2a-create-a-project-dbt-cloud /guides/getting-started 302
 /tutorial/create-a-project-dbt-cloud /guides/getting-started 302
 /tutorial/getting-started /guides/getting-started 302
 /docs/dbt-cloud/cloud-changelog /docs/dbt-cloud/release-notes 302
@@ -418,6 +491,11 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql 302
 /blog/change-data-capture-metrics /blog/change-data-capture 301
 /blog/model-timing-tab /blog/how-we-shaved-90-minutes-off-model 301
+/reference/warehouse-setups/resource-configs/materialize-configs/indexes /reference/resource-configs/materialize-configs#indexes 301
+/docs/build/building-models /docs/build/models 301
+/docs/build/bigquery-profile /reference/resource-configs/bigquery-configs 301
+/reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
+/date-trunc-sql /blog/date-trunc-sql 301
 
 # supported data platforms page
 
@@ -445,12 +523,33 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/getting-help /guides/legacy/getting-help 302
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
-docs/contributing/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 302
-docs/contributing/testing-a-new-adapter /docs/contributing/adapter-development/4-testing-a-new-adapter 302
-docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-development/5-documenting-a-new-adapter 302
+
+# adapter development docs
+
+/docs/contributing/what-are-adapters /guides/advanced/adapter-development/1-what-are-adapters 302
+/docs/contributing/adapter-development/1-what-are-adapters  /guides/advanced/adapter-development/1-what-are-adapters 302
+/docs/contributing/prerequisites-for-a-new-adapter /guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter 302
+
+/docs/contributing/adapter-development/2-prerequisites-for-a-new-adapter  /guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter 302
+/docs/contributing/building-a-new-adapter  /guides/advanced/adapter-development/3-building-a-new-adapter 302
+
+/docs/contributing/adapter-development/3-building-a-new-adapter  /guides/advanced/adapter-development/3-building-a-new-adapter 302
+/docs/building-a-new-adapter  /guides/advanced/adapter-development/3-building-a-new-adapter302
+
+/docs/contributing/testing-a-new-adapter  /guides/advanced/adapter-development/4-testing-a-new-adapter 302
+/docs/contributing/adapter-development/4-testing-a-new-adapter  /guides/advanced/adapter-development/4-testing-a-new-adapter 302
+
+/docs/contributing/documenting-a-new-adapter  /guides/advanced/adapter-development/5-documenting-a-new-adapter 302
+/docs/contributing/adapter-development/5-documenting-a-new-adapter  /guides/advanced/adapter-development/5-documenting-a-new-adapter 302
+
+/docs/contributing/promoting-a-new-adapter /guides/advanced/adapter-development/6-promoting-a-new-adapter 302
+/docs/contributing/adapter-development/6-promoting-a-new-adapter  /guides/advanced/adapter-development/6-promoting-a-new-adapter 302
+
+/docs/contributing/verifying-a-new-adapter  /guides/advanced/adapter-development/7-verifying-a-new-adapter 302
+/docs/contributing/adapter-development/7-verifying-a-new-adapter  /guides/advanced/adapter-development/7-verifying-a-new-adapter 302
+
 
 /docs/dbt-cloud/using-dbt-cloud/cloud-metrics-layer        /docs/use-dbt-semantic-layer/dbt-semantic-layer 301!
-/docs/building-a-new-adapter /docs/contributing/adapter-development/3-building-a-new-adapter 301!
 /reference/warehouse-profiles/impala-profile /reference/warehouse-setups/impala-setup 302
 /reference/warehouse-profiles/exasol-profile /reference/warehouse-setups/exasol-setup 302
 /reference/warehouse-profiles/layer-profile /reference/warehouse-setups/layer-setup 302
@@ -486,24 +585,6 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /reference/warehouse-profiles/hive-profile /reference/warehouse-setups/hive-setup 302
 /reference/using-sources /docs/build/sources 302
 
-# getting started guide
-/guides/getting-started /docs/get-started/getting-started/overview 301
-/guides/getting-started/building-your-first-project /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
-/guides/getting-started/building-your-first-project/build-your-first-models /docs/get-started/getting-started/building-your-first-project/build-your-first-models 301
-/guides/getting-started/building-your-first-project/schedule-a-job /docs/get-started/getting-started/building-your-first-project/schedule-a-job 301
-/guides/getting-started/building-your-first-project/test-and-document-your-project /docs/get-started/getting-started/building-your-first-project/test-and-document-your-project 301
-/guides/getting-started/create-a-project /docs/get-started/getting-started/create-a-project 301
-/guides/getting-started/getting-set-up /docs/get-started/getting-started/set-up-dbt-cloud 301
-/guides/getting-started/getting-set-up/setting-up-bigquery /docs/get-started/getting-started/getting-set-up/setting-up-bigquery 301
-/guides/getting-started/getting-set-up/setting-up-databricks /docs/get-started/getting-started/getting-set-up/setting-up-databricks 301
-/guides/getting-started/getting-set-up/setting-up-redshift /docs/get-started/getting-started/getting-set-up/setting-up-redshift 301
-/guides/getting-started/getting-set-up/setting-up-snowflake /docs/get-started/getting-started/getting-set-up/setting-up-snowflake 301
-/guides/getting-started/getting-started /docs/get-started/getting-started/set-up-dbt-cloud 301
-/guides/getting-started/learning-more /docs/get-started/getting-started-dbt-core 301
-/guides/getting-started/learning-more/getting-started-dbt-core /docs/get-started/getting-started-dbt-core 301
-/guides/getting-started/learning-more/refactoring-legacy-sql /docs/get-started/learning-more/refactoring-legacy-sql 301
-/guides/getting-started/learning-more/using-jinja /docs/get-started/learning-more/using-jinja 301
-
 # ide ia redirects
 /docs/dbt-cloud/cloud-ide/the-dbt-ide  /docs/getting-started/dbt-cloud-features 301!
 /docs/dbt-cloud/cloud-ide/handling-merge-conflicts  /docs/collaborate/git/resolve-merge-conflicts 301!
@@ -511,6 +592,8 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /docs/dbt-cloud/cloud-ide/ide-beta  /docs/getting-started/develop-in-the-cloud 301!
 /docs/running-a-dbt-project/using-the-dbt-ide  /docs/getting-started/develop-in-the-cloud 301!
 /dbt-cloud/cloud-ide/the-ide-git-button  /docs/collaborate/git/version-control-basics 301!
+/docs/building-a-dbt-project/setting-up /guides/legacy/building-packages 301!
+/docs/building-a-dbt-project/dbt-jinja-functions /reference/dbt-jinja-functions 301!
 
 # Community docs
 /docs/contributing/long-lived-discussions-guidelines /community/resources/forum-guidelines 301
@@ -521,7 +604,15 @@ docs/contributing/documenting-a-new-adapter /docs/contributing/adapter-developme
 /community/maintaining-a-channel /community/resources/maintaining-a-channel 301
 /docs/contributing/oss-expectations /community/resources/oss-expectations 301
 /docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
-
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
 /docs/getting-started/develop-in-the-cloud#creating-a-development-environment  /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
+/docs/cloud-developer-ide /docs/build/custom-target-names#dbt-cloud-ide 301
+/website/docs/docs/contributing/building-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
 
+# Blog docs
+/blog/tags/release-notes /docs/dbt-versions/dbt-cloud-release-notes 301
+
+# Faq docs
+/faqs/dbt-jinja-functions /reference/dbt-jinja-functions 301
+
+/website/docs/docs/contributing/documenting-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301

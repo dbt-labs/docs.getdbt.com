@@ -39,7 +39,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Create, delete, and modify Groups
 - Create, delete, and modify Group Memberships
 - Manage Notification Settings
-- Manage account-level [artifacts](dbt-cloud/using-dbt-cloud/artifacts)
+- Manage account-level [artifacts](/docs/deploy/artifacts)
 - View and modify Account Settings
 - Use the IDE
 - Run and cancel jobs
@@ -136,7 +136,8 @@ Team Admins can perform the following actions in projects they are assigned to:
 Job Admins can perform the following actions in projects they are assigned to:
 - View, edit, and create environments
 - View connections
-- Trigger runs
+- Create, delete, and modify Jobs
+- Run and cancel jobs
 - View historical runs
 
 ### Job Viewer
@@ -154,7 +155,7 @@ Job Viewers can perform the following actions in projects they are assigned to:
 
 Developers can perform the following actions in projects they are assigned to:
 - Create, delete, and modify Jobs
-- Trigger runs
+- Run and cancel jobs
 - Use the IDE
 - Configure personal developer credentials
 

@@ -24,7 +24,7 @@ function Author(props) {
   )
 
   return (
-    <BlogLayout blogPageTitle={name}>
+    <BlogLayout title={name}>
       <Head>
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />
@@ -53,6 +53,7 @@ function Author(props) {
                     href={link.url} 
                     title={`${name} - Social`} 
                     target="_blank"
+                    rel="noopener noreferrer"
                     key={i}
                   >
                     <i className={`fab ${link.icon}`}></i>

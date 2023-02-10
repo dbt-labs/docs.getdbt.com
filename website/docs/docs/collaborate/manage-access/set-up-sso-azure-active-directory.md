@@ -49,7 +49,7 @@ need to select the appropriate directory and then register a new application.
 | Single-Tenant _(recommended)_ | `https://cloud.getdbt.com/complete/azure_single_tenant` |
 | Multi-Tenant | `https://cloud.getdbt.com/complete/azure_multi_tenant` |
 
-*Note:* If your dbt account instance is a VPC deployment or is based [outside the US](/docs/deploy/regions), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
+*Note:* If your dbt account instance is a VPC deployment or is based [outside the US](/docs/deploy/regions-ip-addresses), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
 5. Save the App registration to continue setting up Azure AD SSO
 
@@ -115,7 +115,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 16. Under **Manage**, click **Certificates & secrets**
 17. Click **+New client secret**
 18. Name the client secret "dbt Cloud" (or similar) to identify the secret
-19. Select **Never** as the expiration value for this secret
+19. Select **730 days (24 months)** as the expiration value for this secret (recommended)
 20. Click **Add** to finish creating the client secret value (not the client secret ID)
 21. Record the generated client secret somewhere safe. Later in the setup process,
    we'll use this client secret in dbt Cloud to finish configuring the
@@ -165,7 +165,7 @@ by navigating to the URL:
 `https://cloud.getdbt.com/enterprise-login/<login-slug>`
 :::
 
-*Note:* If your dbt account instance is a VPC deployment or is [based outside the US](/docs/deploy/regions), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
+*Note:* If your dbt account instance is a VPC deployment or is [based outside the US](/docs/deploy/regions-ip-addresses), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
 
 ## Setting up RBAC
