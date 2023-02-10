@@ -1,9 +1,9 @@
 ---
 title: "Microsoft Azure Synapse DWH setup"
 meta:
-  maintained_by: Community
-  authors: 'dbt-msft community (https://github.com/dbt-msft)'
-  github_repo: 'dbt-msft/dbt-synapse'
+  maintained_by: Microsoft
+  authors: 'Microsoft (https://github.com/Microsoft)'
+  github_repo: 'Microsoft/dbt-synapse'
   pypi_package: 'dbt-synapse'
   min_core_version: 'v0.18.0'
   cloud_support: Not Supported
