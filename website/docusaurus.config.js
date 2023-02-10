@@ -63,15 +63,15 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "live_qa",
+      id: "biweekly-demos",
       content:
-        "Take the 5-minute dbt Community Survey!",
+        "Join us at our bi-weekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
-    announcementBarActive: false,
-    announcementBarLink: "",
+    announcementBarActive: true,
+    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "",
@@ -236,6 +236,7 @@ var siteSettings = {
     [path.resolve("plugins/buildGlobalData"), { versionedPages }],
     path.resolve("plugins/buildAuthorPages"),
     // path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [
     {
