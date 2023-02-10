@@ -224,7 +224,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [{
+      items: [
+        {
           type: "category",
           label: "Environments",
           items: [
@@ -669,6 +670,27 @@ const sidebarSettings = {
     },
   ],
   guides: [
+    {
+      type: "category",
+      label: "Working with Guides",
+      items: [
+        {
+          type: "category",
+          label: "dbt Cloud",
+          items: [
+            "guides/working-with-guides/cloud/1-setting-up-examples-on-cloud",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Core",
+          items: [
+            "guides/working-with-guides/core/1-setting-up-examples-on-core-recommended",
+            "guides/working-with-guides/core/2-setting-up-examples-on-core-manual",
+          ],
+        },
+      ],
+    },
     {
       type: "category",
       label: "Best practices",
