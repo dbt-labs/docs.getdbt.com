@@ -41,4 +41,4 @@ We also provide a [graphical explorer](https://metadata.cloud.getdbt.com/graphiq
 
 You can use the metadata API to query data from the previous 3 months. For example, if today was April 1, you could query data back to January 1st.
 
-*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at metadata@dbtlabs.com.*
+*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at cloudAPIs@dbtlabs.com.*
