@@ -2,14 +2,6 @@
 title: "YAML Selectors"
 ---
 
-<Changelog>
-
-- **v0.18.0**: Introduced YAML selectors
-- **v0.19.0**: Added optional `description` property. Selectors appear in `manifest.json` under a new `selectors` key.
-- **v0.21.0**: Added optional `default` + `greedy` properties
-
-</Changelog>
-
 Write resource selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.
 By recording selectors in a top-level `selectors.yml` file:
 
@@ -60,7 +52,9 @@ This simple syntax does not support any operators or `exclude`.
 
 ### Full YAML
 
-This is the most thorough syntax, which can include graph and set operators.
+This is the most thorough syntax, which can include graph and set operators. 
+
+Review [methods](/reference/node-selection/methods) for the available list.
 
 ```yml
 definition:
@@ -139,20 +133,10 @@ See [test selection examples](test-selection-examples) for more details about in
 
 Here are two ways to represent:
 
-<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
-
-</VersionBlock>
-<VersionBlock lastVersion="0.20">
-
-  ```bash
-  $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
-  ```
-
-</VersionBlock>
 
 <Tabs
   defaultValue="cli_style"
@@ -222,7 +206,7 @@ $ dbt run --selector nightly_diet_snowplow
 
 ## Default
 
-Starting in v0.21, selectors may define a boolean `default` property. If a selector has `default: true`, dbt will use this selector's criteria when tasks do not define their own selection criteria.
+Selectors may define a boolean `default` property. If a selector has `default: true`, dbt will use this selector's criteria when tasks do not define their own selection criteria.
 
 Let's say we define a default selector that only selects resources defined in our root project:
 ```yml
@@ -287,5 +271,10 @@ selectors:
             - method: tag
               value: buzz
 ```
+
+**Note:** While selector inheritance allows the logic from another selector to be _reused_, it doesn't allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, and so on. 
+
+The `selector` method returns the complete set of nodes returned by the named selector.
+
 
 </VersionBlock>

@@ -49,7 +49,7 @@ Client Secret for use in dbt Cloud.
 | ---------------------- | ------------ | ------ |
 | **Application type**   | internal     | required |
 | **Application name**   | dbt Cloud    | required |
-| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank">here</a> | optional |
+| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank" rel="noopener noreferrer">here</a> | optional |
 | **Authorized domains** | `getdbt.com` | If deploying into a VPC, use the domain for your deployment |
 | **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
@@ -121,6 +121,8 @@ Settings.
 If the verification information looks appropriate, then you have completed
 the configuration of GSuite SSO. Members of your team should now be able to log
 into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
+
+**Note:** Changes typically take effect in minutes, but can take up to 24 hours.
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up

@@ -86,12 +86,11 @@ select ...
 
 <Changelog>
 
-- **v1.1.1:** Provide support for storing the results of a test query in a materialized view, using the `store_failures` config.
+- **v1.1.1:** Provide support for storing the results of a test query in a materialized view using the `store_failures` config.
 
 </Changelog>
 
-If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view using the test query. This view is a continuously updating representation of failures.
-
+If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view for each configured test that can keep track of failures over time. By default, test views are created in a schema suffixed with `dbt_test__audit`. To specify a custom suffix, use the `schema` config.
 <File name='dbt_project.yml'>
 
 ```yaml

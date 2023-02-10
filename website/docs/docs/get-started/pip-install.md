@@ -3,13 +3,15 @@ title: "Install with pip"
 description: "You can use pip to install dbt Core and adapter plugins from the command line."
 ---
 
-You need to use `pip` to install dbt Core on Windows or Linux operating systems. You should use [Homebrew](/docs/get-started/homebrew-install) for installing dbt Core on a MacOS.
+You need to use `pip` to install dbt Core on Windows or Linux operating systems. You can use `pip` or [Homebrew](/docs/get-started/homebrew-install) for installing dbt Core on a MacOS. 
 
 You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/). We recommend using virtual environments when installing with `pip`.
+
 
 <FAQ src="Core/install-pip-os-prereqs" />
 <FAQ src="Core/install-python-compatibility" />
 <FAQ src="Core/install-pip-best-practices" />
+
 
 Once you know [which adapter](supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For example, if using Postgres:
 
@@ -32,7 +34,7 @@ Plugins:
 
 All adapters build on top of `dbt-core`. Some also depend on other adapters: for example, `dbt-redshift` builds on top of `dbt-postgres`. In that case, you would see those adapters included by your specific installation, too.
 
-### Upgrading
+### Upgrade adapters
 
 To upgrade a specific adapter plugin:
 
@@ -46,6 +48,21 @@ If you're building a tool that integrates with dbt Core, you may want to install
 
 ```shell
 pip install dbt-core
+```
+### Change dbt Core versions
+
+You can upgrade or downgrade versions of dbt Core by using the `--upgrade` option on the command line (CLI). For more information, see [Best practices for upgrading in Core versions](/docs/dbt-versions/core#best-practices-for-upgrading).
+
+To upgrade dbt to the latest version:
+
+```
+pip install --upgrade dbt-core
+```
+
+To downgrade to an older version, specify the version you want to use. This command can be useful when you're resolving package dependencies. As an example:
+
+```
+pip install --upgrade dbt-core==0.19.0
 ```
 
 ### `pip install dbt`
