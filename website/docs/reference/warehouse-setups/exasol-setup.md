@@ -74,14 +74,18 @@ dbt-exasol:
 ```
 
 #### Optional parameters
-<ul>
-  <li><strong>connection_timeout</strong>: defaults to pyexasol default</li>
-  <li><strong>socket_timeout</strong>: defaults to pyexasol default</li>
-  <li><strong>query_timeout</strong>: defaults to pyexasol default</li>
-  <li><strong>compression</strong>: default: False</li>
-  <li><strong>encryption</strong>: default: False</li>
-  <li><strong>protocol_version</strong>: default: v3</li>
-  <li><strong>row_separator</strong>: default: CRLF for windows - LF otherwise</li>
-  <li><strong>timestamp_format</strong>: default: YYYY-MM-DDTHH:MI:SS.FF6</li>
-</ul>
-</File>
+
+| Parameters | Info |
+| --------- | -----|
+| `connection_timeout` | defaults to pyexasol default |
+| `socket_timeout` | defaults to pyexasol default |
+| `query_timeout` | defaults to pyexasol default |
+| `compression` |  default: False |
+| `encryption` |  default: False |
+| `protocol_version` | default: v3 |
+| `row_separator` | default: CRLF for windows - LF otherwise |
+| `timestamp_format` | default: YYYY-MM-DDTHH:MI:SS.FF6 |
+
+
+
+
