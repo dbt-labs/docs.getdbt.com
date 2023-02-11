@@ -47,6 +47,7 @@
     "@dbt-labs/react-dbt-dag": "0.8.7"
   },
   "devDependencies": {
+    "@cypress/react": "^7.0.2",
     "@cypress/webpack-dev-server": "^3.2.3",
     "@swc/core": "^1.2.174",
     "@swc/jest": "^0.2.20",
