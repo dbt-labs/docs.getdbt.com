@@ -29,7 +29,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 6. When **all feature branches** for a given release (e.g. sprint) have been **successfully merged** to `qa` and are **running without error** in the pre-production environment, a team member opens a **PR to merge `qa` → `main`.**
 7. The **second Slim CI Job** automatically kicks off to test changes in PR. This job will *defer to a regularly-scheduled job in the Production environment.*
 8. When **second Slim CI Job** is successful and team is ready to deploy changes, the **PR is merged into `main`**.
-9. Monitor scheduled jobs in Prod environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders!
+9. Monitor scheduled jobs in Prod environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders.
 
 :::info
 💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](blog/the-case-against-git-cherry-picking)
@@ -44,11 +44,11 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 2. Set up your **QA [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
 
-    Here, we’ll apply the same custom branch settings as the development environment in Step 1. All scheduled jobs in the QA deployment environment will use the code from the `qa` branch during execution!
+    Here, we’ll apply the same custom branch settings as the development environment in Step 1. All scheduled jobs in the QA deployment environment will use the code from the `qa` branch during execution.
 
 3. **Define QA jobs**
     1. **QA job(s)** —You’ll want to create at least one scheduled job, running on a roughly daily cadence. This will allow us to make sure all the code executes without error before you release it to production, and will also power the first Slim CI job.
-    2. **Slim CI Job —** As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, we’ll also want to select the second option **Run only on Custom Branch** — this means that only PRs created against the `qa` branch will trigger this job, rather than any PR at all!
+    2. **Slim CI Job —** As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, we’ll also want to select the second option **Run only on Custom Branch** — this means that only PRs created against the `qa` branch will trigger this job, rather than any PR at all.
 
         This job will also need to defer to one of the QA jobs created in step 3a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
@@ -58,7 +58,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 5. **Define production jobs**
     1. **Production job(s)** —You will need to set up at least one scheduled job that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
-    2. **Production Slim CI Job —** As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, we’ll also want to select the second option **Run only on Custom Branch** — this means that only PRs created against the `main` branch will trigger this job, rather than any PR at all!
+    2. **Production Slim CI Job —** As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, we’ll also want to select the second option **Run only on Custom Branch** — this means that only PRs created against the `main` branch will trigger this job, rather than any PR at all.
 
         This job will also need to defer to one of the QA jobs created in step 5a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
@@ -68,4 +68,4 @@ This approach works well when it’s critical to **apply user acceptance and int
 
 ### When this doesn’t work so well
 
-This approach may slow down the time it takes to get new feature into production, since it requires additional steps in the deployment process and additional branches to maintain. Keep in mind that adding complexity to your deployment process might cause some slowdown in your release cycle!
+This approach may slow down the time it takes to get new feature into production, since it requires additional steps in the deployment process and additional branches to maintain. Keep in mind that adding complexity to your deployment process might cause some slowdown in your release cycle.

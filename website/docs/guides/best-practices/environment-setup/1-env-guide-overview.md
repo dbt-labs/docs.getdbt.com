@@ -13,7 +13,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 > *What do git branches have to do with my dbt Cloud environments?*
 >
 
-If these questions keep you up at night, you’ve come to the right place! When it comes to managing your dbt Cloud environments, there is not a one-size-fits-all solution for all teams. In this guide we’ll walk you through a few environment architecture options for dbt Cloud that we’d recommend, and hopefully you find an option that works for you!
+If these questions keep you up at night, you’ve come to the right place! When it comes to managing your dbt Cloud environments, there is not a one-size-fits-all solution for all teams. In this guide we’ll walk you through a few environment architecture options for dbt Cloud that we’d recommend, and hopefully you find an option that works for you.
 
 ## Learning goals
 
@@ -41,24 +41,27 @@ Environments define the way that dbt will execute your code, including
 
 In this guide, we’re going to focus on **deployment environments**, which determine how your project is executed when a **dbt Cloud job executes**.
 
-Depending on your desired outcome, the number of deployment environments in your dbt Cloud Project will vary! Let’s dive in to see how many deployment environments works best for you!
+Depending on your desired outcome, the number of deployment environments in your dbt Cloud Project will vary. Let’s dive in to see how many deployment environments works best for you.
 
 | Setup option | Works well if you | Relative complexity level  |
 | --- | --- | --- |
 | One deployment environment | - only scheduled runs for one set of data object - development branches are merged directly to main | Low |
 | Many Deployment Environments | - feature branches move through several promotion stages | High |
 
-**One deployment environment** We usually recommended folks start with the basics; having one deployment environment is usually the simplest and most maintainable approach to start. This approach works well if:
+**One deployment environment** 
+
+We usually recommended folks start with the basics; having one deployment environment is usually the simplest and most maintainable approach to start. This approach works well if:
 
 - You only need to have **scheduled jobs running in a single environment** within your data warehouse.
 - You use a **single primary branch** and follow a direct promotion (**Dev —> Prod**) strategy
 
-With this option, you can manage your production deployments and your **[Slim CI jobs](docs/deploy/cloud-ci-job)** to ensure code integrity in one single deployment environment!
+With this option, your production jobs and your [Slim CI jobs](docs/deploy/cloud-ci-job) that ensure code integrity are managed within one single deployment environment.
 
-**Many deployment environments** This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that can be worth the tradeoff. This approach works well if:
+**Many deployment environments** 
+This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that can be worth the tradeoff. This approach works well if:
 
 - Your organization maintains **several long-lived git branches** to control how and when changes are tested and promoted to production.
-  - Some orgs follow a **Dev —> QA —>  Prod release cycle** — if that sounds like your org, this approach is probably right for you!
+  - Some orgs follow a **Dev —> QA —>  Prod release cycle** — if that sounds like your org, this approach is probably right for you.
 - The **output of your dbt project is an input to other systems**, and you need to test and validate any changes in a pre-production environment.
 
-The two options are explored in more details below, including the benefits, trade-offs, the steps required to implement the setup in dbt Cloud!
+The two options are explored in more details below, including the benefits, trade-offs, the steps required to implement the setup in dbt Cloud.
