@@ -13,9 +13,10 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code on feature branches created off of your default branch in your repository (most often the `main` branch)
 2. You have a **single *deployment* environment** (let’s call it “Production”) where your scheduled jobs run referencing the `main` branch
-3. You also have a [**Slim CI job**](docs/deploy/cloud-ci-job)** that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment
+3. You also have a [**Slim CI job**](docs/deploy/cloud-ci-job) that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment
 
 :::info
+
 ☁️ Slim CI jobs run in a dedicated custom schema for each PR, so there will no collision with your production schemas.
 
 :::
@@ -41,7 +42,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
     2. **Slim CI Job** Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Enable this option by selecting`Run on Pull Requests?` under the `Webhooks` tab under the `Triggers` section.
 
         :::info
-        💡 This job will also need to [**defer to one of the Production jobs**](docs/deploy/cloud-ci-job#deferral-and-state-comparison)** created in step 3a. This enables the use of the [`**state**`](docs/deploy/about-state)` modifiers** in your selection syntax to only run changes introduced by your PR.
+        💡 This job will also need to [**defer to one of the Production jobs**](docs/deploy/cloud-ci-job#deferral-and-state-comparison) created in step 3a. This enables the use of the [`state`](docs/deploy/about-state) modifiers in your selection syntax to only run changes introduced by your PR.
 
         :::
 
