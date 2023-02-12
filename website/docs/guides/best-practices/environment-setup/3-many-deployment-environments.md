@@ -32,7 +32,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 9. Monitor scheduled jobs in Prod environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders.
 
 :::info
-💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](blog/the-case-against-git-cherry-picking)
+💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](https://docs.getdbt.com/blog/the-case-against-git-cherry-picking)
 
 :::
 
