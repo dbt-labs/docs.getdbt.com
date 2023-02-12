@@ -40,7 +40,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 1. Create your [**development environment**](docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE.
 
-    ‼️ Here, we’ll set a **custom branch** so that users in the IDE create their feature branches from `qa` instead of `main`. Click **Only run on a custom branch** in **General settings**, enter `qa` into **Custom Branch.**
+    Here, we’ll set a **custom branch** so that users in the IDE create their feature branches from `qa` instead of `main`. Click **Only run on a custom branch** in **General settings**, enter `qa` into **Custom Branch.**
 
 2. Set up your **QA [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
 
