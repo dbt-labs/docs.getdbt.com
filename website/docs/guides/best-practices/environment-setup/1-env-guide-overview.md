@@ -55,10 +55,10 @@ Depending on your desired outcome, the number of deployment environments in your
 
 With this option, you can manage your production deployments and your **[Slim CI jobs](docs/deploy/cloud-ci-job)** to ensure code integrity in one single deployment environment!
 
-**Many deployment environments** This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that is often worth the tradeoff. This approach works well if:
+**Many deployment environments** This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that can be worth the tradeoff. This approach works well if:
 
 - Your organization maintains **several long-lived git branches** to control how and when changes are tested and promoted to production.
-  - Many orgs follow a **Dev —> QA —>  Prod release cycle** — if that sounds like your org, this approach is probably right for you!
+  - Some orgs follow a **Dev —> QA —>  Prod release cycle** — if that sounds like your org, this approach is probably right for you!
 - The **output of your dbt project is an input to other systems**, and you need to test and validate any changes in a pre-production environment.
 
 The two options are explored in more details below, including the benefits, trade-offs, the steps required to implement the setup in dbt Cloud!

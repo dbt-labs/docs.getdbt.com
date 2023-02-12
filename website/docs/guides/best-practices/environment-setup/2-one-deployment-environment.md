@@ -29,7 +29,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 1. In the dbt Cloud IDE, developers work on feature branches, created from the `main` branch (`feature_a`, `feature_b`, `feature_c` above)
 2. When code is ready, developer opens a PR to merge feature branch into `main`
-3. [**Slim CI Job**](docs/deploy/cloud-ci-job)** automatically kicks off, and tests the changes made in the PR
+3. [**Slim CI Job**](docs/deploy/cloud-ci-job) automatically kicks off, and tests the changes made in the PR
 4. When Slim CI Job is successful and team is ready to deploy changes to Production, the PR is merged directly into the `main` branch! The next time a production job runs, these changes will be incorporated and executed!
 
 ### dbt Cloud setup
