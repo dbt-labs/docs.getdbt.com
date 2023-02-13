@@ -30,9 +30,9 @@ To develop in the Cloud IDE, make sure you have the following:
 
 - Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
-- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
+- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) or [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
-- Set up a [development environment and development credentials](#set-up-environments)
+- Set up a [development environment and development credentials](#access-the-cloud-ide)
 - The environment must be on dbt version 1.0 or higher
 
 ## Cloud IDE features
@@ -89,16 +89,16 @@ The IDE uses developer credentials to connect to your data platform. These devel
 
 Set up your developer credentials:
 
-1. Go to your [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials) under the **Your Profile** settings.
+1. Go to your [**Credentials**](https://cloud.getdbt.com/settings/profile#credentials) under the **Your Profile** settings.
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
-4. Fill in the details in **Development Credentials**, including Dataset and Target Name. 
+4. Enter the details under **Development Credentials**.
 5. Click **Save.**
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="100" height="100" title="Configure developer credentials in your Profile"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.jpg" width="100" height="100" title="Configure developer credentials in your Profile"/>
 
 
-6. To access the Cloud IDE, click **Develop** at the top of the page.
+6. Access the Cloud IDE by clicking **Develop** at the top of the page.
 7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
 
 Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
