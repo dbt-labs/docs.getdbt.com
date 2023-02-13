@@ -109,7 +109,7 @@ Your dbt Package may support multiple adapters. If you are a postgres user, you 
 
 {% endmacro %}
 
-{% macro postgress__to_literal(text) %}
+{% macro postgres__to_literal(text) %}
 
     E'{{- text -}}'
 
