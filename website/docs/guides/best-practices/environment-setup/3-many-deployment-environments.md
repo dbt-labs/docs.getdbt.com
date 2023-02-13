@@ -26,9 +26,9 @@ hoverSnippet: Learn how to configure a many deployment environment setup in dbt 
 4. When **Slim CI Job is successful** and team is ready to deploy changes, the **PR is merged into `qa`.**
 5. Scheduled jobs run in the QA deployment environment, running on `qa` branch to ensure the new changes work as indended.
 6. When **all feature branches** for a given release (e.g. sprint) have been **successfully merged** to `qa` and are **running without error** in the QA deployment environment, a team member opens a **PR to merge `qa` → `main`.**
-7. The **second Slim CI Job** automatically kicks off to test changes in PR. This job will *defer to a regularly-scheduled job in the Production environment.*
+7. The **second Slim CI Job** automatically kicks off to test changes in PR. This job will *defer to a regularly-scheduled job in the Production environment* and run in the Production deployment environment.
 8. When **second Slim CI Job** is successful and team is ready to deploy changes, the **PR is merged into `main`**.
-9. Monitor scheduled jobs in Production deployment environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders.
+9. Monitor scheduled jobs in the Production deployment environment that are running on `main` branch. Voila! All changes are released and ready for your stakeholders.
 
 :::info
 💡 Considering a different branching strategy that involves cherry picking? [Maybe reconsider!](https://docs.getdbt.com/blog/the-case-against-git-cherry-picking)
