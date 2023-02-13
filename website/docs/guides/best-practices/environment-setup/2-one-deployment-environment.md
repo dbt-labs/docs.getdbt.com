@@ -37,8 +37,8 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 1. Create your [**development environment**](docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE. No extra customization needed!
 2. Create your **[production deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**.
 3. Define your **dbt Cloud jobs** in the production deployment environment from step 2.
-    1. **Production job(s)** — You will need to set up **at least one scheduled job** that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
-    2. **Slim CI Job** Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Enable this option by selecting`Run on Pull Requests?` under the `Webhooks` tab under the `Triggers` section.
+    1. **Production job(s)**: You will need to set up **at least one scheduled job** that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
+    2. **Slim CI Job**: Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Enable this option by selecting`Run on Pull Requests?` under the `Webhooks` tab under the `Triggers` section.
 
         :::info
         💡 This job will also need to [**defer to one of the Production jobs**](docs/deploy/cloud-ci-job#deferral-and-state-comparison) created in step 3a. This enables the use of the [`state`](docs/deploy/about-state) modifiers in your selection syntax to only run changes introduced by your PR.
@@ -56,7 +56,7 @@ This approach is the recommended approach for most use-cases as it allows change
 
 ### When this doesn’t work so well
 
-- You have a **formal QA process** before merging code into production .
+- You have a **formal QA process** before merging code into production.
 - You want to **control when features are released** to production.
 - You need to have scheduled **jobs running in many environments** due to dependencies on outside systems.
   - e.g. Your organization has many applications that consume and test data changes in a lower non-Production environment before changes should be promoted to Production.
