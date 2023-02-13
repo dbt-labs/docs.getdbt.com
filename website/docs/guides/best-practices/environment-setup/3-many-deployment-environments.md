@@ -6,9 +6,8 @@ displayText: "dbt Cloud environment best practices"
 hoverSnippet: Learn how to configure environments in dbt Cloud.
 ---
 
-## Many deployment environments
 
-### **What this looks like**
+## What this looks like
 
 1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code. However, you’ll want to update the **[custom branch settings](faqs/Environments/custom-branch-settings)** to ensure that developers create feature branches off of the a non-production branch. For this example, we’ll refer to this as the `qa` branch.
 2. You have a **QA deployment environment**, running scheduled jobs from the `qa` branch that deploys your dbt project to a pre-production warehouse location.
@@ -17,7 +16,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 ![Table of basic setup for many deployment environment](/img/guides/best-practices/environment-setup/many-deployments-table.png)
 
-### git workflow
+### Git workflow
 
 ![git flow diagram for many deployment environments](/img/guides/best-practices/environment-setup/many-branch-git.png)
 
@@ -36,7 +35,7 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 :::
 
-### dbt Cloud Setup
+### dbt Cloud setup
 
 1. Create your [**development environment**](docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE.
 
@@ -47,8 +46,8 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
     Here, we’ll apply the same custom branch settings as the development environment in Step 1. All scheduled jobs in the QA deployment environment will use the code from the `qa` branch during execution.
 
 3. **Define QA jobs**
-    1. **QA job(s)** —You’ll want to create at least one scheduled job, running on a roughly daily cadence. This will allow us to make sure all the code executes without error before you release it to production, and will also power the first Slim CI job.
-    2. **Slim CI Job —** As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, you'll also want to be sure to select the second option **Run only on Custom Branch** (selected by default) — this means that only PRs created against the `qa` branch will trigger this job, rather than any PR at all.
+    1. **QA job(s)**: You’ll want to create at least one scheduled job, running on a roughly daily cadence. This will allow us to make sure all the code executes without error before you release it to production, and will also power the first Slim CI job.
+    2. **Slim CI Job**: As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, you'll also want to be sure to select the second option **Run only on Custom Branch** (selected by default) — this means that only PRs created against the `qa` branch will trigger this job, rather than any PR at all.
 
         This job will also need to defer to one of the QA jobs created in step 3a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
@@ -57,8 +56,8 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
     Here, we’ll *also* use the same custom branch settings as the other environments, but set the custom branch as `main`. Even thought the `main` branch is the default, setting this value enables us to properly set up the CI Job in the next step.
 
 5. **Define production jobs**
-    1. **Production job(s)** —You will need to set up at least one scheduled job that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
-    2. **Production Slim CI Job —** As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, we’ll also want to select the second option **Run only on Custom Branch** — this means that only PRs created against the `main` branch will trigger this job, rather than any PR at all.
+    1. **Production job(s)**: You will need to set up at least one scheduled job that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
+    2. **Production Slim CI Job**: As above, this job will be triggered when PRs are opened in your repository. Enable this option by selecting **Run on Pull Requests?** under the **Webhooks** tab under the **Triggers** section. Since we’re using the custom branch setting in the QA environment, we’ll also want to select the second option **Run only on Custom Branch** — this means that only PRs created against the `main` branch will trigger this job, rather than any PR at all.
 
         This job will also need to defer to one of the QA jobs created in step 5a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
