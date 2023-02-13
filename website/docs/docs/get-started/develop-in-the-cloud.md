@@ -99,9 +99,9 @@ Set up your developer credentials:
 
 Now that you've set up your development environment and credentials, you should be able to access the Cloud IDE:
 
-1. Click **Develop** at the top of the page to take you to the IDE.
-2. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
-3. Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
+6. Click **Develop** at the top of the page to take you to the IDE.
+7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
+8. Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
 
 ## Build, compile, and run projects
 
