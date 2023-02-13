@@ -8,7 +8,7 @@ description: New features and changes in dbt Core v1.4
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-**Planned final release:** January 2023
+**Final release:** January 25, 2023
 
 dbt Core v1.4 is a "behind-the-scenes" release. We've been hard at work rebuilding `dbt-core` internals on top of more-solid foundations, to enable an exciting year of new feature development. Check out the [v1.5 milestone](https://github.com/dbt-labs/dbt-core/milestone/82) in GitHub for a preview of what's planned for April.
 
@@ -21,8 +21,8 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 The manifest schema version has updated to `v8`. These changes are relevant for people who parse or analyze the contents of the `manifest.json` file, or who have custom code accessing the [`model`](https://docs.getdbt.com/reference/dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) variables, e.g. `{{ model.root_path }}`.
 
 Relevant changes:
-- The `root_path` attribute has been removed for all nodes to reduce duplicative information.
-- Unused attributes have been removed from seed `nodes`, including `depends_on`, and from `macros`, including `tags`.
+- The `root_path` attribute has been removed for non-seed nodes to reduce duplicative information.
+- Unused attributes have been removed from seed nodes (including `depends_on.nodes`), and from `macros`  (including `tags`).
 - The `unique_id` of docs blocks now start with `doc` for consistency with other resource types.
 
 ### For maintainers of adapter plugins
