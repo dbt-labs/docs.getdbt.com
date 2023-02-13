@@ -23,7 +23,7 @@ To test a data model, an analyst asserts something to be true about the underlyi
 
 One dbt user has this to say: *“At this point when I have a new question, I can answer it 10-100x faster than I could before.”*  Here’s how:
 
-- dbt allows analysts avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" />: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of <Term id="materialization" />.
+- dbt allows analysts to avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" />: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of <Term id="materialization" />.
 - dbt creates leverage. Instead of starting at the raw data with every analysis, analysts instead build up reusable data models that can be referenced in subsequent work.
 - dbt includes optimizations for data model materialization, allowing analysts to dramatically reduce the time their queries take to run.
 
@@ -48,7 +48,7 @@ While there are a large number of great languages for manipulating data, we’ve
 
 # What databases does dbt currently support?
 
-View the full list of supported databases, warehouses, and query engines [here](available-adapters).
+See [Supported Data Platforms](supported-data-platforms) to view the full list of supported databases, warehouses, and query engines.
 
 # How do I get started?
 

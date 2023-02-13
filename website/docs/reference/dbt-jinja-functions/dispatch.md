@@ -4,15 +4,11 @@ title: "dispatch"
 
 <Changelog>
 
-- **v0.18.0:** Introduced `dispatch` as a replacement for deprecated `adapter_macro`
-- **v0.19.2:** Limited rendering context for `dispatch` arguments. Includes backwards compatibility for widely used packages.
-- **v0.20.0:** Parent adapters' macro implementations are included in search order. Formalized supported arguments.
-- **v0.21.0:** All dispatched macros in the dbt global project include `dbt` namespace
 - **v1.0.0:** The 'packages' argument is fully deprecated. Use `macro_namespace` and project-level `dispatch` config instead.
-    
+
 </Changelog>
 
-dbt can extend functionality across [its many supported adapters](available-adapters) through a system of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). Because SQL syntax, data types, and <Term id="ddl" />/<Term id="dml" /> support vary across adapters, dbt can define and call generic functional macros, and then "dispatch" that macro to the appropriate implementation for the current adapter.
+dbt can extend functionality across [Supported Data Platforms](supported-data-platforms) through a system of [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). Because SQL syntax, data types, and <Term id="ddl" />/<Term id="dml" /> support vary across adapters, dbt can define and call generic functional macros, and then "dispatch" that macro to the appropriate implementation for the current adapter.
 
 ## Syntax
 
@@ -83,7 +79,7 @@ Below that macro, I've defined three possible implementations of the `concat` ma
 
 ### A more complex example
 
-I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in [`dbt_utils.concat`](https://github.com/dbt-labs/dbt-utils/blob/main/macros/cross_db_utils/concat.sql).
+I found an existing implementation of the `concat` macro in the dbt-utils package. However, I want to override its implementation of the `concat` macro on Redshift in particular. In all other cases—including the default implementation—I'm perfectly happy falling back to the implementations defined in `dbt_utils.concat`.
 
 <File name='macros/concat.sql'>
 
@@ -109,7 +105,7 @@ If I'm running on Redshift, dbt will use my version; if I'm running on any other
 
 ## For package maintainers
 
-Dispatched macros from [packages](package-management) _must_ provide the `macro_namespace` argument, as this declares the namespace (package) where it plans to search for candidates. Most often, this is the same as the name of your package, e.g. `dbt_utils`. (It is possible, if rarely desirable, to define a dispatched macro _not_ in the `dbt_utils` package, and dispatch it into the `dbt_utils` namespace.)
+Dispatched macros from [packages](/docs/build/packages) _must_ provide the `macro_namespace` argument, as this declares the namespace (package) where it plans to search for candidates. Most often, this is the same as the name of your package, e.g. `dbt_utils`. (It is possible, if rarely desirable, to define a dispatched macro _not_ in the `dbt_utils` package, and dispatch it into the `dbt_utils` namespace.)
 
 Here we have the definition of the `dbt_utils.concat` macro, which specifies both the `macro_name` and `macro_namespace` to dispatch:
 
@@ -213,7 +209,7 @@ As a `dbt-spark` user, by installing `dbt_utils` and `spark_utils` together, I d
 
 ### Adapter inheritance
 
-Some adapters "inherit" from other adapters (e.g. `dbt-postgres` &rarr; `dbt-redshift`). If using a child adapter, dbt will include any parent adapter implementations in its search order, too. Instead of just looking for `redshift__` and falling back to `default__`, dbt will look for `redshift__`, `postgres__`, and `default__`, in that order.
+Some adapters "inherit" from other adapters (e.g. `dbt-postgres` &rarr; `dbt-redshift`, and `dbt-spark` &rarr; `dbt-databricks`). If using a child adapter, dbt will include any parent adapter implementations in its search order, too. Instead of just looking for `redshift__` and falling back to `default__`, dbt will look for `redshift__`, `postgres__`, and `default__`, in that order.
 
 Child adapters tend to have very similar SQL syntax to their parents, so this allows them to skip reimplementing a macro that has already been reimplemented by the parent adapter.
 

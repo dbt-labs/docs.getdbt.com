@@ -91,7 +91,7 @@ A normal next step after installing pre-commit is to run a `pre-commit install` 
 
 Instead, we can do a `pre-commit run --all-files`, which will run all the tests defined in our configuration file on all the files in our dbt project.
 
-[![Animation showing the output in the Terminal after running the above commands](https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF.svg)](https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF)
+![Animation showing the output in the Terminal after running the above commands](/img/blog/2022-07-26-pre-commit-dbt/pre-commit-run-all-files.gif)
 
 In my case, I can see that my model called `customers.sql` has not been added to any YAML file and has no test defined.
 
@@ -114,7 +114,7 @@ Adding periodic pre-commit checks can be done in 2 different ways, through CI (C
 
 The example below will assume GitHub actions as the CI engine but similar behavior could be achieved in any other CI tool.
 
-As described before, we need to run a `dbt docs generate` in order to create updated JSON artifacts used in the pre-commit hooks.
+As described before, we need to run a `dbt docs generate` in order to create updated <Term id="json" /> artifacts used in the pre-commit hooks.
 
 For that reason, we will need our CI step to execute this command, which will require setting up a `profiles.yml` file providing dbt the information to connect to the data warehouse. Profiles files will be different for each data warehouse ([example here](https://docs.getdbt.com/reference/warehouse-profiles/snowflake-profile)).
 

@@ -1,9 +1,14 @@
 ---
 id: dataframe
 title: DataFrame
+description: A DataFrame is a way of storing and manipulating tabular data in Python. They gained popularity first as a part of R and then as a part of pandas.
 displayText: dataframe  
 hoverSnippet: A DataFrame is a two-dimensional data structure (rows and columns). It's the most common way of representing and interacting with large datasets in Python.
 ---
+<head>
+  <title>What is a DataFrame in Python? - dbt Labs</title>
+</head>
+
 A DataFrame is a way of storing and manipulating tabular data in Python. DataFrames are often likened to tables with columns and rows that you could find in any <Term id="data-warehouse" />, Google Sheet, or Excel workbook.
 
 A DataFrame entry in an analytics engineering glossary…what is happening? You’re reading this right. While SQL is the go-to programming language for most analytics engineering work, there are likely inevitable situations where you've found yourself writing some Python and using DataFrames.
@@ -14,7 +19,7 @@ While DataFrames are also used in other languages for data processing, such as R
 
 DataFrames have a long history ([going back to 1990](https://towardsdatascience.com/preventing-the-death-of-the-dataframe-8bca1c0f83c8#:~:text=The%20earliest%20%E2%80%9Cdataframe%E2%80%9D%2C%20originally,Hastie%20in%201992%20%5B1%5D)!), but gained popularity first as a part of R and then as a part of [pandas](https://pandas.pydata.org/), an open source Python library of useful data analysis and manipulation tools. To work with DataFrames in Python, folks typically need to import the pandas library in the beginning of their script, `.py` file, or Python notebook with the conventional `import pandas as pd`.
 
-One of the strengths of DataFrames lies in its ability to take data in its original form (ex. array, list, JSON, parquet, dictionary) and form a tabular (rows and columns) format out of it. Once this data is in a tabular format, you can apply functions and packages to that data to clean, transform, and enrich it.
+One of the strengths of DataFrames lies in its ability to take data in its original form (ex. array, list, <Term id="json" />, parquet, dictionary) and form a tabular (rows and columns) format out of it. Once this data is in a tabular format, you can apply functions and packages to that data to clean, transform, and enrich it.
 
 Below is an example creation of a Python DataFrame from a list and some light enrichment on it:
 
@@ -69,10 +74,10 @@ You could probably write hundreds of pages on DataFrame use cases and examples, 
 
 Let’s just say it: there’s a lot of things you can do in Python that could do in SQL and vice versa, but Python packages typically win out when it comes to data enrichment. A typical use case for Python DataFrames is the ability to apply Python libraries or functions to data in the DataFrame.
 
-In practice, this could look like applying an [IP parser](https://pypi.org/project/ipparser/) to an IP address column, using a package to determine whether a [date falls on a holiday](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models#using-pypi-packages), or leveraging [numpy](https://numpy.org/) for performant and complex mathematical computations.
+In practice, this could look like applying an [IP parser](https://pypi.org/project/ipparser/) to an IP address column, using a package to determine whether a [date falls on a holiday](/docs/build/python-models#using-pypi-packages), or leveraging [numpy](https://numpy.org/) for performant and complex mathematical computations.
 
 :::tip dbt x Python DataFrames
-With v1.3, dbt now supports the use of beta [Python models in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models). What does this mean exactly? This means that Python-defined data transformations can be created and used in a dbt project in the same vein as a classic dbt SQL model. These Python models are incredibly new and the team is eagerly looking for feedback in how folks want to use and ritualize them.
+With v1.3, dbt now supports the use of beta [Python models in dbt](/docs/build/python-models). What does this mean exactly? This means that Python-defined data transformations can be created and used in a dbt project in the same vein as a classic dbt SQL model. These Python models are incredibly new and the team is eagerly looking for feedback in how folks want to use and ritualize them.
 :::
 
 ### Manipulation of data during extraction and loading scripts
@@ -97,6 +102,6 @@ A DataFrame is a tabular data storage format in Python that is widely used acros
 
 Are you ready to dip your toes in DataFrames, Python, and dbt? Check out some of the resources below to learn more about how dbt is embracing Python:
 
-- [Python models in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models)
+- [Python models in dbt](/docs/build/python-models)
 - #beta-feedback-python-models Slack channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/)
 - [Best practices for developing Python models in dbt discussion](https://github.com/dbt-labs/docs.getdbt.com/discussions/1811)

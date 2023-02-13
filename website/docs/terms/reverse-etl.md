@@ -1,9 +1,14 @@
 ---
 id: reverse-etl
 title: Reverse ETL
+description:  Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms.
 displayText: reverse ETL
 hoverSnippet: Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. 
 ---
+
+<head>
+    <title>Reverse ETL, demystified: What it is in plain english</title>
+</head>
 
 Reverse ETL is the process of getting your transformed data stored in your data warehouse to end business platforms, such as sales CRMs and ad platforms. Once in an end platform, that data is often used to drive meaningful business actions, such as creating custom audiences in ad platforms, personalizing email campaigns, or supplementing data in a sales CRM. You may also hear about reverse ETL referred to as operational analytics or data activation.
 
@@ -71,6 +76,7 @@ Reverse ETL tools typically establish the connection between your data warehouse
 | Tool | Description | Open source option? |
 |:---:|:---:|:---:|
 | Hightouch | A platform to sync data models and create custom audiences for downstream business platforms. | :x: |
+| Polytomic | A unified sync platform for syncing to and from data warehouses (ETL and Reverse ETL), databases, business apps, APIs, and spreadsheets. | :x: |
 | Census | Another reverse ETL tool that can sync data from your data warehouse to your go-to-market tools. | :x: |
 | Rudderstack | Also a CDP (customer data platform), Rudderstack additionally supports pushing down data and audience to external tools, such as ad platforms and email CRMs. | :white_check_mark: |
 | Grouparoo | Grouparoo, part of Airbyte, is an open source framework to move data from data warehouses to different cloud-based tools. | :white_check_mark: |

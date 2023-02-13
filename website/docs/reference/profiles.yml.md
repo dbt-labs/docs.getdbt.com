@@ -4,7 +4,7 @@
 
 If you're using the dbt CLI, you'll need to set up a `profiles.yml` file.
 
-You can learn more about this in the article on [Connecting to your warehouse](configure-your-profile).
+You can learn more about this in the article on [Connecting to your warehouse](/docs/get-started/connection-profiles).
 
 This article lists the parts of your `profiles.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
 
@@ -18,7 +18,8 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
   [printer_width](global-configs#printer-width): <integer>
   [write_json](global-configs#writing-json-artifacts): <true | false>
   [warn_error](global-configs#warnings-as-errors): <true | false>
-  [log_format](global-configs#log-formatting): <true | false>
+  [warn_error_options](global-configs#warnings-as-errors): <include: all | include: [<error-name>] | include: all, exclude: [<error-name>]>
+  [log_format](global-configs#log-formatting): <text | json | default>
   [debug](global-configs#debug-level-logging): <true | false>
   [version_check](global-configs#checking-version-compatibility): <true | false>
   [fail_fast](global-configs#failing-fast): <true | false>
@@ -26,7 +27,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
   [static_parser](global-configs#static-parser): <true | false>
 
 <profile-name>:
-  target: <target-name>
+  target: <target-name> # this is the default target
   outputs:
     <target-name>:
       type: <bigquery | postgres | redshift | snowflake | other>

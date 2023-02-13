@@ -11,6 +11,9 @@ default_value: true
     { label: 'Seeds', value: 'seeds', },
     { label: 'Snapshots', value: 'snapshots', },
     { label: 'Tests', value: 'tests', },
+    { label: 'Sources', value: 'sources', },
+    { label: 'Metrics', value: 'metrics', },
+    { label: 'Exposures', value: 'exposures', },
   ]
 }>
 <TabItem value="models">
@@ -133,6 +136,121 @@ tests:
 
 </TabItem>
 
+<TabItem value="sources">
+
+<File name='dbt_project.yml'>
+
+```yaml
+sources:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)enabled: true | false
+
+```
+
+</File>
+
+<VersionBlock firstVersion="1.1">
+
+<File name='models/properties.yml'>
+
+```yaml
+version: 2
+
+sources:
+  - name: [<source-name>]
+    [config](resource-properties/config):
+      enabled: true | false
+    tables:
+      - name: [<source-table-name>]
+        [config](resource-properties/config):
+          enabled: true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="metrics">
+
+<VersionBlock lastVersion="1.2">
+
+Support for disabling metrics was added in dbt Core v1.3
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+<File name='dbt_project.yml'>
+
+```yaml
+metrics:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)enabled: true | false
+
+```
+
+</File>
+
+<File name='models/metrics.yml'>
+
+```yaml
+version: 2
+
+metrics:
+  - name: [<metric-name>]
+    [config](resource-properties/config):
+      enabled: true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="exposures">
+
+<VersionBlock lastVersion="1.2">
+
+Support for disabling exposures was added in dbt Core v1.3
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+<File name='dbt_project.yml'>
+
+```yaml
+exposures:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)enabled: true | false
+
+```
+
+</File>
+
+<File name='models/exposures.yml'>
+
+```yaml
+version: 2
+
+exposures:
+  - name: [<exposure-name>]
+    [config](resource-properties/config):
+      enabled: true | false
+
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -144,7 +262,7 @@ When a resource is disabled, dbt will not consider it as part of your project. N
 
 If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](node-selection/syntax)
 
-If you are disabling models because they are no longer being used, but you want to version control their SQL, consider making them an [analysis](docs/building-a-dbt-project/analyses.md) instead.
+If you are disabling models because they are no longer being used, but you want to version control their SQL, consider making them an [analysis](/docs/build/analyses) instead.
 
 ## Examples
 ### Disable a model in a package in order to use your own version of the model.
