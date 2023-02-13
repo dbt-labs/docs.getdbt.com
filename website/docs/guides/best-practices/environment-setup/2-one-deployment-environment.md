@@ -1,9 +1,9 @@
 ---
 title: "One deployment environment"
 id: 2-one-deployment-environment
-description: Learn how to configure environments in dbt Cloud.
+description: Learn how to configure a single deployment environment setup in dbt Cloud.
 displayText: "dbt Cloud environment best practices"
-hoverSnippet: Learn how to configure environments in dbt Cloud.
+hoverSnippet: Learn how to configure a single deployment environment setup in dbt Cloud.
 ---
 
 

@@ -1,9 +1,9 @@
 ---
 title: "Many deployment environments"
 id: 3-many-deployment-environments
-description: Learn how to configure environments in dbt Cloud.
+description: Learn how to configure a many deployment environment setup in dbt Cloud.
 displayText: "dbt Cloud environment best practices"
-hoverSnippet: Learn how to configure environments in dbt Cloud.
+hoverSnippet: Learn how to configure a many deployment environment setup in dbt Cloud.
 ---
 
 ## Many deployment environments
