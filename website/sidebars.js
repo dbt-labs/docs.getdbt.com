@@ -720,7 +720,6 @@ const sidebarSettings = {
           items: [
             "guides/best-practices/environment-setup/2-one-deployment-environment",
             "guides/best-practices/environment-setup/3-many-deployment-environments",
-            "guides/best-practices/environment-setup/4-env-guide-conclusion",
           ],
         },
         "guides/best-practices/debugging-errors",

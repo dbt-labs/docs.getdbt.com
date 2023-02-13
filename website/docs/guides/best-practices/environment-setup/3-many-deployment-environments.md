@@ -68,3 +68,7 @@ This approach works well when it’s critical to **apply user acceptance and int
 ### When this doesn’t work so well
 
 This approach may slow down the time it takes to get new feature into production, since it requires additional steps in the deployment process and additional branches to maintain. Keep in mind that adding complexity to your deployment process might cause some slowdown in your release cycle.
+
+## Conclusion
+
+While there’s no single correct answer to how to setup your dbt Cloud environments, they are flexible enough to enable just about any code promotion workflow your organization uses. We would love to hear how you’ve set up your deployment infrastructure in dbt Cloud!
