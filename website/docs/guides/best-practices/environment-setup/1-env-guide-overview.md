@@ -62,6 +62,6 @@ This approach adds a bit more complexity and may slow down the development proce
 
 - Your organization maintains **several long-lived git branches** to control how and when changes are tested and promoted to production.
   - Some orgs follow a **Dev —> QA —>  Prod release cycle** — if that sounds like your org, this approach is probably right for you.
-- The **output of your dbt project is an input to other systems**, and you need to test and validate any changes in a pre-production environment.
+- The **output of your dbt project is an input to other systems** and you need to test and validate many changes on a stable, long-lived staging dataset in a pre-production environment.
 
 The two options are explored in more detail in the following sections, including the benefits, trade-offs, the steps required to implement the setup in dbt Cloud.
