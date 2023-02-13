@@ -97,7 +97,7 @@ Set up your developer credentials:
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="100" height="100" title="Configure developer credentials in your Profile"/>
 
-Now that you've set up your development environment and credentials, you should be able to access the Cloud IDE:
+Access the Cloud IDE:
 
 6. Click **Develop** at the top of the page to take you to the IDE.
 7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
