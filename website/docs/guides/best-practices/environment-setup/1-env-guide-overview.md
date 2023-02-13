@@ -41,7 +41,7 @@ Environments define the way that dbt will execute your code, including:
 
 In this guide, we’re going to focus on **deployment environments**, which determine how your project is executed when a **dbt Cloud job executes**.
 
-Depending on your desired outcome, the number of deployment environments in your dbt Cloud Project will vary. Let’s dive in to see how many deployment environments works best for you.
+Depending on your git workflow and testing strategy, you'll be choosing between one deployment environment or many deployment environments. We provide a high-level overview of how these two deployment strategies work here, but use each section of this guide to get a deep-dive into how these setups differ. 
 
 | Setup option | Works well if you | Relative complexity level  |
 | --- | --- | --- |
