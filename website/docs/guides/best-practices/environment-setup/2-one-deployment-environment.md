@@ -22,7 +22,7 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 
 <Lightbox src="/img/guides/best-practices/environment-setup/one-deployment-table.png" title="Table of basic setup for one deployment environment" />
 
-### `git` workflow
+### Git workflow
 
 <Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram for one deployment environment" />
 
