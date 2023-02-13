@@ -20,11 +20,11 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 
 :::
 
-![Table of basic setup for one deployment environment](/img/guides/best-practices/environment-setup/one-deployment-table.png)
+<Lightbox src="/img/guides/best-practices/environment-setup/one-deployment-table.png" title="Table of basic setup for one deployment environment" />
 
 ### `git` workflow
 
-![git flow diagram for one deployment environment](/img/guides/best-practices/environment-setup/one-branch-git.png)
+<Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram for one deployment environment" />
 
 
 1. In the dbt Cloud IDE, developers work on feature branches, created from the `main` branch (`feature_a`, `feature_b`, `feature_c` above)
