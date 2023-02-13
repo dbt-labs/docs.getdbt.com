@@ -1,10 +1,11 @@
 ---
-title: "Upgrade your dbt Cloud plan"
+title: "Upgrading your dbt Cloud Account"
 id: "cloud-upgrade-instructions"
 description: "Instructions for upgrading your dbt Cloud account after the trial ends."
 ---
 
-To 
+## How to upgrade your dbt Cloud Account
+
 Once your dbt Cloud trial ends or if your subscription payment is past due, you'll need to perform a plan upgrade in order to continue using your account.
 
 **Note**: Only users that are part of the "Owner" user group have the ability to make these changes. Users not included in this group will not see these options in the UI. 
@@ -25,16 +26,16 @@ On the next page you'll be able to select from our plan tiers: Developer, Team, 
 
 If you'd like to go with the Developer plan, make sure you've selected "Developer" and then click the green "Select this plan" button in the bottom right corner. On the next page, click "Confirm Changes".
 
-<Lightbox src="/img/docs/dbt-cloud/downgrade-dev-flow.gif"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/developer_plan.png"/>
 
 ### Team
 
 If you opt for the Team plan, select "Team" and then click the green "Select this plan" button in the bottom right corner as shown above. On the following page, you will be prompted to enter credit card details. Once you've entered this information, click "Save and Configure Plan".
 
-<Lightbox src="/img/docs/dbt-cloud/trial-team-flow.gif"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/team_plan_card_details.png"/>
 
 ### Enterprise
 
 If you're interested in our Enterprise offering, select "Enterprise" and then click the blue "Contact Sales" button in the bottom right corner. This will open a chat window that will allow you to get in touch with dbt Cloud Support, who will connect you with our Sales team.
 
-<Lightbox src="/img/docs/dbt-cloud/enterprise-upgrade.gif"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/enterprise_contact_sales.gif"/>
