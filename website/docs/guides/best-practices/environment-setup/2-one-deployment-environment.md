@@ -7,7 +7,6 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 ---
 
 
-## One deployment environment
 
 ## What this looks like
 
