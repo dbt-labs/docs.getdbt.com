@@ -45,6 +45,22 @@ In both cases, `test_type` checks a property of the test itself. These are forms
 
 ### Indirect selection
 
+<VersionBlock lastVersion="1.3">
+
+#### Two modes for indirect selection
+There are two options to configure the behavior when performing indirect selection (with `eager` as the default):
+
+1. `eager` (default) - include ANY test that references the selected nodes
+1. `cautious` - restrict to tests that ONLY refer to selected nodes
+
+Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
+
+The "cautious" mode can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](defer)).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
 #### Three modes for indirect selection
 There are three options to configure the behavior when performing indirect selection (with `eager` as the default):
 
@@ -55,6 +71,8 @@ There are three options to configure the behavior when performing indirect selec
 Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
 The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](defer)).
+
+</VersionBlock>
 
 #### "Eager" mode (default)
 
@@ -70,8 +88,8 @@ In this mode, any test that depends on unbuilt resources will raise an error.
 #### "Cautious" mode
 
 ```shell
-$ dbt test --select orders --indirect-selection=buildable
-$ dbt build --select orders --indirect-selection=buildable
+$ dbt test --select orders --indirect-selection=cautious
+$ dbt build --select orders --indirect-selection=cautious
 ```
 
 It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
@@ -79,6 +97,8 @@ It is possible to prevent tests from running if one or more of its parents is un
 It will only include tests whose references are each within the selected nodes.
 
 Put another way, it will prevent tests from running if one or more of its parents is unselected.
+
+<VersionBlock firstVersion="1.4">
 
 #### "Buildable" mode
 
@@ -92,6 +112,8 @@ This mode is similarly conservative like "cautious", but is slightly more inclus
 It will only include tests whose references are each within the selected nodes (or their ancestors).
 
 This is useful in the same scenariors as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
+
+</VersionBlock>
 
 ### Syntax examples
 
