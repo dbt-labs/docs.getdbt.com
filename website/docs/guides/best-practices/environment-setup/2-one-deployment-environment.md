@@ -7,7 +7,6 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 ---
 
 
-## One deployment environment
 
 ## What this looks like
 
