@@ -71,7 +71,7 @@ definition:
 
   childrens_parents: true | false     # @ operator
   
-  indirect_selection: eager | cautious  # include all tests selected indirectly? eager by default
+  indirect_selection: eager | cautious | buildable  # include all tests selected indirectly? eager by default
 ```
 
 The `*` operator to select all nodes can be written as:
@@ -112,7 +112,7 @@ where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`)
 
 #### Indirect selection
 
-As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" by setting `indirect_selection` for a specific criterion:
+As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" or "buildable" by setting `indirect_selection` for a specific criterion:
 
 ```yml
 - union:
@@ -123,9 +123,13 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
       value: model_b
       indirect_selection: cautious  # will not include tests touching model_b
                         # if they have other unselected parents
+    - method: fqn
+      value: model_c
+      indirect_selection: buildable  # will not include tests touching model_b
+                        # if they have other unselected parents (unless they have an ancestor that is selected)
 ```
 
-If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
 
 See [test selection examples](test-selection-examples) for more details about indirect selection.
 

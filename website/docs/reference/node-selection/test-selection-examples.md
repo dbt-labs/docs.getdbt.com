@@ -45,31 +45,57 @@ In both cases, `test_type` checks a property of the test itself. These are forms
 
 ### Indirect selection
 
+#### Three modes for indirect selection
+There are three options to configure the behavior when performing indirect selection (with `eager` as the default):
 
-  ```bash
-  $ dbt test --select customers
-  $ dbt test --select orders
-  ```
+1. `eager` (default) - include ANY test that references the selected nodes
+1. `cautious` - restrict to tests that ONLY refer to selected nodes
+1. `buildable` -  restrict to tests that ONLY refer to selected nodes (or their ancestors)
 
-These are examples of "indirect" selection: `customers` and `orders` select models (whether by name or path). Any tests defined on either `customers` or `orders` will be selected indirectly, and thereby included.
+Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
- By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include _any_ test that touches either `customers` or `orders`, even if it touches other models as well.
+The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](defer)).
 
-It is possible to prevent tests from running if one or more of its parents is unselected, however; we call this "cautious" indirect selection. This can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures by tests that depend on unbuilt resources. (Another way to achieve this is with [deferral](defer)).
-
-With `dbt test --indirect-selection=cautious` (or setting `indirect_selection: cautious` in a [yaml selector](yaml-selectors)) tests will be indirectly selected only if **ALL** of its parents are included by the selection criteria. If any parent is missing, that test won't run. Note that test _exclusion_ is always greedy: if **ANY** parent is explicitly excluded, the test will be excluded as well.
-
-Imagine a `relationships` test between `customers` and `orders`. By default, the selection criteria above would select that test "eagerly." If you opt for "cautious" indirect selection instead, the `relationships` test would _not_ be selected by the criteria above, because one of its parents is unselected. It would be selected indirectly only ("cautiously") if both parents are selected:
+#### "Eager" mode (default)
 
 ```shell
-$ dbt test --select customers orders --indirect-selection=cautious
+$ dbt test --select orders
+$ dbt build --select orders
 ```
 
-  ```bash
-  $ dbt test --select customers orders
-  ```
+By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include any test that references orders, even if it references other models as well.
+
+In this mode, any test that depends on unbuilt resources will raise an error.
+
+#### "Cautious" mode
+
+```shell
+$ dbt test --select orders --indirect-selection=buildable
+$ dbt build --select orders --indirect-selection=buildable
+```
+
+It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
+
+It will only include tests whose references are each within the selected nodes.
+
+Put another way, it will prevent tests from running if one or more of its parents is unselected.
+
+#### "Buildable" mode
+
+```shell
+$ dbt test --select orders --indirect-selection=buildable
+$ dbt build --select orders --indirect-selection=buildable
+```
+
+This mode is similarly conservative like "cautious", but is slightly more inclusive.
+
+It will only include tests whose references are each within the selected nodes (or their ancestors).
+
+This is useful in the same scenariors as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
 
 ### Syntax examples
+
+Setting `indirect_selection` can also be specified in a [yaml selector](yaml-selectors#indirect-selection).
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
 
