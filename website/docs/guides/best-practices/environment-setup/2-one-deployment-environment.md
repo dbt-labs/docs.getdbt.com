@@ -9,11 +9,11 @@ hoverSnippet: Learn how to configure environments in dbt Cloud.
 
 ## One deployment environment
 
-### **What this looks like**
+## What this looks like
 
-1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code on feature branches created off of your default branch in your repository (most often the `main` branch)
-2. You have a **single *deployment* environment** (let’s call it “Production”) where your scheduled jobs run referencing the `main` branch
-3. You also have a [**Slim CI job**](docs/deploy/cloud-ci-job) that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment
+1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code on feature branches created off of your default branch in your repository (most often the `main` branch).
+2. You have a **single *deployment* environment** (let’s call it “Production”) where your scheduled jobs run referencing the `main` branch.
+3. You also have a [**Slim CI job**](docs/deploy/cloud-ci-job) that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment.
 
 :::info
 
