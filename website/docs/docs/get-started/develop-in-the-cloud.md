@@ -87,7 +87,7 @@ In order to start experiencing the great features of the Cloud IDE, you need to 
 
 The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
-Review the following steps to set up your developer credentials:
+Set up your developer credentials:
 
 1. Go to your [**Credentials**](https://cloud.getdbt.com/next/settings/profile#credentials) under the **Your Profile** settings.
 2. Select the relevant project in the list.
