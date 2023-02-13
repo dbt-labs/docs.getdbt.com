@@ -1,0 +1,1 @@
+You can continue the tutorial by [building your first project](/docs/get-started/getting-started/building-your-first-project/build-your-first-models). You will learn and apply the fundamentals of dbt with models, tests, docs, and deploying your first job!

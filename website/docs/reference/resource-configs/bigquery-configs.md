@@ -40,7 +40,7 @@ Example usage for versions of dbt < 0.16.0:
 
 </Changelog>
 
-BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a table by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a subquery won't improve performance).
+BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
 
 The `partition_by` config can be supplied as a dictionary with the following format:
 
@@ -104,7 +104,7 @@ from {{ ref('events') }}
 <File name='bigquery_table.sql'>
 
 ```sql
-create table analytics.bigquery_table
+create table `projectname`.`analytics`.`bigquery_table`
 partition by timestamp_trunc(created_at, day)
 as (
 
@@ -113,7 +113,7 @@ as (
     event_name,
     created_at
 
-  from analytics.events
+  from `analytics`.`events`
 
 )
 ```
@@ -123,10 +123,81 @@ as (
 </TabItem>
 </Tabs>
 
+<VersionBlock firstVersion="1.4">
+
+#### Partitioning by an "ingestion" date or timestamp
+
+BigQuery supports an [older mechanism of partitioning](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time) based on the time when each row was ingested. While we recommend using the newer and more ergonomic approach to partitioning whenever possible, for very large datasets, there can be some performance improvements to using this older, more mechanistic approach. [Read more about the `insert_overwrite` incremental strategy below](#copying-ingestion-time-partitions).
+
+dbt will always instruct BigQuery to partition your table by the values of the column specified in `partition_by.field`. By configuring your model with `partition_by.time_ingestion_partitioning` set to `True`, dbt will use that column as the input to a `_PARTITIONTIME` pseudocolumn. Unlike with newer column-based partitioning, you must ensure that the values of your partitioning column match exactly the time-based granularity of your partitions.
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Compiled code', value: 'compiled', },
+  ]
+}>
+<TabItem value="source">
+
+<File name='bigquery_table.sql'>
+
+```sql
+{{ config(
+    materialized="incremental",
+    partition_by={
+      "field": "created_date",
+      "data_type": "timestamp",
+      "granularity": "day",
+      "time_ingestion_partitioning": true
+    }
+) }}
+
+select
+  user_id,
+  event_name,
+  created_at,
+  -- values of this column must match the data type + granularity defined above
+  timestamp_trunc(created_at, day) as created_date
+
+from {{ ref('events') }}
+```
+
+</File>
+
+</TabItem>
+<TabItem value="compiled">
+
+<File name='bigquery_table.sql'>
+
+```sql
+create table `projectname`.`analytics`.`bigquery_table` (`user_id` INT64, `event_name` STRING, `created_at` TIMESTAMP)
+partition by timestamp_trunc(_PARTITIONTIME, day);
+
+insert into `projectname`.`analytics`.`bigquery_table` (_partitiontime, `user_id`, `event_name`, `created_at`)
+select created_date as _partitiontime, * EXCEPT(created_date) from (
+    select
+      user_id,
+      event_name,
+      created_at,
+      -- values of this column must match granularity defined above
+      timestamp_trunc(created_at, day) as created_date
+
+    from `projectname`.`analytics`.`events`
+);
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+</VersionBlock>
+
 #### Partitioning with integer buckets
 
 If the `data_type` is specified as `int64`, then a `range` key must also
-be provied in the `partition_by` dict. dbt will use the values provided in
+be provided in the `partition_by` dict. dbt will use the values provided in
 the `range` dict to generate the partitioning clause for the table.
 
 <Tabs
@@ -291,9 +362,13 @@ models:
 
 ### Specifying labels
 
-dbt supports the specification of BigQuery labels for the tables and views that it creates. These labels can be specified using the `labels` model config.
+dbt supports the specification of BigQuery labels for the tables and <Term id="view">views</Term> that it creates. These labels can be specified using the `labels` model config.
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
+  
+:::info Note
+BigQuery requires that both key-value pair entries for labels have a maximum length of 63 characters.
+:::
 
 **Configuring labels in a model file**
 
@@ -367,16 +442,16 @@ models:
   columns:
     - name: field
       policy_tags:
-        - 'need_to_know'
+        - 'projects/<gcp-project>/locations/<location>/taxonomies/<organization>/policyTags/<tag>'
 ```
 
 </File>
 
-Please note that in order for policy tags to take effect, [column-level `persist_docs`](https://docs.getdbt.com/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot.
+Please note that in order for policy tags to take effect, [column-level `persist_docs`](/reference/resource-configs/persist_docs) must be enabled for the model, seed, or snapshot. Consider using [variables](/docs/build/project-variables) to manage taxonomies and make sure to add the required security [roles](https://cloud.google.com/bigquery/docs/column-level-security-intro#roles) to your BigQuery service account key.
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#what-is-an-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. dbt uses a [merge statement](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax) on BigQuery to refresh incremental tables.
 
 The `incremental_strategy` config can be set to one of two values:
  - `merge` (default)
@@ -442,7 +517,7 @@ declare dbt_partitions_for_replacement array<date>;
 set (dbt_partitions_for_replacement) = (
     select as struct
         array_agg(distinct date(max_tstamp))
-    from `my_project`.`my_dataset`.`sessions`
+    from `my_project`.`my_dataset`.{{ model_name }}__dbt_tmp
 );
 
 /*
@@ -497,7 +572,7 @@ with events as (
 
     {% if is_incremental() %}
         -- recalculate yesterday + today
-        where date(event_timestamp) in ({{ partitions_to_replace | join(',') }})
+        where timestamp_trunc(event_timestamp, day) in ({{ partitions_to_replace | join(',') }})
     {% endif %}
 
 ),
@@ -562,11 +637,62 @@ with events as (
 ... rest of model ...
 ```
 
+<VersionBlock firstVersion="1.4">
+
+#### Copying ingestion-time partitions
+
+If you have configured your incremental model to use "ingestion"-based partitioning (`partition_by.time_ingestion_partitioning: True`), you can opt to use a legacy mechanism for inserting and overwriting partitions. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets. Behind the scenes, dbt will add or replace each partition via the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators.
+
+You can enable this by switching on `copy_partitions: True` in the `partition_by` configuration. This approach works only in combination with "dynamic" partition replacement.
+
+<File name='bigquery_table.sql'>
+
+```sql
+{{ config(
+    materialized="incremental",
+    incremental_strategy="insert_overwrite",
+    partition_by={
+      "field": "created_date",
+      "data_type": "timestamp",
+      "granularity": "day",
+      "time_ingestion_partitioning": true,
+      "copy_partitions": true
+    }
+) }}
+
+select
+  user_id,
+  event_name,
+  created_at,
+  -- values of this column must match the data type + granularity defined above
+  timestamp_trunc(created_at, day) as created_date
+
+from {{ ref('events') }}
+```
+
+</File>
+
+<File name='logs/dbt.log'>
+
+```
+...
+[0m16:03:13.017641 [debug] [Thread-3 (]: BigQuery adapter: Copying table(s) "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" to "/projects/projectname/datasets/analytics/tables/bigquery_table$20230112" with disposition: "WRITE_TRUNCATE"
+...
+```
+
+</File>
+
+</VersionBlock>
+
 ## Controlling table expiration
 <Changelog>New in v0.18.0</Changelog>
 
 By default, dbt-created tables never expire. You can configure certain model(s)
 to expire after a set number of hours by setting `hours_to_expiration`.
+
+:::info Note
+The `hours_to_expiration` only applies to initial creation of the underlying table. It doesn't reset for incremental models when they do another run.
+:::
 
 <File name='dbt_project.yml'>
 
@@ -594,12 +720,15 @@ select ...
 </File>
 
 ## Authorized Views
+
 <Changelog>New in v0.18.0</Changelog>
 
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
+
+<Snippet src="grants-vs-access-to" />
 
 <File name='dbt_project.yml'>
 
@@ -629,10 +758,8 @@ models:
 
 </File>
 
-Views with this configuration will be able to select from objects in 
-`project_1.dataset_1` and `project_2.dataset_2`, even when they are located
-elsewhere and queried by users who do not otherwise have
-access to `project_1.dataset_1` and `project_2.dataset_2`.
+Views with this configuration will be able to select from objects in `project_1.dataset_1` and `project_2.dataset_2`, even when they are located elsewhere and queried by users who do not otherwise have access to `project_1.dataset_1` and `project_2.dataset_2`.
 
 #### Limitations
+
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.

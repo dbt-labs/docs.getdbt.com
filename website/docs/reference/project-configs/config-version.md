@@ -15,7 +15,7 @@ Specify your `dbt_project.yml` as using the v2 structure.
 
 <Changelog>
 
-* `v0.17.0`: This configuration was introduced — see the [migration guide for 0.17.0](upgrading-to-0-17-0) for more details.
+* `v0.17.0`: This configuration was introduced — see the [migration guide](/guides/migration/versions) for more details.
 
 </Changelog>
 

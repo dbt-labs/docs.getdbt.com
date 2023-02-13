@@ -201,7 +201,7 @@ models:
   - name: dim_customers
     description: >
       One record per customer. Note that a customer must have made a purchase to
-      be included in this table — customer accounts that were created but never
+      be included in this <Term id="table" /> — customer accounts that were created but never
       used have been filtered out.
 
     columns:
@@ -357,7 +357,7 @@ version: 2
 
 models:
   - name: customers
-    description: "!\[dbt Logo](https://raw.githubusercontent.com/dbt-labs/dbt/develop/etc/dbt-logo.svg)"
+    description: "!\[dbt Logo](https://github.com/dbt-labs/dbt-core/blob/main/etc/dbt-core.svg)"
 
     columns:
       - name: customer_id
@@ -369,25 +369,3 @@ models:
 
 If mixing images and text together, also consider using a docs block.
 
-
-
-### Use html in a description
-
-You can use html in the description to do fancier things than you can in just markdown. Embedding iframes work too! It is recomended you do this in a docs block for ease of maintenance. 
-
-
-<File name='models/docs.md'>
-
-```
-
-{% docs orders_status %}
-
-Here is an image documenting the ERD for this table:
-
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://your-embed-url.com"></iframe></div>
-
-{% enddocs %}
-
-```
-
-</File>
