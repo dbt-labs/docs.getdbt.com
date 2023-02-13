@@ -23,6 +23,12 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
 
+:::note
+
+Defining and installing dbt packages is different than defining and installing [Python packages](https://docs.getdbt.com/docs/build/python-models#using-pypi-packages).
+
+:::
+
 ## How do I add a package to my project?
 1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
