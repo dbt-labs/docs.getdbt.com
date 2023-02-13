@@ -66,10 +66,12 @@ An example of a webhook payload for a run that's started:
     "environmentName": "Production",
     "dbtVersion": "1.0.0",
     "projectName": "Snowflake Github Demo",
-    "runReason": "Kicked off from UI by test@test.com",
-    "runStartedAt": "2023-01-31T19:28:07Z",
+    "projectId": "167194",
     "runStatus": "Running",
-    "runStatusMessage": "None"
+    "runStatusCode": 3,
+    "runStatusMessage": "None",
+    "runReason": "Kicked off from UI by test@test.com",
+    "runStartedAt": "2023-01-31T19:28:07Z"
   }
 }
 ```
@@ -91,11 +93,13 @@ An example of a webhook payload for a completed run:
     "environmentName": "Production",
     "dbtVersion": "1.0.0",
     "projectName": "Snowflake Github Demo",
+    "projectId": "167194",
+    "runStatus": "Success",
+    "runStatusCode": 10,
+    "runStatusMessage": "None",
     "runReason": "Kicked off from UI by test@test.com",
     "runStartedAt": "2023-01-31T19:28:07Z",
-    "runFinishedAt": "2023-01-31T19:29:32Z",
-    "runStatus": "Success",
-    "runStatusMessage": "None"
+    "runFinishedAt": "2023-01-31T19:29:32Z"
   }
 }
 ```
@@ -117,11 +121,13 @@ An example of a webhook payload for an errored run:
     "environmentName": "dbt Vault Demo",
     "dbtVersion": "1.0.0",
     "projectName": "Snowflake Github Demo",
+    "projectId": "167194",
+    "runStatus": "Errored",
+    "runStatusCode": 20,
+    "runStatusMessage": "None",
     "runReason": "Kicked off from UI by test@test.com",
     "runStartedAt": "2023-01-31T21:14:41Z",
-    "runErroredAt": "2023-01-31T21:15:20Z",
-    "runStatus": "Errored",
-    "runStatusMessage": "None"
+    "runErroredAt": "2023-01-31T21:15:20Z"
   }
 }
 ```
