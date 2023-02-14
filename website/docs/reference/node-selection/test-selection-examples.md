@@ -47,7 +47,7 @@ In both cases, `test_type` checks a property of the test itself. These are forms
 
 <VersionBlock lastVersion="1.3">
 
-There are two modes (or options) to configure the behavior when performing indirect selection (with `eager` as the default):
+There are two modes to configure the behavior when performing indirect selection (with `eager` as the default):
 
 1. `eager` (default) - include ANY test that references the selected nodes
 1. `cautious` - restrict to tests that ONLY refer to selected nodes
@@ -60,7 +60,7 @@ The "cautious" mode can be useful in environments when you're only building a su
 
 <VersionBlock firstVersion="1.4">
 
-There are three modes (or options) to configure the behavior when performing indirect selection (with `eager` as the default):
+There are three modes to configure the behavior when performing indirect selection (with `eager` as the default):
 
 1. `eager` (default) - include ANY test that references the selected nodes
 1. `cautious` - restrict to tests that ONLY refer to selected nodes
