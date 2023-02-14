@@ -48,6 +48,11 @@ var siteSettings = {
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
+    docs:{
+      sidebar: {
+        hideable: true;
+       },
+      },
     image: "/img/avatar.png",
     colorMode: {
       defaultMode: "light",
@@ -268,16 +273,6 @@ var siteSettings = {
     {rel: 'icon', href: '/img/favicon.png', type: 'image/png'},
     {rel: 'icon', href: '/img/favicon.svg', type: 'image/svg+xml'},
   ],
-};
-
-module.exports = {
-  themeConfig: {
-    docs: {
-      sidebar: {
-        hideable: true,
-      },
-    },
-  },
 };
 
 // If versions json file found, add versions dropdown to nav
