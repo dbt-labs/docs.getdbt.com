@@ -27,7 +27,7 @@ Relevant changes:
 
 ### For maintainers of adapter plugins
 
-> **TL;DR** Not much heavy lifting for this minor version. But FYI there will be more work for `1.5.0`. Be warned!
+> **TL;DR** Not much heavy lifting for this minor version. We anticipate more work for `1.5.0`. We plan to release betas early & often, and provide guidance on upgrading.
 
 The high-level changes are:
 - Add support for Python 3.11
