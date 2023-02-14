@@ -51,8 +51,8 @@ var siteSettings = {
     docs:{
       sidebar: {
         hideable: true;
-       },
       },
+    },
     image: "/img/avatar.png",
     colorMode: {
       defaultMode: "light",
