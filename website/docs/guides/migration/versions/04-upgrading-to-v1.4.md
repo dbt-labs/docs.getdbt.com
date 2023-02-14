@@ -32,7 +32,6 @@ Relevant changes:
 The high-level changes are:
 - Add support for Python 3.11
 - Rename/Replace deprecated exception functions
-- Consolidate timestamp functions & macros
 - Add support for Incremental Predicates (if applicable)
 - Make use of new adapter-zone tests
 
