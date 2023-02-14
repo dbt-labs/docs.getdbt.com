@@ -76,7 +76,7 @@ The "buildable" and "cautious" modes can be useful in environments when you're o
 
 <VersionBlock lastVersion="1.3">
 
-<Tabs>
+<Tabs queryString="indirect-selection-mode">
 <TabItem value="eager" label="Eager mode (default)">
 
 ```shell
@@ -111,7 +111,7 @@ Put another way, it will prevent tests from running if one or more of its parent
 
 <VersionBlock firstVersion="1.4">
 
-<Tabs>
+<Tabs queryString="indirect-selection-mode">
 <TabItem value="eager" label="Eager mode (default)">
 
 ```shell
