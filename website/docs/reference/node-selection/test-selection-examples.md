@@ -72,7 +72,10 @@ The "buildable" and "cautious" modes can be useful in environments when you're o
 
 </VersionBlock>
 
-#### "Eager" mode (default)
+<!--tabs for eager mode, cautious mode, and buildable mode -->
+
+<Tabs>
+<TabItem value="eager" label="Eager mode (default)">
 
 ```shell
 $ dbt test --select orders
@@ -83,7 +86,9 @@ By default, a test will run when ANY parent is selected; we call this "eager" in
 
 In this mode, any test that depends on unbuilt resources will raise an error.
 
-#### "Cautious" mode
+</TabItem>
+
+<TabItem value="cautious" label="Cautious mode">
 
 ```shell
 $ dbt test --select orders --indirect-selection=cautious
@@ -96,9 +101,11 @@ It will only include tests whose references are each within the selected nodes.
 
 Put another way, it will prevent tests from running if one or more of its parents is unselected.
 
+</TabItem>
+
 <VersionBlock firstVersion="1.4">
 
-#### "Buildable" mode
+<TabItem value="buildable" label="Buildable mode">
 
 ```shell
 $ dbt test --select orders --indirect-selection=buildable
@@ -111,7 +118,13 @@ It will only include tests whose references are each within the selected nodes (
 
 This is useful in the same scenarios as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
 
+</TabItem>
+
 </VersionBlock>
+
+</Tabs>
+
+<!--End of tabs for eager mode, cautious mode, and buildable mode -->
 
 ### Syntax examples
 
