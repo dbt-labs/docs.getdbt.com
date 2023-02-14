@@ -224,8 +224,15 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [
-        "docs/collaborate/environments",
+      items: [{
+          type: "category",
+          label: "Environments",
+          items: [
+            "docs/collaborate/environments/environments-in-dbt",
+            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/collaborate/environments/dbt-core-environments",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",
@@ -701,6 +708,18 @@ const sidebarSettings = {
             "guides/best-practices/materializations/materializations-guide-5-best-practices",
             "guides/best-practices/materializations/materializations-guide-6-examining-builds",
             "guides/best-practices/materializations/materializations-guide-7-conclusion",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud Environment best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/environment-setup/1-env-guide-overview",
+          },
+          items: [
+            "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
           ],
         },
         "guides/best-practices/debugging-errors",
