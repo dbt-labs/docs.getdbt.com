@@ -270,6 +270,16 @@ var siteSettings = {
   ],
 };
 
+module.exports = {
+  themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
+    },
+  },
+};
+
 // If versions json file found, add versions dropdown to nav
 if (versions) {
   siteSettings.themeConfig.navbar.items.push({
