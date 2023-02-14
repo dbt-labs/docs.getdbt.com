@@ -27,7 +27,15 @@ Relevant changes:
 
 ### For maintainers of adapter plugins
 
-Link to GH discussion forthcoming
+> **TL;DR** Not much heavy lifting for this minor version. We anticipate more work for `1.5.0`. We plan to release betas early & often, and provide guidance on upgrading.
+
+The high-level changes are:
+- Add support for Python 3.11
+- Rename/replace deprecated exception functions
+- Add support for Incremental Predicates (if applicable)
+- Make use of new adapter-zone tests
+
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 

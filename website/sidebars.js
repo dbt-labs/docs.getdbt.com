@@ -710,6 +710,18 @@ const sidebarSettings = {
             "guides/best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        {
+          type: "category",
+          label: "dbt Cloud Environment best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/environment-setup/1-env-guide-overview",
+          },
+          items: [
+            "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
+          ],
+        },
         "guides/best-practices/debugging-errors",
         "guides/best-practices/writing-custom-generic-tests",
       ],
