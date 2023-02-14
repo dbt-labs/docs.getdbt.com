@@ -25,7 +25,7 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 
 :::note Using Python packages
 
-Defining and installing dbt packages is different than defining and installing [Python packages](/docs/build/python-models#using-pypi-packages).
+Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
 
 :::
 
