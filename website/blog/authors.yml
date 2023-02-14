@@ -53,6 +53,13 @@ brittany_krauth:
   name: Brittany Krauth
   organization: Degreed
 
+callie_white:
+  description: Callie White is a Senior Analytics Consultant at Montreal Analytics where she leads projects in partnership with client data teams to achieve the best-practice and best-suited results. She's also passionate about mentoring developers and demystifying the complexity of a role in data. Callie uses data-driven decision-making in everything she does; mainly to maximize cuddle time with her rescue pup named Snacks, or to scope out her next hiking trip. Montreal Analytics is a full-stack data consultancy servicing North America, and are both a dbt Preferred Consulting Partner and Platinum dbt Certification Award winner. We help organizations on the whole data journey, from strategic advisory to hands-on development and enablement. Whether deploying greenfield data platforms, tackling complex migrations or auditing & refactoring entangled data models, we build scalable solutions for organizations of all sizes. If you are interested in learning more about how we help clients across the modern stack, contact us today.
+  image_url: /img/blog/authors/callie-white.jpg
+  job_title: Analytics Consultant
+  name: Callie White
+  organization: Montreal Analytics
+
 callum_mccann:
   description: Callum works on metrics and is either talking about that or obsessing about his dog.
   image_url: /img/blog/authors/callum-mccann.jpg
@@ -185,6 +192,13 @@ izzy_erekson:
   job_title: Solutions Architect
   name: Izzy Erekson
   organization: dbt Labs
+
+jade_milaney:
+  description: Jade Milaney is an Analytics Consultant at Montreal Analytics where in with client data teams to implement data models and data engineering solutions. Jade studied mathematics in university, and has an interest in all things statistics and analytics. Montreal Analytics is a full-stack data consultancy servicing North America, and are both a dbt Preferred Consulting Partner and Platinum dbt Certification Award winner. We help organizations on the whole data journey, from strategic advisory to hands-on development and enablement. Whether deploying greenfield data platforms, tackling complex migrations or auditing & refactoring entangled data models, we build scalable solutions for organizations of all sizes. If you are interested in learning more about how we help clients across the modern stack, contact us today.
+  image_url: /img/blog/authors/jade-milaney.jpg
+  job_title: Analytics Consultant
+  name: Jade Milaney
+  organization: Montreal Analytics
 
 jason_ganz:
   image_url: /img/blog/authors/jasnonaz.jpeg
