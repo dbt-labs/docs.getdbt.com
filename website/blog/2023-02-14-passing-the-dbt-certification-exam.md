@@ -59,7 +59,7 @@ A huge proportion of a role in data is weighing the cost versus benefit of a tas
 
 ## Retaking the dbt Certification exam
 
-J: Getting ready for my second attempt, I leaned heavily on the dbt documentation and reference pages; I focused on debugging errors and schema generation, but the goal here was mostly to build up my confidence. A colleague and I built flashcards (decks [1](https://quizlet.com/ca/718959401/dbt-study-terms-and-practice-qs-flash-cards/) and [2](https://quizlet.com/ca/720366359/dbt-certification-prep-2-flash-cards/)) to help with this, working on recall of commands, error types, configurations, and properties. The extra hours and flash cards combined with pep talks from my team members had me feeling ready to go.
+**J:** Getting ready for my second attempt, I leaned heavily on the dbt documentation and reference pages; I focused on debugging errors and schema generation, but the goal here was mostly to build up my confidence. A colleague and I built flashcards (decks [1](https://quizlet.com/ca/718959401/dbt-study-terms-and-practice-qs-flash-cards/) and [2](https://quizlet.com/ca/720366359/dbt-certification-prep-2-flash-cards/)) to help with this, working on recall of commands, error types, configurations, and properties. The extra hours and flash cards combined with pep talks from my team members had me feeling ready to go.
 
 Test taking is a skill. As Callie says, "Academic-type test taking is its own skill that has huge emotional factors and has not been made for the way everyone’s brain works best."
 
