@@ -47,8 +47,7 @@ In both cases, `test_type` checks a property of the test itself. These are forms
 
 <VersionBlock lastVersion="1.3">
 
-#### Two modes for indirect selection
-There are two options to configure the behavior when performing indirect selection (with `eager` as the default):
+There are two modes (or options) to configure the behavior when performing indirect selection (with `eager` as the default):
 
 1. `eager` (default) - include ANY test that references the selected nodes
 1. `cautious` - restrict to tests that ONLY refer to selected nodes
@@ -61,8 +60,7 @@ The "cautious" mode can be useful in environments when you're only building a su
 
 <VersionBlock firstVersion="1.4">
 
-#### Three modes for indirect selection
-There are three options to configure the behavior when performing indirect selection (with `eager` as the default):
+There are three modes (or options) to configure the behavior when performing indirect selection (with `eager` as the default):
 
 1. `eager` (default) - include ANY test that references the selected nodes
 1. `cautious` - restrict to tests that ONLY refer to selected nodes
@@ -111,7 +109,7 @@ This mode is similarly conservative like "cautious", but is slightly more inclus
 
 It will only include tests whose references are each within the selected nodes (or their ancestors).
 
-This is useful in the same scenariors as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
+This is useful in the same scenarios as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
 
 </VersionBlock>
 
