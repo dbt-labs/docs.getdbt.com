@@ -43,7 +43,7 @@ The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and featur
 |---|---|
 | **Keyboard shortcuts** | You can access a variety of [commands and actions](/docs/get-started/dbt-cloud-tips#cloud-ide-keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. |
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
-| **IDE git button** | The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project. You can create or change branches, resolve merge conflicts, and execute git commands directly in the IDE. |
+| **IDE git button** | The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project. You can create or change branches, [resolve merge conflicts](/docs/collaborate/git/merge-conflicts), and execute git commands directly in the IDE. |
 | **Documentation** | You can generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
@@ -101,7 +101,7 @@ Set up your developer credentials:
 6. Access the Cloud IDE by clicking **Develop** at the top of the page.
 7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
 
-Nice job, you're ready to start developing and [building models](/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
+Nice job, you're ready to start developing and building models 🎉! 
 
 ## Build, compile, and run projects
 
