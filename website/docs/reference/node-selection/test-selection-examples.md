@@ -103,8 +103,6 @@ Put another way, it will prevent tests from running if one or more of its parent
 
 </TabItem>
 
-<VersionBlock firstVersion="1.4">
-
 <TabItem value="buildable" label="Buildable mode">
 
 ```shell
@@ -119,8 +117,6 @@ It will only include tests whose references are each within the selected nodes (
 This is useful in the same scenarios as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
 
 </TabItem>
-
-</VersionBlock>
 
 </Tabs>
 
