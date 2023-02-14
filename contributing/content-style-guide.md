@@ -46,7 +46,7 @@ If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs
 
 ## Using Markdown
 
-docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax[document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the following table: 
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax [document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the following table: 
 
 | Element                                     | Syntax                                                |
 |---------------------------------------------|-------------------------------------------------------|
