@@ -31,11 +31,11 @@ Relevant changes:
 
 The high-level changes are:
 - Add support for Python 3.11
-- Rename/Replace deprecated exception functions
+- Rename/replace deprecated exception functions
 - Add support for Incremental Predicates (if applicable)
 - Make use of new adapter-zone tests
 
-See [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624) for more detailed in for and to ask any questions you may have!
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 
