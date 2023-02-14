@@ -23,7 +23,7 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
 
-:::note
+:::note Using Python packages
 
 Defining and installing dbt packages is different than defining and installing [Python packages](/docs/build/python-models#using-pypi-packages).
 
