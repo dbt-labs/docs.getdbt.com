@@ -195,7 +195,7 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/deploy/deployments",
-        "docs/deploy/regions",
+        "docs/deploy/regions-ip-addresses",
         {
           type: "category",
           label: "dbt Cloud deploy options",
@@ -209,20 +209,30 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
+            "docs/deploy/artifacts",
+            "docs/deploy/webhooks",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
             "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
           ],
         },
+        "docs/deploy/about-state",
         "docs/deploy/cloud-ci-job",
       ],
     },
     {
       type: "category",
       label: "Collaborate with others",
-      items: [
-        "docs/collaborate/environments",
+      items: [{
+          type: "category",
+          label: "Environments",
+          items: [
+            "docs/collaborate/environments/environments-in-dbt",
+            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/collaborate/environments/dbt-core-environments",
+          ],
+        },
         {
           type: "category",
           label: "Git version control",
@@ -231,7 +241,7 @@ const sidebarSettings = {
             "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/resolve-merge-conflicts",
+            "docs/collaborate/git/merge-conflicts",
             {
               type: "category",
               label: "Supported git providers",
@@ -349,40 +359,6 @@ const sidebarSettings = {
       ],
     },
   ],
-  "dbt Cloud": [
-    {
-      type: "category",
-      label: "Overview",
-      link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: [],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud IDE",
-      items: ["docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide"],
-    },
-    {
-      type: "category",
-      label: "Configuring dbt Cloud",
-      items: [
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      ],
-    },
-    {
-      type: "category",
-      label: "Using dbt Cloud",
-      link: {
-        type: "generated-index",
-        title: "Using dbt Cloud",
-        description: "Learn how you can use dbt Cloud.",
-        slug: "/docs/dbt-cloud",
-      },
-      items: [
-        "docs/dbt-cloud/using-dbt-cloud/artifacts",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
-      ],
-    },
-  ],
   reference: [
     {
       type: "category",
@@ -432,6 +408,9 @@ const sidebarSettings = {
         "reference/resource-configs/azuresynapse-configs",
         "reference/resource-configs/greenplum-configs",
         "reference/resource-configs/impala-configs",
+        "reference/resource-configs/vertica-configs",
+        "reference/resource-configs/doris-configs",
+        "reference/resource-configs/fal-configs",
       ],
     },
     {
@@ -664,6 +643,10 @@ const sidebarSettings = {
         "reference/warehouse-setups/mysql-setup",
         "reference/warehouse-setups/ibmdb2-setup",
         "reference/warehouse-setups/alloydb-setup",
+        "reference/warehouse-setups/doris-setup",
+        "reference/warehouse-setups/infer-setup",
+        "reference/warehouse-setups/databend-setup",
+        "reference/warehouse-setups/fal-setup",
       ],
     },
     {
@@ -711,6 +694,36 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        {
+          type: "category",
+          label: "Materializations best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
+          },
+          items: [
+            "guides/best-practices/materializations/materializations-guide-2-available-materializations",
+            "guides/best-practices/materializations/materializations-guide-3-configuring-materializations",
+            "guides/best-practices/materializations/materializations-guide-4-incremental-models",
+            "guides/best-practices/materializations/materializations-guide-5-best-practices",
+            "guides/best-practices/materializations/materializations-guide-6-examining-builds",
+            "guides/best-practices/materializations/materializations-guide-7-conclusion",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud Environment best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/environment-setup/1-env-guide-overview",
+          },
+          items: [
+            "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
+          ],
+        },
+        "guides/best-practices/debugging-errors",
+        "guides/best-practices/writing-custom-generic-tests",
       ],
     },
     {
@@ -747,7 +760,8 @@ const sidebarSettings = {
           items: [
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
-            "guides/orchestration/custom-cicd-pipelines/4-something-to-consider",
+            "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
       ],
@@ -806,35 +820,59 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Advanced",
+      label: "dbt Ecosystem",
+      link: {
+        type: "generated-index",
+        title: "dbt Ecosystem guides",
+        description: "Learn about the dbt ecosystem and how to build with dbt.",
+        slug: "/guides/dbt-ecosystem/",
+      },
       items: [
         {
           type: "category",
           label: "Adapter development",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+          },
           items: [
-            "guides/advanced/adapter-development/1-what-are-adapters",
-            "guides/advanced/adapter-development/2-prerequisites-for-a-new-adapter",
-            "guides/advanced/adapter-development/3-building-a-new-adapter",
-            "guides/advanced/adapter-development/4-testing-a-new-adapter",
-            "guides/advanced/adapter-development/5-documenting-a-new-adapter",
-            "guides/advanced/adapter-development/6-promoting-a-new-adapter",
-            "guides/advanced/adapter-development/7-verifying-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
+            "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
         },
+        {
+          type: "category",
+          label: "Databricks and dbt",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+          },
+          items: [
+            "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+          ],
+        },
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
+    },
+    {
+      type: "category",
+      label: "Advanced",
+      items: ["guides/advanced/creating-new-materializations"],
     },
     {
       type: "category",
       label: "Legacy",
       items: [
-        "guides/legacy/debugging-errors",
         "guides/legacy/debugging-schema-names",
         "guides/legacy/getting-help",
         "guides/legacy/best-practices",
-        "guides/legacy/writing-custom-generic-tests",
         "guides/legacy/building-packages",
-        "guides/legacy/creating-new-materializations",
-        "guides/legacy/understanding-state",
         "guides/legacy/videos",
       ],
     },
@@ -906,6 +944,122 @@ const sidebarSettings = {
         {
           type: "autogenerated",
           dirName: "terms",
+        },
+      ],
+    },
+  ],
+  SQLReference: [
+    {
+      type: "category",
+      label: "SQL Reference",
+      link: {
+        type: "generated-index",
+        title: "SQL Reference",
+        description:
+          "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
+        slug: "/sql-reference",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Statements",
+          items: [
+            "sql-reference/statements/select",
+            "sql-reference/statements/from",
+            "sql-reference/statements/case",
+            "sql-reference/statements/group-by",
+            "sql-reference/statements/distinct",
+          ],
+        },
+        {
+          type: "category",
+          label: "Aggregate Functions",
+          items: [
+            "sql-reference/aggregate-functions/avg",
+            "sql-reference/aggregate-functions/count",
+            "sql-reference/aggregate-functions/max",
+            "sql-reference/aggregate-functions/min",
+            "sql-reference/aggregate-functions/round",
+            "sql-reference/aggregate-functions/sum",
+            "sql-reference/aggregate-functions/array-agg",
+          ],
+        },
+        {
+          type: "category",
+          label: "Clauses",
+          items: [
+            "sql-reference/clauses/where",
+            "sql-reference/clauses/having",
+            "sql-reference/clauses/limit",
+            "sql-reference/clauses/order-by",
+          ],
+        },
+        {
+          type: "category",
+          label: "Date Functions",
+          items: [
+            "sql-reference/date-functions/dateadd",
+            "sql-reference/date-functions/datediff",
+            "sql-reference/date-functions/datepart",
+            "sql-reference/date-functions/datetrunc",
+          ],
+        },
+        {
+          type: "category",
+          label: "String Functions",
+          items: [
+            "sql-reference/string-functions/upper",
+            "sql-reference/string-functions/lower",
+            "sql-reference/string-functions/concat",
+            "sql-reference/string-functions/trim",
+          ],
+        },
+        {
+          type: "category",
+          label: "Window Functions",
+          items: [
+            "sql-reference/window-functions/rank",
+            "sql-reference/window-functions/row-number",
+          ],
+        },
+        {
+          type: "category",
+          label: "Operators",
+          items: [
+            "sql-reference/operators/between",
+            "sql-reference/operators/in",
+            "sql-reference/operators/or",
+            "sql-reference/operators/ilike",
+            "sql-reference/operators/like",
+            "sql-reference/operators/and",
+            "sql-reference/operators/not",
+            "sql-reference/operators/any-all",
+          ],
+        },
+        {
+          type: "category",
+          label: "Joins",
+          items: [
+            "sql-reference/joins/inner-join",
+            "sql-reference/joins/outer-join",
+            "sql-reference/joins/self-join",
+            "sql-reference/joins/cross-join",
+            "sql-reference/joins/left-join",
+            "sql-reference/joins/right-join",
+          ],
+        },
+        {
+          type: "category",
+          label: "Data Types",
+          items: [
+            "sql-reference/data-type/data-types",
+            "sql-reference/data-type/strings",
+          ],
+        },
+        {
+          type: "category",
+          label: "Other",
+          items: ["sql-reference/other/cast", "sql-reference/other/comments"],
         },
       ],
     },
