@@ -345,6 +345,7 @@ def model(dbt, session):
     # apply our function
     # (columns need to be in uppercase on Snowpark)
     df["IS_HOLIDAY"] = df["ORDER_DATE"].apply(is_holiday)
+    df["ORDER_DATE"].dt.tz_localize('UTC') #change date type
 
     # return final dataset (Pandas DataFrame)
     return df
