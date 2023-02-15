@@ -154,12 +154,6 @@ Some known issues and limitations:
 
 </VersionBlock>
 
-<VersionBlock lastVersion="0.21">
-
-- Column-level comments aren't supported for models materialized as <Term id="view">views</Term>
-
-</VersionBlock>
-
 </div>
 
 </WHCode>

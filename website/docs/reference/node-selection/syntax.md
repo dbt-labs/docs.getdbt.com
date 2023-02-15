@@ -24,10 +24,6 @@ We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"
 
 By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--select` flag is used to specify a subset of nodes to execute.
 
-:::info
-Before dbt v0.21, certain commands (notably `run`, `test`, and `compile`) used a flag called `--models` instead of `--select`. The two were functionally identical. Those commands still support the `--models` flag for backwards compatibility.
-:::
-
 ### How does selection work?
 
 1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators (unions, intersections, exclusions).
@@ -53,7 +49,6 @@ The `--select` flag accepts one or more arguments. Each argument can be one of:
 
 Examples:
 
-<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select my_dbt_project_name   # runs all models in your project
@@ -65,24 +60,8 @@ Examples:
   $ dbt run --select path/to/my_model.sql  # run a specific model by its path
   ```
 
-</VersionBlock>
-<VersionBlock lastVersion="0.20">
-
-  ```bash
-  $ dbt run --models my_dbt_project_name   # runs all models in your project
-  $ dbt run --models my_dbt_model          # runs a specific model
-  $ dbt run --models path.to.my.models     # runs all models in a specific directory
-  $ dbt run --models my_package.some_model # run a specific model in a specific package
-  $ dbt run --models tag:nightly           # run models with the "nightly" tag
-  $ dbt run --models path/to/models        # run models contained in path/to/models
-  $ dbt run --models path/to/my_model.sql  # run a specific model by its path
-  ```
-
-</VersionBlock>
-
 dbt supports a shorthand language for defining subsets of nodes. This language uses the characters `+`, `@`, `*`, and `,`.
 
-<VersionBlock firstVersion="0.21">
 
   ```bash
   # multiple arguments can be provided to --select
@@ -95,22 +74,9 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
   $ dbt run --select path:marts/finance,tag:nightly,config.materialized:table
   ```
 
-</VersionBlock>
-<VersionBlock lastVersion="0.20">
-
-  ```bash
-  # multiple arguments can be provided to --select
-  $ dbt run --models my_first_model my_second_model
-
-  # these arguments can be projects, models, directory paths, tags, or sources
-  $ dbt run --models tag:nightly my_model finance.base.*
-
-  # use methods and intersections for more complex selectors
-  $ dbt run --models path:marts/finance,tag:nightly,config.materialized:table
-  ```
-
-</VersionBlock>
-
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
 consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
+
+<Snippet src="discourse-help-feed-header" />
+<DiscourseHelpFeed tags="node-selection"/>

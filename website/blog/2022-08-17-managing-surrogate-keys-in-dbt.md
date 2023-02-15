@@ -20,7 +20,7 @@ Sometimes, we are lucky enough to have data sources with these keys built right 
 
 ## How were surrogate keys managed in the past?
 
-Before the advent of the analytical warehouse tools we use today, the data warehouse architecture had a few key constraints that led to the rise of the Kimball-style warehouse with a snowflake schema. This was because storage was expensive — it was more efficient to store data as few times as possible, and rely on joins to connect data tog   ether when a report required it. And to make those joins efficient, it became standard practice to use **monotonically increasing integer surrogate keys (MIISKs)**, a fancy way to say “count each record starting at one” so that your data model would look something like this (you are a cheesemonger):
+Before the advent of the analytical warehouse tools we use today, the data warehouse architecture had a few key constraints that led to the rise of the Kimball-style warehouse with a snowflake schema. This was because storage was expensive — it was more efficient to store data as few times as possible, and rely on joins to connect data tog   ether when a report required it. And to make those joins efficient, it became standard practice to use **<Term id="monotonically-increasing"/> integer surrogate keys (MIISKs)**, a fancy way to say “count each record starting at one” so that your data model would look something like this (you are a cheesemonger):
 
 | product_id | product_name | created_by | created_at |
 | --- | --- | --- | --- |
@@ -194,7 +194,7 @@ agg as (
 final as (
 	
 	select
-		{{ dbt_utils.surrogate_key([
+		{{ dbt_utils.generate_surrogate_key([
 				'report_date', 
 				'user_id'
 			])
@@ -216,7 +216,7 @@ The analytical warehouses we use now no longer have the same constraints that tr
 This strategy is not without its caveats either!
 
 
-- **Collisions -** Although it's *exceedingly* rare, depending on the hashing algorithm you use, it's possible for two different sets of inputs to produce the same outputs, causing erroneous duplicate records in your dataset. Using an MD5 hash (the default for the `dbt_utils.surrogate_key` macro), you have a 50% of a collision when you get up to 2^64 records (1.84 x 10E19 aka a whole lot of data). While [very very very unlikely](https://docs.getdbt.com/terms/surrogate-key#a-note-on-hashing-algorithms), it’s certainly something to consider for truly massive datasets.
+- **Collisions -** Although it's *exceedingly* rare, depending on the hashing algorithm you use, it's possible for two different sets of inputs to produce the same outputs, causing erroneous duplicate records in your dataset. Using an MD5 hash (the default for the `dbt_utils.generate_surrogate_key` macro), you have a 50% of a collision when you get up to 2^64 records (1.84 x 10E19 aka a whole lot of data). While [very very very unlikely](https://docs.getdbt.com/terms/surrogate-key#a-note-on-hashing-algorithms), it’s certainly something to consider for truly massive datasets.
 - **Datatypes -** If you’re in the process of migrating legacy code to a new warehouse provider, you likely have some constraints on the datatype of your keys from the consumers of your datasets, and may have some issues converting to a string-based key. Luckily, some warehouse providers have hash functions that output integer values (like Snowflake’s `MD5_UPPER/LOWER_64` functions). However, these have fewer bits in the hashing function, so may lead to collision issues on big data sets.
 - **Performance -** Hashed keys generally result in long string-type values. On massive datasets on some warehouses, this could cause some performance issues. Unlike MIISKs, string values can’t be easily partitioned to improve query performance. Luckily, as described in the above bullet point, you can choose to utilize hashing functions that output other, more performant datatypes!
 - **Storage -** As mentioned above, hash keys will end up with higher storage costs than their MIISK counterparts. Given that the cost of storage in cloud warehouses is extremely cheap, it’s unlikely to be worth the effort to optimize for storage costs.

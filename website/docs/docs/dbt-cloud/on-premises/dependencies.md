@@ -98,6 +98,6 @@ The required inbound ports are:
 
 For additional information related to inbound traffic view the following sections.
 
-- [Application Data Flows](/docs/dbt-cloud/deployments/deployment-architecture#application-data-flows)
-- [Data Warehouse Interaction](/docs/dbt-cloud/deployments/deployment-architecture#data-warehouse-interaction)
-- [Customer Managed Network Architecture](/docs/dbt-cloud/deployments/deployment-architecture#customer-managed-general-network-architecture)
+- [Application Data Flows](docs/deploy/architecture#application-data-flows)
+- [Data Warehouse Interaction](/docs/deploy/architecture#data-warehouse-interaction)
+- [Customer Managed Network Architecture](/docs/deploy/architecture)

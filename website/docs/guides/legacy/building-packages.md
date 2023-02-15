@@ -5,7 +5,7 @@ id: "building-packages"
 
 ## Assumed knowledge
 This article assumes you are familiar with:
-- [packages](package-management)
+- [packages](/docs/build/packages)
 - administering a repository on GitHub
 - [semantic versioning](https://semver.org/)
 
@@ -41,7 +41,7 @@ When working on your package, we often find it useful to install a local copy of
 ### Follow our best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
+Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
 
 This is where it comes in especially handy to have worked on your own dbt project previously.
 
@@ -50,7 +50,7 @@ _Modeling packages only_
 
 Not every user of your package is going to store their Mailchimp data in a schema named `mailchimp`. As such, you'll need to make the location of raw data configurable.
 
-We recommend using [sources](using-sources) and [variables](using-variables) to achieve this. Check out [this package](https://github.com/fivetran/dbt_facebook_ads_source/blob/main/models/src_facebook_ads.yml#L5-L6) for an example — notably, the README [includes instructions](https://github.com/fivetran/dbt_facebook_ads_source#configuration) on how to override the default schema from a `dbt_project.yml` file.
+We recommend using [sources](/docs/build/sources) and [variables](/docs/build/project-variables) to achieve this. Check out [this package](https://github.com/fivetran/dbt_facebook_ads_source/blob/main/models/src_facebook_ads.yml#L5-L6) for an example — notably, the README [includes instructions](https://github.com/fivetran/dbt_facebook_ads_source#configuration) on how to override the default schema from a `dbt_project.yml` file.
 
 ### Install upstream packages from hub.getdbt.com
 
@@ -92,7 +92,7 @@ dbt makes it possible for users of your package to override your model <Term id=
 
 The major exception to this is when working with data sources that benefit from incremental modeling (for example, web page views). Implementing incremental logic on behalf of your end users is likely to be helpful in this case.
 ### Test and document your package
-It's critical that you [test](building-a-dbt-project/tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
+It's critical that you [test](/docs/build/tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
 Further, adding [documentation](documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
 ### Include useful GitHub artifacts
