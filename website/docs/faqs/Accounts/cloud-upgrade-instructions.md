@@ -1,7 +1,7 @@
 ---
 title: "Upgrade your dbt Cloud plan"
 id: "cloud-upgrade-instructions"
-description: "Instructions for upgrading your dbt Cloud account after the trial ends."
+description: "Instructions for upgrading your dbt Cloud plan after the trial ends."
 ---
 
 ## How to upgrade your dbt Cloud Account
