@@ -1,5 +1,5 @@
 ---
-title: "Upgrading your dbt Cloud Account"
+title: "Upgrade your dbt Cloud plan"
 id: "cloud-upgrade-instructions"
 description: "Instructions for upgrading your dbt Cloud account after the trial ends."
 ---
