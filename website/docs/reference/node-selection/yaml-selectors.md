@@ -56,6 +56,9 @@ This is the most thorough syntax, which can include graph and set operators.
 
 Review [methods](/reference/node-selection/methods) for the available list.
 
+
+<VersionBlock lastVersion="1.3">
+
 ```yml
 definition:
   method: tag
@@ -73,6 +76,31 @@ definition:
   
   indirect_selection: eager | cautious  # include all tests selected indirectly? eager by default
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+```yml
+definition:
+  method: tag
+  value: nightly
+
+  # Optional keywords map to the `+` and `@` operators:
+
+  children: true | false
+  parents: true | false
+
+  children_depth: 1    # if children: true, degrees to include
+  parents_depth: 1     # if parents: true, degrees to include
+
+  childrens_parents: true | false     # @ operator
+
+  indirect_selection: eager | cautious | buildable  # include all tests selected indirectly? eager by default
+```
+
+</VersionBlock>
+
 
 The `*` operator to select all nodes can be written as:
 ```yml
@@ -112,6 +140,8 @@ where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`)
 
 #### Indirect selection
 
+<VersionBlock lastVersion="1.3">
+
 As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" by setting `indirect_selection` for a specific criterion:
 
 ```yml
@@ -126,6 +156,31 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 ```
 
 If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" or "buildable" by setting `indirect_selection` for a specific criterion:
+
+```yml
+- union:
+    - method: fqn
+      value: model_a
+      indirect_selection: eager  # default: will include all tests that touch model_a
+    - method: fqn
+      value: model_b
+      indirect_selection: cautious  # will not include tests touching model_b
+                        # if they have other unselected parents
+    - method: fqn
+      value: model_c
+      indirect_selection: buildable  # will not include tests touching model_c
+                        # if they have other unselected parents (unless they have an ancestor that is selected)
+```
+
+If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+
+</VersionBlock>
 
 See [test selection examples](test-selection-examples) for more details about indirect selection.
 
