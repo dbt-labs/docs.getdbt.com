@@ -50,7 +50,7 @@ var siteSettings = {
   themeConfig: {
     docs:{
       sidebar: {
-        hideable: true;
+        hideable: true,
       },
     },
     image: "/img/avatar.png",
