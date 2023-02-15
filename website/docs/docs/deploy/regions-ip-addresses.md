@@ -11,7 +11,7 @@ dbt Cloud is [hosted](/docs/deploy/architecture) in multiple regions and will al
 
 | Region | Location | Access URL | IP addresses | Developer plan | Team plan | Enterprise plan |
 |--------|----------|------------|--------------|-----------------|------------|------------------|
-| North America <br />multi tenant | us-east-1 <br />(N. Virginia) | cloud.getdbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 | ✅ | ✅ | ✅ |
+| North America[^*] | us-east-1 <br />(N. Virginia) | cloud.getdbt.com | 52.45.144.63 <br /> 54.81.134.249 <br />52.22.161.231 | ✅ | ✅ | ✅ |
 | EMEA[^*] | eu-central-1	(Frankfurt) | emea.dbt.com | 3.123.45.39 <br /> 3.126.140.248 <br /> 3.72.153.148 | ❌ | ❌ | ✅ |
 | APAC [^*] | 	ap-southeast-2  (Sydney)| au.dbt.com | 52.65.89.235 <br /> 3.106.40.33 <br /> 13.239.155.206 <br />| ❌ | ❌ | ✅ |
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/guides/legacy/getting-help#dbt-cloud-support) for your IPs | ❌ | ❌ | ✅ |
