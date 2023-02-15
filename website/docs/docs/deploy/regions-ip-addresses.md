@@ -17,5 +17,4 @@ dbt Cloud is [hosted](/docs/deploy/architecture) in multiple regions and will al
 | Virtual Private dbt or Single tenant | Customized |  Customized | Ask [Support](/guides/legacy/getting-help#dbt-cloud-support) for your IPs | ❌ | ❌ | ✅ |
 
 
-
-
+[^*]: These regions support multi-tenant instances only.
