@@ -40,7 +40,7 @@ const sidebarSettings = {
               items: [
                 "docs/get-started/privatelink/about-private-link",
                 "docs/get-started/privatelink/snowflake-privatelink",
-                "docs/get-started/privatelink/snowflake-privatelink",
+                "docs/get-started/privatelink/redshift-privatelink",
                 "docs/get-started/privatelink/snowflake-privatelink",
               ],
             },
