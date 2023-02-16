@@ -17,7 +17,7 @@ The initial release of support for AWS PrivateLink features integration with the
 
 ## Configuring PrivateLink
 
-Customers on all supported platforms will have to contact the dbt support team to complete the integration. It is not a self-service feature at this time. Ensure that the subject contains "Multi-tenant PrivateLink" in some form. Please allow 24-48 hours for our teams to complete the setup on our side. 
+Customers on all supported platforms will have to contact the dbt support team to complete the integration. It is not a self-service feature at this time. Ensure that the subject contains "Multi-tenant PrivateLink" in some form. Please allow 1-2 business days for our teams to complete the setup on our side. 
 
 ### Setup
 
