@@ -14,12 +14,12 @@ Once you've created a token, you can use it in the Authorization header of reque
 
 You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, making sure to replace:
 * `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
-* Your token in the Authorization header with your actual API token.
-* QUERY_BODY with a JSON string, for example `{ "query": "<query text>" }`
+* `YOUR_TOKEN` in the Authorization header with your actual API token.
+* `QUERY_BODY` with a JSON string, for example `{ "query": "<query text>" }`
 
   ```shell
   curl 'https://metadata.YOUR_ACCESS_URL/graphql' \
-    -H 'authorization: Bearer <your token>' \
+    -H 'authorization: Bearer YOUR_TOKEN' \
     -H 'content-type: application/json'
     -X POST
     --data QUERY_BODY
