@@ -23,7 +23,9 @@ Access to webhooks in dbt Cloud is currently limited to beta users. If you want 
 :::
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
-From your **Account Settings** in [dbt Cloud](https://cloud.getdbt.com/login) (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. For a new webhook: 
+From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/deploy/regions-ip-addresses).
+
+To configure your new webhook: 
 
 - **Name** &mdash; Enter a name for your outbound webhook.
 - **Description** &mdash; Enter a description of the webhook.
@@ -135,9 +137,12 @@ An example of a webhook payload for an errored run:
 ## API for webhooks {#api-for-webhooks}
 You can use the dbt Cloud API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
+:::info Access URLs
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. This section uses `cloud.get.com` (which is for North America) as part of the endpoint but your access URL might be different. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/deploy/regions-ip-addresses).   
+:::
+
 ### List all webhook subscriptions
-<details>
-<summary>List all webhooks that are available from a specific dbt Cloud account.</summary>
+List all webhooks that are available from a specific dbt Cloud account.
 
 #### Request 
 ```json
@@ -225,8 +230,6 @@ GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
 | `http_status_code` | The latest HTTP status of the webhook. | Can be any [HTTP response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). If the value is `0`, that means the webhook has never been triggered. |
 | `dispatched_at` | Timestamp of when the webhook was last dispatched to the specified endpoint URL. |  |
 | `account_id` | The dbt Cloud account ID. |  |
-
-</details>
 
 ### Get details about a webhook
 Get detailed information about a specific webhook. 
