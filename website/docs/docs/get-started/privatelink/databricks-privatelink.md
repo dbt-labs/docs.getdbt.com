@@ -1,6 +1,6 @@
 ---
-title: "Configuring Databricks PrivateLinks"
+title: "Configuring Databricks PrivateLink"
 id: databricks-privatelink
-description: "Configuring PrivateLinks for Databricks"
-sidebar_label: "Databricks PrivateLinks"
+description: "Configuring PrivateLink for Databricks"
+sidebar_label: "Databricks PrivateLink"
 ---
