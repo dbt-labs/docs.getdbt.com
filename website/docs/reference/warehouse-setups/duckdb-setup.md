@@ -55,7 +55,9 @@ pip is the easiest way to install the adapter:
 
 There is also a `database` field defined in the `DuckDBCredentials` class for consistency with the parent `Credentials` class, but it defaults to `main` and setting it to be something else will likely cause strange things to happen that cannot be fully predicted, so please avoid changing it.
 
-Example:
+As of version 1.2.3, you can load any supported [DuckDB extensions](https://duckdb.org/docs/extensions/overview) by listing them in the `extensions` field in your profile. You can also set any additional [DuckDB configuration options](https://duckdb.org/docs/sql/configuration) via the `settings` field, including options that are supported in any loaded extensions. 
+
+For example, to be able to connect to `s3` and read/write `parquet` files using an AWS access key and secret, your profile would look something like this:
 
 <File name='profiles.yml'>
 
@@ -66,8 +68,13 @@ your_profile_name:
     dev:
       type: duckdb
       path: 'file_path/database_name.duckdb'
-      #optional fields
-      schema: schema_name 
+      extensions:
+        - httpfs
+        - parquet
+      settings:
+        s3_region: my-aws-region
+        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
 ```
 
 </File>
