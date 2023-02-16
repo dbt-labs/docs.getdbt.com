@@ -35,7 +35,6 @@ Provide the support team with the following information:
 
 Instructions for configuring the various DWH providers are unique. The following guides outline the steps:
 
-- [Databricks](/databricks-privatelink)
 - [Redshift](/redshift-privatelink)
 - [Snowflake](/snowflake-privatelink)
 
