@@ -148,7 +148,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure |
-| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Azure AD SSO in dbt Cloud" />
@@ -157,12 +157,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
     here, you can navigate to the login URL generated for your account's _slug_ to
     test logging in with Azure AD.
 
-:::success Logging in
-Users in your Azure AD account will now be able to log into the application
-by navigating to the URL, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
-
-`https://YOUR_ACCESS_URL/enterprise-login/<login-slug>`
-:::
+<Snippet src="login_url_note" />
 
 ## Setting up RBAC
 Now you have completed setting up SSO with Azure AD, the next steps will be to set up
