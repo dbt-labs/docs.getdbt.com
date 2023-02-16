@@ -1791,3 +1791,20 @@ section > h2:not(.resource-section) {
 .community-spotlight-hero p {
   font-size: 1.25rem;
 }
+
+/* Sidebar collapse button */
+.theme-doc-sidebar-container>div>button.button {
+  background-color: var(--ifm-font-color-base-inverse);
+}
+
+.theme-doc-sidebar-container>div>button.button:hover {
+  background-color: var(--color-off-white);
+}
+
+html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button {
+  background-color: #1C1C1D;
+}
+
+html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
+  background-color: #383839;
+}
