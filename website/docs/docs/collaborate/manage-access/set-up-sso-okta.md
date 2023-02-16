@@ -163,8 +163,8 @@ To complete setup, follow the steps below in dbt Cloud.
 
 There are two ways to enable Okta depending on how you access dbt Cloud:
 
-- If you access dbt Cloud using an [Access URL](/docs/deploy/regions-ip-addresses), such as `cloud.getdbt.com`, contact your account manager to gain access to the Okta configuration UI.
-* If you access dbt Cloud using a virtual private cloud (VPC), enable the `native_okta` feature flag in the dbt Cloud admin backend.
+- If you access dbt Cloud using an [Access URL](/docs/deploy/regions-ip-addresses), such as `cloud.getdbt.com`, contact your account manager to gain access to the Okta configuration user interface.
+* If you access dbt Cloud using virtual private cloud (VPC), enable the `native_okta` feature flag in the dbt Cloud admin backend.
 
 ### Supplying credentials
 

@@ -12,24 +12,18 @@ Once you've created a token, you can use it in the Authorization header of reque
 
 ## Running Queries
 
-You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. Be sure to replace your token in the Authorization header with your actual API token.
+You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, making sure to replace:
+* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+* Your token in the Authorization header with your actual API token.
+* QUERY_BODY with a JSON string, for example `{ "query": "<query text>" }`
 
   ```shell
   curl 'https://metadata.YOUR_ACCESS_URL/graphql' \
     -H 'authorization: Bearer <your token>' \
     -H 'content-type: application/json'
     -X POST
-    --data <query>
+    --data QUERY_BODY
   ```
-
-Making sure to:
-
-- Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
-- Format the `<query>` body as a JSON string:
-
-    ```shell
-    { "query": "<query text>" }
-    ```
 
 Every query will rely on a _jobID_.  You can get the jobID by clicking into the relevant job in dbt Cloud and observing the URL. In this example URL, the jobID would be 917: `https://YOUR_ACCESS_URL/#/accounts/1/projects/665/jobs/917/`
 
@@ -37,6 +31,6 @@ There are several illustrative example queries in this documentation. You can se
 
 ## GraphiQL
 
-You can experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql). On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.
+You can experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql), making sure to use the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.
 
 <Lightbox src="/img/docs/dbt-cloud/GraphiQL.png" title=""/>
