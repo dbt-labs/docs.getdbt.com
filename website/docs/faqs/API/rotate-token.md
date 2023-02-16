@@ -9,7 +9,7 @@ For security reasons and best practices, you should aim to rotate API keys every
 
 ### Steps to rotate API keys
 
-1. To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens), send the following request,  replacing `YOUR_USER_ID` , `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL` with your information:
+1. To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens), send the following request, replacing `YOUR_USER_ID`, `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL` with your information:
 
 * Find your `YOUR_USER_ID` by referring to [How to find your user ID](/faqs/Accounts/find-user-id).
 * Find your `YOUR_CURRENT_TOKEN`, go to **Account Settings** -> **API Access** and copy the API key.
