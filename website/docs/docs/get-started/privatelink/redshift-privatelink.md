@@ -28,9 +28,9 @@ Optionally, provide the VPC ID for the single-tenant instance or regional multi-
 
 Once those steps are completed, please contact the dbt support team and provide them with:
 
-1. Cluster name
-2. AWS account ID (where the Redshift cluster is hosted)
-3. Cluster AWS region
+- Cluster name
+- AWS account ID (where the Redshift cluster is hosted)
+- Cluster AWS region
 
 ## Configuring Interface VPC PrivateLink
 
