@@ -1,17 +1,17 @@
 ---
-title: "Configuring Snowflake PrivateLinks"
+title: "Configuring Snowflake PrivateLink"
 id: snowflake-privatelink
-description: "Configuring PrivateLinks for Snowflake"
-sidebar_label: "Snowflake PrivateLinks"
+description: "Configuring PrivateLink for Snowflake"
+sidebar_label: "Snowflake PrivateLink"
 ---
 
 ## Configure the Snowflake PrivateLink with AWS or Azure
 
 To complete the PrivateLink connection between the dbt and your private networks, first contact dbt Labs support to obtain the AWS or Azure `resource ID`. 
 
-A support case must then be created with Snowflake so they can grant access to dbt’s account or subscription. Snowflake teams prefer that customers open these support cases directly, rather than dbt Labs acting on your behalf. Please refer to [this article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) for more information. Provide them with your dbt Labs account ID along with any other information requested in the article. 
+A support case must then be created with Snowflake so they can grant access to dbt’s account or subscription. Snowflake teams prefer that customers open these support cases directly, rather than dbt Labs acting on your behalf. Please refer to [this article](https://community.snowflake.com/s/article/HowtosetupPrivatelinktoSnowflakefromCloudServiceVendors) for more information. Provide them with your dbt Cloud account ID along with any other information requested in the article. 
 
-You should have `ACCOUNTADMIN` access to the Snowflake instance to complete these steps.
+You need to have `ACCOUNTADMIN` access to the Snowflake instance to complete these steps.
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
