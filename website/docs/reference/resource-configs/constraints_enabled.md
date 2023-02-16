@@ -16,7 +16,7 @@ Constraints serve as a **preventative** measure against bad data quality **befor
 
 Tests serve as a **detective** measure against bad data quality **after** the dbt model is (re)built.
 
-Constraints are a great way to ensure that your data is always in the correct format. However, they are not a substitute for tests.  For example, constraints are great when you define `constraints: ['not null']` for a column in your model's schema because it'll prevent `null` values being inserted into that column at dbt model creation time. AND it'll prevent other unintended values from being inserted into that column without dbt's intervention as it relies on the database to enforce the constraint. This can **replace** the `not_null` test. However, performance issues may arise depending on your database.
+Constraints are great when you define `constraints: ['not null']` for a column in your model's schema because it'll prevent `null` values being inserted into that column at dbt model creation time. AND it'll prevent other unintended values from being inserted into that column without dbt's intervention as it relies on the database to enforce the constraint. This can **replace** the `not_null` test. However, performance issues may arise depending on your database.
 
 Tests should be used in addition to and instead of constraints when you want to test things like `accepted_values` and `relationships`. These are usually not enforced with built-in database functionality and are not possible with constraints. Also, custom tests will allow more flexibility and address nuanced data quality issues that may not be possible with constraints.
 
