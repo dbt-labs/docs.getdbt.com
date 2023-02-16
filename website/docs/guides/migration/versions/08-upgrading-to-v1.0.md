@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to v1.0"
+description: New features and changes in dbt Core v1.0
 ---
 ### Resources
 
@@ -8,15 +9,15 @@ title: "Upgrading to v1.0"
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 dbt Core major version 1.0 includes a number of breaking changes! Wherever possible, we have offered backwards compatibility for old behavior, and (where necessary) made migration simple.
 
 ### Renamed fields in `dbt_project.yml`
 
 **These affect everyone:**
-- [model-paths](model-paths) have replaced `source-paths` in `dbt-project.yml.
-- [seed-paths](seed-paths) have replaced `data-paths` in `dbt-project.yml with a default value of `seeds`.
+- [model-paths](model-paths) have replaced `source-paths` in `dbt-project.yml`.
+- [seed-paths](seed-paths) have replaced `data-paths` in `dbt-project.yml` with a default value of `seeds`.
 - The [packages-install-path](packages-install-path) was updated from `modules-path`.  Additionally the default value is now `dbt_packages` instead of `dbt_modules`.  You may need to update this value in [`clean-targets`](clean-targets).
 - Default for `quote_columns` is now `True` for all adapters other than Snowflake.
 
@@ -28,7 +29,7 @@ dbt Core major version 1.0 includes a number of breaking changes! Wherever possi
 
 The two **test types** are now "singular" and "generic" (instead of "data" and "schema", respectively). The `test_type:` selection method accepts `test_type:singular` and `test_type:generic`. (It will also accept `test_type:schema` and `test_type:data` for backwards compatibility.) **Not backwards compatible:** The `--data` and `--schema` flags to dbt test are no longer supported, and tests no longer have the tags `'data'` and `'schema'` automatically applied. Updated docs: [tests](/docs/build/tests), [test selection](test-selection-examples), [selection methods](node-selection/methods).
 
-The `greedy` flag/property has been renamed to **`indirect_selection`**, which is now eager by default. **Note:** This reverts test selection to its pre-v0.20 behavior by default. `dbt test -s my_model` _will_ select multi-parent tests, such as `relationships`, that depend on unselected resources. To achieve the behavior change in v0.20 + v0.21, set `--indirect-selection=cautious` on the CLI or `indirect_selection: cautious` in yaml selectors. Updated docs: [test selection examples](test-selection-examples), [yaml selectors](yaml-selectors)
+The `greedy` flag/property has been renamed to **`indirect_selection`**, which is now eager by default. **Note:** This reverts test selection to its pre-v0.20 behavior by default. `dbt test -s my_model` _will_ select multi-parent tests, such as `relationships`, that depend on unselected resources. To achieve the behavior change in v0.20 + v0.21, set `--indirect-selection=cautious` on the CLI or `indirect_selection: cautious` in yaml selectors. Updated docs: [test selection examples](test-selection-examples), [yaml selectors](yaml-selectors).
 
 ### Global macros
 

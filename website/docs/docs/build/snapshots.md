@@ -243,8 +243,6 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 ### Hard deletes (opt-in)
 
-<Changelog>New in v0.19.0</Changelog>
-
 Rows that are deleted from the source query are not invalidated by default. With the config option `invalidate_hard_deletes`, dbt can track rows that no longer exist. This is done by left joining the snapshot table with the source table, and filtering the rows that are still valid at that point, but no longer can be found in the source table. `dbt_valid_to` will be set to the current snapshot time.
 
 This configuration is not a different strategy as described above, but is an additional opt-in feature. It is not enabled by default since it alters the previous behavior.
@@ -294,7 +292,7 @@ A number of other configurations are also supported (e.g. `tags` and `post-hook`
 
 Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](snapshot-configs) for more information.
 
-Note: As of v0.21, BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
+Note: BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
 
 
 ### Configuration best practices
@@ -375,7 +373,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 
 <br/>
 
-For the `check` strategy, the current timestamp is used to populate each column
+For the `check` strategy, the current timestamp is used to populate each column. If configured, the `check` strategy uses the `updated_at` column instead, as with the timestamp strategy.
 
 <details>
 <summary>  Details for the check strategy </summary>

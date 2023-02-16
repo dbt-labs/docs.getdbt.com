@@ -18,10 +18,10 @@ Optionally specify a custom directory where compiled files (e.g. compiled models
 ## Default
 By default, dbt will write compiled files to the `target` directory, i.e. `target-path: target`
 
-<VersionBlock firstVersion="1.2"> 
+<VersionBlock firstVersion="1.2">
 
-<h2>Configuration</h2>
-  
+## Configuration
+
 In the manner of a ["global" config](global-configs), the target path can be set in three places:
 1. `--target-path` CLI flag
 2. `DBT_TARGET_PATH` environment variable

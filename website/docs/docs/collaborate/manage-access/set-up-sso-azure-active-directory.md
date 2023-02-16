@@ -115,7 +115,7 @@ Under **Properties** check the toggle setting for **User assignment required?** 
 16. Under **Manage**, click **Certificates & secrets**
 17. Click **+New client secret**
 18. Name the client secret "dbt Cloud" (or similar) to identify the secret
-19. Select **Never** as the expiration value for this secret
+19. Select **730 days (24 months)** as the expiration value for this secret (recommended)
 20. Click **Add** to finish creating the client secret value (not the client secret ID)
 21. Record the generated client secret somewhere safe. Later in the setup process,
    we'll use this client secret in dbt Cloud to finish configuring the

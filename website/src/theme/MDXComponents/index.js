@@ -39,6 +39,7 @@ import BlogPostCard from '@site/src/components/blogPostCard';
 import PostCarousel from '@site/src/components/postCarousel';
 import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
 import CommunitySpotlightList from '@site/src/components/communitySpotlightList';
+import dbtEditor from '@site/src/components/dbt-editor';
 
 const MDXComponents = {
   head: MDXHead,
@@ -86,5 +87,6 @@ const MDXComponents = {
   Card: Card,
   CommunitySpotlightCard,
   CommunitySpotlightList,
+  dbtEditor: dbtEditor,
 };
 export default MDXComponents;

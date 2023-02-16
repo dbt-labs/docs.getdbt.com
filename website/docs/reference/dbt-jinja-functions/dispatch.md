@@ -4,10 +4,6 @@ title: "dispatch"
 
 <Changelog>
 
-- **v0.18.0:** Introduced `dispatch` as a replacement for deprecated `adapter_macro`
-- **v0.19.2:** Limited rendering context for `dispatch` arguments. Includes backwards compatibility for widely used packages.
-- **v0.20.0:** Parent adapters' macro implementations are included in search order. Formalized supported arguments.
-- **v0.21.0:** All dispatched macros in the dbt global project include `dbt` namespace
 - **v1.0.0:** The 'packages' argument is fully deprecated. Use `macro_namespace` and project-level `dispatch` config instead.
 
 </Changelog>
@@ -213,7 +209,7 @@ As a `dbt-spark` user, by installing `dbt_utils` and `spark_utils` together, I d
 
 ### Adapter inheritance
 
-Some adapters "inherit" from other adapters (e.g. `dbt-postgres` &rarr; `dbt-redshift`). If using a child adapter, dbt will include any parent adapter implementations in its search order, too. Instead of just looking for `redshift__` and falling back to `default__`, dbt will look for `redshift__`, `postgres__`, and `default__`, in that order.
+Some adapters "inherit" from other adapters (e.g. `dbt-postgres` &rarr; `dbt-redshift`, and `dbt-spark` &rarr; `dbt-databricks`). If using a child adapter, dbt will include any parent adapter implementations in its search order, too. Instead of just looking for `redshift__` and falling back to `default__`, dbt will look for `redshift__`, `postgres__`, and `default__`, in that order.
 
 Child adapters tend to have very similar SQL syntax to their parents, so this allows them to skip reimplementing a macro that has already been reimplemented by the parent adapter.
 

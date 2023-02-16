@@ -1,0 +1,14 @@
+# Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
+
+# Comment to be posted to on PRs from first time contributors in your repository
+newPRWelcomeComment: >
+  Hello!👋 Thanks for contributing to the dbt product documentation and opening this pull request! ✨ 
+  
+  We use Markdown and some HTML to write the dbt product documentation. When writing content, you can use our [style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [content types](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-types.md) to understand our writing standards and how we organize information in the dbt product docs.
+  
+  We'll review your contribution and respond as soon as we can. 😄
+  
+  
+
+
+
