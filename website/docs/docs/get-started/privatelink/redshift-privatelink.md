@@ -1,23 +1,23 @@
 ---
-title: "Configuring Redshift PrivateLinks"
+title: "Configuring Redshift PrivateLink"
 id: redshift-privatelink
-description: "Configuring PrivateLinks for Redshift"
-sidebar_label: "Redshift PrivateLinks"
+description: "Configuring PrivateLink for Redshift"
+sidebar_label: "Redshift PrivateLink"
 ---
 
-## Configuring managed PrivateLinks
+## Configuring managed PrivateLink
 
-The first step is to grant access to dbt Cloud in the Redshift database cluster.
+The first step is to grant access to dbt Cloud in the Redshift database cluster:
 
-On the running Redshift cluster select the **Properties** tab.
+1. On the running Redshift cluster select the **Properties** tab.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink1.png" title="Redshift Properties tab"/>
 
-Scroll to the **Granted accounts** section and click the **Grant access** button.
+2.Scroll to the **Granted accounts** section and click the **Grant access** button.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" title="Redshift granted accounts"/>
 
-Enter the AWS account ID:
+3. Enter the AWS account ID:
 
 - dbt Cloud multi-tenant `346425330055` 
 - dbt Cloud single-tenant `952445382732`
@@ -32,16 +32,16 @@ Once those steps are completed, please contact the dbt support team and provide 
 2. AWS account ID (where the Redshift cluster is hosted)
 3. Cluster AWS region
 
-## Configuring Interface VPC PrivateLinks
+## Configuring Interface VPC PrivateLink
 
 ### Provisioning the VPC
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing the Redshift cluster:
 
-- **Security Group** &mdash; If connecting to an existing Redshift cluster this likely already exists, however Security Group rules may need to be added or modified to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service
+- **Security Group** &mdash; If connecting to an existing Redshift cluster this likely already exists, however Security Group rules may need to be added or modified to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service.
 - **Target Group** &mdash; The Target Group gets attached to the NLB to tell it where to route requests. There are various target types available for NLB Target Groups, but you will use IP address.
 
-   ::: NOTE: 
+   ::: Important: 
         
     1. Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
 
@@ -54,9 +54,9 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
 
 - Network Load Balancer (NLB) &mdash; Requires creating a Listener that attaches to the newly created Target Group for port `5439`
-- Endpoint Service &mdash; Attach to the newly created NLB
+- Endpoint Service &mdash; Attach to the newly created NLB.
     - Acceptance required (optional) &mdash; Will require you to [accept our connection request](https://www.notion.so/Redshift-Interface-PrivateLink-Setup-Guide-dabac5da3f7c4b0b91716b37820f5aeb) after dbt creates the endpoint.
-    - Private DNS name (optional) &mdash; This has not been tested at this time, so may not be supported. Please contact support if you require this field. 
+    - Private DNS name (optional) &mdash; This has not been tested and may not be supported. Please contact support if you require this field. 
 
 ### Granting AWS account access to the VPC
 
@@ -77,8 +77,8 @@ Once the VPC Endpoint Service is provisioned, the service name can be found in t
 
 Once support has completed the configuration, you can start creating new connections using PrivateLink. 
 
-1. Navigate to settings → Create new project → select Redshift
-2. You will see two radio buttons: **Public** and **Private.** Select Private 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field)
-4. Configure the remaining DWH details 
-5. Test your connection and save it
+1. Navigate to **settings** → **Create new project** → select **Redshift**
+2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
+3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+4. Configure the remaining DWH details. 
+5. Test your connection and save it.
