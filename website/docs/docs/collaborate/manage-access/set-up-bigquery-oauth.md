@@ -42,7 +42,6 @@ Fill in the application, replacing `YOUR_ACCESS_URL` with the [appropriate Acces
 | **Authorized Javascript origins** | https://YOUR_ACCESS_URL |
 | **Authorized Redirect URIs** | https://YOUR_ACCESS_URL/complete/bigquery |
 
-Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 
 Then click **Create** to create the BigQuery OAuth app and see the app client ID and secret values. These values are available even if you close the app screen, so this isn't the only chance you have to save them.
 
