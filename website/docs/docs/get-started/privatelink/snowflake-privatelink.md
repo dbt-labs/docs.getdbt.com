@@ -23,7 +23,7 @@ dbt Labs will work on your behalf to complete the PrivateLink setup. Please allo
 Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink. 
 
 1. Navigate to settings → Create new project → select Redshift
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field)
-4. Configure the remaining DWH details.
+2. Select **Private** for a private connection.
+3. Select the private endpoint from the dropdown. When you do this, dbt Cloud automatically populates the hostname/account field.
+4. Configure the remaining data platform details.
 5. Test your connection and save it.
