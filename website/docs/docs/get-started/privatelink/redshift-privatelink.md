@@ -48,7 +48,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
     3. Must be set to TCP protocol.
     
-    :::
+:::
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
 
