@@ -419,7 +419,7 @@ PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
     "data": {
         "id": "wsu_12345abcde",
         "account_identifier": "act_12345abcde",
-        "name": "Eebhook for jobs",
+        "name": "Webhook for jobs",
         "description": "A webhook for when jobs are started",
         "job_ids": [
             "123"
@@ -450,7 +450,6 @@ PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
 | `job_ids` | The specific jobs the webhook is set to trigger for. When the list is empty, the webhook is set to trigger for all jobs in your account; by default, dbt Cloud configures webhooks at the account level. | One of these: <ul><li>Empty list</li> <li>List of job IDs</li></ul> |
 | `event_types` | The event type the webhook is set to trigger on. | One or more of these: <ul><li>`job.run.started`</li> <li>`job.run.completed`</li><li>`job.run.errored`</li></ul> |
 | `client_url` | The endpoint URL for an application where dbt Cloud can send event(s) to. |  |
-| `hmac_secret` | The secret key for this webhook. You can use this key to [validate the authenticity of this webhook](#validate-a-webhook). |  |
 | `active` | A Boolean value indicating whether the webhook is active or not. | One of these: <ul><li>`true`</li><li>`false`</li></ul> |
 | `created_at` | Timestamp of when the webhook was created. |  |
 | `updated_at` | Timestamp of when the webhook was last updated. |  |
