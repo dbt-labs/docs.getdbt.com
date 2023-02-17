@@ -419,7 +419,7 @@ PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
     "data": {
         "id": "wsu_12345abcde",
         "account_identifier": "act_12345abcde",
-        "name": "Eebhook for jobs",
+        "name": "Webhook for jobs",
         "description": "A webhook for when jobs are started",
         "job_ids": [
             "123"
