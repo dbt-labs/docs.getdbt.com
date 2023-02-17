@@ -58,9 +58,9 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     - Acceptance required (optional) &mdash; Will require you to [accept our connection request](https://www.notion.so/Redshift-Interface-PrivateLink-Setup-Guide-dabac5da3f7c4b0b91716b37820f5aeb) after dbt creates the endpoint.
     - Private DNS name (optional) &mdash; This has not been tested and may not be supported. Please contact support if you require this field. 
 
-### Granting AWS account access to the VPC
+### Grant AWS account access to the VPC
 
-On the provisioned VPC endpoint service click the **Allow principals** tab, then the **Allow principals** button to grant access. Enter the ARN of the root user in the appropriate prod. AWS account and save your changes.
+On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
 | Type | Principal |
 | --- | --- |
@@ -69,13 +69,13 @@ On the provisioned VPC endpoint service click the **Allow principals** tab, then
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
 
-Once the VPC Endpoint Service is provisioned, the service name can be found in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in the support communication. 
+Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" title="Get service name field value"/>
 
 ## Configuring new endpoints with PrivateLink
 
-Once support has completed the configuration, you can start creating new connections using PrivateLink. 
+Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink.
 
 1. Navigate to **settings** → **Create new project** → select **Redshift**
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 

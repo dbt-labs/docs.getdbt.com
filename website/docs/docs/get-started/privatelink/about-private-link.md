@@ -8,7 +8,7 @@ sidebar_label: "About PrivateLink"
 
 PrivateLink enables you to connect your data warehouse (DWH) hosted on AWS, in any region, to a dbt Cloud multi-tenant environment over the AWS backbone using the PrivateLink technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it restricts information shared between dbt Cloud and the DWH from reaching the public internet. To learn more, you can refer to [AWS PrivateLink technology](https://aws.amazon.com/privatelink/).
 
-The initial release of support for AWS PrivateLink features integration with the following data warehouse providers:
+dbt Cloud supports these data platforms that you can use the AWS PrivateLink feature with: 
 
 - Redshift
 - Snowflake
@@ -16,33 +16,33 @@ The initial release of support for AWS PrivateLink features integration with the
 
 ## Configure PrivateLink
 
-Customers on all supported platforms will have to contact the dbt support team to complete the integration. It is not a self-service feature at this time. Ensure that the subject contains "Multi-tenant PrivateLink" in some form. Please allow 1-2 business days for our teams to complete the setup on our side. 
+You need to contact the dbt Cloud support team to complete the integration. It is not a self-service feature at this time. Ensure that the subject contains "Multi-tenant PrivateLink" in some form. Please allow 1-2 business days for our teams to complete the setup on our side. 
 
-### Setup
+### Set up
 
-dbt will provision the infrastructure pieces to ensure there are PrivateLink endpoints for a given account. Enabling this will ensure connections can be configured as “private” and will only communicate with the DWH over a PrivateLink. Once enabled, there will be two available DWH connection types in dbt Cloud: public and private. 
+dbt provisions the infrastructure pieces to ensure there are PrivateLink endpoints for a given account. Enabling this ensures connections can be configured as _private_ and only communicates with the data platform over a PrivateLink. Once enabled, there are two available data platform connection types in dbt Cloud: public and private. 
 
-Public connections are the classic connections that work today which communicate with the data warehouse over the public internet. Private connections are secured by PrivateLink and will always guarantee that all connections to the DWH are secured via AWS PrivateLink. Private endpoints are configured by dbt support on the backend once the infrastructure team provisions all the required services. Reach out to them with your organization name and which instance it's hosted in (EMEA, NA, AU).  
+Public connections are the classic connections that work today which communicate with the data warehouse over the public internet. Private connections are secured by PrivateLink and will always guarantee that all connections to the data platform are secured with AWS PrivateLink. dbt Cloud support configures the private endpoints on the backend once the infrastructure team provisions all the required services. Please contact them with your organization name and which instance it's hosted in (such as EMEA, NA, and AU).  
 
 Provide the support team with the following information: 
 
 - dbt Cloud Account ID
-- Data Warehouse (Snowflake, Redshift, etc)
-- PrivateLink Name
-- Number of Endpoints - Most customers need one but if you have multiple warehouses or projects that require their own PrivateLink, you may need multiple endpoints.
-- Any additional information specific to your DWH. See the setup guides for more information.
+- Data platform (such as Snowflake and Redshift)
+- PrivateLink name
+- Number of endpoints &mdash; Typically you only need one but if you have multiple warehouses or projects that require their own PrivateLink, you may need multiple endpoints.
+- Any additional information specific to your data platform. 
 
 Instructions for configuring the various DWH providers are unique. The following guides outline the steps:
 
 - [Redshift](/redshift-privatelink)
 - [Snowflake](/snowflake-privatelink)
 
-### Configuring new endpoints with PrivateLink
+### Configure new endpoints with PrivateLink
 
-Once support has completed the configuration, you can bgin creating new connections using PrivateLink: 
+Once dbt Cloud support completes the configuration, you can begin creating new connections using PrivateLink: 
 
 1. Navigate to **Settings** → **Create new project** → select the supported DWH (Snowflake/Databricks/Redshift). 
-2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
-3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
+2. Select **Private** for a private connection.
+3. Select the private endpoint from the dropdown. When you do this, dbt Cloud automatically populates the hostname/account field.
 4. Configure the remaining DWH details.
 5. Test your connection and save it.
