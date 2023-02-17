@@ -1,19 +1,18 @@
 ---
-title: "Configuring Redshift PrivateLink"
+title: "Configure AWS PrivateLink for Redshift"
 id: redshift-privatelink
 description: "Configuring PrivateLink for Redshift"
 sidebar_label: "Redshift PrivateLink"
 ---
 
-## Configuring managed PrivateLink
 
 The first step is to grant access to dbt Cloud in the Redshift database cluster:
 
-1. On the running Redshift cluster select the **Properties** tab.
+1. On the running Redshift cluster, select the **Properties** tab.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink1.png" title="Redshift Properties tab"/>
 
-2.Scroll to the **Granted accounts** section and click the **Grant access** button.
+2. In the **Granted accounts** section, click **Grant access**.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink2.png" title="Redshift granted accounts"/>
 
