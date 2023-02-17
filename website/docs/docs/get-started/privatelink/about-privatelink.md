@@ -6,7 +6,7 @@ sidebar_label: "About PrivateLink"
 ---
 
 
-PrivateLink enables you to connect your data warehouse (DWH) hosted on AWS to a dbt Cloud multi-tenant environment over the AWS backbone using the PrivateLink technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it restricts information shared between dbt Cloud and the DWH from reaching the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability. 
+PrivateLink enables you to connect your data platform hosted on AWS to a dbt Cloud multi-tenant environment over the AWS backbone using the PrivateLink technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it restricts information shared between dbt Cloud and the data platform from reaching the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability. 
 
 To learn more, refer to the [AWS PrivateLink documentation](https://aws.amazon.com/privatelink/).
 
