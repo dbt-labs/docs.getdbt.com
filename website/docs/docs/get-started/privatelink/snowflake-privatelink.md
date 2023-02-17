@@ -18,7 +18,7 @@ Run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.s
 
 dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the service is available. 
 
-## Configuring new endpoints with PrivateLink
+## Configure new endpoints with PrivateLink
 
 Once dbt Cloud support completes the configuration, you can start creating new connections using PrivateLink. 
 
