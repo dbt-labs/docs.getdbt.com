@@ -33,7 +33,6 @@ Optionally, provide the VPC ID for the single-tenant instance or regional multi-
 
 ## Configuring Interface VPC PrivateLink
 
-### Provisioning the VPC
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing the Redshift cluster:
 
