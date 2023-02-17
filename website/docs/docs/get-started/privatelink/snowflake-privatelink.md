@@ -16,7 +16,7 @@ You need to have `ACCOUNTADMIN` access to the Snowflake instance to complete the
 
 Run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and provide the output to the dbt Labs support team. 
 
-dbt Labs teams will work behind the scenes to complete the PrivateLink setup. Please allow 1-2 business days for this process to be completed. Support will contact you when the service is available. 
+dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the service is available. 
 
 ## Configuring new endpoints with PrivateLink
 
