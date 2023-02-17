@@ -2,7 +2,7 @@
 title: "Configure AWS PrivateLink for Redshift"
 id: redshift-privatelink
 description: "Configuring PrivateLink for Redshift"
-sidebar_label: "Redshift PrivateLink"
+sidebar_label: "PrivateLink for Redshift"
 ---
 
 
