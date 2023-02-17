@@ -44,7 +44,7 @@ Instructions for configuring the various DWH providers are unique. The following
 
 Once dbt Cloud support completes the configuration, you can begin creating new connections using PrivateLink: 
 
-1. Navigate to **Settings** → **Create new project** → select the supported DWH (Snowflake/Databricks/Redshift). 
+1. Navigate to **Settings** → **Create new project** → select the supported data platform (Snowflake/Databricks/Redshift). 
 2. Select **Private** for a private connection.
 3. Select the private endpoint from the dropdown. When you do this, dbt Cloud automatically populates the hostname/account field.
 4. Configure the remaining DWH details.
