@@ -14,7 +14,7 @@ The initial release of support for AWS PrivateLink features integration with the
 - Snowflake
 - Databricks
 
-## Configuring PrivateLink
+## Configure PrivateLink
 
 Customers on all supported platforms will have to contact the dbt support team to complete the integration. It is not a self-service feature at this time. Ensure that the subject contains "Multi-tenant PrivateLink" in some form. Please allow 1-2 business days for our teams to complete the setup on our side. 
 
