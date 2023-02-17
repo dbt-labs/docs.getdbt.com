@@ -38,16 +38,12 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 - **Security Group** &mdash; If you are connecting to an existing Redshift cluster, this likely already exists, however, you might need to add or modify Security Group rules to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service.
 - **Target Group** &mdash; The Target Group gets attached to the NLB to tell it where to route requests. There are various target types available for NLB Target Groups, but you will use the IP address.
-
-::: Important: 
-        
-    1. Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
-
-    2. There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. Just note that the NLB will need to add that AZ as well. Once created, an NI shouldn't change (this is our observation from testing, but is not officially documented anywhere).
-
-    3. Must be set to TCP protocol.
     
-:::
+Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
+
+There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. Just note that the NLB will need to add that AZ as well. Once created, an NI shouldn't change (this is our observation from testing, but is not officially documented anywhere).
+
+The cluser must be configured to use TCP protocol. 
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
 
