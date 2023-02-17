@@ -14,7 +14,7 @@ Once dbt Cloud support has notified you that setup is complete, [register the VP
 
 Once you've completed the setup in the Databricks environment, you will be able to confiture a private endpoint in dbt Cloud:
 
-1. Navigate to **Settings** → **Create new project** → select the supported data platform (Snowflake/Databricks/Redshift). 
+1. Navigate to **Settings** → **Create new project** → select the **Databricks**. 
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
 3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
 4. Configure the remaining data platform details.
