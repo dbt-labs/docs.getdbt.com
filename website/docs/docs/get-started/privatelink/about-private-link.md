@@ -1,6 +1,6 @@
 ---
 title: "About PrivateLink"
-id: about-private-link
+id: about-privatelink
 description: "Configuring PrivateLink for AWS"
 sidebar_label: "About PrivateLink"
 ---
