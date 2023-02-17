@@ -18,14 +18,14 @@ The first step is to grant access to dbt Cloud in the Redshift database cluster:
 
 3. Enter the AWS account ID:
 
-- dbt Cloud multi-tenant `346425330055` 
-- dbt Cloud single-tenant `952445382732`
+- Use `346425330055` for multi-tenant deployment environments in dbt Cloud
+- Use `952445382732` for single-tenant deployment environments in dbt Cloud
 
-Optionally, provide the VPC ID for the single-tenant instance or regional multi-tenatn PrivateLink VPC, otherwise choose Grant access to all VPCs.
+Optionally, provide the VPC ID for the single-tenant instance or regional multi-tenant PrivateLink VPC. Otherwise, choose **Grant access to all VPCs**.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
 
-Once those steps are completed, please contact the dbt support team and provide them with:
+4. Then, contact the dbt Cloud support team and provide them with your:
 
 - Cluster name
 - AWS account ID (where the Redshift cluster is hosted)
@@ -44,7 +44,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
         
     1. Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
 
-    2. There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. Just note that the NLB will need to add that AZ as well. Once created, a NI should not change (this is our observation from testing, but it is not officially documented anywhere).
+    2. There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. Just note that the NLB will need to add that AZ as well. Once created, an NI shouldn't change (this is our observation from testing, but is not officially documented anywhere).
 
     3. Must be set to TCP protocol.
     
@@ -54,8 +54,8 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 - Network Load Balancer (NLB) &mdash; Requires creating a Listener that attaches to the newly created Target Group for port `5439`
 - Endpoint Service &mdash; Attach to the newly created NLB.
-    - Acceptance required (optional) &mdash; Will require you to [accept our connection request](https://www.notion.so/Redshift-Interface-PrivateLink-Setup-Guide-dabac5da3f7c4b0b91716b37820f5aeb) after dbt creates the endpoint.
-    - Private DNS name (optional) &mdash; This has not been tested and may not be supported. Please contact support if you require this field. 
+    - Acceptance required (optional) &mdash; Requires you to [accept our connection request](https://www.notion.so/Redshift-Interface-PrivateLink-Setup-Guide-dabac5da3f7c4b0b91716b37820f5aeb) after dbt creates the endpoint.
+    - Private DNS name (optional) &mdash; This hasn't been tested and might not be supported. Please contact dbt Cloud support if you require this field. 
 
 ### Grant AWS account access to the VPC
 
