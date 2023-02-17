@@ -5,7 +5,6 @@ description: "Configuring PrivateLink for Snowflake"
 sidebar_label: "PrivateLink for Snowflake"
 ---
 
-## Configure the Snowflake PrivateLink with AWS or Azure
 
 To complete the PrivateLink connection between the dbt and your private networks, first contact dbt Labs support to obtain the AWS or Azure `resource ID`. 
 
