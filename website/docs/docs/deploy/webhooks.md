@@ -23,7 +23,7 @@ Access to webhooks in dbt Cloud is currently limited to beta users. If you want 
 :::
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
-From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate URL to access dbt Cloud for your region and plan with [Regions & IP addresses](/docs/deploy/regions-ip-addresses).
+From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/deploy/regions-ip-addresses).
 
 To configure your new webhook: 
 
