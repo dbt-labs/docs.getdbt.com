@@ -34,7 +34,7 @@ Provide the support team with the following information:
 - Number of endpoints &mdash; Typically you only need one but if you have multiple warehouses or projects that require their own PrivateLink, you may need multiple endpoints.
 - Any additional information specific to your data platform. 
 
-Instructions for configuring the various DWH providers are unique. The following guides outline the steps:
+Instructions for configuring the various data platform providers are unique. The following guides outline the steps:
 
 - [Redshift](/redshift-privatelink)
 - [Snowflake](/snowflake-privatelink)
@@ -47,5 +47,5 @@ Once dbt Cloud support completes the configuration, you can begin creating new c
 1. Navigate to **Settings** → **Create new project** → select the supported data platform (Snowflake/Databricks/Redshift). 
 2. Select **Private** for a private connection.
 3. Select the private endpoint from the dropdown. When you do this, dbt Cloud automatically populates the hostname/account field.
-4. Configure the remaining DWH details.
+4. Configure the remaining data platform details.
 5. Test your connection and save it.
