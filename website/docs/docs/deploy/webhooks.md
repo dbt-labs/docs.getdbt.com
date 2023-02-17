@@ -145,7 +145,7 @@ dbt Cloud is hosted in multiple regions in the world and each region has a diffe
 List all webhooks that are available from a specific dbt Cloud account.
 
 #### Request 
-```json
+```shell
 GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
 ```
 
@@ -235,7 +235,7 @@ GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
 Get detailed information about a specific webhook. 
 
 #### Request
-```json
+```shell
 GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
 ```
 #### Path parameters
@@ -277,24 +277,26 @@ GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
 | `account_identifier` | The unique identifier for _your_ dbt Cloud account. |  |
 | `name` | Name of the outbound webhook. |  |
 | `description` | Complete description of the webhook. |  |
-| `job_ids` | The specific jobs the webhook is set to trigger for. When the list is empty, the webhook is set to trigger for all jobs in your account; by default, dbt Cloud configures webhooks at the account level. | One of these: <ul><li>Empty list</li> <li>List of job IDs</li></ul> |
 | `event_types` | The event type the webhook is set to trigger on. | One or more of these: <ul><li>`job.run.started`</li> <li>`job.run.completed`</li><li>`job.run.errored`</li></ul> |
 | `client_url` | The endpoint URL for an application where dbt Cloud can send event(s) to. |  |
 | `active` | A Boolean value indicating whether the webhook is active or not. | One of these: <ul><li>`true`</li><li>`false`</li></ul> |
 | `created_at` | Timestamp of when the webhook was created. |  |
 | `updated_at` | Timestamp of when the webhook was last updated. |  |
-| `http_status_code` | The latest HTTP status of the webhook. | Can be any [HTTP response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). If the value is `0`, that means the webhook has never been triggered. |
 | `dispatched_at` | Timestamp of when the webhook was last dispatched to the specified endpoint URL. |  |
 | `account_id` | The dbt Cloud account ID. |  |
+| `job_ids` | The specific jobs the webhook is set to trigger for. When the list is empty, the webhook is set to trigger for all jobs in your account; by default, dbt Cloud configures webhooks at the account level. | One of these: <ul><li>Empty list</li> <li>List of job IDs</li></ul> |
+| `http_status_code` | The latest HTTP status of the webhook. | Can be any [HTTP response status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). If the value is `0`, that means the webhook has never been triggered. |
 
 ### Create a new webhook subscription
 Create a new outbound webhook and specify the endpoint URL that will be subscribing (listening) to the webhook's events.
 
 #### Request sample
 
-```json
+```shell
 POST https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
+```
 
+```json
 {
 	"event_types": [
 			"job.run.started"
@@ -375,9 +377,11 @@ POST https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription
 Update the configuration details for a specific webhook. 
 
 #### Request sample
-```json
+```shell
 PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
+```
 
+```json
 {
 	"event_types": [
 			"job.run.started"
@@ -458,7 +462,7 @@ PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
 Test a specific webhook. 
 
 #### Request
-```json
+```shell
 GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}/test
 ```
 
@@ -485,7 +489,7 @@ GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
 Delete a specific webhook. 
 
 #### Request
-```json
+```shell
 DELETE https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
 ```
 
