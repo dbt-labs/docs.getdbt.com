@@ -1,5 +1,5 @@
 ---
-title: "Partial parsing available in dbt Cloud run step commands"
+title: "Partial parsing available in dbt Cloud run steps"
 id: "no-partial-parse-config"
 description: "You can now enable partial parsing in dbt Cloud run steps."
 sidebar_label: "New: Partial parsing in run steps"
