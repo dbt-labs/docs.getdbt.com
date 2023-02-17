@@ -37,7 +37,7 @@ Optionally, provide the VPC ID for the single-tenant instance or regional multi-
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing the Redshift cluster:
 
 - **Security Group** &mdash; If you are connecting to an existing Redshift cluster, this likely already exists, however, you might need to add or modify Security Group rules to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service.
-- **Target Group** &mdash; The Target Group gets attached to the NLB to tell it where to route requests. There are various target types available for NLB Target Groups, but you will use IP address.
+- **Target Group** &mdash; The Target Group gets attached to the NLB to tell it where to route requests. There are various target types available for NLB Target Groups, but you will use the IP address.
 
 ::: Important: 
         
