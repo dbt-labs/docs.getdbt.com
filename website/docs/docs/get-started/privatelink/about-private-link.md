@@ -5,7 +5,6 @@ description: "Configuring PrivateLink for AWS"
 sidebar_label: "About PrivateLink"
 ---
 
-## What is PrivateLink?
 
 PrivateLink enables you to connect your data warehouse (DWH) hosted on AWS, in any region, to a dbt Cloud multi-tenant environment over the AWS backbone using the PrivateLink technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it restricts information shared between dbt Cloud and the DWH from reaching the public internet. You can read more about AWS PrivateLink technology [here](https://aws.amazon.com/privatelink/).
 
