@@ -2,7 +2,7 @@
 title: "Configuring Snowflake PrivateLink"
 id: snowflake-privatelink
 description: "Configuring PrivateLink for Snowflake"
-sidebar_label: "Snowflake PrivateLink"
+sidebar_label: "PrivateLink for Snowflake"
 ---
 
 ## Configure the Snowflake PrivateLink with AWS or Azure
