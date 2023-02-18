@@ -252,7 +252,7 @@ docs/building-a-dbt-project/dbt-jinja-functions /docs/guides/building-packages 3
 /docs/contributor-license-agreements /docs/contributing/contributor-license-agreements 302
 /docs/creating-a-project /docs/building-a-dbt-project/dbt-projects/creating-a-project 302
 /docs/creating-new-materializations /guides/legacy/creating-new-materializations 302
-//docs/creating-date-partitioned-tables /docs/guides/database-specific-guides/creating-date-partitioned-tables 302
+/docs/creating-date-partitioned-tables /docs/guides/database-specific-guides/creating-date-partitioned-tables 302
 /docs/custom-schema-tests /guides/legacy/writing-custom-generic-tests 302
 /docs/database-specific-guides / 302
 /docs/dbt-api /docs/running-a-dbt-project/dbt-api 302
