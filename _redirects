@@ -224,7 +224,9 @@ docs/building-a-dbt-project/dbt-jinja-functions /docs/guides/building-packages 3
 /docs/clean /reference/commands/clean 302
 /docs/cloud-choosing-a-dbt-version /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version 302
 /docs/cloud-configuring-dbt-cloud /docs/dbt-cloud/cloud-configuring-dbt-cloud 302
-/docs/cloud-enabling-continuous-integration-with-github /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github 302
+/docs/cloud-enabling-continuous-integration-with-github   /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github   /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github/  /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration 302
 /docs/cloud-generating-documentation /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation 302
 /docs/cloud-import-a-project-by-git-url /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url 302
 /docs/cloud-installing-the-github-application /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application 302
@@ -632,3 +634,10 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 
 /website/docs/docs/contributing/documenting-a-new-adapter.md /docs/contributing/documenting-a-new-adapter 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/docs/guides/migration-guide/upgrading-to-0-21-0 / 302
+
+/v0.8/reference / 301
+/v0.10/reference / 301
+/v0.12/reference / 301
+/v0.13/reference / 301 
+/v0.13/docs/requiring-dbt-versions / 301
+/v0.14/docs/cloud-developer-ide / 301
