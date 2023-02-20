@@ -37,7 +37,7 @@ To unlock your account and select a plan, review the following guidance per plan
 2. To unlock your account and continue using the Team plan, you need to enter your payment details. 
 3. Go to **Payment Information** and click **Edit** on the right.
 4. Enter your payment details and click **Save**.
-5.  This automatically unlocks your dbt Cloud account and you should now enjoy the benefits of the Team plan. 🎉
+5.  This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Team plan. 🎉
 
 <Lightbox src="/img/docs/dbt-cloud/trial-team-flow.gif"/>
 
