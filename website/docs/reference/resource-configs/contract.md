@@ -35,7 +35,7 @@ You can manage data type constraints on your models using the `constraints_enabl
 
 ## When to use constraints vs. tests
 
-Constraints serve as a **preventative** measure against bad data quality **before** the dbt model is (re)built. It is only limited by the respective database's funcionality and the data types that are supported. Examples of a constraint: `not null`, `unique`, `primary key`, `foreign key`, `check`
+Constraints serve as a **preventative** measure against bad data quality **before** the dbt model is (re)built. It is only limited by the respective database's functionality and the data types that are supported. Examples of a constraint: `not null`, `unique`, `primary key`, `foreign key`, `check`
 
 Tests serve as a **detective** measure against bad data quality **after** the dbt model is (re)built.
 
