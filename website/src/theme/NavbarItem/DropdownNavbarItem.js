@@ -19,6 +19,7 @@ import NavbarItem from '@theme/NavbarItem';
 */
 // import VersionsNavbarItem from './VersionsNavItem';
 import VersionContext from '../../stores/VersionContext';
+import { versions } from '../../../dbt-versions'
 
 function isItemActive(item, localPathname) {
   if (isSamePath(item.to, localPathname)) {
@@ -100,7 +101,7 @@ function DropdownNavbarItemDesktop({
             setShowDropdown(!showDropdown);
           }
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label }
       >
         {props.children ?? props.label}
       </NavbarNavLink>
@@ -115,7 +116,8 @@ function DropdownNavbarItemDesktop({
                     handleVersionMenuClick()
                     versionContext.updateVersion(e)}
                   } 
-                >{childItemProps.label}</a>
+                >{childItemProps.label}
+                {versions.find((version) => (childItemProps.label == version.version)).isPrerelease && " (Beta)"}</a>
               </li>
             ) : (
               <NavbarItem
@@ -182,7 +184,7 @@ function DropdownNavbarItemMobile({
           e.preventDefault();
           toggleCollapsed();
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label}
       >
         {props.children ?? props.label}
       </NavbarNavLink>
