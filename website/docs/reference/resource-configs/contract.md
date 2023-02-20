@@ -18,7 +18,7 @@ This functionality is new in v1.5! These docs exist to provide a high-level over
 
 In particular:
 - The current name of the `contract` config is `constraints_enabled`.
-- "Pre flight" check includes column `name` only, and is order-sensitive. We aim to add `data_type` and make it insensitive to column order.
+- "Prerequisite check includes column `name` only and is order-sensitive. The goal is to add `data_type` and make it insensitive to column order.
 :::
 
 # Definition
