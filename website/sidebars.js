@@ -317,6 +317,15 @@ const sidebarSettings = {
             "docs/collaborate/manage-access/audit-log",
           ],
         }, // Manage access
+        {
+          type: "category",
+          label: "Publishing models",
+          items: [
+            "docs/collaborate/publish/model-contracts",
+            "docs/collaborate/publish/model-access",
+            "docs/collaborate/publish/model-versions",
+          ],
+        }, // publishing models
       ],
     },
     {
@@ -447,7 +456,7 @@ const sidebarSettings = {
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
             "reference/resource-configs/full_refresh",
-            "reference/resource-configs/constraints_enabled",
+            "reference/resource-configs/contract",
             "reference/resource-configs/grants",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",

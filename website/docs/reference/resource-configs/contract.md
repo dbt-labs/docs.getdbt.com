@@ -1,10 +1,18 @@
 ---
 resource_types: [models]
 datatype: "{<dictionary>}"
-default_value: {constraints_enabled: false}
-id: "constraints_enabled"
+default_value: {contract: false}
+id: "contract"
 ---
-<!-- <VersionBlock firstVersion="1.4"> -->
+
+:::info Beta functionality
+This functionality is new in v1.5! These docs exist to provide a high-level overview of what's to come. Specific syntax is liable to change.
+:::
+
+## Related documentation
+- [Model contracts](publish/model-contracts)
+
+<!-- TODO: move some of this content elsewhere, and update to reflect new proposed syntax -->
 
 # Definition
 
