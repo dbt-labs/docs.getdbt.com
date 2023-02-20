@@ -1,5 +1,8 @@
 ---
 title: "Model contracts"
+id: model-contracts
+sidebar_label: "Model contracts"
+description: "Model contracts define a set of parameters validated during transformation"
 ---
 
 :::info Beta functionality
