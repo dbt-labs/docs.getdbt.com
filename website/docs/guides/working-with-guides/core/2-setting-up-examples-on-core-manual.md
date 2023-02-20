@@ -8,3 +8,14 @@ hoverSnippet: Learn how to set up Guides example projects on dbt Core on your co
 ---
 
 ## Core Manual
+
+1. Fork the repo.
+2. Clone your fork.
+3. Create a venv.
+4. Install requirements.
+5. Warehouse credentials and profile.
+6. Jafgen
+7. deps
+8. build
+9. delete jafgen folder
+10. duckcli to explore
