@@ -82,7 +82,7 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 <details>
   <summary>Why did I receive a <b>Failed payment</b> error email?</summary>
   <div>
-    <div>This means we were unable to charge the credit card you have on file or you have not provided an updated card for payment. If you're a current account owner with a card on file, contact your credit card issuer to inquire as to why your card was declined or update the credit card on your account.<br></br><br></br>
+    <div>This means we were unable to charge the credit card you have on file, or you have not provided an updated card for payment. If you're a current account owner with a card on file, contact your credit card issuer to inquire as to why your card was declined or update the credit card on your account.<br></br><br></br>
     
     Your Account Owner can update payment details in the <b>Account Settings</b> -> <b>Billing</b> page  Click on the Edit link next to your card details, double check that it's all correct, and we'll give it another go at the next billing run.</div>
     </div>
