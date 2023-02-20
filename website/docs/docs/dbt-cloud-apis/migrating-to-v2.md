@@ -6,7 +6,7 @@ id: "migrating-to-v2"
 ---
 
 
-When migrating from dbt Cloud Administrative API v4 to API v2, there are a few differences you should consider when querying your data. 
+When migrating from dbt Cloud Administrative API v4 to API v2, there are a few differences you should consider when querying your dbt Cloud account. 
 
 ## Key differences
 
