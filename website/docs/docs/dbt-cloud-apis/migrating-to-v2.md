@@ -19,9 +19,9 @@ GET https://cloud.getdbt.com/api/v2/accounts/{accountId}/runs/?include_related=[
 Differences in responses include:
 
 | Property description | API v4    | API v2     |
-|---------|-----------|-------------|
+|---------------------|-----------|-------------|
 | Use sort by `-id` to reverse the sort order | Defaults to order by most recent | Defaults to order by least recent |
 | Timestamps | Unix timestamps | ISO strings |
-| `id`, `environment_id`, `account_id`, `project_id`, `job_id` | Values are the same, but they are strings | Values are the same, but they are numeric |
-| Status | `status` property |  Maps to `status_humanized` |
-| Replace | `replace` property | Maps to the `trigger` property |
+| Updated IDs: `id`, `environment_id`, `account_id`, `project_id`, `job_id` | Values are the same, but they are strings | Values are the same, but they are numeric |
+| Returns runs with the specified status | `status` property |  Maps to `status_humanized` |
+| Related field included with run | `replace` property | Maps to the `trigger` property |
