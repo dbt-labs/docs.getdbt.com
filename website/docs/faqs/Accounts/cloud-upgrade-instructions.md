@@ -4,11 +4,12 @@ id: "cloud-upgrade-instructions"
 description: "Instructions for upgrading a dbt Cloud account after the trial ends."
 ---
 
-dbt Cloud offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for dbt Cloud users and explains how to select a plan in order to continue using dbt Cloud. 
+dbt Cloud offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for dbt Cloud admins and explains how to select a plan in order to continue using dbt Cloud. 
 
 :::tip Before you begin
 - You **_must_** be part of the [Owner](/docs/collaborate/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
 - All amounts shown in dbt Cloud are in U.S. Dollars (USD)   
+- When your trial expires, your account's default plan enrollment will be a Team plan.
 :::
 
 
@@ -84,6 +85,6 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
   <div>
     <div>This means we were unable to charge the credit card you have on file, or you have not provided an updated card for payment. If you're a current account owner with a card on file, contact your credit card issuer to inquire as to why your card was declined or update the credit card on your account.<br></br><br></br>
     
-    Your Account Owner can update payment details in the <b>Account Settings</b> -> <b>Billing</b> page  Click on the Edit link next to your card details, double check that it's all correct, and we'll give it another go at the next billing run.</div>
+    Your Account Owner can update payment details in the <b>Account Settings</b> -> <b>Billing</b> page.  Click <b>Edit</b> next to your card details, double check your information is up-to-date, and we'll give it another go at the next billing run.</div>
     </div>
 </details>
