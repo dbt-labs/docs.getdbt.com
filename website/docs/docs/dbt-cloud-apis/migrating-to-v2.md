@@ -10,18 +10,17 @@ When migrating from dbt Cloud Administrative API v4 to API v2, there are a few d
 
 ## Key differences
 
-When using the `List runs` endpoint, you can include triggered runs and sort by ID. Use the following curl, replacing the `{accountId}` with your own:
+When using the `List runs` endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own:
 
 ```shell
 GET https://cloud.getdbt.com/api/v2/accounts/{accountId}/runs/?include_related=["trigger"]&order_by=-id
 ```
 
-The differences in the response include:
-|Feature | API v4       |      API v2 |
-|--------|-----------|-------------|
-| sort by `-id` | default orders by most recent | defaults order by  |
+The differences in the responses include:
+| Feature / property | API v4    | API v2      |
+|---------|-----------|-------------|
+| Use sort by `-id` to reverse the sort order | default orders by most recent | defaults order by least recent |
 | timestamps | Unix timestamps | ISO strings |
-| id, environment_id, account_id, project_id, job_id values | values are the same, but they are strings | values are the same, but they are numeric |
-| status | status property |  maps to status_humanized |
-| replace | replace property | maps to the `trigger` property |
-
+| `id`, `environment_id`, `account_id`, `project_id`, `job_id` | values are the same, but they are strings | values are the same, but they are numeric |
+| Status | `status` property |  maps to `status_humanized` |
+| Replace | `replace` property | maps to the `trigger` property |
