@@ -1,5 +1,8 @@
 ---
 title: "Model versions"
+id: model-versions
+sidebar_label: "Model versions"
+description: "Version models to help with lifecycle management"
 ---
 
 :::info Beta functionality
