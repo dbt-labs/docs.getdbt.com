@@ -17,7 +17,7 @@ GET https://cloud.getdbt.com/api/v2/accounts/{accountId}/runs/?include_related=[
 ```
 
 The differences in the responses include:
-| Feature / property | API v4    | API v2      |
+| Property | API v4    | API v2      |
 |---------|-----------|-------------|
 | Use sort by `-id` to reverse the sort order | default orders by most recent | defaults order by least recent |
 | timestamps | Unix timestamps | ISO strings |
