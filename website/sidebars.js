@@ -443,6 +443,7 @@ const sidebarSettings = {
           items: [
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
+            "reference/resource-properties/constraints",
             "reference/resource-properties/description",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",

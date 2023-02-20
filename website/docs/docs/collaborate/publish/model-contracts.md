@@ -77,7 +77,9 @@ Any model can define a contract. It's especially important to define contracts f
 
 A model's contract defines the **shape** of the returned dataset.
 
-[Tests](tests) are a more flexible mechanism for validating the content of your model. So long as you can write the query, you can run the test. In blue/green deployments (docs link TK), ...
+[Tests](tests) are a more flexible mechanism for validating the content of your model. So long as you can write the query, you can run the test. Tests are also more configurable, via `severity` and custom thresholds, and easier to debug after finding failures, because the model has already built, and the relevant records can be materialized in the data warehouse by [storing failures](resource-configs/store_failures).
+
+In blue/green deployments (docs link TK), ... <!-- TODO write more here -->
 
 In the parallel for software APIs:
 - The structure of the API response is the contract
