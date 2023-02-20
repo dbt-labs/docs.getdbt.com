@@ -10,7 +10,7 @@ When migrating from dbt Cloud Administrative API v4 to API v2, there are a few d
 
 ## Key differences
 
-When using the `List runs` endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own:
+When using the [List runs](/dbt-cloud/api-v2#tag/Runs) endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own:
 
 ```shell
 GET https://cloud.getdbt.com/api/v2/accounts/{accountId}/runs/?include_related=["trigger"]&order_by=-id
