@@ -16,11 +16,12 @@ When using the `List runs` endpoint, you can include triggered runs and sort by 
 GET https://cloud.getdbt.com/api/v2/accounts/{accountId}/runs/?include_related=["trigger"]&order_by=-id
 ```
 
-The differences in the responses include:
-| Property | API v4    | API v2      |
+Differences in responses include:
+
+| Property | API v4    | API v2     |
 |---------|-----------|-------------|
-| Use sort by `-id` to reverse the sort order | default orders by most recent | defaults order by least recent |
+| Use sort by `-id` to reverse the sort order | Defaults to order by most recent | Defaults to order by least recent |
 | timestamps | Unix timestamps | ISO strings |
-| `id`, `environment_id`, `account_id`, `project_id`, `job_id` | values are the same, but they are strings | values are the same, but they are numeric |
-| Status | `status` property |  maps to `status_humanized` |
-| Replace | `replace` property | maps to the `trigger` property |
+| `id`, `environment_id`, `account_id`, `project_id`, `job_id` | Values are the same, but they are strings | Values are the same, but they are numeric |
+| Status | `status` property |  Maps to `status_humanized` |
+| Replace | `replace` property | Maps to the `trigger` property |
