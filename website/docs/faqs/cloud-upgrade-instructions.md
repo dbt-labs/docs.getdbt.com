@@ -6,7 +6,7 @@ description: "Instructions for upgrading your dbt Cloud account after the trial 
 
 ## How to upgrade your dbt Cloud Account
 
-Once your dbt Cloud trial ends or if your subscription payment is past due, you'll need to perform a plan upgrade in order to continue using your account.
+Once your dbt Cloud trial ends or if your subscription payment is past due, you'll need to perform a plan upgrade to continue using your account.
 
 **Note**: Only users that are part of the "Owner" user group have the ability to make these changes. Users not included in this group will not see these options in the UI. 
 
