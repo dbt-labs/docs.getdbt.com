@@ -9,11 +9,15 @@ description: New features and changes in dbt Core v1.5
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
 
-**Planned final release:** April 26, 2023
+:::info
 
-dbt Core v1.5 is a feature release, with two big additions planned:
-1. **"Models as APIs,"** the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
-2. An initial **Python API for dbt-core,** supporting programmatic invocations at parity with the CLI
+Planned release date: April 26, 2023
+
+:::
+
+dbt Core v1.5 is a feature release with two significant additions planned:
+1. Models as APIs &mdash; the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
+2. An initial Python API for dbt-core supporting programmatic invocations at parity with the CLI.
 
 ## What to know before upgrading
 
@@ -21,13 +25,13 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Breaking changes
 
-As part of our refactor of `dbt-core` internals, we need to make some **very precise** changes to runtime configuration. The net result of these changes is more sensible configuration options, clearer documentation, cleaner APIs, and a more legible codebase.
+As part of our refactor of `dbt-core` internals, we must make precise changes to runtime configuration. The net result of these changes is more practical configuration options, clearer documentation, cleaner APIs, and a more legible codebase.
 
-Wherever possible, we will aim to provide backwards compatibility and deprecation warnings for at least one minor version, before actually removing the old functionality. In those cases, we still reserve the right to fully remove the backward-compatible functionality in a future v1.x minor version of `dbt-core`.
+Wherever possible, we will provide backward compatibility and deprecation warnings for at least one minor version before actually removing the old functionality. In those cases, we still reserve the right to fully remove the backward-compatible functionality in a future v1.x minor version of `dbt-core`.
 
 Changes planned for v1.5:
 - Renaming ["global configs"](global-configs) for consistency ([dbt-core#6903](https://github.com/dbt-labs/dbt-core/issues/6903))
-- Moving `log-path` and `target-path` out of `dbt_project.yml`, for consistency with other global configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882))
+- Moving `log-path` and `target-path` out of `dbt_project.yml` for consistency with other global configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882))
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -35,11 +39,11 @@ The manifest schema version will be updated to `v9`. Specific changes to be note
 
 ### For maintainers of adapter plugins
 
-Forthcoming: GH discussion detailing interface changes, and offering a forum for Q&A
+Coming soon: GH discussion detailing interface changes and offering a forum for Q&A
 
 ## New and changed documentation
 
-Forthcoming!
+Coming soon
 
 ### "Models as APIs"
 - Model contracts ([#2839](https://github.com/dbt-labs/docs.getdbt.com/issues/2839))
