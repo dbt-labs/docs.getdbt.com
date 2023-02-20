@@ -68,7 +68,7 @@ Slim CI offers an alternative to running and testing all models in your project,
 These components distinguish a Slim CI job from a dbt CI job:
 
 - Must defer to a production job.
-- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Defferral and state comparision](#deferral-and-state-comparison)
+- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](#deferral-and-state-comparison)
 - Must be triggered by a pull request.
 
 ### Deferral and state comparison  

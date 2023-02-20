@@ -2,7 +2,7 @@
 title: "Migrating to dbt Cloud Administrative API v2"
 description: "You should migrate to API v2 while we deprecate API v4 "
 sidebar_label: "Migrating to API v2"
-id: "admin-cloud-api"
+id: "migrating-to-v2"
 ---
 
 
