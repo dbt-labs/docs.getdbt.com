@@ -7,7 +7,7 @@ sidebar_label: "Audit log"
 
 :::note
 
-Audit logs are currently not available to Microsoft Azure customers.
+Audit logs are currently not available for Microsoft Azure customers.
 
 :::
 
