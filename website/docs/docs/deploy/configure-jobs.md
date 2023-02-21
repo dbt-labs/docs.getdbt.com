@@ -11,15 +11,32 @@ A dbt Cloud job is a set of commands and configurations that help you to run it 
 - Optional job-level [environmental variables](/docs/build/environment-variables)
 - Configurable [dbt commands](/reference/dbt-commands), including [built-in commands](#command-types)
 - Option to defer to a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#types-of-environments)
-- Job triggers, like an optional schedule, continuous integration, and API
+- Job triggers, like an optional schedule, [continuous integration](/docs/deploy/cloud-ci-job), and [API](/docs/dbt-cloud-apis/overview)
 
 ## Prerequisites
 
-To successfully configure job commands, you'll need to have the following already set up:
+To successfully configure a job, you'll need to have the following:
 
-- A dbt Cloud account with an active dbt project connected to a data platform and git provider
-- [Permission](/docs/collaborate/manage-access/about-access) to create, edit, and run jobs
-- A configured job and production environment 
+- Active dbt Cloud account and project connected to a [data platform](/docs/get-started/connect-your-database) and [git provider](/docs/collaborate/git/connect-github)
+- [Access permission](/docs/collaborate/manage-access/about-access) to create, edit, and run jobs
+- A [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment), which determines the settings for the executed job(s)
+
+## Configure a job
+
+Jobs are a set of dbt commands that you want to run on a schedule. For example, dbt run and dbt test.
+
+After creating your deployment environment, you should be directed to the page for new environment. If not, select Deploy in the upper left, then click Jobs.
+Click Create one and provide a name, for example "Production run", and link to the Environment you just created.
+Scroll down to "Execution Settings" and select Generate docs on run.
+Under "Commands," add these commands as part of your job if you don't see them:
+dbt run
+dbt test
+For this exercise, do NOT set a schedule for your project to run -- while your organization's project should run regularly, there's no need to run this project on a schedule.
+Select Save, then click Run now to run your job.
+Click the run and watch its progress under "Run history."
+
+
+
 
 ## Command types
 
