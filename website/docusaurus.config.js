@@ -48,6 +48,11 @@ var siteSettings = {
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
+    docs:{
+      sidebar: {
+        hideable: true,
+      },
+    },
     image: "/img/avatar.png",
     colorMode: {
       defaultMode: "light",
