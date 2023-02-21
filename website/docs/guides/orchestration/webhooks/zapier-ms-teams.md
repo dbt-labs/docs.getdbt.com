@@ -26,7 +26,7 @@ Use _Webhooks by Zapier_ as the Trigger, and _Catch Raw Hook_ as the Event. If y
 Press _Continue_, then copy the webhook URL and put it into dbt Cloud. 
 
 ### Configure a new webhook in dbt Cloud
-See docs here. Choose job completed. 
+See docs here. Choose either _Run completed_ or _Run errored_, but not both or you'll get double messages on failures.
 
 Once you've tested the endpoint, go back to Zapier and click _Test Trigger_, which will create a sample webhook body for you to work with. 
 
@@ -70,8 +70,8 @@ if signature != auth_header:
 full_body = json.loads(raw_body)
 hook_data = full_body['data'] 
 
-# Steps derived from these commands will have their error details extracted and shown inline
-commands_to_show_logs = ['dbt build', 'dbt run', 'dbt test']
+# Steps derived from these commands won't have their error details shown inline, as they're messy
+commands_to_skip_logs = ['dbt source', 'dbt docs']
 
 # When testing, you will want to hardcode run_id and account_id to IDs that exist; the sample webhook won't work. 
 run_id = hook_data['runId']
@@ -103,7 +103,7 @@ for step in run_data_results['run_steps']:
     outcome_message += f"""
 ❌ {step['name']} ({step['status_humanized']} in {step['duration_humanized']})
 """
-    show_logs = any(cmd in step['name'] for cmd in commands_to_show_logs)
+    show_logs = not any(cmd in step['name'] for cmd in commands_to_skip_logs)
     if show_logs:
       full_log = step['logs']
       # Remove timestamp and any colour tags
@@ -124,5 +124,4 @@ for step in run_data_results['run_steps']:
 """
 
 # Zapier looks for the `output` dictionary for use in subsequent steps
-output = {'outcome_message': outcome_message}
-```
+output = {'outcome_message': outcome_message}```
