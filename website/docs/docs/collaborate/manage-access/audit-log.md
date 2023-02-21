@@ -5,12 +5,6 @@ description: "You can troubleshoot possible issues and provide security audits b
 sidebar_label: "Audit log"
 ---
 
-:::note
-
-Audit logs are not available for Microsoft Azure customers.
-
-:::
-
 To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 
 
 You must be an **Account Admin** to access the audit log and this feature is only available on Enterprise plans.
