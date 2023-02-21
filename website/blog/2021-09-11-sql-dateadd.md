@@ -2,6 +2,7 @@
 title: "DATEADD SQL Function Across Data Warehouses"
 description: "DATEADD Function syntax varies across data warehouses. Learn how to standardize your syntax no matter the container."
 slug: sql-dateadd
+canonical_url: https://docs.getdbt.com/sql-reference/dateadd
 
 authors: david_krevitt
 
@@ -43,7 +44,7 @@ The *functions themselves* are named slightly differently, which is common acros
 
 ```sql
 dateadd( {{ datepart }}, {{ interval }}, {{ from_date }} )
-``` 
+```
 
 *Hour, minute and second are supported!*
 
@@ -57,14 +58,14 @@ date_add( {{ startDate }}, {{ numDays }} )
 
 ```sql
 date_add( {{ from_date }}, INTERVAL {{ interval }} {{ datepart }} )
-``` 
+```
 
 *Dateparts of less than a day (hour / minute / second) are not supported.*
 
 ### The DATEADD Function in Postgres...
 
 Postgres doesn’t provide a dateadd function out of the box, so you’ve got to go it alone - but the syntax looks very similar to BigQuery’s function…
-	
+
 ```sql
 {{ from_date }} + (interval '{{ interval }} {{ datepart }}')
 ```
@@ -96,7 +97,7 @@ Adding 1 month to today would look like...
 ```
 
 > *New to dbt?  Check out [dbt introduction](https://docs.getdbt.com/docs/introduction) for more background on dbt and the analytics engineering workflow that it facilitates.*
-> 
+>
 > *TL;DR: dbt allows data practitioners to write code like software engineers, which in this case means not repeating yourself unnecessarily.*
 
 ### Compiling away your DATEADD troubles
@@ -143,5 +144,4 @@ Enjoy! FYI I've used dateadd macro in dbt-utils on BigQuery, Postgres, Redshift 
 
 *Note: While `dbt_utils` doesn't support Databricks by default, you can use other packages that [implement overrides](/reference/dbt-jinja-functions/dispatch#overriding-package-macros) as a workaround.*
 
-*This [spark_utils package](https://github.com/dbt-labs/spark-utils/blob/main/macros/dbt_utils/cross_db_utils/dateadd.sql) can help you implement the override needed to add support for Databricks dateadd*
-
+*This [spark_utils package](https://github.com/dbt-labs/spark-utils/blob/0.3.0/macros/dbt_utils/cross_db_utils/dateadd.sql) can help you implement the override needed to add support for Databricks dateadd*

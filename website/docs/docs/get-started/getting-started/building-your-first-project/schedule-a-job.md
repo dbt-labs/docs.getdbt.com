@@ -52,7 +52,7 @@ Congratulations! Now that you've got a working dbt project, you can read about d
 
 You can improve your dbt skills with these fun exercises:
 
-* Turn your raw data references (for example, turn `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/building-a-dbt-project/using-sources).
+* Turn your raw data references (for example, turn `` `dbt-tutorial`.jaffle_shop.orders``) into [sources](/docs/build/sources).
 * Build a new models for `orders`, that uses the `payments` table to calculate the total order amount.
 * Reorganize your project into [how we structure dbt projects](/blog/how-we-structure-our-dbt-projects).
 * If you want a more in-depth learning experience, we recommend taking the [dbt Fundamentals on our dbt Learn online courses site](https://courses.getdbt.com/courses/fundamentals).
@@ -63,3 +63,10 @@ Here are some ways to learn more essential dbt skills:
 * Learn how to use Jinja in your project by reading the [Jinja tutorial](/docs/get-started/learning-more/using-jinja).
 * Learn how to [connect to dbt Core using the CLI](/docs/get-started/getting-started-dbt-core).
 * Refactor [legacy SQL to dbt SQL](/docs/get-started/learning-more/refactoring-legacy-sql).
+
+
+## Related docs
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)

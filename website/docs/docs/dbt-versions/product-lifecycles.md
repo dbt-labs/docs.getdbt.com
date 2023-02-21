@@ -26,7 +26,7 @@ Any dbt feature will fall into one of the following lifecycle states:
 
 ### dbt Core
 
-We release dbt Core in the following lifecycle states. Core releases follow semantic layer versioning, which you  can read more about in [About Core versions](/docs/dbt-versions/core).
+We release dbt Core in the following lifecycle states. Core releases follow semantic versioning, which you can read more about in [About Core versions](/docs/dbt-versions/core).
 - **Unreleased:** We will include this functionality in the next minor version prerelease. However, we make no commitments about its behavior or implementation. As maintainers, we reserve the right to change any part of it, or remove it entirely (with an accompanying explanation.)
 
 - **Prerelease:**

@@ -7,7 +7,8 @@ You can connect to your database in dbt Cloud by clicking the gear  in the top r
 
 ## IP Restrictions
 
-dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions](/docs/deploy/regions) page
+dbt Cloud will always connect to your data platform from the IP addresses specified in the [Regions & IP addresses](/docs/deploy/regions-ip-addresses) page.
+
 Be sure to allow traffic from these IPs in your firewall, and include them in any database grants.
 
 <Changelog>
@@ -17,7 +18,7 @@ Be sure to allow traffic from these IPs in your firewall, and include them in an
 
 </Changelog>
 
-Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain. For more on the dbt Cloud architecture, see "[Deployment architecture](/docs/deploy/architecture)."
+Allowing these IP addresses only enables the connection to your <Term id="data-warehouse" />. However, you might want to send API requests from your restricted network to the dbt Cloud API.  For example, you could use the API to send a POST request that [triggers a job to run](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun). Using the dbt Cloud API requires that you allow the `cloud.getdbt.com` subdomain or the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For more on the dbt Cloud architecture, see [Deployment architecture](/docs/deploy/architecture).
 
 
 ## Connecting to Postgres, Redshift, and AlloyDB
@@ -29,15 +30,58 @@ The following fields are required when creating a Postgres, Redshift, or AlloyDB
 | Host Name | The hostname of the Postgres, Redshift, or AlloyDB database to connect to. This can either be a hostname or an IP address. | `xxx.us-east-1.amazonaws.com` |
 | Port | Usually 5432 (Postgres) or 5439 (Redshift) | `5439` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
+
+**Note**: When you set up a Redshift or Postgres connection in dbt Cloud, SSL-related parameters aren't available as inputs.
+
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-connection.png" title="Configuring a Redshift connection"/>
 
 ### Connecting via an SSH Tunnel
 
-To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, select the **Use SSH Tunnel** option when creating your connection. When configuring the tunnel, you must supply the hostname, username, and port for the bastion server.
+To connect to a Postgres, Redshift, or AlloyDB instance via an SSH tunnel, select the **Use SSH Tunnel** option when creating your connection. When configuring the tunnel, you must supply the hostname, username, and port for the [bastion server](#about-the-bastion-server-in-aws).
 
 Once the connection is saved, a public key will be generated and displayed for the Connection. You can copy this public key to the bastion server to authorize dbt Cloud to connect to your database via the bastion server.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/postgres-redshift-ssh-tunnel.png" title="A generated public key for a Redshift connection"/>
+
+#### About the Bastion server in AWS
+
+<details>
+  <summary>What is a Bastion server?</summary>
+  <div>
+    <div>A bastion server in <a href="https://aws.amazon.com/blogs/security/how-to-record-ssh-sessions-established-through-a-bastion-host/">Amazon Web Services (AWS)</a> is a host that allows dbt Cloud to open an SSH connection. <br></br>
+    
+dbt Cloud only sends queries and doesn't transmit large data volumes. This means the bastion server can run on an AWS instance of any size, like a t2.small instance or t2.micro.<br></br><br></br>
+    
+Make sure the location of the instance is the same Virtual Private Cloud (VPC) as the Redshift instance, and configure the security group for the bastion server to ensure that it's able to connect to the warehouse port.
+    </div>
+  </div>
+</details>
+
+
+#### Configuring the Bastion Server in AWS:
+
+To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that dbt Cloud will connect to. Review the following steps:
+
+- Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/deploy/regions-ip-addresses) on whatever port you configured.
+- Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud:`
+    
+    `sudo groupadd dbtcloud`<br/>
+    
+    `sudo useradd -m -g dbtcloud dbtcloud`<br/>
+    
+    `sudo su - dbtcloud`<br/>
+    
+    `mkdir ~/.ssh`<br/>
+    
+    `chmod 700 ~/.ssh`<br/>
+    
+    `touch ~/.ssh/authorized_keys`<br/>
+    
+    `chmod 600 ~/.ssh/authorized_keys`<br/>
+    
+- Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
+
+The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
 
 ## Connecting to Snowflake
 
@@ -139,18 +183,46 @@ In addition to these fields, there are two other optional fields that can be con
 The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a BigQuery user without the configuration of BigQuery service account keyfile in dbt Cloud. For
 more information on the initial configuration of a BigQuery OAuth connection in dbt Cloud, please see
-[the docs on setting up BigQuery OAuth](cloud-setting-up-bigquery-oauth).
+[the docs on setting up BigQuery OAuth](/docs/collaborate/manage-access/set-up-bigquery-oauth).
 
 As an end user, if your organization has set up BigQuery OAuth, you can link a project with your personal BigQuery account in your personal Profile in dbt Cloud, like so:
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
+You can connect to Databricks by using one of two supported adapters: [dbt-databricks](/connect-your-database#dbt-databricks) and [dbt-spark](/connect-your-database#dbt-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark will be deprecated in the future.
 
-### ODBC
+### dbt-databricks Adapter
+dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.
+
+| Feature | dbt Versions |
+| ----- | ----------- | 
+| dbt-databricks | Available starting with dbt 1.0 in dbt Cloud|
+| Unity Catalog | Available starting with dbt 1.1 | 
+| Python models | Available starting with dbt 1.3 |
+
+The dbt-databricks adapter offers:
+- **Easier set up**
+- **Better defaults:**
+The dbt-databricks adapter is more opinionated, guiding users to an improved experience with less effort. Design choices of this adapter include defaulting to Delta format, using merge for incremental models, and running expensive queries with Photon.
+- **Support for Unity Catalog:**
+Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
+
+
+To set up the Databricks connection, supply the following fields:
+
+| Field | Description | Examples |
+| ----- | ----------- | -------- |
+| Server Hostname | The hostname of the Databricks account to connect to | dbc-a2c61234-1234.cloud.databricks.com |
+| HTTP Path | The HTTP path of the Databricks cluster or SQL warehouse | /sql/1.0/warehouses/1a23b4596cd7e8fg |
+| Catalog | Name of Databricks Catalog (optional) | Production |
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dbt-databricks.png" title="Configuring a Databricks connection using the dbt-databricks adapter"/>
+
+### dbt-spark Adapter
 
 dbt Cloud supports connecting to Databricks using
 [a Cluster](https://docs.databricks.com/clusters/index.html) or
-[a SQL Endpoint](https://docs.databricks.com/sql/admin/sql-endpoints.html).
+[a SQL Warehouse (formerly called SQL endpoints)](https://docs.databricks.com/sql/admin/sql-endpoints.html).
 Depending on how you connect to Databricks, either one of the `Cluster` or
 `Endpoint` configurations must be provided, but setting _both_ values is not
 allowed.
@@ -159,14 +231,14 @@ The following fields are available when creating a Databricks connection:
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Host Name | The hostname of the Databricks account to connect to | `avc-def1234ghi-9999.cloud.databricks.com` |
+| Hostname | The hostname of the Databricks account to connect to | dbc-a2c61234-1234.cloud.databricks.com |
 | Port | The port to connect to Databricks for this connection | 443 |
-| Organization | Optional (default: 0) | 0123456789 |
+| Organization | Optional (default: 0) | 1123456677899012 |
 | Cluster | The ID of the cluster to connect to (required if using a cluster) | 1234-567890-abc12345 |
-| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 0123456789 |
+| Endpoint | The ID of the endpoint to connect to (required if using Databricks SQL) | 1a23b4596cd7e8fg |
 | User | Optional | dbt_cloud_user |
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/databricks-connections.png" title="Configuring a Databricks connection"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dbt-spark.png" title="Configuring a Databricks connection using the dbt-spark adapter"/>
 
 ## Connecting to Apache Spark
 

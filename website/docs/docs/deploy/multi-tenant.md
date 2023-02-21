@@ -7,5 +7,5 @@ The Multi Tenant (SaaS) deployment environment refers to the SaaS dbt Cloud appl
 
 For more information about the dbt Cloud Production deployment see the below.
 
-- [Application Data Flows](/docs/dbt-cloud/deployments/deployment-architecture#application-data-flows)
-- [Hosted Network Architecture](/docs/dbt-cloud/deployments/deployment-architecture#hosted-network-architecture)
+- [Application Data Flows](/docs/deploy/architecture#application-data-flows)
+- [Hosted Network Architecture](/docs/deploy/architecture#hosted-network-architecture)

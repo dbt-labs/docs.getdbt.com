@@ -3,11 +3,11 @@ title: "Install with Docker"
 description: "You can use Docker to install dbt and adapter plugins from the command line."
 ---
 
-dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages).
+dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker](https://docs.docker.com/) images, and distributed via [GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages) in a [public registry](https://github.com/dbt-labs/dbt-core/pkgs/container/dbt-core).
 
 Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `pip install dbt-core dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
 
-You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core via [Homebrew](/docs/develop/homebrew-install) or [pip](/docs/develop/pip-install) instead.
+You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core via [Homebrew](/docs/get-started/homebrew-install) or [pip](/docs/get-started/pip-install) instead.
 
 ### Prerequisites
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.
@@ -31,7 +31,7 @@ docker pull ghcr.io/dbt-labs/<db_adapter_name>:<version_tag>
 The `ENTRYPOINT` for dbt Docker images is the command `dbt`. You can bind-mount your project to `/usr/app` and use dbt as normal:
 ```
 docker run \
---network=host
+--network=host \
 --mount type=bind,source=path/to/project,target=/usr/app \
 --mount type=bind,source=path/to/profiles.yml,target=/root/.dbt/ \
 <dbt_image_name> \

@@ -15,7 +15,7 @@ If you're interested in learning more about an Enterprise plan, contact us at sa
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access
-control](access-control-overview) for more information on Role-Based access
+control](/docs/collaborate/manage-access/about-access) for more information on Role-Based access
 control (RBAC).
 
 ## Permission Sets
@@ -38,11 +38,31 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Create, delete, and modify Jobs
 - Create, delete, and modify Groups
 - Create, delete, and modify Group Memberships
-- Manage notification settings
-- Manage account-level [artifacts](dbt-cloud/using-dbt-cloud/artifacts)
+- Manage Notification Settings
+- Manage account-level [artifacts](/docs/deploy/artifacts)
 - View and modify Account Settings
 - Use the IDE
 - Run and cancel jobs
+
+### Project Creator
+- **Has permissions on:** Authorized projects, account-level settings
+- **License restrictions:** must have a developer license
+
+Project Creators have write and read-only access to dbt Cloud accounts, but do not have the permissions required to modify SSO settings and account integrations. 
+
+Users with Project Creator permissions can:
+
+- View Account Settings
+- View and modify project users
+- Create, delete and modify all projects in an account
+- Create, delete, and modify Repositories
+- Create, delete, and modify Connections
+- Create, delete, and modify Environments
+- Create, delete, and modify Jobs
+- Use the IDE
+- Run and cancel jobs
+- View Groups
+- View Notification Settings
 
 ### Account Viewer
 
@@ -58,7 +78,7 @@ Account Viewers have read only access to dbt Cloud accounts. Users with Account 
 - View Jobs
 - View Groups
 - View Group Memberships
-- View notification settings
+- View Notification Settings
 - View account-level artifacts
 
 ### Admin
@@ -116,7 +136,8 @@ Team Admins can perform the following actions in projects they are assigned to:
 Job Admins can perform the following actions in projects they are assigned to:
 - View, edit, and create environments
 - View connections
-- Trigger runs
+- Create, delete, and modify Jobs
+- Run and cancel jobs
 - View historical runs
 
 ### Job Viewer
@@ -134,7 +155,7 @@ Job Viewers can perform the following actions in projects they are assigned to:
 
 Developers can perform the following actions in projects they are assigned to:
 - Create, delete, and modify Jobs
-- Trigger runs
+- Run and cancel jobs
 - Use the IDE
 - Configure personal developer credentials
 

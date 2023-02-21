@@ -87,7 +87,7 @@ To create your dbt project:
 
 ### Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/dbt-cli/configure-your-profile), which is a yaml file with all the connection details to your warehouse.
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/get-started/connection-profiles), which is a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
@@ -223,7 +223,7 @@ When you return to the BigQuery console, you can `select` from this model.
 You can also explore:
 
 * The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
-* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the selects statements that are running and the python logging happening when dbt runs.
+* The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
 
 ## Test and document your project
 

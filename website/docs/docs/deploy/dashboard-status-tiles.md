@@ -5,7 +5,7 @@ description: "Embed Status Tiles in your dashboards to provide consumers with co
 ---
 
 ## Overview
-In dbt Cloud, the [Metadata API](dbt-cloud/dbt-cloud-api/metadata//docs/dbt-cloud-apis/metadata-api) can power Dashboard Status Tiles.  A Dashboard Status Tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
+In dbt Cloud, the [Metadata API](/docs/dbt-cloud-apis/metadata-api) can power Dashboard Status Tiles.  A Dashboard Status Tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
 
 ## Functionality
 The dashboard status tile looks like this:
@@ -19,11 +19,11 @@ The data freshness check fails if any sources feeding into the exposure are stal
 Clicking into **see details** from the Dashboard Status Tile takes you to a landing page where you can learn more about the specific sources, models, and tests feeding into this exposure.
 
 ## Setup
-First, be sure to enable [source freshness](dbt-cloud/using-dbt-cloud//docs/deploy/source-freshness) in the job that generates this exposure.
+First, be sure to enable [source freshness](/docs/deploy/source-freshness) in the job that generates this exposure.
 
 In order to set up your dashboard status tile, here is what you need:
 
-1. **Metadata Token.**  You can learn how to set up a metadata only token [here](dbt-cloud/dbt-cloud-api/service-tokens).
+1. **Metadata Token.**  You can learn how to set up a metadata only token [here](/docs/dbt-cloud-apis/service-tokens).
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 
@@ -61,3 +61,13 @@ https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_
 ```
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png"/>
+
+### Sigma
+
+Sigma does not require you to embed an iFrame. Add a new embedded UI element in your Sigma Workbook in the following format:
+
+```
+https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
+```
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/sigma-embed.gif"/>

@@ -4,7 +4,7 @@ id: "build-and-view-your-docs"
 description: "Automatically generate project documentation as you run jobs."
 ---
 
-dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/building-a-dbt-project/documentation).
+dbt enables you to generate documentation for your project and data warehouse, and renders the documentation in a website. For more information, see [Documentation](/docs/collaborate/documentation).
 
 ## Set up a documentation job
 
@@ -19,6 +19,20 @@ To set up a job to generate docs:
 
 4. Click **Save**. Proceed to [configure project documentation](#configure-project-documentation) so your project generates the documentation when this job runs.
 
+You can also add `dbt docs generate` to the list of commands in the job run steps. However, you can expect different outcomes when adding the command to the run steps compared to configuring a job selecting the **Generate docs on run** checkbox (shown in previous steps). 
+
+Review the following options and outcomes:
+
+| Options | Outcomes |
+|--------| ------- |
+| **Select checkbox** | Select the **Generate docs on run** checkbox to automatically generate updated project docs each time your job runs. If that particular step in your job fails, the job can still be successful if all subsequent steps are successful. |
+| **Add as a run step** | Add `dbt docs generate` to the list of commands in the job run steps, in whatever order you prefer. If that particular step in your job fails, the job will fail and all subsequent steps will be skipped.   |
+
+:::tip Tip &mdash; Documentation-only jobs 
+
+To create and schedule documentation-only jobs at the end of your production jobs, add the `dbt compile` command in the **Commands** section.
+
+:::
 
 ## Configure project documentation
 
@@ -38,9 +52,7 @@ Command Bar in the IDE. This command will generate the Docs for your dbt project
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-docs-generate-command.png" title="dbt docs generate"/>
 
-After generating your documentation, you can click the "view docs" button to see the latest version of your documentation rendered in a new browser window.
-
-<Lightbox src="/img/docs/dbt-cloud/View-docs-in-IDE.png" title="View docs in the IDE"/>
+After generating your documentation, you can click the **Book** icon above the file tree, to see the latest version of your documentation rendered in a new browser window.
 
 ## Viewing documentation
 

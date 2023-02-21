@@ -3,7 +3,7 @@ title: "About dbt projects"
 id: "projects"
 ---
 
-A dbt project informs dbt the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
+A dbt project informs dbt about the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
 
 At a minimum, all a project needs is the `dbt_project.yml` project configuration file. dbt supports a number of different resources, so a project may also include:
 
@@ -20,7 +20,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 
-When building out the structure of your project, you should consider these impacts to your organization's workflow:
+When building out the structure of your project, you should consider these impacts on your organization's workflow:
 
 * **How would people run dbt commands** &mdash; Selecting a path
 * **How would people navigate within the project** &mdash; Whether as developers in the IDE or stakeholders from the docs
@@ -56,7 +56,7 @@ For complete details on project configurations, see [dbt_project.yml](/reference
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/develop/getting-started/getting-set-up/setting-up-bigquery#initialize-your-dbt-project) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
 During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 

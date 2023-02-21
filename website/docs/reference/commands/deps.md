@@ -3,13 +3,7 @@ title: "deps"
 id: "deps"
 ---
 
-`dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. See [Package-Management](package-management) for more information.
-
-<Changelog>
-
-- **v0.21.0**: dbt package version comparison logging is new!
-
-</Changelog>
+`dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. See [Package-Management](/docs/build/packages) for more information.
 
 Where relevant, dbt will display up to date and/or latest versions of packages that are listed on dbt Hub. Example below.
 

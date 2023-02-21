@@ -1,5 +1,14 @@
 exports.versions = [
   {
+    version: "1.5",
+    EOLDate: "2024-04-26",
+    isPrerelease: true,
+  },
+  {
+    version: "1.4",
+    EOLDate: "2024-01-25",
+  },
+  {
     version: "1.3",
     EOLDate: "2023-10-12",
   },
@@ -13,16 +22,8 @@ exports.versions = [
   },
   {
     version: "1.0",
-    EOLDate: "2023-12-03"
+    EOLDate: "2022-12-03"
   },
-  {
-    version: "0.21",
-    EOLDate: "2022-06-30"
-  },
-  {
-    version: "0.20",
-    EOLDate: "2022-06-30"
-  }
 ]
 
 exports.versionedPages = [
@@ -53,5 +54,13 @@ exports.versionedPages = [
   {
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
-  }
+  },
+  {
+   "page": "reference/dbt-jinja-functions/local-md5",
+    "firstVersion": "1.4",
+  },
+  {
+    "page": "reference/warehouse-setups/fal-setup",
+    "firstVersion": "1.3",
+  },
 ]

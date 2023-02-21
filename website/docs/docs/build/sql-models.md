@@ -27,7 +27,7 @@ dbt's Python capabilities are an extension of its capabilities with SQL models. 
 
 A SQL model is a `select` statement. Models are defined in `.sql` files (typically in your `models` directory):
 - Each `.sql` file contains one model / `select` statement
-- The model name is inherited from the filename. 
+- The model name is inherited from the filename.
 - Models can be nested in subdirectories within the `models` directory
 
 When you execute the [`dbt run` command](run), dbt will build this model <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
@@ -260,12 +260,8 @@ dbt uses the `ref` function to:
 Additionally, the `ref` function encourages you to write modular transformations, so that you can re-use models, and reduce repeated code.
 
 ## Testing and documenting models
-<<<<<<< HEAD
-You can also document and test models — skip ahead to the section on [testing](/docs/build/tests) and [documentation](documentation) for more information.
-=======
-You can also document and test models &mdash; skip ahead to the section on [testing](building-a-dbt-project/tests) and [documentation](documentation) for more information.
->>>>>>> next
 
+You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
 
 ## Additional FAQs
 <FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />

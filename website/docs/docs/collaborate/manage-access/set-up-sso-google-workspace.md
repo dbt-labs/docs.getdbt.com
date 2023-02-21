@@ -49,7 +49,7 @@ Client Secret for use in dbt Cloud.
 | ---------------------- | ------------ | ------ |
 | **Application type**   | internal     | required |
 | **Application name**   | dbt Cloud    | required |
-| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank">here</a> | optional |
+| **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank" rel="noopener noreferrer">here</a> | optional |
 | **Authorized domains** | `getdbt.com` | If deploying into a VPC, use the domain for your deployment |
 | **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
@@ -57,20 +57,14 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials:
-
-:::caution Authorized URIs
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the _Authorized Javascript origins_ and _Authorized Redirect URIs_ configurations.
-:::
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 
 | Config | Value |
 | ------ | ----- |
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
-| **Authorized Javascript origins** | `https://cloud.getdbt.com` |
-| **Authorized Redirect URIs** | `https://cloud.getdbt.com/complete/gsuite` |
+| **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
+| **Authorized Redirect URIs** | `https://YOUR_ACCESS_URL/complete/gsuite` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
@@ -90,13 +84,6 @@ and ensure that the API is enabled.
 
 To complete setup, follow the steps below in the dbt Cloud application.
 
-### Enable GSuite Native Auth (beta)
-
-- For users accessing dbt Cloud at cloud.getdbt.com, contact your account manager to
-  gain access to the GSuite Native auth configuration UI
-- For users accessing dbt Cloud deployed in a VPC, enable the `native_gsuite`
-  feature flag in the dbt Cloud admin backend.
-
 ### Supply your OAuth Client ID and Client Secret
 
 1. Navigate to the **Enterprise &gt; Single Sign On** page under Account
@@ -110,7 +97,7 @@ Settings.
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
-      Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must
+      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. The `LOGIN_SLUG` must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
       identifies your company.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
@@ -126,8 +113,10 @@ Settings.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite verify groups"/>
 
 If the verification information looks appropriate, then you have completed
-the configuration of GSuite SSO. Members of your team should now be able to log
-into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
+the configuration of GSuite SSO. 
+
+<Snippet src="login_url_note" />
+
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up

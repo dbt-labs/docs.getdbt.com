@@ -18,7 +18,7 @@ This guide will walk you through:
 
 ## Prerequisites
 
-Before beginning this guide, make sure that you have access to **new or existing Google account**. You can use a personal or work account to set up BigQuery through Google Cloud Platform (GCP).
+Before beginning this guide, make sure that you have access to [new or existing Google account](https://support.google.com/accounts/answer/27441?hl=en). You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
 
 ## Setting up
 
@@ -49,7 +49,7 @@ Before jumping into the steps below, login to your Google account.
 
 BigQuery supports public data sets that can be directly queried, so we will show you how to access those datasets via select statements. Additionally, we will show you how to populate your own database objects with that data.
 
-1. Navigate to the [BigQuery Console](https://console.cloud.google.com/bigquery) again. Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify your are using the correct email account.
+1. Navigate to the [BigQuery Console](https://console.cloud.google.com/bigquery) again. Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify you are using the correct email account.
 
 2. Copy and paste the below queries into the Query Editor to validate that you are able to run them successfully.
 
@@ -91,7 +91,7 @@ You will learn how to connect dbt Cloud to Google BigQuery so that you can lever
 
 In order to let dbt connect to your warehouse, you'll need to generate a keyfile. This is analogous to using a database user name and password with most other <Term id="data-warehouse">data warehouses</Term>.
 
-1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify your are using the correct email account.
+1. Go to the [BigQuery credential wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify you are using the correct email account.
 2. Select **+ Create Credentials** then select **Service account**.
 3. Type `dbt-user` in the Service account name field, then click **Create and Continue**.
 4. Type and select **BigQuery Admin** in the Role field.
@@ -120,6 +120,7 @@ Now let's set up the connection between dbt Cloud and BigQuery.
 5. If you see "Connection test Succeeded!" then click **Continue**. If it fails, you might need to go back and regenerate your BigQuery credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
 ### Setting up a managed repository
 

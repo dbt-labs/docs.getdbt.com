@@ -3,79 +3,96 @@ title: "dbt Cloud features"
 id: "dbt-cloud-features"
 ---
 
+dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. 
 
-:::info Join our Cloud IDE beta
+In addition to providing a hosted architecture for running dbt Core across your organization, dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated developer environment (IDE).
 
-Learn about what you can do with our [Cloud IDE beta](/docs/docs/get-started/develop-in-the-cloud#develop-in-the-cloud-ide-beta). Please [submit your expression of interest](https://docs.google.com/forms/d/e/1FAIpQLSdlU65gqTZPyGAUc16SkxqTc50NO9vdq_KGx1Mjm_4FB_97FA/viewform) to join our Cloud IDE beta group.
-
-:::
-
-The dbt Cloud [integrated development environment (IDE)](/docs/get-started/develop-in-the-cloud) allows you to build, test, run, and version control your dbt projects directly from your browser. The IDE is the fastest and most reliable way to deploy dbt, and provides a real-time editing and execution environment for your dbt project &mdash; no command line required. Anyone can use the IDE, from new dbt developers to seasoned practitioners.
-
-With the Cloud IDE, you can:
-
-- Write modular SQL models with select statements and the [ref()](/reference/dbt-jinja-functions/ref).
-- Compile dbt code into SQL and execute it against your database directly.
-- Test every model before deploying them to production.
-- Generate and view documentation of your dbt project.
-- Leverage [git and version-control your code](/docs/collaborate/git/version-control-basics) from your browser with a couple of clicks.
-- Visualize a directed acyclic graph (DAG), [and more](/docs/get-started/dbt-cloud-tips)
-- Use dark mode when you develop in the Cloud IDE.
+dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14 day trial](https://www.getdbt.com/signup/)! <br></br>
 
 
-### IDE features
-The dbt Cloud IDE includes features that make it easier for you to develop, build, compile, run, and test your data models. Check out some of the features below to learn more:
+<div className="grid--2-col">
 
-**Find and replace**
 
-Press Command-F or Ctrl-F to open the find and replace bar in the upper right corner of the current file in the IDE. The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow.
+<Card
+    title="dbt Cloud IDE"
+    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
+link="/docs/get-started/develop-in-the-cloud"
+    icon="pencil-paper"/>
 
-**Search across files**
+<Card
+    title="Manage environments"
+    body="Set up and manage separate production and development environments in dbt Cloud to help engineers develop and test code more efficiently, without impacting users or data."
+    link="/docs/collaborate/environments"
+    icon="pencil-paper"/>
 
-You can quickly search over all files in the IDE on your current project. To search, open the search bar by pressing Command-O or Ctrl-O to find text across all files in your current project. and write your file name. You can view the results under the search text, which are grouped into files containing the match. You can click on the results to view it in the IDE.
+  <Card
+    title="Schedule and run dbt jobs"
+    body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
+    link="/docs/get-started/getting-started/building-your-first-project/schedule-a-job"
+    icon="pencil-paper"/>
 
-**Keyboard shortcuts**
+  <Card
+    title="Notifications"
+    body="Set up and customize job notifications in dbt Cloud to receive email or slack alerts when a job run succeeds, fails, or is cancelled. Notifications alert the right people when something goes wrong instead of waiting for a user to report it."
+    link="/docs/deploy/job-notifications"
+    icon="pencil-paper"/>    
+    
+   <Card
+    title="Host & share documentation"
+    body="dbt Cloud hosts and authorizes access to dbt project documentation, allowing you to generate data documentation on a schedule for your project. Invite teammates to dbt Cloud to collaborate and share your project's documentation."
+    link="/docs/collaborate/build-and-view-your-docs"
+    icon="pencil-paper"/>    
 
-There are default keyboard shortcuts that can help make development more productive and easier for everyone. Press Fn-F1 to view a list of all of them.
+   <Card
+    title="Democratize access to logs"
+    body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
+    link="/docs/get-started/develop-in-the-cloud#build-compile-and-run-projects"
+    icon="pencil-paper"/>      
 
-**File explorer**
+   <Card
+    title="Supports GitHub, GitLab, AzureDevOPs"
+    body="Seamlessly connect your git account to dbt Cloud and provide another layer of security to dbt Cloud. Import new repositories, trigger continuous integration, clone repos using HTTPS, and more!"
+    link="/docs/collaborate/git/connect-github"
+    icon="pencil-paper"/>  
 
-The File explorer on the left side of the IDE allows you to organize your project and manage your files and folders. Click the three dot menu associated with the file or folder to create, rename, and delete it.
+   <Card
+    title="Enable Continuous Integration"
+    body="Configure dbt Cloud to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool in any analyst's belt."
+    link="/docs/deploy/cloud-ci-job"
+    icon="pencil-paper"/>  
 
-### Features available in the Cloud IDE beta
+   <Card
+    title="Security"
+    body="Manage risk with SOC-2 compliance, CI/CD deployment, RBAC, and ELT architecture."
+    link="https://www.getdbt.com/security/"
+    icon="pencil-paper"/>  
 
-**Format files**
+   <Card
+    title="dbt Semantic Layer*"
+    body="Use the dbt Semantic Layer to define metrics alongside your dbt models and query them from any integrated analytics tool. Get the same answers everywhere, every time."
+    link="/docs/use-dbt-semantic-layer/dbt-semantic-layer"
+    icon="pencil-paper"/>  
 
-Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/).
+   <Card
+    title="Metadata API*"
+    body="Enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries."
+    link="/docs/dbt-cloud-apis/metadata-api"
+    icon="pencil-paper"/> 
 
-**File state indicators**
 
-We have added file state indicators to make it clear when changes or actions have been made. The indicators M, U, and • appear to the right of your file or folder name and indicate the actions performed:
-   * Unsaved (•) &mdash; The IDE detects unsaved changes to your file/folder
-  * Modification (M) &mdash; The IDE detects a modification of existing files/folders have saved changes file or folder
-  * Untracked (U) &mdash; The IDE detects changes made to new files or renamed files
-  
-**Build, test, and run code**
+<Card
+    title="Model timing dashboard*"
+    body="Visualize and explore your runs and surface model bottlenecks. The Model timing dashboard displays model info, order, and run time for each job completed. The visualization only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud."
+    link="/docs/dbt-versions/release-notes/January-2022/model-timing-more"
+    icon="pencil-paper"/> 
+</div> <br />
 
-Build, test, and run your project with a click of a button, or using the Cloud IDE command bar.
-
-**Drag and drop**
-
-You can also drag and drop files located in the file explorer. Use the file breadcrumb on the top of the IDE for quick, linear navigation. You can access adjacent files in the same file by right clicking on the breadcrumb file.
-
-**Organize tabs**
-
-You can move your tabs around to reorganize your work in the IDE. You can also right click on a tab to view and select a list of actions to take.
-
-**Multiple selections**
-
-You can make multiple selections for quick and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.
-
-  * Option-Command-Down arrow
-  * Option-Command-Up arrow
-  * Press Option and click on an area
+ ***These features are available on [selected plans](https://www.getdbt.com/pricing/).**
 
 ## Related docs
-- [dbt Cloud tips](/docs/get-started/dbt-cloud-tips)
-- [Develop in the Cloud](docs/get-started/develop-in-the-cloud)
-- [Guides](/docs/get-started/getting-started/overview)
+
+- [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
+- [Get started guides](/docs/get-started/getting-started/set-up-dbt-cloud)
+- [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
+- [dbt Cloud support](/docs/dbt-support)
+- [Become a contributor](https://docs.getdbt.com/community/contribute)
