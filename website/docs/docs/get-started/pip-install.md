@@ -77,7 +77,8 @@ pip install \
   dbt-postgres \
   dbt-redshift \
   dbt-snowflake \
-  dbt-bigquery
+  dbt-bigquery \
+  dbt-trino
 ```
 
 Or, better yet, just install the package(s) you need!

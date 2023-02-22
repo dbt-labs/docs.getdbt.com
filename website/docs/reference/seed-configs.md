@@ -90,7 +90,7 @@ seeds:
 
 <TabItem value="property-yaml">
 
-<File name='models/properties.yml'>
+<File name='seeds/properties.yml'>
 
 ```yaml
 version: 2

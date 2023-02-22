@@ -12,16 +12,16 @@ Metadata provides information about other data.  Every time dbt Cloud runs a pro
 
 <!-- reworded original: Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. -->
 
-dbt Cloud serves a [GraphQL API](https://metadata.cloud.getdbt.com/graphql) which supports arbitrary queries over this metadata. This API is an incredibly rich resource for evaluating data health long-term or at a moment-in-time. 
- 
- The endpoint for this API is `https://metadata.YOUR_ACCESS_URL/graphql`. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. 
+dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata. You can use this API to evaluate data health in the long-term or at a moment-in-time. 
+
+The endpoint to access this API is `https://metadata.YOUR_ACCESS_URL/graphql`. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America using multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`.
 
 ## Prerequisites
 
 The Metadata API is available to:
-- [Multi tenant](/docs/deploy/regions-ip-addresses) accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/), 
-- Projects on dbt version v0.19.0 or higher. 
-    * The Metadata API cannot access artifacts generated on dbt version lower than v0.19.0. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade. 
+- [Multi-tenant](/docs/deploy/regions-ip-addresses) accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
+- Projects on dbt version v0.19.0 or higher.
+    * The Metadata API cannot access artifacts generated on dbt version lower than v0.19.0. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade.
     
 ## Use cases
 
@@ -35,10 +35,10 @@ Use the Metadata API to solve the following use cases:
 
 ## How to browse the API
 
-We also provide a [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) for this API where you can run ad-hoc queries or browse the schema. As GraphQL provides a self-describing API, the schema shown in the GraphiQL interface is an accurate representation of the graph and fields available to query on at any point in time.
+We also provide a graphical explorer for this API where you can run ad-hoc queries or browse the schema. As GraphQL provides a self-describing API, the schema shown in the GraphiQL interface is an accurate representation of the graph and fields available to query on at any point in time. For more on how to use GraphiQL, refer to [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying.md).
 
 ## Retention limits for data
 
 You can use the metadata API to query data from the previous 3 months. For example, if today was April 1, you could query data back to January 1st.
 
-*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at metadata@dbtlabs.com.*
+*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at cloudAPIs@dbtlabs.com.*

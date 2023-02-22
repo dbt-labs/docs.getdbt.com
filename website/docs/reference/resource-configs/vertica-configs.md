@@ -788,7 +788,7 @@ To learn more about partition by clause check [here](https://www.vertica.com/doc
  `partition_by_group_by_string` parameter is used to merge partitions into separate partition groups. 
 
  
- :::info Note:
+:::info Note:
 
  If you want to pass `partition_by_group_by_string` parameter then you have to partition the table by passing `partition_by_string` parameter.
 
