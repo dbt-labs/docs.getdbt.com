@@ -23,7 +23,7 @@ To successfully configure a job, you'll need to have the following:
 
 ## Configure a job
 
-Once you create your deployment environment in dbt Cloud, you'll be directed to the new environment page to create a new job. Jobs are a set of dbt commands that you want to run on a schedule to carry out a project task, for example, `dbt run` and `dbt test`.
+Jobs are a set of dbt commands that you want to run on a schedule to carry out a project task, for example, `dbt run` and `dbt test`.
 
 Review the following steps to create a job:
 
