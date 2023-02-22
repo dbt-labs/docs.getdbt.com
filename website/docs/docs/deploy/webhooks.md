@@ -49,6 +49,9 @@ return signature == auth_header
 
 ```
 
+## Inspect HTTP requests 
+When working with webhooks, it’s good practice to use tools like [RequestBin](https://requestbin.com/) and [Requestly](https://requestly.io/). These tools allow you to inspect your HTML requests, response payloads, and response headers so you can debug and test webhooks before incorporating them into your systems. 
+
 ## Examples of JSON payloads
 
 An example of a webhook payload for a run that's started:
