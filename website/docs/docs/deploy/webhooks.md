@@ -138,7 +138,7 @@ An example of a webhook payload for an errored run:
 You can use the dbt Cloud API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
 :::info Access URLs
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. This section uses `cloud.get.com` (which is for North America) as part of the endpoint but your access URL might be different. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/deploy/regions-ip-addresses).   
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. This section uses `cloud.getdbt.com` (which is for North America) as part of the endpoint but your access URL might be different. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/deploy/regions-ip-addresses).   
 :::
 
 ### List all webhook subscriptions
