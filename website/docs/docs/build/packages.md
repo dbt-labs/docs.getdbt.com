@@ -23,6 +23,12 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
 
+:::note Using Python packages
+
+Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
+
+:::
+
 ## How do I add a package to my project?
 1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
@@ -205,8 +211,11 @@ packages:
   # use this format when accessing your repository via a github application token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 
-  # use this format when accessing your repository via a personal access token
-  - git: "https://{{env_var('DBT_ENV_SECRET_GITHUB_USERNAME')}}:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+  # use this format when accessing your repository via a classical personal access token
+  - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+ 
+   # use this format when accessing your repository via a fine-grained personal access token (username sometimes required)
+  - git: "https://GITHUB_USERNAME:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
@@ -262,7 +271,7 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 </Changelog>
 
-In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.25.0`).
+In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
 <File name='packages.yml'>
 

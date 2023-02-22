@@ -81,7 +81,7 @@ Not specifying a `unique_key` will result in append-only behavior, which means d
 
 <VersionBlock lastVersion="1.0">
 
-The optional `unique_key` parameter specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
+The optional `unique_key` parameter specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as a unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
 
 </VersionBlock>
 
@@ -89,7 +89,7 @@ The optional `unique_key` parameter specifies a field that can uniquely identify
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
 
-The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](/terms/surrogate-key) (for example with [`dbt_utils.surrogate_key`](https://github.com/dbt-labs/dbt-utils#surrogate_key-source)).
+The `unique_key` should be supplied in your model definition as a string representing a single column or a list of single-quoted column names that can be used together, for example, `['col1', 'col2', …])`. Columns used in this way should not contain any nulls, or the incremental model run may fail. Either ensure that each column has no nulls (for example with `coalesce(COLUMN_NAME, 'VALUE_IF_NULL')`), or define a single-column [surrogate key](/terms/surrogate-key) (for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source)).
 
 :::tip
 In cases where you need multiple columns in combination to uniquely identify each row, we recommend you pass these columns as a list (`unique_key = ['user_id', 'session_number']`), rather than a string expression (`unique_key = 'concat(user_id, session_number)'`).
@@ -98,7 +98,7 @@ By using the first syntax, which is more universal, dbt can ensure that the colu
     
 When you pass a list in this way, please ensure that each column does not contain any nulls, or the incremental model run may fail.
    
-Alternatively, you can define a single-column [surrogate key](/terms/surrogate-key), for example with [`dbt_utils.surrogate_key`](https://github.com/dbt-labs/dbt-utils#surrogate_key-source).
+Alternatively, you can define a single-column [surrogate key](/terms/surrogate-key), for example with [`dbt_utils.generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source).
 :::
 
 </VersionBlock>
@@ -227,6 +227,12 @@ The possible values for `on_schema_change` are:
 
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
+:::caution `on_schema_change` tracks top-level changes
+
+Currently, `on_schema_change` only tracks top-level column changes. It does not track nested column changes. For example, on BigQuery, adding, removing, or modifying a nested column will not trigger a schema change, even if `on_schema_change` is set appropriately.
+
+:::
+
 ### Default behavior
 
 This is the behavior if `on_schema_change: ignore`, which is set by default, and on older versions of dbt.
@@ -243,7 +249,7 @@ On some adapters, an optional `incremental_strategy` config controls the code th
 to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
 the reliability of your `unique_key`, or the availability of certain features.
 
-* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional)
+* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
 * [BigQuery](bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
 * [Spark](spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
 
@@ -303,15 +309,16 @@ select ...
 
 </File>
 
-<VersionBlock firstVersiont="1.4">
+<VersionBlock firstVersion="1.4">
 
 ### About incremental_predicates
 
-`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts any valid SQL expression, however dbt does not check the syntax. 
+`incremental_predicates` is an advanced use of incremental models, where data volume is large enough to justify additional investments in performance. This config accepts a list of any valid SQL expression(s). dbt does not check the syntax of the SQL statements. 
 
-For example, this is a pattern we might expect to see on Snowflake:
+This an example of a model configuration in a `yml` file we might expect to see on Snowflake:
 
 ```yml
+
 models:
   - name: my_incremental_model
     config:
@@ -321,8 +328,30 @@ models:
       cluster_by: ['session_start']  
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
+      # `incremental_predicates` accepts a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
+```
+
+Alternatively, here are the same same configurations configured within a model file:
+
+```sql
+-- in models/my_incremental_model.sql
+
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    cluster_by = ['session_start'],  
+    incremental_strategy = 'merge',
+    incremental_predicates = [
+      "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+    ]
+  )
+}}
+
+...
+
 ```
 
 This will template (in the `dbt.log` file) a `merge` statement like:

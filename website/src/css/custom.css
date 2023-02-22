@@ -325,6 +325,11 @@ a.code-link:hover {
   color: var(--color-white);
   border: none;
 }
+
+.navbarHiddenOnLoad {
+  transform: translate3d(0, calc(-100% - 2px), 0)
+}
+
 @media(max-width: 996px) {
   .navbar-sidebar .menu__link.nav-create-account {
     width: fit-content;
@@ -659,6 +664,12 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 
 html[data-theme="dark"] .alert * {
   --ifm-alert-foreground-color: var(--ifm-color-gray-900);
+}
+
+html[data-theme="dark"] .alert table {
+  background-color: black;
+  color: white;
+  border-radius: var(--ifm-code-border-radius);
 }
 
 /* for dark mode */
@@ -1734,6 +1745,13 @@ section > h2:not(.resource-section) {
   padding: 0 var(--ifm-spacing-horizontal);
 }
 
+/* Report a Problem page styles */
+.report-a-problem {
+  margin: 0 auto;
+  max-width: var(--ifm-container-width-xl);
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
 
 /* utilities */
 .grid--3-col {
@@ -1772,4 +1790,21 @@ section > h2:not(.resource-section) {
 }
 .community-spotlight-hero p {
   font-size: 1.25rem;
+}
+
+/* Sidebar collapse button */
+.theme-doc-sidebar-container>div>button.button {
+  background-color: var(--ifm-font-color-base-inverse);
+}
+
+.theme-doc-sidebar-container>div>button.button:hover {
+  background-color: var(--color-off-white);
+}
+
+html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button {
+  background-color: #1C1C1D;
+}
+
+html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
+  background-color: #383839;
 }
