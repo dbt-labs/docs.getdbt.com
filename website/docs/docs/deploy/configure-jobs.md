@@ -10,7 +10,7 @@ A dbt Cloud job is a set of commands and configurations that help you to run it 
 - Set of guidelines, like dbt version, target name, number of [threads](/docs/get-started/connection-profiles#understanding-threads)
 - Optional job-level [environmental variables](/docs/build/environment-variables)
 - Configurable [dbt commands](/reference/dbt-commands), including [built-in commands](#job-commands)
-- Option to defer to a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#types-of-environments)
+- Option to [defer state](docs/deploy/cloud-ci-job#deferral-and-state-comparison) for comparison
 - Job triggers, like an optional schedule, [continuous integration](/docs/deploy/cloud-ci-job), and [API](/docs/dbt-cloud-apis/overview)
 
 ## Prerequisites
