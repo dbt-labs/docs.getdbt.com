@@ -20,5 +20,5 @@ For information on all dbt commands and their arguments (flags), see the [dbt co
 
 - [How we set up our computers for working on dbt projects](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243)
 - [Model selection syntax](/reference/node-selection/syntax)
-- [Cloud IDE features](/docs/get-started/dbt-cloud-features#ide-features)
+- [Cloud IDE features](/docs/get-started/develop-in-the-cloud#ide-features)
 - [Does dbt offer extract and load functionality?](/faqs/Project/transformation-tool)

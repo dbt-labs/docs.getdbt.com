@@ -2,14 +2,6 @@
 title: "YAML Selectors"
 ---
 
-<Changelog>
-
-- **v0.18.0**: Introduced YAML selectors
-- **v0.19.0**: Added optional `description` property. Selectors appear in `manifest.json` under a new `selectors` key.
-- **v0.21.0**: Added optional `default` + `greedy` properties
-
-</Changelog>
-
 Write resource selectors in YAML, save them with a human-friendly name, and reference them using the `--selector` flag.
 By recording selectors in a top-level `selectors.yml` file:
 
@@ -60,7 +52,12 @@ This simple syntax does not support any operators or `exclude`.
 
 ### Full YAML
 
-This is the most thorough syntax, which can include graph and set operators.
+This is the most thorough syntax, which can include graph and set operators. 
+
+Review [methods](/reference/node-selection/methods) for the available list.
+
+
+<VersionBlock lastVersion="1.3">
 
 ```yml
 definition:
@@ -79,6 +76,31 @@ definition:
   
   indirect_selection: eager | cautious  # include all tests selected indirectly? eager by default
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+```yml
+definition:
+  method: tag
+  value: nightly
+
+  # Optional keywords map to the `+` and `@` operators:
+
+  children: true | false
+  parents: true | false
+
+  children_depth: 1    # if children: true, degrees to include
+  parents_depth: 1     # if parents: true, degrees to include
+
+  childrens_parents: true | false     # @ operator
+
+  indirect_selection: eager | cautious | buildable  # include all tests selected indirectly? eager by default
+```
+
+</VersionBlock>
+
 
 The `*` operator to select all nodes can be written as:
 ```yml
@@ -118,6 +140,8 @@ where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`)
 
 #### Indirect selection
 
+<VersionBlock lastVersion="1.3">
+
 As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" by setting `indirect_selection` for a specific criterion:
 
 ```yml
@@ -133,26 +157,41 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 
 If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" or "buildable" by setting `indirect_selection` for a specific criterion:
+
+```yml
+- union:
+    - method: fqn
+      value: model_a
+      indirect_selection: eager  # default: will include all tests that touch model_a
+    - method: fqn
+      value: model_b
+      indirect_selection: cautious  # will not include tests touching model_b
+                        # if they have other unselected parents
+    - method: fqn
+      value: model_c
+      indirect_selection: buildable  # will not include tests touching model_c
+                        # if they have other unselected parents (unless they have an ancestor that is selected)
+```
+
+If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+
+</VersionBlock>
+
 See [test selection examples](test-selection-examples) for more details about indirect selection.
 
 ## Example
 
 Here are two ways to represent:
 
-<VersionBlock firstVersion="0.21">
 
   ```bash
   $ dbt run --select @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
   ```
-
-</VersionBlock>
-<VersionBlock lastVersion="0.20">
-
-  ```bash
-  $ dbt run --models @source:snowplow,tag:nightly models/export --exclude package:snowplow,config.materialized:incremental export_performance_timing
-  ```
-
-</VersionBlock>
 
 <Tabs
   defaultValue="cli_style"
@@ -222,7 +261,7 @@ $ dbt run --selector nightly_diet_snowplow
 
 ## Default
 
-Starting in v0.21, selectors may define a boolean `default` property. If a selector has `default: true`, dbt will use this selector's criteria when tasks do not define their own selection criteria.
+Selectors may define a boolean `default` property. If a selector has `default: true`, dbt will use this selector's criteria when tasks do not define their own selection criteria.
 
 Let's say we define a default selector that only selects resources defined in our root project:
 ```yml
@@ -287,5 +326,10 @@ selectors:
             - method: tag
               value: buzz
 ```
+
+**Note:** While selector inheritance allows the logic from another selector to be _reused_, it doesn't allow the logic from that selector to be _modified_ by means of `parents`, `children`, `indirect_selection`, and so on. 
+
+The `selector` method returns the complete set of nodes returned by the named selector.
+
 
 </VersionBlock>

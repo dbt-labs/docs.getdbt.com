@@ -16,7 +16,7 @@ To enable Snowflake OAuth, you will need to create a [security integration](http
 
 ### Create a security integration
 
-In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). You can find a sample `create or replace security integration` query below.
+In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). In the following example `create or replace security integration` query, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 
 ```
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
@@ -24,7 +24,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
   ENABLED = TRUE
   OAUTH_CLIENT = CUSTOM
   OAUTH_CLIENT_TYPE = 'CONFIDENTIAL'
-  OAUTH_REDIRECT_URI = 'https://cloud.getdbt.com/complete/snowflake'
+  OAUTH_REDIRECT_URI = 'https://YOUR_ACCESS_URL/complete/snowflake'
   OAUTH_ISSUE_REFRESH_TOKENS = TRUE
   OAUTH_REFRESH_TOKEN_VALIDITY = 7776000;
 ```
@@ -41,7 +41,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
 | ENABLED  | Required |
 | OAUTH_CLIENT  | Required |
 | OAUTH_CLIENT_TYPE  | Required |
-| OAUTH_REDIRECT_URI  | Required. Use the access URL that corresponds to your server [region](/docs/deploy/regions). If dbt Cloud is deployed on-premises, use the domain name of your application instead of the access URL. |
+| OAUTH_REDIRECT_URI  | Required. Use the access URL that corresponds to your server [region](/docs/deploy/regions-ip-addresses). If dbt Cloud is deployed on-premises, use the domain name of your application instead of the access URL. |
 | OAUTH_ISSUE_REFRESH_TOKENS  | Required |
 | OAUTH_REFRESH_TOKEN_VALIDITY  | Required. This configuration dictates the number of seconds that a refresh token is valid for. Use a smaller value to force users to re-authenticate with Snowflake more frequently. |
 
@@ -96,6 +96,6 @@ When clicking on the `Connect Snowflake Account` successfully redirects you to t
 * You're trying to use a role that is in the [BLOCKED_ROLES_LIST](https://docs.snowflake.com/en/user-guide/oauth-partner.html#blocking-specific-roles-from-using-the-integration), such as `ACCOUNTADMIN`.
 
 #### Server error 500
-If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](/docs/deploy/regions) on a Snowflake account level.
+If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](/docs/deploy/regions-ip-addresses) on a Snowflake account level.
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
