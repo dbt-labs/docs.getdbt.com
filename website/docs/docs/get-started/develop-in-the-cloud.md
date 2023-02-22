@@ -30,9 +30,9 @@ To develop in the Cloud IDE, make sure you have the following:
 
 - Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
-- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
+- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) or [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
-- Set up a [development environment and development credentials](#set-up-environments)
+- Set up a [development environment and development credentials](#access-the-cloud-ide)
 - The environment must be on dbt version 1.0 or higher
 
 ## Cloud IDE features
@@ -43,7 +43,7 @@ The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and featur
 |---|---|
 | **Keyboard shortcuts** | You can access a variety of [commands and actions](/docs/get-started/dbt-cloud-tips#cloud-ide-keyboard-shortcuts) in the IDE by choosing the appropriate keyboard shortcut. |
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
-| **IDE git button** | The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project. You can create or change branches, and execute git commands directly in the IDE. |
+| **IDE git button** | The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project. You can create or change branches, [resolve merge conflicts](/docs/collaborate/git/merge-conflicts), and execute git commands directly in the IDE. |
 | **Documentation** | You can generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
@@ -75,7 +75,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 - Saved but uncommitted code &mdash; When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
 - Committed code &mdash; This is stored in the branch with your git provider and you can check out other (remote) branches.
 
-## Set up Environments
+## Access the Cloud IDE
 
 :::info📌
 
@@ -83,35 +83,25 @@ New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-star
 
 :::
 
-In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud development environment](/docs/collaborate/environments/dbt-cloud-environments) and [developer credentials](#developer-credentials). If you're creating a new project, you will automatically configure this during the project setup. 
-
-Review the following steps to set up your developer credentials:
-
-### Developer credentials
+In order to start experiencing the great features of the Cloud IDE, you need to first set up a [dbt Cloud development environment](/docs/collaborate/environments/dbt-cloud-environments). In the following steps, we outline how to set up developer credentials and access the IDE. If you're creating a new project, you will automatically configure this during the project setup. 
 
 The IDE uses developer credentials to connect to your data platform. These developer credentials should be specific to your user and they should *not* be super user credentials or the same credentials that you use for your production deployment of dbt.
 
-Follow the below steps to set up your developer credentials:
+Set up your developer credentials:
 
 1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
-4. Fill in the details in **Development Credentials**, including Dataset and Target Name. 
+4. Enter the details under **Development Credentials**.
 5. Click **Save.**
 
-Great job, you should now be able to access the Cloud IDE by clicking **Develop** on the navigation to start developing!
-
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.png" width="100" height="100" title="Configure developer credentials in your Profile"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.jpg" width="100" height="100" title="Configure developer credentials in your Profile"/>
 
 
-### Access the Cloud IDE
+6. Access the Cloud IDE by clicking **Develop** at the top of the page.
+7. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
 
-Now that you've set up your development environment and credentials, you should be able to access the Cloud IDE:
-
-1. Log in with your dbt Cloud account. If you don't have one, [sign up](https://www.getdbt.com/signup/) for an account for free.
-2. Click **Develop** at the top of the page to take you to the IDE.
-3. Initialize your project and familiarize yourself with the IDE and its delightful [features](#cloud-ide-features).
-4. Nice job, you're ready to start developing and [building models](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/build-your-first-models) 🎉! 
+Nice job, you're ready to start developing and building models 🎉! 
 
 ## Build, compile, and run projects
 
