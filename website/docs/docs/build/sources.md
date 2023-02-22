@@ -40,7 +40,7 @@ sources:
 
 </File>
 
-*By default the `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs to existing schema.
+*By default, `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs from the existing schema.
 
 If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
 
