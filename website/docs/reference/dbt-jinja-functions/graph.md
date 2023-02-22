@@ -167,7 +167,7 @@ select * from (
 
 ### Accessing exposures
 
-To access the sources in your dbt project programmatically, use the `exposures`
+To access the exposures in your dbt project programmatically, use the `exposures`
 attribute of the `graph` object.
 
 Example usage:
