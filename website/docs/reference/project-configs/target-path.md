@@ -5,7 +5,7 @@ default_value: target
 <File name='dbt_project.yml'>
 
 ```yml
-target-path: [directorypath]
+target-path: directorypath
 ```
 
 </File>
