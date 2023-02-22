@@ -14,12 +14,6 @@ meta:
   config_page: 'azuresynapse-configs'
 ---
 
-:::info Community plugin
-
-Some core functionality may be limited. If you're interested in contributing, check out the source code for each repository listed below.
-
-:::
-
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
