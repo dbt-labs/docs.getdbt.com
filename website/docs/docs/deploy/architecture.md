@@ -3,7 +3,7 @@ title: Architecture
 id: architecture
 ---
 
-This page is intended to help both practitioners seeking to understand the architecture and data flow of the hosted dbt Cloud product.
+This page is intended to help both practitioners as well as those with interest understand the architecture and data flow of the hosted dbt Cloud product.
 
 ### Application Data Flows
 

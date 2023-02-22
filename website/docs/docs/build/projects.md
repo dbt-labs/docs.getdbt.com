@@ -3,7 +3,7 @@ title: "About dbt projects"
 id: "projects"
 ---
 
-A dbt project informs dbt the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
+A dbt project informs dbt about the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
 
 At a minimum, all a project needs is the `dbt_project.yml` project configuration file. dbt supports a number of different resources, so a project may also include:
 
@@ -20,7 +20,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 
-When building out the structure of your project, you should consider these impacts to your organization's workflow:
+When building out the structure of your project, you should consider these impacts on your organization's workflow:
 
 * **How would people run dbt commands** &mdash; Selecting a path
 * **How would people navigate within the project** &mdash; Whether as developers in the IDE or stakeholders from the docs

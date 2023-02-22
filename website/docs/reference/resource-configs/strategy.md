@@ -136,7 +136,7 @@ Behind the scenes, snapshot strategies are implemented as macros, named `snapsho
 
 It's possible to implement your own snapshot strategy by adding a macro with the same naming pattern to your project. For example, you might choose to create a strategy which records hard deletes, named `timestamp_with_deletes`.
 
-1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code a guide and adjust as needed.
+1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code as a guide and adjust as needed.
 2. Use this strategy via the `strategy` configuration:
 
 <File name='snapshots/<filename>.sql'>

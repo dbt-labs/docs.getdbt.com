@@ -44,10 +44,15 @@ var siteSettings = {
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
+    docs:{
+      sidebar: {
+        hideable: true,
+      },
+    },
     image: "/img/avatar.png",
     colorMode: {
       defaultMode: "light",
@@ -63,15 +68,18 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "live_qa",
+      id: "biweekly-demos",
       content:
-        "Take the 5-minute dbt Community Survey!",
+        "Join us at our bi-weekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.surveymonkey.com/r/XP2N8Z3",
+    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
+    // Set community spotlight member on homepage
+    // This is the ID for a specific file under docs/community/spotlight
+    communitySpotlightMember: "",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -154,6 +162,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
+            // {
+            //   label: "Spotlight",
+            //   to: "/community/spotlight",
+            // },
           ],
         },
         {
@@ -228,6 +240,8 @@ var siteSettings = {
     path.resolve("plugins/customWebpackConfig"),
     [path.resolve("plugins/buildGlobalData"), { versionedPages }],
     path.resolve("plugins/buildAuthorPages"),
+    // path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [
     {
