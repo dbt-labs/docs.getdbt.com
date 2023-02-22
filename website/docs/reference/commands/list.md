@@ -82,7 +82,7 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 ```
 </VersionBlock>
 
-<VersionBlock lastVersion="1.5">
+<VersionBlock firstVersion="1.5">
 
 	```
 $ dbt ls --select snowplow.* --output json --output-keys name resource_type description
