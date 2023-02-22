@@ -78,7 +78,7 @@ Here is some more details on job commands and the different outcomes:
 
      - IF THE SELECTOR DOESN'T MATCH NODES, WILL IT BE CONSIDERED? CANCELLED? CAN YOU PROVIDE AN EXAMPLE? NEED MORE INFO
 
-- **Command outcomes** &mdash; During a job run, the commands are “chained” together. This means if one of the commands in the chain fails, then the next ones aren't executed. In the following example, if the 5th step fails (`dbt run --select state:modified+ --full-refresh --fail-fast`), then the subsequent commands aren't executed, and the entire job fails. The failed job returns an [exit code](https://docs.getdbt.com/reference/exit-codes) and "Error" job status:
+- **Command outcomes** &mdash; During a job run, the commands are “chained” together. This means if one of the commands in the chain fails, then the next ones aren't executed. In the following example, if the 5th step fails (`dbt run --select state:modified+ --full-refresh --fail-fast`), then the subsequent commands aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](https://docs.getdbt.com/reference/exit-codes) and "Error" job status:
 
     <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" title="An errored dbt Cloud job"/>
 
