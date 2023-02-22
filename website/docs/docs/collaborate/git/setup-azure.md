@@ -17,7 +17,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
-Once the the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
+Once the Azure AD app is added to dbt Cloud, an account admin must also connect a service user via OAuth, which will be used to power headless actions in dbt Cloud such as deployment runs and CI.
 1. [Connecting a Service User](#connecting-a-service-user).
 
 
@@ -31,12 +31,12 @@ Once the Azure AD app is added to dbt Cloud and the service user is connected, t
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
 5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
-6. Add a redirect URI by selecting **Web** and typing in `https://cloud.getdbt.com/complete/azure_active_directory`. If you have a custom dbt Cloud URL be sure to use the appropriate domain.
+6. Add a redirect URI by selecting **Web** and typing in `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
 
-Here's what your app should look before registering it:
+Here's what your app should look like before registering it:
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AD app.png" title="Registering an Active Directory app"/>
 
@@ -59,8 +59,8 @@ You also need to add another redirect URI to your Azure AD application. This red
 
 1. Navigate to your Azure AD application.
 2. Select the link next to **Redirect URIs**
-3. Click **Add URI** and add the URI, making sure to use the appropriate domain if you have a custom dbt Cloud URL:
-`https://cloud.getdbt.com/complete/azure_active_directory_service_user`
+3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
+`https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" title="Adding the Service User redirect URI"/>
@@ -114,9 +114,22 @@ A service user account must have the following Azure DevOps permissions for all 
 
 Some of these permissions are only accessible via the Azure DevOps API, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
 
-:::info  Provide the service user with required permissions before setting up a dbt Cloud project
-This service user's permissions will also power which repositories a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user before setting up a project in dbt Cloud.
-:::
+<!-- tabs for service user permissions and turning off MFA for service users -->
+<Tabs>
+
+<TabItem value="permission" label="Required permissions for service users">
+
+The service user's permissions will also power which repositories a team can select from during dbt project set up, so an Azure DevOps admin must grant at minimum Project Reader access to the service user _before_ creating a new project in dbt Cloud. If you are migrating an existing dbt project to use the native Azure DevOps integration, the dbt Cloud account's service user must have proper permissions on the repository before migration.
+</TabItem>
+
+<TabItem value="mfa" label="Turn off MFA for service user">
+
+While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
+</TabItem>
+
+</Tabs>
+
+<!-- End tabs for service user permissions and turning off MFA for service users-->
 
 <details>
 <summary>  <b>ViewSubscriptions</b> </summary>
@@ -275,7 +288,7 @@ This service user's permissions will also power which repositories a team can se
 
 </details>
 
-You must connect your service user before setting up a dbt Cloud project, as the the service user's permissions determine which projects dbt Cloud can import.
+You must connect your service user before setting up a dbt Cloud project, as the service user's permissions determine which projects dbt Cloud can import.
 
 To connect the service user:
 1. An admin must first be signed into the service user's Azure DevOps account.
