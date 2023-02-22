@@ -42,13 +42,14 @@ selectors unambiguous.
 
 <VersionBlock firstVersion="1.2">
 
-### The "file" method
-The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
+### The "file" or "fqn" method
+The `file` or `fqn` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
 # These are equivalent
 dbt run --select some_model.sql
 dbt run --select some_model
+dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
 ```
 
 </VersionBlock>
