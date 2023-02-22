@@ -3,20 +3,42 @@ title: "Metadata API"
 id: "metadata-api"
 ---
 
-## About the metadata API
+The dbt Cloud Metadata API helps organizations analyze and improve their data. You can use the API to:
+ - Power downstream integrations so users discover and understand data for analysis
+ - Ensure data quality 
+ - Increase the efficiency of dbt operations
 
-Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata; the endpoint for this API is `https://metadata.cloud.getdbt.com/graphql`. This API is an incredibly rich resource for evaluating data health longitudinally or at a point in time.
+Metadata provides information about other data.  Every time dbt Cloud runs a project, it generates metadata that contains information on the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.
+
+<!-- reworded original: Every time that dbt Cloud runs a dbt project, it generates metadata which pertains to the accuracy, recency, configuration, and structure of the views and tables in the warehouse. -->
+
+dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata. You can use this API to evaluate data health in the long-term or at a moment-in-time. 
+
+The endpoint to access this API is `https://metadata.YOUR_ACCESS_URL/graphql`. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America using multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`.
 
 ## Prerequisites
 
-The metadata API is available to accounts on the _Team_ and _Enterprise_ plans, for any version >= dbt v0.19.0. Please note that artifacts generated with a version of dbt _less than_ v0.19.0 will not be accessible via the dbt Cloud metadata API. For information on upgrading, see "[Version migration guides](https://docs.getdbt.com/guides/migration/versions)."
+The Metadata API is available to:
+- [Multi-tenant](/docs/deploy/regions-ip-addresses) accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
+- Projects on dbt version v0.19.0 or higher.
+    * The Metadata API cannot access artifacts generated on dbt version lower than v0.19.0. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade.
+    
+## Use cases
+
+Use the Metadata API to solve the following use cases:
+
+- **Discovery*** &mdash; Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage. Refer to [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide) for more info. 
+- **Quality*** &mdash; Make sure users have correct and up-to-date data for their analyses by monitoring tests, source freshness, run status, exposures, and dependencies.
+- **Operations*** &mdash;  Help data teams run dbt efficiently and effectively to reduce costs by using historical run data.
+
+*_Integration guides coming soon_
 
 ## How to browse the API
 
-We also provide a [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) for this API where you can run ad-hoc queries or browse the schema. As GraphQL provides a self-describing API, the schema shown in the GraphiQL interface is an accurate representation of the graph and fields available to query on at any point in time.
+We also provide a graphical explorer for this API where you can run ad-hoc queries or browse the schema. As GraphQL provides a self-describing API, the schema shown in the GraphiQL interface is an accurate representation of the graph and fields available to query on at any point in time. For more on how to use GraphiQL, refer to [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying.md).
 
 ## Retention limits for data
 
 You can use the metadata API to query data from the previous 3 months. For example, if today was April 1, you could query data back to January 1st.
 
-*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at metadata@dbtlabs.com.*
+*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at cloudAPIs@dbtlabs.com.*
