@@ -10,12 +10,6 @@ id: "exposures"
 
 </Changelog>
 
-## Related documentation
-* [Exposure properties](exposure-properties)
-* [`exposure:` selection method](node-selection/methods#the-exposure-method)
-
-## Overview
-
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
 - populate a dedicated page in the auto-generated [documentation](documentation) site with context relevant to data consumers
@@ -64,8 +58,8 @@ exposures:
 version: 2
 
 exposures:
-
-  - name: weekly_jaffle_metrics
+  
+  - name: weekly_jaffle_report
     type: dashboard
     maturity: high
     url: https://bi.tool/dashboards/1
@@ -123,11 +117,18 @@ We plan to add more subtypes and optional properties in future releases.
 
 Once an exposure is defined, you can run commands that reference it:
 ```
-dbt run -s +exposure:weekly_jaffle_metrics
-dbt test -s +exposure:weekly_jaffle_metrics
+dbt run -s +exposure:weekly_jaffle_report
+dbt test -s +exposure:weekly_jaffle_report
+
 ```
 
 When we generate our documentation site, you'll see the exposure appear:
 
 <Lightbox src="/img/docs/building-a-dbt-project/dbt-docs-exposures.png" title="Dedicated page in dbt-docs for each exposure"/>
 <Lightbox src="/img/docs/building-a-dbt-project/dag-exposures.png" title="Exposures appear as orange-y nodes in the DAG"/>
+
+## Related docs
+
+* [Exposure properties](exposure-properties)
+* [`exposure:` selection method](node-selection/methods#the-exposure-method)
+* [Dashboard status tiles](/docs/deploy/dashboard-status-tiles)

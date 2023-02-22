@@ -184,11 +184,14 @@ There are two ways to connect dbt Cloud and Snowflake. The first option is Partn
 <Lightbox src="/img/snowflake_tutorial/snowflake_classic_ui_partner_connect.png" title="Snowflake Classic UI - Partner Connect" />
 </p>
 
-  * **Snowflake New UI:** If you’re using the new web interface, you’ll want to click on your name in the upper left hand corner and then click on Partner Connect in the drop down menu.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
+  * **[Snowflake New UI](https://docs.snowflake.com/en/user-guide/ecosystem-partner-connect.html):** If you’re using the new web interface, click on the home icon in the upper left-hand corner and then click on **Admin** title, and then **Partner Connect**.  You can scroll down to find the dbt tile, or search for dbt in the search bar and it will float to the top. Click on the tile to open up the connect box.
 
+
+<!-- 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_new_ui_partner_connect.png" title="Snowflake New UI - Partner Connect" />
 </p>
+-->
 
 <p align="center">
 <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
@@ -271,8 +274,9 @@ Now let's formally set up the connection between dbt Cloud and Snowflake.
 5. If the connection test succeeds, click **Next**. If it fails, you may need to check your Snowflake settings and credentials.
 
 ## Initialize your repository and start development
+<Snippet src="available-git-providers" />
 
-If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with an managed repostiory already. If not, you will need to create your managed repository connection. 
+If you used Partner Connect, you can skip over to [initializing your dbt project](/setting-up-snowflake#initialize-your-dbt-project) as the Partner Connect sets you up with a managed repository already. If not, you will need to create your repository connection. 
 
 ### Setting up a managed repository
 
