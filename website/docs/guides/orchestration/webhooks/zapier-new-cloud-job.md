@@ -82,6 +82,8 @@ if hook_data['runStatus'] == "Success":
   headers = {'Authorization': f'Token {api_token}'}
   response = requests.post(url, json=body, headers=headers)
   response.raise_for_status()
+
+return
 ```
 
 ### Test and deploy
