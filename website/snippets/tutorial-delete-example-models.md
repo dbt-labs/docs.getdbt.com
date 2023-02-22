@@ -29,7 +29,7 @@ You can now delete the files that dbt created when you initialized the project:
 
 3. Save your changes.
 
-#### FAQs
+### FAQs
 
 <FAQ src="Models/removing-deleted-models" />
 <FAQ src="Troubleshooting/unused-model-configurations" />

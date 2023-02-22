@@ -13,6 +13,32 @@ const sidebarSettings = {
           label: "dbt Cloud",
           collapsed: true,
           items: [
+            "docs/quickstarts/dbt-cloud/bigquery",
+            "docs/quickstarts/dbt-cloud/databricks",
+            "docs/quickstarts/dbt-cloud/redshift",
+            "docs/quickstarts/dbt-cloud/snowflake",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Core",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-core/quickstart",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Get started with dbt",
+      collapsed: true,
+      items: [
+        {
+          type: "category",
+          label: "Get started with dbt Cloud",
+          collapsed: true,
+          items: [
             "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
@@ -22,16 +48,6 @@ const sidebarSettings = {
                 "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
                 "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
                 "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
-              ],
-            },
-            {
-              type: "category",
-              label: "Building your first project",
-
-              items: [
-                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
-                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
               ],
             },
             {

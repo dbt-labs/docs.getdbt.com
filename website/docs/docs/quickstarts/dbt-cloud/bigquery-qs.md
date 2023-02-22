@@ -4,7 +4,7 @@ description: "Quickstart for dbt Cloud and BigQuery."
 id: "bigquery"
 sidebar_label: "BigQuery quickstart"
 ---
-For the BigQuery project in the getting started guide, you'll learn how to set up BigQuery and connect it to dbt Cloud.
+For the BigQuery project in the quickstart guide, you'll learn how to set up BigQuery and connect it to dbt Cloud.
 This guide will walk you through:
 
 - Setting up a new BigQuery instance &mdash; Log in and create a new Google Cloud project​.
@@ -18,8 +18,8 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Prerequisites​
 
-- You have a [Google account](https://support.google.com/accounts/answer/27441?hl=en).
 - You have a  [dbt Cloud account](https://cloud.getdbt.com/). 
+- You have a [Google account](https://support.google.com/accounts/answer/27441?hl=en).
 - You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
 
 ## Create a new GCP project​
@@ -71,15 +71,12 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 4. Click **Upload a Service Account JSON File** in settings.
 5. Select the JSON file you downloaded in [Generate BigQuery credentials](#generate-bigquery-credentials) and dbt Cloud will fill in all the necessary fields.
 6. Click **Test Connection**. This verifies that dbt Cloud can access your BigQuery account.
-7. Click **Continue if the test succeeded**. If it failed, you might need to go back and regenerate your BigQuery credentials.
+7. Click **Continue** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
+
 
 ## Set up a dbt Cloud managed repository 
-dbt Cloud uses Git for version control, but using a managed repository makes this easier. To set up a managed repository:
+<Snippet src="tutorial-managed-repo" />
 
-1. Under "Add repository from", select **Managed**.
-2. Enter a name for your repo such as `bbaggins-dbt-quickstart`
-3. Click **Create**. It takes a few seconds for your repository to be created and imported.
-4. When you see the "Successfully imported repository," click **Continue**.
 
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
@@ -88,7 +85,10 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Delete all text in `Scratchpad 1` and add the query `select * from `dbt-tutorial.jaffle_shop.customers` to it.
+    - In the IDE's editor, add this query: 
+        ```sql
+        select * from `dbt-tutorial.jaffle_shop.customers`
+        ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. 
 
 ## Build your first model
@@ -161,6 +161,14 @@ select * from final
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
+### FAQs
+
+<FAQ src="Runs/checking-logs" />
+<FAQ src="Project/which-schema" />
+<FAQ src="Models/create-a-schema" />
+<FAQ src="Models/run-downtime" />
+<FAQ src="Troubleshooting/sql-errors" />
+
 ## Change the way your model is materialized
 
 <Snippet src="tutorial-change-way-model-materialized" />
@@ -173,64 +181,6 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 <Snippet src="tutorial-build-models-atop-other-models" />
 
-## Add tests to your models
+<Snippet src="quickstarts/test-and-document-your-project" />
 
-<Snippet src="tutorial-add-tests-to-models" />
-
-## Document your models
-
-<Snippet src="tutorial-document-your-models" />
-
-3. Click the link above the file tree in the Develop interface to launch documentation in a new tab.
-
-Now that tests and docs are set up for your project, you can check out [these exercises](/docs/get-started/dbt-cloud/exercises#tests-docs) to learn more about what you can do with dbt.
-
-#### FAQs
-
-<FAQ src="Docs/long-descriptions" />
-<FAQ src="Docs/sharing-documentation" />
-
-## Commit your changes
-
-Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
-
-1. Click **Commit** and add a message. For example, "Add customers model, tests, docs."
-2. Click **merge to main** To add these changes to the main branch on your repo.
-
-## Create a deployment environment
-
-1. In the upper left, select **Deploy**, then click **Environments**.
-2. Click **Create Environment**.
-3. Name your deployment environment. For example, "Production."
-4. Add a target dataset, for example, "Analytics." dbt will build into this dataset. For some warehouses this will be named "schema."
-5. Click **Save**.
-
-## Create and run a job
-
-Jobs are a set of dbt commands that you want to run on a schedule. For example, `dbt run` and `dbt test`.
-
-As the `jaffle_shop` business gains more customers, and those customers create more orders, you will see more records added to your source data. Because you materialized the customers model as a table, you'll need to periodically rebuild your table to ensure that the data stays up-to-date. This update will happen when you run a job.
-
-1. After creating your deployment environment, you should be directed to the page for new environment. If not, select **Deploy** in the upper left, then click **Jobs**.
-2. Click **Create one** and provide a name, for example `Production run`, and link to the Environment you just created.
-3. Scroll down to "Execution Settings" and select **Generate docs on run**.
-4. Under "Commands," add these commands as part of your job if you don't see them:
-      * `dbt run`
-      * `dbt test`
-5. For this exercise, _do not_ set a schedule for your project to run. While your organization's project should run regularly, there's no need to run this example project on a schedule.
-6. Select **Save**, then click **Run now** to run your job.
-7. Click the run and watch its progress under "Run history."
-8. Once the run is complete, click **View Documentation** to see the docs for your project.
-
-:::tip
-Congratulations 🎉! You've just deployed your first dbt project!
-:::
-
-Now that you have a runnable dbt project, you can check out [these exercises](/docs/get-started/dbt-cloud/exercises#advanced) to learn more about what you can do with dbt.
-
-### FAQs
-
-<FAQ src="Runs/failed-prod-run" />
-
-## Related content 
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+<Snippet src="quickstarts/schedule-a-job" />

@@ -4,7 +4,6 @@ id: setting-up-databricks
 description: "Set up Databricks with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect Databricks"
 pagination_prev: docs/get-started/getting-started/set-up-dbt-cloud
-pagination_next: docs/get-started/getting-started/building-your-first-project/build-your-first-models
 ---
 
 ## Introduction

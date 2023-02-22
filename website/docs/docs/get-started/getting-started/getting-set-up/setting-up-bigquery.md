@@ -3,7 +3,6 @@ title: "Set up and connect BigQuery"
 id: setting-up-bigquery
 description: "Set up BigQuery with sample data and connect to dbt Cloud."
 sidebar_label: "Set up and connect BigQuery"
-pagination_next: docs/get-started/getting-started/building-your-first-project/build-your-first-models
 ---
 
 ## Introduction
