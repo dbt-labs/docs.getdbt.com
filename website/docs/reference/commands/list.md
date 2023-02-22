@@ -72,7 +72,8 @@ $ dbt ls --select snowplow.* --output json
 
 **Listing JSON output with custom keys**
 ```
-$ dbt ls --select snowplow.* --output json --output-keys name,description
+$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
+
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
