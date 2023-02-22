@@ -236,7 +236,7 @@ parameter that can be quite useful later on when searching in the [QUERY_HISTORY
 
 ### reuse_connections
 
-During node (e.g. model, test) execution, dbt opens connections against a Snowflake warehouse. Setting this config to `True` reduces execution time by verifying credentials only once for each thread.
+During node execution (such as model and test), dbt opens connections against a Snowflake warehouse. Setting this configuration to `True` reduces execution time by verifying credentials only once for each thread.
 
 
 ### retry_on_database_errors
