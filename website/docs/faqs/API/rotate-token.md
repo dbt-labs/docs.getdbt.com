@@ -9,16 +9,19 @@ For security reasons and best practices, you should aim to rotate API keys every
 
 ### Steps to rotate API keys
 
-1. To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens), send the following request: 
+1. To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens), send the following request, replacing `YOUR_USER_ID`, `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL` with your information:
+
+* Find your `YOUR_USER_ID` by referring to [How to find your user ID](/faqs/Accounts/find-user-id).
+* Find your `YOUR_CURRENT_TOKEN`, go to **Account Settings** -> **API Access** and copy the API key.
+* Find [`YOUR_ACCESS_URL`](/docs/deploy/regions-ip-addresses) for your region and plan.
 
 ```
-curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/your_user_id/apikey/' \
---header 'Authorization: Token your_current_token'
+curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/your_user_id/apikey/' \
+--header 'Authorization: Token YOUR_CURRENT_TOKEN'
 ```
 
-2. Replace the fields `your_user_id` and `your_current_token` with your information. Read [how to find your user ID](/faqs/Accounts/find-user-id) for more info. To find your `your_current_token`, go to **Account Settings** -> **API Access** and copy the API key.
+> 📌 **Example**: If YOUR_USER_ID is `123`, YOUR_CURRENT_TOKEN is `abcf9g`, and your ACCESS_URL is `cloud.getdbt.com`, your curl request will be:
 
-> 📌 **Example**: If your_user_id is `123` and your_current_token is `abcf9g`, your curl request will be:
 >```
 >curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
 >--header 'Authorization: Token abcf9g'
@@ -30,7 +33,7 @@ curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/your_user_
 
 ### dbt Cloud deployments
 
-If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance. 
+If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance.
 
 For example, if your deployment is Virtual Private dbt: 
 
