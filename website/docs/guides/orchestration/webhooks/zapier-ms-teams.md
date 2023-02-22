@@ -1,8 +1,8 @@
 ---
-title: "Sending notifications to Microsoft Teams from dbt Cloud"
+title: "Post to Microsoft Teams when a dbt Cloud job finishes"
 id: webhooks-guide-zapier-ms-teams
 slug: zapier-ms-teams
-description: Post to Microsoft Teams when a dbt Cloud job finishes.
+description: Use Zapier and webhooks to send info to Microsoft Teams
 ---
 
 This guide assumes familiarity with:
@@ -15,7 +15,7 @@ When a dbt Cloud job completes:
  - extract the results from the dbt Cloud admin API 
  - post a summary to a Microsoft Teams channel
 
-![Screenshot of a message in MS Teams showing a summary of a dbt Cloud run which succeeded](/img/guides/orchestration/webhooks/zapier-ms-teams/0-ms-teams-ui.png)
+![Screenshot of a message in MS Teams showing a summary of a dbt Cloud run which succeeded](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-ui.png)
 
 ## Integration steps:
 ### Set up the connection between Zapier and Microsoft Teams 
@@ -29,7 +29,7 @@ Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. 
 
 Press **Continue**, then copy the webhook URL and put it into dbt Cloud. 
 
-![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-ms-teams/1-catch-raw-hook.png)
+![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
 ### Configure a new webhook in dbt Cloud
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Choose either **Run completed** or **Run errored**, but not both or you'll get double messages when a run fails.
@@ -50,7 +50,7 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
 
-![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-ms-teams/2-run-python.png)
+![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
 
 In the **Code** field, paste the following code: 
 
@@ -140,7 +140,7 @@ Select **Microsoft Teams** as the App, and **Send Channel Message** as the Actio
 
 In the **Set up action** area, choose the team and channel. Set the **Message Text Format** to **markdown**, then put **2. Outcome Message** from the Run Python in Code by Zapier output into the **Message Text** field. 
 
-![Screenshot of the Zapier UI, showing the mappings of prior steps to an MS Teams message](/img/guides/orchestration/webhooks/zapier-ms-teams/3-ms-teams.png)
+![Screenshot of the Zapier UI, showing the mappings of prior steps to an MS Teams message](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-zap-config.png)
 
 ### Test and deploy
 As you have gone through each step, you should have tested the outputs, so you can now try posting a message into your Teams channel. 
