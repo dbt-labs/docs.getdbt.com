@@ -30,7 +30,7 @@ Review the following steps to create a job:
 1. Click **Create One** and then provide a job name, for example "Production run" 
 
 2. Under **Environment**, add the following:
-    * **Environment** &mdash; Link to the environment you just created
+    * **Environment** &mdash; Link to an existing deployment environment
     * **dbt Version** &mdash; Select the environment version. We recommend the most recent version
     * **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) for any dbt cloud job to correspond to settings in your project
     * **Threads** &mdash; The default value will be 4 [threads](/docs/get-started/connection-profiles#understanding-threads)
