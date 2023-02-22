@@ -1,7 +1,8 @@
 ---
-title: "Sending run completion notifications from dbt Cloud to Microsoft Teams"
+title: "Sending notifications to Microsoft Teams from dbt Cloud"
 id: webhooks-guide-zapier-ms-teams
-slug: guides/orchestration/webhooks/zapier-ms-teams
+slug: zapier-ms-teams
+description: Post to Microsoft Teams when a dbt Cloud job finishes.
 ---
 
 This guide assumes familiarity with:
@@ -9,42 +10,49 @@ This guide assumes familiarity with:
 - Zapier
 
 ## What does this integration do? 
-When a dbt Cloud job completes, extract the run results from the dbt Cloud admin API and post a summary to a Microsoft Teams channel. 
+When a dbt Cloud job completes:
+ - receive a webhook notification in Zapier
+ - extract the results from the dbt Cloud admin API 
+ - post a summary to a Microsoft Teams channel
 
-_example screenshot here_
+![Screenshot of a message in MS Teams showing a summary of a dbt Cloud run which succeeded](/img/guides/orchestration/webhooks/zapier-ms-teams/0-ms-teams-ui.png)
 
 ## Integration steps:
 ### Set up the connection between Zapier and Microsoft Teams 
 
 Install the [Zapier app in Microsoft Teams](https://appsource.microsoft.com/en-us/product/office/WA200002044) and [grant Zapier access to your account](https://zapier.com/blog/how-to-automate-microsoft-teams/). 
 
-Note that when you install the Zapier app, it needs to be added to the team (unless you plan to have Zapier post to chats instead of team channels.)
+Note that when you install the Zapier app, it needs to be added to the team whose channel will receive the message.
 
 ### Create a new Zap in Zapier
-Use _Webhooks by Zapier_ as the Trigger, and _Catch Raw Hook_ as the Event. If you don't intend to [validate the authenticity of your webhook](docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose _Catch Hook_ instead. 
+Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
 
-Press _Continue_, then copy the webhook URL and put it into dbt Cloud. 
+Press **Continue**, then copy the webhook URL and put it into dbt Cloud. 
+
+![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-ms-teams/1-catch-raw-hook.png)
 
 ### Configure a new webhook in dbt Cloud
-See docs here. Choose either _Run completed_ or _Run errored_, but not both or you'll get double messages on failures.
+See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Choose either **Run completed** or **Run errored**, but not both or you'll get double messages when a run fails.
 
-Once you've tested the endpoint, go back to Zapier and click _Test Trigger_, which will create a sample webhook body for you to work with. 
+Make note of the Webhook Secret Key for later.
+
+Once you've tested the endpoint in dbt Cloud, go back to Zapier and click **Test Trigger**, which will create a sample webhook body based on the test event dbt Cloud sent.
 
 The sample body's values are hard-coded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
 ### Store secrets 
 In the next step, you will need the Webhook Secret Key from the prior step, and a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). 
 
-Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), you should consider doing this to prevent your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
+Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
 ### Add a code action
-Select _Code by Zapier_ as the App, and _Run Python_ as the Event. 
+Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
-In the _Set up action_ area, add two items to _Input Data_: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the _Catch Raw Hook_ step above.
+In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
 
-_screenshot here_
+![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-ms-teams/2-run-python.png)
 
-In the _Code_ field, paste the following code: 
+In the **Code** field, paste the following code: 
 
 ```python
 import hashlib
@@ -86,7 +94,7 @@ run_data_results = run_data_response.json()['data']
 
 # Overall run summary
 outcome_message = f"""
-**[{hook_data['runStatus']} for Run #{run_id} on Job \"{hook_data['jobName']}\"]({run_data_results['href']})**
+**\[{hook_data['runStatus']} for Run #{run_id} on Job \"{hook_data['jobName']}\"]({run_data_results['href']})**
 
 
 **Environment:** {hook_data['environmentName']} | **Trigger:** {hook_data['runReason']} | **Duration:** {run_data_results['duration_humanized']}
@@ -124,4 +132,22 @@ for step in run_data_results['run_steps']:
 """
 
 # Zapier looks for the `output` dictionary for use in subsequent steps
-output = {'outcome_message': outcome_message}```
+output = {'outcome_message': outcome_message}
+```
+
+### Add the Microsoft Teams action
+Select **Microsoft Teams** as the App, and **Send Channel Message** as the Action.
+
+In the **Set up action** area, choose the team and channel. Set the **Message Text Format** to **markdown**, then put **2. Outcome Message** from the Run Python in Code by Zapier output into the **Message Text** field. 
+
+![Screenshot of the Zapier UI, showing the mappings of prior steps to an MS Teams message](/img/guides/orchestration/webhooks/zapier-ms-teams/3-ms-teams.png)
+
+### Test and deploy
+As you have gone through each step, you should have tested the outputs, so you can now try posting a message into your Teams channel. 
+
+When you're happy with it, remember to ensure that your `run_id` and `account_id` are no longer hardcoded, then publish your Zap.
+
+## Other notes
+- If you post to a chat instead of a team channel, you don't need to add the Zapier app to Microsoft Teams.
+- If you post to a chat instead of a team channel, note that markdown is not supported and you will need to remove the markdown formatting. 
+- If you chose the **Catch Hook** trigger instead of **Catch Raw Hook**, you will need to pass each required property from the webhook as an input instead of running `json.loads()` against the raw body. You will also need to remove the validation code. 
