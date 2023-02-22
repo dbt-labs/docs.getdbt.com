@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to v1.1"
+description: New features and changes in dbt Core v1.1
 ---
 ### Resources
 
@@ -7,13 +8,13 @@ title: "Upgrading to v1.1"
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 ### For maintainers of adapter plugins
 
-We have reworked the testing suite for adapter plugin functionality. For details on the new testing suite, see: [Testing a new adapter](/guides/advanced/adapter-development/4-testing-a-new-adapter).
+We have reworked the testing suite for adapter plugin functionality. For details on the new testing suite, see: [Testing a new adapter](/guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter).
 
 The abstract methods `get_response` and `execute` now only return `connection.AdapterReponse` in type hints. Previously, they could return a string. We encourage you to update your methods to return an object of class `AdapterResponse`, or implement a subclass specific to your adapter. This also gives you the opportunity to add fields specific to your adapter's query execution, such as `rows_affected` or `bytes_processed`.
 
@@ -21,7 +22,7 @@ The abstract methods `get_response` and `execute` now only return `connection.Ad
 
 The manifest schema version will be updated to v5. The only change is to the default value of `config` for parsed nodes.
 
-For users of [state-based functionality](understanding-state), such as the `state:modified` selector, recall that:
+For users of [state-based functionality](/docs/deploy/about-state), such as the `state:modified` selector, recall that:
 
 > The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 
@@ -41,7 +42,7 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 ### Advanced and experimental functionality
 
-**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](node-selection/methods#the-source_status-method). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](understanding-state) and [CI/CD in dbt Cloud](/docs/deploy/cloud-ci-job).
+**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](node-selection/methods#the-source_status-method). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/docs/deploy/about-state) and [CI/CD in dbt Cloud](/docs/deploy/cloud-ci-job).
 
 
 [**dbt-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:

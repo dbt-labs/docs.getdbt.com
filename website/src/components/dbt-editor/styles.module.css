@@ -1,0 +1,209 @@
+.dbtEditor {
+  width: 100%;
+  max-width: 100%;
+  max-height: 770px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  color: #111827;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background: #fff;
+  position: relative;
+}
+.dbtEditor.fullHeight {
+  max-height: 100%;
+  height: 100%;
+}
+@media (min-width: 1200px) {
+  .dbtEditor {
+    flex-wrap: nowrap;
+  }
+}
+
+.dbtLineageContainer {
+  height: 265px;
+  width: 100%;
+  padding: 10px;
+}
+
+.dbtLineageContainer > div {
+  height: 100%;
+  width: 100%;
+}
+
+/* Sidebar */
+.dbtEditorSidebar {
+  flex: 1 0 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #F9FAFB;
+  border-right: 1px solid #E5E7EB;
+  padding: 20px;
+  font-size: 14px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+@media (min-width: 1200px) {
+  .dbtEditorSidebar {
+    flex: 1 0 256px;
+    max-width: 256px;
+    max-height: initial;
+  }
+}
+.dbtEditorSidebar .sidebarHeader {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+.dbtEditorSidebar .sidebarList {
+  font-weight: 400;
+  list-style: none;
+  padding-left: 0;
+}
+.dbtEditorSidebar .sidebarNestedList {
+  list-style: none;
+  padding-left: 10px;
+}
+.dbtEditorSidebar .sidebarList li {
+  font-size: 12px;
+  cursor: pointer;
+}
+.listItem {
+  display: flex;
+  align-items: center;
+}
+.dbtEditorSidebar .sidebarList li img {
+  margin-right: 5px;
+}
+.hideItem {
+  display: none;
+}
+
+/* Main editor */
+.dbtEditorMain {
+  flex: 1 1 100%;
+  overflow: auto;
+  height: 570px;
+  width: 100%;
+}
+.dbtEditor.fullHeight .dbtEditorMain {
+  height: 100%;
+}
+@media (min-width: 1200px) {
+  .dbtEditorMain {
+    flex: 1 1 calc(100% - 256px);
+    height: initial;
+    max-width: initial;
+  }
+}
+
+/* CLI */
+.dbtEditorCli {
+  padding: 20px 0;
+  height: 50%;
+}
+
+/* Actions */
+.dbtEditorActions {
+  display: flex;
+  background: #F9FAFB;
+  padding: 5px 20px 5px 24px;
+}
+.editorAction {
+  margin-right: 15px;
+  background: #fff;
+  border: 1px solid #D1D5DB;
+  color: #111827;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 7px 11px;
+  transition: 100ms all ease-in-out;
+  cursor: pointer;
+}
+.editorAction:hover {
+  background: #047377;
+  border: 1px solid #047377;
+  color: #fff;
+}
+.editorAction:last-of-type {
+  margin-right: 0;
+}
+
+/* Results */
+.resultsHeader {
+  color: #1F2937;
+  background: #fff;
+  padding: 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+.resultsHeader span {
+  color: #4B5563;
+}
+.resultsHeader img {
+  margin-left: 5px;
+}
+
+.dbtEditorResults table {
+  display: table;
+  color: #111827;
+  background: #fff;
+  margin: 0;
+}
+.dbtEditorResults table, .dbtEditorResults table thead, .dbtEditorResults table tbody {
+  width: 100%;
+}
+.dbtEditorResults tr {
+  border-bottom: 1px solid #E5E7EB;
+}
+.dbtEditorResults tr:last-of-type {
+  border-bottom: none;
+}
+.dbtEditorResults table thead tr {
+  border-top: 1px solid #E5E7EB;
+}
+.dbtEditorResults table th {
+  text-align: left;
+  color: #4B5563;
+  font-weight: 600;
+}
+.dbtEditorResults table th, .dbtEditorResults table td {
+  font-size: 14px;
+  border: none;
+  color: #111827 !important;
+}
+.dbtEditorResults table tr:nth-child(2n) {
+  background: #fff;
+}
+.dbtEditorResults table tr th:first-of-type,
+.dbtEditorResults table tr td:first-of-type {
+  padding-left: 24px;
+}
+
+.expandIcon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,.2);
+  z-index: 2;
+  color: #fff;
+  font-size: .8rem;
+  border-radius: 5px;
+  height: 25px;
+  width: 25px;
+  transition: all ease-in-out 100ms;
+  cursor: pointer;
+}
+.expandIcon:hover {
+  background: rgba(0,0,0,.25);
+}
+.expandIcon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}

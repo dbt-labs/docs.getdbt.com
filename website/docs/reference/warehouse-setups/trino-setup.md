@@ -3,14 +3,14 @@ title: "Starburst & Trino setup"
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
-  authors: Matthew Carter, Andy Regan, Andrew Hedengren
+  authors: Marius Grama, Przemek Denkiewicz, Michiel de Smet
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
-  slack_channel_name: '#db-clickhouse'
-  slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
+  slack_channel_name: '#db-presto-trino'
+  slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Trino'
   config_page: 'no-configs'
 ---
@@ -109,7 +109,7 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 | http_headers                   | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.   | Optional                                                                                                         | `X-Trino-Client-Info: dbt-trino` |
 | http_scheme                    | The HTTP scheme to use for requests to Trino                                                                 | Optional (default is `http`, or `https` for `method: kerberos`, `ldap` or `jwt`)                                 | `https` or `http`                |
 | cert                           | The full path to a certificate file for authentication with trino                                            | Optional                                                                                                         |                                  |
-| session_properties             | Sets Trino session properties used in the connection                                                         | Optional                                                                                                         | `query_max_run_time: 5d`         |
+| session_properties             | Sets Trino session properties used in the connection                                                         | Optional                                                                                                         | `query_max_run_time: 4h`         |
 | database                       | Specify the database to build models into                                                                    | Required                                                                                                         | `analytics`                      |
 | schema                         | Specify the schema to build models into. Note: it is not recommended to use upper or mixed case schema names | Required                                                                                                         | `public`                         |
 | host                           | The hostname to connect to                                                                                   | Required                                                                                                         | `127.0.0.1`                      |
@@ -117,3 +117,4 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 | threads                        | How many threads dbt should use                                                                              | Optional (default is `1`)                                                                                        | `8`                              |
 | prepared_statements_enabled    | Enable usage of Trino prepared statements (used in `dbt seed` commands)                                      | Optional (default is `true`)                                                                                     | `true` or `false`                |
 | retries                        | Configure how many times a database operation is retried when connection issues arise                        | Optional (default is `3`)
+| timezone                       | The time zone for the session                                                                                | Optional (defaults to the client side local timezone)                                                            | `Europe/Brussels`                |

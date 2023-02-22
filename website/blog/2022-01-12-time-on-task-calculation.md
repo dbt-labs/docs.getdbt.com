@@ -35,7 +35,7 @@ This piece will provide an overview of how and critically *why* to calculate Tim
 
 1. One size fits all with nested macros
 
-This solution allowed us to create a one-line [dbt macro](/docs/building-a-dbt-project/jinja-macros#macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes.
+This solution allowed us to create a one-line [dbt macro](/docs/build/jinja-macros) to account for most common Time On Task use cases by having a series of nested macros behind the scenes.
 
 This strategy does a great job in being able to account for nights, weekends and custom holidays, but lacks the flexibility to accommodate changes in business hours, so we've transitioned off of it to the 2nd option:
 
@@ -94,7 +94,7 @@ So for any timestamp that is already in business hours like the above example, t
 
 ### What about holidays?
 
-We maintain a [seed file](/docs/building-a-dbt-project/seeds) in our project that has the dates of holidays for the next 5 years or so - we join this to our hour-level date_dim table, and incorporate holidays into the boolean column mentioned above. This way, any ticket that comes in on a holiday gets fast forwarded to the beginning of the next working day. Not a perfect solution, so curious to hear how this is handled elsewhere!
+We maintain a [seed file](/docs/build/seeds) in our project that has the dates of holidays for the next 5 years or so - we join this to our hour-level date_dim table, and incorporate holidays into the boolean column mentioned above. This way, any ticket that comes in on a holiday gets fast forwarded to the beginning of the next working day. Not a perfect solution, so curious to hear how this is handled elsewhere!
 
 ## The customizable option: a bespoke calendar + subquery
 

@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to v1.2"
+description: New features and changes in dbt Core v1.2
 ---
 ### Resources
 
@@ -7,7 +8,7 @@ title: "Upgrading to v1.2"
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
@@ -17,7 +18,7 @@ The manifest schema version has been updated to `v6`. The relevant changes are:
 - Change to `config` default, which includes a new `grants` property with default value `{}`
 - Addition of a `metrics` property, to any node which could reference metrics using the `metric()` function
 
-For users of [state-based selection](understanding-state): This release also includes new logic declaring forwards compatibility for older manifest versions. While running dbt Core v1.2, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 or v1.1.
+For users of [state-based selection](/docs/deploy/about-state): This release also includes new logic declaring forwards compatibility for older manifest versions. While running dbt Core v1.2, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 or v1.1.
 
 ## For maintainers of adapter plugins
 
