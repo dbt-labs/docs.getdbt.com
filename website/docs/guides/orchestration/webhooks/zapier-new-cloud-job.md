@@ -1,5 +1,5 @@
 ---
-title: "Trigger a dbt Cloud job when a run finishes"
+title: "Trigger another dbt Cloud job when a run finishes"
 id: webhooks-guide-zapier-new-cloud-job
 slug: zapier-new-cloud-job
 ---
@@ -13,6 +13,9 @@ When a dbt Cloud job completes:
  - check that it was successful
  - trigger a different job to run using the dbt Cloud Admin API
 
+
+ This can be useful when you need to trigger a job in a different project. Remember that dbt works best when it understands the whole context of the <Term id="dag"/> it has been asked to run, so use this ability judiciously.
+
 ## Integration steps:
 
 ### Create a new Zap in Zapier
@@ -23,7 +26,7 @@ Press **Continue**, then copy the webhook URL and put it into dbt Cloud.
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
 ### Configure a new webhook in dbt Cloud
-See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Choose **Run completed**. Change the **Jobs** list to only be the job you want to trigger the next run.
+See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain the job you want to trigger the next run.
 
 Make note of the Webhook Secret Key for later.
 
@@ -75,9 +78,9 @@ if hook_data['runStatus'] == "Success":
   # Trigger a new run with the dbt Cloud Admin API
   url = f'https://cloud.getdbt.com/api/v2/accounts/{full_body['accountId']}/jobs/{target_job_id}/run'
 
-  body = {'cause':  f'Triggered by Zapier because {hook_data['jobName']} Run #{hook_data['runId']} completed successfully'}
+  body = {'cause':  f"Triggered by Zapier because {hook_data['jobName']} Run #{hook_data['runId']} completed successfully"}
   headers = {'Authorization': f'Token {api_token}'}
-  response = requests.post(url, json=body headers=headers)
+  response = requests.post(url, json=body, headers=headers)
   response.raise_for_status()
 ```
 
@@ -96,10 +99,13 @@ This has two potential weaknesses:
 If you do this, make extra sure that you are using an API token with minimal privileges.
 :::
 
-Create a new Zap and a new webhook. Then: 
+Create a new Zap and a new webhook as above. Then: 
 
 ### Filter to relevant and successful runs only 
 Add a **Filter by Zapier** Action with the filter: **Run Status** Exactly matches **Success**
+
+![Screenshot of the Zapier UI, showing the configured filter step](/img/guides/orchestration/webhooks/zapier-new-cloud-job/filter.png)
+
 
 ### Trigger the job
 Add a **Webhooks by Zapier** Action with the **POST** Event, configured as follows:
@@ -107,3 +113,5 @@ Add a **Webhooks by Zapier** Action with the **POST** Event, configured as follo
 - **Payload Type**: form
 - **Data** add a field called **cause** with a value explaining why the run was triggered
 - **Headers**: add a field called **Authorization** with a value `Token YOUR_API_TOKEN_HERE`
+
+![Screenshot of the Zapier UI, showing the configured filter step](/img/guides/orchestration/webhooks/zapier-new-cloud-job/code-step.png)
