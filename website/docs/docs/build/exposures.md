@@ -13,6 +13,7 @@ id: "exposures"
 ## Related documentation
 * [Exposure properties](exposure-properties)
 * [`exposure:` selection method](node-selection/methods#the-exposure-method)
+* [Dashboard status tiles](/docs/deploy/dashboard-status-tiles)
 
 ## Overview
 
