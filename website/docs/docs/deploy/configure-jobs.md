@@ -17,7 +17,7 @@ A dbt Cloud job is a set of commands and configurations that help you to run it 
 
 To successfully configure a job, you'll need to have the following:
 
-- Active dbt Cloud account and project connected to a [data platform](/docs/get-started/connect-your-database) and [git provider](/docs/collaborate/git/connect-github)
+- An active dbt Cloud account and project connected to a [data platform](/docs/get-started/connect-your-database) and [git provider](/docs/collaborate/git/connect-github)
 - [Access permission](/docs/collaborate/manage-access/about-access) to create, edit, and run jobs
 - A [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment), which determines the settings for the executed job(s)
 
