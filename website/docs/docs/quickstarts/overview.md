@@ -21,29 +21,25 @@ Before you begin, you will need:
     title="Quickstart for dbt Cloud and BigQuery"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     link="/docs/quickstarts/dbt-cloud/bigquery"
-    icon="pencil-paper"/>
+    icon="bigquery"/>
 
 <Card
     title="Quickstart for dbt Cloud and Databricks"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     link="/docs/quickstarts/dbt-cloud/databricks"
-    icon="pencil-paper"/>
+    icon="databricks"/>
 
 <Card
     title="Quickstart for dbt Cloud and Redshift"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     link="/docs/quickstarts/dbt-cloud/redshift"
-    icon="pencil-paper"/>
-
-</div>
-
-<div className="grid--3-col">
+    icon="redshift"/>
 
 <Card
     title="Quickstart for dbt Cloud and Snowflake"
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     link="/docs/quickstarts/dbt-cloud/snowflake"
-    icon="pencil-paper"/>
+    icon="snowflake"/>
 
 <Card
     title="Quickstart for dbt Core"
