@@ -148,3 +148,7 @@ sign-in time based on the user's IdP-provided group membership information.
 - **Can I configure a user's License Type based on IdP Attributes?** Yes, see
   the docs on [managing license types](/cloud-seats-and-users#managing-license-types)
   for more information.
+
+- **Why can't I edit the group membership of a particular user?** Check to see that
+  you are not trying to edit the group memberships of your own user as this is not allowed.
+  You will need a different user to modify your own users group memberships.
