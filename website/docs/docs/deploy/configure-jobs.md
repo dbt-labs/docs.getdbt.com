@@ -82,7 +82,7 @@ Here is some more details on job commands and the different outcomes:
 
     <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" title="An errored dbt Cloud job"/>
 
-## Troubleshooting
+## Command Failures
 
 Job failures can mean different things for different commands. Here are some reasons why a job may fail:
 
