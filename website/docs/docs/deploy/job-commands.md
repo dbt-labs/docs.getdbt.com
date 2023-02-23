@@ -41,8 +41,6 @@ You can add or remove as many [dbt commands](/reference/dbt-commands) as necessa
    
    * Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. If a selector doesn't match any models, the job run won't consider it a failure. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`
     
-   *  TO FLESH OUT - IF THE SELECTOR DOESN'T MATCH NODES, WILL IT BE CONSIDERED? CANCELLED? CAN YOU PROVIDE AN EXAMPLE? NEED MORE INFO
-
 **Outcome** &mdash;  During a job run, the commands are “chained” together. This means if one of the commands in the chain fails, then the next ones aren't executed. For example, if the 5th step fails (`dbt run --select state:modified+ --full-refresh --fail-fast`), then the subsequent commands aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](https://docs.getdbt.com/reference/exit-codes) and "Error" job status:
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" title="A job run with a failed run step and subsequent job failure"/>
@@ -53,13 +51,17 @@ You can add or remove as many [dbt commands](/reference/dbt-commands) as necessa
 Job failures can mean different things for different commands. Here are some reasons why a job may fail:
 
 1. **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled sql model files against the current target database. It will fail if there is an error in any of the built models. 
-    - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in-progress.  
     - Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
-    - TODO WHAT IS THE EXIST CODE FOR A PARTIAL FAILE?
+    
+2. **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). 
+    - Only an error stops the next step, unless you set [warnings as errors](/reference/global-configs#warnings-as-errors)
 
-2. **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [configuration](/reference/test-configs). Only an error stops the next step. 
+3. **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command is a series of commands in itself, partial failures. For example, if `dbt seed` is successfull, but `dbt run` isn't, then it treated as a failure (exit code 1).
 
-3. **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. NEED MORE INFO ON THIS - what info do you want to convey? 
+## About Selectors ##
+    - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in-progress. 
+    - If a selector does not match any nodes, it is not constituted as a failure
+
 
 ## Related docs
 - [dbt commands](/reference/dbt-commands)
