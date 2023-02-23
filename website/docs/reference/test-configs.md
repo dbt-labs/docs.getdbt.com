@@ -3,22 +3,15 @@ title: Test configurations
 ---
 
 ## Related documentation
-* [Tests](building-a-dbt-project/tests)
 
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to configure tests from `dbt_project.yml`, and to configure `enabled` for generic tests. Introduced `fail_calc`, `where`, `error_if`, `warn_if`, `store_failures`, and `where` configs.
-* `v0.21.0`: Introduced the `config()` dictionary, making it easier and clearer to configure specific instances of generic tests
-
-
-</Changelog>
+* [Tests](/docs/build/tests)
 
 Tests can be configured in a few different ways:
 1. Properties within `.yml` definition (generic tests only, see [test properties](resource-properties/tests) for full syntax)
 2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
-Test configs are applied hierarchically, in the order of specifity outlined above. In the case of a singular test, the `config()` block within the SQL definition takes precedence over configs in the project file. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
+Test configs are applied hierarchically, in the order of specificity outlined above. In the case of a singular test, the `config()` block within the SQL definition takes precedence over configs in the project file. In the case of a specific instance of a generic test, the test's `.yml` properties would take precedence over any values set in its generic SQL definition's `config()`, which in turn would take precedence over values set in `dbt_project.yml`.
 
 ## Available configurations
 

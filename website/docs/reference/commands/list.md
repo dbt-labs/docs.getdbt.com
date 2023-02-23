@@ -5,7 +5,7 @@ id: "list"
 
 ## Overview
 
-The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](dbt-cli/configure-your-profile) to resolve [`target`](dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
+The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](/docs/get-started/connection-profiles) to resolve [`target`](dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
 
 ### Usage
 ```
@@ -71,12 +71,28 @@ $ dbt ls --select snowplow.* --output json
 ```
 
 **Listing JSON output with custom keys**
+
+<VersionBlock lastVersion="1.4">
+
 ```
-$ dbt ls --select snowplow.* --output json --output-keys name description
+$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```
+$ dbt ls --select snowplow.* --output json --output-keys name resource_type description
+{"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
+{"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
+...
+```
+
+</VersionBlock>
+
 
 **Listing file paths**
 ```

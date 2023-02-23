@@ -8,7 +8,7 @@ These classes are often useful when building advanced dbt models and macros.
 
 ## Relation
 
-The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config][quoting].
+The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config](/reference/project-configs/quoting).
 
 ### Creating Relations
 
@@ -52,7 +52,7 @@ class Relation:
 -- Return true if the relation is a table
 {{ relation.is_table }}
 
--- Return true if the relation is a <Term id="table" />
+-- Return true if the relation is a view
 {{ relation.is_view }}
 
 -- Return true if the relation is a cte

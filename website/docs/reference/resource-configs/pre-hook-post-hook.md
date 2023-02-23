@@ -15,14 +15,16 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
+<Snippet src="post-and-pre-hooks-sql-statement" /> 
+
 <File name='dbt_project.yml'>
 
 ```yml
 
 models:
   [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -33,8 +35,8 @@ models:
 ```sql
 
 {{ config(
-    pre_hook="<sql-statement>" | ["<sql-statement>"],
-    post_hook="<sql-statement>" | ["<sql-statement>"],
+    pre_hook="SQL-statement" | ["SQL-statement"],
+    post_hook="SQL-statement" | ["SQL-statement"],
 ) }}
 
 select ...
@@ -48,14 +50,16 @@ select ...
 
 <TabItem value="seeds">
 
+<Snippet src="post-and-pre-hooks-sql-statement" /> 
+
 <File name='dbt_project.yml'>
 
 ```yml
 
 seeds:
   [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -65,14 +69,16 @@ seeds:
 
 <TabItem value="snapshots">
 
+<Snippet src="post-and-pre-hooks-sql-statement" /> 
+
 <File name='dbt_project.yml'>
 
 ```yml
 
 snapshots:
   [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -83,8 +89,8 @@ snapshots:
 ```sql
 {% snapshot snapshot_name %}
 {{ config(
-    pre_hook="<sql-statement>" | ["<sql-statement>"],
-    post_hook="<sql-statement>" | ["<sql-statement>"],
+    pre_hook="SQL-statement" | ["SQL-statement"],
+    post_hook="SQL-statement" | ["SQL-statement"],
 ) }}
 
 select ...
@@ -233,7 +239,7 @@ If you define hooks in both your `dbt_project.yml` and in the `config` block of 
 ### Execution ordering
 If multiple instances of any hooks are defined, dbt will run each hook using the following ordering:
 1. Hooks from dependent packages will be run before hooks in the active package.
-2. Hooks defined within the model itself will be run before hooks defined in `dbt_project.yml`.
+2. Hooks defined within the model itself will be run after hooks defined in `dbt_project.yml`.
 3. Hooks within a given context will be run in the order in which they are defined.
 
 
@@ -253,8 +259,8 @@ To achieve this, you can use one of the following syntaxes. (Note: You should NO
 ```sql
 {{
   config(
-    pre_hook=before_begin("<sql-statement>"),
-    post_hook=after_commit("<sql-statement>")
+    pre_hook=before_begin("SQL-statement"),
+    post_hook=after_commit("SQL-statement")
   )
 }}
 
@@ -271,11 +277,11 @@ select ...
 {{
   config(
     pre_hook={
-      "sql": "<sql-statement>",
+      "SQL": "SQL-statement",
       "transaction": False
     },
     post_hook={
-      "sql": "<sql-statement>",
+      "SQL": "SQL-statement",
       "transaction": False
     }
   )
@@ -295,10 +301,10 @@ select ...
 
 models:
   +pre-hook:
-    sql: "<sql-statement>"
+    SQL: "SQL-statement"
     transaction: false
   +post-hook:
-    sql: "<sql-statement>"
+    SQL: "SQL-statement"
     transaction: false
 
 

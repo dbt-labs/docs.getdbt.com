@@ -2,6 +2,7 @@
 title: "DATEDIFF SQL function: Why we love it"
 description: "The DATEDIFF function will return the difference in specified units (ex. days, weeks, years) between a start date/time and an end date/time. It’s a simple and widely used function that you’ll find yourself using more often than you expect."
 slug: datediff-sql-love-letter
+canonical_url: https://docs.getdbt.com/sql-reference/datediff
 
 authors: [kira_furuichi]
 
@@ -23,7 +24,7 @@ The DATEDIFF function will return the difference in specified units (ex. days, w
 <!--truncate-->
 
 > **What is a SQL function?**
-> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://getdbt.com/sql-foundations/coalesce-sql-love-letter/), [LOWER](https://getdbt.com/sql-foundations/lower-sql-love-letter/), and [EXTRACT](https://getdbt.com/sql-foundation/extract-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
+> At a high level, a function takes an input (or multiple inputs) and returns a manipulation of those inputs. Some common SQL functions are [COALESCE](https://getdbt.com/sql-foundations/coalesce-sql-love-letter/), [LOWER](https://getdbt.com/sql-foundations/lower-sql-love-letter/), and [EXTRACT](https://getdbt.com/sql-foundations/extract-sql-love-letter/). For example, the COALESCE function takes a group of values and returns the first non-null value from that group.
 
 DATEDIFF is a little bit like your favorite pair of socks; you’ll usually find the first one easily and feel like the day is going to be great. But for some reason, the matching sock requires a little digging in the drawer. DATEDIFF is this pair of socks—you’ll inevitably find yourself Googling the syntax almost every time you use it, but you can’t go through your day without using it. 
 
