@@ -6,7 +6,7 @@ id: "sso-overview"
 
 ::caution Warning!
 
-Once SSO has been configured (even partially) for an account - it is not possible to disable SSO. Please be sure that when configuring SSO - you configure it completely.
+Once SSO has been configured (even partially) for an account - it is not possible to disable or revert SSO. Please be sure that when configuring SSO - you configure it completely.
 
 :::
 
