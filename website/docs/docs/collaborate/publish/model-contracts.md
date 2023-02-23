@@ -67,7 +67,7 @@ models:
 </File>
 
 When building a model with a defined contract, dbt will do two things differently:
-1. dbt will run a prerequisite check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined.
+1. dbt will run a preliminary verification check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined.
 2. dbt will pass the column names, types, `not_null`, and other constraints into the DDL statements it submits to the data platform, which will be enforced while building the table.
 
 ## FAQs
