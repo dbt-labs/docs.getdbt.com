@@ -146,4 +146,4 @@ sign-in time based on the user's IdP-provided group membership information.
   Yes, see the docs on [managing license types](/cloud-seats-and-users#managing-license-types) for more information.
 
 - **Why can't I edit a user's group membership?**  <br />
-  Check to see that you are not trying to edit the group memberships of your own user as this is not allowed. You will need a different user to modify your own users group memberships.
+Make sure you're not trying to edit your own user as this isn't allowed for security reasons. To edit the group membership of your own user, you'll need a different user to make those changes.
