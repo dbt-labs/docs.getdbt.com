@@ -239,7 +239,7 @@ If you define hooks in both your `dbt_project.yml` and in the `config` block of 
 ### Execution ordering
 If multiple instances of any hooks are defined, dbt will run each hook using the following ordering:
 1. Hooks from dependent packages will be run before hooks in the active package.
-2. Hooks defined within the model itself will be run before hooks defined in `dbt_project.yml`.
+2. Hooks defined within the model itself will be run after hooks defined in `dbt_project.yml`.
 3. Hooks within a given context will be run in the order in which they are defined.
 
 
