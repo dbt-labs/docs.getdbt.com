@@ -34,7 +34,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 Congratulations 🎉! You've just deployed your first dbt project!
 :::
 
-### FAQs
+#### FAQs
 
 <FAQ src="Runs/failed-prod-run" />
 

@@ -197,7 +197,7 @@ This time, when you performed a `dbt run`, separate views/tables were created fo
 
 Now that models are set up in your project, you can check out [these exercises](/docs/get-started/dbt-cloud/exercises#models) to learn more about what you can do with dbt. 
 
-### FAQs {#faq-2}
+#### FAQs {#faq-2}
 
 <FAQ src="Runs/run-one-model" />
 <FAQ src="Models/unique-model-names" />
