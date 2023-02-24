@@ -22,7 +22,7 @@ When using configuring job commands, you can expect different outcomes when addi
 
 ### Built-in commands
 
-Every job invocation includes [`dbt deps`](/reference/commands/deps), meaning you don't need to add it to the **Commands** list in your job settings. `dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. 
+Every job invocation automatically includes [`dbt deps`](/reference/commands/deps), meaning you don't need to add it to the **Commands** list in your job settings. `dbt deps` pulls the most recent version of the dependencies listed in your `packages.yml` from git. 
 
 **Outcome** &mdash; During a job run, the commands are “chained” together. This means if `dbt run` fails, then the subsequent commands aren't executed a and the entire job fails with an "Error" job status.
 
