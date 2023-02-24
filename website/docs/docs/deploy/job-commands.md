@@ -22,7 +22,7 @@ During a job run, the commands are "chained" together, and you can expect differ
 
 ### Built-in commands
 
-Every job invocation automatically includes [`dbt deps`](/reference/commands/deps) and `dbt builb`, meaning you don't need to add it to the **Commands** list in your job settings. 
+Every job invocation automatically includes [`dbt deps`](/reference/commands/deps) and `dbt built`, meaning you don't need to add it to the **Commands** list in your job settings. 
 
 **Job outcome** &mdash; During a job run, the commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
