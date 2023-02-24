@@ -41,7 +41,7 @@ You can add or remove as many [dbt commands](/reference/dbt-commands) as necessa
 Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt-commands) are meant for [CLI](/docs/get-started/about-the-cli) use only. In dbt Cloud, you can only run commands that _aren't labeled_ "CLI only".
 
 
-:::tip Tip &mdash; CLI only commands 
+:::tip Using selectors
 
 Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. If a selector doesn't match any models, the job run won't consider it a failure. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`
 
