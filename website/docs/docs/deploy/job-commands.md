@@ -72,6 +72,7 @@ Job command failures can mean different things for different commands. Here are 
 
 
 ## Related docs
+- [Job creation best practices](https://discourse.getdbt.com/t/job-creation-best-practices-in-dbt-cloud-feat-my-moms-lasagna/2980)
 - [dbt commands](/reference/dbt-commands)
 - [Job triggers](/docs/deploy/job-triggers)
 - [Job notifications](/docs/deploy/job-notifications)
