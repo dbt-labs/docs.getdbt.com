@@ -58,17 +58,17 @@ then the subsequent commands aren't executed, and the entire job fails. The fail
 
 Job command failures can mean different things for different commands. Here are some reasons why a job command may fail:
 
-1. **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled sql model files against the current target database. It will fail if there is an error in any of the built models. 
-    - Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
+- **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled sql model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
     
-2. **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). 
-    - Only an error stops the next step, unless you set [warnings as errors](/reference/global-configs#warnings-as-errors)
+- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). Only an error stops the next step, unless you set [warnings as errors](/reference/global-configs#warnings-as-errors)
 
-3. **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command is a series of commands in itself, partial failures. For example, if `dbt seed` is successfull, but `dbt run` isn't, then it treated as a failure (exit code 1).
+- **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command is a series of commands in itself, partial failures. For example, if `dbt seed` is successfull, but `dbt run` isn't, then it's treated as a failure with an Exit code 1.
 
-## About Selectors ##
-    - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in-progress. 
-    - If a selector does not match any nodes, it is not constituted as a failure
+## About selectors
+
+- If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in-progress. 
+
+- If a selector does not match any nodes, it is not constituted as a failure
 
 
 ## Related docs
