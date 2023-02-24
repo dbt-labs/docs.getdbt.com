@@ -19,18 +19,19 @@ describe('Test Discourse component', () => {
     })
 
     it('Should display loading icon on inital load', () => {
-        cy.intercept('POST', 'http://localhost:8888/.netlify/functions/get-discourse-topics', {
-            delayMs: 10,
+        cy.intercept('POST', '**/.netlify/functions/get-discourse-topics', {
+            delayMs: 100,
         }
         ).as('getTopics')
         cy.mount(<DiscourseFeed />)
         cy.get('[data-testid="feed-loader"]', { timeout: 100 }).should('be.visible')
+        cy.wait('@getTopics')
         cy.get('[data-testid="error-text"]').should('be.visible')
 
     })
 
     it('Should display Discourse data after API fetch', () => {
-        cy.intercept('POST', 'http://localhost:8888/.netlify/functions/get-discourse-topics', (req) => {
+        cy.intercept('POST', '**/.netlify/functions/get-discourse-topics', (req) => {
             req.reply(mockResponseData);
         }).as('getTopics')
 
@@ -46,7 +47,7 @@ describe('Test Discourse component', () => {
     })
 
     it('Should show cta with correct text and href', () => {
-        cy.intercept('POST', 'http://localhost:8888/.netlify/functions/get-discourse-topics', (req) => {
+        cy.intercept('POST', '**/.netlify/functions/get-discourse-topics', (req) => {
             req.reply(mockResponseData);
         }).as('getTopics')
 
@@ -64,7 +65,7 @@ describe('Test Discourse component', () => {
     })
 
     it('Should display message when no topics found', () => {
-        cy.intercept('POST', 'http://localhost:8888/.netlify/functions/get-discourse-topics', (req) => {
+        cy.intercept('POST', '**/.netlify/functions/get-discourse-topics', (req) => {
             req.reply([]);
         }).as('getTopics')
 
