@@ -4,7 +4,9 @@ id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
 ---
 
-A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/get-started/develop-in-the-cloud). A job contains one or more commands, and when executed together, the outcomes of those commands will determine the job run status. A job run status will be either (successful, canceled or failed) and a command outcome can either be successful or failed. Each job allows you to:
+A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/get-started/develop-in-the-cloud). A job consists of multiple commands, and their combined outcomes determine the job's run status, which can be successful, canceled, or failed. During a job run, each command outcome can either succeed or fail under the **Run steps** section.
+
+Each job allows you to:
 
 - Configure job commands
 - View job run details, including timing, artifacts, and detailed run steps
