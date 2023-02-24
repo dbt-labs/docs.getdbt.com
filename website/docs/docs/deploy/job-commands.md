@@ -42,7 +42,7 @@ The commands that can be run in dbt Cloud are limited to the ones not-marked CLI
 
 :::tip Tip &mdash; CLI only commands 
 
-There are specific commands marked `CLI Only in the [dbt commands documentation](/reference/dbt-commands) that are not avialable in dbt Cloud. These commands are either done for you, or simply do not apply. 
+Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. If a selector doesn't match any models, the job run won't consider it a failure. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`
 
 :::
    
