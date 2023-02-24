@@ -33,7 +33,7 @@ Every job invocation includes [`dbt deps`](/reference/commands/deps), meaning yo
 
 For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes. These checkboxes enable you to generate project docs or enable source freshness automatically.
 
-**Outcome** &mdash; During a job run, if either "checkbox command" (source freshness or generate documnetation) fails, the job can still be successful if all subsequent steps are successful. 
+**Outcome** &mdash; During a job run, if either "checkbox command" (source freshness or generate documentation) fails, the job can still be successful if all subsequent steps are successful. 
 
 ### Command list
 
