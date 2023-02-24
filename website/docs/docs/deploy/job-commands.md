@@ -52,7 +52,7 @@ Use [selectors](/reference/node-selection/syntax) as a powerful way to select an
 (`dbt run --select state:modified+ --full-refresh --fail-fast`)
 then the subsequent commands aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" title="A job run with a failed run step and subsequent job failure"/>
+<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" title="A failed job run that had an error during a run step"/>
 
 ## Job command failures
 
