@@ -38,7 +38,8 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 ### Command list
 
 You can add or remove as many [dbt commands](/reference/dbt-commands) as necessary for every job, however, you need to have at least one dbt command. 
-The commands that can be run in dbt Cloud are limited to the ones not-marked CLI-only. 
+Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt-commands) are meant for [CLI](/docs/get-started/about-the-cli) use only. In dbt Cloud, you can only run commands that _aren't labeled_ "CLI only".
+
 
 :::tip Tip &mdash; CLI only commands 
 
