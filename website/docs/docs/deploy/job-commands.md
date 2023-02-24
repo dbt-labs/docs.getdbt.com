@@ -15,7 +15,7 @@ A dbt Cloud production job allows you to set up a system to run a dbt job and jo
 
 Job commands are specific tasks executed by the job, and you can configure them seamlessly by either adding [dbt commands](/reference/dbt-commands) or using the checkbox option in the **Commands** section. 
 
-When using configuring job commands, expect different outcomes when adding the command as a run step compared to selecting a checkbox.
+When using configuring job commands, you can expect different outcomes when adding the command as a run step compared to selecting a checkbox.
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/job-commands.gif" title="Configuring checkbox and commands list"/>
 
