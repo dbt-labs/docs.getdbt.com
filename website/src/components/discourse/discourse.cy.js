@@ -18,10 +18,16 @@ describe('Test Discourse component', () => {
         cy.contains('Open topics').should('be.visible')
     })
 
-    // it('Should display loading icon on inital load', () => {
-    //     //TODO find out how to do initial load for this test
+    it('Should display loading icon on inital load', () => {
+        cy.intercept('POST', 'http://localhost:8888/.netlify/functions/get-discourse-topics', {
+            delayMs: 10,
+        }
+        ).as('getTopics')
+        cy.mount(<DiscourseFeed />)
+        cy.get('[data-testid="feed-loader"]', { timeout: 100 }).should('be.visible')
+        cy.get('[data-testid="error-text"]').should('be.visible')
 
-    // })
+    })
 
     it('Should display Discourse data after API fetch', () => {
         cy.intercept('POST', 'http://localhost:8888/.netlify/functions/get-discourse-topics', (req) => {
