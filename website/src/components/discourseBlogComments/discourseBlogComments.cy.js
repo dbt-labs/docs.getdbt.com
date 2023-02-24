@@ -95,21 +95,22 @@ const mockResponseData = {
 
 describe('Test DiscourseBlogComments component', () => {
     it('Should display loading icon on inital load', () => {
-        cy.intercept('GET', 'http://localhost:8888/.netlify/functions/get-discourse-comments*',
+        cy.intercept('GET', '**/.netlify/functions/get-discourse-comments*',
             {
-                delayMs: 10,
+                delayMs: 100,
             }).as('getComments')
 
         cy.mount(<DiscourseBlogComments
             title={"Processing source tables with differing arrival times throughout day"}
         />)
         cy.get('[data-testid="feed-loader"]', { timeout: 100 }).should('be.visible')
+        cy.wait('@getComments')
         cy.get('[data-testid="error-text"]').should('be.visible')
 
     })
 
     it('Should display Discourse data after API fetch', () => {
-        cy.intercept('GET', 'http://localhost:8888/.netlify/functions/get-discourse-comments*', mockResponseData).as('getComments')
+        cy.intercept('GET', '**/.netlify/functions/get-discourse-comments*', mockResponseData).as('getComments')
 
         cy.mount(<DiscourseBlogComments
             title={"Processing source tables with differing arrival times throughout day"}
@@ -121,7 +122,7 @@ describe('Test DiscourseBlogComments component', () => {
 
     })
     it("Should display error message if API fetch fails", () => {
-        cy.intercept('GET', 'http://localhost:8888/.netlify/functions/get-discourse-comments*', {
+        cy.intercept('GET', '**/.netlify/functions/get-discourse-comments*', {
             statusCode: 404
         }).as('getComments')
 
