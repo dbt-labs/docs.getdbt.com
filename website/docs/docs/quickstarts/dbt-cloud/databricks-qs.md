@@ -4,8 +4,15 @@ description: "Quickstart for dbt Cloud and Databricks."
 id: "databricks"
 sidebar_label: "Databricks quickstart"
 ---
-For the Databricks project in the quickstart guide, you'll learn how to set up Databricks and connect it to dbt Cloud.
-This guide will walk you through:
+For the Databricks project in the quickstart guide, you'll learn how to:
+
+- Create a Databricks workspace.
+- Load sample data into your Databricks account.
+- Connect dbt Cloud to Databricks.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Add tests to your models
+- Document your models
+- Schedule a job to run
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
@@ -205,10 +212,8 @@ To generate a user token for your development credentials in dbt Cloud, click **
 1. Create a new project in [dbt Cloud](https://cloud.getdbt.com/). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
 2. Enter a project name and click **Continue**.
 3. For the warehouse, click **Databricks** then **Next** to set up your connection.
-    <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_start.png" title="dbt Cloud - Choose Databricks Connection" />
-    
-2. For the name, write `Databricks` or another simple title.    
-3. For Databricks settings, reference your SQL warehouse connection details from step 6 of the previous section for each of the following fields:
+    <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_start.png" title="dbt Cloud - Choose Databricks Connection" /> 
+4. For Databricks settings, reference your SQL warehouse connection details from step 6 of the previous section for each of the following fields:
 
     - Method will be ODBC
     - Hostname comes from Server hostname
@@ -217,13 +222,13 @@ To generate a user token for your development credentials in dbt Cloud, click **
       <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_details.png" title="dbt Cloud - Databricks Workspace Settings" />
       </div>
 
-4. For your Development Credentials, type:
+5. For your Development Credentials, type:
 
     - `User` and `token` that you saved in a previous step.
     - You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
 
-5. Click **Test Connection**. This verifies that dbt Cloud can access your Databricks workspace.
-6. Click **Continue** if the test succeeded. If it fails, you might need to check your Databricks settings and credentials.
+6. Click **Test Connection**. This verifies that dbt Cloud can access your Databricks workspace.
+7. Click **Continue** if the test succeeded. If it fails, you might need to check your Databricks settings and credentials.
 
 </TabItem>
 </Tabs>

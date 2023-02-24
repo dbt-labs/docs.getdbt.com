@@ -4,12 +4,15 @@ description: "Quickstart for dbt Cloud and BigQuery."
 id: "bigquery"
 sidebar_label: "BigQuery quickstart"
 ---
-For the BigQuery project in the quickstart guide, you'll learn how to set up BigQuery and connect it to dbt Cloud.
-This guide will walk you through:
+For the BigQuery project in the quickstart guide, you'll learn how to:
 
-- Setting up a new BigQuery instance &mdash; Log in and create a new Google Cloud project​.
-- Accessing sample data in a public dataset &mdash; BigQuery supports public data sets that can be directly queried, so we will show you how to access those datasets via select statements. Additionally, we will show you how to populate your own database objects with that data.
-- Connecting dbt Cloud to BigQuery &mdash; 
+- Create a Google Cloud Platform (GCP) project.
+- Access sample data in a public dataset.
+- Connect dbt Cloud to BigQuery.
+- Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Add tests to your models
+- Document your models
+- Schedule a job to run
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.

@@ -100,15 +100,15 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 ## Change the way your model is materialized
 
-<Snippet src="tutorial-change-way-model-materialized" />
+<Snippet src="quickstarts/change-way-model-materialized" />
 
 ## Delete the example models
 
-<Snippet src="tutorial-delete-example-models" />
+<Snippet src="quickstarts/delete-example-models" />
 
 ## Build models on top of other models
 
-<Snippet src="tutorial-build-models-atop-other-models" />
+<Snippet src="quickstarts/build-models-atop-other-models" />
 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
