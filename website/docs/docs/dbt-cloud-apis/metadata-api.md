@@ -17,7 +17,7 @@ dbt Cloud serves a GraphQL API which supports arbitrary queries over this metada
 
 The Metadata API is available to:
 - [Multi-tenant](/docs/deploy/regions-ip-addresses) accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
-- Projects on dbt version v0.19.0 or higher. Refer to [Version migration guides](https://docs.getdbt.com/guides/migration/versions) to upgrade.
+- Projects on dbt version v0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade.
     
 ## Use cases
 
