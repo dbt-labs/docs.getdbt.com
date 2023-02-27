@@ -87,33 +87,4 @@ return
 ```
 
 ### Test and deploy
-When you're happy with it, remember to ensure that your `run_id` and `account_id` are no longer hardcoded, then publish your Zap.
-
-## Alternative approach (not recommended)
-
-If you use the **Catch Hook** trigger instead of **Catch Raw Hook**, you can pass the results directly into the **Webhooks by Zapier** Action using the **POST** event.
-
-This has two potential weaknesses: 
-- You can't validate that the notification originated from dbt Cloud
-- Your API token needs to be passed into the Action body in plaintext
-
-:::warning
-If you do this, make extra sure that you are using an API token with minimal privileges.
-:::
-
-Create a new Zap and a new webhook as above. Then: 
-
-### Filter to relevant and successful runs only 
-Add a **Filter by Zapier** Action with the filter: **Run Status** Exactly matches **Success**
-
-![Screenshot of the Zapier UI, showing the configured filter step](/img/guides/orchestration/webhooks/zapier-new-cloud-job/filter.png)
-
-
-### Trigger the job
-Add a **Webhooks by Zapier** Action with the **POST** Event, configured as follows:
-- **URL**: `https://cloud.getdbt.com/api/v2/accounts/YOUR_ACCOUNT_ID/jobs/TARGET_JOB_ID/run`
-- **Payload Type**: form
-- **Data** add a field called **cause** with a value explaining why the run was triggered
-- **Headers**: add a field called **Authorization** with a value `Token YOUR_API_TOKEN_HERE`
-
-![Screenshot of the Zapier UI, showing the configured filter step](/img/guides/orchestration/webhooks/zapier-new-cloud-job/code-step.png)
+When you're happy with it, remember to ensure that your `account_id` is no longer hardcoded, then publish your Zap.
