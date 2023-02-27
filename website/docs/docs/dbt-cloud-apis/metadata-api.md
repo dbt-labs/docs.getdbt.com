@@ -9,7 +9,7 @@ The dbt Cloud Metadata API helps organizations analyze and improve their data us
  - Ensure data quality based on models, tests, and sources
  - Increase the efficiency of dbt operations
 
-Every time dbt Cloud runs a project, it generates and stores information about the dbt project, how it's executed, and the accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. 
+Every time dbt Cloud runs a project, it generates and stores information about the dbt project—in other words, metadata. It stores information like how it's executed, including accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. 
 
 dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata. You can use this API to evaluate data health in the long-term or at a moment-in-time. 
 
