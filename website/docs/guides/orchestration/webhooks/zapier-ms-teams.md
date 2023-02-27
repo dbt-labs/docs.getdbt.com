@@ -1,5 +1,5 @@
 ---
-title: "Post to Microsoft Teams when a dbt Cloud job finishes"
+title: "Post to Microsoft Teams when a job finishes"
 id: webhooks-guide-zapier-ms-teams
 slug: zapier-ms-teams
 description: Use Zapier and webhooks to send info to Microsoft Teams
