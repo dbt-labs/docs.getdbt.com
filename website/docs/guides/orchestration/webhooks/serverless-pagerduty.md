@@ -2,6 +2,7 @@
 title: "Create PagerDuty alarms from failed dbt Cloud tasks"
 id: webhooks-guide-serverless-pagerduty
 slug: serverless-pagerduty
+description: Configure a serverless app to create PagerDuty alarms
 ---
 
 This guide will teach you how to build and host a basic Python app which will monitor dbt Cloud jobs and create PagerDuty alarms based on failure. To do this, when a dbt Cloud job completes it will:

@@ -2,7 +2,7 @@
 title: "Post to Microsoft Teams when a job finishes"
 id: webhooks-guide-zapier-ms-teams
 slug: zapier-ms-teams
-description: Use Zapier and webhooks to send info to Microsoft Teams
+description: Use Zapier and the dbt Cloud API to post to Microsoft Teams
 ---
 
 This guide will show you how to set up an integration between dbt Cloud jobs and Microsoft Teams using [dbt Cloud Webhooks](/docs/deploy/webhooks) and Zapier, similar to the [native Slack integration](/faqs/accounts/slack). 

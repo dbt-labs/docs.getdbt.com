@@ -2,6 +2,7 @@
 title: "Create Datadog events from dbt Cloud results"
 id: webhooks-guide-serverless-datadog
 slug: serverless-datadog
+description: Configure a serverless app to add Datadog logs
 ---
 
 This guide will teach you how to build and host a basic Python app which will add dbt Cloud job events to Datadog. To do this, when a dbt Cloud job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Metadata API](docs/dbt-cloud-apis/metadata-schema-models).
