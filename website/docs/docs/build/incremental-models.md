@@ -310,24 +310,24 @@ select ...
 </File>
 
 When selecting columns to merge (using the `merge` strategy), a computation consisting of the current and old value can be done using a dictionary to represent the column instead of naming it.  The freq column represents a computed merged column in the example below.
-
+ 
 <File name='models/my_model.sql'>
 
 ```sql
 {{
   config(
     materialized = 'incremental',
-    unique_key = 'id',
+    unique_key = 'word',
     merge_update_columns = ['word',
         {
             'name': 'freq',
-            'value': 'DBT_INTERNAL_SOURCE.value+DBT_INTERNAL_DEST.value'
+            'value': 'DBT_INTERNAL_SOURCE.freq+DBT_INTERNAL_DEST.freq'
          }],
     ...
   )
 }}
 
-select ...
+select word, count(*) as freq FROM ... group by 1
 ```
 
 </File>
