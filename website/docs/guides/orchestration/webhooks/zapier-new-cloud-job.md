@@ -4,17 +4,13 @@ id: webhooks-guide-zapier-new-cloud-job
 slug: zapier-new-cloud-job
 ---
 
-This guide assumes familiarity with:
-- dbt Cloud webhooks
+This guide will show you how to trigger a dbt Cloud job based on the successful completion of a different job. This can be useful when you need to trigger a job in a different project. Remember that dbt works best when it understands the whole context of the <Term id="dag"/> it has been asked to run, so use this ability judiciously.
+
+## Prerequisites
+
+In order to set up the integration, you should have familiarity with:
+- [dbt Cloud Webhooks](/docs/deploy/webhooks)
 - Zapier
-
-## What does this integration do? 
-When a dbt Cloud job completes:
- - check that it was successful
- - trigger a different job to run using the dbt Cloud Admin API
-
-
- This can be useful when you need to trigger a job in a different project. Remember that dbt works best when it understands the whole context of the <Term id="dag"/> it has been asked to run, so use this ability judiciously.
 
 ## Integration steps
 

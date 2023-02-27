@@ -5,27 +5,21 @@ slug: zapier-ms-teams
 description: Use Zapier and webhooks to send info to Microsoft Teams
 ---
 
-
-
-This guide will show you how to set up an integration between dbt Cloud jobs and Microsoft Team using [dbt Cloud Webhooks](/docs/deploy/webhooks) and Zapier.  
-
+This guide will show you how to set up an integration between dbt Cloud jobs and Microsoft Teams using [dbt Cloud Webhooks](/docs/deploy/webhooks) and Zapier, similar to the [native Slack integration](/faqs/accounts/slack). 
 
 When a dbt Cloud job finishes running, the integration will:
 
- - Receive a webhook notification in Zapier
- - Extract the results from the dbt Cloud admin API 
+ - Receive a webhook notification in Zapier,
+ - Extract the results from the dbt Cloud admin API, and
  - Post a summary to a Microsoft Teams channel
- - receive a webhook notification in Zapier
- - extract the results from the dbt Cloud admin API 
- - post a summary to a Microsoft Teams channel
 
-![Screenshot of a message in MS Teams showing a summary of a dbt Cloud run which succeeded](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-ui.png)
+![Screenshot of a message in MS Teams showing a summary of a dbt Cloud run which failed](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-ui.png)
 ## Prerequisites
 
 In order to set up the integration, you should have familiarity with:
-- dbt Cloud Webhooks
+- [dbt Cloud Webhooks](/docs/deploy/webhooks)
 - Zapier
-## Integration steps:
+## Integration steps
 ### 1. Set up the connection between Zapier and Microsoft Teams 
 
 * Install the [Zapier app in Microsoft Teams](https://appsource.microsoft.com/en-us/product/office/WA200002044) and [grant Zapier access to your account](https://zapier.com/blog/how-to-automate-microsoft-teams/). 
@@ -35,7 +29,7 @@ In order to set up the integration, you should have familiarity with:
 ### 2. Create a new Zap in Zapier
 Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
 
-Press **Continue**, then copy the webhook URL and put it into dbt Cloud. 
+Press **Continue**, then copy the webhook URL. 
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
@@ -60,7 +54,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 ![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-common/run-python.png)
 
-In the **Code** field, paste the following code: 
+In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your dbt Cloud secret.
 
 ```python
 import hashlib
