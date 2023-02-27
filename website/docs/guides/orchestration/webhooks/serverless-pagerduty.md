@@ -4,19 +4,19 @@ id: webhooks-guide-serverless-pagerduty
 slug: serverless-pagerduty
 ---
 
-This guide assumes some familiarity with:
-- dbt Cloud webhooks
-- CLI apps
-- Deploying code to a serverless code runner like fly.io or AWS Lambda
-
-## What does this integration do? 
-When a dbt Cloud job completes:
- - check for any failed nodes (e.g. non-passing tests or errored models)
+This guide will teach you how to build and host a basic Python app which will monitor dbt Cloud jobs and create PagerDuty alarms based on failure. To do this, when a dbt Cloud job completes it will:
+ - check for any failed nodes (e.g. non-passing tests or errored models), and
  - create a PagerDuty alarm based on those nodes by calling the PagerDuty Events API. Events are deduplicated per run ID.
 
 In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
-## Integration steps:
+## Prerequisites
+This guide assumes some familiarity with:
+- [dbt Cloud Webhooks](/docs/deploy/webhooks)
+- CLI apps
+- Deploying code to a serverless code runner like fly.io or AWS Lambda
+
+## Integration steps
 
 ### 1. Clone the `dbt-cloud-webhooks-pagerduty` repo
 
@@ -90,7 +90,7 @@ See [PagerDuty's guide](https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgw-ev
 Make note of the integration key for later. 
 
 ### Configure a new webhook in dbt Cloud
-See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain the job you want to trigger the next run.
+See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**.
 
 Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`)
 
