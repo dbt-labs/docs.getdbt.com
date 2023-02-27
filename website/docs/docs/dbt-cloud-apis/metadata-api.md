@@ -27,7 +27,7 @@ Use the Metadata API to solve the following use cases:
 - **Quality*** &mdash; Make sure users have correct and up-to-date data for their analyses by monitoring test failures, source freshness, run status, exposures, and dependencies.
 - **Operations*** &mdash;  Help data teams run dbt efficiently and effectively to reduce costs by using historical run data including information like model build time and run counts.
 
-Customers may use the API directly or within an integrated tool. It also powers some experiences in dbt Cloud itself. Many Metadata API use cases also benefit from [webhooks](/docs/deploy/webhooks) to access the most up-to-date project and run information. 
+Users may use the API directly or within an integrated tool, and it powers some experiences in dbt Cloud itself. Many Metadata API use cases also benefit from [webhooks](/docs/deploy/webhooks) to access the most up-to-date project and run information. 
 
 *_More detailed use case and integration guides coming soon_
 
