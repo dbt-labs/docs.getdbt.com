@@ -10,7 +10,7 @@ This guide will teach you how to refresh a Mode dashboard when a dbt Cloud job h
  - Receive a webhook notification in Zapier
  - Trigger a refresh of a Mode report
 
-Although we are using the Mode API for a concrete example, the principles are readily transferrable to [your](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [tool](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [of choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
+Although we are using the Mode API for a concrete example, the principles are readily transferrable to your [tool](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [of](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ import hmac
 import json
 
 #replace with the report token you want to run
-account_username = 'YOUR_ACCOUNT_USERNAME_HERE'
+account_username = 'YOUR_MODE_ACCOUNT_USERNAME_HERE'
 report_token = 'YOUR_REPORT_TOKEN_HERE'
 
 auth_header = input_data['auth_header']
@@ -85,12 +85,22 @@ if hook_data['runStatus'] == "Success":
   # Create a report run with the Mode API
   url = f'https://app.mode.com/api/{account_username}/reports/{report_token}/run'
 
-  params = {'parameters': {"user_id": 123, "location": "San Francisco"} }
+  params = {
+    'parameters': {
+      "user_id": 123, 
+      "location": "San Francisco"
+    } 
+  }
   headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/hal+json'
   }
-  response = requests.post(url, json=params, headers=headers, auth=HTTPBasicAuth(username, password))
+  response = requests.post(
+    url, 
+    json=params, 
+    headers=headers, 
+    auth=HTTPBasicAuth(username, password)
+  )
   response.raise_for_status()
 
 return
