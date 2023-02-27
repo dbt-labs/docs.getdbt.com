@@ -1,1 +1,1 @@
-The following steps use `YOUR_ACCESS_URL` which needs to be replaced with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+The following steps use `YOUR_AUTH_URL` and `YOUR_AUDIENCE_URN`, which need to be replaced with the [appropriate Auth URL and Audience URN](/docs/deploy/regions-ip-addresses) for your region and plan.
