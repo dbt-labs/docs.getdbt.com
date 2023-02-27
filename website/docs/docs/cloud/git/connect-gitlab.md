@@ -59,11 +59,12 @@ In GitLab, when creating your Group Application, input the following:
 | Field | Value |
 | ------ | ----- |
 | **Name** | dbt Cloud |
-| **Redirect URI** | `https://YOUR_ACCESS_URL/complete/gitlab` |
+| **Redirect URI** | https://cloud.getdbt.com/complete/gitlab |
 | **Confidential** | ✔️ |
 | **Scopes** | ✔️ api |
 
-Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+dbt Cloud single tenant customers need to replace **cloud.getdbt.com** with the hostname of
+your dbt Cloud instance.
 
 The application form in GitLab should look as follows when completed:
 
@@ -72,7 +73,6 @@ The application form in GitLab should look as follows when completed:
 Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values will be available even if you close the app screen, so this is not the only chance you have to save them.
 
 ### Adding the GitLab OAuth application to dbt Cloud
-
 After you've created your GitLab application, you need to provide dbt Cloud information about the app. In dbt Cloud, account admins should navigate to **Account Settings**, click on the **Integrations** tab, and expand the GitLab section.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Navigation.gif" title="Navigating to the GitLab Integration in dbt Cloud"/>

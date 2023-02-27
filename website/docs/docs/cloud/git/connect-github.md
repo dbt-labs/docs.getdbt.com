@@ -1,7 +1,7 @@
 ---
-title: "Connecting your GitHub account"
+title: "Connect to GitHub"
 id: "connect-github"
-sidebar_label: "Connecting GitHub"
+sidebar_label: "Connect to GitHub"
 ---
 
 ## Overview

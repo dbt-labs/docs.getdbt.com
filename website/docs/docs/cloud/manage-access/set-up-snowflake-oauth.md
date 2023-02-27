@@ -16,7 +16,7 @@ To enable Snowflake OAuth, you will need to create a [security integration](http
 
 ### Create a security integration
 
-In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). In the following example `create or replace security integration` query, replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+In Snowflake, execute a query to create a security integration. Please find the complete documentation on creating a security integration for custom clients [here](https://docs.snowflake.net/manuals/sql-reference/sql/create-security-integration.html#syntax). You can find a sample `create or replace security integration` query below.
 
 ```
 CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
@@ -24,7 +24,7 @@ CREATE OR REPLACE SECURITY INTEGRATION DBT_CLOUD
   ENABLED = TRUE
   OAUTH_CLIENT = CUSTOM
   OAUTH_CLIENT_TYPE = 'CONFIDENTIAL'
-  OAUTH_REDIRECT_URI = 'https://YOUR_ACCESS_URL/complete/snowflake'
+  OAUTH_REDIRECT_URI = 'https://cloud.getdbt.com/complete/snowflake'
   OAUTH_ISSUE_REFRESH_TOKENS = TRUE
   OAUTH_REFRESH_TOKEN_VALIDITY = 7776000;
 ```

@@ -619,3 +619,33 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /faqs/dbt-jinja-functions /reference/dbt-jinja-functions 301
 
 /website/docs/docs/contributing/documenting-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301
+
+# New Cloud directory redirects
+docs/get-started/privatelink/about-privatelink docs/cloud/privatelink/about-privatelink 302
+docs/get-started/privatelink/snowflake-privatelink docs/cloud/privatelink/snowflake-privatelink 302
+docs/get-started/privatelink/redshift-privatelink docs/cloud/privatelink/redshift-privatelink 302
+docs/get-started/privatelink/databricks-privatelink docs/cloud/privatelink/databricks-privatelink 302
+docs/get-started/connect-your-database docs/cloud/connect-data-platform/connect-your-database 302
+docs/get-started/dbt-cloud-features docs/cloud/about-cloud/dbt-cloud-features 302
+docs/deploy/regions-ip-addresses docs/cloud/about-cloud/regions-ip-addresses 302
+docs/deploy/architecture docs/cloud/about-cloud/architecture 302
+docs/deploy/single-tenant docs/cloud/about-cloud/single-tenant 302
+docs/deploy/multi-tenant docs/cloud/about-cloud/multi-tenant 302
+docs/collaborate/git/connect-github docs/cloud/git/connect-github 302
+docs/collaborate/git/connect-gitlab docs/cloud/git/connect-gitlab 302
+docs/collaborate/git/connect-azure-devops docs/cloud/git/connect-azure-devops 302
+docs/collaborate/git/setup-azure docs/cloud/git/setup-azure 302
+docs/collaborate/git/authenticate-azure docs/cloud/git/authenticate-azure 302
+docs/collaborate/git/import-a-project-by-git-url docs/cloud/git/import-a-project-by-git-url 302
+docs/collaborate/manage-access/about-access docs/cloud/manage-access/about-access 302
+docs/collaborate/manage-access/seats-and-users docs/cloud/manage-access/seats-and-users 302
+docs/collaborate/manage-access/self-service-permissions docs/cloud/manage-access/self-service-permissions 302
+docs/collaborate/manage-access/enterprise-permissions docs/cloud/manage-access/enterprise-permissions 302
+docs/collaborate/manage-access/sso-overview docs/cloud/manage-access/sso-overview 302
+docs/collaborate/manage-access/set-up-sso-saml-2.0 docs/cloud/manage-access/set-up-sso-saml-2.0 302
+docs/collaborate/manage-access/set-up-sso-okta docs/cloud/manage-access/set-up-sso-okta 302
+docs/collaborate/manage-access/set-up-sso-google-workspace docs/cloud/manage-access/set-up-sso-google-workspace 302
+docs/collaborate/manage-access/set-up-sso-azure-active-directory docs/cloud/manage-access/set-up-sso-azure-active-directory 302
+docs/collaborate/manage-access/set-up-snowflake-oauth docs/cloud/manage-access/set-up-snowflake-oauth 302
+docs/collaborate/manage-access/set-up-bigquery-oauth docs/cloud/manage-access/set-up-bigquery-oauth 302
+docs/collaborate/manage-access/audit-log docs/cloud/manage-access/audit-log
