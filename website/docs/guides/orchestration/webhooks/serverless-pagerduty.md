@@ -84,12 +84,12 @@ Wrote config file fly.toml<br/>
 </code>
 </details>
 
-### Create a PagerDuty integration application
+### 4. Create a PagerDuty integration application
 See [PagerDuty's guide](https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgw-events-api-v2-overview#getting-started) for full instructions. 
 
 Make note of the integration key for later. 
 
-### Configure a new webhook in dbt Cloud
+### 5. Configure a new webhook in dbt Cloud
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**.
 
 Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`)
@@ -98,7 +98,7 @@ Make note of the Webhook Secret Key for later.
 
 *Do not test the endpoint*; it won't work until you have stored the auth keys (next step)
 
-### Store secrets
+### 6. Store secrets
 The application requires three secrets to be set, using these names:
 - `DBT_CLOUD_SERVICE_TOKEN`: a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
 - `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the dbt Cloud webhook you created earlier.
@@ -109,4 +109,5 @@ Set these secrets as follows, replacing `abc123` etc with actual values:
 flyctl secrets set DBT_CLOUD_SERVICE_TOKEN=abc123 DBT_CLOUD_AUTH_TOKEN=def456 PD_ROUTING_KEY=ghi789
 ```
 
-After you run this command, fly.io will redeploy your application. When it has completed successfully, go back to the dbt Cloud webhook settings and click **Test Endpoint**.
+### 7. Deploy your app
+After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the dbt Cloud webhook settings and click **Test Endpoint**.
