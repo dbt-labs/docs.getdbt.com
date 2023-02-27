@@ -23,7 +23,7 @@ dbt Cloud supports both types of endpoints, but there are a number of [considera
 
 3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to dbt Cloud Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support)._
 
-4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for regional VPC ID to designate in **Grant access to specific VPCs**
+4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in **Grant access to specific VPCs**
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
 
@@ -34,7 +34,7 @@ Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift-managed
 - Redshift cluster name:
 - Redshift cluster AWS account ID:
-- Redshift cluster AWS Region (`us-east-1`, `eu-west-2`, etc.):
+- Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
@@ -46,8 +46,8 @@ dbt Labs will work on your behalf to complete the PrivateLink setup. Please allo
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing the Redshift cluster:
 
-- **Security Group** &mdash; If you are connecting to an existing Redshift cluster, this likely already exists, however, you might need to add or modify Security Group rules to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service.
-- **Target Group** &mdash; The Target Group will be attached to the NLB to tell it where to route requests. There are various target types available for NLB Target Groups, but you will use the IP address.
+- **Security Group** &mdash; If you are connecting to an existing Redshift cluster, this likely already exists, however, you may need to add or modify Security Group rules to accept traffic from the Network Load Balancer (NLB) created for this Endpoint Service.
+- **Target Group** &mdash; The Target Group will be attached to the NLB to tell it where to route requests. There are various target types available for NLB Target Groups, but you will use the IP address type.
     
     - Target Type: **IP**
 
@@ -55,7 +55,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
         - Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
         <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
 
-        - There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. Just note that the NLB will need to add that AZ as well. Once created, an NI shouldn't change (this is our observation from testing, but is not officially documented anywhere).
+        - There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. If adding additional IPs, note that the NLB will need to add the corresponding AZ as well. Once created, the NI(s) shouldn't change (NOTE: this is our observation from testing, but is not officially documented by AWS).
 
     - Target Group protocol: **TCP** 
 
@@ -82,7 +82,7 @@ Once the VPC Endpoint Service is provisioned, you can find the service name in t
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Redshift Interface-type
 - VPC Endpoint Service Name:
-- Redshift cluster AWS Region (`us-east-1`, `eu-west-2`, etc.):
+- Redshift cluster AWS Region (e.g., us-east-1, eu-west-2):
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
 
