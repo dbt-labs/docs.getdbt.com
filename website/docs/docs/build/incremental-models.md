@@ -309,6 +309,58 @@ select ...
 
 </File>
 
+When selecting columns to merge (using the `merge` strategy), a computation consisting of the current and old value can be done using a dictionary to represent the column instead of naming it.  The freq column represents a computed merged column in the example below.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    merge_update_columns = ['word',
+        {
+            'name': 'freq',
+            'value': 'DBT_INTERNAL_SOURCE.value+DBT_INTERNAL_DEST.value'
+         }],
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
+
+The `merge` strategy supports deleting rows when the `delete_column` is specified.  This column is only needed during the incremental update of a table and should be represented as a boolean.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    delete_column = 'is_deleted',
+    ...
+  )
+}}
+
+select
+{% if is_incremental() %}
+   case
+    when DATA:Op=='D' then true
+    else false
+   end as is_deleted,
+{% endif %}
+   col1,
+   col2,
+   ...
+
+```
+
+</File>
+
 <VersionBlock firstVersion="1.4">
 
 ### About incremental_predicates
