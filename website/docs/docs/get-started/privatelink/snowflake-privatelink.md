@@ -17,7 +17,7 @@ The following steps will walk you through the setup of a Snowflake AWS PrivateLi
 
 <Lightbox src="/img/docs/dbt-cloud/snowflakeprivatelink1.png" title="Open snowflake case"/>
 
-2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output
+2. After Snowflake has granted the requested access, run the Snowflake system function [SYSTEM$GET_PRIVATELINK_CONFIG](https://docs.snowflake.com/en/sql-reference/functions/system_get_privatelink_config.html) and copy the output.
 
 3. Add the required information to the template below, and submit your request to  [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support):
 

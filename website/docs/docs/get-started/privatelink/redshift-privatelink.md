@@ -23,11 +23,11 @@ dbt Cloud supports both types of endpoints, but there are a number of [considera
 
 3. Enter the AWS account ID: `346425330055` - _NOTE: This account ID only applies to dbt Cloud Multi-Tenant environments. For Virtual Private/Single-Tenant account IDs please contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support)._
 
-4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in **Grant access to specific VPCs**
+4. Choose **Grant access to all VPCs** &mdash;or&mdash; (optional) contact [Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) for the appropriate regional VPC ID to designate in the **Grant access to specific VPCs** field.
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink3.png" title="Redshift grant access"/>
 
-5. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support):
+5. Add the required information to the following template, and submit your request to [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support):
 
 ```
 Subject: New Multi-Tenant PrivateLink Request
