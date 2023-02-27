@@ -21,7 +21,7 @@ For more details and to leave your feedback, join the GitHub discussion:
 
 Defining a dbt model is as easy as writing a SQL `select` statement or a Python Data Frame transformation. Your query naturally produces a dataset with columns of names and types based on the columns you select and the transformations you apply.
 
-While this is ideal for quick and iterative development, for some models, constantly changing the shape of its returned dataset poses a risk when other people and processes are querying that model. It's better to define a set of upfront attestations that guarantee the shape of your model. We call this set of attestations a "contract." While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract, or it will fail to build.
+While this is ideal for quick and iterative development, for some models, constantly changing the shape of its returned dataset poses a risk when other people and processes are querying that model. It's better to define a set of upfront "guarantees" that define the shape of your model. We call this set of guarantees a "contract." While building your model, dbt will verify that your model's transformation will produce a dataset matching up with its contract, or it will fail to build.
 
 ## How to define a contract
 
@@ -67,7 +67,7 @@ models:
 </File>
 
 When building a model with a defined contract, dbt will do two things differently:
-1. dbt will run a preliminary verification check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined.
+1. dbt will run a "preflight" check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined.
 2. dbt will pass the column names, types, `not_null`, and other constraints into the DDL statements it submits to the data platform, which will be enforced while building the table.
 
 ## FAQs
