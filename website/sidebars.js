@@ -776,7 +776,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Use dbt Cloud's webhooks with other SaaS apps",
+          label: "Webhooks with dbt Cloud and SaaS apps",
           link: {
             type: "generated-index",
             title: "Use dbt Cloud's webhooks with other SaaS apps",
