@@ -1,5 +1,5 @@
 ---
-title: "Trigger another dbt Cloud job when a run finishes"
+title: "Trigger a dbt Cloud job after a run finishes" 
 id: webhooks-guide-zapier-new-cloud-job
 slug: zapier-new-cloud-job
 ---
@@ -16,7 +16,7 @@ When a dbt Cloud job completes:
 
  This can be useful when you need to trigger a job in a different project. Remember that dbt works best when it understands the whole context of the <Term id="dag"/> it has been asked to run, so use this ability judiciously.
 
-## Integration steps:
+## Integration steps
 
 ### Create a new Zap in Zapier
 Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
