@@ -5,16 +5,26 @@ description: "Configuring PrivateLink for Databricks"
 sidebar_label: "PrivateLink for Databricks"
 ---
 
-Locate your [Databricks Workspace ID](https://kb.databricks.com/en_US/administration/find-your-workspace-id#:~:text=When%20viewing%20a%20Databricks%20workspace,make%20up%20the%20workspace%20ID) and provide it to dbt Cloud support along with your other [PrivateLink setup information](/about-privatelink#set-up). 
+The following steps will walk you through the setup of a Databricks AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
-Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace.
+## Configure PrivateLink
 
+1. Locate your [Databricks Workspace ID](https://kb.databricks.com/en_US/administration/find-your-workspace-id#:~:text=When%20viewing%20a%20Databricks%20workspace,make%20up%20the%20workspace%20ID)
+2. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support): 
+```
+Subject: New Multi-Tenant PrivateLink Request
+- Type: Databricks
+- Databricks workspace name:
+- Databricks cluster AWS Region (us-east-1, eu-west-2, etc.):
+- dbt Cloud multi-tenant environment (US, EMEA, AU):
+```
+3. Once dbt Cloud support has notified you that setup is complete, [register the VPC endpoint in Databricks](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html#step-3-register-privatelink-objects-and-attach-them-to-a-workspace) and attach it to the workspace
 
-### Configuring new endpoints with PrivateLink
+## Create Connection in dbt Cloud
 
-after you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in dbt Cloud:
+Once you've completed the setup in the Databricks environment, you will be able to configure a private endpoint in dbt Cloud:
 
-1. Navigate to **Settings** → **Create new project** → select the **Databricks**. 
+1. Navigate to **Settings** → **Create new project** → select **Databricks**. 
 2. You will see two radio buttons: **Public** and **Private.** Select **Private**. 
 3. Select the private endpoint from the dropdown (this will automatically populate the hostname/account field).
 4. Configure the remaining data platform details.
