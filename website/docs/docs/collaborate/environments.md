@@ -31,4 +31,4 @@ In practice, this means that most of the details in a target will be consistent 
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Delete a job or environment in dbt Cloud](/docs/faqs/Environments/delete-environment-job)
 - [Set Environment Variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)
-- [Use Environment Variables in jinja](/reference/dbt-jinja-functions/env_var)
+- [Use Environment variables in jinja](/reference/dbt-jinja-functions/env_var)
