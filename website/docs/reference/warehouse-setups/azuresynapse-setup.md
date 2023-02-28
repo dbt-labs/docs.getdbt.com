@@ -29,7 +29,7 @@ meta:
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
-pip is the easiest way to install the adapter:
+pip is the easiest way to install the adapter: 
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
