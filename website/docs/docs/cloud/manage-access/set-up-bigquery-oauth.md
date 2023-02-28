@@ -51,7 +51,7 @@ Then click **Create** to create the BigQuery OAuth app and see the app client ID
 
 ### Configure the Connection in dbt Cloud
 Now that you have an OAuth app set up in BigQuery, you'll need to add the client ID and secret to dbt Cloud. To do so:
-- go to Settings by clicking the gear in the top right.
+ - go to Settings by clicking the gear in the top right.
  - on the left, select **Projects** under **Account Settings**
  - choose your project from the list
  - select **Connection** to edit the connection details
