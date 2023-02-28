@@ -6,7 +6,7 @@ description: Configure a serverless app to create PagerDuty alarms
 ---
 
 This guide will teach you how to build and host a basic Python app which will monitor dbt Cloud jobs and create PagerDuty alarms based on failure. To do this, when a dbt Cloud job completes it will:
- - check for any failed nodes (e.g. non-passing tests or errored models), and
+ - Check for any failed nodes (e.g. non-passing tests or errored models), and
  - create a PagerDuty alarm based on those nodes by calling the PagerDuty Events API. Events are deduplicated per run ID.
 
 ![Screenshot of the PagerDuty UI, showing an alarm created by invalid SQL in a dbt model](/img/guides/orchestration/webhooks/serverless-pagerduty/pagerduty-example-alarm.png)
