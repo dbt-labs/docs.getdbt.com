@@ -38,7 +38,7 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 
 #### Configuring the application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your deployment is running at a different url, then substitute ` cloud.getdbt.com` for the url of your instance.
+<Snippet src="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
