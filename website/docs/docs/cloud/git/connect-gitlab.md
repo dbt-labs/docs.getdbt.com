@@ -63,8 +63,7 @@ In GitLab, when creating your Group Application, input the following:
 | **Confidential** | ✔️ |
 | **Scopes** | ✔️ api |
 
-dbt Cloud single tenant customers need to replace **cloud.getdbt.com** with the hostname of
-your dbt Cloud instance.
+Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresse) for your region and plan.
 
 The application form in GitLab should look as follows when completed:
 

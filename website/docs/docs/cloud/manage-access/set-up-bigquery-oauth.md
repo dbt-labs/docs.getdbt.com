@@ -33,17 +33,15 @@ On the **Credentials** page, you can see your existing keys, client IDs, and ser
 
 Set up an [OAuth consent screen](https://support.google.com/cloud/answer/6158849) if you haven't already. Then, click **+ Create Credentials** at the top of the page and select **OAuth client ID**.
 
-Fill in the application details as follows:
+Fill in the application, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
 
 | Config | Value |
 | ------ | ----- |
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
-| **Authorized Javascript origins** | https://cloud.getdbt.com |
-| **Authorized Redirect URIs** | https://cloud.getdbt.com/complete/bigquery |
+| **Authorized Javascript origins** | https://YOUR_ACCESS_URL |
+| **Authorized Redirect URIs** | https://YOUR_ACCESS_URL/complete/bigquery |
 
-If you're a dbt Cloud single tenant customer, you need to replace `cloud.getdbt.com` with the hostname of
-your dbt Cloud instance.
 
 Then click **Create** to create the BigQuery OAuth app and see the app client ID and secret values. These values are available even if you close the app screen, so this isn't the only chance you have to save them.
 
@@ -53,7 +51,7 @@ Then click **Create** to create the BigQuery OAuth app and see the app client ID
 
 ### Configure the Connection in dbt Cloud
 Now that you have an OAuth app set up in BigQuery, you'll need to add the client ID and secret to dbt Cloud. To do so:
- - go to [Settings](https://cloud.getdbt.com/next/settings/profile)
+- go to Settings by clicking the gear in the top right.
  - on the left, select **Projects** under **Account Settings**
  - choose your project from the list
  - select **Connection** to edit the connection details

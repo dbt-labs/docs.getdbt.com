@@ -63,8 +63,8 @@ Client Secret for use in dbt Cloud.
 | ------ | ----- |
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
-| **Authorized Javascript origins** | `https://cloud.getdbt.com` |
-| **Authorized Redirect URIs** | `https://cloud.getdbt.com/complete/gsuite` |
+| **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
+| **Authorized Redirect URIs** | `https://YOUR_ACCESS_URL/complete/gsuite` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
@@ -97,7 +97,7 @@ Settings.
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
-      Cloud by navigating to `https://cloud.getdbt.com/enterprise-login/<login-slug>`. Login slugs must
+      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. The `LOGIN_SLUG` must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
       identifies your company.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>

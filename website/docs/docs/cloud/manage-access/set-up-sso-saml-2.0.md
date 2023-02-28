@@ -40,15 +40,14 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 
 The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your deployment is running at a different url, then substitute ` cloud.getdbt.com` for the url of your instance.
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
-can log into your application. Login slugs are typically the lowercased name of your organization
+To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
 
 When prompted for the SAML 2.0 application configurations, supply the following values:
 
-- Single sign on URL: `https://cloud.getdbt.com/complete/saml`
-- Audience URI (SP Entity ID): `https://cloud.getdbt.com/`
+* Single sign on URL: `https://YOUR_ACCESS_URL/complete/saml`
+* Audience URI (SP Entity ID): `https://YOUR_ACCESS_URL/`
 - Relay State: `<login slug>`
 
 Additionally, you may configure the IdP attributes passed from your identity provider into dbt Cloud. We recommend using the following values:
@@ -117,10 +116,9 @@ You can use the instructions in this section to configure Okta as your identity 
 
 ### Configure the Okta application
 
-The following steps assume your dbt Cloud deployment uses`https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance. 
+<Snippet src="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
-can log into your application. Login slugs are typically the lowercased name of your organization
+To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
 
@@ -142,8 +140,8 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 
 1. On the **SAML Settings** page, enter the following values:
 
-   * **Single sign on URL**: `https://cloud.getdbt.com/complete/okta`
-   * **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+   * **Single sign on URL**: `https://YOUR_ACCESS_URL/complete/okta`
+   * **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
    * **Relay State**: `<login slug>`
 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
@@ -221,7 +219,7 @@ Use this section if you are configuring Google as your identity provider.
 
 ### Configure the Google application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
+<Snippet src="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -243,8 +241,8 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 2. Download the **IDP metadata**.
 3. Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
 4. Enter the following values on the **Service Provider Details** window:
-   - **ACS URL**: `https://cloud.getdbt.com/complete/saml`
-   - **Audience URI (SP Entity ID)**: `https://cloud.getdbt.com/`
+   * **ACS URL**: `https://YOUR_ACCESS_URL/complete/saml`
+   * **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
    - **Start URL**: `<login slug>`
 5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.
@@ -289,10 +287,9 @@ If you're using Azure Active Directory (Azure AD), the instructions below will h
 
 ### Create Azure AD Enterprise application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
+<Snippet src="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
-can log into your application. Login slugs are typically the lowercased name of your organization
+To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
 
@@ -314,8 +311,8 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 
    | Field | Value |
    | ----- | ----- |
-   | **Identifier (Entity ID)** | Base URL for dbt Cloud. Use `https://cloud.getdbt.com/`. |
-   | **Reply URL (Assertion Consumer Service URL)** | Use `https://cloud.getdbt.com/complete/saml`. |
+   | **Identifier (Entity ID)** | Base URL for dbt Cloud. Use `https://YOUR_ACCESS_URL/`. |
+   | **Reply URL (Assertion Consumer Service URL)** | Use `https://YOUR_ACCESS_URL/complete/saml`. |
    | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 14. Click **Save** at the top of the form.
 
@@ -354,10 +351,9 @@ To configure OneLogin, you will need **Administrator** access.
 
 ### Configure the OneLogin application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
+<Snippet src="access_url" />
 
-To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
-can log into your application. Login slugs are typically the lowercased name of your organization
+To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
 Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company.
 
@@ -373,9 +369,9 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 3. Under the **Configuration tab**, input the following values:
 
    - **RelayState:** `<login slug>`
-   - **Audience (EntityID):** https://cloud.getdbt.com/
-   - **ACS (Consumer) URL Validator:** https://cloud.getdbt.com/complete/saml
-   - **ACS (Consumer) URL:** https://cloud.getdbt.com/complete/saml
+   - **Audience (EntityID):** https://YOUR_ACCESS_URL/
+   - **ACS (Consumer) URL Validator:** https://YOUR_ACCESS_URL/complete/saml
+   - **ACS (Consumer) URL:** https://YOUR_ACCESS_URL/complete/saml
 
 4. Next, go to the **Parameters tab**. You must have a parameter for the Email, First Name, and Last Name attributes and include all parameters in the SAML assertions. When you add the custom parameters, make sure you select the **Include in SAML assertion** checkbox.
 
@@ -432,13 +428,10 @@ To complete setup, follow the steps below in dbt Cloud:
         title="Configuring the application in dbt Cloud" />
 
 4. Click **Save** to complete setup for the SAML 2.0 integration.
-5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to
-test logging in with your identity provider. Additionally, users added the the SAML 2.0 app
-will be able to log in to dbt Cloud from the IdP directly.
+5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to dbt Cloud from the IdP directly.
 
-Users in your IdP will now be able to log into the application by navigating to the URL:
 
-`https://cloud.getdbt.com/enterprise-login/<login-slug>`
+<Snippet src="login_url_note" />
 
 ### Setting up RBAC
 
