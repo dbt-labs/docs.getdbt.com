@@ -56,6 +56,8 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your dbt Cloud secret.
 
+This code will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by dbt Core.
+
 ```python
 import hashlib
 import hmac
