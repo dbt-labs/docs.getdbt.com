@@ -791,7 +791,7 @@ const sidebarSettings = {
             type: "generated-index",
             title: "Use dbt Cloud's webhooks with other SaaS apps",
             description:
-              "Learn how to use webhooks to trigger actions in other tools by using Zapier or your own server.",
+              "Learn how to use webhooks to trigger actions in other tools by using Zapier or a serverless platform.",
             slug: "/guides/orchestration/webhooks",
           },
           items: [
