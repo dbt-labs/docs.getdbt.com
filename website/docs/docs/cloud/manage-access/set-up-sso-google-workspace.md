@@ -57,13 +57,7 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials:
-
-:::caution Authorized URIs
-If you are deploying dbt Cloud into a VPC, you should use the hostname where
-the dbt Cloud application is deployed instead of `https://cloud.getdbt.com` in
-the _Authorized Javascript origins_ and _Authorized Redirect URIs_ configurations.
-:::
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 | Config | Value |
 | ------ | ----- |
