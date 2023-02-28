@@ -52,7 +52,7 @@ link="/docs/get-started/develop-in-the-cloud"
    <Card
     title="Supports GitHub, GitLab, AzureDevOPs"
     body="Seamlessly connect your git account to dbt Cloud and provide another layer of security to dbt Cloud. Import new repositories, trigger continuous integration, clone repos using HTTPS, and more!"
-    link="/docs/collaborate/git/connect-github"
+    link="/docs/cloud/git/connect-github"
     icon="pencil-paper"/>  
 
    <Card

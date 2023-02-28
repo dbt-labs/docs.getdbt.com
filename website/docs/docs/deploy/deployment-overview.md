@@ -28,12 +28,12 @@ dbt Cloud enables you to:
 - configure error notifications
 - render your project's documentation
 
-In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](/docs/deploy/architecture) section.
+In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](/docs/cloud/about-cloud/architecture) section.
 
 For more information on these deployment models, refer to:
 
-- [Multi Tenant](/docs/deploy/multi-tenant)
-- [Single Tenant](/docs/deploy/single-tenant)
+- [Multi Tenant](/docs/cloud/about-cloud/multi-tenant)
+- [Single Tenant](/docs/cloud/about-cloud/single-tenant)
 
 If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
 

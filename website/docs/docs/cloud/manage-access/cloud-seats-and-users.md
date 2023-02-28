@@ -61,7 +61,7 @@ change.
 **Note:** This feature is only available on the Enterprise plan.
 
 If your account is connected to an Identity Provider (IdP) for [Single Sign
-On](/docs/collaborate/manage-access/sso-overview), you can automatically map IdP user
+On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user
 groups to specific license types in dbt Cloud. To configure license mappings,
 navigate to the Account Settings &gt; Team &gt; License Mappings page. From
 here, you can create or edit SSO mappings for both Read Only and Developer
@@ -91,5 +91,5 @@ Usage notes:
 ## Granular permissioning
 
 The dbt Cloud Enterprise plan supports Role-Based access controls for
-configuring granular in-app permissions. See [access control](/docs/collaborate/manage-access/about-access)
+configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-access)
 for more information on Enterprise permissioning.

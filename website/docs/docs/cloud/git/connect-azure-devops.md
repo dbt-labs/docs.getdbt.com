@@ -19,7 +19,7 @@ Connect your Azure DevOps cloud account in dbt Cloud to unlock new product exper
 
 To connect Azure DevOps in dbt Cloud:
 
-1. An account admin needs to [set up an Active Directory application and add it to dbt Cloud](/docs/collaborate/git/setup-azure).
-2. dbt Cloud developers need to [personally authenticate with Azure DevOps](/docs/collaborate/git/authenticate-azure) from dbt Cloud.
+1. An account admin needs to [set up an Active Directory application and add it to dbt Cloud](/docs/cloud/git/setup-azure).
+2. dbt Cloud developers need to [personally authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure) from dbt Cloud.
 
 

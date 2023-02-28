@@ -126,7 +126,7 @@ into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<lo
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up
-[RBAC groups](/docs/collaborate/manage-access/enterprise-permissions) to complete your access control configuration.
+[RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
 
 ## Troubleshooting
 

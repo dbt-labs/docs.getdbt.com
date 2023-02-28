@@ -17,7 +17,7 @@ Currently supported features include:
 * Just-in-time provisioning
 
 This document details the steps to integrate dbt Cloud with an identity
-provider in order to configure Single Sign On and [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control).
+provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-access#role-based-access-control).
 
 ## Generic SAML 2.0 integrations
 
@@ -60,7 +60,7 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | first_name | Unspecified | ${user.first_name} | The user's first name |
 | last_name | Unspecified | ${user.last_name} | The user's last name |
 
-dbt Cloud's [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control) relies
+dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
 use role-based access control in dbt Cloud, also configure your identity
 provider to provide group membership information in user attribute called
@@ -117,7 +117,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 ### Configure the Okta application
 
-The following steps assume your dbt Cloud deployment uses`https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance. 
+The following steps assume your dbt Cloud deployment uses`https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance. 
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -221,7 +221,7 @@ Use this section if you are configuring Google as your identity provider.
 
 ### Configure the Google application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
+The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -260,7 +260,7 @@ Expected **Attributes**:
 | `Last name`    | Unspecified | `last_name`          | The user's last name.     |
 | `Primary email`| Unspecified | `email`              |  The user's email address. |
 
-9. To use [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control) in dbt Cloud,  enter the groups in the **Group membership** field during configuration:
+9. To use [role-based access control](/docs/cloud/manage-access/about-access#role-based-access-control) in dbt Cloud,  enter the groups in the **Group membership** field during configuration:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
@@ -289,7 +289,7 @@ If you're using Azure Active Directory (Azure AD), the instructions below will h
 
 ### Create Azure AD Enterprise application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
+The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -354,7 +354,7 @@ To configure OneLogin, you will need **Administrator** access.
 
 ### Configure the OneLogin application
 
-The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/deploy/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
+The following steps assume your dbt Cloud instance is running at `https://cloud.getdbt.com`. If your [deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different URL, substitute ` cloud.getdbt.com` with the URL of your instance.
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -387,7 +387,7 @@ We recommend using the following values:
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
 
-dbt Cloud's [role-based access control](/docs/collaborate/manage-access/about-access#role-based-access-control) relies
+dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
 use role-based access control in dbt Cloud, also configure OneLogin to provide group membership information in user attribute called
 `groups`:
@@ -443,4 +443,4 @@ Users in your IdP will now be able to log into the application by navigating to 
 ### Setting up RBAC
 
 After configuring an identity provider, you will be able to set up [role-based
-access control](/docs/collaborate/manage-access/enterprise-permissions) for your account.
+access control](/docs/cloud/manage-access/enterprise-permissions) for your account.

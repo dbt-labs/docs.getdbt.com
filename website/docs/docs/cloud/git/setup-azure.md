@@ -9,7 +9,7 @@ sidebar_label: "Set up Azure DevOps"
 
 ## Overview
 
-To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Azure Active Directory (Azure AD) app. We recommend setting up a separate [Azure AD application than used for SSO](/docs/collaborate/manage-access/set-up-sso-azure-active-directory).
+To use our native integration with Azure DevOps in dbt Cloud, an account admin needs to set up an Azure Active Directory (Azure AD) app. We recommend setting up a separate [Azure AD application than used for SSO](/docs/cloud/manage-access/set-up-sso-azure-active-directory).
 
 1. [Register an Azure AD app](#register-an-azure-ad-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
@@ -21,7 +21,7 @@ Once the Azure AD app is added to dbt Cloud, an account admin must also connect 
 1. [Connecting a Service User](#connecting-a-service-user).
 
 
-Once the Azure AD app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/collaborate/git/authenticate-azure).
+Once the Azure AD app is added to dbt Cloud and the service user is connected, then dbt Cloud developers can personally authenticate in dbt Cloud from Azure DevOps. For more on this, see [Authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure).
 
 ## Register an Azure AD app
 
@@ -93,7 +93,7 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
     - **Directory(tenant) ID:** Found in the Azure AD App.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
-Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](/docs/collaborate/git/authenticate-azure).
+Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
 ## Connecting a service user
 
