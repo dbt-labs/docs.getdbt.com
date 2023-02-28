@@ -150,7 +150,7 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Error messages that refer to schemas from previous PRs</summary>
    <div>
-      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br><br></br>
+      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br> <br></br>
       
       To fix this issue, select a production job run to defer to instead of self.
       </div>
@@ -186,7 +186,7 @@ If you're experiencing any issues, review some of the common questions and answe
 
 ### Temp PR schema limitations
 
-If your temporary PR schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
+If your temporary pull request schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
 <details>
   <summary>You used dbt Cloud environment variables in your connection settings page </summary>
