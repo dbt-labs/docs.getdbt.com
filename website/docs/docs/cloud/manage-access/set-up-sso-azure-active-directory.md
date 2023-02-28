@@ -159,11 +159,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
     test logging in with Azure AD.
 
 :::success Logging in
-Users in your Azure AD account will now be able to log into the application
-by navigating to the URL:
 
-`https://cloud.getdbt.com/enterprise-login/<login-slug>`
-:::
 
 *Note:* If your dbt account instance is a VPC deployment or is [based outside the US](/docs/cloud/about-cloud/regions-ip-addresses), your login URL will use the domain supplied to you by your dbt Labs account team, instead of the domain `cloud.getdbt.com`.
 
