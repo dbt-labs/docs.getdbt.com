@@ -51,7 +51,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` in the StoreClient constructor with the secret you created when setting up the Storage by Zapier integration (not your dbt Cloud secret), and setting the `account_username` and `report_token` variables to actual values.
 
-This code will validate the authenticity of the request, then send a [`run report` command to the Mode API](https://mode.com/developer/api-reference/analytics/report-runs/#runReport) for the given report token.
+The code below will validate the authenticity of the request, then send a [`run report` command to the Mode API](https://mode.com/developer/api-reference/analytics/report-runs/#runReport) for the given report token.
 
 ```python
 import hashlib

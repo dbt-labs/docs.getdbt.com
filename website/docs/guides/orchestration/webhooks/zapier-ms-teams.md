@@ -11,7 +11,7 @@ When a dbt Cloud job finishes running, the integration will:
 
  - Receive a webhook notification in Zapier,
  - Extract the results from the dbt Cloud admin API, and
- - Post a summary to a Microsoft Teams channel
+ - Post a summary to a Microsoft Teams channel.
 
 ![Screenshot of a message in MS Teams showing a summary of a dbt Cloud run which failed](/img/guides/orchestration/webhooks/zapier-ms-teams/ms-teams-ui.png)
 ## Prerequisites
@@ -56,7 +56,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your dbt Cloud secret.
 
-This code will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by dbt Core.
+The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build a summary message that pulls out any error messages from the end-of-invocation logs created by dbt Core.
 
 ```python
 import hashlib
