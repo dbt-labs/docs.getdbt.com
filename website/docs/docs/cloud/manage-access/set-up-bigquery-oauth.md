@@ -62,7 +62,9 @@ Now that you have an OAuth app set up in BigQuery, you'll need to add the client
 
 ### Authenticating to BigQuery
 Once the BigQuery OAuth app is set up for a dbt Cloud project, each dbt Cloud user will need to authenticate with BigQuery in order to use the IDE. To do so:
-- go to the [Credentials](https://cloud.getdbt.com/next/settings/profile#credentials) section
+
+- Click the gear icon at the top right and select **Profile settings**.
+- Select **Credentials**.
 - choose your project from the list
 - select **Authenticate BigQuery Account**
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/developer-bq-auth.gif" title="Authenticating to BigQuery" />
