@@ -1,8 +1,14 @@
 ---
-title: "Query the Metadata API"
+title: "Query"
 id: "metadata-querying"
 ---
-Accounts on the _Team_ and _Multi-Tenant Enterprise_ plans can query the dbt Metadata API.
+
+The Metadata API supports ad-hoc queries or lets you browse the schema. If you are new to the API, read the [Metadata API overview](/docs/dbt-cloud-apis/metadata-api) for an introduction to the Metadata API.
+
+## Prerequisites
+
+- You must have a [multi-tenant](/docs/deploy/regions-ip-addresses) account and [Team or Enterprise plans](https://www.getdbt.com/pricing/)
+- Your projects must be on dbt version v0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade
 
 ## Authorization
 
@@ -34,3 +40,4 @@ There are several illustrative example queries in this documentation. You can se
 You can experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql), making sure to use the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.
 
 <Lightbox src="/img/docs/dbt-cloud/GraphiQL.png" title=""/>
+
