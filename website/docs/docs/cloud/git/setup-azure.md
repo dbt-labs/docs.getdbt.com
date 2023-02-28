@@ -31,7 +31,7 @@ Once the Azure AD app is added to dbt Cloud and the service user is connected, t
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
 5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
-6. Add a redirect URI by selecting **Web** and typing in `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+6. Add a redirect URI by selecting **Web** and typing in `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
