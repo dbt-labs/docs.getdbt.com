@@ -59,7 +59,7 @@ In GitLab, when creating your Group Application, input the following:
 | Field | Value |
 | ------ | ----- |
 | **Name** | dbt Cloud |
-| **Redirect URI** | https://cloud.getdbt.com/complete/gitlab |
+| **Redirect URI** | `https://YOUR_ACCESS_URL/complete/gitlab` |
 | **Confidential** | ✔️ |
 | **Scopes** | ✔️ api |
 
