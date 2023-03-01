@@ -39,7 +39,7 @@ To develop in the Cloud IDE, make sure you have the following:
 
 The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and features that make it easier for you to develop, build, compile, run, and test data models. 
 
-Read more about IDE updates in the [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes) and select the tag [**IDE**](/tags/ide) for specific IDE updates. 
+Read more about IDE updates in the [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes), and select the tag `IDE` to view [IDE-specific updates](/tags/ide). 
 
 | Feature  |  Info |
 |---|---|
