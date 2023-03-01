@@ -114,7 +114,7 @@ Settings.
 
 If the verification information looks appropriate, then you have completed
 the configuration of GSuite SSO. Members of your team should now be able to log
-into the dbt Cloud application at `https://cloud.getdbt.com/enterprise-login/<login-slug>`.
+-
 
 **Note:** Changes typically take effect in minutes, but can take up to 24 hours.
 
