@@ -57,7 +57,7 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 | Config | Value |
 | ------ | ----- |
@@ -97,7 +97,7 @@ Settings.
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
-      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. The `LOGIN_SLUG` must
+      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. The `LOGIN_SLUG` must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
       identifies your company.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
@@ -113,14 +113,13 @@ Settings.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite verify groups"/>
 
 If the verification information looks appropriate, then you have completed
-the configuration of GSuite SSO. 
-
-<Snippet src="login_url_note" />
-
+- the configuration of GSuite SSO. 
+-
+- <Snippet src="login_url_note" />
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up
-[RBAC groups](/docs/collaborate/manage-access/enterprise-permissions) to complete your access control configuration.
+[RBAC groups](/docs/cloud/manage-access/enterprise-permissions) to complete your access control configuration.
 
 ## Troubleshooting
 

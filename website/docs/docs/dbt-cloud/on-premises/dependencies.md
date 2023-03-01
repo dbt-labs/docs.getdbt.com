@@ -98,6 +98,6 @@ The required inbound ports are:
 
 For additional information related to inbound traffic view the following sections.
 
-- [Application Data Flows](docs/deploy/architecture#application-data-flows)
-- [Data Warehouse Interaction](/docs/deploy/architecture#data-warehouse-interaction)
-- [Customer Managed Network Architecture](/docs/deploy/architecture)
+- [Application Data Flows](docs/cloud/about-cloud/architecture#application-data-flows)
+- [Data Warehouse Interaction](/docs/cloud/about-cloud/architecture#data-warehouse-interaction)
+- [Customer Managed Network Architecture](/docs/cloud/about-cloud/architecture)

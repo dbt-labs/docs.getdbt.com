@@ -1,12 +1,14 @@
 ---
-title: "Seats and Users"
+title: "Users and Licenses"
 id: "seats-and-users"
+sidebar: "Users and Licenses"
+description: "Information about users and their license types"
 ---
 
 ## Overview
 
-In dbt Cloud, _seats_ are used to allocate users to your account. There are two
-different types of seat licenses in dbt Cloud: _Developer_ and _Read Only_.
+In dbt Cloud, _licenses_ are used to allocate users to your account. There are two
+different types of licenses in dbt Cloud: _Developer_ and _Read Only_.
 
 The type of license a user is assigned controls which capabilities of dbt
 Cloud the user is permitted to access. Users with a Developer license can be
@@ -23,15 +25,15 @@ in dbt Cloud, whereas users with Read Only licenses are intended to view the
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ |
 
-## Included seats
+## Included licenses
 
-Each dbt Cloud plan comes with a base number of Developer and Read Only seats.
-To add additional seats to your account, navigate to the Billing tab of the
+Each dbt Cloud plan comes with a base number of Developer and Read Only licenses.
+To add additional licenses to your account, navigate to the Billing tab of the
 Account Settings page in your dbt Cloud account. Note: accounts on the Developer
 plan must upgrade to the Team plan to add additional team members to their
 account.
 
-Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about the seats available with each plan.
+Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
 ## Managing license types
 
@@ -48,7 +50,7 @@ groups for the user.
 
 **Note:** You will need to have an available license ready
 to allocate for the user. If your account does not have an available license to
-allocate, you will need to add more seats to your plan to complete the license
+allocate, you will need to add more licenses to your plan to complete the license
 change.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-manual.png"
@@ -59,7 +61,7 @@ change.
 **Note:** This feature is only available on the Enterprise plan.
 
 If your account is connected to an Identity Provider (IdP) for [Single Sign
-On](/docs/collaborate/manage-access/sso-overview), you can automatically map IdP user
+On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user
 groups to specific license types in dbt Cloud. To configure license mappings,
 navigate to the Account Settings &gt; Team &gt; License Mappings page. From
 here, you can create or edit SSO mappings for both Read Only and Developer
@@ -89,5 +91,5 @@ Usage notes:
 ## Granular permissioning
 
 The dbt Cloud Enterprise plan supports Role-Based access controls for
-configuring granular in-app permissions. See [access control](/docs/collaborate/manage-access/about-access)
+configuring granular in-app permissions. See [access control](/docs/cloud/manage-access/about-access)
 for more information on Enterprise permissioning.
