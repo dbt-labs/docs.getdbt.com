@@ -129,7 +129,8 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 As a result, MFA must be explicity disabled in the Office 365 or Azure AD administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
 
 To disable MFA for a single user using the Office 365 Administration console:
-1. Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
+
+- Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
 
 To use the Azure AD interface:
 <br />This procedure involves disabling Security Defaults on AAD.
