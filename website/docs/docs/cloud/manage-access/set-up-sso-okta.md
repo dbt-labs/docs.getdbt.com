@@ -65,7 +65,7 @@ Click **Next** to continue.
 
 ### Configure SAML Settings
 
-The SAML Settings page configures how Okta and dbt Cloud communicate. You will want to use an [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. If you aren't sure which values you should use, please contact support (support@getdbt.com).
+The SAML Settings page configures how Okta and dbt Cloud communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. If you aren't sure which values you should use, please contact support (support@getdbt.com).
 
 To complete this section, you will need a _login slug_. This slug controls the
 URL where users on your account can log into your application via Okta. Login
