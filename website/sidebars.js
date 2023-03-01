@@ -235,67 +235,66 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate with others",
       items: [{
-          type: "category",
-          label: "Environments",
-          items: [
-            "docs/collaborate/environments/environments-in-dbt",
-            "docs/collaborate/environments/dbt-cloud-environments",
-            "docs/collaborate/environments/dbt-core-environments",
-          ],
-        },
-        {
-          type: "category",
-          label: "Git version control",
-          items: [
-            "docs/collaborate/git-version-control",
-            "docs/collaborate/git/version-control-basics",
-            "docs/collaborate/git/managed-repository",
-            "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",
-            {
-              type: "category",
-              label: "Supported git providers",
-              items: [
-                "docs/collaborate/git/connect-github",
-                "docs/collaborate/git/connect-gitlab",
-                {
-                  type: "category",
-                  label: "Azure DevOps",
-                  items: [
-                    "docs/collaborate/git/connect-azure-devops",
-                    "docs/collaborate/git/setup-azure",
-                    "docs/collaborate/git/authenticate-azure",
-                  ],
-                },
-                "docs/collaborate/git/import-a-project-by-git-url",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Document your dbt projects",
-          items: [
-            "docs/collaborate/documentation",
-            "docs/collaborate/build-and-view-your-docs",
-          ],
-        },
+        type: "category",
+        label: "Environments",
+        items: [
+          "docs/collaborate/environments/environments-in-dbt",
+          "docs/collaborate/environments/dbt-cloud-environments",
+          "docs/collaborate/environments/dbt-core-environments",
+        ],
+      },
+      {
+        type: "category",
+        label: "Git version control",
+        items: [
+          "docs/collaborate/git-version-control",
+          "docs/collaborate/git/version-control-basics",
+          "docs/collaborate/git/managed-repository",
+          "docs/collaborate/git/pr-template",
+          "docs/collaborate/git/merge-conflicts",
+          {
+            type: "category",
+            label: "Supported git providers",
+            items: [
+              "docs/collaborate/git/connect-github",
+              "docs/collaborate/git/connect-gitlab",
+              {
+                type: "category",
+                label: "Azure DevOps",
+                items: [
+                  "docs/collaborate/git/connect-azure-devops",
+                  "docs/collaborate/git/setup-azure",
+                  "docs/collaborate/git/authenticate-azure",
+                ],
+              },
+              "docs/collaborate/git/import-a-project-by-git-url",
+            ],
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Document your dbt projects",
+        items: [
+          "docs/collaborate/documentation",
+          "docs/collaborate/build-and-view-your-docs",
+        ],
+      },
 
-        {
-          type: "category",
-          label: "Manage access",
-          items: [
-            "docs/collaborate/manage-access/about-access",
-            "docs/collaborate/manage-access/seats-and-users",
-            {
-              type: "category",
-              label: "Permissions",
-              items: [
-                "docs/collaborate/manage-access/self-service-permissions",
-                "docs/collaborate/manage-access/enterprise-permissions",
-              ],
-            },
-
+      {
+        type: "category",
+        label: "Manage access",
+        items: [
+          "docs/collaborate/manage-access/about-access",
+          "docs/collaborate/manage-access/seats-and-users",
+          {
+            type: "category",
+            label: "Permissions",
+            items: [
+              "docs/collaborate/manage-access/self-service-permissions",
+              "docs/collaborate/manage-access/enterprise-permissions",
+            ],
+          },
             {
               type: "category",
               label: "Single sign-on",
@@ -785,6 +784,24 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
+        {
+          type: "category",
+          label: "Webhooks with dbt Cloud and SaaS apps",
+          link: {
+            type: "generated-index",
+            title: "Use dbt Cloud's webhooks with other SaaS apps",
+            description:
+              "Learn how to use webhooks to trigger actions in other tools by using Zapier or a serverless platform.",
+            slug: "/guides/orchestration/webhooks",
+          },
+          items: [
+            {
+              type: "autogenerated",
+              dirName: "guides/orchestration/webhooks",
+            },
+          ],
+        },
+
       ],
     },
     {
