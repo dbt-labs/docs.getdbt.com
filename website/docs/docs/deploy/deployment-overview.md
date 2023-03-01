@@ -1,5 +1,5 @@
 ---
-title: "About jobs"
+title: "About deployments"
 id: "deployments"
 sidebar: "About jobs
 ---
