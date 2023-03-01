@@ -41,7 +41,7 @@ need to select the appropriate directory and then register a new application.
 
 4. Configure the **Redirect URI**. The table below shows the appropriate
    Redirect URI values for single-tenant and multi-tenant deployments. For most
-   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 
 | Application Type | Redirect URI |
