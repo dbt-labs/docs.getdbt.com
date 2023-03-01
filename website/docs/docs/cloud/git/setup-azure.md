@@ -59,7 +59,7 @@ You also need to add another redirect URI to your Azure AD application. This red
 
 1. Navigate to your Azure AD application.
 2. Select the link next to **Redirect URIs**
-3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
+3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
 `https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.
 
