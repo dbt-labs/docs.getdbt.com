@@ -33,7 +33,6 @@ Engage and learn more about the [February changes](https://getdbt.slack.com/arch
 
 ## Bug fixes
 
-- You no longer arbitrarily encounter an `RPC server got an unknown async ID` message
 - You no longer have file contents carrying over when you switch to a different project that has the same file name
 - The preview max limit no longer allows you to override the maximum 
 - You no longer encounter node statuses failing to update in the history drawer for those on version 1.4 core. (This is a partial fix that may be fully addressed by core version 1.5)
