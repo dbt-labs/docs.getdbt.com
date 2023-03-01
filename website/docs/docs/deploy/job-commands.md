@@ -24,7 +24,7 @@ During a job run, the commands are "chained" together, and you can expect differ
 
 ### Built-in commands
 
-Every job invocation automatically includes [`dbt deps`](/reference/commands/deps), meaning you don't need to add it to the **Commands** list in your job settings. 
+Every job invocation automatically includes the [`dbt deps`](/reference/commands/deps) command, meaning you don't need to add it to the **Commands** list in your job settings.  You will also notice every job will include a step to reclone your repository and connect to your data platform. 
 
 **Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
@@ -35,7 +35,9 @@ Every job invocation automatically includes [`dbt deps`](/reference/commands/dep
 
 For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes. These checkboxes enable you to generate project docs or enable source freshness automatically.
 
-**Job outcome**  &mdash; During a job run, if either "checkbox command" (source freshness or generate documentation) fails, the job can still be successful if all subsequent steps are successful. 
+**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt docs generate` command, _after_ the listed commands. If that particular step in your job fails, the job can still be successful if all subsequent steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
+
+**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt source freshness` command, _before_ as the first step in your job and won't break subsequent steps if it fails. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 
@@ -64,7 +66,7 @@ Job command failures can mean different things for different commands. Here are 
 
 - **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs#warnings-as-errors), only an error stops the next step. 
 
-- **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command is a series of commands in itself, partial failures. For example, if `dbt seed` is successful, but `dbt run` isn't, then it's treated as a failure with an Exit code 1.
+- **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command executes resources in the DAG-specified order. If any upstream resource fails, all downstream resources are skipped, and the command exits with an error code of 1.
 
 - **Selector failures**
    - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
