@@ -857,6 +857,17 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "dbt Python Snowpark",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/dbt-python-snowpark/1-overview",
+          },
+          items: [
+            "guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration",
+          ],
+        },
+        {
+          type: "category",
           label: "Databricks and dbt",
           link: {
             type: "doc",
