@@ -26,7 +26,7 @@ During a job run, the commands are "chained" together, and you can expect differ
 
 Every job invocation automatically includes [`dbt deps`](/reference/commands/deps), meaning you don't need to add it to the **Commands** list in your job settings. 
 
-**Job outcome** &mdash; During a job run, the commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
+**Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/fail-dbtdeps.jpg" title="A failed job that had an error during the dbt deps run step."/>
