@@ -43,15 +43,15 @@ You can use the metadata API to query data from the previous three months. For e
 *We are continuously expanding the capabilities of the metadata API and welcome your feedback and suggestions at cloudAPIs@dbtlabs.com.*
 
 
-<!-- embed iframe of graphiql -->
+<!-- embed iframe of graphiql 
 <iframe title="GraphiQL" width="100%" height="100%" src="https://embed.graphql.com/embed?endpointURL=%22https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphiql%22&query=%22%7B%5Cn%20%20feed%20(type%3A%20NEW%2C%20limit%3A%205)%20%7B%5Cn%20%20%20%20repository%20%7B%5Cn%20%20%20%20%20%20owner%20%7B%20login%20%7D%5Cn%20%20%20%20%20%20name%5Cn%20%20%20%20%7D%5Cn%5Cn%20%20%20%20postedBy%20%7B%20login%20%7D%5Cn%20%20%7D%5Cn%7D%5Cn%22&variables=%22%22&response=%22Hit%20run!%5Cn%22&history=true&prettify=true&docs=true" />
 
 
 
-<!--cdn code for graphql sandbox 
+<!--cdn code for graphaql sandbox 
 link here: https://studio.apollographql.com/sandbox/explorer?overlay=embed-sandbox
 docs link here: https://www.apollographql.com/docs/graphos/explorer/embed-explorer
--->
+
 
 <div style="width: 100%; height: 100%;" id='embedded-sandbox'></div>
 <script src="https://embeddable-sandbox.cdn.apollographql.com/_latest/embeddable-sandbox.umd.production.min.js"></script> 
@@ -70,7 +70,7 @@ docs link here: https://www.apollographql.com/docs/graphos/explorer/embed-explor
   });
 </script>
   
-
+-->
 ## Related docs
 
 
