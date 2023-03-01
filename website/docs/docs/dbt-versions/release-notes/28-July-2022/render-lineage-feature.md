@@ -1,7 +1,7 @@
 ---
 title: "Enhancement: Large DAG feature"
 id: "render-lineage-feature"
-description: "Add a render button to visualize large DAGs"
+description: "Jul 2022: Use the Render Lineage button to visualize large DAGs"
 sidebar_label: "Enhancement: Large DAG feature"
 tags: [July-5-2022, v1.1.56, IDE]
 
