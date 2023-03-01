@@ -133,16 +133,15 @@ To disable MFA for a single user using the Office 365 Administration console:
 - Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
 
 To use the Azure AD interface:
-<br />This procedure involves disabling Security Defaults on AAD.
+<br />Note, this procedure involves disabling Security Defaults on AAD.
 
-1. Go to the AAD Admin Center. Scroll down to Azure Active Directory ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults",
-2. Select **Save**.
+1. Go to the AAD Admin Center. Scroll down to Azure Active Directory ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
+2. Select **Save**
+3. Go to **Azure Active Directory** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
+4. The link will take you to a "multi-factor authentication" page.
+5. If MFA is enabled for users, select the user(s) and select **Disable** under **Quick steps** 
+6. Select **Yes** to confirm your changes 
 
-3. Go to **Azure Active Directory** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is greyed out, you need to make sure you disable **Security Defaults**).
-
-4. The link will take you to a "multi-factor authentication" page. 
-5. If MFA is enabled for users, select a user or users and click on **Disable** under **Quick steps** i
-6. Click **Yes** to confirm your changes 
 To re-enable MFA for that user, select them again and click **Enable**. Note you may have to go through MFA setup for that user after enabling it.
 
 </TabItem>
