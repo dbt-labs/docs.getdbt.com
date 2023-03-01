@@ -515,7 +515,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/build/bigquery-profile /reference/resource-configs/bigquery-configs 301
 /reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
 /date-trunc-sql /blog/date-trunc-sql 301
-/using-hooks / 302
+/docs/using-hooks / 302
 
 # supported data platforms page
 
