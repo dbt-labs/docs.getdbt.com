@@ -8,7 +8,7 @@ tags: [Mar-1-2023, IDE]
 
 To continue improving our [Cloud IDE](https://docs.getdbt.com/docs/get-started/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
 
-Engage and learn more about the [February changes](https://getdbt.slack.com/archives/C03SAHKKG2Z/p1677605383451109). 
+Learn more about the [February changes](https://getdbt.slack.com/archives/C03SAHKKG2Z/p1677605383451109). 
 
 ## New features 
 
