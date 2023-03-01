@@ -3,8 +3,6 @@ title: "Use cases"
 id: "metadata-use-case-guides"
 ---
 
-
-
 Use the Metadata API to solve the following use cases:
 
 - **Discovery*** &mdash; Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage. One example of this is the [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide). 
