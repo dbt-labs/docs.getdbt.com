@@ -1,7 +1,7 @@
 ---
-title: "About deployments"
+title: "About job deployments"
 id: "deployments"
-sidebar: "About jobs
+sidebar: "About job deployments"
 ---
 
 Running dbt in production means setting up a system to run a _dbt job on a schedule_, rather than running dbt commands manually from the command line. Your production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments/environments-in-dbt).
