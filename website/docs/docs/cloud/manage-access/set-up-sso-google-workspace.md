@@ -113,10 +113,9 @@ Settings.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite verify groups"/>
 
 If the verification information looks appropriate, then you have completed
-the configuration of GSuite SSO. Members of your team should now be able to log
+- the configuration of GSuite SSO. 
 -
 
-**Note:** Changes typically take effect in minutes, but can take up to 24 hours.
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up
