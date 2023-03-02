@@ -19,7 +19,8 @@ Learn more about the [February changes](https://getdbt.slack.com/archives/C03SAH
 - Additional option to access the file menu by right-clicking on the files and folders in the file tree
 - Rename files by double-clicking on files in the file tree and the editor tabs
 - Right-clicking on file tabs has new options and will now open at your cursor instead of in the middle of the tab
-- The git branch name above **Version Control** links to the repo for specific git providers
+- The git branch name above **Version Control** links to the repo for specific git providers. 
+    * Currently available for [North America multi-tenant](/docs/deploy/regions-ip-addresses) instances using GitHub or GitLab providers. 
 
 ## Product refinements 
 
@@ -36,5 +37,5 @@ Learn more about the [February changes](https://getdbt.slack.com/archives/C03SAH
 - You no longer have file contents carrying over when you switch to a different project that has the same file name
 - The preview max limit no longer allows you to override the maximum 
 - You no longer encounter node statuses failing to update in the history drawer for those on version 1.4 core. (This is a partial fix that may be fully addressed by core version 1.5)
-- You can now use the **Copy File Name** option to copy up to the first dot, rather than the final dot
+- You can now use the **Copy File Name** option to copy up to the last dot, rather than the first dot
 
