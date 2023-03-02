@@ -4,9 +4,29 @@ id: "job-triggers"
 description: "You can use cron syntax to specify when you want to run a job."
 ---
 
-### Overview
+In dbt Cloud, you can configure when and how dbt should trigger your job run. 
 
-In dbt Cloud, you can use "cron" syntax to specify when you'd like your job to run. Cron syntax is very expressive, and allows you to completely customize your run schedule.
+- **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on scheduled days and time, or enter a [custom cron schedule](#cron)
+- **Continuous Integration** tab &mdash; Configure [continuous integration (CI)](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository
+- **API** tab &mdash; Use the [API](/docs/dbt-cloud-apis/overview) to trigger a job or send events to other systems
+
+<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" title="Configuring your job triggers"/>
+
+## Schedule
+
+To configure your job to run on particular day(s) and time, you can toggle the **Run on schedule** toggle and customize the days, time, and intervals you want your job to run.
+
+Under **Timing**, you can configure your job to run either at customizable hours hours or exact intervals. 
+
+If you've selected to run your job at exact intervals, dbt Cloud uses [coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For examples:
+
+- 0 means 12am (midnight) UTC
+- 12 means 12pm (afternoon) UTC
+- 23 means 11pm UTC
+
+## Cron
+
+Cron syntax is very expressive, and allows you to completely customize your run schedule.
 
 If you need help coming up with the right cron syntax, we recommend using a tool like `crontab.guru`. There, you can enter cron snippets and see what they mean in plain English. You can also find some example snippets below.
 
@@ -29,3 +49,17 @@ A custom cron schedule can be specified in the Job Settings page when you edit a
 6. Enter the custom cron syntax for the schedule you want.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
+
+
+
+
+6. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under "Run history." 
+
+## Related docs
+
+- [Job commands](/docs/deploy/job-commands)
+- [Webhooks for your jobs](/docs/deploy/webhooks)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Source freshness](/docs/deploy/source-freshness)
+- [Artifacts](/docs/deploy/artifacts)
+- [Build and view your docs with dbt Cloud](/docs/collaborate/build-and-view-your-docs)
