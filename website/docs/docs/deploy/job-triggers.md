@@ -50,8 +50,7 @@ A custom cron schedule can be specified in the Job Settings page when you edit a
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
 
-
-
+THE BELOW IS JUST COPIED OVER TEXT - WILL AMEND SOON!
 
 6. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under "Run history." 
 
