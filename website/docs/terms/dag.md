@@ -97,7 +97,7 @@ This level of interconnectivity and transparency can help boost data governance 
 
 ## Conclusion
 
-A Directed Acyclic Graph (DAG) is a visual representation of your data models and their connection to each other. The key components of a DAG are that nodes (sources/models/exposures) are directionally linked and don’t form acyclic loops. Overall, DAGs are an effective tool for understanding data lineage, dependencies, and areas of improvement in your data models.
+A Directed acyclic graph (DAG) is a visual representation of your data models and their connection to each other. The key components of a DAG are that nodes (sources/models/exposures) are directionally linked and don’t form acyclic loops. Overall, DAGs are an effective tool for understanding data lineage, dependencies, and areas of improvement in your data models.
 
 > *Get started with [dbt today](https://www.getdbt.com/signup/) to start building your own DAG!*
 
