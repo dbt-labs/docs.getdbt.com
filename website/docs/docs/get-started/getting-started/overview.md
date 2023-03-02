@@ -27,7 +27,7 @@ link="/docs/get-started/getting-started/set-up-dbt-cloud"
     title="Getting started with dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface"
     link="/docs/get-started/getting-started-dbt-core"
-    icon="pencil-paper"/>
+    something bad>
 
 </div>
 
