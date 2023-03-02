@@ -24,7 +24,7 @@ During a job run, the commands are "chained" together, and you can expect differ
 
 ### Built-in commands
 
-Every job invocation automatically includes the [`dbt deps`](/reference/commands/deps) command, meaning you don't need to add it to the **Commands** list in your job settings.  You will also notice every job will include a step to reclone your repository and connect to your data platform. 
+Every job invocation automatically includes the [`dbt deps`](/reference/commands/deps) command, meaning you don't need to add it to the **Commands** list in your job settings.  You will also notice every job will include a run step to reclone your repository and connect to your data platform, which can affect your job status if these run steps aren't successful.
 
 **Job outcome** &mdash; During a job run, the built-in commands are "chained" together.  This means if one of the run steps in the chain fails, then the next commands aren't executed, and the entire job fails with an "Error" job status.
 
@@ -35,9 +35,9 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes. These checkboxes enable you to generate project docs or enable source freshness automatically.
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt docs generate` command, _after_ the listed commands. If that particular step in your job fails, the job can still be successful if all subsequent steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
 
-**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt source freshness` command, _before_ as the first step in your job and won't break subsequent steps if it fails. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt source freshness` command, as the first run step in your job. If that particular run step in your jobs fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 
