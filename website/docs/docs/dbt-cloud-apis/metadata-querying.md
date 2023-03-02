@@ -7,8 +7,9 @@ The Metadata API supports ad-hoc queries or lets you browse the schema. If you a
 
 ## Prerequisites
 
-- You must have a [multi-tenant](/docs/deploy/regions-ip-addresses) account and [Team or Enterprise plans](https://www.getdbt.com/pricing/)
-- Your projects must be on dbt version v0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade
+- You must have a [multi-tenant](/docs/deploy/regions-ip-addresses) account 
+- You must be on a [Team or Enterprise plan](https://www.getdbt.com/pricing/)
+- Your projects must be on dbt version 0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade
 
 ## Authorization
 
