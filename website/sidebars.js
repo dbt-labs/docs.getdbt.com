@@ -860,7 +860,7 @@ const sidebarSettings = {
           label: "dbt Python Snowpark",
           link: {
             type: "doc",
-            id: "guides/dbt-ecosystem/dbt-python-snowpark/1-overview",
+            id: "guides/dbt-ecosystem/dbt-python-snowpark/1-overview-dbt-python-snowpark",
           },
           items: [
             "guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration",

@@ -2,10 +2,11 @@
 title: "Overview" 
 id: "1-overview-dbt-python-snowpark"
 ---
+# Leverage dbt cloud to generate analytics and ML-ready pipelines with SQL and python
 
-# Overview
+## Overview
 
-The focus of this workshop will be to demonstrate how we can use both *SQL and python together* ****(amazing) in the same workflow ****to run *both analytics and machine learning models* on dbt Cloud.
+The focus of this workshop will be to demonstrate how we can use both *SQL and python together* in the same workflow to run *both analytics and machine learning models* on dbt Cloud.
 
 All code in today’s workshop can be found at: [https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1](https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1)
 
@@ -24,16 +25,16 @@ All code in today’s workshop can be found at: [https://github.com/dbt-labs/pyt
 - Basic to intermediate SQL and python
 - Basic understanding of dbt fundamentals (we recommend [dbt Fundamentals course](https://courses.getdbt.com/collections) if you need this)
 - High level machine learning process (encoding, training, testing)
-- Simple ML algorithms - we will use logistic regression to keep the focus on the ***workflow***, not algorithms!
+- Simple ML algorithms - we will use logistic regression to keep the focus on the *workflow*, not algorithms!
 
 ### What you'll build
 
 - A set of data analytics and prediction pipelines using Formula 1 data leveraging dbt and Snowflake, making use of best practices like data quality tests and code promotion between environments
 - We will create insights for:
-1. Finding the lap time average and rolling average through the years (is it generally trending up or down)?
-2. Which constructor has the fastest pit stops in 2021?
-3. Predicting the position of each driver given using a decade of data (2010 - 2020)
+    1. Finding the lap time average and rolling average through the years (is it generally trending up or down)?
+    2. Which constructor has the fastest pit stops in 2021?
+    3. Predicting the position of each driver given using a decade of data (2010 - 2020)
 
-As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public s3 bucket. We create a Snowflake Stage for our csv files then use Snowflake’s COPY INTO function to copy the data in from our csvs into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).The data is originally compiled from [http://ergast.com/mrd/](http://ergast.com/mrd/).
+As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our csv files then use Snowflake’s `COPY INTO` function to copy the data in from our csvs into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).The data is originally compiled from [http://ergast.com/mrd/](http://ergast.com/mrd/).
 
 We are going to set up the environments, build scalable pipelines in dbt, establish data tests , and promote code to production.

@@ -1,3 +1,9 @@
+---
+title: "Snowflake configuration" 
+id: "2-snowflake-configuration"
+---
+
+
 1. Log into the Trial Snowflake account. You can [sign up for a Snowflake Trial Account using this form](https://signup.snowflake.com/) if you don’t have one.
 2. Ensure that your account is set up using **AWS** in the **US East (N. Virginia) us-east-1** because we will be copying from a public AWS s3 bucket in us-east-1. By ensuring our Snowflake environment setup matches will help avoid multi-region data copy and retrieval latency issues.
 
