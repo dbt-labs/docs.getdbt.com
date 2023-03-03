@@ -33,21 +33,21 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 ### Checkbox commands
 
-For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes. These checkboxes enable you to generate project docs or enable source freshness automatically.
+For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
-**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
+**Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
 
-**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt source freshness` command, as the first run step in your job. If that particular run step in your jobs fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 
-You can add or remove as many [dbt commands](/reference/dbt-commands) as necessary for every job, however, you need to have at least one dbt command. 
-Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt-commands) are meant for [CLI](/docs/get-started/about-the-cli)-use only. In dbt Cloud, you can only run commands that _aren't labeled_ "CLI only".
+You can add or remove as many [dbt commands](/reference/dbt-commands) as necessary for every job. However, you need to have at least one dbt command. 
+Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt-commands) are meant for use in dbt Core's [CLI](/docs/get-started/about-the-cli) only and are not available in dbt Cloud.
 
 
 :::tip Using selectors
 
-Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. If a selector doesn't match any models, the job run won't consider it a failure. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`
+Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
 
 :::
    
@@ -60,7 +60,7 @@ In the following example image, the first four run steps are successful. However
 
 ## Job command failures
 
-Job command failures can mean different things for different commands. Here are some reasons why a job command may fail:
+Job command failures can mean different things for different commands. Some common reasons why a job command may fail:
 
 - **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
 
