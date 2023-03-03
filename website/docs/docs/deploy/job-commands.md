@@ -37,7 +37,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 
 **Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
 
-**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt source freshness` command, as the first run step in your job. If that particular run step in your jobs fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
+**Job outcome Source freshness checkbox** &mdash; dbt Cloud executes the `dbt source freshness` command as the first run step in your job. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Source freshness](/docs/deploy/source-freshness) for more info.
 
 ### Command list
 
