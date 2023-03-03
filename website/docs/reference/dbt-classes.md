@@ -10,7 +10,7 @@ These classes are often useful when building advanced dbt models and macros.
 
 The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config](/reference/project-configs/quoting).
 
-### Creating Relations
+### Creating relations
 
 A `Relation` can be created by calling the `create` class method on the `Relation` class.
 
@@ -30,9 +30,9 @@ class Relation:
 
 </File>
 
-### Using Relations
+### Using relations
 
-<File name='Relation Usage.sql'>
+<File name='relation_usage.sql'>
 
 ```jinja2
 {% set relation = api.Relation.create(schema='snowplow', identifier='events') %}
@@ -79,7 +79,7 @@ class Column(object):
    """
 
 
-# Example Usage:
+# Example usage:
 col = Column('name', 'varchar', 255)
 col.is_string() # True
 col.is_numeric() # False
@@ -119,7 +119,7 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 
 ### Using columns
 
-<File name='Column Usage.sql'>
+<File name='column_usage.sql'>
 
 ```jinja2
 -- String column
@@ -163,7 +163,7 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 
 </File>
 
-## BigQuery Columns
+## BigQuery columns
 The `Column` type is overridden as a `BigQueryColumn` in BigQuery dbt projects. This object works the same as the `Column` type described above, with the exception of extra properties and methods:
 
 ### Properties
