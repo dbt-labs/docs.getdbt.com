@@ -108,6 +108,7 @@ const sidebarSettings = {
             "docs/build/snapshots",
             "docs/build/exposures",
             "docs/build/metrics",
+            "docs/build/groups",
           ],
         },
         {
@@ -295,36 +296,36 @@ const sidebarSettings = {
               "docs/collaborate/manage-access/enterprise-permissions",
             ],
           },
-            {
-              type: "category",
-              label: "Single sign-on",
-              items: [
-                "docs/collaborate/manage-access/sso-overview",
-                "docs/collaborate/manage-access/set-up-sso-saml-2.0",
-                "docs/collaborate/manage-access/set-up-sso-google-workspace",
-                "docs/collaborate/manage-access/set-up-sso-azure-active-directory",
-              ],
-            }, // SSO
-            {
-              type: "category",
-              label: "OAuth with data platforms",
-              items: [
-                "docs/collaborate/manage-access/set-up-snowflake-oauth",
-                "docs/collaborate/manage-access/set-up-bigquery-oauth",
-              ],
-            }, // oauth
-            "docs/collaborate/manage-access/audit-log",
-          ],
-        }, // Manage access
-        {
-          type: "category",
-          label: "Publishing models",
-          items: [
-            "docs/collaborate/publish/model-contracts",
-            "docs/collaborate/publish/model-access",
-            "docs/collaborate/publish/model-versions",
-          ],
-        }, // publishing models
+          {
+            type: "category",
+            label: "Single sign-on",
+            items: [
+              "docs/collaborate/manage-access/sso-overview",
+              "docs/collaborate/manage-access/set-up-sso-saml-2.0",
+              "docs/collaborate/manage-access/set-up-sso-google-workspace",
+              "docs/collaborate/manage-access/set-up-sso-azure-active-directory",
+            ],
+          }, // SSO
+          {
+            type: "category",
+            label: "OAuth with data platforms",
+            items: [
+              "docs/collaborate/manage-access/set-up-snowflake-oauth",
+              "docs/collaborate/manage-access/set-up-bigquery-oauth",
+            ],
+          }, // oauth
+          "docs/collaborate/manage-access/audit-log",
+        ],
+      }, // Manage access
+      {
+        type: "category",
+        label: "Publishing models",
+        items: [
+          "docs/collaborate/publish/model-contracts",
+          "docs/collaborate/publish/model-access",
+          "docs/collaborate/publish/model-versions",
+        ],
+      }, // publishing models
       ],
     },
     {
@@ -457,6 +458,7 @@ const sidebarSettings = {
             "reference/resource-configs/enabled",
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/contract",
+            "reference/resource-configs/group",
             "reference/resource-configs/grants",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",

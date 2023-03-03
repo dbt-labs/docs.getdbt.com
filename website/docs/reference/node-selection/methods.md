@@ -225,3 +225,25 @@ $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
 </VersionBlock>
+
+
+### The "group" method
+<VersionBlock lastVersion="1.4">
+
+Only supported by v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+Only supported by v1.5 or newer.
+
+The `group` method is used to select models defined within a group.
+
+
+  ```bash
+  dbt run --select group:finance # run all models that belong to the finance group.
+  ```
+
+
+</VersionBlock>

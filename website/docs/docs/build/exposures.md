@@ -85,7 +85,7 @@ exposures:
 _Required:_
 - **name**: a unique exposure name written in [snake case](https://en.wikipedia.org/wiki/Snake_case)
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
-- **owner**: email
+- **owner**: email or **owner**: name
 
 <VersionBlock firstVersion="1.4">
 
@@ -104,7 +104,6 @@ _Expected:_
 _Optional:_
 - **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
 - **maturity**: one of `high`, `medium`, `low`
-- **owner**: name
 
 _General properties (optional)_
 - **description**
