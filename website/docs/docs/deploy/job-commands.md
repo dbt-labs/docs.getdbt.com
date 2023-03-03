@@ -33,7 +33,7 @@ Every job invocation automatically includes the [`dbt deps`](/reference/commands
 
 ### Checkbox commands
 
-For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes. These checkboxes enable you to generate project docs or enable source freshness automatically.
+For every job, you have the option to select the [Generate docs on run](/docs/collaborate/build-and-view-your-docs) or [Run source freshness](/docs/deploy/source-freshness) checkboxes, enabling you to run the commands automatically. 
 
 **Job outcome Generate docs on run checkbox** &mdash; dbt Cloud executes the checkbox, which uses the `dbt docs generate` command, _after_ the listed commands. If that particular run step in your job fails, the job can still succeed if all subsequent run steps are successful. Read [Build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
 
