@@ -4,20 +4,20 @@ id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
 ---
 
-A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/get-started/develop-in-the-cloud). A job consists of multiple commands, and their combined outcomes determine the job's run status, which can be successful, canceled, or failed. During a job run, each command outcome can either succeed or fail under the **Run steps** section.
+A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/get-started/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
 - Configure job commands
 - View job run details, including timing, artifacts, and detailed run steps
 - Access logs to view or help debug issues and historical invocations of dbt
-- Set up notifications, and [more](/docs/deploy/deployments#dbt-cloud)!
+- Set up notifications, and [more](/docs/deploy/deployments#dbt-cloud)
 
 ## Job command types
 
 Job commands are specific tasks executed by the job, and you can configure them seamlessly by either adding [dbt commands](/reference/dbt-commands) or using the checkbox option in the **Commands** section. 
 
-During a job run, the commands are "chained" together, and you can expect different outcomes when adding the command as a run step compared to selecting a checkbox.
+During a job run, the commands are "chained" together and executed as run steps. When you add a dbt command in the **Commands** section, you can expect different outcomes compared to the checkbox option.
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/job-commands.gif" title="Configuring checkbox and commands list"/>
 
@@ -52,9 +52,9 @@ Use [selectors](/reference/node-selection/syntax) as a powerful way to select an
 :::
    
     
-**Job outcome**  &mdash;  During a job run, the commands are “chained” together. This means if one of the run steps in the chain fails, then the next ones aren't executed. For example, if the 5th run step fails:
-(`dbt run --select state:modified+ --full-refresh --fail-fast`)
-then the subsequent commands aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
+**Job outcome**  &mdash;  During a job run, the commands are "chained" together and executed as run steps. If one of the run steps in the chain fails, then the subsequent steps aren't executed, and the job will fail.
+
+In the following example image, the first four run steps are successful. However, if the fifth run step (`dbt run --select state:modified+ --full-refresh --fail-fast`) fails, then the next run steps aren't executed, and the entire job fails. The failed job returns a non-zero [exit code](/reference/exit-codes) and "Error" job status:
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/skipped-jobs.jpg" title="A failed job run that had an error during a run step"/>
 
