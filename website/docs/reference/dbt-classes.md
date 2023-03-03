@@ -85,7 +85,7 @@ col.is_string() # True
 col.is_numeric() # False
 col.is_number() # False
 col.is_float() # False
-col.string_type() # character varying (255)
+col.string_type() # character varying(255)
 col.numeric_type('numeric', 12, 4) # numeric(12,4)
 ```
 
