@@ -117,6 +117,52 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 - **string_type(size)**:  Returns a database-useable representation of the string type (eg. `character varying(255)`)
 - **numeric_type(dtype, precision, scale)**: Returns a database-useable representation of the numeric type (eg. `numeric(12, 4)`)
 
+### Using Columns
+
+<File name='Column Usage.sql'>
+
+```jinja2
+-- String column
+{%- set string_column = api.Column('name', 'varchar', char_size=255) %}
+
+-- Return true if the column is a string
+{{ string_column.is_string() }}
+
+-- Return true if the column is a numeric
+{{ string_column.is_numeric() }}
+
+-- Return true if the column is a number
+{{ string_column.is_number() }}
+
+-- Return true if the column is a float
+{{ string_column.is_float() }}
+
+-- Numeric column
+{%- set numeric_column = api.Column('distance_traveled', 'numeric', numeric_precision=12, numeric_scale=4) %}
+
+-- Return true if the column is a string
+{{ numeric_column.is_string() }}
+
+-- Return true if the column is a numeric
+{{ numeric_column.is_numeric() }}
+
+-- Return true if the column is a number
+{{ numeric_column.is_number() }}
+
+-- Return true if the column is a float
+{{ numeric_column.is_float() }}
+
+-- Static methods
+
+-- Return the string data type for this database adapter with a given size
+{{ api.Column.string_type(255) }}
+
+-- Return the numeric data type for this database adapter with a given precision and scale
+{{ api.Column.numeric_type('numeric', 12, 4) }}
+```
+
+</File>
+
 ## BigQuery Columns
 The `Column` type is overridden as a `BigQueryColumn` in BigQuery dbt projects. This object works the same as the `Column` type described above, with the exception of extra properties and methods:
 
