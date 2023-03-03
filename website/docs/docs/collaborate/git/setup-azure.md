@@ -125,6 +125,26 @@ The service user's permissions will also power which repositories a team can sel
 <TabItem value="mfa" label="Turn off MFA for service user">
 
 While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
+
+As a result, MFA must be explicity disabled in the Office 365 or Azure AD administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
+
+**To disable MFA for a single user using the Office 365 Administration console:**
+
+- Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
+
+**To use the Azure AD interface:**
+
+Note, this procedure involves disabling Security Defaults on AAD.
+
+1. Go to the AAD Admin Center. Scroll down to Azure Active Directory ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
+2. Select **Save**
+3. Go to **Azure Active Directory** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
+4. The link will take you to a "multi-factor authentication" page.
+5. If MFA is enabled for users, select the user(s) and select **Disable** under **Quick steps** 
+6. Select **Yes** to confirm your changes 
+
+To re-enable MFA for that user, select them again and click **Enable**. Note you may have to go through MFA setup for that user after enabling it.
+
 </TabItem>
 
 </Tabs>
