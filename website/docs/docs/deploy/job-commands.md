@@ -60,7 +60,7 @@ then the subsequent commands aren't executed, and the entire job fails. The fail
 
 ## Job command failures
 
-Job command failures can mean different things for different commands. Here are some reasons why a job command may fail:
+Job command failures can mean different things for different commands. Some common reasons why a job command may fail:
 
 - **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
 
