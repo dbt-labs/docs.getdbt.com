@@ -1,9 +1,9 @@
 ---
 title: "Spotty internet issues no longer cause a session time out message"
 id: "ide-timeout-message"
-description: "We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue."
+description: "Mar 2022: We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue."
 sidebar_label: "Fix: Session time out"
-tags: [v1.1.47, March-10-2022]
+tags: [v1.1.47, March-10-2022, IDE]
 ---
 
 We fixed an issue where a spotty internet connection could cause the “IDE session timed out” message to appear unexpectedly. People using a VPN were most likely to see this issue.
