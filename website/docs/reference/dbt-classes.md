@@ -114,7 +114,7 @@ col.string_type() # character varying (255)
 
 ### Static methods
 - **string_type(size)**:  Returns a database-useable representation of the string type (eg. `character varying(255)`)
-- **numeric_type(dtype, size)**: Returns a database-useable representation of the numeric type (eg. `numeric(12, 4)`)
+- **numeric_type(dtype, precision, scale)**: Returns a database-useable representation of the numeric type (eg. `numeric(12, 4)`)
 
 ## BigQuery Columns
 The `Column` type is overridden as a `BigQueryColumn` in BigQuery dbt projects. This object works the same as the `Column` type described above, with the exception of extra properties and methods:
