@@ -47,7 +47,7 @@ Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt
 
 :::tip Using selectors
 
-Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. If a selector doesn't match any models, the job run won't consider it a failure. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`
+Use [selectors](/reference/node-selection/syntax) as a powerful way to select and execute portions of your project in a job run. For example, to run tests for one_specific_model, use the selector: `dbt test --select one_specific_model`. The job will still run if a selector doesn't match any models. 
 
 :::
    
