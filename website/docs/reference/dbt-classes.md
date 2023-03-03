@@ -117,7 +117,7 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 - **string_type(size)**:  Returns a database-useable representation of the string type (eg. `character varying(255)`)
 - **numeric_type(dtype, precision, scale)**: Returns a database-useable representation of the numeric type (eg. `numeric(12, 4)`)
 
-### Using Columns
+### Using columns
 
 <File name='Column Usage.sql'>
 
