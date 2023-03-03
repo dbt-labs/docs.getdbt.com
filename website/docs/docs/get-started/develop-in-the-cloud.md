@@ -37,7 +37,9 @@ To develop in the Cloud IDE, make sure you have the following:
 
 ## Cloud IDE features
 
-The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and features that make it easier for you to develop, build, compile, run, and test data models.
+The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and features that make it easier for you to develop, build, compile, run, and test data models. 
+
+Read more about IDE updates in the [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes), and select the tag `IDE` to view [IDE related release notes](/tags/ide). 
 
 | Feature  |  Info |
 |---|---|
@@ -48,7 +50,7 @@ The dbt Cloud IDE comes with [tips](/docs/get-started/dbt-cloud-tips) and featur
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the IDE for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
-| **Organize tabs**  | You can: <br /> - Move your tabs around to reorganize your work in the IDE <br /> - Right-click on a tab to view and select a list of actions to take <br /> - Close multiple, unsaved tabs to batch save your work
+| **Organize tabs and files**  | You can: <br /> - Move your tabs around to reorganize your work in the IDE <br /> - Right-click on a tab to view and select a list of actions to take <br /> - Close multiple, unsaved tabs to batch save your work <br /> - Rename files and tabs by double-clicking on them 
 | **Find and replace** | Press Command-F or Control-F to open the find-and-replace bar in the upper right corner of the current file in the IDE. The IDE highlights your search results in the current file and code outline. You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches. To replace the text with something else, use the left arrow. |
 | **Multiple selections**  | You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.<br /><br /> - Option-Command-Down arrow or Ctrl-Alt-Down arrow<br /> - Option-Command-Up arrow or Ctrl-Alt-Up arrow<br /> - Press Option and click on an area or Press Ctrl-Alt and click on an area<br /> 
 | **Formatting** | Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/). 
@@ -123,6 +125,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 - [dbt Cloud features](/docs/get-started/dbt-cloud-features)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
+- [dbt Cloud IDE release notes](/tags/ide)
 
 ## Related questions
 
