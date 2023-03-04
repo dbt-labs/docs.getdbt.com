@@ -39,17 +39,6 @@ const sidebarSettings = {
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
-            {
-              type: "category",
-              label: "Getting set up",
-              items: [
-                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
-                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
-                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
-              ],
-            },
             {
               type: "category",
               label: "PrivateLink",

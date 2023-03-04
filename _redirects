@@ -1,3 +1,14 @@
+/docs/get-started/getting-started/set-up-dbt-cloud /docs/quickstarts/overview 301
+/docs/get-started/getting-started/getting-set-up/setting-up-snowflake /docs/quickstarts/dbt-cloud/snowflake 301
+/docs/get-started/getting-started/getting-set-up/setting-up-redshift /docs/quickstarts/dbt-cloud/redshift 301
+/docs/get-started/getting-started/getting-set-up/setting-up-databricks /docs/quickstarts/dbt-cloud/databricks 301
+/docs/get-started/getting-started/getting-set-up/setting-up-bigquery /docs/quickstarts/dbt-cloud/bigquery 301
+/docs/get-started/getting-started/getting-set-up/setting-up-databricks /docs/quickstarts/dbt-cloud/databricks 301
+/docs/get-started/getting-started/getting-set-up/setting-up-redshift /docs/quickstarts/dbt-cloud/redshift 301
+/docs/get-started/getting-started/getting-set-up/setting-up-snowflake /docs/quickstarts/dbt-cloud/snowflake 301
+/docs/get-started/getting-started/building-your-first-project/schedule-a-job /docs/quickstarts/dbt-cloud/bigquery#create-and-run-a-job 301
+/docs/get-started/getting-started/building-your-first-project/test-and-document-your-project /docs/quickstarts/dbt-cloud/bigquery#add-tests-to-your-models 301
+/docs/get-started/getting-started/building-your-first-project/build-your-first-models /docs/quickstarts/dbt-cloud/bigquery#build-your-first-model 301
 /docs/get-started/getting-started/overview /docs/quickstarts/overview 301
 /docs/get-started/getting-started-dbt-core /docs/quickstarts/dbt-core/quickstart 301
 

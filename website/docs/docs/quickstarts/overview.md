@@ -10,7 +10,7 @@ description: "Quickly create your first dbt project with SQL."
 
 Before you begin, you will need:
 
-* Warehouse with sample data. If you don't have this, you can use the [BigQuery project](/docs/get-started/getting-started/getting-set-up/setting-up-bigquery), which leverages public data sets.
+* Warehouse with sample data. If you don't have this, you can use the [BigQuery project](/docs/quickstarts/dbt-cloud/bigquery), which leverages public data sets.
 * Basic understanding of Git.
 * Basic understanding of SQL.
 
@@ -44,7 +44,7 @@ Before you begin, you will need:
 <Card
     title="Quickstart for dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface"
-    link="/docs/quickstarts/getting-started-dbt-core"
+    link="/docs/quickstarts/dbt-core/quickstart"
     icon="pencil-paper"/>
 
 </div>

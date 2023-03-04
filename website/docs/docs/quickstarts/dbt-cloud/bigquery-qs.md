@@ -4,6 +4,11 @@ description: "Quickstart for dbt Cloud and BigQuery."
 id: "bigquery"
 sidebar_label: "BigQuery quickstart"
 ---
+
+Learn how to set up dbt Cloud using a sample project and one of the most common data platforms.
+
+This guide will show you how to set up dbt and perform some key tasks. These tasks will illustrate how dbt establishes standard practices for your work:
+
 For the BigQuery project in the quickstart guide, you'll learn how to:
 
 - Create a Google Cloud Platform (GCP) project.

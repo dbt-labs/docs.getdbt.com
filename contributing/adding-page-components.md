@@ -1,6 +1,6 @@
 ## Using warehouse components
 
-You can use the following components to provide code snippets for each supported warehouse. You can see a real-life example in the docs page, "[Initialize your database](/docs/get-started/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
+You can use the following components to provide code snippets for each supported warehouse. You can see a real-life example in the docs page, "[Initialize your database](/docs/quickstarts/dbt-cloud/databricks#initialize-your-dbt-project-and-start-developing)."
 
 Identify code by labeling with the warehouse names:
 

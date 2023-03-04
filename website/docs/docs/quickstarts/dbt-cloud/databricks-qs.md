@@ -234,6 +234,8 @@ To generate a user token for your development credentials in dbt Cloud, click **
 </Tabs>
 
 ## Set up a dbt Cloud managed repository 
+If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
+
 <Snippet src="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
