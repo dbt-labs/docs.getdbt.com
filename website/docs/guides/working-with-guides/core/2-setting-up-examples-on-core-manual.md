@@ -19,3 +19,4 @@ This path is for more advanced user who already have a preferred method of devel
 6. 📦 **Run `dbt deps`** to install the necessary dbt packages.
 7. 🛠️ **Run a `dbt build`** to build the project!
 8. 📊 Use [duckcli](https://github.com/dbcli/duckcli) and [Evidence](https://evidence.dev/) to explore the data from the commandline or an open source, code-first BI tool.
+9. [Optional] If you'd like to generate a larger selection of data, you can run `jagen --years n` to generate n number of years of synthetic data. It gets exponentially slower as time goes on and the stores grow in size and number, so we'd suggest aiming at around 6 for a good balance of data size and time to build. It will build into the `jaffle-data` folder and automatically be sourced based on the `sources.yml` and `dbt-duckdb` adapter.
