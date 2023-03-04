@@ -95,7 +95,7 @@ Let’s set up our deployment environment:
 
 ### Connect dbt to your git repository
 
-Next, you’ll need somewhere to store and version control your code that allows you to collaborate with teammates. Connect your dbt project to a git repository with [dbt Cloud](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks#initialize-your-repository-and-start-development). [Core](https://docs.getdbt.com/docs/get-started/getting-started-dbt-core#create-a-repository) projects will use the git CLI.
+Next, you’ll need somewhere to store and version control your code that allows you to collaborate with teammates. Connect your dbt project to a git repository with [dbt Cloud](https://docs.getdbt.com/docs/get-started/getting-started/getting-set-up/setting-up-databricks#initialize-your-repository-and-start-development). [Core](/docs/quickstarts/dbt-core/quickstart#create-a-repository) projects will use the git CLI.
 
 ## Next steps
 

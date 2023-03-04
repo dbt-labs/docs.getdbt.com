@@ -6,7 +6,7 @@
 
 <Snippet src="tutorial-document-your-models" />
 
-3. Click the link above the file tree in the Develop interface to launch documentation in a new tab.
+3. Click the book icon in the Develop interface to launch documentation in a new tab.
 
 #### FAQs
 

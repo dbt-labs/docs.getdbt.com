@@ -17,4 +17,4 @@ This guide will show you how to set up dbt and perform some key tasks. These tas
 
 If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
 
-If you'd rather edit and run files locally using the dbt command line interface (dbt CLI) to connect to dbt Core, then you can refer to [Getting started using dbt Core](/docs/get-started/getting-started-dbt-core).
+If you'd rather edit and run files locally using the dbt command line interface (dbt CLI) to connect to dbt Core, then you can refer to [Getting started using dbt Core](/docs/quickstarts/dbt-core/quickstart).

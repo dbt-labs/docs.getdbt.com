@@ -22,7 +22,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 ## Prerequisites​
 
 - You have a  [dbt Cloud account](https://cloud.getdbt.com/). 
-- You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account.
+- You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
 
 ## Create a Databricks workspace
 
@@ -85,26 +85,26 @@ If you get a session error and don’t get redirected to this page, do not worry
 
 ## Load data
 
-1. First we need a SQL warehouse. Find the drop down menu and toggle into the SQL space.
+1. Download these CSV files (the Jaffle Shop sample data) that you will need for this guide:
+    - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
+    - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
+    - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
+
+2. First we need a SQL warehouse. Find the drop down menu and toggle into the SQL space.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
     </div>
-2. We will be setting up a SQL warehouse now.  Select **SQL Warehouses** from the left hand side console.  You will see that a default SQL Warehouse exists.  
+3. We will be setting up a SQL warehouse now.  Select **SQL Warehouses** from the left hand side console.  You will see that a default SQL Warehouse exists.  
     <!--
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL warehouses" /> 
     </div>
     -->
-3. Click **Start** on the Starter Warehouse.  This will take a few minutes to get the necessary resources spun up.
+4. Click **Start** on the Starter Warehouse.  This will take a few minutes to get the necessary resources spun up.
 
-4. While you're waiting, download the three CSV files locally that you will need for this tutorial. You can find them here:
-    - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
-    - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
-    - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
-
-5. Once the SQL Warehouse is up, click **Create** and then **Table** on the dropdown menu. 
+5. Once the SQL Warehouse is up, click **New** and then **File upload** on the dropdown menu. 
     <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/create_table_using_databricks_SQL.png" title="Create Table Using Databricks SQL" />
+    <Lightbox src="/img/databricks_tutorial/images/new_file_upload_using_databricks_SQL.png" title="New File Upload Using Databricks SQL" />
     </div>
 
 6. Let's load the Jaffle Shop Customers data first. Drop in the `jaffle_shop_customers.csv` file into the UI.
@@ -228,7 +228,7 @@ To generate a user token for your development credentials in dbt Cloud, click **
     - You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
 
 6. Click **Test Connection**. This verifies that dbt Cloud can access your Databricks workspace.
-7. Click **Continue** if the test succeeded. If it fails, you might need to check your Databricks settings and credentials.
+7. Click **Next** if the test succeeded. If it failed, you might need to check your Databricks settings and credentials.
 
 </TabItem>
 </Tabs>
@@ -240,22 +240,21 @@ To generate a user token for your development credentials in dbt Cloud, click **
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
 1. Click **Develop** from the upper left. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
+3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the IDE's editor, add this query: 
         ```sql
         select * from default.jaffle_shop_customers
         ```
-    - In the command line bar at the bottom, enter `dbt run` and click **Enter**. 
+    - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
 1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
 2. Click **Create branch**. You can name it `add-customers-model`.
-3. Click **Develop** from the upper left of dbt Cloud.
-4. Click the **...** next to the Models directory, then select **Create file**.  
-5. Name the file `models/customers.sql`, then click **Create**.
-6. Copy the following query into the file and click **Save File**.
+3. Click the **...** next to the Models directory, then select **Create file**.  
+4. Name the file `models/customers.sql`, then click **Create**.
+5. Copy the following query into the file and click **Save**.
 
 ```sql
 with customers as (
@@ -315,7 +314,7 @@ final as (
 select * from final
 ```
 
-7. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see three models under DETAILS.
+6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 

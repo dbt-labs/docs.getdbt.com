@@ -173,7 +173,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
     </div>
 
 6. Click **Test Connection**. This verifies that dbt Cloud can access your Redshift cluster.
-7. Click **Continue** if the test succeeded. If it failed, you might need to check your Redshift settings and credentials.
+7. Click **Next** if the test succeeded. If it failed, you might need to check your Redshift settings and credentials.
 
 ## Set up a dbt Cloud managed repository 
 <Snippet src="tutorial-managed-repo" />
@@ -182,22 +182,21 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
 1. Click **Develop** from the upper left. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
-2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
+3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - In the IDE's editor, add this query: 
         ```sql
         select * from jaffle_shop.customers
         ```
-    - In the command line bar at the bottom, enter `dbt run` and click **Enter**. 
+    - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
 1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
 2. Click **Create branch**. You can name it `add-customers-model`.
-3. Click **Develop** from the upper left of dbt Cloud.
-4. Click the **...** next to the Models directory, then select **Create file**.  
-5. Name the file `models/customers.sql`, then click **Create**.
-6. Copy the following query into the file and click **Save File**.
+3. Click the **...** next to the Models directory, then select **Create file**.  
+4. Name the file `models/customers.sql`, then click **Create**.
+5. Copy the following query into the file and click **Save**.
 
 ```sql
 with customers as (
@@ -257,7 +256,7 @@ final as (
 select * from final
 ```
 
-7. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see three models under DETAILS.
+6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
 Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
 
