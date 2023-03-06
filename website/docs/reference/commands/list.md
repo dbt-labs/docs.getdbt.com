@@ -71,12 +71,28 @@ $ dbt ls --select snowplow.* --output json
 ```
 
 **Listing JSON output with custom keys**
+
+<VersionBlock lastVersion="1.4">
+
 ```
-$ dbt ls --select snowplow.* --output json --output-keys name description
+$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
 ```
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```
+$ dbt ls --select snowplow.* --output json --output-keys name resource_type description
+{"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
+{"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
+...
+```
+
+</VersionBlock>
+
 
 **Listing file paths**
 ```

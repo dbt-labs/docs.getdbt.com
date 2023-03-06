@@ -36,6 +36,16 @@ const sidebarSettings = {
             },
             {
               type: "category",
+              label: "PrivateLink",
+              items: [
+                "docs/get-started/privatelink/about-privatelink",
+                "docs/get-started/privatelink/snowflake-privatelink",
+                "docs/get-started/privatelink/redshift-privatelink",
+                "docs/get-started/privatelink/databricks-privatelink",
+              ],
+            },
+            {
+              type: "category",
               label: "Learning more",
               items: [
                 "docs/get-started/learning-more/using-jinja",
@@ -209,8 +219,11 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
+            "docs/deploy/webhooks",
+            "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
+            "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
           ],
@@ -222,61 +235,67 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [
-        "docs/collaborate/environments",
-        {
-          type: "category",
-          label: "Git version control",
-          items: [
-            "docs/collaborate/git-version-control",
-            "docs/collaborate/git/version-control-basics",
-            "docs/collaborate/git/managed-repository",
-            "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",
-            {
-              type: "category",
-              label: "Supported git providers",
-              items: [
-                "docs/collaborate/git/connect-github",
-                "docs/collaborate/git/connect-gitlab",
-                {
-                  type: "category",
-                  label: "Azure DevOps",
-                  items: [
-                    "docs/collaborate/git/connect-azure-devops",
-                    "docs/collaborate/git/setup-azure",
-                    "docs/collaborate/git/authenticate-azure",
-                  ],
-                },
-                "docs/collaborate/git/import-a-project-by-git-url",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Document your dbt projects",
-          items: [
-            "docs/collaborate/documentation",
-            "docs/collaborate/build-and-view-your-docs",
-          ],
-        },
+      items: [{
+        type: "category",
+        label: "Environments",
+        items: [
+          "docs/collaborate/environments/environments-in-dbt",
+          "docs/collaborate/environments/dbt-cloud-environments",
+          "docs/collaborate/environments/dbt-core-environments",
+        ],
+      },
+      {
+        type: "category",
+        label: "Git version control",
+        items: [
+          "docs/collaborate/git-version-control",
+          "docs/collaborate/git/version-control-basics",
+          "docs/collaborate/git/managed-repository",
+          "docs/collaborate/git/pr-template",
+          "docs/collaborate/git/merge-conflicts",
+          {
+            type: "category",
+            label: "Supported git providers",
+            items: [
+              "docs/collaborate/git/connect-github",
+              "docs/collaborate/git/connect-gitlab",
+              {
+                type: "category",
+                label: "Azure DevOps",
+                items: [
+                  "docs/collaborate/git/connect-azure-devops",
+                  "docs/collaborate/git/setup-azure",
+                  "docs/collaborate/git/authenticate-azure",
+                ],
+              },
+              "docs/collaborate/git/import-a-project-by-git-url",
+            ],
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Document your dbt projects",
+        items: [
+          "docs/collaborate/documentation",
+          "docs/collaborate/build-and-view-your-docs",
+        ],
+      },
 
-        {
-          type: "category",
-          label: "Manage access",
-          items: [
-            "docs/collaborate/manage-access/about-access",
-            "docs/collaborate/manage-access/seats-and-users",
-            {
-              type: "category",
-              label: "Permissions",
-              items: [
-                "docs/collaborate/manage-access/self-service-permissions",
-                "docs/collaborate/manage-access/enterprise-permissions",
-              ],
-            },
-
+      {
+        type: "category",
+        label: "Manage access",
+        items: [
+          "docs/collaborate/manage-access/about-access",
+          "docs/collaborate/manage-access/seats-and-users",
+          {
+            type: "category",
+            label: "Permissions",
+            items: [
+              "docs/collaborate/manage-access/self-service-permissions",
+              "docs/collaborate/manage-access/enterprise-permissions",
+            ],
+          },
             {
               type: "category",
               label: "Single sign-on",
@@ -298,6 +317,15 @@ const sidebarSettings = {
             "docs/collaborate/manage-access/audit-log",
           ],
         }, // Manage access
+        {
+          type: "category",
+          label: "Publishing models",
+          items: [
+            "docs/collaborate/publish/model-contracts",
+            "docs/collaborate/publish/model-access",
+            "docs/collaborate/publish/model-versions",
+          ],
+        }, // publishing models
       ],
     },
     {
@@ -347,40 +375,6 @@ const sidebarSettings = {
           type: "autogenerated",
           dirName: "faqs",
         },
-      ],
-    },
-  ],
-  "dbt Cloud": [
-    {
-      type: "category",
-      label: "Overview",
-      link: { type: "doc", id: "docs/dbt-cloud/cloud-overview" },
-      items: [],
-    },
-    {
-      type: "category",
-      label: "dbt Cloud IDE",
-      items: ["docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide"],
-    },
-    {
-      type: "category",
-      label: "Configuring dbt Cloud",
-      items: [
-        "docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version",
-      ],
-    },
-    {
-      type: "category",
-      label: "Using dbt Cloud",
-      link: {
-        type: "generated-index",
-        title: "Using dbt Cloud",
-        description: "Learn how you can use dbt Cloud.",
-        slug: "/docs/dbt-cloud",
-      },
-      items: [
-        "docs/dbt-cloud/using-dbt-cloud/artifacts",
-        "docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab",
       ],
     },
   ],
@@ -449,6 +443,7 @@ const sidebarSettings = {
           items: [
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
+            "reference/resource-properties/constraints",
             "reference/resource-properties/description",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
@@ -462,6 +457,7 @@ const sidebarSettings = {
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
             "reference/resource-configs/full_refresh",
+            "reference/resource-configs/contract",
             "reference/resource-configs/grants",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
@@ -719,6 +715,34 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
           ],
         },
+        {
+          type: "category",
+          label: "Materializations best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
+          },
+          items: [
+            "guides/best-practices/materializations/materializations-guide-2-available-materializations",
+            "guides/best-practices/materializations/materializations-guide-3-configuring-materializations",
+            "guides/best-practices/materializations/materializations-guide-4-incremental-models",
+            "guides/best-practices/materializations/materializations-guide-5-best-practices",
+            "guides/best-practices/materializations/materializations-guide-6-examining-builds",
+            "guides/best-practices/materializations/materializations-guide-7-conclusion",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Cloud Environment best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/environment-setup/1-env-guide-overview",
+          },
+          items: [
+            "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
+          ],
+        },
         "guides/best-practices/debugging-errors",
         "guides/best-practices/writing-custom-generic-tests",
       ],
@@ -761,6 +785,24 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
+        {
+          type: "category",
+          label: "Webhooks with dbt Cloud and SaaS apps",
+          link: {
+            type: "generated-index",
+            title: "Use dbt Cloud's webhooks with other SaaS apps",
+            description:
+              "Learn how to use webhooks to trigger actions in other tools by using Zapier or a serverless platform.",
+            slug: "/guides/orchestration/webhooks",
+          },
+          items: [
+            {
+              type: "autogenerated",
+              dirName: "guides/orchestration/webhooks",
+            },
+          ],
+        },
+
       ],
     },
     {
@@ -821,8 +863,7 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "dbt Ecosystem guides",
-        description:
-          "Learn about the dbt ecosystem and how to build with dbt.",
+        description: "Learn about the dbt ecosystem and how to build with dbt.",
         slug: "/guides/dbt-ecosystem/",
       },
       items: [
@@ -843,15 +884,25 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
           ],
         },
+        {
+          type: "category",
+          label: "Databricks and dbt",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+          },
+          items: [
+            "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
+            "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+          ],
+        },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
-  {
+    {
       type: "category",
       label: "Advanced",
-      items: [
-        "guides/advanced/creating-new-materializations",
-      ],
+      items: ["guides/advanced/creating-new-materializations"],
     },
     {
       type: "category",
@@ -943,7 +994,8 @@ const sidebarSettings = {
       link: {
         type: "generated-index",
         title: "SQL Reference",
-        description: "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
+        description:
+          "The SQL Reference is a collection of SQL functions and keywords that you can use during your daily data work.",
         slug: "/sql-reference",
       },
       items: [
@@ -1046,10 +1098,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Other",
-          items: [
-            "sql-reference/other/cast",
-            "sql-reference/other/comments",
-          ],
+          items: ["sql-reference/other/cast", "sql-reference/other/comments"],
         },
       ],
     },

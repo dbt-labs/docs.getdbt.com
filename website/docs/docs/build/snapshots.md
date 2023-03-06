@@ -247,7 +247,7 @@ Rows that are deleted from the source query are not invalidated by default. With
 
 This configuration is not a different strategy as described above, but is an additional opt-in feature. It is not enabled by default since it alters the previous behavior.
 
-For this configuration to work, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
+For this configuration to work with the `timestamp` strategy, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
 
 **Example Usage**
 

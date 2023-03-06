@@ -3,7 +3,7 @@ title: "About deployments"
 id: "deployments"
 ---
 
-Running dbt in production means setting up a system to run a _dbt job on a schedule_, rather than running dbt commands manually from the command line. Your production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments).
+Running dbt in production means setting up a system to run a _dbt job on a schedule_, rather than running dbt commands manually from the command line. Your production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments/environments-in-dbt).
 
 In addition to setting up a schedule, there are other considerations when setting up dbt to run in production:
 
@@ -36,6 +36,10 @@ For more information on these deployment models, refer to:
 - [Single Tenant](/docs/deploy/single-tenant)
 
 If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
+
+### Webhooks for your jobs
+
+With [webhooks in dbt Cloud](/docs/deploy/webhooks), you can send events (notifications) about your dbt jobs to your other systems like Slack, PagerDuty, and so on. This can be useful for automating some of your workflows. 
 
 ## Airflow
 
@@ -97,3 +101,4 @@ Cron is a decent way to schedule bash commands. However, while it may seem like 
 
 ## Related docs
 - [What are the dbt commands you run in your production deployment of dbt?](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366)
+
