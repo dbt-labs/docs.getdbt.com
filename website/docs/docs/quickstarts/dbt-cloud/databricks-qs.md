@@ -4,15 +4,17 @@ description: "Quickstart for dbt Cloud and Databricks."
 id: "databricks"
 sidebar_label: "Databricks quickstart"
 ---
-For the Databricks project in the quickstart guide, you'll learn how to:
+For the Databricks project in the quickstart guide, you'll learn how to use dbt Cloud with Databricks.
+
+This quickstart will show you how to: 
 
 - Create a Databricks workspace.
 - Load sample data into your Databricks account.
 - Connect dbt Cloud to Databricks.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
-- Add tests to your models
-- Document your models
-- Schedule a job to run
+- Add tests to your models.
+- Document your models.
+- Schedule a job to run.
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.

@@ -4,7 +4,10 @@ description: "Quickstart for dbt Cloud and Redshift."
 id: "redshift"
 sidebar_label: "Redshift quickstart"
 ---
-For the Redshift project in the quickstart guide, you'll learn how to:
+
+For the Redshift project in the quickstart guide, you'll learn how to use dbt Cloud with Redshift.
+
+This quickstart will show you how to: 
 
 - Set up a Redshift cluster.
 - Load sample data into your Redshift account.
