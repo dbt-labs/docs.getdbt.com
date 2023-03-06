@@ -82,6 +82,6 @@ dbt-exasol:
 - **`encryption`** &mdash; default: False
 - **`protocol_version`** &mdash; default: v3
 - **`row_separator`** &mdash; default: CRLF for windows - LF otherwise
-- **`timestamp_format`** &mdash; default: YYYY-MM-DDTHH:MI:SS.FF6
+- **`timestamp_format`** &mdash; default: `YYYY-MM-DDTHH:MI:SS.FF6`
 
 
