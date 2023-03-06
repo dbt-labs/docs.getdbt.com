@@ -59,12 +59,87 @@ We provide [a graphical explorer](https://metadata.cloud.getdbt.com/graphql) for
 ### Retention limits
 You can use the metadata API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
 
-*We are continuously expanding the capabilities of the metadata API and welcome your feedback and suggestions at cloudAPIs@dbtlabs.com.*
+## Product Roadmap
+
+The product roadmap for the Metadata API focuses on three use cases to help organizations analyze and improve their data using the outputs of dbt execution:
 
 
-## Roadmap
+- Discover &mdash; Enhance the discovery experience for users and make it easier to access the latest production state of a project
+- Quality &mdash; Improve data quality and make it easier for data teams to configure dbt and monitor issues in dbt Cloud and integrated tools
+ - Operations &mdash; Optimize dbt operations by enabling API users to access and query richer information about execution on dbt Cloud in more ergonomic ways
 
-ADD ROADMAP INFO HERE AND RESEARCH IF THERE ARE WAYS TO MAKE DYNAMIC
+
+<!--- tabs for discovery, quality, operations --->
+<Tabs>
+
+<TabItem value="discovery" label="Discovery">
+
+To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in the first half of 2023. 
+
+- Q1 &mdash; dbt v1.5: New model fields like owner, version, and constraints.
+- Q2 &mdash; dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage.
+- Q2 &mdash; dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases.
+- Q2 &mdash; Pagination for manageable responses and performance when querying long lists of dbt objects.
+- Q2 &mdash; Get the DAG state based on its environment’s latest production runs instead of querying per job.
+- Q3 &mdash; Access additional information about the project from the dbt logs. For instance, get catalog info without needing to generate docs.
+
+
+</TabItem>
+
+<TabItem value="quality" label="Quality">
+
+To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools.  
+
+- Q1 &mdash; Metadata API support for dbt Core 1.5 elements of data contracts like model owners and constraints.
+- Q4 &mdash; Improvements to webhooks to support notifications about tests, freshness, and events per model rather than per run.
+- Q4 &mdash; Streaming results so users can access real-time metadata during a run.
+- Q4 &mdash; Integrate with model freshness SLAs for intelligent scheduling.
+
+</TabItem>
+
+<TabItem value="operations" label="Operations">
+
+
+To improve dbt operations, we’ll enable API users to access and query richer information about execution on dbt Cloud in more ergonomic ways. This is our primary focus in the second half of 2023. 
+
+- Q3 &mdash; Enable easier queries across runs to analyze performance over time, such as time aggregation for execution results of individual models and the project as a whole.
+- Q3 &mdash; Provide granular execution information from dbt Cloud, such as invocation history.
+- Q3 &mdash; Improvements to webhooks for notifications about run events.
+- Q4 &mdash; Streaming results to see the DAG as it builds during a run.
+
+</TabItem>
+</Tabs>
+
+If you have ideas about the use cases and roadmap or want to share feedback in general, please reach out to [CloudAPIs@dbtlabs.com](mailto:CloudAPIs@dbtlabs.com) or join the conversation in the [#metadata channel](https://getdbt.slack.com/archives/C01F91XJ5PY) in dbt Community Slack.
+
+
+**Discovery**
+To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in the first half of 2023. 
+
+- [Q2] Pagination for manageable responses and performance when querying long lists of dbt objects.
+- [Q2] Get the DAG state based on its environment’s latest production runs instead of querying per job.
+- [Q3] Access additional information about the project from the dbt logs. For instance, get catalog info without needing to generate docs.
+- [Q1] dbt v1.5: New model fields like owner, version, and constraints.
+- [Q2] dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage.
+- [Q2] dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases.
+
+**Quality**
+
+To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools.  
+
+- [Q1] Metadata API support for dbt Core 1.5 elements of data contracts like model owners and constraints.
+- [Q4] Improvements to webhooks to support notifications about tests, freshness, and events per model rather than per run.
+- [Q4] Streaming results so users can access real-time metadata during a run.
+- [Q4] Integrate with model freshness SLAs for intelligent scheduling.
+
+**Operations**
+
+To improve dbt operations, we’ll enable API users to access and query richer information about execution on dbt Cloud in more ergonomic ways. This is our primary focus in the second half of 2023. 
+
+- [Q3] Enable easier queries across runs to analyze performance over time, such as time aggregation for execution results of individual models and the project as a whole.
+- [Q3] Provide granular execution information from dbt Cloud, such as invocation history.
+- [Q3] Improvements to webhooks for notifications about run events.
+- [Q4] Streaming results to see the DAG as it builds during a run.
 
 
 
