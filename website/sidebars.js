@@ -4,148 +4,110 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
-      label: "dbt Cloud",
+      label: "About dbt Cloud",
       items: [
-        {
-          type: "category",
-          label: "About dbt Cloud",
-          items: [
             "docs/cloud/about-cloud/dbt-cloud-features",
             "docs/cloud/about-cloud/architecture",
             "docs/cloud/about-cloud/single-tenant",
             "docs/cloud/about-cloud/multi-tenant",
             "docs/cloud/about-cloud/regions-ip-addresses",
-          ],
-        }, // about dbt cloud
-
-        {
-          type: "category",
-          label: "Connect data platform",
-          items: [
-            "docs/cloud/connect-data-platform/connect-your-database",
-            "docs/cloud/connect-data-platform/connect-snowflake",
-            "docs/cloud/connect-data-platform/connect-bigquery",
-          ],
-        },
-
-        {
-          type: "category",
-          label: "Manage access",
-          items: [
-            "docs/cloud/manage-access/about-access",
-            "docs/cloud/manage-access/seats-and-users",
-            {
-              type: "category",
-              label: "Permissions",
-              items: [
-                "docs/cloud/manage-access/self-service-permissions",
-                "docs/cloud/manage-access/enterprise-permissions",
-              ],
-            },
-
-            {
-              type: "category",
-              label: "Single sign-on",
-              items: [
-                "docs/cloud/manage-access/sso-overview",
-                "docs/cloud/manage-access/set-up-sso-saml-2.0",
-                "docs/cloud/manage-access/set-up-sso-okta",
-                "docs/cloud/manage-access/set-up-sso-google-workspace",
-                "docs/cloud/manage-access/set-up-sso-azure-active-directory",
-              ],
-            }, // SSO
-            {
-              type: "category",
-              label: "OAuth with data platforms",
-              items: [
-                "docs/cloud/manage-access/set-up-snowflake-oauth",
-                "docs/cloud/manage-access/set-up-bigquery-oauth",
-              ],
-            }, // oauth
-            "docs/cloud/manage-access/audit-log",
-          ],
-        }, // Manage access
-
-        {
-          type: "category",
-          label: "Configure Git",
-          items: [
-            "docs/cloud/git/connect-github",
-            "docs/cloud/git/connect-gitlab",
-            {
-              type: "category",
-              label: "Azure DevOps",
-              items: [
-                "docs/cloud/git/connect-azure-devops",
-                "docs/cloud/git/setup-azure",
-                "docs/cloud/git/authenticate-azure",
-              ],
-            },
-            "docs/cloud/git/import-a-project-by-git-url",
-          ],
-        }, // Supported Git providers
-        
-        {
-          type: "category",
-          label: "Multi-tenant PrivateLink",
-          items: [
-            "docs/cloud/privatelink/about-privatelink",
-            "docs/cloud/privatelink/snowflake-privatelink",
-            "docs/cloud/privatelink/redshift-privatelink",
-            "docs/cloud/privatelink/databricks-privatelink",
-          ],
-        }, // PrivateLink
-
       ],
-    }, // Cloud directory
+    }, // About dbt Cloud directory
     {
       type: "category",
-      label: "Get started with dbt",
+      label: "Set up dbt",
       collapsed: true,
       items: [
         "docs/get-started/getting-started/overview",
         {
           type: "category",
-          label: "Get started with dbt Cloud",
+          label: "dbt Cloud",
           collapsed: true,
           items: [
             "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
-              label: "Getting set up",
+              label: "Connect data platform",
               items: [
-                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
-                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
-                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
+                "docs/cloud/connect-data-platform/connect-your-database",
+                "docs/cloud/connect-data-platform/connect-snowflake",
+                "docs/cloud/connect-data-platform/connect-bigquery",
               ],
             },
             {
               type: "category",
-              label: "Building your first project",
-
+              label: "Manage access",
               items: [
-                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
-                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
+                "docs/cloud/manage-access/about-access",
+                "docs/cloud/manage-access/seats-and-users",
+                {
+                  type: "category",
+                  label: "Permissions",
+                  items: [
+                    "docs/cloud/manage-access/self-service-permissions",
+                    "docs/cloud/manage-access/enterprise-permissions",
+                  ],
+                },
+    
+                {
+                  type: "category",
+                  label: "Single sign-on",
+                  items: [
+                    "docs/cloud/manage-access/sso-overview",
+                    "docs/cloud/manage-access/set-up-sso-saml-2.0",
+                    "docs/cloud/manage-access/set-up-sso-okta",
+                    "docs/cloud/manage-access/set-up-sso-google-workspace",
+                    "docs/cloud/manage-access/set-up-sso-azure-active-directory",
+                  ],
+                }, // SSO
+                {
+                  type: "category",
+                  label: "OAuth with data platforms",
+                  items: [
+                    "docs/cloud/manage-access/set-up-snowflake-oauth",
+                    "docs/cloud/manage-access/set-up-bigquery-oauth",
+                  ],
+                }, // oauth
+                "docs/cloud/manage-access/audit-log",
               ],
-            },
-
+            }, // Manage access
+    
             {
               type: "category",
-              label: "Learning more",
+              label: "Configure Git",
               items: [
-                "docs/get-started/learning-more/using-jinja",
-                "docs/get-started/learning-more/refactoring-legacy-sql",
+                "docs/cloud/git/connect-github",
+                "docs/cloud/git/connect-gitlab",
+                {
+                  type: "category",
+                  label: "Azure DevOps",
+                  items: [
+                    "docs/cloud/git/connect-azure-devops",
+                    "docs/cloud/git/setup-azure",
+                    "docs/cloud/git/authenticate-azure",
+                  ],
+                },
+                "docs/cloud/git/import-a-project-by-git-url",
               ],
-            }, 
+            }, // Supported Git providers
+            
+            {
+              type: "category",
+              label: "Multi-tenant PrivateLink",
+              items: [
+                "docs/cloud/privatelink/about-privatelink",
+                "docs/cloud/privatelink/snowflake-privatelink",
+                "docs/cloud/privatelink/redshift-privatelink",
+                "docs/cloud/privatelink/databricks-privatelink",
+              ],
+            }, // PrivateLink
             "docs/get-started/develop-in-the-cloud",
             "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
           type: "category",
-          label: "Get started with dbt Core",
+          label: "dbt Core",
           collapsed: true,
           items: [
             "docs/get-started/getting-started-dbt-core",
