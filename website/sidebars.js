@@ -220,10 +220,11 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
-            "docs/deploy/artifacts",
             "docs/deploy/webhooks",
+            "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
+            "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
           ],
