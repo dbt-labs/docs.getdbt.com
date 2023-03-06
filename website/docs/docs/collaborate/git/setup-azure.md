@@ -31,7 +31,7 @@ Once the Azure AD app is added to dbt Cloud and the service user is connected, t
 4. Provide a name for your app. We recommend using, "dbt Labs Azure DevOps App".
 5. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)** as the Supported Account Types.
 Many customers ask why they need to select Multitenant instead of Single tenant, and they frequently get this step wrong. Microsoft considers Azure DevOps (formerly called Visual Studio) and Azure Active Directory as separate tenants, and in order for this Active Directory application to work properly, you must select Multitenant.
-6. Add a redirect URI by selecting **Web** and typing in `https://cloud.getdbt.com/complete/azure_active_directory`. If you have a custom dbt Cloud URL be sure to use the appropriate domain.
+6. Add a redirect URI by selecting **Web** and typing in `https://YOUR_ACCESS_URL/complete/azure_active_directory`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
 7. Click **Register**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/ADnavigation.gif" title="Navigating to the Azure AD app registrations"/>
@@ -59,8 +59,8 @@ You also need to add another redirect URI to your Azure AD application. This red
 
 1. Navigate to your Azure AD application.
 2. Select the link next to **Redirect URIs**
-3. Click **Add URI** and add the URI, making sure to use the appropriate domain if you have a custom dbt Cloud URL:
-`https://cloud.getdbt.com/complete/azure_active_directory_service_user`
+3. Click **Add URI** and add the URI, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan:
+`https://YOUR_ACCESS_URL/complete/azure_active_directory_service_user`
 4. Click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/redirect-uri.gif" title="Adding the Service User redirect URI"/>
@@ -125,6 +125,26 @@ The service user's permissions will also power which repositories a team can sel
 <TabItem value="mfa" label="Turn off MFA for service user">
 
 While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
+
+As a result, MFA must be explicity disabled in the Office 365 or Azure AD administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
+
+**To disable MFA for a single user using the Office 365 Administration console:**
+
+- Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
+
+**To use the Azure AD interface:**
+
+Note, this procedure involves disabling Security Defaults on AAD.
+
+1. Go to the AAD Admin Center. Scroll down to Azure Active Directory ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
+2. Select **Save**
+3. Go to **Azure Active Directory** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
+4. The link will take you to a "multi-factor authentication" page.
+5. If MFA is enabled for users, select the user(s) and select **Disable** under **Quick steps** 
+6. Select **Yes** to confirm your changes 
+
+To re-enable MFA for that user, select them again and click **Enable**. Note you may have to go through MFA setup for that user after enabling it.
+
 </TabItem>
 
 </Tabs>

@@ -1,4 +1,7 @@
 
+/docs/get-started/develop-in-the-cloud#set-up-environments  /docs/get-started/develop-in-the-cloud  301
+/docs/get-started/develop-in-the-cloud#developer-credentials  /docs/get-started/develop-in-the-cloud 301
+/docs/getting-started/develop-in-the-cloud#setting-up-developer-credentials  /docs/get-started/develop-in-the-cloud  301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-redshift-and-postgres  /docs/get-started/connect-your-database#connecting-to-postgres-redshift-and-alloydb 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-snowflake /docs/get-started/connect-your-database#connecting-to-snowflake 301
 
@@ -105,6 +108,7 @@
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-azure-devops /docs/collaborate/git/connect-azure-devops 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-gitlab /docs/collaborate/git/connect-gitlab 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application /docs/collaborate/git/connect-github 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/setting-up / 302
 /docs/dbt-cloud/cloud-ide/handling-merge-conflicts /docs/collaborate/git/resolve-merge-conflicts 301
 /docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide /docs/collaborate/cloud-build-and-view-your-docs 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories /docs/collaborate/git/pr-template 301
@@ -159,6 +163,9 @@
 /docs/building-a-dbt-project/using-sources /docs/build/sources 301
 /docs/building-a-dbt-project/projects /docs/build/projects 301
 /docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
+/docs/building-a-dbt-project/macros  /docs/guides/building-packages 301
+/docs/building-a-dbt-project/setting-up /docs/guides/building-packages 301
+/docs/building-a-dbt-project/dbt-jinja-functions /docs/guides/building-packages 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions /docs/dbt-versions/upgrade-core-in-cloud 301
 /docs/core-versions /docs/dbt-versions/core 301
 /docs/dbt-cloud/cloud-dbt-cloud-support /docs/dbt-support 301
@@ -220,7 +227,9 @@
 /docs/clean /reference/commands/clean 302
 /docs/cloud-choosing-a-dbt-version /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version 302
 /docs/cloud-configuring-dbt-cloud /docs/dbt-cloud/cloud-configuring-dbt-cloud 302
-/docs/cloud-enabling-continuous-integration-with-github /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github 302
+/docs/cloud-enabling-continuous-integration-with-github   /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github   /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration 302
+/docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github/  /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration 302
 /docs/cloud-generating-documentation /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation 302
 /docs/cloud-import-a-project-by-git-url /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url 302
 /docs/cloud-installing-the-github-application /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application 302
@@ -246,7 +255,9 @@
 /docs/contributor-license-agreements /docs/contributing/contributor-license-agreements 302
 /docs/creating-a-project /docs/building-a-dbt-project/dbt-projects/creating-a-project 302
 /docs/creating-new-materializations /guides/legacy/creating-new-materializations 302
+/docs/creating-date-partitioned-tables /docs/guides/database-specific-guides/creating-date-partitioned-tables 302
 /docs/custom-schema-tests /guides/legacy/writing-custom-generic-tests 302
+/docs/database-specific-guides / 302
 /docs/dbt-api /docs/running-a-dbt-project/dbt-api 302
 /docs/dbt-cloud-enterprise /docs/dbt-cloud/dbt-cloud-enterprise 302
 /docs/dbt-cloud/cloud-configuring-repositories /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-configuring-repositories 302
@@ -299,12 +310,14 @@
 /docs/log /docs/writing-code-in-dbt/jinja-context/log 302
 /docs/macos /dbt-cli/installation 302
 /docs/macros /docs/building-a-dbt-project/macros 302
+/docs/maintaining-multiple-environments-with-dbt / 302
 /docs/managing-environments /guides/legacy/managing-environments 302
 /docs/materializations /docs/building-a-dbt-project/building-models/materializations 302
 /docs/model-selection-syntax /reference/node-selection/syntax 302
 /docs/modules /docs/writing-code-in-dbt/jinja-context/modules 302
 /docs/on-run-end-context /docs/writing-code-in-dbt/jinja-context/on-run-end-context 302
 /docs/overview /docs/introduction 302
+/docs/performance-optimization / 302
 /docs/package-management /docs/building-a-dbt-project/package-management 302
 /docs/profile-bigquery /reference/warehouse-profiles/bigquery-profile 302
 /docs/profile-mssql /reference/warehouse-profiles/mssql-profile 302
@@ -318,6 +331,7 @@
 /docs/redshift-v2 /reference/warehouse-profiles/redshift-profile 302
 /docs/ref /docs/writing-code-in-dbt/jinja-context/ref 302
 /docs/requiring-specific-dbt-versions /docs/building-a-dbt-project/dbt-projects/requiring-specific-dbt-versions 302
+/docs/requiring-dbt-versions / 302
 /docs/return /docs/writing-code-in-dbt/jinja-context/return 302
 /docs/rpc /reference/commands/rpc 302
 /docs/run /reference/commands/run 302
@@ -398,7 +412,9 @@
 /docs/var /docs/writing-code-in-dbt/jinja-context/var 302
 /docs/version /reference/global-cli-flags#version 302
 /docs/videos /guides/legacy/videos 302
+/docs/warehouse-specific-configurations / 302
 /docs/windows /dbt-cli/installation 302
+/docs/writing-code-in-dbt/api-variable / 302
 /docs/writing-code-in-dbt/class-reference /reference/dbt-classes 302
 /docs/writing-code-in-dbt/extending-dbts-programming-environment/creating-new-materializations /guides/legacy/creating-new-materializations 302
 /docs/writing-code-in-dbt/extending-dbts-programming-environment/custom-schema-tests /guides/legacy/writing-custom-schema-tests 302
@@ -442,8 +458,10 @@
 /faqs/getting-help/ /guides/legacy/getting-help 302
 /migration-guide/upgrading-to-0-17-0 /guides/migration/versions 302
 /migration-guide/upgrading-to-0-18-0 /guides/migration/versions 302
+/reference / 302
 /reference/accounts /dbt-cloud/api 302
 /reference/api /dbt-cloud/api 302
+/reference/bigquery-profile /reference/warehouse-profile/bigquery-profile 301
 /reference/connections /dbt-cloud/api 302
 /reference/data-test-configs /reference/test-configs 302
 /reference/declaring-properties /reference/configs-and-properties 302
@@ -485,6 +503,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/dbt-cloud/cloud-changelog /docs/dbt-cloud/release-notes 302
 /faqs/all /docs/faqs 301!
 /faqs/_ /docs/faqs/:splat 301
+/faqs/dbt-jinja-functions /reference/dbt-jinja-functions 301
 /tutorial/learning-more/_ /guides/getting-started/learning-more/:splat 301
 /tutorial/getting-set-up/\_ /guides/getting-started/getting-set-up/:splat 301
 /tutorial/building-your-first-project/\* /guides/getting-started/building-your-first-project/:splat 301
@@ -496,6 +515,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/build/bigquery-profile /reference/resource-configs/bigquery-configs 301
 /reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
 /date-trunc-sql /blog/date-trunc-sql 301
+/docs/using-hooks / 302
 
 # supported data platforms page
 
@@ -615,4 +635,12 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 # Faq docs
 /faqs/dbt-jinja-functions /reference/dbt-jinja-functions 301
 
-/website/docs/docs/contributing/documenting-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301
+/website/docs/docs/contributing/documenting-a-new-adapter.md /docs/contributing/documenting-a-new-adapter 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/docs/guides/migration-guide/upgrading-to-0-21-0 / 302
+
+/v0.8/reference / 301
+/v0.10/reference / 301
+/v0.12/reference / 301
+/v0.13/reference / 301 
+/v0.13/docs/requiring-dbt-versions / 301
+/v0.14/docs/cloud-developer-ide / 301

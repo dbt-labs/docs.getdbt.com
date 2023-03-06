@@ -36,6 +36,16 @@ const sidebarSettings = {
             },
             {
               type: "category",
+              label: "PrivateLink",
+              items: [
+                "docs/get-started/privatelink/about-privatelink",
+                "docs/get-started/privatelink/snowflake-privatelink",
+                "docs/get-started/privatelink/redshift-privatelink",
+                "docs/get-started/privatelink/databricks-privatelink",
+              ],
+            },
+            {
+              type: "category",
               label: "Learning more",
               items: [
                 "docs/get-started/learning-more/using-jinja",
@@ -209,10 +219,11 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
-            "docs/deploy/artifacts",
             "docs/deploy/webhooks",
+            "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
+            "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
           ],
@@ -225,67 +236,66 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate with others",
       items: [{
-          type: "category",
-          label: "Environments",
-          items: [
-            "docs/collaborate/environments/environments-in-dbt",
-            "docs/collaborate/environments/dbt-cloud-environments",
-            "docs/collaborate/environments/dbt-core-environments",
-          ],
-        },
-        {
-          type: "category",
-          label: "Git version control",
-          items: [
-            "docs/collaborate/git-version-control",
-            "docs/collaborate/git/version-control-basics",
-            "docs/collaborate/git/managed-repository",
-            "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",
-            {
-              type: "category",
-              label: "Supported git providers",
-              items: [
-                "docs/collaborate/git/connect-github",
-                "docs/collaborate/git/connect-gitlab",
-                {
-                  type: "category",
-                  label: "Azure DevOps",
-                  items: [
-                    "docs/collaborate/git/connect-azure-devops",
-                    "docs/collaborate/git/setup-azure",
-                    "docs/collaborate/git/authenticate-azure",
-                  ],
-                },
-                "docs/collaborate/git/import-a-project-by-git-url",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Document your dbt projects",
-          items: [
-            "docs/collaborate/documentation",
-            "docs/collaborate/build-and-view-your-docs",
-          ],
-        },
+        type: "category",
+        label: "Environments",
+        items: [
+          "docs/collaborate/environments/environments-in-dbt",
+          "docs/collaborate/environments/dbt-cloud-environments",
+          "docs/collaborate/environments/dbt-core-environments",
+        ],
+      },
+      {
+        type: "category",
+        label: "Git version control",
+        items: [
+          "docs/collaborate/git-version-control",
+          "docs/collaborate/git/version-control-basics",
+          "docs/collaborate/git/managed-repository",
+          "docs/collaborate/git/pr-template",
+          "docs/collaborate/git/merge-conflicts",
+          {
+            type: "category",
+            label: "Supported git providers",
+            items: [
+              "docs/collaborate/git/connect-github",
+              "docs/collaborate/git/connect-gitlab",
+              {
+                type: "category",
+                label: "Azure DevOps",
+                items: [
+                  "docs/collaborate/git/connect-azure-devops",
+                  "docs/collaborate/git/setup-azure",
+                  "docs/collaborate/git/authenticate-azure",
+                ],
+              },
+              "docs/collaborate/git/import-a-project-by-git-url",
+            ],
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Document your dbt projects",
+        items: [
+          "docs/collaborate/documentation",
+          "docs/collaborate/build-and-view-your-docs",
+        ],
+      },
 
-        {
-          type: "category",
-          label: "Manage access",
-          items: [
-            "docs/collaborate/manage-access/about-access",
-            "docs/collaborate/manage-access/seats-and-users",
-            {
-              type: "category",
-              label: "Permissions",
-              items: [
-                "docs/collaborate/manage-access/self-service-permissions",
-                "docs/collaborate/manage-access/enterprise-permissions",
-              ],
-            },
-
+      {
+        type: "category",
+        label: "Manage access",
+        items: [
+          "docs/collaborate/manage-access/about-access",
+          "docs/collaborate/manage-access/seats-and-users",
+          {
+            type: "category",
+            label: "Permissions",
+            items: [
+              "docs/collaborate/manage-access/self-service-permissions",
+              "docs/collaborate/manage-access/enterprise-permissions",
+            ],
+          },
             {
               type: "category",
               label: "Single sign-on",
@@ -307,6 +317,15 @@ const sidebarSettings = {
             "docs/collaborate/manage-access/audit-log",
           ],
         }, // Manage access
+        {
+          type: "category",
+          label: "Publishing models",
+          items: [
+            "docs/collaborate/publish/model-contracts",
+            "docs/collaborate/publish/model-access",
+            "docs/collaborate/publish/model-versions",
+          ],
+        }, // publishing models
       ],
     },
     {
@@ -424,6 +443,7 @@ const sidebarSettings = {
           items: [
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
+            "reference/resource-properties/constraints",
             "reference/resource-properties/description",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
@@ -437,6 +457,7 @@ const sidebarSettings = {
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
             "reference/resource-configs/full_refresh",
+            "reference/resource-configs/contract",
             "reference/resource-configs/grants",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
@@ -710,6 +731,18 @@ const sidebarSettings = {
             "guides/best-practices/materializations/materializations-guide-7-conclusion",
           ],
         },
+        {
+          type: "category",
+          label: "dbt Cloud Environment best practices",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/environment-setup/1-env-guide-overview",
+          },
+          items: [
+            "guides/best-practices/environment-setup/2-one-deployment-environment",
+            "guides/best-practices/environment-setup/3-many-deployment-environments",
+          ],
+        },
         "guides/best-practices/debugging-errors",
         "guides/best-practices/writing-custom-generic-tests",
       ],
@@ -752,6 +785,24 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
+        {
+          type: "category",
+          label: "Webhooks with dbt Cloud and SaaS apps",
+          link: {
+            type: "generated-index",
+            title: "Use dbt Cloud's webhooks with other SaaS apps",
+            description:
+              "Learn how to use webhooks to trigger actions in other tools by using Zapier or a serverless platform.",
+            slug: "/guides/orchestration/webhooks",
+          },
+          items: [
+            {
+              type: "autogenerated",
+              dirName: "guides/orchestration/webhooks",
+            },
+          ],
+        },
+
       ],
     },
     {
