@@ -65,6 +65,13 @@ callum_mccann:
   name: Callum McCann
   organization: dbt Labs
 
+callie_white:
+  description: Callie White is a Senior Analytics Consultant at Montreal Analytics where she leads projects in partnership with client data teams to achieve the best-practice and best-suited results. She’s also passionate about mentoring developers and demystifying the complexity of a role in data. Callie uses data-driven decision-making in everything she does; mainly to maximize cuddle time with her rescue pup named Snacks, or to scope out her next hiking trip. Montreal Analytics is a full-stack data consultancy servicing North America, and are both a dbt Preferred Consulting Partner and Platinum dbt Certification Award winner. We help organizations on the whole data journey, from strategic advisory to hands-on development and enablement. Whether deploying greenfield data platforms, tackling complex migrations or auditing & refactoring entangled data models, we build scalable solutions for organizations of all sizes. If you are interested in learning more about how we help clients across the modern stack, contact us today.
+  image_url: /img/blog/authors/callie-white.jpg
+  job_title: Analytics Consultant
+  name: Callie White
+  organization: Montreal Analytics
+
 charlie_summers:
   description: Charlie is the Data Engineer Tech Lead at Merit. He introduced Merit to dbt and it's been a fantastic fit for a wide variety of data pipelines. He likes thinking about the future of data - integrating event streams, analyzing encrypted data, capturing fine-grained lineage, and making it easy to build simple apps on top of data warehouses/lakes.
   image_url: /img/blog/authors/charlie-summers.jpeg
@@ -133,6 +140,17 @@ doug_beatty:
   name: Doug Beatty
   organization: dbt Labs
 
+doug_guthrie:
+  image_url: /img/blog/authors/dguthrie.jpeg
+  job_title: Solutions Architect
+  links:
+    - icon: fa-github
+      url: https://github.com/dpguthrie
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/doug-guthrie-07994a48/
+  name: Doug Guthrie
+  organization: dbt Labs
+
 emily_riederer:
   description: Emily Riederer is a Senior Analytics Manager at Capital One where she leads a team delivering a portfolio of data products, enterprise analysis tools, and data science solutions to business partners. As part of the dbt community, she develops and maintains the dbtplyr package. In her spare time, Emily frequently writes about data (see emilyriederer.com, The R Markdown Cookbook, and 97 Things Every Data Engineer Should Know), reviews technical manuscripts for CRC Press, and supports open research software engineering as a member of the rOpenSci editorial board.
   image_url: /img/blog/authors/emily-riederer.jpeg
@@ -183,6 +201,13 @@ jason_ganz:
       url: https://twitter.com/jasnonaz
   name: Jason Ganz
   organization: dbt Labs
+
+jade_milaney:
+  description: Jade Milaney is an Analytics Consultant at Montreal Analytics where in with client data teams to implement data models and data engineering solutions. Jade studied mathematics in university, and has an interest in all things statistics and analytics. Montreal Analytics is a full-stack data consultancy servicing North America, and are both a dbt Preferred Consulting Partner and Platinum dbt Certification Award winner. We help organizations on the whole data journey, from strategic advisory to hands-on development and enablement. Whether deploying greenfield data platforms, tackling complex migrations or auditing & refactoring entangled data models, we build scalable solutions for organizations of all sizes. If you are interested in learning more about how we help clients across the modern stack, contact us today.
+  image_url: /img/blog/authors/jade-milaney.jpg
+  job_title: Analytics Consultant
+  name: Jade Milaney
+  organization: Montreal Analytics
 
 jeremy_cohen:
   image_url: /img/blog/authors/jerco.jpeg

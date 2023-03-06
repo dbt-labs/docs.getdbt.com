@@ -9,6 +9,7 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 import TOCCollapsible from '@theme/TOCCollapsible';
 import styles from './styles.module.css';
+import { DiscourseBlogComments } from '@site/src/components/discourseBlogComments';
 
 /* dbt Customizations:
  * Import global data from plugin
@@ -90,6 +91,8 @@ function BlogPostPageContent({sidebar, children}) {
       )}
 
       <BlogPostItem>{children}</BlogPostItem>
+
+      <DiscourseBlogComments title={frontMatter.title} slug={frontMatter.slug}/>
 
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />

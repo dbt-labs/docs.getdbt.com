@@ -9,7 +9,7 @@ In dbt Cloud, you can import a git repository from any valid git URL that points
 You must use the `git@...` or `ssh:..`. version of your git URL, not the `https://...` version. dbt Cloud uses the SSH protocol to clone repositories, so dbt Cloud will be unable to clone repos supplied with the HTTP protocol.
 
 ## Managing Deploy Keys
-After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. You must provide this Deploy Key in the Repository configuration of your Git host. This Deploy Key should be be configured to allow *read and write access* to the specified repositories.
+After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. You must provide this Deploy Key in the Repository configuration of your Git host. This Deploy Key should be configured to allow *read and write access* to the specified repositories.
 
 **Note**: Each dbt Cloud project will generate a different deploy key when connected to a repo, even if two projects are connected to the same repo. Both deploy keys will need to be supplied to your git provider.
 
@@ -53,13 +53,13 @@ dbt Cloud can work with dbt projects hosted on AWS CodeCommit, but there are som
 
 #### Step 1: Create an AWS User for dbt Cloud
 
-To give dbt Cloud access to your repository, first you'll need to create an AWS IAM user for dbt Cloud. Log into the AWS Console and navigate to the IAM section. Click "Add User", and create a new user with "Programmatic Access".
+To give dbt Cloud access to your repository, first you'll need to create an AWS IAM user for dbt Cloud. Log into the AWS Console and navigate to the IAM section. Click "Add User", and create a new user by entering a unique and meaningful user name.
 
 This user will need clone access to your repository. The easiest way to set that up is to add the "AWSCodeCommitPowerUser" permission during setup.
 
 #### Step 2: Import your repository by name
 
-Open the AWS CodeCommit console and choose your repository. Copy the SSH URL from that page. Next, navigate to the "New Repository" page in dbt Cloud. Choose the "Git URL" tab, and paste in the SSH URL you copied from the console.
+Open the AWS CodeCommit console and choose your repository. Copy the SSH URL from that page. Next, navigate to the "New Repository" page in dbt Cloud. Choose the "Git Clone" tab, and paste in the SSH URL you copied from the console.
 
 In the newly created Repository details page, you'll see a "Deploy Key" field. Copy the contents of this field as you'll need it for step 3.
 

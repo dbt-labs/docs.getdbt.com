@@ -247,7 +247,7 @@ Rows that are deleted from the source query are not invalidated by default. With
 
 This configuration is not a different strategy as described above, but is an additional opt-in feature. It is not enabled by default since it alters the previous behavior.
 
-For this configuration to work, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
+For this configuration to work with the `timestamp` strategy, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
 
 **Example Usage**
 
@@ -373,7 +373,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 
 <br/>
 
-For the `check` strategy, the current timestamp is used to populate each column
+For the `check` strategy, the current timestamp is used to populate each column. If configured, the `check` strategy uses the `updated_at` column instead, as with the timestamp strategy.
 
 <details>
 <summary>  Details for the check strategy </summary>

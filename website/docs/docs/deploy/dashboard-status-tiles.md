@@ -4,7 +4,6 @@ id: "dashboard-status-tiles"
 description: "Embed Status Tiles in your dashboards to provide consumers with contextual information about the quality and freshness of data."
 ---
 
-## Overview
 In dbt Cloud, the [Metadata API](/docs/dbt-cloud-apis/metadata-api) can power Dashboard Status Tiles.  A Dashboard Status Tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
 
 ## Functionality
@@ -61,3 +60,13 @@ https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_
 ```
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png"/>
+
+### Sigma
+
+Sigma does not require you to embed an iFrame. Add a new embedded UI element in your Sigma Workbook in the following format:
+
+```
+https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
+```
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/sigma-embed.gif"/>

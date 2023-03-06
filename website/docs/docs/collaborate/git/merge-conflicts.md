@@ -16,7 +16,7 @@ You can experience a merge conflict in two possible ways:
 
 The way to [resolve](#resolve-merge-conflicts) either scenario will be exactly the same. 
 
-For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and push**. 
+For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and sync**. 
 
 The dbt Cloud IDE will display:
 
