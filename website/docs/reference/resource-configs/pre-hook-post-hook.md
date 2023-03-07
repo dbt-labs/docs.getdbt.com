@@ -277,11 +277,11 @@ select ...
 {{
   config(
     pre_hook={
-      "SQL": "SQL-statement",
+      "sql": "SQL-statement",
       "transaction": False
     },
     post_hook={
-      "SQL": "SQL-statement",
+      "sql": "SQL-statement",
       "transaction": False
     }
   )
@@ -301,10 +301,10 @@ select ...
 
 models:
   +pre-hook:
-    SQL: "SQL-statement"
+    sql: "SQL-statement"
     transaction: false
   +post-hook:
-    SQL: "SQL-statement"
+    sql: "SQL-statement"
     transaction: false
 
 
