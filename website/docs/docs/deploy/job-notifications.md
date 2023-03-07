@@ -4,7 +4,6 @@ id: "job-notifications"
 description: "Set up notifications in dbt Cloud to receive Email or Slack alerts for job run status."
 ---
 
-### Overview
 
 Setting up notifications in dbt Cloud will allow you to receive alerts via Email or a chosen Slack channel when a job run succeeds, fails, or is cancelled.
 
