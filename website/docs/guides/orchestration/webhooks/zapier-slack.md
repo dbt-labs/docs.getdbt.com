@@ -217,12 +217,13 @@ In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` wi
 
 The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build two messages: a summary message containing the outcome of each step and its duration, and a message for inclusion in a thread displaying any error messages extracted from the end-of-invocation logs created by dbt Core.
 
-
-TODO: The indentation on this is a catastrophe
 ```python
 import re
 
-api_token = 'TOKEN'
+# Access secret credentials
+secret_store = StoreClient('YOUR_SECRET_HERE')
+api_token = secret_store.get('DBT_CLOUD_SERVICE_TOKEN')
+
 # Steps derived from these commands won't have their error details shown inline, as they're messy
 commands_to_skip_logs = ['dbt source', 'dbt docs']
 run_id = input_data['run_id']
@@ -244,13 +245,13 @@ for step in results['run_steps']:
     # Remove timestamp and any colour tags
     full_log = re.sub('\x1b?\[[0-9]+m[0-9:]*', '', full_log)
     
-      summary_start = re.search('(?:Completed with \d+ errors? and \d+ warnings?:|Database Error|Compilation Error)', full_log)
+    summary_start = re.search('(?:Completed with \d+ errors? and \d+ warnings?:|Database Error|Compilation Error)', full_log)
     
     line_items = re.findall('(^.*(?:Failure|Error) in .*\n.*\n.*)', full_log, re.MULTILINE)
-      if not summary_start:
-        continue
+    if not summary_start:
+      continue
       
-      threaded_errors_post += f"""
+    threaded_errors_post += f"""
 *{step['name']}*
 """    
     # If there are no line items, the failure wasn't related to dbt nodes, and we want the whole rest of the message. 
@@ -261,7 +262,7 @@ for step in results['run_steps']:
       relevant_log = summary_start[0]
       for item in line_items:
         relevant_log += f'\n```\n{item.strip()}\n```\n'
-      threaded_errors_post += f"""
+    threaded_errors_post += f"""
 {relevant_log}
 """
 
