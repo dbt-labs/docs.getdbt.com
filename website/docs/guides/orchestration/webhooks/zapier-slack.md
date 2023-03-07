@@ -7,16 +7,16 @@ description: Use Zapier and the dbt Cloud API to post error context to Slack
 
 This guide will show you how to set up an integration between dbt Cloud jobs and Slack using [dbt Cloud Webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/faqs/accounts/slack) by attaching details of models' and tests' error messages in a thread. 
 
-Note: Because there is not a webhook for Run Cancelled, you may want to keep the standard Slack integration installed to receive those notifications. You could also use the alternative integration described below that augments the native integration without replacing it.
+Note: Because there is not a webhook for Run Cancelled, you may want to keep the standard Slack integration installed to receive those notifications. You could also use the [alternative integration](#alternate-approach) described below that augments the native integration without replacing it.
 
 When a dbt Cloud job finishes running, the integration will:
 
  - Receive a webhook notification in Zapier,
  - Extract the results from the dbt Cloud admin API,
- - Post the standard summary to a Slack channel, and 
- - Create a threaded message from that channel which contains the reasons that the job failed
+ - Post a brief summary of the run to a Slack channel, and 
+ - Create a threaded message attached to that post which contains any reasons that the job failed
 
-<!-- ![Screenshot of a message in Slack showing a summary of a dbt Cloud run which failed](/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png) -->
+![Screenshot of a message in Slack showing a summary of a dbt Cloud run which failed](/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png)
 ## Prerequisites
 
 In order to set up the integration, you should have familiarity with:
@@ -159,7 +159,7 @@ Configure the other options as you see fit (e.g. choosing a Bot name and Bot Ico
 
 ![Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message](/img/guides/orchestration/webhooks/zapier-slack/parent-slack-config.png)
 
-Add another step, **Filter**. Set the **Field** to **2. Send Error Thread** and the **condition** to **(Boolean) Is true**. This prevents the error that arises if you try to send an empty Slack message in the next step, which summarises the errors. 
+Add another step, **Filter**. Set the **Field** to **2. Send Error Thread** and the **condition** to **(Boolean) Is true**. This prevents the Zap from failing if the job succeeded and you try to send an empty Slack message in the next step. 
 
 ![Screenshot of the Zapier UI, showing the correctly configured Filter step](/img/guides/orchestration/webhooks/zapier-slack/filter-config.png)
 
@@ -213,9 +213,14 @@ Select **Code by Zapier** as the App, and **Run Python** as the Event.
 
 This step is very similar to the one described above, but can skip a lot of the initial validation work. 
 
+In the **Set up action** area, add two items to **Input Data**: `run_id` and `account_id`. Map those to the `3. Output` property and your hardcoded dbt Cloud Account ID respectively.
+
+![Screenshot of the Zapier UI, showing the mappings of raw_body and auth_header](/img/guides/orchestration/webhooks/zapier-slack/code-example-alternate.png)
+
+
 In the **Code** field, paste the following code, replacing `YOUR_SECRET_HERE` with the secret you created when setting up the Storage by Zapier integration. Remember that this is not your dbt Cloud secret.
 
-The code below will validate the authenticity of the request, extract the run logs for the completed job from the Admin API, and then build two messages: a summary message containing the outcome of each step and its duration, and a message for inclusion in a thread displaying any error messages extracted from the end-of-invocation logs created by dbt Core.
+The code below will extract the run logs for the completed job from the Admin API, and then build a message displaying any error messages extracted from the end-of-invocation logs created by dbt Core, which will be posted in a thread.
 
 ```python
 import re
@@ -268,3 +273,14 @@ for step in results['run_steps']:
 
 output = {'threaded_errors_post': threaded_errors_post}
 ```
+### 7. Add Slack action in Zapier
+
+Add a **Send Channel Message in Slack** action. In the **Set up action** area, set the channel to **1. Channel Id**, i.e. the channel that the triggering message was posted in. 
+
+Set the **Message Text** to **5. Threaded Errors Post** from the Run Python step. Set the **Thread** value to **1. Ts**, the timestamp of the triggering Slack post. This tells Zapier to add this post as a threaded reply to the main message, which prevents the full (potentially long) output from cluttering your channel. 
+
+![Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message](/img/guides/orchestration/webhooks/zapier-slack/thread-slack-config-alternate.png)
+
+### 8. Test and deploy
+
+When you're happy with your Zap, publish it.
