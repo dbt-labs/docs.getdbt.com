@@ -1,5 +1,5 @@
 ---
-title: "Query"
+title: "Query the API"
 id: "metadata-querying"
 ---
 

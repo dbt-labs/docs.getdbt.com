@@ -167,9 +167,9 @@ const sidebarSettings = {
                   label: "Metadata API",
                   items: [
                     "docs/dbt-cloud-apis/metadata-api",
-                    "docs/dbt-cloud-apis/metadata-api-quickstart",
-                    "docs/dbt-cloud-apis/metadata-use-case-guides",
+                    "docs/dbt-cloud-apis/access-metadata-api",
                     "docs/dbt-cloud-apis/metadata-querying",
+                    "docs/dbt-cloud-apis/metadata-use-case-guides",
                     {
                       type: "category",
                       label: "Schema",
