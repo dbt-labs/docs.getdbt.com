@@ -176,7 +176,7 @@ models:
 * [BigQuery configurations](bigquery-configs)
 * [Redshift configurations](redshift-configs)
 * [Snowflake configurations](snowflake-configs)
-* [Spark configurations](spark-configs)
+* [Databricks configurations](databricks-configs)
 
 ## Configuring models
 Models can be configured in one of three ways:

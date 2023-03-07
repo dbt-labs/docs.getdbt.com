@@ -87,6 +87,8 @@ This is particularly useful if:
 - You are using BigQuery and your source tables are [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
 - You are using Snowflake or Spark with large tables, and this results in a performance benefit
 
+TODO: should this be Databricks instead of Spark?
+
 <Changelog>
 
 * `v0.15.0`: This property was introduced

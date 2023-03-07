@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-databricks-and-spark'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Databricks'
-  config_page: 'spark-configs'
+  config_page: 'databricks-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -80,10 +80,12 @@ Most dbt Core functionality is supported, but some features are only available
 on Delta Lake.
 
 Delta-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](databricks-configs#the-merge-strategy))
 2. [Snapshots](/docs/build/snapshots)
 
 ### Choosing between dbt-databricks and dbt-spark
+
+TODO: should we make the language here a bit more prescriptive?
 
 While `dbt-spark` can be used to connect to Databricks, `dbt-databricks` was created to make it
 even easier to use dbt with the Databricks Lakehouse.
