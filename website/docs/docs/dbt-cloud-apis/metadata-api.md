@@ -3,13 +3,16 @@ title: "Metadata API"
 id: "metadata-api"
 ---
 
-The dbt Cloud Metadata API helps organizations analyze and improve their data using the outputs of dbt execution. You can use the API to perform freshness analysis, catalog metrics, power downstream integrations and more:
+> The dbt Cloud Metadata API helps organizations analyze and improve their data using the outputs of dbt execution. 
+
+Every time dbt Cloud runs a project, it generates and stores information about the dbt project—in other words, metadata. It stores information on how it's executed, including accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.  
+
+The Metadata API helps you perform freshness analysis, catalog metrics, power downstream integrations and more:
 
  - Discover and understand data for analysis
  - Ensure data quality based on models, tests, and sources
  - Increase the efficiency of dbt operations
 
-Every time dbt Cloud runs a project, it generates and stores information about the dbt project—in other words, metadata. It stores information on how it's executed, including accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. 
 
 <Snippet src="metadata-api-prerequisites" />
 
@@ -72,42 +75,11 @@ To improve dbt operations, we’ll enable API users to access and query richer i
 </TabItem>
 </Tabs>
 
-<!-- 
-If you have ideas about the use cases and roadmap or want to share feedback in general, please reach out to [CloudAPIs@dbtlabs.com](mailto:CloudAPIs@dbtlabs.com) or join the conversation in the [#metadata channel](https://getdbt.slack.com/archives/C01F91XJ5PY) in dbt Community Slack.
 
-
-**Discovery**
-To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in the first half of 2023. 
-
-- [Q2] Pagination for manageable responses and performance when querying long lists of dbt objects.
-- [Q2] Get the DAG state based on its environment’s latest production runs instead of querying per job.
-- [Q3] Access additional information about the project from the dbt logs. For instance, get catalog info without needing to generate docs.
-- [Q1] dbt v1.5: New model fields like owner, version, and constraints.
-- [Q2] dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage.
-- [Q2] dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases.
-
-**Quality**
-
-To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools.  
-
-- [Q1] Metadata API support for dbt Core 1.5 elements of data contracts like model owners and constraints.
-- [Q4] Improvements to webhooks to support notifications about tests, freshness, and events per model rather than per run.
-- [Q4] Streaming results so users can access real-time metadata during a run.
-- [Q4] Integrate with model freshness SLAs for intelligent scheduling.
-
-**Operations**
-
-To improve dbt operations, we’ll enable API users to access and query richer information about execution on dbt Cloud in more ergonomic ways. This is our primary focus in the second half of 2023. 
-
-- [Q3] Enable easier queries across runs to analyze performance over time, such as time aggregation for execution results of individual models and the project as a whole.
-- [Q3] Provide granular execution information from dbt Cloud, such as invocation history.
-- [Q3] Improvements to webhooks for notifications about run events.
-- [Q4] Streaming results to see the DAG as it builds during a run.
--->
 
 ## Related docs
 
-- [Metadata API quickstart](/docs/dbt-cloud-apis/metadata-api-quickstart)
+- [Access the Metadata API](/docs/dbt-cloud-apis/access-metadata-api)
 - [Use cases for the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
 - [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying)
 - [Schema](/docs/dbt-cloud-apis/metadata-schema-model)

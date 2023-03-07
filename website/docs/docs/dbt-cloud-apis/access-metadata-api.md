@@ -1,6 +1,6 @@
 ---
-title: "Quickstart"
-id: "metadata-api-quickstart"
+title: "Access the API"
+id: "access-metadata-api"
 ---
 
 This section will explain how to use the Metadata API, what you need, and how to query. You can use the Metadata API to evaluate data health in the long-term or at a moment-in-time. 
