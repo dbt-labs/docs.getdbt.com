@@ -16,6 +16,10 @@ meta:
   config_page: 'no-configs'
 ---
 
+:::info Community plugin
+
+Some core functionality may be limited. If you're interested in contributing, see the source code for the repository listed below.
+:::
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -25,7 +29,7 @@ meta:
     <li><strong>GitHub repo</strong>: <a href={`https://github.com/decodableco/dbt-decodable}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
     <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
     <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version}</li>
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
@@ -37,11 +41,12 @@ dbt-decodable is also available on PyPI. pip is the easiest way to install the a
 
 <code>pip install {frontMatter.meta.pypi_package}</code>
 
+<br/>
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
-<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
+<p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a>. </p>
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
@@ -75,12 +80,12 @@ dbt-decodable:
 |----------|------------------------------------------------------|-----------|---------------------|
 | type     | The specific adapter to use                          | Required  | `decodable`              |
 | database | Required but unused by this adapter.                 | Required  |    |
-| schema   | Required but unused by this adapter.                                   | Required  | `4000`              |
+| schema   | Required but unused by this adapter.                                   | Required  |               |
 | account_name | The name of your Decodable account.        | Required  | `my_awesome_decodable_account`         |
 | profile_name | The name of your Decodable profile. | Required  | `my_awesome_decodable_profile`  |
 | materialize_tests  | Specify whether to materialize tests as a pipeline/stream pair. Defaults to false.     | Optional  | `false`         |
 | timeout  | The amount of time, in milliseconds, that a preview request runs. Defaults to 60000.   | Optional  | `60000`         |
-| preview_start  | Specify where preview should start reading data from. If set to `earliest`, then preview will start reading from the earliest record possible. If set to `latest`, preview will start reading from the latest record. Defaults to `earliest`     | Optional  | `latest`         |
+| preview_start  | Specify where preview should start reading data from. If set to `earliest`, then preview will start reading from the earliest record possible. If set to `latest`, preview will start reading from the latest record. Defaults to `earliest`.     | Optional  | `latest`         |
 | local_namespace  | Specify a prefix to add to all entities created on Decodable. Defaults to `none`, meaning that no prefix is added.    | Optional  | `none`         |
 
 
@@ -139,3 +144,10 @@ Delete all streams for resources defined within the project. If a pipeline is as
 Delete all Decodable entities resulting from the materialization of the project’s resources, i.e. connections, streams and pipelines.
 If the list argument is provided, then only the specified resource entities are deleted.
 If the models, seeds, or test arguments are provided, then those resource types are also included in the cleanup. Tests that have not been materialized are not included in the cleanup. 
+
+## License
+
+This code base is available under the Apache License, version 2.
+
+Apache Flink, Flink®, Apache®, the squirrel logo, and the Apache feather logo are either registered trademarks or trademarks of The Apache Software Foundation.
+
