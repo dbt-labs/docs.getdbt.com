@@ -161,79 +161,11 @@ If you get a session error and don’t get redirected to this page, do not worry
 
 ## Connect dbt Cloud to Databricks
 
- There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you are looking to get started quickly, dbt Labs recommends using Partner Connect. If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend connecting manually.
+There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you are looking to get started quickly, dbt Labs recommends using Partner Connect. If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend connecting manually.
 
+If you want to use Partner Connect, refer to [Connect to dbt Cloud using Partner Connect](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-using-partner-connect) in the Databricks docs for instructions. 
 
-<Tabs>
-<TabItem value="partner-connect" label="Use Partner Connect" default>
-
-1. In the Databricks workspace, on the left-side console, click **Partner Connect**. 
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect.png" title="Databricks Partner Connect" />
-    </div>
-
-2. Select the dbt tile under `Data preparation and transformation`.
-3. Click **Next** when prompted to **Connect to partner**. This action will create a service principal, PAT token for that service principle, and SQL warehouse for the dbt Cloud account to use. This does mean that you will have two SQL warehouses at your disposal from the previous step and from using Partner Connect.
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_partner.png" title="Databricks Partner Connect Connect to dbt Cloud" />
-    </div>
-
-
-4. Click **Connect to dbt Cloud**.
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/databricks_connect_to_dbt_cloud.png" title="Databricks Partner Connect Connect to dbt Cloud" />
-    </div>
-
-5. After the new tab loads, you will see a form. If you already created a dbt Cloud account, you will be asked to provide an account name. If you haven't created account, you will be asked to provide an account name and password. 
-
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/databricks_partner_connect_create_account.png" title="Databricks Partner Connect Connect to dbt Cloud" />
-    </div>
-
-6. After you have filled out the form and clicked **Complete Registration**, you will be logged into dbt Cloud automatically. 
-
-</TabItem>
-
-<TabItem value="manual-connect" label="Connect manually">
-
-#### Get endpoint and token information 
-To manually set up dbt Cloud, you will need the SQL warehouse connection information and to generate a user token. You can find your SQL warehouse connection information by going to the **Databricks UI > SQL > SQL warehouses > Starter Endpoint > Connection details**. Save this information because you will need it later.
-
-<Lightbox src="/img/databricks_tutorial/images/SQL_Endpoint_Details.png" title="Databrick SQL Endpoint Connection Information" />
-
-To generate a user token for your development credentials in dbt Cloud, click **Settings** on the left side console (while still in the SQL part of the workspace). Click **Personal Access Token** and provide a comment like `dbt Cloud development`. Save the token information somewhere because you will need it for the next part. 
-<div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/databricks_tutorial/images/Generate_user_token.png" title="Generate User Token" />
-</div>
-
-#### Connect to Databricks
-
-1. Create a new project in [dbt Cloud](https://cloud.getdbt.com/). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
-2. Enter a project name and click **Continue**.
-3. For the warehouse, click **Databricks** then **Next** to set up your connection.
-    <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_start.png" title="dbt Cloud - Choose Databricks Connection" /> 
-4. For Databricks settings, reference your SQL warehouse connection details from step 6 of the previous section for each of the following fields:
-
-    - Method will be ODBC
-    - Hostname comes from Server hostname
-    - Endpoint comes from the last part of HTTP path after `/endpoints`
-      <div style={{maxWidth: '400px'}}>
-      <Lightbox src="/img/databricks_tutorial/images/dbt_cloud_setup_databricks_connection_details.png" title="dbt Cloud - Databricks Workspace Settings" />
-      </div>
-
-5. For your Development Credentials, type:
-
-    - `User` and `token` that you saved in a previous step.
-    - You’ll notice that the schema name has been auto created for you. By convention, this is `dbt_<first-initial><last-name>`. This is the schema connected directly to your development environment, and it's where your models will be built when running dbt within the Cloud IDE.
-
-6. Click **Test Connection**. This verifies that dbt Cloud can access your Databricks workspace.
-7. Click **Next** if the test succeeded. If it failed, you might need to check your Databricks settings and credentials.
-
-</TabItem>
-</Tabs>
+If you want to connect manually, refer to [Connect to dbt Cloud manually](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-manually) in the Databricks docs for instructions.
 
 ## Set up a dbt Cloud managed repository 
 If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
