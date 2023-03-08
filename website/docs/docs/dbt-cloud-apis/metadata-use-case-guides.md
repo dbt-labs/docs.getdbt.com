@@ -3,8 +3,6 @@ title: "Use cases"
 id: "metadata-use-case-guides"
 ---
 
-
-
 The Metadata API serves two primary functions:
 
 1. [Ad-hoc GraphQL queries](/docs/dbt-cloud-apis/metadata-api#browse-the-api) to explore your dbt project and diagnose its performance. Refer to the example use cases and queries in this page. 
@@ -25,9 +23,9 @@ Data producers must manage and organize data for stakeholders, while data consum
 
 ### Data catalog
 
-The Metadata API lets users access the definitions and statuses of [models](/docs/build/models), metrics, and sources from the dbt project. Rich context like column names and descriptions are valuable for data consumers to understand what the data mean and what’s worth analyzing. Descriptive metadata can also be used for machine learning algorithms.
+The Metadata API provides access to [model](/docs/build/models), [metric](/docs/build/metrics), and [source](/docs/build/sources) definitions and statuses in a dbt project. Column names and descriptions offer valuable context to help data consumers understand the data's meaning and what is worth analyzing. This descriptive metadata can also be useful for machine learning algorithms.
 
-*Note: To access catalog info like columns, you must [generate project documentation](/docs/collaborate/build-and-view-your-docs#set-up-a-documentation-job) in the job being queried.*
+ To access catalog info like columns, you must [generate project documentation](/docs/collaborate/build-and-view-your-docs#set-up-a-documentation-job) in the job being queried.
 
 <Tabs>
 
@@ -102,7 +100,7 @@ models(jobId: $jobId) {
 
 ### Query dbt Metrics
 
-Tools integrated with the dbt Semantic Layer import [metric](/docs/build/metrics) definitions with the time grain and dimensions so their users can query them. The Metadata API provides context about the metrics to power these user experiences. See the [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide) for more information about how to action these queries.
+The dbt Semantic Layer integrates tools that import [metric](/docs/build/metrics) definitions with time grain and dimensions, allowing users to query them. The Metadata API provides context about the metrics to power these user experiences. See the [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide) for more information about how to action these queries.
 
 <Tabs>
 
@@ -148,7 +146,7 @@ metrics(jobId: $jobId) {
 
 ### Project lineage
 
-Users can generate a project [graph](/terms/data-lineage) to understand lineage in catalogs and development tools to discover existing objects, trace the root causes of issues, or understand the impacts of changes to dbt project nodes. While the dbt Docs also provide a lineage graph, the API enables custom solutions. It provides information to traverse the DAG by working downstream via children or tracing upstream dependencies (`dependsOn` and `parents…`, as in the example below), which provides the flexibility to suit user needs in a native experience. 
+Users can use a project [graph](/terms/data-lineage) to explore lineage in catalogs and development tools. This helps them find existing objects, track down the root causes of issues, and understand the effects of changes to dbt project nodes. Although the [dbt Docs](/docs/collaborate/documentation) offer a lineage graph, the API allows for customized solutions. By traversing the DAG downstream through children or upstream through dependencies such as `dependsOn` and `parents`, users can tailor their experience to meet their specific needs.
 
 *Note: Column-level lineage is not currently supported and usage of downstream tools like dashboards needs to be manually added as [exposures](/docs/build/exposures).*
 
@@ -160,16 +158,18 @@ Users can generate a project [graph](/terms/data-lineage) to understand lineage 
 query Lineage($jobId: Int!) {
   sources(jobId: $jobId) {
     uniqueId
+		childrenL1
   }
   models(jobId: $jobId) {
     uniqueId
     dependsOn
+		childrenL1
     parentsModels {
-      uniqueId
-      dependsOn
+			uniqueId
+			dependsOn
     }
     parentsSources {
-      uniqueId
+			uniqueId
     }
   }
   metrics(jobId: $jobId) {
@@ -549,20 +549,18 @@ query Lineage($jobId: Int!) {
 
 ## Quality
 
-Information from dbt runs helps data teams monitor quality and data consumers know that they’re using fresh and accurate data for their analyses, mitigating the risk of people making the wrong decisions based on outdated or incorrect data.  
+Quality information is valuable for analytics, decisions, and monitoring. The dbt runs give data teams and consumers fresh and accurate data to prevent bad decisions from outdated or incorrect data. The Metadata API helps monitor the health of dbt DAG and data sources for quality assurance. 
 
-The Metadata API provides information to monitor the health of the dbt DAG and its data sources to ensure quality. The API can be used for diagnostics, detecting and investigating issues, or proactive alerting when coupled with features like [webhooks](/docs/deploy/webhooks).
-
-Quality information is useful in analytics and monitoring tools.
+This API, when used with [webhooks](/docs/deploy/webhooks), can also help with detecting, investigating, and alerting issues.
 
 <Lightbox src="/img/docs/dbt-cloud/metadata-api/data-freshness-metadata.jpg" title="Quality and freshness dashboard status tile defined via exposures"/>
 
 
 ### Tests
 
-Data teams use the Metadata API to understand existing [test](https://docs.getdbt.com/docs/build/tests) coverage and identify, diagnose, and resolve issues. For instance, looking at the percentage of runs with test failures or which tests commonly fail over time to supplement job-level alerting and the stored_test_failures feature. Test information is also helpful for data consumers, who could view the test statuses in their integrated analytics tools and trust that they’re looking at valid, vetted data. 
+Data teams use the Metadata API to check the quality of their existing [tests](https://docs.getdbt.com/docs/build/tests) and fix any problems. They can see things like how many tests have failed and which fail often. This information can also be useful for other data users.
 
-Test failures could indicate degraded data quality. In this example query, one of the tests failed, so the user should examine upstream dependencies to ensure the data are valid and fix the issue from there.
+Test failures may show degraded data quality. In the following example query, one of the tests failed and the user should review upstream dependencies to make sure the data is valid and fix the problem there.
 
 <Tabs>
 
@@ -634,9 +632,11 @@ tests(jobId: $jobId) {
 
  ### Source freshness
 
-Monitoring source [freshness](/docs/build/sources#snapshotting-source-data-freshness) helps users ensure that the datasets used are not stale. Like test failures, stale data indicate that there may be a problem with the data pipeline. Data teams can check load time and freshness state then diagnose and resolve pipeline issues to ensure the most up-to-date data reaches consumers. Data consumers may view freshness information in their integrated analytics tools to help ensure they’re drawing the right conclusions from the data.
+Monitoring [source freshness](/docs/build/sources#snapshotting-source-data-freshness) can help users make sure that they're not using stale data or information. Similar to test failures, stale data can indicate a problem with the data pipeline and process. Data teams can check load time and freshness state to identify and fix issues with the data pipeline so that consumers have the most up-to-date data.
 
-*Note: To monitor adherence with freshness SLAs, pull from a job with [source freshness](/docs/deploy/source-freshness) enabled.*
+Data consumers can see how fresh the data is in their analytics tool using [status tiles](/docs/deploy/dashboard-status-tiles#setup), which helps them make sure they're making accurate conclusions based on the data.
+
+*Note: To check whether data meets the requirements for freshness and SLAs, you can use a job that's set up to monitor [source freshness](/docs/deploy/source-freshness).*
 
 <Tabs>
 
@@ -691,9 +691,9 @@ source(jobId: $jobId, uniqueId: $uniqueId) {
  </TabItem>
  </Tabs>
 
- ### Dataset Statistics
+ ### Dataset statistics
 
-The Metadata API can be used to retrieve statistics about the dataset’s statistics, like row count, column count, null values, and last updated. API users like data quality tools can run checks to make sure the dataset conforms to expectations and is in good shape to be used. This is especially valuable when such metadata aren’t provided by the data platform. Tools can supplement this information with properties like model owner and metadata tags to provide more context and frame analyses.
+The Metadata API provides statistics about a dataset, such as how many rows and columns it has, null values, and when it was last updated. API users, like data quality tools, can use this information to check if the dataset is accurate and usable. This is helpful when the dataset doesn't come with this information already. Tools can add extra information such as the model owner and metadata tags to give more meaning and structure to analyses.
 
 <Tabs>
 
@@ -765,13 +765,17 @@ model(jobId: $jobId, uniqueId: $uniqueId) {
 
  ## Operations
 
-Operations are at the core of dbt Cloud. Understanding how dbt is executed helps inform both project development and orchestration setup. By gaining insights into the system's health with observability, data teams can ****run dbt efficiently and effectively to reduce infrastructure and time costs incurred by the organization. The Model Timing image below is an example of the “Model Builds” use case powered by the Metadata API, which many customers use to identify and improve model bottlenecks.
+Operations is at the heart of dbt Cloud. Understanding how dbt works is essential for developing projects and configuring orchestration. By keeping an eye on the system's health through observability, data teams can use dbt with precision, cutting down on infrastructure and time costs for your organization. 
+
+Users often use the [model timing](/docs/dbt-versions/release-notes/January-2022/model-timing-more) tab (example below) which demonstrates how the Metadata API helps identify and optimize bottlenecks in "model builds". 
 
 <Lightbox src="/img/docs/dbt-cloud/metadata-api/model-timing.jpg" title="Model timing visualization in dbt Cloud"/>
 
-### Run Performance
+### Run performance
 
-The Metadata API enables users to analyze higher-level statistics like run count and success rate to monitor deployment activity. The data team might use these results to understand the usage of dbt Cloud and identify any issues that lead to run failures and thus incomplete or outdated data. Users can query up to the past 10 runs for a given environment to analyze trends in run statistics.
+The Metadata API allows users to analyze deployment activity by monitoring higher-level statistics such as run count and success rate. The data team can use this information to better understand dbt Cloud usage, and identify issues that cause run failures and outdated data. 
+
+Users can query up to the last 10 runs for a given environment to track trends in run statistics.
 
 <Tabs>
 
@@ -1041,7 +1045,7 @@ modelByEnvironment(environmentId: $environmentId, uniqueId: $uniqueId, lastRunCo
 
  ### Model builds
 
-Analyzing model build times helps users identify bottlenecks to optimize code and orchestration settings, ultimately reducing costs and speeding up time to fresh data. The data team may use this information to identify models that need to be broken up or have their code improved in order to reduce data platform query consumption and conform with freshness SLAs for downstream consumers. They may also look at changing how the orchestration is scheduled to run slower models less frequently and avoid bottlenecks.
+By analyzing the model build times, users can identify bottlenecks and optimize code and orchestration settings to reduce costs and speed up data access. The data team can use this information to improve models and reduce data platform query consumption, meeting downstream consumer freshness SLAs. Additionally, they can adjust the orchestration schedule to run slower models less frequently to avoid bottlenecks.
 
 <Tabs>
 
@@ -1133,6 +1137,7 @@ Analyzing model build times helps users identify bottlenecks to optimize code an
 
  ## Related docs
 
- - [Metadata API product roadmap]
- - [Query Metadata API]
- - [dbt Semantic Layer integration guide]
+- [Metadata API product roadmap](/docs/dbt-cloud-apis/metadata-api#product-roadmap)
+- [Access the Metadata API](/docs/dbt-cloud-apis/access-metadata-api)
+- [Query Metadata API](/docs/dbt-cloud-apis/metadata-querying)
+- [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide)
