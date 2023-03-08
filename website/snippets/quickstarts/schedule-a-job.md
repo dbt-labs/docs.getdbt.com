@@ -38,9 +38,4 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 <FAQ src="Runs/failed-prod-run" />
 
-## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)
+

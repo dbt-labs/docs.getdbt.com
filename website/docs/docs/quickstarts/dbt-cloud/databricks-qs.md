@@ -23,7 +23,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Prerequisites​
 
-- You have a  [dbt Cloud account](https://cloud.getdbt.com/). 
+- You have a  [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
 
 ## Create a Databricks workspace
@@ -247,7 +247,7 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - In the IDE's editor, add this query: 
+    - Click **+ Create new file** and add this query to the new file: 
         ```sql
         select * from default.jaffle_shop_customers
         ```
@@ -345,3 +345,10 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
 <Snippet src="quickstarts/schedule-a-job" />
+
+## Related content
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
