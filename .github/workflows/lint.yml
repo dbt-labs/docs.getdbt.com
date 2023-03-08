@@ -4,8 +4,11 @@ jobs:
   eslint-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+      
     - name: Install Packages
       run: cd website && npm i
+      
     - name: Run ESLint
       run: cd website && npm run lint
