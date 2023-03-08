@@ -123,7 +123,7 @@ for step in run_data_results['run_steps']:
       # Remove timestamp and any colour tags
       full_log = re.sub('\x1b?\[[0-9]+m[0-9:]*', '', full_log)
     
-      summary_start = re.search('(?:Completed with \d+ errors? and \d+ warnings?:|Database Error|Compilation Error)', full_log)
+      summary_start = re.search('(?:Completed with \d+ errors? and \d+ warnings?:|Database Error|Compilation Error|Runtime Error)', full_log)
     
       line_items = re.findall('(^.*(?:Failure|Error) in .*\n.*\n.*)', full_log, re.MULTILINE)
     
