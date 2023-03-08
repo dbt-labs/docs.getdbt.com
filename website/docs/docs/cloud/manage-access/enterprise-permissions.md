@@ -15,7 +15,7 @@ If you're interested in learning more about an Enterprise plan, contact us at sa
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access
-control](/docs/collaborate/manage-access/about-access) for more information on Role-Based access
+control](/docs/cloud/manage-access/about-access) for more information on Role-Based access
 control (RBAC).
 
 ## Permission Sets

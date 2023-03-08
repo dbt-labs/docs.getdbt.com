@@ -13,7 +13,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 ## Running Queries
 
 You can run queries by sending a `POST` request to the `https://metadata.YOUR_ACCESS_URL/graphql` endpoint, making sure to replace:
-* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+* `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 * `YOUR_TOKEN` in the Authorization header with your actual API token.
 * `QUERY_BODY` with a JSON string, for example `{ "query": "<query text>" }`
 
@@ -31,6 +31,6 @@ There are several illustrative example queries in this documentation. You can se
 
 ## GraphiQL
 
-You can experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql), making sure to use the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.
+You can experiment and run queries directly in the [GraphiQL interface](https://metadata.cloud.getdbt.com/graphiql), making sure to use the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. On the right hand side, there is a document explorer where you can see all possible nodes and fields.  Below is an example of what a query looks like in GraphiQL.  Note that you must authenticate via bearer auth with your token.
 
 <Lightbox src="/img/docs/dbt-cloud/GraphiQL.png" title=""/>

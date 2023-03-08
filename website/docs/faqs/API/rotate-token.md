@@ -13,7 +13,7 @@ For security reasons and best practices, you should aim to rotate API keys every
 
 * Find your `YOUR_USER_ID` by referring to [How to find your user ID](/faqs/Accounts/find-user-id).
 * Find your `YOUR_CURRENT_TOKEN`, go to **Account Settings** -> **API Access** and copy the API key.
-* Find [`YOUR_ACCESS_URL`](/docs/deploy/regions-ip-addresses) for your region and plan.
+* Find [`YOUR_ACCESS_URL`](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 ```
 curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/your_user_id/apikey/' \
@@ -33,7 +33,7 @@ curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/your_user_i
 
 ### dbt Cloud deployments
 
-If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance.
+If your [dbt Cloud deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance.
 
 For example, if your deployment is Virtual Private dbt: 
 

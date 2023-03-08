@@ -29,9 +29,9 @@ With the Cloud IDE, you can:
 To develop in the Cloud IDE, make sure you have the following:
 
 - Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
-- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
-- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) or [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
-- A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
+- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
+- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
+- A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/connect-your-database)
 - Set up a [development environment and development credentials](#access-the-cloud-ide)
 - The environment must be on dbt version 1.0 or higher
 
@@ -89,7 +89,7 @@ The IDE uses developer credentials to connect to your data platform. These devel
 
 Set up your developer credentials:
 
-1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan.
+1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 2. Select the relevant project in the list.
 3. Click **Edit** on the bottom right of the page.
 4. Enter the details under **Development Credentials**.
@@ -120,7 +120,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 
 ## Related docs
 
-- [dbt Cloud features](/docs/get-started/dbt-cloud-features)
+- [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
 

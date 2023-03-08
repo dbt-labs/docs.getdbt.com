@@ -5,7 +5,7 @@ title: On-Premises Installation (dbt Cloud)
 
 :::note 📌
 
-We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](/docs/deploy/single-tenant) model hosted in the cloud
+We no longer support new on-premises deployments, and instead have moved to a [Single Tenant](/docs/cloud/about-cloud/single-tenant) model hosted in the cloud
 
 :::
 

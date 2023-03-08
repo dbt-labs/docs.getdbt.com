@@ -79,7 +79,7 @@ After logging in, you can create a new account and invite members of your team, 
 
 Accounts and Users are separate constructs that can have a many-to-many relationship. When creating a new Account, you can add either existing or new users to the account. If one user has access to multiple accounts, they will be able to switch accounts from the dbt Cloud frontend upon login.
 
-Each user can have a specific role on each account. For more information on each role, please see the docs on [managing permissions](/docs/collaborate/manage-access/about-access)
+Each user can have a specific role on each account. For more information on each role, please see the docs on [managing permissions](/docs/cloud/manage-access/about-access)
 
 ### Deploying Application Updates
 
@@ -124,4 +124,4 @@ kubectl patch deployment app -p \
   "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
 ```
 
-After these steps, you are ready to manage your Github integration. Your users can log into dbt Cloud, and navigate to Profile > Integrations to start connecting your GitHub account to dbt Cloud. See [GitHub](/docs/collaborate/git/connect-github) for more details on how your users can start using the integration.
+After these steps, you are ready to manage your Github integration. Your users can log into dbt Cloud, and navigate to Profile > Integrations to start connecting your GitHub account to dbt Cloud. See [GitHub](/docs/cloud/git/connect-github) for more details on how your users can start using the integration.

@@ -17,7 +17,7 @@ After importing a project by Git URL, dbt Cloud will generate a Deploy Key for y
 
 :::info Use GitHub?
 
-If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub Application](/docs/collaborate/git/connect-github). Connecting your repo via the GitHub Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub Application](/docs/cloud/git/connect-github). Connecting your repo via the GitHub Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
 
 :::
 
@@ -31,7 +31,7 @@ See also:  [Adding a deploy key in GitHub](https://github.blog/2015-06-16-read-o
 
 :::info Use GitLab?
 
-If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab Application](/docs/collaborate/git/connect-gitlab). Connecting your repo via the GitLab Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab Application](/docs/cloud/git/connect-gitlab). Connecting your repo via the GitLab Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
 
 :::
 
@@ -76,7 +76,7 @@ You're all set! Once support handles your request, your project is set up and yo
 ### Azure DevOps
 :::info Use Azure DevOps?
 
-If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](/docs/collaborate/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
 
 :::
 
