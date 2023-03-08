@@ -46,8 +46,8 @@ need to select the appropriate directory and then register a new application.
 
 | Application Type | Redirect URI |
 | ----- | ----- |
-| Single-Tenant _(recommended)_ | `https://YOUR_AUTH_URL/complete/azure_single_tenant` |
-| Multi-Tenant | `https://YOUR_AUTH_URL/complete/azure_multi_tenant` |
+| Single-Tenant _(recommended)_ | `https://YOUR_AUTH_URL/login/callback?connection=<login slug>` |
+| Multi-Tenant | `https://YOUR_AUTH_URL/login/callback?connection=<login slug>` |
 
 
 5. Save the App registration to continue setting up Azure AD SSO
