@@ -158,18 +158,18 @@ Users can use a project [graph](/terms/data-lineage) to explore lineage in catal
 query Lineage($jobId: Int!) {
   sources(jobId: $jobId) {
     uniqueId
-		childrenL1
+    childrenL1
   }
   models(jobId: $jobId) {
     uniqueId
     dependsOn
-		childrenL1
+    childrenL1
     parentsModels {
-			uniqueId
-			dependsOn
+      uniqueId
+      dependsOn
     }
     parentsSources {
-			uniqueId
+      uniqueId
     }
   }
   metrics(jobId: $jobId) {
