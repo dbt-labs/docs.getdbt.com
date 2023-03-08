@@ -4,8 +4,6 @@ id: "job-triggers"
 description: "You can use cron syntax to specify when you want to run a job."
 ---
 
-### Overview
-
 In dbt Cloud, you can use "cron" syntax to specify when you'd like your job to run. Cron syntax is very expressive, and allows you to completely customize your run schedule.
 
 If you need help coming up with the right cron syntax, we recommend using a tool like `crontab.guru`. There, you can enter cron snippets and see what they mean in plain English. You can also find some example snippets below.
