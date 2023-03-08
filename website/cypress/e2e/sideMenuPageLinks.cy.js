@@ -14,7 +14,7 @@ describe('docs.getdbt.com docs tab', () => {
     cy.visit('/docs/introduction');
   });
   it('verifies sidebar menu has the correct level one items', () => {
-    // > li yields liste items 
+    // > li yields list items 
     const menuItems = [
       'Supported data platforms',
       'dbt support',
