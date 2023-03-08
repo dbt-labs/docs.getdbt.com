@@ -5,7 +5,7 @@ id: "metadata-api"
 
 Every time dbt Cloud runs a project, it generates and stores information about the dbt project—in other words, metadata. It stores information on how it's executed, including accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse.  
 
-The dbt Metadata API helps organizations analyze and improve their data using the outputs of dbt execution. You can use the Metadata API to perform freshness analysis, catalog metrics, power downstream integrations and more:
+The dbt Metadata API helps organizations analyze and improve their data using the outputs of dbt execution. You can use the Metadata API to perform freshness analysis, catalog metrics, power downstream integrations, and more:
 
  - Discover and understand data for analysis
  - Ensure data quality based on models, tests, and sources
@@ -80,6 +80,6 @@ To improve dbt operations, we’ll enable API users to access and query richer i
 ## Related docs
 
 - [Access the Metadata API](/docs/dbt-cloud-apis/access-metadata-api)
-- [Use cases for the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
 - [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying)
 - [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
+- [Use cases for the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
