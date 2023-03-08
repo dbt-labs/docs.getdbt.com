@@ -1,7 +1,7 @@
 ---
 title: "Incremental models in-depth"
 id: materializations-guide-4-incremental-models
-slug: guides/best-practices/materializations/4-incremental-models
+slug: 4-incremental-models
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
