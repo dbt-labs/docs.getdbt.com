@@ -1,9 +1,9 @@
 name: Run ESLint Checks
 on: push
 jobs:
-  build:
+  eslint-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Run ESLint
-      run: cd website && npm run lint
+      run: cd website && npm i && npm run lint
