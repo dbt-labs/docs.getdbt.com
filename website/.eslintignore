@@ -7,6 +7,4 @@ cypress
 sidebars-*.js
 docusaurus.config.js
 cypress.config.js
-dbt-global-variables.js
-dbt-versions.js
-cypress.config.js
+static/fonts/**
