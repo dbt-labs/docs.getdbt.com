@@ -6,7 +6,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      
+    
+    - name: install node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.12.0'
+
     - name: Install Packages
       run: cd website && npm i
       
