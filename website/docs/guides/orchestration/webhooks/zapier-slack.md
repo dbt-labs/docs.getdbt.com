@@ -229,7 +229,7 @@ Test the step. Once it has succeeded, you can delete this Action. The key will r
 
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
-This step is very similar to the one described above, but can skip a lot of the initial validation work. 
+This step is very similar to the one described in the main example, but can skip a lot of the initial validation work. 
 
 In the **Set up action** area, add two items to **Input Data**: `run_id` and `account_id`. Map those to the `3. Output` property and your hardcoded dbt Cloud Account ID respectively.
 
