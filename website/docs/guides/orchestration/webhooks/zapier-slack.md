@@ -45,6 +45,9 @@ In the next step, you will need the Webhook Secret Key from the prior step, and 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
+
+<Snippet src="webhook_guide_zapier_secret_store" />
+
 ### 4. Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
@@ -206,6 +209,21 @@ A 1 minute delay is generally enough.
 In the next step, you will need a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
+
+This guide assumes it is stored under the key name `DBT_CLOUD_SERVICE_TOKEN`. If you choose a different name, make sure you update all references to it in the sample code.
+
+In this guide we will use a short-lived code action to store the secrets, but you can also use the [REST API via Postman](https://store.zapier.com/) or create a separate Zap and call the [Set Value Action](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps#3-set-a-value-in-your-store-0-3).
+
+#### a. Create a Storage by Zapier connection
+If you haven't already got one, go to <https://zapier.com/app/connections/storage> and create a new connection, making note of the UUID secret you generate.
+
+#### b. Add a temporary code step
+Choose **Run Python** as the Event. Run the following code: 
+```python 
+store = StoreClient('abc123') #replace with your UUID secret
+store.set('DBT_CLOUD_SERVICE_TOKEN', 'abc123') #replace with your dbt Cloud API token
+```
+Test the step. Once it has succeeded, you can delete this Action. The key will remain stored as long as it is accessed at least once every 3 months.
 
 ### 6. Add a Code action
 
