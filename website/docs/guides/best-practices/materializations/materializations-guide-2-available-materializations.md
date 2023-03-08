@@ -1,7 +1,7 @@
 ---
 title: "Available materializations"
 id: materializations-guide-2-available-materializations
-slug: guides/best-practices/materializations/2-available-materializations
+slug: 2-available-materializations
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.
