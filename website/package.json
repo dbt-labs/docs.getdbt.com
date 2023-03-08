@@ -4,7 +4,8 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
-    "lint": "eslint . --ext .js,.ts,.jsx,.tsx,.md"
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx,.md",
+    "prepare": "cd .. && husky install"
   },
   "dependencies": {
     "@docusaurus/core": "2.2.0",
@@ -65,8 +66,10 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
     "jest": "^27.5.1",
     "jest-cli": "^27.5.1",
+    "lint-staged": "^13.1.2",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "stream-http": "^3.2.0",
@@ -88,5 +91,8 @@
       "\\.css$": "<rootDir>/static/css/__mocks__/styleMock.js"
     }
   },
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,md}": "npm run lint"
+  }
 }
