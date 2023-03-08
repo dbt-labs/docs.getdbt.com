@@ -57,14 +57,14 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` and `YOUR_AUTH_URL` with the [appropriate Access URL and Auth URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 | Config | Value |
 | ------ | ----- |
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
 | **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
-| **Authorized Redirect URIs** | `https://YOUR_ACCESS_URL/complete/gsuite` |
+| **Authorized Redirect URIs** | `https://YOUR_AUTH_URL/login/callback?connection=<login slug>` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
