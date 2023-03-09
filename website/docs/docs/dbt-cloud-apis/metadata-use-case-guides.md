@@ -1,5 +1,5 @@
 ---
-title: "Use cases"
+title: "Using the Metadata API"
 id: "metadata-use-case-guides"
 ---
 
