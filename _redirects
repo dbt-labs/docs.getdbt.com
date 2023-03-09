@@ -15,7 +15,7 @@
 /docs/dbt-cloud/cloud-ide/viewing-docs-in-the-ide /docs/get-started/develop-in-the-cloud 301
 /docs/dbt-cloud/cloud-overview /docs/get-started/getting-started/set-up-dbt-cloud 301
 /docs/dbt-cloud/using-dbt-cloud/artifacts /docs/deploy/artifacts 301
-# /dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api 301!  commenting out until we deprecate v4. We need the bang only if v4 still exists.
+## /dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api 301!  commenting out until we deprecate v4. We need the bang only if v4 still exists.
 
 /docs/building-a-dbt-project/building-models/python-models /docs/build/python-models 301
 /docs/deploy/regions /docs/deploy/regions-ip-addresses 301
