@@ -10,12 +10,13 @@ When migrating from dbt Cloud Administrative API v4 to API v2, there are a few d
 
 ## Key differences
 
-When using the [List runs](/dbt-cloud/api-v2#tag/Runs) endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own and `{YOUR_ACCESS_URL}` with the appropriate [Access URL](https://docs.getdbt.com/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is EMEA multi-tenant, your endpoint would be  `GET https://emea.dbt.com/api/v2/accounts/{accountId}/runs/?include_related=[%22trigger%22]&order_by=-id`:
+When using the [List runs](/dbt-cloud/api-v2#tag/Runs) endpoint, you can include triggered runs and sort by ID. You can use the following request in v2 to get a similar response as v4, replacing the `{accountId}` with your own and `{YOUR_ACCESS_URL}` with the appropriate [Access URL](https://docs.getdbt.com/docs/deploy/regions-ip-addresses) for your region and plan.
 
 ```shell
 GET https://{YOUR_ACCESS_URL}/api/v2/accounts/{accountId}/runs/?include_related=[%22trigger%22]&order_by=-id
 ```
 
+ For example, if your region is EMEA multi-tenant and your account ID is `001`, your endpoint would be  `GET https://emea.dbt.com/api/v2/accounts/001/runs/?include_related=[%22trigger%22]&order_by=-id`
 Differences in responses include:
 
 | Property description | API v4    | API v2     |
