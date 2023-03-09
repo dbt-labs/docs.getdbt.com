@@ -16,5 +16,17 @@ jobs:
     - name: Install Packages
       run: cd website && npm ci
       
-    - name: Run ESLint
-      run: cd website && npx lint-staged
+    #- name: Run ESLint
+    #  run: cd website && npx lint-staged
+
+    - name: Run eslint on changed files
+      uses: tj-actions/eslint-changed-files@v18
+      with:
+        config_path: "website/.eslintrc.json"
+        ignore_path: "website/.eslintignore"
+        file_extensions: |
+          **/*.js
+          **/*.jsx
+          **/*.ts
+          **/*.tsx
+          **/*.md
