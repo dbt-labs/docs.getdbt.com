@@ -72,6 +72,7 @@ dbt-exasol:
       dbname: db
       schema: SCHEMA
 ```
+</File>
 
 #### Optional parameters
 
