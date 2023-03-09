@@ -65,7 +65,7 @@ Job Admin service tokens can authorize request for viewing, editing, and creatin
 Account Viewer service tokens have read only access to dbt Cloud accounts. For more on these permissions, see [Account Viewer](/docs/collaborate/manage-access/enterprise-permissions#account-viewer) on the Enterprise Permissions page.
 
 **Admin** <br/>
-Admin service tokens have unrestricted access to projects in dbt Cloud accounts. You have the option to grant that permission all projects in the account or grant the permission only on specific projects. For more on these permissions, see [Admin Service](/docs/collaborate/manage-access/enterprise-permissions#admin-service) on the Enterprise Permissions page.
+Admin service tokens have unrestricted access to projects in dbt Cloud accounts. You have the option to grant that permission all projects in the account or grant the permission only on specific projects. For more on these permissions, see [Admin](/docs/collaborate/manage-access/enterprise-permissions#admin) on the Enterprise Permissions page.
 
 **Git Admin**<br/>
 Git admin service tokens have all the permissions listed in [Git admin](/docs/collaborate/manage-access/enterprise-permissions#git-admin) on the Enterprise Permissions page.
