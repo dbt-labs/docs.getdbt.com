@@ -67,7 +67,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
     - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
     - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
 
-2. Now we are going to use the S3 bucket that you created with CloudFormation and upload the files. Go to the search bar at the top and type in `S3` and click on S3. There will be sample data in the file already, feel free to ignore it or use it for other modeling exploration. The bucket will be prefixed with `dbt-data-lake`.
+2. Now we are going to use the S3 bucket that you created with CloudFormation and upload the files. Go to the search bar at the top and type in `S3` and click on S3. There will be sample data in the bucket already, feel free to ignore it or use it for other modeling exploration. The bucket will be prefixed with `dbt-data-lake`.
 
 <Lightbox src="/img/redshift_tutorial/images/go_to_s3.png" title="Go to S3" />
 
@@ -117,7 +117,7 @@ Now we are going to load our sample data into the S3 bucket that our Cloudformat
     );
     ```
 
-9. Now we need to copy the data from S3. Make sure to update the S3 location, iam role, and region. You can find the S3 and iam role in your outputs from the CloudFormation stack. Find the stack by searching for `CloudFormation` in the search bar, then clicking **Stacks** in the CloudFormation tile. 
+9. Now we need to copy the data from S3. This enables you to run queries in this guide for demonstrative purposes; it's not an example of how you would do this for a real project. Make sure to update the S3 location, iam role, and region. You can find the S3 and iam role in your outputs from the CloudFormation stack. Find the stack by searching for `CloudFormation` in the search bar, then clicking **Stacks** in the CloudFormation tile. 
 
     ```sql
     copy jaffle_shop.customers( id, first_name, last_name)

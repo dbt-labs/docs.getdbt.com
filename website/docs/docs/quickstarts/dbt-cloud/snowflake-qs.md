@@ -120,7 +120,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
 
 ## Connect dbt Cloud to Snowflake
 
-There are two ways to connect dbt Cloud to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Snowflake trial account. The second option is to create your dbt Cloud account separately and build the Snowflake connection yourself (connect manually). If you are looking to get started quickly, dbt Labs recommends using Partner Connect. If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend connecting manually.
+There are two ways to connect dbt Cloud to Snowflake. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Snowflake trial account. The second option is to create your dbt Cloud account separately and build the Snowflake connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
 
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>

@@ -152,7 +152,7 @@ If you get a session error and don’t get redirected to this page, you can go b
 
 ## Connect dbt Cloud to Databricks
 
-There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you are looking to get started quickly, dbt Labs recommends using Partner Connect. If you are looking to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, we recommend connecting manually.
+There are two ways to connect dbt Cloud to Databricks. The first option is Partner Connect, which provides a streamlined setup to create your dbt Cloud account from within your new Databricks trial account. The second option is to create your dbt Cloud account separately and build the Databricks connection yourself (connect manually). If you want to get started quickly, dbt Labs recommends using Partner Connect. If you want to customize your setup from the very beginning and gain familiarity with the dbt Cloud setup flow, dbt Labs recommends connecting manually.
 
 If you want to use Partner Connect, refer to [Connect to dbt Cloud using Partner Connect](https://docs.databricks.com/partners/prep/dbt-cloud.html#connect-to-dbt-cloud-using-partner-connect) in the Databricks docs for instructions. 
 
