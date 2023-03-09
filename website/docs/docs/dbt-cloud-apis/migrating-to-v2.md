@@ -16,7 +16,7 @@ When using the [List runs](/dbt-cloud/api-v2#tag/Runs) endpoint, you can include
 GET https://{YOUR_ACCESS_URL}/api/v2/accounts/{accountId}/runs/?include_related=[%22trigger%22]&order_by=-id
 ```
 
- For example, if your region is EMEA multi-tenant and your account ID is `001`, your endpoint would be  `GET https://emea.dbt.com/api/v2/accounts/001/runs/?include_related=[%22trigger%22]&order_by=-id`
+For example, if your region is EMEA multi-tenant and your account ID is `001`, your endpoint would be  `GET https://emea.dbt.com/api/v2/accounts/001/runs/?include_related=[%22trigger%22]&order_by=-id`
 Differences in responses include:
 
 | Property description | API v4    | API v2     |
