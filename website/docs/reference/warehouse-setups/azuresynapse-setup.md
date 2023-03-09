@@ -44,7 +44,7 @@ pip is the easiest way to install the adapter:
 :::info Dedicated SQL only
 
 Azure Synapse offers both Dedicated SQL Pools and Serverless SQL Pools.
-**Only Dedicated SQL Pools are supported by this adapter. If you really insist on using serverless pools, check out the neglected, experimental project: [dbt-synapse-serverless](https://github.com/dbt-msft/dbt-synapse-serverless)**
+**Only Dedicated SQL Pools are supported by this adapter. 
 
 :::
 
