@@ -17,4 +17,4 @@ jobs:
       run: cd website && npm ci
       
     - name: Run ESLint
-      run: cd website && npm run lint
+      run: cd website && npx lint-staged
