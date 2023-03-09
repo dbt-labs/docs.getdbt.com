@@ -4,7 +4,7 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
-    "lint": "eslint",
+    "lint": "eslint .",
     "prepare": "cd .. && husky install"
   },
   "dependencies": {
