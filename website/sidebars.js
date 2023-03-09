@@ -162,6 +162,7 @@ const sidebarSettings = {
                   ],
                 },
                 "docs/dbt-cloud-apis/admin-cloud-api",
+                "docs/dbt-cloud-apis/migrating-to-v2",
                 {
                   type: "category",
                   label: "Metadata API",
