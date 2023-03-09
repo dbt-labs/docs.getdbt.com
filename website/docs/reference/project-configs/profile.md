@@ -22,7 +22,7 @@ Often an organization has only one <Term id="data-warehouse" />, so it is sensib
 * `profile: acme`
 * `profile: jaffle_shop`
 
-It is also reasonable to include the name of your warehouse technology in your profile name, partiuclarly if you have multiple warehouses. For example:
+It is also reasonable to include the name of your warehouse technology in your profile name, particularly if you have multiple warehouses. For example:
 * `profile: acme_snowflake`
 * `profile: jaffle_shop_bigquery`
 * `profile: jaffle_shop_redshift`

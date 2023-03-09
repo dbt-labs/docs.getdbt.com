@@ -15,8 +15,6 @@ To become a formal partner, integrate with the API, or have questions/feedback &
 :::
 
 
-## Overview
-
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics, models, and entities. It helps organizations manage complexities such as data, tools, and teams to make more efficient and trustworthy decisions.
 
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads. 
@@ -30,8 +28,6 @@ The dbt Semantic Layer can be used for a variety of tools and applications of da
 * Governance and privacy,
 * Data discovery and cataloging,
 * Machine learning and data science.
-
-<!-- rewrite below little and would like to see if i can include a button or callout -->
 
 :::info Share your use case
 
@@ -651,11 +647,17 @@ The API will be a viable integration point with the dbt Semantic Layer. It will 
 
 ## Contact us
 
-[Reach out](mailto:semantic-layer@dbtlabs.com) to us if you:
+### For dbt Semantic Layer support
 
-- would like to become a formal partner, 
-- have product feedback or questions, or 
-- are interested in integrating, including via the API
+For partner and customer support, please email the [Support team](mailto:support@getdbt.com). Please ensure the message includes:
+
+- "Semantic Layer"
+- The name of the partner software
+- The dbt Cloud account ID of the customer, if you are a partner making the inquiry
+
+### For product and partnerships
+
+If you'd like to become a formal partner, have product feedback/questions, or are interested in integrating, email the [Product and Partnership team](mailto:semantic-layer@dbtlabs.com). 
 
 <!-- rewrite a little and would like to see if i can include a button -->
 
