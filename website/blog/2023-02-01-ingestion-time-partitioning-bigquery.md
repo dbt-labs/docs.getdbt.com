@@ -1,6 +1,6 @@
 ---
 title: "BigQuery ingestion-time partitioning and partition copy with dbt"
-description: "Update"
+description: "How one data team saved significant BigQuery run time (and therefore $$) by building ingestion-time partitioning support to dbt's incremental model materialization."
 slug: bigquery-ingestion-time-partitioning-and-partition-copy-with-dbt
 canonical_url: https://medium.com/teads-engineering/bigquery-ingestion-time-partitioning-and-partition-copy-with-dbt-cc8a00f373e3
 
@@ -129,7 +129,7 @@ On a 192 GB partition here is how the different methods compare:
 
 Also, the `SELECT` statement consumed more than 10 hours of slot time while `MERGE` statement took days of slot time.
 
-So picking the bq copy approach is definitely a no-brainer. That’s the solution we picked to improve the BQ output on incremental materialization using the `insert_overwrite` strategy.
+So picking the BQ copy approach is definitely a no-brainer. That’s the solution we picked to improve the BQ output on incremental materialization using the `insert_overwrite` strategy.
 
 Though it looks like a silver bullet, there are cases where we DON’T want to use it:
 
