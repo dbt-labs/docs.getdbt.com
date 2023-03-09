@@ -8,7 +8,7 @@ const VersionContext = createContext({
   EOLDate: lastReleasedVersion.EOLDate || undefined, 
   isPrerelease: lastReleasedVersion.isPrerelease || false,
   latestStableRelease: lastReleasedVersion.version,
-  updateVersion: () => {},
+  updateVersion: () => Object,
 })
 
 export const VersionContextProvider = ({ value = "", children }) => {
