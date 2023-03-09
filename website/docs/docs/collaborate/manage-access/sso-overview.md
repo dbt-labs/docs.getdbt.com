@@ -13,7 +13,7 @@ Once you configure SSO, even partially, for an account, you cannot disable or re
 
 ## Prerequisites
 
-- You have a dbt Cloud account that is on a dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
+- You have a dbt Cloud account that is on a dbt Cloud Enterprise plan. [Contact us](mailto:sales@getdbt.com) if you’re interested in learning more about our Enterprise plan.
 
 
 ## SSO process
