@@ -2,6 +2,7 @@
 title: "BigQuery ingestion-time partitioning and partition copy with dbt"
 description: "Update"
 slug: bigquery-ingestion-time-partitioning-and-partition-copy-with-dbt
+canonical_url: https://medium.com/teads-engineering/bigquery-ingestion-time-partitioning-and-partition-copy-with-dbt-cc8a00f373e3
 
 authors: [christophe_oudar]
 
@@ -12,7 +13,7 @@ date: 2023-02-01
 is_featured: true
 ---
 
-At Teads, we’ve been using BigQuery (BQ) to build our Analytics stack since 2017. As presented in a previous [article](https://medium.com/teads-engineering/give-meaning-to-100-billion-analytics-events-a-day-d6ba09aa8f44), we have designed pipelines that use multiple roll-ups that are aggregated in data marts. Most of them revolve around time series and therefore time-based partitioning is often the most appropriate approach.
+At Teads, we’ve been using BigQuery (BQ) to build our analytics stack since 2017. As presented in a previous [article](https://medium.com/teads-engineering/give-meaning-to-100-billion-analytics-events-a-day-d6ba09aa8f44), we have designed pipelines that use multiple roll-ups that are aggregated in data marts. Most of them revolve around time series, and therefore time-based partitioning is often the most appropriate approach.
 
 <!--truncate-->
 
@@ -20,7 +21,7 @@ Back then, only ingestion-time partitioning was available on BQ and only at a da
 
 We built an internal SQL query executor tool to wrap the execution of our BigQuery jobs while dbt Labs (formerly known as Fishtown Analytics) was creating its own product: dbt. After a successful experiment in 2021, dbt is now part of our go-to solution to create new BigQuery jobs at Teads. Though it misses a few custom features, it has become a superset of our former tool for everyday usage.
 
-As column partitioning was released on BQ, and dbt favored incremental materialization, we identified one case that wasn’t well supported: [ingestion-time partitioned tables using incremental materialization](https://github.com/dbt-labs/dbt-bigquery/issues/75).
+As column partitioning was released on BQ, and dbt favored [incremental materialization](/docs/build/incremental-models), we identified one case that wasn’t well supported: [ingestion-time partitioned tables using incremental materialization](https://github.com/dbt-labs/dbt-bigquery/issues/75).
 
 🎉 **We’ve been drafting a technical solution since the end of 2021 and finally managed to [merge our contribution](https://github.com/dbt-labs/dbt-bigquery/pull/136) during Coalesce 2022!**
 
@@ -36,7 +37,7 @@ Let’s see the main differences brought by ingestion-time partitioning tables:
 - We can’t select the pseudocolumn as is for some operations such as a `GROUP BY` and it must be renamed. Practically the column name is restricted and we have to alias it to something else.
 - We cannot use a `CREATE TABLE … AS SELECT …` on ingestion-time partitioning tables; it’s one of the main reasons why dbt didn’t support them at first with incremental materialization. It requires creating the table using a `PARTITION BY` clause and then inserting the data.
 
-As a rule of thumb you can consider that if your table partition length is less than a 1 million rows, you’re better off using column-type partitioning.
+As a rule of thumb, you can consider that if your table partition length is less than a 1 million rows, you’re better off using column-type partitioning.
 
 ## How to use ingestion-time partitioning in dbt
 
@@ -44,7 +45,7 @@ As a rule of thumb you can consider that if your table partition length is less 
 
 When we designed ingestion partitioning table support with the dbt Labs team, we focused on ease of use and how to have seamless integration with incremental materialization.
 
-One of the great features of incremental materialization is to be able to proceed with a full refresh. We added support for that feature and luckily, `MERGE` statements are working as intended for ingestion-time partitioning tables. This is also the approach used by the dbt BigQuery connector.
+One of the great features of incremental materialization is to be able to proceed with a full refresh. We added support for that feature and, luckily, `MERGE` statements are working as intended for ingestion-time partitioning tables. This is also the approach used by the [dbt BigQuery connector](/reference/warehouse-setups/bigquery-setup).
 
 The complexity is hidden in the connector and it’s very intuitive to use. For example, if you have a model with the following SQL:
 
@@ -92,7 +93,7 @@ campaign_id INT64
 impressions_count INT64
 ```
 
-Indeed the day column data will be inserted into the `_PARTITIONTIME` pseudo column which is not visible in the table schema. Underneath, dbt generates a MERGE statement that wraps the insertion in the table. It’s very convenient when our model output contains multiple partitions and/or your incremental strategy is `incremental_overwrite`.
+Indeed the day column data will be inserted into the `_PARTITIONTIME` pseudo column which is not visible in the table schema. Underneath, dbt generates a `MERGE` statement that wraps the insertion in the table. It’s very convenient when our model output contains multiple partitions and/or your incremental strategy is `incremental_overwrite`.
 
 ### MERGE statements and performance
 
@@ -105,7 +106,7 @@ We had a job with millions of rows on which we compared both approaches and meas
 
 That’s a 17 minutes difference which means that almost 40% of the `MERGE` statement is spent on adding the data to the table.
 
-Of course, the `MERGE` statement offers much more flexibility than a `WRITE_TRUNCATE` query. Yet in most analytics workload cases, the queries are time series that are immutables and therefore, either the destination partition is empty or we’ll likely have to reprocess a partial period so that it translates into overwriting every row in a subset of the existing partitions.
+Of course, the `MERGE` statement offers much more flexibility than a `WRITE_TRUNCATE` query. Yet in most analytics workload cases, the queries are time series that are immutable - and therefore, either the destination partition is empty or we’ll likely have to reprocess a partial period so that it translates into overwriting every row in a subset of the existing partitions.
 
 ### Efficient solution
 
@@ -130,7 +131,7 @@ Also, the `SELECT` statement consumed more than 10 hours of slot time while `
 
 So picking the bq copy approach is definitely a no-brainer. That’s the solution we picked to improve the BQ output on incremental materialization using the `insert_overwrite` strategy.
 
-Though it looks like the silver bullet, there are cases where we DON’T want to use it:
+Though it looks like a silver bullet, there are cases where we DON’T want to use it:
 
 - If we have a small partition, merging on a small table, the gains are negligible
 - If a lot of partitions are involved, the copy will happen sequentially. It could be parallelized in another update but depending on how many concurrent operations would be configured, the performance might still not improve enough over a `MERGE` statement.
@@ -183,11 +184,11 @@ The configuration will be read at run time and will use the BQ driver integratio
 
 ## Conclusion
 
-**Combining ingestion-time partitioning and partition copy is a great way to achieve better performance for your models**. Of course, it would have been simpler if both features were fully integrated with SQL and didn’t require work around BigQuery Data definition language SQL or driver usage.
+**Combining ingestion-time partitioning and partition copy is a great way to achieve better performance for your models**. Of course, it would have been simpler if both features were fully integrated with SQL and didn’t require work around BigQuery Data Definition Language SQL or driver usage.
 
-Thanks to dbt’s open-source approach and dbt Labs team, **we had the opportunity to add support for those use cases** and bring it to more BigQuery users.
+But thanks to dbt’s open-source approach and dbt Labs team, **we had the opportunity to add support for those use cases** and bring it to more BigQuery users.
 
-Lastly, I wanted to share [Jeremy’s post](https://discourse.getdbt.com/t/bigquery-dbt-incremental-changes/982/7) which is giving great insights to **figure out how to pick an incremental strategy** and its options depending on your needs.
+Lastly, I wanted to share [Jeremy Cohen’s post](https://discourse.getdbt.com/t/bigquery-dbt-incremental-changes/982/7) which is giving great insights to **figure out how to pick an incremental strategy** and its options depending on your needs.
 
 ---
 
