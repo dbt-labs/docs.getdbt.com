@@ -5,9 +5,7 @@ id: "bigquery"
 sidebar_label: "BigQuery quickstart"
 ---
 
-For the BigQuery project in the quickstart guide, you'll learn how to use dbt Cloud with BigQuery.
-
-This quickstart will show you how to: 
+In this quickstart guide, you'll learn how to use dbt Cloud with BigQuery. It will show you how to: 
 
 - Create a Google Cloud Platform (GCP) project.
 - Access sample data in a public dataset.
@@ -70,7 +68,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
     - From the **Select a role** dropdown, choose **BigQuery Admin** and click **Continue** 
     - Leave the **Grant users access to this service account** fields blank
     - Click **Done**
-3. Create a service account key for your new project from the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts?walkthrough_id=iam--create-service-account-keys&start_index=1#step_index=1). For more information, refer to [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) in the Google Cloud docs. When downloading the JSON file, make sure to use a filename you can easily remember. For example, `dbt-user-creds.json`. 
+3. Create a service account key for your new project from the [Service accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts?walkthrough_id=iam--create-service-account-keys&start_index=1#step_index=1). For more information, refer to [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) in the Google Cloud docs. When downloading the JSON file, make sure to use a filename you can easily remember. For example, `dbt-user-creds.json`. For security reasons, dbt Labs recommends that you protect this JSON file like you would your identity credentials; for example, don't check the JSON file into your version control software.
 
 ## Connect dbt Cloud to BigQuery​
 1. Create a new project in [dbt Cloud](https://cloud.getdbt.com/). From **Account settings** (using the gear menu in the top right corner), click **+ New Project**.
@@ -93,14 +91,14 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file** and add this query to the new file: 
+    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:  
         ```sql
         select * from `dbt-tutorial.jaffle_shop.customers`
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
+1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
 2. Click **Create branch**. You can name it `add-customers-model`.
 3. Click the **...** next to the Models directory, then select **Create file**.  
 4. Name the file `models/customers.sql`, then click **Create**.

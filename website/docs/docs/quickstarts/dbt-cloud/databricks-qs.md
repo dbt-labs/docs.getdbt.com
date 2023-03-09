@@ -4,9 +4,7 @@ description: "Quickstart for dbt Cloud and Databricks."
 id: "databricks"
 sidebar_label: "Databricks quickstart"
 ---
-For the Databricks project in the quickstart guide, you'll learn how to use dbt Cloud with Databricks.
-
-This quickstart will show you how to: 
+In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It will show you how to: 
 
 - Create a Databricks workspace.
 - Load sample data into your Databricks account.
@@ -23,7 +21,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Prerequisites​
 
-- You have a  [dbt Cloud account](https://www.getdbt.com/signup/). 
+- You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
 
 ## Create a Databricks workspace
@@ -51,7 +49,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
     <Lightbox src="/img/databricks_tutorial/images/validate_2.png" />
     </div>
 
-6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of `I have data in S3 that I want to query with Databricks`. You do not need to check this off for the purpose of this tutorial. 
+6. Now it's time to create your first workspace. A Databricks workspace is an environment for accessing all of your Databricks assets. The workspace organizes objects like notebooks, SQL warehouses, clusters, etc into one place.  Provide the name of your workspace and choose the appropriate AWS region and click **Start Quickstart**. You might get the checkbox of **I have data in S3 that I want to query with Databricks**. You do not need to check this off for the purpose of this tutorial. 
 
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/setup_first_workspace.png" title="Setup First Workspace" />
@@ -64,7 +62,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
     </div>
 
 :::tip
-If you get a session error and don’t get redirected to this page, do not worry, go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
+If you get a session error and don’t get redirected to this page, you can go back to the Databricks UI and create a workspace from the interface. All you have to do is click **create workspaces**, choose the quickstart, fill out the form and click **Start Quickstart**.
 :::
 
 8. There is no need to change any of the pre-filled out fields in the Parameters. Just add in your Databricks password under **Databricks Account Credentials**.  Check off the Acknowledgement and click **Create stack**.   
@@ -75,10 +73,7 @@ If you get a session error and don’t get redirected to this page, do not worry
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/create_stack.png" title="Capabilities" />
     </div>    
-9. Afterwards, you should land on the CloudFormation > Stacks page. Once the status becomes `CREATE_COMPLETE`, you will be ready to start. This process can take about 5 minutes so feel free to click refresh to refresh the status updates.     
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/stack_status.png" title="Confirm Status Completion" />
-    </div>
+
 10. Go back to the Databricks tab. You should see that your workspace is ready to use.
     <div style={{maxWidth: '400px'}}>
     <Lightbox src="/img/databricks_tutorial/images/workspaces.png" title="A Databricks Workspace" />
@@ -97,11 +92,7 @@ If you get a session error and don’t get redirected to this page, do not worry
     <Lightbox src="/img/databricks_tutorial/images/go_to_sql.png" title="SQL space" />
     </div>
 3. We will be setting up a SQL warehouse now.  Select **SQL Warehouses** from the left hand side console.  You will see that a default SQL Warehouse exists.  
-    <!--
-    <div style={{maxWidth: '400px'}}>
-    <Lightbox src="/img/databricks_tutorial/images/sql_endpoints.png" title="SQL warehouses" /> 
-    </div>
-    -->
+
 4. Click **Start** on the Starter Warehouse.  This will take a few minutes to get the necessary resources spun up.
 
 5. Once the SQL Warehouse is up, click **New** and then **File upload** on the dropdown menu. 
@@ -179,14 +170,14 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file** and add this query to the new file: 
+    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
         select * from default.jaffle_shop_customers
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
+1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
 2. Click **Create branch**. You can name it `add-customers-model`.
 3. Click the **...** next to the Models directory, then select **Create file**.  
 4. Name the file `models/customers.sql`, then click **Create**.

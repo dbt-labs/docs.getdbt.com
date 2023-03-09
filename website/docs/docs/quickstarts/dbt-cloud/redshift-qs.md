@@ -5,9 +5,7 @@ id: "redshift"
 sidebar_label: "Redshift quickstart"
 ---
 
-For the Redshift project in the quickstart guide, you'll learn how to use dbt Cloud with Redshift.
-
-This quickstart will show you how to: 
+In this quickstart guide, you'll learn how to use dbt Cloud with Redshift. It will show you how to: 
 
 - Set up a Redshift cluster.
 - Load sample data into your Redshift account.
@@ -187,14 +185,14 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file** and add this query to the new file: 
+    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
         select * from jaffle_shop.customers
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
+1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
 2. Click **Create branch**. You can name it `add-customers-model`.
 3. Click the **...** next to the Models directory, then select **Create file**.  
 4. Name the file `models/customers.sql`, then click **Create**.

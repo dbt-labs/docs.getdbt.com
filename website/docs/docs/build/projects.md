@@ -56,7 +56,7 @@ For complete details on project configurations, see [dbt_project.yml](/reference
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/quickstarts/dbt-cloud/bigquery#initialize-your-dbt-project-and-start-developing) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/quickstarts/overview) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
 During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 

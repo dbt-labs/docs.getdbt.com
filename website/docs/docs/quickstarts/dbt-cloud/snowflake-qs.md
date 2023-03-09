@@ -4,11 +4,10 @@ description: "Quickstart for dbt Cloud and Snowflake."
 id: "snowflake"
 sidebar_label: "Snowflake quickstart"
 ---
-For the Snowflake project in the quickstart guide, you'll learn how to use dbt Cloud with Snowflake.
+In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It will show you how to: 
 
-This quickstart will show you how to: 
-
-
+- Create a new Snowflake worksheet.
+- Load sample data into your Snowflake account.
 - Connect dbt Cloud to Snowflake.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
 - Add tests to your models.
@@ -208,14 +207,14 @@ Now that you have a repository configured, you can initialize your project and s
 2. Above the file tree to the left, click **Initialize your project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit**. Use the commit message `initial commit`. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file** and add this query to the new file: 
+    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
         select * from raw.jaffle_shop.customers
         ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is now set to read-only mode. 
+1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
 2. Click **Create branch**. You can name it `add-customers-model`.
 3. Click the **...** next to the Models directory, then select **Create file**.  
 4. Name the file `models/customers.sql`, then click **Create**.
