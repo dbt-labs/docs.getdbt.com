@@ -17,10 +17,8 @@ You can create webhooks for these events from the [dbt Cloud web-based UI](#crea
 
 dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
-:::tip Join our private beta
-
-Access to webhooks in dbt Cloud is currently limited to beta users. If you want to try it out, please [sign up](https://docs.google.com/forms/u/1/d/e/1FAIpQLScmSH5GhFKq1L0vp1nhzF4zapIEtFX4ViRoUiTbTEqkScgqTA/viewform) for the private beta. After you sign up, a Product Manager from dbt Labs will email you in the next few days if they decide to include you in the private beta.
-:::
+## Prerequisites
+- You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
 From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/deploy/regions-ip-addresses).

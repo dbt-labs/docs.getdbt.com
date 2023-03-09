@@ -2,9 +2,12 @@
 
 title: "New IDE features and classic IDE deprecation"
 id: "ide-features-ide-deprecation"
-description: "Enhancement and Deprecation: Extra features in new IDE, and classic IDE deprecation"
+description: "Nov 2022: We've enhanced the IDE by adding a button to automatically format your SQL. Added dark mode, Git diff view, and 4 new autocomplete options. We have deprecated the classic IDE."
 sidebar_label: "Enhancement and deprecation: New IDE features and classic IDE deprecation"
-tags: [Nov-29-2022, v1.1.67.0]
+tags: 
+  - Nov-29-2022
+  - v1.1.67.0 
+  - IDE
 
 ---
 
