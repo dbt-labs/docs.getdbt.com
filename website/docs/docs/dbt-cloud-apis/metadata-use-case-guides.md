@@ -549,7 +549,7 @@ query Lineage($jobId: Int!) {
 
 ## Quality
 
-Quality information is valuable for analytics, decisions, and monitoring. The dbt runs give data teams and consumers fresh and accurate data to prevent bad decisions from outdated or incorrect data. The Metadata API helps monitor the health of dbt DAG and data sources for quality assurance. 
+Quality information is valuable for analytics, decisions, and monitoring. dbt Cloud runs give data teams and consumers fresh and accurate data to prevent bad decisions from outdated or incorrect data. The Metadata API helps monitor the health of dbt DAG and data sources for quality assurance. 
 
 This API, when used with [webhooks](/docs/deploy/webhooks), can also help with detecting, investigating, and alerting issues.
 
