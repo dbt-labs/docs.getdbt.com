@@ -23,8 +23,8 @@ jobs:
       uses: tj-actions/eslint-changed-files@v18
       with:
         path: "website"
-        config_path: "website/.eslintrc.json"
-        ignore_path: "website/.eslintignore"
+        config_path: ".eslintrc.json"
+        ignore_path: ".eslintignore"
         file_extensions: |
           **/*.js
           **/*.jsx
