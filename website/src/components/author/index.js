@@ -6,7 +6,7 @@ import BlogLayout from '@theme/BlogLayout';
 import getAllPosts from '../../utils/get-all-posts';
 
 // break something here
-broken = true
+brokenn = true
 
 function Author(props) {
   const { authorData } = props
