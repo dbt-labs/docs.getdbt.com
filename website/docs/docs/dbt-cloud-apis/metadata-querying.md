@@ -1,15 +1,11 @@
 ---
-title: "Query the API"
+title: "Query the Metadata API"
 id: "metadata-querying"
 ---
 
 The Metadata API supports ad-hoc queries or lets you browse the schema. If you are new to the API, read the [Metadata API overview](/docs/dbt-cloud-apis/metadata-api) for an introduction to the Metadata API.
 
-## Prerequisites
-
-- You must have a [multi-tenant](/docs/deploy/regions-ip-addresses) account 
-- You must be on a [Team or Enterprise plan](https://www.getdbt.com/pricing/)
-- Your projects must be on dbt version 0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade
+<Snippet src="metadata-api-prerequisites" />
 
 ## Authorization
 
