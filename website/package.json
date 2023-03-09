@@ -5,6 +5,7 @@
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
     "lint": "eslint --cache",
+    "lintAll": "eslint .",
     "prepare": "cd .. && husky install"
   },
   "dependencies": {
