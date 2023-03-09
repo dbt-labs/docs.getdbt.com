@@ -10,8 +10,8 @@ meta:
   core_version: ''
   cloud_support: Not supported
   min_supported_version: 'n/a'
-  slack_channel_name: 'general'
-  slack_channel_link: 'decodablecommunity.slack.com'
+  slack_channel_name: '#general'
+  slack_channel_link: 'https://decodablecommunity.slack.com'
   platform_name: 'Decodable'
   config_page: 'no-configs'
 ---
@@ -53,7 +53,8 @@ dbt-decodable is also available on PyPI. pip is the easiest way to install the a
 
 ## Connecting to Decodable with **dbt-decodable**
 To connect to Decodable with dbt, you'll need to add a Decodable profile to your `profiles.yml` file. A Decodable profile has the following fields. 
-<File name='profiles.yml'>
+
+<File name='~/.dbt/profiles.yml'>
 
 ```yaml
 dbt-decodable:       
