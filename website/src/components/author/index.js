@@ -5,6 +5,9 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import BlogLayout from '@theme/BlogLayout';
 import getAllPosts from '../../utils/get-all-posts';
 
+// break something here
+// broken = true
+
 function Author(props) {
   const { authorData } = props
   const { siteConfig } = useDocusaurusContext()

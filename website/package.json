@@ -4,8 +4,7 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
-    "lint": "eslint .",
-    "lintChangedFiles": "eslint",
+    "lint": "eslint --cache",
     "prepare": "cd .. && husky install"
   },
   "dependencies": {
@@ -94,6 +93,6 @@
   },
   "version": "0.0.0",
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,md}": "npm run lintChangedFiles"
+    "*.{js,ts,jsx,tsx,md}": "npm run lint"
   }
 }
