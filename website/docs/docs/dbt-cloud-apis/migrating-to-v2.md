@@ -6,7 +6,7 @@ id: "migrating-to-v2"
 ---
 
 
-When migrating from dbt Cloud Administrative API v4 to API v2, there are a few differences you should consider when querying your dbt Cloud account. 
+In an attempt to provide an improved dbt Cloud Administrative API experience, the dbt Cloud API v4 will be deprecated by April 30th, 2023. We suggest you migrate to dbt Cloud Administrative API v2. When migrating from API v4 to API v2, there are a few differences you should consider when querying your dbt Cloud account.
 
 ## Key differences
 
