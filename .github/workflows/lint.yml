@@ -22,4 +22,5 @@ jobs:
       uses: wearerequired/lint-action@v2
       with:
         eslint: true
-        prettier: true
+        eslint_dir: "website"
+        eslint_extensions: "js,jsx,ts,tsx,md"
