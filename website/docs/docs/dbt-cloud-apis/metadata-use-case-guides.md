@@ -11,7 +11,7 @@ The Metadata API serves two primary functions:
     - Use BI platforms to query business metrics that you define and govern centrally in the [dbt Semantic Layer](/guides/dbt-ecosystem/sl-partner-integration-guide)
     - Add [quality status tiles](/docs/deploy/dashboard-status-tiles#setup) to BI dashboards, to signal the freshness and accuracy of underlying data in real-time
     - Monitor for data SLA compliance and get notifications for run completions or failures
-    - Diagnose and improve the performance of your dbt deployment
+    - Diagnose and improve the performance of your dbt deployment and more!
 
 ## Discovery
 
@@ -19,7 +19,7 @@ The Metadata API empowers users to find and understand data for analysis. [Integ
 
 Data producers must manage and organize data for stakeholders, while data consumers need to quickly and confidently analyze data on a large scale to make informed decisions that improve business outcomes and reduce organizational overhead. The Metadata API is useful for discovery data experiences in catalogs, analytics, apps, and machine learning (ML) tools.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/dbt-dag.jpg" title="Data lineage produced by dbt"/>
+<Lightbox src="/img/docs/dbt-cloud/metadata-api/dbt-dag.jpg" width="175%" title="Data lineage produced by dbt"/>  
 
 ### Data catalog
 
@@ -553,7 +553,7 @@ Quality information is valuable for analytics, decisions, and monitoring. dbt Cl
 
 This API, when used with [webhooks](/docs/deploy/webhooks), can also help with detecting, investigating, and alerting issues.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/data-freshness-metadata.jpg" title="Quality and freshness dashboard status tile defined via exposures"/>
+<Lightbox src="/img/docs/dbt-cloud/metadata-api/data-freshness-metadata.jpg" width="25%" title="Quality and freshness dashboard status tile defined via exposures"/>
 
 
 ### Tests
@@ -769,7 +769,7 @@ Operations are at the heart of dbt Cloud. Understanding how dbt works is essenti
 
 Users often use the [model timing](/docs/dbt-versions/release-notes/January-2022/model-timing-more) tab (example below) which demonstrates how the Metadata API helps identify and optimize bottlenecks in "model builds". 
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/model-timing.jpg" title="Model timing visualization in dbt Cloud"/>
+<Lightbox src="/img/docs/dbt-cloud/metadata-api/model-timing.jpg" width="200%" title="Model timing visualization in dbt Cloud"/>
 
 ### Run performance
 
