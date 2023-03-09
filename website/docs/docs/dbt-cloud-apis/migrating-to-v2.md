@@ -15,7 +15,6 @@ When using the [List runs](/dbt-cloud/api-v2#tag/Runs) endpoint, you can include
 ```shell
 GET https://{YOUR_ACCESS_URL}/api/v2/accounts/{accountId}/runs/?include_related=[%22trigger%22]&order_by=-id
 ```
-
 For example, if your region is EMEA multi-tenant and your account ID is `001`, your endpoint would be:
 
 ```shell
