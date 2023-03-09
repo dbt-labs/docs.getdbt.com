@@ -3,15 +3,15 @@ title: "Decodable setup"
 id: "decodable-setup"
 meta:
   maintained_by: Decodable
-  authors: Robert Metzger
+  authors: "Decodable Team"
   github_repo: 'https://github.com/decodableco/dbt-decodable'
   pypi_package: 'dbt-decodable'
-  min_core_version: ''
+  min_core_version: '1.3.1'
   core_version: ''
-  cloud_support: 
+  cloud_support: Not supported
   min_supported_version: 'n/a'
-  slack_channel_name: ''
-  slack_channel_link: ''
+  slack_channel_name: 'general'
+  slack_channel_link: 'decodablecommunity.slack.com'
   platform_name: 'Decodable'
   config_page: 'no-configs'
 ---
@@ -145,9 +145,5 @@ Delete all Decodable entities resulting from the materialization of the project�
 If the list argument is provided, then only the specified resource entities are deleted.
 If the models, seeds, or test arguments are provided, then those resource types are also included in the cleanup. Tests that have not been materialized are not included in the cleanup. 
 
-## License
 
-This code base is available under the Apache License, version 2.
-
-Apache Flink, Flink®, Apache®, the squirrel logo, and the Apache feather logo are either registered trademarks or trademarks of The Apache Software Foundation.
 
