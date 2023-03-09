@@ -53,13 +53,13 @@ Read-only service tokens can authorize requests for viewing a read-only dashboar
 The following permissions can be assigned to a service account token on an Enterprise plan. For more details about these permissions, see "[Enterprise permissions](/docs/collaborate/manage-access/enterprise-permissions)."
 
 **Account Admin** <br/>
-Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  For more on these permissions, see [Account Viewer](/docs/collaborate/manage-access/enterprise-permissions#account-admin).
+Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  For more on these permissions, see [Account Admin](/docs/collaborate/manage-access/enterprise-permissions#account-admin).
 
 **Metadata Only**<br/>
 Metadata only service tokens can authorize requests to the metadata API.
 
 **Job Admin**<br/>
-Job Admin service tokens can authorize request for viewing, editing, and creating environments, triggering runs, and viewing historical runs. For more on these permissions, see [Account Viewer](/docs/collaborate/manage-access/enterprise-permissions#job-admin).
+Job Admin service tokens can authorize request for viewing, editing, and creating environments, triggering runs, and viewing historical runs. For more on these permissions, see [Job Admin](/docs/collaborate/manage-access/enterprise-permissions#job-admin).
 
 **Account Viewer**<br/>
 Account Viewer service tokens have read only access to dbt Cloud accounts. For more on these permissions, see [Account Viewer](/docs/collaborate/manage-access/enterprise-permissions#account-viewer) on the Enterprise Permissions page.
@@ -70,7 +70,7 @@ Admin service tokens have unrestricted access to projects in dbt Cloud accounts.
 **Git Admin**<br/>
 Git admin service tokens have all the permissions listed in [Git admin](/docs/collaborate/manage-access/enterprise-permissions#git-admin) on the Enterprise Permissions page.
 
-**Database Adminn**<br/>
+**Database Admin**<br/>
 Database admin service tokens have all the permissions listed in [Database admin](/docs/collaborate/manage-access/enterprise-permissions#database-admin) on the Enterprise Permissions page.
 
 **Team Admin**<br/>
