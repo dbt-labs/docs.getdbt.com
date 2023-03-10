@@ -39,6 +39,11 @@ const sidebarSettings = {
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/dbt-cloud-tips",
             {
               type: "category",
               label: "PrivateLink",
@@ -57,11 +62,6 @@ const sidebarSettings = {
                 "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
-            "docs/get-started/dbt-cloud-features",
-            "docs/get-started/connect-your-database",
-            "docs/get-started/develop-in-the-cloud",
-            "docs/get-started/dbt-cloud-features",
-            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
