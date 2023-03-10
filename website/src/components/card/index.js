@@ -8,7 +8,7 @@ import { useColorMode } from '@docusaurus/theme-common';
 function Card({ title, body, link, icon }) {
   const { colorMode } = useColorMode();
 
-  // Set custom styles for icon if available in styles.module.css
+  // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
 
   return (
