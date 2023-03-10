@@ -44,7 +44,7 @@ Before you begin, you will need:
     title="Quickstart for dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface."
     link="/docs/quickstarts/dbt-core/quickstart"
-    icon="pencil-paper"/>
+    icon="dbt-core"/>
 
 </div>
 
