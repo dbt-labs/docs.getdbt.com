@@ -15,8 +15,6 @@ To become a formal partner, integrate with the API, or have questions/feedback &
 :::
 
 
-## Overview
-
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics, models, and entities. It helps organizations manage complexities such as data, tools, and teams to make more efficient and trustworthy decisions.
 
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads. 
@@ -30,8 +28,6 @@ The dbt Semantic Layer can be used for a variety of tools and applications of da
 * Governance and privacy,
 * Data discovery and cataloging,
 * Machine learning and data science.
-
-<!-- rewrite below little and would like to see if i can include a button or callout -->
 
 :::info Share your use case
 
