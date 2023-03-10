@@ -2,7 +2,7 @@
 title: About quickstarts
 id: overview
 sidebar_label: "About quickstarts"
-description: "Quickly create your first dbt project with SQL."
+description: "Quickly create and run your first dbt project with SQL."
 ---
 
 Learn how to quickly start using dbt Cloud or dbt Core using a sample project and one of the most common data platforms. The quickstarts will show you how to set up dbt and perform some key tasks. These tasks will illustrate how dbt establishes standard practices for your work such as using Git to version control your analytics code, testing your models to validate they are working correctly, documenting your models in detail to better collaborate with others, and scheduling jobs to execute at designated times.  
