@@ -649,3 +649,14 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.13/reference / 301
 /v0.13/docs/requiring-dbt-versions / 301
 /v0.14/docs/cloud-developer-ide / 301
+
+# Removing on premise Cloud content
+/docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/faqs /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/index /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/installation /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/prerequisites /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/setup /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 302
+
