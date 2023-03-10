@@ -3,7 +3,8 @@ title: "Methods"
 ---
 
 Selector methods return all resources that share a common property, using the
-syntax `method:value`.
+syntax `method:value`. While it is recommended to explicitly denote the method,
+you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
@@ -24,7 +25,9 @@ The `source` method is used to select models that select from a specified [sourc
 
 
 ### The "path" method
-The `path` method is used to select models located at or under a specific path.
+The `path` method is used to select models/sources defined at or under a specific path.
+For models, the definition lies in SQL/Python files, not the configuration YAML.
+For sources, the definition lies in YAML files.
 While the `path` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
