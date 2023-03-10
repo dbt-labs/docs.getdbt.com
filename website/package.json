@@ -2,6 +2,7 @@
   "scripts": {
     "prestart": "npm run prepare",
     "start": "docusaurus start",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "test": "npx jest --watch",
     "lint": "eslint --cache",
