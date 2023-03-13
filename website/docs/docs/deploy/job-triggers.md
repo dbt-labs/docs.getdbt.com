@@ -5,6 +5,7 @@ description: “You can configure when and how dbt should run your job”
 ---
 
 In dbt Cloud, you can use the options under **Triggers** to configure when and how dbt should run your job:
+
 - **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on either [scheduled days](#schedule-days) or [custom cron-powered schedule](#custom-cron-schedule)
 - **Continuous Integration (CI)** tab &mdash; Configure [continuous integration](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository
 - **API** tab &mdash; Use the [API](/docs/dbt-cloud-apis/overview) to trigger a job or send events to other systems
@@ -12,12 +13,14 @@ In dbt Cloud, you can use the options under **Triggers** to configure when and h
 <Lightbox src =“/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg” width=“85%” title=“Configuring your job triggers”/>
 
 ## Schedule jobs
+
 To schedule your job to run at specific days, times, and intervals:
 1. Go to the specific job settings, click **Edit**, then go to the **Triggers** section.
 2. Go to the **Schedule** tab, and toggle **Run on schedule**.
 3. Use either the [scheduled days](#schedule-days) or the [custom cron-powered schedule](#custom-cron-schedule) method to customize your desired days, times, and intervals.
 
 ### Schedule days
+
 To set your job’s schedule, use the **Schedule Days** option to choose specific days of the week, and select customized hours or intervals.
 
 Under **Timing**, you can either use customizable hours for jobs that need to run frequently throughout the day or exact intervals for jobs that need to run at specific times.
@@ -34,6 +37,7 @@ dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordi
 :::
 
 ### Custom cron schedule
+
 To fully customize the scheduling of your job, choose the **Custom cron schedule** option and use the “cron” syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
 
 <Lightbox src=“/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png” title=“Schedule your dbt job”/>
