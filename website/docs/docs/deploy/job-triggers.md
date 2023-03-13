@@ -4,31 +4,43 @@ id: "job-triggers"
 description: "You can use cron syntax to specify when you want to run a job."
 ---
 
-In dbt Cloud, you can configure when and how dbt should trigger your job run. 
+In dbt Cloud, you can configure when and how dbt should trigger your job run.
 
-- **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on scheduled days and time, or enter a [custom cron schedule](#cron)
-- **Continuous Integration** tab &mdash; Configure [continuous integration (CI)](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository
+- **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on either simple [scheduled days](#schedule-days) or [custom cron-powered schedules](#custom-cron-schedule)
+- **Continuous Integration (CI)** tab &mdash; Configure [continuous integration](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository
 - **API** tab &mdash; Use the [API](/docs/dbt-cloud-apis/overview) to trigger a job or send events to other systems
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" title="Configuring your job triggers"/>
 
-## Schedule
+## Scheduling
 
-To configure your job to run on particular day(s) and time, you can toggle the **Run on schedule** toggle and customize the days, time, and intervals you want your job to run.
+To configure your job to run on particular day(s) and time(s), you can toggle the **Run on schedule** toggle and customize the days, time, and intervals you want your job to run.
 
-Under **Timing**, you can configure your job to run either at customizable hours hours or exact intervals. 
+### Schedule Days
 
-If you've selected to run your job at exact intervals, dbt Cloud uses [coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). For examples:
+Under **Timing**, you can configure your job to run either at customizable hours hours or exact intervals. Customizable hours is useful for jobs that need to run frequently throughout the day, while at exact intervals is useful for jobs that need to run at specific times of day.
+
+#### "Every N hours"
+This option allows you to set a frequency for your job to run, based on the number of hours between each run. You can enter a number between 1 and 23, which represents the interval between each job run. For example, if you set it to "every 2 hours," the job will run every 2 hours starting from midnight UTC. This option is useful if you want to run your jobs at fixed intervals throughout the day and have them run more frequently than once a day.
+
+#### "At exact intervals"
+This option allows you to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
+
+:::info
+
+dbt Cloud uses [coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), it is not translated to your timezone or aware of daylight savings time. For examples:
 
 - 0 means 12am (midnight) UTC
 - 12 means 12pm (afternoon) UTC
 - 23 means 11pm UTC
 
-## Cron
+:::
 
-In dbt Cloud, you can use "cron" syntax to specify when you'd like your job to run. Cron syntax is very expressive, and allows you to completely customize your run schedule.
+### Custom Cron Schedule
 
-If you need help coming up with the right cron syntax, we recommend using a tool like `crontab.guru`. There, you can enter cron snippets and see what they mean in plain English. You can also find some example snippets below.
+In dbt Cloud, you can use "cron" syntax to specify when you'd like your job to run. Cron syntax is very customizable, including the minute, hour, day of the month, month, and day of the week. This allows you to schedule jobs to run at specific times on specific days, as well as to set up more complex schedules, such as running a job on the first Monday of every month.
+
+If you need help coming up with the right cron syntax, we recommend using a tool like [crontab.guru](https://crontab.guru). There, you can enter cron snippets and see what they mean in plain English. You can also find some example snippets below.
 
 ### Examples
 
@@ -56,7 +68,7 @@ THE BELOW IS JUST COPIED OVER TEXT - WILL AMEND SOON!
 
 ## Related docs
 
-
+- [Job Commands](/docs/deploy/job-commands)
 - [Webhooks for your jobs](/docs/deploy/webhooks)
 - [Source freshness](/docs/deploy/source-freshness)
 - [Artifacts](/docs/deploy/artifacts)
