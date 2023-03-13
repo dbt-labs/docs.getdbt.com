@@ -56,6 +56,6 @@ There are default keyboard shortcuts that can help make development more product
 
 ## Related docs
 
-- [Getting started](/docs/get-started/getting-started/overview)
+- [Quickstart guide](/docs/quickstarts/overview)
 - [About dbt Cloud](/docs/get-started/dbt-cloud-features)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
