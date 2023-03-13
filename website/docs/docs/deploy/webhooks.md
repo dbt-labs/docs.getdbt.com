@@ -7,7 +7,7 @@ With dbt Cloud, you can create outbound webhooks to send events (notifications) 
 
 A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your dbt jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and are often used for infrastructure development.
 
-dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/orchestration/webhooks/zapier-slack) or [Microsoft Teams](/guides/orchestration/webhooks/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/orchestration/webhooks/serverless-pagerduty) when a dbt job fails, [and more](/guides/orchestration/webhooks). 
+dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/orchestration/webhooks/zapier-slack) notification, a [Microsoft Teams](/guides/orchestration/webhooks/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/orchestration/webhooks/serverless-pagerduty) when a dbt job fails, [and more](/guides/orchestration/webhooks). 
 
 You can create webhooks for these events from the [dbt Cloud web-based UI](#create-a-webhook-subscription) and by using the [dbt Cloud API](#api-for-webhooks):
 
@@ -33,10 +33,16 @@ To configure your new webhook:
 
 When done, click **Save**. dbt Cloud provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
 
-### Understanding the difference between `job.run.completed` and `job.run.errored` {#completed-errored-event-difference}
-The `job.run.errored` event is a subset of `job.run.completed` events - if you subscribe to both, you will receive two notifications when a job has an error. However, they are triggered at different times. The `job.run.completed` event will only fire once the metadata and artifacts for the run have been ingested and are available from the dbt Cloud Admin and Metadata APIs. By contrast, the `job.run.errored` event fires immediately, without a guarantee that those processes have completed. 
+### Differences between completed and errored webhook events {#completed-errored-event-difference}
+The `job.run.errored` event is a subset of the `job.run.completed` events. If you subscribe to both, you will receive two notifications when your job encounters an error. However, dbt Cloud triggers the two events at different times:
 
-Because of this, if your integration will depend on data from the Admin API (such as accessing the logs from the run) or Metadata API (accessing model-by-model statuses), it's recommended that you use the `job.run.completed` event and filter on the `runStatus` or `runStatusCode`. If your integration does not depend on additional data or improved delivery performance is more important for your use case, use `job.run.errored` and build your integration with awareness that calls to the API might not return data for a short period at first. 
+- `job.run.completed` &mdash;  This event only fires once the job’s metadata and artifacts have been ingested and are available from the dbt Cloud Admin and Metadata APIs. 
+- `job.run.errored` &mdash; This event fires immediately so the job’s metadata and artifacts might not have been ingested. This means that information might not be available for you to use.
+
+If your integration depends on data from the Admin API (such as accessing the logs from the run) or Metadata API (accessing model-by-model statuses), use the `job.run.completed` event and filter on `runStatus` or `runStatusCode`. 
+
+If your integration doesn’t depend on additional data or if improved delivery performance is more important for you, use `job.run.errored` and build your integration to handle API calls that might not return data a short period at first. 
+
 
 ## Validate a webhook
 
