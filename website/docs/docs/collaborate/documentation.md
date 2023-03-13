@@ -8,7 +8,7 @@ id: "documentation"
 * [Declaring properties](configs-and-properties)
 * [`dbt docs` command](cmd-docs)
 * [`doc` Jinja function](/reference/dbt-jinja-functions)
-* If you're new to dbt, we recommend that you check out our [Getting Started Tutorial](/docs/get-started/getting-started/overview) to build your first dbt project, complete with documentation.
+* If you're new to dbt, we recommend that you check out our [quickstart guide](/docs/quickstarts/overview) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
 
