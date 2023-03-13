@@ -8,12 +8,12 @@ This overview explains how users are provisioned in dbt Cloud via Single Sign-On
 dbt Cloud supports JIT (Just-in-Time) provisioning and IdP-initiated login. You can learn more about our supported options [here](https://www.getdbt.com/pricing/).
 
 :::tip Configuring SSO 
-Once you configure SSO, even partially, for an account, you cannot disable or revert it. When you configure it, you will want to make sure you do so completely.
+Once you configure SSO, even partially, you cannot disable or revert it. When you configure it, you will want to make sure you do so completely.
 :::
 
 ## Prerequisites
 
-- You have a dbt Cloud account that is on a dbt Cloud Enterprise plan. [Contact us](mailto:sales@getdbt.com) if you’re interested in learning more about our Enterprise plan.
+- You have a dbt Cloud account enrolled in the Enterprise plan. [Contact us](mailto:sales@getdbt.com) to learn more and enroll.
 
 
 ## SSO process
