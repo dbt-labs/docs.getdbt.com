@@ -82,7 +82,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 :::info📌
 
-New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project in the Cloud IDE!
+New to dbt? Check out our [quickstart guide](/docs/quickstarts/overview) to build your first dbt project in the Cloud IDE!
 
 :::
 
