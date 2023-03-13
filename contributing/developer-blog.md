@@ -6,6 +6,8 @@
 
 The dbt Developer Blog is a place where analytics practitioners can go to share their knowledge with the community. Analytics Engineering is a discipline we’re all  building together. The developer blog exists to cultivate the collective knowledge that exists on how to build and scale effective data teams.
 
+We currently have editorial capacity for 10 Community contributed developer blogs per quarter - if we are oversubscribed we suggest you post on another platform or hold off until the editorial team is ready to take on more posts.
+
 ### What makes a good developer blog post?
 
 - The short answer: Practical, hands on analytics engineering tutorials and stories

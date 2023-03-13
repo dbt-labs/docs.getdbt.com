@@ -6,9 +6,9 @@ The [`state:` selection method](methods#the-state-method) is a wildly powerful f
 
 ### Seeds
 
-dbt stores a file hash of seed files that are <1 MB in size. If the contents of these seeds is modified, the seed will be included in `state:modified`.
+dbt stores a file hash of seed files that are <1 MiB in size. If the contents of these seeds is modified, the seed will be included in `state:modified`.
 
-If a seed file is >1 MB in size, dbt cannot compare its contents and will raise a warning as such. Instead, dbt will use only the seed's file path to detect changes. If the file path has changed, the seed will be included in `state:modified`; if it hasn't, it won't.
+If a seed file is >1 MiB in size, dbt cannot compare its contents and will raise a warning as such. Instead, dbt will use only the seed's file path to detect changes. If the file path has changed, the seed will be included in `state:modified`; if it hasn't, it won't.
 
 ### Macros
 

@@ -37,11 +37,11 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 ### dbt Cloud
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. Read more about [Getting started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) and [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
+dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/docs/quickstarts/overview).
 
 ### dbt Core
 
-dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Read more about [Getting started with dbt Core](/docs/get-started/getting-started-dbt-core).
+dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Learn more with the [quickstart for dbt Core](/docs/quickstarts/dbt-core/quickstart).
 
 ## The power of dbt
 
@@ -60,8 +60,8 @@ As a dbt user, your main focus will be on writing models (i.e. select queries) t
 
 ### Related docs
 
-- [Getting started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud)
-- [Getting started with dbt Core](/docs/get-started/getting-started-dbt-core)
+- [Quickstarts for dbt Cloud](/docs/quickstarts/overview)
+- [Quickstart for dbt Core](/docs/quickstarts/dbt-core/quickstart)
 - [Best practice guides](/guides/best-practices)
 - [What is a dbt Project?](/docs/build/projects)
 - [dbt run](/docs/get-started/run-your-dbt-projects)
