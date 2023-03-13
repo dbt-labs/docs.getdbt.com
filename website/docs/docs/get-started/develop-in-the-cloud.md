@@ -47,6 +47,7 @@ Read more about IDE updates in the [dbt Cloud release notes](/docs/dbt-versions/
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
 | **IDE git button** | The git button in the IDE allows you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project. You can create or change branches, [resolve merge conflicts](/docs/collaborate/git/merge-conflicts), and execute git commands directly in the IDE. |
 | **Documentation** | You can generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |
+| **Preview and Compile button** | You can run your code against your data platform by clicking the **Preview** or **Compile** button in the IDE. <br /> <br /> The **Preview** button will display 500 rows by default, but you can change this by adding `limit your_number` at the end of your SQL statement. For example, `SELECT * FROM table limit 100` will return up to 100 rows.  Remember that you must write the `limit your_number` explicitly and cannot derive it from a macro. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the IDE for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
@@ -81,7 +82,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 :::info📌
 
-New to dbt? Check out our [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project in the Cloud IDE!
+New to dbt? Check out our [quickstart guide](/docs/quickstarts/overview) to build your first dbt project in the Cloud IDE!
 
 :::
 

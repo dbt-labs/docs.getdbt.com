@@ -4,36 +4,46 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
+      label: "Quickstarts",
+      collapsed: true,
+      items: [
+        "docs/quickstarts/overview",
+        {
+          type: "category",
+          label: "dbt Cloud",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-cloud/bigquery",
+            "docs/quickstarts/dbt-cloud/databricks",
+            "docs/quickstarts/dbt-cloud/redshift",
+            "docs/quickstarts/dbt-cloud/snowflake",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Core",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-core/quickstart",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Get started with dbt",
       collapsed: true,
       items: [
-        "docs/get-started/getting-started/overview",
         {
           type: "category",
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
-            {
-              type: "category",
-              label: "Getting set up",
-              items: [
-                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
-                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
-                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
-              ],
-            },
-            {
-              type: "category",
-              label: "Building your first project",
-
-              items: [
-                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
-                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
-              ],
-            },
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/dbt-cloud-tips",
             {
               type: "category",
               label: "PrivateLink",
@@ -52,10 +62,6 @@ const sidebarSettings = {
                 "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
-            "docs/get-started/dbt-cloud-features",
-            "docs/get-started/connect-your-database",
-            "docs/get-started/develop-in-the-cloud",
-            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
@@ -63,7 +69,6 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
@@ -235,67 +240,68 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [{
-        type: "category",
-        label: "Environments",
-        items: [
-          "docs/collaborate/environments/environments-in-dbt",
-          "docs/collaborate/environments/dbt-cloud-environments",
-          "docs/collaborate/environments/dbt-core-environments",
-        ],
-      },
-      {
-        type: "category",
-        label: "Git version control",
-        items: [
-          "docs/collaborate/git-version-control",
-          "docs/collaborate/git/version-control-basics",
-          "docs/collaborate/git/managed-repository",
-          "docs/collaborate/git/pr-template",
-          "docs/collaborate/git/merge-conflicts",
-          {
-            type: "category",
-            label: "Supported git providers",
-            items: [
-              "docs/collaborate/git/connect-github",
-              "docs/collaborate/git/connect-gitlab",
-              {
-                type: "category",
-                label: "Azure DevOps",
-                items: [
-                  "docs/collaborate/git/connect-azure-devops",
-                  "docs/collaborate/git/setup-azure",
-                  "docs/collaborate/git/authenticate-azure",
-                ],
-              },
-              "docs/collaborate/git/import-a-project-by-git-url",
-            ],
-          },
-        ],
-      },
-      {
-        type: "category",
-        label: "Document your dbt projects",
-        items: [
-          "docs/collaborate/documentation",
-          "docs/collaborate/build-and-view-your-docs",
-        ],
-      },
+      items: [
+        {
+          type: "category",
+          label: "Environments",
+          items: [
+            "docs/collaborate/environments/environments-in-dbt",
+            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/collaborate/environments/dbt-core-environments",
+          ],
+        },
+        {
+          type: "category",
+          label: "Git version control",
+          items: [
+            "docs/collaborate/git-version-control",
+            "docs/collaborate/git/version-control-basics",
+            "docs/collaborate/git/managed-repository",
+            "docs/collaborate/git/pr-template",
+            "docs/collaborate/git/merge-conflicts",
+            {
+              type: "category",
+              label: "Supported git providers",
+              items: [
+                "docs/collaborate/git/connect-github",
+                "docs/collaborate/git/connect-gitlab",
+                {
+                  type: "category",
+                  label: "Azure DevOps",
+                  items: [
+                    "docs/collaborate/git/connect-azure-devops",
+                    "docs/collaborate/git/setup-azure",
+                    "docs/collaborate/git/authenticate-azure",
+                  ],
+                },
+                "docs/collaborate/git/import-a-project-by-git-url",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Document your dbt projects",
+          items: [
+            "docs/collaborate/documentation",
+            "docs/collaborate/build-and-view-your-docs",
+          ],
+        },
 
-      {
-        type: "category",
-        label: "Manage access",
-        items: [
-          "docs/collaborate/manage-access/about-access",
-          "docs/collaborate/manage-access/seats-and-users",
-          {
-            type: "category",
-            label: "Permissions",
-            items: [
-              "docs/collaborate/manage-access/self-service-permissions",
-              "docs/collaborate/manage-access/enterprise-permissions",
-            ],
-          },
+        {
+          type: "category",
+          label: "Manage access",
+          items: [
+            "docs/collaborate/manage-access/about-access",
+            "docs/collaborate/manage-access/seats-and-users",
+            {
+              type: "category",
+              label: "Permissions",
+              items: [
+                "docs/collaborate/manage-access/self-service-permissions",
+                "docs/collaborate/manage-access/enterprise-permissions",
+              ],
+            },
             {
               type: "category",
               label: "Single sign-on",
@@ -802,7 +808,6 @@ const sidebarSettings = {
             },
           ],
         },
-
       ],
     },
     {
