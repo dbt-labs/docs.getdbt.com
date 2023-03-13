@@ -57,7 +57,7 @@ By default, everything gets created as a view. You can override that by material
 4. Enter the `dbt run` command. Your model, `customers` should now build as a view.
 5. Enter the `dbt run --full-refresh` command for this to take effect in your warehouse.
 
-### FAQs
+#### FAQs
 
 <FAQ src="Models/available-materializations" />
 <FAQ src="Project/which-materialization" />
