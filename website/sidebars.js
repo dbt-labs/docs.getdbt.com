@@ -8,9 +8,9 @@ const sidebarSettings = {
       items: [
             "docs/cloud/about-cloud/dbt-cloud-features",
             "docs/cloud/about-cloud/architecture",
-            "docs/cloud/about-cloud/single-tenant",
-            "docs/cloud/about-cloud/multi-tenant",
+            "docs/cloud/about-cloud/tenancy",
             "docs/cloud/about-cloud/regions-ip-addresses",
+            "docs/cloud/about-cloud/about-cloud-ide",
       ],
     }, // About dbt Cloud directory
     {
@@ -29,9 +29,12 @@ const sidebarSettings = {
               type: "category",
               label: "Connect data platform",
               items: [
-                "docs/cloud/connect-data-platform/connect-your-database",
+                "docs/cloud/connect-data-platform/about-connections",
                 "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
+                "docs/cloud/connect-data-platform/connect-databricks",
+                "docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb",
+                "docs/cloud/connect-data-platform/connect-apache-spark",
               ],
             },
             {
@@ -110,19 +113,11 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started-dbt-core",
-            {
-              type: "category",
-              label: "Install dbt Core",
-              collapsed: true,
-              items: [
-                "docs/get-started/installation",
-                "docs/get-started/homebrew-install",
-                "docs/get-started/pip-install",
-                "docs/get-started/docker-install",
-                "docs/get-started/source-install",
-              ],
-            },
+            "docs/get-started/installation",
+            "docs/get-started/homebrew-install",
+            "docs/get-started/pip-install",
+            "docs/get-started/docker-install",
+            "docs/get-started/source-install",
             "docs/get-started/about-the-cli",
             "docs/get-started/connection-profiles",
           ],
