@@ -1,16 +1,16 @@
 ---
 title: "Job triggers"
 id: "job-triggers"
-description: "You can use cron syntax to specify when you want to run a job."
+description: "You can configure when and how dbt should run your job"
 ---
 
 In dbt Cloud, you can configure when and how dbt should trigger your job run.
 
-- **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on either simple [scheduled days](#schedule-days) or [custom cron-powered schedules](#custom-cron-schedule)
+- **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on either [scheduled days](#schedule-days) or [custom cron-powered schedule](#custom-cron-schedule)
 - **Continuous Integration (CI)** tab &mdash; Configure [continuous integration](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository
 - **API** tab &mdash; Use the [API](/docs/dbt-cloud-apis/overview) to trigger a job or send events to other systems
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" title="Configuring your job triggers"/>
+<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
 ## Scheduling
 
@@ -40,6 +40,11 @@ dbt Cloud uses [coordinated universal time](https://en.wikipedia.org/wiki/Coordi
 
 In dbt Cloud, you can use "cron" syntax to specify when you'd like your job to run. Cron syntax is very customizable, including the minute, hour, day of the month, month, and day of the week. This allows you to schedule jobs to run at specific times on specific days, as well as to set up more complex schedules, such as running a job on the first Monday of every month.
 
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
+
+6. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under "Run history." 
+
 If you need help coming up with the right cron syntax, we recommend using a tool like [crontab.guru](https://crontab.guru). There, you can enter cron snippets and see what they mean in plain English. You can also find some example snippets below.
 
 ### Examples
@@ -51,20 +56,6 @@ If you need help coming up with the right cron syntax, we recommend using a tool
 - `0 0 */2 * *`: At midnight UTC every other day
 - `0 0 * * 1`: At midnight UTC every Monday.
 
-A custom cron schedule can be specified in the Job Settings page when you edit a job:
-
-1. Select a job.
-2. Click **Settings**.
-3. Click **Edit**.
-4. In the Triggers section, activate the **Run on schedule** option.
-5. Select **Enter custom cron schedule**.
-6. Enter the custom cron syntax for the schedule you want.
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
-
-THE BELOW IS JUST COPIED OVER TEXT - WILL AMEND SOON!
-
-6. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under "Run history." 
 
 ## Related docs
 
