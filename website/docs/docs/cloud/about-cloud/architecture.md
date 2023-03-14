@@ -31,7 +31,7 @@ dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud
 
 ### Git sync
 
-dbt Cloud can sync with a variety of git repos, including [Github](/docs/cloud/git/connect-github) and [Gitlab](/docs/cloud/git/connect-gitlab), within it's integrated developement environment ([IDE](/docs/get-started/develop-in-the-cloud)). Communication takes place over HTTPS, rather than SSH, and is protected using the TLS 1.2 protocol for data in transit.
+dbt Cloud can sync with a variety of git repos, including [Github](/docs/cloud/git/connect-github) and [Gitlab](/docs/cloud/git/connect-gitlab), within its integrated development environment ([IDE](/docs/get-started/develop-in-the-cloud)). Communication takes place over HTTPS, rather than SSH, and is protected using the TLS 1.2 protocol for data in transit.
 
 The git repo information is stored on dbt Cloud servers to make it accessible during the IDE sessions. When the git sync is disabled, you must [contact support](mailto:support@getdbt.com) to request deletion of the synced data. 
 
