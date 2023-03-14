@@ -1,7 +1,7 @@
 ---
-title: “Job triggers”
-id: “job-triggers”
-description: “You can configure when and how dbt should run your job”
+title: "Job triggers"
+id: "job-triggers"
+description: "You can configure when and how dbt should run your job"
 ---
 
 In dbt Cloud, you can use the options under **Triggers** to configure when and how dbt should run your job:
