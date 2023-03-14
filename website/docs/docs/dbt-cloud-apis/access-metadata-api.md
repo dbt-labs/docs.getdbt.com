@@ -3,7 +3,7 @@ title: "Access the Metadata API"
 id: "access-metadata-api"
 ---
 
-Use the Metadata API to evaluate data health in the long term or at a moment in time. We provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run ad-hoc queries or browse the schema. GraphQL is a data query language for application APIs and GraphiQL is an in-browser IDE for exploring GraphQL. 
+Use the Metadata API to evaluate data health in the long term or at a moment in time. We provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run ad-hoc queries or browse the schema. 
 
 Since GraphQL provides a description of the data in the API, the schema displayed in the GraphiQL IDE accurately represents the graph and fields available to query.  
 
