@@ -62,8 +62,8 @@ Refer to the following example snippets:
 
 ## Related docs
 
-- [Job commands](/docs/deploy/job-commands)
-- [Webhooks for your jobs](/docs/deploy/webhooks)
-- [Source freshness](/docs/deploy/source-freshness)
 - [Artifacts](/docs/deploy/artifacts)
 - [Build and view your docs with dbt Cloud](/docs/collaborate/build-and-view-your-docs)
+- [Source freshness](/docs/deploy/source-freshness)
+- [Job commands](/docs/deploy/job-commands)
+- [Webhooks for your jobs](/docs/deploy/webhooks)
