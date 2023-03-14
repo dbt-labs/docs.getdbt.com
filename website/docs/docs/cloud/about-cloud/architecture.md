@@ -19,7 +19,7 @@ All data at rest on dbt Cloud servers is protected using AES-256 encryption.
 
 For a more detailed breakdown of the dbt Cloud apps, [download the advanced architecture guide](./assets/dbt-cloud-advanced-architecture-guide.pdf).
 
-For a more detailed breakdown of the dbt Cloud apps, <a target="blank" href={ require("./assets/dbt-cloud-advanced-architecture-guide.docx" ).default } download>download the advanced architecture guide</a>
+For a more detailed breakdown of the dbt Cloud apps, <a target="_blank" href={ require("/assets/dbt-cloud-advanced-architecture-guide.docx" ).default } download>download the advanced architecture guide</a>
 
 ## Communication
 
