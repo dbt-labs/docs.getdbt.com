@@ -15,6 +15,33 @@ const sidebarSettings = {
     }, // About dbt Cloud directory
     {
       type: "category",
+      label: "Quickstarts",
+      collapsed: true,
+      items: [
+        "docs/quickstarts/overview",
+        {
+          type: "category",
+          label: "dbt Cloud",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-cloud/bigquery",
+            "docs/quickstarts/dbt-cloud/databricks",
+            "docs/quickstarts/dbt-cloud/redshift",
+            "docs/quickstarts/dbt-cloud/snowflake",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Core",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-core/quickstart",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Set up dbt",
       collapsed: true,
       items: [
