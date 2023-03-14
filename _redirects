@@ -664,8 +664,8 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/get-started/dbt-cloud-features /docs/cloud/about-cloud/dbt-cloud-features 301
 /docs/deploy/regions-ip-addresses /docs/cloud/about-cloud/regions-ip-addresses 301
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
-/docs/deploy/single-tenant /docs/cloud/about-cloud/single-tenant 301
-/docs/deploy/multi-tenant /docs/cloud/about-cloud/multi-tenant 301
+/docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
+/docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
 /docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
 /docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
 /docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
