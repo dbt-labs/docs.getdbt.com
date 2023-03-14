@@ -23,4 +23,4 @@ With the Cloud IDE, you can:
 
 <Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.jpg" title="The dbt Cloud IDE in dark mode"/>
 
-For more information, read the complete [Cloud IDE guide](/docs/get-started/develop-in-the-cloud)
+For more information, read the complete [Cloud IDE guide](/docs/get-started/develop-in-the-cloud).
