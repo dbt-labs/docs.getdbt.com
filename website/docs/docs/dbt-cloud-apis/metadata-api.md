@@ -21,7 +21,7 @@ dbt Cloud provides two APIs:
     
 ## Use cases
 
-Use the Metadata API directly or through an integrated tool. It powers some experiences in dbt Cloud and can help solve [use cases](/docs/dbt-cloud-apis/metadata-use-case-guides) that benefit from [webhooks](/docs/deploy/webhooks) for accessing the latest project and run information:
+Use the Metadata API directly or via an integrated tool to enable experiences in dbt Cloud. It addresses [use cases](/docs/dbt-cloud-apis/metadata-use-case-guides) that need [webhooks](/docs/deploy/webhooks) for accessing up-to-date project and run information:
 
 - [**Discovery**](/docs/dbt-cloud-apis/metadata-use-case-guides#discovery)* &mdash; Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage. One example of this is the [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide). 
 - [**Quality**](/docs/dbt-cloud-apis/metadata-use-case-guides#quality)* &mdash; Make sure users have correct and up-to-date data for their analyses by monitoring test failures, source freshness, run status, exposures, and dependencies.
