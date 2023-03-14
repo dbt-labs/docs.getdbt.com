@@ -19,6 +19,8 @@ All data at rest on dbt Cloud servers is protected using AES-256 encryption.
 
 For a more detailed breakdown of the dbt Cloud apps, [download the advanced architecture guide](./assets/dbt-cloud-advanced-architecture-guide.pdf).
 
+For a more detailed breakdown of the dbt Cloud apps, <a target="blank" href={ require("./assets/dbt-cloud-advanced-architecture-guide.docx" ).default } download>download the advanced architecture guide</a>
+
 ## Communication
 
 dbt Cloud can communicate with several external services, including data platforms, git repositories, authentication services, and directories. All communications occur over HTTPS (attempts to connect via HTTP are redirected to HTTPS). dbt Cloud encrypts in transit using the TLS 1.2 cryptographic protocol. 
