@@ -3,7 +3,7 @@ title: "Access the Metadata API"
 id: "access-metadata-api"
 ---
 
-Use the Metadata API to evaluate data health in the long-term or at a moment-in-time. This section will explain how to access and query the Metadata API and what you'll need.
+Use the Metadata API to evaluate data health in the long term or at a moment in time. This section will explain how to access and query the Metadata API and what you'll need.
 
 <Snippet src="metadata-api-prerequisites" />
 
