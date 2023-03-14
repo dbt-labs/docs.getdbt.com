@@ -41,7 +41,7 @@ The 2023 Metadata API roadmap outlines three main uses: discovery, quality, and 
 
 To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in the first half of 2023. 
 
--  Q1 &mdash; Rather than querying for each job or run, retrieve the project's logical state (definitions), execution results, and applied state (what exists in the database) from the most recent production runs in its environment.
+-  Q1 &mdash; Rather than querying for each job or run, retrieve the logical state (definitions), execution results, and applied state (what exists in the database) of each node in the project based on their most recent runs in the production environment.
 - Q2 &mdash; dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage
 - Q2 &mdash; dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases
 - Q2 &mdash; Pagination for manageable responses and performance when querying long lists of dbt objects
