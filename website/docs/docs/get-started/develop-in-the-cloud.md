@@ -98,7 +98,7 @@ Set up your developer credentials:
 4. Enter the details under **Development Credentials**.
 5. Click **Save.**
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.jpg" width="100" height="100" title="Configure developer credentials in your Profile"/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/dev-credentials.jpg" width="85%" height="100" title="Configure developer credentials in your Profile"/>
 
 
 6. Access the Cloud IDE by clicking **Develop** at the top of the page.
@@ -114,7 +114,7 @@ If a model or test fails, dbt Cloud makes it easy for you to view and download t
 
 Use dbt's [rich model selection syntax](/reference/node-selection/syntax) to [run dbt commands](/reference/dbt-commands) directly within dbt Cloud.
 
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
+<Lightbox src="/img/docs/dbt-cloud/refresh-ide/building.gif" width="85%" title="Preview, compile, or build your dbt project. Use the lineage tab to see your DAG."/>
 
 ## Build and view your project's docs
 
