@@ -327,5 +327,5 @@ Once connected, dbt Cloud displays the email address of the service user so you 
 :::info Personal Access Tokens (PATs)
 Full-scoped PATs are created within dbt Cloud for short access by the service user to hit APIs around dbt Cloud project setup. They are valid for only 5 minutes and are revoked after a call to the API has been made.
 The Azure DevOps Administrator in Azure AD may restrict users from creating full-scoped PATs. Enabling this policy means new PATs must be limited to a specific custom defined set of scopes. By default, this policy is set to off. If they do enable this, your project will throw an error. If using finer-scoped permissions, you will lose access to some features, like webhooks for CI.
-If you do want to restrict full-scoped PATs as part of your security policy, add the dbt Cloud service user to the allow list to exclude that particular user from the global PAT policy.
+To restrict full-scoped PATs, add the dbt Cloud service user to the allow list to exclude that user from the global PAT policy as part of your security policy.
 :::
