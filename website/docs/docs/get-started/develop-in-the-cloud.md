@@ -28,12 +28,10 @@ With the Cloud IDE, you can:
 
 To develop in the Cloud IDE, make sure you have the following:
 
-- Your dbt project must be compatible with dbt version 0.15.0 or higher. The dbt IDE is powered by the [dbt-rpc](/reference/commands/rpc) which was overhauled in dbt v0.15.0
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) or [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
-- Set up a [development environment and development credentials](#access-the-cloud-ide)
-- The environment must be on dbt version 1.0 or higher
+- Set up a [development environment and development credentials](#access-the-cloud-ide) on dbt version 1.0 or higher
 
 ## Cloud IDE features
 
