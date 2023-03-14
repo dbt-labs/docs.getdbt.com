@@ -23,7 +23,6 @@ const sidebarSettings = {
           label: "dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
               label: "Connect data platform",
