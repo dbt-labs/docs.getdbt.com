@@ -323,3 +323,9 @@ Once connected, dbt Cloud displays the email address of the service user so you 
 dbt Cloud will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.
 
 :::
+
+:::info Personal Access Tokens (PATs)
+Full-scoped PATs are created within dbt Cloud for short access by the service user to hit APIs around dbt Cloud project setup. They are valid for only 5 minutes and are revoked after a call to the API has been made.
+The Azure DevOps Administrator in Azure AD may restrict users from creating full-scoped PATs. Enabling this policy means new PATs must be limited to a specific custom defined set of scopes. By default, this policy is set to off. If they do enable this, your project will throw an error. If using finer-scoped permissions, you will lose access to some features, like webhooks for CI.
+If you do want to restrict full-scoped PATs as part of your security policy, add the dbt Cloud service user to the allow list to exclude that particular user from the global PAT policy.
+:::
