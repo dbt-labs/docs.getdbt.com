@@ -23,7 +23,6 @@ const sidebarSettings = {
           label: "dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
             {
               type: "category",
               label: "Connect data platform",
@@ -112,26 +111,11 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-<<<<<<< HEAD
             "docs/get-started/installation",
             "docs/get-started/homebrew-install",
             "docs/get-started/pip-install",
             "docs/get-started/docker-install",
             "docs/get-started/source-install",
-=======
-            {
-              type: "category",
-              label: "Install dbt Core",
-              collapsed: true,
-              items: [
-                "docs/get-started/installation",
-                "docs/get-started/homebrew-install",
-                "docs/get-started/pip-install",
-                "docs/get-started/docker-install",
-                "docs/get-started/source-install",
-              ],
-            },
->>>>>>> next
             "docs/get-started/about-the-cli",
             "docs/get-started/connection-profiles",
           ],
