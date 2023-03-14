@@ -1,9 +1,9 @@
 ---
 title: "Enhancement: New Cloud IDE launch"
 id: "new-ide-launch"
-description: "Enhancement: New Cloud IDE launch"
+description: "Oct 2022: Introducing a new dbt Cloud IDE that's faster, has performance upgrades, ergonomics improvements, and other delightful enhancements."
 sidebar_label: "Snappier, faster, and new Cloud IDE"
-tags: [Oct-18-2022]
+tags: [Oct-18-2022, IDE]
 ---
 
 ## Introducing a snappier, improved, and powerful Cloud IDE

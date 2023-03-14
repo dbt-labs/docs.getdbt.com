@@ -1,6 +1,7 @@
 ---
 title: "About the CLI"
 id: "about-the-cli"
+sidebar_label: "About the CLI"
 ---
 
 dbt ships with a command line interface (CLI) for running your dbt project. This way of running dbt a dbt project is free and open source.
