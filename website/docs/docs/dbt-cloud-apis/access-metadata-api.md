@@ -3,11 +3,13 @@ title: "Access the Metadata API"
 id: "access-metadata-api"
 ---
 
-Use the Metadata API to evaluate data health in the long term or at a moment in time. This section will explain how to access and query the Metadata API and what you'll need.
+Use the Metadata API to evaluate data health in the long term or at a moment in time. We provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run ad-hoc queries or browse the schema. GraphQL is a data query language for application APIs and GraphiQL is an in-browser IDE for exploring GraphQL. 
+
+Since GraphQL provides a description of the data in the API, the schema displayed in the GraphiQL IDE accurately represents the graph and fields available to query.  
 
 <Snippet src="metadata-api-prerequisites" />
 
-We provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run ad-hoc queries or browse the schema. As GraphQL provides a description of the data in the API, the schema shown in the GraphiQL interface accurately represents the graph and fields available to query. 
+This section will explain how to access and query the Metadata API:
 
 1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Metadata API for authorization of requests.
 

@@ -1,5 +1,5 @@
 ---
-title: "Metadata API overview"
+title: "About the Metadata API"
 id: "metadata-api"
 ---
 
