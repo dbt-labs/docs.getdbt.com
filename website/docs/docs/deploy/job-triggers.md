@@ -24,7 +24,7 @@ To schedule your job to run at specific days, times, and intervals:
 
 To set your job's schedule, use the **Schedule Days** option to choose specific days of the week, and select customized hours or intervals.
 
-Under **Timing**, you can either use customizable hours for jobs that need to run frequently throughout the day or exact intervals for jobs that need to run at specific times.
+Under **Timing**, you can either use customizable hours for jobs that need to run frequently throughout the day or exact intervals for jobs that need to run at specific times:
 
 - **Every n hours** &mdash; Use this option to set how often your job runs, in hours. Enter a number between 1 and 23 to represent the interval between job runs. For example, if you set it to "every 2 hours", the job will run every 2 hours from midnight UTC. This option is useful if you need to run jobs multiple times per day at regular intervals.
 
