@@ -149,7 +149,7 @@ See: [Redshift docs on `UNLOAD`](https://docs.aws.amazon.com/redshift/latest/dg/
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       finance:
@@ -202,7 +202,7 @@ models:
 
 ```yml
 
-model:
+models:
   +post-hook: "{{ grant_select(this) }}"
 
 ```
@@ -216,7 +216,7 @@ model:
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       marketing:
