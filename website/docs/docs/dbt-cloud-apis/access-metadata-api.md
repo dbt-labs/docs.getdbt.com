@@ -56,7 +56,7 @@ docs link here: https://www.apollographql.com/docs/graphos/explorer/embed-explor
 ## Related docs
 
 
-- [Using the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
+- [Use the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
 - [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying)
 - [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
 

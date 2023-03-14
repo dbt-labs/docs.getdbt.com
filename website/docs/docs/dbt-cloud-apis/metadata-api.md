@@ -78,7 +78,7 @@ To improve dbt operations, we’ll enable API users to access and query richer i
 
 ## Related docs
 
-- [Using the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
+- [Use the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
 - [Access the Metadata API](/docs/dbt-cloud-apis/access-metadata-api)
 - [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying)
 - [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
