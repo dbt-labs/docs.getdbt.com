@@ -9,7 +9,7 @@ To review actions performed by people in your organization, dbt provides logs of
 
 :::note
 
-Audit logs are currently not supported for Microsoft Azure.
+Single-tenant deployment environments hosted on Microsoft Azure do not currently support audit logs. For more information, refer to [Single tenant](/docs/cloud/about-cloud/tenancy).
 
 :::
 
