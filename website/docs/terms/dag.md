@@ -16,7 +16,7 @@ While the concept of a DAG originated in mathematics and gained popularity in co
 
 ## DAG use cases and best practices
 
-DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall data transformations.
+DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
 ### Unpacking relationships and data lineage
 
