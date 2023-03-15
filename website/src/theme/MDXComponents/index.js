@@ -23,7 +23,6 @@ import FAQ from '@site/src/components/faqs';
 import FAQList from '@site/src/components/faqList';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
-import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
