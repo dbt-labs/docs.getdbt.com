@@ -126,7 +126,7 @@ password: hunter2
 
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>Markdown Links</h1>
-                  Refer to the <a href="https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md#Links" target="_blank">Links section</a> of the Content Style Guide to read about how you can use links in the dbt product documentation.
+                  Refer to the <a href="https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md#Links" target="_blank" rel="noreferrer">Links section</a> of the Content Style Guide to read about how you can use links in the dbt product documentation.
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
