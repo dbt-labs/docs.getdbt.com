@@ -61,7 +61,7 @@ In the greater data world, you may often hear of data lineage systems based on t
 
 ### **DAGs (directed acyclic graphs)**
 
-If you use a transformation tool such as dbt that automatically infers relationships between data sources and models, a DAG automatically populates to show you the lineage that exists for your data transformations.
+If you use a transformation tool such as dbt that automatically infers relationships between data sources and models, a DAG automatically populates to show you the lineage that exists for your [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
 <Lightbox src="/img/docs/terms/data-lineage/dag_example.png" title="dbt Cloud Project with generated DAG" />
 
