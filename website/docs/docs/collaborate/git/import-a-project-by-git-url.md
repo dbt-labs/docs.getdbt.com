@@ -79,7 +79,9 @@ dbt Cloud can work with dbt projects hosted on AWS CodeCommit, but there are som
 - **[Contact dbt Support](mailto:support@getdbt.com)** and share that field so that dbt Support team can complete the setup process for you.
 
 #### Step 4: Specify a custom branch in dbt Cloud
-- CodeCommit uses `master` as its default branch, and to initialize your project, you'll need to specify the `master` branch as a [custom branch](/faqs/environments/custom-branch-settings#development) in dbt Cloud.
+
+CodeCommit uses `master` as its default branch, and to initialize your project, you'll need to specify the `master` branch as a [custom branch](/faqs/environments/custom-branch-settings#development) in dbt Cloud.
+
 - Go to **Deploy** -> **Environments** -> **Development**. 
 - Select **Settings** -> **Edit** and under **General Settings**, check the **Default to a custom branch** checkbox.
 - Specify the custom branch as `master` and click **Save**.
