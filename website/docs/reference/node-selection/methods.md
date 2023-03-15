@@ -27,7 +27,6 @@ The `source` method is used to select models that select from a specified [sourc
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
 Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files.
-For sources, the definition lies in YAML files.
 While the `path` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
