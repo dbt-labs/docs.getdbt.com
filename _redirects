@@ -684,8 +684,19 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/collaborate/manage-access/set-up-snowflake-oauth /docs/cloud/manage-access/set-up-snowflake-oauth 301
 /docs/collaborate/manage-access/set-up-bigquery-oauth /docs/cloud/manage-access/set-up-bigquery-oauth 301
 /docs/collaborate/manage-access/audit-log /docs/cloud/manage-access/audit-log 301
+/docs/get-started/develop-in-the-cloud /docs/cloud/develop-in-the-cloud 301
+/docs/get-started/dbt-cloud-tips /docs/cloud/dbt-cloud-tips 301
+/docs/get-started/installation /docs/core/installation 301
+/docs/get-started/about-the-cli /docs/core/about-the-cli 301
+/docs/get-started/homebrew-install /docs/core/homebrew-install 301
+/docs/get-started/pip-install /docs/core/pip-install 301
+/docs/get-started/docker-install /docs/core/docker-install 301
+/docs/get-started/source-install /docs/core/source-install 301
+/docs/get-started/connection-profiles /docs/core/connection-profiles 301
+/docs/get-started/run-your-dbt-projects /docs/running-a-dbt-project/run-your-dbt-projects 301
+
 /website/docs/docs/contributing/documenting-a-new-adapter.md /docs/contributing/documenting-a-new-adapter 301
-/docs/dbt-cloud/cloud-configuring-dbt-cloud/docs/guides/migration-guide/upgrading-to-0-21-0 / 302
+
 
 /v0.8/reference / 301
 /v0.10/reference / 301
@@ -695,12 +706,12 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.14/docs/cloud-developer-ide / 301
 
 # Removing on premise Cloud content
-/docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/faqs /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/index /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/installation /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/prerequisites /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/setup /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/faqs /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/index /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/installation /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/prerequisites /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/setup /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 301
 
