@@ -10,18 +10,18 @@ function PostCarousel({ blogPostData }) {
   return (
     <div>
       <Swiper
-        spaceBetween={60}
+        spaceBetween={30}
         slidesPerView={1}
         navigation
         modules={[Navigation]}
         breakpoints={{
           640: {
             slidesPerView: 2,
-            spaceBetween: 60,
+            spaceBetween: 30,
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 60,
+            spaceBetween: 30,
           },
         }}
       >

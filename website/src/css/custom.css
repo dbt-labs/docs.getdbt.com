@@ -1664,7 +1664,7 @@ section > h2:not(.resource-section) {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 25px;
-    column-gap: calc(var(--ifm-spacing-horizontal) * 4);
+    column-gap: calc(var(--ifm-spacing-horizontal) * 2);
     grid-template-areas:
       "popH2 featH2"
       "popResources  featResource";
