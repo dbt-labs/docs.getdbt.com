@@ -52,6 +52,12 @@ dbt-decodable is also available on PyPI. pip is the easiest way to install the a
 
 
 ## Connecting to Decodable with **dbt-decodable**
+Do the following steps to connect to Decodable with dbt. 
+
+### Prerequisites
+In order to properly connect to Decodable, you must have the Decodable CLI installed and have used it to login to Decodable at least once. See <a href="https://docs.decodable.co/docs/setup#install-the-cli-command-line-interface">Install the Decodable CLI</a> for more information. 
+
+### Steps 
 To connect to Decodable with dbt, you'll need to add a Decodable profile to your `profiles.yml` file. A Decodable profile has the following fields. 
 
 <File name='~/.dbt/profiles.yml'>
