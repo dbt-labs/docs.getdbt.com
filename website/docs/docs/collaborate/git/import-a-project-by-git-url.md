@@ -113,7 +113,7 @@ If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can im
 
 ## Other git providers
 
-Don't see your git provider here? Please [contact support](mailto:support@getdbt.com) - we're happy to help you set up dbt Cloud with any supported git provider.
+Don't see your git provider here? Please [contact dbt Support](mailto:support@getdbt.com) - we're happy to help you set up dbt Cloud with any supported git provider.
 
 ## Limited integration
 Some features of dbt Cloud require a tight integration with your git host, for example, updating GitHub pull requests with dbt Cloud run statuses. Importing your project by a URL prevents you from using these features. Once you give dbt Cloud access to your repository, you can continue to set up your project by adding a connection and creating and running your first dbt Cloud job.
