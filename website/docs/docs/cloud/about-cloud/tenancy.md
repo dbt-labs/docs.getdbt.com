@@ -1,13 +1,14 @@
 ---
 title: Tenancy
 id: tenancy
+description: "Information aboute single tenant and multi-tenant dbt Cloud instances"
 ---
 
 dbt Cloud is available in both single (virtual private) and multi-tenant configurations.
 
 ### Multi-tenant
 
-The Multi Tenant (SaaS) deployment environment refers to the SaaS dbt Cloud application hosted by dbt Labs. This is the most commonly used deployment and is completely managed and maintained by dbt Labs, the makers of dbt. As a SaaS product, a user can quickly [create an account](https://www.getdbt.com/signup/) and get started using the dbt and related services immediately. The deployment is hosted in AWS and is always kept up to date with the currently supported dbt versions, software updates, and bug fixes.
+The Multi Tenant (SaaS) deployment environment refers to the SaaS dbt Cloud application hosted by dbt Labs. This is the most commonly used deployment and is completely managed and maintained by dbt Labs, the makers of dbt. As a SaaS product, a user can quickly [create an account](https://www.getdbt.com/signup/) on our North American servers and get started using the dbt and related services immediately. _If your organization requires cloud services hosted on EMEA or APAC regions_, please [contact us](https://www.getdbt.com/contact/). The deployment is hosted on AWS and is always kept up to date with the currently supported dbt versions, software updates, and bug fixes.
 
 For more information about the dbt Cloud Production deployment see the below.
 

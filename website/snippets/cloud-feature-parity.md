@@ -7,8 +7,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Audit logs                    | ✅           | ✅ (select customers)  | ❌                   |  
 | Metadata API                  | ✅           | ✅ (select customers)  | ❌                   | 
 | Webhooks                      | ✅           | ❌                     | ❌                   |
-| Semantic Layer                | ✅ (US Only) | ❌                     | ❌                   | 
-| Cloud execution               | ✅ (US Only) | ❌                     | ❌                   | 
-| IP Restrictions               | ❌           | ❌                     | ✅                   | 
+| Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
+| IP Restrictions               | ❌           | ✅                     | ✅                   | 
 | PrivateLink egress            | ✅           | ✅                     | ✅                   | 
 | PrivateLink ingress           | ❌           | ✅                     | ✅                   | 
