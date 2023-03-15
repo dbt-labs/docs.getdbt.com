@@ -122,7 +122,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 
 ## Related docs
 
-- [dbt Cloud features](/docs/get-started/dbt-cloud-features)
+- [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
 - [dbt Cloud IDE release notes](/tags/ide)
