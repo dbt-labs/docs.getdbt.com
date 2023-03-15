@@ -53,4 +53,3 @@ See [Supported Data Platforms](supported-data-platforms) to view the full list o
 # How do I get started?
 
 dbt is open source and completely free to download and use. See our [Getting Started guide](introduction) for more.
-
