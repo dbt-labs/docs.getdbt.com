@@ -7,7 +7,7 @@ dbt Core and all adapter plugins maintained by dbt Labs are available as [Docker
 
 Using a prebuilt Docker image to install dbt Core in production has a few benefits: it already includes dbt-core, one or more database adapters, and pinned versions of all their dependencies. By contrast, `pip install dbt-core dbt-<adapter>` takes longer to run, and will always install the latest compatible versions of every dependency.
 
-You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core via [Homebrew](/docs/get-started/homebrew-install) or [pip](/docs/get-started/pip-install) instead.
+You might also be able to use Docker to install and develop locally if you don't have a Python environment set up. Note that running dbt in this manner can be significantly slower if your operating system differs from the system that built the Docker image. If you're a frequent local developer, we recommend that you install dbt Core via [Homebrew](/docs/core/homebrew-install) or [pip](/docs/core/pip-install) instead.
 
 ### Prerequisites
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.

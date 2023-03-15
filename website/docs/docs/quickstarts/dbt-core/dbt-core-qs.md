@@ -87,7 +87,7 @@ To create your dbt project:
 
 ### Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/get-started/connection-profiles), which is a yaml file with all the connection details to your warehouse.
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connection-profiles), which is a yaml file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.

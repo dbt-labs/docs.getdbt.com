@@ -3,7 +3,7 @@ title: "Install with pip"
 description: "You can use pip to install dbt Core and adapter plugins from the command line."
 ---
 
-You need to use `pip` to install dbt Core on Windows or Linux operating systems. You can use `pip` or [Homebrew](/docs/get-started/homebrew-install) for installing dbt Core on a MacOS. 
+You need to use `pip` to install dbt Core on Windows or Linux operating systems. You can use `pip` or [Homebrew](/docs/core/homebrew-install) for installing dbt Core on a MacOS. 
 
 You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/). We recommend using virtual environments when installing with `pip`.
 
