@@ -325,7 +325,8 @@ To connect the service user:
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
 
 :::info Personal Access Tokens (PATs)
-Full-scoped PATs are created within dbt Cloud for short access by the service user to hit APIs around dbt Cloud project setup. They are valid for only 5 minutes and are revoked after a call to the API has been made.
+dbt Cloud generates temporary access tokens called Full-scoped PATs for service users to access APIs related to their dbt Cloud project. These tokens are only valid for a short period of 5 minutes and become invalid after they are used to make an API call.
+:::
 The Azure DevOps Administrator can limit the creation of full-scoped PATs by enabling a policy that restricts users to a custom-defined set of scopes. By default, this policy is set to **off**, but enabling it will cause the project to display an error. If you use finer-scoped permissions, some features such as webhooks for CI may be lost.
 To restrict full-scoped PATs, add the dbt Cloud service user to the allow list to exclude that user from the global PAT policy as part of your security policy.
 :::
