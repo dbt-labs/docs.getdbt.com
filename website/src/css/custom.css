@@ -1614,7 +1614,7 @@ section.discourse-forum-page {
 .home section {
   margin: 6.25rem auto 6.25rem;
   max-width: var(--ifm-container-width-xl);
-  padding: 0 var(--ifm-spacing-horizontal);
+  padding: 0 50px;
 }
 
 .home section.from-the-blog {
