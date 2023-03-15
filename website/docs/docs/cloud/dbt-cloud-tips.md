@@ -58,4 +58,4 @@ There are default keyboard shortcuts that can help make development more product
 
 - [Quickstart guide](/docs/quickstarts/overview)
 - [About dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
+- [Develop in the Cloud](/docs/cloud/develop-in-the-cloud)

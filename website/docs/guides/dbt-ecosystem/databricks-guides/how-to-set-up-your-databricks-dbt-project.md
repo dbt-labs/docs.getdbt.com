@@ -83,7 +83,7 @@ During your first invocation of `dbt run`, dbt will create the developer schema 
 
 Last, we need to give dbt a way to deploy code outside of development environments. To do so, we’ll use dbt [environments](https://docs.getdbt.com/docs/collaborate/environments) to define the production targets that end users will interact with.
 
-Core projects can use [targets in profiles](https://docs.getdbt.com/docs/get-started/connection-profiles#understanding-targets-in-profiles) to separate environments. [dbt Cloud environments](https://docs.getdbt.com/docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide) allow you to define environments via the UI and [schedule jobs](/docs/quickstarts/dbt-cloud/databricks#create-and-run-a-job) for specific environments.
+Core projects can use [targets in profiles](https://docs.getdbt.com/docs/get-started/connection-profiles#understanding-targets-in-profiles) to separate environments. [dbt Cloud environments](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud#set-up-and-access-the-cloud-ide) allow you to define environments via the UI and [schedule jobs](/docs/quickstarts/dbt-cloud/databricks#create-and-run-a-job) for specific environments.
 
 Let’s set up our deployment environment:
 

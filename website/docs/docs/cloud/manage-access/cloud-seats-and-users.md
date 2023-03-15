@@ -12,7 +12,7 @@ different types of licenses in dbt Cloud: _Developer_ and _Read Only_.
 
 The type of license a user is assigned controls which capabilities of dbt
 Cloud the user is permitted to access. Users with a Developer license can be
-granted access to the Deployment and [Development](/docs/get-started/develop-in-the-cloud) functionality
+granted access to the Deployment and [Development](/docs/cloud/develop-in-the-cloud) functionality
 in dbt Cloud, whereas users with Read Only licenses are intended to view the
 [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account.
 

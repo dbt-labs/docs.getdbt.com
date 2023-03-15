@@ -16,7 +16,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 <Card
     title="dbt Cloud IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
-link="/docs/get-started/develop-in-the-cloud"
+link="/docs/cloud/develop-in-the-cloud"
     icon="pencil-paper"/>
 
 <Card
@@ -46,7 +46,7 @@ link="/docs/get-started/develop-in-the-cloud"
    <Card
     title="Democratize access to logs"
     body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
-    link="/docs/get-started/develop-in-the-cloud#build-compile-and-run-projects"
+    link="/docs/cloud/develop-in-the-cloud#build-compile-and-run-projects"
     icon="pencil-paper"/>      
 
    <Card
@@ -93,6 +93,6 @@ link="/docs/get-started/develop-in-the-cloud"
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/quickstarts/overview)
-- [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
+- [Develop in the Cloud](/docs/cloud/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)
