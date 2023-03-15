@@ -23,6 +23,14 @@ For a more detailed breakdown of the dbt Cloud apps, [download the advanced arch
 
 dbt Cloud can communicate with several external services, including data platforms, git repositories, authentication services, and directories. All communications occur over HTTPS (attempts to connect via HTTP are redirected to HTTPS). dbt Cloud encrypts in transit using the TLS 1.2 cryptographic protocol. 
 
+TLS (Transport Layer Security) 1.2 is an industry-standard protocol for encrypting sensitive data while it travels over the public internet (which does not offer native encryption).
+
+A typical scenario that might be seen frequently worldwide is an employee working in a public space, such as an airport or café. The user might be connected to an unsecured public network offered by a facility to which many others are also connected. What if there is a bad actor amongst them running a program (such as Wireshark) that can "capture" network packets and analyze them over the air?
+
+Let's say the user is accessing dbt Cloud and running models accessing information from a data platform in this public space while connected to the unsecured network. When users interact with dbt Cloud, the information sent from their computer to the service is encrypted with TLS 1.2.
+
+If that user runs a command that initializes communication between dbt Cloud and the data warehouse (or a git repo or an auth service) over the internet, that communication is also encrypted.  This means that while the bad actor can technically see the traffic moving over that unsecured network, they can't read or otherwise parse any information. They will not be able to eavesdrop on or hack the information in any way whatsoever. At most, they'd see a nonsensical set of characters that no person or computer on earth can decrypt (unless they have a couple hundred years to spare).
+
 For more detailed information on our security practices, read our [Security page](https://getdbt.com/security).
 
 ### Data warehouse interaction
