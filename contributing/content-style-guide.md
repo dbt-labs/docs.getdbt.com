@@ -41,7 +41,7 @@ If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs
 
 | ✅ Use | ❌ Avoid|
 |:-------:|:-------:|
-|`/docs/deploy/architecture` | `/docs/deploy/how-we-think-about-architecture`|
+|`/docs/cloud/about-cloud/architecture` | `/docs/deploy/how-we-think-about-architecture`|
 
 
 ## Using Markdown

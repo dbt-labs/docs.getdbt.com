@@ -15,7 +15,7 @@ dbt Cloud serves a GraphQL API which supports arbitrary queries over this metada
 
 ## Prerequisites
 
-- You must have a [multi-tenant](/docs/deploy/regions-ip-addresses) account and [Team or Enterprise plans](https://www.getdbt.com/pricing/)
+- You must have a [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) account and [Team or Enterprise plans](https://www.getdbt.com/pricing/)
 - Your projects must be on dbt version v0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade
     
 ## Use cases
@@ -35,7 +35,7 @@ Users may use the API directly or within an integrated tool, and it powers some 
 
 We provide [a graphical explorer](https://metadata.cloud.getdbt.com/graphql) for this API where you can run ad-hoc queries or browse the schema. As GraphQL provides a self-describing API, the schema shown in the GraphiQL interface is an accurate representation of the graph and fields available to query. To learn how to use GraphiQL, refer to [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying.md).
 
-The endpoint to access this API is `https://metadata.{YOUR_ACCESS_URL}/graphql`. Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America using multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`.
+The endpoint to access this API is `https://metadata.{YOUR_ACCESS_URL}/graphql`. Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your region is North America using multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`.
 
 ## Retention limits
 
