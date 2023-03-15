@@ -28,7 +28,7 @@ With the Cloud IDE, you can:
 
 To develop in the Cloud IDE, make sure you have the following:
 
-- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/collaborate/manage-access/seats-and-users)
+- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) or [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions
 - A dbt project connected to a [data platform](/docs/get-started/connect-your-database)
 - Set up a [development environment and development credentials](#access-the-cloud-ide)
