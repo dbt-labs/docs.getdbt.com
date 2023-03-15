@@ -1,5 +1,5 @@
 ---
-title: "dbt Cloud IDE""
+title: "dbt Cloud IDE"
 id: develop-in-the-cloud
 description: "Develop, test, run, and build in the Cloud IDE."
 sidebar_label: dbt Cloud IDE
