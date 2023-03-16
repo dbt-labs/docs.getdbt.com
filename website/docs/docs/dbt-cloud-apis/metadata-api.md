@@ -45,7 +45,6 @@ To improve discovery experiences, we’ll make it easier for API users to access
 - dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage
 - dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases
 - Pagination for manageable responses and performance when querying long lists of dbt objects
-- Retrieve project information from the dbt logs, such as catalog information, without having to generate documentation.
 
 
 </TabItem>
