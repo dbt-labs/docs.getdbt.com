@@ -1,44 +1,85 @@
 ---
-title: "Metadata API"
+title: "About the Metadata API"
 id: "metadata-api"
 ---
 
+Every time dbt Cloud runs a project, it generates and stores information about the dbt project — in other words, metadata. It stores information on how it's executed, including accuracy, recency, configuration, the structure of the <Term id="view">views</Term>, and tables in the warehouse.  
 
-The dbt Cloud Metadata API helps organizations analyze and improve their data using the outputs of dbt execution. You can use the API and power downstream integrations so users:
+The dbt Metadata API helps organizations analyze and improve their data using the outputs of dbt execution. You can use the Metadata API to perform freshness analysis, catalog metrics, power downstream integrations, and more:
+
  - Discover and understand data for analysis
  - Ensure data quality based on models, tests, and sources
  - Increase the efficiency of dbt operations
 
-Every time dbt Cloud runs a project, it generates and stores information about the dbt project—in other words, metadata. It stores information like how it's executed, including accuracy, recency, configuration, and structure of the <Term id="view">views</Term> and tables in the warehouse. 
+dbt Cloud provides two APIs:
 
-dbt Cloud serves a GraphQL API which supports arbitrary queries over this metadata. You can use this API to evaluate data health in the long-term or at a moment-in-time. 
+- The [dbt Metadata API](#use-cases) &mdash;  Use it to fetch metadata related to the state and health of your dbt project. 
+- The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) &mdash; Use it to administrate a dbt Cloud account. For example, manually retrieve the JSON artifact files, check job status, and run jobs. 
 
-## Prerequisites
+<Snippet src="metadata-api-prerequisites" />
 
-- You must have a [multi-tenant](/docs/deploy/regions-ip-addresses) account and [Team or Enterprise plans](https://www.getdbt.com/pricing/)
-- Your projects must be on dbt version v0.19.0 or higher. Refer to [Version migration guides](/guides/migration/versions) to upgrade
     
 ## Use cases
 
-Use the Metadata API to solve the following use cases:
+Use the Metadata API directly or via an integrated tool to enable experiences in dbt Cloud. It addresses [use cases](/docs/dbt-cloud-apis/metadata-use-case-guides) that need [webhooks](/docs/deploy/webhooks) for accessing up-to-date project and run information:
 
-- **Discovery*** &mdash; Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage. One example of this is the [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide). 
-- **Quality*** &mdash; Make sure users have correct and up-to-date data for their analyses by monitoring test failures, source freshness, run status, exposures, and dependencies.
-- **Operations*** &mdash;  Help data teams run dbt efficiently and reduce costs by using historical run data, including information like model build time and run counts.
- 
+- [**Discovery**](/docs/dbt-cloud-apis/metadata-use-case-guides#discovery)* &mdash; Find and understand dbt assets to analyze in integrated tools using information like model and metric definitions, column info, and lineage. One example of this is the [dbt Semantic Layer integration](/guides/dbt-ecosystem/sl-partner-integration-guide). 
+- [**Quality**](/docs/dbt-cloud-apis/metadata-use-case-guides#quality)* &mdash; Make sure users have correct and up-to-date data for their analyses by monitoring test failures, source freshness, run status, exposures, and dependencies.
+- [**Operations**](/docs/dbt-cloud-apis/metadata-use-case-guides#operations)* &mdash;  Help data teams run dbt efficiently and reduce costs by using historical run data, including information like model build time and run counts.
 
-Users may use the API directly or within an integrated tool, and it powers some experiences in dbt Cloud itself. Many Metadata API use cases also benefit from [webhooks](/docs/deploy/webhooks) to access the most up-to-date project and run information. 
+*_Refer to [Using the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides) for more info; additional detailed use case and integration guides are coming soon_.
 
-*_More detailed use case and integration guides coming soon_
 
-## Browse the API
+## Product roadmap
 
-We provide [a graphical explorer](https://metadata.cloud.getdbt.com/graphql) for this API where you can run ad-hoc queries or browse the schema. As GraphQL provides a self-describing API, the schema shown in the GraphiQL interface is an accurate representation of the graph and fields available to query. To learn how to use GraphiQL, refer to [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying.md).
+The 2023 Metadata API roadmap outlines three main uses: discovery, quality, and operation, with specific initiatives planned for each quarter:
 
-The endpoint to access this API is `https://metadata.{YOUR_ACCESS_URL}/graphql`. Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. For example, if your region is North America using multi tenant, your endpoint is `https://metadata.cloud.getdbt.com/graphql`.
+<!--- tabs for discovery, quality, operations --->
+<Tabs>
 
-## Retention limits
+<TabItem value="discovery" label="Discovery">
 
-You can use the metadata API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
+To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in the first half of 2023. 
 
-*We are continuously expanding the capabilities of the metadata API and we welcome your feedback and suggestions at cloudAPIs@dbtlabs.com.*
+-  Q1 &mdash; Rather than querying for each job or run, retrieve the logical state (definitions), execution results, and applied state (what exists in the database) of each node in the project based on their most recent runs in the production environment.
+- Q2 &mdash; dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage
+- Q2 &mdash; dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases
+- Q2 &mdash; Pagination for manageable responses and performance when querying long lists of dbt objects
+- Q3 &mdash; Retrieve project information from the dbt logs, such as catalog information, without having to generate documentation.
+
+
+</TabItem>
+
+<TabItem value="quality" label="Quality">
+
+To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools.  
+
+- Q1 &mdash; Add Metadata API support for dbt Core 1.5 elements of data contracts like model owners, access, and constraints.
+- Q4 or later &mdash; Improvements to webhooks to support notifications about tests, freshness, and events per model rather than per run.
+- Q4 or later &mdash; Streaming results so users can access real-time metadata during a run.
+- Q4 or later &mdash; Integrate with model freshness SLAs for intelligent scheduling.
+
+</TabItem>
+
+<TabItem value="operations" label="Operations">
+
+
+To improve dbt operations, we’ll enable API users to access and query richer information about execution on dbt Cloud in more ergonomic ways. This is our primary focus in the second half of 2023. 
+
+- Q3 &mdash; Enable easier queries across runs to analyze performance over time, such as time aggregation for execution results of individual models and the project as a whole.
+- Q3 &mdash; Provide granular execution information from dbt Cloud, such as invocation history.
+- Q3 &mdash; Improvements to webhooks for notifications about run events.
+- Q4 &mdash; Streaming results to see the DAG as it builds during a run.
+
+</TabItem>
+</Tabs>
+
+
+
+## Related docs
+
+- [Use the Metadata API](/docs/dbt-cloud-apis/metadata-use-case-guides)
+- [Access the Metadata API](/docs/dbt-cloud-apis/access-metadata-api)
+- [Query the Metadata API](/docs/dbt-cloud-apis/metadata-querying)
+- [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
+
