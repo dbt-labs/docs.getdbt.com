@@ -55,7 +55,7 @@ Airflow solves those same problems, but in a publicly-verifiable and trusted way
 
 ### From the dbt side
 
-That pipeline above included a plethora of data transformation jobs, built in various ways.
+That pipeline above included a plethora of [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) jobs, built in various ways.
 
 They were often written in naked python scripts that only ran a SQL query + wrote data to BigQuery. These stored procedure-like SQL scripts required:
 
