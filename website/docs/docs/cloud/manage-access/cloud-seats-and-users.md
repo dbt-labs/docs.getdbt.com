@@ -1,7 +1,7 @@
 ---
-title: "Users and Licenses"
+title: "Users and licenses"
 id: "seats-and-users"
-sidebar: "Users and Licenses"
+sidebar: "Users and licenses"
 description: "Information about users and their license types"
 ---
 

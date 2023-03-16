@@ -4,7 +4,7 @@ id: "architecture"
 description: "Information about the architecture, communication, and security of dbt Cloud"
 ---
 
-This page is intended to help practitioners and those interested in the architecture and data flow of the hosted dbt Cloud product.
+This page helps practitioners and those interested in dbt Cloud's architecture and data flow.
 
 ## About dbt Cloud architecture
 
@@ -26,7 +26,7 @@ dbt Cloud can communicate with several external services, including data platfor
 
 TLS (Transport Layer Security) 1.2 is an industry-standard protocol for encrypting sensitive data while it travels over the public internet (which does not offer native encryption).
 
-A typical scenario that might be seen frequently is an employee working in a public space, such as an airport or café. The user might be connected to an unsecured public network offered by a facility to which many others are also connected. What if there is a bad actor amongst them running a program (such as Wireshark) that can "capture" network packets and analyze them over the air?
+A typical scenario that might be seen frequently is an employee working in a public space, such as an airport or café. The user might be connected to an unsecured public network offered by a facility to which many others are also connected. What if there is a bad actor amongst them running a program that can "capture" network packets and analyze them over the air?
 
 When that user is accessing dbt Cloud and running models that interact with the data platform, the information sent to and from their computer and the services is encrypted with TLS 1.2.
 
@@ -50,7 +50,7 @@ The git repo information is stored on dbt Cloud servers to make it accessible du
 
 The default settings of dbt Cloud enable local users with credentials stored in dbt Cloud. Still, integrations with various authentication services are offered as an alternative, including [single sign-on services](/docs/cloud/manage-access/sso-overview). Access to features can be granted/restricted by role using [RBAC](/docs/cloud/manage-access/enterprise-permissions).
 
-SSO features are essential because they reduce the number of credentials a user must maintain. Users sign in once and the authentication token is shared among integrated services (such as dbt Cloud). The token expires and must be refreshed at predetermined intervals, requiring the user to go through the authentication process again. If the user is disabled in the SSO provider service, their access to dbt Cloud is disabled, and they can not override with local auth credentials. 
+SSO features are essential because they reduce the number of credentials a user must maintain. Users sign in once and the authentication token is shared among integrated services (such as dbt Cloud). The token expires and must be refreshed at predetermined intervals, requiring the user to go through the authentication process again. If the user is disabled in the SSO provider service, their access to dbt Cloud is disabled, and they cannot override this with local auth credentials. 
 
 [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer OAuth (JSON to pass info and API calls for auth) services as an alternative to SAML (XML to pass info and session cookies for auth). Users can authenticate against the data platform for secure access to dbt Cloud and prevent access when credentials are revoked. 
 
