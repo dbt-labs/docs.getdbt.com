@@ -28,7 +28,7 @@ link="/docs/get-started/develop-in-the-cloud"
   <Card
     title="Schedule and run dbt jobs"
     body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
-    link="/docs/get-started/getting-started/building-your-first-project/schedule-a-job"
+    link="/docs/deploy/deployments#dbt-cloud"
     icon="pencil-paper"/>
 
   <Card
@@ -92,7 +92,7 @@ link="/docs/get-started/develop-in-the-cloud"
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Get started guides](/docs/get-started/getting-started/set-up-dbt-cloud)
+- [Quickstart guides](/docs/quickstarts/overview)
 - [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)

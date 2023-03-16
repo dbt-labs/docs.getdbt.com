@@ -4,36 +4,46 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
+      label: "Quickstarts",
+      collapsed: true,
+      items: [
+        "docs/quickstarts/overview",
+        {
+          type: "category",
+          label: "dbt Cloud",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-cloud/bigquery",
+            "docs/quickstarts/dbt-cloud/databricks",
+            "docs/quickstarts/dbt-cloud/redshift",
+            "docs/quickstarts/dbt-cloud/snowflake",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Core",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-core/quickstart",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Get started with dbt",
       collapsed: true,
       items: [
-        "docs/get-started/getting-started/overview",
         {
           type: "category",
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
-            {
-              type: "category",
-              label: "Getting set up",
-              items: [
-                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
-                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
-                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
-              ],
-            },
-            {
-              type: "category",
-              label: "Building your first project",
-
-              items: [
-                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
-                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
-              ],
-            },
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/dbt-cloud-tips",
             {
               type: "category",
               label: "PrivateLink",
@@ -52,10 +62,6 @@ const sidebarSettings = {
                 "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
-            "docs/get-started/dbt-cloud-features",
-            "docs/get-started/connect-your-database",
-            "docs/get-started/develop-in-the-cloud",
-            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
@@ -63,7 +69,6 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
@@ -167,6 +172,8 @@ const sidebarSettings = {
                   label: "Metadata API",
                   items: [
                     "docs/dbt-cloud-apis/metadata-api",
+                    "docs/dbt-cloud-apis/metadata-use-case-guides",
+                    "docs/dbt-cloud-apis/access-metadata-api",
                     "docs/dbt-cloud-apis/metadata-querying",
                     {
                       type: "category",
@@ -219,10 +226,11 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud production jobs",
           items: [
-            "docs/deploy/artifacts",
             "docs/deploy/webhooks",
+            "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
+            "docs/deploy/artifacts",
             "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
           ],
@@ -234,7 +242,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      items: [{
+      items: [
+        {
           type: "category",
           label: "Environments",
           items: [
@@ -295,7 +304,6 @@ const sidebarSettings = {
                 "docs/collaborate/manage-access/enterprise-permissions",
               ],
             },
-
             {
               type: "category",
               label: "Single sign-on",
@@ -317,6 +325,15 @@ const sidebarSettings = {
             "docs/collaborate/manage-access/audit-log",
           ],
         }, // Manage access
+        {
+          type: "category",
+          label: "Publishing models",
+          items: [
+            "docs/collaborate/publish/model-contracts",
+            "docs/collaborate/publish/model-access",
+            "docs/collaborate/publish/model-versions",
+          ],
+        }, // publishing models
       ],
     },
     {
@@ -434,6 +451,7 @@ const sidebarSettings = {
           items: [
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
+            "reference/resource-properties/constraints",
             "reference/resource-properties/description",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
@@ -447,6 +465,7 @@ const sidebarSettings = {
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
             "reference/resource-configs/full_refresh",
+            "reference/resource-configs/contract",
             "reference/resource-configs/grants",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
@@ -772,6 +791,23 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
             "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
             "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
+          ],
+        },
+        {
+          type: "category",
+          label: "Webhooks with dbt Cloud and SaaS apps",
+          link: {
+            type: "generated-index",
+            title: "Use dbt Cloud's webhooks with other SaaS apps",
+            description:
+              "Learn how to use webhooks to trigger actions in other tools by using Zapier or a serverless platform.",
+            slug: "/guides/orchestration/webhooks",
+          },
+          items: [
+            {
+              type: "autogenerated",
+              dirName: "guides/orchestration/webhooks",
+            },
           ],
         },
       ],

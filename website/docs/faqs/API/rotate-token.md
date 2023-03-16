@@ -7,28 +7,30 @@ id: rotate-token
 
 For security reasons and best practices, you should aim to rotate API keys every so often.
 
-### Steps to rotate API keys
-
-1. To rotate your [User API token](/docs/dbt-cloud-apis/user-tokens), send the following request, replacing `YOUR_USER_ID`, `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL` with your information:
-
-* Find your `YOUR_USER_ID` by referring to [How to find your user ID](/faqs/Accounts/find-user-id).
-* Find your `YOUR_CURRENT_TOKEN`, go to **Account Settings** -> **API Access** and copy the API key.
-* Find [`YOUR_ACCESS_URL`](/docs/deploy/regions-ip-addresses) for your region and plan.
+1. Rotate your [User API token](/docs/dbt-cloud-apis/user-tokens) by replacing `YOUR_USER_ID`, `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL `with your information in the following request.
 
 ```
-curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/your_user_id/apikey/' \
+curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/YOUR_USER_ID/apikey/' \
 --header 'Authorization: Token YOUR_CURRENT_TOKEN'
 ```
 
-> 📌 **Example**: If YOUR_USER_ID is `123`, YOUR_CURRENT_TOKEN is `abcf9g`, and your ACCESS_URL is `cloud.getdbt.com`, your curl request will be:
+* Find your `YOUR_USER_ID` by reading [How to find your user ID](/faqs/Accounts/find-user-id).
+* Find your `YOUR_CURRENT_TOKEN` by going to **Profile Settings** -> **API Access** and copying the API key.
+* Find [`YOUR_ACCESS_URL`](/docs/deploy/regions-ip-addresses) for your region and plan.
 
->```
->curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
->--header 'Authorization: Token abcf9g'
->```
+:::info Example
 
+If `YOUR_USER_ID` = `123`, `YOUR_CURRENT_TOKEN` = `abcf9g`, and your `ACCESS_URL` = `cloud.getdbt.com`, then your curl request will be:
 
-3. You can find the new key in the API response or in dbt Cloud. To find the new key in dbt Cloud, go to **Account Settings** -> **API Access**.
+```
+curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey/' \
+--header 'Authorization: Token abcf9g'
+```
+:::
+
+2. Find the new key in the API response or in dbt Cloud. 
+
+3. To find the new key in dbt Cloud, go to **Profile Settings** -> **API Access**.
 
 
 ### dbt Cloud deployments
