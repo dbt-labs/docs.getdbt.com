@@ -16,7 +16,7 @@ When migrating and refactoring code, it’s of course important to stay organize
 2. Implement dbt sources rather than referencing raw database tables
 3. Choose a refactoring strategy
 4. Implement <Term id="cte">CTE</Term> groupings and cosmetic cleanup
-5. Separate data transformations into standardized layers
+5. Separate [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) into standardized layers
 6. Audit the output of dbt models vs legacy SQL
 
 Let's get into it!

@@ -11,7 +11,7 @@ slug: /sql-reference/select
 
 My goodness, would there even be modern data teams without SQL SELECT statements? Probably not.
 
-Luckily, we live in a world of tabular data, cloud data warehouses, and SQL prowess. Analysts and analytics engineers are writing queries, creating data models, and leveraging SQL to power their data transformations and analysis. But what makes these queries possible? SELECT statements.
+Luckily, we live in a world of tabular data, cloud data warehouses, and SQL prowess. Analysts and analytics engineers are writing queries, creating data models, and leveraging SQL to power their [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) and analysis. But what makes these queries possible? SELECT statements.
 
 The SQL SELECT statement is the fundamental building block of any query: it allows you to select specific columns (data) from a database schema object (table/view). In a dbt project, a SQL dbt model is technically a singular SELECT statement (often built leveraging CTEs or subqueries).
 
