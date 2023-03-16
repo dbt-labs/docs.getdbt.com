@@ -1,6 +1,7 @@
 ---
-title: Architecture
-id: architecture
+title: "dbt Cloud Architecture"
+id: "architecture"
+description: "Information about the architecture, communication, and security of dbt Cloud"
 ---
 
 This page is intended to help practitioners and those interested in the architecture and data flow of the hosted dbt Cloud product.
@@ -37,7 +38,7 @@ For more detailed information on our security practices, read our [Security page
 
 dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation. However, users can post SQL that returns customer data into the dbt Cloud application. This data never persists and will only exist in memory on the instance for the duration of the session. To lock down customer data correctly, proper <Term id="data-warehouse" /> permissions must be applied to prevent improper access or storage of sensitive data.
 
-Some data warehouse providers offer advanced security features that can be leveraged in dbt Cloud. [PrivateLink](/docs/cloud/privatelink/about-privatelink) allows supported data platforms on AWS communicate with dbt Cloud without the traffic traversing the public internet. 
+Some data warehouse providers offer advanced security features that can be leveraged in dbt Cloud. [PrivateLink](/docs/cloud/privatelink/about-privatelink) allows supported data platforms on AWS to communicate with dbt Cloud without the traffic traversing the public internet. [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise plan only).
 
 ### Git sync
 
@@ -49,13 +50,13 @@ The git repo information is stored on dbt Cloud servers to make it accessible du
 
 The default settings of dbt Cloud enable local users with credentials stored in dbt Cloud. Still, integrations with various authentication services are offered as an alternative, including [single sign-on services](/docs/cloud/manage-access/sso-overview). Access to features can be granted/restricted by role using [RBAC](/docs/cloud/manage-access/enterprise-permissions).
 
-SSO features are important because they reduce the number of credentials a user must maintain. Users sign in once and the authentication token is shared amongst the integrated services (such as dbt Cloud). The token expires and must be refreshed at predetermined intervals, requiring the user to go through the authentication process again. If the user is disabled in the SSO provider service, their access to dbt Cloud is disabled and they can not override with local auth credentials. 
+SSO features are essential because they reduce the number of credentials a user must maintain. Users sign in once and the authentication token is shared among integrated services (such as dbt Cloud). The token expires and must be refreshed at predetermined intervals, requiring the user to go through the authentication process again. If the user is disabled in the SSO provider service, their access to dbt Cloud is disabled, and they can not override with local auth credentials. 
 
 [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer OAuth (JSON to pass info and API calls for auth) services as an alternative to SAML (XML to pass info and session cookies for auth). Users can authenticate against the data platform for secure access to dbt Cloud and prevent access when credentials are revoked. 
 
 ## Security
 
-dbt Labs is dedicated to upholding industry standards for Cloud security and GDPR compliance. Our compliance certifications include:
+dbt Labs is dedicated to upholding industry standards for Cloud security and GDPR compliance. Our compliance certifications include the following:
 
 - SOC2 Type II &mdash; assesses a service provider’s security control environment against the trust services principles and criteria set forth by the American Institute of Certified Public Accountants (AICPA).
 - ISO27001:2013 &mdash; a globally recognized standard for establishing and certifying an information security management system (ISMS).
@@ -63,4 +64,5 @@ dbt Labs is dedicated to upholding industry standards for Cloud security and GDP
 
 
 For more detailed information about our security practices, read our [Security page](https://www.getdbt.com/security/).
+
 
