@@ -28,7 +28,7 @@ link="/docs/get-started/develop-in-the-cloud"
   <Card
     title="Schedule and run dbt jobs"
     body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
-    link="/docs/quickstarts/dbt-cloud/bigquery#create-and-run-a-job"
+    link="/docs/deploy/deployments#dbt-cloud"
     icon="pencil-paper"/>
 
   <Card
