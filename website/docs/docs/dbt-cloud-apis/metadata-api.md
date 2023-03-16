@@ -51,7 +51,7 @@ To improve discovery experiences, we’ll make it easier for API users to access
 
 <TabItem value="quality" label="Quality">
 
-To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools. This is our primary focus in 2024. 
+To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools. This will be more of a focus in 2024.
 
 - Add Metadata API support for dbt Core 1.5 elements of data contracts like model owners, access, and constraints.
 - Streaming results so users can access real-time metadata during a run, such as notifications about specific events like model builds and test failures.
