@@ -8,8 +8,8 @@ The dbt Integrated Development Environment (IDE) is a single interface for build
 ### Requirements
 
 - The dbt IDE is powered by [dbt-rpc](/reference/commands/rpc) which has been overhauled in dbt v0.15.0. In order to use the IDE, your dbt project must be compatible with dbt v0.15.0.
-- To use the IDE, you must have a [Developer License](/docs/collaborate/manage-access/seats-and-users). 
-- Write access must be enabled for your dbt repository in dbt Cloud. See [Connecting your GitHub Account](/docs/collaborate/git/connect-github) and [Importing a project by git URL](/docs/collaborate/git/import-a-project-by-git-url) for detailed setup instructions.
+- To use the IDE, you must have a [Developer License](/docs/cloud/manage-access/seats-and-users). 
+- Write access must be enabled for your dbt repository in dbt Cloud. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) and [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions.
 
 ### Creating a development environment
 New dbt Cloud accounts will automatically be created with a Development Environment for the project created during setup. If you have an existing dbt Cloud account, you may need to create a Development Environment manually to use the dbt IDE.
@@ -32,7 +32,7 @@ New dbt Cloud accounts should have developer credentials created automatically a
 
 New users on existing accounts *might not* have their development credentials already configured. 
 To manage your development credentials: 
-1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/deploy/regions-ip-addresses) for your region and plan. 
+1. Navigate to your **Credentials** under **Your Profile** settings, which you can access at `https://YOUR_ACCESS_URL/settings/profile#credentials`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. 
 2. Select the relevant project in the list. After entering your developer credentials, you'll be able to access the dbt IDE.
 
 <Lightbox src="/img/docs/running-a-dbt-project/using-the-dbt-ide/dev-cred-edit-proj.png" title="Configure developer credentials in your Profile."/>

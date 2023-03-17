@@ -47,7 +47,7 @@ pip is the easiest way to install the adapter:
 
 ## Connecting to ClickHouse with **dbt-clickhouse**
 
-To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/get-started/connection-profiles) to your `profiles.yml` file. A ClickHouse profile conforms to the following syntax:
+To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/core/connection-profiles) to your `profiles.yml` file. A ClickHouse profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 
