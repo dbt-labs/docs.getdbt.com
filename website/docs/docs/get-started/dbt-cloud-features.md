@@ -46,7 +46,6 @@ link="/docs/get-started/develop-in-the-cloud"
    <Card
     title="Democratize access to logs"
     body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
-    link="/docs/get-started/develop-in-the-cloud#build-compile-and-run-projects"
     icon="pencil-paper"/>      
 
    <Card

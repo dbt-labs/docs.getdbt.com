@@ -61,7 +61,7 @@ Common ways to transform your data include leveraging modern technologies such a
 
 ## ELT vs ETL
 
-The primary difference between the traditional ETL and the modern ELT workflow is when data transformation and loading take place. In ETL workflows, data extracted from data sources is transformed prior to being loaded into target data platforms. Newer ELT workflows have data being transformed after being loaded into the data platform of choice. Why is this such a big deal?
+The primary difference between the traditional ETL and the modern ELT workflow is when [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) and loading take place. In ETL workflows, data extracted from data sources is transformed prior to being loaded into target data platforms. Newer ELT workflows have data being transformed after being loaded into the data platform of choice. Why is this such a big deal?
 
 |  | ELT | ETL |
 |---|---|---|

@@ -12,7 +12,7 @@ hoverSnippet: DRY is a software development principle that stands for “Don’t
 
 DRY is a software development principle that stands for “Don’t Repeat Yourself.” Living by this principle means that your aim is to reduce repetitive patterns and duplicate code and logic in favor of modular and referenceable code.
 
-The DRY code principle was originally made with software engineering in mind and coined by Andy Hunt and Dave Thomas in their book, _The Pragmatic Programmer_. They believed that “every piece of knowledge must have a single, unambiguous, authoritative representation within a system.” As the field of analytics engineering and data transformation develops, there’s a growing need to adopt [software engineering best practices](https://www.getdbt.com/product/what-is-dbt/), including writing DRY code.
+The DRY code principle was originally made with software engineering in mind and coined by Andy Hunt and Dave Thomas in their book, _The Pragmatic Programmer_. They believed that “every piece of knowledge must have a single, unambiguous, authoritative representation within a system.” As the field of analytics engineering and [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) develops, there’s a growing need to adopt [software engineering best practices](https://www.getdbt.com/product/what-is-dbt/), including writing DRY code.
 
 ## Why write DRY code?
 
