@@ -218,7 +218,7 @@ This release includes security enhancements and improvements across the entire
 dbt Cloud application.
 
 #### Enhancements
-- Support for viewing development docs inside of the IDE ([docs](/docs/get-started/develop-in-the-cloud))
+- Support for viewing development docs inside of the IDE ([docs](/docs/cloud/develop-in-the-cloud))
 - Change CI temporary schema names to be prefixed with `dbt_cloud` instead of `sinter`
 - Change coloring and iconography to improve accessibility and UX across the application
 - [Enterprise] Support the specification of multiple authorized domains in SSO configuration
