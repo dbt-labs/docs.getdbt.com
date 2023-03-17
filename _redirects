@@ -37,6 +37,8 @@
 /docs/get-started/source-install /docs/core/source-install 301
 /docs/get-started/connection-profiles /docs/core/connection-profiles 301
 /docs/get-started/run-your-dbt-projects /docs/running-a-dbt-project/run-your-dbt-projects 301
+/docs/get-started/learning-more/refactoring-legacy-sql /guides/migration/tools/refactoring-legacy-sql 301
+/docs/get-started/learning-more/using-jinja /guides/advanced/using-jinja 301
 
 # Quickstart redirects
 /docs/get-started/getting-started/set-up-dbt-cloud /docs/quickstarts/overview 301
