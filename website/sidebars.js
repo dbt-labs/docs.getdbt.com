@@ -860,6 +860,7 @@ const sidebarSettings = {
               ],
             },
             "guides/migration/tools/migrating-from-spark-to-databricks",
+            "guides/migration/tools/refactoring-legacy-sql"
           ],
         },
       ],
@@ -909,7 +910,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Advanced",
-      items: ["guides/advanced/creating-new-materializations"],
+      items: ["guides/advanced/creating-new-materializations",
+      "guides/advanced/using-jinja",
+    ],
     },
     {
       type: "category",
