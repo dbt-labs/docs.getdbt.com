@@ -45,11 +45,13 @@ const sidebarSettings = {
       label: "Set up dbt",
       collapsed: true,
       items: [
+        "docs/about-setup",
         {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
           items: [
+            "docs/cloud/about-cloud-setup",
             {
               type: "category",
               label: "Connect data platform",

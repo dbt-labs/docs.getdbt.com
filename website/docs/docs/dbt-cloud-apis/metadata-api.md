@@ -32,32 +32,29 @@ Use the Metadata API directly or via an integrated tool to enable experiences in
 
 ## Product roadmap
 
-The 2023 Metadata API roadmap outlines three main uses: discovery, quality, and operation, with specific initiatives planned for each quarter:
+The Metadata API roadmap includes initiatives to improve each of the API's main use cases: data discovery, data quality, and dbt operations
 
 <!--- tabs for discovery, quality, operations --->
 <Tabs>
 
 <TabItem value="discovery" label="Discovery">
 
-To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in the first half of 2023. 
+To improve discovery experiences, we’ll make it easier for API users to access the latest production state of a project. This is our primary focus in 2023. 
 
--  Q1 &mdash; Rather than querying for each job or run, retrieve the logical state (definitions), execution results, and applied state (what exists in the database) of each node in the project based on their most recent runs in the production environment.
-- Q2 &mdash; dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage
-- Q2 &mdash; dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases
-- Q2 &mdash; Pagination for manageable responses and performance when querying long lists of dbt objects
-- Q3 &mdash; Retrieve project information from the dbt logs, such as catalog information, without having to generate documentation.
+- Rather than querying for each job or run, retrieve the logical state (definitions), execution results, and applied state (what exists in the database) of each node in the project based on their most recent runs in the production environment.
+- dbt v1.6: Use public models to enable [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725) and access the global lineage
+- dbt v1.6: New and revised model and entity endpoints to unlock Semantic Layer use cases
+- Pagination for manageable responses and performance when querying long lists of dbt objects
 
 
 </TabItem>
 
 <TabItem value="quality" label="Quality">
 
-To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools.  
+To improve customers’ data quality, we’re enhancing the ability for data teams to configure dbt and monitor for issues in dbt Cloud and integrated tools. This will be more of a focus in 2024.
 
-- Q1 &mdash; Add Metadata API support for dbt Core 1.5 elements of data contracts like model owners, access, and constraints.
-- Q4 or later &mdash; Improvements to webhooks to support notifications about tests, freshness, and events per model rather than per run.
-- Q4 or later &mdash; Streaming results so users can access real-time metadata during a run.
-- Q4 or later &mdash; Integrate with model freshness SLAs for intelligent scheduling.
+- Add Metadata API support for dbt Core 1.5 elements of data contracts like model owners, access, and constraints.
+- Streaming results so users can access real-time metadata during a run, such as notifications about specific events like model builds and test failures.
 
 </TabItem>
 
@@ -66,10 +63,9 @@ To improve customers’ data quality, we’re enhancing the ability for data tea
 
 To improve dbt operations, we’ll enable API users to access and query richer information about execution on dbt Cloud in more ergonomic ways. This is our primary focus in the second half of 2023. 
 
-- Q3 &mdash; Enable easier queries across runs to analyze performance over time, such as time aggregation for execution results of individual models and the project as a whole.
-- Q3 &mdash; Provide granular execution information from dbt Cloud, such as invocation history.
-- Q3 &mdash; Improvements to webhooks for notifications about run events.
-- Q4 &mdash; Streaming results to see the DAG as it builds during a run.
+- Enable easier queries across runs to analyze performance over time, such as time aggregation for execution results of individual models and the project as a whole.
+- Provide granular execution information from dbt Cloud, such as invocation history.
+- Later &mdash; Streaming results to see the DAG as it builds during a run.
 
 </TabItem>
 </Tabs>
