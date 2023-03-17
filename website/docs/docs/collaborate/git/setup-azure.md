@@ -95,11 +95,16 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](/docs/collaborate/git/authenticate-azure).
 
-## Connecting a service user
+## Connect a service user
 
 Because Azure DevOps forces all authentication to be linked to a user's permissions, we recommend you create a "service user" in Azure DevOps whose permissions will be used to power headless actions in dbt Cloud such as dbt Cloud project repo selection, deployment runs, and CI. A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, dbt Cloud will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
 
-### More on Service Users
+:::info Service user authentication expiration
+dbt Cloud will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.
+
+:::
+
+### Service users permissions
 
 A service user account must have the following Azure DevOps permissions for all Azure DevOps projects and repos you want accessible in dbt Cloud. Read more about how dbt Cloud uses each permission in the following paragraphs.
 
@@ -319,7 +324,8 @@ To connect the service user:
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
 
-:::info Service user authentication expiration
-dbt Cloud will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.
+:::info Personal Access Tokens (PATs)
+dbt Cloud generates temporary access tokens called Full-scoped PATs for service users to access APIs related to their dbt Cloud project. These tokens are only valid for a short period of 5 minutes and become invalid after they are used to make an API call.
 
+The Azure DevOps Administrator can limit the creation of full-scoped PATs by enabling a policy that restricts users to a custom-defined set of scopes. By default, this policy is set to **off**, but enabling it will cause project setup to fail with an error. After disabling this policy and successfully setting up your project, if you wish to use finer-scoped permissions, some features such as webhooks for CI may be lost, so we recommend the service user has full-scoped PATs.  To exclude the dbt Cloud service user from the global PAT policy, add them to the allow list as part of your security policy.
 :::
