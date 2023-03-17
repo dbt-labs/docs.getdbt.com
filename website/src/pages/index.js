@@ -80,7 +80,7 @@ function Home() {
                   <Card
                     title="Getting started guide"
                     body="Learn how to set up dbt and build your first models. You will also test and document your project, and schedule a job."
-                    link="/docs/get-started/getting-started/overview"
+                    link="/docs/quickstarts/overview"
                     icon="book"
                   />
                 </div>

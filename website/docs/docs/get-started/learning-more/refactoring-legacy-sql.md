@@ -16,7 +16,7 @@ When migrating and refactoring code, it’s of course important to stay organize
 2. Implement dbt sources rather than referencing raw database tables
 3. Choose a refactoring strategy
 4. Implement <Term id="cte">CTE</Term> groupings and cosmetic cleanup
-5. Separate data transformations into standardized layers
+5. Separate [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) into standardized layers
 6. Audit the output of dbt models vs legacy SQL
 
 Let's get into it!
@@ -38,7 +38,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
-If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [Getting Started guide](/docs/get-started/getting-started/overview) before diving into refactoring.
+If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [quickstart guide](/docs/quickstarts/overview) before diving into refactoring.
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 

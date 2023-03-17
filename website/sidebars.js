@@ -4,36 +4,46 @@ const sidebarSettings = {
     "docs/supported-data-platforms",
     {
       type: "category",
+      label: "Quickstarts",
+      collapsed: true,
+      items: [
+        "docs/quickstarts/overview",
+        {
+          type: "category",
+          label: "dbt Cloud",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-cloud/bigquery",
+            "docs/quickstarts/dbt-cloud/databricks",
+            "docs/quickstarts/dbt-cloud/redshift",
+            "docs/quickstarts/dbt-cloud/snowflake",
+          ],
+        },
+        {
+          type: "category",
+          label: "dbt Core",
+          collapsed: true,
+          items: [
+            "docs/quickstarts/dbt-core/quickstart",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Get started with dbt",
       collapsed: true,
       items: [
-        "docs/get-started/getting-started/overview",
         {
           type: "category",
           label: "Get started with dbt Cloud",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started/set-up-dbt-cloud",
-            {
-              type: "category",
-              label: "Getting set up",
-              items: [
-                "docs/get-started/getting-started/getting-set-up/setting-up-bigquery",
-                "docs/get-started/getting-started/getting-set-up/setting-up-databricks",
-                "docs/get-started/getting-started/getting-set-up/setting-up-redshift",
-                "docs/get-started/getting-started/getting-set-up/setting-up-snowflake",
-              ],
-            },
-            {
-              type: "category",
-              label: "Building your first project",
-
-              items: [
-                "docs/get-started/getting-started/building-your-first-project/build-your-first-models",
-                "docs/get-started/getting-started/building-your-first-project/test-and-document-your-project",
-                "docs/get-started/getting-started/building-your-first-project/schedule-a-job",
-              ],
-            },
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/connect-your-database",
+            "docs/get-started/develop-in-the-cloud",
+            "docs/get-started/dbt-cloud-features",
+            "docs/get-started/dbt-cloud-tips",
             {
               type: "category",
               label: "PrivateLink",
@@ -52,10 +62,6 @@ const sidebarSettings = {
                 "docs/get-started/learning-more/refactoring-legacy-sql",
               ],
             },
-            "docs/get-started/dbt-cloud-features",
-            "docs/get-started/connect-your-database",
-            "docs/get-started/develop-in-the-cloud",
-            "docs/get-started/dbt-cloud-tips",
           ],
         },
         {
@@ -63,7 +69,6 @@ const sidebarSettings = {
           label: "Get started with dbt Core",
           collapsed: true,
           items: [
-            "docs/get-started/getting-started-dbt-core",
             {
               type: "category",
               label: "Install dbt Core",
@@ -167,6 +172,8 @@ const sidebarSettings = {
                   label: "Metadata API",
                   items: [
                     "docs/dbt-cloud-apis/metadata-api",
+                    "docs/dbt-cloud-apis/metadata-use-case-guides",
+                    "docs/dbt-cloud-apis/access-metadata-api",
                     "docs/dbt-cloud-apis/metadata-querying",
                     {
                       type: "category",

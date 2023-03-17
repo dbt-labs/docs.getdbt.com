@@ -4,15 +4,19 @@ id: "sso-overview"
 
 ---
 
-:::info Enterprise Feature
-
-This guide describes a feature of the dbt Cloud Enterprise plan.
-If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
-
 This overview explains how users are provisioned in dbt Cloud via Single Sign-On (SSO).
 dbt Cloud supports JIT (Just-in-Time) provisioning and IdP-initiated login. You can learn more about our supported options [here](https://www.getdbt.com/pricing/).
+
+:::tip Configuring SSO 
+Once you configure SSO, even partially, you cannot disable or revert it. When you configure it, you will want to make sure you do so completely.
+:::
+
+## Prerequisites
+
+- You have a dbt Cloud account enrolled in the Enterprise plan. [Contact us](mailto:sales@getdbt.com) to learn more and enroll.
+
+
+## SSO process
 
 The diagram below explains the basic process by which users are provisioned in dbt Cloud upon logging in with SSO.
 
@@ -31,13 +35,13 @@ The diagram below explains the basic process by which users are provisioned in d
   - **No**: If so, create a new entry in the dbt Cloud database for the new user.
 - **Create dbt Cloud User**: This will create a new entry in the dbt Cloud database for the new user. This user record contains the user's email address, first and last name, and any IdP attributes (e.g. groups) passed along from the Identity Provider.
 - **Attach Matching Accounts**: dbt Cloud find all of the accounts configured to match the SSO config used by this user to log in, and then create a user license record mapping the user to the account. This step will also delete any licenses that the user should not have based on the current SSO config.
-- **Attach Matching Permissions (Groups)**: dbt Cloud iterates through the groups on the matching accounts, and find all that fit one of the below catergories:
-    - have an SSO mapping group that is assigned to the user
-    - have the "Assign by Default" option checked.
+- **Attach Matching Permissions (Groups)**: dbt Cloud iterates through the groups on the matching accounts, and find all that fit one of the below categories:
+  - Have an SSO mapping group that is assigned to the user
+  - Have the "Assign by Default" option checked.
 Then, assign all of these (and only these) to the user license. This step will also remove any permissions that the user should not have based on the current SSO group mappings.
 - **dbt Cloud Application**: After these steps, the user is redirected into the dbt Cloud application, and they can begin to use the application normally.
 
-## SSO Enforcement
+## SSO enforcement
 
 :::info Security Update
 

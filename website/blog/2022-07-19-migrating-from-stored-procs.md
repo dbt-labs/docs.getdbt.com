@@ -26,7 +26,7 @@ It’s worth considering if an alternative approach with dbt might help.
 
 ## Why use modular dbt models instead of stored procedures?
 
-We work with many analytics teams to refactor their stored procedure code into dbt. Many of them come in thinking that the upfront effort to modernize their approach to data transformation will be too much to justify. However, we see that in the long term this isn’t the case. 
+We work with many analytics teams to refactor their stored procedure code into dbt. Many of them come in thinking that the upfront effort to modernize their approach to [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) will be too much to justify. However, we see that in the long term this isn’t the case. 
 
 For example, a dbt Cloud user achieved the following results when moving away from the stored procedure approach:
 
