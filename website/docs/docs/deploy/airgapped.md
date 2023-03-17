@@ -16,4 +16,4 @@ The installation process for airgapped is a bit different. Instead of downloadin
 
 For more information about the dbt Cloud Airgapped deployment see the below.
 
-- [Customer Managed Network Architecture](/docs/deploy/architecture)
+- [Customer Managed Network Architecture](/docs/cloud/about-cloud/architecture)

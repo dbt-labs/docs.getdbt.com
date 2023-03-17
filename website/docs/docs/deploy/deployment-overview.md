@@ -1,6 +1,7 @@
 ---
-title: "About deployments"
+title: "About job deployments"
 id: "deployments"
+sidebar: "About job deployments"
 ---
 
 Running dbt in production means setting up a system to run a _dbt job on a schedule_, rather than running dbt commands manually from the command line. Your production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments/environments-in-dbt).
@@ -28,12 +29,10 @@ dbt Cloud enables you to:
 - configure error notifications
 - render your project's documentation
 
-In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](/docs/deploy/architecture) section.
+In general, the dbt Cloud application deployment models fall into two categories: **Multi Tenant** and **Single Tenant**. These deployments are hosted on infrastructure managed by dbt Labs. Both models leverage AWS infrastructure as described in the [Architecture](/docs/cloud/about-cloud/architecture) section.
 
-For more information on these deployment models, refer to:
+For more information on these deployment models, refer to our [tenancy page](/docs/cloud/about-cloud/tenancy)
 
-- [Multi Tenant](/docs/deploy/multi-tenant)
-- [Single Tenant](/docs/deploy/single-tenant)
 
 If you’re interested in learning more about an Enterprise plan, please [contact us](mailto:sales@getdbt.com).
 

@@ -10,7 +10,7 @@ v1.5 is currently available as a **beta prerelease.** Availability in dbt Cloud 
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
-- [CLI Installation guide](/docs/get-started/installation)
+- [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
 
