@@ -3,10 +3,6 @@ title: Add a seed file
 id: add-a-seed
 description: Learn how to add a seed file to your project
 ---
-:::caution Heads up!
-You'll need to have completed the earlier parts of this guide to
-complete this lesson
-:::
 
 1. Add a seed file:
 
