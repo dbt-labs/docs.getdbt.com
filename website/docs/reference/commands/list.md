@@ -10,7 +10,7 @@ The `dbt ls` command lists resources in your dbt project. It accepts selector ar
 ### Usage
 ```
 dbt ls
-     [--resource-type {source,analysis,model,snapshot,test,seed,exposure,default,all}]
+     [--resource-type {model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
      [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
      [--exclude SELECTOR [SELECTOR ...]]
@@ -22,7 +22,7 @@ dbt ls
 See [resource selection syntax](node-selection/syntax) for more information on how to select resources in dbt
 
 **Arguments**:
-- `--resource-type`: This flag limits the "resource types" that dbt will return in the `dbt ls` command. By default, the following resources are included in the results of `dbt ls`: models, snapshots, seeds, tests, and sources.
+- `--resource-type`: This flag limits the "resource types" that dbt will return in the `dbt ls` command. By default, all resources are included in the results of `dbt ls` except for analysis.
 - `--select`: This flag specifies one or more selection-type arguments used to filter the nodes returned by the `dbt ls` command
 - `--models`: Like the `--select` flag, this flag is used to select nodes. It implies `--resource-type=model`, and will only return models in the results of the `dbt ls` command. Supported for backwards compatibility only.
 - `--exclude`: Specify selectors that should be _excluded_ from the list of returned nodes.
