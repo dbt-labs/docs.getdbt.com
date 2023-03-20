@@ -1,0 +1,10 @@
+build
+node_modules
+cypress
+*.test.js
+*.cy.js
+
+sidebars-*.js
+docusaurus.config.js
+cypress.config.js
+static/fonts/**
