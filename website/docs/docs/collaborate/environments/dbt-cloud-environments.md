@@ -35,7 +35,7 @@ Both development and deployment environments have a section called **General Set
 
 **dbt Version notes**
 
-- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
+- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
 
 **Custom branch behavior**
@@ -55,7 +55,7 @@ After setting the **General Settings** as above, there’s nothing more that nee
 
 ### Set developer credentials
 
-To use the IDE, each developer will need to set up [personal development credentials](/docs/get-started/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
+To use the IDE, each developer will need to set up [personal development credentials](/docs/cloud/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
@@ -218,4 +218,4 @@ This section allows you to determine the credentials that should be used when co
 
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Delete a job or environment in dbt Cloud](/docs/faqs/Environments/delete-environment-job)
-- [Develop in Cloud](/docs/get-started/develop-in-the-cloud)
+- [Develop in Cloud](/docs/cloud/develop-in-the-cloud)

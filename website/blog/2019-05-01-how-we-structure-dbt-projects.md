@@ -203,7 +203,7 @@ There are entire books written on how to design models, which is beyond the scop
 *   `fct_<verb>`**:** A tall, narrow table representing real-world processes that have occurred or are occurring. The heart of these models is usually an immutable event stream: sessions, transactions, orders, stories, votes.
 *   `dim_<noun>`: A wide, short table where each row is a person, place, or thing; the ultimate source of truth when identifying and describing entities of the organization. They are mutable, though slowly changing: customers, products, candidates, buildings, employees.
 
-Where the work of staging models is limited to cleaning and preparing, fact tables are the product of substantive data transformation: choosing (and reducing) dimensions, date-spining, executing business logic, and making informed, confident decisions.
+Where the work of staging models is limited to cleaning and preparing, fact tables are the product of substantive [data transformation](https://www.getdbt.com/analytics-engineering/transformation/): choosing (and reducing) dimensions, date-spining, executing business logic, and making informed, confident decisions.
 
 This layer of modeling is considerably more complex than creating staging models, and the models we _design_ are highly tailored to the analytical needs of an organization. As such, we have far less convention when it comes to these models. Some patterns we’ve found to be useful are:
 

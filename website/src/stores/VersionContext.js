@@ -8,7 +8,7 @@ const VersionContext = createContext({
   EOLDate: lastReleasedVersion.EOLDate || undefined, 
   isPrerelease: lastReleasedVersion.isPrerelease || false,
   latestStableRelease: lastReleasedVersion.version,
-  updateVersion: () => {},
+  updateVersion: () => Object,
 })
 
 export const VersionContextProvider = ({ value = "", children }) => {
@@ -46,8 +46,10 @@ export const VersionContextProvider = ({ value = "", children }) => {
   const updateVersion = (e) => {
     if(!e.target)
       return
-    
-    const versionValue = e.target.text.replace('v', '')
+      
+    const vRegex = /(?:v)?(\d+(\.\d+)*)/ // Regex that will parse out the version number, even if there is/isn't a 'v' in front of version number and a '(Beta)' afterwards.
+    const versionValue = e.target.text.match(vRegex)[1]
+
     versionValue &&
       setVersion(versionValue)
       window.localStorage.setItem('dbtVersion', versionValue)
