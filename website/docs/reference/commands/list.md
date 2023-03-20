@@ -22,7 +22,7 @@ dbt ls
 See [resource selection syntax](node-selection/syntax) for more information on how to select resources in dbt
 
 **Arguments**:
-- `--resource-type`: This flag limits the "resource types" that dbt will return in the `dbt ls` command. By default, all resources are included in the results of `dbt ls` except for analysis.
+- `--resource-type`: This flag restricts the "resource types" returned by dbt in the `dbt ls` command. By default, all resource types are included in the results of `dbt ls` except for the analysis type.
 - `--select`: This flag specifies one or more selection-type arguments used to filter the nodes returned by the `dbt ls` command
 - `--models`: Like the `--select` flag, this flag is used to select nodes. It implies `--resource-type=model`, and will only return models in the results of the `dbt ls` command. Supported for backwards compatibility only.
 - `--exclude`: Specify selectors that should be _excluded_ from the list of returned nodes.
