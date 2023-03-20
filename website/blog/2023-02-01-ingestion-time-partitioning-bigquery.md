@@ -188,7 +188,7 @@ The configuration will be read at run time and will use the BQ driver integratio
 
 But thanks to dbt’s open-source approach and dbt Labs team, **we had the opportunity to add support for those use cases** and bring it to more BigQuery users.
 
-Lastly, I wanted to share [Jeremy Cohen’s post](https://discourse.getdbt.com/t/bigquery-dbt-incremental-changes/982/7) which is giving great insights to **figure out how to pick an incremental strategy** and its options depending on your needs.
+Lastly, I wanted to share [Jeremy Cohen’s post](https://discourse.getdbt.com/t/bigquery-dbt-incremental-changes/982) which is giving great insights to **figure out how to pick an incremental strategy** and its options depending on your needs.
 
 ---
 

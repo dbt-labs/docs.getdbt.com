@@ -1,3 +1,46 @@
+# New Cloud directory redirects
+/docs/get-started/privatelink/about-privatelink /docs/cloud/privatelink/about-privatelink 301
+/docs/get-started/privatelink/snowflake-privatelink /docs/cloud/privatelink/snowflake-privatelink 301
+/docs/get-started/privatelink/redshift-privatelink /docs/cloud/privatelink/redshift-privatelink 301
+/docs/get-started/privatelink/databricks-privatelink /docs/cloud/privatelink/databricks-privatelink 301
+/docs/get-started/connect-your-database /docs/cloud/connect-data-platform/connect-your-database 301
+/docs/get-started/dbt-cloud-features /docs/cloud/about-cloud/dbt-cloud-features 301
+/docs/deploy/regions-ip-addresses /docs/cloud/about-cloud/regions-ip-addresses 301
+/docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
+/docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
+/docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
+/docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
+/docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
+/docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
+/docs/collaborate/git/setup-azure /docs/cloud/git/setup-azure 301
+/docs/collaborate/git/authenticate-azure /docs/cloud/git/authenticate-azure 301
+/docs/collaborate/git/import-a-project-by-git-url /docs/cloud/git/import-a-project-by-git-url 301
+/docs/collaborate/manage-access/about-access /docs/cloud/manage-access/about-access 301
+/docs/collaborate/manage-access/seats-and-users /docs/cloud/manage-access/seats-and-users 301
+/docs/collaborate/manage-access/self-service-permissions /docs/cloud/manage-access/self-service-permissions 301
+/docs/collaborate/manage-access/enterprise-permissions /docs/cloud/manage-access/enterprise-permissions 301
+/docs/collaborate/manage-access/sso-overview /docs/cloud/manage-access/sso-overview 301
+/docs/collaborate/manage-access/set-up-sso-saml-2.0 /docs/cloud/manage-access/set-up-sso-saml-2.0 301
+/docs/collaborate/manage-access/set-up-sso-okta /docs/cloud/manage-access/set-up-sso-okta 301
+/docs/collaborate/manage-access/set-up-sso-google-workspace /docs/cloud/manage-access/set-up-sso-google-workspace 301
+/docs/collaborate/manage-access/set-up-sso-azure-active-directory /docs/cloud/manage-access/set-up-sso-azure-active-directory 301
+/docs/collaborate/manage-access/set-up-snowflake-oauth /docs/cloud/manage-access/set-up-snowflake-oauth 301
+/docs/collaborate/manage-access/set-up-bigquery-oauth /docs/cloud/manage-access/set-up-bigquery-oauth 301
+/docs/collaborate/manage-access/audit-log /docs/cloud/manage-access/audit-log 301
+/docs/get-started/develop-in-the-cloud /docs/cloud/develop-in-the-cloud 301
+/docs/get-started/dbt-cloud-tips /docs/cloud/dbt-cloud-tips 301
+/docs/get-started/installation /docs/core/installation 301
+/docs/get-started/about-the-cli /docs/core/about-the-cli 301
+/docs/get-started/homebrew-install /docs/core/homebrew-install 301
+/docs/get-started/pip-install /docs/core/pip-install 301
+/docs/get-started/docker-install /docs/core/docker-install 301
+/docs/get-started/source-install /docs/core/source-install 301
+/docs/get-started/connection-profiles /docs/core/connection-profiles 301
+/docs/get-started/run-your-dbt-projects /docs/running-a-dbt-project/run-your-dbt-projects 301
+/docs/get-started/learning-more/refactoring-legacy-sql /guides/migration/tools/refactoring-legacy-sql 301
+/docs/get-started/learning-more/using-jinja /guides/advanced/using-jinja 301
+
+# Quickstart redirects
 /docs/get-started/getting-started/set-up-dbt-cloud /docs/quickstarts/overview 301
 /docs/get-started/getting-started/getting-set-up/setting-up-snowflake /docs/quickstarts/dbt-cloud/snowflake 301
 /docs/get-started/getting-started/getting-set-up/setting-up-redshift /docs/quickstarts/dbt-cloud/redshift 301
@@ -653,8 +696,10 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 
 /faqs/dbt-jinja-functions /reference/dbt-jinja-functions 301
 
-/website/docs/docs/contributing/documenting-a-new-adapter.md /docs/contributing/documenting-a-new-adapter 301
-/docs/dbt-cloud/cloud-configuring-dbt-cloud/docs/guides/migration-guide/upgrading-to-0-21-0 / 302
+/website/docs/docs/contributing/documenting-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter 301
+
+/docs/docs/contributing/documenting-a-new-adapter /docs/contributing/documenting-a-new-adapter 301
+
 
 /v0.8/reference / 301
 /v0.10/reference / 301
@@ -664,12 +709,12 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.14/docs/cloud-developer-ide / 301
 
 # Removing on premise Cloud content
-/docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/faqs /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/index /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/installation /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/prerequisites /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/setup /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 302
-/docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 302
+/docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/faqs /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/index /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/installation /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/prerequisites /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/setup /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 301
+/docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 301
 
