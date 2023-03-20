@@ -297,46 +297,46 @@ const sidebarSettings = {
     },
     {
       type: "category",
-			label: "dbt APIs",
-			collapsed: true,
-			items: [
-				"docs/dbt-cloud-apis/overview",
-				{
-					type: "category",
-          label: "Authentication",
-          items: [
-            "docs/dbt-cloud-apis/user-tokens",
-            "docs/dbt-cloud-apis/service-tokens",
-          ],
-        },
-        "docs/dbt-cloud-apis/admin-cloud-api",
-				{
-					type: "category",
-					label: "Metadata API",
-					items: [
+      label: "dbt APIs",
+      collapsed: true,
+      items: [
+        "docs/dbt-cloud-apis/overview",
+	{
+	type: "category",
+	label: "Authentication",
+	items: [
+          "docs/dbt-cloud-apis/user-tokens",
+          "docs/dbt-cloud-apis/service-tokens",
+	 ],
+	 },
+	 "docs/dbt-cloud-apis/admin-cloud-api",
+	 {
+	   type: "category",
+	   label: "Metadata API",
+	   items: [
             "docs/dbt-cloud-apis/metadata-api",
             "docs/dbt-cloud-apis/metadata-use-case-guides",
             "docs/dbt-cloud-apis/access-metadata-api",
             "docs/dbt-cloud-apis/metadata-querying",
-		        {
-							type: "category",
-							label: "Schema",
-							items: [
-                "docs/dbt-cloud-apis/metadata-schema-model",
-                "docs/dbt-cloud-apis/metadata-schema-models",
-                "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
-                "docs/dbt-cloud-apis/metadata-schema-metric",
-                "docs/dbt-cloud-apis/metadata-schema-metrics",
-                "docs/dbt-cloud-apis/metadata-schema-source",
-                "docs/dbt-cloud-apis/metadata-schema-sources",
-                "docs/dbt-cloud-apis/metadata-schema-seed",
-                "docs/dbt-cloud-apis/metadata-schema-seeds",
-                "docs/dbt-cloud-apis/metadata-schema-snapshots",
-                "docs/dbt-cloud-apis/metadata-schema-test",
-                "docs/dbt-cloud-apis/metadata-schema-tests",
-                "docs/dbt-cloud-apis/metadata-schema-exposure",
-                "docs/dbt-cloud-apis/metadata-schema-exposures",
-              ],
+	  {
+	    type: "category",
+	    label: "Schema",
+	    items: [
+              "docs/dbt-cloud-apis/metadata-schema-model",
+              "docs/dbt-cloud-apis/metadata-schema-models",
+              "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
+              "docs/dbt-cloud-apis/metadata-schema-metric",
+              "docs/dbt-cloud-apis/metadata-schema-metrics",
+              "docs/dbt-cloud-apis/metadata-schema-source",
+              "docs/dbt-cloud-apis/metadata-schema-sources",
+              "docs/dbt-cloud-apis/metadata-schema-seed",
+              "docs/dbt-cloud-apis/metadata-schema-seeds",
+              "docs/dbt-cloud-apis/metadata-schema-snapshots",
+              "docs/dbt-cloud-apis/metadata-schema-test",
+              "docs/dbt-cloud-apis/metadata-schema-tests",
+              "docs/dbt-cloud-apis/metadata-schema-exposure",
+              "docs/dbt-cloud-apis/metadata-schema-exposures",
+             ],
             },
           ],
         },
