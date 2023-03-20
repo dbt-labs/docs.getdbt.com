@@ -127,6 +127,12 @@ See [configs and properties](configs-and-properties) for details.
 
 </TabItem>
 
+<TabItem value="tests">
+
+You can add `meta` properties to [singular tests](/docs/build/tests#singular-tests) using `config()` at the top of the test file. However, you can't add YAML `meta` configs for [generic tests](/docs/build/tests#generic-tests).
+
+</TabItem>
+
 <TabItem value="analyses">
 
 The `meta` config is not currently supported for analyses.
