@@ -139,7 +139,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 *   [Sources](/docs/build/sources/)
 *   [Refs](/reference/dbt-jinja-functions/ref/)
 *   [tags](/reference/resource-configs/tags/)
-* [Jinja docs](/docs/get-started/learning-more/using-jinja)
+* [Jinja docs](/guides/advanced/using-jinja)
 
 ## ✅ Testing & Continuous Integration
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -255,6 +255,6 @@ Thanks to Christine Berger for her DAG diagrams!
 *   [How Fishtown Structures our dbt Project](/blog/how-we-structure-our-dbt-projects/)
 *   [Coalesce DAG Audit Talk](https://www.youtube.com/watch?v=5W6VrnHVkCA&t=2s)
 *   [Modular Data Modeling Technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-*   [Understanding Threads](/docs/get-started/connection-profiles#understanding-threads)
+*   [Understanding Threads](/docs/core/connection-profiles#understanding-threads)
 
 This is a quick overview of things to think about in your project.  We’ll keep this post updated as we continue to refine our best practices! Happy modeling!
