@@ -31,3 +31,76 @@ version: 2  # Only 2 is accepted by current and recent versions of dbt.
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.5">
+
+## `.yml` property file versions
+
+A version tag in a `.yml` property file provides the control tag, which informs how dbt processes property files. For more on why we require this tag, see property file [FAQs](reference/configs-and-properties#faqs).
+
+Starting in version 1.5, dbt will no longer require this configuration in your resource `.yml` files. 
+
+For more on property files, see their general [documentation](reference/configs-and-properties#where-can-i-define-properties) on the same page.
+
+<Tabs
+  groupId="resource-version-configs"
+  defaultValue="version-required"
+  values={[
+    { label: 'Resource property file - <v1.5', value: 'version-required', },
+    { label: 'Resource property file - >=v1.5+', value: 'no-version-required', },
+  ]
+}>
+<TabItem value="version-required">
+
+<File name='<any valid filename>.yml'>
+
+```yml
+version: 2  # Only 2 is accepted by current and recent versions of dbt.
+
+models: 
+    ...
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="no-version-required">
+
+<File name='<any valid filename>.yml'>
+
+```yml
+
+models: 
+    ...
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.4">
+
+## `.yml` property file versions
+
+A version tag in a `.yml` property file provides the control tag, which informs how dbt processes property files. For more on why we require this tag, see property file [FAQs](reference/configs-and-properties#faqs).
+
+For more on property files, see their general [documentation](reference/configs-and-properties#where-can-i-define-properties) on the same page.
+
+<File name='<any valid filename>.yml'>
+
+```yml
+version: 2  # Only 2 is accepted by current and recent versions of dbt.
+
+models: 
+    ...
+```
+
+</File>
+
+</VersionBlock>
