@@ -58,7 +58,7 @@ function BlogPostPageContent({sidebar, children}) {
     }
 
     window.dataLayer = window.dataLayer || [];
-    dataLayer && dataLayer.push(blogContext)
+    window.dataLayer && window.dataLayer.push(blogContext)
   }, [])
 
   const { blogMeta } = usePluginData('docusaurus-build-global-data-plugin');

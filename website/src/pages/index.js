@@ -15,7 +15,7 @@ const bannerAnimation = require('@site/static/img/banner-white.svg');
 
 function getBanner() {
   return { __html: bannerAnimation };
-};
+}
 
 function Home() {
   
