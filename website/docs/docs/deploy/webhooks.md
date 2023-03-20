@@ -7,7 +7,7 @@ With dbt Cloud, you can create outbound webhooks to send events (notifications) 
 
 A webhook is an HTTP-based callback function that allows event-driven communication between two different web applications. This allows you to get the latest information on your dbt jobs in real time. Without it, you would need to make API calls repeatedly to check if there are any updates that you need to account for (polling). Because of this, webhooks are also called _push APIs_ or _reverse APIs_ and are often used for infrastructure development.
 
-dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a Slack notification, open a PagerDuty incident when a dbt job fails, and more. 
+dbt Cloud sends a JSON payload to your application's endpoint URL when your webhook is triggered. You can send a [Slack](/guides/orchestration/webhooks/zapier-slack) notification, a [Microsoft Teams](/guides/orchestration/webhooks/zapier-ms-teams) notification, [open a PagerDuty incident](/guides/orchestration/webhooks/serverless-pagerduty) when a dbt job fails, [and more](/guides/orchestration/webhooks). 
 
 You can create webhooks for these events from the [dbt Cloud web-based UI](#create-a-webhook-subscription) and by using the [dbt Cloud API](#api-for-webhooks):
 
@@ -21,7 +21,7 @@ dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each w
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
-From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/deploy/regions-ip-addresses).
+From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).
 
 To configure your new webhook: 
 
@@ -32,6 +32,17 @@ To configure your new webhook:
 - **Endpoint** &mdash; Enter your application's endpoint URL, where dbt Cloud can send the event(s) to.
 
 When done, click **Save**. dbt Cloud provides a secret token that you can use to [check for the authenticity of a webhook](#validate-a-webhook). It’s strongly recommended that you perform this check on your server to protect yourself from fake (spoofed) requests.
+
+### Differences between completed and errored webhook events {#completed-errored-event-difference}
+The `job.run.errored` event is a subset of the `job.run.completed` events. If you subscribe to both, you will receive two notifications when your job encounters an error. However, dbt Cloud triggers the two events at different times:
+
+- `job.run.completed` &mdash;  This event only fires once the job’s metadata and artifacts have been ingested and are available from the dbt Cloud Admin and Metadata APIs. 
+- `job.run.errored` &mdash; This event fires immediately so the job’s metadata and artifacts might not have been ingested. This means that information might not be available for you to use.
+
+If your integration depends on data from the Admin API (such as accessing the logs from the run) or Metadata API (accessing model-by-model statuses), use the `job.run.completed` event and filter on `runStatus` or `runStatusCode`. 
+
+If your integration doesn’t depend on additional data or if improved delivery performance is more important for you, use `job.run.errored` and build your integration to handle API calls that might not return data a short period at first. 
+
 
 ## Validate a webhook
 
@@ -139,7 +150,7 @@ An example of a webhook payload for an errored run:
 You can use the dbt Cloud API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
 :::info Access URLs
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. This section uses `cloud.getdbt.com` (which is for North America) as part of the endpoint but your access URL might be different. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/deploy/regions-ip-addresses).   
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. This section uses `cloud.getdbt.com` (which is for North America) as part of the endpoint but your access URL might be different. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).   
 :::
 
 ### List all webhook subscriptions
@@ -515,3 +526,5 @@ DELETE https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscripti
 
 ## Related docs 
 - [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Use dbt Cloud's webhooks with other SaaS apps](/guides/orchestration/webhooks)
+
