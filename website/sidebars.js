@@ -391,6 +391,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Project configs",
+      collapsed: true,
       items: [
         "reference/dbt_project.yml",
         "reference/dbtignore",
