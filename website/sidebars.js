@@ -301,27 +301,27 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/dbt-cloud-apis/overview",
-	{
-	type: "category",
-	label: "Authentication",
-	items: [
+        {
+	      type: "category",
+	      label: "Authentication",
+	      items: [
           "docs/dbt-cloud-apis/user-tokens",
           "docs/dbt-cloud-apis/service-tokens",
-	 ],
-	 },
-	 "docs/dbt-cloud-apis/admin-cloud-api",
-	 {
-	   type: "category",
-	   label: "Metadata API",
-	   items: [
-            "docs/dbt-cloud-apis/metadata-api",
-            "docs/dbt-cloud-apis/metadata-use-case-guides",
-            "docs/dbt-cloud-apis/access-metadata-api",
-            "docs/dbt-cloud-apis/metadata-querying",
-	  {
-	    type: "category",
-	    label: "Schema",
-	    items: [
+        ],
+      },
+      "docs/dbt-cloud-apis/admin-cloud-api",
+      {
+        type: "category",
+        label: "Metadata API",
+        items: [
+          "docs/dbt-cloud-apis/metadata-api",
+          "docs/dbt-cloud-apis/metadata-use-case-guides",
+          "docs/dbt-cloud-apis/access-metadata-api",
+          "docs/dbt-cloud-apis/metadata-querying",
+          {
+            type: "category",
+            label: "Schema",
+            items: [
               "docs/dbt-cloud-apis/metadata-schema-model",
               "docs/dbt-cloud-apis/metadata-schema-models",
               "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
@@ -336,13 +336,13 @@ const sidebarSettings = {
               "docs/dbt-cloud-apis/metadata-schema-tests",
               "docs/dbt-cloud-apis/metadata-schema-exposure",
               "docs/dbt-cloud-apis/metadata-schema-exposures",
-             ],
-            },
-          ],
-        },
-      ],
-    },
-    {
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
       type: "category",
       label: "Available dbt versions",
       items: [
