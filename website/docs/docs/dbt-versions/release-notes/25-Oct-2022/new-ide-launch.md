@@ -18,4 +18,4 @@ Some of the improvements include:
 - Better organization and navigation with features like drag and drop of files, breadcrumb, build button drop-down, and more.
 - You can use new features like auto-format your file, auto-complete model names, and git diff view to see your changes before making a pull request.
 
-Read more about the new [Cloud IDE features](/docs/get-started/develop-in-the-cloud#cloud-ide-features) and check out [New and improved Cloud IDE](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!
+Read more about the new [Cloud IDE features](/docs/cloud/develop-in-the-cloud#cloud-ide-features) and check out [New and improved Cloud IDE](https://www.getdbt.com/blog/new-improved-cloud-ide/) blog for more info!

@@ -26,11 +26,11 @@ The new features are:
     - Use `env var` to autocomplete env var
 - **Dark mode**	&mdash;  Use dark mode in the dbt Cloud IDE for low-light environments.
 
-Read more about all the [Cloud IDE features](/docs/get-started/develop-in-the-cloud#cloud-ide-features).
+Read more about all the [Cloud IDE features](/docs/cloud/develop-in-the-cloud#cloud-ide-features).
 
 ### Classic IDE deprecation notice
 
-In December 2022, dbt Labs will deprecate the classic IDE. The [new and refreshed IDE](/docs/get-started/develop-in-the-cloud) will be available for _all_ dbt Cloud users. You will no longer be able to access the classic IDE and dbt Labs might introduce changes that break the classic IDE.
+In December 2022, dbt Labs will deprecate the classic IDE. The [new and refreshed IDE](/docs/cloud/develop-in-the-cloud) will be available for _all_ dbt Cloud users. You will no longer be able to access the classic IDE and dbt Labs might introduce changes that break the classic IDE.
 
 With deprecation, dbt Labs will only support the refreshed version of the dbt Cloud IDE.
 

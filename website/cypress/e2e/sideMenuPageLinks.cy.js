@@ -199,11 +199,11 @@ describe('docs.getdbt.com docs tab', () => {
     items = [
       {
         title: 'Using Jinja',
-        slug: '/docs/get-started/learning-more/using-jinja'
+        slug: '/guides/advanced/using-jinja'
       },
       {
         title: 'Refactoring legacy SQL to dbt',
-        slug: '/docs/get-started/learning-more/refactoring-legacy-sql'
+        slug: '/guides/migration/tools/refactoring-legacy-sql'
       },
     ]
     // navigate to subMenu
