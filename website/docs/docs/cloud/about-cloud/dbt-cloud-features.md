@@ -16,7 +16,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 <Card
     title="dbt Cloud IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
-link="/docs/get-started/develop-in-the-cloud"
+link="/docs/cloud/develop-in-the-cloud"
     icon="pencil-paper"/>
 
 <Card
@@ -51,7 +51,7 @@ link="/docs/get-started/develop-in-the-cloud"
    <Card
     title="Supports GitHub, GitLab, AzureDevOPs"
     body="Seamlessly connect your git account to dbt Cloud and provide another layer of security to dbt Cloud. Import new repositories, trigger continuous integration, clone repos using HTTPS, and more!"
-    link="/docs/collaborate/git/connect-github"
+    link="/docs/cloud/git/connect-github"
     icon="pencil-paper"/>  
 
    <Card
