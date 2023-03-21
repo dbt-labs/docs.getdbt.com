@@ -30,7 +30,7 @@ For more on property files, see their general [documentation](reference/configs-
 
 <Tabs
   groupId="resource-version-configs"
-  defaultValue="version-required"
+  defaultValue="version-specified"
   values={[
     { label: 'Resource property file with version specified', value: 'version-specified', },
     { label: 'Resource property file without version specified', value: 'no-version-specified', },
