@@ -78,7 +78,7 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
                 },
-    
+
                 {
                   type: "category",
                   label: "Single sign-on",
@@ -101,7 +101,7 @@ const sidebarSettings = {
                 "docs/cloud/manage-access/audit-log",
               ],
             }, // Manage access
-    
+
             {
               type: "category",
               label: "Configure Git",
@@ -120,7 +120,7 @@ const sidebarSettings = {
                 "docs/cloud/git/import-a-project-by-git-url",
               ],
             }, // Supported Git providers
-            
+
             {
               type: "category",
               label: "Multi-tenant PrivateLink",
@@ -261,7 +261,7 @@ const sidebarSettings = {
             "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",            
+            "docs/collaborate/git/merge-conflicts",
           ],
         },
         {
@@ -280,7 +280,7 @@ const sidebarSettings = {
             "docs/collaborate/publish/model-access",
             "docs/collaborate/publish/model-versions",
           ],
-        }, 
+        },
       ],
     },
     {
@@ -433,6 +433,7 @@ const sidebarSettings = {
         "reference/resource-configs/vertica-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
+        "reference/resource-configs/oracle-configs",
       ],
     },
     {
