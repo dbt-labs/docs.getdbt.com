@@ -3,6 +3,7 @@ title: "Postgres configurations"
 id: "postgres-configs"
 ---
 
+
 ## Performance Optimizations
 
 ### Unlogged
@@ -35,6 +36,8 @@ models:
 </File>
 
 ### Indexes
+
+While Postgres works reasonably well for datasets smaller than about 10m rows, database tuning is sometimes required. It's important to create indexes for columns that are commonly used in joins or where clauses.
 
 <Changelog>
 

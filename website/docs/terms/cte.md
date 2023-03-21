@@ -1,9 +1,14 @@
 ---
 id: cte
 title: CTE in SQL
+description: A CTE is a temporary result set that can be used in a SQL query. You can think of a CTE as a separate, smaller query within the larger query you’re building up.
 displayText: CTE  
 hoverSnippet: A Common Table Expression (CTE) is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other.
 ---
+
+<head>
+	<title>CTE in SQL: Quite possibly the best thing to happen to SQL</title>
+</head>
 
 In a formal sense, a Common Table Expression (CTE), is a temporary result set that can be used in a SQL query. You can use CTEs to break up complex queries into simpler blocks of code that can connect and build on each other. In a less formal, more human-sense, you can think of a CTE as a separate, smaller query within the larger query you’re building up. Creating a CTE is essentially like making a temporary <Term id="view" /> that you can access throughout the rest of the query you are writing.
 
@@ -23,7 +28,7 @@ How can you make these complexities in your code more digestible and usable? CTE
 
 ## CTE Syntax: How it works
 
-To use CTEs, you begin by defining your first CTE using the `WITH` statement followed by a `SELECT`, `INSERT`, `UPDATE`, `DELETE`, or `MERGE` statement.
+To use CTEs, you begin by defining your first CTE using the `WITH` statement followed by a `SELECT` statement.
 
 Let’s break down this example involving a `rename_columns` CTE below:
 
@@ -61,7 +66,7 @@ When people talk about how CTEs can simplify your queries, they specifically mea
 
 #### Establish Structure
 
-In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](guides/getting-started/learning-more/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
+In leveraging CTEs, you can break complex code into smaller segments, ultimately helping provide structure to your code. At dbt Labs, we often like to use the [import, logical, and final structure](/guides/migration/tools/refactoring-legacy-sql#implement-cte-groupings) for CTEs which creates a predictable and organized structure to your dbt models.
 
 #### Easily identify dependencies
 
@@ -142,7 +147,7 @@ Your results from running this query look a little like this:
 
 :::tip Tip
 If you are finding yourself using the same code for a certain CTE across multiple 
-queries or models, that’s probably a good sign that CTE should be its own [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models) or view.
+queries or models, that’s probably a good sign that CTE should be its own [model](https://docs.getdbt.com/docs/build/models) or view.
 :::
 
 ## CTE vs Subquery
@@ -158,7 +163,7 @@ A <Term id="subquery" /> is a nested query that can oftentimes be used in place 
 
 ## Data warehouse support for CTEs
 
-CTEs are likely to be supported across most, if not all, [modern data warehouses](https://blog.getdbt.com/future-of-the-modern-data-stack/). Please use this table to see more information about using CTEs in your specific data warehouse.
+CTEs are likely to be supported across most, if not all, [modern data warehouses](https://blog.getdbt.com/future-of-the-modern-data-stack/). Please use this table to see more information about using CTEs in your specific <Term id="data-warehouse" />.
 
 | Data Warehouse | Support CTEs? |
 |---|---|
@@ -172,11 +177,11 @@ CTEs are likely to be supported across most, if not all, [modern data warehouses
 
 CTEs are essentially temporary views that can be used throughout a query. They are a great way to give your SQL more structure and readability, and offer simplified ways to debug your code. You can leverage appropriately-named CTEs to easily identify upstream dependencies and code functionality. CTEs also support recursiveness and reusability in the same query. Overall, CTEs can be an effective way to level-up your SQL to be more organized and understandable.
 
-## Futher Reading
+## Further Reading
 
 If you’re interested in reading more about CTE best practices, check out some of our favorite content around model refactoring and style:
 
-- [Refactoring Legacy SQL to dbt](guides/getting-started/learning-more/refactoring-legacy-sql#implement-cte-groupings)
+- [Refactoring Legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql#implement-cte-groupings)
 - [dbt Labs Style Guide](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md#ctes)
 - [Modular Data Modeling Technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 

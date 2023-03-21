@@ -1,4 +1,7 @@
 ---
+title: "Configuring test `severity`"
+id: "severity"
+description: "You can use error thresholds to configure the severity of test results and set when to produce an error or warning based on the number of failed tests."
 resource_types: [tests]
 datatype: string
 ---
@@ -23,7 +26,7 @@ The relevant configs are:
 Conditional expressions can be any comparison logic that is supported by your SQL syntax with an integer number of failures: `> 5`, `= 0`, `between 5 and 10`, and so on.
 
 Here's how those play in practice:
-- If `severity: error`, dbt will check the `error_if` condition first. If the error condition is met, the test returns an error. If it's not met, dbt will then check the `warn_if` condition. If the warn condition is met, the test warns; if it's not met, the test passes.
+- If `severity: error`, dbt will check the `error_if` condition first. If the error condition is met, the test returns an error. If it's not met, dbt will then check the `warn_if` condition (defaulted to `!=0`). If it's not specified or the warn condition is met, the test warns; if it's not met, the test passes.
 - If `severity: warn`, dbt will skip the `error_if` condition entirely and jump straight to the `warn_if` condition. If the warn condition is met, the test warns; if it's not met, the test passes.
 
 Note that test warn statuses will return errors instead if the [`--warn-error`](global-cli-flags#warnings-as-errors) flag is passed. Unless dbt is told to treat warnings as errors, a test with `warn` severity will never return an error.
@@ -108,7 +111,7 @@ Set the default for all tests in a package or project:
 ```yaml
 tests:
   +severity: warn  # all tests
-  
+
   <package_name>:
     +warn_if: >10 # tests in <package_name>
 ```

@@ -1,19 +1,26 @@
-
 :local(.title) {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  font-size: small;
+  width: 100%;
+  display: block;
 }
 
-
 :local(.docImage) {
-    filter: drop-shadow(1px 4px 10px #aaaaaa33);
-    margin: 10px auto;
-    display: block;
-    width: 600px;
-    max-width: 100%;
+  filter: drop-shadow(4px 4px 6px #aaaaaa33);
+  margin: 10px auto;
+  padding-right: 10px;
+  display: block;
+  max-width: 400px;
 }
 
 :local(.collapsed) {
-    max-width: 300px !important;
-    display: inline-block;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.leftAlignLightbox {
+  margin: 10px 0;
+}
+.rightAlignLightbox {
+  margin: 10px 0 10px auto;
 }

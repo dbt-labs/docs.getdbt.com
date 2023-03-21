@@ -10,7 +10,7 @@ To-do:
 
 ## Transient tables
 
-Snowflake supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake does not preserve a history for these tables, which can result in a measurable reduction of your Snowflake storage costs. Note however that transient tables do not participate in Time Travel. Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. **By default, all Snowflake tables created by dbt are `transient`.**
+Snowflake supports the creation of [transient tables](https://docs.snowflake.net/manuals/user-guide/tables-temp-transient.html). Snowflake does not preserve a history for these tables, which can result in a measurable reduction of your Snowflake storage costs. Transient tables participate in time travel to a limited degree with a retention period of 1 day by default with no fail-safe period. Weigh these tradeoffs when deciding whether or not to configure your dbt models as `transient`. **By default, all Snowflake tables created by dbt are `transient`.**
 
 ### Configuring transient tables in dbt_project.yml
 
@@ -51,7 +51,7 @@ select * from ...
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
 dbt supports setting a default query tag for the duration of its Snowflake connections in
-[your profile](snowflake-profile). You can set more precise values (and override the default) for subsets of models by setting
+[your profile](/reference/warehouse-setups/snowflake-setup). You can set more precise values (and override the default) for subsets of models by setting
 a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 <File name='dbt_project.yml'>
@@ -93,18 +93,13 @@ In this example, you can set up a query tag to be applied to every query with th
 
 ```
 
-**Note:** query tags are set at the _session_ level. At the start of each model
-<Term id="materialization" />, if the model has a custom `query_tag`
-configured, dbt will run `alter session set query_tag` to set the new value.
-At the end of the materialization, dbt will run another `alter` statement to reset
-the tag to its default value. As such, build failures midway through a materialization may result in subsequent
-queries running with an incorrect tag.
+**Note:** query tags are set at the _session_ level. At the start of each model <Term id="materialization" />, if the model has a custom `query_tag` configured, dbt will run `alter session set query_tag` to set the new value. At the end of the materialization, dbt will run another `alter` statement to reset the tag to its default value. As such, build failures midway through a materialization may result in subsequent queries running with an incorrect tag.
 
 </File>
 
 ## Merge behavior (incremental models)
 
-The [`incremental_strategy` config](configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
+The [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. By default, dbt will use a [merge statement](https://docs.snowflake.net/manuals/sql-reference/sql/merge.html) on Snowflake to refresh incremental tables.
 
 Snowflake's `merge` statement fails with a "nondeterministic merge" error if the `unique_key` specified in your model config is not actually unique. If you encounter this error, you can instruct dbt to use a two-step incremental approach by setting the `incremental_strategy` config for your model to `delete+insert`.
 
@@ -187,9 +182,19 @@ models:
 
 ## Configuring virtual warehouses
 
-The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times.
+The default warehouse that dbt uses can be configured in your [Profile](/reference/profiles.yml) for Snowflake connections. To override the warehouse that is used for specific models (or groups of models), use the `snowflake_warehouse` model configuration. This configuration can be used to specify a larger warehouse for certain models in order to control Snowflake costs and project build times. 
 
-The following config uses the `EXTRA_SMALL` warehouse for all models in the project, except for the models in the `clickstream` folder, which are configured to use the `EXTRA_LARGE` warehouse. In this example, all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
+<Tabs
+  defaultValue="dbt_project.yml"
+  values={[
+    { label: 'YAML code', value: 'dbt_project.yml', },
+    { label: 'SQL code', value: 'models/events/sessions.sql', },
+    ]}
+>
+
+<TabItem value="dbt_project.yml">
+
+The example config below changes the warehouse for a group of models with a config argument in the yml.
 
 <File name='dbt_project.yml'>
 
@@ -200,16 +205,64 @@ version: 1.0.0
 ...
 
 models:
-  +snowflake_warehouse: "EXTRA_SMALL"
+  +snowflake_warehouse: "EXTRA_SMALL"    # use the `EXTRA_SMALL` warehouse for all models in the project...
   my_project:
     clickstream:
-      +snowflake_warehouse: "EXTRA_LARGE"
+      +snowflake_warehouse: "EXTRA_LARGE"    # ...except for the models in the `clickstream` folder, which will use the `EXTRA_LARGE` warehouse.
 
 snapshots:
-  +snowflake_warehouse: "EXTRA_LARGE"
+  +snowflake_warehouse: "EXTRA_LARGE"    # all Snapshot models are configured to use the `EXTRA_LARGE` warehouse.
 ```
 
 </File>
+</TabItem>
+
+<TabItem value="models/events/sessions.sql">
+
+The example config below changes the warehouse for a single model with a config() block in the sql model.
+
+<File name='models/events/sessions.sql'>
+
+```sql
+{{
+  config(
+    materialized='table',
+    snowflake_warehouse='EXTRA_LARGE'
+  )
+}}
+
+with
+
+aggregated_page_events as (
+
+    select
+        session_id,
+        min(event_time) as session_start,
+        max(event_time) as session_end,
+        count(*) as count_page_views
+    from {{ source('snowplow', 'event') }}
+    group by 1
+
+),
+
+index_sessions as (
+
+    select
+        *,
+        row_number() over (
+            partition by session_id
+            order by session_start
+        ) as page_view_in_session_index
+    from aggregated_page_events
+
+)
+
+select * from index_sessions
+```
+
+</File>
+</TabItem>
+</Tabs>
 
 ## Copying grants
 

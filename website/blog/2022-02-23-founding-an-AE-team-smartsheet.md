@@ -30,7 +30,7 @@ Enter this story. I’m Nate and I manage the Analytics Engineering team at [Sma
 
 ## State of Analytics Before Analytics Engineering
 
-Smartsheet, in general, has a great analytics setup. Strong data engineering and data analytics teams. A cloud data warehouse and an on-prem BI tool for front-end data visibility.  However, even with that foundation, there were some limitations under the hood requiring action:
+Smartsheet, in general, has a great analytics setup. Strong data engineering and data analytics teams. A cloud <Term id="data-warehouse" /> and an on-prem BI tool for front-end data visibility.  However, even with that foundation, there were some limitations under the hood requiring action:
 
 ### (1) Multiple undocumented transformation databases
 
@@ -148,7 +148,7 @@ For example, we originally assumed the data flow from Raw into its Prod state wo
 
 To get through the fog of questions, we chose one principle on which to plant our flag: **Data must be in sync and always accessible across the database**. In our existing database, if you queried a table mid-update: too bad. You got weird data and might not even know it, or your query would fail. We wanted to do better and our cloud data warehouse provided the platform we needed to make it happen.
 
-We settled on the following data transformation flow. Our transformation code is pulled every 8 hours onto a virtual machine (VM). A script on that VM triggers dbt to run that code, populating a staging database which is visible only to my team. Staging continues to update table by table until the run is successful.  When successful, Staging immediately clones over to Prod, with no downtime for users even if they are mid-query.  Everyone is happy.
+We settled on the following [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) flow. Our transformation code is pulled every 8 hours onto a virtual machine (VM). A script on that VM triggers dbt to run that code, populating a staging database which is visible only to my team. Staging continues to update table by table until the run is successful.  When successful, Staging immediately clones over to Prod, with no downtime for users even if they are mid-query.  Everyone is happy.
 
 ![Graphic depicting Smartsheet's finalized data transformation workflow structure](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/new-transformation-workflow.png)
 
@@ -174,7 +174,7 @@ Plenty more to make but the foundation was there, and now it was time to enroll 
 
 This topic also deserves its own blog post, but I’ll attempt to quickly describe what we changed. As described in the problem statement, analysts could only ship code every 1-2 weeks and the process was incredibly painful. It was more than 16 steps with multiple ‘gotchas’ where analysts would get stuck and waste time.
 
-The process is now six steps, with massive time savings for the analytics team both in the creation and testing of their script along with how long it takes for new data to get into the data warehouse.This is on top of all of dbt’s benefits such as data definitions, lineage, automatic testing, macros…the list goes on.
+The process is now six steps, with massive time savings for the analytics team both in the creation and testing of their script along with how long it takes for new data to get into the data warehouse.This is on top of all of dbt’s benefits such as data definitions, <Term id="data-lineage">lineage</Term>, automatic testing, macros…the list goes on.
 
 ![Graphic depicting Smartsheet's new and improved code production process that outlines 6 steps](/img/blog/2022-02-23-founding-an-AE-team-smartsheet/completed-process.png)
 

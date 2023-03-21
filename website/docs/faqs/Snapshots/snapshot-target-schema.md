@@ -18,4 +18,4 @@ Instead, in the models that `ref` your snapshots, it makes more sense to `select
 
 For this reason, there is only _one_ `target_schema`, which is _not_ environment-aware by default.
 
-However, this can create problems if you need to run a `snapshot` command when developing your models, or during a CI run. Fortunately, there's a few workarounds — check out [this Discourse article](https://discourse.getdbt.com/t/using-dynamic-schemas-for-snapshots/1070).
+However, this can create problems if you need to run a `snapshot` command when developing your models, or during a CI run. Fortunately, there's a few workarounds — check out [this forum article](https://discourse.getdbt.com/t/using-dynamic-schemas-for-snapshots/1070).

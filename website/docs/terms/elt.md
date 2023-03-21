@@ -1,11 +1,14 @@
 ---
 id: elt
 title: ELT
+description: ELT is the process of first extraction data from different sources, then loading it into a data warehouse, and finally transforming it.
 displayText: ELT  
 hoverSnippet: Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, loading it into a target data warehouse, and finally transforming it.
 ---
-
-Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, then loading it into a target data warehouse, and finally transforming it.
+<head>
+    <title>ELT: What it is and why it's often better than ETL</title>
+</head>
+Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, then loading it into a target <Term id="data-warehouse" />, and finally transforming it.
 
 ELT has emerged as a paradigm for how to manage information flows in a modern data warehouse. This represents a fundamental shift from how data previously was handled when <Term id="etl">Extract, Transform, Load (ETL)</Term> was the data workflow most companies implemented.
 
@@ -44,7 +47,7 @@ In the final transformation step, the raw data that has been loaded into your da
 - Some columns are potentially the incorrect data type
 - Tables are not joined to other tables
 - Timestamps may be in the incorrect timezone for your reporting
-- JSON fields may need to be unnested
+- <Term id="json" /> fields may need to be unnested
 - Tables may be missing <Term id="primary-key">primary keys</Term>
 - And more!
 
@@ -58,7 +61,7 @@ Common ways to transform your data include leveraging modern technologies such a
 
 ## ELT vs ETL
 
-The primary difference between the traditional ETL and the modern ELT workflow is when data transformation and loading take place. In ETL workflows, data extracted from data sources is transformed prior to being loaded into target data platforms. Newer ELT workflows have data being transformed after being loaded into the data platform of choice. Why is this such a big deal?
+The primary difference between the traditional ETL and the modern ELT workflow is when [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) and loading take place. In ETL workflows, data extracted from data sources is transformed prior to being loaded into target data platforms. Newer ELT workflows have data being transformed after being loaded into the data platform of choice. Why is this such a big deal?
 
 |  | ELT | ETL |
 |---|---|---|
@@ -119,7 +122,7 @@ As mentioned earlier, the recent development of certain technologies and product
 |---|---|---|---|
 | Fivetran/HVR | E, some T, L | Fivetran is a SaaS company that helps data teams extract, load, and perform some transformation on their data. Fivetran easily integrates with modern data warehouses and dbt. They also offer transformations that leverage dbt Core. | :x: |
 | Stitch by Talend | E, L | Stitch (part of Talend) is another SaaS product that has many data connectors to extract data and load it into data warehouses. | :x: |
-| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create data extraction and load pipelines. | :white_check_mark: |
+| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create <Term id="data-extraction" /> and load pipelines. | :white_check_mark: |
 | Funnel | E, some T, L | Funnel is another product that can extract and load data. Funnel’s data connectors are primarily focused around marketing data sources. | :x: |
 | dbt | T | dbt is the transformation tool that enables data analysts and engineers to transform, test, and document data in the cloud data warehouse. dbt offers both an open-source and cloud-based product. | :white_check_mark: |
 

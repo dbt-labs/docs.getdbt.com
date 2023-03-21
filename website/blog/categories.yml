@@ -15,10 +15,6 @@
   display_title: dbt tutorials
   description: Best practices in the usage of our favorite data transformation tool.
   is_featured: true    
-- name: release notes
-  display_title: Release notes
-  description: Notable updates and new features in dbt Cloud.
-  is_featured: true
 - name: dbt updates
   display_title: dbt product updates
   description: An archive of monthly product updates from the dbt Labs team.

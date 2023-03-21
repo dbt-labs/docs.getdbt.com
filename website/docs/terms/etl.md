@@ -1,11 +1,16 @@
 ---
 id: etl
 title: ETL
+description: ETL is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 displayText: ETL
-hoverSnippet: Extract, Transform, Load (ETL)is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
+hoverSnippet: Extract, Transform, Load (ETL) is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse.
 ---
 
-ETL, or “Extract, Transform, Load”, is the process of first extracting data from a data source, transforming it, and then loading it into a target data warehouse. In ETL workflows, much of the meaningful data transformation occurs outside this primary pipeline in a downstream business intelligence (BI) platform.
+<head>
+    <title>ETL: What is it and is it still relevant? - dbt Labs</title>
+</head>
+
+ETL, or “Extract, Transform, Load”, is the process of first extracting data from a data source, transforming it, and then loading it into a target <Term id="data-warehouse" />. In ETL workflows, much of the meaningful [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) occurs outside this primary pipeline in a downstream business intelligence (BI) platform.
 
 ETL is contrasted with the newer <Term id="elt" /> (Extract, Load, Transform) workflow, where transformation occurs after data has been loaded into the target data warehouse. In many ways, the ETL workflow could have been renamed the ETLT workflow, because a considerable portion of meaningful data transformations happen outside the data pipeline. The same transformations can occur in both ETL and ELT workflows, the primary difference is *when* (inside or outside the primary ETL workflow) and *where* the data is transformed (ETL platform/BI tool/data warehouse).
 
@@ -86,9 +91,9 @@ You may read other articles or technical documents that use ETL and ELT intercha
 
 In both processes, data from different data sources is extracted in similar ways. However, in ELT, data is then directly loaded into the target data platform versus being transformed in ETL. Now, via ELT workflows, both raw and transformed data can live in a data warehouse. In ELT workflows, data folks have the flexibility to model the data after they’ve had the opportunity to explore and analyze the raw data. ETL workflows can be more constraining since transformations happen immediately after extraction. We break down some of the other major differences between the two below:
 
-|  | ETL | ELT |
+|  | ELT | ETL |
 |---|---|---|
-| Programming skills required | Often requires custom scripts or considerable data engineering lift to extract and transform data prior to load. | Often requires little to no code to extract and load data into your data warehouse. |
+| Programming skills required | Often requires little to no code to extract and load data into your data warehouse. | Often requires custom scripts or considerable data engineering lift to extract and transform data prior to load. |
 | Separation of concerns | Extraction, load, and transformation layers can be explicitly separated out by different products. | ETL processes are often encapsulated in one product. |
 | Distribution of transformations | Since transformations take place last, there is greater flexibility in the modeling process. Worry first about getting your data in one place, then you have time to explore the data to understand the best way to transform it. | Because transformation occurs before data is loaded into the target location, teams must conduct thorough work prior to make sure data is transformed properly. Heavy transformations often take place downstream in the BI layer. |
 | [Data team roles](https://www.getdbt.com/data-teams/analytics-job-descriptions/) | ELT workflows empower data team members who know SQL to create their own extraction and loading pipelines and transformations. | ETL workflows often require teams with greater technical skill to create and maintain pipelines. |

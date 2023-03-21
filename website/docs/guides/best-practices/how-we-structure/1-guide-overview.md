@@ -1,6 +1,9 @@
 ---
-title: How we structure our dbt projects
+title: "How we structure our dbt projects"
 id: 1-guide-overview
+description: Learn how we structure our dbt projects.
+displayText: How we structure our dbt projects
+hoverSnippet: Learn how we structure our dbt projects.
 ---
 
 ## Why does structure matter?
@@ -9,7 +12,7 @@ Analytics engineering, at its core, is about helping groups of human beings coll
 
 Building a great dbt project is an inherently collaborative endeavor, bringing together domain knowledge from every department to map the goals and narratives of the entire company. As such, it's especially important to establish a deep and broad set of patterns to ensure as many people as possible are empowered to leverage their particular expertise in a positive way, and to ensure that the project remains approachable and maintainable as your organization scales.
 
-Famously, Steve Jobs [wore the same outfit everyday](https://images.squarespace-cdn.com/content/v1/5453c539e4b02ab5398ffc8f/1580381503218-E56FQDNFL1P4OBLQWHWW/ke17ZwdGBToddI8pDm48kJKedFpub2aPqa33K4gNUDwUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcxb5ZTIyC_D49_DDQq2Sj8YVGtM7O1i4h5tvKa2lazN4nGUQWMS_WcPM-ztWbVr-c/steve_jobs_outfit.jpg) to reduce decision fatigue. You can think of this guide similarly, as a black turtleneck and New Balance sneakers for your company’s dbt project. A dbt project’s power outfit, or more accurately its structure, is composed not of fabric but of files, folders, naming conventions, and programming patterns. How you label things, group them, split them up, or bring them together — the system you use to organize the data transformations encoded in your dbt project — this is your project’s structure.
+Famously, Steve Jobs [wore the same outfit everyday](https://images.squarespace-cdn.com/content/v1/5453c539e4b02ab5398ffc8f/1580381503218-E56FQDNFL1P4OBLQWHWW/ke17ZwdGBToddI8pDm48kJKedFpub2aPqa33K4gNUDwUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcxb5ZTIyC_D49_DDQq2Sj8YVGtM7O1i4h5tvKa2lazN4nGUQWMS_WcPM-ztWbVr-c/steve_jobs_outfit.jpg) to reduce decision fatigue. You can think of this guide similarly, as a black turtleneck and New Balance sneakers for your company’s dbt project. A dbt project’s power outfit, or more accurately its structure, is composed not of fabric but of files, folders, naming conventions, and programming patterns. How you label things, group them, split them up, or bring them together — the system you use to organize the [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) encoded in your dbt project — this is your project’s structure.
 
 This guide is just a starting point. You may decide that you prefer Birkenstocks or a purple hoodie for your project over Jobs-ian minimalism. That's fine. What's important is that you think through the reasoning for those changes in your organization, explicitly declare them in a thorough, accessible way for all contributors, and above all *stay consistent*.
 

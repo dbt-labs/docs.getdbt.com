@@ -5,7 +5,7 @@ sidebar_label: 'Unable to checkout or create branch'
 id: gitignore
 ---
 
-If you're finding yourself unable to revert changes, check out a branch or click commit - this is usually do to your project missing a .[gitignore](https://github.com/fishtown-analytics/dbt-starter-project/blob/master/.gitignore) file OR your gitignore file doesn't contain the necessary content inside the fole. 
+If you're finding yourself unable to revert changes, check out a branch or click commit - this is usually do to your project missing a .[gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) file OR your gitignore file doesn't contain the necessary content inside the folder. 
 
 This is what causes that 'commit' git action button to display. No worries though - to fix this, you'll need to complete the following steps in order:
 

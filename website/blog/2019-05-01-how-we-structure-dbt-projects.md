@@ -24,11 +24,11 @@ It’s important to note that **this is not the only, or the objectively best, w
 
 *   our views on data model design; which in turn are influenced by:
 *   the kinds of analytics problems we are solving for clients
-*   the data stack we typically work within, in which multiple data sources are loaded by third party tools, and the data warehouse is optimized for analytical queries (therefore we aren’t tightly bounded by performance optimization considerations).
+*   the data stack we typically work within, in which multiple data sources are loaded by third party tools, and the <Term id="data-warehouse" /> is optimized for analytical queries (therefore we aren’t tightly bounded by performance optimization considerations).
 
 Our opinions are **almost guaranteed to change over time** as we update our views on modeling, are exposed to more analytics problems, and data stacks evolve. It’s also worth clearly stating here: the way we structure dbt projects makes sense for our projects, but may not be the best fit for yours! This article exists on Discourse so that we can have a conversation – I would love to know how others in the community are structuring their projects.
 
-In comparison, the (recently updated) [best practices](/docs/guides/best-practices) reflect principles that we believe to be true for any dbt project. Of course, these two documents go hand in hand – our projects are structured in such a way that makes the those principles easy to observe, in particular:
+In comparison, the (recently updated) [best practices](/guides/best-practices) reflect principles that we believe to be true for any dbt project. Of course, these two documents go hand in hand – our projects are structured in such a way that makes the those principles easy to observe, in particular:
 
 *   Limit references to raw data
 *   Rename and recast fields once
@@ -36,8 +36,6 @@ In comparison, the (recently updated) [best practices](/docs/guides/best-practic
 *   Add tests to your models
 *   Consider the information architecture of your data warehouse
 *   Separate source-centric and business-centric transformations
-
-If you want to see what the code for one of our projects looks like, check out [this demonstration dbt project](https://github.com/dbt-labs/dbt-learn-demo/tree/day2-dbt-training/models).
 
 We also recently held (and recorded) an office hours on this topic – this article provides a high level outline, but there’s a lot more detail and discussion in the [video](https://youtu.be/xzKLh342s08).
 
@@ -69,7 +67,7 @@ In our dbt projects, this leads us to our first split in our `models/` directory
     └── models
         ├── marts
         └── staging
-    
+
 ```
 
 ## Staging raw data
@@ -104,9 +102,9 @@ Each staging directory contains at a minimum:
     *   Named `stg_<source>__<object>`.
     *   Generally materialized as a <Term id="view" /> (unless performance requires it as a table).
 *   A `src_<source>.yml` file which contains:
-    *   [Source](/docs/building-a-dbt-project/using-sources) definitions, tests, and documentation
+    *   [Source](/docs/build/sources) definitions, tests, and documentation
 *   A `stg_<source>.yml` file which contains
-    *   [Tests](/docs/building-a-dbt-project/tests) and [documentation](/docs/building-a-dbt-project/documentation) for models in the same directory
+  * [Tests](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for models in the same directory
 
 ```
     ├── dbt_project.yml
@@ -119,7 +117,7 @@ Each staging directory contains at a minimum:
                 ├── stg_braintree__customers.sql
                 └── stg_braintree__payments.sql
 ```        
-    
+
 
 Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__customers.yml`). This is a completely reasonable choice, and we recommend implementing it if your `.yml` files start to become unwieldy.
 
@@ -127,29 +125,29 @@ Some dbt users prefer to have one `.yml` file per model (e.g. `stg_braintree__cu
 
 Earlier versions of the dbt documentation recommended implementing “base models” as the first layer of transformation – and we used to organize and name our models in this way, for example `models/braintree/base/base_payments.sql`.
 
-We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/docs/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
+We realized that while the reasons behind this convention were valid, the naming was an opinion, so in our recent update to the [best practices](/guides/best-practices), we took the mention of base models out. Instead, we replaced it with the principles of “renaming and recasting once” and “limiting the dependencies on raw data”.
 
 That being said, in our dbt projects every source flows through exactly one model of the following form:
 
 ```
     with source as (
-        
+
         select * from {{ source('braintree', 'payments') }}
-        
+
     ),
-    
+
     renamed as (
-        
+
         select
             id as payment_id,
             order_id,
             convert_timezone('America/New_York', 'UTC', createdat) as created_at,
             ...
-        
+
         from source
-    
+
     )
-    
+
     select * from renamed
 ```    
 
@@ -175,7 +173,7 @@ In our dbt projects, we place these base models in a nested `base` subdirectory.
                 ├── stg_braintree.yml
                 ├── stg_braintree__customers.sql
                 └── stg_braintree__payments.sql
-``` 
+```
 
 In our projects, base models:
 
@@ -205,14 +203,14 @@ There are entire books written on how to design models, which is beyond the scop
 *   `fct_<verb>`**:** A tall, narrow table representing real-world processes that have occurred or are occurring. The heart of these models is usually an immutable event stream: sessions, transactions, orders, stories, votes.
 *   `dim_<noun>`: A wide, short table where each row is a person, place, or thing; the ultimate source of truth when identifying and describing entities of the organization. They are mutable, though slowly changing: customers, products, candidates, buildings, employees.
 
-Where the work of staging models is limited to cleaning and preparing, fact tables are the product of substantive data transformation: choosing (and reducing) dimensions, date-spining, executing business logic, and making informed, confident decisions.
+Where the work of staging models is limited to cleaning and preparing, fact tables are the product of substantive [data transformation](https://www.getdbt.com/analytics-engineering/transformation/): choosing (and reducing) dimensions, date-spining, executing business logic, and making informed, confident decisions.
 
 This layer of modeling is considerably more complex than creating staging models, and the models we _design_ are highly tailored to the analytical needs of an organization. As such, we have far less convention when it comes to these models. Some patterns we’ve found to be useful are:
 
 *   `fct_` and `dim_` models should be materialized as tables within a warehouse to improve query performance. As a default, we use the table materialization, and where performance requires it, we use the incremental materialization.
-*   Intermediate transformations required to get to a fact or dimension model are placed in a nested `marts/<mart>/intermediate` directory. They are named `<useful_name>__<transformation_in_past_tense>.sql`. The lack of prefix and use of double underscores indicates that these are intermediate models, not to be trusted, however, it may also be worth hiding these in a different [schema](/docs/building-a-dbt-project/building-models/using-custom-schemas).
+* Intermediate transformations required to get to a fact or dimension model are placed in a nested `marts/<mart>/intermediate` directory. They are named `<useful_name>__<transformation_in_past_tense>.sql`. The lack of prefix and use of double underscores indicates that these are intermediate models, not to be trusted, however, it may also be worth hiding these in a different [schema](/docs/build/custom-schemas).
 *   Models are tested and documented in a `<dir_name>.yml` file in the same directory as the models.
-*   Any extra documentation in a [docs block](/docs/building-a-dbt-project/documentation#using-docs-blocks) is placed in a `<dir_name>.md` file in the same directory.
+*   Any extra documentation in a [docs block](/docs/collaborate/documentation#using-docs-blocks) is placed in a `<dir_name>.md` file in the same directory.
 
 A marts directory may therefore end up looking like:
 
@@ -246,12 +244,12 @@ This entire project results in the following DAG:
 There are other kinds of SQL files that find their way into robust dbt projects. In addition to `staging` and `marts`, we find ourselves with model directories such as:
 
 *   `utils`: An `all_days` table. This is useful everywhere, though it never forms the basis for analysis/reporting.
-*   `lookups`**:** A user-mapping table, a zipcode-country table, etc. These are as likely to be [CSV seeds](/docs/building-a-dbt-project/seeds) as tables in a production database. You may reference it at several unpredictable points throughout modeling, and maybe even in a BI tool.
+* `lookups`**:** A user-mapping table, a zipcode-country table, etc. These are as likely to be [CSV seeds](/docs/build/seeds) as tables in a production database. You may reference it at several unpredictable points throughout modeling, and maybe even in a BI tool.
 *   `admin`**:** Audit logs, warehouse operations, Redshift maintenance, and incremental records of the miscellaneous <Term id="ddl" /> you run to make your project run smoothly.
 *   `metrics`**:** Precisely defined measurements taken from fact tables, directly conducive to time-series reporting, and tightly structured so as to allow one-to-one comparison with goals and forecasting. A metrics table lives downstream of dimension and fact tables in your DAG, and it deserves special status.
 *   **Packages:** While not a model folder within your main project, packages that include models (like our [snowplow](https://github.com/dbt-labs/snowplow) package) can be configured into custom schema and materialization patterns from `dbt_project.yml`.
 
-In projects where we find ourselves with these additional models, we often leverage [custom schemas](/docs/building-a-dbt-project/building-models/using-custom-schemas) as directories in our warehouse, to logically group the models, choosing a schema name that matches the directory name in our dbt project.
+In projects where we find ourselves with these additional models, we often leverage [custom schemas](/docs/build/custom-schemas) as directories in our warehouse, to logically group the models, choosing a schema name that matches the directory name in our dbt project.
 
 ## Final thoughts
 -----------------------------------

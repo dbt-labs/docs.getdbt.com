@@ -2,11 +2,6 @@
 title: Seed configurations
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure seeds in all `.yml` files
-</Changelog>
-
-
 ## Available configurations
 ### Seed-specific configurations
 
@@ -84,6 +79,7 @@ seeds:
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
+    [+](plus-prefix)[grants](grants): {<dictionary>}
 
 ```
 
@@ -94,7 +90,7 @@ seeds:
 
 <TabItem value="property-yaml">
 
-<File name='models/properties.yml'>
+<File name='seeds/properties.yml'>
 
 ```yaml
 version: 2
@@ -112,6 +108,7 @@ seeds:
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
+      [grants](grants): {<dictionary>}
 
 ```
 
@@ -128,7 +125,7 @@ Seed configurations, like model configurations, are applied hierarchically — c
 
 ### Examples
 #### Apply the `schema` configuration to all seeds
-To apply a configuration to all seeds, including those in any installed [packages](package-management), nest the configuration directly under the `seeds` key:
+To apply a configuration to all seeds, including those in any installed [packages](/docs/build/packages), nest the configuration directly under the `seeds` key:
 
 <File name='dbt_project.yml'>
 
