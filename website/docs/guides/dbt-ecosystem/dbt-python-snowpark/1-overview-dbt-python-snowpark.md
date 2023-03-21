@@ -10,7 +10,7 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
 
 ## What you'll use during the lab
 
-- A [Snowflake account](https://trial.snowflake.com/) with `ACCOUNTADMIN` access
+- A [Snowflake account](https://trial.snowflake.com/) with ACCOUNTADMIN access
 - A [dbt Cloud account](https://www.getdbt.com/signup/)
 
 ## What you'll learn
