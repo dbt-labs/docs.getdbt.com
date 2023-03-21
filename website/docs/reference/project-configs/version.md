@@ -41,7 +41,7 @@ For more on property files, see their general [documentation](reference/configs-
 <File name='<any valid filename>.yml'>
 
 ```yml
-version: 2  # Only 2 is accepted by current and recent versions of dbt.
+version: 2  # Only 2 is accepted by dbt versions up to 1.4.latest.
 
 models: 
     ...
