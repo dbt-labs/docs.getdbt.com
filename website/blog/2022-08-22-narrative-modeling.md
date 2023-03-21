@@ -173,7 +173,7 @@ To that final point, if presented with the DAG from the narrative modeling appro
 ### Intangible business steps are easier to model
 
 - Knowledge gaps are captured accurately. For instance, if the best way you know that a shipment was received by a customer is that a truck driver scanned it out of the system, you can model `shipment_scanned_out` as an explicit model, followed by an implicit`shipment_received` model referencing it. This stores in code the company’s current point-of-view that the scanning action is the best information available
-- Certain business decisions directly drive data transformations. If an entire package costs $50.00 to ship and it has multiple items inside, shipping cost could be attributed to each item via weight or product value. In either case, teams can capture this attribution as `item_apportioned_shipping_cost`.
+- Certain business decisions directly drive [data transformations](https://www.getdbt.com/analytics-engineering/transformation/). If an entire package costs $50.00 to ship and it has multiple items inside, shipping cost could be attributed to each item via weight or product value. In either case, teams can capture this attribution as `item_apportioned_shipping_cost`.
 
 ### Users can tie business concepts to source data
 

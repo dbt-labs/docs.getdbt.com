@@ -7,7 +7,7 @@ description: "Instructions for upgrading a dbt Cloud account after the trial end
 dbt Cloud offers [several plans](https://www.getdbt.com/pricing/) with different features that meet your needs. This document is for dbt Cloud admins and explains how to select a plan in order to continue using dbt Cloud. 
 
 :::tip Before you begin
-- You **_must_** be part of the [Owner](/docs/collaborate/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
+- You **_must_** be part of the [Owner](/docs/cloud/manage-access/self-service-permissions) user group to make billing changes. Users not included in this group will not see these options.
 - All amounts shown in dbt Cloud are in U.S. Dollars (USD)   
 - When your trial expires, your account's default plan enrollment will be a Team plan.
 :::

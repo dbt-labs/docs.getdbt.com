@@ -15,9 +15,9 @@ let headers = {
 }    
 
 async function getDiscourseComments(event) {
-  let topicId, comments;
+  let topicId, comments, DISCOURSE_TOPIC_ID;
 
-  blogUrl = await getBlogUrl(event)
+  const blogUrl = await getBlogUrl(event)
   
   if (blogUrl === DEVBLOG_PROD_URL) {
     DISCOURSE_TOPIC_ID = 21
@@ -32,10 +32,10 @@ async function getDiscourseComments(event) {
         : blogUrl.includes("localhost")
         ? DEV_ENV
         : PREVIEW_ENV;
-    postTitle = `${env}${event.queryStringParameters.title}`;
-    postSlug = event.queryStringParameters.slug;
-    cleanSlug = cleanUrl(postSlug);
-    externalId = truncateString(`${env}${cleanSlug}`);
+    const postTitle = `${env}${event.queryStringParameters.title}`;
+    const postSlug = event.queryStringParameters.slug;
+    const cleanSlug = cleanUrl(postSlug);
+    const externalId = truncateString(`${env}${cleanSlug}`);
 
     console.table({
       blogUrl,
@@ -57,7 +57,7 @@ async function getDiscourseComments(event) {
     } else {
       // If the dev blog post does not exist in Discourse
       // Create a new topic and get the comments
-      topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug);
+      topicId = await createDiscourseTopic(postTitle, externalId, cleanSlug, blogUrl, DISCOURSE_TOPIC_ID);
       if (typeof topicId === "number") {
         comments = await getDiscourseTopicbyID(topicId);
         comments.shift();
@@ -81,7 +81,7 @@ async function getDiscourseComments(event) {
   }
 }
 
-async function createDiscourseTopic(title, externalId, slug) {
+async function createDiscourseTopic(title, externalId, slug, blogUrl, DISCOURSE_TOPIC_ID) {
     console.log(`No topics found. Creating a new topic in Discourse - ${title}`)
     try  {
         const response = await axios.post(`${discourse_endpoint}/posts`, {
