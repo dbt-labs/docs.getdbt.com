@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "rules": {
+    "@typescript-eslint/no-var-requires": 0
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:markdown/recommended"],
+  "overrides": [
+    {
+      "files": ["**/*.md"],
+      "processor": "markdown/markdown"
+    },
+    {
+      "files": ["**/*.md/*.js", "**/*.md/*.jsx"],
+      "rules": {
+        "no-unused-vars": "off",
+        "no-unused-labels": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "markdown"]
+}

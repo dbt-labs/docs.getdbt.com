@@ -691,7 +691,6 @@ const sidebarSettings = {
         "reference/artifacts/other-artifacts",
       ],
     },
-    ,
     {
       type: "category",
       label: "Database Permissions",
