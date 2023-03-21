@@ -3,6 +3,12 @@ title: "statement blocks"
 id: "statement-blocks"
 ---
 
+:::tip Recommendation
+
+The [run_query](/reference/dbt-jinja-functions/run_query) macro provides a more convenient way to run queries and fetch their results. It is a wrapper around statement blocks.
+
+:::
+
 `statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
 
 <File name='get_states_statement.sql'>
@@ -67,11 +73,3 @@ The contents of the returned `data` field is a matrix. It contains a list rows, 
 ```
 
 </File>
-
-
-
-:::danger Volatile API
-
-While the `statement` and `load_result` setup works for now, we intend to improve this interface in the future. If you have questions or suggestions, please let us know in GitHub or on Slack.
-
-:::
