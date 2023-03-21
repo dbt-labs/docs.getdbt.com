@@ -11,7 +11,7 @@ profile: string
 
 ## Definition
 The profile your dbt project should use to connect to your <Term id="data-warehouse" />.
-* If you are developing in dbt Cloud: This configuration is optional
+* If you are developing in dbt Cloud: This configuration is not applicable
 * If you are developing locally: This configuration is required, unless a command-line option (i.e. `--profile`) is supplied.
 
 ## Related guides
