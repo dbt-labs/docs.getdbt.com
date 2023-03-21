@@ -671,6 +671,7 @@ const sidebarSettings = {
         "reference/warehouse-setups/infer-setup",
         "reference/warehouse-setups/databend-setup",
         "reference/warehouse-setups/fal-setup",
+        "reference/warehouse-setups/decodable-setup",
       ],
     },
     {
