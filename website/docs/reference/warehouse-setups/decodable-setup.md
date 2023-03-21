@@ -4,7 +4,7 @@ id: "decodable-setup"
 meta:
   maintained_by: Decodable
   authors: "Decodable Team"
-  github_repo: 'https://github.com/decodableco/dbt-decodable'
+  github_repo: '/decodableco/dbt-decodable'
   pypi_package: 'dbt-decodable'
   min_core_version: '1.3.1'
   core_version: ''
