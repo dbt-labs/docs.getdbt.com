@@ -1631,8 +1631,11 @@ section.discourse-forum-page {
 
 @media (max-width: 995px) {
   .home .resource-section  h2 {
-    text-align: center;
     margin: 2rem inherit;
+  }
+
+  .home h2 {
+    text-align: center;
   }
 }
 
