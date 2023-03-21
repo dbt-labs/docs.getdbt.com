@@ -325,7 +325,6 @@ const sidebarSettings = {
             "docs/collaborate/build-and-view-your-docs",
           ],
         },
-
         {
           type: "category",
           label: "Publishing models",
@@ -334,7 +333,7 @@ const sidebarSettings = {
             "docs/collaborate/publish/model-access",
             "docs/collaborate/publish/model-versions",
           ],
-        }, // publishing models
+        }, 
       ],
     },
     {
