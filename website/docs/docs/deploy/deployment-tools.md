@@ -1,0 +1,99 @@
+---
+title: "Deploy with other tools"
+id: "deployment-tools"
+sidebar: "Deploy with other tools"
+---
+
+Discover effortless ways to schedule and run your dbt jobs with the help of powerful tools like dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron. Use these to save time and increase efficiency by automating your data workflows, all while enjoying a hassle-free experience. 
+
+
+## Airflow
+
+If your organization is using [Airflow](https://airflow.apache.org/), there are a number of ways you can run your dbt jobs, including:
+
+<Tabs>
+
+<TabItem value="airflowcloud" label="dbt Cloud">
+
+Installing the [dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
+
+<Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
+
+</TabItem>
+
+<TabItem value="airflowcore" label="dbt Core">
+
+Invoking dbt Core jobs through the [BashOperator](https://registry.astronomer.io/providers/apache-airflow/modules/bashoperator). In this case, be sure to install dbt into a virtual environment to avoid issues with conflicting dependencies between Airflow and dbt.
+
+</TabItem>
+</Tabs>
+
+For more details on both of these methods, including example implementations, check out [this guide](https://www.astronomer.io/guides/airflow-dbt).
+
+## Prefect
+
+If your organization is using [Prefect](https://www.prefect.io/), the way you will run your jobs depends on the dbt version you're on, and whether you're orchestrating dbt Cloud or dbt Core jobs. 
+
+Review a variety of options described below.
+
+<Lightbox src="/img/docs/running-a-dbt-project/prefect_dag_dbt_cloud.jpg" title="Prefect DAG using a dbt Cloud job run flow"/> 
+
+
+### Prefect 2
+
+<Tabs>
+
+<TabItem value="prefect2cloud" label="dbt Cloud">
+
+Use the [trigger_dbt_cloud_job_run_and_wait_for_completion](https://prefecthq.github.io/prefect-dbt/cloud/jobs/#prefect_dbt.cloud.jobs.trigger_dbt_cloud_job_run_and_wait_for_completion) flow. As jobs are executing, you can poll dbt to see whether or not the job completes without failures, through the [Prefect user interface (UI)](https://docs.prefect.io/ui/overview/).
+
+
+<Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_job_prefect.jpg" title="dbt Cloud job triggered by Prefect"/> 
+
+</TabItem>
+
+<TabItem value="prefect2core" label="dbt Core">
+
+Use the [trigger_dbt_cli_command](https://prefecthq.github.io/prefect-dbt/cli/commands/#prefect_dbt.cli.commands.trigger_dbt_cli_command) task.
+
+For details on both of these methods, see [prefect-dbt docs](https://prefecthq.github.io/prefect-dbt/).
+
+</TabItem>
+</Tabs>
+
+
+### On Prefect 1
+
+#### dbt Cloud
+
+Trigger dbt Cloud jobs with the [DbtCloudRunJob](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtcloudrunjob) task. Running this task will generate a markdown artifact viewable in the Prefect UI. The artifact will contain links to the dbt artifacts generated as a result of the job run.
+
+#### dbt Core
+Use the [DbtShellTask](https://docs.prefect.io/api/latest/tasks/dbt.html#dbtshelltask) to schedule, execute, and monitor your dbt runs. Use the supported [ShellTask](https://docs.prefect.io/api/latest/tasks/shell.html#shelltask) to execute dbt commands through the shell.
+
+
+## Dagster
+
+If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud, dbt CLI and the dbt RPC server. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Check out the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
+
+## Automation servers
+
+Automation servers, like CodeDeploy, GitLab CI/CD ([video](https://youtu.be/-XBIIY2pFpc?t=1301)), Bamboo and Jenkins, can be used to schedule bash commands for dbt. They also provide a UI to view logging to the command line, and integrate with your git repository.
+
+## Cron
+
+Cron is a decent way to schedule bash commands. However, while it may seem like an easy route to schedule a job, writing code to take care of all of the additional features associated with a production deployment often makes this route more complex compared to other options listed here.
+
+## Related docs
+- [What are the dbt commands you run in your production deployment of dbt?](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366)
+
+
+
+## Related docs
+
+- [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
+- [Quickstart guides](/docs/quickstarts/overview)
+- [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud)
+- [dbt Cloud support](/docs/dbt-support)
+- [Become a contributor](https://docs.getdbt.com/community/contribute)
