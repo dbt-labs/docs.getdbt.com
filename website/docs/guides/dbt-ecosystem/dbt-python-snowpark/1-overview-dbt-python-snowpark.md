@@ -1,33 +1,31 @@
 ---
-title: "Overview" 
+title: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python" 
 id: "1-overview-dbt-python-snowpark"
+description: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python"
 ---
-# Leverage dbt cloud to generate analytics and ML-ready pipelines with SQL and python
-
-## Overview
 
 The focus of this workshop will be to demonstrate how we can use both *SQL and python together* in the same workflow to run *both analytics and machine learning models* on dbt Cloud.
 
 All code in today’s workshop can be found at: [https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1](https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1)
 
-### What you'll use during the lab
+## What you'll use during the lab
 
-- A [Snowflake account](https://trial.snowflake.com/) with ACCOUNTADMIN access
+- A [Snowflake account](https://trial.snowflake.com/) with `ACCOUNTADMIN` access
 - [A dbt Cloud account](https://www.getdbt.com/signup/)
 
-### What you'll learn
+## What you'll learn
 
 - How to build scalable data transformation pipelines using dbt & Snowflake using SQL and Python
 - How to leverage copying data into Snowflake from a public s3 bucket
 
-### What you need to know
+## What you need to know
 
 - Basic to intermediate SQL and python
 - Basic understanding of dbt fundamentals (we recommend [dbt Fundamentals course](https://courses.getdbt.com/collections) if you need this)
 - High level machine learning process (encoding, training, testing)
 - Simple ML algorithms - we will use logistic regression to keep the focus on the *workflow*, not algorithms!
 
-### What you'll build
+## What you'll build
 
 - A set of data analytics and prediction pipelines using Formula 1 data leveraging dbt and Snowflake, making use of best practices like data quality tests and code promotion between environments
 - We will create insights for:
@@ -35,6 +33,6 @@ All code in today’s workshop can be found at: [https://github.com/dbt-labs/pyt
     2. Which constructor has the fastest pit stops in 2021?
     3. Predicting the position of each driver given using a decade of data (2010 - 2020)
 
-As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our csv files then use Snowflake’s `COPY INTO` function to copy the data in from our csvs into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020).The data is originally compiled from [http://ergast.com/mrd/](http://ergast.com/mrd/).
+As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our csv files then use Snowflake’s `COPY INTO` function to copy the data in from our csvs into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). The data is originally compiled from [http://ergast.com/mrd/](http://ergast.com/mrd/).
 
 We are going to set up the environments, build scalable pipelines in dbt, establish data tests , and promote code to production.
