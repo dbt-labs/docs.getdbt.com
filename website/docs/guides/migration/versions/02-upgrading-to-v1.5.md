@@ -2,10 +2,15 @@
 title: "Trying v1.5 (prerelease)"
 description: New features and changes in dbt Core v1.5
 ---
+
+:::info
+v1.5 is currently available as a **beta prerelease.** Availability in dbt Cloud coming soon!
+:::
+
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
-- [CLI Installation guide](/docs/get-started/installation)
+- [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
 
@@ -43,12 +48,14 @@ Coming soon: GH discussion detailing interface changes and offering a forum for 
 
 ## New and changed documentation
 
-Coming soon
+:::caution Under construction 🚧
+More to come!
+:::
 
-### "Models as APIs"
-- Model contracts ([#2839](https://github.com/dbt-labs/docs.getdbt.com/issues/2839))
-- Model groups & access ([#2840](https://github.com/dbt-labs/docs.getdbt.com/issues/2840))
-- Model versions ([#2841](https://github.com/dbt-labs/docs.getdbt.com/issues/2841))
+### Publishing models as APIs
+- [Model contracts](model-contracts) ([#2839](https://github.com/dbt-labs/docs.getdbt.com/issues/2839))
+- [Model access](model-access) ([#2840](https://github.com/dbt-labs/docs.getdbt.com/issues/2840))
+- [Model versions](model-versions) ([#2841](https://github.com/dbt-labs/docs.getdbt.com/issues/2841))
 
 ### dbt-core Python API
 - Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations

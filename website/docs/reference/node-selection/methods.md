@@ -3,7 +3,8 @@ title: "Methods"
 ---
 
 Selector methods return all resources that share a common property, using the
-syntax `method:value`.
+syntax `method:value`. While it is recommended to explicitly denote the method,
+you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
@@ -24,7 +25,8 @@ The `source` method is used to select models that select from a specified [sourc
 
 
 ### The "path" method
-The `path` method is used to select models located at or under a specific path.
+The `path` method is used to select models/sources defined at or under a specific path.
+Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files.
 While the `path` prefix is not explicitly required, it may be used to make
 selectors unambiguous.
 
@@ -42,13 +44,14 @@ selectors unambiguous.
 
 <VersionBlock firstVersion="1.2">
 
-### The "file" method
-The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
+### The "file" or "fqn" method
+The `file` or `fqn` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
 # These are equivalent
 dbt run --select some_model.sql
 dbt run --select some_model
+dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
 ```
 
 </VersionBlock>
