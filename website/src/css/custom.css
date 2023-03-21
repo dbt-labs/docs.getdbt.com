@@ -1620,6 +1620,14 @@ section.discourse-forum-page {
 .home section.from-the-blog {
   margin-bottom: 0;
 }
+
+@media (max-width: 995px) {
+  .home section.from-the-blog {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .home section.from-the-community {
   margin-top: 0;
 
