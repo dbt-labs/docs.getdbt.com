@@ -896,6 +896,7 @@ const sidebarSettings = {
           },
           items: [
             "guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration",
+            "guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source",
           ],
         },
         {
