@@ -8,7 +8,7 @@ description: New features and changes in dbt Core v1.4
 - [CLI Installation guide](/docs/get-started/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-**Planned final release:** January 2023
+**release date:** January 2023
 
 dbt Core v1.4 is a "behind-the-scenes" release. We've been hard at work rebuilding `dbt-core` internals on top of more-solid foundations, to enable an exciting year of new feature development. Check out the [v1.5 milestone](https://github.com/dbt-labs/dbt-core/milestone/82) in GitHub for a preview of what's planned for April.
 
@@ -27,7 +27,7 @@ Relevant changes:
 
 ### For maintainers of adapter plugins
 
-Link to GH discussion forthcoming
+See the [dbt-core#6624](https://github.com/dbt-labs/dbt-core/discussions/6624) for an in-depth upgrade guide
 
 ## New and changed documentation
 
