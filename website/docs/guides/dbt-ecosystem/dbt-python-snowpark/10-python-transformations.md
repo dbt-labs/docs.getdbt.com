@@ -71,10 +71,14 @@ The rest of our **Details** output gives us information about how dbt and snowpa
 So which constructor had the fastest pit stops in 2021? Let’s look at our data to find out!
 
 6. We cannot preview python models directly, so let’s create a new file using the **+** button or Control-n shortcut to create a new scratchpad.
-7. Reference our python model `select * from {{ ref('fastest_pit_stops_by_constructor') }}` and preview the output:
+7. Reference our python model:
+```sql
+    select * from {{ ref('fastest_pit_stops_by_constructor') }}
+```
+and preview the output:
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/2-fastest-pit-stops-preview.png" title="Looking at our new python data model we can see that Red Bull had the fastest pit stops!"/>
 
-    - Not only did Red Bull have the fastest average pit stops by nearly 40 seconds, they also had the smallest standard deviation, meaning they are both fastest and most consistent teams in pit stops. By using the `.describe()` method we were able to avoid verbose SQL requiring us to create a line of code per column and repetitively use the `PERCENTILE_COUNT()` function.
+- Not only did Red Bull have the fastest average pit stops by nearly 40 seconds, they also had the smallest standard deviation, meaning they are both fastest and most consistent teams in pit stops. By using the `.describe()` method we were able to avoid verbose SQL requiring us to create a line of code per column and repetitively use the `PERCENTILE_COUNT()` function.
 
 Now we want to find the lap time average and rolling average through the years (is it generally trending up or down)?
 
@@ -133,5 +137,5 @@ Let’s take a step back before starting machine learning to both review and go 
 
         # setting configuration
         dbt.config(materialized="table")
-    ```
+        ```
     - There's a limit to how complex you can get with the `dbt.config()` method. It accepts only literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `.config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the config property in a [YAML file](https://docs.getdbt.com/reference/resource-properties/config). Learn more about configurations [here](https://docs.getdbt.com/reference/model-configs).

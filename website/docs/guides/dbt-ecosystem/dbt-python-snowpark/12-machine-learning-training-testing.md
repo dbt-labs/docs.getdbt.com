@@ -7,9 +7,9 @@ description: "Machine Learning: training and prediction"
 We’re ready to start training a model to predict the driver’s position. Now is a good time to pause and take a step back and say, usually in ML projects you’ll try multiple algorithms during development and use an evaluation method such as cross validation to determine which algorithm to use. You can definitely do this in your dbt project, but for the content of this lab we’ll have decided on using a logistic regression to predict position (we actually tried some other algorithms using cross validation outside of this lab such as k-nearest neighbors and a support vector classifier that didn’t perform well as well as the logistic regression and a decision tree that overfit).
 
 There’s 3 areas to break down as we go since we are working at the intersection all within one model file:
-    - Machine learning
-    - Snowflake and Snowpark
-    - dbt python models
+1. Machine Learning
+2. Snowflake and Snowpark
+3. dbt python models
 
 If you haven’t seen code like this before or use joblib files to save machine learning models we’ll be going over them at a high level and you can explore the links for more technical in-depth along the way! Because snowflake and dbt have abstracted away a lot of the nitty gritty about serialization and storing our model object to be called again we won’t go into too much detail here. There’s *a lot* going on here so take it at your pace!
 
