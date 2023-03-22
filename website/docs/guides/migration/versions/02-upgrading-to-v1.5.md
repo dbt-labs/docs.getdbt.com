@@ -44,7 +44,7 @@ The manifest schema version will be updated to `v9`. Specific changes to be note
 
 ### For maintainers of adapter plugins
 
-Coming soon: GH discussion detailing interface changes and offering a forum for Q&A
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 
@@ -59,3 +59,10 @@ More to come!
 
 ### dbt-core Python API
 - Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations
+
+
+### Materialized View, Materialized Tests
+
+:::caution Under construction 🚧
+More to come!
+:::
