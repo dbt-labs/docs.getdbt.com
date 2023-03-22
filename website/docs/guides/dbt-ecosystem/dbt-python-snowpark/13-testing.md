@@ -23,28 +23,28 @@ Since the output of our python models are tables, we can test SQL and python mod
 1. Out of the Box: To implement generic out of the box tests dbt comes with, we can use yaml files to specify information about our models. To add generic tests to our aggregates model create a file called `aggregates.yml`, copy the code block below into the file, and save.
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/1-generic-testing-file-tree.png" title="aggregates yml in our file tree"/>
 
-```yaml 
-version: 2
+    ```yaml 
+    version: 2
 
-models:
-  - name: fastest_pit_stops_by_constructor
-    description: Use the python .describe() method to retrieve summary statistics table about pit stops by constructor. Sort by average stop time ascending so the first row returns the fastest constructor.
-    columns:
-      - name: constructor_name
-        description: team that makes the car
-        tests:
-          - unique
+    models:
+    - name: fastest_pit_stops_by_constructor
+        description: Use the python .describe() method to retrieve summary statistics table about pit stops by constructor. Sort by average stop time ascending so the first row returns the fastest constructor.
+        columns:
+        - name: constructor_name
+            description: team that makes the car
+            tests:
+            - unique
 
-  - name: lap_times_moving_avg
-    description: Use the python .rolling() method to calculate the 5 year rolling average of pit stop times alongside the average for each year. 
-    columns:
-      - name: race_year
-        description: year of the race
-        tests:
-          - relationships:
-              to: ref('int_lap_times_years')
-              field: race_year
-```
+    - name: lap_times_moving_avg
+        description: Use the python .rolling() method to calculate the 5 year rolling average of pit stop times alongside the average for each year. 
+        columns:
+        - name: race_year
+            description: year of the race
+            tests:
+            - relationships:
+                to: ref('int_lap_times_years')
+                field: race_year
+    ```
 
 ---
 
@@ -56,13 +56,13 @@ models:
 1. Under your macros file create a new file and name it `test_all_values_gte_zero.sql`. Copy the code block below and save the file. For clarity, “gte” is an abbreviation for greater than or equal to.
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/2-macro-testing.png" title="macro file for reusable testing code"/>
 
-```sql
-{% macro test_all_values_gte_zero(table, column) %}
+    ```sql
+    {% macro test_all_values_gte_zero(table, column) %}
 
-select * from {{ ref(table) }} where {{ column }} < 0
+    select * from {{ ref(table) }} where {{ column }} < 0
 
-{% endmacro %}
-```
+    {% endmacro %}
+    ```
 
 ---
 
@@ -74,19 +74,18 @@ select * from {{ ref(table) }} where {{ column }} < 0
 
 5. Copy the following code into the file and save:
 
-```sql
-{{
-    config(
-        enabled=true,
-        severity='warn',
-        tags = ['bi']
-    )
-}}
+    ```sql
+    {{
+        config(
+            enabled=true,
+            severity='warn',
+            tags = ['bi']
+        )
+    }}
 
-{{ test_all_values_gte_zero('fastest_pit_stops_by_constructor', 'mean') }}
-```
----
-
+    {{ test_all_values_gte_zero('fastest_pit_stops_by_constructor', 'mean') }}
+    ```
+    
 6. In our testing file, we are applying some configurations to the test including `enabled`, which is an optional configuration for disabling models, seeds, snapshots, and tests. Our severity is set to `warn` instead of `error`, which means our pipeline will still continue to run. We have tagged our test with `bi` since we are applying this test to one of our bi models.
 
 Then in our final line we are calling the `test_all_values_gte_zero` macro that takes in our table and column arguments and inputting our table `'fastest_pit_stops_by_constructor'` and the column `'mean'`.
@@ -104,21 +103,21 @@ Let’s add a custom test that asserts that the moving average of the lap time o
 
 2. Copy the following code and save the file:
 
-```sql
-{{
-    config(
-        enabled=true,
-        severity='error',
-        tags = ['bi']
-    )
-}}
+    ```sql
+    {{
+        config(
+            enabled=true,
+            severity='error',
+            tags = ['bi']
+        )
+    }}
 
-with lap_times_moving_avg as ( select * from {{ ref('lap_times_moving_avg') }} )
+    with lap_times_moving_avg as ( select * from {{ ref('lap_times_moving_avg') }} )
 
-select *
-from lap_times_moving_avg 
-where lap_moving_avg_5_years < 0 and lap_moving_avg_5_years is not null
-```
+    select *
+    from lap_times_moving_avg 
+    where lap_moving_avg_5_years < 0 and lap_moving_avg_5_years is not null
+    ```
 
 ## Putting all our tests together
 
