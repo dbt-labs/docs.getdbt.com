@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning: training and prediction " 
 id: "12-machine-learning-training-prediction"
-description: "Machine Learning: training and prediction "
+description: "Machine Learning: training and prediction"
 ---
 
 We’re ready to start training a model to predict the driver’s position. Now is a good time to pause and take a step back and say, usually in ML projects you’ll try multiple algorithms during development and use an evaluation method such as cross validation to determine which algorithm to use. You can definitely do this in your dbt project, but for the content of this lab we’ll have decided on using a logistic regression to predict position (we actually tried some other algorithms using cross validation outside of this lab such as k-nearest neighbors and a support vector classifier that didn’t perform well as well as the logistic regression and a decision tree that overfit).
