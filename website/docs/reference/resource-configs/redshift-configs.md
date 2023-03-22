@@ -87,6 +87,8 @@ models:
 
 ## Query tags
 
+<Changelog>New in v1.5.0</Changelog>
+
 [Query tags](https://docs.aws.amazon.com/redshift/latest/dg/r_query_group.html) are a Redshift
 parameter that can be quite useful later on when searching in the [SVL_QLOG view](https://docs.aws.amazon.com/redshift/latest/dg/r_SVL_QLOG.html). Please be aware that Redshift uses the term `query_group` when querying the `SVL_QLOG` view.
 
