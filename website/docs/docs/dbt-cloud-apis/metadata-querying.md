@@ -39,7 +39,7 @@ There are several illustrative example queries in this documentation. You can se
 
 You can run ad-hoc queries directly in the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and use the document explorer on the left-hand side, where you can see all possible nodes and fields. 
 
-1. Access the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and select fields you'd like query
+1. Access the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and select fields you'd like query. Refer to the [Apollo explorer](https://www.apollographql.com/docs/graphos/explorer/explorer) for setup and authorization info. 
 2. Go to **Variables** at the bottom of the explorer and replace any `null` fields with your unique fields
 3. To authenticate via bearer auth with `YOUR_TOKEN`, go to **Headers** at the bottom of the explorer and select **+New header** 
 4. Select **Authorization** in the **header key** drop-down list and enter your Bearer auth token in the **value** field 
