@@ -48,6 +48,11 @@ var siteSettings = {
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
+    docs:{
+      sidebar: {
+        hideable: true,
+      },
+    },
     image: "/img/avatar.png",
     colorMode: {
       defaultMode: "light",
@@ -191,7 +196,7 @@ var siteSettings = {
         },
       ],
 
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
+      copyright: `&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
     },
   },
   presets: [

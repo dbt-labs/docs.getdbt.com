@@ -40,7 +40,7 @@ It does. Here’s how:
 
 # Why SQL?
 
-While there are a large number of great languages for manipulating data, we’ve chosen SQL as the primary data transformation language at the heart of dbt. There are three reasons for this:
+While there are a large number of great languages for manipulating data, we’ve chosen SQL as the primary [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) language at the heart of dbt. There are three reasons for this:
 
 1. SQL is a very widely-known language for working with data. Using SQL gives the largest-possible group of users access.
 2. Modern analytic databases are extremely performant and have sophisticated optimizers. Writing data transformations in SQL allows users to describe transformations on their data but leave the execution plan to the underlying database technology. In practice, this provides excellent results with far less work on the part of the author.

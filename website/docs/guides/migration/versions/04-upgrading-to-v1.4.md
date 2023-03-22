@@ -5,10 +5,10 @@ description: New features and changes in dbt Core v1.4
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.4.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/get-started/installation)
+- [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-**Planned final release:** January 2023
+**Final release:** January 25, 2023
 
 dbt Core v1.4 is a "behind-the-scenes" release. We've been hard at work rebuilding `dbt-core` internals on top of more-solid foundations, to enable an exciting year of new feature development. Check out the [v1.5 milestone](https://github.com/dbt-labs/dbt-core/milestone/82) in GitHub for a preview of what's planned for April.
 
@@ -21,13 +21,21 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x. 
 The manifest schema version has updated to `v8`. These changes are relevant for people who parse or analyze the contents of the `manifest.json` file, or who have custom code accessing the [`model`](https://docs.getdbt.com/reference/dbt-jinja-functions/model) or [`graph`](https://docs.getdbt.com/reference/dbt-jinja-functions/graph) variables, e.g. `{{ model.root_path }}`.
 
 Relevant changes:
-- The `root_path` attribute has been removed for all nodes to reduce duplicative information.
-- Unused attributes have been removed from seed `nodes`, including `depends_on`, and from `macros`, including `tags`.
+- The `root_path` attribute has been removed for non-seed nodes to reduce duplicative information.
+- Unused attributes have been removed from seed nodes (including `depends_on.nodes`), and from `macros`  (including `tags`).
 - The `unique_id` of docs blocks now start with `doc` for consistency with other resource types.
 
 ### For maintainers of adapter plugins
 
-Link to GH discussion forthcoming
+> **TL;DR** Not much heavy lifting for this minor version. We anticipate more work for `1.5.0`. We plan to release betas early & often, and provide guidance on upgrading.
+
+The high-level changes are:
+- Add support for Python 3.11
+- Rename/replace deprecated exception functions
+- Add support for Incremental Predicates (if applicable)
+- Make use of new adapter-zone tests
+
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 

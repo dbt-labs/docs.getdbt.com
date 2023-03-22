@@ -55,7 +55,7 @@ Airflow solves those same problems, but in a publicly-verifiable and trusted way
 
 ### From the dbt side
 
-That pipeline above included a plethora of data transformation jobs, built in various ways.
+That pipeline above included a plethora of [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) jobs, built in various ways.
 
 They were often written in naked python scripts that only ran a SQL query + wrote data to BigQuery. These stored procedure-like SQL scripts required:
 
@@ -91,7 +91,7 @@ The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
 * SQL: ‘nuff said
 * YAML: required to generate config files for [writing tests on data models](/docs/build/tests)
-* [Jinja](/docs/get-started/learning-more/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
+* [Jinja](/guides/advanced/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
 
 YAML + Jinja can be learned pretty quickly, but SQL is the non-negotiable you’ll need to get started.
 

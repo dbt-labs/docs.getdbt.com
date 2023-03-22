@@ -23,6 +23,12 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
 
+:::note Using Python packages
+
+Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
+
+:::
+
 ## How do I add a package to my project?
 1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
@@ -205,8 +211,11 @@ packages:
   # use this format when accessing your repository via a github application token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 
-  # use this format when accessing your repository via a personal access token
+  # use this format when accessing your repository via a classical personal access token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+ 
+   # use this format when accessing your repository via a fine-grained personal access token (username sometimes required)
+  - git: "https://GITHUB_USERNAME:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
