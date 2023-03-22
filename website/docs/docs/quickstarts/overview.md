@@ -43,9 +43,15 @@ Before you begin, you will need:
     icon="snowflake"/>
 
 <Card
-    title="Quickstart for dbt Core"
+    title="Quickstart for dbt Core using GitHub Codespaces"
+    body="Learn how to quickly start running dbt commands in a GitHub codespace development environment with just a couple clicks."
+    link="/docs/quickstarts/dbt-core/codespace"
+    icon="dbt-core"/>
+
+<Card
+    title="Quickstart for dbt Core from a manual install"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface."
-    link="/docs/quickstarts/dbt-core/quickstart"
+    link="/docs/quickstarts/dbt-core/manual-install"
     icon="dbt-core"/>
 
 </div>
