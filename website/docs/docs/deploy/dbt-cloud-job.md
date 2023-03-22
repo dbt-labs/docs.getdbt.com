@@ -31,7 +31,7 @@ Run dbt in production using dbt Cloud's in-app scheduling, eliminating the need 
  
  Each job run in dbt Cloud will have a run status and a run overview, which provides you with:
 
--  Job trigger type
+- Job trigger type
 - Commit SHA
 - Environment name
 - Sources and documentation info 
