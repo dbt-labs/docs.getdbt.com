@@ -288,7 +288,7 @@ The `merge_update_columns` config parameter is passed to only update the columns
 
 ```sql
 
-    {{ config( materialized = 'incremental', incremental_strategy='merge', unique_key = 'id', merge_update_columns = ["id","names"] )}}
+    {{ config( materialized = 'incremental', incremental_strategy='merge', unique_key = 'id', merge_update_columns = ["names","salary"] )}}
     
         select * from {{ref('seed_tc1')}}
 
@@ -303,7 +303,7 @@ The `merge_update_columns` config parameter is passed to only update the columns
         merge into "VMart"."public"."test_merge" as DBT_INTERNAL_DEST using "test_merge__dbt_tmp" as DBT_INTERNAL_SOURCE on  DBT_INTERNAL_DEST."id" = DBT_INTERNAL_SOURCE."id"
         
         when matched then update set
-          "id" = DBT_INTERNAL_SOURCE."id", "names" = DBT_INTERNAL_SOURCE."names"
+          "names" = DBT_INTERNAL_SOURCE."names", "salary" = DBT_INTERNAL_SOURCE."salary"
         
         when not matched then insert
         ("id", "names", "salary")
