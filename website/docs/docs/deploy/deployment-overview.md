@@ -23,13 +23,13 @@ If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, 
 
 <Card
     title="Deploy with dbt Cloud"
-    body="We've built dbt Cloud to empower data teams to easily run dbt in production. If you're interested in trying out dbt Cloud, you can sign up for an account."
+    body="Use dbt Cloud's in-app scheduling to to run your production jobs. Schedule jobs by day of the week, times or recurring intervals. "
 link="/docs/deploy/dbt-cloud-job"
     icon="dbt-bit"/>
 
 <Card
     title="Deploy with other tools"
-    body="We've built dbt Cloud to empower data teams to easily run dbt in production. If you're interested in trying out dbt Cloud, you can sign up for an account."
+    body="Use tools such as Airflow, Prefect, Dagster, automation server, Cron, or ADF to run dbt Cloud jobs."
 link="/docs/deploy/deployment-tools"
     icon="pencil-paper"/>    
 
