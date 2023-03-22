@@ -275,6 +275,8 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Publishing models",
+          collapsed: true,
+          link: {type: "doc", id: "docs/collaborate/publish/about-publishing-models"},
           items: [
             "docs/collaborate/publish/model-contracts",
             "docs/collaborate/publish/model-access",
