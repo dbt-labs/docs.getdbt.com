@@ -900,6 +900,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt",
             "guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name",
             "guides/dbt-ecosystem/dbt-python-snowpark/6-foundational-structure",
+            "guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure",
           ],
         },
         {
