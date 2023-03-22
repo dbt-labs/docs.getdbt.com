@@ -903,6 +903,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name",
             "guides/dbt-ecosystem/dbt-python-snowpark/6-foundational-structure",
             "guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure",
+            "guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations",
             "guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep",
             "guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction",
             "guides/dbt-ecosystem/dbt-python-snowpark/13-testing",
