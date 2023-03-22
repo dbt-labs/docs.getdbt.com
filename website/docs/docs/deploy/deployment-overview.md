@@ -15,9 +15,9 @@ In addition to setting up a schedule, there are other considerations when settin
 * Running your dbt project before merging code into master (continuous integration).
 * Allowing access for team members that need to collaborate on your dbt project.
 
-## Run dbt in production
+<!--## Run dbt in production
 
-If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.
+If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.-->
 
 <div className="grid--2-col">
 
