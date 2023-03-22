@@ -1,5 +1,5 @@
 ---
-title: "Snowflake configuration" 
+title: "Configure Snowflake" 
 id: "2-snowflake-configuration"
 description: "Configure Snowflake"
 ---
