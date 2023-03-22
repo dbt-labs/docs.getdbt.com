@@ -199,6 +199,7 @@ const sidebarSettings = {
             "docs/build/environment-variables",
             "docs/build/packages",
             "docs/build/analyses",
+            "docs/build/hooks-operations",
           ],
         },
         {
@@ -210,60 +211,6 @@ const sidebarSettings = {
             "docs/build/custom-databases",
             "docs/build/custom-aliases",
             "docs/build/custom-target-names",
-          ],
-        },
-        {
-          type: "category",
-          label: "Advanced workflows",
-          collapsed: true,
-          items: [
-            {
-              type: "category",
-              label: "dbt Cloud APIs",
-              items: [
-                "docs/dbt-cloud-apis/overview",
-                {
-                  type: "category",
-                  label: "Authentication",
-                  items: [
-                    "docs/dbt-cloud-apis/user-tokens",
-                    "docs/dbt-cloud-apis/service-tokens",
-                  ],
-                },
-                "docs/dbt-cloud-apis/admin-cloud-api",
-                {
-                  type: "category",
-                  label: "Metadata API",
-                  items: [
-                    "docs/dbt-cloud-apis/metadata-api",
-                    "docs/dbt-cloud-apis/metadata-use-case-guides",
-                    "docs/dbt-cloud-apis/access-metadata-api",
-                    "docs/dbt-cloud-apis/metadata-querying",
-                    {
-                      type: "category",
-                      label: "Schema",
-                      items: [
-                        "docs/dbt-cloud-apis/metadata-schema-model",
-                        "docs/dbt-cloud-apis/metadata-schema-models",
-                        "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
-                        "docs/dbt-cloud-apis/metadata-schema-metric",
-                        "docs/dbt-cloud-apis/metadata-schema-metrics",
-                        "docs/dbt-cloud-apis/metadata-schema-source",
-                        "docs/dbt-cloud-apis/metadata-schema-sources",
-                        "docs/dbt-cloud-apis/metadata-schema-seed",
-                        "docs/dbt-cloud-apis/metadata-schema-seeds",
-                        "docs/dbt-cloud-apis/metadata-schema-snapshots",
-                        "docs/dbt-cloud-apis/metadata-schema-test",
-                        "docs/dbt-cloud-apis/metadata-schema-tests",
-                        "docs/dbt-cloud-apis/metadata-schema-exposure",
-                        "docs/dbt-cloud-apis/metadata-schema-exposures",
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            "docs/build/hooks-operations",
           ],
         },
         //"docs/building-a-dbt-project/dont-nest-your-curlies",
@@ -325,16 +272,17 @@ const sidebarSettings = {
             "docs/collaborate/build-and-view-your-docs",
           ],
         },
-
         {
           type: "category",
           label: "Publishing models",
+          collapsed: true,
+          link: {type: "doc", id: "docs/collaborate/publish/about-publishing-models"},
           items: [
             "docs/collaborate/publish/model-contracts",
             "docs/collaborate/publish/model-access",
             "docs/collaborate/publish/model-versions",
           ],
-        }, // publishing models
+        }, 
       ],
     },
     {
@@ -349,6 +297,53 @@ const sidebarSettings = {
       ],
     },
     {
+      type: "category",
+      label: "dbt APIs",
+      collapsed: true,
+      items: [
+          "docs/dbt-cloud-apis/overview",
+          {
+              type: "category",
+              label: "Authentication",
+              items: [
+                  "docs/dbt-cloud-apis/user-tokens",
+                  "docs/dbt-cloud-apis/service-tokens",
+              ],
+          },
+          "docs/dbt-cloud-apis/admin-cloud-api",
+          {
+              type: "category",
+              label: "Metadata API",
+              items: [
+                  "docs/dbt-cloud-apis/metadata-api",
+                  "docs/dbt-cloud-apis/metadata-use-case-guides",
+                  "docs/dbt-cloud-apis/access-metadata-api",
+                  "docs/dbt-cloud-apis/metadata-querying",
+                  {
+                      type: "category",
+                      label: "Schema",
+                      items: [
+                          "docs/dbt-cloud-apis/metadata-schema-model",
+                          "docs/dbt-cloud-apis/metadata-schema-models",
+                          "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
+                          "docs/dbt-cloud-apis/metadata-schema-metric",
+                          "docs/dbt-cloud-apis/metadata-schema-metrics",
+                          "docs/dbt-cloud-apis/metadata-schema-source",
+                          "docs/dbt-cloud-apis/metadata-schema-sources",
+                          "docs/dbt-cloud-apis/metadata-schema-seed",
+                          "docs/dbt-cloud-apis/metadata-schema-seeds",
+                          "docs/dbt-cloud-apis/metadata-schema-snapshots",
+                          "docs/dbt-cloud-apis/metadata-schema-test",
+                          "docs/dbt-cloud-apis/metadata-schema-tests",
+                          "docs/dbt-cloud-apis/metadata-schema-exposure",
+                          "docs/dbt-cloud-apis/metadata-schema-exposures",
+                      ],
+                  },
+              ],
+          },
+      ],
+  },
+  {
       type: "category",
       label: "Available dbt versions",
       items: [
@@ -391,6 +386,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Project configs",
+      collapsed: true,
       items: [
         "reference/dbt_project.yml",
         "reference/dbtignore",
@@ -677,6 +673,7 @@ const sidebarSettings = {
         "reference/warehouse-setups/infer-setup",
         "reference/warehouse-setups/databend-setup",
         "reference/warehouse-setups/fal-setup",
+        "reference/warehouse-setups/decodable-setup",
       ],
     },
     {
