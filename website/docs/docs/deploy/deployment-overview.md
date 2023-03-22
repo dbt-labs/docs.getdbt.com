@@ -23,7 +23,7 @@ If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, 
 
 <Card
     title="Deploy with dbt Cloud"
-    body="Use dbt Cloud's in-app scheduling to to run your production jobs. Schedule jobs by day of the week, times or recurring intervals. "
+    body="Use dbt Cloud's in-app scheduling to run your production jobs. Schedule jobs by day of the week, times or recurring intervals. "
 link="/docs/deploy/dbt-cloud-job"
     icon="dbt-bit"/>
 
