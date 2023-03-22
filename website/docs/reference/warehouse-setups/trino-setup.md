@@ -90,7 +90,13 @@ Incremental strategies supported by the adapter are:
 - merge - Through the merge incremental strategy, dbt-trino constructs a MERGE statement which inserts new and updates existing records based on the unique key (specified by unique_key).
 If your unique_key is not actually unique, the delete+insert strategy can be used instead. Note that some connectors in Trino have limited or no support for MERGE.
 
-## Configuration
+## Profile Setup
+
+### LDAP
+
+### Keberos
+
+
 
 A dbt-trino profile can be configured to run against Trino or Starburst using the following configuration:
 
