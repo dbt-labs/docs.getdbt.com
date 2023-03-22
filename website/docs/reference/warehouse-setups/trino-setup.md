@@ -7,11 +7,11 @@ meta:
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
-  cloud_support: Not Supported
+  cloud_support: 'Supported (Beta)'
   min_supported_version: 'n/a'
   slack_channel_name: '#db-presto-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
-  platform_name: 'Trino'
+  platform_name: 'Starburst (Trino)'
   config_page: 'no-configs'
 ---
 
