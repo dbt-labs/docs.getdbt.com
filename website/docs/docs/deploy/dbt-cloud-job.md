@@ -14,7 +14,7 @@ today.
 ## Prerequisites
 
 - You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
-- You must have a a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/connect-your-database)
+- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/connect-your-database)
 - You must have [access permission](/docs/cloud/manage-access/about-access) to create, edit, and run jobs
 - You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments) 
 - Your deployment environment must be on dbt version 1.0 or higher
@@ -23,11 +23,11 @@ today.
 
 ## Deployment features
 
-Run dbt in production using dbt Cloud's in-app scheduling, eliminating the need to manually run dbt commands from the command line or setting up an orchestration system. 
+Run dbt in production using dbt Cloud's in-app scheduling, eliminating the need to manually run dbt commands from the command line or set up an orchestration system. 
 
 ### Schedule and run jobs
 
- Jobs are a set of dbt commands that you want to run on a schedule, which you can [do in dbt Cloud](/docs/quickstarts/dbt-cloud/bigquery#create-and-run-a-job). You can configure your job to run on [scheduled](/docs/deploy/job-triggers#schedule-days) days and time, or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules).
+ Jobs are a set of dbt commands that you want to run on a schedule, which you can [do in dbt Cloud](/docs/quickstarts/dbt-cloud/bigquery#create-and-run-a-job). You can configure your job to run on [scheduled](/docs/deploy/job-triggers#schedule-days) days and times or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules).
  
  Each job run in dbt Cloud will have a run status and a run overview, which provides you with:
 
@@ -40,7 +40,7 @@ Run dbt in production using dbt Cloud's in-app scheduling, eliminating the need 
 
 Refer to [job triggers](/docs/deploy/job-triggers) to learn how to configure a job and [job commands](/docs/deploy/job-commands) to learn what job command types to use. 
 
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
+<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configure your job triggers"/>
 
 <!--<Tabs>
 
@@ -106,7 +106,7 @@ Refer to [build and view your docs](/docs/collaborate/build-and-view-your-docs) 
 
 You can view or download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.jpg" width="85%" title="test" />
+<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.jpg" width="85%" title="Access logs for run steps" />
 
 ### Automate workflows
 
