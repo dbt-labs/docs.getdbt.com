@@ -3,12 +3,12 @@ title: "Vertica setup"
 id: "vertica-setup"
 meta:
   maintained_by: Vertica
-  authors: Vertica (Former authors:- Matthew Carter, Andy Regan, Andrew Hedengren)
+  authors: Vertica (Former authors: Matthew Carter, Andy Regan, Andrew Hedengren)
   github_repo: 'vertica/dbt-vertica'
   pypi_package: 'dbt-vertica'
-  min_core_version: 'v1.3.0'
+  min_core_version: 'v1.4.0'
   cloud_support: Not Supported
-  min_supported_version: 'Vertica 10.0'
+  min_supported_version: 'Vertica 12.0.0'
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
@@ -31,7 +31,7 @@ If you're interested in contributing, check out the source code for each reposit
     <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a><a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
     <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
     <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
+    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version}</li>
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
@@ -39,7 +39,7 @@ If you're interested in contributing, check out the source code for each reposit
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
-pip is the easiest way to install the adapter: <code>pip install {frontMatter.meta.pypi_package}. </code>
+pip is the easiest way to install the adapter: <code>pip instal {frontMatter.meta.pypi_package}. </code>
 
 <p>Installing <code>{frontMatter.meta.pypi_package}</code> will also install <code>dbt-core</code> and any other dependencies.</p>
 

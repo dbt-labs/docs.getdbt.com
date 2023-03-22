@@ -149,7 +149,7 @@ You can use `on_schema_change` parameter with values `ignore`, `fail` and `appen
 
 ### Using the `incremental_strategy` config ​parameter
 
-**`Append strategy (default)`**:
+**`Append` strategy (default)**:
 
 Insert new records without updating or overwriting any existing data. append only adds the new records based on the condition specified in the `is_incremental()` conditional block.
 
@@ -210,7 +210,7 @@ Insert new records without updating or overwriting any existing data. append onl
 
 
 
-**`Merge strategy`**:
+**`Merge` strategy**:
 
 Match records based on a unique_key; update old records, insert new ones. (If no unique_key is specified, all new data is inserted, similar to append.) The unique_key config parameter is required for using the merge strategy, the value accepted by this parameter is a single table column.
 
@@ -269,7 +269,7 @@ Match records based on a unique_key; update old records, insert new ones. (If n
 
 ###### Using the `merge_update_columns` config parameter
 
-The `merge_update_columns` config parameter is passed to only merge the columns specified and it accepts list of  table columns.
+The `merge_update_columns` config parameter is passed to only update the columns specified and it accepts a list of table columns.
 
  
 
@@ -288,7 +288,7 @@ The `merge_update_columns` config parameter is passed to only merge the columns 
 
 ```sql
 
-    {{ config( materialized = 'incremental', incremental_strategy='merge', unique_key = 'id', merge_update_columns = ["id","name","salary"] )}}
+    {{ config( materialized = 'incremental', incremental_strategy='merge', unique_key = 'id', merge_update_columns = ["id","names"] )}}
     
         select * from {{ref('seed_tc1')}}
 
@@ -303,7 +303,7 @@ The `merge_update_columns` config parameter is passed to only merge the columns 
         merge into "VMart"."public"."test_merge" as DBT_INTERNAL_DEST using "test_merge__dbt_tmp" as DBT_INTERNAL_SOURCE on  DBT_INTERNAL_DEST."id" = DBT_INTERNAL_SOURCE."id"
         
         when matched then update set
-          "id" = DBT_INTERNAL_SOURCE."id", "names" = DBT_INTERNAL_SOURCE."names", "salary" = DBT_INTERNAL_SOURCE."salary"
+          "id" = DBT_INTERNAL_SOURCE."id", "names" = DBT_INTERNAL_SOURCE."names"
         
         when not matched then insert
         ("id", "names", "salary")
@@ -317,7 +317,7 @@ The `merge_update_columns` config parameter is passed to only merge the columns 
 </Tabs>
 
 
-**`delete+insert strategy`**: 
+**`delete+insert` strategy**: 
 
 Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and then re-insert them. The `unique_key` is  a required parameter for using `delete+instert` strategy which specifies how to update the records  when there is duplicate data. The value accepted by this parameter is a single table column.
 
@@ -371,25 +371,35 @@ Through the `delete+insert` incremental strategy, you can instruct dbt to use 
 </TabItem>
 </Tabs>
 
-**`insert_overwrite strategy`**:
+**`insert_overwrite` strategy**:
 
-Vertica doesn’t support overwrite by default. so, when user specifies `insert_overwrite` strategy  then it behaves as` delete+insert`.
+The `insert_overwrite` strategy is powerful as it does not use a full-table scan to delete records. Instead of deleting records it drops entire partitions. This strategy may accept `partition_by_string` and `partitions` parameters. You provide these parameters when you want to overwrite a part of the table.
 
-This strategy may accept `partition_by_string` and `partitions` parameter (optional)
+`partition_by_string` accepts a string value of any one specific column based on which partitioning of the table takes place.
 
-Provide these parameter when you want to overwrite a part of the table.
+`partitions` accepts a list of values in the partition column.
 
-If both the `partition_by_string` and `partition` parameter are not provided then `insert_overwrite` strategy truncate the target table and insert the source table data into target
+The config parameter `partitions` must be used carefully. Two situations to be aware of:  
+-	Less partitions in the `partitions` parameter than in the where clause: destination table ends up with duplicates.
+-	More partitions in the `partitions` parameter than in the where clause: destination table ends up missing rows. Less rows in destination than in source.
 
-`partition_by_string` accepts string value of a any one specific `column_name` based on which partitioning of the table data takes place.
-
-`partitions` parameter (optional) accepts a list of group names in the partition table.
-
-To understand more on partition by clause check [here](https://www.vertica.com/docs/9.2.x/HTML/Content/Authoring/SQLReferenceManual/Statements/partition-clause.htm)
+To understand more about PARTITION BY clause check [here](https://www.vertica.com/docs/9.2.x/HTML/Content/Authoring/SQLReferenceManual/Statements/partition-clause.htm)
  
 :::info Note:
 
-If you want to pass `partitions` parameter then you have to partition the table by passing `partition_by_string` parameter.
+The `partitions` parameter is optional, if the `partitions` parameter is not provided, the partitions in the where clause will be dropped from destination and inserted back from source. If you use a where clause, you might not need the `partitions` parameter.
+
+The where clause condition is also optional, but if not provided then all data in source is inserted in destination. 
+
+If no where clause condition and no `partitions` parameter are provided, then it drops all partitions from the table and inserts all of them again.
+
+If the `partitions` parameter is provided but not where clause is provided, the destination table ends up with duplicates because the partitions in the `partitions` parameter are dropped but all data in the source table (no where clause) is inserted in destination.
+
+The `partition_by_string` config parameter is also optional. If no `partition_by_string` parameter is provided, then it behaves like `delete+insert`. It deletes all records from destination and then it inserts all records from source. It won’t use or drop partitions.
+
+If both the `partition_by_string` and `partitions` parameters are not provided then `insert_overwrite` strategy truncates the target table and insert the source table data into target.
+
+If you want to use `partitions` parameter then you have to partition the table by passing `partition_by_string` parameter.
 
 :::
 
