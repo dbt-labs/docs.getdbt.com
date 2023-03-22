@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning: training and prediction " 
-id: "13-machine-learning-training-prediction"
+id: "12-machine-learning-training-prediction"
 description: "Machine Learning: training and prediction "
 ---
 
