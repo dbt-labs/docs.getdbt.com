@@ -28,7 +28,7 @@ link="/docs/cloud/develop-in-the-cloud"
   <Card
     title="Schedule and run dbt jobs"
     body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
-    link="/docs/deploy/deployments#dbt-cloud"
+    link="/docs/deploy/dbt-cloud-job"
     icon="pencil-paper"/>
 
   <Card
@@ -46,6 +46,7 @@ link="/docs/cloud/develop-in-the-cloud"
    <Card
     title="Democratize access to logs"
     body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
+    link="/docs/deploy/dbt-cloud-job#access-logs"
     icon="pencil-paper"/>      
 
    <Card

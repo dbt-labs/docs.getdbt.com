@@ -14,7 +14,7 @@ today.
 ## Prerequisites
 
 - You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
-- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/connect-your-database)
+- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
 - You must have [access permission](/docs/cloud/manage-access/about-access) to create, edit, and run jobs
 - You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments) 
 - Your deployment environment must be on dbt version 1.0 or higher
@@ -30,7 +30,7 @@ The protection policies on branches ensure that your data moves through governed
 ### Create and schedule jobs
 
  Jobs are a set of dbt commands that you want to run on a schedule, which you can do in dbt Cloud. 
- Each job run in dbt Cloud will have a run status and a run overview, which provides you with:
+ Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
