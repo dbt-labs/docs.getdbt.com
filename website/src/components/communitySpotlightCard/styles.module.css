@@ -29,16 +29,24 @@ div.spotlightMemberCard {
 }
 .spotlightMemberContent .spotlightMemberHeader {
   font-size: 2rem !important;
+  line-height: 2rem;
+  margin-top: 0 !important;
   margin-bottom: .5rem !important;
   color: #009999;
   font-weight: 700;
 }
+.spotlightMemberContent .spotlightMemberHeaderContain {
+  border-top: 1px solid var(--color-nav-text);
+  margin-top: .5rem;
+  padding-top: .5rem;
+}
+.spotlightMemberContent .spotlightMemberPronouns {
+  font-size: 1rem;
+  display: block;
+}
 .spotlightMemberContent .spotlightMemberDescription {
   margin-top: 1rem;
   font-size: 1.125rem;
-}
-.spotlightMemberContent .spotlightMemberInfo span {
-  font-size: 1.125rem;  
 }
 .spotlightMemberContent .spotlightMemberSocial {
   margin-top: 1rem;  
@@ -48,6 +56,10 @@ div.spotlightMemberCard {
   margin-top: 1rem;  
   font-weight: 600;
   font-size: 1rem;
+}
+
+.spotlightMemberContent .spotlightMemberInfo > span {
+  font-weight: 600;
 }
 
 @media (min-width: 778px) {
@@ -69,9 +81,7 @@ div.spotlightMemberCard {
   }
   .spotlightMemberContent .spotlightMemberHeader {
     font-size: 2.813rem !important;
-  }
-  .spotlightMemberContent .spotlightMemberInfo span {
-    font-size: 1.25rem;
+    line-height: 2.5rem;
   }
 }
 

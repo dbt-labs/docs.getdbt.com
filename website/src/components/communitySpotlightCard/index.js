@@ -36,7 +36,18 @@ const SpotlightWrapper = ({ isSpotlightMember, frontMatter, children }) => {
 } 
 
 function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
-  const { id, title, description, image, jobTitle, companyName, socialLinks } = frontMatter
+  const { 
+    id, 
+    title, 
+    description, 
+    image,
+    pronouns,
+    location,
+    jobTitle, 
+    companyName, 
+    organization, 
+    socialLinks 
+  } = frontMatter
 
   return (  
     <SpotlightWrapper isSpotlightMember={isSpotlightMember} frontMatter={frontMatter}>
@@ -63,13 +74,27 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           ) : (
           <h1 className={styles.spotlightMemberHeader}>{title}</h1>
         )}
-        {(jobTitle || companyName) && (
-          <div className={styles.spotlightMemberInfo}>
-            <span>
-              {jobTitle && jobTitle}
-              {jobTitle && companyName && ', '}
-              {companyName && companyName}
-            </span>
+        {pronouns && <div className={styles.spotlightMemberPronouns}>{pronouns}</div>}
+        
+        {isSpotlightMember && (
+          <div className={styles.spotlightMemberHeaderContain}>
+            {(jobTitle || companyName) && (
+              <div className={styles.spotlightMemberInfo}>
+                {jobTitle && jobTitle}
+                {jobTitle && companyName && ', '}
+                {companyName && companyName}
+              </div>
+            )}
+            {location && (
+              <div className={styles.spotlightMemberInfo}>
+                <span>Location:</span> {location}
+              </div>
+            )}
+            {organization && (
+              <div className={styles.spotlightMemberInfo}>
+                <span>Organizations:</span> {organization}
+              </div>
+            )}
           </div>
         )}
         {description && !isSpotlightMember && (

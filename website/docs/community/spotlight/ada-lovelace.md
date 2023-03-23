@@ -3,8 +3,11 @@ id: ada-lovelace
 title: Ada Lovelace
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 image: /img/community/spotlight/placeholder-img-1.jpg
+pronouns: she/her
+location: Chicago, IL
 jobTitle: Job Title
 companyName: Company Name
+organization: rOpenSci Editorial Board
 socialLinks:
   - name: Twitter
     link: https://twitter.com
