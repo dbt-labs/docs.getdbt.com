@@ -22,7 +22,7 @@ link="/docs/cloud/develop-in-the-cloud"
 <Card
     title="Manage environments"
     body="Set up and manage separate production and development environments in dbt Cloud to help engineers develop and test code more efficiently, without impacting users or data."
-    link="/docs/collaborate/environments/dbt-cloud-environments"
+    link="/docs/collaborate/environments/environments-in-dbt"
     icon="pencil-paper"/>
 
   <Card
@@ -46,7 +46,6 @@ link="/docs/cloud/develop-in-the-cloud"
    <Card
     title="Democratize access to logs"
     body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
-    link="/docs/cloud/develop-in-the-cloud#build-compile-and-run-projects"
     icon="pencil-paper"/>      
 
    <Card
@@ -93,6 +92,6 @@ link="/docs/cloud/develop-in-the-cloud"
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/quickstarts/overview)
-- [Develop in the Cloud](/docs/cloud/develop-in-the-cloud)
+- [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)
