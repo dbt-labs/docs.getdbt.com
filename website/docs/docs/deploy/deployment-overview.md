@@ -29,7 +29,7 @@ link="/docs/deploy/dbt-cloud-job"
 
 <Card
     title="Deploy with other tools"
-    body="Use tools such as Airflow, Prefect, Dagster, automation server, Cron, or ADF to run or trigger dbt Cloud jobs."
+    body="Use tools such as Airflow, Prefect, Dagster, automation server, Cron, or ADF to run or trigger dbt jobs, including those hosted on dbt Cloud."
 link="/docs/deploy/deployment-tools"
     icon="pencil-paper"/>    
 
