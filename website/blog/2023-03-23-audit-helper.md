@@ -43,7 +43,9 @@ Let’s start by setting the stage for the audit_helper package to work in our p
 
 2. Run `dbt deps` in the command line to install the package(s). Packages get installed in the `dbt_packages` directory — by default this directory is ignored by git, to avoid duplicating the source code for the package.For more information on using packages in your dbt project, check out [the dbt Documentation](https://docs.getdbt.com/docs/build/packages).
 
-Now that audit_helper is installed, let’s talk about its two main macros: (i) `compare_queries` — to audit rows; and (ii) `compare_column_values` — to audit values in columns.
+Now that audit_helper is installed, let’s talk about its two main macros: 
+- `compare_queries` — to audit rows
+- `compare_column_values` — to audit values in columns.
 
 ## Audit rows (`compare_queries`)
 
