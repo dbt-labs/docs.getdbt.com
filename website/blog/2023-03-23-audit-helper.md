@@ -214,7 +214,7 @@ Also, we can see that the example code includes a table printing option enabled 
 
     `dbt run -select <name of your audit model>`
 
-    But different from the `compare_queries` macro, if you have keep t he printing function enabled, you should expect a table to be printed in the command line when you run the model, as portrayed in Figure 8. Otherwise, it will be materialized on your data warehouse like this:
+    But unlike from the `compare_queries` macro, if you have kept the printing function enabled, you should expect a table to be printed in the command line when you run the model, as shown in Figure 8. Otherwise, it will be materialized on your data warehouse like this:
 
      <Lightbox src="/img/blog/2023-03-23-audit-helper/image3.png" title="Figure 8 — Example of table printed in command line" />
 
