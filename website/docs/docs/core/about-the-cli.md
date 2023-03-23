@@ -21,4 +21,4 @@ We've written a [guide](https://discourse.getdbt.com/t/how-we-set-up-our-compute
 
 If you're using the CLI, we recommend learning some basics of your terminal to help you work more effectively. In particular, it's important to understand `cd`, `ls` and `pwd` to be able to navigate through the directory structure of your computer easily.
 
-You can find more information on installing and setting up the dbt CLI [here](dbt-cli/cli-overview).
+You can find more information on installing and setting up the dbt CLI [here](/dbt-cli/cli-overview).
