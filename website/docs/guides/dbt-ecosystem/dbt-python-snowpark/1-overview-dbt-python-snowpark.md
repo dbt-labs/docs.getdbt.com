@@ -15,7 +15,7 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
 
 ## What you'll learn
 
-- How to build scalable data transformation pipelines using dbt & Snowflake using SQL and Python
+- How to build scalable data transformation pipelines using dbt, and Snowflake using SQL and Python
 - How to leverage copying data into Snowflake from a public S3 bucket
 
 ## What you need to know
