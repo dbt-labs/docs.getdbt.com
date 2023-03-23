@@ -1,51 +1,43 @@
 ---
 id: emily-riederer
 title: Emily Riederer
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+description: |-
+  I'm a long-time dbt user and have been an active community member for a few years. 
+
+  Professionally, I've led a variety of data teams at Capital One spanning analytics, modeling, innersource data tools, and data infrastructure. The common denominator of all of these roles has been the overwhelming importance of high quality data processing pipelines. Outside of work, I enjoy doing pro bono projects and applying my same skillset to scrappier environments.
+
+  My work with the dbt community is motivated by a passion for data quality and developer tooling. Some of my recent contributions include maintaing the dbtplyr package, speaking at Coalesce 2021, and writing a Dev Blog about my PR to the dbt-utils test suite.
 image: /img/community/spotlight/emily-riederer.jpg
 pronouns: she/her
 location: Chicago, IL
-jobTitle: Job Title
-companyName: Company Name
+jobTitle: Senior Manager - Data Science & Analytics
+companyName: Capital One
 organization: rOpenSci Editorial Board
 socialLinks:
   - name: Twitter
-    link: https://twitter.com
+    link: https://twitter.com/emilyriederer
   - name: LinkedIn
-    link: https://linkedin.com
+    link: https://linkedin.com/in/emilyriederer
   - name: Website
-    link: https://linkedin.com
-dateCreated: 2023-11-18
+    link: emilyriederer.com
+  - name: GitHub
+    link: https://github.com/emilyriederer
+  - name: Mastodon
+    link: https://mastodon.social/@emilyriederer
+dateCreated: 2023-03-22
 hide_table_of_contents: true
 ---
 
-## Question 1
+## When did you join the dbt community and in what way has it impacted your career.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet, nisl dui commodo neque, ut efficitur eros magna id risus. Fusce dapibus tortor metus, ac consectetur sem varius ut. Integer at nunc tincidunt, posuere nibh nec, vestibulum justo. Proin posuere nec est et interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+I have been involved in the dbt community for a few years now. While I enjoy being actively engaged, one of my favorite parts is simply "lurking" on the Slack channels. The data space is moving so fast right now with so many different competing frameworks, tools, and ideas. At the same time, data work tends to be less discussed and publicly shared than analysis methods (e.g. new modeling packages) due to data privacy and IP. I've found no better place to "drink from the firehouse" and benefit from the insights of others questions, challenges, and successes. 
 
-Sed non placerat leo. Curabitur dignissim sodales ultricies. Praesent at finibus ante, at dictum dui. Etiam mollis tempor elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris et eros id lorem mattis aliquet. Mauris libero nulla, maximus sit amet quam id, malesuada iaculis ante. Nam sodales leo ac tincidunt mollis. Suspendisse sodales, enim vulputate tincidunt semper, turpis ligula lobortis lectus, malesuada imperdiet mauris libero sit amet turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+## What dbt community leader do you identify with? (This can be either a specific person, or type of leader.) How are you looking to grow your leadership in the dbt community?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet, nisl dui commodo neque, ut efficitur eros magna id risus. Fusce dapibus tortor metus, ac consectetur sem varius ut. Integer at nunc tincidunt, posuere nibh nec, vestibulum justo. Proin posuere nec est et interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+Two community members that really inspire me are Claire Carroll and Joel Labes. I think both showcase excellence in technical best practices, crystal-clear communication of technical concepts in their prolific writing, and a passion for building community and creating on-ramps. That mix of so-called 'hard' and 'soft' skills adds so much to the community and helps empower every member to be their best. I'm always looking to balance the time I spend growing my skills along both dimensions. 
 
-Sed non placerat leo. Curabitur dignissim sodales ultricies. Praesent at finibus ante, at dictum dui. Etiam mollis tempor elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris et eros id lorem mattis aliquet. Mauris libero nulla, maximus sit amet quam id, malesuada iaculis ante. Nam sodales leo ac tincidunt mollis. Suspendisse sodales, enim vulputate tincidunt semper, turpis ligula lobortis lectus, malesuada imperdiet mauris libero sit amet turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+## What have you learned from community members? What do you hope others can learn from you?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet, nisl dui commodo neque, ut efficitur eros magna id risus. Fusce dapibus tortor metus, ac consectetur sem varius ut. Integer at nunc tincidunt, posuere nibh nec, vestibulum justo. Proin posuere nec est et interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+Given my passion for data quality and the design side of data, I particularly enjoy thinking about data modeling and learning from the community's experience with the variety of classical and novel frameworks for designing resilient, flexible datamarts. 
 
-Sed non placerat leo. Curabitur dignissim sodales ultricies. Praesent at finibus ante, at dictum dui. Etiam mollis tempor elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris et eros id lorem mattis aliquet. Mauris libero nulla, maximus sit amet quam id, malesuada iaculis ante. Nam sodales leo ac tincidunt mollis. Suspendisse sodales, enim vulputate tincidunt semper, turpis ligula lobortis lectus, malesuada imperdiet mauris libero sit amet turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum urna ipsum, pulvinar iaculis libero varius id. In ut massa id sem feugiat maximus eget faucibus nulla. Nullam blandit, ante vel rhoncus aliquet, nisl dui commodo neque, ut efficitur eros magna id risus. Fusce dapibus tortor metus, ac consectetur sem varius ut. Integer at nunc tincidunt, posuere nibh nec, vestibulum justo. Proin posuere nec est et interdum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
-Sed non placerat leo. Curabitur dignissim sodales ultricies. Praesent at finibus ante, at dictum dui. Etiam mollis tempor elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris et eros id lorem mattis aliquet. Mauris libero nulla, maximus sit amet quam id, malesuada iaculis ante. Nam sodales leo ac tincidunt mollis. Suspendisse sodales, enim vulputate tincidunt semper, turpis ligula lobortis lectus, malesuada imperdiet mauris libero sit amet turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-
-
-## Question 2
-
-Donec ultrices arcu vitae tortor accumsan cursus. Fusce tincidunt vel odio vitae gravida. Aenean elementum ultricies dui, nec rhoncus lorem faucibus id. Nullam vitae mi ut orci pharetra tincidunt. Morbi sagittis commodo justo, et vulputate ligula tincidunt ut. Praesent semper ut tellus eu commodo. Nunc posuere sit amet odio ac viverra. Pellentesque accumsan sollicitudin elementum. Vivamus aliquet, libero id aliquet tempus, velit erat elementum dolor, at fringilla lacus dui vel ligula. Donec nisl lectus, pharetra in efficitur auctor, tincidunt ut est. Sed in viverra lectus, ac porta urna. Sed euismod magna euismod nisl convallis egestas. Sed egestas, nunc et venenatis faucibus, enim neque posuere ligula, eget tristique lectus erat eget dui. Etiam in efficitur leo. In nunc dolor, tempus vel tempor ultrices, euismod nec urna.
-
-## Question 3
-
-Nam suscipit tristique nunc et dapibus. Sed ipsum odio, maximus a consectetur id, suscipit non dui. Proin eget elit nec sem ultrices mattis eget eu massa. Nulla maximus hendrerit facilisis. Mauris lobortis hendrerit nunc vitae commodo. Praesent quis odio lacinia, accumsan enim quis, faucibus ante. Quisque dignissim arcu in nisi mollis, nec posuere neque euismod. Nunc ut nisi et leo consequat viverra. Duis efficitur urna et risus condimentum tincidunt. Vivamus suscipit orci non nunc dapibus, a rutrum sapien sollicitudin. Cras fringilla, ante at interdum ultricies, libero urna condimentum ligula, quis commodo nibh justo ut erat. Proin viverra scelerisque mollis.
-
-## Additional info
-
-just a bunch of text
+As a passionate fan of open-source (and the also-thriving #rstats community), I hope to inspire others to create more packages and PRs that expand the developer toolkit. I also particularly enjoy discussing my thoughts on data quality and avoiding data disasters.
