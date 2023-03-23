@@ -49,7 +49,7 @@ Now that audit_helper is installed, let’s talk about its two main macros:
 
 ## Audit rows (`compare_queries`)
 
-According to the audit_helper package documentation, this macro comes in handy when:
+According to the `audit_helper` package documentation, this macro comes in handy when:
 - You need to filter out records from one of the relations,
 - Some columns must be renamed or recast in order to match,
 - But you only want to compare a few columns, since it’s simpler to write the columns you want to compare rather than the columns you want to exclude.
