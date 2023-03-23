@@ -164,16 +164,16 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
     on_error='continue';
 
     ```
-5. Ensure all the commands are selected before running the query &mdash; an easy way to do this is to use Ctrl-a to highlight all of the code in the worksheet. Select **run** (blue triangle icon). Notice how the dot next to your `COMPUTE_WH` turns from gray to green as you run the query. The `status` table is the final table of all 8 tables loaded in. 
+5. Ensure all the commands are selected before running the query &mdash; an easy way to do this is to use Ctrl-a to highlight all of the code in the worksheet. Select **run** (blue triangle icon). Notice how the dot next to your **COMPUTE_WH** turns from gray to green as you run the query. The **status** table is the final table of all 8 tables loaded in. 
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source/2-load-data-from-s3.png" title="Load data from S3 bucket"/>
 
-6. Let’s unpack that pretty long query we ran into component parts. We ran this query to load in our 8 Formula 1 tables from a public S3 bucket. To do this we:
+6. Let’s unpack that pretty long query we ran into component parts. We ran this query to load in our 8 Formula 1 tables from a public S3 bucket. To do this, we:
     - Created a new database called `formula1` and a schema called `raw` to place our raw (untransformed) data into. 
-    - Defined our file format for our csv files. Importantly, here we use a parameter called `field_optionally_enclosed_by =` since the string columns in our Formula 1 csv files use quotes.  Quotes are used around string values to avoid parsing issues where commas `,` and new lines `/n` in data values could cause data loading errors. 
+    - Defined our file format for our CSV files. Importantly, here we use a parameter called `field_optionally_enclosed_by =` since the string columns in our Formula 1 csv files use quotes.  Quotes are used around string values to avoid parsing issues where commas `,` and new lines `/n` in data values could cause data loading errors. 
     - Created a stage to locate our data we are going to load in. Snowflake Stages are locations where data files are stored.  Stages are used to both load and unload data to and from Snowflake locations. Here we are using an external stage, by referencing an S3 bucket. 
     - Created our tables for our data to be copied into. These are empty tables with the column name and data type. Think of this as creating an empty container that the data will then fill into. 
-    - Used the `copy into` statement for each of our tables. We reference our staged location we created and upon loading errors continue to load in the rest of the data. You should not have data loading errors but if you do, those rows will be skipped and snowflake will tell you which rows caused errors
+    - Used the `copy into` statement for each of our tables. We reference our staged location we created and upon loading errors continue to load in the rest of the data. You should not have data loading errors but if you do, those rows will be skipped and Snowflake will tell you which rows caused errors
 
 7. Now let's take a look at some of our cool Formula 1 data we just loaded up!
     1. Create a new worksheet by selecting the **+** then **New Worksheet**.
@@ -183,7 +183,7 @@ We need to obtain our data source by copying our Formula 1 data into Snowflake t
         ```sql
         select * from formula1.raw.circuits
         ```
-    4. Run the query. From here on out we’ll use the keyboard shortcuts Command-Enter or Control-Enter to run queries and won’t explicitly call out this step. 
+    4. Run the query. From here on out, we’ll use the keyboard shortcuts Command-Enter or Control-Enter to run queries and won’t explicitly call out this step. 
     5. Review the query results, you should see information about Formula 1 circuits, starting with Albert Park in Australia! 
     6. Finally, ensure you have all 8 tables starting with `CIRCUITS` and ending with `STATUS`. Now we are ready to connect into dbt Cloud!
 

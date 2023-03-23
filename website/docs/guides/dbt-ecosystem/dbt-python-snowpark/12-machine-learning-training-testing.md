@@ -4,14 +4,14 @@ id: "12-machine-learning-training-prediction"
 description: "Machine Learning: training and prediction"
 ---
 
-We’re ready to start training a model to predict the driver’s position. Now is a good time to pause and take a step back and say, usually in ML projects you’ll try multiple algorithms during development and use an evaluation method such as cross validation to determine which algorithm to use. You can definitely do this in your dbt project, but for the content of this lab we’ll have decided on using a logistic regression to predict position (we actually tried some other algorithms using cross validation outside of this lab such as k-nearest neighbors and a support vector classifier that didn’t perform well as well as the logistic regression and a decision tree that overfit).
+We’re ready to start training a model to predict the driver’s position. Now is a good time to pause and take a step back and say, usually in ML projects you’ll try multiple algorithms during development and use an evaluation method such as cross validation to determine which algorithm to use. You can definitely do this in your dbt project, but for the content of this lab we’ll have decided on using a logistic regression to predict position (we actually tried some other algorithms using cross validation outside of this lab such as k-nearest neighbors and a support vector classifier but that didn’t perform as well as the logistic regression and a decision tree that overfit).
 
-There’s 3 areas to break down as we go since we are working at the intersection all within one model file:
+There are 3 areas to break down as we go since we are working at the intersection all within one model file:
 1. Machine Learning
 2. Snowflake and Snowpark
-3. dbt python models
+3. dbt Python models
 
-If you haven’t seen code like this before or use joblib files to save machine learning models we’ll be going over them at a high level and you can explore the links for more technical in-depth along the way! Because snowflake and dbt have abstracted away a lot of the nitty gritty about serialization and storing our model object to be called again we won’t go into too much detail here. There’s *a lot* going on here so take it at your pace!
+If you haven’t seen code like this before or use joblib files to save machine learning models, we’ll be going over them at a high level and you can explore the links for more technical in-depth along the way! Because Snowflake and dbt have abstracted away a lot of the nitty gritty about serialization and storing our model object to be called again, we won’t go into too much detail here. There’s *a lot* going on here so take it at your pace!
 
 ## Training and saving a machine learning model
 
@@ -93,34 +93,34 @@ If you haven’t seen code like this before or use joblib files to save machine 
     ```bash
     dbt run --select train_test_position
     ```
-4. Breaking down our python script here:
+4. Breaking down our Python script here:
     - We’re importing some helpful libraries.
         - Defining a function called `save_file()` that takes four parameters: `session`, `model`, `path` and `dest_filename` that will save our logistic regression model file.
-            - `session`: an object representing a connection to snowflake
-            - `model`: an object that needs to be saved, in this case, it's a python object that is a scikit-learn that can be serialized with joblib.
-            - `path`: a string representing the directory or bucket location where the file should be saved.
-            - `dest_filename`: a string representing the desired name of the file.
+            - `session` &mdash; an object representing a connection to Snowflake.
+            - `model` &mdash; an object that needs to be saved. In this case, it's a Python object that is a scikit-learn that can be serialized with joblib.
+            - `path` &mdash; a string representing the directory or bucket location where the file should be saved.
+            - `dest_filename` &mdash; a string representing the desired name of the file.
         - Creating our dbt model
-            - Within this model we are creating a stage called `MODELSTAGE` to place our logistic regression `joblib` model file. This is really important since we need a place to keep our model to reuse and want to ensure it's there. When using Snowpark commands it's common to see the `.collect()` method to ensure the action is performed. Think of the session as our “start” and collect as our “end” when [working with Snowpark](https://docs.snowflake.com/en/developer-guide/snowpark/python/working-with-dataframes.html) (you can use other ending methods other than collect).
+            - Within this model we are creating a stage called `MODELSTAGE` to place our logistic regression `joblib` model file. This is really important since we need a place to keep our model to reuse and want to ensure it's there. When using Snowpark commands, it's common to see the `.collect()` method to ensure the action is performed. Think of the session as our “start” and collect as our “end” when [working with Snowpark](https://docs.snowflake.com/en/developer-guide/snowpark/python/working-with-dataframes.html) (you can use other ending methods other than collect).
             - Using `.ref()` to connect into our `train_test_dataset` model.
             - Now we see the machine learning part of our analysis:
                 - Create new dataframes for our prediction features from our target variable `position_label`.
                 - Split our dataset into 70% training (and 30% testing), train_size=0.7 with a `random_state` specified to have repeatable results.
-                - Specify our model is a logistic regression
+                - Specify our model is a logistic regression.
                 - Fit our model. In a logistic regression this means finding the coefficients that will give the least classification error.
                 - Round our predictions to the nearest integer since logistic regression creates a probability between for each class and calculate a balanced accuracy to account for imbalances in the target variable.
-        - Right now our model is only in memory, so we need to use our nifty function `save_file` to save our model file to our Snowflake stage. We save our model as a joblib file so Snowpark can easily call this model object back to create predictions. We really don’t need to know much else as a data practitioner unless we want to. It’s worth noting that joblib files aren’t able to be queried directly by SQL, to do this we would need to transform the joblib file to a SQL querable format such as json or csv (out of scope for this workshop).
+        - Right now our model is only in memory, so we need to use our nifty function `save_file` to save our model file to our Snowflake stage. We save our model as a joblib file so Snowpark can easily call this model object back to create predictions. We really don’t need to know much else as a data practitioner unless we want to. It’s worth noting that joblib files aren’t able to be queried directly by SQL. To do this, we would need to transform the joblib file to an SQL querable format such as JSON or CSV (out of scope for this workshop).
         - Finally we want to return our dataframe, but create a new column indicating what rows were used for training and those for training.
 5. Viewing our output of this model:
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/1-preview-train-test-position.png" title="Preview which rows of our model were used for training and testing"/>
 
-6. Let’s pop back over to snowflake and check that our logistic regression model has been stored in our `MODELSTAGE` using the command:
+6. Let’s pop back over to Snowflake and check that our logistic regression model has been stored in our `MODELSTAGE` using the command:
     ```sql
     list @modelstage
     ```
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/2-list-snowflake-stage.png" title="List the objects in our Snowflake stage to check for our logistic regression to predict driver position"/>
 
-7. To investigate the commands run as part of `train_test_position` script navigate to snowflake query history to view it **Activity > Query History**. We can view the portions of query that we wrote such as `create or replace stage MODELSTAGE`, but we also see additional queries that Snowflake uses to interpret python code.
+7. To investigate the commands run as part of `train_test_position` script, navigate to Snowflake query history to view it **Activity > Query History**. We can view the portions of query that we wrote such as `create or replace stage MODELSTAGE`, but we also see additional queries that Snowflake uses to interpret python code.
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction/3-view-snowflake-query-history.png" title="View Snowflake query history to see how python models are run under the hood"/>
 
 ## Predicting on new data
@@ -223,29 +223,29 @@ If you haven’t seen code like this before or use joblib files to save machine 
     dbt run --select predict_position
     ```
 3. **Commit and push** our changes to keep saving our work as we go using the commit message `logistic regression model training and application` before moving on.
-4. At a high level in this script we are:
+4. At a high level in this script, we are:
     - Retrieving our staged logistic regression model
     - Loading the model in
-    - Placing the model within a user defined function (UDF) to call in line predictions on for our driver’s position
+    - Placing the model within a user defined function (UDF) to call in line predictions on our driver’s position
 5. At a more detailed level:
-    - Import our libraries
+    - Import our libraries.
     - Create variables to reference back to the `MODELSTAGE` we just created and stored our model to.
-    - The temporary file paths we created may look intimidating, but all we’re doing here is programmatically using an initial file path and adding to it to create the following directories:
+    - The temporary file paths we created might look intimidating, but all we’re doing here is programmatically using an initial file path and adding to it to create the following directories:
         - LOCAL_TEMP_DIR ➡️ /tmp/driver_position
         - DOWNLOAD_DIR ➡️ /tmp/driver_position/download
-        - TARGET_MODEL_DIR_PATH ➡️/tmp/driver_position/ml_model
+        - TARGET_MODEL_DIR_PATH ➡️ /tmp/driver_position/ml_model
         - TARGET_LIB_PATH ➡️ /tmp/driver_position/lib
     - Provide a list of our feature columns that we used for model training and will now be used on new data for prediction.
-    - Next we are creating our main function `register_udf_for_prediction(p_predictor ,p_session ,p_dbt):`. This function is used to register a user-defined function (UDF) that performs the machine learning prediction. It takes three parameters: `p_predictor` is an instance of the machine learning model, `p_session` is an instance of the Snowflake session, and `p_dbt` is an instance of the dbt library. The function creates a UDF named `predict_churn` which takes a pandas dataframe with the input features and returns a pandas series with the predictions.
+    - Next, we are creating our main function `register_udf_for_prediction(p_predictor ,p_session ,p_dbt):`. This function is used to register a user-defined function (UDF) that performs the machine learning prediction. It takes three parameters: `p_predictor` is an instance of the machine learning model, `p_session` is an instance of the Snowflake session, and `p_dbt` is an instance of the dbt library. The function creates a UDF named `predict_churn` which takes a pandas dataframe with the input features and returns a pandas series with the predictions.
     - ⚠️ Pay close attention to the whitespace here. We are using a function within a function for this script.
-    - We have 2 simple functions that are programmatically retrieving our file paths of our to first get our stored model out of our `MODELSTAGE` and downloaded into the session `download_models_and_libs_from_stage` and then to load the contents of our model in (parameters) in `load_model` to use for prediction.
-    - Take the model we loaded in and call it `predictor`and wrap it as in a UDF.
+    - We have 2 simple functions that are programmatically retrieving our file paths to first get our stored model out of our `MODELSTAGE` and downloaded into the session `download_models_and_libs_from_stage` and then to load the contents of our model in (parameters) in `load_model` to use for prediction.
+    - Take the model we loaded in and call it `predictor` and wrap it in a UDF.
     - Return our dataframe with both the features used to predict and the new label.
 
 🧠 Another way to read this script is from the bottom up. This can help us progressively see what is going into our final dbt model and work backwards to see how the other functions are being referenced.
 
-6. Let’s take a look at our predicted position alongside our feature variables: Open a new scratchpad and use the following query. I chose to order by the prediction of who would obtain a podium position,
+6. Let’s take a look at our predicted position alongside our feature variables. Open a new scratchpad and use the following query. I chose to order by the prediction of who would obtain a podium position:
     ```sql
     select * from {{ ref('predict_position') }} order by position_predicted
     ```
-7. We can see that we created predictions in our final dataset we are ready to move on to testing!
+7. We can see that we created predictions in our final dataset, we are ready to move on to testing!

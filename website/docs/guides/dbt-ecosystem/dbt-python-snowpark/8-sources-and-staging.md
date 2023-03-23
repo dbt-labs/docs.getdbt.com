@@ -10,14 +10,14 @@ Sources allow us to create a dependency between our source database object and o
 
 Staging models are the base of our project, where we bring all the individual components we're going to use to build our more complex and useful models into the project.
 
-Since we want to focus on dbt and python in this workshop, check out our [sources](/docs/build/sources) and [staging](/guides/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://courses.getdbt.com/collections) course which covers all of our core functionality).
+Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/guides/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://courses.getdbt.com/collections) course which covers all of our core functionality).
 
 ## Create sources
 
-We're going to be using each of our 8 formula 1 tables from our `formula1` database under the `raw`  schema for our transformations and we want to create those tables as sources in our project.
+We're going to be using each of our 8 Formula 1 tables from our `formula1` database under the `raw`  schema for our transformations and we want to create those tables as sources in our project.
 
 1. Create a new file called `f1_sources.yml` with the following file path: `models/staging/formula1/f1_sources.yml`.
-2. Then paste the following code into the file before saving it:
+2. Then, paste the following code into the file before saving it:
 
 ```yaml
 version: 2
@@ -84,9 +84,9 @@ sources:
 
 ## Create staging models
 
-The next step is to set up the staging models for each of the 8 source tables. Given the one to one relationship between staging models and their corresponding source tables, we'll build 8 staging models here. We know it’s a lot and in the future, we will seek to update the workshop to make this step less repetitive and more efficient. This step is also a good representation of the real world of data where you have multiple hierarchical tables that you will need to join together!
+The next step is to set up the staging models for each of the 8 source tables. Given the one-to-one relationship between staging models and their corresponding source tables, we'll build 8 staging models here. We know it’s a lot and in the future, we will seek to update the workshop to make this step less repetitive and more efficient. This step is also a good representation of the real world of data, where you have multiple hierarchical tables that you will need to join together!
 
-1. Let's go in alphabetical order to easily keep track of all our staging models! Create a new file called `stg_f1_circuits.sql` with the following file path: `models/staging/tpch/stg_f1_circuits.sql`. Then paste the following code into the file before saving it:
+1. Let's go in alphabetical order to easily keep track of all our staging models! Create a new file called `stg_f1_circuits.sql` with this file path `models/staging/tpch/stg_f1_circuits.sql`. Then, paste the following code into the file before saving it:
 
     ```sql
     with
@@ -115,7 +115,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     All we're doing here is pulling the source data into the model using the `source` function, renaming some columns, and omitting the column `url` with a commented note since we don’t need it for our analysis.
 
-1. Create `stg_f1_constructors.sql` with the following file path: `models/staging/tpch/stg_f1_constructors.sql`. Then paste the following code into it before saving the file:
+1. Create `stg_f1_constructors.sql` with this file path `models/staging/tpch/stg_f1_constructors.sql`. Paste the following code into it before saving the file:
 
     ```sql
     with
@@ -139,9 +139,9 @@ The next step is to set up the staging models for each of the 8 source tables. G
     select * from renamed
     ```
 
-    We have 6 other stages models to create. We can do this by creating new files then copy and paste the code into our `staging` folder.
+    We have 6 other stages models to create. We can do this by creating new files, then copy and paste the code into our `staging` folder.
 
-1. Create `stg_f1_drivers.sql` with the following file path: `models/staging/tpch/stg_f1_drivers.sql`
+1. Create `stg_f1_drivers.sql` with this file path `models/staging/tpch/stg_f1_drivers.sql`:
 
     ```sql
     with
@@ -168,7 +168,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Create `stg_f1_lap_times.sql` with the following file path: `models/staging/tpch/stg_f1_lap_times.sql`
+1. Create `stg_f1_lap_times.sql` with this file path `models/staging/tpch/stg_f1_lap_times.sql`:
 
     ```sql
     with
@@ -192,7 +192,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Create `stg_f1_pit_stops.sql` with the following file path: `models/staging/tpch/stg_f1_pit_stops.sql`
+1. Create `stg_f1_pit_stops.sql` with this file path `models/staging/tpch/stg_f1_pit_stops.sql`:
 
     ```sql
     with
@@ -219,7 +219,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
     order by pit_stop_duration_seconds desc
     ```
 
-1. Create ` stg_f1_races.sql` with the following file path: `models/staging/tpch/stg_f1_races.sql`
+1. Create ` stg_f1_races.sql` with this file path `models/staging/tpch/stg_f1_races.sql`:
 
     ```sql
     with
@@ -255,7 +255,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Create `stg_f1_results.sql` with the following file path: `models/staging/tpch/stg_f1_results.sql`
+1. Create `stg_f1_results.sql` with this file path `models/staging/tpch/stg_f1_results.sql`:
 
     ```sql
     with
@@ -291,7 +291,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Last one! Create `stg_f1_status.sql` with the following file path: `models/staging/tpch/stg_f1_status.sql`
+1. Last one! Create `stg_f1_status.sql` with this file path: `models/staging/tpch/stg_f1_status.sql`:
 
     ```sql
     with
@@ -311,11 +311,11 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-    After the source and all the staging models are complete for each of the 8 tables your staging folder should look like this: 
+    After the source and all the staging models are complete for each of the 8 tables, your staging folder should look like this: 
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/1-staging-folder.png" title="Staging folder"/>
 
-1. It’s a good time to delete our example folder since these two models are extraneous to our formula1 pipeline and `my_first_model` fails a `not_null` test that we won’t spend time investigating. dbt cloud will warn us that this folder will be permanently deleted, and we are okay with that so select **Delete**.
+1. It’s a good time to delete our example folder since these two models are extraneous to our formula1 pipeline and `my_first_model` fails a `not_null` test that we won’t spend time investigating. dbt Cloud will warn us that this folder will be permanently deleted, and we are okay with that so select **Delete**.
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/2-delete-example.png" title="Delete example folder"/>
 
@@ -325,10 +325,10 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/3-successful-run-in-snowflake.png" title="Successful dbt build in Snowflake"/>
 
-    Let's take a quick look in Snowflake, refresh database objects, open our development schema, and confirm that the new models are there. If you can see them then we're good to go!
+    Let's take a quick look in Snowflake, refresh database objects, open our development schema, and confirm that the new models are there. If you can see them, then we're good to go!
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging/4-confirm-models.png" title="Confirm models"/>
 
-    Before we move onto the next section be sure to commit your new models to your git branch. Click **Commit and push** and give your commit a message like `profile, sources, and staging setup` before moving on.
+    Before we move onto the next section, be sure to commit your new models to your Git branch. Click **Commit and push** and give your commit a message like `profile, sources, and staging setup` before moving on.
 
     

@@ -18,9 +18,9 @@ We need to:
 
 We need to join lots of reference tables to our results table to create a human readable dataframe. What does this mean? For example, we don’t only want to have the numeric `status_id` in our table, we want to be able to read in a row of data that a driver could not finish a race due to engine failure (`status_id=5`).
 
-By now we are pretty good at creating new files in the correct directories so we won’t cover this in detail. All intermediate models should be created in the path `models/intermediate`.
+By now, we are pretty good at creating new files in the correct directories so we won’t cover this in detail. All intermediate models should be created in the path `models/intermediate`.
 
-1. Create a new file called `int_lap_times_years.sql`. In this model we are joining our lap time and race information so we can look at lap times over years. In earlier formula1 eras, lap times were not recorded (only final results), so we filter out records where lap times are null.
+1. Create a new file called `int_lap_times_years.sql`. In this model, we are joining our lap time and race information so we can look at lap times over years. In earlier Formula 1 eras, lap times were not recorded (only final results), so we filter out records where lap times are null.
 
     ```sql
     with lap_times as (
@@ -51,7 +51,7 @@ By now we are pretty good at creating new files in the correct directories so we
     select * from expanded_lap_times_by_year
     ```
 
-2. Create a file called `in_pit_stops.sql`. Pit stops are a many to one (M:1) relationship with our races. We are creating a feature called `total_pit_stops_per_race` by partitioning over our `race_id` and `driver_id`, while preserving individual level pit stops for rolling average in our next section.
+2. Create a file called `in_pit_stops.sql`. Pit stops are a many-to-one (M:1) relationship with our races. We are creating a feature called `total_pit_stops_per_race` by partitioning over our `race_id` and `driver_id`, while preserving individual level pit stops for rolling average in our next section.
 
     ```sql
     with stg_f1__pit_stops as
@@ -183,7 +183,7 @@ By now we are pretty good at creating new files in the correct directories so we
 
 ## Core models
 
-1. Create a file `fct_results.sql`. This is what I like to refer to as the “mega table” &mdash; a really large denormalized table with all our context added in at row level for human readability. Importantly, we have a table `circuits` that is linked through the table`races`. When we joined `races` to `results` in `int_results.sql` we allowed our tables to make the connection from `circuits` to `results` in `fct_results.sql`. We are only taking information about pit stops at the result level so our join would not cause a [fanout](https://community.looker.com/technical-tips-tricks-1021/what-is-a-fanout-23327).
+1. Create a file `fct_results.sql`. This is what I like to refer to as the “mega table” &mdash; a really large denormalized table with all our context added in at row level for human readability. Importantly, we have a table `circuits` that is linked through the table `races`. When we joined `races` to `results` in `int_results.sql` we allowed our tables to make the connection from `circuits` to `results` in `fct_results.sql`. We are only taking information about pit stops at the result level so our join would not cause a [fanout](https://community.looker.com/technical-tips-tricks-1021/what-is-a-fanout-23327).
 
     ```sql
     with int_results as (
