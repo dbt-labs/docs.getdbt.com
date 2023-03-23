@@ -1,5 +1,5 @@
 ---
-title: "Quickstart for dbt Core"
+title: "Quickstart for dbt Core from a manual install"
 id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
 sidebar_label: "Manual install quickstart"
