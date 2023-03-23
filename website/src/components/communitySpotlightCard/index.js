@@ -98,7 +98,7 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           </div>
         )}
         {description && !isSpotlightMember && (
-          <p className={styles.spotlightMemberDescription}>{description}</p>
+          <p className={styles.spotlightMemberDescription}>{truncateText(description)}</p>
         )}
         {socialLinks && isSpotlightMember && socialLinks?.length > 0 && (
           <div className={styles.spotlightMemberSocial}>
@@ -129,6 +129,15 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
       )}
     </SpotlightWrapper>
   )
+}
+
+// Truncate text
+function truncateText(str) {
+  // Max length of string
+  const maxLength = 300
+  return str.length > maxLength
+    ? `${str.substring(0, maxLength - 3)}...`
+    : str
 }
 
 export default CommunitySpotlightCard
