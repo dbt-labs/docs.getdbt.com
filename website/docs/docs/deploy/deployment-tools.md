@@ -37,9 +37,29 @@ For more details on both of these methods, including example implementations, ch
 
 Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process, from data ingestion to data transformation. You can seamlessly trigger dbt Cloud jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-cloud-apis/overview) in ADF. 
 
-This video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in ADF:
+The following video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in ADF. 
+
+Need help building this out? - [Contact us](https://www.getdbt.com/contact/) today!
 
 <LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
+
+
+<details>
+  <summary>👋 Toggle me to read steps on how to trigger a dbt Cloud job via the API in ADF</summary>
+  <div>
+    <div>To use the dbt API to trigger a job in dbt Cloud through ADF:<br></br><br></br>
+      
+      1. In dbt Cloud, make sure you <a href="https://docs.getdbt.com/docs/deploy/dbt-cloud-job#prerequisites">meet the prerequisites</a> and go to the job settings of the daily production job and turn off the scheduled run in the <b>Trigger</b> section.<br></br><br></br>
+      2. You'll want to create a pipeline in ADF to trigger a dbt Cloud job.<br></br><br></br>
+      3. Securely fetch the dbt Cloud service token from a key vault in ADF, using a web call as the first step in the pipeline.<br></br><br></br>
+      4. Set the parameters in the pipeline, including the dbt Cloud account ID and  job ID, as well as the name of the key vault and secret that contains the service token. <br></br><br></br>
+        <span>&mdash;</span> You can find the dbt Cloud job and account id in the URL, for example, if your URL is <code>https://cloud.getdbt.com/deploy/88888/projects/678910/jobs/123456</code>, the account ID is <code>88888</code> and the job ID is <code>123456</code><br></br><br></br>
+    5. Trigger the pipeline in ADF to start the dbt Cloud job and monitor the status of the dbt Cloud job in ADF.
+    <br></br><br></br>
+    6. In dbt Cloud, you can check the status of the job and how it was triggered in dbt Cloud.
+    </div>
+  </div>
+</details>
 
 
 ## Prefect
