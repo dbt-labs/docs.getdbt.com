@@ -309,6 +309,25 @@ select ...
 
 </File>
 
+Alternatively, specify a list of columns to exclude from being updated by passing a list of column names to a `mergee_exclude_columns` config.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    merge_exclude_columns = ['created_at'],
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
+
 <VersionBlock firstVersion="1.4">
 
 ### About incremental_predicates
