@@ -33,7 +33,9 @@ The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Ja
 
 1. At the terminal's prompt, you can execute the following command or any other dbt command you want:
 
-    `/workspaces/test (main) $ dbt build`
+    ```shell
+    /workspaces/test (main) $ dbt build
+    ```
 
     You can also use the [duckcli](https://github.com/dbcli/duckcli) to write SQL against the warehouse from the command line or build reports in the [Evidence](https://evidence.dev/) project provided in the `reports` directory.
     
@@ -50,8 +52,21 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
 
 1. Install the Python package called [jafgen](https://pypi.org/project/jafgen/). At the terminal's prompt, run:
 
-    `/workspaces/test (main) $ pip install jafgen`
+    ```shell
+    /workspaces/test (main) $ pip install jafgen
+    ```
 
-1. When the install is done, run `jafgen --years n` , where `n` is the number of years you want to simulate. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the `dbt-duckdb` adapter.
+1. When installation is done, run:
+    ```shell
+    /workspaces/test (main) $ jafgen --years NUMBER_OF_YEARS
+    ``` 
+    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the `dbt-duckdb` adapter.
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
+
+## Related content
+- [Create a GitHub repository](/docs/quickstarts/dbt-core/manual-install#create-a-repository)
+- [Build your first models](/docs/quickstarts/dbt-core/manual-install#build-your-first-models)
+- [Test and document your project](/docs/quickstarts/dbt-core/manual-install#test-and-document-your-project)
+- [Schedule a job](/docs/quickstarts/dbt-core/manual-install#schedule-a-job)
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
