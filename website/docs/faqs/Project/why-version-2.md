@@ -10,7 +10,7 @@ id: why-version-2
 
 Once upon a time, the structure of these `.yml` files was very different (s/o to anyone who was using dbt back then!). Adding `version: 2` allowed us to make this structure more extensible.
 
-Currently this config is not required for resource yml files. If specified, `version: 2` is the only supported version. While we don't anticipate updating yml files to `version: 3` any time soon, if we need to introduce a new structure for these files, we'll be able to do this more easily with this config.
+Resource yml files do not currently require this config. We only support `version: 2` if it's specified. Although we do not expect to update yml files to `version: 3` soon, having this config will make it easier for us to introduce new structures in the future
 
 </VersionBlock>
 
