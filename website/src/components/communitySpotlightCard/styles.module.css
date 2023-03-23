@@ -10,7 +10,7 @@
   flex-flow: row wrap;
 }
 header.spotlightMemberCard {
-  padding: 2rem 0;
+  padding: 2rem 0 0;
 }
 div.spotlightMemberCard {
   margin-bottom: 2.5rem;
@@ -48,6 +48,10 @@ div.spotlightMemberCard {
   margin-top: 1rem;
   font-size: 1.125rem;
 }
+.spotlightMemberDescriptionFull {
+  margin-top: 1rem;
+}
+
 .spotlightMemberContent .spotlightMemberSocial {
   margin-top: 1rem;  
 }

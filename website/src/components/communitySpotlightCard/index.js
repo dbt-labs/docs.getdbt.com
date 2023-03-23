@@ -121,6 +121,12 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           >Read More</Link>
         )}
       </div>
+      {description && isSpotlightMember && (
+        <div className={styles.spotlightMemberDescriptionFull}>
+          <h2>About</h2>
+          <p className={styles.spotlightMemberDescription}>{description}</p>
+        </div>
+      )}
     </SpotlightWrapper>
   )
 }
