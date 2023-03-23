@@ -45,7 +45,7 @@ Let’s start by setting the stage for the audit_helper package to work in our p
 
 Now that audit_helper is installed, let’s talk about its two main macros: (i) `compare_queries` — to audit rows; and (ii) `compare_column_values` — to audit values in columns.
 
-## Audit rows (compare_queries)
+## Audit rows (`compare_queries`)
 
 According to the audit_helper package documentation, this macro comes in handy when:
 - You need to filter out records from one of the relations,
