@@ -35,6 +35,10 @@ div.spotlightMemberCard {
   color: #009999;
   font-weight: 700;
 }
+[data-theme='dark'] .spotlightMemberContent .spotlightMemberHeader {
+  color: #fff;
+}
+
 .spotlightMemberContent .spotlightMemberHeaderContain {
   border-top: 1px solid var(--color-nav-text);
   margin-top: .5rem;
