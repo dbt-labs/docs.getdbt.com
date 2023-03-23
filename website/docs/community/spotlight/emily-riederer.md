@@ -32,7 +32,7 @@ hide_table_of_contents: true
 
 I have been involved in the dbt community for a few years now. While I enjoy being actively engaged, one of my favorite parts is simply "lurking" on the Slack channels. The data space is moving so fast right now with so many different competing frameworks, tools, and ideas. At the same time, data work tends to be less discussed and publicly shared than analysis methods (e.g. new modeling packages) due to data privacy and IP. I've found no better place to "drink from the firehouse" and benefit from the insights of others questions, challenges, and successes. 
 
-## What dbt community leader do you identify with? (This can be either a specific person, or type of leader.) How are you looking to grow your leadership in the dbt community?
+## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
 Two community members that really inspire me are Claire Carroll and Joel Labes. I think both showcase excellence in technical best practices, crystal-clear communication of technical concepts in their prolific writing, and a passion for building community and creating on-ramps. That mix of so-called 'hard' and 'soft' skills adds so much to the community and helps empower every member to be their best. I'm always looking to balance the time I spend growing my skills along both dimensions. 
 
