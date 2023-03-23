@@ -10,7 +10,7 @@ description: "Configure Snowflake"
 
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/1-snowflake-trial-AWS-setup.png" title="Snowflake trial"/>
 
-3. After creating your account and verifying via your sign up email, Snowflake will direct you back to the UI, which is called Snowsight.
+3. After creating your account and verifying it from your sign-up email, Snowflake will direct you back to the UI called Snowsight.
 
 4. When Snowsight first opens, your window should look like the following, with you logged in as the ACCOUNTADMIN with demo worksheets open:
 
