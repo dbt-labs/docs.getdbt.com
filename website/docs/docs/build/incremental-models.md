@@ -309,7 +309,7 @@ select ...
 
 </File>
 
-Alternatively, specify a list of columns to exclude from being updated by passing a list of column names to a `mergee_exclude_columns` config.
+Alternatively, specify a list of columns to exclude from being updated by passing a list of column names to a `merge_exclude_columns` config.
 
 <File name='models/my_model.sql'>
 
