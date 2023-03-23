@@ -33,6 +33,6 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
     2. Which constructor has the fastest pit stops in 2021?
     3. Predicting the position of each driver given using a decade of data (2010 - 2020)
 
-As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our csv files then use Snowflake’s `COPY INTO` function to copy the data in from our csvs into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). The data is originally compiled from the [Ergast Developer API](http://ergast.com/mrd/).
+As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our CSV files then use Snowflake’s `COPY INTO` function to copy the data in from our CSV files into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). The data is originally compiled from the [Ergast Developer API](http://ergast.com/mrd/).
 
 Overall we are going to set up the environments, build scalable pipelines in dbt, establish data tests, and promote code to production.
