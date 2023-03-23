@@ -1,7 +1,7 @@
 const fs = require('fs')
 const matter = require('gray-matter')
 
-module.exports = function buildSpotlightIndexPagePlugin(context, options) {
+module.exports = function buildSpotlightIndexPagePlugin() {
   return {
     name: 'docusaurus-build-spotlight-index-page-plugin',
     async loadContent() {
@@ -35,22 +35,30 @@ module.exports = function buildSpotlightIndexPagePlugin(context, options) {
     async contentLoaded({content, actions}) {
       const {createData, addRoute} = actions;
 
-        // Create json with spotlight member data
-        const spotlightData = await createData(
-          `spotlight-page-data.json`,
-          JSON.stringify(content),
-        );
-          
-        // Build the spotlight index page
-        addRoute({
-          path: `/community/spotlight`,
-          component: '@site/src/components/communitySpotlightList/index.js',
-          modules: {
-            // propName -> JSON file path
-            spotlightData,
-          },
-          exact: true,
-        });
+      // Sort spotlight members by date created
+      const contentSorted = content.sort((a, b) => {
+        if(!a?.data?.dateCreated || !b?.data?.dateCreated) return
+
+        return new Date(b.data.dateCreated) - new Date(a.data.dateCreated)
+      })
+
+      // Create json with spotlight member data
+      const spotlightData = await createData(
+        `spotlight-page-data.json`,
+        JSON.stringify(contentSorted),
+      );
+
+      
+      // Build the spotlight index page
+      addRoute({
+        path: `/community/spotlight`,
+        component: '@site/src/components/communitySpotlightList/index.js',
+        modules: {
+          // propName -> JSON file path
+          spotlightData,
+        },
+        exact: true,
+      });
 
     },
   };
