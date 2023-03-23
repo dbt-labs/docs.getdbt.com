@@ -33,7 +33,7 @@ Next, we provide instructions on how to install audit_helper in your dbt project
 ## Installation instructions
 Let’s start by setting the stage for the audit_helper package to work in our project. It's important to note that the audit_helper package must run on dbt versions above or equal to 1.2.0 and below 2.0.0. Next, the two steps below will guide you on how to install and get audit_helper up and running.
 
-1. First, add a `packages.yml` file to your dbt project, if you don't have one already. Inside the `packages.yml` file, add the audit_helper packabey by copying and pasting the code below. Note that this file should be at the same level as your `dbt_project.yml` file.
+1. First, add a `packages.yml` file to your dbt project, if you don't have one already. Inside the `packages.yml` file, add the `audit_helper` package by copying and pasting the code below. Note that this file should be at the same level as your `dbt_project.yml` file.
 
     ```yaml
     packages:
