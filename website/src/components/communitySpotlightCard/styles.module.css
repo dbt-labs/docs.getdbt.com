@@ -1,5 +1,5 @@
-.spotlightBreadcrumbs {
-  background: none;
+.spotlightBreadcrumbs, [data-theme='dark'] .spotlightBreadcrumbs {
+  background: none !important;
   padding: 0;
 }
 .spotlightBreadcrumbs > .spotlightBreadcrumbsContainer {
