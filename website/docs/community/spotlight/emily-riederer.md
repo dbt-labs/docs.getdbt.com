@@ -1,7 +1,7 @@
 ---
 id: emily-riederer
 title: Emily Riederer
-description: |-
+description: |
   I'm a long-time dbt user and have been an active community member for a few years. 
 
   Professionally, I've led a variety of data teams at Capital One spanning analytics, modeling, innersource data tools, and data infrastructure. The common denominator of all of these roles has been the overwhelming importance of high quality data processing pipelines. Outside of work, I enjoy doing pro bono projects and applying my same skillset to scrappier environments.

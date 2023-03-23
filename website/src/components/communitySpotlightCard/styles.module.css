@@ -47,6 +47,7 @@ div.spotlightMemberCard {
 .spotlightMemberContent .spotlightMemberDescription {
   margin-top: 1rem;
   font-size: 1.125rem;
+  white-space: pre-line;
 }
 .spotlightMemberDescriptionFull {
   margin-top: 1rem;

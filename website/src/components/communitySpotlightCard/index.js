@@ -107,7 +107,7 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
                 {item?.name && item?.link && (
                   <>
                     {i !== 0 && ' | '}
-                    <a href={item.link} title="#">{item.name}</a>
+                    <a href={item.link} title={item.name} target='_blank' rel='noreferrer'>{item.name}</a>
                   </>
                 )}
               </>
