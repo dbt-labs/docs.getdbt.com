@@ -5,5 +5,7 @@
     "spellright.documentTypes": [
         "latex",
         "plaintext"
-    ]
+    ],
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true
 }
