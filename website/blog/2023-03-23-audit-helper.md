@@ -66,7 +66,7 @@ As shown in the example, the model is compared line by line, and in this case, a
 
 As previously stated, for the match to be valid, all column values of a model’s row must be equal to the other model. This is why we sometimes need to exclude columns from the comparison (such as date columns, which can have a time zone difference from the original model to the refactored — we will discuss tips like these below).
 
-### The code for the compare_queries macro: Step-by-step
+### The code for the `compare_queries` macro: Step-by-step
 1. Create a new `.sql` model in the folder of your choice
 2. Copy and paste the following example below in the model created:
 
