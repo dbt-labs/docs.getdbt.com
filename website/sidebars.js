@@ -223,7 +223,6 @@ const sidebarSettings = {
       collapsed: true,
       link: {type: "doc", id: "docs/deploy/deployments"},
       items: [
-        "docs/deploy/about-state",
         {
           type: "category",
           label: "Deploy with dbt Cloud",
@@ -240,6 +239,7 @@ const sidebarSettings = {
           ],
         },
         "docs/deploy/deployment-tools", 
+        "docs/deploy/project-state",
       ],
     }, // end of "Deploy dbt jobs"
     {

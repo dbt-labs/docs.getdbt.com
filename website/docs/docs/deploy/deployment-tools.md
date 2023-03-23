@@ -37,35 +37,9 @@ For more details on both of these methods, including example implementations, ch
 
 Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process, from data ingestion to data transformation. You can seamlessly trigger dbt Cloud jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-cloud-apis/overview) in ADF. 
 
-For a more detailed overview of how to do this, refer to the following guidance:
-
-<Tabs>
-
-<TabItem value="adfsteps" label="dbt Cloud and ADF steps">
-
-To use the dbt API to trigger a job in dbt Cloud through ADF:
-
-1. In dbt Cloud, go to the job settings of the daily production job and turn off the scheduled run in the **Trigger** section.
-2. You'll want to create a pipeline in ADF to trigger a dbt Cloud job.
-3. Securely fetch the dbt Cloud service token from a key vault in ADF, using a web call as the first step in the pipeline.
-4. Set the parameters in the pipeline, including the dbt Cloud account ID and  job ID, as well as the name of the key vault and secret that contains the service token. 
-    * You can find the dbt Cloud job and account id in the URL, for example, if your URL is `https://cloud.getdbt.com/deploy/88888/projects/678910/jobs/123456`, the account ID is 88888 and the job ID is 123456
-5. Trigger the pipeline in ADF to start the dbt Cloud job and monitor the status of the dbt Cloud job in ADF.
-6. In dbt Cloud, you can check the status of the job and how it was triggered in dbt Cloud.
-
-</TabItem>
-
-<TabItem value="adfvideo" label="dbt Cloud and ADF video">
-
-This video provides you with a detailed overview of how to trigger a dbt Cloud job via the API once your ADF ingestion jobs finish.
+This video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in ADF:
 
 <LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
-
-</TabItem>
-</Tabs>
-
-   
-
 
 
 ## Prefect
@@ -98,7 +72,7 @@ If your organization is using [Prefect](https://www.prefect.io/), the way you wi
 </Tabs>
 
 
-### On Prefect 1
+### Prefect 1
 
 <Tabs>
 

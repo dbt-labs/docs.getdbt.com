@@ -6,8 +6,6 @@ description: "You can enable continuous integration (CI) to test every single ch
 
 Use dbt Cloud to streamline your data transformation workflows and empower data teams to run dbt in production with ease. With dbt Cloud's in-app scheduling, logging, and alerting features, you can easily build observability into your processes. The protection policies on branches ensure that your data moves through governed processes every step of the way, from dev to stage to prod environments.
 
-dbt Cloud has two types of deployment models: Multi-tenant and Single-tenant, both of which are hosted on [AWS infrastructure](/docs/cloud/about-cloud/architecture) managed by dbt Labs. To learn more about these models, refer to the [tenancy page](/docs/cloud/about-cloud/tenancy).
-
 To experience the benefits of dbt Cloud, [sign up](https://cloud.getdbt.com/signup/) for a free account 
 today. 
 
@@ -42,17 +40,7 @@ Refer to [job triggers](/docs/deploy/job-triggers) to learn how to configure a j
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configure your job triggers"/>
 
-<!--<Tabs>
-
-<TabItem value="schedulejobs" label="Job triggers">
-
-Configure your job to run on [scheduled](/docs/deploy/job-triggers#schedule-days) days and time, or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). Refer to [job triggers](/docs/deploy/job-triggers) for more details.
-
-<Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
-
-</TabItem>
-
-<TabItem value="createjob" label="How to create a job">
+### Create a job
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 2. Provide a job name, for example "Production run". 
@@ -85,10 +73,6 @@ Configure your job to run on [scheduled](/docs/deploy/job-triggers#schedule-days
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
 6. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under "Run history." 
-
-</TabItem>
-</Tabs>
--->
 
 ### Notifications
 

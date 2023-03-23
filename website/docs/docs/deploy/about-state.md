@@ -1,6 +1,6 @@
 ---
 title: "Project state"
-id: "about-state"
+id: "project-state"
 sidebar: "Project state"
 ---
 
