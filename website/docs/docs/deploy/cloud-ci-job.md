@@ -17,7 +17,7 @@ Only GitLab users with a paid or self-hosted GitLab account can use GitLab webho
 :::
 
 :::info Common Errors
-If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to [reconfigure the project](/docs/deploy/cloud-ci-job#reconnecting-your-dbt-project-to-use-dbt-clouds-native-integration-with-github-gitlab-or-azure-devops) to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead.
+If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to reconfigure the project to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead. Read more in [Troubleshooting](/docs/deploy/cloud-ci-job#troubleshooting).
 :::
 
 ## Configuring continuous integration in dbt Cloud
