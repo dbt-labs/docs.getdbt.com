@@ -10,7 +10,7 @@ We test data models for mainly two reasons:
 1. Ensure that our source data is clean on ingestion before we start data modeling/transformation (aka avoid garbage in, garbage out problem).
 2. Make sure we don’t introduce bugs in the transformation code we wrote (stop ourselves from creating bad joins/fanouts).
 
-Testing in dbt comes in two flavors: [generic](/docs/building-a-dbt-project/tests#generic-tests) and [singular](/docs/building-a-dbt-project/tests#singular-tests).
+Testing in dbt comes in two flavors: [generic](/docs/build/tests#generic-tests) and [singular](/docs/build/tests#singular-tests).
 
 You define them in a test block (similar to a macro) and once defined, you can reference them by name in your .yml files (applying them to models, columns, sources, snapshots, and seeds).
 
