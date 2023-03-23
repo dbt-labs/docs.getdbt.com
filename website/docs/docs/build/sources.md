@@ -175,7 +175,7 @@ To snapshot freshness information for your sources, use the `dbt source freshnes
 $ dbt source freshness
 ```
 
-Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the query logs. You can find the query logs in dbt Cloud by clicking **Details** on the node in the command drawer. In the CLI, you can find the query logs by running the `dbt --debug run` command. 
+Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/runs/checking-logs).
 
 ```sql
 select
