@@ -904,6 +904,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/dbt-python-snowpark/6-foundational-structure",
             "guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure",
             "guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging",
+            "guides/dbt-ecosystem/dbt-python-snowpark/9-sql-transformations",
             "guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations",
             "guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep",
             "guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction",
