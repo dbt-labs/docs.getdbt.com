@@ -192,7 +192,7 @@ The arguments used by this macro are pretty much the same used by the `compare_q
 
 Although similar to the compare_queries macro, this `compare_columns_value` macro gives great importance to the `primary_key` argument, which is going to be a fundamental part of generating correctly the metrics attributed to the compared column, acting as an anchor to compare every generated row from the refactored model with its legacy counterpart.
 
-Also, we can see that there is a table printing option enabled as default, so the result of the query gets printed on the terminal when the macro is run. That can be useful to quickly check out the compatibility status of a column, without leaving the code editor while refactoring SQL through dbt.
+Also, we can see that the example code includes a table printing option enabled as default. This prints the result of the query in the terminal when the macro is run during dbt compilation step. That can be useful to quickly check out the compatibility status of a column, without leaving the code editor while refactoring SQL through dbt.
 
 3. Replace column names and source references from the example with the respective information of the compared models.
 4. Optional: Disable the `print_table()` command, so the model can be materialized on your data warehouse.
