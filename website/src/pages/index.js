@@ -8,7 +8,7 @@ import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-// import { getSpotlightMember } from '../utils/get-spotlight-member';
+import { getSpotlightMember } from '../utils/get-spotlight-member';
 
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
@@ -50,8 +50,7 @@ function Home() {
   // Get spotlight member by ID or date if available
   // If found, update section to show community spotlight member
   // Otherwise, show featured resource
-  const spotlightMember = undefined
-  // const spotlightMember = getSpotlightMember(communitySpotlightMember)
+  const spotlightMember = getSpotlightMember(communitySpotlightMember)
   if(spotlightMember) {
     spotlightSection = spotlightMember
   }
