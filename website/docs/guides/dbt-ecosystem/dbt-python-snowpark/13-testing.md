@@ -10,7 +10,7 @@ We test data models for mainly two reasons:
 1. Ensure that our source data is clean on ingestion before we start data modeling/transformation (aka avoid garbage in, garbage out problem).
 2. Make sure we don’t introduce bugs in the transformation code we wrote (stop ourselves from creating bad joins/fanouts).
 
-Testing in dbt comes in two flavors: [generic](https://docs.getdbt.com/docs/building-a-dbt-project/tests#generic-tests) and [singular](https://docs.getdbt.com/docs/building-a-dbt-project/tests#singular-tests).
+Testing in dbt comes in two flavors: [generic](/docs/building-a-dbt-project/tests#generic-tests) and [singular](/docs/building-a-dbt-project/tests#singular-tests).
 
 You define them in a test block (similar to a macro) and once defined, you can reference them by name in your .yml files (applying them to models, columns, sources, snapshots, and seeds).
 
@@ -98,7 +98,7 @@ These tests are defined in `.sql` files, typically in your `tests` directory (as
 
 Let’s add a custom test that asserts that the moving average of the lap time over the last 5 years is greater than zero (it’s impossible to have time less than 0!). It is easy to assume if this is not the case the data has been corrupted.
 
-1. Create a file `lap_times_moving_avg_assert_positive_or_null.sql` ****under the `tests` folder**.**
+1. Create a file `lap_times_moving_avg_assert_positive_or_null.sql` under the `tests` folder.
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/4-custom-singular-test.png" title="custom singular test for testing lap times are positive values"/>
 
 2. Copy the following code and save the file:
@@ -128,7 +128,11 @@ Let’s add a custom test that asserts that the moving average of the lap time o
     - `lap_times_moving_avg`
         - Referential test on `race_year`
         - Mean pit stop times are greater than or equal to 0 (no negative time values)
-2. To run the tests on both our models we can use this syntax in the command line to run them both at once, similar to how we did our data splits earlier: **Execute** `dbt test --select fastest_pit_stops_by_constructor lap_times_moving_avg` in the command bar.****
+2. To run the tests on both our models we can use this syntax in the command line to run them both at once, similar to how we did our data splits earlier.
+    Execute the following in the command bar:
+    ```bash
+    dbt test --select fastest_pit_stops_by_constructor lap_times_moving_avg
+    ```
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/13-testing/5-running-tests-on-python-models.png" title="running tests on our python models"/>
 
 3. All 4 of our tests passed (yay for clean data)! To understand the SQL being run against each of our tables we can click into the details of the test.

@@ -14,7 +14,7 @@ Since we want to focus on dbt and python in this workshop, check out our [source
 
 ## Create sources
 
-We're going to be using each of our 8 formula 1 tables from our `formula 1` database under the `raw`  schema for our transformations and we want to create those tables as sources in our project.
+We're going to be using each of our 8 formula 1 tables from our `formula1` database under the `raw`  schema for our transformations and we want to create those tables as sources in our project.
 
 1. Create a new file called `f1_sources.yml` with the following file path: `models/staging/formula1/f1_sources.yml`.
 2. Then paste the following code into the file before saving it:

@@ -16,13 +16,13 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
 ## What you'll learn
 
 - How to build scalable data transformation pipelines using dbt & Snowflake using SQL and Python
-- How to leverage copying data into Snowflake from a public s3 bucket
+- How to leverage copying data into Snowflake from a public S3 bucket
 
 ## What you need to know
 
 - Basic to intermediate SQL and python.
 - Basic understanding of dbt fundamentals. We recommend the [dbt Fundamentals course](https://courses.getdbt.com/collections) if you're interested.
-- High level machine learning process (encoding, training, testing).
+- High level machine learning process (encoding, training, testing)
 - Simple ML algorithms &mdash; we will use logistic regression to keep the focus on the *workflow*, not algorithms!
 
 ## What you'll build
@@ -35,4 +35,4 @@ All code in today’s workshop can be found on [GitHub](https://github.com/dbt-l
 
 As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs public S3 bucket. We will create a Snowflake Stage for our csv files then use Snowflake’s `COPY INTO` function to copy the data in from our csvs into tables. The Formula 1 is available on [Kaggle](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020). The data is originally compiled from the [Ergast Developer API](http://ergast.com/mrd/).
 
-We are going to set up the environments, build scalable pipelines in dbt, establish data tests, and promote code to production.
+Overall we are going to set up the environments, build scalable pipelines in dbt, establish data tests, and promote code to production.

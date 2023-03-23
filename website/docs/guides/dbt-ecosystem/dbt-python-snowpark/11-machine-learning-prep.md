@@ -85,7 +85,10 @@ At a high level we’ll be:
         - ⚠️ You might be wondering why we didn’t do this upstream in our `fct_results` table! The reason for this is that we want our machine learning cleanup to reflect the year 2020 for our predictions and give us an up-to-date team name. However, for business intelligence purposes we can keep the historical data at that point in time. Instead of thinking of one table as “one source of truth” we are creating different datasets fit for purpose: one for historical descriptions and reporting and another for relevant predictions.
     - Create new confidence features for drivers and constructors
     - Generate flags for the constructors and drivers that were active in 2020
-4. **Execute** `dbt run --select ml_data_prep` in the command bar.
+4. Execute the following in the command bar:
+    ```bash
+    dbt run --select ml_data_prep
+    ```
 5. There are more aspects we could consider for this project, such as normalizing the driver confidence by the number of races entered. Including this would help account for a driver’s history and consider whether they are a newbie or long time driver. We’re going to keep it simple for now, but these are some of the ways we can expand and improve our machine learning dbt projects. Breaking down our machine learning prep model:
     - Lambda functions: We use some lambda functions to transform our data without having to create a fully-fledged function using the `def` notation. So what exactly are lambda functions?
         - In Python, a lambda function is a small, anonymous function defined using the keyword "lambda". Lambda functions are used to perform a quick operation, such as a mathematical calculation or a transformation on a list of elements. They are often used in conjunction with higher-order functions, such as `apply`, `map`, `filter`, and `reduce`.
@@ -147,7 +150,10 @@ In this next part we’ll be performing covariate encoding. Breaking down this p
 
     return encoded_data_grouped_target
     ```
-2. Execute `dbt run --select covariate_encoding` in the command bar.
+2. Execute the following in the command bar:
+    ```bash
+    dbt run --select covariate_encoding
+    ```
 3. In this code we are using a ton of functions from libraries! This is really cool, because we can utilize code other people have developed and bring it into our project simply by using the `import` function. [Scikit-learn](https://scikit-learn.org/stable/), “sklearn” for short, is an extremely popular data science library. Sklearn contains a wide range of machine learning techniques, including supervised and unsupervised learning algorithms, feature scaling and imputation, as well as tools model evaluation and selection. We’ll be using Sklearn for both preparing our covariates and creating models (our next section).
 4. Our dataset is pretty small data so we are good to use pandas and `sklearn`. If you have larger data for your own project in mind consider `dask` or `category_encoders`.
 5. Breaking it down a bit more:
@@ -209,7 +215,11 @@ Now that we’ve cleaned and encoded our data we are going to further split in b
         
         return hold_out_dataset
     ```
-3. **Execute** `dbt run --select train_test_dataset hold_out_dataset_for_prediction` in the command bar. To run our temporal data split models we can use this syntax in the command line to run them both at once. Make sure you use a *space* [syntax](https://docs.getdbt.com/reference/node-selection/syntax) between the model names to indicate you want to run both!
+3. Execute the following in the command bar:
+    ```bash
+    dbt run --select train_test_dataset hold_out_dataset_for_prediction
+    ```
+    To run our temporal data split models we can use this syntax in the command line to run them both at once. Make sure you use a *space* [syntax](/reference/node-selection/syntax) between the model names to indicate you want to run both!
 4. **Commit and push** our changes to keep saving our work as we go using `ml data prep and splits` before moving on.
 
 👏 Now that we’ve finished our machine learning prep work we can move onto the fun part – training and prediction!

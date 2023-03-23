@@ -89,7 +89,10 @@ If you haven’t seen code like this before or use joblib files to save machine 
     return  snowpark_train_df.with_column("DATASET_TYPE", F.lit("train")).union(snowpark_test_df.with_column("DATASET_TYPE", F.lit("test")))
     ```
 
-3. Execute `dbt run --select train_test_position` in the command bar. 
+3. Execute the following in the command bar:
+    ```bash
+    dbt run --select train_test_position
+    ```
 4. Breaking down our python script here:
     - We’re importing some helpful libraries.
         - Defining a function called `save_file()` that takes four parameters: `session`, `model`, `path` and `dest_filename` that will save our logistic regression model file.
@@ -215,7 +218,10 @@ If you haven’t seen code like this before or use joblib files to save machine 
     
     return new_predictions_df
     ```
-2. **Execute** `dbt run --select predict_position` in the command bar.
+2. Execute the following in the command bar:
+    ```bash
+    dbt run --select predict_position
+    ```
 3. **Commit and push** our changes to keep saving our work as we go using the commit message `logistic regression model training and application` before moving on.
 4. At a high level in this script we are:
     - Retrieving our staged logistic regression model

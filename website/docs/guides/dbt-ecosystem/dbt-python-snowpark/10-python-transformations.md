@@ -4,7 +4,7 @@ id: "10-python-transformations"
 description: "Python transformations"
 ---
 
-Up until now SQL has been driving the project (car pun intended) for data cleaning and hierarchical joining. Now it’s time for python to take the wheel (car pun still intended) for the rest of our lab! For more information about running python models on dbt check out our [docs](https://docs.getdbt.com/docs/build/python-models). To learn more about dbt python works under the hood check out [Snowpark for Python](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html), which makes running dbt python models possible.
+Up until now SQL has been driving the project (car pun intended) for data cleaning and hierarchical joining. Now it’s time for python to take the wheel (car pun still intended) for the rest of our lab! For more information about running python models on dbt check out our [docs](/docs/build/python-models). To learn more about dbt python works under the hood check out [Snowpark for Python](https://docs.snowflake.com/en/developer-guide/snowpark/python/index.html), which makes running dbt python models possible.
 
 *There are quite a few differences between SQL and python in terms of the dbt syntax and DDL, so we’ll be breaking our code and model runs down further for our python models.*
 
@@ -53,10 +53,15 @@ First we want to find out: Which constructor* had the fastest pit stops in 2021?
         - The way you see method chaining in python is the syntax `.().()` for example `.describe().sort_values(by='mean')` here the `.describe()` method is chained to `.sort_values()`.
     - The `.describe()` method is used to generate various summary statistics of the dataset. It's used on pandas dataframe, it gives a quick and easy way to get the summary statistics of your dataset without writing multiple lines of code.
     - The `.sort_values()` method is used to sort a pandas dataframe or a series by one or multiple columns. The method sorts the data by the specified column(s) in ascending or descending order. It is the pandas equivalent to `order by` in SQL.
-    
-    We won’t go as in depth for our subsequent scripts, but will continue to explain at a high level what new libraries, functions, and methods are doing.
-    
-5. Build the model using the UI which will **execute** ` dbt run --select fastest_pit_stops_by_constructor`in the command bar.
+
+
+We won’t go as in depth for our subsequent scripts, but will continue to explain at a high level what new libraries, functions, and methods are doing.
+
+5. Build the model using the UI which will **execute**:
+```bash
+dbt run --select fastest_pit_stops_by_constructor
+```
+in the command bar.
 
 Let’s look at some details of our first python model to see what our model executed. There two major differences we can see while running a python model compared to a SQL model:
 
@@ -73,7 +78,7 @@ So which constructor had the fastest pit stops in 2021? Let’s look at our data
 6. We cannot preview python models directly, so let’s create a new file using the **+** button or Control-n shortcut to create a new scratchpad.
 7. Reference our python model:
 ```sql
-    select * from {{ ref('fastest_pit_stops_by_constructor') }}
+select * from {{ ref('fastest_pit_stops_by_constructor') }}
 ```
 and preview the output:
   <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/2-fastest-pit-stops-preview.png" title="Looking at our new python data model we can see that Red Bull had the fastest pit stops!"/>
@@ -111,7 +116,12 @@ Now we want to find the lap time average and rolling average through the years (
     - Reset the index.
     - Calculate the rolling 5 year mean.
     - Round our numeric columns to one decimal place.
-11. Now run this model by using the UI **Run model** or `dbt run --select lap_times_moving_avg` in the command bar.
+11. Now run this model by using the UI **Run model** or 
+    ```bash
+    dbt run --select lap_times_moving_avg
+    ```
+ in the command bar.
+
 12. Once again previewing the output of our data using the same steps for our `fastest_pit_stops_by_constructor` model.
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations/3-lap-times-trends-preview.png" title="Viewing our lap trends and 5 year rolling trends"/>
 
@@ -121,7 +131,7 @@ We can see that it looks like lap times are getting consistently faster over tim
 
 ## The dbt model, .source(), .ref() and .config() functions
 
-Let’s take a step back before starting machine learning to both review and go more in-depth at the methods that make running dbt python models possible. If you want to know more outside of this lab’s explanation read the documentation [here](https://docs.getdbt.com/docs/build/python-models?version=1.3).
+Let’s take a step back before starting machine learning to both review and go more in-depth at the methods that make running dbt python models possible. If you want to know more outside of this lab’s explanation read the documentation [here](/docs/build/python-models?version=1.3).
 
 - dbt model(dbt, session). For starters, each Python model lives in a .py file in your models/ folder. It defines a function named `model()`, which takes two parameters:
     - dbt: A class compiled by dbt Core, unique to each model, enables you to run your Python code in the context of your dbt project and DAG.
@@ -138,4 +148,4 @@ Let’s take a step back before starting machine learning to both review and go 
         # setting configuration
         dbt.config(materialized="table")
         ```
-    - There's a limit to how complex you can get with the `dbt.config()` method. It accepts only literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `.config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the config property in a [YAML file](https://docs.getdbt.com/reference/resource-properties/config). Learn more about configurations [here](https://docs.getdbt.com/reference/model-configs).
+    - There's a limit to how complex you can get with the `dbt.config()` method. It accepts only literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `.config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the config property in a [YAML file](/reference/resource-properties/config). Learn more about configurations [here](/reference/model-configs).

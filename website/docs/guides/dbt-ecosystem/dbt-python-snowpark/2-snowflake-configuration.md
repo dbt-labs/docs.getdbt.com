@@ -23,5 +23,5 @@ description: "Configure Snowflake"
 
 <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration/4-enable-anaconda.jpeg" title="enable anaconda"/>
 
-6. Open a new Worksheet selecting **+ Worksheet** in the upper right corner.
+6. Finally, open a new Worksheet selecting **+ Worksheet** in the upper right corner to wrap up this step.
 

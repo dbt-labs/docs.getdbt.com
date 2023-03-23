@@ -21,6 +21,8 @@ dbt Labs has developed a [project structure guide](/guides/best-practices/how-we
     - If you click into your `models` directory now, you should see the new `staging` folder nested within `models` and the `formula1` folder nested within `staging`.
 2. Create two additional folders the same as the last step. Within the `models` subdirectory create new directories `marts/core`.
 
-3. We will need to create a few more folders and subfolders using the UI. Your folder tree should look like this when it's all done:
+3. We will need to create a few more folders and subfolders using the UI. After you create all the necessary folders, your folder tree should look like this when it's all done:
 
     <Lightbox src="/img/guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure/3-tree-of-new-folders.png" title="File tree of new folders"/>
+
+Remeber you can always reference the entire project in [GitHub](https://github.com/dbt-labs/python-snowpark-formula1/tree/python-formula1) to view the complete folder and file strucutre.  

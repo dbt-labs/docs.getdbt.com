@@ -7,7 +7,7 @@ description: "Foundational structure"
 In this step we’ll need to create a development branch and set up project level configurations.
 
 1. To get started with development for our project, we'll need to create a new git branch for our work. Select **create branch** and name your development branch. We'll call our branch `snowpark_python_workshop` then click **Submit**.
-2. The first piece of development we'll do on the project is to update the `dbt_project.yml ` file. Every dbt project requires a `dbt_project.yml` file &mdash; this is how dbt knows a directory is a dbt project. The [dbt_project.yml](/reference/dbt_project.yml) file also contains important information that tells dbt how to operate on your project.
+2. The first piece of development we'll do on the project is to update the `dbt_project.yml` file. Every dbt project requires a `dbt_project.yml` file &mdash; this is how dbt knows a directory is a dbt project. The [dbt_project.yml](/reference/dbt_project.yml) file also contains important information that tells dbt how to operate on your project.
 3. Select on the `dbt_project.yml` file from the file tree to open it and replace all of the existing contents with the following code below. When you're done, save the file by clicking **save** You can also use the Command-S or Control-S shortcut that we’ll use from here on out.
 
     ```yaml
