@@ -65,11 +65,15 @@ function dbtEditor({ project, tag }) {
 
   // Get selected node from sidebar
   const handleFileSelect = async (e) => {
+    if(!e?.currentTarget?.dataset) {
+      setError(true)
+      return
+    }
     const { 
       resource_type, 
       node_name, 
       file_name 
-    } = e?.currentTarget?.dataset
+    } = e.currentTarget.dataset
 
     if(!resource_type || !node_name) {
       setError(true)

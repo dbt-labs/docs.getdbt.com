@@ -83,7 +83,6 @@ const MDXComponents = {
   EventsFeed: EventsFeed,
   DiscourseFeed: DiscourseFeed,
   DiscourseHelpFeed: DiscourseHelpFeed,
-  Card: Card,
   CommunitySpotlightCard,
   CommunitySpotlightList,
   dbtEditor: dbtEditor,
