@@ -910,6 +910,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction",
             "guides/dbt-ecosystem/dbt-python-snowpark/13-testing",
             "guides/dbt-ecosystem/dbt-python-snowpark/14-documentation",
+            "guides/dbt-ecosystem/dbt-python-snowpark/15-deployment",
           ],
         },
         {
