@@ -11,6 +11,8 @@ Running dbt in production using dbt Cloud's job scheduler eliminates the need to
 To experience the benefits of dbt Cloud, [sign up](https://cloud.getdbt.com/signup/) for a free account 
 today. 
 
+<Lightbox src ="/img/dbt-cloud-jobs.gif" width="85%" title="An overview of a dbt Cloud job run"/>
+
 ## Prerequisites
 
 - You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
@@ -18,8 +20,6 @@ today.
 - You must have [access permission](/docs/cloud/manage-access/about-access) to create, edit, and run jobs
 - You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments) 
 - Your deployment environment must be on dbt version 1.0 or higher
-
-<Lightbox src ="/img/dbt-cloud-jobs.gif" width="85%" title="An overview of a dbt Cloud job run"/>
 
 ## Job scheduler features
 
