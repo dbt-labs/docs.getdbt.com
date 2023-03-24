@@ -40,7 +40,6 @@ Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/a
 
 The following video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in Azure Data Factory.
 
-
 <LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
 
 
