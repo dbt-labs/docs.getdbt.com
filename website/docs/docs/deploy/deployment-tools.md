@@ -43,7 +43,6 @@ The following video provides you with a detailed overview of how to trigger a db
 <LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
 
 
-**dbt Cloud + ADF steps**
 
 To use the dbt API to trigger a job in dbt Cloud through ADF:
 
