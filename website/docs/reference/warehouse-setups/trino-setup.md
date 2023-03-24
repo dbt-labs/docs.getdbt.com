@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-presto-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Starburst (Trino)'
-  config_page: 'no-configs'
+  config_page: 'trino-configs'
 ---
 
 :::info Vendor-supported plugin
