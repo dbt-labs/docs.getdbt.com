@@ -891,6 +891,30 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "dbt Python Snowpark",
+          link: {
+            type: "doc",
+            id: "guides/dbt-ecosystem/dbt-python-snowpark/1-overview-dbt-python-snowpark",
+          },
+          items: [
+            "guides/dbt-ecosystem/dbt-python-snowpark/2-snowflake-configuration",
+            "guides/dbt-ecosystem/dbt-python-snowpark/3-connect-to-data-source",
+            "guides/dbt-ecosystem/dbt-python-snowpark/4-configure-dbt",
+            "guides/dbt-ecosystem/dbt-python-snowpark/5-development-schema-name",
+            "guides/dbt-ecosystem/dbt-python-snowpark/6-foundational-structure",
+            "guides/dbt-ecosystem/dbt-python-snowpark/7-folder-structure",
+            "guides/dbt-ecosystem/dbt-python-snowpark/8-sources-and-staging",
+            "guides/dbt-ecosystem/dbt-python-snowpark/9-sql-transformations",
+            "guides/dbt-ecosystem/dbt-python-snowpark/10-python-transformations",
+            "guides/dbt-ecosystem/dbt-python-snowpark/11-machine-learning-prep",
+            "guides/dbt-ecosystem/dbt-python-snowpark/12-machine-learning-training-prediction",
+            "guides/dbt-ecosystem/dbt-python-snowpark/13-testing",
+            "guides/dbt-ecosystem/dbt-python-snowpark/14-documentation",
+            "guides/dbt-ecosystem/dbt-python-snowpark/15-deployment",
+          ],
+        },
+        {
+          type: "category",
           label: "Databricks and dbt",
           link: {
             type: "doc",
