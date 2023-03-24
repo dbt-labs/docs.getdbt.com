@@ -286,6 +286,8 @@ select ...
 
 </File>
 
+<VersionBlock firstVersion="1.3">
+
 ### Strategy-specific configs
 
 If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
@@ -327,6 +329,8 @@ select ...
 ```
 
 </File>
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.4">
 
