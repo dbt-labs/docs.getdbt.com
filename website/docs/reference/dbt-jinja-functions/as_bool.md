@@ -1,6 +1,8 @@
 ---
 title: "as_bool"
 id: "as_bool"
+sidebar_position: 2
+description: "test this as a description list"
 ---
 
 The `as_bool` Jinja filter will coerce Jinja-compiled output into a boolean
