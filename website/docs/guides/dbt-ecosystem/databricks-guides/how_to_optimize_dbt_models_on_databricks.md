@@ -76,9 +76,11 @@ zorder="column_A" | ["column_A", "column_B"]
 
 The analyze table command ensures that our system has the most up to date statistics to select the optimal join plan. You will likely want to either run analyze table posthook after your model builds or run analyze table as a separate scheduled dbt job on a consistent cadence, whether it is daily, weekly, or monthly.  The SQL syntax is as follows:
 
-**ANALYZE TABLE mytable COMPUTE STATISTICS FOR**
+```sql 
+ANALYZE TABLE mytable COMPUTE STATISTICS FOR
 
-**COLUMNS col1, col2, col3**
+COLUMNS col1, col2, col3
+```
 
 An important item to clarify is that you will want to prioritize statistics for columns that are  frequently used in joins.
 
@@ -91,17 +93,6 @@ When you delete a record from a Delta table, it is a soft delete. What this mean
 Now onto the most final layer – the gold marts that business stakeholders typically interact with from their preferred BI tool. The considerations here will be fairly similar to the silver layer except that these marts are more likely to handling aggregrations. Further, you will likely want to be even more intentional about Z-Ordering these tables as SLAs tend to be lower with these direct stakeholder facing tables.
 
 In addition, these tables are well suited for defining [dbt metrics](https://docs.getdbt.com/docs/build/metrics) on to ensure simplicity and consistency across your key business KPIs! Using the [dbt_metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/), you can query the metrics inside of your own dbt project even. With the upcoming Semantic Layer Integration, you can also then query the metrics in any of the partner integrated tools.
-
-## Materialization Best Practices  
-
-Remember that data is stored as files, so the unit of I/O work in a file, not a row. That’s a lot of work if we’re dealing with TBs of data. Therefore we recommend relying on merge strategy as the recommended strategy for the majority of incremental models.
-
-Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts.Here’s the basic strategies to speed it up:
-
-1. Only read partitions that are important by pushing down filters to scan source and target using filters in *model* and *incremental_predicates*
-2. Only update important rows
-3. Improve key lookup by defining only *one* materialized key
-4. Only update important columns
 
 ### Filter rows in target and/or source
 
@@ -145,13 +136,24 @@ The three common examples of performance bottlenecks that can be surfaced by the
 
 By default, Databricks Delta tables collect statistics on the **first 32 columns** defined in your table schema. When transforming data from the Bronze/staging layer to the Silver/intermediate layer, it is advised to reorder your columns to account for these file-level stats and improve overall performance. Move numerical keys and high cardinality query predicates to the left of the 32nd ordinal position, and move strings and complex data types after the 32nd ordinal position of the table. It is worth mentioning that while you can change the default table property to collect statistics on more columns, it will add more overhead as you write files. You may change this default value by using the [table property](https://docs.databricks.com/delta/table-properties.html), **delta.dataSkippingNumIndexedCols**.
 
-### Full Table Scans** 
+### Full Table Scans
 
 The Query Profile provides metrics that allow you to identify the presence of full table scans. Full table scans is a query operation that involves scanning the entire table to retrieve records. It can be a performance issue especially for large tables with billions or trillions of rows. This is because scanning an entire table can be time-consuming and resource-intensive, leading to high memory and CPU usage and slower response times. Table layout techniques such as file compaction and Z-Ordering described in the earlier section of this article will help alleviate this problem.
 
 ### Exploding Joins
 
 The concept of “*exploding joins*” refers to a join operation that produces a much larger table result set than either of the input tables used, resulting in a Cartesian product. This performance issue can be determined by enabling the verbose mode setting in the Query Profile, by looking at the number of records produced by a join operator. There are several steps you can take to prevent exploding joins. As a first step, make the join conditions more specific to reduce the number of rows that are being matched. Another step  is to utilize data preprocessing techniques such as aggregating, filtering, and performing data sampling before the join operation. These techniques can reduce the size of the input tables and help prevent exploding joins.
+
+### Materialization Best Practices  
+
+Remember that data is stored as files, so the unit of I/O work in a file, not a row. That’s a lot of work if we’re dealing with TBs of data. Therefore we recommend relying on merge strategy as the recommended strategy for the majority of incremental models.
+
+Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts.Here’s the basic strategies to speed it up:
+
+1. Only read partitions that are important by pushing down filters to scan source and target using filters in *model* and *incremental_predicates*
+2. Only update important rows
+3. Improve key lookup by defining only *one* materialized key
+4. Only update important columns
 
 ### dbt Cloud Metadata API
 
