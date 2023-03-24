@@ -36,7 +36,7 @@ The protection policies on branches ensure that your data moves through governed
 - Commit SHA
 - Environment name
 - Sources and documentation info 
-- Job run details, including run timing, [model timing data](/docs/dbt-versions/release-notes/January-2022/model-timing-more), and [artifacts](/docs/deploy/artifacts)
+- Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their statuses
 
 You can create a job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). To create a new job, refer to the following steps:
@@ -93,6 +93,16 @@ Refer to [build and view your docs](/docs/collaborate/build-and-view-your-docs) 
 You can view or download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently.
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.jpg" width="85%" title="Access logs for run steps" />
+
+### Model timing 
+> Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
+
+The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each job run. The visualization appears for successful jobs and highlights the top 1% model durations. This helps you identify bottlenecks in your models, so you can explore them and potentially make changes to improve their performance. 
+
+You can find the dashboard on the **Run Overview** page. 
+
+<Lightbox src="/img/docs/dbt-cloud/model-timing.jpg" width="85%" title="The model timing tab displays the top 1% of model durations and visualizes model bottlenecks" />
+
 
 ### Automate workflows
 
