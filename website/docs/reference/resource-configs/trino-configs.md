@@ -24,10 +24,10 @@ In some specific cases, there may be needed tuning through the Trino session pro
 - `rename` - creates intermediate table, then renames the target to backup one and renames intermediate to target one.
 - `drop` - drops and recreates a table. It overcomes table rename limitation in AWS Glue.
 
-
 By default `table` materialization uses `on_table_exists = 'rename'`, see an examples below how to change it.
 
 In model add:
+
 ```jinja2
 {{
   config(
@@ -61,6 +61,7 @@ See [Trino docs](https://trino.io/docs/current/sql/create-view.html#security) fo
 By default `view` materialization uses `view_security = 'definer'`, see an examples below how to change it.
 
 In model add:
+
 ```jinja2
 {{
   config(
@@ -78,7 +79,6 @@ models:
     materialized: view
     +view_security: invoker
 ```
-
 
 ### Incremental
 
@@ -99,7 +99,7 @@ select * from {{ ref('events') }}
 
 Use the `+on_schema_change` property to define how dbt-trino should handle column changes. See [dbt docs](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change).
 
-Set the `+views_enabled` to `false` if your connector doesn't support views. 
+Set the `+views_enabled` to `false` if your connector doesn't support views.
 
 #### `append` (default)
 
@@ -214,8 +214,8 @@ You can also define custom properties for the materialized view through the `pro
 This materialization supports the [full_refresh](https://docs.getdbt.com/reference/resource-configs/full_refresh) config and flag.
 Whenever you want to rebuild your materialized view, e.g. when changing underlying SQL query, run `dbt run --full-refresh`.
 
-
 In model add:
+
 ```jinja2
 {{
   config(
@@ -318,8 +318,7 @@ dbt docs serve --port 8081 # starts local server (by default docs server runs on
 
 ## Using Custom schemas
 
-By default, all dbt models are built in the schema specified in your target. But sometimes you wish to build some of the models in a custom schema. In order to do so, use the `schema` configuration key to specify a custom schema for a model. See [here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas) for the documentation. It is important to note that by default, dbt will generate the schema name for a model by concatenating the custom schema to the target schema, as in: `<target_schema>_<custom_schema>`. 
-
+By default, all dbt models are built in the schema specified in your target. But sometimes you wish to build some of the models in a custom schema. In order to do so, use the `schema` configuration key to specify a custom schema for a model. See [here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas) for the documentation. It is important to note that by default, dbt will generate the schema name for a model by concatenating the custom schema to the target schema, as in: `<target_schema>_<custom_schema>`.
 
 ## Prepared statements
 

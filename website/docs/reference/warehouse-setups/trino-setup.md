@@ -34,7 +34,6 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
 pip is the easiest way to install the adapter:
@@ -48,8 +47,6 @@ pip is the easiest way to install the adapter:
 <p>For {frontMatter.meta.platform_name}-specifc configuration please refer to <a href={frontMatter.meta.config_page}>{frontMatter.meta.platform_name} Configuration</a> </p>
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
-
-
 
 ## Set up a Trino or Starburst Target
 
@@ -95,8 +92,6 @@ If your unique_key is not actually unique, the delete+insert strategy can be use
 ### LDAP
 
 ### Keberos
-
-
 
 A dbt-trino profile can be configured to run against Trino or Starburst using the following configuration:
 
