@@ -4,7 +4,7 @@ const { getDirectoryFiles } = require('../buildGlobalData/get-directory-files')
 
 const siteUrl = 'https://docs.getdbt.com'
 
-module.exports = function buildRSSFeedsPlugin(context, options) {
+module.exports = function buildRSSFeedsPlugin() {
   return {
     name: 'docusaurus-build-rss-feeds-plugin',
     async loadContent() {

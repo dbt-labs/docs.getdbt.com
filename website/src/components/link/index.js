@@ -12,7 +12,7 @@ const docsFiles = require.context(
 
 var slugs = {};
 var sources = {};
-docsFiles.keys().forEach(function(key, i) {
+docsFiles.keys().forEach(function(key) {
   var doc = docsFiles(key);
   var meta = doc.metadata;
   if (!meta) {
