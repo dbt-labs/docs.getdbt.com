@@ -38,7 +38,7 @@ For more details on both of these methods, including example implementations, ch
 Integrate dbt Cloud and [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-factory/) (ADF) for a smooth data process, from data ingestion to data transformation. You can seamlessly trigger dbt Cloud jobs upon completion of ingestion jobs by using the [dbt API](/docs/dbt-cloud-apis/overview) in ADF. Need help building this out? [Contact us](https://www.getdbt.com/contact/) today!
 
 
-This video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in Azure Data Factory.
+The following video provides you with a detailed overview of how to trigger a dbt Cloud job via the API in Azure Data Factory.
 
 
 <LoomVideo id="8dcc1d22a0bf43a1b89ecc6f6b6d0b18" /> 
