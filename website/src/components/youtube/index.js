@@ -1,6 +1,6 @@
 import React from 'react';
 
-function YoutubeVideo({children, id}) {
+function YoutubeVideo({id}) {
   return (
         <iframe
             width="560"
