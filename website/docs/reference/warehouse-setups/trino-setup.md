@@ -80,11 +80,59 @@ trino:
 
 ## Profile Setup
 
+### Ben's Table
+
+|   Field  |                                                                                                                                                                                                                                                Description                                                                                                                                                                                                                                                |                                                              Examples                                                              |
+|:--------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------:|
+|   Host   | The hostname of your Starburst Enterprise, Starburst Galaxy or Trino cluster. Do not include the HTTP protocol.                                                                                                                                                                                                                                                                                                                                                                                           |                                                       mycluster.mydomain.com                                                       |
+|   Port   | The port number to connect to on your Starburst Enterprise, Starburst Galaxy or Trino cluster. The default port for TLS enabled clusters is 443.                                                                                                                                                                                                                                                                                                                                                          |                                                                 443                                                                |
+|   User   | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster. The user must have permissions to create and drop tables. When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br><br>NOTE: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. | Starburst Enterprise/Trino<br>user.name<br>-OR-<br>user.name@mydomain.com<br><br>Starburst Galaxy<br>user.name@mydomain.com/<role> |
+| Password | The password for the provided username.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |                                                                *****                                                               |
+| Database | The name of a catalog in your Starburst Enterprise, Starburst Galaxy or Trino cluster. The provided username must have read/write access to this catalog. The selection you make does not limit the data you can access through dbt to the specified catalog in Starburst/Trino. It is only used for the initial connection to your cluster.                                                                                                                                                              |                                                         my_postgres_catalog                                                        |
+|  Schema  | The name of a schema in your Starburst Enterprise, Starburst Galaxy or Trino cluster that exists within the provided catalog. The provided username must have read/write access to this schema. The selection you make does not limit the data you can access through dbt to the specified schema in Starburst/Trino. It is only used for the initial connection to your cluster.                                                                                                                         |                                                              my_schema                                                             |
+
+### WIP staging area
 For reference on which session properties can be set on the the dbt profile do execute
 
 ```sql
 SHOW SESSION;
 ```
+
+Example profiles.yml entry:
+
+my-trino-db:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      user: commander
+      host: 127.0.0.1
+      port: 8080
+      database: analytics
+      schema: public
+      threads: 8
+      http_scheme: http
+      session_properties:
+        query_max_run_time: 4h
+        exchange_compression: True
+      timezone: UTC
+
+Example profiles.yml entry for kerberos authentication:
+
+my-trino-db:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: kerberos
+      user: commander
+      keytab: /tmp/trino.keytab
+      krb5_config: /tmp/krb5.conf
+      principal: trino@EXAMPLE.COM
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
 
 #### Supported authentication types
 
