@@ -52,7 +52,7 @@ pip is the easiest way to install the adapter:
 
 Trino or Starburst targets should be set up using the following configuration in your `profiles.yml` file.
 
-See all possible profile configuration options [here](#configuration).
+See all possible profile configuration options [here](#configuration).sss
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -78,16 +78,24 @@ trino:
 
 </File>
 
-## Incremental models
-
-Incremental strategies supported by the adapter are:
-
-- append (default incremental strategy) - append only adds the new records based on the condition specified in the is_incremental() conditional block.
-- delete+insert - Through the delete+insert incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured is_incremental() block and re-insert them.
-- merge - Through the merge incremental strategy, dbt-trino constructs a MERGE statement which inserts new and updates existing records based on the unique key (specified by unique_key).
-If your unique_key is not actually unique, the delete+insert strategy can be used instead. Note that some connectors in Trino have limited or no support for MERGE.
-
 ## Profile Setup
+
+For reference on which session properties can be set on the the dbt profile do execute
+
+```sql
+SHOW SESSION;
+```
+
+#### Supported authentication types
+
+- none - No authentication
+- [ldap](https://trino.io/docs/current/security/authentication-types.html) - Specify username in `user` and password in `password`
+- [kerberos](https://trino.io/docs/current/security/kerberos.html) - Specify username in `user`
+- [jwt](https://trino.io/docs/current/security/jwt.html) - Specify JWT token in `jwt_token`
+- [certificate](https://trino.io/docs/current/security/certificate.html) - Specify a client certificate in `client_certificate` and private key in `client_private_key`
+- [oauth](https://trino.io/docs/current/security/oauth2.html) - It is recommended to install keyring to cache the OAuth2 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`, keyring is not installed by default.
+
+See also: https://trino.io/docs/current/security/authentication-types.html
 
 ### LDAP
 
