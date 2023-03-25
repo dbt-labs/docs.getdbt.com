@@ -3,7 +3,10 @@ title: "Starburst (Trino) configurations"
 id: "trino-configs"
 ---
 
-## Session-specific configs
+
+## Model-level configuration
+
+### Session properties
 
 In some specific cases, there may be needed tuning through the Trino session properties only for a specific dbt model. In such cases, using the [dbt hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook) may come to the rescue:
 
@@ -15,7 +18,39 @@ In some specific cases, there may be needed tuning through the Trino session pro
 }}
 ```
 
+### Use table properties to configure connector specifics
+
+Trino connectors use table properties to configure connector specifics.
+
+Check the Trino connector documentation for more information.
+
+```jinja2
+{{
+  config(
+    materialized='table',
+    properties={
+      "format": "'PARQUET'",
+      "partitioning": "ARRAY['bucket(id, 2)']",
+    }
+  )
+}}
+```
+
 ## Materialization-specific configs
+
+
+### Seeds
+
+Seeds are CSV files in your dbt project (typically in your data directory), that dbt can load into your data warehouse using the dbt seed command.
+
+For dbt-trino batch_size is defined in macro `trino__get_batch_size()` and default value is `1000`.
+In order to override default value define within your project a macro like the following:
+
+```jinja2
+{% macro default__get_batch_size() %}
+  {{ return(10000) }}
+{% endmacro %}
+```
 
 ### Table
 
@@ -270,57 +305,9 @@ If necessary, you can override the standard precision by providing your own vers
 {% endmacro %}
 ```
 
-## Use table properties to configure connector specifics
+## Other Trino/Starburst Relevant Configs
 
-Trino connectors use table properties to configure connector specifics.
-
-Check the Trino connector documentation for more information.
-
-```jinja2
-{{
-  config(
-    materialized='table',
-    properties={
-      "format": "'PARQUET'",
-      "partitioning": "ARRAY['bucket(id, 2)']",
-    }
-  )
-}}
-```
-
-## Seeds
-
-Seeds are CSV files in your dbt project (typically in your data directory), that dbt can load into your data warehouse using the dbt seed command.
-
-For dbt-trino batch_size is defined in macro `trino__get_batch_size()` and default value is `1000`.
-In order to override default value define within your project a macro like the following:
-
-```jinja2
-{% macro default__get_batch_size() %}
-  {{ return(10000) }}
-{% endmacro %}
-```
-
-## Persist docs
-
-Persist docs optionally persist resource descriptions as column and relation comments in the database. By default, documentation persistence is disabled, but it can be enabled for specific resources or groups of resources as needed.
-
-Detailed documentation can be found [here](https://docs.getdbt.com/reference/resource-configs/persist_docs).
-
-## Generating lineage flow in docs
-
-In order to generate lineage flow in docs use `ref` function in the place of table names in the query. It builts dependencies between models and allows to create DAG with data flow. Refer to examples [here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models#building-dependencies-between-models).
-
-```sh
-dbt docs generate          # generate docs
-dbt docs serve --port 8081 # starts local server (by default docs server runs on 8080 port, it may cause conflict with Trino in case of local development)
-```
-
-## Using Custom schemas
-
-By default, all dbt models are built in the schema specified in your target. But sometimes you wish to build some of the models in a custom schema. In order to do so, use the `schema` configuration key to specify a custom schema for a model. See [here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-custom-schemas) for the documentation. It is important to note that by default, dbt will generate the schema name for a model by concatenating the custom schema to the target schema, as in: `<target_schema>_<custom_schema>`.
-
-## Prepared statements
+### Prepared statements
 
 The `dbt seed` feature uses [Trino's prepared statements](https://trino.io/docs/current/sql/prepare.html).
 
@@ -332,7 +319,7 @@ When executing a prepared statement with a large number of parameters, you might
 
 The prepared statements can be disabled by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). This flag may be removed in later releases.
 
-#### Grants
+### Grants
 
 Please note that grants are only supported in [Starburst Enterprise](https://docs.starburst.io/latest/security/biac-overview.html) and [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/security/access-control.html) and Hive ([sql-standard](https://trino.io/docs/current/connector/hive-security.html)).
 
