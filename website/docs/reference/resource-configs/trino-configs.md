@@ -10,7 +10,7 @@ id: "trino-configs"
 
 In some specific cases, there may be needed tuning through the Trino session properties only for a specific dbt model. In such cases, using the [dbt hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook) may come to the rescue:
 
-```
+```sql
 {{
   config(
     pre_hook="set session query_max_run_time='10m'"
@@ -24,11 +24,11 @@ Trino connectors use table properties to configure connector specifics.
 
 Check the Trino connector documentation for more information.
 
-```jinja2
+```sql
 {{
   config(
     materialized='table',
-    properties={
+    properties= {
       "format": "'PARQUET'",
       "partitioning": "ARRAY['bucket(id, 2)']",
     }
@@ -37,7 +37,6 @@ Check the Trino connector documentation for more information.
 ```
 
 ## Materialization-specific configs
-
 
 ### Seeds
 
@@ -83,7 +82,7 @@ models:
 
 Using `table` materialization and `on_table_exists = 'rename'` with AWS Glue may result in below error:
 
-```
+```sh
 TrinoUserError(type=USER_ERROR, name=NOT_SUPPORTED, message="Table rename is not yet supported by Glue service")
 ```
 
@@ -195,7 +194,7 @@ In case that the target incremental model is being accessed with
 [hive](https://trino.io/docs/current/connector/hive.html) Trino connector, an `insert overwrite`
 functionality can be achieved when using:
 
-```
+```ini
 <hive-catalog-name>.insert-existing-partitions-behavior=OVERWRITE
 ```
 
