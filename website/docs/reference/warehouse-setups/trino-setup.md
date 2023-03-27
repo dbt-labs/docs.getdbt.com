@@ -48,7 +48,7 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
-## Connecting to Starburst/Trino with dbt-core
+## Connecting/Authenticating to Starburst/Trino with dbt-core
 
 With dbt-core, the way to connect to your data platform is to creating a `profile` and `target` within the user-configured `profiles.yml` in the `.dbt/` directory of your user/home directory. For more information, please see both [Connection profiles](connection-profiles) and the [profiles.yml](../profiles.yml.md) reference page.
 
@@ -57,9 +57,7 @@ The two main ways in which a target's specificaiton varies across adapter plugin
 - [Authentication](#authentication)
 - [Optional, data-platform-specific configuration](#optional-configurations)
 
-## Authentication
-
-### Most-relevant fields
+The below table covers the most relevant fields for target, especially as they pertain to authentication to dbt Cloud, which today only supports LDAP authentication.
 
 |  Field   |                                                                                                                                                                                                                                                Description                                                                                                                                                                                                                                                |                                                              Examples                                                              |
 | :------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
@@ -117,7 +115,7 @@ my-trino-db:
 
 </File>
 
-### All profiles parameters
+### All parameters
 
 A dbt-trino profile can be configured to run against Trino or Starburst using the following configuration:
 
@@ -154,7 +152,7 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 | timezone                       | The time zone for the Trino session                                                                          | Optional (defaults to the client side local timezone)                                                   | `Europe/Brussels`                |
 
 
-## Optional configurations
+### Optional configurations
 
 For reference on which session properties can be set on the the dbt profile, execute the following statement.
 
@@ -162,7 +160,7 @@ For reference on which session properties can be set on the the dbt profile, exe
 SHOW SESSION;
 ```
 
-## Errata
+### Errata
 
 example file of profile for trino/starburst
 
