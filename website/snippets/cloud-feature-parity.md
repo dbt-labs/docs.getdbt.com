@@ -7,7 +7,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Audit logs                    | ✅           | ✅ (select customers)  | ❌                   |  
 | Metadata API                  | ✅           | ✅ (select customers)  | ❌                   | 
 | Webhooks (Outbound)           | ✅           | ❌                     | ❌                   |
-| Slim CI                       | ✅           | ✅                     | ✅                   | 
+| Continuous Integration, including Slim CI                       | ✅           | ✅                     | ✅                   | 
 | Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
 | IP Restrictions               | ❌           | ✅                     | ✅                   | 
 | PrivateLink egress            | ✅           | ✅                     | ✅                   | 
