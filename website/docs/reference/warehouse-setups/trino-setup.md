@@ -117,6 +117,8 @@ The `method` field is used in a user's profile to declare the intended authentic
 
 <TabItem value="ldap">
 
+#### Fields
+
 In addition to specifying  `method: ldap`, the table below gives the ldap-relevant parameters.
 
 For addiontal information, refer to Trino's doc page on [LDAP Authentication](https://trino.io/docs/current/security/ldap.html)
@@ -127,7 +129,7 @@ For addiontal information, refer to Trino's doc page on [LDAP Authentication](ht
 | `password`                      | `abc123`                                                                                                                                              | Password for authentication (can be none, but not recommended!)                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `impersonation_user` (optional) | `impersonated_tom`                                                                                                                                    | Username override, used for impersonation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-
+#### Sample `profiles.yml`
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -153,6 +155,8 @@ trino:
 
 <TabItem value="kerberos">
 
+#### Fields
+
 In addition to specifying  `method: kerberos`, the table below gives the kerberos-relevant parameters.
 
 For addiontal information, refer to Trino's doc page on [kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
@@ -169,6 +173,8 @@ For addiontal information, refer to Trino's doc page on [kerberos Authentication
 | `force_preemptive` (optional)               | `false`             | Boolean flag for preemptively initiate the Kerberos GSS exchange |
 | `sanitize_mutual_error_response` (optional) | `true`              | Boolean flag to strip content and headers from error responses   |
 | `delegate`  (optional)                      | `false`             | Boolean flag for credential delgation (`GSS_C_DELEG_FLAG`)       |
+
+#### Sample `profiles.yml`
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -195,11 +201,13 @@ trino:
 
 <TabItem value="jwt">
 
-Below are the fields unique to jwt authentication
+#### Fields
 
 In addition to specifying  `method: jwt`, the only additional profile parameter is `jwt_token`
 
 For addiontal information, refer to Trino's doc page on [kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
+
+#### Sample `profiles.yml`
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -225,6 +233,8 @@ trino:
 
 <TabItem value="certificate">
 
+#### Fields
+
 Below are the fields unique to authentication with a certificate file
 
 In addition to specifying  `method: certificate`, the table below gives the certificate-relevant parameters.
@@ -237,6 +247,8 @@ For addiontal information, refer to Trino's doc page on [certificate Authenticat
 | `client_certificate` | `/tmp/tls.crt` | Path to client certificate          |
 | `client_private_key` | `/tmp/tls.key` | Path to client private key          |
 | `cert`               |                | The full path to a certificate file |
+
+#### Sample `profiles.yml`
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -274,6 +286,26 @@ Note: It is recommended to install `keyring` to cache the OAuth2 token over mult
 
 Note: `none` is also a supported authentication method, but it is strongly discouraged. It use case is only for toy, local examples such as running Trino and dbt entirely within a single Docker container.
 
+#### Sample `profiles.yml`
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: none
+      user: commander
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
+```
+
+</File>
+
 </TabItem>
 </Tabs>
 
@@ -284,34 +316,34 @@ Note: `none` is also a supported authentication method, but it is strongly disco
 
 Below all possible parameters can be found
 
-| Profile field                               | Auth Methods Applicable    | Example                          | Description                                                                                                  |
-| ------------------------------------------- | -------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `database`                                  | all                        | `analytics`                      | Specify the database to build models into                                                                    |
-| `schema`                                    | all                        | `public`                         | Specify the schema to build models into. Note: it is not recommended to use upper or mixed case schema names |
-| `host`                                      | all                        | `127.0.0.1`                      | The hostname to connect to                                                                                   |
-| `port`                                      | all                        | `8080`                           | The port to connect to the host on                                                                           |
-| `user`                                      | `ldap`, `kerberos`, `none` | `commander`                      | Username for authentication                                                                                  |
-| `threads` (optional)                        | all                        | `8`                              | How many threads dbt should use      (default is `1`)                                                        |
-| `roles` (optional)                          | all                        | `system: analyst`                | Catalog roles                                                                                                |
-| `method` (optional)                         | all                        | `none` or `kerberos`             | The Trino authentication method to use     (default: `none`)                                                 |
-| `session_properties` (optional)             | all                        | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection                                                         |
-| `prepared_statements_enabled` (optional)    | all                        | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                    |
-| `retries` (optional)                        | all                        | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)      |
-| `timezone` (optional)                       | all                        | `Europe/Brussels`                | The time zone for the Trino session (defaults to the client side local timezone)                             |
-| `http_headers`  (optional)                  | all                        | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.   |
-| `http_scheme` (optional)                    | all                        | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`)  |
-| `password`                                  | `ldap`                     | `none` or `abc123`               | Password for authentication                                                                                  |
-| `impersonation_user` (optional)             | `ldap`                     | `impersonated_tom`               | Username override, used for impersonation                                                                    |
-| `keytab`                                    | `kerberos`                 | `/tmp/trino.keytab`              | Path to keytab                                                                                               |
-| `krb5_config`                               | `kerberos`                 | `/tmp/krb5.conf`                 | Path to config                                                                                               |
-| `principal`                                 | `kerberos`                 | `trino@EXAMPLE.COM`              | Principal                                                                                                    |
-| `service_name` (optional)                   | `kerberos`                 | `abc123`                         | Service name (default is `trino`)                                                                            |
-| `hostname_override` (optional)              | `kerberos`                 | `EXAMPLE.COM`                    | Kerberos hostname for a host whose DNS name doesn't match                                                    |
-| `mutual_authentication` (optional)          | `kerberos`                 | `false`                          | Boolean flag for mutual authentication                                                                       |
-| `sanitize_mutual_error_response` (optional) | `kerberos`                 | `true`                           | Boolean flag to strip content and headers from error responses                                               |
-| `force_preemptive` (optional)               | `kerberos`                 | `false`                          | Boolean flag for preemptively initiate the Kerberos GSS exchange                                             |
-| `delegate` (optional)                       | `kerberos`                 | `false`                          | Boolean flag for credential delgation (`GSS_C_DELEG_FLAG`)                                                   |
-| `jwt_token`                                 | `jwt`                      | `none` or `abc123`               | JWT token for authentication                                                                                 |
-| `client_certificate`                        | `certificate`              | `/tmp/tls.crt`                   | Path to client certificate                                                                                   |
-| `client_private_key`                        | `certificate`              | `/tmp/tls.key`                   | Path to client private key                                                                                   |
-| `cert`                                      | `certificate`              |                                  | The full path to a certificate file                                                                          |
+| Profile field                               | Auth Methods Applicable    | Example                          | Description                                                                                                                                                           |
+| ------------------------------------------- | -------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `database`                                  | all                        | `analytics`                      | Specify the database to build models into                                                                                                                             |
+| `schema`                                    | all                        | `public`                         | Specify the schema to build models into. Note: it is not recommended to use upper or mixed case schema names                                                          |
+| `host`                                      | all                        | `127.0.0.1`                      | The hostname to connect to                                                                                                                                            |
+| `port`                                      | all                        | `8080`                           | The port to connect to the host on                                                                                                                                    |
+| `user`                                      | `ldap`, `kerberos`, `none` | `commander`                      | Username for authentication                                                                                                                                           |
+| `threads` (optional)                        | all                        | `8`                              | How many threads dbt should use      (default is `1`)                                                                                                                 |
+| `roles` (optional)                          | all                        | `system: analyst`                | Catalog roles                                                                                                                                                         |
+| `method` (optional)                         | all                        | `none` or `kerberos`             | The Trino authentication method to use     (default: `none`)                                                                                                          |
+| `session_properties` (optional)             | all                        | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection                                                                                                                  |
+| `prepared_statements_enabled` (optional)    | all                        | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`) see [Trino Configs: Prepared Statements](trino-configs#prepared-statements) |
+| `retries` (optional)                        | all                        | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)                                                               |
+| `timezone` (optional)                       | all                        | `Europe/Brussels`                | The time zone for the Trino session (defaults to the client side local timezone)                                                                                      |
+| `http_headers`  (optional)                  | all                        | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.                                                            |
+| `http_scheme` (optional)                    | all                        | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`)                                                           |
+| `password`                                  | `ldap`                     | `none` or `abc123`               | Password for authentication                                                                                                                                           |
+| `impersonation_user` (optional)             | `ldap`                     | `impersonated_tom`               | Username override, used for impersonation                                                                                                                             |
+| `keytab`                                    | `kerberos`                 | `/tmp/trino.keytab`              | Path to keytab                                                                                                                                                        |
+| `krb5_config`                               | `kerberos`                 | `/tmp/krb5.conf`                 | Path to config                                                                                                                                                        |
+| `principal`                                 | `kerberos`                 | `trino@EXAMPLE.COM`              | Principal                                                                                                                                                             |
+| `service_name` (optional)                   | `kerberos`                 | `abc123`                         | Service name (default is `trino`)                                                                                                                                     |
+| `hostname_override` (optional)              | `kerberos`                 | `EXAMPLE.COM`                    | Kerberos hostname for a host whose DNS name doesn't match                                                                                                             |
+| `mutual_authentication` (optional)          | `kerberos`                 | `false`                          | Boolean flag for mutual authentication                                                                                                                                |
+| `sanitize_mutual_error_response` (optional) | `kerberos`                 | `true`                           | Boolean flag to strip content and headers from error responses                                                                                                        |
+| `force_preemptive` (optional)               | `kerberos`                 | `false`                          | Boolean flag for preemptively initiate the Kerberos GSS exchange                                                                                                      |
+| `delegate` (optional)                       | `kerberos`                 | `false`                          | Boolean flag for credential delgation (`GSS_C_DELEG_FLAG`)                                                                                                            |
+| `jwt_token`                                 | `jwt`                      | `none` or `abc123`               | JWT token for authentication                                                                                                                                          |
+| `client_certificate`                        | `certificate`              | `/tmp/tls.crt`                   | Path to client certificate                                                                                                                                            |
+| `client_private_key`                        | `certificate`              | `/tmp/tls.key`                   | Path to client private key                                                                                                                                            |
+| `cert`                                      | `certificate`              |                                  | The full path to a certificate file                                                                                                                                   |
