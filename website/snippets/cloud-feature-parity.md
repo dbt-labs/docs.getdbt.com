@@ -6,8 +6,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | IDE 2.0                       | ✅           | ✅                     | ✅                   |  
 | Audit logs                    | ✅           | ✅ (select customers)  | ❌                   |  
 | Metadata API                  | ✅           | ✅ (select customers)  | ❌                   | 
-| Webhooks (Outbound)           | ✅           | ❌                     | ❌                   |
-| Slim CI                       | ✅           | ✅                     | ✅                   | 
+| Webhooks                      | ✅           | ❌                     | ❌                   |
 | Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
 | IP Restrictions               | ❌           | ✅                     | ✅                   | 
 | PrivateLink egress            | ✅           | ✅                     | ✅                   | 
