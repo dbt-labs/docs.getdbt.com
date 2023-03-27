@@ -278,9 +278,11 @@ Note: `none` is also a supported authentication method, but it is strongly disco
 </Tabs>
 
 
+## Reference
+
 ### All parameters
 
-A dbt-trino profile can be configured to run against Trino or Starburst using the following configuration:
+Below all possible parameters can be found
 
 | Profile field                               | Auth Methods Applicable    | Example                          | Description                                                                                                  |
 | ------------------------------------------- | -------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -313,24 +315,3 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 | `client_certificate`                        | `certificate`              | `/tmp/tls.crt`                   | Path to client certificate                                                                                   |
 | `client_private_key`                        | `certificate`              | `/tmp/tls.key`                   | Path to client private key                                                                                   |
 | `cert`                                      | `certificate`              |                                  | The full path to a certificate file                                                                          |
-
-
-
-
-
-
-### Errata
-
-
-#### Ben's Cloud table
-
-The below table covers the most relevant fields for target, especially as they pertain to authentication to dbt Cloud, which today only supports LDAP authentication.
-
-|  Field   |                                                                                                                                                                                                                                                          Description                                                                                                                                                                                                                                                           |                                                                           Examples                                                                            |
-| :------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|   Host   |                                                                                                                                                                                 The hostname of your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>Do not include the HTTP protocol prefix (i.e. `http://` or `https://`).                                                                                                                                                                                  |                                                                   `mycluster.mydomain.com`                                                                    |
-|   Port   |                                                                                                                                                                                   The port number to connect to on your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The default port for TLS enabled clusters is `443`.                                                                                                                                                                                   |                                                                              443                                                                              |
-|   User   | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The user must have permissions to create and drop tables.<br></br>When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br></br>**NOTE**: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. | Starburst Enterprise/Trino<br></br>`user.name`<br></br>-OR-<br></br>`user.name@mydomain.com`<br></br>Starburst Galaxy<br></br>`user.name@mydomain.com/<role>` |
-| Password |                                                                                                                                                                                                                                            The password for the provided username.                                                                                                                                                                                                                                             |                                                                             *****                                                                             |
-| Database |                                                                                  The name of a catalog in your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The provided username must have read/write access to this catalog.<br></br>The selection you make does not limit the data you can access through dbt to the specified catalog in Starburst/Trino. It is only used for the initial connection to your cluster.                                                                                  |                                                                     `my_postgres_catalog`                                                                     |
-|  Schema  |                                                               The name of a schema in your Starburst Enterprise, Starburst Galaxy or Trino cluster that exists within the provided catalog.<br></br>The provided username must have read/write access to this schema.<br></br>The selection you make does not limit the data you can access through dbt to the specified schema in Starburst/Trino. It is only used for the initial connection to your cluster.                                                                |                                                                          `my_schema`                                                                          |
