@@ -9,7 +9,7 @@ meta:
   min_core_version: 'v0.20.0'
   cloud_support: 'Supported (Beta)'
   min_supported_version: 'n/a'
-  slack_channel_name: '#db-presto-trino'
+  slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Starburst (Trino)'
   config_page: 'trino-configs'
