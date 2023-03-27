@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import { usePluginData } from '@docusaurus/useGlobalData';
 
-function FAQ({ children, src, alt_header = null }) {
+function FAQ({ src, alt_header = null }) {
 
   const [isOn, setOn] = useState(false);
   const [filePath, setFilePath] = useState(src)
