@@ -50,7 +50,7 @@ pip is the easiest way to install the adapter:
 
 ## Connecting to Starburst/Trino with dbt-core
 
-With dbt-core, the way to connect to your data platform is by creating a `profile` and `target` within the user-configured `profiles.yml` in the `.dbt/` directory of your user/home directory. For more information, please see both [Connection profiles](connection-profiles) and the [profiles.yml](../profiles.yml.md) reference page.
+With dbt-core, the way to connect to your data platform is to creating a `profile` and `target` within the user-configured `profiles.yml` in the `.dbt/` directory of your user/home directory. For more information, please see both [Connection profiles](connection-profiles) and the [profiles.yml](../profiles.yml.md) reference page.
 
 The two main ways in which a target's specificaiton varies across adapter plugins are related to:
 
@@ -63,12 +63,12 @@ The two main ways in which a target's specificaiton varies across adapter plugin
 
 |  Field   |                                                                                                                                                                                                                                                Description                                                                                                                                                                                                                                                |                                                              Examples                                                              |
 | :------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
-|   Host   |                                                                                                                                                                                              The hostname of your Starburst Enterprise, Starburst Galaxy or Trino cluster. Do not include the HTTP protocol.                                                                                                                                                                                              |                                                       mycluster.mydomain.com                                                       |
-|   Port   |                                                                                                                                                                             The port number to connect to on your Starburst Enterprise, Starburst Galaxy or Trino cluster. The default port for TLS enabled clusters is 443.                                                                                                                                                                              |                                                                443                                                                 |
-|   User   | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster. The user must have permissions to create and drop tables. When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br></br>NOTE: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. | Starburst Enterprise/Trino<br></br>`user.name`<br></br>-OR-<br></br>`user.name@mydomain.com`<br></br>Starburst Galaxy<br></br>`user.name@mydomain.com/<role>` |
+|   Host   |                                                                                                                                                                                              The hostname of your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>Do not include the HTTP protocol prefix (i.e. `http://` or `https://`).                                                                                                                                                                                              |                                                       `mycluster.mydomain.com`                                                       |
+|   Port   |                                                                                                                                                                             The port number to connect to on your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The default port for TLS enabled clusters is `443`.                                                                                                                                                                              |                                                                443                                                                 |
+|   User   | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The user must have permissions to create and drop tables.<br></br>When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br></br>**NOTE**: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. | Starburst Enterprise/Trino<br></br>`user.name`<br></br>-OR-<br></br>`user.name@mydomain.com`<br></br>Starburst Galaxy<br></br>`user.name@mydomain.com/<role>` |
 | Password |                                                                                                                                                                                                                                  The password for the provided username.                                                                                                                                                                                                                                  |                                                               *****                                                                |
-| Database |                                                                               The name of a catalog in your Starburst Enterprise, Starburst Galaxy or Trino cluster. The provided username must have read/write access to this catalog. The selection you make does not limit the data you can access through dbt to the specified catalog in Starburst/Trino. It is only used for the initial connection to your cluster.                                                                                |                                                        my_postgres_catalog                                                         |
-|  Schema  |                                                             The name of a schema in your Starburst Enterprise, Starburst Galaxy or Trino cluster that exists within the provided catalog. The provided username must have read/write access to this schema. The selection you make does not limit the data you can access through dbt to the specified schema in Starburst/Trino. It is only used for the initial connection to your cluster.                                                             |                                                             my_schema                                                              |
+| Database |                                                                               The name of a catalog in your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The provided username must have read/write access to this catalog.<br></br>The selection you make does not limit the data you can access through dbt to the specified catalog in Starburst/Trino. It is only used for the initial connection to your cluster.                                                                                |                                                        `my_postgres_catalog`                                                         |
+|  Schema  |                                                             The name of a schema in your Starburst Enterprise, Starburst Galaxy or Trino cluster that exists within the provided catalog.<br></br>The provided username must have read/write access to this schema.<br></br>The selection you make does not limit the data you can access through dbt to the specified schema in Starburst/Trino. It is only used for the initial connection to your cluster.                                                             |                                                             `my_schema`                                                              |
 
 ### Methods
 
@@ -78,8 +78,8 @@ Note: `none` is also a supported authentication method, but it is strongly disco
 
 | Authentication Type                                                      | Required keys                                                                                                                                                                                                |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [ldap](https://trino.io/docs/current/security/authentication-types.html) | username in `user` and password in `password`                                                                                                                                                                |
-| [kerberos](https://trino.io/docs/current/security/kerberos.html)         | username in `user`                                                                                                                                                                                           |
+| [ldap](https://trino.io/docs/current/security/authentication-types.html) | username as `user`; password as `password`                                                                                                                                                                |
+| [kerberos](https://trino.io/docs/current/security/kerberos.html)         | username as `user`                                                                                                                                                                                           |
 | [jwt](https://trino.io/docs/current/security/jwt.html)                   | JWT token as `jwt_token`                                                                                                                                                                                     |
 | [certificate](https://trino.io/docs/current/security/certificate.html)   | client certificate in `client_certificate` and private key in  `client_private_key`                                                                                                                          |
 | [oauth](https://trino.io/docs/current/security/oauth2.html)              | It is recommended to install `keyring` to cache the OAuth2 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`, `keyring` is not installed by default. |`
@@ -94,10 +94,39 @@ Note: `none` is also a supported authentication method, but it is strongly disco
 
 #### Keberos
 
+Example profiles.yml entry for kerberos authentication:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yml
+my-trino-db:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: kerberos
+      user: commander
+      keytab: /tmp/trino.keytab
+      krb5_config: /tmp/krb5.conf
+      principal: trino@EXAMPLE.COM
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
+```
+
+</File>
+
+### All profiles parameters
+
 A dbt-trino profile can be configured to run against Trino or Starburst using the following configuration:
 
 | Option                         | Description                                                                                                  | Required?                                                                                               | Example                          |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| database                       | Specify the database to build models into                                                                    | Required                                                                                                | `analytics`                      |
+| schema                         | Specify the schema to build models into. Note: it is not recommended to use upper or mixed case schema names | Required                                                                                                | `public`                         |
+| host                           | The hostname to connect to                                                                                   | Required                                                                                                | `127.0.0.1`                      |
+| port                           | The port to connect to the host on                                                                           | Required                                                                                                | `8080`                           |
 | method                         | The Trino authentication method to use                                                                       | Optional (default is `none`, supported methods are `ldap`, `kerberos`, `jwt`, `oauth` or `certificate`) | `none` or `kerberos`             |
 | user                           | Username for authentication                                                                                  | Optional (required if `method` is `none`, `ldap` or `kerberos`)                                         | `commander`                      |
 | password                       | Password for authentication                                                                                  | Optional (required if `method` is `ldap`)                                                               | `none` or `abc123`               |
@@ -119,39 +148,15 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 | http_scheme                    | The HTTP scheme to use for requests to Trino                                                                 | Optional (default is `http`, or `https` for `method: kerberos`, `ldap` or `jwt`)                        | `https` or `http`                |
 | cert                           | The full path to a certificate file for authentication with trino                                            | Optional                                                                                                |                                  |
 | session_properties             | Sets Trino session properties used in the connection                                                         | Optional                                                                                                | `query_max_run_time: 4h`         |
-| database                       | Specify the database to build models into                                                                    | Required                                                                                                | `analytics`                      |
-| schema                         | Specify the schema to build models into. Note: it is not recommended to use upper or mixed case schema names | Required                                                                                                | `public`                         |
-| host                           | The hostname to connect to                                                                                   | Required                                                                                                | `127.0.0.1`                      |
-| port                           | The port to connect to the host on                                                                           | Required                                                                                                | `8080`                           |
 | threads                        | How many threads dbt should use                                                                              | Optional (default is `1`)                                                                               | `8`                              |
 | prepared_statements_enabled    | Enable usage of Trino prepared statements (used in `dbt seed` commands)                                      | Optional (default is `true`)                                                                            | `true` or `false`                |
 | retries                        | Configure how many times a database operation is retried when connection issues arise                        | Optional (default is `3`)                                                                               | `10`                             |
 | timezone                       | The time zone for the Trino session                                                                          | Optional (defaults to the client side local timezone)                                                   | `Europe/Brussels`                |
 
-Example profiles.yml entry for kerberos authentication:
-
-<File name='~/.dbt/profiles.yml'>
-```yml
-my-trino-db:
-  target: dev
-  outputs:
-    dev:
-      type: trino
-      method: kerberos
-      user: commander
-      keytab: /tmp/trino.keytab
-      krb5_config: /tmp/krb5.conf
-      principal: trino@EXAMPLE.COM
-      host: trino.example.com
-      port: 443
-      database: analytics
-      schema: public
-```
-</File>
 
 ## Optional configurations
 
-For reference on which session properties can be set on the the dbt profile do execute
+For reference on which session properties can be set on the the dbt profile, execute the following statement.
 
 ```sql
 SHOW SESSION;
