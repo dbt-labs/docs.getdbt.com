@@ -57,7 +57,7 @@ The two main ways in which a target's specificaiton varies across adapter plugin
 - [Connecting to Starburst/Trino with dbt-core](#connecting-to-starbursttrino-with-dbt-core)
   - [Authentication Methods](#authentication-methods)
   - [All parameters](#all-parameters)
-  - [Optional configurations](#optional-configurations)
+  - [Additional, optional configurations](#additional-optional-configurations)
   - [Errata](#errata)
     - [Ben's Cloud table](#bens-cloud-table)
 
@@ -285,13 +285,24 @@ A dbt-trino profile can be configured to run against Trino or Starburst using th
 
 
 
-### Optional configurations
+### Additional, optional configurations
 
-For reference on which session properties can be set on the the dbt profile, execute the following statement.
+The following fields are not explicitly tied to a specific authentication method
 
-```sql
-SHOW SESSION;
-```
+
+| Profile field                             | Example                          | Description                                                                                                  |
+| ----------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| threads (optional)                        | `8`                              | How many threads dbt should use      (default is `1`)                                                        |
+| roles (optional)                          | `system: analyst`                | Catalog roles                                                                                                |
+| method (optional)                         | `none` or `kerberos`             | The Trino authentication method to use     (default: `none`)                                                 |
+| session_properties (optional)             | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection. Execute `SHOW SESSION` to see available options                                                          |
+| prepared_statements_enabled (optional)    | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                    |
+| retries (optional)                        | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)      |
+| timezone (optional)                       | `Europe/Brussels`                | The time zone for the Trino session (defaults to the client side local timezone)                             |
+| http_headers  (optional)                  | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.   |
+| http_scheme (optional)                    | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`)  |
+
+
 
 ### Errata
 
