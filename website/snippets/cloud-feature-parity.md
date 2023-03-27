@@ -3,7 +3,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Feature                       | Multi-tenant | AWS single tenant     | Azure single tenant  | 
 |-------------------------------|--------------|-----------------------|----------------------|
 | Scheduler                     | ✅           | ✅                     | ✅                   |  
-| IDE 2.0                       | ✅           | ✅                     | ✅                   |  
+| IDE                           | ✅           | ✅                     | ✅                   |  
 | Audit logs                    | ✅           | ✅ (select customers)  | ❌                   |  
 | Metadata API                  | ✅           | ✅ (select customers)  | ❌                   | 
 | Webhooks (Outbound)           | ✅           | ❌                     | ❌                   |
