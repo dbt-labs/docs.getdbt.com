@@ -28,7 +28,6 @@ groups:
 
 </File>
 
-
 ### Adding a model to a group
 
 To add a model to a group, add the `group` property to a model entry in a `.yml` file.
