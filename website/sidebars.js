@@ -28,6 +28,7 @@ const sidebarSettings = {
             "docs/quickstarts/dbt-cloud/databricks",
             "docs/quickstarts/dbt-cloud/redshift",
             "docs/quickstarts/dbt-cloud/snowflake",
+            "docs/quickstarts/dbt-cloud/starburst-galaxy",
           ],
         },
         {

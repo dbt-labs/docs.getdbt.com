@@ -43,6 +43,12 @@ Before you begin, you will need:
     icon="snowflake"/>
 
 <Card
+    title="Quickstart for dbt Cloud and Starburst Galaxy"
+    body="Learn how to connect to Starburst Galaxy, build your first dbt models with a sample project, test your models, document your models, and schedule a job run all in one web-based UI."
+    link="/docs/quickstarts/dbt-cloud/starburst-galaxy"
+    icon="starburst"/>
+
+<Card
     title="Quickstart for dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface."
     link="/docs/quickstarts/dbt-core/quickstart"
