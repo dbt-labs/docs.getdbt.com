@@ -52,6 +52,26 @@ Edit `dbt_project.yml` to set up common project configurations such as:
 
 For complete details on project configurations, see [dbt_project.yml](/reference/dbt_project.yml).
 
+## Project subdirectories
+
+The Project Subdirectory option in dbt Cloud allows you to specify a subdirectory within your git repository that dbt should use as the root directory for your project. This can be useful in situations where you have multiple dbt projects within a single repository, or when you want to organise your dbt project files into subdirectories for easier management.
+
+To use the Project Subdirectory option in dbt Cloud, follow these steps:
+
+1. **Click** the Settings dropdown on the top navigation menu and **Click** Account Settings
+<img width="379" alt="project-subdirectory-01" src="https://user-images.githubusercontent.com/114556261/228104923-591cd791-6f38-4a10-a983-7d85cd18f0b2.png">
+
+2. **Click** on a Project to configure Project Subdirectory
+
+3. **Click** on Edit on the sliding pane
+<img width="1409" alt="project-subdirectory-02" src="https://user-images.githubusercontent.com/114556261/228104897-954e280b-cb68-4f7c-be3a-ceba5d9b90e3.png">
+
+4. **Enter** the name of the subdirectory in Project Subdirectory. For example, if your dbt project files are located in a subdirectory called `<repository>/finance`, you would enter `finance` as the subdirectory. 
+You can also reference nested subdirectories. For example, if your dbt project files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. Please note: you do not need leading or trailing `/` in the Project Subdirectory parameter. **Click** the Save button when complete.
+<img width="660" alt="project-subdirectory-03" src="https://user-images.githubusercontent.com/114556261/228117931-f2651529-ebf3-4f19-bd33-14e299810a6f.png">
+
+Once you have configured the Project Subdirectory option, dbt Cloud will use the specified subdirectory as the root directory for your dbt project. This means that any dbt commands that you run in dbt Cloud, such as dbt run or dbt test, will operate on the files within the subdirectory that you specified. If there is no `dbt_project.yml` file detected in the Project Subdirectory, you will be prompted to initialise the dbt project.
+
 ## New projects
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
