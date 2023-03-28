@@ -3,8 +3,8 @@ title: "dbt Command reference"
 ---
 
 dbt is typically run one of two ways:
-* In [dbt Cloud](/docs/get-started/develop-in-the-cloud)
-* On the [command line interface](/docs/get-started/about-the-cli) (CLI)
+* In [dbt Cloud](/docs/cloud/develop-in-the-cloud)
+* On the [command line interface](/docs/core/about-the-cli) (CLI)
 
 The following sections outline the commands supported by dbt and their relevant flags. Note that some commands are only supported when using the CLI.
 
@@ -27,5 +27,5 @@ For information about selecting models on the command line, consult the docs on 
 - [source](commands/source): provides tools for working with source data (including validating that sources are "fresh")
 - [test](commands/test): executes tests defined in a project
 - [rpc](rpc) (CLI only): runs an RPC server that clients can submit queries to
-- [run-operation](run-operation): runs arbitrary maintenance SQL against the database
+- [run-operation](run-operation): invoke a macro, including running arbitrary maintenance SQL against the database
 

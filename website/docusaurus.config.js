@@ -196,7 +196,7 @@ var siteSettings = {
         },
       ],
 
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
+      copyright: `&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
     },
   },
   presets: [

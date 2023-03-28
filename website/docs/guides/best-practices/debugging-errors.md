@@ -343,7 +343,7 @@ Database Error in model customers (models/customers.sql)
     - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
     - **dbt CLI:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
-    - **dbt Cloud:** Use the `Run SQL` button from the model file
+    - **dbt Cloud:** Use the `Preview` button from the model file
     - **dbt CLI:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
@@ -365,14 +365,14 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 
 ## Common pitfalls
 
-### `run sql` vs. `dbt run`
+### `Preview` vs. `dbt run`
 _(dbt Cloud IDE users only)_
 
 There's two interfaces that look similar:
-- The `run sql` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
+- The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
 - The `dbt run` command builds relations in your database
 
-Using the `run sql` is useful when developing models and you want to visually inspect the results of a query. However, you'll need to make sure you have executed `dbt run` for any upstream models — otherwise dbt will try to select `from` tables and views that haven't been built.
+Using the `Preview` button is useful when developing models and you want to visually inspect the results of a query. However, you'll need to make sure you have executed `dbt run` for any upstream models — otherwise dbt will try to select `from` tables and views that haven't been built.
 
 
 ### Forgetting to save files before running

@@ -149,7 +149,7 @@ See: [Redshift docs on `UNLOAD`](https://docs.aws.amazon.com/redshift/latest/dg/
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       finance:
@@ -202,7 +202,7 @@ models:
 
 ```yml
 
-model:
+models:
   +post-hook: "{{ grant_select(this) }}"
 
 ```
@@ -216,7 +216,7 @@ model:
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       marketing:
@@ -277,11 +277,11 @@ select ...
 {{
   config(
     pre_hook={
-      "SQL": "SQL-statement",
+      "sql": "SQL-statement",
       "transaction": False
     },
     post_hook={
-      "SQL": "SQL-statement",
+      "sql": "SQL-statement",
       "transaction": False
     }
   )
@@ -301,10 +301,10 @@ select ...
 
 models:
   +pre-hook:
-    SQL: "SQL-statement"
+    sql: "SQL-statement"
     transaction: false
   +post-hook:
-    SQL: "SQL-statement"
+    sql: "SQL-statement"
     transaction: false
 
 
