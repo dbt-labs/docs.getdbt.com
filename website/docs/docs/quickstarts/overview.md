@@ -46,7 +46,7 @@ Before you begin, you will need:
     title="Quickstart for dbt Core using GitHub Codespaces"
     body="Learn how to quickly start running dbt commands in a GitHub codespace development environment with just a couple clicks."
     link="/docs/quickstarts/dbt-core/codespace"
-    icon="github"/>
+    icon="github-codespace"/>
 
 <Card
     title="Quickstart for dbt Core from a manual install"
