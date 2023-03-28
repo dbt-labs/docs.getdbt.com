@@ -135,8 +135,18 @@ Note: The `exclude` argument in YAML selectors is subtly different from
 the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)),
 and it is always applied _last_ within its scope.
 
+<VersionBlock lastVersion="1.4">
+
 This gets us more intricate subset definitions than what's available on the CLI,
 where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+When more than one "yeslist" (`--select`) is passed, they are treated as a [union](https://docs.getdbt.com/reference/node-selection/set-operators#unions) rather than an [intersection](https://docs.getdbt.com/reference/node-selection/set-operators#intersections). Same thing when there is more than one "nolist" (`--exclude`).
+
+</VersionBlock>
 
 #### Indirect selection
 
