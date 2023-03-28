@@ -72,7 +72,7 @@ exposures:
       - source('gsheets', 'goals')
 
     owner:
-      name: Claire from Data
+      name: Callum McData
       email: data@jaffleshop.com
 ```
 
@@ -85,7 +85,7 @@ exposures:
 _Required:_
 - **name**: a unique exposure name written in [snake case](https://en.wikipedia.org/wiki/Snake_case)
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
-- **owner**: email or **owner**: name
+- **owner**: `name` or `email` required; additional properties allowed
 
 <VersionBlock firstVersion="1.4">
 

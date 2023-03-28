@@ -3,10 +3,6 @@ resource_types: [models, seeds, snapshots, tests, analyses, metrics]
 id: "group"
 ---
 
-:::caution Under construction 🚧
-These docs are liable to change!
-:::
-
 <Tabs
   defaultValue="models"
   values={[

@@ -6,36 +6,27 @@ keywords:
   - groups access mesh
 ---
 
-<Changelog>
-
-* **v1.5.0**: Groups are new
-
-</Changelog>
-
 ## About Groups 
 
-A group is collection of resources within a dbt project. Groups are named and map to an owner, and enable intentional collaboration within and across teams.
+A group is collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams, by restricting [access to private](access) models
 
 ### Declaring a group
 
-Groups are defined in `.yml` files nested under an `groups:` key.
-
-<VersionBlock firstVersion="1.5">
+Groups are defined in `.yml` files, nested under a `groups:` key.
 
 <File name='models/marts/finance/finance.yml'>
 
 ```yaml
 groups:
   - name: finance
-    owner: 
+    owner:
+      # 'name' or 'email' is required; additional properties allowed
       email: finance@jaffleshop.com
       slack: finance-data
       github: finance-data-team
 ```
 
 </File>
-
-</VersionBlock>
 
 
 ### Adding a model to a group
