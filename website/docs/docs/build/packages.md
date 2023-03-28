@@ -263,7 +263,7 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 
 
-#### Package subdirectories
+#### Configure subdirectory for packaged projects
 
 <Changelog>
 
