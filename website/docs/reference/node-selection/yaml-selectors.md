@@ -31,7 +31,7 @@ Each `definition` is comprised of one or more arguments, which can be one of the
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
 
-Use `union` and `intersection` to organize multiple arguments.
+Use the `union` and `intersection` operator-equivalent keywords to organize multiple arguments.
 
 ### CLI-style
 ```yml
@@ -39,8 +39,7 @@ definition:
   'tag:nightly'
 ```
 
-This simple syntax supports use of the `+`, `@`, and `*` operators. It does
-not support `exclude`.
+This simple syntax supports use of the `+`, `@`, and `*` [graph](/reference/node-selection/graph-operators) operators, but it does not support [set](/reference/node-selection/set-operators) operators or `exclude`.
 
 ### Key-value
 ```yml
@@ -48,11 +47,11 @@ definition:
   tag: nightly
 ```
 
-This simple syntax does not support any operators or `exclude`.
+This simple syntax does not support any [graph](/reference/node-selection/graph-operators) or [set](/reference/node-selection/set-operators) operators or `exclude`.
 
 ### Full YAML
 
-This is the most thorough syntax, which can include graph and set operators. 
+This is the most thorough syntax, which can include the operator-equivalent keywords for [graph](/reference/node-selection/graph-operators) and [set](/reference/node-selection/set-operators) operators.
 
 Review [methods](/reference/node-selection/methods) for the available list.
 
@@ -64,7 +63,7 @@ definition:
   method: tag
   value: nightly
 
-  # Optional keywords map to the `+` and `@` operators:
+  # Optional keywords map to the `+` and `@` graph operators:
 
   children: true | false
   parents: true | false
@@ -86,7 +85,7 @@ definition:
   method: tag
   value: nightly
 
-  # Optional keywords map to the `+` and `@` operators:
+  # Optional keywords map to the `+` and `@` graph operators:
 
   children: true | false
   parents: true | false
@@ -215,10 +214,13 @@ Here are two ways to represent:
 <File name='selectors.yml'>
 
 ```yml
+
 selectors:
   - name: nightly_diet_snowplow
     description: "Non-incremental Snowplow models that power nightly exports"
     definition:
+
+      # Optional `union` and `intersection` keywords map to the ` ` and `,` set operators:
       union:
         - intersection:
             - '@source:snowplow'
@@ -241,6 +243,7 @@ selectors:
   - name: nightly_diet_snowplow
     description: "Non-incremental Snowplow models that power nightly exports"
     definition:
+      # Optional `union` and `intersection` keywords map to the ` ` and `,` set operators:
       union:
         - intersection:
             - method: source
