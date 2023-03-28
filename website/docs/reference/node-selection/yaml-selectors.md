@@ -144,7 +144,7 @@ where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`)
 
 <VersionBlock firstVersion="1.5">
 
-When more than one "yeslist" (`--select`) is passed, they are treated as a [union](https://docs.getdbt.com/reference/node-selection/set-operators#unions) rather than an [intersection](https://docs.getdbt.com/reference/node-selection/set-operators#intersections). Same thing when there is more than one "nolist" (`--exclude`).
+When more than one "yeslist" (`--select`) is passed, they are treated as a [union](/reference/node-selection/set-operators#unions) rather than an [intersection](/reference/node-selection/set-operators#intersections). Same thing when there is more than one "nolist" (`--exclude`).
 
 </VersionBlock>
 
