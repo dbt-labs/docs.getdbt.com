@@ -3,7 +3,7 @@ title: "March IDE updates and fixes"
 id: "mar-ide-updates"
 description: "Mar 2023 release note: We've enhanced the IDE by adding add common dbt commands to the command palette, creating PRs even if you have uncommitted changes, autocompleting suggestions when editing a yml file, editing directly in the git diff view, improved the DAG selector, upgraded sqlfmt, improved syntax error messaging, and more."
 sidebar_label: "Update and fixes: IDE"
-tags: [Mar-28-2023, IDE]
+tags: [Mar-31-2023, IDE]
 ---
 
 To continue improving our [Cloud IDE](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.
