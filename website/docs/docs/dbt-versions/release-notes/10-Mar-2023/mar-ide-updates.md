@@ -38,7 +38,6 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 ## Bug fixes
 
 - The IDE now displays an error message when the git repository is not reachable. Previously, it failed silently.
-- On small screens, the **Split** button is now hidden.
 - The kebab menu is now visible when the invocation history drawer is open. Previously, it wasn't showing.
 - DAGs are now updated/populated consistently. Previously, it occasionally failed.
 - The purple highlight for DAG selection is now consistent across files. Previously, it was inconsistent.
@@ -46,6 +45,6 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 - The link to the IDE from the project setup page has been corrected.
 - The IDE no longer has issues with single-space file names.
 - Adding invalid characters in the sub-directory config no longer causes the IDE to fail.
-- YML schema validation now consistently passes. Previously, it failed occasionally.
+- YML autocomplete triggers consistently now. Previously, it occasionally didn't trigger.
 - Reverting single files now reloads the file contents in the tab. Previously, it didn't reload.
 - The file tree no longer collapses on the first click when there is a project subdirectory defined.
