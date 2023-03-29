@@ -47,7 +47,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 3. [Authenticate](https://www.apollographql.com/docs/graphos/explorer/connecting-authenticating#authentication) via Bearer auth with `YOUR_TOKEN`. Go to **Headers** at the bottom of the explorer and select **+New header**.
 
-4. Select **Authorization** in the **header key** drop-down list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should look like this `{"Authorization": "Bearer <YOUR_TOKEN>}`.
+4. Select **Authorization** in the **header key** drop-down list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should look like this `{"Authorization": "Bearer <auth_token>}`.
 <br />
 
 <Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
