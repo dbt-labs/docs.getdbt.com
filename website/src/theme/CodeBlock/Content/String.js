@@ -65,7 +65,7 @@ export default function CodeBlockString({
           language={language ?? 'text'}>
           {({className, tokens, getLineProps, getTokenProps}) => (
             <pre
-              /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
+              /* eslint-disable-next-line */
               tabIndex={0}
               ref={wordWrap.codeBlockRef}
               className={clsx(className, styles.codeBlock, 'thin-scrollbar')}>
