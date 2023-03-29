@@ -15,7 +15,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
-- Connect more data sources to Starburst Galaxy
+- Connect to multiple data sources. 
 
 :::tip Public Preview 
 The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
@@ -394,6 +394,12 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
 <Snippet src="quickstarts/schedule-a-job" />
+
+
+## Connect to multiple data sources
+This quickstart focuses on using dbt Cloud to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
+
+If you want to try this out, you can use the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart. 
 
 ## Related content
 - Learn more with the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course for free
