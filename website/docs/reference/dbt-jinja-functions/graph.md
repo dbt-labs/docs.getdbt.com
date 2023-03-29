@@ -1,6 +1,7 @@
 ---
 title: "graph"
 id: "graph"
+description: "The `graph` context variable contains info about nodes in your project."
 ---
 
 The `graph` context variable contains information about the _nodes_ in your dbt

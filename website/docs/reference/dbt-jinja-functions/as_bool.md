@@ -1,8 +1,7 @@
 ---
 title: "as_bool"
 id: "as_bool"
-sidebar_position: 2
-description: "test this as a description list"
+description: "Use this filter to coerce a Jinja output into boolean value."
 ---
 
 The `as_bool` Jinja filter will coerce Jinja-compiled output into a boolean

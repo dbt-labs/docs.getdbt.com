@@ -1,6 +1,7 @@
 ---
 title: "statement blocks"
 id: "statement-blocks"
+description: "SQL queries that hit database and return results to your jinja context."
 ---
 
 `statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
