@@ -15,7 +15,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 
 - Commit and revert individual files under **Version Control**.
 - Use the [command palette](/docs/cloud/develop-in-the-cloud#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
-- Under the git dropdown, you can now create PRs even when there are uncommitted changes.
+- Create PRs even when there are uncommitted changes (under the **git** dropdown).
 - You will now see more autocomplete suggestions when editing a YML file; this is powered by [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema).
 - The file tree now has additional options in the right-click menu, such as Copy model as ref or Copy file path.
 - The DAG view has been adjusted to a default of `2+model+2`.
