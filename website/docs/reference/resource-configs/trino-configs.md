@@ -22,7 +22,7 @@ In some specific cases, there may be need for tuning during the Trino session pr
 
 Trino connectors use table properties to configure connector specifics.
 
-Check the Trino connector documentation for more information.
+For more information, refer to either the [Trino Connectors](https://trino.io/docs/current/connector.html) or [Starburst Catalog](https://docs.starburst.io/starburst-galaxy/catalogs/) so learn what is and isn't supported for each underlying data platform
 
 ```sql
 {{
@@ -40,7 +40,7 @@ Check the Trino connector documentation for more information.
 
 ### Seeds
 
-Seeds are CSV files in your dbt project (typically in your data directory), that dbt can load into your data warehouse using the dbt seed command.
+reference: [dbt docs: Seeds](https://docs.getdbt.com/docs/build/seeds)
 
 For dbt-trino batch_size is defined in macro `trino__get_batch_size()` and default value is `1000`.
 In order to override default value define within your project a macro like the following:
@@ -58,7 +58,7 @@ In order to override default value define within your project a macro like the f
 - `rename` - creates intermediate table, then renames the target to backup one and renames intermediate to target one.
 - `drop` - drops and recreates a table. It overcomes table rename limitation in AWS Glue.
 
-By default `table` materialization uses `on_table_exists = 'rename'`, see an examples below how to change it.
+The recommended `table` materialization uses `on_table_exists = 'rename'` and it is also the default. See the below example for how to change it.
 
 In model add:
 
@@ -273,26 +273,7 @@ models:
 
 ### Snapshots
 
-Commonly, analysts need to "look back in time" at some previous state of data in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is often not the case. dbt provides a mechanism, snapshots, which records changes to a mutable table over time.
-
-Snapshots implement type-2 Slowly Changing Dimensions over mutable source tables. These Slowly Changing Dimensions (or SCDs) identify how a row in a table changes over time. Imagine you have an orders table where the status field can be overwritten as the order is processed. [See also the dbt docs about snapshots](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots).
-
-An example is given below.
-
-```jinja2
-{% snapshot orders_snapshot %}
-{{
-    config(
-        target_database='analytics',
-        target_schema='snapshots',
-        unique_key='id',
-        strategy='timestamp',
-        updated_at='updated_at',
-    )
-}}
-select * from {{ source('jaffle_shop', 'orders') }}
-{% endsnapshot %}
-```
+reference: [dbt docs: Snapshots](https://docs.getdbt.com/docs/build/snapshots)
 
 Note that the Snapshot feature depends on the `current_timestamp` macro. In some connectors the standard precision (`TIMESTAMP(3) WITH TIME ZONE`) is not supported by the connector eg. Iceberg.
 
