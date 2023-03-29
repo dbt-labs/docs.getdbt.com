@@ -68,9 +68,8 @@ To use the Project subdirectory option in dbt Cloud, follow these steps:
 * You can also reference nested subdirectories. For example, if your dbt project files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. Please note: you do not need leading or trailing `/` in the Project subdirectory parameter. 
 
 5. Click **Save** when you've finished.
-<Lightbox src="/img/docs/building-a-dbt-project/project-subdirectory.jpg" width="75%"  title="Entering `finance` in the Project subdirectory field."/>
 
-After configuring the Project subdirectory option, dbt Cloud will use it as the root directory for your dbt project. This means that dbt commands, such as `dbt run` or `dbt test`, will operate on files within the specified subdirectory. If there is no dbt_project.yml file in the Project subdirectory, you will be prompted to initialize the dbt project.
+After configuring the Project subdirectory option, dbt Cloud will use it as the root directory for your dbt project. This means that dbt commands, such as `dbt run` or `dbt test`, will operate on files within the specified subdirectory. If there is no `dbt_project.yml` file in the Project subdirectory, you will be prompted to initialize the dbt project.
 
 ## New projects
 
