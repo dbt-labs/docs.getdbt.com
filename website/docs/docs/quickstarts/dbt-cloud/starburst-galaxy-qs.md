@@ -16,6 +16,10 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Document your models.
 - Schedule a job to run.
 
+:::tip Public Preview 
+The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, you can learn more about [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
+:::
+
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
 
