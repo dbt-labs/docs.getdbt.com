@@ -8,7 +8,7 @@ id: "trino-configs"
 
 ### Session properties
 
-In some specific cases, there may be needed tuning through the Trino session properties only for a specific dbt model. In such cases, using the [dbt hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook) may come to the rescue:
+In some specific cases, there may be need for tuning during the Trino session properties only for a specific dbt model. In such cases, using the [dbt hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook) may come to the rescue:
 
 ```sql
 {{
@@ -53,7 +53,7 @@ In order to override default value define within your project a macro like the f
 
 ### Table
 
-`dbt-trino` supports two modes in `table` materialization `rename` and `drop` configured using `on_table_exists`.
+`dbt-trino` supports two modes in `table` materialization: `rename` and `drop` configured using `on_table_exists`.
 
 - `rename` - creates intermediate table, then renames the target to backup one and renames intermediate to target one.
 - `drop` - drops and recreates a table. It overcomes table rename limitation in AWS Glue.
@@ -88,7 +88,7 @@ TrinoUserError(type=USER_ERROR, name=NOT_SUPPORTED, message="Table rename is not
 
 ### View
 
-Adapter supports two security modes in `view` materialization `DEFINER` and `INVOKER` configured using `view_security`.
+Adapter supports two security modes in `view` materialization `definer` and `invoker` configured using `view_security`.
 
 See [Trino docs](https://trino.io/docs/current/sql/create-view.html#security) for more details about security modes in views.
 
@@ -170,8 +170,8 @@ select * from {{ ref('users') }}
 
 #### `merge`
 
-Through the `merge` incremental strategy, dbt-trino constructs a [`MERGE` statement](https://trino.io/docs/current/sql/merge.html) which `INSERT`s new and `UPDATE`s existing records based on the unique key (specified by `unique_key`).  
-If `unique_key` is not unique `delete+insert` strategy can be used.
+Through the `merge` incremental strategy, dbt-trino constructs a [`MERGE` statement](https://trino.io/docs/current/sql/merge.html) which `insert`s new and `update`s existing records based on the unique key (specified by `unique_key`).  
+If `unique_key` is not unique, `delete+insert` strategy can be used.
 Note that some connectors in Trino have limited or no support for `MERGE`.
 
 ```jinja2

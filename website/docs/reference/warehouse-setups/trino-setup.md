@@ -276,7 +276,7 @@ trino:
 
 Authenticating in dbt-core using OAuth 2 is currently underdocumented, but helpful information is given on the [trino-python-client's README](https://github.com/trinodb/trino-python-client#oauth2-authentication).
 
-For addiontal information, refer to Trino's doc page on [Oauth2 Authentication](https://trino.io/docs/current/security/oauth2.html)
+For additional information, refer to Trino's doc page on [Oauth2 Authentication](https://trino.io/docs/current/security/oauth2.html)
 
 Note: It is recommended to install `keyring` to cache the OAuth2 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`, `keyring` is not installed by default.
 
