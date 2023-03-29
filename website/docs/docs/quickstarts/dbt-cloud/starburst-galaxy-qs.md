@@ -15,15 +15,16 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
+- Connect more data sources to Starburst Galaxy
 
 :::tip Public Preview 
-The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there may still be some planned additions and modifications to product behavior before moving to General Availability. For details, you can learn more about [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
+The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
 :::
 
 
 ## Prerequisites 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/).
-- You have [a trial Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). For details, refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs.
+- You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
 - You have an AWS account with permissions to upload data to an S3 bucket.
 - For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
     - [AWS access and secret key instructions](https://docs.starburst.io/starburst-galaxy/security/external-aws.html#aws-access-and-secret-key)
@@ -53,7 +54,7 @@ Using Starburst Galaxy, you can create tables and also transform them with dbt. 
                 stripe-payments.csv (file)
     ```
 
-## Connect Starburst Galaxy to the Amazon S3 bucket
+## Connect Starburst Galaxy to the Amazon S3 bucket {#connect-to-s3-bucket}
 If your Starburst Galaxy instance is not already connected to your S3 bucket, you need to create a cluster, create a catalog that connects to the S3 bucket, associate the new catalog (your data source) to your new cluster, and configure privilege settings. 
 
 In addition to Amazon S3, Starburst Galaxy supports many other data sources. To learn more about them, you can refer to the [Catalogs overview](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) in the Starburst Galaxy docs.  
@@ -176,19 +177,21 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 
 ## Connect dbt Cloud to Starburst Galaxy 
 
-1. Log in to [Starburst Galaxy](https://galaxy.starburst.io/login).
-2. If you haven’t already, set your account’s role to dbt_user. Click your email address in the upper right corner, choose **Switch role** and select **dbt_user**.
+1. Make sure you are still logged in to [Starburst Galaxy](https://galaxy.starburst.io/login).
+2. If you haven’t already, set your account’s role to accountadmin. Click your email address in the upper right corner, choose **Switch role** and select **accountadmin**. 
+    
+    If this role is not listed for you, choose the role you selected in [Connect Starburst Galaxy to the Amazon S3 bucket](#connect-to-s3-bucket) when you added location privilege for your S3 bucket.
 3. Click **Clusters** on the left sidebar.
-4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that model in dbt Cloud.
+4. Find your cluster in the **View clusters** table and click **Connection info**. Choose **dbt** from the **Select client** dropdown. Keep the **Connection information** modal open. You will use details from that modal in dbt Cloud.
 5. In another browser tab, log in to [dbt Cloud](https://cloud.getdbt.com/).
 6. Create a new project in dbt Cloud. From Account settings (using the gear menu in the top right corner), click **+ New Project**.
 7. Enter a project name and click **Continue**.
-8. Choose **Trino (Starburst)** as your connection and click **Next**.
+8. Choose **Starburst** as your connection and click **Next**.
 9. Enter the **Settings** for your new project:
     - **Host** – The **Host** value from the **Connection information** modal in your Starburst Galaxy tab.
     - **Port** – 443 (which is the default)
 10. Enter the **Development Credentials** for your new project:
-    - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the /dbt_user part. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
+    - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the account's role which is the `/` and all the characters that follow. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
     - **Password** – The password you use to log in to your Starburst Galaxy account.
     - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables).
     - Leave the remaining options as is. You can use their default values.
