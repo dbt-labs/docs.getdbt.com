@@ -5,9 +5,9 @@ id: "starburst-galaxy"
 sidebar_label: "Starburst Galaxy quickstart"
 ---
 
-In this quickstart guide, you'll learn how to use dbt Cloud with Starburst Galaxy. It will show you how to:
+In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/). It will show you how to:
 
-- Load data to the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also supports other providers such as Google Cloud, Microsoft Azure, and more. 
+- Load data to the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other providers](https://www.starburst.io/platform/connectors/) such as Google Cloud, Microsoft Azure, and more. 
 - Connect Starburst Galaxy to the Amazon S3 bucket.
 - Create tables with Starburst Galaxy.
 - Connect dbt Cloud to Starburst Galaxy.
@@ -23,22 +23,24 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 ## Prerequisites 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/).
-- You have [a trial Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/.) . For details, refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs.
-- You have an AWS account with permissions to upload data to an S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes.
-- For AWS (S3) authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
+- You have [a trial Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). For details, refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs.
+- You have an AWS account with permissions to upload data to an S3 bucket.
+- For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
     - [AWS access and secret key instructions](https://docs.starburst.io/starburst-galaxy/security/external-aws.html#aws-access-and-secret-key)
     - [Cross account IAM role](https://docs.starburst.io/starburst-galaxy/security/external-aws.html#role)
 
 ## Load data to an Amazon S3 bucket {#load-data-to-s3}
 
-To be able to use Starburst Galaxy to create tables that can be transformed with dbt Cloud, you will need to upload the sample data to the object storage service for your cloud provider.
+Using Starburst Galaxy, you can create tables and also transform them with dbt. Start by loading the Jaffle Shop data (provided by dbt Labs) to your Amazon S3 bucket. Jaffle Shop is a fictional cafe selling food and beverages in several US cities. 
 
-1. Download these CSV files (Jaffle Shop sample data) to your local machine:
+1. Download these CSV files to your local machine:
 
     - [jaffle_shop_customers.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_customers.csv)
     - [jaffle_shop_orders.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/jaffle_shop_orders.csv)
     - [stripe_payments.csv](https://dbt-tutorial-public.s3-us-west-2.amazonaws.com/stripe_payments.csv)
-2. Upload these files to S3. When uploading these files, you must create the following folder structure and upload the appropriate file to each folder:
+2. Upload these files to S3. For details, refer to [Upload objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html) in the Amazon S3 docs. 
+    
+    When uploading these files, you must create the following folder structure and upload the appropriate file to each folder:
 
     ```
     <bucket/blob>
@@ -52,7 +54,9 @@ To be able to use Starburst Galaxy to create tables that can be transformed with
     ```
 
 ## Connect Starburst Galaxy to the Amazon S3 bucket
-If your Starburst Galaxy instance is not already connected to your S3 bucket, you need to create a cluster, create a catalog that connects to the S3 bucket, associate the new catalog (your data source) to your new cluster, and configure access control settings. 
+If your Starburst Galaxy instance is not already connected to your S3 bucket, you need to create a cluster, create a catalog that connects to the S3 bucket, associate the new catalog (your data source) to your new cluster, and configure privilege settings. 
+
+In addition to Amazon S3, Starburst Galaxy supports many other data sources. To learn more about them, you can refer to the [Catalogs overview](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) in the Starburst Galaxy docs.  
 
 1. Create a cluster. Click **Clusters** on the left sidebar of the Starburst Galaxy UI, then click **Create cluster** in the main body of the page. 
 2. In the **Create a new cluster** modal, you only need to set the following options. You can use the defaults for the other options.
@@ -62,9 +66,9 @@ If your Starburst Galaxy instance is not already connected to your S3 bucket, yo
     When done, click **Create cluster**.
 
 1. Create a catalog. Click **Catalogs** on the left sidebar of the Starburst Galaxy UI, then click **Create catalog** in the main body of the page. 
-2. On the **Create a data source** page, select Amazon S3. 
-3. In the **Name and description** section, fill out the fields. 
-4. In the **Authentication to S3** section, select the [mechanism you chose to connect to the bucket](#prerequisites).
+2. On the **Create a data source** page, select the Amazon S3 tile. 
+3. In the **Name and description** section of the **Amazon S3** page, fill out the fields. 
+4. In the **Authentication to S3** section of the **Amazon S3** page, select the [AWS (S3) authentication mechanism](#prerequisites) you chose to connect with.
 5. In the **Metastore configuration** section, set these options:
     - **Default S3 bucket name** &mdash; Enter the name of your S3 bucket you want to access.
     - **Default directory name** &mdash; Enter the folder name of where the Jaffle Shop data lives in the S3 bucket. This is the same folder name you used in [Load data to an Amazon S3 bucket](#load-data-to-s3).
@@ -72,22 +76,25 @@ If your Starburst Galaxy instance is not already connected to your S3 bucket, yo
     - **Allow writing to external tables** &mdash; Enable this option.
 6. In the **Default table format** section, choose **Hive**. 
 
+    The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
+
     <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
 
 7. Click **Test connection**. This verifies that Starburst Galaxy can access your S3 bucket. 
 8. Click **Connect catalog** if the connection test passes.
-
     <Lightbox src="/img/quickstarts/dbt-cloud/test-connection-success.png" title="Successful connection test" />
 
-9. On the **Set permissions** page, click **Skip**. You can add permissions later if you prefer.
+9. On the **Set permissions** page, click **Skip**. You can add permissions later if you want.
 10. On the **Add to cluster** page, choose the cluster you want to add the data source to from the dropdown and click **Add to cluster**.
-11. Add the location privilege for your S3 bucket to your role in Starburst Galaxy. Click **Access control > Roles and privileges** on the left sidebar of the Starburst Galaxy UI. In the main body of the page, click the **accountadmin** role. 
+11. Add the location privilege for your S3 bucket to your role in Starburst Galaxy. Click **Access control > Roles and privileges** on the left sidebar of the Starburst Galaxy UI. Then, in the **Roles** table, click the role name **accountadmin**. 
 
     If you're using an existing Starburst Galaxy cluster and don't have access to the accountadmin role, then select a role that you do have access to.
+
+    To learn more about access control, refer to [Access control](https://docs.starburst.io/starburst-galaxy/security/access-control.html) in the Starburst Galaxy docs. 
 1. On the **Roles** page, click the **Privileges** tab and click **Add privilege**.
 2. On the **Add privilege** page, set these options:
     - **What would you like to modify privileges for?** &mdash; Choose **Location**.
-    - **Enter a storage location provide** &mdash; Enter the location of your S3 bucket and the folder of where the Jaffle Shop data lives. Make sure to include the `/*` at the end of the location. 
+    - **Enter a storage location provide** &mdash; Enter the storage location of _your S3 bucket_ and the folder of where the Jaffle Shop data lives. Make sure to include the `/*` at the end of the location. 
     - **Create SQL** &mdash; Enable the option. 
     
     When done, click **Add privileges**.
@@ -95,16 +102,16 @@ If your Starburst Galaxy instance is not already connected to your S3 bucket, yo
     <Lightbox src="/img/quickstarts/dbt-cloud/add-privilege.png" title="Add privilege to accountadmin role" />
 
 ## Create tables with Starburst Galaxy
-To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the CSV files that you uploaded to your S3 bucket. 
+To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the Jaffle Shop data that you [loaded to your S3 bucket](#load-data-to-s3). You can do this (and run any SQL statement) from the [query editor](https://docs.starburst.io/starburst-galaxy/query/index.html). 
 
-1. Click **Query > Query editor** on the left sidebar of the Starburst Galaxy UI. The Query editor is now the main body of the page. 
-2. Configure the Query editor settings so it queries your S3 bucket. In the upper right of the editor, select your cluster in the first gray box and select your catalog in the second gray box:
+1. Click **Query > Query editor** on the left sidebar of the Starburst Galaxy UI. The main body of the page is now the query editor. 
+2. Configure the query editor so it queries your S3 bucket. In the upper right corner of the query editor, select your cluster in the first gray box and select your catalog in the second gray box:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-editor.png" title="Set the cluster and catalog in Query editor" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-editor.png" title="Set the cluster and catalog in query editor" />
 
-3. Copy and paste these queries into the Query editor. Then **Run** each query individually. 
+3. Copy and paste these queries into the query editor. Then **Run** each query individually. 
 
-    Replace `YOUR_S3_BUCKET_NAME` with the name of your S3 bucket you uploaded the sample data files to. These queries create a schema named `jaffle_shop` and also create the `jaffle_shop_customers`, `jaffle_shop_orders`, and `stripe_payments` tables: 
+    Replace `YOUR_S3_BUCKET_NAME` with the name of your S3 bucket. These queries create a schema named `jaffle_shop` and also create the `jaffle_shop_customers`, `jaffle_shop_orders`, and `stripe_payments` tables: 
 
     ```sql
     CREATE SCHEMA jaffle_shop WITH (location='s3://YOUR_S3_BUCKET_NAME/dbt-quickstart/');
@@ -155,11 +162,11 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 
     );
     ```
-4. When the queries are done, you can see the following hierarchy on the left sidebar of the Query editor:
+4. When the queries are done, you can see the following hierarchy on the query editor's left sidebar:
 
-    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-data-hierarchy.png" title="Hierarchy of data in Query editor" />
+    <Lightbox src="/img/quickstarts/dbt-cloud/starburst-data-hierarchy.png" title="Hierarchy of data in query editor" />
 
-5. Verify that the tables were created successfully. In the Query editor, run the following queries:
+5. Verify that the tables were created successfully. In the query editor, run the following queries:
 
     ```sql
     select * from jaffle_shop.jaffle_shop_customers;
@@ -290,3 +297,10 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
 <Snippet src="quickstarts/schedule-a-job" />
+
+## Related content
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
+- [SQL basics for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/tutorials/learn-basics.html)
