@@ -5,7 +5,7 @@ required: no
 ---
 
 :::info Beta functionality
-This functionality is new in v1.5. These docs exist to provide a high-level overview of what's to come. The specific syntax is liable to change.
+This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
 :::
 
 <File name='models/<schema>.yml'>
