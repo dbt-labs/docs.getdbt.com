@@ -1,7 +1,7 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
 
-module.exports = function buildAuthorPagesPlugin(context, options) {
+module.exports = function buildAuthorPagesPlugin() {
   return {
     name: 'docusaurus-build-author-pages-plugin',
     async loadContent() {
