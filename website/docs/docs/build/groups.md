@@ -8,7 +8,7 @@ keywords:
 
 ## About Groups 
 
-A group is collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams, by restricting [access to private](access) models
+A group is a collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](access) models
 
 ### Declaring a group
 
