@@ -46,10 +46,12 @@ Today, dbt uses this file to populate the [docs site](documentation), and to per
 - `sources`: Dictionary of sources.
 - `metrics`: Dictionary of metrics.
 - `exposures`: Dictionary of exposures.
+- `groups`: Dictionary of groups.
 - `macros`: Dictionary of macros.
 - `docs`: Dictionary of `docs` blocks.
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
 - `child_map`: Dictionary that contains the first-order children of each resource.
+- `group_map`: Dictionary that maps group names to their resource nodes.
 - `selectors`: Expanded dictionary representation of [YAML `selectors`](yaml-selectors).
 - `disabled`: Array of resources with `enabled: false`.
 
