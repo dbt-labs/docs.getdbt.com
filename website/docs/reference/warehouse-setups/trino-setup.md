@@ -274,11 +274,26 @@ trino:
 
 <TabItem value="oauth">
 
-Authenticating in dbt-core using OAuth 2 is currently underdocumented, but helpful information is given on the [trino-python-client's README](https://github.com/trinodb/trino-python-client#oauth2-authentication).
+To authenticate in dbt-core using OAuth 2 you need only specify: `method: oauth`, in addition to the the above specified host-related fields.
 
-For additional information, refer to Trino's doc page on [Oauth2 Authentication](https://trino.io/docs/current/security/oauth2.html)
+For additional information, refer to both Trino's doc page on [Oauth2 Authentication](https://trino.io/docs/current/security/oauth2.html) and the [trino-python-client's README](https://github.com/trinodb/trino-python-client#oauth2-authentication).
 
 Note: It is recommended to install `keyring` to cache the OAuth2 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`, `keyring` is not installed by default.
+
+#### Sample `profiles.yml`
+
+```yaml
+sandbox-galaxy:
+  target: oauth
+  outputs:
+    oauth:
+      type: trino
+      method: oauth
+      host: bunbundersders.trino.galaxy-dev.io
+      catalog: dbt_target
+      schema: dataders
+      port: 433
+```
 
 </TabItem>
 
