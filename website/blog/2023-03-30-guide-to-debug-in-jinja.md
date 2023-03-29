@@ -17,6 +17,8 @@ The [`debug()`](https://docs.getdbt.com/reference/dbt-jinja-functions/debug-meth
 
 Let’s dive into the last time I used `debug()` and how it helped me solve bugs in my code.
 
+<!--truncate-->
+
 ## Jinja in dbt
 
 While working on a feature for [the dbt_project_evaluator package](https://github.com/dbt-labs/dbt-project-evaluator), my dbt runs started to fail consistently providing me the following message:
