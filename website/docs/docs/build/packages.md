@@ -263,7 +263,7 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 
 
-#### Project subdirectories
+#### Configure subdirectory for packaged projects
 
 <Changelog>
 
@@ -271,7 +271,7 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 </Changelog>
 
-In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
+In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the packaged project is instead nested in a subdirectory—perhaps within a much larger mono repo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
 <File name='packages.yml'>
 
