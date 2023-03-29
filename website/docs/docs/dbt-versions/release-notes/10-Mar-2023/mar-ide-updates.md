@@ -20,7 +20,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 - The file tree now has additional options in the right-click menu, such as Copy model as ref or Copy file path.
 - The DAG view has been adjusted to a default of `2+model+2`.
 - A lineage selector has been implemented in the DAG/lineage sub-tab.
-- You can now edit directly in the git diff view, located in the right pane.
+- Edit directly in the git diff view located in the right pane.
 - A warning message will now appear when users press Command-W/Control-W when there are unsaved changes.
 - A new onboarding flow guide is now available.
 
