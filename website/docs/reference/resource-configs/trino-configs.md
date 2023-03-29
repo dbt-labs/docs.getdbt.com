@@ -42,6 +42,26 @@ For more information, refer to either the [Trino Connectors](https://trino.io/do
 
 reference: [dbt docs: Seeds](https://docs.getdbt.com/docs/build/seeds)
 
+#### Prepared Statements
+
+The `dbt seed` feature uses [Trino's prepared statements](https://trino.io/docs/current/sql/prepare.html).
+
+Python's http client has a hardcoded limit of `65536` bytes for a header line.
+
+When executing a prepared statement with a large number of parameters, you might encounter following error:
+
+```python
+requests.exceptions.ConnectionError: (
+  'Connection aborted.', 
+  LineTooLong('got more than 65536 bytes when reading header line')
+  )
+```
+
+The prepared statements can be disabled by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). This flag may be removed in later releases.
+
+
+#### Batch Size
+
 For dbt-trino batch_size is defined in macro `trino__get_batch_size()` and default value is `1000`.
 In order to override default value define within your project a macro like the following:
 
@@ -50,6 +70,8 @@ In order to override default value define within your project a macro like the f
   {{ return(10000) }}
 {% endmacro %}
 ```
+
+
 
 ### Table
 
@@ -286,18 +308,6 @@ If necessary, you can override the standard precision by providing your own vers
 ```
 
 ## Other Trino/Starburst Relevant Configs
-
-### Prepared statements
-
-The `dbt seed` feature uses [Trino's prepared statements](https://trino.io/docs/current/sql/prepare.html).
-
-Python's http client has a hardcoded limit of 65536 bytes for a header line.
-
-When executing a prepared statement with a large number of parameters, you might encounter following error:
-
-`requests.exceptions.ConnectionError: ('Connection aborted.', LineTooLong('got more than 65536 bytes when reading header line'))`.
-
-The prepared statements can be disabled by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). This flag may be removed in later releases.
 
 ### Grants
 
