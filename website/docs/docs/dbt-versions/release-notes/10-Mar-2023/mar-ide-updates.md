@@ -13,7 +13,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 
 ## New features 
 
-- You can now commit and revert individual files under **Version Control**.
+- Commit and revert individual files under **Version Control**.
 - You can now use the [command palette](/docs/cloud/develop-in-the-cloud#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
 - Under the git dropdown, you can now create PRs even when there are uncommitted changes.
 - You will now see more autocomplete suggestions when editing a YML file; this is powered by [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema).
