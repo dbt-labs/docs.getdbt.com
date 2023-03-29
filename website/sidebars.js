@@ -6,11 +6,11 @@ const sidebarSettings = {
       type: "category",
       label: "About dbt Cloud",
       items: [
-            "docs/cloud/about-cloud/dbt-cloud-features",
-            "docs/cloud/about-cloud/architecture",
-            "docs/cloud/about-cloud/tenancy",
-            "docs/cloud/about-cloud/regions-ip-addresses",
-            "docs/cloud/about-cloud/about-cloud-ide",
+        "docs/cloud/about-cloud/dbt-cloud-features",
+        "docs/cloud/about-cloud/architecture",
+        "docs/cloud/about-cloud/tenancy",
+        "docs/cloud/about-cloud/regions-ip-addresses",
+        "docs/cloud/about-cloud/about-cloud-ide",
       ],
     }, // About dbt Cloud directory
     {
@@ -80,7 +80,7 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
                 },
-    
+
                 {
                   type: "category",
                   label: "Single sign-on",
@@ -103,7 +103,7 @@ const sidebarSettings = {
                 "docs/cloud/manage-access/audit-log",
               ],
             }, // Manage access
-    
+
             {
               type: "category",
               label: "Configure Git",
@@ -122,7 +122,7 @@ const sidebarSettings = {
                 "docs/cloud/git/import-a-project-by-git-url",
               ],
             }, // Supported Git providers
-            
+
             {
               type: "category",
               label: "Multi-tenant PrivateLink",
@@ -179,6 +179,7 @@ const sidebarSettings = {
             "docs/build/snapshots",
             "docs/build/exposures",
             "docs/build/metrics",
+            "docs/build/groups",
           ],
         },
         {
@@ -223,12 +224,12 @@ const sidebarSettings = {
       type: "category",
       label: "Deploy dbt jobs",
       collapsed: true,
-      link: {type: "doc", id: "docs/deploy/deployments"},
+      link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
         {
           type: "category",
           label: "Deploy with dbt Cloud",
-          link: {type: "doc", id: "docs/deploy/dbt-cloud-job"},
+          link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
             "docs/deploy/artifacts",
             "docs/deploy/job-commands",
@@ -240,7 +241,7 @@ const sidebarSettings = {
             "docs/deploy/cloud-ci-job",
           ],
         },
-        "docs/deploy/deployment-tools", 
+        "docs/deploy/deployment-tools",
         "docs/deploy/project-state",
       ],
     }, // end of "Deploy dbt jobs"
@@ -265,7 +266,7 @@ const sidebarSettings = {
             "docs/collaborate/git/version-control-basics",
             "docs/collaborate/git/managed-repository",
             "docs/collaborate/git/pr-template",
-            "docs/collaborate/git/merge-conflicts",            
+            "docs/collaborate/git/merge-conflicts",
           ],
         },
         {
@@ -280,13 +281,13 @@ const sidebarSettings = {
           type: "category",
           label: "Publishing models",
           collapsed: true,
-          link: {type: "doc", id: "docs/collaborate/publish/about-publishing-models"},
+          link: { type: "doc", id: "docs/collaborate/publish/about-publishing-models" },
           items: [
             "docs/collaborate/publish/model-contracts",
             "docs/collaborate/publish/model-access",
             "docs/collaborate/publish/model-versions",
           ],
-        }, 
+        },
       ],
     },
     {
@@ -305,49 +306,49 @@ const sidebarSettings = {
       label: "dbt APIs",
       collapsed: true,
       items: [
-          "docs/dbt-cloud-apis/overview",
-          {
+        "docs/dbt-cloud-apis/overview",
+        {
+          type: "category",
+          label: "Authentication",
+          items: [
+            "docs/dbt-cloud-apis/user-tokens",
+            "docs/dbt-cloud-apis/service-tokens",
+          ],
+        },
+        "docs/dbt-cloud-apis/admin-cloud-api",
+        {
+          type: "category",
+          label: "Metadata API",
+          items: [
+            "docs/dbt-cloud-apis/metadata-api",
+            "docs/dbt-cloud-apis/metadata-use-case-guides",
+            "docs/dbt-cloud-apis/access-metadata-api",
+            "docs/dbt-cloud-apis/metadata-querying",
+            {
               type: "category",
-              label: "Authentication",
+              label: "Schema",
               items: [
-                  "docs/dbt-cloud-apis/user-tokens",
-                  "docs/dbt-cloud-apis/service-tokens",
+                "docs/dbt-cloud-apis/metadata-schema-model",
+                "docs/dbt-cloud-apis/metadata-schema-models",
+                "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
+                "docs/dbt-cloud-apis/metadata-schema-metric",
+                "docs/dbt-cloud-apis/metadata-schema-metrics",
+                "docs/dbt-cloud-apis/metadata-schema-source",
+                "docs/dbt-cloud-apis/metadata-schema-sources",
+                "docs/dbt-cloud-apis/metadata-schema-seed",
+                "docs/dbt-cloud-apis/metadata-schema-seeds",
+                "docs/dbt-cloud-apis/metadata-schema-snapshots",
+                "docs/dbt-cloud-apis/metadata-schema-test",
+                "docs/dbt-cloud-apis/metadata-schema-tests",
+                "docs/dbt-cloud-apis/metadata-schema-exposure",
+                "docs/dbt-cloud-apis/metadata-schema-exposures",
               ],
-          },
-          "docs/dbt-cloud-apis/admin-cloud-api",
-          {
-              type: "category",
-              label: "Metadata API",
-              items: [
-                  "docs/dbt-cloud-apis/metadata-api",
-                  "docs/dbt-cloud-apis/metadata-use-case-guides",
-                  "docs/dbt-cloud-apis/access-metadata-api",
-                  "docs/dbt-cloud-apis/metadata-querying",
-                  {
-                      type: "category",
-                      label: "Schema",
-                      items: [
-                          "docs/dbt-cloud-apis/metadata-schema-model",
-                          "docs/dbt-cloud-apis/metadata-schema-models",
-                          "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
-                          "docs/dbt-cloud-apis/metadata-schema-metric",
-                          "docs/dbt-cloud-apis/metadata-schema-metrics",
-                          "docs/dbt-cloud-apis/metadata-schema-source",
-                          "docs/dbt-cloud-apis/metadata-schema-sources",
-                          "docs/dbt-cloud-apis/metadata-schema-seed",
-                          "docs/dbt-cloud-apis/metadata-schema-seeds",
-                          "docs/dbt-cloud-apis/metadata-schema-snapshots",
-                          "docs/dbt-cloud-apis/metadata-schema-test",
-                          "docs/dbt-cloud-apis/metadata-schema-tests",
-                          "docs/dbt-cloud-apis/metadata-schema-exposure",
-                          "docs/dbt-cloud-apis/metadata-schema-exposures",
-                      ],
-                  },
-              ],
-          },
+            },
+          ],
+        },
       ],
-  },
-  {
+    },
+    {
       type: "category",
       label: "Available dbt versions",
       items: [
@@ -936,8 +937,8 @@ const sidebarSettings = {
       type: "category",
       label: "Advanced",
       items: ["guides/advanced/creating-new-materializations",
-      "guides/advanced/using-jinja",
-    ],
+        "guides/advanced/using-jinja",
+      ],
     },
     {
       type: "category",
