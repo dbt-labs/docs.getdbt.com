@@ -20,10 +20,6 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there may still be some planned additions and modifications to product behavior before moving to General Availability. For details, you can learn more about [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
 :::
 
-:::tip Videos for you
-You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
-
-:::
 
 ## Prerequisites 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/).
@@ -397,7 +393,8 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/schedule-a-job" />
 
 ## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- Learn more with the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course for free
+- [dbt Courses](https://courses.getdbt.com/collections)
 - [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
