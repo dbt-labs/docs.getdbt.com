@@ -110,7 +110,7 @@ The `method` field is used in a user's profile to declare the intended authentic
     {label: 'kerberos', value: 'kerberos'},
     {label: 'JWT Token', value: 'jwt'},
     {label: 'Certificate', value: 'certificate'},
-    {label: 'Oauth', value: 'oauth'},
+    {label: 'OAuth', value: 'oauth'},
     {label: 'None', value: 'none'},
   ]}
 >
