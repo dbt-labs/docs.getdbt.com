@@ -31,7 +31,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 - sqlfmt has been upgraded to v0.17.0.
 - When the Format button fails, a toast notification will display a syntax error.
 - The editor now has the option to toggle minimap/word-wrap via right-click.
-- The history drawer now displays elapsed time more in real-time and in s/m/h increments.
+- The history drawer displays elapsed time in real-time and s/m/h increments.
 - When deleting development environments, the delete modal will now warn users that any uncommitted changes will be lost.
 - The context for the Git button has been adjusted to show that it will link to an external site (such as GitHub or GitLab) when users create a pull request.
 
