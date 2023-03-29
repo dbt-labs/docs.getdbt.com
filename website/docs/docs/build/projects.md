@@ -65,7 +65,8 @@ To use the Project subdirectory option in dbt Cloud, follow these steps:
 3. Select **Edit** on the lower right-hand corner of the page.
 
 4. In the **Project subdirectory** field, add the name of the subdirectory. For example, if your dbt project files are located in a subdirectory called `<repository>/finance`, you would enter `finance` as the subdirectory. 
-* You can also reference nested subdirectories. For example, if your dbt project files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. Please note: you do not need leading or trailing `/` in the Project subdirectory parameter. 
+
+    * You can also reference nested subdirectories. For example, if your dbt project files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. **Note**: You do not need a leading or trailing `/` in the Project subdirectory field. 
 
 5. Click **Save** when you've finished.
 
