@@ -44,7 +44,7 @@ models:
 
 ### Referencing a model in a group
 
-By default, all models within a group are `protected` in access - meaning they can be referenced by downstream resources in _any_ group in the project using the [`ref`](ref) function. If a grouped model's `access` property is set to `private`, only resources within its group will be able to make references to it. 
+By default, all models within a group are `protected` in access - meaning they can be referenced by downstream resources in _any_ group in the project using the [`ref`](ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
 
 <File name='models/schema.yml'>
 
