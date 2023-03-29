@@ -12,7 +12,7 @@ Uncomment if you're publishing docs for a prerelease version of dbt (delete if n
 - [ ] Add versioning components, as described in [Versioning Docs](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#versioning-entire-pages)
 - [ ] Add a note to the prerelease version [Migration Guide](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs/guides/migration/versions)
 -->
-- [ ] Review the [Content style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [About versioning](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#versioning-entire-pages) so my content adheres to these guidelines.
+- [ ] Review the [Content style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [About versioning](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#adding-a-new-version) so my content adheres to these guidelines.
 - [ ] Add a checklist item for anything that needs to happen before this PR is merged, such as "needs technical review" or "change base branch."
 
 Adding new pages (delete if not applicable):
