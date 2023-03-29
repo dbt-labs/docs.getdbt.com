@@ -270,7 +270,7 @@ For more details on reference access between resources in groups, check out [mod
 
 ## Examples
 ### Prevent a 'marketing' group model from referencing a private 'finance' group model
-This could be useful if you want to prevent other groups from building on top on models that are rapidly changing, experimental, or otherwise internal to a group or team. 
+This is useful if you want to prevent other groups from building on top of models that are rapidly changing, experimental, or otherwise internal to a group or team. 
 
 <File name='models/schema.yml'>
 
