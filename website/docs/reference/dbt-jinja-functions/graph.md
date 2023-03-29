@@ -18,15 +18,6 @@ to understand how to effectively use this variable.
 
 ### The graph context variable
 
-<Changelog>
-
-  - In dbt v1.5.0, groups were added to the `graph.groups` object
-  - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
-  - In dbt v0.20.0, exposures were added to the `graph.exposures` object
-  - In dbt v1.0.0, metrics were added to the `graph.metrics` object
-
-</Changelog>
-
 The `graph` context variable is a dictionary which maps node ids onto dictionary
 representations of those nodes. A simplified example might look like:
 
@@ -72,6 +63,7 @@ representations of those nodes. A simplified example might look like:
     },
     ...
   },
+  <VersionBlock firstVersion="1.5">
   "groups": {
     "group.my_project.finance": {
       "unique_id": "group.my_project.finance",
@@ -82,6 +74,7 @@ representations of those nodes. A simplified example might look like:
       ...
     },
     ...
+   </VersionBlock>
   }
 }
 ```
