@@ -17,7 +17,7 @@ Most analytical data platforms support and enforce a `not null` constraint, but 
 
 To that end, there are two optional fields you can specify on any constraint:
 - `warn_unenforced: False` to skip warning on constraints that are supported, but not enforced, by this data platform. The constraint will be included in templated DDL.
-- `warn_unsupportedL: False` to skip warning on constraints that aren't supported by this data platform, and therefore won't be included in templated DDL.
+- `warn_unsupported: False` to skip warning on constraints that aren't supported by this data platform, and therefore won't be included in templated DDL.
 
 <WHCode>
 
