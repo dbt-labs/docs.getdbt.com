@@ -22,9 +22,9 @@ module.exports = function buildGlobalDataPlugin(context, options) {
       // Get CTA data
       const CTAData = yaml.load(fs.readFileSync(`blog/ctas.yml`, { encoding: 'utf8' }))
 
-      // Get versionedPages param
+      // Get versionedPages and versionedCategories param
       // This controls versioning for sidebar
-      const { versionedPages } = options
+      const { versionedPages, versionedCategories } = options
 
       // Get all FAQ doc ids
       // FAQ component uses these to pull file
@@ -35,6 +35,7 @@ module.exports = function buildGlobalDataPlugin(context, options) {
         blogMeta,
         CTAData,
         versionedPages,
+        versionedCategories,
         faqFiles
       }
     },
