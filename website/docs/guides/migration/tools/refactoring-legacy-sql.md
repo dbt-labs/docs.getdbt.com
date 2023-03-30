@@ -81,7 +81,7 @@ sources:
 
 With a few lines of code in a `.yml` file in your dbt project's `/models` subfolder, you can now version control how your data sources (Snowplow, Shopify, etc) map to actual database tables.
 
-For example, let's say you migrate from one [ETL tool](https://getdbt.com/analytics-engineering/etl-tools-a-love-letter/) to another, and the new tool writes to a new schema in your warehouse. dbt sources allow you to make that update in a single config file, and flip on the change with one pull request to your dbt project.
+For example, let's say you migrate from one <Term id="etl">ETL tool</Term> to another, and the new tool writes to a new schema in your warehouse. dbt sources allow you to make that update in a single config file, and flip on the change with one pull request to your dbt project.
 
 ## Choose a refactoring strategy
 There are two ways you can choose to refactor: in-place or alongside.
