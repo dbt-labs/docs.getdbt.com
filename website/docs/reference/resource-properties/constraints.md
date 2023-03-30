@@ -8,8 +8,9 @@ This functionality is new in v1.5! The syntax is mostly locked, but some small d
 :::
 
 The structure of a constraint is:
-- `type`: one of `not_null`, `primary_key`, `foreign_key`, `check`, `custom`
-- `expression`: text input to qualify the constraint
+- `type` (required): one of `not_null`, `primary_key`, `foreign_key`, `check`, `custom`
+- `expression`: text input to qualify the constraint; required for certain constraint types, and optional for others
+- `name` (optional): some data platforms support defining constraints with a human-friendly name
 
 In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. For example, Postgres supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.
 
