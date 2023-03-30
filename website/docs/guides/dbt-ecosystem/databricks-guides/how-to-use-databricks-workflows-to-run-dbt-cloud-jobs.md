@@ -52,6 +52,7 @@ dbutils.widgets.text("account_id", "Enter your Account ID")
 job_id = dbutils.widgets.get("job_id")
 account_id = dbutils.widgets.get("account_id")
 base_url =  dbutils.widgets.get("base_url")
+#You may need to change the scope and key below if you stored your secret in another location
 api_key =  dbutils.secrets.get(scope = "dbt-cloud", key = "api-key")
 
 # These are documented on the dbt Cloud API docs
