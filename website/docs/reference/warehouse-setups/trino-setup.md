@@ -217,9 +217,8 @@ trino:
   outputs:
     dev:
       type: trino
-      method: ldap 
-      user: [user]
-      password: [password]
+      method: jwt 
+      jwt_token: [my_long_jwt_token_string]
       host: [hostname]
       database: [database name]
       schema: [your dbt schema]
@@ -258,10 +257,10 @@ trino:
   outputs:
     dev:
       type: trino
-      method: ldap 
-      user: [user]
-      password: [password]
-      host: [hostname]
+      method: certificate 
+      cert: [path/to/cert_file]
+      client_certificate: [path/to/client/cert]
+      client_private_key: [path to client key]
       database: [database name]
       schema: [your dbt schema]
       port: [port number]
