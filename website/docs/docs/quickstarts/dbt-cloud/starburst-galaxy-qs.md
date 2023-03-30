@@ -18,7 +18,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Connect to multiple data sources in addition to your S3 bucket. 
 
 :::tip Public Preview 
-The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
+The Starburst (Trino compatible) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
 :::
 
 
@@ -193,7 +193,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 10. Enter the **Development Credentials** for your new project:
     - **User** – The **User** value from the **Connection information** modal in your Starburst Galaxy tab. Make sure to use the entire string, including the account's role which is the `/` and all the characters that follow. If you don’t include it, your default role is used and that might not have the correct permissions for project development.
     - **Password** – The password you use to log in to your Starburst Galaxy account.
-    - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables).
+    - **Database** – The Starburst catalog you want to save your data to (for example, when writing new tables). For future reference, database is synonymous to catalog between dbt Cloud and Starburst Galaxy. 
     - Leave the remaining options as is. You can use their default values.
 11. Click **Test Connection**. This verifies that dbt Cloud can access your Starburst Galaxy cluster.
 12. Click **Next** if the test succeeded. If it failed, you might need to check your Starburst Galaxy settings and credentials.
