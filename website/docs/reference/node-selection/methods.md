@@ -163,6 +163,7 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
+- `state:modified.contract`: Changes to a model's [contract](resource-configs/contract), which currently include the `name` and `data_type` of `columns`. Removing or changing the type of an existing column is considered a breaking change, and will raise an error.
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
@@ -226,4 +227,26 @@ After issuing one of the above commands, you can reference the source freshness 
 $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
+</VersionBlock>
+
+
+### The "group" method
+<VersionBlock lastVersion="1.4">
+
+Only supported by v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+Only supported by v1.5 or newer.
+
+The `group` method is used to select models defined within a group.
+
+
+  ```bash
+  dbt run --select group:finance # run all models that belong to the finance group.
+  ```
+
+
 </VersionBlock>

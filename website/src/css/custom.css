@@ -518,7 +518,6 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 /* set < icon to right side */
 .menu__list-item-collapsible {
   flex-direction: row;
-  background-color: transparent;
 }
 
 .menu__list-item-collapsible button {
@@ -1614,12 +1613,20 @@ section.discourse-forum-page {
 .home section {
   margin: 6.25rem auto 6.25rem;
   max-width: var(--ifm-container-width-xl);
-  padding: 0 var(--ifm-spacing-horizontal);
+  padding: 0 50px;
 }
 
 .home section.from-the-blog {
   margin-bottom: 0;
 }
+
+@media (max-width: 995px) {
+  .home section.from-the-blog {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .home section.from-the-community {
   margin-top: 0;
 
@@ -1631,8 +1638,11 @@ section.discourse-forum-page {
 
 @media (max-width: 995px) {
   .home .resource-section  h2 {
-    text-align: center;
     margin: 2rem inherit;
+  }
+
+  .home h2 {
+    text-align: center;
   }
 }
 
@@ -1664,7 +1674,7 @@ section > h2:not(.resource-section) {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 25px;
-    column-gap: calc(var(--ifm-spacing-horizontal) * 4);
+    column-gap: calc(var(--ifm-spacing-horizontal) * 2);
     grid-template-areas:
       "popH2 featH2"
       "popResources  featResource";
@@ -1722,7 +1732,7 @@ section > h2:not(.resource-section) {
   padding-right: 3rem;
   padding-left: 3rem;
   padding-top: 0rem;
-  padding-bottom: 6.25rem;
+  padding-bottom:  6.25rem;
   margin-bottom: 0;
 }
 

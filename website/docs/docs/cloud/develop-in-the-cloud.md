@@ -1,8 +1,9 @@
 ---
 title: "dbt Cloud IDE"
 id: develop-in-the-cloud
-description: "Develop, test, run, and build in the Cloud IDE."
+description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: dbt Cloud IDE
+tags: [IDE]
 ---
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
@@ -42,7 +43,7 @@ Read more about IDE updates in the [dbt Cloud release notes](/docs/dbt-versions/
 | **dbt autocomplete**  |  New autocomplete features to help you develop faster:<br /><br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var<br /> - Start typing a hyphen (-) to use in-line autocomplete in a YAML file |
 | **DAG in the IDE** | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. The default view is 2+model+2 (defaults to display 2 nodes away), however you can change it to +model+ (full DAG).<br /><br /> - Double-click a node in the directed acyclic graph (DAG) to open that file in a new tab<br /> - Expand the DAG and use node selection syntax (select or exclude) to view a subset of your DAG |
 | **Status bar** | This area provides you with useful information about your IDE and project status. You also have additional options like enabling light or dark mode, restarting the IDE, or [recloning your repo](/docs/collaborate/git/version-control-basics).
-| **Dark mode**  | Use dark mode in the Cloud IDE for a great viewing experience in low-light environments. 
+| **Dark mode**  | From the status bar in the Cloud IDE, enable dark mode for a great viewing experience in low-light environments. 
 
 
 **Start-up process**
