@@ -21,7 +21,7 @@ When the `contract` configuration is enforced, dbt will ensure that your model's
 - `name` and `data_type` for every column
 - additional [`constraints`](resource-properties/constraints), as supported for this materialization + data platform
 
-The `data_type` defined in your yaml file should match a data type recognized by your data platform. dbt does not do any type aliasing itself; if your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
+The `data_type` defined in your yaml file must match a data type your data platform recognizes. dbt does not do any type aliasing itself; if your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
 
 ## Example
 
