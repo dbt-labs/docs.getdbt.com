@@ -44,7 +44,7 @@ Before you begin, you will need:
 
 <Card
     title="Quickstart for dbt Cloud and Starburst Galaxy"
-    body="Learn how to connect to Starburst Galaxy, build your first dbt models with a sample project, test your models, document your models, and schedule a job run all in one web-based UI."
+    body="Learn how to connect Starburst Galaxy to your data lake and use it to create tables with the data there. Then, learn how you can transform your tables into models using the power of dbt all in a web-based experience."
     link="/docs/quickstarts/dbt-cloud/starburst-galaxy"
     icon="starburst"/>
 

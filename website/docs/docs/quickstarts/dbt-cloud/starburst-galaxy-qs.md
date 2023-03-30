@@ -15,7 +15,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
-- Connect to multiple data sources. 
+- Connect to multiple data sources in addition to your S3 bucket. 
 
 :::tip Public Preview 
 The Starburst (Trino) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
