@@ -11,6 +11,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/deploy/deployments#cron /docs/deploy/deployment-tools 301
 
 # New Cloud directory redirects
+/docs/collaborate/manage-access/enterprise-permissions#permission-sets  /docs/cloud/manage-access/enterprise-permissions#permission-sets 301
 /docs/get-started/privatelink/about-privatelink /docs/cloud/privatelink/about-privatelink 301
 /docs/get-started/privatelink/snowflake-privatelink /docs/cloud/privatelink/snowflake-privatelink 301
 /docs/get-started/privatelink/redshift-privatelink /docs/cloud/privatelink/redshift-privatelink 301
