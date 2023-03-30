@@ -925,6 +925,8 @@ const sidebarSettings = {
           items: [
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+            "guides/dbt-ecosystem/databricks-guides/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
+
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",

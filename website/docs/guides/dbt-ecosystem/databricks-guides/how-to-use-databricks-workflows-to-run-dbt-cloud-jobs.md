@@ -26,8 +26,8 @@ To use Databricks workflows to run dbt Cloud Jobs, you will need to follow these
 
 ```bash
 # In this example we set up a secret scope and key called "dbt-cloud" and "api-key" respectively.
-databricks secrets create-scope --scope **<YOUR_SECRET_SCOPE>**
-databricks secrets put --scope  **<YOUR_SECRET_SCOPE>** --key  **<YOUR_SECRET_KEY>** --string-value **"<YOUR_DBT_CLOUD_API_KEY>"**
+databricks secrets create-scope --scope <YOUR_SECRET_SCOPE>
+databricks secrets put --scope  <YOUR_SECRET_SCOPE> --key  <YOUR_SECRET_KEY> --string-value "<YOUR_DBT_CLOUD_API_KEY>"
 ```
 Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with your own unique identifiers. Click [here for more information on secrets.](https://docs.databricks.com/security/secrets/index.html)
 
@@ -50,9 +50,9 @@ from getpass import getpass
 dbutils.widgets.text("job_id", "Enter the Job ID")
 job_id = dbutils.widgets.get("job_id")
 
-account_id = **<YOUR_ACCOUNT_ID>**
-base_url =  "**<YOUR_BASE_URL>**"
-api_key =  dbutils.secrets.get(scope = "**<YOUR_SECRET_SCOPE>**", key = "**<YOUR_SECRET_KEY>**")
+account_id = <YOUR_ACCOUNT_ID>
+base_url =  "<YOUR_BASE_URL>"
+api_key =  dbutils.secrets.get(scope = "<YOUR_SECRET_SCOPE>", key = "<YOUR_SECRET_KEY>")
 
 # These are documented on the dbt Cloud API docs
 class DbtJobRunStatus(enum.IntEnum):
@@ -113,19 +113,19 @@ Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with the values yo
 
 Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment. To find these values, navigate to **dbt Cloud** and select **Deploy > Jobs** and select the Job you want to run. Your URL will be structured like so:
 
-`https://**<YOUR_BASE_URL>**/deploy/**<YOUR_ACCOUNT_ID>**/projects/**<YOUR_DBT_PROJECT_ID>**/jobs/**<YOUR_DBT_CLOUD_JOB_ID>**`
+`https://<YOUR_BASE_URL>/deploy/<YOUR_ACCOUNT_ID>/projects/<YOUR_DBT_PROJECT_ID>/jobs/<YOUR_DBT_CLOUD_JOB_ID>`
 
 For example:
 
 `https://cloud.getdbt.com/deploy/000000/projects/111111/jobs/222222`
 
 Therefore the following can be extracted:
+
 | Parameter | Value  |
 |---|---|
 | `base_url` | cloud.getdbt.com |
 | `account_id` | 000000 |
 | `job_id` | 222222 |
-
 
 3. Run the Notebook. This will fail however you should now see a widget at the top of your notebook for `job_id`
 4. In the widget, Enter your`job_id` from step 2.
