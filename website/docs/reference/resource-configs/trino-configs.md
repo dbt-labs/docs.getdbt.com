@@ -38,17 +38,19 @@ For more information, refer to either the [Trino Connectors](https://trino.io/do
 
 ## Materialization-specific configs
 
-### Seeds
+### Seeds & Prepared Statements
 
 reference: [dbt docs: Seeds](https://docs.getdbt.com/docs/build/seeds)
 
-#### Prepared Statements
-
 The `dbt seed` feature uses [Trino's prepared statements](https://trino.io/docs/current/sql/prepare.html).
 
-Python's http client has a hardcoded limit of `65536` bytes for a header line.
+Prepared statements are templated SQL statements that are sent with the values in a separate field rather than hard-coded in the SQL string itself. This is often how application front ends structure record INSERTs in the OLTP database backend. Therefore, it is common that a prepared statement will have as many placeholder variables as there are columns in the destintation table.
 
-When executing a prepared statement with a large number of parameters, you might encounter following error:
+Virtually all seed files have more than one row, and often thousands of rows. This makes the size of the client request as large as there are parameters.
+
+As an example a seed file with 20 columns and 600 rows has 12,000 values, therefore 12,000 parameters.
+
+Python's http client has a hardcoded limit of `65536` bytes for a header line. When executing a prepared statement with a large number of parameters, you might encounter following error:
 
 ```python
 requests.exceptions.ConnectionError: (
@@ -57,18 +59,31 @@ requests.exceptions.ConnectionError: (
   )
 ```
 
-The prepared statements can be disabled by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). This flag may be removed in later releases.
+There are two ways to deal with this issue:
 
-#### Batch Size
+1. decrease the size of each batch, or
+2. enable the `prepared_statements_enabled` flag in your profile.
 
-For dbt-trino batch_size is defined in macro `trino__get_batch_size()` and default value is `1000`.
-In order to override default value define within your project a macro like the following:
+#### decrease batch size
 
-```jinja2
-{% macro default__get_batch_size() %}
-  {{ return(10000) }}
+To avoid this upper limit, one way each the total size of each client prepared statement request is to simply break the statement into smaller ones. dbt does this already by batching an entire seed file into groups of rows -- one group for a chunk of rows of the `.csv`. 
+
+So, using the example above, rather than creating a single prepared statement with 1200 parameters, we can have dbt create four prepared `INSERT` statements, with 150 rows and 3,000 parameters.
+
+There's a draw back to chunking a table into groups of rows, which is when there are many columns. Some users have seed files with many parameters, which means the batch size needs to be very small.
+
+For `dbt-trino` batch_size is defined the macro `trino__get_batch_size()` and it's default value is `1000`. 
+In order to override this default, add the below macro to your dbt project:
+
+```sql
+{% macro trino__get_batch_size() %}
+  {{ return(10000) }} -- adjust this number as you see fit
 {% endmacro %}
 ```
+
+#### header line length limit
+
+Another option you have is to disable prepared statements by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). Note: This flag may be removed in later releases.
 
 ### Table
 
