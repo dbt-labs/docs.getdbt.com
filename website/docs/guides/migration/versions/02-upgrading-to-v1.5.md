@@ -4,7 +4,7 @@ description: New features and changes in dbt Core v1.5
 ---
 
 :::info
-v1.5 is currently available as a **beta prerelease.** Availability in dbt Cloud coming soon!
+v1.5 is currently available as a **beta prerelease**
 :::
 
 ### Resources
@@ -16,11 +16,11 @@ v1.5 is currently available as a **beta prerelease.** Availability in dbt Cloud 
 
 :::info
 
-Planned release date: April 26, 2023
+Planned release date: April 27, 2023
 
 :::
 
-dbt Core v1.5 is a feature release with two significant additions planned:
+dbt Core v1.5 is a feature release, with two significant additions planned:
 1. Models as APIs &mdash; the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
 2. An initial Python API for dbt-core supporting programmatic invocations at parity with the CLI.
 
@@ -40,11 +40,14 @@ Changes planned for v1.5:
 
 ### For consumers of dbt artifacts (metadata)
 
-The manifest schema version will be updated to `v9`. Specific changes to be noted here.
+The manifest schema version will be updated to `v9`. Specific changes:
+- Addition of `groups` as a top-level key
+- Addition of `access` as a top-level node config for models
+- Addition of `group` and `contract` as node configs
 
 ### For maintainers of adapter plugins
 
-Coming soon: GH discussion detailing interface changes and offering a forum for Q&A
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
 
 ## New and changed documentation
 
@@ -53,9 +56,9 @@ More to come!
 :::
 
 ### Publishing models as APIs
-- [Model contracts](model-contracts) ([#2839](https://github.com/dbt-labs/docs.getdbt.com/issues/2839))
-- [Model access](model-access) ([#2840](https://github.com/dbt-labs/docs.getdbt.com/issues/2840))
-- [Model versions](model-versions) ([#2841](https://github.com/dbt-labs/docs.getdbt.com/issues/2841))
+- [Model contracts](model-contracts)
+- [Model access](model-access)
+- [Model versions](model-versions)
 
 ### dbt-core Python API
 - Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations
