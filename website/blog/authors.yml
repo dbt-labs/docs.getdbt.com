@@ -16,6 +16,13 @@ andrew_escay:
   name: Andrew Escay
   organization: dbt Labs
 
+arthur_marcon:
+  image_url: /img/blog/authors/arthur-marcon.png
+  job_title: Analytics Engineer
+  name: Arthur Marcon
+  organization: Indicium Tech
+  description: Arthur Marcon is an Analytics Engineer at Indicium, helping data-driven companies transition to the modern data analytics stack in the cloud through dbt. Arthur is also an enthusiast of technology and innovation. He is mainly interested in how data plays a key role to enable companies to achieve their full innovative and technological potential. Outside of work, he is a movie aficionado, and likes to hit the gym and read Agatha Christie's novels.
+
 barr_yaron:
   image_url: /img/blog/authors/barr-yaron.png
   job_title: Product Manager
@@ -36,7 +43,7 @@ bennie_regenold:
 
 benoit_perigaud:
   image_url: /img/blog/authors/benoit-perigaud.jpeg
-  job_title: Senior Analytics Engineer
+  job_title: Staff Analytics Engineer
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/benoit-perigaud/
@@ -81,6 +88,13 @@ charlie_summers:
       url: https://www.linkedin.com/in/charliesummers
   name: Charlie Summers
   organization: Merit
+
+christian_vanbellen:
+  image_url: /img/blog/authors/christian-van-bellen.JPG
+  job_title: Analytics Engineer
+  name: Christian van Bellen
+  organization: Indicium Tech
+  description: Christian van Bellen is an Analytics Engineer at Indicium Tech, acting mainly in projects focused on Enterprise-level data stack transition. Also works with the DataScience/ML stack. Christian started using dbt in 2022 to help implement a modern data stack within enterprises, and is a certified dbt developer.
 
 christine_berger:
   image_url: /img/blog/authors/christine-berger.jpeg
@@ -300,6 +314,13 @@ lauren_craigie:
       url: https://twitter.com/crai_fish
   name: Lauren Craigie
   organization: dbt Labs
+
+lucas_bergodias:
+  image_url: /img/blog/authors/lucas-dias.jpg
+  job_title: Analytics Engineer
+  name: Lucas Bergo Dias
+  organization: Indicium Tech
+  description: Lucas Dias works as an Analytics Engineer at Indicium Tech, a leading technology consultancy that specializes in data-driven solutions. Lucas brings a wealth of expertise and experience to the role, having worked in the analytics field for two years. At Indicium, he assists companies in transitioning to modern data stack through the use of dbt. He's passionate about using data to drive innovation and growth, and primarily works on enterprise-level projects.
 
 matt_winkler:
   description: Matt is an ex-data scientist who chose to embrace the simplicity of using SQL to manage and testing data pipelines with dbt. He previously worked as a hands-on ML practitioner, and consulted with Fortune 500 clients to build and maintain ML Ops pipelines using (mostly) AWS Sagemaker. He lives in the Denver area, and you can say hello on dbt Slack or on LinkedIn.
