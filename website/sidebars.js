@@ -28,6 +28,7 @@ const sidebarSettings = {
             "docs/quickstarts/dbt-cloud/databricks",
             "docs/quickstarts/dbt-cloud/redshift",
             "docs/quickstarts/dbt-cloud/snowflake",
+            "docs/quickstarts/dbt-cloud/starburst-galaxy",
           ],
         },
         {
@@ -57,6 +58,7 @@ const sidebarSettings = {
               label: "Connect data platform",
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
+                "docs/cloud/connect-data-platform/connect-starburst-trino",
                 "docs/cloud/connect-data-platform/connect-snowflake",
                 "docs/cloud/connect-data-platform/connect-bigquery",
                 "docs/cloud/connect-data-platform/connect-databricks",
@@ -426,6 +428,7 @@ const sidebarSettings = {
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/singlestore-configs",
         "reference/resource-configs/spark-configs",
+        "reference/resource-configs/trino-configs",
         "reference/resource-configs/materialize-configs",
         "reference/resource-configs/firebolt-configs",
         "reference/resource-configs/teradata-configs",
