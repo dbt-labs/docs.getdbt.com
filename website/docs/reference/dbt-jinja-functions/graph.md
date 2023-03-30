@@ -19,14 +19,6 @@ to understand how to effectively use this variable.
 
 ### The graph context variable
 
-<Changelog>
-
-  - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
-  - In dbt v0.20.0, exposures were added to the `graph.exposures` object
-  - In dbt v1.0.0, metrics were added to the `graph.metrics` object
-
-</Changelog>
-
 The `graph` context variable is a dictionary which maps node ids onto dictionary
 representations of those nodes. A simplified example might look like:
 
@@ -71,6 +63,19 @@ representations of those nodes. A simplified example might look like:
       ...
     },
     ...
+  },
+  <VersionBlock firstVersion="1.5">
+  "groups": {
+    "group.my_project.finance": {
+      "unique_id": "group.my_project.finance",
+      "name": "finance",
+      "owner": {
+        "email": "finance@jaffleshop.com"
+      }
+      ...
+    },
+    ...
+   </VersionBlock>
   }
 }
 ```
@@ -210,11 +215,11 @@ Example usage:
 
 To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
 
+Example usage:
+
 <File name='macros/get_metric.sql'>
 
 ```sql
-Example usage:
-
 {% macro get_metric_sql_for(metric_name) %}
 
   {% set metrics = graph.metrics.values() %}
@@ -232,6 +237,29 @@ Example usage:
   ) %}
 
   {{ return(metric_sql) }}
+
+{% endmacro %}
+```
+
+</File>
+
+### Accessing groups
+
+To access the groups in your dbt project programmatically, use the `groups` attribute of the `graph` object.
+
+Example usage:
+
+<File name='macros/get_group.sql'>
+
+```sql
+
+{% macro get_group_owner_for(group_name) %}
+
+  {% set groups = graph.groups.values() %}
+  
+  {% set owner = (groups | selectattr('owner', 'equalto', group_name) | list).pop() %}
+
+  {{ return(owner) }}
 
 {% endmacro %}
 ```
