@@ -1,5 +1,5 @@
 ---
-title: "Starburst & Trino setup"
+title: "Starburst/Trino setup"
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
@@ -11,7 +11,7 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
-  platform_name: 'Starburst (Trino)'
+  platform_name: 'Starburst/Trino'
   config_page: 'trino-configs'
 ---
 

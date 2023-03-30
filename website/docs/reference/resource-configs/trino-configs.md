@@ -1,5 +1,5 @@
 ---
-title: "Starburst (Trino) configurations"
+title: "Starburst/Trino configurations"
 id: "trino-configs"
 ---
 
