@@ -97,4 +97,6 @@ dbt.exceptions.ModelContractError: Contract Error in model dim_customers (models
   There is a breaking change in the model contract because column definitions have changed; you may need to create a new version. See: https://docs.getdbt.com/docs/collaborate/publish/model-versions
 ```
 
-Adding new columns, or adding new constraints to existing columns, is not considered a breaking change.
+Additive changes are **not** considered breaking:
+- adding a new column to a contracted model
+- adding new `constraints` to an existing column in a contracted model
