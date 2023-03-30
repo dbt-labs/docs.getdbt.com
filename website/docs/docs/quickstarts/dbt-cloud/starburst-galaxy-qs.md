@@ -7,7 +7,7 @@ sidebar_label: "Starburst Galaxy quickstart"
 
 In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/). It will show you how to:
 
-- Load data to the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other providers](https://www.starburst.io/platform/connectors/) such as Google Cloud, Microsoft Azure, and more. 
+- Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other providers](https://www.starburst.io/platform/connectors/) such as Google Cloud, Microsoft Azure, and more. 
 - Connect Starburst Galaxy to the Amazon S3 bucket.
 - Create tables with Starburst Galaxy.
 - Connect dbt Cloud to Starburst Galaxy.
