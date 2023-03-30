@@ -83,7 +83,7 @@ Imagine:
 
 Why `append_new_columns`, rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models!
 
-### Catching breaking changes
+### Detecting breaking changes
 
 When you use the `state:modified` selection method in Slim CI, dbt will detect changes to model contracts, and raise an error if any of those changes could be breaking for downstream consumers.
 
