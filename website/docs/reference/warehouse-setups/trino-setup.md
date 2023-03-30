@@ -64,7 +64,6 @@ the below sections go into greater detail
 
 All the below fields are always required, with the exception of `user`, which is required except for the  `oauth`, `cert` and `jwt` auth methods
 
-
 |   Field    | Examples                                                                                                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | :--------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |   `host`   | `mycluster.mydomain.com`                                                                                                                                        | The hostname of your cluster.<br></br>Do not include the HTTP protocol prefix (i.e. `http://` or `https://`).                                                                                                                                                                                                                                                                                                                                                                                                                  |
@@ -73,11 +72,9 @@ All the below fields are always required, with the exception of `user`, which is
 |   `port`   | `443`                                                                                                                                                           | The default port for TLS enabled clusters is `443`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |   `user`   | Starburst Enterprise & Trino<br></br>`user.name`<br></br>-OR-<br></br>`user.name@mydomain.com`<br></br>Starburst Galaxy<br></br>`user.name@mydomain.com/<role>` | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The user must have permissions to create and drop tables.<br></br>When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br></br>**NOTE**: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. |
 
-
 ### Additional, optional configurations
 
 The following fields are not explicitly tied to a specific authentication method, but are available to be set within a profile
-
 
 | Profile field                 | Example                          | Description                                                                                                 |
 | ----------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -90,7 +87,6 @@ The following fields are not explicitly tied to a specific authentication method
 | `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.  |
 | `http_scheme`                 | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`) |
 
-
 ### Authentication Methods
 
 The below tabs give, for each supported authentication type in dbt Core:
@@ -101,7 +97,6 @@ The below tabs give, for each supported authentication type in dbt Core:
 For a high-level introduction to authentication in Trino, see [Trino Security: Authentication Types](https://trino.io/docs/current/security/authentication-types.html).
 
 The `method` field is used in a user's profile to declare the intended authentication type
-
 
 <Tabs
   defaultValue="ldap"
@@ -117,7 +112,7 @@ The `method` field is used in a user's profile to declare the intended authentic
 
 <TabItem value="ldap">
 
-#### Fields
+#### LDAP Fields
 
 In addition to specifying  `method: ldap`, the table below gives the ldap-relevant parameters.
 
@@ -129,7 +124,7 @@ For addiontal information, refer to Trino's doc page on [LDAP Authentication](ht
 | `password`                      | `abc123`                                                                                                                                              | Password for authentication (can be none, but not recommended!)                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `impersonation_user` (optional) | `impersonated_tom`                                                                                                                                    | Username override, used for impersonation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-#### Sample `profiles.yml`
+#### Sample `profiles.yml` for LDAP
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -155,11 +150,11 @@ trino:
 
 <TabItem value="kerberos">
 
-#### Fields
+#### Kerberos Fields
 
 In addition to specifying  `method: kerberos`, the table below gives the kerberos-relevant parameters.
 
-For addiontal information, refer to Trino's doc page on [kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
+For addiontal information, refer to Trino's doc page on [Kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
 
 | Profile field                               | Example             | Description                                                      |
 | ------------------------------------------- | ------------------- | ---------------------------------------------------------------- |
@@ -174,7 +169,7 @@ For addiontal information, refer to Trino's doc page on [kerberos Authentication
 | `sanitize_mutual_error_response` (optional) | `true`              | Boolean flag to strip content and headers from error responses   |
 | `delegate`  (optional)                      | `false`             | Boolean flag for credential delgation (`GSS_C_DELEG_FLAG`)       |
 
-#### Sample `profiles.yml`
+#### Sample `profiles.yml` for Kerberos
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -201,13 +196,13 @@ trino:
 
 <TabItem value="jwt">
 
-#### Fields
+#### JWT Fields
 
 In addition to specifying  `method: jwt`, the only additional profile parameter is `jwt_token`
 
 For addiontal information, refer to Trino's doc page on [kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
 
-#### Sample `profiles.yml`
+#### Sample `profiles.yml` for JWT Token
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -232,7 +227,7 @@ trino:
 
 <TabItem value="certificate">
 
-#### Fields
+#### certificate fields
 
 Below are the fields unique to authentication with a certificate file
 
@@ -240,14 +235,13 @@ In addition to specifying  `method: certificate`, the table below gives the cert
 
 For addiontal information, refer to Trino's doc page on [certificate Authentication](https://trino.io/docs/current/security/certificate.html)
 
-
 | Profile field        | Example        | Description                         |
 | -------------------- | -------------- | ----------------------------------- |
 | `client_certificate` | `/tmp/tls.crt` | Path to client certificate          |
 | `client_private_key` | `/tmp/tls.key` | Path to client private key          |
 | `cert`               |                | The full path to a certificate file |
 
-#### Sample `profiles.yml`
+#### Sample `profiles.yml` for certificate
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -279,7 +273,7 @@ For additional information, refer to both Trino's doc page on [Oauth2 Authentica
 
 Note: It is recommended to install `keyring` to cache the OAuth2 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`, `keyring` is not installed by default.
 
-#### Sample `profiles.yml`
+#### Sample `profiles.yml` for OAuth
 
 ```yaml
 sandbox-galaxy:
@@ -300,7 +294,7 @@ sandbox-galaxy:
 
 Note: `none` is also a supported authentication method, but it is strongly discouraged. It use case is only for toy, local examples such as running Trino and dbt entirely within a single Docker container.
 
-#### Sample `profiles.yml`
+#### Sample `profiles.yml` for no authentication
 
 <File name='~/.dbt/profiles.yml'>
 

@@ -59,7 +59,6 @@ requests.exceptions.ConnectionError: (
 
 The prepared statements can be disabled by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). This flag may be removed in later releases.
 
-
 #### Batch Size
 
 For dbt-trino batch_size is defined in macro `trino__get_batch_size()` and default value is `1000`.
@@ -70,8 +69,6 @@ In order to override default value define within your project a macro like the f
   {{ return(10000) }}
 {% endmacro %}
 ```
-
-
 
 ### Table
 
