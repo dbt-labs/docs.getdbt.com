@@ -11,78 +11,92 @@ id: "contract"
 - [Defining `columns`](resource-properties/columns)
 - [Defining `constraints`](resource-properties/constraints)
 
-<!-- TODO: move some of this content elsewhere, and update to reflect new proposed syntax -->
-
 :::info Beta functionality
-This functionality is new in v1.5. These docs exist to provide a high-level overview of what's to come. The specific syntax is liable to change.
-
-In particular:
-- The current name of the `contract` config is `constraints_enabled`.
-- The "preflight" check only includes column `name` and is order-sensitive. The goal is to add `data_type` and make it insensitive to column order.
+This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
 :::
 
 # Definition
 
-When the `contract` configuration is enabled, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
+When the `contract` configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
 - additional [`constraints`](resource-properties/constraints), as supported for this materialization + data platform
 
-:::caution Under construction 🚧
-More to come!
-:::
-
-You can manage data type constraints on your models using the `constraints_enabled` configuration. This configuration is available on all models and is disabled by default. When enabled, dbt will automatically add constraints to your models based on the data types of the columns in your model's schema. This is a great way to ensure your data is always in the correct format. For example, if you have a column in your model defined as a `date` data type, dbt will automatically add a data type constraint to that column to ensure the data in that column is always a valid date. If you want to add a `not null` condition to a column in a preventative manner rather than as a test, you can add the `not null` value to the column definition in your model's schema: `constraints: ['not null']`.
-
-## When to use constraints vs. tests
-
-Constraints serve as a **preventative** measure against bad data quality **before** the dbt model is (re)built. It is only limited by the respective database's functionality and the supported data types. Examples of constraints: `not null`, `unique`, `primary key`, `foreign key`, `check`
-
-Tests serve as a **detective** measure against bad data quality _after_ the dbt model is (re)built.
-
-Constraints are great when you define `constraints: ['not null']` for a column in your model's schema because it'll prevent `null` values from being inserted into that column at dbt model creation time and prevent other unintended values from being inserted into that column without dbt's intervention as it relies on the database to enforce the constraint. This can **replace** the `not_null` test. However, performance issues may arise depending on your database.
-
-Tests should be used in addition to and instead of constraints when you want to test things like `accepted_values` and `relationships`. These are usually not enforced with built-in database functionality and are not possible with constraints. Also, custom tests will allow more flexibility and address nuanced data quality issues that may not be possible with constraints.
-
-## Current Limitations
-
-- `contract` (a.k.a. `constraints_enabled`) must be configured in the yaml [`config`] property _only_. Setting this configuration via in-file config or in `dbt_project.yml` is not supported.
-- `contract` (a.k.a. `constraints_enabled`) is supported only for a SQL model materialized as `table`.
-- Prerequisite checks include the column `name,` but not yet their `data_type`. We intend to support `data_type` verification in an upcoming beta prerelease.
-- The order of columns in your `yml` file must match the order of columns returned by your model's SQL query.
-- While most data platforms support `not_null` checks, support for [additional `constraints`](resource-properties/constraints) varies by data platform.
-
-```txt
-# example error message
-Compilation Error in model constraints_example (models/constraints_examples/constraints_example.sql)
-  Please ensure the name, order, and number of columns in your `yml` file match the columns in your SQL file.
-  Schema File Columns: ['id', 'date_day', 'color']
-  SQL File Columns: ['id', 'color', 'date_day'] 
-```
+The `data_type` defined in your yaml file must match a data type your data platform recognizes. dbt does not do any type aliasing itself; if your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
 
 ## Example
 
-<File name='models/schema.yml'>
+<File name='models/dim_customers.yml'>
 
 ```yml
 models:
-  - name: constraints_example
+  - name: dim_customers
     config:
-      constraints_enabled: true
+      contract:
+        enforced: true
     columns:
-      - name: id
-        data_type: integer
-        description: hello
-        constraints: ['not null', 'primary key']
-        constraints_check: (id > 0)
-        tests:
-          - unique
-      - name: color
+      - name: customer_id
+        data_type: int
         constraints:
-          - not null
-          - primary key
+          - type: not_null
+      - name: customer_name
         data_type: string
-      - name: date_day
-        data_type: date
 ```
 
 </File>
+
+<File name='models/dim_customers.yml'>
+
+Let's say your model is defined as:
+```sql
+select
+  'abc123' as customer_id,
+  'My Best Customer' as customer_name
+```
+
+</File>
+
+When you `dbt run` your model, _before_ dbt has materialized it as a table in the database, you will see this error:
+```txt
+# example error message
+Compilation Error in model dim_customers (models/dim_customers.sql)
+  Contracts are enabled for this model. Please ensure the name, data_type, and number of columns in your `yml` file match the columns in your SQL file.
+  Schema File Columns: customer_id INT, customer_name TEXT
+  SQL File Columns: customer_id TEXT, customer_name TEXT
+```
+
+## Support
+
+At present, model contracts are supported for:
+- SQL models (not yet Python)
+- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
+- On the most popular data platforms — but which [`constraints`](resource-properties/constraints) are supported/enforced varies by platform
+
+### Incremental models and `on_schema_change`
+
+Why require that incremental models also set [`on_schema_change`](incremental-models#what-if-the-columns-of-my-incremental-model-change), and why to `append_new_columns`?
+
+Imagine:
+- You add a new column to both the SQL and the yaml spec
+- You don't set `on_schema_change`, or you set `on_schema_change: 'ignore'`
+- dbt doesn't actually add that new column to the existing table — and the upsert/merge still succeeds, because it does that upsert/merge on the basis of the already-existing "destination" columns only (this is long-established behavior)
+- The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!
+
+Why `append_new_columns`, rather than `sync_all_columns`? Because removing existing columns is a breaking change for contracted models!
+
+### Detecting breaking changes
+
+When you use the `state:modified` selection method in Slim CI, dbt will detect changes to model contracts, and raise an error if any of those changes could be breaking for downstream consumers.
+
+Breaking changes include:
+- Removing an existing column
+- Changing the `data_type` of an existing column
+- (Future) Removing or modifying one of the `constraints` on an existing column
+
+```
+dbt.exceptions.ModelContractError: Contract Error in model dim_customers (models/dim_customers.sql)
+  There is a breaking change in the model contract because column definitions have changed; you may need to create a new version. See: https://docs.getdbt.com/docs/collaborate/publish/model-versions
+```
+
+Additive changes are **not** considered breaking:
+- adding a new column to a contracted model
+- adding new `constraints` to an existing column in a contracted model
