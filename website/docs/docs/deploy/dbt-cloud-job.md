@@ -84,7 +84,7 @@ Refer to [job notifications](/docs/deploy/job-notifications) for more info.
 
 ### Host and share docs
 
-You can set up, view and share and view your project documentation in order to streamline your team's collaboration and productivity. Invite teammates to dbt Cloud to collaborate and share documentation. 
+You can set up, view, and share your project documentation in order to streamline your team's collaboration and productivity. Invite teammates to dbt Cloud to collaborate and share documentation. 
 
 Refer to [build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
 
