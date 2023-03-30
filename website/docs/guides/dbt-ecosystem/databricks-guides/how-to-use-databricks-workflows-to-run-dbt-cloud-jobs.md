@@ -19,20 +19,22 @@ Using Databricks workflows to call the dbt Cloud Job API can be useful for a few
 
 To use Databricks workflows to run dbt Cloud Jobs, you will need to follow these steps:
 
-### Setup Secrets
+### Part 1: Setup Secrets
 
 1. Retrieve [User API Token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens#user-api-tokens) or [Service Account Token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#generating-service-account-tokens) from dbt Cloud
 2. Set up a Databricks secret scope. This is used to securely store your dbt Cloud API key. You can create a new secret scope by using [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html). Enter the following commands in your terminal:
 
 ```bash
 # In this example we set up a secret scope and key called "dbt-cloud" and "api-key" respectively.
-databricks secrets create-scope --scope dbt-cloud
-databricks secrets put --scope dbt-cloud --key api-key --string-value **"<YOUR_DBT_CLOUD_API_KEY>"**
+databricks secrets create-scope --scope **<YOUR_SECRET_SCOPE>**
+databricks secrets put --scope  **<YOUR_SECRET_SCOPE>** --key  **<YOUR_SECRET_KEY>** --string-value **"<YOUR_DBT_CLOUD_API_KEY>"**
 ```
+Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with your own unique identifiers. Click [here for more information on secrets.](https://docs.databricks.com/security/secrets/index.html)
 
 Replace **`<YOUR_DBT_CLOUD_API_KEY>`** with the actual API key value that you copied from dbt Cloud in step 1.
 
-### Create Databricks Notebook
+
+### Part 2: Create Databricks Notebook
 
 1. [Create a Databricks Python notebook](https://docs.databricks.com/notebooks/notebooks-manage.html). This notebook will execute a Python script that calls the dbt Cloud Job API. 
 2. Create a Python script that calls the dbt Cloud Job API. This script should use the `requests` library to make an `HTTP POST` request to the dbt Cloud Job API endpoint with the appropriate parameters. Here's an example script:
@@ -45,15 +47,12 @@ import json
 import requests
 from getpass import getpass
      
-dbutils.widgets.text("base_url", "Enter the Base URL")
 dbutils.widgets.text("job_id", "Enter the Job ID")
-dbutils.widgets.text("account_id", "Enter your Account ID")
-
 job_id = dbutils.widgets.get("job_id")
-account_id = dbutils.widgets.get("account_id")
-base_url =  dbutils.widgets.get("base_url")
-#You may need to change the scope and key below if you stored your secret in another location
-api_key =  dbutils.secrets.get(scope = "dbt-cloud", key = "api-key")
+
+account_id = **<YOUR_ACCOUNT_ID>**
+base_url =  "**<YOUR_BASE_URL>**"
+api_key =  dbutils.secrets.get(scope = "**<YOUR_SECRET_SCOPE>**", key = "**<YOUR_SECRET_KEY>**")
 
 # These are documented on the dbt Cloud API docs
 class DbtJobRunStatus(enum.IntEnum):
@@ -110,11 +109,9 @@ def run():
 if __name__ == '__main__':
     run()
 ```
+Replace **`<YOUR_SECRET_SCOPE>`** and **`<YOUR_SECRET_KEY>`** with the values you used in Part 1.
 
-3. Run the Notebook. This will fail however you should now see  widgets at the top of your notebook for the following parameters: `account_id`, `base_url` , `job_id`
-4. Enter your  `account_id`, `base_url` , `job_id`
-
-To find out those values, navigate to dbt Cloud and click Deploy>Jobs and select the Job you want to run. Your URL will be structured like so:
+Replace **`<YOUR_BASE_URL>`** and **`<YOUR_ACCOUNT_ID>`** with the correct values of your environment. To find these values, navigate to **dbt Cloud** and select **Deploy > Jobs** and select the Job you want to run. Your URL will be structured like so:
 
 `https://**<YOUR_BASE_URL>**/deploy/**<YOUR_ACCOUNT_ID>**/projects/**<YOUR_DBT_PROJECT_ID>**/jobs/**<YOUR_DBT_CLOUD_JOB_ID>**`
 
@@ -125,10 +122,13 @@ For example:
 Therefore the following can be extracted:
 | Parameter | Value  |
 |---|---|
-| base_url | cloud.getdbt.com |
-| account_id | 000000 |
-| job_id | 222222 |
+| `base_url` | cloud.getdbt.com |
+| `account_id` | 000000 |
+| `job_id` | 222222 |
 
+
+3. Run the Notebook. This will fail however you should now see a widget at the top of your notebook for `job_id`
+4. In the widget, Enter your`job_id` from step 2.
 5. Run the Notebook again to kick off the dbt Cloud job. Your results should look similar to the following
 ```bash
 job_run_id = 123456
@@ -148,7 +148,7 @@ DbtJobRunStatus.SUCCESS
 ```
 - If needed the job can be cancelled from dbt cloud.
 
-### Setup Workflows
+### Part 3: Setup Workflows
 
 You can set up workflows directly from the notebook OR by adding this notebook to one of your existing workflows
 
@@ -157,7 +157,7 @@ To create a workflow from an existing Notebook:
 1. Click Schedule on the top right
 2. Click Add a schedule
 3. Configure Job name, Schedule, Cluster
-4. Add the following Parameters: `job_id` ,`account_id` and `base_url` and add the appropriate values. Refer to Step 4 of Create Databricks Notebook for details.
+4. Add a new parameter called: `job_id` and fill in your Job ID. Refer to Part 2 Step 2 on how to find your Job ID.
 5. Click Create
 6. To test the Job, Click Run Now
 
@@ -167,16 +167,16 @@ To add the notebook to an existing Workflow
 2. Click Tasks
 3. Press “+” icon to add a new task
 4. Enter the following:
+
 | Field | Value |
 |---|---|
-| Task name | <unique_task_name> |
+| Task name | _<unique_task_name>_ |
 | Type | Notebook |
 | Source | Workspace |
-| Path | </path/to/notebook> |
-| Cluster | <your_compute_cluster> |
-| Parameters | job_id - <your-dbt-job-id>
-account_id - <your-dbt-account-id>
-base_url - <your-base-url> |
+| Path | _</path/to/notebook>_ |
+| Cluster | _<your_compute_cluster>_ |
+| Parameters | `job_id`: _<your_dbt_job_id>_ |
+
 5. Select Save Task
 6. Click Run now to test the workflow
 
