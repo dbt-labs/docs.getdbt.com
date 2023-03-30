@@ -16,6 +16,7 @@ models:
     [description](description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
+    [access](resource-properties/access): private | protected | public
     [config](resource-properties/config):
       [<model_config>](model-configs): <config_value>
     [tests](resource-properties/tests):
