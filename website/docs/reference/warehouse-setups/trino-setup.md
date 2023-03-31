@@ -1,5 +1,5 @@
 ---
-title: "Starburst & Trino setup"
+title: "Starburst/Trino setup"
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
@@ -7,12 +7,12 @@ meta:
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
-  cloud_support: Not Supported
+  cloud_support: 'Supported (Beta)'
   min_supported_version: 'n/a'
-  slack_channel_name: '#db-presto-trino'
+  slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
-  platform_name: 'Trino'
-  config_page: 'no-configs'
+  platform_name: 'Starburst/Trino'
+  config_page: 'trino-configs'
 ---
 
 :::info Vendor-supported plugin
@@ -34,7 +34,6 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
 
-
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
 pip is the easiest way to install the adapter:
@@ -49,13 +48,83 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
+## Connecting to Starburst/Trino with dbt-core
 
+With dbt-core, the way to connect to your data platform is to creating a `profile` and `target` within the user-configured `profiles.yml` in the `.dbt/` directory of your user/home directory. For more information, please see both [Connection profiles](connection-profiles) and the [profiles.yml](../profiles.yml.md) reference page.
 
-## Set up a Trino or Starburst Target
+The available profile parameters within dbt-trino can be broken into the following three categories:
 
-Trino or Starburst targets should be set up using the following configuration in your `profiles.yml` file.
+- host-related
+- authentication-related, and
+- dbt-specific- and session-related
 
-See all possible profile configuration options [here](#configuration).
+the below sections go into greater detail
+
+### Host parameters
+
+All the below fields are always required, with the exception of `user`, which is required except for the  `oauth`, `cert` and `jwt` auth methods
+
+|   Field    | Examples                                                                                                                                                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| :--------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   `host`   | `mycluster.mydomain.com`                                                                                                                                        | The hostname of your cluster.<br></br>Do not include the HTTP protocol prefix (i.e. `http://` or `https://`).                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `database` | `my_postgres_catalog`                                                                                                                                           | The name of a catalog in your cluster.<br></br>The provided username must have read/write access to this catalog.<br></br>The selection you make does not limit the data you can access through dbt to the specified catalog in Starburst/Trino. By default, dbt models will be created and/or materialized within this catalog.                                                                                                                                                                                               |
+|  `schema`  | `my_schema`                                                                                                                                                     | The name of a schema within your cluster's catalog.<br></br>The provided username must have read/write access to this schema.<br></br>The selection you make does not limit the data you can access through dbt to the specified schema in Starburst/Trino. By default, dbt models will be created and/or materialized within this catalog.<br></br>**NOTE**: it is not recommended to use upper or mixed case schema names                                                                                                    |
+|   `port`   | `443`                                                                                                                                                           | The default port for TLS enabled clusters is `443`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|   `user`   | Starburst Enterprise & Trino<br></br>`user.name`<br></br>-OR-<br></br>`user.name@mydomain.com`<br></br>Starburst Galaxy<br></br>`user.name@mydomain.com/<role>` | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The user must have permissions to create and drop tables.<br></br>When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br></br>**NOTE**: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. |
+
+### Additional, optional configurations
+
+The following fields are not explicitly tied to a specific authentication method, but are available to be set within a profile
+
+| Profile field                 | Example                          | Description                                                                                                 |
+| ----------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `threads`                     | `8`                              | How many threads dbt should use (default is `1`)                                                            |
+| `roles`                       | `system: analyst`                | Catalog roles                                                                                               |
+| `session_properties`          | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection. Execute `SHOW SESSION` to see available options       |
+| `prepared_statements_enabled` | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                   |
+| `retries`                     | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)     |
+| `timezone`                    | `Europe/Brussels`                | The time zone for the Trino session (default: client-side local timezone)                                   |
+| `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.  |
+| `http_scheme`                 | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`) |
+
+### Authentication Methods
+
+The below tabs give, for each supported authentication type in dbt Core:
+
+- the profile fields relevant to the given authentication type, and
+- an example `profiles.yml`
+
+For a high-level introduction to authentication in Trino, see [Trino Security: Authentication Types](https://trino.io/docs/current/security/authentication-types.html).
+
+The `method` field is used in a user's profile to declare the intended authentication type
+
+<Tabs
+  defaultValue="ldap"
+  values={[
+    {label: 'LDAP (username & password)', value: 'ldap'},
+    {label: 'kerberos', value: 'kerberos'},
+    {label: 'JWT Token', value: 'jwt'},
+    {label: 'Certificate', value: 'certificate'},
+    {label: 'OAuth', value: 'oauth'},
+    {label: 'None', value: 'none'},
+  ]}
+>
+
+<TabItem value="ldap">
+
+#### LDAP Fields
+
+In addition to specifying  `method: ldap`, the table below gives the ldap-relevant parameters.
+
+For addiontal information, refer to Trino's doc page on [LDAP Authentication](https://trino.io/docs/current/security/ldap.html)
+
+| Profile field                   | Example                                                                                                                                               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `user`                          | **Starburst Enterprise/Trino**:<br></br>`user.name` OR `user.name@mydomain.com`<br></br>**Starburst Galaxy**:<br></br>`user.name@mydomain.com/<role>` | The username to log into your Starburst Enterprise, Starburst Galaxy or Trino cluster.<br></br>The user must have permissions to create and drop tables.<br></br>When connecting to Starburst Galaxy clusters, the role of the user must be provided as a suffix to the username.<br></br>**NOTE**: When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you will not be able to provide the role as a suffix to the username, so the default role for the provided username will be used. |
+| `password`                      | `abc123`                                                                                                                                              | Password for authentication (can be none, but not recommended!)                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `impersonation_user` (optional) | `impersonated_tom`                                                                                                                                    | Username override, used for impersonation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+#### Sample `profiles.yml` for LDAP
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -65,56 +134,185 @@ trino:
   outputs:
     dev:
       type: trino
-      method: none  # optional, one of {none | ldap | kerberos | oauth | jwt | certificate}
+      method: ldap 
       user: [user]
-      password: [password]  # required if method is ldap or kerberos
-      database: [database name]
+      password: [password]
       host: [hostname]
-      port: [port number]
+      database: [database name]
       schema: [your dbt schema]
+      port: [port number]
       threads: [1 or more]
-      retries: [1 or more] # default: 3
-      http_scheme: [http or https]
-      session_properties:
-        [some_session_property]: [value] # run SHOW SESSION query to get current session properties
 ```
 
 </File>
 
-## Incremental models
+</TabItem>
 
-Incremental strategies supported by the adapter are:
+<TabItem value="kerberos">
 
-- append (default incremental strategy) - append only adds the new records based on the condition specified in the is_incremental() conditional block.
-- delete+insert - Through the delete+insert incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured is_incremental() block and re-insert them.
-- merge - Through the merge incremental strategy, dbt-trino constructs a MERGE statement which inserts new and updates existing records based on the unique key (specified by unique_key).
-If your unique_key is not actually unique, the delete+insert strategy can be used instead. Note that some connectors in Trino have limited or no support for MERGE.
+#### Kerberos Fields
 
-## Configuration
+In addition to specifying  `method: kerberos`, the table below gives the kerberos-relevant parameters.
 
-A dbt-trino profile can be configured to run against Trino or Starburst using the following configuration:
+For addiontal information, refer to Trino's doc page on [Kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
 
-| Option                         | Description                                                                                                  | Required?                                                                                                        | Example                          |
-|--------------------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|----------------------------------|
-| method                         | The Trino authentication method to use                                                                       | Optional (default is `none`, supported methods are `ldap`, `kerberos`, `jwt`, `oauth` or `certificate`)          | `none` or `kerberos`             |
-| user                           | Username for authentication                                                                                  | Optional (required if `method` is `none`, `ldap` or `kerberos`)                                                  | `commander`                      |
-| password                       | Password for authentication                                                                                  | Optional (required if `method` is `ldap`)                                                                        | `none` or `abc123`               |
-| keytab                         | Path to keytab for kerberos authentication                                                                   | Optional (may be required if `method` is `kerberos`)                                                             | `/tmp/trino.keytab`              |
-| krb5_config                    | Path to config for kerberos authentication                                                                   | Optional (may be required if `method` is `kerberos`)                                                             | `/tmp/krb5.conf`                 |
-| principal                      | Principal for kerberos authentication                                                                        | Optional (may be required if `method` is `kerberos`)                                                             | `trino@EXAMPLE.COM`              |
-| service_name                   | Service name for kerberos authentication                                                                     | Optional (default is `trino`)                                                                                    | `abc123`                         |
-| jwt_token                      | JWT token for authentication                                                                                 | Optional (required if `method` is `jwt`)                                                                         | `none` or `abc123`               |
-| client_certificate             | Path to client certificate to be used for certificate based authentication                                   | Optional (required if `method` is `certificate`)                                                                 | `/tmp/tls.crt`                   |
-| client_private_key             | Path to client private key to be used for certificate based authentication                                   | Optional (required if `method` is `certificate`)                                                                 | `/tmp/tls.key`                   |
-| http_headers                   | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.   | Optional                                                                                                         | `X-Trino-Client-Info: dbt-trino` |
-| http_scheme                    | The HTTP scheme to use for requests to Trino                                                                 | Optional (default is `http`, or `https` for `method: kerberos`, `ldap` or `jwt`)                                 | `https` or `http`                |
-| cert                           | The full path to a certificate file for authentication with trino                                            | Optional                                                                                                         |                                  |
-| session_properties             | Sets Trino session properties used in the connection                                                         | Optional                                                                                                         | `query_max_run_time: 4h`         |
-| database                       | Specify the database to build models into                                                                    | Required                                                                                                         | `analytics`                      |
-| schema                         | Specify the schema to build models into. Note: it is not recommended to use upper or mixed case schema names | Required                                                                                                         | `public`                         |
-| host                           | The hostname to connect to                                                                                   | Required                                                                                                         | `127.0.0.1`                      |
-| port                           | The port to connect to the host on                                                                           | Required                                                                                                         | `8080`                           |
-| threads                        | How many threads dbt should use                                                                              | Optional (default is `1`)                                                                                        | `8`                              |
-| prepared_statements_enabled    | Enable usage of Trino prepared statements (used in `dbt seed` commands)                                      | Optional (default is `true`)                                                                                     | `true` or `false`                |
-| retries                        | Configure how many times a database operation is retried when connection issues arise                        | Optional (default is `3`)
-| timezone                       | The time zone for the session                                                                                | Optional (defaults to the client side local timezone)                                                            | `Europe/Brussels`                |
+| Profile field                               | Example             | Description                                                      |
+| ------------------------------------------- | ------------------- | ---------------------------------------------------------------- |
+| `user`                                      | `commander`         | Username for authentication                                      |
+| `keytab`                                    | `/tmp/trino.keytab` | Path to keytab                                                   |
+| `krb5_config`                               | `/tmp/krb5.conf`    | Path to config                                                   |
+| `principal`                                 | `trino@EXAMPLE.COM` | Principal                                                        |
+| `service_name` (optional)                   | `abc123`            | Service name  (default is 'trino')                               |
+| `hostname_override` (optional)              | `EXAMPLE.COM`       | Kerberos hostname for a host whose DNS name doesn't match        |
+| `mutual_authentication` (optional)          | `false`             | Boolean flag for mutual authentication                           |
+| `force_preemptive` (optional)               | `false`             | Boolean flag for preemptively initiate the Kerberos GSS exchange |
+| `sanitize_mutual_error_response` (optional) | `true`              | Boolean flag to strip content and headers from error responses   |
+| `delegate`  (optional)                      | `false`             | Boolean flag for credential delgation (`GSS_C_DELEG_FLAG`)       |
+
+#### Sample `profiles.yml` for Kerberos
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: kerberos
+      user: commander
+      keytab: /tmp/trino.keytab
+      krb5_config: /tmp/krb5.conf
+      principal: trino@EXAMPLE.COM
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="jwt">
+
+#### JWT Fields
+
+In addition to specifying  `method: jwt`, the only additional profile parameter is `jwt_token`
+
+For addiontal information, refer to Trino's doc page on [kerberos Authentication](https://trino.io/docs/current/security/kerberos.html)
+
+#### Sample `profiles.yml` for JWT Token
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: jwt 
+      jwt_token: [my_long_jwt_token_string]
+      host: [hostname]
+      database: [database name]
+      schema: [your dbt schema]
+      port: [port number]
+      threads: [1 or more]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="certificate">
+
+#### certificate fields
+
+Below are the fields unique to authentication with a certificate file
+
+In addition to specifying  `method: certificate`, the table below gives the certificate-relevant parameters.
+
+For addiontal information, refer to Trino's doc page on [certificate Authentication](https://trino.io/docs/current/security/certificate.html)
+
+| Profile field        | Example        | Description                         |
+| -------------------- | -------------- | ----------------------------------- |
+| `client_certificate` | `/tmp/tls.crt` | Path to client certificate          |
+| `client_private_key` | `/tmp/tls.key` | Path to client private key          |
+| `cert`               |                | The full path to a certificate file |
+
+#### Sample `profiles.yml` for certificate
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: certificate 
+      cert: [path/to/cert_file]
+      client_certificate: [path/to/client/cert]
+      client_private_key: [path to client key]
+      database: [database name]
+      schema: [your dbt schema]
+      port: [port number]
+      threads: [1 or more]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="oauth">
+
+To authenticate in dbt-core using OAuth 2 you need only specify: `method: oauth`, in addition to the the above specified host-related fields.
+
+For additional information, refer to both Trino's doc page on [Oauth2 Authentication](https://trino.io/docs/current/security/oauth2.html) and the [trino-python-client's README](https://github.com/trinodb/trino-python-client#oauth2-authentication).
+
+Note: It is recommended to install `keyring` to cache the OAuth2 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`, `keyring` is not installed by default.
+
+#### Sample `profiles.yml` for OAuth
+
+```yaml
+sandbox-galaxy:
+  target: oauth
+  outputs:
+    oauth:
+      type: trino
+      method: oauth
+      host: bunbundersders.trino.galaxy-dev.io
+      catalog: dbt_target
+      schema: dataders
+      port: 433
+```
+
+</TabItem>
+
+<TabItem value="none">
+
+Note: `none` is also a supported authentication method, but it is strongly discouraged. It use case is only for toy, local examples such as running Trino and dbt entirely within a single Docker container.
+
+#### Sample `profiles.yml` for no authentication
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: none
+      user: commander
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
+```
+
+</File>
+
+</TabItem>
+</Tabs>
