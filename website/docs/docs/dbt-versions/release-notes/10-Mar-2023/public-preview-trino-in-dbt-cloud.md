@@ -1,5 +1,5 @@
 ---
-title: "New: Starbust integration with public preview of dbt-trino in dbt Cloud"
+title: "Starbust integration with public preview of dbt-trino in dbt Cloud"
 id: "public-preview-trino-in-dbt-cloud"
 description: "Public preview of dbt Cloud integrations with Starburst and Trino clusters is now available."
 sidebar_label: "New: Starbust integration with public preview of dbt-trino in dbt Cloud"
