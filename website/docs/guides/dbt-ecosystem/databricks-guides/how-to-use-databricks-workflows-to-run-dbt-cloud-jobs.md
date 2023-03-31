@@ -8,7 +8,7 @@ Using Databricks workflows to call the dbt Cloud job API can be useful for sever
 4. **Custom job triggering:** Use a Databricks workflow to trigger dbt Cloud jobs based on custom conditions or logic that aren't natively supported by dbt Cloud's scheduling feature. This can give you more flexibility in terms of when and how your dbt Cloud jobs run.
 
 ## Pre-requisites
-- Active [Teams or Enterprise dbt Cloud Account](https://www.getdbt.com/pricing/)
+- Active [Teams or Enterprise dbt Cloud account](https://www.getdbt.com/pricing/)
 - You must have a configured and existing [dbt Cloud job](/docs/deploy/dbt-cloud-job)
 - - Active Databricks Account with access to [Data Science and Engineering workspace](https://docs.databricks.com/workspace-index.html) and [Manage secrets](https://docs.databricks.com/security/secrets/index.html)
 - [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html). 
