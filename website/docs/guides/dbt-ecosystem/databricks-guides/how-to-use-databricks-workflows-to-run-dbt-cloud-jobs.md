@@ -6,7 +6,7 @@ Using Databricks workflows to call the dbt Cloud job API can be useful for sever
 1. **Integration with other ETL processes**: If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a dbt Cloud job after those processes are done.
 2. **Utilises dbt Cloud Jobs features:** dbt Cloud gives the ability to monitor jobs, manage historical logs and documentation, optimise model timing and much more.
 3. **Separation of concerns:** Detailed logs for dbt jobs in the dbt Cloud environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
-4. **Customisable job triggering:** If you want to trigger dbt Cloud jobs based on custom conditions or logic that are not natively supported by dbt Cloud's scheduling feature, you can use a Databricks workflow to trigger the job with a custom script. This gives you more flexibility in how and when your dbt Cloud jobs run.
+4. **Custom job triggering:** Use a Databricks workflow to trigger dbt Cloud jobs based on custom conditions or logic that aren't natively supported by dbt Cloud's scheduling feature. This can give you more flexibility in terms of when and how your dbt Cloud jobs run.
 
 ## Pre-requisites
 - Active [Teams or Enterprise dbt Cloud Account](https://www.getdbt.com/pricing/)
