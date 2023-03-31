@@ -145,7 +145,7 @@ The Query Profile provides metrics that allow you to identify the presence of fu
 
 ### Exploding Joins
 
-The concept of “*exploding joins*” refers to a join operation that produces a much larger table result set than either of the input tables used, resulting in a Cartesian product. This performance issue can be determined by enabling the verbose mode setting in the Query Profile, by looking at the number of records produced by a join operator. There are several steps you can take to prevent exploding joins. As a first step, make the join conditions more specific to reduce the number of rows that are being matched. Another step  is to utilize data preprocessing techniques such as aggregating, filtering, and performing data sampling before the join operation. These techniques can reduce the size of the input tables and help prevent exploding joins.
+The concept of _exploding joins_ refers to a `join` operation that produces a much larger table result set than either of the input tables used, resulting in a Cartesian product. This performance issue can be determined by enabling the verbose mode setting in the Query Profile, by looking at the number of records produced by a join operator. There are several steps you can take to prevent exploding joins. As a first step, make the join conditions more specific to reduce the number of rows that are being matched. Another step is to utilize data preprocessing techniques such as aggregating, filtering, and performing data sampling before the join operation. These techniques can reduce the size of the input tables and help prevent exploding joins.
 
 ### Materialization Best Practices  
 
