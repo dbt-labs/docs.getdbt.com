@@ -149,7 +149,7 @@ The concept of “*exploding joins*” refers to a join operation that produces 
 
 ### Materialization Best Practices  
 
-Remember that data is stored as files, so the unit of I/O work in a file, not a row. That’s a lot of work if we’re dealing with TBs of data. Therefore we recommend relying on merge strategy as the recommended strategy for the majority of incremental models.
+Remember that data is stored as files, so the unit of I/O work is a file, not a row. That’s a lot of work if we’re dealing with TBs of data. Therefore we recommend relying on merge strategy as the recommended strategy for the majority of incremental models.
 
 Databricks is committed to continuously improving its performance. For example, in Delta and DBSQL, we’ve greatly improved performance of MERGE operations recently with [low-shuffle merge and Photon](https://www.databricks.com/blog/2022/10/17/faster-merge-performance-low-shuffle-merge-and-photon.html). With many future implementations in the pipeline such as deletion vectors for efficient deletes & upserts.Here’s the basic strategies to speed it up:
 
