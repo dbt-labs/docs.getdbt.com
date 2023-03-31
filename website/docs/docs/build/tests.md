@@ -62,13 +62,13 @@ Singular tests are easy to write—so easy that you may find yourself writing th
 Certain tests are generic: they can be reused over and over again. A generic test is defined in a `test` block, which contains a parametrized query and accepts arguments. It might look like:
 
 ```sql
-{% test not_null(model, column_name) %}
+{% macro not_null(model, column_name) %}
 
     select *
     from {{ model }}
     where {{ column_name }} is null
 
-{% endtest %}
+{% endmacro %}
 ```
 
 You'll notice that there are two arguments, `model` and `column_name`, which are then templated into the query. This is what makes the test "generic": it can be defined on as many columns as you like, across as many models as you like, and dbt will pass the values of `model` and `column_name` accordingly. Once that generic test has been defined, it can be added as a _property_ on any existing model (or source, seed, or snapshot). These properties are added in  `.yml` files in the same directory as your resource.
