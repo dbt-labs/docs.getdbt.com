@@ -17,7 +17,7 @@ As you start to develop your dbt projects, one of the first decisions you will m
 
 With serverless warehouses, you greatly decrease spin up time waiting for the cluster to warm up and scale time when your cluster needs to horizontally scale. This mitigates the need to keep clusters idle as serverless warehouses will spin up quickly when the workload begins and then spin down when the workload is complete. Plus, serverless warehouses leverage our Photon engine out of the box for optimal performance in  both ELT and serving workloads.
 
-The next step would be to decide how big to make your serverless SQL warehouse. This is not an exact science but these are some quick tips that will drive huge improvements in performance:
+The next step would be to decide how big to make your serverless SQL warehouse. This is not an exact science but these subsections provide you with some quick tips that will drive huge improvements in performance.
 
 ### Sizing your SQL warehouses
 
