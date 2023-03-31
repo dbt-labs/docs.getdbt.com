@@ -35,7 +35,7 @@ Because of the ability of serverless warehouses to spin up in a matter of second
 
 Now that we have a solid sense of the infrastructure components, we can shift our focus to best practices and design patterns on pipeline development.  We recommend the staging/intermediate/mart approach which is analogous to the medallion architecture bronze/silver/gold approach that’s recommended by Databricks. Let’s dissect each stage further.
 
-dbt has guidelines on how you can structure your dbt project which you can read more about [here](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+dbt has guidelines on how you can [structure your dbt project](/guides/best-practices/how-we-structure/1-guide-overview) which you can learn more about.
 
 ### Bronze / Staging Layer:
 
