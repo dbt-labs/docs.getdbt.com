@@ -113,7 +113,7 @@ A couple examples:
 
 If your team’s dbt users are analysts rather than engineers, they still may need to be able to dig into the root cause of a failing dbt [source freshness test](/docs/build/sources).
 
-Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
+Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based <Term id="etl">ETL tool</Term>), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
 
 ![airflow dashboard](/img/blog/airflow-dbt-dashboard.png "airflow dashboard")
 
