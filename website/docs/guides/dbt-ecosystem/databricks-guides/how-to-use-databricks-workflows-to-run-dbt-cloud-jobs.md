@@ -1,6 +1,5 @@
 # How to use Databricks workflows to run dbt Cloud Jobs
 
-## Why
 
 Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:
 1. **Integration with other ETL processes**: If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a dbt Cloud job after those processes are done.
