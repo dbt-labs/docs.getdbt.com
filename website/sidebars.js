@@ -441,6 +441,7 @@ const sidebarSettings = {
         "reference/resource-configs/vertica-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
+        "reference/resource-configs/oracle-configs",
       ],
     },
     {
