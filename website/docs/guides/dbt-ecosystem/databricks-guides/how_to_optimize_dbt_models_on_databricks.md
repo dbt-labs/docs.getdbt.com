@@ -164,7 +164,7 @@ Now you might be wondering, how do you identify opportunities for performance im
 
 ### dbt Cloud Admin API
 
-With  the [dbt Cloud Admin API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api), you can  pull the dbt artifacts from your dbt Cloud run,  put the generated manifest.json into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
+With the [dbt Cloud Admin API](/docs/dbt-cloud-apis/metadata-api), you can  pull the dbt artifacts from your dbt Cloud run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
 
 ## Conclusion
 
