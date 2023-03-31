@@ -111,7 +111,8 @@ my-bigquery-db:
       project: [GCP project id]
       dataset: [the name of your dbt dataset] # You can also use "schema" here
       threads: [1 or more]
-      refresh_token: [token]
+      token: [token]
+      refresh_token: [refresh_token]
       client_id: [client id]
       client_secret: [client secret]
       token_uri: [redirect URI]
