@@ -1,4 +1,8 @@
-# How to optimize and troubleshoot dbt models on Databricks
+---
+title: How to optimize and troubleshoot dbt models on Databricks
+sidebar_label: "How to optimize and troubleshoot dbt models on Databricks"
+description: "Learn more about optimizing and troubleshooting your dbt models on Databricks"
+---
 
 ## Introduction
 
