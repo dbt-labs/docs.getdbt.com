@@ -70,8 +70,8 @@ function Home() {
                 <div>
                   <Card
                     title="What is dbt?"
-                    body="dbt enables data practitioners to adopt software engineering best practices and deploy modular, reliable analytics code."
-                    link="/docs/introduction"
+                    body="dbt enables data <a href='https://www.getdbt.com'>practitioners</a> to adopt software engineering best practices and deploy modular, reliable analytics code."
+                    // link="/docs/introduction"
                     icon="question-mark"
                   />
                 </div>
