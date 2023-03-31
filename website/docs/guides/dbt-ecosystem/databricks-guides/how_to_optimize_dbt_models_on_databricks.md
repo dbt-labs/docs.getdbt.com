@@ -51,19 +51,19 @@ Now that we have our bronze table taken care of, we can proceed with the silver 
 
 For cost and performance reasons, many customers opt to implement an incremental pipeline approach. The main benefit with this approach is that you process a lot less data when you insert new records into the silver layer, rather than re-create the table each time with all the data from the bronze layer. However it should be noted that by default, [dbt recommends using views and tables](/guides/best-practices/materializations/1-guide-overview) to start out with and then moving to incremental as you require more performance optimization.
 
-dbt has a [incremental model materialization](https://docs.getdbt.com/reference/resource-configs/spark-configs#the-merge-strategy) to facilitate this framework. How this works at a high level is that Databricks will create a temp view with a snapshot of data and then merge that snapshot into the silver table. You can customize the time range of the snapshot to suit your specific use case by configuring the where conditional in your is_incremental logic. The most straightforward implementation is to merge data  using a timestamp that’s later than the current max timestamp in the silver table, but there are certainly valid use cases for increasing the temporal range of the source snapshot.
+dbt has an [incremental model materialization](/reference/resource-configs/spark-configs#the-merge-strategy) to facilitate this framework. How this works at a high level is that Databricks will create a temp view with a snapshot of data and then merge that snapshot into the silver table. You can customize the time range of the snapshot to suit your specific use case by configuring the `where` conditional in your `is_incremental` logic. The most straightforward implementation is to merge data using a timestamp that’s later than the current max timestamp in the silver table, but there are certainly valid use cases for increasing the temporal range of the source snapshot.
 
-While merge should be fairly performant out of the box but if you have particularly tight SLAs, there are some more advanced tuning techniques that you can incorporate into your logic. Let us discuss several examples in further detail:
+While merge should be fairly performant out of the box but if you have particularly tight SLAs, there are some more advanced tuning techniques that you can incorporate into your logic. Let us discuss several examples in further detail.
 
-### File Compaction (H3)
+### File Compaction 
 
-Most compute engines work best when file sizes are between 32 MB and 256 MB. In Databricks, we take care of optimal file sizing under the hood with our [auto optimize](https://docs.databricks.com/optimizations/auto-optimize.html) features. Auto optimize consists of two distinct features: auto compaction and optimized writes. In Databricks SQL warehouses, optimized writes are enabled by default. We recommend that you [opt-in to auto compaction](https://docs.databricks.com/optimizations/auto-optimize.html#when-to-opt-in-to-auto-compaction).
+Most compute engines work best when file sizes are between 32 MB and 256 MB. In Databricks, we take care of optimal file sizing under the hood with our [auto optimize](https://docs.databricks.com/optimizations/auto-optimize.html) features. Auto optimize consists of two distinct features: auto compaction and optimized writes. In Databricks SQL warehouses, optimized writes are enabled by default. We recommend that you [opt in to auto compaction](https://docs.databricks.com/optimizations/auto-optimize.html#when-to-opt-in-to-auto-compaction).
 
 ### Data skipping
 
-Under the hood, Databricks will naturally [cluster data based on when it was ingested](https://www.databricks.com/blog/2022/11/18/introducing-ingestion-time-clustering-dbr-112.html). Since many queries include timestamps in where conditionals, this will naturally lead to a large amount of file skipping for enhanced performance. Nevertheless, if you have other high cardinality columns (basically columns with a large amount of distinct values such as id columns) **that are frequently used in join keys or where conditionals, performance can typically be augmented further by leveraging z-order.
+Under the hood, Databricks will naturally [cluster data based on when it was ingested](https://www.databricks.com/blog/2022/11/18/introducing-ingestion-time-clustering-dbr-112.html). Since many queries include timestamps in `where` conditionals, this will naturally lead to a large amount of file skipping for enhanced performance. Nevertheless, if you have other high cardinality columns (basically columns with a large amount of distinct values such as id columns) that are frequently used in `join` keys or `where` conditionals, performance can typically be augmented further by leveraging Z-order.
 
-The SQL syntax for the Z-Order command is **OPTIMIZE TABLE Z-ORDER BY (col1,col2,col3,etc)**. One caveat to be aware of is that you will rarely want to Z-Order by more than three columns. You will likely want to either run Z-order on run end after your model builds or run Z-Order as a separate scheduled job on a consistent cadence, whether it is daily, weekly, or monthly.
+The SQL syntax for the Z-Order command is `OPTIMIZE TABLE Z-ORDER BY (col1,col2,col3,etc)`. One caveat to be aware of is that you will rarely want to Z-Order by more than three columns. You will likely want to either run Z-order on run end after your model builds or run Z-Order as a separate scheduled job on a consistent cadence, whether it is daily, weekly, or monthly.
 
 ```sql
 config(
@@ -77,7 +77,7 @@ zorder="column_A" | ["column_A", "column_B"]
 
 ### Analyze Table
 
-The analyze table command ensures that our system has the most up to date statistics to select the optimal join plan. You will likely want to either run analyze table posthook after your model builds or run analyze table as a separate scheduled dbt job on a consistent cadence, whether it is daily, weekly, or monthly.  The SQL syntax is as follows:
+The `ANALYZE TABLE` command ensures that our system has the most up-to-date statistics to select the optimal join plan. You will likely want to either run analyze table posthook after your model builds or run analyze table as a separate scheduled dbt job on a consistent cadence, whether it is daily, weekly, or monthly.  The SQL syntax for this is:
 
 ```sql 
 ANALYZE TABLE mytable COMPUTE STATISTICS FOR
@@ -85,21 +85,21 @@ ANALYZE TABLE mytable COMPUTE STATISTICS FOR
 COLUMNS col1, col2, col3
 ```
 
-An important item to clarify is that you will want to prioritize statistics for columns that are  frequently used in joins.
+An important item to clarify is that you will want to prioritize statistics for columns that are frequently used in joins.
 
 ### Vacuum
 
-When you delete a record from a Delta table, it is a soft delete. What this means is that the record is deleted from the transaction log and is not included in subsequent queries, but the underlying file still remains in cloud storage. If you want to delete the underlying files as well (whether for reducing storage cost or augmenting performance on merges), you can run a vacuum command. The factor you will want to be very cognizant of is restoring older versions of the table. Let’s say  you vacuum a table to delete all unused files that’s older than 7 days. You won’t be  able to restore versions of the table from over 7 days ago that rely on those deleted  files, so use with caution. If/when you choose to leverage vacuum, you will likely want to run vacuum using the dbt functionality [on-run-end](https://docs.getdbt.com/reference/project-configs/on-run-start-on-run-end) after your model builds or run vacuum as a separate scheduled dbt job on a consistent cadence, whether it is daily/weekly/monthly, etc using the dbt run-operations command (with the vaccum statement in a macro).
+When you delete a record from a Delta table, it is a soft delete. What this means is that the record is deleted from the transaction log and is not included in subsequent queries, but the underlying file still remains in cloud storage. If you want to delete the underlying files as well (whether for reducing storage cost or augmenting performance on merges), you can run a vacuum command. The factor you will want to be very cognizant of is restoring older versions of the table. Let’s say  you vacuum a table to delete all unused files that’s older than 7 days. You won’t be  able to restore versions of the table from over 7 days ago that rely on those deleted  files, so use with caution. If/when you choose to leverage vacuum, you will likely want to run vacuum using the dbt functionality [on-run-end](/reference/project-configs/on-run-start-on-run-end) after your model builds or run vacuum as a separate scheduled dbt job on a consistent cadence (whether it is daily, weekly, or monthly) using the dbt [run-operation](/reference/commands/run-operation) command (with the vaccum statement in a macro).
 
 ### Gold / Marts Layer
 
-Now onto the most final layer – the gold marts that business stakeholders typically interact with from their preferred BI tool. The considerations here will be fairly similar to the silver layer except that these marts are more likely to handling aggregrations. Further, you will likely want to be even more intentional about Z-Ordering these tables as SLAs tend to be lower with these direct stakeholder facing tables.
+Now onto the most final layer &mdash; the gold marts that business stakeholders typically interact with from their preferred BI tool. The considerations here will be fairly similar to the silver layer except that these marts are more likely to handling aggregations. Further, you will likely want to be even more intentional about Z-Ordering these tables as SLAs tend to be lower with these direct stakeholder facing tables.
 
 In addition, these tables are well suited for defining [dbt metrics](/docs/build/metrics) on to ensure simplicity and consistency across your key business KPIs! Using the [dbt_metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/), you can query the metrics inside of your own dbt project even. With the upcoming Semantic Layer Integration, you can also then query the metrics in any of the partner integrated tools.
 
 ### Filter rows in target and/or source
 
-It can be done using *incremental_predicates*
+It can be done using `incremental_predicates` like in this example: 
 
 ```sql
 {{
@@ -123,7 +123,7 @@ incremental_predicates = [
 
 ## 3. Performance Troubleshooting
 
-Performance troubleshooting refers to the process of identifying and resolving issues that impact the performance of your dbt models and overall data pipelines. By improving the speed and performance of your Lakehouse platform, you will be able to process data faster, process large and complex queries more effectively, and provide faster time to market.  Let’s go into detail the three effective strategies that you can implement:
+Performance troubleshooting refers to the process of identifying and resolving issues that impact the performance of your dbt models and overall data pipelines. By improving the speed and performance of your Lakehouse platform, you will be able to process data faster, process large and complex queries more effectively, and provide faster time to market.  Let’s go into detail the three effective strategies that you can implement.
 
 ### SQL warehouse query profile
 
@@ -168,6 +168,6 @@ With the [dbt Cloud Admin API](/docs/dbt-cloud-apis/metadata-api), you can  pu
 
 ## Conclusion
 
-This concludes the 2nd guide in our series on “Working with Databricks and dbt”, following [How to set up your Databricks and dbt Project](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project).
+This concludes the second guide in our series on “Working with Databricks and dbt”, following [How to set up your Databricks and dbt Project](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project).
 
 We welcome you to try these strategies on our example open source TPC-H implementation and to provide us with thoughts/feedback as you start to incorporate these features into production. Looking forward to your feedback on [#db-databricks-and-spark](https://getdbt.slack.com/archives/CNGCW8HKL) Slack channel!
