@@ -137,7 +137,7 @@ The three common examples of performance bottlenecks that can be surfaced by the
 
 ### Inefficient file pruning
 
-By default, Databricks Delta tables collect statistics on the **first 32 columns** defined in your table schema. When transforming data from the Bronze/staging layer to the Silver/intermediate layer, it is advised to reorder your columns to account for these file-level stats and improve overall performance. Move numerical keys and high cardinality query predicates to the left of the 32nd ordinal position, and move strings and complex data types after the 32nd ordinal position of the table. It is worth mentioning that while you can change the default table property to collect statistics on more columns, it will add more overhead as you write files. You may change this default value by using the [table property](https://docs.databricks.com/delta/table-properties.html), **delta.dataSkippingNumIndexedCols**.
+By default, Databricks Delta tables collect statistics on the _first 32 columns_ defined in your table schema. When transforming data from the Bronze/staging layer to the Silver/intermediate layer, it is advised to reorder your columns to account for these file-level stats and improve overall performance. Move numerical keys and high cardinality query predicates to the left of the 32nd ordinal position, and move strings and complex data types after the 32nd ordinal position of the table. It is worth mentioning that while you can change the default table property to collect statistics on more columns, it will add more overhead as you write files. You may change this default value by using the [table property](https://docs.databricks.com/delta/table-properties.html), `delta.dataSkippingNumIndexedCols`.
 
 ### Full Table Scans
 
