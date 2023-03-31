@@ -15,7 +15,7 @@ Using Databricks workflows to call the dbt Cloud job API can be useful for sever
   - Please note that you only need to set up your authentication. After you have setup Host and Token and are able to run `databricks workspace ls /Users/<someone@example.com>` you will be able to complete the rest of this guide.
 
 ## Configure Databricks workflows for dbt Cloud jobs
-## How
+## Configure Databricks workflows for dbt Cloud jobs
 
 To use Databricks workflows for running dbt Cloud jobs, you need to perform the following steps: 
 
