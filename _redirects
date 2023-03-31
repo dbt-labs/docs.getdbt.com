@@ -1,6 +1,17 @@
-
+docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
+/docs/dbt-versions/release-notes/January-2022/model-timing-more /docs/deploy/dbt-cloud-job#model-timing 301
+/docs/deploy/deployments#dbt-cloud /docs/deploy/dbt-cloud-job 301
+/docs/deploy/deployments#airflow /docs/deploy/deployment-tools 301
+/docs/deploy/deployments#prefect /docs/deploy/deployment-tools 301
+/docs/deploy/deployments#run-dbt-in-production /docs/deploy/deployments 301
+/docs/deploy/deployments#on-prefect-2 /docs/deploy/deployment-tools 301
+/docs/deploy/deployments#on-prefect-1 /docs/deploy/deployment-tools 301
+/docs/deploy/deployments#dagster  /docs/deploy/deployment-tools 301
+/docs/deploy/deployments#automation-servers /docs/deploy/deployment-tools 301
+/docs/deploy/deployments#cron /docs/deploy/deployment-tools 301
 
 # New Cloud directory redirects
+/docs/collaborate/manage-access/enterprise-permissions#permission-sets  /docs/cloud/manage-access/enterprise-permissions#permission-sets 301
 /docs/get-started/privatelink/about-privatelink /docs/cloud/privatelink/about-privatelink 301
 /docs/get-started/privatelink/snowflake-privatelink /docs/cloud/privatelink/snowflake-privatelink 301
 /docs/get-started/privatelink/redshift-privatelink /docs/cloud/privatelink/redshift-privatelink 301
