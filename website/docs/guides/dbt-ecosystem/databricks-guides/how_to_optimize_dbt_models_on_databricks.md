@@ -25,7 +25,7 @@ To select the appropriate size of your SQL warehouse, consider the use case and 
 
 ### Provision warehouses by workload
 
-Another technique worth implementing is to provision separate SQL warehouses for building dbt pipelines vs ad hoc, interactive SQL analysis. This is because the query design patterns and compute usage are different for these two types of workloads. Choose T-shirt sizes based on data volumes and SLAs (scale-up principle), and choose auto-scaling based on concurrency requirements (scale-out principle). For larger deployments, this approach could be expanded to map different workload sizes to multiple “pipeline” warehouses, if needed. On the dbt side, take into account the [number of threads you have](https://docs.getdbt.com/docs/core/connection-profiles#understanding-threads), meaning how many dbt models you can run in parallel. The higher the thread count, the more compute you will require.
+Another technique worth implementing is to provision separate SQL warehouses for building dbt pipelines instead of ad hoc, interactive SQL analysis. This is because the query design patterns and compute usage are different for these two types of workloads. Choose T-shirt sizes based on data volumes and SLAs (scale-up principle), and choose auto-scaling based on concurrency requirements (scale-out principle). For larger deployments, this approach could be expanded to map different workload sizes to multiple “pipeline” warehouses, if needed. On the dbt side, take into account the [number of threads you have](/docs/core/connection-profiles#understanding-threads), meaning how many dbt models you can run in parallel. The higher the thread count, the more compute you will require.
 
 ### Configure auto-stop
 
