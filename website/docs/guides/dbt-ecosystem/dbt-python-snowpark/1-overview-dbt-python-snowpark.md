@@ -1,7 +1,7 @@
 ---
-title: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python" 
+title: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake" 
 id: "1-overview-dbt-python-snowpark"
-description: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python"
+description: "Leverage dbt Cloud to generate analytics and ML-ready pipelines with SQL and Python with Snowflake"
 ---
 
 The focus of this workshop will be to demonstrate how we can use both *SQL and python together* in the same workflow to run *both analytics and machine learning models* on dbt Cloud.
