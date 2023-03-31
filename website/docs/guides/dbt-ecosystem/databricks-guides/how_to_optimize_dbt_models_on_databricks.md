@@ -4,7 +4,6 @@ sidebar_label: "How to optimize and troubleshoot dbt models on Databricks"
 description: "Learn more about optimizing and troubleshooting your dbt models on Databricks"
 ---
 
-## Introduction
 
 Continuing our Databricks & dbt guide series from the last [guide](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project), it’s time to talk about performance optimization. In this follow-up post,  we outline simple strategies to optimize for cost, performance, and simplicity when architecting your data pipelines. We’ve encapsulated these strategies in this acronym-framework:
 
