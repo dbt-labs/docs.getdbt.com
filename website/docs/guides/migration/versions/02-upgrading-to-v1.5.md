@@ -61,7 +61,7 @@ More to come!
 - Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations
 
 
-### Materialized View, Materialized Tests
+### Materialized views and tests
 
 :::caution Under construction 🚧
 More to come!
