@@ -8,11 +8,11 @@ meta:
   pypi_package: 'dbt-oracle'
   min_core_version: 'v1.2.1'
   cloud_support: Not Supported
-  min_supported_version: 'SQlite Version 3.0'
+  min_supported_version: 'Oracle 12c and higher'
   slack_channel_name: '#db-oracle'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWH4TXLY'
   platform_name: 'Oracle'
-  config_page: 'no-configs'
+  config_page: 'oracle-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -48,17 +48,17 @@ pip is the easiest way to install the adapter:
 
 ### Configure the Python driver mode
 
-:::info 
+:::info
 [python-oracledb](https://oracle.github.io/python-oracledb/) is the renamed, major release of Oracle's popular cx_Oracle interface
 :::
 
-[python-oracledb](https://oracle.github.io/python-oracledb/) makes it optional to install the Oracle Client libraries. 
+[python-oracledb](https://oracle.github.io/python-oracledb/) makes it optional to install the Oracle Client libraries.
 This driver supports 2 modes
 
 1. **Thin mode (preferred) ** : Python process directly connects to the Oracle database. This mode does not need the Oracle Client libraries
 2. **Thick mode** : Python process links with the Oracle Client libraries. Some advanced Oracle database functionalities (for e.g. Advanced Queuing and Scrollable cursors) are currently available via Oracle Client libraries
 
-It is highly recommended to use the **thin** mode as it vastly simplifies installation. You can configure the driver mode using the environment variable `ORA_PYTHON_DRIVER_TYPE`
+You can configure the driver mode using the environment variable `ORA_PYTHON_DRIVER_TYPE`. Use the **thin** mode as it vastly simplifies installation.
 
 | Driver Mode            | Oracle Client libraries required? | Configuration |
 |------------------------|-----------------------------------| ------------- |
@@ -66,7 +66,11 @@ It is highly recommended to use the **thin** mode as it vastly simplifies instal
 | Thick                  | Yes                               | `ORA_PYTHON_DRIVER_TYPE=thick` |
 | cx_oracle (old driver) | Yes                               | `ORA_PYTHON_DRIVER_TYPE=cx` |
 
-The default value of `ORA_PYTHON_DRIVER_TYPE` is `cx`. This might change in the future as more users migrate towards the new python driver.
+The default value of `ORA_PYTHON_DRIVER_TYPE` is `cx`
+
+:::warning Deprecation Warning
+Default value of `ORA_PYTHON_DRIVER_TYPE` will change to `thin` in future release of dbt-oracle because `cx_oracle` is deprecated
+:::
 
 <Tabs
 defaultValue="thin"
@@ -87,7 +91,7 @@ defaultValue="thin"
 
   ```bash
   export ORA_PYTHON_DRIVER_TYPE=thick
-  # or 
+  # or
   export ORA_PYTHON_DRIVER_TYPE=cx # default
   ```
 
@@ -128,7 +132,7 @@ Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where av
 
 
 4. if there is no other Oracle software on the machine that will be impacted, permanently add Instant Client to the runtime link path. For example, with sudo or as the root user:
- 
+
  ```bash
   sudo sh -c "echo /opt/oracle/instantclient_21_1 > /etc/ld.so.conf.d/oracle-instantclient.conf"
   sudo ldconfig
@@ -148,7 +152,7 @@ Oracle client libraries versions 21, 19, 18, 12, and 11.2 are supported where av
 
 :::info Windows 7 users
 Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
-::: 
+:::
 
 2. Unzip the package into a directory that is accessible to your application. For example unzip `instantclient-basic-windows.x64-19.11.0.0.0dbru.zip` to `C:\oracle\instantclient_19_11`.
 
@@ -160,7 +164,7 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
    5. For Instant Client 11.2 install [VS 2005 64-bit](https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2005-vc-80-sp1-no-longer-supported)
 
 4. Add the Oracle Instant Client directory to the `PATH` environment variable.The directory must occur in `PATH` before any other Oracle directories. Restart any open command prompt windows.
-   
+
    ```bash
    SET PATH=C:\oracle\instantclient_19_9;%PATH%
    ```
@@ -169,36 +173,36 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 
 <TabItem value="macos">
 
-1. Download the instant client DMG package 
-  
+1. Download the instant client DMG package
+
   ```bash
   cd $HOME/Downloads
   curl -O https://download.oracle.com/otn_software/mac/instantclient/198000/instantclient-basic-macos.x64-19.8.0.0.0dbru.dmg
   ```
 
 2. Mount the instant client DMG package
-   
+
    ```bash
    hdiutil mount instantclient-basic-macos.x64-19.8.0.0.0dbru.dmg
 
    ```
 
 3. Run the install script in the mounted package
-  
+
   ```bash
   /Volumes/instantclient-basic-macos.x64-19.8.0.0.0dbru/install_ic.sh
   ```
 
 4. Unmount the package
-   
+
    ```bash
    hdiutil unmount /Volumes/instantclient-basic-macos.x64-19.8.0.0.0dbru
    ```
-   
+
 5. The Instant Client directory will be `$HOME/Downloads/instantclient_19_8`. You could move it to some place convenient.
 
 6. Add links to `~/lib` or `/usr/local/lib` to enable dbt to find the libraries.
-   
+
    ```bash
    mkdir ~/lib
    ln -s ~/instantclient_19_8/libclntsh.dylib ~/lib/
@@ -225,7 +229,7 @@ A database username and password is still required for dbt connections which can
 
 <TabItem value="tls">
 
-With TLS, dbt can connect to Oracle ADB without using a wallet. Both Thin and Thick modes of the python-oracledb driver support TLS. 
+With TLS, dbt can connect to Oracle ADB without using a wallet. Both Thin and Thick modes of the python-oracledb driver support TLS.
 
 :::info
 In Thick mode, dbt can connect through TLS only when using Oracle Client library versions 19.14 (or later) or 21.5 (or later).
@@ -236,11 +240,11 @@ Refer to Oracle documentation to [connect to an ADB instance using TLS authentic
 
 <TabItem value="m-tls">
 
-For mutual TLS connections, a wallet needs be downloaded from the OCI console and the python driver needs to be configured to use it. 
+For mutual TLS connections, a wallet needs be downloaded from the OCI console and the python driver needs to be configured to use it.
 
 #### Install the Wallet and Network Configuration Files
 
-From the Oracle Cloud console for the database, download the wallet zip file using the `DB Connection` button. The zip contains the wallet and network configuration files. 
+From the Oracle Cloud console for the database, download the wallet zip file using the `DB Connection` button. The zip contains the wallet and network configuration files.
 
 :::warning Note
 Keep wallet files in a secure location and share them only with authorized users.
@@ -280,7 +284,7 @@ In Thick mode, the following files from the zip are needed:
 - `sqlnet.ora` - Configures Oracle Network settings
 - `cwallet.sso` - Enables SSL/TLS connections
 
-After unzipping the files in a secure directory, set the **TNS_ADMIN** environment variable to that directory name. 
+After unzipping the files in a secure directory, set the **TNS_ADMIN** environment variable to that directory name.
 
 ```bash
 export TNS_ADMIN=/path/to/directory_containing_tnsnames.ora
@@ -320,7 +324,7 @@ Starting with `dbt-oracle==1.0.2`, it is **optional** to set the database name
 export DBT_ORACLE_DATABASE=example_db2022adb
 ```
 
-If database name is not set, adapter will retrieve it using the following query. 
+If database name is not set, adapter will retrieve it using the following query.
 
 ```sql
 SELECT SYS_CONTEXT('userenv', 'DB_NAME') FROM DUAL
@@ -344,7 +348,7 @@ The directory location of `tnsnames.ora` file can be specified using `TNS_ADMIN`
 <File name="tnsnames.ora">
 
 ```text
-db2022adb_high = (description = 
+db2022adb_high = (description =
                  (retry_count=20)(retry_delay=3)
                  (address=(protocol=tcps)
                  (port=1522)
@@ -495,4 +499,3 @@ dbt_test:
 
 ## Not Supported features
 - Ephemeral materialization
-
