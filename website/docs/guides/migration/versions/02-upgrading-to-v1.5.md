@@ -37,6 +37,7 @@ Wherever possible, we will provide backward compatibility and deprecation warnin
 Changes planned for v1.5:
 - Renaming ["global configs"](global-configs) for consistency ([dbt-core#6903](https://github.com/dbt-labs/dbt-core/issues/6903))
 - Moving `log-path` and `target-path` out of `dbt_project.yml` for consistency with other global configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882))
+- As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
 ### For consumers of dbt artifacts (metadata)
 
