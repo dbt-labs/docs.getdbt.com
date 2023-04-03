@@ -441,6 +441,7 @@ const sidebarSettings = {
         "reference/resource-configs/vertica-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
+        "reference/resource-configs/oracle-configs",
       ],
     },
     {
@@ -929,6 +930,7 @@ const sidebarSettings = {
           items: [
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+            "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
