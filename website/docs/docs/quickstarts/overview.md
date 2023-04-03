@@ -43,6 +43,12 @@ Before you begin, you will need:
     icon="snowflake"/>
 
 <Card
+    title="Quickstart for dbt Cloud and Starburst Galaxy"
+    body="Learn how to connect Starburst Galaxy to your data lake and use it to create tables with the data there. Then, learn how you can transform your tables into models using the power of dbt all in a web-based experience."
+    link="/docs/quickstarts/dbt-cloud/starburst-galaxy"
+    icon="starburst"/>
+
+<Card
     title="Quickstart for dbt Core"
     body="When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface."
     link="/docs/quickstarts/dbt-core/quickstart"
