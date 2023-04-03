@@ -77,7 +77,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: False # default: false (available v1.4+)
   ```
 
 </File>
@@ -112,7 +112,7 @@ my-snowflake-db:
       connect_timeout: 10 # default: 10
       retry_on_database_errors: False # default: false
       retry_all: False  # default: false
-      reuse_connections: False # default: false
+      reuse_connections: False # default: false (available v1.4+)
 ```
 
 Along with adding the `authenticator` parameter, be sure to run `alter account set allow_client_mfa_caching = true;` in your Snowflake warehouse. Together, these will allow you to easily verify authenatication with the DUO Mobile app (skipping this results in push notifications for every model built on every `dbt run`).
@@ -157,8 +157,6 @@ my-snowflake-db:
 ### SSO Authentication
 
 To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. `authenticator` can be one of 'externalbrowser' or a valid Okta URL.
-
-<Changelog>New in v0.18.0</Changelog>
 
 **Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication). See [the Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for how to enable this feature in your account.
 
@@ -228,25 +226,21 @@ The `client_session_keep_alive` feature is intended to keep Snowflake sessions a
 
 ### query_tag
 
-<Changelog>New in v0.18.0</Changelog>
-
 [Query tags](https://docs.snowflake.com/en/sql-reference/parameters.html#query-tag) are a Snowflake
 parameter that can be quite useful later on when searching in the [QUERY_HISTORY view](https://docs.snowflake.com/en/sql-reference/account-usage/query_history.html).
 
+<VersionBlock firstVersion="1.4">
 
 ### reuse_connections
 
 During node execution (such as model and test), dbt opens connections against a Snowflake warehouse. Setting this configuration to `True` reduces execution time by verifying credentials only once for each thread.
 
+</VersionBlock>
 
 ### retry_on_database_errors
-
-<Changelog>New in v1.0.0.</Changelog>
 
 The `retry_on_database_errors` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake connector encounters errors of type snowflake.connector.errors.DatabaseError. These retries can be helpful for handling errors of type "JWT token is invalid" when using key pair authentication.
 
 ### retry_all
-
-<Changelog>New in v1.0.0.</Changelog>
 
 The `retry_all` flag along with the `connect_retries` count specification is intended to make retries configurable after the snowflake connector encounters any error.
