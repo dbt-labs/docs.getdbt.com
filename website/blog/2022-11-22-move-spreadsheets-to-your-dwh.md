@@ -53,7 +53,7 @@ A big benefit of using seeds is that your file will be checked into source contr
 
 ## ETL tools
 
-An obvious choice if you have data to load into your warehouse would be your existing [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/) such as Fivetran or Stitch, which I'll dive into in this section. Below is a summary table highlighting the core benefits and drawbacks of certain ETL tooling options for getting spreadsheet data in your data warehouse.
+An obvious choice if you have data to load into your warehouse would be your existing [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/) such as Fivetran or Stitch, which I'll dive into in this section. Below is a summary table highlighting the core benefits and drawbacks of certain <Term id="etl" /> tooling options for getting spreadsheet data in your data warehouse.
 
 ### Summary table
 
