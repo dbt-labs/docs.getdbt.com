@@ -10,9 +10,17 @@ You must use the `git@...` or `ssh:..`. version of your git URL, not the `https:
 
 
 ## Managing Deploy Keys
-After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. You must provide this Deploy Key in the Repository configuration of your Git host. This Deploy Key should be configured to allow *read and write access* to the specified repositories.
 
-**Note**: Each dbt Cloud project will generate a different deploy key when connected to a repo, even if two projects are connected to the same repo. Both deploy keys will need to be supplied to your git provider.
+After importing a project by Git URL, dbt Cloud will generate a Deploy Key for your repository. To find the deploy key in dbt Cloud:
+
+1. Click the cog icon in the upper right-hand corner.
+2. Click **Account Settings** --> **Projects** and select a project.
+3. Click the **Repository** link to the repository details page.
+4. Then copy the key under the **Deploy Key** section. 
+
+You must provide this Deploy Key in the Repository configuration of your Git host. Configure this Deploy Key to allow *read and write access* to the specified repositories.
+
+**Note**: Each dbt Cloud project will generate a different deploy key when connected to a repo, even if two projects are connected to the same repo. You will need to supply both deploy keys to your git provider.
 
 ## GitHub
 
