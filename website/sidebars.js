@@ -441,6 +441,7 @@ const sidebarSettings = {
         "reference/resource-configs/vertica-configs",
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
+        "reference/resource-configs/oracle-configs",
       ],
     },
     {
@@ -793,7 +794,7 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
             "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
-            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",  
           ],
         },
         {
@@ -813,6 +814,7 @@ const sidebarSettings = {
             },
           ],
         },
+        "guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",
       ],
     },
     {
@@ -929,6 +931,8 @@ const sidebarSettings = {
           items: [
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
+            "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
+
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
