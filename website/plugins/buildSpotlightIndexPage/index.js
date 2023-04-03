@@ -1,7 +1,7 @@
 const fs = require('fs')
 const matter = require('gray-matter')
 
-module.exports = function buildSpotlightIndexPagePlugin(context, options) {
+module.exports = function buildSpotlightIndexPagePlugin() {
   return {
     name: 'docusaurus-build-spotlight-index-page-plugin',
     async loadContent() {

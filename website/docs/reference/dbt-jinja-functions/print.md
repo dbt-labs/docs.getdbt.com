@@ -14,5 +14,5 @@ When used in conjunction with the `QUIET` global config, which suppresses non-er
 ```sql
   {% macro some_macro(arg1, arg2) %}
     {{ print("Running some_macro: " ~ arg1 ~ ", " ~ arg2) }}
-  {% endmacro %}"
+  {% endmacro %}
 ```

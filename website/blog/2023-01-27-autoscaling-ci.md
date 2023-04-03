@@ -128,7 +128,7 @@ jobs:
 
       - name: Trigger Autoscaling CI Job
         run: |
-          pip install dbtc==0.3.3
+          pip install dbtc
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
           dbtc trigger-autoscaling-ci-job \
             --job-id=$JOB_ID \
