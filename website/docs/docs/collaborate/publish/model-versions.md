@@ -51,7 +51,7 @@ models:
 
 </File>
 
-If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (e.g. SQL file) encompassing those breaking changes. The default convention is to name the new file would with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
+If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (for example, SQL file) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
 
 <File name="models/schema.yml">
 
