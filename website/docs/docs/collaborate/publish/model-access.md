@@ -38,10 +38,6 @@ By default, all models are `protected`. This means that other models in the same
 
 However, it is recommended to set the access modifier of a new model to `private` to prevent other project resources from taking dependencies on models not intentionally designed for sharing across groups.
 
-:::info Under construction 🚧
-The following syntax is currently under review and does not work.
-:::
-
 <File name="models/marts/customers.yml">
 
 ```yaml
