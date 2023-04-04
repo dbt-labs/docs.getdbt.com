@@ -38,6 +38,9 @@ Changes planned for v1.5:
 - Renaming ["global configs"](global-configs) for consistency ([dbt-core#6903](https://github.com/dbt-labs/dbt-core/issues/6903))
 - Moving `log-path` and `target-path` out of `dbt_project.yml` for consistency with other global configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882))
 - As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
+- `dbt list` will no longer suppress `INFO` level logs. To pipe the results of dbt list to a file or another process, and exclude unrelated log messages from the output, you can use either of the following flags:
+    - `dbt --log-level warn ls` &mdash; equivalent to previous default behavior.
+    - `dbt --quiet ls` &mdash; suppresses anything less than ERROR level, except for "printed" messages.
 
 ### For consumers of dbt artifacts (metadata)
 
