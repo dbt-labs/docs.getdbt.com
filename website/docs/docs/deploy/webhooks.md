@@ -19,6 +19,7 @@ dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each w
 
 ## Prerequisites
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
+- You have a multi-tenant deployment environment setup. For information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy) . 
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
 From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).
