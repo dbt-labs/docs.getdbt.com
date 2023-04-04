@@ -23,7 +23,7 @@ To test a data model, an analyst asserts something to be true about the underlyi
 
 One dbt user has this to say: *“At this point when I have a new question, I can answer it 10-100x faster than I could before.”*  Here’s how:
 
-- dbt allows analysts avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" />: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of <Term id="materialization" />.
+- dbt allows analysts to avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" />: managing transactions, dropping tables, and managing schema changes. All business logic is expressed in SQL `SELECT` statements, and dbt takes care of <Term id="materialization" />.
 - dbt creates leverage. Instead of starting at the raw data with every analysis, analysts instead build up reusable data models that can be referenced in subsequent work.
 - dbt includes optimizations for data model materialization, allowing analysts to dramatically reduce the time their queries take to run.
 
@@ -40,7 +40,7 @@ It does. Here’s how:
 
 # Why SQL?
 
-While there are a large number of great languages for manipulating data, we’ve chosen SQL as the primary data transformation language at the heart of dbt. There are three reasons for this:
+While there are a large number of great languages for manipulating data, we’ve chosen SQL as the primary [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) language at the heart of dbt. There are three reasons for this:
 
 1. SQL is a very widely-known language for working with data. Using SQL gives the largest-possible group of users access.
 2. Modern analytic databases are extremely performant and have sophisticated optimizers. Writing data transformations in SQL allows users to describe transformations on their data but leave the execution plan to the underlying database technology. In practice, this provides excellent results with far less work on the part of the author.

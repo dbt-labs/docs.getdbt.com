@@ -127,6 +127,12 @@ See [configs and properties](configs-and-properties) for details.
 
 </TabItem>
 
+<TabItem value="tests">
+
+You can't add YAML `meta` configs for [generic tests](/docs/build/tests#generic-tests). However, you can add `meta` properties to [singular tests](/docs/build/tests#singular-tests) using `config()` at the top of the test file. 
+
+</TabItem>
+
 <TabItem value="analyses">
 
 The `meta` config is not currently supported for analyses.
@@ -178,12 +184,6 @@ The `meta` field can be used to set metadata for a resource. This metadata is co
 
 Depending on the resource you're configuring, `meta` may be available within the `config` property, or as a top-level key. (For backwards compatibility, `meta` is always supported as a top-level key, though without the capabilities of config inheritance.)
 
-<Changelog>
-
-* `v0.16.0`: This property was introduced
-* `v0.21.0`: Introduced the `config` property, and gave `meta` the capabilities of a config
-
-</Changelog>
 
 ## Examples
 ### Designate a model owner

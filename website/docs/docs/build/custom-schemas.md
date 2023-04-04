@@ -53,7 +53,7 @@ models:
 ## Understanding custom schemas
 
 ### Why does dbt concatenate the custom schema to the target schema?
-When first using custom schemas, it's common to assume that a model will be built in schema that matches the `schema` configuration exactly, for example, a model that has the configuration `schema: marketing`, would be built in the `marketing` schema. However, dbt instead creates it in a schema like `<target_schema>_marketing` by default – there's good reason for this!
+When first using custom schemas, it's common to assume that a model will be built in a schema that matches the `schema` configuration exactly, for example, a model that has the configuration `schema: marketing`, would be built in the `marketing` schema. However, dbt instead creates it in a schema like `<target_schema>_marketing` by default – there's a good reason for this!
 
 In a typical setup of dbt, each dbt user will use a separate target schema (see [Managing Environments](/docs/build/custom-schemas#managing-environments)). If dbt created models in a schema that matches a model's custom schema exactly, every dbt user would create models in the same schema.
 
@@ -156,9 +156,9 @@ Globally-scoped variables and variables defined on the command line with
 
 In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
-* **ci**:  A [continuous integration](/docs/collaborate/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
+* **ci**:  A [continuous integration](/docs/cloud/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
  - **prod**: The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 
-For more information, consult the [Managing environments](/docs/collaborate/environments) guide.
+For more information, consult the [managing environments in dbt Core](/docs/collaborate/environments/dbt-core-environments) guide.

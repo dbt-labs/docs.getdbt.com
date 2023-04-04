@@ -17,6 +17,7 @@ Optionally specify a custom directory where dbt will write logs.
 By default, dbt will write to the `logs` directory, i.e. `log-path: logs`
 
 <VersionBlock firstVersion="1.2">
+
 ## Configuration
 
 In the manner of a ["global" config](global-configs), the log path can be set in three places:
@@ -24,7 +25,23 @@ In the manner of a ["global" config](global-configs), the log path can be set in
 2. `DBT_LOG_PATH` environment variable
 3. `log-path` in `dbt_project.yml`
 
+<VersionBlock firstVersion="1.5">
+
+:::warning Feature deprecation
+
+As of dbt version 1.5, setting the `log-path` in the `dbt_project.yml` is deprecated. Backward compatibility is still supported in 1.5 but will be removed in a future update. Migrate to the CLI flag or environment variable methods to avoid potential errors or disruptions.
+
+:::
+
+The precedence order is: CLI flag > env var > `dbt_project.yml(deprecated)`
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.4">
+
 The precedence order is: CLI flag > env var > `dbt_project.yml`
+
+</VersionBlock>
 
 </VersionBlock>
 

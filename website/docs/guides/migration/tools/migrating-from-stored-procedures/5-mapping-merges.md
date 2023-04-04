@@ -9,7 +9,7 @@ dbt has a concept called [materialization](/docs/build/materializations), which 
 
 Before we get into the exact details of how to implement an incremental materialization, let’s talk about logic conversion. Extracting the logic of the `MERGE` and handling it as you would an `INSERT` or an `UPDATE` is the easiest way to get started migrating a `MERGE` command. .
 
-To see how the logic conversion works, we’ll start with an example `MERGE`. In this scenario, imagine a ride sharing app where rides are loaded into an details table daily, and tips may be updated at some later date, and need to be kept up-to-date:
+To see how the logic conversion works, we’ll start with an example `MERGE`. In this scenario, imagine a ride sharing app where rides are loaded into a details table daily, and tips may be updated at some later date, and need to be kept up-to-date:
 
 ```sql
 MERGE INTO ride_details USING (
@@ -69,7 +69,7 @@ inserts AS (
     SELECT
         ride_id,
         subtotal,
-        NVL(rtl.tip, 0, rtl.tip)
+        NVL(tip, 0, tip)
 
     FROM using_clause
 

@@ -24,7 +24,7 @@ function Author(props) {
   )
 
   return (
-    <BlogLayout blogPageTitle={name}>
+    <BlogLayout title={name}>
       <Head>
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />
@@ -53,6 +53,7 @@ function Author(props) {
                     href={link.url} 
                     title={`${name} - Social`} 
                     target="_blank"
+                    rel="noopener noreferrer"
                     key={i}
                   >
                     <i className={`fab ${link.icon}`}></i>
@@ -75,13 +76,13 @@ function Author(props) {
 }
 
 // Author Posts component
-function AuthorPosts({posts, siteImg}) {
+function AuthorPosts({posts}) {
   return (
     <section className="author-posts-section">
       <h2>Author Posts</h2>
       <div className="row author-posts">
         {posts.map((post, i) => {
-          const { authors, date, formattedDate, permalink, title, description } = post
+          const { permalink, title, description } = post
           return (
             <div className="author-post" key={i}>
               <Link to={permalink}>

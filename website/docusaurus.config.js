@@ -1,7 +1,7 @@
 const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const { versions, versionedPages } = require("./dbt-versions");
+const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Debugging */
@@ -44,10 +44,15 @@ var siteSettings = {
   tagline: "End user documentation, guides and technical reference for dbt",
   title: "dbt Developer Hub",
   url: SITE_URL,
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   themeConfig: {
+    docs:{
+      sidebar: {
+        hideable: true,
+      },
+    },
     image: "/img/avatar.png",
     colorMode: {
       defaultMode: "light",
@@ -63,15 +68,18 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "live_qa",
+      id: "staging",
       content:
-        "Take the 5-minute dbt Community Survey!",
+        "See what's new in dbt — join us at Staging on April 26!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.surveymonkey.com/r/XP2N8Z3",
+    announcementBarLink: "https://www.getdbt.com/resources/staging-april-2023/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2024_staging_ex&utm_content=staging____&utm_term=knowledge-builder_all__",
+    // Set community spotlight member on homepage
+    // This is the ID for a specific file under docs/community/spotlight
+    communitySpotlightMember: "",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -154,6 +162,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
+            // {
+            //   label: "Spotlight",
+            //   to: "/community/spotlight",
+            // },
           ],
         },
         {
@@ -184,7 +196,7 @@ var siteSettings = {
         },
       ],
 
-      copyright: `Copyright © ${new Date().getFullYear()} dbt Labs™, Inc. All Rights Reserved.`,
+      copyright: `&copy; ${new Date().getFullYear()} dbt Labs, Inc. All Rights Reserved.`,
     },
   },
   presets: [
@@ -226,8 +238,10 @@ var siteSettings = {
     [path.resolve("plugins/insertMetaTags"), { metatags }],
     path.resolve("plugins/svg"),
     path.resolve("plugins/customWebpackConfig"),
-    [path.resolve("plugins/buildGlobalData"), { versionedPages }],
+    [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
+    // path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [
     {

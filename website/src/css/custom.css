@@ -99,7 +99,6 @@ html[data-theme="dark"] {
 
   /* admonition icon */
   --ifm-color-info-contrast-foreground: var(--ifm-color-gray-900);
-
   --ifm-table-cell-color: var(--color-green-blue);
 }
 
@@ -149,12 +148,17 @@ html[data-theme="dark"] .api-content table td p {
   color: var(--color-orange);
 }
 
+
+html[data-theme="dark"] details table td {
+  color: inherit;
+}
+
 table td {
   vertical-align: top;
 }
 
 html[data-theme="dark"] table td {
-  filter: brightness(1.25);
+  filter: brightness(1.5);
   color: white;
 }
 
@@ -320,6 +324,16 @@ a.code-link:hover {
 .navbar-sidebar .menu__link.nav-create-account {
   color: var(--color-white);
   border: none;
+}
+
+.navbarHiddenOnLoad {
+  transform: translate3d(0, calc(-100% - 2px), 0)
+}
+
+@media(max-width: 996px) {
+  .navbar-sidebar .menu__link.nav-create-account {
+    width: fit-content;
+  }
 }
 
 .navbar-sidebar .menu__link.nav-create-account:hover {
@@ -504,7 +518,6 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 /* set < icon to right side */
 .menu__list-item-collapsible {
   flex-direction: row;
-  background-color: transparent;
 }
 
 .menu__list-item-collapsible button {
@@ -646,6 +659,16 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   --ifm-alert-background-color: var(--ifm-color-warning-light);
   --ifm-alert-border-color: var(--ifm-color-warning);
   color: var(--ifm-color-gray-900);
+}
+
+html[data-theme="dark"] .alert * {
+  --ifm-alert-foreground-color: var(--ifm-color-gray-900);
+}
+
+html[data-theme="dark"] .alert table {
+  background-color: black;
+  color: white;
+  border-radius: var(--ifm-code-border-radius);
 }
 
 /* for dark mode */
@@ -847,6 +870,9 @@ td,
   font-size: 1.125rem;
   line-height: 1.5;
 }
+.faqs > div {
+  margin: 1em 0;
+}
 .pagination-nav__link {
   font-size: 1rem;
 }
@@ -953,6 +979,11 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
   line-height: 1.25;
 }
 
+/* BlogPostItem header h2 size */
+article[itemprop="blogPost"] h2 {
+  font-size: 2rem;
+}
+
 /* footer styles */
 .footer {
   font-weight: var(--ifm-font-weight-narrow);
@@ -1028,7 +1059,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 
 @media (min-width: 997px) and (max-width: 2560px) {
-  .container > .row .col {
+  .container > .row > .col {
     padding-left: 2.5rem;
   }
   /* for non row divs like on /category/adapter-development  */
@@ -1162,7 +1193,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
     max-width: inherit;
   }
 
-  html.docs-version-current .navbar__brand {
+  .dbt__brand {
     background-color: var(--ifm-background-color);
     border-right: 1px solid var(--ifm-toc-border-color);
   }
@@ -1173,7 +1204,7 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 }
 
 @media (min-width: 997px) {
-  html.docs-version-current .navbar__brand {
+  .dbt__brand {
     padding: 0 var(--ifm-navbar-padding-horizontal) 0 0;
     min-height: var(--ifm-navbar-height);
     max-height: var(--ifm-navbar-height);
@@ -1473,6 +1504,10 @@ html[data-theme="dark"] .breadcrumbs__item--active .breadcrumbs__link {
 .docs-cta .docs-cta-btn:hover {
   background: var(--ifm-menu-color-active);
 }
+/* CTA dark-mode styles */
+[data-theme='dark'] .docs-cta {
+  background: var(--ifm-navbar-background-color);
+}
 
 @media (max-width: 996px) {
   .docs-cta {
@@ -1578,12 +1613,20 @@ section.discourse-forum-page {
 .home section {
   margin: 6.25rem auto 6.25rem;
   max-width: var(--ifm-container-width-xl);
-  padding: 0 var(--ifm-spacing-horizontal);
+  padding: 0 50px;
 }
 
 .home section.from-the-blog {
   margin-bottom: 0;
 }
+
+@media (max-width: 995px) {
+  .home section.from-the-blog {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .home section.from-the-community {
   margin-top: 0;
 
@@ -1595,8 +1638,11 @@ section.discourse-forum-page {
 
 @media (max-width: 995px) {
   .home .resource-section  h2 {
-    text-align: center;
     margin: 2rem inherit;
+  }
+
+  .home h2 {
+    text-align: center;
   }
 }
 
@@ -1615,12 +1661,25 @@ section > h2:not(.resource-section) {
     "popResources";
 }
 
+.home .resource-section.has-spotlight-member {
+  grid-template-areas:
+    "popH2"
+    "popResources"
+    "featH2"
+    "featResource";
+}
+
 @media (min-width: 996px) {
   .home .resource-section {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 25px;
-    column-gap: calc(var(--ifm-spacing-horizontal) * 4);
+    column-gap: calc(var(--ifm-spacing-horizontal) * 2);
+    grid-template-areas:
+      "popH2 featH2"
+      "popResources  featResource";
+  }
+  .home .resource-section.has-spotlight-member {
     grid-template-areas:
       "popH2 featH2"
       "popResources  featResource";
@@ -1673,7 +1732,7 @@ section > h2:not(.resource-section) {
   padding-right: 3rem;
   padding-left: 3rem;
   padding-top: 0rem;
-  padding-bottom: 6.25rem;
+  padding-bottom:  6.25rem;
   margin-bottom: 0;
 }
 
@@ -1692,6 +1751,13 @@ section > h2:not(.resource-section) {
 /* Community Home styles */
 .community-home section {
   margin: calc(5vh) auto calc(2vh);
+  max-width: var(--ifm-container-width-xl);
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
+/* Report a Problem page styles */
+.report-a-problem {
+  margin: 0 auto;
   max-width: var(--ifm-container-width-xl);
   padding: 0 var(--ifm-spacing-horizontal);
 }
@@ -1726,4 +1792,29 @@ section > h2:not(.resource-section) {
 
 .justify-content-center {
   justify-content: center !important;
+}
+
+/* Community Spotlight Page */
+#spotlight-members-section {
+  padding: 3rem 0;
+}
+.community-spotlight-hero p {
+  font-size: 1.25rem;
+}
+
+/* Sidebar collapse button */
+.theme-doc-sidebar-container>div>button.button {
+  background-color: var(--ifm-font-color-base-inverse);
+}
+
+.theme-doc-sidebar-container>div>button.button:hover {
+  background-color: var(--color-off-white);
+}
+
+html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button {
+  background-color: #1C1C1D;
+}
+
+html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
+  background-color: #383839;
 }

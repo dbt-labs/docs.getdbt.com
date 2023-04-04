@@ -5,6 +5,9 @@ Welcome to the content style guide for docs.getdbt.com! We aim to provide docs t
 This guide includes standards we want to emphasize, likely because we've made deliberate decisions about them. You can refer to [_The Microsoft Writing Style Guide_](https://docs.microsoft.com/en-us/style-guide/welcome/) and the [_Chicago Manual of Style_](https://www.chicagomanualofstyle.org/home.html) for those nagging questions like, "[Should I use an Em dash, En dash or hyphen?](https://docs.microsoft.com/en-us/style-guide/punctuation/dashes-hyphens/)"
 
 ### Table of Contents
+* [Folder Structure and TOC](#folder-structure-and-toc)
+* [Filenaming](#filenaming)
+* [Using Markdown](#using-markdown)
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
@@ -18,11 +21,69 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Images](#Images)
 * [Talk to us](#Talk-to-us)
 
+## Folder Structure and TOC
+
+The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository is organized into several high-level categories under the main `website` folder such as `blog`, `cypress`, `docs`, `functions`, `plugins`, `snippets`, `src`, `static`, and so on.
+
+The left sidebar (leftbar) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. Editing the `sidebar.js` file can cause merge conflicts as it's updated often because content is being worked on daily. You will need to accept the changes from other contributors if you are committing a PR.
+
+Don't worry if you're not sure where in the leftbar a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
+
+The right sidebar (rightbar), also known as the page TOC, is created automatically for all the H2 and H3 headings on a page. For details, see [Headings and Table of contents](https://docusaurus.io/docs/markdown-features/toc) in Docusaurus. 
+
+## Filenaming
+
+If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository, review the following file name guidance and examples: 
+
+- Keep the file name as short as possible since it becomes part of the URL and leave out any unnecessary words. Long URLs are hard to read and prone to errors.
+- Think about where you want to locate the file in the leftbar. This will help catch and avoid redundancy. Remain consistent with the surrounding leftbar items.
+- Be as descriptive as possible so readers have an idea as to what they’re about to read.
+
+| ✅ Use | ❌ Avoid|
+|:-------:|:-------:|
+|`/docs/cloud/about-cloud/architecture` | `/docs/deploy/how-we-think-about-architecture`|
+
+
+## Using Markdown
+
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax [document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the following table: 
+
+| Element                                     | Syntax                                                |
+|---------------------------------------------|-------------------------------------------------------|
+| Link - external site                        | `[Title](https://www.example.com)`                    |
+| Link - topic in same folder                 | `[Title](/folder/file-name) without file extension`*   |
+| Link - topic in different folder            | `[Title](/folder/file-name) without file extension`*   |
+| Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`*             |
+| Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`*            |
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`|
+
+*docs.getdbt.com uses specific folders when linking to topics or sections. A successful link syntax begins with one of the following folder paths:
+
+- `/docs` 
+- `/guides` 
+- `/references`
+
+**Example**
+
+:white_check_mark: `[Title](/guides/file-name)` 
+
+:x: `[Title](/blog/file-name)` 
+
 ## Callouts
 
 Callouts highlight important or high-value information that readers need to know. We want callouts to stand out, so we should keep their content to a minimum, avoiding general information, permissions, or prerequisites. Too much information can make it difficult to absorb. Imagine driving down one block with five stop signs!?!
 
-Use callouts sparingly for high-value information &mdash; avoid including general information, permissions, or prerequisites in callouts.
+If you add text after the first code, like this `:::note This is a note title`, it shows up as a title for the note.
+
+Callout formats include:
+
+| Types of callouts | Callout formats |
+| ---- | ------ |
+| Note callouts are used for notices| ```:::note``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Info callouts are used to highlight info |```:::info``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Tip callouts are used for tips |```:::tip``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Caution callouts are used for warnings/considerations |```:::caution``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+
 
 ## Text formatting
 You consider many elements when designing technical docs, and the way you format text can help you achieve a well-articulated design. With consistency of use, well-formatted text creates a single voice when there are multiple authors/contributors, increases the readability of the content, and further establishes an organization's branding.
@@ -278,6 +339,48 @@ A table following an H3 heading:
 > | `-file` | Print output to file instead of stdout. | Name of the file. |
 
 ## Word choice & terminology
+Use active voice instead of passive. Active voice is clearer and more direct, making it easier to translate. 
+
+✅ Use: The contributor writes the documentation.
+
+❌ Avoid: The documentation is written by contributors.
+
+### Active voice
+
+Use the active voice most of the time. Use the passive voice sparingly. 
+
+- Passive voice: _Files are added by developers._
+- Active voice: _Developers add files._
+
+Active voice provides the following advantages:
+
+- Active voice is generally shorter than passive voice.
+- Active voice is easier for users to understand and often results in shorter content.
+- Most readers mentally convert passive voice to active voice. Why subjects readers to extra processing time? By sticking to active voice, you enable readers to skip the preprocessor stage and go straight to compilation.
+- Passive voice confuses your ideas and reports action indirectly.
+- Some passive voice sentences omit an actor altogether, which forces the reader to guess the actor's identity.
+
+
+Sometimes, using passive voice is appropriate. Make sure it’s an intentional choice that communicates the idea clearer than active voice would. For example, when the system is the actor, rather than a person.
+
+
+✅ Use |	❌ Avoid
+--- | ---|
+(Active voice) Ask someone with access to dbt Cloud to transform the data. | This data transformation can be done by someone with access to dbt Cloud. |
+(Passive voice &mdash; exceptions) The open-sourced rpc plugin is used by the Cloud IDE to recompile changes made in your project. |  We are using the open-sourced rpc plugin for the Cloud IDE to recompile changes made in your project. |
+
+### Spelling
+
+In general, when the spelling of English words varies by locale &mdash; use the US spelling. For example:
+
+✅ Use | ❌ Avoid
+-- | --
+standardize  | standardise 
+license | licence
+color | colour
+</div></b>
+
+Avoid regional idiomatic phrases as well.  For example, a common saying amongst English speakers in India is "do the needful," but this phrase may be unrecognizable to English speakers from other regions. 
 
 ### Abbreviations
 
@@ -304,7 +407,6 @@ Some common Latin abbreviations and other words to use instead:
 | e.g.               | <ul><li>for example</li><li>like</li></ul> | <ul><li>Join both the dedicated #adapter-ecosystem channel in dbt Slack and the channel for your adapter's data store (for example, #db-sqlserver and #db-athena)</li><li>Using Jinja in SQL provides a way to use control structures (like `if` statements and `for` loops) in your queries </li></ul> |
 | etc.               | <ul><li>and more</li><li>and so forth</li></ul> | <ul><li>A continuous integration environment running pull requests in GitHub, GitLab, and more</li><li>While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, and so forth), you might need to override one or more macros when building a new adapter</li></ul> |
 
-
 ### Prepositions
 
 Avoid ending a sentence with a preposition unless the rewritten sentence would sound awkward or too formal.
@@ -315,7 +417,7 @@ Product names, trademarks, services, and tools should be written as proper nouns
 
 ### Terms to use or avoid
 
-Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style.
+Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style. 
 
 **DO NOT** use jargon or language familiar to a small subset of readers or assume that your readers understand ALL technical terms.
 
@@ -347,6 +449,11 @@ Hyperlinks should be text only, please avoid image-based links. The text should 
   :x: For more information, [_Click Here_](https://docs.getdbt.com/)
 
   ✅ For more information, visit the [_dbt Labs doc site_](https://docs.getdbt.com/).
+  
+  ✅ For more information, read the [_dbt Labs doc site_](https://docs.getdbt.com/).
+  
+  ✅ For more information, refer to the [_dbt Labs doc site_](https://docs.getdbt.com/).
+
 
 ### Link destinations
 
@@ -398,11 +505,16 @@ Both macOS and Windows include tools that allow you to capture and manipulate sc
 
 #### Screenshot guidelines
 
-Once you have determined that a screenshot will add value to the document where words alone can't, refer to these guidelines for capturing the information:
+Once you have determined that a screenshot will add value to the document where words alone can't, use the [Lightbox component](/contributing/lightbox) and the following guidelines to capture the information:
 
 * Use screenshots to highlight navigation, on-screen elements, and other noteworthy product visuals.
 * Avoid using screenshots to demonstrate inputs and outputs. All code snippets and sample results should be in the documents as text fields.
+* Add images are under the `static` -> `img` folder.
 * Use concise filenames that are relevant to the content contained within. Enumerate them if they are part of a sequence.
+* Use JPEG format, which renders a better quality and lossless compression. JPEG format has a white background and is accessible in light and dark mode. 
+* Add *title=""* for all images to write a concise title of the image. For accessibility, it's important to use succinct text that is clear and complete. 
+
+For more information about image-formatting, review the [Lightbox guidance](/contributing/lightbox), and the following examples:
 
   :x: screenshot-august0822.jpg
 

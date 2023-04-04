@@ -5,7 +5,7 @@ id: 2-lint-on-push
 
 This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization. 
 
-The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specfically runs the rules L019, L020, L021, and L022. This is purley for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
+The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specifically runs the rules L019, L020, L021, and L022. This is purely for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
 
 ### 1. Create a yaml file to define your pipeline
 
@@ -16,6 +16,7 @@ The yaml files defined below are what tell your code hosting platform the steps 
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
 <TabItem value="github">
@@ -71,7 +72,7 @@ jobs:
 </TabItem>
 <TabItem value="gitlab">
 
-Create a `.gitlab-ci.yml` file in your **root directory** to define the triggers for when to execute the script above. You’ll put the code below into this file.
+Create a `.gitlab-ci.yml` file in your **root directory** to define the triggers for when to execute the script below. You’ll put the code below into this file.
 
 ```sql
 my_awesome_project
@@ -104,6 +105,42 @@ lint-project:
 ```
 
 </TabItem>
+<TabItem value="bitbucket">
+
+Create a `bitbucket-pipelines.yml` file in your **root directory** to define the triggers for when to execute the script below. You’ll put the code below into this file.
+
+```sql
+my_awesome_project
+├── bitbucket-pipelines.yml
+├── dbt_project.yml
+```
+
+**Key pieces:**
+
+- `image: python:3.11.1` - this defines the virtual image we’re using to run the job
+- `'**':` - this is used to filter when the pipeline runs. In this case we’re telling it to run on every push event, and you can see at line 12 we're creating a dummy pipeline for `master`. More information on filtering when a pipeline is run can be found in [Bitbucket's documentation](https://support.atlassian.com/bitbucket-cloud/docs/pipeline-triggers/)
+- `script:` - this is how we’re telling the Bitbucket runner to execute the Python script we defined above.
+
+```yaml
+image: python:3.11.1
+
+
+pipelines:
+  branches:
+    '**': # this sets a wildcard to run on every branch
+      - step:
+          name: Lint dbt project
+          script:
+            - pip install sqlfluff==0.13.1
+            - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
+
+    'master': # override if your default branch doesn't run on a branch named "master"
+      - step:
+          script:
+            - python --version
+```
+
+</TabItem>
 </Tabs>
 
 ### 2. Commit and push your changes to make sure everything works
@@ -115,6 +152,7 @@ After you finish creating the yaml files, commit and push your code. Doing this 
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
 <TabItem value="github">
@@ -130,13 +168,24 @@ Sample output from SQLFluff in the `Run SQLFluff linter` job:
 </TabItem>
 <TabItem value="gitlab">
 
-In the menu option got to *CI/CD > Pipelines*
+In the menu option go to *CI/CD > Pipelines*
 
 ![Image showing the GitLab action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-gitlab.png)
 
 Sample output from SQLFluff in the `Run SQLFluff linter` job:
 
 ![Image showing the logs in GitLab for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-gitlab.png)
+
+</TabItem>
+<TabItem value="bitbucket">
+
+In the left menu pane, click on *Pipelines*
+
+![Image showing the Bitbucket action for lint on push](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-bitbucket.png)
+
+Sample output from SQLFluff in the `Run SQLFluff linter` job:
+
+![Image showing the logs in Bitbucket for the SQLFluff run](/img/guides/orchestration/custom-cicd-pipelines/lint-on-push-logs-bitbucket.png)
 
 </TabItem>
 </Tabs>

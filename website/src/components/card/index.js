@@ -6,16 +6,20 @@ import { useColorMode } from '@docusaurus/theme-common';
 
 
 function Card({ title, body, link, icon }) {
-  const { isDarkTheme } = useColorMode();
+  const { colorMode } = useColorMode();
+
+  // Set styles for icon if available in styles.module.css
+  let imgClass = styles[icon] || ''
+
   return (
     <div className={styles.cardWrapper}>
       {link ? <Link
         to={useBaseUrl(link)}>
         <article className={styles.card}>
           {icon && <img
-            src={isDarkTheme ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
+            src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
             alt=""
-            className={styles.icon} />}
+            className={`${styles.icon} ${imgClass}`} />}
           <h3>{title}</h3>
           <p>
             {body}
@@ -23,9 +27,9 @@ function Card({ title, body, link, icon }) {
         </article>
       </Link> : <article className={styles.card}>
       {icon && <img
-            src={isDarkTheme ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
+            src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
             alt=""
-            className={styles.icon} />}
+            className={`${styles.icon} ${imgClass}`} />}
         <h3>{title}</h3>
         <p>
           {body}

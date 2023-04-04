@@ -16,9 +16,9 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 :::
 
 ### Use separate development and production environments
-dbt makes it easy to maintain separate production and development environments through the use of target within a profile. We recommend using a `dev` target when running dbt from your command line, and only running against a `prod` target when running from a production deployment. You can read more [about managing environments](/docs/collaborate/environments).
+dbt makes it easy to maintain separate production and development environments through the use of targets within a profile. We recommend using a `dev` target when running dbt from your command line and only running against a `prod` target when running from a production deployment. You can read more [about managing environments here](/docs/collaborate/environments/environments-in-dbt).
 
-### Use a style guide and for your project
+### Use a style guide for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
 
 :::info Our style guide
@@ -57,7 +57,7 @@ All subsequent data models should be built on top of these models, reducing the 
 
 Earlier versions of this documentation recommended implementing “base models” as the first layer of transformation, and gave advice on the SQL within these models. We realized that while the reasons behind this convention were valid, the specific advice around "base models" represented an opinion, so we moved it out of the official documentation.
 
-You can instead find our opinions on how we structure our dbt projects in [this Discourse article](https://discourse.getdbt.com/t/how-we-structure-our-dbt-projects/355).
+You can instead find our opinions on [how we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
 
 :::
 
@@ -119,7 +119,7 @@ which models are modified and build them on top of of their unmodified parents.
 
 ```bash
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
-dbt test -s state:modified+
+dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
 
 <Changelog>New in v1.0.0</Changelog>
@@ -190,7 +190,7 @@ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 </VersionBlock>
 
-To learn more, read the docs on [state](understanding-state).
+To learn more, read the docs on [state](/docs/deploy/about-state).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development

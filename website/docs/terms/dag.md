@@ -16,7 +16,7 @@ While the concept of a DAG originated in mathematics and gained popularity in co
 
 ## DAG use cases and best practices
 
-DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall data transformations.
+DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
 ### Unpacking relationships and data lineage
 
@@ -39,7 +39,7 @@ What can you learn from this DAG? Immediately, you may notice a handful of thing
 - `stg_users`and `stg_user_groups` models are the parent models for `int_users`
 - A join is happening between `stg_users` and `stg_user_groups` to form the `int_users` model
 - `stg_orgs` and `int_users` are the parent models for `dim_users`
-- `dim_users` is a the end of the DAG and is therefore downstream from a total of four different models
+- `dim_users` is at the end of the DAG and is therefore downstream from a total of four different models
 
 Within 10 seconds of looking at this DAG, you can quickly unpack some of the most important elements about a project: dependencies and data lineage. Obviously, this is a simplified version of DAGs you may see in real life, but the practice of identifying relationships and data flows remains very much the same, regardless of the size of the DAG.
 
@@ -79,7 +79,7 @@ Instead of manually auditing your DAG for best practices, the [dbt project evalu
 
 ## dbt and DAGs
 
-The marketing team at dbt Labs would be upset with us if we told you we think dbt actually stood for “dag build tool,” but one of the key elements of dbt is its ability to generate documentation and infer relationships between models. And one of the hallmark features of [dbt Docs](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) is the Lineage Graph (DAG) of your dbt project.
+The marketing team at dbt Labs would be upset with us if we told you we think dbt actually stood for “dag build tool,” but one of the key elements of dbt is its ability to generate documentation and infer relationships between models. And one of the hallmark features of [dbt Docs](https://docs.getdbt.com/docs/collaborate/documentation) is the Lineage Graph (DAG) of your dbt project.
 
 Whether you’re using dbt Core or Cloud, dbt docs and the Lineage Graph are available to all dbt developers. The Lineage Graph in dbt Docs can show a model or source’s entire lineage, all within a visual frame. Clicking within a model, you can view the Lineage Graph and adjust selectors to only show certain models within the DAG. Analyzing the DAG here is a great way to diagnose potential inefficiencies or lack of modularity in your dbt project.
 
@@ -97,7 +97,7 @@ This level of interconnectivity and transparency can help boost data governance 
 
 ## Conclusion
 
-A Directed acyclic graphs (DAG) is a visual representation of your data models and their connection to each other. The key components of a DAG are that nodes (sources/models/exposures) are directionally linked and don’t form acyclic loops. Overall, DAGs are an effective tool for understanding data lineage, dependencies, and areas of improvement in your data models.
+A Directed acyclic graph (DAG) is a visual representation of your data models and their connection to each other. The key components of a DAG are that nodes (sources/models/exposures) are directionally linked and don’t form acyclic loops. Overall, DAGs are an effective tool for understanding data lineage, dependencies, and areas of improvement in your data models.
 
 > *Get started with [dbt today](https://www.getdbt.com/signup/) to start building your own DAG!*
 
@@ -108,4 +108,4 @@ Ready to restructure (or create your first) DAG? Check out some of the resources
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](/docs/get-started/learning-more/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql)
