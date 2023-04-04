@@ -356,6 +356,8 @@ $ dbt --quiet run
 
 ### Suppress `print()` messages in stdout
 
+<VersionBlock lastVersion="1.4">
+
 By default, dbt includes `print()` messages in standard out (stdout). You can use the `NO_PRINT` config to prevent these messages from showing up in stdout.
 
 <File name='profiles.yml'>
@@ -366,6 +368,29 @@ config:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `PRINT` config to prevent these messages from showing up in stdout.
+
+<File name='profiles.yml'>
+
+```yaml
+config:
+  print: false
+```
+
+</File>
+
+:::warning Syntax deprecation
+
+The original `NO_PRINT` syntax has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
+
+:::
+
+</VersionBlock>
 
 Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 

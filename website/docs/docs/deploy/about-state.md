@@ -26,8 +26,25 @@ Together, these two features enable ["slim CI"](best-practices#run-only-modified
 
 State and defer can be set by environment variables as well as CLI flags:
 
+<VersionBlock lastVersion="1.4">
+
 - `--state` or `DBT_ARTIFACT_STATE_PATH`: file path
 - `--defer` or `DBT_DEFER_TO_STATE`: boolean
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+- `--state` or `DBT_STATE`: file path
+- `--defer` or `DBT_DEFER`: boolean
+
+:::warning Syntax deprecated
+
+The original syntax for state (`DBT_ARTIFACT_STATE_PATH`) and defer (`DBT_DEFER_TO_STATE`) have been deprecated in dbt v1.5. Backward compatibility is supported in this version but will be removed in an as-of-yet-undetermined future release.
+
+:::
+
+</VersionBlock>
 
 If both the flag and env var are provided, the flag takes precedence.
 
