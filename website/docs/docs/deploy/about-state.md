@@ -1,5 +1,7 @@
 ---
-title: "About state"
+title: "Project state"
+id: "project-state"
+sidebar: "Project state"
 ---
 
 <Changelog>

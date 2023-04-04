@@ -6,7 +6,7 @@ description: New features and changes in dbt Core v1.0
 
 - [Discourse](https://discourse.getdbt.com/t/3180)
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.0.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/get-started/installation)
+- [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
 ## What to know before upgrading

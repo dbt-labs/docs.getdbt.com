@@ -30,7 +30,6 @@ function dbtEditor({ project, tag }) {
   const [csvData, setCsvData] = useState()
   const [currentSql, setCurrentSql] = useState(defaultEditorValue)
   const [error, setError] = useState(false)
-  const [packageOpen, setPackageOpen] = useState(true)
   const [currentNodeId, setCurrentNodeId] = useState(null);
   const handle = useFullScreenHandle();
   useEffect(() => {
@@ -65,11 +64,15 @@ function dbtEditor({ project, tag }) {
 
   // Get selected node from sidebar
   const handleFileSelect = async (e) => {
+    if(!e?.currentTarget?.dataset) {
+      setError(true)
+      return
+    }
     const { 
       resource_type, 
       node_name, 
       file_name 
-    } = e?.currentTarget?.dataset
+    } = e.currentTarget.dataset
 
     if(!resource_type || !node_name) {
       setError(true)

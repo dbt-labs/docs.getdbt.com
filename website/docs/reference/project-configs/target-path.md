@@ -5,7 +5,7 @@ default_value: target
 <File name='dbt_project.yml'>
 
 ```yml
-target-path: [directorypath]
+target-path: directorypath
 ```
 
 </File>
@@ -27,7 +27,23 @@ In the manner of a ["global" config](global-configs), the target path can be set
 2. `DBT_TARGET_PATH` environment variable
 3. `target-path` in `dbt_project.yml`
 
+<VersionBlock firstVersion="1.5">
+
+:::warning Feature deprecation
+
+As of dbt version 1.5, setting the `target-path` in the `dbt_project.yml` is deprecated. Backward compatibility is still supported in 1.5 but will be removed in a future update. Migrate to the CLI flag or environment variable methods to avoid potential errors or disruptions.
+
+:::
+
+The precedence order is: CLI flag > env var > `dbt_project.yml(deprecated)`
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.4">
+
 The precedence order is: CLI flag > env var > `dbt_project.yml`
+
+</VersionBlock>
 
 </VersionBlock>
 

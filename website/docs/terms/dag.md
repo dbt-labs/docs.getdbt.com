@@ -16,7 +16,7 @@ While the concept of a DAG originated in mathematics and gained popularity in co
 
 ## DAG use cases and best practices
 
-DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall data transformations.
+DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
 ### Unpacking relationships and data lineage
 
@@ -97,7 +97,7 @@ This level of interconnectivity and transparency can help boost data governance 
 
 ## Conclusion
 
-A Directed acyclic graphs (DAG) is a visual representation of your data models and their connection to each other. The key components of a DAG are that nodes (sources/models/exposures) are directionally linked and don’t form acyclic loops. Overall, DAGs are an effective tool for understanding data lineage, dependencies, and areas of improvement in your data models.
+A Directed acyclic graph (DAG) is a visual representation of your data models and their connection to each other. The key components of a DAG are that nodes (sources/models/exposures) are directionally linked and don’t form acyclic loops. Overall, DAGs are an effective tool for understanding data lineage, dependencies, and areas of improvement in your data models.
 
 > *Get started with [dbt today](https://www.getdbt.com/signup/) to start building your own DAG!*
 
@@ -108,4 +108,4 @@ Ready to restructure (or create your first) DAG? Check out some of the resources
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](/docs/get-started/learning-more/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql)

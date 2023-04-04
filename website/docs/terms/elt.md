@@ -1,12 +1,12 @@
 ---
 id: elt
-title: ELT
+title: What is ELT (Extract, Load, Transform)?
 description: ELT is the process of first extraction data from different sources, then loading it into a data warehouse, and finally transforming it.
 displayText: ELT  
 hoverSnippet: Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, loading it into a target data warehouse, and finally transforming it.
 ---
 <head>
-    <title>ELT: What it is and why it's often better than ETL</title>
+    <title>What is ELT (Extract, Load, Transform)? How does it differ from ETL?</title>
 </head>
 Extract, Load, Transform (ELT) is the process of first extracting data from different data sources, then loading it into a target <Term id="data-warehouse" />, and finally transforming it.
 
@@ -61,7 +61,7 @@ Common ways to transform your data include leveraging modern technologies such a
 
 ## ELT vs ETL
 
-The primary difference between the traditional ETL and the modern ELT workflow is when data transformation and loading take place. In ETL workflows, data extracted from data sources is transformed prior to being loaded into target data platforms. Newer ELT workflows have data being transformed after being loaded into the data platform of choice. Why is this such a big deal?
+The primary difference between the traditional ETL and the modern ELT workflow is when [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) and loading take place. In ETL workflows, data extracted from data sources is transformed prior to being loaded into target data platforms. Newer ELT workflows have data being transformed after being loaded into the data platform of choice. Why is this such a big deal?
 
 |  | ELT | ETL |
 |---|---|---|
@@ -81,7 +81,7 @@ Why has ELT adoption grown so quickly in recent years? A few reasons:
 
 You often hear about the benefits of the ELT workflow to data, but you can sometimes forget to talk about the benefits it brings to people. There are a variety of benefits that this workflow brings to the actual data (which we’ll outline in detail below), such as the ability to recreate historical transformations, test data and data models, and more. We'll also want to use this section to emphasize the empowerment the ELT workflow brings to both data team members and business stakeholders.
 
-### Data as code
+### ELT benefit #1: Data as code
 
 Ok we said it earlier: The ELT workflow allows data teams to function like software engineers. But what does this really mean? How does it actually impact your data?
 
@@ -100,7 +100,7 @@ As your business grows, the number of data sources correspondingly increases alo
 
 The ELT workflow capitalizes on transformations occurring last to provide flexibility and software engineering best practices to data transformation. Instead of having to worry about how your extraction scripts scale as your data increases, data can be extracted and loaded automatically with a few clicks.
 
-### Bring the power to the people
+### ELT benefit #2: Bring the power to the people
 
 The ELT workflow opens up a world of opportunity for the people that work on that data, not just the data itself.
 
@@ -122,7 +122,7 @@ As mentioned earlier, the recent development of certain technologies and product
 |---|---|---|---|
 | Fivetran/HVR | E, some T, L | Fivetran is a SaaS company that helps data teams extract, load, and perform some transformation on their data. Fivetran easily integrates with modern data warehouses and dbt. They also offer transformations that leverage dbt Core. | :x: |
 | Stitch by Talend | E, L | Stitch (part of Talend) is another SaaS product that has many data connectors to extract data and load it into data warehouses. | :x: |
-| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create <Term id="data-extraction" /> and load pipelines. | :white_check_mark: |
+| Airbyte | E, L | Airbyte is an open-source and cloud service that allows teams to create data extraction and load pipelines. | :white_check_mark: |
 | Funnel | E, some T, L | Funnel is another product that can extract and load data. Funnel’s data connectors are primarily focused around marketing data sources. | :x: |
 | dbt | T | dbt is the transformation tool that enables data analysts and engineers to transform, test, and document data in the cloud data warehouse. dbt offers both an open-source and cloud-based product. | :white_check_mark: |
 
@@ -136,7 +136,4 @@ Here's some of our favorite content about the ELT workflow:
 
 - [The case for the ELT workflow](https://www.getdbt.com/analytics-engineering/case-for-elt-workflow/)
 - [A love letter to ETL tools](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)
-- [What, exactly, is dbt?](https://blog.getdbt.com/what-exactly-is-dbt/)
-- [What is analytics engineering?](https://www.getdbt.com/what-is-analytics-engineering/)
-- [How Fivetran operationalizes data transformations](https://www.getdbt.com/coalesce-2021/how-fivetran-operationalizes-data-transformations/)
-
+- [What is dbt?](https://getdbt.com/product/what-is-dbt/)

@@ -1,11 +1,11 @@
-import React, {useState, useRef, useEffect, useContext} from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import clsx from 'clsx';
 import {
   isRegexpStringMatch,
   useCollapsible,
   Collapsible,
 } from '@docusaurus/theme-common';
-import {isSamePath, useLocalPathname} from '@docusaurus/theme-common/internal';
+import { isSamePath, useLocalPathname } from '@docusaurus/theme-common/internal';
 import NavbarNavLink from '@theme/NavbarItem/NavbarNavLink';
 import NavbarItem from '@theme/NavbarItem';
 
@@ -19,6 +19,7 @@ import NavbarItem from '@theme/NavbarItem';
 */
 // import VersionsNavbarItem from './VersionsNavItem';
 import VersionContext from '../../stores/VersionContext';
+import { versions } from '../../../dbt-versions'
 
 function isItemActive(item, localPathname) {
   if (isSamePath(item.to, localPathname)) {
@@ -39,7 +40,7 @@ function DropdownNavbarItemDesktop({
   items,
   position,
   className,
-  onClick,
+  onClick, // eslint-disable-line
   versionContext,
   ...props
 }) {
@@ -77,7 +78,7 @@ function DropdownNavbarItemDesktop({
   useEffect(() => {
     setShowVersionDropdown(true)
   }, [showVersionDropdown])
-  
+
   return (
     <div
       ref={dropdownRef}
@@ -100,7 +101,7 @@ function DropdownNavbarItemDesktop({
             setShowDropdown(!showDropdown);
           }
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext?.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label}
       >
         {props.children ?? props.label}
       </NavbarNavLink>
@@ -109,13 +110,15 @@ function DropdownNavbarItemDesktop({
           <React.Fragment key={i}>
             {className === "nav-versioning" ? (
               <li>
-                <a 
-                  className='dropdown__link nav-versioning-dropdown__link' 
+                <a
+                  className='dropdown__link nav-versioning-dropdown__link'
                   onClick={(e) => {
                     handleVersionMenuClick()
-                    versionContext.updateVersion(e)}
-                  } 
-                >{childItemProps.label}</a>
+                    versionContext.updateVersion(e)
+                  }
+                  }
+                >{childItemProps.label}
+                  {versions.find((version) => (childItemProps.label == version.version))?.isPrerelease && " (Beta)"}</a>
               </li>
             ) : (
               <NavbarItem
@@ -130,8 +133,8 @@ function DropdownNavbarItemDesktop({
                         nextNavbarItem instanceof HTMLAnchorElement
                           ? nextNavbarItem
                           : // Next item is another dropdown; focus on the inner
-                            // anchor element instead so there's outline
-                            nextNavbarItem.querySelector('a');
+                          // anchor element instead so there's outline
+                          nextNavbarItem.querySelector('a');
                       targetItem.focus();
                     }
                   }
@@ -150,14 +153,14 @@ function DropdownNavbarItemDesktop({
 function DropdownNavbarItemMobile({
   items,
   className,
-  position, // Need to destructure position from props so that it doesn't get passed on.
+  position, // eslint-disable-line
   onClick,
   versionContext,
   ...props
 }) {
   const localPathname = useLocalPathname();
   const containsActive = containsActiveItems(items, localPathname);
-  const {collapsed, toggleCollapsed, setCollapsed} = useCollapsible({
+  const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
     initialState: () => !containsActive,
   });
   // Expand/collapse if any item active after a navigation
@@ -182,29 +185,33 @@ function DropdownNavbarItemMobile({
           e.preventDefault();
           toggleCollapsed();
         }}
-        label={className === "nav-versioning" ? `v${versionContext.version}` : props.children ?? props.label}
+        label={className === "nav-versioning" ? `v${versionContext.version} ${versionContext.isPrerelease ? "(Beta)" : ""}` : props.children ?? props.label}
       >
         {props.children ?? props.label}
       </NavbarNavLink>
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
-        {items.map((childItemProps, i) => (
-          <NavbarItem
-            mobile
-            isDropdownItem
-            onClick={className === "nav-versioning" 
-              ? (e) => versionContext.updateVersion(e)
-              : onClick
-            }
-            activeClassName="menu__link--active"
-            {...childItemProps}
-            key={i}
-          />
-        ))}
+        {items.map((childItemProps, i) => {
+          childItemProps.label = versions.find((version) => (childItemProps.label == version.version))?.isPrerelease ? `${childItemProps.label} (Beta)` : `${childItemProps.label}`;
+          return (
+            <NavbarItem
+              mobile
+              isDropdownItem
+              onClick={className === "nav-versioning" 
+                ? (e) => versionContext.updateVersion(e)
+                : onClick
+              }
+              activeClassName="menu__link--active"
+              {...childItemProps}
+              key={i}
+            />
+          )
+        } 
+        )}
       </Collapsible>
     </li>
   );
 }
-export default function DropdownNavbarItem({mobile = false, ...props}) {
+export default function DropdownNavbarItem({ mobile = false, ...props }) {
   const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
 
   // dbt Custom

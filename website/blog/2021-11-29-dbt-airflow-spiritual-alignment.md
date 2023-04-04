@@ -55,7 +55,7 @@ Airflow solves those same problems, but in a publicly-verifiable and trusted way
 
 ### From the dbt side
 
-That pipeline above included a plethora of data transformation jobs, built in various ways.
+That pipeline above included a plethora of [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) jobs, built in various ways.
 
 They were often written in naked python scripts that only ran a SQL query + wrote data to BigQuery. These stored procedure-like SQL scripts required:
 
@@ -91,7 +91,7 @@ The common skills needed for implementing any flavor of dbt (Core or Cloud) are:
 
 * SQL: ‘nuff said
 * YAML: required to generate config files for [writing tests on data models](/docs/build/tests)
-* [Jinja](/docs/get-started/learning-more/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
+* [Jinja](/guides/advanced/using-jinja): allows you to write DRY code (using [macros](/docs/build/jinja-macros), for loops, if statements, etc)
 
 YAML + Jinja can be learned pretty quickly, but SQL is the non-negotiable you’ll need to get started.
 
@@ -113,7 +113,7 @@ A couple examples:
 
 If your team’s dbt users are analysts rather than engineers, they still may need to be able to dig into the root cause of a failing dbt [source freshness test](/docs/build/sources).
 
-Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based [ETL tool](https://www.getdbt.com/analytics-engineering/etl-tools-a-love-letter/)), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
+Having your upstream extract + load jobs configured in Airflow means that analysts can pop open the Airflow UI to monitor for issues (as they would a GUI-based <Term id="etl">ETL tool</Term>), rather than opening a ticket or bugging an engineer in Slack. The Airflow UI provides the common interface that analysts need to self-serve, up to the point of action needing to be taken.
 
 ![airflow dashboard](/img/blog/airflow-dbt-dashboard.png "airflow dashboard")
 

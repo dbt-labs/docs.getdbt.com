@@ -27,6 +27,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    database: raw  
+    schema: jaffle_shop  
     tables:
       - name: orders
       - name: customers
@@ -37,6 +39,8 @@ sources:
 ```
 
 </File>
+
+*By default, `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs from the existing schema.
 
 If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
 
@@ -162,7 +166,7 @@ In the `freshness` block, one or both of `warn_after` and `error_after` can be p
 
 Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
 
-These configs are applied hierarchically, so `freshness` and `loaded_at` field values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
+These configs are applied hierarchically, so `freshness` and `loaded_at_field` values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
 ### Checking source freshness
 To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](commands/source)):
@@ -171,7 +175,7 @@ To snapshot freshness information for your sources, use the `dbt source freshnes
 $ dbt source freshness
 ```
 
-Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the logs.
+Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/runs/checking-logs).
 
 ```sql
 select
@@ -185,6 +189,17 @@ The results of this query are used to determine whether the source is fresh or n
 
 <Lightbox src="/img/docs/building-a-dbt-project/snapshot-freshness.png" title="Uh oh! Not everything is as fresh as we'd like!"/>
 
+### Filter
+
+Some databases can have tables where a filter over certain columns are required, in order prevent a full scan of the table, which could be costly. In order to do a freshness check on such tables a `filter` argument can be added to the configuration, e.g. `filter: _etl_loaded_at >= date_sub(current_date(), interval 1 day)`. For the example above, the resulting query would look like
+
+```sql
+select
+  max(_etl_loaded_at) as max_loaded_at,
+  convert_timezone('UTC', current_timestamp()) as snapshotted_at
+from raw.jaffle_shop.orders
+where _etl_loaded_at >= date_sub(current_date(), interval 1 day)
+```
 
 ### FAQs
 <FAQ src="Project/exclude-table-from-freshness" />

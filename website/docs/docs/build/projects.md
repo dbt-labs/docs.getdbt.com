@@ -52,11 +52,31 @@ Edit `dbt_project.yml` to set up common project configurations such as:
 
 For complete details on project configurations, see [dbt_project.yml](/reference/dbt_project.yml).
 
+## Project subdirectories
+
+You can use the Project subdirectory option in dbt Cloud to specify a subdirectory in your git repository that dbt should use as the root directory for your project. This is helpful when you have multiple dbt projects in one repository or when you want to organize your dbt project files into subdirectories for easier management.
+
+To use the Project subdirectory option in dbt Cloud, follow these steps:
+
+1. Click on the cog icon on the upper right side of the page and click on **Account Settings**.
+
+2. Under **Projects**, select the project you want to configure as a project subdirectory.
+
+3. Select **Edit** on the lower right-hand corner of the page.
+
+4. In the **Project subdirectory** field, add the name of the subdirectory. For example, if your dbt project files are located in a subdirectory called `<repository>/finance`, you would enter `finance` as the subdirectory. 
+
+    * You can also reference nested subdirectories. For example, if your dbt project files are located in `<repository>/teams/finance`, you would enter `teams/finance` as the subdirectory. **Note**: You do not need a leading or trailing `/` in the Project subdirectory field. 
+
+5. Click **Save** when you've finished.
+
+After configuring the Project subdirectory option, dbt Cloud will use it as the root directory for your dbt project. This means that dbt commands, such as `dbt run` or `dbt test`, will operate on files within the specified subdirectory. If there is no `dbt_project.yml` file in the Project subdirectory, you will be prompted to initialize the dbt project.
+
 ## New projects
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/quickstarts/overview) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
 During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 
@@ -66,7 +86,8 @@ If you want to explore dbt projects more in-depth, you can clone dbt Lab’s [Ja
 
 If you want to see what a mature, production project looks like, check out the [GitLab Data Team public repo](https://gitlab.com/gitlab-data/analytics/-/tree/master/transform/snowflake-dbt).
 
+
 ## Related docs
-- [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
-* [Get started with dbt Cloud](/docs/get-started/getting-started/set-up-dbt-cloud)
-* [Get started with dbt Core](/docs/get-started/getting-started-dbt-core)
+* [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
+* [Quickstarts for dbt Cloud](/docs/quickstarts/overview)
+* [Quickstart for dbt Core](/docs/quickstarts/dbt-core/quickstart)
