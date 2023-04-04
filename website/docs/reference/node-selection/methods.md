@@ -254,7 +254,7 @@ The `group` method is used to select models defined within a group.
 ### The "wildcard" method
 <VersionBlock lastVersion="1.4">
 
-[Supported in v1.5 or newer.](/docs/reference/node-selection/methods?version=1.5)
+[Supported in v1.5 or newer.](/reference/node-selection/methods?version=1.5#the-wildcard-method)
 
 </VersionBlock>
 
