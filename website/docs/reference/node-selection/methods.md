@@ -203,13 +203,13 @@ $ dbt seed --select result:error # run all seeds that generated errors on the pr
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 
-Only supported in v1.1 or newer.
+Supported in v1.1 or newer.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1">
 
-Only supported in v1.1 or newer.
+Supported in v1.1 or newer.
 
 :::caution Experimental functionality
 The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
