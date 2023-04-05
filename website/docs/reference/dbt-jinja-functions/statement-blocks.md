@@ -6,7 +6,7 @@ description: "SQL queries that hit database and return results to your jinja con
 
 :::tip Recommendation
 
-We recommend using the `[run_query](/reference/dbt-jinja-functions/run_query)` macro instead of `statement` blocks. The `run_query` macro provides a more convenient way to run queries and fetch their results by wrapping `statement` blocks. You can use this macro to write more concise code that is easier to maintain.
+We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_query) instead of `statement` blocks. The `run_query` macro provides a more convenient way to run queries and fetch their results by wrapping `statement` blocks. You can use this macro to write more concise code that is easier to maintain.
 
 :::
 
