@@ -65,7 +65,7 @@ store.set('TABLEAU_API_TOKEN_SECRET', 'abc123') #replace with your Tableau API S
 ```
 Test the step. You can delete this Action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.
 
-### 4. Add a code action
+### 5. Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
