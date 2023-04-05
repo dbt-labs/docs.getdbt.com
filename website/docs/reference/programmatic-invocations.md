@@ -2,7 +2,7 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, dbt-core added support for a first-ever Python API for programmatic invocations. The intent of this API is provide **exact parity** with CLI functionality, callable from within a Python script or application.
+In v1.5, dbt-core added support for a first-ever Python API for programmatic invocations. The intent of this API is to provide **exact parity** with CLI functionality, callable from within a Python script or application.
 
 The entry point is a `dbtRunner` class that wraps around the `dbt-core` CLI and allows you to "invoke" CLI commands as Python methods. Each command returns a tuple of:
 - `results` (return type depends on command)
