@@ -49,8 +49,9 @@ This guide assumes the names for the secret keys are: `DBT_WEBHOOK_KEY`, `TABLEA
 
 This guide uses a short-lived code action to store the secrets, but you can also use a tool like Postman to interact with the [REST API](https://store.zapier.com/) or create a separate Zap and call the [Set Value Action](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps#3-set-a-value-in-your-store-0-3).
 
-#### a. Create a Storage by Zapier connection
-If you haven't already got one, go to <https://zapier.com/app/connections/storage> and create a new connection. Remember the UUID secret you generate for later. 
+#### a. Create a Storage by Zapier connection 
+
+Create a new connection at https://zapier.com/app/connections/storage if you don't already have one and remember the UUID secret you generate for later.
 
 #### b. Add a temporary code step
 Choose **Run Python** as the Event. Run the following code: 
