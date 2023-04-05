@@ -32,9 +32,9 @@ Press **Continue**, then copy the webhook URL.
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
 ### 3. Configure a new webhook in dbt Cloud
-See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain any jobs whose completion should trigger a report refresh.
+To set up a webhook subscription for dbt Cloud, follow the instructions in [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription). For the event, choose **Run completed** and modify the **Jobs** list to include only the jobs that should trigger a report refresh.
 
-Make note of the Webhook Secret Key for later.  Paste in the webhook URL obtained from Zapier in step 2 into the "Endpoint" field and test the endpoint.
+Remember to save the Webhook Secret Key for later. Paste in the webhook URL obtained from Zapier in step 2 into the **Endpoint** field and test the endpoint.
 
 Once you've tested the endpoint in dbt Cloud, go back to Zapier and click **Test Trigger**, which will create a sample webhook body based on the test event dbt Cloud sent.
 
