@@ -40,7 +40,7 @@ State and defer can be set by environment variables as well as CLI flags:
 
 :::warning Syntax deprecated
 
-The original syntax for state (`DBT_ARTIFACT_STATE_PATH`) and defer (`DBT_DEFER_TO_STATE`) have been deprecated in dbt v1.5. Backward compatibility is supported in this version but will be removed in an as-of-yet-undetermined future release.
+In dbt v1.5, we deprecated the original syntax for state (`DBT_ARTIFACT_STATE_PATH`) and defer (`DBT_DEFER_TO_STATE`). Although dbt supports backward compatibility with the old syntax, we will remove it in a future release that we have not yet determined.
 
 :::
 
