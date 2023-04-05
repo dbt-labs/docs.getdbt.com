@@ -159,4 +159,4 @@ return {"message": "Workbook refresh has been queued"}
 ```
 
 ### 6. Test and deploy
-You can iterate on the Code step by modifying the code and then running the test again. When you're happy with it, you can publish your Zap.
+To make changes to your code, you can modify it and test it again. When you're happy with it, you can publish your Zap.
