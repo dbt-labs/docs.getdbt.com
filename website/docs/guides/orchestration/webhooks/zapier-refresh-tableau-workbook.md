@@ -74,7 +74,7 @@ In the **Set up action** area, add two items to **Input Data**: `raw_body` and `
 
 In the **Code** field, paste the following code, replacing `YOUR_STORAGE_SECRET_HERE` in the StoreClient constructor with the UUID secret you created when setting up the Storage by Zapier integration, and replacing the `workbook_name` and `api_version` variables to actual values.
 
-The code below will validate the authenticity of the request then obtain the workbook ID for the specified workbook name.  Next, the code will send a [`update workbook` command to the Tableau API](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_workbooks_and_views.htm#update_workbook_now) for the given workbook ID.
+The following code validates the authenticity of the request and obtains the workbook ID for the specified workbook name.  Next, the code will send a [`update workbook` command to the Tableau API](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref_workbooks_and_views.htm#update_workbook_now) for the given workbook ID.
 
 ```python
 import requests
