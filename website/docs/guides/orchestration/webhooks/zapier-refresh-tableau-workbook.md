@@ -22,7 +22,7 @@ To set up the integration, you need to be familiar with:
 ## Integration steps
 
 ### 1. Obtain authentication credentials from Tableau
-Obtain a [Personal Access Token](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) from your Tableau Server/Cloud instance.  You'll need this to authenticate with the Tableau API.  In addition, you'll want to ensure that your Tableau workbook uses data sources that allow refresh access.  This setting is typically set when publishing.
+To authenticate with the Tableau API, obtain a [Personal Access Token](https://help.tableau.com/current/server/en-us/security_personal_access_tokens.htm) from your Tableau Server/Cloud instance. In addition, make sure your Tableau workbook uses data sources that allow refresh access, which is usually set when publishing.
 
 ### 2. Create a new Zap in Zapier
 Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
