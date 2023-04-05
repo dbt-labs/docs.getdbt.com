@@ -54,7 +54,9 @@ This guide uses a short-lived code action to store the secrets, but you can also
 Create a new connection at https://zapier.com/app/connections/storage if you don't already have one and remember the UUID secret you generate for later.
 
 #### b. Add a temporary code step
-Choose **Run Python** as the Event. Run the following code: 
+
+Choose **Run Python** as the Event and run the following code: 
+
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
 store.set('DBT_WEBHOOK_KEY', 'abc123') #replace with your dbt Cloud Webhook key
@@ -62,8 +64,6 @@ store.set('TABLEAU_SITE_URL', 'abc123') #replace with your Tableau Site URL, inc
 store.set('TABLEAU_SITE_NAME', 'abc123') #replace with your Tableau Site/Server Name
 store.set('TABLEAU_API_TOKEN_NAME', 'abc123') #replace with your Tableau API Token Name
 store.set('TABLEAU_API_TOKEN_SECRET', 'abc123') #replace with your Tableau API Secret
-```
-Test the step. You can delete this Action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.
 
 ### 5. Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
