@@ -20,7 +20,7 @@ dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each w
 :::tip Videos 
 If you're intersted in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
 
-You can also check out the [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals) that we offer for free. 
+You can also check out the free [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals). 
 :::
 
 ## Prerequisites
