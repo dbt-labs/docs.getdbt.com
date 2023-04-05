@@ -65,7 +65,7 @@ store.set('TABLEAU_SITE_NAME', 'abc123') #replace with your Tableau Site/Server 
 store.set('TABLEAU_API_TOKEN_NAME', 'abc123') #replace with your Tableau API Token Name
 store.set('TABLEAU_API_TOKEN_SECRET', 'abc123') #replace with your Tableau API Secret
 
-Test the step to run the code. You can delete this action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.
+Test the step to run the code. You can delete this action when the test succeeds. The keys will remain stored as long as it is accessed at least once every three months.
 
 ### 5. Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
