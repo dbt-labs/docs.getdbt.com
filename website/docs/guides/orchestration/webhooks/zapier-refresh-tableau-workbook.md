@@ -158,5 +158,5 @@ refresh_trigger = requests.post(refresh_url, data=json.dumps(refresh_data), head
 return {"message": "Workbook refresh has been queued"}
 ```
 
-### 5. Test and deploy
+### 6. Test and deploy
 You can iterate on the Code step by modifying the code and then running the test again. When you're happy with it, you can publish your Zap.
