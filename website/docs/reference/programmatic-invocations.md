@@ -25,7 +25,7 @@ results, success = dbt.invoke(cli_args)
 
 ### Caveats
 
-We are not committed to this interface forever. We do expect it to unlock real use cases in the short & medium term, while we work on a more stable long-term interfaces into dbt-core as a mature library & Python SDK.
+We are not committed to this interface forever. We expect it to unlock real use cases in the short & medium term while we work on a more stable long-term interface into dbt-core as a mature library & Python SDK.
 
 - The `results` objects returned by each command are liable to change. Some of these objects are already contracted, in part, because they overlap with [dbt artifacts](dbt-artifacts).
 
