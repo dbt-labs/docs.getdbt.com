@@ -18,7 +18,7 @@ You can create webhooks for these events from the [dbt Cloud web-based UI](#crea
 dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
 :::tip Videos 
-If you're intersted in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
+If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
 
 You can also check out the free [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals). 
 :::
