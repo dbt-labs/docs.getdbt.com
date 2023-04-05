@@ -12,7 +12,8 @@ This guide will teach you how to refresh a Tableau workbook that leverages [extr
 
 ## Prerequisites
 
-In order to set up the integration, you should have familiarity with:
+To set up the integration, you need to be familiar with:
+
 - [dbt Cloud Webhooks](/docs/deploy/webhooks)
 - Zapier
 - The [Tableau API](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api.htm)
