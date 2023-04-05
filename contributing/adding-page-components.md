@@ -105,3 +105,48 @@ In the following example, clicking a tab adds a search parameter to the end of t
   </TabItem>
 </Tabs>
 ```
+
+## Using the card component
+
+Use the `<Card` component in Docusaurus to organize and present information in a structured and visually appealing way. The `<card` component can be used to [group related information](https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features), highlight important content on a page, or [create paths](https://docs.getdbt.com/docs/quickstarts/overview) in landing pages.
+
+The `<Card` component includes:
+
+- title prop &mdash; Title of the card
+- body &mdash; Use apostrophes to display body content inside the card. This can be formatted using markdown or HTML. 
+- link &mdash; Use this prop to link the entire card out. The link prop overrides any other link tags inside the body.
+- icon &mdash; To add icons, add the icon file name sourced from the [icons](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/static/img/icons) folder.
+
+For example, if you'd like to add two cards in a page:
+
+```
+div className="grid--2-col">
+
+<Card
+    title="Title of the card"
+    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
+    link="/docs/cloud/develop-in-the-cloud"
+    icon="pencil-paper"/>
+    
+<Card
+    title="Title of the card"
+    body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
+    link="/docs/cloud/develop-in-the-cloud"
+    icon="smiley-face"/>
+</div>
+```
+
+You can structure cards to be in 2 or 3 column, anything more will return a one-card column. 
+
+📌 **Link tags inside body** &mdash; You can create links for specific text by adding link tags to the content in the body prop. However, this won't work if you have a link prop because it will link out the entire card (see [loom](https://www.loom.com/share/c34967b5bd2945beb81061b43c4797be?t=80) for more history). To add link tags and have the text link out to specific links, you'll need to remove or disable the link prop. 
+
+Here's an example where the link prop is removed:
+
+```
+div className="grid--2-col">
+
+<Card
+    title="Title of the card"
+    body="The IDE is the easiest and <a href="www.getdbt.com">most efficient</a> way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
+    icon="pencil-paper"/>
+```
