@@ -1,5 +1,5 @@
 ---
-title: "Refresh a Tableau workbook with extracts when a job completes"
+title: "Refresh Tableau workbook with extracts after a job finishes"
 id: webhooks-guide-zapier-refresh-tableau-workbook
 slug: zapier-refresh-tableau-workbook
 description: Use Zapier to trigger a Tableau workbook refresh
