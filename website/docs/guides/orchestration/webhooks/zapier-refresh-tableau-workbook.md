@@ -5,7 +5,7 @@ slug: zapier-refresh-tableau-workbook
 description: Use Zapier to trigger a Tableau workbook refresh
 ---
 
-This guide will teach you how to refresh a Tableau workbook that leverages extracts when a dbt Cloud job has completed successfully and there is fresh data available. The integration will:
+This guide will teach you how to refresh a Tableau workbook that leverages [extracts](https://help.tableau.com/current/pro/desktop/en-us/extracting_data.htm) when a dbt Cloud job has completed successfully and there is fresh data available. The integration will:
 
  - Receive a webhook notification in Zapier
  - Trigger a refresh of a Tableau workbook
