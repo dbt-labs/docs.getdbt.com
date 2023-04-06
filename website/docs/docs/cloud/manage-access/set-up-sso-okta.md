@@ -156,7 +156,14 @@ the integration between Okta and dbt Cloud.
 
 ## Configuration in dbt Cloud
 
-To complete setup, follow the steps below in dbt Cloud. If you access dbt Cloud using virtual private cloud (VPC), enable the `native_okta` feature flag in the dbt Cloud admin backend.
+## Configuration in dbt Cloud
+
+To complete setup, follow the steps below in dbt Cloud. 
+
+### Enable Okta native auth (beta)
+
+If you access dbt Cloud using virtual private cloud (VPC), enable the `native_okta` feature flag in the dbt Cloud admin backend.
+
 
 ### Supplying credentials
 
