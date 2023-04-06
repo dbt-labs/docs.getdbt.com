@@ -14,22 +14,22 @@ For information about selecting models on the command line, consult the docs on 
 
 | Command | Description | dbt Cloud | CLI |
 |---------|-------------|-----------|-----|
-| [`build`](build) | build and test all selected resources (models, seeds, snapshots, tests) | ✅ | ✅ |
-| [`clean`](clean) | deletes artifacts present in the dbt project | ❌ |  ✅
-| [`compile`](compile) | compiles (but does not run) the models in a project | ✅ | ✅ |
-| [`debug`](debug) | debugs dbt connections and projects | ❌|  ✅ |
-| [`deps`](deps) | downloads dependencies for a project | ✅ | ✅ |
-| [`docs`](cmd-docs) | generates documentation for a project | ✅ | ✅ |
-| [`init`](init) | initializes a new dbt project | ❌ |  ✅ |
-| [`list`](list) | lists resources defined in a dbt project | ❌ |  ✅ |
-| [`parse`](parse) | parses a project and writes detailed timing info | ❌ |  ✅ |
-| [`run`](run) | runs the models in a project |  ✅ | ✅ |
-| [`seed`](seed) | loads CSV files into the database | ✅ | ✅ |
-| [`snapshot`](snapshot) | executes "snapshot" jobs defined in a project | ✅ | ✅ |
-| [`source`](commands/source) | provides tools for working with source data (including validating that sources are "fresh") | ✅ | ✅ |
-| [`test`](commands/test) | executes tests defined in a project | ✅ | ✅ |
-| [`rpc`](rpc) | runs an RPC server that clients can submit queries to | ❌ |  ✅ |
-| [`run-operation`](run-operation) | invoke a macro, including running arbitrary maintenance SQL against the database | ✅ | ✅ |
+| [build](build) | build and test all selected resources (models, seeds, snapshots, tests) | ✅ | ✅ |
+| [clean](clean) | deletes artifacts present in the dbt project | ❌ |  ✅
+| [compile](compile) | compiles (but does not run) the models in a project | ✅ | ✅ |
+| [debug](debug) | debugs dbt connections and projects | ❌|  ✅ |
+| [deps](deps) | downloads dependencies for a project | ✅ | ✅ |
+| [docs](cmd-docs) | generates documentation for a project | ✅ | ✅ |
+| [init](init) | initializes a new dbt project | ❌ |  ✅ |
+| [list](list) | lists resources defined in a dbt project | ❌ |  ✅ |
+| [parse](parse) | parses a project and writes detailed timing info | ❌ |  ✅ |
+| [run](run) | runs the models in a project |  ✅ | ✅ |
+| [seed](seed) | loads CSV files into the database | ✅ | ✅ |
+| [snapshot](snapshot) | executes "snapshot" jobs defined in a project | ✅ | ✅ |
+| [source](commands/source) | provides tools for working with source data (including validating that sources are "fresh") | ✅ | ✅ |
+| [test](commands/test) | executes tests defined in a project | ✅ | ✅ |
+| [rpc](rpc) | runs an RPC server that clients can submit queries to | ❌ |  ✅ |
+| [run-operation](run-operation) | invoke a macro, including running arbitrary maintenance SQL against the database | ✅ | ✅ |
 
 
 <!-- temporarily commenting this out to cross reference above table, will remove once approved
