@@ -32,7 +32,7 @@ Check out some common git terms below that you might encounter when developing:
 
 ## The git button in the Cloud IDE
 
-You can perform git tasks with the git button in the Cloud IDE. The following are descriptions of each git button command and what they do:
+You can perform git tasks with the git button in the [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). The following are descriptions of each git button command and what they do:
 
 
 | Name | Actions |

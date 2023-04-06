@@ -122,7 +122,15 @@ const sidebarSettings = {
                 "docs/cloud/git/import-a-project-by-git-url",
               ],
             }, // Supported Git providers
-
+            {
+              type: "category",
+              label: "dbt Cloud IDE",
+              items: [
+                "docs/cloud/dbt-cloud-ide/develop-in-the-cloud", 
+                "docs/cloud/dbt-cloud-ide/ide-glossary",
+                "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+              ],
+            }, // dbt Cloud IDE directory
             {
               type: "category",
               label: "Multi-tenant PrivateLink",
@@ -133,8 +141,6 @@ const sidebarSettings = {
                 "docs/cloud/privatelink/databricks-privatelink",
               ],
             }, // PrivateLink
-            "docs/cloud/develop-in-the-cloud",
-            "docs/cloud/dbt-cloud-tips",
           ],
         },
         {

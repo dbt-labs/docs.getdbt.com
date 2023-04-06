@@ -1,8 +1,8 @@
 ---
-title: "dbt Cloud tips"
+title: "Tips and tricks"
 id: dbt-cloud-tips
 description: "Check out any dbt Cloud and IDE-related tips."
-sidebar_label: "dbt Cloud tips"
+sidebar_label: "Tips and tricks"
 ---
 
 # dbt Cloud tips
@@ -58,4 +58,4 @@ There are default keyboard shortcuts that can help make development more product
 
 - [Quickstart guide](/docs/quickstarts/overview)
 - [About dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features)
-- [Develop in the Cloud](/docs/cloud/develop-in-the-cloud)
+- [Develop in the Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
