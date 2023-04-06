@@ -136,11 +136,9 @@ The Invocation History Drawer contains all information related to dbt invocation
 A &mdash; [Invocation History list](#invocation-history-list)<br />
 B &mdash; [Invocation Summary](#invocation-summary)<br />
 C &mdash; [System Logs toggle](#system-logs-toggle)<br />
-D &mdash; [Compile button](#compile-button)<br />
-E &mdash; [Build button](#build-button)<br />
-F &mdash; [Results subtab](#results-subtab)<br />
-G &mdash; [Compiled code subtab](#compiled-code-subtab)<br />
-H &mdash; [Lineage subtab](#lineage-subtab)<br />
+D &mdash; [Result Status tab](#result-status-tab)<br />
+E &mdash; [Node result](#node-result)<br />
+F &mdash; [Command Control button](#command-control-button)<br />
 
 ### Invocation History list
 
@@ -153,7 +151,7 @@ The Invocation Summary shows the summary details of the selected invocation from
 ### System Logs toggle
 The System Logs Toggle allows the user to see the full stdout and debug logs for entirety of the invoked command. 
 
-### D. Result Status tab
+### Result Status tab
 The Results Status Tabs group executed nodes from the command by their result. Clicking on these will filter the Node Status List by the corresponding status. Statuses include:
 
 - Pass - successful invocation of a node
@@ -162,13 +160,13 @@ The Results Status Tabs group executed nodes from the command by their result. C
 - Skip - nodes that did not run due to upstream error
 - Queued - nodes that have yet to execute
 
-### E. Node result
+### Node result
 Each node executed during a dbt command invocation will be summarized in a Node Result toggle, that contains the summary (stdout) and debug logs to easily see the details about each node. The Node Results List contains an entry for every invoked node. 
 
-### E. Node result list
+### Node result list
 
 The Node result list contains the full list of each Node Result invoked during the dbt run. This can be filtered by clicking on any of the Result Status tabs. 
-### F. Command Control button
+### Command Control button
 Use the command control button to control your invocation and cancel or rerun a selected run.
 
 ## Modals and Menus
@@ -215,6 +213,12 @@ The IDE Options menu is accessible via the kebab menu on the bottom right corner
 * Restart the IDE
 * Full reclone your repository to refresh your git state
 * View status details (i.e. view the [IDE Status Modal](#ide-status-modal))
+
+### Version Control Options menu
+
+The Version Control Options menu has file-specific options to control the git state of individually changed files. This is accessed by right clicking any of the files in the **Changes** section. 
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title="Right click changed files to access sub-menu options"/>
 
 <!-- commenting out temporarily, will remove when pr is finalized.
 
