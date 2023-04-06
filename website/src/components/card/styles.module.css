@@ -25,6 +25,14 @@
   text-decoration: none;
 }
 
+.cardBody {
+  margin-bottom: 20px;
+}
+
+.cardBody a, .cardBody a:hover {
+  text-decoration: underline;
+}
+
 .icon {
   margin-bottom: 0.5rem;
   max-width: 25px;

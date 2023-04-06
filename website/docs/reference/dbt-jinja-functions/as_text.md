@@ -1,6 +1,7 @@
 ---
 title: "as_text"
 id: "as_text"
+description: "Use this filter to convert Jinja-compiled output back to text."
 ---
 
 The `as_text` Jinja filter will coerce Jinja-compiled output back to text. It

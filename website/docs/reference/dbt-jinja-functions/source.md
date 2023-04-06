@@ -1,7 +1,9 @@
 ---
 title: "source"
 id: "source"
+description: "Returns a relation & creates dependencies between source and model."
 ---
+
 ```sql
 select * from {{ source(source_name, table_name) }}
 ```
