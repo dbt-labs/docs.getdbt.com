@@ -49,6 +49,17 @@ The manifest schema version will be updated to `v9`. Specific changes:
 - Addition of `access` as a top-level node config for models
 - Addition of `group` and `contract` as node configs
 
+### For users of env vars
+
+The following env vars have been renamed:
+
+- `DBT_DEFER_TO_STATE` → `DBT_DEFER`
+- `DBT_FAVOR_STATE_MODE` → `DBT_FAVOR_STATE`
+- `DBT_NO_PRINT` → `DBT_PRINT`
+- `DBT_ARTIFACT_STATE_PATH` → `DBT_STATE`
+
+Backward compatibility with the old syntax is still supported but will be removed in an as-of-yet-undetermined future released. 
+
 ### For maintainers of adapter plugins
 
 For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
