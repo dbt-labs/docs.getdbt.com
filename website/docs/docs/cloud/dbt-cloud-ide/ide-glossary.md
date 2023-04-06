@@ -24,9 +24,9 @@ G &mdash; [Create New File button](#create-new-file-button)<br />
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-landing.jpg" width="100%" title="The Cloud IDE landing page"/>
 
-#### Git Repository link-->
 
-**Git Repository link**  &mdash; The Git Repository Link displays the name of the active branch. Clicking this element will hyperlink to your repository, pinned to that same branch.
+#### Git Repository link 
+The Git Repository Link displays the name of the active branch. Clicking this element will hyperlink to your repository, pinned to that same branch.
 
 #### Documentation site button
 
