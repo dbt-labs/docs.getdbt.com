@@ -24,20 +24,20 @@ G &mdash; [Create New File button](#create-new-file-button)<br />
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-landing.jpg" width="100%" title="The Cloud IDE landing page"/>
 
-<!--#### Git Repository link-->
+#### Git Repository link-->
 
 **Git Repository link**  &mdash; The Git Repository Link displays the name of the active branch. Clicking this element will hyperlink to your repository, pinned to that same branch.
 
-### Documentation site button
+#### Documentation site button
 
 The Documentation Site Button links out to the static dbt Documentation site powered by the most recently generated dbt artifacts in the IDE. This button is clickable once a dbt docs generate command is successfully invoked.  
 
-### Version Control menu
+#### Version Control menu
 The Version Control menu contains all git-related elements in the IDE. The Git Actions Button will dynamically update with the relevant action for the state of your editor, including prompt to pull remote changes, commit and sync when reverted commit changes are in the editor, or create a merge/pull request when appropriate. The dropdown menu on the Git Actions Button allows users to revert all changes, refresh git stats, create merge/pull requests, and change branches. Refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide) for more info. 
 
 Below the Git Actions Button, all changes will be listed in the **Changes** section. Clicking on any change will open the Git DIff View of the selected file, allowing the user to see exactly what changes were introduced since the previous commit.
 
-### File Explorer 
+#### File Explorer 
 The File Explorer shows the filetree of your repository. You can:
 * Click on any file in the filetree to open the file in the File Editor. 
 * Click and drag files between directories to move files. 
@@ -45,10 +45,10 @@ The File Explorer shows the filetree of your repository. You can:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-explorer-menu.jpg" width="30%" title="Right click files to access sub-menu options"/>
 
-### Command bar
+#### Command bar
 The Command bar is where [dbt commands](/reference/dbt-commands) are invoked in the IDE. This will accept any valid dbt command, and invoking a command will open the Command History Drawer to show the associated logs.
 
-### IDE Status button
+#### IDE Status button
 The IDE Status Button reports the current status of the IDE. Anytime there is a status error, or if there is a dbt code error that prevents the project from parsing, this button will turn red and say Error. Clicking on this button brings up the IDE options menu, which contains additional IDE options:
 
 - Toggle dark or light mode to customize your viewing experience
@@ -58,7 +58,7 @@ The IDE Status Button reports the current status of the IDE. Anytime there is a 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu.jpg" width="85%" title="Click on the IDE status button to view the options menu"/>
 
-### Create New File button
+#### Create New File button
 This button allows the user to create a new file in their project. 
 
 ## Editing 
@@ -76,61 +76,60 @@ H &mdash; [Lineage tab](#lineage-tab)<br />
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="100%" title="The Cloud IDE editing components"/>
 
-### File Editor
+#### File Editor
 The File Editor is the region where users enter and edit code. This region is broken out by tabs for all files that have been opened. Unsaved Files are marked with a blue dot icon in the tab view. 
 
 The editor has a **Format** button enabled in this area for `{{  filetypes  }}` files, and will use your selected formatter (sqlfmt or sqlfluff) to edit the file contents. 
 
-### Interaction bar
+#### Interaction bar
 This interaction bar section sits below the File editor and contains all the sub-tabs and buttons that help you preview, compile, build, view the DAG, and more. 
 
 Refer to bullets C to H for more details on the sub-tabs and button details. 
 
-### Preview button 
+#### Preview button 
 The Preview Button executes the SQL in the active file editor (regardless of save status) against your warehouse, and returns the results to the Results Tab. Queries executed via the Preview Button will automatically have a limit 500 appended to the end to prevent returning excessive data to the IDE and causing browser issues. 
 
-### Compile button
+#### Compile button
 The Compile Button takes the contents of the active File Editor (regardless of save status) and returns the compiled SQL to the Compiled Code Tab
 
-### Build  button 
+#### Build  button 
 The build button is a shortcut for the user to invoke dbt commands anchored by the active model in the File Editor. The available commands are dbt build, dbt test, and dbt run with selection options to include the current resource, the resource and upstream dependencies, the resource with all downstream dependencies, or the resource with all dependencies. This menu is enabled for all executable nodes
 
-### Results button
+#### Results button
 The Results Tab displays the most recent Preview results in tabular format. 
 
-### Compiled code tab
+#### Compiled code tab
 The Compiled Code Tab shows the compiled code generated by the most recent compile invocation triggered by the Compile Button  
 
-### Lineage tab
+#### Lineage tab
 The Lineage Tab shows the lineage for the active model in the File Editor. By default, this menu will display 2 degrees of lineage in both directions (`2+model_name+2`). This can be edited to display any desired selection syntax. 
 
-### Minimap
+#### Minimap
 A Minimap (code outline) gives you a high-level overview of your source code, which is useful for quick navigation and code understanding. A file's minimap is displayed on the upper-right side of the editor. To quickly jump to different sections of your file, click the shaded area.
 
-### Command Palette
+#### Command Palette
 The Editor Shortcuts Menu contains helpful text editing actions, and lists the associated keyboard shortcut for each action where applicable. This menu can be accessed using F1 or by right clicking in the File Editor menu and selecting Command Palette.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-command-palette.jpg" width="100%" title="Click F1 to access the Command Palette menu for editor shortcuts"/>
 
-### Editor tab menu
+#### Editor tab menu
 The file tab menu contains helpful options for interacting with open editor tabs. You can access the menu by right-clicking on any open tab. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-tab-menu.jpg" width="100%" title="Right click a tab to view the Editor tab menu options"/>
 
-### Git Diff View
+#### Git Diff View
 After clicking on a file in the **Changes** section in the **Version Control Menu**, the changed file will open with the Git Diff view. The editor will display the previous version on the left, and the highlighted, in-line changes made on the right. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-git-diff-view.jpg" width="100%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
 
-### Markdown tab
+#### Markdown tab
 The Markdown Preview Tab renders markdown code in a .md file in your repository into a Markdown Preview. This is updated as you make edits to your code! 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-markdown.jpg" width="100%" title="The Markdown preview tab renders markdown code below the Editor tab."/>
 
-### CSV Preview tab
+#### CSV Preview tab
 The CSV Preview Tab renders csv code in a .csv file in your seed directory into tabular format. This is updated as you make edits to your code! 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-csv.jpg" width="100%" title="View csv code in the CSV preview tab below the Editor tab."/>
-
 
 ## Command history
 
