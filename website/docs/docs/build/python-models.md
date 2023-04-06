@@ -144,6 +144,11 @@ with upstream_python_model as (
 
 </File>
 
+:::caution
+
+Referencing [epehemral](https://docs.getdbt.com/docs/build/materializations#ephemeral) models is currently not supported (see [feature request]([url](https://github.com/dbt-labs/dbt-core/issues/7288))
+:::
+
 ## Configuring Python models
 
 Just like SQL models, there are three ways to configure Python models:
