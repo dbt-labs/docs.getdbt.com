@@ -1,5 +1,7 @@
 ---
 title: "dispatch"
+id: "dispatch"
+description: "dbt extends functionality across data platforms using multiple dispatch."
 ---
 
 <Changelog>
