@@ -1,9 +1,9 @@
 ---
 title: "print"
 id: "print"
+description: "Use the `print()` to print messages to the log file and stdout."
 ---
 
-## About print
 
 Use the `print()` function when you want to print messages to both the log file and standard output (stdout).
 

@@ -1,6 +1,7 @@
 ---
 title: "log"
 id: "log"
+description: "Use `log` to log a line to either the log file or stdout."
 ---
 
 __Args__:
