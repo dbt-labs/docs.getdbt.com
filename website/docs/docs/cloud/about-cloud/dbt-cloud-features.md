@@ -93,6 +93,6 @@ link="/docs/cloud/develop-in-the-cloud"
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/quickstarts/overview)
-- [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud)
+- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)
