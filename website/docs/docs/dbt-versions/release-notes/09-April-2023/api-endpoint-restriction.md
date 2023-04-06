@@ -1,8 +1,7 @@
 ---
-title: "API requests have a maximum limit of `100`"
+title: "List Runs API Endpoint order_by restrictions"
 id: api-endpoint-restriction
-description: "Mar 2023: In order to ease pressure on our API, we have implemented a maximum limit of `100` for all API requests to our `list` endpoints. This limit is applicable to multi-tenant instances only."
-sidebar_label: "Update: API requests have a maximum limit of `100`"
+sidebar_label: "Deprecation: "List Runs API Endpoint order_by restrictions"
 tags: [Apr-6-2023, API]
 ---
 
