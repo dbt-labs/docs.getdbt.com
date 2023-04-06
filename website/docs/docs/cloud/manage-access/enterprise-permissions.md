@@ -189,7 +189,7 @@ Stakeholders can perform the following actions in projects they are assigned to:
 
 Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
 
-Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
+1. Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
 
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 
