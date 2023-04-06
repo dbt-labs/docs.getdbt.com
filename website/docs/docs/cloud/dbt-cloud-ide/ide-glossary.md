@@ -29,7 +29,6 @@ G &mdash; [Create New File button](#create-new-file-button)<br />
 The Git Repository Link displays the name of the active branch. Clicking this element will hyperlink to your repository, pinned to that same branch.
 
 #### Documentation site button
-
 The Documentation Site Button links out to the static dbt Documentation site powered by the most recently generated dbt artifacts in the IDE. This button is clickable once a dbt docs generate command is successfully invoked.  
 
 #### Version Control menu
