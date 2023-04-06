@@ -6,7 +6,7 @@ sidebar_label: IDE glossary
 tags: [IDE]
 ---
 
-The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is a single interface tool for developers to effortlessly build, test, run, and version-control their dbt projects - all from the convenience of your browser. Use the Cloud IDE to compile dbt code into SQL and run it against your database directly -- no command line required!
+The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is an interface tool for developers to effortlessly build, test, run, and version-control their dbt projects - all from the convenience of your browser. Use the Cloud IDE to compile dbt code into SQL and run it against your database directly -- no command line required!
 
 ## Landing page
 
@@ -24,20 +24,20 @@ G &mdash; [Create New File button](#create-new-file-button)<br />
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-landing.jpg" width="100%" title="The Cloud IDE landing page"/>
 
-#### Git Repository link
+### Git Repository link
 
 The Git Repository Link displays the name of the active branch. Clicking this element will hyperlink to your repository, pinned to that same branch.
 
-#### Documentation site button
+### Documentation site button
 
 The Documentation Site Button links out to the static dbt Documentation site powered by the most recently generated dbt artifacts in the IDE. This button is clickable once a dbt docs generate command is successfully invoked.  
 
-#### Version Control menu
+### Version Control menu
 The Version Control menu contains all git-related elements in the IDE. The Git Actions Button will dynamically update with the relevant action for the state of your editor, including prompt to pull remote changes, commit and sync when reverted commit changes are in the editor, or create a merge/pull request when appropriate. The dropdown menu on the Git Actions Button allows users to revert all changes, refresh git stats, create merge/pull requests, and change branches. Refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide) for more info. 
 
 Below the Git Actions Button, all changes will be listed in the **Changes** section. Clicking on any change will open the Git DIff View of the selected file, allowing the user to see exactly what changes were introduced since the previous commit.
 
-#### File Explorer 
+### File Explorer 
 The File Explorer shows the filetree of your repository. You can:
 * Click on any file in the filetree to open the file in the File Editor. 
 * Click and drag files between directories to move files. 
@@ -45,10 +45,10 @@ The File Explorer shows the filetree of your repository. You can:
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-explorer-menu.jpg" width="30%" title="Right click files to access sub-menu options"/>
 
-#### Command bar
+### Command bar
 The Command bar is where [dbt commands](/reference/dbt-commands) are invoked in the IDE. This will accept any valid dbt command, and invoking a command will open the Command History Drawer to show the associated logs.
 
-#### IDE Status button
+### IDE Status button
 The IDE Status Button reports the current status of the IDE. Anytime there is a status error, or if there is a dbt code error that prevents the project from parsing, this button will turn red and say Error. Clicking on this button brings up the IDE options menu, which contains additional IDE options:
 
 - Toggle dark or light mode to customize your viewing experience
@@ -56,9 +56,9 @@ The IDE Status Button reports the current status of the IDE. Anytime there is a 
 - Full reclone your repository to refresh your git state
 - View status details, including the current IDE compilation state
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu.jpg" width="85%" title="Click on the IDE status button to view the options menu"/><br />
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu.jpg" width="85%" title="Click on the IDE status button to view the options menu"/>
 
-#### Create New File button
+### Create New File button
 This button allows the user to create a new file in their project. 
 
 ## Editing 
@@ -74,7 +74,7 @@ F &mdash; [Results button](#results-button)<br />
 G &mdash; [Compiled code tab](#compiled-code-tab)<br />
 H &mdash; [Lineage tab](#lineage-tab)<br />
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="100%" title="The Cloud IDE editing components"/><br />
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="100%" title="The Cloud IDE editing components"/>
 
 ### File Editor
 The File Editor is the region where users enter and edit code. This region is broken out by tabs for all files that have been opened. Unsaved Files are marked with a blue dot icon in the tab view. 
