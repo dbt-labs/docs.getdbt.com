@@ -1,6 +1,7 @@
 ---
 title: "dbt_project.yml Context"
 id: "dbt-project-yml-context"
+description: "The context variables and methods are available when configuring resources in the dbt_project.yml file."
 ---
 
 <Changelog>
