@@ -1,6 +1,7 @@
 ---
 title: "selected_resources"
 id: "selected_resources"
+description: "Contains a list of all the nodes selected by current dbt command."
 ---
 
 The `selected_resources` context variable contains a list of all the _nodes_ 
