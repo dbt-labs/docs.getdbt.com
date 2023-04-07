@@ -10,4 +10,4 @@ The dbt Cloud scheduler now prevents queue clog by canceling queued runs in exce
 
 Previously, when you scheduled a job to run more frequently than it takes to complete a single run, the job queue would get backed up.  As a result, the scheduler would cancel some of the runs randomly because it couldn't process them all.  To fix this, you had to go to dbt Cloud and manually cancel the queued runs and adjust the job schedule to "unclog" the job queue.
 
-The dbt Cloud scheduler now detects when a job is in this clogged state, and manages the queue to run more optimally -- providing a helpful message when the schedluer has taken action.
+The dbt Cloud scheduler now detects when a job is in this clogged state, and manages the queue to run more optimally -- providing a helpful message when the scheduler has taken action.
