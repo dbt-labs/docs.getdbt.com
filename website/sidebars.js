@@ -86,6 +86,7 @@ const sidebarSettings = {
                   label: "Single sign-on",
                   items: [
                     "docs/cloud/manage-access/sso-overview",
+                    "docs/cloud/manage-access/auth0-migration",
                     "docs/cloud/manage-access/set-up-sso-saml-2.0",
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
