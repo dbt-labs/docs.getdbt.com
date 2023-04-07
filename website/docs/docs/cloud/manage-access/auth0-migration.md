@@ -7,7 +7,7 @@ description: "Required actions for migrating to Auth0 for SSO services on dbt Cl
 
 dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be the dbt Cloud SSO identity provider (IDP) moving forward. These changes will require some action from customers with SSO configured in dbt Cloud today, and this guide will outline the necessary changes for each environment. 
 
-If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-google-workspace), or [Azure Active Directory](/docs/cloud/manage-access/set-up-azure-active-directory) single sign-on services.
+If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
 
 ## SAML 2.0 and Okta
 
