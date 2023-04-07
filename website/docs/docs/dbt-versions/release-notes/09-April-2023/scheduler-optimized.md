@@ -1,5 +1,5 @@
 ---
-title: "dbt Cloud more intelligently processes scheduled jobs"
+title: "dbt Cloud processes scheduled jobs more intelligently"
 id: "scheduler-optimized"
 description: "April 2023: "
 sidebar_label: "Update: Scheduler optimizes job queue"
