@@ -16,7 +16,8 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/get-started/privatelink/snowflake-privatelink /docs/cloud/privatelink/snowflake-privatelink 301
 /docs/get-started/privatelink/redshift-privatelink /docs/cloud/privatelink/redshift-privatelink 301
 /docs/get-started/privatelink/databricks-privatelink /docs/cloud/privatelink/databricks-privatelink 301
-/docs/get-started/connect-your-database /docs/cloud/connect-data-platform/connect-your-database 301
+/docs/get-started/connect-your-database /docs/cloud/connect-data-platform/about-connections 301
+/docs/cloud/connect-data-platform/connect-your-database /docs/cloud/connect-data-platform/about-connections 301
 /docs/get-started/dbt-cloud-features /docs/cloud/about-cloud/dbt-cloud-features 301
 /docs/deploy/regions-ip-addresses /docs/cloud/about-cloud/regions-ip-addresses 301
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
@@ -137,7 +138,8 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/dbt-cloud/cloud-quickstart /docs/get-started/getting-started/set-up-dbt-cloud 301
 /docs/cloud-quickstart /docs/dbt-cloud/cloud-quickstart 301
 /docs/dbt-cloud/cloud-configuring-dbt-cloud /docs/get-started/getting-started/set-up-dbt-cloud 301
-/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database /docs/get-started/connect-your-database 301
+/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database /docs/cloud/connect-data-platform/about-connections 301
+/docs/get-started/connect-your-database /docs/cloud/connect-data-platform/about-connections 301
 /docs/running-a-dbt-project/profile /docs/get-started/connection-profiles 301
 
 # other redirects
