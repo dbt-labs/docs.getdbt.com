@@ -89,7 +89,7 @@ The Preview Button executes the SQL in the active file editor (regardless of sav
 The Compile Button takes the contents of the active File Editor (regardless of save status) and returns the compiled SQL to the Compiled Code Subtab
 
 #### Build button 
-The build button is a shortcut for the user to invoke dbt commands anchored by the active model in the File Editor. The available commands are dbt build, dbt test, and dbt run with options to include only the current resource, the resource and its upstream dependencies, the resource and its downstream dependencies, or the resource with all dependencies. This menu is enabled for all executable nodes.
+The build button is a shortcut for the user to invoke dbt commands anchored by the active model in the File Editor. The available commands are `dbt build`, `dbt test`, and `dbt run` with options to include only the current resource, the resource and its upstream dependencies, the resource and its downstream dependencies, or the resource with all dependencies. This menu is enabled for all executable nodes.
 
 #### Results subtab
 The Results subtab displays the most recent Preview results in tabular format. 
