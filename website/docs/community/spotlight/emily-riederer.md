@@ -6,7 +6,7 @@ description: |
 
   Professionally, I've led a variety of data teams at Capital One spanning analytics, modeling, innersource data tools, and data infrastructure. The common denominator of all of these roles has been the overwhelming importance of high quality data processing pipelines. Outside of work, I enjoy doing pro bono projects and applying my same skillset to scrappier environments.
 
-  My work with the dbt community is motivated by a passion for data quality and developer tooling. Some of my recent contributions include maintaing the dbtplyr package, speaking at Coalesce 2021, and [writing a dbt Developer Blog post] (https://docs.getdbt.com/blog/grouping-data-tests) about my PR to the dbt-utils test suite.
+  My work with the dbt community is motivated by a passion for data quality and developer tooling. Some of my recent contributions include maintaing the dbtplyr package, speaking at Coalesce 2021, and <a href="https://docs.getdbt.com/blog/grouping-data-tests" title="writing a dbt Developer Blog post">writing a dbt Developer Blog post</a> about my PR to the dbt-utils test suite.
 image: /img/community/spotlight/emily-riederer.jpg
 pronouns: she/her
 location: Chicago, IL
@@ -44,4 +44,5 @@ As a passionate fan of open-source (and the also-thriving #rstats community), I 
 
 ## Anything else interesting you want to tell us?
 
+test 
 My passion for open-source tools and open-knowledge extends beyond dbt. I also enjoy serving on the editorial board for rOpenSci to champion the creation of open-source research software, reviewing technical books for CRC Press, doing pro-bono data projects, and sharing my own learnings through conference talks and writing (including on my website, guest blogs, and books including [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) and [97 Things Every Data Engineer Should Know](https://www.oreilly.com/library/view/97-things-every/9781492062400/)).

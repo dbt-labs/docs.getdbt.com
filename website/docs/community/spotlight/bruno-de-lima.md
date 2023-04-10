@@ -1,5 +1,5 @@
 ---
-id: emily-riederer
+id: bruno-de-lima
 title: Emily Riederer
 description: |
   I'm a long-time dbt user and have been an active community member for a few years. 

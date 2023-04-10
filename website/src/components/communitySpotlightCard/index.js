@@ -124,7 +124,8 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
       {description && isSpotlightMember && (
         <div className={styles.spotlightMemberDescriptionFull}>
           <h2>About</h2>
-          <p className={styles.spotlightMemberDescription}>{description}</p>
+          <p className={styles.spotlightMemberDescription} dangerouslySetInnerHTML={{__html: description}} />
+
         </div>
       )}
     </SpotlightWrapper>
