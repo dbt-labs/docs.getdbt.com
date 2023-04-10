@@ -297,7 +297,7 @@ Note: BigQuery users can use `target_project` and `target_dataset` as aliases fo
 
 ### Configuration best practices
 #### Use the `timestamp` strategy where possible
-This strategy handles column additions and deletions better than the `check_cols` strategy.
+This strategy handles column additions and deletions better than the `check` strategy.
 
 #### Ensure your unique key is really unique
 The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/dbt-labs/jaffle_shop/blob/8e7c853c858018180bef1756ec93e193d9958c5b/models/staging/schema.yml#L26)).
