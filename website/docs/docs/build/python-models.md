@@ -481,7 +481,7 @@ def model(dbt, session):
 <File name='models/my_python_model.py'>
 
 ```python
-from pyspark.sql.types as T
+import pyspark.sql.types as T
 import pyspark.sql.functions as F
 import numpy
 

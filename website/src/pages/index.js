@@ -44,8 +44,7 @@ function Home() {
 
   // Check if featured community spotlight member set in Docusaurus config
   const { siteConfig } = useDocusaurusContext()
-  let communitySpotlightMember = 
-    siteConfig?.themeConfig?.communitySpotlightMember || null
+  let communitySpotlightMember = siteConfig?.themeConfig?.communitySpotlightMember || null
 
   // Get spotlight member by ID or date if available
   // If found, update section to show community spotlight member

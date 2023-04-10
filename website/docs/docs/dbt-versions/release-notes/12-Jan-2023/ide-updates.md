@@ -1,7 +1,7 @@
 ---
-title: "IDE updates and fixes"
+title: "Jan IDE updates and fixes"
 id: "ide-updates"
-description: "Jan 2023: We've enhanced the IDE with improved syntax highlighting, faster and snappier IDE, improved error messaging, view repo status, added an easter egg, and more."
+description: "Jan 2023 release note: We've enhanced the IDE with improved syntax highlighting, faster and snappier IDE, improved error messaging, view repo status, added an easter egg, and more."
 sidebar_label: "Update and fixes: IDE"
 tags: [Feb-1-2023, IDE]
 ---

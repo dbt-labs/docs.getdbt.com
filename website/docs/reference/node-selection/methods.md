@@ -143,7 +143,17 @@ that defines it. For more information about how generic tests are defined, read 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
+<VersionBlock lastVersion="1.4">
+
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+
+</VersionBlock>
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -163,6 +173,7 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
+- `state:modified.contract`: Changes to a model's [contract](resource-configs/contract), which currently include the `name` and `data_type` of `columns`. Removing or changing the type of an existing column is considered a breaking change, and will raise an error.
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
@@ -202,13 +213,13 @@ $ dbt seed --select result:error # run all seeds that generated errors on the pr
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 
-Only supported by v1.1 or newer.
+Supported in v1.1 or newer.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1">
 
-Only supported by v1.1 or newer.
+Supported in v1.1 or newer.
 
 :::caution Experimental functionality
 The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
@@ -221,9 +232,73 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
+<VersionBlock lastVersion="1.4">
+
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
 $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```bash
+# You can also set the DBT_STATE environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+
+</VersionBlock>
+
+
+</VersionBlock>
+
+
+### The "group" method
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+Supported in v1.5 or newer.
+
+The `group` method is used to select models defined within a group.
+
+
+  ```bash
+  dbt run --select group:finance # run all models that belong to the finance group.
+  ```
+
+
+</VersionBlock>
+
+### The "wildcard" method
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+Supported in v1.5 or newer.
+
+The `wildcard` method selects a model using Unix-style wildcard expressions evaluated against the fqn.
+Read the [fnmatch](https://docs.python.org/3/library/fnmatch.html#module-fnmatch) reference for proper syntax.
+
+  ```bash
+dbt run --select 'wildcard:*_model_?'
+# Is equivalent to
+dbt run --select some_model_a some_model_b some_model_1
+
+dbt run --select 'wildcard:*_feature_model_[1-3]'
+# Is equivalent to
+dbt run --select test_feature_model_1 new_feature_model_2 ml_feature_model_3
+  ```
+
 </VersionBlock>

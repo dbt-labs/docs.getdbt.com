@@ -1,19 +1,10 @@
 
 import React from 'react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-import classnames from 'classnames';
-
-import {MDXProvider} from '@mdx-js/react';
-import MDXComponents from '@theme/MDXComponents';
 import CodeBlock from '@theme/CodeBlock';
-
 import Changelog from '@site/src/components/changelog';
 import CloudCore from '@site/src/components/cloudcore';
-import WHCode from '@site/src/components/whcode';
 import Collapsible from '@site/src/components/collapsible';
-import FAQList from '@site/src/components/faqList';
 import FAQ from '@site/src/components/faqs';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';

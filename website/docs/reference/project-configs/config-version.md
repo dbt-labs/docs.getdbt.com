@@ -2,6 +2,12 @@
 datatype: integer
 ---
 
+<VersionBlock firstVersion="1.5">
+
+Starting in dbt v1.5, the `config-version:` tag is optional.
+
+</VersionBlock>
+
 <File name='dbt_project.yml'>
 
 ```yml
@@ -16,6 +22,7 @@ Specify your `dbt_project.yml` as using the v2 structure.
 <Changelog>
 
 * `v0.17.0`: This configuration was introduced — see the [migration guide](/guides/migration/versions) for more details.
+* `v1.5.0`: This configuration was made optional.
 
 </Changelog>
 
