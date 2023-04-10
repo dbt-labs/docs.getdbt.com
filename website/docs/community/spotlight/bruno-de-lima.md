@@ -38,7 +38,7 @@ I would like to thank the Indicium folks for opening the first door for me for t
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-I identify with Gwen Windflower and Joel Labs, or at least they are the kind of leader I admire. Their strong presence and continuous interaction with all types of dbt enthusiasts make everyone feel welcomed in the community. They uplift those who contribute to the community, whether it's through a LinkedIn post or answering a question, and provide constructive feedback to help them improve. And of course they show a very strong knowledge about dbt and data in general, which is reflected in their contributions.
+I identify with Gwen Windflower and Joel Labes, or at least they are the kind of leader I admire. Their strong presence and continuous interaction with all types of dbt enthusiasts make everyone feel welcomed in the community. They uplift those who contribute to the community, whether it's through a LinkedIn post or answering a question, and provide constructive feedback to help them improve. And of course they show a very strong knowledge about dbt and data in general, which is reflected in their contributions.
 
 And that is how I aspire to grow as a leader in the dbt Community. Despite of being an introvert, I like interacting with people, helping solve problems and providing suggestions. Recognizing and acknowledging the achievements of others is also important to me, as it fosters a positive environment where everyone's contributions are valued. And I am continuously learning about dbt to improve my skills, and to become a trustworthy reference for others to rely on.
 
