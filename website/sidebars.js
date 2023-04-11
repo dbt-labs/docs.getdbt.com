@@ -453,6 +453,7 @@ const sidebarSettings = {
           type: "category",
           label: "General properties",
           items: [
+            "reference/resource-properties/access",
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
