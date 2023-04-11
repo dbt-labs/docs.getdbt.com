@@ -9,9 +9,11 @@ Example:
 
 ```
 dbt show --select model_name.sql
-
 ```
-
+or
+```
+dbt show --inline "select * from {{ ref('model_name') }}"
+```
 The `show` command is useful for:
 
 1. Visually inspecting the transformed data without accessing the data platform. 
