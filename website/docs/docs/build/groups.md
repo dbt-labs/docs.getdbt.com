@@ -76,5 +76,5 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/publish/model-access#groups)
+* [Model Access](/docs/collaborate/governance/model-access#groups)
 * [Group Property](/docs/reference/resource-configs/group)
