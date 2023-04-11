@@ -266,7 +266,7 @@ metrics:
 ## Definition
 An optional configuration for grouping models, analysis, snapshots, tests, and metrics. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
-For more details on reference access between resources in groups, check out [model access](/docs/collaborate/publish/model-access#groups).
+For more details on reference access between resources in groups, check out [model access](/docs/collaborate/governance/model-access#groups).
 
 ## Examples
 ### Prevent a 'marketing' group model from referencing a private 'finance' group model

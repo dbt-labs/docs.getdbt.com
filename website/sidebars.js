@@ -281,7 +281,7 @@ const sidebarSettings = {
           type: "category",
           label: "Maintain your models with mature governance",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/governance/about-publishing-models" },
+          link: { type: "doc", id: "docs/collaborate/governance/about-model-governance" },
           items: [
             "docs/collaborate/governance/model-contracts",
             "docs/collaborate/governance/model-access",
