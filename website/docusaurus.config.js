@@ -79,7 +79,7 @@ var siteSettings = {
     announcementBarLink: "https://www.getdbt.com/resources/staging-april-2023/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2024_staging_ex&utm_content=staging____&utm_term=knowledge-builder_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "emily-riederer",
+    communitySpotlightMember: "david-effiong",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");

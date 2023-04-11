@@ -2,7 +2,7 @@
 id: david-effiong
 title: David Effiong
 description: |
-  I started my career as a data analyst but I currently work as a data engineer in a financial Institution. I have experience working in both large organisations and startups. I have been in the dbt community for about 1 year and 6 months. I found out about dbt while working at a startup where I implemented a modern data stack using BigQuery, Airbyte, Metabase, and dbt. Currently my stack in my large organisation includes Azure tools + dbt. (😁 Of course I had to use dbt!). I have a YouTube channel where I share learnings about data and productivity. The name of my channel is David Data, please check it out. I spoke at the first in-person Lagos dbt meetup about and I am currently an organiser of the Lagos dbt meetup.
+  I started my career as a data analyst but I currently work as a data engineer in a financial Institution. I have experience working in both large organisations and startups. I have been in the dbt community for about 1 year and 6 months. I found out about dbt while working at a startup where I implemented a modern data stack using BigQuery, Airbyte, Metabase, and dbt. Currently my stack in my large organisation includes Azure tools + dbt. (😁 Of course I had to use dbt!) I have a YouTube channel where I share learnings about data and productivity. The name of my channel is David Data, please check it out. I spoke at the first in-person Lagos dbt meetup about and I am currently an organiser of the Lagos dbt meetup.
 image: /img/community/spotlight/david-effiong.jpg
 pronouns: he/him
 location: Lagos, Nigeria

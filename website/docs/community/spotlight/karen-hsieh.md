@@ -6,7 +6,7 @@ description: |
 
   Utilizing dbt, I replaced time-consuming spreadsheets by creating key business metric dashboards that improved data literacy, enabling conversations about product and business.
 
-  Since joining the dbt community in 2019, I’ve led the creation of the #local-taiwan dbt Slack channel, organized 10 <a href="https://www.meetup.com/taipei-dbt-meetup/" title="Taiwan dbt Meetups" target="_blank" rel=“noreferrer”>Taiwan dbt Meetups</a> and <a title="spoken at Coalesce 2022" href="https://youtu.be/VMlrT4wXTgg" target="_blank" rel=“noreferrer”>spoken at Coalesce 2022</a>.
+  Since joining the dbt community in 2019, I’ve led the creation of the #local-taiwan dbt Slack channel, organized 10 <a href="https://www.meetup.com/taipei-dbt-meetup/" title="Taipei dbt Meetups" target="_blank" rel=“noreferrer”>Taipei dbt Meetups</a> and <a title="spoken at Coalesce 2022" href="https://youtu.be/VMlrT4wXTgg" target="_blank" rel=“noreferrer”>spoken at Coalesce 2022</a>.
 
   I write about how data empowers products on <a href="https://medium.com/@ijacwei" title="Medium" target="_blank" rel=“noreferrer”>Medium</a>. I focus on understanding how users utilize and think about the product based on facts.
 image: /img/community/spotlight/karen-hsieh.jpg
