@@ -8,7 +8,7 @@ tags: [Apr-12-2023, scheduler]
 
 The dbt Cloud Scheduler now prevents queue clog by canceling unnecessary runs of over-scheduled jobs. 
 
-The duration of a job run tends to grow over time, usually caused by growing amounts of data in the warehouse. If the run duration becomes longer than the frequency of the job’s schedule, the queue will grow faster than the Scheduler can process the job’s runs, leading to a runaway queue with runs that don’t need be processed.
+The duration of a job run tends to grow over time, usually caused by growing amounts of data in the warehouse. If the run duration becomes longer than the frequency of the job’s schedule, the queue will grow faster than the scheduler can process the job’s runs, leading to a runaway queue with runs that don’t need be processed.
 
 Previously, when a job was in this over-scheduled state, the Scheduler would stop queuing runs after 50 were already in queue. This led to a bad experience in which runs indiscriminately were canceled, and a user would have to go into dbt Cloud to manually cancel all the queued runs and change the job schedule to "unclog" the scheduler queue.
 
