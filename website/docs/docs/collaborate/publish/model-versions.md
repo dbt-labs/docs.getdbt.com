@@ -5,8 +5,8 @@ sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 ---
 
-:::info Beta functionality
-This functionality is new in v1.5. These docs exist to provide a high-level overview of what's to come. The specific syntax is liable to change.
+:::info New functionality
+This functionality is new in v1.5.
 
 For more details and to leave your feedback, check out the GitHub discussion:
 * ["Model versions" (dbt-core#6736)](https://github.com/dbt-labs/dbt-core/discussions/6736)
@@ -51,7 +51,7 @@ models:
 
 </File>
 
-If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (for example, SQL file) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
+If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (SQL or python file) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
 
 <File name="models/schema.yml">
 
@@ -73,7 +73,7 @@ models:
     versions:
       - v: 2
         columns:
-          - include: *
+          - include: "*"
             exclude: country_name # this is the breaking change!
       - v: 1
         config:
@@ -82,4 +82,18 @@ models:
 
 </File>
 
-The above configuration will create two models (one for each version), with aliases `dim_customers` (version 1) and `dim_customers_v2`.
+The above configuration will create two models (one for each version), with aliases `dim_customers` (version 1, based on the `alias` config) and `dim_customers_v2`.
+
+:::info
+Projects which have historically implemented [custom aliases](/docs/build/custom-aliases) by reimplemented the `generate_alias_name` macro will need to update their custom implementations to account for model versions. 
+
+Otherwise they'll see something like this as soon as they start using versions:
+
+```sh
+dbt.exceptions.AmbiguousAliasError: Compilation Error
+  dbt found two resources with the database representation "database.schema.model_name".
+  dbt cannot create two resources with identical database representations. To fix this,
+  change the configuration of one of these resources:
+  - model.project_name.model_name.v1 (models/.../model_name.sql)
+  - model.project_name.model_name.v2 (models/.../model_name_v2.sql)
+```
