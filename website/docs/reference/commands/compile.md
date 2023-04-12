@@ -13,7 +13,7 @@ The `compile` command is useful for:
 
 <VersionBlock firstVersion="1.5">
 
-Starting in dbt v1.5, `compile` becomes interactive in the CLI using the selection syntaxt `--select` or `--inline` to target specic models or Jinja references, respectively. This will return the compiled SQL in the CLI (in addition to the `target/` directory). 
+Starting in dbt v1.5, `compile` becomes interactive in the CLI using the selection syntax `--select` or `--inline` to target specific models or Jinja references, respectively. This will display the compiled SQL in the terminal (in addition to the `target/` directory). 
 
 For example:
 
