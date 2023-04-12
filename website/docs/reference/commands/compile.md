@@ -27,6 +27,8 @@ or
 dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 
+<Lightbox src="/img/docs/reference/dbt-compile.png" title="dbt compile --select stg_payments"/>
+
 </VersionBlock>
 
 It is _not_ a pre-requisite of `dbt run`.
