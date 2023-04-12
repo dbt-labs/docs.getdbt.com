@@ -68,7 +68,7 @@ manifest: Manifest = res.result
 # e.g. assert every public model has a description
 for node in manifest.nodes.values():
     if node.resource_type == "model" and node.access == "public":
-        assert node.description != ""
+        assert node.description != "", f"{node.name} is missing a description"
 
 # reuse this manifest in subsequent commands to skip parsing
 dbt = dbtRunner(manifest=manifest)
