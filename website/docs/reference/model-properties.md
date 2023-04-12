@@ -17,8 +17,11 @@ models:
     [docs](/reference/resource-configs/docs):
       show: true | false
     [latest_version]: <version_string> (resource-properties/latest-version)
+    [access](resource-properties/access): private | protected | public
     [config](resource-properties/config):
       [<model_config>](model-configs): <config_value>
+    [constraints](resource-properties/constraints):
+      - <constraint>
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
@@ -27,6 +30,8 @@ models:
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
+        [constraints](resource-properties/constraints):
+          - <constraint>
         [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
@@ -35,23 +40,26 @@ models:
       - name: ... # declare properties of additional columns
     versions:
       - v: <version_name> # required
+        [defined_in](TODO): <definition_file_name>
         [description](description): <markdown_string>
         [docs](/reference/resource-configs/docs):
           show: true | false
+        [access](resource-properties/access): private | protected | public
         [config](resource-properties/config):
           [<model_config>](model-configs): <config_value>
         [tests](resource-properties/tests):
           - <test>
           - ... # declare additional tests
         columns:
+          - include: <include_list>
+            exclude: <exclude_list>
           - name: <column_name> # required
             [quote](quote): true | false
             [tests](resource-properties/tests):
               - <test>
               - ... # declare additional tests
             [tags](resource-configs/tags): [<string>]
-
-      - v: ... # declare properties of additional versions
+        - v: ... # declare properties of additional versions
 
 ```
 

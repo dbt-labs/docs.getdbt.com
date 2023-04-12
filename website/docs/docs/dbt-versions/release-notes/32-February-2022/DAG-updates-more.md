@@ -1,6 +1,6 @@
 ---
 title: "DAG updates and performance improvements"
-description: "Feb 2022: Clicking a node in the DAG opens a model or config file in new tab in the IDE."
+description: "Feb 2022 release note: Clicking a node in the DAG opens a model or config file in new tab in the IDE."
 id: "DAG-updates-more"
 sidebar_label: "DAG updates and more"
 tags: [v1.1.44, February-02-2022, IDE]

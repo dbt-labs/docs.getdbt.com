@@ -44,17 +44,21 @@ exports.versionedPages = [
     "firstVersion": "1.5",
   },
   {
+    "page": "reference/resource-configs/group",
+    "firstVersion": "1.5",
+  },
+  {
     "page": "reference/resource-properties/constraints",
     "firstVersion": "1.5",
   },
   {
     "page": "reference/dbt-jinja-functions/local-md5",
-     "firstVersion": "1.4",
-   },
-   {
-     "page": "reference/warehouse-setups/fal-setup",
-     "firstVersion": "1.3",
-   },
+    "firstVersion": "1.4",
+  },
+  {
+    "page": "reference/warehouse-setups/fal-setup",
+    "firstVersion": "1.3",
+  },
   {
     "page": "reference/dbt-jinja-functions/set",
     "firstVersion": "1.2",
@@ -67,7 +71,7 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/cross-database-macros",
     "firstVersion": "1.2",
   },
-    {
+  {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
   },
@@ -83,4 +87,11 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
+]
+
+exports.versionedCategories = [
+  {
+    "category": "Publishing models",
+    "firstVersion": "1.5",
+  }
 ]

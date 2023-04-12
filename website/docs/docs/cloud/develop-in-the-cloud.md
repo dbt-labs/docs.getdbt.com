@@ -1,8 +1,9 @@
 ---
 title: "dbt Cloud IDE"
 id: develop-in-the-cloud
-description: "Develop, test, run, and build in the Cloud IDE."
+description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: dbt Cloud IDE
+tags: [IDE]
 ---
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
@@ -14,8 +15,8 @@ To develop in the Cloud IDE, make sure you have the following:
 
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
-- A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/connect-your-database)
-- Set up a [development environment and development credentials](#access-the-cloud-ide)
+- A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
+- A [development environment and development credentials](#access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
 
 ## Cloud IDE features

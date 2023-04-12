@@ -1,7 +1,7 @@
 ---
 title: "Autocomplete snippets for SQL and YAML files in IDE"
 id: "ide-timeout-message"
-description: "Jan 2022: Autocomplete snippets for SQL and YAML files in IDE"
+description: "Jan 2022 release note: Autocomplete snippets for SQL and YAML files in IDE"
 sidebar_label: "Autocomplete in IDE and more"
 tags: [v1.1.43, January-19-2022, IDE]
 ---

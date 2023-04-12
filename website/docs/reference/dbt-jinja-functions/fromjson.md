@@ -1,6 +1,7 @@
 ---
 title: "fromjson"
 id: "fromjson"
+description: "Deserialize a json string into python with `fromjson` context method."
 ---
 
 The `fromjson` context method can be used to deserialize a json string into a Python object primitive, eg. a `dict` or `list`.
