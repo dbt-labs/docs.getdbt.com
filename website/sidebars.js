@@ -279,13 +279,13 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Maintain your models with mature governance",
+          label: "Maintain, share, and govern mature dbt models",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/governance/about-model-governance" },
+          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
           items: [
-            "docs/collaborate/governance/model-contracts",
-            "docs/collaborate/governance/model-access",
-            "docs/collaborate/governance/model-versions",
+            "docs/collaborate/govern/model-contracts",
+            "docs/collaborate/govern/model-access",
+            "docs/collaborate/govern/model-versions",
           ],
         },
       ],
