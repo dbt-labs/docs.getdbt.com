@@ -8,13 +8,13 @@ Every [dbt project](projects) needs a `dbt_project.yml` file — this is how dbt
 
 <VersionBlock lastVersion="1.4">
 
-By default, dbt will look in your current working directory for `dbt_project.yml`, but you can set a different directory using the `--profiles-dir` flag.
+By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--profiles-dir` flag.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
-By default, dbt will look in your current working directory for `dbt_project.yml`, but you can set a different directory using the `--profiles-dir` flag or the `DBT_PROJECT_DIR` environment variable.
+By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--profiles-dir` flag or the `DBT_PROJECT_DIR` environment variable.
 
 </VersionBlock>
 
