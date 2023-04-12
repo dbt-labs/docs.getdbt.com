@@ -62,7 +62,7 @@ Backward compatibility with the old syntax is still supported but will be remove
 
 ### For maintainers of adapter plugins
 
-For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/7213).
 
 ## New and changed documentation
 
