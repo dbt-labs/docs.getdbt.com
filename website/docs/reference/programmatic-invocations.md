@@ -33,7 +33,7 @@ Each command returns a `dbtRunnerResult` object, which has three attributes:
 There is a 1:1 correspondence between [CLI exit codes](reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
 
 | Scenario                                                                                    | CLI Exit Code | `success` | `result`         | `exception` |
-|---------------------------------------------------------------------------------------------|---------------|-----------|-------------------|-------------|
+|---------------------------------------------------------------------------------------------|--------------:|-----------|-------------------|-------------|
 | Invocation completed without error                                                          | 0             | `True`      | varies by command | `None`        |
 | Invocation completed with at least one handled error (e.g. test failure, model build error) | 1             | `False`     | varies by command | `None`        |
 | Unhandled error. Invocation did not complete, and returns no results.                       | 2             | `False`     | `None`              | Exception   |
@@ -94,7 +94,7 @@ dbt.invoke(["list"])
 
 ### Overriding parameters
 
-Pass in parameters as Pythonic `**kwargs`, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
+Pass in parameters as keyword arguments, instead of a list of CLI-style strings. At present, dbt will not do any validation or type coercion on your inputs. The subcommand must be specified, in a list, as the first positional argument.
 ```python
 from dbt.cli.main import dbtRunner
 dbt = dbtRunner()
