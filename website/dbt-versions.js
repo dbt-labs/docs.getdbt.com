@@ -92,3 +92,10 @@ exports.versionedPages = [
     "firstVersion": "1.1",
   },
 ]
+
+exports.versionedCategories = [
+  {
+    "category": "Publishing models",
+    "firstVersion": "1.5",
+  }
+]

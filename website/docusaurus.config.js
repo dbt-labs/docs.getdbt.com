@@ -1,7 +1,7 @@
 const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const { versions, versionedPages } = require("./dbt-versions");
+const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Debugging */
@@ -68,15 +68,15 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "biweekly-demos",
+      id: "staging",
       content:
-        "Join us at our bi-weekly demos and see dbt Cloud in action!",
+        "See what's new in dbt — join us at Staging on April 26!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
+    announcementBarLink: "https://www.getdbt.com/resources/staging-april-2023/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2024_staging_ex&utm_content=staging____&utm_term=knowledge-builder_all__",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "",
@@ -238,7 +238,7 @@ var siteSettings = {
     [path.resolve("plugins/insertMetaTags"), { metatags }],
     path.resolve("plugins/svg"),
     path.resolve("plugins/customWebpackConfig"),
-    [path.resolve("plugins/buildGlobalData"), { versionedPages }],
+    [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
     // path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
