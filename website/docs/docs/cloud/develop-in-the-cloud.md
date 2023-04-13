@@ -18,6 +18,7 @@ To develop in the Cloud IDE, make sure you have the following:
 - A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
 - A [development environment and development credentials](#access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
+- Optional: We recommend you disable ad blockers for dbt Cloud
 
 ## Cloud IDE features
 
