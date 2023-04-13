@@ -54,7 +54,7 @@ The second architectural decision was whether or not to create a single dbt proj
 
 <Lightbox src="img/blog/2023-04-17-dbt-squared/roche-project-tree.png" title="Roche project structure as seen in the repository" />
 
-The resulting data flow from core to country teams now follows this pattern. The *Sources* database holds all of the raw data in the Redshift cluster and the *Integrated* database contains the curated and ready-for-consumption outputs from the core dbt project. These outputs are termed Source Data Products (SDPs). These SDPs are then leveraged by the core team to build Global Data Products—products tailored to answering business questions for global stakeholders. They are also filtered at the country-level and used as sources to the country-specific Data Products managed by the country teams. These, in turn, are hosted in the respective *affiliate_db_<country>* database. Segregating at the database-level facilitates data governance and privacy management.
+The resulting data flow from core to country teams now follows this pattern. The *Sources* database holds all of the raw data in the Redshift cluster and the *Integrated* database contains the curated and ready-for-consumption outputs from the core dbt project. These outputs are termed Source Data Products (SDPs). These SDPs are then leveraged by the core team to build Global Data Products—products tailored to answering business questions for global stakeholders. They are also filtered at the country-level and used as sources to the country-specific Data Products managed by the country teams. These, in turn, are hosted in the respective `affiliate_db_<country>` database. Segregating at the database-level facilitates data governance and privacy management.
 
 <Lightbox src="img/blog/2023-04-17-dbt-squared/roche-db-diagram.png" title="Roche project structure as seen in the repository" />
 
@@ -69,7 +69,6 @@ We quickly realized that we needed to lower the barrier of entry for new teams t
 The success of this program relied on adopting DevOps practices from the start. This required a cultural shift, which can be particularly challenging in large scale organizations. We needed to take the DevOps processes that were working well for the core team, and scale them to dozens of teams to ensure the same level of quality and consistency in our data products. By seamlessly integrating dbt with git, our CI/CD processes were able to scale effortlessly, allowing for automated testing, building, and releasing of our pipelines.
 
 Often overlooked, this third pillar of process can be the key to success when scaling a global platform. Simple things, such as accounting for time zone differences, can determine whether a message gets across the board. To facilitate the communication and coordination between Global and Country teams, all the teams follow the same sprint cycle, and we hold weekly scrum of scrums. We needed to set up extensive onboarding documentation, ensure newcomers had proper training and guidance, and create dedicated slack channels for announcements, incident reporting, and occasional random memes, helping build a community that stretches from Brazil to Malaysia.
-
 
 <Lightbox src="img/blog/2023-04-17-dbt-squared/roche-meme.png" title="Roche project structure as seen in the repository" />
 
