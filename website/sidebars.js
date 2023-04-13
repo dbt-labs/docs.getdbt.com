@@ -614,6 +614,7 @@ const sidebarSettings = {
         "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
+        "reference/programmatic-invocations",
       ],
     },
     {
