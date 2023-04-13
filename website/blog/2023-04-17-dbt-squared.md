@@ -50,11 +50,11 @@ We needed a way to make this architecture manageable when dozens of downstream t
 
 The second architectural decision was whether or not to create a single dbt project for all 50+ country teams, or to follow a multi-project approach in which each country would have its own separate dbt project in the shared repo. It was critical that each country team was able to move at different paces and have full control over their domains. This would avoid issues like model name collisions across countries and remove dependencies that would risk cascading errors between countries. Therefore, we opted for a one project per country approach.
 
-<Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-project-tree.png" title="Roche project structure as seen in the repository" />
+<Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-project-tree.png" width="85%" title="Roche project structure as seen in the repository" />
 
 The resulting data flow from core to country teams now follows this pattern. The *Sources* database holds all of the raw data in the Redshift cluster and the *Integrated* database contains the curated and ready-for-consumption outputs from the core dbt project. These outputs are termed Source Data Products (SDPs). These SDPs are then leveraged by the core team to build Global Data Products—products tailored to answering business questions for global stakeholders. They are also filtered at the country-level and used as sources to the country-specific Data Products managed by the country teams. These, in turn, are hosted in the respective `affiliate_db_<country>` database. Segregating at the database-level facilitates data governance and privacy management.
 
-<Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-db-diagram.png" title="Roche project structure as seen in the repository" />
+<Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-db-diagram.png" width="85%" title="Roche project structure as seen in the repository" />
 
 ### People
 
@@ -68,7 +68,7 @@ The success of this program relied on adopting DevOps practices from the start. 
 
 Often overlooked, this third pillar of process can be the key to success when scaling a global platform. Simple things, such as accounting for time zone differences, can determine whether a message gets across the board. To facilitate the communication and coordination between Global and Country teams, all the teams follow the same sprint cycle, and we hold weekly scrum of scrums. We needed to set up extensive onboarding documentation, ensure newcomers had proper training and guidance, and create dedicated slack channels for announcements, incident reporting, and occasional random memes, helping build a community that stretches from Brazil to Malaysia.
 
-<Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-meme.png" title="Roche project structure as seen in the repository" />
+<Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-meme.png" width="85%" title="Roche project structure as seen in the repository" />
 
 ## The Solution - dbt squared
 
