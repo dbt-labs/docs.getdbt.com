@@ -13,8 +13,8 @@ is_featured: true
 ---
 
 Teams thrive when each team member is provided with the tools that best complement and enhance their skills. You wouldn’t hand Cristiano Ronaldo a tennis racket and expect a perfect serve! At Roche, getting the right tools in the hands of our teammates was critical to our ability to grow our data team from 10 core engineers to over 100 contributors in just two years. We embraced both dbt Core and dbt Cloud at Roche (a dbt-squared solution, if you will!) to quickly scale our data platform.
-
-We faced three key areas of growth along this journey to scale: technology, people, and processes—in an all-or-nothing game, getting only one right wouldn’t cut it.
+<!--truncate-->
+We faced three key areas of growth along this journey to scale: technology, people, and processes in an all-or-nothing game—getting only one right wouldn’t cut it.
 
 - **Technology**: dbt on the CLI was the right tool for core engineers, but couldn’t scale to our affiliate teams. dbt Cloud catalyzed their contribution to the platform.
 - **People**: We needed to onboard teams well-versed in SQL, but new to dbt, into our workflow with as little friction as possible.
@@ -46,7 +46,7 @@ We needed a way to make this architecture manageable when dozens of downstream t
 
 1. Act as a catalyst for code reuse and best-practice sharing
 2. Share common models and macros that span multiple countries across projects more easily
-3. Promote a common workflow - an engineer working today for a Brazilian use-case could easily work tomorrow on a solution for Germany.
+3. Promote a common workflow—an engineer working today for a Brazilian use-case could easily work tomorrow on a solution for Germany.
 
 The second architectural decision was whether or not to create a single dbt project for all 50+ country teams, or to follow a multi-project approach in which each country would have its own separate dbt project in the shared repo. It was critical that each country team was able to move at different paces and have full control over their domains. This would avoid issues like model name collisions across countries and remove dependencies that would risk cascading errors between countries. Therefore, we opted for a one project per country approach.
 
@@ -70,9 +70,9 @@ Often overlooked, this third pillar of process can be the key to success when sc
 
 <Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-meme.png" width="85%" title="Roche project structure as seen in the repository" />
 
-## The Solution - dbt squared
+## The solution: dbt squared
 
-### Technology and People
+### Technology and people
 
 Our teams’ differing levels of technical maturity demanded different technical solutions. The core team was well versed with dbt Core (even [contributing](https://github.com/dbt-labs/dbt-core/pull/3408) to the project!) and had been working on the same project for 3 years with software engineering best practices  (i.e. CI/CD, unit tests, linting, and pre-commit hooks). The affiliate teams had noticeably different exposure to these tools. Thus, we rolled out dbt Cloud to the country teams to avoid onboarding them to complex core workflows, which would have unnecessarily slowed them down.
 
@@ -86,19 +86,19 @@ Doubling down on dbt Cloud had a big impact on how fast we could grow without co
 
 Operating at scale meant we needed to adapt our processes that once worked for a  core team of ten to now work for a team of hundreds.
 
-- **Project Setup** – we needed to have a scalable way to provision new projects for the first time.
-- **Development Flow** – we needed to make sure any team member could develop seamlessly, no matter how far downstream they sat.
-- **Release Flow** – releasing to one project was straightforward, but releasing to connected projects simultaneously needed a lot more coordination
+- **Project Setup**: We needed to have a scalable way to provision new projects for the first time.
+- **Development Flow**: We needed to make sure any team member could develop seamlessly, no matter how far downstream they sat.
+- **Release Flow**: Releasing to one project was straightforward, but releasing to connected projects simultaneously needed considerable coordination.
 
-### Project Setup Flow
+### Project setup flow
 
 Because we decided to go with a multi-project architecture, there was some initial setup needed. Each country would need a dbt project in our Git repository and also needed to be deployed in dbt Cloud…twice, as each affiliate has a dev and a prod project. To avoid setting up all of the projects manually in the dbt Cloud UI, we implemented a python library as a wrapper around the [dbt Cloud Administrative API](https://docs.getdbt.com/docs/dbt-cloud-apis/admin-cloud-api).  This would read a YAML configuration file and deploy all of the projects automatically. This saved a lot of time, as we would already have a new team’s dbt project setup in both the git repository and dbt Cloud as soon as they were ready to start building.
 
-### Development Flow
+### Development flow
 
 The developer teams using dbt on the CLI often leveraged the [defer command](https://docs.getdbt.com/reference/node-selection/defer), which is not achievable seamlessly when using dbt Cloud (there is a [workaround](https://discourse.getdbt.com/t/possible-to-use-defer-to-testing-time-in-cloud-ide/6189) suggested that involves injecting a manifest file into the repo). Several rounds of fruitful discussions with the dbt Labs team lead us towards using  [“Proxy Views”](https://gist.github.com/boxysean/c1e0cb6735f6bbbb422cb06a14c3cd92), which emulate zero-copy clone functionality. For this solution to work, we also needed to override the `redshift__list_relations_without_caching` macro (for more details please read the comments of our Lead Engineer Jakub Lanski [here](https://github.com/dbt-labs/dbt-redshift/issues/179)). This enables each engineer to develop and test their models without the need to entirely recreate the upstream dependencies. Instead, these upstream model dependencies are created as views in the developer’s target schema that point to their production counterparts. This is particularly critical when implementing models that rely on dozens of upstream dependencies. By avoiding unnecessary data replication, we dramatically reduced development time.
 
-### Release Flow
+### Release flow
 
 Last but not least, as of now, dbt Cloud lacks some of the GitOps tooling the core team leveraged. The core team uses the [pre-commit](https://pre-commit.com/) framework to ensure code quality before opening merge requests to the common branch. The core team also leverages [sqlfluff](https://sqlfluff.com/) to standardize the code across several streams of work. Since dbt Cloud doesn’t yet offer the possibility to run the pre-commit hooks directly in the IDE, we migrated these workflows to CI checks. These checks are triggered when a merge request to the common branch is raised, guaranteeing that even if a developer is not using the framework locally, the code changes are evaluated before the merge is completed.
 
