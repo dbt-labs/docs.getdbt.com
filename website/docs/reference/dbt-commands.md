@@ -23,6 +23,7 @@ For information about selecting models on the command line, consult the docs on 
 - [parse](parse) (CLI only): parses a project and writes detailed timing info
 - [run](run): runs the models in a project
 - [seed](seed): loads CSV files into the database
+- [show](show): preview table rows post-transformation
 - [snapshot](snapshot): executes "snapshot" jobs defined in a project
 - [source](commands/source): provides tools for working with source data (including validating that sources are "fresh")
 - [test](commands/test): executes tests defined in a project
