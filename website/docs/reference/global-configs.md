@@ -224,7 +224,7 @@ $ dbt --log-format json run
 ```
 <VersionBlock firstVersion="1.5">
 
-To set the `LOG_FORMAT` type output for the file without impacting the console log format, use the `-file` subcommand.
+To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
 
 
 ```text
