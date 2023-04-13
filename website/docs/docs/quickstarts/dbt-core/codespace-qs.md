@@ -16,7 +16,7 @@ The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Ja
 
 ## Prerequisites
 
-- To use the dbt CLI, it's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
+- To use the dbt command-line interface (CLI), it's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
 
 ## Create a codespace
