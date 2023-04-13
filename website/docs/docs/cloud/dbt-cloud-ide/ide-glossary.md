@@ -26,7 +26,7 @@ G &mdash; [Create New File button](#create-new-file-button)<br />
 
 
 #### Git Repository link 
-The Git Repository Link displays the name of the active branch. Clicking this element will hyperlink to your repository, pinned to that same branch. Available for Github or Gitlab repos on multi-tenant dbt Cloud. 
+Clicking the Git Repository link takes you to your repository on the same active branch. This feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
 
 #### Documentation site button
 The Documentation Site button links to the static dbt Documentation site powered by the most recently generated dbt artifacts in the IDE. This button is clickable once a `dbt docs generate` command is successfully invoked in the Command Bar.  
@@ -132,7 +132,7 @@ After clicking on a file in the **Changes** section in the **Version Control Men
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-git-diff-view-with-save.jpg" width="100%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
 
 #### Markdown Preview subtab
-The Markdown Preview subab renders markdown code in a .md file in your repository into a Markdown Preview. This is updated as you make edits to your code! 
+The Markdown Preview subtab renders markdown code in a .md file in your repository into a Markdown Preview. This is updated as you make edits to your code! 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-markdown-with-save.jpg" width="100%" title="The Markdown Preview subtab renders markdown code below the Editor tab."/>
 
