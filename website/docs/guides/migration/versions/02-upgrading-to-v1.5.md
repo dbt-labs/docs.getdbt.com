@@ -75,5 +75,5 @@ More to come!
 - [Model contracts](model-contracts)
 - [Model versions](model-versions)
 
-### dbt-core Python API
-- Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations
+### New CLI, commands, Python API for programmatic invocations
+- [Programmatic invocations](programmatic-invocations)

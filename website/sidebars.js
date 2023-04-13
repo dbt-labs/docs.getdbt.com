@@ -36,7 +36,8 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/quickstarts/dbt-core/quickstart",
+            "docs/quickstarts/dbt-core/codespace",
+            "docs/quickstarts/dbt-core/manual-install",
           ],
         },
       ],
@@ -603,6 +604,7 @@ const sidebarSettings = {
             "reference/commands/run",
             "reference/commands/run-operation",
             "reference/commands/seed",
+            "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
             "reference/commands/test",
@@ -613,6 +615,7 @@ const sidebarSettings = {
         "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
+        "reference/programmatic-invocations",
       ],
     },
     {
