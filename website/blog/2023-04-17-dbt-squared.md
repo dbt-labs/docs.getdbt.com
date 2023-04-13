@@ -12,8 +12,6 @@ date: 2023-04-17
 is_featured: true
 ---
 
-## Introduction
-
 Teams thrive when each team member is provided with the tools that best complement and enhance their skills. You wouldn’t hand Cristiano Ronaldo a tennis racket and expect a perfect serve! At Roche, getting the right tools in the hands of our teammates was critical to our ability to grow our data team from 10 core engineers to over 100 contributors in just two years. We embraced both dbt Core and dbt Cloud at Roche (a dbt-squared solution, if you will!) to quickly scale our data platform.
 
 We faced three key areas of growth along this journey to scale: technology, people, and processes—in an all-or-nothing game, getting only one right wouldn’t cut it.
@@ -30,7 +28,7 @@ dbt Core jump started our data platform’s growth, and dbt Cloud allowed us to 
 
 To understand the changes that we made, let's dive into what our technology, people and process looked like at the beginning of this path.
 
-### Where we started
+## Where we started
 
 Our dbt journey at Roche started roughly 3 years ago when we began to build a cloud native content recommendation system tailored to our Sales Reps. We started with a small team of under 10 people and we designed our core architecture based on some well-defined principles: deploy Everything as Code, choose Serverless whenever feasible, and apply <Term id="elt">Extract Load Transform</Term> as opposed to <Term id="etl">Extract Transform Load</Term>.
 
@@ -88,9 +86,9 @@ Doubling down on dbt Cloud had a big impact on how fast we could grow without co
 
 Operating at scale meant we needed to adapt our processes that once worked for a  core team of ten to now work for a team of hundreds.
 
-- **Project Setup – we needed to have a scalable way to provision new projects for the first time.**
-- **Development Flow – we needed to make sure any team member could develop seamlessly, no matter how far downstream they sat.**
-- **Release Flow – releasing to one project was straightforward, but releasing to connected projects simultaneously needed a lot more coordination**
+- **Project Setup** – we needed to have a scalable way to provision new projects for the first time.
+- **Development Flow** – we needed to make sure any team member could develop seamlessly, no matter how far downstream they sat.
+- **Release Flow** – releasing to one project was straightforward, but releasing to connected projects simultaneously needed a lot more coordination
 
 ### Project Setup Flow
 
@@ -98,7 +96,7 @@ Because we decided to go with a multi-project architecture, there was some initi
 
 ### Development Flow
 
-The developer teams using dbt on the CLI often leveraged the [defer command](https://docs.getdbt.com/reference/node-selection/defer), which is not achievable seamlessly when using dbt Cloud (there is a [workaround](https://discourse.getdbt.com/t/possible-to-use-defer-to-testing-time-in-cloud-ide/6189) suggested that involves injecting a manifest file into the repo). Several rounds of fruitful discussions with the dbt Labs team lead us towards using  [“Proxy Views”](https://gist.github.com/boxysean/c1e0cb6735f6bbbb422cb06a14c3cd92), which emulate zero-copy clone functionality. For this solution to work, we also needed to override the *redshift__list_relations_without_caching* macro (for more details please read the comments of our Lead Engineer Jakub Lanski [here](https://github.com/dbt-labs/dbt-redshift/issues/179)). This enables each engineer to develop and test their models without the need to entirely recreate the upstream dependencies. Instead, these upstream model dependencies are created as views in the developer’s target schema that point to their production counterparts. This is particularly critical when implementing models that rely on dozens of upstream dependencies. By avoiding unnecessary data replication, we dramatically reduced development time.
+The developer teams using dbt on the CLI often leveraged the [defer command](https://docs.getdbt.com/reference/node-selection/defer), which is not achievable seamlessly when using dbt Cloud (there is a [workaround](https://discourse.getdbt.com/t/possible-to-use-defer-to-testing-time-in-cloud-ide/6189) suggested that involves injecting a manifest file into the repo). Several rounds of fruitful discussions with the dbt Labs team lead us towards using  [“Proxy Views”](https://gist.github.com/boxysean/c1e0cb6735f6bbbb422cb06a14c3cd92), which emulate zero-copy clone functionality. For this solution to work, we also needed to override the `redshift__list_relations_without_caching` macro (for more details please read the comments of our Lead Engineer Jakub Lanski [here](https://github.com/dbt-labs/dbt-redshift/issues/179)). This enables each engineer to develop and test their models without the need to entirely recreate the upstream dependencies. Instead, these upstream model dependencies are created as views in the developer’s target schema that point to their production counterparts. This is particularly critical when implementing models that rely on dozens of upstream dependencies. By avoiding unnecessary data replication, we dramatically reduced development time.
 
 ### Release Flow
 
