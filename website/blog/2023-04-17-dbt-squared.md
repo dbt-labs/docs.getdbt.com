@@ -6,7 +6,7 @@ slug: dbt-squared
 authors: [joao_antunes]
 
 tags: [analytics craft]
-hide_table_of_contents: /false
+hide_table_of_contents: false
 
 date: 2023-04-17
 is_featured: true
