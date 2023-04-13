@@ -14,6 +14,9 @@ or
 ```
 dbt show --inline "select * from {{ ref('model_name') }}"
 ```
+
+<Lightbox src="/img/docs/reference/dbt-show" title="dbt show preview"/>
+
 The `show` command is useful for:
 
 1. Visually inspecting the transformed data without accessing the data platform. 
