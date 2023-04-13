@@ -602,6 +602,7 @@ const sidebarSettings = {
             "reference/commands/run",
             "reference/commands/run-operation",
             "reference/commands/seed",
+            "reference/commands/show",
             "reference/commands/snapshot",
             "reference/commands/source",
             "reference/commands/test",
@@ -612,6 +613,7 @@ const sidebarSettings = {
         "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
+        "reference/programmatic-invocations",
       ],
     },
     {

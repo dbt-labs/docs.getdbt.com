@@ -199,4 +199,10 @@ The `EVENT_HISTORY` object has been deprecated and removed in dbt Core v1.4+
 
 Older versions of `dbt-core` made available a full history of events fired during an invocation, in the form of an `EVENT_HISTORY` object.
 
-The Python interface into events is significantly less mature than the structured logging interface. For all use cases, we recommend parsing JSON-formatted logs.
+<VersionBlock firstVersion="1.5">
+
+When [invoking dbt programmatically](programmatic-invocations#registering-callbacks), it is possible to register a callback on dbt's `EventManager`. This allows access to structured events as Python objects, to enable custom logging and integration with other systems.
+
+</VersionBlock>
+
+The Python interface into events is significantly less mature than the structured logging interface. For all standard use cases, we recommend parsing JSON-formatted logs.

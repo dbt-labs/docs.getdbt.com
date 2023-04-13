@@ -1,7 +1,7 @@
 exports.versions = [
   {
     version: "1.5",
-    EOLDate: "2024-04-26",
+    EOLDate: "2024-04-27",
     isPrerelease: true,
   },
   {
@@ -27,6 +27,10 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
+  {
+    "page": "docs/reference/programmatic-invocations",
+    "firstVersion": "1.5",
+  },
   {
     "page": "docs/collaborate/publish/model-contracts",
     "firstVersion": "1.5",
