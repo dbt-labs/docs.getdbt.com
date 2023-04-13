@@ -283,8 +283,8 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
           items: [
-            "docs/collaborate/govern/model-contracts",
             "docs/collaborate/govern/model-access",
+            "docs/collaborate/govern/model-contracts",
             "docs/collaborate/govern/model-versions",
           ],
         },

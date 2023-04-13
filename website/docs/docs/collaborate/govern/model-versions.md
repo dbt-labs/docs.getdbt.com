@@ -7,15 +7,14 @@ description: "Version models to help with lifecycle management"
 
 :::info New functionality
 This functionality is new in v1.5.
-
-For more details and to leave your feedback, check out the GitHub discussion:
-* ["Model versions" (dbt-core#6736)](https://github.com/dbt-labs/dbt-core/discussions/6736)
 :::
 
 API versioning is a _complex_ problem in software engineering. It's also essential. Our goal is to _overcome obstacles to transform a complex problem into a reality_.
 
 ## Related documentation
-* Coming soon: `version` & `latest_version` (_not_ [this one](project-configs/version))
+- [`versions`](resource-properties/versions)
+- [`latest_version`](resource-properties/latest-version)
+- [`include` & `exclude`](resource-properties/include-exclude)
 
 ## Why version a model?
 
@@ -27,9 +26,19 @@ Instead, the model owner can create a **new version**, during which consumers ca
 
 In the meantime, anywhere that model is used downstream, it can be referenced at a specific version.
 
+## How is this different from "version control"?
+
+[Version control](git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch, with the ability to "rollback" changes by reverting a commit or pull request. In general, only one version of your project code is deployed into an environment at a time.
+
+Model versions are different. Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned—multiple versions are live at the same time; older versions are often eventually sunsetted.
+
+dbt's model `versions` makes it possible to define multiple versions:
+- That share the same "reference" name
+- While reusing the same top-level properties, highlighting just their differences
+
 ## How to create a new version of a model
 
-Let's say you have an unversioned model with the following contract:
+Let's say you have a model (not yet versioned) with the following contract:
 
 <File name="models/schema.yml">
 
@@ -76,13 +85,21 @@ models:
           - include: "*"
             exclude: country_name # this is the breaking change!
       - v: 1
-        config:
-          alias: dim_customers # keep old relation location
 ```
 
 </File>
 
-The above configuration will create two models (one for each version), with aliases `dim_customers` (version 1, based on the `alias` config) and `dim_customers_v2`.
+The above configuration will create two models (one for each version), and produce database relations with aliases `dim_customers_v1` and `dim_customers_v2`.
+
+By convention, dbt will expect those two models to be defined in files named `dim_customers_v1.sql` and `dim_customers_v2.sql`. It is possible to override this by setting a `defined_in` property.
+
+You can reconfigure each version independently. For example, if you wanted `dim_customers.v1` to continue populating the database table named `dim_customers` (its previous location), you could use the `alias` configuration:
+
+```yml
+  - v: 1
+    config:
+      alias: dim_customers # keep old relation location
+```
 
 :::info
 Projects which have historically implemented [custom aliases](/docs/build/custom-aliases) by reimplemented the `generate_alias_name` macro will need to update their custom implementations to account for model versions. 

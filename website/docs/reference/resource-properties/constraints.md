@@ -3,15 +3,62 @@ resource_types: [models]
 datatype: "{dictionary}"
 ---
 
-:::info Beta functionality
-This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
+:::info New functionality
+This functionality is new in v1.5.
 :::
+
+Constraints are a feature of many data platforms. When specified, the platform will perform additional validation on data as it is being populated in a new table, or inserted into a preexisting table. If the validation fails, the table creation or update fails, the operation is rolled back, and you will see a clear error message.
+
+When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
+
+Constraints require the declaration and enforcement of a model [contract](resource-configs/contract)
+
+**Constraints are never applied on models materialized as `view`** (or `ephemeral`). Only `table` and `incremental` models support the application and enforcement of constraints.
+
+## Defining constraints
+
+Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
 The structure of a constraint is:
 - `type` (required): one of `not_null`, `primary_key`, `foreign_key`, `check`, `custom`
-- `expression`: text input to qualify the constraint; required for certain constraint types, and optional for others
-- `name` (optional): some data platforms support defining constraints with a human-friendly name
-- `columns` (optional): only valid for constraints defined as a model property. list of column names to apply the constraint over
+- `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
+- `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
+- `columns` (model-level only): List of column names to apply the constraint over
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: <model_name>
+    
+    # required
+    config:
+      contract:
+        enforced: true
+    
+    # model-level constraints
+    constraints:
+      - type: primary_key
+        columns: [<first_column>, <second_column>, ...]
+      - type: check
+        columns: [<first_column>, <second_column>, ...]
+        expression: "<first_column> != <second_column>"
+        name: human_friendly_name
+      - type: ...
+    
+    columns:
+      - name: <first_column>
+        data_type: <data_type>
+        
+        # column-level constraints
+        constraints:
+          - type: not_null
+          - type: ...
+```
+
+</File>
+
+## Platform-specific support
 
 In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. For example, Postgres supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.
 

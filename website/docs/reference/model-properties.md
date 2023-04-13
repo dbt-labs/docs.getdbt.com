@@ -25,7 +25,7 @@ models:
     [tests](resource-properties/tests):
       - <test>
       - ... # declare additional tests
-    columns:
+    [columns](resource-properties/columns):
       - name: <column_name> # required
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
@@ -38,9 +38,10 @@ models:
         [tags](resource-configs/tags): [<string>]
 
       - name: ... # declare properties of additional columns
-    versions:
-      - [v](resource-properties/v): <version_identifier> # required
-        [defined_in](resource-properties/defined-in): <definition_file_name>
+
+    [versions](resource-properties/versions):
+      - [v](resource-properties/versions#v): <version_identifier> # required
+        [defined_in](resource-properties/versions#defined-in): <definition_file_name>
         [description](description): <markdown_string>
         [docs](/reference/resource-configs/docs):
           show: true | false
@@ -53,8 +54,10 @@ models:
           - <test>
           - ... # declare additional tests
         columns:
+          # include/exclude columns from the top-level model properties
           - [include](resource-properties/include-exclude): <include_value>
-            exclude: <exclude_list>
+            [exclude](resource-properties/include-exclude): <exclude_list>
+          # specify additional columns
           - name: <column_name> # required
             [quote](quote): true | false
             [constraints](resource-properties/constraints):
@@ -63,7 +66,7 @@ models:
               - <test>
               - ... # declare additional tests
             [tags](resource-configs/tags): [<string>]
-        - v: ... # declare properties of additional versions
+        - v: ... # declare additional versions
 
 ```
 

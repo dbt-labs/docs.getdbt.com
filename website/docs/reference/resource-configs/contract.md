@@ -5,15 +5,14 @@ default_value: {contract: false}
 id: "contract"
 ---
 
+:::info New functionality
+This functionality is new in v1.5.
+:::
 
 ## Related documentation
 - [What is a model contract?](govern/model-contracts)
 - [Defining `columns`](resource-properties/columns)
 - [Defining `constraints`](resource-properties/constraints)
-
-:::info Beta functionality
-This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
-:::
 
 # Definition
 

@@ -5,8 +5,8 @@ sidebar_label: "Model contracts"
 description: "Model contracts define a set of parameters validated during transformation"
 ---
 
-:::info Beta functionality
-This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
+:::info New functionality
+This functionality is new in v1.5.
 :::
 
 ## Related documentation
