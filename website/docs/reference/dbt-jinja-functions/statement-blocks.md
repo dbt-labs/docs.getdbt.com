@@ -1,6 +1,7 @@
 ---
 title: "statement blocks"
 id: "statement-blocks"
+description: "SQL queries that hit database and return results to your jinja context."
 ---
 
 :::tip Recommendation

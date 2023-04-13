@@ -1,6 +1,7 @@
 ---
 title: "exceptions"
 id: "exceptions"
+description: "Raise warnings/errors with the `exceptions` namespace."
 ---
 
 The `exceptions` namespace can be used to raise warnings and errors in dbt userspace.

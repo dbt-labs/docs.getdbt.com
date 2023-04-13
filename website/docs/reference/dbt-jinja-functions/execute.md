@@ -1,6 +1,7 @@
 ---
 title: "execute"
 id: "execute"
+description: "Use `execute` to return True when dbt is in 'execute' mode."
 ---
 
 `execute` is a Jinja variable that returns True when dbt is in "execute" mode.

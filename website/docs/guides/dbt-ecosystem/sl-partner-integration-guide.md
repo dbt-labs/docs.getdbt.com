@@ -617,7 +617,7 @@ from {{ entities.calculate(
 
 ### dbt Semantic Layer Connector 
 
-In order to support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/cloud/connect-data-platform/connect-your-database) with the dbt Semantic Layer. 
+In order to support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/cloud/connect-data-platform/about-connections) with the dbt Semantic Layer.
 
 Integration partners need to install the [Arrow FlightSQL](https://arrow.apache.org/docs/format/FlightSql.html) JDBC/ODBC driver, which will authenticate with dbt Cloud and the data platform that it queries. 
 
