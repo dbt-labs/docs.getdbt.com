@@ -244,6 +244,15 @@ jess_williams:
   name: Jess Williams
   organization: dbt Labs
 
+joao_antunes:
+  image_url: /img/blog/authors/joao_antunes.png
+  job_title: Lead Data Engineer, Global Product Strategy
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jo%C3%A3o-bernardo-pires-antunes
+  name: João Antunes
+  organization: Roche
+
 joe_markiewicz:
   description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
   image_url: /img/blog/authors/joe-markiewicz.jpeg
