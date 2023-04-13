@@ -67,7 +67,7 @@ Many events are fired while compiling or running a specific DAG node (model, see
 | `node_finished_at` | Timestamp when node processing completed |
 | `node_name` | Name of this model/seed/test/etc |
 | `node_path` | File path to where this resource is defined |
-| `node_relation` | <VersionBlock firstVersion="1.5">Nested object containing this node's database representation: `database`, `schema`, `alias`, and full `relation_name` with quoting & inclusion policies applied</VersionBlock><VersionBlock lastVersion="1.4">Added in [v1.5](/reference/events-logging?version=1.5#node_info-fields)</VersionBlock> |
+| `node_relation` | <VersionBlock firstVersion="1.5">Nested object containing this node's database representation: `database`, `schema`, `alias`, and full `relation_name` with quoting & inclusion policies applied</VersionBlock><VersionBlock lastVersion="1.4">Added in v1.5</VersionBlock> |
 | `node_started_at` | Timestamp when node processing started |
 | `node_status` | Current status of the node, either `RunningStatus` (while running) or `NodeStatus` (finished) as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/eba90863ed4043957330ea44ca267db1a2d81fcd/core/dbt/contracts/results.py#L75-L88) |
 | `resource_type` | `model`, `test`, `seed`, `snapshot`, etc. |
