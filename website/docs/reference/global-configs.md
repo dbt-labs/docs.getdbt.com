@@ -229,7 +229,6 @@ To set the `LOG_FORMAT_FILE` type output for the file without impacting the cons
 
 ```text
 $ dbt --log-format-file json run
-
 ```
 
 </VersionBlock>
