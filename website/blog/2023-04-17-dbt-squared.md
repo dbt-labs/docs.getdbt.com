@@ -70,7 +70,7 @@ Often overlooked, this third pillar of process can be the key to success when sc
 
 <Lightbox src="/img/blog/2023-04-17-dbt-squared/roche-meme.png" width="85%" title="Roche project structure as seen in the repository" />
 
-## The solution: dbt squared
+## The solution: dbt Squared
 
 ### Technology and people
 
