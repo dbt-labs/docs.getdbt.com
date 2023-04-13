@@ -12,13 +12,13 @@ The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is an interf
 
 The IDE is designed to streamline your workflow, and features a popular user interface and layout with all files and folders on the left, editor on the right, and command and console information at the bottom. 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="100%" title="The Cloud IDE basic layout"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="100%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right and command/console at the bottom"/>
 
 The basic layout of the IDE landing page with the following areas:
 
-- **Git repository link &mdash;** Clicking the Git repository link takes you to your repository on the same active branch. This feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
+- **Git repository link &mdash;** Clicking the Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. This feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
 
-- **Documentation site button &mdash;** Clicking the Documentation site book icon leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
+- **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
 
 - **Version Control menu &mdash;** The IDE's Version Control menu contains all git-related elements. The Git actions Button will update with relevant actions based on your editor's state, such as prompting to pull remote changes, commit and sync when reverted commit changes are present, or creating a merge/pull request when appropriate. The dropdown menu on the Git actions Button allows users to revert changes, refresh git state, create merge/pull requests, and change branches. For more info, refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide) for more info. 
 
@@ -38,7 +38,7 @@ Below the Git Actions Button, the **Changes** section lists all file changes sin
     * Deleted (D) — The IDE detects deleted files.
 
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-explorer-menu.jpg" width="30%" title="Use the File Explorer to manage your files, right click to access sub-menu options, and see changes made"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-explorer-menu.jpg" width="30%" title="Manage files, right click to access menu options, and see changes made"/>
 
 - **Command bar &mdash;**  The Command bar, located in the lower left of the IDE, is used to invoke [dbt commands](/reference/dbt-commands). When a command is invoked, the associated logs are shown in the Invocation History Drawer.
 
@@ -56,14 +56,11 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 - **Format button &mdash;** The editor has a **Format** button for `{{ filetypes }}`files. When you click the button, the editor will use `sqlfmt` or `sqlfluff` for SQL files and `black` for Python files to reformat the contents of the file.
 
 - **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. Saving isn't needed to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="100%" title="Use the file editor, format, and save button during your development workflow"/>
 
-- **Console &mdash;** The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the DAG. Refer to the following sub-bullets for more details on the console tabs and buttons.
-
+## Console
+The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the DAG. Refer to the following sub-bullets for more details on the console tabs and buttons.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-console.jpg" width="100%" title="Use the file editor, format, and save button during your development workflow"/>
-
-<!---Continue from here-->
 
 - **Preview console button &mdash;** When you click on the Preview Button, it runs the SQL in the active file editor regardless of whether you have saved it or not, and sends the results to the Results console tab. To prevent the IDE from returning too much data and causing browser problems, a limit of 500 is automatically added to queries executed via the Preview Button.
 
@@ -75,48 +72,40 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/results-console-tab.jpg" width="100%" title="Preview results show up in the Results console tab"/>
 
 - **Compile console tab &mdash;** The Compile button triggers a compile invocation that generates compiled code, which is displayed in the Compiled Code Tab.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/compiled-code-console-tab.jpg" width="100%" title="Compile results show up in the Compiled code console tab"/>
 
 - **Lineage console tab &mdash;** The Lineage console tab in the File Editor displays the active model's lineage. By default, it shows two degrees of lineage in both directions (`2+model_name+2`), but this selection syntax can be changed.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/lineage-console-tab.jpg" width="100%" title="View resource lineage in the Lineage console tab"/>
 
+<!---Continue from here-->
 
 ### Additional editing features
 
 #### Minimap
 A Minimap (code outline) gives you a high-level overview of your source code, which is useful for quick navigation and code understanding. A file's minimap is displayed on the upper-right side of the editor. To quickly jump to different sections of your file, click the shaded area.
 
-#### Editor Command Palette
+#### Editor Command palette
 The Editor Command Palette displays text editing actions and their associated keyboard shortcuts. This can be accessed by pressing `F1` or right-clicking in the text editing area and selecting Command Palette.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editor-command-palette-with-save.jpg" width="100%" title="Click F1 to access the Editor Command Palette menu for editor shortcuts"/>
 
 #### Editor tab menu
 To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.jpg" width="100%" title="Right click a tab to view the Editor tab menu options"/>
 
 #### Git Diff View
 Clicking on a file in the **Changes** section of the **Version Control Menu** will open the changed file with Git Diff view. The editor will show the previous version on the left and the in-line changes made on the right.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-git-diff-view-with-save.jpg" width="100%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
 
 #### Markdown Preview console tab
 The Markdown Preview console tab shows a preview of your .md file's markdown code in your repository, and updates it automatically as you edit your code.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-markdown-with-save.jpg" width="100%" title="The Markdown Preview console tab renders markdown code below the Editor tab."/>
 
 #### CSV Preview console tab
 The CSV Preview console tab displays the data from your CSV file in a table, which updates automatically as you edit the file in your seed directory.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-csv.jpg" width="100%" title="View csv code in the CSV Preview console tab below the Editor tab."/>
 
 ## Invocation history
-
 The Invocation History Drawer stores information on dbt invocations in the IDE. Open the drawer by clicking the `^` icon next to the Command Bar on the lower left of the page or by using a command.
-
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/invocation-components-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
 A &mdash; [Invocation History list](#invocation-history-list)<br />
