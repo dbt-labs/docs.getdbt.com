@@ -17,11 +17,13 @@ As dbt runs, it generates events. The most common way to see those events is as 
 <File name='logs/dbt.log'>
 
 ```text
-============================== 2021-12-02 21:29:35.417263 | c83a0afc-7ed3-49e7-8c0e-797af7f9d7b6 ==============================
-21:29:35.417263 [info ] [MainThread]: Running with dbt=1.0.0-rc3
-21:29:35.417955 [debug] [MainThread]: running dbt with arguments Namespace(cls=<class 'dbt.task.run.RunTask'>, debug=None, defer=None, exclude=None, fail_fast=None, full_refresh=False, log_cache_events=False, log_format=None, partial_parse=None, printer_width=None, profile=None, profiles_dir='/Users/jerco/.dbt', project_dir=None, record_timing_info=None, rpc_method='run', select=None, selector_name=None, send_anonymous_usage_stats=None, single_threaded=False, state=None, static_parser=None, target=None, threads=None, use_colors=None, use_experimental_parser=None, vars='{}', version_check=None, warn_error=None, which='run', write_json=None)
-...
-21:29:35.814348 [debug] [Thread-1  ]: On model.my_project.my_table: BEGIN
+============================== 21:21:15.272780 | 48cef052-3819-4550-a83a-4a648aef5a31 ==============================
+21:21:15.272780 [info ] [MainThread]: Running with dbt=1.5.0-b5
+21:21:15.273802 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/Users/jerco/dev/scratch/testy/logs', 'profiles_dir': '/Users/jerco/.dbt', 'version_check': 'False', 'use_colors': 'False', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'send_anonymous_usage_stats': 'True'}
+21:21:16.190990 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+21:21:16.191404 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+21:21:16.207330 [info ] [MainThread]: Found 2 models, 0 tests, 0 snapshots, 1 analysis, 535 macros, 0 operations, 1 seed file, 0 sources, 0 exposures, 0 metrics, 0 groups
+
 ```
 
 </File>
@@ -56,7 +58,7 @@ Every event has the same two top-level keys:
 
 ### `node_info` fields
 
-For events where it's available, `node_info` will include:
+Many events are fired while compiling or running a specific DAG node (model, seed, test, etc). When it's available, the `node_info` object will include:
 
 | Field       | Description   |
 |-------------|---------------|
@@ -65,6 +67,7 @@ For events where it's available, `node_info` will include:
 | `node_finished_at` | Timestamp when node processing completed |
 | `node_name` | Name of this model/seed/test/etc |
 | `node_path` | File path to where this resource is defined |
+| `node_relation` | <VersionBlock firstVersion="1.5">Nested object containing this node's database representation: `database`, `schema`, `alias`, and full `relation_name` with quoting & inclusion policies applied</VersionBlock><VersionBlock lastVersion="1.4">Added in v1.5</VersionBlock> |
 | `node_started_at` | Timestamp when node processing started |
 | `node_status` | Current status of the node, either `RunningStatus` (while running) or `NodeStatus` (finished) as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/eba90863ed4043957330ea44ca267db1a2d81fcd/core/dbt/contracts/results.py#L75-L88) |
 | `resource_type` | `model`, `test`, `seed`, `snapshot`, etc. |
@@ -75,23 +78,29 @@ For events where it's available, `node_info` will include:
 ```json
 {
   "data": {
-    "description": "sql view model my_dbt_schema.model_a",
+    "description": "sql view model dbt_jcohen.my_model",
     "index": 1,
     "node_info": {
       "materialized": "view",
-			"meta": {
-				"first": "some_value",
+      "meta": {
+        "first": "some_value",
         "second": "1234"
       },
-      "node_finished_at": null,
-      "node_name": "model_a",
-      "node_path": "model_a.sql",
-      "node_started_at": "2023-01-11T12:55:57.439506",
+      "node_finished_at": "",
+      "node_name": "my_model",
+      "node_path": "my_model.sql",
+      "node_relation": {
+        "alias": "my_model",
+        "database": "my_database",
+        "relation_name": "\"my_database\".\"my_schema\".\"my_model\"",
+        "schema": "my_schema"
+      },
+      "node_started_at": "2023-04-12T19:27:27.435364",
       "node_status": "started",
       "resource_type": "model",
-      "unique_id": "model.my_dbt_project.model_a"
+      "unique_id": "model.my_dbt_project.my_model"
     },
-    "total": 3
+    "total": 1
   },
   "info": {
     "category": "",
@@ -99,13 +108,13 @@ For events where it's available, `node_info` will include:
     "extra": {
       "my_custom_env_var": "my_custom_value"
     },
-    "invocation_id": "e5e4e362-5692-4df1-a230-c79e40adbcfb",
+    "invocation_id": "206b4e61-8447-4af7-8035-b174ab3ac991",
     "level": "info",
-    "msg": "1 of 3 START sql view model my_dbt_schema.model_a ................................. [RUN]",
+    "msg": "1 of 1 START sql view model my_database.my_model ................................ [RUN]",
     "name": "LogStartLine",
-    "pid": 13011,
-    "thread": "Thread-1 (worker)",
-    "ts": "2023-01-11T12:55:57.440186Z"
+    "pid": 95894,
+    "thread": "Thread-1",
+    "ts": "2023-04-12T19:27:27.436283Z"
   }
 }
 ```

@@ -77,3 +77,6 @@ More to come!
 
 ### New CLI, commands, Python API for programmatic invocations
 - [Programmatic invocations](programmatic-invocations)
+
+### Quick hits
+- [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
