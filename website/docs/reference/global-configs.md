@@ -251,20 +251,20 @@ See [structured logging](events-logging#structured-logging) for more details.
 
 ### Log Level
 
-The `LOG_LEVEL` config sets the minimum severity of events captured in the console and file logs. This is a more flexible alternative to the `-debug` log option. The available options for the log levels are `debug`, `info`, `warn`, `error`, or `none`.
+The `LOG_LEVEL` config sets the minimum severity of events captured in the console and file logs. This is a more flexible alternative to the `--debug` flag. The available options for the log levels are `debug`, `info`, `warn`, `error`, or `none`.
 
 Setting the `--log-level` will configure console and file logs. 
 
 
 ```text
-$ dbt  --log-level debug run
+$ dbt --log-level debug run
 ```
 
-To set the file log level as a different value than the console, use the `-file` subcommand. 
+To set the file log level as a different value than the console, use the `--log-level-file` flag. 
 
 
 ```text
-$ dbt  --log-level-file error run
+$ dbt --log-level-file error run
 ```
 
 
@@ -452,7 +452,7 @@ $ dbt --no-use-colors run
 ```
 <VersionBlock firstVersion="1.5">
 
-You can set the color preferences for the file logs only using the `-file` subcommand.
+You can set the color preferences for the file logs only using the `--use-colors-file / --no-use-colors-file` flags.
 
 ```text
 $ dbt --use-colors-file run
