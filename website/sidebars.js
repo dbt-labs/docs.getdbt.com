@@ -279,13 +279,13 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Publishing models",
+          label: "Maintain, share, and govern mature dbt models",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/publish/about-publishing-models" },
+          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
           items: [
-            "docs/collaborate/publish/model-contracts",
-            "docs/collaborate/publish/model-access",
-            "docs/collaborate/publish/model-versions",
+            "docs/collaborate/govern/model-contracts",
+            "docs/collaborate/govern/model-access",
+            "docs/collaborate/govern/model-versions",
           ],
         },
       ],
@@ -453,6 +453,7 @@ const sidebarSettings = {
           type: "category",
           label: "General properties",
           items: [
+            "reference/resource-properties/access",
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
