@@ -222,6 +222,16 @@ The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the val
 $ dbt --log-format json run
 {"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
+<VersionBlock firstVersion="1.5">
+
+To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
+
+
+```text
+$ dbt --log-format-file json run
+```
+
+</VersionBlock>
 
 :::tip Tip: verbose structured logs
 
@@ -236,6 +246,29 @@ See [structured logging](events-logging#structured-logging) for more details.
 :::
 
 </File>
+
+<VersionBlock firstVersion="1.5">
+
+### Log Level
+
+The `LOG_LEVEL` config sets the minimum severity of events captured in the console and file logs. This is a more flexible alternative to the `--debug` flag. The available options for the log levels are `debug`, `info`, `warn`, `error`, or `none`.
+
+Setting the `--log-level` will configure console and file logs. 
+
+
+```text
+$ dbt --log-level debug run
+```
+
+To set the file log level as a different value than the console, use the `--log-level-file` flag. 
+
+
+```text
+$ dbt --log-level-file error run
+```
+
+
+</VersionBlock>
 
 ### Partial Parsing
 
@@ -417,6 +450,16 @@ config:
 $ dbt --use-colors run
 $ dbt --no-use-colors run
 ```
+<VersionBlock firstVersion="1.5">
+
+You can set the color preferences for the file logs only using the `--use-colors-file / --no-use-colors-file` flags.
+
+```text
+$ dbt --use-colors-file run
+$ dbt --no-use-colors-file run
+```
+
+</VersionBlock>
 
 </File>
 
