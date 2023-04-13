@@ -1,5 +1,5 @@
 ---
-title: "dbt Squared: Leveraging dbt Core and dbt Cloud at scale"
+title: "dbt Squared: Leveraging dbt Core and dbt Cloud together at scale"
 description: "How do you effectively scale dbt? João Antunes from Roche walks through their multi-tool journey."
 slug: dbt-squared
 
