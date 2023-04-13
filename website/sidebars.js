@@ -36,7 +36,8 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/quickstarts/dbt-core/quickstart",
+            "docs/quickstarts/dbt-core/codespace",
+            "docs/quickstarts/dbt-core/manual-install",
           ],
         },
       ],
