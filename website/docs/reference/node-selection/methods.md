@@ -143,7 +143,17 @@ that defines it. For more information about how generic tests are defined, read 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
+<VersionBlock lastVersion="1.4">
+
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+
+</VersionBlock>
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -203,13 +213,13 @@ $ dbt seed --select result:error # run all seeds that generated errors on the pr
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 
-Only supported by v1.1 or newer.
+Supported in v1.1 or newer.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1">
 
-Only supported by v1.1 or newer.
+Supported in v1.1 or newer.
 
 :::caution Experimental functionality
 The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
@@ -222,24 +232,40 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
+<VersionBlock lastVersion="1.4">
+
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
 $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```bash
+# You can also set the DBT_STATE environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+
+</VersionBlock>
+
+
 </VersionBlock>
 
 
 ### The "group" method
 <VersionBlock lastVersion="1.4">
 
-Only supported by v1.5 or newer.
+Supported in v1.5 or newer.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
-Only supported by v1.5 or newer.
+Supported in v1.5 or newer.
 
 The `group` method is used to select models defined within a group.
 
@@ -248,5 +274,31 @@ The `group` method is used to select models defined within a group.
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
 
+
+</VersionBlock>
+
+### The "wildcard" method
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+Supported in v1.5 or newer.
+
+The `wildcard` method selects a model using Unix-style wildcard expressions evaluated against the fqn.
+Read the [fnmatch](https://docs.python.org/3/library/fnmatch.html#module-fnmatch) reference for proper syntax.
+
+  ```bash
+dbt run --select 'wildcard:*_model_?'
+# Is equivalent to
+dbt run --select some_model_a some_model_b some_model_1
+
+dbt run --select 'wildcard:*_feature_model_[1-3]'
+# Is equivalent to
+dbt run --select test_feature_model_1 new_feature_model_2 ml_feature_model_3
+  ```
 
 </VersionBlock>
