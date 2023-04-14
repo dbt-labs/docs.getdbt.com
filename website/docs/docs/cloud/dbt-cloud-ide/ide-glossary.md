@@ -23,19 +23,19 @@ The basic layout of the IDE landing page with the following areas:
 
 2. **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
 
-3. [**Version Control menu &mdash;**](#modals-and-menus) The IDE's powerful Version Control menu contains all git-related elements, including the Git actions button and the **Changes** section. 
+3. [**Version Control &mdash;**](#editing-features) The IDE's powerful Version Control section contains all git-related elements, including the Git actions button and the **Changes** section. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-upper-left.jpg" width="40%" title="The Git repo link, documentation site button, and Version Control menu"/>
 
 4. **File Explorer &mdash;** The File Explorer shows the filetree of your repository. You can:
-  - Click on any file in the filetree to open the file in the File Editor. 
-  - Click and drag files between directories to move files. 
-  - Right click a file to access the sub-menu options like copy file name, copy as `ref`, rename, delete.
-  - **Note**: To perform these actions, the user must not be in `read-only` mode, which generally happens when the user is viewing the default branch.
-  - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
-    * Unsaved (•) — The IDE detects unsaved changes to your file/folder
-    * Modification (M) — The IDE detects a modification of existing files/folders
-    * Added (A) — The IDE detects added files
-    * Deleted (D) — The IDE detects deleted files.
+    - Click on any file in the filetree to open the file in the File Editor. 
+    - Click and drag files between directories to move files. 
+    - Right click a file to access the sub-menu options like copy file name, copy as `ref`, rename, delete.
+    - **Note**: To perform these actions, the user must not be in `read-only` mode, which generally happens when the user is viewing the default branch.
+    - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
+      * Unsaved (•) — The IDE detects unsaved changes to your file/folder
+      * Modification (M) — The IDE detects a modification of existing files/folders
+      * Added (A) — The IDE detects added files
+      * Deleted (D) — The IDE detects deleted files.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-explorer-menu.jpg" width="30%" title="Use the File Explorer to manage files, access menu options, and see changes made"/>
 
@@ -56,6 +56,11 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 3. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
 
+4. **Version Control &mdash;** This menu contains all git-related elements, including the Git actions button. The button updates relevant actions based on your editor's state, such as prompting to pull remote changes, commit and sync when reverted commit changes are present, or creating a merge/pull request when appropriate. The dropdown menu on the Git actions button allows users to revert changes, refresh git state, create merge/pull requests, and change branches. You can also [resolve merge conflicts](/docs/collaborate/git/merge-conflicts) and for more info on git, refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide).
+
+   - **Version Control Options menu &mdash;** Below the Git Actions button, the **Changes** section, which lists all file changes since the last commit. You can click on a change to open the Git Diff View to see the inline changes. You can also right-click any file and use the file-specific options in the Version Control Options menu.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title="Right-click edited files to access Version Control Options menu"/>
 
 ### Console section
 The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the <Term id="dag" />. Refer to the following sub-bullets for more details on the console tabs and buttons.
@@ -119,11 +124,6 @@ The Invocation History Drawer stores information on dbt invocations in the IDE. 
 
 ## Modals and Menus
 Use menus and modals to interact with IDE and access useful options to help your development workflow. 
-
-- **Version Control menu &mdash;** This menu contains all git-related elements, including the Git actions button. The button updates relevant actions based on your editor's state, such as prompting to pull remote changes, commit and sync when reverted commit changes are present, or creating a merge/pull request when appropriate. The dropdown menu on the Git actions button allows users to revert changes, refresh git state, create merge/pull requests, and change branches. You can also [resolve merge conflicts](/docs/collaborate/git/merge-conflicts) and for more info on git, refer to [Version control basics](/docs/collaborate/git/version-control-basics#the-git-button-in-the-cloud-ide).
-
-  * **Version Control Options menu &mdash;** Below the Git Actions button, the **Changes** section, which lists all file changes since the last commit. You can click on a change to open the Git Diff View to see the inline changes. You can also right-click any file and use the file-specific options in the Version Control Options menu.
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title="Right-click edited files to access Version Control Options menu"/>
 
 - **Editor tab menu &mdash;** To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.<Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.jpg" width="100%" title="Right click a tab to view the Editor tab menu options"/>
 
