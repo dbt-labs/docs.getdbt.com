@@ -30,7 +30,7 @@ In the meantime, anywhere that model is used downstream, it can be referenced at
 
 [Version control](git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch, with the ability to "rollback" changes by reverting a commit or pull request. In general, only one version of your project code is deployed into an environment at a time.
 
-Model versions are different. Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned—multiple versions are live at the same time; older versions are often eventually sunsetted.
+Model versions are different. Multiple versions of a model will live in the same code repository at the same time and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned—multiple versions are live simultaneously; older versions are often eventually sunsetted.
 
 dbt's model `versions` makes it possible to define multiple versions:
 - That share the same "reference" name
