@@ -297,5 +297,26 @@ The `group` method is used to select models defined within a group.
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
 
+</VersionBlock>
+
+### The "version" method
+
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `version` method selects [versioned models](model-versions) based on their [version identifier](resource-properties/versions) and [latest version](resource-properties/latest_version).
+
+```bash
+dbt list --select version:latest      # only 'latest' versions
+dbt list --select version:prerelease  # versions newer than the 'latest' version
+dbt list --select version:old         # versions older than the 'latest' version
+
+dbt list --select version:none        # models that are *not* versioned
+```
 
 </VersionBlock>
