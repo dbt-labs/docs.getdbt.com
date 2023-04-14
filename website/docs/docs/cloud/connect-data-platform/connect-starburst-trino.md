@@ -15,9 +15,10 @@ The following are the required fields for setting up a connection with Starburst
 | **Database** | The name of a catalog in your cluster. | `my_postgres_catalog` |
 | **Schema** | The name of a schema in your cluster that exists within the specified catalog.  | `my_schema` |
 
-
 ## Roles in Starburst Enterprise 
-When connecting to a Starburst Enterprise cluster with built-in access controls enabled, you won't be able to provide the role as a suffix to the username, so the default role for the provided username will be used instead.
 
-## Schemas and databases 
-When selecting the database (catalog) and the schema, make sure the user has read and write access to both the provided database (catalog) and schema. This selection does not limit your ability to query the catalog. Instead, they serve as the default location for where tables and views are materialized. This _default_ can be changed later from within your dbt project.
+<Snippet src="connect-starburst-trino/roles-starburst-enterprise" />
+
+## Schemas and databases
+
+<Snippet src="connect-starburst-trino/schema-db-fields" />
