@@ -162,6 +162,6 @@ New in v1.5
 - [Model versions](govern/model-versions)
 - [`versions`](resource-properties/versions#alias)
 
-By default, dbt will create versioned models with the alias `<model_name>_v<v>`, where `<v>` is that version's unique identifier. You can customize this behavior just like you can for non-versioned models, by configuring a custom `alias` or reimplementing the `generate_alias_name` macro.
+By default, dbt will create versioned models with the alias `<model_name>_v<v>`, where `<v>` is that version's unique identifier. You can customize this behavior just like for non-versioned models by configuring a custom `alias` or re-implementing the `generate_alias_name` macro.
 
 </VersionBlock>
