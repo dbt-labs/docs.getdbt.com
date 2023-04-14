@@ -10,7 +10,7 @@ This section contains features new in dbt Core v1.5. To see the documentation re
 
 :::
 
-[**Model access**](model-access): Some models are mature, reusable data productions. Others are your team's implementation details on the way there. Mark models as "public" or "private," to make the distinction clear, and to control who else can `ref` them.
+[**Model access**](model-access): Some models are mature, reusable data productions. Others are your team's implementation details on the way there. Mark models as "public" or "private," to make the distinction clear and to control who else can `ref` them.
 
 [**Model contracts**](model-contracts): Guarantee the shape of a model, while it is building, to avoid surprises—or breaking changes for downstream queriers. Explicitly define column names, data types, and constraints (as supported by your data platform).
 
