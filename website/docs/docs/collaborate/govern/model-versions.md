@@ -60,7 +60,7 @@ models:
 
 </File>
 
-If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (SQL or python file) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
+If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (SQL or Python) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
 
 <File name="models/schema.yml">
 
@@ -102,9 +102,9 @@ You can reconfigure each version independently. For example, if you wanted `dim_
 ```
 
 :::info
-Projects which have historically implemented [custom aliases](/docs/build/custom-aliases) by reimplemented the `generate_alias_name` macro will need to update their custom implementations to account for model versions. 
+Projects which have historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro will need to update their custom implementations to account for model versions. 
 
-Otherwise they'll see something like this as soon as they start using versions:
+Otherwise, they'll see something like this as soon as they start using versions:
 
 ```sh
 dbt.exceptions.AmbiguousAliasError: Compilation Error

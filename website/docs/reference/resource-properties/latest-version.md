@@ -23,7 +23,7 @@ The latest version of this model. The "latest" version is relevant for:
 1. Resolving `ref()` calls to this model that are "unpinned" (a version is not explicitly specified)
 2. Selecting model versions using the [`version:` selection method](methods#the-version-method), based on whether a given model version is `latest`, `prerelease`, or `old`
 
-This value can be either a string or numeric (integer or float) value, and must be one of the [version identifiers](resource-properties/versions#v) specified in this model's list of `versions`.
+This value can be a string or a numeric (integer or float) value. It must be one of the [version identifiers](resource-properties/versions#v) specified in this model's list of `versions`.
 
 ## Default
 
@@ -31,7 +31,7 @@ If not specified for a versioned model, `latest_version` defaults to the largest
 
 For a non-versioned model (no `versions` list), `latest_version` has no value.
 
-If `latest_version` is not specified for a versioned model, `latest_version` defaults to the largest 
+If `latest_version` is not specified for a versioned model, `latest_version` defaults to the largest.
 
 
 ## Example

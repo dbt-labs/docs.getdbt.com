@@ -35,7 +35,7 @@ models:
 </File>
 
 ## Definition
-The specification of which columns defined in a model's top-level `columns` property to include or exclude in a versioned implementation of that model.
+The specification of which columns are defined in a model's top-level `columns` property to include or exclude in a versioned implementation of that model.
 
 `include` is either:
 - a list of specific column names to include

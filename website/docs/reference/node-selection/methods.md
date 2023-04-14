@@ -287,7 +287,7 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-The `version` method selects [versioned models](model-versions), based on their [version identifier](resource-properties/versions) and [latest version](resource-properties/latest_version).
+The `version` method selects [versioned models](model-versions) based on their [version identifier](resource-properties/versions) and [latest version](resource-properties/latest_version).
 
 ```bash
 dbt list --select version:latest      # only 'latest' versions

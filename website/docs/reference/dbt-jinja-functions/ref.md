@@ -43,7 +43,7 @@ When a version argument is provided to the `ref` function, dbt returns to the `R
 
 This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guaruntee no breaking changes to existing versions of the model.
 
-If the `version` argument is not supplied to a `ref` to a versioned model, the latest version. This has the benefit of automatically incorporating the latest changes of a referenced model, but is at risk to incorporating breaking changes.
+If the `version` argument is not supplied to a `ref` of a versioned model, the latest version is. This has the benefit of automatically incorporating the latest changes of a referenced model, but there is a risk of incorporating breaking changes.
 
 #### Example:
 <File name='models/<schema>.yml'>

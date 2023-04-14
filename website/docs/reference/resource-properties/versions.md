@@ -43,7 +43,7 @@ In general, we recommend that you use a simple "major versioning" scheme for you
 
 The name of the model file (excluding the file extension, e.g. `.sql` or `.py`) where the model version is defined.
 
-If `defined_in` is not specified, dbt searches for the definition of a versioned model in a model file named `<model_name>_v<v>`. Model file names must be globally unique, even when they are defining versioned implementations of a model with a different name.
+If `defined_in` is not specified, dbt searches for the definition of a versioned model in a model file named `<model_name>_v<v>`. Model file names must be globally unique, even when defining versioned implementations of a model with a different name.
 
 ### Alias
 
