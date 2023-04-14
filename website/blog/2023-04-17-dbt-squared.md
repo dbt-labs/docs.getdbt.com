@@ -3,7 +3,7 @@ title: "dbt Squared: Leveraging dbt Core and dbt Cloud together at scale"
 description: "How do you effectively scale dbt? João Antunes from Roche walks through their multi-tool journey."
 slug: dbt-squared
 
-authors: [joao_antunes]
+authors: [joao_antunes], [yannick_misteli], [sean_mcintyre], [dave_connors]
 
 tags: [analytics craft]
 hide_table_of_contents: false
@@ -100,7 +100,7 @@ The developer teams using dbt on the CLI often leveraged the [defer command](htt
 
 ### Release flow
 
-Last but not least, as of now, dbt Cloud lacks some of the GitOps tooling the core team leveraged. The core team uses the [pre-commit](https://pre-commit.com/) framework to ensure code quality before opening merge requests to the common branch. The core team also leverages [sqlfluff](https://sqlfluff.com/) to standardize the code across several streams of work. Since dbt Cloud doesn’t yet offer the possibility to run the pre-commit hooks directly in the IDE, we migrated these workflows to CI checks. These checks are triggered when a merge request to the common branch is raised, guaranteeing that even if a developer is not using the framework locally, the code changes are evaluated before the merge is completed.
+Last but not least, the core team uses the [pre-commit](https://pre-commit.com/) framework to ensure code quality before opening merge requests to the common branch. The core team also leverages [sqlfluff](https://sqlfluff.com/) to standardize the code across several streams of work. Since dbt Cloud doesn’t yet offer the possibility to run the pre-commit hooks directly in the IDE, we migrated these workflows to CI checks. These checks are triggered when a merge request to the common branch is raised, guaranteeing that even if a developer is not using the framework locally, the code changes are evaluated before the merge is completed.
 
 Now, not only was the pace of delivery much faster, we were also able to make investments in the incident management process. Rather than relying on a separate operations team, we allocate part of the development team to incident management, and we rotate the team members responsible for incident management on a sprint-by-sprint basis. As a result, we achieved a widespread culture of accountability that ultimately led to increased test coverage and code reliability.
 
