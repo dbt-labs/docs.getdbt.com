@@ -33,9 +33,11 @@ The standard convention for naming model versions is `<model_name>_v<v>`. This h
 
 ### `v`
 
-The version identifier for a version of a model. This value can be either a string or numeric (integer or float) value.
+The version identifier for a version of a model. This value can be numeric (integer or float), or any string.
 
-The value of the version identifier is used to order versions of a model relative to one another. If a versioned model does _not_ explicitly configure a [`latest_version`](resource-properties/latest-version), the highest version number is used as the latest version to resolve `ref` calls to the model without a `version` argument. 
+The value of the version identifier is used to order versions of a model relative to one another. If a versioned model does _not_ explicitly configure a [`latest_version`](resource-properties/latest-version), the highest version number is used as the latest version to resolve `ref` calls to the model without a `version` argument.
+
+In general, we recommend that you use a simple "major versioning" scheme for your models: `v1`, `v2`, `v3`, etc, where each version represents a breaking change from previous versions. However, you are welcome to use other versioning schemes.
 
 ### `defined_in`
 
