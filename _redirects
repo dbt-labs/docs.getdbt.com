@@ -28,6 +28,10 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/collaborate/git/setup-azure /docs/cloud/git/setup-azure 301
 /docs/collaborate/git/authenticate-azure /docs/cloud/git/authenticate-azure 301
 /docs/collaborate/git/import-a-project-by-git-url /docs/cloud/git/import-a-project-by-git-url 301
+/docs/collaborate/publish/about-publishing-models /docs/collaborate/govern/about-model-governance 301
+/docs/collaborate/publish/model-contracts /docs/collaborate/govern/model-contracts 301
+/docs/collaborate/publish/model-access /docs/collaborate/govern/model-access 301
+/docs/collaborate/publish/model-versions /docs/collaborate/govern/model-versions 301
 /docs/collaborate/manage-access/about-access /docs/cloud/manage-access/about-access 301
 /docs/collaborate/manage-access/seats-and-users /docs/cloud/manage-access/seats-and-users 301
 /docs/collaborate/manage-access/self-service-permissions /docs/cloud/manage-access/self-service-permissions 301

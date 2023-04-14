@@ -32,15 +32,15 @@ exports.versionedPages = [
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-contracts",
+    "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-access",
+    "page": "docs/collaborate/govern/model-access",
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-versions",
+    "page": "docs/collaborate/govern/model-versions",
     "firstVersion": "1.5",
   },
   {
