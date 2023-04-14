@@ -111,3 +111,6 @@ In less than one year, we managed to migrate siloed data pipelines from tools li
 While we acknowledge the success story so far, we also believe the future of this endeavor depends heavily on how much we continue to invest in people. Therefore, we are creating a dbt fast-track path to prepare our team leads to earn [the dbt Certification](https://www.getdbt.com/blog/dbt-certification-program/). We foster close collaboration with the dbt Labs team which helps our organization set out for success as we plan our roadmap with expert advice.
 
 While successful scaling requires good technology, it also requires empowering your people and establishing strong processes.  Be sure to prioritize collaboration, communication, and training as you grow your dbt footprint. We hope this post has given you some useful insight and strategies for scaling the use of dbt in your organization. If you're facing similar challenges or have found other effective solutions, we'd love to hear from you in the comments below.
+
+
+*Editor's note: This article was written by the João Antunes and Yannick Misteli of Roche, with editorial guidance from Sean McIntyre and Dave Connors of dbt Labs*
