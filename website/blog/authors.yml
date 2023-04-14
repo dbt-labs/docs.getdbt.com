@@ -123,7 +123,7 @@ claire_carroll:
 
 dave_connors:
   image_url: /img/blog/authors/dconnors.jpeg
-  job_title: Senior Analytics Engineer
+  job_title: Senior Developer Experience Advocate
   links:
     - icon: fa-github
       url: https://github.com/dave-connors-3
@@ -394,6 +394,15 @@ sanjana_sen:
   name: Sanjana Sen
   organization: dbt Labs
 
+sean_mcintyre:
+  image_url: /img/blog/authors/sean_mcintyre.jpg
+  job_title: Senior Solutions Architect
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/boxysean
+  name: Sean McIntyre
+  organization: dbt Labs
+
 seth_rosen:
   description: Seth Rosen is co-founder and CEO of TopCoat Data - a platform for helping organizations build analytical applications. Prior to founding TopCoat, Seth helped companies of all sizes build custom data apps on top of the modern data stack through his consultancy, Hashpath. When he’s not tweeting and thinking about data, he’s tweeting while parenting two toddlers.
   image_url: /img/blog/authors/seth-rosen.jpeg
@@ -451,6 +460,15 @@ wasila_quader:
   job_title: Associate Analytics Engineer
   name: Wasila Quader
   organization: dbt Labs
+
+yannick_misteli:
+  image_url: /img/blog/authors/yannick_misteli.jpg
+  job_title: Head of Engineering, Global Product Strategy
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/yannick-misteli-b86129105/
+  name: Yannick Misteli
+  organization: Roche
 
 yu_ishikawa:
   image_url: /img/blog/authors/yu-ishikawa.jpg
