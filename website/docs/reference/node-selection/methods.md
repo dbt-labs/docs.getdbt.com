@@ -23,8 +23,8 @@ Many of the methods below support Unix-style wildcards:
 
 For example:
 ```
-dbt list --select **.folder_name.**
-dbt list --select package:*_source
+dbt list --select "*.folder_name.*"
+dbt list --select "package:*_source"
 ```
 
 </VersionBlock>
