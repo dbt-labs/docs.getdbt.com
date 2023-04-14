@@ -71,8 +71,8 @@ More to come!
 :::
 
 ### Publishing models as APIs
-- [Model contracts](model-contracts)
 - [Model access](model-access)
+- [Model contracts](model-contracts)
 - [Model versions](model-versions)
 
 ### New CLI, commands, Python API for programmatic invocations
