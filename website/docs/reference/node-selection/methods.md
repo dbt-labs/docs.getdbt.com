@@ -6,6 +6,29 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
+<VersionBlock firstVersion="1.5">
+
+:::info New functionality
+New in v1.5!
+:::
+
+Many of the methods below support Unix-style wildcards:
+
+| Wildcard | Description                                               |
+| -------- | --------------------------------------------------------- |
+| \*       | matches any number of any characters (including none)     |
+| ?        | matches any single character                              |
+| [abc]    | matches one character given in the bracket                |
+| [a-z]    | matches one character from the range given in the bracket |
+
+For example:
+```
+dbt list --select **.folder_name.**
+dbt list --select package:*_source
+```
+
+</VersionBlock>
+
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
@@ -274,31 +297,5 @@ The `group` method is used to select models defined within a group.
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
 
-
-</VersionBlock>
-
-### The "wildcard" method
-<VersionBlock lastVersion="1.4">
-
-Supported in v1.5 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
-Supported in v1.5 or newer.
-
-The `wildcard` method selects a model using Unix-style wildcard expressions evaluated against the fqn.
-Read the [fnmatch](https://docs.python.org/3/library/fnmatch.html#module-fnmatch) reference for proper syntax.
-
-  ```bash
-dbt run --select 'wildcard:*_model_?'
-# Is equivalent to
-dbt run --select some_model_a some_model_b some_model_1
-
-dbt run --select 'wildcard:*_feature_model_[1-3]'
-# Is equivalent to
-dbt run --select test_feature_model_1 new_feature_model_2 ml_feature_model_3
-  ```
 
 </VersionBlock>
