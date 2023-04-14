@@ -280,7 +280,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Maintain, share, and govern mature dbt models",
+          label: "Model governance",
           collapsed: true,
           link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
           items: [
