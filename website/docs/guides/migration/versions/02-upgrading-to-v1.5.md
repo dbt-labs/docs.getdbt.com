@@ -62,7 +62,7 @@ Backward compatibility with the old syntax is still supported but will be remove
 
 ### For maintainers of adapter plugins
 
-For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/6624).
+For more detailed information and to ask any questions, please visit [dbt-core/discussions/6624](https://github.com/dbt-labs/dbt-core/discussions/7213).
 
 ## New and changed documentation
 
@@ -75,5 +75,8 @@ More to come!
 - [Model access](model-access)
 - [Model versions](model-versions)
 
-### dbt-core Python API
-- Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations
+### New CLI, commands, Python API for programmatic invocations
+- [Programmatic invocations](programmatic-invocations)
+
+### Quick hits
+- [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
