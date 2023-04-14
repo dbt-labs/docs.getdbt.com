@@ -18,7 +18,12 @@ To develop in the Cloud IDE, make sure you have the following:
 - A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
 - A [development environment and development credentials](#access-the-cloud-ide) set up
 - The environment must be on dbt version 1.0 or higher
-- We recommend you disable ad blockers for dbt Cloud
+
+:::tip Disable ad blockers
+
+To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
+
+:::
 
 ## Cloud IDE features
 
