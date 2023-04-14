@@ -3,11 +3,11 @@ title: Manifest
 ---
 <VersionBlock firstVersion="1.5">
 
-**dbt Core v1.4 produces schema**: [`v9`](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
+**dbt Core v1.5 produces schema**: [`v9`](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.4" lastVersion="1.4">
 
 **dbt Core v1.4 produces schema**: [`v8`](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
 
