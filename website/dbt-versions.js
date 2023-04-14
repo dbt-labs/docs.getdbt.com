@@ -95,7 +95,7 @@ exports.versionedPages = [
 
 exports.versionedCategories = [
   {
-    "category": "Publishing models",
+    "category": "Model governance",
     "firstVersion": "1.5",
   }
 ]

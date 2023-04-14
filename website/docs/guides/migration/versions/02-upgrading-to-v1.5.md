@@ -63,19 +63,27 @@ For more detailed information and to ask questions, please read and comment on t
 ## New and changed documentation
 
 ### Model governance
-- [Model access](model-access)
-- [Model contracts](model-contracts)
-- [Model versions](model-versions)
 
-### Interactive commands
+The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](govern/about-model-governance), all of which is new in v1.5.
 
-Compile and preview dbt models and `--inline` dbt-SQL queries on the CLI!
+### Revamped CLI
+
+Compile and preview dbt models and `--inline` dbt-SQL queries on the CLI using:
 - [`dbt compile`](commands/compile)
-- [`dbt show`](commands/show)
+- [`dbt show`](commands/show) (new!)
 
-### Entry point for programmatic invocations
-- [Programmatic invocations](programmatic-invocations)
+[Node selection methods](node-selection/methods) can use Unix-style wildcards to glob nodes matching a pattern:
+```
+dbt ls --select "tag:team_*"
+```
+
+And (!): a first-ever entry point for [programmatic invocations](programmatic-invocations), at parity with CLI commands.
+
+Run `dbt --help` to see new & improved help documentation :)
 
 ### Quick hits
+- The [`version: 2` top-level key](project-configs/version) is now **optional** in all yaml files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
 - [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
-- TODO list everything else!
+- Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](dbt_project.yml)
+- More granular [configurations](global-configs) for logging, to set log format, log levels, and colorization.
+
