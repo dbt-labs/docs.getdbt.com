@@ -6,6 +6,29 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
+<VersionBlock firstVersion="1.5">
+
+:::info New functionality
+New in v1.5!
+:::
+
+Many of the methods below support Unix-style wildcards:
+
+| Wildcard | Description                                               |
+| -------- | --------------------------------------------------------- |
+| \*       | matches any number of any characters (including none)     |
+| ?        | matches any single character                              |
+| [abc]    | matches one character given in the bracket                |
+| [a-z]    | matches one character from the range given in the bracket |
+
+For example:
+```
+dbt list --select "*.folder_name.*"
+dbt list --select "package:*_source"
+```
+
+</VersionBlock>
+
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
@@ -143,7 +166,17 @@ that defines it. For more information about how generic tests are defined, read 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
+<VersionBlock lastVersion="1.4">
+
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+
+</VersionBlock>
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -222,11 +255,27 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
+<VersionBlock lastVersion="1.4">
+
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
 $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```bash
+# You can also set the DBT_STATE environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+
+</VersionBlock>
+
+
 </VersionBlock>
 
 
@@ -248,10 +297,10 @@ The `group` method is used to select models defined within a group.
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
 
-
 </VersionBlock>
 
-### The "wildcard" method
+### The "version" method
+
 <VersionBlock lastVersion="1.4">
 
 Supported in v1.5 or newer.
@@ -260,19 +309,14 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-Supported in v1.5 or newer.
+The `version` method selects [versioned models](model-versions) based on their [version identifier](resource-properties/versions) and [latest version](resource-properties/latest_version).
 
-The `wildcard` method selects a model using Unix-style wildcard expressions evaluated against the fqn.
-Read the [fnmatch](https://docs.python.org/3/library/fnmatch.html#module-fnmatch) reference for proper syntax.
+```bash
+dbt list --select version:latest      # only 'latest' versions
+dbt list --select version:prerelease  # versions newer than the 'latest' version
+dbt list --select version:old         # versions older than the 'latest' version
 
-  ```bash
-dbt run --select 'wildcard:*_model_?'
-# Is equivalent to
-dbt run --select some_model_a some_model_b some_model_1
-
-dbt run --select 'wildcard:*_feature_model_[1-3]'
-# Is equivalent to
-dbt run --select test_feature_model_1 new_feature_model_2 ml_feature_model_3
-  ```
+dbt list --select version:none        # models that are *not* versioned
+```
 
 </VersionBlock>
