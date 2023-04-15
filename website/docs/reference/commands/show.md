@@ -17,6 +17,6 @@ or
 dbt show --inline "select * from {{ ref('model_name') }}"
 ```
 
-<Lightbox src="/img/docs/reference/dbt-show" title="dbt show preview"/>
+<Lightbox src="/img/docs/reference/dbt-show.png" title="dbt show preview"/>
 
 The `show` command is useful for visually inspecting transformed data directly in the terminal interface and making it easy to validate the output of all models, including ephemeral models.
