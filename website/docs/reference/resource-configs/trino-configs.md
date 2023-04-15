@@ -3,12 +3,11 @@ title: "Starburst/Trino configurations"
 id: "trino-configs"
 ---
 
+## Session properties
 
-## Model-level configuration
+During a connection session with a Trino cluster, you can temporarily modify your session's properties for a specific dbt model by using [dbt hooks](/reference/resource-configs/pre-hook-post-hook). 
 
-### Session properties
-
-In some specific cases, there may be need for tuning during the Trino session properties only for a specific dbt model. In such cases, using the [dbt hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook) may come to the rescue:
+For example: 
 
 ```sql
 {{
@@ -18,7 +17,7 @@ In some specific cases, there may be need for tuning during the Trino session pr
 }}
 ```
 
-### Use table properties to configure connector specifics
+## Connector properties
 
 Trino connectors use table properties to configure connector specifics.
 
@@ -36,9 +35,7 @@ For more information, refer to either the [Trino Connectors](https://trino.io/do
 }}
 ```
 
-## Materialization-specific configs
-
-### Seeds & Prepared Statements
+## Seeds and prepared statements
 
 reference: [dbt docs: Seeds](https://docs.getdbt.com/docs/build/seeds)
 
@@ -64,7 +61,7 @@ There are two ways to deal with this issue:
 1. decrease the size of each batch, or
 2. enable the `prepared_statements_enabled` flag in your profile.
 
-#### decrease batch size
+### Decrease batch size
 
 To avoid this upper limit, one way each the total size of each client prepared statement request is to simply break the statement into smaller ones. dbt does this already by batching an entire seed file into groups of rows -- one group for a chunk of rows of the `.csv`. 
 
@@ -81,10 +78,11 @@ In order to override this default, add the below macro to your dbt project:
 {% endmacro %}
 ```
 
-#### header line length limit
+### Header line length limit
 
 Another option you have is to disable prepared statements by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). Note: This flag may be removed in later releases.
 
+## Materializations
 ### Table
 
 `dbt-trino` supports two modes in `table` materialization: `rename` and `drop` configured using `on_table_exists`.
@@ -305,13 +303,11 @@ models:
       format: "'PARQUET'"
 ```
 
-### Snapshots
+## Snapshots
 
-reference: [dbt docs: Snapshots](https://docs.getdbt.com/docs/build/snapshots)
+[Snapshots in dbt](/docs/build/snapshots) depend on the `current_timestamp` macro, which returns a timestamp with millisecond precision (3 digits). There are some connectors for Trino that don't support this timestamp precision (`TIMESTAMP(3) WITH TIME ZONE`), like Iceberg.
 
-Note that the Snapshot feature depends on the `current_timestamp` macro. In some connectors the standard precision (`TIMESTAMP(3) WITH TIME ZONE`) is not supported by the connector eg. Iceberg.
-
-If necessary, you can override the standard precision by providing your own version of the `trino__current_timestamp()` macro as in following example:
+To change the precision of timestamps, you can define your own [macro](/docs/build/jinja-macros). For example, this defines a new `trino__current_timestamp()` macro with microsecond precision (6 digits): 
 
 ```jinja2
 {% macro trino__current_timestamp() %}
@@ -319,20 +315,18 @@ If necessary, you can override the standard precision by providing your own vers
 {% endmacro %}
 ```
 
-## Other Trino/Starburst Relevant Configs
+## Grants
 
-### Grants
+Use [grants](/reference/resource-configs/grants) to manage access to the datasets you're producing with dbt. You can use grants with [Starburst Enterprise](https://docs.starburst.io/latest/security/biac-overview.html), [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/security/access-control.html), and Hive ([sql-standard](https://trino.io/docs/current/connector/hive-security.html)).
 
-Please note that grants are only supported in [Starburst Enterprise](https://docs.starburst.io/latest/security/biac-overview.html) and [Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/security/access-control.html) and Hive ([sql-standard](https://trino.io/docs/current/connector/hive-security.html)).
 
-You can manage access to the datasets you're producing with dbt by using grants. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your dbt_project.yml, and define model-specific grants within each model's SQL or YAML file.
+To implement access permissions, define grants as resource configs on each model, seed, and snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml` and define model-specific grants within each model's SQL or YAML file.
 
 ```yaml
 models:
-  - name: specific_model
+  - name: NAME_OF_YOUR_MODEL
     config:
       grants:
         select: ['reporter', 'bi']
 ```
 
-Read everything about grants in the [dbt docs](https://docs.getdbt.com/reference/resource-configs/grants).
