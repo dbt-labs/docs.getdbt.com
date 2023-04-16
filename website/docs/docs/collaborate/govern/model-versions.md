@@ -93,12 +93,11 @@ The above configuration will create two models (one for each version), and produ
 
 By convention, dbt will expect those two models to be defined in files named `dim_customers_v1.sql` and `dim_customers_v2.sql`. It is possible to override this by setting a `defined_in` property.
 
-You can reconfigure each version independently. For example, if you wanted `dim_customers.v1` to continue populating the database table named `dim_customers` (its previous location), you could use the `alias` configuration:
+You can reconfigure each version independently. For example, if you wanted `dim_customers.v1` to continue populating the database table named `dim_customers` (its original name), you could use the `defined_in` configuration:
 
 ```yml
-  - v: 1
-    config:
-      alias: dim_customers # keep old relation location
+      - v: 1
+        defined_in: dim_customers # keep original relation name
 ```
 
 :::info
