@@ -83,7 +83,8 @@ models:
       - v: 2
         columns:
           - include: "*"
-            exclude: country_name # this is the breaking change!
+            exclude:
+              - country_name # this is the breaking change!
       - v: 1
 ```
 
