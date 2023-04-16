@@ -55,7 +55,7 @@ models:
         data_type: int
       - name: country_name
         description: Where this customer lives
-        data_type: string
+        data_type: varchar
 ```
 
 </File>
@@ -75,10 +75,10 @@ models:
     columns:
       - name: customer_id
         description: This is the primary key
-        data_type: float
+        data_type: int
       - name: country_name
         description: Where this customer lives
-        data_type: string
+        data_type: varchar
     versions:
       - v: 2
         columns:
