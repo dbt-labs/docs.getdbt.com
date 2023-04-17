@@ -41,46 +41,51 @@ For example, this configures the data to materialize as a [Parquet](https://spar
 
 The [dbt seed](/docs/build/seeds) command makes use of prepared statements in [Starburst](https://docs.starburst.io/latest/sql/prepare.html)/[Trino](https://trino.io/docs/current/sql/prepare.html).
 
-Prepared statements are templated SQL statements that you can execute the repeatedly with high efficiency. The values are sent in a separate field rather than hard coded in the SQL string itself. This is often how application front ends structure record INSERTs in the OLTP database backend. Because of this, it's common for prepared statements to have as many placeholder variables (parameters) as there are columns in the destination table.
+Prepared statements are templated SQL statements that you can execute repeatedly with high efficiency. The values are sent in a separate field rather than hard coded in the SQL string itself. This is often how application frontends structure their record `INSERT` statements in the OLTP database backend. Because of this, it's common for prepared statements to have as many placeholder variables (parameters) as there are columns in the destination table.
 
-Virtually all seed files have more than one row, and often thousands of rows. This makes the size of the client request as large as there are parameters.
-
-As an example, a seed file with 20 columns and 600 rows has 12,000 values, therefore 12,000 parameters.
+Most seed files have more than one row, and often thousands of rows. This makes the size of the client request as large as there are parameters.
 
 ### Header line length limit in Python HTTP client 
 
 You might run into an error message about header line limit if your prepared statements have too many parameters. This is because the header line limit in Python's HTTP client is `65536` bytes. 
 
-You can avoid this upper limit by breaking the prepared statements into smaller ones. dbt already does this by batching an entire seed file into groups of rows &mdash; one group for a chunk of rows of the `.csv`. 
+You can avoid this upper limit by converting the large prepared statement into smaller statements. dbt already does this by batching an entire seed file into groups of rows &mdash; one group for a number of rows in the CSV. 
 
-So, using the example above, rather than creating a single prepared statement with 1200 parameters, we can have dbt create four prepared `INSERT` statements, with 150 rows and 3,000 parameters.
+Let's say you have a seed file with 20 columns, 600 rows, and 12,000 parameters. Instead of creating a single prepared statement for this, you can have dbt create four prepared `INSERT` statements with 150 rows and 3,000 parameters.
 
-There's a draw back to chunking a table into groups of rows, which is when there are many columns. Some users have seed files with many parameters, which means the batch size needs to be very small.
+There's a drawback to grouping your table rows. When there are many columns (parameters) in a seed file, the batch size needs to be very small.
 
-For `dbt-trino` batch_size is defined the macro `trino__get_batch_size()` and it's default value is `1000`. 
-In order to override this default, add the below macro to your dbt project:
+For the `dbt-trino` adapter, the macro for batch size is `trino__get_batch_size()` and its default value is `1000`. To change this default behavior, you can add this macro to your dbt project:
+
+<File name='macros/YOUR_MACRO_NAME.sql'>
 
 ```sql
 {% macro trino__get_batch_size() %}
-  {{ return(10000) }} -- adjust this number as you see fit
+  {{ return(10000) }} -- Adjust this number as you see fit
 {% endmacro %}
 ```
+
+</File>
 
 Another way to avoid the header line length limit is to set `prepared_statements_enabled` to `true` in your dbt profile; however, this is considered legacy behavior and can be removed in a future release.
 
 ## Materializations
 ### Table
 
-`dbt-trino` supports two modes in `table` materialization: `rename` and `drop` configured using `on_table_exists`.
+The `dbt-trino` adapter supports these modes in `table` materialization, which you can configure with `on_table_exists`:
 
-- `rename` - creates intermediate table, then renames the target to backup one and renames intermediate to target one.
-- `drop` - drops and recreates a table. It overcomes table rename limitation in AWS Glue.
+- `rename` &mdash; Creates an intermediate table, renames the target table to the backup one, and renames the intermediate table to the target one.
+- `drop` &mdash; Drops and re-creates a table. This overcomes the table rename limitation in AWS Glue.
 
-The recommended `table` materialization uses `on_table_exists = 'rename'` and it is also the default. See the below example for how to change it.
+The recommended `table` materialization uses `on_table_exists = 'rename'` and is also the default. You can change this default configuration by editing _one_ of these files:
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
 
-In model add:
+The following examples configure `table` materialization to be `drop`: 
 
-```jinja2
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
 {{
   config(
     materialized = 'table',
@@ -89,16 +94,20 @@ In model add:
 }}
 ```
 
-or in `dbt_project.yaml`:
+</File>
 
-```yaml
+
+<File name='dbt_project.yml'>
+
+```yaml 
 models:
   path:
     materialized: table
     +on_table_exists: drop
 ```
+</File>
 
-Using `table` materialization and `on_table_exists = 'rename'` with AWS Glue may result in below error:
+If you use `table` materialization and `on_table_exists = 'rename'` with AWS Glue, you might encounter this error message. You can overcome the table rename limitation by using `drop`: 
 
 ```sh
 TrinoUserError(type=USER_ERROR, name=NOT_SUPPORTED, message="Table rename is not yet supported by Glue service")
@@ -106,15 +115,21 @@ TrinoUserError(type=USER_ERROR, name=NOT_SUPPORTED, message="Table rename is not
 
 ### View
 
-Adapter supports two security modes in `view` materialization `definer` and `invoker` configured using `view_security`.
+The `dbt-trino` adapter supports these security modes in `view` materialization, which you can configure with `view_security`:
+- `definer`
+- `invoker`
 
-See [Trino docs](https://trino.io/docs/current/sql/create-view.html#security) for more details about security modes in views.
+For more details about security modes in views, see [Security](https://trino.io/docs/current/sql/create-view.html#security) in the Trino docs.
 
-By default `view` materialization uses `view_security = 'definer'`, see an examples below how to change it.
+By default, `view` materialization uses `view_security = 'definer'`. You can change this default configuration by editing _one_ of these files:
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
 
-In model add:
+For example, these configure the security mode to `invoker`:  
 
-```jinja2
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
 {{
   config(
     materialized = 'view',
@@ -123,20 +138,24 @@ In model add:
 }}
 ```
 
-or in `dbt_project.yaml`:
+</File>
 
-```yaml
+<File name='dbt_project.yml'>
+
+```yaml 
 models:
   path:
     materialized: view
     +view_security: invoker
 ```
+</File>
+
 
 ### Incremental
 
-Using an incremental model limits the amount of data that needs to be transformed, vastly reducing the runtime of your transformations. This improves performance and reduces compute costs.
+Using an incremental model limits the amount of data that needs to be transformed, which greatly reduces the runtime of your transformations. This improves performance and reduces compute costs.
 
-```jinja2
+```sql
 {{
     config(
       materialized = 'incremental', 
@@ -149,15 +168,15 @@ select * from {{ ref('events') }}
 {% endif %}
 ```
 
-Use the `+on_schema_change` property to define how dbt-trino should handle column changes. See [dbt docs](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change).
+Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change). 
 
-Set the `+views_enabled` to `false` if your connector doesn't support views.
+If your connector doesn't support views, set the `+views_enabled` perperty to `false`.
 
-#### `append` (default)
+#### append strategy
 
-The default incremental strategy is `append`. `append` only adds the new records based on the condition specified in the `is_incremental()` conditional block.
+The default incremental strategy is `append`. `append` only adds new records based on the condition specified in the `is_incremental()` conditional block.
 
-```jinja2
+```sql
 {{
     config(
       materialized = 'incremental')
@@ -168,11 +187,11 @@ select * from {{ ref('events') }}
 {% endif %}
 ```
 
-#### `delete+insert`
+#### delete+insert strategy
 
-Through the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. It will first delete the records detected through the configured `is_incremental()` block and re-insert them.
+With the `delete+insert` incremental strategy, you can instruct dbt to use a two-step incremental approach. First, it deletes the records detected through the configured `is_incremental()` block, then re-inserts them.
 
-```jinja2
+```sql
 {{
     config(
       materialized = 'incremental',
@@ -186,13 +205,13 @@ select * from {{ ref('users') }}
 {% endif %}
 ```
 
-#### `merge`
+#### merge strategy
 
-Through the `merge` incremental strategy, dbt-trino constructs a [`MERGE` statement](https://trino.io/docs/current/sql/merge.html) which `insert`s new and `update`s existing records based on the unique key (specified by `unique_key`).  
-If `unique_key` is not unique, `delete+insert` strategy can be used.
-Note that some connectors in Trino have limited or no support for `MERGE`.
+With the `merge` incremental strategy, dbt-trino constructs a [Trino MERGE statement](https://trino.io/docs/current/sql/merge.html) to `insert` new records and `update` existing records, based on the `unique_key` property.
 
-```jinja2
+If `unique_key` is not unique, you can use the `delete+insert` strategy instead.
+
+```sql
 {{
     config(
       materialized = 'incremental',
@@ -206,19 +225,17 @@ select * from {{ ref('users') }}
 {% endif %}
 ```
 
-#### Incremental overwrite on hive models
+Be aware that there are some Trino connectors that don't support `MERGE` or have limited support.
 
-In case that the target incremental model is being accessed with
-[hive](https://trino.io/docs/current/connector/hive.html) Trino connector, an `insert overwrite`
-functionality can be achieved when using:
+#### Incremental overwrite on Hive models
+
+If there's a [Hive connector](https://trino.io/docs/current/connector/hive.html) accessing your target incremental model, you can simulate an `INSERT OVERWRITE` statement by using the `insert-existing-partitions-behavior` setting on the Hive connector configuration in Trino:
 
 ```ini
 <hive-catalog-name>.insert-existing-partitions-behavior=OVERWRITE
 ```
 
-setting on the Trino hive connector configuration.
-
-Below is a sample hive profile entry to deal with `OVERWRITE` functionality for the hive connector called `minio`:
+Below is an example Hive configuration that sets the `OVERWRITE` functionality for a Hive connector called `minio`:
 
 ```yaml
 trino-incremental-hive:
@@ -239,12 +256,9 @@ trino-incremental-hive:
       threads: 1
 ```
 
-Existing partitions in the target model that match the staged data will be overwritten.
-The rest of the partitions will be simply appended to the target model.
+`dbt-trino` overwrites existing partitions in the target model that match the staged data. It appends the remaining partitions to the target model. This functionality works on incremental models that use partitioning. For example:  
 
-NOTE that this functionality works on incremental models that use partitioning:
-
-```jinja2
+```sql
 {{
     config(
         materialized = 'incremental',
@@ -258,17 +272,22 @@ NOTE that this functionality works on incremental models that use partitioning:
 
 ### Materialized view
 
-The adapter also supports [materialized views](https://trino.io/docs/current/sql/create-materialized-view.html).
-At every subsequent `dbt run` command, the materialized view is [refreshed](https://trino.io/docs/current/sql/refresh-materialized-view.html).
+The `dbt-trino` adapter supports [materialized views](https://trino.io/docs/current/sql/create-materialized-view.html) and refreshes them for every subsequent `dbt run` that you execute. For more information, see [REFRESH MATERIALIZED VIEW](https://trino.io/docs/current/sql/refresh-materialized-view.html) in the Trino docs.
 
 You can also define custom properties for the materialized view through the `properties` config.
 
 This materialization supports the [full_refresh](https://docs.getdbt.com/reference/resource-configs/full_refresh) config and flag.
-Whenever you want to rebuild your materialized view, e.g. when changing underlying SQL query, run `dbt run --full-refresh`.
+Whenever you want to rebuild your materialized view (for example, when changing underlying SQL query) run `dbt run --full-refresh`.
 
-In model add:
+You can create a materialized view by editing _one_ of these files:
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
 
-```jinja2
+The following examples create a materialized view in Parquet format: 
+
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
 {{
   config(
     materialized = 'materialized_view',
@@ -279,15 +298,19 @@ In model add:
 }}
 ```
 
-or in `dbt_project.yaml`:
+</File>
 
-```yaml
+
+<File name='dbt_project.yml'>
+
+```yaml 
 models:
   path:
     materialized: materialized_view
     properties:
       format: "'PARQUET'"
 ```
+</File>
 
 ## Snapshots
 
@@ -295,11 +318,14 @@ models:
 
 To change timestamp precision, you can define your own [macro](/docs/build/jinja-macros). For example, this defines a new `trino__current_timestamp()` macro with microsecond precision (6 digits): 
 
-```jinja2
+<File name='macros/YOUR_MACRO_NAME.sql'>
+
+```sql
 {% macro trino__current_timestamp() %}
     current_timestamp(6)
 {% endmacro %}
 ```
+</File>
 
 ## Grants
 
@@ -307,6 +333,7 @@ Use [grants](/reference/resource-configs/grants) to manage access to the dataset
 
 
 To implement access permissions, define grants as resource configs on each model, seed, and snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml` and define model-specific grants within each model's SQL or YAML file.
+<File name='dbt_project.yml'>
 
 ```yaml
 models:
@@ -315,4 +342,5 @@ models:
       grants:
         select: ['reporter', 'bi']
 ```
+</File>
 
