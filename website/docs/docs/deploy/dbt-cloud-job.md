@@ -75,6 +75,16 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
+### Deployment monitor
+
+Use the Deployment monitor to gain greater visibility into your deployment health and quickly detect any issues with the improved filtering and sorting capabilities. You can now easily curate the view based on environment, prioritizing the ones that matter most, such as Production. With pre-filtered lists for in progress and in queue activities, it's quicker and easier to track the relevant activity and stay on top of your deployment status.
+
+The Deployment monitor is accessible by going to the main dbt Cloud dashboard page or clicking the dbt logo on the upper-left. It includes:
+
+- A new run history visualization component to quickly scan a larger number of recent runs and get a better overview of overall health/activity 
+- Pre-filtered lists have been added for In Progress, In Queue, and Latest Failed jobs. 
+- Filter the page by environment, with the preference being stored for future use. 
+- Lastly, the visualization at the top of the page now filters runs by trigger and displays the last 24 hours of runs, with a limit of 500.
 
 ### Notifications
 
@@ -102,7 +112,6 @@ The model timing dashboard on dbt Cloud displays the composition, order, and tim
 You can find the dashboard on the **Run Overview** page. 
 
 <Lightbox src="/img/docs/dbt-cloud/model-timing.jpg" width="85%" title="The model timing tab displays the top 1% of model durations and visualizes model bottlenecks" />
-
 
 ### Automate workflows
 
