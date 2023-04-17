@@ -3,7 +3,7 @@ title: "dbt Squared: Leveraging dbt Core and dbt Cloud together at scale"
 description: "How do you effectively scale dbt? João Antunes from Roche walks through their multi-tool journey."
 slug: dbt-squared
 
-authors: [joao_antunes, yannick_misteli, sean_mcintyre, dave_connors]
+authors: [joao_antunes, yannick_misteli, sean_mcintyre]
 
 tags: [analytics craft]
 hide_table_of_contents: false
@@ -113,4 +113,4 @@ While we acknowledge the success story so far, we also believe the future of thi
 While successful scaling requires good technology, it also requires empowering your people and establishing strong processes.  Be sure to prioritize collaboration, communication, and training as you grow your dbt footprint. We hope this post has given you some useful insight and strategies for scaling the use of dbt in your organization. If you're facing similar challenges or have found other effective solutions, we'd love to hear from you in the comments below.
 
 
-*Editor's note: This article was written by the João Antunes and Yannick Misteli of Roche, with editorial guidance from Sean McIntyre and Dave Connors of dbt Labs*
+*Editor's note: This article was written by the João Antunes and Yannick Misteli of Roche, with editorial and technical guidance from Sean McIntyre of dbt Labs*
