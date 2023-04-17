@@ -46,7 +46,7 @@ Read more about IDE updates in the [dbt Cloud release notes](/docs/dbt-versions/
 | **Dark mode**  | From the status bar in the Cloud IDE, enable dark mode for a great viewing experience in low-light environments. 
 
 
-**Start-up process**
+### Start-up process
 
 There are three start-up states when using or launching the Cloud IDE:
 
@@ -54,13 +54,13 @@ There are three start-up states when using or launching the Cloud IDE:
 - Cold start &mdash; This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
 - Hot start &mdash; This is the state of resuming an existing or active develop session within three hours of the last activity.
 
-**Work retention**
+### Work retention
 
 The Cloud IDE needs explicit action to save your changes. There are three ways your work is stored:
 
-- Unsaved, local code &mdash; Any code you write is automatically available from your browser’s storage. You can see your changes but will lose them if you switch branches or browsers (another device or browser).
-- Saved but uncommitted code &mdash; When you save a file, the data gets stored in your local storage (EFS storage). If you switch branches but don’t *commit* your saved changes, you will lose your changes.
-- Committed code &mdash; This is stored in the branch with your git provider and you can check out other (remote) branches.
+- **Unsaved, local code &mdash;** Your code is stored only in the browser's local storage. You can see your changes but will lose them if you switch to a different browser. To access the Change branch option, you must "Commit and sync" or "Revert" changes - changing branches isn't available for unsaved code
+- **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in your [EFS storage](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html). To access the Change branch option, you must "Commit and sync" or "Revert" changes - changing branches isn't available for saved-but-uncommitted code.
+- **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
 ## Access the Cloud IDE
 
