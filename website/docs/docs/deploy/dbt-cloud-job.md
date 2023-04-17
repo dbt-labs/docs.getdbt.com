@@ -86,6 +86,8 @@ The Deployment monitor is accessible by going to the main dbt Cloud dashboard pa
 - Filter the page by environment, with the preference being stored for future use. 
 - Lastly, the visualization at the top of the page now filters runs by trigger and displays the last 24 hours of runs, with a limit of 500.
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-monitor.jpg" width="85%" title="The Deployment monitor dashboard displays overall deployment health and activity, allows you to filter the page by environment, and more" />
+
 ### Notifications
 
 Set up job notifications to inform you via email or a selected Slack channel when a job run succeeds, fails, or is cancelled, enabling you to respond quickly and proactively.  
