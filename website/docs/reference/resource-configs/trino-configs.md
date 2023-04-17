@@ -5,9 +5,9 @@ id: "trino-configs"
 
 ## Session properties
 
-During a connection session with a Trino cluster, you can temporarily modify your session's properties for a specific dbt model by using [dbt hooks](/reference/resource-configs/pre-hook-post-hook). 
+In the Starburst/Trino environment, you can set session properties that temporarily modifies the current session you have with the cluster. Refer to [Set Session](https://docs.starburst.io/latest/sql/set-session.html) in the Starburst/Trino docs for more details.
 
-For example: 
+During a dbt connection session, you can use [dbt hooks](/reference/resource-configs/pre-hook-post-hook) to set Starburst/Trino session properties on a specific dbt model. For example: 
 
 ```sql
 {{
@@ -19,9 +19,11 @@ For example:
 
 ## Connector properties
 
-Trino connectors use table properties to configure connector specifics.
+You can use Starburst/Trino table properties to configure how you want your data to be represented.
 
-For more information, refer to either the [Trino Connectors](https://trino.io/docs/current/connector.html) or [Starburst Catalog](https://docs.starburst.io/starburst-galaxy/catalogs/) so learn what is and isn't supported for each underlying data platform
+For details on what's supported for each supported data source, refer to either the [Trino Connectors](https://trino.io/docs/current/connector.html) or [Starburst Catalog](https://docs.starburst.io/starburst-galaxy/catalogs/).
+
+For example, this configures the data to materialize as a [Parquet](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) table with partitions: 
 
 ```sql
 {{
@@ -37,33 +39,19 @@ For more information, refer to either the [Trino Connectors](https://trino.io/do
 
 ## Seeds and prepared statements
 
-reference: [dbt docs: Seeds](https://docs.getdbt.com/docs/build/seeds)
+The [dbt seed](/docs/build/seeds) command makes use of prepared statements in [Starburst](https://docs.starburst.io/latest/sql/prepare.html)/[Trino](https://trino.io/docs/current/sql/prepare.html).
 
-The `dbt seed` feature uses [Trino's prepared statements](https://trino.io/docs/current/sql/prepare.html).
-
-Prepared statements are templated SQL statements that are sent with the values in a separate field rather than hard-coded in the SQL string itself. This is often how application front ends structure record INSERTs in the OLTP database backend. Therefore, it is common that a prepared statement will have as many placeholder variables as there are columns in the destintation table.
+Prepared statements are templated SQL statements that you can execute the repeatedly with high efficiency. The values are sent in a separate field rather than hard coded in the SQL string itself. This is often how application front ends structure record INSERTs in the OLTP database backend. Because of this, it's common for prepared statements to have as many placeholder variables (parameters) as there are columns in the destination table.
 
 Virtually all seed files have more than one row, and often thousands of rows. This makes the size of the client request as large as there are parameters.
 
-As an example a seed file with 20 columns and 600 rows has 12,000 values, therefore 12,000 parameters.
+As an example, a seed file with 20 columns and 600 rows has 12,000 values, therefore 12,000 parameters.
 
-Python's http client has a hardcoded limit of `65536` bytes for a header line. When executing a prepared statement with a large number of parameters, you might encounter following error:
+### Header line length limit in Python HTTP client 
 
-```python
-requests.exceptions.ConnectionError: (
-  'Connection aborted.', 
-  LineTooLong('got more than 65536 bytes when reading header line')
-  )
-```
+You might run into an error message about header line limit if your prepared statements have too many parameters. This is because the header line limit in Python's HTTP client is `65536` bytes. 
 
-There are two ways to deal with this issue:
-
-1. decrease the size of each batch, or
-2. enable the `prepared_statements_enabled` flag in your profile.
-
-### Decrease batch size
-
-To avoid this upper limit, one way each the total size of each client prepared statement request is to simply break the statement into smaller ones. dbt does this already by batching an entire seed file into groups of rows -- one group for a chunk of rows of the `.csv`. 
+You can avoid this upper limit by breaking the prepared statements into smaller ones. dbt already does this by batching an entire seed file into groups of rows &mdash; one group for a chunk of rows of the `.csv`. 
 
 So, using the example above, rather than creating a single prepared statement with 1200 parameters, we can have dbt create four prepared `INSERT` statements, with 150 rows and 3,000 parameters.
 
@@ -78,9 +66,7 @@ In order to override this default, add the below macro to your dbt project:
 {% endmacro %}
 ```
 
-### Header line length limit
-
-Another option you have is to disable prepared statements by setting `prepared_statements_enabled` to `true` in your dbt profile (reverting back to the legacy behavior using Python string interpolation). Note: This flag may be removed in later releases.
+Another way to avoid the header line length limit is to set `prepared_statements_enabled` to `true` in your dbt profile; however, this is considered legacy behavior and can be removed in a future release.
 
 ## Materializations
 ### Table
@@ -305,9 +291,9 @@ models:
 
 ## Snapshots
 
-[Snapshots in dbt](/docs/build/snapshots) depend on the `current_timestamp` macro, which returns a timestamp with millisecond precision (3 digits). There are some connectors for Trino that don't support this timestamp precision (`TIMESTAMP(3) WITH TIME ZONE`), like Iceberg.
+[Snapshots in dbt](/docs/build/snapshots) depend on the `current_timestamp` macro, which returns a timestamp with millisecond precision (3 digits) by default. There are some connectors for Trino that don't support this timestamp precision (`TIMESTAMP(3) WITH TIME ZONE`), like Iceberg.
 
-To change the precision of timestamps, you can define your own [macro](/docs/build/jinja-macros). For example, this defines a new `trino__current_timestamp()` macro with microsecond precision (6 digits): 
+To change timestamp precision, you can define your own [macro](/docs/build/jinja-macros). For example, this defines a new `trino__current_timestamp()` macro with microsecond precision (6 digits): 
 
 ```jinja2
 {% macro trino__current_timestamp() %}
