@@ -1,5 +1,5 @@
 ---
-title: "The new Deployment monitor page has improved filtering and sorting capabilities and provides greater visibility to your job run health"
+title: "Use the Deployment monitor page for greater visibility to your job run health"
 id: "deployment-monitor"
 description: "April 2023: "
 sidebar_label: "Enhancement: Deployment monitor visualizes your run health"
