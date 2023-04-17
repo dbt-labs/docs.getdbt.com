@@ -52,8 +52,8 @@ Use the following dbt commands in the [CLI](/docs/core/about-the-cli) and use th
 - [seed](/reference/commands/seed): loads CSV files into the database
 - [show](/reference/commands/show): preview table rows post-transformation
 - [snapshot](/reference/commands/snapshot): executes "snapshot" jobs defined in a project
-- [source](/reference/commands/commands/source): provides tools for working with source data (including validating that sources are "fresh")
-- [test](/reference/commands/commands/test): executes tests defined in a project
+- [source](/reference/commands/source): provides tools for working with source data (including validating that sources are "fresh")
+- [test](/reference/commands/test): executes tests defined in a project
 
 </TabItem>
 
