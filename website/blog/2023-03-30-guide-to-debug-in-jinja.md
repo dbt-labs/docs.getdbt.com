@@ -49,7 +49,7 @@ As you might have guessed, this guide is about option #2.
 
 ## Intro to `debug()` in Jinja
 
-`debug()` is a command available in dbt used to set breakpoints in your Jinja code. Those breakpoints stop the execution of your code and provide the ability to inspect variables and to rum the following part of your code step by step.
+`debug()` is a command available in dbt used to set breakpoints in your Jinja code. Those breakpoints stop the execution of your code and provide the ability to inspect variables and to run the following part of your code step by step.
 
 ### How to use it
 
