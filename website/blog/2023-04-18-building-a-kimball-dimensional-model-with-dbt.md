@@ -708,3 +708,5 @@ Congratulations, you have reached the end of this tutorial. If you want to learn
 The materials in this article were created by [Data Engineer Camp](https://dataengineercamp.com/), a 16-week data engineering bootcamp for professionals looking to transition to data engineering and analytics engineering.
 
 If you have any questions about the material, please reach out to me on dbt slack (@Jonathan Neo), or on [LinkedIn](https://www.linkedin.com/in/jonneo/). 
+
+*Author's note: This article was written by Jonathan Neo, with editorial and technical guidance from [Kenny Ning](https://www.linkedin.com/in/kenny-ning/) and editorial review from [Paul Hallaste](https://www.linkedin.com/in/paulhallaste/).*
