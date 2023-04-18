@@ -344,7 +344,7 @@ There are several approaches to creating a surrogate key:
 
 We are using arguably the easiest approach which is to perform a hash on the unique key columns of the dimension table. This approach removes the hassle of performing a join with dimension tables when generating the surrogate key for the fact tables later. 
 
-To generate the surrogate key, we use a dbt macro that is provided by the `dbt_utils` package called `generate_surrogate_key()` . The surrogate key macro uses the appropriate hashing function on your database. Read more about the [generate_surrogate_key macro](https://docs.getdbt.com/blog/sql-surrogate-keys). 
+To generate the surrogate key, we use a dbt macro that is provided by the `dbt_utils` package called `generate_surrogate_key()` . The generate surrogate key macro uses the appropriate hashing function on your database to generate a surrogate key from a list of key columns. Read more about the [generate_surrogate_key macro](https://docs.getdbt.com/blog/sql-surrogate-keys). 
 
 ```sql
 ...
@@ -356,8 +356,6 @@ from stg_product
 left join stg_product_subcategory on stg_product.productsubcategoryid = stg_product_subcategory.productsubcategoryid
 left join stg_product_category on stg_product_subcategory.productcategoryid = stg_product_category.productcategoryid
 ```
-
-You can hash multiple unique key columns as well in the generate_surrogate_key macro, for example `{{ dbt_utils.generate_surrogate_key(['key_1', 'key_2', 'key_3']) }}` . 
 
 ### Step 5: Select dimension table columns
 
