@@ -1,6 +1,9 @@
 name: Check Markdown links
 
-on: [pull_request]
+on:
+  schedule:
+    #- cron: '0 6 * * 1'
+    - cron: '33 11 * * 2'
 
 jobs:
   markdown-link-check:
@@ -11,5 +14,4 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@master
         with:
-          #fail: true
           args: --verbose --no-progress './website/**/*.md' --accept 429
