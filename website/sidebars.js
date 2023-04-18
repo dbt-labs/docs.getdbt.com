@@ -36,7 +36,8 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/quickstarts/dbt-core/quickstart",
+            "docs/quickstarts/dbt-core/codespace",
+            "docs/quickstarts/dbt-core/manual-install",
           ],
         },
       ],
@@ -279,13 +280,13 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Publishing models",
+          label: "Model governance",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/publish/about-publishing-models" },
+          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
           items: [
-            "docs/collaborate/publish/model-contracts",
-            "docs/collaborate/publish/model-access",
-            "docs/collaborate/publish/model-versions",
+            "docs/collaborate/govern/model-access",
+            "docs/collaborate/govern/model-contracts",
+            "docs/collaborate/govern/model-versions",
           ],
         },
       ],
@@ -453,12 +454,16 @@ const sidebarSettings = {
           type: "category",
           label: "General properties",
           items: [
+            "reference/resource-properties/access",
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
             "reference/resource-properties/description",
+            "reference/resource-properties/latest-version",
+            "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
+            "reference/resource-properties/versions",
           ],
         },
         {
@@ -613,6 +618,7 @@ const sidebarSettings = {
         "reference/events-logging",
         "reference/exit-codes",
         "reference/parsing",
+        "reference/programmatic-invocations",
       ],
     },
     {

@@ -5,15 +5,14 @@ default_value: {contract: false}
 id: "contract"
 ---
 
+:::info New functionality
+This functionality is new in v1.5.
+:::
 
 ## Related documentation
-- [What is a model contract?](publish/model-contracts)
+- [What is a model contract?](govern/model-contracts)
 - [Defining `columns`](resource-properties/columns)
 - [Defining `constraints`](resource-properties/constraints)
-
-:::info Beta functionality
-This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
-:::
 
 # Definition
 
@@ -31,6 +30,7 @@ The `data_type` defined in your yaml file must match a data type your data platf
 models:
   - name: dim_customers
     config:
+      materialized: table
       contract:
         enforced: true
     columns:
@@ -44,9 +44,10 @@ models:
 
 </File>
 
-<File name='models/dim_customers.yml'>
-
 Let's say your model is defined as:
+
+<File name='models/dim_customers.sql'>
+
 ```sql
 select
   'abc123' as customer_id,
@@ -57,11 +58,16 @@ select
 
 When you `dbt run` your model, _before_ dbt has materialized it as a table in the database, you will see this error:
 ```txt
-# example error message
-Compilation Error in model dim_customers (models/dim_customers.sql)
-  Contracts are enabled for this model. Please ensure the name, data_type, and number of columns in your `yml` file match the columns in your SQL file.
-  Schema File Columns: customer_id INT, customer_name TEXT
-  SQL File Columns: customer_id TEXT, customer_name TEXT
+20:53:45  Compilation Error in model dim_customers (models/dim_customers.sql)
+20:53:45    This model has an enforced contract that failed.
+20:53:45    Please ensure the name, data_type, and number of columns in your contract match the columns in your model's definition.
+20:53:45
+20:53:45    | column_name | definition_type | contract_type | mismatch_reason    |
+20:53:45    | ----------- | --------------- | ------------- | ------------------ |
+20:53:45    | customer_id | TEXT            | INT           | data type mismatch |
+20:53:45
+20:53:45
+20:53:45    > in macro assert_columns_equivalent (macros/materializations/models/table/columns_spec_ddl.sql)
 ```
 
 ## Support
@@ -69,7 +75,7 @@ Compilation Error in model dim_customers (models/dim_customers.sql)
 At present, model contracts are supported for:
 - SQL models (not yet Python)
 - Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
-- On the most popular data platforms — but which [`constraints`](resource-properties/constraints) are supported/enforced varies by platform
+- The most popular data platforms — though support and enforcement of different [constraint types](resource-properties/constraints) vary by platform
 
 ### Incremental models and `on_schema_change`
 
@@ -93,10 +99,21 @@ Breaking changes include:
 - (Future) Removing or modifying one of the `constraints` on an existing column
 
 ```
-dbt.exceptions.ModelContractError: Contract Error in model dim_customers (models/dim_customers.sql)
-  There is a breaking change in the model contract because column definitions have changed; you may need to create a new version. See: https://docs.getdbt.com/docs/collaborate/publish/model-versions
+Breaking Change to Contract Error in model sometable (models/sometable.sql)
+  While comparing to previous project state, dbt detected a breaking change to an enforced contract.
+
+  The contract's enforcement has been disabled.
+
+  Columns were removed:
+   - order_name
+
+  Columns with data_type changes:
+   - order_id (number -> int)
+
+  Consider making an additive (non-breaking) change instead, if possible.
+  Otherwise, create a new model version: https://docs.getdbt.com/docs/collaborate/govern/model-versions
 ```
 
 Additive changes are **not** considered breaking:
-- adding a new column to a contracted model
-- adding new `constraints` to an existing column in a contracted model
+- Adding a new column to a contracted model
+- Adding new `constraints` to an existing column in a contracted model
