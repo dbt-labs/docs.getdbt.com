@@ -166,6 +166,7 @@ Developers can perform the following actions in projects they are assigned to:
 Analysts can perform the following actions in projects they are assigned to:
 - Use the IDE
 - Configure personal developer credentials
+- Configure environmental variables
 - View connections
 - View environments
 - View job definitions
