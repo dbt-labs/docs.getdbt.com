@@ -478,3 +478,13 @@ yu_ishikawa:
       url: https://www.linkedin.com/in/yuishikawa0301
   name: Yu Ishikawa
   organization: Ubie
+
+jonathan_neo:
+  image_url: /img/blog/authors/jonathan-neo.png
+  job_title: Data Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jonneo/
+  name: Jonathan Neo
+  organization: Canva & Data Engineer Camp
+  description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple. 
