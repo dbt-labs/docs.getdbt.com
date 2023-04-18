@@ -220,6 +220,8 @@ There are two tables in the sales schema that catch our attention. These two tab
 - The `sales.salesorderheader` table contains information about the credit card used in the order, the shipping address, and the customer. Each record in this table represents an order header that contains one or more order details.
 - The `sales.salesorderdetail` table contains information about the product that was ordered, and the order quantity and unit price, which we can use to calculate the revenue. Each record in this table represents a single order detail.
 
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/sales-order-header-detail.png" width="85%" title="Sales Order Header and Detail"/>
+
 Let’s define a fact table called `fct_sales` which joins `sales.salesorderheader` and `sales.salesorderdetail` together. Each record in the fact table (or the grain of the fact table) is an order detail. 
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/fct_sales.png" width="85%" title="fct_sales table"/>
@@ -398,7 +400,7 @@ models:
 
 ### Step 7: Create model documentation and tests
 
-Along side our `dim_product.sql` model, we can populate the corresponding `dim_product.yml` file to document and test our model. 
+Alongside our `dim_product.sql` model, we can populate the corresponding `dim_product.yml` file to document and test our model. 
 
 ```yaml
 version: 2
@@ -482,7 +484,7 @@ stg_salesorderdetail as (
 
 ### Step 3: Perform joins
 
-The grain of the `fct_sales` table is a sales order detail. So we perform a join between `salesorderheader` and `salesorderdetail` to achieve that grain. 
+The grain of the `fct_sales` table is one record in the SalesOrderDetail table, which describes the quantity of a product within a SalesOrderHeader. So we perform a join between `salesorderheader` and `salesorderdetail` to achieve that grain. 
 
 ```sql
 ... 
@@ -529,7 +531,7 @@ inner join stg_salesorderheader on stg_salesorderdetail.salesorderid = stg_sales
 
 We want to be able to slice and dice our fact table against the dimension tables we have created in the earlier step. So we need to create the foreign surrogate keys that will be used to join the fact table back to the dimension tables. 
 
-We achieve this by applying the `generate_surrogate_key()` macro to the same same unique id columns that we had previously used when generating the surrogate keys in the dimension tables. 
+We achieve this by applying the `generate_surrogate_key()` macro to the same unique id columns that we had previously used when generating the surrogate keys in the dimension tables. 
 
 ```sql
 ...
@@ -559,11 +561,11 @@ You may choose from one of the following materialization types supported by dbt:
 - Table
 - Incremental
 
-It is common for fact tables to be materialized as `incremental` or `table` depending on the data volume size. In this example, we have chosen to go with `table` for simplicity. 
+It is common for fact tables to be materialized as `incremental` or `table` depending on the data volume size. [As a rule of thumb](https://docs.getdbt.com/docs/build/incremental-models#when-should-i-use-an-incremental-model), if you are transforming millions or billions of rows, then you should start using the `incremental` materialization. In this example, we have chosen to go with `table` for simplicity. 
 
 ### Step 8: Create model documentation and tests
 
-Along side our `fct_sales.sql` model, we can populate the corresponding `fct_sales.yml` file to document and test our model. 
+Alongside our `fct_sales.sql` model, we can populate the corresponding `fct_sales.yml` file to document and test our model. 
 
 ```yaml
 version: 2
@@ -611,15 +613,15 @@ Great work, you have successfully created your very first fact and dimension tab
 
 ## Part 6: Document the dimensional model relationships
 
-Let’s make it easier for consumers of our dimensional model to understand the relationships between tables by creating an Entity Relationship Diagram (ERD). 
+Let’s make it easier for consumers of our dimensional model to understand the relationships between tables by creating an [Entity Relationship Diagram (ERD)](https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/). 
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/target-schema.png" width="85%" title="Final dimensional model ERD"/>
 
-The ERD will enable consumers of our dimensional model to quickly identify the keys and relationship type (one-to-one, one-to-many) that needs to be used for the join between tables. 
+The ERD will enable consumers of our dimensional model to quickly identify the keys and relationship type (one-to-one, one-to-many) that need to be used to join tables. 
 
 ## Part 7: Consume dimensional model
 
-Finally, we can consume our dimensional model by connecting to our data warehouse through our Business Intelligence (BI) tools like Tableau, Power BI, and Looker. 
+Finally, we can consume our dimensional model by connecting to our data warehouse to our Business Intelligence (BI) tools such as Tableau, Power BI, and Looker. 
 
 Most modern BI tools have a built-in semantic layer that supports relationships between tables, which is required if we want to consume the dimensional models directly without any additional data transformation. 
 
