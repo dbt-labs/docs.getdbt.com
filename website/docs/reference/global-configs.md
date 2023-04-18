@@ -504,7 +504,7 @@ $ dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
 ```
 
 ```text
-$ WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
+$ DBT_WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
 ...
 ```
 
