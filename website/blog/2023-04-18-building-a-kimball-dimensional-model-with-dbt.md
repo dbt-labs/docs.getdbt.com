@@ -229,9 +229,9 @@ Let’s define a fact table called `fct_sales` which joins `sales.salesorderhead
 :::info
 [Dimension tables](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/dimensions-for-context/) are used to represent contextual or descriptive information for a business process event. Examples of dimensions include: 
 
-- Customer details
-- Website click location details
-- Product details
+- Customer details: Who is the customer for a particular order number? 
+- Website click location details: Which button is the user clicking on? 
+- Product details: What are the details of the product that was added to the cart? 
 :::
 
 Based on the business questions that our business user would like answered, we can identify several tables that would contain useful contextual information for our business process: 
@@ -254,7 +254,7 @@ Instead, we can denormalize the dimension tables by performing joins.
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/star-schema.png" width="85%" title="Star schema"/>
 
-This is known as a star schema and this approach reduces the amount of joins that needs to be performed by the consumer of the dimensional model. 
+This is known as a star schema and this approach reduces the amount of joins that need to be performed by the consumer of the dimensional model. 
 
 Using the star schema approach, we can identify 6 dimensions that will help us answer the business questions: 
 
@@ -266,7 +266,7 @@ Using the star schema approach, we can identify 6 dimensions that will help us a
 - `dim_date` : a specially generated dimension table containing date attributes using the [dbt_date](https://hub.getdbt.com/calogica/dbt_date/latest/) package. 
 
 :::note 
-We have manually seeded the `dim_date` table since duckdb is not supported by the dbt_date package.
+We have manually seeded the `dim_date` table since DuckDB is not supported by the dbt_date package.
 :::
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="85%" title="Dimension tables"/>
@@ -286,7 +286,7 @@ Let’s create the new dbt model files that will contain our transformation code
 
 ```
 adventureworks/models/
-└── serving
+└── marts
     ├── dim_product.sql
     ├── dim_product.yml
 ```
@@ -344,7 +344,7 @@ There are several approaches to creating a surrogate key:
 
 We are using arguably the easiest approach which is to perform a hash on the unique key columns of the dimension table. This approach removes the hassle of performing a join with dimension tables when generating the surrogate key for the fact tables later. 
 
-To generate the surrogate key, we use a dbt macro that is provided by the `dbt_utils` package called `generate_surrogate_key()` . The generate surrogate key macro uses the appropriate hashing function on your database to generate a surrogate key from a list of key columns. Read more about the [generate_surrogate_key macro](https://docs.getdbt.com/blog/sql-surrogate-keys). 
+To generate the surrogate key, we use a dbt macro that is provided by the `dbt_utils` package called `generate_surrogate_key()` . The generate surrogate key macro uses the appropriate hashing function from your database to generate a surrogate key from a list of key columns (e.g. `md5()`, `hash()`). Read more about the [generate_surrogate_key macro](https://docs.getdbt.com/blog/sql-surrogate-keys). 
 
 ```sql
 ...
@@ -386,14 +386,14 @@ You may choose from one of the following materialization types supported by dbt:
 - Table
 - Incremental
 
-It is common for dimension tables to be materialized as `table` or `view` since the data volumes in dimension tables are generally not very large. In this example, we have chosen to go with `table`, and have set the materialization type for all dimensional models in the `serving` schema to `table` in `dbt_project.yml` 
+It is common for dimension tables to be materialized as `table` or `view` since the data volumes in dimension tables are generally not very large. In this example, we have chosen to go with `table`, and have set the materialization type for all dimensional models in the `marts` schema to `table` in `dbt_project.yml` 
 
 ```sql
 models:
   adventureworks:
-    serving:
+    marts:
       +materialized: table
-      +schema: serving
+      +schema: marts
 ```
 
 ### Step 7: Create model documentation and tests
@@ -445,7 +445,7 @@ Let’s create the new dbt model files that will contain our transformation code
 
 ```
 adventureworks/models/
-└── serving
+└── marts
     ├── fct_sales.sql
     ├── fct_sales.yml
 ```
