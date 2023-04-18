@@ -701,4 +701,8 @@ Congratulations, you have reached the end of this tutorial. If you want to learn
 - [Dbt discourse on whether dimensional modelling is still relevant](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225)
 - [Dbt glossary on dimensional modelling](https://docs.getdbt.com/terms/dimensional-modeling)
 
+## Let's talk 
 
+The materials in this article were created by [Data Engineer Camp](https://dataengineercamp.com/), a 16-week data engineering bootcamp for professionals looking to transition to data engineering and analytics engineering.
+
+If you have any questions about the material, please reach out to me on dbt slack (@Jonathan Neo), or on [LinkedIn](https://www.linkedin.com/in/jonneo/). 
