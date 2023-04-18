@@ -1,8 +1,8 @@
-name: Check Markdown links
+name: Check Markdown Links
 
 on:
   schedule:
-    - cron: '45 15 * * 2'
+    - cron: '0 6 * * 1'
 
 jobs:
   markdown-link-check:
