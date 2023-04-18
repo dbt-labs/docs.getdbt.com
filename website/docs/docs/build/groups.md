@@ -6,6 +6,10 @@ keywords:
   - groups access mesh
 ---
 
+:::info New functionality
+This functionality is new in v1.5.
+:::
+
 ## About Groups 
 
 A group is a collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](access) models.
@@ -76,5 +80,5 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 
 ## Related docs
 
-* [Model Access](/docs/collaborate/publish/model-access#groups)
+* [Model Access](/docs/collaborate/govern/model-access#groups)
 * [Group Property](/docs/reference/resource-configs/group)
