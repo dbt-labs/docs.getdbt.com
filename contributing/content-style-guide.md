@@ -120,7 +120,7 @@ Use [code blocks](#code-blocks) for longer or more complex commands. Do _not_ us
 
 Keep lines in code samples to about 60 characters, to avoid requiring readers to scroll horizontally in the code block. Locate explanatory text before the code block, rather than using comments inside the code block.
 
-You can look at the different [languages you can use in code blocks](https://markdown.land/markdown-code-block#markdown-code-block-language-list), which will change how the code example is formatted. For example ` ```yaml` or ` ```shell` are commonly used in the dbt product documentation. 
+You can look at the different [languages you can use in code blocks](https://markdown.land/markdown-code-block#markdown-code-block-language-list), which will change how the code example is formatted (like highlighting). For example, `yaml` or `shell` are commonly used in the dbt product documentation. 
 
 Within code blocks:
 
