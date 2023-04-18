@@ -21,19 +21,21 @@ function Card({ title, body, link, icon }) {
             alt=""
             className={`${styles.icon} ${imgClass}`} />}
           <h3>{title}</h3>
-          <p>
-            {body}
-          </p>
+          <div
+            className={styles.cardBody}
+            dangerouslySetInnerHTML={{ __html: body }}
+          ></div>
         </article>
       </Link> : <article className={styles.card}>
-      {icon && <img
-            src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
-            alt=""
-            className={`${styles.icon} ${imgClass}`} />}
+        {icon && <img
+          src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
+          alt=""
+          className={`${styles.icon} ${imgClass}`} />}
         <h3>{title}</h3>
-        <p>
-          {body}
-        </p>
+        <div
+          className={styles.cardBody}
+          dangerouslySetInnerHTML={{ __html: body }}
+        ></div>
       </article>}
     </div>
   );

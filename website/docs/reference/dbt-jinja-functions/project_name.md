@@ -1,6 +1,7 @@
 ---
 title: "project_name"
 id: "project_name"
+description: "Use this context variable to return the `name` of root-level project."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

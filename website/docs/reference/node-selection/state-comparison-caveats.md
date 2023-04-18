@@ -2,7 +2,7 @@
 title: "Caveats to state comparison"
 ---
 
-The [`state:` selection method](methods#the-state-method) is a wildly powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
+The [`state:` selection method](methods#the-state-method) is a powerful feature, with a lot of underlying complexity. Below are a handful of considerations when setting up automated jobs that leverage state comparison.
 
 ### Seeds
 

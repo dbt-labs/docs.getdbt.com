@@ -6,6 +6,29 @@ Selector methods return all resources that share a common property, using the
 syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
+<VersionBlock firstVersion="1.5">
+
+:::info New functionality
+New in v1.5!
+:::
+
+Many of the methods below support Unix-style wildcards:
+
+| Wildcard | Description                                               |
+| -------- | --------------------------------------------------------- |
+| \*       | matches any number of any characters (including none)     |
+| ?        | matches any single character                              |
+| [abc]    | matches one character given in the bracket                |
+| [a-z]    | matches one character from the range given in the bracket |
+
+For example:
+```
+dbt list --select "*.folder_name.*"
+dbt list --select "package:*_source"
+```
+
+</VersionBlock>
+
 ### The "tag" method
 The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
 
@@ -143,7 +166,17 @@ that defines it. For more information about how generic tests are defined, read 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
 
+<VersionBlock lastVersion="1.4">
+
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+
+</VersionBlock>
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -203,13 +236,13 @@ $ dbt seed --select result:error # run all seeds that generated errors on the pr
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 
-Only supported by v1.1 or newer.
+Supported in v1.1 or newer.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1">
 
-Only supported by v1.1 or newer.
+Supported in v1.1 or newer.
 
 :::caution Experimental functionality
 The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
@@ -222,24 +255,40 @@ The following dbt commands produce `sources.json` artifacts whose results can be
 
 After issuing one of the above commands, you can reference the source freshness results by adding a selector to a subsequent command as follows: 
 
+<VersionBlock lastVersion="1.4">
+
 ```bash
 # You can also set the DBT_ARTIFACT_STATE_PATH environment variable instead of the --state flag.
 $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```bash
+# You can also set the DBT_STATE environment variable instead of the --state flag.
+$ dbt source freshness # must be run again to compare current to previous state
+$ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
+```
+
+</VersionBlock>
+
+
 </VersionBlock>
 
 
 ### The "group" method
 <VersionBlock lastVersion="1.4">
 
-Only supported by v1.5 or newer.
+Supported in v1.5 or newer.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
-Only supported by v1.5 or newer.
+Supported in v1.5 or newer.
 
 The `group` method is used to select models defined within a group.
 
@@ -248,5 +297,26 @@ The `group` method is used to select models defined within a group.
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
 
+</VersionBlock>
+
+### The "version" method
+
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `version` method selects [versioned models](model-versions) based on their [version identifier](resource-properties/versions) and [latest version](resource-properties/latest_version).
+
+```bash
+dbt list --select version:latest      # only 'latest' versions
+dbt list --select version:prerelease  # versions newer than the 'latest' version
+dbt list --select version:old         # versions older than the 'latest' version
+
+dbt list --select version:none        # models that are *not* versioned
+```
 
 </VersionBlock>

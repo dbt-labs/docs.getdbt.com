@@ -1,6 +1,7 @@
 ---
 title: "log"
 id: "log"
+description: "Use `log` to log a line to either the log file or stdout."
 ---
 
 __Args__:
@@ -10,7 +11,7 @@ __Args__:
 
 Logs a line to either the log file or stdout.
 
-([Source on Github](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L432))
+([Source on GitHub](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L432))
 
 ```sql
 

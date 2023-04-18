@@ -1,8 +1,8 @@
 ---
-title: "Quickstart for dbt Core"
-id: quickstart
+title: "Quickstart for dbt Core from a manual install"
+id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
-sidebar_label: "dbt Core quickstart"
+sidebar_label: "Manual install quickstart"
 ---
 
 When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/docs/quickstarts/overview).
