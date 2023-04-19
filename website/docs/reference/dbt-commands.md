@@ -14,7 +14,7 @@ For information about selecting models on the command line, consult the docs on 
 <Tabs>
 <TabItem value="cloud" label="Available commands in dbt Cloud">
 
-Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud)
+Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [compile](/reference/commands/compile): compiles (but does not run) the models in a project
