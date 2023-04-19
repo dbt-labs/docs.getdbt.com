@@ -106,7 +106,7 @@ select
 );
 ```
 
-**[Model Versions](https://docs.getdbt.com/docs/collaborate/publish/model-versions)**
+[**Model Versions**](https://docs.getdbt.com/docs/collaborate/publish/model-versions)
 
 - **Problems you’re living through**: I change my vital model `fct_orders.sql` every week, and many people rely on this for their work. However, I keep getting doubtful questions on what’s changed since my last update, and I don’t have great way to instill confidence that this will/won’t break the way they rely on it.
 - **What it is**: Model versions in v1.5 allow you to create, specify, and reference versions of models. Core reporting models can now be updated and deprecated following software engineering practices and create systems of accountability between data creators and data consumers.
