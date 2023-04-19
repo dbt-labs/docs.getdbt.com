@@ -11,5 +11,5 @@ To generate the compiled SQL for many models, dbt needs to run introspective que
 
 In addition, in a future where materializations can report more of what they're going to do before they do it, a compile task will still require a data platform connection. Although, if you only want to parse your project and write out [`manifest.json`](/reference/artifacts/manifest-json), that can be done with the [`dbt ls` command](/reference/commands/list), without a data platform connection. However, something to note is that the written-out manifest won't include compiled SQL.
 
-In short, `dbt compile` needs a data platform connection to perform introspective queries and generate the compiled SQL needed for the next steps in the dbt workflow. Without a data platform connection, dbt cannot compile your SQL and will not be able to perform transformations on your data.
+In short, `dbt compile` needs a data platform connection to gather the information it needs (including from introspective queries) to prepare the SQL for every model in your project.
 
