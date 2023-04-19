@@ -1,5 +1,5 @@
 ---
-title: "Data Engineers + dbt 1.5: Evolving the Craft for Scale"
+title: "Data engineers + dbt v1.5: Evolving the craft for scale"
 description: "Where have we been? Where are we going? What does the future hold for data engineers? How can dbt help you get there?"
 slug: evolving-data-engineer-craft
 
