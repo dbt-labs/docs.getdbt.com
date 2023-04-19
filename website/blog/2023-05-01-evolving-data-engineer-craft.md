@@ -90,7 +90,7 @@ models:
 
 ```sql
 --Exact SQL run against database
-create or replace transient table <database>.<schema>.constraints_model        
+create or replace transient table <database>.<schema>.dim_customers        
 (
     id integer not null primary key,
     customer_name text,
