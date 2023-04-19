@@ -59,9 +59,9 @@ can override schema test definitions
 ## New and changed documentation
 
 **Core**
-- [node selection syntax](node-selection/syntax)
+- [node selection syntax](/reference/node-selection/syntax)
 - [list (ls)](commands/list)
-- [defer](defer)
+- [defer](/reference/node-selection/defer)
 - [adapter.dispatch](adapter#dispatch)
 - [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](reference/dbt_project.yml) and [description](description))
 - [flag for colorized logs](run#enable-or-disable-colorized-logs)

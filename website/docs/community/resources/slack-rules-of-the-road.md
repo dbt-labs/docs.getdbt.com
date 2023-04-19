@@ -29,7 +29,7 @@ If you're hitting an error, you should post your question in [the Community Foru
 ## Rule 3: Put effort into your question
 dbt Slack is a community of volunteers. These are kind, knowledgeable, helpful people who share their time and expertise for free.
 
-A thoughtful and well-researched post will garner far more responses than a low-effort one. See the guide on [getting help](getting-help) for more information about how to ask a good question.
+A thoughtful and well-researched post will garner far more responses than a low-effort one. See the guide on [getting help](/community/resources/getting-help) for more information about how to ask a good question.
 
 ## Rule 4: Mark your questions as resolved
 Were you in need of help, and received a helpful reply? Please mark your question as resolved by adding a ✅ reaction to your original post. Note that other community members may summon Slackbot to remind you to do this, by posting the words `resolved bot` as a reply to your message.

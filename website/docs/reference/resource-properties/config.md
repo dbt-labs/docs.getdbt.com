@@ -30,7 +30,7 @@ version: 2
 models:
   - name: <model_name>
     config:
-      [<model_config>](model-configs): <config_value>
+      [<model_config>](/reference/model-configs): <config_value>
       ...
 ```
 
@@ -98,7 +98,7 @@ version: 2
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               config:
-                [<test_config>](test-configs): <config-value>
+                [<test_config>](/reference/test-configs): <config-value>
                 ...
 
 ```

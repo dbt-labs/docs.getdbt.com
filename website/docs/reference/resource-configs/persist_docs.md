@@ -106,7 +106,7 @@ select ...
 
 ## Definition
 
-Optionally persist [resource descriptions](resource-properties/description) as
+Optionally persist [resource descriptions](/reference/resource-properties/description) as
 column and relation comments in the database. By default, documentation
 persistence is disabled, but it can be enabled for specific resources or groups of
 resources as needed.
@@ -162,7 +162,7 @@ Some known issues and limitations:
 
 ### Documenting columns and relations
 
-Supply a [description](resource-properties/description) for a model:
+Supply a [description](/reference/resource-properties/description) for a model:
 
 <File name='models/schema.yml'>
 

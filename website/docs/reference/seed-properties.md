@@ -4,7 +4,7 @@ title: Seed properties
 
 <Changelog>
   
-  **v1.0.0:** The default path for [`seed-paths`](seed-paths) (formerly `data-paths`) is now `seeds`.
+  **v1.0.0:** The default path for [`seed-paths`](/reference/project-configs/seed-paths) (formerly `data-paths`) is now `seeds`.
   
 </Changelog>
 
@@ -24,7 +24,7 @@ seeds:
       show: true | false
     [config](resource-properties/config):
       [<seed_config>](seed-configs): <config_value>
-    [tests](resource-properties/tests):
+    [tests](/reference/resource-properties/tests):
       - <test>
       - ... # declare additional tests
     columns:
@@ -32,8 +32,8 @@ seeds:
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
-        [tags](resource-configs/tags): [<string>]
-        [tests](resource-properties/tests):
+        [tags](/reference/resource-configs/tags): [<string>]
+        [tests](/reference/resource-properties/tests):
           - <test>
           - ... # declare additional tests
 

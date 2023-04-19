@@ -261,7 +261,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run models ([docs](run))
+### Run models ([docs](/reference/commands/run))
 
 **Additional parameters:**
 - `defer`: Whether to defer references to upstream, unselected resources (optional, requires `state`)
@@ -282,7 +282,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run tests ([docs](commands/test))
+### Run tests ([docs](/reference/commands/test))
 
 **Additional parameters:**
  - `data`: If True, run data tests (optional, default=true)

@@ -4,7 +4,7 @@ title: Exposure properties
 
 ## Related documentation
 - [Using exposures](exposures)
-- [Declaring resource properties](configs-and-properties)
+- [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
 Exposures are defined in `.yml` files nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
@@ -30,7 +30,7 @@ exposures:
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
-    [tags](resource-configs/tags): [<string>]
+    [tags](/reference/resource-configs/tags): [<string>]
     [meta](resource-configs/meta): {<dictionary>}
     owner:
       name: <string>
@@ -65,7 +65,7 @@ exposures:
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
-    [tags](resource-configs/tags): [<string>]
+    [tags](/reference/resource-configs/tags): [<string>]
     [meta](resource-configs/meta): {<dictionary>}
     owner:
       name: <string>

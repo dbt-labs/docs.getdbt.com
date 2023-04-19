@@ -182,7 +182,7 @@ If provided, a yaml selector's `indirect_selection` value will take precedence o
 
 </VersionBlock>
 
-See [test selection examples](test-selection-examples) for more details about indirect selection.
+See [test selection examples](/reference/node-selection/test-selection-examples) for more details about indirect selection.
 
 ## Example
 

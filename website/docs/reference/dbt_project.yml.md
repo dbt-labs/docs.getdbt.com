@@ -1,6 +1,6 @@
 <Changelog>
 
-- **v1.0.0:** The default config name for `data-paths` is now [`seed-paths`](seed-paths), `source-paths` is now [`model-paths`](model-paths) and `modules-path` is now [`packages-install-path`](packages-install-path).
+- **v1.0.0:** The default config name for `data-paths` is now [`seed-paths`](/reference/project-configs/seed-paths), `source-paths` is now [`model-paths`](/reference/project-configs/model-paths) and `modules-path` is now [`packages-install-path`](packages-install-path).
 
 </Changelog>
 
@@ -18,7 +18,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 [name](project-configs/name): string
 
 [config-version](project-configs/config-version): 2
-[version](project-configs/version): version
+[version](/reference/project-configs/version): version
 
 [profile](project-configs/profile): profilename
 
@@ -47,7 +47,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
   identifier: true | false
 
 models:
-  [<model-configs>](model-configs)
+  [<model-configs>](/reference/model-configs)
 
 seeds:
   [<seed-configs>](seed-configs)
@@ -59,7 +59,7 @@ sources:
   [<source-configs>](source-configs)
   
 tests:
-  [<test-configs>](test-configs)
+  [<test-configs>](/reference/test-configs)
 
 vars:
   [<variables>](/docs/build/project-variables)

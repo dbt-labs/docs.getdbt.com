@@ -69,13 +69,13 @@ seeds:
 ```yaml
 seeds:
   [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](resource-configs/schema): <string>
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
+    [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
@@ -98,13 +98,13 @@ version: 2
 seeds:
   - name: [<seed-name>]
     config:
-      [enabled](enabled): true | false
-      [tags](resource-configs/tags): <string> | [<string>]
-      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [database](resource-configs/database): <string>
-      [schema](resource-configs/schema): <string>
-      [alias](resource-configs/alias): <string>
+      [schema](/reference/resource-properties/schema): <string>
+      [alias](/reference/resource-configs/alias): <string>
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}

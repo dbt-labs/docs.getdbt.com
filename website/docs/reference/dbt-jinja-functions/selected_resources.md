@@ -10,7 +10,7 @@ Currently, this variable is not accessible when using the command `run-operation
 
 :::danger Warning!
 
-dbt actively builds the graph during the [parsing phase](execute) of
+dbt actively builds the graph during the [parsing phase](/reference/dbt-jinja-functions/execute) of
 running dbt projects, so the `selected_resources` context variable will be
 empty during parsing. Please read the information on this page to effectively use this variable.
 

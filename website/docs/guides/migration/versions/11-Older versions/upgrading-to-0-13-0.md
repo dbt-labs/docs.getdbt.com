@@ -9,7 +9,7 @@ id: "upgrading-to-0-13-0"
 
 The special Jinja variable `{{this}}` is no longer implemented for `on-run-start` and `on-run-end` hooks. 
 
-Use a variable from the [`{{ target }}` context](target) or [`on-run-end` context](on-run-end-context) instead.
+Use a variable from the [`{{ target }}` context](/reference/dbt-jinja-functions/target) or [`on-run-end` context](on-run-end-context) instead.
 
 ### Adapter methods
 

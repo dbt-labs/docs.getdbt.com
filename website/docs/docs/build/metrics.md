@@ -28,10 +28,10 @@ Review the video below to learn more about metrics, why they're important, and h
 ### Benefits of defining metrics
 
 **Use metric specifications in downstream tools**  
-dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.
+dbt's compilation context can access metrics via the [`graph.metrics` variable](/reference/dbt-jinja-functions/graph). The [manifest artifact](/reference/artifacts/manifest-json) includes metrics for downstream metadata consumption.
 
 **See and select dependencies**   
-As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
+As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](/docs/collaborate/documentation). For more information, see "[The `metric:` selection method](/reference/node-selection/methods#the-metric-method)."
 
 <Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 

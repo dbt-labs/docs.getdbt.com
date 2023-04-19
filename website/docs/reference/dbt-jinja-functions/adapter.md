@@ -12,7 +12,7 @@ Your database communicates with dbt using an internal database adapter object. F
 
 For example, the adapter methods below will be translated into specific SQL statements depending on the type of adapter your project is using:
 
-- [adapter.dispatch](dispatch)
+- [adapter.dispatch](/reference/dbt-jinja-functions/dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
 - [adapter.expand_target_column_types](#expand_target_column_types)
 - [adapter.get_relation](#get_relation) or [load_relation](#load_relation)
@@ -32,7 +32,7 @@ The following adapter functions are deprecated, and will be removed in a future 
 
 ## dispatch
 
-Moved to separate page: [dispatch](dispatch)
+Moved to separate page: [dispatch](/reference/dbt-jinja-functions/dispatch)
 
 ## get_missing_columns
 __Args__:

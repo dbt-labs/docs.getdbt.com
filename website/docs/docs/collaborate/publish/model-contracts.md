@@ -13,9 +13,9 @@ For more details and to leave your feedback, join the GitHub discussion:
 :::
 
 ## Related documentation
-* [`contract`](resource-configs/contract)
-* [`columns`](resource-properties/columns)
-* [`constraints`](resource-properties/constraints)
+* [`contract`](/reference/resource-configs/contract)
+* [`columns`](/reference/resource-properties/columns)
+* [`constraints`](/reference/resource-properties/constraints)
 
 ## Why define a contract?
 
@@ -80,7 +80,7 @@ Any model can define a contract. Defining contracts for “public” models that
 
 A model's contract defines the **shape** of the returned dataset.
 
-[Tests](tests) are a more flexible mechanism for validating the content of your model. So long as you can write the query, you can run the test. Tests are also more configurable via `severity` and custom thresholds and are easier to debug after finding failures. The model has already been built, and the relevant records can be materialized in the data warehouse by [storing failures](resource-configs/store_failures).
+[Tests](/reference/resource-properties/tests) are a more flexible mechanism for validating the content of your model. So long as you can write the query, you can run the test. Tests are also more configurable via `severity` and custom thresholds and are easier to debug after finding failures. The model has already been built, and the relevant records can be materialized in the data warehouse by [storing failures](/reference/resource-configs/store_failures).
 
 In blue/green deployments (docs link TK), ... <!-- TODO write more here -->
 

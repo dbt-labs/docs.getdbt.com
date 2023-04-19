@@ -2,8 +2,8 @@
 title: Snapshot configurations
 ---
 ## Related documentation
-* [Snapshots](snapshots)
-* The `dbt snapshot` [command](snapshot)
+* [Snapshots](/docs/build/snapshots)
+* The `dbt snapshot` [command](/reference/commands/snapshot)
 
 <!--
 Parts of a snapshot:
@@ -108,11 +108,11 @@ snapshots:
 ```yaml
 snapshots:
   [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
-    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
     [+](plus-prefix)[grants](grants): {<dict>}
 ```
@@ -130,11 +130,11 @@ version: 2
 snapshots:
   - name: [<snapshot-name>]
     config:
-      [enabled](enabled): true | false
-      [tags](resource-configs/tags): <string> | [<string>]
-      [alias](resource-configs/alias): <string>
-      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [alias](/reference/resource-configs/alias): <string>
+      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](persist_docs): {<dict>}
       [grants](grants): {<dictionary>}
 ```
@@ -149,11 +149,11 @@ snapshots:
 ```jinja
 
 {{ config(
-    [enabled](enabled)=true | false,
-    [tags](resource-configs/tags)="<string>" | ["<string>"],
-    [alias](resource-configs/alias)="<string>", 
-    [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
+    [alias](/reference/resource-configs/alias)="<string>", 
+    [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}
     [grants](grants)={<dict>}
 ) }}
@@ -169,7 +169,7 @@ snapshots:
 Snapshots can be configured in one of three ways:
 
 1. Using a `config` block within a snapshot
-2. Using a `config` [resource property](model-properties) in a `.yml` file
+2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
 3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
 Snapshot configurations are applied hierarchically in the order above.

@@ -7,7 +7,7 @@ syntax `method:value`. While it is recommended to explicitly denote the method,
 you can omit it (the default value will be one of `path`, `file` or `fqn`).
 
 ### The "tag" method
-The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
+The `tag:` method is used to select models that match a specified [tag](/reference/resource-configs/tags).
 
 
   ```bash
@@ -73,7 +73,7 @@ selectors unambiguous.
 
 ### The "config" method
 
-The `config` method is used to select models that match a specified [node config](configs-and-properties).
+The `config` method is used to select models that match a specified [node config](/reference/configs-and-properties).
 
 
 
@@ -141,7 +141,7 @@ that defines it. For more information about how generic tests are defined, read 
 
 ### The "state" method
 
-**N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
+**N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
 The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
 

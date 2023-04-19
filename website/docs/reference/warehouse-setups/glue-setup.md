@@ -270,4 +270,4 @@ Apache Hudi-only features:
 
 Some dbt features, available on the core adapters, are not yet supported on Glue:
 1. [Persisting](persist_docs) column-level descriptions as database comments
-2. [Snapshots](snapshots)
+2. [Snapshots](/docs/build/snapshots)

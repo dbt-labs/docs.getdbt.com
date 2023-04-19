@@ -4,7 +4,7 @@ title: Run Results
 
 **Current schema**: [`v4`](https://schemas.getdbt.com/dbt/run-results/v4/index.html)
 
-**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`test`](commands/test) [`run`](commands/run)
+**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`test`](/reference/commands/test) [`run`](commands/run)
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 

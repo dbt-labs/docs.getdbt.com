@@ -4,10 +4,10 @@ title: Source properties
 
 ## Related documentation
 - [Using sources](/docs/build/sources)
-- [Declaring resource properties](configs-and-properties)
+- [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
-Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).
+Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)).
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
@@ -24,7 +24,7 @@ sources:
     [loader](loader): <string>
     [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
     [meta](meta): {<dictionary>}
-    [tags](resource-configs/tags): [<string>]
+    [tags](/reference/resource-configs/tags): [<string>]
     
     # requires v1.1+
     [config](resource-properties/config):
@@ -41,7 +41,7 @@ sources:
         [period](resource-properties/freshness#period): minute | hour | day
       [filter](resource-properties/freshness#filter): <where-condition>
 
-    [quoting](resource-properties/quoting):
+    [quoting](/reference/resource-properties/quoting):
       database: true | false
       schema: true | false
       identifier: true | false
@@ -50,12 +50,12 @@ sources:
       - name: <string> #required
         [description](description): <markdown_string>
         [meta](meta): {<dictionary>}
-        [identifier](identifier): <table_name>
+        [identifier](/reference/resource-properties/identifier): <table_name>
         [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
-        [tests](resource-properties/tests):
+        [tests](/reference/resource-properties/tests):
           - <test>
           - ... # declare additional tests
-        [tags](resource-configs/tags): [<string>]
+        [tags](/reference/resource-configs/tags): [<string>]
         [freshness](resource-properties/freshness):
           warn_after:
             [count](resource-properties/freshness#count): <positive_integer>
@@ -65,7 +65,7 @@ sources:
             [period](resource-properties/freshness#period): minute | hour | day
           [filter](resource-properties/freshness#filter): <where-condition>
 
-        [quoting](resource-properties/quoting):
+        [quoting](/reference/resource-properties/quoting):
           database: true | false
           schema: true | false
           identifier: true | false
@@ -75,10 +75,10 @@ sources:
             [description](description): <markdown_string>
             [meta](meta): {<dictionary>}
             [quote](quote): true | false
-            [tests](resource-properties/tests):
+            [tests](/reference/resource-properties/tests):
               - <test>
               - ... # declare additional tests
-            [tags](resource-configs/tags): [<string>]
+            [tags](/reference/resource-configs/tags): [<string>]
           - name: ... # declare properties of additional columns
 
       - name: ... # declare properties of additional source tables

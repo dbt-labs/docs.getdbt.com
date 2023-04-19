@@ -18,7 +18,7 @@ after upgrading to v0.16.0.
 
 ### Seed type inference
 A number of improvements have been made to the type-inference logic in dbt. dbt
-previously errantly converted string values in [seed CSV files](seeds)
+previously errantly converted string values in [seed CSV files](/docs/build/seeds)
 like `sunday` or `March` into date timestamps in the year `0001`.
 This was obviously incorrect and has now been remedied, but if you
 _relied_ on this functionality, then this represents a breaking change. See
@@ -106,7 +106,7 @@ please be mindful of the following changes to dbt's Python dependencies:
 - [Select specific seeds to run with `--select`](seed)
 - [New `generate_database_name` macro](/docs/build/custom-databases#generate_database_name)
 - [New `dbt_project.yml context`](dbt-project-yml-context)
-- [New configurations for schema.yml files](configs-and-properties)
+- [New configurations for schema.yml files](/reference/configs-and-properties)
 - [New configurations for Source declarations](/docs/build/sources)
 - [New Postgres connection configs](/reference/warehouse-setups/postgres-setup)
 - [New Snowflake KeyPair auth configs](/reference/warehouse-setups/snowflake-setup)

@@ -9,7 +9,7 @@ This is a work in progress document. While this configuration applies to multipl
 :::
 
 ## Definition
-Optionally specify a custom schema for a [model](/docs/build/sql-models) or [seed](/docs/build/seeds). (To specify a schema for a [snapshot](snapshots), use the [`target_schema` config](target_schema)).
+Optionally specify a custom schema for a [model](/docs/build/sql-models) or [seed](/docs/build/seeds). (To specify a schema for a [snapshot](/docs/build/snapshots), use the [`target_schema` config](target_schema)).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
@@ -60,7 +60,7 @@ seeds:
 
 ### Tests
 
-Customize the name of the schema in which tests [configured to store failures](resource-configs/store_failures) will save their results:
+Customize the name of the schema in which tests [configured to store failures](/reference/resource-configs/store_failures) will save their results:
 
 <File name='dbt_project.yml'>
 

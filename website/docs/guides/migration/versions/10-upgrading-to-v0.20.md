@@ -4,7 +4,7 @@ title: "Upgrading to v0.20"
 ---
 
 :::caution Unsupported version
-dbt Core v0.20 has reached the end of critical support. No new patch versions will be released, and it will stop running in dbt Cloud on June 30, 2022. Read ["About dbt Core versions"](core-versions) for more details.
+dbt Core v0.20 has reached the end of critical support. No new patch versions will be released, and it will stop running in dbt Cloud on June 30, 2022. Read ["About dbt Core versions"](/docs/dbt-versions/core) for more details.
 :::
 
 ### Resources
@@ -25,17 +25,17 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 ### Tests
 
 - [Building a dbt Project: tests](/docs/build/tests)
-- [Test Configs](test-configs)
-- [Test properties](resource-properties/tests)
-- [Node Selection](node-selection/syntax) (with updated [test selection examples](test-selection-examples))
-- [Writing custom generic tests](custom-generic-tests)
+- [Test Configs](/reference/test-configs)
+- [Test properties](/reference/resource-properties/tests)
+- [Node Selection](/reference/node-selection/syntax) (with updated [test selection examples](/reference/node-selection/test-selection-examples))
+- [Writing custom generic tests](/guides/best-practices/writing-custom-generic-tests)
 
 ### Elsewhere in Core
 - [Parsing](parsing): rework of partial parsing, introduction of experimental parser
 - The [graph](graph) Jinja context variable includes `exposures`
 - [Packages](/docs/build/packages) can now be installed from git with a specific commit hash as the revision, or via sparse checkout if the dbt project is located in a `subdirectory`.
-- [adapter.dispatch](dispatch) supports new arguments, a new [project-level config](project-configs/dispatch-config), and includes parent adapters when searching for macro implementations.
-- [Exposures](exposure-properties) support `tags` and `meta` properties
+- [adapter.dispatch](/reference/dbt-jinja-functions/dispatch) supports new arguments, a new [project-level config](project-configs/dispatch-config), and includes parent adapters when searching for macro implementations.
+- [Exposures](/reference/exposure-properties) support `tags` and `meta` properties
 
 ### Plugins
 - New partition-related [BigQuery configs](bigquery-configs#additional-partition-configs): `require_partition_filter` and `partition_expiration_days`

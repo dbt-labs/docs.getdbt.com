@@ -95,7 +95,7 @@ The following fields are required when creating a Snowflake connection:
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
 
 
-**Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](snowflake-permissions).
+**Note:** A crucial part of working with dbt atop Snowflake is ensuring that users (in development environments) and/or service accounts (in deployment to production environments) have the correct permissions to take actions on Snowflake! Here is documentation of some [example permissions to configure Snowflake access](/reference/snowflake-permissions).
 
 ### Username / Password
 
@@ -189,7 +189,7 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/bq_oauth/bq_oauth_as_user.gif" title="Link Button in dbt Cloud Credentials Screen" />
 
 ## Connecting to Databricks
-You can connect to Databricks by using one of two supported adapters: [dbt-databricks](/connect-your-database#dbt-databricks) and [dbt-spark](/connect-your-database#dbt-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark will be deprecated in the future.
+You can connect to Databricks by using one of two supported adapters: [dbt-databricks](/docs/cloud/connect-data-platform/connect-databricks) and [dbt-spark](/docs/cloud/connect-data-platform/connect-apache-spark). For accounts on dbt 1.0 or later, we recommend using the dbt-databricks adapter. The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark will be deprecated in the future.
 
 ### dbt-databricks Adapter
 dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.

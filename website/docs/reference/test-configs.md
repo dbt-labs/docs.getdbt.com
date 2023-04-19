@@ -7,7 +7,7 @@ title: Test configurations
 * [Tests](/docs/build/tests)
 
 Tests can be configured in a few different ways:
-1. Properties within `.yml` definition (generic tests only, see [test properties](resource-properties/tests) for full syntax)
+1. Properties within `.yml` definition (generic tests only, see [test properties](/reference/resource-properties/tests) for full syntax)
 2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
@@ -130,13 +130,13 @@ This configuration mechanism is supported for specific instances of generic test
 ```yaml
 tests:
   [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
     [+](plus-prefix)[meta](resource-configs/meta): {dictionary}
-    # relevant for [store_failures](resource-configs/store_failures) only
+    # relevant for [store_failures](/reference/resource-configs/store_failures) only
     [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](resource-configs/schema): <string>
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
+    [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
 ```
 </File>
 
@@ -148,12 +148,12 @@ tests:
 ```jinja
 
 {{ config(
-    [enabled](enabled)=true | false,
-    [tags](resource-configs/tags)="<string>" | ["<string>"]
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"]
     [meta](resource-configs/meta)={dictionary},
     [database](resource-configs/database)="<string>",
-    [schema](resource-configs/schema)="<string>",
-    [alias](resource-configs/alias)="<string>",
+    [schema](/reference/resource-properties/schema)="<string>",
+    [alias](/reference/resource-configs/alias)="<string>",
 ) }}
 
 ```
@@ -171,13 +171,13 @@ version: 2
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           [config](resource-properties/config):
-            [enabled](enabled): true | false
-            [tags](resource-configs/tags): <string> | [<string>]
+            [enabled](/reference/resource-configs/enabled): true | false
+            [tags](/reference/resource-configs/tags): <string> | [<string>]
             [meta](resource-configs/meta): {dictionary}
-            # relevant for [store_failures](resource-configs/store_failures) only
+            # relevant for [store_failures](/reference/resource-configs/store_failures) only
             [database](resource-configs/database): <string>
-            [schema](resource-configs/schema): <string>
-            [alias](resource-configs/alias): <string>
+            [schema](/reference/resource-properties/schema): <string>
+            [alias](/reference/resource-configs/alias): <string>
 
     [columns](columns):
       - name: <column_name>
@@ -185,13 +185,13 @@ version: 2
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               [config](resource-properties/config):
-                [enabled](enabled): true | false
-                [tags](resource-configs/tags): <string> | [<string>]
+                [enabled](/reference/resource-configs/enabled): true | false
+                [tags](/reference/resource-configs/tags): <string> | [<string>]
                 [meta](resource-configs/meta): {dictionary}
-                # relevant for [store_failures](resource-configs/store_failures) only
+                # relevant for [store_failures](/reference/resource-configs/store_failures) only
                 [database](resource-configs/database): <string>
-                [schema](resource-configs/schema): <string>
-                [alias](resource-configs/alias): <string>
+                [schema](/reference/resource-properties/schema): <string>
+                [alias](/reference/resource-configs/alias): <string>
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.

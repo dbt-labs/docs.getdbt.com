@@ -10,7 +10,7 @@ To-do:
 
 ## Configuring tables
 
-When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](model-configs).
+When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).
 
 | Option  | Description                                                                                                                        | Required?               | Example                  |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------|--------------------------|
@@ -303,7 +303,7 @@ use the `schema` config and `generate_schema_name` macro _only_.
 ## Default file format configurations
 
 To access advanced incremental strategies features, such as 
-[snapshots](snapshots) and the `merge` incremental strategy, you will want to
+[snapshots](/docs/build/snapshots) and the `merge` incremental strategy, you will want to
 use the Delta or Hudi file format as the default file format when materializing models as tables.
 
 It's quite convenient to do this by setting a top-level configuration in your

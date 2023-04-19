@@ -5,7 +5,7 @@ id: source-configs
 
 ## Available configurations
 
-Sources only support one configuration, [`enabled`](enabled).
+Sources only support one configuration, [`enabled`](/reference/resource-configs/enabled).
 
 ### General configurations
 
@@ -25,7 +25,7 @@ Sources only support one configuration, [`enabled`](enabled).
 ```yaml
 sources:
   [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
+    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
 
 ```
 
@@ -46,11 +46,11 @@ version: 2
 sources:
   - name: [<source-name>]
     [config](resource-properties/config):
-      [enabled](enabled): true | false
+      [enabled](/reference/resource-configs/enabled): true | false
     tables:
       - name: [<source-table-name>]
         [config](resource-properties/config):
-          [enabled](enabled): true | false
+          [enabled](/reference/resource-configs/enabled): true | false
 
 ```
 

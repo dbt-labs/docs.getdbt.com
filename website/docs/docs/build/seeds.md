@@ -3,9 +3,9 @@ title: "Seeds"
 id: "seeds"
 ---
 ## Related reference docs
-* [Seed configurations](seed-configs)
-* [Seed properties](seed-properties)
-* [`seed` command](seed)
+* [Seed configurations](/reference/seed-configs)
+* [Seed properties](/reference/seed-properties)
+* [`seed` command](/docs/build/seed)
 
 ## Overview
 Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your <Term id="data-warehouse" /> using the `dbt seed` command.

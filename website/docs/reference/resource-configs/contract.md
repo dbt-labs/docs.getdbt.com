@@ -8,8 +8,8 @@ id: "contract"
 
 ## Related documentation
 - [What is a model contract?](publish/model-contracts)
-- [Defining `columns`](resource-properties/columns)
-- [Defining `constraints`](resource-properties/constraints)
+- [Defining `columns`](/reference/resource-properties/columns)
+- [Defining `constraints`](/reference/resource-properties/constraints)
 
 <!-- TODO: move some of this content elsewhere, and update to reflect new proposed syntax -->
 
@@ -25,7 +25,7 @@ In particular:
 
 When the `contract` configuration is enabled, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
-- additional [`constraints`](resource-properties/constraints), as supported for this materialization + data platform
+- additional [`constraints`](/reference/resource-properties/constraints), as supported for this materialization + data platform
 
 :::caution Under construction 🚧
 More to come!
@@ -49,7 +49,7 @@ Tests should be used in addition to and instead of constraints when you want to 
 - `contract` (a.k.a. `constraints_enabled`) is supported only for a SQL model materialized as `table`.
 - Prerequisite checks include the column `name,` but not yet their `data_type`. We intend to support `data_type` verification in an upcoming beta prerelease.
 - The order of columns in your `yml` file must match the order of columns returned by your model's SQL query.
-- While most data platforms support `not_null` checks, support for [additional `constraints`](resource-properties/constraints) varies by data platform.
+- While most data platforms support `not_null` checks, support for [additional `constraints`](/reference/resource-properties/constraints) varies by data platform.
 
 ```txt
 # example error message

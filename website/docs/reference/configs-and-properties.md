@@ -33,7 +33,7 @@ Depending on the resource type, configurations can be defined:
 
 dbt prioritizes configurations in order of specificity, from most specificity to least specificity. This generally follows the order above: an in-file `config()` block --> properties defined in a `.yml` file --> config defined in the project file. 
 
-Note - Generic tests work a little differently when it comes to specificity. See [test configs](test-configs).
+Note - Generic tests work a little differently when it comes to specificity. See [test configs](/reference/test-configs).
 
 Within the project file, configurations are also applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.
 
@@ -42,7 +42,7 @@ Within the project file, configurations are also applied hierarchically. The mos
 Most configurations are "clobbered" when applied hierarchically. Whenever a more-specific value is available, it will completely replace the less-specific value. Note that a few configs have different merge behavior:
 - [`tags`](tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
 - [`meta`](meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
-- [`pre-hook` and `post-hook`](pre-hook-post-hook) are also additive.
+- [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
 
 ## Where can I define properties?
 
@@ -73,14 +73,14 @@ Certain properties are special, because:
 - They're older properties that haven't yet been redefined as configs
 
 These properties are:
-- [`description`](resource-properties/description)
-- [`tests`](resource-properties/tests)
+- [`description`](/reference/resource-properties/description)
+- [`tests`](/reference/resource-properties/tests)
 - [`docs`](/reference/resource-configs/docs)
-- [`columns`](resource-properties/columns)
-- [`quote`](resource-properties/quote)
-- [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
-- [`exposure` properties](exposure-properties) (e.g. `type`, `maturity`)
-- [`macro` properties](macro-properties) (e.g. `arguments`)
+- [`columns`](/reference/resource-properties/columns)
+- [`quote`](/reference/resource-properties/quote)
+- [`source` properties](/reference/source-properties) (e.g. `loaded_at_field`, `freshness`)
+- [`exposure` properties](/reference/exposure-properties) (e.g. `type`, `maturity`)
+- [`macro` properties](/reference/macro-properties) (e.g. `arguments`)
 
 ## Example
 Here's an example that defines both `sources` and `models` for a project:
@@ -152,13 +152,13 @@ models:
 
 ## Related documentation
 You can find an exhaustive list of each supported property and config, broken down by resource type:
-* Model [properties](model-properties) and [configs](model-configs)
-* Source [properties](source-properties) and [configs](source-configs)
+* Model [properties](/reference/model-properties) and [configs](/reference/model-configs)
+* Source [properties](/reference/source-properties) and [configs](source-configs)
 * Seed [properties](seed-properties) and [configs](seed-configs)
 * [Snapshot Properties](snapshot-properties)
 * Analysis [properties](analysis-properties)
-* [Macro Properties](macro-properties)
-* Exposure [properties](exposure-properties)
+* [Macro Properties](/reference/macro-properties)
+* Exposure [properties](/reference/exposure-properties)
 
 ## FAQs
 <FAQ src="Project/schema-yml-name" />

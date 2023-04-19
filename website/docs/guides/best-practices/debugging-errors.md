@@ -18,7 +18,7 @@ Learning how to debug is a skill, and one that will make you great at your role!
     - The `logs/dbt.log` file contains all the queries that dbt runs, and additional logging. Recent errors will be at the bottom of the file.
     - **dbt Cloud users**: Use the above, or the `Details` tab in the command output.
     - **dbt CLI users**: Note that your code editor _may_ be hiding these files from the tree <Term id="view" /> [VSCode help](https://stackoverflow.com/questions/42891463/how-can-i-show-ignored-files-in-visual-studio-code)).
-5. If you are really stuck, try [asking for help](getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
+5. If you are really stuck, try [asking for help](/guides/legacy/getting-help). Before doing so, take the time to write your question well so that others can diagnose the problem quickly.
 
 
 ## Types of errors
@@ -303,7 +303,7 @@ Compilation Error
 
 - Open the file (e.g. `models/schema.yml`) as per the error message
 - Search for the offending key (e.g. `hello`, as per "**'hello'** was unexpected")
-- Fix it. Use the [model properties](model-properties) docs to find valid keys
+- Fix it. Use the [model properties](/reference/model-properties) docs to find valid keys
 - If you are using a valid key, check that you're using the latest version of dbt with `dbt --version`
 
 </details>

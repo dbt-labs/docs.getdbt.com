@@ -4,7 +4,7 @@ title: Model configurations
 
 ## Related documentation
 * [Models](/docs/build/models)
-* [`run` command](run)
+* [`run` command](/reference/commands/run)
 
 ## Available configurations
 ### Model-specific configurations
@@ -94,13 +94,13 @@ models:
 ```yaml
 models:
   [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](resource-configs/schema): <string>
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
+    [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
@@ -124,13 +124,13 @@ version: 2
 models:
   - name: [<model-name>]
     config:
-      [enabled](enabled): true | false
-      [tags](resource-configs/tags): <string> | [<string>]
-      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [database](resource-configs/database): <string>
-      [schema](resource-configs/schema): <string>
-      [alias](resource-configs/alias): <string>
+      [schema](/reference/resource-properties/schema): <string>
+      [alias](/reference/resource-configs/alias): <string>
       [persist_docs](persist_docs): <dict>
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
@@ -151,13 +151,13 @@ models:
 ```jinja
 
 {{ config(
-    [enabled](enabled)=true | false,
-    [tags](resource-configs/tags)="<string>" | ["<string>"],
-    [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
+    [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [database](resource-configs/database)="<string>",
-    [schema](resource-configs/schema)="<string>",
-    [alias](resource-configs/alias)="<string>",
+    [schema](/reference/resource-properties/schema)="<string>",
+    [alias](/reference/resource-configs/alias)="<string>",
     [persist_docs](persist_docs)={<dict>},
     [meta](meta)={<dict>},
     [grants](grants)={<dict>},
@@ -182,7 +182,7 @@ models:
 Models can be configured in one of three ways:
 
 1. Using a `config()` Jinja macro within a model
-2. Using a `config` [resource property](model-properties) in a `.yml` file
+2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
 3. From the `dbt_project.yml` file, under the `models:` key.
 
 Model configurations are applied hierarchically. The most-specific config always "wins": In the project file, configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project. To apply a configuration to a model, or directory of models, define the resource path as nested dictionary keys.

@@ -15,7 +15,7 @@ For more details and to leave your feedback, check out the GitHub discussion:
 API versioning is a _complex_ problem in software engineering. It's also essential. Our goal is to _overcome obstacles to transform a complex problem into a reality_.
 
 ## Related documentation
-* Coming soon: `version` & `latest` (_not_ [this one](project-configs/version))
+* Coming soon: `version` & `latest` (_not_ [this one](/reference/project-configs/version))
 * Coming soon: `deprecation_date`
 
 ## Why version a model?

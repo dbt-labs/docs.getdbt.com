@@ -5,7 +5,7 @@ id: "this"
 
 `this` is the database representation of the current model. It is useful when:
 - Defining a `where` statement within [incremental models](/docs/build/incremental-models)
-- Using [pre or post hooks](pre-hook-post-hook)
+- Using [pre or post hooks](/reference/resource-configs/pre-hook-post-hook)
 
 `this` is a [Relation](dbt-classes#relation), and as such, properties such as `{{ this.database }}` and `{{ this.schema }}` compile as expected.
 

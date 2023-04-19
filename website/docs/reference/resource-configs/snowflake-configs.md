@@ -14,7 +14,7 @@ Snowflake supports the creation of [transient tables](https://docs.snowflake.net
 
 ### Configuring transient tables in dbt_project.yml
 
-A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](model-configs) defined in `dbt_project.yml`.
+A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](/reference/model-configs) defined in `dbt_project.yml`.
 
 <File name='dbt_project.yml'>
 

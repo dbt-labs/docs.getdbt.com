@@ -11,7 +11,7 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
 <File name='profiles.yml'>
 
 ```yml
-[config](global-configs):
+[config](/reference/global-configs):
   [send_anonymous_usage_stats](global-configs#send-anonymous-usage-stats): <true | false>
   [use_colors](global-configs#use-colors): <true | false>
   [partial_parse](global-configs#partial-parsing): <true | false>
@@ -49,4 +49,4 @@ This article lists the parts of your `profiles.yml` which are _not_ database spe
 
 ## User config
 
-You can set default values of global configs for all projects that you run using your local machine. See the docs on [global configs](global-configs) for details.
+You can set default values of global configs for all projects that you run using your local machine. See the docs on [global configs](/reference/global-configs) for details.

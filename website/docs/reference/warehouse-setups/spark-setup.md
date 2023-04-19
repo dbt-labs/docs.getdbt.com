@@ -232,5 +232,5 @@ on Delta Lake (Databricks).
 
 Delta-only features:
 1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
-2. [Snapshots](snapshots)
+2. [Snapshots](/docs/build/snapshots)
 3. [Persisting](persist_docs) column-level descriptions as database comments

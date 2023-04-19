@@ -115,7 +115,7 @@ Running [`dbt seed`](commands/seed) will create a static materialized <Term id="
 
 ### Tests
 
-Running [`dbt test`](commands/test) with the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures) will create a materialized view for each configured test that can keep track of failures over time.
+Running [`dbt test`](/reference/commands/test) with the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures) will create a materialized view for each configured test that can keep track of failures over time.
 
 ## Resources
 

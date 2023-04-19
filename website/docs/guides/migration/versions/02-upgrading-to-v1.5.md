@@ -35,7 +35,7 @@ As part of our refactor of `dbt-core` internals, we must make precise changes to
 Wherever possible, we will provide backward compatibility and deprecation warnings for at least one minor version before actually removing the old functionality. In those cases, we still reserve the right to fully remove the backward-compatible functionality in a future v1.x minor version of `dbt-core`.
 
 Changes planned for v1.5:
-- Renaming ["global configs"](global-configs) for consistency ([dbt-core#6903](https://github.com/dbt-labs/dbt-core/issues/6903))
+- Renaming ["global configs"](/reference/global-configs) for consistency ([dbt-core#6903](https://github.com/dbt-labs/dbt-core/issues/6903))
 - Moving `log-path` and `target-path` out of `dbt_project.yml` for consistency with other global configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882))
 
 ### For consumers of dbt artifacts (metadata)

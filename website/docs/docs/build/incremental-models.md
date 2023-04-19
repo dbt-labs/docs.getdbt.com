@@ -159,7 +159,7 @@ $ dbt run --full-refresh --select my_incremental_model+
 ```
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 
-For detailed usage instructions, check out the [dbt run](run) documentation.
+For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation.
 
 # Understanding incremental models
 ## When should I use an incremental model?
@@ -249,9 +249,9 @@ On some adapters, an optional `incremental_strategy` config controls the code th
 to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
 the reliability of your `unique_key`, or the availability of certain features.
 
-* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
-* [BigQuery](bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
-* [Spark](spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
+* [Snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
+* [BigQuery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
+* [Spark](/reference/resource-configs/spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
 
 ### Configuring incremental strategy
 

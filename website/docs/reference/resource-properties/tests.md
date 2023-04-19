@@ -27,7 +27,7 @@ models:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           [config](resource-properties/config):
-            [<test_config>](test-configs): <config-value>
+            [<test_config>](/reference/test-configs): <config-value>
 
     [columns](columns):
       - name: <column_name>
@@ -36,7 +36,7 @@ models:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               [config](resource-properties/config):
-                [<test_config>](test-configs): <config-value>
+                [<test_config>](/reference/test-configs): <config-value>
 ```
 
 </File>
@@ -59,7 +59,7 @@ sources:
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
             [config](resource-properties/config):
-              [<test_config>](test-configs): <config-value>
+              [<test_config>](/reference/test-configs): <config-value>
 
       columns:
         - name: <column_name>
@@ -68,7 +68,7 @@ sources:
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
                 [config](resource-properties/config):
-                  [<test_config>](test-configs): <config-value>
+                  [<test_config>](/reference/test-configs): <config-value>
 
 ```
 
@@ -90,7 +90,7 @@ seeds:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           [config](resource-properties/config):
-            [<test_config>](test-configs): <config-value>
+            [<test_config>](/reference/test-configs): <config-value>
 
     columns:
       - name: <column_name>
@@ -99,7 +99,7 @@ seeds:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               [config](resource-properties/config):
-                [<test_config>](test-configs): <config-value>
+                [<test_config>](/reference/test-configs): <config-value>
 
 ```
 
@@ -121,7 +121,7 @@ snapshots:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
           [config](resource-properties/config):
-            [<test_config>](test-configs): <config-value>
+            [<test_config>](/reference/test-configs): <config-value>
 
     columns:
       - name: <column_name>
@@ -130,7 +130,7 @@ snapshots:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               [config](resource-properties/config):
-                [<test_config>](test-configs): <config-value>
+                [<test_config>](/reference/test-configs): <config-value>
 
 ```
 
@@ -153,7 +153,7 @@ This feature is not implemented for analyses.
 
 ## Description
 
-The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](/docs/build/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](test-configs) passed to those tests should be nested below the test name.
+The `tests` property defines assertions about a column, <Term id="table" />, or <Term id="view" />. The property contains a list of [generic tests](/docs/build/tests#generic-tests), referenced by name, which can include the four built-in generic tests available in dbt. For example, you can add tests that ensure a column contains no duplicates and zero null values. Any arguments or [configurations](/reference/test-configs) passed to those tests should be nested below the test name.
 
 Once these tests are defined, you can validate their correctness by running `dbt test`.
 
@@ -295,7 +295,7 @@ models:
 
 </File>
 
-Check out the guide on writing a [custom generic test](custom-generic-tests) for more information.
+Check out the guide on writing a [custom generic test](/guides/best-practices/writing-custom-generic-tests) for more information.
 
 <VersionBlock firstVersion="1.1">
 
@@ -433,7 +433,7 @@ $ dbt test
 12:48:04  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 
-**If using [`store_failures`](resource-configs/store_failures):** dbt uses each test's name as the name of the table in which to store any failing records. If you have defined a custom name for one test, that custom name will also be used for its table of failures. You may optionally configure an [`alias`](resource-configs/alias) for the test, in order to separately control both the name of the test (for metadata) and the name of its database table (for storing failures).
+**If using [`store_failures`](/reference/resource-configs/store_failures):** dbt uses each test's name as the name of the table in which to store any failing records. If you have defined a custom name for one test, that custom name will also be used for its table of failures. You may optionally configure an [`alias`](/reference/resource-configs/alias) for the test, in order to separately control both the name of the test (for metadata) and the name of its database table (for storing failures).
 
 </VersionBlock>
 
