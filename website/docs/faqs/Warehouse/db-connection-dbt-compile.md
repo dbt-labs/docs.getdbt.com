@@ -9,7 +9,9 @@ The [`dbt compile`](reference/commands/compile) command is a really important st
 
 To generate the compiled SQL for many models, dbt needs to run introspective queries against the data platform. These introspective queries include populating the [relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache), resolving [macros](/docs/build/jinja-macros#macros), and checking if models are [incremental](/docs/build/incremental-models). Without a database connection, dbt cannot perform these introspective queries and will not be able to generate the compiled SQL needed for the next steps in the dbt workflow.
 
-In addition, in a future where materializations can report more of what they're going to do before they do it, a compile task will still require a data platform connection. Although, if you only want to parse your project and write out [`manifest.json`](/reference/artifacts/manifest-json), that can be done with the [`dbt ls` command](/reference/commands/list), without a data platform connection. However, something to note is that the written-out manifest won't include compiled SQL.
+You can [`parse`](/reference/commands/parse) a project and use [`list`](/reference/commands/list) resources in the project, without an internet or data platform connection. You do need a connection profile (`profiles.yml` if using the CLI) because there are configurations in the project that depend on the contents of that profile for configuration, such as using [`{{target}}`](/reference/dbt-jinja-functions/target) for conditional configs. Starting in v1.5, `dbt parse` will also (over)write `manifest.json` by default. 
+
+However, something to note is that the written-out manifest won't include compiled SQL.
 
 In short, `dbt compile` needs a data platform connection to gather the information it needs (including from introspective queries) to prepare the SQL for every model in your project.
 
