@@ -26,16 +26,16 @@ models:
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
+          [config](/reference/resource-properties/config):
             [<test_config>](/reference/test-configs): <config-value>
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
+              [config](/reference/resource-properties/config):
                 [<test_config>](/reference/test-configs): <config-value>
 ```
 
@@ -58,7 +58,7 @@ sources:
         - [<test_name>](#test_name)
         - [<test_name>](#test_name):
             <argument_name>: <argument_value>
-            [config](resource-properties/config):
+            [config](/reference/resource-properties/config):
               [<test_config>](/reference/test-configs): <config-value>
 
       columns:
@@ -67,7 +67,7 @@ sources:
             - [<test_name>](#test_name)
             - [<test_name>](#test_name):
                 <argument_name>: <argument_value>
-                [config](resource-properties/config):
+                [config](/reference/resource-properties/config):
                   [<test_config>](/reference/test-configs): <config-value>
 
 ```
@@ -89,7 +89,7 @@ seeds:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
+          [config](/reference/resource-properties/config):
             [<test_config>](/reference/test-configs): <config-value>
 
     columns:
@@ -98,7 +98,7 @@ seeds:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
+              [config](/reference/resource-properties/config):
                 [<test_config>](/reference/test-configs): <config-value>
 
 ```
@@ -120,7 +120,7 @@ snapshots:
       - [<test_name>](#test_name)
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
+          [config](/reference/resource-properties/config):
             [<test_config>](/reference/test-configs): <config-value>
 
     columns:
@@ -129,7 +129,7 @@ snapshots:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
+              [config](/reference/resource-properties/config):
                 [<test_config>](/reference/test-configs): <config-value>
 
 ```

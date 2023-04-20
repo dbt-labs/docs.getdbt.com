@@ -41,7 +41,7 @@ Today, dbt uses this file to populate the [docs site](/docs/collaborate/document
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-metadata)
+- [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `nodes`: Dictionary of all analyses, models, seeds, snapshots, and tests.
 - `sources`: Dictionary of sources.
 - `metrics`: Dictionary of metrics.

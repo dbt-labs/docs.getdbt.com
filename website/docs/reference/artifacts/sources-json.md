@@ -10,7 +10,7 @@ This file contains information about [sources with freshness checks](/docs/build
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-metadata)
+- [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `elapsed_time`: Total invocation time in seconds.
 - `results`: Array of freshness-check execution details.
 

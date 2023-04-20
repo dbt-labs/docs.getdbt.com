@@ -158,11 +158,11 @@ version: 2
 
 sources:
   - name: [<source-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
     tables:
       - name: [<source-table-name>]
-        [config](resource-properties/config):
+        [config](/reference/resource-properties/config):
           enabled: true | false
 
 ```
@@ -201,7 +201,7 @@ version: 2
 
 metrics:
   - name: [<metric-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
 ```
@@ -240,7 +240,7 @@ version: 2
 
 exposures:
   - name: [<exposure-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
 ```

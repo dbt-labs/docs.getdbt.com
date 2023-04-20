@@ -17,7 +17,7 @@ and `snapshots:` keys in the `dbt_project.yml` file.
 **Available context variables:**
 - [target](/reference/dbt-jinja-functions/target)
 - [env_var](/reference/dbt-jinja-functions/env_var)
-- [vars](var) (_Note: only variables defined with `--vars` are available_)
+- [vars](/reference/dbt-jinja-functions/var) (_Note: only variables defined with `--vars` are available_)
 - [builtins](/reference/dbt-jinja-functions/builtins)
 - [dbt_version](/reference/dbt-jinja-functions/dbt_version)
 

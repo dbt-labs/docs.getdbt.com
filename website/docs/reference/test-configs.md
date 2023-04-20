@@ -35,12 +35,12 @@ Click the link on each configuration option to read more about what it can do.
 ```yaml
 tests:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[fail_calc](fail_calc): <string>
-    [+](/reference/resource-configs/plus-prefix)[limit](limit): <integer>
-    [+](/reference/resource-configs/plus-prefix)[severity](severity): error | warn
-    [+](/reference/resource-configs/plus-prefix)[error_if](severity): <string>
-    [+](/reference/resource-configs/plus-prefix)[warn_if](severity): <string>
-    [+](/reference/resource-configs/plus-prefix)[store_failures](store_failures): true | false
+    [+](/reference/resource-configs/plus-prefix)[fail_calc](/reference/resource-configs/fail_calc): <string>
+    [+](/reference/resource-configs/plus-prefix)[limit](/reference/resource-configs/limit): <integer>
+    [+](/reference/resource-configs/plus-prefix)[severity](/reference/resource-configs/severity): error | warn
+    [+](/reference/resource-configs/plus-prefix)[error_if](/reference/resource-configs/severity): <string>
+    [+](/reference/resource-configs/plus-prefix)[warn_if](/reference/resource-configs/severity): <string>
+    [+](/reference/resource-configs/plus-prefix)[store_failures](/reference/resource-configs/store_failures): true | false
     [+](/reference/resource-configs/plus-prefix)[where](/reference/resource-configs/where): <string>
 
 ```
@@ -55,12 +55,12 @@ tests:
 ```jinja
 
 {{ config(
-    [fail_calc](fail_calc) = "<string>",
-    [limit](limit) = <integer>,
-    [severity](severity) = "error | warn",
-    [error_if](severity) = "<string>",
-    [warn_if](severity) = "<string>",
-    [store_failures](store_failures) = true | false,
+    [fail_calc](/reference/resource-configs/fail_calc) = "<string>",
+    [limit](/reference/resource-configs/limit) = <integer>,
+    [severity](/reference/resource-configs/severity) = "error | warn",
+    [error_if](/reference/resource-configs/severity) = "<string>",
+    [warn_if](/reference/resource-configs/severity) = "<string>",
+    [store_failures](/reference/resource-configs/store_failures) = true | false,
     [where](/reference/resource-configs/where) = "<string>"
 ) }}
 
@@ -79,27 +79,27 @@ version: 2
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
-            [fail_calc](fail_calc): <string>
-            [limit](limit): <integer>
-            [severity](severity): error | warn
-            [error_if](severity): <string>
-            [warn_if](severity): <string>
-            [store_failures](store_failures): true | false
+          [config](/reference/resource-properties/config):
+            [fail_calc](/reference/resource-configs/fail_calc): <string>
+            [limit](/reference/resource-configs/limit): <integer>
+            [severity](/reference/resource-configs/severity): error | warn
+            [error_if](/reference/resource-configs/severity): <string>
+            [warn_if](/reference/resource-configs/severity): <string>
+            [store_failures](/reference/resource-configs/store_failures): true | false
             [where](/reference/resource-configs/where): <string>
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
-                [fail_calc](fail_calc): <string>
-                [limit](limit): <integer>
-                [severity](severity): error | warn
-                [error_if](severity): <string>
-                [warn_if](severity): <string>
-                [store_failures](store_failures): true | false
+              [config](/reference/resource-properties/config):
+                [fail_calc](/reference/resource-configs/fail_calc): <string>
+                [limit](/reference/resource-configs/limit): <integer>
+                [severity](/reference/resource-configs/severity): error | warn
+                [error_if](/reference/resource-configs/severity): <string>
+                [warn_if](/reference/resource-configs/severity): <string>
+                [store_failures](/reference/resource-configs/store_failures): true | false
                 [where](/reference/resource-configs/where): <string>
 ```
 
@@ -132,9 +132,9 @@ tests:
   [<resource-path>](/reference/resource-configs/resource-path):
     [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
     [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](/reference/resource-configs/plus-prefix)[meta](resource-configs/meta): {dictionary}
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {dictionary}
     # relevant for [store_failures](/reference/resource-configs/store_failures) only
-    [+](/reference/resource-configs/plus-prefix)[database](resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
     [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
     [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
 ```
@@ -150,8 +150,8 @@ tests:
 {{ config(
     [enabled](/reference/resource-configs/enabled)=true | false,
     [tags](/reference/resource-configs/tags)="<string>" | ["<string>"]
-    [meta](resource-configs/meta)={dictionary},
-    [database](resource-configs/database)="<string>",
+    [meta](/reference/resource-configs/meta)={dictionary},
+    [database](/reference/resource-configs/database)="<string>",
     [schema](/reference/resource-properties/schema)="<string>",
     [alias](/reference/resource-configs/alias)="<string>",
 ) }}
@@ -170,26 +170,26 @@ version: 2
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
+          [config](/reference/resource-properties/config):
             [enabled](/reference/resource-configs/enabled): true | false
             [tags](/reference/resource-configs/tags): <string> | [<string>]
-            [meta](resource-configs/meta): {dictionary}
+            [meta](/reference/resource-configs/meta): {dictionary}
             # relevant for [store_failures](/reference/resource-configs/store_failures) only
-            [database](resource-configs/database): <string>
+            [database](/reference/resource-configs/database): <string>
             [schema](/reference/resource-properties/schema): <string>
             [alias](/reference/resource-configs/alias): <string>
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
+              [config](/reference/resource-properties/config):
                 [enabled](/reference/resource-configs/enabled): true | false
                 [tags](/reference/resource-configs/tags): <string> | [<string>]
-                [meta](resource-configs/meta): {dictionary}
+                [meta](/reference/resource-configs/meta): {dictionary}
                 # relevant for [store_failures](/reference/resource-configs/store_failures) only
-                [database](resource-configs/database): <string>
+                [database](/reference/resource-configs/database): <string>
                 [schema](/reference/resource-properties/schema): <string>
                 [alias](/reference/resource-configs/alias): <string>
 ```

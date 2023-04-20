@@ -25,13 +25,13 @@ overridden source.
 
 The following source properties can be overridden:
  - [description](/reference/resource-properties/description)
- - [meta](resource-configs/meta)
+ - [meta](/reference/resource-configs/meta)
  - [database](/reference/resource-properties/database)
  - [schema](/reference/resource-properties/schema)
- - [loader](resource-properties/loader)
+ - [loader](/reference/resource-properties/loader)
  - [quoting](/reference/resource-properties/quoting)
- - [freshness](resource-properties/freshness)
- - [loaded_at_field](resource-properties/freshness#loaded_at_field)
+ - [freshness](/reference/resource-properties/freshness)
+ - [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field)
  - [tags](/reference/resource-configs/tags)
 
 ## Examples

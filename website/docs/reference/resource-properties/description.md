@@ -307,7 +307,7 @@ models:
 ### Include an image from your repo in your descriptions
 To include an image from your repository in your descriptions:
 1. Add the file in a subdirectory, e.g. `assets/dbt-logo.svg`
-2. Set the [`asset-paths` config](project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
+2. Set the [`asset-paths` config](/reference/project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
 
 <File name='dbt_project.yml'>
 

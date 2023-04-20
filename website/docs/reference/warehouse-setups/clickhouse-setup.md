@@ -110,6 +110,6 @@ To connect to ClickHouse from dbt, you'll need to add a [profile](https://docs.g
 #### Troubleshooting Connections
 
 If you encounter issues connecting to ClickHouse from dbt, make sure the following criteria are met:
-- The engine must be one of the [supported engines](clickhouse-configs#supported-table-engines).
+- The engine must be one of the [supported engines](/reference/resource-configs/clickhouse-configs#supported-table-engines).
 - You must have adequate permissions to access the database.
 - If you're not using the default table engine for the database, you must specify a table engine in your model configuration.

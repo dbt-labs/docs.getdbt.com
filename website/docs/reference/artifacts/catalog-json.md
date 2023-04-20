@@ -10,7 +10,7 @@ This file contains information from your <Term id="data-warehouse" /> about the 
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-metadata)
+- [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `nodes`: Dictionary containing information about database objects corresponding to dbt models, seeds, and snapshots.
 - `sources`: Dictionary containing information about database objects corresponding to dbt sources.
 - `errors`: Errors received while running metadata queries during `dbt docs generate`.

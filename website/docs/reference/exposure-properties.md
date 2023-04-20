@@ -31,7 +31,7 @@ exposures:
     url: <string>
     maturity: {high, medium, low}
     [tags](/reference/resource-configs/tags): [<string>]
-    [meta](resource-configs/meta): {<dictionary>}
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
       name: <string>
       email: <string>
@@ -43,7 +43,7 @@ exposures:
       - metric('metric_name')
       
     label: "Human-Friendly Name for this Exposure!"
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
   - name: ... # declare properties of additional exposures
@@ -66,7 +66,7 @@ exposures:
     url: <string>
     maturity: {high, medium, low}
     [tags](/reference/resource-configs/tags): [<string>]
-    [meta](resource-configs/meta): {<dictionary>}
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
       name: <string>
       email: <string>
@@ -78,7 +78,7 @@ exposures:
       
     # added in dbt Core v1.3
     label: "Human-Friendly Name for this Exposure!"
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
   - name: ... # declare properties of additional exposures

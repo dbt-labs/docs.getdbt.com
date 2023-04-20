@@ -98,7 +98,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
     [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](/reference/resource-configs/plus-prefix)[database](resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
     [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
     [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
     [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
@@ -128,7 +128,7 @@ models:
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [database](resource-configs/database): <string>
+      [database](/reference/resource-configs/database): <string>
       [schema](/reference/resource-properties/schema): <string>
       [alias](/reference/resource-configs/alias): <string>
       [persist_docs](/reference/resource-configs/persist_docs): <dict>
@@ -155,7 +155,7 @@ models:
     [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
     [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [database](resource-configs/database)="<string>",
+    [database](/reference/resource-configs/database)="<string>",
     [schema](/reference/resource-properties/schema)="<string>",
     [alias](/reference/resource-configs/alias)="<string>",
     [persist_docs](/reference/resource-configs/persist_docs)={<dict>},

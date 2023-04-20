@@ -19,7 +19,7 @@ For information about selecting models on the command line, consult the docs on 
 - [deps](/reference/commands/deps): downloads dependencies for a project
 - [docs](/reference/commands/cmd-docs) : generates documentation for a project
 - [init](/reference/commands/init) (CLI only): initializes a new dbt project
-- [list](list) (CLI only): lists resources defined in a dbt project
+- [list](/reference/commands/list) (CLI only): lists resources defined in a dbt project
 - [parse](/reference/commands/parse) (CLI only): parses a project and writes detailed timing info
 - [run](/reference/commands/run): runs the models in a project
 - [seed](/reference/commands/seed): loads CSV files into the database

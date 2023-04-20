@@ -30,12 +30,12 @@ Parts of a snapshot:
 ```yaml
 snapshots:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[target_schema](target_schema): <string>
-    [+](/reference/resource-configs/plus-prefix)[target_database](target_database): <string>
-    [+](/reference/resource-configs/plus-prefix)[unique_key](unique_key): <column_name_or_expression>
-    [+](/reference/resource-configs/plus-prefix)[strategy](strategy): timestamp | check
-    [+](/reference/resource-configs/plus-prefix)[updated_at](updated_at): <column_name>
-    [+](/reference/resource-configs/plus-prefix)[check_cols](check_cols): [<column_name>] | all
+    [+](/reference/resource-configs/plus-prefix)[target_schema](/reference/resource-configs/target_schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[target_database](/reference/resource-configs/target_database): <string>
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[strategy](/reference/resource-configs/strategy): timestamp | check
+    [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
+    [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
 
@@ -55,12 +55,12 @@ version: 2
 snapshots:
   - name: [<snapshot-name>]
     config:
-      [target_schema](target_schema): <string>
-      [target_database](target_database): <string>
-      [unique_key](unique_key): <column_name_or_expression>
-      [strategy](strategy): timestamp | check
-      [updated_at](updated_at): <column_name>
-      [check_cols](check_cols): [<column_name>] | all
+      [target_schema](/reference/resource-configs/target_schema): <string>
+      [target_database](/reference/resource-configs/target_database): <string>
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [strategy](/reference/resource-configs/strategy): timestamp | check
+      [updated_at](/reference/resource-configs/updated_at): <column_name>
+      [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
 
@@ -74,12 +74,12 @@ snapshots:
 ```jinja
 
 {{ config(
-    [target_schema](target_schema)="<string>",
-    [target_database](target_database)="<string>",
-    [unique_key](unique_key)="<column_name_or_expression>",
-    [strategy](strategy)="timestamp" | "check",
-    [updated_at](updated_at)="<column_name>",
-    [check_cols](check_cols)=["<column_name>"] | "all"
+    [target_schema](/reference/resource-configs/target_schema)="<string>",
+    [target_database](/reference/resource-configs/target_database)="<string>",
+    [unique_key](/reference/resource-configs/unique_key)="<column_name_or_expression>",
+    [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
+    [updated_at](/reference/resource-configs/updated_at)="<column_name>",
+    [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
 ) }}
 
 ```

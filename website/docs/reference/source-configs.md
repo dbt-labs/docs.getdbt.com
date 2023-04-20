@@ -45,11 +45,11 @@ version: 2
 
 sources:
   - name: [<source-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       [enabled](/reference/resource-configs/enabled): true | false
     tables:
       - name: [<source-table-name>]
-        [config](resource-properties/config):
+        [config](/reference/resource-properties/config):
           [enabled](/reference/resource-configs/enabled): true | false
 
 ```
@@ -81,7 +81,7 @@ Unlike other resource types, sources do not yet support a `config` property. It 
 ### Examples
 #### Disable all sources imported from a package
 To apply a configuration to all sources included from a [package](/docs/build/packages),
-state your configuration under the [project name](project-configs/name.md) in the
+state your configuration under the [project name](/reference/project-configs/name.md) in the
 `sources:` config as a part of the resource path.
 
 

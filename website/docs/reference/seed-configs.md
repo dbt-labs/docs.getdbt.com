@@ -20,8 +20,8 @@ title: Seed configurations
 ```yml
 seeds:
   [<resource-path>](/reference/resource-configs/resource-path):
-    [+](/reference/resource-configs/plus-prefix)[quote_columns](resource-configs/quote_columns): true | false
-    [+](/reference/resource-configs/plus-prefix)[column_types](resource-configs/column_types): {column_name: datatype}
+    [+](/reference/resource-configs/plus-prefix)[quote_columns](/reference/resource-configs/quote_columns): true | false
+    [+](/reference/resource-configs/plus-prefix)[column_types](/reference/resource-configs/column_types): {column_name: datatype}
 
 ```
 
@@ -40,8 +40,8 @@ version: 2
 seeds:
   - name: [<seed-name>]
     config:
-      [quote_columns](resource-configs/quote_columns): true | false
-      [column_types](resource-configs/column_types): {column_name: datatype}
+      [quote_columns](/reference/resource-configs/quote_columns): true | false
+      [column_types](/reference/resource-configs/column_types): {column_name: datatype}
 
 ```
 
@@ -73,7 +73,7 @@ seeds:
     [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
     [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](/reference/resource-configs/plus-prefix)[database](resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
     [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
     [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
     [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
@@ -102,7 +102,7 @@ seeds:
       [tags](/reference/resource-configs/tags): <string> | [<string>]
       [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [database](resource-configs/database): <string>
+      [database](/reference/resource-configs/database): <string>
       [schema](/reference/resource-properties/schema): <string>
       [alias](/reference/resource-configs/alias): <string>
       [persist_docs](/reference/resource-configs/persist_docs): <dict>
@@ -139,7 +139,7 @@ seeds:
 
 
 #### Apply the `schema` configuration to all seeds in your project
-To apply a configuration to all seeds in your project only (i.e. _excluding_ any seeds in installed packages), provide your [project name](project-configs/name.md) as part of the resource path.
+To apply a configuration to all seeds in your project only (i.e. _excluding_ any seeds in installed packages), provide your [project name](/reference/project-configs/name.md) as part of the resource path.
 
 For a project named `jaffle_shop`:
 

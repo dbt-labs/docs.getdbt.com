@@ -94,11 +94,11 @@ metrics:
         value: "'2020-01-01'"
         
     # general properties
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
       treat_null_values_as_zero: true | false
 
-    [meta](resource-configs/meta): {team: Finance}
+    [meta](/reference/resource-configs/meta): {team: Finance}
 ```
 </VersionBlock> 
 

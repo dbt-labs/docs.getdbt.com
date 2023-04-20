@@ -91,7 +91,7 @@ version: 2
             <test_config>: <config-value>
             ...
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name)

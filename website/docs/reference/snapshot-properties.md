@@ -19,7 +19,7 @@ snapshots:
     [meta](/reference/resource-configs/meta): {<dictionary>}
     [docs](/reference/resource-configs/docs):
       show: true | false
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       [<snapshot_config>](/reference/snapshot-configs): <config_value>
     [tests](/reference/resource-properties/tests):
       - <test>

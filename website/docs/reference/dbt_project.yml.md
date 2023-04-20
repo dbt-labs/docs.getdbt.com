@@ -15,33 +15,33 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 <File name='dbt_project.yml'>
 
 ```yml
-[name](project-configs/name): string
+[name](/reference/project-configs/name): string
 
-[config-version](project-configs/config-version): 2
+[config-version](/reference/project-configs/config-version): 2
 [version](/reference/project-configs/version): version
 
-[profile](project-configs/profile): profilename
+[profile](/reference/project-configs/profile): profilename
 
-[model-paths](project-configs/model-paths): [directorypath]
-[seed-paths](project-configs/seed-paths): [directorypath]
-[test-paths](project-configs/test-paths): [directorypath]
-[analysis-paths](project-configs/analysis-paths): [directorypath]
-[macro-paths](project-configs/macro-paths): [directorypath]
-[snapshot-paths](project-configs/snapshot-paths): [directorypath]
-[docs-paths](project-configs/docs-paths): [directorypath]
-[asset-paths](project-configs/asset-paths): [directorypath]
+[model-paths](/reference/project-configs/model-paths): [directorypath]
+[seed-paths](/reference/project-configs/seed-paths): [directorypath]
+[test-paths](/reference/project-configs/test-paths): [directorypath]
+[analysis-paths](/reference/project-configs/analysis-paths): [directorypath]
+[macro-paths](/reference/project-configs/macro-paths): [directorypath]
+[snapshot-paths](/reference/project-configs/snapshot-paths): [directorypath]
+[docs-paths](/reference/project-configs/docs-paths): [directorypath]
+[asset-paths](/reference/project-configs/asset-paths): [directorypath]
 
-[target-path](project-configs/target-path): directorypath
-[log-path](project-configs/log-path): directorypath
-[packages-install-path](project-configs/packages-install-path): directorypath
+[target-path](/reference/project-configs/target-path): directorypath
+[log-path](/reference/project-configs/log-path): directorypath
+[packages-install-path](/reference/project-configs/packages-install-path): directorypath
 
-[clean-targets](project-configs/clean-targets): [directorypath]
+[clean-targets](/reference/project-configs/clean-targets): [directorypath]
 
-[query-comment](project-configs/query-comment): string
+[query-comment](/reference/project-configs/query-comment): string
 
-[require-dbt-version](project-configs/require-dbt-version): version-range | [version-range]
+[require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
 
-[quoting](project-configs/quoting):
+[quoting](/reference/project-configs/quoting):
   database: true | false
   schema: true | false
   identifier: true | false
@@ -64,8 +64,8 @@ tests:
 vars:
   [<variables>](/docs/build/project-variables)
 
-[on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
-[on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
+[on-run-start](/reference/project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
+[on-run-end](/reference/project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 
 [dispatch](/reference/project-configs/dispatch-config):
   - macro_namespace: packagename

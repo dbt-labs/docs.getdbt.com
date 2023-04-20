@@ -7,7 +7,7 @@ id: "contract"
 
 
 ## Related documentation
-- [What is a model contract?](publish/model-contracts)
+- [What is a model contract?](/docs/collaborate/govern/model-contracts)
 - [Defining `columns`](/reference/resource-properties/columns)
 - [Defining `constraints`](/reference/resource-properties/constraints)
 

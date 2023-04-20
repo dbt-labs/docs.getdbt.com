@@ -61,7 +61,7 @@ For events where it's available, `node_info` will include:
 | Field       | Description   |
 |-------------|---------------|
 | `materialized` | view, table, incremental, etc. |
-| `meta` | User-configured [`meta` dictionary](resource-configs/meta) for this node |
+| `meta` | User-configured [`meta` dictionary](/reference/resource-configs/meta) for this node |
 | `node_finished_at` | Timestamp when node processing completed |
 | `node_name` | Name of this model/seed/test/etc |
 | `node_path` | File path to where this resource is defined |

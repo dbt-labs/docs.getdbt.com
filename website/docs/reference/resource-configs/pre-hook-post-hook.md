@@ -108,7 +108,7 @@ select ...
 ## Definition
 A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](dont-nest-your-curlies#an-exception).
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/docs/building-a-dbt-project/dont-nest-your-curlies#an-exception).
 
 ### Why would I use hooks?
 

@@ -22,7 +22,7 @@ seeds:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       [<seed_config>](/reference/seed-configs): <config_value>
     [tests](/reference/resource-properties/tests):
       - <test>
