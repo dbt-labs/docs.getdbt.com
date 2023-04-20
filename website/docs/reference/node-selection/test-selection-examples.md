@@ -163,7 +163,7 @@ $ dbt build --select orders --indirect-selection=buildable
 
 ### Syntax examples
 
-Setting `indirect_selection` can also be specified in a [yaml selector](yaml-selectors#indirect-selection).
+Setting `indirect_selection` can also be specified in a [yaml selector](/reference/node-selection/yaml-selectors#indirect-selection).
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
 

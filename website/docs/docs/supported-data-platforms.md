@@ -34,7 +34,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 | [IBM DB2](/reference/warehouse-setups/ibmdb2-setup)                    | [Impala](/reference/warehouse-setups/impala-setup)           | [SingleStore](/reference/warehouse-setups/singlestore-setup)     |
 | [Doris & SelectDB](/reference/warehouse-setups/doris-setup)            | [Infer](/reference/warehouse-setups/infer-setup)             | [SQLite](/reference/warehouse-setups/sqlite-setup)               |
 | [DuckDB](/reference/warehouse-setups/duckdb-setup)                     | [iomete](/reference/warehouse-setups/iomete-setup)           | [SQL Server & Azure SQL](/reference/warehouse-setups/mssql-setup) |
-| [Dremio](/reference/warehouse-setups/dremio-setup)                     | [Layer](/reference/warehouse-setups/layer-setup)             | [Teradata](teradata-setup)           |
+| [Dremio](/reference/warehouse-setups/dremio-setup)                     | [Layer](/reference/warehouse-setups/layer-setup)             | [Teradata](/reference/warehouse-setups/teradata-setup)           |
 | [Exasol Analytics](/reference/warehouse-setups/exasol-setup)           | [Materialize](/reference/warehouse-setups/materialize-setup) | [TiDB](/reference/warehouse-setups/tidb-setup)                   |
 | [Firebolt](/reference/warehouse-setups/firebolt-setup)                 | [MindsDB](/reference/warehouse-setups/mindsdb-setup)         | [Vertica](/reference/warehouse-setups/vertica-setup)             |
 | [AWS Glue](/reference/warehouse-setups/glue-setup)                     | [MySQL](/reference/warehouse-setups/mysql-setup)             |                                      |

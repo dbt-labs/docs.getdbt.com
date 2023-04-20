@@ -77,7 +77,7 @@ seeds:
     [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
     [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
-    [+](plus-prefix)[full_refresh](full_refresh): <boolean>
+    [+](plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
     [+](plus-prefix)[grants](grants): {<dictionary>}
 
@@ -106,7 +106,7 @@ seeds:
       [schema](/reference/resource-properties/schema): <string>
       [alias](/reference/resource-configs/alias): <string>
       [persist_docs](persist_docs): <dict>
-      [full_refresh](full_refresh): <boolean>
+      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
       [meta](meta): {<dictionary>}
       [grants](grants): {<dictionary>}
 

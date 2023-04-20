@@ -48,7 +48,7 @@ version: 2
 seeds:
   - name: <seed_name>
     config:
-      [<seed_config>](seed-configs): <config_value>
+      [<seed_config>](/reference/commands/seed-configs): <config_value>
       ...
 ```
 
@@ -66,7 +66,7 @@ version: 2
 snapshots:
   - name: <snapshot_name>
     config:
-      [<snapshot_config>](snapshot-configs): <config_value>
+      [<snapshot_config>](/reference/snapshot-configs): <config_value>
       ...
 ```
 

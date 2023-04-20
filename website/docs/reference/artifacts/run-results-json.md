@@ -19,9 +19,9 @@ Note: `dbt source freshness` produces a different artifact, [`sources.json`](sou
 - `elapsed_time`: Total invocation time in seconds.
 - `results`: Array of node execution details.
 
-Each entry in `results` is a [`Result` object](dbt-classes#result-objects), with one difference: Instead of including the entire `node` object, only the `unique_id` is included. (The full `node` object is recorded in [`manifest.json`](manifest-json).)
+Each entry in `results` is a [`Result` object](/reference/dbt-classes#result-objects), with one difference: Instead of including the entire `node` object, only the `unique_id` is included. (The full `node` object is recorded in [`manifest.json`](/reference/artifacts/manifest-json).)
 
-- `unique_id`: Unique node identifier, which map results to `nodes` in the [manifest](manifest-json)
+- `unique_id`: Unique node identifier, which map results to `nodes` in the [manifest](/reference/artifacts/manifest-json)
 - `status`: dbt's interpretation of runtime success, failure, or error
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node

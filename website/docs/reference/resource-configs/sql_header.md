@@ -30,7 +30,7 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-[config-version](config-version): 2
+[config-version](/reference/project-configs/config-version): 2
 
 models:
   [<resource-path>](resource-path):

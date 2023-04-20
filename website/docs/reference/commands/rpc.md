@@ -305,7 +305,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run seeds ([docs](seed))
+### Run seeds ([docs](/reference/commands/seed))
 
 **Parameters:**
  - `show`: If True, show a sample of the seeded data in the response (optional, default=false)

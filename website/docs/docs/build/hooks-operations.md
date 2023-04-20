@@ -9,7 +9,7 @@ id: "hooks-operations"
 * [`run-operation` command](/reference/commands/run-operation)
 
 ### Assumed knowledge
-* [Project configurations](reference/dbt_project.yml.md)
+* [Project configurations](/reference/dbt_project.yml.md)
 * [Model configurations](/reference/model-configs)
 * [Macros](/docs/build/jinja-macros#macros)
 

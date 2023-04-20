@@ -63,7 +63,7 @@ metrics:
   - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    [description](description): "The 14 day rolling count of paying customers using the product"
+    [description](/reference/resource-properties/description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
     expression: user_id 

@@ -156,7 +156,7 @@ The `--non-destructive` flag was problematic for a few reasons:
 
 Snowflake, BigQuery, SparkSQL, and Presto users should be unaffected by this change as there is limited merit to using the `--non-destructive` flag on these databases.
 
-Redshift users should consider using the [bind: false](redshift-configs#late-binding-views) config to instruct dbt to create unbound views.
+Redshift users should consider using the [bind: false](/reference/resource-configs/redshift-configs#late-binding-views) config to instruct dbt to create unbound views.
 
 Postgres users should ensure that they use table or incremental models for relations which are queried by end-users.
 

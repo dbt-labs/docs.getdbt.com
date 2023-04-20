@@ -50,10 +50,10 @@ models:
   [<model-configs>](/reference/model-configs)
 
 seeds:
-  [<seed-configs>](seed-configs)
+  [<seed-configs>](/reference/commands/seed-configs)
 
 snapshots:
-  [<snapshot-configs>](snapshot-configs)
+  [<snapshot-configs>](/reference/snapshot-configs)
 
 sources:
   [<source-configs>](source-configs)
@@ -67,7 +67,7 @@ vars:
 [on-run-start](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 [on-run-end](project-configs/on-run-start-on-run-end): sql-statement | [sql-statement]
 
-[dispatch](project-configs/dispatch-config):
+[dispatch](/reference/project-configs/dispatch-config):
   - macro_namespace: packagename
     search_order: [packagename]
 

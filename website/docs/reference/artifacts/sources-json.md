@@ -16,7 +16,7 @@ This file contains information about [sources with freshness checks](/docs/build
 
 Each entry in `results` is a dictionary with the following keys:
 
-- `unique_id`: Unique source node identifier, which map results to `sources` in the [manifest](manifest-json)
+- `unique_id`: Unique source node identifier, which map results to `sources` in the [manifest](/reference/artifacts/manifest-json)
 - `max_loaded_at`: Max value of `loaded_at_field` timestamp in the source <Term id="table" /> when queried.
 - `snapshotted_at`: Current timestamp when querying.
 - `max_loaded_at_time_ago_in_s`: Interval between `max_loaded_at` and `snapshotted_at`, calculated in python to handle timezone complexity.

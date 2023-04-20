@@ -103,7 +103,7 @@ Docs blocks should be placed in files with a `.md` file extension. By default, d
 
 
 ### Usage
-To use a docs block, reference it from your `schema.yml` file with the [doc()](doc) function in place of a markdown string. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown below:
+To use a docs block, reference it from your `schema.yml` file with the [doc()](/reference/dbt-jinja-functions/doc) function in place of a markdown string. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown below:
 
 <File name='schema.yml'>
 

@@ -26,7 +26,7 @@ version: 2
 
 exposures:
   - name: <string_with_underscores>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
@@ -61,7 +61,7 @@ version: 2
 
 exposures:
   - name: <string_with_underscores>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}

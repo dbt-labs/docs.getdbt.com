@@ -26,8 +26,8 @@ overridden source.
 The following source properties can be overridden:
  - [description](/reference/resource-properties/description)
  - [meta](resource-configs/meta)
- - [database](resource-properties/database)
- - [schema](resource-properties/schema)
+ - [database](/reference/resource-properties/database)
+ - [schema](/reference/resource-properties/schema)
  - [loader](resource-properties/loader)
  - [quoting](/reference/resource-properties/quoting)
  - [freshness](resource-properties/freshness)

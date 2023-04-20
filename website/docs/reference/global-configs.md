@@ -5,7 +5,7 @@ id: "global-configs"
 
 ## About Global Configs
 
-Global configs enable you to fine-tune _how_ dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. In general, they differ from most [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
+Global configs enable you to fine-tune _how_ dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. In general, they differ from most [project configs](/reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
 
 Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model. These configs are "global" because they are available for all dbt commands, and because they can be set for all projects running on the same machine or in the same environment.
 
@@ -171,7 +171,7 @@ $ dbt --debug run
 
 ### Experimental parser
 
-With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](parsing#experimental-parser) for more details.
+With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](/reference/parsing#experimental-parser) for more details.
 
 <File name='profiles.yml'>
 
@@ -231,7 +231,7 @@ Use `json` formatting value in conjunction with the `DEBUG` config to produce ri
 $ dbt --debug --log-format json run
 ```
 
-See [structured logging](events-logging#structured-logging) for more details.
+See [structured logging](/reference/events-logging#structured-logging) for more details.
 
 :::
 
@@ -239,7 +239,7 @@ See [structured logging](events-logging#structured-logging) for more details.
 
 ### Partial Parsing
 
-The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](parsing#partial-parsing) for more details.
+The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
 
 <File name='profiles.yml'>
 
@@ -314,7 +314,7 @@ You can also use the DO_NOT_TRACK environment variable to enable or disable send
 
 ### Static parser
 
-The `STATIC_PARSER` config can enable or disable use of the static parser. See [the docs on parsing](parsing#static-parser) for more details.
+The `STATIC_PARSER` config can enable or disable use of the static parser. See [the docs on parsing](/reference/parsing#static-parser) for more details.
 
 <File name='profiles.yml'>
 

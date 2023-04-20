@@ -13,7 +13,7 @@ version: 2
 
 models:
   - [name](model_name): <model name>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
@@ -23,7 +23,7 @@ models:
       - ... # declare additional tests
     columns:
       - name: <column_name> # required
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
         [tests](/reference/resource-properties/tests):

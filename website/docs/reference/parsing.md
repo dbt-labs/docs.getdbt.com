@@ -3,7 +3,7 @@ title: "Project Parsing"
 ---
 
 ## Related documentation
-- The `dbt parse` [command](parse)
+- The `dbt parse` [command](/reference/commands/parse)
 - Partial parsing [profile config](profiles.yml#partial_parse) and [CLI flags](global-cli-flags#partial-parsing)
 - Experimental parser [CLI flag](global-cli-flags#experimental-parser)
 
@@ -15,7 +15,7 @@ Parsing projects can be slow, especially as projects get bigger—hundreds of mo
 - LibYAML bindings for PyYAML
 - Partial parsing, which avoids re-parsing unchanged files between invocations
 - An experimental parser, which extracts information from simple models much more quickly
-- [RPC server](rpc), which keeps a manifest in memory, and re-parses the project at server startup/hangup
+- [RPC server](/reference/commands/rpc), which keeps a manifest in memory, and re-parses the project at server startup/hangup
 
 These optimizations can be used in combination to reduce parse time from minutes to seconds. At the same time, each has some known limitations, so they are disabled by default.
 
@@ -50,7 +50,7 @@ If certain inputs change between runs, dbt will trigger a full re-parse. The res
 - `dbt_project.yml` content (or `env_var` values used within)
 - installed packages
 - dbt version
-- certain widely-used macros, e.g. [builtins](builtins) overrides or `generate_x_name` for `database`/`schema`/`alias`
+- certain widely-used macros, e.g. [builtins](/reference/dbt-jinja-functions/builtins) overrides or `generate_x_name` for `database`/`schema`/`alias`
 
 If you ever get into a bad state, you can disable partial parsing and trigger a full re-parse by setting the `PARTIAL_PARSE` global config to false, or by deleting `target/partial_parse.msgpack` (e.g. by running `dbt clean`).
 

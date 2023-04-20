@@ -102,7 +102,7 @@ models:
     [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
     [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
     [+](plus-prefix)[persist_docs](persist_docs): <dict>
-    [+](plus-prefix)[full_refresh](full_refresh): <boolean>
+    [+](plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
     [+](plus-prefix)[grants](grants): {<dictionary>}
     [+](plus-prefix)[contract](contract): true | false
@@ -132,7 +132,7 @@ models:
       [schema](/reference/resource-properties/schema): <string>
       [alias](/reference/resource-configs/alias): <string>
       [persist_docs](persist_docs): <dict>
-      [full_refresh](full_refresh): <boolean>
+      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
       [meta](meta): {<dictionary>}
       [grants](grants): {<dictionary>}
       [contract](contract): true | false
@@ -173,7 +173,7 @@ models:
 </Tabs>
 
 ### Warehouse-specific configurations
-* [BigQuery configurations](bigquery-configs)
+* [BigQuery configurations](/reference/resource-configs/bigquery-configs)
 * [Redshift configurations](redshift-configs)
 * [Snowflake configurations](snowflake-configs)
 * [Spark configurations](spark-configs)

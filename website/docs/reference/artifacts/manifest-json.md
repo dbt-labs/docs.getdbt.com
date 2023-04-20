@@ -32,7 +32,7 @@ title: Manifest
 </VersionBlock>
 
 
-**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`source freshness`](/reference/commands/source) [`test`](/reference/commands/test) [`run`](commands/run) [`run-operation`](commands/run-operation)
+**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](/reference/commands/list) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`source freshness`](/reference/commands/source) [`test`](/reference/commands/test) [`run`](commands/run) [`run-operation`](commands/run-operation)
 
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
@@ -50,7 +50,7 @@ Today, dbt uses this file to populate the [docs site](/docs/collaborate/document
 - `docs`: Dictionary of `docs` blocks.
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
 - `child_map`: Dictionary that contains the first-order children of each resource.
-- `selectors`: Expanded dictionary representation of [YAML `selectors`](yaml-selectors).
+- `selectors`: Expanded dictionary representation of [YAML `selectors`](/reference/node-selection/yaml-selectors).
 - `disabled`: Array of resources with `enabled: false`.
 
 ### Resource details

@@ -13,14 +13,14 @@ version: 2
 
 analyses:
   - name: <analysis_name> # required
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
     config:
       [tags](/reference/resource-configs/tags): <string> | [<string>]
     columns:
       - name: <column_name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
       - name: ... # declare properties of additional columns
 
   - name: ... # declare properties of additional analyses

@@ -104,7 +104,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 4. Check whether the result set of your query includes a reliable timestamp column that indicates when a record was last updated. For our example, the `updated_at` column reliably indicates record changes, so we can use the `timestamp` strategy. If your query result set does not have a reliable timestamp, you'll need to instead use the `check` strategy — more details on this below.
 
-5. Add configurations to your snapshot using a `config` block (more details below). You can also configure your snapshot from your `dbt_project.yml` file ([docs](snapshot-configs)).
+5. Add configurations to your snapshot using a `config` block (more details below). You can also configure your snapshot from your `dbt_project.yml` file ([docs](/reference/snapshot-configs)).
 
 <File name='snapshots/orders.sql'>
 
@@ -288,9 +288,9 @@ There are a number of snapshot-specific configurations:
 | [updated_at](/reference/resource-configs/updated_at) | If using the `timestamp` strategy, the timestamp column to compare | Only if using the `timestamp` strategy | updated_at |
 | [invalidate_hard_deletes](/reference/resource-configs/invalidate_hard_deletes) | Find hard deleted records in source, and set `dbt_valid_to` current time if no longer exists | No | True |
 
-A number of other configurations are also supported (e.g. `tags` and `post-hook`), check out the full list [here](snapshot-configs).
+A number of other configurations are also supported (e.g. `tags` and `post-hook`), check out the full list [here](/reference/snapshot-configs).
 
-Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](snapshot-configs) for more information.
+Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](/reference/snapshot-configs) for more information.
 
 Note: BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
 

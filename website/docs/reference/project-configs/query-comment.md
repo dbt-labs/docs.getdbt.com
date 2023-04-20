@@ -277,7 +277,7 @@ The following context variables are available when generating a query comment:
 | ---------------- | ----------- |
 | dbt_version      | The version of dbt being used |
 | env_var          | See [env_var](/reference/dbt-jinja-functions/env_var) |
-| modules          | See [modules](modules) |
+| modules          | See [modules](/reference/dbt-jinja-functions/modules) |
 | run_started_at   | When the dbt invocation began |
 | invocation_id    | A unique ID for the dbt invocation |
 | fromjson         | See [fromjson](fromjson) |

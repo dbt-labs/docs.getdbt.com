@@ -36,7 +36,7 @@ If both the flag and env var are provided, the flag takes precedence.
 
 ### The "result" status
 
-Another element of job state is the `result` of a prior dbt invocation. After executing a `dbt run`, for example, dbt creates the `run_results.json` artifact which contains execution times and success / error status for dbt models. You can read more about `run_results.json` on the ['run results'](/docs/reference/artifacts/run-results-json) page. 
+Another element of job state is the `result` of a prior dbt invocation. After executing a `dbt run`, for example, dbt creates the `run_results.json` artifact which contains execution times and success / error status for dbt models. You can read more about `run_results.json` on the ['run results'](/reference/artifacts/run-results-json) page. 
 
 The following dbt commands produce `run_results.json` artifacts whose results can be referenced in subsequent dbt invocations:  
 - `dbt run`
@@ -86,7 +86,7 @@ The `source_status` selection method is experimental and subject to change. Duri
 :::
 
 
-Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
+Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
 
 The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
 - `dbt source freshness`

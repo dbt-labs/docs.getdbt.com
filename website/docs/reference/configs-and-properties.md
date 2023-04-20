@@ -154,7 +154,7 @@ models:
 You can find an exhaustive list of each supported property and config, broken down by resource type:
 * Model [properties](/reference/model-properties) and [configs](/reference/model-configs)
 * Source [properties](/reference/source-properties) and [configs](source-configs)
-* Seed [properties](seed-properties) and [configs](seed-configs)
+* Seed [properties](/reference/seed-properties) and [configs](/reference/commands/seed-configs)
 * [Snapshot Properties](snapshot-properties)
 * Analysis [properties](analysis-properties)
 * [Macro Properties](/reference/macro-properties)

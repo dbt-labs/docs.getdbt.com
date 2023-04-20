@@ -18,9 +18,9 @@ version: 2
 
 sources:
   - name: <string> # required
-    [description](description): <markdown_string>
-    [database](resource-properties/database): <database_name>
-    [schema](resource-properties/schema): <schema_name>
+    [description](/reference/resource-properties/description): <markdown_string>
+    [database](/reference/resource-properties/database): <database_name>
+    [schema](/reference/resource-properties/schema): <schema_name>
     [loader](loader): <string>
     [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
     [meta](meta): {<dictionary>}
@@ -30,7 +30,7 @@ sources:
     [config](resource-properties/config):
       [<source_config>](source-configs): <config_value>
 
-    [overrides](resource-properties/overrides): <string>
+    [overrides](/reference/resource-properties/overrides): <string>
 
     [freshness](resource-properties/freshness):
       warn_after:
@@ -48,7 +48,7 @@ sources:
 
     tables:
       - name: <string> #required
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         [meta](meta): {<dictionary>}
         [identifier](/reference/resource-properties/identifier): <table_name>
         [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
@@ -72,7 +72,7 @@ sources:
         [external](resource-properties/external): {<dictionary>}
         columns:
           - name: <column_name> # required
-            [description](description): <markdown_string>
+            [description](/reference/resource-properties/description): <markdown_string>
             [meta](meta): {<dictionary>}
             [quote](quote): true | false
             [tests](/reference/resource-properties/tests):

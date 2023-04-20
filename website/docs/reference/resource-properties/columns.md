@@ -26,7 +26,7 @@ models:
     columns:
       - name: <column_name>
         data_type: <string>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         [quote](quote): true | false
         [tests](/reference/resource-properties/tests): ...
         [tags](/reference/resource-configs/tags): ...
@@ -52,7 +52,7 @@ sources:
     - name: <table_name>
       columns:
         - name: <column_name>
-          [description](description): <markdown_string>
+          [description](/reference/resource-properties/description): <markdown_string>
           data_type: <string>
           [quote](quote): true | false
           [tests](/reference/resource-properties/tests): ...
@@ -81,7 +81,7 @@ seeds:
       - name: <column_name>
         columns:
           - name: <column_name>
-            [description](description): <markdown_string>
+            [description](/reference/resource-properties/description): <markdown_string>
             data_type: <string>
             [quote](quote): true | false
             [tests](/reference/resource-properties/tests): ...
@@ -106,7 +106,7 @@ snapshots:
   - name: <snapshot_name>
     columns:
       - name: <column_name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         data_type: <string>
         [quote](quote): true | false
         [tests](/reference/resource-properties/tests): ...
@@ -132,7 +132,7 @@ analyses:
   - name: <analysis_name>
     columns:
       - name: <column_name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         data_type: <string>
       - name: <another_column>
 

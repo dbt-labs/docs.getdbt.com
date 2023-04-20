@@ -10,7 +10,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | [test](/reference/commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
 | [seed](commands/seed)           | `--select`, `--exclude`, `--selector`                                |
 | [snapshot](commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
-| [ls (list)](commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
+| [ls (list)](/reference/commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
 | [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
 | [freshness](/reference/commands/source)    | `--select`, `--exclude`, `--selector`                                |
 | [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
@@ -75,7 +75,7 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
   ```
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
-consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.
+consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
 
 <Snippet src="discourse-help-feed-header" />

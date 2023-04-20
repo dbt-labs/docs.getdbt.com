@@ -18,7 +18,7 @@ This file contains information from your <Term id="data-warehouse" /> about the 
 ### Resource details
 
 Within `sources` and `nodes`, each dictionary key is a resource `unique_id`. Each nested resource contains:
-- `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key, maps to `nodes` and `sources` in the [manifest](manifest-json)
+- `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key, maps to `nodes` and `sources` in the [manifest](/reference/artifacts/manifest-json)
 - `metadata`
     - `type`: table, view, etc.
     - `database`

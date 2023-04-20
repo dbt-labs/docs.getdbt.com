@@ -12,7 +12,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. 
 
 - To learn how you can use dbt Core versions in dbt Cloud, see [Choosing a dbt Core version](/docs/dbt-versions/upgrade-core-in-cloud).
 - To learn about installing dbt Core, see "[How to install dbt Core](/docs/core/installation)."
-- To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](dbt_version).
+- To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](/reference/project-configs/require-dbt-version) and [`dbt_version`](/reference/dbt-jinja-functions/dbt_version).
 
 ## Version support prior to v1.0
 
@@ -69,7 +69,7 @@ Like many software projects, dbt Core releases follow [semantic versioning](http
 We are committed to avoiding breaking changes in minor versions for end users of dbt. There are two types of breaking changes that may be included in minor versions:
 
 - Changes to the [Python interface for adapter plugins](/guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter). These changes are relevant _only_ to adapter maintainers, and they will be clearly communicated in documentation and release notes.
-- Changes to metadata interfaces, including [artifacts](/docs/deploy/artifacts) and [logging](events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](/docs/deploy/about-state).
+- Changes to metadata interfaces, including [artifacts](/docs/deploy/artifacts) and [logging](/reference/events-logging), signalled by a version bump. Those version upgrades may require you to update external code that depends on these interfaces, or to coordinate upgrades between dbt orchestrations that share metadata, such as [state-powered selection](/docs/deploy/about-state).
 
 ### How we version adapter plugins
 

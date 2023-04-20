@@ -159,7 +159,7 @@ A user-defined description. Can be used to document:
 
 These descriptions are used in the documentation website rendered by dbt (see [the documentation guide](/docs/collaborate/documentation)).
 
-Descriptions can include markdown, as well as the [`doc` jinja function](doc).
+Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
 :::caution You may need to quote your YAML
 
@@ -235,7 +235,7 @@ models:
 
 ### Use a docs block in a description
 
-If you have a long description, especially if it contains markdown, it may make more sense to leverage a [`docs` block](doc). A benefit of this approach is that code editors will correctly highlight markdown, making it easier to debug as you write.
+If you have a long description, especially if it contains markdown, it may make more sense to leverage a [`docs` block](/reference/dbt-jinja-functions/doc). A benefit of this approach is that code editors will correctly highlight markdown, making it easier to debug as you write.
 
 <File name='models/schema.yml'>
 

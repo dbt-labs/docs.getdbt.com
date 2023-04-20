@@ -44,7 +44,7 @@ will attempt to parse that string out to a field and data_type representation. A
 release of dbt will remove the ability for `partition_by` configs to be configured
 using a string.
 
-See the docs on [BigQuery partitioning](bigquery-configs#partition-clause) for
+See the docs on [BigQuery partitioning](/reference/resource-configs/bigquery-configs#partition-clause) for
 more information on the updated `partition_by` syntax for BigQuery models. See also
 [this guide](https://discourse.getdbt.com/t/bigquery-dbt-incremental-changes/982) for
 more information on how dbt leverages this new syntax to make incremental models build
@@ -102,17 +102,17 @@ please be mindful of the following changes to dbt's Python dependencies:
 - Changed upper bound on `Jinja2 < 3`
 
 ## New and changed documentation
-- [BigQuery partitioning configs](bigquery-configs)
-- [Select specific seeds to run with `--select`](seed)
+- [BigQuery partitioning configs](/reference/resource-configs/bigquery-configs)
+- [Select specific seeds to run with `--select`](/reference/commands/seed)
 - [New `generate_database_name` macro](/docs/build/custom-databases#generate_database_name)
-- [New `dbt_project.yml context`](dbt-project-yml-context)
+- [New `dbt_project.yml context`](/reference/dbt-jinja-functions/dbt-project-yml-context)
 - [New configurations for schema.yml files](/reference/configs-and-properties)
 - [New configurations for Source declarations](/docs/build/sources)
 - [New Postgres connection configs](/reference/warehouse-setups/postgres-setup)
 - [New Snowflake KeyPair auth configs](/reference/warehouse-setups/snowflake-setup)
-- [New `builtins` jinja context variable](builtins)
-- [New `fromyaml` context method](fromyaml)
-- [New `toyaml` context method](toyaml)
-- [New `project_name` context variable](project_name)
-- [New `dbt_version` context variable](dbt_version)
-- [New `database_schemas` variable in the `on-run-end` context](on-run-end-context)
+- [New `builtins` jinja context variable](/reference/dbt-jinja-functions/builtins)
+- [New `fromyaml` context method](/reference/dbt-jinja-functions/fromyaml)
+- [New `toyaml` context method](/reference/dbt-jinja-functions/toyaml)
+- [New `project_name` context variable](/reference/dbt-jinja-functions/project_name)
+- [New `dbt_version` context variable](/reference/dbt-jinja-functions/dbt_version)
+- [New `database_schemas` variable in the `on-run-end` context](/reference/dbt-jinja-functions/on-run-end-context)

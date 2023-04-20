@@ -15,18 +15,18 @@ version: 2
 
 snapshots:
   - name: <snapshot name>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     [meta](meta): {<dictionary>}
     [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
-      [<snapshot_config>](snapshot-configs): <config_value>
+      [<snapshot_config>](/reference/snapshot-configs): <config_value>
     [tests](/reference/resource-properties/tests):
       - <test>
       - ...
     columns:
       - name: <column name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]

@@ -19,17 +19,17 @@ version: 2
 
 seeds:
   - name: <string>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
-      [<seed_config>](seed-configs): <config_value>
+      [<seed_config>](/reference/commands/seed-configs): <config_value>
     [tests](/reference/resource-properties/tests):
       - <test>
       - ... # declare additional tests
     columns:
       - name: <column name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         [meta](meta): {<dictionary>}
         [quote](quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
