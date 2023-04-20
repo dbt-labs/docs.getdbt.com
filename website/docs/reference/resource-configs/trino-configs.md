@@ -3,6 +3,10 @@ title: "Starburst/Trino configurations"
 id: "trino-configs"
 ---
 
+## Cluster requirements
+
+The designated cluster must have an attached catalog where ojects such as tables and views can be created, renamed, altered, and dropped. And, any user connecting to the cluster with dbt must also have these same permissions for the target catalog.
+
 ## Session properties
 
 In the Starburst/Trino environment, you can set session properties that modify the current session you have with the cluster. Refer to [Set Session](https://docs.starburst.io/latest/sql/set-session.html) in the Starburst/Trino docs for more details.
