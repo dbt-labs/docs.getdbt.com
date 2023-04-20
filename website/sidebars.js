@@ -274,13 +274,13 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Publishing models",
+          label: "Model governance",
           collapsed: true,
-          link: {type: "doc", id: "docs/collaborate/publish/about-publishing-models"},
+          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
           items: [
-            "docs/collaborate/publish/model-contracts",
-            "docs/collaborate/publish/model-access",
-            "docs/collaborate/publish/model-versions",
+            "docs/collaborate/govern/model-access",
+            "docs/collaborate/govern/model-contracts",
+            "docs/collaborate/govern/model-versions",
           ],
         }, 
       ],
