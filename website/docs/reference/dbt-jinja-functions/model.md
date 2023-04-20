@@ -34,7 +34,7 @@ to print the full contents:
    
  If you're using the dbt Cloud IDE, compile the following to print the full contents:
  
-```{{ model | tojson(indent = 4) }}```
+<code>{{ model | tojson(indent = 4) }}</code>
    
 </TabItem>
 
