@@ -266,7 +266,7 @@ The table below describes all the options.
 Most dbt Core functionality is supported, but some features are only available with Apache Hudi.
 
 Apache Hudi-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](glue-configs#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/glue-configs#the-merge-strategy))
 
 Some dbt features, available on the core adapters, are not yet supported on Glue:
 1. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
