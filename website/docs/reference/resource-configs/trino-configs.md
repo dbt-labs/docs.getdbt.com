@@ -5,9 +5,11 @@ id: "trino-configs"
 
 ## Session properties
 
-In the Starburst/Trino environment, you can set session properties that temporarily modifies the current session you have with the cluster. Refer to [Set Session](https://docs.starburst.io/latest/sql/set-session.html) in the Starburst/Trino docs for more details.
+In the Starburst/Trino environment, you can set session properties that modify the current session you have with the cluster. Refer to [Set Session](https://docs.starburst.io/latest/sql/set-session.html) in the Starburst/Trino docs for more details.
 
-During a dbt connection session, you can use [dbt hooks](/reference/resource-configs/pre-hook-post-hook) to set Starburst/Trino session properties on a specific dbt model. For example: 
+The standard way to define session properties is via the `session_properties` field of your `profiles.yml`. This ensures that all dbt connections use these settings by default.
+
+However, to temporaily adjust these session properties for a specific dbt model or group of models, you can use a [dbt hook](/reference/resource-configs/pre-hook-post-hook) to set Starburst/Trino session properties on a specific dbt model. For example:
 
 ```sql
 {{
@@ -23,7 +25,24 @@ You can use Starburst/Trino table properties to configure how you want your data
 
 For details on what's supported for each supported data source, refer to either the [Trino Connectors](https://trino.io/docs/current/connector.html) or [Starburst Catalog](https://docs.starburst.io/starburst-galaxy/catalogs/).
 
-For example, this configures the data to materialize as a [Parquet](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) table with partitions: 
+
+
+### Hive Catalog
+
+At target cataog that uses the Hive connector and a metastore service (HMS) is very typical when working with Starburst and dbt. The following settings are recommended for working with dbt. The intent is to ensure that dbt can perform the frequently executed `DROP` and `RENAME` statements.
+
+```java
+hive.metastore-cache-ttl=0s
+hive.metastore-refresh-interval=5s
+hive.allow-drop-table=true
+hive.allow-rename-table=true
+```
+
+## File format configuration
+
+When using file-based connectors such as Hive, a user can customize how to use certain 
+
+The below configures the data to materialize as a [Parquet](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) table with partitions.
 
 ```sql
 {{
