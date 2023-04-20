@@ -95,6 +95,10 @@ When clicking on the `Connect Snowflake Account` successfully redirects you to t
 * Your user might not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive.
 * You're trying to use a role that is in the [BLOCKED_ROLES_LIST](https://docs.snowflake.com/en/user-guide/oauth-partner.html#blocking-specific-roles-from-using-the-integration), such as `ACCOUNTADMIN`.
 
+#### The requested scope is invalid
+When clicking on the `Connect Snowflake Account` successfully redirects you to the Snowflake login page, but you receive an `The requested scope is invalid` error. This could mean:
+* In the Snowflake OAuth flow, `role` in the profile config is not optional, as it does not inherit from the project connection config. So each user must supply their role, regardless of whether it is provided in the project connection.
+
 #### Server error 500
 If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) on a Snowflake account level.
 
