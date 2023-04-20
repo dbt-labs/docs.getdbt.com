@@ -104,7 +104,10 @@ models:
 
 </File>
 
-If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (SQL or Python) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model:
+If you wanted to make a breaking change to the model - for example, removing a column - you'd create a new model file (SQL or Python) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model, in a way that highlights the diffs between them. Or, you can choose to define each model version with full specifications, and repeat the values they have in common.
+
+<Tabs>
+<TabItem value="Diffs only">
 
 <File name="models/schema.yml">
 
@@ -114,8 +117,7 @@ models:
     latest_version: 1
     config:
       materialized: table
-      contract:
-        enforced: true
+      contract: {enforced: true}
     columns:
       - name: customer_id
         description: This is the primary key
@@ -123,16 +125,60 @@ models:
       - name: country_name
         description: Where this customer lives
         data_type: varchar
+    
+    # declare the versions, and just highlight the diffs
     versions:
       - v: 2
         columns:
-          - include: "*"
-            exclude:
-              - country_name # this is the breaking change!
+          - include: all
+            exclude: [country_name] # this is the breaking change!
       - v: 1
+        # no need to redefine anything -- matches the properties defined above
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="Fully specified">
+
+<File name="models/schema.yml">
+
+```yaml
+models:
+  - name: dim_customers
+    latest_version: 1
+    
+    # declare the versions, and fully specify them
+    versions:
+      - v: 2
+        config:
+          materialized: table
+          contract: {enforced: true}
+        columns:
+          - name: customer_id
+            description: This is the primary key
+            data_type: int
+          # no country_name column
+      
+      - v: 1
+        config:
+          materialized: table
+          contract: {enforced: true}
+        columns:
+          - name: customer_id
+            description: This is the primary key
+            data_type: int
+          - name: country_name
+            description: Where this customer lives
+            data_type: varchar
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
 
 The above configuration will create two models (one for each version), and produce database relations with aliases `dim_customers_v1` and `dim_customers_v2`.
 
