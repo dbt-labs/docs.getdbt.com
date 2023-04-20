@@ -701,7 +701,7 @@ Congratulations, you have reached the end of this tutorial. If you want to learn
 - [Kimball group learning resources](https://www.notion.so/Building-a-Kimball-dimensional-model-with-dbt-7fc6e04e26154c7baf67f695ae2a1ae2)
 - [The Data Warehouse toolkit book](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/)
 - [dbt discourse on whether dimensional modelling is still relevant](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225)
-- [Dbt glossary on dimensional modelling](https://docs.getdbt.com/terms/dimensional-modeling)
+- [dbt glossary on dimensional modelling](https://docs.getdbt.com/terms/dimensional-modeling)
 
 If you have any questions about the material, please reach out to me on dbt slack (@Jonathan Neo), or on [LinkedIn](https://www.linkedin.com/in/jonneo/). 
 
