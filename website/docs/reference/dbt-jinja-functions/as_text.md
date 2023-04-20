@@ -12,7 +12,7 @@ In dbt v0.17.1, native rendering is not enabled by default. As such,
 the `as_text` filter has no functional effect.
 
 It is still possible to natively render specific values using the [`as_bool`](/reference/dbt-jinja-functions/as_bool), 
-[`as_number`](as_number), and [`as_native`](/reference/dbt-jinja-functions/as_native) filters. 
+[`as_number`](/reference/dbt-jinja-functions/as_number), and [`as_native`](/reference/dbt-jinja-functions/as_native) filters. 
 
 :::
 

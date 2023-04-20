@@ -16,7 +16,7 @@ version: 2
 snapshots:
   - name: <snapshot name>
     [description](/reference/resource-properties/description): <markdown_string>
-    [meta](meta): {<dictionary>}
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     [docs](/reference/resource-configs/docs):
       show: true | false
     [config](resource-properties/config):
@@ -27,8 +27,8 @@ snapshots:
     columns:
       - name: <column name>
         [description](/reference/resource-properties/description): <markdown_string>
-        [meta](meta): {<dictionary>}
-        [quote](quote): true | false
+        [meta](/reference/resource-configs/meta): {<dictionary>}
+        [quote](/reference/resource-properties/quote): true | false
         [tags](/reference/resource-configs/tags): [<string>]
         [tests](/reference/resource-properties/tests):
           - <test>

@@ -29,7 +29,7 @@ Here's how those play in practice:
 - If `severity: error`, dbt will check the `error_if` condition first. If the error condition is met, the test returns an error. If it's not met, dbt will then check the `warn_if` condition (defaulted to `!=0`). If it's not specified or the warn condition is met, the test warns; if it's not met, the test passes.
 - If `severity: warn`, dbt will skip the `error_if` condition entirely and jump straight to the `warn_if` condition. If the warn condition is met, the test warns; if it's not met, the test passes.
 
-Note that test warn statuses will return errors instead if the [`--warn-error`](global-cli-flags#warnings-as-errors) flag is passed. Unless dbt is told to treat warnings as errors, a test with `warn` severity will never return an error.
+Note that test warn statuses will return errors instead if the [`--warn-error`](/reference/global-cli-flags#warnings-as-errors) flag is passed. Unless dbt is told to treat warnings as errors, a test with `warn` severity will never return an error.
 
 <Tabs
   defaultValue="generic"

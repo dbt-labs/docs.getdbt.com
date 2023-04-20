@@ -37,7 +37,7 @@ select ...
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -53,7 +53,7 @@ models:
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -85,7 +85,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -127,7 +127,7 @@ select ...
 
 ```yml
 tests:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -142,8 +142,8 @@ tests:
 
 ```yaml
 sources:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -187,8 +187,8 @@ Support for disabling metrics was added in dbt Core v1.3
 
 ```yaml
 metrics:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -226,8 +226,8 @@ Support for disabling exposures was added in dbt Core v1.3
 
 ```yaml
 exposures:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 

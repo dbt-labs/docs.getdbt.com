@@ -12,11 +12,11 @@ For information about selecting models on the command line, consult the docs on 
 
 **Available commands:**
 
-- [build](build): build and test all selected resources (models, seeds, snapshots, tests)
-- [clean](clean) (CLI only): deletes artifacts present in the dbt project
-- [compile](compile): compiles (but does not run) the models in a project
+- [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
+- [clean](/reference/commands/clean) (CLI only): deletes artifacts present in the dbt project
+- [compile](/reference/commands/compile): compiles (but does not run) the models in a project
 - [debug](/reference/dbt-jinja-functions/debug-method) (CLI only): debugs dbt connections and projects
-- [deps](deps): downloads dependencies for a project
+- [deps](/reference/commands/deps): downloads dependencies for a project
 - [docs](/reference/commands/cmd-docs) : generates documentation for a project
 - [init](/reference/commands/init) (CLI only): initializes a new dbt project
 - [list](list) (CLI only): lists resources defined in a dbt project
@@ -27,5 +27,5 @@ For information about selecting models on the command line, consult the docs on 
 - [source](/reference/commands/source): provides tools for working with source data (including validating that sources are "fresh")
 - [test](/reference/commands/test): executes tests defined in a project
 - [rpc](/reference/commands/rpc) (CLI only): runs an RPC server that clients can submit queries to
-- [run-operation](run-operation): runs arbitrary maintenance SQL against the database
+- [run-operation](/reference/commands/run-operation): runs arbitrary maintenance SQL against the database
 

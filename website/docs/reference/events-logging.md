@@ -4,7 +4,7 @@ title: "Events and logs"
 
 As dbt runs, it generates events. The most common way to see those events is as log messages, written in real time to two places:
 - The command line terminal (`stdout`), to provide interactive feedback while running dbt.
-- The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](/guides/best-practices/debugging-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log_path` config](log-path).
+- The debug log file (`logs/dbt.log`), to enable detailed [debugging of errors](/guides/best-practices/debugging-errors) when they occur. The text-formatted log messages in this file include all `DEBUG`-level events, as well as contextual information, such as log level and thread name. The location of this file can be configured via [the `log_path` config](/reference/project-configs/log-path).
 
 <File name='CLI'>
 
@@ -45,7 +45,7 @@ Every event has the same two top-level keys:
 | `category` | Placeholder for future use (see [dbt-labs/dbt-core#5958](https://github.com/dbt-labs/dbt-core/issues/5958)) |
 | `code` | Unique shorthand identifier for this event type, e.g. `A123` |
 | `extra` | Dictionary of custom environment metadata, based on environment variables prefixed with `DBT_ENV_CUSTOM_ENV_` |
-| [`invocation_id`](invocation_id) | A unique identifier for this invocation of dbt |
+| [`invocation_id`](/reference/dbt-jinja-functions/invocation_id) | A unique identifier for this invocation of dbt |
 | `level` | A string representation of the log level (`debug`, `info`, `warn`, `error`) |
 | `log_version` | Integer indicating version |
 | `msg` | Human-friendly log message, constructed from structured `data`. **Note**: This message is not intended for machine consumption. Log messages are subject to change in future versions of dbt. |
@@ -68,7 +68,7 @@ For events where it's available, `node_info` will include:
 | `node_started_at` | Timestamp when node processing started |
 | `node_status` | Current status of the node, either `RunningStatus` (while running) or `NodeStatus` (finished) as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/eba90863ed4043957330ea44ca267db1a2d81fcd/core/dbt/contracts/results.py#L75-L88) |
 | `resource_type` | `model`, `test`, `seed`, `snapshot`, etc. |
-| `unique_id` | The unique identifier for this resource, which can be used to look up more contextual information in the [manifest](artifacts/manifest-json) |
+| `unique_id` | The unique identifier for this resource, which can be used to look up more contextual information in the [manifest](/reference/artifacts/manifest-json) |
 
 ### Example
 
@@ -114,7 +114,7 @@ For events where it's available, `node_info` will include:
 
 <VersionBlock lastVersion="1.3">
 
-When `json` [log formatting](global-configs#log-formatting) is enabled, dbt will output produce rich, structured log information which can be piped into monitoring tools for analysis, or to power applications with dbt metadata in real time.
+When `json` [log formatting](/reference/global-configs#log-formatting) is enabled, dbt will output produce rich, structured log information which can be piped into monitoring tools for analysis, or to power applications with dbt metadata in real time.
 
 Each log line will have the following <Term id="json" /> properties:
 
@@ -122,7 +122,7 @@ Each log line will have the following <Term id="json" /> properties:
 |-------------|---------------|
 | `code` | A unique identifier for each event type |
 | `data` | A dictionary containing programmatically accessible information about the log line. The contents of this dictionary vary based on the event type which generated this log message. |
-| [`invocation_id`](invocation_id) | A unique identifier for this invocation of dbt |
+| [`invocation_id`](/reference/dbt-jinja-functions/invocation_id) | A unique identifier for this invocation of dbt |
 | `level` | A string representation of the log level (`debug`, `info`, `warn`, `error`) |
 | `log_version` | Integer indicating version |
 | `msg` | The human-friendly log message. **Note**: This message is not intended for machine consumption. Log messages are subject to change in future versions of dbt, and those changes may or may not coincide with a change in `log_version`. |
@@ -144,7 +144,7 @@ If available, `node_info` will include:
 | `node_status` | Current status of the node, as defined in [the result contract](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/contracts/results.py#L61-L74) |
 | `resource_type` | model, test, seed, snapshot, etc. |
 | `type` | Always `'node_status'` |
-| `unique_id` | The unique identifier for this resource, which can be used to look up contextual information in a [manifest](artifacts/manifest-json) |
+| `unique_id` | The unique identifier for this resource, which can be used to look up contextual information in a [manifest](/reference/artifacts/manifest-json) |
 
 ### Example
 

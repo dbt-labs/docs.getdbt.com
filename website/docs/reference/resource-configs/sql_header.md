@@ -33,7 +33,7 @@ select ...
 [config-version](/reference/project-configs/config-version): 2
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +sql_header: <sql-statement>
 
 ```
@@ -72,7 +72,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +sql_header: <sql-statement>
 
 ```

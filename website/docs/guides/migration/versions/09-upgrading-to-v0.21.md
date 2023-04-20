@@ -20,28 +20,28 @@ dbt Core v0.21 has reached the end of critical support. No new patch versions wi
 - **Artifacts:**
     - [`manifest.json`](/reference/artifacts/manifest-json) uses a `v3` schema that includes additional node properties (no changes to existing properties)
     - [`run_results.json`](/reference/artifacts/run-results-json) uses a `v3` schema that has added `skipped` as a potential `TestResult`
-    - [`sources.json`](sources-json) has a new `v2` schema that has added timing and thread details
+    - [`sources.json`](/reference/artifacts/sources-json) has a new `v2` schema that has added timing and thread details
 
 ## New and changed documentation
 
 ### Tasks
-- [Commands](/reference/dbt-commands), [`build`](commands/build), [rpc](/reference/commands/rpc): Add `dbt build`
+- [Commands](/reference/dbt-commands), [`build`](/reference/commands/build), [rpc](/reference/commands/rpc): Add `dbt build`
 - [Commands: `source`](/reference/commands/source): Renamed to `dbt source freshness`.
-- [`deps`](commands/deps): Add `dbt deps` logging for outdated packages
+- [`deps`](/reference/commands/deps): Add `dbt deps` logging for outdated packages
 - [`list`](/reference/commands/list): Add `--output-keys` flag and RPC parameter
 
 ## Selection
 - [Commands: `source`](/reference/commands/source): Updated selection logic to match other tasks. When selecting a specific source to check freshness, you must prefix it with `source:`.
 - [Node selection syntax](/reference/node-selection/syntax), [commands](/reference/dbt-commands): Switch `--models` for `--select` across the board. (Commands which previously used the `--models` flag still support it for backwards compatibility.)
 - [YAML selectors](/reference/node-selection/yaml-selectors#default) now support an optional `default` property. If set, dbt will use custom selection criteria for commands that do not specify their own selection/exclusion flags.
-- [Selection methods](node-selection/methods) and [state comparison caveats](/reference/node-selection/state-comparison-caveats): Add `state:modified` subselectors, and reflect that it now includes changes to upstream macros.
+- [Selection methods](/reference/node-selection/methods) and [state comparison caveats](/reference/node-selection/state-comparison-caveats): Add `state:modified` subselectors, and reflect that it now includes changes to upstream macros.
 - [Test selection examples](/reference/node-selection/test-selection-examples) includes more discussion of indirect selection (a change in v0.20), and the optional "greedy" flag/property (new in v0.21), which you can optionally set to include tests that have a mix of selected + unselected parents
 
 ### Elsewhere in Core
 - [Resource configs and properties](/reference/configs-and-properties) docs have been consolidated and reconciled. New `config` property that makes it possible to configure models, seeds, snapshots, and tests in all yaml files.
 - [Configuring incremental models](/docs/build/incremental-models): New optional configuration for incremental models, `on_schema_change`.
 - [Environment variables](/reference/dbt-jinja-functions/env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
-- [Test `where` config](where) has been reimplemented as a macro (`get_where_subquery`) that you can optionally reimplement, too
+- [Test `where` config](/reference/resource-configs/where) has been reimplemented as a macro (`get_where_subquery`) that you can optionally reimplement, too
 - [`dispatch`](/reference/dbt-jinja-functions/dispatch) now supports reimplementing global macros residing in the `dbt` macro namespace with versions from installed packages, by leveraging `search_order` in the [`dispatch` project config](/reference/project-configs/dispatch-config)
 
 ### Plugins

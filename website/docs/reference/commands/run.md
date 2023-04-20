@@ -65,7 +65,7 @@ dbt will also allow you select which specific models you'd like to materialize. 
 
 For more information, see the [Model Selection Syntax Documentation](/reference/node-selection/syntax).
 
-For more information on running parents or children of specific models, see the [Graph Operators Documentation](node-selection/graph-operators).
+For more information on running parents or children of specific models, see the [Graph Operators Documentation](/reference/node-selection/graph-operators).
 
 ## Treat warnings as errors
 
@@ -75,7 +75,7 @@ For more information on running parents or children of specific models, see the 
 
 </Changelog>
 
-See [global configs](global-configs#failing-fast)
+See [global configs](/reference/global-configs#failing-fast)
 
 ## Failing fast
 
@@ -86,7 +86,7 @@ See [global configs](global-configs#failing-fast)
 
 </Changelog>
 
-See [global configs](global-configs#failing-fast)
+See [global configs](/reference/global-configs#failing-fast)
 
 ## Enable or Disable Colorized Logs
 
@@ -97,4 +97,4 @@ See [global configs](global-configs#failing-fast)
 
 </Changelog>
 
-See [global configs](global-configs#use-colors)
+See [global configs](/reference/global-configs#use-colors)

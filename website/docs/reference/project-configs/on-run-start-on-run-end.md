@@ -61,7 +61,7 @@ on-run-end:
 </VersionBlock>
 
 ### Grant privileges on all schemas that dbt uses at the end of a run
-This leverages the [schemas](schemas) variable that is only available in an `on-run-end` hook.
+This leverages the [schemas](/reference/dbt-jinja-functions/schemas) variable that is only available in an `on-run-end` hook.
 
 <File name='dbt_project.yml'>
 
@@ -85,4 +85,4 @@ on-run-end: "{{ grant_select(schemas) }}"
 </File>
 
 ### Additional examples
-We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
+We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).

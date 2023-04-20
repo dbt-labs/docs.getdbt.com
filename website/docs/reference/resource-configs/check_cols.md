@@ -19,7 +19,7 @@ datatype: "[column_name] | all"
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: check
     +check_cols: [column_name] | all
 

@@ -143,7 +143,7 @@ string-oriented inputs, like environment variables or command line variables.
 
   In dbt v0.17.1, native rendering is not enabled by default. It is possible to
   natively render specific values using the [`as_bool`](/reference/dbt-jinja-functions/as_bool),
-  [`as_number`](as_number), and [`as_native`](/reference/dbt-jinja-functions/as_native) filters.
+  [`as_number`](/reference/dbt-jinja-functions/as_number), and [`as_native`](/reference/dbt-jinja-functions/as_native) filters.
 
   The examples below have been updated to reflect 0.17.1 functionality.
 

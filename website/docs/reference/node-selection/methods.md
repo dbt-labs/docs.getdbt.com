@@ -143,7 +143,7 @@ that defines it. For more information about how generic tests are defined, read 
 
 **N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
-The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
 
 `state:new`: There is no node with the same `unique_id` in the comparison manifest
 
@@ -168,7 +168,7 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 
 ### The "exposure" method
 
-The `exposure` method is used to select parent resources of a specified [exposure](exposures). Use in conjunction with the `+` operator.
+The `exposure` method is used to select parent resources of a specified [exposure](/docs/build/exposures). Use in conjunction with the `+` operator.
 
 
   ```bash
@@ -180,7 +180,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
 ### The "metric" method
 <Changelog>New in v1.0.0</Changelog>
 
-The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
+The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
 
 ```bash
 $ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric

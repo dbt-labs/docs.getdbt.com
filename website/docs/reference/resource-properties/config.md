@@ -48,7 +48,7 @@ version: 2
 seeds:
   - name: <seed_name>
     config:
-      [<seed_config>](/reference/commands/seed-configs): <config_value>
+      [<seed_config>](/reference/seed-configs): <config_value>
       ...
 ```
 

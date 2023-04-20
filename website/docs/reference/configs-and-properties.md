@@ -13,7 +13,7 @@ For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
 - Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
-* Define official downstream uses of your data models, in the form of [exposures](exposures)
+* Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures)
 
 Whereas you can use **configurations** to:
 * Change how a model will be materialized (<Term id="table" />, <Term id="view" />, incremental, etc)
@@ -41,7 +41,7 @@ Within the project file, configurations are also applied hierarchically. The mos
 
 Most configurations are "clobbered" when applied hierarchically. Whenever a more-specific value is available, it will completely replace the less-specific value. Note that a few configs have different merge behavior:
 - [`tags`](tags) are additive. If a model has some tags configured in `dbt_project.yml`, and more tags applied in its `.sql` file, the final set of tags will include all of them.
-- [`meta`](meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
+- [`meta`](/reference/resource-configs/meta) dictionaries are merged (a more specific key-value pair replaces a less specific value with the same key)
 - [`pre-hook` and `post-hook`](/reference/resource-configs/pre-hook-post-hook) are also additive.
 
 ## Where can I define properties?
@@ -154,7 +154,7 @@ models:
 You can find an exhaustive list of each supported property and config, broken down by resource type:
 * Model [properties](/reference/model-properties) and [configs](/reference/model-configs)
 * Source [properties](/reference/source-properties) and [configs](source-configs)
-* Seed [properties](/reference/seed-properties) and [configs](/reference/commands/seed-configs)
+* Seed [properties](/reference/seed-properties) and [configs](/reference/seed-configs)
 * [Snapshot Properties](snapshot-properties)
 * Analysis [properties](analysis-properties)
 * [Macro Properties](/reference/macro-properties)

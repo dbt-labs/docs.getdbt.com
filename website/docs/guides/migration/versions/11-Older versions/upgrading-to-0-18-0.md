@@ -63,7 +63,7 @@ can override schema test definitions
 - [list (ls)](/reference/commands/list)
 - [defer](/reference/node-selection/defer)
 - [adapter.dispatch](/reference/dbt-jinja-functions/adapter#dispatch)
-- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](/reference/dbt_project.yml) and [description](/reference/resource-properties/description))
+- [`asset-paths` config](/reference/project-configs/asset-paths) (also updated [dbt_project.yml](/reference/dbt_project.yml) and [description](/reference/resource-properties/description))
 - [flag for colorized logs](/reference/commands/run#enable-or-disable-colorized-logs)
 - [`full_refresh` config](/reference/resource-configs/full_refresh)
 
@@ -74,7 +74,7 @@ can override schema test definitions
 - [`iam_profile`](/reference/warehouse-setups/redshift-setup#specifying-an-iam-profile)
 
 **Snowflake**
-- `query_tag` in [profile](/reference/warehouse-setups/snowflake-setup), [model config](snowflake-configs#query-tags)
+- `query_tag` in [profile](/reference/warehouse-setups/snowflake-setup), [model config](/reference/resource-configs/snowflake-configs#query-tags)
 - automatic SSO [session caching](/reference/warehouse-setups/snowflake-setup#sso-authentication) support
 
 **BigQuery**

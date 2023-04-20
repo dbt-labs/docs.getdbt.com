@@ -62,7 +62,7 @@ Identify code and code files by labeling with the component they are describing:
 
         ```yml
         models:
-        [<resource-path>](resource-path):
+        [<resource-path>](/reference/resource-configs/resource-path):
 
 
         ```
@@ -77,7 +77,7 @@ Identify code and code files by labeling with the component they are describing:
 
         ```yml
         sources:
-        [<resource-path>](resource-path):
+        [<resource-path>](/reference/resource-configs/resource-path):
 
 
         ```

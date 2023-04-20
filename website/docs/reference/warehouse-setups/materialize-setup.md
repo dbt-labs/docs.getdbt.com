@@ -111,7 +111,7 @@ Materialized views (`materializedview`), views (`view`) and sources (`source`) m
 
 ### Seeds
 
-Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created.
+Running [`dbt seed`](/reference/commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created.
 
 ### Tests
 

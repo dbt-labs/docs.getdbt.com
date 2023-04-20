@@ -20,7 +20,7 @@ API versioning is a _complex_ problem in software engineering. It's also essenti
 
 ## Why version a model?
 
-If a model defines a ["contract"](model-contracts) (a set of guarantees for its structure), it's also possible to change that model's contract in a way that "breaks" the previous set of parameters.
+If a model defines a ["contract"](/docs/collaborate/govern/model-contracts) (a set of guarantees for its structure), it's also possible to change that model's contract in a way that "breaks" the previous set of parameters.
 
 One approach is to force every model consumer to immediately handle the breaking change when it's deployed to production. While this may work at smaller organizations or while iterating on an immature set of data models, it doesn’t scale well beyond that.
 

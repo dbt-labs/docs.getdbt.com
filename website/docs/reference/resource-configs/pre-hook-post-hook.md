@@ -22,7 +22,7 @@ datatype: sql-statement | [sql-statement]
 ```yml
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -57,7 +57,7 @@ select ...
 ```yml
 
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -76,7 +76,7 @@ seeds:
 ```yml
 
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -230,7 +230,7 @@ models:
 </VersionBlock>
 
 ### Additional examples
-We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
+We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
 
 ## Usage notes
 ### Hooks are cumulative

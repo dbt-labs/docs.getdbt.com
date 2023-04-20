@@ -7,7 +7,7 @@ datatype: string
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +target_database: string
 
 ```

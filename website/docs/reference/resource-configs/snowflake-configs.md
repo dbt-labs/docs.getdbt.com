@@ -58,7 +58,7 @@ a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 ```yaml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +query_tag: dbt_special
 
 ```

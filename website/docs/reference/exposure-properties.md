@@ -3,7 +3,7 @@ title: Exposure properties
 ---
 
 ## Related documentation
-- [Using exposures](exposures)
+- [Using exposures](/docs/build/exposures)
 - [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview

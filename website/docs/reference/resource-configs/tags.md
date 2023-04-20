@@ -22,15 +22,15 @@ datatype: string | [string]
 ```yml
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 ```

@@ -20,7 +20,7 @@ datatype: Dict[Str, Bool]
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -57,7 +57,7 @@ This config is not implemented for sources.
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -74,7 +74,7 @@ seeds:
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true

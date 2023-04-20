@@ -19,7 +19,7 @@ A metric is an aggregation over a <Term id="table" /> that supports zero or more
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](/docs/build/exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 Review the video below to learn more about metrics, why they're important, and how to get started:
     

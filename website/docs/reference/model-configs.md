@@ -24,9 +24,9 @@ title: Model configurations
 
 ```yaml
 models:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[materialized](materialized): <materialization_name>
-    [+](plus-prefix)[sql_header](sql_header): <string>
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[materialized](/reference/resource-configs/materialized): <materialization_name>
+    [+](/reference/resource-configs/plus-prefix)[sql_header](/reference/resource-configs/sql_header): <string>
 
 ```
 
@@ -45,8 +45,8 @@ version: 2
 models:
   - name: [<model-name>]
     config:
-      [materialized](materialized): <materialization_name>
-      [sql_header](sql_header): <string>
+      [materialized](/reference/resource-configs/materialized): <materialization_name>
+      [sql_header](/reference/resource-configs/sql_header): <string>
 
 ```
 
@@ -62,8 +62,8 @@ models:
 ```jinja
 
 {{ config(
-    [materialized](materialized)="<materialization_name>",
-    [sql_header](sql_header)="<string>"
+    [materialized](/reference/resource-configs/materialized)="<materialization_name>",
+    [sql_header](/reference/resource-configs/sql_header)="<string>"
 ) }}
 
 ```
@@ -93,19 +93,19 @@ models:
 
 ```yaml
 models:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
-    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
-    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
-    [+](plus-prefix)[persist_docs](persist_docs): <dict>
-    [+](plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
-    [+](plus-prefix)[meta](meta): {<dictionary>}
-    [+](plus-prefix)[grants](grants): {<dictionary>}
-    [+](plus-prefix)[contract](contract): true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[database](resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
+    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): true | false
 
 ```
 
@@ -131,11 +131,11 @@ models:
       [database](resource-configs/database): <string>
       [schema](/reference/resource-properties/schema): <string>
       [alias](/reference/resource-configs/alias): <string>
-      [persist_docs](persist_docs): <dict>
+      [persist_docs](/reference/resource-configs/persist_docs): <dict>
       [full_refresh](/reference/resource-configs/full_refresh): <boolean>
-      [meta](meta): {<dictionary>}
-      [grants](grants): {<dictionary>}
-      [contract](contract): true | false
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
+      [contract](/reference/resource-configs/contract): true | false
 ```
 
 </File>
@@ -158,10 +158,10 @@ models:
     [database](resource-configs/database)="<string>",
     [schema](/reference/resource-properties/schema)="<string>",
     [alias](/reference/resource-configs/alias)="<string>",
-    [persist_docs](persist_docs)={<dict>},
-    [meta](meta)={<dict>},
-    [grants](grants)={<dict>},
-    [contract](contract)=true | false
+    [persist_docs](/reference/resource-configs/persist_docs)={<dict>},
+    [meta](/reference/resource-configs/meta)={<dict>},
+    [grants](/reference/resource-configs/grants)={<dict>},
+    [contract](/reference/resource-configs/contract)=true | false
 ) }}
 
 ```
@@ -174,9 +174,9 @@ models:
 
 ### Warehouse-specific configurations
 * [BigQuery configurations](/reference/resource-configs/bigquery-configs)
-* [Redshift configurations](redshift-configs)
-* [Snowflake configurations](snowflake-configs)
-* [Spark configurations](spark-configs)
+* [Redshift configurations](/reference/resource-configs/redshift-configs)
+* [Snowflake configurations](/reference/resource-configs/snowflake-configs)
+* [Spark configurations](/reference/resource-configs/spark-configs)
 
 ## Configuring models
 Models can be configured in one of three ways:

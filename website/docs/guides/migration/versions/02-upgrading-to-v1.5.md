@@ -53,9 +53,9 @@ More to come!
 :::
 
 ### Publishing models as APIs
-- [Model contracts](model-contracts) ([#2839](https://github.com/dbt-labs/docs.getdbt.com/issues/2839))
-- [Model access](model-access) ([#2840](https://github.com/dbt-labs/docs.getdbt.com/issues/2840))
-- [Model versions](model-versions) ([#2841](https://github.com/dbt-labs/docs.getdbt.com/issues/2841))
+- [Model contracts](/docs/collaborate/govern/model-contracts) ([#2839](https://github.com/dbt-labs/docs.getdbt.com/issues/2839))
+- [Model access](/docs/collaborate/govern/model-access) ([#2840](https://github.com/dbt-labs/docs.getdbt.com/issues/2840))
+- [Model versions](/docs/collaborate/govern/model-versions) ([#2841](https://github.com/dbt-labs/docs.getdbt.com/issues/2841))
 
 ### dbt-core Python API
 - Auto-generated documentation ([#2674](https://github.com/dbt-labs/docs.getdbt.com/issues/2674)) for dbt-core CLI & Python API for programmatic invocations

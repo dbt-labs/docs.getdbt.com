@@ -12,7 +12,7 @@ analysis-paths: [directorypath]
 </File>
 
 ## Definition
-Specify a custom list of directories where [analyses](analyses) are located.
+Specify a custom list of directories where [analyses](/docs/build/analyses) are located.
 
 ## Default
 Without specifying this config, dbt will not compile any `.sql` files as analyses.

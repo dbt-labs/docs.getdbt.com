@@ -286,8 +286,8 @@ Unlike the other global configs documented on this page, which can be set in `pr
 <File name='dbt_project.yml'>
 
 ```yaml
-[target-path](target-path): "other-target"
-[log-path](log-path): "other-logs"
+[target-path](/reference/project-configs/target-path): "other-target"
+[log-path](/reference/project-configs/log-path): "other-logs"
 ```
 
 </File>

@@ -21,7 +21,7 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
-- [sources](sources-json): produced by `source freshness`
+- [sources](/reference/artifacts/sources-json): produced by `source freshness`
 
 ## Common metadata
 
@@ -34,7 +34,7 @@ All artifacts produced by dbt include a `metadata` dictionary with these propert
 - `generated_at`: Timestamp in UTC when this artifact was produced.
 - `adapter_type`: The adapter (database), e.g. `postgres`, `spark`, etc.
 - `env`: Any environment variables prefixed with `DBT_ENV_CUSTOM_ENV_` will be included in a dictionary, with the prefix-stripped variable name as its key.
-- [`invocation_id`](invocation_id): Unique identifier for this dbt invocation
+- [`invocation_id`](/reference/dbt-jinja-functions/invocation_id): Unique identifier for this dbt invocation
 
 In the manifest, the `metadata` may also include:
 - `send_anonymous_usage_stats`: Whether this invocation sent [anonymous usage statistics](https://docs.getdbt.com/reference/profiles.yml/#send_anonymous_usage_stats) while executing.

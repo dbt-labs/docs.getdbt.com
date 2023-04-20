@@ -40,7 +40,7 @@ __Args__:
  * `from_relation`: The source [Relation](/reference/dbt-classes#relation)
  * `to_relation`: The target [Relation](/reference/dbt-classes#relation)
 
-Returns a list of [Columns](dbt-classes#column) that is the difference of the columns in the `from_table`
+Returns a list of [Columns](/reference/dbt-classes#column) that is the difference of the columns in the `from_table`
 and the columns in the `to_table`, i.e. (`set(from_relation.columns) - set(to_table.columns)`).
 Useful for detecting new columns in a source <Term id="table" />.
 
@@ -140,7 +140,7 @@ __Args__:
 
  * `relation`: The [Relation](/reference/dbt-classes#relation) to find the columns for
 
-Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
+Returns a list of [Columns](/reference/dbt-classes#column) in a <Term id="table" />.
 
 **Usage**:
 
@@ -276,7 +276,7 @@ __Args__:
  * `schema_name`: The schema to test
  * `table_name`: The <Term id="table" /> (or view) from which to select columns
 
-Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
+Returns a list of [Columns](/reference/dbt-classes#column) in a <Term id="table" />.
 
 <File name='models/example.sql'>
 

@@ -6,14 +6,14 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 
 | command                         | argument(s)                                                          |
 | :------------------------------ | -------------------------------------------------------------------- |
-| [run](commands/run)             | `--select`, `--exclude`, `--selector`, `--defer`                     |
+| [run](/reference/commands/run)             | `--select`, `--exclude`, `--selector`, `--defer`                     |
 | [test](/reference/commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
-| [seed](commands/seed)           | `--select`, `--exclude`, `--selector`                                |
-| [snapshot](commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
+| [seed](/reference/commands/seed)           | `--select`, `--exclude`, `--selector`                                |
+| [snapshot](/reference/commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
 | [ls (list)](/reference/commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
-| [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
+| [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--selector`                                |
 | [freshness](/reference/commands/source)    | `--select`, `--exclude`, `--selector`                                |
-| [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
+| [build](/reference/commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
 
 :::info Nodes and resources
 

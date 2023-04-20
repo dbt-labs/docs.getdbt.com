@@ -32,7 +32,7 @@ title: Manifest
 </VersionBlock>
 
 
-**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](/reference/commands/list) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`source freshness`](/reference/commands/source) [`test`](/reference/commands/test) [`run`](commands/run) [`run-operation`](commands/run-operation)
+**Produced by:** [`build`](/reference/commands/build) [`compile`](/reference/commands/compile) [`docs generate`](/reference/commands/cmd-docs) [`list`](/reference/commands/list) [`seed`](/reference/commands/seed) [`snapshot`](/reference/commands/snapshot) [`source freshness`](/reference/commands/source) [`test`](/reference/commands/test) [`run`](/reference/commands/run) [`run-operation`](/reference/commands/run-operation)
 
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)

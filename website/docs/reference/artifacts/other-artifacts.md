@@ -4,7 +4,7 @@ title: Other Artifacts
 
 ### index.html
 
-**Produced by:** [`docs generate`](commands/cmd-docs)
+**Produced by:** [`docs generate`](/reference/commands/cmd-docs)
 
 This file is the skeleton of the [auto-generated dbt documentation website](/docs/collaborate/documentation). The contents of the site are populated by the [manifest](/reference/artifacts/manifest-json) and [catalog](catalog-json).
 

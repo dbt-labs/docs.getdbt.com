@@ -23,7 +23,7 @@ sources:
     [schema](/reference/resource-properties/schema): <schema_name>
     [loader](loader): <string>
     [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
-    [meta](meta): {<dictionary>}
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     [tags](/reference/resource-configs/tags): [<string>]
     
     # requires v1.1+
@@ -49,7 +49,7 @@ sources:
     tables:
       - name: <string> #required
         [description](/reference/resource-properties/description): <markdown_string>
-        [meta](meta): {<dictionary>}
+        [meta](/reference/resource-configs/meta): {<dictionary>}
         [identifier](/reference/resource-properties/identifier): <table_name>
         [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
         [tests](/reference/resource-properties/tests):
@@ -73,8 +73,8 @@ sources:
         columns:
           - name: <column_name> # required
             [description](/reference/resource-properties/description): <markdown_string>
-            [meta](meta): {<dictionary>}
-            [quote](quote): true | false
+            [meta](/reference/resource-configs/meta): {<dictionary>}
+            [quote](/reference/resource-properties/quote): true | false
             [tests](/reference/resource-properties/tests):
               - <test>
               - ... # declare additional tests

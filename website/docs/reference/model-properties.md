@@ -12,7 +12,7 @@ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deep
 version: 2
 
 models:
-  - [name](model_name): <model name>
+  - [name](/reference/resource-properties/model_name): <model name>
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
@@ -24,8 +24,8 @@ models:
     columns:
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
-        [meta](meta): {<dictionary>}
-        [quote](quote): true | false
+        [meta](/reference/resource-configs/meta): {<dictionary>}
+        [quote](/reference/resource-properties/quote): true | false
         [tests](/reference/resource-properties/tests):
           - <test>
           - ... # declare additional tests

@@ -34,7 +34,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: timestamp
     +updated_at: column_name
 
@@ -66,7 +66,7 @@ snapshots:
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: check
     +check_cols: [column_name] | all
 

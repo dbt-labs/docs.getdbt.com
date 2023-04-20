@@ -13,7 +13,7 @@ In DAG order, for selected resources or an entire project.
 
 ### Details
 
-**Artifacts:** The `build` task will write a single [manifest](artifacts/manifest-json) and a single [run results artifact](artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
+**Artifacts:** The `build` task will write a single [manifest](/reference/artifacts/manifest-json) and a single [run results artifact](/reference/artifacts/run-results-json). The run results will include information about all models, tests, seeds, and snapshots that were selected to build, combined into one file.
 
 **Skipping on failures:** Tests on upstream resources will block downstream resources from running, and a test failure will cause those downstream resources to skip entirely. E.g. If `model_b` depends on `model_a`, and a `unique` test on `model_a` fails, then `model_b` will `SKIP`.
 - Don't want a test to cause skipping? Adjust its [severity or thresholds](/reference/resource-configs/severity) to `warn` instead of `error`

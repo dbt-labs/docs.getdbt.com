@@ -34,14 +34,14 @@ Click the link on each configuration option to read more about what it can do.
 
 ```yaml
 tests:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[fail_calc](fail_calc): <string>
-    [+](plus-prefix)[limit](limit): <integer>
-    [+](plus-prefix)[severity](severity): error | warn
-    [+](plus-prefix)[error_if](severity): <string>
-    [+](plus-prefix)[warn_if](severity): <string>
-    [+](plus-prefix)[store_failures](store_failures): true | false
-    [+](plus-prefix)[where](where): <string>
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[fail_calc](fail_calc): <string>
+    [+](/reference/resource-configs/plus-prefix)[limit](limit): <integer>
+    [+](/reference/resource-configs/plus-prefix)[severity](severity): error | warn
+    [+](/reference/resource-configs/plus-prefix)[error_if](severity): <string>
+    [+](/reference/resource-configs/plus-prefix)[warn_if](severity): <string>
+    [+](/reference/resource-configs/plus-prefix)[store_failures](store_failures): true | false
+    [+](/reference/resource-configs/plus-prefix)[where](/reference/resource-configs/where): <string>
 
 ```
 
@@ -61,7 +61,7 @@ tests:
     [error_if](severity) = "<string>",
     [warn_if](severity) = "<string>",
     [store_failures](store_failures) = true | false,
-    [where](where) = "<string>"
+    [where](/reference/resource-configs/where) = "<string>"
 ) }}
 
 ```
@@ -86,7 +86,7 @@ version: 2
             [error_if](severity): <string>
             [warn_if](severity): <string>
             [store_failures](store_failures): true | false
-            [where](where): <string>
+            [where](/reference/resource-configs/where): <string>
 
     [columns](columns):
       - name: <column_name>
@@ -100,7 +100,7 @@ version: 2
                 [error_if](severity): <string>
                 [warn_if](severity): <string>
                 [store_failures](store_failures): true | false
-                [where](where): <string>
+                [where](/reference/resource-configs/where): <string>
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
@@ -129,14 +129,14 @@ This configuration mechanism is supported for specific instances of generic test
 
 ```yaml
 tests:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
-    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[meta](resource-configs/meta): {dictionary}
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[meta](resource-configs/meta): {dictionary}
     # relevant for [store_failures](/reference/resource-configs/store_failures) only
-    [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](/reference/resource-properties/schema): <string>
-    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[database](resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
 ```
 </File>
 

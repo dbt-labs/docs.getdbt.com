@@ -29,13 +29,13 @@ Parts of a snapshot:
 
 ```yaml
 snapshots:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[target_schema](target_schema): <string>
-    [+](plus-prefix)[target_database](target_database): <string>
-    [+](plus-prefix)[unique_key](unique_key): <column_name_or_expression>
-    [+](plus-prefix)[strategy](strategy): timestamp | check
-    [+](plus-prefix)[updated_at](updated_at): <column_name>
-    [+](plus-prefix)[check_cols](check_cols): [<column_name>] | all
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[target_schema](target_schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[target_database](target_database): <string>
+    [+](/reference/resource-configs/plus-prefix)[unique_key](unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[strategy](strategy): timestamp | check
+    [+](/reference/resource-configs/plus-prefix)[updated_at](updated_at): <column_name>
+    [+](/reference/resource-configs/plus-prefix)[check_cols](check_cols): [<column_name>] | all
 
 ```
 
@@ -107,14 +107,14 @@ snapshots:
 
 ```yaml
 snapshots:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
-    [+](plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[alias](/reference/resource-configs/alias): <string>
-    [+](plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
-    [+](plus-prefix)[grants](grants): {<dict>}
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
 ```
 </File>
 
@@ -135,8 +135,8 @@ snapshots:
       [alias](/reference/resource-configs/alias): <string>
       [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [persist_docs](persist_docs): {<dict>}
-      [grants](grants): {<dictionary>}
+      [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
 ```
 
 </File>
@@ -154,8 +154,8 @@ snapshots:
     [alias](/reference/resource-configs/alias)="<string>", 
     [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
-    [persist_docs](persist_docs)={<dict>}
-    [grants](grants)={<dict>}
+    [persist_docs](/reference/resource-configs/persist_docs)={<dict>}
+    [grants](/reference/resource-configs/grants)={<dict>}
 ) }}
 
 ```

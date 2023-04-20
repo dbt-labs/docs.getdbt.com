@@ -24,8 +24,8 @@ Sources only support one configuration, [`enabled`](/reference/resource-configs/
 
 ```yaml
 sources:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
 
 ```
 

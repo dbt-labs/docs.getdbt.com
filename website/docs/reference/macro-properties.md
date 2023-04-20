@@ -18,7 +18,7 @@ macros:
       show: true | false
     arguments:
       - name: <arg name>
-        [type](argument-type): <string>
+        [type](/reference/resource-properties/argument-type): <string>
         [description](/reference/resource-properties/description): <markdown_string>
       - ... # declare properties of additional arguments
 
