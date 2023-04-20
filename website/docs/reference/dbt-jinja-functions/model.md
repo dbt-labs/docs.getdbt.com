@@ -18,7 +18,7 @@ For example:
 To view the contents of `model` for a given model:
 
 <Tabs>
-  <TabIemte value="cli" label="CLI">
+  <TabItem value="cli" label="CLI">
   If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log)
 to print the full contents:
 
