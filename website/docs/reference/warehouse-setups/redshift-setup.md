@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-redshift'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Redshift'
-  config_page: 'redshift-configs'
+  config_page: '/reference/resource-configs/redshift-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

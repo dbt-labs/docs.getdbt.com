@@ -11,7 +11,7 @@ meta:
   slack_channel_name: '#db-duckdb'
   slack_channel_link: 'https://getdbt.slack.com/archives/C039D1J1LA2'
   platform_name: 'Duck DB'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Community plugin

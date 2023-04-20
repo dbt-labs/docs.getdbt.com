@@ -11,7 +11,7 @@ meta:
   slack_channel_name: '#db-bigquery'
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
   platform_name: 'Big Query'
-  config_page: 'bigquery-configs'
+  config_page: '/reference/resource-configs/bigquery-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

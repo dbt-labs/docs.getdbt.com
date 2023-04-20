@@ -57,7 +57,7 @@ You can optionally skip the second criterion by passing the `--favor-state` flag
 
 In my local development environment, I create all models in my target schema, `dev_alice`. In production, the same models are created in a schema named `prod`.
 
-I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
+I access the dbt-generated [artifacts](/docs/deploy/artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
 
 ### run
 I've been working on `model_b`:

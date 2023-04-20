@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-databricks-and-spark'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Databricks'
-  config_page: 'spark-configs'
+  config_page: '/reference/resource-configs/spark-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

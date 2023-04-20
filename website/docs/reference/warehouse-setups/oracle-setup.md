@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-oracle'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWH4TXLY'
   platform_name: 'Oracle'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

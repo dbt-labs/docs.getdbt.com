@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-materialize'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Materialize'
-  config_page: 'materialize-configs'
+  config_page: '/reference/resource-configs/materialize-configs'
 ---
 
 :::info Vendor-supported plugin

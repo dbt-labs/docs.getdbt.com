@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-glue'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02R4HSMBAT'
   platform_name: 'AWS Glue'
-  config_page: 'glue-configs'
+  config_page: '/reference/resource-configs/glue-configs'
 ---
 
 :::info Community plugin

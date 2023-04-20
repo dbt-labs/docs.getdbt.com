@@ -11,7 +11,7 @@ meta:
   min_supported_version: 'Vertica 10.0'
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
-  platform_name: 'Vertica'
+  platform_name: '/reference/resource-configs/Vertica'
   
 
   config_page: 'vertica-configs'
