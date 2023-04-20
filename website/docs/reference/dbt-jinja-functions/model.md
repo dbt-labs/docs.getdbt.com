@@ -18,8 +18,10 @@ For example:
 To view the contents of `model` for a given model:
 
 <Tabs>
-  <TabItem value="cli" label="CLI">
-  If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log)
+
+<TabItem value="cli" label="CLI">
+
+If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log)
 to print the full contents:
 
 ```jinja
@@ -27,6 +29,7 @@ to print the full contents:
 ```
   
  </TabItem>
+ 
  <TabItem value="ide" label="dbt Cloud IDE">
    
  If you're using the dbt Cloud IDE, compile the following to print the full contents:
@@ -34,6 +37,7 @@ to print the full contents:
 ```{{ model | tojson(indent = 4) }}```
    
 </TabItem>
+
 </Tabs>
 
 ## Model structure and fields
