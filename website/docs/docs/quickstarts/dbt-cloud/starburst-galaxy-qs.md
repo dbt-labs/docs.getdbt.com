@@ -5,9 +5,9 @@ id: "starburst-galaxy"
 sidebar_label: "Starburst Galaxy quickstart"
 ---
 
-In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/). It will show you how to:
+In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/platform/starburst-galaxy/). It will show you how to:
 
-- Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other providers](https://www.starburst.io/platform/connectors/) such as Google Cloud, Microsoft Azure, and more. 
+- Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other data sources](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) such as Google Cloud, Microsoft Azure, and more.
 - Connect Starburst Galaxy to the Amazon S3 bucket.
 - Create tables with Starburst Galaxy.
 - Connect dbt Cloud to Starburst Galaxy.
@@ -393,7 +393,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 ## Connect to multiple data sources
 This quickstart focuses on using dbt Cloud to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
 
-If you want to try this out, you can use the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart. 
+If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.
 
 ## Related content
 - Learn more with the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course for free
@@ -401,4 +401,4 @@ If you want to try this out, you can use the [Starburst Galaxy docs](https://doc
 - [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
-- [SQL basics for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/tutorials/learn-basics.html)
+- [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)
