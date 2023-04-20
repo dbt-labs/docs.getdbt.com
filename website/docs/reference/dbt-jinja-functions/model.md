@@ -15,9 +15,36 @@ For example:
 {% endif %}
 ```
 
-To view the contents of `model` for a given model, use [log()](/reference/dbt-jinja-functions/log)
+To view the contents of `model` for a given model:
+
+<Tabs>
+  <TabIemte value="cli" label="CLI">
+  If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log)
 to print the full contents:
 
 ```jinja
 {{ log(model, info=True) }}
 ```
+  
+ </TabItem>
+ <TabItem value="ide" label="dbt Cloud IDE">
+   
+ If you're using the dbt Cloud IDE, compile the following to print the full contents:
+ 
+```{{ model | tojson(indent = 4) }}```
+   
+</TabItem>
+</Tabs>
+
+## Model structure and fields
+
+To view the structure of `models` and their definitions, refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts.
+
+If you'd like to understand your model's structure, open the `manifest.json` -> `nodes` -> `CompiledModelNode`.
+
+**Note**, you'll need to use the correct `manifest.json` version for your dbt version. The `manifest.json` version number isn't directly related to your dbt version, so find the right `manifest.json` version to look inside `CompiledModelNode` and find the tags linked to your model.
+
+
+## Related docs
+
+- [dbt JSON Schema](https://schemas.getdbt.com/)
