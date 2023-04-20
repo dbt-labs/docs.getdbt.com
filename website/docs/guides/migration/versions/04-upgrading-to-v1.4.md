@@ -55,5 +55,5 @@ For more detailed information and to ask any questions, please visit [dbt-core/d
 
 ### Updates to Python models
 
-- Python models are [configured to materialize](/docs/building-a-dbt-project/building-models/python-models) as `table` by default.
-- Python models [running on Snowpark](/docs/building-a-dbt-project/building-models/python-models) will use "anonymous" stored procedures by default, enabling a small speedup and a cleaner query history.
+- Python models are [configured to materialize](/docs/build/python-models) as `table` by default.
+- Python models [running on Snowpark](/docs/build/python-models) will use "anonymous" stored procedures by default, enabling a small speedup and a cleaner query history.
