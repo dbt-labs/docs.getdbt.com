@@ -283,7 +283,7 @@ Let's first create `dim_product` . The other dimension tables will use the same 
 
 ### Step 1: Create model files
 
-Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/` , create two files: 
+Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/marts/` , create two files: 
 
 - `dim_product.sql` : This file will contain our SQL transformation code.
 - `dim_product.yml` : This file will contain our documentation and tests for `dim_product` .
@@ -442,7 +442,7 @@ After we have created all required dimension tables, we can now create the fact 
 
 ### Step 1: Create model files
 
-Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/` , create two files: 
+Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/marts/` , create two files: 
 
 - `fct_sales.sql` : This file will contain our SQL transformation code.
 - `fct_sales.yml` : This file will contain our documentation and tests for `fct_sales` .
