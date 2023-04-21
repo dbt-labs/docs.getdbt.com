@@ -9,13 +9,15 @@ dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's sing
 
 If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
 
+<Snippet src="auth0-uri" />
+
 ## SAML 2.0 and Okta
 
 SAML 2.0 users must update a few fields in the SSO app configuration to match the new Auth0 URL and URI.  You can approach this by editing the existing SSO app settings or creating a new one to accommodate the Auth0 settings. One approach isn't inherently better, so choose whichever works best for your organization.
 
 The fields that will be updated are:
-- Single sign-on URL &mdash; `https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}`
-- Audience URI (SP Entity ID) &mdash; `urn:auth0:us-devspace-cluster:{slug}`
+- Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
+- Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
 
 Replace {slug} with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
@@ -49,7 +51,7 @@ Steps to update:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/sso-project.png" title="Select the OAuth 2.0 Client ID"/>
 
-3. In the **Client ID for Web application** window, find the **Authorized Redirect URIs** field and click **Add URI** and enter `https://us-devspace-cluster.us.auth0.com/login/callback` or, _if you are located on our AU multi-tenant instances_, `https://au-production-mt.au.auth0.com/login/callback`.
+3. In the **Client ID for Web application** window, find the **Authorized Redirect URIs** field and click **Add URI** and enter `https://<YOUR_AUTH0_URI>/login/callback`.
 
 Click **Save** once you are done. 
 
@@ -71,7 +73,7 @@ Azure Active Directory admins will need to make a slight adjustment to the exist
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/app-overview.png" title="Click the Redirect URI hyperlink"/>
 
-3. In the **Web** pane with **Redirect URIs**, click **Add URI** and enter the appropriate `https://us-devspace-cluster.us.auth0.com/login/callback`. Save the settings and verify it is counted in the updated app overview.
+3. In the **Web** pane with **Redirect URIs**, click **Add URI** and enter the appropriate `https://<YOUR_AUTH0_URI>/login/callback`. Save the settings and verify it is counted in the updated app overview.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
