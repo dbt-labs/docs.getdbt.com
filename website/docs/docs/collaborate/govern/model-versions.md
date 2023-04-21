@@ -5,9 +5,13 @@ sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 ---
 
+<VersionBlock lastVersion="1.5">
+
 :::info New functionality
 This functionality is new in v1.5.
 :::
+
+</VersionBlock>
 
 API versioning is a _complex_ problem in software engineering. It's also essential. Our goal is to _overcome obstacles to transform a complex problem into a reality_.
 

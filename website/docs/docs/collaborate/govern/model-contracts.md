@@ -5,9 +5,14 @@ sidebar_label: "Model contracts"
 description: "Model contracts define a set of parameters validated during transformation"
 ---
 
+<VersionBlock lastVersion="1.5">
+
 :::info New functionality
 This functionality is new in v1.5.
 :::
+
+</VersionBlock>
+
 
 ## Related documentation
 * [`contract`](resource-configs/contract)

@@ -5,9 +5,14 @@ sidebar_label: "Model access"
 description: "Define model access with group capabilities"
 ---
 
+<VersionBlock lastVersion="1.5">
+
 :::info New functionality
 This functionality is new in v1.5.
 :::
+
+</VersionBlock>
+
 
 ## Related documentation
 * [`groups`](build/groups)
