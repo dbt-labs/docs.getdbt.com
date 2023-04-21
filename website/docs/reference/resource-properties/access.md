@@ -4,8 +4,8 @@ datatype: access
 required: no
 ---
 
-:::info Beta functionality
-This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
+:::info New functionality
+This functionality is new in v1.5.
 :::
 
 <File name='models/<schema>.yml'>

@@ -1,7 +1,7 @@
 const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const { versions, versionedPages } = require("./dbt-versions");
+const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Debugging */
@@ -121,7 +121,7 @@ var siteSettings = {
           activeBasePath: "reference",
         },
         {
-          label: "Learn",
+          label: "Resources",
           position: "right",
           items: [
             {
@@ -238,7 +238,7 @@ var siteSettings = {
     [path.resolve("plugins/insertMetaTags"), { metatags }],
     path.resolve("plugins/svg"),
     path.resolve("plugins/customWebpackConfig"),
-    [path.resolve("plugins/buildGlobalData"), { versionedPages }],
+    [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
     // path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),

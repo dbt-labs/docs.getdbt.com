@@ -12,15 +12,25 @@ import DocSidebarItemHtml from '@theme/DocSidebarItem/Html';
 import {usePluginData} from '@docusaurus/useGlobalData';
 import VersionContext from '../../stores/VersionContext'
 import pageVersionCheck from '../../utils/page-version-check';
+import categoryVersionCheck from '../../utils/category-version-check';
 
 export default function DocSidebarItem({item, ...props}) {
 
   // dbt Custom
-  const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
+  const { versionedPages, versionedCategories } = usePluginData('docusaurus-build-global-data-plugin');
   const { version } = useContext(VersionContext)
+
+  // Hide versionedPages if they do not match the current version
   if(version && versionedPages) {
     const { pageAvailable } = pageVersionCheck(version, versionedPages, item.docId)
     if(!pageAvailable)
+      return null
+  }
+
+  // Hide versionedCategories if they do not match the current version
+  if(version && versionedCategories && item.type === 'category') {
+    const { categoryAvailable } = categoryVersionCheck(version, versionedCategories, item.label)
+    if(!categoryAvailable)
       return null
   }
 
