@@ -1,6 +1,6 @@
 ---
 title: "Building a Kimball dimensional model with dbt"
-description: ""
+description: "Tackle dimensional modeling in dbt with this step-by-step tutorial from Jonathan Neo of Canva."
 slug: kimball-dimensional-model
 
 authors: [jonathan_neo]
@@ -8,21 +8,21 @@ authors: [jonathan_neo]
 tags: [analytics craft, dbt tutorials]
 hide_table_of_contents: false
 
-date: 2023-04-18
+date: 2023-04-20
 is_featured: true
 ---
 
-Dimensional modelling is one of many data modelling techniques that are used by data practitioners to organize and present data for analytics. Other data modelling techniques include Data Vault (DV), Third Normal Form (3NF), and One Big Table (OBT) to name a few.
+<Term id="dimensional-modeling">Dimensional modeling</Term> is one of many data modeling techniques that are used by data practitioners to organize and present data for analytics. Other data modeling techniques include Data Vault (DV), Third Normal Form (3NF), and One Big Table (OBT) to name a few.
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/data-modelling.png" width="85%" title="Data modelling techniques on a normalization vs denormalization scale"/>
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/data-modelling.png" width="85%" title="Data modeling techniques on a normalization vs denormalization scale"/>
 
-While the relevancy of dimensional modelling [has been debated by data practitioners](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/6), it is still one of the most widely adopted data modelling technique for analytics. 
+While the relevancy of dimensional modeling [has been debated by data practitioners](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/6), it is still one of the most widely adopted data modeling technique for analytics. 
 
-Despite its popularity, resources on how to create dimensional models using dbt remain scarce and lack detail. This tutorial aims to solve this by providing the definitive guide to dimensional modelling with dbt. 
+Despite its popularity, resources on how to create dimensional models using dbt remain scarce and lack detail. This tutorial aims to solve this by providing the definitive guide to dimensional modeling with dbt. 
 
 By the end of this tutorial, you will: 
 
-- Understand dimensional modelling concepts
+- Understand dimensional modeling concepts
 - Set up a mock dbt project and database
 - Identify the business process to model
 - Identify the fact and dimension tables
@@ -33,22 +33,22 @@ By the end of this tutorial, you will:
 
 <!--truncate-->
 
-## Dimensional modelling
+## Dimensional modeling
 
-Dimensional modelling is a technique introduced by Ralph Kimball in 1996 with his book, [The Data Warehouse Toolkit](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/). 
+Dimensional modeling is a technique introduced by Ralph Kimball in 1996 with his book, [The Data Warehouse Toolkit](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/). 
 
-The goal of dimensional modelling is to take raw data and transform it into Fact and Dimension tables that represent the business. 
+The goal of dimensional modeling is to take raw data and transform it into Fact and Dimension tables that represent the business. 
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/3nf-to-dimensional-model.png" title="Raw 3NF data to dimensional model"/>
 
-The benefits of dimensional modelling are: 
+The benefits of dimensional modeling are: 
 
 - **Simpler data model for analytics**: Users of dimensional models do not need to perform complex joins when consuming a dimensional model for analytics. Performing joins between fact and dimension tables are made simple through the use of surrogate keys.
-- **Don’t repeat yourself**: Dimensions can be easily re-used with other fact tables to avoid duplication of effort and code logic. Reusable dimensions are referred to as conformed dimensions.
+- <Term id="dry">**Don’t repeat yourself**</Term>: Dimensions can be easily re-used with other fact tables to avoid duplication of effort and code logic. Reusable dimensions are referred to as conformed dimensions.
 - **Faster data retrieval**: Analytical queries executed against a dimensional model are significantly faster than a 3NF model since data transformations like joins and aggregations have been already applied.
-- **Close alignment with actual business processes**: Business processes and metrics are modelled and calculated as part of dimensional modelling. This helps ensure that the modelled data is easily usable.
+- **Close alignment with actual business processes**: Business processes and metrics are modeled and calculated as part of dimensional modeling. This helps ensure that the modeled data is easily usable.
 
-Now that we understand the broad concepts and benefits of dimensional modelling, let’s get hands-on and create our first dimensional model using dbt. 
+Now that we understand the broad concepts and benefits of dimensional modeling, let’s get hands-on and create our first dimensional model using dbt. 
 
 ## Part 1: Setup dbt project and database
 
@@ -316,11 +316,11 @@ stg_product_category as (
 ... 
 ```
 
-We use the `ref` function to reference the upstream tables and create a Directed Acyclic Graph (DAG) of the dependencies. 
+We use the `ref` function to reference the upstream tables and create a <Term id="dag">Directed Acyclic Graph (DAG)</Term> of the dependencies. 
 
 ### Step 3: Perform the joins
 
-Next, perform the joins between the CTE tables using the appropriate join keys. 
+Next, perform the joins between the <Term id="cte">CTE</Term> tables using the appropriate join keys. 
 
 ```sql
 ...
@@ -338,7 +338,7 @@ left join stg_product_category on stg_product_subcategory.productcategoryid = st
 [Surrogate keys](https://www.kimballgroup.com/1998/05/surrogate-keys/) provide consumers of the dimensional model with an easy-to-use key to join the fact and dimension tables together, without needing to understand the underlying business context. 
 :::
 
-There are several approaches to creating a surrogate key: 
+There are several approaches to creating a <Term id="surrogate-key">surrogate key</Term>: 
 
 - **Hashing surrogate key**: a surrogate key that is constructed by hashing the unique keys of a table (e.g. `md5(key_1, key_2, key_3)` ).
 - **Incrementing surrogate key**: a surrogate key that is constructed by using a number that is always incrementing (e.g. `row_number()`).
@@ -694,15 +694,15 @@ We can then build the OBT by running `dbt run`. Your dbt DAG should now look lik
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dbt-dag.png" width="85%" title="Final dbt DAG"/>
 
-Congratulations, you have reached the end of this tutorial. If you want to learn more, please see the learning resources below on dimensional modelling. 
+Congratulations, you have reached the end of this tutorial. If you want to learn more, please see the learning resources below on dimensional modeling. 
 
 ## Learning resources
 
 - [Kimball group learning resources](https://www.notion.so/Building-a-Kimball-dimensional-model-with-dbt-7fc6e04e26154c7baf67f695ae2a1ae2)
 - [The Data Warehouse toolkit book](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/)
-- [dbt discourse on whether dimensional modelling is still relevant](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225)
-- [dbt glossary on dimensional modelling](https://docs.getdbt.com/terms/dimensional-modeling)
+- [dbt discourse on whether dimensional modeling is still relevant](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225)
+- [dbt glossary on dimensional modeling](https://docs.getdbt.com/terms/dimensional-modeling)
 
-If you have any questions about the material, please reach out to me on dbt slack (@Jonathan Neo), or on [LinkedIn](https://www.linkedin.com/in/jonneo/). 
+If you have any questions about the material, please reach out to me on the dbt Community Slack (@Jonathan Neo), or on [LinkedIn](https://www.linkedin.com/in/jonneo/). 
 
 *Author's note: The materials in this article were created by [Data Engineer Camp](https://dataengineercamp.com/), a 16-week data engineering bootcamp for professionals looking to transition to data engineering and analytics engineering. The article was written by Jonathan Neo, with editorial and technical guidance from [Kenny Ning](https://www.linkedin.com/in/kenny-ning/) and editorial review from [Paul Hallaste](https://www.linkedin.com/in/paulhallaste/).*
