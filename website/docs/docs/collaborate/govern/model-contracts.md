@@ -93,4 +93,4 @@ In a parallel for software APIs, the structure of the API response is the contra
 At present, model contracts are supported for:
 - SQL models (not yet Python)
 - Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
-- On the most popular data platforms — but which `constraints` are supported/enforced varies by platform
+- Certain data platforms, but the supported and enforced `constraints` vary by platform.
