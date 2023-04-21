@@ -18,6 +18,8 @@ Currently supported features include:
 * SP-initiated SSO
 * Just-in-time provisioning
 
+<Snippet src="auth0-uri" />
+
 ## Configuration
 
 dbt Cloud supports both single tenant and multi-tenant Azure Active Directory SSO
@@ -47,7 +49,7 @@ need to select the appropriate directory and then register a new application.
 | Application Type | Redirect URI |
 | ----- | ----- |
 | Single-Tenant _(recommended)_ | `https://YOUR_ACCESS_URL/complete/azure_single_tenant` |
-| Multi-Tenant | `https://YOUR_ACCESS_URL/complete/azure_multi_tenant` |
+| Multi-Tenant | `https://<YOUR_AUTH0_URI>/complete/azure_multi_tenant` |
 
 
 5. Save the App registration to continue setting up Azure AD SSO
