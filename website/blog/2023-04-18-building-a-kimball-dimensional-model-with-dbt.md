@@ -44,7 +44,7 @@ The goal of dimensional modeling is to take raw data and transform it into Fact 
 The benefits of dimensional modeling are: 
 
 - **Simpler data model for analytics**: Users of dimensional models do not need to perform complex joins when consuming a dimensional model for analytics. Performing joins between fact and dimension tables are made simple through the use of surrogate keys.
-- <Term id="dry">**Don’t repeat yourself**</Term>: Dimensions can be easily re-used with other fact tables to avoid duplication of effort and code logic. Reusable dimensions are referred to as conformed dimensions.
+- <Term id="dry">Don’t repeat yourself</Term>: Dimensions can be easily re-used with other fact tables to avoid duplication of effort and code logic. Reusable dimensions are referred to as conformed dimensions.
 - **Faster data retrieval**: Analytical queries executed against a dimensional model are significantly faster than a 3NF model since data transformations like joins and aggregations have been already applied.
 - **Close alignment with actual business processes**: Business processes and metrics are modeled and calculated as part of dimensional modeling. This helps ensure that the modeled data is easily usable.
 
@@ -52,7 +52,7 @@ Now that we understand the broad concepts and benefits of dimensional modeling, 
 
 ## Part 1: Setup dbt project and database
 
-### Step 1: Install project dependencies
+### Step 1: Before you get started
 
 Before you can get started: 
 
@@ -61,6 +61,8 @@ Before you can get started:
     - Download [PostgreSQL](https://www.postgresql.org/download/)
 - You must have Python 3.8 or above installed
 - You must have dbt version 1.3.0 or above installed
+- You should have a basic understanding of [SQL](https://www.sqltutorial.org/)
+- You should have a basic understanding of [dbt](https://docs.getdbt.com/docs/quickstarts/overview)
 
 ### Step 2: Clone the repository
 
@@ -91,7 +93,7 @@ The dbt profile (see `adventureworks/profiles.yml`) has already been pre-configu
 
 ```yaml
 adventureworks:
-  target: duckdb # default to duckdb 
+  target: duckdb # leave this as duckdb, or change this to your chosen database
 
   # supported databases: duckdb, postgres 
   outputs:
@@ -145,7 +147,7 @@ Examine the database source schema below, paying close attention to:
 
 ### Step 8: Query the tables
 
-Get a better sense of what the records look like by executing select statements against the database tables. 
+Get a better sense of what the records look like by executing select statements using your database's SQL editor. 
 
 For example:  
 
@@ -222,7 +224,7 @@ There are two tables in the sales schema that catch our attention. These two tab
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/sales-order-header-detail.png" width="85%" title="Sales Order Header and Detail"/>
 
-Let’s define a fact table called `fct_sales` which joins `sales.salesorderheader` and `sales.salesorderdetail` together. Each record in the fact table (or the grain of the fact table) is an order detail. 
+Let’s define a fact table called `fct_sales` which joins `sales.salesorderheader` and `sales.salesorderdetail` together. Each record in the fact table (also known as the [grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)) is an order detail. 
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/fct_sales.png" width="85%" title="fct_sales table"/>
 
@@ -258,7 +260,9 @@ Instead, we can denormalize the dimension tables by performing joins.
 
 This is known as a star schema and this approach reduces the amount of joins that need to be performed by the consumer of the dimensional model. 
 
-Using the star schema approach, we can identify 6 dimensions that will help us answer the business questions: 
+Using the star schema approach, we can identify 6 dimensions as shown below that will help us answer the business questions: 
+
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="85%" title="Dimension tables"/>
 
 - `dim_product` : a dimension table that joins `product` , `productsubcategory`, `productcategory`
 - `dim_address` : a dimension table that joins `address` , `stateprovince`, `countryregion`
@@ -271,8 +275,6 @@ Using the star schema approach, we can identify 6 dimensions that will help us a
 We have manually seeded the `dim_date` table since DuckDB is not supported by the dbt_date package.
 :::
 
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="85%" title="Dimension tables"/>
-
 In the next part, we use dbt to create the fact and dimension tables we have identified. 
 
 ## Part 4: Create the dimension tables
@@ -281,7 +283,7 @@ Let's first create `dim_product` . The other dimension tables will use the same 
 
 ### Step 1: Create model files
 
-Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/` , create two files: 
+Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/marts/` , create two files: 
 
 - `dim_product.sql` : This file will contain our SQL transformation code.
 - `dim_product.yml` : This file will contain our documentation and tests for `dim_product` .
@@ -440,7 +442,7 @@ After we have created all required dimension tables, we can now create the fact 
 
 ### Step 1: Create model files
 
-Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/` , create two files: 
+Let’s create the new dbt model files that will contain our transformation code. Under `adventureworks/models/marts/` , create two files: 
 
 - `fct_sales.sql` : This file will contain our SQL transformation code.
 - `fct_sales.yml` : This file will contain our documentation and tests for `fct_sales` .
@@ -698,11 +700,11 @@ Congratulations, you have reached the end of this tutorial. If you want to learn
 
 ## Learning resources
 
-- [Kimball group learning resources](https://www.notion.so/Building-a-Kimball-dimensional-model-with-dbt-7fc6e04e26154c7baf67f695ae2a1ae2)
+- [Kimball group learning resources](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/)
 - [The Data Warehouse toolkit book](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/)
 - [dbt discourse on whether dimensional modeling is still relevant](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225)
 - [dbt glossary on dimensional modeling](https://docs.getdbt.com/terms/dimensional-modeling)
 
 If you have any questions about the material, please reach out to me on the dbt Community Slack (@Jonathan Neo), or on [LinkedIn](https://www.linkedin.com/in/jonneo/). 
 
-*Author's note: The materials in this article were created by [Data Engineer Camp](https://dataengineercamp.com/), a 16-week data engineering bootcamp for professionals looking to transition to data engineering and analytics engineering. The article was written by Jonathan Neo, with editorial and technical guidance from [Kenny Ning](https://www.linkedin.com/in/kenny-ning/) and editorial review from [Paul Hallaste](https://www.linkedin.com/in/paulhallaste/).*
+*Author's note: The materials in this article were created by [Data Engineer Camp](https://dataengineercamp.com/), a 16-week data engineering bootcamp for professionals looking to transition to data engineering and analytics engineering. The article was written by Jonathan Neo, with editorial and technical guidance from [Kenny Ning](https://www.linkedin.com/in/kenny-ning/) and editorial review from [Paul Hallaste](https://www.linkedin.com/in/paulhallaste/) and [Josh Devlin](https://www.linkedin.com/in/josh-devlin/).*
