@@ -121,7 +121,7 @@ var siteSettings = {
           activeBasePath: "reference",
         },
         {
-          label: "Learn",
+          label: "Resources",
           position: "right",
           items: [
             {
