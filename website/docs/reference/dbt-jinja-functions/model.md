@@ -34,7 +34,7 @@ to print the full contents:
    
  If you're using the dbt Cloud IDE, compile the following to print the full contents:
  
-```shell
+```jinja
   {{ model \| tojson(indent = 4) }}
 ```
    
