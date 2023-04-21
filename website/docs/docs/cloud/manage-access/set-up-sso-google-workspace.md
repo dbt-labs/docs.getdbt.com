@@ -64,7 +64,7 @@ Client Secret for use in dbt Cloud.
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
 | **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
-| **Authorized Redirect URIs** | `https://us-devspace-cluster.us.auth0.com/login/callback` or `https://au-production-mt.au.auth0.com/login/callback`(AU Only)  |
+| **Authorized Redirect URIs** | `https://<YOUR_AUTH0_URI>/login/callback` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
