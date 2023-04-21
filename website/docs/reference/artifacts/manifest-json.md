@@ -1,7 +1,13 @@
 ---
 title: Manifest
 ---
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.5">
+
+**dbt Core v1.5 produces schema**: [`v9`](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4" lastVersion="1.4">
 
 **dbt Core v1.4 produces schema**: [`v8`](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
 
@@ -46,7 +52,7 @@ Today, dbt uses this file to populate the [docs site](documentation), and to per
 - `sources`: Dictionary of sources.
 - `metrics`: Dictionary of metrics.
 - `exposures`: Dictionary of exposures.
-- `groups`: Dictionary of groups.
+- `groups`: Dictionary of groups. (**Note:** Added in v1.5)
 - `macros`: Dictionary of macros.
 - `docs`: Dictionary of `docs` blocks.
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
@@ -62,7 +68,7 @@ All resources nested within `nodes`, `sources`, `metrics`, `exposures`, `macros`
 - `name`: Resource name.
 - `unique_id`: `<resource_type>.<package>.<resource_name>`, same as dictionary key
 - `package_name`: Name of package that defines this resource.
-- `root_path`: Absolute file path of this resource's package. This is removed in dbt Core v1.4 / manifest v8 to reduce duplicative information across nodes.
+- `root_path`: Absolute file path of this resource's package. (**Note:** This is removed for most node types in dbt Core v1.4 / manifest v8 to reduce duplicative information across nodes, but it is still present for seeds.)
 - `path`: Relative file path of this resource's definition within its "resource path" (`model-paths`, `seed-paths`, etc.).
 - `original_file_path`: Relative file path of this resource's definition, including its resource path.
 

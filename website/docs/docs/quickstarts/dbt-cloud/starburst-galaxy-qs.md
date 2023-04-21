@@ -5,9 +5,9 @@ id: "starburst-galaxy"
 sidebar_label: "Starburst Galaxy quickstart"
 ---
 
-In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/). It will show you how to:
+In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/platform/starburst-galaxy/). It will show you how to:
 
-- Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other providers](https://www.starburst.io/platform/connectors/) such as Google Cloud, Microsoft Azure, and more. 
+- Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other data sources](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) such as Google Cloud, Microsoft Azure, and more.
 - Connect Starburst Galaxy to the Amazon S3 bucket.
 - Create tables with Starburst Galaxy.
 - Connect dbt Cloud to Starburst Galaxy.
@@ -204,9 +204,9 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
-1. Click **Develop** from the upper left. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:  
         ```sql
@@ -215,10 +215,9 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
-2. Click **Create branch**. You can name it `add-customers-model`.
-3. Click the **...** next to the Models directory, then select **Create file**.  
-4. Name the file `models/customers.sql`, then click **Create**.
+1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
+3. Click the **...** next to the `models` directory, then select **Create file**.  
+4. Name the file `customers.sql`, then click **Create**.
 5. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -399,7 +398,7 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 ## Connect to multiple data sources
 This quickstart focuses on using dbt Cloud to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
 
-If you want to try this out, you can use the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart. 
+If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.
 
 ## Related content
 - Learn more with the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course for free
@@ -407,4 +406,4 @@ If you want to try this out, you can use the [Starburst Galaxy docs](https://doc
 - [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
-- [SQL basics for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/tutorials/learn-basics.html)
+- [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)

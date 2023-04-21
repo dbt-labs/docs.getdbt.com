@@ -19,6 +19,8 @@ Currently supported features include:
 This document details the steps to integrate dbt Cloud with an identity
 provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-access#role-based-access-control).
 
+<Snippet src="auth0-uri" />
+
 ## Generic SAML 2.0 integrations
 
 You can use the instructions in this section to configure an identity provider that isn't listed below.
@@ -46,7 +48,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 
 When prompted for the SAML 2.0 application configurations, supply the following values:
 
-- Single sign on URL: `https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}`
+- Single sign on URL: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID): `urn:auth0:us-devspace-cluster:{slug}`
 - Relay State: `<login slug>`
 
@@ -140,8 +142,8 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 
 1. On the **SAML Settings** page, enter the following values:
 
-   - Single sign on URL: `https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}`
-   - Audience URI (SP Entity ID): `urn:auth0:us-devspace-cluster:{slug}`
+   - Single sign on URL: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
+   - Audience URI (SP Entity ID): `urn:<YOUR_AUTH0_ENTITYID>:{slug}`
    - Relay State: `<login slug>`
 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
@@ -241,8 +243,8 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 2. Download the **IDP metadata**.
 3. Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
 4. Enter the following values on the **Service Provider Details** window:
-   - Single sign on URL: `https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}`
-   - Audience URI (SP Entity ID): `urn:auth0:us-devspace-cluster:{slug}`
+   - Single sign on URL: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
+   - Audience URI (SP Entity ID): `urn:<YOUR_AUTH0_ENTITYID>:{slug}`
    - Relay State: `<login slug>`
 5. Select the **Signed response** checkbox.
 6. The default **Name ID** is the primary email. Multi-value input is not supported.
@@ -312,7 +314,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
    | Field | Value |
    | ----- | ----- |
    | **Identifier (Entity ID)** | Base URL for dbt Cloud. Use `https://YOUR_ACCESS_URL/`. |
-   | **Reply URL (Assertion Consumer Service URL)** | Use `https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}`. |
+   | **Reply URL (Assertion Consumer Service URL)** | Use `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`. |
    | **Relay State** | The slug you will configure in dbt Cloud. It's usually your company name, but you can pick anything you'd like. |
 14. Click **Save** at the top of the form.
 
@@ -369,9 +371,9 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 3. Under the **Configuration tab**, input the following values:
 
    - **RelayState:** `<login slug>`
-   - **Audience (EntityID):** `urn:auth0:us-devspace-cluster:{slug}`
-   - **ACS (Consumer) URL Validator:** https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}
-   - **ACS (Consumer) URL:** https://us-devspace-cluster.us.auth0.com/login/callback?connection={slug}
+   - **Audience (EntityID):** `urn:<YOUR_AUTH0_ENTITYID>:{slug}`
+   - **ACS (Consumer) URL Validator:** https://<YOUR_AUTH0_URI>/login/callback?connection={slug}
+   - **ACS (Consumer) URL:** https://<YOUR_AUTH0_URI>/login/callback?connection={slug}
 
 4. Next, go to the **Parameters tab**. You must have a parameter for the Email, First Name, and Last Name attributes and include all parameters in the SAML assertions. When you add the custom parameters, make sure you select the **Include in SAML assertion** checkbox.
 
