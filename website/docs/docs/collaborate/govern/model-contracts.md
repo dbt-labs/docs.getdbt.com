@@ -5,8 +5,8 @@ sidebar_label: "Model contracts"
 description: "Model contracts define a set of parameters validated during transformation"
 ---
 
-:::info Beta functionality
-This functionality is new in v1.5! The syntax is mostly locked, but some small details are still liable to change.
+:::info New functionality
+This functionality is new in v1.5.
 :::
 
 ## Related documentation
@@ -84,7 +84,7 @@ Any model can define a contract. Defining contracts for "public" models that are
 
 A model's contract defines the **shape** of the returned dataset.
 
-[Tests](tests) are a more flexible mechanism for validating the content of your model. So long as you can write the query, you can run the test. Tests are also more configurable via `severity` and custom thresholds and are easier to debug after finding failures. The model has already been built, and the relevant records can be materialized in the data warehouse by [storing failures](resource-configs/store_failures).
+[Tests](docs/build/tests) are a more flexible mechanism for validating the content of your model. So long as you can write the query, you can run the test. Tests are also more configurable via `severity` and custom thresholds and are easier to debug after finding failures. The model has already been built, and the relevant records can be materialized in the data warehouse by [storing failures](resource-configs/store_failures).
 
 In a parallel for software APIs, the structure of the API response is the contract. Quality and reliability ("uptime") are also very important attributes of an API's quality, but not part of the contract per se, indicating a breaking change or requiring a version bump.
 
