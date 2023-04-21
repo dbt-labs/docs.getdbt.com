@@ -52,7 +52,7 @@ Now that we understand the broad concepts and benefits of dimensional modeling, 
 
 ## Part 1: Setup dbt project and database
 
-### Step 1: Install project dependencies
+### Step 1: Before you get started
 
 Before you can get started: 
 
@@ -61,6 +61,8 @@ Before you can get started:
     - Download [PostgreSQL](https://www.postgresql.org/download/)
 - You must have Python 3.8 or above installed
 - You must have dbt version 1.3.0 or above installed
+- You should have a basic understanding of [SQL](https://www.sqltutorial.org/)
+- You should have a basic understanding of [dbt](https://docs.getdbt.com/docs/quickstarts/overview)
 
 ### Step 2: Clone the repository
 
@@ -91,7 +93,7 @@ The dbt profile (see `adventureworks/profiles.yml`) has already been pre-configu
 
 ```yaml
 adventureworks:
-  target: duckdb # default to duckdb 
+  target: duckdb # leave this as duckdb, or change this to your chosen database
 
   # supported databases: duckdb, postgres 
   outputs:
@@ -145,7 +147,7 @@ Examine the database source schema below, paying close attention to:
 
 ### Step 8: Query the tables
 
-Get a better sense of what the records look like by executing select statements against the database tables. 
+Get a better sense of what the records look like by executing select statements using your database's SQL editor. 
 
 For example:  
 
@@ -222,7 +224,7 @@ There are two tables in the sales schema that catch our attention. These two tab
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/sales-order-header-detail.png" width="85%" title="Sales Order Header and Detail"/>
 
-Let’s define a fact table called `fct_sales` which joins `sales.salesorderheader` and `sales.salesorderdetail` together. Each record in the fact table (or the grain of the fact table) is an order detail. 
+Let’s define a fact table called `fct_sales` which joins `sales.salesorderheader` and `sales.salesorderdetail` together. Each record in the fact table (also known as the [grain](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/grain/)) is an order detail. 
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/fct_sales.png" width="85%" title="fct_sales table"/>
 
@@ -258,7 +260,9 @@ Instead, we can denormalize the dimension tables by performing joins.
 
 This is known as a star schema and this approach reduces the amount of joins that need to be performed by the consumer of the dimensional model. 
 
-Using the star schema approach, we can identify 6 dimensions that will help us answer the business questions: 
+Using the star schema approach, we can identify 6 dimensions as shown below that will help us answer the business questions: 
+
+<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="85%" title="Dimension tables"/>
 
 - `dim_product` : a dimension table that joins `product` , `productsubcategory`, `productcategory`
 - `dim_address` : a dimension table that joins `address` , `stateprovince`, `countryregion`
@@ -270,8 +274,6 @@ Using the star schema approach, we can identify 6 dimensions that will help us a
 :::note 
 We have manually seeded the `dim_date` table since DuckDB is not supported by the dbt_date package.
 :::
-
-<Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/dimension-tables.png" width="85%" title="Dimension tables"/>
 
 In the next part, we use dbt to create the fact and dimension tables we have identified. 
 
