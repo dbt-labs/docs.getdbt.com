@@ -36,6 +36,40 @@ The `{{ ref }}` function returns a `Relation` object that has the same `table`, 
 
 ## Advanced ref usage
 
+### Versioned ref
+
+The `ref` function supports an optional keyword argument - `version` (or `v`).
+When a version argument is provided to the `ref` function, dbt returns to the `Relation` object corresponding to the specified version of the referenced model.
+
+This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guaruntee no breaking changes to existing versions of the model.
+
+If the `version` argument is not supplied to a `ref` of a versioned model, the latest version is. This has the benefit of automatically incorporating the latest changes of a referenced model, but there is a risk of incorporating breaking changes.
+
+#### Example:
+<File name='models/<schema>.yml'>
+
+```yml
+
+models:
+  - name: model_name
+    latest_version: 2
+    versions:
+      - v: 2
+      - v: 1
+```
+
+</File>
+
+```sql
+ -- returns the `Relation` object corresponding to version 1 of model_name
+select * from {{ ref('model_name', version=1) }}
+```
+
+```sql
+ -- returns the `Relation` object corresponding to version 2 (the latest version) of model_name
+select * from {{ ref('model_name') }}
+```
+
 ### Two-argument variant
 
 There is also a two-argument variant of the `ref` function. With this variant, you can pass both a package name and model name to `ref` to avoid ambiguity. This functionality is not commonly required for typical dbt usage.
