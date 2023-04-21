@@ -36,7 +36,7 @@ to print the full contents:
  
   ```shell
     {{ model | tojson(indent = 4) }}
-    ```
+  ```
    
 </TabItem>
 
