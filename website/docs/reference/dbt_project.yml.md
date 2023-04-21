@@ -14,7 +14,7 @@ By default, dbt will look for `dbt_project.yml` in your current working director
 
 <VersionBlock firstVersion="1.5">
 
-By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--profiles-dir` flag or the `DBT_PROJECT_DIR` environment variable.
+By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.
 
 </VersionBlock>
 
