@@ -1,11 +1,10 @@
 ---
 title: "cross-database macros"
 id: "cross-database-macros"
+description: "These macros benefit maintainers, adapters, and end users by improving compatibility and ease of use."
 ---
 
 # Cross-database macros
-
-## Overview
 
 These macros benefit three different user groups:
 - If you maintain a package, your package is more likely to work on other adapters by using these macros (rather than a specific database's SQL syntax)

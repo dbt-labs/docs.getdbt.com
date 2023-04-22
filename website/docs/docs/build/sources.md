@@ -27,8 +27,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
-    [database](/reference/resource-properties/database): raw  
-    [schema](/reference/resource-properties/schema)*: jaffle_shop  
+    database: raw  
+    schema: jaffle_shop  
     tables:
       - name: orders
       - name: customers

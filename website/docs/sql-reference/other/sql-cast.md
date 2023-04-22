@@ -63,7 +63,7 @@ You may also see the CAST function replaced with a double colon (::), followed b
 You know at one point you’re going to need to cast a column to a different data type. But what are the scenarios folks run into that call for these conversions? At their core, these conversions need to happen because raw source data doesn’t match the analytics or business use case. This typically happens for a few reasons:
 
 - Differences in needs or miscommunication from [backend developers](https://docs.getdbt.com/blog/when-backend-devs-spark-joy#signs-the-data-is-sparking-joy)
-- ETL tools [defaulting to certain data types](https://airbytehq.github.io/integrations/sources/google-sheets/)
+- <Term id="etl" /> tools [defaulting to certain data types](https://airbytehq.github.io/integrations/sources/google-sheets/)
 - BI tools require certain fields to be specific data types
 
 A key thing to remember when you’re casting data is the user experience in your end BI tool: are business users expecting `customer_id` to be filtered on 1 or '1'? What is more intuitive for them? If one `id` field is an integer, all `id` fields should be integers. Just like all data modeling, consistency and standardization is key when determining when and what to cast.

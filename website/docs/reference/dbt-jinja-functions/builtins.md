@@ -1,6 +1,7 @@
 ---
 title: "builtins"
 id: "builtins"
+description: "The `builtins` variable references the builtin dbt context methods."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

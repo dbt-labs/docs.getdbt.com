@@ -166,9 +166,9 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
-1. Click **Develop** from the upper left. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
@@ -177,10 +177,9 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
-2. Click **Create branch**. You can name it `add-customers-model`.
-3. Click the **...** next to the Models directory, then select **Create file**.  
-4. Name the file `models/customers.sql`, then click **Create**.
+1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
+3. Click the **...** next to the `models` directory, then select **Create file**.  
+4. Name the file `customers.sql`, then click **Create**.
 5. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -263,7 +262,102 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 ## Build models on top of other models
 
-<Snippet src="quickstarts/build-models-atop-other-models" />
+<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+
+1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
+2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from jaffle_shop_customers
+    ```
+
+    </File>
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from jaffle_shop_orders
+    ```
+
+    </File>
+
+3. Edit the SQL in your `models/customers.sql` file as follows:
+
+    <File name='models/customers.sql'>
+
+    ```sql
+    with customers as (
+
+        select * from {{ ref('stg_customers') }}
+
+    ),
+
+    orders as (
+
+        select * from {{ ref('stg_orders') }}
+
+    ),
+
+    customer_orders as (
+
+        select
+            customer_id,
+
+            min(order_date) as first_order_date,
+            max(order_date) as most_recent_order_date,
+            count(order_id) as number_of_orders
+
+        from orders
+
+        group by 1
+
+    ),
+
+    final as (
+
+        select
+            customers.customer_id,
+            customers.first_name,
+            customers.last_name,
+            customer_orders.first_order_date,
+            customer_orders.most_recent_order_date,
+            coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+
+        from customers
+
+        left join customer_orders using (customer_id)
+
+    )
+
+    select * from final
+    
+    ```
+
+    </File>
+
+4. Execute `dbt run`.
+
+    This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
+
+#### FAQs {#faq-2}
+
+<FAQ src="Runs/run-one-model" />
+<FAQ src="Models/unique-model-names" />
+<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+
 
 <Snippet src="quickstarts/test-and-document-your-project" />
 

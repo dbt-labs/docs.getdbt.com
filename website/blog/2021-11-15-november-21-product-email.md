@@ -60,7 +60,7 @@ Hear their take, and share your own by [registering here](https://coalesce.getdb
 
 ### Things to Listen To 🎧
 
-- Julien Le Dem joined the [Analytics Engineer Podcast](https://roundup.getdbt.com/p/ep-10-why-data-lineage-matters-w?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo) to talk about how OS projects become standards, and why data lineage in particular is in need of an open standard. 
+- Julien Le Dem joined the [Analytics Engineer Podcast](https://roundup.getdbt.com/p/ep-10-why-data-lineage-matters-w?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo) to talk about how OS projects become standards, and why <Term id="data-lineage" /> in particular is in need of an open standard. 
 
 -   [The rise of the Analytics Engineer](https://youtu.be/ixyzF4Dy9Us?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9SoWbfj9_ZRDew6i8p8yand1JSmLh7yfridIrLwO7bgHTUmnbKcRp3AEKCO8pOytotdxAo): Anna, dbt Labs Director of Community, joined Thoughtspot to talk about the evolution of analytics engineering, or the emergence of the "full stack data analyst."
 

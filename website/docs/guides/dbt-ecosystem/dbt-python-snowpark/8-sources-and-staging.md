@@ -6,7 +6,7 @@ description: "Sources and staging"
 
 In this section, we are going to create our source and staging models.
 
-Sources allow us to create a dependency between our source database object and our staging models which will help us when we look at data lineage later. Also, if your source changes database or schema, you only have to update it in your `f1_sources.yml` file rather than updating all of the models it might be used in.
+Sources allow us to create a dependency between our source database object and our staging models which will help us when we look at <Term id="data-lineage" /> later. Also, if your source changes database or schema, you only have to update it in your `f1_sources.yml` file rather than updating all of the models it might be used in.
 
 Staging models are the base of our project, where we bring all the individual components we're going to use to build our more complex and useful models into the project.
 
