@@ -250,27 +250,6 @@ models:
 
 * Granting to / revoking from is only fully supported for Reshift users (not groups).
 
-
-⚠️ Although groups can have grants by explicitly adding a `group ` prefix, they will not be revoked when removed from the config; revoking must be done manually outside of dbt.
-
-For example:
-
-```sql
-{{ config(grants = {'select': ['group finance_department']}) }}
-```
-
-<File name='models/schema.yml'>
-
-```yml
-models:
-  - name: specific_model
-    config:
-      grants:
-        select: ['group finance_department']
-```
-
-</File>
-
 </div>
 
 <div warehouse="Snowflake">
