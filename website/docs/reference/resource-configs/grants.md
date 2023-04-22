@@ -248,7 +248,7 @@ models:
 
 <div warehouse="Redshift">
 
-* Granting to / revoking from is only fully supported for Reshift users (not groups).
+* Granting to / revoking from is only fully supported for Redshift users (not groups).
 
 </div>
 
