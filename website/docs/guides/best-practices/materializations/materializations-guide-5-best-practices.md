@@ -1,7 +1,7 @@
 ---
 title: Best practices for materializations
 id: materializations-guide-5-best-practices
-slug: guides/best-practices/materializations/5-best-practices
+slug: 5-best-practices
 description: Learn how to utilize materializations in dbt.
 displayText: Materializations best practices
 hoverSnippet: Learn how to utilize materializations in dbt.

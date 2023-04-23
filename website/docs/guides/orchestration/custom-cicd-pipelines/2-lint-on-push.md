@@ -5,7 +5,7 @@ id: 2-lint-on-push
 
 This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization. 
 
-The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specfically runs the rules L019, L020, L021, and L022. This is purley for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
+The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specifically runs the rules L019, L020, L021, and L022. This is purely for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
 
 ### 1. Create a yaml file to define your pipeline
 

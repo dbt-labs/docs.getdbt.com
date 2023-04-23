@@ -10,4 +10,4 @@ The dbt Cloud Administrative API is enabled by default for _Team_ and _Enterpris
 - Manage your dbt Cloud account
 - and more
 
-Reference documentation for the dbt Cloud Administrative v2 API can be found [here](/dbt-cloud/api-v2).
+You can use [dbt Cloud Administrative API v2 reference documentation](/dbt-cloud/api-v2) to help you access the API.

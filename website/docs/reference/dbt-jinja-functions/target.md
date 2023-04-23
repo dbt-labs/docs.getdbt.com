@@ -1,6 +1,7 @@
 ---
 title: "target"
 id: "target"
+description: "Contains information about your connection to the warehouse."
 ---
 
 `target` contains information about your connection to the warehouse.

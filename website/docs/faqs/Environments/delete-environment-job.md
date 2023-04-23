@@ -6,7 +6,7 @@ id: delete-environment-job
 --- 
 
 
-To delete an environment or job in dbt Cloud, you must have a `developer` [license](/docs/collaborate/manage-access/seats-and-users) and have the necessary [access permissions](/docs/collaborate/manage-access/about-access). 
+To delete an environment or job in dbt Cloud, you must have a `developer` [license](/docs/cloud/manage-access/seats-and-users) and have the necessary [access permissions](/docs/cloud/manage-access/about-access). 
 
 :::info 📌 Delete a job first before deleting environment
 

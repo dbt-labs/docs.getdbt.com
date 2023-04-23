@@ -1,6 +1,7 @@
 ---
 title: "env_var"
 id: "env_var"
+description: "Incorporate environment variables using `en_var` function."
 ---
 
 The `env_var` function can be used to incorporate Environment Variables from the system into your dbt project. This `env_var` function can be used in your `profiles.yml` file, the `dbt_project.yml` file, the `sources.yml` file, your `schema.yml` files, and in model `.sql` files. Essentially `env_var` is available anywhere dbt processes jinja code.

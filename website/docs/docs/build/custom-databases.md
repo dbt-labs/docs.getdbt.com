@@ -28,7 +28,7 @@ This config changes all models in the `jaffle_shop` project to be built into a d
 name: jaffle_shop
 
 models:
-  my_project:
+  jaffle_shop:
     +database: jaffle_shop
 
     # For BigQuery users:

@@ -1,9 +1,8 @@
 ---
 title: "ref"
 id: "ref"
+description: "`ref()` references a model within another and creates a dependency graph."
 ---
-
-## Overview
 
 The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one model within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:
 
@@ -36,6 +35,40 @@ The `{{ ref }}` function returns a `Relation` object that has the same `table`, 
 :::
 
 ## Advanced ref usage
+
+### Versioned ref
+
+The `ref` function supports an optional keyword argument - `version` (or `v`).
+When a version argument is provided to the `ref` function, dbt returns to the `Relation` object corresponding to the specified version of the referenced model.
+
+This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guaruntee no breaking changes to existing versions of the model.
+
+If the `version` argument is not supplied to a `ref` of a versioned model, the latest version is. This has the benefit of automatically incorporating the latest changes of a referenced model, but there is a risk of incorporating breaking changes.
+
+#### Example:
+<File name='models/<schema>.yml'>
+
+```yml
+
+models:
+  - name: model_name
+    latest_version: 2
+    versions:
+      - v: 2
+      - v: 1
+```
+
+</File>
+
+```sql
+ -- returns the `Relation` object corresponding to version 1 of model_name
+select * from {{ ref('model_name', version=1) }}
+```
+
+```sql
+ -- returns the `Relation` object corresponding to version 2 (the latest version) of model_name
+select * from {{ ref('model_name') }}
+```
 
 ### Two-argument variant
 
