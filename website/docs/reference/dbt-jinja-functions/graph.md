@@ -65,17 +65,6 @@ representations of those nodes. A simplified example might look like:
       ...
     },
     ...
-  },
-  "groups": {
-    "group.my_project.finance": {
-      "unique_id": "group.my_project.finance",
-      "name": "finance",
-      "owner": {
-        "email": "finance@jaffleshop.com"
-      }
-      ...
-    },
-    ...
   }
 }
 ```
