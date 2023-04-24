@@ -57,6 +57,7 @@ The [manifest](manifest-json) schema version will be updated to `v9`. Specific c
 - Addition of `access`, `constraints`, `version`, `latest_version` as a top-level node attributes for models
 - Addition of `constraints` as a column-level attribute
 - Addition of `group` and `contract` as node configs
+- To support model versions, the type of `refs` has changed from `List[List[str]]` to `List[RefArgs]`, with nested keys `name: str`, `package: Optional[str] = None`, and `version: Union[str, float, NoneType] = None)`.
 
 ### For maintainers of adapter plugins
 
