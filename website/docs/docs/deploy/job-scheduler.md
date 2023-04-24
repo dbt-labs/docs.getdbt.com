@@ -39,6 +39,8 @@ Before the job starts executing, the scheduler checks two conditions to determin
 
 Once the available slot conditions and distinct run checks are met, the scheduler will prepare the job to run on your data platform. The time it takes to prepare the job is displayed as **prep time.**
 
+Collectively **wait time** and **prep time** is the time a run spends in queue.
+
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
 ## Job memory
