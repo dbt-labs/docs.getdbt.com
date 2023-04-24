@@ -88,5 +88,4 @@ Run `dbt --help` to see new & improved help documentation :)
 - The [`version: 2` top-level key](project-configs/version) is now **optional** in all yaml files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
 - [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
 - Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](dbt_project.yml)
-- More granular [configurations](global-configs) for logging, to set log format, log levels, and colorization.
-
+- More granular [configurations](global-configs) for logging (to set log format, log levels, and colorization) and cache population
