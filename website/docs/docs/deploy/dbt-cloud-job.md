@@ -17,17 +17,62 @@ today.
 
 - You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
+- You must [create a dbt Cloud job](#create-and-schedule-jobs)
 - You must have [access permission](/docs/cloud/manage-access/about-access) to create, edit, and run jobs
 - You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments) 
 - Your deployment environment must be on dbt version 1.0 or higher
 
 ## Job scheduler features
 
-dbt Cloud's job scheduler, documentation, logging, automation, and alerting features allow you to build observability into your processes easily. 
+dbt Cloud simplifies job scheduling, documentation, logging, automation, and alerting. These features make it easy to deploy jobs confidently and build observability into your processes.
 
-The protection policies on branches ensure that your data moves through governed processes every step of the way, from dev to stage to prod environments.
+### Job scheduler 
 
-### Create and schedule jobs
+Use dbt Cloud's job scheduler to streamline your data transformation workflows, build observability, govern data, and empower data teams to run dbt in production with ease. Create custom schedules to run production jobs and decrease operating costs by using automation. 
+
+Refer to [job scheduler](/docs/deploy/job-scheduler) for more info on how the scheduler works. 
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="100%" title="An overview of a dbt Cloud job run"/>
+
+### Notifications
+
+Set up job notifications to inform you via email or a selected Slack channel when a job run succeeds, fails, or is cancelled, enabling you to respond quickly and proactively.  
+
+Refer to [job notifications](/docs/deploy/job-notifications) for more info. 
+
+### Host and share docs
+
+You can set up, view, and share your project documentation in order to streamline your team's collaboration and productivity. Invite teammates to dbt Cloud to collaborate and share documentation. 
+
+Refer to [build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
+
+### Access logs
+
+You can view or download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently.
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.jpg" width="85%" title="Access logs for run steps" />
+
+### Model timing 
+> Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
+
+The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each job run. The visualization appears for successful jobs and highlights the top 1% model durations. This helps you identify bottlenecks in your models, so you can explore them and potentially make changes to improve their performance. 
+
+You can find the dashboard on the **Run Overview** page. 
+
+<Lightbox src="/img/docs/dbt-cloud/model-timing.jpg" width="85%" title="The model timing tab displays the top 1% of model durations and visualizes model bottlenecks" />
+
+
+### Automate workflows
+
+In order to ensure that your data pipelines are functioning seamlessly and efficiently, use dbt Cloud tools such as:
+
+- [dbt API](/docs/dbt-cloud-apis/overview) &mdash; Administrate a dbt Cloud account or fetch your project metadata.
+- [Continuous Integration](/docs/deploy/cloud-ci-job) &mdash; Test every single code change you make prior to deploying that new logic into production. 
+- [Webhooks](/docs/deploy/webhooks) &mdash; Create outbound webhooks to send events (notifications) about your dbt jobs to your other systems
+
+These tools provide you with automated workflows and streamline your data processing, enabling you to focus on other crucial tasks and increase your overall productivity.
+
+## Create and schedule jobs
 
  Jobs are a set of dbt commands that you want to run on a schedule, which you can do in dbt Cloud. 
  Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
@@ -75,41 +120,8 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
+## Related docs
 
-### Notifications
-
-Set up job notifications to inform you via email or a selected Slack channel when a job run succeeds, fails, or is cancelled, enabling you to respond quickly and proactively.  
-
-Refer to [job notifications](/docs/deploy/job-notifications) for more info. 
-
-### Host and share docs
-
-You can set up, view, and share your project documentation in order to streamline your team's collaboration and productivity. Invite teammates to dbt Cloud to collaborate and share documentation. 
-
-Refer to [build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
-
-### Access logs
-
-You can view or download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently.
-
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.jpg" width="85%" title="Access logs for run steps" />
-
-### Model timing 
-> Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
-
-The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each job run. The visualization appears for successful jobs and highlights the top 1% model durations. This helps you identify bottlenecks in your models, so you can explore them and potentially make changes to improve their performance. 
-
-You can find the dashboard on the **Run Overview** page. 
-
-<Lightbox src="/img/docs/dbt-cloud/model-timing.jpg" width="85%" title="The model timing tab displays the top 1% of model durations and visualizes model bottlenecks" />
-
-
-### Automate workflows
-
-In order to ensure that your data pipelines are functioning seamlessly and efficiently, use dbt Cloud tools such as:
-
-- [dbt API](/docs/dbt-cloud-apis/overview) &mdash; Administrate a dbt Cloud account or fetch your project metadata.
-- [Continuous Integration](/docs/deploy/cloud-ci-job) &mdash; Test every single code change you make prior to deploying that new logic into production. 
-- [Webhooks](/docs/deploy/webhooks) &mdash; Create outbound webhooks to send events (notifications) about your dbt jobs to your other systems
-
-These tools provide you with automated workflows and streamline your data processing, enabling you to focus on other crucial tasks and increase your overall productivity.
+- Deploy dbt jobs
+- Artifacts
+- dbt Cloud features

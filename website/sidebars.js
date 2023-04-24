@@ -233,6 +233,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
             "docs/deploy/artifacts",
+            "docs/deploy/job-scheduler",
             "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
