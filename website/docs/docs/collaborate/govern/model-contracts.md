@@ -6,7 +6,7 @@ description: "Model contracts define a set of parameters validated during transf
 ---
 
 :::info New functionality
-This functionality is new in v1.5.
+This functionality is new in v1.5 — if you have thoughts, weigh into the [GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/6726)!
 :::
 
 ## Related documentation
