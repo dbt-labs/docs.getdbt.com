@@ -16,6 +16,7 @@ You can create webhooks for these events from the [dbt Cloud web-based UI](#crea
 - `job.run.errored` &mdash; Run errored.
 
 dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
+The timeout for webhook is 10 sec i.e; dbt cloud webhook processor waits for 10 sec for the endpoint to respond before it times out.
 
 :::tip Videos 
 If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
