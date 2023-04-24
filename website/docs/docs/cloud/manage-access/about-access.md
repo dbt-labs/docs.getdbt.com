@@ -1,7 +1,13 @@
 ---
-title: "About access"
-id: "about-access"
+title: "About user access in dbt Cloud"
+id: "about-user-access"
 ---
+
+:::info User access != Model access
+
+**User groups & access** are distinct from **model groups && access**, a language construct in dbt-core. For docs on the latter, see: ["Model access"](model-access).
+
+:::
 
 ## Overview
 
