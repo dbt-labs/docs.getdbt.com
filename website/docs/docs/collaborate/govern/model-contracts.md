@@ -76,9 +76,18 @@ When building a model with a defined contract, dbt will do two things differentl
 
 ## FAQs
 
+### Where are contracts supported?
+
+At present, model contracts are supported for:
+- SQL models (not yet Python)
+- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
+- On the most popular data platforms — but which `constraints` are supported/enforced varies by platform
+
 ### Which models should have contracts?
 
-Any model can define a contract. Defining contracts for "public" models that are being shared with other groups, teams, and (soon) dbt projects is especially important. For more, read about ["Model access"](model-access).
+Any model that meets the criteria above can define a contract.
+
+Defining contracts for "public" models that are being shared with other groups, teams, and (soon) dbt projects is especially important. For more, read about ["Model access"](model-access).
 
 ### How are contracts different from tests?
 
@@ -88,9 +97,13 @@ A model's contract defines the **shape** of the returned dataset.
 
 In a parallel for software APIs, the structure of the API response is the contract. Quality and reliability ("uptime") are also very important attributes of an API's quality, but not part of the contract per se, indicating a breaking change or requiring a version bump.
 
-### Where are contracts supported?
+When you have the option of testing or constraining—the constraint is likely to save on overall cost and compute. The prerequisites for replacing a test with a constraint are:
+- Your data platform supports & enforces the constraint you need. (Most analytical platforms enforce only `not_null`.)
+- You're materializing as table or incremental (NOT a view or ephemeral)
+- You're defining a contract for this model, by declaring every column's `name` + `data_type`.
 
-At present, model contracts are supported for:
-- SQL models (not yet Python)
-- Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
-- On the most popular data platforms — but which `constraints` are supported/enforced varies by platform
+### Can I define a "partial" contract?
+
+Currently, dbt contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
+
+We are investigating the feasibility of supporting "inferred" or "partial" contracts in the future. This would enable you to define constraints and strict data typing for a subset of columns, while still detecting breaking changes on other columns by comparing against the same model in production. If you're interested, please upvote or comment on [dbt-core#7432](https://github.com/dbt-labs/dbt-core/issues/7432).

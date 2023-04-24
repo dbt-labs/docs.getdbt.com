@@ -18,9 +18,13 @@ This functionality is new in v1.5.
 
 When the `contract` configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml:
 - `name` and `data_type` for every column
-- additional [`constraints`](resource-properties/constraints), as supported for this materialization + data platform
+- Additional [`constraints`](resource-properties/constraints), as supported for this materialization + data platform
 
-The `data_type` defined in your yaml file must match a data type your data platform recognizes. dbt does not do any type aliasing itself; if your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
+This is to ensure that downstream queriers of your model—inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
+
+The `data_type` defined in your yaml file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
+
+That said, dbt will **not** include size, precision, or scale in its data type comparison. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it almost never affects the experience of downstream queriers. If you need a more-precise comparison, it's possible to accomplish with a custom test.
 
 ## Example
 
