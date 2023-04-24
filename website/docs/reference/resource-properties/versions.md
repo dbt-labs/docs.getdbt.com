@@ -37,7 +37,7 @@ The version identifier for a version of a model. This value can be numeric (inte
 
 The value of the version identifier is used to order versions of a model relative to one another. If a versioned model does _not_ explicitly configure a [`latest_version`](resource-properties/latest_version), the highest version number is used as the latest version to resolve `ref` calls to the model without a `version` argument.
 
-In general, we recommend that you use a simple "major versioning" scheme for your models: `v1`, `v2`, `v3`, etc, where each version represents a breaking change from previous versions. However, you are welcome to use other versioning schemes.
+In general, we recommend that you use a simple "major versioning" scheme for your models: `1`, `2`, `3`, and so on, where each version reflects a breaking change from previous versions. You are able to use other versioning schemes. dbt will sort your version identifiers alphabetically if the values are not all numeric. You should **not** include the letter `v` in the version identifier, as dbt will do that for you.
 
 ### `defined_in`
 

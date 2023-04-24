@@ -52,13 +52,13 @@ Rather than constantly adding a new version for each small change, you should op
 
 ## How is this different from "version control"?
 
-[Version control](git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch, with the ability to roll back changes by reverting a commit or pull request. In general, only one version of your project code is deployed into an environment at a time.
+[Version control](git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
 
 When you make updates to a model's source code—its logical definition, in SQL or Python, or related configuration—dbt can [compare your project to previous state](project-state), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production—all coordinated via your version control system.
 
-**Versioned models are different.** Defining model `versions` is appropriate when there are people, systems, and processes beyond your team's control, inside or outside of dbt. You can neither simply go migrate them all, nor break their queries on a whim. I need to do my part by offering a migration path, with clear diffs and deprecation dates.
+**Versioned models are different.** Defining model `versions` is appropriate when there are people, systems, and processes beyond your team's control, inside or outside of dbt. You can neither simply go migrate them all, nor break their queries on a whim. You need to do my part by offering a migration path, with clear diffs and deprecation dates.
 
-Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned—multiple versions are live simultaneously; older versions are often eventually sunsetted. 
+Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned: Multiple versions are live simultaneously, two or three, and not more). Over time, newer versions come online, and older versions are sunsetted .
 
 ## How is this different from just creating a new model?
 
@@ -220,14 +220,11 @@ models:
 
 The above configuration will create two models, `dim_customers.v1` and `dim_customers.v2`.
 
-**Where are they defined?**
+**Where are they defined?** By convention, dbt will expect those two models to be defined in files named `dim_customers_v1.sql` and `dim_customers_v2.sql`. It will also accept `dim_customers.sql` (no suffix) as the definition of the latest version. (It is possible to override this by setting [`defined_in: any_file_name_you_want`](resource-properties/versions#defined_in), but only if you have a good reason. We strongly encourage you to follow the convention.)
 
+**Where will they be materialized?** By convention, these will create database relations with aliases `dim_customers_v1` and `dim_customers_v2`. In the future, dbt will also create a view or clone, named `dim_customers`, pointing to the latest version. See [the section below](#configuring-database-location-with-alias) for a way to implement this now.
 
-**Where will they be materialized?** By convention, these will create database relations with aliases `dim_customers_v1` and `dim_customers_v2`. We recommend that you also create a view, named `dim_customers`, pointing to the latest version. Check out guidance on an easy & repeatable way to do that.
-
-By convention, dbt will expect those two models to be defined in files named `dim_customers_v1.sql` and `dim_customers_v2.sql`. It will also accept `dim_customers.sql` (no suffix) as the definition of the latest version. (It is possible to override this by setting `defined_in: any_file_name_you_want`, but we strongly encourage you to follow the convention!)
-
-If not specified explicitly, the `latest_version` would be `2` (numerically greatest). In this case, `v1` is specified to still be the latest; `v2` is a prerelease in early development. When we're ready to roll out `v2` to everyone by default, we would bump the `latest_version` to `2`, or remove it from the specification.
+**Which version is "latest"?** If not specified explicitly, the `latest_version` would be `2` (numerically greatest). In this case, `v1` is specified to still be the latest; `v2` is a prerelease in early development. When we're ready to roll out `v2` to everyone by default, we would bump the `latest_version` to `2`, or remove it from the specification.
 
 ### Configuring versioned models
 
@@ -265,21 +262,52 @@ You could use the `alias` configuration:
 
 </File>
 
-Or, you could do one better: In a model or project hook, create a view named `dim_customers` that always points to the latest version of the `dim_customers` model. You can find logic for just such a hook in [this gist](https://gist.github.com/jtcohen6/68220cd76b0bde088d3439664ccfb013/edit). Then, for all the versioned models in your project, it's as simple as:
+Or, you could do one better: Define a post-hook to create a view named `dim_customers`, which always points to the latest version of the `dim_customers` model. You can find logic for just such a hook in [this gist](https://gist.github.com/jtcohen6/68220cd76b0bde088d3439664ccfb013/edit). Then, you can implement this for all versioned models in your project:
 
-<!-- TODO: add the macro from my gist to dbt-core. Better as on-run-end or post-hook? -->
+<File name="dbt_project.yml">
 
-<File name="models/schema.yml">
+```sql
+{% macro create_latest_version_view() %}
 
-```yml
-# dbt_project.yml
-on-run-end:
-  - "{{ create_latest_version_views() }}"
+    {% if model.get('version') and model.get('version') == model.get('latest_version') %}
+
+        {% set new_relation = api.Relation.create(
+            database = this.database,
+            schema = this.schema,
+            identifier = model['name']
+        ) %}
+        
+        {% set existing_relation = load_relation(new_relation) %}
+        {{ drop_relation_if_exists(existing_relation) }}
+        
+        {% set create_view_sql = create_view_as(new_relation, "select * from " ~ this) -%}
+        
+        {% do log("Creating view " ~ new_relation ~ " pointing to " ~ this, info = true) if execute %}
+        
+        {{ return(create_view_sql) }}
+        
+    {% endif %}
+
+{% endmacro %}
 ```
 
 </File>
 
-**This is the pattern we recommend,** and we may build it into `dbt-core` as out-of-the-box functionality. This has the effect of providing the same flexibility that users get from `ref`, even if they're querying outside of dbt. Want a specific version? Pin to version X by adding the `_vX` suffix. Want the latest version? No suffix.
+
+<File name="dbt_project.yml">
+
+```yml
+# dbt_project.yml
+models:
+  post-hook:
+    - "{{ create_latest_version_view() }}"
+```
+
+</File>
+
+**This is the pattern we recommend,** and we intend to build it into to `dbt-core` as out-of-the-box functionality: [dbt-core#7442](https://github.com/dbt-labs/dbt-core/issues/7442).
+
+By following this pattern, you can offer the same flexibility as `ref`, even if someone is querying outside of dbt. Want a specific version? Pin to version X by adding the `_vX` suffix. Want the latest version? No suffix.
 
 :::info
 If your project has historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro, and you'd like to start using model versions, you should update your custom implementation to account for model versions. Specifically, we'd encourage you to add [a condition like this one](https://github.com/dbt-labs/dbt-core/blob/ada8860e48b32ac712d92e8b0977b2c3c9749981/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql#L26-L30).
