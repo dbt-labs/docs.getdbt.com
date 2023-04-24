@@ -102,6 +102,7 @@ _Expected:_
 </VersionBlock>
 
 _Optional:_
+- **label**:  may contain spaces, capital letters, and special characters.
 - **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
 - **maturity**: one of `high`, `medium`, `low`
 
