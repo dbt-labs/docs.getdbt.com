@@ -45,7 +45,7 @@ The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) an
 
 :::tip Stay informed
 
-To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), or refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-glossary) for comprehensive definitions and terminology of user interface elements.
+To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), or refer to the [IDE glossary](/docs/cloud/dbt-cloud-ide/ide-glossary) for comprehensive definitions and terminology of user interface elements.
 
 :::
 
@@ -134,7 +134,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 ## Related docs
 
 - [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
-- [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-glossary)
+- [IDE glossary](/docs/cloud/dbt-cloud-ide/ide-glossary)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
 - [dbt Cloud IDE release notes](/tags/ide)

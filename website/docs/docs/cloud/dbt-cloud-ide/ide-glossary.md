@@ -1,8 +1,8 @@
 ---
-title: "IDE user interface"
+title: "IDE glossary"
 id: ide-glossary
 description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
-sidebar_label: IDE user interface
+sidebar_label: IDE glossary
 tags: [IDE]
 ---
 
