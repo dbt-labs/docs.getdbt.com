@@ -43,7 +43,7 @@ While we feel that dbt is a better transformation tool than Alteryx for most use
 
 Focusing more on data pipeline visibility and a friendlier user experience, Alteryx excels while working with smaller, more understandable data flows, where the Analytics Engineer (AE) can really visualize how the data is being transformed from the source all the way downstream to each output.
 
-When it comes to handling complex data structures, dbt has several features that make it superior to Alteryx. As we will see ahead with more details, in a data stack transition context, when long and complex data flows are common, dbt is often faster than Alteryx. That happens for a few reasons (**Figure 2**):
+When it comes to handling complex data structures, dbt has several features that make it superior to Alteryx. As we will see ahead with more details, in a data stack transition context, when long and complex data flows are common, dbt is often faster than Alteryx. That happens for a few reasons (**Table 2**):
 
 | Aspect | dbt | Alteryx |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ When it comes to handling complex data structures, dbt has several features that
 | Optimization | Takes advantage of query optimization capabilities | It does not reuse the same source that has already been executed by a model and runs it again |
 | Run logic | Processes only changed data for large data sets (incremental run) | Processes all data every time it is run |
 
-**Figure 2** — High-level comparison between dbt and Alteryx
+*<center>**Table 2** — High-level comparison between dbt and Alteryx</center>*
 
 ## A step-by-step guide on how we moved Alteryx workflows into dbt models
 
@@ -70,9 +70,10 @@ One of our main objectives was to refactor the Alteryx workflows that the market
 
 ### How we refactored (a step-by-step guide based on our experience)
 
-Below we provide a high-level framework with the steps we followed to refactor the Alteryx workflows into dbt.
+Below we provide a high-level framework with the steps we followed to refactor the Alteryx workflows into dbt:
 
-<Lightbox src="/img/blog/2023-04-24-framework-refactor-alteryx-dbt/Figure4.png" title="Figure 4 — Steps followed for Alteryx to dbt model refactoring" />
+![Figure 4 — Steps followed for Alteryx to dbt model refactoring](/img/blog/2023-04-24-framework-refactor-alteryx-dbt/Figure4.png)
+*<center>Figure 4 — Steps followed for Alteryx to dbt model refactoring</center>*
 
 #### Step 1: Start by refactoring smaller Alteryx workflows and then move on to more complex ones
 
