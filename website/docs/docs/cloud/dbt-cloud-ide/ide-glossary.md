@@ -1,14 +1,14 @@
 ---
-title: "IDE glossary"
+title: "IDE user interface"
 id: ide-glossary
 description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
-sidebar_label: IDE glossary
+sidebar_label: IDE user interface
 tags: [IDE]
 ---
 
 The [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) is an interface tool for developers to effortlessly build, test, run, and version-control their dbt projects, and enhance data governance — all from the convenience of your browser. Use the Cloud IDE to compile dbt code into SQL and run it against your database directly -- no command line required!
 
-Our IDE Glossary page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the IDE landscape with ease.
+This page offers comprehensive definitions and terminology of user interface elements, allowing you to navigate the IDE landscape with ease.
 
 ## Basic layout
 

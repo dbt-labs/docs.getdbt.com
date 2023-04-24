@@ -21,6 +21,6 @@ With the Cloud IDE, you can:
     * Currently, you can't preview python models
 - Visualize a directed acyclic graph (DAG), and more.
 
-<Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.jpg" title="The dbt Cloud IDE in dark mode"/>
+<Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.jpg" width="85%" title="The dbt Cloud IDE in dark mode"/>
 
 For more information, read the complete [Cloud IDE guide](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).

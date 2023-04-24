@@ -125,7 +125,7 @@ const sidebarSettings = {
             }, // Supported Git providers
             {
               type: "category",
-              label: "dbt Cloud IDE",
+              label: "Develop in the IDE",
               link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
               items: [
                 "docs/cloud/dbt-cloud-ide/ide-glossary",
