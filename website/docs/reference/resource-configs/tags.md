@@ -25,14 +25,13 @@ models:
   [<resource-path>](resource-path):
     +tags: <string> | [<string>]
 
-snapshots:
-  [<resource-path>](resource-path):
-    +tags: <string> | [<string>]
-
 seeds:
   [<resource-path>](resource-path):
     +tags: <string> | [<string>]
 
+analyses:
+  [<resource-path>](resource-path):
+    +tags: <string> | [<string>]
 ```
 
 </File>
@@ -57,6 +56,57 @@ models:
           <test-name>:
             config:
               tags: <string> | [<string>]
+
+seeds:
+  - name: seed_name
+    config:
+      tags: <string> | [<string>]
+
+    columns:
+      - name: column_name
+        tags: <string> | [<string>]
+        tests:
+          <test-name>:
+            config:
+              tags: <string> | [<string>]
+
+analyses:
+  - name: analysis_name
+    config:
+      tags: <string> | [<string>]
+
+
+# Note: the lack of the `config:` key for the rest of the tags examples below!
+
+sources:
+  - name: source_name
+    tags: <string> | [<string>]
+
+    tables:
+      - name: table_name
+        tags: <string> | [<string>]
+
+        columns:
+          - name: column_name
+            tags: <string> | [<string>]
+            tests:
+              - unique:
+                  tags: <string> | [<string>]
+
+snapshots:
+  - name: snapshot_name
+    tags: <string> | [<string>]
+
+    columns:
+      - name: column_name
+        tags: <string> | [<string>]
+        tests:
+          - unique:
+              tags: <string> | [<string>]
+
+exposures:
+  - name: exposure_name
+    tags: <string> | [<string>]
 ```
 
 </File>
