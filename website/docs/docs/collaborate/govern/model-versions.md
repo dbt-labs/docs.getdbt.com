@@ -6,10 +6,10 @@ description: "Version models to help with lifecycle management"
 ---
 
 :::info New functionality
-This functionality is new in v1.5 — if you have thoughts, weigh into the [GitHub discussion](https://github.com/dbt-labs/dbt-core/discussions/6736)!
+This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
 :::
 
-Versioning APIs is a hard problem in software engineering. At the root of the challenge is the fact that the producers and consumers of an API have competing incentives:
+Versioning APIs is a hard problem in software engineering. The root of the challenge is that the producers and consumers of an API have competing incentives:
 - Producers of an API need the ability to make changes to its logic. There is a real cost associated with maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
 - Consumers of an API need to trust in its stability—their queries will keep working, and won't break without warning. There is a real cost associated with migrating to a newer API version, but unplanned migration is far costlier.
 
@@ -64,12 +64,13 @@ Multiple versions of a model will live in the same code repository at the same t
 
 Honestly, it's only a little bit different! There isn't much magic here, and that's by design.
 
-You've always been able to create a new model, and name it `dim_customers_v2`. Why should you opt for a "real" versioned model instead?
+You've always been able to copy-paste, create a new model file, and name it `dim_customers_v2.sql`. Why should you opt for a "real" versioned model instead?
 
 As the **producer** of a versioned model:
-1. You keep track of all live versions in one place
-2. You can reuse most configuration, and highlight just the diffs
-3. You can select models to build (or not) based on their version
+1. You keep track of all live versions in one place, rather than scattering them throughout the codebase
+2. You can reuse the model's configuration, and highlight just the diffs between versions
+3. You can select models to build (or not) based on whether they're a `latest`, `prerelease`, or `old` version
+4. dbt will notify consumers of your versioned model when new versions become available, or (in the future) when they are slated for deprecation
 
 As the **consumer** of a versioned model:
 1. You use a consistent `ref`, with the option of pinning to a specific live version
@@ -79,15 +80,15 @@ All versions of a model preserve the model's original name. They are `ref`'d by 
 
 Let's say that `dim_customers` has three versions defined: `v2` is the "latest", `v3` is "prerelease," and `v1` is an old version that's still within its deprecation window. Because `v2` is the latest version, it gets some special treatment: it can be defined in a file without a suffix, and `ref('dim_customers')` will resolve to `v2` if a version pin is not specified. The table below breaks down the standard conventions:
 
-| v | `ref` syntax                                          | File name                                       | Database relation                                                        |
-|---|-------------------------------------------------------|-------------------------------------------------|--------------------------------------------------------------------------|
-| 3 | `ref('dim_customers', v=3)`                           | `dim_customers_v3.sql`                          | `analytics.dim_customers_v3`                                             |
-| 2 | `ref('dim_customers')` or `ref('dim_customers', v=2)` | `dim_customers_v2.sql` (or `dim_customers.sql`) | `analytics.dim_customers_v2` and `analytics.dim_customers` (recommended) |
-| 1 | `ref('dim_customers', v=1)`                           | `dim_customers_v1.sql`                          | `analytics.dim_customers_v1`                                             |
+| v | version    | `ref` syntax                                          | File name                                       | Database relation                                                        |
+|---|------------|-------------------------------------------------------|-------------------------------------------------|--------------------------------------------------------------------------|
+| 3 | "prerelease" | `ref('dim_customers', v=3)`                           | `dim_customers_v3.sql`                          | `analytics.dim_customers_v3`                                             |
+| 2 | "latest"     | `ref('dim_customers', v=2)` **and** `ref('dim_customers')`  | `dim_customers_v2.sql` **or** `dim_customers.sql` | `analytics.dim_customers_v2` **and** `analytics.dim_customers` (recommended) |
+| 1 | "old"        |  `ref('dim_customers', v=1)`                           | `dim_customers_v1.sql`                          | `analytics.dim_customers_v1`                                             |
 
-As you'll see in the implemenatation section below, a versioned model can reuse the majority of its yaml properties and configuration. Each version needs to only say how it _differs_ from the shared set of attributes. This gives you, as the producer of a versioned model, the opportunity to highlight the differences across versions—which is otherwise difficult to detect in models with dozens or hundreds of columns—and to clearly track, in one place, all versions of the model which are currently live.
+As you'll see in the implementation section below, a versioned model can reuse the majority of its yaml properties and configuration. Each version needs to only say how it _differs_ from the shared set of attributes. This gives you, as the producer of a versioned model, the opportunity to highlight the differences across versions—which is otherwise difficult to detect in models with dozens or hundreds of columns—and to clearly track, in one place, all versions of the model which are currently live.
 
-dbt also supports [`version`-based selection](node-selection/methods#the-version-method). For example, you could define a [default yaml selector](node-selection/yaml-selectors#default), to avoid running any old model versions in development—even as you continue to run them in production through a sunset and migration period. (Of course, you could accomplish something similar by applying `tags` to these models, and cycling through them over time.)
+dbt also supports [`version`-based selection](node-selection/methods#the-version-method). For example, you could define a [default yaml selector](node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
 
 <File name="selectors.yml">
 
@@ -113,13 +114,32 @@ Resolving to latest version: my_model.v2
 A prerelease version 3 is available. It has not yet been marked 'latest' by its maintainer.
 When that happens, this reference will resolve to my_model.v3 instead.
 
-  Try out v3: {{ ref(my_dbt_project, my_model, v=3) }}
-  Pin to v2: {{ ref(my_dbt_project, my_model, v=2) }}
+  Try out v3: {{ ref('my_dbt_project', 'my_model', v='3') }}
+  Pin to  v2: {{ ref('my_dbt_project', 'my_model', v='2') }}
 ```
 
 ## How to create a new version of a model
 
-Most often, you'll start with a model that is not yet versioned. Let's go back in time to when `dim_customers` was a simple standalone model, with an enforced contract. For simplicity, we'll pretend it had only two columns—`customer_id` and `country_name`—though most mature models will obviously have many more.
+Most often, you'll start with a model that is not yet versioned. Let's go back in time to when `dim_customers` was a simple standalone model, with an enforced contract. For simplicity, let's pretend it has only two columns, `customer_id` and `country_name`, though most mature models will have many more.
+
+<File name="models/dim_customers.sql">
+
+```sql
+-- lots of sql
+
+final as (
+  
+    select
+        customer_id,
+        country_name
+    from ...
+
+)
+
+select * from final
+```
+
+</File>
 
 <File name="models/schema.yml">
 
@@ -141,7 +161,31 @@ models:
 
 </File>
 
-If you wanted to make a breaking change to the model-for example, removing a column-you'd create a new model file (SQL or Python) encompassing those breaking changes. The default convention is naming the new file with a `_v<version>` suffix. The new version can then be configured in relation to the original model, in a way that highlights the diffs between them. Or, you can choose to define each model version with full specifications, and repeat the values they have in common.
+Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create create a new model file (SQL or Python) encompassing those breaking changes.
+
+
+The default convention is naming the new file with a `_v<version>` suffix. Let's make a new file, named `dim_customers_v2.sql`. (We don't need to rename the existing model file just yet, while it's still the "latest" version.)
+
+<File name="models/dim_customers_v2.sql">
+
+```sql
+-- lots of sql
+
+final as (
+  
+    select
+        customer_id
+        -- country_name has been removed!
+    from ...
+
+)
+
+select * from final
+```
+
+</File>
+
+Now, you could define properties and configuration for `dim_customers_v2` as a new standalone model, with no actual relation to `dim_customers` save a striking resemblance. Instead, we're going to declare that these are versions of the same model, both named `dim_customers`. We can define their properties in common, and then **just** highlight the diffs between them. (Or, you can choose to define each model version with full specifications, and repeat the values they have in common.)
 
 <Tabs>
 <TabItem value="Diffs only (recommended)">
@@ -163,14 +207,19 @@ models:
         description: Where this customer lives
         data_type: varchar
     
-    # Declare the versions, highlighting just the diffs
+    # Declare the versions, and highlight the diffs
     versions:
-      - v: 2
-        columns:
-          - include: all
-            exclude: [country_name] # this is the breaking change!
+    
       - v: 1
-        # No need to redefine anything -- matches the properties defined above
+        # Matches what's above -- nothing more needed
+    
+      - v: 2
+        # Removed a column -- this is the breaking change!
+        columns:
+          # This means: use the 'columns' list from above, but exclude country_name
+          - include: all
+            exclude: [country_name]
+      
 ```
 
 </File>
@@ -217,14 +266,13 @@ models:
 
 </Tabs>
 
+The configuration above says: Instead of two unrelated models, I have two versioned definitions of the same model: `dim_customers.v1` and `dim_customers.v2`.
 
-The above configuration will create two models, `dim_customers.v1` and `dim_customers.v2`.
+**Where are they defined?** dbt expects each model version to be defined in a file named `<model_name>_v<v>`. In this case: `dim_customers_v1.sql` and `dim_customers_v2.sql`. It's also possible to define the "latest" version in `dim_customers.sql` (no suffix), without additional configuration. Finally, you can override this convention by setting [`defined_in: any_file_name_you_want`](resource-properties/versions#defined_in)—but we strongly encourage you to follow the convention, unless you have a very good reason.
 
-**Where are they defined?** By convention, dbt will expect those two models to be defined in files named `dim_customers_v1.sql` and `dim_customers_v2.sql`. It will also accept `dim_customers.sql` (no suffix) as the definition of the latest version. (It is possible to override this by setting [`defined_in: any_file_name_you_want`](resource-properties/versions#defined_in), but only if you have a good reason. We strongly encourage you to follow the convention.)
+**Where will they be materialized?** Each model version will create a database relation with alias `<model_name>_v<v>`. In this case: `dim_customers_v1` and `dim_customers_v2`. See [the section below](#configuring-database-location-with-alias) for more details on configuring aliases.
 
-**Where will they be materialized?** By convention, these will create database relations with aliases `dim_customers_v1` and `dim_customers_v2`. In the future, dbt will also create a view or clone, named `dim_customers`, pointing to the latest version. See [the section below](#configuring-database-location-with-alias) for a way to implement this now.
-
-**Which version is "latest"?** If not specified explicitly, the `latest_version` would be `2` (numerically greatest). In this case, `v1` is specified to still be the latest; `v2` is a prerelease in early development. When we're ready to roll out `v2` to everyone by default, we would bump the `latest_version` to `2`, or remove it from the specification.
+**Which version is "latest"?** If not specified explicitly, the `latest_version` would be `2`, because it's numerically greatest. In this case, we've explicitly specified that `latest_version: 1`. That means `v2` is a "prerelease," in early development and testing. When we're ready to roll out `v2` to everyone by default, we would bump `latest_version: 2`, or remove `latest_version` from the specification.
 
 ### Configuring versioned models
 
@@ -262,30 +310,36 @@ You could use the `alias` configuration:
 
 </File>
 
-Or, you could do one better: Define a post-hook to create a view named `dim_customers`, which always points to the latest version of the `dim_customers` model. You can find logic for just such a hook in [this gist](https://gist.github.com/jtcohen6/68220cd76b0bde088d3439664ccfb013/edit). Then, you can implement this for all versioned models in your project:
+**The pattern we recommend:** Create a view or table clone with the model's canonical name that always points to the latest version. By following this pattern, you can offer the same flexibility as `ref`, even if someone is querying outside of dbt. Want a specific version? Pin to version X by adding the `_vX` suffix. Want the latest version? No suffix, and the view will redirect you.
 
-<File name="dbt_project.yml">
+We intend to build this into `dbt-core` as out-of-the-box functionality. (Upvote or comment on [dbt-core#7442](https://github.com/dbt-labs/dbt-core/issues/7442).) In the meantime, you can implement this pattern yourself with a custom macro and post-hook:
+
+<File name="macros/create_latest_version_view.sql">
 
 ```sql
 {% macro create_latest_version_view() %}
 
+    -- this hook will run only if the model is versioned, and only if it's the latest version
+    -- otherwise, it's a no-op
     {% if model.get('version') and model.get('version') == model.get('latest_version') %}
 
-        {% set new_relation = api.Relation.create(
-            database = this.database,
-            schema = this.schema,
-            identifier = model['name']
-        ) %}
+        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}  
         
-        {% set existing_relation = load_relation(new_relation) %}
-        {{ drop_relation_if_exists(existing_relation) }}
-        
-        {% set create_view_sql = create_view_as(new_relation, "select * from " ~ this) -%}
+        {% set create_view_sql -%}
+            -- this syntax may vary by data platform
+            create or replace view {{ new_relation }}
+              as select * from {{ this }}
+        {%- endset %}
         
         {% do log("Creating view " ~ new_relation ~ " pointing to " ~ this, info = true) if execute %}
         
         {{ return(create_view_sql) }}
         
+    {% else %}
+    
+        -- no-op
+        select 1 as id
+    
     {% endif %}
 
 {% endmacro %}
@@ -304,10 +358,6 @@ models:
 ```
 
 </File>
-
-**This is the pattern we recommend,** and we intend to build it into to `dbt-core` as out-of-the-box functionality: [dbt-core#7442](https://github.com/dbt-labs/dbt-core/issues/7442).
-
-By following this pattern, you can offer the same flexibility as `ref`, even if someone is querying outside of dbt. Want a specific version? Pin to version X by adding the `_vX` suffix. Want the latest version? No suffix.
 
 :::info
 If your project has historically implemented [custom aliases](/docs/build/custom-aliases) by reimplementing the `generate_alias_name` macro, and you'd like to start using model versions, you should update your custom implementation to account for model versions. Specifically, we'd encourage you to add [a condition like this one](https://github.com/dbt-labs/dbt-core/blob/ada8860e48b32ac712d92e8b0977b2c3c9749981/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql#L26-L30).
