@@ -34,7 +34,7 @@ We hope that our experience can be useful for analytics engineers who are lookin
 
 ## Who isn't this post for?
 
-While we feel that dbt is a better transformation tool than Alteryx for most use cases, we acknowledge that a migration from Alteryx to dbt isn’t appropriate for everyone. Alteryx is designed for data analysts, but its capabilities are well-suited for business users, including marketing, sales, accounting, and HR. Alteryx may be a good enough tool for you if:
+While we feel that dbt is a better transformation tool than Alteryx for most use cases, we acknowledge that a migration from Alteryx to dbt isn’t appropriate for everyone. Alteryx is designed for data analysts, but its capabilities are well-suited for business users, including marketing, sales, accounting, and HR. Alteryx may be a good enough tool when:
 
 - You have a small number of transformations
 - The transformations are relatively simple
