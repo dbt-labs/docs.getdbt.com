@@ -35,8 +35,8 @@ Non-boolean config examples:
 
 ```text
 
-$ dbt --printer-width=80 run
-$ dbt --indirect-selection=eager test
+dbt --printer-width=80 run
+dbt --indirect-selection=eager test
 
 ```
 
@@ -50,8 +50,8 @@ Boolean config structure:
 
 
 ```text
-$ dbt --<THIS-CONFIG> <SUBCOMMAND>
-$ dbt --no-<THIS-CONFIG> <SUBCOMMAND>
+dbt --<THIS-CONFIG> <SUBCOMMAND>
+dbt --no-<THIS-CONFIG> <SUBCOMMAND>
 
 ```
 
@@ -64,8 +64,8 @@ Boolean config example:
 
 ```text
 
-$ dbt --version-check run
-$ dbt --no-version-check run
+dbt --version-check run
+dbt --no-version-check run
 
 ```
 
@@ -80,7 +80,7 @@ Environment variables contain a `DBT_` prefix
 ```text
 
 $ export DBT_<THIS-CONFIG>=True
-$ dbt run
+dbt run
 
 ```
 
@@ -120,7 +120,7 @@ There are two ways to optionally modify this behavior:
 For example, to quickly compile a model that requires no database metadata or introspective queries:
 ```text
 
-$ dbt --skip-populate-cache compile --select my_model_name
+dbt --skip-populate-cache compile --select my_model_name
 
 ```
 
@@ -128,7 +128,7 @@ Or, to improve speed and performance while focused on developing Salesforce mode
 
 ```text
 
-$ dbt --cache-selected-only run --select salesforce
+dbt --cache-selected-only run --select salesforce
 
 ```
 
@@ -148,7 +148,7 @@ For example, to improve speed and performance while focused on developing Salesf
 
 ```text
 
-$ dbt --cache-selected-only run --select salesforce
+dbt --cache-selected-only run --select salesforce
 
 ```
 
@@ -175,7 +175,7 @@ Projects are recommended to set [dbt version requirements](require-dbt-version),
 You can use the `VERSION_CHECK` config to disable this check and suppress the error message:
 
 ```
-$ dbt --no-version-check run
+dbt --no-version-check run
 Running with dbt=1.0.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
@@ -189,7 +189,7 @@ The `--debug` flag is also available via shorthand as `-d`.
 <File name='Usage'>
 
 ```text
-$ dbt --debug run
+dbt --debug run
 ...
 
 ```
@@ -218,7 +218,7 @@ Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
 ```text
-$ dbt -x run --threads 1
+dbt -x run --threads 1
 Running with dbt=1.0.0
 Found 4 models, 1 test, 1 snapshot, 2 analyses, 143 macros, 0 operations, 1 seed file, 0 sources
 
@@ -246,7 +246,7 @@ The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the val
 <File name='Usage'>
 
 ```text
-$ dbt --log-format json run
+dbt --log-format json run
 {"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
 <VersionBlock firstVersion="1.5">
@@ -255,7 +255,7 @@ To set the `LOG_FORMAT_FILE` type output for the file without impacting the cons
 
 
 ```text
-$ dbt --log-format-file json run
+dbt --log-format-file json run
 ```
 
 </VersionBlock>
@@ -265,7 +265,7 @@ $ dbt --log-format-file json run
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
 
 ```text
-$ dbt --debug --log-format json run
+dbt --debug --log-format json run
 ```
 
 See [structured logging](events-logging#structured-logging) for more details.
@@ -284,14 +284,14 @@ Setting the `--log-level` will configure console and file logs.
 
 
 ```text
-$ dbt --log-level debug run
+dbt --log-level debug run
 ```
 
 To set the file log level as a different value than the console, use the `--log-level-file` flag. 
 
 
 ```text
-$ dbt --log-level-file error run
+dbt --log-level-file error run
 ```
 
 
@@ -409,7 +409,7 @@ config:
 Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
-$ dbt --quiet run
+dbt --quiet run
 ...
 
 ```
@@ -455,7 +455,7 @@ The original `NO_PRINT` syntax has been deprecated, starting with dbt v1.5. Back
 Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 
 ```text
-$ dbt --no-print run
+dbt --no-print run
 ...
 
 ```
@@ -474,16 +474,16 @@ config:
 ```
 
 ```text
-$ dbt --use-colors run
-$ dbt --no-use-colors run
+dbt --use-colors run
+dbt --no-use-colors run
 ```
 <VersionBlock firstVersion="1.5">
 
 You can set the color preferences for the file logs only using the `--use-colors-file / --no-use-colors-file` flags.
 
 ```text
-$ dbt --use-colors-file run
-$ dbt --no-use-colors-file run
+dbt --use-colors-file run
+dbt --no-use-colors-file run
 ```
 
 </VersionBlock>
@@ -497,7 +497,7 @@ Turning on the `WARN_ERROR` config will convert dbt warnings into errors. Any ti
 <File name='Usage'>
 
 ```text
-$ dbt --warn-error run
+dbt --warn-error run
 ...
 ```
 </File>
@@ -515,23 +515,23 @@ The `include` parameter can set to `"all"` or `"*"` to treat all warnings as exc
 :::
 
 ```text
-$ dbt --warn-error-options '{"include": "all"}' run
+dbt --warn-error-options '{"include": "all"}' run
 ...
 ```
 
 ```text
-$ dbt --warn-error-options '{"include": "all", "exclude":[NoNodesForSelectionCriteria]}' run
+dbt --warn-error-options '{"include": "all", "exclude":[NoNodesForSelectionCriteria]}' run
 ...
 ```
 
 
 ```text
-$ dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
+dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
 ...
 ```
 
 ```text
-$ DBT_WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
+dbt_WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
 ...
 ```
 

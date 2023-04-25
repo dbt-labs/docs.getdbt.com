@@ -3,15 +3,13 @@ title: "parse"
 id: "parse"
 ---
 
-## Overview
-
 The `dbt parse` command parses and validates the contents of your dbt project. If your project contains Jinja or YAML syntax errors, the command will fail.
 
-It will also produce an artifact with detailed timing information, which is useful to understand parsing times for large projects. For more details, [read about parsing](parsing).
+It will also produce an artifact with detailed timing information, which is useful to understand parsing times for large projects. Refer to [Project parsing](/reference/parsing) for more information.
 
 <VersionBlock firstVersion="1.5">
 
-Starting in v1.5, `dbt parse` will write or return a [manifest](manifest-json), enabling you to introspect dbt's understanding of all the resources in your project.
+Starting in v1.5, `dbt parse` will write or return a [manifest](/reference/artifacts/manifest-json), enabling you to introspect dbt's understanding of all the resources in your project.
 
 </VersionBlock>
 
