@@ -15,7 +15,7 @@ version: 2
 
 models:
   - name: model_name
-    access: private | protected | protected
+    access: private | protected | public
 ```
 
 </File>
