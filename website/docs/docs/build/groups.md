@@ -12,7 +12,7 @@ This functionality is new in v1.5.
 
 ## About Groups 
 
-A group is a collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](access) models.
+A group is a collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-properties/access) models.
 
 ### Declaring a group
 
@@ -48,7 +48,7 @@ models:
 
 ### Referencing a model in a group
 
-By default, all models within a group are `protected` in access - meaning they can be referenced by downstream resources in _any_ group in the project using the [`ref`](ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
+By default, all models within a group are `protected` in access - meaning they can be referenced by downstream resources in _any_ group in the project using the [`ref`](/reference/dbt-jinja-functions/ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
 
 <File name='models/schema.yml'>
 
@@ -81,4 +81,4 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 ## Related docs
 
 * [Model Access](/docs/collaborate/govern/model-access#groups)
-* [Group Property](/docs/reference/resource-configs/group)
+* [Group Property](/reference/resource-configs/group)
