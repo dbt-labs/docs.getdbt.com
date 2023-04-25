@@ -112,7 +112,7 @@ This approach allows you to compare the two reports side by side and check how d
 
 ## The gains of the refactoring process
 
-Successfully converting an entire set of data workflows from the Alteryx engine to dbt is surely not a trivial task, but the implementation of this framework, as a result of a trial and error learning process from the team, allowed us to accelerate this process, while its data auditing focus enabled delivering data with visible and automated quality assurance.
+Successfully converting an entire set of data workflows from the Alteryx engine to dbt is surely not a trivial task, but the implementation of this framework, as a result of a trial-and-error learning process from the team, allowed us to accelerate this process, while its data auditing focus enabled delivering data with visible and automated quality assurance.
 
 The conversion proved to be of great value to the client due to three main aspects of the new dbt-based data stack, which were observed by both teams:
 
