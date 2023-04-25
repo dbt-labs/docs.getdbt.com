@@ -8,7 +8,7 @@ dbt connects to and runs SQL against your database, warehouse, lake, or query en
 To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
 
 ## Supported Data Platforms
-
+asdfas
 ### Verified Adapters
 
 | Data Platform (click to view setup guide) | latest verified version  |
