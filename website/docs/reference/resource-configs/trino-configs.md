@@ -5,15 +5,15 @@ id: "trino-configs"
 
 ## Cluster requirements
 
-The designated cluster must have an attached catalog where ojects such as tables and views can be created, renamed, altered, and dropped. And, any user connecting to the cluster with dbt must also have these same permissions for the target catalog.
+The designated cluster must have an attached catalog where objects such as tables and views can be created, renamed, altered, and dropped. Any user connecting to the cluster with dbt must also have these same permissions for the target catalog.
 
 ## Session properties
 
-In the Starburst/Trino environment, you can set session properties that modify the current session you have with the cluster. Refer to [Set Session](https://docs.starburst.io/latest/sql/set-session.html) in the Starburst/Trino docs for more details.
+With a Starburst Enterprise, Starburst Galaxy, or Trino cluster, you can [set session properties](https://trino.io/docs/current/sql/set-session.html) to modify the current configuration for your user session.
 
-The standard way to define session properties is via the `session_properties` field of your `profiles.yml`. This ensures that all dbt connections use these settings by default.
+The standard way to define session properties is with the `session_properties` field of your `profiles.yml`. This ensures that all dbt connections use these settings by default.
 
-However, to temporaily adjust these session properties for a specific dbt model or group of models, you can use a [dbt hook](/reference/resource-configs/pre-hook-post-hook) to set Starburst/Trino session properties on a specific dbt model. For example:
+However, to temporaily adjust these session properties for a specific dbt model or group of models, you can use a [dbt hook](/reference/resource-configs/pre-hook-post-hook) to set session properties on a specific dbt model. For example:
 
 ```sql
 {{
@@ -31,9 +31,9 @@ For details on what's supported for each supported data source, refer to either 
 
 
 
-### Hive Catalog
+### Hive catalogs
 
-At target cataog that uses the Hive connector and a metastore service (HMS) is very typical when working with Starburst and dbt. The following settings are recommended for working with dbt. The intent is to ensure that dbt can perform the frequently executed `DROP` and `RENAME` statements.
+At target catalog that uses the Hive connector and a metastore service (HMS) is typical when working with Starburst and dbt. The following settings are recommended for working with dbt. The intent is to ensure that dbt can perform the frequently executed `DROP` and `RENAME` statements.
 
 ```java
 hive.metastore-cache-ttl=0s
@@ -44,9 +44,9 @@ hive.allow-rename-table=true
 
 ## File format configuration
 
-When using file-based connectors such as Hive, a user can customize how to use certain 
+When using file-based connectors such as Hive, a user can customize aspects of the connector such as the format that is used as well the type of materialization
 
-The below configures the data to materialize as a [Parquet](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) table with partitions.
+The below configures the table to be materializes as a set of partitioned [Parquet](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) files.
 
 ```sql
 {{
