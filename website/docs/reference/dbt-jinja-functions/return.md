@@ -1,7 +1,7 @@
 ---
 title: "return"
 id: "return"
-description: "Use `return` function in macros to return data to the caller."
+description: "Read this guide to understand the return Jinga function in dbt."
 ---
 
 __Args__:

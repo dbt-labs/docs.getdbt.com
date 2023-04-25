@@ -1,5 +1,6 @@
 ---
 title: "Apache Spark Profile"
+description: "Read this guide to learn about the Apache Spark warehouse setup in dbt."
 id: "spark-setup"
 meta:
   maintained_by: dbt Labs

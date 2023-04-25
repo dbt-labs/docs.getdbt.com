@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino setup"
+description: "Read this guide to learn about the Starburst/Trino warehouse setup in dbt."
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.

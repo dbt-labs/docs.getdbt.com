@@ -1,7 +1,7 @@
 ---
 title: "source"
 id: "source"
-description: "Returns a relation & creates dependencies between source and model."
+description: "Read this guide to understand the souce Jinga function in dbt."
 ---
 
 ```sql

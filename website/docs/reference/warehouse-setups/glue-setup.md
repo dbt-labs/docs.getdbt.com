@@ -1,5 +1,6 @@
 ---
 title: "AWS Glue Setup"
+description: "Read this guide to learn about the AWS Glue warehouse setup in dbt."
 id: "glue-setup"
 meta:
   maintained_by: Community

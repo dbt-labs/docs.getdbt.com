@@ -1,5 +1,6 @@
 ---
 title: "MySQL setup"
+description: "Read this guide to learn about the MySQL warehouse setup in dbt."
 id: "mysql-setup"
 meta:
   maintained_by: Community

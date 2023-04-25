@@ -1,6 +1,7 @@
 ---
 title: "Apache Spark configurations"
 id: "spark-configs"
+description: "Apache Spark Configurations - Read this in-depth guide to learn about configurations in dbt."
 ---
 
 <!----

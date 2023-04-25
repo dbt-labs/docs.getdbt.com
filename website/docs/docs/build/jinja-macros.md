@@ -1,5 +1,6 @@
 ---
 title: "Jinja and macros"
+description: "Read this tutorial to learn how to use jinga and macros when building in dbt."
 id: "jinja-macros"
 ---
 

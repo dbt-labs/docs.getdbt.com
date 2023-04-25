@@ -1,5 +1,6 @@
 ---
 title: "About dbt models"
+description: "Read this tutorial to learn how to use models when building in dbt."
 id: "models"
 ---
 
