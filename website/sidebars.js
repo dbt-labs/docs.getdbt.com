@@ -143,8 +143,8 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/core/installation",
             "docs/core/about-the-cli",
+            "docs/core/installation",
             "docs/core/homebrew-install",
             "docs/core/pip-install",
             "docs/core/docker-install",
