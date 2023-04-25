@@ -41,7 +41,7 @@ If `latest_version` is not specified for a versioned model, `latest_version` def
 ```yml
 models:
   - name: model_name
-    [versions](resource-properties/versions):
+    [versions](/reference/resource-properties/versions):
       - v: 3
       - v: 2
       - v: 1
@@ -57,7 +57,7 @@ If `latest_version` is not specified, the `latest_version` is `3`. Any unpinned 
 models:
   - name: model_name
     latest_version: 2
-    [versions](resource-properties/versions):
+    [versions](/reference/resource-properties/versions):
       - v: 3
       - v: 2
       - v: 1
