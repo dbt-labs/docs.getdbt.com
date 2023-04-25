@@ -5,7 +5,7 @@ slug: evolving-data-engineer-craft
 
 authors: [sung_chung, kira_furuichi]
 
-tags: [data ecosystem]
+tags: [dbt product updates]
 hide_table_of_contents: false
 
 date: 2023-05-01
@@ -59,7 +59,7 @@ v1.5 features aim to support the growth of those type of dbt projects by going b
 
 Let’s break down what these new features are and how your team should use them to address current pains in your everyday workflow.
 
-******************[Model Contracts](https://docs.getdbt.com/docs/collaborate/publish/model-contracts)******************
+[**Model Contracts**](https://docs.getdbt.com/docs/collaborate/publish/model-contracts)
 
 - **Problems you’re living through**: I can’t guarantee the shape of my data (think: column names, data types, no blank values) without triple checking my work and running `dbt build` a couple times and eyeballing my data. I get tired of doing this everyday, so I end up not doing it in the long-term.
 - **Solution**: Model contracts allow you to define how a model should conform—which columns will never be `null`, which columns will always be a certain type, and more—all within a `YAML` file. These contracts are meant to be binding artifacts that create levels of accountability between the folks that create a model with a contract, and the downstream consumers of that model.
@@ -180,7 +180,6 @@ dbt.exceptions.DbtReferenceError: Parsing Error
 ```
 
 ## What does winning with v1.5 look like for you, the data engineer?
-
 This is great and all, but how do we know if these features are working to make your work more streamlined, intuitive, or easier? Because you’re probably wondering, “Are we trying to inflate v1.5 as this silver bullet to solve all data transformation problems?” Short answer: “No”. We just want to have less headaches when it comes to governing and scaling your data work, and bring back the joy working with data.
 
 If it’s anything like the imagined future we have for you below, then we all win:
