@@ -6,7 +6,7 @@ id: transfer-account
 
 ---
 
-You can transfer your dbt Cloud [access control](/docs/cloud/manage-access/about-access) to another user by following the steps below, depending on your dbt Cloud account plan:
+You can transfer your dbt Cloud [access control](/docs/cloud/manage-access/about-user-access) to another user by following the steps below, depending on your dbt Cloud account plan:
 
 | Account plan| Steps | 
 | ------ | ---------- | 
