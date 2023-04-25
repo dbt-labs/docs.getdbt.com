@@ -70,7 +70,9 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
       )}
       <div className={styles.spotlightMemberContent}>
         {!isSpotlightMember && id ? (
-          <Link to={`/community/spotlight/${id}`} className={styles.spotlightMemberHeader}>{title}</Link>
+          <h2>
+            <Link to={`/community/spotlight/${id}`} className={`${styles.spotlightMemberHeader} ${styles.spotlightMemberHeaderSmall}`}>{title}</Link>
+          </h2>
           ) : (
           <h1 className={styles.spotlightMemberHeader}>{title}</h1>
         )}

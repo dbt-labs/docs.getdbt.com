@@ -94,6 +94,10 @@ div.spotlightMemberCard {
     font-size: 2.813rem !important;
     line-height: 2.5rem;
   }
+  .spotlightMemberContent .spotlightMemberHeaderSmall {
+    font-size: 1.9rem !important;
+    line-height: 2rem;
+  }
 }
 
 
