@@ -14,15 +14,15 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 | Data Platform (click to view setup guide) | latest verified version  |
 | ----------------------------------------- | ------------------------ |
 | [AlloyDB](/reference/warehouse-setups/alloydb-setup)                  | (same as `dbt-postgres`) |
-| [Azure Synapse](/reference/warehouse-setups/azuresynapse-setup)       | 1.3.0                    |
-| [BigQuery](/reference/warehouse-setups/bigquery-setup)                | 1.2.0                    |
-| [Databricks](/reference/warehouse-setups/databricks-setup)            | 1.3.0 :construction:     |
-| [Dremio](/reference/warehouse-setups/dremio-setup)                    | 1.3.0 :construction:     |
-| [Postgres](/reference/warehouse-setups/postgres-setup)                | 1.2.0                    |
-| [Redshift](/reference/warehouse-setups/redshift-setup)                | 1.2.0                    |
-| [Snowflake](/reference/warehouse-setups/snowflake-setup)              | 1.2.0                    |
-| [Spark](/reference/warehouse-setups/spark-setup)                      | 1.2.0                    |
-| [Starburst & Trino](/reference/warehouse-setups/trino-setup)          | 1.2.0 :construction:     |
+| [Azure Synapse](/reference/warehouse-setups/azuresynapse-setup)       | 1.3 :construction:     |
+| [BigQuery](/reference/warehouse-setups/bigquery-setup)                | 1.4                    |
+| [Databricks](/reference/warehouse-setups/databricks-setup)            | 1.4                    |
+| [Dremio](/reference/warehouse-setups/dremio-setup)                    | 1.4 :construction:     |
+| [Postgres](/reference/warehouse-setups/postgres-setup)                | 1.4                    |
+| [Redshift](/reference/warehouse-setups/redshift-setup)                | 1.4                    |
+| [Snowflake](/reference/warehouse-setups/snowflake-setup)              | 1.4                    |
+| [Spark](/reference/warehouse-setups/spark-setup)                      | 1.4                    |
+| [Starburst & Trino](/reference/warehouse-setups/trino-setup)          | 1.4                    |
 :construction:: Verification in progress
 
 ### Community Adapters
@@ -59,8 +59,8 @@ Who made and maintains an adapter is certainly relevant, but we recommend using 
 | Supported by | Maintained By                                                                                                                                                                                                                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter#why-verify-an-adapter) |
-| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.                                                                                                                     |
-| Community    | These adapter plugins are contributed and maintained by members of the community. 🌱                                                                                                                                                           |
+| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.                                                                                                                    |
+| Community    | These adapter plugins are contributed and maintained by members of the community. 🌱                                                                                                                                                          |
 
 ## Contributing to dbt-core adapters
 

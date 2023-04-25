@@ -11,7 +11,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | [seed](/reference/commands/seed)           | `--select`, `--exclude`, `--selector`                                |
 | [snapshot](/reference/commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
 | [ls (list)](/reference/commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
-| [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--selector`                                |
+| [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--selector`, `--inline`                    |
 | [freshness](/reference/commands/source)    | `--select`, `--exclude`, `--selector`                                |
 | [build](/reference/commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
 
@@ -26,7 +26,7 @@ By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt
 
 ### How does selection work?
 
-1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators (unions, intersections, exclusions).
+1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
 
 2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](/reference/node-selection/test-selection-examples) for details.)
 

@@ -1,6 +1,7 @@
 ---
 title: "graph"
 id: "graph"
+description: "The `graph` context variable contains info about nodes in your project."
 ---
 
 The `graph` context variable contains information about the _nodes_ in your dbt
@@ -18,16 +19,10 @@ to understand how to effectively use this variable.
 
 ### The graph context variable
 
-<Changelog>
-
-  - In dbt v0.17.0, sources were moved out of the `graph.nodes` object and into the `graph.sources` object
-  - In dbt v0.20.0, exposures were added to the `graph.exposures` object
-  - In dbt v1.0.0, metrics were added to the `graph.metrics` object
-
-</Changelog>
-
 The `graph` context variable is a dictionary which maps node ids onto dictionary
 representations of those nodes. A simplified example might look like:
+
+<VersionBlock lastVersion="1.4">
 
 ```json
 {
@@ -73,6 +68,68 @@ representations of those nodes. A simplified example might look like:
   }
 }
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+```json
+{
+  "nodes": {
+    "model.my_project.model_name": {
+      "unique_id": "model.my_project.model_name",
+      "config": {"materialized": "table", "sort": "id"},
+      "tags": ["abc", "123"],
+      "path": "models/path/to/model_name.sql",
+      ...
+    },
+    ...
+  },
+  "sources": {
+    "source.my_project.snowplow.event": {
+      "unique_id": "source.my_project.snowplow.event",
+      "database": "analytics",
+      "schema": "analytics",
+      "tags": ["abc", "123"],
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  },
+  "exposures": {
+    "exposure.my_project.traffic_dashboard": {
+      "unique_id": "source.my_project.traffic_dashboard",
+      "type": "dashboard",
+      "maturity": "high",
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  },
+  "metrics": {
+    "metric.my_project.count_all_events": {
+      "unique_id": "metric.my_project.count_all_events",
+      "type": "count",
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  },
+  "groups": {
+    "group.my_project.finance": {
+      "unique_id": "group.my_project.finance",
+      "name": "finance",
+      "owner": {
+        "email": "finance@jaffleshop.com"
+      }
+      ...
+    },
+    ...
+  }
+}
+```
+
+</VersionBlock>
 
 The exact contract for these model and source nodes is not currently documented,
 but that will change in the future.
@@ -209,11 +266,11 @@ Example usage:
 
 To access the metrics in your dbt project programmatically, use the `metrics` attribute of the `graph` object.
 
+Example usage:
+
 <File name='macros/get_metric.sql'>
 
 ```sql
-Example usage:
-
 {% macro get_metric_sql_for(metric_name) %}
 
   {% set metrics = graph.metrics.values() %}
@@ -231,6 +288,29 @@ Example usage:
   ) %}
 
   {{ return(metric_sql) }}
+
+{% endmacro %}
+```
+
+</File>
+
+### Accessing groups
+
+To access the groups in your dbt project programmatically, use the `groups` attribute of the `graph` object.
+
+Example usage:
+
+<File name='macros/get_group.sql'>
+
+```sql
+
+{% macro get_group_owner_for(group_name) %}
+
+  {% set groups = graph.groups.values() %}
+  
+  {% set owner = (groups | selectattr('owner', 'equalto', group_name) | list).pop() %}
+
+  {{ return(owner) }}
 
 {% endmacro %}
 ```

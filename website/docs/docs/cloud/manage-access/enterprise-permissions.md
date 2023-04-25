@@ -15,7 +15,7 @@ If you're interested in learning more about an Enterprise plan, contact us at sa
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access
-control](/docs/cloud/manage-access/about-access) for more information on Role-Based access
+control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
 control (RBAC).
 
 ## Permission Sets
@@ -166,6 +166,7 @@ Developers can perform the following actions in projects they are assigned to:
 Analysts can perform the following actions in projects they are assigned to:
 - Use the IDE
 - Configure personal developer credentials
+- Configure environmental variables
 - View connections
 - View environments
 - View job definitions
@@ -189,12 +190,7 @@ Stakeholders can perform the following actions in projects they are assigned to:
 
 Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
 
-- **If you are on a dbt Labs Hosted dbt Cloud instance:**
-Contact support via the webapp button or support@getdbt.com to turn on this feature.
-- **If you are on a customer deployed dbt Cloud instance:**
-Contact your account manager for instructions on how to turn on this feature.
-
-Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
+1. Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
 
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 

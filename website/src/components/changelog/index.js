@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 
-import styles from './styles.module.css';
-
-function Changelog({children, header, expand}) {
+function Changelog({children, expand}) {
 
   const [expanded, setExpanded] = useState(expand);
   const toggleExpanded = function() {

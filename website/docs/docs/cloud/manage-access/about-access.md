@@ -1,9 +1,13 @@
 ---
-title: "About access"
-id: "about-access"
+title: "About user access in dbt Cloud"
+id: "about-user-access"
 ---
 
-## Overview
+:::info "User access" is not "Model access"
+
+**User groups and access** and **model groups and access** mean two different things. "Model groups and access" is a specific term used in the language of dbt-core. Refer to [Model access](/docs/collaborate/govern/model-access)  for more info on what it means in dbt-core.
+
+:::
 
 dbt Cloud administrators can use dbt Cloud's permissioning model to control
 user-level access in a dbt Cloud account. This access control comes in two flavors:

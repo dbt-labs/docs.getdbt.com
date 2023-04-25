@@ -105,7 +105,7 @@ models:
     [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
     [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
     [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
-    [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): true | false
+    [+](/reference/resource-configs/plus-prefix)[contract](/reference/resource-configs/contract): {<dictionary>}
 
 ```
 
@@ -135,7 +135,7 @@ models:
       [full_refresh](/reference/resource-configs/full_refresh): <boolean>
       [meta](/reference/resource-configs/meta): {<dictionary>}
       [grants](/reference/resource-configs/grants): {<dictionary>}
-      [contract](/reference/resource-configs/contract): true | false
+      [contract](/reference/resource-configs/contract): {<dictionary>}
 ```
 
 </File>
@@ -161,7 +161,7 @@ models:
     [persist_docs](/reference/resource-configs/persist_docs)={<dict>},
     [meta](/reference/resource-configs/meta)={<dict>},
     [grants](/reference/resource-configs/grants)={<dict>},
-    [contract](/reference/resource-configs/contract)=true | false
+    [contract](/reference/resource-configs/contract)={<dictionary>}
 ) }}
 
 ```

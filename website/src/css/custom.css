@@ -518,7 +518,6 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
 /* set < icon to right side */
 .menu__list-item-collapsible {
   flex-direction: row;
-  background-color: transparent;
 }
 
 .menu__list-item-collapsible button {

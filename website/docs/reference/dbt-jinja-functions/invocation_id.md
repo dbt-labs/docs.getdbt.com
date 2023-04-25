@@ -1,6 +1,7 @@
 ---
 title: "invocation_id"
 id: "invocation_id"
+description: "The `invocation_id` outputs a UUID generated for this dbt command."
 ---
 
 The `invocation_id` outputs a UUID generated for this dbt command. This value is

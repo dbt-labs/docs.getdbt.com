@@ -7,7 +7,7 @@ import BlogPostCard from '@site/src/components/blogPostCard';
 import Hero from '@site/src/components/hero';
 import PostCarousel from '@site/src/components/postCarousel';
 import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/default/blog-archive-80c.json'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+// import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 // import { getSpotlightMember } from '../utils/get-spotlight-member';
 
 
@@ -43,9 +43,8 @@ function Home() {
   let spotlightSection = featuredResource
 
   // Check if featured community spotlight member set in Docusaurus config
-  const { siteConfig } = useDocusaurusContext()
-  let communitySpotlightMember = 
-    siteConfig?.themeConfig?.communitySpotlightMember || null
+  // const { siteConfig } = useDocusaurusContext()
+  // let communitySpotlightMember = siteConfig?.themeConfig?.communitySpotlightMember || null
 
   // Get spotlight member by ID or date if available
   // If found, update section to show community spotlight member

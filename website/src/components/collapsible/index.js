@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 
-import styles from './styles.module.css';
-
 function Collapsible({children, header, description, expand}) {
 
   const [expanded, setExpanded] = useState(expand);

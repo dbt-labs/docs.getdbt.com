@@ -16,22 +16,57 @@ models:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
+    [latest_version](/reference/resource-properties/latest-version): <version_identifier>
+    [access](/reference/resource-properties/access): private | protected | public
     [config](/reference/resource-properties/config):
       [<model_config>](/reference/model-configs): <config_value>
+    [constraints](/reference/resource-properties/constraints):
+      - <constraint>
     [tests](/reference/resource-properties/tests):
       - <test>
       - ... # declare additional tests
-    columns:
+    [columns](/reference/resource-properties/columns):
       - name: <column_name> # required
         [description](/reference/resource-properties/description): <markdown_string>
         [meta](/reference/resource-configs/meta): {<dictionary>}
         [quote](/reference/resource-properties/quote): true | false
+        [constraints](/reference/resource-properties/constraints):
+          - <constraint>
         [tests](/reference/resource-properties/tests):
           - <test>
           - ... # declare additional tests
         [tags](/reference/resource-configs/tags): [<string>]
 
       - name: ... # declare properties of additional columns
+
+    [versions](/reference/resource-properties/versions):
+      - [v](/reference/resource-properties/versions#v): <version_identifier> # required
+        [defined_in](/reference/resource-properties/versions#defined-in): <definition_file_name>
+        [description](/reference/resource-properties/description): <markdown_string>
+        [docs](/reference/resource-configs/docs):
+          show: true | false
+        [access](/reference/resource-properties/access): private | protected | public
+        [constraints](/reference/resource-properties/constraints):
+          - <constraint>
+        [config](/reference/resource-properties/config):
+          [<model_config>](/reference/model-configs): <config_value>
+        [tests](/reference/resource-properties/tests):
+          - <test>
+          - ... # declare additional tests
+        columns:
+          # include/exclude columns from the top-level model properties
+          - [include](/reference/resource-properties/include-exclude): <include_value>
+            [exclude](/reference/resource-properties/include-exclude): <exclude_list>
+          # specify additional columns
+          - name: <column_name> # required
+            [quote](/reference/resource-properties/quote): true | false
+            [constraints](/reference/resource-properties/constraints):
+              - <constraint>
+            [tests](/reference/resource-properties/tests):
+              - <test>
+              - ... # declare additional tests
+            [tags](/reference/resource-configs/tags): [<string>]
+        - v: ... # declare additional versions
 
 ```
 

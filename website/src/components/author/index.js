@@ -76,13 +76,13 @@ function Author(props) {
 }
 
 // Author Posts component
-function AuthorPosts({posts, siteImg}) {
+function AuthorPosts({posts}) {
   return (
     <section className="author-posts-section">
       <h2>Author Posts</h2>
       <div className="row author-posts">
         {posts.map((post, i) => {
-          const { authors, date, formattedDate, permalink, title, description } = post
+          const { permalink, title, description } = post
           return (
             <div className="author-post" key={i}>
               <Link to={permalink}>

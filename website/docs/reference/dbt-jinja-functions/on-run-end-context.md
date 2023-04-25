@@ -1,6 +1,7 @@
 ---
 title: "on-run-end Context"
 id: "on-run-end-context"
+description: "Use these variables in the context for `on-run-end` hooks."
 ---
 
 

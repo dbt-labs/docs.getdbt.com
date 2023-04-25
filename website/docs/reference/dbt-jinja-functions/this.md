@@ -1,6 +1,7 @@
 ---
 title: "this"
 id: "this"
+description: "Represents the current model in the database."
 ---
 
 `this` is the database representation of the current model. It is useful when:

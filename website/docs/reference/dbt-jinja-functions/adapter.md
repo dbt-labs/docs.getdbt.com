@@ -1,8 +1,8 @@
 ---
 title: "adapter"
 id: "adapter"
+description: "Wrap the internal database adapter with the Jinja object `adapter`."
 ---
-
 
 Your database communicates with dbt using an internal database adapter object. For example, BaseAdapter and SnowflakeAdapter. The Jinja object `adapter` is a wrapper around this internal database adapter object.
 

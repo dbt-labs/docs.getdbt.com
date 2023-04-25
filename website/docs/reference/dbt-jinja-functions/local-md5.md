@@ -1,6 +1,7 @@
 ---
 title: "local_md5"
 id: "local_md5"
+description: "Calculate an MD5 hash of a string with `local_md5` context variable."
 ---
 
 The `local_md5` context variable calculates an [MD5 hash](https://en.wikipedia.org/wiki/MD5) of the given string. The string `local_md5` emphasizes that the hash is calculated _locally_, in the dbt-Jinja context. This variable is typically useful for advanced use cases. For example, when you generate unique identifiers within custom materialization or operational logic, you can either avoid collisions between temporary relations or identify changes by comparing checksums.
