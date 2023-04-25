@@ -47,7 +47,7 @@ When it comes to handling complex data structures, dbt has several features that
 
 | Aspect | dbt | Alteryx |
 | --- | --- | --- |
-| Interface | Command-line interface and IDE | Graphical user interface |
+| Development experience | Command-line interface and IDE | Graphical user interface |
 | Goal | Designed for data transformation and modeling | Data manipulation and analysis capabilities |
 | Optimization | Takes advantage of query optimization capabilities | It does not reuse the same source that has already been executed by a model and runs it again |
 | Run logic | Processes only changed data for large data sets (incremental run) | Processes all data every time it is run |
