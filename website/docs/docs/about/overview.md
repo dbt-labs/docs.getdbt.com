@@ -52,4 +52,4 @@ See [Supported Data Platforms](/docs/supported-data-platforms) to view the full 
 
 # How do I get started?
 
-dbt is open source and completely free to download and use. See our [Getting Started guide](/docs//introduction) for more.
+dbt is open source and completely free to download and use. See our [Getting Started guide](/docs/introduction) for more.
