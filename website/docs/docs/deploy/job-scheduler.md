@@ -39,7 +39,7 @@ Before the job starts executing, the scheduler checks two conditions to determin
 
 Once the available slot conditions and distinct run checks are met, the scheduler will prepare the job to run on your data platform. The time it takes to prepare the job is displayed as **prep time.**
 
-Collectively **wait time** and **prep time** is the time a run spends in queue.
+Collectively **wait time** and **prep time** is the time a run spends in queue (or **Time in queue**).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
@@ -49,15 +49,17 @@ In dbt Cloud, each run of a job gets its own [Kubernetes pod](https://en.wikiped
 
 It's possible that jobs can consume a lot of memory in various situations, such as when bringing data back into dbt for processing, running a high thread count, or retrieving tables from schemas during docs generation.
 
+Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for more info on its architecture and how the data flows.
+
 
 <!-- leaving space for CI job treatment, runtime, warm up pods updates
 
 -->
 
-## Run cancelation
+## Run cancellation
 
 :::info Scheduler won't cancel API-triggered jobs 
-It's important to note that the scheduler will not cancel over-scheduled jobs triggered by [API](/docs/dbt-cloud-apis/overview).
+It's important to note that the scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-cloud-apis/overview).
 :::
 
 **Over scheduled jobs** &mdash; The dbt Cloud scheduler prevents too many job runs from clogging the queue (or queue clog) by cancelling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue can grow faster than the scheduler can process, leading to unnecessary runs. 
