@@ -286,6 +286,8 @@ select ...
 
 </File>
 
+<VersionBlock firstVersion="1.3">
+
 ### Strategy-specific configs
 
 If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
@@ -308,6 +310,27 @@ select ...
 ```
 
 </File>
+
+Alternatively, you can specify a list of columns to exclude from being updated by passing a list of column names to a `merge_exclude_columns` config.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    merge_exclude_columns = ['created_at'],
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.4">
 

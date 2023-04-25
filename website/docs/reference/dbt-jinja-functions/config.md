@@ -1,9 +1,8 @@
 ---
 title: "config"
 id: "config"
+description: "The `config` variable manages user configuration for custom materialization."
 ---
-
-## Overview
 
 The `config` variable exists to handle end-user configuration for custom <Term id="materialization">materializations</Term>. Configs like  `unique_key` can be implemented using the `config` variable in your own materializations.
 

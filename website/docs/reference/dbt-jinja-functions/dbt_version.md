@@ -1,6 +1,7 @@
 ---
 title: "dbt_version"
 id: "dbt_version"
+description: "The `dbt_version` variable returns the installed version of dbt."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

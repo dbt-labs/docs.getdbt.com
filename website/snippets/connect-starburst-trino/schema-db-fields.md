@@ -1,0 +1,3 @@
+[comment: For context, the section title used for this snippet is "Schemas and databases" ]: # 
+
+When selecting the database (catalog) and the schema, make sure the user has read and write access to both the provided database (catalog) and schema. This selection does not limit your ability to query the catalog. Instead, they serve as the default location for where tables and views are materialized. This _default_ can be changed later from within your dbt project.

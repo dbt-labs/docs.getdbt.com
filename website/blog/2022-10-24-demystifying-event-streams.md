@@ -28,7 +28,7 @@ Under the hood, the Merit platform consists of a series of microservices. Each o
 
 ![](/img/blog/2022-10-24-demystifying-event-streams/merit-platform.png)
 
-In the past we relied upon an ETL tool (Stitch) to pull data out of microservice databases and into Snowflake. This data would become the main dbt sources used by our report models in BI.
+In the past we relied upon an <Term id="etl" /> tool (Stitch) to pull data out of microservice databases and into Snowflake. This data would become the main dbt sources used by our report models in BI.
 
 ![](/img/blog/2022-10-24-demystifying-event-streams/merit-platform-stitch.png)
 

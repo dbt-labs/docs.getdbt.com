@@ -1,7 +1,7 @@
 exports.versions = [
   {
     version: "1.5",
-    EOLDate: "2024-04-26",
+    EOLDate: "2024-04-27",
     isPrerelease: true,
   },
   {
@@ -28,19 +28,27 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "docs/collaborate/publish/model-contracts",
+    "page": "docs/reference/programmatic-invocations",
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-access",
+    "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-versions",
+    "page": "docs/collaborate/govern/model-access",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "docs/collaborate/govern/model-versions",
     "firstVersion": "1.5",
   },
   {
     "page": "reference/resource-configs/contract",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "reference/resource-configs/group",
     "firstVersion": "1.5",
   },
   {
@@ -49,12 +57,12 @@ exports.versionedPages = [
   },
   {
     "page": "reference/dbt-jinja-functions/local-md5",
-     "firstVersion": "1.4",
-   },
-   {
-     "page": "reference/warehouse-setups/fal-setup",
-     "firstVersion": "1.3",
-   },
+    "firstVersion": "1.4",
+  },
+  {
+    "page": "reference/warehouse-setups/fal-setup",
+    "firstVersion": "1.3",
+  },
   {
     "page": "reference/dbt-jinja-functions/set",
     "firstVersion": "1.2",
@@ -67,7 +75,7 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/cross-database-macros",
     "firstVersion": "1.2",
   },
-    {
+  {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
   },
@@ -83,4 +91,11 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
+]
+
+exports.versionedCategories = [
+  {
+    "category": "Model governance",
+    "firstVersion": "1.5",
+  }
 ]
