@@ -1,5 +1,5 @@
 ---
-title: "Starburst/Trino setup"
+title: "Starburst/Trino profile"
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
@@ -15,11 +15,10 @@ meta:
   config_page: 'trino-configs'
 ---
 
-:::info Vendor-supported plugin
-
-Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
-
+:::info
+If you're using dbt Cloud, you don't need a `profiles.yml` file. This file is only for CLI users. To connect your data platform to dbt Cloud, refer to [About data platforms](docs/cloud/connect-data-platform/about-connections). 
 :::
+
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -33,6 +32,12 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
+
+:::info Vendor-supported plugin
+
+Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
+
+:::
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 

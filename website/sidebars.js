@@ -647,9 +647,9 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Setups (CLI only)",
+      label: "Profile configs (CLI only)",
+      link: { type: "doc", id: "reference/profiles.yml" },
       items: [
-        "reference/profiles.yml",
         "reference/warehouse-setups/bigquery-setup",
         "reference/warehouse-setups/postgres-setup",
         "reference/warehouse-setups/redshift-setup",

@@ -1,5 +1,5 @@
 ---
-title: "SQLite setup"
+title: "SQLite profile"
 id: "sqlite-setup"
 meta:
   maintained_by: Community

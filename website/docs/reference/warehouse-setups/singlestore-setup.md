@@ -1,5 +1,5 @@
 ---
-title: "SingleStore setup"
+title: "SingleStore profile"
 id: "singlestore-setup"
 meta:
   maintained_by: SingleStore, Inc.

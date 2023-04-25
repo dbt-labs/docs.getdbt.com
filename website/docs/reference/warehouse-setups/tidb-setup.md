@@ -1,5 +1,5 @@
 ---
-title: "TiDB setup"
+title: "TiDB profile"
 id: "tidb-setup"
 meta:
   maintained_by: PingCAP

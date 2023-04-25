@@ -1,5 +1,5 @@
 ---
-title: "Decodable setup"
+title: "Decodable profile"
 id: "decodable-setup"
 meta:
   maintained_by: Decodable

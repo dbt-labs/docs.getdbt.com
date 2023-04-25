@@ -1,5 +1,5 @@
 ---
-title: "Oracle setup"
+title: "Oracle profile"
 id: "oracle-setup"
 meta:
   maintained_by: Oracle

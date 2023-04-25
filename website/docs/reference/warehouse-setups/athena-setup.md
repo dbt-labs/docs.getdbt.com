@@ -1,5 +1,5 @@
 ---
-title: "Athena setup"
+title: "Athena profile"
 meta:
   maintained_by: Community
   authors: Community

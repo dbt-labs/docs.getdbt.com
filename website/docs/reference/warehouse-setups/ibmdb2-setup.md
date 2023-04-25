@@ -1,5 +1,5 @@
 ---
-title: "IBM DB2 setup"
+title: "IBM DB2 profile"
 id: "ibmdb2-setup"
 meta:
   maintained_by: Community

@@ -1,5 +1,5 @@
 ---
-title: "DuckDB setup"
+title: "DuckDB profile"
 meta:
   maintained_by: Community
   authors: 'Josh Wills (https://github.com/jwills)'

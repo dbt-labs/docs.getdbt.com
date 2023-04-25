@@ -1,5 +1,5 @@
 ---
-title: "Apache Hive setup"
+title: "Apache Hive profile"
 id: "hive-setup"
 meta:
   maintained_by: Cloudera

@@ -1,5 +1,5 @@
 ---
-title: "MySQL setup"
+title: "MySQL profile"
 id: "mysql-setup"
 meta:
   maintained_by: Community

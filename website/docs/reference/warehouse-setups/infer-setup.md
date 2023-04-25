@@ -1,5 +1,5 @@
 ---
-title: "Infer setup"
+title: "Infer profile"
 id: "infer-setup"
 meta:
   maintained_by: Infer

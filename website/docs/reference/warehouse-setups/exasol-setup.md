@@ -1,5 +1,5 @@
 ---
-title: "Exasol setup"
+title: "Exasol profile"
 meta:
   maintained_by: Community
   authors: 'Torsten Glunde, Ilija Kutle'

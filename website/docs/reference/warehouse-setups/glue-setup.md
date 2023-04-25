@@ -1,5 +1,5 @@
 ---
-title: "AWS Glue Setup"
+title: "AWS Glue profile"
 id: "glue-setup"
 meta:
   maintained_by: Community

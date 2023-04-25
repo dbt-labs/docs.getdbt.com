@@ -1,5 +1,5 @@
 ---
-title: "Apache Spark Profile"
+title: "Apache Spark profile"
 id: "spark-setup"
 meta:
   maintained_by: dbt Labs
@@ -14,6 +14,10 @@ meta:
   platform_name: 'Spark'
   config_page: 'spark-configs'
 ---
+
+:::info
+If you're using dbt Cloud, you don't need a `profiles.yml` file. This file is only for CLI users. To connect your data platform to dbt Cloud, refer to [About data platforms](docs/cloud/connect-data-platform/about-connections). 
+:::
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

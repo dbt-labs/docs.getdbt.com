@@ -1,5 +1,5 @@
 ---
-title: "Vertica setup"
+title: "Vertica profile"
 id: "vertica-setup"
 meta:
   maintained_by: 'Vertica'

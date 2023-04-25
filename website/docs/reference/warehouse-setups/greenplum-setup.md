@@ -1,5 +1,5 @@
 ---
-title: "Greenplum setup"
+title: "Greenplum profile"
 id: "greenplum-setup"
 meta:
   maintained_by: Community
