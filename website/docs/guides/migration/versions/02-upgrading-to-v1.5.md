@@ -28,7 +28,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 :::info Why changes to previous behavior?
 
-This release includes a significant rework to `dbt-core`'s CLI and initialization flow. As part of refactoring its internals, we made a handful of changes to runtime configuration. The net result of these changes is more consistent & practical configuration options, and a more legible codebase.
+This release includes significant new features, and rework to `dbt-core`'s CLI and initialization flow. As part of refactoring its internals, we made a handful of changes to runtime configuration. The net result of these changes is more consistent & practical configuration options, and a more legible codebase.
 
 **_Wherever possible, we will provide backward compatibility and deprecation warnings for at least one minor version before actually removing the old functionality._** In those cases, we still reserve the right to fully remove backwards compatibility for deprecated functionality in a future v1.x minor version of `dbt-core`.
 
@@ -48,6 +48,8 @@ The following env vars have been renamed, for consistency with the convention fo
 
 As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
+Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+
 ### For consumers of dbt artifacts (metadata)
 
 The [manifest](manifest-json) schema version will be updated to `v9`. Specific changes:
@@ -55,6 +57,7 @@ The [manifest](manifest-json) schema version will be updated to `v9`. Specific c
 - Addition of `access`, `constraints`, `version`, `latest_version` as a top-level node attributes for models
 - Addition of `constraints` as a column-level attribute
 - Addition of `group` and `contract` as node configs
+- To support model versions, the type of `refs` has changed from `List[List[str]]` to `List[RefArgs]`, with nested keys `name: str`, `package: Optional[str] = None`, and `version: Union[str, float, NoneType] = None)`.
 
 ### For maintainers of adapter plugins
 
@@ -85,5 +88,4 @@ Run `dbt --help` to see new & improved help documentation :)
 - The [`version: 2` top-level key](project-configs/version) is now **optional** in all yaml files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
 - [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
 - Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](dbt_project.yml)
-- More granular [configurations](global-configs) for logging, to set log format, log levels, and colorization.
-
+- More granular [configurations](/reference/global-configs) for logging (to set log format, log levels, and colorization) and cache population
