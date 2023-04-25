@@ -513,7 +513,7 @@ inner join stg_salesorderheader on stg_salesorderdetail.salesorderid = stg_sales
 
 ### Step 5:  Select fact table columns
 
-You can now select the fact table columns that will help us answer the business questions identified earlier. We want to be able to calculate the amount of revenue, and therefore we include a column revenue per sales order detail which is calculated by `unitprice * orderqty as revenue` . 
+You can now select the fact table columns that will help us answer the business questions identified earlier. We want to be able to calculate the amount of revenue, and therefore we include a column revenue per sales order detail which was calculated above by `unitprice * orderqty as revenue` . 
 
 ```sql
 ...
