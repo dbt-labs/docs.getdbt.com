@@ -1,5 +1,6 @@
 ---
 title: "About user access in dbt Cloud"
+description: "Learn how dbt Cloud administrators can use dbt Cloud's permissioning model to control user-level access in a dbt Cloud account."
 id: "about-user-access"
 ---
 

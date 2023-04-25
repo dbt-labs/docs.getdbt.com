@@ -1,5 +1,6 @@
 ---
 title: "Set up Snowflake OAuth"
+description: "Learn how dbt Cloud administrators can use BigQuery OAuth to control access in a dbt Cloud account."
 id: "set-up-snowflake-oauth"
 ---
 

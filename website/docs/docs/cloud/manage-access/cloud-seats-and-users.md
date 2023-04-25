@@ -1,5 +1,6 @@
 ---
 title: "Users and licenses"
+description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
 id: "seats-and-users"
 sidebar: "Users and licenses"
 description: "Information about users and their license types"
