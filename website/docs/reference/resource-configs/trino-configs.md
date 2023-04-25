@@ -38,8 +38,6 @@ At target catalog that uses the Hive connector and a metastore service (HMS) is 
 ```java
 hive.metastore-cache-ttl=0s
 hive.metastore-refresh-interval=5s
-hive.allow-drop-table=true
-hive.allow-rename-table=true
 ```
 
 ## File format configuration
