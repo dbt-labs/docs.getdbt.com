@@ -15,7 +15,7 @@ Alteryx is a visual data transformation platform with a user-friendly interface 
 
 ## Introduction
 
-Transforming data to follow business rules can be a complex task, especially with the increasing amount of data collected by companies. To reduce such complexity, data transformation solutions designed as drag and drop tools can be seen as more intuitive, since analysts can visualize the steps taken to transform data. One example of a popular drag and drop transformation tool is Alteryx which allows business analysts to transform data by dragging and dropping operators in a canvas. The graphic interface of Alteryx Designer is presented in **Figure 1**.
+Transforming data to follow business rules can be a complex task, especially with the increasing amount of data collected by companies. To reduce such complexity, data transformation solutions designed as drag-and-drop tools can be seen as more intuitive, since analysts can visualize the steps taken to transform data. One example of a popular drag-and-drop transformation tool is Alteryx which allows business analysts to transform data by dragging and dropping operators in a canvas. The graphic interface of Alteryx Designer is presented in **Figure 1**.
 
 <Lightbox src="/img/blog/2023-04-24-framework-refactor-alteryx-dbt/Figure1.png" title="Figure 1 — Alteryx Designer workflow interface" />
 
