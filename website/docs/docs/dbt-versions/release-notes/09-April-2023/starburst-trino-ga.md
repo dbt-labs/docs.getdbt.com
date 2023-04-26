@@ -1,7 +1,7 @@
 ---
 title: "Integrate Starburst and Trino with dbt-trino in dbt Cloud."
 id: "starburst-trino-ga"
-sidebar_label: "New:Integrate Starburst and Trino in dbt Cloud"
+sidebar_label: "New: Integrate Starburst and Trino in dbt Cloud"
 sidebar_position: 8
 tags: [Apr-27-2023]
 ---
