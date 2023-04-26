@@ -21,6 +21,7 @@ License-based and Role-based.
   a member of multiple groups, and those groups may have permissions on multiple
   projects.
 
+
 ## License-based access control
 
 Each user on an account is assigned a license type when the user is first
@@ -140,6 +141,8 @@ sign-in time based on the user's IdP-provided group membership information.
 
 
 ## FAQs
+<FAQ src="Accounts/add-delete-users" />
+
 - **When are IdP group memberships updated for SSO Mapped groups?**  <br />
  Group memberships are updated whenever a user logs into dbt Cloud via a supported SSO provider. If you've changed group memberships in your identity provider or dbt Cloud, ask your users to log back into dbt Cloud to synchronize these group memberships.
 - **Can I set up SSO without RBAC?**  <br />

@@ -5,8 +5,6 @@ sidebar: "Users and licenses"
 description: "Information about users and their license types"
 ---
 
-## Overview
-
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are two
 different types of licenses in dbt Cloud: _Developer_ and _Read Only_.
 
@@ -34,6 +32,8 @@ plan must upgrade to the Team plan to add additional team members to their
 account.
 
 Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
+
+<FAQ src="Accounts/add-delete-users" />
 
 ## Managing license types
 
