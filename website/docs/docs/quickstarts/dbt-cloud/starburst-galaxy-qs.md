@@ -18,7 +18,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Connect to multiple data sources in addition to your S3 bucket. 
 
 ## Prerequisites 
-- You have [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment in [dbt Cloud](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
+- You have a [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment in [dbt Cloud](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
 - You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
 - You have an AWS account with permissions to upload data to an S3 bucket.
 - For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
