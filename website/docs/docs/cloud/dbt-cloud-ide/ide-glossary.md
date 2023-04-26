@@ -23,7 +23,7 @@ The basic layout of the IDE landing page with the following areas:
 
 2. **Documentation site button &mdash;** Clicking the Documentation site book icon, located next to the Git repository link, leads to the dbt Documentation site. The site is powered by the latest dbt artifacts generated in the IDE using the `dbt docs generate` command from the Command bar.
 
-3. [**Version Control &mdash;**](#editing-features) The IDE's powerful Version Control section contains all git-related elements, including the Git actions button and the **Changes** section. 
+3. [**Version Control**](#editing-features) &mdash; The IDE's powerful Version Control section contains all git-related elements, including the Git actions button and the **Changes** section. 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-upper-left.jpg" width="40%" title="The Git repo link, documentation site button, and Version Control menu"/>
 
 4. **File Explorer &mdash;** The File Explorer shows the filetree of your repository. You can:
@@ -52,7 +52,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view.
 
-2. **Format button &mdash;** The editor has a **Format** button for `{{ filetypes }}` files. When you click the button, the editor will use `sqlfmt` or `sqlfluff` for SQL files and `black` for Python files to reformat the contents of the file.
+2. **Format button &mdash;** The editor has a **Format** button that can reformat the contents of your files. For SQL files, it uses either `sqlfmt` or `sqlfluff`, and for Python files, it uses `black`.
 
 3. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
 
@@ -115,7 +115,7 @@ The Invocation History Drawer stores information on dbt invocations in the IDE. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-results.jpg" width="100%" title="The Invocation History list displays a list of previous invocations in the IDE"/>
 
-5. **Result Status tab &mdash;** Clicking on the Results Status Tabs will filter the Node Status List based on their corresponding status. The available statuses are Pass (successful invocation of a node), Warn (test executed with warning), Error (database error or test failure), Skip (nodes not run due to upstream error), and Queued (nodes that have not executed yet).
+5. **Node Summary tab &mdash;** Clicking on the Results Status Tabs will filter the Node Status List based on their corresponding status. The available statuses are Pass (successful invocation of a node), Warn (test executed with warning), Error (database error or test failure), Skip (nodes not run due to upstream error), and Queued (nodes that have not executed yet).
 
 6. **Node result toggle &mdash;** After running a dbt command, information about each executed node can be found in a Node Result toggle, which includes a summary and debug logs. The Node Results List lists every node that was invoked during the command.
 
