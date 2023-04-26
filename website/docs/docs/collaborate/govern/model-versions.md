@@ -5,13 +5,10 @@ sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 ---
 
-<VersionBlock lastVersion="1.5">
 
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
 :::
-
-</VersionBlock>
 
 Versioning APIs is a hard problem in software engineering. The root of the challenge is that the producers and consumers of an API have competing incentives:
 - Producers of an API need the ability to modify its logic and structure. There is a real cost to maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
