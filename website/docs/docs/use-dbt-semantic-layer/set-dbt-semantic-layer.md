@@ -13,7 +13,6 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <Snippet src="sl-prerequisites" />
 
-**Note** &mdash; After installing the dbt metrics package and updating the `packages.yml` file, make sure you run at least one model.
 
 <Snippet src="sl-considerations-banner" />
 
