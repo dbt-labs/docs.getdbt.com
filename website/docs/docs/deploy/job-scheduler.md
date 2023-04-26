@@ -59,7 +59,7 @@ Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for an a
 ## Run cancellation
 
 :::info Scheduler won't cancel API-triggered jobs 
-It's important to note that the scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-cloud-apis/overview).
+The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-cloud-apis/overview).
 :::
 
 **Over scheduled jobs** &mdash; The dbt Cloud scheduler prevents too many job runs from clogging the queue (or queue clog) by cancelling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue can grow faster than the scheduler can process, leading to unnecessary runs. 
