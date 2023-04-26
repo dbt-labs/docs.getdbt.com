@@ -66,7 +66,6 @@ When the client hired Indicium, they had dozens of Alteryx workflows built and r
 
 <Term id="data-lineage">Data lineage</Term> was a point that added a lot of extra labor because it was difficult to identify which models were dependent on others with so many Alteryx workflows built. When the number of workflows increased, it required a long time to create a view of that lineage in another software. So, if a column's name changed in a model due to a change in the model's source, the marketing analysts would have to map which downstream models were impacted by such change to make the necessary adjustments. Because model lineage was mapped manually, it was a challenge to keep it up to date.
 
-####
 One of our main objectives was to refactor the Alteryx workflows that the marketing team utilized every day. As you may already suspect, this refactoring was done by creating models in dbt. The construction and description of how this refactoring was done is presented next.
 
 ### How we refactored (a step-by-step guide based on our experience)
