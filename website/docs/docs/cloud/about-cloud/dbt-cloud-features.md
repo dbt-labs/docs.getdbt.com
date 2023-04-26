@@ -9,7 +9,7 @@ In addition to providing a hosted architecture for running dbt Core across your 
 
 dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14 day trial](https://www.getdbt.com/signup/)! 
 
-To have the best experience using dbt Cloud, we recommend you use modern and up-to-date web browsers like Chrome, Safari, Edge, Firefox, and others.<br></br>
+To have the best experience using dbt Cloud, we recommend you use modern and up-to-date web browsers like Chrome, Safari, Edge, and Firefox.<br></br>
 
 <div className="grid--2-col">
 
