@@ -1,5 +1,5 @@
 ---
-title: "How we reduced a 6-hour runtime in Alteryx to 9 minutes in dbt"
+title: "How we reduced a 6-hour runtime in Alteryx to 9 minutes with dbt and Snowflake"
 description: Learn how the folks at Indicium Tech leveraged the modularity and visibility features of dbt to reduce a 6-hour runtime in Alteryx to only 9 minutes by implementing a refactoring workflow.
 authors: [arthur_marcon, lucas_bergodias, christian_vanbellen]
 slug: framework-refactor-alteryx-dbt
@@ -9,7 +9,7 @@ date: 2023-04-25
 is_featured: true
 ---
 
-Alteryx is a visual data transformation platform with a user-friendly interface and drag-and-drop tools. Nonetheless, Alteryx may have difficulties to cope with the complexity increase within an organization’s data pipeline, and it can become a suboptimal tool when companies start dealing with large and complex data transformations. In such cases, moving to dbt can be a natural step, since dbt is designed to manage complex data transformation pipelines in a scalable, efficient, and more explicit manner. In this article, we describe the differences between Alteryx and dbt, and how we reduced a client's 6-hour runtime in Alteryx to 9 minutes in dbt jobs at Indicium Tech.
+Alteryx is a visual data transformation platform with a user-friendly interface and drag-and-drop tools. Nonetheless, Alteryx may have difficulties to cope with the complexity increase within an organization’s data pipeline, and it can become a suboptimal tool when companies start dealing with large and complex data transformations. In such cases, moving to dbt can be a natural step, since dbt is designed to manage complex data transformation pipelines in a scalable, efficient, and more explicit manner. Also, this transition involved migrating from on-premises SQL Server to Snowflake cloud computing. In this article, we describe the differences between Alteryx and dbt, and how we reduced a client's 6-hour runtime in Alteryx to 9 minutes with dbt and Snowflake at Indicium Tech.
 
 <!--truncate-->
 
@@ -66,6 +66,7 @@ When the client hired Indicium, they had dozens of Alteryx workflows built and r
 
 <Term id="data-lineage">Data lineage</Term> was a point that added a lot of extra labor because it was difficult to identify which models were dependent on others with so many Alteryx workflows built. When the number of workflows increased, it required a long time to create a view of that lineage in another software. So, if a column's name changed in a model due to a change in the model's source, the marketing analysts would have to map which downstream models were impacted by such change to make the necessary adjustments. Because model lineage was mapped manually, it was a challenge to keep it up to date.
 
+####
 One of our main objectives was to refactor the Alteryx workflows that the marketing team utilized every day. As you may already suspect, this refactoring was done by creating models in dbt. The construction and description of how this refactoring was done is presented next.
 
 ### How we refactored (a step-by-step guide based on our experience)
@@ -116,7 +117,7 @@ Successfully converting an entire set of data workflows from the Alteryx engine 
 
 The conversion proved to be of great value to the client due to three main aspects of the new dbt-based data stack, which were observed by both teams:
 
-- Incredibly shortened run time: Perhaps the most impressive result obtained, the total run time of the marketing team’s data workflow was reduced from more than **6 hours** to just **9 minutes**. This represents a **run time reduction of more than** **40x**. Much of this comes from dbt’s agile SQL compilation and the sequential lineage based execution (see Figure 7).
+- Incredibly shortened run time: Perhaps the most impressive result obtained, the total run time of the marketing team’s data workflow was reduced from more than **6 hours** to just **9 minutes**. This represents a **run time reduction of more than** **40x**. Much of this comes from transitioning from SQL Server on-premises computing to Snowflake cloud computing, dbt’s agile SQL compilation and materialization offers, and the sequential lineage based execution (see Figure 7).
 - Improved workflow visibility: dbt’s support for documentation and testing, associated with dbt Cloud, allows for great visibility of the workflow’s lineage execution, accelerating errors and data inconsistencies identification and troubleshooting. More than once, our team was able to identify the impact of one column’s logic alteration in downstream models much earlier than these Alteryx models.
 - Workflow simplification: dbt’s modularized approach of data modeling, aside from accelerating total run time of the data workflow, simplified the construction of new tables, based on the already existing modules, and improved code readability.
 
