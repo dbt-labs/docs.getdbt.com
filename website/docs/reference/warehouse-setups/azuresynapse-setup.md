@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure Synapse DWH profile"
+title: "Microsoft Azure Synapse DWH setup"
 meta:
   maintained_by: Microsoft
   authors: 'Microsoft (https://github.com/Microsoft)'

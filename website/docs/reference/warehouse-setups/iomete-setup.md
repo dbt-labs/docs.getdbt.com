@@ -1,5 +1,5 @@
 ---
-title: "iomete profile"
+title: "iomete setup"
 id: "iomete-setup"
 meta:
   maintained_by: iomete

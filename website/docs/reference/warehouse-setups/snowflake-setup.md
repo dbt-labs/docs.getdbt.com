@@ -1,5 +1,5 @@
 ---
-title: "Snowflake profile"
+title: "Snowflake setup"
 id: "snowflake-setup"
 meta:
   maintained_by: dbt Labs

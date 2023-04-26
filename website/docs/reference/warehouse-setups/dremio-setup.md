@@ -1,5 +1,5 @@
 ---
-title: "Dremio profile"
+title: "Dremio setup"
 meta:
   maintained_by: Dremio
   authors: 'Dremio (formerly Fabrice Etanchaud)'

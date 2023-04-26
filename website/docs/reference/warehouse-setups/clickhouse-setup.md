@@ -1,5 +1,5 @@
 ---
-title: "ClickHouse profile"
+title: "ClickHouse setup"
 meta:
   maintained_by: Community
   authors: 'Geoff Genz'

@@ -1,5 +1,5 @@
 ---
-title: "Starburst/Trino profile"
+title: "Starburst/Trino setup"
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.

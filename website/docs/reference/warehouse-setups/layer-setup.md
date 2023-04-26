@@ -1,5 +1,5 @@
 ---
-title: "Layer profile"
+title: "Layer setup"
 id: "layer-setup"
 meta:
   maintained_by: Layer

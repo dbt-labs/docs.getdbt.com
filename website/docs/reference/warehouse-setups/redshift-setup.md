@@ -1,5 +1,5 @@
 ---
-title: "Redshift profile"
+title: "Redshift setup"
 id: "redshift-setup"
 meta:
   maintained_by: dbt Labs

@@ -1,5 +1,5 @@
 ---
-title: "AlloyDB profile"
+title: "AlloyDB setup"
 meta:
   maintained_by: Community?
   authors: 'dbt-labs'

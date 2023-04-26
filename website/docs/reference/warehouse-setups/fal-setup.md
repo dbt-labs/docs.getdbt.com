@@ -1,5 +1,5 @@
 ---
-title: "fal profile (Python models)"
+title: "fal setup (Python models)"
 meta:
   maintained_by: fal.ai
   authors: 'Features & Labels (https://github.com/fal-ai)'

@@ -1,5 +1,5 @@
 ---
-title: "Databend Cloud profile"
+title: "Databend Cloud setup"
 id: "databend-setup"
 meta:
   maintained_by: Databend Cloud

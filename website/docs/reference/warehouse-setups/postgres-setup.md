@@ -1,5 +1,5 @@
 ---
-title: "Postgres profile"
+title: "Postgres setup"
 id: "postgres-setup"
 meta:
   maintained_by: dbt Labs

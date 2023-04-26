@@ -1,5 +1,5 @@
 ---
-title: "MindsDB profile"
+title: "MindsDB setup"
 id: "mindsdb-setup"
 meta:
   maintained_by: MindsDB

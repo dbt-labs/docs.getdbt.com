@@ -1,5 +1,5 @@
 ---
-title: "Apache Impala profile"
+title: "Apache Impala setup"
 id: "impala-setup"
 meta:
   maintained_by: Cloudera

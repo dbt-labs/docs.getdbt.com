@@ -1,5 +1,5 @@
 ---
-title: "BigQuery profile"
+title: "BigQuery setup"
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'

@@ -1,5 +1,5 @@
 ---
-title: "Teradata profile"
+title: "Teradata setup"
 id: "teradata-setup"
 meta:
   maintained_by: Teradata

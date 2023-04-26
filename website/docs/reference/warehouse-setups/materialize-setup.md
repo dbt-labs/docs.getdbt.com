@@ -1,5 +1,5 @@
 ---
-title: "Materialize profile"
+title: "Materialize setup"
 id: "materialize-setup"
 meta:
   maintained_by: Materialize  Inc.

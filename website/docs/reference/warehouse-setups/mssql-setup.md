@@ -1,5 +1,5 @@
 ---
-title: "Microsoft SQL Server profile"
+title: "Microsoft SQL Server setup"
 id: "mssql-setup"
 meta:
   maintained_by: Community

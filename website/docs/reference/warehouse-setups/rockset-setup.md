@@ -1,5 +1,5 @@
 ---
-title: "Rockset profile"
+title: "Rockset setup"
 id: "rockset-setup"
 meta:
   maintained_by: Rockset, Inc.

@@ -1,5 +1,5 @@
 ---
-title: "Databricks profile"
+title: "Databricks setup"
 id: "databricks-setup"
 meta:
   maintained_by: Databricks

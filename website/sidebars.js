@@ -647,7 +647,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Profile configs (CLI only)",
+      label: "Setups (CLI only)",
       link: { type: "doc", id: "reference/profiles.yml" },
       items: [
         "reference/warehouse-setups/bigquery-setup",

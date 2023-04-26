@@ -1,5 +1,5 @@
 ---
-title: "Doris profile"
+title: "Doris setup"
 id: "doris-setup"
 meta:
   maintained_by: SelectDB

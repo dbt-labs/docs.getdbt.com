@@ -1,5 +1,5 @@
 ---
-title: "Apache Spark profile"
+title: "Apache Spark setup"
 id: "spark-setup"
 meta:
   maintained_by: dbt Labs

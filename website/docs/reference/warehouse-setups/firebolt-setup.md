@@ -1,5 +1,5 @@
 ---
-title: "Firebolt profile"
+title: "Firebolt setup"
 meta:
   maintained_by: Firebolt
   authors: 'Firebolt'
