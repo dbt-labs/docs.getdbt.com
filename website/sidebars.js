@@ -71,7 +71,7 @@ const sidebarSettings = {
               type: "category",
               label: "Manage access",
               items: [
-                "docs/cloud/manage-access/about-access",
+                "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/seats-and-users",
                 {
                   type: "category",
