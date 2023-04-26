@@ -19,3 +19,4 @@ _Future release dates are tentative and subject to change._
 | **v1.6** | _July 2023_     | _July 2024_                         |
 | **v1.7** | _Oct 2023_      | _Oct 2024_                          |
 | **v1.8** | _Jan 2024_      | _Jan 2025_                          |
+| **v1.9** | _Apr 2024_      | _Apr 2025_                          |
