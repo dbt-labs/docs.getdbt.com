@@ -19,7 +19,7 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 | Job | An action dbt Cloud takes to automatically execute dbt commands that run tests and create tables and views for your data platform. |
 | Job queue | The place where jobs are held, waiting to be launched by the scheduler. They haven't started running yet, but they are ready to go. It's like a waiting area for jobs. |
 | Over scheduling | Situation when a job is currently running, but there are additional copies of the same job waiting in a queue to start as soon as the current job finishes. |
-| Prep time | Amount of time it takes for dbt Cloud to get the job ready to run your project on your cloud data platform. |
+| Prep time | The time dbt Cloud takes to configure a job to run a project on your cloud data platform. Prep time can vary depending on the complexity of the job and the amount of data being processed. |
 | Run | A single unique attempt to run a job. |
 | Run slot | Run slots control the number of jobs that can run concurrently: one run slot allows for a single job at a time. Adding more run slots enables multiple jobs to run at the same time. |
 | Scheduler | The dbt Cloud application that controls job execution. |
