@@ -1,5 +1,5 @@
 ---
-title: "About profiles"
+title: "About profiles.yml"
 id: profiles.yml
 ---
 
