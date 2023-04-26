@@ -16,7 +16,6 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <Snippet src="sl-considerations-banner" />
 
-Note: please have at least one model run after installing dbt metrics package and updating packages.yml 
 
 ## Set up dbt Semantic Layer
 
