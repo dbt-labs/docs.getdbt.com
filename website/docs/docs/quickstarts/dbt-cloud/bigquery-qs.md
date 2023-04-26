@@ -3,6 +3,7 @@ title: "Quickstart for dbt Cloud and BigQuery"
 description: "Quickstart for dbt Cloud and BigQuery."
 id: "bigquery"
 sidebar_label: "BigQuery quickstart"
+timeToComplete: '30 minutes'
 ---
 
 In this quickstart guide, you'll learn how to use dbt Cloud with BigQuery. It will show you how to: 

@@ -162,10 +162,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
-            // {
-            //   label: "Spotlight",
-            //   to: "/community/spotlight",
-            // },
+            {
+              label: "Quickstart guides",
+              to: "/quickstart/guides",
+            },
           ],
         },
         {
@@ -240,7 +240,8 @@ var siteSettings = {
     path.resolve("plugins/customWebpackConfig"),
     [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
-    // path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [
