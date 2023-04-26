@@ -15,7 +15,7 @@ For information about selecting models on the command line, consult the docs on 
 Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select the "Available commands in dbt Cloud" tab. 
 
 <Tabs>
-<TabItem value="cloud" label="Available commands in dbt Cloud">
+<TabItem value="cloud" label="dbt Cloud">
 
 Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
