@@ -1,14 +1,16 @@
 ---
-title: "The dbt Cloud Scheduler"
+title: "The dbt Cloud job scheduler"
 id: "job-scheduler"
 sidebar_label: "Job scheduler"
 description: "The dbt Cloud Scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
 tags: [scheduler]
 ---
 
-Use dbt Cloud's job scheduler to streamline your data transformation workflows, build observability, govern data, and empower data teams to run dbt in production with ease. Create custom schedules to run production jobs and decrease operating costs.
+The dbt Cloud job scheduler is a powerful tool that helps data teams optimize their data transformation workflows, makes it easier to run dbt in production environments, governs data, automates your dbt jobs, and empowers teams to get results faster with less effort. 
 
-The dbt Cloud scheduler queues scheduled or API-triggered runs, before preparing the job to enter the cloud data platform. 
+By using scheduler, you can improve the efficiency of your data transformation process, while also gaining greater visibility into its progress. You can use custom scheduling for your jobs, which allow you to run them automatically and save money by reducing manual work. It also provides governance policies to make sure your data is transformed consistently and meets your organization's standards.
+
+The scheduler is a key feature of dbt Cloud that helps teams run dbt in production with ease and confidence, while also providing powerful observability and governance capabilities.
 
 ## Scheduler terms
 
@@ -16,13 +18,13 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 
 | Term | Definition |
 | --- | --- |
+| dbt Cloud job scheduler | The dbt Cloud application that controls job execution. The scheduler queues scheduled or API-triggered runs, before preparing the job to enter the cloud data platform. |
 | Job | An action dbt Cloud takes to automatically execute dbt commands that run tests and create tables and views for your data platform. |
 | Job queue | The place where jobs are held, waiting to be launched by the scheduler. They haven't started running yet, but they are ready to go. It's like a waiting area for jobs. |
 | Over scheduling | Situation when a job is currently running, but there are additional copies of the same job waiting in a queue to start as soon as the current job finishes. |
 | Prep time | The time dbt Cloud takes to configure a job to run a project on your cloud data platform. Prep time can vary depending on the complexity of the job and the amount of data being processed. |
 | Run | A single unique attempt to run a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently: one run slot allows for a single job at a time. Adding more run slots enables multiple jobs to run at the same time. |
-| Scheduler | The dbt Cloud application that controls job execution. |
 | Threads | When you run dbt, it creates a graph of links between models. The number of [threads](/docs/core/connection-profiles#understanding-threads) is the maximum number of paths that dbt can work on at once. The default value is 4 threads. |
 | Wait time | Amount of time that dbt Cloud waits before running your job, either because there are no available slots for running jobs or because a previous run of the same job is still in progress. |
 
