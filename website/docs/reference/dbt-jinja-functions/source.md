@@ -1,5 +1,5 @@
 ---
-title: "source"
+title: "dbt Jinga Functions - Source"
 id: "source"
 description: "Returns a relation & creates dependencies between source and model."
 ---

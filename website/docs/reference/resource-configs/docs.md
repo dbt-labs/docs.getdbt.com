@@ -1,4 +1,5 @@
 ---
+title: "General Configs - Docs"
 resource_types: models
 datatype: "{dictionary}"
 default_value: {show: true}

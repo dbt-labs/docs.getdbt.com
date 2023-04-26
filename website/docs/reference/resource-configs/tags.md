@@ -1,4 +1,5 @@
 ---
+title: "General Configs - Tags"
 resource_types: all
 datatype: string | [string]
 ---

@@ -1,5 +1,5 @@
 ---
-title: "config"
+title: "dbt Jinga Functions - Config"
 id: "config"
 description: "The `config` variable manages user configuration for custom materialization."
 ---

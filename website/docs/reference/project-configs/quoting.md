@@ -1,4 +1,5 @@
 ---
+title: "Project Configs - Quoting"
 datatype: boolean # -ish, it's actually a dictionary of bools
 default: true
 ---

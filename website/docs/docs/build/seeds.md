@@ -1,5 +1,5 @@
 ---
-title: "Seeds"
+title: "Build Your DAG - Seeds "
 id: "seeds"
 ---
 ## Related reference docs

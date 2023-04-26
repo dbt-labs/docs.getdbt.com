@@ -1,5 +1,5 @@
 ---
-title: "Snapshots"
+title: "Build Your DAG - Snapshots"
 id: "snapshots"
 ---
 

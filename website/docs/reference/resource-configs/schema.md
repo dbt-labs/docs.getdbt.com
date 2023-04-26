@@ -1,4 +1,5 @@
 ---
+title: "General Configs - Schema"
 resource_types: [models, seeds, tests]
 datatype: string
 ---

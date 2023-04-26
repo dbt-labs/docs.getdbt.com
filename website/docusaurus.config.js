@@ -223,7 +223,7 @@ var siteSettings = {
           sidebarCollapsible: true,
         },
         blog: {
-          blogTitle: "dbt Developer Blog",
+          blogTitle: "Developer Blog | dbt Developer Hub",
           blogDescription: "Technical tutorials from the dbt Community.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
