@@ -33,8 +33,8 @@ function QuickstartList({ quickstartData }) {
         <div className={`container ${styles.quickstartCardContainer} `}>   
           {quickstartData && quickstartData.length > 0 ? (
             <>
-              {quickstartData.map((member, i) => (
-                <QuickstartGuideCard frontMatter={member.data} key={i} />
+              {quickstartData.map((guide, i) => (
+                <QuickstartGuideCard frontMatter={guide.data} key={i} />
               ))}
             </>
           ) : 
