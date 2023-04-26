@@ -281,6 +281,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/artifacts /docs/dbt-cloud/using-dbt-cloud/artifacts 301
 /docs/bigquery-configs /reference/resource-configs/bigquery-configs 301
 /reference/resource-properties/docs /reference/resource-configs/docs 301
+/reference/resource-properties/latest-version /reference/resource-properties/latest_version 301
 /docs/building-a-dbt-project/building-models/bigquery-configs /reference/resource-configs/bigquery-configs 301
 /docs/building-a-dbt-project/building-models/configuring-models /reference/model-configs
 /docs/building-a-dbt-project/building-models/enable-and-disable-models /reference/resource-configs/enabled 301
