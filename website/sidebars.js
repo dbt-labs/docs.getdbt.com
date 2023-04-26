@@ -465,7 +465,7 @@ const sidebarSettings = {
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
             "reference/resource-properties/description",
-            "reference/resource-properties/latest-version",
+            "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
