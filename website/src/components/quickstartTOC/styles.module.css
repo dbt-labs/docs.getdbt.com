@@ -1,0 +1,14 @@
+.tocList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.tocList li {
+    padding: 1rem;
+}
+
+.tocList li span {
+    display: inline-block;
+}

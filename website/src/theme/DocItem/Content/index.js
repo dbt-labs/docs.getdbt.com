@@ -22,6 +22,7 @@ import MDXContent from '@theme/MDXContent';
  * If so, use component rather than header
 */
 import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
+import QuickstartTOC from '@site/src/components/quickstartTOC';
 
 function useSyntheticTitle() {
   const {metadata, frontMatter, contentTitle} = useDoc();
@@ -38,6 +39,7 @@ export default function DocItemContent({children}) {
   // dbt Custom
   const { metadata, frontMatter } = useDoc();
   const isSpotlightMember = metadata?.id?.includes('community/spotlight/')
+  const isQuickstartGuide = metadata?.id?.includes('quickstarts/')
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
@@ -55,7 +57,19 @@ export default function DocItemContent({children}) {
           )}
         </>
       )}
+      {isQuickstartGuide ? (
+        <>
+          <div className={clsx('quickstart-container')}>
+          <QuickstartTOC />
+          <div>
+          <MDXContent>{children}</MDXContent>
+          </div>
+          </div>
+        </>
+      ) : (
+
       <MDXContent>{children}</MDXContent>
+      )}
     </div>
   );
 }

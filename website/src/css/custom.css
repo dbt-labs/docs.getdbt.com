@@ -1818,3 +1818,8 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button {
 html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   background-color: #383839;
 }
+
+.quickstart-container {
+  display: flex;
+  position: relative;
+}

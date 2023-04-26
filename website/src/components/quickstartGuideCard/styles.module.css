@@ -8,6 +8,11 @@
   display: flex;
   flex-direction: column;
   text-decoration: none !important;
+  transition: border 0.2s ease-in-out;
+}
+
+.quickstartCard:hover {
+  border-bottom-color: var(--color-orange);
 }
 
 .quickstartCard h3 {

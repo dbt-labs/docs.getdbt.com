@@ -7,14 +7,14 @@ module.exports = function buildQuickstartIndexPage() {
     async loadContent() {
       // Quickstart files directory
       // TODO: Combine dbt-cloud and dbt-core quickstarts
-      const quickstartDirectory = 'docs/docs/quickstarts/dbt-cloud'
+      const quickstartDirectory = 'docs/quickstarts'
 
       // Get all Quickstart Spotlight files and content
       const quickstartFiles = fs.readdirSync(quickstartDirectory)
 
-      const quickstartData = quickstartFiles.reduce((arr, spotlightFile) => {
+      const quickstartData = quickstartFiles.reduce((arr, quickstartFile) => {
         const fileData = fs.readFileSync(
-          `${quickstartDirectory}/${spotlightFile}`, 
+          `${quickstartDirectory}/${quickstartFile}`, 
           { encoding: 'utf8' }
         )
         if(!fileData)
