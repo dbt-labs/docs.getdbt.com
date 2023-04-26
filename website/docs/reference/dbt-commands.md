@@ -33,7 +33,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/develop-in-the
 
 </TabItem>
 
-<TabItem value="cli" label="Available commands in the CLI">
+<TabItem value="cli" label="CLI">
 
 Use the following dbt commands in the [CLI](/docs/core/about-the-cli) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
