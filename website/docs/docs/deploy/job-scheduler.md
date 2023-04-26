@@ -49,7 +49,7 @@ In dbt Cloud, each run of a job gets its own [Kubernetes pod](https://en.wikiped
 
 It's possible that jobs can consume a lot of memory in various situations, such as when bringing data back into dbt for processing, running a high thread count, or retrieving tables from schemas during docs generation.
 
-Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for more info on its architecture and how the data flows.
+Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for an architecture diagram and to learn how the data flows.
 
 
 <!-- leaving space for CI job treatment, runtime, warm up pods updates
