@@ -6,7 +6,7 @@ description: "Define model access with group capabilities"
 ---
 
 :::info New functionality
-This functionality is new in v1.5.
+This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6730)!
 :::
 
 :::info "Model access" is not "User access"
