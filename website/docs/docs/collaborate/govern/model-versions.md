@@ -10,10 +10,12 @@ This functionality is new in v1.5 — if you have thoughts, participate in [the 
 :::
 
 Versioning APIs is a hard problem in software engineering. The root of the challenge is that the producers and consumers of an API have competing incentives:
-- Producers of an API need the ability to make changes to its logic. There is a real cost associated with maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
-- Consumers of an API need to trust in its stability—their queries will keep working, and won't break without warning. There is a real cost associated with migrating to a newer API version, but unplanned migration is far costlier.
+- Producers of an API need the ability to modify its logic and structure. There is a real cost to maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
+- Consumers of an API need to trust in its stability: their queries will keep working, and won't break without warning. Although migrating to a newer API version incurs an expense, an unplanned migration is far costlier.
 
-The goal of model versions is not to make the problem go away, nor to pretend it's somehow easier or simpler than it is. Rather, we want dbt to provide tools that make it possible to tackle this problem, thoughtfully and head-on, and to develop standard patterns for solving it.
+When sharing a final dbt model with other teams or systems, that model is operating like an API. When the producer of that model needs to make significant changes, how can they avoid breaking the queries of its users downstream?
+
+Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal of is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
 
 ## Related documentation
 - [`versions`](resource-properties/versions)
@@ -40,7 +42,7 @@ There is a real trade-off that exists here—the cost to frequently migrate down
 
 ## When should you version a model?
 
-By enforcing a model's contract, dbt can help you catch unintended changes to column names and data types that could cause a big headache for downstream queriers. These changes, when made intentionally, would require a new model version. But many changes are not breaking, and don't require a new version—such as adding a new column, or fixing a bug in an existing column's calculation.
+By enforcing a model's contract, dbt can help you catch unintended changes to column names and data types that could cause a big headache for downstream queriers. If you're making these changes intentionally, you should create a new model version. If you're making a non-breaking change, you don't need a new version—such as adding a new column, or fixing a bug in an existing column's calculation.
 
 Of course, it's possible to change a model's definition in other ways—recalculating a column in a way that doesn't change its name, data type, or enforceable characteristics—but would substantially change the results seen by downstream queriers.
 
@@ -56,7 +58,7 @@ Rather than constantly adding a new version for each small change, you should op
 
 When you make updates to a model's source code—its logical definition, in SQL or Python, or related configuration—dbt can [compare your project to previous state](project-state), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production—all coordinated via your version control system.
 
-**Versioned models are different.** Defining model `versions` is appropriate when there are people, systems, and processes beyond your team's control, inside or outside of dbt. You can neither simply go migrate them all, nor break their queries on a whim. You need to do my part by offering a migration path, with clear diffs and deprecation dates.
+**Versioned models are different.** Defining model `versions` is appropriate when people, systems, and processes beyond your team's control, inside or outside of dbt, depend on your models. You can neither simply go migrate them all, nor break their queries on a whim. You need to offer a migration path, with clear diffs and deprecation dates.
 
 Multiple versions of a model will live in the same code repository at the same time, and be deployed into the same data environment simultaneously. This is similar to how web APIs are versioned: Multiple versions are live simultaneously, two or three, and not more). Over time, newer versions come online, and older versions are sunsetted .
 
@@ -67,14 +69,14 @@ Honestly, it's only a little bit different! There isn't much magic here, and tha
 You've always been able to copy-paste, create a new model file, and name it `dim_customers_v2.sql`. Why should you opt for a "real" versioned model instead?
 
 As the **producer** of a versioned model:
-1. You keep track of all live versions in one place, rather than scattering them throughout the codebase
-2. You can reuse the model's configuration, and highlight just the diffs between versions
-3. You can select models to build (or not) based on whether they're a `latest`, `prerelease`, or `old` version
-4. dbt will notify consumers of your versioned model when new versions become available, or (in the future) when they are slated for deprecation
+- You keep track of all live versions in one place, rather than scattering them throughout the codebase
+- You can reuse the model's configuration, and highlight just the diffs between versions
+- You can select models to build (or not) based on whether they're a `latest`, `prerelease`, or `old` version
+- dbt will notify consumers of your versioned model when new versions become available, or (in the future) when they are slated for deprecation
 
 As the **consumer** of a versioned model:
-1. You use a consistent `ref`, with the option of pinning to a specific live version
-2. You will be notified throughout the life cycle of a versioned model
+- You use a consistent `ref`, with the option of pinning to a specific live version
+- You will be notified throughout the life cycle of a versioned model
 
 All versions of a model preserve the model's original name. They are `ref`'d by that name, rather than the name of the file that they're defined in. By default, the `ref` resolves to the latest version (as declared by that model's maintainer), but you can also `ref` a specific version of the model, with a `version` keyword.
 
@@ -86,9 +88,9 @@ Let's say that `dim_customers` has three versions defined: `v2` is the "latest",
 | 2 | "latest"     | `ref('dim_customers', v=2)` **and** `ref('dim_customers')`  | `dim_customers_v2.sql` **or** `dim_customers.sql` | `analytics.dim_customers_v2` **and** `analytics.dim_customers` (recommended) |
 | 1 | "old"        |  `ref('dim_customers', v=1)`                           | `dim_customers_v1.sql`                          | `analytics.dim_customers_v1`                                             |
 
-As you'll see in the implementation section below, a versioned model can reuse the majority of its yaml properties and configuration. Each version needs to only say how it _differs_ from the shared set of attributes. This gives you, as the producer of a versioned model, the opportunity to highlight the differences across versions—which is otherwise difficult to detect in models with dozens or hundreds of columns—and to clearly track, in one place, all versions of the model which are currently live.
+As you'll see in the implementation section below, a versioned model can reuse the majority of its YAML properties and configuration. Each version needs to only say how it _differs_ from the shared set of attributes. This gives you, as the producer of a versioned model, the opportunity to highlight the differences across versions—which is otherwise difficult to detect in models with dozens or hundreds of columns—and to clearly track, in one place, all versions of the model which are currently live.
 
-dbt also supports [`version`-based selection](node-selection/methods#the-version-method). For example, you could define a [default yaml selector](node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
+dbt also supports [`version`-based selection](node-selection/methods#the-version-method). For example, you could define a [default YAML selector](node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
 
 <File name="selectors.yml">
 
@@ -292,7 +294,7 @@ versions:
 
 </File>
 
-Like with all config inheritance, any configs set _within_ the versioned model's definition (`.sql` or `.py` file) will take precedence over the configs set in yaml.
+Like with all config inheritance, any configs set _within_ the versioned model's definition (`.sql` or `.py` file) will take precedence over the configs set in YAML.
 
 ### Configuring database location with `alias`
 
@@ -399,8 +401,8 @@ from {{ dim_customers_v1 }}
 Of course, if one model version makes meaningful and substantive changes to logic in another, it may not be possible to optimize it in this way. At that point, the cost of human intuition and legibility is more important than the cost of recomputing similar transformations.
 
 We expect to develop more opinionated recommendations as teams start adopting model versions in practice. One recommended pattern we can envision: Prioritize the definition of the `latest_version`, and define other versions (old and prerelease) based on their diffs from the latest. How?
-- Define the properties and configuration for the latest version in the top-level model yaml, and the diffs for other versions below (via `include`/`exclude`)
+- Define the properties and configuration for the latest version in the top-level model YAML, and the diffs for other versions below (via `include`/`exclude`)
 - Where possible, define other versions as `select` transformations, which take the latest version as their starting point
-- When bumping the `latest_version`, migrate the SQL and yaml accordingly.
+- When bumping the `latest_version`, migrate the SQL and YAML accordingly.
 
 In the example above, the third point might be tricky. It's easier to _exclude_ `country_name`, than it is to add it back in. Instead, we might need to keep around the full original logic for `dim_customers.v1`—but materialize it as a `view`, to minimize the data warehouse cost of building it. If downstream queriers see slightly degraded performance, it's still significantly better than broken queries, and all the more reason to migrate to the new "latest" version.
