@@ -20,6 +20,8 @@ If you haven’t read [Nick & Roxi’s blog post about what’s coming in the fu
 
 With that said, it has come time for us to bid adieu to our beloved dbt_metrics package. **Upon the release of dbt-core v1.6 in late July, we will be deprecating support for the dbt_metrics package.** 
 
+<!--truncate-->
+
 With the upcoming integration with MetricFlow, we're on the cusp of a new era for the dbt Semantic Layer. And if we’re honest with ourselves, it is a brighter future than the dbt_metrics package would have been able to support.
 
 We know that some of you have been using the package to help serve your organizations. **We will be providing migration scripts to help reduce the complexity of upgrading to the new specs.** 
