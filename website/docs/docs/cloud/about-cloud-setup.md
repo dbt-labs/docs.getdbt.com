@@ -16,7 +16,9 @@ These settings are intended for dbt Cloud administrators. If you need a more det
 
 If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
 
-If you still need to create a dbt Cloud account, [sign up today](https://getdbt.com) on our North American servers or [contact us](https://getdbt.com/contact) for international options.
+## Prerequisites
+- To set up dbt Cloud, you'll need to have a dbt Cloud account. If you still need to create a dbt Cloud account, [sign up today](https://getdbt.com) on our North American servers or [contact us](https://getdbt.com/contact) for international options.
+- To have the best experience using dbt Cloud, we recommend you use modern and up-to-date web browsers like Chrome, Safari, Edge, and Firefox.
 
 
 
