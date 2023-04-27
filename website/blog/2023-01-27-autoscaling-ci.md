@@ -12,7 +12,7 @@ date: 2023-01-25
 is_featured: true
 ---
 
-:::tip Join concurrent CI checks beta
+:::tip Join CI beta
 Are you interested in early access to the latest features related to concurrent CI checks and auto cancelation of stale CI runs? [Express your interes](https://docs.google.com/forms/d/e/1FAIpQLSfjSIMkwcwhZ7pbxT5ouuEf7dwpzUwRoGYBCjQApJ2ssps0tg/viewform)t and we'll get in touch when the product is in beta
 :::
 
