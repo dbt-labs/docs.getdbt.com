@@ -12,7 +12,6 @@ date: 2023-04-26
 is_featured: true
 ---
 
-## Deprecating dbt_metrics
 
 Hello, my dear data people.
 
