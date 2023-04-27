@@ -30,7 +30,8 @@ If you’re interested in getting ahead of the transition, we recommend that you
 
 Before we get into the technical details around why we’re deprecating the package, I want to give a big thank you to everyone from the community who used or contributed to the dbt_metrics package over the last year. From the bottom of my heart, I’ve loved hearing from all of you and discussing ways to help you solve your organization's data problems. It’s been a dream come true to work in this area and it wouldn’t have been possible without all of you lovely folks.
 
-**Why We’re Deprecating**
+## Why we’re deprecating
+
 With all that said, let’s dig into the exact reasons why we’re deprecating the package.
 
 - **Duplicative Functionality:** MetricFlow and dbt_metrics share a common purpose – a simplified and standard way to generate SQL to query metrics. However, MetricFlow does this much more effectively, with advanced features and a more robust foundation.
