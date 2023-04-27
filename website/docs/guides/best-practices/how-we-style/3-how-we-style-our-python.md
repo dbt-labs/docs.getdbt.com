@@ -1,6 +1,6 @@
 ---
-title: How we style our python code
-id: 3-how-we-style-our-python-code
+title: How we style our python
+id: 3-how-we-style-our-python
 ---
 
 ## Python tooling

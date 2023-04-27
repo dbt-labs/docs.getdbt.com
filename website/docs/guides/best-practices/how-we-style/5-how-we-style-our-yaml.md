@@ -1,6 +1,6 @@
 ---
-title: How we style our YAML files
-id: 5-how-we-style-our-yaml-files
+title: How we style our YAML
+id: 5-how-we-style-our-yaml
 ---
 
 - Indents should be two spaces
