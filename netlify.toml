@@ -4,3 +4,6 @@
 # Temporary build command for preview
 [context."update-redirects-location"]
   command = "npm run build"
+
+[context."test-redirect-change-build"]
+  command = "npm run build"
