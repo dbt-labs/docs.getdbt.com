@@ -28,11 +28,9 @@ You can also check out the free [dbt Fundamentals course](https://courses.getdbt
 ## Prerequisites
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
 - You have a multi-tenant deployment in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
-
+- For Enterprise plan accounts, the user must have the Account Admin, Admin, or Developer [permission set](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions) within their user group to have `write` access to webhooks.
+- For Team plan accounts, as long as the user has a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/self-service-permissions), they will have `write` access to webhooks.
 ## Create a webhook subscription {#create-a-webhook-subscription}
-**Note on permissions:**
-- For Enterprise plan accounts, the user has to have the Account Admin, Admin, or Developer [permission set](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions) within their user group.
-- For Team plan accounts, as long as the user has a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/self-service-permissions), they will have write access to webhooks.
 
 From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).
 
