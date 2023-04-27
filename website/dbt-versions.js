@@ -28,7 +28,7 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "docs/reference/programmatic-invocations",
+    "page": "docs/build/groups",
     "firstVersion": "1.5",
   },
   {
@@ -44,6 +44,10 @@ exports.versionedPages = [
     "firstVersion": "1.5",
   },
   {
+    "page": "reference/programmatic-invocations",
+    "firstVersion": "1.5",
+  },
+  {
     "page": "reference/resource-configs/contract",
     "firstVersion": "1.5",
   },
@@ -52,7 +56,19 @@ exports.versionedPages = [
     "firstVersion": "1.5",
   },
   {
+    "page": "reference/resource-properties/access",
+    "firstVersion": "1.5",
+  },
+  {
     "page": "reference/resource-properties/constraints",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "reference/resource-properties/latest_version",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "reference/resource-properties/versions",
     "firstVersion": "1.5",
   },
   {
