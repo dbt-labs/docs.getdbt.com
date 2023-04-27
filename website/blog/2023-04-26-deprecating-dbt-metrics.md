@@ -47,4 +47,4 @@ With all that said, let’s dig into the exact reasons why we’re deprecating t
 
 So as we bid farewell to the `dbt_metrics` package, we say hello to MetricFlow and all the opportunities and advancements that come with it. This is the next era for the Semantic Layer. 
 
-With the migration tools and resources, we are committed to supporting you through this transition. We extend our gratitude to everyone who has used, contributed to, or supported dbt_metrics, and we invite you all to join us on this exciting journey toward a brighter future in data analytics. If you are interested in discussing, please come on over to #dbt-core-metrics!
+With the migration tools and resources coming soon, we're committed to supporting you through this transition. We extend our gratitude to everyone who has used, contributed to, or supported dbt_metrics, and we invite you all to join us on this exciting journey toward a brighter future in data analytics. If you're interested in discussing, please come on over to [#dbt-core-metrics](https://getdbt.slack.com/archives/C02CCBBBR1D)!
