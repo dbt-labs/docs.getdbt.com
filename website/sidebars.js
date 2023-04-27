@@ -759,15 +759,6 @@ const sidebarSettings = {
             "guides/best-practices/how-we-style/5-how-we-style-our-yaml",
           ],
         },
-        {
-          type: "category",
-          label: "How we style our dbt projects",
-          link: { type: 'doc', id: 'guides/best-practices/how-we-style/1-models' },
-          items: [
-            "guides/best-practices/how-we-style/1-models",
-            "guides/best-practices/how-we-style/2-yaml",
-          ]
-        }
       ],
     },
     {
