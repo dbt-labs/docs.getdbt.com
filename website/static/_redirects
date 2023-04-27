@@ -741,3 +741,4 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 301
 /docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 301
 
+/this-should-trigger-build / 301
