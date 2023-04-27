@@ -3,4 +3,4 @@
 
 # Temporary build command for preview
 [context.deploy-preview.environment]
-  command: "npm run build"
+  command = "npm run build"
