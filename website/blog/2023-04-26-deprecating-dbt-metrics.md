@@ -20,9 +20,9 @@ If you haven’t read Nick’s blog post about what’s coming in the future of 
 
 With that said, it has come time for us to bid adieu to our beloved dbt_metrics package. **Upon the release of dbt-core v1.6 in late July, we will be deprecating support for the dbt_metrics package.** 
 
-Change is the only constant in this world and we’re embracing that change with open arms. With the upcoming integration with MetricFlow, we're on the cusp of a new era for the dbt Semantic Layer. And if we’re honest with ourselves, it is a brighter future than the dbt_metrics package would have been able to support.
+With the upcoming integration with MetricFlow, we're on the cusp of a new era for the dbt Semantic Layer. And if we’re honest with ourselves, it is a brighter future than the dbt_metrics package would have been able to support.
 
-Of course, we know that some of you have been using the package to help serve your organizations. **We will be providing migration scripts to help reduce the complexity of upgrading to the new specs.** 
+We know that some of you have been using the package to help serve your organizations. **We will be providing migration scripts to help reduce the complexity of upgrading to the new specs.** 
 
 If you’re interested in getting ahead of the transition, we recommend that you start familiarizing yourself with the new spec in this [Github Discussion](https://github.com/dbt-labs/dbt-core/discussions/7456). If you’re even more curious, you can read the MetricFlow documentation, although some elements will change in the coming months as we work on the integration. I’m confident that, with a little time, you'll come to love MetricFlow far more than you did dbt_metrics.
 
@@ -43,6 +43,6 @@ With all that said, let’s dig into the exact reasons why we’re deprecating t
     3. **Continuous Integration (CI)**: By integrating these validation steps into your CI pipeline, MetricFlow helps catch any issues early in the development process. This results in fewer surprises, a more reliable dbt pipeline, and increased confidence in your DAG.
 - **A Flexible Foundation for Integration**: MetricFlow is a more flexible foundation through which we can provide our integration partners with the tools to build differentiated experiences. This opens the door to exciting collaborations and makes it easier for our partners to build.
 
-So as we bid farewell to the `dbt_metrics` package, we say hello to MetricFlow and all the opportunities and advancements that come with it. This the next era for the Semantic Layer and we believe it will benefit all of you. 
+So as we bid farewell to the `dbt_metrics` package, we say hello to MetricFlow and all the opportunities and advancements that come with it. This the next era for the Semantic Layer. 
 
 With the migration tools and resources, we are committed to supporting you through this transition. We extend our gratitude to everyone who has used, contributed to, or supported dbt_metrics, and we invite you all to join us on this exciting journey toward a brighter future in data analytics. If you are interested in discussing, please come on over to #dbt-core-metrics!
