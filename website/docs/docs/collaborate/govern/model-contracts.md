@@ -23,7 +23,7 @@ While this is ideal for quick and iterative development, for some models, consta
 ## Where are contracts supported?
 
 At present, model contracts are supported for:
-- SQL models (not yet Python)
+- SQL models. Contracts are not yet supported for Python models.
 - Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`)
 - Certain data platforms, but the supported and enforced `constraints` vary by platform.
 
