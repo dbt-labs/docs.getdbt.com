@@ -13,6 +13,7 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <Snippet src="sl-prerequisites" />
 
+
 <Snippet src="sl-considerations-banner" />
 
 
