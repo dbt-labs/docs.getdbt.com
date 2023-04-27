@@ -6,7 +6,7 @@ description: "Model contracts define a set of parameters validated during transf
 ---
 
 :::info New functionality
-This functionality is new in v1.5.
+This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6726)!
 :::
 
 ## Related documentation
@@ -25,7 +25,7 @@ While this is ideal for quick and iterative development, for some models, consta
 At present, model contracts are supported for:
 - SQL models. Contracts are not yet supported for Python models.
 - Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`). Views offer limited support for column names and data types, but not `constraints`. Contracts are not supported for `ephemeral`-materialized models.
-- The most commonly used [data platforms](/docs/supported-data-platforms), including Snowflake, BigQuery, Databricks, and Redshift. However, the specific `constraints` that are supported or enforced can vary depending on the platform.
+- Certain data platforms, but the supported and enforced `constraints` vary by platform.
 
 ## How to define a contract
 
