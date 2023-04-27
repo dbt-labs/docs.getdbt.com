@@ -136,7 +136,6 @@ However, there are some limitations when using env vars with Snowflake OAuth Con
 - You can't use them in the account/host field, but they can be used for database, warehouse, and role. 
 
 Something to note, if you supply an environment variable in the account/host field, Snowflake OAuth Connection will **fail** to connect. This happens because the field doesn't pass through Jinja rendering, so dbt Cloud simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which is an invalid hostname.
-This field does not pass through jinja rendering, so dbt Cloud simply passes the literal `env_var` code into a URL string like `{{ env_var("DBT_ACCOUNT_HOST_NAME") }}.snowflakecomputing.com`, which will fail because that is not a valid hostname.
 :::
 
 #### Audit your run metadata
