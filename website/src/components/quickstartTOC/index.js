@@ -37,6 +37,7 @@ function QuickstartTOC() {
       steps.forEach((step) => {
         const wrapper = document.createElement("div");
         wrapper.classList.add("step-wrapper");
+        wrapper.classList.add("hidden");
 
         // Move the step and all its siblings into the its own div
         step.parentNode.insertBefore(wrapper, step);
@@ -48,16 +49,17 @@ function QuickstartTOC() {
           wrapper.setAttribute("data-step", step.id);
         } while (currentElement && currentElement.tagName !== "H2");
       });
+
     }
+
   }, [mounted]);
+
 
   return (
     <ul className={style.tocList}>
       {tocData.map((step) => (
         <li key={step.id}>
-          <a href={`#${step.id}`}>
             <span>{step.stepNumber}</span> {step.title}
-          </a>
         </li>
       ))}
     </ul>

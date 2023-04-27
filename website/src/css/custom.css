@@ -1822,4 +1822,14 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
 .quickstart-container {
   display: flex;
   position: relative;
+  width: 100%;
+}
+
+
+.quickstart-container .step-wrapper {
+  
+}
+
+.quickstart-container .step-wrapper.hidden {
+  display: none;
 }
