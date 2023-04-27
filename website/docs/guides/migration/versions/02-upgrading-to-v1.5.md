@@ -28,7 +28,7 @@ This release includes significant new features, and rework to `dbt-core`'s CLI a
 
 :::
 
-Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other global configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882)). We recommend setting via env var or CLI flag instead.
+Setting `log-path` and `target-path` in `dbt_project.yml` has been deprecated for consistency with other invocation-specific runtime configs ([dbt-core#6882](https://github.com/dbt-labs/dbt-core/issues/6882)). We recommend setting via env var or CLI flag instead.
 
 The `dbt list` command will now include `INFO` level logs by default. Previously, the `list` command (and _only_ the `list` command) had `WARN`-level stdout logging, to support piping its results to [`jq`](https://stedolan.github.io/jq/manual/), a file, or another process. To achieve that goal, you can use either of the following parameters:
 - `dbt --log-level warn list` (recommended; equivalent to previous default)

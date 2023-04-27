@@ -20,6 +20,8 @@ models:
 
 </File>
 
+Access modifiers may be applied to models one-by-one in yaml properties. It is not currently possible to configure `access` for multiple models at once. A group or subfolder contains models with a variety of access levels, and designating a model with `access: public` should always be a conscious and intentional choice.
+
 ## Definition
 The access level of the model you are declaring properties for.
 
