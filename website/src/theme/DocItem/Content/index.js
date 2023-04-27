@@ -60,10 +60,10 @@ export default function DocItemContent({children}) {
       {isQuickstartGuide ? (
         <>
           <div className={clsx('quickstart-container')}>
-          <QuickstartTOC />
-            <div>
-              <MDXContent>{children}</MDXContent>
-            </div>
+            <QuickstartTOC />
+              <div>
+                <MDXContent>{children}</MDXContent>
+              </div>
           </div>
         </>
       ) : (
