@@ -12,6 +12,10 @@ date: 2023-01-25
 is_featured: true
 ---
 
+:::tip Join concurrent CI checks beta
+Are you interested in early access to the latest features related to concurrent CI checks and auto cancelation of stale CI runs? [Express your interes](https://docs.google.com/forms/d/e/1FAIpQLSfjSIMkwcwhZ7pbxT5ouuEf7dwpzUwRoGYBCjQApJ2ssps0tg/viewform)t and we'll get in touch when the product is in beta
+:::
+
 Before I delve into what makes this particular solution "intelligent", let me back up and introduce CI, or continuous integration. CI is a software development practice that ensures we automatically test our code prior to merging into another branch. The idea being that we can mitigate the times when something bad happens in production, which is something that I'm sure we can all resonate with!
 
 <!--truncate-->
