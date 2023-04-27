@@ -33,7 +33,7 @@ Before we get into the technical details around why we’re deprecating the pack
 
 With all that said, let’s dig into the exact reasons why we’re deprecating the package.
 
-- **Duplicative Functionality:** MetricFlow and dbt_metrics share a common purpose – a simplified and standard way to generate SQL to query metrics. However, MetricFlow does this much more effectively, with advanced features and a more robust foundation.
+- **Duplicative functionality:** MetricFlow and dbt_metrics share a common purpose – a simplified and standard way to generate SQL to query metrics. However, MetricFlow does this much more effectively, with advanced features and a more robust foundation.
 - **The Jinja Trap:** Relying on Jinja macros for generating SQL in dbt_metrics proved to be sub-optimal and restrictive. This approach limited the package's potential and made it difficult to scale and customize for each new metric type and piece of functionality that we wanted to add. In contrast, MetricFlow's Python implementation offers a far more flexible and expressive solution.
     - *To further emphasize that MetricFlow is years ahead of dbt_metrics, it actually used to use Jinja templates but moved away from them in a complete overhaul in order to increase flexibility.*
 - **Focusing on a Dynamic Semantic Layer:** We feel strongly that the power of a Semantic Layer lies in its ability to serve the organization dynamically - to answer the user’s first, second, and third questions. As such, **MetricFlow will not support materializing metric queries as static database objects.** Instead, we will focus on caching functionality that increases performance without reducing capability.
