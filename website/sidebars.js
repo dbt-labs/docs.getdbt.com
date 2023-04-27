@@ -71,7 +71,7 @@ const sidebarSettings = {
               type: "category",
               label: "Manage access",
               items: [
-                "docs/cloud/manage-access/about-access",
+                "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/seats-and-users",
                 {
                   type: "category",
@@ -459,7 +459,7 @@ const sidebarSettings = {
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
             "reference/resource-properties/description",
-            "reference/resource-properties/latest-version",
+            "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
@@ -476,6 +476,7 @@ const sidebarSettings = {
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/contract",
             "reference/resource-configs/grants",
+            "reference/resource-configs/group",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
