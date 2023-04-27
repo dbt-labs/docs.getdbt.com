@@ -45,6 +45,6 @@ With all that said, let’s dig into the exact reasons why we’re deprecating t
     3. **Continuous Integration (CI)**: By integrating these validation steps into your CI pipeline, MetricFlow helps catch any issues early in the development process. This results in fewer surprises, a more reliable dbt pipeline, and increased confidence in your DAG.
 - **A flexible foundation for integration**: MetricFlow is a more flexible foundation through which we can provide our integration partners with the tools to build differentiated experiences. This opens the door to exciting collaborations and makes it easier for our partners to build.
 
-So as we bid farewell to the `dbt_metrics` package, we say hello to MetricFlow and all the opportunities and advancements that come with it. This the next era for the Semantic Layer. 
+So as we bid farewell to the `dbt_metrics` package, we say hello to MetricFlow and all the opportunities and advancements that come with it. This is the next era for the Semantic Layer. 
 
 With the migration tools and resources, we are committed to supporting you through this transition. We extend our gratitude to everyone who has used, contributed to, or supported dbt_metrics, and we invite you all to join us on this exciting journey toward a brighter future in data analytics. If you are interested in discussing, please come on over to #dbt-core-metrics!
