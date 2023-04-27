@@ -5,6 +5,8 @@ sidebar_label: "Model access"
 description: "Define model access with group capabilities"
 ---
 
+<VersionBlock lastVersion="1.5">
+
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6730)!
 :::
@@ -17,6 +19,9 @@ The two concepts will be closely related, as we develop multi-project collaborat
 - Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.
 - Users in the same dbt Cloud account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
 :::
+
+</VersionBlock>
+
 
 ## Related documentation
 * [`groups`](build/groups)
