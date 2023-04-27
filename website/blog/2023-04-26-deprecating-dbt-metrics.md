@@ -1,5 +1,5 @@
 ---
-title: "Why we're deprecating dbt_metrics"
+title: "Why we're deprecating the dbt_metrics package"
 description: "We are bidding adieu to dbt_metrics and moving forward with MetricFlow! Discover how this new source-available project lays the foundation for the dbt Semantic Layer. Let's dive in!"
 slug: deprecating-dbt-metrics
 
