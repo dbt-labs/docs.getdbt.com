@@ -241,7 +241,7 @@ GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
 | Name | Description | Possible Values |
 | --- | --- | --- |
 | `data` | List of available webhooks for the specified dbt Cloud account ID. |  |
-| `id` | The webhook ID. This is a universally unique identifier (UUID) that is unique across all regions, including multi-tenant and single tenant |  |
+| `id` | The webhook ID. This is a universally unique identifier (UUID) that's unique across all regions, including multi-tenant and single-tenant |  |
 | `account_identifier` | The unique identifier for _your_ dbt Cloud account. |  |
 | `name` | Name of the outbound webhook. |  |
 | `description` | Description of the webhook. |  |
