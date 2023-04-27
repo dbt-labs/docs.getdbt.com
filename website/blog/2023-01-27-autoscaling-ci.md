@@ -12,7 +12,7 @@ date: 2023-01-25
 is_featured: true
 ---
 
-:::warning Deprecation Notice
+:::warning Deprecation Notice:  Update 4/27/2023
 dbt Cloud is now offering concurrent CI checks and auto cancellation of stale CI jobs as a native feature of the platform.  If you're interested, use [this form](https://docs.google.com/forms/d/e/1FAIpQLSfjSIMkwcwhZ7pbxT5ouuEf7dwpzUwRoGYBCjQApJ2ssps0tg/viewform) to sign up for our beta.
 :::
 
