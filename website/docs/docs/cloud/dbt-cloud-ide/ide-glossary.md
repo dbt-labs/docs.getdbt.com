@@ -29,7 +29,7 @@ The basic layout of the IDE landing page with the following areas:
 4. **File Explorer &mdash;** The File Explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the File Editor. 
     - Click and drag files between directories to move files. 
-    - Right click a file to access the sub-menu options like copy file name, copy as `ref`, rename, delete.
+    - Right click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
     - **Note**: To perform these actions, the user must not be in `read-only` mode, which generally happens when the user is viewing the default branch.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
       * Unsaved (•) — The IDE detects unsaved changes to your file/folder
