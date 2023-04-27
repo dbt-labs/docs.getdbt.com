@@ -34,4 +34,4 @@ I have learned solutions to technical problems from community members. I have al
 
 ## Anything else interesting you want to tell us?
 
-Outside of work, I play the piano and sing in the choir. I also write a faith based blog, [The Writings of David Uforo](https://daviduforo.wordpress.com/).You may want to check out.  
+Outside of work, I play the piano and sing in the choir. I also write a faith based blog, [The Writings of David Uforo](https://daviduforo.wordpress.com/). You may want to check out.  
