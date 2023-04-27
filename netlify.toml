@@ -2,5 +2,5 @@
   functions = "functions"
 
 # Temporary build command for preview
-[context.deploy-preview]
+[context."update-redirects-location"]
   command = "npm run build"
