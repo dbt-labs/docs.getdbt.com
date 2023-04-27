@@ -476,6 +476,7 @@ const sidebarSettings = {
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/contract",
             "reference/resource-configs/grants",
+            "reference/resource-configs/group",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",

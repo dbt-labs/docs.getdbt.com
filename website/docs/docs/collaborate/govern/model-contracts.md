@@ -25,7 +25,7 @@ While this is ideal for quick and iterative development, for some models, consta
 At present, model contracts are supported for:
 - SQL models. Contracts are not yet supported for Python models.
 - Models materialized as `table`, `view`, and `incremental` (with `on_schema_change: append_new_columns`). Views offer limited support for column names and data types, but not `constraints`. Contracts are not supported for `ephemeral`-materialized models.
-- The most commonly used [data platforms](/docs/supported-data-platforms), including Snowflake, BigQuery, Databricks, and Redshift. However, the specific `constraints` that are supported or enforced can vary depending on the platform.
+- Certain data platforms, but the supported and enforced `constraints` vary by platform.
 
 ## How to define a contract
 
