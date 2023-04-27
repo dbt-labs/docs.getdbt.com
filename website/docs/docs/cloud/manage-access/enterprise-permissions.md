@@ -43,6 +43,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - View and modify Account Settings
 - Use the IDE
 - Run and cancel jobs
+- Create, delete, and modify outbound webhook subscriptions
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
@@ -95,6 +96,7 @@ Admins can perform the following actions in projects they are assigned to:
 - Create, delete, and modify Group Memberships
 - Use the IDE
 - Run and cancel jobs
+- Create, delete, and modify outbound webhook subscriptions
 
 ### Git Admin
 - **Has permissions on:** Authorized projects
@@ -158,6 +160,7 @@ Developers can perform the following actions in projects they are assigned to:
 - Run and cancel jobs
 - Use the IDE
 - Configure personal developer credentials
+- Create, delete, and modify outbound webhook subscriptions
 
 ### Analyst
 - **Has permissions on:** Authorized projects
