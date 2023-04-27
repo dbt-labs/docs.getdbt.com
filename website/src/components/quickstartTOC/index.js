@@ -2,11 +2,25 @@ import React, { useEffect, useState } from "react";
 import style from "./styles.module.css";
 
 function QuickstartTOC() {
+  const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
+  const [activeStep, setActiveStep] = useState(1);
 
   useEffect(() => {
     // Get all h2 for each step in the guide
     const steps = document.querySelectorAll("h2");
+    const quickstartContainer = document.querySelector(".quickstart-container");
+    const snippetContainer = document.querySelectorAll(
+      ".snippet_src-components-snippet-styles-module"
+    );
+
+    // undwrap the snippet container and remove the div leaving the children
+    snippetContainer.forEach((snippet) => {
+      const parent = snippet.parentNode;
+      while (snippet.firstChild)
+        parent.insertBefore(snippet.firstChild, snippet);
+      parent.removeChild(snippet);
+    });
 
     // Create an array of objects with the id and title of each step
     const data = Array.from(steps).map((step) => ({
@@ -15,29 +29,27 @@ function QuickstartTOC() {
       stepNumber: Array.from(steps).indexOf(step) + 1,
     }));
 
-    // Update state with the steps acquired from guide
     setTocData(data);
+    setMounted(true);
 
-    // For each step found, wrap the step along with the content that follows it in a div until the next step is found
-    steps.forEach((step, i) => {
-      const nextStep = steps[i + 1];
-
-      // If there is a next step, wrap the step and the content that follows it in a div
-      if (nextStep) {
-        const content = step.nextElementSibling;
+    // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
+    if (mounted) {
+      steps.forEach((step) => {
         const wrapper = document.createElement("div");
-        const stepId = step.id;
+        wrapper.classList.add("step-wrapper");
 
-        // Add a data-step attribute to the step wrapper
-        // This is used to show/hide the step content
-        wrapper.setAttribute("data-step", stepId);
-
+        // Move the step and all its siblings into the its own div
         step.parentNode.insertBefore(wrapper, step);
-        wrapper.appendChild(step);
-        wrapper.appendChild(content);
-      }
-    });
-  }, []);
+        let currentElement = step;
+        do {
+          const nextElement = currentElement.nextElementSibling;
+          wrapper.appendChild(currentElement);
+          currentElement = nextElement;
+          wrapper.setAttribute("data-step", step.id);
+        } while (currentElement && currentElement.tagName !== "H2");
+      });
+    }
+  }, [mounted]);
 
   return (
     <ul className={style.tocList}>
