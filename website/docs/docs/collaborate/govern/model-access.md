@@ -58,6 +58,16 @@ Some models are implementation details, meant for reference only within their gr
 | protected | same project (or installed as package) |
 | public    | any group, package or project          |
 
+If you try to reference a model outside of its supported access, you will see an error:
+
+```shell
+$ dbt run -s marketing_model
+...
+dbt.exceptions.DbtReferenceError: Parsing Error
+  Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
+  which is not allowed because the referenced node is private to the finance group.
+```
+
 By default, all models are `protected`. This means that other models in the same project can reference them, regardless of their group. This is largely for backwards compatability when assigning groups to an existing set of models, as there may already be existing references across group assignments.
 
 However, it is recommended to set the access modifier of a new model to `private` to prevent other project resources from taking dependencies on models not intentionally designed for sharing across groups.
@@ -88,7 +98,7 @@ models:
   # but it shouldn't be exposed elsewhere
   - name: stg_customer__survey_results
     group: customer_success
-    access: public
+    access: protected
 ```
 
 </File>

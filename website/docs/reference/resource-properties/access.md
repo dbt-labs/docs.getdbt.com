@@ -33,6 +33,21 @@ Some models (not all) are designed to be referenced through the [ref](ref) funct
 | protected | same project/package          |
 | public    | any group, package or project |
 
+If you try to reference a model outside of its supported access, you will see an error:
+
+```shell
+$ dbt run -s marketing_model
+...
+dbt.exceptions.DbtReferenceError: Parsing Error
+  Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
+  which is not allowed because the referenced node is private to the finance group.
+```
+
 ## Default
 
 By default, all models are "protected." This means that other models in the same project can reference them.
+
+## Related docs
+
+* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Group configuration](/docs/reference/resource-configs/group)
