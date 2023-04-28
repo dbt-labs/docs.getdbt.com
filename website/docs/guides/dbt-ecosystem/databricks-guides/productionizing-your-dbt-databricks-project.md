@@ -10,7 +10,12 @@ To get started, let's revisit the deployment environment created for your produc
 
 In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, [data lakehouses](https://www.databricks.com/product/data-lakehouse) can be designed with separate environments. The *production* environment comprises the relations (i.e., schemas, tables, and views) that your end users query or leverage, often in a BI tool or ML model.
 
-In dbt Cloud, environments come in two flavors: deployment and development. Deployment environments define the settings used when jobs created within that environment are executed. In contrast, development environments determine the settings used in the dbt Cloud IDE for a specific dbt Cloud project. Each dbt Cloud project can have multiple deployment environments, but only one development environment per user.
+In dbt Cloud, [environments](/docs/collaborate/environments/dbt-cloud-environments) come in two flavors:
+
+- Deployment &mdash; Defines the settings used for executing jobs created within that environment.
+- Development. &mdash; Determine the settings used in the dbt Cloud IDE for a particular dbt Cloud project. 
+
+Each dbt Cloud project can have multiple deployment environments, but only one development environment per user.
 
 If you have been following our series of guides, you should have already created:
 
