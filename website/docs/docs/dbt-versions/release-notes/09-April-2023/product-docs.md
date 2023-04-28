@@ -21,7 +21,7 @@ Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleo
   * [connection page](/docs/cloud/connect-data-platform/connect-starburst-trino), 
   * [set up page](/reference/warehouse-setups/trino-setup), and [config page](https://docs.getdbt.com/reference/resource-configs/trino-configs). 
 - Enhanced [dbt Cloud jobs page](/docs/deploy/dbt-cloud-job) and section to include conceptual info on the queue time, improvements made around it, and about failed jobs. 
-- Check out the April dbt [Cloud release notes](https://docs.getdbt.com/docs/dbt-versions/dbt-cloud-release-notes)
+- Check out the April dbt [Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes)
 
 ## 🎯 Core projects 
 
