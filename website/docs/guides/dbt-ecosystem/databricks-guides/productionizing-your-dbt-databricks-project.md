@@ -17,7 +17,6 @@ In dbt Cloud, [environments](/docs/collaborate/environments/dbt-cloud-environmen
 
 Each dbt Cloud project can have multiple deployment environments, but only one development environment per user.
 
-If you have been following our series of guides, you should have already created:
 
 1. Two catalogs in Databricks: *dev* and *prod*.
 2. A Databricks Service Principal to run your production jobs.
