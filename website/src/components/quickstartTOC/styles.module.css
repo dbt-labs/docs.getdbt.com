@@ -30,3 +30,26 @@
     color: var(--color-light-teal);
     border: solid 1px var(  --color-light-teal);
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+  }
+
+  .buttonContainer a {
+    padding: .5rem;
+    cursor: pointer;
+    transition-property: color, background, border-color;
+    transition-duration: var(--ifm-button-transition-duration);
+    transition-timing-function: var(--ifm-transition-timing-default);
+    border: 2px solid var(--color-light-teal);
+    border-radius: 5px;
+    width: 125px;
+    text-align: center;
+  }
+
+  .buttonContainer a:hover {
+    background: var(--color-light-teal);
+    color: var(--color-white)
+  }

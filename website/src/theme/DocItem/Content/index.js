@@ -61,7 +61,7 @@ export default function DocItemContent({children}) {
         <>
           <div className={clsx('quickstart-container')}>
             <QuickstartTOC />
-              <div>
+              <div className={clsx('step-container')}>
                 <MDXContent>{children}</MDXContent>
               </div>
           </div>
