@@ -140,7 +140,7 @@ For more on performance tuning, see our guide on [How to Optimize and Troublesho
 
 As you become more experienced with dbt Cloud and Databricks, you might want to explore advanced techniques to further enhance your data pipeline and improve the way you manage your data transformations. The topics in this section are not requirements but will help you harden your production environment for greater security, efficiency, and accessibility.
 
-### Refreshing Your Data With Databricks Workflows
+### Refreshing your data with Databricks Workflows
 
 The dbt Cloud job scheduler offers several ways to trigger your jobs. If your dbt transformations are just one step of a larger orchestration workflow, use the dbt Cloud API to trigger your job from Databricks Workflows.
 
