@@ -15,8 +15,10 @@ function QuickstartTOC() {
     // Get all h2 for each step in the guide
     const steps = document.querySelectorAll("h2");
     const stepContainer = document.querySelector(".step-container");
+
+    
     const snippetContainer = document.querySelectorAll(
-      ".snippet_src-components-snippet-styles-module"
+      ".snippet"
     );
 
     // undwrap the snippet container and remove the div leaving the children
