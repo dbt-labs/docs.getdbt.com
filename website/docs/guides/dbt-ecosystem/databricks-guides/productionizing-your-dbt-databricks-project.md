@@ -136,7 +136,7 @@ If your jobs are taking longer than expected, use the [model timing](https://doc
 
 For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 
-## Advanced Considerations
+## Advanced considerations
 
 As you become more experienced with dbt Cloud and Databricks, you might want to explore advanced techniques to further enhance your data pipeline and improve the way you manage your data transformations. The topics in this section are not requirements but will help you harden your production environment for greater security, efficiency, and accessibility.
 
