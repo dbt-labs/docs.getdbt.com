@@ -109,9 +109,11 @@ function QuickstartTOC() {
   useEffect(() => {
     const introDiv = document.querySelector(".intro");
 
-    if (activeStep >= 1) {
+    if (activeStep > 0 && introDiv) {
       introDiv.classList.add("hidden");
-    } 
+    } else if (activeStep === 0 && introDiv) {
+        introDiv.classList.remove("hidden");
+    }
 
   }, [activeStep]);
 
