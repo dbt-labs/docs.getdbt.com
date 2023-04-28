@@ -79,7 +79,7 @@ dbt allows you to write [tests](/docs/build/tests) for your data pipeline, which
 2. **Development**: Running tests during development ensures that your code changes do not break existing assumptions, enabling developers to iterate faster by catching problems immediately after writing code.
 3. **CI checks**: Automated CI jobs run and test your pipeline end-to end when a pull request is created, providing confidence to developers, code reviewers, and end users that the proposed changes are reliable and will not cause disruptions or data quality issues
 
-Your CI job will ensure that the models build properly and pass any tests applied to them. We recommend creating a separate *test* environment and having a dedicated service principal. This will ensure the temporary schemas created during CI tests are in their own catalog and cannot unintentionally expose data to other users. Repeat the [steps](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) used to create your *prod* environment to create a *test* environment. After setup, you should have:
+Your CI job will ensure that the models build properly and pass any tests applied to them. We recommend creating a separate *test* environment and having a dedicated service principal. This will ensure the temporary schemas created during CI tests are in their own catalog and cannot unintentionally expose data to other users. Repeat the [steps](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) used to create your *prod* environment to create a *test* environment. After setup, you should have:
 
 - A catalog called *test*
 - A service principal called *dbt_test_sp*
