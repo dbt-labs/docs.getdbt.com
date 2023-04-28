@@ -7,7 +7,9 @@ sidebar_label: "Quickstart"
 
 # dbt Semantic Layer quickstart
 
-<Snippet src="sl-public-preview-banner" />
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes which will enable more complex metric definitions and efficient querying. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog.
+:::
 
 ## Public Preview 
     
