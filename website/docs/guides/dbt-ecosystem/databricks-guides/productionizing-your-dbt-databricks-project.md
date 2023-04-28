@@ -19,7 +19,6 @@ Each dbt Cloud project can have multiple deployment environments, but only one d
 
 
 1. Two catalogs in Databricks: *dev* and *prod*.
-2. A Databricks Service Principal to run your production jobs.
 
 If any of the above elements are missing, refer to the instructions in the [setup guide](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) to catch up.
 
