@@ -39,7 +39,7 @@ To deploy our data transformation workflows, we will utilize [dbt Cloud’s buil
 
 Leveraging dbt Cloud's job scheduler allows data teams to own the entire transformation workflow. You don't need to learn and maintain additional tools for orchestration or rely on another team to schedule code written by your team. This end-to-end ownership simplifies the deployment process and accelerates the delivery of new data products.
 
-Let’s [create a job](http://incremental_predicates/) in dbt Cloud that will transform data in our Databricks *prod* catalog.
+Let’s [create a job](/docs/deploy/dbt-cloud-job#create-and-schedule-jobs) in dbt Cloud that will transform data in our Databricks *prod* catalog.
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 2. **Name** the job “Daily refresh”.
