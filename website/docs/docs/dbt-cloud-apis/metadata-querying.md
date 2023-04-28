@@ -35,10 +35,9 @@ There are several illustrative example queries in this documentation. You can se
 
 
 ## Reasonable use
-To maintain performance stability and prevent abuse, all Metadata (GraphQL) API requests are subject to request rate and response size limits.
-
-The current rate limit is 200 requests within a minute for a given IP address. If exceed this limit, you'll receive an HTTP 429 response status.
-
+To maintain performance stability and prevent abuse, Metadata (GraphQL) API usage is subject to request rate and response size limits.
+- The current request rate limit is 200 requests within a minute for a given IP address. If a user exceeds this limit, they will receive an HTTP 429 response status.
+- The current response size limit is 5,000 nodes. The depth of the graph should not exceed three levels. A user can paginate up to 500 items per query.
 
 ## GraphQL API explorer
 
