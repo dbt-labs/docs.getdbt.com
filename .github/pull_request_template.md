@@ -21,5 +21,5 @@ Adding new pages (delete if not applicable):
 
 Removing or renaming existing pages (delete if not applicable):
 - [ ] Remove page from `website/sidebars.js`
-- [ ] Add an entry `_redirects`
+- [ ] Add an entry `website/static/_redirects`
 - [ ] [Ran link testing](https://github.com/dbt-labs/docs.getdbt.com#running-the-cypress-tests-locally) to update the links that point to the deleted page

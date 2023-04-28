@@ -1,13 +1,7 @@
 ---
-title: "Upgrading to v1.5 (prerelease!)"
+title: "Upgrading to v1.5 (latest)"
 description: New features and changes in dbt Core v1.5
 ---
-
-:::info
-v1.5 is currently available as a **release candidate**. Try it out, and let us know if you encounter any bugs!
-
-Planned release date: April 27, 2023
-:::
 
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
