@@ -7,7 +7,7 @@ sidebar_position: 8
 tags: [Apr-2023, product-docs]
 ---
 
-Here are some docs.getdbt.com highlights from the last few weeks:
+Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! We want to share some highlights introduced to docs.getdbt.com in the last month:
 
 ## 🔎 Discoverability
 
