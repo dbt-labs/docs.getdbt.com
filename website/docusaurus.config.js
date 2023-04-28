@@ -68,15 +68,15 @@ var siteSettings = {
       //debug: true,
     },
     announcementBar: {
-      id: "staging",
+      id: "biweekly-demos",
       content:
-        "See what's new in dbt — join us at Staging on April 26!",
+        "Join our weekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
-    announcementBarActive: false,
-    announcementBarLink: "https://www.getdbt.com/resources/staging-april-2023/?utm_medium=internal&utm_source=docs&utm_campaign=q1-2024_staging_ex&utm_content=staging____&utm_term=knowledge-builder_all__",
+    announcementBarActive: true,
+    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "david-effiong",
