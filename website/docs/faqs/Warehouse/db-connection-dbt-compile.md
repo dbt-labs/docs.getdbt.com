@@ -1,6 +1,6 @@
 ---
 title: Why does dbt compile need a data platform connection?
-description: "`dbt compile` needs a data platform connection to perform introspective queries and generate the compiled SQL"
+description: "`dbt compile` needs a data platform connection because the work it does depends on the current state of your warehouse"
 sidebar_label: "Why does dbt compile need a data platform connection?"
 id: db-connection-dbt-compile
 ---
