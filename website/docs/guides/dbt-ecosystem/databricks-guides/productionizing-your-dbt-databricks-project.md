@@ -12,8 +12,8 @@ Welcome to the third installment of our comprehensive series on optimizing and d
 
 If you don't have any of the following requirements, refer to the instructions in the [setup guide](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) to catch up:
 
-- You have [set up your Databricks and dbt Cloud environments](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project)
-- You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks)
+- You have [set up your Databricks and dbt Cloud environments](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project).
+- You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 - You have created two catalogs in Databricks: *dev* and *prod*.
 - You have created  Databricks Service Principal to run your production jobs.
 - You have at least one [deployment environment](docs/collaborate/environments/dbt-cloud-environments) in dbt Cloud.
@@ -27,13 +27,9 @@ In software engineering, environments play a crucial role in allowing engineers 
 In dbt Cloud, [environments](/docs/collaborate/environments/dbt-cloud-environments) come in two flavors:
 
 - Deployment &mdash; Defines the settings used for executing jobs created within that environment.
-- Development. &mdash; Determine the settings used in the dbt Cloud IDE for a particular dbt Cloud project. 
+- Development &mdash; Determine the settings used in the dbt Cloud IDE for a particular dbt Cloud project. 
 
 Each dbt Cloud project can have multiple deployment environments, but only one development environment per user.
-
-
-1. Two catalogs in Databricks: *dev* and *prod*.
-
 
 ## Create and schedule a production job
 
@@ -46,14 +42,14 @@ Leveraging dbt Cloud's job scheduler allows data teams to own the entire transfo
 Let’s [create a job](http://incremental_predicates/) in dbt Cloud that will transform data in our Databricks *prod* catalog.
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
-2. **Name** the job “Daily refresh”
-3. Set the **Environment** to your *production* environment
+2. **Name** the job “Daily refresh”.
+3. Set the **Environment** to your *production* environment.
     - This will allow the job to inherit the catalog, schema, credentials, and environment variables defined in the [setup guide](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project#defining-your-dbt-deployment-environment).
 4. Under **Execution Settings**
     - Check the **Generate docs on run** checkbox to configure the job to automatically generate project docs each time this job runs. This will ensure your documentation stays evergreen as models are added and modified.
     - Check the **Run on source freshness** checkbox to configure dbt [source freshness](https://docs.getdbt.com/docs/deploy/source-freshness) as the first step of this job. Your sources will need to be configured to [snapshot freshness information](https://docs.getdbt.com/docs/build/sources#snapshotting-source-data-freshness) for this to drive meaningful insights.
     
-    Add the following **Commands:**
+    Add the following three **Commands:**
     
         - `dbt source freshness`
             - This will check if any sources are stale. We don’t want to recompute models with data that hasn’t changed since our last run.
