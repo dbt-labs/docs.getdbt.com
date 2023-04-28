@@ -120,7 +120,7 @@ By adding [status tiles](/docs/deploy/dashboard-status-tiles) to your BI dashboa
 
 ### Notifications
 
-Setting up [notifications](https://docs.getdbt.com/docs/deploy/job-notifications) in dbt Cloud allows you to receive alerts via email or a Slack channel whenever a run ends. This ensures that the appropriate teams are notified and can take action promptly when jobs fail or are canceled. To set up notifications:
+Setting up [notifications](/docs/deploy/job-notifications) in dbt Cloud allows you to receive alerts via email or a Slack channel whenever a run ends. This ensures that the appropriate teams are notified and can take action promptly when jobs fail or are canceled. To set up notifications:
 
 1. Navigate to your dbt Cloud project settings.
 2. Select the "Notifications" tab.
