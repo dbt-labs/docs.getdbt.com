@@ -22,7 +22,7 @@ To get started, let's revisit the deployment environment created for your produc
 
 ### Deployment environments
 
-In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, [data lakehouses](https://www.databricks.com/product/data-lakehouse) can be designed with separate environments. The *production* environment comprises the relations (i.e., schemas, tables, and views) that your end users query or leverage, often in a BI tool or ML model.
+In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, you can design [data lakehouses](https://www.databricks.com/product/data-lakehouse) with separate environments. The _production_ environment includes the relations (schemas, tables, and views) that end users query or use, typically in a BI tool or ML model.
 
 In dbt Cloud, [environments](/docs/collaborate/environments/dbt-cloud-environments) come in two flavors:
 
