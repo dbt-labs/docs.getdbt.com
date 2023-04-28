@@ -6,7 +6,7 @@ description: "Learn how to deliver models to end users and use best practices to
 ---
 
 
-Welcome to the third installment of our comprehensive series on optimizing and deploying your data pipelines using Databricks and dbt Cloud. By now, you should have successfully [set up your Databricks and dbt Cloud environments](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) and [optimized your dbt models for peak performance](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks). In this guide, we'll dive into delivering these models to end users while incorporating best practices to ensure that your production data remains reliable and timely.
+Welcome to the third installment of our comprehensive series on optimizing and deploying your data pipelines using Databricks and dbt Cloud. In this guide, we'll dive into delivering these models to end users while incorporating best practices to ensure that your production data remains reliable and timely.
 
 ## Prerequisites
 
