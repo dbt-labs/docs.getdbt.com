@@ -195,7 +195,7 @@ dbt docs is a documentation site generated from your dbt project that provides a
 
 Unity Catalog is a unified governance solution for your lakehouse. It provides a data explorer that can be used for discovery of datasets that have not been defined in dbt. The data explorer also captures [column-level lineage](https://docs.databricks.com/data-governance/unity-catalog/data-lineage.html#capture-and-explore-lineage),  when you need to trace the lineage of a specific column.
 
-To get the most out of both tools, you can use the [persist docs config](https://docs.getdbt.com/reference/resource-configs/persist_docs) to push table and column descriptions written in dbt into Unity Catalog, making the information easily accessible to both tools' users. Keeping the descriptions in dbt ensures they are version controlled and can be reproduced after a table is dropped.
+To get the most out of both tools, you can use the [persist docs config](/reference/resource-configs/persist_docs) to push table and column descriptions written in dbt into Unity Catalog, making the information easily accessible to both tools' users. Keeping the descriptions in dbt ensures they are version controlled and can be reproduced after a table is dropped.
 
 **Additional resources:**
 
