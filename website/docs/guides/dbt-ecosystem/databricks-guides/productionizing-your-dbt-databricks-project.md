@@ -140,7 +140,7 @@ The five key steps for troubleshooting dbt Cloud issues are:
 4. Check for problems in compiled files and logs.
 5. Seek help from the [dbt Cloud support team](/docs/dbt-support) if needed.
 
-Consult the [Debugging Errors documentation](https://docs.getdbt.com/guides/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
+Consult the [Debugging errors documentation](/guides/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
 
 To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run History" tab in your dbt Cloud project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/dbt-cloud-job#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
 
