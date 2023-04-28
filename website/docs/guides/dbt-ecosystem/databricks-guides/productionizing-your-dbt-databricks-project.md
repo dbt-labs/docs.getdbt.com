@@ -99,7 +99,7 @@ Let’s create the Slim CI job:
     Add the following **Command:**
     
     - `dbt build –select state:modified+`
-        - Combining [state](https://docs.getdbt.com/docs/deploy/project-state) with the defer option above, our job will use the production environment’s models upstream of the modified resources rather than rebuild models that have already been tested and are already running in production. The modified resources and downstream models will be built in a temporary schema in the *test* catalog.
+        - Combining [state](/docs/deploy/project-state) with the defer option above, our job will use the production environment’s models upstream of the modified resources rather than rebuild models that have already been tested and are already running in production. The modified resources and downstream models will be built in a temporary schema in the *test* catalog.
 5. Under **Triggers**, select the **Continuous Integration (CI)** tab and check the **Run on Pull Requests?** box.
     - This will automatically kick off the job when a developer creates a pull request via the dbt Cloud IDE and display the status of the job within the git provider’s interface.
     - Note that this option will only be available if your git repo has a native integration with dbt Cloud (currently GitHub, GitLab, and Azure DevOps).
