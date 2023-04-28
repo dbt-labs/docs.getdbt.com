@@ -146,7 +146,7 @@ To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run Histo
 
 If your jobs are taking longer than expected, use the [model timing](https://docs.getdbt.com/docs/deploy/dbt-cloud-job#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
 
-For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
+For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 
 ## Advanced considerations
 
