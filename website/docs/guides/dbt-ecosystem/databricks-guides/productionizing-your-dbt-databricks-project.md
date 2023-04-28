@@ -21,7 +21,6 @@ If you have been following our series of guides, you should have already created
 
 1. Two catalogs in Databricks: *dev* and *prod*.
 2. A Databricks Service Principal to run your production jobs.
-3. At least one deployment environment in dbt Cloud.
 
 If any of the above elements are missing, refer to the instructions in the [setup guide](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) to catch up.
 
