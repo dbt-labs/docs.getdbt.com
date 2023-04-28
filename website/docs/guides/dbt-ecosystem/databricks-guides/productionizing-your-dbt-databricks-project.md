@@ -197,7 +197,7 @@ Unity Catalog is a unified governance solution for your lakehouse. It provides a
 
 To get the most out of both tools, you can use the [persist docs config](/reference/resource-configs/persist_docs) to push table and column descriptions written in dbt into Unity Catalog, making the information easily accessible to both tools' users. Keeping the descriptions in dbt ensures they are version controlled and can be reproduced after a table is dropped.
 
-**Additional resources:**
+## Additional resources
 
 - [Advanced deployments course](https://courses.getdbt.com/courses/advanced-deployment) if you want a deeper dive into these topics
 - [Autoscaling CI: The intelligent Slim CI](https://docs.getdbt.com/blog/intelligent-slim-ci)
