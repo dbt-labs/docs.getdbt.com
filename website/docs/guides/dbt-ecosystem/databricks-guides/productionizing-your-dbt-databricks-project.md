@@ -85,7 +85,7 @@ Your CI job will ensure that the models build properly and pass any tests applie
 - A service principal called *dbt_test_sp*
 - A new dbt Cloud environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend using dbt Cloud’s [defer](https://docs.getdbt.com/docs/deploy/cloud-ci-job#deferral-and-state-comparison) feature to set up a [Slim CI](https://docs.getdbt.com/docs/deploy/cloud-ci-job#configuring-a-slim-ci-job) job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse.
+We recommend using dbt Cloud’s [defer](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) feature to set up a [Slim CI](/docs/deploy/cloud-ci-job#configuring-a-slim-ci-job) job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse.
 
 Let’s create the Slim CI job:
 
