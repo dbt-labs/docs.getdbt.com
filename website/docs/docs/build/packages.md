@@ -48,7 +48,6 @@ packages:
 
 </File>
 
-
 <Changelog>
 
 - **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
