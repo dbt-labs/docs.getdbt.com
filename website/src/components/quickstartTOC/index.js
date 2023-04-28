@@ -1,3 +1,6 @@
+// This component is used to build the functionality
+// of the Quickstart Guides page.
+
 import React, { useState, useEffect } from "react";
 import style from "./styles.module.css";
 
@@ -101,15 +104,18 @@ function QuickstartTOC() {
     }
   }, [mounted]);
 
-  useEffect(() => {
-    // Hide the intro if active step is greater than 0
-    const introDiv = document.querySelector(".intro");
-    
-    if (activeStep > 0) {
-        introDiv.classList.add("hidden");
-    }
-}, [activeStep]);
 
+  // Hide the intro if active step is greater than 0
+  useEffect(() => {
+    const introDiv = document.querySelector(".intro");
+
+    if (activeStep >= 1) {
+      introDiv.classList.add("hidden");
+    } 
+
+  }, [activeStep]);
+
+  // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
     const currentStep = document.querySelector(
       `.step-wrapper[data-step='${currentStepIndex + 1}']`
@@ -117,21 +123,10 @@ function QuickstartTOC() {
     const newStep = document.querySelector(
       `.step-wrapper[data-step='${newStepIndex + 1}']`
     );
-    const introDiv = document.querySelector(".intro");
 
-    if (currentStep) {
-      currentStep.classList.add("hidden");
-    }
-    if (newStep) {
-      newStep.classList.remove("hidden");
-    }
-    if (introDiv) {
-      if (newStepIndex === 0) {
-        introDiv.classList.remove("hidden");
-      } else {
-        introDiv.classList.add("hidden");
-      }
-    }
+    currentStep?.classList.add("hidden");
+    newStep?.classList.remove("hidden");
+
     setActiveStep(newStepIndex);
   };
 
@@ -147,11 +142,25 @@ function QuickstartTOC() {
     }
   };
 
+  // Handle TOC click
+  const handleTocClick = (e) => {
+    const stepNumber = e.target.dataset.step;
+    const step = document.querySelector(
+      `.step-wrapper[data-step='${stepNumber}']`
+    );
+
+    const currentStep = document.querySelector(".step-wrapper:not(.hidden)");
+
+    currentStep?.classList.add("hidden");
+    step?.classList.remove("hidden");
+
+    setActiveStep(stepNumber);
+  };
 
   return (
     <ul className={style.tocList}>
       {tocData.map((step) => (
-        <li key={step.id}>
+        <li key={step.id} data-step={step.stepNumber} onClick={handleTocClick}>
           <span>{step.stepNumber}</span> {step.title}
         </li>
       ))}
