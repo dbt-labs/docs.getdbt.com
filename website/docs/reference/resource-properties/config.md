@@ -4,7 +4,9 @@ datatype: "{dictionary}"
 ---
 
 <Changelog>
-    - **v0.21.0** introduced the `config` property
+
+- **v0.21.0** introduced the `config` property
+
 </Changelog>
 
 <Tabs
