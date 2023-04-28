@@ -116,7 +116,7 @@ The deployment monitor in dbt Cloud offers a higher-level view of your run histo
 
 <Lightbox src="/img/guides/databricks-guides/deployment_monitor_dbx.png" title="The Deployment Monitor Shows Job Status Over Time Across Environments" />
 
-By adding [status tiles](https://docs.getdbt.com/docs/deploy/dashboard-status-tiles) to your BI dashboards, you can give stakeholders visibility into the health of your data pipeline without leaving their preferred interface. Status tiles instill confidence in your data and help prevent unnecessary inquiries or context switching. To implement dashboard status tiles, you'll need to have dbt docs with [exposures](https://docs.getdbt.com/docs/build/exposures) defined.
+By adding [status tiles](/docs/deploy/dashboard-status-tiles) to your BI dashboards, you can give stakeholders visibility into the health of your data pipeline without leaving their preferred interface. Status tiles instill confidence in your data and help prevent unnecessary inquiries or context switching. To implement dashboard status tiles, you'll need to have dbt docs with [exposures](/docs/build/exposures) defined.
 
 ### Notifications
 
