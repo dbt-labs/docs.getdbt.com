@@ -50,15 +50,14 @@ Let’s [create a job](http://incremental_predicates/) in dbt Cloud that will tr
     - Check the **Run on source freshness** checkbox to configure dbt [source freshness](https://docs.getdbt.com/docs/deploy/source-freshness) as the first step of this job. Your sources will need to be configured to [snapshot freshness information](https://docs.getdbt.com/docs/build/sources#snapshotting-source-data-freshness) for this to drive meaningful insights.
     
     Add the following three **Commands:**
-    
-        - `dbt source freshness`
-            - This will check if any sources are stale. We don’t want to recompute models with data that hasn’t changed since our last run.
-        - `dbt test --models source:*`
-            - This will test the data quality our source data, such as checking making sure ID fields are unique and not null. We don’t want bad data getting into production models.
-        - `dbt build --exclude source:* --fail-fast`
-            - dbt build is more efficient than issuing separate commands for dbt run and dbt test separately because it will run then test each model before continuing.
-            - We are excluding source data because we already tested it in step 2.
-            - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
+    - `dbt source freshness`
+        - This will check if any sources are stale. We don’t want to recompute models with data that hasn’t changed since our last run.
+    - `dbt test --models source:*`
+        - This will test the data quality our source data, such as checking making sure ID fields are unique and not null. We don’t want bad data getting into production models.
+    - `dbt build --exclude source:* --fail-fast`
+        - dbt build is more efficient than issuing separate commands for dbt run and dbt test separately because it will run then test each model before continuing.
+        - We are excluding source data because we already tested it in step 2.
+        - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 5. Under **Triggers**, use the toggle to configure your job run on a schedule. You can enter specific days and timing or create a custom cron schedule.
     - If you want your dbt Cloud job scheduled by another orchestrator, like Databricks Workflows, see the Advanced Considerations section below.
 
@@ -114,6 +113,8 @@ Keeping a close eye on your dbt Cloud jobs is crucial for maintaining a robust a
 The [run history](https://docs.getdbt.com/docs/deploy/dbt-cloud-job) dashboard in dbt Cloud provides a detailed view of all your project's job runs, offering various filters to help you focus on specific aspects. This is an excellent tool for developers who want to check recent runs, verify overnight results, or track the progress of running jobs. To access it, select `Run History` from the `Deploy` menu.
 
 The deployment monitor in dbt Cloud offers a higher-level view of your run history, enabling you to gauge the health of your data pipeline over an extended period of time. This feature includes information on run durations and success rates, allowing you to identify trends in job performance, such as increasing run times or more frequent failures. The deployment monitor also highlights jobs in progress, queued, and recent failures. To access the deployment monitor click on the dbt logo in the top left corner of the dbt Cloud UI.
+
+<Lightbox src="/img/guides/databricks-guides/deployment_monitor_dbx.png" title="The Deployment Monitor Shows Job Status Over Time Across Environments" />
 
 By adding [status tiles](https://docs.getdbt.com/docs/deploy/dashboard-status-tiles) to your BI dashboards, you can give stakeholders visibility into the health of your data pipeline without leaving their preferred interface. Status tiles instill confidence in your data and help prevent unnecessary inquiries or context switching. To implement dashboard status tiles, you'll need to have dbt docs with [exposures](https://docs.getdbt.com/docs/build/exposures) defined.
 
