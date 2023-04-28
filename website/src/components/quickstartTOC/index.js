@@ -7,7 +7,7 @@ import style from "./styles.module.css";
 function QuickstartTOC() {
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   console.log("activeStep", activeStep);
 
@@ -115,6 +115,11 @@ function QuickstartTOC() {
         introDiv.classList.remove("hidden");
     }
 
+    // Scroll to the top of the page if the content is longer than the viewport
+    if (window.scrollY > 0) {
+        window.scrollTo(0, 0);
+    }
+
   }, [activeStep]);
 
   // Handle updating the active step
@@ -146,7 +151,8 @@ function QuickstartTOC() {
 
   // Handle TOC click
   const handleTocClick = (e) => {
-    const stepNumber = e.target.dataset.step;
+    let stepNumber = parseInt(e.target.dataset.step);
+
     const step = document.querySelector(
       `.step-wrapper[data-step='${stepNumber}']`
     );
