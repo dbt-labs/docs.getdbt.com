@@ -22,6 +22,7 @@ import MDXContent from '@theme/MDXContent';
  * If so, use component rather than header
 */
 import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
+import styles from './styles.module.css';
 
 function useSyntheticTitle() {
   const {metadata, frontMatter, contentTitle} = useDoc();
@@ -44,18 +45,23 @@ export default function DocItemContent({children}) {
       {syntheticTitle && (
         <>
           {isSpotlightMember ? (
-            <CommunitySpotlightCard
-              frontMatter={frontMatter} 
-              isSpotlightMember={true} 
-            />
+            <div className={styles.spotlightMemberContain}>
+              <CommunitySpotlightCard
+                frontMatter={frontMatter} 
+                isSpotlightMember={true} 
+              />
+              <MDXContent>{children}</MDXContent>
+            </div>
           ) : (
-            <header>
-              <Heading as="h1">{syntheticTitle}</Heading>
-            </header>
+            <>
+              <header>
+                <Heading as="h1">{syntheticTitle}</Heading>
+              </header>
+              <MDXContent>{children}</MDXContent>
+            </>
           )}
         </>
       )}
-      <MDXContent>{children}</MDXContent>
     </div>
   );
 }
