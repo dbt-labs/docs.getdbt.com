@@ -35,7 +35,7 @@ There are several illustrative example queries in this documentation. You can se
 
 
 ## Reasonable use
-All Metadata (GraphQL) API requests are subject to request rate and response size limiting to prevent abuse and help ensure performance and stability. 
+To maintain performance stability and prevent abuse, all Metadata (GraphQL) API requests are subject to request rate and response size limits.
 
 The current rate limit is 200 requests within a minute for a given IP address. If a user exceeds this limit, they will receive a HTTP 429 response status.
 
