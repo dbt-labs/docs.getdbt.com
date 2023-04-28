@@ -59,7 +59,7 @@ Let’s [create a job](/docs/deploy/dbt-cloud-job#create-and-schedule-jobs) in d
         - We are excluding source data because we already tested it in step 2.
         - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 5. Under **Triggers**, use the toggle to configure your job to [run on a schedule](/docs/deploy/job-triggers). You can enter specific days and timing or create a custom cron schedule. 
-    - If you want your dbt Cloud job scheduled by another orchestrator, like Databricks Workflows, see the Advanced Considerations section below.
+    - If you want your dbt Cloud job scheduled by another orchestrator, like Databricks Workflows, see the [Advanced Considerations](#advanced-considerations) section below.
 
 This is just one example of an all-or-nothing command list designed to minimize wasted compute. The [job command list](https://docs.getdbt.com/docs/deploy/job-commands) and [selectors](https://docs.getdbt.com/reference/node-selection/syntax) provide a lot of flexibility on how your DAG will execute. You may want to design yours to continue running certain models if others fail. You may want to set up multiple jobs to refresh models at different frequencies. See our [Job Creation Best Practices discourse](https://discourse.getdbt.com/t/job-creation-best-practices-in-dbt-cloud-feat-my-moms-lasagna/2980) for more job design suggestions.
 
