@@ -59,8 +59,8 @@ Below is the complete file tree of the project we’ll be working through. Don�
 ```markdown
 jaffle_shop
 ├── README.md
-├── analysis
-├── data
+├── analyses
+├── seeds
 │   └── employees.csv
 ├── dbt_project.yml
 ├── macros
