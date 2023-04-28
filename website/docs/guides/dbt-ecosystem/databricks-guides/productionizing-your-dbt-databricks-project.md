@@ -63,7 +63,7 @@ Let’s [create a job](/docs/deploy/dbt-cloud-job#create-and-schedule-jobs) in d
 
 This is just one example of an all-or-nothing command list designed to minimize wasted computing. The [job command list](/docs/deploy/job-commands) and [selectors](/reference/node-selection/syntax) provide a lot of flexibility on how your DAG will execute. You may want to design yours to continue running certain models if others fail. You may want to set up multiple jobs to refresh models at different frequencies. See our [Job Creation Best Practices discourse](https://discourse.getdbt.com/t/job-creation-best-practices-in-dbt-cloud-feat-my-moms-lasagna/2980) for more job design suggestions.
 
-After your job is set up and runs successfully, configure your **[project artifacts](https://docs.getdbt.com/docs/deploy/artifacts)** to to make this job inform your production docs site and data sources dashboard that can be reached from the UI.
+After your job is set up and runs successfully, configure your **[project artifacts](/docs/deploy/artifacts)** to make this job inform your production docs site and data sources dashboard that can be reached from the UI.
 
 This will be our main production job to refresh data that will be used by end users. Another job everyone should include in their dbt project is a continuous integration job.
 
