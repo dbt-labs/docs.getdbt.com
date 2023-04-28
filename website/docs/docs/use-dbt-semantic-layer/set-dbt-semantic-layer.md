@@ -4,6 +4,9 @@ id: setup-dbt-semantic-layer
 description: "You can set up the dbt Semantic Layer in dbt Cloud."
 sidebar_label: "Set up the dbt Semantic Layer"
 ---
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes which will enable more complex metric definitions and efficient querying. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog.
+:::
 
 With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 
