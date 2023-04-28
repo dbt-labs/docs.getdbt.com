@@ -40,14 +40,14 @@ Let’s [create a job](http://incremental_predicates/) in dbt Cloud that will tr
     
     Add the following **Commands:**
     
-    - `dbt source freshness`
-        - This will check if any sources are stale. We don’t want to recompute models with data that hasn’t changed since our last run.
-    - `dbt test --models source:*`
-        - This will test the data quality our source data, such as checking making sure ID fields are unique and not null. We don’t want bad data getting into production models.
-    - `dbt build --exclude source:* --fail-fast`
-        - dbt build is more efficient than issuing separate commands for dbt run and dbt test separately because it will run then test each model before continuing.
-        - We are excluding source data because we already tested it in step 2.
-        - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
+        - `dbt source freshness`
+            - This will check if any sources are stale. We don’t want to recompute models with data that hasn’t changed since our last run.
+        - `dbt test --models source:*`
+            - This will test the data quality our source data, such as checking making sure ID fields are unique and not null. We don’t want bad data getting into production models.
+        - `dbt build --exclude source:* --fail-fast`
+            - dbt build is more efficient than issuing separate commands for dbt run and dbt test separately because it will run then test each model before continuing.
+            - We are excluding source data because we already tested it in step 2.
+            - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
 5. Under **Triggers**, use the toggle to configure your job run on a schedule. You can enter specific days and timing or create a custom cron schedule.
     - If you want your dbt Cloud job scheduled by another orchestrator, like Databricks Workflows, see the Advanced Considerations section below.
 
