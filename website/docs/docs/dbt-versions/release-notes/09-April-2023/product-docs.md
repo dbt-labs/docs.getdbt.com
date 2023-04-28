@@ -2,7 +2,7 @@
 title: "April 2023 product docs updates"
 id: "april-product-docs"
 description: "April 2023: "
-sidebar_label: "Update: product docs updates"
+sidebar_label: "Update: product docs changes"
 sidebar_position: 8
 tags: [Apr-2023, product-docs]
 ---
