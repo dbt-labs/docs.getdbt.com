@@ -59,4 +59,4 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 5. Run your query by pressing the blue query button in the top-right of the Operation editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>.
+<Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer."/>
