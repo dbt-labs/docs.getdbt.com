@@ -7,7 +7,7 @@ import style from "./styles.module.css";
 function QuickstartTOC() {
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
 
   console.log("activeStep", activeStep);
 
@@ -31,11 +31,12 @@ function QuickstartTOC() {
     const data = Array.from(steps).map((step, index) => ({
       id: step.id,
       title: step.innerText,
-      stepNumber: index + 1,
+      stepNumber: index,
     }));
 
     setTocData(data);
     setMounted(true);
+    setActiveStep(0);
 
     // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
     if (mounted) {
@@ -51,7 +52,7 @@ function QuickstartTOC() {
           const nextElement = currentElement.nextElementSibling;
           wrapper.appendChild(currentElement);
           currentElement = nextElement;
-          wrapper.setAttribute("data-step", index + 1);
+          wrapper.setAttribute("data-step", index);
         } while (currentElement && currentElement.tagName !== "H2");
       });
 
@@ -69,7 +70,7 @@ function QuickstartTOC() {
       stepContainer.appendChild(stepWrapper);
 
       const initialStep = document.querySelector(
-        `.step-wrapper[data-step='${activeStep + 1}']`
+        `.step-wrapper[data-step='${activeStep}']`
       );
       if (initialStep) {
         initialStep.classList.remove("hidden");
@@ -125,14 +126,14 @@ function QuickstartTOC() {
   // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
     const currentStep = document.querySelector(
-      `.step-wrapper[data-step='${currentStepIndex + 1}']`
+      `.step-wrapper[data-step='${currentStepIndex}']`
     );
     const newStep = document.querySelector(
-      `.step-wrapper[data-step='${newStepIndex + 1}']`
+      `.step-wrapper[data-step='${newStepIndex}']`
     );
 
     currentStep?.classList.add("hidden");
-    newStep?.classList.remove("hidden");
+    newStep?.classList.remove("hidden");  
 
     setActiveStep(newStepIndex);
   };
@@ -167,9 +168,9 @@ function QuickstartTOC() {
 
   return (
     <ul className={style.tocList}>
-      {tocData.map((step) => (
-        <li key={step.id} data-step={step.stepNumber} onClick={handleTocClick}>
-          <span>{step.stepNumber}</span> {step.title}
+      {tocData.map((step, index) => (
+        <li key={step.id} data-step={index} onClick={handleTocClick}>
+          <span>{step.stepNumber + 1}</span> {step.title}
         </li>
       ))}
     </ul>
