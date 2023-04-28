@@ -24,7 +24,7 @@ If any of the above elements are missing, refer to the instructions in the [setu
 
 With your deployment environment set up, it's time to create a production job to run in your *prod* environment.
 
-To deploy our data transformation workflows, we will utilize dbt Cloud’s built-in job scheduler. The job scheduler is designed specifically to streamline your dbt project deployments and runs, ensuring that your data pipelines are easy to create, monitor, and modify efficiently.
+To deploy our data transformation workflows, we will utilize [dbt Cloud’s built-in job scheduler](/docs/deploy/dbt-cloud-job). The job scheduler is designed specifically to streamline your dbt project deployments and runs, ensuring that your data pipelines are easy to create, monitor, and modify efficiently.
 
 Leveraging dbt Cloud's job scheduler allows data teams to own the entire transformation workflow. You don't need to learn and maintain additional tools for orchestration or rely on another team to schedule code written by your team. This end-to-end ownership simplifies the deployment process and accelerates the delivery of new data products.
 
