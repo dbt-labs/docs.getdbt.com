@@ -6,7 +6,7 @@ sidebar_label: "Available integrations"
 ---
 
 :::info Coming soon
-The dbt Semantic Layer is undergoing some sophisticated changes which will enable more complex metric definitions and efficient querying. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog.
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions, efficient querying, and changes to the [dbt_metrics package](https://docs.getdbt.com/blog/deprecating-dbt-metrics). For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog.
 :::
 
 A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics &mdash; from Business Intelligence tools to notebooks, data catalogs, and more.
