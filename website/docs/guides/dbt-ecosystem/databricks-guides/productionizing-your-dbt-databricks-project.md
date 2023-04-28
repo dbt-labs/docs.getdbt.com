@@ -1,4 +1,9 @@
-# Productionizing your dbt Databricks Project
+---
+title: Productionizing your dbt Databricks project
+id: "productionizing-your-dbt-databricks-project"
+sidebar_label: "Productionizing your dbt Databricks project"
+description: "Learn how to deliver models to end users and use best practices to maintain production data" 
+---
 
 # Intro
 
