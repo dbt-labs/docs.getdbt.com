@@ -4,6 +4,16 @@
 
 Welcome to the third installment of our comprehensive series on optimizing and deploying your data pipelines using Databricks and dbt Cloud. By now, you should have successfully [set up your Databricks and dbt Cloud environments](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) and [optimized your dbt models for peak performance](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks). In this guide, we'll dive into delivering these models to end users while incorporating best practices to ensure that your production data remains reliable and timely.
 
+## Prerequisites
+
+If you don't have any of the following requirements, refer to the instructions in the [setup guide](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) to catch up:
+
+- You have [set up your Databricks and dbt Cloud environments](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project)
+- You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks)
+- You have created two catalogs in Databricks: *dev* and *prod*.
+- You have created  Databricks Service Principal to run your production jobs.
+- You have at least one [deployment environment](docs/collaborate/environments/dbt-cloud-environments) in dbt Cloud.
+
 To get started, let's revisit the deployment environment created for your production data.
 
 ### Deployment environments
