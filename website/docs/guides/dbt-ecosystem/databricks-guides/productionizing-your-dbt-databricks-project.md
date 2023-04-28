@@ -185,7 +185,7 @@ END
 
 It is recommended not to grant users the ability to read tables and views referenced in the dynamic view. Instead, assign your dbt sources to dynamic views rather than raw data, allowing developers to run end-to-end builds and source freshness commands securely.
 
-Using the same sources for development and deployment  environments enables testing with the same volumes and frequency you will see in production. However, this may cause development runs to take longer than necessary. To address this issue, consider using the Jinja variable target.name to [limit data when working in the development environment](https://docs.getdbt.com/reference/dbt-jinja-functions/target#use-targetname-to-limit-data-in-dev).
+Using the same sources for development and deployment environments enables testing with the same volumes and frequency you will see in production. However, this may cause development runs to take longer than necessary. To address this issue, consider using the Jinja variable target.name to [limit data when working in the development environment](/reference/dbt-jinja-functions/target#use-targetname-to-limit-data-in-dev).
 
 ## Pairing dbt Docs and Unity Catalog
 
