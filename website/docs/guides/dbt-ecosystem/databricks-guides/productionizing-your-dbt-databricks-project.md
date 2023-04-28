@@ -6,7 +6,7 @@ Welcome to the third installment of our comprehensive series on optimizing and d
 
 To get started, let's revisit the deployment environment created for your production data.
 
-## Deployment environments
+### Deployment environments
 
 In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, [data lakehouses](https://www.databricks.com/product/data-lakehouse) can be designed with separate environments. The *production* environment comprises the relations (i.e., schemas, tables, and views) that your end users query or leverage, often in a BI tool or ML model.
 
@@ -20,7 +20,7 @@ If you have been following our series of guides, you should have already created
 
 If any of the above elements are missing, refer to the instructions in the [setup guide](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project) to catch up.
 
-# Create and schedule a production job
+## Create and schedule a production job
 
 With your deployment environment set up, it's time to create a production job to run in your *prod* environment.
 
@@ -57,7 +57,7 @@ After your job is set up and runs successfully, configure your **[project artifa
 
 This will be our main production job to refresh data that will be used by end users. Another job everyone should include in their dbt project is a continuous integration job.
 
-## Add a CI job
+### Add a CI job
 
 CI/CD, or Continuous Integration and Continuous Deployment/Delivery, has become a standard practice in software development for rapidly delivering new features and bug fixes while maintaining high quality and stability. dbt Cloud enables you to apply these practices to your data transformations.
 
@@ -96,7 +96,7 @@ Let’s create the Slim CI job:
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 
-## Monitor your jobs
+### Monitor your jobs
 
 Keeping a close eye on your dbt Cloud jobs is crucial for maintaining a robust and efficient data pipeline. By monitoring job performance and quickly identifying potential issues, you can ensure that your data transformations run smoothly. dbt Cloud provides three entry points to monitor the health of your project: run history, deployment monitor, and status tiles.
 
@@ -106,7 +106,7 @@ The deployment monitor in dbt Cloud offers a higher-level view of your run histo
 
 By adding [status tiles](https://docs.getdbt.com/docs/deploy/dashboard-status-tiles) to your BI dashboards, you can give stakeholders visibility into the health of your data pipeline without leaving their preferred interface. Status tiles instill confidence in your data and help prevent unnecessary inquiries or context switching. To implement dashboard status tiles, you'll need to have dbt docs with [exposures](https://docs.getdbt.com/docs/build/exposures) defined.
 
-## Notifications
+### Notifications
 
 Setting up [notifications](https://docs.getdbt.com/docs/deploy/job-notifications) in dbt Cloud allows you to receive alerts via email or a Slack channel whenever a run ends. This ensures that the appropriate teams are notified and can take action promptly when jobs fail or are canceled. To set up notifications:
 
@@ -116,7 +116,7 @@ Setting up [notifications](https://docs.getdbt.com/docs/deploy/job-notifications
 
 If you require notifications through other means than email or Slack, you can use dbt Cloud's outbound [webhooks](https://docs.getdbt.com/docs/deploy/webhooks) feature to relay job events to other tools. Webhooks enable you to [integrate dbt Cloud with a wide range of SaaS applications](https://docs.getdbt.com/guides/orchestration/webhooks), extending your pipeline’s automation into other systems.
 
-## Troubleshooting
+### Troubleshooting
 
 When a disruption occurs in your production pipeline, it's essential to know how to troubleshoot issues effectively to minimize downtime and maintain a high degree of trust with your stakeholders.
 
@@ -136,11 +136,11 @@ If your jobs are taking longer than expected, use the [model timing](https://doc
 
 For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 
-# Advanced Considerations
+## Advanced Considerations
 
 As you become more experienced with dbt Cloud and Databricks, you might want to explore advanced techniques to further enhance your data pipeline and improve the way you manage your data transformations. The topics in this section are not requirements but will help you harden your production environment for greater security, efficiency, and accessibility.
 
-## Refreshing Your Data With Databricks Workflows
+### Refreshing Your Data With Databricks Workflows
 
 The dbt Cloud job scheduler offers several ways to trigger your jobs. If your dbt transformations are just one step of a larger orchestration workflow, use the dbt Cloud API to trigger your job from Databricks Workflows.
 
@@ -156,7 +156,7 @@ Inserting dbt Cloud jobs into a Databricks Workflows allows you to chain togethe
 
 To trigger your dbt Cloud job from Databricks, follow the instructions in our [Databricks Workflows to run dbt Cloud jobs guide](https://docs.getdbt.com/guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs).
 
-## Data masking
+### Data masking
 
 Our [Best Practices for dbt and Unity Catalog](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices) guide recommends using separate catalogs *dev* and *prod* for development and deployment environments, with Unity Catalog and dbt Cloud handling configurations and permissions for environment isolation. Ensuring security while maintaining efficiency in your development and deployment environments is crucial. Additional security measures may be necessary to protect sensitive data, such as personally identifiable information (PII).
 
