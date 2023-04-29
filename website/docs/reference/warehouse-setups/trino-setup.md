@@ -7,7 +7,7 @@ meta:
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
-  cloud_support: 'Supported (Beta)'
+  cloud_support: 'Supported'
   min_supported_version: 'n/a'
   slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
@@ -18,7 +18,6 @@ meta:
 :::info
 If you're using dbt Cloud, you don't need a `profiles.yml` file. This file is only for CLI users. To connect your data platform to dbt Cloud, refer to [About data platforms](docs/cloud/connect-data-platform/about-connections). 
 :::
-
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

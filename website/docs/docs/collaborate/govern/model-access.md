@@ -5,6 +5,8 @@ sidebar_label: "Model access"
 description: "Define model access with group capabilities"
 ---
 
+<VersionBlock lastVersion="1.5">
+
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6730)!
 :::
@@ -17,6 +19,9 @@ The two concepts will be closely related, as we develop multi-project collaborat
 - Users with access to develop in a dbt project can view and modify **all** models in that project, including private models.
 - Users in the same dbt Cloud account _without_ access to develop in a project cannot view that project's private models, and they can take a dependency on its public models only.
 :::
+
+</VersionBlock>
+
 
 ## Related documentation
 * [`groups`](build/groups)
@@ -58,6 +63,16 @@ Some models are implementation details, meant for reference only within their gr
 | protected | same project (or installed as package) |
 | public    | any group, package or project          |
 
+If you try to reference a model outside of its supported access, you will see an error:
+
+```shell
+dbt run -s marketing_model
+...
+dbt.exceptions.DbtReferenceError: Parsing Error
+  Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
+  which is not allowed because the referenced node is private to the finance group.
+```
+
 By default, all models are `protected`. This means that other models in the same project can reference them, regardless of their group. This is largely for backwards compatability when assigning groups to an existing set of models, as there may already be existing references across group assignments.
 
 However, it is recommended to set the access modifier of a new model to `private` to prevent other project resources from taking dependencies on models not intentionally designed for sharing across groups.
@@ -88,7 +103,7 @@ models:
   # but it shouldn't be exposed elsewhere
   - name: stg_customer__survey_results
     group: customer_success
-    access: public
+    access: protected
 ```
 
 </File>
