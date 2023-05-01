@@ -8,19 +8,13 @@ meta:
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
-  cloud_support: 'Supported (Beta)'
+  cloud_support: 'Supported'
   min_supported_version: 'n/a'
   slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Starburst/Trino'
   config_page: 'trino-configs'
 ---
-
-:::info Vendor-supported plugin
-
-Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
-
-:::
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
