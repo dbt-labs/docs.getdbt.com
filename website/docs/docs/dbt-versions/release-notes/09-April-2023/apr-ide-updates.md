@@ -16,7 +16,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 * Provide warning when you select models bu do not save them before clicking **Build** button or dbt invocation (dbt build/run/test) 
 * Show live previews of Markdown and CSV files in the IDE console
 * Enable a Duplicate File option in the File Tree menu
-* Display loading time when Previewing a model
+* Display loading time when previewing a model
 
 ## Product refinements 
 
