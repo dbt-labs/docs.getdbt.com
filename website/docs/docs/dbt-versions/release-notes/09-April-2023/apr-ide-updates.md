@@ -1,7 +1,7 @@
 ---
 title: "April IDE updates and fixes"
 id: "apr-ide-updates"
-description: "Apr 2023 release note: We've enhanced the IDE by displaying load times when previewing models, showing live previews of Markdown and CSV file in the IDE, adding the ability to duplicate files in the File Tree, and more."
+description: "Apr 2023 release note: We've enhanced the IDE by displaying load times when previewing models, showing live previews of Markdown and CSV files, adding the ability to duplicate files in the File Tree, and more."
 sidebar_label: "Update and fixes: IDE"
 sidebar_position: 7
 tags: [Apr-30-2023, IDE]
@@ -13,22 +13,22 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 
 ## New features 
 
-* Suggest you invoke `dbt deps` when needed (as informed by `dbt-score`) by using a warning message
-* Provide warning when you select models but do not save them before clicking **Build** button or dbt invocation (dbt build/run/test) 
-* Show live previews of Markdown and CSV files in the IDE console
-* Provide a Duplicate File option in the File Tree menu
+* New warning message suggests you invoke `dbt deps` when it's needed (as informed by `dbt-score`).
+* New warning message appears when you select models but don't save them before clicking **Build** or invoking dbt (like, dbt build/run/test). 
+* Previews of Markdown and CSV files are now available in the IDE console.
+* The file tree menu now includes a Duplicate File option.
 * Display loading time when previewing a model
 
 ## Product refinements 
 
-* Enhance autocomplete experience which has been laggy in the past for users with large projects and implement a limit to max `manifest.json` for this feature
+* Enhance autocomplete experience which has performed slowly for people with large projects and who implement a limit to max `manifest.json` for this feature
 * Introduce pagination for invocation node summary view (displaying 100 nodes at a time)
 * Improve rendering for the Changes / Version Control section of the IDE
 * Update icons to be consistent in dbt Cloud
-* Add table support to markdown preview
-* Add lineage tab back to seed resources in the IDE
-* Implement modal priority when you see multiple warning modals
-* Adjust the description for a complex command in the command palette
+* Add table support to the Markdown preview
+* Add the lineage tab back to seed resources in the IDE
+* Implement modal priority when there are multiple warning modals
+* Improve a complex command's description in the command palette
 
 ## Bug fixes
 
@@ -40,6 +40,6 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 * ToggleMinimap Command no longer runs another Command at the same time
 * `git diff` view no longer shows infinite spins in specific scenarios (new file, etc.)
 * File contents no longer get mixed up when using diff view and one file has unsaved changes
-* YML lineage now renders model without tests (in core v1.5+)
-* Radio buttons for "Summary" and "Details" in the logs section now consistently update to show the accurate tab selection
-* IDE no longer throws the console error: `Error: Illegal argument` and redirects to the `Something went wrong` page
+* YML lineage now renders model without tests (in dbt Core v1.5 and above)
+* Radio buttons for **Summary** and **Details** in the logs section now consistently update to show the accurate tab selection
+* IDE no longer throws the console error `Error: Illegal argument` and redirects to the `Something went wrong` page
