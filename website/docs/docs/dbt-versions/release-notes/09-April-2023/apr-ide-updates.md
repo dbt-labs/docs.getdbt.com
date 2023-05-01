@@ -1,7 +1,7 @@
 ---
 title: "April IDE updates and fixes"
 id: "apr-ide-updates"
-description: "Apr 2023 release note: We've enhanced the IDE by ..., and more."
+description: "Apr 2023 release note: We've enhanced the IDE by displaying load times when previewing models, showing live previews of Markdown and CSV file in the IDE, adding the ability to duplicate files in the File Tree, and more."
 sidebar_label: "Update and fixes: IDE"
 sidebar_position: 7
 tags: [Apr-30-2023, IDE]
