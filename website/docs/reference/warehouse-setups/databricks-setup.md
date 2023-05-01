@@ -1,6 +1,6 @@
 ---
 title: "Databricks setup"
-description: ""
+description: "Read this guide to learn about the Databricks warehouse setup in dbt."
 id: "databricks-setup"
 meta:
   maintained_by: Databricks

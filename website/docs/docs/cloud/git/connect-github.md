@@ -1,6 +1,6 @@
 ---
 title: "Connect to GitHub"
-description: "Learn how connecting your GitLab account provides convenience and another layer of security to dbt Cloud."
+description: "Learn how connecting your GitHub account provides convenience and another layer of security to dbt Cloud."
 id: "connect-github"
 sidebar_label: "Connect to GitHub"
 ---

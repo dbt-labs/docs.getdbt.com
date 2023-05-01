@@ -1,6 +1,6 @@
 ---
 title: "Project Parsing"
-description: "Read this guide to understand the project parsing configuration in dbt.Read this guide to understand the project parsing configuration in dbt."
+description: "Read this guide to understand the project parsing configuration in dbt."
 ---
 
 ## Related documentation

@@ -1,7 +1,7 @@
 ---
 title: "return"
 id: "return"
-description: "Read this guide to understand the return Jinga function in dbt."
+description: "Read this guide to understand the return Jinja function in dbt."
 ---
 
 __Args__:

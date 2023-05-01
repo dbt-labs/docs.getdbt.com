@@ -1,7 +1,7 @@
 ---
 id: limit
 title: SQL LIMIT
-description: Read this guide to learn about the SQL IN operator in dbt.
+description: Read this guide to learn about the SQL LIMIT clause in dbt.
 slug: /sql-reference/limit
 ---
 

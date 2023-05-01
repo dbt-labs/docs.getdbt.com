@@ -1,7 +1,7 @@
 ---
 title: "project_name"
 id: "project_name"
-description: "Read this guide to understand the project_name Jinga function in dbt."
+description: "Read this guide to understand the project_name Jinja function in dbt."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

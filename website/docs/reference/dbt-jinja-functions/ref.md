@@ -1,7 +1,7 @@
 ---
 title: "ref"
 id: "ref"
-description: "Read this guide to understand the builtins Jinga function in dbt."
+description: "Read this guide to understand the builtins Jinja function in dbt."
 ---
 
 The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one model within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:

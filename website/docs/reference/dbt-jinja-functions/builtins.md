@@ -1,7 +1,7 @@
 ---
 title: "builtins"
 id: "builtins"
-description: "Read this guide to understand the builtins Jinga function in dbt."
+description: "Read this guide to understand the builtins Jinja function in dbt."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

@@ -1,7 +1,7 @@
 ---
 title: "log"
 id: "log"
-description: "Read this guide to understand the log Jinga function in dbt."
+description: "Read this guide to understand the log Jinja function in dbt."
 ---
 
 __Args__:

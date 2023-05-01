@@ -1,7 +1,7 @@
 ---
 title: "source"
 id: "source"
-description: "Read this guide to understand the souce Jinga function in dbt."
+description: "Read this guide to understand the source Jinja function in dbt."
 ---
 
 ```sql
