@@ -13,7 +13,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 
 ## New features 
 
-* Suggest you invoke `dbt deps` when needed (as informed by `dbt-score`) in a warning message
+* Suggest you invoke `dbt deps` when needed (as informed by `dbt-score`) by using a warning message
 * Provide warning when you select models bu do not save them before clicking **Build** button or dbt invocation (dbt build/run/test) 
 * Show live previews of Markdown and CSV files in the IDE console
 * Enable a Duplicate File option in the File Tree menu
