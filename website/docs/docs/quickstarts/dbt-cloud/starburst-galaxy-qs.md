@@ -70,7 +70,6 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     - **Default directory name** &mdash; Enter the folder name of where the Jaffle Shop data lives in the S3 bucket. This is the same folder name you used in [Load data to an Amazon S3 bucket](#load-data-to-s3).
     - **Allow creating external tables** &mdash; Enable this option.
     - **Allow writing to external tables** &mdash; Enable this option.
-6. In the **Default table format** section, leave the default option of **Iceberg** selected. 
 
     The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
 
