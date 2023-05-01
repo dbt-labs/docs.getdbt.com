@@ -14,3 +14,4 @@ id: 1-how-we-style-our-dbt-models
 - Consistency is key! Use the same field names across models where possible, e.g. a key to the `customers` table should be named `customer_id` rather than `user_id` or 'id'.
 - Schema, table and column names should be in `snake_case`.
 - Use names based on the _business_ terminology, rather than the source terminology. For example, if the source database uses `user_id` but the business calls them `customer_id`, use `customer_id` in the model.
+- Versions of models should use the suffix `_v1`, `_v2`, etc for consistency, e.g. `customers_v1`, `customers_v2`.
