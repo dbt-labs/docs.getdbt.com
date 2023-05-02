@@ -32,23 +32,32 @@ to print the full contents:
  
  <TabItem value="ide" label="dbt Cloud IDE">
    
- If you're using the dbt Cloud IDE, compile the following to print the full contents:
- 
-```jinja
-{{ model \\| tojson(indent = 4) }}
+ If you're using the dbt Cloud IDE, compile the following to print the full contents:<br />
+
+ ```jinja
+{{ model | tojson(indent = 4) }}
 ```
    
 </TabItem>
 
 </Tabs>
 
-## Model structure and fields
+## Model structure and JSON schema
 
-To view the structure of `models` and their definitions, refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts.
+To view the structure of `models` and their definitions, refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts, and then go to `manifest.json` --> `nodes` --> `CompiledModelNode`.
 
-If you'd like to understand your model's structure, open the `manifest.json` -> `nodes` -> `CompiledModelNode`.
+ The `manifest.json` version number isn't directly related to your dbt version, so you_must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, refer to [Manifest](/reference/artifacts/manifest-json) and select the dbt version on the top navigation (such as `v1.5`). This will help you find out which tags are associated with your model. 
 
-**Note**, you'll need to use the correct `manifest.json` version for your dbt version. The `manifest.json` version number isn't directly related to your dbt version, so find the right `manifest.json` version to look inside `CompiledModelNode` and find the tags linked to your model.
+ For example, the following table matches the Manifest version with the dbt version:
+ 
+| dbt version | Manifest version |
+| ----------- | ---------------- |
+| `v1.5` | [Manifest v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
+| `v1.4` | [Manifest v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
+| `v1.3` | [Manifest v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
+| `v1.2` | [Manifest v6](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
+| `v1.1` | [Manifest v5](https://schemas.getdbt.com/dbt/manifest/v5/index.html)
+
 
 
 ## Related docs
