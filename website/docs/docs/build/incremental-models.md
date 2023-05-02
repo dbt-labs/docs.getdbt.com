@@ -1,5 +1,6 @@
 ---
 title: "Incremental models"
+description: "Read this tutorial to learn how to use incremental models when building in dbt."
 id: "incremental-models"
 ---
 

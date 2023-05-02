@@ -1,5 +1,6 @@
 ---
 resource_types: [models]
+description: "Read this guide to understand the contract configuration in dbt."
 datatype: "{<dictionary>}"
 default_value: {contract: false}
 id: "contract"

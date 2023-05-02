@@ -1,5 +1,6 @@
 ---
 title: "Postgres setup"
+description: "Read this guide to learn about the Postgres warehouse setup in dbt."
 id: "postgres-setup"
 meta:
   maintained_by: dbt Labs
