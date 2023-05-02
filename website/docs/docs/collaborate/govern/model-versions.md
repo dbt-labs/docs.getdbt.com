@@ -5,6 +5,7 @@ sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
 ---
 
+
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
 :::
