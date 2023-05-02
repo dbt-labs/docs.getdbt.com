@@ -1,5 +1,6 @@
 ---
 title: "parse"
+description: "Read this guide on how dbt's parse command can be used to parse your dbt project and write detailed timing information."
 id: "parse"
 ---
 

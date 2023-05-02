@@ -224,7 +224,7 @@ var siteSettings = {
         },
         blog: {
           blogTitle: "dbt Developer Blog",
-          blogDescription: "Technical tutorials from the dbt Community.",
+          blogDescription: "Find tutorials, product updates, and developer insights in the dbt Developer Blog.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
