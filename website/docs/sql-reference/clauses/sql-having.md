@@ -1,7 +1,7 @@
 ---
 id: having
 title: SQL HAVING
-description: Adding the LIMIT clause to a query will limit the number of rows returned.
+description: Read this guide to learn about the SQL HAVING clause in dbt.
 slug: /sql-reference/having
 ---
 

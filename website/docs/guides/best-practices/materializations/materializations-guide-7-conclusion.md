@@ -2,9 +2,9 @@
 title: "Conclusion"
 id: materializations-guide-7-conclusion
 slug: 7-conclusion
-description: Learn how to utilize materializations in dbt.
+description: Read this conclusion to our guide on using materializations in dbt and how it is a crucial skill for effective analytics engineering.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this conclusion to our guide on using materializations in dbt and how it is a crucial skill for effective analytics engineering.
 ---
 
 You're now following best practices in your project, and have optimized the materializations of your DAG. You’re equipped with the 3 main materializations that cover almost any analytics engineering situation!

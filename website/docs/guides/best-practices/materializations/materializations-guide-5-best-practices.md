@@ -2,9 +2,9 @@
 title: Best practices for materializations
 id: materializations-guide-5-best-practices
 slug: 5-best-practices
-description: Learn how to utilize materializations in dbt.
+description: Read this guide to understand the different types of materializations you can create in dbt.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand the different types of materializations you can create in dbt.
 ---
 
 First, let’s consider some properties of various levels of our dbt project and materializations.
