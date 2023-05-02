@@ -18,7 +18,7 @@ The IDE streamlines your workflow, and features a popular user interface layout 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-side-menu.jpg" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
 
-The basic layout of the IDE landing page with the following areas:
+The IDE landing page includes:
 
 1. **Git repository link &mdash;** Clicking the Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. 
     * **Note:** This feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
