@@ -1,5 +1,6 @@
 ---
-title: "dbt Artifacts - Source "
+title: "Sources JSON file"
+sidebar_label: "Sources"
 ---
 
 **Current schema:** [`v3`](https://schemas.getdbt.com/dbt/sources/v3/index.html)
