@@ -6,11 +6,21 @@ description: "The dbt Cloud Scheduler queues scheduled or API-triggered runs, be
 tags: [scheduler]
 ---
 
-The dbt Cloud job scheduler is a powerful tool that helps data teams optimize their data transformation workflows, makes it easier to run dbt in production environments, governs data, automates your dbt jobs, and empowers teams to get results faster with less effort. 
+The Scheduler is the backbone of running jobs in dbt Cloud, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The Scheduler frees teams from having to build and maintain their own infrastructure and ensures the timeliness and reliability of data transformations.
 
-By using scheduler, you can improve the efficiency of your data transformation process, while also gaining greater visibility into its progress. You can use custom scheduling for your jobs, which allow you to run them automatically and save money by reducing manual work. It also provides governance policies to make sure your data is transformed consistently and meets your organization's standards.
+The Scheduler enables both cron-based and event-driven execution of dbt commands in the user’s warehouse. Specifically, the Scheduler handles:
 
-The scheduler is a key feature of dbt Cloud that helps teams run dbt in production with ease and confidence, while also providing powerful observability and governance capabilities.
+- Cron-based execution of dbt Cloud jobs that run on a predetermined cadence
+- Event-driven execution of dbt Cloud CI jobs triggered by pull requests to the the dbt repo
+- Event-driven execution of dbt Cloud jobs triggered by API
+
+The Scheduler takes care of:
+- queuing jobs
+- creating short-lived environments to execute jobs’ dbt run commands
+- delivering logs which are needed for debugging and remediation
+- storing dbt artifacts for direct consumption and ingestion by the Metadata API
+
+The Scheduler powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale.
 
 ## Scheduler terms
 

@@ -2,6 +2,7 @@
 title: "Deploy with dbt Cloud"
 id: "dbt-cloud-job"
 description: "You can enable continuous integration (CI) to test every single change prior to deploying the code to production just like in a software development workflow."
+tags: ["scheduler"]
 ---
 
 Use dbt Cloud's job scheduler to streamline your data transformation workflows and empower data teams to run dbt in production with ease. 
@@ -124,6 +125,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 
 ## Related docs
 
-- Deploy dbt jobs
-- Artifacts
-- dbt Cloud features
+- [Deploy dbt jobs](/docs/deploy/deployments)
+- [Artifacts](/docs/deploy/artifacts)
+- [Job scheduler](/docs/deploy/job-scheduler)
+- [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
