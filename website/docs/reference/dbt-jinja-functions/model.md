@@ -1,6 +1,7 @@
 ---
 title: "dbt Jinga Functions - Model"
 id: "model"
+sidebar_label: "model"
 description: "`model` is the dbt graph object (or node) for the current model."
 ---
 
