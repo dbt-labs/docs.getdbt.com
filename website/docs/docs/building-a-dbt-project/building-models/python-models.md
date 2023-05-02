@@ -242,7 +242,10 @@ For incremental models, like SQL models, you will need to filter incoming tables
 import snowflake.snowpark.functions as F
 
 def model(dbt, session):
-    dbt.config(materialized = "incremental")
+    dbt.config(
+        materialized = "incremental",
+        unique_key = "id",
+    )
     df = dbt.ref("upstream_table")
 
     if dbt.is_incremental:
@@ -271,7 +274,10 @@ def model(dbt, session):
 import pyspark.sql.functions as F
 
 def model(dbt, session):
-    dbt.config(materialized = "incremental")
+    dbt.config(
+        materialized = "incremental",
+        unique_key = "id",
+    )
     df = dbt.ref("upstream_table")
 
     if dbt.is_incremental:
