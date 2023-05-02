@@ -1,5 +1,6 @@
 ---
-title: "Build Your DAG - Exposures"
+title: "Exposures in your DAG"
+sidebar_title: "Exposures"
 id: "exposures"
 ---
 
