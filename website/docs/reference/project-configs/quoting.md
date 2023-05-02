@@ -1,4 +1,5 @@
 ---
+title: "Project Configs - Quoting"
 datatype: boolean # -ish, it's actually a dictionary of bools
 description: "Read this guide to understand the quoting configuration in dbt."
 default: true
