@@ -1,5 +1,6 @@
 ---
 title: "Postgres setup"
+description: "Read this guide to learn about the Postgres warehouse setup in dbt."
 id: "postgres-setup"
 meta:
   maintained_by: dbt Labs
@@ -14,6 +15,8 @@ meta:
   platform_name: 'Postgres'
   config_page: 'postgres-configs'
 ---
+
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

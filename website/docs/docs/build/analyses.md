@@ -1,5 +1,6 @@
 ---
 title: "Analyses"
+description: "Read this tutorial to learn how to use custom analyses when building in dbt."
 id: "analyses"
 ---
 
