@@ -15,6 +15,8 @@ meta:
   config_page: 'redshift-configs'
 ---
 
+<Snippet src="warehouse-setups-cloud-callout" />
+
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
@@ -68,6 +70,7 @@ company-name:
       # search_path: public # optional, not recommended
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
       ra3_node: true # enables cross-database sources
+      region: [optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)]
 ```
 
 </File>
