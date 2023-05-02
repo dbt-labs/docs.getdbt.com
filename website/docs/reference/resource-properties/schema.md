@@ -1,4 +1,5 @@
 ---
+title: "For Sources - Schema"
 resource_types: sources
 datatype: schema_name
 ---
