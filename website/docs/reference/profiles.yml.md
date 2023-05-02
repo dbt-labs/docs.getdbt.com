@@ -1,12 +1,18 @@
 ---
-
+title: "About profiles.yml"
+id: profiles.yml
 ---
 
-If you're using the dbt CLI, you'll need to set up a `profiles.yml` file.
+If you're using dbt from the [command line (CLI)](/docs/core/about-the-cli), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt from the CLI, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform. 
 
-You can learn more about this in the article on [Connecting to your warehouse](/docs/core/connection-profiles).
+For detailed info, you can refer to the [Connection profiles](/docs/core/connection-profiles).
 
-This article lists the parts of your `profiles.yml` which are _not_ database specific. Check out the article for your database for exact connection details.
+:::tip No `profiles.yml` file needed for dbt Cloud
+If you're using dbt Cloud, you can [connect to your data platform](/docs/cloud/connect-data-platform/about-connections) directly in the dbt Cloud interface and don't need a `profiles.yml` file.
+:::
+
+
+This section identifies the parts of your `profiles.yml` that aren't specific to a particular data platform. For specific connection details, refer to the relevant page for your data platform.
 
 <File name='profiles.yml'>
 
