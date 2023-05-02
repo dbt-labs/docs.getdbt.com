@@ -21,8 +21,7 @@ To view the contents of `model` for a given model:
 
 <TabItem value="cli" label="CLI">
 
-If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log)
-to print the full contents:
+If you're using the CLI, use [log()](/reference/dbt-jinja-functions/log) to print the full contents:
 
 ```jinja
 {{ log(model, info=True) }}
@@ -32,7 +31,7 @@ to print the full contents:
  
  <TabItem value="ide" label="dbt Cloud IDE">
    
- If you're using the dbt Cloud IDE, compile the following to print the full contents:<br />
+ If you're using the dbt Cloud IDE, compile the following to print the full contents: <br /><br />
 
  ```jinja
 {{ model | tojson(indent = 4) }}
@@ -44,12 +43,14 @@ to print the full contents:
 
 ## Model structure and JSON schema
 
-To view the structure of `models` and their definitions, refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts, and then go to `manifest.json` --> `nodes` --> `CompiledModelNode`.
+To view the structure of `models` and their definitions:
+- Refer to [dbt JSON Schema](https://schemas.getdbt.com/) for describing and consuming dbt generated artifacts
+- Select the corresponding manifest version under **Manifest**. For example if you're on dbt v1.3, then you would select Manifest v7
+  * The `manifest.json` version number isn't directly related to your dbt version, so you_must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, refer to [Manifest](/reference/artifacts/manifest-json) and select the dbt version on the top navigation (such as `v1.5`). This will help you find out which tags are associated with your model. 
+- Then go to `nodes` --> Select Additional properties --> `CompiledModelNode` or view other definitions/objects.
 
- The `manifest.json` version number isn't directly related to your dbt version, so you_must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, refer to [Manifest](/reference/artifacts/manifest-json) and select the dbt version on the top navigation (such as `v1.5`). This will help you find out which tags are associated with your model. 
+Use the following table to understand how the versioning pattern works and match the Manifest version with the dbt version:
 
- For example, the following table matches the Manifest version with the dbt version:
- 
 | dbt version | Manifest version |
 | ----------- | ---------------- |
 | `v1.5` | [Manifest v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
