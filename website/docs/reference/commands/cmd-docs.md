@@ -1,5 +1,5 @@
 ---
-title: "List of Commands - Docs "
+title: "docs"
 id: "cmd-docs"
 ---
 
