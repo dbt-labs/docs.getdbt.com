@@ -1,5 +1,6 @@
 ---
-title: "Commands - Source"
+title: "About dbt source command"
+sidebar_label: "source"
 id: "source"
 ---
 

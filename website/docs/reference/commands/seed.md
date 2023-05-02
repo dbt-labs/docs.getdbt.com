@@ -1,5 +1,6 @@
 ---
-title: "List of Commands - Seed"
+title: "About dbt seed command"
+sidebar_label: "seed"
 id: "seed"
 ---
 
