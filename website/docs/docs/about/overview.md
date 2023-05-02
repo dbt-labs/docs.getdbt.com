@@ -1,5 +1,5 @@
 ---
-title: "What is dbt? "
+title: "Overview"
 id: "overview"
 ---
 
