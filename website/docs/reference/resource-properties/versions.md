@@ -60,4 +60,4 @@ Note that the value of `defined_in` and the `alias` configuration of a model are
 ### Our recommendations
 - Follow a consistent naming convention for model versions and aliases.
 - Use `defined_in` and `alias` only if you have good reason.
-- Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](model-versions#configuring-database-location-with-alias)
+- Create a view that always points to the latest version of your model. You can automate this for all versioned models in your project with an `on-run-end` hook. For more details, read the full docs on ["Model versions"](/docs/collaborate/govern/model-versions#configuring-database-location-with-alias)

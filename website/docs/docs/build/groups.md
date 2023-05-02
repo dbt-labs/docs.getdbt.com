@@ -13,8 +13,8 @@ This functionality is new in v1.5.
 ## Related docs
 
 * [Model Access](/docs/collaborate/govern/model-access#groups)
-* [Group configuration](/docs/reference/resource-configs/group)
-* [Group selection](/docs/reference/node-selection/methods#the-group-method)
+* [Group configuration](/reference/resource-configs/group)
+* [Group selection](/reference/node-selection/methods#the-group-method)
 
 ## About groups 
 
