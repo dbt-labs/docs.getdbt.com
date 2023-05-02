@@ -106,8 +106,7 @@ If you experience a 500 server error when redirected from Snowflake to dbt Cloud
 
 Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
 
-If your network policy / ip listing is on the account level, the security integration should inherit the whitelisted IP addresses.
-If customers create distinct network policies for each security integration, they will need to alter the security integration to add the network policy:
+Depending on how you have configured your Snowflake network policies / IP whitelisting - you may have to explicitly add the network policy (that has dbt Cloud IPs whitelisted) to the security integration that you've just created.
 
 ```
 ALTER SECURITY INTEGRATION <security_integration_name>
