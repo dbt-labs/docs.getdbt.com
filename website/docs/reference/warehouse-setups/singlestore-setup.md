@@ -1,5 +1,6 @@
 ---
 title: "SingleStore setup"
+description: "Read this guide to learn about the SingleStore warehouse setup in dbt."
 id: "singlestore-setup"
 meta:
   maintained_by: SingleStore, Inc.

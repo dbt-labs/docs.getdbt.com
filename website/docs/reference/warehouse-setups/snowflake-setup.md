@@ -1,5 +1,6 @@
 ---
 title: "Snowflake setup"
+description: "Read this guide to learn about the Snowflake warehouse setup in dbt."
 id: "snowflake-setup"
 meta:
   maintained_by: dbt Labs

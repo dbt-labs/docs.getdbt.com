@@ -1,7 +1,7 @@
 ---
 title: "log"
 id: "log"
-description: "Use `log` to log a line to either the log file or stdout."
+description: "Read this guide to understand the log Jinja function in dbt."
 ---
 
 __Args__:

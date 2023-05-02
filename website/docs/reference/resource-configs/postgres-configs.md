@@ -1,5 +1,6 @@
 ---
 title: "Postgres configurations"
+description: "Postgres Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "postgres-configs"
 ---
 
