@@ -149,8 +149,8 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/core/installation",
             "docs/core/about-the-cli",
+            "docs/core/installation",
             "docs/core/homebrew-install",
             "docs/core/pip-install",
             "docs/core/docker-install",
@@ -655,8 +655,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Setups (CLI only)",
+      link: { type: "doc", id: "reference/profiles.yml" },
       items: [
-        "reference/profiles.yml",
         "reference/warehouse-setups/bigquery-setup",
         "reference/warehouse-setups/postgres-setup",
         "reference/warehouse-setups/redshift-setup",
