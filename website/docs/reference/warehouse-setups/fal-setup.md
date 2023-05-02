@@ -1,5 +1,6 @@
 ---
 title: "fal setup (Python models)"
+description: "Read this guide to learn about the fal warehouse setup in dbt."
 meta:
   maintained_by: fal.ai
   authors: 'Features & Labels (https://github.com/fal-ai)'

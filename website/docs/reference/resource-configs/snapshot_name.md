@@ -1,3 +1,7 @@
+---
+description: "Snapshot-name - Read this in-depth guide to learn about configurations in dbt."
+---
+
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2

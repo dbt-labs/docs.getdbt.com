@@ -1,5 +1,6 @@
 ---
 title: "About documentation"
+description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
 ---
 

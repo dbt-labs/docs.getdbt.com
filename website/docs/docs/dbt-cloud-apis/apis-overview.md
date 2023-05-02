@@ -1,5 +1,6 @@
 ---
 title: "APIs Overview"
+description: "Learn how dbt accounts on the Team and Enterprise plans can query the dbt Cloud APIs."
 id: "overview"
 ---
 

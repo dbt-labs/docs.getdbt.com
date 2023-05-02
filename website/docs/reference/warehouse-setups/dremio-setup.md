@@ -1,5 +1,6 @@
 ---
 title: "Dremio setup"
+description: "Read this guide to learn about the Dremio warehouse setup in dbt."
 meta:
   maintained_by: Dremio
   authors: 'Dremio (formerly Fabrice Etanchaud)'

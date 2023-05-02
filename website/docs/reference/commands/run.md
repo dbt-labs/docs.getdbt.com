@@ -1,5 +1,6 @@
 ---
 title: "run"
+description: "Read this guide on how dbt's run command can be used to execute compiled SQL model files against a target database."
 id: "run"
 ---
 

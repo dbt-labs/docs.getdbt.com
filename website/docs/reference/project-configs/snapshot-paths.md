@@ -1,5 +1,6 @@
 ---
 datatype: [directorypath]
+description: "Read this guide to understand the snapshot-paths configuration in dbt."
 default_value: [snapshots]
 ---
 <File name='dbt_project.yml'>

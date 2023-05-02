@@ -1,5 +1,6 @@
 ---
 title: Snapshot properties
+description: "Read this guide to learn about using source properties in dbt."
 ---
 
 Snapshots properties can be declared in `.yml` files in:

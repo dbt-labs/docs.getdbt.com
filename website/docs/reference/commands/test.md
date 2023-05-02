@@ -1,5 +1,5 @@
 ---
-title: "test"
+title: "Commands - Test"
 id: "test"
 ---
 

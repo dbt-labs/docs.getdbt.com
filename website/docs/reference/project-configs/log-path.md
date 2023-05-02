@@ -1,5 +1,6 @@
 ---
 datatype: directorypath
+description: "Read this guide to understand the log-path configuration in dbt."
 default_value: logs
 ---
 <File name='dbt_project.yml'>

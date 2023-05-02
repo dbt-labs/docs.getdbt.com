@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Azure Synapse DWH setup"
+description: "Read this guide to learn about the Mircosoft Azure Synapse warehouse setup in dbt."
 meta:
   maintained_by: Microsoft
   authors: 'Microsoft (https://github.com/Microsoft)'

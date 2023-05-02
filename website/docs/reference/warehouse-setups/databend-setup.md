@@ -1,5 +1,6 @@
 ---
 title: "Databend Cloud setup"
+description: "Read this guide to learn about the Databend warehouse setup in dbt."
 id: "databend-setup"
 meta:
   maintained_by: Databend Cloud

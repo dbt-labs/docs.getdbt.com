@@ -1,7 +1,7 @@
 ---
 title: "builtins"
 id: "builtins"
-description: "The `builtins` variable references the builtin dbt context methods."
+description: "Read this guide to understand the builtins Jinja function in dbt."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

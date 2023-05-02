@@ -1,5 +1,6 @@
 ---
 title: "Exasol setup"
+description: "Read this guide to learn about the Exasol warehouse setup in dbt."
 meta:
   maintained_by: Community
   authors: 'Torsten Glunde, Ilija Kutle'

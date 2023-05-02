@@ -1,5 +1,6 @@
 ---
 title: "AWS Glue configurations"
+description: "AWS Glue Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "glue-configs"
 ---
 

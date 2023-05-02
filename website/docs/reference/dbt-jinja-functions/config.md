@@ -1,7 +1,7 @@
 ---
-title: "config"
+title: "dbt Jinga Functions - Config"
 id: "config"
-description: "The `config` variable manages user configuration for custom materialization."
+description: "Read this guide to understand the config Jinja function in dbt."
 ---
 
 The `config` variable exists to handle end-user configuration for custom <Term id="materialization">materializations</Term>. Configs like  `unique_key` can be implemented using the `config` variable in your own materializations.

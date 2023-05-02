@@ -1,5 +1,6 @@
 ---
 title: "TiDB setup"
+description: "Read this guide to learn about the TiDB warehouse setup in dbt."
 id: "tidb-setup"
 meta:
   maintained_by: PingCAP

@@ -1,5 +1,6 @@
 ---
 title: "IBM DB2 setup"
+description: "Read this guide to learn about the IBM DB2 warehouse setup in dbt."
 id: "ibmdb2-setup"
 meta:
   maintained_by: Community

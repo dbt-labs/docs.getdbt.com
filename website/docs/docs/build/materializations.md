@@ -1,10 +1,10 @@
 ---
 title: "Materializations"
+description: "Read this tutorial to learn how to use materializations when building in dbt."
 id: "materializations"
 ---
 
 ## Overview
-
 <Term id="materialization">Materializations</Term> are strategies for persisting dbt models in a warehouse. There are four types of materializations built into dbt. They are:
 
 - <Term id="table" />

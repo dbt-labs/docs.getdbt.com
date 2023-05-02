@@ -16,7 +16,7 @@ models:
     [description](/reference/resource-properties/description): <markdown_string>
     [docs](/reference/resource-configs/docs):
       show: true | false
-    [latest_version](/reference/resource-properties/latest-version): <version_identifier>
+    [latest_version](/reference/resource-properties/latest_version): <version_identifier>
     [access](/reference/resource-properties/access): private | protected | public
     [config](/reference/resource-properties/config):
       [<model_config>](/reference/model-configs): <config_value>

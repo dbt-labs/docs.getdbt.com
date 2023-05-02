@@ -1,7 +1,7 @@
 ---
 title: "project_name"
 id: "project_name"
-description: "Use this context variable to return the `name` of root-level project."
+description: "Read this guide to understand the project_name Jinja function in dbt."
 ---
 
 <Changelog>New in 0.16.0</Changelog>

@@ -1,5 +1,6 @@
 ---
 title: Test configurations
+description: "Read this guide to learn about using test configurations in dbt."
 ---
 
 ## Related documentation

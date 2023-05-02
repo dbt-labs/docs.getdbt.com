@@ -1,5 +1,6 @@
 ---
 title: "Databricks setup"
+description: "Read this guide to learn about the Databricks warehouse setup in dbt."
 id: "databricks-setup"
 meta:
   maintained_by: Databricks
@@ -14,6 +15,8 @@ meta:
   platform_name: 'Databricks'
   config_page: '/reference/resource-configs/spark-configs'
 ---
+
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

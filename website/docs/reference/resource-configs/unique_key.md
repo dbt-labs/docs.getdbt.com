@@ -1,5 +1,6 @@
 ---
 resource_types: [snapshots]
+description: "Unique_key - Read this in-depth guide to learn about configurations in dbt."
 datatype: column_name_or_expression
 ---
 

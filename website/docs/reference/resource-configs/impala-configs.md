@@ -1,5 +1,6 @@
 ---
 title: "Apache Impala configurations"
+description: "Impala Configs - Read this in-depth guide to learn about configurations in dbt."
 id: "impala-configs"
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Athena setup"
+description: "Read this guide to learn about the Athena warehouse setup in dbt."
 meta:
   maintained_by: Community
   authors: Community

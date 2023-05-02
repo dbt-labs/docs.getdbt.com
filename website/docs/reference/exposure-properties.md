@@ -1,5 +1,6 @@
 ---
 title: Exposure properties
+description: "Read this guide to understand exposure properties in dbt."
 ---
 
 ## Related documentation

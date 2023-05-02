@@ -1,5 +1,6 @@
 ---
-title: "Seeds"
+title: "Build Your DAG - Seeds"
+description: "Read this tutorial to learn how to use seeds when building in dbt."
 id: "seeds"
 ---
 ## Related reference docs

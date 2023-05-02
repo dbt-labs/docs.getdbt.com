@@ -1,5 +1,6 @@
 ---
 title: "Oracle setup"
+description: "Read this guide to learn about the Oracle warehouse setup in dbt."
 id: "oracle-setup"
 meta:
   maintained_by: Oracle

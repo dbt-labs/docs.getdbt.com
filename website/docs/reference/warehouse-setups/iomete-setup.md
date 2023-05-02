@@ -1,5 +1,6 @@
 ---
 title: "iomete setup"
+description: "Read this guide to learn about the iomete warehouse setup in dbt."
 id: "iomete-setup"
 meta:
   maintained_by: iomete

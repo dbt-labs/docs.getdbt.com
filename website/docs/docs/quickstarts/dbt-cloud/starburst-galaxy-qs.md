@@ -17,13 +17,8 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Schedule a job to run.
 - Connect to multiple data sources in addition to your S3 bucket. 
 
-:::tip Public Preview 
-The Starburst (Trino compatible) connection in dbt Cloud is currently available in Public Preview for multi-tenant dbt Cloud accounts. Preview features are stable and can be considered for production deployments, but there might still be some planned additions and modifications to product behavior before moving to General Availability. For details, refer to [dbt Product lifecycles](/docs/dbt-versions/product-lifecycles). 
-:::
-
-
 ## Prerequisites 
-- You have a [dbt Cloud account](https://www.getdbt.com/signup/).
+- You have a [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment in [dbt Cloud](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
 - You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
 - You have an AWS account with permissions to upload data to an S3 bucket.
 - For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
@@ -75,7 +70,6 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     - **Default directory name** &mdash; Enter the folder name of where the Jaffle Shop data lives in the S3 bucket. This is the same folder name you used in [Load data to an Amazon S3 bucket](#load-data-to-s3).
     - **Allow creating external tables** &mdash; Enable this option.
     - **Allow writing to external tables** &mdash; Enable this option.
-6. In the **Default table format** section, choose **Hive**. 
 
     The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
 

@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino setup"
+description: "Read this guide to learn about the Starburst/Trino warehouse setup in dbt."
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
@@ -7,7 +8,7 @@ meta:
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
-  cloud_support: 'Supported (Beta)'
+  cloud_support: 'Supported'
   min_supported_version: 'n/a'
   slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
@@ -15,11 +16,7 @@ meta:
   config_page: '/reference/resource-configs/trino-configs'
 ---
 
-:::info Vendor-supported plugin
-
-Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
-
-:::
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -33,6 +30,12 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
+
+:::info Vendor-supported plugin
+
+Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
+
+:::
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 

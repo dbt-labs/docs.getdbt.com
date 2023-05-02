@@ -1,5 +1,6 @@
 ---
 title: dispatch (config)
+description: "Read this guide to understand the dispatch configuration in dbt."
 datatype: list
 required: False
 ---

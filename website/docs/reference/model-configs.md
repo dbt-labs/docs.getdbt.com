@@ -1,5 +1,6 @@
 ---
 title: Model configurations
+description: "Read this guide to understand model configurations in dbt."
 ---
 
 ## Related documentation

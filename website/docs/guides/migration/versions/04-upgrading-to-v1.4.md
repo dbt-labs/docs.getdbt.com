@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.4 (latest)"
+title: "Upgrading to v1.4"
 description: New features and changes in dbt Core v1.4
 ---
 ### Resources

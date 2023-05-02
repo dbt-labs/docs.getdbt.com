@@ -1,5 +1,6 @@
 ---
 title: Seed configurations
+description: "Read this guide to learn about using seed configurations in dbt."
 ---
 
 ## Available configurations

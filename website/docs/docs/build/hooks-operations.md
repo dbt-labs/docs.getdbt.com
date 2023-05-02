@@ -1,5 +1,6 @@
 ---
 title: "Hooks and operations"
+description: "Read this tutorial to learn how to use hooks and operations when building in dbt."
 id: "hooks-operations"
 ---
 
@@ -32,8 +33,8 @@ dbt provides hooks and operations so you can version control and execute these s
 Hooks are snippets of SQL that are executed at different times:
   * `pre-hook`: executed _before_ a model, seed or snapshot is built.
   * `post-hook`: executed _after_ a model, seed or snapshot is built.
-  * `on-run-start`: executed at the _start_ of `dbt run`, `dbt seed` or `dbt snapshot`
-  * `on-run-end`: executed at the _end_ of `dbt run`, `dbt seed` or `dbt snapshot`
+  * `on-run-start`: executed at the _start_ of `dbt run`, `dbt test`, `dbt seed` or `dbt snapshot`
+  * `on-run-end`: executed at the _end_ of `dbt run`, `dbt test`, `dbt seed` or `dbt snapshot`
 
 Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
 

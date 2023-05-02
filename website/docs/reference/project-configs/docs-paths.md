@@ -1,5 +1,6 @@
 ---
 datatype: [directorypath]
+description: "Read this guide to understand the docs-paths configuration in dbt."
 default_value: []
 ---
 

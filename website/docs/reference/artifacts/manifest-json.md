@@ -37,10 +37,17 @@ title: Manifest
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.5">
 
 **Produced by:** [`build`](/reference/commands/build) [`compile`](/reference/commands/compile) [`docs generate`](/reference/commands/cmd-docs) [`list`](/reference/commands/list) [`seed`](/reference/commands/seed) [`snapshot`](/reference/commands/snapshot) [`source freshness`](/reference/commands/source) [`test`](/reference/commands/test) [`run`](/reference/commands/run) [`run-operation`](/reference/commands/run-operation)
 
+</VersionBlock>
 
+<VersionBlock lastVersion="1.4">
+
+**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`parse`](commands/parse) [`run`](commands/run) [`run-operation`](commands/run-operation) [`seed`](commands/seed) [`show`](commands/show) [`snapshot`](commands/snapshot) [`source freshness`](commands/source) [`test`](commands/test) 
+
+</VersionBlock>
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
 Today, dbt uses this file to populate the [docs site](/docs/collaborate/documentation), and to perform [state comparison](/docs/deploy/project-state). Members of the community have used this file to run checks on how many models have descriptions and tests.

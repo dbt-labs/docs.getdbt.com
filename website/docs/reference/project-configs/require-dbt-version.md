@@ -1,5 +1,6 @@
 ---
 datatype: version-range | [version-range]
+description: "Read this guide to understand the require-dbt-version configuration in dbt."
 default_value: None
 ---
 <File name='dbt_project.yml'>

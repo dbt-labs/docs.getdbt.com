@@ -1,5 +1,6 @@
 ---
 title: "Materialize setup"
+description: "Read this guide to learn about the Materialize warehouse setup in dbt."
 id: "materialize-setup"
 meta:
   maintained_by: Materialize  Inc.
