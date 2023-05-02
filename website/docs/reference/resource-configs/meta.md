@@ -46,7 +46,7 @@ The `meta` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -95,7 +95,7 @@ seeds:
 
 </File>
 
-The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
+The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -123,7 +123,7 @@ The `meta` config can also be defined:
 - under the `snapshots` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a snapshot's SQL block
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 

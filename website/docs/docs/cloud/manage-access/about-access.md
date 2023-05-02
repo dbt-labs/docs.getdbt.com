@@ -32,7 +32,7 @@ to access. dbt Cloud's two license types are:
  - **Read Only**
  - **Developer**
 
-For more information on these license types, see [Seats & Users](cloud-seats-and-users).
+For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
 At a high level, Developers may be granted _any_ permissions, whereas Read Only
 users will have read-only permissions applied to all dbt Cloud resources
 regardless of the role-based permissions that the user is assigned.
@@ -145,7 +145,7 @@ sign-in time based on the user's IdP-provided group membership information.
 - **Can I set up SSO without RBAC?**  <br />
 Yes, see the documentation on [Manual Assignment](#manual-assignment) above for more information on using SSO without RBAC.
 - **Can I configure a user's License Type based on IdP Attributes?** <br />
-  Yes, see the docs on [managing license types](/cloud-seats-and-users#managing-license-types) for more information.
+  Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
 
 - **Why can't I edit a user's group membership?**  <br />
 Make sure you're not trying to edit your own user as this isn't allowed for security reasons. To edit the group membership of your own user, you'll need a different user to make those changes.

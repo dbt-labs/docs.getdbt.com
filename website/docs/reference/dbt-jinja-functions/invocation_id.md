@@ -15,7 +15,7 @@ useful when auditing or analyzing dbt invocation metadata.
 </Changelog>
 
 If available, the `invocation_id` is:
-- available in the compilation context of [`query-comment`](query-comment)
-- included in the `info` dictionary in dbt [events and logs](events-logging#info)
-- included in the `metadata` dictionary in [dbt artifacts](dbt-artifacts#common-metadata)
+- available in the compilation context of [`query-comment`](/reference/project-configs/query-comment)
+- included in the `info` dictionary in dbt [events and logs](/reference/events-logging#info)
+- included in the `metadata` dictionary in [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata)
 - included as a label in all BigQuery jobs that dbt originates

@@ -38,16 +38,16 @@ title: Manifest
 </VersionBlock>
 
 
-**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`source freshness`](commands/source) [`test`](commands/test) [`run`](commands/run) [`run-operation`](commands/run-operation)
+**Produced by:** [`build`](/reference/commands/build) [`compile`](/reference/commands/compile) [`docs generate`](/reference/commands/cmd-docs) [`list`](/reference/commands/list) [`seed`](/reference/commands/seed) [`snapshot`](/reference/commands/snapshot) [`source freshness`](/reference/commands/source) [`test`](/reference/commands/test) [`run`](/reference/commands/run) [`run-operation`](/reference/commands/run-operation)
 
 
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
-Today, dbt uses this file to populate the [docs site](documentation), and to perform [state comparison](/docs/deploy/about-state). Members of the community have used this file to run checks on how many models have descriptions and tests.
+Today, dbt uses this file to populate the [docs site](/docs/collaborate/documentation), and to perform [state comparison](/docs/deploy/project-state). Members of the community have used this file to run checks on how many models have descriptions and tests.
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-metadata)
+- [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `nodes`: Dictionary of all analyses, models, seeds, snapshots, and tests.
 - `sources`: Dictionary of sources.
 - `metrics`: Dictionary of metrics.
@@ -58,7 +58,7 @@ Today, dbt uses this file to populate the [docs site](documentation), and to per
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
 - `child_map`: Dictionary that contains the first-order children of each resource.
 - `group_map`: Dictionary that maps group names to their resource nodes.
-- `selectors`: Expanded dictionary representation of [YAML `selectors`](yaml-selectors).
+- `selectors`: Expanded dictionary representation of [YAML `selectors`](/reference/node-selection/yaml-selectors).
 - `disabled`: Array of resources with `enabled: false`.
 
 ### Resource details

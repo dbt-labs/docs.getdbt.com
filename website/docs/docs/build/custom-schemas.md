@@ -132,11 +132,11 @@ The following context methods _are_ available in the `generate_schema_name` macr
 
 | Jinja context | Type | Available |
 | ------------- | ---- | --------- |
-| [target](target) | Variable | ✅ |
-| [env_var](env_var) | Variable | ✅ |
-| [var](var) | Variable | Limited, see below |
-| [exceptions](exceptions) | Macro | ✅ |
-| [log](log) | Macro | ✅ |
+| [target](/reference/dbt-jinja-functions/target) | Variable | ✅ |
+| [env_var](/reference/dbt-jinja-functions/env_var) | Variable | ✅ |
+| [var](/reference/dbt-jinja-functions/var) | Variable | Limited, see below |
+| [exceptions](/reference/dbt-jinja-functions/exceptions) | Macro | ✅ |
+| [log](/reference/dbt-jinja-functions/log) | Macro | ✅ |
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 

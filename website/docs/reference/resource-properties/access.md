@@ -23,7 +23,7 @@ models:
 ## Definition
 The access level of the model you are declaring properties for.
 
-Some models (not all) are designed to be referenced through the [ref](ref) function across [groups](build/groups).
+Some models (not all) are designed to be referenced through the [ref](/reference/dbt-jinja-functions/ref) function across [groups](/docs/build/groups).
 
 | Access    | Referenceable by              |
 |-----------|-------------------------------|

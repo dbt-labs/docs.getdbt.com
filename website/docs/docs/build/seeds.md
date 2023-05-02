@@ -3,9 +3,9 @@ title: "Seeds"
 id: "seeds"
 ---
 ## Related reference docs
-* [Seed configurations](seed-configs)
-* [Seed properties](seed-properties)
-* [`seed` command](seed)
+* [Seed configurations](/reference/seed-configs)
+* [Seed properties](/reference/seed-properties)
+* [`seed` command](/docs/build/seeds)
 
 ## Overview
 Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your <Term id="data-warehouse" /> using the `dbt seed` command.
@@ -75,7 +75,7 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 
 
 ## Documenting and testing seeds
-You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
+You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](/reference/seed-properties) for more information.
 
 ## FAQs
 <FAQ src="Seeds/load-raw-data-with-seed" />

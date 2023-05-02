@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-snowflake'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Snowflake'
-  config_page: 'snowflake-configs'
+  config_page: '/reference/resource-configs/snowflake-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

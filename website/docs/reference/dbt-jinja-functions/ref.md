@@ -30,7 +30,7 @@ from {{ref('model_a')}}
 
 :::info New in 0.9.0
 
-The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes at the [{{ this }}](this) variable.
+The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes at the [{{ this }}](/reference/dbt-jinja-functions/this) variable.
 
 :::
 

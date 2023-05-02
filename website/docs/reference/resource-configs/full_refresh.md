@@ -17,7 +17,7 @@ datatype: boolean
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +full_refresh: false
 
 ```
@@ -48,7 +48,7 @@ The configured model(s) will not full-refresh when `dbt run --full-refresh` is i
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +full_refresh: false
 
 ```

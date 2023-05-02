@@ -10,7 +10,7 @@ If you've already [built](3-building-a-new-adapter), and [tested](4-testing-a-ne
 Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
 - Hosting on a public git provider (for example, GitHub or Gitlab)
 - Publishing to [PyPI](https://pypi.org/)
-- Adding to the list of ["Supported Data Platforms"](supported-data-platforms#community-supported) (more info below)
+- Adding to the list of ["Supported Data Platforms"](/docs/supported-data-platforms#community-supported) (more info below)
 
 ## General Guidelines
 
