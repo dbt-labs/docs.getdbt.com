@@ -1,6 +1,6 @@
 ---
 title: "Exposures in your DAG"
-sidebar_title: "Exposures"
+sidebar_label: "Exposures"
 id: "exposures"
 ---
 
