@@ -23,7 +23,7 @@ There are default keyboard shortcuts that can help make development more product
 - Enter two underscores (__) in the IDE to reveal a list of dbt functions
 - Press Control-backtick (or Ctrl + `) to toggle the Invocation history
 - Press Command-Option-forward slash (Cmd + Opt + /) on the selected code to add a block comment. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`. Markdown files will use the Markdown syntax `(<!-- -->)`
-- Option-W will close the currently active editor tab
+- Option-W or Alt-W will close the currently active editor tab
 
 
 ## Package tips
