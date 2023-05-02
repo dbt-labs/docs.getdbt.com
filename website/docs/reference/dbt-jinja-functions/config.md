@@ -1,5 +1,5 @@
 ---
-title: "config"
+title: "dbt Jinga Functions - Config"
 id: "config"
 description: "Read this guide to understand the config Jinja function in dbt."
 ---

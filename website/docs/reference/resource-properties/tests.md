@@ -1,4 +1,5 @@
 ---
+title: "General Properties - Tests "
 resource_types: all
 datatype: test
 ---
