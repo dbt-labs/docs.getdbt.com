@@ -482,6 +482,7 @@ const sidebarSettings = {
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/contract",
             "reference/resource-configs/grants",
+            "reference/resource-configs/group",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
@@ -945,7 +946,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
             "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
-
+            "guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",
