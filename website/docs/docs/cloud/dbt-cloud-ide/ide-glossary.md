@@ -12,7 +12,7 @@ This page offers comprehensive definitions and terminology of user interface ele
 
 ## Basic layout
 
-The IDE is designed to streamline your workflow, and features a popular user interface and layout with all files and folders on the left, editor on the right, and command and console information at the bottom. 
+The IDE streamlines your workflow, and features a popular user interface layout with files and folders on the left, editor on the right, and command and console information at the bottom. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="100%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right and command/console at the bottom"/>
 
