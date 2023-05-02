@@ -1,5 +1,6 @@
 ---
 title: "Redshift setup"
+description: "Read this guide to learn about the Redshift warehouse setup in dbt."
 id: "redshift-setup"
 meta:
   maintained_by: dbt Labs
@@ -14,6 +15,8 @@ meta:
   platform_name: 'Redshift'
   config_page: 'redshift-configs'
 ---
+
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

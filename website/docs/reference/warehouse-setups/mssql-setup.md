@@ -1,5 +1,6 @@
 ---
 title: "Microsoft SQL Server setup"
+description: "Read this guide to learn about the Microsoft SQL Server warehouse setup in dbt."
 id: "mssql-setup"
 meta:
   maintained_by: Community

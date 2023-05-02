@@ -1,5 +1,6 @@
 ---
 title: "Self-service permissions"
+description: "Learn how dbt Cloud administrators can use self-service permissions to control access in a dbt Cloud account."
 id: "self-service-permissions"
 ---
 ## Overview
