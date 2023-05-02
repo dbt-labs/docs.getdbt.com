@@ -1,5 +1,6 @@
 ---
 title: "DuckDB setup"
+description: "Read this guide to learn about the DuckDB warehouse setup in dbt."
 meta:
   maintained_by: Community
   authors: 'Josh Wills (https://github.com/jwills)'

@@ -2,9 +2,9 @@
 title: "Incremental models in-depth"
 id: materializations-guide-4-incremental-models
 slug: 4-incremental-models
-description: Learn how to utilize materializations in dbt.
+description: Read this guide to understand the incremental models you can create in dbt.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand the incremental models you can create in dbt.
 ---
 
 So far we’ve looked at tables and views, which map to the traditional objects in the data warehouse. As mentioned earlier, incremental models are a little different. This where we start to deviate from this pattern with more powerful and complex materializations.
