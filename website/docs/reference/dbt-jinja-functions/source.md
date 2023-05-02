@@ -1,7 +1,7 @@
 ---
 title: "dbt Jinga Functions - Source"
 id: "source"
-description: "Returns a relation & creates dependencies between source and model."
+description: "Read this guide to understand the source Jinja function in dbt."
 ---
 
 ```sql

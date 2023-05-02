@@ -1,5 +1,6 @@
 ---
 resource_types: [models, seeds]
+description: "Full_Refresh - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 ---
 
