@@ -15,12 +15,15 @@ There are default keyboard shortcuts that can help make development more product
 
 - Press Fn-F1 to view a full list of the editor shortcuts
 - Command-O or Control-O to select a file to open
-- Command-P or Control-P to see command palette
+- Command-P or Command-Shift-P or Control-P to see command palette
 - Hold Option-click-on-an-area to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
--  Command-Enter or Control-Enter to Preview your code
+- Command-Enter or Control-Enter to Preview your code
 - Command-Shift-Enter or Control-Shift-Enter to Compile
 - Highlight a portion of code and use the above shortcuts to Preview or Compile code
 - Enter two underscores (__) in the IDE to reveal a list of dbt functions
+- Press Control-backtick (or Ctrl + `) to toggle the Invocation history
+- Press Command-Option-forward slash (Cmd + Opt + /) on the selected code to add a block comment. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`. Markdown files will use the Markdown syntax `(<!-- -->)`
+- Option-W will close the currently active editor tab
 
 
 ## Package tips
