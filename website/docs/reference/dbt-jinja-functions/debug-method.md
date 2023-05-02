@@ -1,5 +1,5 @@
 ---
-title: "dbt Jinga Functions - debug"
+title: "debug"
 id: "debug-method"
 description: "The `{{ debug() }}` macro will open an iPython debugger."
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Build Your DAG - Exposures"
+title: "Exposures"
 id: "exposures"
 ---
 

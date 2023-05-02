@@ -1,5 +1,5 @@
 ---
-title: "dbt Artifacts - Source "
+title: Sources
 ---
 
 **Current schema:** [`v3`](https://schemas.getdbt.com/dbt/sources/v3/index.html)

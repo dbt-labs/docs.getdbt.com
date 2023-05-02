@@ -1,5 +1,5 @@
 ---
-title: "dbt Jinga Functions - Source"
+title: "source"
 id: "source"
 description: "Read this guide to understand the source Jinja function in dbt."
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Build Your DAG - Sources"
+title: "Sources"
 description: "Read this tutorial to learn how to use sources when building in dbt."
 id: "sources"
 search_weight: "heavy"

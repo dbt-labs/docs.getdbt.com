@@ -1,5 +1,5 @@
 ---
-title: "Commands - Source"
+title: "source"
 id: "source"
 ---
 

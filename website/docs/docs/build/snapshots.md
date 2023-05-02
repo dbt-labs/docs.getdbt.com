@@ -1,5 +1,5 @@
 ---
-title: "Build Your DAG - Snapshots"
+title: "Snapshots"
 description: "Read this tutorial to learn how to use snapshots when building in dbt."
 id: "snapshots"
 ---
