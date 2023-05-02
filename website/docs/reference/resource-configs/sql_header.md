@@ -1,5 +1,6 @@
 ---
 resource_types: [models]
+description: "Sql_header - Read this in-depth guide to learn about configurations in dbt."
 datatype: "string"
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "BigQuery setup"
+description: "Read this guide to learn about the BigQuery warehouse setup in dbt."
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'

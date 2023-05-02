@@ -1,5 +1,6 @@
 ---
 title: "Redshift setup"
+description: "Read this guide to learn about the Redshift warehouse setup in dbt."
 id: "redshift-setup"
 meta:
   maintained_by: dbt Labs

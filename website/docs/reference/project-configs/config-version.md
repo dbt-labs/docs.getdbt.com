@@ -1,5 +1,6 @@
 ---
 datatype: integer
+description: "Read this guide to understand the config-version configuration in dbt."
 ---
 
 <VersionBlock firstVersion="1.5">
