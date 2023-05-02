@@ -1,5 +1,6 @@
 ---
-title: "Enhance Your Models - Tests"
+title: "Add tests to your DAG"
+sidebar_title: "Tests"
 description: "Read this tutorial to learn how to use tests when building in dbt."
 id: "tests"
 ---
