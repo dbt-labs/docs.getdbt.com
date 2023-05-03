@@ -78,8 +78,8 @@ models:
         description: hello
         constraints:
           - type: not_null
-          - type: primary_key # not enforced  -- will warn & include
-          - type: check       # not supported -- will warn & skip
+          - type: primary_key # not enforced  -- will warn & include in DDL
+          - type: check       # not supported -- will warn & exclude from DDL
             expression: "id > 0"
         tests:
           - unique            # primary_key constraint is not enforced
