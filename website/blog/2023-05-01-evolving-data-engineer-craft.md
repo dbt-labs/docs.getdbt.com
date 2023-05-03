@@ -146,7 +146,7 @@ models:
 ```
 
 ```sql
-select * from {{ ref('dim_customers', v=3) }}
+select * from {{ ref('dim_customers', v=2) }}
 ```
 
 [**Model Access**](https://docs.getdbt.com/docs/collaborate/govern/model-access)
