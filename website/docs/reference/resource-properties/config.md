@@ -1,5 +1,4 @@
 ---
-title: "General Properties - Config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
 ---
