@@ -1,5 +1,6 @@
 ---
-title: "ls (list)"
+title: "About dbt ls (list) command"
+sidebar_label: "ls (list)"
 description: "Read this guide on how dbt's ls (list) command can be used to list resources in your dbt project."
 id: "list"
 ---
