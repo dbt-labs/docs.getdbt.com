@@ -129,7 +129,7 @@ models:
           - type: check       # not supported -- will warn & exclude from DDL
             expression: "id > 0"
         tests:
-          - unique            # primary_key constraint is not enforced
+          - unique            # primary_key constraint is not enforced, so also verify with a dbt test
       - name: customer_name
         data_type: text
       - name: first_transaction_date
