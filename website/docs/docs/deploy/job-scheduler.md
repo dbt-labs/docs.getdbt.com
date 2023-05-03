@@ -33,7 +33,7 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 | Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data platform |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
-| Prep time | The time dbt Cloud takes to create a short-lived environment to execute the job commands in the user's cloud data warehouse. Prep time varies most significantly at the top of the hour when the dbt Cloud Scheduler experiences a lot of run traffic. |
+| Prep time | The time dbt Cloud takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the dbt Cloud Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently. Each account has a fixed number of run slots, depending on the plan tier, that are shared across projects in the account. Each running job occupies a run slot for the duration of the run, so purchasing more run slots enables more jobs to execute in parallel. |
 | Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/core/connection-profiles#understanding-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default value is 4 threads. |
@@ -50,7 +50,7 @@ Before the job starts executing, the scheduler checks two conditions to determin
 
 - **There must not be a run of the same job already in-flight** &mdash; The Scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in dbt Cloud.
 
-If there is an available run slot and there's not an actively running instance of the job, the Scheduler will prepare the job to run in the user's cloud data warehouse. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading warehouse credentials and git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time.**
+If there is an available run slot and there's not an actively running instance of the job, the Scheduler will prepare the job to run in the user's cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials and git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time.**
 
 Collectively **wait time** and **prep time** is the time a run spends in queue (or **Time in queue**).
 
