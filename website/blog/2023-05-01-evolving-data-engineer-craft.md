@@ -117,33 +117,37 @@ models:
   - name: dim_customers
     latest_version: 2
     config:
-      materialized: table
-      test: test
-    tests:
-      - unique:
-          column_name: "location_id"
+      contract:
+        enforced: true
     columns:
-      - name: customer_id
-        description: This is the primary key
-        data_type: int
-      - name: location_id
-        description: id of location
-        data_type: int
-        tests: 
-          - not_null
+      - name: id
+        data_type: integer
+        description: hello
+        constraints:
+          - type: not_null
+          - type: primary_key # not enforced  -- will warn & include in DDL
+          - type: check       # not supported -- will warn & exclude from DDL
+            expression: "id > 0"
+        tests:
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
+        data_type: text
+      - name: first_transaction_date
+        data_type: date
     versions:
-      - v: 3
+      - v: 2
         columns: 
           - include: '*'
-            exclude: ['location_id']
+            exclude: ['first_transaction_date']
           - name: extra
             data_type: text
         tests: []
-      - v: 2
+      - v: 1
         config: 
           materialized: view
         columns:
           - include: '*'
+        defined_in: dim_customers
 ```
 
 ```sql
