@@ -1,5 +1,5 @@
 ---
-title: "List of Commands - Seed"
+title: "seed"
 id: "seed"
 ---
 

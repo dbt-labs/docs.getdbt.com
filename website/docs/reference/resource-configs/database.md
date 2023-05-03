@@ -1,5 +1,4 @@
 ---
-title: "General Configs - Database"
 resource_types: [models, seeds, tests]
 datatype: string
 description: "Read this guide to understand the database configuration in dbt."
