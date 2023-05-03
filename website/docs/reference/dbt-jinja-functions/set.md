@@ -1,6 +1,6 @@
 ---
 title: "About set context method"
-sidebar_variable: "set"
+sidebar_label: "set"
 id: "set"
 description: "Converts any iterable to a sequence of iterable and unique elements."
 ---
