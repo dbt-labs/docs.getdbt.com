@@ -7,7 +7,7 @@
 | [**v1.3**](/guides/migration/versions/upgrading-to-v1.3)   | Oct 12, 2022    | Critical      | Oct 12, 2023            | Oct 2023        |
 | [**v1.2**](/guides/migration/versions/upgrading-to-v1.2)   | Jul 26, 2022    | Critical      | Jul 26, 2023            | Jul 2023        |
 | [**v1.1**](/guides/migration/versions/upgrading-to-v1.1) ⚠️ | Apr 28, 2022    | End of Life ⚠️ | Apr 28, 2023            | Apr 2023        |
-| [**v1.0**](/guides/migration/versions/upgrading-to-v1.0) ⚠️ | Dec 3, 2021     | End of Life ⚠️ | Dec 3, 2022 ⚠️           | Pending deprecation|
+| [**v1.0**](/guides/migration/versions/upgrading-to-v1.0) ⚠️ | Dec 3, 2021     | End of Life ⚠️ | Dec 3, 2022 ⚠️           | Supported until further notice |
 |  **v0.X** ⚠️                                                | (Various dates) | End of Life ⚠️ | Deprecated ⚠️            | Deprecated ⚠️    |
 
 ### Planned future releases
