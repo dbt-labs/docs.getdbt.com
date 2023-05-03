@@ -105,7 +105,7 @@ This error might be because of a configuration issue in the Snowflake OAuth flow
 #### Server error 500
 If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) on a Snowflake account level.
 
-Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
+Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to allow list.
 
 Depending on how you've configured your Snowflake network policies or IP allow listing, you may have to explicitly add the network policy that includes the allow listed dbt Cloud IPs to the security integration you just made.
 
