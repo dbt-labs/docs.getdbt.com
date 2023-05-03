@@ -29,7 +29,7 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 | Term | Definition |
 | --- | --- |
 | dbt Cloud Scheduler | The dbt Cloud engine that powers job execution. The scheduler queues scheduled or API-triggered job runs, prepares an environment to execute job commands in the user's cloud data warehouse, and stores and serves logs and artifacts that are byproducts of run execution. |
-| Job | An action dbt Cloud takes to automatically execute dbt commands that run tests and create tables and views for your data platform. |
+| Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data warehouse. |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 
 | Over scheduling | Situation when a job is currently running, but there are additional copies of the same job waiting in a queue to start as soon as the current job finishes. |
