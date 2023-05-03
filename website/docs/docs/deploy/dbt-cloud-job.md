@@ -17,7 +17,7 @@ today.
 
 - You must have a [dbt Cloud account](https://www.getdbt.com/signup/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
-- You must have [access permission](/docs/cloud/manage-access/about-access) to create, edit, and run jobs
+- You must have [access permission](/docs/cloud/manage-access/about-user-access) to create, edit, and run jobs
 - You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments) 
 - Your deployment environment must be on dbt version 1.0 or higher
 

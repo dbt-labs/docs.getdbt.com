@@ -6,14 +6,13 @@ description: Learn about partner integration guidelines, roadmap, and connectivi
 
 # dbt Semantic Layer partner integration
 
-:::info Contact us
-
-This guide is for dbt Semantic Layer integration partners and explains integration guidelines, product roadmap, and connectivity.<br />
-
-To become a formal partner, integrate with the API, or have questions/feedback &mdash; **[contact us](mailto:semantic-layer@dbtlabs.com)** for more info.
-
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
 :::
 
+This guide is for dbt Semantic Layer integration partners and explains integration guidelines, and connectivity.<br />
+
+To become a formal partner, integrate with the API, or have questions/feedback &mdash; **[contact us](mailto:semantic-layer@dbtlabs.com)** for more info.
 
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics, models, and entities. It helps organizations manage complexities such as data, tools, and teams to make more efficient and trustworthy decisions.
 
@@ -68,10 +67,10 @@ Integration partners generally build and approach their roadmap in the following
 | **Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
 | **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros.* | ✅ |
 | **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
-| **Entity definitions**   | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
-| **dbt Semantic Layer Connector**   | A dedicated connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
+| **Entity definitions**   | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon |
+| **dbt Semantic Layer Connector**   | A dedicated connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon |
 
-_*The coming soon features are expected to launch in 2023. Refer to the [Product Roadmap](#product-roadmap) for more details and timelines._
+_*The coming soon features are expected to launch in 2023. 
 
 **Integration best practices <a id="best-practices"></a>**
 
@@ -411,16 +410,6 @@ from {{ ref('orders') }}
 ```
 </TabItem>
 </Tabs>
-
-## Product Roadmap
-
-The dbt Semantic Layer product roadmap details what features are coming soon and the timelines associated with them. 
-
-| Product | Estimated launch |
-| ------- | ---------------- |
-| [Entities](#entities) | Early 2023 |
-| [dbt Semantic Layer Connector](#dbt-semantic-layer-connector) | Early-mid 2023 |
-| [dbt Semantic Layer API](#dbt-semantic-layer-api) | Mid 2023 |
 
 ### Entities 
 <!-- rewrite a little and include a summary for each tab entry -->

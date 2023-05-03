@@ -1,5 +1,6 @@
 ---
 resource_types: [snapshots]
+description: "Invalidate_hard_deletes - Read this in-depth guide to learn about configurations in dbt."
 datatype: column_name
 ---
 

@@ -1,0 +1,3 @@
+[comment: For context, the section title used for this snippet is "Schemas and databases" ]: # 
+
+When selecting the catalog and the schema, make sure the user has read and write access to both. This selection does not limit your ability to query the catalog. Instead, they serve as the default location for where tables and views are materialized. In addition, the Trino connector used in the catalog must support creating tables. This _default_ can be changed later from within your dbt project.

@@ -71,7 +71,7 @@ const sidebarSettings = {
               type: "category",
               label: "Manage access",
               items: [
-                "docs/cloud/manage-access/about-access",
+                "docs/cloud/manage-access/about-user-access",
                 "docs/cloud/manage-access/seats-and-users",
                 {
                   type: "category",
@@ -143,8 +143,8 @@ const sidebarSettings = {
           label: "dbt Core",
           collapsed: true,
           items: [
-            "docs/core/installation",
             "docs/core/about-the-cli",
+            "docs/core/installation",
             "docs/core/homebrew-install",
             "docs/core/pip-install",
             "docs/core/docker-install",
@@ -459,7 +459,7 @@ const sidebarSettings = {
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
             "reference/resource-properties/description",
-            "reference/resource-properties/latest-version",
+            "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
             "reference/resource-properties/tests",
@@ -476,6 +476,7 @@ const sidebarSettings = {
             "reference/resource-configs/full_refresh",
             "reference/resource-configs/contract",
             "reference/resource-configs/grants",
+            "reference/resource-configs/group",
             "reference/resource-configs/docs",
             "reference/resource-configs/persist_docs",
             "reference/resource-configs/pre-hook-post-hook",
@@ -648,8 +649,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Setups (CLI only)",
+      link: { type: "doc", id: "reference/profiles.yml" },
       items: [
-        "reference/profiles.yml",
         "reference/warehouse-setups/bigquery-setup",
         "reference/warehouse-setups/postgres-setup",
         "reference/warehouse-setups/redshift-setup",
@@ -939,7 +940,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
             "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
-
+            "guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",
           ],
         },
         "guides/dbt-ecosystem/sl-partner-integration-guide",

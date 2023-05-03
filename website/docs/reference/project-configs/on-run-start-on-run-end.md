@@ -1,5 +1,6 @@
 ---
 title: on-run-start & on-run-end
+description: "Read this guide to understand the on-run-start and on-run-end configurations in dbt."
 datatype: sql-statement | [sql-statement]
 ---
 

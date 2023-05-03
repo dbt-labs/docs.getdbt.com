@@ -241,12 +241,8 @@ Supported in v1.1 or newer.
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1">
-
-Supported in v1.1 or newer.
-
-:::caution Experimental functionality
-The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
+  
+Supported in v1.1 or higher.
 
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
 
