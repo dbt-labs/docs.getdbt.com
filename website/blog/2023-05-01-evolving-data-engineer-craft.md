@@ -140,8 +140,6 @@ models:
           - include: '*'
             exclude: ['first_transaction_date']
       - v: 1
-        config: 
-          materialized: view
         columns:
           - include: '*'
         defined_in: dim_customers
