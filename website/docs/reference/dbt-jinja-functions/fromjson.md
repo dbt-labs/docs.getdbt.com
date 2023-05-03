@@ -1,5 +1,6 @@
 ---
-title: "fromjson"
+title: "About fromjson context method"
+sidebar_lable: "fromjson"
 id: "fromjson"
 description: "Deserialize a json string into python with `fromjson` context method."
 ---

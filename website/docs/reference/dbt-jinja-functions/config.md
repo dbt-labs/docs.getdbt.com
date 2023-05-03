@@ -1,5 +1,6 @@
 ---
-title: "dbt Jinga Functions - Config"
+title: "About config variable"
+sidebar_label: "config"
 id: "config"
 description: "Read this guide to understand the config Jinja function in dbt."
 ---

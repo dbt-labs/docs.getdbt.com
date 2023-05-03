@@ -1,5 +1,6 @@
 ---
-title: "dbt Jinga Functions - Schema"
+title: "About model schema"
+sidebar_label: "schema"
 id: "schema"
 description: "The schema that the model is configured to be materialized in."
 ---

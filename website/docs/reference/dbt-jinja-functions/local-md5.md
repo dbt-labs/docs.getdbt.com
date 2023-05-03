@@ -1,5 +1,6 @@
 ---
-title: "local_md5"
+title: "local_md5 context variable"
+sidebar_label: "local_md5"
 id: "local_md5"
 description: "Calculate an MD5 hash of a string with `local_md5` context variable."
 ---

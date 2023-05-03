@@ -1,7 +1,8 @@
 ---
 title: "log"
+sibebar_label: "About log function"
 id: "log"
-description: "Read this guide to understand the log Jinja function in dbt."
+description: "Learn more about the log Jinja function in dbt."
 ---
 
 __Args__:
