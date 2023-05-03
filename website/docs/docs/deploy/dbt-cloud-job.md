@@ -5,9 +5,9 @@ description: "You can enable continuous integration (CI) to test every single ch
 tags: ["scheduler"]
 ---
 
-Use dbt Cloud's job scheduler to streamline your data transformation workflows and empower data teams to run dbt in production with ease. 
+Use dbt Cloud's Scheduler to streamline your data transformation workflows and empower data teams to run dbt in production with ease. 
 
-Running dbt in production using dbt Cloud's job scheduler eliminates the need to manually run dbt commands from the command line or set up an orchestration system. It's designed exclusively to streamline your dbt project deployments and runs, and keeps you data pipelines functioning seamlessly and efficiently.
+Running dbt in production using the scheduler eliminates the need to manually run dbt commands from the command line or set up an orchestration system. It's designed exclusively to streamline your dbt project deployments and runs, and keeps you data pipelines functioning seamlessly and efficiently.
 
 To experience the benefits of dbt Cloud, [sign up](https://cloud.getdbt.com/signup/) for a free account 
 today. 
@@ -23,17 +23,17 @@ today.
 - You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments) 
 - Your deployment environment must be on dbt version 1.0 or higher
 
-## Job scheduler features
+## Features
 
 dbt Cloud simplifies job scheduling, documentation, logging, automation, and alerting. These features make it easy to deploy jobs confidently and build observability into your processes.
 
-### Job scheduler 
+### Scheduler 
 
-The dbt Cloud job scheduler is a powerful tool that helps data teams optimize their data transformation workflows, makes it easier to run dbt in production environments, governs data, automates your dbt jobs, and empowers teams to get results faster with less effort. 
+The dbt Cloud's Scheduler is a powerful tool that helps data teams optimize their data transformation workflows, makes it easier to run dbt in production environments, governs data, automates your dbt jobs, and empowers teams to get results faster with less effort. 
 
 Use the scheduler to improve the efficiency of your data transformation process, while also gaining greater visibility into its progress. You can use custom scheduling for your jobs, which allows you to flexibly run jobs to meet your company's data freshness needs. The dbt Cloud Scheduler gives you power, while abstracting away complexity.
 
-Refer to [job scheduler](/docs/deploy/job-scheduler) for more info on how the scheduler works. 
+Refer to [Scheduler](/docs/deploy/job-scheduler) for more info on how the scheduler works. 
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="100%" title="An overview of a dbt Cloud job run"/>
 
@@ -127,5 +127,5 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 
 - [Deploy dbt jobs](/docs/deploy/deployments)
 - [Artifacts](/docs/deploy/artifacts)
-- [Job scheduler](/docs/deploy/job-scheduler)
+- [Scheduler](/docs/deploy/job-scheduler)
 - [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
