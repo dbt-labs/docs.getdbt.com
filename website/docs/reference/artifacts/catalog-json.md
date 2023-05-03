@@ -1,5 +1,6 @@
 ---
-title: Catalog
+title: "Catalog JSON file"
+sidebar_label: "Catalog"
 ---
 
 **Current schema**: [`v1`](https://schemas.getdbt.com/dbt/catalog/v1.json)

@@ -1,5 +1,6 @@
 ---
-title: "dispatch"
+sidebar_label: "dispatch"
+title: "About dispatch config"
 id: "dispatch"
 description: "dbt extends functionality across data platforms using multiple dispatch."
 ---
