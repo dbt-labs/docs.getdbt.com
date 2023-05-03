@@ -2,14 +2,15 @@
 // of the Quickstart Guides page.
 
 import React, { useState, useEffect } from "react";
-import clsx from 'clsx';
+import clsx from "clsx";
 import style from "./styles.module.css";
 
-
 function QuickstartTOC() {
+  const activeStepLocal = localStorage.getItem("activeStep") || 0;
+  
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(parseInt(activeStepLocal));
 
   console.log("activeStep", activeStep);
 
@@ -18,7 +19,7 @@ function QuickstartTOC() {
     const steps = document.querySelectorAll("h2");
     const stepContainer = document.querySelector(".step-container");
     const snippetContainer = document.querySelectorAll(".snippet");
-    
+
     // undwrap the snippet container and remove the div leaving the children
     snippetContainer.forEach((snippet) => {
       const parent = snippet.parentNode;
@@ -36,6 +37,7 @@ function QuickstartTOC() {
 
     setTocData(data);
     setMounted(true);
+    setActiveStep(parseInt(activeStepLocal));
 
     // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
     if (mounted) {
@@ -104,29 +106,31 @@ function QuickstartTOC() {
     }
   }, [mounted]);
 
- useEffect(() => {
-  const introDiv = document.querySelector(".intro");
+  useEffect(() => {
+    const introDiv = document.querySelector(".intro");
 
-  if (activeStep > 0 && introDiv) {
-    introDiv.classList.add("hidden");
-  } else if (introDiv) {
-    introDiv.classList.remove("hidden");
-  }
+    if (activeStep > 0 && introDiv) {
+      introDiv.classList.add("hidden");
+    } else if (introDiv) {
+      introDiv.classList.remove("hidden");
+    }
 
-  const tocItems = document.querySelectorAll(".toc-item");
+    const tocItems = document.querySelectorAll(".toc-item");
 
-  tocItems.forEach((item, i) => {
-    const isActive = i <= activeStep;
-    const isPrev = i < activeStep;
+    tocItems.forEach((item, i) => {
+      const isActive = i <= activeStep;
 
-    item.classList.toggle("active", isActive);
-    item.classList.toggle("prev-active", isPrev);
-  });
+      item.classList.toggle("active", isActive);
+    });
 
-  if (window.scrollY > 0) {
-    window.scrollTo(0, 0);
-  }
-}, [activeStep]);
+    // Scroll to the top of the page when the user clicks next
+    if (window.scrollY > 0) {
+      window.scrollTo(0, 0);
+    }
+
+    // Set local storage to the active step
+    localStorage.setItem("activeStep", activeStep);
+  }, [activeStep]);
 
   // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
@@ -170,12 +174,15 @@ function QuickstartTOC() {
     setActiveStep(stepNumber);
   };
 
-
-
   return (
     <ul className={style.tocList}>
       {tocData.map((step, index) => (
-        <li key={step.id} data-step={index} className={clsx(style.tocItem, 'toc-item')} onClick={handleTocClick}>
+        <li
+          key={step.id}
+          data-step={index}
+          className={clsx(style.tocItem, "toc-item")}
+          onClick={handleTocClick}
+        >
           <span>{step.stepNumber + 1}</span> {step.title}
         </li>
       ))}
