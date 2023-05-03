@@ -1,5 +1,6 @@
 ---
-title: "General Properties - Tests "
+title: "About tests property"
+sidebar_label: "tests"
 resource_types: all
 datatype: test
 ---

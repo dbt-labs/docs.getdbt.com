@@ -1,5 +1,6 @@
 ---
-title: "General Properties - Config"
+title: "About config property"
+sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
 ---

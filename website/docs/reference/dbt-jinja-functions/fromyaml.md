@@ -1,6 +1,6 @@
 ---
 title: "About fromyaml context method"
-sidebar_lable: "fromyaml"
+sidebar_label: "fromyaml"
 id: "fromyaml"
 description: "Deserialize a yaml string into python with `fromyaml` context method."
 ---
