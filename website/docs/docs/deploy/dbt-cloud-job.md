@@ -7,7 +7,7 @@ tags: ["scheduler"]
 
 Use dbt Cloud's Scheduler to streamline your data transformation workflows and empower data teams to run dbt in production with ease. 
 
-Running dbt in production using the scheduler eliminates the need to manually run dbt commands from the command line or set up an orchestration system. It's designed exclusively to streamline your dbt project deployments and runs, and keeps you data pipelines functioning seamlessly and efficiently.
+Running dbt in production using the scheduler eliminates the need to manually run dbt commands from the command line or set up an orchestration system. It's designed exclusively to streamline your dbt project deployments and runs and keeps your data pipelines functioning seamlessly and efficiently.
 
 To experience the benefits of dbt Cloud, [sign up](https://cloud.getdbt.com/signup/) for a free account 
 today. 
