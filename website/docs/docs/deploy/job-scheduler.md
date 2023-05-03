@@ -73,7 +73,7 @@ Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for an a
 
 -->
 
-## Run cancellation
+## Run cancelation for over-scheduled jobs
 
 :::info Scheduler won't cancel API-triggered jobs 
 The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-cloud-apis/overview).
