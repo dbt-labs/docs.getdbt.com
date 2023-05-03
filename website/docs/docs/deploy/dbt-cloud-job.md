@@ -31,7 +31,7 @@ dbt Cloud simplifies job scheduling, documentation, logging, automation, and ale
 
 The dbt Cloud job scheduler is a powerful tool that helps data teams optimize their data transformation workflows, makes it easier to run dbt in production environments, governs data, automates your dbt jobs, and empowers teams to get results faster with less effort. 
 
-Use the scheduler to improve the efficiency of your data transformation process, while also gaining greater visibility into its progress. You can use custom scheduling for your jobs, which allow you to run them automatically and save money by reducing manual work. It also provides governance policies to make sure your data is transformed consistently and meets your organization's standards.
+Use the scheduler to improve the efficiency of your data transformation process, while also gaining greater visibility into its progress. You can use custom scheduling for your jobs, which allows you to flexibly run jobs to meet your company's data freshness needs. The dbt Cloud Scheduler gives you power, while abstracting away complexity.
 
 Refer to [job scheduler](/docs/deploy/job-scheduler) for more info on how the scheduler works. 
 
