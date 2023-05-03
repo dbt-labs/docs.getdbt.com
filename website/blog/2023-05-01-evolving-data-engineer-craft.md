@@ -14,12 +14,12 @@ is_featured: true
 
 # Data Engineers + dbt 1.5: Evolving the Craft for Scale
 
-I entered the data industry by chance in fall 2014. I was using this thing called audit command language (ACL) to automate debits equal credits for accounting analytics (yes, it’s as tedious as it sounds). I remember working my butt off in a hotel room in Des Moines, Iowa where the most interesting thing there was a Panda Express. It was late in the AM. I’m thinking 2am. And I took a step back and thought to myself, “*Why am I working so hard for something that I just don’t care about with tools that hurt more than help?*”
+I, Sung, entered the data industry by chance in fall 2014. I was using this thing called audit command language (ACL) to automate debits equal credits for accounting analytics (yes, it’s as tedious as it sounds). I remember working my butt off in a hotel room in Des Moines, Iowa where the most interesting thing there was a Panda Express. It was late in the AM. I’m thinking about 2am. And I took a step back and thought to myself, “Why am I working so hard for something that I just don’t care about with tools that hurt more than help?*”
 <!--truncate-->
 
-I did lots of soul searching and deduced I loved analytics, but not the job and subject matter. My next gig was in consulting where I bootstrapped my way into data engineering and had to learn the whole gambit below. 
+I did lots of soul searching and deduced I loved analytics, but not the job and subject matter. My next gig was in consulting where I bootstrapped my way into data engineering and had to learn the whole gamut below.
 
-| Tech skills | Place in tech stack | Why it matters |
+| Tech skills | Place in tech stack | Why it mattered |
 | --- | --- | --- |
 | Airflow | Orchestrator | The industry standard to run data pipelines |
 | SQL | Lingua franca of data transformation | My business logic codified (think: revenue by month) |
@@ -30,11 +30,11 @@ I did lots of soul searching and deduced I loved analytics, but not the job and 
 | dbt | The T in ELT | The reason people finally test their data with SQL |
 | BigQuery | Cloud data warehouse | A lot of my clients used this |
 
-These are still great skills to learn and maintain even six years after I learned them in 2017. Armed with them, I finally saw the magic of the data stack and what problems it could solve. It took my questionable little pipelines back in 2014 and made them gleam with a new shine (and reliability). I felt like what the cool kids call a ********[10x data engineer](https://knowyourmeme.com/memes/10x-engineer)********. 
+These are still great skills to learn and maintain even six years after I learned them in 2017. Armed with them, I finally saw the magic of the modern data stack and what problems it could solve. It took my questionable little pipelines back in 2014 and made them gleam with a new shine (and reliability). I felt like what the cool kids call a ********[10x data engineer](https://knowyourmeme.com/memes/10x-engineer)********. 
 
-However, as my skills grew, so did the problems. Big Data soon turned into data swamps left and right across the clients I implemented data pipelines for using the above stack. And the charm of using these great tools lost their shine. Not because they’re bad tools, but because the problem space of managing giant mounds of data required something data tools are still wrestling with today: **scale and control**. I kept looking for goldilocks projects to save/make money for companies. I wanted to build prestige in my career. But in practice, I was babysitting data pipelines with fragile promises. To enable dozens of people was mind-numbing, much less hundreds of data analysts to all work elegantly together. 
+However, as my skills grew, so did the problems. Big Data soon turned into data swamps left and right across the clients I implemented data pipelines for using the above stack. The charm of using these great tools lost its shine, and my excitement gradually gave way to exhaustion. Not because they’re bad tools, but because the problem space of managing giant mounds of data required something data tools are still wrestling with today: scale and control. I kept looking for goldilocks projects to save/make money for companies. I wanted to build prestige in my career. But in practice, I was babysitting brittle data pipelines. To enable dozens of people was mind-numbing, much less hundreds of data analysts to all work elegantly together.
 
-We saw murmurs of [data mesh](https://en.wikipedia.org/wiki/Data_mesh) pop up in the data zeitgeist, but we haven’t seen it catch mainstream adoption. All the while, data tools are seeing an explosion of [newness](https://github.com/pola-rs/polars). Venture capital is firing on all cylinders investing in data startups. I’m still juggling my messy data pipelines and wondering what’s signal vs. noise in how to evolve my skills. I feel like a **.5x data engineer**. It’s like taking 1 step forward and 2 steps back. So my question becomes:
+I’m still juggling my messy data pipelines and wondering what’s signal vs. noise in how to evolve my skills. I feel like a .5x data engineer. It’s like taking 2 steps forward and 1 big step back. So my question becomes:
 
 > Why am I working so hard for data pipelines no one uses and **scale** that hurts more than helps?
 > 
@@ -43,9 +43,11 @@ I take a step back and realize my job is playing more defense than offense. My K
 
 This post is about acknowledging where dbt has met data engineers, and where dbt is going to take them v1.5: a world where dbt not only supports, but enhances, the ability to scale and control your data transformations.
 
+And I know there isn’t a silver bullet to solve all the above, but I do want to see momentum in the right direction. Where have tools like dbt met me and how exactly does it need to meet me going forward?
+
 ## Where dbt is meeting data engineers, and where it’s going
 
-The joys and pains of data engineering and analytics engineering are real; the win you get when a stakeholder eventually contributes to a dbt model; the loss when a pipeline breaks, and the onslaught of Slack notifications that come hurling your way. dbt *transformed ;)* the way data teams interact with their data, and the people that depend on them. Below, we’ll breakdown where dbt has met you, and where dbt v1.5 is evolving scale and control in your work, and how it’ll elevate your daily practice of data engineering (and remove some of those panicked Slack messages 😉).
+The joys and pains of data engineering and analytics engineering are real; the win you get when a stakeholder eventually contributes to a dbt model; the loss when a pipeline breaks, and the onslaught of Slack notifications that come hurling your way. dbt transformed ;) the way data teams interact with their data, and the people that depend on them. Below, we’ll breakdown where dbt has met you to solve critical problems, and where dbt v1.5 is evolving scale and control in your work, and how it’ll elevate your daily practice of data engineering (and remove some of those panicked Slack messages 😉).
 
 ### Building the foundation: Where dbt has met you
 
