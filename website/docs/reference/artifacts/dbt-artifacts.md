@@ -1,5 +1,5 @@
 ---
-title: "About dbt Artifacts"
+title: "About dbt artifacts"
 sidebar_label: "About dbt artifacts"
 ---
 
