@@ -39,7 +39,7 @@ Refer to [job scheduler](/docs/deploy/job-scheduler) for more info on how the sc
 
 ### Notifications
 
-Set up job notifications to inform you via email or a selected Slack channel when a job run succeeds, fails, or is cancelled, enabling you to respond quickly and proactively.  
+Set up job notifications to inform you via email or a selected Slack channel when a job run succeeds, fails, or is canceled, enabling you to respond quickly and proactively.  
 
 Refer to [job notifications](/docs/deploy/job-notifications) for more info. 
 
