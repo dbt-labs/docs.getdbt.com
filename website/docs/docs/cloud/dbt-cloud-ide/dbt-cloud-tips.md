@@ -14,13 +14,16 @@ The Cloud IDE provides keyboard shortcuts, features, and development tips to hel
 There are default keyboard shortcuts that can help make development more productive and easier for everyone.
 
 - Press Fn-F1 to view a full list of the editor shortcuts
-- Command-O or Control-O to select a file to open
-- Command-P or Control-P to see command palette
-- Hold Option-click-on-an-area to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
--  Command-Enter or Control-Enter to Preview your code
-- Command-Shift-Enter or Control-Shift-Enter to Compile
+- Command-O on macOS or Control-O on Windows to select a file to open
+- Command-P/Command-Shift-P on macOS or Control-P/Control-Shift-P on Windows to see the command palette
+- Hold Option-click-on-area on macOS or Hold-Alt-click-on-area on Windows to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
+- Command-Enter on macOS or Control-Enter on Windows to Preview your code
+- Command-Shift-Enter on macOS or Control-Shift-Enter on Windows to Compile
 - Highlight a portion of code and use the above shortcuts to Preview or Compile code
 - Enter two underscores (__) in the IDE to reveal a list of dbt functions
+- Press Control-backtick (or Ctrl + `) to toggle the Invocation history
+- Press Command-Option-forward slash on macOS or Control-Alt-forward slash on Windows on the selected code to add a block comment. SQL files will use the Jinja syntax `({# #})` rather than the SQL one `(/* */)`. Markdown files will use the Markdown syntax `(<!-- -->)`
+- Option-W on macOS or Alt-W on Windows will close the currently active editor tab
 
 
 ## Package tips
