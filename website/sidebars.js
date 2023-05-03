@@ -132,6 +132,7 @@ const sidebarSettings = {
                 "docs/cloud/privatelink/snowflake-privatelink",
                 "docs/cloud/privatelink/redshift-privatelink",
                 "docs/cloud/privatelink/databricks-privatelink",
+                "docs/cloud/privatelink/ip-restrictions",
               ],
             }, // PrivateLink
             "docs/cloud/develop-in-the-cloud",
