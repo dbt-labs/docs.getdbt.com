@@ -35,7 +35,7 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
 | Prep time | The time dbt Cloud takes to configure a job to run a project on your cloud data platform. Prep time can vary depending on the complexity of the job and the amount of data being processed. |
-| Run | A single unique attempt to run a dbt job. |
+| Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently: one run slot allows for a single job at a time. Adding more run slots enables multiple jobs to run at the same time. |
 | Threads | When you run dbt, it creates a graph of links between models. The number of [threads](/docs/core/connection-profiles#understanding-threads) is the maximum number of paths that dbt can work on at once. The default value is 4 threads. |
 | Wait time | Amount of time that dbt Cloud waits before running your job, either because there are no available slots for running jobs or because a previous run of the same job is still in progress. |
