@@ -1,5 +1,6 @@
 ---
 title: "BigQuery configurations"
+description: "Read this guide to understand BigQuery configurations in dbt."
 id: "bigquery-configs"
 ---
 

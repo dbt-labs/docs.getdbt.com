@@ -2,9 +2,9 @@
 title: "Materializations best practices"
 id: materializations-guide-1-guide-overview
 slug: 1-guide-overview
-description: Learn how to utilize materializations in dbt.
+description: Read this guide to understand how using materializations in dbt is a crucial skill for effective analytics engineering.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand how using materializations in dbt is a crucial skill for effective analytics engineering.
 ---
 
 What _really_ happens when you type `dbt build`? Contrary to popular belief, a crack team of microscopic data elves do _not_ construct your data row by row, although the truth feels equally magical. This guide explores the real answer to that question, with an introductory look at the objects that get built into your warehouse, why they matter, and how dbt knows what to build.

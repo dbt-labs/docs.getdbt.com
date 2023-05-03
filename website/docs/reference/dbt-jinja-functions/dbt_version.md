@@ -1,7 +1,7 @@
 ---
 title: "dbt_version"
 id: "dbt_version"
-description: "The `dbt_version` variable returns the installed version of dbt."
+description: "Read this guide to understand the dbt_version Jinja function in dbt."
 ---
 
 <Changelog>New in 0.16.0</Changelog>
