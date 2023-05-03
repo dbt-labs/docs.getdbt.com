@@ -43,7 +43,7 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 
 ## Scheduler queue
 
-The dbt Cloud scheduler queues a deployment job to be processed when it's triggered to run, either by schedule or by API. 
+The dbt Cloud scheduler queues a deployment job to be processed when it's triggered to run, either by schedule, by API, by PR trigger, or manually. 
 
 Before the job starts executing, the scheduler checks two conditions to determine if the run can start executing:
 
