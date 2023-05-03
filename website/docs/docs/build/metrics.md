@@ -1,5 +1,6 @@
 ---
-title: "Metrics"
+title: "Add metrics to your DAG"
+sidebar_label: "Metrics"
 id: "metrics"
 description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
 keywords:
