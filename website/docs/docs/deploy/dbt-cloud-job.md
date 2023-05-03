@@ -58,7 +58,7 @@ You can view or download in-progress and historical logs for your dbt runs, maki
 ### Model timing 
 > Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
 
-The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each job run. The visualization appears for successful jobs and highlights the top 1% model durations. This helps you identify bottlenecks in your models, so you can explore them and potentially make changes to improve their performance. 
+The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each model in a job run. The visualization appears for successful jobs and highlights the top 1% model durations. This helps you identify bottlenecks in your runs, so you can investigate them and potentially make changes to improve their performance. 
 
 You can find the dashboard on the **Run Overview** page. 
 
