@@ -51,7 +51,7 @@ Before the job starts executing, the scheduler checks two conditions to determin
 
 - **There must not be a run of the same job already in-flight** &mdash; The Scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in dbt Cloud.
 
-Once the available slot conditions and distinct run checks are met, the scheduler will prepare the job to run on your data platform. The time it takes to prepare the job is displayed as **prep time.**
+If there is an available run slot and there's not an actively running instance of the job, the Scheduler will prepare the job to run in the user's cloud data warehouse. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading warehouse credentials and git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time.**
 
 Collectively **wait time** and **prep time** is the time a run spends in queue (or **Time in queue**).
 
