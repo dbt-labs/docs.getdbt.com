@@ -13,6 +13,7 @@ The Scheduler enables both cron-based and event-driven execution of dbt commands
 - Cron-based execution of dbt Cloud jobs that run on a predetermined cadence
 - Event-driven execution of dbt Cloud CI jobs triggered by pull requests to the the dbt repo
 - Event-driven execution of dbt Cloud jobs triggered by API
+- Event-driven execution of dbt Cloud jobs manually triggered by a user to "Run Now"
 
 The Scheduler takes care of:
 - queuing jobs
