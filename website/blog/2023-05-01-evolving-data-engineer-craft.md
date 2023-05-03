@@ -137,6 +137,7 @@ models:
           - include: '*'
             exclude: ['location_id']
           - name: extra
+            data_type: text
         defined_in: arbitrary_file_name
         tests: []
       - v: 2
