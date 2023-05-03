@@ -11,7 +11,7 @@ The Scheduler is the backbone of running jobs in dbt Cloud, bringing power and s
 The Scheduler enables both cron-based and event-driven execution of dbt commands in the user’s data platform. Specifically, the Scheduler handles:
 
 - Cron-based execution of dbt Cloud jobs that run on a predetermined cadence
-- Event-driven execution of dbt Cloud CI jobs triggered by pull requests to the the dbt repo
+- Event-driven execution of dbt Cloud CI jobs triggered by pull requests to the dbt repo
 - Event-driven execution of dbt Cloud jobs triggered by API
 - Event-driven execution of dbt Cloud jobs manually triggered by a user to "Run Now"
 
@@ -50,7 +50,7 @@ Before the job starts executing, the scheduler checks two conditions to determin
 
 - **There must not be a run of the same job already in-flight** &mdash; The Scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in dbt Cloud.
 
-If there is an available run slot and there's not an actively running instance of the job, the Scheduler will prepare the job to run in the user's cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials and git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time.**
+If there is an available run slot and there's not an actively running instance of the job, the Scheduler will prepare the job to run in the user's cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time.**
 
 Collectively **wait time** and **prep time** is the time a run spends in queue (or **Time in queue**).
 
@@ -58,7 +58,7 @@ Collectively **wait time** and **prep time** is the time a run spends in queue (
 
 ## Job memory
 
-In dbt Cloud, each run of a job executes in a pod with a default megabyte (MB) memory limit. If a job uses up all of the memory, the pod is terminated with a "memory limit error" message. There is not a memory limit set at the account-level.
+In dbt Cloud, each run of a job executes in a pod with a default megabyte (MB) memory limit. If a job uses up all of the memory, the pod is terminated with a "memory limit error" message. There isn't a memory limit set at the account-level.
 
 Jobs consume a lot of memory in the following situations:
 - A high thread count was specified
@@ -78,7 +78,7 @@ Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for an a
 The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/dbt-cloud-apis/overview).
 :::
 
-**Over scheduled jobs** &mdash; The dbt Cloud scheduler prevents too many job runs from clogging the queue by cancelling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to a ever-expanding queue with runs that don’t need to be processed. 
+**Over scheduled jobs** &mdash; The dbt Cloud scheduler prevents too many job runs from clogging the queue by cancelling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to an ever-expanding queue with runs that don’t need to be processed. 
 
 The scheduler prevents queue clog by cancelling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is scheduled, any previous queued run will be canceled and have a helpful error message displayed:
 
