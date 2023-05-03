@@ -2,7 +2,9 @@
 // of the Quickstart Guides page.
 
 import React, { useState, useEffect } from "react";
+import clsx from 'clsx';
 import style from "./styles.module.css";
+
 
 function QuickstartTOC() {
   const [mounted, setMounted] = useState(false);
@@ -15,12 +17,8 @@ function QuickstartTOC() {
     // Get all h2 for each step in the guide
     const steps = document.querySelectorAll("h2");
     const stepContainer = document.querySelector(".step-container");
-
+    const snippetContainer = document.querySelectorAll(".snippet");
     
-    const snippetContainer = document.querySelectorAll(
-      ".snippet"
-    );
-
     // undwrap the snippet container and remove the div leaving the children
     snippetContainer.forEach((snippet) => {
       const parent = snippet.parentNode;
@@ -38,7 +36,6 @@ function QuickstartTOC() {
 
     setTocData(data);
     setMounted(true);
-    setActiveStep(0);
 
     // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
     if (mounted) {
@@ -107,23 +104,29 @@ function QuickstartTOC() {
     }
   }, [mounted]);
 
+ useEffect(() => {
+  const introDiv = document.querySelector(".intro");
 
-  // Hide the intro if active step is greater than 0
-  useEffect(() => {
-    const introDiv = document.querySelector(".intro");
+  if (activeStep > 0 && introDiv) {
+    introDiv.classList.add("hidden");
+  } else if (introDiv) {
+    introDiv.classList.remove("hidden");
+  }
 
-    if (activeStep > 0 && introDiv) {
-      introDiv.classList.add("hidden");
-    } else if (activeStep === 0 && introDiv) {
-        introDiv.classList.remove("hidden");
-    }
+  const tocItems = document.querySelectorAll(".toc-item");
 
-    // Scroll to the top of the page if the content is longer than the viewport
-    if (window.scrollY > 0) {
-        window.scrollTo(0, 0);
-    }
+  tocItems.forEach((item, i) => {
+    const isActive = i <= activeStep;
+    const isPrev = i < activeStep;
 
-  }, [activeStep]);
+    item.classList.toggle("active", isActive);
+    item.classList.toggle("prev-active", isPrev);
+  });
+
+  if (window.scrollY > 0) {
+    window.scrollTo(0, 0);
+  }
+}, [activeStep]);
 
   // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
@@ -135,7 +138,7 @@ function QuickstartTOC() {
     );
 
     currentStep?.classList.add("hidden");
-    newStep?.classList.remove("hidden");  
+    newStep?.classList.remove("hidden");
 
     setActiveStep(newStepIndex);
   };
@@ -154,24 +157,25 @@ function QuickstartTOC() {
 
   // Handle TOC click
   const handleTocClick = (e) => {
-    let stepNumber = parseInt(e.target.dataset.step);
-
-    const step = document.querySelector(
-      `.step-wrapper[data-step='${stepNumber}']`
-    );
+    const stepNumber = parseInt(e.target.dataset.step);
 
     const currentStep = document.querySelector(".step-wrapper:not(.hidden)");
-
     currentStep?.classList.add("hidden");
-    step?.classList.remove("hidden");
+
+    const newStep = document.querySelector(
+      `.step-wrapper[data-step='${stepNumber}']`
+    );
+    newStep?.classList.remove("hidden");
 
     setActiveStep(stepNumber);
   };
 
+
+
   return (
     <ul className={style.tocList}>
       {tocData.map((step, index) => (
-        <li key={step.id} data-step={index} onClick={handleTocClick}>
+        <li key={step.id} data-step={index} className={clsx(style.tocItem, 'toc-item')} onClick={handleTocClick}>
           <span>{step.stepNumber + 1}</span> {step.title}
         </li>
       ))}

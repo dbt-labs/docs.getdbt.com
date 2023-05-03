@@ -1851,3 +1851,8 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   display: none;
 }
 
+.toc-item.active span {
+  background: var(--color-light-teal);
+  color: var(--color-white);
+}
+

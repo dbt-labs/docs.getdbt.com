@@ -2,8 +2,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    max-width: 300px;
-    width: 100%;
+    width: 400px;
     padding-right: 2rem;
 }
 
@@ -18,6 +17,8 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
     cursor: pointer;
+    color: var(--docsearch-text-color);
+    text-decoration: none;
 }
 
 .tocList li span {
@@ -28,7 +29,12 @@
     text-align: center;
     line-height: 30px;
     color: var(--color-light-teal);
-    border: solid 1px var(  --color-light-teal);
+    border: solid 1px var(--color-light-teal);
+}
+
+.tocList li.active span {
+    background: var(--color-light-teal);
+    color: var(--color-white);
 }
 
 .buttonContainer {
