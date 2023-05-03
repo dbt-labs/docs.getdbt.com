@@ -16,7 +16,7 @@ The Scheduler enables both cron-based and event-driven execution of dbt commands
 - Event-driven execution of dbt Cloud jobs manually triggered by a user to "Run Now"
 
 :::tip
-Actions in the dbt Cloud IDE aren't included in the Scheduler's handling. For example, dbt commands executed in the IDE don't affect the Scheduler. 
+Actions in the dbt Cloud IDE aren't included in the Scheduler's handling. For example, dbt commands executed in the IDE don't affect the Scheduler or your run slots. 
 :::
 
 The Scheduler takes care of:
