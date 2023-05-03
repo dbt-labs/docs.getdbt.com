@@ -49,7 +49,7 @@ Before the job starts executing, the scheduler checks two conditions to determin
 
 - **The account must have an available run slot** &mdash; If all run slots are occupied, the queued run will wait. The wait time is displayed in dbt Cloud. If there are long wait times, [upgrading to enterprise](https://www.getdbt.com/contact/) can provide more run slots and allow for higher job concurrency.
 
-- **There must not be a run of the same job already in-flight** &mdash; The scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait and the waiting time will be displayed in dbt Cloud.
+- **There must not be a run of the same job already in-flight** &mdash; The Scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in dbt Cloud.
 
 Once the available slot conditions and distinct run checks are met, the scheduler will prepare the job to run on your data platform. The time it takes to prepare the job is displayed as **prep time.**
 
