@@ -42,7 +42,7 @@ The following env vars have been renamed, for consistency with the convention fo
 
 As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
-Some options that could previously be specified before a sub-command now can only be specified afterwards. e.g. `dbt --profiles-dir . run` is no longer valid and must be `dbt run --profiles-dir .` instead.
+Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
 
 Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
