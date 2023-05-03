@@ -1,5 +1,6 @@
 ---
-title: "Project Configs - Quoting"
+title: "Configuring quoting in projects"
+sidebar_label: "quoting"
 datatype: boolean # -ish, it's actually a dictionary of bools
 description: "Read this guide to understand the quoting configuration in dbt."
 default: true

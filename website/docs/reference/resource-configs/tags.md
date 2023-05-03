@@ -1,5 +1,6 @@
 ---
-title: "General Configs - Tags"
+title: "About tags configuration"
+sidebar_label: "tags"
 resource_types: all
 datatype: string | [string]
 ---
