@@ -58,7 +58,7 @@ Collectively **wait time** and **prep time** is the time a run spends in queue (
 
 ## Job memory
 
-In dbt Cloud, each run of a job gets its own [Kubernetes pod](https://en.wikipedia.org/wiki/Kubernetes) with a default megabyte (MB) memory limit. If a job uses up all of that memory, the pod is terminated with a "memory error" message. Each pod has its own memory limit, so having multiple jobs that use up some of the MBs each won't exhaust MB limit set for your account.
+In dbt Cloud, each run of a job executes in a pod with a default megabyte (MB) memory limit. If a job uses up all of the memory, the pod is terminated with a "memory limit error" message. There is not a memory limit set at the account-level.
 
 It's possible that jobs can consume a lot of memory in various situations, such as when bringing data back into dbt for processing, running a high thread count, or retrieving tables from schemas during docs generation.
 
