@@ -1,5 +1,4 @@
 ---
-title: "For Sources - Database"
 resource_types: sources
 datatype: database_name
 ---
