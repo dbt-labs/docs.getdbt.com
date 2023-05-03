@@ -42,25 +42,23 @@ export default function DocItemContent({children}) {
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>
-      {syntheticTitle && (
-        <>
-          {isSpotlightMember ? (
-            <div className={styles.spotlightMemberContain}>
-              <CommunitySpotlightCard
-                frontMatter={frontMatter} 
-                isSpotlightMember={true} 
-              />
-              <MDXContent>{children}</MDXContent>
-            </div>
-          ) : (
-            <>
-              <header>
-                <Heading as="h1">{syntheticTitle}</Heading>
-              </header>
-              <MDXContent>{children}</MDXContent>
-            </>
-          )}
-        </>
+      {syntheticTitle && !isSpotlightMember && (
+        <header>
+          <Heading as="h1">{syntheticTitle}</Heading>
+        </header>
+      )}
+
+      {/* Wrap with small container if spotlight member page */}
+      {isSpotlightMember ? (
+        <div className={styles.spotlightMemberContain}>
+          <CommunitySpotlightCard
+            frontMatter={frontMatter} 
+            isSpotlightMember={true} 
+            />
+          <MDXContent>{children}</MDXContent>
+        </div>
+      ) : (
+        <MDXContent>{children}</MDXContent>
       )}
     </div>
   );

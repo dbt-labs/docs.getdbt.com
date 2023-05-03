@@ -1,5 +1,6 @@
 ---
 title: "Layer setup"
+description: "Read this guide to learn about the Layer warehouse setup in dbt."
 id: "layer-setup"
 meta:
   maintained_by: Layer

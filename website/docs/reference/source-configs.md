@@ -1,5 +1,6 @@
 ---
 title: Source configurations
+description: "Read this guide to learn about using source configurations in dbt."
 id: source-configs
 ---
 
