@@ -139,9 +139,6 @@ models:
         columns: 
           - include: '*'
             exclude: ['first_transaction_date']
-          - name: extra
-            data_type: text
-        tests: []
       - v: 1
         config: 
           materialized: view
