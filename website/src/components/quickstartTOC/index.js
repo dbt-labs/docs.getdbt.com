@@ -4,15 +4,16 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import style from "./styles.module.css";
+import { useLocation } from "@docusaurus/router";
 
 function QuickstartTOC() {
-  const activeStepLocal = localStorage.getItem("activeStep") || 0;
-  
+  const location = useLocation().pathname;
+  const activeStepLocal = localStorage.getItem(location);
+
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
-  const [activeStep, setActiveStep] = useState(parseInt(activeStepLocal));
-
-  console.log("activeStep", activeStep);
+  const [activeStep, setActiveStep] = useState(parseInt(activeStepLocal) || 0 );
+  const [activeQuickstart, setActiveQuickstart] = useState(location);
 
   useEffect(() => {
     // Get all h2 for each step in the guide
@@ -129,7 +130,8 @@ function QuickstartTOC() {
     }
 
     // Set local storage to the active step
-    localStorage.setItem("activeStep", activeStep);
+    localStorage.setItem(activeQuickstart, activeStep);
+
   }, [activeStep]);
 
   // Handle updating the active step
