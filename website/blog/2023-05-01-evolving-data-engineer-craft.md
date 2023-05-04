@@ -14,7 +14,7 @@ is_featured: true
 
 # Data Engineers + dbt 1.5: Evolving the Craft for Scale
 
-I, Sung, entered the data industry by chance in fall 2014. I was using this thing called audit command language (ACL) to automate debits equal credits for accounting analytics (yes, it’s as tedious as it sounds). I remember working my butt off in a hotel room in Des Moines, Iowa where the most interesting thing there was a Panda Express. It was late in the AM. I’m thinking about 2 am. And I took a step back and thought to myself, “Why am I working so hard for something that I just don’t care about with tools that hurt more than help?”
+I, Sung, entered the data industry by chance in Fall 2014. I was using this thing called audit command language (ACL) to automate debits equal credits for accounting analytics (yes, it’s as tedious as it sounds). I remember working my butt off in a hotel room in Des Moines, Iowa where the most interesting thing there was a Panda Express. It was late in the AM. I’m thinking about 2 am. And I took a step back and thought to myself, “Why am I working so hard for something that I just don’t care about with tools that hurt more than help?”
 <!--truncate-->
 
 I did lots of soul searching and deduced I loved analytics, but not the job and subject matter. My next gig was in consulting where I bootstrapped my way into data engineering and had to learn the whole gamut below.
