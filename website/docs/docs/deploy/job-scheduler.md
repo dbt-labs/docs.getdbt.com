@@ -56,7 +56,7 @@ Collectively **wait time** and **prep time** is the time a run spends in queue (
 
 ## Job memory
 
-In dbt Cloud, the amount of memory available for running jobs is set at the account-level, not for each job separately. Whenever a job runs, and it reaches the memory limit set on the account, the run is terminated with a "memory limit error" message.
+In dbt Cloud, the setting to provision memory available to a job is defined at the account-level and applies to each job running in the account; the memory limit cannot be customized per job. If a running job reaches its memory limit, the run is terminated with a "memory limit error" message.
 
 Jobs consume a lot of memory in the following situations:
 - A high thread count was specified
