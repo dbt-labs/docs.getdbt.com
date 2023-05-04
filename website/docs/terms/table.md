@@ -1,6 +1,7 @@
 ---
 id: table
 title: Table
+description: "Read this guide to understand how tables work in dbt."
 displayText:  table 
 hoverSnippet: In simplest terms, a table is the direct storage of data in rows and columns.  Think excel sheet with raw values in each of the cells.  
 ---

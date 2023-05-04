@@ -1,5 +1,6 @@
 ---
 title: "Materialize configurations"
+description: "Materialize Configurations- Read this in-depth guide to learn about configurations in dbt."
 id: "materialize-configs"
 ---
 

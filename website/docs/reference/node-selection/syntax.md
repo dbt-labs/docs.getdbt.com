@@ -11,7 +11,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 | [seed](commands/seed)           | `--select`, `--exclude`, `--selector`                                |
 | [snapshot](commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
 | [ls (list)](commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
-| [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
+| [compile](commands/compile)     | `--select`, `--exclude`, `--selector`, `--inline`                    |
 | [freshness](commands/source)    | `--select`, `--exclude`, `--selector`                                |
 | [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
 

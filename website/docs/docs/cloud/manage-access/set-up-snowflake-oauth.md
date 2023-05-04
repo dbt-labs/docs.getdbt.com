@@ -1,5 +1,6 @@
 ---
 title: "Set up Snowflake OAuth"
+description: "Learn how dbt Cloud administrators can use Snowflake OAuth to control access in a dbt Cloud account."
 id: "set-up-snowflake-oauth"
 ---
 
@@ -95,7 +96,20 @@ When clicking on the `Connect Snowflake Account` successfully redirects you to t
 * Your user might not have access to the Snowflake role defined on the development credentials in dbt Cloud. Double-check that you have access to that role and if the role name has been correctly entered in as Snowflake is case sensitive.
 * You're trying to use a role that is in the [BLOCKED_ROLES_LIST](https://docs.snowflake.com/en/user-guide/oauth-partner.html#blocking-specific-roles-from-using-the-integration), such as `ACCOUNTADMIN`.
 
-#### Server error 500
-If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double check that you have whitelisted [dbt Cloud's IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) on a Snowflake account level.
+#### The requested scope is invalid
+When you select the `Connect Snowflake Account` button to try to connect to your Snowflake account, you might get an error that says `The requested scope is invalid` even though you were redirected to the Snowflake login page successfully. 
 
-Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to whitelist.
+This error might be because of a configuration issue in the Snowflake OAuth flow, where the `role` in the profile config is mandatory for each user and doesn't inherit it from the project connection page. This means each user needs to supply their role information, regardless of whether it's provided on the project connection page.
+* In the Snowflake OAuth flow, `role` in the profile config is not optional, as it does not inherit from the project connection config. So each user must supply their role, regardless of whether it is provided in the project connection.
+
+#### Server error 500
+If you experience a 500 server error when redirected from Snowflake to dbt Cloud, double-check that you have allow listed [dbt Cloud's IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) on a Snowflake account level.
+
+Enterprise customers who have single-tenant deployments will have a different range of IP addresses (network CIDR ranges) to allow list.
+
+Depending on how you've configured your Snowflake network policies or IP allow listing, you may have to explicitly add the network policy that includes the allow listed dbt Cloud IPs to the security integration you just made.
+
+```
+ALTER SECURITY INTEGRATION <security_integration_name>
+SET NETWORK_POLICY = <network_policy_name> ;
+```

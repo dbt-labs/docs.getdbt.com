@@ -1,11 +1,10 @@
 ---
+title: "About config property"
+sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property
-</Changelog>
 
 <Tabs
   defaultValue="models"

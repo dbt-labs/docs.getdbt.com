@@ -1,5 +1,6 @@
 ---
-title: "exceptions"
+title: "About exceptions namespace"
+sidebar_label: "exceptions"
 id: "exceptions"
 description: "Raise warnings/errors with the `exceptions` namespace."
 ---

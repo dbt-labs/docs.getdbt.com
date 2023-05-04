@@ -1,5 +1,6 @@
 ---
 title: Model configurations
+description: "Read this guide to understand model configurations in dbt."
 ---
 
 ## Related documentation
@@ -105,7 +106,7 @@ models:
     [+](plus-prefix)[full_refresh](full_refresh): <boolean>
     [+](plus-prefix)[meta](meta): {<dictionary>}
     [+](plus-prefix)[grants](grants): {<dictionary>}
-    [+](plus-prefix)[contract](contract): true | false
+    [+](plus-prefix)[contract](contract): {<dictionary>}
 
 ```
 
@@ -135,7 +136,7 @@ models:
       [full_refresh](full_refresh): <boolean>
       [meta](meta): {<dictionary>}
       [grants](grants): {<dictionary>}
-      [contract](contract): true | false
+      [contract](contract): {<dictionary>}
 ```
 
 </File>
@@ -161,7 +162,7 @@ models:
     [persist_docs](persist_docs)={<dict>},
     [meta](meta)={<dict>},
     [grants](grants)={<dict>},
-    [contract](contract)=true | false
+    [contract](contract)={<dictionary>}
 ) }}
 
 ```

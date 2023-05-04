@@ -1,10 +1,9 @@
 ---
-title: "builtins"
+title: "About builtins Jinja function"
+sidebar_label: "builtins"
 id: "builtins"
-description: "The `builtins` variable references the builtin dbt context methods."
+description: "Read this guide to understand the builtins Jinja function in dbt."
 ---
-
-<Changelog>New in 0.16.0</Changelog>
 
 The `builtins` variable exists to provide references to builtin dbt context methods. This allows macros to be created with names that _mask_ dbt builtin context methods, while still making those methods accessible in the dbt compilation context.
 
