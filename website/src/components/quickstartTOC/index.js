@@ -8,14 +8,13 @@ import { useLocation } from "@docusaurus/router";
 
 function QuickstartTOC() {
   const location = useLocation().pathname;
-  const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(location) : null;
+  const activeStepLocal =
+    typeof localStorage !== "undefined" ? localStorage.getItem(location) : null;
 
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
   const [activeStep, setActiveStep] = useState(activeStepLocal);
   const [activeQuickstart, setActiveQuickstart] = useState(location);
-
-
 
   useEffect(() => {
     // Get all h2 for each step in the guide
@@ -60,24 +59,11 @@ function QuickstartTOC() {
         } while (currentElement && currentElement.tagName !== "H2");
       });
 
-      // Wrap any non-step content in a div for the quickstart intro
-      const children = stepContainer.children;
-      const stepWrapper = document.createElement("div");
-
-      while (
-        children.length &&
-        children[0].classList.contains("step-wrapper") === false
-      ) {
-        stepWrapper.appendChild(children[0]);
-      }
-      stepContainer.appendChild(stepWrapper);
-
-      const initialStep = document.querySelector(
-        `.step-wrapper[data-step='${activeStep}']`
+      // Find the acvtive step and show it
+      const activeStepWrapper = document.querySelector(
+        `.step-wrapper[data-step="${activeStep}"]`
       );
-      if (initialStep) {
-        initialStep.classList.remove("hidden");
-      }
+      activeStepWrapper.classList.remove("hidden");
     }
 
     // Add Next/Prev buttons to step-wrapper divs
@@ -91,12 +77,12 @@ function QuickstartTOC() {
         const nextButton = document.createElement("a");
 
         prevButton.textContent = "Back";
-        prevButton.classList.add(style.button);
+        prevButton.classList.add(clsx(style.button, style.prevButton));
         prevButton.disabled = index === 0;
         prevButton.addEventListener("click", () => handlePrev(index));
 
         nextButton.textContent = "Next";
-        nextButton.classList.add(style.button);
+        nextButton.classList.add(clsx(style.button, style.nextButton));
         nextButton.disabled = index === stepWrappers.length - 1;
         nextButton.addEventListener("click", () => handleNext(index));
 
@@ -104,25 +90,25 @@ function QuickstartTOC() {
         buttonContainer.appendChild(nextButton);
 
         stepWrapper.appendChild(buttonContainer);
+
+        // Hide the respective buttons on the first and last steps
+        if (index === 0) {
+          prevButton.classList.add(style.hidden);
+        }
+        if (index === stepWrappers.length - 1) {
+          nextButton.classList.add(style.hidden);
+        }
       });
     }
   }, [mounted]);
 
   useEffect(() => {
-    const introDiv = document.querySelector(".intro");
-
-    if (activeStep > 0 && introDiv) {
-      introDiv.classList.add("hidden");
-    } else if (introDiv) {
-      introDiv.classList.remove("hidden");
-    }
-
-    const tocItems = document.querySelectorAll(".toc-item");
+    const tocItems = document.querySelectorAll(`.${style.tocItem}`);
 
     tocItems.forEach((item, i) => {
       const isActive = i <= activeStep;
 
-      item.classList.toggle("active", isActive);
+      item.classList.toggle(clsx(style.active), isActive);
     });
 
     // Scroll to the top of the page when the user clicks next
@@ -132,7 +118,6 @@ function QuickstartTOC() {
 
     // Set local storage to the active step
     localStorage.setItem(activeQuickstart, activeStep);
-
   }, [activeStep]);
 
   // Handle updating the active step
@@ -144,8 +129,8 @@ function QuickstartTOC() {
       `.step-wrapper[data-step='${newStepIndex}']`
     );
 
-    currentStep?.classList.add("hidden");
-    newStep?.classList.remove("hidden");
+    currentStep?.classList.add('hidden');
+    newStep?.classList.remove('hidden');
 
     setActiveStep(newStepIndex);
   };
@@ -183,7 +168,7 @@ function QuickstartTOC() {
         <li
           key={step.id}
           data-step={index}
-          className={clsx(style.tocItem, "toc-item")}
+          className={clsx(style.tocItem)}
           onClick={handleTocClick}
         >
           <span>{step.stepNumber + 1}</span> {step.title}

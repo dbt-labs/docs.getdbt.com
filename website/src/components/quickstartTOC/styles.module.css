@@ -32,7 +32,13 @@
     border: solid 1px var(--color-light-teal);
 }
 
-.tocList li.active span {
+.tocItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tocList .active span {
     background: var(--color-light-teal);
     color: var(--color-white);
 }
@@ -41,9 +47,9 @@
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
-  }
+}
 
-  .buttonContainer a {
+.buttonContainer a {
     padding: .5rem;
     cursor: pointer;
     transition-property: color, background, border-color;
@@ -53,9 +59,21 @@
     border-radius: 5px;
     width: 125px;
     text-align: center;
-  }
+}
 
-  .buttonContainer a:hover {
+.buttonContainer a:hover {
     background: var(--color-light-teal);
     color: var(--color-white)
-  }
+}
+
+.buttonContainer .prevButton {
+    margin-right: auto;
+}
+
+.buttonContainer .nextButton {
+    margin-left: auto;
+}
+
+.hidden {
+    display: none;
+}
