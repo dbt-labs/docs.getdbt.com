@@ -1,5 +1,6 @@
 ---
-title: "cross-database macros"
+title: "About cross-database macros"
+sidebar_label: "cross-database macros"
 id: "cross-database-macros"
 description: "Read this guide to understand cross-database macros in dbt."
 ---

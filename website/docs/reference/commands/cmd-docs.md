@@ -1,5 +1,6 @@
 ---
-title: "docs"
+title: "About dbt docs commands"
+sidebar_label: "docs"
 id: "cmd-docs"
 ---
 

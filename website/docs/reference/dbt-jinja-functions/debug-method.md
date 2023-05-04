@@ -1,5 +1,6 @@
 ---
-title: "debug"
+title: "About debug macro"
+sidebar_label: "debug"
 id: "debug-method"
 description: "The `{{ debug() }}` macro will open an iPython debugger."
 ---
