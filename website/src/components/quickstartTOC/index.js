@@ -1,5 +1,5 @@
-// This component is used to build the functionality
-// of the Quickstart Guides page.
+// This component is used to build the functionality of the quickstart guides
+// Each H2 (##) in the markdown file is a step in the guide
 
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
@@ -19,15 +19,12 @@ function QuickstartTOC() {
   useEffect(() => {
     // Get all h2 for each step in the guide
     const steps = document.querySelectorAll("h2");
-    const stepContainer = document.querySelector(".step-container");
     const snippetContainer = document.querySelectorAll(".snippet");
 
-    // undwrap the snippet container and remove the div leaving the children
+    // Add snippet container to its parent step
     snippetContainer.forEach((snippet) => {
       const parent = snippet.parentNode;
-      while (snippet.firstChild)
-        parent.insertBefore(snippet.firstChild, snippet);
-      parent.removeChild(snippet);
+        while (snippet.firstChild) parent.insertBefore(snippet.firstChild, snippet);
     });
 
     // Create an array of objects with the id and title of each step
