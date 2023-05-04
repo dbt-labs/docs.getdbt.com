@@ -43,8 +43,6 @@ I take a step back and realize my job is playing more defense than offense. My K
 
 And I know there isn’t a silver bullet to solve all the above, but I do want to see momentum in the right direction. Where have tools like dbt met me and how exactly does it need to meet me going forward?
 
-This post is about acknowledging where dbt has met data engineers, and where dbt is going to take them v1.5: a world where dbt not only supports, but enhances, the ability to scale and control your data transformations.
-
 ## Where dbt is meeting data engineers, and where it’s going
 
 The joys and pains of data engineering and analytics engineering are real; the win you get when a stakeholder eventually contributes to a dbt model; the loss when a pipeline breaks, and the onslaught of Slack notifications that come hurling your way. dbt transformed ;) the way data teams interact with their data, and the people that depend on them. When dbt was first developed, it aimed to bring the best practices in software engineering to the field of analytics—this meant version-controlled, rigorously tested, and collaborative data transformations. dbt brought code-based tests, integrated CI, efficient development with packages, and global docs. These features have been foundational to the way data teams work, and have allowed data engineers to focus on the most important part of their job: building data pipelines that power the business.
