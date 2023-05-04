@@ -77,11 +77,7 @@ These tools provide you with automated workflows and streamline your data proces
 
 ## Create and schedule jobs
 
-Jobs make it easy to run dbt commands against a project in the your cloud data platform, triggered either by schedule or events.
---
-
-
- Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
+Jobs make it easy to run dbt commands against a project in the your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
