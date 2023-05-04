@@ -21,7 +21,6 @@ This guide outlines the setup process for authenticating to dbt Cloud with Okta.
 If you have any questions during the setup process, please contact support
 (support@getdbt.com) for assistance.
 
-<Snippet src="auth0-uri" />
 
 ## Configuration in Okta
 
@@ -78,13 +77,13 @@ so pick a slug that uniquely identifies your company.
 
 On the **SAML Settings** page, enter the following values, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
 
-* **Single sign on URL**: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
-* **Audience URI (SP Entity ID)**: `urn:<YOUR_AUTH0_ENTITYID>:{slug}`
+* **Single sign on URL**: `https://YOUR_ACCESS_URL/complete/okta`
+* **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
 * **Relay State**: `<login slug>`
 
 <Lightbox
     collapsed={false}
-    src="/img/docs/dbt-cloud/access-control/new-okta-config.png"
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png"
     title="Configure the app's SAML Settings"
 />
 
