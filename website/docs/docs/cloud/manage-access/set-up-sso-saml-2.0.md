@@ -242,7 +242,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 2. Download the **IDP metadata**.
 3. Copy the **SSO URL** and **Entity ID** and download the **Certificate** (or **SHA-256 fingerprint**, if needed).
 4. Enter the following values on the **Service Provider Details** window:
-   - Single sign on URL: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
+   * **ACS URL**: `https://YOUR_ACCESS_URL/complete/saml`
    - Audience URI (SP Entity ID): `urn:<YOUR_AUTH0_ENTITYID>:{slug}`
    - Relay State: `<login slug>`
 5. Select the **Signed response** checkbox.
