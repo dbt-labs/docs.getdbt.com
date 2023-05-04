@@ -29,7 +29,6 @@ data workloads on AWS.
 This guide outlines the setup process for authenticating to dbt Cloud with
 Google GSuite.
 
-
 ## Configuration of the GSuite organization within GCP
 
 dbt Cloud uses a Client ID and Client Secret to authenticate users of a

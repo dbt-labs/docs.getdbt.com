@@ -21,7 +21,6 @@ This guide outlines the setup process for authenticating to dbt Cloud with Okta.
 If you have any questions during the setup process, please contact support
 (support@getdbt.com) for assistance.
 
-
 ## Configuration in Okta
 
 ### Create a new application
