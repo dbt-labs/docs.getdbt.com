@@ -189,6 +189,6 @@ If it’s anything like the imagined future we have for you below, then we all w
 ## So, what’s next?
 
 - Try out v1.5! Let us know how the ergonomics and functionality of model contracts, versions, and group permissions feel to you. Open up an issue if you notice any bugs.
-- Watch the [Community recording on contracts](https://www.loom.com/share/375dee38aa9448deaed860a06487f8ff)—a great way to see them live in action—or watch the recording from Staging to see dbt v1.5 features come to life!
+- Watch the [Community recording on contracts](https://www.loom.com/share/375dee38aa9448deaed860a06487f8ff)—a great way to see them live in action—or [watch the recording from Staging](https://www.getdbt.com/resources/staging-april-2023/) to see dbt v1.5 features come to life!
 - Comment directly in this post on thoughts of v1.5 or this article!
 - Join the [#multi-project channel](https://getdbt.slack.com/archives/C04FP5LQA15) in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/)—start sparking up conversations with people like myself around the pains and gains of multi-deployment dbt projects. Validate if the constructs in v1.5 translate well to a multi-project future.
