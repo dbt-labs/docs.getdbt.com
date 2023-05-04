@@ -6,7 +6,7 @@ sidebar_label: "Update and fixes: IDE"
 tags: [Mar-31-2023, IDE]
 ---
 
-To continue improving your [Cloud IDE](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
+To continue improving your [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
 
 Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/) and stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
 
@@ -14,7 +14,7 @@ Read more about the [upcoming improvements to the Cloud IDE](https://www.getdbt.
 ## New features 
 
 - Commit and revert individual files under **Version Control**.
-- Use the [command palette](/docs/cloud/develop-in-the-cloud#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
+- Use the [command palette](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#cloud-ide-features) to invoke common complex dbt commands, such as resuming from the last failure.
 - Create PRs even when there are uncommitted changes (under the **git** dropdown).
 - The IDE will display more autocomplete suggestions when editing a YML file, powered by [dbt-jsonschema](https://github.com/dbt-labs/dbt-jsonschema).
 - The file tree now has additional options in the right-click menu, such as Copy model as ref or Copy file path.
