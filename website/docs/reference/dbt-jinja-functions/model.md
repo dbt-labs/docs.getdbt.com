@@ -1,7 +1,7 @@
 ---
-title: "model"
-id: "model"
+title: "About model object"
 sidebar_label: "model"
+id: "model"
 description: "`model` is the dbt graph object (or node) for the current model."
 ---
 

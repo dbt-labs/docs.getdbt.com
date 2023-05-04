@@ -12,7 +12,7 @@ For information about selecting models on the command line, consult the docs on 
 
 ### Available commands
 
-Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select the "Available commands in dbt Cloud" tab. 
+Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**. 
 
 <Tabs>
 <TabItem value="cloud" label="dbt Cloud">
