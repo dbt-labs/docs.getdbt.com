@@ -67,7 +67,8 @@ In dbt Cloud, each run of a job executes in a pod with a default megabyte (MB) m
 Jobs consume a lot of memory in the following situations:
 - A high thread count was specified
 - Custom dbt macros attempt to load data into memory instead of pushing compute down to the cloud data platform
-- Generating dbt project documentation when a source's schema has a large number of tables
+- Having a job that generates dbt project documentation for a large and complex dbt project. 
+  * To prevent problems with the job running out of memory, we recommend generating documentation in a separate job that is set aside for that task and removing that task from all other jobs. This is especially important for large and complex projects.
 
 Refer to [dbt Cloud architecture](/docs/cloud/about-cloud/architecture) for an architecture diagram and to learn how the data flows.
 
