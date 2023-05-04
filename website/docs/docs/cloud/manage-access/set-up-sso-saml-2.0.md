@@ -142,7 +142,7 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 1. On the **SAML Settings** page, enter the following values:
 
    * **Single sign on URL**: `https://YOUR_ACCESS_URL/complete/okta`
-      * **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
+   * **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
    * **Relay State**: `<login slug>`
 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
