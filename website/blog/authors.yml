@@ -340,6 +340,12 @@ matt_winkler:
   name: Matt Winkler
   organization: dbt Labs
 
+mikael_thorup:
+  image_url: /img/blog/authors/mikael-thorup.jpeg
+  job_title: Senior Analytics Engineer
+  name: Mikael Thorup
+  organization: Lunar
+
 nate_sooter:
   image_url: /img/blog/authors/nate-sooter.jpeg
   job_title: Manager of BI Operations
