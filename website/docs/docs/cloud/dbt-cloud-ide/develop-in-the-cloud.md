@@ -45,7 +45,7 @@ The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) an
 
 :::tip Stay informed
 
-To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), or refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interfacey) for comprehensive definitions and terminology of user interface elements.
+To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), or refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) for comprehensive definitions and terminology of user interface elements.
 
 :::
 
