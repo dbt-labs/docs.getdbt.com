@@ -77,7 +77,11 @@ These tools provide you with automated workflows and streamline your data proces
 
 ## Create and schedule jobs
 
- Jobs are a set of dbt commands that you want to run on a schedule, which you can do in dbt Cloud. 
+Jobs make it easy to run dbt commands against a project in the your cloud data platform, triggered either by schedule or events.
+--
+
+
+<br class="Apple-interchange-newline">. 
  Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
 
 - Job trigger type
