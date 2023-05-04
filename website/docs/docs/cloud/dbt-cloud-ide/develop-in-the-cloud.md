@@ -27,7 +27,7 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 ## Develop in the Cloud IDE
 
-The Cloud IDE is a powerful tool that can help streamline and govern your data platform development process. It offers a range of [editing features](/docs/cloud/dbt-cloud-ide/ide-glossary#editing-features) that can help make your data platform development process faster and more efficient. Some of the editing features include:
+The Cloud IDE is a powerful tool that can help streamline and govern your data platform development process. It offers a range of [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) that can help make your data platform development process faster and more efficient. Some of the editing features include:
 
 - The IDE has syntax highlighting for SQL. This makes it easy to visually distinguish between different parts of your code. This helps prevent syntax errors and improve readability.
 - Use the IDE built-in auto-completion, which suggests table names, arguments, and column names as you type. This saves time and reduces the likelihood of typos or errors in your code.
@@ -41,11 +41,11 @@ All of these [features](#cloud-ide-features) work together to create a powerful 
 
 ## Cloud IDE features
 
-The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) and [features](/docs/cloud/dbt-cloud-ide/ide-glossary) that make it easier for you to develop, build, compile, run, and test data models. 
+The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) and [features](/docs/cloud/dbt-cloud-ide/ide-user-interface) that make it easier for you to develop, build, compile, run, and test data models. 
 
 :::tip Stay informed
 
-To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), or refer to the [IDE glossary](/docs/cloud/dbt-cloud-ide/ide-glossary) for comprehensive definitions and terminology of user interface elements.
+To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), or refer to the [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interfacey) for comprehensive definitions and terminology of user interface elements.
 
 :::
 
@@ -134,7 +134,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 ## Related docs
 
 - [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features)
-- [IDE glossary](/docs/cloud/dbt-cloud-ide/ide-glossary)
+- [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [dbt Commands](/reference/dbt-commands)
 - [dbt Cloud IDE release notes](/tags/ide)

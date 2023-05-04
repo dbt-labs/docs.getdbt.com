@@ -128,7 +128,7 @@ const sidebarSettings = {
               label: "Develop in the IDE",
               link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
               items: [
-                "docs/cloud/dbt-cloud-ide/ide-glossary",
+                "docs/cloud/dbt-cloud-ide/ide-user-interface",
                 "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
               ],
             }, // dbt Cloud IDE directory

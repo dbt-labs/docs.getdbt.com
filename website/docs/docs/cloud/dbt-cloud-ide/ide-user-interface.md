@@ -1,6 +1,6 @@
 ---
 title: "IDE user interface"
-id: ide-glossary
+id: ide-user-interface
 description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: User interface
 tags: [IDE]
@@ -17,8 +17,6 @@ This page offers comprehensive definitions and terminology of user interface ele
 The IDE streamlines your workflow, and features a popular user interface layout with files and folders on the left, editor on the right, and command and console information at the bottom. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-side-menu.jpg" width="30%" title="The Git repo link, documentation site button, Version Control menu, and File Explorer"/>
-
-The IDE landing page includes:
 
 1. **Git repository link &mdash;** Clicking the Git repository link, located on the upper left of the IDE, takes you to your repository on the same active branch. 
     * **Note:** This feature is only available for GitHub or GitLab repositories on multi-tenant dbt Cloud accounts.
@@ -51,7 +49,9 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-editing.jpg" width="100%" title="Use the file editor, version control section, and save button during your development workflow"/>
 
-1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view.
+1. **File Editor &mdash;** The File Editor is where users edit code. Tabs break out the region for each opened file, and unsaved files are marked with a blue dot icon in the tab view. 
+
+    * Use intuitive [keyboard shortcuts](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips#cloud-ide-keyboard-shortcuts) to help develop easier for you and your team.
 
 2. **Save button &mdash;** The editor has a **Save** button that saves editable files. Pressing the button or using the Command-S or Control-S shortcut saves the file contents. You don't need to save to preview code results in the Console section, but it's necessary before changes appear in a dbt invocation. The File Editor tab shows a blue icon for unsaved changes.
 
