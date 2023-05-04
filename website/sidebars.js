@@ -137,10 +137,11 @@ const sidebarSettings = {
               type: "category",
               label: "Multi-tenant PrivateLink",
               items: [
-                "docs/cloud/privatelink/about-privatelink",
-                "docs/cloud/privatelink/snowflake-privatelink",
-                "docs/cloud/privatelink/redshift-privatelink",
-                "docs/cloud/privatelink/databricks-privatelink",
+                "docs/cloud/secure/about-privatelink",
+                "docs/cloud/secure/snowflake-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
           ],
