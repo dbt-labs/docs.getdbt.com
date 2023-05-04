@@ -19,7 +19,6 @@ Currently supported features include:
 This document details the steps to integrate dbt Cloud with an identity
 provider in order to configure Single Sign On and [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control).
 
-<Snippet src="auth0-uri" />
 
 ## Generic SAML 2.0 integrations
 
@@ -48,8 +47,8 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 
 When prompted for the SAML 2.0 application configurations, supply the following values:
 
-- Single sign on URL: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
-- Audience URI (SP Entity ID): `urn:auth0:us-devspace-cluster:{slug}`
+* Single sign on URL: `https://YOUR_ACCESS_URL/complete/saml`
+* Audience URI (SP Entity ID): `https://YOUR_ACCESS_URL/`
 - Relay State: `<login slug>`
 
 Additionally, you may configure the IdP attributes passed from your identity provider into dbt Cloud. We recommend using the following values:
@@ -142,9 +141,9 @@ Login slugs must be unique across all dbt Cloud accounts, so pick a slug that un
 
 1. On the **SAML Settings** page, enter the following values:
 
-   - Single sign on URL: `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
-   - Audience URI (SP Entity ID): `urn:<YOUR_AUTH0_ENTITYID>:{slug}`
-   - Relay State: `<login slug>`
+   * **Single sign on URL**: `https://YOUR_ACCESS_URL/complete/okta`
+      * **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
+   * **Relay State**: `<login slug>`
 
   <Lightbox collapsed={false} src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-3-saml-settings-top.png" title="Configure the app's SAML Settings"/>
 

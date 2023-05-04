@@ -29,7 +29,6 @@ data workloads on AWS.
 This guide outlines the setup process for authenticating to dbt Cloud with
 Google GSuite.
 
-<Snippet src="auth0-uri" />
 
 ## Configuration of the GSuite organization within GCP
 
@@ -67,7 +66,7 @@ Client Secret for use in dbt Cloud.
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
 | **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
-| **Authorized Redirect URIs** | `https://<YOUR_AUTH0_URI>/login/callback` |
+| **Authorized Redirect URIs** | `https://YOUR_ACCESS_URL/complete/gsuite` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
