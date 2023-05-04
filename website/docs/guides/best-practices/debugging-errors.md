@@ -102,7 +102,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](reference/profiles.yml.md)
+  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/core/connect-data-platform/profiles.yml)
 
 
 </details>
@@ -175,7 +175,7 @@ hello: world # this is not allowed
 
 </File>
 
-- Use the reference section for [`dbt_project.yml` files](reference/dbt_project.yml.md) to correct this issue.
+- Use the reference section for [`dbt_project.yml` files](/docs/core/connect-data-platform/dbt_project.yml) to correct this issue.
 - If you're using a key that is valid according to the documentation, check that you're using the latest version of dbt with `dbt --version`.
 
 

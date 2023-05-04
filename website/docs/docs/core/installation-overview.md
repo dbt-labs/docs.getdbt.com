@@ -1,5 +1,5 @@
 ---
-title: "Installation overview"
+title: "About installing dbt"
 id: "installation"
 description: "You can install dbt Core using a few different tested methods."
 ---

@@ -6,7 +6,7 @@ description: "Configure your profile using the command line."
 
 ## Related documentation
 
-* [`profiles.yml` reference](/reference/profiles.yml): Learn more about profile configuration.
+* [`profiles.yml` reference](/docs/core/connect-data-platform/profiles.yml): Learn more about profile configuration.
 
 ## Connecting to your warehouse using the command line
 
@@ -63,7 +63,7 @@ jaffle_shop:
 
 In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile.
 
-For information about configuring advanced options, see [the `profiles.yml` reference page](reference/profiles.yml.md).
+For information about configuring advanced options, see [the `profiles.yml` reference page](/docs/core/connect-data-platform/profiles.yml.md).
 
 ## About profiles
 
@@ -146,7 +146,7 @@ When dbt runs, it creates a directed acyclic graph (DAG) of links between models
 For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
 
 There's no set limit of the maximum number of threads you can set – while increasing the number of threads generally decreases execution time, there are a number of things to consider:
-* Increasing the number of threads increases the load on your warehouse, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.
+* Increasing the number of threads increases the load on your data platform, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.
 * The number of concurrent queries your database will allow you to run may be a limiting factor in how many models can be actively built – some models may queue while waiting for an available query slot.
 
 Generally the optimal number of threads depends on your data warehouse and its configuration. It’s best to test different values to find the best number of threads for your project. We recommend setting this to 4 to start with.
