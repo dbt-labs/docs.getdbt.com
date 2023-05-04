@@ -19,7 +19,7 @@ I, Sung, entered the data industry by chance in Fall 2014. I was using this thin
 
 I did lots of soul searching and deduced I loved analytics, but not the job and subject matter. My next gig was in consulting where I bootstrapped my way into data engineering and had to learn the whole gamut below.
 
-| Tech skills | Place in tech stack | Why it mattered |
+| Tech skills | Place in tech stack | Why it mattered at the time |
 | --- | --- | --- |
 | Airflow | Orchestrator | The industry standard to run data pipelines |
 | SQL | Lingua franca of data transformation | My business logic codified (think: revenue by month) |
