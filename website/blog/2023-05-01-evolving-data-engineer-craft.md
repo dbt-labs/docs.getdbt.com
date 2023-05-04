@@ -49,15 +49,13 @@ This post is about acknowledging where dbt has met data engineers, and where dbt
 
 The joys and pains of data engineering and analytics engineering are real; the win you get when a stakeholder eventually contributes to a dbt model; the loss when a pipeline breaks, and the onslaught of Slack notifications that come hurling your way. dbt transformed ;) the way data teams interact with their data, and the people that depend on them. When dbt was first developed, it aimed to bring the best practices in software engineering to the field of analytics—this meant version-controlled, rigorously tested, and collaborative data transformations. dbt brought code-based tests, integrated CI, efficient development with packages, and global docs. These features have been foundational to the way data teams work, and have allowed data engineers to focus on the most important part of their job: building data pipelines that power the business.
 
-Below, we’ll breakdown where dbt v1.5 is evolving scale and control in your work, and how it’ll elevate your daily practice of data engineering (and remove some of those panicked Slack messages 😉).
-
 ### Building the future: Where data engineers are going with dbt
 
 As dbt has grown, so has the complexity of dbt projects. Tristan has [written extensively about this](https://www.getdbt.com/blog/analytics-engineering-next-step-forwards/), but a few years ago, a *big* dbt project was ~500 models. Today, there are many organizations with *thousands* of dbt models. This level of complexity and organization has changed the landscape of interesting problems in the analytics engineering space; dependency graphs become increasingly large, identifying ownership becomes murky, and the barrier to contribution is raised. You can see how larger, complex data teams approach this today in this public GitHub discussion: [https://github.com/dbt-labs/dbt-core/discussions/5244](https://github.com/dbt-labs/dbt-core/discussions/5244).
 
 v1.5 features aim to support the growth of those type of dbt projects by going back to the roots of software engineering best practices. We’re bring service oriented architectures to a dbt project near you. dbt’s v1.5 features of contracts, model versions, and group permissions—alongside all of the foundational “dbtonic” things—culminate in a toolkit that will allow data engineers, alongside analysts, to build long-term, scalable, and efficient dbt projects.
 
-Let’s break down what these new features are and how your team should use them to address current pains in your everyday workflow.
+Below, we’ll breakdown where dbt v1.5 is evolving scale and control in your work, and how it’ll elevate your daily practice of data engineering (and remove some of those panicked Slack messages 😉).
 
 [**Model Contracts**](https://docs.getdbt.com/docs/collaborate/publish/model-contracts)
 
