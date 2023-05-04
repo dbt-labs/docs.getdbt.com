@@ -7,7 +7,7 @@ module.exports = function buildQuickstartIndexPage() {
     async loadContent() {
       // Quickstart files directory
       // TODO: Combine dbt-cloud and dbt-core quickstarts
-      const quickstartDirectory = 'docs/quickstarts'
+      const quickstartDirectory = 'docs/quickstart'
 
       // Get all Quickstart Spotlight files and content
       const quickstartFiles = fs.readdirSync(quickstartDirectory)
@@ -52,7 +52,7 @@ module.exports = function buildQuickstartIndexPage() {
       
       // Build the quickstart index page
       addRoute({
-        path: `/quickstart/guides`,
+        path: `/quickstart`,
         component: '@site/src/components/quickstartGuideList/index.js',
         modules: {
           // propName -> JSON file path

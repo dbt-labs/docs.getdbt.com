@@ -8,7 +8,7 @@ function QuickstartGuideCard({ frontMatter }) {
 
 
   return (  
-    <Link to={`/quickstarts/${id}`} frontMatter={frontMatter} className={styles.quickstartCard}>
+    <Link to={`/quickstart/${id}`} frontMatter={frontMatter} className={styles.quickstartCard}>
         <h3>{title}</h3>
 
         {timeToComplete &&

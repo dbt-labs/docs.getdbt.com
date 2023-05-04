@@ -133,6 +133,10 @@ var siteSettings = {
               to: '/guides/best-practices',
             },
             {
+              label: "Quickstart Guides",
+              to: "/quickstart",
+            },
+            {
               label: "Developer Blog",
               to: "/blog",
             },
@@ -161,10 +165,6 @@ var siteSettings = {
             {
               label: "Events",
               to: "/community/events",
-            },
-            {
-              label: "Quickstart guides",
-              to: "/quickstart/guides",
             },
           ],
         },
@@ -240,7 +240,7 @@ var siteSettings = {
     path.resolve("plugins/customWebpackConfig"),
     [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
-    //path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
   ],
