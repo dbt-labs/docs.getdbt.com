@@ -1,3 +1,8 @@
+.quickstartHero p {
+    font-size: 1.25rem;
+    margin: 0 auto;
+}
+
 .quickstartCardContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

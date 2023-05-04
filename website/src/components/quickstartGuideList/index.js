@@ -27,7 +27,7 @@ function QuickstartList({ quickstartData }) {
         subheading={quickstartDescription} 
         showGraphic={false} 
         customStyles={{marginBottom: 0}} 
-        classNames='quickstart-hero'
+        classNames={styles.quickstartHero}
       />
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartCardContainer} `}>   
