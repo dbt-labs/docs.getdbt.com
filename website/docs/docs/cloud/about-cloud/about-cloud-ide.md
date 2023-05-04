@@ -27,5 +27,5 @@ For more information, read the complete [Cloud IDE guide](/docs/cloud/dbt-cloud-
 
 ## Relatd docs
 
-- [IDE glossary](/docs/cloud/dbt-cloud-ide/ide-glossary)
+- [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
 - [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
