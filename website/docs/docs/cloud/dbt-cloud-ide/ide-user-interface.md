@@ -82,7 +82,9 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the <Term id="dag" />. Refer to the following sub-bullets for more details on the console tabs and buttons.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-console-overview.jpg" width="100%" title="The Console section is located below the File editor and has various tabs and buttons to help execute tasks"/>
 
-1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not, and sends the results to the Results console tab. To prevent the IDE from returning too much data and causing browser problems, a limit of 500 is automatically added to queries executed via the Preview Button. However, you can change this by adding `limit your_number` at the end of your SQL statement. For example, `SELECT * FROM` table `limit 100` will return up to 100 rows. Remember that you must write the `limit your_number` explicitly and cannot derive it from a macro.
+1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not, and sends the results to the Results console tab. 
+   * To prevent the IDE from returning too much data and causing browser problems, a limit of 500 is automatically added to queries executed via the Preview Button. However, you can change this by adding `limit your_number` at the end of your SQL statement. For example, `SELECT * FROM` table `limit 100` will return up to 100 rows. Remember that you must write the `limit your_number` explicitly and cannot derive it from a macro. 
+   * The IDE also supports `SELECT TOP #`, which specifies the number of records to return.
 
 2. **Compile button &mdash;** The Compile button compiles the SQL code from the active File Editor, irrespective of its save status, and outputs it to the Compiled Code tab.
 
