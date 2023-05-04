@@ -3,7 +3,7 @@ title: "Quickstart for dbt Cloud and BigQuery"
 description: "Quickstart for dbt Cloud and BigQuery."
 id: "bigquery"
 sidebar_label: "BigQuery quickstart"
-timeToComplete: '30 minutes'
+time_to_complete: '30 minutes'
 hide_table_of_contents: true
 ---
 

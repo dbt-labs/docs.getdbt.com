@@ -29,7 +29,7 @@
   text-decoration: none;
 }
 
-.quickstartCard .timeToComplete {
+.quickstartCard .time_to_complete {
   color:var(--ifm-menu-color)
 }
 
