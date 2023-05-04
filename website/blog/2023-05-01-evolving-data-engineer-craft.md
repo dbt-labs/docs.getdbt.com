@@ -41,9 +41,9 @@ I’m still juggling my messy data pipelines and wondering what’s signal vs. n
 
 I take a step back and realize my job is playing more defense than offense. My KPIs are less about revenue and cost impact, and more about how many times I get yelled at this week and making that number go down and to the right. This was/is my story, and I have a strong feeling it’s yours too.
 
-This post is about acknowledging where dbt has met data engineers, and where dbt is going to take them v1.5: a world where dbt not only supports, but enhances, the ability to scale and control your data transformations.
-
 And I know there isn’t a silver bullet to solve all the above, but I do want to see momentum in the right direction. Where have tools like dbt met me and how exactly does it need to meet me going forward?
+
+This post is about acknowledging where dbt has met data engineers, and where dbt is going to take them v1.5: a world where dbt not only supports, but enhances, the ability to scale and control your data transformations.
 
 ## Where dbt is meeting data engineers, and where it’s going
 
