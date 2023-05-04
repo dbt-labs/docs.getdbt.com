@@ -5,6 +5,8 @@ id: "snowflake"
 sidebar_label: "Snowflake quickstart"
 hide_table_of_contents: true
 ---
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It will show you how to: 
 
 - Create a new Snowflake worksheet.

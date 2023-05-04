@@ -40,7 +40,7 @@ function QuickstartTOC() {
 
     setTocData(data);
     setMounted(true);
-    setActiveStep(parseInt(activeStepLocal));
+    setActiveStep(parseInt(activeStepLocal) || 0);
 
     // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
     if (mounted) {
@@ -63,7 +63,6 @@ function QuickstartTOC() {
       // Wrap any non-step content in a div for the quickstart intro
       const children = stepContainer.children;
       const stepWrapper = document.createElement("div");
-      stepWrapper.classList.add("intro");
 
       while (
         children.length &&

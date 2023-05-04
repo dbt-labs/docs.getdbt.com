@@ -5,6 +5,7 @@ id: "redshift"
 sidebar_label: "Redshift quickstart"
 hide_table_of_contents: true
 ---
+## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with Redshift. It will show you how to: 
 

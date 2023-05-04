@@ -5,6 +5,8 @@ id: "databricks"
 sidebar_label: "Databricks quickstart"
 hide_table_of_contents: true
 ---
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It will show you how to: 
 
 - Create a Databricks workspace.

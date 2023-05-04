@@ -5,6 +5,7 @@ id: "starburst-galaxy"
 sidebar_label: "Starburst Galaxy quickstart"
 hide_table_of_contents: true
 ---
+## Introduction
 
 In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/). It will show you how to:
 
