@@ -2,7 +2,7 @@
 title: "Configuring IP restrictions"
 id: ip-restrictions
 description: "Configuring IP retrictions to outside traffic from accessing your dbt Cloud environment"
-sidebar_label: "IP restrictionss"
+sidebar_label: "IP restrictions"
 ---
 
 ## About IP Restrictions
@@ -21,9 +21,9 @@ IP restrictions will block all user requests done via the API (via personal user
 
 ### Allowing IPs
 
-From the **IP Restrictions** page:
+To add an IP to the allowlist, from the **IP Restrictions** page:
 
-1. To add an IP to the allowlist, click **edit**
+1.  Click **edit**
 2. Click **Add Rule**
 3. Add name and description for the rule
     - For example, Corporate VPN CIDR Range
@@ -54,7 +54,7 @@ Blocklist is a subset of the Allowlist. If you have an IP(s) defined in the allo
 If identical IP addresses are in both the allow and block configurations, whichever is entered second will fail to save.
 If an IP address is put into one list and an IP block that contains the address in the other, the expected behavior is:
 - IP block in blocklist and IP address in allowlist - IP range will be blocked except for the IP address on the allowlist.
-- IP block is on allowlist and IP address is on the blocklist - IP range will be allowed buy ths IP address will be blocked.
+- IP block is on the allowlist and IP address is on the blocklist - IP range will be allowed but the IP address will be blocked.
 
 :::
 
