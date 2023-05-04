@@ -1,5 +1,6 @@
 ---
-title: "debug"
+title: "About dbt debug command"
+sidebar_label: "debug"
 id: "debug"
 ---
 

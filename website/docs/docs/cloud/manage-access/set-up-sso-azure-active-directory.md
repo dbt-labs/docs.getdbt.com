@@ -1,5 +1,6 @@
 ---
 title: "Set up SSO with Azure Active Directory"
+description: "Learn how dbt Cloud administrators can use Azure Active Directory to control access in a dbt Cloud account."
 id: "set-up-sso-azure-active-directory"
 sidebar_label: "Set up SSO with Azure AD"
 ---

@@ -1,7 +1,7 @@
 ---
 id: order-by
 title: SQL ORDER BY
-description: The ORDER BY clause allows you to specify the resulting row order for a query.
+description: Read this guide to learn about the SQL ORDER BY clause in dbt.
 slug: /sql-reference/order-by
 ---
 

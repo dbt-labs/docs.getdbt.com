@@ -1,5 +1,7 @@
 ---
-title: "Snapshots"
+title: "Add snapshots to your DAG"
+sidebar_label: "Snapshots"
+description: "Read this tutorial to learn how to use snapshots when building in dbt."
 id: "snapshots"
 ---
 
@@ -34,7 +36,7 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 In dbt, snapshots are `select` statements, defined within a snapshot block in a `.sql` file (typically in your `snapshots` directory). You'll also need to configure your snapshot to tell dbt how to detect record changes.
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -78,7 +80,7 @@ To add a snapshot to your project:
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
 2. Use a `snapshot` block to define the start and end of a snapshot:
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -90,7 +92,7 @@ To add a snapshot to your project:
 
 3. Write a `select` statement within the snapshot block (tips for writing a good snapshot query are below). This select statement defines the results that you want to snapshot over time. You can use `sources` and `refs` here.
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -106,7 +108,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 5. Add configurations to your snapshot using a `config` block (more details below). You can also configure your snapshot from your `dbt_project.yml` file ([docs](snapshot-configs)).
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -178,7 +180,7 @@ The `timestamp` strategy requires the following configurations:
 
 **Example usage:**
 
-<File name='snapshots/timestamp_example.sql'>
+<File name='snapshots/orders_snapshot_timestamp.sql'>
 
 ```sql
 {% snapshot orders_snapshot_timestamp %}
@@ -219,7 +221,7 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 **Example Usage**
 
-<File name='snapshots/check_example.sql'>
+<File name='snapshots/orders_snapshot_check.sql'>
 
 ```sql
 {% snapshot orders_snapshot_check %}
@@ -251,7 +253,7 @@ For this configuration to work with the `timestamp` strategy, the configured `up
 
 **Example Usage**
 
-<File name='snapshots/hard_delete_example.sql'>
+<File name='snapshots/orders_snapshot_hard_delete.sql'>
 
 ```sql
 {% snapshot orders_snapshot_hard_delete %}

@@ -1,5 +1,6 @@
 ---
 title: "Custom aliases"
+description: "Read this tutorial to learn how to use custom aliases when building in dbt."
 id: "custom-aliases"
 ---
 

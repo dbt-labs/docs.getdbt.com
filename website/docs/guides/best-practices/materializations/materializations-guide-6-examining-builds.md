@@ -2,9 +2,9 @@
 title: "Examining our builds"
 id: materializations-guide-6-examining-builds
 slug: 6-examining-builds
-description: Learn how to utilize materializations in dbt.
+description: Read this guide to understand how to examine your builds in dbt.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 ---
 
 ## Examining our builds

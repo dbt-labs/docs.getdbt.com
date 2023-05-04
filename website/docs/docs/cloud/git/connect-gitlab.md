@@ -1,5 +1,6 @@
 ---
 title: "Connect to GitLab"
+description: "Learn how connecting your GitLab account provides convenience and another layer of security to dbt Cloud."
 id: "connect-gitlab"
 ---
 

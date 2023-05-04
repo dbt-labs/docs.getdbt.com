@@ -1,5 +1,6 @@
 ---
 id: "persist_docs"
+description: "Persist_docs - Read this in-depth guide to learn about configurations in dbt."
 datatype: Dict[Str, Bool]
 ---
 
