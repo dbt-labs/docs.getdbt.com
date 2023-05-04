@@ -182,7 +182,7 @@ If it’s anything like the imagined future we have for you below, then we all w
 | 😊 Emotional Victory |  📝 Future Resume Bullet Points |
 | --- | --- |
 | Invite people into the magic of working with and in data | - Scaled from 10 to 500 users in dbt Cloud and on average onboarded new users in 1 week |
-| Getting one step closer to self-service without the eye-rolling | - Established uptime of 99.99% with core metrics like revenue, marketing, churn with dbt Semantic Layer and reduced data validation efforts by the business by 5 hours per week |
+| Getting one step closer to self-service without the eye-rolling | - Established uptime of 99.99% with core metrics like revenue, marketing, churn with model contracts and dbt Semantic Layer and reduced data validation efforts by the business by 5 hours per week |
 | The tedious admin work melts away and you get that breath of relief knowing people aren’t “moving fast and breaking things”…as much | - Reduced 5% of all transform spend with less code implementing data model contracts with 10% more quality. Removed 4 hours per person per week in teams across finance, marketing, sales by reducing duplicative development by 20% and reduced basic context gathering |
 | Get a juicy taste of being offensive vs. defensive with your work | - Used dbt to drive revenue (think: embedded data products) and added a new SKU earning $500,000 per year |
 
