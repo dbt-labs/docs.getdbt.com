@@ -32,7 +32,7 @@ I did lots of soul searching and deduced I loved analytics, but not the job and 
 
 These are still great skills to learn and maintain even six years after I learned them in 2017. Armed with them, I finally saw the magic of the modern data stack and what problems it could solve. It took my questionable little pipelines back in 2014 and made them gleam with a new shine (and reliability). I felt like what the cool kids call a **[10x data engineer](https://knowyourmeme.com/memes/10x-engineer)**. 
 
-However, as my skills grew, so did the problems. Big Data soon turned into data swamps left and right across the clients I implemented data pipelines for using the above stack. The charm of using these great tools lost its shine, and my excitement gradually gave way to exhaustion. Not because they’re bad tools, but because the problem space of managing giant mounds of data required something data tools are still wrestling with today: scale and control. I kept looking for goldilocks projects to save/make money for companies. I wanted to build prestige in my career. But in practice, I was babysitting brittle data pipelines. To enable dozens of people was mind-numbing, much less hundreds of data analysts to all work elegantly together.
+However, as my skills grew, so did the problems. Big Data eventually turned into data swamps, the charm of using these great tools lost its shine, and my excitement gradually gave way to exhaustion. Not because they’re bad tools, but because the problem space of managing giant mounds of data required something data tools are still wrestling with today: scale and control. I kept looking for goldilocks projects to save/make money for companies. I wanted to build prestige in my career. But in practice, I was babysitting brittle data pipelines. To enable dozens of people was mind-numbing, much less hundreds of data analysts to all work elegantly together.
 
 I’m still juggling my messy data pipelines and wondering what’s signal vs. noise in how to evolve my skills. I feel like a .5x data engineer. It’s like taking 2 steps forward and 1 big step back. So my question becomes:
 
@@ -181,10 +181,10 @@ If it’s anything like the imagined future we have for you below, then we all w
 
 | 😊 Emotional Victory |  📝 Future Resume Bullet Points |
 | --- | --- |
-| Invite people into the magic of working with and in data | - Scaled from 10 to 500 users in dbt Cloud and on average onboarded new users in 1 week |
+| Invite people into the magic of working with and in data | - Scaled from 10 to 500 users in dbt Cloud and, on average, onboarded new users in 1 week |
 | Getting one step closer to self-service without the eye-rolling | - Established uptime of 99.99% with core metrics like revenue, marketing, churn with model contracts and dbt Semantic Layer and reduced data validation efforts by the business by 5 hours per week |
 | The tedious admin work melts away and you get that breath of relief knowing people aren’t “moving fast and breaking things”…as much | - Reduced 5% of all transform spend with less code implementing data model contracts with 10% more quality. Removed 4 hours per person per week in teams across finance, marketing, sales by reducing duplicative development by 20% and reduced basic context gathering |
-| Get a juicy taste of being offensive vs. defensive with your work | - Used dbt to drive revenue (think: embedded data products) and added a new SKU earning $500,000 per year |
+| Get the taste of being offensive vs. defensive with your work | - Used dbt to drive revenue (think: embedded data products) and added a new SKU earning $500,000 per year |
 
 ## So, what’s next?
 
