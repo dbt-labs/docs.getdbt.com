@@ -19,7 +19,8 @@ The Scheduler enables both cron-based and event-driven execution of dbt commands
 Actions in the dbt Cloud IDE aren't included in the Scheduler's handling. For example, dbt commands executed in the IDE don't affect the Scheduler or your run slots. 
 :::
 
-The Scheduler takes care of:
+
+The Scheduler handles various tasks including queuing jobs, creating temporary environments to run the dbt commands required for those jobs, providing logs for debugging and remediation, and storing dbt artifacts for direct consumption/ingestion by the Metadata API.
 - queuing jobs
 - creating short-lived environments to execute jobs’ dbt run commands
 - delivering logs which are needed for debugging and remediation
