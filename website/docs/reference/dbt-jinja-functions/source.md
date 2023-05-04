@@ -1,7 +1,8 @@
 ---
-title: "source"
+title: "About source function"
+sidebar_label: "source"
 id: "source"
-description: "Returns a relation & creates dependencies between source and model."
+description: "Read this guide to understand the source Jinja function in dbt."
 ---
 
 ```sql
@@ -24,7 +25,7 @@ This function:
 
 ## Example
 
-Consider a source defined like so:
+Consider a source defined as follows:
 
 <File name='models/<filename>.yml'>
 

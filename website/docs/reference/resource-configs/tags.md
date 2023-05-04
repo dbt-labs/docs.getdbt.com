@@ -1,11 +1,9 @@
 ---
+title: "About tags configuration"
+sidebar_label: "tags"
 resource_types: all
 datatype: string | [string]
 ---
-
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure resources in all `.yml` files
-</Changelog>
 
 <Tabs
   defaultValue="project-yaml"

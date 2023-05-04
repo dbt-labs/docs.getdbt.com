@@ -1,5 +1,6 @@
 ---
-title: Run Results
+title: "Run results JSON file"
+sidebar_label: "Run results"
 ---
 
 **Current schema**: [`v4`](https://schemas.getdbt.com/dbt/run-results/v4/index.html)

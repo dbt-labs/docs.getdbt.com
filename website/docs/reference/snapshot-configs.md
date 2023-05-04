@@ -1,5 +1,6 @@
 ---
 title: Snapshot configurations
+description: "Read this guide to learn about using snapshot configurations in dbt."
 ---
 ## Related documentation
 * [Snapshots](snapshots)

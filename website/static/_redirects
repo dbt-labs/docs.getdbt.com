@@ -1,3 +1,9 @@
+
+
+/docs/deploy/dbt-cloud-job#create-and-schedule-jobs  /docs/deploy/dbt-cloud-job#create-and-schedule-jobs 301
+/docs/cloud/dbt-cloud-tips /docs/cloud/dbt-cloud-ide/dbt-cloud-tips 301
+/docs/cloud/develop-in-the-cloud /docs/cloud/dbt-cloud-ide/develop-in-the-cloud 301
+/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
 /docs/quickstarts/dbt-core/quickstart /docs/quickstarts/dbt-core/manual-install 301
 docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
 /docs/dbt-versions/release-notes/January-2022/model-timing-more /docs/deploy/dbt-cloud-job#model-timing 301
@@ -22,6 +28,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
 /docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
 /docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
+/docs/cloud/manage-access/about-access 301 /docs/cloud/manage-access/about-user-access 301
 /docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
 /docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
 /docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
@@ -32,7 +39,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/collaborate/publish/model-contracts /docs/collaborate/govern/model-contracts 301
 /docs/collaborate/publish/model-access /docs/collaborate/govern/model-access 301
 /docs/collaborate/publish/model-versions /docs/collaborate/govern/model-versions 301
-/docs/collaborate/manage-access/about-access /docs/cloud/manage-access/about-access 301
+/docs/collaborate/manage-access/about-access /docs/cloud/manage-access/about-user-access 301
 /docs/collaborate/manage-access/seats-and-users /docs/cloud/manage-access/seats-and-users 301
 /docs/collaborate/manage-access/self-service-permissions /docs/cloud/manage-access/self-service-permissions 301
 /docs/collaborate/manage-access/enterprise-permissions /docs/cloud/manage-access/enterprise-permissions 301
@@ -278,6 +285,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/artifacts /docs/dbt-cloud/using-dbt-cloud/artifacts 301
 /docs/bigquery-configs /reference/resource-configs/bigquery-configs 301
 /reference/resource-properties/docs /reference/resource-configs/docs 301
+/reference/resource-properties/latest-version /reference/resource-properties/latest_version 301
 /docs/building-a-dbt-project/building-models/bigquery-configs /reference/resource-configs/bigquery-configs 301
 /docs/building-a-dbt-project/building-models/configuring-models /reference/model-configs
 /docs/building-a-dbt-project/building-models/enable-and-disable-models /reference/resource-configs/enabled 301
