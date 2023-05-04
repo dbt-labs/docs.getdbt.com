@@ -12,8 +12,10 @@ function QuickstartTOC() {
 
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
-  const [activeStep, setActiveStep] = useState(parseInt(activeStepLocal) || 0 );
+  const [activeStep, setActiveStep] = useState(activeStepLocal);
   const [activeQuickstart, setActiveQuickstart] = useState(location);
+
+
 
   useEffect(() => {
     // Get all h2 for each step in the guide
@@ -105,6 +107,12 @@ function QuickstartTOC() {
         stepWrapper.appendChild(buttonContainer);
       });
     }
+
+    // Get the active step from local storage
+    // If there is no value, we start at the first step
+    const activeStepLocal = localStorage.getItem(location);
+    setActiveStep(parseInt(activeStepLocal) || 0);
+
   }, [mounted]);
 
   useEffect(() => {
