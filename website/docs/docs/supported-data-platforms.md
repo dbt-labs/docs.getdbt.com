@@ -3,15 +3,18 @@ title: "Supported data platforms"
 id: "supported-data-platforms"
 ---
 
-dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. You can extend dbt to any data platform using a dedicated _adapter plugin_. These plugins are built as Python modules that dbt Core discovers if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core. To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
+dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. You can extend dbt to any data platform using a dedicated _adapter plugin_ using the command line (CLI) or directly in the dbt Cloud user interface (UI). Plugins are built as Python modules that dbt Core discovers if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core. To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
+
+
+## Connect to dbt 
 
 You can connect dbt to a data platform in the following ways:
 
-- **Set up in dbt Cloud** &mdash; A hosted architecture for running dbt Core across your organization, dbt Cloud lets you seamlessly connect with a variety of [verified](#verified-adapters) data platform providers directly in the dbt Cloud user interface (UI), allowing you to explore the fastest and most reliable way to deploy dbt. 
+- **Set up in dbt Cloud** &mdash; A hosted architecture for running dbt Core across your organization, dbt Cloud lets you seamlessly connect with a variety of [verified](#verified-adapters) data platform providers directly in the dbt Cloud UI, allowing you to explore the fastest and most reliable way to deploy dbt. 
 
     Data platforms supported in dbt Cloud are verified and [maintained](#maintainers) by dbt Labs or partners. This level of support ensures that users can trust certain adapters for use in production. 
 
-- **Install adapter with the dbt Core** &mdash; An open-source tool where you can install dbt Core locally using the command line (CLI). dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file. 
+- **Install adapter with the dbt Core** &mdash; An open-source tool where you can install dbt Core locally using the CLI. dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file. 
 
     Data platforms supported in dbt Core may be verified or unverified, and maintained by dbt Labs, partners, or community members. 
 
