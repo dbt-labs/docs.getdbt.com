@@ -87,6 +87,7 @@ const sidebarSettings = {
                   label: "Single sign-on",
                   items: [
                     "docs/cloud/manage-access/sso-overview",
+                    "docs/cloud/manage-access/auth0-migration",
                     "docs/cloud/manage-access/set-up-sso-saml-2.0",
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
@@ -123,19 +124,26 @@ const sidebarSettings = {
                 "docs/cloud/git/import-a-project-by-git-url",
               ],
             }, // Supported Git providers
-
+            {
+              type: "category",
+              label: "Develop in the IDE",
+              link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+              items: [
+                "docs/cloud/dbt-cloud-ide/ide-user-interface",
+                "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+              ],
+            }, // dbt Cloud IDE directory
             {
               type: "category",
               label: "Multi-tenant PrivateLink",
               items: [
-                "docs/cloud/privatelink/about-privatelink",
-                "docs/cloud/privatelink/snowflake-privatelink",
-                "docs/cloud/privatelink/redshift-privatelink",
-                "docs/cloud/privatelink/databricks-privatelink",
+                "docs/cloud/secure/about-privatelink",
+                "docs/cloud/secure/snowflake-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
-            "docs/cloud/develop-in-the-cloud",
-            "docs/cloud/dbt-cloud-tips",
           ],
         },
         {
@@ -285,11 +293,12 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
             "docs/deploy/artifacts",
+            "docs/deploy/job-scheduler",
             "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
-            "docs/deploy/webhooks",
             "docs/deploy/source-freshness",
+            "docs/deploy/webhooks",
             "docs/deploy/dashboard-status-tiles",
             "docs/deploy/cloud-ci-job",
           ],
