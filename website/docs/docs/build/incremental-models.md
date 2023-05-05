@@ -1,5 +1,6 @@
 ---
 title: "Incremental models"
+description: "Read this tutorial to learn how to use incremental models when building in dbt."
 id: "incremental-models"
 ---
 
@@ -227,6 +228,12 @@ The possible values for `on_schema_change` are:
 
 **Note**: None of the `on_schema_change` behaviors backfill values in old records for newly added columns. If you need to populate those values, we recommend running manual updates, or triggering a `--full-refresh`.
 
+:::caution `on_schema_change` tracks top-level changes
+
+Currently, `on_schema_change` only tracks top-level column changes. It does not track nested column changes. For example, on BigQuery, adding, removing, or modifying a nested column will not trigger a schema change, even if `on_schema_change` is set appropriately.
+
+:::
+
 ### Default behavior
 
 This is the behavior if `on_schema_change: ignore`, which is set by default, and on older versions of dbt.
@@ -280,6 +287,8 @@ select ...
 
 </File>
 
+<VersionBlock firstVersion="1.3">
+
 ### Strategy-specific configs
 
 If you are using the `merge` strategy and have specified a `unique_key`, by default, dbt will entirely overwrite matched rows with new values.
@@ -302,6 +311,27 @@ select ...
 ```
 
 </File>
+
+Alternatively, you can specify a list of columns to exclude from being updated by passing a list of column names to a `merge_exclude_columns` config.
+
+<File name='models/my_model.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'incremental',
+    unique_key = 'id',
+    merge_exclude_columns = ['created_at'],
+    ...
+  )
+}}
+
+select ...
+```
+
+</File>
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.4">
 

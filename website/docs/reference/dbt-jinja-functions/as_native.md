@@ -1,6 +1,8 @@
 ---
-title: "as_native"
+title: "About as_native filter"
+sidebar_label: "as_native"
 id: "as_native"
+description: "Use this filter to coerce Jinja-compiled output into its native python."
 ---
 
 The `as_native` Jinja filter will coerce Jinja-compiled output into its 

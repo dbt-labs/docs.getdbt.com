@@ -1,5 +1,6 @@
 ---
-title: "Apache Spark Profile"
+title: "Apache Spark setup"
+description: "Read this guide to learn about the Apache Spark warehouse setup in dbt."
 id: "spark-setup"
 meta:
   maintained_by: dbt Labs
@@ -14,6 +15,8 @@ meta:
   platform_name: 'Spark'
   config_page: 'spark-configs'
 ---
+
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

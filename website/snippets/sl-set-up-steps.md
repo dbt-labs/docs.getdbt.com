@@ -11,7 +11,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment level by f
 4. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
 5. Click on **Settings** on the top right side of the page.
 6. Click **Edit** on the top right side of the page.
-7. Select dbt version 1.2 (latest) or higher.
+7. Select dbt version 1.2 or higher.
 8. Toggle the Semantic Layer **On**.
 9. Copy the full proxy server URL (like `https://eagle-hqya7.proxy.cloud.getdbt.com`) to connect to your [integrated partner tool](https://www.getdbt.com/product/semantic-layer-integrations). 
 10. Use the URL in the data source configuration of the integrated partner tool.

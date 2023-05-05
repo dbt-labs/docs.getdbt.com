@@ -11,7 +11,7 @@ dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. 
 ### Further reading
 
 - To learn how you can use dbt Core versions in dbt Cloud, see [Choosing a dbt Core version](/docs/dbt-versions/upgrade-core-in-cloud).
-- To learn about installing dbt Core, see "[How to install dbt Core](/docs/get-started/installation)."
+- To learn about installing dbt Core, see "[How to install dbt Core](/docs/core/installation)."
 - To restrict your project to only work with a range of dbt Core versions, or use the currently running dbt Core version, see [`require-dbt-version`](require-dbt-version) and [`dbt_version`](dbt_version).
 
 ## Version support prior to v1.0
@@ -25,7 +25,7 @@ All dbt Core versions released prior to 1.0 and their version-specific documenta
 Minor versions include new features and capabilities. They will be supported for one year from their initial release date. _dbt Labs is committed to this 12-month support timeframe._ Our mechanism for continuing to support a minor version is by releasing new patches: small, targeted bug fixes. Whenever we refer to a minor version, such as v1.0, we always mean its latest available patch release (v1.0.x).
 
 While a minor version is officially supported:
-- You can use it in dbt Cloud. For more on dbt Cloud versioning, see [Choosing a dbt version](cloud-choosing-a-dbt-version).
+- You can use it in dbt Cloud. For more on dbt Cloud versioning, see [Choosing a dbt version](/docs/dbt-versions/upgrade-core-in-cloud).
 - You can select it from the version dropdown on this website, to see documentation that is accurate for use with that minor version.
 
 ### Ongoing patches

@@ -11,7 +11,7 @@ title: "Defer"
 
 Deferral is a powerful, complex feature that enables compelling workflows. As the use cases for `--defer` evolve, dbt Labs might make enhancements to the feature, but commit to providing backward compatibility for supported versions of dbt Core.  For details, see [dbt#5095](https://github.com/dbt-labs/dbt-core/discussions/5095).
 
-Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments), without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
+Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
 Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/about-state).
 ### Usage
@@ -43,7 +43,17 @@ When using defer, you may be selecting from production datasets, development dat
 - if you apply env-specific limits in dev but not prod, as you may end up selecting more data than you expect
 - when executing tests that depend on multiple parents (e.g. `relationships`), since you're testing "across" environments
 
+<VersionBlock lastVersion="1.4">
+
 Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER_TO_STATE` and `DBT_ARTIFACT_STATE_PATH`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+Deferral requires both `--defer` and `--state` to be set, either by passing flags explicitly or by setting environment variables (`DBT_DEFER` and `DBT_STATE`). If you use dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.4">
 

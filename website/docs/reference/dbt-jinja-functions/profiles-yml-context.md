@@ -1,6 +1,8 @@
 ---
-title: "profiles.yml Context"
+title: "About profiles.yml context variable"
+sidebar_label: "profiles.yml context"
 id: "profiles-yml-context"
+description: "Use these context variables to configure resources in `profiles.yml` file."
 ---
 
 The following context variables and methods are available when configuring

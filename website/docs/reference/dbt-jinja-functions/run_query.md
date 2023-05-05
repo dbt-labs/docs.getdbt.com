@@ -1,6 +1,8 @@
 ---
-title: "run_query"
+title: "About run_query macro"
+sidebar_label: "run_query"
 id: "run_query"
+description: "Use `run_query` macro to run queries and fetch results."
 ---
 
 The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](statement-blocks), which is more flexible, but also more complicated to use.
@@ -13,7 +15,7 @@ Returns a [Table](https://agate.readthedocs.io/page/api/table.html) object with 
 **Note:** The `run_query` macro will not begin a transaction automatically - if you wish to run your query inside of a transaction, please use `begin` and `commit ` statements as appropriate.
 
 :::info Using run_query for the first time?
-Check out the section of the Getting Started guide on [using Jinja](/docs/get-started/learning-more/using-jinja#dynamically-retrieve-the-list-of-payment-methods) for an example of working with the results of the `run_query` macro!
+Check out the section of the Getting Started guide on [using Jinja](/guides/advanced/using-jinja#dynamically-retrieve-the-list-of-payment-methods) for an example of working with the results of the `run_query` macro!
 :::
 
 **Example Usage:**

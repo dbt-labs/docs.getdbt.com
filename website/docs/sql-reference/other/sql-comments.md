@@ -39,7 +39,7 @@ For comments *on* database objects, such as views and tables, there’s a differ
 comment on [database object type] <database object name> is 'comment text here';
 ```
 
-These database object-level comments are more useful for adding additional context or metadata to these objects versus inline comments being useful for explaining code functionality. Alternatively, these table and view-level comments can be easily abstracted out and version-controlled using [model descriptions in dbt](https://docs.getdbt.com/reference/resource-properties/description).
+These database object-level comments are more useful for adding additional context or metadata to these objects versus inline comments being useful for explaining code functionality. Alternatively, these table and view-level comments can be easily abstracted out and version-controlled using [model descriptions in dbt](https://docs.getdbt.com/reference/resource-properties/description) and persisted in the objects using the [persist_docs config](/reference/resource-configs/persist_docs) in dbt.
 
 ## SQL comments in Snowflake, Databricks, BigQuery, and Redshift
 

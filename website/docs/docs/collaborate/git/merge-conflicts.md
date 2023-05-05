@@ -3,7 +3,7 @@ title: "Merge conflicts"
 id: "merge-conflicts"
 ---
 
-[Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [dbt Cloud IDE](/docs/get-started/develop-in-the-cloud) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for Git to decide what changes to incorporate in the final merge.  
+[Merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts) in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) often occur when multiple users are simultaneously making edits to the same section in the same file. This makes it difficult for Git to decide what changes to incorporate in the final merge.  
 
 The merge conflict process provides users the ability to choose which lines of code they'd like to preserve and commit.  This document will show you how to resolve merge conflicts in the dbt Cloud IDE.
 
@@ -16,7 +16,7 @@ You can experience a merge conflict in two possible ways:
 
 The way to [resolve](#resolve-merge-conflicts) either scenario will be exactly the same. 
 
-For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and push**. 
+For example, if you and a teammate make changes to the same file and commit, you will encounter a merge conflict as soon as you **Commit and sync**. 
 
 The dbt Cloud IDE will display:
 

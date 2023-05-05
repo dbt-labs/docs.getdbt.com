@@ -20,5 +20,5 @@ When you develop in the command line interface (CLI) or Cloud  integrated develo
 ## Related docs
 - [Version control basics](/docs/collaborate/git/version-control-basics)
 - [Merge conflicts](/docs/collaborate/git/merge-conflicts) 
-- [Connect to GitHub](/docs/collaborate/git/connect-github)
-- [Connect to GitLab](/docs/collaborate/git/connect-gitlab)
+- [Connect to GitHub](/docs/cloud/git/connect-github)
+- [Connect to GitLab](/docs/cloud/git/connect-gitlab)

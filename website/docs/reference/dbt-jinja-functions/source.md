@@ -1,7 +1,10 @@
 ---
-title: "source"
+title: "About source function"
+sidebar_label: "source"
 id: "source"
+description: "Read this guide to understand the source Jinja function in dbt."
 ---
+
 ```sql
 select * from {{ source(source_name, table_name) }}
 ```
@@ -22,7 +25,7 @@ This function:
 
 ## Example
 
-Consider a source defined like so:
+Consider a source defined as follows:
 
 <File name='models/<filename>.yml'>
 

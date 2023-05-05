@@ -8,7 +8,7 @@ export const parseCsv = async (project, filename) => {
     
     // If user clicks the parse button without
     // a file we show a error
-    if (!file) return setError("Enter a valid file")
+    if (!file) throw new Error("Enter a valid file")
 
     let csvData = []
     // let csvHeaders

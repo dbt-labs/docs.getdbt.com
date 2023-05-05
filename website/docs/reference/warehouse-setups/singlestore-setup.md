@@ -1,5 +1,6 @@
 ---
 title: "SingleStore setup"
+description: "Read this guide to learn about the SingleStore warehouse setup in dbt."
 id: "singlestore-setup"
 meta:
   maintained_by: SingleStore, Inc.
@@ -7,7 +8,7 @@ meta:
   github_repo: 'memsql/dbt-singlestore'
   pypi_package: 'dbt-singlestore'
   min_core_version: 'v1.0.0'
-  cloud_support: Supported
+  cloud_support: Not supported
   min_supported_version: 'v7.5'
   slack_channel_name: 'db-singlestore'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V2QHFF7U'

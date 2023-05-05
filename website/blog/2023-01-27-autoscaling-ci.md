@@ -12,6 +12,10 @@ date: 2023-01-25
 is_featured: true
 ---
 
+:::warning Deprecation Notice:  Update 4/27/2023
+dbt Cloud is now offering concurrent CI checks and auto cancellation of stale CI jobs as a native feature of the platform.  If you're interested, use [this form](https://docs.google.com/forms/d/e/1FAIpQLSfjSIMkwcwhZ7pbxT5ouuEf7dwpzUwRoGYBCjQApJ2ssps0tg/viewform) to sign up for our beta.
+:::
+
 Before I delve into what makes this particular solution "intelligent", let me back up and introduce CI, or continuous integration. CI is a software development practice that ensures we automatically test our code prior to merging into another branch. The idea being that we can mitigate the times when something bad happens in production, which is something that I'm sure we can all resonate with!
 
 <!--truncate-->
@@ -128,7 +132,7 @@ jobs:
 
       - name: Trigger Autoscaling CI Job
         run: |
-          pip install dbtc==0.3.3
+          pip install dbtc
           SO="dbt_cloud_pr_"$JOB_ID"_"$PULL_REQUEST_ID
           dbtc trigger-autoscaling-ci-job \
             --job-id=$JOB_ID \

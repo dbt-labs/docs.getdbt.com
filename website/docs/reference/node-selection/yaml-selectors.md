@@ -31,7 +31,7 @@ Each `definition` is comprised of one or more arguments, which can be one of the
 * **Key-value:** pairs in the form `method: value`
 * **Full YAML:** fully specified dictionaries with items for `method`, `value`, operator-equivalent keywords, and support for `exclude`
 
-Use `union` and `intersection` to organize multiple arguments.
+Use the `union` and `intersection` operator-equivalent keywords to organize multiple arguments.
 
 ### CLI-style
 ```yml
@@ -39,8 +39,7 @@ definition:
   'tag:nightly'
 ```
 
-This simple syntax supports use of the `+`, `@`, and `*` operators. It does
-not support `exclude`.
+This simple syntax supports use of the `+`, `@`, and `*` [graph](/reference/node-selection/graph-operators) operators, but it does not support [set](/reference/node-selection/set-operators) operators or `exclude`.
 
 ### Key-value
 ```yml
@@ -48,20 +47,23 @@ definition:
   tag: nightly
 ```
 
-This simple syntax does not support any operators or `exclude`.
+This simple syntax does not support any [graph](/reference/node-selection/graph-operators) or [set](/reference/node-selection/set-operators) operators or `exclude`.
 
 ### Full YAML
 
-This is the most thorough syntax, which can include graph and set operators. 
+This is the most thorough syntax, which can include the operator-equivalent keywords for [graph](/reference/node-selection/graph-operators) and [set](/reference/node-selection/set-operators) operators.
 
 Review [methods](/reference/node-selection/methods) for the available list.
+
+
+<VersionBlock lastVersion="1.3">
 
 ```yml
 definition:
   method: tag
   value: nightly
 
-  # Optional keywords map to the `+` and `@` operators:
+  # Optional keywords map to the `+` and `@` graph operators:
 
   children: true | false
   parents: true | false
@@ -73,6 +75,31 @@ definition:
   
   indirect_selection: eager | cautious  # include all tests selected indirectly? eager by default
 ```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+```yml
+definition:
+  method: tag
+  value: nightly
+
+  # Optional keywords map to the `+` and `@` graph operators:
+
+  children: true | false
+  parents: true | false
+
+  children_depth: 1    # if children: true, degrees to include
+  parents_depth: 1     # if parents: true, degrees to include
+
+  childrens_parents: true | false     # @ operator
+
+  indirect_selection: eager | cautious | buildable  # include all tests selected indirectly? eager by default
+```
+
+</VersionBlock>
+
 
 The `*` operator to select all nodes can be written as:
 ```yml
@@ -107,10 +134,22 @@ Note: The `exclude` argument in YAML selectors is subtly different from
 the `--exclude` CLI argument. Here, `exclude` _always_ returns a [set difference](https://en.wikipedia.org/wiki/Complement_(set_theory)),
 and it is always applied _last_ within its scope.
 
+<VersionBlock lastVersion="1.4">
+
 This gets us more intricate subset definitions than what's available on the CLI,
 where we can only pass one "yeslist" (`--select`) and one "nolist" (`--exclude`).
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+When more than one "yeslist" (`--select`) is passed, they are treated as a [union](/reference/node-selection/set-operators#unions) rather than an [intersection](/reference/node-selection/set-operators#intersections). Same thing when there is more than one "nolist" (`--exclude`).
+
+</VersionBlock>
+
 #### Indirect selection
+
+<VersionBlock lastVersion="1.3">
 
 As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" by setting `indirect_selection` for a specific criterion:
 
@@ -126,6 +165,31 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
 ```
 
 If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.4">
+
+As a general rule, dbt will indirectly select _all_ tests if they touch _any_ resource that you're selecting directly. We call this "eager" indirect selection. You can optionally switch the indirect selection mode to "cautious" or "buildable" by setting `indirect_selection` for a specific criterion:
+
+```yml
+- union:
+    - method: fqn
+      value: model_a
+      indirect_selection: eager  # default: will include all tests that touch model_a
+    - method: fqn
+      value: model_b
+      indirect_selection: cautious  # will not include tests touching model_b
+                        # if they have other unselected parents
+    - method: fqn
+      value: model_c
+      indirect_selection: buildable  # will not include tests touching model_c
+                        # if they have other unselected parents (unless they have an ancestor that is selected)
+```
+
+If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+
+</VersionBlock>
 
 See [test selection examples](test-selection-examples) for more details about indirect selection.
 
@@ -150,10 +214,13 @@ Here are two ways to represent:
 <File name='selectors.yml'>
 
 ```yml
+
 selectors:
   - name: nightly_diet_snowplow
     description: "Non-incremental Snowplow models that power nightly exports"
     definition:
+
+      # Optional `union` and `intersection` keywords map to the ` ` and `,` set operators:
       union:
         - intersection:
             - '@source:snowplow'
@@ -176,6 +243,7 @@ selectors:
   - name: nightly_diet_snowplow
     description: "Non-incremental Snowplow models that power nightly exports"
     definition:
+      # Optional `union` and `intersection` keywords map to the ` ` and `,` set operators:
       union:
         - intersection:
             - method: source

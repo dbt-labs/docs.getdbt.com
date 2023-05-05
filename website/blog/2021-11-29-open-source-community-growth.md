@@ -46,7 +46,7 @@ Here are the tools I chose to use:
 
 - dbt seeds data from offline sources and performs necessary transformations on data after it's been loaded into BigQuery. 
 
-- OpenLineage collects data lineage and performance metadata as models run, so I can identify issues and find bottlenecks. Also, to be the subject ecosystem for this study :)
+- OpenLineage collects <Term id="data-lineage" /> and performance metadata as models run, so I can identify issues and find bottlenecks. Also, to be the subject ecosystem for this study :)
 
 - Superset visualizes and analyzes results, creates dashboards, and helps me communicate with stakeholders.
 

@@ -1,10 +1,15 @@
 ---
-title: "Metrics"
+title: "Add metrics to your DAG"
+sidebar_label: "Metrics"
 id: "metrics"
 description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
 keywords:
   - dbt metrics layer
 ---
+
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+:::
 
 <Changelog>
 
@@ -168,9 +173,9 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | label       | A short for name / label for the metric                     | New Customers                   | yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock> |
+| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) |yes |
 | timestamp   | The time-based component of the metric                      | signup_date                     | <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock>        |
-| time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              |  <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock>       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`, `all_time`] |  {count: 14, period: day}        | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |

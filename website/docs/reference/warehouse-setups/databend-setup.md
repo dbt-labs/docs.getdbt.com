@@ -1,5 +1,6 @@
 ---
 title: "Databend Cloud setup"
+description: "Read this guide to learn about the Databend warehouse setup in dbt."
 id: "databend-setup"
 meta:
   maintained_by: Databend Cloud
@@ -10,8 +11,6 @@ meta:
   core_version: 'v1.0.0 and newer'
   cloud_support: Not Supported
   min_supported_version: 'n/a'
-  slack_channel_name: '#db-databend-cloud'
-  slack_channel_link: 'https://datafusecloud.slack.com/archives/C04H167UABF'
   platform_name: 'Databend Cloud'
   config_page: 'no-configs'
 ---
