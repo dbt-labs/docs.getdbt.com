@@ -1,5 +1,6 @@
 ---
-title: "toyaml"
+title: "About toyaml context method"
+sidebar_label: "toyaml"
 id: "toyaml"
 description: "Used to serialize a Python object primitive."
 ---

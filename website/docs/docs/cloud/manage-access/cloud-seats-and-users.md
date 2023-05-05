@@ -1,18 +1,16 @@
 ---
 title: "Users and licenses"
+description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
 id: "seats-and-users"
 sidebar: "Users and licenses"
-description: "Information about users and their license types"
 ---
-
-## Overview
 
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are two
 different types of licenses in dbt Cloud: _Developer_ and _Read Only_.
 
 The type of license a user is assigned controls which capabilities of dbt
 Cloud the user is permitted to access. Users with a Developer license can be
-granted access to the Deployment and [Development](/docs/cloud/develop-in-the-cloud) functionality
+granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality
 in dbt Cloud, whereas users with Read Only licenses are intended to view the
 [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account.
 
@@ -25,15 +23,94 @@ in dbt Cloud, whereas users with Read Only licenses are intended to view the
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ |
 
-## Included licenses
+## Licenses
 
-Each dbt Cloud plan comes with a base number of Developer and Read Only licenses.
-To add additional licenses to your account, navigate to the Billing tab of the
-Account Settings page in your dbt Cloud account. Note: accounts on the Developer
-plan must upgrade to the Team plan to add additional team members to their
-account.
+Each dbt Cloud plan comes with a base number of Developer and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
-Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
+If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
+
+The following tabs detail steps on how to modify your user license count:
+
+<Tabs>
+
+<TabItem value="enterprise" label="Enterprise plans">
+
+If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count: 
+
+- To remove a user, go to **Account Settings**, select **Users** under **Teams**. Select the user you want to remove, click **Edit**, and then **Delete**. This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
+
+- To add a user, go to **Account Settings**, select **Users** under **Teams**. Select **Invite Users**. For fine-grained permission configuration, refer to [Role based access control](/docs/cloud/manage-access/enterprise-permissions).
+
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-enterprise.jpg" width="85%" title="Navigate to Account Settings --> Users to add or remove users" />
+
+</TabItem>
+
+<TabItem value="team" label="Team plans">
+
+If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers, you'll need to make two changes:
+
+- Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. AND
+- Adjust your developer billing seat count, which manages the number of billable seats. 
+
+
+You can add or remove developers by increasing or decreasing the number of users and billable seats in your account settings:
+
+<Tabs>
+<TabItem value="addusers" label="Adding users">
+
+To add a user in dbt Cloud, you must be an account owner or have admin privileges. 
+
+1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
+
+<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
+
+2. In **Account Settings**, select **Billing**. 
+3. Enter the number of developer seats you want and click **Save**.
+
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
+
+
+Now that you've updated your billing, you can now invite users to join your dbt Cloud account:
+
+4. In **Account Settings**, select **Users** under **Teams**.
+5. Select the user you want to add by clicking **Invite Users**.
+6. In the **Invite Users** side panel, add the invited user's email(s), assign their license, and Groups. 
+7. Click **Send Invitations** at the bottom of the page. 
+
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-users.jpg" width="85%" title="Navigate to Account Settings -> Users to modify dbt Cloud users" />
+
+Great work! After completing those these steps, your dbt Cloud user count and billing count should now be the same.
+</TabItem>
+
+<TabItem value="deleteusers" label="Deleting users">
+
+To delete a user in dbt Cloud, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
+
+
+1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
+
+<Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
+
+2. In **Account Settings**, select **Users** under **Teams**.
+3. Select the user you want to delete, then click **Edit**. 
+4. Click **Delete** in the bottom left. Click **Confirm Delete** to immediately delete the user without additional password prompts. This action cannot be undone. However, you can re-invite the user with the same information if the deletion was made in error. 
+
+<Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="85%" title="Deleting a user" />
+
+
+If you are on a **Teams** plan and you are deleting users to reduce the number of billable seats, you also need to take these steps to lower the license count to avoid being overcharged:
+1. In **Account Settings**, select **Billing**. 
+2. Enter the number of developer seats you want and click **Save**.
+
+<Lightbox src="/img/docs/dbt-cloud/change-developer-seats.png" width="85%" title="Developer seats" />
+
+Great work! After completing these steps, your dbt Cloud user count and billing count should now be the same.
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+</Tabs>
 
 ## Managing license types
 

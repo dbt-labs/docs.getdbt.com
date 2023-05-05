@@ -1,5 +1,6 @@
 ---
 title: "Apache Impala setup"
+description: "Read this guide to learn about the Apache Impala warehouse setup in dbt."
 id: "impala-setup"
 meta:
   maintained_by: Cloudera

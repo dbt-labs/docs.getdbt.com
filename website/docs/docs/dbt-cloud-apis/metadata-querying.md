@@ -34,6 +34,10 @@ Every query will rely on a _jobID_.  You can get the jobID by clicking into the 
 There are several illustrative example queries in this documentation. You can see an example of [queries on the Model node](/docs/dbt-cloud-apis/metadata-schema-model).
 
 
+## Reasonable use
+To maintain performance stability and prevent abuse, Metadata (GraphQL) API usage is subject to request rate and response size limits.
+- The current request rate limit is 200 requests within a minute for a given IP address. If a user exceeds this limit, they will receive an HTTP 429 response status.
+- Environment-level endpoints will be subject to response size limits in the future. The depth of the graph should not exceed three levels. A user can paginate up to 500 items per query.
 
 ## GraphQL API explorer
 
@@ -54,4 +58,4 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 5. Run your query by pressing the blue query button in the top-right of the Operation editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
+<Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer."/>

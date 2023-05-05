@@ -1,5 +1,6 @@
 ---
 title: "Teradata setup"
+description: "Read this guide to learn about the Teradata warehouse setup in dbt."
 id: "teradata-setup"
 meta:
   maintained_by: Teradata

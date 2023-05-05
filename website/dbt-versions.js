@@ -34,6 +34,10 @@ exports.versionedPages = [
     "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
+    {
+    "page": "reference/commands/show",
+    "firstVersion": "1.5",
+  },
   {
     "page": "docs/collaborate/govern/model-access",
     "firstVersion": "1.5",

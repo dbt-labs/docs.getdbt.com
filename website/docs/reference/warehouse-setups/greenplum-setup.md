@@ -1,5 +1,6 @@
 ---
 title: "Greenplum setup"
+description: "Read this guide to learn about the Greenplum warehouse setup in dbt."
 id: "greenplum-setup"
 meta:
   maintained_by: Community

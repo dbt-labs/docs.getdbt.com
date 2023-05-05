@@ -1,5 +1,6 @@
 ---
-title: "print"
+title: "About print function"
+sidebar_label: "print"
 id: "print"
 description: "Use the `print()` to print messages to the log file and stdout."
 ---

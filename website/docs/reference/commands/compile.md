@@ -1,5 +1,6 @@
 ---
-title: "compile"
+title: "About dbt compile command"
+sidebar_label: "compile"
 id: "compile"
 ---
 

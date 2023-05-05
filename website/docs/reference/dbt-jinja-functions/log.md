@@ -1,7 +1,8 @@
 ---
 title: "log"
+sibebar_label: "About log function"
 id: "log"
-description: "Use `log` to log a line to either the log file or stdout."
+description: "Learn more about the log Jinja function in dbt."
 ---
 
 __Args__:
