@@ -56,9 +56,9 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 ### For users of specific adapters
 
-**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/reference/warehouse-setups/bigquery-setup).
+**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/docs/core/connect-data-platform/bigquery-setup).
 
-**dbt-spark** added support for a [`session` connection method](/reference/warehouse-setups/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
+**dbt-spark** added support for a [`session` connection method](/docs/core/connect-data-platform/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
 
 ### Dependencies
 
