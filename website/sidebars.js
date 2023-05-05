@@ -167,7 +167,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Connect data platform",
-              link: { type: "doc", id: "/docs/core/connect-data-platform/profiles.yml" },
+              link: { type: "doc", id: "docs/core/connect-data-platform/profiles.yml" },
               items: [
                 "docs/core/connect-data-platform/connection-profiles",
                 "docs/core/connect-data-platform/bigquery-setup",
