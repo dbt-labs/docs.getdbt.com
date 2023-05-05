@@ -1,5 +1,6 @@
 ---
-title: Other Artifacts
+title: "Other artifact files"
+sidebar_label: "Other artifacts"
 ---
 
 ### index.html

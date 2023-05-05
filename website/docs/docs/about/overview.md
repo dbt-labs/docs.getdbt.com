@@ -1,9 +1,7 @@
 ---
-title: "Overview"
+title: "What is dbt? "
 id: "overview"
 ---
-
-# What is dbt?
 
 dbt is a productivity tool that helps analysts get more done and produce higher quality results.
 

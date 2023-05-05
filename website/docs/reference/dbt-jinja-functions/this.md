@@ -1,5 +1,6 @@
 ---
-title: "this"
+title: "about this"
+sidebar_label: "this"
 id: "this"
 description: "Represents the current model in the database."
 ---

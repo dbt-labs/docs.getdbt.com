@@ -1,5 +1,6 @@
 ---
-title: "ref"
+title: "About ref function"
+sidebar_label: "ref"
 id: "ref"
 description: "Read this guide to understand the builtins Jinja function in dbt."
 ---

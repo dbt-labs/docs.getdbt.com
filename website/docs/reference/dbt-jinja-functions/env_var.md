@@ -1,5 +1,6 @@
 ---
-title: "env_var"
+title: " About env_var function"
+sidebar_label: "env_var"
 id: "env_var"
 description: "Incorporate environment variables using `en_var` function."
 ---

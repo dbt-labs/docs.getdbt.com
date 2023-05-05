@@ -1,5 +1,6 @@
 ---
-title: "clean"
+title: "About dbt clean command"
+sidebar_label: "clean"
 id: "clean"
 ---
 

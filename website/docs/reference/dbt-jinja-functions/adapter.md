@@ -1,5 +1,6 @@
 ---
-title: "adapter"
+title: "About adapter object"
+sidebar_label: "adapter"
 id: "adapter"
 description: "Wrap the internal database adapter with the Jinja object `adapter`."
 ---

@@ -1,5 +1,6 @@
 ---
-title: "doc"
+title: " About doc function"
+sidebar_label: "doc"
 id: "doc"
 description: "Use the `doc` to reference docs blocks in description fields."
 ---

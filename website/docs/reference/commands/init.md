@@ -1,5 +1,6 @@
 ---
-title: "init"
+title: "About dbt init command"
+sidebar_label: "init"
 id: "init"
 ---
 

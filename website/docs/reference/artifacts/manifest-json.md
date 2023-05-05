@@ -1,5 +1,6 @@
 ---
-title: Manifest
+title: "Manifest JSON file"
+sidebar_label: "Manifest"
 ---
 <VersionBlock firstVersion="1.5">
 

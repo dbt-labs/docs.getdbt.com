@@ -1,5 +1,6 @@
 ---
-title: "flags"
+title: "About flags variable"
+sidebar_label: "flags"
 id: "flags"
 description: "The `flags` variable contains values of flags provided on the cli."
 ---

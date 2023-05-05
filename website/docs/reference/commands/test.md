@@ -1,5 +1,6 @@
 ---
-title: "test"
+title: "About dbt test command"
+sidebar_label: "test"
 id: "test"
 ---
 
