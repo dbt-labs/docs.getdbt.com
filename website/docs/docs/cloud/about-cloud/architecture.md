@@ -38,11 +38,11 @@ For more detailed information on our security practices, read our [Security page
 
 dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation. However, users can post SQL that returns customer data into the dbt Cloud application. This data never persists and will only exist in memory on the instance for the duration of the session. To lock down customer data correctly, proper <Term id="data-warehouse" /> permissions must be applied to prevent improper access or storage of sensitive data.
 
-Some data warehouse providers offer advanced security features that can be leveraged in dbt Cloud. [PrivateLink](/docs/cloud/privatelink/about-privatelink) allows supported data platforms on AWS to communicate with dbt Cloud without the traffic traversing the public internet. [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise plan only).
+Some data warehouse providers offer advanced security features that can be leveraged in dbt Cloud. [PrivateLink](/docs/cloud/secure/about-privatelink) allows supported data platforms on AWS to communicate with dbt Cloud without the traffic traversing the public internet. [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise plan only).
 
 ### Git sync
 
-dbt Cloud can sync with a variety of git providers, including [Github](/docs/cloud/git/connect-github), [Gitlab](/docs/cloud/git/connect-gitlab), and [Azure DevOps](/docs/cloud/git/connect-azure-devops) within its integrated development environment ([IDE](/docs/cloud/develop-in-the-cloud)). Communication takes place over HTTPS rather than SSH and is protected using the TLS 1.2 protocol for data in transit.
+dbt Cloud can sync with a variety of git providers, including [Github](/docs/cloud/git/connect-github), [Gitlab](/docs/cloud/git/connect-gitlab), and [Azure DevOps](/docs/cloud/git/connect-azure-devops) within its integrated development environment ([IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). Communication takes place over HTTPS rather than SSH and is protected using the TLS 1.2 protocol for data in transit.
 
 The git repo information is stored on dbt Cloud servers to make it accessible during the IDE sessions. When the git sync is disabled, you must [contact support](mailto:support@getdbt.com) to request the deletion of the synced data. 
 
