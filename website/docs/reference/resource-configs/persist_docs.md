@@ -1,5 +1,6 @@
 ---
 id: "persist_docs"
+description: "Persist_docs - Read this in-depth guide to learn about configurations in dbt."
 datatype: Dict[Str, Bool]
 ---
 
@@ -151,12 +152,6 @@ Some known issues and limitations:
 <VersionBlock firstVersion="1.0" lastVersion="1.1">
 
 - Column names that must be quoted, such as column names containing special characters, will cause runtime errors if column-level `persist_docs` is enabled. This is fixed in v1.2.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="0.21">
-
-- Column-level comments aren't supported for models materialized as <Term id="view">views</Term>
 
 </VersionBlock>
 

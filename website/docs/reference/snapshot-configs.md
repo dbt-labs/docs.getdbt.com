@@ -1,5 +1,6 @@
 ---
 title: Snapshot configurations
+description: "Read this guide to learn about using snapshot configurations in dbt."
 ---
 ## Related documentation
 * [Snapshots](snapshots)
@@ -110,6 +111,7 @@ snapshots:
   [<resource-path>](resource-path):
     [+](plus-prefix)[enabled](enabled): true | false
     [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
+    [+](plus-prefix)[alias](resource-configs/alias): <string>
     [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
     [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
@@ -131,6 +133,7 @@ snapshots:
     config:
       [enabled](enabled): true | false
       [tags](resource-configs/tags): <string> | [<string>]
+      [alias](resource-configs/alias): <string>
       [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
       [persist_docs](persist_docs): {<dict>}
@@ -149,6 +152,7 @@ snapshots:
 {{ config(
     [enabled](enabled)=true | false,
     [tags](resource-configs/tags)="<string>" | ["<string>"],
+    [alias](resource-configs/alias)="<string>", 
     [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
     [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
     [persist_docs](persist_docs)={<dict>}

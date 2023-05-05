@@ -22,7 +22,7 @@ In the reverse ETL process, transformed data is synced from a data warehouse to 
 
 ![A diagram depicting how the reverse ETL process works. It starts with data being extract from data sources like email CRMs, Facebook Ad platforms, backend databases, and NetSuite. The raw data is then loaded into a data warehouse. After loading, the data is transformed and modeled. The modeled data is then loaded directly back into the tools that created the data, like Email CRMs, Facebook Ad platforms, and others so the insights are more accessible to business users.](/img/docs/terms/reverse-etl/reverse-etl-diagram.png)
 
-The power of reverse ETL comes from sending down *already transformed data* to business platforms. Raw data, while beautiful in its own way, typically lacks the structure, aggregations, and aliasing to be useful for end business users off the bat. After data teams transform data for business use in ELT pipelines, typically to expose in an end business intelligence (BI) tool, they can also send this cleaned and meaningful data to other platforms where business users can derive value using [reverse ETL tools](#reverse-etl-tools).
+The power of reverse ETL comes from sending down *already transformed data* to business platforms. Raw data, while beautiful in its own way, typically lacks the structure, aggregations, and aliasing to be useful for end business users off the bat. After data teams transform data for business use in <Term id="elt" /> pipelines, typically to expose in an end business intelligence (BI) tool, they can also send this cleaned and meaningful data to other platforms where business users can derive value using [reverse ETL tools](#reverse-etl-tools).
 
 Data teams can choose to write additional transformations that may need to happen for end business tools in reverse ETL tools themselves or by creating [additional models in dbt](https://getdbt.com/open-source-data-culture/reverse-etl-playbook/).
 
@@ -76,6 +76,7 @@ Reverse ETL tools typically establish the connection between your data warehouse
 | Tool | Description | Open source option? |
 |:---:|:---:|:---:|
 | Hightouch | A platform to sync data models and create custom audiences for downstream business platforms. | :x: |
+| Polytomic | A unified sync platform for syncing to and from data warehouses (ETL and Reverse ETL), databases, business apps, APIs, and spreadsheets. | :x: |
 | Census | Another reverse ETL tool that can sync data from your data warehouse to your go-to-market tools. | :x: |
 | Rudderstack | Also a CDP (customer data platform), Rudderstack additionally supports pushing down data and audience to external tools, such as ad platforms and email CRMs. | :white_check_mark: |
 | Grouparoo | Grouparoo, part of Airbyte, is an open source framework to move data from data warehouses to different cloud-based tools. | :white_check_mark: |

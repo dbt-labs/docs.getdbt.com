@@ -80,4 +80,4 @@ Code like this is both valid, and encouraged:
 {{ config(post_hook="grant select on {{ this }} to role bi_role") }}
 ```
 
-So why are curlies inside of curlies allowed in this case? Here, we actually _want_ the string literal `"grant select on {{ this }} ..."` to be saved as the configuration value for the post-hook in this model. This string will be re-rendered when the model runs, resulting in a sensible sql expressions like `grant select on "schema"."table"....` being executed against the database. These hooks are a special exception to the rule stated above.
+So why are curlies inside of curlies allowed in this case? Here, we actually _want_ the string literal `"grant select on {{ this }} ..."` to be saved as the configuration value for the post-hook in this model. This string will be re-rendered when the model runs, resulting in a sensible SQL expression like `grant select on "schema"."table"....` being executed against the database. These hooks are a special exception to the rule stated above.

@@ -1,13 +1,14 @@
 ---
 title: "Upgrading to v1.2"
+description: New features and changes in dbt Core v1.2
 ---
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.2.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/get-started/installation)
+- [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 There are no breaking changes for code in dbt projects and packages. We are committed to providing backwards compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
@@ -33,4 +34,4 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 
 ### Specific adapters
 
-- [Postgres](/reference/warehouse-setups/postgres-setup) and [Redshift](/reference/warehouse-setups/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.
+- [Postgres](/docs/core/connect-data-platform/postgres-setup) and [Redshift](/docs/core/connect-data-platform/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.

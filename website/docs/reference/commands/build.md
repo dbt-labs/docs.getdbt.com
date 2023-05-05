@@ -1,13 +1,8 @@
 ---
-title: "build"
+title: "About dbt build command"
+sidebar_label: "build"
 id: "build"
 ---
-
-<Changelog>
-
-- Introduced in **v0.21.0**
-    
-</Changelog>
 
 The `dbt build` command will:
 - run models

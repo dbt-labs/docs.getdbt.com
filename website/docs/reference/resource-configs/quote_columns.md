@@ -1,5 +1,6 @@
 ---
 resource_types: [seeds]
+description: "Quote_columns - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 default_value: false
 ---
@@ -8,15 +9,8 @@ default_value: false
 An optional seed configuration, used to determine whether column names in the seed file should be quoted when the <Term id="table" /> is created.
 
 * When `True`, dbt will quote the column names defined in the seed file when building a table for the seed, preserving casing.
-* (Default) When `False`, dbt will not quote the column names defined in the seed file.
-
-<Changelog>
-
-* `v0.15.0`: Introduced in v0.15.0, with a default of False
-* `v0.21.0`: Introduced `config` property for seeds
-* Future: The default value may change in a future release. If you're using seed files, it is recommended that you set this configuration explicitly to avoid breaking changes in the future.
-
-</Changelog>
+* When `False`, dbt will not quote the column names defined in the seed file.
+* When not set, it will vary by adapter whether or not column names are quoted.
 
 ## Usage
 ### Globally quote all seed columns

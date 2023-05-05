@@ -11,7 +11,7 @@ To document macros, use a [schema file](macro-properties) and nest the configura
 
 ## Example
 
-<File name='models/schema.yml'>
+<File name='macros/schema.yml'>
 
 ```yml
 version: 2

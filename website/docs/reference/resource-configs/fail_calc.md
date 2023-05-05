@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: string
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `fail_calc` config
-* `v0.21.0`: Introduced `config` property for tests
-
-</Changelog>
-
 Test queries are written to return a set of failing records, ones not matching the expectation or assertion declared by that test: duplicate records, null values, etc.
 
 Most often, this is the count of rows returned by the test query: the default value of `fail_calc` is `count(*)`. But it can also be a custom calculation, whether an aggregate calculation or simply the name of a column to be selected from the test query.

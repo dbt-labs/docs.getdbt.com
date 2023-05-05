@@ -1,5 +1,7 @@
 ---
-title: "Snapshots"
+title: "Add snapshots to your DAG"
+sidebar_label: "Snapshots"
+description: "Read this tutorial to learn how to use snapshots when building in dbt."
 id: "snapshots"
 ---
 
@@ -34,7 +36,7 @@ This order is now in the "shipped" state, but we've lost the information about w
 
 In dbt, snapshots are `select` statements, defined within a snapshot block in a `.sql` file (typically in your `snapshots` directory). You'll also need to configure your snapshot to tell dbt how to detect record changes.
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -78,7 +80,7 @@ To add a snapshot to your project:
 1. Create a file in your `snapshots` directory with a `.sql` file extension, e.g. `snapshots/orders.sql`
 2. Use a `snapshot` block to define the start and end of a snapshot:
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -90,7 +92,7 @@ To add a snapshot to your project:
 
 3. Write a `select` statement within the snapshot block (tips for writing a good snapshot query are below). This select statement defines the results that you want to snapshot over time. You can use `sources` and `refs` here.
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -106,7 +108,7 @@ select * from {{ source('jaffle_shop', 'orders') }}
 
 5. Add configurations to your snapshot using a `config` block (more details below). You can also configure your snapshot from your `dbt_project.yml` file ([docs](snapshot-configs)).
 
-<File name='snapshots/orders.sql'>
+<File name='snapshots/orders_snapshot.sql'>
 
 ```sql
 {% snapshot orders_snapshot %}
@@ -178,7 +180,7 @@ The `timestamp` strategy requires the following configurations:
 
 **Example usage:**
 
-<File name='snapshots/timestamp_example.sql'>
+<File name='snapshots/orders_snapshot_timestamp.sql'>
 
 ```sql
 {% snapshot orders_snapshot_timestamp %}
@@ -219,7 +221,7 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 **Example Usage**
 
-<File name='snapshots/check_example.sql'>
+<File name='snapshots/orders_snapshot_check.sql'>
 
 ```sql
 {% snapshot orders_snapshot_check %}
@@ -243,17 +245,15 @@ The `check` snapshot strategy can be configured to track changes to _all_ column
 
 ### Hard deletes (opt-in)
 
-<Changelog>New in v0.19.0</Changelog>
-
 Rows that are deleted from the source query are not invalidated by default. With the config option `invalidate_hard_deletes`, dbt can track rows that no longer exist. This is done by left joining the snapshot table with the source table, and filtering the rows that are still valid at that point, but no longer can be found in the source table. `dbt_valid_to` will be set to the current snapshot time.
 
 This configuration is not a different strategy as described above, but is an additional opt-in feature. It is not enabled by default since it alters the previous behavior.
 
-For this configuration to work, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
+For this configuration to work with the `timestamp` strategy, the configured `updated_at` column must be of timestamp type. Otherwise, queries will fail due to mixing data types.
 
 **Example Usage**
 
-<File name='snapshots/hard_delete_example.sql'>
+<File name='snapshots/orders_snapshot_hard_delete.sql'>
 
 ```sql
 {% snapshot orders_snapshot_hard_delete %}
@@ -294,12 +294,12 @@ A number of other configurations are also supported (e.g. `tags` and `post-hook`
 
 Snapshots can be configured from both your `dbt_project.yml` file and a `config` block, check out the [configuration docs](snapshot-configs) for more information.
 
-Note: As of v0.21, BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
+Note: BigQuery users can use `target_project` and `target_dataset` as aliases for `target_database` and `target_schema`, respectively.
 
 
 ### Configuration best practices
 #### Use the `timestamp` strategy where possible
-This strategy handles column additions and deletions better than the `check_cols` strategy.
+This strategy handles column additions and deletions better than the `check` strategy.
 
 #### Ensure your unique key is really unique
 The unique key is used by dbt to match rows up, so it's extremely important to make sure this key is actually unique! If you're snapshotting a source, I'd recommend adding a uniqueness test to your source ([example](https://github.com/dbt-labs/jaffle_shop/blob/8e7c853c858018180bef1756ec93e193d9958c5b/models/staging/schema.yml#L26)).
@@ -375,7 +375,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 
 <br/>
 
-For the `check` strategy, the current timestamp is used to populate each column
+For the `check` strategy, the current timestamp is used to populate each column. If configured, the `check` strategy uses the `updated_at` column instead, as with the timestamp strategy.
 
 <details>
 <summary>  Details for the check strategy </summary>

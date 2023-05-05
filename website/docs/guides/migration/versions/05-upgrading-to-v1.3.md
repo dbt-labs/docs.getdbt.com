@@ -1,18 +1,19 @@
 ---
-title: "Upgrading to v1.3 (latest)"
+title: "Upgrading to v1.3"
+description: New features and changes in dbt Core v1.3
 ---
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.3.latest/CHANGELOG.md)
-- [CLI Installation guide](/docs/get-started/installation)
+- [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 
-## Breaking changes
+## What to know before upgrading
 
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 There are three changes in dbt Core v1.3 that may require action from some users:
-1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/get-started/connection-profiles#advanced-customizing-a-profile-directory).
+1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory).
 2. If you already have `.py` files defined in the `model-paths` of your dbt project, dbt will start trying to read them as Python models. You can use [the new `.dbtignore` file](dbtignore) to tell dbt to ignore those files.
 3. If you have custom code accessing the `raw_sql` property of models (with the [model](dbt-jinja-functions/model) or [graph](/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 
@@ -36,10 +37,7 @@ For users of [state-based selection](/docs/deploy/about-state): This release inc
 
 ### For maintainers of adapter plugins
 
-_GitHub discussion forthcoming_
-
-**Notes:**
-- The `statement` and `create_table_as` macros accept a new argument, `language`, with a default value of `'sql'`
+GitHub discussion with details: [dbt-labs/dbt-core#6011](https://github.com/dbt-labs/dbt-core/discussions/6011)
 
 ## New and changed documentation
 
@@ -48,7 +46,7 @@ _GitHub discussion forthcoming_
 - Plus, a few related updates to **[exposure properties](exposure-properties)**: `config`, `label`, and `name` validation.
 
 - **[Custom `node_color`](/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
-- **[`Profiles.yml`](/docs/get-started/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
+- **[`Profiles.yml`](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
 
 
 ### Quick hits

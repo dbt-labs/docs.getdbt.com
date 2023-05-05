@@ -1,6 +1,8 @@
 ---
-title: "this"
+title: "about this"
+sidebar_label: "this"
 id: "this"
+description: "Represents the current model in the database."
 ---
 
 `this` is the database representation of the current model. It is useful when:

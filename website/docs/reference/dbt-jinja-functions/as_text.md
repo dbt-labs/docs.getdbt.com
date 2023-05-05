@@ -1,6 +1,8 @@
 ---
-title: "as_text"
+title: "About as_text filter"
+sidebar_label: "as_text"
 id: "as_text"
+description: "Use this filter to convert Jinja-compiled output back to text."
 ---
 
 The `as_text` Jinja filter will coerce Jinja-compiled output back to text. It

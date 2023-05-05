@@ -81,7 +81,7 @@ The table below gives an overview of primary key support and enforcement in some
   <tr>
    <td><a href="https://docs.databricks.com/delta/delta-constraints.html">Databricks</a>
    </td>
-   <td>❌
+   <td>✅
    </td>
    <td>❌
    </td>
@@ -112,7 +112,7 @@ BigQuery is pretty unique here in that it doesn’t support or enforce primary k
 
 ### Databricks
 
-Databricks’ Delta tables don’t provide classical support for primary keys; instead, they call them constraints. Databricks currently offers two constraint types: `not-null` and `check`. The `not-null` one is pretty straightforward, but the `check` constraint is more unique to Databricks. With the `check` constraint, you can test that a certain boolean expression executes as `true` for each row in a table. This constraint is more likely to be helpful for ensuring accepted values are met for fields rather than for primary key requirements.
+Databricks’ Delta tables in Unity Catalog provide support for declaring [informational primary keys](https://docs.databricks.com/tables/constraints.html#declare-primary-key-and-foreign-key-relationships). These primary key constraints are not enforced. Databricks currently offers [two enforced constraint](https://docs.databricks.com/tables/constraints.html#enforced-constraints-on-databricks) types: `not-null` and `check`. The `not-null` one is pretty straightforward, but the `check` constraint is more unique to Databricks. With the `check` constraint, you can test that a certain boolean expression executes as `true` for each row in a table. This constraint is more likely to be helpful for ensuring accepted values are met for fields rather than for primary key requirements.
 
 ### Postgres
 

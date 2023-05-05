@@ -22,3 +22,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# feeds
+/static/feeds/atom.xml
+/static/feeds/rss.json
+/static/feeds/rss.xml

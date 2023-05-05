@@ -2,11 +2,10 @@ const webpack = require('webpack');
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 // Adds custom configurations to webpack
-module.exports = function customWebpackConfigPlugin(context, options) {
+module.exports = function customWebpackConfigPlugin() {
   return {
     name: 'docusaurus-custom-webpack-config-plugin',
-    configureWebpack(config, isServer, utils) {   
-         
+    configureWebpack() {   
       return {        
         resolve: {     
           fallback: {
@@ -24,6 +23,11 @@ module.exports = function customWebpackConfigPlugin(context, options) {
           }),
           new NodePolyfillPlugin({}),
         ],
+        module: {
+          rules: [
+            { test: /\.py$/, loader: 'raw-loader' }
+          ]
+        }
       }
     }
   }

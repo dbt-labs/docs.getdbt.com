@@ -2,6 +2,7 @@
 title: "LOWER SQL function: Why we love it"
 description: "The LOWER SQL Function allows you to return a string value as an all lowercase string. It’s an effective way to create consistent capitalization for string values across your data."
 slug: lower-sql-love-letter
+canonical_url: https://docs.getdbt.com/sql-reference/lower
 
 authors: [kira_furuichi]
 

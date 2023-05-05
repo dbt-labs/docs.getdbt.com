@@ -102,7 +102,7 @@ To view your profiles.yml file, run:
 open /Users/alice/.dbt
 ```
 
-  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](reference/profiles.yml.md)
+  - Then execute `open /Users/alice/.dbt` (adjusting accordingly), and check that you have a `profiles.yml` file. If you do not have one, set one up using [these docs](/docs/core/connect-data-platform/profiles.yml)
 
 
 </details>
@@ -175,7 +175,7 @@ hello: world # this is not allowed
 
 </File>
 
-- Use the reference section for [`dbt_project.yml` files](reference/dbt_project.yml.md) to correct this issue.
+- Use the reference section for [`dbt_project.yml` files](/docs/core/connect-data-platform/dbt_project.yml) to correct this issue.
 - If you're using a key that is valid according to the documentation, check that you're using the latest version of dbt with `dbt --version`.
 
 
@@ -343,7 +343,7 @@ Database Error in model customers (models/customers.sql)
     - **dbt Cloud:** Open the model (in this case `models/customers.sql` as per the error message)
     - **dbt CLI:** Open the model as above. Also open the compiled SQL (in this case `target/run/jaffle_shop/models/customers.sql` as per the error message) — it can be useful to show these side-by-side in your code editor.
 2. Try to re-execute the SQL to isolate the error:
-    - **dbt Cloud:** Use the `Run SQL` button from the model file
+    - **dbt Cloud:** Use the `Preview` button from the model file
     - **dbt CLI:** Copy and paste the compiled query into a query runner (e.g. the Snowflake UI, or a desktop app like DataGrip / TablePlus) and execute it
 3. Fix the mistake.
 4. Rerun the failed model.
@@ -365,14 +365,14 @@ If you're hitting a strange `Database Error`, it can be a good idea to clean out
 
 ## Common pitfalls
 
-### `run sql` vs. `dbt run`
+### `Preview` vs. `dbt run`
 _(dbt Cloud IDE users only)_
 
 There's two interfaces that look similar:
-- The `run sql` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
+- The `Preview` button executes whatever SQL statement is in the active tab. It is the equivalent of grabbing the compiled `select` statement from the `target/compiled` directory and running it in a query editor to see the results.
 - The `dbt run` command builds relations in your database
 
-Using the `run sql` is useful when developing models and you want to visually inspect the results of a query. However, you'll need to make sure you have executed `dbt run` for any upstream models — otherwise dbt will try to select `from` tables and views that haven't been built.
+Using the `Preview` button is useful when developing models and you want to visually inspect the results of a query. However, you'll need to make sure you have executed `dbt run` for any upstream models — otherwise dbt will try to select `from` tables and views that haven't been built.
 
 
 ### Forgetting to save files before running

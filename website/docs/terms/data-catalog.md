@@ -75,7 +75,7 @@ Do you have sophisticated data models and sources that the business knows how to
 
 Is the culture data-driven? If business users are caught up in their own processes like Google spreadsheets, they may not even utilize a catalog. You don’t want to pay for a tool that is too sophisticated for where the business and data teams currently stand. Don’t rush the process. 
 ### Data catalog tools
-Data teams may choose to use third-party tools with data cataloging capabilities such as [Atlan](https://ask.atlan.com/hc/en-us/articles/4433673207313-How-to-set-up-dbt-Cloud), Alation, [Collibra](https://marketplace.collibra.com/listings/dbt-lineage-to-collibra-integration/), [Metaphor](https://support.metaphor.io/hc/en-us/articles/9302185081627), [Select Star](https://docs.selectstar.com/integrations/dbt/dbt-cloud), [Castor](https://docs.castordoc.com/integrations/dbt), and others. These tools often integrate directly with your data pipelines and dbt workflows and offer zoomed-in data cataloging and lineage capabilities.
+Data teams may choose to use third-party tools with data cataloging capabilities such as [Atlan](https://ask.atlan.com/hc/en-us/articles/4433673207313-How-to-set-up-dbt-Cloud), Alation, [Collibra](https://marketplace.collibra.com/listings/dbt-lineage-to-collibra-integration/), [Metaphor](https://support.metaphor.io/hc/en-us/articles/9302185081627), [Select Star](https://docs.selectstar.com/integrations/dbt/dbt-cloud), [Stemma](https://docs.stemma.ai/docs/stemma/getting-started/what-we-need-from-you/dbt-integration/), [Castor](https://docs.castordoc.com/integrations/dbt), and others. These tools often integrate directly with your data pipelines and dbt workflows and offer zoomed-in data cataloging and lineage capabilities.
 
 ## Conclusion
 

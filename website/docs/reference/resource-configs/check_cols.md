@@ -1,5 +1,6 @@
 ---
 resource_types: [snapshots]
+description: "Read this guide to understand the check_cols configuration in dbt."
 datatype: "[column_name] | all"
 ---
 <File name='snapshots/<filename>.sql'>
@@ -21,7 +22,7 @@ datatype: "[column_name] | all"
 snapshots:
   [<resource-path>](resource-path):
     +strategy: check
-    +unique_key: [column_name] | all
+    +check_cols: [column_name] | all
 
 ```
 

@@ -242,14 +242,17 @@ For incremental models, like SQL models, you will need to filter incoming tables
 import snowflake.snowpark.functions as F
 
 def model(dbt, session):
-    dbt.config(materialized = "incremental")
+    dbt.config(
+        materialized = "incremental",
+        unique_key = "id",
+    )
     df = dbt.ref("upstream_table")
 
     if dbt.is_incremental:
 
         # only new rows compared to max in current table
         max_from_this = f"select max(updated_at) from {dbt.this}"
-        df = df.filter(df.updated_at >= session.sql(max_from_this).collect()[0][0])
+        df = df.filter(df.updated_at > session.sql(max_from_this).collect()[0][0])
 
         # or only rows from the past 3 days
         df = df.filter(df.updated_at >= F.dateadd("day", F.lit(-3), F.current_timestamp()))
@@ -271,14 +274,17 @@ def model(dbt, session):
 import pyspark.sql.functions as F
 
 def model(dbt, session):
-    dbt.config(materialized = "incremental")
+    dbt.config(
+        materialized = "incremental",
+        unique_key = "id",
+    )
     df = dbt.ref("upstream_table")
 
     if dbt.is_incremental:
 
         # only new rows compared to max in current table
         max_from_this = f"select max(updated_at) from {dbt.this}"
-        df = df.filter(df.updated_at >= session.sql(max_from_this).collect()[0][0])
+        df = df.filter(df.updated_at > session.sql(max_from_this).collect()[0][0])
 
         # or only rows from the past 3 days
         df = df.filter(df.updated_at >= F.date_add(F.current_timestamp(), F.lit(-3)))
@@ -578,7 +584,7 @@ In their initial launch, Python models are supported on three of the most popula
 
 **Installing packages:** Snowpark supports several popular packages via Anaconda. The complete list is at https://repo.anaconda.com/pkgs/snowflake/. Packages are installed at the time your model is being run. Different models can have different package dependencies. If you are using third-party packages, Snowflake recommends using a dedicated virtual warehouse for best performance rather than one with many concurrent users.
 
-**About "sprocs":** dbt submits Python models to run as "stored procedures," which some people call "sprocs" for short. By default, dbt will create a named sproc containing your model's compiled Python code, and then "call" it to execute. Snowpark has a Public Preview feature for "temporary" or "anonymous" stored procedures ([docs](https://docs.snowflake.com/en/sql-reference/sql/call-with.html)), which are faster and leave a cleaner query history. You can switch it on for your models by configuring `use_anonymous_sproc: True`. We plan to switch this on for all dbt + Snowpark Python models in a future release.
+**About "sprocs":** dbt submits Python models to run as "stored procedures," which some people call "sprocs" for short. By default, dbt will create a named sproc containing your model's compiled Python code, and then "call" it to execute. Snowpark has a Private Preview feature for "temporary" or "anonymous" stored procedures ([docs](https://docs.snowflake.com/en/LIMITEDACCESS/call-with.html)), which are faster and leave a cleaner query history. If this feature is enabled for your account, you can switch it on for your models by configuring `use_anonymous_sproc: True`. We plan to switch this on for all dbt + Snowpark Python models in a future release.
 
 <File name='dbt_project.yml'>
 

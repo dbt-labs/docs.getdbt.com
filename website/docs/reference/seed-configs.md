@@ -1,11 +1,7 @@
 ---
 title: Seed configurations
+description: "Read this guide to learn about using seed configurations in dbt."
 ---
-
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure seeds in all `.yml` files
-</Changelog>
-
 
 ## Available configurations
 ### Seed-specific configurations
@@ -95,7 +91,7 @@ seeds:
 
 <TabItem value="property-yaml">
 
-<File name='models/properties.yml'>
+<File name='seeds/properties.yml'>
 
 ```yaml
 version: 2

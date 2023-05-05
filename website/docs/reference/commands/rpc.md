@@ -1,5 +1,6 @@
 ---
-title: "rpc"
+title: "About dbt rpc command"
+sidebar_label: "rpc"
 id: "rpc"
 description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---
@@ -238,7 +239,7 @@ All RPC requests accept the following parameters in addition to the parameters l
 ```
 
 Several of the following request types accept these additional parameters:
-- `threads`: The number of [threads](/docs/get-started/connection-profiles#understanding-threads) to use when compiling (optional)
+- `threads`: The number of [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads) to use when compiling (optional)
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
 - `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
@@ -370,7 +371,7 @@ Several of the following request types accept these additional parameters:
  ```json
  {
  	"jsonrpc": "2.0",
- 	"method": "build",
+ 	"method": "ls",
  	"id": "<request id>",
  	"params": {
          "select": "<str> (optional)",

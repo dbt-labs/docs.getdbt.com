@@ -1,6 +1,8 @@
 ---
-title: "env_var"
+title: " About env_var function"
+sidebar_label: "env_var"
 id: "env_var"
+description: "Incorporate environment variables using `en_var` function."
 ---
 
 The `env_var` function can be used to incorporate Environment Variables from the system into your dbt project. This `env_var` function can be used in your `profiles.yml` file, the `dbt_project.yml` file, the `sources.yml` file, your `schema.yml` files, and in model `.sql` files. Essentially `env_var` is available anywhere dbt processes jinja code.
@@ -58,8 +60,7 @@ models:
 
 <Changelog>
 
-  - **v0.21.0:** Introduced `DBT_ENV_SECRET_` and log scrubbing
-  - **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
+  **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
 
 </Changelog>
 
@@ -87,7 +88,9 @@ host: "www.{{ env_var('DBT_ENV_SECRET_HOST_DOMAIN') }}.com/{{ env_var('DBT_ENV_S
 
 </Changelog>
 
-Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in [dbt artifacts](dbt-artifacts#common-metadata), in a `metadata.env` dictionary, with its prefix-stripped name as its key.
+Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in two places, with its prefix-stripped name as the key:
+- [dbt artifacts](dbt-artifacts#common-metadata): `metadata` -> `env`
+- [events and structured logs](events-logging#info-fields): `info` -> `extra`
 
 <VersionBlock firstVersion="1.3">
 

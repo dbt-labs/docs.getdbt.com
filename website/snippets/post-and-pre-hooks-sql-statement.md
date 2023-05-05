@@ -1,0 +1,1 @@
+In these examples,  we use the `|` symbol to separate two different formatting options for SQL statements in pre-hooks and post-hooks. The first option (without brackets) accepts a single SQL statement as a string, while the second (with brackets) accepts multiple SQL statements as an array of strings. Replace `SQL-STATEMENT` with your SQL.

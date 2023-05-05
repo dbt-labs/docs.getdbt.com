@@ -83,22 +83,16 @@ Remember, it’s important to only look for duplicate rows for the values that i
 
 To build our `grain_id` key, we use the pure gold of the *[dbt_utils package](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)*. If you’re unsure of what this package is, stop reading right now and make sure this is installed in your dbt project. It will bring joy to your life and ease to your struggling!
 
-`dbt_utils.star` is the *star* [Editor’s note: 🤦‍♀️] of the show here, which allows you to grab all the columns, *except* the ones you list. If you only have a couple columns, it may be easier just to list them for the `cols` variable instead of using the `star` function.
+`dbt_utils.get_filtered_columns_in_relation` is the star of the show here, which allows you to grab all the columns from a [relation](/reference/dbt-classes#relation) (reference/source), *except* the ones you specify, and put them into a list. If you only have a couple columns, it may be easier just to list them for the `cols` variable instead of using the this function.
 
 ```sql
-{% macro build_key_from_columns(table_name, exclude=[]) %}
+{%- macro build_key_from_columns(dbt_relation, exclude=[]) -%}
 
-{% set cols = {{ dbt_utils.star(from=ref('table_name'), except = exclude) }} %}
- 
-{%- for col in cols -%}
+{% set cols = dbt_utils.get_filtered_columns_in_relation(dbt_relation, exclude)  %}
 
-    {%- do col_list.append("coalesce(cast(" ~ col.column ~ " as " ~ dbt_utils.type_string() ~ "), '')")  -%}
+{{ return(dbt_utils.surrogate_key(cols)) }}
 
-{%- endfor -%}
-
-{{ return(dbt_utils.surrogate_key(col_list)) }}
-
-{% endmacro %}
+{%- endmacro -%} 
 ```
 
 For each row of data, this macro grabs each value from all the columns, except the columns we specify in the exclude list. Then it creates a hash-key using `dbt_utils.surrogate_key` that will reflect the uniqueness of the column values (i.e. if the combination of values is *not* unique, the `surrogate_key` will be the same, which is what we want to capture). The columns in the exclude list are values that we want to ignore when looking for a change in the data table (like `unimportant_value,`a column whose fluctuations we don’t want to indicate a real difference between rows). Call the macro above to create a column in your base or staging layer, and call it `grain_id`, so we can filter out the changes where `count(grain_id) > 1`:
