@@ -3,14 +3,73 @@ title: "Supported data platforms"
 id: "supported-data-platforms"
 ---
 
-dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. You can extend dbt to any data platform using a dedicated _adapter plugin_ using the command line (CLI) or directly in the dbt Cloud user interface (UI). Plugins are built as Python modules that dbt Core discovers if they are installed on your system. All the adapters listed below are open source and free to use, just like dbt Core. To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
+dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. You can extend dbt to any data platform using a dedicated _adapter plugin_ using the command line (CLI) or directly in the dbt Cloud user interface (UI). Plugins are built as Python modules that dbt Core discovers if they are installed on your system. To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
 
+The following adapters are open-source, verified by dbt Labs and available to use in dbt Cloud or dbt Core. Refer to [community adapters](#community-adapters) for community, open source adapters. 
+
+
+<div className="grid--3-col">
+
+<Card
+    title="AlloyDB"
+    body="Connect to and run queries against underlying data in AlloyDB."
+    icon="alloy"/>
+
+<Card
+    title="Redshift"
+    body="Connect to and run queries against underlying data in RedsRedshifthift"
+    icon="redshift"/>
+
+
+<Card
+    title="Postgres"
+    body="Connect to and run queries against underlying data in Postgres"
+    icon="rocket"/>
+
+
+<Card
+    title="BigQuery"
+    body="Connect to and run queries against underlying data in BigQuery"
+    icon="bigquery"/>
+
+<Card
+    title="Databricks"
+    body="Connect to and run queries against underlying data in Databricks"
+    icon="databricks"/>
+
+<Card
+    title="Snowflake"
+    body="Connect to and run queries against underlying data in Snowflake"
+    link="/docs/quickstarts/dbt-cloud/starburst-galaxy"
+    icon="snowflake"/>
+
+<Card
+    title="Starburst"
+    body="Connect to and run queries against underlying data in Starburst"
+    icon="starburst"/>
+
+<Card
+    title="Spark"
+    body="Connect to and run queries against underlying data in Spark"
+    icon="databricks"/>
+
+<Card
+    title="Dremio"
+    body="Connect to and run queries against underlying data in Spark"
+    icon="databricks"/>
+
+<Card
+    title="Azure Synapse"
+    body="Connect to and run queries against underlying data in Spark"
+    icon="databricks"/>
+
+</div>
 
 ## Connect to dbt 
 
 You can connect dbt to a data platform in the following ways:
 
-- **Set up in dbt Cloud** &mdash; A hosted architecture for running dbt Core across your organization, dbt Cloud lets you seamlessly connect with a variety of [verified](#verified-adapters) data platform providers directly in the dbt Cloud UI, allowing you to explore the fastest and most reliable way to deploy dbt. 
+- **Set up in dbt Cloud** &mdash; A hosted architecture for running dbt Core across your organization, dbt Cloud lets you seamlessly [connect](/docs/about-setup) with a variety of [verified](#verified-adapters) data platform providers directly in the dbt Cloud UI, allowing you to explore the fastest and most reliable way to deploy dbt. 
 
     Data platforms supported in dbt Cloud are verified and [maintained](#maintainers) by dbt Labs or partners. This level of support ensures that users can trust certain adapters for use in production. 
 
