@@ -657,7 +657,7 @@ Use the `cluster` submission method with dedicated Dataproc clusters you or your
 
 <Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
 
-The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/reference/warehouse-setups/bigquery-setup#running-python-models-on-dataproc) or configure them on specific Python models:
+The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc) or configure them on specific Python models:
 - `gcs_bucket`: Storage bucket to which dbt will upload your model's compiled PySpark code.
 - `dataproc_region`: GCP region in which you have enabled Dataproc (for example `us-central1`).
 - `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job). Only required if `submission_method: cluster`.

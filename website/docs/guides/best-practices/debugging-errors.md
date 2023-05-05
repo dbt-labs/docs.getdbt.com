@@ -175,7 +175,7 @@ hello: world # this is not allowed
 
 </File>
 
-- Use the reference section for [`dbt_project.yml` files](/docs/core/connect-data-platform/dbt_project.yml) to correct this issue.
+- Use the reference section for [`dbt_project.yml` files](/reference/dbt_project.yml) to correct this issue.
 - If you're using a key that is valid according to the documentation, check that you're using the latest version of dbt with `dbt --version`.
 
 
