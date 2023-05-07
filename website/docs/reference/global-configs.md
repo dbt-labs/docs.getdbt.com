@@ -213,7 +213,7 @@ config:
 
 ### Failing fast
 
-[Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.](https://github.com/dbt-labs/docs.getdbt.com/issues/911)
+Supply the `-x` or `--fail-fast` flag to `dbt run`, `dbt test`, or `dbt build` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, dbt terminates the connections for these models that are still running.
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
