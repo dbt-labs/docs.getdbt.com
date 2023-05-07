@@ -77,7 +77,7 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 
 
 ## Documenting and testing seeds
-You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
+You can document and test seeds in YAML by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
 
 ## FAQs
 <FAQ src="Seeds/load-raw-data-with-seed" />
