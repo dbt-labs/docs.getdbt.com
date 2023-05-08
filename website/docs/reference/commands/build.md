@@ -1,5 +1,6 @@
 ---
-title: "build"
+title: "About dbt build command"
+sidebar_label: "build"
 id: "build"
 ---
 

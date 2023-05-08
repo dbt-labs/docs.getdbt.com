@@ -1,6 +1,7 @@
 ---
-title: "zip"
+title: "About zip context method"
 id: "zip"
+sidebar_label: "zip"
 description: "Use this context method to return an iterator of tuples."
 ---
 
