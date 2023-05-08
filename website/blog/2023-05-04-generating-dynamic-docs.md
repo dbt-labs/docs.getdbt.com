@@ -8,7 +8,7 @@ authors: [mikael_thorup]
 tags: [dbt tutorials]
 hide_table_of_contents: false
 
-date: 2023-05-05
+date: 2023-05-09
 is_featured: true
 ---
 
@@ -25,10 +25,10 @@ This results in a lot of the same columns (e.g. `account_id`) existing in differ
 
 1. Writing/copy-pasting the same documentation over and over again
 1. Halfway through, realizing I could improve the wording to make it easier to understand, and go back and update the `.yml` files I already did
-1. Realizing I made a syntax error in my `.yml` file, so go back and fixing it
+1. Realizing I made a syntax error in my `.yml` file, so I go back and fix it
 1. Realizing the columns are defined differently with different wording being used in other domains
-1. Reconsider my choice of career and pray that a large language model will steal my job
-1. Consider if there’s a better way to be generating documentation used across different models
+1. Reconsidering my choice of career and pray that a large language model will steal my job
+1. Considering if there’s a better way to be generating documentation used across different models
 
 <!--truncate-->
 
@@ -322,7 +322,7 @@ tier_interest_percentage
 tier_threshold_amount
 user_id
 ```
-Now, open your code editor, and replace `.*` with `{% docs column__activity_based_interest__$1 %}\n\n{% enddocs %}\n`, which will result in the following in your markdown file:
+Now, open your code editor, and replace `(.*)` with `{% docs column__activity_based_interest__$1 %}\n\n{% enddocs %}\n`, which will result in the following in your markdown file:
 
 <Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/3.png" title="Replace content in your markdown file" />
 
@@ -339,7 +339,7 @@ We can programmatically identify all columns, and have them point towards the ne
 - `{{ doc('column__activity_based_interest__event_day') }}` → `{{ doc("column_event_day") }}`
 
 ## Check that everything works
-Now we run dbt docs generate. If there are syntax errors, this will be found out at this stage. If successful, we can run `dbt docs serve`, to perform a smoke test, and ensure everything looks right:
+Now we run `dbt docs generate`. If there are syntax errors, this will be found out at this stage. If successful, we can run `dbt docs serve` to perform a smoke test and ensure everything looks right:
 
 <Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/5.jpg" title="dbt Docs UI showing successful documentation leveraging docs blocks" />
 
