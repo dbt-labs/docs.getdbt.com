@@ -16,7 +16,7 @@ models:
       - v: <version_identifier> # required
         defined_in: <file_name> # optional -- default is <model_name>_v<v>
         columns:
-          # specify all columns, or include/exclude columns from the top-level model yaml definition
+          # specify all columns, or include/exclude columns from the top-level model YAML definition
           - [include](/reference/resource-properties/include-exclude): <include_value>
             [exclude](/reference/resource-properties/include-exclude): <exclude_list>
           # specify additional columns

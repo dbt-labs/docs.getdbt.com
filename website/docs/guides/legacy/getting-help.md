@@ -12,7 +12,7 @@ The docs site you're on is highly searchable, make sure to explore for the answe
 We have a handy guide on [debugging errors](/guides/best-practices/debugging-errors) to help out! This guide also helps explain why errors occur, and which docs you might need to search for help.
 
 #### Search for answers using your favorite search engine
-We're committed to making more errors searchable, so it's worth checking if there's a solution already out there! Further, some errors related to installing dbt, the SQL in your models, or getting yaml right, are errors that are not-specific to dbt, so there may be other resources to cehck.
+We're committed to making more errors searchable, so it's worth checking if there's a solution already out there! Further, some errors related to installing dbt, the SQL in your models, or getting YAML right, are errors that are not-specific to dbt, so there may be other resources to cehck.
 
 #### Experiment!
 If the question you have is "What happens when I do `X`", try doing `X` and see what happens! Assuming you have a solid dev environment set up, making mistakes in development won't affect your end users

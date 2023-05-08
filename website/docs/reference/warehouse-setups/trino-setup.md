@@ -88,7 +88,7 @@ The following profile fields are optional to set up. They let you configure your
 | `prepared_statements_enabled` | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                   |
 | `retries`                     | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)     |
 | `timezone`                    | `Europe/Brussels`                | The time zone for the Trino session (default: client-side local timezone)                                   |
-| `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.  |
+| `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a YAML dictionary of (header, value) pairs.  |
 | `http_scheme`                 | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`) |
 
 ## Authentication parameters

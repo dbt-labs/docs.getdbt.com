@@ -6,7 +6,7 @@ default_value: {}
 
 <Changelog>
 
-* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` yaml property for some resource types. It is applied hierarchically and merges on a per-key basis.
+* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` YAML property for some resource types. It is applied hierarchically and merges on a per-key basis.
 
 </Changelog>
 

@@ -23,7 +23,7 @@ When the `contract` configuration is enforced, dbt will ensure that your model's
 
 This is to ensure that the people querying your model downstream—both inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
 
-The `data_type` defined in your yaml file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
+The `data_type` defined in your YAML file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
 
 That said, when dbt is comparing data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. If you need a more-precise assertion, it's always possible to accomplish by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
 
@@ -87,7 +87,7 @@ At present, model contracts are supported for:
 Why require that incremental models also set [`on_schema_change`](/docs/build/incremental-models#what-if-the-columns-of-my-incremental-model-change), and why to `append_new_columns`?
 
 Imagine:
-- You add a new column to both the SQL and the yaml spec
+- You add a new column to both the SQL and the YAML spec
 - You don't set `on_schema_change`, or you set `on_schema_change: 'ignore'`
 - dbt doesn't actually add that new column to the existing table — and the upsert/merge still succeeds, because it does that upsert/merge on the basis of the already-existing "destination" columns only (this is long-established behavior)
 - The result is a delta between the yaml-defined contract, and the actual table in the database - which means the contract is now incorrect!

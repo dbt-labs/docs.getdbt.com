@@ -38,7 +38,7 @@ dbt Core v0.21 has reached the end of critical support. No new patch versions wi
 - [Test selection examples](/reference/node-selection/test-selection-examples) includes more discussion of indirect selection (a change in v0.20), and the optional "greedy" flag/property (new in v0.21), which you can optionally set to include tests that have a mix of selected + unselected parents
 
 ### Elsewhere in Core
-- [Resource configs and properties](/reference/configs-and-properties) docs have been consolidated and reconciled. New `config` property that makes it possible to configure models, seeds, snapshots, and tests in all yaml files.
+- [Resource configs and properties](/reference/configs-and-properties) docs have been consolidated and reconciled. New `config` property that makes it possible to configure models, seeds, snapshots, and tests in all YAML files.
 - [Configuring incremental models](/docs/build/incremental-models): New optional configuration for incremental models, `on_schema_change`.
 - [Environment variables](/reference/dbt-jinja-functions/env_var): Add a log-scrubbing prefix, `DBT_ENV_SECRET_`
 - [Test `where` config](/reference/resource-configs/where) has been reimplemented as a macro (`get_where_subquery`) that you can optionally reimplement, too

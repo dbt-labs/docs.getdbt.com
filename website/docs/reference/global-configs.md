@@ -9,7 +9,7 @@ Global configs enable you to fine-tune _how_ dbt runs projects on your machineâ€
 
 Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model. These configs are "global" because they are available for all dbt commands, and because they can be set for all projects running on the same machine or in the same environment.
 
-Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last yaml configs (usually `profiles.yml`).
+Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last YAML configs (usually `profiles.yml`).
 
 ## Command line flags
 
@@ -86,7 +86,7 @@ dbt run
 
 </File>
 
-## Yaml configurations
+## YAML configurations
 
 For most global configurations, you can set "user profile" configurations in the `config:` block of `profiles.yml`. This style of configuration sets default values for all projects using this profile directoryâ€”usually, all projects running on your local machine.
 
@@ -213,7 +213,7 @@ config:
 
 ### Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
+Supply the `-x` or `--fail-fast` flag to `dbt run`, `dbt test`, or `dbt build` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, dbt terminates the connections for these models that are still running.
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 

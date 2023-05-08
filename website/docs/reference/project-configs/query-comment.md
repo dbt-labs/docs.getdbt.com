@@ -209,7 +209,7 @@ The `query-comment` config can reference macros in your dbt project. Simply crea
 
 </File>
 
-Then call the macro in your `dbt_project.yml` file. Make sure you quote the macro to avoid the yaml parser from trying to interpret the `{` as the start of a dictionary.
+Then call the macro in your `dbt_project.yml` file. Make sure you quote the macro to avoid the YAML parser from trying to interpret the `{` as the start of a dictionary.
 
 <File name='dbt_project.yml'>
 

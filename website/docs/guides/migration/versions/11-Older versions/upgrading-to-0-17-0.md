@@ -131,7 +131,7 @@ This configuration will work in dbt v0.17.0 when `config-version: 2` is used, bu
 
 Support for version 1 will be removed in a future release of dbt.
 
-### NativeEnvironment rendering for yaml fields
+### NativeEnvironment rendering for YAML fields
 
 In dbt v0.17.0, dbt enabled use of Jinja's Native Environment to render values in
 YML files. This Native Environment coerces string values to their

@@ -35,7 +35,7 @@ Grants have two key components:
 
 ## Configuring grants
 
-You can configure `grants` in `dbt_project.yml` to apply grants to many resources at once—all models in your project, a package, or a subfolder—and you can also configure `grants` one-by-one for specific resources, in yaml `config:` blocks or right within their `.sql` files.
+You can configure `grants` in `dbt_project.yml` to apply grants to many resources at once—all models in your project, a package, or a subfolder—and you can also configure `grants` one-by-one for specific resources, in YAML `config:` blocks or right within their `.sql` files.
 
 <Tabs
   defaultValue="models"
