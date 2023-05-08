@@ -6,7 +6,7 @@ description: "Use this filter to convert Jinja-compiled output back to text."
 ---
 
 The `as_text` Jinja filter will coerce Jinja-compiled output back to text. It
-can be used in yaml rendering contexts where values _must_ be provided as
+can be used in YAML rendering contexts where values _must_ be provided as
 strings, rather than as the datatype that they look like.
 
 :::info Heads up

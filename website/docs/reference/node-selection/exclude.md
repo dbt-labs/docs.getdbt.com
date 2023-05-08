@@ -1,5 +1,6 @@
 ---
-title: "Exclude"
+title: "Exclude models from your run"
+sidebar_label: "Exclude"
 ---
 
 ### Excluding models
