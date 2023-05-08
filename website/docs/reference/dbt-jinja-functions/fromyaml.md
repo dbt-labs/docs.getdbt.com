@@ -2,13 +2,13 @@
 title: "About fromyaml context method"
 sidebar_label: "fromyaml"
 id: "fromyaml"
-description: "Deserialize a yaml string into python with `fromyaml` context method."
+description: "Deserialize a YAML string into python with `fromyaml` context method."
 ---
 
-The `fromyaml` context method can be used to deserialize a yaml string into a Python object primitive, eg. a `dict` or `list`.
+The `fromyaml` context method can be used to deserialize a YAML string into a Python object primitive, eg. a `dict` or `list`.
 
 __Args__:
- * `string`: The yaml string to deserialize (required)
+ * `string`: The YAML string to deserialize (required)
  * `default`: A default value to return if the `string` argument cannot be deserialized (optional)
 
 ### Usage:

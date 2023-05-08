@@ -365,3 +365,7 @@ models:
 ```
 </File>
 
+## Model contracts
+
+The `dbt-trino` adapter supports [model contracts](/docs/collaborate/govern/model-contracts). Currently, only [constraints](/reference/resource-properties/constraints) with `type` as `not_null` are supported.
+Before using `not_null` constraints in your model, make sure the underlying connector supports `not null`, to avoid running into errors.
