@@ -14,6 +14,6 @@ PrivateLink enables a private connection from any dbt Cloud Multi-Tenant environ
 
 dbt Cloud supports the following data platforms for use with the PrivateLink feature. Instructions for enabling PrivateLink for the various data platform providers are unique. The following guides will walk you through the necessary steps, including working with [dbt Support](https://docs.getdbt.com/guides/legacy/getting-help#dbt-cloud-support) to complete the connection in the dbt private network and setting up the endpoint in dbt Cloud.
 
-- [Redshift](/docs/cloud/privatelink/redshift-privatelink)
-- [Snowflake](/docs/cloud/privatelink/snowflake-privatelink)
-- [Databricks](/docs/cloud/privatelink/databricks-privatelink)
+- [Redshift](/docs/cloud/secure/redshift-privatelink)
+- [Snowflake](/docs/cloud/secure/snowflake-privatelink)
+- [Databricks](/docs/cloud/secure/databricks-privatelink)
