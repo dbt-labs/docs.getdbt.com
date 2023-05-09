@@ -21,3 +21,9 @@
     grid-gap: 2rem;
     padding: 5rem 1rem;
 }
+
+@media (max-width: 996px) {
+    .quickstartCardContainer {
+        grid-template-columns: 1fr;
+    }
+}
