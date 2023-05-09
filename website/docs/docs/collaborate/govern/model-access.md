@@ -51,7 +51,7 @@ models:
 
 </File>
 
-Each model can only belong to one `group`, and groups cannot be nested. If you set a different `group` in that model's yaml or in-file config, it will override the `group` applied at the project level.
+Each model can only belong to one `group`, and groups cannot be nested. If you set a different `group` in that model's YAML or in-file config, it will override the `group` applied at the project level.
 
 ## Access modifiers
 

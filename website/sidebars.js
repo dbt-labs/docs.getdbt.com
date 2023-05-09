@@ -87,6 +87,7 @@ const sidebarSettings = {
                   label: "Single sign-on",
                   items: [
                     "docs/cloud/manage-access/sso-overview",
+                    "docs/cloud/manage-access/auth0-migration",
                     "docs/cloud/manage-access/set-up-sso-saml-2.0",
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
@@ -134,12 +135,13 @@ const sidebarSettings = {
             }, // dbt Cloud IDE directory
             {
               type: "category",
-              label: "Multi-tenant PrivateLink",
+              label: "Secure your tenant",
               items: [
-                "docs/cloud/privatelink/about-privatelink",
-                "docs/cloud/privatelink/snowflake-privatelink",
-                "docs/cloud/privatelink/redshift-privatelink",
-                "docs/cloud/privatelink/databricks-privatelink",
+                "docs/cloud/secure/about-privatelink",
+                "docs/cloud/secure/snowflake-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
           ],

@@ -1,4 +1,9 @@
-
+# PrivateLink to Secure redirects
+/docs/cloud/privatelink/about-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/snowflake-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/redshift-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/databricks-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/ip-restrictions /docs/cloud/secure/about-privatelink 301
 
 /docs/deploy/dbt-cloud-job#create-and-schedule-jobs  /docs/deploy/dbt-cloud-job#create-and-schedule-jobs 301
 /docs/cloud/dbt-cloud-tips /docs/cloud/dbt-cloud-ide/dbt-cloud-tips 301
