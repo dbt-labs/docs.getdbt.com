@@ -1,8 +1,6 @@
 ---
 title: "Quickstart for dbt Cloud and Redshift"
-description: "Quickstart for dbt Cloud and Redshift."
 id: "redshift"
-sidebar_label: "Redshift quickstart"
 hide_table_of_contents: true
 ---
 ## Introduction

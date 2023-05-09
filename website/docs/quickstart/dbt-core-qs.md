@@ -1,8 +1,6 @@
 ---
 title: "Quickstart for dbt Core"
 id: quickstart
-description: "Connecting your warehouse to dbt Core using the CLI."
-sidebar_label: "dbt Core quickstart"
 hide_table_of_contents: true
 ---
 

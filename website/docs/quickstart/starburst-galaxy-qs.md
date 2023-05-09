@@ -1,8 +1,6 @@
 ---
 title: "Quickstart for dbt Cloud and Starburst Galaxy"
-description: "Quickstart for dbt Cloud and Starburst Galaxy."
 id: "starburst-galaxy"
-sidebar_label: "Starburst Galaxy quickstart"
 hide_table_of_contents: true
 ---
 ## Introduction

@@ -1,8 +1,6 @@
 ---
 title: "Quickstart for dbt Cloud and Snowflake"
-description: "Quickstart for dbt Cloud and Snowflake."
 id: "snowflake"
-sidebar_label: "Snowflake quickstart"
 hide_table_of_contents: true
 ---
 ## Introduction

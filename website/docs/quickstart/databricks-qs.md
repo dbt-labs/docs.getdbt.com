@@ -1,8 +1,6 @@
 ---
 title: "Quickstart for dbt Cloud and Databricks"
-description: "Quickstart for dbt Cloud and Databricks."
 id: "databricks"
-sidebar_label: "Databricks quickstart"
 hide_table_of_contents: true
 ---
 ## Introduction

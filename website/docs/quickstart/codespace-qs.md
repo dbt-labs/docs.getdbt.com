@@ -1,8 +1,6 @@
 ---
 title: "Quickstart for dbt Core using GitHub Codespaces"
 id: codespace
-description: "Quickly get set up to start running dbt commands in a codespace environment."
-sidebar_label: "GitHub Codespace quickstart"
 hide_table_of_contents: true
 ---
 
