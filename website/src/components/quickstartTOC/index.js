@@ -118,7 +118,7 @@ function QuickstartTOC() {
     // Set local storage to the active step
     localStorage.setItem(activeQuickstart, activeStep);
 
-    // if the screen is less than 996px, make sure the active step in the toc is visibile in the overflow-y tocList
+    // If on mobile, auto scroll to the active step in the TOC when activeStep updates
     const tocList = document.querySelector(`.${style.tocList}`);
     const activeItems = document.querySelectorAll(`.${style.active}`);
     
