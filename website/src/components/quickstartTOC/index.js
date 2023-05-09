@@ -8,8 +8,7 @@ import { useLocation } from "@docusaurus/router";
 
 function QuickstartTOC() {
   const location = useLocation().pathname;
-  const activeStepLocal =
-    typeof localStorage !== "undefined" ? localStorage.getItem(location) : null;
+  const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(location) : null;
 
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
@@ -96,6 +95,9 @@ function QuickstartTOC() {
           nextButton.classList.add(style.hidden);
         }
       });
+
+      const quickstartTitle = document.querySelector("header h1");
+      quickstartTitle.classList.add(style.quickstartTitle);
     }
   }, [mounted]);
 
