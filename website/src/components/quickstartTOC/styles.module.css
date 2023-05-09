@@ -13,7 +13,6 @@
 .tocList li {
     padding: 1rem;
     display: block;
-    background: #FFFFFF;
     border: 1px solid #EFF2F3;
     box-shadow: 0px 11px 24px rgba(138, 138, 138, 0.1), 0px 0px 0px rgba(138, 138, 138, 0.1);
     border-radius: 10px;
@@ -21,7 +20,7 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
     cursor: pointer;
-    color: var(--docsearch-text-color);
+    color: var(--color-primary-blue);
     text-decoration: none;
 }
 
@@ -37,15 +36,28 @@
     margin-bottom: auto;
 }
 
+.tocList .active span {
+    background: var(--color-light-teal);
+    color: var(--color-white);
+}
+
+html[data-theme="dark"] .tocList li {
+    color: var(--color-white);
+}
+
+html[data-theme="dark"] .tocList li span {
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+html[data-theme="dark"] .tocList .active span {
+    border-color: var(--color-light-teal);
+}
+
 .tocItem {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.tocList .active span {
-    background: var(--color-light-teal);
-    color: var(--color-white);
 }
 
 .buttonContainer {
