@@ -1,3 +1,16 @@
+.quickstartHero h1 {
+    font-size: clamp(var(--ifm-h1-font-size) * 0.9375, 1vw, var(--ifm-h1-font-size));
+    --ifm-h1-font-size: 3rem;
+
+}
+
+@media (max-width: 576px) {
+    .quickstartHero h1 {
+        --ifm-h1-font-size: 2rem;
+    }
+}
+
+
 .quickstartHero p {
     font-size: 1.25rem;
     margin: 0 auto;
