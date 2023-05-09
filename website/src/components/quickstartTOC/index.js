@@ -117,6 +117,27 @@ function QuickstartTOC() {
 
     // Set local storage to the active step
     localStorage.setItem(activeQuickstart, activeStep);
+
+    // if the screen is less than 996px, make sure the active step in the toc is visibile in the overflow-y tocList
+    const tocList = document.querySelector(`.${style.tocList}`);
+    const activeItems = document.querySelectorAll(`.${style.active}`);
+    
+    if (window.innerWidth < 996) {
+      const activeItem = activeItems[activeItems.length - 1];
+      
+      if (activeItem) {
+        const itemTop = activeItem.offsetTop;
+        const itemHeight = activeItem.offsetHeight;
+        const containerTop = tocList.scrollTop;
+        const containerHeight = tocList.offsetHeight;
+    
+        if (itemTop < containerTop || itemTop + itemHeight > containerTop + containerHeight) {
+          tocList.scrollTop = itemTop;
+        }
+      }
+    }
+    
+    console.log("activeStep", tocList);
   }, [activeStep]);
 
   // Handle updating the active step

@@ -82,3 +82,13 @@
 .hidden {
     display: none;
 }
+
+@media (max-width: 996px) {
+    .tocList {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 2rem;
+        height: 160px;
+        overflow-y: auto;
+    }
+}
