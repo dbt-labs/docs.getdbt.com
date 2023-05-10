@@ -8,7 +8,7 @@ id: db-connection-dbt-compile
 The [`dbt compile`](reference/commands/compile) command transforms raw SQL into dbt models and tests into compiled SQL. `compile` is similar to `run` except `compile` doesn't materialize the model's compiled SQL into an existing table. So, up until the point of materialization, `compile` and `run` are similar because they both require a data platform connection, run queries, and have an [`execute` variable](/reference/dbt-jinja-functions/execute) set to `True`. A few things to note:
 
 - It isn't necessary to execute `dbt compile` before `dbt run`
-- In dbt, `compile` doesn't mean `parse` &mdash;`parse` validates your written `YAML`, configured tags, and so on.
+- In dbt, `compile` doesn't mean `parse`. This is because `parse` validates your written `YAML`, configured tags, and so on.
 
 To generate the compiled SQL for many models, dbt needs to run introspective queries, (which is when dbt needs to run SQL in order to pull data back and do something with it) against the data platform.
 
