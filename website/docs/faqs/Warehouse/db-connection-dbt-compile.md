@@ -16,7 +16,11 @@ To generate the compiled SQL for many models, dbt needs to run introspective que
 
  These introspective queries include populating the [relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache), resolving [macros](/docs/build/jinja-macros#macros), and checking if models are [incremental](/docs/build/incremental-models). Without a database connection, dbt can't perform these introspective queries and won't be able to generate the compiled SQL needed for the next steps in the dbt workflow.
 
-You can [`parse`](/reference/commands/parse) a project and use [`list`](/reference/commands/list) resources in the project, without an internet or data platform connection. You do need a connection profile (`profiles.yml` if using the CLI) because there are configurations in the project that depend on the contents of that profile for configuration, such as using [`{{target}}`](/reference/dbt-jinja-functions/target) for conditional configs. Starting in v1.5, `dbt parse` will also (over)write `manifest.json` by default. 
+You can [`parse`](/reference/commands/parse) a project and use the [`list`](/reference/commands/list) resources in the project, without an internet or data platform connection. 
+
+However, to configure a project you do need a [connection profile](/docs/core/connection-profiles) (`profiles.yml` if using the CLI). You need this file because the project's configuration depends on its contents. For example, you may need to use [`{{target}}`](/reference/dbt-jinja-functions/target) for conditional configs or know what platform you're running against so that you can choose the right flavor of SQL. 
+
+Parsing a project is also sufficient to produce a [manifest](/reference/artifacts/manifest-json). 
 
 However, something to note is that the written-out manifest won't include compiled SQL.
 
