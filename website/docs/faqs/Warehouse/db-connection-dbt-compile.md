@@ -20,7 +20,7 @@ You can [`parse`](/reference/commands/parse) a project and use the [`list`](/ref
 
 However, to configure a project you do need a [connection profile](/docs/core/connection-profiles) (`profiles.yml` if using the CLI). You need this file because the project's configuration depends on its contents. For example, you may need to use [`{{target}}`](/reference/dbt-jinja-functions/target) for conditional configs or know what platform you're running against so that you can choose the right flavor of SQL. 
 
-Parsing a project is also sufficient to produce a [manifest](/reference/artifacts/manifest-json). 
+Parsing a project is also sufficient to produce a [manifest](/reference/artifacts/manifest-json).  However, keep in mind that the written-out manifest won't include compiled SQL.
 
 However, something to note is that the written-out manifest won't include compiled SQL.
 
