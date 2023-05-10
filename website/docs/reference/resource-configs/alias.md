@@ -1,5 +1,6 @@
 ---
 resource_types: [models, seeds, snapshots, tests]
+description: "Read this guide to understand the alias configuration in dbt."
 datatype: string
 ---
 

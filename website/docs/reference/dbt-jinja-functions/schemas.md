@@ -1,5 +1,6 @@
 ---
-title: "schemas"
+title: "About schemas variable"
+sidebar_label: "schemas"
 id: "schemas"
 description: "A list of schemas where dbt built objects during the current run."
 ---

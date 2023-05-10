@@ -1,5 +1,6 @@
 ---
 datatype: version-range | [version-range]
+description: "Read this guide to understand the require-dbt-version configuration in dbt."
 default_value: None
 ---
 <File name='dbt_project.yml'>
@@ -26,7 +27,7 @@ If this configuration is not specified, no version check will occur.
 
 :::info YAML Quoting
 
-This configuration needs to be interpolated by the yaml parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
+This configuration needs to be interpolated by the YAML parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
 ```yml
 # ✅ These will work
 require-dbt-version: ">=1.0.0" # Double quotes are OK

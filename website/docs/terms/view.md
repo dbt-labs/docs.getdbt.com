@@ -1,6 +1,7 @@
 ---
 id: view
 title: View
+description: Read this guide to understand how views work in dbt.
 displayText: view  
 hoverSnippet: A view (as opposed to a table) is a defined passthrough SQL query that can be run against a database (or data warehouse).
 ---
