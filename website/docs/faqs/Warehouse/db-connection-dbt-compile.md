@@ -18,4 +18,4 @@ You can [`parse`](/reference/commands/parse) a project and use [`list`](/referen
 
 However, something to note is that the written-out manifest won't include compiled SQL.
 
-
+So to summarize, `dbt compile` needs a data platform connection to gather the info it needs (including from introspective queries) to prepare the SQL for every model in your project.
