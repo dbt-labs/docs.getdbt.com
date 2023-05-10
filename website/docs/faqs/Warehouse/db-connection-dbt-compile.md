@@ -22,6 +22,5 @@ However, to configure a project you do need a [connection profile](/docs/core/co
 
 Parsing a project is also sufficient to produce a [manifest](/reference/artifacts/manifest-json).  However, keep in mind that the written-out manifest won't include compiled SQL.
 
-However, something to note is that the written-out manifest won't include compiled SQL.
 
 So to summarize, `dbt compile` needs a data platform connection to gather the info it needs (including from introspective queries) to prepare the SQL for every model in your project.
