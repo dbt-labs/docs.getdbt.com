@@ -14,7 +14,7 @@ The [`dbt compile`](reference/commands/compile) command generates executable SWL
 
 To generate the compiled SQL for many models, dbt needs to run introspective queries, (which is when dbt needs to run SQL in order to pull data back and do something with it) against the data platform.
 
- These introspective queries include populating the [relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache), resolving [macros](/docs/build/jinja-macros#macros), and checking if models are [incremental](/docs/build/incremental-models). Without a database connection, dbt can't perform these introspective queries and won't be able to generate the compiled SQL needed for the next steps in the dbt workflow.
+ These introspective queries include populating the [relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache), resolving [macros](/docs/build/jinja-macros#macros), and checking if models are [incremental](/docs/build/incremental-models). Without a data platform connection, dbt can't perform these introspective queries and won't be able to generate the compiled SQL needed for the next steps in the dbt workflow.
 
 You can [`parse`](/reference/commands/parse) a project and use the [`list`](/reference/commands/list) resources in the project, without an internet or data platform connection. 
 
