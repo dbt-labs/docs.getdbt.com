@@ -42,5 +42,5 @@ The command accesses the data platform to cache related metadata, and to run int
 - `--no-introspect` to disable instrospective queries. dbt will raise an error if a model's definition requires running one.
 
 
-
+### FAQs
 <FAQ src="Warehouse/db-connection-dbt-compile" />
