@@ -5,6 +5,8 @@ sidebar_label: "Why does dbt compile need a data platform connection?"
 id: db-connection-dbt-compile
 ---
 
+`dbt compile` needs a data platform connection to gather the info it needs (including from introspective queries) to prepare the SQL for every model in your project.
+
 The [`dbt compile` command](/reference/commands/compile) generates executable SQL from source, `model`, `test`, and `analysis` files. 
 
 `dbt compile` is similar to `dbt run` except that it doesn't materialize the model's compiled SQL into an existing table. So, up until the point of materialization, `dbt compile` and `dbt run` are similar because they both require a data platform connection, run queries, and have an [`execute` variable](/reference/dbt-jinja-functions/execute) set to `True`. There are a few things to note:
