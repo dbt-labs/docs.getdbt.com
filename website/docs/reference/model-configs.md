@@ -1,5 +1,6 @@
 ---
 title: Model configurations
+description: "Read this guide to understand model configurations in dbt."
 ---
 
 ## Related documentation
@@ -223,7 +224,7 @@ models:
 
 ### Apply configurations to one model only
 
-Some types of configurations are specific to a particular model. In these cases, placing configurations in the `dbt_project.yml` file can be unwieldy. Instead, you can specify these configurations at the top of a model `.sql` file, or in its individual yaml properties.
+Some types of configurations are specific to a particular model. In these cases, placing configurations in the `dbt_project.yml` file can be unwieldy. Instead, you can specify these configurations at the top of a model `.sql` file, or in its individual YAML properties.
 
 <File name='models/events/base/base_events.sql'>
 

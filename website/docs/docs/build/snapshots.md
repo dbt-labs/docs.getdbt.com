@@ -1,5 +1,7 @@
 ---
-title: "Snapshots"
+title: "Add snapshots to your DAG"
+sidebar_label: "Snapshots"
+description: "Read this tutorial to learn how to use snapshots when building in dbt."
 id: "snapshots"
 ---
 

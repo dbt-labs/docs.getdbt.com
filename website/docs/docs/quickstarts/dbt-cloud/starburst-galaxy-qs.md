@@ -17,6 +17,12 @@ In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Gala
 - Schedule a job to run.
 - Connect to multiple data sources in addition to your S3 bucket. 
 
+:::tip Videos for you
+You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
+
+You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
+:::
+
 ## Prerequisites 
 - You have a [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment in [dbt Cloud](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
 - You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
@@ -70,7 +76,6 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     - **Default directory name** &mdash; Enter the folder name of where the Jaffle Shop data lives in the S3 bucket. This is the same folder name you used in [Load data to an Amazon S3 bucket](#load-data-to-s3).
     - **Allow creating external tables** &mdash; Enable this option.
     - **Allow writing to external tables** &mdash; Enable this option.
-6. In the **Default table format** section, choose **Hive**. 
 
     The **Amazon S3** page should look similar to this, except for the **Authentication to S3** section which is dependant on your setup:
 
@@ -396,7 +401,6 @@ This quickstart focuses on using dbt Cloud to run models against a data lake (S3
 If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.
 
 ## Related content
-- Learn more with the [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) course for free
 - [dbt Courses](https://courses.getdbt.com/collections)
 - [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
 - [Job notifications](/docs/deploy/job-notifications)

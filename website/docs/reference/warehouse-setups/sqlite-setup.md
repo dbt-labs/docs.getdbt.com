@@ -1,5 +1,6 @@
 ---
 title: "SQLite setup"
+description: "Read this guide to learn about the SQLite warehouse setup in dbt."
 id: "sqlite-setup"
 meta:
   maintained_by: Community

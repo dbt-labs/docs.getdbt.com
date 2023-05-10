@@ -1,5 +1,6 @@
 ---
 title: Snapshot configurations
+description: "Read this guide to learn about using snapshot configurations in dbt."
 ---
 ## Related documentation
 * [Snapshots](snapshots)
@@ -47,7 +48,7 @@ snapshots:
 
 <File name='snapshots/properties.yml'>
 
-**Note:** Required snapshot properties may not work when defined in `config` yaml blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+**Note:** Required snapshot properties may not work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
 
 ```yaml
 version: 2

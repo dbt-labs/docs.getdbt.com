@@ -1,5 +1,6 @@
 ---
-title: "env_var"
+title: " About env_var function"
+sidebar_label: "env_var"
 id: "env_var"
 description: "Incorporate environment variables using `en_var` function."
 ---
@@ -35,7 +36,7 @@ If passing an environment variable for a property that uses an integer type (for
 
 :::caution Quoting, Curly Brackets, & You
 
-Be sure to quote the entire jinja string (as shown above), or else the yaml parser will be confused by the Jinja curly brackets.
+Be sure to quote the entire jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 
