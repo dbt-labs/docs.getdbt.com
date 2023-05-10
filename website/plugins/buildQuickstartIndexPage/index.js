@@ -6,10 +6,9 @@ module.exports = function buildQuickstartIndexPage() {
     name: 'docusaurus-build-quickstart-index-page-plugin',
     async loadContent() {
       // Quickstart files directory
-      // TODO: Combine dbt-cloud and dbt-core quickstarts
       const quickstartDirectory = 'docs/quickstart'
 
-      // Get all Quickstart Spotlight files and content
+      // Get all Quickstart files and content
       const quickstartFiles = fs.readdirSync(quickstartDirectory)
 
       const quickstartData = quickstartFiles.reduce((arr, quickstartFile) => {
