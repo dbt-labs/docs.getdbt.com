@@ -1,5 +1,6 @@
 ---
 resource_types: all
+description: "Enabled - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 default_value: true
 ---

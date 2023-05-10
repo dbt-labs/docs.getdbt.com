@@ -1,13 +1,7 @@
 ---
-title: "Upgrading to v1.5 (prerelease!)"
+title: "Upgrading to v1.5 (latest)"
 description: New features and changes in dbt Core v1.5
 ---
-
-:::info
-v1.5 is currently available as a **release candidate**. Try it out, and let us know if you encounter any bugs!
-
-Planned release date: April 27, 2023
-:::
 
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
@@ -48,6 +42,8 @@ The following env vars have been renamed, for consistency with the convention fo
 
 As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
+Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
+
 Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 ### For consumers of dbt artifacts (metadata)
@@ -85,7 +81,7 @@ And (!): a first-ever entry point for [programmatic invocations](programmatic-in
 Run `dbt --help` to see new & improved help documentation :)
 
 ### Quick hits
-- The [`version: 2` top-level key](project-configs/version) is now **optional** in all yaml files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
+- The [`version: 2` top-level key](project-configs/version) is now **optional** in all YAML files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
 - [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
 - Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](dbt_project.yml)
 - More granular [configurations](/reference/global-configs) for logging (to set log format, log levels, and colorization) and cache population

@@ -1,5 +1,6 @@
 ---
 title: "Apache Hive setup"
+description: "Read this guide to learn about the Apache Hive warehouse setup in dbt."
 id: "hive-setup"
 meta:
   maintained_by: Cloudera

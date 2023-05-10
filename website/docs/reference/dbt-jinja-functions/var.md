@@ -1,5 +1,6 @@
 ---
-title: "var"
+title: "About var function"
+sidebar_label: "var"
 id: "var"
 description: "Pass variables from `dbt_project.yml` file into models."
 ---

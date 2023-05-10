@@ -1,5 +1,6 @@
 ---
-title: "graph"
+title: "About graph context variable"
+sidebar_label: "graph"
 id: "graph"
 description: "The `graph` context variable contains info about nodes in your project."
 ---

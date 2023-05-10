@@ -1,5 +1,6 @@
 ---
 title: "BigQuery setup"
+description: "Read this guide to learn about the BigQuery warehouse setup in dbt."
 meta:
   maintained_by: dbt Labs
   authors: 'core dbt maintainers'
@@ -13,6 +14,9 @@ meta:
   platform_name: 'Big Query'
   config_page: 'bigquery-configs'
 ---
+
+
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

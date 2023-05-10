@@ -1,5 +1,6 @@
 ---
-title: Source properties
+title: "About source properties"
+description: "Learn how to use source properties in dbt."
 ---
 
 ## Related documentation

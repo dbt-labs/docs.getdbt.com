@@ -1,5 +1,6 @@
 ---
 title: "Starburst/Trino setup"
+description: "Read this guide to learn about the Starburst/Trino warehouse setup in dbt."
 id: "trino-setup"
 meta:
   maintained_by: Starburst Data, Inc.
@@ -7,7 +8,7 @@ meta:
   github_repo: 'starburstdata/dbt-trino'
   pypi_package: 'dbt-trino'
   min_core_version: 'v0.20.0'
-  cloud_support: 'Supported (Beta)'
+  cloud_support: 'Supported'
   min_supported_version: 'n/a'
   slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
@@ -15,11 +16,7 @@ meta:
   config_page: 'trino-configs'
 ---
 
-:::info Vendor-supported plugin
-
-Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
-
-:::
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -33,6 +30,12 @@ Certain core functionality may vary. If you would like to report a bug, request 
     <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
     <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
     </ul>
+
+:::info Vendor-supported plugin
+
+Certain core functionality may vary. If you would like to report a bug, request a feature, or contribute, you can check out the linked repository and open an issue.
+
+:::
 
 <h2> Installing {frontMatter.meta.pypi_package} </h2>
 
@@ -85,7 +88,7 @@ The following profile fields are optional to set up. They let you configure your
 | `prepared_statements_enabled` | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                   |
 | `retries`                     | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)     |
 | `timezone`                    | `Europe/Brussels`                | The time zone for the Trino session (default: client-side local timezone)                                   |
-| `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a yaml dictionary of (header, value) pairs.  |
+| `http_headers`                | `X-Trino-Client-Info: dbt-trino` | HTTP Headers to send alongside requests to Trino, specified as a YAML dictionary of (header, value) pairs.  |
 | `http_scheme`                 | `https` or `http`                | The HTTP scheme to use for requests to Trino   (default: `http`, or `https` if `kerberos`, `ldap` or `jwt`) |
 
 ## Authentication parameters

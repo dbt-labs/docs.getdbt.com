@@ -2,7 +2,6 @@ exports.versions = [
   {
     version: "1.5",
     EOLDate: "2024-04-27",
-    isPrerelease: true,
   },
   {
     version: "1.4",
@@ -33,6 +32,10 @@ exports.versionedPages = [
   },
   {
     "page": "docs/collaborate/govern/model-contracts",
+    "firstVersion": "1.5",
+  },
+    {
+    "page": "reference/commands/show",
     "firstVersion": "1.5",
   },
   {
