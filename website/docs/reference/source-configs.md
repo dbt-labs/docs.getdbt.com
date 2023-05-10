@@ -1,6 +1,6 @@
 ---
-title: Source configurations
-description: "Read this guide to learn about using source configurations in dbt."
+title: "About source configurations"
+description: "Learn how to use source configurations in dbt."
 id: source-configs
 ---
 
@@ -75,7 +75,7 @@ Sources can be configured via a `config:` block within their `.yml` definitions,
 
 Sources can be configured from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
 
-Unlike other resource types, sources do not yet support a `config` property. It is not possible to (re)define source configs hierarchically across multiple yaml files.
+Unlike other resource types, sources do not yet support a `config` property. It is not possible to (re)define source configs hierarchically across multiple YAML files.
 
 </VersionBlock>
 

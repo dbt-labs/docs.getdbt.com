@@ -1,5 +1,6 @@
 ---
-title: "project_name"
+title: "About project_name context variable"
+sidebar_label: "project_name"
 id: "project_name"
 description: "Read this guide to understand the project_name Jinja function in dbt."
 ---

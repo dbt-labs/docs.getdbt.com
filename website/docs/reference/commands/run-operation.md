@@ -1,6 +1,7 @@
 ---
-title: "run-operation"
-description: "Read this guide on how dbt's run-operation command can be used to invoke a macro. "
+title: "About dbt run-operation command"
+sidebar_label: "run-operation"
+description: "Read this guide on how dbt's run-operation command can be used to invoke a macro."
 id: "run-operation"
 ---
 

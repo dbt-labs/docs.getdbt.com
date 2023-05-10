@@ -1,5 +1,6 @@
 ---
-title: "Seeds"
+title: "Add Seeds to your DAG"
+sidebar_label: "Seeds"
 description: "Read this tutorial to learn how to use seeds when building in dbt."
 id: "seeds"
 ---
@@ -76,7 +77,7 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 
 
 ## Documenting and testing seeds
-You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
+You can document and test seeds in YAML by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
 
 ## FAQs
 <FAQ src="Seeds/load-raw-data-with-seed" />

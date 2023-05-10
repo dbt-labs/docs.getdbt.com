@@ -1,5 +1,6 @@
 ---
-title: "run_query"
+title: "About run_query macro"
+sidebar_label: "run_query"
 id: "run_query"
 description: "Use `run_query` macro to run queries and fetch results."
 ---

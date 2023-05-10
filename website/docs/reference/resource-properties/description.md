@@ -163,7 +163,7 @@ Descriptions can include markdown, as well as the [`doc` jinja function](doc).
 
 :::caution You may need to quote your YAML
 
-Be mindful of YAML semantics when providing a description. If your description contains special yaml characters like curly brackets, colons, or square brackets, you may need to quote your description. An example of a quoted description is shown [below](#use-some-markdown-in-a-description).
+Be mindful of YAML semantics when providing a description. If your description contains special YAML characters like curly brackets, colons, or square brackets, you may need to quote your description. An example of a quoted description is shown [below](#use-some-markdown-in-a-description).
 
 :::
 
