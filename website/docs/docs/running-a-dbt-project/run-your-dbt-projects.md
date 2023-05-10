@@ -16,11 +16,10 @@ When running your project from dbt Core or dbt Cloud, the commands you commonly 
 
 For information on all dbt commands and their arguments (flags), see the [dbt command reference](/reference/dbt-commands). If you want to list all dbt commands from the command line, run `dbt --help`. To list a dbt command’s specific arguments, run `dbt COMMAND_NAME --help` .
 
-<FAQ src="Warehouse/db-connection-dbt-compile" />
-
 ## Related docs
 
 - [How we set up our computers for working on dbt projects](https://discourse.getdbt.com/t/how-we-set-up-our-computers-for-working-on-dbt-projects/243)
 - [Model selection syntax](/reference/node-selection/syntax)
 - [Cloud IDE features](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#ide-features)
 - [Does dbt offer extract and load functionality?](/faqs/Project/transformation-tool)
+- [Why does dbt compile need a data platform connection](/faqs/Warehouse/db-connection-dbt-compile)
