@@ -59,7 +59,7 @@ function QuickstartTOC() {
       const activeStepWrapper = document.querySelector(
         `.step-wrapper[data-step="${activeStep}"]`
       );
-      activeStepWrapper.classList.remove("hidden");
+      activeStepWrapper?.classList.remove("hidden");
     }
 
     // Add Next/Prev buttons to step-wrapper divs
