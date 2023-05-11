@@ -608,7 +608,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /date-trunc-sql /blog/date-trunc-sql 301
 /docs/using-hooks / 301
 
-/data-testing-why-you-need-it-and-how-to-get-started /blog/data-quality-testing/ 301
+/data-testing-why-you-need-it-and-how-to-get-started https://www.getdbt.com/blog/data-quality-testing/ 301
 
 # supported data platforms page
 
@@ -647,7 +647,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
 
 /docs/contributing/adapter-development/3-building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
-/docs/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter301
+/docs/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
 
 /docs/contributing/testing-a-new-adapter /guides/advanced/adapter-development/4-testing-a-new-adapter 301
 /docs/contributing/adapter-development/4-testing-a-new-adapter /guides/advanced/adapter-development/4-testing-a-new-adapter 301
