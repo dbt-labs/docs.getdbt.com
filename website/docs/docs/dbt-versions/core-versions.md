@@ -18,6 +18,12 @@ dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. 
 
 All dbt Core versions released prior to 1.0 and their version-specific documentation have been deprecated. If upgrading to a currently supported version, reference our [best practices for upgrading](#best-practices-for-upgrading)
 
+## EOL version support 
+
+All dbt Core versions with an end-of-life (EOL) support level will no longer receive bug fixes. To continue receiving bug fixes, dbt Labs recommends upgrading to a newer version. 
+
+All dbt Core versions v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
+
 ## Current version support
 
 ### Minor versions
