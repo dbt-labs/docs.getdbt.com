@@ -3,6 +3,10 @@ resource_types: [models, seeds, snapshots, tests, analyses, metrics]
 id: "group"
 ---
 
+:::info New functionality
+This functionality is new in v1.5.
+:::
+
 <Tabs
   defaultValue="models"
   values={[
@@ -266,7 +270,7 @@ metrics:
 ## Definition
 An optional configuration for grouping models, analysis, snapshots, tests, and metrics. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
-For more details on reference access between resources in groups, check out [model access](/docs/collaborate/publish/model-access#groups).
+For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
 
 ## Examples
 ### Prevent a 'marketing' group model from referencing a private 'finance' group model
@@ -298,3 +302,8 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
+
+## Related docs
+
+* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Defining groups](/docs/build/groups)

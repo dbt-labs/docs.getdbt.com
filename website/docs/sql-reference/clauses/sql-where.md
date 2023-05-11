@@ -1,7 +1,7 @@
 ---
 id: where
 title: SQL WHERE
-description: The ORDER BY clause allows you to specify the resulting row order for a query.
+description: Read this guide to learn about the SQL WHERE clause in dbt.
 slug: /sql-reference/where
 ---
 

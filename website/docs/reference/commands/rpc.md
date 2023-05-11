@@ -1,5 +1,6 @@
 ---
-title: "rpc"
+title: "About dbt rpc command"
+sidebar_label: "rpc"
 id: "rpc"
 description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---

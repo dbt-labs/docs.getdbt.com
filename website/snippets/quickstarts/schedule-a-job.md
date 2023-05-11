@@ -2,8 +2,8 @@
 
 Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
-1. Click **Commit** and add a message. For example, "Add customers model, tests, docs."
-2. Click **merge to main** To add these changes to the main branch on your repo.
+1. Under **Version Control** on the left, click **Commit and sync** and add a message. For example, "Add customers model, tests, docs."
+2. Click **Merge this branch to main** to add these changes to the main branch on your repo.
 
 ## Create a deployment environment
 

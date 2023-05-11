@@ -1,5 +1,6 @@
 ---
-title: "snapshot"
+title: "About dbt snapshot command"
+sidebar_label: "snapshot"
 id: "snapshot"
 ---
 

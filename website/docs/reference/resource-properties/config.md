@@ -1,11 +1,10 @@
 ---
+title: "About config property"
+sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
 ---
 
-<Changelog>
-    - **v0.21.0** introduced the `config` property
-</Changelog>
 
 <Tabs
   defaultValue="models"
@@ -194,4 +193,4 @@ exposures:
 
 </Tabs>
 
-The `config` property allows you to configure resources at the same time you're defining properties in yaml files.
+The `config` property allows you to configure resources at the same time you're defining properties in YAML files.
