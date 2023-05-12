@@ -6,7 +6,7 @@ import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 
 function DocCarousel({ children }) {
-    if ( !Children.toArray(children).length > 0 ){      
+    if ( !children?.length > 0 ){      
         return false
     }
     return (
