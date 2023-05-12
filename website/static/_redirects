@@ -608,6 +608,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
 /date-trunc-sql /blog/date-trunc-sql 301
 /docs/using-hooks / 301
+/blog/how-we-structure-our-dbt-projects /guides/best-practices/how-we-structure/1-guide-overview 301
 
 # supported data platforms page
 
