@@ -1,9 +1,10 @@
 ---
-title: "Quickstart for dbt Core"
-id: quickstart
+title: "Quickstart for dbt Core from a manual install"
+id: manual-install
+description: "Connecting your warehouse to dbt Core using the CLI."
+sidebar_label: "Manual install quickstart"
 hide_table_of_contents: true
 ---
-
 ## Introduction
 
 When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/docs/quickstarts/overview).
@@ -19,7 +20,7 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 
 After setting up BigQuery to work with dbt, you are ready to create a starter project with example models, before building your own models.
 
-## Create a repository
+### Create a repository
 
 The following steps use [GitHub](https://github.com/) as the Git provider for this guide, but you can use any Git provider. You should have already [created a GitHub account](https://github.com/join).
 
@@ -29,7 +30,7 @@ The following steps use [GitHub](https://github.com/) as the Git provider for th
 4. Click **Create repository**.
 5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](#commit-your-changes).
 
-## Create a project
+### Create a project
 
 Learn how to use a series of commands using the command line of the Terminal to create your project. dbt Core includes an `init` command that helps scaffold a dbt project.
 
@@ -86,9 +87,9 @@ To create your dbt project:
 
     </File>
 
-## Connect to BigQuery
+### Connect to BigQuery
 
-When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connection-profiles), which is a yaml file with all the connection details to your warehouse.
+When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connection-profiles), which is a YAML file with all the connection details to your warehouse.
 
 1. Create a file in the `~/.dbt/` directory named `profiles.yml`.
 2. Move your BigQuery keyfile into this directory.
@@ -125,7 +126,7 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
     <Lightbox src="/img/successful-dbt-debug.png" title="A successful dbt debug command" />
     </div>
 
-### FAQs
+#### FAQs
 
 <FAQ src="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
 <FAQ src="Project/separate-profile" />
@@ -133,7 +134,7 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 <FAQ src="Environments/target-names" />
 <FAQ src="Environments/profile-env-vars" />
 
-## Perform your first dbt run
+### Perform your first dbt run
 
 Our sample project has some example models in it. We're going to check that we can run them to confirm everything is in order.
 
@@ -148,7 +149,7 @@ You should have an output that looks like this:
 <Lightbox src="/img/successful-dbt-run.png" title="A successful dbt run command" />
 </div>
 
-## Commit your changes
+### Commit your changes
 
 Commit your changes so that the repository contains the latest code.
 
@@ -169,7 +170,7 @@ Commit your changes so that the repository contains the latest code.
 
 Now that you set up your sample project, you can get to the fun part — [building models](/docs/build/sql-models)! You will take a sample query and turn it into a model in your dbt project.
 
-## Checkout a new git branch
+### Checkout a new git branch
 
 Check out a new git branch to work on new code:
 
@@ -180,7 +181,7 @@ Check out a new git branch to work on new code:
     >  Switched to a new branch `add-customer-model`
     ```
 
-## Build your first model
+### Build your first model
 
 1. Open your project in your favorite code editor.
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
@@ -195,7 +196,7 @@ Check out a new git branch to work on new code:
 
 When you return to the BigQuery console, you can `select` from this model.
 
-### FAQs
+#### FAQs
 
 <FAQ src="Runs/checking-logs" />
 <FAQ src="Project/which-schema" />
@@ -203,17 +204,17 @@ When you return to the BigQuery console, you can `select` from this model.
 <FAQ src="Models/run-downtime" />
 <FAQ src="Troubleshooting/sql-errors" />
 
-## Change the way your model is materialized
+### Change the way your model is materialized
 
 
 
 <Snippet src="quickstarts/change-way-model-materialized" />
 
-## Delete the example models
+### Delete the example models
 
 <Snippet src="quickstarts/delete-example-models" />
 
-## Build models on top of other models
+### Build models on top of other models
 
 <Snippet src="quickstarts/intro-build-models-atop-other-models" />
 
@@ -406,13 +407,13 @@ When you return to the BigQuery console, you can `select` from this model.
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
-### FAQs {#faq-2}
+#### FAQs {#faq-2}
 
 <FAQ src="Runs/run-one-model" />
 <FAQ src="Models/unique-model-names" />
 <FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
-## Next steps
+### Next steps
 
 <Snippet src="tutorial-next-steps-1st-model" />
 
@@ -423,27 +424,27 @@ You can also explore:
 
 ## Test and document your project
 
-## Add tests to your models
+### Add tests to your models
 
 <Snippet src="tutorial-add-tests-to-models" />
 
-## Document your models
+### Document your models
 
 <Snippet src="tutorial-document-your-models" />
 
 3. Run `dbt docs serve` command to launch the documentation in a local website.
 
-### FAQs
+#### FAQs
 
 <FAQ src="Docs/long-descriptions" />
 <FAQ src="Docs/sharing-documentation" />
 
 
-### Next steps
+#### Next steps
 
 <Snippet src="tutorial-next-steps-tests" />
 
-## Commit updated changes
+### Commit updated changes
 
 You need to commit the changes you made to the project so that the repository has your latest code.
 

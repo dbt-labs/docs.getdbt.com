@@ -17,13 +17,14 @@ function QuickstartTOC() {
 
   useEffect(() => {
     // Get all h2 for each step in the guide
-    const steps = document.querySelectorAll("h2");
+    const quickstartContainer = document.querySelector(".quickstart-container");
+    const steps = quickstartContainer.querySelectorAll("h2");
     const snippetContainer = document.querySelectorAll(".snippet");
 
     // Add snippet container to its parent step
     snippetContainer.forEach((snippet) => {
       const parent = snippet.parentNode;
-        while (snippet.firstChild) parent.insertBefore(snippet.firstChild, snippet);
+      while (snippet.firstChild) parent.insertBefore(snippet.firstChild, snippet);
     });
 
     // Create an array of objects with the id and title of each step
