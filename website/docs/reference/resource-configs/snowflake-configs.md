@@ -318,7 +318,7 @@ name: my_project
 
 models:
   <resource-path>:
-    +temp_relation_type: table | view ## If not defined, view is the default.
+    +tmp_relation_type: table | view ## If not defined, view is the default.
   
 ```
 
