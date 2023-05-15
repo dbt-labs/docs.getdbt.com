@@ -23,7 +23,13 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 
 ### MacOS
 
+<VersionBlock firstVersion="1.6">
 The MacOS requires Python 3.8 or higher to successfully install and run dbt Core.
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+The MacOS requires Python 3.7 or higher to successfully install and run dbt Core.
+</VersionBlock>
 
 To check the Python version:
 
@@ -55,6 +61,12 @@ pip install cryptography~=3.4
 
 Windows requires Python and git to successfully install and run dbt Core.
 
+<VersionBlock firstVersion="1.6">
 Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.8 or higher for Windows](https://www.python.org/downloads/windows/).
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.7 or higher for Windows](https://www.python.org/downloads/windows/).
+</VersionBlock>
 
 For further questions, please see the [Python compatibility FAQ](/docs/faqs/Core/install-python-compatibility)
