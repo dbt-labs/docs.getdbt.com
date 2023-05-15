@@ -35,7 +35,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: timestamp
     +updated_at: column_name
 
@@ -67,7 +67,7 @@ snapshots:
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: check
     +check_cols: [column_name] | all
 
@@ -80,7 +80,7 @@ snapshots:
 </Tabs>
 
 ## Description
-The snapshot strategy dbt should use to detect record changes. Read the guide to [snapshots](snapshots#detecting-row-changes) to understand the differences between the two.
+The snapshot strategy dbt should use to detect record changes. Read the guide to [snapshots](/docs/build/snapshots#detecting-row-changes) to understand the differences between the two.
 
 ## Default
 This is a **required configuration**. There is no default value.

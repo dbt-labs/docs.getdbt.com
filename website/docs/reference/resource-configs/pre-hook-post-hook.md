@@ -23,7 +23,7 @@ datatype: sql-statement | [sql-statement]
 ```yml
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -58,7 +58,7 @@ select ...
 ```yml
 
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -77,7 +77,7 @@ seeds:
 ```yml
 
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -109,7 +109,7 @@ select ...
 ## Definition
 A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](dont-nest-your-curlies#an-exception).
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/docs/building-a-dbt-project/dont-nest-your-curlies#an-exception).
 
 ### Why would I use hooks?
 
@@ -231,7 +231,7 @@ models:
 </VersionBlock>
 
 ### Additional examples
-We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
+We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
 
 ## Usage notes
 ### Hooks are cumulative

@@ -12,9 +12,7 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community/'
   platform_name: 'Vertica'
-  
-
-  config_page: 'vertica-configs'
+  config_page: '/reference/resource-configs/vertica-configs'
 ---
 
 :::info VENDOR-SUPPORTED PLUGIN
