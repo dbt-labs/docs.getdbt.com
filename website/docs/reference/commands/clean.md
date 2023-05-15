@@ -1,11 +1,12 @@
 ---
-title: "clean"
+title: "About dbt clean command"
+sidebar_label: "clean"
 id: "clean"
 ---
 
 <Changelog>
 
-- **v1.0.0:** `dbt_modules` has been replaced by `dbt_packages` by default for the [clean-target](clean-targets) for packages.
+- **v1.0.0:** `dbt_modules` has been replaced by `dbt_packages` by default for the [clean-target](/reference/project-configs/clean-targets) for packages.
 
 </Changelog>
 

@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Azure Synapse DWH setup"
+description: "Read this guide to learn about the Mircosoft Azure Synapse warehouse setup in dbt."
 meta:
   maintained_by: Microsoft
   authors: 'Microsoft (https://github.com/Microsoft)'
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: '#db-synapse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Synapse'
-  config_page: 'azuresynapse-configs'
+  config_page: '/reference/resource-configs/azuresynapse-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

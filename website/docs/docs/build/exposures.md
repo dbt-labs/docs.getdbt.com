@@ -1,5 +1,6 @@
 ---
-title: "Exposures"
+title: "Add Exposures to your DAG"
+sidebar_label: "Exposures"
 id: "exposures"
 ---
 
@@ -12,7 +13,7 @@ id: "exposures"
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
-- populate a dedicated page in the auto-generated [documentation](documentation) site with context relevant to data consumers
+- populate a dedicated page in the auto-generated [documentation](/docs/collaborate/documentation) site with context relevant to data consumers
 
 ### Declaring an exposure
 
@@ -72,7 +73,7 @@ exposures:
       - source('gsheets', 'goals')
 
     owner:
-      name: Claire from Data
+      name: Callum McData
       email: data@jaffleshop.com
 ```
 
@@ -85,7 +86,7 @@ exposures:
 _Required:_
 - **name**: a unique exposure name written in [snake case](https://en.wikipedia.org/wiki/Snake_case)
 - **type**: one of `dashboard`, `notebook`, `analysis`, `ml`, `application` (used to organize in docs site)
-- **owner**: email
+- **owner**: `name` or `email` required; additional properties allowed
 
 <VersionBlock firstVersion="1.4">
 
@@ -102,9 +103,9 @@ _Expected:_
 </VersionBlock>
 
 _Optional:_
+- **label**:  may contain spaces, capital letters, or special characters.
 - **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
 - **maturity**: one of `high`, `medium`, `low`
-- **owner**: name
 
 _General properties (optional)_
 - **description**
@@ -129,6 +130,6 @@ When we generate our documentation site, you'll see the exposure appear:
 
 ## Related docs
 
-* [Exposure properties](exposure-properties)
-* [`exposure:` selection method](node-selection/methods#the-exposure-method)
+* [Exposure properties](/reference/exposure-properties)
+* [`exposure:` selection method](/reference/node-selection/methods#the-exposure-method)
 * [Dashboard status tiles](/docs/deploy/dashboard-status-tiles)

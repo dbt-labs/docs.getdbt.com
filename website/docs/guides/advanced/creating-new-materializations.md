@@ -8,7 +8,7 @@ hoverSnippet: Learn how to create your own materializations.
 
 ## Overview
 
-The model <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the source for these materializations [here](https://github.com/dbt-labs/dbt-core/tree/dev/louisa-may-alcott/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
+The model <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the [source code for these materializations](https://github.com/dbt-labs/dbt-core/tree/main/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
 
 :::caution 
 
@@ -79,7 +79,7 @@ Materializations are responsible for creating new tables or <Term id="view">view
 
 In this example, the `get_relation` method is used to fetch the state of the currently-executing model from the database. If the model exists as a view, then the view is dropped to make room for the table that will be built later in the materialization.
 
-This is a simplified example, and the setup phase for a materialization can become quite complicated indeed! When building a materialization, be sure to consider the state of the database and any supplied [flags](flags) (ie. `--full-refresh`) to ensure that the materialization code behaves correctly in different scenarios.
+This is a simplified example, and the setup phase for a materialization can become quite complicated indeed! When building a materialization, be sure to consider the state of the database and any supplied [flags](/reference/dbt-jinja-functions/flags) (ie. `--full-refresh`) to ensure that the materialization code behaves correctly in different scenarios.
 
 ### Run pre-hooks
 
@@ -117,7 +117,7 @@ The ability to synchronize the Relation cache is new in dbt v0.15.0
 
 :::
 
-Materializations should [return](return) the list of Relations that they have created at the end of execution. dbt will use this list of Relations to update the relation cache in order to reduce the number of queries executed against the database's `information_schema`. If a list of Relations is not returned, then dbt will raise a Deprecation Warning and infer the created relation from the model's configured database, schema, and alias.
+Materializations should [return](/reference/dbt-jinja-functions/return) the list of Relations that they have created at the end of execution. dbt will use this list of Relations to update the relation cache in order to reduce the number of queries executed against the database's `information_schema`. If a list of Relations is not returned, then dbt will raise a Deprecation Warning and infer the created relation from the model's configured database, schema, and alias.
 
 <File name='macros/my_view_materialization.sql'>
 
@@ -155,7 +155,7 @@ To explicitly remove a relation from the cache, use [adapter.drop_relation](/ref
 
 ## Materialization Configuration
 
-Materializations support custom configuration. You might be familiar with some of these configs from materializations like `unique_key` in [incremental models](/docs/build/incremental-models)  or `strategy` in [snapshots](snapshots) .
+Materializations support custom configuration. You might be familiar with some of these configs from materializations like `unique_key` in [incremental models](/docs/build/incremental-models)  or `strategy` in [snapshots](/docs/build/snapshots) .
 
 ### Specifying configuration options
 

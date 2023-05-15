@@ -5,6 +5,10 @@ description: "You can set up the dbt Semantic Layer in dbt Cloud."
 sidebar_label: "Set up the dbt Semantic Layer"
 ---
 
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+:::
+
 With the dbt Semantic Layer, you'll be able to centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 
 ## Prerequisites
@@ -12,6 +16,7 @@ With the dbt Semantic Layer, you'll be able to centrally define business metrics
 Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <Snippet src="sl-prerequisites" />
+
 
 <Snippet src="sl-considerations-banner" />
 

@@ -1,5 +1,6 @@
 ---
 title: "Firebolt setup"
+description: "Read this guide to learn about the Firebolt warehouse setup in dbt."
 meta:
   maintained_by: Firebolt
   authors: 'Firebolt'
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: '#db-firebolt'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03K2PTHHTP'
   platform_name: 'Firebolt'
-  config_page: 'firebolt-configs'
+  config_page: '/reference/resource-configs/firebolt-configs'
 ---
 
 

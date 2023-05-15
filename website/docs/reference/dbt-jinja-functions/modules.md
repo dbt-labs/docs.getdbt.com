@@ -1,6 +1,8 @@
 ---
-title: "modules"
+title: "About modules variable"
+sidebar_label: "modules"
 id: "modules"
+description: "`modules` jinja variables has useful Python modules to operate data."
 ---
 
 The `modules` variable in the Jinja context contains useful Python modules for operating on data.
@@ -18,7 +20,7 @@ It includes the modules contexts of `date`, `datetime`, `time`, `timedelta`, and
 ```
 This module will return the current date and time on every Jinja evaluation. 
 For the date and time of the start of the run, please see
-[run_started_at](run_started_at).
+[run_started_at](/reference/dbt-jinja-functions/run_started_at).
 
 ## pytz
 This variable is a pointer to the Python [pytz](https://pypi.org/project/pytz/) module, which supports timezone logic.

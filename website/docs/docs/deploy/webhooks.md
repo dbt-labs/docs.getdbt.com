@@ -17,10 +17,21 @@ You can create webhooks for these events from the [dbt Cloud web-based UI](#crea
 
 dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
+A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out.
+
+:::tip Videos 
+If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
+
+You can also check out the free [dbt Fundamentals course](https://courses.getdbt.com/courses/fundamentals). 
+:::
+
 ## Prerequisites
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
-
+- You have a multi-tenant deployment in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
+- For Enterprise plan accounts, the user must have the Account Admin, Admin, or Developer [permission set](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions) within their user group to have `write` access to webhooks.
+- For Team plan accounts, as long as the user has a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/self-service-permissions), they will have `write` access to webhooks.
 ## Create a webhook subscription {#create-a-webhook-subscription}
+
 From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).
 
 To configure your new webhook: 
@@ -68,6 +79,7 @@ An example of a webhook payload for a run that's started:
 ```json
 {
   "accountId": 1,
+  "webhooksID": "wsu_12345abcde"
   "eventId": "wev_2L6Z3l8uPedXKPq9D2nWbPIip7Z",
   "timestamp": "2023-01-31T19:28:15.742843678Z",
   "eventType": "job.run.started",
@@ -95,6 +107,7 @@ An example of a webhook payload for a completed run:
 ```json
 {
   "accountId": 1,
+  "webhooksID": "wsu_12345abcde"
   "eventId": "wev_2L6ZDoilyiWzKkSA59Gmc2d7FDD",
   "timestamp": "2023-01-31T19:29:35.789265936Z",
   "eventType": "job.run.completed",
@@ -123,6 +136,7 @@ An example of a webhook payload for an errored run:
 ```json
 {
   "accountId": 1,
+  "webhooksID": "wsu_12345abcde"
   "eventId": "wev_2L6m5BggBw9uPNuSmtg4MUiW4Re",
   "timestamp": "2023-01-31T21:15:20.419714619Z",
   "eventType": "job.run.errored",
@@ -229,7 +243,7 @@ GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
 | Name | Description | Possible Values |
 | --- | --- | --- |
 | `data` | List of available webhooks for the specified dbt Cloud account ID. |  |
-| `id` | The webhook ID. |  |
+| `id` | The webhook ID. This is a universally unique identifier (UUID) that's unique across all regions, including multi-tenant and single-tenant |  |
 | `account_identifier` | The unique identifier for _your_ dbt Cloud account. |  |
 | `name` | Name of the outbound webhook. |  |
 | `description` | Description of the webhook. |  |

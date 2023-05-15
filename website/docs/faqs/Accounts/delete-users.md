@@ -23,3 +23,7 @@ If you are on a **Teams** plan and you are deleting users to reduce the number o
 2. Enter the number of developer seats you want and click **Save**.
 
 <Lightbox src="/img/docs/dbt-cloud/change-developer-seats.png" title="Developer seats" />
+
+## Related docs
+
+- [dbt Cloud licenses](/docs/cloud/manage-access/seats-and-users#licenses)

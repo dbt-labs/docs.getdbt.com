@@ -63,7 +63,7 @@ models:
           - not_null
     tests:
       # Write your own validation logic (in SQL) for Python results
-      - [custom_generic_test](writing-custom-generic-tests)
+      - [custom_generic_test](/guides/best-practices/writing-custom-generic-tests)
 ```
 
 </File>
@@ -144,6 +144,11 @@ with upstream_python_model as (
 
 </File>
 
+:::caution
+
+Referencing [ephemeral](docs/build/materializations#ephemeral) models is currently not supported (see [feature request](https://github.com/dbt-labs/dbt-core/issues/7288)) 
+:::
+
 ## Configuring Python models
 
 Just like SQL models, there are three ways to configure Python models:
@@ -164,7 +169,7 @@ def model(dbt, session):
 
 </File>
 
-There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](resource-properties/config) in a YAML file.
+There's a limit to how complex you can get with the `dbt.config()` method. It accepts _only_ literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the [`config` property](/reference/resource-properties/config) in a YAML file.
 
 #### Accessing project context
 
@@ -481,7 +486,7 @@ def model(dbt, session):
 <File name='models/my_python_model.py'>
 
 ```python
-from pyspark.sql.types as T
+import pyspark.sql.types as T
 import pyspark.sql.functions as F
 import numpy
 

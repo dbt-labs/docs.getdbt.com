@@ -1,7 +1,7 @@
 const path = require("path");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const { versions, versionedPages } = require("./dbt-versions");
+const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
 /* Debugging */
@@ -70,7 +70,7 @@ var siteSettings = {
     announcementBar: {
       id: "biweekly-demos",
       content:
-        "Join us at our bi-weekly demos and see dbt Cloud in action!",
+        "Join our weekly demos and see dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
@@ -79,7 +79,7 @@ var siteSettings = {
     announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "",
+    communitySpotlightMember: "david-effiong",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");
@@ -121,7 +121,7 @@ var siteSettings = {
           activeBasePath: "reference",
         },
         {
-          label: "Learn",
+          label: "Resources",
           position: "right",
           items: [
             {
@@ -162,10 +162,10 @@ var siteSettings = {
               label: "Events",
               to: "/community/events",
             },
-            // {
-            //   label: "Spotlight",
-            //   to: "/community/spotlight",
-            // },
+            {
+              label: "Spotlight",
+              to: "/community/spotlight",
+            },
           ],
         },
         {
@@ -184,7 +184,7 @@ var siteSettings = {
             <a href='https://www.getdbt.com/cloud/terms/'>Terms of Service</a>
             <a href='https://www.getdbt.com/cloud/privacy-policy/'>Privacy Policy</a>
             <a href='https://www.getdbt.com/security/'>Security</a>
-            <button id=\"ot-sdk-btn\" onclick="openPreferenceCenter()">Cookie Settings</button>
+            <button id="ot-sdk-btn" onclick="openPreferenceCenter()">Cookie Settings</button>
           </div>
 
           <div class='footer__items--right'>
@@ -223,8 +223,8 @@ var siteSettings = {
           sidebarCollapsible: true,
         },
         blog: {
-          blogTitle: "dbt Developer Blog",
-          blogDescription: "Technical tutorials from the dbt Community.",
+          blogTitle: "Developer Blog | dbt Developer Hub",
+          blogDescription: "Find tutorials, product updates, and developer insights in the dbt Developer Blog.",
           postsPerPage: 20,
           blogSidebarTitle: "Recent posts",
           blogSidebarCount: 5,
@@ -238,9 +238,9 @@ var siteSettings = {
     [path.resolve("plugins/insertMetaTags"), { metatags }],
     path.resolve("plugins/svg"),
     path.resolve("plugins/customWebpackConfig"),
-    [path.resolve("plugins/buildGlobalData"), { versionedPages }],
+    [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
-    // path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildSpotlightIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [

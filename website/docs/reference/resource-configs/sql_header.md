@@ -1,5 +1,6 @@
 ---
 resource_types: [models]
+description: "Sql_header - Read this in-depth guide to learn about configurations in dbt."
 datatype: "string"
 ---
 
@@ -30,10 +31,10 @@ select ...
 <File name='dbt_project.yml'>
 
 ```yml
-[config-version](config-version): 2
+[config-version](/reference/project-configs/config-version): 2
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +sql_header: <sql-statement>
 
 ```
@@ -72,7 +73,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +sql_header: <sql-statement>
 
 ```
@@ -90,7 +91,7 @@ An optional configuration to inject SQL above the `create table as` and `create 
 `sql_header`s can be set using the config, or by `call`-ing the `set_sql_header` macro (example below).
 
 ## Comparison to pre-hooks
-[Pre-hooks](pre-hook-post-hook) also provide an opportunity to execute SQL before model creation, as a _preceding_ query. In comparison, SQL in a `sql_header` is run in the same _query_ as the `create table|view as` statement.
+[Pre-hooks](/reference/resource-configs/pre-hook-post-hook) also provide an opportunity to execute SQL before model creation, as a _preceding_ query. In comparison, SQL in a `sql_header` is run in the same _query_ as the `create table|view as` statement.
 
 As a result, this makes it more useful for [Snowflake session parameters](https://docs.snowflake.com/en/sql-reference/parameters.html) and [BigQuery Temporary UDFs](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions#sql-udf-examples).
 

@@ -71,7 +71,7 @@ A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
+The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](/docs/supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
@@ -91,7 +91,7 @@ You can find more information on which values to use in your targets below.
 
 :::info Validating your warehouse credentials
 
-Use the [debug](debug) command to check whether you can successfully connect to your warehouse. Simply run `dbt debug` from within a dbt project to test your connection.
+Use the [debug](/reference/dbt-jinja-functions/debug-method) command to check whether you can successfully connect to your warehouse. Simply run `dbt debug` from within a dbt project to test your connection.
 
 :::
 
@@ -197,4 +197,4 @@ $ export DBT_PROFILES_DIR=path/to/directory
 
 ## Advanced: Using environment variables
 
-Credentials can be placed directly into the `profiles.yml` file or loaded from environment variables. Using environment variables is especially useful for production deployments of dbt. You can find more information about environment variables [here](env_var).
+Credentials can be placed directly into the `profiles.yml` file or loaded from environment variables. Using environment variables is especially useful for production deployments of dbt. You can find more information about environment variables [here](/reference/dbt-jinja-functions/env_var).
