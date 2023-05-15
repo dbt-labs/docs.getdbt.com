@@ -326,7 +326,7 @@ models:
 
 In the configuration format for the model SQL file:
 
-<File name='dbt_project.yml'>
+<File name='dbt_model.sql'>
 
 ```yaml
 
