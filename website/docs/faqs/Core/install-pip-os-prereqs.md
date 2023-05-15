@@ -69,4 +69,4 @@ Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.8
 Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.7 or higher for Windows](https://www.python.org/downloads/windows/).
 </VersionBlock>
 
-For further questions, please see the [Python compatibility FAQ](/docs/faqs/Core/install-python-compatibility)
+For further questions, please see the [Python compatibility FAQ](/faqs/Core/install-python-compatibility)
