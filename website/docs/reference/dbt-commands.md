@@ -8,7 +8,7 @@ dbt is typically run one of two ways:
 
 The following sections outline the commands supported by dbt and their relevant flags. Note that some commands are only supported when using the CLI. 
 
-For information about selecting models on the command line, consult the docs on [Model selection syntax](node-selection/syntax).
+For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
 
 ### Available commands
 

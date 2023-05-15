@@ -24,8 +24,8 @@ The two concepts will be closely related, as we develop multi-project collaborat
 
 
 ## Related documentation
-* [`groups`](build/groups)
-* [`access`](resource-properties/access)
+* [`groups`](/docs/build/groups)
+* [`access`](/reference/resource-properties/access)
 
 ## Groups
 
@@ -35,7 +35,7 @@ Why define model `groups`? There are two reasons:
 - It turns implicit relationships into an explicit grouping, with a defined owner. By thinking about the interface boundaries _between_ groups, you can have a cleaner (less entangled) DAG. In the future, those interface boundaries could be appropriate as the interfaces between separate projects.
 - It enables you to designate certain models as having "private" access—for use exclusively within that group. Other models will be restricted from referencing (taking a dependency on) those models. In the future, they won't be visible to other teams taking a dependency on your project—only "public" models will be.
 
-If you follow our [best practices for structuring a dbt project](how-we-structure/1-guide-overview), you're probably already using subdirectories to organize your dbt project. It's easy to apply a `group` label to an entire subdirectory at once:
+If you follow our [best practices for structuring a dbt project](/guides/best-practices/how-we-structure/1-guide-overview), you're probably already using subdirectories to organize your dbt project. It's easy to apply a `group` label to an entire subdirectory at once:
 
 <File name="dbt_project.yml">
 
@@ -116,7 +116,7 @@ These are different!
 
 Specifying `access: public` on a model does not trigger dbt to automagically grant `select` on that model to every user or role in your data platform when you materialize it. You have complete control over managing database permissions on every model/schema, as makes sense to you & your organization.
 
-Of course, dbt can facilitate this by means of [the `grants` config](resource-configs/grants), and other flexible mechanisms. For example:
+Of course, dbt can facilitate this by means of [the `grants` config](/reference/resource-configs/grants), and other flexible mechanisms. For example:
 - Grant access to downstream queriers on public models
 - Restrict access to private models, by revoking default/future grants, or by landing them in a different schema
 
