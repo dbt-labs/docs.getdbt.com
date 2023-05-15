@@ -11,7 +11,7 @@ dbt Core v1.6 is in beta, and the features and functionality on this page are su
 
 ## Resources
 
-- [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/CHANGELOG.md)
+- [Changelog](https://github.com/dbt-labs/dbt-core/blob/main/CHANGELOG.md)
 - [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
 - [Release schedule](https://github.com/dbt-labs/dbt-core/issues/6715)
