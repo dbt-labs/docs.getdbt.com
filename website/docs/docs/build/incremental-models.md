@@ -254,11 +254,15 @@ the reliability of your `unique_key`, or the availability of certain features.
 * [BigQuery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
 * [Spark](/reference/resource-configs/spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
 
+<VersionBlock firstVersion="1.3">
+
 :::note Snowflake Configurations
 
 dbt v1.3 changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
 
 :::
+
+</VersionBlock>
 
 ### Configuring incremental strategy
 
