@@ -12,7 +12,7 @@ meta:
   cloud_support: Not Supported
   min_supported_version: 'n/a'
   platform_name: 'Databend Cloud'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor-supported plugin

@@ -190,7 +190,7 @@ will be expanded to:
 
 </Changelog>
 
-The execution of a resource in dbt generates a `Result` object. This object contains information about the executed node, timing, status, and metadata returned by the adapter. At the end of an invocation, dbt records these objects in [`run_results.json`](run-results-json).
+The execution of a resource in dbt generates a `Result` object. This object contains information about the executed node, timing, status, and metadata returned by the adapter. At the end of an invocation, dbt records these objects in [`run_results.json`](/reference/artifacts/run-results-json).
 
 - `node`: Full object representation of the dbt resource (model, seed, snapshot, test) executed, including its `unique_id`
 - `status`: dbt's interpretation of runtime success, failure, or error

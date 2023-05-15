@@ -20,4 +20,4 @@ $ dbt source freshness --select source:jaffle_shop.orders
 $ dbt source freshness --select source:jaffle_shop.orders source:jaffle_shop.customers
 ```
 
-See the [`source freshness` command reference](commands/source) for more information.
+See the [`source freshness` command reference](/reference/commands/source) for more information.

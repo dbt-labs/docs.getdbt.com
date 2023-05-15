@@ -45,7 +45,7 @@ By default, all environments will use the default branch in your repository (usu
 - **Development**: determines which branch in the dbt Cloud IDE developers create branches from and open PRs against
 - **Deployment:** determines the branch is cloned during job executions for each environment.
 
-For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/custom-branch-settings)!
+For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
 ## Create a development environment
 
@@ -217,5 +217,5 @@ This section allows you to determine the credentials that should be used when co
 ## Related docs
 
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
-- [Delete a job or environment in dbt Cloud](/docs/faqs/Environments/delete-environment-job)
+- [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)
 - [Develop in Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
