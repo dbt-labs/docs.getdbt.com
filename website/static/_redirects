@@ -1,3 +1,5 @@
+/v0.13/docs/building-a-new-adapter /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
+
 # PrivateLink to Secure redirects
 /docs/cloud/privatelink/about-privatelink /docs/cloud/secure/about-privatelink 301
 /docs/cloud/privatelink/snowflake-privatelink /docs/cloud/secure/about-privatelink 301
@@ -312,7 +314,6 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/building-a-dbt-project/testing-and-documentation/schemayml-files /reference/declaring-properties 301
 /docs/building-a-dbt-project/testing-and-documentation/testing /docs/building-a-dbt-project/tests 301
 /docs/building-a-dbt-project/using-operations /docs/building-a-dbt-project/hooks-operations 301
-/docs/building-a-new-adapter /docs/contributing/building-a-new-adapter 301
 /docs/building-models /docs/building-a-dbt-project/building-models 301
 /docs/building-packages /guides/legacy/building-packages 301
 /docs/centos /dbt-cli/installation 301
@@ -743,7 +744,6 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.13/docs/requiring-dbt-versions / 301
 /v0.14/docs/cloud-developer-ide / 301
 
-/v0.13/docs/building-a-new-adapter /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
 /v0.15/docs/configure-your-profile /docs/core/connection-profiles 301
 
 # Removing on premise Cloud content
