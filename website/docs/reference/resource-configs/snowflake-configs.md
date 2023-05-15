@@ -331,7 +331,7 @@ In the configuration format for the model SQL file:
 ```yaml
 
 {{ config(
-    temp_relation_type="table | view", ## If not defined, view is the default.
+    tmp_relation_type="table | view", ## If not defined, view is the default.
 ) }}
 
 ```
