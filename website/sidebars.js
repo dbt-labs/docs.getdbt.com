@@ -1,7 +1,18 @@
 const sidebarSettings = {
   docs: [
     "docs/introduction",
-    "docs/supported-data-platforms",
+    {
+      type: "category",
+      label: "Supported data platforms",
+      collapsed: true,
+      link: { type: "doc", id: "docs/supported-data-platforms" },
+      items: [
+        "docs/connect-adapters",
+        "docs/verified-adapters",
+        "docs/community-adapters",
+        "docs/contribute-core-adapters",
+      ],
+    }, // Supported data platforms directory
     {
       type: "category",
       label: "About dbt Cloud",

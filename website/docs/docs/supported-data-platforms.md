@@ -1,23 +1,27 @@
 ---
 title: "Supported data platforms"
 id: "supported-data-platforms"
+sidebar_labe: "Supported data platforms"
+description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a dedicated adapter plugin"
+hide_table_of_contents: true
+
 ---
 
 dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. You can extend dbt to any data platform using a dedicated _adapter plugin_ using the command line (CLI) or directly in the dbt Cloud user interface (UI). Plugins are built as Python modules that dbt Core discovers if they are installed on your system. To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
 
-The following adapters are open-source, verified by dbt Labs and available to use in dbt Cloud or dbt Core. Refer to [community adapters](#community-adapters) for community, open source adapters. 
+The following adapters are open-source, verified by dbt Labs, and available to use in dbt Cloud or dbt Core:
 
 
 <div className="grid--3-col">
 
 <Card
     title="AlloyDB"
-    body="Connect to and run queries against underlying data in AlloyDB."
-    icon="alloy"/>
+    body="<br /> Set up in <a href='https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>dbt Cloud → </a> <br />Install in <a href='https://docs.getdbt.com/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>dbt Core → </a> <br /> Latest version: 1.4"
+    icon="alloydb"/>
 
 <Card
     title="Redshift"
-    body="Connect to and run queries against underlying data in RedsRedshifthift"
+    body="Connect to and run queries against underlyi ng data in Redshift"
     icon="redshift"/>
 
 
@@ -46,7 +50,7 @@ The following adapters are open-source, verified by dbt Labs and available to us
 <Card
     title="Starburst"
     body="Connect to and run queries against underlying data in Starburst"
-    icon="starburst"/>
+    icon="starburst-partner-logo"/>
 
 <Card
     title="Spark"
@@ -65,98 +69,13 @@ The following adapters are open-source, verified by dbt Labs and available to us
 
 </div>
 
-## Connect to dbt 
 
-You can connect dbt to a data platform in the following ways:
+### Verified adapters
 
-- **Set up in dbt Cloud** &mdash; A hosted architecture for running dbt Core across your organization, dbt Cloud lets you seamlessly [connect](/docs/about-setup) with a variety of [verified](#verified-adapters) data platform providers directly in the dbt Cloud UI, allowing you to explore the fastest and most reliable way to deploy dbt. 
+dbt Labs has a rigorous program to verify adapters, which ensures that they're trustworthy for production use. Verified adapters are thoroughly tested, actively maintained, and regularly updated. The verification process assesses development, documentation, user experience, and maintenance.
 
-    Data platforms supported in dbt Cloud are verified and [maintained](#maintainers) by dbt Labs or partners. This level of support ensures that users can trust certain adapters for use in production. 
-
-- **Install adapter with the dbt Core** &mdash; An open-source tool where you can install dbt Core locally using the CLI. dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file. 
-
-    Data platforms supported in dbt Core may be verified or unverified, and maintained by dbt Labs, partners, or community members. 
-
-    - With a few exceptions [^1], you can install all adapters listed under "Verified adapters" from PyPI using `pip install <ADAPTER-NAME>`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation).
-
-## Verified adapters
-
-The dbt Labs has a rigorous verified adapter program which provides reassurance to users about which adapters can be trusted to use in production, has been tested, and is actively maintained and updated. The process covers aspects of development, documentation, user experience, and maintenance. 
-
-These adapters then earn a "Verified" status so that users can have a certain level of trust and expectation when they use them. The adapters also have maintainers and we recommend using the adapter's verification status to determine its quality and health.
+Once an adapter is verified, it receives a "Verified" status, giving users confidence and trust when using it. Each adapter also has maintainers, and we suggest considering the verification status to determine its quality and health.
 
 Here's the list of the verified data platforms that can connect to dbt and its latest version.
 
-| dbt Cloud setup  | CLI installation | latest verified version  |
-| ---------------- | ----------------------------------------- | ------------------------ |
-| [Setup AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)  | [Install AlloyDB](alloydb-setup)     | (same as `dbt-postgres`) |
-| Not supported | [Install Azure Synapse](azuresynapse-setup)       | 1.3 :construction:       |
-| [Set up BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) | [Install BigQuery](bigquery-setup)                | 1.4                      |
-| [Set up Databricks ](/docs/cloud/connect-data-platform/connect-databricks)| [ Install Databricks](databricks-setup)            | 1.4                      |
-| Not supported | [Install Dremio](dremio-setup)                    | 1.4 :construction:       |
-| [Set up Postgres](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)  | [Install Postgres](postgres-setup)                | 1.4                      |
-| [Set up Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)   | [Install Redshift](redshift-setup)                | 1.4                      |
-| [Set up Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)   | [ Install Snowflake](snowflake-setup)              | 1.4                      |
-| [Set up Spark](/docs/cloud/connect-data-platform/connect-apache-spark) | [Install Spark](spark-setup)                      | 1.4                      |
-| [Set up Starburst & Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)| [Installl Starburst & Trino](trino-setup)          | 1.4                      |
-
-:construction:: Verification in progress
-
-To learn more, see [Verifying a new adapter](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter).
-
-
-## Community adapters
-
-Community adapters are adapter plugins contributed and maintained by members of the community. We welcome and encourage [adapter plugins contributions](#contributing-to-a-pre-existing-adapter) from the dbt community.  Please be mindful that these [community maintainers](#maintainers) are intrepid volunteers who donate their time and effort — so be kind, understanding, and help out where you can!
-
-| Data platforms (click to view setup guide) ||
-| ------------------------------------------ | -------------------------------- | ------------------------------------- |
-| [Athena](athena-setup)                     | [Greenplum](greenplum-setup)     | [Oracle](oracle-setup)                |
-| [Clickhouse](clickhouse-setup)             | [Hive](hive-setup)               | [Rockset](rockset-setup)              |
-| [IBM DB2](ibmdb2-setup)                    | [Impala](impala-setup)           | [SingleStore](singlestore-setup)      |
-| [Doris & SelectDB](doris-setup)            | [Infer](infer-setup)             | [SQLite](sqlite-setup)                |
-| [DuckDB](duckdb-setup)                     | [iomete](iomete-setup)           | [SQL Server & Azure SQL](mssql-setup) |
-| [Dremio](dremio-setup)                     | [Layer](layer-setup)             | [Teradata](teradata-setup)            |
-| [Exasol Analytics](exasol-setup)           | [Materialize](materialize-setup) | [TiDB](tidb-setup)                    |
-| [Firebolt](firebolt-setup)                 | [MindsDB](mindsdb-setup)         | [Vertica](vertica-setup)              |
-| [AWS Glue](glue-setup)                     | [MySQL](mysql-setup)             |                                       |
-| [Databend Cloud](databend-setup)           | [fal - Python models](fal-setup) |                                       |
-
-## Maintainers
-
-Who made and maintains an adapter is certainly relevant, but we recommend using an adapter's verification status to determine the quality and health of an adapter. So far there are three categories of maintainers:
-
-| Supported by | Maintained By                                                                                                                                                                                                                                  |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| dbt Labs     | dbt Labs maintains a set of adapter plugins for some of the most common databases, warehouses, and platforms. As for why particular data platforms were chosen, see ["Why Verify an Adapter"](7-verifying-a-new-adapter#why-verify-an-adapter) |
-| Partner      | These adapter plugins are built and maintained by the same people who build and maintain the complementary data technology.                                                                                                                    |
-| Community    | These adapter plugins are contributed and maintained by members of the community. 🌱                                                                                                                                                          |
-
-## Contribute to dbt Core adapters
-
-<Tabs>
-
-<TabItem value="preexisting" label="Contribute to a pre-existing adapter">
-
-Community-supported plugins are works in progress, and anyone is welcome to contribute by testing and writing code. If you're interested in contributing:
-
-- Join both the dedicated channel, [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM), in [dbt Slack](https://community.getdbt.com/) and the channel for your adapter's data store (see **Slack Channel** column of above tables)
-- Check out the open issues in the plugin's source repository (follow relevant link in **Adapter Repository** column of above tables)
-
-</TabItem>
-
-<TabItem value="newadapter" label="Create a new adapter">
-
-If you see something missing from the lists above, and you're interested in developing an integration, read more about adapters and how they're developed in the  [Adapter Development](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) section.
-
-If you have a new adapter, please add it to this list using a pull request! See [Documenting your adapter](5-documenting-a-new-adapter) for more information.
-
-</TabItem>
-</Tabs>
-
-[^1]: Here are the two different adapters. Use the PyPI package name when installing with `pip`
-
-    | Adapter repo name | PyPI package name    |
-    | ----------------- | -------------------- |
-    | `dbt-athena`      | `dbt-athena-adapter` |
-    | `dbt-layer`       | `dbt-layer-bigquery` |
+For community, open-source adapters, refer to [community adapters](/docs/community-adapters).
