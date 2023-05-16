@@ -3,6 +3,11 @@
     color: var(--ifm-link-color);
 }
 
+:local(html[data-theme="dark"].link),
+:local(html[data-theme="dark"].link:hover) {
+    filter: brightness(var(--filter-brightness-high));
+}
+
 :local(.link:hover) {
     text-decoration: underline;
     cursor: pointer;

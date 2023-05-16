@@ -153,12 +153,34 @@ html[data-theme="dark"] details table td {
   color: inherit;
 }
 
+html[data-theme="dark"] .main-wrapper .col:not(.col--3) a,
+html[data-theme="dark"] .main-wrapper .col:not(.col--3) a:hover {
+  color: var(--ifm-menu-color-active);
+}
+
+html[data-theme="dark"] .main-wrapper .col:not(.col--3) a,
+html[data-theme="dark"] .main-wrapper .col:not(.col--3) a:hover,
+html[data-theme="dark"] .comment,
+html[data-theme="dark"] .tabs {
+  filter: brightness(1.25);
+}
+
+html[data-theme="dark"] .main-wrapper .col:not(.col--3) .alert a,
+html[data-theme="dark"] .main-wrapper .col:not(.col--3) a:has(img)  {
+  filter: brightness(1);
+}
+
 table td {
   vertical-align: top;
 }
 
 html[data-theme="dark"] table td {
-  filter: brightness(1.5);
+  filter: brightness(1.25);
+  color: white;
+}
+
+html[data-theme="dark"] .main-wrapper .col a.button--primary {
+  filter: brightness(1);
   color: white;
 }
 
@@ -660,6 +682,9 @@ i.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-2.menu__
   --ifm-alert-border-color: var(--ifm-color-warning);
   color: var(--ifm-color-gray-900);
 }
+html[data-theme="dark"] .alert--secondary svg {
+  fill: white;
+}
 
 html[data-theme="dark"] .alert * {
   --ifm-alert-foreground-color: var(--ifm-color-gray-900);
@@ -889,6 +914,10 @@ td,
 }
 .link_src-components-faqs-styles-module {
   font-size: 1.125rem;
+}
+
+[data-theme="dark"] .link_src-components-faqs-styles-module {
+  filter: brightness(1.25);
 }
 
 /* Docs */
