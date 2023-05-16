@@ -33,7 +33,7 @@ Use `json` formatting value in conjunction with the `DEBUG` config to produce ri
 dbt --debug --log-format json run
 ```
 
-See [structured logging](events-logging#structured-logging) for more details.
+See [structured logging](/reference/events-logging#structured-logging) for more details.
 
 :::
 
