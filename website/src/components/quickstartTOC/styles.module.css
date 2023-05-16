@@ -91,6 +91,15 @@ html[data-theme="dark"] .tocList .active span {
     margin-left: auto;
 }
 
+.stepWrapper[data-step="0"] .nextButton {
+    background: var(--color-light-teal);
+    color: var(--color-white)
+}
+
+.stepWrapper.hidden {
+    display: none;
+}
+
 .hidden {
     display: none;
 }

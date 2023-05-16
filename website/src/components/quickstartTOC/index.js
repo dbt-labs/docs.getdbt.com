@@ -42,8 +42,8 @@ function QuickstartTOC() {
     if (mounted) {
       steps.forEach((step, index) => {
         const wrapper = document.createElement("div");
-        wrapper.classList.add("step-wrapper");
-        wrapper.classList.add("hidden");
+        wrapper.classList.add(style.stepWrapper);
+        wrapper.classList.add(style.hidden);
 
         // Move the step and all its siblings into the its own div
         step.parentNode.insertBefore(wrapper, step);
@@ -58,14 +58,14 @@ function QuickstartTOC() {
 
       // Find the acvtive step and show it
       const activeStepWrapper = document.querySelector(
-        `.step-wrapper[data-step="${activeStep}"]`
+        `.${style.stepWrapper}[data-step="${activeStep}"]`
       );
-      activeStepWrapper?.classList.remove("hidden");
+      activeStepWrapper?.classList.remove(style.hidden);
     }
 
     // Add Next/Prev buttons to step-wrapper divs
     if (mounted) {
-      const stepWrappers = document.querySelectorAll(".step-wrapper");
+      const stepWrappers = document.querySelectorAll(`.${style.stepWrapper}`);
 
       stepWrappers.forEach((stepWrapper, index) => {
         const buttonContainer = document.createElement("div");
@@ -144,14 +144,14 @@ function QuickstartTOC() {
   // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
     const currentStep = document.querySelector(
-      `.step-wrapper[data-step='${currentStepIndex}']`
+      `.${style.stepWrapper}[data-step='${currentStepIndex}']`
     );
     const newStep = document.querySelector(
-      `.step-wrapper[data-step='${newStepIndex}']`
+      `.${style.stepWrapper}[data-step='${newStepIndex}']`
     );
 
-    currentStep?.classList.add('hidden');
-    newStep?.classList.remove('hidden');
+    currentStep?.classList.add(style.hidden);
+    newStep?.classList.remove(style.hidden);
 
     setActiveStep(newStepIndex);
   };
@@ -172,13 +172,13 @@ function QuickstartTOC() {
   const handleTocClick = (e) => {
     const stepNumber = parseInt(e.target.dataset.step);
 
-    const currentStep = document.querySelector(".step-wrapper:not(.hidden)");
-    currentStep?.classList.add("hidden");
+    const currentStep = document.querySelector(`.${style.stepWrapper}:not(.${style.hidden})`);
+    currentStep?.classList.add(style.hidden);
 
     const newStep = document.querySelector(
-      `.step-wrapper[data-step='${stepNumber}']`
+      `.${style.stepWrapper}[data-step='${stepNumber}']`
     );
-    newStep?.classList.remove("hidden");
+    newStep?.classList.remove(style.hidden);
 
     setActiveStep(stepNumber);
   };
