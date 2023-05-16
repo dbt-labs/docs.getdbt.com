@@ -1,7 +1,7 @@
 ---
 title: "Using threads"
 id: "using-threads"
-sidebar_label: "Using threads"
+sidebar_label: "Use threads"
 description: "Understand what threads mean and how to use them."
 
 ---
