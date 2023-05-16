@@ -70,7 +70,7 @@ You will find bellow a least privileged policy to enjoy all features of **`dbt-g
 
 Please to update variables between **`<>`**, here are explanations of these arguments:
 
-|Args	|Description	| 
+|Args	|Description	|
 |---|---|
 |region|The region where your Glue database is stored |
 |AWS Account|The AWS account where you run your pipeline|
@@ -189,7 +189,7 @@ Please to update variables between **`<>`**, here are explanations of these argu
 
 ### Configuration of the local environment
 
-Because **`dbt`** and **`dbt-glue`** adapter are compatible with Python versions 3.7, 3.8, and 3.9, check the version of Python:
+Because **`dbt`** and **`dbt-glue`** adapter are compatible with Python versions 3.8, and 3.9, check the version of Python:
 
 ```bash
 $ python3 --version
