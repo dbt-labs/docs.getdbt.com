@@ -24,15 +24,15 @@ in the overriding source will be applied on top of the base properties of the
 overridden source.
 
 The following source properties can be overridden:
- - [description](resource-properties/description)
- - [meta](resource-configs/meta)
- - [database](resource-properties/database)
- - [schema](resource-properties/schema)
- - [loader](resource-properties/loader)
- - [quoting](resource-properties/quoting)
- - [freshness](resource-properties/freshness)
- - [loaded_at_field](resource-properties/freshness#loaded_at_field)
- - [tags](resource-configs/tags)
+ - [description](/reference/resource-properties/description)
+ - [meta](/reference/resource-configs/meta)
+ - [database](/reference/resource-properties/database)
+ - [schema](/reference/resource-properties/schema)
+ - [loader](/reference/resource-properties/loader)
+ - [quoting](/reference/resource-properties/quoting)
+ - [freshness](/reference/resource-properties/freshness)
+ - [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field)
+ - [tags](/reference/resource-configs/tags)
 
 ## Examples
 ### Supply your database and schema name for a source defined in a package

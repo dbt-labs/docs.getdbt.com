@@ -15,7 +15,7 @@ Snowflake supports the creation of [transient tables](https://docs.snowflake.net
 
 ### Configuring transient tables in dbt_project.yml
 
-A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](model-configs) defined in `dbt_project.yml`.
+A whole folder (or package) can be configured to be transient (or not) by adding a line to the `dbt_project.yml` file. This config works just like all of the [model configs](/reference/model-configs) defined in `dbt_project.yml`.
 
 <File name='dbt_project.yml'>
 
@@ -59,7 +59,7 @@ a `query_tag` model config or by overriding the default `set_query_tag` macro:
 
 ```yaml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +query_tag: dbt_special
 
 ```
@@ -298,3 +298,44 @@ models:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.3">
+
+## Temporary Tables
+
+Beginning in dbt version 1.3, incremental table merges for Snowflake utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
+
+However, many situations remain where a temporary table would achieve results faster. dbt v1.4 adds the `tmp_relation_type` configuration to leverage temporary tables for incremental builds. This is defined as part of the model configuration.
+
+Defined in the project YAML:
+
+<File name='dbt_project.yml'>
+
+```yaml
+name: my_project
+
+...
+
+models:
+  <resource-path>:
+    +tmp_relation_type: table | view ## If not defined, view is the default.
+  
+```
+
+</File>
+
+In the configuration format for the model SQL file:
+
+<File name='dbt_model.sql'>
+
+```yaml
+
+{{ config(
+    tmp_relation_type="table | view", ## If not defined, view is the default.
+) }}
+
+```
+
+</File>
+
+</VersionBlock>

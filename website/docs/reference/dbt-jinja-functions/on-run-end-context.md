@@ -106,7 +106,7 @@ on-run-end:
 
 </Changelog>
 
-The `results` variable contains a list of [Result objects](dbt-classes#result-objects) with one element per resource that executed in the dbt job. The Result object provides access within the Jinja on-run-end context to the information that will populate the [run results JSON artifact](run-results-json).
+The `results` variable contains a list of [Result objects](/reference/dbt-classes#result-objects) with one element per resource that executed in the dbt job. The Result object provides access within the Jinja on-run-end context to the information that will populate the [run results JSON artifact](/reference/artifacts/run-results-json).
 
 Example usage:
 
