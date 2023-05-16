@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-bigquery'
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
   platform_name: 'Big Query'
-  config_page: 'bigquery-configs'
+  config_page: '/docs/core/connect-data-platform/bigquery-configs'
 ---
 
 <Snippet src="warehouse-setups-cloud-callout" />
