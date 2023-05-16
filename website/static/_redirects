@@ -1,4 +1,15 @@
 /reference/global-configs /reference/global-configs/about-global-configs 301
+# PrivateLink to Secure redirects
+/docs/cloud/privatelink/about-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/snowflake-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/redshift-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/databricks-privatelink /docs/cloud/secure/about-privatelink 301
+/docs/cloud/privatelink/ip-restrictions /docs/cloud/secure/about-privatelink 301
+
+/docs/deploy/dbt-cloud-job#create-and-schedule-jobs  /docs/deploy/dbt-cloud-job#create-and-schedule-jobs 301
+/docs/cloud/dbt-cloud-tips /docs/cloud/dbt-cloud-ide/dbt-cloud-tips 301
+/docs/cloud/develop-in-the-cloud /docs/cloud/dbt-cloud-ide/develop-in-the-cloud 301
+/docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
 /docs/quickstarts/dbt-core/quickstart /docs/quickstarts/dbt-core/manual-install 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
 /docs/dbt-versions/release-notes/January-2022/model-timing-more /docs/deploy/dbt-cloud-job#model-timing 301
@@ -598,6 +609,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
 /date-trunc-sql /blog/date-trunc-sql 301
 /docs/using-hooks / 301
+/blog/how-we-structure-our-dbt-projects /guides/best-practices/how-we-structure/1-guide-overview 301
 
 # supported data platforms page
 
@@ -731,6 +743,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.13/reference / 301
 /v0.13/docs/requiring-dbt-versions / 301
 /v0.14/docs/cloud-developer-ide / 301
+/v0.15/docs/cloud-import-a-project-by-git-url /docs/cloud/git/import-a-project-by-git-url 301
 
 # Removing on premise Cloud content
 /docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 301

@@ -21,7 +21,7 @@ datatype: Dict[Str, Bool]
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -58,7 +58,7 @@ This config is not implemented for sources.
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -75,7 +75,7 @@ seeds:
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -107,7 +107,7 @@ select ...
 
 ## Definition
 
-Optionally persist [resource descriptions](resource-properties/description) as
+Optionally persist [resource descriptions](/reference/resource-properties/description) as
 column and relation comments in the database. By default, documentation
 persistence is disabled, but it can be enabled for specific resources or groups of
 resources as needed.
@@ -163,7 +163,7 @@ Some known issues and limitations:
 
 ### Documenting columns and relations
 
-Supply a [description](resource-properties/description) for a model:
+Supply a [description](/reference/resource-properties/description) for a model:
 
 <File name='models/schema.yml'>
 

@@ -9,7 +9,7 @@ Before you build your adapter, we strongly encourage you to first learn dbt as a
 
 
 This guide will walk you through the first creating the necessary adapter classes and macros, and provide some resources to help you validate that your new adapter is working correctly. Once the adapter is passing most of the functional tests (see ["Testing a new adapter"](4-testing-a-new-adapter)
-), please let the community know that is available to use by adding the adapter to the ["Supported Data Platforms"](supported-data-platforms) page by following the steps given in [Documenting your adapter](5-documenting-a-new-adapter).
+), please let the community know that is available to use by adding the adapter to the ["Supported Data Platforms"](/docs/supported-data-platforms) page by following the steps given in [Documenting your adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter).
 
 For any questions you may have, don't hesitate to ask in the [#adapter-ecosystem](https://getdbt.slack.com/archives/C030A0UF5LM) Slack channel. The community is very helpful and likely has experienced a similar issue as you.
 
@@ -102,7 +102,7 @@ class MyAdapterCredentials(Credentials):
 
 There are a few things you can do to make it easier for users when connecting to your database:
 - Be sure to implement the Credentials' `_connection_keys` method shown above. This method will return the keys that should be displayed in the output of the `dbt debug` command. As a general rule, it's good to return all the arguments used in connecting to the actual database except the password (even optional arguments).
-- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](init). See more details [below](#other-files).
+- Create a `profile_template.yml` to enable configuration prompts for a brand-new user setting up a connection profile via the [`dbt init` command](/reference/commands/init). See more details [below](#other-files).
 - You may also want to define an `ALIASES` mapping on your Credentials class to include any config names you want users to be able to use in place of 'database' or 'schema'. For example if everyone using the MyAdapter database calls their databases "collections", you might do:
 
 <File name='connections.py'>
@@ -361,7 +361,7 @@ Most modern databases support a majority of the standard SQL spec. There are som
 
 The `adapter.dispatch()` macro takes a second argument, `packages`, which represents a set of "search namespaces" in which to find potential implementations of a dispatched macro. This allows users of community-supported adapters to extend or "shim" dispatched macros from common packages, such as `dbt-utils`, with adapter-specific versions in their own project or other installed packages. See:
 - "Shim" package examples: [`spark-utils`](https://github.com/dbt-labs/spark-utils), [`tsql-utils`](https://github.com/dbt-msft/tsql-utils)
-- [`adapter.dispatch` docs](dispatch)
+- [`adapter.dispatch` docs](/reference/dbt-jinja-functions/dispatch)
 
 #### Overriding adapter methods
 
@@ -409,7 +409,7 @@ This has moved to its own page: ["Testing a new adapter"](4-testing-a-new-adapte
 
 ## Documenting your new adapter
 
-This has moved to its own page: ["Documenting a new adapter"](5-documenting-a-new-adapter)
+This has moved to its own page: ["Documenting a new adapter"](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter)
 
 ## Maintaining your new adapter
 

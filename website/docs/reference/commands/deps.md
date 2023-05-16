@@ -1,5 +1,6 @@
 ---
-title: "deps"
+title: "About dbt deps command"
+sidebar_label: "deps"
 id: "deps"
 ---
 
