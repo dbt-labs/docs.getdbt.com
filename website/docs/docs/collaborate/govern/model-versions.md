@@ -390,7 +390,7 @@ For example, if your new model version is only renaming or removing certain colu
 ```sql
 {{ config(materialized = 'view') }}
 
-{% set dim_customers_v1 = ref('dim_customers', v=1)}
+{% set dim_customers_v1 = ref('dim_customers', v=1) %}
 
 select
 {{ dbt_utils.star(from=dim_customers_v1, except=["country_name"]) }}
