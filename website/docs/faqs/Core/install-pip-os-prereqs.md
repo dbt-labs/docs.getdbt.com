@@ -67,6 +67,7 @@ Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.8
 </VersionBlock>
 
 <VersionBlock lastVersion="1.5">
+
 Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.7 or higher for Windows](https://www.python.org/downloads/windows/).
 </VersionBlock>
 
