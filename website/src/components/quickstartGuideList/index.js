@@ -7,7 +7,7 @@ import QuickstartGuideCard from '../quickstartGuideCard'
 import styles from './styles.module.css';
 
 const quickstartTitle = 'Quickstart guides'
-const quickstartDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
+const quickstartDescription = 'dbt Core is a powerful open-source tool for data transformations and dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.'
 
 function QuickstartList({ quickstartData }) {
   const { siteConfig } = useDocusaurusContext()
