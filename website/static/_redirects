@@ -745,6 +745,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.13/reference / 301
 /v0.13/docs/requiring-dbt-versions / 301
 /v0.14/docs/cloud-developer-ide / 301
+/v0.15/docs/cloud-import-a-project-by-git-url /docs/cloud/git/import-a-project-by-git-url 301
 
 /v0.15/docs/configure-your-profile /docs/core/connection-profiles 301
 
