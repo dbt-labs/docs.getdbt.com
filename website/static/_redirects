@@ -1,4 +1,3 @@
-/v0.13/docs/building-a-new-adapter /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
 
 # PrivateLink to Secure redirects
 /docs/cloud/privatelink/about-privatelink /docs/cloud/secure/about-privatelink 301
@@ -649,6 +648,8 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
 
 /docs/contributing/adapter-development/3-building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
+
+/v0.13/docs/building-a-new-adapter /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
 /docs/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
 
 /docs/contributing/testing-a-new-adapter /guides/advanced/adapter-development/4-testing-a-new-adapter 301
