@@ -137,7 +137,7 @@ dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subque
 
 You can override this behavior by:
 - Defining a custom `get_where_subquery` in your root project
-- Defining a custom `<adapter>__get_where_subquery` [dispatch candidate](dispatch) in your package or adapter plugin
+- Defining a custom `<adapter>__get_where_subquery` [dispatch candidate](/reference/dbt-jinja-functions/dispatch) in your package or adapter plugin
 
 Within this macro definition, you can reference whatever custom macros you want, based on static inputs from the configuration. At simplest, this enables you to DRY up code that you'd otherwise need to repeat across many different `.yml` files. Because the `get_where_subquery` macro is resolved at runtime, your custom macros can also include [fetching the results of introspective database queries](https://docs.getdbt.com/reference/dbt-jinja-functions/run_query).
 

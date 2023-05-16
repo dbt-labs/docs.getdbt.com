@@ -252,7 +252,7 @@ Thanks to Christine Berger for her DAG diagrams!
 
 **Useful links**
 
-*   [How Fishtown Structures our dbt Project](/blog/how-we-structure-our-dbt-projects/)
+*   [How we structure our dbt Project](/guides/best-practices/how-we-structure/1-guide-overview)
 *   [Coalesce DAG Audit Talk](https://www.youtube.com/watch?v=5W6VrnHVkCA&t=2s)
 *   [Modular Data Modeling Technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 *   [Understanding Threads](/docs/core/connection-profiles#understanding-threads)
