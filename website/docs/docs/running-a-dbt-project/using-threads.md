@@ -23,4 +23,4 @@ You will define the number of threads in your `profiles.yml` file (for CLI-users
 
 ## Related docs
 - [About profiles.yml](https://docs.getdbt.com/reference/profiles.yml)
-- [Job Scheduler](/docs/deploy/job-scheduler)
+- [dbt Cloud job scheduler](/docs/deploy/job-scheduler)
