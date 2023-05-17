@@ -175,7 +175,6 @@ table td {
 }
 
 html[data-theme="dark"] table td {
-  filter: brightness(1.25);
   color: white;
 }
 
