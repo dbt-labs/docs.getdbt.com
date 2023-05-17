@@ -8,7 +8,7 @@ id: configurable-data-path
 
 <Changelog>
 
-- **v1.0.0:** The config 'data-paths' has been deprecated in favor of [`seed-paths`](seed-paths).
+- **v1.0.0:** The config 'data-paths' has been deprecated in favor of [`seed-paths`](/reference/project-configs/seed-paths).
 
 </Changelog>
 

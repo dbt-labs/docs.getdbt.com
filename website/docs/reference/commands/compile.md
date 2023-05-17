@@ -1,5 +1,6 @@
 ---
-title: "compile"
+title: "About dbt compile command"
+sidebar_label: "compile"
 id: "compile"
 ---
 
@@ -39,3 +40,7 @@ dbt compile --inline "select * from {{ ref('raw_orders') }}"
 The command accesses the data platform to cache related metadata, and to run introspective queries. Use the flags:
 - `--no-populate-cache` to disable initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query.
 - `--no-introspect` to disable instrospective queries. dbt will raise an error if a model's definition requires running one.
+
+
+### FAQs
+<FAQ src="Warehouse/db-connection-dbt-compile" />

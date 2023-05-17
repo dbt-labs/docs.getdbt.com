@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#tools-fal'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V8QW3Q4Q'
   platform_name: 'fal'
-  config_page: 'fal-configs'
+  config_page: '/reference/resource-configs/fal-configs'
 ---
 
 :::info Community plugin

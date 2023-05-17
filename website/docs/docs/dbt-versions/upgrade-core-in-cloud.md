@@ -43,7 +43,7 @@ Starting with v1.0, dbt Cloud will ensure that you're always using the latest co
   - auto-upgrading users to the subsequent minor version when critical support ends
 --->
 
-For more on version support and future releases, see [Understanding dbt Core versions](core-versions).
+For more on version support and future releases, see [Understanding dbt Core versions](/docs/dbt-versions/core).
 
 #### What will actually happen on the end of support date?
 

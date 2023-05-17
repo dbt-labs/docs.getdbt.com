@@ -13,7 +13,7 @@ You can install dbt Core and plugins using `pip` because they are Python modules
 <FAQ src="Core/install-pip-best-practices" />
 
 
-Once you know [which adapter](supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For example, if using Postgres:
+Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For example, if using Postgres:
 
 ```shell
 pip install dbt-postgres
