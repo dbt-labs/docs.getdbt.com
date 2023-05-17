@@ -24,7 +24,7 @@ The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
 
-Replace {slug} with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
+Replace `{slug}` with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
 Here is an example of an updated SAML 2.0 setup in Okta.
 
