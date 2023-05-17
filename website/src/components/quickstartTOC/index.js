@@ -13,8 +13,9 @@ function QuickstartTOC() {
   const locationPath = useLocation().pathname;
   const queryParams = queryString.parse(location.search);
 
-  const activeStepParam = queryParams.step ? Number(queryParams.step) : activeStepLocal;
   const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(locationPath) : 1;
+  const activeStepParam = queryParams.step ? Number(queryParams.step) : activeStepLocal;
+
 
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
