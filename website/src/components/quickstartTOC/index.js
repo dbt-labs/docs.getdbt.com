@@ -23,8 +23,13 @@ function QuickstartTOC() {
 
     // Add snippet container to its parent step
     snippetContainer.forEach((snippet) => {
-      const parent = snippet.parentNode;
-      while (snippet.firstChild) parent.insertBefore(snippet.firstChild, snippet);
+      const parent = snippet?.parentNode;
+      console.log(parent)
+      while (snippet?.firstChild && parent.className) {
+        if (parent) {
+          parent.insertBefore(snippet.firstChild, snippet);
+        }
+      }
     });
 
     // Create an array of objects with the id and title of each step
@@ -137,8 +142,6 @@ function QuickstartTOC() {
         }
       }
     }
-    
-    console.log("activeStep", tocList);
   }, [activeStep]);
 
   // Handle updating the active step
