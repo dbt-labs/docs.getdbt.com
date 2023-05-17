@@ -4,16 +4,22 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import style from "./styles.module.css";
-import { useLocation } from "@docusaurus/router";
+import { useLocation, useHistory } from "@docusaurus/router";
+import queryString from "query-string";
 
 function QuickstartTOC() {
-  const location = useLocation().pathname;
-  const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(location) : null;
+  const history = useHistory();
+  const location = useLocation()
+  const locationPath = useLocation().pathname;
+  const queryParams = queryString.parse(location.search);
+
+  const activeStepParam = queryParams.step ? Number(queryParams.step) : activeStepLocal;
+  const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(locationPath) : 1;
 
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
   const [activeStep, setActiveStep] = useState(activeStepLocal);
-  const [activeQuickstart, setActiveQuickstart] = useState(location);
+  const [activeQuickstart, setActiveQuickstart] = useState(locationPath);
 
   useEffect(() => {
     // Get all h2 for each step in the guide
@@ -24,7 +30,6 @@ function QuickstartTOC() {
     // Add snippet container to its parent step
     snippetContainer.forEach((snippet) => {
       const parent = snippet?.parentNode;
-      console.log(parent)
       while (snippet?.firstChild && parent.className) {
         if (parent) {
           parent.insertBefore(snippet.firstChild, snippet);
@@ -36,12 +41,12 @@ function QuickstartTOC() {
     const data = Array.from(steps).map((step, index) => ({
       id: step.id,
       title: step.innerText,
-      stepNumber: index,
+      stepNumber: index + 1,
     }));
 
     setTocData(data);
     setMounted(true);
-    setActiveStep(parseInt(activeStepLocal) || 0);
+    setActiveStep(activeStepParam || parseInt(activeStepLocal) || 1);
 
     // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
     if (mounted) {
@@ -57,11 +62,11 @@ function QuickstartTOC() {
           const nextElement = currentElement.nextElementSibling;
           wrapper.appendChild(currentElement);
           currentElement = nextElement;
-          wrapper.setAttribute("data-step", index);
+          wrapper.setAttribute("data-step", index + 1);
         } while (currentElement && currentElement.tagName !== "H2");
       });
 
-      // Find the acvtive step and show it
+      // Find the active step and show it
       const activeStepWrapper = document.querySelector(
         `.${style.stepWrapper}[data-step="${activeStep}"]`
       );
@@ -81,12 +86,12 @@ function QuickstartTOC() {
         prevButton.textContent = "Back";
         prevButton.classList.add(clsx(style.button, style.prevButton));
         prevButton.disabled = index === 0;
-        prevButton.addEventListener("click", () => handlePrev(index));
+        prevButton.addEventListener("click", () => handlePrev(index + 1));
 
         nextButton.textContent = "Next";
         nextButton.classList.add(clsx(style.button, style.nextButton));
         nextButton.disabled = index === stepWrappers.length - 1;
-        nextButton.addEventListener("click", () => handleNext(index));
+        nextButton.addEventListener("click", () => handleNext(index + 1));
 
         buttonContainer.appendChild(prevButton);
         buttonContainer.appendChild(nextButton);
@@ -111,7 +116,7 @@ function QuickstartTOC() {
     const tocItems = document.querySelectorAll(`.${style.tocItem}`);
 
     tocItems.forEach((item, i) => {
-      const isActive = i <= activeStep;
+      const isActive = i <= activeStep - 1;
 
       item.classList.toggle(clsx(style.active), isActive);
     });
@@ -127,6 +132,14 @@ function QuickstartTOC() {
     // If on mobile, auto scroll to the active step in the TOC when activeStep updates
     const tocList = document.querySelector(`.${style.tocList}`);
     const activeItems = document.querySelectorAll(`.${style.active}`);
+
+    // Add query param for the active step
+    history.replace({
+      search: queryString.stringify({
+        ...queryParams,
+        step: activeStep,
+      }),
+    });
     
     if (window.innerWidth < 996) {
       const activeItem = activeItems[activeItems.length - 1];
@@ -142,7 +155,9 @@ function QuickstartTOC() {
         }
       }
     }
-  }, [activeStep]);
+
+    console.log('current step: ', activeStep)
+  }, [activeStep, mounted]);
 
   // Handle updating the active step
   const updateStep = (currentStepIndex, newStepIndex) => {
@@ -157,6 +172,9 @@ function QuickstartTOC() {
     newStep?.classList.remove(style.hidden);
 
     setActiveStep(newStepIndex);
+
+    console.log('current step: ', currentStepIndex)
+    console.log('new step: ', newStepIndex)
   };
 
   const handleNext = (currentStepIndex) => {
@@ -184,6 +202,8 @@ function QuickstartTOC() {
     newStep?.classList.remove(style.hidden);
 
     setActiveStep(stepNumber);
+
+    console.log(stepNumber)
   };
 
   return (
@@ -191,11 +211,11 @@ function QuickstartTOC() {
       {tocData.map((step, index) => (
         <li
           key={step.id}
-          data-step={index}
+          data-step={step.stepNumber}
           className={clsx(style.tocItem)}
           onClick={handleTocClick}
         >
-          <span>{step.stepNumber + 1}</span> {step.title}
+          <span>{step.stepNumber}</span> {step.title}
         </li>
       ))}
     </ul>

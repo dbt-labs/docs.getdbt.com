@@ -92,7 +92,7 @@ html[data-theme="dark"] .tocList .active span {
     margin-left: auto;
 }
 
-.stepWrapper[data-step="0"] .nextButton {
+.stepWrapper[data-step="1"] .nextButton {
     background: var(--color-light-teal);
     color: var(--color-white)
 }
