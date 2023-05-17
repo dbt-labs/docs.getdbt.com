@@ -1,5 +1,4 @@
 import React from 'react';
-import { Children } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation } from 'swiper';
