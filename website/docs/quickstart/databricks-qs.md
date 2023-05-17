@@ -20,10 +20,18 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 :::
 
-## Prerequisites​
+### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
+
+### Related content
+
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
 
 ## Create a Databricks workspace
 
@@ -167,9 +175,9 @@ If you used Partner Connect, you can skip to [initializing your dbt project](#in
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
-1. Click **Develop** from the upper left. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
+1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
-3. Make your initial commit by clicking **Commit & Sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
+3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
     - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file: 
         ```sql
@@ -178,10 +186,9 @@ Now that you have a repository configured, you can initialize your project and s
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
 
 ## Build your first model
-1. Click **Develop** from the upper left of dbt Cloud. You need to create a new branch since the main branch is set to read-only mode. 
-2. Click **Create branch**. You can name it `add-customers-model`.
-3. Click the **...** next to the Models directory, then select **Create file**.  
-4. Name the file `models/customers.sql`, then click **Create**.
+1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
+3. Click the **...** next to the `models` directory, then select **Create file**.  
+4. Name the file `customers.sql`, then click **Create**.
 5. Copy the following query into the file and click **Save**.
 
 ```sql
@@ -364,10 +371,3 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
 <Snippet src="quickstarts/schedule-a-job" />
-
-## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)
