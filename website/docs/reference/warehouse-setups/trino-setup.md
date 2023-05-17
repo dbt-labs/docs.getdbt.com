@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-starburst-and-trino'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNNPBQ24R'
   platform_name: 'Starburst/Trino'
-  config_page: 'trino-configs'
+  config_page: '/reference/resource-configs/trino-configs'
 ---
 
 <Snippet src="warehouse-setups-cloud-callout" />

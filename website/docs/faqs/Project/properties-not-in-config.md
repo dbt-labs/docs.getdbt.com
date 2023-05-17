@@ -15,11 +15,11 @@ Certain properties are special, because:
 - They're older properties that haven't yet been redefined as configs
 
 These properties are:
-- [`description`](resource-properties/description)
-- [`tests`](resource-properties/tests)
+- [`description`](/reference/resource-properties/description)
+- [`tests`](/reference/resource-properties/tests)
 - [`docs`](/reference/resource-configs/docs)
 - `columns`
-- [`quote`](resource-properties/quote)
-- [`source` properties](source-properties) (e.g. `loaded_at_field`, `freshness`)
-- [`exposure` properties](exposure-properties) (e.g. `type`, `maturity`)
-- [`macro` properties](macro-properties) (e.g. `arguments`)
+- [`quote`](/reference/resource-properties/quote)
+- [`source` properties](/reference/source-properties) (e.g. `loaded_at_field`, `freshness`)
+- [`exposure` properties](/reference/exposure-properties) (e.g. `type`, `maturity`)
+- [`macro` properties](/reference/macro-properties) (e.g. `arguments`)

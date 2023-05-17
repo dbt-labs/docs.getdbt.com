@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-glue'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02R4HSMBAT'
   platform_name: 'AWS Glue'
-  config_page: 'glue-configs'
+  config_page: '/reference/resource-configs/glue-configs'
 ---
 
 :::info Community plugin
@@ -70,7 +70,7 @@ You will find bellow a least privileged policy to enjoy all features of **`dbt-g
 
 Please to update variables between **`<>`**, here are explanations of these arguments:
 
-|Args	|Description	| 
+|Args	|Description	|
 |---|---|
 |region|The region where your Glue database is stored |
 |AWS Account|The AWS account where you run your pipeline|
@@ -189,7 +189,7 @@ Please to update variables between **`<>`**, here are explanations of these argu
 
 ### Configuration of the local environment
 
-Because **`dbt`** and **`dbt-glue`** adapter are compatible with Python versions 3.7, 3.8, and 3.9, check the version of Python:
+Because **`dbt`** and **`dbt-glue`** adapter are compatible with Python versions 3.8, and 3.9, check the version of Python:
 
 ```bash
 $ python3 --version
@@ -267,8 +267,8 @@ The table below describes all the options.
 Most dbt Core functionality is supported, but some features are only available with Apache Hudi.
 
 Apache Hudi-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](glue-configs#the-merge-strategy))
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/glue-configs#the-merge-strategy))
 
 Some dbt features, available on the core adapters, are not yet supported on Glue:
-1. [Persisting](persist_docs) column-level descriptions as database comments
-2. [Snapshots](snapshots)
+1. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments
+2. [Snapshots](/docs/build/snapshots)

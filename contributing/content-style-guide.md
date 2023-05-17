@@ -442,6 +442,37 @@ username | login
 
 Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it is important that links are transparent, up-to-date, and lead to legitimate resources.
 
+### Internal links
+
+The full URL is not required when linking to another page in the docs.getdbt.com domain. This is preferred since the Docusaurus markdown will open the link in the same window rather than creating a new browser tab. You can use the path to the page (everything in the URL bar after docs.getdbt.com).
+
+The link paths will begin with one of the following:
+- /docs/
+- /guides/
+- /reference/
+- /community/
+
+Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses
+If we need to reference this on another page, we can remove the domain entirely:
+
+`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)`
+
+This will appear to the reader as follows:
+
+For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)
+
+You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
+
+`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).`
+
+This will appear to the reader as follows:
+
+To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).
+
+When you click on the link, it automatically takes you to the section defined at the end of the path. If the path syntax is incorrect(or does not exist), the link will take the reader to the top of the page specified in the path. 
+
+There are different methods for handling this based on page location (and other nuances), so please reference the [Docusaurus docs site](https://docusaurus.io/docs/markdown-features/links) for more detailed information. 
+
 ### Link format
 
 Hyperlinks should be text only, please avoid image-based links. The text should clearly state the destination.
