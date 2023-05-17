@@ -91,6 +91,10 @@ This macro generates the YAML for a list of model(s), which you can then paste i
 
 ```
 $ dbt run-operation generate_model_yaml --args '{"model_names": [ "activity_based_interest_activated"] }'
+```
+
+outputs:
+```
 13:09:42  Running with dbt=1.3.1
 13:09:45  version: 2
 
