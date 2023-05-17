@@ -1,6 +1,6 @@
 ---
-title: "Generating dynamic dbt docs for a whole domain at once"
-description: "For columns that are reused across models, Mikael walks through a DRY-method to generate dynamic documentation using the dbt Codegen package and docs blocks."
+title: "Accelerate your documentation workflow: Generate docs for whole folders at once"
+description: "For columns that are reused across models, Mikael walks through a DRY-method to make documentation easier, using the dbt Codegen package and docs blocks."
 slug: generating-dynamic-docs-dbt
 
 authors: [mikael_thorup]
@@ -12,33 +12,34 @@ date: 2023-05-09
 is_featured: true
 ---
 
-At [Lunar](https://www.lunar.app/), most of our dbt models are sourcing from event-driven architecture. As an example, we have the following models for our account domain in our ingestion layer:
+At [Lunar](https://www.lunar.app/), most of our dbt models are sourcing from event-driven architecture. As an example, we have the following models for our `activity_based_interest` folder in our ingestion layer:
 
-- `account_created`
-- `account_access_added` (for shared account access)
-- `account_access_removed` (for shared account access)
-- `user_primary_account`
-- `account_closed`
-- `accountnumber_to_user` (who owns what accounts)
+- `activity_based_interest_activated.sql`
+- `activity_based_interest_deactivated.sql`
+- `activity_based_interest_updated.sql`
+- `downgrade_interest_level_for_user.sql`
+- `set_inactive_interest_rate_after_july_1st_in_bec_for_user.sql`
+- `set_inactive_interest_rate_from_july_1st_in_bec_for_user.sql`
+- `set_interest_levels_from_june_1st_in_bec_for_user.sql`
 
 This results in a lot of the same columns (e.g. `account_id`) existing in different models, across different layers. This means I end up:
 
 1. Writing/copy-pasting the same documentation over and over again
 1. Halfway through, realizing I could improve the wording to make it easier to understand, and go back and update the `.yml` files I already did
 1. Realizing I made a syntax error in my `.yml` file, so I go back and fix it
-1. Realizing the columns are defined differently with different wording being used in other domains
+1. Realizing the columns are defined differently with different wording being used in other folders in our dbt project
 1. Reconsidering my choice of career and pray that a large language model will steal my job
 1. Considering if there’s a better way to be generating documentation used across different models
 
 <!--truncate-->
 
-In fact, I found a better way, and made the following meme in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/) channel #memes-and-off-topic-chatter to encapsulate this method:
+In fact, I found a better way using some CLI commands, the dbt Codegen package and docs blocks. I also made the following meme in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/) channel #memes-and-off-topic-chatter to encapsulate this method:
 
 <Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/1.png" title="Meme of writing documentation" />
 
 ## What pain is being solved?
 
-If you build models on top of event driven architecture, this method limits manual errors, makes it faster to write and maintain documentation, and improves consistency of documentation. **This documentation method saves me 50-80% of the time I previously spent on documentation, by making the documentation process in dbt more <Term id="dry" /> and automated.**
+If you need to document the same column multiple times, this method limits manual errors, makes it faster to write and maintain documentation, and improves consistency of documentation. **This documentation method saves me 50-80% of the time I previously spent on documentation, by making the documentation process in dbt more <Term id="dry" /> and automated.**
 
 ## What will you learn after reading this article?
 
@@ -210,7 +211,7 @@ Which in turn can be copy-pasted into a new `.yml` file. In our example, we writ
 
 ## Create docs blocks for the new columns
 
-[Docs blocks](https://docs.getdbt.com/docs/collaborate/documentation#using-docs-blocks) can be utilized to write more DRY and robust documentation. To use docs blocks normally, we could manually update our folder structure, the `.md` file, and the `.yml` file. Your file structure would look a bit like this:
+[Docs blocks](https://docs.getdbt.com/docs/collaborate/documentation#using-docs-blocks) can be utilized to write more DRY and robust documentation. To use docs blocks, update your folder structure to contain a `.md` file. Your file structure should now look like this:
 
 ```
 models/core/activity_based_interest
@@ -269,22 +270,19 @@ models:
         description: "{{ doc('activity_based_interest__user_id') }}"
 ```
 
-To confirm the formatting works, we run the following command to get dbt Docs up and running:
+To confirm the formatting works, run the following command to get dbt Docs up and running:
 
 ```
 $ dbt docs && dbt docs serve
 ```
 <Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/2.jpg" title="dbt Docs UI" />
 
-Here, we can confirm that the column descriptions using the doc blocks are correct.
+Here, you can confirm that the column descriptions using the doc blocks are working as intended.
  
-:::note
-Note that we would ideally like to use the `user_id` column definition from our `user_domain`, but for the sake of example, we’ll just go with it for now.
-:::
 
-### Get all columns within the domain
+### Get all unique columns within the folder
 
-To cut down on copy-pasting between your markdown and YAML files, we want to find all of the unique columns in the domain, and run the following:
+To cut down on copy-pasting between your markdown and YAML files, find all of the unique columns in the folder and subfolders, by running the following command:
 
 ```
 $ grep '      \- name:' models/core/activity_based_interest/_activity_based_interest_docs.yml | cut -c 15- | sort -u
@@ -302,7 +300,7 @@ user_id
 
 Breaking down this command:
 - `grep ' \- name:' models/core/activity_based_interest/_activity_based_interest_docs.yml` searches for the pattern ` - name:` in the file `_activity_based_interest_docs.yml` located in the directory `models/core/activity_based_interest/`.
-- `cut -c 15-` removes the first 14 characters of each line from the output.
+- `cut -c 15-` cuts the first 14 characters of each line from the output, i.e. in .yml files, we cut `      - name: ` from `      - name: some_column_name`, so you are left with only `some_column_name`.
 - `sort -u` sorts the output in alphabetical order and removes any duplicate lines.
 
 ### Format to align with Jinja docs block
@@ -330,16 +328,16 @@ Now you can add documentation to each of your columns.
 
 ## Update `.yml` file to source documentation from the `.md` file
 
-We can programmatically identify all columns, and have them point towards the newly-created documentation. In your code editor, replace `\s{6}- name: (.*)\n        description: ""` with `      - name: $1\n        description: "{{ doc('column__activity_based_interest__$1') }}`:
+You can programmatically identify all columns, and have them point towards the newly-created documentation. In your code editor, replace `\s{6}- name: (.*)\n        description: ""` with `      - name: $1\n        description: "{{ doc('column__activity_based_interest__$1') }}`:
 
 <Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/4.png" title="Replace descriptions with dynamic doc blocks" />
 
-⚠️ Some of your columns may have already been documented in other domains. In our example, we want to make the following replacements:
+⚠️ Some of your columns may already be available in existing docs blocks. In this example, the following replacements are done:
 - `{{ doc('column__activity_based_interest__user_id') }}` → `{{ doc("column_user_id") }}`
 - `{{ doc('column__activity_based_interest__event_day') }}` → `{{ doc("column_event_day") }}`
 
 ## Check that everything works
-Now we run `dbt docs generate`. If there are syntax errors, this will be found out at this stage. If successful, we can run `dbt docs serve` to perform a smoke test and ensure everything looks right:
+Run `dbt docs generate`. If there are syntax errors, this will be found out at this stage. If successful, we can run `dbt docs serve` to perform a smoke test and ensure everything looks right:
 
 <Lightbox src="/img/blog/2023-05-04-generating-dynamic-docs/5.jpg" title="dbt Docs UI showing successful documentation leveraging docs blocks" />
 
@@ -352,8 +350,8 @@ Now we run `dbt docs generate`. If there are syntax errors, this will be found o
            - name: user_id
              description: "{{ doc('dynamic_docs') }}, additional static info" 
     ```
-- Q: Should I use this approach on modifications to an existing domain? 
-    - A: When adding additional models, or additional columns to an existing domain, I would suggest adding new documentation manually.
+- Q: Should I use this approach on modifications to an existing folder? 
+    - A: When adding additional models to a folder, or additional columns to an existing model, I would suggest adding new documentation and docs blocks manually rather than programmatically.
 
 - Q: Couldn’t this be made into a shell script?
     - A: Yes! The solution above works well enough for me, but if you make a script, do let me know, as that would make this even easier to use.
