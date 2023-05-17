@@ -5,6 +5,8 @@ id: "starburst-galaxy"
 sidebar_label: "Starburst Galaxy quickstart"
 ---
 
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with [Starburst Galaxy](https://www.starburst.io/platform/starburst-galaxy/). It will show you how to:
 
 - Load data into the Amazon S3 bucket. This guide uses AWS as the cloud service provider for demonstrative purposes. Starburst Galaxy also [supports other data sources](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) such as Google Cloud, Microsoft Azure, and more.
@@ -23,13 +25,23 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 You can also watch the [Build Better Data Pipelines with dbt and Starburst](https://www.youtube.com/watch?v=tfWm4dWgwRg) YouTube video produced by Starburst Data, Inc.
 :::
 
-## Prerequisites 
+### Prerequisites 
+
 - You have a [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment in [dbt Cloud](https://www.getdbt.com/signup/). For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy).
 - You have a [Starburst Galaxy account](https://www.starburst.io/platform/starburst-galaxy/). If you don't, you can start a free trial. Refer to the [getting started guide](https://docs.starburst.io/starburst-galaxy/get-started.html) in the Starburst Galaxy docs for further setup details.
 - You have an AWS account with permissions to upload data to an S3 bucket.
 - For Amazon S3 authentication, you will need either an AWS access key and AWS secret key with access to the bucket, or you will need a cross account IAM role with access to the bucket. For details, refer to these Starburst Galaxy docs: 
     - [AWS access and secret key instructions](https://docs.starburst.io/starburst-galaxy/security/external-aws.html#aws-access-and-secret-key)
     - [Cross account IAM role](https://docs.starburst.io/starburst-galaxy/security/external-aws.html#role)
+
+
+### Related content
+
+- [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
+- [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)    
 
 ## Load data to an Amazon S3 bucket {#load-data-to-s3}
 
@@ -400,9 +412,3 @@ This quickstart focuses on using dbt Cloud to run models against a data lake (S3
 
 If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.
 
-## Related content
-- [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)
-- [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)

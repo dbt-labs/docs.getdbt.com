@@ -5,6 +5,8 @@ id: "bigquery"
 sidebar_label: "BigQuery quickstart"
 ---
 
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with BigQuery. It will show you how to: 
 
 - Create a Google Cloud Platform (GCP) project.
@@ -20,11 +22,19 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 :::
 
-## Prerequisites​
+### Prerequisites​
 
 - You have a  [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have a [Google account](https://support.google.com/accounts/answer/27441?hl=en).
 - You can use a personal or work account to set up BigQuery through [Google Cloud Platform (GCP)](https://cloud.google.com/free).
+
+### Related content
+
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
 
 ## Create a new GCP project​
 
@@ -284,9 +294,4 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 <Snippet src="quickstarts/schedule-a-job" />
 
-## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)
+

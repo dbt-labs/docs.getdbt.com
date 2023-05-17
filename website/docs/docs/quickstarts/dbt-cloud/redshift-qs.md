@@ -5,6 +5,8 @@ id: "redshift"
 sidebar_label: "Redshift quickstart"
 ---
 
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with Redshift. It will show you how to: 
 
 - Set up a Redshift cluster.
@@ -21,9 +23,19 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 :::
 
-## Prerequisites 
+### Prerequisites 
+
 - You have a  [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have an AWS account with permissions to execute a CloudFormation template to create appropriate roles and a Redshift cluster.
+
+### Related content
+
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
+
 
 ## Create a Redshift cluster
 1. Sign in to your [AWS account](https://signin.aws.amazon.com/console) as a root user or an IAM user depending on your level of access.
@@ -377,9 +389,3 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 <Snippet src="quickstarts/schedule-a-job" />
 
-## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)

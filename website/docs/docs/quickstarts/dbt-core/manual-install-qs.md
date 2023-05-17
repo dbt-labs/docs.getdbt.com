@@ -5,9 +5,11 @@ description: "Connecting your warehouse to dbt Core using the CLI."
 sidebar_label: "Manual install quickstart"
 ---
 
+## Introduction
+
 When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/docs/quickstarts/overview).
 
-## Prerequisites
+### Prerequisites
 
 * To use the dbt CLI, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/docs/core/installation) for your operating system.

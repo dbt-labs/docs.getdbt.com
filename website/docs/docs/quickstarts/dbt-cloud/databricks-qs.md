@@ -4,6 +4,9 @@ description: "Quickstart for dbt Cloud and Databricks."
 id: "databricks"
 sidebar_label: "Databricks quickstart"
 ---
+
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with Databricks. It will show you how to: 
 
 - Create a Databricks workspace.
@@ -19,10 +22,18 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 
 :::
 
-## Prerequisites​
+### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have an account with a cloud service provider (such as AWS, GCP, and Azure) and have permissions to create an S3 bucket with this account. For demonstrative purposes, this guide uses AWS as the cloud service provider.
+
+### Related content
+
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
 
 ## Create a Databricks workspace
 
@@ -362,10 +373,3 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
 <Snippet src="quickstarts/schedule-a-job" />
-
-## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)
