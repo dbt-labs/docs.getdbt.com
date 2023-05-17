@@ -5,10 +5,10 @@ description: "Learn how to use source properties in dbt."
 
 ## Related documentation
 - [Using sources](/docs/build/sources)
-- [Declaring resource properties](configs-and-properties)
+- [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
-Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](model-paths)).
+Source properties can be declared in `.yml` files in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)).
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory.
 
@@ -19,67 +19,67 @@ version: 2
 
 sources:
   - name: <string> # required
-    [description](description): <markdown_string>
-    [database](resource-properties/database): <database_name>
-    [schema](resource-properties/schema): <schema_name>
-    [loader](loader): <string>
-    [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
-    [meta](meta): {<dictionary>}
-    [tags](resource-configs/tags): [<string>]
+    [description](/reference/resource-properties/description): <markdown_string>
+    [database](/reference/resource-properties/database): <database_name>
+    [schema](/reference/resource-properties/schema): <schema_name>
+    [loader](/reference/resource-properties/loader): <string>
+    [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
+    [meta](/reference/resource-configs/meta): {<dictionary>}
+    [tags](/reference/resource-configs/tags): [<string>]
     
     # requires v1.1+
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       [<source_config>](source-configs): <config_value>
 
-    [overrides](resource-properties/overrides): <string>
+    [overrides](/reference/resource-properties/overrides): <string>
 
-    [freshness](resource-properties/freshness):
+    [freshness](/reference/resource-properties/freshness):
       warn_after:
-        [count](resource-properties/freshness#count): <positive_integer>
-        [period](resource-properties/freshness#period): minute | hour | day
+        [count](/reference/resource-properties/freshness#count): <positive_integer>
+        [period](/reference/resource-properties/freshness#period): minute | hour | day
       error_after:
-        [count](resource-properties/freshness#count): <positive_integer>
-        [period](resource-properties/freshness#period): minute | hour | day
-      [filter](resource-properties/freshness#filter): <where-condition>
+        [count](/reference/resource-properties/freshness#count): <positive_integer>
+        [period](/reference/resource-properties/freshness#period): minute | hour | day
+      [filter](/reference/resource-properties/freshness#filter): <where-condition>
 
-    [quoting](resource-properties/quoting):
+    [quoting](/reference/resource-properties/quoting):
       database: true | false
       schema: true | false
       identifier: true | false
 
     tables:
       - name: <string> #required
-        [description](description): <markdown_string>
-        [meta](meta): {<dictionary>}
-        [identifier](identifier): <table_name>
-        [loaded_at_field](resource-properties/freshness#loaded_at_field): <column_name>
-        [tests](resource-properties/tests):
+        [description](/reference/resource-properties/description): <markdown_string>
+        [meta](/reference/resource-configs/meta): {<dictionary>}
+        [identifier](/reference/resource-properties/identifier): <table_name>
+        [loaded_at_field](/reference/resource-properties/freshness#loaded_at_field): <column_name>
+        [tests](/reference/resource-properties/tests):
           - <test>
           - ... # declare additional tests
-        [tags](resource-configs/tags): [<string>]
-        [freshness](resource-properties/freshness):
+        [tags](/reference/resource-configs/tags): [<string>]
+        [freshness](/reference/resource-properties/freshness):
           warn_after:
-            [count](resource-properties/freshness#count): <positive_integer>
-            [period](resource-properties/freshness#period): minute | hour | day
+            [count](/reference/resource-properties/freshness#count): <positive_integer>
+            [period](/reference/resource-properties/freshness#period): minute | hour | day
           error_after:
-            [count](resource-properties/freshness#count): <positive_integer>
-            [period](resource-properties/freshness#period): minute | hour | day
-          [filter](resource-properties/freshness#filter): <where-condition>
+            [count](/reference/resource-properties/freshness#count): <positive_integer>
+            [period](/reference/resource-properties/freshness#period): minute | hour | day
+          [filter](/reference/resource-properties/freshness#filter): <where-condition>
 
-        [quoting](resource-properties/quoting):
+        [quoting](/reference/resource-properties/quoting):
           database: true | false
           schema: true | false
           identifier: true | false
-        [external](resource-properties/external): {<dictionary>}
+        [external](/reference/resource-properties/external): {<dictionary>}
         columns:
           - name: <column_name> # required
-            [description](description): <markdown_string>
-            [meta](meta): {<dictionary>}
-            [quote](quote): true | false
-            [tests](resource-properties/tests):
+            [description](/reference/resource-properties/description): <markdown_string>
+            [meta](/reference/resource-configs/meta): {<dictionary>}
+            [quote](/reference/resource-properties/quote): true | false
+            [tests](/reference/resource-properties/tests):
               - <test>
               - ... # declare additional tests
-            [tags](resource-configs/tags): [<string>]
+            [tags](/reference/resource-configs/tags): [<string>]
           - name: ... # declare properties of additional columns
 
       - name: ... # declare properties of additional source tables

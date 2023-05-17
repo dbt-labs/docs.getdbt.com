@@ -8,7 +8,7 @@ description: "Read this guide to learn about using test configurations in dbt."
 * [Tests](/docs/build/tests)
 
 Tests can be configured in a few different ways:
-1. Properties within `.yml` definition (generic tests only, see [test properties](resource-properties/tests) for full syntax)
+1. Properties within `.yml` definition (generic tests only, see [test properties](/reference/resource-properties/tests) for full syntax)
 2. A `config()` block within the test's SQL definition
 3. In `dbt_project.yml`
 
@@ -35,14 +35,14 @@ Click the link on each configuration option to read more about what it can do.
 
 ```yaml
 tests:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[fail_calc](fail_calc): <string>
-    [+](plus-prefix)[limit](limit): <integer>
-    [+](plus-prefix)[severity](severity): error | warn
-    [+](plus-prefix)[error_if](severity): <string>
-    [+](plus-prefix)[warn_if](severity): <string>
-    [+](plus-prefix)[store_failures](store_failures): true | false
-    [+](plus-prefix)[where](where): <string>
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[fail_calc](/reference/resource-configs/fail_calc): <string>
+    [+](/reference/resource-configs/plus-prefix)[limit](/reference/resource-configs/limit): <integer>
+    [+](/reference/resource-configs/plus-prefix)[severity](/reference/resource-configs/severity): error | warn
+    [+](/reference/resource-configs/plus-prefix)[error_if](/reference/resource-configs/severity): <string>
+    [+](/reference/resource-configs/plus-prefix)[warn_if](/reference/resource-configs/severity): <string>
+    [+](/reference/resource-configs/plus-prefix)[store_failures](/reference/resource-configs/store_failures): true | false
+    [+](/reference/resource-configs/plus-prefix)[where](/reference/resource-configs/where): <string>
 
 ```
 
@@ -56,13 +56,13 @@ tests:
 ```jinja
 
 {{ config(
-    [fail_calc](fail_calc) = "<string>",
-    [limit](limit) = <integer>,
-    [severity](severity) = "error | warn",
-    [error_if](severity) = "<string>",
-    [warn_if](severity) = "<string>",
-    [store_failures](store_failures) = true | false,
-    [where](where) = "<string>"
+    [fail_calc](/reference/resource-configs/fail_calc) = "<string>",
+    [limit](/reference/resource-configs/limit) = <integer>,
+    [severity](/reference/resource-configs/severity) = "error | warn",
+    [error_if](/reference/resource-configs/severity) = "<string>",
+    [warn_if](/reference/resource-configs/severity) = "<string>",
+    [store_failures](/reference/resource-configs/store_failures) = true | false,
+    [where](/reference/resource-configs/where) = "<string>"
 ) }}
 
 ```
@@ -80,28 +80,28 @@ version: 2
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
-            [fail_calc](fail_calc): <string>
-            [limit](limit): <integer>
-            [severity](severity): error | warn
-            [error_if](severity): <string>
-            [warn_if](severity): <string>
-            [store_failures](store_failures): true | false
-            [where](where): <string>
+          [config](/reference/resource-properties/config):
+            [fail_calc](/reference/resource-configs/fail_calc): <string>
+            [limit](/reference/resource-configs/limit): <integer>
+            [severity](/reference/resource-configs/severity): error | warn
+            [error_if](/reference/resource-configs/severity): <string>
+            [warn_if](/reference/resource-configs/severity): <string>
+            [store_failures](/reference/resource-configs/store_failures): true | false
+            [where](/reference/resource-configs/where): <string>
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
-                [fail_calc](fail_calc): <string>
-                [limit](limit): <integer>
-                [severity](severity): error | warn
-                [error_if](severity): <string>
-                [warn_if](severity): <string>
-                [store_failures](store_failures): true | false
-                [where](where): <string>
+              [config](/reference/resource-properties/config):
+                [fail_calc](/reference/resource-configs/fail_calc): <string>
+                [limit](/reference/resource-configs/limit): <integer>
+                [severity](/reference/resource-configs/severity): error | warn
+                [error_if](/reference/resource-configs/severity): <string>
+                [warn_if](/reference/resource-configs/severity): <string>
+                [store_failures](/reference/resource-configs/store_failures): true | false
+                [where](/reference/resource-configs/where): <string>
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.
@@ -130,14 +130,14 @@ This configuration mechanism is supported for specific instances of generic test
 
 ```yaml
 tests:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[meta](resource-configs/meta): {dictionary}
-    # relevant for [store_failures](resource-configs/store_failures) only
-    [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](resource-configs/schema): <string>
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {dictionary}
+    # relevant for [store_failures](/reference/resource-configs/store_failures) only
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
 ```
 </File>
 
@@ -149,12 +149,12 @@ tests:
 ```jinja
 
 {{ config(
-    [enabled](enabled)=true | false,
-    [tags](resource-configs/tags)="<string>" | ["<string>"]
-    [meta](resource-configs/meta)={dictionary},
-    [database](resource-configs/database)="<string>",
-    [schema](resource-configs/schema)="<string>",
-    [alias](resource-configs/alias)="<string>",
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"]
+    [meta](/reference/resource-configs/meta)={dictionary},
+    [database](/reference/resource-configs/database)="<string>",
+    [schema](/reference/resource-properties/schema)="<string>",
+    [alias](/reference/resource-configs/alias)="<string>",
 ) }}
 
 ```
@@ -171,28 +171,28 @@ version: 2
     tests:
       - [<test_name>](#test_name):
           <argument_name>: <argument_value>
-          [config](resource-properties/config):
-            [enabled](enabled): true | false
-            [tags](resource-configs/tags): <string> | [<string>]
-            [meta](resource-configs/meta): {dictionary}
-            # relevant for [store_failures](resource-configs/store_failures) only
-            [database](resource-configs/database): <string>
-            [schema](resource-configs/schema): <string>
-            [alias](resource-configs/alias): <string>
+          [config](/reference/resource-properties/config):
+            [enabled](/reference/resource-configs/enabled): true | false
+            [tags](/reference/resource-configs/tags): <string> | [<string>]
+            [meta](/reference/resource-configs/meta): {dictionary}
+            # relevant for [store_failures](/reference/resource-configs/store_failures) only
+            [database](/reference/resource-configs/database): <string>
+            [schema](/reference/resource-properties/schema): <string>
+            [alias](/reference/resource-configs/alias): <string>
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
-              [config](resource-properties/config):
-                [enabled](enabled): true | false
-                [tags](resource-configs/tags): <string> | [<string>]
-                [meta](resource-configs/meta): {dictionary}
-                # relevant for [store_failures](resource-configs/store_failures) only
-                [database](resource-configs/database): <string>
-                [schema](resource-configs/schema): <string>
-                [alias](resource-configs/alias): <string>
+              [config](/reference/resource-properties/config):
+                [enabled](/reference/resource-configs/enabled): true | false
+                [tags](/reference/resource-configs/tags): <string> | [<string>]
+                [meta](/reference/resource-configs/meta): {dictionary}
+                # relevant for [store_failures](/reference/resource-configs/store_failures) only
+                [database](/reference/resource-configs/database): <string>
+                [schema](/reference/resource-properties/schema): <string>
+                [alias](/reference/resource-configs/alias): <string>
 ```
 
 This configuration mechanism is supported for specific instances of generic tests only. To configure a specific singular test, you should use the `config()` macro in its SQL definition.

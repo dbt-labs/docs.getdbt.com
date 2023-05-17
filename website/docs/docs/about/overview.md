@@ -46,8 +46,8 @@ While there are a large number of great languages for manipulating data, we’ve
 
 # What databases does dbt currently support?
 
-See [Supported Data Platforms](supported-data-platforms) to view the full list of supported databases, warehouses, and query engines.
+See [Supported Data Platforms](/docs/supported-data-platforms) to view the full list of supported databases, warehouses, and query engines.
 
 # How do I get started?
 
-dbt is open source and completely free to download and use. See our [Getting Started guide](introduction) for more.
+dbt is open source and completely free to download and use. See our [Getting Started guide](/docs/introduction) for more.

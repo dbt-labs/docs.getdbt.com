@@ -20,7 +20,7 @@ datatype: "[column_name] | all"
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: check
     +check_cols: [column_name] | all
 
@@ -33,7 +33,7 @@ A list of columns within the results of your snapshot query to check for changes
 
 Alternatively, use all columns using the `all` value (however this may be less performant).
 
-This parameter is **required if using the `check` [strategy](strategy)**.
+This parameter is **required if using the `check` [strategy](/reference/resource-configs/strategy)**.
 
 ## Default
 No default is provided.

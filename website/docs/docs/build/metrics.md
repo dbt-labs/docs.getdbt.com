@@ -24,7 +24,7 @@ A metric is an aggregation over a <Term id="table" /> that supports zero or more
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](/docs/build/exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 Review the video below to learn more about metrics, why they're important, and how to get started:
     
@@ -33,10 +33,10 @@ Review the video below to learn more about metrics, why they're important, and h
 ### Benefits of defining metrics
 
 **Use metric specifications in downstream tools**  
-dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.
+dbt's compilation context can access metrics via the [`graph.metrics` variable](/reference/dbt-jinja-functions/graph). The [manifest artifact](/reference/artifacts/manifest-json) includes metrics for downstream metadata consumption.
 
 **See and select dependencies**   
-As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
+As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](/docs/collaborate/documentation). For more information, see "[The `metric:` selection method](/reference/node-selection/methods#the-metric-method)."
 
 <Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
@@ -68,7 +68,7 @@ metrics:
   - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    [description](description): "The 14 day rolling count of paying customers using the product"
+    [description](/reference/resource-properties/description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
     expression: user_id 
@@ -99,11 +99,11 @@ metrics:
         value: "'2020-01-01'"
         
     # general properties
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
       treat_null_values_as_zero: true | false
 
-    [meta](resource-configs/meta): {team: Finance}
+    [meta](/reference/resource-configs/meta): {team: Finance}
 ```
 </VersionBlock> 
 

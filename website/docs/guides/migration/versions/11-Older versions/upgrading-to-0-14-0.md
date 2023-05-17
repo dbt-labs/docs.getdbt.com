@@ -12,7 +12,7 @@ This guide outlines migration instructions for:
 
 ## Upgrading to Snapshot Blocks
 
-In dbt v0.14.0, `archives` have been replaced by `snapshots`. Snapshots accomplish the same goal as archives, but are more powerful and more flexible. For the complete guide on using snapshots, consult the [snapshot documentation](snapshots).
+In dbt v0.14.0, `archives` have been replaced by `snapshots`. Snapshots accomplish the same goal as archives, but are more powerful and more flexible. For the complete guide on using snapshots, consult the [snapshot documentation](/docs/build/snapshots).
 
 There are a handful of changes to be aware of as you migrate from archives to snapshots:
 - meta column names are now prefixed with `dbt_`
@@ -105,7 +105,7 @@ Next, inspect the new snapshots in your `snapshots/` directory. There should be 
 
  When you are confident that the migration has completed successfully, you can manually delete the backup tables in your archived schema(s). These backup tables will be suffixed with `_dbt_archive_migration_backup`.
 
-Snapshots participate in the dbt graph, so feel free to replace any `schema.table` references in your model code with `{{ ref('archive_name') }}`. You may also need to make changes to downstream models or reports to account for the changes to your snapshot meta-column names. Consult the [snapshot docs](snapshots) for full usage instructions.
+Snapshots participate in the dbt graph, so feel free to replace any `schema.table` references in your model code with `{{ ref('archive_name') }}`. You may also need to make changes to downstream models or reports to account for the changes to your snapshot meta-column names. Consult the [snapshot docs](/docs/build/snapshots) for full usage instructions.
 
 ### Migrating archives manually (not recommended)
 
@@ -156,7 +156,7 @@ The `--non-destructive` flag was problematic for a few reasons:
 
 Snowflake, BigQuery, SparkSQL, and Presto users should be unaffected by this change as there is limited merit to using the `--non-destructive` flag on these databases.
 
-Redshift users should consider using the [bind: false](redshift-configs#late-binding-views) config to instruct dbt to create unbound views.
+Redshift users should consider using the [bind: false](/reference/resource-configs/redshift-configs#late-binding-views) config to instruct dbt to create unbound views.
 
 Postgres users should ensure that they use table or incremental models for relations which are queried by end-users.
 
