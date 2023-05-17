@@ -444,7 +444,9 @@ Links embedded in documentation are about trust. Users trust that we will lead t
 
 ### Internal links
 
-We require root-relative _file_ paths (include the file extension, such as `.md`) or root-relative _URL_ paths (don't include `.md`) without the domain, docs.getdbt.com. We prefer this over using document-relative paths (relating to your current document, like one directory above it `../LinkedDocument`) because root-relative paths will work properly during local development and testing, and moving a document won't break the links it contains.  
+All internal links should use relative and not absolute paths. We construct these paths in relation to the content root, which is `[https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs)`, and they don't include the domain, https://docs.getdbt.com.
+
+We require  either _file_ paths relative to the content root (these include the file extension, such as `.md`) or _URL_ paths relative to the content root (these don't include `.md`). We avoid paths relative to the document (for example, one directory above a document `../LinkedDocument`) because they won't work during local development and testing, and moving a document won't break the links it contains.  
 
 Markdown links in Docusaurus open in the same window rather than creating a new browser tab, but you can use HTML to open a link in a new tab.
 
