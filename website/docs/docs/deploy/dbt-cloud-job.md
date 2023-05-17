@@ -5,9 +5,9 @@ description: "You can enable continuous integration (CI) to test every single ch
 tags: ["scheduler"]
 ---
 
-When you [deploy dbt jobs](docs/deploy/deployments) with dbt Cloud, you are using the built-in scheduler. By design, the scheduler helps streamline your dbt project deployments and runs, keeps your data pipelines functioning seamlessly and efficiently, governs data through standardized code change practices, automates your dbt jobs, and enables teams to get results faster with less effort.
+When you [deploy dbt jobs](docs/deploy/deployments) with dbt Cloud, you are using the built-in job scheduler. This eliminates the need to manually run dbt commands from the command line or set up an orchestration system. By design, the job scheduler helps streamline your dbt project deployments and runs, keeps your data pipelines functioning seamlessly and efficiently, governs data through standardized practices for making code changes, automates your dbt jobs, and enables teams to get results faster with less effort.
 
-Running dbt in production eliminates the need to manually run dbt commands from the command line or set up an orchestration system. 
+Learn about more features you can use in dbt Cloud that can help you deploy your jobs easier, faster, and also to monitor those jobs for further fine-tuning. 
 
 <div className="grid--2-col">
 
@@ -31,7 +31,7 @@ Running dbt in production eliminates the need to manually run dbt commands from 
 
 <Card
     title="Job triggers"
-    body="Set up triggers in dbt Cloud so it knows when to run your dbt job and how to run it. You can trigger a job by setting a schedule for it, through Git PRs using Slim CI, or from an API call."
+    body="Set up triggers in dbt Cloud so it knows when to run your dbt job and how to run it. You can trigger a job by setting a schedule for it, through Git PRs using Slim CI, or with an API call."
     link="/docs/deploy/job-triggers"
     icon="pencil-paper"/>
 

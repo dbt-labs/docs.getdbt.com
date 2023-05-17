@@ -1,12 +1,12 @@
 ---
-title: "The dbt Cloud scheduler"
+title: "Job scheduler"
 id: "job-scheduler"
 sidebar_label: "Job scheduler"
-description: "The dbt Cloud scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
+description: "The dbt Cloud job scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
 tags: [scheduler]
 ---
 
-The scheduler is the backbone of running jobs in dbt Cloud, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The scheduler frees teams from having to build and maintain their own infrastructure and ensures the timeliness and reliability of data transformations.
+The job scheduler is the backbone of running jobs in dbt Cloud, bringing power and simplicity to building data pipelines in both continuous integration and production contexts. The scheduler frees teams from having to build and maintain their own infrastructure, and ensures the timeliness and reliability of data transformations.
 
 The scheduler enables both cron-based and event-driven execution of dbt commands in the user’s data platform. Specifically, it handles:
 
@@ -17,7 +17,7 @@ The scheduler enables both cron-based and event-driven execution of dbt commands
 
 The scheduler handles various tasks including queuing jobs, creating temporary environments to run the dbt commands required for those jobs, providing logs for debugging and remediation, and storing dbt artifacts for direct consumption/ingestion by the Metadata API. 
 
-**Note**: Executions performed in the dbt Cloud IDE aren't included in the Scheduler's handling. For example, dbt commands executed in the IDE won't affect the Scheduler or your run slots. 
+**Note**: Executions performed in the dbt Cloud IDE aren't included in the scheduler's handling. For example, dbt commands executed in the IDE won't affect the Scheduler or your run slots. 
 
 The scheduler powers running dbt in staging and production environments, bringing ease and confidence to CI/CD workflows and enabling observability and governance in deploying dbt at scale. 
 
@@ -25,7 +25,7 @@ The scheduler powers running dbt in staging and production environments, bringin
 
 ## Scheduler terms
 
-Familiarize yourself with these useful terms to help you understand how the dbt Cloud scheduler works.
+Familiarize yourself with these useful terms to help you understand how the job scheduler works.
 
 | Term | Definition |
 | --- | --- |
@@ -42,41 +42,24 @@ Familiarize yourself with these useful terms to help you understand how the dbt 
 
 ## Scheduler queue
 
-The dbt Cloud scheduler queues a deployment job to be processed when it's triggered to run, either by schedule, by API, by PR trigger, or manually. 
+The scheduler queues a deployment job to be processed when it's triggered to run because of a [set schedule](#create-and-schedule-jobs), by an API call, or manually. 
 
 Before the job starts executing, the scheduler checks these conditions to determine if the run can start executing:
 
-- **Is there a run slot that's available on the account for use?** &mdash; If all run slots are occupied, the queued run will wait. The wait time is displayed in dbt Cloud. If there are long wait times, [upgrading to enterprise](https://www.getdbt.com/contact/) can provide more run slots and allow for higher job concurrency.
+- **Is there a run slot that's available on the account for use?** &mdash; If all run slots are occupied, the queued run will wait. The wait time is displayed in dbt Cloud. If there are long wait times, [upgrading to Enterprise](https://www.getdbt.com/contact/) can provide more run slots and allow for higher job concurrency.
 
 - **Does this same job have a run already in progress?** &mdash; The scheduler executes distinct runs of the same dbt Cloud job serially to avoid model build collisions. If there's a job already running, the queued job will wait, and the wait time will be displayed in dbt Cloud.
 
-If there is an available run slot and there isn't an actively running instance of the job, the Scheduler will prepare the job to run in the user's cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and Git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time.**
+If there is an available run slot and there isn't an actively running instance of the job, the scheduler will prepare the job to run in your cloud data platform. This prep involves readying a Kubernetes pod with the right version of dbt installed, setting environment variables, loading data platform credentials, and Git provider authorization, amongst other environment-setting tasks. The time it takes to prepare the job is displayed as **prep time** in the UI.
 
 Together, **wait time** plus **prep time** is the total time a run spends in the queue (or **Time in queue**).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
-### Treatment of deployment jobs 
-When a dbt Cloud job is triggered to run, either [by schedule](#create-and-schedule-jobs) or by API, the scheduler queues the run to be processed. The scheduler then checks these conditions to see if the run should start executing:
+### Treatment of CI jobs
+When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/cloud-ci-job). First, it queues a CI job to be processed when it's triggered to run by a Git pull request. And, the conditions the scheduler checks to determine if the run can start executing are also different: 
 
-1. The account must have an available run slot. 
-    
-    If all run slots are occupied, the queued run will wait. The time in the queue is displayed as wait time in dbt Cloud. If you notice long waiting times, consider upgrading to enterprise to purchase more run slots, which will allow for higher job concurrency.
-    
-2. There must not be a run of the same job already in-flight. 
-    
-    The dbt Cloud Scheduler executes distinct runs of the same dbt Cloud job serially, in order to reduce the risk of model build collisions. If there is a run of the same job already running, the queued run will wait. This time in the queue is displayed as waiting time in dbt Cloud.
-    
-
-If these conditions are met, the scheduler prepares the job to run in the customer’s cloud data platform. This time in the queue is displayed as **prep time**.
-
-### Treatment of Slim CI jobs
-When a [Slim CI job](https://docs.getdbt.com/docs/deploy/cloud-ci-job) is triggered to run by a pull request from a connected dbt repository, the scheduler queues the CI run with the following behaviors:
-
-1. CI runs do not consume run slots
-CI runs will never block production runs.
-2. CI runs execute in parallel
-CI runs build into unique temporary schemas, and CI checks will be processed in parallel so as not to slow down team productivity.
+- **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.- **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity.
 
 ## Job memory
 
@@ -108,15 +91,6 @@ The scheduler prevents queue clog by canceling runs that aren't needed, ensuring
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/job-triggers).
 
-## Prerequisites
-
-- You must have a dbt Cloud account and [Developer seat license](/docs/cloud/manage-access/seats-and-users). If you don't, you can [sign up](https://www.getdbt.com/signup/) for a [free account](https://www.getdbt.com/pricing/). 
-- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
-- You must [create and schedule a dbt Cloud job](#create-and-schedule-jobs).
-- You must have [access permission](/docs/cloud/manage-access/about-user-access) to read, create, edit, or run jobs.
-- You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments). 
-- Your deployment environment must be on dbt version 1.0 or higher
-
 ## Create and schedule jobs {#create-and-schedule-jobs}
 
 Jobs make it easy to run dbt commands against a project in the your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
@@ -129,6 +103,17 @@ Jobs make it easy to run dbt commands against a project in the your cloud data p
 - Detailed run steps with logs and their statuses
 
 You can create a job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). 
+
+### Prerequisites
+
+- You must have a dbt Cloud account and [Developer seat license](/docs/cloud/manage-access/seats-and-users). If you don't, you can [sign up](https://www.getdbt.com/signup/) for a [free account](https://www.getdbt.com/pricing/). 
+- You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
+- You must [create and schedule a dbt Cloud job](#create-and-schedule-jobs).
+- You must have [access permission](/docs/cloud/manage-access/about-user-access) to read, create, edit, or run jobs.
+- You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments). 
+- Your deployment environment must be on dbt version 1.0 or higher
+
+### Steps
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 1. Provide a job name, for example "Production run". 
@@ -158,11 +143,9 @@ You can create a job and configure it to run on [scheduled days and times](/docs
     * **Continuous Integration** tab &mdash; Configure [continuous integration (CI)](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository.
     * **API** tab &mdash; Use the [dbt API](/docs/dbt-cloud-apis/overview) to trigger a job or send events to other systems.
 
-7. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under **Run history**.
-
-
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
+7. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under **Run history**.
 
 ## Related docs
 - [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#about-dbt-cloud-architecture)
