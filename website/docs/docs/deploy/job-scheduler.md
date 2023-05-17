@@ -59,7 +59,8 @@ Together, **wait time** plus **prep time** is the total time a run spends in the
 ### Treatment of CI jobs
 When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/cloud-ci-job). First, it queues a CI job to be processed when it's triggered to run by a Git pull request. And, the conditions the scheduler checks to determine if the run can start executing are also different: 
 
-- **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.- **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity.
+- **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.
+- **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity.
 
 ## Job memory
 
