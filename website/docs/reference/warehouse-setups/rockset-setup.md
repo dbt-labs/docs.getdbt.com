@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#dbt-rockset'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02J7AZUAMN'
   platform_name: 'Rockset'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor-supported plugin

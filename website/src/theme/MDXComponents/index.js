@@ -6,6 +6,7 @@ import MDXDetails from '@theme/MDXComponents/Details';
 import MDXHeading from '@theme/MDXComponents/Heading';
 import MDXUl from '@theme/MDXComponents/Ul';
 import MDXImg from '@theme/MDXComponents/Img';
+import MDXA from '@theme/MDXComponents/A';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
 
@@ -22,7 +23,6 @@ import FAQ from '@site/src/components/faqs';
 import FAQList from '@site/src/components/faqList';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
-import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
@@ -45,7 +45,7 @@ import dbtEditor from '@site/src/components/dbt-editor';
 const MDXComponents = {
   head: MDXHead,
   code: MDXCode,
-  a: (props) => <Link {...props} />,
+  a: MDXA,
   pre: MDXPre,
   details: MDXDetails,
   ul: MDXUl,
@@ -71,7 +71,6 @@ const MDXComponents = {
   File: File,
   Hero: Hero,
   Lightbox: Lightbox,
-  Link: Link,
   LoomVideo: LoomVideo,
   PostCarousel: PostCarousel,
   Tabs: Tabs,

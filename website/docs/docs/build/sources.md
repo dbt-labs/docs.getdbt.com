@@ -7,10 +7,10 @@ search_weight: "heavy"
 ---
 
 ## Related reference docs
-* [Source properties](source-properties)
-* [Source configurations](source-configs)
+* [Source properties](/reference/source-properties)
+* [Source configurations](reference/source-configs)
 * [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
-* [`source freshness` command](commands/source)
+* [`source freshness` command](/reference/commands/source)
 
 ## Using sources
 Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
@@ -44,7 +44,7 @@ sources:
 
 *By default, `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs from the existing schema.
 
-If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
+If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](/reference/configs-and-properties) before proceeding.
 
 ### Selecting from a source
 
@@ -91,7 +91,7 @@ You can also:
 - Add tests to sources
 - Add descriptions to sources, that get rendered as part of your documentation site
 
-These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/tests) and [documentation](documentation)).
+These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation)).
 
 <File name='models/<filename>.yml'>
 
@@ -121,7 +121,7 @@ sources:
 
 </File>
 
-You can find more details on the available properties for sources in the [reference section](source-properties).
+You can find more details on the available properties for sources in the [reference section](/reference/source-properties).
 
 ### FAQs
 <FAQ src="Project/source-has-bad-name" />
@@ -171,7 +171,7 @@ Additionally, the `loaded_at_field` is required to calculate freshness for a tab
 These configs are applied hierarchically, so `freshness` and `loaded_at_field` values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
 ### Checking source freshness
-To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](commands/source)):
+To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](/reference/commands/source)):
 
 ```
 $ dbt source freshness

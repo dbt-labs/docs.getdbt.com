@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-sqlserver'
   slack_channel_link: 'https://getdbt.slack.com/archives/CMRMDDQ9W'
   platform_name: 'SQL Server'
-  config_page: 'mssql-configs'
+  config_page: '/reference/resource-configs/mssql-configs'
 ---
 
 :::info Community plugin

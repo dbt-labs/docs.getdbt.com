@@ -13,7 +13,7 @@ Deferral is a powerful, complex feature that enables compelling workflows. As th
 
 Defer is a powerful feature that makes it possible to run a subset of models or tests in a [sandbox environment](docs/collaborate/environments/environments-in-dbt) without having to first build their upstream parents. This can save time and computational resources when you want to test a small number of models in a large project.
 
-Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/about-state).
+Defer requires that a manifest from a previous dbt invocation be passed to the `--state` flag or env var. Together with the `state:` selection method, these features enable "Slim CI". Read more about [state](/docs/deploy/project-state).
 ### Usage
 
 ```shell
@@ -67,7 +67,7 @@ You can optionally skip the second criterion by passing the `--favor-state` flag
 
 In my local development environment, I create all models in my target schema, `dev_alice`. In production, the same models are created in a schema named `prod`.
 
-I access the dbt-generated [artifacts](artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
+I access the dbt-generated [artifacts](/docs/deploy/artifacts) (namely `manifest.json`) from a production run, and copy them into a local directory called `prod-run-artifacts`.
 
 ### run
 I've been working on `model_b`:
