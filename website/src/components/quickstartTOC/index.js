@@ -14,7 +14,7 @@ function QuickstartTOC() {
   const queryParams = queryString.parse(location.search);
 
   const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(locationPath) : 1;
-  const activeStepParam = queryParams.step ? Number(queryParams.step) : activeStepLocal;
+  const activeStepParam = queryParams.step ? (queryParams.step) : activeStepLocal ? activeStepLocal : 1;
 
 
   const [mounted, setMounted] = useState(false);
@@ -179,7 +179,7 @@ function QuickstartTOC() {
   };
 
   const handleNext = (currentStepIndex) => {
-    if (currentStepIndex < tocData.length - 1) {
+    if (currentStepIndex <= tocData.length - 1) {
       updateStep(currentStepIndex, currentStepIndex + 1);
     }
   };
@@ -203,13 +203,11 @@ function QuickstartTOC() {
     newStep?.classList.remove(style.hidden);
 
     setActiveStep(stepNumber);
-
-    console.log(stepNumber)
   };
 
   return (
     <ul className={style.tocList}>
-      {tocData.map((step, index) => (
+      {tocData.map((step) => (
         <li
           key={step.id}
           data-step={step.stepNumber}
