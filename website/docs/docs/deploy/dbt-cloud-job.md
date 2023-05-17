@@ -55,7 +55,7 @@ Learn about more features you can use in dbt Cloud that can help you deploy your
 
 <Card
     title="Dashboard status tiles"
-    body="Set up Dashboard status tiles so you can get a quick success/fail update on your checks, like data freshness and data quality. "
+    body="Set up status tiles so you can get quick success/fail updates about your checks in the Dashboard, checks like data freshness and data quality. "
     link="/docs/deploy/dashboard-status-tiles"
     icon="pencil-paper"/>
 
