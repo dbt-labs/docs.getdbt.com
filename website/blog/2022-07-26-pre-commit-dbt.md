@@ -179,7 +179,7 @@ jobs:
     # This action will output all the files that are being created and modified in our PR
       - name: Get changed files
         id: get_file_changes
-        uses: trilom/file-changes-action@v1
+        uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
 
