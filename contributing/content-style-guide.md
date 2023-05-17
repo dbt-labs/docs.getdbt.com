@@ -444,7 +444,7 @@ Links embedded in documentation are about trust. Users trust that we will lead t
 
 ### Internal links
 
-All internal links should use relative and not absolute paths. We construct these paths in relation to the content root, which is`[docs.getdbt.com repository/website/docs](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs)`, and they don't include the domain, https://docs.getdbt.com.
+All internal links should use relative and not absolute paths. We construct these paths in relation to the content root, which is`[_docs.getdbt.com repository_/website/docs](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs)`, and they don't include the domain, https://docs.getdbt.com.
 
 We require  either _file_ paths relative to the content root (these include the file extension, such as `.md`) or _URL_ paths relative to the content root (these don't include `.md`). We avoid paths relative to the document (for example, one directory above a document `../LinkedDocument`) because they won't work during local development and testing, and moving a document won't break the links it contains.  
 
