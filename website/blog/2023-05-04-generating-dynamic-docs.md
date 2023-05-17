@@ -8,7 +8,7 @@ authors: [mikael_thorup]
 tags: [dbt tutorials]
 hide_table_of_contents: false
 
-date: 2023-05-09
+date: 2023-05-17
 is_featured: true
 ---
 
