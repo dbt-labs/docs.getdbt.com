@@ -194,6 +194,45 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Build your Semantic Layer",
+          link: { type: "doc", id: "docs/build/build-semantic-layer-intro"},
+          collapsed: true,
+          items: [
+            {
+              type: "category",
+              label: "About MetricFlow",
+              link: { type: "doc", id: "docs/build/metricflow-core-concepts" },
+              items: [
+                "docs/build/join-logic",
+                "docs/build/validation-overview",
+              ]
+            },
+            {
+              type: "category",
+              label: "Semantic models",
+              link: { type: "doc", id: "docs/build/semantic-models" },
+              items: [
+                "docs/build/dimensions",
+                "docs/build/entities",
+                "docs/build/measures"
+              ]
+            },
+            {
+              type: "category",
+              label: "Metrics",
+              link: { type: "doc", id: "docs/build/metrics-overview"},
+              items: [
+                "docs/build/cumulative",
+                "docs/build/derived",
+                "docs/build/expr",
+                "docs/build/measure-proxy",
+                "docs/build/ratio",
+              ]
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "Enhance your models",
           collapsed: true,
           items: [
