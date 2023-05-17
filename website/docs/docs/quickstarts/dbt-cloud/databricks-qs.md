@@ -372,4 +372,4 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
-<Snippet src="quickstarts/schedule-a-job" />
+<Snippet src="quickstarts/schedule-a-job" /> 

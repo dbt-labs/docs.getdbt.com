@@ -455,4 +455,4 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using dbt Cloud to schedule a job. For more information about using dbt Core to schedule a job, see [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post or [deployments](/docs/deploy/deployments).
+We recommend using dbt Cloud to schedule a job. For more information about using dbt Core to schedule a job, see [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post or [deployments](/docs/deploy/deployments)

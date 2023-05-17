@@ -13,7 +13,7 @@ Before you begin, you will need:
 
 * Warehouse with sample data. If you don't have this, you can use the [BigQuery project](/docs/quickstarts/dbt-cloud/bigquery), which leverages public data sets.
 * Basic understanding of [Git](https://git-scm.com/doc).
-* Basic understanding of [SQL](https://www.sqltutorial.org/).
+* Basic understanding of [SQL](https://www.sqltutorial.org/). 
 
 
 <div className="grid--2-col">
