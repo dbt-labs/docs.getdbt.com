@@ -167,7 +167,7 @@ jobs:
     steps:
 
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
     # Using bash and pip to install dbt and pre-commit
     # Update the dbt installation command to include the adapter you need
@@ -179,7 +179,7 @@ jobs:
     # This action will output all the files that are being created and modified in our PR
       - name: Get changed files
         id: get_file_changes
-        uses: trilom/file-changes-action@v1.2.4
+        uses: trilom/file-changes-action@v1
         with:
           output: ' '
 
