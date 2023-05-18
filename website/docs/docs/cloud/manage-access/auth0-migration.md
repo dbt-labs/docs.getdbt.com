@@ -38,12 +38,6 @@ Once you have saved this information in the SSO environment, you must edit some 
 
 Make sure to enable the "Use Auth0" option to ensure that the traffic is routed correctly. _The Auth0 migration action is final and cannot be undone_
 
-:::warning Domain authorization
-
-You must complete the domain authorization before you toggle `Enable New SSO Authentication`, or the migration will not complete successfully.
-
-:::
-
 <Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable Auth0 for SAML/Okta"/>
 
 Save the settings and test the new configuration using the SSO login URL provided on the settings page. 
