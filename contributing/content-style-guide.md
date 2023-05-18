@@ -440,13 +440,17 @@ username | login
 
 ## Links
 
-Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it is important that links are transparent, up-to-date, and lead to legitimate resources.
+Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it's important that links are transparent, up-to-date, and lead to legitimate resources.
 
 ### Internal links
 
-The full URL is not required when linking to another page in the docs.getdbt.com domain. This is preferred since the Docusaurus markdown will open the link in the same window rather than creating a new browser tab. You can use the path to the page (everything in the URL bar after docs.getdbt.com).
+All internal links should use relative and not absolute paths. We construct these paths in relation to the content root, which is`[_docs.getdbt.com repository_/website/docs](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs)`.
 
-The link paths will begin with one of the following:
+We require  either _file_ paths relative to the content root (these include the file extension, such as `.md`) or _URL_ paths relative to the content root (these don't include `.md`). We avoid paths relative to the document (for example, one directory above a document `../LinkedDocument`) because they won't work during local development and testing, and moving a document won't break the links it contains.  
+
+Markdown links in Docusaurus open in the same window rather than creating a new browser tab, but you can use HTML or full URLs to open a link in a new tab.
+
+The file or URL paths begin with:
 - /docs/
 - /guides/
 - /reference/
@@ -457,7 +461,7 @@ If we need to reference this on another page, we can remove the domain entirely:
 
 `For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)`
 
-This will appear to the reader as follows:
+The reader will see:
 
 For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)
 

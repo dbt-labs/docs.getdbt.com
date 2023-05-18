@@ -161,6 +161,7 @@ const sidebarSettings = {
           ],
         },
         "docs/running-a-dbt-project/run-your-dbt-projects",
+        "docs/running-a-dbt-project/using-threads",
       ],
     },
     {
