@@ -1772,7 +1772,7 @@ section > h2:not(.resource-section) {
 
 @media(min-width: 996px) {
   .grid--5-col {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: calc(var(--ifm-spacing-horizontal) * 2);
   }
   @media(min-width: 1500px) {
