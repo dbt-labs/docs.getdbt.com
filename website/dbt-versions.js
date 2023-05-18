@@ -115,6 +115,83 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
+  //v2 semantic layer docs
+  {
+    "page": "docs/build/build-semantic-layer-intro",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/sl-getting-started",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/metricflow-core-concepts",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/join-logic",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/validation",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/semantic-models",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/dimensions",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/entities",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/measures",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/metrics-overview",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/cumulative",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/derived",
+    "firstVersion": "1.6",
+  },
+  {
+  "page": "docs/build/expr",
+  "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/measure-proxy",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/ratio",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
+    "lastVersion": "1.5",
+  },
+  {
+    "page": "docs/use-dbt-semantic-layer/dbt-semantic-layer",
+    "lastVersion": "1.5",
+  },
+  {
+    "page": "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+    "lastVersion": "1.5",
+  },
+  {
+    "page": "docs/use-dbt-semantic-layer/avail-sl-integrations",
+    "lastVersion": "1.5",
+  },
 ]
 
 exports.versionedCategories = [
@@ -122,5 +199,13 @@ exports.versionedCategories = [
     "category": "Model governance",
     "firstVersion": "1.5",
   },
-  //{ "category": "Build your Semantic Layer", "firstVersion": "1.6",}
+  { 
+    "category": "Build your Semantic Layer", 
+    "firstVersion": "1.6",
+  },
+  { 
+    "category": "Use the dbt Semantic Layer", 
+    "firstVersion": "1.0",
+    "lastVersion": "1.5",
+  }
 ]

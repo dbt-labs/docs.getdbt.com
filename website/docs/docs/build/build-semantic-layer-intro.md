@@ -4,16 +4,19 @@ id: build-semantic-layer-intro
 description: "Learn about MetricFlow and build your Semantic Layer with Semantic models and Metrics"
 sidebar_label: Build your Semantic Layer
 tags: [Metrics, Semantic Layer]
+hide_table_of_contents: true
 ---
 
-Seamlessly your semantic layer using [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) with concepts you're already familiar with using dbt metrics, powered by MetricFlow.
+Seamlessly build your semantic layer using [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview), avoid repetition, and  optimize your workflow with concepts you're already familiar with using dbt metrics, powered by **MetricFlow**. 
 
-These sections assume you use dbt with the [command line (CLI)](/docs/core/about-the-cli), and explain how you can use MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. 
+These sections explain how you can use MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. Supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
 
-:::tip Use MetricFlow with CLI
-Currently, you can can define metrics using the [dbt and MetricFlow spec](https://github.com/dbt-labs/dbt-core/discussions/7456). We’re working with integration partners to release a beta of integrations and you can currently query MetricFlow using the CLI. We're working to introduce other consumption methods like Python and JDBC.
+### Define and query
 
-:::
+- Currently for the dbt Core v1.6 beta, you can can define metrics in the [command line (CLI)](/docs/core/about-the-cli) using the [dbt and MetricFlow spec](https://github.com/dbt-labs/dbt-core/discussions/7456), and query them using the CLI. 
+  * Note: dbt Cloud support coming soon.
+- dbt Labs are working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. 
+
 
 <div className="grid--2-col">
 
@@ -21,7 +24,7 @@ Currently, you can can define metrics using the [dbt and MetricFlow spec](https:
 <Card
     title="Quickstart"
     body="Learn how to create a semantic model, metric, and test and upload your metric using MetricFlow."
-    link="/docs/build/getting-started"
+    link="/docs/build/sl-getting-started"
     icon="rocket"/>
 
 <Card
@@ -47,6 +50,7 @@ Currently, you can can define metrics using the [dbt and MetricFlow spec](https:
 
 ## Related docs
 
-- Blog?
-- dbt Semantic Layer?
+- [The dbt Semantic Layer: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
+
+
 

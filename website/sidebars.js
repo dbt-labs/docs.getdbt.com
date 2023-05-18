@@ -198,13 +198,14 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-semantic-layer-intro"},
           collapsed: true,
           items: [
+            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
               link: { type: "doc", id: "docs/build/metricflow-core-concepts" },
               items: [
                 "docs/build/join-logic",
-                "docs/build/validation-overview",
+                "docs/build/validation",
               ]
             },
             {

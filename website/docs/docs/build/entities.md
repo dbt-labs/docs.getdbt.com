@@ -21,7 +21,7 @@ You can also use entities as a dimension, which allows you to aggregate a metric
 
 ## Entity types
 
-MetricFlow's join logic depends on the entity `type` you use, and it also determines how to join semantic models. Refer to [Joins](/docs/build/join-logi) for more info on how to construct joins.
+MetricFlow's join logic depends on the entity `type` you use, and it also determines how to join semantic models. Refer to [Joins](/docs/build/join-logic) for more info on how to construct joins.
 
 * **Primary &mdash;** A primary key has **only one** record for each row in the table, and it includes every record in the data platform.
 * **Unique &mdash;** A unique key contains **only one** record per row in the table, but it may have a subset of records in the data warehouse. It can also include nulls.

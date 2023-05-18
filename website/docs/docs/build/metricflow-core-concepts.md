@@ -238,7 +238,9 @@ metric:
 
 ## Related docs
 - [Joins](/docs/build/join-logic)
-- [Validations](/docs/build/validation)
+- [Validations](/docs/build/validation) 
+
+
 
 ## FAQs
 

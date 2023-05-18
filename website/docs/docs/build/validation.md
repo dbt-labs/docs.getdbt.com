@@ -1,6 +1,6 @@
 ---
 title: Validations
-id: validation-overview
+id: validation
 description: "MetricFlow has three types of built-in validations, including Parsing Validation, Semantic Validation, and Data Warehouse validation, which are performed in a sequential and blocking manner."
 sidebar_label: "Validations"
 tags: [Metrics, Semantic Layer]

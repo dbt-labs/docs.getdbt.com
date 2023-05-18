@@ -1,7 +1,7 @@
 ---
 title: Dimensions
 id: dimensions
-description: "DDimensions determine the level of aggregation for a metric, and are non-aggregatable expressions."
+description: "Dimensions determine the level of aggregation for a metric, and are non-aggregatable expressions."
 sidebar_label: "Dimensions"
 tags: [Metrics, Semantic Layer]
 ---
