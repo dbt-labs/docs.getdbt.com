@@ -5,7 +5,6 @@ sidebar_labe: "Supported data platforms"
 description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a dedicated adapter plugin"
 hide_table_of_contents: true
 ---
----
 
 dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. dbt connects with data platforms by using a dedicated adapter plugin for each. Plugins are built as Python modules that dbt Core discovers if they are installed on your system. 
 
