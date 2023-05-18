@@ -38,7 +38,13 @@ Once you have saved this information in the SSO environment, you must edit some 
 
 Make sure to enable the "Use Auth0" option to ensure that the traffic is routed correctly. _The Auth0 migration action is final and cannot be undone_
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/enable-auth0.png" title="Enable Auth0"/>
+:::warning Domain authorization
+
+You must complete the domain authorization before you toggle `Enable New SSO Authentication`, or the migration will not complete successfully.
+
+:::
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable Auth0 for SAML/Okta"/>
 
 Save the settings and test the new configuration using the SSO login URL provided on the settings page. 
 
@@ -64,7 +70,13 @@ Click **Save** once you are done.
 
 4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In dbt Cloud, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Enable the **Use Auth0** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The Auth0 migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/enable-auth0.png" title="Enable Auth0"/>
+:::warning Domain authorization
+
+You must complete the domain authorization before you toggle `Enable New SSO Authentication`, or the migration will not complete successfully.
+
+:::
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" title="Enable Auth0 for Google Workspace"/>
 
 ## Azure Active Directory
 
@@ -84,4 +96,10 @@ Azure Active Directory admins will need to make a slight adjustment to the exist
 
 4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/enable-auth0.png" title="Enable Auth0"/>
+:::warning Domain authorization
+
+You must complete the domain authorization before you toggle `Enable New SSO Authentication`, or the migration will not complete successfully.
+
+:::
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable Auth0 for Azure AD"/>
