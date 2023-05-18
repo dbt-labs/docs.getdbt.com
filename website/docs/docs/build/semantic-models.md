@@ -163,5 +163,8 @@ For semantic models with a measure, you must have a primary time dimension.
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
 
 ## Related docs
-- [Semantic models](/docs/build/metrics-overview)
+
 - [About MetricFlow](/docs/build/metricflow-core-concepts)
+- [Dimensions](/docs/build/dimensions)
+- [Entities](/docs/build/entities)
+- [Measures](/docs/build/measures)

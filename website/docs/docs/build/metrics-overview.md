@@ -132,5 +132,11 @@ You can set more metadata for your metrics, which can be used by other tools lat
 
 
 ## Related docs
-- [Semantic models](/docs/build/semantic-models)
-- [About MetricFlow](/docs/build/metricflow-core-concepts)
+
+- [Cumulative](/docs/build/cumulative)
+- [Derived](/docs/build/derived)
+- [Expression](/docs/build/expr)
+- [Measure proxy](/docs/build/measure-proxy)
+- [Ratio](/docs/build/ratio)
+
+

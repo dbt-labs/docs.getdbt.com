@@ -236,28 +236,47 @@ metric:
 </TabItem>
 </Tabs>
 
+## FAQs
+
+<details>
+  <summary>Do my datasets need to be normalized?</summary>
+  <div>
+    <div>Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. <br /><br /> It's recommended that you apply data consistency and quality MetricFlowations such as filtering bad data, normalizing common objects, and data modeling of keys and tables in upstream applications. MetricFlow is most efficient at doing data denormalization, rather than normalization. <br /><br />If you have not invested in data consistency, that is okay. MetricFlow can take SQL queries or expressions to define consistent datasets.</div>
+  </div>
+</details>
+<details>
+  <summary>Why is normalized data the ideal input?</summary>
+  <div>
+    <div> MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.</div>
+  </div>
+</details>
+<details>
+  <summary>Why not just make metrics the same as measures?</summary>
+  <div>
+    <div>One principle of our MetricFlow is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).<br /><br />Many metrics are constructed from reused measures and in some cases constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).<br /><br />Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.</div>
+  </div>
+</details>
+<details>
+  <summary>How does MetricFlow handle joins?</summary>
+  <div>
+    <div>MetricFlow builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentations on join types.<br /><br />Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.</div>
+  </div>
+</details>
+<details>
+  <summary>Are entities and join keys the same thing?</summary>
+  <div>
+    <div>If it helps you to think of entities as join keys, that is very reasonable. Entities in MetricFlow have applications beyond joining two tables, such as acting as a dimension.</div>
+  </div>
+</details> 
+<details>
+  <summary>Can a table without a primary or unique entities have dimensions</summary>
+  <div>
+    <div>Yes, but because a dimension is considered an attribute of the primary or unique ent of the table, they are only usable by the metrics that are defined in that table. They cannot be joined to metrics from other tables. This is common in event logs.</div>
+  </div>
+</details>
+
+
 ## Related docs
 - [Joins](/docs/build/join-logic)
 - [Validations](/docs/build/validation) 
 
-
-
-## FAQs
-
-- **Do my data sets need to be normalized?**
-  - Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets.
-  - It's recommended that you apply data consistency and quality MetricFlowations such as filtering bad data, normalizing common objects, and data modeling of keys and tables in upstream applications. MetricFlow is most efficient at doing data denormalization, rather than normalization
-  - If you have not invested in data consistency, that is okay. MetricFlow can take SQL queries or expressions to define consistent datasets.
-- **Why is normalized data the ideal input?**
-  - MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.
--**Why not just make metrics the same as measures?**
-  - One principle of our MetricFlow is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).
-  - Many metrics are constructed from reused measures and in some cases constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other). 
-  - Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.
-- **How does MetricFlow handle joins?**
-  - MetricFlow builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentations on join types.
-  - Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.
-- **Are entities and join keys the same thing?**
-  - If it helps you to think of entities as join keys, that is very reasonable. Entites in MetricFlow have applications beyond joining two tables, such as acting as a dimension.
-- **Can a table without a primary or unique entities have dimensions**?
-  - Yes, but because a dimension is considered an attribute of the primary or unique ent of the table, they are only usable by the metrics that are defined in that table. They cannot be joined to metrics from other tables. This is common in event logs.
