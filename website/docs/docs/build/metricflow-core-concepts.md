@@ -136,7 +136,7 @@ semantic_model:
     - name: product_id
       type: foreign
 
-  # --- MEASURES ---
+  # --- measures ---
   measures:
     - name: revenue
       description:
@@ -151,7 +151,7 @@ semantic_model:
       expr: customer_id
       agg: count_distinct
 
-  # --- DIMENSIONS ---
+  # --- dimensions ---
   dimensions:
     - name: ds
       type: time
@@ -178,12 +178,12 @@ semantic_model:
   owners: support@getdbt.com
   mode: ref('products')
 
-  # --- IDENTIFIERS ---
+  # --- identifiers ---
   entities:
     - name: product_id
       type: primary
 
-  # --- DIMENSIONS ---
+  # --- dimensions ---
   dimensions:
     - name: category
       type: categorical

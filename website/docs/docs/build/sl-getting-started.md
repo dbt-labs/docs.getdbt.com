@@ -68,11 +68,11 @@ measures:
 :::tip
 If you're familiar with writing SQL, you can think of dimensions as the columns you'd group by and measures as the columns you'd aggregate.
 ```sql
-SELECT
+select
   , metric_time_day --time dimensions
   , country -- categorical dimension
   , sum(revenue_usd) --measure
-FROM
+from
   snowflake.fact_transactions -- sql table
   ```
 :::

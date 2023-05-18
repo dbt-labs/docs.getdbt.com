@@ -26,73 +26,55 @@ metrics:
 If you use measures from different data sets in an expression metric in MetricFlow, the system will calculate the values in sub-queries and then join the result set based on common dimensions to calculate the final value. Here's an example of the generated SQL from an expression with measures from different semantic models.
 
 
-```SQL
-
--- Compute Metrics via Expressions
--- Order By [] Limit 100
-SELECT
+```sql
+select
   metric_time
-  , mql_queries_created - mql_queries_created_test AS mql_queries_cleaned
-FROM (
-  -- Join Aggregated Measures with Standard Outputs
-  -- Pass Only Elements:
-  --   ['metric_time', 'mql_queries_created', 'mql_queries_created_test']
-  SELECT
-    subq_15611.metric_time AS metric_time
-    , subq_15611.mql_queries_created AS mql_queries_created
-    , subq_15616.mql_queries_created_test AS mql_queries_created_test
-  FROM (
-    -- Aggregate Measures
-    SELECT
+  , mql_queries_created - mql_queries_created_test as mql_queries_cleaned
+from (
+  select
+    subq_15611.metric_time as metric_time
+    , subq_15611.mql_queries_created as mql_queries_created
+    , subq_15616.mql_queries_created_test as mql_queries_created_test
+  from (
+    select
       metric_time
-      , SUM(mql_queries_created) AS mql_queries_created
-    FROM (
-      -- Read Elements From semantic models 'mql_queries_test'
-      -- Pass Only Additive Measures
-      -- Metric Time Dimension 'ds'
-      -- Pass Only Elements:
-      --   ['mql_queries_created', 'metric_time']
-      SELECT
-        CAST(query_created_at AS DATE) AS metric_time
-        , case when query_status IN ('PENDING','MODE') then 1 else 0 end AS mql_queries_created
-      FROM prod_dbt.mql_query_base mql_queries_test_src_2682
+      , sum(mql_queries_created) as mql_queries_created
+    from (
+      select
+        cast(query_created_at as date) as metric_time
+        , case when query_status in ('pending','mode') then 1 else 0 end as mql_queries_created
+      from prod_dbt.mql_query_base mql_queries_test_src_2682
     ) subq_15610
-    GROUP BY
+    group by
       metric_time
   ) subq_15611
-  INNER JOIN (
-    -- Aggregate Measures
-    SELECT
+  inner join (
+    select
       metric_time
-      , COUNT(DISTINCT mql_queries_created_test) AS mql_queries_created_test
-    FROM (
-      -- Read Elements From semantic models 'mql_queries'
-      -- Pass Only Additive Measures
-      -- Metric Time Dimension 'ds'
-      -- Pass Only Elements:
-      --   ['mql_queries_created_test', 'metric_time']
-      SELECT
-        CAST(query_created_at AS DATE) AS metric_time
-        , case when query_status in ('MODE','PENDING') then email else null end AS mql_queries_created_test
-      FROM prod_dbt.mql_query_base mql_queries_src_2670
+      , count(distinct mql_queries_created_test) as mql_queries_created_test
+    from (
+      select
+        cast(query_created_at as date) as metric_time
+        , case when query_status in ('mode','pending') then email else null end as mql_queries_created_test
+      from prod_dbt.mql_query_base mql_queries_src_2670
     ) subq_15615
-    GROUP BY
+    group by
       metric_time
   ) subq_15616
-  ON
+  on
     (
       (
         subq_15611.metric_time = subq_15616.metric_time
       ) OR (
         (
-          subq_15611.metric_time IS NULL
+          subq_15611.metric_time is null
         ) AND (
-          subq_15616.metric_time IS NULL
+          subq_15616.metric_time is null
         )
       )
     )
 ) subq_15618
-LIMIT 100
+limit 100
 ```
 
 

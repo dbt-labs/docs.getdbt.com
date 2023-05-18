@@ -155,63 +155,47 @@ metrics:
 The current method connects the metric table to a timespine table using the primary time dimension as the join key. We use the accumulation window in the join to decide whether a record should be included on a particular day. The following SQL code produced from an example cumulative metric is provided for reference:
 
 ``` sql
--- Constrain Output with WHERE
--- Pass Only Elements:
---   ['distinct_users', 'metric_time']
--- Aggregate Measures
--- Compute Metrics via Expressions
--- Order By [] Limit 100
-SELECT
-  COUNT(DISTINCT distinct_users) AS weekly_active_users
+select
+  count(distinct distinct_users) as weekly_active_users
   , metric_time
-FROM (
-  -- Join Standard Outputs
-  -- Pass Only Elements:
-  --   ['distinct_users','metric_time']
-  -- Constrain Time Range to [2000-01-01T00:00:00, 2040-12-31T00:00:00]
-  SELECT
-    subq_3.distinct_users AS distinct_users
-    , subq_3.metric_time AS metric_time
-  FROM (
-    -- Join Self Over Time Range
-    SELECT
-      subq_2.distinct_users AS distinct_users
-      , subq_1.metric_time AS metric_time
-    FROM (
-      -- Date Spine
-      SELECT
+from (
+  select
+    subq_3.distinct_users as distinct_users
+    , subq_3.metric_time as metric_time
+  from (
+    select
+      subq_2.distinct_users as distinct_users
+      , subq_1.metric_time as metric_time
+    from (
+      select
         metric_time
-      FROM transform_prod_schema.mf_time_spine subq_1356
-      WHERE (
-        metric_time >= CAST('2000-01-01' AS TIMESTAMP)
-      ) AND (
-        metric_time <= CAST('2040-12-31' AS TIMESTAMP)
+      from transform_prod_schema.mf_time_spine subq_1356
+      where (
+        metric_time >= CAST('2000-01-01' as timestamp)
+      ) and (
+        metric_time <= CAST('2040-12-31' as timestamp)
       )
     ) subq_1
-    INNER JOIN (
-      -- Read elements from data source 'transactions'
-      -- Constrain Time Range to [1999-12-26T00:00:00, 2040-12-31T00:00:00]
-      -- Pass Only Elements:
-      --   ['distinct_users', 'metric_time']
-      SELECT
-        distinct_users AS distinct_users
-        , DATE_TRUNC('day', ds) AS metric_time
-      FROM demo_schema.transactions transactions_src_426
-      WHERE (
-        (DATE_TRUNC('day', ds)) >= CAST('1999-12-26' AS TIMESTAMP)
+    inner join (
+      select
+        distinct_users as distinct_users
+        , date_trunc('day', ds) as metric_time
+      from demo_schema.transactions transactions_src_426
+      where (
+        (date_trunc('day', ds)) >= cast('1999-12-26' as timestamp)
       ) AND (
-        (DATE_TRUNC('day', ds)) <= CAST('2040-12-31' AS TIMESTAMP)
+        (date_trunc('day', ds)) <= cast('2040-12-31' as timestamp)
       )
     ) subq_2
-    ON
+    on
       (
         subq_2.metric_time <= subq_1.metric_time
-      ) AND (
-        subq_2.metric_time > DATEADD(day, -7, subq_1.metric_time)
+      ) and (
+        subq_2.metric_time > dateadd(day, -7, subq_1.metric_time)
       )
   ) subq_3
 )
-GROUP BY
+group by
   metric_time
-LIMIT 100
+limit 100
 ```
