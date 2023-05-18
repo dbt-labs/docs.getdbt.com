@@ -1,6 +1,7 @@
 ---
 title: "dbt Cloud features"
 id: "dbt-cloud-features"
+hide_table_of_contents: true
 ---
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. 
