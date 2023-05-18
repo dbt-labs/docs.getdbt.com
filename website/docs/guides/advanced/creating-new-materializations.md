@@ -165,7 +165,7 @@ Materialization configurations can either be "optional" or "required". If a user
 # optional
 config.get('optional_config_name', default="the default") 
 # required
-config.require('required_conifg_name')
+config.require('required_config_name')
 ```
 
 For more information on the `config` dbt Jinja function, see the [config](/reference/dbt-jinja-functions/config) reference.
