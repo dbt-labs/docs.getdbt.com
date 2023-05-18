@@ -1,6 +1,7 @@
 ---
 title: "dbt Cloud features"
 id: "dbt-cloud-features"
+hide_table_of_contents: true
 ---
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. 
@@ -11,7 +12,7 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 
 To have the best experience using dbt Cloud, we recommend you use modern and up-to-date web browsers like Chrome, Safari, Edge, and Firefox.<br></br>
 
-<div className="grid--2-col">
+<div className="grid--3-col">
 
 
 <Card
