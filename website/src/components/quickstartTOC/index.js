@@ -16,10 +16,9 @@ function QuickstartTOC() {
   const activeStepLocal = typeof localStorage !== "undefined" ? localStorage.getItem(locationPath) : 1;
   const activeStepParam = queryParams.step ? (queryParams.step) : activeStepLocal ? activeStepLocal : 1;
 
-
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
-  const [activeStep, setActiveStep] = useState(activeStepLocal);
+  const [activeStep, setActiveStep] = useState(activeStepLocal || 1);
   const [activeQuickstart, setActiveQuickstart] = useState(locationPath);
 
   useEffect(() => {
