@@ -52,7 +52,7 @@ Here's the list of the **Verified data platforms** that can connect to dbt Cloud
 
 <Card
     title="Starburst"
-    body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'>Install in dbt Core </a> <br /> <br /> Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'>Install in dbt Core </a> <br /> <br /> Latest version: 1.4"
     icon="starburst-partner-logo"/>
 
 <Card
