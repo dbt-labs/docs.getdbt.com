@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-athena'
   slack_channel_link: 'https://getdbt.slack.com/archives/C013MLFR7BQ'
   platform_name: 'Athena'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

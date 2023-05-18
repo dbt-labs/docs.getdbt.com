@@ -1,4 +1,6 @@
 ---
+title: "About config property"
+sidebar_label: "config"
 resource_types: [models, seeds, snapshots, tests, sources, metrics, exposures]
 datatype: "{dictionary}"
 ---
@@ -27,7 +29,7 @@ version: 2
 models:
   - name: <model_name>
     config:
-      [<model_config>](model-configs): <config_value>
+      [<model_config>](/reference/model-configs): <config_value>
       ...
 ```
 
@@ -45,7 +47,7 @@ version: 2
 seeds:
   - name: <seed_name>
     config:
-      [<seed_config>](seed-configs): <config_value>
+      [<seed_config>](/reference/seed-configs): <config_value>
       ...
 ```
 
@@ -63,7 +65,7 @@ version: 2
 snapshots:
   - name: <snapshot_name>
     config:
-      [<snapshot_config>](snapshot-configs): <config_value>
+      [<snapshot_config>](/reference/snapshot-configs): <config_value>
       ...
 ```
 
@@ -88,14 +90,14 @@ version: 2
             <test_config>: <config-value>
             ...
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               config:
-                [<test_config>](test-configs): <config-value>
+                [<test_config>](/reference/test-configs): <config-value>
                 ...
 
 ```
@@ -191,4 +193,4 @@ exposures:
 
 </Tabs>
 
-The `config` property allows you to configure resources at the same time you're defining properties in yaml files.
+The `config` property allows you to configure resources at the same time you're defining properties in YAML files.

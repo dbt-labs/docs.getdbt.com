@@ -440,7 +440,42 @@ username | login
 
 ## Links
 
-Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it is important that links are transparent, up-to-date, and lead to legitimate resources.
+Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it's important that links are transparent, up-to-date, and lead to legitimate resources.
+
+### Internal links
+
+All internal links should use relative and not absolute paths. We construct these paths in relation to the content root, which is`[_docs.getdbt.com repository_/website/docs](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs)`.
+
+We require  either _file_ paths relative to the content root (these include the file extension, such as `.md`) or _URL_ paths relative to the content root (these don't include `.md`). We avoid paths relative to the document (for example, one directory above a document `../LinkedDocument`) because they won't work during local development and testing, and moving a document won't break the links it contains.  
+
+Markdown links in Docusaurus open in the same window rather than creating a new browser tab, but you can use HTML or full URLs to open a link in a new tab.
+
+The file or URL paths begin with:
+- /docs/
+- /guides/
+- /reference/
+- /community/
+
+Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses
+If we need to reference this on another page, we can remove the domain entirely:
+
+`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)`
+
+The reader will see:
+
+For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)
+
+You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
+
+`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).`
+
+This will appear to the reader as follows:
+
+To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).
+
+When you click on the link, it automatically takes you to the section defined at the end of the path. If the path syntax is incorrect(or does not exist), the link will take the reader to the top of the page specified in the path. 
+
+There are different methods for handling this based on page location (and other nuances), so please reference the [Docusaurus docs site](https://docusaurus.io/docs/markdown-features/links) for more detailed information. 
 
 ### Link format
 

@@ -68,7 +68,7 @@ Slim CI offers an alternative to running and testing all models in your project,
 These components distinguish a Slim CI job from a dbt CI job:
 
 - Must defer to a production job.
-- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](#deferral-and-state-comparison)
+- Commands need to have a `--select state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](#deferral-and-state-comparison)
 - Must be triggered by a pull request.
 
 ### Deferral and state comparison  
@@ -90,7 +90,7 @@ dbt build --select state:modified+
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/project-state).
 
 ### Fresh rebuilds
 

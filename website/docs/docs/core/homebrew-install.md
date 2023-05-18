@@ -28,7 +28,7 @@ brew install git
 brew tap dbt-labs/dbt
 ```
 
-Now you're ready to install dbt. Once you know [which adapter](supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For instance, if using Postgres:
+Now you're ready to install dbt. Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For instance, if using Postgres:
 
 ```shell
 brew install dbt-postgres

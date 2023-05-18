@@ -3,21 +3,21 @@ title: "dbt Command reference"
 ---
 
 dbt is typically run one of two ways:
-* In [dbt Cloud](/docs/cloud/develop-in-the-cloud)
+* In [dbt Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 * On the [command line interface](/docs/core/about-the-cli) (CLI)
 
 The following sections outline the commands supported by dbt and their relevant flags. Note that some commands are only supported when using the CLI. 
 
-For information about selecting models on the command line, consult the docs on [Model selection syntax](node-selection/syntax).
+For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
 
 ### Available commands
 
-Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select the "Available commands in dbt Cloud" tab. 
+Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**. 
 
 <Tabs>
 <TabItem value="cloud" label="dbt Cloud">
 
-Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
+Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [compile](/reference/commands/compile): compiles (but does not run) the models in a project
