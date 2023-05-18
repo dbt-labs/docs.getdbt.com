@@ -1,8 +1,6 @@
 
+
 ## dbt core setup changes
-
-
-
 
 /docs/core/connection-profiles /docs/core/connect-data-platform/connection-profiles 301
 /reference/warehouse-setups/bigquery-setup /docs/core/connect-data-platform/bigquery-setup 301
@@ -43,6 +41,9 @@
 /reference/warehouse-setups/databend-setup /docs/core/connect-data-platform/databend-setup 301
 /reference/warehouse-setups/fal-setup /docs/core/connect-data-platform/fal-setup 301
 /reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup 
+
+
+/docs/core/connection-profiles#understanding-threads /docs/running-a-dbt-project/using-threads 301
 
 # PrivateLink to Secure redirects
 /docs/cloud/privatelink/about-privatelink /docs/cloud/secure/about-privatelink 301
@@ -359,19 +360,18 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/building-a-dbt-project/testing-and-documentation/schemayml-files /reference/declaring-properties 301
 /docs/building-a-dbt-project/testing-and-documentation/testing /docs/building-a-dbt-project/tests 301
 /docs/building-a-dbt-project/using-operations /docs/building-a-dbt-project/hooks-operations 301
-/docs/building-a-new-adapter /docs/contributing/building-a-new-adapter 301
 /docs/building-models /docs/building-a-dbt-project/building-models 301
 /docs/building-packages /guides/legacy/building-packages 301
 /docs/centos /dbt-cli/installation 301
 /docs/clean /reference/commands/clean 301
 /docs/cloud-choosing-a-dbt-version /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-choosing-a-dbt-version 301
 /docs/cloud-configuring-dbt-cloud /docs/dbt-cloud/cloud-configuring-dbt-cloud 301
-/docs/cloud-enabling-continuous-integration-with-github /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github 301
+/docs/cloud-enabling-continuous-integration-with-github /docs/deploy/cloud-ci-job 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration-with-github/ /docs/dbt-cloud/using-dbt-cloud/cloud-enabling-continuous-integration 301
 /docs/cloud-generating-documentation /docs/dbt-cloud/using-dbt-cloud/cloud-generating-documentation 301
 /docs/cloud-import-a-project-by-git-url /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-import-a-project-by-git-url 301
-/docs/cloud-installing-the-github-application /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-installing-the-github-application 301
+/docs/cloud-installing-the-github-application /docs/cloud/git/connect-github 301
 /docs/cloud-managing-permissions /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-managing-permissions 301
 /docs/cloud-overview /docs/dbt-cloud/cloud-overview 301
 /docs/cloud-seats-and-users /docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-seats-and-users 301
@@ -441,14 +441,14 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/hooks /docs/building-a-dbt-project/hooks-operations 301
 /docs/init /reference/commands/init 301
 /docs/install-from-source /dbt-cli/installation 301
-/docs/installation /dbt-cli/installation 301
+/docs/installation /docs/core/installation 301
 /docs/invocation_id /docs/writing-code-in-dbt/jinja-context/invocation_id 301
 /docs/jinja-context /docs/writing-code-in-dbt/jinja-context 301
 /docs/license /docs/about/license 301
 /docs/list /reference/commands/list 301
 /docs/log /docs/writing-code-in-dbt/jinja-context/log 301
 /docs/macos /dbt-cli/installation 301
-/docs/macros /docs/building-a-dbt-project/macros 301
+/docs/macros /guides/legacy/building-packages 301
 /docs/maintaining-multiple-environments-with-dbt / 301
 /docs/managing-environments /guides/legacy/managing-environments 301
 /docs/materializations /docs/building-a-dbt-project/building-models/materializations 301
@@ -532,7 +532,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/test /reference/commands/test 301
 /docs/testing /docs/building-a-dbt-project/tests 301
 /docs/testing-and-documentation /docs/building-a-dbt-project/tests 301
-/docs/the-dbt-ide /docs/dbt-cloud/cloud-ide/the-dbt-ide 301
+/docs/the-dbt-ide /docs/cloud/about-cloud/dbt-cloud-features 301
 /docs/this /docs/writing-code-in-dbt/jinja-context/this 301
 /docs/tojson /docs/writing-code-in-dbt/jinja-context/tojson 301
 /docs/ubuntu-debian /dbt-cli/installation 301
@@ -628,12 +628,11 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/dbt-cloud/using-dbt-cloud/cloud-slack-notifications /docs/dbt-cloud/using-dbt-cloud/cloud-notifications 301
 /reference/warehouse-profiles/presto-profile /reference/profiles.yml 301
 /setting-up /guides/getting-started/getting-set-up/setting-up-bigquery 301
-/tutorial/setting-up /guides/getting-started 301
+/tutorial/setting-up  /docs/quickstarts/overview 301
 /tutorial/test-and-document-your-project /guides/getting-started/building-your-first-project/test-and-document-your-project 301
 /tutorial/build-your-first-models /guides/getting-started/building-your-first-project/build-your-first-models 301
 /tutorial/deploy-your-project /guides/getting-started/building-your-first-project/schedule-a-job 301
 /tutorial/using-jinja /guides/getting-started/learning-more/using-jinja 301
-/tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql 301
 /tutorial/2b-create-a-project-dbt-cli /guides/getting-started/learning-more/getting-started-dbt-core 301
 /tutorial/create-a-project-dbt-cli /guides/getting-started/learning-more/getting-started-dbt-core 301
 /tutorial/2a-create-a-project-dbt-cloud /guides/getting-started 301
@@ -646,7 +645,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /tutorial/learning-more/_ /guides/getting-started/learning-more/:splat 301
 /tutorial/getting-set-up/\_ /guides/getting-started/getting-set-up/:splat 301
 /tutorial/building-your-first-project/\* /guides/getting-started/building-your-first-project/:splat 301
-/tutorial/refactoring-legacy-sql /guides/getting-started/learning-more/refactoring-legacy-sql 301
+/tutorial/refactoring-legacy-sql /guides/migration/tools/refactoring-legacy-sql 301
 /blog/change-data-capture-metrics /blog/change-data-capture 301
 /blog/model-timing-tab /blog/how-we-shaved-90-minutes-off-model 301
 /reference/warehouse-setups/resource-configs/materialize-configs/indexes /reference/resource-configs/materialize-configs#indexes 301
@@ -655,6 +654,9 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /reference/warehouse-profiles/bigquery-setup /reference/warehouse-setups/bigquery-setup 301
 /date-trunc-sql /blog/date-trunc-sql 301
 /docs/using-hooks / 301
+/blog/how-we-structure-our-dbt-projects /guides/best-practices/how-we-structure/1-guide-overview 301
+
+/data-testing-why-you-need-it-and-how-to-get-started https://www.getdbt.com/blog/data-quality-testing/ 301
 
 # supported data platforms page
 
@@ -693,7 +695,9 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
 
 /docs/contributing/adapter-development/3-building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
-/docs/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter301
+
+/v0.13/docs/building-a-new-adapter /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
+/docs/building-a-new-adapter /guides/advanced/adapter-development/3-building-a-new-adapter 301
 
 /docs/contributing/testing-a-new-adapter /guides/advanced/adapter-development/4-testing-a-new-adapter 301
 /docs/contributing/adapter-development/4-testing-a-new-adapter /guides/advanced/adapter-development/4-testing-a-new-adapter 301
@@ -788,6 +792,9 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /v0.13/reference / 301
 /v0.13/docs/requiring-dbt-versions / 301
 /v0.14/docs/cloud-developer-ide / 301
+/v0.15/docs/cloud-import-a-project-by-git-url /docs/cloud/git/import-a-project-by-git-url 301
+
+/v0.15/docs/configure-your-profile /docs/core/connection-profiles 301
 
 # Removing on premise Cloud content
 /docs/dbt-cloud/on-premises/dependencies /docs/deploy/single-tenant 301

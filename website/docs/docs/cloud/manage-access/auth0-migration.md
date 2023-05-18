@@ -4,10 +4,15 @@ id: "auth0-migration"
 sidebar: "SSO Auth0 Migration"
 description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud"
 ---
+:::warning Limited availability
+
+This is a new feature that is being implemented incrementally to customers using single sign-on features today. If you have any questions or concerns about the availability of the migration feature, please [contact support](mailto:support@getdbt.com).
+
+:::
 
 dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by dbt Cloud. These changes will require some action from customers with SSO configured in dbt Cloud today, and this guide will outline the necessary changes for each environment. 
 
-If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
+If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](/docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
 
 <Snippet src="auth0-uri" />
 
@@ -19,7 +24,7 @@ The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
 
-Replace {slug} with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
+Replace `{slug}` with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
 Here is an example of an updated SAML 2.0 setup in Okta.
 

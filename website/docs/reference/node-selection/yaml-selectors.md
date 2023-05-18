@@ -164,7 +164,7 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
                         # if they have other unselected parents
 ```
 
-If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+If provided, a YAML selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
 
 </VersionBlock>
 
@@ -187,11 +187,11 @@ As a general rule, dbt will indirectly select _all_ tests if they touch _any_ re
                         # if they have other unselected parents (unless they have an ancestor that is selected)
 ```
 
-If provided, a yaml selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
+If provided, a YAML selector's `indirect_selection` value will take precedence over the CLI flag `--indirect-selection`. Because `indirect_selection` is defined separately for _each_ selection criterion, it's possible to mix eager/cautious/buildable modes within the same definition, to achieve the exact behavior that you need. Remember that you can always test out your critiera with `dbt ls --selector`.
 
 </VersionBlock>
 
-See [test selection examples](test-selection-examples) for more details about indirect selection.
+See [test selection examples](/reference/node-selection/test-selection-examples) for more details about indirect selection.
 
 ## Example
 
