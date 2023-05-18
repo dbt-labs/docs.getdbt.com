@@ -448,7 +448,7 @@ All internal links should use relative and not absolute paths. We construct thes
 
 We require  either _file_ paths relative to the content root (these include the file extension, such as `.md`) or _URL_ paths relative to the content root (these don't include `.md`). We avoid paths relative to the document (for example, one directory above a document `../LinkedDocument`) because they won't work during local development and testing, and moving a document won't break the links it contains.  
 
-Markdown links in Docusaurus open in the same window rather than creating a new browser tab, but you can use HTML to open a link in a new tab.
+Markdown links in Docusaurus open in the same window rather than creating a new browser tab, but you can use HTML or full URLs to open a link in a new tab.
 
 The file or URL paths begin with:
 - /docs/
