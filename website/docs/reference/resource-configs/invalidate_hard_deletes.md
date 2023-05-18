@@ -23,7 +23,7 @@ datatype: column_name
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: timestamp
     +invalidate_hard_deletes: true
 

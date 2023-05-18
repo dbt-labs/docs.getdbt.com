@@ -1764,6 +1764,19 @@ section > h2:not(.resource-section) {
 
 
 /* utilities */
+.grid--4-col {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: var(--ifm-spacing-horizontal)
+}
+
+@media(min-width: 996px) {
+  .grid--4-col {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: calc(var(--ifm-spacing-horizontal) * 2);
+  }
+}
+
 .grid--3-col {
   display: grid;
   grid-template-columns: repeat(1, 1fr);

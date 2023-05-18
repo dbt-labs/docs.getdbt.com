@@ -35,7 +35,7 @@ Grants have two key components:
 
 ## Configuring grants
 
-You can configure `grants` in `dbt_project.yml` to apply grants to many resources at once—all models in your project, a package, or a subfolder—and you can also configure `grants` one-by-one for specific resources, in yaml `config:` blocks or right within their `.sql` files.
+You can configure `grants` in `dbt_project.yml` to apply grants to many resources at once—all models in your project, a package, or a subfolder—and you can also configure `grants` one-by-one for specific resources, in YAML `config:` blocks or right within their `.sql` files.
 
 <Tabs
   defaultValue="models"
@@ -65,7 +65,7 @@ The `grants` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -83,7 +83,7 @@ seeds:
 
 </File>
 
-The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
+The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -106,7 +106,7 @@ The `grants` config can also be defined:
 - under the `snapshots` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a snapshot's SQL block
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 </Tabs>

@@ -146,7 +146,7 @@ const sidebarSettings = {
             }, // dbt Cloud IDE directory
             {
               type: "category",
-              label: "Multi-tenant PrivateLink",
+              label: "Secure your tenant",
               items: [
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
@@ -224,6 +224,7 @@ const sidebarSettings = {
           ],
           },
         "docs/running-a-dbt-project/run-your-dbt-projects",
+        "docs/running-a-dbt-project/using-threads",
       ],
     },
     {

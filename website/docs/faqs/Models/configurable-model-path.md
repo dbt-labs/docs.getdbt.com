@@ -8,7 +8,7 @@ id: configurable-model-path
 
 <Changelog>
 
-- **v1.0.0:** The config 'source-path' has been deprecated in favor of [`model-paths`](model-paths).
+- **v1.0.0:** The config 'source-path' has been deprecated in favor of [`model-paths`](/reference/project-configs/model-paths).
 
 </Changelog>
 
