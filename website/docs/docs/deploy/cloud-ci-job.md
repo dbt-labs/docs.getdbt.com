@@ -69,7 +69,7 @@ A Slim CI job:
 
 - Is triggered by a pull request.
 - Defers to a production job.
-- Includes a command with a `state:modified+` selector, which dbt uses to build only new or changed models and their downstream dependents. 
+- Includes a command with a `--select state:modified+` selector, which dbt uses to build only new or changed models and their downstream dependents. 
 
 dbt then identifies the models that need to be run and tested using a state comparison to the production job that you've selected.
 
@@ -92,7 +92,7 @@ dbt build --select state:modified+
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/project-state).
 
 ### Fresh rebuilds
 

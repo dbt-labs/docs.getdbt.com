@@ -1,5 +1,6 @@
 ---
 title: "fal setup (Python models)"
+description: "Read this guide to learn about the fal warehouse setup in dbt."
 meta:
   maintained_by: fal.ai
   authors: 'Features & Labels (https://github.com/fal-ai)'
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: '#tools-fal'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V8QW3Q4Q'
   platform_name: 'fal'
-  config_page: 'fal-configs'
+  config_page: '/reference/resource-configs/fal-configs'
 ---
 
 :::info Community plugin

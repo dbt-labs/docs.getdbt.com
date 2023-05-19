@@ -1,5 +1,6 @@
 ---
 resource_types: [seeds]
+description: "Quote_columns - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 default_value: false
 ---

@@ -1,5 +1,6 @@
 ---
-title: "statement blocks"
+title: "About statement blocks"
+sidebar_label: "statement blocks"
 id: "statement-blocks"
 description: "SQL queries that hit database and return results to your jinja context."
 ---
@@ -36,7 +37,7 @@ __Args__:
  - `auto_begin` (bool): If True, open a transaction if one does not exist. If false, do not open a transaction.
 
 Once the statement block has executed, the result set is accessible via the `load_result` function. The result object includes three keys:
-- `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](dbt-classes#result-objects).
+- `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](/reference/dbt-classes#result-objects).
 - `data`: Pythonic representation of data returned by query (arrays, tuples, dictionaries).
 - `table`: [Agate](https://agate.readthedocs.io/page/api/table.html) table representation of data returned by query.
 
