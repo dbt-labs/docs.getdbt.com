@@ -112,7 +112,7 @@ create table analytics.dbt_alice.dim_customers
 ### Snowflake
 Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
 
-If you cannot change the source table name, quote the specific table name in the source.yml file:
+If a Snowflake source table uses a quoted database, schema, or table identifier, you can configure it in the source.yml file. [Refer to configuring quoting for more info](/reference/resource-properties/quoting).
 
 ```yml
 sources:
