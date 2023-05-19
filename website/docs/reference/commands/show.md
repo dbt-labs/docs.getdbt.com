@@ -1,11 +1,17 @@
 ---
-title: "show"
+title: "About dbt show command"
+sidebar_label: "show"
 id: "show"
 ---
 
-`dbt show` generates post-transformation preview from a source `model`, `test`, or `analysis` file. By default, it will display the first 5 rows from the selected model, though this can be customize with the selector `--limit n` (where `n` is the number of rows to display). The results themselves are not materialized in the data warehouse or stored in any dbt file, only displayed in the terminal.
+Use `dbt show` to:
+- Compile the dbt-SQL definition of a `model`, `test`, `analysis`, or an arbitrary dbt-SQL query passed `--inline`
+- Run that query against the data warehouse
+- Preview the results in the terminal
 
-The command does access the data platform to run introspective queries. Use the flag `--no-introspect` to disable instrospective queries.
+By default, `dbt show` will display the first 5 rows from the query result. This can be customized by passing the flag `--limit n`, where `n` is the number of rows to display.
+
+The results of the preview query are not materialized in the data warehouse, or stored in any dbt file. They are only included in dbt's logs and displayed in the terminal. Note also that, if previewing a model, dbt will always compile and run the compiled query from source. It will not select from the already-materialized database relation, even if you've just run the model. (We may support that in the future; if you're interested, upvote or comment on [dbt-core#7391](https://github.com/dbt-labs/dbt-core/issues/7391).)
 
 Example:
 
@@ -19,4 +25,6 @@ dbt show --inline "select * from {{ ref('model_name') }}"
 
 <Lightbox src="/img/docs/reference/dbt-show.png" title="dbt show preview"/>
 
-The `show` command is useful for visually inspecting transformed data directly in the terminal interface and making it easy to validate the output of all models, including ephemeral models.
+For example, if you've just built a model that has a failing test, you can quickly preview the test failures right in the terminal, to find values of `id` that are duplicated:
+
+<Lightbox src="/img/docs/reference/dbt-show-failing-test.png" title="dbt show failing test"/>

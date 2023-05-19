@@ -1,5 +1,6 @@
 ---
 title: "Dremio setup"
+description: "Read this guide to learn about the Dremio warehouse setup in dbt."
 meta:
   maintained_by: Dremio
   authors: 'Dremio (formerly Fabrice Etanchaud)'
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Dremio'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor plugin

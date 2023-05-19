@@ -1,5 +1,6 @@
 ---
 title: "TiDB setup"
+description: "Read this guide to learn about the TiDB warehouse setup in dbt."
 id: "tidb-setup"
 meta:
   maintained_by: PingCAP
@@ -13,7 +14,7 @@ meta:
   slack_channel_name: '#db-tidb'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03CC86R1NY'
   platform_name: 'TiDB'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor-supported plugin

@@ -1,7 +1,8 @@
 ---
-title: "source"
+title: "About source function"
+sidebar_label: "source"
 id: "source"
-description: "Returns a relation & creates dependencies between source and model."
+description: "Read this guide to understand the source Jinja function in dbt."
 ---
 
 ```sql
@@ -11,7 +12,7 @@ select * from {{ source(source_name, table_name) }}
 ## Definition
 
 This function:
-- Returns a [Relation](dbt-classes#relation) for a [source](/docs/build/sources)
+- Returns a [Relation](/reference/dbt-classes#relation) for a [source](/docs/build/sources)
 - Creates dependencies between a source and the current model, which is useful for documentation and model selection
 - Compiles to the full object name in the database
 
@@ -24,7 +25,7 @@ This function:
 
 ## Example
 
-Consider a source defined like so:
+Consider a source defined as follows:
 
 <File name='models/<filename>.yml'>
 

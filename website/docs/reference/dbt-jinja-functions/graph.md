@@ -1,5 +1,6 @@
 ---
-title: "graph"
+title: "About graph context variable"
+sidebar_label: "graph"
 id: "graph"
 description: "The `graph` context variable contains info about nodes in your project."
 ---
@@ -10,7 +11,7 @@ projects.
 
 :::danger Heads up
 
-dbt actively builds the `graph` variable during the [parsing phase](execute) of
+dbt actively builds the `graph` variable during the [parsing phase](/reference/dbt-jinja-functions/execute) of
 running dbt projects, so some properties of the `graph` context variable will be
 missing or incorrect during parsing. Please read the information below carefully
 to understand how to effectively use this variable.
@@ -21,6 +22,57 @@ to understand how to effectively use this variable.
 
 The `graph` context variable is a dictionary which maps node ids onto dictionary
 representations of those nodes. A simplified example might look like:
+
+<VersionBlock lastVersion="1.4">
+
+```json
+{
+  "nodes": {
+    "model.my_project.model_name": {
+      "unique_id": "model.my_project.model_name",
+      "config": {"materialized": "table", "sort": "id"},
+      "tags": ["abc", "123"],
+      "path": "models/path/to/model_name.sql",
+      ...
+    },
+    ...
+  },
+  "sources": {
+    "source.my_project.snowplow.event": {
+      "unique_id": "source.my_project.snowplow.event",
+      "database": "analytics",
+      "schema": "analytics",
+      "tags": ["abc", "123"],
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  },
+  "exposures": {
+    "exposure.my_project.traffic_dashboard": {
+      "unique_id": "source.my_project.traffic_dashboard",
+      "type": "dashboard",
+      "maturity": "high",
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  },
+  "metrics": {
+    "metric.my_project.count_all_events": {
+      "unique_id": "metric.my_project.count_all_events",
+      "type": "count",
+      "path": "models/path/to/schema.yml",
+      ...
+    },
+    ...
+  }
+}
+```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
 
 ```json
 {
@@ -64,7 +116,6 @@ representations of those nodes. A simplified example might look like:
     },
     ...
   },
-  <VersionBlock firstVersion="1.5">
   "groups": {
     "group.my_project.finance": {
       "unique_id": "group.my_project.finance",
@@ -75,10 +126,11 @@ representations of those nodes. A simplified example might look like:
       ...
     },
     ...
-   </VersionBlock>
   }
 }
 ```
+
+</VersionBlock>
 
 The exact contract for these model and source nodes is not currently documented,
 but that will change in the future.
@@ -87,7 +139,7 @@ but that will change in the future.
 
 The `model` entries in the `graph` dictionary will be incomplete or incorrect
 during parsing. If accessing the models in your project via the `graph`
-variable, be sure to use the [execute](execute) flag to ensure that this code
+variable, be sure to use the [execute](/reference/dbt-jinja-functions/execute) flag to ensure that this code
 only executes at run-time and not at parse-time. Do not use the `graph` variable
 to build your DAG, as the resulting dbt behavior will be undefined and likely
 incorrect. Example usage:

@@ -16,7 +16,7 @@ is_featured: true
 
 <Lightbox src="/img/blog/2023-04-18-building-a-kimball-dimensional-model-with-dbt/data-modelling.png" width="85%" title="Data modeling techniques on a normalization vs denormalization scale"/>
 
-While the relevancy of dimensional modeling [has been debated by data practitioners](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/6), it is still one of the most widely adopted data modeling technique for analytics. 
+While the relevance of dimensional modeling [has been debated by data practitioners](https://discourse.getdbt.com/t/is-kimball-dimensional-modeling-still-relevant-in-a-modern-data-warehouse/225/6), it is still one of the most widely adopted data modeling technique for analytics.
 
 Despite its popularity, resources on how to create dimensional models using dbt remain scarce and lack detail. This tutorial aims to solve this by providing the definitive guide to dimensional modeling with dbt. 
 
@@ -513,7 +513,7 @@ inner join stg_salesorderheader on stg_salesorderdetail.salesorderid = stg_sales
 
 ### Step 5:  Select fact table columns
 
-You can now select the fact table columns that will help us answer the business questions identified earlier. We want to be able to calculate the amount of revenue, and therefore we include a column revenue per sales order detail which is calculated by `unitprice * orderqty as revenue` . 
+You can now select the fact table columns that will help us answer the business questions identified earlier. We want to be able to calculate the amount of revenue, and therefore we include a column revenue per sales order detail which was calculated above by `unitprice * orderqty as revenue` . 
 
 ```sql
 ...
@@ -623,7 +623,7 @@ The ERD will enable consumers of our dimensional model to quickly identify the k
 
 ## Part 7: Consume dimensional model
 
-Finally, we can consume our dimensional model by connecting to our data warehouse to our Business Intelligence (BI) tools such as Tableau, Power BI, and Looker. 
+Finally, we can consume our dimensional model by connecting our data warehouse to our Business Intelligence (BI) tools such as Tableau, Power BI, and Looker.
 
 Most modern BI tools have a built-in semantic layer that supports relationships between tables, which is required if we want to consume the dimensional models directly without any additional data transformation. 
 

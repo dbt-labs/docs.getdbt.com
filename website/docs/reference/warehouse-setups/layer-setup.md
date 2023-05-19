@@ -1,5 +1,6 @@
 ---
 title: "Layer setup"
+description: "Read this guide to learn about the Layer warehouse setup in dbt."
 id: "layer-setup"
 meta:
   maintained_by: Layer
@@ -12,7 +13,7 @@ meta:
   slack_channel_name: '#tools-layer'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03STA39TFE'
   platform_name: 'Layer'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 
