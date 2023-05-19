@@ -946,7 +946,6 @@ const sidebarSettings = {
             id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
           },
           items: [
-            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
             "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
@@ -987,7 +986,6 @@ const sidebarSettings = {
             id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
           },
           items: [
-            "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
             "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
             "guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",
