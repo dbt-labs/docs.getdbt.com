@@ -13,7 +13,7 @@ There are a few key principles:
 
 - **Flexible, but complete** &mdash;  Ability to create any metric on any data model by defining logic in flexible abstractions.
 - **Don't Repeat Yourself (DRY)** &mdash; Avoid repetition by allowing metric definitions to be enabled whenever possible.
-- **Simple with progressive complexity** &mdash; Make MetricFlow approachable by relying on known concepts and structures in data modeling. Create escape hatches that enable folks to pursue more advanced and unsupported features.
+- **Simple with progressive complexity** &mdash; Make MetricFlow approachable by relying on known concepts and structures in data modeling. 
 - **Performant and efficient** &mdash; Allow for performance optimizations in centralized data engineering while still enabling distributed definition and ownership of logic.
 
 ## Framework

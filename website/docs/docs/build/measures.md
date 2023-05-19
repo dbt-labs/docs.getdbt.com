@@ -54,7 +54,7 @@ If the `name` you specified for a measure doesn't match a column name in your mo
 :::tip For Snowflake users
 For Snowflake users, if you use a week-level function in the `expr` parameter, it'll now return Monday as the default week start day based on ISO standards. If you have any account or session level overrides for the `WEEK_START` parameter that fix it to a value other than 0 or 1, you will still see Monday as the week start. 
 
-If you use the `DAYOFWEEK` function in the `expr` parameter with the legacy Snowflake default of `WEEK_START = 0`, it will now return ISO-standard values of 1 (Monday) through 7 (Sunday) instead of Snowflake's legacy default values of 0 (Monday) through 6 (Sunday).
+If you use the `dayofweek` function in the `expr` parameter with the legacy Snowflake default of `WEEK_START = 0`, it will now return ISO-standard values of 1 (Monday) through 7 (Sunday) instead of Snowflake's legacy default values of 0 (Monday) through 6 (Sunday).
 :::
 
 ### Create_metric
@@ -140,7 +140,7 @@ semantic_model:
       
 # --- dimensions ---
  dimensions:
-   - name: ds
+   - name: metric_time
      type: time
      expr: date_trunc('day', ts) #expr refers to underlying column ts
      type_params:
@@ -183,7 +183,7 @@ semantic_model:
       type: foreign
 
   dimensions:
-    - name: ds
+    - name: metric_time
       type: time
       expr: date_transaction
       type_params:
@@ -197,7 +197,7 @@ semantic_model:
       agg: sum 
       create_metric: True 
       non_additive_dimension: 
-        name: ds 
+        name: metric_time
         window_choice: min 
     - name: mrr_end_of_month
       description: Aggregate by summing all users' active subscription plans at end of month 
@@ -205,7 +205,7 @@ semantic_model:
       agg: sum 
       create_metric: True 
       non_additive_dimension: 
-        name: ds 
+        name: metric_time
         window_choice: max
     - name: mrr_by_user_end_of_month
       description: Group by user_id to achieve each user's MRR at the end of the month 
@@ -213,7 +213,7 @@ semantic_model:
       agg: sum 
       create_metric: True 
       non_additive_dimension: 
-        name: ds 
+        name: metric_time
         window_choice: max
         window_groupings: 
           - user_id 
@@ -222,7 +222,6 @@ semantic_model:
 We can query the semi-additive metrics using the following syntax:
 
 ```bash
-TODO: update sytnax
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
 ```
