@@ -63,7 +63,7 @@ From the sample yaml above, note the following:
 
 For example, in the `wau_rolling_7` cumulative metric, MetricFlow takes a sliding 7-day window of relevant users and applies a count distinct function.
 
-If you omit the `window`, the measure will accumulate over all time. Note that omitting `window` will accumulate the measure over all time. Otherwise, you can choose from granularities like day, week, quarter, or month, and describe the window using phrases like "7 days" or "1 month."
+If you omit the `window`, the measure will accumulate over all time. Otherwise, you can choose from granularities like day, week, quarter, or month, and describe the window using phrases like "7 days" or "1 month."
 
 </TabItem>
 
@@ -171,9 +171,9 @@ from (
         metric_time
       from transform_prod_schema.mf_time_spine subq_1356
       where (
-        metric_time >= CAST('2000-01-01' as timestamp)
+        metric_time >= cast('2000-01-01' as timestamp)
       ) and (
-        metric_time <= CAST('2040-12-31' as timestamp)
+        metric_time <= cast('2040-12-31' as timestamp)
       )
     ) subq_1
     inner join (

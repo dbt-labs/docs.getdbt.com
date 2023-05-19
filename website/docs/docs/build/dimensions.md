@@ -38,7 +38,7 @@ semantic_model:
 
 # --- dimensions ---
   dimensions:
-    - name: ds
+    - name: metric_time
       type: time
       expr: date_trunc('day', ts)
       type_params:
@@ -126,7 +126,7 @@ When querying one or more metrics in the MetricFlow CLI, the default time dimens
 * MetricFlow 
 
       ```
-      #TODO update with new syntax
+      
        mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
       ```
 
@@ -309,7 +309,7 @@ semantic_model:
     Each row represents one transaction.
     There is a transaction, product, sales_person, and customer id for 
     every transaction. There is only one transaction id per 
-    transaction. The `ds` or date is reflected in UTC.
+    transaction. The `metric_time` or date is reflected in UTC.
   model: {{ ref(fact_transactions) }}
 
   entities:
@@ -328,19 +328,19 @@ semantic_model:
   measures:
     - name: transactions
       expr: 1
-      agg: SUM
+      agg: sum
       create_metric: True
     - name: gross_sales
       expr: sales_price
-      agg: SUM
+      agg: sum
       create_metric: True
     - name: sales_persons_with_a_sale
       expr: sales_person_id
-      agg: COUNT_DISTINCT
+      agg: count_distinct
       create_metric: True
 
   dimensions:
-    - name: ds
+    - name: metric_time
       type: time
       is_partition: true
       type_params:

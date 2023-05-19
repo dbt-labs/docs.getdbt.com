@@ -13,12 +13,12 @@ These sections explain how you can use MetricFlow to define your metrics and [se
 
 ### Define and query
 
-- Currently for the dbt Core v1.6 beta, you can can define metrics in the [command line (CLI)](/docs/core/about-the-cli) using the [dbt and MetricFlow spec](https://github.com/dbt-labs/dbt-core/discussions/7456), and query them using the CLI. 
+- Currently, for dbt Core v1.6 beta, you can define metrics in YAML and query them on the [command line (CLI)](/docs/core/about-the-cli) using the [dbt and MetricFlow specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
   * Note: dbt Cloud support coming soon.
-- dbt Labs are working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. 
+- dbt Labs are working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. <br /><br />
 
 
-<div className="grid--2-col">
+<div className="grid--4-col">
 
 
 <Card
@@ -35,13 +35,13 @@ These sections explain how you can use MetricFlow to define your metrics and [se
 
   <Card
     title="Semantic model"
-    body="Use Semantic models in the dbt Semantic Layer as the basis for defining data. They act as nodes in the semantic graph, with entities connecting them."
+    body="Use Semantic models as the basis for defining data. They act as nodes in the semantic graph, with entities connecting them."
     link="/docs/build/semantic-models"
     icon="rocket"/>
 
   <Card
     title="Metrics"
-    body="Metrics are functions that take in various parameters (such as measures, constraints, or further mathematical functions) to define new quantitative indicators."
+    body="Metrics are functions that take in various parameters (such as measures, constraints) to define new quantitative indicators."
     link="/docs/build/metrics-overview"
     icon="rocket"/>   
 
