@@ -19,7 +19,7 @@ semantic_model:
     model: {{ ref("fact_transactions") }}
 
 # --- entities ---
-  Entities: 
+  entities: 
     - name: transaction_id
       type: primary
     - name: customer_id

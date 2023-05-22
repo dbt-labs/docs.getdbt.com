@@ -116,22 +116,22 @@ semantic_models:
       type: time
       type_params:
       is_primary: true
-    -	name: user_signup
- entities:
-   - name: user_id
-     type: primary
-   - name: country_id
-     type: Unique
+    - name: user_signup
+  entities:
+    - name: user_id
+      type: primary
+    - name: country_id
+      type: Unique
 	dimensions:
-   - name: signup_date
-     type: time
-     type_params:
-     is_primary: true
-   -	name: country_dim
+    - name: signup_date
+      type: time
+      type_params:
+        is_primary: true
+    - name: country_dim
   entities:
     - name: country_id
       type: primary
-	dimensions:
+  dimensions:
     - name: country_name
       type: categorical
 ```

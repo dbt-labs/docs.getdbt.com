@@ -99,7 +99,7 @@ metrics:
 metrics:
 - name: cancellation_rate
   owners:
-    - upport@getdbt.com
+    - support@getdbt.com
   type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
   type_params:
     numerator: cancellations_usd

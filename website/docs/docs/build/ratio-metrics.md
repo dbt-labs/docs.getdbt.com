@@ -41,65 +41,47 @@ If the numerator and denominator in a ratio metric come from different semantic 
 
 
 ```SQL
--- Join Aggregated Measures with Standard Outputs
--- Pass Only Elements:
---   ['metric_time', 'mql_queries_created_test', 'distinct_query_users']
--- Compute Metrics via Expressions
--- Order By [] Limit 100
-SELECT
-  subq_15577.metric_time AS metric_time
-  , CAST(subq_15577.mql_queries_created_test AS DOUBLE) / CAST(NULLIF(subq_15582.distinct_query_users, 0) AS DOUBLE) AS mql_queries_per_active_user
-FROM (
-  -- Aggregate Measures From Numerator
-  SELECT
+select
+  subq_15577.metric_time as metric_time
+  , cast(subq_15577.mql_queries_created_test as double) / cast(nullif(subq_15582.distinct_query_users, 0) as double) as mql_queries_per_active_user
+from (
+  select
     metric_time
-    , SUM(mql_queries_created_test) AS mql_queries_created_test
-  FROM (
-    -- Read Elements From semantic model 'mql_queries_test'
-    -- Pass Only Additive Measures
-    -- Metric Time Dimension 'ds'
-    -- Pass Only Elements:
-    --   ['mql_queries_created_test', 'metric_time']
-    SELECT
-      CAST(query_created_at AS DATE) AS metric_time
-      , case when query_status IN ('PENDING','MODE') then 1 else 0 end AS mql_queries_created_test
-    FROM prod_dbt.mql_query_base mql_queries_test_src_2552 -- Numerator semantic model
+    , sum(mql_queries_created_test) as mql_queries_created_test
+  from (
+    select
+      cast(query_created_at as date) as metric_time
+      , case when query_status in ('PENDING','MODE') then 1 else 0 end as mql_queries_created_test
+    from prod_dbt.mql_query_base mql_queries_test_src_2552 
   ) subq_15576
-  GROUP BY
+  group by
     metric_time
 ) subq_15577
-INNER JOIN (
-  -- Aggregate Measures From Denominator
-  SELECT
+inner join (
+  select
     metric_time
-    , COUNT(DISTINCT distinct_query_users) AS distinct_query_users
-  FROM (
-    -- Read Elements From semantic model 'mql_queries'
-    -- Pass Only Additive Measures
-    -- Metric Time Dimension 'ds'
-    -- Pass Only Elements:
-    --   ['distinct_query_users', 'metric_time']
-    SELECT
-      CAST(query_created_at AS DATE) AS metric_time
-      , case when query_status in ('MODE','PENDING') then email else null end AS distinct_query_users
-    FROM prod_dbt.mql_query_base mql_queries_src_2585 --Denominator semantic model
+    , count(distinct distinct_query_users) as distinct_query_users
+  from (
+    select
+      cast(query_created_at as date) as metric_time
+      , case when query_status in ('MODE','PENDING') then email else null end as distinct_query_users
+    from prod_dbt.mql_query_base mql_queries_src_2585 
   ) subq_15581
-  GROUP BY
+  group by
     metric_time
 ) subq_15582
-ON -- Join on Common Dimensions
+on
   (
     (
       subq_15577.metric_time = subq_15582.metric_time
-    ) OR (
+    ) or (
       (
-        subq_15577.metric_time IS NULL
-      ) AND (
-        subq_15582.metric_time IS NULL
+        subq_15577.metric_time is null
+      ) and (
+        subq_15582.metric_time is null
       )
     )
   )
-LIMIT 100
 ```
 
 ### Add constraints

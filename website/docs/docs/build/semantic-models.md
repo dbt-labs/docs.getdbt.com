@@ -127,7 +127,7 @@ entity:
     expr: id_order
   - name: user
     type: foreign
-    expr: SUBSTRING(id_order FROM 2)
+    expr: substring(id_order FROM 2)
 ```
 
 You can refer to entities (join keys) in a semantic model using the `name` parameter. Entity names must be unique within a semantic model, and identifier names can be non-unique across semantic models since MetricFlow uses them for [joins](/docs/build/join-logic). You can also create [composite keys](/docs/build/entities#composite-keys), like in event logs where a unique ID is a combination of timestamp, event type keys, and machine IDs.
