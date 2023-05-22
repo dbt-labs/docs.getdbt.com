@@ -69,7 +69,7 @@ inserts AS (
     SELECT
         ride_id,
         subtotal,
-        NVL(rtl.tip, 0, rtl.tip)
+        NVL(tip, 0, tip)
 
     FROM using_clause
 

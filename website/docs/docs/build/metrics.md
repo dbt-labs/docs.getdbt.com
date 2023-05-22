@@ -1,10 +1,15 @@
 ---
-title: "Metrics"
+title: "Add metrics to your DAG"
+sidebar_label: "Metrics"
 id: "metrics"
 description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
 keywords:
   - dbt metrics layer
 ---
+
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+:::
 
 <Changelog>
 
@@ -19,7 +24,7 @@ A metric is an aggregation over a <Term id="table" /> that supports zero or more
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](/docs/build/exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 Review the video below to learn more about metrics, why they're important, and how to get started:
     
@@ -28,10 +33,10 @@ Review the video below to learn more about metrics, why they're important, and h
 ### Benefits of defining metrics
 
 **Use metric specifications in downstream tools**  
-dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.
+dbt's compilation context can access metrics via the [`graph.metrics` variable](/reference/dbt-jinja-functions/graph). The [manifest artifact](/reference/artifacts/manifest-json) includes metrics for downstream metadata consumption.
 
 **See and select dependencies**   
-As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
+As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](/docs/collaborate/documentation). For more information, see "[The `metric:` selection method](/reference/node-selection/methods#the-metric-method)."
 
 <Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
@@ -63,7 +68,7 @@ metrics:
   - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    [description](description): "The 14 day rolling count of paying customers using the product"
+    [description](/reference/resource-properties/description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
     expression: user_id 
@@ -94,11 +99,11 @@ metrics:
         value: "'2020-01-01'"
         
     # general properties
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
       treat_null_values_as_zero: true | false
 
-    [meta](resource-configs/meta): {team: Finance}
+    [meta](/reference/resource-configs/meta): {team: Finance}
 ```
 </VersionBlock> 
 
@@ -168,9 +173,9 @@ Metrics can have many declared **properties**, which define aspects of your metr
 | label       | A short for name / label for the metric                     | New Customers                   | yes        |
 | description | Long form, human-readable description for the metric        | The number of customers who.... | no        |
 | calculation_method | The method of calculation (aggregation or derived) that is applied to the expression  | count_distinct | yes       |
-| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) | <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock> |
+| expression  | The expression to aggregate/calculate over | user_id, cast(user_id as int) |yes |
 | timestamp   | The time-based component of the metric                      | signup_date                     | <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock>        |
-| time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              | yes       |
+| time_grains | One or more "grains" at which the metric can be evaluated. For more information, see the "Custom Calendar" section.   | [day, week, month, quarter, year]              |  <VersionBlock firstVersion="1.4"> no </VersionBlock> <VersionBlock lastVersion="1.3"> yes </VersionBlock>       |
 | dimensions  | A list of dimensions to group or filter the metric by       | [plan, country]                 | no        |
 | window      | A dictionary for aggregating over a window of time. Used for rolling metrics such as 14 day rolling average. Acceptable periods are: [`day`,`week`,`month`, `year`, `all_time`] |  {count: 14, period: day}        | no        |
 | filters     | A list of filters to apply before calculating the metric    | See below                       | no        |

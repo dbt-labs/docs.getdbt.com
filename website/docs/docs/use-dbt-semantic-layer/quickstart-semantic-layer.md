@@ -7,7 +7,9 @@ sidebar_label: "Quickstart"
 
 # dbt Semantic Layer quickstart
 
-<Snippet src="sl-public-preview-banner" />
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+:::
 
 ## Public Preview 
     
@@ -45,7 +47,7 @@ To use the dbt Semantic Layer, you’ll need to meet the following:
 
 :::info 📌 
 
-New to dbt or metrics? Check out our [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
+New to dbt or metrics? Check out our [quickstart guide](/docs/quickstarts/overview) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
 
 :::
 

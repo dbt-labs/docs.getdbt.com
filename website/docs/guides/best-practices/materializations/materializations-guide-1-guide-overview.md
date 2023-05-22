@@ -1,10 +1,10 @@
 ---
 title: "Materializations best practices"
 id: materializations-guide-1-guide-overview
-slug: guides/best-practices/materializations/1-overview
-description: Learn how to utilize materializations in dbt.
+slug: 1-guide-overview
+description: Read this guide to understand how using materializations in dbt is a crucial skill for effective analytics engineering.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand how using materializations in dbt is a crucial skill for effective analytics engineering.
 ---
 
 What _really_ happens when you type `dbt build`? Contrary to popular belief, a crack team of microscopic data elves do _not_ construct your data row by row, although the truth feels equally magical. This guide explores the real answer to that question, with an introductory look at the objects that get built into your warehouse, why they matter, and how dbt knows what to build.
@@ -12,7 +12,7 @@ What _really_ happens when you type `dbt build`? Contrary to popular belief, a c
 The configurations that tell dbt how to construct these objects are called _materializations,_ and knowing how to use them is a crucial skill for effective analytics engineering. When you’ve completed this guide, you will have that ability to use the three core materializations that cover most common analytics engineering situations.
 
 :::info
-😌 **Materializations abstract away DDL and DML**. Typically in raw SQL- or python-based data transformation, you have to write specific imperative instructions on how to build or modify your data objects. dbt’s materializations make this declarative, we tell dbt how we want things to be constructed and it figures out how to do that given the unique conditions and qualities of our warehouse.
+😌 **Materializations abstract away DDL and DML**. Typically in raw SQL- or python-based [data transformation](https://www.getdbt.com/analytics-engineering/transformation/), you have to write specific imperative instructions on how to build or modify your data objects. dbt’s materializations make this declarative, we tell dbt how we want things to be constructed and it figures out how to do that given the unique conditions and qualities of our warehouse.
 :::
 
 ### Learning goals
@@ -26,7 +26,7 @@ By the end of this guide you should have a solid understanding of:
 
 ### Prerequisites
 
-- 📒 You’ll want to have worked through the [Getting Started Guide](docs/get-started/getting-started/overview) and have a project setup to work through these concepts.
+- 📒 You’ll want to have worked through the [quickstart guide](/docs/quickstarts/overview) and have a project setup to work through these concepts.
 - 🏃🏻‍♀️ Concepts like dbt runs, `ref()` statements, and models should be familiar to you.
 - 🔧 [**Optional**] Reading through the [How we structure our dbt projects](guides/best-practices/how-we-structure/1-guide-overview) Guide will be beneficial for the last section of this guide, when we review best practices for materializations using the dbt project approach of staging models and marts.
 

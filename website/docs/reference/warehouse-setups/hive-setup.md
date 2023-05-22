@@ -1,5 +1,6 @@
 ---
 title: "Apache Hive setup"
+description: "Read this guide to learn about the Apache Hive warehouse setup in dbt."
 id: "hive-setup"
 meta:
   maintained_by: Cloudera
@@ -12,7 +13,7 @@ meta:
   slack_channel_name: '#db-hive'
   slack_channel_link: 'https://getdbt.slack.com/archives/C0401DTNSKW'
   platform_name: 'Hive'
-  config_page: 'hive-configs'
+  config_page: '/reference/resource-configs/hive-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

@@ -11,7 +11,7 @@ import styles from './styles.module.css';
 */}
 export default function Term({ id, children = undefined }) {
 
-  const [uniqueID, setUniqueID] = useState(String(Math.random()))
+  const [uniqueID] = useState(String(Math.random()))
   const [pageReady, setPageReady] = useState(false)
 
   // Rebuild tooltips on every update

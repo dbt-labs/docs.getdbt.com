@@ -1,14 +1,9 @@
 import React from 'react';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-import classnames from 'classnames';
 
 import { RedocStandalone } from 'redoc';
 
 function dbtCloudAPI() {
-  const context = useDocusaurusContext();
 
   return (
     <Layout permalink="/">

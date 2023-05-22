@@ -1,5 +1,6 @@
 ---
 title: "Firebolt setup"
+description: "Read this guide to learn about the Firebolt warehouse setup in dbt."
 meta:
   maintained_by: Firebolt
   authors: 'Firebolt'
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: '#db-firebolt'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03K2PTHHTP'
   platform_name: 'Firebolt'
-  config_page: 'firebolt-configs'
+  config_page: '/reference/resource-configs/firebolt-configs'
 ---
 
 
@@ -52,7 +53,7 @@ For other information including Firebolt feature support, see the [GitHub README
 
 ## Connecting to Firebolt
 
-To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/get-started/connection-profiles) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
+To connect to Firebolt from dbt, you'll need to add a [profile](https://docs.getdbt.com/docs/core/connection-profiles) to your `profiles.yml` file. A Firebolt profile conforms to the following syntax:
 
 <File name='profiles.yml'>
 

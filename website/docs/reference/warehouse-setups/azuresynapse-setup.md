@@ -1,5 +1,6 @@
 ---
 title: "Microsoft Azure Synapse DWH setup"
+description: "Read this guide to learn about the Mircosoft Azure Synapse warehouse setup in dbt."
 meta:
   maintained_by: Microsoft
   authors: 'Microsoft (https://github.com/Microsoft)'
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: '#db-synapse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Synapse'
-  config_page: 'azuresynapse-configs'
+  config_page: '/reference/resource-configs/azuresynapse-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
@@ -44,7 +45,7 @@ pip is the easiest way to install the adapter:
 :::info Dedicated SQL only
 
 Azure Synapse offers both Dedicated SQL Pools and Serverless SQL Pools.
-**Only Dedicated SQL Pools are supported by this adapter. If you really insist on using serverless pools, check out the neglected, experimental project: [dbt-synapse-serverless](https://github.com/dbt-msft/dbt-synapse-serverless)**
+**Only Dedicated SQL Pools are supported by this adapter. 
 
 :::
 

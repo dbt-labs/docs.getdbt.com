@@ -1,5 +1,6 @@
 ---
-title: "init"
+title: "About dbt init command"
+sidebar_label: "init"
 id: "init"
 ---
 
@@ -13,12 +14,12 @@ The `init` command is interactive and responsive like never before.
 
 If this is your first time ever using the tool, it will:
 - ask you to name your project
-- ask you which database adapter you're using (or to [Supported Data Platforms](supported-data-platforms))
+- ask you which database adapter you're using (or to [Supported Data Platforms](/docs/supported-data-platforms))
 - prompt you for each piece of information that dbt needs to connect to that database: things like `account`, `user`, `password`, etc
 
 Then, it will:
 - Create a new folder with your project name and sample files, enough to get you started with dbt
-- Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](/docs/get-started/connection-profiles).
+- Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](/docs/core/connection-profiles).
 
 ## Existing project
 

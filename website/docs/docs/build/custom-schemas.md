@@ -132,11 +132,11 @@ The following context methods _are_ available in the `generate_schema_name` macr
 
 | Jinja context | Type | Available |
 | ------------- | ---- | --------- |
-| [target](target) | Variable | ✅ |
-| [env_var](env_var) | Variable | ✅ |
-| [var](var) | Variable | Limited, see below |
-| [exceptions](exceptions) | Macro | ✅ |
-| [log](log) | Macro | ✅ |
+| [target](/reference/dbt-jinja-functions/target) | Variable | ✅ |
+| [env_var](/reference/dbt-jinja-functions/env_var) | Variable | ✅ |
+| [var](/reference/dbt-jinja-functions/var) | Variable | Limited, see below |
+| [exceptions](/reference/dbt-jinja-functions/exceptions) | Macro | ✅ |
+| [log](/reference/dbt-jinja-functions/log) | Macro | ✅ |
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 
@@ -156,7 +156,7 @@ Globally-scoped variables and variables defined on the command line with
 
 In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
  - **dev**: Your local development environment; configured in a `profiles.yml` file on your computer.
-* **ci**:  A [continuous integration](/docs/collaborate/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
+* **ci**:  A [continuous integration](/docs/cloud/git/connect-github) environment running on Pull Requests in GitHub, GitLab, etc.
  - **prod**: The production deployment of your dbt project, like in dbt Cloud, Airflow, or [similar](/docs/deploy/deployments).
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.

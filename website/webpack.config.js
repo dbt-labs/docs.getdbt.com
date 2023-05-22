@@ -1,4 +1,3 @@
-
 module.exports = {
     module: {
         rules: [
@@ -10,6 +9,11 @@ module.exports = {
                     options: { presets: ['@babel/env', '@babel/preset-react'] },
                 },
             },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
         ],
     },
 };
+
