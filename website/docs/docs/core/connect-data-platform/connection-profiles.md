@@ -4,12 +4,6 @@ id: "connection-profiles"
 description: "Configure your profile using the command line."
 ---
 
-## Related documentation
-
-* [`profiles.yml` reference](/docs/core/connect-data-platform/profiles.yml): Learn more about profile configuration.
-
-## Connecting to your warehouse using the command line
-
 When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
 
 <File name='dbt_project.yml'>
@@ -23,7 +17,7 @@ profile: 'jaffle_shop'
 
 </File>
 
-dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
+dbt then checks your [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml) for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
 <VersionBlock lastVersion="1.2">
 
@@ -198,3 +192,7 @@ $ export DBT_PROFILES_DIR=path/to/directory
 ## Advanced: Using environment variables
 
 Credentials can be placed directly into the `profiles.yml` file or loaded from environment variables. Using environment variables is especially useful for production deployments of dbt. You can find more information about environment variables [here](/reference/dbt-jinja-functions/env_var).
+
+## Related docs
+
+* [About `profiles.yml`](/docs/core/connect-data-platform/profiles.yml) to learn more about profile configuration.

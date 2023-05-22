@@ -6,16 +6,13 @@ description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a
 hide_table_of_contents: true
 ---
 
-dbt connects to and runs SQL against your database, warehouse, lake, or query engine. We group all of these SQL-speaking things into one bucket called _data platforms_. dbt connects with data platforms by using a dedicated adapter plugin for each. Plugins are built as Python modules that dbt Core discovers if they are installed on your system. 
+dbt connects to and runs SQL against your database, warehouse, lake, or query engine. These SQL-speaking platforms are collectively referred to as _data platforms_. dbt connects with data platforms by using a dedicated [adapter plugin](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) for each. Plugins are built as Python modules that dbt Core discovers if they are installed on your system. 
 
-You can [connect to the adapter plugin](/docs/connect-adapters) seamlessly and directly in the dbt Cloud user interface (UI) or installing it using the command line (CLI). To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters).
+You can [connect](/docs/connect-adapters) to adapters and data platforms either directly in the dbt Cloud user interface (UI) or install them manually using the command line (CLI). To evaluate quality and maintenance, we recommend you consider their verification status. There are two types of adapters available: 
+- **Verified** &mdash; dbt Labs' strict [adapter program](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter) assures users of trustworthy, tested, and regularly updated adapters for production use. Verified adapters earn a "Verified" status, providing users with trust and confidence. 
+- **Community** &mdash; [Community adapters](/docs/community-adapters) are open-source and maintained by community members. 
 
-There are two types of adapters and we recommend relying on the adapter's verification status to assess its quality and maintenance: 
-- **Verified** &mdash; dbt Labs offers a rigorous adapter program to assure users of trustworthy, tested, and regularly updated adapters for production use. Verified adapters earn a "Verified" status, providing users with trust and confidence. Refer to [Verifying a new adapter](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter) to learn more about the program. 
-- **Community** &mdash; Community, open-source adapter are maintained by community members. Refer to [community adapters](/docs/community-adapters) for more info.
-
-Here's the list of the **Verified data platforms** that can connect to dbt Cloud or dbt Core, and its latest version available. 
-
+Here are the following are **Verified adapters** you can connect to:
 <div className="grid--4-col">
 
 <Card
@@ -51,12 +48,12 @@ Here's the list of the **Verified data platforms** that can connect to dbt Cloud
 <Card
     title="Spark"
     body="<a href='/docs/cloud/connect-data-platform/connect-apache-spark'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/spark-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> Latest version: 1.4"
-    icon="rocket"/>
+    icon="databricks"/>
 
 <Card
     title="Starburst"
     body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /> <br /> Latest version: 1.4"
-    icon="starburst-partner-logo"/>
+    icon="starburst"/>
 
 <Card
     title="Dremio*"
