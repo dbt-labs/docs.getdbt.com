@@ -16,7 +16,7 @@ const sidebarSettings = {
     {
       type: "link",
       label: "Quickstarts",
-      href: `/quickstart`,
+      href: `/quickstarts`,
     },
     {
       type: "category",

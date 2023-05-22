@@ -7,7 +7,7 @@ function QuickstartGuideCard({ frontMatter }) {
 
   return (
     <Link
-      to={`/quickstart/${id}`}
+      to={`/quickstarts/${id}`}
       frontMatter={frontMatter}
       className={styles.quickstartCard}
     >
@@ -17,7 +17,7 @@ function QuickstartGuideCard({ frontMatter }) {
         <span className={styles.time_to_complete}>{time_to_complete}</span>
       )}
 
-      <span to={`/quickstart/guide/${id}`} className={styles.start}>
+      <span to={`/quickstarts/${id}`} className={styles.start}>
         Start
       </span>
     </Link>
