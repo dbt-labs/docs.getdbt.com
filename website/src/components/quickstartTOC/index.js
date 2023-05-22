@@ -155,8 +155,6 @@ function QuickstartTOC() {
         }
       }
     }
-
-    console.log('current step: ', activeStep)
   }, [activeStep, mounted]);
 
   // Handle updating the active step
@@ -172,9 +170,6 @@ function QuickstartTOC() {
     newStep?.classList.remove(style.hidden);
 
     setActiveStep(newStepIndex);
-
-    console.log('current step: ', currentStepIndex)
-    console.log('new step: ', newStepIndex)
   };
 
   const handleNext = (currentStepIndex) => {
@@ -191,17 +186,9 @@ function QuickstartTOC() {
 
   // Handle TOC click
   const handleTocClick = (e) => {
-    const stepNumber = parseInt(e.target.dataset.step);
+    const stepNumber = e.target.closest("li").dataset.step;
 
-    const currentStep = document.querySelector(`.${style.stepWrapper}:not(.${style.hidden})`);
-    currentStep?.classList.add(style.hidden);
-
-    const newStep = document.querySelector(
-      `.${style.stepWrapper}[data-step='${stepNumber}']`
-    );
-    newStep?.classList.remove(style.hidden);
-
-    setActiveStep(stepNumber);
+    updateStep(activeStep, stepNumber);
   };
 
   return (
