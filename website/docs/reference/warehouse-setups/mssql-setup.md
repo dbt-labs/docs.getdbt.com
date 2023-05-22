@@ -85,7 +85,7 @@ A complete reference of all options can be found [at the end of this page](#refe
 * `server`*: The server hostname. E.g. `localhost`
 * `port`: The server port. E.g. `1433`
 * `database`*: The database name.
-* `schema`*: The schema name. E.g. `dbo`
+* `schema`*: The schema name. For example, `dbo`
 * `retries`: The number of automatic times to retry a query before failing. Defaults to `1`. Note that queries with syntax errors will not be retried. This setting can be used to overcome intermittent network issues.
 * `login_timeout`: The number of seconds used to establish a connection before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings.
 * `query_timeout`: The number of seconds used to wait for a query before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings.
