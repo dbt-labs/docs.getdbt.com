@@ -81,17 +81,19 @@ The adapter support is not limited to the matrix of the above configurations. If
 For all the authentication methods below, the following configuration options can be set in your `profiles.yml` file. The options marked with `*` are required.
 A complete reference of all options can be found [at the end of this page](#reference-of-all-connection-options).
 
-* `driver`*: The ODBC driver to use. E.g. `ODBC Driver 18 for SQL Server`
-* `server`*: The server hostname. E.g. `localhost`
-* `port`: The server port. E.g. `1433`
-* `database`*: The database name.
-* `schema`*: The schema name. For example, `dbo`
-* `retries`: The number of automatic times to retry a query before failing. Defaults to `1`. Note that queries with syntax errors will not be retried. This setting can be used to overcome intermittent network issues.
-* `login_timeout`: The number of seconds used to establish a connection before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings.
-* `query_timeout`: The number of seconds used to wait for a query before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings.
-* `schema_authorization`: Optionally set this to the principal who should own the schemas created by dbt. [Details](#schema-authorization).
-* `encrypt`: Whether to encrypt the connection to the server. Defaults to `true`. Read more about encryption [below](#connection-encryption).
-* `trust_cert`: Whether to trust the server certificate. Defaults to `false`. Read more about encryption [below](#connection-encryption).
+| Configuration option | Description | Type | Example |
+| --------------------- | ---- | ---- | ------- |
+| `driver` | The ODBC driver to use | Required | `ODBC Driver 18 for SQL Server` |
+| `server` | The server hostname | Required | `localhost` |
+| `port` |  The server port | Required | `1433` |
+| `database` | The database name | Required | Not applicable |
+| `schema` | The schema name | Required | `dbo` |
+| `retries` | The number of automatic times to retry a query before failing. Defaults to `1`. Queries with syntax errors will not be retried. This setting can be used to overcome intermittent network issues. | Optional |  Not applicable  |
+| `login_timeout` | The number of seconds used to establish a connection before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings. | Optional |  Not applicable  |
+| `query_timeout` | The number of seconds used to wait for a query before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings. | Optional |  Not applicable  |
+| `schema_authorization` |  Optionally set this to the principal who should own the schemas created by dbt. [Read more about schema authorization](#schema-authorization). | Optional |  Not applicable  |
+| `encrypt` |  Whether to encrypt the connection to the server. Defaults to `true`. Read more about [connection encryption](#connection-encryption). | Optional |  Not applicable  |
+| `trust_cert` |   Whether to trust the server certificate. Defaults to `false`. Read more about [connection encryption](#connection-encryption).| Optional |  Not applicable  |
 
 ### Connection encryption
 
@@ -454,7 +456,7 @@ then this would fail as Azure SQL cannot create logins for individuals part of a
 
 ### Reference of all connection options
 
-| configuration option   | description                                                                                                                                        | required           | default value |
+| Configuration option   | Description                                                                                                                                        | Required           | Default value |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------- |
 | `driver`               | The ODBC driver to use.                                                                                                                            | :white_check_mark: |               |
 | `host`                 | The hostname of the database server.                                                                                                               | :white_check_mark: |               |
