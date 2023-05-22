@@ -329,16 +329,16 @@ const sidebarSettings = {
         "docs/dbt-cloud-apis/admin-cloud-api",
         {
           type: "category",
-          label: "Metadata API",
+          label: "Discovery API",
           items: [
             "docs/dbt-cloud-apis/metadata-api",
             "docs/dbt-cloud-apis/metadata-use-case-guides",
-            "docs/dbt-cloud-apis/access-metadata-api",
             "docs/dbt-cloud-apis/metadata-querying",
             {
               type: "category",
               label: "Schema",
               items: [
+                "docs/dbt-cloud-apis/discovery-schema-environment",
                 "docs/dbt-cloud-apis/metadata-schema-model",
                 "docs/dbt-cloud-apis/metadata-schema-models",
                 "docs/dbt-cloud-apis/metadata-schema-modelByEnv",
@@ -812,7 +812,7 @@ const sidebarSettings = {
             "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
             "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
-            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",  
+            "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
           ],
         },
         {
@@ -906,7 +906,6 @@ const sidebarSettings = {
             id: "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
           },
           items: [
-            "guides/dbt-ecosystem/adapter-development/1-what-are-adapters",
             "guides/dbt-ecosystem/adapter-development/2-prerequisites-for-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/4-testing-a-new-adapter",
@@ -947,7 +946,6 @@ const sidebarSettings = {
             id: "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
           },
           items: [
-            "guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project",
             "guides/dbt-ecosystem/databricks-guides/dbt-unity-catalog-best-practices",
             "guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks",
             "guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",

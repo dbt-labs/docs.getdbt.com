@@ -21,22 +21,18 @@ When querying for `modelByEnvironment`, you can use the following arguments.
 
 ### Example Query
 
-You can use the `environment_id` and `model_unique_id` to return the model and its execution time for the last 10 times it was run, regardless of which job ran it!
+You can use the `environment_id` and `model_unique_id` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it!
+
 
 ```graphql
-{
-  modelByEnvironment(
-    environmentId: 1,
-    uniqueId:"model.jaffle_shop.dim_user",
-    lastRunCount:10,
-    withCatalog: false
-  ){
-    uniqueId
-    jobId,
-    runId,
-    executionTime
-  }
-}
+modelByEnvironment(environmentId: 834, uniqueId: "model.marketing.customers", lastRunCount: 20) {
+		runId, # Get historical results for a particular model
+		runGeneratedAt,
+		executionTime, # View build time across runs
+    status,
+    tests { name, status, executeCompletedAt } # View test results across runs
+   }
+
 ```
 
 ### Fields
