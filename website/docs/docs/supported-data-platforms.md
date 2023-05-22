@@ -20,58 +20,56 @@ Here's the list of the **Verified data platforms** that can connect to dbt Cloud
 
 <Card
     title="AlloyDB"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/alloydb-setup'><img src='/img/icons/command-line.svg' width='6%'/>Install using the CLI</a> <br /><br />  Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/alloydb-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br />  Latest version: 1.4"
     icon="alloydb"/>
 
 <Card
-    title="Redshift"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/redshift-setup'><img src='/img/icons/command-line.svg' width='6%'/>Install using the CLI </a> <br /><br /> Latest version: 1.4"
-    icon="redshift"/>
-
-
-<Card
-    title="Postgres"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
-    icon="redshift"/>
-
-
-<Card
     title="BigQuery"
-    body="<a href='/docs/cloud/connect-data-platform/connect-bigquery'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/bigquery-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-bigquery'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/bigquery-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> Latest version: 1.4"
     icon="bigquery"/>
 
 <Card
     title="Databricks"
-    body="<a href='/docs/cloud/connect-data-platform/connect-databricks'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/databricks-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-databricks'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/databricks-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> Latest version: 1.4"
     icon="databricks"/>
 
 <Card
+    title="Postgres"
+    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
+    icon="redshift"/>
+
+<Card
+    title="Redshift"
+    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/redshift-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> Latest version: 1.4"
+    icon="redshift"/>
+
+<Card
     title="Snowflake"
-    body="<a href='/docs/cloud/connect-data-platform/connect-snowflake'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/snowflake-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-snowflake'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/snowflake-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> Latest version: 1.4"
     icon="snowflake"/>
 
 <Card
-    title="Starburst"
-    body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'>Install in dbt Core </a> <br /> <br /> Latest version: 1.4"
-    icon="starburst-partner-logo"/>
-
-<Card
     title="Spark"
-    body="<a href='/docs/cloud/connect-data-platform/connect-apache-spark'>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/spark-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-apache-spark'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/spark-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> Latest version: 1.4"
     icon="rocket"/>
 
 <Card
+    title="Starburst"
+    body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /> <br /> Latest version: 1.4"
+    icon="starburst-partner-logo"/>
+
+<Card
     title="Dremio*"
-    body="<a href='/docs/core/connect-data-platform/dremio-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.4<br /> 🚧 Verification in progress"
+    body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> Latest version: 1.4<br /> 🚧 Verification in progress"
     icon="rocket"/>
 
 <Card
     title="Azure Synapse*"
-    body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'>Install in dbt Core </a> <br /><br /> Latest version: 1.3<br /> 🚧 Verification in progress"
+    body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> Latest version: 1.3<br /> 🚧 Verification in progress"
     icon="rocket"/>
 
 </div>
 
 <br />
-* These adapters aren't supported in dbt Cloud and you can only install them using the CLI.<br />
+* Not supported in dbt Cloud and you can only install them using the CLI.<br />
 
