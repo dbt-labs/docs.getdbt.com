@@ -1,5 +1,10 @@
 exports.versions = [
   {
+    version: "1.6",
+    EOLDate: "2024-07-20", // placeholder - need to confirm the final date
+    isPrerelease: true
+  },
+  {
     version: "1.5",
     EOLDate: "2024-04-27",
   },

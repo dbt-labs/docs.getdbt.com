@@ -19,14 +19,14 @@ When sharing a final dbt model with other teams or systems, that model is operat
 Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal of is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
 
 ## Related documentation
-- [`versions`](resource-properties/versions)
-- [`latest_version`](resource-properties/latest_version)
-- [`include` & `exclude`](resource-properties/include-exclude)
-- [`ref` with `version` argument](ref#versioned-ref)
+- [`versions`](/reference/resource-properties/versions)
+- [`latest_version`](/reference/resource-properties/latest_version)
+- [`include` & `exclude`](/reference/resource-properties/include-exclude)
+- [`ref` with `version` argument](/reference/dbt-jinja-functions/ref#versioned-ref)
 
 ## Why version a model?
 
-If a model defines a ["contract"](model-contracts) (a set of guarantees for its structure), it's also possible to change that model's structure in a way that breaks the previous set of guarantees. This could be as obvious as removing or renaming a column, or more subtle, like changing its data type or nullability.
+If a model defines a ["contract"](/docs/collaborate/govern/model-contracts) (a set of guarantees for its structure), it's also possible to change that model's structure in a way that breaks the previous set of guarantees. This could be as obvious as removing or renaming a column, or more subtle, like changing its data type or nullability.
 
 One approach is to force every model consumer to immediately handle the breaking change as soon as it's deployed to production. This is actually the appropriate answer at many smaller organizations, or while rapidly iterating on a not-yet-mature set of data models. But it doesn’t scale well beyond that.
 
@@ -55,9 +55,9 @@ Rather than constantly adding a new version for each small change, you should op
 
 ## How is this different from "version control"?
 
-[Version control](git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
+[Version control](/docs/collaborate/git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
 
-When you make updates to a model's source code—its logical definition, in SQL or Python, or related configuration—dbt can [compare your project to previous state](project-state), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production—all coordinated via your version control system.
+When you make updates to a model's source code—its logical definition, in SQL or Python, or related configuration—dbt can [compare your project to previous state](/docs/deploy/project-state), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production—all coordinated via your version control system.
 
 **Versioned models are different.** Defining model `versions` is appropriate when people, systems, and processes beyond your team's control, inside or outside of dbt, depend on your models. You can neither simply go migrate them all, nor break their queries on a whim. You need to offer a migration path, with clear diffs and deprecation dates.
 
@@ -91,7 +91,7 @@ Let's say that `dim_customers` has three versions defined: `v2` is the "latest",
 
 As you'll see in the implementation section below, a versioned model can reuse the majority of its YAML properties and configuration. Each version needs to only say how it _differs_ from the shared set of attributes. This gives you, as the producer of a versioned model, the opportunity to highlight the differences across versions—which is otherwise difficult to detect in models with dozens or hundreds of columns—and to clearly track, in one place, all versions of the model which are currently live.
 
-dbt also supports [`version`-based selection](node-selection/methods#the-version-method). For example, you could define a [default YAML selector](node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
+dbt also supports [`version`-based selection](/reference/node-selection/methods#the-version-method). For example, you could define a [default YAML selector](/reference/node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
 
 <File name="selectors.yml">
 
@@ -271,7 +271,7 @@ models:
 
 The configuration above says: Instead of two unrelated models, I have two versioned definitions of the same model: `dim_customers_v1` and `dim_customers_v2`.
 
-**Where are they defined?** dbt expects each model version to be defined in a file named `<model_name>_v<v>`. In this case: `dim_customers_v1.sql` and `dim_customers_v2.sql`. It's also possible to define the "latest" version in `dim_customers.sql` (no suffix), without additional configuration. Finally, you can override this convention by setting [`defined_in: any_file_name_you_want`](resource-properties/versions#defined_in)—but we strongly encourage you to follow the convention, unless you have a very good reason.
+**Where are they defined?** dbt expects each model version to be defined in a file named `<model_name>_v<v>`. In this case: `dim_customers_v1.sql` and `dim_customers_v2.sql`. It's also possible to define the "latest" version in `dim_customers.sql` (no suffix), without additional configuration. Finally, you can override this convention by setting [`defined_in: any_file_name_you_want`](/reference/resource-properties/versions#defined_in)—but we strongly encourage you to follow the convention, unless you have a very good reason.
 
 **Where will they be materialized?** Each model version will create a database relation with alias `<model_name>_v<v>`. In this case: `dim_customers_v1` and `dim_customers_v2`. See [the section below](#configuring-database-location-with-alias) for more details on configuring aliases.
 
@@ -390,7 +390,7 @@ For example, if your new model version is only renaming or removing certain colu
 ```sql
 {{ config(materialized = 'view') }}
 
-{% set dim_customers_v1 = ref('dim_customers', v=1)}
+{% set dim_customers_v1 = ref('dim_customers', v=1) %}
 
 select
 {{ dbt_utils.star(from=dim_customers_v1, except=["country_name"]) }}

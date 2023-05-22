@@ -22,3 +22,4 @@ For information on all dbt commands and their arguments (flags), see the [dbt co
 - [Model selection syntax](/reference/node-selection/syntax)
 - [Cloud IDE features](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#ide-features)
 - [Does dbt offer extract and load functionality?](/faqs/Project/transformation-tool)
+- [Why does dbt compile need a data platform connection](/faqs/Warehouse/db-connection-dbt-compile)
