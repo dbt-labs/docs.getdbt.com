@@ -1,7 +1,7 @@
 ---
 title: "Run history retention changing to 365 days"
 id: "run-history-endpoint"
-sidebar_label: "Enhancement: Run history available for 365 days"
+sidebar_label: "Update: Run history available for 365 days"
 sidebar_position: 6
 tags: [May-22-2023, API, Scheduler]
 ---
