@@ -6,7 +6,7 @@ sidebar_position: 6
 tags: [May-22-2023, API, Scheduler]
 ---
 
-Beginning on June 1, 2023, dbt Cloud customers on the Enterprise and Team multi-tenant plans can access run history via the dbt Cloud user interface (UI) and API for the past 365 days.
+Beginning on June 1, 2023, dbt Cloud users on the Enterprise and Team multi-tenant plans can access run history for the previous 365 days through the dbt Cloud user interface (UI) and API, improving speed and accessibility. 
 
 Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.getdbt.com/dbt-cloud/api-v2#tag/Runs) will return information on runs, artifacts, logs, and run steps starting from June 1, 2022. The run history displayed in the dbt Cloud UI will also show runs from June 1, 2022 and onwards. 
 
