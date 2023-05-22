@@ -447,12 +447,8 @@ You can optionally set the principal who should own all schemas created by dbt. 
 CREATE SCHEMA [schema_name] AUTHORIZATION [schema_authorization]
 ```
 
-A common use case is to use this when you are authenticating with a principal who has permissions based on a group
-(e.g. an AAD group).
-When that principal creates a schema,
-he server will first try to create an individual login for this principal and then link the schema to that principal.
-If you would be using Azure AD in this case,
-then this would fail as Azure SQL cannot create logins for individuals part of an AD group automatically.
+A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as an AAD group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Azure AD in this case,
+then this would fail since Azure SQL can't create logins for individuals part of an AD group automatically.
 
 ### Reference of all connection options
 
