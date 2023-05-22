@@ -13,7 +13,7 @@ description: New features and changes in dbt Core v1.3
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 There are three changes in dbt Core v1.3 that may require action from some users:
-1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/core/connection-profiles#advanced-customizing-a-profile-directory).
+1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory).
 2. If you already have `.py` files defined in the `model-paths` of your dbt project, dbt will start trying to read them as Python models. You can use [the new `.dbtignore` file](/reference/dbtignore) to tell dbt to ignore those files.
 3. If you have custom code accessing the `raw_sql` property of models (with the [model](/reference/dbt-jinja-functions/model) or [graph](/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 

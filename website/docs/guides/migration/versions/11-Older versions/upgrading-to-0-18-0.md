@@ -75,9 +75,9 @@ can override schema test definitions
 
 **Snowflake**
 - `query_tag` in [profile](/reference/warehouse-setups/snowflake-setup), [model config](/reference/resource-configs/snowflake-configs#query-tags)
-- automatic SSO [session caching](/reference/warehouse-setups/snowflake-setup#sso-authentication) support
+- automatic SSO [session caching](/docs/core/connect-data-platform/snowflake-setup#sso-authentication) support
 
 **BigQuery**
-- [`impersonate_service_account`]/reference/warehouse-setups/bigquery-setup#service-account-impersonation)
+- [`impersonate_service_account`](/docs/core/connect-data-platform/bigquery-setup#service-account-impersonation)
 - [`policy_tags`](/reference/resource-configs/bigquery-configs#policy-tags)
 - [`hours_to_expiration`](/reference/resource-configs/bigquery-configs#controlling-table-expiration)
