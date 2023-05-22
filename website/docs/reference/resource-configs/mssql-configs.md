@@ -29,7 +29,7 @@ values={[
 ```sql
 {{
     config(
-        as_columnstore='False'
+        as_columnstore= false
         )
 }}
 
