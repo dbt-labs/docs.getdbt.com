@@ -78,7 +78,7 @@ The adapter support is not limited to the matrix of the above configurations. If
 
 ### Common configuration
 
-For all the authentication methods below, the following configuration options can be set in your `profiles.yml` file. The options marked with `*` are required.
+For all the authentication methods, refer to the following configuration options that can be set in your `profiles.yml` file. 
 A complete reference of all options can be found [at the end of this page](#reference-of-all-connection-options).
 
 | Configuration option | Description | Type | Example |
