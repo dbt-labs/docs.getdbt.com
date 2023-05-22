@@ -109,7 +109,7 @@ please be mindful of the following changes to dbt's Python dependencies:
 - [New configurations for schema.yml files](/reference/configs-and-properties)
 - [New configurations for Source declarations](/docs/build/sources)
 - [New Postgres connection configs](/docs/core/connect-data-platform/postgres-setup)
-- [New Snowflake KeyPair auth configs](/docs/core/connect-data-platform/nowflake-setup)
+- [New Snowflake KeyPair auth configs](/docs/core/connect-data-platform/snowflake-setup)
 - [New `builtins` jinja context variable](/reference/dbt-jinja-functions/builtins)
 - [New `fromyaml` context method](/reference/dbt-jinja-functions/fromyaml)
 - [New `toyaml` context method](/reference/dbt-jinja-functions/toyaml)

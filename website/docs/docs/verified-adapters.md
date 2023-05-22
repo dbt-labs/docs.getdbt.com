@@ -12,16 +12,16 @@ Here's the list of the verified data platforms that can connect to dbt and its l
 
 | dbt Cloud setup  | CLI installation | latest verified version  |
 | ---------------- | ----------------------------------------- | ------------------------ |
-| [Setup AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)  | [Install AlloyDB](alloydb-setup)     | (same as `dbt-postgres`) |
-| Not supported | [Install Azure Synapse](azuresynapse-setup)       | 1.3 :construction:       |
-| [Set up BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) | [Install BigQuery](bigquery-setup)                | 1.4                      |
-| [Set up Databricks ](/docs/cloud/connect-data-platform/connect-databricks)| [ Install Databricks](databricks-setup)            | 1.4                      |
-| Not supported | [Install Dremio](dremio-setup)                    | 1.4 :construction:       |
-| [Set up Postgres](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)  | [Install Postgres](postgres-setup)                | 1.4                      |
-| [Set up Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)   | [Install Redshift](redshift-setup)                | 1.4                      |
-| [Set up Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)   | [ Install Snowflake](snowflake-setup)              | 1.4                      |
-| [Set up Spark](/docs/cloud/connect-data-platform/connect-apache-spark) | [Install Spark](spark-setup)                      | 1.4                      |
-| [Set up Starburst & Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)| [Installl Starburst & Trino](trino-setup)          | 1.4                      |
+| [Setup AlloyDB](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)  | [Install AlloyDB](/docs/core/connect-data-platform/alloydb-setup)     | (same as `dbt-postgres`) |
+| Not supported | [Install Azure Synapse](/docs/core/connect-data-platform/azuresynapse-setup)       | 1.3 :construction:       |
+| [Set up BigQuery](/docs/cloud/connect-data-platform/connect-bigquery) | [Install BigQuery](/docs/core/connect-data-platform/bigquery-setup)                | 1.4                      |
+| [Set up Databricks ](/docs/cloud/connect-data-platform/connect-databricks)| [ Install Databricks](/docs/core/connect-data-platform/databricks-setup)            | 1.4                      |
+| Not supported | [Install Dremio](/docs/core/connect-data-platform/dremio-setup)                    | 1.4 :construction:       |
+| [Set up Postgres](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)  | [Install Postgres](/docs/core/connect-data-platform/postgres-setup)                | 1.4                      |
+| [Set up Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)   | [Install Redshift](/docs/core/connect-data-platform/redshift-setup)                | 1.4                      |
+| [Set up Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)   | [ Install Snowflake](/docs/core/connect-data-platform/snowflake-setup)              | 1.4                      |
+| [Set up Spark](/docs/cloud/connect-data-platform/connect-apache-spark) | [Install Spark](/docs/core/connect-data-platform/spark-setup)                      | 1.4                      |
+| [Set up Starburst & Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)| [Installl Starburst & Trino](/docs/core/connect-data-platform/trino-setup)          | 1.4                      |
 
 :construction:: Verification in progress
 

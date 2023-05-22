@@ -74,7 +74,7 @@ can override schema test definitions
 - [`iam_profile`](/docs/core/connect-data-platform/redshift-setup#specifying-an-iam-profile)
 
 **Snowflake**
-- `query_tag` in [profile](/reference/warehouse-setups/snowflake-setup), [model config](/reference/resource-configs/snowflake-configs#query-tags)
+- `query_tag` in [profile](/docs/core/connect-data-platform/snowflake-setup), [model config](/reference/resource-configs/snowflake-configs#query-tags)
 - automatic SSO [session caching](/docs/core/connect-data-platform/snowflake-setup#sso-authentication) support
 
 **BigQuery**
