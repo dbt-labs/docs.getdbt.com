@@ -759,3 +759,11 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/dbt-cloud/on-premises/system-requirements /docs/deploy/single-tenant 301
 /docs/dbt-cloud/on-premises/upgrading-kots /docs/deploy/single-tenant 301
 
+# Adding new path for quickstarts
+/docs/quickstarts/dbt-cloud/bigquery /quickstarts/bigquery 301
+/docs/quickstarts/dbt-cloud/databricks /quickstarts/databricks 301
+/docs/quickstarts/dbt-cloud/redshift /quickstarts/redshift 301
+/docs/quickstarts/dbt-cloud/snowflake /quickstarts/snowflake 301
+/docs/quickstarts/dbt-cloud/starburst-galaxy /quickstarts/starburst-galaxy 301
+/docs/quickstarts/dbt-core/codespace /quickstarts/codespace 301
+/docs/quickstarts/dbt-core/manual-install /quickstarts/manual-install 301
