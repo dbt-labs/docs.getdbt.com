@@ -54,7 +54,7 @@ Python example:
 	```
 Every query will require an environment ID or job ID. You can get the ID from a dbt Cloud URL or using the Admin API.
 
-There are several illustrative example queries in this documentation. You can see an examples in the [use case guide](/docs/dbt-cloud-apis/metadata-use-case-guide).
+There are several illustrative example queries in this documentation. You can see an examples in the [use case guide](/docs/dbt-cloud-apis/metadata-use-case-guides).
 
 
 ## Reasonable use
