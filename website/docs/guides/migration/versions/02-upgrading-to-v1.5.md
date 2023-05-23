@@ -50,7 +50,7 @@ models:
     tests:
     config: ...
 
-# this is fine
+# ✅ this is fine
 models:
   - name: my_model
     tests: [] # todo! add tests later
