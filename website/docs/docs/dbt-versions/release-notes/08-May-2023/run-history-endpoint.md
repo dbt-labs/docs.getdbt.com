@@ -6,6 +6,8 @@ sidebar_position: 6
 tags: [May-22-2023, API, Scheduler]
 ---
 
+We are making a change to our data retention policy for run history in dbt Cloud.
+
 Beginning on June 1, 2023, dbt Cloud multi-tenant users can access run history for the previous 365 days on a rolling basis through the dbt Cloud user interface (UI) and API. This update improves the application's speed and reliability, making it more performant for all users.
 
 Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.getdbt.com/dbt-cloud/api-v2#tag/Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  The run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
