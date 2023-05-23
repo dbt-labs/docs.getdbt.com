@@ -10,6 +10,8 @@ Use the Discovery API to evaluate data health in the long term or at a moment in
 
 Since GraphQL provides a description of the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.  
 
+<Snippet src="metadata-api-prerequisites" />
+
 ## Authorization
 
 Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Metadata API.
@@ -65,8 +67,6 @@ To maintain performance and stability, and prevent abuse, Metadata (GraphQL) API
 
 ## Retention limits
 You can use the metadata API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
-
-<Snippet src="metadata-api-prerequisites" />
 
 ## Run queries with the GraphQL explorer
 
