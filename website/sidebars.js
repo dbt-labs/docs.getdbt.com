@@ -330,8 +330,8 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Discovery API",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/metadata-api" },
           items: [
-            "docs/dbt-cloud-apis/metadata-api",
             "docs/dbt-cloud-apis/metadata-use-case-guides",
             "docs/dbt-cloud-apis/discovery-querying",
             {
