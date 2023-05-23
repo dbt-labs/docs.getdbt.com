@@ -80,6 +80,6 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 ## Related docs
 
 - [Common uses and scenarios for the Discovery API](/docs/dbt-cloud-apis/metadata-use-case-guides)
-- [Query the Discovery API](/docs/dbt-cloud-apis/metadata-querying)
+- [Query the Discovery API](/docs/dbt-cloud-apis/discovery-querying)
 - [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
 

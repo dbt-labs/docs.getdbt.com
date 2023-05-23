@@ -91,7 +91,7 @@ To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-s
 <details>
   <summary><b>Metadata API authorization</b></summary>
   <div>
-    <div>Refer to our <a href="/docs/dbt-cloud-apis/metadata-querying#authorization">Authorization documentation</a> to learn how to authorize requests to the Metadata API.<br></br><br></br>
+    <div>Refer to our <a href="/docs/dbt-cloud-apis/discovery-querying#authorization">Authorization documentation</a> to learn how to authorize requests to the Metadata API.<br></br><br></br>
     
     Metrics-specific queries work identical to existing Metadata API queries. This means existing integrations that query model metadata will work perfectly in the context of metrics.
     </div>
@@ -110,7 +110,7 @@ To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-s
 <!-- the following content was used for the <details> portion above. leaving this here for legacy purposes 
 **Metadata API authorization**
 
-To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/metadata-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to query model metadata will work perfectly in the context of metrics. 
+To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/discovery-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to query model metadata will work perfectly in the context of metrics. 
 
 **Query the Metadata API**
 

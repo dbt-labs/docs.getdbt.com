@@ -1,4 +1,7 @@
 
+# Discovery redirect
+/docs/dbt-cloud-apis/metadata-querying docs/dbt-cloud-apis/discovery-querying 301
+
 /docs/core/connection-profiles#understanding-threads /docs/running-a-dbt-project/using-threads 301
 
 # PrivateLink to Secure redirects

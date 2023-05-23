@@ -333,7 +333,7 @@ const sidebarSettings = {
           items: [
             "docs/dbt-cloud-apis/metadata-api",
             "docs/dbt-cloud-apis/metadata-use-case-guides",
-            "docs/dbt-cloud-apis/metadata-querying",
+            "docs/dbt-cloud-apis/discovery-querying",
             {
               type: "category",
               label: "Schema",

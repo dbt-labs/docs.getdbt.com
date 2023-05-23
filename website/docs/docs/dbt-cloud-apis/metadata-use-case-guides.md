@@ -1144,5 +1144,5 @@ By analyzing the model build times, users can identify bottlenecks and optimize 
  ## Related docs
 
 - [Metadata API product roadmap](/docs/dbt-cloud-apis/metadata-api#product-roadmap)
-- [Query Metadata API](/docs/dbt-cloud-apis/metadata-querying)
+- [Query Metadata API](/docs/dbt-cloud-apis/discovery-querying)
 - [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide)
