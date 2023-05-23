@@ -20,6 +20,7 @@ You can use the API in a variety of ways to get answers to your business questio
 
 You can use the Discovery API to identify inefficiencies in pipeline execution to reduce infrastructure costs and improve timeliness. Below are example questions and queries you can run. 
 
+For performance use cases, people typically query the historical or latest applied state across any part of the DAG (for example, models) using the `environment`, `modelByEnvironment`, or job-level endpoints.
 
 ### How long did each model take to run?
 
@@ -43,11 +44,11 @@ query Query($environmentId: Int!, $first: Int!){
                     node {
                         name
                         uniqueId
-												materializedType
+                        materializedType
                         executionInfo {
                             lastSuccessRunId
                             executionTime
-														executeStartedAt
+                            executeStartedAt
                         }
                     }
                 }
@@ -169,20 +170,20 @@ The API returns full identifier information (`database.schema.alias`) and the `e
        edges {
           node {
             uniqueId
-           compiledCode
-           database
-           schema
+            compiledCode
+            database
+            schema
             alias
-           materializedType
+            materializedType
             executionInfo {
               executeCompletedAt
-             lastJobDefinitionId
+              lastJobDefinitionId
               lastRunGeneratedAt
               lastRunId
               lastRunStatus
               lastRunError
               lastSuccessJobDefinitionId
-             runGeneratedAt
+              runGeneratedAt
               lastSuccessRunId
             }
          }
@@ -265,6 +266,8 @@ environment(id: $environmentId) {
 ## Quality
 
 You can use the Discovery API to monitor data source freshness and test results to diagnose and resolve issues and drive trust in data. When used with [webhooks](/docs/deploy/webhooks), can also help with detecting, investigating, and alerting issues. Below lists example questions the API can help you answer. Below are example questions and queries you can run. 
+
+For quality use cases, people typically query the historical or latest applied state, often in the upstream part of the DAG (for example, sources), using the `environment` or `modelByEnvironment` endpoints.
 
 ### Which models and tests failed to run?
 By filtering on the latest status, you can get lists of models that failed to build and tests that failed during their most recent execution. This is helpful when diagnosing issues with the deployment that result in delayed or incorrect data.
@@ -450,10 +453,10 @@ environment(id: $environmentId) {
     sources(first: $first, filters:{freshnessChecked:true, database:"production"}) {
       edges {
         node {
-					sourceName
-					name
-					identifier
-					loader
+          sourceName
+          name
+          identifier
+          loader
           freshness {
             freshnessJobDefinitionId
             freshnessRunId
@@ -571,6 +574,7 @@ environment(id:123) {
 
 You can use the Discovery API to find and understand relevant datasets and semantic nodes with rich context and metadata. Below are example questions and queries you can run.
 
+For discovery use cases, people typically query the latest applied or definition state, often in the downstream part of the DAG (for example, mart models or metrics), using the `environment` endpoint.
 
 ### What does this dataset and its columns mean?
 
@@ -588,8 +592,8 @@ environment(id: $environmentId) {
         node {
           name
           description
-					tags
-					meta
+          tags
+          meta
           catalog {
             columns {
               name
@@ -850,6 +854,42 @@ Graph example:
 
 </details>
 
+<VersionBlock firstVersion="1.6">
+
+### Which metrics are available? 
+
+Metric definitions are coming soon to the Discovery API with dbt v1.6. You’ll be able to query metrics using the dbt Semantic Layer, use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
+
+<details>
+<summary>Example query</summary>
+
+```graphql
+environment(id: $environmentId) {
+  definition {
+    metrics(first: $first) {
+      edges {
+        node {
+          name
+          description
+          type
+          formula
+          filter
+          tags
+          parents {
+            name
+            resourceType
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
+
+</VersionBlock>
+
 <VersionBlock firstVersion="1.5">
 
 ## Governance 
@@ -959,24 +999,24 @@ environment(id: $environmentId) {
       edges {
         node {
           name
-					description
-					owner_name
-					url
+          description
+          owner_name
+          url
           parents {
             name
-						resourceType
-						... on ModelAppliedStateNode {
-							executionInfo {
-								executeCompletedAt
-								lastRunStatus
-							}
-							tests {
-								executionInfo {
-									executeCompletedAt
-									lastRunStatus
-								}
-							}
-						}
+            resourceType
+            ... on ModelAppliedStateNode {
+              executionInfo {
+                executeCompletedAt
+                lastRunStatus
+              }
+              tests {
+                executionInfo {
+                  executeCompletedAt
+                  lastRunStatus
+                }
+              }
+            }
           }
         }
       }
@@ -1023,18 +1063,18 @@ environment(id: $environmentId) {
     sources(first: $first, filter:{uniqueIds:["SOURCE_NAME.TABLE_NAME"]}) {
       edges {
         node {
-					loader
+          loader
           children {
             uniqueId
-						resourceType
+            resourceType
             ... on ModelAppliedStateNode {
-							database
-	            schema
-	            alias
-							children {
-								uniqueId
-							}
-						}
+              database
+              schema
+              alias
+              children {
+                uniqueId
+              }
+            }
           }
         }
       }
