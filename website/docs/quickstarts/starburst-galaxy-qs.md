@@ -137,6 +137,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     WITH (
         external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/jaffle-shop-customers/',
         format = 'csv',
+        type = 'hive',
         skip_header_line_count=1
 
     );
@@ -153,6 +154,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     WITH (
         external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/jaffle-shop-orders/',
         format = 'csv',
+        type = 'hive',
         skip_header_line_count=1
     );
 
@@ -170,6 +172,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 
         external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/stripe-payments/',
         format = 'csv',
+        type = 'hive',
         skip_header_line_count=1
 
     );
@@ -410,4 +413,3 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 This quickstart focuses on using dbt Cloud to run models against a data lake (S3) by using Starburst Galaxy as the query engine. In most real world scenarios, the data that is needed for running models is actually spread across multiple data sources and is stored in a variety of formats. With Starburst Galaxy, Starburst Enterprise, and Trino, you can run your models on any of the data you need, no matter where it is stored.
 
 If you want to try this out, you can refer to the [Starburst Galaxy docs](https://docs.starburst.io/starburst-galaxy/catalogs/) to add more data sources and load the Jaffle Shop data into the source you select. Then, extend your models to query the new data source and the data source you created in this quickstart.
-
