@@ -1,6 +1,5 @@
 ---
 title: "Use cases and examples for the Discovery API"
-id: "metadata-use-case-guides" 
 sidebar_label: "Uses and examples"
 ---
 
@@ -1086,6 +1085,5 @@ environment(id: $environmentId) {
 
 ## Related docs
 
-- [Metadata API product roadmap](/docs/dbt-cloud-apis/metadata-api#product-roadmap)
-- [Query Metadata API](/docs/dbt-cloud-apis/discovery-querying)
+- [Query Discovery API](/docs/dbt-cloud-apis/discovery-querying)
 - [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide)

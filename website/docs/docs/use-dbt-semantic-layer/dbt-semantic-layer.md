@@ -16,7 +16,7 @@ The result? You have less duplicative coding for data teams and more consistency
 The dbt Semantic Layer has four main parts:
 
 - Define your metrics in version-controlled dbt project code
-- Import your metric definitions via the [Metadata API](/docs/dbt-cloud-apis/metadata-api)
+- Import your metric definitions via the [Metadata API](/docs/dbt-cloud-apis/discovery-api)
 - Query your metric data via the dbt Proxy Server
 - Explore and analyze dbt metrics in downstream tools
 
@@ -41,7 +41,7 @@ The dbt Semantic Layer is currently available for Public Preview, which means:
 
 &mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Review [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) for more info on plan availability.
 
-- Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated
+- Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/discovery-api) in the integrated
 partner tool to import metric definition.
 - Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which                  requires access to the Metadata API. 
 
@@ -60,7 +60,7 @@ The dbt Semantic Layer product architecture includes four primary components:
 | **[dbt project](/docs/build/metrics)** | Define models and metrics in dbt Core. | ✅ | ✅ |  ✅  | Open source, Core |
 | **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
 | **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja like query models and metrics, use macros), compiles the query into pure SQL, and executes the query against the data platform. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
-| **[Metadata API](/docs/dbt-cloud-apis/metadata-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise |
+| **[Metadata API](/docs/dbt-cloud-apis/discovery-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise |
     
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture-flow.png" title="dbt Semantic components" />
 

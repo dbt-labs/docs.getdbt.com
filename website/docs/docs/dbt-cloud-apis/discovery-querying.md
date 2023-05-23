@@ -4,7 +4,7 @@ id: "discovery-querying"
 sidebar_label: "Query the Discovery API" 
 ---
 
-The Discovery API supports ad-hoc queries or lets you browse the schema. If you are new to the API, read the [Discovery API overview](/docs/dbt-cloud-apis/metadata-api) for an introduction to the Metadata API.
+The Discovery API supports ad-hoc queries or lets you browse the schema. If you are new to the API, read the [Discovery API overview](/docs/dbt-cloud-apis/discovery-api) for an introduction to the Discovery API.
 
 Use the Discovery API to evaluate data health in the long term or at a moment in time. dbt Labs provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run ad-hoc queries or browse the schema. 
 
@@ -14,13 +14,13 @@ Since GraphQL provides a description of the data in the API, the schema displaye
 
 ## Authorization
 
-Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Metadata API.
+Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Discovery Only service token that is authorized to execute a specific query against the Discovery API.
 
-Once you've created a token, you can use it in the Authorization header of requests to the dbt Cloud Metadata API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used in place of `Token` in the Authorization header. Both syntaxes are equivalent. 
+Once you've created a token, you can use it in the Authorization header of requests to the dbt Cloud Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used in place of `Token` in the Authorization header. Both syntaxes are equivalent. 
 
 ## Access the Discovery API 
 
-1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Metadata API for authorization of requests.
+1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Discovery Only_ service token, which can be used to execute a specific query against the Discovery API for authorization of requests.
 
 2. Find your API URL using the endpoint `https://metadata.{YOUR_ACCESS_URL}/graphql`. 
 
@@ -56,7 +56,7 @@ Python example:
 	```
 Every query will require an environment ID or job ID. You can get the ID from a dbt Cloud URL or using the Admin API.
 
-There are several illustrative example queries in this documentation. You can see an examples in the [use case guide](/docs/dbt-cloud-apis/metadata-use-case-guides).
+There are several illustrative example queries in this documentation. You can see an examples in the [use case guide](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
 
 
 ## Reasonable use
@@ -66,7 +66,7 @@ To maintain performance and stability, and prevent abuse, Metadata (GraphQL) API
 - Environment-level endpoints will be subject to response size limits in the future. The depth of the graph should not exceed three levels. A user can paginate up to 500 items per query.
 
 ## Retention limits
-You can use the metadata API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
+You can use the Discovery API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.
 
 ## Run queries with the GraphQL explorer
 
@@ -83,11 +83,11 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 4. Select **Authorization** in the **header key** drop-down list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should look like this `{"Authorization": "Bearer <YOUR_TOKEN>}`.
 <br />
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
 
 5. Run your query by pressing the blue query button in the top-right of the Operation editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
-<Lightbox src="/img/docs/dbt-cloud/metadata-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
+<Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
 
 ### Fragments
 
@@ -213,5 +213,5 @@ environment(id: $environmentId) {
 
 ## Related content
 
-- [Common uses and scenarios for the Discovery API](/docs/dbt-cloud-apis/metadata-use-case-guides)
+- [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
 - [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
