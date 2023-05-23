@@ -19,7 +19,6 @@ function QuickstartTOC() {
   const [mounted, setMounted] = useState(false);
   const [tocData, setTocData] = useState([]);
   const [activeStep, setActiveStep] = useState(activeStepLocal || 1);
-  const [activeQuickstart, setActiveQuickstart] = useState(locationPath);
 
   useEffect(() => {
     // Get all h2 for each step in the guide
@@ -127,7 +126,7 @@ function QuickstartTOC() {
     }
 
     // Set local storage to the active step
-    localStorage.setItem(activeQuickstart, activeStep);
+    localStorage.setItem(locationPath, activeStep);
 
     // If on mobile, auto scroll to the active step in the TOC when activeStep updates
     const tocList = document.querySelector(`.${style.tocList}`);
