@@ -16,7 +16,7 @@ Read more about why we want to enable analysts to work more like software engine
 - Avoid writing boilerplate <Term id="dml" /> and <Term id="ddl" /> by managing transactions, dropping tables, and managing schema changes. Write business logic with just a SQL `select` statement, or a Python DataFrame, that returns the dataset you need, and dbt takes care of <Term id="materialization" />.
 - Build up reusable, or modular, data models that can be referenced in subsequent work instead of starting at the raw data with every analysis.
 - Dramatically reduce the time your queries take to run: Leverage metadata to find long-running models that you want to optimize and use [incremental models](/docs/build/incremental-models) which dbt makes easy to configure and use.
-- Write <Term id="dry" />er code by leveraging [macros](/docs/build/jinja-macros), [hooks](/docs/build/hooks-operations), and [package management](/docs/build/packages).
+- Write <Term id="dry" />er code by leveraging [macros](/docs/build/jinjam), [hooks](/docs/build/hooks-operations), and [package management](/docs/build/packages).
 
 ## dbt provides more reliable analysis
 
