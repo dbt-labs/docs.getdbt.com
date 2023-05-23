@@ -1,5 +1,6 @@
 ---
 title: "iomete setup"
+description: "Read this guide to learn about the iomete warehouse setup in dbt."
 id: "iomete-setup"
 meta:
   maintained_by: iomete
@@ -12,7 +13,7 @@ meta:
   slack_channel_name: '##db-iomete'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03JFG22EP9'
   platform_name: 'iomete'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

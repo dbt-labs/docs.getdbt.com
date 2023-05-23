@@ -1,7 +1,7 @@
 ---
 id: limit
 title: SQL LIMIT
-description: Adding the LIMIT clause to a query will limit the number of rows returned.
+description: Read this guide to learn about the SQL LIMIT clause in dbt.
 slug: /sql-reference/limit
 ---
 

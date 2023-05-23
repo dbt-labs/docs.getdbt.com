@@ -1,5 +1,6 @@
 ---
-title: "target"
+title: "About target variable"
+sidebar_label: "target"
 id: "target"
 description: "Contains information about your connection to the warehouse."
 ---

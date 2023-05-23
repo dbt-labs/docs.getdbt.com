@@ -1,5 +1,6 @@
 ---
 title: "Doris setup"
+description: "Read this guide to learn about the Doris warehouse setup in dbt."
 id: "doris-setup"
 meta:
   maintained_by: SelectDB
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: '#db-doris'
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Apache Doris / SelectDB'
-  config_page: 'doris-configs'
+  config_page: '/reference/resource-configs/doris-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

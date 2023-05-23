@@ -1,6 +1,7 @@
 ---
 title: "dbt Cloud features"
 id: "dbt-cloud-features"
+hide_table_of_contents: true
 ---
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. 
@@ -17,7 +18,7 @@ To have the best experience using dbt Cloud, we recommend you use modern and up-
 <Card
     title="dbt Cloud IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
-link="/docs/cloud/develop-in-the-cloud"
+link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="pencil-paper"/>
 
 <Card
@@ -94,6 +95,6 @@ link="/docs/cloud/develop-in-the-cloud"
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
 - [Quickstart guides](/docs/quickstarts/overview)
-- [dbt Cloud IDE](/docs/cloud/develop-in-the-cloud)
+- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)

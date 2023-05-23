@@ -1,5 +1,6 @@
 ---
-title: "as_number"
+title: "About as_number filter"
+sidebar_label: "as_number"
 id: "as_number"
 description: "Use this filter to convert Jinja-compiled output to a numeric value.."
 ---

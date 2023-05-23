@@ -1,5 +1,6 @@
 ---
 title: "Apache Spark setup"
+description: "Read this guide to learn about the Apache Spark warehouse setup in dbt."
 id: "spark-setup"
 meta:
   maintained_by: dbt Labs
@@ -12,7 +13,7 @@ meta:
   slack_channel_name: 'db-databricks-and-spark'
   slack_channel_link: 'https://getdbt.slack.com/archives/CNGCW8HKL'
   platform_name: 'Spark'
-  config_page: 'spark-configs'
+  config_page: '/reference/resource-configs/spark-configs'
 ---
 
 <Snippet src="warehouse-setups-cloud-callout" />
@@ -233,6 +234,6 @@ Most dbt Core functionality is supported, but some features are only available
 on Delta Lake (Databricks).
 
 Delta-only features:
-1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](spark-configs#the-merge-strategy))
-2. [Snapshots](snapshots)
-3. [Persisting](persist_docs) column-level descriptions as database comments
+1. Incremental model updates by `unique_key` instead of `partition_by` (see [`merge` strategy](/reference/resource-configs/spark-configs#the-merge-strategy))
+2. [Snapshots](/docs/build/snapshots)
+3. [Persisting](/reference/resource-configs/persist_docs) column-level descriptions as database comments

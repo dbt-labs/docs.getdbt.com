@@ -1,7 +1,8 @@
 ---
-title: "ref"
+title: "About ref function"
+sidebar_label: "ref"
 id: "ref"
-description: "`ref()` references a model within another and creates a dependency graph."
+description: "Read this guide to understand the builtins Jinja function in dbt."
 ---
 
 The most important function in dbt is `ref()`; it's impossible to build even moderately complex models without it. `ref()` is how you reference one model within another. This is a very common behavior, as typically models are built to be "stacked" on top of one another. Here is how this looks in practice:
@@ -30,7 +31,7 @@ from {{ref('model_a')}}
 
 :::info New in 0.9.0
 
-The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes at the [{{ this }}](this) variable.
+The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes at the [{{ this }}](/reference/dbt-jinja-functions/this) variable.
 
 :::
 

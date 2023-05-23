@@ -1,5 +1,7 @@
 ---
-title: "parse"
+title: "About dbt parse command"
+sidebar_label: "parse"
+description: "Read this guide on how dbt's parse command can be used to parse your dbt project and write detailed timing information."
 id: "parse"
 ---
 
