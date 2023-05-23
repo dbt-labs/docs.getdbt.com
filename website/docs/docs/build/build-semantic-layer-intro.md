@@ -9,14 +9,12 @@ hide_table_of_contents: true
 
 Build your semantic layer seamlessly using dbt Metrics, powered by **MetricFlow**. Use [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) to avoid repetition and optimize your workflow with concepts you're already familiar with.
 
-These sections explain how you can use MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. Supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
+These sections explain how you can use MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. Something to note before you begin:
 
-### Define and query
-
-- Currently, for dbt Core v1.6 beta, you can define metrics in YAML and query them on the [command line (CLI)](/docs/core/about-the-cli) using the [dbt and MetricFlow specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
+- Supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
+- For dbt Core v1.6 beta, you can define metrics in YAML and query them on the [command line (CLI)](/docs/core/about-the-cli) using the [dbt and MetricFlow specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
   * Note: dbt Cloud support coming soon.
 - dbt Labs are working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. <br /><br />
-
 
 <div className="grid--4-col">
 
