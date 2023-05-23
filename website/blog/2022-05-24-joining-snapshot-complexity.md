@@ -160,7 +160,7 @@ Step 4 walks you through how to do your first join, in which you need to fan out
 
 Let’s look at how we’d do this with an example. You may have many events associated with a single `product_id`. Each `product_id` may have several `order_ids`, and each `order_id` may have another id associated with it. Which means that the grain of each table needs to be identified. The point here is that we need to build in an id at the finest grain. To do so, we’ll add in a [dbt_utils.generate_surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/generate_surrogate_key.sql) in the staging models that live on top of the snapshot tables. 
 
-Then, in your joining model, let’s add a CTE to build out our spine with of our ids of these different grains. 
+Then, in your joining model, let’s add a CTE to build out our spine with our ids of these different grains. 
 
 ```sql
 build_spine as (
