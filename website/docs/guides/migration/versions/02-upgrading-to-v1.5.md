@@ -44,7 +44,7 @@ As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169),
 
 An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
 ```yml
-# this will raise an error
+#  ❌ this will raise an error
 models:
   - name: my_model
     tests:
