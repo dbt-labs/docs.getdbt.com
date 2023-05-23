@@ -1,5 +1,5 @@
 ---
-title: "Common uses and scenarios for the Discovery API"
+title: "Use cases and examples for the Discovery API"
 id: "metadata-use-case-guides" 
 sidebar_label: "Common uses and scenarios"
 ---
@@ -1144,6 +1144,5 @@ By analyzing the model build times, users can identify bottlenecks and optimize 
  ## Related docs
 
 - [Metadata API product roadmap](/docs/dbt-cloud-apis/metadata-api#product-roadmap)
-- [Access the Metadata API](/docs/dbt-cloud-apis/access-metadata-api)
 - [Query Metadata API](/docs/dbt-cloud-apis/metadata-querying)
 - [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide)
