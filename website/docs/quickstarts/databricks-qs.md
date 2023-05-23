@@ -1,6 +1,7 @@
 ---
 title: "Quickstart for dbt Cloud and Databricks"
 id: "databricks"
+platform: 'dbt-cloud'
 hide_table_of_contents: true
 ---
 ## Introduction

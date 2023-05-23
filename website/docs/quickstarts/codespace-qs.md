@@ -1,6 +1,7 @@
 ---
 title: "Quickstart for dbt Core using GitHub Codespaces"
 id: codespace
+platform: 'dbt-core'
 hide_table_of_contents: true
 ---
 

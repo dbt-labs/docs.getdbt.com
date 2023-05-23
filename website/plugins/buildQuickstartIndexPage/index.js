@@ -35,11 +35,13 @@ module.exports = function buildQuickstartIndexPage() {
     async contentLoaded({content, actions}) {
       const {createData, addRoute} = actions;
 
-      // Sort quickstarts by date created if available
+      // Sort quickstarts by platform if available
       const contentSorted = content.sort((a, b) => {
-        if(!a?.data?.dateCreated || !b?.data?.dateCreated) return
+        if(!a?.data?.platform || !b?.data?.platform) return
 
-        return new Date(b.data.dateCreated) - new Date(a.data.dateCreated)
+        // Sort by dbt-cloud first
+        if(a.data.platform === 'dbt-cloud') return -1
+        if(b.data.platform === 'dbt-cloud') return 1
       })
 
       // Create json with quickstart data
