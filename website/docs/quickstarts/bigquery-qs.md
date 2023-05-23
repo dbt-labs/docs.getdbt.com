@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and BigQuery"
 id: "bigquery"
 time_to_complete: '30 minutes'
+platform: 'dbt-cloud'
 hide_table_of_contents: true
 ---
 

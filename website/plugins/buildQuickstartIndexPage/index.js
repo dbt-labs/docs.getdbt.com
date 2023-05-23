@@ -39,9 +39,9 @@ module.exports = function buildQuickstartIndexPage() {
       const contentSorted = content.sort((a, b) => {
         if(!a?.data?.platform || !b?.data?.platform) return
 
-        // Sort by dbt-cloud first
-        if(a.data.platform === 'dbt-cloud') return -1
-        if(b.data.platform === 'dbt-cloud') return 1
+        // sort by platform
+        if(a.data.platform < b.data.platform) return -1
+        if(a.data.platform > b.data.platform) return 1
       })
 
       // Create json with quickstart data
