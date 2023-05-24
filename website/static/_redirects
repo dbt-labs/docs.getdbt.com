@@ -42,6 +42,25 @@
 /reference/warehouse-setups/fal-setup /docs/core/connect-data-platform/fal-setup 301
 /reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup 
 
+# Discovery redirect
+/docs/dbt-cloud-apis/metadata-schema-source /docs/dbt-cloud-apis/discovery-schema-source 301
+/docs/dbt-cloud-apis/metadata-schema-sources /docs/dbt-cloud-apis/discovery-schema-sources 301
+/docs/dbt-cloud-apis/metadata-schema-test /docs/dbt-cloud-apis/discovery-schema-test 301
+/docs/dbt-cloud-apis/metadata-schema-tests /docs/dbt-cloud-apis/discovery-schema-tests 301
+/docs/dbt-cloud-apis/metadata-schema-seed /docs/dbt-cloud-apis/discovery-schema-seed 301
+/docs/dbt-cloud-apis/metadata-schema-seeds /docs/dbt-cloud-apis/discovery-schema-seeds 301
+/docs/dbt-cloud-apis/metadata-schema-snapshots /docs/dbt-cloud-apis/discovery-schema-snapshots 301
+/docs/dbt-cloud-apis/metadata-schema-model /docs/dbt-cloud-apis/discovery-schema-model 301
+/docs/dbt-cloud-apis/metadata-schema-models /docs/dbt-cloud-apis/discovery-schema-models 301
+/docs/dbt-cloud-apis/metadata-schema-modelByEnv /docs/dbt-cloud-apis/discovery-schema-modelByEnv 301
+/docs/dbt-cloud-apis/metadata-schema-metrics /docs/dbt-cloud-apis/discovery-schema-metrics 301
+/docs/dbt-cloud-apis/metadata-schema-metric /docs/dbt-cloud-apis/discovery-schema-metric 301
+/docs/dbt-cloud-apis/metadata-schema-exposures /docs/dbt-cloud-apis/discovery-schema-exposures 301
+/docs/dbt-cloud-apis/metadata-schema-exposure /docs/dbt-cloud-apis/discovery-schema-exposure 301
+/docs/dbt-cloud-apis/metadata-use-case-guides /docs/dbt-cloud-apis/discovery-use-cases-and-examples 301
+/docs/dbt-cloud-apis/metadata-api /docs/dbt-cloud-apis/discovery-api 301
+/docs/dbt-cloud-apis/metadata-querying /docs/dbt-cloud-apis/discovery-querying 301
+
 
 /docs/core/connection-profiles#understanding-threads /docs/running-a-dbt-project/using-threads 301
 
