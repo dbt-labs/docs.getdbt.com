@@ -3,7 +3,6 @@ title: "Databricks configurations"
 id: "databricks-configs"
 ---
 
-TODO: fix this
 
 <!----
 To-do:
