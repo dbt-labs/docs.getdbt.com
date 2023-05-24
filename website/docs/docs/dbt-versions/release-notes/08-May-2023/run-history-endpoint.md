@@ -1,7 +1,7 @@
 ---
 title: "Older run history retrieval change"
 id: "run-history-endpoint"
-sidebar_label: "Update: Older Run history retrieval change"
+sidebar_label: "Update: Older run history retrieval change"
 sidebar_position: 6
 tags: [May-22-2023, API, Scheduler]
 ---
