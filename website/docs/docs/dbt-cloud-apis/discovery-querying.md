@@ -48,7 +48,7 @@ You can run queries by sending a `POST` request to the `https://metadata.YOUR_AC
 
 Python example:
 
-	``` 
+	```py
 	response = requests.post('YOUR_ACCESS_URL',
 	headers={"authorization": "Bearer "+YOUR_TOKEN, "content-type": "application/json"},
 	json={"query": QUERY_BODY, "variables": VARIABLES})
