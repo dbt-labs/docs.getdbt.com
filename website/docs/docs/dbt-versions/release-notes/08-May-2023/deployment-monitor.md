@@ -11,7 +11,7 @@ The new Deployment monitor helps you gain greater visibility into your deploymen
 
 The Deployment monitor is accessible by going to the main dbt Cloud dashboard page or clicking the dbt logo on the upper-left. Some of the new and enhanced features includes:
 
-- A new run history visualization component to quickly scan a larger number of recent runs and get a better overview of overall health/activity 
+- A new run history visualization component to quickly scan a larger number of recent runs and get a better overview of overall health/activity.
 - Pre-filtered lists have been added for In Progress, In Queue, and Latest Failed jobs. 
 - Filter the page by environment, with the preference being stored for future use. 
 - Lastly, the visualization at the top of the page now filters runs by trigger and displays the last 24 hours of runs, with a limit of 500.
