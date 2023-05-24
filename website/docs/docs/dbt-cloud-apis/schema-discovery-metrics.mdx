@@ -1,12 +1,12 @@
 ---
 title: "Metrics object schema"
 sidebar_label: "Metrics"
-id: "metadata-schema-metrics"
+id: "discovery-schema-metrics"
 ---
 
 import { ArgsTable, SchemaTable } from "./schema";
 
-The metrics object allows you to query information about [metrics](https://docs.getdbt.com/docs/build/metrics).
+The metrics object allows you to query information about [metrics](/docs/build/metrics).
 
 ### Arguments
 
@@ -52,7 +52,7 @@ The example query returns information about all metrics in this job.
 ```
 
 ### Fields
-metrics has access to the *same fields* as the [metric node](/docs/dbt-cloud-apis/metadata-schema-metric).  The difference is that metrics can output a list, so instead of querying for fields for one specific metric, you can query for those parameters for all metrics in a run.
+metrics has access to the *same fields* as the [metric node](/docs/dbt-cloud-apis/discovery-schema-metric).  The difference is that metrics can output a list, so instead of querying for fields for one specific metric, you can query for those parameters for all metrics in a run.
 
 When querying for `metrics`, the following fields are available:
 
