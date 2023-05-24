@@ -11,7 +11,7 @@ Service account tokens enable you to securely authenticate with the dbt Cloud AP
 You can use service account tokens for system-level integrations that do not run on behalf of any one user. Assign any permission sets available in dbt Cloud to your service account token, which can vary slightly depending on your plan:
 
 * Enterprise plans can apply any permission sets available to service tokens.
-* Team plans can apply Account Admin, Member, Job Admin, Read-Only, and Metadata permissions sets to service tokens.
+* Team plans can apply Account Admin, Member, Job Admin, Read-Only, and Discovery permissions sets to service tokens.
 
 You can assign as many permission sets as needed to one token. For more on permissions sets, see "[Enterprise Permissions](/docs/cloud/manage-access/enterprise-permissions)."
 
@@ -36,8 +36,8 @@ The following permissions can be assigned to a service account token on a Team p
 **Account Admin**<br/>
 Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role." For more on these permissions, see [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin).
 
-**Metadata Only**<br/>
-Metadata only service tokens can authorize requests to the metadata API.
+**Discovery Only**<br/>
+Discovery only service tokens can authorize requests to the Discovery API.
 
 **Job Admin**<br/>
 Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs.  
@@ -55,8 +55,8 @@ The following permissions can be assigned to a service account token on an Enter
 **Account Admin** <br/>
 Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  For more on these permissions, see [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin).
 
-**Metadata Only**<br/>
-Metadata only service tokens can authorize requests to the metadata API.
+**Discovery Only**<br/>
+Discovery only service tokens can authorize requests to the Discovery API.
 
 **Job Admin**<br/>
 Job Admin service tokens can authorize request for viewing, editing, and creating environments, triggering runs, and viewing historical runs. For more on these permissions, see [Job Admin](/docs/cloud/manage-access/enterprise-permissions#job-admin).
