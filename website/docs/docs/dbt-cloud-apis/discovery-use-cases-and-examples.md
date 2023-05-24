@@ -1088,4 +1088,3 @@ environment(id: $environmentId) {
 ## Related docs
 
 - [Query Discovery API](/docs/dbt-cloud-apis/discovery-querying)
-- [dbt Semantic Layer integration guide](/guides/dbt-ecosystem/sl-partner-integration-guide)

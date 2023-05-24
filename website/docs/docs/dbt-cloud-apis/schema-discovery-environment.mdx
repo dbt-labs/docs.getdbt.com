@@ -6,7 +6,7 @@ id: "discovery-schema-environment"
 
 import { ArgsTable, SchemaTable } from "./schema";
 
-<Snippet src="available-beta-banner-metadata" />
+<Snippet src="discovery-public-preview-banner" />
 
 This environment object allows you to query information about a particular model based on `environmentId`.
 
@@ -21,7 +21,7 @@ When querying for `environment`, you can use the following arguments.
 
 ### Example Query
 
-You can use the `id` for your production environment: 
+You can use your production environment's `id`: 
 
 ```graphql
 query Example {
@@ -29,13 +29,13 @@ query Example {
 		applied { # The state of an executed node as it exists as an object in the database
 			models(first: 100){ # Pagination to ensure manageable response for large projects
 				edges { node {
-						uniqueId, name, description, rawCode, compiledCode, # Basic properties
-						database, schema, alias, # Table/view identifier (can also filter by)
-						executionInfo {executeCompletedAt, executionTime}, # Metadata from when the model was built
-						tests {name, executionInfo{lastRunStatus, lastRunError}}, # Latest test results
-						catalog {columns {name, description, type}, stats {label, value}}, # Catalog info
-						ancestors(types:[Source]) {name, ...on SourceAppliedStateNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness } 
-						children {name, resourceType}}} # Immediate dependencies in lineage	
+					uniqueId, name, description, rawCode, compiledCode, # Basic properties
+					database, schema, alias, # Table/view identifier (can also filter by)
+					executionInfo {executeCompletedAt, executionTime}, # Metadata from when the model was built
+					tests {name, executionInfo{lastRunStatus, lastRunError}}, # Latest test results
+					catalog {columns {name, description, type}, stats {label, value}}, # Catalog info
+					ancestors(types:[Source]) {name, ...on SourceAppliedStateNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness } 
+					children {name, resourceType}}} # Immediate dependencies in lineage	
 				totalCount } # Number of models in the project
 		}
 		definition { # The logical state of a given project node given its most recent manifest generated
@@ -45,8 +45,7 @@ query Example {
 					jobDefinitionId, runGeneratedAt,	# When the code was last compiled or run
 					contract_enforced, group, version}}} # Model governance
 		}
-  }
-}
+	}
 ```
 
 ### Fields
