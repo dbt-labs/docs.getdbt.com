@@ -982,6 +982,8 @@ environment(id: $environmentId) {
 
 You can use the Discovery API to understand dataset changes and usage and gauge impacts to inform project definition. Below are example questions and queries you can run.
 
+For development use cases, people typically query the historical or latest definition or applied state across any part of the DAG using the `environment` endpoint.
+
 ### How is this model or metric used in downstream tools?
 [Exposures](/docs/build/exposures) provide a method to define how a model or metric is actually used in dashboards and other analytics tools and use cases. You can query an exposure’s definition to see how project nodes are used and query its upstream lineage results to understand the state of the data used in it, which powers use cases like a freshness and quality status tile. 
 
