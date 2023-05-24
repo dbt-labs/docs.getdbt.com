@@ -153,9 +153,12 @@ html[data-theme="dark"] details table td {
   color: inherit;
 }
 
-html[data-theme="dark"] .main-wrapper .col:not(.col--3) a,
 html[data-theme="dark"] .main-wrapper .col:not(.col--3) a:hover {
   color: var(--ifm-menu-color-active);
+}
+
+html[data-theme="dark"] .main-wrapper .col a article * {
+  color: var(--ifm-heading-color);
 }
 
 html[data-theme="dark"] .main-wrapper .col:not(.col--3) a,
@@ -1072,7 +1075,6 @@ article[itemprop="blogPost"] h2 {
 /* copyright */
 .footer__bottom {
   text-align: left;
-  color: var(--color-footer-accent);
   font-size: 0.875rem;
 }
 
