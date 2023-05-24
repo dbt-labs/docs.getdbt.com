@@ -55,7 +55,7 @@ pip is the easiest way to install the adapter:
 
 ### Set up a Databricks Target
 
-dbt-databricks can connect to Databricks SQL Warehouses and all-purpose clusters. Databricks SQL Warehouses is the recommended way to get started with Databricks.
+dbt-databricks can connect to the Databricks SQL Warehouses and all-purpose clusters. Databricks SQL Warehouses is the recommended way to get started with Databricks.
 
 <File name='~/.dbt/profiles.yml'>
 
