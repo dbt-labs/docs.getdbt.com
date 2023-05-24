@@ -9,13 +9,13 @@ If you're finding yourself unable to revert changes, check out a branch or click
 
 This is what causes that 'commit' git action button to display. No worries though - to fix this, you'll need to complete the following steps in order:
 
-1. In the Cloud IDE, add the missing .gitignore file or contents to your project. You'll want to make sure the .gitignore file includes the following:
+1. In the Cloud IDE, add the missing .gitignore file or contents to your project. You'll want to make sure the .gitignore file includes the following contents (refer to [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) as the main source):
 
     ```shell
     target/
-    dbt_modules/
     dbt_packages/
     logs/
+    dbt_modules/ ## legacy and renamed to dbt_packages in v1.0
     ```
 
 2. Once you've added that, make sure to save and commit.
