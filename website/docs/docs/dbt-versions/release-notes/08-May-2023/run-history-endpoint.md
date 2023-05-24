@@ -6,7 +6,7 @@ sidebar_position: 6
 tags: [May-22-2023, API, Scheduler]
 ---
 
-We are making a change to our metadata retrieval policy for run history in dbt Cloud. 
+dbt Labs are making a change to our metadata retrieval policy for run history in dbt Cloud. 
 
 
 **Beginning June 1, 2023**, developers on the dbt Cloud multi-tenant application will be able to self-serve access to their account’s run history through dbt Cloud user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
