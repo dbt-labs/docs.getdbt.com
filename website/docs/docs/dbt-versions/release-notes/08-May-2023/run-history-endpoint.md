@@ -9,7 +9,8 @@ tags: [May-22-2023, API, Scheduler]
 We are making a change to our metadata retrieval policy for run history in dbt Cloud. 
 
 
-**Beginning June 1, 2023**, developers on the dbt Cloud multi-tenant application will be able to self-serve access to their account’s run history through dbt Cloud user interface (UI) and API for only the precious 365 days, on a rolling basis. This update minimizes the amount of metadata we retain and while maximizing application performance for all users. 
+**Beginning June 1, 2023**, developers on the dbt Cloud multi-tenant application will be able to self-serve access to their account’s run history through dbt Cloud user interface (UI) and API for only 365 days, on a rolling basis. Older run history will be available for download by reaching out to Customer Support. We're seeking to minimize the amount of metadata we store while maximizing application performance. 
+
 
 Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.getdbt.com/dbt-cloud/api-v2#tag/Runs) will return information on runs, artifacts, logs, and run steps only for the past 365 days.  Additionally, the run history displayed in the dbt Cloud UI will only show runs for the past 365 days.  
 
