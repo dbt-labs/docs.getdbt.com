@@ -86,5 +86,5 @@ These states allow you to easily examine the difference between a model’s defi
 
 - [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
 - [Query the Discovery API](/docs/dbt-cloud-apis/discovery-querying)
-- [Schema](/docs/dbt-cloud-apis/metadata-schema-model)
+- [Schema](/docs/dbt-cloud-apis/discovery-schema-model)
 

@@ -223,7 +223,7 @@ This is an example of querying details about a specific model, `model.jaffle_sho
 
 Query metrics definitions or details for a project from a given job and refer to the following resources: 
 
-- [Metrics query](/docs/dbt-cloud-apis/metadata-schema-metrics) &mdash; Information on how to query the full list of metrics defined in a user’s project with the dbt Cloud Discovery API. 
+- [Metrics query](/docs/dbt-cloud-apis/discovery-schema-metrics) &mdash; Information on how to query the full list of metrics defined in a user’s project with the dbt Cloud Discovery API. 
 - [dbt Metrics docs](https://docs.getdbt.com/docs/build/metrics#available-properties) &mdash; Information on the available metric properties. 
 - [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql) &mdash; Access to test the dbt Cloud Discovery API testing environment.
 

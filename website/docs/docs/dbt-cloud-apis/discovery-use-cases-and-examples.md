@@ -893,7 +893,9 @@ environment(id: $environmentId) {
 
 ## Governance 
 
-You can se the Discovery API to audit data development and facilitate collaboration within and between teams.
+You can use the Discovery API to audit data development and facilitate collaboration within and between teams.
+
+For governance use cases, people tend to query the latest definition state, often in the downstream part of the DAG (for example, public models), using the `environment` endpoint.
 
 ### Who is responsible for this model?
 

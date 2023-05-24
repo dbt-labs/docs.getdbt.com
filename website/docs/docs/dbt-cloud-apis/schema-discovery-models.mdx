@@ -1,7 +1,7 @@
 ---
 title: "Models object schema"
 sidebar_label: "Models"
-id: "metadata-schema-models"
+id: "discovery-schema-models"
 ---
 
 import { ArgsTable, SchemaTable } from "./schema";
@@ -47,7 +47,7 @@ The example query below finds all models in this schema, and their respective ex
 
 
 ### Fields
-Models has access to the *same fields* as the [Model node](/docs/dbt-cloud-apis/metadata-schema-model).  The difference is that Models can output a list, so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, etc.
+Models has access to the *same fields* as the [Model node](/docs/dbt-cloud-apis/discovery-schema-model).  The difference is that Models can output a list, so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, etc.
 
 When querying for `models`, the following fields are available:
 
