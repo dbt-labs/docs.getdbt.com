@@ -177,6 +177,7 @@ models:
 * [Redshift configurations](redshift-configs)
 * [Snowflake configurations](snowflake-configs)
 * [Databricks configurations](databricks-configs)
+* [Spark configurations](spark-configs)
 
 ## Configuring models
 Models can be configured in one of three ways:
