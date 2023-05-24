@@ -16,5 +16,5 @@ Specifically, all `GET` requests to the dbt Cloud [Runs endpoint](https://docs.g
 
 <Lightbox src="/img/docs/dbt-cloud/rn-run-history.jpg" width="100%" title="The dbt Cloud UI displaying a Run history"/>
 
-dbt Labs will retain older run history until September 1, 2023, and will make it available to users who reach out to the Support team. To request older run history info, contact dbt Cloud Support to request at [support@getdbt.com](mailto:support@getdbt.com) or use the dbt Cloud application chat for help by clicking the `?` icon in the dbt Cloud UI. 
+dbt Labs will retain older run history in cold storage and can make it available to customers who reach out to Customer Support. To request older run history info, contact dbt Cloud Support to request at [support@getdbt.com](mailto:support@getdbt.com) or use the dbt Cloud application chat for help by clicking the `?` icon in the dbt Cloud UI. 
 
