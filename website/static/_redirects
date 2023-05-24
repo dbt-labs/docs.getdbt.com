@@ -16,7 +16,7 @@
 /docs/dbt-cloud-apis/metadata-schema-exposure /docs/dbt-cloud-apis/discovery-schema-exposure 301
 /docs/dbt-cloud-apis/metadata-use-case-guides /docs/dbt-cloud-apis/discovery-use-cases-and-examples 301
 /docs/dbt-cloud-apis/metadata-api /docs/dbt-cloud-apis/discovery-api 301
-/docs/dbt-cloud-apis/metadata-querying docs/dbt-cloud-apis/discovery-querying 301
+/docs/dbt-cloud-apis/metadata-querying /docs/dbt-cloud-apis/discovery-querying 301
 
 /docs/core/connection-profiles#understanding-threads /docs/running-a-dbt-project/using-threads 301
 
