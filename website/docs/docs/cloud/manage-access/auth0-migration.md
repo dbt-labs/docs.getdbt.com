@@ -16,6 +16,18 @@ If you have not yet configured SSO in dbt Cloud, refer instead to our setup guid
 
 <Snippet src="auth0-uri" />
 
+## Initiate the migration
+
+The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been added to your account, you will see **SSO Updates Available** on the right side of the menu bar, near the settings icon. 
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-migration-available.png" title="SSO migration available"/>
+
+Alternatively, you can start the process from the **Settings** page in the **Single Sign-on** pane. Click the **Begin Migration** button to start. 
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" title="Begin Migration"/>
+
+Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. Skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
+
 ## SAML 2.0 and Okta
 
 SAML 2.0 users must update a few fields in the SSO app configuration to match the new Auth0 URL and URI.  You can approach this by editing the existing SSO app settings or creating a new one to accommodate the Auth0 settings. One approach isn't inherently better, so choose whichever works best for your organization.
