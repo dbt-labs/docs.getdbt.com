@@ -4,7 +4,7 @@ id: "dashboard-status-tiles"
 description: "Embed Status Tiles in your dashboards to provide consumers with contextual information about the quality and freshness of data."
 ---
 
-In dbt Cloud, the [Metadata API](/docs/dbt-cloud-apis/discovery-api) can power Dashboard Status Tiles.  A Dashboard Status Tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
+In dbt Cloud, the [Discovery API](/docs/dbt-cloud-apis/discovery-api) can power Dashboard Status Tiles.  A Dashboard Status Tile is placed on a dashboard (specifically: anywhere you can embed an iFrame) to give insight into the quality and freshness of the data feeding into that dashboard. This is done via dbt [exposures](/docs/build/exposures).
 
 ## Functionality
 The dashboard status tile looks like this:
@@ -22,7 +22,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in th
 
 In order to set up your dashboard status tile, here is what you need:
 
-1. **Metadata Token.**  You can learn how to set up a metadata only token [here](/docs/dbt-cloud-apis/service-tokens).
+1. **Discovery Token.**  You can learn how to set up a Discovery only token [here](/docs/dbt-cloud-apis/service-tokens).
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 
@@ -40,7 +40,7 @@ The dashboard status tile should work anywhere you can embed an iFrame. But belo
 ### Mode
 Mode allows you to directly [edit the HTML](https://mode.com/help/articles/report-layout-and-presentation/#html-editor) of any given report, where you can embed the iFrame.
 
-Note that Mode has also built their own [integration](https://mode.com/get-dbt/) with the dbt Cloud Metadata API!
+Note that Mode has also built their own [integration](https://mode.com/get-dbt/) with the dbt Cloud Discovery API!
 
 ### Looker
 Looker does not allow you to directly embed HTML, and instead requires creating a [custom visualization](https://docs.looker.com/admin-options/platform/visualizations). One way to do this for admins is to:

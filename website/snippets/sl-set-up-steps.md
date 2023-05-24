@@ -1,7 +1,7 @@
 
 Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud account hosted in North America. 
  * Team and Enterprise accounts can set up the Semantic Layer and [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated partner tool to import metric definition. 
- * Developer accounts can query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Metadata API.
+ * Developer accounts can query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Discovery API.
 
 You can set up the dbt Semantic Layer in dbt Cloud at the environment level by following these steps:
 

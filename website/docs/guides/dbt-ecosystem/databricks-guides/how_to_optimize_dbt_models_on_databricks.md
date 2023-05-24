@@ -158,9 +158,9 @@ Databricks is committed to continuously improving its performance. For example, 
 3. Improve key lookup by defining only *one* materialized key
 4. Only update important columns
 
-### dbt Cloud Metadata API
+### dbt Cloud Discovery API
 
-Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, dbt Cloud generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Metadata API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that  supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. dbt Cloud users can also use the data from the [Model Timing tab](/docs/deploy/dbt-cloud-job#model-timing) to visually identify models that take the most time and may require refactoring.
+Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, dbt Cloud generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. dbt Cloud users can also use the data from the [Model Timing tab](/docs/deploy/dbt-cloud-job#model-timing) to visually identify models that take the most time and may require refactoring.
 
 ### dbt Cloud Admin API
 
