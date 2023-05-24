@@ -1,23 +1,25 @@
 ---
-title: "Connect to an adapter"
+title: "How to connect to adapters"
 id: "connect-adapters"
 ---
 
-[Adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt.
+Adapters are an essential component of dbt. At their most basic level, they are how dbt connects with the various supported data platforms. At a higher-level, adapters strive to give analytics engineers more transferrable skills as well as standardize how analytics projects are structured. Gone are the days where you have to learn a new language or flavor of SQL when you move to a new job that has a different data platform. That is the power of adapters in dbt. 
 
-This section provides more details on how you can connect dbt to an adapter.
+For more detail on adapters, read the [What are adapters](/guides/dbt-ecosystem/adapter-development/1-what-are-adapters) guide.
+
+This section provides more details on different ways you can connect dbt to an adapter, and explains what a maintainer is. 
 
 ### Set up in dbt Cloud
 
-A hosted architecture for running dbt Core across your organization, dbt Cloud lets you seamlessly [connect](/docs/cloud/about-cloud-setup) with a variety of [verified](/docs/supported-data-platforms) data platform providers directly in the dbt Cloud UI, allowing you to explore the fastest and most reliable way to deploy dbt. 
+Explore the fastest and most reliable way to deploy dbt using dbt Cloud, a hosted architecture that runs dbt Core across your organization. dbt Cloud lets you seamlessly [connect](/docs/cloud/about-cloud-setup) with a variety of [verified](/docs/supported-data-platforms) data platform providers directly in the dbt Cloud UI. 
 
 dbt Cloud supports data platforms that are verified and [maintained](#maintainers) by dbt Labs or partners. This level of support ensures that users can trust certain adapters for use in production. 
 
 ### Install using the CLI
 
-An open-source tool where you can install dbt Core locally using the CLI. dbt communicates with a number of different data platforms by using a dedicated adapter for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file. 
+Install dbt Core, which is an open-source tool, locally using the CLI. dbt communicates with a number of different data platforms by using a dedicated  adapter plugin for each. When you install dbt Core, you'll also need to install the specific adapter for your database, [connect to dbt Core](/docs/core/about-core-setup), and set up a `profiles.yml` file. 
 
-Data platforms supported in dbt Core may be verified or unverified, and maintained by dbt Labs, partners, or community members. 
+Data platforms supported in dbt Core may be verified or unverified, and are [maintained](#maintainers) by dbt Labs, partners, or community members. 
 
 With a few exceptions [^1], you can install all adapters listed under "Verified adapters" from PyPI using `pip install adapter-name`. For example to install Snowflake, use the command `pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation).
 
