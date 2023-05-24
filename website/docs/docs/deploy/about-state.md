@@ -136,7 +136,7 @@ The applied state includes execution info, which contains metadata about how the
 
 Here’s how you’d query and compare the definition  vs. applied state of a model using the Discovery API: 
 
-```
+```graphql
 query Compare($environmentId: Int!, $first: Int!) {
 	environment(id: $environmentId) {
 		definition {

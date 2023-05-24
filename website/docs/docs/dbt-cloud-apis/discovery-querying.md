@@ -94,7 +94,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 Use the [`..on`](https://www.apollographql.com/docs/react/data/fragments/) notation to query across lineage and retrieve results from specific node types.
 
-```
+```graphql
 
 environment(id: $environmentId) {
   applied {
@@ -160,11 +160,11 @@ There are connection variables available when making the query:
 
 The following example shows that we're returning the `first` 500 models `after` the specified Object ID in the variables. The `PageInfo` object will return where the object ID where the cursor starts, where it ends, and whether there is a next page. 
 
-<img src="/img/paginate.png"/>
+<Lightbox src="/img/paginate.png" width="75%" title="Example of pagination"/>
 
 Here is a code example of the `PageInfo` object:
 
-```
+```graphql
 pageInfo {
           startCursor
           endCursor
@@ -180,11 +180,11 @@ Filtering helps to narrow down the results of an API query. Want to query and re
 
 In the following example, we can see that we're filtering results to models that have succeeded on their `lastRunStatus`:
 
-<img src="/img/filtering.png"/>
+<Lightbox src="/img/filtering.png" width="75%" title="Example of filtering"/>
 
 Here is a code example that filters for models that have an error on their last run and tests that have failed:
 
-```
+```graphql
 
 environment(id: $environmentId) {
     applied {
