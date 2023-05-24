@@ -190,7 +190,6 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 
 ## Connecting to Databricks
 You can connect to Databricks by using [dbt-databricks](/connect-your-database#dbt-databricks) for any accounts on dbt 1.0 or later. We do not recommend using the dbt-spark adapter for Databricks as the dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. 
-TODO: should we remove any mention of dbt-spark on Databricks?
 
 ### dbt-databricks Adapter
 dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.
