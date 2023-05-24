@@ -3,6 +3,7 @@ title: "Latest environment state in the dbt Cloud Discovery API"
 id: "discovery-api-public-preview"
 description: "Public preview of the dbt Cloud Discovery API is now available."
 sidebar_label: "New: Latest environment state in the Discovery API"
+sidebar_position: 5
 tags: [May-24-2023, API]
 ---
 
