@@ -85,7 +85,7 @@ This filter *only* applies to dbt's source freshness queries - it will not impac
 
 This is particularly useful if:
 - You are using BigQuery and your source tables are [partitioned tables](https://cloud.google.com/bigquery/docs/partitioned-tables)
-- You are using Snowflake or Spark with large tables, and this results in a performance benefit
+- You are using Snowflake, Databricks or Spark with large tables, and this results in a performance benefit
 
 TODO: should this be Databricks instead of Spark?
 
