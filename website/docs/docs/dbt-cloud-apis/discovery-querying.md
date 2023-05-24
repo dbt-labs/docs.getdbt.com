@@ -48,12 +48,13 @@ You can run queries by sending a `POST` request to the `https://metadata.YOUR_AC
 
 Python example:
 
-	```py
-	response = requests.post('YOUR_ACCESS_URL',
-	headers={"authorization": "Bearer "+YOUR_TOKEN, "content-type": "application/json"},
-	json={"query": QUERY_BODY, "variables": VARIABLES})
-	metadata = response.json()['data'][ENDPOINT]
-	```
+```py
+response = requests.post('YOUR_ACCESS_URL',
+headers={"authorization": "Bearer "+YOUR_TOKEN, "content-type": "application/json"},
+json={"query": QUERY_BODY, "variables": VARIABLES})
+metadata = response.json()['data'][ENDPOINT]
+```
+
 Every query will require an environment ID or job ID. You can get the ID from a dbt Cloud URL or using the Admin API.
 
 There are several illustrative example queries in this documentation. You can see an examples in the [use case guide](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
