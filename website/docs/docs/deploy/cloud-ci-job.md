@@ -63,13 +63,15 @@ The green checkmark means the dbt builds and tests were successful. Clicking on 
 
 ## Configuring a Slim CI job
 
-Slim CI offers an alternative to running and testing all models in your project, even when you're only changed a couple of things. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
+Slim CI offers an alternative to running and testing all models in your project, and instead runs and tests only what's necessary based on the changes you've made. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
 
-These components distinguish a Slim CI job from a dbt CI job:
+A Slim CI job:
 
-- Must defer to a production job.
-- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](#deferral-and-state-comparison)
-- Must be triggered by a pull request.
+- Is triggered by a pull request.
+- Defers to a production job.
+- Includes a command with a `--select state:modified+` selector, which dbt uses to build only new or changed models and their downstream dependents. 
+
+dbt then identifies the models that need to be run and tested using a state comparison to the production job that you've selected.
 
 ### Deferral and state comparison  
 
@@ -90,7 +92,7 @@ dbt build --select state:modified+
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/project-state).
 
 ### Fresh rebuilds
 

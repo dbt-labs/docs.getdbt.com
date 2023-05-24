@@ -5,7 +5,7 @@ description: New features and changes in dbt Core v1.5
 
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
-2. A Python entry point for [**programmatic invocations**](programmatic-invocations), at parity with the CLI
+2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
 
 ## Resources
 
@@ -42,11 +42,27 @@ The following env vars have been renamed, for consistency with the convention fo
 
 As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
-Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
+```yml
+#  ❌ this will raise an error
+models:
+  - name: my_model
+    tests:
+    config: ...
+
+# ✅ this is fine
+models:
+  - name: my_model
+    tests: [] # todo! add tests later
+    config: ...
+```
+Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
+
+Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 ### For consumers of dbt artifacts (metadata)
 
-The [manifest](manifest-json) schema version will be updated to `v9`. Specific changes:
+The [manifest](/reference/artifacts/manifest-json) schema version will be updated to `v9`. Specific changes:
 - Addition of `groups` as a top-level key
 - Addition of `access`, `constraints`, `version`, `latest_version` as a top-level node attributes for models
 - Addition of `constraints` as a column-level attribute
@@ -61,25 +77,25 @@ For more detailed information and to ask questions, please read and comment on t
 
 ### Model governance
 
-The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](govern/about-model-governance), all of which is new in v1.5.
+The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](/docs/collaborate/govern/about-model-governance), all of which is new in v1.5.
 
 ### Revamped CLI
 
 Compile and preview dbt models and `--inline` dbt-SQL queries on the CLI using:
-- [`dbt compile`](commands/compile)
-- [`dbt show`](commands/show) (new!)
+- [`dbt compile`](/reference/commands/compile)
+- [`dbt show`](/reference/commands/show) (new!)
 
-[Node selection methods](node-selection/methods) can use Unix-style wildcards to glob nodes matching a pattern:
+[Node selection methods](/reference/node-selection/methods) can use Unix-style wildcards to glob nodes matching a pattern:
 ```
 dbt ls --select "tag:team_*"
 ```
 
-And (!): a first-ever entry point for [programmatic invocations](programmatic-invocations), at parity with CLI commands.
+And (!): a first-ever entry point for [programmatic invocations](/reference/programmatic-invocations), at parity with CLI commands.
 
 Run `dbt --help` to see new & improved help documentation :)
 
 ### Quick hits
-- The [`version: 2` top-level key](project-configs/version) is now **optional** in all yaml files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
-- [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
-- Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](dbt_project.yml)
+- The [`version: 2` top-level key](/reference/project-configs/version) is now **optional** in all YAML files. Also, the [`config-version: 2`](/reference/project-configs/config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
+- [Events and logging](/reference/events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
+- Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](/reference/dbt_project.yml)
 - More granular [configurations](/reference/global-configs) for logging (to set log format, log levels, and colorization) and cache population

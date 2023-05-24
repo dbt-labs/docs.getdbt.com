@@ -1,4 +1,6 @@
 ---
+title: "Configuring quoting in projects"
+sidebar_label: "quoting"
 datatype: boolean # -ish, it's actually a dictionary of bools
 description: "Read this guide to understand the quoting configuration in dbt."
 default: true
@@ -109,6 +111,10 @@ create table analytics.dbt_alice.dim_customers
 
 ### Snowflake
 Set all quoting configs to `False`. This means that you cannot use reserved words as identifiers, however it's usually a good idea to avoid these reserved words anyway.
+
+If a Snowflake source table uses a quoted database, schema, or table identifier, you can configure it in the source.yml file. [Refer to configuring quoting for more info](/reference/resource-properties/quoting).
+
+
 
 #### Explanation:
 
