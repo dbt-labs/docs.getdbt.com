@@ -11,7 +11,7 @@ Constraints are a feature of many data platforms. When specified, the platform w
 
 When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
 
-Constraints require the declaration and enforcement of a model [contract](resource-configs/contract)
+Constraints require the declaration and enforcement of a model [contract](/reference/resource-configs/contract).
 
 **Constraints are never applied on `ephemeral` models or those materialized as `view`**. Only `table` and `incremental` models support applying and enforcing constraints.
 

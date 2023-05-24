@@ -1,22 +1,21 @@
 ---
-title: "builtins"
+title: "About builtins Jinja function"
+sidebar_label: "builtins"
 id: "builtins"
-description: "The `builtins` variable references the builtin dbt context methods."
+description: "Read this guide to understand the builtins Jinja function in dbt."
 ---
-
-<Changelog>New in 0.16.0</Changelog>
 
 The `builtins` variable exists to provide references to builtin dbt context methods. This allows macros to be created with names that _mask_ dbt builtin context methods, while still making those methods accessible in the dbt compilation context.
 
 The `builtins` variable is a dictionary containing the following keys:
 
-- [ref](ref)
+- [ref](/reference/dbt-jinja-functions/ref)
 - [source](/reference/dbt-jinja-functions/source)
 - [config](/reference/dbt-jinja-functions/config)
 
 ## Usage
 
-The following macro overrides the `ref` method available in the model compilation context to return a [Relation](dbt-classes#relation) with the database name overriden to `dev`.
+The following macro overrides the `ref` method available in the model compilation context to return a [Relation](/reference/dbt-classes#relation) with the database name overriden to `dev`.
 
 ```
 {% macro ref(model_name) %}

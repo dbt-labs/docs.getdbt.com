@@ -7,7 +7,9 @@ sidebar_label: "Quickstart"
 
 # dbt Semantic Layer quickstart
 
-<Snippet src="sl-public-preview-banner" />
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+:::
 
 ## Public Preview 
     

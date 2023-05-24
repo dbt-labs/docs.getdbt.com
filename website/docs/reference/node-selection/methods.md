@@ -30,7 +30,7 @@ dbt list --select "package:*_source"
 </VersionBlock>
 
 ### The "tag" method
-The `tag:` method is used to select models that match a specified [tag](resource-configs/tags).
+The `tag:` method is used to select models that match a specified [tag](/reference/resource-configs/tags).
 
 
   ```bash
@@ -96,7 +96,7 @@ selectors unambiguous.
 
 ### The "config" method
 
-The `config` method is used to select models that match a specified [node config](configs-and-properties).
+The `config` method is used to select models that match a specified [node config](/reference/configs-and-properties).
 
 
 
@@ -164,17 +164,17 @@ that defines it. For more information about how generic tests are defined, read 
 
 ### The "state" method
 
-**N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](node-selection/state-comparison-caveats) to state comparison.
+**N.B.** State-based selection is a powerful, complex feature. Read about [known caveats and limitations](/reference/node-selection/state-comparison-caveats) to state comparison.
 
 <VersionBlock lastVersion="1.4">
 
-The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_ARTIFACT_STATE_PATH` environment variable.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
 
-The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
+The `state` method is used to select nodes by comparing them against a previous version of the same project, which is represented by a [manifest](/reference/artifacts/manifest-json). The file path of the comparison manifest _must_ be specified via the `--state` flag or `DBT_STATE` environment variable.
 
 </VersionBlock>
 
@@ -196,13 +196,13 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.relation`: Changes to `database`/`schema`/`alias` (the database representation of this node), irrespective of `target` values or `generate_x_name` macros
 - `state:modified.persisted_descriptions`: Changes to relation- or column-level `description`, _if and only if_ `persist_docs` is enabled at each level
 - `state:modified.macros`: Changes to upstream macros (whether called directly or indirectly by another macro)
-- `state:modified.contract`: Changes to a model's [contract](resource-configs/contract), which currently include the `name` and `data_type` of `columns`. Removing or changing the type of an existing column is considered a breaking change, and will raise an error.
+- `state:modified.contract`: Changes to a model's [contract](/reference/resource-configs/contract), which currently include the `name` and `data_type` of `columns`. Removing or changing the type of an existing column is considered a breaking change, and will raise an error.
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
 ### The "exposure" method
 
-The `exposure` method is used to select parent resources of a specified [exposure](exposures). Use in conjunction with the `+` operator.
+The `exposure` method is used to select parent resources of a specified [exposure](/docs/build/exposures). Use in conjunction with the `+` operator.
 
 
   ```bash
@@ -214,7 +214,7 @@ The `exposure` method is used to select parent resources of a specified [exposur
 ### The "metric" method
 <Changelog>New in v1.0.0</Changelog>
 
-The `metric` method is used to select parent resources of a specified [metric](metrics). Use in conjunction with the `+` operator.
+The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
 
 ```bash
 $ dbt build --select +metric:weekly_active_users       # build all resources upstream of weekly_active_users metric
@@ -241,14 +241,10 @@ Supported in v1.1 or newer.
 </VersionBlock>
 
 <VersionBlock firstVersion="1.1">
+  
+Supported in v1.1 or higher.
 
-Supported in v1.1 or newer.
-
-:::caution Experimental functionality
-The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
-
-Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/docs/reference/artifacts/sources-json) page. 
+Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
 
 The following dbt commands produce `sources.json` artifacts whose results can be referenced in subsequent dbt invocations:  
 - `dbt source freshness`
@@ -309,7 +305,7 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-The `version` method selects [versioned models](model-versions) based on their [version identifier](resource-properties/versions) and [latest version](resource-properties/latest_version).
+The `version` method selects [versioned models](/docs/collaborate/govern/model-versions) based on their [version identifier](/reference/resource-properties/versions) and [latest version](/reference/resource-properties/latest_version).
 
 ```bash
 dbt list --select version:latest      # only 'latest' versions
