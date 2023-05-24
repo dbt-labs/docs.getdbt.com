@@ -36,7 +36,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Prep time | The time dbt Cloud takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the dbt Cloud Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
 | Run slot | Run slots control the number of jobs that can run concurrently. Each account has a fixed number of run slots, depending on the plan tier, that are shared across projects in the account. Each running job occupies a run slot for the duration of the run, so purchasing more run slots enables more jobs to execute in parallel. |
-| Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/core/connection-profiles#understanding-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default thread count in a job is 4. |
+| Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/running-a-dbt-project/using-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default thread count in a job is 4. |
 | Wait time | Amount of time that dbt Cloud waits before running a job, either because there are no available slots or because a previous run of the same job is still in progress. |
 
 

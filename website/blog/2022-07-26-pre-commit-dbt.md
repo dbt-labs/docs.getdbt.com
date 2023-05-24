@@ -167,7 +167,7 @@ jobs:
     steps:
 
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
     # Using bash and pip to install dbt and pre-commit
     # Update the dbt installation command to include the adapter you need
