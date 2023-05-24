@@ -91,7 +91,7 @@ function useDocTOC() {
 
       // If updated toc different than current
       // If so, show loader and update toc 
-      if(currentToc.length !== updated.length) {
+      if(currentToc !== updated) {
         setTocReady(false)
         // This timeout provides enough time to show the loader
         // Otherwise the content updates immediately
