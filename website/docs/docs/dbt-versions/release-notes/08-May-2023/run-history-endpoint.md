@@ -1,5 +1,5 @@
 ---
-title: "Run History Old Metadata Retrieval Change"
+title: "Older Run History Retrieval Change"
 id: "run-history-endpoint"
 sidebar_label: "Update: Old Run history retrieval change"
 sidebar_position: 6
