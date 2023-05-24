@@ -55,7 +55,9 @@ The Run History dashboard in dbt Cloud helps you monitor the health of your dbt 
 
 The dashboard displays your full run history, including job name, status, environment associated, job trigger, commit SHA, schema, and timing info. 
 
-From June 1, 2023, dbt Cloud multi-tenant users can access their run history for the last 365 days through the dbt Cloud user interface (UI) and API. This optimizes dbt Cloud's performance by reducing the amount of stored metadata. For more info, refer to [Older run history retrieval change](/docs/dbt-versions/release-notes/May-2023/run-history-endpoint).
+dbt Cloud developers can access their run history for the last 365 days through the dbt Cloud user interface (UI) and API.
+
+We limit self-service retrieval of run history metadata to 365 days in order improve dbt Cloud's performance. For more info on the run history retrieval change, refer to [Older run history retrieval change](/docs/dbt-versions/release-notes/May-2023/run-history-endpoint).
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="85%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
 
