@@ -1,9 +1,9 @@
 ---
 title: "Use the Deployment monitor page for greater visibility to your job run health"
 id: "deployment-monitor"
-description: "April 2023: "
-sidebar_label: "Enhancement: Deployment monitor visualizes your run health"
-sidebar_position: 8
+description: "May 2023: "
+sidebar_label: "New: Deployment monitor visualizes your run health"
+sidebar_position: 5
 tags: [scheduler]
 ---
 
@@ -18,4 +18,4 @@ The Deployment monitor is accessible by going to the main dbt Cloud dashboard pa
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-monitor.jpg" width="85%" title="The Deployment monitor dashboard displays overall deployment health and activity, allows you to filter the page by environment, and more" />
 
-For more information, refere to ADD LINK HERE
+
