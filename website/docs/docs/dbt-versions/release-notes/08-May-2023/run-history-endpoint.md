@@ -1,5 +1,5 @@
 ---
-title: "Run history retention changing to 365 days"
+title: "Run History Old Metadata Retrieval Change"
 id: "run-history-endpoint"
 sidebar_label: "Update: Run history available for 365 days"
 sidebar_position: 6
