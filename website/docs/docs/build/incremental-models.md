@@ -252,6 +252,7 @@ the reliability of your `unique_key`, or the availability of certain features.
 * [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
 * [BigQuery](bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
 * [Databricks](/reference/resource-configs/databricks-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
+*[Spark](spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
 
 ### Configuring incremental strategy
 
