@@ -6,7 +6,7 @@ sidebar_label: "Query the Discovery API"
 
 The Discovery API supports ad-hoc queries or lets you browse the schema. If you are new to the API, read the [Discovery API overview](/docs/dbt-cloud-apis/discovery-api) for an introduction to the Discovery API.
 
-Use the Discovery API to evaluate data health in the long term or at a moment in time. dbt Labs provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run ad-hoc queries or browse the schema. 
+Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. 
 
 Since GraphQL provides a description of the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.  
 
