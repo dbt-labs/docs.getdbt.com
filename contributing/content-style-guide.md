@@ -345,7 +345,13 @@ A table following an H3 heading:
 
 Use the `<Card` component to display content and actions on a single topic. Users should cards easy to scan for relevant and actionable information. Elements, like text, icons, and links can be used inside a card. 
   
-You can configure a card in 2, 3, 4, or 5 column grids. However, 4 or 5 columns grids should be used sparingly for cards that contain very little text, and always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). Otherwise the text will appear squished and provide users with a bad experience:
+You can configure a card in 2, 3, 4, or 5-column grids. To maintain a good user experience, 4 or 5-column grids should only be used:
+
+- Sparingly. There won't be many instances where you need to display 4 or 5 cards in a row on the docs site.
+- Only for cards that contain very little text, such as 15 words or less. 
+- Always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). 
+
+Otherwise, the text will appear squished and provide users with a bad experience.
 
 - `<divclassName="grid--2-col">`: creates 2 column cards
 - `<divclassName="grid--3-col">`: creates 3 columns cards
