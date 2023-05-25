@@ -12,7 +12,7 @@ Highlights include:
 - Surfacing a warn state on a run step
 - Search in logs
 - Easier discoverability of errors and warnings in logs
-- Lazy loading of logs, making the whole page load faster and feel more performant
+- Lazy loading of logs, making the whole run details page load faster and feel more performant
 - Cleaner look and feel with iconography
 - Helpful tool tips
 
