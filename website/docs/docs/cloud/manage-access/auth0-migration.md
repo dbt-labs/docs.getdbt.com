@@ -16,7 +16,7 @@ If you have not yet configured SSO in dbt Cloud, refer instead to our setup guid
 
 <Snippet src="auth0-uri" />
 
-## Initiate the migration
+## Start the migration
 
 The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been enabled on your account, you will see **SSO Updates Available** on the right side of the menu bar, near the settings icon. 
 
