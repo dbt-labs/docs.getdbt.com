@@ -15,7 +15,7 @@ You can [connect](/docs/connect-adapters) to adapters and data platforms either 
 
 ### Verified adapters
 
-The following are **Verified adapters** ✅ you can connect to. 
+The following are **Verified adapters** ✅ you can connect to either in dbt Cloud or dbt Core:
 
 <div className="grid--4-col">
 
@@ -36,7 +36,7 @@ The following are **Verified adapters** ✅ you can connect to.
 
 <Card
     title="Postgres"
-    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install in dbt Core </a> <br /><br /> Latest version: 1.4"
+    body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> Latest version: 1.4"
     icon="redshift"/>
 
 <Card
