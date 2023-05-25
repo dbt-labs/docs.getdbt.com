@@ -1,6 +1,6 @@
 ---
 title: "Run History usability and design improvements"
-sidebar_label: "Update: Run history improvements"
+sidebar_label: "Update: Run History improvements"
 sidebar_position: 4
 tags: [May-25-2023, Scheduler]
 ---
