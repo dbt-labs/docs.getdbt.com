@@ -13,12 +13,12 @@ jobs:
     name: autoupdate
     runs-on: ubuntu-22.04
     steps:
-      - uses: docker://chinthakagodawita/autoupdate@v1.7.0
+      - uses: chinthakagodawita/autoupdate@v1.7.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DRY_RUN: "false"
           PR_FILTER: "labelled"
-          PR_LABELS: "autoupdate"
+          PR_LABELS: "auto update"
           PR_READY_STATE: "all"
          # EXCLUDED_LABELS: "do not merge"
           MERGE_MSG: "This branch was auto-updated!"
