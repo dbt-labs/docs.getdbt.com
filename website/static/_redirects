@@ -1,4 +1,15 @@
 
+## supported data platform
+
+/docs/supported-data-platforms#verified-adapters /docs/supported-data-platforms 301
+/docs/supported-data-platforms#community-adapters /docs/community-adapters 301
+/docs/supported-data-platforms#adapter-installation /docs/connect-adapters 301
+/docs/supported-data-platforms#adapter-taxonomy /docs/supported-data-platforms 301
+/docs/supported-data-platforms#verified-by-dbt-labs /docs/supported-data-platforms 301
+/docs/supported-data-platforms#maintainers /docs/connect-adapters#maintainers 301
+/docs/supported-data-platforms#contributing-to-dbt-core-adapters /docs/contribute-core-adapters 301
+/docs/supported-data-platforms#contributing-to-a-pre-existing-adapter /docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter 301
+/docs/supported-data-platforms#creating-a-new-adapter /docs/contribute-core-adapters#create-a-new-adapter 301
 
 ## dbt core setup changes
 
