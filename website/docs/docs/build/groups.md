@@ -1,14 +1,27 @@
 ---
-title: "Groups"
+title: "Add groups to your DAG"
+sidebar_title: "Groups"
 id: "groups"
 description: "When you define groups in dbt projects, you turn implicit relationships into an explicit grouping."
 keywords:
   - groups access mesh
 ---
 
-## About Groups 
+:::info New functionality
+This functionality is new in v1.5.
+:::
 
-A group is a collection of resources within a dbt project. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](access) models.
+## Related docs
+
+* [Model Access](/docs/collaborate/govern/model-access#groups)
+* [Group configuration](/reference/resource-configs/group)
+* [Group selection](/reference/node-selection/methods#the-group-method)
+
+## About groups 
+
+A group is a collection of nodes within a dbt DAG. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-properties/access) models.
+
+Group members may include models, tests, seeds, snapshots, analyses, and metrics. (Not included: sources and exposures.) Each node may belong to only one group.
 
 ### Declaring a group
 
@@ -30,31 +43,72 @@ groups:
 
 ### Adding a model to a group
 
-To add a model to a group, add the `group` property to a model entry in a `.yml` file.
+Use the `group` configuration to add one or more models to a group.
+
+<Tabs>
+<TabItem value="project" label="Project-level">
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  marts:
+    finance:
+      +group: finance
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="model-yaml" label="Model-level">
 
 <File name='models/schema.yml'>
 
 ```yml
 models:
   - name: model_name
-    group: finance
+    config:
+      group: finance
 ```
 
 </File>
 
+</TabItem>
+
+<TabItem value="model-file" label="In-file">
+
+<File name='models/model_name.sql'>
+
+```sql
+{{ config(group = 'finance') }}
+
+select ...
+```
+
+</File>
+
+</TabItem>
+
+</Tabs>
+
 ### Referencing a model in a group
 
-By default, all models within a group are `protected` in access - meaning they can be referenced by downstream resources in _any_ group in the project using the [`ref`](ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
+By default, all models within a group have the `protected` [access modifier](/reference/resource-properties/access). This means they can be referenced by downstream resources in _any_ group in the same project, using the [`ref`](/reference/dbt-jinja-functions/ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
 
 <File name='models/schema.yml'>
 
 ```yml
 models:
-  - name: finance_model
+  - name: finance_private_model
     access: private
-    group: finance
+    config:
+      group: finance
+
+  # in a different group!
   - name: marketing_model
-    group: marketing
+    config:
+      group: marketing
 ```
 </File>
 
@@ -72,9 +126,3 @@ dbt.exceptions.DbtReferenceError: Parsing Error
   Node model.jaffle_shop.marketing_model attempted to reference node model.jaffle_shop.finance_model, 
   which is not allowed because the referenced node is private to the finance group.
 ```
-
-
-## Related docs
-
-* [Model Access](/docs/collaborate/publish/model-access#groups)
-* [Group Property](/docs/reference/resource-configs/group)

@@ -1,6 +1,8 @@
 ---
-title: "var"
+title: "About var function"
+sidebar_label: "var"
 id: "var"
+description: "Pass variables from `dbt_project.yml` file into models."
 ---
 
 Variables can be passed from your `dbt_project.yml` file into models during compilation.

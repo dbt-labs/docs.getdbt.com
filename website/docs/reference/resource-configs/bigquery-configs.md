@@ -1,5 +1,6 @@
 ---
 title: "BigQuery configurations"
+description: "Read this guide to understand BigQuery configurations in dbt."
 id: "bigquery-configs"
 ---
 
@@ -700,7 +701,7 @@ The `hours_to_expiration` only applies to initial creation of the underlying tab
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +hours_to_expiration: 6
 
 ```
@@ -736,7 +737,7 @@ for more details.
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +grant_access_to:
       - project: project_1
         dataset: dataset_1

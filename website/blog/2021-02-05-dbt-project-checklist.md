@@ -252,9 +252,9 @@ Thanks to Christine Berger for her DAG diagrams!
 
 **Useful links**
 
-*   [How Fishtown Structures our dbt Project](/blog/how-we-structure-our-dbt-projects/)
+*   [How we structure our dbt Project](/guides/best-practices/how-we-structure/1-guide-overview)
 *   [Coalesce DAG Audit Talk](https://www.youtube.com/watch?v=5W6VrnHVkCA&t=2s)
 *   [Modular Data Modeling Technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/)
-*   [Understanding Threads](/docs/core/connection-profiles#understanding-threads)
+*   [Understanding Threads](/docs/running-a-dbt-project/using-threads)
 
 This is a quick overview of things to think about in your project.  We’ll keep this post updated as we continue to refine our best practices! Happy modeling!

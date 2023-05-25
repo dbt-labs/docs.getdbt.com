@@ -1,6 +1,13 @@
 ---
 datatype: integer
+description: "Read this guide to understand the config-version configuration in dbt."
 ---
+
+<VersionBlock firstVersion="1.5">
+
+Starting in dbt v1.5, the `config-version:` tag is optional.
+
+</VersionBlock>
 
 <File name='dbt_project.yml'>
 

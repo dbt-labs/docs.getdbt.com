@@ -1,6 +1,8 @@
 ---
-title: "tojson"
+title: "About tojson context method"
+sidebar_label: "tojson"
 id: "tojson"
+description: "Use this context method to serialize a Python object primitive."
 ---
 
 The `tojson` context method can be used to serialize a Python object primitive, eg. a `dict` or `list` to a JSON string.

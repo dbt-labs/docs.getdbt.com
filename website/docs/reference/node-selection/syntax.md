@@ -6,14 +6,14 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 
 | command                         | argument(s)                                                          |
 | :------------------------------ | -------------------------------------------------------------------- |
-| [run](commands/run)             | `--select`, `--exclude`, `--selector`, `--defer`                     |
-| [test](commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
-| [seed](commands/seed)           | `--select`, `--exclude`, `--selector`                                |
-| [snapshot](commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
-| [ls (list)](commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
-| [compile](commands/compile)     | `--select`, `--exclude`, `--selector`                                |
-| [freshness](commands/source)    | `--select`, `--exclude`, `--selector`                                |
-| [build](commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
+| [run](/reference/commands/run)             | `--select`, `--exclude`, `--selector`, `--defer`                     |
+| [test](/reference/commands/test)           | `--select`, `--exclude`, `--selector`, `--defer`                     |
+| [seed](/reference/commands/seed)           | `--select`, `--exclude`, `--selector`                                |
+| [snapshot](/reference/commands/snapshot)   | `--select`, `--exclude`  `--selector`                                |
+| [ls (list)](/reference/commands/list)      | `--select`, `--exclude`, `--selector`, `--resource-type`             |
+| [compile](/reference/commands/compile)     | `--select`, `--exclude`, `--selector`, `--inline`                    |
+| [freshness](/reference/commands/source)    | `--select`, `--exclude`, `--selector`                                |
+| [build](/reference/commands/build)         | `--select`, `--exclude`, `--selector`, `--resource-type`, `--defer`  |
 
 :::info Nodes and resources
 
@@ -28,7 +28,7 @@ By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt
 
 1. dbt gathers all the resources that are matched by one or more of the `--select` criteria, in the order of selection methods (e.g. `tag:`), then graph operators (e.g. `+`), then finally set operators ([unions](/reference/node-selection/set-operators#unions), [intersections](/reference/node-selection/set-operators#intersections), [exclusions](/reference/node-selection/exclude)).
 
-2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](test-selection-examples) for details.)
+2. The selected resources may be models, sources, seeds, snapshots, tests. (Tests can also be selected "indirectly" via their parents; see [test selection examples](/reference/node-selection/test-selection-examples) for details.)
 
 3. dbt now has a list of still-selected resources of varying types. As a final step, it tosses away any resource that does not match the resource type of the current task. (Only seeds are kept for `dbt seed`, only models for `dbt run`, only tests for `dbt test`, and so on.)
 
@@ -75,7 +75,7 @@ dbt supports a shorthand language for defining subsets of nodes. This language u
   ```
 
 As your selection logic gets more complex, and becomes unwieldly to type out as command-line arguments,
-consider using a [yaml selector](yaml-selectors). You can use a predefined definition with the `--selector` flag.
+consider using a [yaml selector](/reference/node-selection/yaml-selectors). You can use a predefined definition with the `--selector` flag.
 Note that when you're using `--selector`, most other flags (namely `--select` and `--exclude`) will be ignored.
 
 <Snippet src="discourse-help-feed-header" />

@@ -54,7 +54,7 @@ There are two modes to configure the behavior when performing indirect selection
 
 Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
-The "cautious" mode can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](defer)).
+The "cautious" mode can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
 
 </VersionBlock>
 
@@ -68,7 +68,7 @@ There are three modes to configure the behavior when performing indirect selecti
 
 Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
-The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](defer)).
+The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
 
 </VersionBlock>
 
@@ -163,7 +163,7 @@ $ dbt build --select orders --indirect-selection=buildable
 
 ### Syntax examples
 
-Setting `indirect_selection` can also be specified in a [yaml selector](yaml-selectors#indirect-selection).
+Setting `indirect_selection` can also be specified in a [yaml selector](/reference/node-selection/yaml-selectors#indirect-selection).
 
 The following examples should feel somewhat familiar if you're used to executing `dbt run` with the `--select` option to build parts of your DAG:
 

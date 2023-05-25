@@ -1,5 +1,6 @@
 ---
 title: "Infer setup"
+description: "Read this guide to learn about the Infer warehouse setup in dbt."
 id: "infer-setup"
 meta:
   maintained_by: Infer
@@ -11,7 +12,7 @@ meta:
   slack_channel_name: n/a
   slack_channel_link: 
   platform_name: 'Infer'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
   min_supported_version: n/a
 ---
 

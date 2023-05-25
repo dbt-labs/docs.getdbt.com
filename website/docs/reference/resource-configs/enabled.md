@@ -1,5 +1,6 @@
 ---
 resource_types: all
+description: "Enabled - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 default_value: true
 ---
@@ -37,7 +38,7 @@ select ...
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -53,7 +54,7 @@ models:
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -85,7 +86,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -127,7 +128,7 @@ select ...
 
 ```yml
 tests:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -142,8 +143,8 @@ tests:
 
 ```yaml
 sources:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -158,11 +159,11 @@ version: 2
 
 sources:
   - name: [<source-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
     tables:
       - name: [<source-table-name>]
-        [config](resource-properties/config):
+        [config](/reference/resource-properties/config):
           enabled: true | false
 
 ```
@@ -187,8 +188,8 @@ Support for disabling metrics was added in dbt Core v1.3
 
 ```yaml
 metrics:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -201,7 +202,7 @@ version: 2
 
 metrics:
   - name: [<metric-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
 ```
@@ -226,8 +227,8 @@ Support for disabling exposures was added in dbt Core v1.3
 
 ```yaml
 exposures:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -240,7 +241,7 @@ version: 2
 
 exposures:
   - name: [<exposure-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
 ```
@@ -260,7 +261,7 @@ An optional configuration for disabling models, seeds, snapshots, and tests.
 
 When a resource is disabled, dbt will not consider it as part of your project. Note that this can cause compilation errors.
 
-If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](node-selection/syntax)
+If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](/reference/node-selection/syntax)
 
 If you are disabling models because they are no longer being used, but you want to version control their SQL, consider making them an [analysis](/docs/build/analyses) instead.
 

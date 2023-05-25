@@ -7,7 +7,9 @@ sidebar_label: "Quickstart"
 
 # dbt Semantic Layer quickstart
 
-<Snippet src="sl-public-preview-banner" />
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+:::
 
 ## Public Preview 
     
@@ -15,9 +17,9 @@ We're excited to announce the dbt Semantic Layer is currently available for Publ
 
 &mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Review [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) for more info on plan availability.
 
-- Team and Enterprise accounts will be able to set up the Semantic Layer and [Metadata API](/docs/dbt-cloud-apis/metadata-api) in the integrated
+- Team and Enterprise accounts will be able to set up the Semantic Layer and [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated
 partner tool to import metric definition.
-- Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which                  requires access to the Metadata API. 
+- Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which                  requires access to the Discovery API. 
 
 &mdash; **What?** Public Previews provide early access to new features. The Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality that is not backwards compatible. dbt Labs provides support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer alongside the General Available (GA) release (future GA date to be announced).
     
@@ -202,7 +204,7 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 
 - Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run.
 - Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.
-- Your dbt Metadata API pulls in the most recent manifest and allows your integration information to extract metadata from it.
+- Your dbt Discovery API pulls in the most recent manifest and allows your integration information to extract metadata from it.
 
 ## Set up dbt Semantic Layer
     
@@ -222,13 +224,13 @@ If you're encountering some issues when defining your metrics or setting up the 
 <details>
     <summary>Is the dbt Semantic Layer open source?</summary>
   <div>
-    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Metadata API are not open source. <br></br><br></br>
+    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Discovery API are not open source. <br></br><br></br>
 
 During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
 <ul>    
 <li>dbt Core users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.</li><br></br><br></br>
-<li>Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Metadata API.</li><br></br><br></br>
-<li>Team and Enterprise accounts will be able to set up the Semantic Layer and Metadata API in the integrated partner tool to import metric definitions.</li>
+<li>Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Discovery API.</li><br></br><br></br>
+<li>Team and Enterprise accounts will be able to set up the Semantic Layer and Discovery API in the integrated partner tool to import metric definitions.</li>
     </ul>
     </div>
     </div>

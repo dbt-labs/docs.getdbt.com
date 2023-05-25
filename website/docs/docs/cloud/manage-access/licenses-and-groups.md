@@ -28,7 +28,7 @@ to access. dbt Cloud's two license types are:
  - **Read Only**
  - **Developer**
 
-For more information on these license types, see [Seats & Users](cloud-seats-and-users).
+For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
 At a high-level, Developers may be granted _any_ permissions, whereas Read Only
 users will have read-only permissions applied to all dbt Cloud resources
 regardless of the role-based permissions that the user is assigned.
@@ -146,5 +146,5 @@ sign-in time based on the user's IdP-provided group membership information.
   SSO without RBAC.
 
 - **Can I configure a user's License Type based on IdP Attributes?** Yes, see
-  the docs on [managing license types](/cloud-seats-and-users#managing-license-types)
+  the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types)
   for more information.

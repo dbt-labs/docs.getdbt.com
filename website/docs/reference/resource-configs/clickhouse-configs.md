@@ -1,5 +1,6 @@
 ---
 title: "ClickHouse configurations"
+description: "Read this guide to understand ClickHouse configurations in dbt."
 id: "clickhouse-configs"
 ---
 
