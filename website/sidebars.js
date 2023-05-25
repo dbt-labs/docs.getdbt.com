@@ -495,7 +495,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Adapter-specific configs",
+      label: "Platform-specific configs",
       items: [
         "reference/resource-configs/postgres-configs",
         "reference/resource-configs/bigquery-configs",
