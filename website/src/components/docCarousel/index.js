@@ -4,10 +4,16 @@ import 'swiper/css';
 import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 
-function DocCarousel({ children }) {
+function DocCarousel({ slidesPerView = 3, children }) {
     if ( !children?.length > 0 ){      
         return false
     }
+
+    // Limit slidesPerView to max of 4
+    if(slidesPerView > 4) {
+      slidesPerView = 4
+    }
+
     return (
         <div className='docswiper'>
             <Swiper
@@ -18,10 +24,18 @@ function DocCarousel({ children }) {
                 modules={[Navigation]}
 
                 breakpoints={{
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 30,
-                    },
+                  640: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                  },
+                  996: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                  },
+                  1200: {
+                    slidesPerView: slidesPerView,
+                    spaceBetween: 30,
+                  },
                 }}
             >
                 {children.map((item) => <SwiperSlide>{item}</SwiperSlide>)}
