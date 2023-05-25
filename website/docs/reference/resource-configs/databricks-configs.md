@@ -258,7 +258,7 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 ## Persisting model descriptions
 
 Relation-level docs persistence is supported in dbt v0.17.0. For more
-information on configuring docs persistence, see [the docs](/docs/references/resource-configs/persist_docs).
+information on configuring docs persistence, see [the docs](/references/resource-configs/persist_docs).
 
 When the `persist_docs` option is configured appropriately, you'll be able to
 see model descriptions in the `Comment` field of `describe [table] extended`
