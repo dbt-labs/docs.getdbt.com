@@ -18,7 +18,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DRY_RUN: "false"
           PR_FILTER: "labelled"
-          PR_LABELS: "autoupdate"
+          PR_LABELS: "auto update"
           PR_READY_STATE: "all"
          # EXCLUDED_LABELS: "do not merge"
           MERGE_MSG: "This branch was auto-updated!"
