@@ -5,7 +5,7 @@ sidebar_position: 3
 tags: [May-26-2023, Scheduler]
 ---
 
-New usability and design improvements to the run details and logs in dbt Cloud are now available. The ability to triage errors in logs is a big benefit of using dbt Cloud's job and scheduler functionality. These updates help make the process of finding root causes much easier.
+New usability and design improvements to the run details and logs in dbt Cloud are now available. The ability to triage errors in logs is a big benefit of using dbt Cloud's job and scheduler functionality. These updates help make the process of finding the root cause much easier.
 
 Highlights include:
 
