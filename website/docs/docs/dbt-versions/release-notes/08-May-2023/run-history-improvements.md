@@ -5,7 +5,7 @@ sidebar_position: 4
 tags: [May-25-2023, Scheduler]
 ---
 
-New usability and design improvements to the **Run History** dashboard in dbt Cloud are now available. These updates allow people to discover the information they need easier by reducing the number of clicks, surfacing more relevant information, keeping people in the flow state, and designing the look and feel to be more intuitive to use.   
+New usability and design improvements to the **Run History** dashboard in dbt Cloud are now available. These updates allow people to discover the information they need more easily by reducing the number of clicks, surfacing more relevant information, keeping people in flow state, and designing the look and feel to be more intuitive to use.   
 
 
 <Lightbox src="/img/docs/release-notes/run-history-improvements.gif" title="Improvements to Run History in dbt Cloud" />
