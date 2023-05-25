@@ -3,15 +3,9 @@ title: "Databricks configurations"
 id: "databricks-configs"
 ---
 
-
-<!----
-To-do:
-- use the reference doc structure for this article/split into separate articles
---->
-
 ## Configuring tables
 
-When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](model-configs).
+When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
 | Option  | Description                                                                                                                        | Required?               | Example                  |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------|--------------------------|
@@ -183,15 +177,7 @@ insert overwrite table analytics.databricks_incremental
 
 ### The `merge` strategy
 
-<Changelog>
-
-TODO: databricks PR
- - `dbt-spark==0.15.3`: Introduced `merge` incremental strategy
-
-</Changelog>
-
-
-**Usage notes:** The `merge` incremental strategy requires:
+The `merge` incremental strategy requires:
 - `file_format: delta or hudi`
 - Databricks Runtime 5.1 and above for delta file format
 - Apache Spark for hudi file format
@@ -278,32 +264,17 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 ## Persisting model descriptions
 
 Relation-level docs persistence is supported in dbt v0.17.0. For more
-information on configuring docs persistence, see [the docs](resource-configs/persist_docs).
+information on configuring docs persistence, see [the docs](/docs/references/resource-configs/persist_docs).
 
 When the `persist_docs` option is configured appropriately, you'll be able to
 see model descriptions in the `Comment` field of `describe [table] extended`
 or `show table extended in [database] like '*'`.
 
-## Always `schema`, never `database`
-
-<Changelog>
-TODO: databricks PR
- - `dbt-spark==0.17.0` ended use of `database` in all cases.
-
-</Changelog>
-
-TODO: should we say this?
-Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
-`database` to exist at a higher level than `schema`. As such, you should _never_
-use or set `database` as a node config or in the target profile when running dbt-databricks.
-
-If you want to control the schema/database in which dbt will materialize models,
-use the `schema` config and `generate_schema_name` macro _only_.
 
 ## Default file format configurations
 
 To access advanced incremental strategies features, such as 
-[snapshots](snapshots) and the `merge` incremental strategy, you will want to
+[snapshots](/reference/commands/snapshot) and the `merge` incremental strategy, you will want to
 use the Delta or Hudi file format as the default file format when materializing models as tables.
 
 It's quite convenient to do this by setting a top-level configuration in your
