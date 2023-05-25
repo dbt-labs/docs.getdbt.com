@@ -462,6 +462,7 @@ const sidebarSettings = {
     },
   ],
   reference: [
+    "reference/references-overview",
     {
       type: "category",
       label: "Project configs",
