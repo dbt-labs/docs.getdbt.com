@@ -7,8 +7,9 @@ sidebar_label: "Connect Databricks"
 
 The dbt-databricks adapter is maintained by the Databricks team and is verified by dbt Labs. The Databricks team is committed to supporting and improving the adapter over time, so you can be sure the integrated experience will provide the best of dbt and the best of Databricks. Connecting to Databricks via dbt-spark has been deprecated.
 
-## About the dbt-databricks Adapter
-dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality.
+## About the dbt-databricks adapter
+
+dbt-databricks is compatible with the following versions of dbt Core in dbt Cloud with varying degrees of functionality. 
 
 | Feature | dbt Versions |
 | ----- | ----------- | 

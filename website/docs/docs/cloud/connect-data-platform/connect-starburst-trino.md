@@ -22,3 +22,7 @@ The following are the required fields for setting up a connection with a [Starbu
 ## Catalogs and schemas
 
 <Snippet src="connect-starburst-trino/schema-db-fields" />
+
+## Configuration
+
+To further optimize data platform performance, refer to [Starburst/Trino-specific configuration](/reference/resource-configs/trino-configs).

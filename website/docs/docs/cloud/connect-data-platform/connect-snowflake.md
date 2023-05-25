@@ -5,7 +5,7 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
-The following fields are required when creating a Snowflake connection:
+The following fields are required when creating a Snowflake connection
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
@@ -64,3 +64,7 @@ The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
 more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
+
+## Configuration
+
+To further optimize data platform performance, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
