@@ -86,10 +86,7 @@ If no `partition_by` is specified, then the `insert_overwrite` strategy will ato
 
 
 **Usage notes:**
-- This strategy is not supported for tables with `file_format: delta`.
 - This strategy is not available when connecting via Databricks SQL Warehouses.
-
-<Lightbox src="/img/reference/databricks-cluster-sparkconfig-partition-overwrite.png" title="Databricks cluster: Spark Config" />
 
 <Tabs
   defaultValue="source"
