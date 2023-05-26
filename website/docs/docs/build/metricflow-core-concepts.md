@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 ---
 
 
-This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow helps you define and manage logic behind your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
+This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage logic behind your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
 There are a few key principles:
 

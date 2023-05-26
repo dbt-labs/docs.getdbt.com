@@ -16,7 +16,7 @@ The keys for metrics definitions are:
 * `type_params`: Additional parameters used to configure metrics. `type_params` are different for each metric type. 
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 
-These are the different supported metric types:
+This page explains the the different supported metric types you can add to your dbt project. 
 <!--
 - [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
 - [Derived](#derived-metrics) — An expression of other metrics, which allows you to do calculation on top of metrics.

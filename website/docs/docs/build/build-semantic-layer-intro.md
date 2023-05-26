@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 hide_table_of_contents: true
 ---
 
-Build your semantic layer seamlessly using dbt Metrics, powered by **MetricFlow**. Use [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) to avoid repetition and optimize your workflow with concepts you're already familiar with.
+Build your semantic layer seamlessly using the dbt Semantic Layer, powered by **MetricFlow**. Use [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) to avoid repetition and optimize your workflow with concepts you're already familiar with.
 
 These sections explain how you can use MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. Something to note before you begin:
 
