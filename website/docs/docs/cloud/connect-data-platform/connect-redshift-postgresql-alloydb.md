@@ -67,4 +67,4 @@ The Bastion server should now be ready for dbt Cloud to use as a tunnel into the
 
 ## Configuration
 
-To further optimize data platform performance, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).

@@ -67,4 +67,4 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 
 ## Configuration
 
-To further optimize data platform performance, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).

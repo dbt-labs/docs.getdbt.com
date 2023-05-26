@@ -11,7 +11,7 @@ an all-purpose Databricks cluster, the ODBC method is recommended for all
 Databricks connections. For further details on configuring these connection
 parameters, please see the [dbt-spark documentation](https://github.com/dbt-labs/dbt-spark#configuring-your-profile).
 
-To optimize data platform performance, refer to [Apache Spark-specific configuration](/reference/resource-configs/spark-configs).
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Apache Spark-specific configuration](/reference/resource-configs/spark-configs).
 
 
 The following fields are available when creating an Apache Spark connection using the

@@ -47,4 +47,4 @@ As an end user, if your organization has set up BigQuery OAuth, you can link a p
 
 ## Configuration
 
-To further optimize data platform performance, refer to [BigQuery-specific configuration](/reference/resource-configs/bigquery-configs).
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [BigQuery-specific configuration](/reference/resource-configs/bigquery-configs).

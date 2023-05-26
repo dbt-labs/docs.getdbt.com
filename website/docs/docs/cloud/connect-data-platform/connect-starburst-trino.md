@@ -25,4 +25,4 @@ The following are the required fields for setting up a connection with a [Starbu
 
 ## Configuration
 
-To further optimize data platform performance, refer to [Starburst/Trino-specific configuration](/reference/resource-configs/trino-configs).
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Starburst/Trino-specific configuration](/reference/resource-configs/trino-configs).
