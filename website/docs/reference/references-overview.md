@@ -26,7 +26,7 @@ Learn how you can add more configurations to your dbt project or adapter, use pr
 
 <Card
     title="Resource configurations and properties"
-    body="Your project's resources, such as models, snapshots, seeds, and tests, can have properties and configurations that provide extra abilities."
+    body="Properties and configurations that provide extra abilities to your projects resources."
     link="/reference/configs-and-properties"
     icon="computer"/>
 
