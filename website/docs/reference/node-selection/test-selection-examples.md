@@ -213,6 +213,7 @@ Through the combination of direct and indirect selection, there are many ways to
 
   ```bash
   $ dbt test --select assert_total_payment_amount_is_positive # directly select the test by name
+  $ dbt test --select payments,test_type:singular # indirect selection, v1.2
   $ dbt test --select payments,test_type:data # indirect selection, v0.18.0
   $ dbt test --select payments --data  # indirect selection, earlier versions
   ```

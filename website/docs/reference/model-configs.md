@@ -177,6 +177,7 @@ models:
 * [BigQuery configurations](/reference/resource-configs/bigquery-configs)
 * [Redshift configurations](/reference/resource-configs/redshift-configs)
 * [Snowflake configurations](/reference/resource-configs/snowflake-configs)
+* [Databricks configurations](/reference/resource-configs/databricks-configs)
 * [Spark configurations](/reference/resource-configs/spark-configs)
 
 ## Configuring models
