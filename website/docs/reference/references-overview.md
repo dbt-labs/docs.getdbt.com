@@ -50,7 +50,7 @@ Learn how you can add more configurations to your dbt project or adapter, use pr
 
 <Card
     title="Snowflake Permissions Artifacts"
-    body="Provides an example database role permissions."
+    body="Provides an example Snowflake database role permissions."
     link="/reference/snowflake-permissions"
     icon="computer"/>
 
