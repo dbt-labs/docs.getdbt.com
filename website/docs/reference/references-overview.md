@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 The References section contains reference materials for developing with dbt, which includes both dbt Cloud and dbt Core.
 
-Learn how you can add more configurations to your dbt project or adapter, use properties for extra ability, refer to dbt commands, use powerful Jinja functions to streamline your dbt project, and understand how to use dbt artifacts. The <br />
+Learn how to add more configurations to your dbt project or adapter, use properties for extra ability, refer to dbt commands, use powerful Jinja functions to streamline your dbt project, and understand how to use dbt artifacts. The <br />
 
 <div className="grid--3-col">
 
@@ -20,13 +20,13 @@ Learn how you can add more configurations to your dbt project or adapter, use pr
 
 <Card
     title="Platform-specific configurations"
-    body="Learn how to do data platform-specific things in dbt Cloud and dbt Core to optimize performance."
+    body="Learn how to optimize performance with data platform-specific configurations in dbt Cloud and dbt Core."
     link="/reference/resource-configs/postgres-configs"
     icon="computer"/>
 
 <Card
     title="Resource configurations and properties"
-    body="Your project's resources, such as models, snapshots, seeds, and tests, can have properties and configurations that provide extra abilities."
+    body="Properties and configurations that provide extra abilities to your projects resources."
     link="/reference/configs-and-properties"
     icon="computer"/>
 
@@ -49,8 +49,8 @@ Learn how you can add more configurations to your dbt project or adapter, use pr
     icon="computer"/>
 
 <Card
-    title="Database Permissions Artifacts"
-    body="Provides an example database role permissions."
+    title="Snowflake Permissions Artifacts"
+    body="Provides an example Snowflake database role permissions."
     link="/reference/snowflake-permissions"
     icon="computer"/>
 
