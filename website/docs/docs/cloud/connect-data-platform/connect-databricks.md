@@ -24,7 +24,7 @@ The dbt-databricks adapter is more opinionated, guiding users to an improved exp
 - **Support for Unity Catalog:**
 Unity Catalog allows Databricks users to centrally manage all data assets, simplifying access management and improving search and query performance. Databricks users can now get three-part data hierarchies – catalog, schema, model name – which solves a longstanding friction point in data organization and governance.
 
-To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Databricks-specific configuration](/resource-configs/databricks-configs).
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Databricks-specific configuration](/reference/resource-configs/databricks-configs).
 
 
 To set up the Databricks connection, supply the following fields:
