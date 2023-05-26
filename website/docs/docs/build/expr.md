@@ -98,5 +98,5 @@ metrics:
         alias: predicted_returns_90_pct # alias not required, but you may always include one for clarity
 ```
 
-The `predicted_returned_items` measure has two parameters, `constraint` and `alias`. The `constraint` parameter specifies the filter to be applied to the measure it is attached to, and not to others. The `alias` parameter is used to avoid column name conflicts in the SQL queries when the same measure is used with different constraints. If all input measures are distinct, the `alias` parameter isn't necessary.
+The `predicted_returned_items` measure has two parameters, `constraint` and `alias`. The `constraint` parameter specifies the filter to be applied to the measure it is attached to, and not to others. The `alias` parameter is used to avoid column name conflicts in SQL queries when the same measure is used with different constraints. If all input measures are distinct, the `alias` parameter isn't necessary.
 

@@ -6,7 +6,7 @@ sidebar_label: "Validations"
 tags: [Metrics, Semantic Layer]
 ---
 
-Validations refers to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of dbt and MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform). 
+Validations refer to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of dbt and MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform). 
 
 These validations ensure that configuration files follow the expected schema, the semantic graph doesn't violate any constraints, and semantic definitions in the graph exist in the physical table - providing effective data governance support. These three validation steps occur sequentially and must succeed before proceeding to the next step.
 
@@ -38,9 +38,9 @@ In this validation step, we ensure your config files follow the defined schema f
 
 ## Semantic 
 
-This validation steps occurs after we've built your semantic graph. MetricFLow runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if measure names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
+This validation step occurs after we've built your semantic graph. MetricFLow, which powers the dbt Semantic Layer, runs a suite of tests to ensure that your semantic graph doesn't violate any constraints. For example, we check to see if measure names are unique, or if metrics referenced in materialization exist. The current semantic rules we check for are:
 
-1. Check that semantic models with measures have a valid time dimension
+1. Check those semantic models with measures have a valid time dimension
 2. Check that there is only one primary identifier defined in each semantic model
 3. Dimension consistency
 4. Unique measures in semantic models

@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 ---
 
 
-This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage logic behind your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
+This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic behind your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
 There are a few key principles:
 
@@ -28,7 +28,7 @@ There are a few key principles:
 
 ### Semantic graph 
 
-We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that create a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
+We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that creates a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
 
 The semantic graph helps us decide which information is available to use for consumption and which is not. The connections between tables in the semantic graph are more about relationships between the information. This is different from the DAG, where the connections show dependencies between tasks.
 
@@ -42,17 +42,17 @@ For a semantic model, there are three main pieces of metadata:
 
 * [Entities](/docs/build/entities) &mdash; The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
 * [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
-* [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result, which can be used to create your metrics.
+* [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result can be used to create your metrics.
 
 
 ### Metrics 
 
 Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures, such as average, sum, and count distinct, to create metrics.  Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
 
-MetricFlow supports different metric types like:
+MetricFlow supports different metric types:
 
 - [Cumulative](/docs/build/cumulative) &mdash; Cumulative metrics aggregate a measure over a given window, like weekly active users.
-- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculation on top of metrics.
+- [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Expression](/docs/build/expr) &mdash; Allow measures to be modified using a SQL expression, like transactions - cancellations.
 - [Measure proxy](/docs/build/measure-proxy) &mdash; Metrics that refer directly to one measure. 
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
@@ -66,8 +66,8 @@ The following example data schema image shows a number of different types of dat
 
 - `transactions` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `visits` is a raw event log
-- `stores` is a cleaned up and fully normalized dimensional table from a daily production database export
-- `products` is a dimensional table that came from an external source such as a wholesale vendor of the good this store sells.
+- `stores` is a cleaned-up and fully normalized dimensional table from a daily production database export
+- `products` is a dimensional table that came from an external source such as a wholesale vendor of the goods this store sells.
 - `customers` is a partially denormalized table in this case with a column derived from the transactions table through some upstream process
 
 ![MetricFlow-SchemaExample](/img/docs/building-a-dbt-project/MetricFlow-SchemaExample.jpeg)

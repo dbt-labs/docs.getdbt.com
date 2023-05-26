@@ -61,7 +61,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 
 You can quickly create a metric from a measure by setting `create_metric: True`. The metric's description will default to the measure's description. You can also specify the metric's display name using `create_metric_display_name: "Your metric display name"`.
 
-**Note**: If you want to keep all your metric definitions in one place, we suggest avoiding the `create_metric: True `shortcut. Using this shortcut can result in metric definitions existing ni multiples places across your semantic graph.
+**Note**: If you want to keep all your metric definitions in one place, we suggest avoiding the `create_metric: True `shortcut. Using this shortcut can result in metric definitions existing in multiples places across your semantic graph.
 
 ### Model with different aggregations
 

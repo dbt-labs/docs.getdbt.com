@@ -7,7 +7,7 @@ tags: [Metrics, Semantic Layer]
 ---
   
 
-Once you've created your semantic models its time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
+Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
 
 The keys for metrics definitions are: 
 
@@ -16,7 +16,7 @@ The keys for metrics definitions are:
 * `type_params`: Additional parameters used to configure metrics. `type_params` are different for each metric type. 
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 
-This page explains the the different supported metric types you can add to your dbt project. 
+This page explains the different supported metric types you can add to your dbt project. 
 <!--
 - [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
 - [Derived](#derived-metrics) — An expression of other metrics, which allows you to do calculation on top of metrics.
@@ -43,7 +43,7 @@ metrics:
 ```
 
 ### Derived metrics
-[Derived metrics](/docs/build/derived) is defined as an expression of other metrics. This is different form EXPR type metrics, which can only be built of measures. Derived metrics allow you to do calculation on top of metrics. 
+[Derived metrics](/docs/build/derived) are defined as an expression of other metrics. This is different from EXPR-type metrics, which can only be built on measures. Derived metrics allow you to do calculations on top of metrics. 
 
 ```yaml
 metrics:
@@ -60,7 +60,7 @@ metrics:
 ```
 
 ### Expression metrics
-Use [expression metrics](/docs/build/expr) for when you're building a metric that involves a SQL expression of multiple measures.
+Use [expression metrics](/docs/build/expr) when you're building a metric that involves a SQL expression of multiple measures.
 
 ```yaml
 # Expression metric

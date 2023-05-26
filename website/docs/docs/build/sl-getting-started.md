@@ -21,7 +21,7 @@ This quickstart guide explains the following steps and recommends a workflow tha
 - Your dbt environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher
 - You have a git repository set up and your git provider has write access enabled.
 - You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms). Supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB. 
-- You have development [environment](/docs/collaborate/environments/dbt-core-environments) and development credentials set up
+- You have a development [environment](/docs/collaborate/environments/dbt-core-environments) and development credentials set up
 - You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)
 
 ## Create a semantic model
@@ -30,7 +30,7 @@ In MetricFlow, there are two main objects: [semantic models](/docs/build/semanti
 
 This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
-1. Name your semantic model, fill in appropriate metadata and map it to a model in your dbt project. 
+1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
 
 ```yaml
 semantic_models:

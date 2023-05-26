@@ -6,7 +6,7 @@ sidebar_label: Ratio
 tags: [Metrics, Semantic Layer]
 ---
 
-Ratio allows you to create a ratio between two measures. You simply specify a numerator and a denominator measure. Additionally, you can apply a dimensional filter to both numerator and denominator using a constraint string when computing the metric.
+Ratio allows you to create a ratio between two measures. You simply specify a numerator and a denominator measure. Additionally, you can apply a dimensional filter to both the numerator and denominator using a constraint string when computing the metric.
 
 ```yaml
 # Ratio Metric

@@ -8,11 +8,11 @@ sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 ---
 
-Semantic models serve as the foundation for defining data in the the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs, and creates a semantic graph that can be used to query metrics.
+Semantic models serve as the foundation for defining data in the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
 
 Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
 
-You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize it under project sources. Semantic models have 6 components and this page explains the definitions with some examples:
+You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. Semantic models have 6 components and this page explains the definitions with some examples:
 
 1. [Name](#name) &mdash; Unique name for the semantic model. 
 1. [Description](#description) &mdash; Includes important details in the description.
@@ -71,7 +71,7 @@ semantic_models:
 
   - name: customers # Another semantic model called customers.
     model: ref('dim_customers')
-    description: "A customers dimension table."
+    description: "A customer dimension table."
 
     identifiers:
       - name: customer
