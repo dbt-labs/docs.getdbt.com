@@ -8,7 +8,7 @@ hide_table_of_contents: true
 
 The References section contains reference materials for developing in dbt Cloud and dbt Core. 
 
-Learn how you can add more configurations to your dbt project or adapter, use properties for extra ability, refer to dbt commands, use powerful Jinja functions to streamline your dbt project, and understand how to use dbt artifacts. The <br />
+Learn how to add more configurations to your dbt project or adapter, use properties for extra ability, refer to dbt commands, use powerful Jinja functions to streamline your dbt project, and understand how to use dbt artifacts. The <br />
 
 <div className="grid--3-col">
 
