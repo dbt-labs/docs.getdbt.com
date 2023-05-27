@@ -484,8 +484,10 @@ when not matched then insert ...
 
 The `merge` approach has the benefit of automatically updating any late-arriving facts in the
 destination incremental table. The drawback of this approach is that BigQuery must scan all
-source tables referenced in the model SQL, as well as the entirety of the destination table.
-This can be slow and costly if the incremental model is transforming very large amounts of data.
+source tables referenced in the model SQL, as well as the the destination table (however the cost
+of scanning both source and destination tables can be mitigated through the use of partitioning
+and clustering as described above).  This can be slow and costly if the incremental model is
+transforming very large amounts of data.
 
 **Note:** The `unique_key` configuration is required when the `merge` incremental
 strategy is selected.
