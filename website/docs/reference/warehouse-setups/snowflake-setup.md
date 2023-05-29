@@ -142,7 +142,6 @@ my-snowflake-db:
       private_key_path: [path/to/private.key]
       # or private_key instead of private_key_path
       private_key_passphrase: [passphrase for the private key, if key is encrypted]
-      
 
       database: [database name]
       warehouse: [warehouse name]
