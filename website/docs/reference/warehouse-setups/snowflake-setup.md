@@ -124,6 +124,8 @@ Along with adding the `authenticator` parameter, be sure to run `alter account s
 
 To use key pair authentication, omit a `password` and instead provide a `private_key_path` and, optionally, a `private_key_passphrase` in your target. **Note:** Versions of dbt before 0.16.0 required that private keys were encrypted and a `private_key_passphrase` was provided. This behavior was changed in dbt v0.16.0.
 
+From dbt v1.5.0 onwards, it is possible to provide a `private_key` (Base64-encoded DER-encoded key bytes) string instead of a `private_key_path`.
+
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -138,7 +140,9 @@ my-snowflake-db:
 
       # Keypair config
       private_key_path: [path/to/private.key]
+      # or private_key instead of private_key_path
       private_key_passphrase: [passphrase for the private key, if key is encrypted]
+      
 
       database: [database name]
       warehouse: [warehouse name]
