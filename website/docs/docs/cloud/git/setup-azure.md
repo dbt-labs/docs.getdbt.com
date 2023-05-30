@@ -117,7 +117,7 @@ A service user account must have the following Azure DevOps permissions for all 
 
 \* Note: **DeleteSubscriptions** permission might be included in **EditSubscriptions** depending on your version of Azure.
 
-Some of these permissions are only accessible via the Azure DevOps API or CLI, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops) and [here](https://learn.microsoft.com/en-us/cli/azure/devops?view=azure-cli-latest) respectively. We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
+Some of these permissions are only accessible via the [Azure DevOps API](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops) or [CLI](https://learn.microsoft.com/en-us/cli/azure/devops?view=azure-cli-latest). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the setup. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
 
 <!-- tabs for service user permissions and turning off MFA for service users -->
 <Tabs>
