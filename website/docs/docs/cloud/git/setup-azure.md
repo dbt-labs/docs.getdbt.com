@@ -117,7 +117,7 @@ A service user account must have the following Azure DevOps permissions for all 
 
 \* Note: **DeleteSubscriptions** permission might be included in **EditSubscriptions** depending on your version of Azure.
 
-Some of these permissions are only accessible via the Azure DevOps API, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
+Some of these permissions are only accessible via the Azure DevOps API or CLI, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops) and [here](https://learn.microsoft.com/en-us/cli/azure/devops?view=azure-cli-latest) respectively. We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
 
 <!-- tabs for service user permissions and turning off MFA for service users -->
 <Tabs>
@@ -179,7 +179,12 @@ To re-enable MFA for that user, select them again and click **Enable**. Note you
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
-**UI/API:** API only
+**UI/API/CLI:** API/CLI only
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id cb594ebe-87dd-4fc9-ac2c-6a10a4c92046 --subject <service_account>@xxxxxx.onmicrosoft.com --token PublisherSecurity/<azure_devops_project_object_id> --allow-bit 1
+```
 
 </details>
 
@@ -207,7 +212,12 @@ To re-enable MFA for that user, select them again and click **Enable**. Note you
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
-**UI/API:** API only
+**UI/API/CLI:** API/CLI only
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id cb594ebe-87dd-4fc9-ac2c-6a10a4c92046 --subject <service_account>@xxxxxx.onmicrosoft.com --token PublisherSecurity/<azure_devops_project_object_id> --allow-bit 2
+```
 
 </details>
 
@@ -237,7 +247,12 @@ To re-enable MFA for that user, select them again and click **Enable**. Note you
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
-**UI/API:** API only
+**UI/API/CLI:** API/CLI only
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id cb594ebe-87dd-4fc9-ac2c-6a10a4c92046 --subject <service_account>@xxxxxx.onmicrosoft.com --token PublisherSecurity/<azure_devops_project_object_id> --allow-bit 4
+```
 
 **Additional Notes:** This permission has been deprecated in recent Azure DevOps versions. Edit Subscriptions (bit 2) has Delete permissions.
 
@@ -271,7 +286,12 @@ To re-enable MFA for that user, select them again and click **Enable**. Note you
 - repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
 
 
-**UI/API:** UI and API
+**UI/API/CLI:** UI, API, and CLI
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id 2e9eb7ed-3c0a-47d4-87c1-0ffdd275fd87 --subject <service_account>@xxxxxx.onmicrosoft.com --token repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> --allow-bit 16384
+```
 
 **Additional Notes:** This permission is automatically inherited if Project Reader/Contributor/Administrator is set in the UI.
 
@@ -306,7 +326,12 @@ To re-enable MFA for that user, select them again and click **Enable**. Note you
 - repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
 
 
-**UI/API:** UI and API
+**UI/API/CLI:** UI, API, and CLI
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id 2e9eb7ed-3c0a-47d4-87c1-0ffdd275fd87 --subject <service_account>@xxxxxx.onmicrosoft.com --token repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> --allow-bit 4
+```
 
 **Additional Notes:** This permission is automatically inherited if Project Contributor/Administrator is set in the UI.
 
