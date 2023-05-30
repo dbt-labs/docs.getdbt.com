@@ -126,6 +126,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     WITH (
         external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/jaffle-shop-customers/',
         format = 'csv',
+        type = 'hive',
         skip_header_line_count=1
 
     );
@@ -142,6 +143,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
     WITH (
         external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/jaffle-shop-orders/',
         format = 'csv',
+        type = 'hive',
         skip_header_line_count=1
     );
 
@@ -159,6 +161,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 
         external_location = 's3://YOUR_S3_BUCKET_NAME/dbt-quickstart/stripe-payments/',
         format = 'csv',
+        type = 'hive',
         skip_header_line_count=1
 
     );
