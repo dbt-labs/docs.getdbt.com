@@ -18,6 +18,7 @@ To learn more about adapters, check out [What Are Adapters](/guides/dbt-ecosyste
 | [BigQuery](/reference/warehouse-setups/bigquery-setup)                | 1.4                    |
 | [Databricks](/reference/warehouse-setups/databricks-setup)            | 1.4                    |
 | [Dremio](/reference/warehouse-setups/dremio-setup)                    | 1.4 :construction:     |
+| [Microsoft Fabric Synapse Data Warehouse](/reference/warehouse-setups/fabric-setup)       | 1.4 :construction:     |
 | [Postgres](/reference/warehouse-setups/postgres-setup)                | 1.4                    |
 | [Redshift](/reference/warehouse-setups/redshift-setup)                | 1.4                    |
 | [Snowflake](/reference/warehouse-setups/snowflake-setup)              | 1.4                    |
