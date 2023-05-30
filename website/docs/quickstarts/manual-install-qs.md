@@ -3,15 +3,18 @@ title: "Quickstart for dbt Core from a manual install"
 id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
 sidebar_label: "Manual install quickstart"
+platform: 'dbt-core'
+hide_table_of_contents: true
 ---
+## Introduction
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/docs/quickstarts/overview).
+When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/quickstarts).
 
-## Prerequisites
+### Prerequisites
 
 * To use the dbt CLI, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/docs/core/installation) for your operating system.
-* Complete [Setting up (in BigQuery)](/docs/quickstarts/dbt-cloud/bigquery#create-a-new-gcp-project) and [Loading data (BigQuery)](/docs/quickstarts/dbt-cloud/bigquery#create-bigquery-datasets).
+* Complete [Setting up (in BigQuery)](/quickstarts/bigquery?step=2) and [Loading data (BigQuery)](/quickstarts/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
 ## Create a starter project
