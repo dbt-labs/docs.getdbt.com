@@ -482,7 +482,6 @@ when matched then update ...
 when not matched then insert ...
 ```
 
-destination incremental table. The drawback of this approach is that BigQuery must scan all
 The 'merge' approach automatically updates new data in the destination incremental table but requires scanning all source tables referenced in the model SQL, as well as destination tables. This can be slow and expensive for large data volumes. [Partitioning and clustering](#using-table-partitioning-and-clustering) techniques mentioned earlier can help mitigate these issues.
 of scanning both source and destination tables can be mitigated through the use of partitioning
 and clustering as described above).  This can be slow and costly if the incremental model is
