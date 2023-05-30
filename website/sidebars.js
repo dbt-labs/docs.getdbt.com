@@ -14,33 +14,9 @@ const sidebarSettings = {
       ],
     }, // About dbt Cloud directory
     {
-      type: "category",
+      type: "link",
       label: "Quickstarts",
-      collapsed: true,
-      items: [
-        "docs/quickstarts/overview",
-        {
-          type: "category",
-          label: "dbt Cloud",
-          collapsed: true,
-          items: [
-            "docs/quickstarts/dbt-cloud/bigquery",
-            "docs/quickstarts/dbt-cloud/databricks",
-            "docs/quickstarts/dbt-cloud/redshift",
-            "docs/quickstarts/dbt-cloud/snowflake",
-            "docs/quickstarts/dbt-cloud/starburst-galaxy",
-          ],
-        },
-        {
-          type: "category",
-          label: "dbt Core",
-          collapsed: true,
-          items: [
-            "docs/quickstarts/dbt-core/codespace",
-            "docs/quickstarts/dbt-core/manual-install",
-          ],
-        },
-      ],
+      href: `/quickstarts`,
     },
     {
       type: "category",
