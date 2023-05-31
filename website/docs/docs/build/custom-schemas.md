@@ -136,7 +136,9 @@ A common way to generate schema names is by adjusting the behavior according to 
 
 - Build _all_ models in the target schema, ignoring any custom schema configurations.
 
-dbt ships with a global, predefined macro that contains this logic - `generate_schema_name_for_env`. If you want to use this pattern, you'll need a `generate_schema_name` macro in your project that points to this logic. You can do this by creating a file in your `macros` directory (typically named `get_custom_schema.sql`), and copying/pasting the following code:
+dbt ships with a global, predefined macro that contains this logic - `generate_schema_name_for_env`. 
+
+If you want to use this pattern, you'll need a `generate_schema_name` macro in your project that points to this logic. You can do this by creating a file in your `macros` directory (typically named `get_custom_schema.sql`), and copying/pasting the following code:
 
 <File name='macros/get_custom_schema.sql'>
 
