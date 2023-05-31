@@ -12,7 +12,7 @@ dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. It conta
 - [Managing users and licenses](/docs/cloud/manage-access/seats-and-users)
 - [Configuring secure access](/docs/cloud/manage-access/about-user-access)
 
-These settings are intended for dbt Cloud administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/docs/quickstarts/overview).
+These settings are intended for dbt Cloud administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/quickstarts).
 
 If you want a more in-depth learning experience, we recommend taking the dbt Fundamentals on our [dbt Learn online courses site](https://courses.getdbt.com/).
 

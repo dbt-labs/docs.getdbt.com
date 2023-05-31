@@ -1,9 +1,11 @@
 ---
 title: "Quickstart for dbt Cloud and Snowflake"
-description: "Quickstart for dbt Cloud and Snowflake."
 id: "snowflake"
-sidebar_label: "Snowflake quickstart"
+platform: 'dbt-cloud'
+hide_table_of_contents: true
 ---
+## Introduction
+
 In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It will show you how to: 
 
 - Create a new Snowflake worksheet.
@@ -22,10 +24,19 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.com/watch?v=kbCkwhySV_I&list=PL0QYlrC86xQm7CoOH6RS7hcgLnd3OQioG).
 :::
 
-## Prerequisites​
+### Prerequisites​
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup/). 
 - You have a [trial Snowflake account](https://signup.snowflake.com/). During trial account creation, make sure to choose the **Enterprise** Snowflake edition so you have `ACCOUNTADMIN` access. For a full implementation, you should consider organizational questions when choosing a cloud provider. For more information, see [Introduction to Cloud Platforms](https://docs.snowflake.com/en/user-guide/intro-cloud-platforms.html) in the Snowflake docs. For the purposes of this setup, all cloud providers and regions will work so choose whichever you’d like.
+
+### Related content
+
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
+- [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
+- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [Job triggers](/docs/deploy/job-triggers)
+- [Job notifications](/docs/deploy/job-notifications)
+- [Source freshness](/docs/deploy/source-freshness)
 
 ## Create a new Snowflake worksheet 
 1. Log in to your trial Snowflake account. 
@@ -389,11 +400,3 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
 <Snippet src="quickstarts/schedule-a-job" />
-
-## Related content
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
-- [Job notifications](/docs/deploy/job-notifications)
-- [Source freshness](/docs/deploy/source-freshness)
