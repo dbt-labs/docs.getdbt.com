@@ -32,6 +32,13 @@ Once you have opted to begin the migration process, the following steps will var
 
 SAML 2.0 users must update a few fields in the SSO app configuration to match the new Auth0 URL and URI.  You can approach this by editing the existing SSO app settings or creating a new one to accommodate the Auth0 settings. One approach isn't inherently better, so choose whichever works best for your organization.
 
+:::warning Login {slug}
+
+Your login slug should not contain an underscore. If it does, it must be changed in the account settings.
+Once the slug is changed, have your admins share it with dbt Cloud users, as the login URL will change.
+
+:::
+
 The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
