@@ -1,8 +1,8 @@
 ---
-title: "About to MetricFlow"
+title: "About MetricFlow"
 id: metricflow-core-concepts
 description: "Learn more about MetricFlow and its key concepts"
-sidebar_label: About to MetricFlow
+sidebar_label: About MetricFlow
 tags: [Metrics, Semantic Layer]
 ---
 
@@ -74,7 +74,7 @@ The following example data schema image shows a number of different types of dat
 
 To make this more concrete, consider the metric `revenue`, which is defined using the SQL expression:
 
-`SELECT SUM(price * quantity) AS revenue FROM transactions` 
+`select sum(price * quantity) as revenue from transactions` 
 
 This expression calculates the total revenue by multiplying the price and quantity for each transaction and then adding up all the results. In business settings, the metric `revenue` is often calculated according to different categories, such as:
 - Time, for example `date_trunc(created_at, 'day')`
