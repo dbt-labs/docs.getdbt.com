@@ -143,15 +143,17 @@ If the database closes its connection while dbt is waiting for data, you may see
 
 [dbt's default setting](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/adapters/redshift/connections.py#L51) is 240 (seconds), but can be configured lower (perhaps 120 or 60), at the cost of a chattier network connection.
 
-<VersionBlock firstVersion="1.2">
+<VersionBlock firstVersion="1.5">
 
 ### query_tag
 
-<Changelog>New in v1.5.0</Changelog>
-
 [Query tags](https://docs.aws.amazon.com/redshift/latest/dg/r_query_group.html) are a Redshift
 parameter that can be quite useful later on when searching in the [SVL_QLOG view](https://docs.aws.amazon.com/redshift/latest/dg/r_SVL_QLOG.html). For consistency across adapters, the name `query_tag` was kept, but please be aware that Redshift names this functionality `query_group`.
+  
+ </VersionBlock>
 
+<VersionBlock firstVersion="1.2">
+    
 #### retries
 
 If `dbt-redshift` encounters an operational error or timeout when opening a new connection, it will retry up to the number of times configured by `retries`. If set to 2+ retries, dbt will wait 1 second before retrying. The default value is 1 retry. If set to 0, dbt will not retry at all.
