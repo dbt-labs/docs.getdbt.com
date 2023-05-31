@@ -38,11 +38,6 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
-
-:::Note
-Microsoft made several changes related to connection encryption. Read more about the changes [below](#connection-encryption).
-:::
-
 ### Prerequisites
 
 On Debian/Ubuntu make sure you have the ODBC header files before installing
