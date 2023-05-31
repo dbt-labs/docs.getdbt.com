@@ -1,5 +1,5 @@
 ---
-title: "Use the Deployment monitor page for greater visibility to your job run health"
+title: "Use the Deployment Monitor page for greater visibility to your job run health"
 id: "deployment-monitor"
 description: "May 2023: "
 sidebar_label: "New: Deployment monitor visualizes your run health"
