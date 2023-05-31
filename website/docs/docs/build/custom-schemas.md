@@ -90,7 +90,7 @@ If your dbt project has a macro that’s also named `generate_schema_name`, dbt 
 
 ### Changing the way dbt generates a schema name
 
-To modify how dbt generates schema names, add a `generate_schema_name` macro to your project and customize it according to your needs:
+To modify how dbt generates schema names, you should add a macro named `generate_schema_name` to your project and customize it according to your needs:
 
 - Copy and paste the `generate_schema_name` macro into a file named 'generate_schema_name'.
 
