@@ -4,7 +4,7 @@ id: "apr-ide-updates"
 description: "Apr 2023 release note: We've enhanced the IDE by displaying load times when previewing models, showing live previews of Markdown and CSV files, adding the ability to duplicate files in the File Tree, and more."
 sidebar_label: "Update and fixes: IDE"
 sidebar_position: 7
-tags: [Apr-30-2023, IDE]
+tags: [Apr-2023, IDE]
 ---
 
 To continue improving your [Cloud IDE](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud) development experience, the dbt Labs team continue to work on adding new features, fixing bugs, and increasing reliability ✨.
