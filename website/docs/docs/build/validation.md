@@ -6,11 +6,9 @@ sidebar_label: "Validations"
 tags: [Metrics, Semantic Layer]
 ---
 
-Validations refer to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of the Semantic Layer, powered by MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform). 
+Validations refer to the process of checking whether a system or configuration meets the expected requirements or constraints. In the case of the Semantic Layer, powered by MetricFlow, there are three built-in validations &mdash; [parsing](#parsing), [semantic](#semantic), and [data platform](#data-platform).
 
 These validations ensure that configuration files follow the expected schema, the semantic graph doesn't violate any constraints, and semantic definitions in the graph exist in the physical table - providing effective data governance support. These three validation steps occur sequentially and must succeed before proceeding to the next step.
-
-The validation code for [MetricFlow can be found here.](https://github.com/transform-data/metricflow/tree/main/metricflow/model/validations)
 
 ## Prerequisites
 
