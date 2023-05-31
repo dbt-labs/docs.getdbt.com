@@ -105,7 +105,7 @@ If you're modifying how dbt generates schema names, don't just replace ```{{ def
 
 This prevents developers from overriding each other's models when custom schemas are defined. This also prevents issues during development and continuous integration (CI).
 
-❌ The follow code block is an example of what your code _should not_ look like: 
+❌ The following code block is an example of what your code _should not_ look like: 
 ```
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
