@@ -32,6 +32,12 @@ Once you have opted to begin the migration process, the following steps will var
 
 SAML 2.0 users must update a few fields in the SSO app configuration to match the new Auth0 URL and URI.  You can approach this by editing the existing SSO app settings or creating a new one to accommodate the Auth0 settings. One approach isn't inherently better, so choose whichever works best for your organization.
 
+:::warning Login {slug}
+
+The login slug shouldn't have an underscore. If it does, you need to change it on the **Account Settings** page. After changing the slug, the admins must share it with dbt Cloud users, as the login URL will differ.
+
+:::
+
 The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
@@ -42,7 +48,7 @@ Here is an example of an updated SAML 2.0 setup in Okta.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-config.png" title="Okta configuration with new URL"/>
 
-After the configuration is saved, your SAML settings should look something like this:
+After the configuration is saved, your SAML settings will look something like this:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
@@ -100,7 +106,7 @@ Azure Active Directory admins will need to make a slight adjustment to the exist
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
-4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
+4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
 
 :::warning Domain authorization
 
