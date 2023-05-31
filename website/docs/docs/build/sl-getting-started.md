@@ -6,7 +6,7 @@ sidebar_label: Getting started
 tags: [Metrics, Semantic Layer]
 ---
 
-This quickstart guide explains the following steps and recommends a workflow that demonstrates some of the Semantic Layer’s essential features: 
+This getting started guide explains the following steps and recommends a workflow that demonstrates some of the Semantic Layer’s essential features: 
 
 - [Create a semantic model](#create-a-semantic-model)
 - [Create your metric](#create-your-metric)
