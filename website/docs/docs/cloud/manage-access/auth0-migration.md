@@ -54,7 +54,7 @@ After the configuration is saved, your SAML settings will look something like th
 
 Once you have saved this information in the SSO environment, you must edit some information in the dbt Cloud settings. Navigate to the **Account Settings**, update the single sign-on URL fields, and provide the updated x.509 certificate.
 
-Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The Auth0 migration action is final and cannot be undone_
+Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone_
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable new SSO for SAML/Okta"/>
 
