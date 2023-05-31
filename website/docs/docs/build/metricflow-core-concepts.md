@@ -20,7 +20,7 @@ There are a few key principles:
 
 - MetricFlow is a SQL query generation engine that helps you create metrics by constructing appropriate queries for different granularities and dimensions that are useful for various business applications. 
 
-- It uses YAML files to define a semantic graph that acts like a data map. This graph consists of [semantic models](/docs/build/semantic-models), which serve as data entry points, and [metrics](/docs/build/metrics-overview), which are functions used to create new quantitative indicators.
+- It uses YAML files to define a semantic graph, which maps language to data. This graph consists of [semantic models](/docs/build/semantic-models), which serve as data entry points, and [metrics](/docs/build/metrics-overview), which are functions used to create new quantitative indicators.
 
 - MetricFlow is [open-source](https://github.com/dbt-labs/metricflow) and available on dbt versions 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute. 
 
