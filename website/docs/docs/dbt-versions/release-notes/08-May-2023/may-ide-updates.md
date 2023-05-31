@@ -3,7 +3,7 @@ title: "May IDE updates and fixes"
 id: "may-ide-updates"
 description: "May 2023 release note: We've ."
 sidebar_label: "Update and fixes: IDE"
-sidebar_position: 7
+sidebar_position: 2
 tags: [May-2023, IDE]
 ---
 
