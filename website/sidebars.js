@@ -290,7 +290,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "dbt APIs",
+      label: "dbt Cloud APIs",
       collapsed: true,
       items: [
         "docs/dbt-cloud-apis/overview",
