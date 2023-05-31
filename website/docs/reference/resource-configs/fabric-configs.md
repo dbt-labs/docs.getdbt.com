@@ -1,6 +1,6 @@
 ---
-title: "Microsoft SQL Server configurations"
-id: "mssql-configs"
+title: "Fabric configurations"
+id: "fabric-configs"
 ---
 
 ## Materializations
