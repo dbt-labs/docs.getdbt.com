@@ -24,6 +24,11 @@ This quickstart guide explains the following steps and recommends a workflow tha
 - You have a development [environment](/docs/collaborate/environments/dbt-core-environments) and development credentials set up
 - You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)
 
+:::tip 
+New to dbt or metrics? Try our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/tree/main/models/metrics) sample project to help you get started!
+:::
+
+
 ## Create a semantic model
 
 In the Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. The Semantic Layer, powered by MetricFlow, takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
