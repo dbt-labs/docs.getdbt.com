@@ -86,17 +86,17 @@ models:
 
 </File>
 
-## Query tags
+<VersionBlock firstVersion="1.5">
 
-<Changelog>New in v1.5.0</Changelog>
+## Query tags
 
 [Query tags](https://docs.aws.amazon.com/redshift/latest/dg/r_query_group.html) are a Redshift
 parameter that can be quite useful later on when searching in the [SVL_QLOG view](https://docs.aws.amazon.com/redshift/latest/dg/r_SVL_QLOG.html). Please be aware that Redshift uses the term `query_group` when querying the `SVL_QLOG` view.
 
 dbt supports setting a default query tag for the duration of its Redshift connections in
 [your profile](/reference/warehouse-setups/redshift-setup). You can set more precise values (and override the default) for subsets of models by setting
-a `query_tag` model config or by overriding the default `set_query_tag` macro:
-
+a `query_tag` model config or by overriding the default `set_query_tag` macro: 
+          
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -139,3 +139,5 @@ In this example, you can set up a query tag to be applied to every query with th
 **Note:** query tags are set at the _session_ level. At the start of each model <Term id="materialization" />, if the model has a custom `query_tag` configured, dbt will run `set query_group` to set the new value. At the end of the materialization, dbt will run another `set` statement to reset the tag to its default value. As such, build failures midway through a materialization may result in subsequent queries running with an incorrect tag.
 
 </File>
+          
+</VersionBlock>
