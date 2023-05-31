@@ -2,7 +2,7 @@
 id: sl-getting-started
 title: Getting started
 description: "Learn how to create your first semantic model and metric."
-sidebar_label: Quickstart
+sidebar_label: Getting started
 tags: [Metrics, Semantic Layer]
 ---
 
