@@ -42,7 +42,7 @@ Here is an example of an updated SAML 2.0 setup in Okta.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-config.png" title="Okta configuration with new URL"/>
 
-After the configuration is saved, your SAML settings should look something like this:
+After the configuration is saved, your SAML settings will look something like this:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
@@ -100,7 +100,7 @@ Azure Active Directory admins will need to make a slight adjustment to the exist
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
-4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
+4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
 
 :::warning Domain authorization
 
