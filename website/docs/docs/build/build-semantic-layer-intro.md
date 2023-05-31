@@ -3,7 +3,7 @@ title: "Build your Semantic Layer"
 id: build-semantic-layer-intro
 description: "Learn about MetricFlow and build your Semantic Layer with Semantic models and Metrics"
 sidebar_label: Build your Semantic Layer
-tags: [Metrics, Semantic Layer]
+tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
 ---
 
