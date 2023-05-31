@@ -80,7 +80,6 @@ Since this is a foreign-to-primary relationship, a left join is implemented wher
 When querying dimensions from different semantic models using the CLI, a double underscore (or dunder) is added to the dimension name after the joining entity. In the CLI query shown below, `user_id__type` is included as a `dimension`.
 
 ```yaml 
-todo: update syntzx
 mf query --metrics average_purchase_price --dimensions metric_time,user_id__type 
 ```
 

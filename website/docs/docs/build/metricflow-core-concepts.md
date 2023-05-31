@@ -7,24 +7,24 @@ tags: [Metrics, Semantic Layer]
 ---
 
 
-This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic behind your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
+This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, a powerful component of the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
 There are a few key principles:
 
 - **Flexible, but complete** &mdash;  Ability to create any metric on any data model by defining logic in flexible abstractions.
 - **Don't Repeat Yourself (DRY)** &mdash; Avoid repetition by allowing metric definitions to be enabled whenever possible.
-- **Simple with progressive complexity** &mdash; Make MetricFlow approachable by relying on known concepts and structures in data modeling. 
+- **Simple with progressive complexity** &mdash; Make the Semantic Layer approachable by relying on known concepts and structures in data modeling. 
 - **Performant and efficient** &mdash; Allow for performance optimizations in centralized data engineering while still enabling distributed definition and ownership of logic.
 
 ## Framework
 
-- MetricFlow is a semantic layer that helps you create metrics by constructing appropriate queries for different granularities and dimensions that are useful for various business applications. 
+- MetricFlow is a SQL query generation engine that helps you create metrics by constructing appropriate queries for different granularities and dimensions that are useful for various business applications. 
 
 - It uses YAML files to define a semantic graph that acts like a data map. This graph consists of [semantic models](/docs/build/semantic-models), which serve as data entry points, and [metrics](/docs/build/metrics-overview), which are functions used to create new quantitative indicators.
 
 - MetricFlow is [open-source](https://github.com/dbt-labs/metricflow) and available on dbt versions 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute. 
 
-- MetricFlow's goal is to manage and define a company's metric logic through YAML abstractions, as described in the following sections.
+- MetricFlow, as a part of the dbt Semantic Layer, allows organizations to define company metrics logic through YAML abstractions, as described in the following sections.
 
 ### Semantic graph 
 
@@ -32,7 +32,7 @@ We're introducing a new concept: a "semantic graph". It's the relationship betwe
 
 The semantic graph helps us decide which information is available to use for consumption and which is not. The connections between tables in the semantic graph are more about relationships between the information. This is different from the DAG, where the connections show dependencies between tasks.
 
-When MetricFlow generates a metric, it uses its SQL engine to figure out the best path between tables using the framework defined in YAML files for semantic models and metrics. When these models and metrics are correctly defined, they can be used downstream with [dbt Semantic Layer's integrations](https://www.getdbt.com/product/semantic-layer-integrations).
+When MetricFlow generates a metric, it uses its SQL engine to figure out the best path between tables using the framework defined in YAML files for semantic models and metrics. When these models and metrics are correctly defined, they can be used downstream with dbt Semantic Layer's integrations.
 
 ### Semantic models 
 
@@ -60,7 +60,7 @@ MetricFlow supports different metric types:
 
 ## Use case
 
-In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
+In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how the Semantic Layer with MetricFlow makes defining metrics easier and more flexible. 
 
 The following example data schema image shows a number of different types of data tables:
 
@@ -82,7 +82,7 @@ This expression calculates the total revenue by multiplying the price and quanti
 
 ### Calculate metrics
 
-Next, we'll compare how data practitioners currently calculate metrics with multiple queries versus how MetricFlow simplifies and streamlines the process.
+Next, we'll compare how data practitioners currently calculate metrics with multiple queries versus how the Semantic Layer with MetricFlow simplifies and streamlines the process.
 
 <Tabs>
 <TabItem value="mulqueries" label="Calculate with multiple queries">
@@ -106,11 +106,11 @@ group by 1, 2
 ```
 
 </TabItem>
-<TabItem value="metricflow" label="Calculate metrics with MetricFlow">
+<TabItem value="metricflow" label="Calculate with the Semantic Layer">
 
-Introducing MetricFlow 🤩 - our solution that simplifies data collaboration and governance. 
+> Introducing the new Semantic Layer, powered by MetricFlow 🤩 - simplifying data collaboration and governance.
 
-In the following three example tabs, use MetricFlow to define a semantic model that uses revenue as a metric and a sample schema to create consistent and accurate results. What this does is eliminates code duplication and streamlines your workflow. No more confusion, inconsistencies, and data management headaches!
+In the following three example tabs, use the Semantic Layer to define a semantic model that uses revenue as a metric and a sample schema to create consistent and accurate results &mdash; eliminating confusion, code duplication, and streamlining your workflow.
 
 <Tabs>
 <TabItem value="example1" label="Revenue example">
@@ -169,7 +169,7 @@ semantic_model:
 
 Similarly, you could then add a `products` semantic model on top of the `products` model to incorporate even more dimensions to slice and dice your revenue metric. 
 
-Notice the identifiers present in the semantic models `products` and `transactions`. MetricFlow does the heavy-lifting for you by traversing the appropriate join keys to identify the available dimensions to slice and dice your `revenue` metric. 
+Notice the identifiers present in the semantic models `products` and `transactions`. The Semantic Layer with MetricFlow does the heavy-lifting for you by traversing the appropriate join keys to identify the available dimensions to slice and dice your `revenue` metric. 
 
 ```yaml
 semantic_model:
@@ -197,7 +197,7 @@ semantic_model:
 </TabItem>
 <TabItem value="example3" label="Advanced example">
 
-Imagine an even more difficult metric is needed, like the amount of money earned each day by selling perishable goods per active customer. Without MetricFlow, the data practitioner's original SQL might look like this:
+Imagine an even more difficult metric is needed, like the amount of money earned each day by selling perishable goods per active customer. Without the Semantic Layer, the data practitioner's original SQL might look like this:
 
 ```sql
 select
@@ -217,7 +217,7 @@ where
 group by 1, 2
 ```
 
-MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
+The Semantic Layer with MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
 ```yaml
 metric:
@@ -241,31 +241,31 @@ metric:
 <details>
   <summary>Do my datasets need to be normalized?</summary>
   <div>
-    <div>Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. <br /><br /> It's recommended that you apply data consistency and quality MetricFlowations such as filtering bad data, normalizing common objects, and data modeling of keys and tables in upstream applications. MetricFlow is most efficient at doing data denormalization, rather than normalization. <br /><br />If you have not invested in data consistency, that is okay. MetricFlow can take SQL queries or expressions to define consistent datasets.</div>
+    <div>Not at all! While a cleaned and well-modeled data set can be extraordinarily powerful and is the ideal input, you can use any dataset from raw to fully denormalized datasets. <br /><br />It's recommended that you apply quality data consistency, such as filtering bad data, normalizing common objects, and data modeling of keys and tables, in upstream applications. The Semantic Layer is more efficient at doing data denormalization instead of normalization. <br /><br />If you have not invested in data consistency, that is okay. The Semantic Layer can take SQL queries or expressions to define consistent datasets.</div>
   </div>
 </details>
 <details>
   <summary>Why is normalized data the ideal input?</summary>
   <div>
-    <div> MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that MetricFlow can use to aggregate metrics.</div>
+    <div> The Semantic Layer with MetricFlow is built to do denormalization efficiently. There are better tools to take raw datasets and accomplish the various tasks required to build data consistency and organized data models. On the other end, by putting in denormalized data you are potentially creating redundancy which is technically challenging to manage, and you are reducing the potential granularity that the Semantic Layer with MetricFlow can use to aggregate metrics.</div>
   </div>
 </details>
 <details>
   <summary>Why not just make metrics the same as measures?</summary>
   <div>
-    <div>One principle of our MetricFlow is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).<br /><br />Many metrics are constructed from reused measures and in some cases constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).<br /><br />Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.</div>
+    <div>One principle of the Semantic Layer is to reduce the duplication of logic sometimes referred to as Don't Repeat Yourself(DRY).<br /><br />Many metrics are constructed from reused measures and in some cases constructed from measures from different semantic models. This allows for metrics to be built breadth-first (metrics that can stand alone) instead of depth-first (where you have multiple metrics acting as functions of each other).<br /><br />Additionally, not all metrics are constructed off of measures. As an example, a conversion metric is likely defined as the presence or absence of an event record after some other event record.</div>
   </div>
 </details>
 <details>
-  <summary>How does MetricFlow handle joins?</summary>
+  <summary>How does the Semantic Layer handle joins?</summary>
   <div>
-    <div>MetricFlow builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentations on join types.<br /><br />Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.</div>
+    <div>The Semantic Layer with MetricFlow, builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentations on join types.<br /><br />Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.</div>
   </div>
 </details>
 <details>
   <summary>Are entities and join keys the same thing?</summary>
   <div>
-    <div>If it helps you to think of entities as join keys, that is very reasonable. Entities in MetricFlow have applications beyond joining two tables, such as acting as a dimension.</div>
+    <div>If it helps you to think of entities as join keys, that is very reasonable. Entities in the Semantic Layer have applications beyond joining two tables, such as acting as a dimension.</div>
   </div>
 </details> 
 <details>
