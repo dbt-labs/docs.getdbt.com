@@ -23,7 +23,7 @@ metrics:
 
 ### Different semantic models
 
-If you use measures from different data sets in an expression metric in MetricFlow, the system will calculate the values in sub-queries and then join the result set based on common dimensions to calculate the final value. Here's an example of the generated SQL from an expression with measures from different semantic models.
+If you use measures from different data sets in an expression metric in the Semantic Layer, the system will calculate the values in sub-queries and then join the result set based on common dimensions to calculate the final value. Here's an example of the generated SQL from an expression with measures from different semantic models.
 
 
 ```sql

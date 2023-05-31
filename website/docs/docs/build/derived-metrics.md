@@ -6,7 +6,7 @@ sidebar_label: Derived
 tags: [Metrics, Semantic Layer]
 ---
 
-Derived metrics in MetricFlow refer to metrics that are created by defining an expression using other metrics. Unlike `expr` type metrics, which can only be built of measures, derived metrics allow for calculations on top of metrics. For example, you can define a metric called "Net Sales Per User" by using other metrics in the calculation.
+Derived metrics in the Semantic Layer refer to metrics that are created by defining an expression using other metrics. Unlike `expr` type metrics, which can only be built of measures, derived metrics allow for calculations on top of metrics. For example, you can define a metric called "Net Sales Per User" by using other metrics in the calculation.
 
 ```yaml
 metrics:

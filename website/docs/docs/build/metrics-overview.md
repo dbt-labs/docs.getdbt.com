@@ -82,11 +82,14 @@ metrics:
 
 ```yaml
 metrics: 
-  name: cancellations # Define the reference name of the metric. This name must be unique amongst metrics and can include lowercase letters, numbers and underscores.
-                      # This name is used to call the metric from the MetricFlow API.
+# Define the reference name of the metric.  
+# This name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. 
+# This name is used to call the metric from the dbt Semantic Layer API.
+  name: cancellations 
   type: measure_proxy 
   type_params:
-    measure: cancellations_usd # Specify the measure you are creating a proxy for. 
+  # Specify the measure you are creating a proxy for. 
+    measure: cancellations_usd 
   constraint: | 
     value > 100 AND user__acquisition
 ```
@@ -100,7 +103,9 @@ metrics:
 - name: cancellation_rate
   owners:
     - support@getdbt.com
-  type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
+# Ratio metrics create a ratio out of two measures.
+# Define the measures from the semantic model as numerator or denominator
+  type: ratio  
   type_params:
     numerator: cancellations_usd
     denominator: transaction_amount_usd
@@ -110,7 +115,9 @@ metrics:
 - name: enterprise_cancellation_rate
   owners:
     - support@getdbt.com
-  type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
+ # Ratio metrics create a ratio out of two measures. 
+ # Define the measures from the semantic model as numerator or denominator
+  type: ratio 
   type_params:
     numerator: 
       name: cancellations_usd

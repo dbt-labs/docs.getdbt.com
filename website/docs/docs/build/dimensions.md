@@ -53,9 +53,9 @@ All dimensions require a `name`, `type` and in most cases, an `expr` parameter.
 
 | Name | Parameter | Field type |
 | --- | --- | --- |
-| `name` |  Refers to the name of the dimension that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> &mdash; Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
+| `name` |  Refers to the name of the dimension that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> &mdash; Dimension names should be unique within a semantic model, but they can be non-unique across different models as the Semantic Layer uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
 | `type` | Specifies the type of dimension created in the semantic model. There are three types:<br /><br />&mdash; Categorical: Group rows in a table by categories like geography, product type, color, and so on. <br />&mdash; Time: Point to a date field in the data platform, and must be of type TIMESTAMP or equivalent in the data platform engine. <br />&mdash; Slowly-changing dimensions: Analyze metrics over time and slice them by dimensions that change over time, like sales trends by a customer's country. | Required |
-| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the dimension. You can use `expr` to input a SQL expression, including a case statement, or the column name itself. | Optional |
+| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, the Semantic Layer with MetricFlow will use the column with the same name as the dimension. You can use `expr` to input a SQL expression, including a case statement, or the column name itself. | Optional |
 
 ## Dimensions types
 
@@ -81,14 +81,14 @@ dimensions:
 Time dimension has additional parameters specified under the `type_params` section.
 
 :::tip use datetime data type if using BigQuery
-To use BigQuery as your data platform, time dimension columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
+To use BigQuery as your data platform, time dimension columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. The Semantic Layer supports these granularities, which can be specified using the `time_granularity` parameter.
 :::
 
 <Tabs>
 
 <TabItem value="is_primary" label="is_primary">
 
-To specify the default time dimension for a measure or metric in MetricFlow, set the `is_primary` parameter to True. If you have multiple time dimensions in your semantic model, the non-primary ones should have `is_primary` set to False. To assign a non-primary time dimension to a measure, use the `agg_time_dimension` parameter and refer to the time dimension defined in the dimension section. 
+To specify the default time dimension for a measure or metric in the Semantic Layer, set the `is_primary` parameter to True. If you have multiple time dimensions in your semantic model, the non-primary ones should have `is_primary` set to False. To assign a non-primary time dimension to a measure, use the `agg_time_dimension` parameter and refer to the time dimension defined in the dimension section. 
 
 In the provided example, the semantic model has two time dimensions, `created_at` and `deleted_at`, with `created_at` being the primary time dimension through `is_primary: True`. The `users_created` measure defaults to the primary time dimension, while the `users_deleted` measure uses `deleted_at` as its time dimension. 
 
@@ -121,7 +121,7 @@ measures:
     create_metric: True 
 ```
 
-When querying one or more metrics in the MetricFlow CLI, the default time dimension for a single metric is the primary time dimension, which can be referred to as metric_time or the dimension's name. Multiple time dimensions can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
+When querying one or more metrics in the Semantic Layer using the CLI, the default time dimension for a single metric is the primary time dimension, which can be referred to as metric_time or the dimension's name. Multiple time dimensions can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
 
       ```
        mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
@@ -135,7 +135,7 @@ When querying one or more metrics in the MetricFlow CLI, the default time dimens
 
 The current options for time granularity are day, week, month, quarter, and year. 
 
-Aggregation between metrics with different granularities is possible, with MetricFlow returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 
@@ -170,9 +170,9 @@ measures:
 
 <TabItem value="is_partition" label="is_partition">
 
-Use `is_partition: True` to indicate that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, MetricFlow will use this parameter to ensure that the correct dimensional values are joined to measures. 
+Use `is_partition: True` to indicate that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the Semantic Layer will use this parameter to ensure that the correct dimensional values are joined to measures. 
 
-In addition, MetricFlow allows for easy aggregation of metrics at query time. For example, you can aggregate the `messages_per_month` measure, where the original `time_granularity` of the time dimension `metrics_time`, at a yearly granularity by specifying it in the query in the CLI.
+In addition, the Semantic Layer allows for easy aggregation of metrics at query time. For example, you can aggregate the `messages_per_month` measure, where the original `time_granularity` of the time dimension `metrics_time`, at a yearly granularity by specifying it in the query in the CLI.
 
 ```
 mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
@@ -219,9 +219,9 @@ measures:
 Currently, there are limitations in supporting SCD's. 
 :::
 
-MetricFlow supports joins against dimension values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a dimension that changes over time, such as the historical trends of sales by a customer's country. 
+The Semantic Layer, powered by MetricFlow, supports joins against dimension values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a dimension that changes over time, such as the historical trends of sales by a customer's country. 
 
-As their name suggests SCD Type II are dimensions that change values at a coarser time granularity. This results in a range of valid rows with different dimension values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimension value within a coarser time window, such as month. By default, MetricFlow uses the dimension that is valid at the beginning of the time granularity.
+As their name suggests SCD Type II are dimensions that change values at a coarser time granularity. This results in a range of valid rows with different dimension values for a given metric or measure. The Semantic Layer associates the metric with the first (minimum) available dimension value within a coarser time window, such as month. By default, the Semantic Layer uses the dimension that is valid at the beginning of the time granularity.
 
 The following basic structure of an SCD Type II data platform table is supported:
 

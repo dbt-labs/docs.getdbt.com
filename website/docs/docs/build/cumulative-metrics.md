@@ -30,7 +30,7 @@ This section details examples for when you specify and don't specify window opti
 
 <TabItem value="specified" label="Example of window specified">
 
-If a window option is specified, the MetricFlow framework applies a sliding window to the underlying measure. 
+If a window option is specified, the MetricFlow framework, which powers the dbt Semantic Layer, applies a sliding window to the underlying measure. 
 
 Suppose the underlying measure `distinct_users` is configured as such to reflect a count of distinct users by user_id and user_status. 
 
@@ -61,7 +61,7 @@ From the sample yaml above, note the following:
 * `type`: Specify cumulative to indicate the type of metric. 
 * `type_params`: Specify the measure you want to aggregate as a cumulative metric. You have the option of specifying a `window`, or a `grain to date`.  
 
-For example, in the `wau_rolling_7` cumulative metric, MetricFlow takes a sliding 7-day window of relevant users and applies a count distinct function.
+For example, in the `wau_rolling_7` cumulative metric, the Semantic Layer with MetricFlow takes a sliding 7-day window of relevant users and applies a count distinct function.
 
 If you omit the `window`, the measure will accumulate over all time. Otherwise, you can choose from granularities like day, week, quarter, or month, and describe the window using phrases like "7 days" or "1 month."
 
@@ -114,7 +114,7 @@ metrics:
 
 ### Grain to date 
 
-You can choose to specify a grain to date in your cumulative metric configuration to accumulate a metric from the start of a grain (such as week, month, or year). When using a window, such as a month, MetricFlow will go back one full calendar month. However, grain to date will always start accumulating from the beginning of the grain, regardless of the latest date of data.
+You can choose to specify a grain to date in your cumulative metric configuration to accumulate a metric from the start of a grain (such as week, month, or year). When using a window, such as a month, the Semantic Layer will go back one full calendar month. However, grain to date will always start accumulating from the beginning of the grain, regardless of the latest date of data.
 
 For example, let's consider an underlying measure of `total_revenue.`
 

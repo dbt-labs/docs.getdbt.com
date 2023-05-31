@@ -8,7 +8,7 @@ sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 ---
 
-Semantic models serve as the foundation for defining data in the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
+Semantic models serve as the foundation for defining data in the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. The Semantic Layer, powered by MetricFlow, takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
 
 Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
 
@@ -32,7 +32,7 @@ semantic_models:
     model: ref('fact_transactions') # References the dbt model named `fact_transactions`
     description: "Transaction fact table at the transaction level. This table contains one row per transaction and includes the transaction timestamp."
 
-    entities: # Entities included in the table are defined here. MetricFlow will use these columns as join keys.
+    entities: # Entities included in the table are defined here. The Semantic Layer will use these columns as join keys.
       - name: transaction
         type: primary
         expr: transaction_id
@@ -130,7 +130,7 @@ entity:
     expr: substring(id_order FROM 2)
 ```
 
-You can refer to entities (join keys) in a semantic model using the `name` parameter. Entity names must be unique within a semantic model, and identifier names can be non-unique across semantic models since MetricFlow uses them for [joins](/docs/build/join-logic). You can also create [composite keys](/docs/build/entities#composite-keys), like in event logs where a unique ID is a combination of timestamp, event type keys, and machine IDs.
+You can refer to entities (join keys) in a semantic model using the `name` parameter. Entity names must be unique within a semantic model, and identifier names can be non-unique across semantic models since the Semantic Layer with MetricFlow uses them for [joins](/docs/build/join-logic). You can also create [composite keys](/docs/build/entities#composite-keys), like in event logs where a unique ID is a combination of timestamp, event type keys, and machine IDs.
 
 </TabItem>
 </Tabs>
@@ -139,9 +139,9 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 [Dimensions](/docs/build/dimensions) are the different ways you can group or slice data for a metric. It can be time-consuming and error prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
 
-MetricFlow simplifies this by allowing you to query all metric dimensions and construct the join during the query. To specify dimension parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical dimensions represent qualitative values, while time dimensions represent dates of varying granularity.
+The Semantic Layer simplifies this by allowing you to query all metric dimensions and construct the join during the query. To specify dimension parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical dimensions represent qualitative values, while time dimensions represent dates of varying granularity.
 
-Dimensions are identified using the name parameter, just like identifiers. The naming of dimensions must be unique within a semantic model, but not across semantic models since MetricFlow uses entities to determine the appropriate dimensions.
+Dimensions are identified using the name parameter, just like identifiers. The naming of dimensions must be unique within a semantic model, but not across semantic models since the Semantic Layer with MetricFlow, uses entities to determine the appropriate dimensions.
 
 :::info For time dimensions
 
