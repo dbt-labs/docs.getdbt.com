@@ -1,0 +1,33 @@
+---
+title: "May IDE updates and fixes"
+id: "may-ide-updates"
+description: "May 2023 release note: We've ."
+sidebar_label: "Update and fixes: IDE"
+sidebar_position: 7
+tags: [May-2023, IDE]
+---
+
+To continue improving your [Cloud IDE](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
+
+Stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
+
+## New features 
+- Lint via SQLFluff in beta (reach out if interested, otherwise this will be available for multi-tenant soon!)
+- Format markdown files with prettier
+- Leverage developer experience shortcuts, including `Ctrl + `` (toggle history drawer), `CMD + Option + /` (toggle block comment), `CMD + Shift + P` (open command palette), `Option + W` (close editor tab)
+- Display parent folder name for files with same name in Changes section
+- Navigate the new IDE features quickly using [the IDE User Interface](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/ide-user-interface) help page
+- Use `top X` in SQL when previewing in the IDE
+- Opt into the new IDE backend layer over the past month (still with dbt-rpc). Ready for beta later in June!
+
+
+## Product refinements 
+- Performance-related upgrades:
+    - Reduced cold start time by 60+%
+    - Improved render time of modals in the IDE by 98%
+    - Improved IDE performance with dbt Core v1.5+ (faster and snappier – highly encourage you to update your dbt version!)
+- Upgraded sqlfmt (which powers the Format button) to 0.18.0
+- Updated Build button to change menu options based on file/model type (snapshot, macro, etc.)
+- Display message to disable adblocker for file contents error
+- Moved Format button to console bar
+- Made many security enhancements in the IDE
