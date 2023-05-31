@@ -1,5 +1,6 @@
 ---
 title: "Set up SSO with Google Workspace"
+description: "Learn how dbt Cloud administrators can use Single-Sign On (SSO) via Google GSuite to control access in a dbt Cloud account."
 id: "set-up-sso-google-workspace"
 ---
 

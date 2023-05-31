@@ -5,11 +5,11 @@ id: "global-configs"
 
 ## About Global Configs
 
-Global configs enable you to fine-tune _how_ dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. In general, they differ from most [project configs](reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
+Global configs enable you to fine-tune _how_ dbt runs projects on your machine—whether your personal laptop, an orchestration tool running remotely, or (in some cases) dbt Cloud. In general, they differ from most [project configs](/reference/dbt_project.yml) and [resource configs](reference/configs-and-properties), which tell dbt _what_ to run.
 
 Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model. These configs are "global" because they are available for all dbt commands, and because they can be set for all projects running on the same machine or in the same environment.
 
-Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last yaml configs (usually `profiles.yml`).
+Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last YAML configs (usually `profiles.yml`).
 
 ## Command line flags
 
@@ -35,8 +35,8 @@ Non-boolean config examples:
 
 ```text
 
-$ dbt --printer-width=80 run
-$ dbt --indirect-selection=eager test
+dbt --printer-width=80 run
+dbt --indirect-selection=eager test
 
 ```
 
@@ -50,8 +50,8 @@ Boolean config structure:
 
 
 ```text
-$ dbt --<THIS-CONFIG> <SUBCOMMAND>
-$ dbt --no-<THIS-CONFIG> <SUBCOMMAND>
+dbt --<THIS-CONFIG> <SUBCOMMAND>
+dbt --no-<THIS-CONFIG> <SUBCOMMAND>
 
 ```
 
@@ -64,8 +64,8 @@ Boolean config example:
 
 ```text
 
-$ dbt --version-check run
-$ dbt --no-version-check run
+dbt --version-check run
+dbt --no-version-check run
 
 ```
 
@@ -80,13 +80,13 @@ Environment variables contain a `DBT_` prefix
 ```text
 
 $ export DBT_<THIS-CONFIG>=True
-$ dbt run
+dbt run
 
 ```
 
 </File>
 
-## Yaml configurations
+## YAML configurations
 
 For most global configurations, you can set "user profile" configurations in the `config:` block of `profiles.yml`. This style of configuration sets default values for all projects using this profile directory—usually, all projects running on your local machine.
 
@@ -107,7 +107,34 @@ The exception: Some global configurations are actually set in `dbt_project.yml`,
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1">
+<VersionBlock firstVersion="1.5">
+
+### Cache population
+
+At the start of runs, dbt caches metadata about all the objects in all the schemas where it might materialize resources (such as models). By default, dbt populates the cache with information on all schemas related to the project.
+
+There are two ways to optionally modify this behavior:
+- `POPULATE_CACHE` (default: `True`): Whether to populate the cache at all. To skip cache population entirely, use the `--no-populate-cache` flag or `DBT_POPULATE_CACHE: False`. Note that this does not _disable_ the cache; missed cache lookups will run queries, and update the cache afterward.
+- `CACHE_SELECTED_ONLY` (default `False`): Whether to limit cache population to just the resources selected in the current run. This can offer significant speed improvements when running a small subset of a large project, while still providing the benefit of caching upfront.
+
+For example, to quickly compile a model that requires no database metadata or introspective queries:
+```text
+
+dbt --skip-populate-cache compile --select my_model_name
+
+```
+
+Or, to improve speed and performance while focused on developing Salesforce models, which are materialized into their own dedicated schema, you could select those models and pass the `cache-selected-only` flag:
+
+```text
+
+dbt --cache-selected-only run --select salesforce
+
+```
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1" lastVersion="1.4">
 
 ### Cache database objects for selected resource
 
@@ -121,7 +148,7 @@ For example, to improve speed and performance while focused on developing Salesf
 
 ```text
 
-$ dbt --cache-selected-only run --select salesforce
+dbt --cache-selected-only run --select salesforce
 
 ```
 
@@ -143,12 +170,12 @@ config:
 
 ### Checking version compatibility
 
-Projects are recommended to set [dbt version requirements](require-dbt-version), especially if they use features that are newer, or which may break in future versions of dbt Core. By default, if you run a project with an incompatible dbt version, dbt will raise an error.
+Projects are recommended to set [dbt version requirements](/reference/project-configs/require-dbt-version), especially if they use features that are newer, or which may break in future versions of dbt Core. By default, if you run a project with an incompatible dbt version, dbt will raise an error.
 
 You can use the `VERSION_CHECK` config to disable this check and suppress the error message:
 
 ```
-$ dbt --no-version-check run
+dbt --no-version-check run
 Running with dbt=1.0.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
@@ -162,7 +189,7 @@ The `--debug` flag is also available via shorthand as `-d`.
 <File name='Usage'>
 
 ```text
-$ dbt --debug run
+dbt --debug run
 ...
 
 ```
@@ -171,7 +198,7 @@ $ dbt --debug run
 
 ### Experimental parser
 
-With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](parsing#experimental-parser) for more details.
+With the `USE_EXPERIMENTAL_PARSER` config, you can opt into the latest and greatest experimental version of the static parser, which is still being sampled for 100% correctness. See [the docs on parsing](/reference/parsing#experimental-parser) for more details.
 
 <File name='profiles.yml'>
 
@@ -186,12 +213,12 @@ config:
 
 ### Failing fast
 
-Supply the `-x` or `--fail-fast` flag to `dbt run` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
+Supply the `-x` or `--fail-fast` flag to `dbt run`, `dbt test`, or `dbt build` to make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, dbt terminates the connections for these models that are still running.
 
 For example, you can select four models to run, but if a failure occurs in the first model, the failure will prevent other models from running:
 
 ```text
-$ dbt -x run --threads 1
+dbt -x run --threads 1
 Running with dbt=1.0.0
 Found 4 models, 1 test, 1 snapshot, 2 analyses, 143 macros, 0 operations, 1 seed file, 0 sources
 
@@ -219,27 +246,60 @@ The `LOG_FORMAT` config specifies how dbt's logs should be formatted. If the val
 <File name='Usage'>
 
 ```text
-$ dbt --log-format json run
+dbt --log-format json run
 {"code": "A001", "data": {"v": "=1.0.0"}, "invocation_id": "1193e449-4b7a-4eb1-8e8e-047a8b3b7973", "level": "info", "log_version": 1, "msg": "Running with dbt=1.0.0", "node_info": {}, "pid": 35098, "thread_name": "MainThread", "ts": "2021-12-03T10:46:59.928217Z", "type": "log_line"}
 ```
+<VersionBlock firstVersion="1.5">
+
+To set the `LOG_FORMAT_FILE` type output for the file without impacting the console log format, use the `log-format-file` flag.
+
+
+```text
+dbt --log-format-file json run
+```
+
+</VersionBlock>
 
 :::tip Tip: verbose structured logs
 
 Use `json` formatting value in conjunction with the `DEBUG` config to produce rich log information which can be piped into monitoring tools for analysis:
 
 ```text
-$ dbt --debug --log-format json run
+dbt --debug --log-format json run
 ```
 
-See [structured logging](events-logging#structured-logging) for more details.
+See [structured logging](/reference/events-logging#structured-logging) for more details.
 
 :::
 
 </File>
 
+<VersionBlock firstVersion="1.5">
+
+### Log Level
+
+The `LOG_LEVEL` config sets the minimum severity of events captured in the console and file logs. This is a more flexible alternative to the `--debug` flag. The available options for the log levels are `debug`, `info`, `warn`, `error`, or `none`.
+
+Setting the `--log-level` will configure console and file logs. 
+
+
+```text
+dbt --log-level debug run
+```
+
+To set the file log level as a different value than the console, use the `--log-level-file` flag. 
+
+
+```text
+dbt --log-level-file error run
+```
+
+
+</VersionBlock>
+
 ### Partial Parsing
 
-The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](parsing#partial-parsing) for more details.
+The `PARTIAL_PARSE` config can turn partial parsing on or off in your project. See [the docs on parsing](/reference/parsing#partial-parsing) for more details.
 
 <File name='profiles.yml'>
 
@@ -286,8 +346,8 @@ Unlike the other global configs documented on this page, which can be set in `pr
 <File name='dbt_project.yml'>
 
 ```yaml
-[target-path](target-path): "other-target"
-[log-path](log-path): "other-logs"
+[target-path](/reference/project-configs/target-path): "other-target"
+[log-path](/reference/project-configs/log-path): "other-logs"
 ```
 
 </File>
@@ -314,7 +374,7 @@ You can also use the DO_NOT_TRACK environment variable to enable or disable send
 
 ### Static parser
 
-The `STATIC_PARSER` config can enable or disable use of the static parser. See [the docs on parsing](parsing#static-parser) for more details.
+The `STATIC_PARSER` config can enable or disable use of the static parser. See [the docs on parsing](/reference/parsing#static-parser) for more details.
 
 <File name='profiles.yml'>
 
@@ -349,12 +409,14 @@ config:
 Supply the `-q` or `--quiet` flag to `dbt run` to show only error logs and suppress non-error logs.
 
 ```text
-$ dbt --quiet run
+dbt --quiet run
 ...
 
 ```
 
 ### Suppress `print()` messages in stdout
+
+<VersionBlock lastVersion="1.4">
 
 By default, dbt includes `print()` messages in standard out (stdout). You can use the `NO_PRINT` config to prevent these messages from showing up in stdout.
 
@@ -367,10 +429,33 @@ config:
 
 </File>
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+By default, dbt includes `print()` messages in standard out (stdout). You can use the `PRINT` config to prevent these messages from showing up in stdout.
+
+<File name='profiles.yml'>
+
+```yaml
+config:
+  print: false
+```
+
+</File>
+
+:::warning Syntax deprecation
+
+The original `NO_PRINT` syntax has been deprecated, starting with dbt v1.5. Backward compatibility is supported but will be removed in an as-of-yet-undetermined future release.
+
+:::
+
+</VersionBlock>
+
 Supply `--no-print` flag to `dbt run` to suppress `print()` messages from showing in stdout.
 
 ```text
-$ dbt --no-print run
+dbt --no-print run
 ...
 
 ```
@@ -389,9 +474,19 @@ config:
 ```
 
 ```text
-$ dbt --use-colors run
-$ dbt --no-use-colors run
+dbt --use-colors run
+dbt --no-use-colors run
 ```
+<VersionBlock firstVersion="1.5">
+
+You can set the color preferences for the file logs only using the `--use-colors-file / --no-use-colors-file` flags.
+
+```text
+dbt --use-colors-file run
+dbt --no-use-colors-file run
+```
+
+</VersionBlock>
 
 </File>
 
@@ -402,7 +497,7 @@ Turning on the `WARN_ERROR` config will convert dbt warnings into errors. Any ti
 <File name='Usage'>
 
 ```text
-$ dbt --warn-error run
+dbt --warn-error run
 ...
 ```
 </File>
@@ -420,23 +515,23 @@ The `include` parameter can set to `"all"` or `"*"` to treat all warnings as exc
 :::
 
 ```text
-$ dbt --warn-error-options '{"include": "all"}' run
+dbt --warn-error-options '{"include": "all"}' run
 ...
 ```
 
 ```text
-$ dbt --warn-error-options '{"include": "all", "exclude":[NoNodesForSelectionCriteria]}' run
+dbt --warn-error-options '{"include": "all", "exclude":[NoNodesForSelectionCriteria]}' run
 ...
 ```
 
 
 ```text
-$ dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
+dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
 ...
 ```
 
 ```text
-$ WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
+dbt_WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
 ...
 ```
 

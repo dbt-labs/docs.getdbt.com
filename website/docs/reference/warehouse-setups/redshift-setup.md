@@ -1,5 +1,6 @@
 ---
 title: "Redshift setup"
+description: "Read this guide to learn about the Redshift warehouse setup in dbt."
 id: "redshift-setup"
 meta:
   maintained_by: dbt Labs
@@ -12,8 +13,10 @@ meta:
   slack_channel_name: '#db-redshift'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Redshift'
-  config_page: 'redshift-configs'
+  config_page: '/reference/resource-configs/redshift-configs'
 ---
+
+<Snippet src="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -69,6 +72,8 @@ company-name:
       sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
       ra3_node: true # enables cross-database sources
       query_tag: [anything]
+      region: [optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)]
+
 ```
 
 </File>
@@ -131,7 +136,7 @@ The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 ## Redshift notes
 ### `sort` and `dist` keys
-Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](redshift-configs).
+Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
 ### `keepalives_idle`
 If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 

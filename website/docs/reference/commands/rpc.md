@@ -1,5 +1,6 @@
 ---
-title: "rpc"
+title: "About dbt rpc command"
+sidebar_label: "rpc"
 id: "rpc"
 description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---
@@ -240,11 +241,11 @@ All RPC requests accept the following parameters in addition to the parameters l
 Several of the following request types accept these additional parameters:
 - `threads`: The number of [threads](/docs/core/connection-profiles#understanding-threads) to use when compiling (optional)
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
-- `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
+- `selector`: The name of a predefined [YAML selector](/reference/node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
-- `state`: The filepath of artifacts to use when establishing [state](/docs/deploy/about-state) (optional)
+- `state`: The filepath of artifacts to use when establishing [state](/docs/deploy/project-state) (optional)
 
-### Compile a project ([docs](compile))
+### Compile a project ([docs](/reference/commands/compile))
 
 ```json
 {
@@ -261,7 +262,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run models ([docs](run))
+### Run models ([docs](/reference/commands/run))
 
 **Additional parameters:**
 - `defer`: Whether to defer references to upstream, unselected resources (optional, requires `state`)
@@ -282,7 +283,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run tests ([docs](commands/test))
+### Run tests ([docs](/reference/commands/test))
 
 **Additional parameters:**
  - `data`: If True, run data tests (optional, default=true)
@@ -305,7 +306,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run seeds ([docs](seed))
+### Run seeds ([docs](/reference/commands/seed))
 
 **Parameters:**
  - `show`: If True, show a sample of the seeded data in the response (optional, default=false)
@@ -343,7 +344,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Build ([docs](build))
+### Build ([docs](/reference/commands/build))
 
 ```json
 {

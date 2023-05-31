@@ -1,10 +1,11 @@
 ---
 title: Exposure properties
+description: "Read this guide to understand exposure properties in dbt."
 ---
 
 ## Related documentation
-- [Using exposures](exposures)
-- [Declaring resource properties](configs-and-properties)
+- [Using exposures](/docs/build/exposures)
+- [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
 Exposures are defined in `.yml` files nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
@@ -26,12 +27,12 @@ version: 2
 
 exposures:
   - name: <string_with_underscores>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
-    [tags](resource-configs/tags): [<string>]
-    [meta](resource-configs/meta): {<dictionary>}
+    [tags](/reference/resource-configs/tags): [<string>]
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
       name: <string>
       email: <string>
@@ -43,7 +44,7 @@ exposures:
       - metric('metric_name')
       
     label: "Human-Friendly Name for this Exposure!"
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
   - name: ... # declare properties of additional exposures
@@ -61,12 +62,12 @@ version: 2
 
 exposures:
   - name: <string_with_underscores>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
-    [tags](resource-configs/tags): [<string>]
-    [meta](resource-configs/meta): {<dictionary>}
+    [tags](/reference/resource-configs/tags): [<string>]
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
       name: <string>
       email: <string>
@@ -78,7 +79,7 @@ exposures:
       
     # added in dbt Core v1.3
     label: "Human-Friendly Name for this Exposure!"
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
   - name: ... # declare properties of additional exposures

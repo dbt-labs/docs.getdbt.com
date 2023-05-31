@@ -2,10 +2,14 @@
 
 Now that you've built your customer model, you need to commit the changes you made to the project so that the repository has your latest code.
 
-1. Click **Commit** and add a message. For example, "Add customers model, tests, docs."
-2. Click **merge to main** To add these changes to the main branch on your repo.
+1. Under **Version Control** on the left, click **Commit and sync** and add a message. For example, "Add customers model, tests, docs."
+2. Click **Merge this branch to main** to add these changes to the main branch on your repo.
 
-## Create a deployment environment
+## Deploy dbt
+
+Use dbt Cloud's Scheduler to deploy your production jobs confidently and build observability into your processes. You'll learn to create a deployment environment and run a job in the following steps.
+
+### Create a deployment environment
 
 1. In the upper left, select **Deploy**, then click **Environments**.
 2. Click **Create Environment**.
@@ -13,7 +17,7 @@ Now that you've built your customer model, you need to commit the changes you ma
 4. Add a target dataset, for example, "Analytics." dbt will build into this dataset. For some warehouses this will be named "schema."
 5. Click **Save**.
 
-## Create and run a job
+### Create and run a job
 
 Jobs are a set of dbt commands that you want to run on a schedule. For example, `dbt run` and `dbt test`.
 
