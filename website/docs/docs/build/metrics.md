@@ -502,7 +502,7 @@ You may find some pieces of functionality, like secondary calculations, complica
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
 | <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
-| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`, `'all_time'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
+| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Optional |
 | dimensions  | [`'plan'`,<br /> `'country'`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
 | secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calculations, and period to date calculations. | Optional |
 | start_date  | `'2022-01-01'` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
