@@ -7,14 +7,14 @@ tags: [Metrics, Semantic Layer]
 hide_table_of_contents: true
 ---
 
-Build your semantic layer seamlessly using the dbt Semantic Layer, powered by **MetricFlow**. Use [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview) to avoid repetition and optimize your workflow with concepts you're already familiar with.
+Build your semantic layer seamlessly using the dbt Semantic Layer, powered by MetricFlow. Use constructs like semantic models and metrics to avoid repetition and optimize your development workflow.
 
-These sections explain how you can use MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. Something to note before you begin:
+These sections explain how you can use the dbt Semantic Layer to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. A few things to note before you begin:
 
 - Supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
-- Using the [MetricFlow specifications](https://github.com/dbt-labs/dbt-core/discussions/7456), you can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) on dbt Core version 1.6 beta.
+- Using the [new Semantic Layer specifications](https://github.com/dbt-labs/dbt-core/discussions/7456), you can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) on dbt Core version 1.6 beta.
   * Note: dbt Cloud support coming soon.
-- dbt Labs are working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. <br /><br />
+- dbt Labs is working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. <br /><br />
 
 <div className="grid--4-col">
 
