@@ -23,7 +23,7 @@ A few things to note before you begin:
 
 <Card
     title="Quickstart"
-    body="Learn how to create a semantic model, metric, and test and upload your metric using the Semantic Layer with MetricFlow."
+    body="Learn how to create a semantic model, a metric, and test and upload your metric using the Semantic Layer powered by MetricFlow."
     link="/docs/build/sl-getting-started"
     icon="rocket"/>
 
