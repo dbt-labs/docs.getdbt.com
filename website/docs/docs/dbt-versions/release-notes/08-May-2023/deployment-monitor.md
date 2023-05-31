@@ -9,7 +9,7 @@ tags: [scheduler]
 
 The new Deployment monitor helps you gain greater visibility into your deployment health and quickly detect any issues with the improved filtering and sorting capabilities. You can now easily curate the view based on environment, prioritizing the ones that matter most, such as Production. With pre-filtered lists for in progress and in queue activities, it's quicker and easier to track the relevant activity and stay on top of your deployment status.
 
-The Deployment monitor is accessible by going to the main dbt Cloud dashboard page or clicking the dbt logo on the upper-left. Some of the new and enhanced features includes:
+The **Deployment Monitor** is accessible from the main dbt Cloud dashboard page or by clicking the dbt logo on the upper-left. Some of the new and enhanced features include:
 
 - A new run history visualization component to quickly scan a larger number of recent runs and get a better overview of overall health/activity.
 - Pre-filtered lists have been added for In Progress, In Queue, and Latest Failed jobs. 
