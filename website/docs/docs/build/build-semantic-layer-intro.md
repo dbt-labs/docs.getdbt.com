@@ -16,7 +16,7 @@ Here are a few considerations to note before you begin:
 - The Semantic Layer supports Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
 - You can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) on dbt Core version 1.6 beta, using the [new Semantic Layer specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
   * Note: dbt Cloud support coming soon.
-- dbt Labs is working with [integration](https://www.getdbt.com/product/semantic-layer-integrations) partners to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. <br /><br />
+- dbt Labs is working with [integration partners](https://www.getdbt.com/product/semantic-layer-integrations) to release a beta of integrations and we're working to introduce other consumption methods like Python and JDBC. <br /><br />
 
 <div className="grid--4-col">
 
