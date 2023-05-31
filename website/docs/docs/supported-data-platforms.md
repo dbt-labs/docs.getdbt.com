@@ -15,7 +15,7 @@ You can [connect](/docs/connect-adapters) to adapters and data platforms either 
 
 ### Verified adapters
 
-The following are **Verified adapters** ✅ you can connect to either in dbt Cloud or dbt Core:
+The following are **Verified adapters** ✓ you can connect to either in dbt Cloud or dbt Core:
 
 <div className="grid--4-col">
 
@@ -72,5 +72,4 @@ The following are **Verified adapters** ✅ you can connect to either in dbt Clo
 </div>
 
 <br />
-* Not supported in dbt Cloud and you can only install them using the CLI.<br />
-
+* Install these adapters using the CLI as they're not supported in dbt Cloud. <br />
