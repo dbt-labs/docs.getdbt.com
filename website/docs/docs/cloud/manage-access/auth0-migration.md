@@ -34,7 +34,7 @@ SAML 2.0 users must update a few fields in the SSO app configuration to match th
 
 :::warning Login {slug}
 
-The login slug shouldn't have an underscore. If it does, you need to change it on the **Account Settings** page. After changing the slug, the admins should share it with dbt Cloud users, as the login URL will be different.
+The login slug shouldn't have an underscore. If it does, you need to change it on the **Account Settings** page. After changing the slug, the admins must share it with dbt Cloud users, as the login URL will differ.
 
 :::
 
