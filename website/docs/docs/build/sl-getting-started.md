@@ -1,6 +1,6 @@
 ---
 id: sl-getting-started
-title: Quickstart
+title: Getting started
 description: "Learn how to create your first semantic model and metric."
 sidebar_label: Quickstart
 tags: [Metrics, Semantic Layer]
