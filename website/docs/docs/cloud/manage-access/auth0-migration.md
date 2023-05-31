@@ -54,9 +54,9 @@ After the configuration is saved, your SAML settings will look something like th
 
 Once you have saved this information in the SSO environment, you must edit some information in the dbt Cloud settings. Navigate to the **Account Settings**, update the single sign-on URL fields, and provide the updated x.509 certificate.
 
-Make sure to enable the "Use Auth0" option to ensure that the traffic is routed correctly. _The Auth0 migration action is final and cannot be undone_
+Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The Auth0 migration action is final and cannot be undone_
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable Auth0 for SAML/Okta"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable new SSO for SAML/Okta"/>
 
 Save the settings and test the new configuration using the SSO login URL provided on the settings page. 
 
@@ -80,7 +80,7 @@ Click **Save** once you are done.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/google-uri.png" title="Add Redirect URI"/>
 
-4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In dbt Cloud, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Enable the **Use Auth0** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The Auth0 migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
+4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In dbt Cloud, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
 :::warning Domain authorization
 
@@ -88,7 +88,7 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" title="Enable Auth0 for Google Workspace"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" title="Enable new SSO for Google Workspace"/>
 
 ## Azure Active Directory
 
@@ -106,7 +106,7 @@ Azure Active Directory admins will need to make a slight adjustment to the exist
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
-4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
+4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
 
 :::warning Domain authorization
 
@@ -114,4 +114,4 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable Auth0 for Azure AD"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO for Azure AD"/>
