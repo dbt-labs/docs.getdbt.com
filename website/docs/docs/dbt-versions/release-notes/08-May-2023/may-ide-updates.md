@@ -1,7 +1,7 @@
 ---
 title: "May IDE updates and fixes"
 id: "may-ide-updates"
-description: "May 2023 release note: We've ."
+description: "May 2023 release note: We've launched SQLFluff in beta, released an IDE UI page, significantly improved IDE performance, improved error messages, fixed bugs, and more."
 sidebar_label: "Update and fixes: IDE"
 sidebar_position: 2
 tags: [May-2023, IDE]
