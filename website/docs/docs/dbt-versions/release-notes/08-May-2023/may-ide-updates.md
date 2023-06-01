@@ -9,7 +9,7 @@ tags: [May-2023, IDE]
 
 To continue improving your [Cloud IDE](/docs/cloud/develop-in-the-cloud) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
 
-Stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
+Stay up-to-date with [IDE-related changes](/tags/ide).
 
 ## New features 
 - Lint via SQL Fluff is now available in beta (GA over the next 2-3 weeks)
