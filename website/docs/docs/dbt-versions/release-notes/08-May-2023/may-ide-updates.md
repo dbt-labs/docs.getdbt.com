@@ -16,7 +16,7 @@ Stay up-to-date with [IDE-related changes](/tags/ide).
 - Format markdown files with prettier
 - Leverage developer experience shortcuts, including ``Ctrl +` `` (toggle history drawer), `CMD + Option + /` (toggle block comment), `CMD + Shift + P` (open command palette), `Option + W` (close editor tab)
 - Display parent folder name for files with same name in Changes section
-- Navigate the new IDE features quickly using [the IDE User Interface](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/ide-user-interface) help page
+- Navigate the new IDE features quickly using [the IDE User Interface](/docs/cloud/dbt-cloud-ide/ide-user-interface) help page
 - Use `top X` in SQL when previewing in the IDE
 - Opt into the new IDE backend layer over the past month (still with dbt-rpc). Ready for beta later in June!
 
