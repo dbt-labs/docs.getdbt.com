@@ -22,6 +22,7 @@ Stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
 
 
 ## Product refinements 
+
 - Performance-related upgrades:
     - Reduced cold start time by 60+%
     - Improved render time of modals in the IDE by 98%
