@@ -34,4 +34,4 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 
 ### Specific adapters
 
-- [Postgres](/reference/warehouse-setups/postgres-setup) and [Redshift](/reference/warehouse-setups/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.
+- [Postgres](/docs/core/connect-data-platform/postgres-setup) and [Redshift](/docs/core/connect-data-platform/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.
