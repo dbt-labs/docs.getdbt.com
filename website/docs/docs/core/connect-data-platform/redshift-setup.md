@@ -69,7 +69,7 @@ company-name:
       keepalives_idle: 240 # default 240 seconds
       connect_timeout: 10 # default 10 seconds
       # search_path: public # optional, not recommended
-      sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      sslmode: prefer # [optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. Accepted inputs are "disable", "prefer", "allow", "require", "verify-ca", "verify-full".
       ra3_node: true # enables cross-database sources
       region: [optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)]
 ```
@@ -117,7 +117,7 @@ my-redshift-db:
       connect_timeout: 10 # default 10 seconds
       [retries](#retries): 1 # default 1 retry on error/timeout when opening connections
       # search_path: public # optional, but not recommended
-      sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      sslmode: prefer # [optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect and look for ca in ~/.postgresql/root.crt]
       ra3_node: true # enables cross-database sources
 
 ```
