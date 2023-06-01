@@ -19,7 +19,7 @@ Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleo
 - Added Starburst/Trino adapter docs, including:
   * [dbt Cloud quickstart guide](/quickstarts/starburst-galaxy), 
   * [connection page](/docs/cloud/connect-data-platform/connect-starburst-trino), 
-  * [set up page](/reference/warehouse-setups/trino-setup), and [config page](https://docs.getdbt.com/reference/resource-configs/trino-configs). 
+  * [set up page](/docs/core/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
 - Enhanced [dbt Cloud jobs page](/docs/deploy/dbt-cloud-job) and section to include conceptual info on the queue time, improvements made around it, and about failed jobs. 
 - Check out the April dbt [Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes)
 
