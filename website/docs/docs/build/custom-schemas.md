@@ -61,7 +61,7 @@ If you prefer to use different logic for generating a schema name, you can chang
 
 ### How does dbt generate a model's schema name?
 
-Under the hood, dbt uses a default macro called `generate_schema_name` to determine the name of the schema that a model should be built in. 
+dbt uses a default macro called `generate_schema_name` to determine the name of the schema that a model should be built in. 
 
 The following code represents the default macro's logic:
 
