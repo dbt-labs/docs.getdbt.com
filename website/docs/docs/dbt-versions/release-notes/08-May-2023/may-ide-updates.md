@@ -7,7 +7,7 @@ sidebar_position: 2
 tags: [May-2023, IDE]
 ---
 
-To continue improving your [Cloud IDE](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
+To continue improving your [Cloud IDE](/docs/cloud/develop-in-the-cloud) development experience, the dbt Labs team continues to work on adding new features, fixing bugs, and increasing reliability ✨.
 
 Stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
 
