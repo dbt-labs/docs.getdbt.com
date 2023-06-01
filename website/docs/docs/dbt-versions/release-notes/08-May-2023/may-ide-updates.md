@@ -14,7 +14,7 @@ Stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
 ## New features 
 - Lint via SQL Fluff is now available in beta (GA over the next 2-3 weeks)
 - Format markdown files with prettier
-- Leverage developer experience shortcuts, including `Ctrl + \`` (toggle history drawer), `CMD + Option + /` (toggle block comment), `CMD + Shift + P` (open command palette), `Option + W` (close editor tab)
+- Leverage developer experience shortcuts, including `Ctrl + \`` (toggle history drawer), `CMD + Option + \/` (toggle block comment), `CMD + Shift + P` (open command palette), `Option + W` (close editor tab)
 - Display parent folder name for files with same name in Changes section
 - Navigate the new IDE features quickly using [the IDE User Interface](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/ide-user-interface) help page
 - Use `top X` in SQL when previewing in the IDE
