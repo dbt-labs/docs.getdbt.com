@@ -133,7 +133,8 @@ The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 ## Redshift notes
 ### `sslmode` change
-Prior to dbt-redshift 1.5, `psycopg2` was used as the driver.`psycopg2` accepts "disable", "prefer", "allow", "require", "verify-ca", "verify-full" as valid inputs, as indicated in postgresql [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). In dbt-redshift 1.5, `redshift_connector` is used and `redshift_connector` accepted inputs are "verify-ca", and "verify-full", according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify). For backwards compatibility, dbt-redshift now extended support for all valid inputs for sslmode in psycopg2. 
+Prior to dbt-redshift 1.5, psycopg2 was used as the driver.psycopg2 accepts "disable", "prefer", "allow", "require", "verify-ca", "verify-full" as valid inputs, as indicated in postgresql [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). 
+In dbt-redshift 1.5, redshift_connector is used and redshift_connector accepted inputs are "verify-ca", and "verify-full", according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify). For backwards compatibility, dbt-redshift now extended support for all valid inputs for sslmode in psycopg2. 
 
 Table below details accepted `sslmode` parameters and how connection will be made according to each option:
 
@@ -146,7 +147,7 @@ require | Connection will be made using verify-ca
 verify-ca | Connection will be made using verify-ca
 verify-full | Connection will be made using verify-full
 
-For more details on changes of sslmode, our design choices and reasoning, please refer to [PR#439](https://github.com/dbt-labs/dbt-redshift/pull/439).
+For more details on changes of sslmode, our design choices and reasoning, please refer to the [PR pertaining this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
 
 ### `sort` and `dist` keys
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
