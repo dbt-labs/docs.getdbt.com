@@ -73,30 +73,30 @@ For more information on running parents or children of specific models, see the 
 
 <Changelog>
 
-- Moved to [global configs](/reference/global-configs) in v1.0
+- Moved to [global configs](/reference/global-configs/about-global-configs) in v1.0
 
 </Changelog>
 
-See [global configs](/reference/global-configs#failing-fast)
+See [global configs](/reference/global-configs/failing-fast)
 
 ## Failing fast
 
 <Changelog>
 
 - The `--fail-fast` flag is new in dbt v0.17.0
-- Moved to [global configs](/reference/global-configs) in v1.0
+- Moved to [global configs](/reference/global-configs/about-global-configs) in v1.0
 
 </Changelog>
 
-See [global configs](/reference/global-configs#failing-fast)
+See [global configs](/reference/global-configs/failing-fast)
 
 ## Enable or Disable Colorized Logs
 
 <Changelog>
 
 - The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
-- Moved to [global configs](/reference/global-configs) in v1.0
+- Moved to [global configs](/reference/global-configs/about-global-configs) in v1.0
 
 </Changelog>
 
-See [global configs](/reference/global-configs#use-colors)
+See [global configs](/reference/global-configs/print-output#print-color)
