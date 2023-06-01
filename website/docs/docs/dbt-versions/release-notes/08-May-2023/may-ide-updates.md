@@ -32,3 +32,15 @@ Stay up-to-date with [IDE-related changes](https://docs.getdbt.com/tags/ide).
 - Display message to disable adblocker for file contents error
 - Moved Format button to console bar
 - Made many security enhancements in the IDE
+## Bug fixes
+
+- File icon sizes no longer get wonky in small screen
+- Toast notifications no longer take over command bar menu
+- Hover info inside the text editor no longer gets cut off
+- Transition between a file and a recently modified scratchpad no longer triggers a console error
+- dbt v1.5+ now can access the IDE
+- Confirm button on the Unsaved Changes modal now closes after clicking it
+- Long node names no longer overflow in the parsed logs section in history drawer
+- Status pill in history drawer no longer scales with longer command
+- Tooltip for tab name with a long file name is no longer cut off
+- Lint button should no longer available in main branch
