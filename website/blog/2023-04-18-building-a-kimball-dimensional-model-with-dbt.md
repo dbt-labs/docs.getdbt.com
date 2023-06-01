@@ -62,7 +62,7 @@ Before you can get started:
 - You must have Python 3.8 or above installed
 - You must have dbt version 1.3.0 or above installed
 - You should have a basic understanding of [SQL](https://www.sqltutorial.org/)
-- You should have a basic understanding of [dbt](https://docs.getdbt.com/docs/quickstarts/overview)
+- You should have a basic understanding of [dbt](https://docs.getdbt.com/quickstarts)
 
 ### Step 2: Clone the repository
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.module.css';
+import clsx from 'clsx';
 
 {/* 
   The Snippet component works in a similar way as FAQs.
@@ -10,7 +11,7 @@ export default function Snippet({ src }) {
   const file = require('../../../snippets/' + src + '.md')
   const contents = file.default({});
   return (
-    <div className={styles.snippet}>
+    <div className={clsx(styles.snippet, 'snippet')}>
         { contents }
     </div>
   )

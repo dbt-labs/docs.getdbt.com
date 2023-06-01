@@ -133,6 +133,10 @@ var siteSettings = {
               to: '/guides/best-practices',
             },
             {
+              label: "Quickstarts",
+              to: "/quickstarts",
+            },
+            {
               label: "Developer Blog",
               to: "/blog",
             },
@@ -241,6 +245,7 @@ var siteSettings = {
     [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
     path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [
