@@ -84,7 +84,7 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 ```
 
 ## Multi-hop joins
-
+::note This feature is curretnly in development and not currently available. 
 MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
 
 Here's an example schema for reference:
@@ -132,17 +132,5 @@ semantic_models:
 ```
 
 ### Query multi-hop joins
-
-If you want to query dimensions _without_ a multi-hop join involved, use the dimension name with a double underscore (or dunder) prefix and the entity name. For dimensions retrieved by a multi-hop join, you can use multiple sets of double underscored entities since you are hopping across multiple semantic models.
-
-For example, if you want to see the `average_purchase_price` metric split by the `country_name` dimension, MetricFlow will involve a multi-hop based on the schema specified in the semantic model:
-
-1. From semantic model `sales` to semantic model `user_signup` through the `user_id` entity.
-
-2. From semantic model `user_signup` to semantic model `country_dim` through the `country_id` entity to obtain the desired final dimension of `country_name`. 
-
-To query this multi-hop join, use the dimension name `user_id__country_id__country_name` with two sets of double underscores to reflect the two entities involved (`user_id` and `country_id`):
-
-```yaml
-mf query --metrics average_purchase_price dimensions --metric_time,user_id__country_id__country_name
-```
+::note This feature is curretnly in development and not currently available. 
+If you want to query dimensions _without_ a multi-hop join involved, use the fully qualifed dimension name with the syntax entity double underscore (dunder) dimension i.e entity__dimension. For dimensions retrieved by a multi-hop join, you need to additonally provide the entity path as a list i.e user_id.
