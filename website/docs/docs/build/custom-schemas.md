@@ -103,7 +103,7 @@ To modify how dbt generates schema names, you should add a macro named `generate
 
 If you're modifying how dbt generates schema names, don't just replace ```{{ default_schema }}_{{ custom_schema_name | trim }}``` with ```{{ custom_schema_name | trim }}``` in the ```generate_schema_name``` macro. 
 
-This prevents developers from overriding each other's models when custom schemas are defined. This also prevents issues during development and continuous integration (CI).
+Removing ```{{ default_schema }}``` causes developers to overriding each other's models when custom schemas are defined. This can also cause issues during development and continuous integration (CI).
 
 ❌ The following code block is an example of what your code _should not_ look like: 
 ```
@@ -115,8 +115,8 @@ This prevents developers from overriding each other's models when custom schemas
         {{ default_schema }}
 
     {%- else -%}
-
-        {{ custom_schema_name | trim }}
+    ## Excluding the {{ default_schema }} code below causes development issues and overrides model custom schemas.
+        {{ custom_schema_name | trim }} 
 
     {%- endif -%}
 
