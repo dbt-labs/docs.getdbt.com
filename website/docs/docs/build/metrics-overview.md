@@ -12,9 +12,10 @@ Once you've created your semantic models, it's time to start adding metrics! Met
 The keys for metrics definitions are: 
 
 * `name`: Provide the reference name for the metric. This name must be unique amongst all metrics.  
-* `type`: Define the type of metric, which can be a measure (`measure_proxy`), ratio (`ratio`), SQL expression (`expr`), or cumulative (`cumulative`). 
+* `type`: Define the type of metric, which can be a measure (`simple`), ratio (`ratio`), SQL expression (`expr`), or cumulative (`cumulative`). 
 * `type_params`: Additional parameters used to configure metrics. `type_params` are different for each metric type. 
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
+* `meta`: Additional metadata you want to add to your metric. 
 
 This page explains the different supported metric types you can add to your dbt project. 
 <!--
@@ -55,7 +56,7 @@ metrics:
       - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
       - name: cogs
       - name: users
-        constraint: is_active # Optional additional constraint
+        fiilter: is_active # Optional additional constraint
         alias: active_users # Optional alias to use in the expr
 ```
 
@@ -86,11 +87,11 @@ metrics:
 # This name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. 
 # This name is used to call the metric from the dbt Semantic Layer API.
   name: cancellations 
-  type: measure_proxy 
+  type: simple 
   type_params:
   # Specify the measure you are creating a proxy for. 
     measure: cancellations_usd 
-  constraint: | 
+  fiilter: | 
     value > 100 AND user__acquisition
 ```
 
@@ -109,7 +110,7 @@ metrics:
   type_params:
     numerator: cancellations_usd
     denominator: transaction_amount_usd
-  constraint: | # add optional constraint string. This applies to both the numerator and denominator
+  fiilter: | # add optional constraint string. This applies to both the numerator and denominator
     is_internal = false
 
 - name: enterprise_cancellation_rate
@@ -121,9 +122,9 @@ metrics:
   type_params:
     numerator: 
       name: cancellations_usd
-      constraint: tier = 'enterprise' #constraint only applies to the numerator
+      fiilter: tier = 'enterprise' #constraint only applies to the numerator
     denominator: transaction_amount_usd 
-  constraint: | # add optional constraint string. This applies to both the numerator and denominator
+  fiilter: | # add optional constraint string. This applies to both the numerator and denominator
     is_internal = false
   
 ```

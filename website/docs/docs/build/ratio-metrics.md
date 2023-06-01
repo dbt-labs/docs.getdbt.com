@@ -18,7 +18,7 @@ Ratio allows you to create a ratio between two measures. You simply specify a nu
     type_params:
       numerator: cancellations_usd
       denominator: transaction_amount_usd
-    constraint: | # add optional constraint string. This applies to both the numerator and denominator
+    fiilter: | # add optional constraint string. This applies to both the numerator and denominator
       is_internal = false
 
   - name: enterprise_cancellation_rate
@@ -28,9 +28,9 @@ Ratio allows you to create a ratio between two measures. You simply specify a nu
     type_params:
       numerator: 
         name: cancellations_usd
-        constraint: tier = 'enterprise' #constraint only applies to the numerator
+        fiilter: tier = 'enterprise' #constraint only applies to the numerator
       denominator: transaction_amount_usd 
-    constraint: | # add optional constraint string. This applies to both the numerator and denominator
+    fiilter: | # add optional constraint string. This applies to both the numerator and denominator
       is_internal = false
   
 ```
@@ -100,7 +100,7 @@ metric:
   type_params:
     numerator:
       name: distinct_purchasers
-      constraint: is_frequent_purchaser
+      fiilter: is_frequent_purchaser
       alias: frequent_purchasers
     denominator:
       name: distinct_purchasers

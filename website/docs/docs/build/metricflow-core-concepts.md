@@ -153,7 +153,7 @@ semantic_model:
 
   # --- dimensions ---
   dimensions:
-    - name: ds
+    - name: metric_time
       type: time
       expr: date_trunc('day', ts)
       type_params:

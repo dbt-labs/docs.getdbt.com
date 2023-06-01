@@ -12,6 +12,7 @@ This getting started guide explains the following steps and recommends a workflo
 - [Create your metric](#create-your-metric)
 - [Test and upload your metric](#test-and-upload-your-metric)
 
+You can check out our [semantic layer example project](https://github.com/dbt-labs/jaffle-sl-template) to see and end-to-end example.
 
 ## Prerequisites
 
@@ -92,7 +93,7 @@ The example metric we'll create is a measure proxy, a metric that refers directl
 ---
 metric:
   name: transaction_amount_usd
-  type: measure_proxy
+  type: simple
   type_params:
     measure: transaction_amount_usd
 ```
@@ -103,7 +104,7 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 Follow these steps to test and query your metrics using MetricFlow, which powers the dbt Semantic Layer:
 
-1. Make sure you have the `metricflow` and [dbt adapter](/docs/supported-data-platforms) installed in the CLI as you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB. 
+1. Make sure you have the `metricflow` and [dbt adapter](/docs/supported-data-platforms) installed in the CLI as you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake, BigQuery, Databricks, Redshift.
     * When you install the adapter, add `[metricflow]` at the end of the command. For example, if your adapter is Snowflake, you'll run `pip install dbt-snowflake[metricflow]`
 2. Run `mf version` to see your CLI version. If you do not have the CLI installed run `pip install --upgrade metricflow`
 3. Save your files and run `mf validate-configs` to validate the changes before committing them

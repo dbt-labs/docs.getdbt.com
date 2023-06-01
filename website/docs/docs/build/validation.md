@@ -10,6 +10,8 @@ Validations refer to the process of checking whether a system or configuration m
 
 These validations ensure that configuration files follow the expected schema, the semantic graph doesn't violate any constraints, and semantic definitions in the graph exist in the physical table - providing effective data governance support. These three validation steps occur sequentially and must succeed before proceeding to the next step.
 
+The code that handles validation [can be found here](https://github.com/dbt-labs/dbt-semantic-interfaces/tree/main/dbt_semantic_interfaces/validations) for those who want to dive deeper into this topic. 
+
 ## Prerequisites
 
 - You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)

@@ -17,25 +17,13 @@ semantic_model:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
     model: {{ ref("fact_transactions") }}
-
 # --- entities ---
   entities: 
-    - name: transaction_id
-      type: primary
-    - name: customer_id
-      type: foreign
-    - name: store_id
-      type: foreign
-    - name: product_id
-      type: foreign
+      ...
 
 # --- measures --- 
   measures: 
-    - name: revenue
-      description:  
-      expr: price * quantity
-      agg: sum
-
+      ... 
 # --- dimensions ---
   dimensions:
     - name: metric_time

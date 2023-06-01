@@ -83,10 +83,6 @@ When querying dimensions from different semantic models using the CLI, a double 
 mf query --metrics average_purchase_price --dimensions metric_time,user_id__type 
 ```
 
-:::tip Add prefix entity to dimensions with same name 
-To prevent the creation of ambiguous join paths, use a dimension that includes the prefix entity to disambiguate its origin if you have multiple dimensions with the same name. You can view the fully scoped dimension name by running the `mf list-metrics` command in the CLI.
-:::
-
 ## Multi-hop joins
 
 MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
@@ -111,7 +107,7 @@ semantic_models:
       expr: purchase_price
       create_metric: true
 	dimensions:
-    - name: ds
+    - name: metric_time
       type: time
       type_params:
       is_primary: true

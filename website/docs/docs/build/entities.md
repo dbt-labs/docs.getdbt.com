@@ -10,8 +10,6 @@ Entities are real-world concepts in a business such as customers, transactions, 
 
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter.
 
-Entities can be specified with a single column or multiple columns. Entities (join keys) in a semantic model are identified by their `name`. Each entity name must be unique within a semantic model, but it doesn't have to be unique across different semantic models. To composite keys, you can do this within the dbt model with [`dbt_utils generate_surrogate_key`](https://github.com/dbt-labs/dbt-utils#generate_surrogate_key-source).
-
 There are four entity types: primary, foreign, unique, or natural.
 
 :::tip Use entities as a dimension

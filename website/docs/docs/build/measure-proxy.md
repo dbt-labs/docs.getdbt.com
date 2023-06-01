@@ -16,7 +16,7 @@ If you've already defined the measure using the `create_metric: true` parameter,
 ``` yaml
 metrics: 
 - name: cancellations
-  type: measure_proxy # Measure_proxies are pointers to a measure you created in a data source
+  type: simple # Measure_proxies are pointers to a measure you created in a data source
   type_params:
     measure: cancellations_usd # The measure you're creating a proxy of.
   # For any metric optionally include a filter string which applies a dimensional filter when computing the metric
