@@ -14,33 +14,9 @@ const sidebarSettings = {
       ],
     }, // About dbt Cloud directory
     {
-      type: "category",
+      type: "link",
       label: "Quickstarts",
-      collapsed: true,
-      items: [
-        "docs/quickstarts/overview",
-        {
-          type: "category",
-          label: "dbt Cloud",
-          collapsed: true,
-          items: [
-            "docs/quickstarts/dbt-cloud/bigquery",
-            "docs/quickstarts/dbt-cloud/databricks",
-            "docs/quickstarts/dbt-cloud/redshift",
-            "docs/quickstarts/dbt-cloud/snowflake",
-            "docs/quickstarts/dbt-cloud/starburst-galaxy",
-          ],
-        },
-        {
-          type: "category",
-          label: "dbt Core",
-          collapsed: true,
-          items: [
-            "docs/quickstarts/dbt-core/codespace",
-            "docs/quickstarts/dbt-core/manual-install",
-          ],
-        },
-      ],
+      href: `/quickstarts`,
     },
     {
       type: "category",
@@ -314,7 +290,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "dbt APIs",
+      label: "dbt Cloud APIs",
       collapsed: true,
       items: [
         "docs/dbt-cloud-apis/overview",
@@ -438,6 +414,7 @@ const sidebarSettings = {
         "reference/resource-configs/redshift-configs",
         "reference/resource-configs/snowflake-configs",
         "reference/resource-configs/singlestore-configs",
+        "reference/resource-configs/databricks-configs",
         "reference/resource-configs/spark-configs",
         "reference/resource-configs/trino-configs",
         "reference/resource-configs/materialize-configs",
@@ -689,8 +666,8 @@ const sidebarSettings = {
         "reference/warehouse-setups/mssql-setup",
         "reference/warehouse-setups/trino-setup",
         "reference/warehouse-setups/singlestore-setup",
-        "reference/warehouse-setups/spark-setup",
         "reference/warehouse-setups/databricks-setup",
+        "reference/warehouse-setups/spark-setup",
         "reference/warehouse-setups/hive-setup",
         "reference/warehouse-setups/exasol-setup",
         "reference/warehouse-setups/oracle-setup",
