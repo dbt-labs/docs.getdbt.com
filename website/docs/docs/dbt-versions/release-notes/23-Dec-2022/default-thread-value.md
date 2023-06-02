@@ -3,7 +3,7 @@ title: "Threads default value changed to 4"
 id: "default-thread-value"
 description: "Threads now default to 4 users' profile."
 sidebar_label: "Enhancement: Threads default value changed to 4 "
-tags: [Dec-12-2022]
+tags: [Dec-2022]
 ---
 
 Threads help parallelize node execution in the dbt directed acyclic graph [(DAG)](https://docs.getdbt.com/terms/dag). 
