@@ -156,7 +156,7 @@ require | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode
 verify-ca | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
 verify-full | Connection will be made using verify-full | Set `ssl` = True &  `sslmode` = verify-full
 
-
+When connection is made using `verify-ca`, will look for CA certificate in ~/redshift-ca-bundle.crt.
 
 For more details on changes of sslmode, our design choices and reasoning, please refer to the [PR pertaining this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
 
