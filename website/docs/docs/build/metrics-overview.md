@@ -6,13 +6,12 @@ sidebar_label: "Metrics"
 tags: [Metrics, Semantic Layer]
 ---
   
-
 Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
 
 The keys for metrics definitions are: 
 
 * `name`: Provide the reference name for the metric. This name must be unique amongst all metrics.  
-* `type`: Define the type of metric, which can be a measure (`simple`), ratio (`ratio`), SQL expression (`expr`), or cumulative (`cumulative`). 
+* `type`: Define the type of metric, which can be a measure (`simple`), ratio (`ratio`), or cumulative (`cumulative`). 
 * `type_params`: Additional parameters used to configure metrics. `type_params` are different for each metric type. 
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 * `meta`: Additional metadata you want to add to your metric. 
@@ -27,6 +26,7 @@ This page explains the different supported metric types you can add to your dbt 
 -->
 
 ### Cumulative metrics 
+
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. Note that if no window is specified, the window would accumulate the measure over all time. 
 
 ```yaml
@@ -44,14 +44,14 @@ metrics:
 ```
 
 ### Derived metrics
-[Derived metrics](/docs/build/derived) are defined as an expression of other metrics. This is different from EXPR-type metrics, which can only be built on measures. Derived metrics allow you to do calculations on top of metrics. 
+
+[Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
 
 ```yaml
 metrics:
 - name: net_sales_per_user
   type: derived
   type_params:
-    expr: gross_sales - cogs / active_users
     metrics:
       - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
       - name: cogs
@@ -59,7 +59,7 @@ metrics:
         fiilter: is_active # Optional additional constraint
         alias: active_users # Optional alias to use in the expr
 ```
-
+<!--
 ### Expression metrics
 Use [expression metrics](/docs/build/expr) when you're building a metric that involves a SQL expression of multiple measures.
 
@@ -75,8 +75,10 @@ metrics:
       - cancellations_usd
       - alterations_usd
 ```
+-->
 
 ### Measure proxy metrics
+
 [Measure proxies](/docs/build/measure-proxy) are metrics that point directly to a measure (you may think of the measure proxy as a function that takes only one measure as the input). 
 
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create measure proxies.  However, if you would like to include a constraint on top of the measure, you will need to create a measure proxy type metric. 
@@ -96,6 +98,7 @@ metrics:
 ```
 
 ### Ratio metrics 
+
 [Ratio metrics](/docs/build/ratio) involve a numerator measure and a denominator measure. A  `constraint` string  can be applied, to both numerator and denominator, or applied separately to the numerator or denominator. 
 
 ```yaml
@@ -143,7 +146,6 @@ You can set more metadata for your metrics, which can be used by other tools lat
 
 - [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
-- [Expression](/docs/build/expr)
 - [Measure proxy](/docs/build/measure-proxy)
 - [Ratio](/docs/build/ratio)
 

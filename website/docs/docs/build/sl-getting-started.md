@@ -68,7 +68,7 @@ measures:
   dimensions:
     - name: is_large
       type: categorical
-      expr: CASE WHEN transaction_amount_usd >= 30 THEN TRUE ELSE FALSE END
+      expr: case when transaction_amount_usd >= 30 then true else false end
 ```
 
 :::tip
@@ -85,7 +85,7 @@ from
 
 ## Create your metric
 
-Now that you've created your first semantic model, it's time to define your first metric. The Semantic Layer supports different metric types like [measure proxy](/docs/build/measure-proxy), [ratio](/docs/build/ratio), [expression](/docs/build/expr), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
+Now that you've created your first semantic model, it's time to define your first metric. The Semantic Layer supports different metric types like [measure proxy](/docs/build/measure-proxy), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
 
 The example metric we'll create is a measure proxy, a metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 

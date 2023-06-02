@@ -6,7 +6,6 @@ sidebar_label: About MetricFlow
 tags: [Metrics, Semantic Layer]
 ---
 
-
 This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, a powerful component of the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently.
 
 There are a few key principles:
@@ -53,7 +52,6 @@ MetricFlow supports different metric types:
 
 - [Cumulative](/docs/build/cumulative) &mdash; Cumulative metrics aggregate a measure over a given window, like weekly active users.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Expression](/docs/build/expr) &mdash; Allow measures to be modified using a SQL expression, like transactions - cancellations.
 - [Measure proxy](/docs/build/measure-proxy) &mdash; Metrics that refer directly to one measure. 
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 

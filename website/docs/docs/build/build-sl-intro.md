@@ -1,6 +1,6 @@
 ---
 title: "Build your Semantic Layer"
-id: build-semantic-layer-intro
+id: build-sl-intro
 description: "Learn about MetricFlow and build your Semantic Layer with Semantic models and Metrics"
 sidebar_label: Build your Semantic Layer
 tags: [Metrics, Semantic Layer, Governance]
@@ -41,7 +41,7 @@ Here are a few considerations to note before you begin:
 
   <Card
     title="Metrics"
-    body="Metrics are functions that take in various parameters (such as measures, constraints) to define new quantitative indicators."
+    body="Define metrics in your project by combining measures, constraints, or functions in YAML or separate files."
     link="/docs/build/metrics-overview"
     icon="rocket"/>   
 

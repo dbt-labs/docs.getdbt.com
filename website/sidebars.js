@@ -234,7 +234,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Build your Semantic Layer",
-          link: { type: "doc", id: "docs/build/build-semantic-layer-intro"},
+          link: { type: "doc", id: "docs/build/build-sl-intro"},
           collapsed: true,
           items: [
             "docs/build/sl-getting-started",
@@ -264,7 +264,6 @@ const sidebarSettings = {
               items: [
                 "docs/build/cumulative",
                 "docs/build/derived",
-                "docs/build/expr",
                 "docs/build/measure-proxy",
                 "docs/build/ratio",
               ]
