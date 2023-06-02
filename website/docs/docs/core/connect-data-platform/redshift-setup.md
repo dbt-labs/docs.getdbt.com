@@ -66,10 +66,10 @@ company-name:
       dbname: analytics
       schema: analytics
       threads: 4
-      keepalives_idle: 240 # default 240 seconds
       connect_timeout: None # optional, number of seconds before connection times out 
       # search_path: public # optional, not recommended
       sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
+      role: # optional
       ra3_node: true # enables cross-database sources
       autocommit: true # enables autocommit after each statement
       region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
@@ -105,7 +105,6 @@ my-redshift-db:
       host: hostname.region.redshift.amazonaws.com
       user: alice
       iam_profile: data_engineer # optional
-      iam_duration_seconds: 900  # optional
       autocreate: true           # optional
       db_groups: ['ANALYSTS']    # optional
 
@@ -114,10 +113,9 @@ my-redshift-db:
       dbname: analytics
       schema: analytics
       threads: 4
-      [keepalives_idle](#keepalives_idle): 240 # default 240 seconds
       connect_timeout: None # optional, number of seconds before connection times out 
       [retries](#retries): 1 # default 1 retry on error/timeout when opening connections
-      # search_path: public # optional, but not recommended
+      role: # optional
       sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
       ra3_node: true # enables cross-database sources
       autocommit: true # optional, enables autocommit after each statement
