@@ -191,7 +191,7 @@ To run certain macros with autocommit, load the profile with autocommit using th
 ### `sort` and `dist` keys
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
-### `keepalives_idle`
+### `keepalives_idle` (deprecated in `dbt-redshift` 1.5, only applicable for `psycopg2` driver)
 If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 
 
 [dbt's default setting](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/adapters/redshift/connections.py#L51) is 240 (seconds), but can be configured lower (perhaps 120 or 60), at the cost of a chattier network connection.
