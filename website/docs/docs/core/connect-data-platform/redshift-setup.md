@@ -133,19 +133,26 @@ The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
 ## Redshift notes
 ### `sslmode` change
-Prior to dbt-redshift 1.5, psycopg2 was used as the driver.psycopg2 accepts "disable", "prefer", "allow", "require", "verify-ca", "verify-full" as valid inputs, as indicated in postgresql [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). 
-In dbt-redshift 1.5, redshift_connector is used and redshift_connector accepted inputs are "verify-ca", and "verify-full", according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify). For backwards compatibility, dbt-redshift now extended support for all valid inputs for sslmode in psycopg2. 
+Prior to dbt-redshift 1.5, `psycopg2` was used as the driver. `psycopg2` accepts `disable`, `prefer`, `allow`, `require`, `verify-ca`, `verify-full` as valid inputs of `sslmode`, and does not have a `ssl` paremeter, as indicated in postgresql [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). 
+
+In dbt-redshift 1.5, we switched to using `redshift_connector`, which accepts `verify-ca`, and `verify-full` as valid `sslmode` inputs, and has a `ssl` parameter of `True` or `False`, according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify). 
+
+For backwards compatibility, dbt-redshift now supports for valid inputs for `sslmode` in `psycopg2`. We've added conversion logic mapping each of `psycopg2`'s accepted `sslmode` values to the corresponding `ssl` and `sslmode` parameters in `redshift_connector`.
 
 Table below details accepted `sslmode` parameters and how connection will be made according to each option:
 
-accepted `sslmode` parameter | Expected behavior
--- | --
-disable | Connection will be made without using ssl
-allow | Connection will be made using verify-ca
-prefer | Connection will be made using verify-ca
-require | Connection will be made using verify-ca
-verify-ca | Connection will be made using verify-ca
-verify-full | Connection will be made using verify-full
+
+
+`sslmode` parameter | Expected behavior in dbt-redshift | Actions behind the scenes
+-- | -- | --
+disable | Connection will be made without using ssl | Set `ssl` = False
+allow | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
+prefer | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
+require | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
+verify-ca | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
+verify-full | Connection will be made using verify-full | Set `ssl` = True & `sslmode` = verify-full
+
+
 
 For more details on changes of sslmode, our design choices and reasoning, please refer to the [PR pertaining this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
 
