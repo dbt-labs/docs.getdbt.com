@@ -32,7 +32,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
     * **Environment** &mdash; Link to an existing deployment environment
     * **dbt Version** &mdash; Select the environment [version](/docs/dbt-versions/core). We recommend the most recent version
     * **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) for any dbt cloud job to correspond to settings in your project
-    * **Threads** &mdash; The default value will be 4 [threads](/docs/core/connection-profiles#understanding-threads)
+    * **Threads** &mdash; The default value will be 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads)
 
 1. Define [environment variables](/docs/build/environment-variables) if you wish to customize the behavior of your project
 
