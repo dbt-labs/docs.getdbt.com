@@ -67,11 +67,12 @@ company-name:
       schema: analytics
       threads: 4
       keepalives_idle: 240 # default 240 seconds
-      connect_timeout: 10 # default 10 seconds
+      connect_timeout: None # optional, number of seconds before connection times out 
       # search_path: public # optional, not recommended
-      sslmode: prefer # [optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.]
+      sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
       ra3_node: true # enables cross-database sources
-      region: [optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)]
+      autocommit: true # enables autocommit after each statement
+      region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
 ```
 
 </File>
@@ -114,11 +115,14 @@ my-redshift-db:
       schema: analytics
       threads: 4
       [keepalives_idle](#keepalives_idle): 240 # default 240 seconds
-      connect_timeout: 10 # default 10 seconds
+      connect_timeout: None # optional, number of seconds before connection times out 
       [retries](#retries): 1 # default 1 retry on error/timeout when opening connections
       # search_path: public # optional, but not recommended
-      sslmode: prefer # [optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.]
+      sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
       ra3_node: true # enables cross-database sources
+      autocommit: true # optional, enables autocommit after each statement
+      region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
+
 
 ```
 
@@ -146,11 +150,11 @@ Table below details accepted `sslmode` parameters and how connection will be mad
 `sslmode` parameter | Expected behavior in dbt-redshift | Actions behind the scenes
 -- | -- | --
 disable | Connection will be made without using ssl | Set `ssl` = False
-allow | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
-prefer | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
-require | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
-verify-ca | Connection will be made using verify-ca | Set `ssl` = True & `sslmode` = verify-ca
-verify-full | Connection will be made using verify-full | Set `ssl` = True & `sslmode` = verify-full
+allow | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+prefer | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+require | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+verify-ca | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+verify-full | Connection will be made using verify-full | Set `ssl` = True &  `sslmode` = verify-full
 
 
 
