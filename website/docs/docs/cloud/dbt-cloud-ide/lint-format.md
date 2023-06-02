@@ -30,13 +30,6 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the IDE). This allows you to focus your time on what matters.
 - add terminal debug info and image when it's available
 
-<!-- 
-- add info on sqlfluff and sqlformat. 
-- for sqlfluff, discuss lint and fix functions and code quality terminal
-- sqlfluff default setting / rules they have (link to advanced config or override)
-- add info that sqlfluff allows for customization and sqlfmt is more opinionated
--->
-
 ### Enable linting
 
 1. To enable linting, make sure you're on a `.sql` file.
@@ -45,19 +38,22 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
 5. Once you've selected the **sqlfluff** radio button, go to the console section (located below the **File editor**) to select the **Lint** or **Fix** button. 
 
-                                                    add screenshot
+add screenshot
 
-    - The **Lint** button displays linting issues in the IDE as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving so to rerun linting, click on the **Lint** button again. 
+- The **Lint** button displays linting issues in the IDE as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving so to rerun linting, click on the **Lint** button again. 
 
-                                                    add screenshot
+add screenshot
 
-    - The **Fix** button auto-fixes errors in the **File editor**. Once you've auto-fixed, you'll see a message confirming the outcome. 
+- The **Fix** button auto-fixes errors in the **File editor**. Once you've auto-fixed, you'll see a message confirming the outcome. 
 
-                                                    add screenshot
+add screenshot
 
 ### Customize linting
 
 SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE.  
+
+<Tabs>
+<TabItem value="configure" label="Configure your own linting rules">
 
 To configure your own linting rules:
 
@@ -67,11 +63,11 @@ To configure your own linting rules:
 4. Save and commit your changes
 5. Restart the IDE??
 6. Test it out and happy linting!
+add screenshot
 
-                                                    add screenshot
+</TabItem>
 
-
-### dbt best practices
+<TabItem value="dbtonic" label="Configure dbtonic linting rules">
 
 To incorporate well-written dbt code (or dbtonic) and best practices to your linting rules, dbt Labs created the following dbtonic config code for you to save and use in your dbt project:
 
@@ -115,7 +111,8 @@ capitalisation_policy = lower
 [sqlfluff:rules:ambiguous.column_references]  # Number in group by
 group_by_and_order_by_style = implicit
 ```
-
+</TabItem>
+</Tabs>
 
 <details>
 <summary>Nesting <code>.sqlfluff</code> files</summary>
@@ -135,34 +132,21 @@ In the dbt Cloud IDE, you can format your code to match style guides with a clic
 - YAML, Markdown, and JSON &mdash; Format with [Prettier](https://prettier.io/). 
 - Python &mdash; Format with [Black](https://black.readthedocs.io/en/latest/).
 
-<!-- 
-- include file types 
-- include formatters
-[sqlfmt](http://sqlfmt.com/) warn you of complex functions and syntax improvements. 
-- sql  = sqlfmt
-- yml, md, json = prettier
-- py = black
-
-- Each formatted comes with their own built-in formatting rules
-- Use the **Format** button to [enable formatting](#enable-formatting) 
-- add terminal debug info and image when it's available
--->
-
-### Enable formatting
-
 The Cloud IDE formatting integrations take care of manual tasks like code formatting, enabling you to focus on creating quality data models, collaborating, and driving impactful results.
 
 ### Format SQL
 
 To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja.
 
-1. To enable formatting, make sure you're on a `.sql` file.
+To enable formatting:
+
+1. Make sure you're on a `.sql` file.
 2. Click on the **`</> Config`** button on the right side of the console. (Make sure you're in a .sql file)
 3. In the code quality tool config pop up, you have the option to select sqlfluff or sqlfmt. 
 4. To format your code, select the **sqlfmt** radio button. (Use sqlfluff to [lint](#linting) your code)
 5. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button. 
 
-                                                add screenshot
+add screenshot
 
 
 5. The **Format** button auto-formats your code in the **File editor**. Once you've auto-formatted, you'll see a message confirming the outcome. 
@@ -176,7 +160,7 @@ To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
-                                                    add screenshot
+add screenshot
 
 ### Format Python
 
@@ -186,7 +170,7 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
-                                                            add screenshot
+add screenshot
 
 ## Troubleshooting
 
