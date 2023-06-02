@@ -25,6 +25,11 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
     icon="alloydb"/>
 
 <Card
+    title="Azure Synapse*"
+    body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/><br /> 🚧 Verification in progress"
+    icon="rocket"/>
+
+<Card
     title="BigQuery"
     body="<a href='/docs/cloud/connect-data-platform/connect-bigquery'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/bigquery-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
     icon="bigquery"/>
@@ -34,6 +39,11 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
     body="<a href='/docs/cloud/connect-data-platform/connect-databricks'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/databricks-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-databricks><img src=https://badge.fury.io/py/dbt-databricks.svg/></a>"
     icon="databricks"/>
 
+ <Card
+    title="Microsoft Fabric Synapse Data Warehouse"
+    body="<a href='/docs/core/connect-data-platform/fabric-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/><br />"
+    icon="rocket"/>
+    
 <Card
     title="Postgres"
     body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/postgres-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
@@ -62,11 +72,6 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
 <Card
     title="Dremio*"
     body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/><br /> 🚧 Verification in progress"
-    icon="rocket"/>
-
-<Card
-    title="Azure Synapse*"
-    body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/><br /> 🚧 Verification in progress"
     icon="rocket"/>
 
 </div>
