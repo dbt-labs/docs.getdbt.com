@@ -2,7 +2,7 @@
 title: "Lint and format your code"
 id: "lint-format"
 description: Integrate with popular linters and formatters like SQL Fluff, sqlfmt, Black, and Prettier."
-sidebar_label: "Lint and format your code"
+sidebar_label: "Lint and format"
 tags: [IDE]
 ---
 
