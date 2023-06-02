@@ -41,7 +41,7 @@ Here are a few considerations to note before you begin:
 
   <Card
     title="Metrics"
-    body="Define metrics in your project by combining measures, constraints, or functions in YAML or separate files."
+    body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
     link="/docs/build/metrics-overview"
     icon="rocket"/>   
 
