@@ -156,7 +156,7 @@ require | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode
 verify-ca | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
 verify-full | Connection will be made using verify-full | Set `ssl` = True &  `sslmode` = verify-full
 
-When connection is made using `verify-ca`, will look for CA certificate in ~/redshift-ca-bundle.crt.
+When connection is made using `verify-ca`, will look for CA certificate in `~/redshift-ca-bundle.crt`.
 
 For more details on changes of sslmode, our design choices and reasoning, please refer to the [PR pertaining this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
 
@@ -188,7 +188,7 @@ profile-to-my-RS-target:
   ```
 </File>
 
-To run certain macros with autocommit, load the autocommit profile with the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
+To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
 
 ### `sort` and `dist` keys
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
