@@ -49,16 +49,16 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 - [`print`](/reference/dbt-jinja-functions/print) exposes the Python `print()` function. It can be used as an alternative to `log()`, and together with the `QUIET` config, for advanced macro-driven workflows.
 - [`selected_resources`](/reference/dbt-jinja-functions/selected_resources) exposes, at runtime, the list of DAG nodes selected by the current task.
 
-[**Global configs**](/reference/global-configs) include some new additions:
+[**Global configs**](/reference/global-configs/about-global-configs) include some new additions:
 
 - `QUIET` and `NO_PRINT`, to control which log messages dbt prints to terminal output. For use in advanced macro-driven workflows, such as [codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/).
 - `CACHE_SELECTED_ONLY` is an _experimental_ config that can significantly speed up dbt's start-of-run preparations, in cases where you're running only a few models from a large project that manages many schemas.
 
 ### For users of specific adapters
 
-**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/reference/warehouse-setups/bigquery-setup).
+**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/docs/core/connect-data-platform/bigquery-setup).
 
-**dbt-spark** added support for a [`session` connection method](/reference/warehouse-setups/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
+**dbt-spark** added support for a [`session` connection method](/docs/core/connect-data-platform/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
 
 ### Dependencies
 

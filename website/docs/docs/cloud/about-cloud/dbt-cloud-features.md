@@ -76,9 +76,9 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="pencil-paper"/>  
 
    <Card
-    title="Metadata API*"
+    title="Discovery API*"
     body="Enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries."
-    link="/docs/dbt-cloud-apis/metadata-api"
+    link="/docs/dbt-cloud-apis/discovery-api"
     icon="pencil-paper"/> 
 
 
@@ -94,7 +94,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Quickstart guides](/docs/quickstarts/overview)
+- [Quickstart guides](/quickstarts)
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)

@@ -4,6 +4,18 @@ description: "You can enable continuous integration (CI) to test every single ch
 tags: ["scheduler"]
 ---
 
+## Run history
+
+The **Run History** dashboard in dbt Cloud helps you monitor the health of your dbt project. It provides a detailed overview of all of your project's job runs and empowers you with a variety of filters to help you focus on specific aspects. You can also use it to review recent runs, find errored runs, and track the progress of runs in progress. You can access it on the top navigation menu by clicking **Deploy** and then **Run History**. 
+
+The dashboard displays your full run history, including job name, status, environment associated, job trigger, commit SHA, schema, and timing info. 
+
+dbt Cloud developers can access their run history for the last 365 days through the dbt Cloud user interface (UI) and API.
+
+We limit self-service retrieval of run history metadata to 365 days in order improve dbt Cloud's performance. For more info on the run history retrieval change, refer to [Older run history retrieval change](/docs/dbt-versions/release-notes/May-2023/run-history-endpoint).
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="85%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+
 ## Model timing 
 > Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
 
