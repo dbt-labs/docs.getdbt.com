@@ -106,6 +106,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
               items: [
                 "docs/cloud/dbt-cloud-ide/ide-user-interface",
+                "docs/cloud/dbt-cloud-ide/lint-format",
                 "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
               ],
             }, // dbt Cloud IDE directory
