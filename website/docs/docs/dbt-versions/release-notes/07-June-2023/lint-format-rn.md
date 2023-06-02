@@ -14,4 +14,4 @@ In the dbt Cloud IDE, you now have the capability to perform linting and formatt
 For SQL files, you can easily lint and format your code using [SQLFluff](https://sqlfluff.com/) and apply consistent formatting using [sqlfmt](http://sqlfmt.com/). Additionally, for other file types like YAML, Markdown, Python, and JSON, you can utilize the respective tools powered by [Prettier](https://prettier.io/) and [Black](https://black.readthedocs.io/en/latest/) to ensure clean and standardized code formatting.
 
 For more info, read [Lint and format your code](/docs/cloud/dbt-cloud-ide/lint-format) and blog link.
-
+                                                    add screenshot
