@@ -1,8 +1,10 @@
 ---
 title: "Run visibility"
-description: "You can enable continuous integration (CI) to test every single change prior to deploying the code to production just like in a software development workflow."
+description: "Monitor your scheduled jobs to make performance improvements."
 tags: ["scheduler"]
 ---
+
+You can view the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs.
 
 ## Run history
 
