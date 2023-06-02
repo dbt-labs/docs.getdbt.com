@@ -160,6 +160,36 @@ verify-full | Connection will be made using verify-full | Set `ssl` = True &  `s
 
 For more details on changes of sslmode, our design choices and reasoning, please refer to the [PR pertaining this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
 
+### `autocommit` parameter
+
+The[ autocommit mode](https://www.psycopg.org/docs/connection.html#connection.autocommit) is useful to execute commands that run outside a transaction. Connection objects used in Python must have `autocommit = True` to run operations such as `CREATE DATABASE`, and `VACUUM`. `autocommit` is off by default in `redshift_connector`, but we've changed this default to `True` to ensure certain macros run successfully in your dbt project.
+
+If desired, you can define a seperate target with `autocommit=True` as such:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+profile-to-my-RS-target:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      ...
+      autocommit: False
+      
+  
+  profile-to-my-RS-target-with-autocommit-enabled:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      ...
+      autocommit: True
+  ```
+</File>
+
+To run certain macros with autocommit, load the autocommit profile with the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
+
 ### `sort` and `dist` keys
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
