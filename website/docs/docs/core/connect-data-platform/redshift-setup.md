@@ -144,7 +144,6 @@ For backwards compatibility, dbt-redshift now supports for valid inputs for `ssl
 Table below details accepted `sslmode` parameters and how connection will be made according to each option:
 
 
-
 `sslmode` parameter | Expected behavior in dbt-redshift | Actions behind the scenes
 -- | -- | --
 disable | Connection will be made without using ssl | Set `ssl` = False
@@ -188,13 +187,17 @@ profile-to-my-RS-target:
 
 To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
 
+
+### Deprecated `profile` parameters in 1.5
+
+- `iam_duration_seconds`
+
+- `keepalives_idle`
+
 ### `sort` and `dist` keys
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
-### `keepalives_idle` (deprecated in `dbt-redshift` 1.5, only applicable for `psycopg2` driver)
-If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 
 
-[dbt's default setting](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/adapters/redshift/connections.py#L51) is 240 (seconds), but can be configured lower (perhaps 120 or 60), at the cost of a chattier network connection.
 
 <VersionBlock firstVersion="1.2">
 
