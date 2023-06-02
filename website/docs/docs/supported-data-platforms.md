@@ -55,7 +55,7 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
     icon="databricks"/>
 
 <Card
-    title="Starburst"
+    title="Starburst/Trino"
     body="<a href='/docs/cloud/connect-data-platform/connect-starburst-trino'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/trino-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /> <br /> <a href=https://badge.fury.io/py/dbt-trino><img src=https://badge.fury.io/py/dbt-trino.svg/>"
     icon="starburst"/>
 
