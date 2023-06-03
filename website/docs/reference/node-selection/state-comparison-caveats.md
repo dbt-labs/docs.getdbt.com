@@ -6,9 +6,9 @@ The [`state:` selection method](/reference/node-selection/methods#the-state-meth
 
 ### Seeds
 
-dbt stores a file hash of seed files that are <1 MiB in size. If the contents of these seeds is modified, the seed will be included in `state:modified`.
+dbt stores a file hash of seed files that are <1 MiB in size. If the contents of these seeds is modified, the seed will be included in `state:modified`. If the contents have not been modified, the seed will be included in `state:unmodified`.
 
-If a seed file is >1 MiB in size, dbt cannot compare its contents and will raise a warning as such. Instead, dbt will use only the seed's file path to detect changes. If the file path has changed, the seed will be included in `state:modified`; if it hasn't, it won't.
+If a seed file is >1 MiB in size, dbt cannot compare its contents and will raise a warning as such. Instead, dbt will use only the seed's file path to detect changes. If the file path has changed, the seed will be included in `state:modified`; if it hasn't, it won't. The seed will be included in `state:unmodified` instead.
 
 ### Macros
 
@@ -23,6 +23,10 @@ If a model uses a `var` or `env_var` in its definition, dbt is unable today to i
 The command `dbt test -s state:modified` will include both:
 - tests that select from a new/modified resource
 - tests that are themselves new or modified
+
+The command `dbt test -s state:unmodified` will include both:
+- tests that select from an old, unmodified resource
+- tests that are themselves found in the previous manifest and unchanged
 
 As long as you're adding or changing tests at the same time that you're adding or changing the resources (models, seeds, snapshots) they select from, all should work the way you expect with "simple" state selection:
 

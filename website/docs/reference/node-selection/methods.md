@@ -182,6 +182,14 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
+<VersionBlock firstVersion="1.6">
+
+`state:old`: All nodes found with a matching `unique_id` in the comparison manifest.
+
+`state:unmodified`: All old nodes that have not been changed.
+
+</VersionBlock>
+
 
   ```bash
   $ dbt test --select state:new            # run all tests on new models + and new tests on old models
