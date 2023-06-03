@@ -3,7 +3,7 @@ title: "Older Run History retrieval change"
 id: "run-history-endpoint"
 sidebar_label: "Update: Older Run History retrieval change"
 sidebar_position: 6
-tags: [May-22-2023, API, Scheduler]
+tags: [May-2023, API, Scheduler]
 ---
 
 dbt Labs is making a change to the metadata retrieval policy for Run History in dbt Cloud. 
