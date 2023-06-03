@@ -171,18 +171,18 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
  
 ### State nuance per node type
 
-| Node      |  Type   | Executed in dbt DAG  | Created by dbt DAG execution |‘Physical’ dataset in warehouse| Lineage               |
-|-----------|---------|----------------------|------------------------------|-------------------------------|-----------------------|
-| Model     | Logical |  Yes                 | Yes                          | Yes                           | Upstream & downstream |
-| Source    | Logical | Yes                  | No                           | Yes                           | Downstream            |
-| Seed      | Logical | Yes                  | Yes                          | Yes                           | Downstream            |
-| Snapshot  | Logical | Yes                  | Yes                          | Yes                           | Upstream & downstream |
-| Test      | Logical | Yes                  | Yes                          | No                            | Upstream              |
-| Exposure  | -       | No                   | No                           | No                            | Upstream              |
-| Metric    | Semantic| No                   | No                           | No                            | Upstream & downstream |
-| Semantic model |Semantic| No               | No                           | No                            | Upstream & downstream |
-| Group     | Semantic| No                   | No                           | No                            | Downstream            |
-| Macro     | N/A     | Yes                  | No                           | No                            | N/A                   |
+| Node      | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
+|-----------|------------------|----------------------|--------------------|-----------------------|----------------------|
+| Model     | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
+| Source    | Yes              | No                   | Yes                | Downstream            | Applied & definition |
+| Seed      | Yes              | Yes                  | Yes                | Downstream            | Applied & definition |
+| Snapshot  | Yes              | Yes                  | Yes                | Upstream & downstream | Applied & definition |
+| Test      | Yes              | Yes                  | No                 | Upstream              | Applied & definition |
+| Exposure  | No               | No                   | No                 | Upstream              | Applied & definition |
+| Metric    | No               | No                   | No                 | Upstream & downstream | Definition           |
+| Semantic model | No          | No                   | No                 | Upstream & downstream | Definition           |
+| Group     | No               | No                   | No                 | Downstream            | Definition           |
+| Macro     | Yes              | No                   | No                 | N/A                   | Definition           |
 
 
  ### Caveats about state/metadata updates 
