@@ -1,18 +1,28 @@
 ---
 title: "Quickstart for dbt Core using GitHub Codespaces"
 id: codespace
-description: "Quickly get set up to start running dbt commands in a codespace environment."
-sidebar_label: "GitHub Codespace quickstart"
+platform: 'dbt-core'
+hide_table_of_contents: true
 ---
+
+## Introduction
 
 In this quickstart guide, you’ll learn how to create a codespace and be able to execute the `dbt build` command from it in _less than 5 minutes_. 
 
 dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/overview) template that you (and anyone else) can reuse to create a complete dbt environment with a working and runnable project. When you create the codespace, the [dev container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) creates a fully functioning dbt environment, connects to a DuckDB database, and loads a year of data from our fictional Jaffle Shop café, which sells food and beverages in several US cities. The [README](https://github.com/dbt-labs/jaffle-shop-template#readme) for the Jaffle Shop template also provides instructions on how to do this, along with animated GIFs. 
 
-## Prerequisites
+### Prerequisites
 
 - To use the dbt command-line interface (CLI), it's important that you know some basics of the terminal. In particular, you should understand `cd`, `ls` , and `pwd` to navigate through the directory structure of your computer easily.
 - You have a [GitHub account](https://github.com/join).
+
+## Related content
+
+- [Create a GitHub repository](/quickstarts/manual-install?step=2)
+- [Build your first models](/quickstarts/manual-install?step=3)
+- [Test and document your project](/quickstarts/manual-install?step=4)
+- [Schedule a job](/quickstarts/manual-install?step=5)
+- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
 
 ## Create a codespace
 
@@ -55,13 +65,7 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
     ```shell
     /workspaces/test (main) $ jafgen --years NUMBER_OF_YEARS
     ``` 
-    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/reference/warehouse-setups/duckdb-setup) adapter.
+    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/core/connect-data-platform/duckdb-setup) adapter.
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 
-## Related content
-- [Create a GitHub repository](/docs/quickstarts/dbt-core/manual-install#create-a-repository)
-- [Build your first models](/docs/quickstarts/dbt-core/manual-install#build-your-first-models)
-- [Test and document your project](/docs/quickstarts/dbt-core/manual-install#test-and-document-your-project)
-- [Schedule a job](/docs/quickstarts/dbt-core/manual-install#schedule-a-job)
-- Learn more with [dbt Courses](https://courses.getdbt.com/collections)
