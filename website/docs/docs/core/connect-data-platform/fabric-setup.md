@@ -17,7 +17,7 @@ meta:
 
 Below is a guide for use with "Synapse Data Warehouse" a new product within Microsoft Fabric (preview) ([more info](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse))
 
-To learn how to set up dbt with Azure Synapse Dedicated Pools, see [Microsoft Azure Synapse DWH setup](azuresynapse-setup)
+To learn how to set up dbt with Azure Synapse Dedicated Pools, see [Microsoft Azure Synapse DWH setup](/docs/core/connect-data-platform/azuresynapse-setup) 
 
 :::
 
