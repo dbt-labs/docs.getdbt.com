@@ -1,5 +1,5 @@
 ---
-title: "Fabric configurations"
+title: "Microsoft Fabric DWH configurations"
 id: "fabric-configs"
 ---
 
