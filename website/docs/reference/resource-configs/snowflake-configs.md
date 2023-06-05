@@ -265,9 +265,26 @@ select * from index_sessions
 </TabItem>
 </Tabs>
 
+<VersionBlock firstVersion="1.2">
+
 ## Copying grants
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.2" lastVersion="1.5">
+
 When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables and <Term id="view">views</Term>. The default value is `false`.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables and <Term id="view">views</Term>. After materialization, it will also apply the `grants` that are [configured](/reference/resource-configs/grants#configuring-grants). No grants are revoked when `copy_grants` config is set to `true`.
+
+When the `copy_grants` config is set to `false`, dbt will revoke any existing grants prior to applying the configured `grants`.
+
+The default value is `false`.
+</VersionBlock>
 
 <File name='dbt_project.yml'>
 
