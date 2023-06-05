@@ -1,19 +1,19 @@
 ---
 title: What version of Python can I use?
-description: "Python versions 3.7 and newer can be used with dbt Core"
+description: "Python versions 3.8 and newer can be used with dbt Core"
 sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.6">
 
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10, and 3.11.
+The latest version of `dbt-core` is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
 
-:::info
+</VersionBlock>
 
-Full support of Python 3.11 across adapters is a work in progress since adapter plugins have additional third-party dependencies. As of January 2023, dbt-snowflake does not yet support Python 3.11 (relevant issue in snowflake-connector-python).
+<VersionBlock firstVersion="1.4" lastVersion="1.5">
 
-:::
+The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10 and 3.11.
 
 </VersionBlock>
 

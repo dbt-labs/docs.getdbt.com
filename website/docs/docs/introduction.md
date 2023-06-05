@@ -3,8 +3,6 @@ title: "What is dbt?"
 id: "introduction"
 ---
 
-## About dbt
-
 <Snippet src="what-is-dbt-intro" />
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. This single source of truth, combined with the ability to define tests for your data, reduces errors when logic changes, and alerts you when issues arise.
@@ -37,11 +35,11 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 ### dbt Cloud
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/docs/quickstarts/overview).
+dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/quickstarts).
 
 ### dbt Core
 
-dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Learn more with the [quickstart for dbt Core](/docs/quickstarts/dbt-core/quickstart).
+dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Learn more with the [quickstart for dbt Core](/quickstarts/codespace).
 
 ## The power of dbt
 
@@ -60,8 +58,7 @@ As a dbt user, your main focus will be on writing models (i.e. select queries) t
 
 ### Related docs
 
-- [Quickstarts for dbt Cloud](/docs/quickstarts/overview)
-- [Quickstart for dbt Core](/docs/quickstarts/dbt-core/quickstart)
+- [Quickstarts for dbt](/quickstarts)
 - [Best practice guides](/guides/best-practices)
 - [What is a dbt Project?](/docs/build/projects)
 - [dbt run](/docs/running-a-dbt-project/run-your-dbt-projects)

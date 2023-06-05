@@ -1,5 +1,5 @@
 ---
-title: "Installation overview"
+title: "About installing dbt"
 id: "installation"
 description: "You can install dbt Core using a few different tested methods."
 ---
@@ -21,4 +21,4 @@ dbt provides a number of resources for understanding [general best practices](/b
 
 ## About dbt data platforms and adapters
 
-dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt Core, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](supported-data-platforms).
+dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt Core, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](/docs/supported-data-platforms).

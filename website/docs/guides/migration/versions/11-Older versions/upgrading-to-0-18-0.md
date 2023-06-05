@@ -59,25 +59,25 @@ can override schema test definitions
 ## New and changed documentation
 
 **Core**
-- [node selection syntax](node-selection/syntax)
-- [list (ls)](commands/list)
-- [defer](defer)
-- [adapter.dispatch](adapter#dispatch)
-- [`asset-paths` config](asset-paths) (also updated [dbt_project.yml](reference/dbt_project.yml) and [description](description))
-- [flag for colorized logs](run#enable-or-disable-colorized-logs)
-- [`full_refresh` config](full_refresh)
+- [node selection syntax](/reference/node-selection/syntax)
+- [list (ls)](/reference/commands/list)
+- [defer](/reference/node-selection/defer)
+- [adapter.dispatch](/reference/dbt-jinja-functions/adapter#dispatch)
+- [`asset-paths` config](/reference/project-configs/asset-paths) (also updated [dbt_project.yml](/reference/dbt_project.yml) and [description](/reference/resource-properties/description))
+- [flag for colorized logs](/reference/commands/run#enable-or-disable-colorized-logs)
+- [`full_refresh` config](/reference/resource-configs/full_refresh)
 
 **Docs**
-- [project-level overviews](documentation#custom-project-level-overviews)
+- [project-level overviews](/docs/collaborate/documentation#custom-project-level-overviews)
 
 **Redshift**
-- [`iam_profile`](/reference/warehouse-setups/redshift-setup#specifying-an-iam-profile)
+- [`iam_profile`](/docs/core/connect-data-platform/redshift-setup#specifying-an-iam-profile)
 
 **Snowflake**
-- `query_tag` in [profile](/reference/warehouse-setups/snowflake-setup), [model config](snowflake-configs#query-tags)
-- automatic SSO [session caching](snowflake-configs#sso-authentication) support
+- `query_tag` in [profile](/docs/core/connect-data-platform/snowflake-setup), [model config](/reference/resource-configs/snowflake-configs#query-tags)
+- automatic SSO [session caching](/docs/core/connect-data-platform/snowflake-setup#sso-authentication) support
 
 **BigQuery**
-- [`impersonate_service_account`]/reference/warehouse-setups/bigquery-setup#service-account-impersonation)
-- [`policy_tags`](bigquery-configs#policy-tags)
-- [`hours_to_expiration`](bigquery-configs#controlling-table-expiration)
+- [`impersonate_service_account`](/docs/core/connect-data-platform/bigquery-setup#service-account-impersonation)
+- [`policy_tags`](/reference/resource-configs/bigquery-configs#policy-tags)
+- [`hours_to_expiration`](/reference/resource-configs/bigquery-configs#controlling-table-expiration)
