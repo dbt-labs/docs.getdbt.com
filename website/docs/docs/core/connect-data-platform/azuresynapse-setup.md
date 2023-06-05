@@ -15,6 +15,14 @@ meta:
   config_page: '/reference/resource-configs/azuresynapse-configs'
 ---
 
+:::info
+
+Below is a guide for use with "Azure Synapse Analytics Dedicated SQL Pools" (formerly SQL DW). See [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
+
+To learn how to set up dbt with Microsoft Fabric Synapse Data Warehouse, see [Microsoft Fabric Synapse Data Warehouse setup](fabric-setup).
+
+:::
+
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>

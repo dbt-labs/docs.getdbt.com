@@ -1,6 +1,7 @@
 ---
 title: "Microsoft Fabric Synapse Data Warehouse setup"
 description: "Read this guide to learn about the Microsoft Fabric Synapse Data Warehouse setup in dbt."
+id: fabric-setup
 meta:
   maintained_by: Microsoft
   authors: 'Microsoft (https://github.com/Microsoft)'
@@ -11,6 +12,14 @@ meta:
   platform_name: 'Microsoft Fabric'
   config_page: '/reference/resource-configs/fabric-configs'
 ---
+
+:::info
+
+Below is a guide for use with "Synapse Data Warehouse" a new product within Microsoft Fabric (preview) ([more info](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehousing#synapse-data-warehouse))
+
+To learn how to set up dbt with Azure Synapse Dedicated Pools, see [Microsoft Azure Synapse DWH setup](synapse-setup)
+
+:::
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
