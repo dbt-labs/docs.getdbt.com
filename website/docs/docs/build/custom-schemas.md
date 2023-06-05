@@ -106,7 +106,7 @@ If you're modifying how dbt generates schema names, don't just replace ```{{ def
 Removing ```{{ default_schema }}``` causes developers to overriding each other's models when custom schemas are defined. This can also cause issues during development and continuous integration (CI).
 
 ❌ The following code block is an example of what your code _should not_ look like: 
-```
+```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
@@ -115,7 +115,7 @@ Removing ```{{ default_schema }}``` causes developers to overriding each other's
         {{ default_schema }}
 
     {%- else -%}
-    ## Excluding the {{ default_schema }} code below causes development issues and overrides model custom schemas.
+    # The following is incorrect as it omits {{ default_schema }} before {{ custom_schema_name | trim }}. 
         {{ custom_schema_name | trim }} 
 
     {%- endif -%}
