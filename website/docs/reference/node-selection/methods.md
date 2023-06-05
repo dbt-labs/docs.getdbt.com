@@ -316,3 +316,23 @@ dbt list --select version:none        # models that are *not* versioned
 ```
 
 </VersionBlock>
+
+### The "access" method
+
+<VersionBlock lastVersion="1.5">
+
+Supported in v1.6 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+
+```bash
+dbt list --select access:public       # list all public models
+dbt list --select access:private       # list all private models
+dbt list --select access:protected       # list all protected models
+```
+
+</VersionBlock>
