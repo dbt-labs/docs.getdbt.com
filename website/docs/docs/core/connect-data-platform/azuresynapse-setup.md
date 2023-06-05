@@ -17,7 +17,9 @@ meta:
 
 :::info
 
-Below is a guide for use with "Azure Synapse Analytics Dedicated SQL Pools" (formerly SQL DW). See [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
+The following is a guide to using Azure Synapse Analytics Dedicated SQL Pools, formerly SQL DW. For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
+
+Refer to [Microsoft Fabric Synapse Data Warehouse](/docs/core/connect-data-platform/fabric-setup) to set it up with dbt.
 
 
 :::
