@@ -347,7 +347,7 @@ Use the `<Card` component to display content and actions on a single topic. User
   
 You can configure a card in 2, 3, 4, or 5-column grids. To maintain a good user experience, be mindful of how the cards are displayed. Cards with multiple paragraphs may not work because the text and cards will appear too squished, making them hard to read and a bad user experience. 
 
-Use 4 or 5-column grids:
+There won't be many instances where you need to display 4 or 5 cards on the docs site. While we recommend you use 2 or 3-column grids, you can use 4 or 5-column grids in the following scenarios:
 
 - For cards that contain little text and limited to under 15 words.
 - Always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). 
