@@ -87,7 +87,7 @@ Grants with auto provisioning is not supported by Microsoft Fabric Synapse Data 
 
 ## Permissions
 
-The AAD identity (user or service principal) must be a Fabric Workspace admin to work on the database level at this time. Fine grain access control will be in-corporated in the future.
+The AAD identity (user or service principal) must be a Fabric Workspace admin to work on the database level at this time. Fine grain access control will be incorporated in the future.
 
 ## cross-database macros
 
