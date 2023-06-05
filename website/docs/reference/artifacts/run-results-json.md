@@ -10,7 +10,9 @@ sidebar_label: "Run results"
  [`compile`](/reference/commands/compile)
  [`docs generate`](/reference/commands/cmd-docs)
  [`run`](/reference/commands/run)
-<VersionBlock firstVersion="1.6">[`run-operation`](/reference/commands/run-operation)</VersionBlock>
+<VersionBlock firstVersion="1.6">
+ [`run-operation`](/reference/commands/run-operation)
+</VersionBlock>
  [`seed`](/reference/commands/seed)
  [`snapshot`](/reference/commands/snapshot)
  [`test`](/reference/commands/test)
