@@ -23,7 +23,6 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
     title="AlloyDB"
     body="<a href='/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/alloydb-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /><a href=https://badge.fury.io/py/dbt-postgres><img src=https://badge.fury.io/py/dbt-postgres.svg/></a>"
     icon="alloydb"/>
-
 <Card
     title="BigQuery"
     body="<a href='/docs/cloud/connect-data-platform/connect-bigquery'><img src='/img/icons/dbt-bit.svg' width='7%'/>Set up in dbt Cloud </a> <br /><a href='/docs/core/connect-data-platform/bigquery-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-bigquery><img src=https://badge.fury.io/py/dbt-bigquery.svg/></a>"
@@ -60,16 +59,20 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
     icon="starburst"/>
 
 <Card
-    title="Dremio*"
-    body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/><br /> 🚧 Verification in progress"
+    title="Fabric Synapse*"
+    body="<a href='/docs/core/connect-data-platform/fabric-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-fabric><img src=https://badge.fury.io/py/dbt-fabric.svg/><br /> 🚧 Verification in progress"
     icon="rocket"/>
-
 <Card
     title="Azure Synapse*"
     body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/><br /> 🚧 Verification in progress"
     icon="rocket"/>
 
+<Card
+    title="Dremio*"
+    body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/><br /> 🚧 Verification in progress"
+    icon="rocket"/>
+
 </div>
 
 <br />
-* Install these adapters using the CLI as they're not supported in dbt Cloud. <br />
+* Install these adapters using the CLI as they're not currently supported in dbt Cloud. <br />
