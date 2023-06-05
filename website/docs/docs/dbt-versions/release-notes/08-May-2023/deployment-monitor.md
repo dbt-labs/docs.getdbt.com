@@ -14,7 +14,7 @@ Use prefiltered **In Progress** and **In Queue** views to track relevant activit
 The **Deployment Monitor** is accessible from the main dbt Cloud dashboard page or by clicking the dbt logo on the upper-left. Some of the new and enhanced features include:
 
 - A new run history visualization component to quickly scan a larger number of recent runs and get a better overview of overall health/activity.
-- Prefiltered lists have been added to display **In Progress**, **In Queue**, and **Latest Failed** jobs. 
+- Prefiltered views added to display **In Progress**, **In Queue**, or **Latest Failed Runs**.
 - Filter the page by environment, with the preference being stored for future use. 
 - The visualization at the top of the page now filters runs by trigger and displays the last 24 hours of runs, with a limit of 500.
 
