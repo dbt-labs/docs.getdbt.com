@@ -19,7 +19,7 @@ Install dbt Core, which is an open-source tool, locally using the CLI. dbt commu
 
 Data platforms supported in dbt Core may be verified or unverified, and are [maintained](#maintainers) by dbt Labs, partners, or community members. 
 
-With a few exceptions [^1], you can install all adapters listed under "Verified adapters" from PyPI using `pip install adapter-name`. For example to install Snowflake, use the command `pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation).
+With a few exceptions [^1], you can install all [Verified adapters](/docs/supported-data-platforms) from PyPI using `pip install adapter-name`. For example to install Snowflake, use the command `pip install dbt-snowflake`. The installation will include `dbt-core` and any other required dependencies, which may include both other dependencies and even other adapter plugins. Read more about [installing dbt](/docs/core/installation).
 
 
 ## Maintainers
