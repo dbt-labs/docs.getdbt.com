@@ -28,15 +28,15 @@ Alternatively, you can start the process from the **Settings** page in the **Sin
 
 Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. Skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
 
-## SAML 2.0 and Okta
-
-SAML 2.0 users must update a few fields in the SSO app configuration to match the new Auth0 URL and URI.  You can approach this by editing the existing SSO app settings or creating a new one to accommodate the Auth0 settings. One approach isn't inherently better, so choose whichever works best for your organization.
-
 :::warning Login {slug}
 
 The login slug shouldn't have an underscore. If it does, you need to change it on the **Account Settings** page. After changing the slug, the admins must share it with dbt Cloud users, as the login URL will differ.
 
 :::
+
+## SAML 2.0 and Okta
+
+SAML 2.0 users must update a few fields in the SSO app configuration to match the new Auth0 URL and URI.  You can approach this by editing the existing SSO app settings or creating a new one to accommodate the Auth0 settings. One approach isn't inherently better, so choose whichever works best for your organization.
 
 The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`

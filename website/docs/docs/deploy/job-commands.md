@@ -42,7 +42,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 ### Command list
 
 You can add or remove as many [dbt commands](/reference/dbt-commands) as necessary for every job. However, you need to have at least one dbt command. 
-Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt-commands) are meant for use in dbt Core's [CLI](/docs/core/about-the-cli) only and are not available in dbt Cloud.
+Commands under the "CLI" tab in the [dbt Command reference doc](/reference/dbt-commands) page are meant for use in the [CLI](/docs/core/about-the-cli) only and are not available in dbt Cloud.
 
 
 :::tip Using selectors
@@ -64,12 +64,12 @@ Job command failures can mean different things for different commands. Some comm
 
 - **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
 
-- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs#warnings-as-errors), only an error stops the next step. 
+- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs/warnings), only an error stops the next step. 
 
 - **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command executes resources in the DAG-specified order. If any upstream resource fails, all downstream resources are skipped, and the command exits with an error code of 1.
 
 - **Selector failures**
-   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
+   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs/failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
 
    - If a selector doesn't match any nodes, it's not considered a failure.
 
