@@ -5,28 +5,15 @@ sidebar_label: "Run results"
 
 **Current schema**: [`v4`](https://schemas.getdbt.com/dbt/run-results/v4/index.html)
 
-<VersionBlock lastVersion="1.6">
-  **Produced by:**
-  [`build`](/reference/commands/build)
-  [`compile`](/reference/commands/compile)
-  [`docs generate`](/reference/commands/cmd-docs)
-  [`run`](/reference/commands/run)
-  [`seed`](/reference/commands/seed)
-  [`snapshot`](/reference/commands/snapshot)
-  [`test`](/reference/commands/test)
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-  **Produced by:**
-  [`build`](/reference/commands/build)
-  [`compile`](/reference/commands/compile)
-  [`docs generate`](/reference/commands/cmd-docs)
-  [`run`](/reference/commands/run)
-  [`run-operation`](/reference/commands/run-operation)
-  [`seed`](/reference/commands/seed)
-  [`snapshot`](/reference/commands/snapshot)
-  [`test`](/reference/commands/test)
-</VersionBlock>
+ **Produced by:**
+ [`build`](/reference/commands/build)
+ [`compile`](/reference/commands/compile)
+ [`docs generate`](/reference/commands/cmd-docs)
+ [`run`](/reference/commands/run)
+ <VersionBlock firstVersion="1.6">[`run-operation`](/reference/commands/run-operation)</VersionBlock>
+ [`seed`](/reference/commands/seed)
+ [`snapshot`](/reference/commands/snapshot)
+ [`test`](/reference/commands/test)
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 
