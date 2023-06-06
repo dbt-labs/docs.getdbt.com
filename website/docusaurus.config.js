@@ -115,7 +115,7 @@ var siteSettings = {
           activeBaseRegex: "docs/(?!(dbt-cloud))",
         },
         {
-          to: "/reference/dbt_project.yml",
+          to: "reference/references-overview",
           label: "Reference",
           position: "left",
           activeBasePath: "reference",
@@ -131,6 +131,10 @@ var siteSettings = {
             {
               label: 'Guides',
               to: '/guides/best-practices',
+            },
+            {
+              label: "Quickstarts",
+              to: "/quickstarts",
             },
             {
               label: "Developer Blog",
@@ -241,6 +245,7 @@ var siteSettings = {
     [path.resolve("plugins/buildGlobalData"), { versionedPages, versionedCategories }],
     path.resolve("plugins/buildAuthorPages"),
     path.resolve("plugins/buildSpotlightIndexPage"),
+    path.resolve("plugins/buildQuickstartIndexPage"),
     path.resolve("plugins/buildRSSFeeds"),
   ],
   scripts: [
