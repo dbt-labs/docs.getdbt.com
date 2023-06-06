@@ -12,6 +12,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It w
 - Load sample data into your Snowflake account.
 - Connect dbt Cloud to Snowflake.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Add sources to your dbt project. Sources allow you to name and describe the raw data already loaded into Snowflake.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
@@ -396,6 +397,73 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ src="Runs/run-one-model" />
 <FAQ src="Models/unique-model-names" />
 <FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+
+## Build models on top of sources
+
+Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
+- select from source tables in your models using the {{ source() }} function, helping define the lineage of your data
+- test your assumptions about your source data
+- calculate the freshness of your source data
+
+1. Create a new YML file `models/sources.yml`.
+2. In order to declare the the sources, copy the following into the file and click **Save**.
+
+    <File name='models/sources.yml'>
+
+    ```yml
+    version: 2
+
+    sources:
+    - name: jaffle_shop
+        description: This is a replica of the Postgres database used by our app
+        database: raw
+        schema: jaffle_shop
+        tables:
+        - name: customers
+          description: One record per customer.
+        - name: orders
+          description: One record per order. Includes cancelled and deleted orders.
+    ```
+
+    </File>
+
+3. Edit the `models/stg_customers.sql` file to select from the `customers` table in the `jaffle_shop` source.
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from {{ source('jaffle_shop', 'customers') }}
+    ```
+
+    </File>
+
+4. Edit the `models/stg_orders.sql` file to select from the `orders` table in the `jaffle_shop` source.
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from {{ source('jaffle_shop', 'orders') }}
+    ```
+
+    </File>
+
+5. Execute `dbt run`. 
+
+    The results of your `dbt run` will be the exaxt same as the previous step. Your `stg_cusutomers` and `stg_orders`
+    models will still query from the same raw data source in Snowflake. By using `source`, you get the added benefits
+    of being able to tests and document your raw data, as well as understand the lineage of your sources. 
+
 
 <Snippet src="quickstarts/test-and-document-your-project" />
 
