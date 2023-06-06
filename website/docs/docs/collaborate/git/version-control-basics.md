@@ -60,3 +60,5 @@ Refer to [merge conflicts](/docs/collaborate/git/merge-conflicts) to learn how t
 dbt Labs recommends that you exclude files so they're not tracked by Git and won't slow down your dbt project.
 
 You can do this with a special file named [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) which is automatically included in your dbt project after you initialize it in dbt Cloud. The `.gitignore` file must be placed at the root of your dbt project.
+
+<FAQ src="Git/gitignore"/>

@@ -4,7 +4,6 @@ description: "Learn how connecting your GitLab account provides convenience and 
 id: "connect-gitlab"
 ---
 
-## Overview
 
 Connecting your GitLab account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
 - Import new GitLab repos with a couple clicks during dbt Cloud project setup.
@@ -117,3 +116,9 @@ If you do see your repository listed, but are unable to import the repository su
 - You are a maintainer of that repository. Only users with maintainer permissions can set up repository connections.
 
 If you imported a repository using the dbt Cloud native integration with GitLab, you should be able to see the clone strategy is using a `deploy_token`. If it's relying on an SSH key, this means the repository was not set up using the native GitLab integration, but rather using the generic git clone option. The repository must be reconnected in order to get the benefits described above.
+
+## FAQs
+
+<FAQ src="Git/gitignore"/>
+<FAQ src="Git/gitlab-authentication"/>
+<FAQ src="Git/gitlab-selfhosted"/>
