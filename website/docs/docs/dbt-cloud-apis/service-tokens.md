@@ -36,8 +36,8 @@ The following permissions can be assigned to a service account token on a Team p
 **Account Admin**<br/>
 Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  A Team plan refers to this permission set as an "Owner role." For more on these permissions, see [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin).
 
-**Discovery Only**<br/>
-Discovery only service tokens can authorize requests to the Discovery API.
+**Metadata Only**<br/>
+Metadata only service tokens can authorize requests to the Discovery API.
 
 **Job Admin**<br/>
 Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs.  
