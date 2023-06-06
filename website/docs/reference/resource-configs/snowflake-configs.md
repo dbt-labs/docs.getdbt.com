@@ -273,7 +273,7 @@ select * from index_sessions
 
 <VersionBlock firstVersion="1.2" lastVersion="1.5">
 
-When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables and <Term id="view">views</Term>. The default value is `false`.
+When the `copy_grants` config is set to `true`, dbt will add the `copy grants` <Term id="ddl" /> qualifier when rebuilding tables and <Term id="view">views</Term>. The default value for the `copy_grants` config is set to `false`.
 
 </VersionBlock>
 
