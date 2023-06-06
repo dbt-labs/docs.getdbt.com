@@ -118,7 +118,7 @@ Running with dbt=0.21.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
 
-See [global configs](/reference/global-configs#checking-version-compatibility) for usage details.
+See [global configs](/reference/global-configs/version-compatibility) for usage details.
 
 ## Recommendation
 * This is a recommended configuration

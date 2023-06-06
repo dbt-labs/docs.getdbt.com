@@ -49,6 +49,18 @@ You can set up, view, and share your project documentation in order to streamlin
 
 Refer to [build and view your docs](/docs/collaborate/build-and-view-your-docs) for more info.
 
+### Run history
+
+The Run History dashboard in dbt Cloud helps you monitor the health of your dbt project. It provides a detailed overview of all of your project's job runs and empowers you with a variety of filters to help you focus on specific aspects. You can also use it to review recent runs, find errored runs, and track the progress of runs in progress. You can access it on the top navigation menu by clicking **Deploy** and then **Run History**. 
+
+The dashboard displays your full run history, including job name, status, environment associated, job trigger, commit SHA, schema, and timing info. 
+
+dbt Cloud developers can access their run history for the last 365 days through the dbt Cloud user interface (UI) and API.
+
+We limit self-service retrieval of run history metadata to 365 days in order improve dbt Cloud's performance. For more info on the run history retrieval change, refer to [Older run history retrieval change](/docs/dbt-versions/release-notes/May-2023/run-history-endpoint).
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="85%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+
 ### Access logs
 
 You can view or download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently.
@@ -95,7 +107,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
     * **Environment** &mdash; Link to an existing deployment environment
     * **dbt Version** &mdash; Select the environment [version](/docs/dbt-versions/core). We recommend the most recent version
     * **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) for any dbt cloud job to correspond to settings in your project
-    * **Threads** &mdash; The default value will be 4 [threads](/docs/core/connection-profiles#understanding-threads)
+    * **Threads** &mdash; The default value will be 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads)
 
 1. Define [environment variables](/docs/build/environment-variables) if you wish to customize the behavior of your project
 

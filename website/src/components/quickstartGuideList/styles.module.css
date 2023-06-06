@@ -1,0 +1,29 @@
+.quickstartHero h1 {
+    font-size: clamp(var(--ifm-h1-font-size) * 0.9375, 1vw, var(--ifm-h1-font-size));
+    --ifm-h1-font-size: 3rem;
+
+}
+
+@media (max-width: 576px) {
+    .quickstartHero h1 {
+        --ifm-h1-font-size: 2rem;
+    }
+}
+
+.quickstartHero p {
+    font-size: 1.25rem;
+    margin: 0 auto;
+}
+
+.quickstartCardContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    padding: 5rem 1rem;
+}
+
+@media (max-width: 996px) {
+    .quickstartCardContainer {
+        grid-template-columns: 1fr;
+    }
+}
