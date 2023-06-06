@@ -15,6 +15,15 @@ meta:
   config_page: '/reference/resource-configs/azuresynapse-configs'
 ---
 
+:::info
+
+The following is a guide to using Azure Synapse Analytics Dedicated SQL Pools, formerly SQL DW. For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
+
+Refer to [Microsoft Fabric Synapse Data Warehouse](/docs/core/connect-data-platform/fabric-setup) to set it up with dbt.
+
+
+:::
+
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
 <ul>
@@ -61,7 +70,7 @@ Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.
 If you already have ODBC Driver 17 installed, then that one will work as well.
 
 :::tip Default settings change in dbt-synapse v1.2 / ODBC Driver 18
-Microsoft made several changes related to connection encryption. Read more about the changes [here](/reference/warehouse-setups/mssql-setup).
+Microsoft made several changes related to connection encryption. Read more about the changes [here](/docs/core/connect-data-platform/mssql-setup).
 :::
 
 ### Authentication methods
@@ -93,4 +102,4 @@ your_profile_name:
 
 </File>
 
-You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](/reference/warehouse-setups/mssql-setup).
+You can find all the available options and the documentation and how to configure them on [the documentation page for the dbt-sqlserver adapter](/docs/core/connect-data-platform/mssql-setup).
