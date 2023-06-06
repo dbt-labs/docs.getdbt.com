@@ -161,7 +161,7 @@ For more details on changes of sslmode, our design choices and reasoning, please
 
 The[ autocommit mode](https://www.psycopg.org/docs/connection.html#connection.autocommit) is useful to execute commands that run outside a transaction. Connection objects used in Python must have `autocommit = True` to run operations such as `CREATE DATABASE`, and `VACUUM`. `autocommit` is off by default in `redshift_connector`, but we've changed this default to `True` to ensure certain macros run successfully in your dbt project.
 
-If desired, you can define a seperate target with `autocommit=True` as such:
+If desired, you can define a separate target with `autocommit=True` as such:
 
 <File name='~/.dbt/profiles.yml'>
 
