@@ -13,7 +13,7 @@ To fix this, complete the following steps:
 
 <VersionBlock firstVersion="1.5">
 
-1. In the dbt Cloud IDE, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project:
+1. In the dbt Cloud IDE, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project `.gitignore` file:
 ```bash
 target/
 dbt_packages/
@@ -42,7 +42,7 @@ dbt_modules/
 
 <VersionBlock lastVersion="1.4">
 
-1. In the dbt Cloud IDE, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project:
+1. In the dbt Cloud IDE, add the following [.gitignore contents](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) in your dbt project `.gitignore` file:
 ```bash
 target/
 dbt_packages/
