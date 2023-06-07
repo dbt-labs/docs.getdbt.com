@@ -31,7 +31,7 @@ The Cloud IDE is a powerful tool that can help streamline and govern your data p
 
 - The IDE has syntax highlighting for SQL. This makes it easy to visually distinguish between different parts of your code. This helps prevent syntax errors and improve readability.
 - Use the IDE built-in auto-completion, which suggests table names, arguments, and column names as you type. This saves time and reduces the likelihood of typos or errors in your code.
-- The code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) tools allow you to standardize your SQL code with ease. 
+- The code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) tools allow you to standardize and fix your SQL code with ease. 
 - The IDE has a range of navigation tools, making it easy to move around your code with ease. You can quickly jump to specific lines of code, find and replace text, and navigate between different files in your project. 
 - Use the version control menu and features to version-control your code with just a few clicks. 
 
