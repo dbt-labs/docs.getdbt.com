@@ -10,10 +10,10 @@ sidebar_label: "Run results"
  [`compile`](/reference/commands/compile)
  [`docs generate`](/reference/commands/cmd-docs)
  [`run`](/reference/commands/run)
-<VersionBlock firstVersion="1.6">[`run-operation`](/reference/commands/run-operation)</VersionBlock>
  [`seed`](/reference/commands/seed)
  [`snapshot`](/reference/commands/snapshot)
- [`test`](/reference/commands/test)
+ [`test`](/reference/commands/test) <VersionBlock firstVersion="1.6">[`run-operation`](/reference/commands/run-operation) </VersionBlock>
+ 
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 
