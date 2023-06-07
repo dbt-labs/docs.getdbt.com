@@ -22,7 +22,7 @@ In the dbt Cloud IDE, you have the capability to perform linting and formatting 
 
 In the dbt Cloud IDE, each file type has its own unique linting and formatting rules. You have the option to [customize](#customize-linting) the linting process to add more flexibility and enhance problem/style detection. 
 
-By default, the IDE uses sqlfmt to format your code, making it convenient to use right away. This means that the IDE will format your code using the sqlfmt rules. However, if you have a file named ".sqlfluff" in the root directory of your dbt project, the IDE will default to SQLFluff instead.
+By default, the IDE uses sqlfmt to format your code, making it convenient to use right away. This means that the IDE will format your code using the sqlfmt rules. However, if you have a file named `.sqlfluff` in the root directory of your dbt project, the IDE will default to SQLFluff instead.
 
 <DocCarousel slidesPerView={1}>
 
