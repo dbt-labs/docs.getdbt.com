@@ -1,7 +1,7 @@
 ---
 id: or
 title: SQL OR
-description: Use the OR operator in a WHERE clause to filter on multiple field values or perform more advanced joins on multiple fields.
+description: Read this guide to learn about the SQL OR operator in dbt.
 slug: /sql-reference/or
 ---
 

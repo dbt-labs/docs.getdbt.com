@@ -1,5 +1,6 @@
 ---
-title: "selected_resources"
+title: "About selected_resources context variable"
+sidebar_label: "selected_resources"
 id: "selected_resources"
 description: "Contains a list of all the nodes selected by current dbt command."
 ---
@@ -11,7 +12,7 @@ Currently, this variable is not accessible when using the command `run-operation
 
 :::danger Warning!
 
-dbt actively builds the graph during the [parsing phase](execute) of
+dbt actively builds the graph during the [parsing phase](/reference/dbt-jinja-functions/execute) of
 running dbt projects, so the `selected_resources` context variable will be
 empty during parsing. Please read the information on this page to effectively use this variable.
 

@@ -76,7 +76,7 @@ After configuring the Project subdirectory option, dbt Cloud will use it as the 
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/quickstarts/overview) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/quickstarts) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
 During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 
@@ -89,5 +89,5 @@ If you want to see what a mature, production project looks like, check out the [
 
 ## Related docs
 * [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
-* [Quickstarts for dbt Cloud](/docs/quickstarts/overview)
-* [Quickstart for dbt Core](/docs/quickstarts/dbt-core/manual-install)
+* [Quickstarts for dbt Cloud](/quickstarts)
+* [Quickstart for dbt Core](/quickstarts/manual-install)

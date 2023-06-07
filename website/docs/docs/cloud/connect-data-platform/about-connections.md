@@ -4,20 +4,20 @@ id: about-connections
 description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
 ---
-dbt Cloud can connect with a variety of data platform providers including: 
-
-- [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
-- [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
+ddbt Cloud can connect with a variety of data platform providers including: 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
-- [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
+- [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
+- [Google BigQuery](/docs/cloud/connect-data-platform/connect-bigquery)
 - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
+- [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
+- [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
 
 You can connect to your database in dbt Cloud by clicking the gear in the top right and selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choose-a-connection.png" title="Choose a connection"/>
 
-These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/docs/quickstarts/overview)
+These connection instructions provide the basic fields required for configuring a data platform connection in dbt Cloud. For more detailed guides, which include demo project data, read our [Quickstart guides](https://docs.getdbt.com/quickstarts)
 
 ## IP Restrictions
 

@@ -1,5 +1,6 @@
 ---
-title: "Exposures"
+title: "Add Exposures to your DAG"
+sidebar_label: "Exposures"
 id: "exposures"
 ---
 
@@ -12,7 +13,7 @@ id: "exposures"
 
 Exposures make it possible to define and describe a downstream use of your dbt project, such as in a dashboard, application, or data science pipeline. By defining exposures, you can then:
 - run, test, and list resources that feed into your exposure
-- populate a dedicated page in the auto-generated [documentation](documentation) site with context relevant to data consumers
+- populate a dedicated page in the auto-generated [documentation](/docs/collaborate/documentation) site with context relevant to data consumers
 
 ### Declaring an exposure
 
@@ -102,6 +103,7 @@ _Expected:_
 </VersionBlock>
 
 _Optional:_
+- **label**:  may contain spaces, capital letters, or special characters.
 - **url**:  enables the link to **View this exposure** in the upper right corner of the generated documentation site
 - **maturity**: one of `high`, `medium`, `low`
 
@@ -128,6 +130,6 @@ When we generate our documentation site, you'll see the exposure appear:
 
 ## Related docs
 
-* [Exposure properties](exposure-properties)
-* [`exposure:` selection method](node-selection/methods#the-exposure-method)
+* [Exposure properties](/reference/exposure-properties)
+* [`exposure:` selection method](/reference/node-selection/methods#the-exposure-method)
 * [Dashboard status tiles](/docs/deploy/dashboard-status-tiles)

@@ -1,5 +1,6 @@
 ---
-title: "on-run-end Context"
+title: "About on-run-end context variable"
+sidebar_label: "on-run-end context"
 id: "on-run-end-context"
 description: "Use these variables in the context for `on-run-end` hooks."
 ---
@@ -12,6 +13,7 @@ These variables are only available in the context for `on-run-end` hooks. They w
 :::
 
 ## schemas
+
 The `schemas` context variable can be used to reference the schemas that dbt has built models into during a run of dbt. This variable can be used to grant usage on these schemas to certain users at the end of a dbt run.
 
 Example:
@@ -104,7 +106,7 @@ on-run-end:
 
 </Changelog>
 
-The `results` variable contains a list of [Result objects](dbt-classes#result-objects) with one element per resource that executed in the dbt job. The Result object provides access within the Jinja on-run-end context to the information that will populate the [run results JSON artifact](run-results-json).
+The `results` variable contains a list of [Result objects](/reference/dbt-classes#result-objects) with one element per resource that executed in the dbt job. The Result object provides access within the Jinja on-run-end context to the information that will populate the [run results JSON artifact](/reference/artifacts/run-results-json).
 
 Example usage:
 
