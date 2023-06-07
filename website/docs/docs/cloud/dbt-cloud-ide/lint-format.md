@@ -16,7 +16,7 @@ Linters analyze code for errors, bugs, and style issues, while formatters fix st
 
 In the dbt Cloud IDE, you have the capability to perform linting and formatting on five different file types (SQL, YAML, Markdown, JSON, and Python):
  
-- SQL &mdash; [Lint](#lint) with SQLFluff and [format](#format) with sqlfmt
+- SQL &mdash; [Lint](#lint) and fix with SQLFluff, and [format](#format) with sqlfmt
 - YAML, Markdown, and JSON &mdash; Format with Prettier
 - Python &mdash; Format with Black
 
