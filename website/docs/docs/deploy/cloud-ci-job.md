@@ -46,20 +46,6 @@ To set up CI:
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-tab.png" title="Configuring continuous integration for a dbt Cloud Job"/>
 
 
-### GitHub pull request example
-
-The green checkmark means the dbt builds and tests were successful. The _Details_ link shown here will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="GitHub pull request example"/>
-
-### GitLab pull request example
-
-The green checkmark means the dbt builds and tests were successful. Clicking the dbt Cloud pop up will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="GitLab pull request"/>
-
-### Azure DevOps pull request example
-
-The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" title="Azure DevOps pull request"/>
 
 ## Configuring a Slim CI job
 
@@ -73,6 +59,28 @@ A Slim CI job:
 
 dbt then identifies the models that need to be run and tested using a state comparison to the production job that you've selected.
 
+
+
+## Set up Slim CI jobs
+
+Once you have a Git connection, you can set up Slim CI jobs to run when someone opens a new pull request in your dbt repository. By running and testing only modified models, the run times for jobs are shorter which can also reduce unnecessary resource usage on your data platform.
+
+### Prerequisites
+
+- You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You must be connected using dbt Cloud’s native integration with [GitHub account](/docs/cloud/git/connect-github), [GitLab account](/docs/cloud/git/connect-gitlab), or [Azure DevOps account](/docs/cloud/git/connect-azure-devops).
+    - If you’re using GitLab, you must use a paid or self-hosted account which includes support for GitLab webhooks.
+    - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
+
+### Procedure
+
+1. On your deployment environment page, click **Create One** to create a new job or edit an existing job to open the **Create Job** settings page.
+    - Which fields and options should be here
+2. In the **Execution Settings** section: 
+    - For the option **Defer to a previous run state**, choose **Production Job (Production)**. This tells dbt Cloud to compare the manifest of the current job against the project representation that was materialized the last time this job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
+    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](https://docs.getdbt.com/docs/deploy/cloud-ci-job#deferral-and-state-comparison)
+3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, Enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
+
 ### Deferral and state comparison  
 
 When creating a job in dbt Cloud, you can configure your **Execution Settings** to defer to a previous run state by using the dropdown menu to select which _production_ job you want to defer to.
@@ -84,7 +92,7 @@ When a job is selected, dbt Cloud will look at the artifacts from that job's mos
 
 In your job commands, you can signal to dbt to run only on these modified resources and their children by including the `state:modified+` argument.
 
-As example:
+For example:
 
 ```
 dbt build --select state:modified+
@@ -94,41 +102,23 @@ Because dbt Cloud manages deferral and state environment variables, there is no 
 
 To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/project-state).
 
-### Fresh rebuilds
+### Example pull requests
 
-As an extension of the Slim CI feature, dbt Cloud can rerun and retest only the things that are fresher compared to a previous run.
+#### GitHub pull request example
 
-<VersionBlock lastVersion="1.0">
+The green checkmark means the dbt builds and tests were successful. The _Details_ link shown here will navigate you to the relevant CI run in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="GitHub pull request example"/>
 
-Only supported by v1.1 or newer.
+#### GitLab pull request example
 
-</VersionBlock>
+The green checkmark means the dbt builds and tests were successful. Clicking the dbt Cloud pop up will navigate you to the relevant CI run in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="GitLab pull request"/>
 
-<VersionBlock firstVersion="1.1">
+#### Azure DevOps pull request example
 
-Only supported by v1.1 or newer.
+The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" title="Azure DevOps pull request"/>
 
-:::caution Experimental functionality
-The `source_status` selection is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
-
-When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
-
-As example:
-
-```bash
-# Command step order
-dbt source freshness
-dbt build --select source_status:fresher+
-```
-
-</VersionBlock>
-
-More example commands in [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
-
-Make the necessary changes to your project and double-check if the temporary PR schemas drop after a merge or close of the pull request. 
-
-Note: dbt Cloud may not drop the temporary schema from your data warehouse if your project has database / schema customization via the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) / [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more info, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
 
 ## Troubleshooting
 
