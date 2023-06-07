@@ -25,7 +25,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 
 | Term | Definition |
 | --- | --- |
-| Scheduler | The dbt Cloud engine that powers job execution. The scheduler queues scheduled or API-triggered job runs, prepares an environment to execute job commands in the user's cloud data platform, and stores and serves logs and artifacts that are byproducts of run execution. |
+| Scheduler | The dbt Cloud engine that powers job execution. The scheduler queues scheduled or API-triggered job runs, prepares an environment to execute job commands in your cloud data platform, and stores and serves logs and artifacts that are byproducts of run execution. |
 | Job | A collection of run steps, settings, and a trigger to invoke dbt commands against a project in the user's cloud data platform. |
 | Job queue | The job queue acts as a waiting area for job runs when they are scheduled or triggered to run; runs remain in queue until execution begins. More specifically, the Scheduler checks the queue for runs that are due to execute, ensures the run is eligible to start, and then prepares an environment with appropriate settings, credentials, and commands to begin execution. Once execution begins, the run leaves the queue. |
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
