@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since dimensions can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
-Dimensions are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provide categorical or time-based context. In SQL, dimensions are typically included in the GROUP BY clause.
+Dimensions are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions are typically included in the GROUP BY clause.
 
 Refer to the following semantic model example:
 
