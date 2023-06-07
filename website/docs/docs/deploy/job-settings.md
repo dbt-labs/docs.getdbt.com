@@ -29,7 +29,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 1. Provide a job name, for example "Hourly Customer Job". 
 1. Under **Environment**, add the following:
     * **Environment** &mdash; Link to an existing deployment environment.
-    * **dbt Version** &mdash; Select the environment [version](/docs/dbt-versions/core). dbt Labs recommends inheriting the version from the environment settings.
+    * **dbt Version** &mdash; Select the dbt [version](/docs/dbt-versions/core). dbt Labs recommends inheriting the version from the environment settings.
     * **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) for any dbt cloud job to correspond to settings in your project.
     * **Threads** &mdash; The default value is 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency. 
 
