@@ -17,7 +17,7 @@ dbt's node selection syntax makes it possible to run only specific resources in 
 
 :::info Nodes and resources
 
-We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These  encompass all the models, tests, sources, seeds, snapshots, exposures, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
+We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"nodes"</a> and "resources" interchangeably. These encompass all the models, tests, sources, seeds, snapshots, exposures, and analyses in your project. They are the objects that make up dbt's DAG (directed acyclic graph).
 :::
 
 ## Specifying resources
@@ -85,7 +85,7 @@ Note that when you're using `--selector`, most other flags (namely `--select` an
 
 One of the greatest underlying assumptions about dbt is that its operations should be **stateless** and **<Term id="idempotent" />**. That is, it doesn't matter how many times a model has been run before, or if it has ever been run before. It doesn't matter if you run it once or a thousand times. Given the same raw data, you can expect the same transformed result. A given run of dbt doesn't need to "know" about _any other_ run; it just needs to know about the code in the project and the objects in your database as they exist _right now_.
 
-That said, dbt does store "state"—a detailed, point-in-time view of project resources, database objects, and invocation results—in the form of its [artifacts](/docs/deploy/artifacts). If you choose, dbt can use these artifacts to inform certain  operations. Crucially, the operations themselves are still stateless and <Term id="idempotent" />: given the same manifest and the same raw data, dbt will produce the same transformed result.
+That said, dbt does store "state"—a detailed, point-in-time view of project resources (also referred to as nodes), database objects, and invocation results—in the form of its [artifacts](/docs/deploy/artifacts). If you choose, dbt can use these artifacts to inform certain  operations. Crucially, the operations themselves are still stateless and <Term id="idempotent" />: given the same manifest and the same raw data, dbt will produce the same transformed result.
 
 dbt can leverage artifacts from a prior invocation as long as their file path is passed to the `--state` flag. This is a prerequisite for:
 - [The `state:` selector](/reference/node-selection/methods#the-state-method), whereby dbt can identify resources that are new or modified
@@ -142,7 +142,7 @@ After issuing one of the above commands, you can reference the results by adding
 $ dbt run --select result:<status> --defer --state path/to/prod/artifacts
 ```
 
-The available options depend on the node type: 
+The available options depend on the resource (node) type: 
 
 |                | model | seed | snapshot | test |
 |----------------|-------|------|------|----------|

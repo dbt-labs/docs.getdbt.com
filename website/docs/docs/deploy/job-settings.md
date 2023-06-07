@@ -4,7 +4,7 @@ description: "Learn how to create and schedule jobs in dbt Cloud for the schedul
 tags: [scheduler]
 ---
 
-Jobs make it easy to run dbt commands against a project in the your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have a run history, run status and a run overview, which provides you with:
+Jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have a run history, run status, and a run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
@@ -33,7 +33,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
     * **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) for any dbt cloud job to correspond to settings in your project.
     * **Threads** &mdash; The default value is 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency. 
 
-1. Define [environment variables](/docs/build/environment-variables) if you wish to customize the behavior of your project
+1. Define [environment variables](/docs/build/environment-variables) if you want to customize the behavior of your project.
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/create-new-job.jpg" width="85%" title="Configuring your environment job settings"/>
 

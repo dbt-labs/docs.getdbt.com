@@ -57,7 +57,7 @@ query Compare($environmentId: Int!, $first: Int!) {
 
 Most Discovery API use cases will favor the _applied state_ since it pertains to what has actually been run and can be analyzed.
  
-### State nuance per node type
+### Affected states by node type
 
 | Node      | Executed in DAG  | Created by execution | Exists in database | Lineage               | States               |
 |-----------|------------------|----------------------|--------------------|-----------------------|----------------------|
@@ -74,7 +74,7 @@ Most Discovery API use cases will favor the _applied state_ since it pertains to
 
  ### Caveats about state/metadata updates 
 
-Over time, Cloud Artifacts will provide information to maintain state for features/services in dbt Cloud and enable you to access state in dbt Cloud and its downstream ecosystem. It is currently focused on the latest production state, but this focus will evolve.
+Over time, Cloud Artifacts will provide information to maintain state for features/services in dbt Cloud and enable you to access state in dbt Cloud and its downstream ecosystem. Cloud Artifacts is currently focused on the latest production state, but this focus will evolve.
 
 Here are some limitations of the state representation in the Discovery API:
 
