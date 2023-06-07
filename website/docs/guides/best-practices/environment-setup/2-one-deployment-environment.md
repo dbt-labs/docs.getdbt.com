@@ -41,7 +41,7 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
     2. **Slim CI Job**: Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Enable this option by selecting`Run on Pull Requests?` under the `Webhooks` tab under the `Triggers` section.
 
         :::info
-        💡 This job will also need to [**defer to one of the Production jobs**](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) created in step 3a. This enables the use of the [`state`](/docs/deploy/project-state) modifiers in your selection syntax to only run changes introduced by your PR.
+        💡 This job will also need to [**defer to one of the Production jobs**](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) created in step 3a. This enables the use of the [`state`](/reference/node-selection/syntax#about-node-selection) modifiers in your selection syntax to only run changes introduced by your PR.
 
         :::
 
