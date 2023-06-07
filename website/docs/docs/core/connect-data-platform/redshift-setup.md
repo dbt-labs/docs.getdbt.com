@@ -141,7 +141,7 @@ In dbt-redshift 1.5, we switched to using `redshift_connector`, which accepts `v
 
 For backward compatibility, dbt-redshift now supports valid inputs for `sslmode` in `psycopg2`. We've added conversion logic mapping each of `psycopg2`'s accepted `sslmode` values to the corresponding `ssl` and `sslmode` parameters in `redshift_connector`.
 
-Table below details accepted `sslmode` parameters and how connection will be made according to each option:
+The table below details accepted `sslmode` parameters and how the connection will be made according to each option:
 
 
 `sslmode` parameter | Expected behavior in dbt-redshift | Actions behind the scenes
