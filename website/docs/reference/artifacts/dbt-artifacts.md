@@ -5,7 +5,7 @@ sidebar_label: "About dbt artifacts"
 
 With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
 - [documentation](/docs/collaborate/documentation)
-- [state](/docs/deploy/project-state)
+- [state](/reference/node-selection/syntax#about-node-selection)
 - [visualizing source freshness](/docs/build/sources#snapshotting-source-data-freshness)
 
 They could also be used to:
