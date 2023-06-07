@@ -6,7 +6,7 @@ sidebar_label: "Lint and format"
 tags: [IDE]
 ---
 
-Enhance your development workflow to focus on code quality by integrating with popular linters and formatters like [SQLFluff](https://sqlfluff.com/), [sqlfmt](http://sqlfmt.com/), [Black](https://black.readthedocs.io/en/latest/), and [Prettier](https://prettier.io/). Leverage these powerful tools directly in the dbt Cloud IDE without interrupting your development flow.
+Enhance your development workflow by integrating with popular linters and formatters like [SQLFluff](https://sqlfluff.com/), [sqlfmt](http://sqlfmt.com/), [Black](https://black.readthedocs.io/en/latest/), and [Prettier](https://prettier.io/). Leverage these powerful tools directly in the dbt Cloud IDE without interrupting your development flow.
 
 <details>
 <summary>What are linters and formatters? </summary>
