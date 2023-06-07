@@ -155,7 +155,7 @@ verify-full | Connection will be made using verify-full | Set `ssl` = True &  `s
 
 When a connection is made using `verify-ca`, will look for the CA certificate in `~/redshift-ca-bundle.crt`.
 
-For more details on changes of sslmode, our design choices and reasoning, please refer to the [PR pertaining this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
+For more details on sslmode changes, our design choices, and reasoning &mdash; please refer to the [PR pertaining to this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
 
 ### `autocommit` parameter
 
