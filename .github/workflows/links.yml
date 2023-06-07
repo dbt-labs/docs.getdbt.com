@@ -14,4 +14,4 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@master
         with:
-          args: --verbose --no-progress './website/**/*.md' --accept 429
+          args: --config .github/lychee.toml './website/**/*.md'

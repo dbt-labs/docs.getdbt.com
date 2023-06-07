@@ -1,0 +1,32 @@
+###
+### Display
+###
+
+# Don't show interactive progress bar while checking links.
+no_progress = false
+
+###
+### Requests
+###
+
+# Comma-separated list of accepted status codes for valid links.
+accept = [200, 429]
+
+# Base URL or website root directory to check relative URLs.
+base = "https://docs.getdbt.com"
+
+###
+### Exclusions
+###
+
+# Exclude URLs from checking (supports regex)
+exclude = [
+  'file://*'
+]
+
+# Exclude all mail addresses from checking
+exclude_mail = true
+
+# Check links inside `<code>` and `<pre>` blocks as well as Markdown code
+# blocks.
+include_verbatim = false
