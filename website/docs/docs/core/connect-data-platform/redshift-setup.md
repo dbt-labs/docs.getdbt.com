@@ -128,12 +128,10 @@ my-redshift-db:
 
 ### Specifying an IAM Profile
 
-:::info New in dbt v0.18.0
-The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
-:::
-
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
 ## Redshift notes
+
 ### `sslmode` change
 Before to dbt-redshift 1.5, `psycopg2` was used as the driver. `psycopg2` accepts `disable`, `prefer`, `allow`, `require`, `verify-ca`, `verify-full` as valid inputs of `sslmode`, and does not have an `ssl` parameter, as indicated in PostgreSQL [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). 
 
@@ -142,7 +140,6 @@ In dbt-redshift 1.5, we switched to using `redshift_connector`, which accepts `v
 For backward compatibility, dbt-redshift now supports valid inputs for `sslmode` in `psycopg2`. We've added conversion logic mapping each of `psycopg2`'s accepted `sslmode` values to the corresponding `ssl` and `sslmode` parameters in `redshift_connector`.
 
 The table below details accepted `sslmode` parameters and how the connection will be made according to each option:
-
 
 `sslmode` parameter | Expected behavior in dbt-redshift | Actions behind the scenes
 -- | -- | --
@@ -195,6 +192,7 @@ To run certain macros with autocommit, load the profile with autocommit using th
 - `keepalives_idle`
 
 ### `sort` and `dist` keys
+
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
 
