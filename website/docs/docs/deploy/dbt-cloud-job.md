@@ -13,7 +13,7 @@ dbt Cloud offers the easiest way to run your dbt project in production. [Deployi
 - Maintain high quality code and data in production
 - Gain visibility into the health of deployment jobs, models, and tests
 
-Learn more about the features you can use in dbt Cloud to help your team ship timely, quality production data easier.
+Learn more about the features you can use in dbt Cloud to help your team ship timely, quality production data more easily.
 
 <div className="grid--2-col">
 
@@ -49,7 +49,7 @@ Learn more about the features you can use in dbt Cloud to help your team ship ti
 
 <Card
     title="Job notifications"
-    body="Receive email or Slack channel notifications when a job run succeeds, fails, or is cancelled so you can respond quickly and begin remediation if necessary."
+    body="Receive email or Slack channel notifications when a job run succeeds, fails, or is canceled so you can respond quickly and begin remediation if necessary."
     link="/docs/deploy/job-notifications"
     icon="pencil-paper"/>
 
