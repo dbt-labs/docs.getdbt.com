@@ -67,7 +67,14 @@ To configure your own linting rules:
 
 1. Create a new file in the root project directory (the parent or top-level directory for your files).
 2. Name the file `.sqlfluff` (make sure you add the `.` before `sqlfluff`).
-3. Add your custom config code. Use the following code example to incorporate well-written dbt code (or dbtonic) to your linting:
+3. Add your custom config code. 
+4. Save and commit your changes.
+5. Restart the IDE.
+6. Test it out and happy linting!
+
+:::tip Configure dbtonic linting rules
+
+Use the following code example to incorporate well-written dbt code (or dbtonic) to your linting:
 
 <details>
 <summary>dbtonic config code example provided by dbt Labs</summary>
@@ -113,10 +120,7 @@ capitalisation_policy = lower
 group_by_and_order_by_style = implicit
 ```
 </details>
-
-4. Save and commit your changes.
-5. Restart the IDE.
-6. Test it out and happy linting!
+:::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
 
@@ -291,4 +295,4 @@ To ensure optimal code quality, it's highly recommended you have one main `.sqlf
 ## Next steps
 
 - [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
-- [dbt Cloud IDE User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
+- [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
