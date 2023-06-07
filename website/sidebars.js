@@ -322,9 +322,11 @@ const sidebarSettings = {
           items: [
             "docs/deploy/artifacts",
             "docs/deploy/job-scheduler",
+            "docs/deploy/job-settings",
             "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
             "docs/deploy/job-notifications",
+            "docs/deploy/run-visibility",
             "docs/deploy/source-freshness",
             "docs/deploy/webhooks",
             "docs/deploy/dashboard-status-tiles",
@@ -332,7 +334,6 @@ const sidebarSettings = {
           ],
         },
         "docs/deploy/deployment-tools",
-        "docs/deploy/project-state",
       ],
     }, // end of "Deploy dbt jobs"
     {
@@ -412,6 +413,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-api" },
           items: [
             "docs/dbt-cloud-apis/discovery-use-cases-and-examples",
+            "docs/dbt-cloud-apis/project-state",
             "docs/dbt-cloud-apis/discovery-querying",
             {
               type: "category",
