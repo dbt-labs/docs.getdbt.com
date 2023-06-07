@@ -123,7 +123,7 @@ Many events are fired while compiling or running a specific DAG node (model, see
 
 <VersionBlock lastVersion="1.3">
 
-When `json` [log formatting](/reference/global-configs#log-formatting) is enabled, dbt will output produce rich, structured log information which can be piped into monitoring tools for analysis, or to power applications with dbt metadata in real time.
+When `json` [log formatting](/reference/global-configs/logs) is enabled, dbt will output produce rich, structured log information which can be piped into monitoring tools for analysis, or to power applications with dbt metadata in real time.
 
 Each log line will have the following <Term id="json" /> properties:
 
