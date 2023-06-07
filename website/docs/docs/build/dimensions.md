@@ -10,7 +10,7 @@ Dimensions are non-aggregatable expressions that define the level of aggregation
 
 Dimensions are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provide categorical or time-based context. In SQL, dimensions are typically included in the GROUP BY clause.
 
-For the following examples, we will refer to the following semantic model.
+Refer to the following semantic model example:
 
 ```yaml
 semantic_model:
