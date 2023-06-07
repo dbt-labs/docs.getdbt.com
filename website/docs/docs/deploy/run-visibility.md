@@ -22,7 +22,7 @@ We limit self-service retrieval of run history metadata to 365 days in order imp
 ## Model timing 
 > Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
 
-The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each model in a job run. The visualization appears for successful jobs and highlights the top 1% model durations. This helps you identify bottlenecks in your runs, so you can investigate them and potentially make changes to improve their performance. 
+The model timing dashboard on dbt Cloud displays the composition, order, and time taken by each model in a job run. The visualization appears for successful jobs and highlights the top 1% of model durations. This helps you identify bottlenecks in your runs, so you can investigate them and potentially make changes to improve their performance. 
 
 You can find the dashboard on the **Run Overview** page. 
 
