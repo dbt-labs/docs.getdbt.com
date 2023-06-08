@@ -141,7 +141,7 @@ To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/),
 To enable formatting:
 
 1. Make sure you open a `.sql` file.
-2. Click on the **`</> Config`** button on the right side of the console. (Make sure you're in a .sql file).
+2. Click on the **`</> Config`** button on the right side of the console.
 3. In the code quality tool config pop up, you have the option to select sqlfluff or sqlfmt. 
 4. To format your code, select the **sqlfmt** radio button. (Use sqlfluff to [lint](#linting) your code).
 5. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button. 
