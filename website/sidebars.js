@@ -234,7 +234,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Build your Semantic Layer",
+          label: "Build your metrics",
           link: { type: "doc", id: "docs/build/build-metrics-intro"},
           collapsed: true,
           items: [
