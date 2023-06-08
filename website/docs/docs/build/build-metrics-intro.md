@@ -15,7 +15,7 @@ MetricFlow is a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic
 
 This section explains how to use MetricFlow for defining metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), and ensuring data governance for company metrics. Before you start, keep the following considerations in mind:
 
-- You can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) on dbt Core version 1.6 beta, using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
+- For dbt Core version 1.6 beta, you can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) sing the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
   * **Note**: Support for dbt Cloud and querying via external integrations coming soon.
 
 
