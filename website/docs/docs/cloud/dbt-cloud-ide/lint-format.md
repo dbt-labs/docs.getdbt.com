@@ -144,7 +144,7 @@ To enable formatting:
 2. Click on the **`</> Config`** button on the right side of the console.
 3. In the code quality tool config pop-up, you have the option to select sqlfluff or sqlfmt.
 4. To format your code, select the **sqlfmt** radio button. (Use sqlfluff to [lint](#linting) your code).
-5. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button. 
+5. Once you've selected the **sqlfmt** radio button, go to the console section (located below the **File editor**) to select the **Format** button. Use the **Code Quality** tab to view code errors. 
 6. The **Format** button auto-formats your code in the **File editor**. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/sqlfmt.gif" width="95%" title="Use sqlfmt to format your SQL code."/>
@@ -154,7 +154,7 @@ To enable formatting:
 To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier](https://prettier.io/), which is an opinionated code formatter.
 
 1. To enable formatting, make sure you open a `.yml`, `.md`, or `.json` file.
-2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
+2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
@@ -164,7 +164,7 @@ To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier
 To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter.
 
 1. To enable formatting, make sure you open a `.py` file.
-2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
+2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. Use the **Code Quality** tab to view code errors. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="95%" title="Format Python files using Black."/>
