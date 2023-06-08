@@ -65,7 +65,8 @@ To add a user in dbt Cloud, you must be an account owner or have admin privilege
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
 2. In **Account Settings**, select **Billing**. 
-3. Enter the number of developer seats you want and click **Save**.
+3. Enter the number of developer seats you want and fill in the Payment information (including Billing information) and press 'Update Payment Information' button.
+        
 
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
 
