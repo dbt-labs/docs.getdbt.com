@@ -14,7 +14,7 @@ Linters analyze code for errors, bugs, and style issues, while formatters fix st
 </details>
 
 
-In the dbt Cloud IDE, you have the capability to perform linting and formatting on five different file types (SQL, YAML, Markdown, JSON, and Python):
+In the dbt Cloud IDE, you have the capability to perform linting, auto-fix, and formatting on five different file types:
  
 - SQL &mdash; [Lint](#lint) and fix with SQLFluff, and [format](#format) with sqlfmt
 - YAML, Markdown, and JSON &mdash; Format with Prettier
@@ -22,7 +22,7 @@ In the dbt Cloud IDE, you have the capability to perform linting and formatting 
 
 In the dbt Cloud IDE, each file type has its own unique linting and formatting rules. You have the option to [customize](#customize-linting) the linting process to add more flexibility and enhance problem/style detection. 
 
-By default, the IDE uses sqlfmt to format your code, making it convenient to use right away. This means that the IDE will format your code using the sqlfmt rules. However, if you have a file named `.sqlfluff` in the root directory of your dbt project, the IDE will default to SQLFluff instead.
+By default, the IDE uses sqlfmt rules to format your code, making it convenient to use right away. However, if you have a file named `.sqlfluff` in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
 <DocCarousel slidesPerView={1}>
 
@@ -40,12 +40,12 @@ By default, the IDE uses sqlfmt to format your code, making it convenient to use
 
 ## Lint
 
-With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/), a configurable SQL linter, to warn you of complex functions, syntax, formatting, and compilation errors. This integration provides a seamless experience and allows you to run checks on your code directly within the Cloud IDE:
+With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/), a configurable SQL linter, to warn you of complex functions, syntax, formatting, and compilation errors. This integration allows you to run checks, fix, and display any code errors directly within the Cloud IDE:
 
 - Works with Jinja and SQL, 
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the IDE).
-- Displays a **Code Quality** tab to view code errors and provide code quality visibility and management. 
+- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management. 
 
 ### Enable linting
 
@@ -53,9 +53,9 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 2. Click on the **`</> Config`** button on the right side of the console. 
 3. In the code quality tool config pop up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
-5. Once you've selected the **sqlfluff** radio button, go to the console section (located below the **File editor**) to select the **Lint** or **Fix** button:
+5. Once you've selected the **sqlfluff** radio button, go to the console section (located below the **File editor**) to select the **Lint** or **Fix** dropdown button:
     - The **Lint** button displays linting issues in the IDE as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click on the **Lint** button again to rerun linting.
-    - The **Fix** button auto-fixes errors in the **File editor**. Once you've auto-fixed, you'll see a message confirming the outcome. 
+    - The **Fix** dropdown button auto-fixes errors in the **File editor**. Once you've auto-fixed, you'll see a message confirming the outcome. 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-lint-format-console.gif" width="95%" title="Use the Lint or Fix button in the console section to lint or auto-fix your code."/>
 
@@ -124,121 +124,6 @@ group_by_and_order_by_style = implicit
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
 
-<!--
-<Tabs>
-<TabItem value="configure" label="Configure your own linting rules">
-
-To configure your own linting rules:
-
-1. Create a new file in the root project directory (the parent or top-level directory for your files)
-2. Name the file `.sqlfluff` (make sure you add the `.` before `sqlfluff`)
-3. Add the customize config code. Use the following config code example to incorporate well-written dbt code (or dbtonic) to your linting:
-
-```
-[sqlfluff]
-templater = dbt
-# This change (from jinja to dbt templater) will make linting slower
-# because linting will first compile dbt code into data warehouse code.
-runaway_limit = 10
-max_line_length = 80
-indent_unit = space
-
-[sqlfluff:indentation]
-tab_space_size = 4
-
-[sqlfluff:layout:type:comma]
-spacing_before = touch
-line_position = trailing
-
-[sqlfluff:rules:capitalisation.keywords] 
-capitalisation_policy = lower
-
-[sqlfluff:rules:aliasing.table]
-aliasing = explicit
-
-[sqlfluff:rules:aliasing.column]
-aliasing = explicit
-
-[sqlfluff:rules:aliasing.expression]
-allow_scalar = False
-
-[sqlfluff:rules:capitalisation.identifiers]
-extended_capitalisation_policy = lower
-
-[sqlfluff:rules:capitalisation.functions]
-capitalisation_policy = lower
-
-[sqlfluff:rules:capitalisation.literals]
-capitalisation_policy = lower
-
-[sqlfluff:rules:ambiguous.column_references]  # Number in group by
-group_by_and_order_by_style = implicit
-```
-4. Save and commit your changes
-5. Restart the IDE??
-6. Test it out and happy linting!
-
-</TabItem>
-
-<TabItem value="dbtonic" label="Configure dbtonic linting rules">
-
-To incorporate well-written dbt code (or dbtonic) and best practices to your linting rules, dbt Labs created the following dbtonic config code for you to save and use in your dbt project. 
-
-1. Create a new .sqlfluff file in the root project directory (the parent or top-level directory for your files)
-2. Name the file `.sqlfluff` (make sure you add the `.` before `sqlfluff`)
-3. Add the following config code:
-
-```
-[sqlfluff]
-templater = dbt
-# This change (from jinja to dbt templater) will make linting slower
-# because linting will first compile dbt code into data warehouse code.
-runaway_limit = 10
-max_line_length = 80
-indent_unit = space
-
-[sqlfluff:indentation]
-tab_space_size = 4
-
-[sqlfluff:layout:type:comma]
-spacing_before = touch
-line_position = trailing
-
-[sqlfluff:rules:capitalisation.keywords] 
-capitalisation_policy = lower
-
-[sqlfluff:rules:aliasing.table]
-aliasing = explicit
-
-[sqlfluff:rules:aliasing.column]
-aliasing = explicit
-
-[sqlfluff:rules:aliasing.expression]
-allow_scalar = False
-
-[sqlfluff:rules:capitalisation.identifiers]
-extended_capitalisation_policy = lower
-
-[sqlfluff:rules:capitalisation.functions]
-capitalisation_policy = lower
-
-[sqlfluff:rules:capitalisation.literals]
-capitalisation_policy = lower
-
-[sqlfluff:rules:ambiguous.column_references]  # Number in group by
-group_by_and_order_by_style = implicit
-```
-
-4. Save and commit your changes
-5. Restart the IDE??
-6. Test it out and happy dbtonic linting!
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>
-
-</TabItem>
-</Tabs>
--->
-
 ## Format
 
 In the dbt Cloud IDE, you can format your code to match style guides with a click of a button. The IDE integrates with formatters like sqlfmt, Prettier, and Black to automatically format code on five different file types &mdash; SQL, YAML, Markdown, Python, and JSON:
@@ -284,6 +169,12 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 
 ## Troubleshooting
 
+<details>
+<summary>Can I nest <code>.sqlfluff</code> files?</summary>
+
+To ensure optimal code quality, it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. However, you have the flexibility to customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. For all other files and folders outside of the subfolder, the rules specified in the parent `.sqlfluff` file will be used. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
+
+</details>
 <details>
 <summary>Can I nest <code>.sqlfluff</code> files?</summary>
 
