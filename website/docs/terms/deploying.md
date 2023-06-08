@@ -9,7 +9,6 @@ hoverSnippet: Deploying dbt in production means setting up a system to run a dbt
 Deploying dbt in production means setting up a system to run a dbt job on a schedule, rather than running dbt commands manually from the command line. For more details, refer to [Deploy dbt jobs](/docs/deploy/deployments). 
 
 
-In addition to setting up a schedule, there are other considerations when setting up dbt to run in production:
 
 - The complexity involved in creating a new dbt job or editing an existing one.
 - Setting up notifications if a step within your job returns an error code (for example, a model can't be built or a test fails).
