@@ -243,7 +243,7 @@ Several of the following request types accept these additional parameters:
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
 - `selector`: The name of a predefined [YAML selector](/reference/node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
-- `state`: The filepath of artifacts to use when establishing [state](/docs/deploy/project-state) (optional)
+- `state`: The filepath of artifacts to use when establishing [state](/reference/node-selection/syntax#about-node-selection) (optional)
 
 ### Compile a project ([docs](/reference/commands/compile))
 
