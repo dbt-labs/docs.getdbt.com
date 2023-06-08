@@ -12,7 +12,7 @@ Users of the Discovery API can now query the latest state of their environment, 
 - [About the Discovery API](/docs/dbt-cloud-apis/discovery-api)
 - [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
 - [Query the Discovery API](/docs/dbt-cloud-apis/discovery-querying)
-- [Project state in dbt Cloud](/docs/deploy/project-state#project-state-in-dbt-cloud) 
+- [Project state in dbt Cloud](/docs/dbt-cloud-apis/project-state) 
 
 ## Roadmap
 

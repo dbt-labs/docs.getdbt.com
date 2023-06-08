@@ -100,7 +100,7 @@ dbt build --select state:modified+
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/project-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
 ### Example pull requests
 
