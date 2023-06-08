@@ -179,15 +179,9 @@ To ensure optimal code quality, consistent code, and styles, it's highly recomme
 However, you can customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. The rules specified in the parent `.sqlfluff` file will be used for all other files and folders outside of the subfolder. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
 
 </details>
-<details>
-<summary>Can I nest <code>.sqlfluff</code> files?</summary>
-
-To ensure optimal code quality, it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. However, you have the flexibility to customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. For all other files and folders outside of the subfolder, the rules specified in the parent `.sqlfluff` file will be used. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
-
-</details>
 
 
 ## Next steps
 
-- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+- [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
 - [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
