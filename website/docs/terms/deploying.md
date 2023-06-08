@@ -10,4 +10,3 @@ Deploying dbt in production means setting up a system to run a dbt job on a sche
 
 
 
-- The complexity involved in creating a new dbt job or editing an existing one.
