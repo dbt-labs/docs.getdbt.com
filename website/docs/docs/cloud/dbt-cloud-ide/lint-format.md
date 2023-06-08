@@ -167,6 +167,8 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 2. In the console section (located below the **File editor**), select the **Format** button to auto-format your code in the **File editor**. 
 3. Once you've auto-formatted, you'll see a message confirming the outcome. 
 
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="95%" title="Format Python files using Black."/>
+
 ## Troubleshooting
 
 <details>
