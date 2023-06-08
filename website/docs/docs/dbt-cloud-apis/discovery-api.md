@@ -75,7 +75,7 @@ Use the API to review dataset changes and uses by examining exposures, lineage, 
 
 ## Types of project state
 
-There are two types of [project state](/docs/deploy/project-state#project-state-in-dbt-cloud) at the environment level that you can query the results of: 
+There are two types of [project state](/docs/dbt-cloud-apis/project-state) at the environment level that you can query the results of: 
 
 - **Definition** &mdash; The logical state of a dbt project’s [resources](/docs/build/projects) that update when the project is changed.
 - **Applied** &mdash; The output of successful dbt DAG execution that creates or describes the state of the database (for example: `dbt run`, `dbt test`, source freshness, and so on)
