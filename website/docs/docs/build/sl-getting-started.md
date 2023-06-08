@@ -6,19 +6,17 @@ sidebar_label: Getting started
 tags: [Metrics, Semantic Layer]
 ---
 
-This getting started guide explains the following steps and recommends a workflow that demonstrates some of the Semantic Layer’s essential features: 
+This getting started page recommends a workflow to help you get started creating your first metrics. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model)
 - [Create your metric](#create-your-metric)
 - [Test and upload your metric](#test-and-upload-your-metric)
 
-You can check out our [semantic layer example project](https://github.com/dbt-labs/jaffle-sl-template) to see and end-to-end example.
-
 ## Prerequisites
 
 - You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up. 
     * Note: dbt Cloud support coming soon
-- You must have an understanding of key concepts in MetricFlow, which now powers the Semantic Layer, like [measures](/docs/build/measures), [dimensions](/docs/build/dimensions), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/metricflow-core-concepts) to learn more.
+- You must have an understanding of key concepts in MetricFlow (which powers the revamped dbt Semantic Layer) like [measures](/docs/build/measures), [group_by](/docs/build/dimensions), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/metricflow-core-concepts) to learn more.
 - Your dbt environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher
 - You have a git repository set up and your git provider has write access enabled.
 - You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms). Supported adapters are Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB. 
@@ -26,13 +24,12 @@ You can check out our [semantic layer example project](https://github.com/dbt-la
 - You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)
 
 :::tip 
-New to dbt or metrics? Try our [Jaffle shop](https://github.com/dbt-labs/jaffle-sl-template/tree/main/models/metrics) sample project to help you get started!
+New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
-
 
 ## Create a semantic model
 
-In the Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. The Semantic Layer, powered by MetricFlow, takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
+In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 
 This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
@@ -46,7 +43,7 @@ semantic_models:
   model: ref('fact_transactions')
   ```
 
-2. Define your entities. These are the keys in your table that the Semantic Layer will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
+2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
 
 ```yaml
   entities:
@@ -58,7 +55,7 @@ semantic_models:
       expr: id_customer
   ```
 
-3. Define your dimensions and measures. Dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that the Semantic Layer aggregates to create metrics.
+3. Define your group_by and measures. group_by are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
 ```yaml
 measures:
@@ -85,7 +82,7 @@ from
 
 ## Create your metric
 
-Now that you've created your first semantic model, it's time to define your first metric. The Semantic Layer supports different metric types like [measure proxy](/docs/build/measure-proxy), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
+Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [measure proxy](/docs/build/measure-proxy), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
 
 The example metric we'll create is a measure proxy, a metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 
@@ -102,7 +99,7 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 ## Test and query your metrics
 
-Follow these steps to test and query your metrics using MetricFlow, which powers the dbt Semantic Layer:
+Follow these steps to test and query your metrics using MetricFlow:
 
 1. Make sure you have the `metricflow` and [dbt adapter](/docs/supported-data-platforms) installed in the CLI as you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake, BigQuery, Databricks, Redshift.
     * When you install the adapter, add `[metricflow]` at the end of the command. For example, if your adapter is Snowflake, you'll run `pip install dbt-snowflake[metricflow]`
