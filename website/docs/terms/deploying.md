@@ -12,4 +12,3 @@ Deploying dbt in production means setting up a system to run a dbt job on a sche
 
 - The complexity involved in creating a new dbt job or editing an existing one.
 - Setting up notifications if a step within your job returns an error code (for example, a model can't be built or a test fails).
-- Running and testing your dbt project before merging code into master (continuous integration).
