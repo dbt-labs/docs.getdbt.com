@@ -23,7 +23,7 @@ We limit self-service retrieval of run history metadata to 365 days to improve d
 
 You can view or download in-progress and historical logs for your dbt runs. This makes it easier for the team to debug errors more efficiently.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.jpg" width="85%" title="Access logs for run steps" />
+<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
 
 ## Model timing 
 > Available on [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) dbt Cloud accounts on the [Team or Enterprise plans](https://www.getdbt.com/pricing/).
