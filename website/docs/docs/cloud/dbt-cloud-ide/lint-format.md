@@ -50,7 +50,7 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 ### Enable linting
 
 1. To enable linting, make sure you've opened a `.sql` file.
-2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section). 
+2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section), below the **File editor**. 
 3. In the code quality tool config pop up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
 5. Once you've selected the **sqlfluff** radio button, go to the console section (located below the **File editor**) to select the **Lint** or **Fix** dropdown button:
