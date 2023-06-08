@@ -20,7 +20,7 @@ In the dbt Cloud IDE, you have the capability to perform linting, auto-fix, and 
 - YAML, Markdown, and JSON &mdash; Format with Prettier
 - Python &mdash; Format with Black
 
-In the dbt Cloud IDE, each file type has its own unique linting and formatting rules. You have the option to [customize](#customize-linting) the linting process to add more flexibility and enhance problem/style detection. 
+Each file type has its own unique linting and formatting rules. You can [customize](#customize-linting) the linting process to add more flexibility and enhance problem and style detection.
 
 By default, the IDE uses sqlfmt rules to format your code, making it convenient to use right away. However, if you have a file named `.sqlfluff` in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
