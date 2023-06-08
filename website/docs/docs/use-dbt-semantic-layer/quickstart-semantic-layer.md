@@ -5,10 +5,12 @@ description: "Define metrics and set up the dbt Semantic Layer"
 sidebar_label: "Quickstart"
 ---
 
-# dbt Semantic Layer quickstart
-
 :::info Coming soon
-The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+The dbt Semantic Layer is undergoing some [sophisticated changes](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), enabling you to define more complex metrics and query them efficiently.
+
+**What’s changing?** The dbt_metrics package will be [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/metricflow-core-concepts), a new way to define metrics in dbt.
+
+**What's new?**  Learn how to [Build your metrics](/docs/build/build-metrics-intro) using MetricFlow, which is one of four key components that makes up the revamped dbt Semantic Layer. It handles SQL query construction and defines the specification for dbt semantic models and metrics.
 :::
 
 ## Public Preview 

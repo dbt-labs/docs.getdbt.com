@@ -84,7 +84,11 @@ mf query --metrics average_purchase_price --dimensions metric_time,user_id__type
 ```
 
 ## Multi-hop joins
-::note This feature is curretnly in development and not currently available. 
+
+:::info
+This feature is currently in development and not currently available. 
+:::
+
 MetricFlow allows users to join measures and dimensions across a graph of entities, which we refer to as a 'multi-hop join.' This is because users can move from one table to another like a 'hop' within a graph.
 
 Here's an example schema for reference:
@@ -132,5 +136,12 @@ semantic_models:
 ```
 
 ### Query multi-hop joins
-::note This feature is curretnly in development and not currently available. 
-If you want to query dimensions _without_ a multi-hop join involved, use the fully qualifed dimension name with the syntax entity double underscore (dunder) dimension i.e entity__dimension. For dimensions retrieved by a multi-hop join, you need to additonally provide the entity path as a list i.e user_id.
+
+:::info 
+This feature is currently in development and not currently available.
+::: 
+
+To query dimensions _without_ a multi-hop join involved, you can use the fully qualified dimension name with the syntax entity double underscore (dunder) dimension, like `entity__dimension`. 
+
+For dimensions retrieved by a multi-hop join, you need to additionally provide the entity path as a list, like `user_id`.
+

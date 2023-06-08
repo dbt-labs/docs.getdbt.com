@@ -18,7 +18,7 @@ You can configure semantic models in your dbt project directory in a `YAML` file
 1. [Description](#description) &mdash; Includes important details in the description.
 1. [Model](#model) &mdash;  Specifies the dbt model for the semantic model using the `ref` function.
 1. [Entities](#entities) &mdash;  Uses the columns from entities as join keys and indicate their type as primary, foreign, or unique keys with the `type` parameter.
-1. [Dimensions](#dimensions) &mdash; Different ways to group or slice data for a metric, they can be `time-based` or `categorical`.
+1. [Group_by](#group_by) &mdash; Different ways to group or slice data for a metric, they can be `time-based` or `categorical`.
 1. [Measures](#measures) &mdash; Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics.
 
 
@@ -41,7 +41,7 @@ semantic_models:
         expr: customer_id
 
 
-    dimensions: # Dimensions are qualitative values such as names, dates, or geographical data. Dimensions provide context to metrics and allow “metric by dimension” data slicing.
+    group_by: # Group_by are qualitative values such as names, dates, or geographical data. They provide context to metrics and allow "metric by group" data slicing.
       - name: transaction_date
         type: time
         type_params:
@@ -78,7 +78,7 @@ semantic_models:
         type: primary
         expr: customer_id
 
-    dimensions:
+    group_by:
       - name: first_name
         type: categorical
 ```
@@ -130,14 +130,14 @@ entity:
     expr: substring(id_order FROM 2)
 ```
 
-You can refer to entities (join keys) in a semantic model using the `name` parameter. Entity names must be unique within a semantic model, and identifier names can be non-unique across semantic models since MetricFlow uses them for [joins](/docs/build/join-logic). You can also create [composite keys](/docs/build/entities#composite-keys), like in event logs where a unique ID is a combination of timestamp, event type keys, and machine IDs.
+You can refer to entities (join keys) in a semantic model using the `name` parameter. Entity names must be unique within a semantic model, and identifier names can be non-unique across semantic models since MetricFlow uses them for [joins](/docs/build/join-logic). <!--You can also create [composite keys](/docs/build/entities#composite-keys), like in event logs where a unique ID is a combination of timestamp, event type keys, and machine IDs.-->
 
 </TabItem>
 </Tabs>
 
 ### Group_by 
 
-[Group_by](/docs/build/dimensions) are the different ways you can group or slice data for a metric. It can be time-consuming and error-prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
+[Group_by](/docs/build/group_by) are the different ways you can group or slice data for a metric. It can be time-consuming and error-prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
 
 MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify group_by parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
 
@@ -165,6 +165,6 @@ For semantic models with a measure, you must have a primary time group.
 ## Related docs
 
 - [About MetricFlow](/docs/build/metricflow-core-concepts)
-- [Dimensions](/docs/build/dimensions)
+- [Group_by](/docs/build/group_by)
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)
