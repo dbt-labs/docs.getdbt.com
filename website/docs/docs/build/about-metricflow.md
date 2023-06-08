@@ -11,7 +11,7 @@ This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, 
 :::info
 
 MetricFlow is a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
-
+ 
 To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 
 :::
@@ -48,7 +48,7 @@ Semantic models are the starting points of data and correspond to models in your
 For a semantic model, there are three main pieces of metadata:
 
 * [Entities](/docs/build/entities) &mdash; The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
-* [Group_by](/docs/build/group_by) &mdash; These are the ways you want to group or slice/dice your metrics.
+* [Group_by](/docs/build/group-by) &mdash; These are the ways you want to group or slice/dice your metrics.
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result can be used to create your metrics.
 
 

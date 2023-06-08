@@ -137,7 +137,7 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 ### Group_by 
 
-[Group_by](/docs/build/group_by) are the different ways you can group or slice data for a metric. It can be time-consuming and error-prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
+[Group_by](/docs/build/group-by) are the different ways you can group or slice data for a metric. It can be time-consuming and error-prone to anticipate all possible options in a single table, such as region, country, user role, and so on. 
 
 MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify group_by parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
 
@@ -165,6 +165,6 @@ For semantic models with a measure, you must have a primary time group.
 ## Related docs
 
 - [About MetricFlow](/docs/build/about-metricflow)
-- [Group_by](/docs/build/group_by)
+- [Group_by](/docs/build/group-by)
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)
