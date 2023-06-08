@@ -1,6 +1,6 @@
 ---
 title: "About MetricFlow"
-id: metricflow-core-concepts
+id: about-metricflow
 description: "Learn more about MetricFlow and its key concepts"
 sidebar_label: About MetricFlow
 tags: [Metrics, Semantic Layer]

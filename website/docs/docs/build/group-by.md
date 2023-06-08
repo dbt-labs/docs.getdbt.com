@@ -6,9 +6,13 @@ sidebar_label: "Group_by"
 tags: [Metrics, Semantic Layer]
 ---
 
-Group_by are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
+Group_by is a way to group or filter information based on categories or time. It's like a special label that helps organize and analyze data. 
 
-Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, group_by  is typically included in the GROUP BY clause.
+In a data platform, a group_by is part of a larger structure called a semantic model. It's created along with other elements like entities and measures, and used to add more details to your data that can't be easily added up or combined.  In SQL, group_by is typically included in the `group by` part of your SQL query.
+
+<!--group_by are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
+
+Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, group_by  is typically included in the GROUP BY clause.-->
 
 Refer to the following semantic model example:
 

@@ -41,7 +41,7 @@ Before you start, keep the following considerations in mind:
 <Card
     title="About MetricFlow"
     body="Understand MetricFlow's core concepts, key principles, and how to use this powerful tool."
-    link="/docs/build/metricflow-core-concepts"
+    link="/docs/build/about-metricflow"
     icon="rocket"/>
 
   <Card

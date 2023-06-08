@@ -16,7 +16,7 @@ This getting started page recommends a workflow to help you get started creating
 
 - You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up.
     * **Note**:  Support for dbt Cloud and integrations coming soon.
-- You must have an understanding of key concepts in MetricFlow (which powers the revamped dbt Semantic Layer) like [measures](/docs/build/measures), [group_by](/docs/build/group_by), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/metricflow-core-concepts) to learn more.
+- You must have an understanding of key concepts in MetricFlow (which powers the revamped dbt Semantic Layer) like [measures](/docs/build/measures), [group_by](/docs/build/group_by), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/about-metricflow) to learn more.
 - Your dbt environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher
 - You have a git repository set up and your git provider has write access enabled.
 - You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms) (Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB). 
@@ -116,6 +116,6 @@ ANY COMMON TROUBLESHOOTING QUESTIONS?-->
 ## Related docs
 
 - [The dbt Semantic Layer: what’s next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog post
-- [About MetricFlow](/docs/build/metricflow-core-concepts)
+- [About MetricFlow](/docs/build/about-metricflow)
 - [Semantic models](/docs/build/semantic-models)
 - [Metrics](/docs/build/metrics-overview)

@@ -164,7 +164,7 @@ For semantic models with a measure, you must have a primary time group.
 
 ## Related docs
 
-- [About MetricFlow](/docs/build/metricflow-core-concepts)
+- [About MetricFlow](/docs/build/about-metricflow)
 - [Group_by](/docs/build/group_by)
 - [Entities](/docs/build/entities)
 - [Measures](/docs/build/measures)

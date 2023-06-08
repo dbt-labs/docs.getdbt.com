@@ -242,7 +242,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "About MetricFlow",
-              link: { type: "doc", id: "docs/build/metricflow-core-concepts" },
+              link: { type: "doc", id: "docs/build/about-metricflow" },
               items: [
                 "docs/build/join-logic",
                 "docs/build/validation",
