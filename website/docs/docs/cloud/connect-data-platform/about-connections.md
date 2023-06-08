@@ -4,7 +4,7 @@ id: about-connections
 description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
 ---
-ddbt Cloud can connect with a variety of data platform providers including: 
+dbt Cloud can connect with a variety of data platform providers including: 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
 - [Apache Spark](/docs/cloud/connect-data-platform/connect-apache-spark) 
 - [Databricks](/docs/cloud/connect-data-platform/connect-databricks) 
