@@ -10,22 +10,17 @@ hide_table_of_contents: true
 
 Define your metrics centrally in dbt using MetricFlow, which powers the dbt Semantic Layer. Use constructs like semantic models and metric to avoid repetition and optimize your development workflow. 
 
-These sections explain how you can use the MetricFlow to define your metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), as well as provide data governance over how company metrics are defined and managed. 
+MetricFlow is a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction and defines the specification for dbt semantic models and metrics. To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 
 
-:::info
+This section explains how to use MetricFlow for defining metrics and [semantic graph](/docs/build/metricflow-core-concepts#semantic-graph), and ensuring data governance for company metrics. Before you start, keep the following considerations in mind:
 
-MetricFlow is a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
+- You can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) on dbt Core version 1.6 beta, using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
+  * **Note**: Support for dbt Cloud and querying via external integrations coming soon.
 
-To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
-
-:::
-
-Here are a few considerations to note before you begin:
 
 - MetricFlow supports Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
-- You can define metrics in YAML and query them with the [command line (CLI)](/docs/core/about-the-cli) on dbt Core version 1.6 beta, using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-  * Note: support for dbt Cloud and querying via external integrations coming soon.
+
 - dbt Labs is working with [integration partners](https://www.getdbt.com/product/semantic-layer-integrations) to develop updated integrations for the new Semantic Layer, powered by MetricFlow, in addition to introducing other consumption methods like Python and JDBC. <br /><br />
 
 <div className="grid--4-col">

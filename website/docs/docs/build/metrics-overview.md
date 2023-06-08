@@ -1,8 +1,8 @@
 ---
-title: Metrics
+title: Creating metrics
 id: metrics-overview
 description: "Metrics can be defined in the same or separate YAML files from semantic models within the same dbt project repo."
-sidebar_label: "Metrics"
+sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
 ---
   
@@ -56,7 +56,7 @@ metrics:
       - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
       - name: cogs
       - name: users
-        fiilter: is_active # Optional additional constraint
+        filter: is_active # Optional additional constraint
         alias: active_users # Optional alias to use in the expr
 ```
 <!--
@@ -93,7 +93,7 @@ metrics:
   type_params:
   # Specify the measure you are creating a proxy for. 
     measure: cancellations_usd 
-  fiilter: | 
+  filter: | 
     value > 100 AND user__acquisition
 ```
 
@@ -113,7 +113,7 @@ metrics:
   type_params:
     numerator: cancellations_usd
     denominator: transaction_amount_usd
-  fiilter: | # add optional constraint string. This applies to both the numerator and denominator
+  filter: | # add optional constraint string. This applies to both the numerator and denominator
     is_internal = false
 
 - name: enterprise_cancellation_rate
@@ -125,9 +125,9 @@ metrics:
   type_params:
     numerator: 
       name: cancellations_usd
-      fiilter: tier = 'enterprise' #constraint only applies to the numerator
+      filter: tier = 'enterprise' #constraint only applies to the numerator
     denominator: transaction_amount_usd 
-  fiilter: | # add optional constraint string. This applies to both the numerator and denominator
+  filter: | # add optional constraint string. This applies to both the numerator and denominator
     is_internal = false
   
 ```

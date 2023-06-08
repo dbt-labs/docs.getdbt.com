@@ -1,14 +1,14 @@
 ---
-title: Dimensions
-id: dimensions
-description: "Dimensions determine the level of aggregation for a metric, and are non-aggregatable expressions."
-sidebar_label: "Dimensions"
+title: Group_by
+id: group-by
+description: "Group_by determine the level of aggregation for a metric, and are non-aggregatable expressions."
+sidebar_label: "Group_by"
 tags: [Metrics, Semantic Layer]
 ---
 
-Dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since dimensions can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
+Group_by are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
-Dimensions are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions are typically included in the GROUP BY clause.
+Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, group_by  is typically included in the GROUP BY clause.
 
 Refer to the following semantic model example:
 
@@ -24,8 +24,8 @@ semantic_model:
 # --- measures --- 
   measures: 
       ... 
-# --- dimensions ---
-  dimensions:
+# --- group_by ---
+  group_by:
     - name: metric_time
       type: time
       expr: date_trunc('day', ts)
@@ -37,28 +37,28 @@ semantic_model:
       expr: case when quantity > 10 then true else false end
 ```
 
-All dimensions require a `name`, `type` and in most cases, an `expr` parameter. 
+All group_by require a `name`, `type` and in most cases, an `expr` parameter. 
 
 | Name | Parameter | Field type |
 | --- | --- | --- |
-| `name` |  Refers to the name of the dimension that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> &mdash; Dimension names should be unique within a semantic model, but they can be non-unique across different models as the Semantic Layer uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
-| `type` | Specifies the type of dimension created in the semantic model. There are three types:<br /><br />&mdash; Categorical: Group rows in a table by categories like geography, product type, color, and so on. <br />&mdash; Time: Point to a date field in the data platform, and must be of type TIMESTAMP or equivalent in the data platform engine. <br />&mdash; Slowly-changing dimensions: Analyze metrics over time and slice them by dimensions that change over time, like sales trends by a customer's country. | Required |
-| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, the Semantic Layer with MetricFlow will use the column with the same name as the dimension. You can use `expr` to input a SQL expression, including a case statement, or the column name itself. | Optional |
+| `name` |  Refers to the name of the group that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> &mdash; Group_by names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
+| `type` | Specifies the type of group created in the semantic model. There are three types:<br /><br />&mdash; Categorical: Group rows in a table by categories like geography, product type, color, and so on. <br />&mdash; Time: Point to a date field in the data platform, and must be of type TIMESTAMP or equivalent in the data platform engine. <br />&mdash; Slowly-changing dimensions: Analyze metrics over time and slice them by groups that change over time, like sales trends by a customer's country. | Required |
+| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use column name itself to input a SQL expression. | Optional |
 
-## Dimensions types
+## Group_by types
 
-Dimensions have three types. This section further explains the definitions and provides examples.
+Group_by has three types. This section further explains the definitions and provides examples.
 
-1. [Categorical dimensions](#categorical)
-1. [Time dimensions](#time)
-1. [Slowly changing dimensions](#scd-type-ii)
+1. [Categorical](#categorical)
+1. [Time](#time)
+1. [Slowly changing](#scd-type-ii)
 
 ### Categorical
 
-Category dimensions are used to group metrics by different categories such as product type, color, or geographical area. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a category dimension is `is_bulk_transaction`, which is a dimension created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
+Categorical is used to group metrics by different categories such as product type, color, or geographical area. They can refer to existing columns in your dbt model or be calculated using a SQL expression with the `expr` parameter. An example of a category dimension is `is_bulk_transaction`, which is a group created by applying a case statement to the underlying column `quantity`. This allows users to group or filter the data based on bulk transactions.
 
 ```yaml
-dimensions: 
+group_by: 
   - name: is_bulk_transaction
     type: categorical
     expr: case when quantity > 10 then true else false end
@@ -66,22 +66,22 @@ dimensions:
 
 ### Time
 
-Time dimension has additional parameters specified under the `type_params` section.
+Time has additional parameters specified under the `type_params` section.
 
 :::tip use datetime data type if using BigQuery
-To use BigQuery as your data platform, time dimension columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. The Semantic Layer supports these granularities, which can be specified using the `time_granularity` parameter.
+To use BigQuery as your data platform, time group_by columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
 :::
 
 <Tabs>
 
 <TabItem value="is_primary" label="is_primary">
 
-To specify the default time dimension for a measure or metric in the Semantic Layer, set the `is_primary` parameter to True. If you have multiple time dimensions in your semantic model, the non-primary ones should have `is_primary` set to False. To assign a non-primary time dimension to a measure, use the `agg_time_dimension` parameter and refer to the time dimension defined in the dimension section. 
+To specify the default time group_by for a measure or metric in MetricFlow, set the `is_primary` parameter to True. If you have multiple time group_by in your semantic model, the non-primary ones should have `is_primary` set to False. To assign a non-primary time group_by to a measure, use the `agg_time_dimension` parameter and refer to the time group_by defined in the section. 
 
-In the provided example, the semantic model has two time dimensions, `created_at` and `deleted_at`, with `created_at` being the primary time dimension through `is_primary: True`. The `users_created` measure defaults to the primary time dimension, while the `users_deleted` measure uses `deleted_at` as its time dimension. 
+In the provided example, the semantic model has two time groups, `created_at` and `deleted_at`, with `created_at` being the primary time group_by through `is_primary: True`. The `users_created` measure defaults to the primary time group_by, while the `users_deleted` measure uses `deleted_at` as its time group. 
 
 ```yaml
-dimensions: 
+group_by: 
   - name: created_at
     type: time
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
@@ -109,7 +109,7 @@ measures:
     create_metric: True 
 ```
 
-When querying one or more metrics in the Semantic Layer using the CLI, the default time dimension for a single metric is the primary time dimension, which can be referred to as metric_time or the dimension's name. Multiple time dimensions can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
+When querying one or more metrics in MetricFlow using the CLI, the default time group_by for a single metric is the primary time dimension, which can be referred to as metric_time or the group_by's name. Multiple time groups can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
 
       ```
        mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
@@ -126,7 +126,7 @@ The current options for time granularity are day, week, month, quarter, and year
 Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
-dimensions: 
+group_by: 
   - name: created_at
     type: time
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
@@ -160,7 +160,7 @@ measures:
 
 Use `is_partition: True` to indicate that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the Semantic Layer will use this parameter to ensure that the correct dimensional values are joined to measures. 
 
-In addition, the Semantic Layer allows for easy aggregation of metrics at query time. For example, you can aggregate the `messages_per_month` measure, where the original `time_granularity` of the time dimension `metrics_time`, at a yearly granularity by specifying it in the query in the CLI.
+In addition, MetricFlow allows for easy aggregation of metrics at query time. For example, you can aggregate the `messages_per_month` measure, where the original `time_granularity` of the time group_by `metrics_time`, at a yearly granularity by specifying it in the query in the CLI.
 
 ```
 mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
@@ -168,7 +168,7 @@ mf query --metrics messages_per_month --dimensions metric_time --order metric_ti
 
 
 ```yaml
-dimensions: 
+group_by: 
   - name: created_at
     type: time
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
@@ -207,36 +207,34 @@ measures:
 Currently, there are limitations in supporting SCD's. 
 :::
 
-The Semantic Layer, powered by MetricFlow, supports joins against dimension values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a dimension that changes over time, such as the historical trends of sales by a customer's country. 
+MetricFlow, supports joins against group_by values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
 
-As their name suggests SCD Type II are dimensions that change values at a coarser time granularity. This results in a range of valid rows with different dimension values for a given metric or measure. The Semantic Layer associates the metric with the first (minimum) available dimension value within a coarser time window, such as month. By default, the Semantic Layer uses the dimension that is valid at the beginning of the time granularity.
+As their name suggests SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different group_by values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available group_by value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
 
 The following basic structure of an SCD Type II data platform table is supported:
 
-| entity_key | dimension_1 | dimension_2 | ... | dimension_x | valid_from | valid_to |
+| entity_key | group_by_1 | group_by_2 | ... | group_by_x | valid_from | valid_to |
 |------------|-------------|-------------|-----|-------------|------------|----------|  
 
 * `entity_key` (required): An entity_key (or some sort of identifier) must be present 
-* `valid_from` (required): A timestamp indicating the start of a changing dimension value must be present
-* `valid_to` (required): A timestamp indicating the end of a changing dimension value must be present
+* `valid_from` (required): A timestamp indicating the start of a changing group_by value must be present
+* `valid_to` (required): A timestamp indicating the end of a changing group_by value must be present
 
-**Note**: The SCD dimensions table must have `valid_to` and `valid_from` columns.
+**Note**: The SCD group_by table must have `valid_to` and `valid_from` columns.
 
-This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimension data (stored in a table called `scd_dimensions`) using a natural key made up of the `entity_key` and `timestamp` columns. 
+This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned group_by data (stored in a table called `scd_group_by`) using a natural key made up of the `entity_key` and `timestamp` columns. 
 
 
 ```sql
-select metric_time, dimension_1, sum(1) as num_events
+select metric_time, group_by_1, sum(1) as num_events
 from events a
-left outer join scd_dimensions b
+left outer join scd_group_by b
 on 
   a.entity_key = b.entity_key 
   and a.metric_time >= b.valid_from 
   and (a.metric_time < b. valid_to or b.valid_to is null)
 group by 1, 2
 ```
-
-<!-- this section below is quite long so i may turn both examples into tabs -->
 
 <Tabs>
 
@@ -260,7 +258,7 @@ semantic_model:
   description: SCD Type II table of tiers for sales people 
   model: {{ref(sales_person_tiers)}}
 
-  dimensions:
+  group_by:
     - name: tier_start
       type: time
       expr: start_date
@@ -323,7 +321,7 @@ semantic_model:
       agg: count_distinct
       create_metric: True
 
-  dimensions:
+  group_by:
     - name: metric_time
       type: time
       is_partition: true
@@ -337,7 +335,7 @@ semantic_model:
 
 You can now access the metrics in the `transactions` semantic model organized by the slowly changing dimension of `tier`. 
 
-In the sales tier example,  For instance, if a salesperson was Tier 1 from 2022-03-01 to 2022-03-12, and gets promoted to Tier 2 from 2022-03-12 onwards, all transactions from March would be categorized under Tier 1 since the dimension value of Tier 1 comes earlier (and is the default starting point), even though the salesperson was promoted to Tier 2 on 2022-03-12.
+In the sales tier example,  For instance, if a salesperson was Tier 1 from 2022-03-01 to 2022-03-12, and gets promoted to Tier 2 from 2022-03-12 onwards, all transactions from March would be categorized under Tier 1 since the group_by value of Tier 1 comes earlier (and is the default starting point), even though the salesperson was promoted to Tier 2 on 2022-03-12.
 
 </TabItem>
 

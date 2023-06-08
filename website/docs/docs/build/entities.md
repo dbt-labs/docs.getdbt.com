@@ -6,14 +6,16 @@ sidebar_label: "Entities"
 tags: [Metrics, Semantic Layer]
 ---
 
-Entities are real-world concepts in a business such as customers, transactions, and ad campaigns. We often focus our analyses around specific entities, such as customer churn or annual recurring revenue modeling. We represent entities in our semantic models using id columns that serve as join keys to other semantic model in your semantic graph.
+Entities are real-world concepts in a business such as customers, transactions, and ad campaigns. We often focus our analyses around specific entities, such as customer churn or annual recurring revenue modeling. We represent entities in our semantic models using id columns that serve as join keys to other semantic models in your semantic graph.
 
 Within a semantic graph, the required parameters for an entity are `name` and `type`. The `name` refers to either the key column name from the underlying data table, or it may serve as an alias with the column name referenced in the `expr` parameter.
 
+Entities can be specified with a single column or multiple columns. Entities (join keys) in a semantic model are identified by their name. Each entity name must be unique within a semantic model, but it doesn't have to be unique across different semantic models. 
+
 There are four entity types: primary, foreign, unique, or natural.
 
-:::tip Use entities as a dimension
-You can also use entities as a dimension, which allows you to aggregate a metric to the granularity of that entity.
+:::tip Use entities as a group_by
+You can also use entities as a group_by, which allows you to aggregate a metric to the granularity of that entity.
 :::
 
 

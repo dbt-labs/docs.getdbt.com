@@ -253,7 +253,7 @@ const sidebarSettings = {
               label: "Semantic models",
               link: { type: "doc", id: "docs/build/semantic-models" },
               items: [
-                "docs/build/dimensions",
+                "docs/build/group-by",
                 "docs/build/entities",
                 "docs/build/measures"
               ]

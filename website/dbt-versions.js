@@ -176,22 +176,9 @@ exports.versionedPages = [
     "page": "docs/build/ratio",
     "firstVersion": "1.6",
   },
-  {
-    "page": "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
-    "lastVersion": "1.5",
-  },
-  {
-    "page": "docs/use-dbt-semantic-layer/dbt-semantic-layer",
-    "lastVersion": "1.5",
-  },
-  {
-    "page": "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
-    "lastVersion": "1.5",
-  },
-  {
-    "page": "docs/use-dbt-semantic-layer/avail-sl-integrations",
-    "lastVersion": "1.5",
-  },
+  //{"page": "docs/use-dbt-semantic-layer/quickstart-semantic-layer", "lastVersion": "1.5",},{"page": "docs/use-dbt-semantic-layer/dbt-semantic-layer","lastVersion": "1.5",},{
+  // "page": "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer","lastVersion": "1.5",},{
+  // "page": "docs/use-dbt-semantic-layer/avail-sl-integrations","lastVersion": "1.5",},
 ]
 
 exports.versionedCategories = [
@@ -203,9 +190,5 @@ exports.versionedCategories = [
     "category": "Build your Semantic Layer", 
     "firstVersion": "1.6",
   },
-  { 
-    "category": "Use the dbt Semantic Layer", 
-    "firstVersion": "1.0",
-    "lastVersion": "1.5",
-  }
+  //{ "category": "Use the dbt Semantic Layer", "firstVersion": "1.0","lastVersion": "1.5",}
 ]
