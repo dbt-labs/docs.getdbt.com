@@ -8,7 +8,6 @@ hoverSnippet: Deploying dbt in production means setting up a system to run a dbt
 
 Deploying dbt in production means setting up a system to run a dbt job on a schedule, rather than running dbt commands manually from the command line. For more details, refer to [Deploy dbt jobs](/docs/deploy/deployments). 
 
-Your production dbt jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments/environments-in-dbt).
 
 In addition to setting up a schedule, there are other considerations when setting up dbt to run in production:
 
