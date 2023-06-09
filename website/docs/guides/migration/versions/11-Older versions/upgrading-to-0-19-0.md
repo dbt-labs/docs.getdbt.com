@@ -51,7 +51,7 @@ See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implemen
 - [parse](/reference/commands/parse): New command to parse a dbt project and write detailed timing info.
 
 #### State
-- [About state](/docs/deploy/project-state): New docs outlining the conceptual background of state-informed runs, as well as the [known caveats](/reference/node-selection/state-comparison-caveats) for state comparison. In v0.19.0, dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based configurations in `dbt_project`.
+- [About state](/reference/node-selection/syntax#about-node-selection): New docs outlining the conceptual background of state-informed runs, as well as the [known caveats](/reference/node-selection/state-comparison-caveats) for state comparison. In v0.19.0, dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based configurations in `dbt_project`.
 - [Defer](/reference/node-selection/defer) has changed: Instead of deferring all unselected node references, dbt now defers an unselected node reference _if and only if_ it does not exist in the current environment. Tests can defer their upstream references as well. This better supports the "Slim CI" use case by addressing the current environment's resources across `seed`, `run`, and `test` steps.
 - [RPC](/reference/commands/rpc): Added `state` and `defer` as arguments to RPC methods for which it is supported on the CLI.
 
