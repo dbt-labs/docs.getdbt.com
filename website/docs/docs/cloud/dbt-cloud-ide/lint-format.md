@@ -54,9 +54,9 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 3. In the code quality tool config pop up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
 5. Once you've selected the **sqlfluff** radio button, go back to the console section (below the **File editor**) to select the **Lint** or **Fix** dropdown button:
-    - The **Lint** button displays linting issues in the IDE as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click on the **Lint** button again to rerun linting.
-    - The **Fix** dropdown button auto-fixes errors in the **File editor**. Once you've auto-fixed, you'll see a message confirming the outcome. 
-    - For any code errors, use the **Code Quality** tab to view and debug them.
+    - **Lint button** &mdash; Displays linting issues in the IDE as wavy underlines in the **File editor**. You can hover over an underlined issue to display the details and actions, including a **Quick Fix** option to fix all or specific issues. After linting, you'll see a message confirming the outcome. Linting doesn't rerun after saving. Click on the **Lint** button again to rerun linting.
+    - **Fix button** &mdash; Auto-fixes errors in the **File editor**. Once you've auto-fixed, you'll see a message confirming the outcome. 
+    - Use the **Code Quality** tab to view and debug any code errors.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-lint-format-console.gif" width="95%" title="Use the Lint or Fix button in the console section to lint or auto-fix your code."/>
 
@@ -170,17 +170,22 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="95%" title="Format Python files using Black."/>
 
-## Troubleshooting
+## FAQs
 
 <details>
 <summary>Can I nest <code>.sqlfluff</code> files?</summary>
 
-To ensure optimal code quality, consistent code, and styles, it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. Having multiple files can result in various different SQL styles in your project. <br /><br />
+To ensure optimal code quality, consistent code, and styles &mdash; it's highly recommended you have one main `.sqlfluff` configuration file in the root folder of your project. Having multiple files can result in various different SQL styles in your project. <br /><br />
 
 However, you can customize and include an additional child `.sqlfluff` configuration file within specific subfolders of your dbt project. <br /><br />By nesting a `.sqlfluff` file in a subfolder, SQLFluff will apply the rules defined in that subfolder's configuration file to any files located within it. The rules specified in the parent `.sqlfluff` file will be used for all other files and folders outside of the subfolder. This hierarchical approach allows for tailored linting rules while maintaining consistency throughout your project. Refer to [SQLFluff documentation](https://docs.sqlfluff.com/en/stable/configuration.html#configuration-files) for more info.
 
 </details>
 
+<details>
+<summary>Can I run SQLFluff commands form the terminal?</summary>
+
+Running SQLFluff commands from the terminal isn't supported, but it's currently on the Product team's roadmap for future support.
+</details>
 
 ## Next steps
 
