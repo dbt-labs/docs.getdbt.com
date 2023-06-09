@@ -142,9 +142,9 @@ The five key steps for troubleshooting dbt Cloud issues are:
 
 Consult the [Debugging errors documentation](/guides/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
 
-To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run History" tab in your dbt Cloud project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/dbt-cloud-job#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
+To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run History" tab in your dbt Cloud project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/run-visibility#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
 
-If your jobs are taking longer than expected, use the [model timing](https://docs.getdbt.com/docs/deploy/dbt-cloud-job#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
+If your jobs are taking longer than expected, use the [model timing](/docs/deploy/run-visibility#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
 
 For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 
