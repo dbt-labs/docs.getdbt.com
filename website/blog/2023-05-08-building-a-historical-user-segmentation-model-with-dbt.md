@@ -20,6 +20,7 @@ Take for example a Customer Experience (CX) team that uses Salesforce as a CRM. 
 
 An improvement to this would be to prioritize the tickets based on the customer segment, answering our most valuable customers first. An Analytics Engineer can build a segmentation to identify the power users (for example with an RFM approach) and store it in the data warehouse. The Data Engineering team can then export that user attribute to the CRM, allowing the customer experience team to build rules on top of it.
 
+<!--truncate-->
 <Lightbox src="/img/blog/2023-05-08-building-a-historical-user-segmentation-model-with-dbt/rfm-segments-example.png" width="40%" title="Example of an RFM user segmentation"/>
 
 ## Problems
