@@ -65,7 +65,9 @@ To add a user in dbt Cloud, you must be an account owner or have admin privilege
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
 2. In **Account Settings**, select **Billing**. 
-3. Enter the number of developer seats you want and click **Save**.
+3. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
+4. Press **Update Payment Information** to save your changes. 
+        
 
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
 
@@ -86,7 +88,6 @@ Great work! After completing those these steps, your dbt Cloud user count and bi
 
 To delete a user in dbt Cloud, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
 
-
 1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
@@ -98,10 +99,12 @@ To delete a user in dbt Cloud, you must be an account owner or have admin privil
 <Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="85%" title="Deleting a user" />
 
 
-If you are on a **Teams** plan and you are deleting users to reduce the number of billable seats, you also need to take these steps to lower the license count to avoid being overcharged:
-1. In **Account Settings**, select **Billing**. 
-2. Enter the number of developer seats you want and click **Save**.
+If you are on a **Teams** plan and you're deleting users to reduce the number of billable seats, follow these steps to lower the license count to avoid being overcharged:
 
+1. In **Account Settings**, select **Billing**. 
+2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
+3. Press **Update Payment Information** to save your changes. 
+        
 <Lightbox src="/img/docs/dbt-cloud/change-developer-seats.png" width="85%" title="Developer seats" />
 
 Great work! After completing these steps, your dbt Cloud user count and billing count should now be the same.
