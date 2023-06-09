@@ -30,7 +30,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
   <Card
     title="Schedule and run dbt jobs"
     body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
-    link="/docs/deploy/dbt-cloud-job"
+    link="/docs/deploy/job-scheduler"
     icon="pencil-paper"/>
 
   <Card
@@ -43,13 +43,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     title="Host & share documentation"
     body="dbt Cloud hosts and authorizes access to dbt project documentation, allowing you to generate data documentation on a schedule for your project. Invite teammates to dbt Cloud to collaborate and share your project's documentation."
     link="/docs/collaborate/build-and-view-your-docs"
-    icon="pencil-paper"/>    
-
-   <Card
-    title="Democratize access to logs"
-    body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
-    link="/docs/deploy/dbt-cloud-job#access-logs"
-    icon="pencil-paper"/>      
+    icon="pencil-paper"/>       
 
    <Card
     title="Supports GitHub, GitLab, AzureDevOPs"
@@ -83,9 +77,9 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
 
 
 <Card
-    title="Model timing dashboard*"
-    body="Visualize and explore your runs and surface model bottlenecks. The Model timing dashboard displays model info, order, and run time for each job completed."
-    link="/docs/deploy/dbt-cloud-job#model-timing"
+    title="Run visibility"
+    body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
+    link="/docs/deploy/run-visibility"
     icon="pencil-paper"/> 
 </div> <br />
 
