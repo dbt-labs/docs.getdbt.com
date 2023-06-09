@@ -8,7 +8,7 @@ authors: [santiago_jauregui]
 tags: [analytics craft, dbt tutorials, sql magic]
 hide_table_of_contents: false
 
-date: 2023-05-08
+date: 2023-06-13
 is_featured: true
 ---
 
