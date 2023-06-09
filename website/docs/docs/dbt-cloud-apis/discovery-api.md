@@ -6,7 +6,7 @@ Every time dbt Cloud runs a project, it generates and stores information about t
 
 By leveraging the metadata in dbt Cloud, you can create systems for data monitoring and alerting, lineage exploration, and automated reporting. This can help you improve data discovery, data quality, and pipeline operations within your organization. 
 
-You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using dbt Cloud features like [model timing](/docs/deploy/dbt-cloud-job#model-timing) and [dashboard status tiles](/docs/deploy/dashboard-status-tiles).
+You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/discovery-querying), custom applications, a wide range of [partner ecosystem integrations](https://www.getdbt.com/product/integrations/) (like BI/analytics, catalog and governance, and quality and observability), and by using dbt Cloud features like [model timing](/docs/deploy/run-visibility#model-timing) and [dashboard status tiles](/docs/deploy/dashboard-status-tiles).
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/discovery-api-figure.png" width="80%" title="A rich ecosystem for integration "/>
 
@@ -33,7 +33,7 @@ To use the API directly or integrate your tool with it, refer to [Uses case and 
 
 Use the API to look at historical information like model build time to determine the health of your dbt projects. Finding inefficiencies in orchestration configurations can help decrease infrastructure costs and improve timeliness. To learn more about how to do this, refer to [Performance](/docs/dbt-cloud-apis/discovery-use-cases-and-examples#performance).
 
-You can use, for example, the [model timing](/docs/dbt-versions/release-notes/January-2022/model-timing-more) tab to help identify and optimize bottlenecks in model builds: 
+You can use, for example, the [model timing](/docs/deploy/run-visibility#model-timing) tab to help identify and optimize bottlenecks in model builds: 
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/model-timing.jpg" width="200%" title="Model timing visualization in dbt Cloud"/>
 
