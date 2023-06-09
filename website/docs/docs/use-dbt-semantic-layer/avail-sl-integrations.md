@@ -10,7 +10,7 @@ The dbt Semantic Layer is undergoing some [sophisticated changes](https://www.ge
 
 **What’s changing?** The dbt_metrics package will be [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow), a new way to define metrics in dbt.
 
-**What's new?**  Learn how to [Build your metrics](/docs/build/build-metrics-intro) using MetricFlow, which is one of four key components that makes up the revamped dbt Semantic Layer. It handles SQL query construction and defines the specification for dbt semantic models and metrics.
+**What's new?**  Learn how to [Build your metrics](/docs/build/build-metrics-intro) using MetricFlow, which is one of the key components that makes up the revamped dbt Semantic Layer. It handles SQL query construction and defines the specification for dbt semantic models and metrics.
 :::
 
 A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer and dbt metrics &mdash; from Business Intelligence tools to notebooks, data catalogs, and more.
