@@ -224,7 +224,7 @@ $ dbt ls    --select +metric:* --resource-type source  # list all source tables 
 ### The "result" method
 <Changelog>New in v1.0.0</Changelog>
 
-The `result` method is related to the `state` method described above, and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator.
+The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
 
 ```bash
 $ dbt run --select result:error --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
