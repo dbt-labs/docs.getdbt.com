@@ -105,7 +105,7 @@ If you are on a **Teams** plan and you're deleting users to reduce the number of
 2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
 3. Press **Update Payment Information** to save your changes. 
         
-<Lightbox src="/img/docs/dbt-cloud/change-developer-seats.png" width="85%" title="Developer seats" />
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Users to modify dbt Cloud users" />
 
 Great work! After completing these steps, your dbt Cloud user count and billing count should now be the same.
 
