@@ -48,7 +48,7 @@ The approach to solving this is quite simple; we need to build a model that does
 
 One way to solve it would be to use [dbt snapshots](https://docs.getdbt.com/docs/build/snapshots), but this would only keep the attributes history from the time of our model deployment onwards, losing potentially useful data that existed prior to that point in time.
 
-A better approach is to calculate the snapshots in our SQL logic. This snapshot can be calculated in various time windows (monthly, weekly, daily) depending on the type of analysis that you need to perform.
+A better approach for our use case was to calculate the snapshots in our SQL logic. This snapshot can be calculated in various time windows (monthly, weekly, daily) depending on the type of analysis that you need to perform.
 
 In this section we’ll show you how to build a basic user segmentation model with RFM that only keeps the current value, and then we will go through the changes in the code to preserve the segmentation history.
 
