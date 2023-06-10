@@ -58,6 +58,26 @@ Here’s a video showing these steps:
 
 <WistiaVideo id="u7mo30puql" />
 </TabItem>
+<TabItem value="ADO">
+
+In Azure:
+
+- Open up your Azure DevOps project where you want to run the pipeline (the same one that houses your dbt project)
+- Click on *Pipelines* > *Create Pipeline*
+- Select where your git code is located (should be *Azure Repos Git*)
+- Select your git repository from the list
+- Select *Starter pipeline* (this will be updated later in Step 4)
+- Click on *Variables* > *New variable*
+- In the *Name* field, input `DBT_API_KEY`
+    - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
+- In the *Value* section, paste in the key you copied from dbt Cloud
+- Make sure the check box next to *Keep this value secret* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
+- Click *OK* > *Save* to save the variable
+- Save your new Azure pipeline
+
+    ![View of the Azure pipelines window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png)
+
+</TabItem> 
 <TabItem value="gitlab">
 
 In GitLab:
@@ -164,7 +184,6 @@ The YAML file will look pretty similar to our earlier job, but there is a new se
 It’s worth noting that we changed the `on:` section to now run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows) on these filters for additional use cases.
 
 ```yaml
-    
 name: run dbt Cloud job on push
 
 # This filter says only run this job when there is a push to the main branch
@@ -205,7 +224,7 @@ jobs:
 
 For this job, we'll set it up using the `gitlab-ci.yml` file as in the prior step (see Step 1 of the linting setup for more info). The YAML file will look pretty similar to our earlier job, but there is a new section called `variables` that we’ll use to pass in the required variables to the Python script. Update this section to match your setup based on the comments in the file.
 
-Please note that the `rules:` section now says to run **only** when there are pushes to a branch named `main` (i.e. a PR is merge). Have a look through [GitLab’s docs](https://docs.gitlab.com/ee/ci/yaml/#rules) on these filters for additional use cases.
+Please note that the `rules:` section now says to run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitLab’s docs](https://docs.gitlab.com/ee/ci/yaml/#rules) on these filters for additional use cases.
 
 <Tabs
   defaultValue="single-job"
@@ -282,6 +301,42 @@ run-dbt-cloud-job:
 </TabItem>
 </Tabs>
 
+
+</TabItem>
+<TabItem value="ADO">
+
+For this new job, open the existing Azure pipeline you created above and select the *Edit* button. We'll want to edit the corresponding Azure pipeline YAML file with the appropriate configuration, instead of the starter code, along with including a `variables` section to pass in the required variables.
+
+Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `master` (i.e. a PR is merged to your master branch). Have a look through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
+
+```yaml
+name: Run dbt Cloud Job
+
+trigger: [ master ] # runs on pushes to master
+
+variables:
+  DBT_URL:                 https://cloud.getdbt.com # no trailing backslash, adjust this accordingly for single-tenant deployments
+  DBT_JOB_CAUSE:           'Azure Pipeline CI Job' # provide a descriptive job cause here for easier debugging down the road
+  DBT_ACCOUNT_ID:          00000 # enter your account id
+  DBT_PROJECT_ID:          00000 # enter your project id
+  DBT_PR_JOB_ID:           00000 # enter your job id
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7'
+    displayName: 'Use Python 3.7'
+
+  - script: |
+      pip install requests
+    displayName: 'Install python dependencies'
+
+  - script: |
+      python -u ./python/run_and_monitor_dbt_job.py
+    displayName: 'Run dbt job '
+    env:
+      DBT_API_KEY: $(DBT_API_KEY) # Set these values as secrets in the Azure pipelines Web UI
+```
 
 </TabItem>
 <TabItem value="bitbucket">
@@ -376,6 +431,13 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 ![dbt run on merge job in GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-gitlab.png)
 
 ![dbt Cloud job showing it was triggered by GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
+
+</TabItem>
+<TabItem value="ADO">
+
+![dbt run on merge job in ADO](/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png)
+
+![dbt Cloud job showing it was triggered by ADO](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png)
 
 </TabItem>
 <TabItem value="bitbucket">
