@@ -45,7 +45,7 @@ For more detailed information and to ask any questions, please visit [dbt-core/d
 - **dbt-Jinja context:** The [local_md5](/reference/dbt-jinja-functions/local_md5) context method will calculate an [MD5 hash](https://en.wikipedia.org/wiki/MD5) for use _within_ dbt. (Not to be confused with SQL md5!)
 - [**Exposures**](/docs/build/exposures) can now depend on `metrics`.
 - [**"Tarball" packages**](/docs/build/packages#internally-hosted-tarball-URL): Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments (such as Artifactory or cloud storage buckets), it's possible to specify any accessible URL where a compressed dbt package can be downloaded.
-- [**Granular "warn error" configuration**](/reference/global-configs#warnings-as-errors): Thanks to a full cleanup and consolidation of warning and exception classes within `dbt-core`, it is now possible to define a more granular `--warn-error-options` configuration that specifies the exact warnings you do (or don't) want dbt to treat as errors.
+- [**Granular "warn error" configuration**](/reference/global-configs/warnings): Thanks to a full cleanup and consolidation of warning and exception classes within `dbt-core`, it is now possible to define a more granular `--warn-error-options` configuration that specifies the exact warnings you do (or don't) want dbt to treat as errors.
 - [**Deferral**](/reference/node-selection/defer#favor-state) supports an optional configuration, `--favor-state`.
 
 ### Advanced configurations for incremental models
