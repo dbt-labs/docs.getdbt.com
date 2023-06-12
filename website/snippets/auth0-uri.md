@@ -8,4 +8,4 @@ The URI used for SSO connections on multi-tenant dbt Cloud instances will vary b
 | EMEA   | emea.dbt.com         | https://auth.emea.dbt.com/     | emea-production-mt                     |
 | APAC   | au.dbt.com           | https://auth.au.dbt.com/       | au-production-mt                       |
 
-*Only applicable to SAML/Okta configuration.
+*Only applicable to SAML and Okta configurations.

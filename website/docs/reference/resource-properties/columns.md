@@ -76,18 +76,15 @@ version: 2
 
 seeds:
   - name: <seed_name>
-
     columns:
       - name: <column_name>
-        columns:
-          - name: <column_name>
-            [description](/reference/resource-properties/description): <markdown_string>
-            data_type: <string>
-            [quote](/reference/resource-properties/quote): true | false
-            [tests](/reference/resource-properties/tests): ...
-            [tags](/reference/resource-configs/tags): ...
-            [meta](/reference/resource-configs/meta): ...
-          - name: <another_column>
+        [description](/reference/resource-properties/description): <markdown_string>
+        data_type: <string>
+        [quote](/reference/resource-properties/quote): true | false
+        [tests](/reference/resource-properties/tests): ...
+        [tags](/reference/resource-configs/tags): ...
+        [meta](/reference/resource-configs/meta): ...
+      - name: <another_column>
             ...
 ```
 
