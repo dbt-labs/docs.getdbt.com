@@ -97,7 +97,7 @@ In Azure:
 - Click *OK* > *Save* to save the variable
 - Save your new Azure pipeline
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" width="85%" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
 
 </TabItem> 
 <TabItem value="bitbucket">
@@ -419,6 +419,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Azure DevOps', value: 'ado', },
     {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
@@ -436,7 +437,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 ![dbt Cloud job showing it was triggered by GitLab](/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-gitlab-triggered.png)
 
 </TabItem>
-<TabItem value="ADO">
+<TabItem value="ado">
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
