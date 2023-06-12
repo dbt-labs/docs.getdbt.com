@@ -35,6 +35,7 @@ This next part will happen in you code hosting platform. We need to save your AP
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Azure DevOps', value: 'ado', },  
     {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
@@ -58,26 +59,7 @@ Here’s a video showing these steps:
 
 <WistiaVideo id="u7mo30puql" />
 </TabItem>
-<TabItem value="ADO">
 
-In Azure:
-
-- Open up your Azure DevOps project where you want to run the pipeline (the same one that houses your dbt project)
-- Click on *Pipelines* > *Create Pipeline*
-- Select where your git code is located (should be *Azure Repos Git*)
-- Select your git repository from the list
-- Select *Starter pipeline* (this will be updated later in Step 4)
-- Click on *Variables* > *New variable*
-- In the *Name* field, input `DBT_API_KEY`
-    - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
-- In the *Value* section, paste in the key you copied from dbt Cloud
-- Make sure the check box next to *Keep this value secret* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
-- Click *OK* > *Save* to save the variable
-- Save your new Azure pipeline
-
-    ![View of the Azure pipelines window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png)
-
-</TabItem> 
 <TabItem value="gitlab">
 
 In GitLab:
@@ -98,6 +80,26 @@ In GitLab:
     <WistiaVideo id="rgqs14f816" />
     
 </TabItem>
+<TabItem value="ado">
+
+In Azure:
+
+- Open up your Azure DevOps project where you want to run the pipeline (the same one that houses your dbt project)
+- Click on *Pipelines* and then *Create Pipeline*
+- Select where your git code is located. It should be *Azure Repos Git*
+  - Select your git repository from the list
+- Select *Starter pipeline* (this will be updated later in Step 4)
+- Click on *Variables* and then *New variable*
+- In the *Name* field, enter the `DBT_API_KEY`
+    - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
+- In the *Value* section, paste in the key you copied from dbt Cloud
+- Make sure the check box next to *Keep this value secret* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
+- Click *OK* > *Save* to save the variable
+- Save your new Azure pipeline
+
+    ![View of the Azure pipelines window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png)
+
+</TabItem> 
 <TabItem value="bitbucket">
 
 In Bitbucket:
@@ -162,6 +164,7 @@ In order to call the dbt Cloud API, there are a few pieces of info the script ne
   values={[
     { label: 'GitHub', value: 'github', },
     {label: 'GitLab', value: 'gitlab', },
+    {label: 'Azure DevOps', value: 'ado', },
     {label: 'Bitbucket', value: 'bitbucket', },
   ]
 }>
@@ -303,11 +306,11 @@ run-dbt-cloud-job:
 
 
 </TabItem>
-<TabItem value="ADO">
+<TabItem value="ado">
 
 For this new job, open the existing Azure pipeline you created above and select the *Edit* button. We'll want to edit the corresponding Azure pipeline YAML file with the appropriate configuration, instead of the starter code, along with including a `variables` section to pass in the required variables.
 
-Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `master` (i.e. a PR is merged to your master branch). Have a look through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
+Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `master` (like a PR is merged to your master branch). Have a read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
 ```yaml
 name: Run dbt Cloud Job
