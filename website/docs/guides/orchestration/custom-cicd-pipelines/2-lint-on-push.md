@@ -5,11 +5,11 @@ id: 2-lint-on-push
 
 This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization. 
 
-The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specfically runs the rules L019, L020, L021, and L022. This is purley for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
+The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specifically runs the rules L019, L020, L021, and L022. This is purely for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
 
-### 1. Create a yaml file to define your pipeline
+### 1. Create a YAML file to define your pipeline
 
-The yaml files defined below are what tell your code hosting platform the steps to run. In this setup, you’re telling the platform to run a SQLFluff lint job every time a commit is pushed.
+The YAML files defined below are what tell your code hosting platform the steps to run. In this setup, you’re telling the platform to run a SQLFluff lint job every time a commit is pushed.
 
 <Tabs
   defaultValue="github"
@@ -32,7 +32,7 @@ my_awesome_project
 
 To define the job for our action, let’s add a new file named `lint_on_push.yml` under the `workflows` folder. This file is how we tell the GitHub runner what to execute when the job is triggered.
 
-Below I touch on the important pieces for running a dbt Cloud job, but if you want a full run-down of all the components of this yaml file checkout [this GitHub article](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#understanding-the-workflow-file) on actions.
+Below I touch on the important pieces for running a dbt Cloud job, but if you want a full run-down of all the components of this YAML file checkout [this GitHub article](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#understanding-the-workflow-file) on actions.
 
 **Key pieces:**
 
@@ -59,7 +59,7 @@ jobs:
   
     steps:
       - uses: "actions/checkout@v3"
-      - uses: "actions/setup-python@v2"
+      - uses: "actions/setup-python@v4"
         with:
           python-version: "3.9"
       - name: Install SQLFluff
@@ -145,7 +145,7 @@ pipelines:
 
 ### 2. Commit and push your changes to make sure everything works
 
-After you finish creating the yaml files, commit and push your code. Doing this will trigger your pipeline for the first time! If everything goes well, you should see the pipeline in your code platform. When you click into the job you’ll get a log showing that SQLFluff was run. If your code failed linting you’ll get an error in the job with a description of what needs to be fixed. If everything passed the lint check, you’ll see a successful job run.
+After you finish creating the YAML files, commit and push your code. Doing this will trigger your pipeline for the first time! If everything goes well, you should see the pipeline in your code platform. When you click into the job you’ll get a log showing that SQLFluff was run. If your code failed linting you’ll get an error in the job with a description of what needs to be fixed. If everything passed the lint check, you’ll see a successful job run.
 
 <Tabs
   defaultValue="github"

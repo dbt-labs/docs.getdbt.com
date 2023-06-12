@@ -13,7 +13,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 
 1. [Register an Azure AD app](#register-an-azure-ad-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
-3. [Add another redirect URI](#add-another-redirect-URI).
+3. [Add another redirect URI](#add-another-redirect-uri).
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 
@@ -95,11 +95,16 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
 
 Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
-## Connecting a service user
+## Connect a service user
 
 Because Azure DevOps forces all authentication to be linked to a user's permissions, we recommend you create a "service user" in Azure DevOps whose permissions will be used to power headless actions in dbt Cloud such as dbt Cloud project repo selection, deployment runs, and CI. A service user is a pseudo user set up in the same way an admin would set up a real user, but it's given permissions specifically scoped for service to service interactions. You should avoid linking authentication to a real Azure DevOps user because if this person leaves your organization, dbt Cloud will lose privileges to the dbt Azure DevOps repositories, causing production runs to fail.
 
-### More on Service Users
+:::info Service user authentication expiration
+dbt Cloud will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.
+
+:::
+
+### Service users permissions
 
 A service user account must have the following Azure DevOps permissions for all Azure DevOps projects and repos you want accessible in dbt Cloud. Read more about how dbt Cloud uses each permission in the following paragraphs.
 
@@ -112,7 +117,7 @@ A service user account must have the following Azure DevOps permissions for all 
 
 \* Note: **DeleteSubscriptions** permission might be included in **EditSubscriptions** depending on your version of Azure.
 
-Some of these permissions are only accessible via the Azure DevOps API, for which documentation can be found [here](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the set up. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
+Some of these permissions are only accessible via the [Azure DevOps API](https://docs.microsoft.com/en-us/azure/devops/organizations/security/namespace-reference?view=azure-devops) or [CLI](https://learn.microsoft.com/en-us/cli/azure/devops?view=azure-cli-latest). We’ve also detailed more information on Azure DevOps API usage below to help accelerate the setup. Alternatively, you can use the Azure DevOps UI to enable permissions, but you cannot get the least permissioned set.
 
 <!-- tabs for service user permissions and turning off MFA for service users -->
 <Tabs>
@@ -125,6 +130,26 @@ The service user's permissions will also power which repositories a team can sel
 <TabItem value="mfa" label="Turn off MFA for service user">
 
 While it's common to enforce multi-factor authentication (MFA) for normal user accounts, service user authentication must not need an extra factor. If you enable a second factor for the service user, this can interrupt production runs and cause a failure to clone the repository. In order for the OAuth access token to work, the best practice is to remove any more burden of proof of identity for service users.
+
+As a result, MFA must be explicity disabled in the Office 365 or Azure AD administration panel for the service user.  Just having it "un-connected" will not be sufficient, as dbt Cloud will be prompted to set up MFA instead of allowing the credentials to be used as intended.
+
+**To disable MFA for a single user using the Office 365 Administration console:**
+
+- Go to Microsoft 365 admin center -> Users -> Active users -> Select the user -> Manage multifactor authentication -> Select the user -> Disable multi-factor authentication.
+
+**To use the Azure AD interface:**
+
+Note, this procedure involves disabling Security Defaults on AAD.
+
+1. Go to the AAD Admin Center. Scroll down to Azure Active Directory ->Manage ->Properties -> Manage Security defaults and then select **No** in "Enable Security Defaults"
+2. Select **Save**
+3. Go to **Azure Active Directory** -> Manage -> Users ->Click on the ellipsis (...) and then the Multi-Factor Authentication link. If the link is grayed out, you need to make sure you disable **Security Defaults**
+4. The link will take you to a "multi-factor authentication" page.
+5. If MFA is enabled for users, select the user(s) and select **Disable** under **Quick steps** 
+6. Select **Yes** to confirm your changes 
+
+To re-enable MFA for that user, select them again and click **Enable**. Note you may have to go through MFA setup for that user after enabling it.
+
 </TabItem>
 
 </Tabs>
@@ -154,7 +179,12 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
-**UI/API:** API only
+**UI/API/CLI:** API/CLI only
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id cb594ebe-87dd-4fc9-ac2c-6a10a4c92046 --subject <service_account>@xxxxxx.onmicrosoft.com --token PublisherSecurity/<azure_devops_project_object_id> --allow-bit 1
+```
 
 </details>
 
@@ -182,7 +212,12 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
-**UI/API:** API only
+**UI/API/CLI:** API/CLI only
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id cb594ebe-87dd-4fc9-ac2c-6a10a4c92046 --subject <service_account>@xxxxxx.onmicrosoft.com --token PublisherSecurity/<azure_devops_project_object_id> --allow-bit 2
+```
 
 </details>
 
@@ -212,7 +247,12 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 - PublisherSecurity for access to all projects
 - PublisherSecurity/<azure_devops_project_object_id> for per project access
 
-**UI/API:** API only
+**UI/API/CLI:** API/CLI only
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id cb594ebe-87dd-4fc9-ac2c-6a10a4c92046 --subject <service_account>@xxxxxx.onmicrosoft.com --token PublisherSecurity/<azure_devops_project_object_id> --allow-bit 4
+```
 
 **Additional Notes:** This permission has been deprecated in recent Azure DevOps versions. Edit Subscriptions (bit 2) has Delete permissions.
 
@@ -246,7 +286,12 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 - repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for per repo access
 
 
-**UI/API:** UI and API
+**UI/API/CLI:** UI, API, and CLI
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id 2e9eb7ed-3c0a-47d4-87c1-0ffdd275fd87 --subject <service_account>@xxxxxx.onmicrosoft.com --token repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> --allow-bit 16384
+```
 
 **Additional Notes:** This permission is automatically inherited if Project Reader/Contributor/Administrator is set in the UI.
 
@@ -281,7 +326,12 @@ While it's common to enforce multi-factor authentication (MFA) for normal user a
 - repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> for access to a single repo at a time
 
 
-**UI/API:** UI and API
+**UI/API/CLI:** UI, API, and CLI
+
+**Sample CLI code snippet**
+```bash
+az devops security permission update --organization https://dev.azure.com/<org_name> --namespace-id 2e9eb7ed-3c0a-47d4-87c1-0ffdd275fd87 --subject <service_account>@xxxxxx.onmicrosoft.com --token repoV2/<azure_devops_project_object_id>/<azure_devops_repository_object_id> --allow-bit 4
+```
 
 **Additional Notes:** This permission is automatically inherited if Project Contributor/Administrator is set in the UI.
 
@@ -299,7 +349,8 @@ To connect the service user:
 
 Once connected, dbt Cloud displays the email address of the service user so you know which user's permissions are enabling headless actions in deployment environments. To change which account is connected, disconnect the profile in dbt Cloud, sign into the alternative Azure DevOps service account, and re-link the account in dbt Cloud.
 
-:::info Service user authentication expiration
-dbt Cloud will refresh the authentication for the service user on each run triggered by the scheduler, API, or CI. If your account does not have any active runs for over 90 days, an admin will need to manually refresh the authentication of the service user by disconnecting and reconnecting the service user's profile via the OAuth flow described above in order to resume headless interactions like project set up, deployment runs, and CI.
+:::info Personal Access Tokens (PATs)
+dbt Cloud generates temporary access tokens called Full-scoped PATs for service users to access APIs related to their dbt Cloud project. These tokens are only valid for a short period of 5 minutes and become invalid after they are used to make an API call.
 
+The Azure DevOps Administrator can limit the creation of full-scoped PATs by enabling a policy that restricts users to a custom-defined set of scopes. By default, this policy is set to **off**, but enabling it will cause project setup to fail with an error. After disabling this policy and successfully setting up your project, if you wish to use finer-scoped permissions, some features such as webhooks for CI may be lost, so we recommend the service user has full-scoped PATs.  To exclude the dbt Cloud service user from the global PAT policy, add them to the allow list as part of your security policy.
 :::

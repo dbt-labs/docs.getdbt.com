@@ -6,16 +6,13 @@ description: Learn about partner integration guidelines, roadmap, and connectivi
 
 # dbt Semantic Layer partner integration
 
-:::info Contact us
-
-This guide is for dbt Semantic Layer integration partners and explains integration guidelines, product roadmap, and connectivity.<br />
-
-To become a formal partner, integrate with the API, or have questions/feedback &mdash; **[contact us](mailto:semantic-layer@dbtlabs.com)** for more info.
-
+:::info Coming soon
+The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
 :::
 
+This guide is for dbt Semantic Layer integration partners and explains integration guidelines, and connectivity.<br />
 
-## Overview
+To become a formal partner, integrate with the API, or have questions/feedback &mdash; **[contact us](mailto:semantic-layer@dbtlabs.com)** for more info.
 
 The dbt Semantic Layer allows users to dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics, models, and entities. It helps organizations manage complexities such as data, tools, and teams to make more efficient and trustworthy decisions.
 
@@ -30,8 +27,6 @@ The dbt Semantic Layer can be used for a variety of tools and applications of da
 * Governance and privacy,
 * Data discovery and cataloging,
 * Machine learning and data science.
-
-<!-- rewrite below little and would like to see if i can include a button or callout -->
 
 :::info Share your use case
 
@@ -49,7 +44,7 @@ The dbt Semantic Layer product architecture includes four primary components:
 | **[dbt Project](/docs/build/metrics)** | Define models and metrics in dbt Core. | ✅ | ✅ |  ✅  | Open source in dbt Core |
 | **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt Core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
 | **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja-like query models and metrics, use macros), compiles the query into pure SQL, executes the query in the data platform, and returns the data. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary in dbt Cloud |
-| **[Metadata API](/docs/dbt-cloud-apis/metadata-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, and metrics). The Metadata API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary in dbt Cloud |
+| **[Discovery API](/docs/dbt-cloud-apis/discovery-api)**  | Accesses metric definitions primarily via integrations and is the source of truth for objects defined in dbt projects (like models, macros, sources, and metrics). The Discovery API is updated at the end of every dbt Cloud run. | ❌ | ✅ | ✅ | Proprietary in dbt Cloud |
     
 Review the following current architecture to understand how the components work together:
   
@@ -68,14 +63,14 @@ Integration partners generally build and approach their roadmap in the following
 
 | Feature  |  Info | Availability |
 |----------|-------|:------------:|
-| **Model metadata**  |  Import/sync model metadata (descriptions, dimensions, test, freshness, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
-| **Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Metadata API](/docs/dbt-cloud-apis/metadata-api). | ✅ |
+| **Model metadata**  |  Import/sync model metadata (descriptions, dimensions, test, freshness, and more) via the [dbt Cloud Discovery API](/docs/dbt-cloud-apis/discovery-api). | ✅ |
+| **Metric definitions**  | Import/sync metric definitions (metric calculation, dimensions, description, and more) via the [dbt Cloud Discovery API](/docs/dbt-cloud-apis/discovery-api). | ✅ |
 | **dbt Semantic Layer as a data source**  | Connect to the dbt Semantic Layer as a data source (for example, the Snowflake Proxy Server). Users can execute dbt-SQL to query metrics or models and use macros.* | ✅ |
 | **Query metrics**  | Query the imported metrics via a metric-centric UI (for example, a user can select a metric, time grain, and dimensions of interest). | ✅ |
-| **Entity definitions**   | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
-| **dbt Semantic Layer Connector**   | A dedicated connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon, see the [Product Roadmap](#product-roadmap) for details_ |
+| **Entity definitions**   | Import/sync entity definitions (descriptions, dimensions, data types, relationships, metrics, and more) and query entities via the dbt Semantic Layer. | _*Coming soon |
+| **dbt Semantic Layer Connector**   | A dedicated connector with the ability to query any data platform supported in dbt Cloud. (Will replace (3).) | _*Coming soon |
 
-_*The coming soon features are expected to launch in 2023. Refer to the [Product Roadmap](#product-roadmap) for more details and timelines._
+_*The coming soon features are expected to launch in 2023. 
 
 **Integration best practices <a id="best-practices"></a>**
 
@@ -87,26 +82,26 @@ To build a successful and seamless dbt Semantic Layer integration, it should exp
 - **Accessible**: Include a self-serve component so a data consumer can ask questions via the user interface (UI), if applicable.
 
 
-## Use the Metadata API
+## Use the Discovery API
 
-This section will explain how to connect to and query the [Metadata API](/docs/dbt-cloud-apis/metadata-api) for model and metric definitions. 
+This section will explain how to connect to and query the [Discovery API](/docs/dbt-cloud-apis/discovery-api) for model and metric definitions. 
 
 To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-semantic-layer/dbt-semantic-layer#prerequisites). 
 
 <details>
-  <summary><b>Metadata API authorization</b></summary>
+  <summary><b>Discovery API authorization</b></summary>
   <div>
-    <div>Refer to our <a href="/docs/dbt-cloud-apis/metadata-querying#authorization">Authorization documentation</a> to learn how to authorize requests to the Metadata API.<br></br><br></br>
+    <div>Refer to our <a href="/docs/dbt-cloud-apis/discovery-querying#authorization">Authorization documentation</a> to learn how to authorize requests to the Discovery API.<br></br><br></br>
     
-    Metrics-specific queries work identical to existing Metadata API queries. This means existing integrations that query model metadata will work perfectly in the context of metrics.
+    Metrics-specific queries work identical to existing Discovery API queries. This means existing integrations that query model metadata will work perfectly in the context of metrics.
     </div>
     </div>
     </details>
 
   <details>
-  <summary><b>Query the Metadata API</b></summary>
+  <summary><b>Query the Discovery API</b></summary>
   <div>
-    <div>Test out the Metadata API by using the <a href="https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql">GraphQL sandbox</a> and use this <a href="https://github.com/transform-data/dbt-metadata-client">Python client</a> as a starting point to develop.
+    <div>Test out the Discovery API by using the <a href="https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql">GraphQL sandbox</a> and use this <a href="https://github.com/transform-data/dbt-metadata-client">Python client</a> as a starting point to develop.
     </div>
     </div>
     </details>
@@ -115,7 +110,7 @@ To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-s
 <!-- the following content was used for the <details> portion above. leaving this here for legacy purposes 
 **Metadata API authorization**
 
-To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/metadata-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to query model metadata will work perfectly in the context of metrics. 
+To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/discovery-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to query model metadata will work perfectly in the context of metrics. 
 
 **Query the Metadata API**
 
@@ -228,9 +223,9 @@ This is an example of querying details about a specific model, `model.jaffle_sho
 
 Query metrics definitions or details for a project from a given job and refer to the following resources: 
 
-- [Metrics query](/docs/dbt-cloud-apis/metadata-schema-metrics) &mdash; Information on how to query the full list of metrics defined in a user’s project with the dbt Cloud Metadata API. 
+- [Metrics query](/docs/dbt-cloud-apis/discovery-schema-metrics) &mdash; Information on how to query the full list of metrics defined in a user’s project with the dbt Cloud Discovery API. 
 - [dbt Metrics docs](https://docs.getdbt.com/docs/build/metrics#available-properties) &mdash; Information on the available metric properties. 
-- [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql) &mdash; Access to test the dbt Cloud Metadata API testing environment.
+- [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql) &mdash; Access to test the dbt Cloud Discovery API testing environment.
 
 <!--- tabs for listing, fetching, example, and querying metrics --->
 <Tabs>
@@ -282,7 +277,7 @@ This is an example of querying details about a specific metric `new_customers` f
 
 </TabItem>
 
-<TabItem value="exampleapi" label="Example Metadata API response with metrics">
+<TabItem value="exampleapi" label="Example Discovery API response with metrics">
 
 ```
 {
@@ -416,16 +411,6 @@ from {{ ref('orders') }}
 </TabItem>
 </Tabs>
 
-## Product Roadmap
-
-The dbt Semantic Layer product roadmap details what features are coming soon and the timelines associated with them. 
-
-| Product | Estimated launch |
-| ------- | ---------------- |
-| [Entities](#entities) | Early 2023 |
-| [dbt Semantic Layer Connector](#dbt-semantic-layer-connector) | Early-mid 2023 |
-| [dbt Semantic Layer API](#dbt-semantic-layer-api) | Mid 2023 |
-
 ### Entities 
 <!-- rewrite a little and include a summary for each tab entry -->
 
@@ -438,7 +423,7 @@ For integrations, entities will provide information like:
 - a way to organize metrics based on the entity they reference, and 
 - a new consumable and dynamically generated dataset (versus finding a table in the data platform). 
 
-This information will be available alongside the Metadata API, and entities can be directly queried through the dbt Semantic Layer. 
+This information will be available alongside the Discovery API, and entities can be directly queried through the dbt Semantic Layer. 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/entity-lineage.jpg" title="Entity lineage graph" />
 
@@ -475,9 +460,9 @@ entities: ## The top-level path of the new node
 ```
 </TabItem>
 
-<TabItem value="entityapi" label="Entity metadata API response">
+<TabItem value="entityapi" label="Entity Discovery API response">
 
-Query entities via the Metadata API.
+Query entities via the Discovery API.
 
 ```
 "entity.project_name.entity_name": {
@@ -553,7 +538,7 @@ How to define new [metrics](/docs/build/metrics) in your dbt project. The metric
     
 </TabItem>      
 
-<TabItem value="newmetricapi" label="New metric metadata API response">
+<TabItem value="newmetricapi" label="New metric Discovery API response">
 
 ```
 "metric.project_name.metric_name": {
@@ -631,7 +616,7 @@ from {{ entities.calculate(
 
 ### dbt Semantic Layer Connector 
 
-In order to support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/cloud/connect-data-platform/connect-your-database) with the dbt Semantic Layer. 
+In order to support more data platforms and enhance the user experience, users will be able to connect to a [dbt Cloud-supported data platform](/docs/cloud/connect-data-platform/about-connections) with the dbt Semantic Layer.
 
 Integration partners need to install the [Arrow FlightSQL](https://arrow.apache.org/docs/format/FlightSql.html) JDBC/ODBC driver, which will authenticate with dbt Cloud and the data platform that it queries. 
 

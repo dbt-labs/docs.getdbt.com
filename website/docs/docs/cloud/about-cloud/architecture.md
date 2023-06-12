@@ -1,54 +1,68 @@
 ---
-title: Architecture
-id: architecture
+title: "dbt Cloud Architecture"
+id: "architecture"
+description: "Information about the architecture, communication, and security of dbt Cloud"
 ---
 
-This page is intended to help both practitioners as well as those with interest understand the architecture and data flow of the hosted dbt Cloud product.
+This page helps practitioners and those interested in dbt Cloud's architecture and data flow.
 
-### Application Data Flows
+## About dbt Cloud architecture
 
-The dbt Cloud application is comprised of a set of static components, as well as a set of dynamic components. The static components are constantly running to serve highly available dbt Cloud functionality, for example, the dbt Cloud web application. The dynamic components are created just-in-time to fill background jobs or a user request to use the IDE. These components are enumerated below.
+The dbt Cloud application has two types of components: static and dynamic. The static components are always running to serve highly available dbt Cloud functions, like the dbt Cloud web application. On the other hand, the dynamic components are created ad-hoc to handle tasks such as background jobs or requests to use the IDE.
+
+dbt Cloud is available in most regions around the world in both [single tenant](/docs/cloud/about-cloud/tenancy#single-tenant) (AWS and Azure) and [multi-tenant](/docs/cloud/about-cloud/tenancy#multi-tenant) configurations.  
+
+dbt Cloud uses PostgreSQL for its backend, S3-compatible Object Storage systems for logs and artifacts, and a Kubernetes storage solution for creating dynamic, persistent volumes. 
+
+All data at rest on dbt Cloud servers is protected using AES-256 encryption. 
 
 <img src="/img/docs/dbt-cloud/on-premises/data-flows.png" />
 
-#### Static Application Components
+For a more detailed breakdown of the dbt Cloud apps, [download the advanced architecture guide PDF](https://drive.google.com/uc?export=download&id=1lktNuMZybXfqFtr24J8zAssEfoL9r51S).
 
-- **api gateway**: The API gateway is the entrypoint for all client requests to dbt Cloud. The api gateway serves static content, and contains logic for routing requests within the dbt Cloud application.
-- **app**: The app is the dbt Cloud application server. It consists of a Django application capable of serving dbt Cloud REST API requests.
-- **scheduler**: The scheduler is a continuously running process that orchestrates background jobs in dbt Cloud. It consists of two components: the scheduler container which provisions dynamic resources just-in-time, and the background cleanup container which performs maintenance tasks on the dbt Cloud database, including flushing logs from dbt runs out into the object store.
+## Communication
 
-#### Dynamic Application Components
+dbt Cloud can communicate with several external services, including data platforms, git repositories, authentication services, and directories. All communications occur over HTTPS (attempts to connect via HTTP are redirected to HTTPS). dbt Cloud encrypts in transit using the TLS 1.2 cryptographic protocol. 
 
-- **dbt run**: A "run" in dbt Cloud represents a series of background invocations of dbt that are triggered either on a cron scheduler, manually by a user, or via dbt Cloud's API.
-- **dbt develop**: This is a server capable of serving dbt IDE requests for a single user. dbt Cloud will create one of these for each user that is actively using the dbt IDE.
+TLS (Transport Layer Security) 1.2 is an industry-standard protocol for encrypting sensitive data while it travels over the public internet (which does not offer native encryption).
 
-#### Application Critical Components
+A typical scenario that might be seen frequently is an employee working in a public space, such as an airport or café. The user might be connected to an unsecured public network offered by a facility to which many others are also connected. What if there is a bad actor amongst them running a program that can "capture" network packets and analyze them over the air?
 
-In addition to the application components, there are a few critical dependencies of the application components that are required in order for the dbt Cloud application to function.
+When that user is accessing dbt Cloud and running models that interact with the data platform, the information sent to and from their computer and the services is encrypted with TLS 1.2.
 
-- **PostgreSQL database**: dbt Cloud uses a PostgreSQL database as its backend. This can be a cloud-hosted database, for example, AWS RDS, Azure Database, Google Cloud SQL (recommended for production deployments); or, it can be embedded into the dbt Cloud Kubernetes appliance (not recommended for production deployments).
-- **Object Storage**: dbt Cloud requires an S3-compatible Object Storage system for persisting run logs and artifacts.
-- **Storage Volumes**: dbt Cloud requires a Kubernetes storage provider capable of creating dynamic persistent volumes that can be mounted to multiple containers in R/W mode.
+If that user runs a command that initializes communication between dbt Cloud and the data warehouse (or a git repo or an auth service) over the internet, that communication is also encrypted.  This means that while the bad actor can technically see the traffic moving over that unsecured network, they can't read or otherwise parse any information. They will not be able to eavesdrop on or hack the information in any way whatsoever. They would see a nonsensical set of characters that nobody can decrypt.
 
-### Data Warehouse Interaction
+For more detailed information on our security practices, read our [Security page](https://getdbt.com/security).
 
-dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation purposes. However, it is possible for users to dispatch SQL that returns customer data into the dbt Cloud application. This data is never persisted and will only exist in memory on the instance in question. In order to properly lock down customer data, it is critical that proper <Term id="data-warehouse" /> permissioning is applied to prevent improper access or storage of sensitive data.
+### Data warehouse interaction
 
-### Deployment Architecture
+dbt Cloud's primary role is as a data processor, not a data store. The dbt Cloud application enables users to dispatch SQL to the warehouse for transformation. However, users can post SQL that returns customer data into the dbt Cloud application. This data never persists and will only exist in memory on the instance for the duration of the session. To lock down customer data correctly, proper <Term id="data-warehouse" /> permissions must be applied to prevent improper access or storage of sensitive data.
 
-The following two sections describe the network architectures for dbt Cloud deployments. Hosted deployments leverage AWS infrastructure.
+Some data warehouse providers offer advanced security features that can be leveraged in dbt Cloud. [PrivateLink](/docs/cloud/secure/about-privatelink) allows supported data platforms on AWS to communicate with dbt Cloud without the traffic traversing the public internet. [Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer Oauth integration which adds a layer of security for the data platforms (Enterprise plan only).
 
-#### Hosted Network Architecture
+### Git sync
 
-The following diagram shows the network architecture for the hosted _Multi Tenant_ and _Single Tenant_ deployment types. While many of the specifications differ between the Multi Tenant and Single Tenant offerings the basic types of components illustrated below are mostly the same. Read below for more information on each of the components and how they might differ between the two deployment models.
+dbt Cloud can sync with a variety of git providers, including [Github](/docs/cloud/git/connect-github), [Gitlab](/docs/cloud/git/connect-gitlab), and [Azure DevOps](/docs/cloud/git/connect-azure-devops) within its integrated development environment ([IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). Communication takes place over HTTPS rather than SSH and is protected using the TLS 1.2 protocol for data in transit.
 
-<img src="/img/docs/dbt-cloud/deployment/aws-network-architecture.png" />
+The git repo information is stored on dbt Cloud servers to make it accessible during the IDE sessions. When the git sync is disabled, you must [contact support](mailto:support@getdbt.com) to request the deletion of the synced data. 
 
-- **VPC**: In both hosted deployments, the dbt Cloud application infrastructure lives in an [AWS VPC](https://aws.amazon.com/vpc/) managed by dbt Labs. One of the key differences between the Production and Single Tenant deployment is that the Single Tenant deployment provides a dedicated VPC for a single customer.
-- **EKS**: Hosted environments leverage [AWS Elastic Kubernetes Service](https://aws.amazon.com/eks/) to manage dbt Cloud application resources. EKS provides a high degree of reliability and scalability for the dbt Cloud application.
-- **CLB**: One or more [AWS Classic Load Balancers](https://aws.amazon.com/elasticloadbalancing/) living in a public subnet are leveraged in the hosted deployment environments to distribute incoming traffic across multple EC2 instances in the EKS cluster.
-- **EC2**: The hosted dbt Cloud deployments leverage a cluster of [AWS EC2](https://aws.amazon.com/ec2/) worker nodes to run the dbt Cloud application.
-- **EBS**: In order to store application data, dbt Cloud leverages [AWS Elastic Block Store](https://aws.amazon.com/ebs/) mounted to the EC2 instances described above.
-- **EFS**: An [AWS Elastic File System](https://aws.amazon.com/efs/) is provisioned for hosted deployments to store and manage local files from the dbt Cloud IDE.
-- **S3**: [AWS Simple Storage Service (S3)](https://aws.amazon.com/s3/) is used to store dbt Cloud application logs and artifacts (such as those generated from dbt job runs).
-- **RDS**: The hosted dbt Cloud application leverages [AWS Postgres RDS](https://aws.amazon.com/rds/postgresql/) to store application information such as accounts, users, environments, etc. Note that as explained in the [Data Warehouse Interaction](#data-warehouse-interaction) section above, no data from an associated warehouse is ever stored in this database.
+### Authentication services
+
+The default settings of dbt Cloud enable local users with credentials stored in dbt Cloud. Still, integrations with various authentication services are offered as an alternative, including [single sign-on services](/docs/cloud/manage-access/sso-overview). Access to features can be granted/restricted by role using [RBAC](/docs/cloud/manage-access/enterprise-permissions).
+
+SSO features are essential because they reduce the number of credentials a user must maintain. Users sign in once and the authentication token is shared among integrated services (such as dbt Cloud). The token expires and must be refreshed at predetermined intervals, requiring the user to go through the authentication process again. If the user is disabled in the SSO provider service, their access to dbt Cloud is disabled, and they cannot override this with local auth credentials. 
+
+[Snowflake](/docs/cloud/manage-access/set-up-snowflake-oauth) and [BigQuery](/docs/cloud/manage-access/set-up-bigquery-oauth) offer OAuth (JSON to pass info and API calls for auth) services as an alternative to SAML (XML to pass info and session cookies for auth). Users can authenticate against the data platform for secure access to dbt Cloud and prevent access when credentials are revoked. 
+
+## Security
+
+dbt Labs is dedicated to upholding industry standards for Cloud security and GDPR compliance. Our compliance certifications include the following:
+
+- SOC2 Type II &mdash; assesses a service provider’s security control environment against the trust services principles and criteria set forth by the American Institute of Certified Public Accountants (AICPA).
+- ISO27001:2013 &mdash; a globally recognized standard for establishing and certifying an information security management system (ISMS).
+- GDPR - dbt Labs is committed to maintaining GDPR compliance standards. Read more about our [Data Processing Addendum](https://www.getdbt.com/cloud/dpa).
+
+
+For more detailed information about our security practices, read our [Security page](https://www.getdbt.com/security/).
+
+

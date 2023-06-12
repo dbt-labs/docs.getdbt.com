@@ -1,25 +1,20 @@
 ---
-title: "dbt_project.yml Context"
+title: " About dbt_project.yml context variables"
+sidebar_label: "dbt_project.yml context"
 id: "dbt-project-yml-context"
+description: "The context variables and methods are available when configuring resources in the dbt_project.yml file."
 ---
-
-<Changelog>
-
-The compilation context of the `dbt_project.yml` file is well-defined as
-of dbt v0.16.0
-
-</Changelog>
 
 The following context variables and methods are available when configuring
 resources in the `dbt_project.yml` file. This applies to the `models:`, `seeds:`,
 and `snapshots:` keys in the `dbt_project.yml` file.
 
 **Available context variables:**
-- [target](target)
-- [env_var](env_var)
-- [vars](var) (_Note: only variables defined with `--vars` are available_)
-- [builtins](builtins)
-- [dbt_version](dbt_version)
+- [target](/reference/dbt-jinja-functions/target)
+- [env_var](/reference/dbt-jinja-functions/env_var)
+- [vars](/reference/dbt-jinja-functions/var) (_Note: only variables defined with `--vars` are available_)
+- [builtins](/reference/dbt-jinja-functions/builtins)
+- [dbt_version](/reference/dbt-jinja-functions/dbt_version)
 
 
 ### Example configuration

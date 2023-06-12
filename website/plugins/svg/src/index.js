@@ -1,7 +1,7 @@
-module.exports = function(context, options) {
+module.exports = function() {
   return {
     name: 'docusaurus-svg-loader',
-    configureWebpack(config, isServer) {
+    configureWebpack() {
       return {
         module: {
           rules: [

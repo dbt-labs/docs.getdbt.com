@@ -15,7 +15,7 @@ If you're interested in learning more about an Enterprise plan, contact us at sa
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access
-control](/docs/cloud/manage-access/about-access) for more information on Role-Based access
+control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
 control (RBAC).
 
 ## Permission Sets
@@ -31,18 +31,19 @@ can be associated with more than one permission sets.
 
 Account Admins have unrestricted access to dbt Cloud accounts. Users with Account Admin permissions can:
 
-- Create, delete and modify all projects in an account
-- Create, delete, and modify Repositories
+- Create, delete, and modify all projects in an account
 - Create, delete, and modify Connections
 - Create, delete, and modify Environments
-- Create, delete, and modify Jobs
 - Create, delete, and modify Groups
 - Create, delete, and modify Group Memberships
+- Create, delete, and modify Jobs
+- Create, delete, and modify outbound webhook subscriptions
+- Create, delete, and modify Repositories
 - Manage Notification Settings
 - Manage account-level [artifacts](/docs/deploy/artifacts)
-- View and modify Account Settings
-- Use the IDE
 - Run and cancel jobs
+- Use the IDE
+- View and modify Account Settings
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
@@ -55,12 +56,12 @@ Users with Project Creator permissions can:
 - View Account Settings
 - View and modify project users
 - Create, delete and modify all projects in an account
-- Create, delete, and modify Repositories
 - Create, delete, and modify Connections
 - Create, delete, and modify Environments
 - Create, delete, and modify Jobs
-- Use the IDE
+- Create, delete, and modify Repositories
 - Run and cancel jobs
+- Use the IDE
 - View Groups
 - View Notification Settings
 
@@ -72,14 +73,14 @@ Users with Project Creator permissions can:
 Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
-- View Repositories
+- View account-level artifacts
 - View Connections
 - View Environments
-- View Jobs
 - View Groups
 - View Group Memberships
+- View Jobs
 - View Notification Settings
-- View account-level artifacts
+- View Repositories
 
 ### Admin
 - **Has permissions on:** Authorized projects
@@ -87,57 +88,58 @@ Account Viewers have read only access to dbt Cloud accounts. Users with Account 
 
 Admins have unrestricted access to _projects_ in dbt Cloud accounts which they are members of.
 Admins can perform the following actions in projects they are assigned to:
-- View project details
 - Create, delete, and modify Repositories
 - Create, delete, and modify Connections
 - Create, delete, and modify Environments
-- Create, delete, and modify Jobs
 - Create, delete, and modify Group Memberships
-- Use the IDE
+- Create, delete, and modify Jobs
+- Create, delete, and modify outbound webhook subscriptions
 - Run and cancel jobs
+- Use the IDE
+- View project details
 
 ### Git Admin
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Git Admins can perform the following actions in projects they are assigned to:
-- View project details
 - Create, delete, and modify Repositories
 - View Connections
 - View Environments
 - View Jobs
+- View project details
 
 ### Database Admin
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Database Admins can perform the following actions in projects they are assigned to:
-- View project details
 - Create, delete, and modify Connections
-- View Repositories
 - View Environments
 - View Jobs
+- View project details
+- View Repositories
 
 ### Team Admin
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Team Admins can perform the following actions in projects they are assigned to:
-- View project details
-- Create, delete, and modify group memberships
-- View Repositories
+- View Groups
 - View Environments
 - View Jobs
+- View project details
+- View Repositories
 
 ### Job Admin
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Job Admins can perform the following actions in projects they are assigned to:
-- View, edit, and create environments
-- View connections
 - Create, delete, and modify Jobs
 - Run and cancel jobs
+- View connections
+- View, edit, and create environments
 - View historical runs
 
 ### Job Viewer
@@ -146,30 +148,32 @@ Job Admins can perform the following actions in projects they are assigned to:
 
 Job Viewers can perform the following actions in projects they are assigned to:
 - View environments
-- View job definitions
 - View historical runs
+- View job definitions
 
 ### Developer
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Developers can perform the following actions in projects they are assigned to:
+- Configure personal developer credentials
 - Create, delete, and modify Jobs
+- Create, delete, and modify outbound webhook subscriptions
 - Run and cancel jobs
 - Use the IDE
-- Configure personal developer credentials
 
 ### Analyst
 - **Has permissions on:** Authorized projects
 - **License restrictions:** must have a developer license
 
 Analysts can perform the following actions in projects they are assigned to:
-- Use the IDE
 - Configure personal developer credentials
+- Configure environmental variables
 - View connections
 - View environments
-- View job definitions
 - View historical runs
+- View job definitions
+- Use the IDE
 
 
 ### Stakeholder
@@ -177,9 +181,9 @@ Analysts can perform the following actions in projects they are assigned to:
 - **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
-- View the Read Only dashboard
 - View generated documentation
 - View generated source freshness reports
+- View the Read Only dashboard
 
 ## Diagram of the Permission Sets
 
@@ -189,12 +193,7 @@ Stakeholders can perform the following actions in projects they are assigned to:
 
 Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
 
-- **If you are on a dbt Labs Hosted dbt Cloud instance:**
-Contact support via the webapp button or support@getdbt.com to turn on this feature.
-- **If you are on a customer deployed dbt Cloud instance:**
-Contact your account manager for instructions on how to turn on this feature.
-
-Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
+1. Click the gear icon to the top right and select **Account Settings**. From the **Team** section, click **Groups**
 
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 

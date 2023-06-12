@@ -23,7 +23,7 @@ function WistiaVideo({id, paddingTweak = "56.25%"}) {
           </iframe>
         </div>
       </div>
-		  <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+      <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
     </React.Fragment>
 	);
 }

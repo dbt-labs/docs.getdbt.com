@@ -1,4 +1,6 @@
 ---
+title: "Defining a schema source property"
+sidebar_label: "schema"
 resource_types: sources
 datatype: schema_name
 ---

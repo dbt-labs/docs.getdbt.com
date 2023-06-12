@@ -1,6 +1,6 @@
 ---
 title: "October 2021 dbt Update: Metrics and Hat Tricks 🎩"
-description: "Also flagging that Coalesce is less than 3 weeks away! 😱"
+description: "Stay up-to-date with the latest features in dbt. Read about our October 2021 product update."
 slug: dbt-product-update-2021-october
 authors: [lauren_craigie]
 

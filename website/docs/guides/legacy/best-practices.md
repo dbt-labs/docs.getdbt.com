@@ -18,7 +18,7 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 ### Use separate development and production environments
 dbt makes it easy to maintain separate production and development environments through the use of targets within a profile. We recommend using a `dev` target when running dbt from your command line and only running against a `prod` target when running from a production deployment. You can read more [about managing environments here](/docs/collaborate/environments/environments-in-dbt).
 
-### Use a style guide and for your project
+### Use a style guide for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
 
 :::info Our style guide
@@ -30,7 +30,7 @@ We've made our [style guide](https://github.com/dbt-labs/corp/blob/main/dbt_styl
 
 ## Best practices in dbt projects
 ### Use the ref function
-The [ref](ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that models are built in the correct order. It also ensures that your current model selects from upstream tables and <Term id="view">views</Term> in the same environment that you're working in.
+The [ref](/reference/dbt-jinja-functions/ref) function is what makes dbt so powerful! Using the `ref` function allows dbt to infer dependencies, ensuring that models are built in the correct order. It also ensures that your current model selects from upstream tables and <Term id="view">views</Term> in the same environment that you're working in.
 Always use the `ref` function when selecting from another model, rather than using the direct relation reference (e.g. `my_schema.my_table`).
 
 ### Limit references to raw data
@@ -70,7 +70,7 @@ Complex models often include multiple Common Table Expressions (<Term id="cte">C
 ### Group your models in directories
 Within your `models/` directory, you can have any number of nested subdirectories. We leverage directories heavily, since using a nested structure within directories makes it easier to:
 * Configure groups of models, by specifying configurations in your `dbt_project.yml` file.
-* Run subsections of your DAG, by using the [model selection syntax](node-selection/syntax).
+* Run subsections of your DAG, by using the [model selection syntax](/reference/node-selection/syntax).
 * Communicate modeling steps to collaborators
 * Create conventions around the allowed upstream dependencies of a model, for example, "models in the `marts` directory can only select from other models in the `marts` directory, or from models in the `staging` directory".
 
@@ -92,7 +92,7 @@ When a user connects to a <Term id="data-warehouse" /> via a SQL client, they of
 * Use prefixes in <Term id="table" /> names (for example, `stg_`, `fct_` and `dim_`) to indicate which relations should be queried by end users.
 
 ### Choose your materializations wisely
-[<Term id="materialization" />](materializations) determine the way models are built through configuration. As a general rule:
+[<Term id="materialization" />](/docs/build/materializations) determine the way models are built through configuration. As a general rule:
 * Views are faster to build, but slower to query compared to tables.
 * Incremental models provide the same query performance as tables, are faster to build compared to the table <Term id="materialization" />, however they introduce complexity into a project.
 
@@ -105,7 +105,7 @@ We often:
 
 ## Pro-tips for workflows
 ### Use the model selection syntax when running locally
-When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](node-selection/syntax).
+When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](/reference/node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
 To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
@@ -190,11 +190,11 @@ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 </VersionBlock>
 
-To learn more, read the docs on [state](/docs/deploy/about-state).
+To learn more, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development
-In a development environment, faster run times allow you to iterate your code more quickly. We frequently speed up our runs by using a pattern that limits data based on the [target](target) name:
+In a development environment, faster run times allow you to iterate your code more quickly. We frequently speed up our runs by using a pattern that limits data based on the [target](/reference/dbt-jinja-functions/target) name:
 ```sql
 select
 *
@@ -205,7 +205,7 @@ where created_at >= dateadd('day', -3, current_date)
 ```
 
 ### Use hooks to manage privileges on objects that dbt creates
-Use `grant` statements from [hooks](hooks-operations) to ensure that permissions are applied to the objects created by dbt. By codifying these grant statements in hooks, you can version control and repeatably apply these permissions.
+Use `grant` statements from [hooks](/docs/build/hooks-operations) to ensure that permissions are applied to the objects created by dbt. By codifying these grant statements in hooks, you can version control and repeatably apply these permissions.
 
 
 :::info Recommended grant statements

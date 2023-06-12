@@ -1,14 +1,16 @@
 ---
 title: "dbt Cloud features"
 id: "dbt-cloud-features"
+hide_table_of_contents: true
 ---
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one web-based UI. 
 
 In addition to providing a hosted architecture for running dbt Core across your organization, dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated developer environment (IDE).
 
-dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14 day trial](https://www.getdbt.com/signup/)! <br></br>
+dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14 day trial](https://www.getdbt.com/signup/)! 
 
+To have the best experience using dbt Cloud, we recommend you use modern and up-to-date web browsers like Chrome, Safari, Edge, and Firefox.<br></br>
 
 <div className="grid--2-col">
 
@@ -16,19 +18,19 @@ dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make 
 <Card
     title="dbt Cloud IDE"
     body="The IDE is the easiest and most efficient way to develop dbt models, allowing you to build, test, run, and version control your dbt projects directly from your browser."
-link="/docs/get-started/develop-in-the-cloud"
+link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="pencil-paper"/>
 
 <Card
     title="Manage environments"
     body="Set up and manage separate production and development environments in dbt Cloud to help engineers develop and test code more efficiently, without impacting users or data."
-    link="/docs/collaborate/environments"
+    link="/docs/collaborate/environments/environments-in-dbt"
     icon="pencil-paper"/>
 
   <Card
     title="Schedule and run dbt jobs"
     body="Create custom schedules to run your production jobs. Schedule jobs by day of the week, time of day, or a recurring interval. Decrease operating costs by using webhooks to trigger CI jobs and the API to start jobs."
-    link="/docs/get-started/getting-started/building-your-first-project/schedule-a-job"
+    link="/docs/deploy/job-scheduler"
     icon="pencil-paper"/>
 
   <Card
@@ -41,13 +43,7 @@ link="/docs/get-started/develop-in-the-cloud"
     title="Host & share documentation"
     body="dbt Cloud hosts and authorizes access to dbt project documentation, allowing you to generate data documentation on a schedule for your project. Invite teammates to dbt Cloud to collaborate and share your project's documentation."
     link="/docs/collaborate/build-and-view-your-docs"
-    icon="pencil-paper"/>    
-
-   <Card
-    title="Democratize access to logs"
-    body="View and download in-progress and historical logs for your dbt runs, making it easy for anyone on the team to debug errors more efficiently."
-    link="/docs/get-started/develop-in-the-cloud#build-compile-and-run-projects"
-    icon="pencil-paper"/>      
+    icon="pencil-paper"/>       
 
    <Card
     title="Supports GitHub, GitLab, AzureDevOPs"
@@ -74,16 +70,16 @@ link="/docs/get-started/develop-in-the-cloud"
     icon="pencil-paper"/>  
 
    <Card
-    title="Metadata API*"
+    title="Discovery API*"
     body="Enhance your workflow and run ad-hoc queries, browse schema, or query the dbt Semantic Layer. dbt Cloud serves a GraphQL API, which supports arbitrary queries."
-    link="/docs/dbt-cloud-apis/metadata-api"
+    link="/docs/dbt-cloud-apis/discovery-api"
     icon="pencil-paper"/> 
 
 
 <Card
-    title="Model timing dashboard*"
-    body="Visualize and explore your runs and surface model bottlenecks. The Model timing dashboard displays model info, order, and run time for each job completed. The visualization only appears for successfully completed jobs, and the top 1% of model times are highlighted. Access the dashboard on the Run Overview page in dbt Cloud."
-    link="/docs/dbt-versions/release-notes/January-2022/model-timing-more"
+    title="Run visibility"
+    body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
+    link="/docs/deploy/run-visibility"
     icon="pencil-paper"/> 
 </div> <br />
 
@@ -92,7 +88,7 @@ link="/docs/get-started/develop-in-the-cloud"
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Get started guides](/docs/get-started/getting-started/set-up-dbt-cloud)
-- [Develop in the Cloud](/docs/get-started/develop-in-the-cloud)
+- [Quickstart guides](/quickstarts)
+- [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
 - [dbt Cloud support](/docs/dbt-support)
 - [Become a contributor](https://docs.getdbt.com/community/contribute)

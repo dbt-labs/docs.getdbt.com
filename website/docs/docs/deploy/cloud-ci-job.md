@@ -17,14 +17,14 @@ Only GitLab users with a paid or self-hosted GitLab account can use GitLab webho
 :::
 
 :::info Common Errors
-If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to [reconfigure the project](/docs/deploy/cloud-ci-job#reconnecting-your-dbt-project-to-use-dbt-clouds-native-integration-with-github-gitlab-or-azure-devops) to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead.
+If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to reconfigure the project to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead. Read more in [Troubleshooting](/docs/deploy/cloud-ci-job#troubleshooting).
 :::
 
 ## Configuring continuous integration in dbt Cloud
 
 When you [set up CI for a job](#configure-ci-for-a-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new pull request has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. 
 
-Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. dbt Cloud then  runs the tests for these models as a check. This process provides a staging environment where you can check the run status and builds resulting from the code associated with the pull request's commit. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence. The unique schema name, your project ID, and pull request ID (`dbt_cloud_pr_1862_917`) can be found in the run details for the given run as shown in the following image:
+Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. dbt Cloud then  runs the tests for these models as a check. This process provides a staging environment where you can check the run status and builds resulting from the code associated with the pull request's commit. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence. The unique schema name, your CI Job ID, and pull request ID (`dbt_cloud_pr_1862_917`) can be found in the run details for the given run as shown in the following image:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
@@ -63,13 +63,15 @@ The green checkmark means the dbt builds and tests were successful. Clicking on 
 
 ## Configuring a Slim CI job
 
-Slim CI offers an alternative to running and testing all models in your project, even when you're only changed a couple of things. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
+Slim CI offers an alternative to running and testing all models in your project, and instead runs and tests only what's necessary based on the changes you've made. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
 
-These components distinguish a Slim CI job from a dbt CI job:
+A Slim CI job:
 
-- Must defer to a production job.
-- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](#deferral-and-state-comparison)
-- Must be triggered by a pull request.
+- Is triggered by a pull request.
+- Defers to a production job.
+- Includes a command with a `--select state:modified+` selector, which dbt uses to build only new or changed models and their downstream dependents. 
+
+dbt then identifies the models that need to be run and tested using a state comparison to the production job that you've selected.
 
 ### Deferral and state comparison  
 
@@ -90,7 +92,7 @@ dbt build --select state:modified+
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
 ### Fresh rebuilds
 

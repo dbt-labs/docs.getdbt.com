@@ -1,6 +1,6 @@
 import React from 'react';
 
-function YoutubeVideo({children, id}) {
+function YoutubeVideo({id}) {
   return (
         <iframe
             width="560"
@@ -8,7 +8,7 @@ function YoutubeVideo({children, id}) {
             src={`https://www.youtube.com/embed/${id}`}
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen>
+            allowFullScreen
             webkitallowfullscreen="true"
             mozallowfullscreen="true"></iframe>
   );

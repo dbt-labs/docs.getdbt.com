@@ -6,7 +6,7 @@ default_value: {}
 
 <Changelog>
 
-* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` yaml property for some resource types. It is applied hierarchically and merges on a per-key basis.
+* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` YAML property for some resource types. It is applied hierarchically and merges on a per-key basis.
 
 </Changelog>
 
@@ -46,7 +46,7 @@ The `meta` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -95,7 +95,7 @@ seeds:
 
 </File>
 
-The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
+The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -123,7 +123,13 @@ The `meta` config can also be defined:
 - under the `snapshots` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a snapshot's SQL block
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
+
+</TabItem>
+
+<TabItem value="tests">
+
+You can't add YAML `meta` configs for [generic tests](/docs/build/tests#generic-tests). However, you can add `meta` properties to [singular tests](/docs/build/tests#singular-tests) using `config()` at the top of the test file. 
 
 </TabItem>
 
