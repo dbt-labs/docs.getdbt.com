@@ -20,7 +20,7 @@ To delete a user in dbt Cloud, you must be an account owner or have admin privil
 
 If you are on a **Teams** plan and you are deleting users to reduce the number of billable seats, you also need to take these steps to lower the license count:
 1. In **Account Settings**, select **Billing**. 
-2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
+2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. If you leave any field blank, you won't be able to save your changes.
 3. Click **Update Payment Information** to save your changes. 
 
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Users to modify dbt Cloud users" />
