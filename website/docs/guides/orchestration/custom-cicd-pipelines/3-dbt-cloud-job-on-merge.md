@@ -441,7 +441,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="85%" title="ADO-triggered job in dbt Cloud"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="100%" title="ADO-triggered job in dbt Cloud"/>
 
 </TabItem>
 <TabItem value="bitbucket">
