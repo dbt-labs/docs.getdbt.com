@@ -57,7 +57,7 @@ Refer to [merge conflicts](/docs/collaborate/git/merge-conflicts) to learn how t
 
 ## The .gitignore file
 
-For proper operation, dbt Cloud requires that certain sub-folders in the git repository that contains your dbt project be excluded from tracking by git.
+To make sure dbt Cloud runs smoothly, you must exclude certain sub-folders in your git repository containing your dbt project from being tracked by git.
 
 This is achieved by adding three lines to a special file named [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore). This file is placed in the root folder of your dbt project.
 
