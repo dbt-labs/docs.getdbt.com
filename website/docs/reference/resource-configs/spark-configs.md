@@ -9,6 +9,10 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
+:::Migrate to dbt-databricks
+We recommend [migrating from the dbt-spark adapter to the dbt-databricks adapter](/guides/migration/tools/migrating-from-spark-to-databricks#migrate-your-dbt-projects).
+:::
+
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).
