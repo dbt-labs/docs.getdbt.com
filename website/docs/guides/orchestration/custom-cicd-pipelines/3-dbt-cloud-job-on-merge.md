@@ -94,7 +94,7 @@ In Azure:
     - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
 - In the *Value* section, paste in the key you copied from dbt Cloud
 - Make sure the check box next to *Keep this value secret* is checked. This will mask the value in logs, and you won't be able to see the value for the variable in the UI.
-- Click *OK* > *Save* to save the variable
+- Click *OK* and then *Save* to save the variable
 - Save your new Azure pipeline
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
@@ -310,7 +310,7 @@ run-dbt-cloud-job:
 
 For this new job, open the existing Azure pipeline you created above and select the *Edit* button. We'll want to edit the corresponding Azure pipeline YAML file with the appropriate configuration, instead of the starter code, along with including a `variables` section to pass in the required variables.
 
-Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `master` (like a PR is merged to your master branch). Have a read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
+Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `master` (like a PR merged to your master branch). Have a read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
 ```yaml
 name: Run dbt Cloud Job
@@ -441,7 +441,7 @@ Additionally, you’ll see the job in the run history of dbt Cloud. It should be
 
 <Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-run-on-merge-azure.png" width="85%" title="dbt run on merge job in ADO"/>
 
-<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png)" width="85%" title="ADO-triggered job in dbt Cloud"/>
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-cloud-job-azure-triggered.png" width="85%" title="ADO-triggered job in dbt Cloud"/>
 
 </TabItem>
 <TabItem value="bitbucket">
