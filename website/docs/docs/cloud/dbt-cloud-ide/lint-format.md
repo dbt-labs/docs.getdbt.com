@@ -182,7 +182,7 @@ However, you can customize and include an additional child `.sqlfluff` configura
 </details>
 
 <details>
-<summary>Can I run SQLFluff commands form the terminal?</summary>
+<summary>Can I run SQLFluff commands from the terminal?</summary>
 
 Running SQLFluff commands from the terminal isn't supported, but it's currently on the Product team's roadmap for future support.
 </details>
