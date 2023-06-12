@@ -227,7 +227,7 @@ jobs:
 
 For this job, we'll set it up using the `gitlab-ci.yml` file as in the prior step (see Step 1 of the linting setup for more info). The YAML file will look pretty similar to our earlier job, but there is a new section called `variables` that we’ll use to pass in the required variables to the Python script. Update this section to match your setup based on the comments in the file.
 
-Please note that the `rules:` section now says to run **only** when there are pushes to a branch named `main` (i.e. a PR is merged). Have a look through [GitLab’s docs](https://docs.gitlab.com/ee/ci/yaml/#rules) on these filters for additional use cases.
+Please note that the `rules:` section now says to run **only** when there are pushes to a branch named `main`, such as a PR being merged. Have a look through [GitLab’s docs](https://docs.gitlab.com/ee/ci/yaml/#rules) on these filters for additional use cases.
 
 <Tabs
   defaultValue="single-job"
