@@ -5,7 +5,7 @@ sidebar_label: 'How to fix your .gitignore file'
 id: gitignore
 ---
 
-A `.gitignore` file specifies which files git should intentionally ignore or 'do not track'. dbt Cloud indicates untrackec files in the project file explorer pane by putting the file or folder name in *italics*.
+A `.gitignore` file specifies which files git should intentionally ignore or 'do not track'. dbt Cloud indicates untracked files in the project file explorer pane by putting the file or folder name in *italics*.
 
 If the dbt Cloud IDE is having problems reverting changes, checking out or creating a new branch, or never offers to open a pull request after a successfull commit &mdash; There is typically a problem with the [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore) file.  It is either missing OR it doesn't contain the necessary entries for the proper function of dbt Cloud.
 

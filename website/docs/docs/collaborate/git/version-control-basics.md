@@ -61,7 +61,7 @@ For proper operation, dbt Cloud requires that certain sub-folders in the git rep
 
 This is achieved by adding three lines to a special file named [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore). This file is placed in the root folder of your dbt project.
 
-Some git providers will auto-create a 'boilerplate' `.gitignore` file when the repository is created.  However, in dbt Labs' experience, none of these boilerplate `.gitignore` files will contain the entries necessary for the proper operation of dbt Cloud.
+Some git providers will automatically create a 'boilerplate' `.gitignore` file when the repository is created.  However, in dbt Labs' experience, none of these boilerplate `.gitignore` files will contain the entries necessary for the proper operation of dbt Cloud.
 
 > Special Note for dbt Cloud projects created after Dec 1, 2022: Using the "Initialize dbt Project" button in the IDE to setup a new (empty) dbt project will cause dbt Cloud to automatically add a `.gitignore` file with the proper entries.  If a `.gitignore` file already exists, the necessary folders will be appended to the existing file.
 
