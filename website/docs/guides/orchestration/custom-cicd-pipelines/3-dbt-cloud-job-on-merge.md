@@ -97,7 +97,7 @@ In Azure:
 - Click *OK* > *Save* to save the variable
 - Save your new Azure pipeline
 
-    ![View of the Azure pipelines window for entering DBT_API_KEY](/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png)
+<Lightbox src="/img/guides/orchestration/custom-cicd-pipelines/dbt-api-key-azure.png" width="85%" title="View of the Azure pipelines window for entering DBT_API_KEY"/>
 
 </TabItem> 
 <TabItem value="bitbucket">
