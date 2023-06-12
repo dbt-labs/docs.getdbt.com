@@ -57,25 +57,26 @@ Refer to [merge conflicts](/docs/collaborate/git/merge-conflicts) to learn how t
 
 ## The .gitignore file
 
-To make sure dbt Cloud runs smoothly, you must exclude certain sub-folders in your git repository containing your dbt project from being tracked by git.
+To make sure dbt Cloud runs smoothly, you must exclude certain sub-folders in your git repository containing your dbt project from being tracked by git. You can achieve this by adding three lines to a special file named [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore). This file is placed in the root folder of your dbt project.
 
-This is achieved by adding three lines to a special file named [.gitignore](https://github.com/dbt-labs/dbt-starter-project/blob/main/.gitignore). This file is placed in the root folder of your dbt project.
+Some git providers will automatically create a 'boilerplate' `.gitignore` file when the repository is created.  However, based on dbt Labs' experience, these default `.gitignore` files typically don't include the required entries for dbt Cloud to function correctly.
 
-Some git providers will auto-create a 'boilerplate' `.gitignore` file when the repository is created.  However, based on dbt Labs' experience, these default `.gitignore` files typically don't include the required entries for dbt Cloud to function correctly.
+The `.gitignore` file can include unrelated files and folders if the code repository requires it. However, the following folders must be included in the `gitignore` file to ensure dbt Cloud operates smoothly:
 
-> Special Note for dbt Cloud projects created after Dec 1, 2022: Using the "Initialize dbt Project" button in the IDE to setup a new (empty) dbt project will cause dbt Cloud to automatically add a `.gitignore` file with the proper entries.  If a `.gitignore` file already exists, the necessary folders will be appended to the existing file.
-
-> If an existing project is being moved from core into dbt Cloud, it is important to check and be sure that the `.gitignore` file contains the necessary entries.  This is because dbt core itself doesn't interact with git, so dbt Cloud won't automatically append or check the `.gitignore` file entries.  Additionaly, because the repository already contains dbt code, it doesn't need be initialized.  In that case, dbt Cloud won't automatically append any missing entries to the `.gitignore`.
-
-The `.gitignore` file can contain other files and folders that are unrelated to dbt if the code repository necessitates that, but the following folders must be included for proper dbt Cloud operation:
 ```
 dbt_packages/
 logs/
 target/
 ```
 
-> With the trailing slash, git will process these lines as 'folder wildcards', meaning all files and folders in that folder will be excluded from tracking.
+**Note** &mdash; By using a trailing slash, these lines in the `gitignore` file serve as 'folder wildcards', excluding all files and folders within those folders from being tracked by git. 
 
-For additional information or troublehsooting tips please refer to the following FAQ:
 
-<FAQ src="Git/gitignore"/>
+:::tip
+
+- **dbt Cloud projects created after Dec 1, 2022** &mdash; If you use the **Initialize dbt Project** button in the dbt Cloud IDE to setup a new and empty dbt project, dbt Cloud will automatically add a `.gitignore` file with the required entries.  If a `.gitignore` file already exists, the necessary folders will be appended to the existing file.
+
+- **Migrating project from Core to dbt Cloud** &mdash; Make sure you check the `.gitignore` file contains the necessary entries. dbt Core doesn't interact with git so dbt Cloud doesn't automatically add or verify entries in the `.gitignore` file. Additionally, if the repository already contains dbt code and doesn't require initialization, dbt Cloud won't add any missing entries to the .gitignore file.
+:::
+
+For additional info or troubleshooting tips please refer to the [detailed FAQ](/faqs/Git/gitignore).
