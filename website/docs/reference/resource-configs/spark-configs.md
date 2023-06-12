@@ -9,8 +9,10 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
-:::Migrate to dbt-databricks
-We recommend [migrating from the dbt-spark adapter to the dbt-databricks adapter](/guides/migration/tools/migrating-from-spark-to-databricks#migrate-your-dbt-projects).
+<Snippet src="dbt-databricks-for-databricks" />
+
+:::note
+See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
 :::
 
 ## Configuring tables
