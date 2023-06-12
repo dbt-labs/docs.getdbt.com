@@ -103,7 +103,10 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Develop in the IDE",
-              link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+              link: {
+                type: "doc",
+                id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              },
               items: [
                 "docs/cloud/dbt-cloud-ide/ide-user-interface",
                 "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
@@ -268,7 +271,10 @@ const sidebarSettings = {
           type: "category",
           label: "Model governance",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
+          link: {
+            type: "doc",
+            id: "docs/collaborate/govern/about-model-governance",
+          },
           items: [
             "docs/collaborate/govern/model-access",
             "docs/collaborate/govern/model-contracts",
@@ -302,7 +308,28 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/service-tokens",
           ],
         },
-        "docs/dbt-cloud-apis/admin-cloud-api",
+        {
+          type: "category",
+          label: "dbt Cloud Admin API",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
+          items: [
+            {
+              type: "link",
+              label: "v1 docs",
+              href: "/dbt-cloud/api-v1",
+            },
+            {
+              type: "link",
+              label: "v2 docs",
+              href: "/dbt-cloud/api-v2",
+            },
+            {
+              type: "link",
+              label: "v3 docs",
+              href: "/dbt-cloud/api-v3",
+            },
+          ],
+        },
         {
           type: "category",
           label: "Discovery API",
@@ -860,7 +887,7 @@ const sidebarSettings = {
               ],
             },
             "guides/migration/tools/migrating-from-spark-to-databricks",
-            "guides/migration/tools/refactoring-legacy-sql"
+            "guides/migration/tools/refactoring-legacy-sql",
           ],
         },
       ],
@@ -934,7 +961,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Advanced",
-      items: ["guides/advanced/creating-new-materializations",
+      items: [
+        "guides/advanced/creating-new-materializations",
         "guides/advanced/using-jinja",
       ],
     },
