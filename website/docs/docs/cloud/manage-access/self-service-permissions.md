@@ -31,7 +31,6 @@ You will need owner and member groups to help with account onboarding, but these
 
 After onboarding administrative users and configuring RBAC/SSO groups, we recommend the following steps for onboarding users to a dbt Cloud Enterprise account.
 
-TODO: maybe these suggestions should change now that there is a specific License type for managing users, groups, licenses, etc.
 
 ### Prerequisites
 
