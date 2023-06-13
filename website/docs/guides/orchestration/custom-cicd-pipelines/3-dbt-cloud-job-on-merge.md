@@ -3,7 +3,7 @@ title: Run a dbt Cloud job on merge
 id: 3-dbt-cloud-job-on-merge
 ---
 
-This job will take a bit more to setup, but is a good example of how to call the dbt Cloud API from a CI/CD pipeline. The concepts persented here can be generalized and used in whatever way best suits your use case.
+This job will take a bit more to setup, but is a good example of how to call the dbt Cloud API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
 
 The setup below shows how to call the dbt Cloud API to run a job every time there is a push to your main branch (i.e. a PR is merged).
 
@@ -106,7 +106,7 @@ In Bitbucket:
 
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
 - In the left menu, click *Repository Settings*
-- Scroll to the bottom of the left menu, and select *Repositoy variables*
+- Scroll to the bottom of the left menu, and select *Repository variables*
 - In the *Name* field, input `DBT_API_KEY`
     - **It’s very important that you copy/paste this name exactly because it’s used in the scripts below.**
 - In the *Value* section, paste in the key you copied from dbt Cloud
@@ -190,7 +190,7 @@ It’s worth noting that we changed the `on:` section to now run **only** when t
 name: run dbt Cloud job on push
 
 # This filter says only run this job when there is a push to the main branch
-# This works off the assumption that you've restrictred this branch to only all PRs to push to the deafult branch
+# This works off the assumption that you've restricted this branch to only all PRs to push to the default branch
 # Update the name to match the name of your default branch
 on:
   push:
@@ -310,14 +310,14 @@ run-dbt-cloud-job:
 
 For this new job, open the existing Azure pipeline you created above and select the *Edit* button. We'll want to edit the corresponding Azure pipeline YAML file with the appropriate configuration, instead of the starter code, along with including a `variables` section to pass in the required variables.
 
-Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `master` (like a PR merged to your master branch). 
+Copy the below YAML file into your Azure pipeline and update the variables below to match your setup based on the comments in the file. It's worth noting that we changed the `trigger` section so that it will run **only** when there are pushes to a branch named `main` (like a PR merged to your main branch). 
 
 Read through [Azure's docs](https://learn.microsoft.com/en-us/azure/devops/pipelines/build/triggers?view=azure-devops) on these filters for additional use cases.
 
 ```yaml
 name: Run dbt Cloud Job
 
-trigger: [ master ] # runs on pushes to master
+trigger: [ main ] # runs on pushes to main
 
 variables:
   DBT_URL:                 https://cloud.getdbt.com # no trailing backslash, adjust this accordingly for single-tenant deployments
@@ -363,7 +363,7 @@ image: python:3.11.1
 
 pipelines:
   branches:
-    'master': # override if your default branch doesn't run on a branch named "master"
+    'main': # override if your default branch doesn't run on a branch named "main"
       - step:
           name: 'Run dbt Cloud Job'
           script:
@@ -391,7 +391,7 @@ pipelines:
             - pip install sqlfluff==0.13.1
             - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
-    'master': # override if your default branch doesn't run on a branch named "master"
+    'main': # override if your default branch doesn't run on a branch named "main"
       - step:
           name: 'Run dbt Cloud Job'
           script:
