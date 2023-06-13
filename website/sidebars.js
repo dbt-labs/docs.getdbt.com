@@ -140,24 +140,27 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Core",
           collapsed: true,
-          link: { type: "doc", id: "docs/core/about-core-setup", },
+          link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-the-cli",
             {
               type: "category",
               label: "Install dbt",
-              link: { type: "doc", id: "docs/core/installation", },
+              link: { type: "doc", id: "docs/core/installation" },
               items: [
-              "docs/core/homebrew-install",
-              "docs/core/pip-install",
-              "docs/core/docker-install",
-              "docs/core/source-install",
-            ],
-          },
+                "docs/core/homebrew-install",
+                "docs/core/pip-install",
+                "docs/core/docker-install",
+                "docs/core/source-install",
+              ],
+            },
             {
               type: "category",
               label: "Connect data platform",
-              link: { type: "doc", id: "docs/core/connect-data-platform/about-core-connections" },
+              link: {
+                type: "doc",
+                id: "docs/core/connect-data-platform/about-core-connections",
+              },
               items: [
                 "docs/core/connect-data-platform/profiles.yml",
                 "docs/core/connect-data-platform/connection-profiles",
@@ -203,7 +206,7 @@ const sidebarSettings = {
               ],
             },
           ],
-          },
+        },
         "docs/running-a-dbt-project/run-your-dbt-projects",
         "docs/running-a-dbt-project/using-threads",
       ],
@@ -379,11 +382,6 @@ const sidebarSettings = {
           label: "dbt Cloud Admin API",
           link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
           items: [
-            {
-              type: "link",
-              label: "v1 docs",
-              href: "/dbt-cloud/api-v1",
-            },
             {
               type: "link",
               label: "v2 docs",
@@ -700,8 +698,8 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Global configs",
-          link: { 
-            type: "doc", 
+          link: {
+            type: "doc",
             id: "reference/global-configs/about-global-configs",
           },
           items: [
