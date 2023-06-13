@@ -14,6 +14,8 @@ dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's sing
 
 If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](/docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
 
+## Auth0 Multi-tenant URIs
+
 <Snippet src="auth0-uri" />
 
 ## Start the migration
@@ -30,7 +32,7 @@ Once you have opted to begin the migration process, the following steps will var
 
 :::warning Login {slug}
 
-Make sure to remove underscores (if they exist) from login slugs: 
+Slugs should contain only letters, numbers, and dashes. Make sure to remove underscores (if they exist) from login slugs: 
 * before migrating on the **Account Settings** page, or 
 * while migrating (but before enabling) as show in the Migrate authentication screenshots for your respective setup. 
 After changing the slug, admins must share the new login URL with their dbt Cloud users.
