@@ -57,3 +57,6 @@ For more detailed information and to ask any questions, please visit [dbt-core/d
 
 - Python models are [configured to materialize](/docs/build/python-models) as `table` by default.
 - Python models [running on Snowpark](/docs/build/python-models) will use "anonymous" stored procedures by default, enabling a small speedup and a cleaner query history.
+
+## Notes
+- If you get the "unknown" blue oval when running a dbt command, run `dbt deps` and they will turn to a green `success` oval. Even prior command runs in the run history drawer will change status.
