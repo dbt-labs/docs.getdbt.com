@@ -156,8 +156,6 @@ the integration between Okta and dbt Cloud.
 
 ## Configuration in dbt Cloud
 
-## Configuration in dbt Cloud
-
 To complete setup, follow the steps below in dbt Cloud. 
 
 ### Supplying credentials
