@@ -42,7 +42,7 @@ need to select the appropriate directory and then register a new application.
 
 4. Configure the **Redirect URI**. The table below shows the appropriate
    Redirect URI values for single-tenant and multi-tenant deployments. For most
-   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan.
+   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan.
 
 
 | Application Type | Redirect URI |
