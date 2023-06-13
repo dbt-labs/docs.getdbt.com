@@ -52,7 +52,7 @@ We'll walk through our topics in the same order that our data would move through
 2. Explore how these layers fit into the rest of the project:
     1. Review the overall structure comprehensively
     2. Expand on YAML configuration in-depth
-    3. Discuss how to use the other folders in a dbt project: `tests`, `seeds`, and `analysis`
+    3. Discuss how to use the other folders in a dbt project: `tests`, `seeds`, and `analyses`
 
 Below is the complete file tree of the project we’ll be working through. Don’t worry if this looks like a lot of information to take in at once - this is just to give you the full vision of what we’re building towards. We’ll focus in on each of the sections one by one as we break down the project’s structure.
 
