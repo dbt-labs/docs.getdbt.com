@@ -6,7 +6,6 @@ sidebar: "Users and licenses"
 ---
 
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
-
 - Developer
 - Read-only
 - IT
