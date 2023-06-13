@@ -7,6 +7,7 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
+        "docs/supported-data-platforms",
         "docs/connect-adapters",
         "docs/community-adapters",
         "docs/contribute-core-adapters",
@@ -15,8 +16,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "About dbt Cloud",
+      link: { type: "doc", id: "docs/cloud/about-cloud/about-dbt-cloud" },
       items: [
-        "docs/cloud/about-cloud/dbt-cloud-features",
+        "docs/cloud/about-cloud/about-dbt-cloud",
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
@@ -32,17 +34,20 @@ const sidebarSettings = {
       type: "category",
       label: "Set up dbt",
       collapsed: true,
+      link: { type: "doc", id: "docs/about-setup" },
       items: [
         "docs/about-setup",
         {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
+          link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
             {
               type: "category",
               label: "Connect data platform",
+              link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
@@ -56,13 +61,15 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Manage access",
+              link: { type: "doc", id: "docs/cloud/manage-access/about-user-access" },
               items: [
                 "docs/cloud/manage-access/about-user-access",
-                "docs/cloud/manage-access/seats-and-users",
                 {
                   type: "category",
-                  label: "Permissions",
+                  label: "User permissions and licenses",
+                  link: { type: "doc", id: "docs/cloud/manage-access/seats-and-users" },
                   items: [
+                    "docs/cloud/manage-access/seats-and-users",
                     "docs/cloud/manage-access/self-service-permissions",
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
@@ -70,7 +77,8 @@ const sidebarSettings = {
 
                 {
                   type: "category",
-                  label: "Single sign-on",
+                  label: "Single sign-on and Oauth",
+                  link: { type: "doc", id: "docs/cloud/manage-access/sso-overview" },
                   items: [
                     "docs/cloud/manage-access/sso-overview",
                     "docs/cloud/manage-access/auth0-migration",
@@ -78,16 +86,10 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
                     "docs/cloud/manage-access/set-up-sso-azure-active-directory",
-                  ],
-                }, // SSO
-                {
-                  type: "category",
-                  label: "OAuth with data platforms",
-                  items: [
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
                   ],
-                }, // oauth
+                }, // SSO
                 "docs/cloud/manage-access/audit-log",
               ],
             }, // Manage access
@@ -101,6 +103,7 @@ const sidebarSettings = {
                 {
                   type: "category",
                   label: "Azure DevOps",
+                  link: { type: "doc", id: "docs/cloud/git/connect-azure-devops" },
                   items: [
                     "docs/cloud/git/connect-azure-devops",
                     "docs/cloud/git/setup-azure",
@@ -115,6 +118,7 @@ const sidebarSettings = {
               label: "Develop in the IDE",
               link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
               items: [
+                "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
                 "docs/cloud/dbt-cloud-ide/ide-user-interface",
                 "docs/cloud/dbt-cloud-ide/lint-format",
                 "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",

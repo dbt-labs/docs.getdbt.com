@@ -1,6 +1,7 @@
 ---
-title: "dbt Cloud features"
-id: "dbt-cloud-features"
+title: "About dbt Cloud"
+id: "about-dbt-cloud"
+sidebar_label: "About dbt Cloud"
 hide_table_of_contents: true
 ---
 

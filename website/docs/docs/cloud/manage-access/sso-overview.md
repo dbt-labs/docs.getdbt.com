@@ -1,5 +1,5 @@
 ---
-title: "SSO Overview"
+title: "Single sign-on (SSO) Overview"
 id: "sso-overview"
 
 ---
