@@ -5,14 +5,13 @@ id: "seats-and-users"
 sidebar: "Users and licenses"
 ---
 
-In dbt Cloud, _licenses_ are used to allocate users to your account. There are three
-different types of licenses in dbt Cloud: _Developer_, _IT_, and _Read Only_.
+In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
 
-The type of license a user is assigned controls which capabilities of dbt
-Cloud the user is permitted to access. Users with a Developer license can be
-granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality
-in dbt Cloud, whereas users with Read Only licenses are intended to view the
-[artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
+- Developer
+- Read-only
+- IT
+
+The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
 
 | Functionality | Developer User | Read Only Users | IT Users |
 | ------------- | -------------- | --------------- | -------- |
