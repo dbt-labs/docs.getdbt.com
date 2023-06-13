@@ -74,10 +74,10 @@ dashes. For example, the _login slug_ for dbt Labs would be
 `dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
-On the **SAML Settings** page, enter the following values, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
+On the **SAML Settings** page, enter the following values, replacing `YOUR_AUTH_URL` and `YOUR_AUDIENCE_URN` with the [appropriate Auth URL and Audience URN](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
 
-* **Single sign on URL**: `https://YOUR_ACCESS_URL/complete/okta`
-* **Audience URI (SP Entity ID)**: `https://YOUR_ACCESS_URL/`
+* **Single sign on URL**: `https://YOUR_AUTH_URL/login/callback?connection=<login slug>`
+* **Audience URI (SP Entity ID)**: `YOUR_AUDIENCE_URN:<login slug>`
 * **Relay State**: `<login slug>`
 
 <Lightbox
