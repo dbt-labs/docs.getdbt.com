@@ -30,7 +30,7 @@ Once you have opted to begin the migration process, the following steps will var
 
 :::warning Login {slug}
 
-Make sure to remove underscores (if they exist) from login slugs: 
+Slugs should contain only letters, numbers, and dashes. Make sure to remove underscores (if they exist) from login slugs: 
 * before migrating on the **Account Settings** page, or 
 * while migrating (but before enabling) as show in the Migrate authentication screenshots for your respective setup. 
 After changing the slug, admins must share the new login URL with their dbt Cloud users.
