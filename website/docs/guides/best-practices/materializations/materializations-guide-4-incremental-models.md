@@ -89,7 +89,7 @@ First, let’s look at a config block for incremental materialization:
 ```sql
 {{
     config(
-        materialized='incremental'
+        materialized='incremental',
         unique_key='order_id'
     )
 }}
@@ -123,7 +123,7 @@ Let’s take a look at all these pieces together:
 ```sql
 {{
     config(
-        materialized='incremental'
+        materialized='incremental',
         unique_key='order_id'
     )
 }}
