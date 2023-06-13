@@ -16,6 +16,8 @@ Once you configure SSO, even partially, you cannot disable or revert it. When yo
 - You have a dbt Cloud account enrolled in the Enterprise plan. [Contact us](mailto:sales@getdbt.com) to learn more and enroll.
 
 
+<Snippet src="auth0-uri" />
+
 ## SSO process
 
 The diagram below explains the basic process by which users are provisioned in dbt Cloud upon logging in with SSO.

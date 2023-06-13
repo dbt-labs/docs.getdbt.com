@@ -70,14 +70,14 @@ The SAML Settings page configures how Okta and dbt Cloud communicate. You will w
 To complete this section, you will need a _login slug_. This slug controls the
 URL where users on your account can log into your application via Okta. Login
 slugs are typically the lowercased name of your organization separated with
-dashes. For example, the _login slug_ for dbt Labs would be
+dashes. It should contain only letters, numbers, and dashes. For example, the _login slug_ for dbt Labs would be
 `dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
-On the **SAML Settings** page, enter the following values, replacing `YOUR_AUTH_URL` and `YOUR_AUDIENCE_URN` with the [appropriate Auth URL and Audience URN](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan:
+<Snippet src="access_url" />
 
-* **Single sign on URL**: `https://YOUR_AUTH_URL/login/callback?connection=<login slug>`
-* **Audience URI (SP Entity ID)**: `YOUR_AUDIENCE_URN:<login slug>`
+* **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
+* **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
 * **Relay State**: `<login slug>`
 
 <Lightbox
@@ -160,11 +160,6 @@ the integration between Okta and dbt Cloud.
 
 To complete setup, follow the steps below in dbt Cloud. 
 
-### Enable Okta native auth (beta)
-
-If you access dbt Cloud using virtual private cloud (VPC), enable the `native_okta` feature flag in the dbt Cloud admin backend.
-
-
 ### Supplying credentials
 
 First, navigate to the **Enterprise &gt; Single Sign On** page under Account
@@ -183,7 +178,7 @@ configured in the steps above.
 | **Identity&nbsp;Provider&nbsp;SSO&nbsp;Url** | Paste the **Identity Provider Single Sign-On URL** shown in the Okta setup instructions |
 | **Identity&nbsp;Provider&nbsp;Issuer** | Paste the **Identity Provider Issuer** shown in the Okta setup instructions |
 | **X.509&nbsp;Certificate** | Paste the **X.509 Certificate** shown in the Okta setup instructions |
-| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 <Lightbox
     collapsed={false}
