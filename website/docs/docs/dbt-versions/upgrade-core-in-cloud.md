@@ -23,6 +23,12 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 
 The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 
+### Code
+Update `require-dbt-version` in `dbt_project.yml`.
+
+### Packages
+Run `dbt deps` to ensure your package versions work with your dbt version.
+
 ## Supported Versions
 
 We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
