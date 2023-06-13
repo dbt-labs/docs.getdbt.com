@@ -53,7 +53,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 Security Admins have access to modify certain account-level settings. Users with Security Admin permissions can:
 
 - View and modify Account Settings such as:
-    - View, invite and modify account users
+    - View, invite, and modify account users
     - Create, delete, and modify Groups
     - Create, delete, and modify License Mappings
     - Create and modify SSO Configurations
