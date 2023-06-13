@@ -115,9 +115,8 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
-  //v2 semantic layer docs
   {
-    "page": "docs/build/build-semantic-layer-intro",
+    "page": "docs/build/build-metrics-intro",
     "firstVersion": "1.6",
   },
   {
@@ -125,7 +124,7 @@ exports.versionedPages = [
     "firstVersion": "1.6",
   },
   {
-    "page": "docs/build/metricflow-core-concepts",
+    "page": "docs/build/about-metricflow",
     "firstVersion": "1.6",
   },
   {
@@ -141,15 +140,11 @@ exports.versionedPages = [
     "firstVersion": "1.6",
   },
   {
-    "page": "docs/build/dimensions",
+    "page": "docs/build/group-by",
     "firstVersion": "1.6",
   },
   {
     "page": "docs/build/entities",
-    "firstVersion": "1.6",
-  },
-  {
-    "page": "docs/build/measures",
     "firstVersion": "1.6",
   },
   {
@@ -165,10 +160,6 @@ exports.versionedPages = [
     "firstVersion": "1.6",
   },
   {
-  "page": "docs/build/expr",
-  "firstVersion": "1.6",
-  },
-  {
     "page": "docs/build/measure-proxy",
     "firstVersion": "1.6",
   },
@@ -176,9 +167,6 @@ exports.versionedPages = [
     "page": "docs/build/ratio",
     "firstVersion": "1.6",
   },
-  //{"page": "docs/use-dbt-semantic-layer/quickstart-semantic-layer", "lastVersion": "1.5",},{"page": "docs/use-dbt-semantic-layer/dbt-semantic-layer","lastVersion": "1.5",},{
-  // "page": "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer","lastVersion": "1.5",},{
-  // "page": "docs/use-dbt-semantic-layer/avail-sl-integrations","lastVersion": "1.5",},
 ]
 
 exports.versionedCategories = [
@@ -186,9 +174,8 @@ exports.versionedCategories = [
     "category": "Model governance",
     "firstVersion": "1.5",
   },
-  { 
-    "category": "Build your Semantic Layer", 
+  {
+    "category": "Build your metrics",
     "firstVersion": "1.6",
-  },
-  //{ "category": "Use the dbt Semantic Layer", "firstVersion": "1.0","lastVersion": "1.5",}
+  }
 ]

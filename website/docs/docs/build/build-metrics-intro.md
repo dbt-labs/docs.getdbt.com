@@ -13,20 +13,16 @@ Define your metrics centrally in dbt using MetricFlow, which powers the dbt Sema
 Use familiar constructs like semantic models and metric to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and consistency for data consumers.
 
 :::info
-MetricFlow is currently available on dbt Core v1.6 beta for [command line (CLI)](/docs/core/about-the-cli) users, with support for dbt Cloud and integrations coming soon.
+MetricFlow is currently available on dbt Core v1.6 beta for [command line (CLI)](/docs/core/about-the-cli) users, with support for dbt Cloud and integrations coming soon. MetricFlow, a BSL package (code is source available), is a new way to define metrics in dbt and will replace the dbt_metrics package.
 
 To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 :::
 
 Before you start, keep the following considerations in mind:
-
-- You can define metrics in YAML and query them in the CLI using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-* You must be on dbt Core version 1.6 beta or higher to use MetricFlow. [Upgrade your dbt version](/docs/core/pip-install#change-dbt-core-versions) to get started.
-
+- You'll be able to define metrics in YAML and query them in the CLI using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
+- You must be on dbt Core version 1.6 beta or higher to use MetricFlow. [Upgrade your dbt version](/docs/core/pip-install#change-dbt-core-versions) to get started.
   * **Note**: Support for dbt Cloud and querying via external integrations coming soon.
-
 - MetricFlow supports Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
-
 - dbt Labs is working with [integration partners](https://www.getdbt.com/product/semantic-layer-integrations) to develop updated integrations for the new Semantic Layer, powered by MetricFlow, in addition to introducing other consumption methods like Python and JDBC. <br /><br />
 
 <div className="grid--4-col">
