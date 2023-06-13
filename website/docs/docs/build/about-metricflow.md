@@ -99,7 +99,7 @@ Using the following query creates a situation where multiple analysts working on
 
 ```sql
 select
-    date_trunc(transactions.created_at,a 'day') as day
+    date_trunc(transactions.created_at, 'day') as day
   , products.category as product_category
   , sum(transactions.price * transactions.quantity) as revenue
 from
