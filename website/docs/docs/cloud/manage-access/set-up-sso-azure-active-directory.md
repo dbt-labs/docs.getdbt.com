@@ -42,13 +42,13 @@ need to select the appropriate directory and then register a new application.
 
 4. Configure the **Redirect URI**. The table below shows the appropriate
    Redirect URI values for single-tenant and multi-tenant deployments. For most
-   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH_URL` with the [appropriate Auth URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+   enterprise use-cases, you will want to use the single-tenant Redirect URI. Replace `YOUR_AUTH0_URI` with the [appropriate Auth0 URI](/docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan.
 
 
 | Application Type | Redirect URI |
 | ----- | ----- |
-| Single-Tenant _(recommended)_ | `https://YOUR_AUTH_URL/login/callback?connection=<login slug>` |
-| Multi-Tenant | `https://YOUR_AUTH_URL/login/callback` |
+| Single-Tenant _(recommended)_ | `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>` |
+| Multi-Tenant | `https://YOUR_AUTH0_URI/login/callback` |
 
 
 5. Save the App registration to continue setting up Azure AD SSO
@@ -149,7 +149,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
 | **Client&nbsp;Secret** | Paste the **Client Secret** (remember to use the Secret Value instead of the Secret ID) recorded in the steps above |
 | **Tenant&nbsp;ID** | Paste the **Directory (tenant ID)** recorded in the steps above |
 | **Domain** | Enter the domain name for your Azure directory (eg. `fishtownanalytics.com`). Only users with accounts in this directory with this primary domain will be able to log into the dbt Cloud application. Optionally, you may specify a CSV of domains which are _all_ authorized to access your dbt Cloud account (eg. `fishtownanalytics.com, fishtowndata.com`) Ensure that the domain(s) match the values configured on user accounts in Azure |
-| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
+| **Slug** | Enter your desired login slug. Users will be able to log into dbt Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan. Login slugs must be unique across all dbt Cloud accounts, so pick a slug that uniquely identifies your company. |
 
 
 <Lightbox collapsed="true" src="/img/docs/dbt-cloud/dbt-cloud-enterprise/azure/azure-cloud-sso.png" title="Configuring Azure AD SSO in dbt Cloud" />
