@@ -125,7 +125,7 @@ Database Admins can perform the following actions in projects they are assigned 
 - **License restrictions:** must have a developer license
 
 Team Admins can perform the following actions in projects they are assigned to:
-- Create, delete, and modify group memberships
+- View Groups
 - View Environments
 - View Jobs
 - View project details

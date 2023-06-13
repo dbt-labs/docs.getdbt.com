@@ -4,12 +4,38 @@ id: "auth0-migration"
 sidebar: "SSO Auth0 Migration"
 description: "Required actions for migrating to Auth0 for SSO services on dbt Cloud"
 ---
+:::warning Limited availability
+
+This is a new feature that is being implemented incrementally to customers using single sign-on features today. If you have any questions or concerns about the availability of the migration feature, please [contact support](mailto:support@getdbt.com).
+
+:::
 
 dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's single sign-on (SSO) capabilities. Auth0 is an identity and access management (IAM) platform with advanced security features, and it will be leveraged by dbt Cloud. These changes will require some action from customers with SSO configured in dbt Cloud today, and this guide will outline the necessary changes for each environment. 
 
-If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
+If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](/docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
 
 <Snippet src="auth0-uri" />
+
+## Start the migration
+
+The Auth0 migration feature is being rolled out incrementally to customers who have SSO features already enabled. When the migration option has been enabled on your account, you will see **SSO Updates Available** on the right side of the menu bar, near the settings icon. 
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/sso-migration-available.png" title="SSO migration available"/>
+
+Alternatively, you can start the process from the **Settings** page in the **Single Sign-on** pane. Click the **Begin Migration** button to start. 
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/begin-migration.png" title="Begin Migration"/>
+
+Once you have opted to begin the migration process, the following steps will vary depending on the configured identity provider. Skip to the section that's right for your environment. These steps only apply to customers going through the migration; new setups will use the existing [setup instructions](/docs/cloud/manage-access/sso-overview).
+
+:::warning Login {slug}
+
+Make sure to remove underscores (if they exist) from login slugs: 
+* before migrating on the **Account Settings** page, or 
+* while migrating (but before enabling) as show in the Migrate authentication screenshots for your respective setup. 
+After changing the slug, admins must share the new login URL with their dbt Cloud users.
+
+:::
 
 ## SAML 2.0 and Okta
 
@@ -19,21 +45,21 @@ The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
 
-Replace {slug} with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
+Replace `{slug}` with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
 Here is an example of an updated SAML 2.0 setup in Okta.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-config.png" title="Okta configuration with new URL"/>
 
-After the configuration is saved, your SAML settings should look something like this:
+After the configuration is saved, your SAML settings will look something like this:
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
-Once you have saved this information in the SSO environment, you must edit some information in the dbt Cloud settings. Navigate to the **Account Settings**, update the single sign-on URL fields, and provide the updated x.509 certificate.
+Once you have saved this information in the SSO environment, you must update the single sign-on URL fields in the dbt Cloud migration window and provide the updated x.509 certificate.
 
-Make sure to enable the "Use Auth0" option to ensure that the traffic is routed correctly. _The Auth0 migration action is final and cannot be undone_
+Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone_
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/enable-auth0.png" title="Enable Auth0"/>
+<Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable new SSO for SAML/Okta"/>
 
 Save the settings and test the new configuration using the SSO login URL provided on the settings page. 
 
@@ -57,9 +83,15 @@ Click **Save** once you are done.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/google-uri.png" title="Add Redirect URI"/>
 
-4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In dbt Cloud, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Enable the **Use Auth0** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The Auth0 migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
+4. _You will need a person with Google Workspace admin privileges to complete these steps in dbt Cloud_. In dbt Cloud, navigate to the **Account Settings**, click on **Single Sign-on**, and then click **Edit** on the right side of the SSO pane. Toggle the **Enable New SSO Authentication** option and select **Save**. This will trigger an authorization window from Google that will require admin credentials. _The migration action is final and cannot be undone_. Once the authentication has gone through, test the new configuration using the SSO login URL provided on the settings page.
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/enable-auth0.png" title="Enable Auth0"/>
+:::warning Domain authorization
+
+You must complete the domain authorization before you toggle `Enable New SSO Authentication`, or the migration will not complete successfully.
+
+:::
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/google-enable.png" title="Enable new SSO for Google Workspace"/>
 
 ## Azure Active Directory
 
@@ -77,6 +109,12 @@ Azure Active Directory admins will need to make a slight adjustment to the exist
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/redirect-URI.png" title="Enter new redirect URI"/>
 
-4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. Select the **Enable Auth0** option and **Save**. _Once this option is enabled, it cannot be undone._
+4. Navigate to the dbt Cloud environment and open the **Account Settings**. Click the **Single Sign-on** option from the left side menu and click the **Edit** option from the right side of the SSO pane. The **domain** field is the domain your organization uses to login to Azure AD. Toggle the **Enable New SSO Authentication** option and **Save**. _Once this option is enabled, it cannot be undone._
 
-<Lightbox src="/img/docs/dbt-cloud/access-control/enable-auth0.png" title="Enable Auth0"/>
+:::warning Domain authorization
+
+You must complete the domain authorization before you toggle `Enable New SSO Authentication`, or the migration will not complete successfully.
+
+:::
+
+<Lightbox src="/img/docs/dbt-cloud/access-control/azure-enable.png" title="Enable new SSO for Azure AD"/>
