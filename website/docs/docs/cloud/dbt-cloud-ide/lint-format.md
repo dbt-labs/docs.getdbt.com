@@ -49,7 +49,7 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 
 ### Enable linting
 
-1. To enable linting, make sure you've opened a `.sql` file.
+1. To enable linting, make sure you open a `.sql` file and click the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the bottom right side of the [console section](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section), below the **File editor**. 
 3. In the code quality tool config pop up, you have the option to select **sqlfluff** or **sqlfmt**. 
 4. To lint your code, select the **sqlfluff** radio button. (Use sqlfmt to [format](#format) your code)
@@ -137,11 +137,13 @@ The Cloud IDE formatting integrations take care of manual tasks like code format
 
 ### Format SQL
 
-To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja.
+To format your SQL code, dbt Cloud integrates with [sqlfmt](http://sqlfmt.com/), which is an uncompromising SQL query formatter that provides one way to format the SQL query and Jinja. 
+
+By default, the IDE uses sqlfmt rules to format your code, making the **Format** button available and convenient to use right away. However, if you have a file named .sqlfluff in the root directory of your dbt project, the IDE will default to SQLFluff rules instead.
 
 To enable formatting:
 
-1. Make sure you open a `.sql` file.
+1. Make sure you open a `.sql` file and click on the **Code Quality** tab.
 2. Click on the **`</> Config`** button on the right side of the console.
 3. In the code quality tool config pop-up, you have the option to select sqlfluff or sqlfmt.
 4. To format your code, select the **sqlfmt** radio button. (Use sqlfluff to [lint](#linting) your code).
