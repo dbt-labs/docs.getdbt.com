@@ -81,8 +81,8 @@ The following table contains the parameters for database (password-based) connec
 | `dbname`  | `my_db` | Database name|
 | `schema`  | `my_schema` | Schema name| 
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
-| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below TODO| 
-| `role`  | TODO | optional| 
+| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below | 
+| `role`  | None | optional| 
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
 | `autocommit`  | true | Optional, default True. Enables autocommit after each statement| 
 
@@ -106,7 +106,7 @@ company-name:
       schema: analytics
       connect_timeout: None
       sslmode: prefer
-      role: TODO
+      role: None
       ra3_node: true 
       autocommit: true 
       region:
@@ -129,7 +129,7 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 | `type` | redshift | The type of data warehouse you are connecting to|
 | `method` | `IAM`| use IAM to authenticate |
 | `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster |
-| `iam_profile` | default| TODO |
+| `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
 | `cluster_id` | `CLUSTER_ID`| Required for IAM |
 | `user`   | `username` | Account username to log into your cluster |
 | `password`  | `password1` | Password for authentication  |
@@ -137,8 +137,8 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 | `dbname`  | `my_db` | Database name|
 | `schema`  | `my_schema` | Schema name| 
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
-| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below TODO| 
-| `role`  | TODO | optional| 
+| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below| 
+| `role`  | None | optional| 
 | `autocreate`  | false | Optional, default false. Creates user if they do not exist | 
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session | 
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
@@ -163,7 +163,7 @@ If you receive the "You must specify a region" error when using IAM Authenticati
       cluster_id: CLUSTER_ID
       host: hostname.region.redshift.amazonaws.com
       user: alice
-      iam_profile: default
+      iam_profile: analyst
       autocreate: true  
       db_groups: ['ANALYSTS']
 
@@ -187,7 +187,6 @@ If you receive the "You must specify a region" error when using IAM Authenticati
 </TabItem>
 
 </Tabs>
-
 
 
 
