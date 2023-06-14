@@ -188,11 +188,7 @@ Transaction management is used to ensure this is executed as a single unit of wo
 
 ## What if the columns of my incremental model change?
 
-:::tip New `on_schema_change` config in dbt version `v0.21.0`
-
-Incremental models can now be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs.  
-
-:::
+Incremental models can be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs. 
 
 You can configure the `on_schema_change` setting as follows.
 
@@ -253,7 +249,7 @@ the reliability of your `unique_key`, or the availability of certain features.
 * [Snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
 * [BigQuery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
 * [Databricks](/reference/resource-configs/databricks-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
-*[Spark](/reference/resource-configs/spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
+* [Spark](/reference/resource-configs/spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
 
 <VersionBlock firstVersion="1.3">
 

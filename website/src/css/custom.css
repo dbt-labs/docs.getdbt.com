@@ -1924,3 +1924,37 @@ html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button {
 html[data-theme="dark"] .theme-doc-sidebar-container>div>button.button:hover {
   background-color: #383839;
 }
+
+.quickstart-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.quickstart-container.hidden {
+  display: none;
+}
+
+.quickstart-container .step-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.quickstart-container .step-container .intro {
+  order: -1;
+}
+
+.quickstart-container .step-container .intro.hidden {
+  display: none;
+}
+
+.quickstart-container .step-wrapper.hidden {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .quickstart-container {
+    flex-direction: column;
+  }
+}

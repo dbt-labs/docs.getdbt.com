@@ -45,6 +45,22 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Use the IDE
 - View and modify Account Settings
 
+### Security Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Security Admins have access to modify certain account-level settings. Users with Security Admin permissions can:
+
+- View and modify Account Settings such as:
+    - View, invite, and modify account users
+    - Create, delete, and modify Groups
+    - Create, delete, and modify License Mappings
+    - Create and modify SSO Configurations
+    - View and export Audit Logs
+    - Create, delete, and modify IP Restrictions
+
+
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
@@ -125,7 +141,7 @@ Database Admins can perform the following actions in projects they are assigned 
 - **License restrictions:** must have a developer license
 
 Team Admins can perform the following actions in projects they are assigned to:
-- Create, delete, and modify group memberships
+- View Groups
 - View Environments
 - View Jobs
 - View project details

@@ -14,13 +14,13 @@ Since GraphQL provides a description of the data in the API, the schema displaye
 
 ## Authorization
 
-Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Discovery Only service token that is authorized to execute a specific query against the Discovery API.
+Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
 
 Once you've created a token, you can use it in the Authorization header of requests to the dbt Cloud Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used in place of `Token` in the Authorization header. Both syntaxes are equivalent. 
 
 ## Access the Discovery API 
 
-1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Discovery Only_ service token, which can be used to execute a specific query against the Discovery API for authorization of requests.
+1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API for authorization of requests.
 
 2. Find your API URL using the endpoint `https://metadata.{YOUR_ACCESS_URL}/graphql`. 
 
