@@ -23,15 +23,21 @@ Each job in dbt Cloud can be configured to inherit parameters from the environme
 
 The example job seen in the screenshot above belongs to the environment "Prod". It inherits the dbt version of its environment as shown by the **Inherited from ENVIRONMENT_NAME (DBT_VERSION)** selection. You may also manually override the dbt version of a specific job to be any of the current Core releases supported by Cloud by selecting another option from the dropdown.
 
-## Supported Versions
+## Supported versions
 
-We have always encouraged our customers to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
-
-
+dbt Labs have always encouraged our users to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
 
  > **Starting with v1.0, any subsequent minor versions will be supported in dbt Cloud for 1 year post release. At the end of the 1 year window, accounts must upgrade to a supported version of dbt or risk service disruption.**
 
-We will continue to update this table so that customers know when we plan to stop supporting different versions of Core in dbt Cloud.
+We provides different support levels to different versions, which may include new features, bug fixes, or security patches:
+
+| Support level | Description |
+| ------------- | ----------- | 
+| Active | A few months after a minor version's initial release, we will provide bug fix releases to address any regressions and new bugs found in the initial release. | 
+| Critical | Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes. | 
+| End of Life  | No longer receive bug fixes and limited to only receiving security patches. <br /><br />All EOL dbt Core versions v1.0 and later are available in dbt Cloud until further notice. We plan to align dbt Cloud availability with dbt Core support and you'll receive advance notice before any changes take place. |
+
+We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in dbt Cloud.
 
 <Snippet src="core-versions-table" />
 
