@@ -14,6 +14,8 @@ dbt Labs is partnering with Auth0 to bring enhanced features to dbt Cloud's sing
 
 If you have not yet configured SSO in dbt Cloud, refer instead to our setup guides for [SAML](/docs/cloud/manage-access/set-up-sso-saml-2.0), [Okta](/docs/cloud/manage-access/set-up-sso-okta), [Google Workspace](/docs/cloud/manage-access/set-up-sso-google-workspace), or [Azure Active Directory](/docs/cloud/manage-access/set-up-sso-azure-active-directory) single sign-on services.
 
+## Auth0 Multi-tenant URIs
+
 <Snippet src="auth0-uri" />
 
 ## Start the migration
@@ -30,7 +32,10 @@ Once you have opted to begin the migration process, the following steps will var
 
 :::warning Login {slug}
 
-The login slug shouldn't have an underscore. If it does, you need to change it on the **Account Settings** page. After changing the slug, the admins must share it with dbt Cloud users, as the login URL will differ.
+Slugs should contain only letters, numbers, and dashes. Make sure to remove underscores (if they exist) from login slugs: 
+* before migrating on the **Account Settings** page, or 
+* while migrating (but before enabling) as show in the Migrate authentication screenshots for your respective setup. 
+After changing the slug, admins must share the new login URL with their dbt Cloud users.
 
 :::
 
@@ -52,7 +57,7 @@ After the configuration is saved, your SAML settings will look something like th
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
-Once you have saved this information in the SSO environment, you must edit some information in the dbt Cloud settings. Navigate to the **Account Settings**, update the single sign-on URL fields, and provide the updated x.509 certificate.
+Once you have saved this information in the SSO environment, you must update the single sign-on URL fields in the dbt Cloud migration window and provide the updated x.509 certificate.
 
 Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone_
 

@@ -232,15 +232,15 @@ $ dbt ls    --select +metric:* --resource-type source  # list all source tables 
 ### The "result" method
 <Changelog>New in v1.0.0</Changelog>
 
-The `result` method is related to the `state` method described above, and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator.
+The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
 
 ```bash
-$ dbt run --select result:error # run all models that generated errors on the prior invocation of dbt run
-$ dbt test --select result:fail # run all tests that failed on the prior invocation of dbt test
-$ dbt build --select 1+result:fail # run all the models associated with failed tests from the prior invocation of dbt build
-$ dbt seed --select result:error # run all seeds that generated errors on the prior invocation of dbt seed.
+$ dbt run --select result:error --state path/to/artifacts # run all models that generated errors on the prior invocation of dbt run
+$ dbt test --select result:fail --state path/to/artifacts # run all tests that failed on the prior invocation of dbt test
+$ dbt build --select 1+result:fail --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
+$ dbt seed --select result:error --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
-
+**Note** &mdash; When you define steps in your dbt Cloud jobs, please be aware that the `--state` parameter is automatically included when you click the [**Defer**](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) button.
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 
@@ -321,6 +321,26 @@ dbt list --select version:prerelease  # versions newer than the 'latest' version
 dbt list --select version:old         # versions older than the 'latest' version
 
 dbt list --select version:none        # models that are *not* versioned
+```
+
+</VersionBlock>
+
+### The "access" method
+
+<VersionBlock lastVersion="1.5">
+
+Supported in v1.6 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+
+```bash
+dbt list --select access:public       # list all public models
+dbt list --select access:private       # list all private models
+dbt list --select access:protected       # list all protected models
 ```
 
 </VersionBlock>
