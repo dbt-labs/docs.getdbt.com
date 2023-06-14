@@ -159,10 +159,6 @@ dbt test --select result:fail --exclude <example test> --defer --state path/to/p
 
 > Note: If you're using the `--state target/` flag, `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command. `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
 
-:::caution Experimental functionality
-The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
-
 <VersionBlock lastVersion="1.0">
 
 Only supported by v1.1 or newer.
