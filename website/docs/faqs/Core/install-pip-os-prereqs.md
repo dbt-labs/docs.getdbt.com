@@ -6,7 +6,7 @@ id: install-pip-os-prereqs.md
 
 ---
 
-Your operating system may require pre-installation setup before installing dbt Core with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of dbt Core](/docs/get-started/pip-install).
+Your operating system may require pre-installation setup before installing dbt Core with pip. After downloading and installing any dependencies specific to your development environment, you can proceed with the [pip installation of dbt Core](/docs/core/pip-install).
 
 ### CentOS
 
@@ -23,7 +23,13 @@ sudo yum install redhat-rpm-config gcc libffi-devel \
 
 ### MacOS
 
+<VersionBlock firstVersion="1.6">
+The MacOS requires Python 3.8 or higher to successfully install and run dbt Core.
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
 The MacOS requires Python 3.7 or higher to successfully install and run dbt Core.
+</VersionBlock>
 
 To check the Python version:
 
@@ -33,7 +39,7 @@ python --version
 
 ```
 
-If you need a compatible version, you can download and install [Python version 3.7 or higher for MacOS](https://www.python.org/downloads/macos).
+If you need a compatible version, you can download and install [Python version 3.8 or higher for MacOS](https://www.python.org/downloads/macos).
 
 If your machine runs on an Apple M1 architecture, we recommend that you install dbt via [Rosetta](https://support.apple.com/en-us/HT211861). This is necessary for certain dependencies that are only supported on Intel processors.
 ### Ubuntu/Debian
@@ -55,6 +61,15 @@ pip install cryptography~=3.4
 
 Windows requires Python and git to successfully install and run dbt Core.
 
-Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.7 or higher for Windows](https://www.python.org/downloads/windows/).
+<VersionBlock firstVersion="1.6">
 
-For further questions, please see the [Python compatibility FAQ](/docs/faqs/Core/install-python-compatibility)
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.8 or higher for Windows](https://www.python.org/downloads/windows/).
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+
+
+Install [Git for Windows](https://git-scm.com/downloads) and [Python version 3.7 or higher for Windows](https://www.python.org/downloads/windows/).
+</VersionBlock>
+
+For further questions, please see the [Python compatibility FAQ](/faqs/Core/install-python-compatibility)

@@ -4,7 +4,7 @@ id: "job-commands"
 description: "How to use dbt commands to set tasks for your dbt Cloud jobs."
 ---
 
-A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/get-started/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
+A dbt Cloud production job allows you to set up a system to run a dbt job and job commands on a schedule, rather than running dbt commands manually from the command line or [IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). A job consists of commands that are "chained" together and executed as run steps. Each run step can succeed or fail, which may determine the job's run status (Success, Cancel, or Error). 
 
 Each job allows you to:
 
@@ -42,7 +42,7 @@ For every job, you have the option to select the [Generate docs on run](/docs/co
 ### Command list
 
 You can add or remove as many [dbt commands](/reference/dbt-commands) as necessary for every job. However, you need to have at least one dbt command. 
-Commands labeled as "CLI only" in the [dbt Command reference doc](/reference/dbt-commands) are meant for use in dbt Core's [CLI](/docs/get-started/about-the-cli) only and are not available in dbt Cloud.
+Commands under the "CLI" tab in the [dbt Command reference doc](/reference/dbt-commands) page are meant for use in the [CLI](/docs/core/about-the-cli) only and are not available in dbt Cloud.
 
 
 :::tip Using selectors
@@ -64,12 +64,12 @@ Job command failures can mean different things for different commands. Some comm
 
 - **Failure at`dbt run`** &mdash; [`dbt run`](/reference/commands/run) executes compiled SQL model files against the current target database. It will fail if there is an error in any of the built models. Tests on upstream resources prevent downstream resources from running and a failed test will skip them.
 
-- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs#warnings-as-errors), only an error stops the next step. 
+- **Failure at `dbt test`** &mdash;  [`dbt test`](/reference/commands/test) runs tests defined on models, sources, snapshots, and seeds. A test can pass, fail, or warn depending on its [severity](reference/resource-configs/severity). Unless you set [warnings as errors](/reference/global-configs/warnings), only an error stops the next step. 
 
 - **Failure at `dbt build`** &mdash; [`dbt build`](/reference/commands/build) runs models, tests, snapshots, and seeds. This command executes resources in the DAG-specified order. If any upstream resource fails, all downstream resources are skipped, and the command exits with an error code of 1.
 
 - **Selector failures**
-   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs#failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
+   - If a [`select`](/reference/node-selection/set-operators) matches multiple nodes and one of the nodes fails, then the job will have an exit code `1` and the subsequent command will fail. If you specified the [`—fail-fast`](/reference/global-configs/failing-fast) flag, then the first failure will stop the entire connection for any models that are in progress. 
 
    - If a selector doesn't match any nodes, it's not considered a failure.
 

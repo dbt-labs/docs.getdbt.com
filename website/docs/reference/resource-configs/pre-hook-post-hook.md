@@ -1,5 +1,6 @@
 ---
 title: pre-hook & post-hook
+description: "Pre-hook and Post-hook - Read this in-depth guide to learn about configurations in dbt."
 resource_types: [models, seeds, snapshots]
 datatype: sql-statement | [sql-statement]
 ---
@@ -22,7 +23,7 @@ datatype: sql-statement | [sql-statement]
 ```yml
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -57,7 +58,7 @@ select ...
 ```yml
 
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -76,7 +77,7 @@ seeds:
 ```yml
 
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +pre-hook: SQL-statement | [SQL-statement]
     +post-hook: SQL-statement | [SQL-statement]
 
@@ -108,7 +109,7 @@ select ...
 ## Definition
 A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](dont-nest-your-curlies#an-exception).
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/docs/building-a-dbt-project/dont-nest-your-curlies#an-exception).
 
 ### Why would I use hooks?
 
@@ -149,7 +150,7 @@ See: [Redshift docs on `UNLOAD`](https://docs.aws.amazon.com/redshift/latest/dg/
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       finance:
@@ -202,7 +203,7 @@ models:
 
 ```yml
 
-model:
+models:
   +post-hook: "{{ grant_select(this) }}"
 
 ```
@@ -216,7 +217,7 @@ model:
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       marketing:
@@ -230,7 +231,7 @@ model:
 </VersionBlock>
 
 ### Additional examples
-We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
+We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
 
 ## Usage notes
 ### Hooks are cumulative
@@ -277,11 +278,11 @@ select ...
 {{
   config(
     pre_hook={
-      "SQL": "SQL-statement",
+      "sql": "SQL-statement",
       "transaction": False
     },
     post_hook={
-      "SQL": "SQL-statement",
+      "sql": "SQL-statement",
       "transaction": False
     }
   )
@@ -301,10 +302,10 @@ select ...
 
 models:
   +pre-hook:
-    SQL: "SQL-statement"
+    sql: "SQL-statement"
     transaction: false
   +post-hook:
-    SQL: "SQL-statement"
+    sql: "SQL-statement"
     transaction: false
 
 

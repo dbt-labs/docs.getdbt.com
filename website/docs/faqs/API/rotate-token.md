@@ -7,8 +7,6 @@ id: rotate-token
 
 For security reasons and best practices, you should aim to rotate API keys every so often.
 
-### Steps to rotate API keys
-
 1. Rotate your [User API token](/docs/dbt-cloud-apis/user-tokens) by replacing `YOUR_USER_ID`, `YOUR_CURRENT_TOKEN`, and `YOUR_ACCESS_URL `with your information in the following request.
 
 ```
@@ -17,8 +15,8 @@ curl --location --request POST 'https://YOUR_ACCESS_URL/api/v2/users/YOUR_USER_I
 ```
 
 * Find your `YOUR_USER_ID` by reading [How to find your user ID](/faqs/Accounts/find-user-id).
-* Find your `YOUR_CURRENT_TOKEN` by going to **Account Settings** -> **API Access** and copying the API key.
-* Find [`YOUR_ACCESS_URL`](/docs/deploy/regions-ip-addresses) for your region and plan.
+* Find your `YOUR_CURRENT_TOKEN` by going to **Profile Settings** -> **API Access** and copying the API key.
+* Find [`YOUR_ACCESS_URL`](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 :::info Example
 
@@ -32,12 +30,12 @@ curl --location --request POST 'https://cloud.getdbt.com/api/v2/users/123/apikey
 
 2. Find the new key in the API response or in dbt Cloud. 
 
-3. To find the new key in dbt Cloud, go to **Account Settings** -> **API Access**.
+3. To find the new key in dbt Cloud, go to **Profile Settings** -> **API Access**.
 
 
 ### dbt Cloud deployments
 
-If your [dbt Cloud deployment](/docs/deploy/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance.
+If your [dbt Cloud deployment](/docs/cloud/about-cloud/regions-ip-addresses) uses a different access URL, replace `cloud.getdbt.com` with the URL of your instance.
 
 For example, if your deployment is Virtual Private dbt: 
 

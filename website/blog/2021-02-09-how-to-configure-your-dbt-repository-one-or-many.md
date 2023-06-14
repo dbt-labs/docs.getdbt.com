@@ -60,7 +60,7 @@ This is the most common structure we see for dbt repository configuration. Thoug
 **Strengths**
 
 *   Easy to share and maintain the same core business logic
-*   Full dependency <Term id="data-lineage">lineage</Term> - your dbt generated DAG encompasses all of your data transformations for your entire company
+*   Full dependency <Term id="data-lineage">lineage</Term> - your dbt generated DAG encompasses all of your [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) for your entire company
 
 **Weaknesses**
 
@@ -159,4 +159,4 @@ All of the above configurations “work”. And as detailed, they each solve for
 2.  Figure out what may be a pain point in the future and try to plan for it from the beginning.
 3.  Don’t over-complicate things until you have the right reason. As I said in my Coalesce talk: **don’t drag your skeletons from one closet to another** 💀!
 
-**Note:** Our attempt in writing guides like this and [How we structure our dbt projects](/blog/how-we-structure-our-dbt-projects) aren’t to try to convince you that our way is right; it is to hopefully save you the hundreds of hours it has taken us to form those opinions!
+**Note:** Our attempt in writing guides like this and [How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview) aren’t to try to convince you that our way is right; it is to hopefully save you the hundreds of hours it has taken us to form those opinions!

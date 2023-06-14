@@ -5,7 +5,7 @@ description: "You can enable continuous integration (CI) to test every single ch
 ---
 
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/collaborate/git/connect-github), [GitLab account](/docs/collaborate/git/connect-gitlab), or [Azure DevOps account](/docs/collaborate/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository. For more information, refer to [Configure CI for a job](#configure-ci-for-a-job).
+dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/cloud/git/connect-github), [GitLab account](/docs/cloud/git/connect-gitlab), or [Azure DevOps account](/docs/cloud/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository. For more information, refer to [Configure CI for a job](#configure-ci-for-a-job).
 
 Draft pull requests do _not_ trigger jobs. If you want jobs to run on each new commit, you need to mark your pull request as **Ready for review**.
 
@@ -17,14 +17,14 @@ Only GitLab users with a paid or self-hosted GitLab account can use GitLab webho
 :::
 
 :::info Common Errors
-If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to [reconfigure the project](/docs/deploy/cloud-ci-job#reconnecting-your-dbt-project-to-use-dbt-clouds-native-integration-with-github-gitlab-or-azure-devops) to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead.
+If you previously configured your dbt project by providing a generic git URL that clones using SSH, you need to reconfigure the project to connect through dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps instead. Read more in [Troubleshooting](/docs/deploy/cloud-ci-job#troubleshooting).
 :::
 
 ## Configuring continuous integration in dbt Cloud
 
 When you [set up CI for a job](#configure-ci-for-a-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new pull request has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. 
 
-Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. dbt Cloud then  runs the tests for these models as a check. This process provides a staging environment where you can check the run status and builds resulting from the code associated with the pull request's commit. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence. The unique schema name, your project ID, and pull request ID (`dbt_cloud_pr_1862_917`) can be found in the run details for the given run as shown in the following image:
+Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. dbt Cloud then  runs the tests for these models as a check. This process provides a staging environment where you can check the run status and builds resulting from the code associated with the pull request's commit. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence. The unique schema name, your CI Job ID, and pull request ID (`dbt_cloud_pr_1862_917`) can be found in the run details for the given run as shown in the following image:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
 
@@ -63,13 +63,15 @@ The green checkmark means the dbt builds and tests were successful. Clicking on 
 
 ## Configuring a Slim CI job
 
-Slim CI offers an alternative to running and testing all models in your project, even when you're only changed a couple of things. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
+Slim CI offers an alternative to running and testing all models in your project, and instead runs and tests only what's necessary based on the changes you've made. Slim CI can decrease the time it takes by running and testing only modified models, which can also reduce unnecessary resource usage on your warehouse/data platform.
 
-These components distinguish a Slim CI job from a dbt CI job:
+A Slim CI job:
 
-- Must defer to a production job.
-- Commands need to have a `state:modified+` selector to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](#deferral-and-state-comparison)
-- Must be triggered by a pull request.
+- Is triggered by a pull request.
+- Defers to a production job.
+- Includes a command with a `--select state:modified+` selector, which dbt uses to build only new or changed models and their downstream dependents. 
+
+dbt then identifies the models that need to be run and tested using a state comparison to the production job that you've selected.
 
 ### Deferral and state comparison  
 
@@ -90,7 +92,7 @@ dbt build --select state:modified+
 
 Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. **Note:** Both jobs need to be running dbt v0.18.0 or later.
 
-To learn more about state comparison and deferral in dbt, read the docs on [state](/docs/deploy/about-state).
+To learn more about state comparison and deferral in dbt, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
 ### Fresh rebuilds
 
@@ -105,10 +107,6 @@ Only supported by v1.1 or newer.
 <VersionBlock firstVersion="1.1">
 
 Only supported by v1.1 or newer.
-
-:::caution Experimental functionality
-The `source_status` selection is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
 
 When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
 
@@ -136,7 +134,7 @@ If you're experiencing any issues, review some of the common questions and answe
    <summary>Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps</summary>
    <div>
       <div>If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud Slim CI.<br></br><br></br>
-      First, make sure you have the <a href="https://docs.getdbt.com/docs/collaborate/git/connect-github">native GitHub authentication</a>, <a href="https://docs.getdbt.com/docs/collaborate/git/connect-gitlab">native GitLab authentication</a>, or <a href="https://docs.getdbt.com/docs/collaborate/git/connect-azure-devops">native Azure DevOps authentication</a> set up depending on which git provider you use. After you have gone through those steps, go to <strong>Account Settings</strong>, select <strong>Projects</strong> and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.<br></br><br></br>
+      First, make sure you have the <a href="https://docs.getdbt.com/docs/cloud/git/connect-github">native GitHub authentication</a>, <a href="https://docs.getdbt.com/docs/cloud/git/connect-gitlab">native GitLab authentication</a>, or <a href="https://docs.getdbt.com/docs/cloud/git/connect-azure-devops">native Azure DevOps authentication</a> set up depending on which git provider you use. After you have gone through those steps, go to <strong>Account Settings</strong>, select <strong>Projects</strong> and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.<br></br><br></br>
       
       Once you're in the repository page, select <strong>Edit</strong> and then <strong>Disconnect Repository</strong> at the bottom.<br></br>
          <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/Disconnect-Repository.png" alt="Disconnect repo"/>
@@ -150,7 +148,7 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Error messages that refer to schemas from previous PRs</summary>
    <div>
-      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br><br></br>
+      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br> <br></br>
       
       To fix this issue, select a production job run to defer to instead of self.
       </div>
@@ -186,7 +184,7 @@ If you're experiencing any issues, review some of the common questions and answe
 
 ### Temp PR schema limitations
 
-If your temporary PR schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
+If your temporary pull request schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
 <details>
   <summary>You used dbt Cloud environment variables in your connection settings page </summary>

@@ -6,7 +6,7 @@ id: source-in-different-database
 
 ---
 
-Use the [`database` property](resource-properties/database) to define the database that the source is in.
+Use the [`database` property](/reference/resource-properties/database) to define the database that the source is in.
 
 <File name='models/<filename>.yml'>
 

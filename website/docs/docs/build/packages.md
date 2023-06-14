@@ -50,7 +50,7 @@ packages:
 
 <Changelog>
 
-- **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
+- **v1.0.0:** The default [`packages-install-path`](/reference/project-configs/packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
 
 </Changelog>
 
@@ -263,7 +263,7 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 
 
-#### Project subdirectories
+#### Configure subdirectory for packaged projects
 
 <Changelog>
 
@@ -271,7 +271,7 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 </Changelog>
 
-In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
+In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the packaged project is instead nested in a subdirectory—perhaps within a much larger mono repo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
 <File name='packages.yml'>
 
@@ -302,7 +302,7 @@ Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt 
 
 ## Advanced package configuration
 ### Updating a package
-When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](run) of the models in this package.
+When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](/reference/commands/run) of the models in this package.
 
 ### Uninstalling a package
 When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:

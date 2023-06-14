@@ -36,6 +36,8 @@ In the next step, you will need the Webhook Secret Key from the prior step, and 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
+<Snippet src="webhook_guide_zapier_secret_store" />
+
 ### 4. Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 

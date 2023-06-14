@@ -1,10 +1,10 @@
 ---
 title: "Configuring materializations"
 id: materializations-guide-3-configuring-materializations
-slug: guides/best-practices/materializations/3-configuring-materializations
-description: Learn how to utilize materializations in dbt.
+slug: 3-configuring-materializations
+description: Read this guide to understand how to configure materializations in dbt.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand how to configure materializations in dbt.
 ---
 
 import Tabs from '@theme/Tabs';

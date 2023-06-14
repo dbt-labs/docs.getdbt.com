@@ -16,7 +16,7 @@ While the concept of a DAG originated in mathematics and gained popularity in co
 
 ## DAG use cases and best practices
 
-DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall data transformations.
+DAGs are an effective tool to help you understand relationships between your data models and areas of improvement for your overall [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
 ### Unpacking relationships and data lineage
 
@@ -108,4 +108,4 @@ Ready to restructure (or create your first) DAG? Check out some of the resources
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](/docs/get-started/learning-more/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql)

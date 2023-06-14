@@ -9,7 +9,7 @@ To learn more about the writing conventions used in the dbt Labs docs, see the [
 ## Checklist
 <!--
 Uncomment if you're publishing docs for a prerelease version of dbt (delete if not applicable):
-- [ ] Add versioning components, as described in [Versioning Docs](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/versioningdocs.md)
+- [ ] Add versioning components, as described in [Versioning Docs](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#versioning-entire-pages)
 - [ ] Add a note to the prerelease version [Migration Guide](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs/guides/migration/versions)
 -->
 - [ ] Review the [Content style guide](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md) and [About versioning](https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/single-sourcing-content.md#adding-a-new-version) so my content adheres to these guidelines.
@@ -21,5 +21,5 @@ Adding new pages (delete if not applicable):
 
 Removing or renaming existing pages (delete if not applicable):
 - [ ] Remove page from `website/sidebars.js`
-- [ ] Add an entry `_redirects`
+- [ ] Add an entry `website/static/_redirects`
 - [ ] [Ran link testing](https://github.com/dbt-labs/docs.getdbt.com#running-the-cypress-tests-locally) to update the links that point to the deleted page
