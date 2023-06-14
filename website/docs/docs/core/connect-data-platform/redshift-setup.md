@@ -130,9 +130,17 @@ company-name:
 
 The following table lists the authentication parameters to use IAM autentication. 
   
-Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the Redshift Documentation and boto3 docs on generating user credentials with IAM Auth.
-  
-If you receive the "You must specify a region" error when using IAM Authentication, then your aws credentials are likely misconfigured. Try running aws configure to set up AWS access keys, and pick a default region. If you have any questions, please refer to the official AWS documentation on Configuration and credential file settings.
+To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication,
+consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
+and [boto3
+docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
+on generating user credentials with IAM Auth.
+
+If you receive the "You must specify a region" error when using IAM
+Authentication, then your aws credentials are likely misconfigured. Try running
+`aws configure` to set up AWS access keys, and pick a default region. If you have any questions,
+please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
