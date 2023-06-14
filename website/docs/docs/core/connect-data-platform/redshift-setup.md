@@ -119,7 +119,7 @@ company-name:
       role: None
       ra3_node: true 
       autocommit: true 
-      region:
+      threads: 4
 ```
 
 </File>
