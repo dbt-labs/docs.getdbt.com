@@ -47,6 +47,250 @@ pip is the easiest way to install the adapter:
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a>.</p>
 
 
+--------remove this bit yo
+## Authentication Methods
+
+The authentication methods that dbt Core supports are: 
+
+- `database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
+- `IAM` &mdash; Kerberos
+
+
+Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
+
+<Tabs
+  defaultValue="database"
+  values={[
+    {label: 'database', value: 'database'},
+    {label: 'Kerberos', value: 'kerberos'},
+  ]}
+>
+
+<TabItem value="database">
+
+The following table contains the parameters for database (password-based) connection method.
+
+
+| Profile field | Example | Description |
+| ------------- | ------- | ------------ |
+| `method` | `database`| Leave this parameter unconfigured, or set this to database. |
+| `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster. |
+| `user`   | `username` | Account username to log into your cluster. |
+| `password`  | `password1` | Password for authentication.  |
+| `port`  | `5439` |   |
+| `dbname`  | `my_db` | Database name.|
+| `schema`  | `my_schema` | Schema name.| 
+| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out.| 
+| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below TODO| 
+| `role`  | TODO | optional| 
+| `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
+| `autocommit`  | true | Optional, default True. Enables autocommit after each statement| 
+| `region`  | us-east-1 | region to connect to your cluster with | 
+
+<br/>
+
+#### Example profiles.yml for database authentication
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+company-name:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      host: hostname.region.redshift.amazonaws.com
+      user: username
+      password: password1
+      port: 5439
+      dbname: analytics
+      schema: analytics
+      connect_timeout: None
+      sslmode: prefer
+      role: TODO
+      ra3_node: true 
+      autocommit: true 
+      region:
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="kerberos">
+
+The following table lists the authentication parameters to set for Kerberos.
+
+For more information, refer to [Kerberos authentication](https://trino.io/docs/current/security/kerberos.html) in the Trino docs.
+
+| Profile field                               | Example             | Description                                                      |
+| ------------------------------------------- | ------------------- | ---------------------------------------------------------------- |
+| `method` | `kerberos`| Set Kerberos as the authentication method. |
+| `user`                                      | `commander`         | Username for authentication                                      |
+| `keytab`                                    | `/tmp/trino.keytab` | Path to keytab                                                   |
+| `krb5_config`                               | `/tmp/krb5.conf`    | Path to config                                                   |
+| `principal`                                 | `trino@EXAMPLE.COM` | Principal                                                        |
+| `service_name` (optional)                   | `abc123`            | Service name (default is `trino`)                               |
+| `hostname_override` (optional)              | `EXAMPLE.COM`       | Kerberos hostname for a host whose DNS name doesn't match        |
+| `mutual_authentication` (optional)          | `false`             | Boolean flag for mutual authentication                           |
+| `force_preemptive` (optional)               | `false`             | Boolean flag to preemptively initiate the Kerberos GSS exchange |
+| `sanitize_mutual_error_response` (optional) | `true`              | Boolean flag to strip content and headers from error responses   |
+| `delegate`  (optional)                      | `false`             | Boolean flag for credential delegation (`GSS_C_DELEG_FLAG`)       |
+
+<br/>
+
+#### Example profiles.yml for Kerberos
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: kerberos
+      user: commander
+      keytab: /tmp/trino.keytab
+      krb5_config: /tmp/krb5.conf
+      principal: trino@EXAMPLE.COM
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="jwt">
+
+The following table lists the authentication parameters to set for JSON Web Token.
+
+For more information, refer to [JWT authentication](https://trino.io/docs/current/security/jwt.html) in the Trino docs.
+
+| Profile field        | Example        | Description                |
+| -------------------- | -------------- | -------------------------- |
+| `method` | `jwt`| Set JWT as the authentication method. |
+| `jwt_token` | `aaaaa.bbbbb.ccccc` | The JWT string. |
+
+<br/>
+
+#### Example profiles.yml for JWT
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: jwt 
+      jwt_token: [my_long_jwt_token_string]
+      host: [hostname]
+      database: [database name]
+      schema: [your dbt schema]
+      port: [port number]
+      threads: [1 or more]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="certificate">
+
+The following table lists the authentication parameters to set for certificates.
+
+For more information, refer to [Certificate authentication](https://trino.io/docs/current/security/certificate.html) in the Trino docs.
+
+| Profile field        | Example        | Description                         |
+| -------------------- | -------------- | ----------------------------------- |
+| `method` | `certificate`| Set certificate-based authentication as the method |
+| `client_certificate` | `/tmp/tls.crt` | Path to client certificate          |
+| `client_private_key` | `/tmp/tls.key` | Path to client private key          |
+| `cert`               |                | The full path to a certificate file |
+
+<br/>
+
+#### Example profiles.yml for certificate
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: certificate 
+      cert: [path/to/cert_file]
+      client_certificate: [path/to/client/cert]
+      client_private_key: [path to client key]
+      database: [database name]
+      schema: [your dbt schema]
+      port: [port number]
+      threads: [1 or more]
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="oauth">
+
+The only authentication parameter to set for OAuth 2.0 is `method: oauth`. If you're using Starburst Enterprise or Starburst Galaxy, you must enable OAuth 2.0 in Starburst before you can use this authentication method.
+
+For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
+
+It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
+
+#### Example profiles.yml for OAuth
+
+```yaml
+sandbox-galaxy:
+  target: oauth
+  outputs:
+    oauth:
+      type: trino
+      method: oauth
+      host: bunbundersders.trino.galaxy-dev.io
+      catalog: dbt_target
+      schema: dataders
+      port: 433
+```
+
+</TabItem>
+
+<TabItem value="none">
+
+You don't need to set up authentication (`method: none`), however, dbt Labs strongly discourages people from using it in any real application. Its use case is only for toy purposes (as in to play around with it), like local examples such as running Trino and dbt entirely within a single Docker container.
+
+#### Example profiles.yml for no authentication
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: none
+      user: commander
+      host: trino.example.com
+      port: 443
+      database: analytics
+      schema: public
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
 ## Authentication Methods
 
 ### Password-based authentication
