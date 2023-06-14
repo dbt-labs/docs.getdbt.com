@@ -1,3 +1,4 @@
+// Util function to check which icon to render
 import React from "react";
 import { useColorMode } from "@docusaurus/theme-common";
 
