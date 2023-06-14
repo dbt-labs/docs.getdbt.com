@@ -29,7 +29,7 @@ You can also check out the free [dbt Fundamentals course](https://courses.getdbt
 ## Prerequisites
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). For `write` access to webhooks: 
     - Enterprise plan accounts: You must have the [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin), [Admin](/docs/cloud/manage-access/enterprise-permissions#admin), or [Developer](/docs/cloud/manage-access/enterprise-permissions#developer) permission set.
-    - Team plan accounts: You must have a [Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
+    - Team plan accounts: You must have the [Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
 - You have a multi-tenant deployment in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
 
 ## Create a webhook subscription {#create-a-webhook-subscription}
