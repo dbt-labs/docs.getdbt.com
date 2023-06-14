@@ -16,9 +16,9 @@ dbt Labs provides different support levels to different versions, which may incl
 
 | Support level | Description |
 | ------------- | ----------- | 
-| Active | A few months after a minor version's initial release, we will provide bug fix releases to address any regressions and new bugs found in the initial release. | 
-| Critical | Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes. | 
-| End of Life  | No longer receiving bug fixes and limited to receiving only security patches. <br /><br />All EOL dbt Core versions v1.0 and later are available in dbt Cloud until further notice. We plan to align dbt Cloud availability with dbt Core support and you'll receive advance notice before any changes take place. |
+| [Active](#ongoing-patches) | A few months after a minor version's initial release, we will provide bug fix releases to address any regressions and new bugs found in the initial release. | 
+| [Critical](#ongoing-patches) | Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes. | 
+| [End of Life](#eol-version-support) | No longer receiving bug fixes and limited to receiving only security patches. <br /><br />All EOL dbt Core versions v1.0 and later are available in dbt Cloud until further notice. We plan to align dbt Cloud availability with dbt Core support and you'll receive advance notice before any changes take place. |
 
 
 <Snippet src="core-versions-table" />
