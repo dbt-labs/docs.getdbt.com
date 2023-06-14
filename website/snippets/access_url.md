@@ -1,1 +1,1 @@
-The following steps use `YOUR_AUTH_URL` and `YOUR_AUDIENCE_URN`, which need to be replaced with the [appropriate Auth URL and Audience URN](docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+The following steps use `YOUR_AUTH0_URI` and `YOUR_AUTH0_ENTITYID`, which need to be replaced with the [appropriate Auth0 SSO URI and Auth0 Entity ID](/docs/cloud/manage-access/set-up-sso-saml-2.0#auth0-multi-tenant-uris) for your region.
