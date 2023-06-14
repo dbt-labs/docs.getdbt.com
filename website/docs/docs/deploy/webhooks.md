@@ -539,6 +539,6 @@ DELETE https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscripti
 ```
 
 ## Related docs 
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI](/docs/deploy/continuous-integration)
 - [Use dbt Cloud's webhooks with other SaaS apps](/guides/orchestration/webhooks)
 

@@ -80,7 +80,7 @@ Learn more about the features you can use in dbt Cloud to help your team ship ti
 <Card
     title="Continuous integration"
     body="Set up Slim CI checks so you can build and test any modified code in a staging environment when you open PRs and push new commits to your dbt repository."
-    link="/docs/deploy/cloud-ci-job"
+    link="/docs/deploy/continuous-integration"
     icon="pencil-paper"/>
 
 </div> <br />

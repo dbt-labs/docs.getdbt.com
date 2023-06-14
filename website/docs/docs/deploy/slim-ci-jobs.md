@@ -1,69 +1,34 @@
 ---
-title: "Continuous integration for your jobs in dbt Cloud"
-sidebar_label: "Continuous integration"
-description: "You can set up Slim continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
+title: "Slim CI jobs in dbt Cloud"
+sidebar_label: "Slim CI jobs"
+description: "Learn how to create and set up Slim CI checks to test code changes before deploying to production."
 ---
 
+Once you have a Git connection, you can set up Slim [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request in your dbt repository. By running and testing only modified models, the run times for jobs are shorter which helps with reducing unnecessary resource usage on your data platform.
 
-dbt Cloud makes it easy to test every single code change you make prior to deploying that new logic into production. Once you've connected your [GitHub account](/docs/cloud/git/connect-github), [GitLab account](/docs/cloud/git/connect-gitlab), or [Azure DevOps account](/docs/cloud/git/connect-azure-devops), you can configure continuous integration (CI) jobs to run when someone opens a new pull request in your dbt repository. For more information, refer to [Configure CI for a job](#configure-ci-for-a-job).
-
-Draft pull requests do _not_ trigger jobs. If you want jobs to run on each new commit, you need to mark your pull request as **Ready for review**.
-
-
-When you [set up CI for a job](#configure-ci-for-a-job), dbt Cloud will listen for webhooks from GitHub, GitLab, or Azure DevOps indicating that a new pull request has been opened or updated with new commits. When one of these webhooks is received, dbt Cloud will enqueue a new run of the CI job. 
-
-Once you open a pull request, dbt Cloud builds the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. dbt Cloud then  runs the tests for these models as a check. This process provides a staging environment where you can check the run status and builds resulting from the code associated with the pull request's commit. When the CI job completes, you can see the run status directly in the pull request. The CI job enables you to deploy new code to production with confidence. The unique schema name, your CI Job ID, and pull request ID (`dbt_cloud_pr_1862_917`) can be found in the run details for the given run as shown in the following image:
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" title="Viewing the temporary schema name for a run triggered by a PR"/>
-
-After completing the dbt run, dbt Cloud will update the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message will state whether the models and tests ran successfully or not. You can enable a setting in your git provider that makes "successful pull request checks" a requirement to merge code. And finally, once the pull request is closed or merged, dbt Cloud will delete the temporary schema from your <Term id="data-warehouse" />.
-
-dbt Cloud might not drop the temporary schema from your data warehouse if your project has database or schema customization using the [`generate_database_name`](/docs/build/custom-databases#generate_database_name) or [`generate_schema_name`](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros. For more information, refer to [Temp PR schema limitations](/docs/deploy/cloud-ci-job#temp-pr-schema-limitations).
-
-
-## Concurrent CI checks
-
-
-
-Below describes the conditions when CI checks are run concurrently and when they’re not:  
-
-- CI runs with different PR numbers execute concurrently. 
-- CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. dbt Cloud will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation). 
-- CI runs with the same PR number and same commit SHA, but are from different dbt Cloud projects execute concurrently. This can happen when two CI jobs are set up in different dbt Cloud projects that share the same dbt repository.
-
-### Smart cancellation of stale builds {#smart-cancellation}
-
-When you push a new commit to a PR, dbt Cloud enqueues a new Slim CI run for the latest commit and cancels any CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By cancelling runs in a safe and deliberate way, dbt Cloud helps improve productivity and reduce data platform spend on wasteful CI runs.
-
-### Run slot treatment
-
-Your Slim CI runs do not consume run slots so you don’t have to worry about a CI check blocking a production run.
-
-## Set up Slim CI jobs
-
-Once you have a Git connection, you can set up Slim CI jobs to run when someone opens a new pull request in your dbt repository. By running and testing only modified models, the run times for jobs are shorter which can also reduce unnecessary resource usage on your data platform.
-
-### Prerequisites
+## Prerequisites
 
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be connected using dbt Cloud’s native integration with [GitHub account](/docs/cloud/git/connect-github), [GitLab account](/docs/cloud/git/connect-gitlab), or [Azure DevOps account](/docs/cloud/git/connect-azure-devops).
     - If you’re using GitLab, you must use a paid or self-hosted account which includes support for GitLab webhooks.
     - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
 
-### Steps
+## Set up Slim CI jobs
 
+1. Create a production deployment model in dbt Cloud. For details, see [Create a deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment).
+
+    For your dedicated Slim CI job, dbt Labs recommends you set up a separate dbt Cloud environment that's connected to a staging database. This ensures that you have good isolation on where your CI schemas build. Having a separate environment also allows you to set a [custom branch](/faqs/environments/custom-branch-settings) if you want to trigger CI checks off PRs to a pre-release branch.
 1. On your deployment environment page, click **Create One** to create a new job or edit an existing job to open the **Create Job** settings page.
-    - Which fields and options should be here
 2. In the **Execution Settings** section: 
     - For the option **Defer to a previous run state**, choose **Production Job (Production)**. This tells dbt Cloud to compare the manifest of the current job against the project representation that was materialized the last time this job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
-    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](https://docs.getdbt.com/docs/deploy/cloud-ci-job#deferral-and-state-comparison)
-3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, Enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
+    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](/docs/deploy/slim-ci-jobs#deferral-and-state-comparison)
+3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
 
 ### Deferral and state comparison  
 
 When creating a job in dbt Cloud, you can configure your **Execution Settings** to defer to a previous run state by using the dropdown menu to select which _production_ job you want to defer to.
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" title="Jobs that run
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" width="70%" title="Jobs that run
 on pull requests can select another job from the same project for deferral and comparison"/>
 
 When a job is selected, dbt Cloud will look at the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of new and modified resources.
@@ -84,18 +49,18 @@ To learn more about state comparison and deferral in dbt, read the docs on [stat
 
 #### GitHub pull request example
 
-The green checkmark means the dbt builds and tests were successful. The _Details_ link shown here will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/09c886f-Screen_Shot_2019-02-08_at_4.54.41_PM.png" title="GitHub pull request example"/>
+The green checkmark means the dbt builds and tests were successful. The **Details** link shown here will navigate you to the relevant CI run in dbt Cloud.
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="70%" title="GitHub pull request example"/>
 
 #### GitLab pull request example
 
 The green checkmark means the dbt builds and tests were successful. Clicking the dbt Cloud pop up will navigate you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" title="GitLab pull request"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" width="70%" title="GitLab pull request"/>
 
 #### Azure DevOps pull request example
 
 The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" title="Azure DevOps pull request"/>
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" width="70%" title="Azure DevOps pull request"/>
 
 
 ## Troubleshooting

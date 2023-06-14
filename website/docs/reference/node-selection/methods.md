@@ -232,7 +232,7 @@ $ dbt test --select result:fail --state path/to/artifacts # run all tests that f
 $ dbt build --select 1+result:fail --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
 $ dbt seed --select result:error --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
-**Note** &mdash; When you define steps in your dbt Cloud jobs, please be aware that the `--state` parameter is automatically included when you click the [**Defer**](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) button.
+**Note** &mdash; When you define steps in your dbt Cloud jobs, please be aware that the `--state` parameter is automatically included when you click the [**Defer**](/docs/deploy/slim-ci-jobs#deferral-and-state-comparison) button.
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 
