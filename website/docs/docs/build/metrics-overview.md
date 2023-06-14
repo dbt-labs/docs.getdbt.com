@@ -137,7 +137,7 @@ metrics:
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
 
-- **Description** &mdash;  Write a detailed description of the metric
+- **Description** &mdash;  Write a detailed description of the metric.
 
 <!--Provide a detailed description of the metric. This description is surfaced in the main “definition” section of the metric page using rich Markdown formatting in the Transform UI. [this includes transform and not sure how this looks in core and cloud]-->
 

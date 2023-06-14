@@ -14,8 +14,8 @@ Entities can be specified with a single column or multiple columns. Entities (jo
 
 There are four entity types: primary, foreign, unique, or natural.
 
-:::tip Use entities as a group_by
-You can also use entities as a group_by, which allows you to aggregate a metric to the granularity of that entity.
+:::tip Use entities as a dimensions
+You can also use entities as a dimensions, which allows you to aggregate a metric to the granularity of that entity.
 :::
 
 

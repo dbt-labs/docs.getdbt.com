@@ -16,7 +16,7 @@ This getting started page recommends a workflow to help you get started creating
 
 - You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up.
     * **Note**:  Support for dbt Cloud and integrations coming soon.
-- You must have an understanding of key concepts in MetricFlow (which powers the revamped dbt Semantic Layer) like [measures](/docs/build/measures), [group_by](/docs/build/group-by), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/about-metricflow) to learn more.
+- You must have an understanding of key concepts in MetricFlow (which powers the revamped dbt Semantic Layer) like [measures](/docs/build/measures), [dimensions](/docs/build/dimensions), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/about-metricflow) to learn more.
 - Your dbt environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher
 - You have a git repository set up and your git provider has write access enabled.
 - You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms) (Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB). 
@@ -31,7 +31,7 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 
-This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [group_by](/docs/build/group-by), and [measures](/docs/build/measures).
+This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
 
@@ -55,25 +55,25 @@ semantic_models:
       expr: id_customer
   ```
 
-3. Define your group_by and measures. group_by are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
+3. Define your dimensions and measures. dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
 ```yaml
 measures:
     - name: transaction_amount_usd
       description: The total USD value of the transaction.
       agg: sum
-  group_by:
+  dimensions:
     - name: is_large
       type: categorical
       expr: case when transaction_amount_usd >= 30 then true else false end
 ```
 
 :::tip
-If you're familiar with writing SQL, you can think of group_by as the columns you would group by and measures as the columns you would aggregate.
+If you're familiar with writing SQL, you can think of dimensions as the columns you would group by and measures as the columns you would aggregate.
 ```sql
 select
   , metric_time_day --time
-  , country -- categorical dimesion
+  , country -- categorical dimension
   , sum(revenue_usd) --measure
 from
   snowflake.fact_transactions -- sql table

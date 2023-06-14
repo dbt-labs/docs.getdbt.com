@@ -48,7 +48,7 @@ Semantic models are the starting points of data and correspond to models in your
 For a semantic model, there are three main pieces of metadata:
 
 * [Entities](/docs/build/entities) &mdash; The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
-* [Group_by](/docs/build/group-by) &mdash; These are the ways you want to group or slice/dice your metrics.
+* [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result can be used to create your metrics.
 
 
@@ -157,8 +157,8 @@ semantic_model:
       expr: customer_id
       agg: count_distinct
 
-  # --- group_by ---
-  group_by:
+  # --- dimensions ---
+  dimensions:
     - name: metric_time
       type: time
       expr: date_trunc('day', ts)
@@ -189,8 +189,8 @@ semantic_model:
     - name: product_id
       type: primary
 
-  # --- group_by ---
-  group_by:
+  # --- dimensions ---
+  dimensions:
     - name: category
       type: categorical
     - name: brand
@@ -275,7 +275,7 @@ metric:
   </div>
 </details> 
 <details>
-  <summary>Can a table without a primary or unique entities have group_by?</summary>
+  <summary>Can a table without a primary or unique entities have dimensions?</summary>
   <div>
     <div>Yes, but because a dimension is considered an attribute of the primary or unique ent of the table, they are only usable by the metrics that are defined in that table. They cannot be joined to metrics from other tables. This is common in event logs.</div>
   </div>

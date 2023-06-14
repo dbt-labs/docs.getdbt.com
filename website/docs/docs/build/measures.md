@@ -138,8 +138,8 @@ semantic_model:
      agg: median
      create_metric: True
       
-# --- group_by ---
- group_by:
+# --- dimensions ---
+ dimensions:
    - name: metric_time
      type: time
      expr: date_trunc('day', ts) #expr refers to underlying column ts
@@ -182,7 +182,7 @@ semantic_model:
     - name: user_id
       type: foreign
 
-  group_by:
+  dimensions:
     - name: metric_time
       type: time
       expr: date_transaction
@@ -222,6 +222,6 @@ semantic_model:
 We can query the semi-additive metrics using the following syntax:
 
 ```bash
-mf query --metrics mrr_by_end_of_month --group_by metric_time__month --order metric_time__month 
-mf query --metrics mrr_by_end_of_month --group_by metric_time__week --order metric_time__week 
+mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
+mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
 ```
