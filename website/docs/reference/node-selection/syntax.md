@@ -161,7 +161,8 @@ The state and result selectors can also be combined in a single invocation of db
 $ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artifact-path>
 ```
 
-### The "source_status" status
+### Fresh rebuilds
+
 <VersionBlock lastVersion="1.0">
 
 Only supported by v1.1 or newer.
@@ -172,10 +173,30 @@ Only supported by v1.1 or newer.
 
 Only supported by v1.1 or newer.
 
-:::caution Experimental functionality
-The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
+When a job is selected, dbt Cloud will surface the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of fresh sources. In your job commands, you can signal to dbt to run and test only on these fresher sources and their children by including the `source_status:fresher+` argument. This requires both previous and current state to have the `sources.json` artifact be available. Or plainly said, both job states need to run `dbt source freshness`.
 
+As example:
+
+```bash
+# Command step order
+dbt source freshness
+dbt build --select source_status:fresher+
+```
+
+</VersionBlock>
+
+For more example commands, refer to [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
+
+### The "source_status" status
+<VersionBlock lastVersion="1.0">
+
+Only supported by v1.1 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.1">
+
+Only supported by v1.1 or newer.
 
 Another element of job state is the `source_status` of a prior dbt invocation. After executing `dbt source freshness`, for example, dbt creates the `sources.json` artifact which contains execution times and `max_loaded_at` dates for dbt sources. You can read more about `sources.json` on the ['sources'](/reference/artifacts/sources-json) page. 
 
