@@ -1,67 +1,57 @@
 ---
-title: "dbt Slack: Rules of the Road"
-id: "slack-rules-of-the-road"
+title: "dbt Community Rules of the Road"
+id: "community-rules-of-the-road"
 ---
 
-As of October 2022, the dbt Slack community includes 35,000+ data professionals and is growing month-over-month. People genuinely love this community. It’s filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
+As of June 2023, the dbt Community includes over 50,000 data professionals and is still growing. People genuinely love this community. It's filled with smart, kind, and helpful people who share our commitment to elevating the analytics profession.
 
-We are committed to maintaining the spirit of this community, and as such have written these rules to help new members understand how to best participate in our community.
+We are committed to maintaining the spirit of this community, and have written these rules alongside its members to help everyone understand how to best participate. We appreciate your support in continuing to build a community we're all proud of.
 
-We appreciate your support in continuing to build a community we’re all proud of.
+## Expectations for all members
+### Rule 1: Be respectful
+We want everyone in this community to have a fulfilling and positive experience and we are continuously grateful in your help ensuring that this is the case.
 
-## Rule 1: Be respectful
-We want everyone to have a fulfilling and positive experience in dbt Slack and we are continuously grateful in your help ensuring that this is the case.
+This first rule is serious and straightforward -- we simply will not tolerate disrespectful behavior of any kind.
 
-The guidelines that follow are important, but transgressions around Slack etiquette are forgivable. This first rule, however, is serious -- we simply will not tolerate disrespectful behavior of any kind.
+Everyone interacting on a dbt platform – including Slack, the forum, codebase, issue trackers, and mailing lists – is expected to follow the [Community Code of Conduct](code-of-conduct). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
 
-Everyone interacting in dbt Slack, codebase, issue trackers, and mailing lists are expected to follow the [PyPA Code of Conduct](https://www.pypa.io/en/latest/code-of-conduct/). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
+### Rule 2: Keep it in public spaces
+Unless you have someone's express permission to contact them directly, do not directly message other community members, whether on a dbt Community platform or other spaces like LinkedIn.
 
-## Rule 2: Use the right channel
-It’s important that we make it possible for members of the community to opt-in to various types of conversations. Our different Slack channels specifically exist for this purpose. Our members do a wonderful job at making sure messages are posted in the most relevant channel, and you’ll frequently see people (respectfully!) reminding each other about where to post messages. Here's a guide to our channels:
-- If you're new to dbt and unsure where something belongs, feel free to post in **#advice-dbt-for-beginners** - we'll be able to direct you to the right place
-- **For job postings, use #jobs**. If you post a job description outside of #jobs, we will delete it and send you a link to this rule.
-- For database-specific questions, use **#db-snowflake**, **#db-bigquery**, **#db-redshift**, or similar.
-- For questions about data modeling or for SQL help, use **#modeling**
-- For conversations unrelated to dbt or analytics, consider if dbt Slack is an appropriate medium for the conversation. If so, use **#memes-and-off-topic-chatter**.
+We highly value the time community members put into helping each other, and we have precisely zero tolerance for people who abuse their access to experienced professionals. If you are being directly messaged with requests for assistance without your consent, let us know in #moderation-and-administration. We will remove that person from the community. Your time and attention is valuable.
 
-If you're hitting an error, you should post your question in [the Community Forum](https://discourse.getdbt.com) instead.
+### Rule 3: Follow messaging etiquitte
+In short: put effort into your question, use threads, post in the right channel, and do not seek extra attention by tagging individuals or double-posting. For more information, see our [guide on getting help](https://docs.getdbt.com/guides/legacy/getting-help).
 
-## Rule 3: Put effort into your question
-dbt Slack is a community of volunteers. These are kind, knowledgeable, helpful people who share their time and expertise for free.
-
-A thoughtful and well-researched post will garner far more responses than a low-effort one. See the guide on [getting help](getting-help) for more information about how to ask a good question.
-
-## Rule 4: Mark your questions as resolved
-Were you in need of help, and received a helpful reply? Please mark your question as resolved by adding a ✅ reaction to your original post. Note that other community members may summon Slackbot to remind you to do this, by posting the words `resolved bot` as a reply to your message.
-
-## Rule 5: Do not double-post
-Our best members are respectful of peoples’ time. We understand that even though a question feels urgent, dbt Slack is not a customer service platform, it is a community of volunteers.
-
-The majority of questions in dbt Slack get answered, though you may need to wait a bit. If you’re not getting a response, please do not post the same question to multiple channels (we’ll delete your messages and send you a link to this page). Instead, review your question and see if you can rewrite it better to make it easier for someone to answer quickly.
-
-## Rule 6: Keep it in public channels
-Unless you have someone’s express permission to contact them directly, **do not directly message members of this community to solicit help, sell a product, or recruit for a role**.
-
-We highly value the time community members put into helping each other, and we have precisely zero tolerance for people who abuse their access to experienced professionals. If you are being directly messaged by members of the community asking for assistance without your consent, let us know. We will remove that person from the community. Your time and attention is valuable.
-
-## Rule 7: Do not solicit members of our Slack
+### Rule 4: Do not solicit community members
 This community is built for data practitioners to discuss the work that they do, the ideas that they have, and the things that they are learning. It is decidedly not intended to be lead generation for vendors or recruiters.
 
-**Do not pitch your products or services in dbt Slack**: this isn't the right place for that. Vendors can add enormous value to the community by being there to answer questions about their products when  questions arise.
+Vendors and recruiters are subject to additional rules to ensure this space remains welcoming to everyone. These requirements are detailed below and are enforced vigorously.
 
-Further, **do not use our Slack community for outbound recruitment for a role**. Recruiters should feel free to post opportunities in the #jobs channel, but should not directly contact members about an opportunity.
+## Vendor Expectations
 
-We appreciate when vendors and recruiters identify themselves clearly in their Slack username. If you see someone pitching products and services in dbt Slack, or contact you directly about an open role, let us know. We’ll delete the message and remind that person about this rule.
+As a vendor/dbt partner, you are also a member of this community, and we encourage you to participate fully in the space. We have seen folks grow fantastic user relationships for their products when they come in with the mindset to share rather than pushing a pitch. At the same time, active community members have a finely honed sense of when they are being reduced to an audience or a resource to be monetised, and their response is reliably negative.
 
-## Rule 8: Do not demand attention with @channel and @here, or by tagging individuals
-The @channel and @here keywords in Slack are disabled for everyone except admins. If you make a post containing @channel or @here, nothing will happen. Still, we'll send you a link to this rule to help you better understand how dbt Slack operates.
+::info Who is a vendor?
+Vendors are generally companies creating products or services primarily targeted at data professionals, but this title also includes recruiters, investors, open source maintainers (with or without a paid offering), consultants and freelancers. If in doubt, err on the side of caution. 
 
-Do not tag individuals for in-depth assistance in your questions. If someone feels inclined to answer your question, they will do so. We are a community of volunteers, and we're generally pretty responsive and helpful! If nobody has replied to your question, consider if you've asked a question that helps us understand your problem. If you require in-depth, ongoing assistance, we have a wonderful group of experienced dbt consultants in our ecosystem. You can find a full list [here](https://www.getdbt.com/ecosystem/).
+### Rule 1: Identify yourself 
+Include your company in your display name, e.g. "Alice (DataCo)". When joining a discussion about your product (after the waiting period below), be sure to note your business interests. 
 
-## Rule 9: Use threads
-The best way to keep conversations coherent in Slack is to use threads. The dbt Slack community uses threads heavily and if you break this convention, a member of the community will let you know.
+### Rule 2: Be yourself
+Speak in your own voice, and join in any or all of the conversations that interest you. Share your expertise as a data professional. Make a meme if you're so inclined. Get in a (friendly) debate. You are not limited to only your company's products and services, and making yourself known as a familiar face outside of commercial contexts is one of the most effective ways of building trust with the community. 
 
-Here are some guidelines on how to use threads effectively:
-* Type your question out as one message rather than separate messages (Pro Tip: Write a first draft of your question as a direct message to yourself)
-* Leverage Slack's edit functionality if you realize you forgot to add something to your question rather than adding new messages.
-* If you see a conversation taking place across discrete messages, send over a link to this rule.
+### Rule 3: Let the community speak first
+If a community member asks a question about your product directly, or mentions that they have a problem that your product could help with, wait 1 business day before responding to allow other members to share their experiences and recommendations. (This doesn't apply in your `#tools-` channel if you have one.)
+
+### Rule 4: Keep promotional content to specified spaces
+As a space for professional practice, the dbt Community is primarily a non-commercial space. However, as a service to community members who want to be able to keep up to date with the data industry, there are several areas available on the Community Slack for vendors to share promotional material: 
+- #vendor-content
+- #events
+- #tools-*
+
+Recruiters may also post in #jobs but may not solicit applications in DMs. 
+
+The definition of "vendor content" can be blurry at the edges, and we defer to members' instincts in these scenarios. As a rule, if something is hosted on a site controlled by that company or its employees (including platforms like Substack and Medium), or contains a CTA such as signing up for a mailing list or trial account, it will likely be considered promotional. 
+
+Because unaffiliated community members are able to share vendor content in other channels, the most effective way to have your work reach a wider audience is to create things that are genuinely useful to the community. 
