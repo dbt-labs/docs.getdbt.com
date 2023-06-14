@@ -35,7 +35,7 @@ All dbt Core versions released prior to 1.0 and their version-specific documenta
 
 ## EOL version support 
 
-All dbt Core versions with an end-of-life (EOL) support level will no longer receive bug fixes.  We have been backporting certain changes to the 1.0.latest and 1.1.latest branches of dbt-core, so that we can continue running automated tests, while those versions continue to be available in dbt Cloud.
+All dbt Core versions with an end-of-life (EOL) support level will no longer receive bug fixes.  
 
 We recommend upgrading to a newer version in [dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) or [dbt Core](/docs/core/installation#upgrading-dbt-core) to continue receiving bug fix support. 
 
