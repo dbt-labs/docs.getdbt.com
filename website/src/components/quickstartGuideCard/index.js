@@ -28,7 +28,6 @@ function QuickstartGuideCard({ frontMatter }) {
   return (
     <Link
       to={`/quickstarts/${id}`}
-      frontMatter={frontMatter}
       className={styles.quickstartCard}
     >
       {icon && renderIcon()}
