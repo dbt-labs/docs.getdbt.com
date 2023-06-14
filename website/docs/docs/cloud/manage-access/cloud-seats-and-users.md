@@ -5,27 +5,25 @@ id: "seats-and-users"
 sidebar: "Users and licenses"
 ---
 
-In dbt Cloud, _licenses_ are used to allocate users to your account. There are two
-different types of licenses in dbt Cloud: _Developer_ and _Read Only_.
+In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
+- Developer
+- Read-only
+- IT
 
-The type of license a user is assigned controls which capabilities of dbt
-Cloud the user is permitted to access. Users with a Developer license can be
-granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality
-in dbt Cloud, whereas users with Read Only licenses are intended to view the
-[artifacts](/docs/deploy/artifacts) created in a dbt Cloud account.
+The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
 
-| Functionality | Developer User | Read Only Users |
-| ------------- | -------------- | --------------- |
-| Use the Developer IDE | ✅ | ❌ |
-| Use Jobs | ✅ | ❌ |
-| Manage Account | ✅ | ❌ |
-| API Access | ✅ | ❌ |
-| Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ |
-| Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ |
+| Functionality | Developer User | Read Only Users | IT Users |
+| ------------- | -------------- | --------------- | -------- |
+| Use the Developer IDE | ✅ | ❌ | ❌ |
+| Use Jobs | ✅ | ❌ | ❌ |
+| Manage Account | ✅ | ❌ | ✅ |
+| API Access | ✅ | ❌ | ❌ |
+| Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
+| Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 
 ## Licenses
 
-Each dbt Cloud plan comes with a base number of Developer and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+Each dbt Cloud plan comes with a base number of Developer, IT, and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
 If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
