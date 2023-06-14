@@ -53,7 +53,7 @@ pip is the easiest way to install the adapter:
 The authentication methods that dbt Core supports are: 
 
 - `database` &mdash; Password-based authentication (default, will be used if `method` is not provided)
-- `IAM` &mdash; Kerberos
+- `IAM` &mdash; IAM 
 
 
 Click on one of these authentication methods for further details on how to configure your connection profile. Each tab also includes an example `profiles.yml` configuration file for you to review.
@@ -117,7 +117,7 @@ company-name:
 
 </TabItem>
 
-<TabItem value="kerberos">
+<TabItem value="IAM">
 
 The following table lists the authentication parameters to set for Kerberos.
 
@@ -164,211 +164,10 @@ trino:
 
 </TabItem>
 
-<TabItem value="jwt">
-
-The following table lists the authentication parameters to set for JSON Web Token.
-
-For more information, refer to [JWT authentication](https://trino.io/docs/current/security/jwt.html) in the Trino docs.
-
-| Profile field        | Example        | Description                |
-| -------------------- | -------------- | -------------------------- |
-| `method` | `jwt`| Set JWT as the authentication method. |
-| `jwt_token` | `aaaaa.bbbbb.ccccc` | The JWT string. |
-
-<br/>
-
-#### Example profiles.yml for JWT
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-trino:
-  target: dev
-  outputs:
-    dev:
-      type: trino
-      method: jwt 
-      jwt_token: [my_long_jwt_token_string]
-      host: [hostname]
-      database: [database name]
-      schema: [your dbt schema]
-      port: [port number]
-      threads: [1 or more]
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="certificate">
-
-The following table lists the authentication parameters to set for certificates.
-
-For more information, refer to [Certificate authentication](https://trino.io/docs/current/security/certificate.html) in the Trino docs.
-
-| Profile field        | Example        | Description                         |
-| -------------------- | -------------- | ----------------------------------- |
-| `method` | `certificate`| Set certificate-based authentication as the method |
-| `client_certificate` | `/tmp/tls.crt` | Path to client certificate          |
-| `client_private_key` | `/tmp/tls.key` | Path to client private key          |
-| `cert`               |                | The full path to a certificate file |
-
-<br/>
-
-#### Example profiles.yml for certificate
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-trino:
-  target: dev
-  outputs:
-    dev:
-      type: trino
-      method: certificate 
-      cert: [path/to/cert_file]
-      client_certificate: [path/to/client/cert]
-      client_private_key: [path to client key]
-      database: [database name]
-      schema: [your dbt schema]
-      port: [port number]
-      threads: [1 or more]
-```
-
-</File>
-
-</TabItem>
-
-<TabItem value="oauth">
-
-The only authentication parameter to set for OAuth 2.0 is `method: oauth`. If you're using Starburst Enterprise or Starburst Galaxy, you must enable OAuth 2.0 in Starburst before you can use this authentication method.
-
-For more information, refer to both [OAuth 2.0 authentication](https://trino.io/docs/current/security/oauth2.html) in the Trino docs and the [README](https://github.com/trinodb/trino-python-client#oauth2-authentication) for the Trino Python client.
-
-It's recommended that you install `keyring` to cache the OAuth 2.0 token over multiple dbt invocations by running `pip install 'trino[external-authentication-token-cache]'`. The `keyring` package is not installed by default.
-
-#### Example profiles.yml for OAuth
-
-```yaml
-sandbox-galaxy:
-  target: oauth
-  outputs:
-    oauth:
-      type: trino
-      method: oauth
-      host: bunbundersders.trino.galaxy-dev.io
-      catalog: dbt_target
-      schema: dataders
-      port: 433
-```
-
-</TabItem>
-
-<TabItem value="none">
-
-You don't need to set up authentication (`method: none`), however, dbt Labs strongly discourages people from using it in any real application. Its use case is only for toy purposes (as in to play around with it), like local examples such as running Trino and dbt entirely within a single Docker container.
-
-#### Example profiles.yml for no authentication
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-trino:
-  target: dev
-  outputs:
-    dev:
-      type: trino
-      method: none
-      user: commander
-      host: trino.example.com
-      port: 443
-      database: analytics
-      schema: public
-```
-
-</File>
-
-</TabItem>
 </Tabs>
 
-## Authentication Methods
-
-### Password-based authentication
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-company-name:
-  target: dev
-  outputs:
-    dev:
-      type: redshift
-      host: hostname.region.redshift.amazonaws.com
-      user: username
-      password: password1
-      port: 5439
-      dbname: analytics
-      schema: analytics
-      threads: 4
-      connect_timeout: None # optional, number of seconds before connection times out 
-      # search_path: public # optional, not recommended
-      sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
-      role: # optional
-      ra3_node: true # enables cross-database sources
-      autocommit: true # enables autocommit after each statement
-      region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
-```
-
-</File>
-
-### IAM Authentication
-
-To set up a Redshift profile using IAM Authentication, set the `method`
-parameter to `iam` as shown below. Note that a password is not required when
-using IAM Authentication. For more information on this type of authentication,
-consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
-and [boto3
-docs](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift.html#Redshift.Client.get_cluster_credentials)
-on generating user credentials with IAM Auth.
-
-If you receive the "You must specify a region" error when using IAM
-Authentication, then your aws credentials are likely misconfigured. Try running
-`aws configure` to set up AWS access keys, and pick a default region. If you have any questions,
-please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
-
-<File name='~/.dbt/profiles.yml'>
-
-```yaml
-my-redshift-db:
-  target: dev
-  outputs:
-    dev:
-      type: redshift
-      method: iam
-      cluster_id: CLUSTER_ID
-      host: hostname.region.redshift.amazonaws.com
-      user: alice
-      iam_profile: data_engineer # optional
-      autocreate: true           # optional
-      db_groups: ['ANALYSTS']    # optional
-
-      # Other Redshift configs:
-      port: 5439
-      dbname: analytics
-      schema: analytics
-      threads: 4
-      connect_timeout: None # optional, number of seconds before connection times out 
-      [retries](#retries): 1 # default 1 retry on error/timeout when opening connections
-      role: # optional
-      sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
-      ra3_node: true # enables cross-database sources
-      autocommit: true # optional, enables autocommit after each statement
-      region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
 
 
-```
-
-</File>
 
 ### Specifying an IAM Profile
 
