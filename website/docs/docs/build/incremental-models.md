@@ -188,11 +188,7 @@ Transaction management is used to ensure this is executed as a single unit of wo
 
 ## What if the columns of my incremental model change?
 
-:::tip New `on_schema_change` config in dbt version `v0.21.0`
-
-Incremental models can now be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs.  
-
-:::
+Incremental models can be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs. 
 
 You can configure the `on_schema_change` setting as follows.
 
@@ -244,16 +240,30 @@ Similarly, if you remove a column from your incremental model, and execute a `db
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-## About incremental_strategy
+## About `incremental_strategy`
 
-On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
-to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
-the reliability of your `unique_key`, or the availability of certain features.
+There are various ways (strategies) to implement the concept of an incremental materializations. The value of each strategy depends on:
 
-* [Snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
-* [BigQuery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
-* [Databricks](/reference/resource-configs/databricks-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
-*[Spark](/reference/resource-configs/spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
+* the volume of data,
+* the reliability of your `unique_key`, and
+* the support of certain features in your data platform
+
+An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
+to build incremental models.
+
+### Supported incremental strategies by adapter
+
+Click the name of the adapter in the below table for more information about supported incremental strategies.
+
+| data platform adapter                                                                            | default strategy | additional supported strategies                                      |
+| :----------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------- |
+| dbt-postgres                                                                                     | `append` | `delete+insert`                                         |
+| dbt-redshift                                                                                     | `append` | `delete+insert`                                         |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)   | `merge`  | `insert_overwrite`                                      |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                        | `append` | `merge` (Delta only)                                    |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)              | `append` | `merge` (Delta only) `insert_overwrite` `delete+insert` |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models) | `merge`  | `append`                                                |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                               | `append` | `merge` `delete+insert`                                 |
 
 <VersionBlock firstVersion="1.3">
 

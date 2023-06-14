@@ -16,7 +16,13 @@ meta:
   config_page: '/reference/resource-configs/spark-configs'
 ---
 
+
 <Snippet src="warehouse-setups-cloud-callout" />
+<Snippet src="dbt-databricks-for-databricks" />
+
+:::note
+See [Databricks setup](#databricks-setup) for the Databricks version of this page.
+:::
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

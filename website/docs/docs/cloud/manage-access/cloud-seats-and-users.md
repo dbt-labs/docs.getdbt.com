@@ -5,27 +5,25 @@ id: "seats-and-users"
 sidebar: "Users and licenses"
 ---
 
-In dbt Cloud, _licenses_ are used to allocate users to your account. There are two
-different types of licenses in dbt Cloud: _Developer_ and _Read Only_.
+In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
+- Developer
+- Read-only
+- IT
 
-The type of license a user is assigned controls which capabilities of dbt
-Cloud the user is permitted to access. Users with a Developer license can be
-granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality
-in dbt Cloud, whereas users with Read Only licenses are intended to view the
-[artifacts](/docs/deploy/artifacts) created in a dbt Cloud account.
+The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
 
-| Functionality | Developer User | Read Only Users |
-| ------------- | -------------- | --------------- |
-| Use the Developer IDE | ✅ | ❌ |
-| Use Jobs | ✅ | ❌ |
-| Manage Account | ✅ | ❌ |
-| API Access | ✅ | ❌ |
-| Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ |
-| Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ |
+| Functionality | Developer User | Read Only Users | IT Users |
+| ------------- | -------------- | --------------- | -------- |
+| Use the Developer IDE | ✅ | ❌ | ❌ |
+| Use Jobs | ✅ | ❌ | ❌ |
+| Manage Account | ✅ | ❌ | ✅ |
+| API Access | ✅ | ❌ | ❌ |
+| Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
+| Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 
 ## Licenses
 
-Each dbt Cloud plan comes with a base number of Developer and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+Each dbt Cloud plan comes with a base number of Developer, IT, and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
 If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
@@ -65,7 +63,9 @@ To add a user in dbt Cloud, you must be an account owner or have admin privilege
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
 
 2. In **Account Settings**, select **Billing**. 
-3. Enter the number of developer seats you want and click **Save**.
+3. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. Leaving these blank won't allow you to save your changes.
+4. Press **Update Payment Information** to save your changes. 
+        
 
 <Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="Navigate to Account Settings -> Billing to modify billing seat count" />
 
@@ -86,7 +86,6 @@ Great work! After completing those these steps, your dbt Cloud user count and bi
 
 To delete a user in dbt Cloud, you must be an account owner or have admin privileges. If the user has a `developer` license type, this will open up their seat for another user or allow the admins to lower the total number of seats. 
 
-
 1. From dbt Cloud, click the gear icon at the top right and select **Account Settings**.
 
 <Lightbox src="/img/docs/dbt-cloud/Navigate To Account Settings.png" width="85%" title="Navigate to Account Settings" />
@@ -98,11 +97,13 @@ To delete a user in dbt Cloud, you must be an account owner or have admin privil
 <Lightbox src="/img/docs/dbt-cloud/delete_user_20221023.gif" width="85%" title="Deleting a user" />
 
 
-If you are on a **Teams** plan and you are deleting users to reduce the number of billable seats, you also need to take these steps to lower the license count to avoid being overcharged:
-1. In **Account Settings**, select **Billing**. 
-2. Enter the number of developer seats you want and click **Save**.
+If you are on a **Teams** plan and you're deleting users to reduce the number of billable seats, follow these steps to lower the license count to avoid being overcharged:
 
-<Lightbox src="/img/docs/dbt-cloud/change-developer-seats.png" width="85%" title="Developer seats" />
+1. In **Account Settings**, select **Billing**. 
+2. Enter the number of developer seats you want and make sure you fill in all the payment details, including the **Billing Address** section. If you leave any field blank, you won't be able to save your changes.
+3. Click **Update Payment Information** to save your changes. 
+        
+<Lightbox src="/img/docs/dbt-cloud/faq-account-settings-billing.jpg" width="85%" title="The **Billing** page in your **Account Settings**" />
 
 Great work! After completing these steps, your dbt Cloud user count and billing count should now be the same.
 
