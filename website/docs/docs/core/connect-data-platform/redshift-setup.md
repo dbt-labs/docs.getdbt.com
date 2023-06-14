@@ -47,7 +47,6 @@ pip is the easiest way to install the adapter:
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a>.</p>
 
 
---------remove this bit yo
 ## Authentication Methods
 
 The authentication methods that dbt Core supports are: 
@@ -73,19 +72,19 @@ The following table contains the parameters for database (password-based) connec
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
-| `method` | `database`| Leave this parameter unconfigured, or set this to database. |
-| `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster. |
-| `user`   | `username` | Account username to log into your cluster. |
-| `password`  | `password1` | Password for authentication.  |
+| `type` | redshift | The type of data warehouse you are connecting to|
+| `method` | `database`| Leave this parameter unconfigured, or set this to database |
+| `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster |
+| `user`   | `username` | Account username to log into your cluster |
+| `password`  | `password1` | Password for authentication  |
 | `port`  | `5439` |   |
-| `dbname`  | `my_db` | Database name.|
-| `schema`  | `my_schema` | Schema name.| 
-| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out.| 
+| `dbname`  | `my_db` | Database name|
+| `schema`  | `my_schema` | Schema name| 
+| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
 | `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below TODO| 
 | `role`  | TODO | optional| 
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
 | `autocommit`  | true | Optional, default True. Enables autocommit after each statement| 
-| `region`  | us-east-1 | region to connect to your cluster with | 
 
 <br/>
 
@@ -119,45 +118,68 @@ company-name:
 
 <TabItem value="IAM">
 
-The following table lists the authentication parameters to set for Kerberos.
+The following table lists the authentication parameters to use IAM autentication. 
+  
+Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the Redshift Documentation and boto3 docs on generating user credentials with IAM Auth.
+  
+If you receive the "You must specify a region" error when using IAM Authentication, then your aws credentials are likely misconfigured. Try running aws configure to set up AWS access keys, and pick a default region. If you have any questions, please refer to the official AWS documentation on Configuration and credential file settings.
 
-For more information, refer to [Kerberos authentication](https://trino.io/docs/current/security/kerberos.html) in the Trino docs.
-
-| Profile field                               | Example             | Description                                                      |
-| ------------------------------------------- | ------------------- | ---------------------------------------------------------------- |
-| `method` | `kerberos`| Set Kerberos as the authentication method. |
-| `user`                                      | `commander`         | Username for authentication                                      |
-| `keytab`                                    | `/tmp/trino.keytab` | Path to keytab                                                   |
-| `krb5_config`                               | `/tmp/krb5.conf`    | Path to config                                                   |
-| `principal`                                 | `trino@EXAMPLE.COM` | Principal                                                        |
-| `service_name` (optional)                   | `abc123`            | Service name (default is `trino`)                               |
-| `hostname_override` (optional)              | `EXAMPLE.COM`       | Kerberos hostname for a host whose DNS name doesn't match        |
-| `mutual_authentication` (optional)          | `false`             | Boolean flag for mutual authentication                           |
-| `force_preemptive` (optional)               | `false`             | Boolean flag to preemptively initiate the Kerberos GSS exchange |
-| `sanitize_mutual_error_response` (optional) | `true`              | Boolean flag to strip content and headers from error responses   |
-| `delegate`  (optional)                      | `false`             | Boolean flag for credential delegation (`GSS_C_DELEG_FLAG`)       |
+| Profile field | Example | Description |
+| ------------- | ------- | ------------ |
+| `type` | redshift | The type of data warehouse you are connecting to|
+| `method` | `IAM`| use IAM to authenticate |
+| `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster |
+| `iam_profile` | default| TODO |
+| `cluster_id` | `CLUSTER_ID`| Required for IAM |
+| `user`   | `username` | Account username to log into your cluster |
+| `password`  | `password1` | Password for authentication  |
+| `port`  | `5439` |   |
+| `dbname`  | `my_db` | Database name|
+| `schema`  | `my_schema` | Schema name| 
+| `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
+| `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below TODO| 
+| `role`  | TODO | optional| 
+| `autocreate`  | false | Optional, default false. Creates user if they do not exist | 
+| `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session | 
+| `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
+| `autocommit`  | true | Optional, default True. Enables autocommit after each statement| 
+| `retries`  | 1 | Number of retries | 
+| `region`  | us-east-1 | Region to connect to your cluster with. Required for IAM | 
 
 <br/>
 
-#### Example profiles.yml for Kerberos
+
+#### Example profiles.yml for IAM
 
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
-trino:
+  my-redshift-db:
   target: dev
   outputs:
     dev:
-      type: trino
-      method: kerberos
-      user: commander
-      keytab: /tmp/trino.keytab
-      krb5_config: /tmp/krb5.conf
-      principal: trino@EXAMPLE.COM
-      host: trino.example.com
-      port: 443
-      database: analytics
-      schema: public
+      type: redshift
+      method: iam
+      cluster_id: CLUSTER_ID
+      host: hostname.region.redshift.amazonaws.com
+      user: alice
+      iam_profile: default
+      autocreate: true  
+      db_groups: ['ANALYSTS']
+
+      # Other Redshift configs:
+      port: 5439
+      dbname: analytics
+      schema: analytics
+      threads: 4
+      connect_timeout: None 
+      [retries](#retries): 1 
+      role: None
+      sslmode: prefer 
+      ra3_node: true  
+      autocommit: true  
+      region: us-east-1
+
 ```
 
 </File>
