@@ -17,8 +17,8 @@
 }
 
 .quickstartCard .icon {
-  max-width: 40px;
-  font-size: 40px;
+  max-width: 25px;
+  font-size: 25px;
   margin-bottom: .8rem;
   color: var(--ifm-menu-color);
 }
