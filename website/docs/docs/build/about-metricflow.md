@@ -10,8 +10,8 @@ This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, 
 
 :::info
 
-MetricFlow is a new way to define metrics in dbt and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction and defines the specification for dbt semantic models and metrics. MetricFlow is a BSL package (code is source available) and will replace the dbt_metrics package. 
- 
+MetricFlow is a new way to define metrics in dbt and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
+
 To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 
 :::
@@ -29,7 +29,7 @@ There are a few key principles:
 
 - It uses YAML files to define a semantic graph, which maps language to data. This graph consists of [semantic models](/docs/build/semantic-models), which serve as data entry points, and [metrics](/docs/build/metrics-overview), which are functions used to create new quantitative indicators.
 
-- MetricFlow is [open-source](https://github.com/dbt-labs/metricflow) and available on dbt versions 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute. 
+- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) (code is source available) and available on dbt versions 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute. 
 
 - MetricFlow, as a part of the dbt Semantic Layer, allows organizations to define company metrics logic through YAML abstractions, as described in the following sections.
 
