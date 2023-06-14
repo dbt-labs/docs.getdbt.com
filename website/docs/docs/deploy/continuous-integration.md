@@ -4,7 +4,7 @@ sidebar_label: "Continuous integration"
 description: "You can set up Slim continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
 
-With the continuous integration (CI) workflow in dbt Cloud, you can set up automation that tests code changes by using Slim CI jobs. dbt Cloud tracks the state of what’s running in your production environment so, when you run a Slim CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your Git provider as soon as a Slim CI job completes. Additionally, the teams in your organization can enable settings with your Git provider that only allow PRs with successful CI checks be approved for merging.  
+With the continuous integration (CI) workflow in dbt Cloud, you can set up automation that tests code changes by using [Slim CI jobs](/docs/deploy/slim-ci-jobs). dbt Cloud tracks the state of what’s running in your production environment so, when you run a Slim CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your Git provider as soon as a Slim CI job completes. Additionally, the teams in your organization can enable settings with your Git provider that only allow PRs with successful CI checks be approved for merging.  
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt Cloud"/>
 
@@ -18,13 +18,13 @@ Using Slim CI helps:
 
 When you [set up Slim CI jobs](/docs/deploy/slim-ci-jobs#set-up-slim-ci-jobs), dbt Cloud listens for webhooks from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these webhooks, it enqueues a new run of the Slim CI job. If you want CI checks to run on each new commit, you need to mark your PR as **Ready for review** &mdash; draft PRs _don't_ trigger CI jobs. 
 
-dbt Cloud builds and tests the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. This process ensures that the code builds without error and that it matches the user’s expectations as defined by her dbt tests. When the Slim CI run completes, you can see the run status directly in the pull request. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
+dbt Cloud builds and tests the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. This process ensures that the code builds without error and that it matches the expectations as defined by the dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" width="90%"title="Viewing the temporary schema name for a run triggered by a PR"/>
 
-After the dbt run completes, dbt Cloud updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not. 
+When the Slim CI run completes, you can view the run status directly from within the pull request. dbt Cloud updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not. 
 
-Finally, when you close or merge the pull request, dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" />. If your project has database or schema customization using the [generate_database_name](/docs/build/custom-databases#generate_database_name) or [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros, dbt Cloud might not drop the temporary schema from your data warehouse . For more information, refer to [Temp PR schema limitations](#temp-pr-schema-limitations).
+dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has database or schema customization using the [generate_database_name](/docs/build/custom-databases#generate_database_name) or [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Temp PR schema limitations](#temp-pr-schema-limitations).
 
 ## Differences between Slim CI jobs and other deployment jobs
 
@@ -41,7 +41,7 @@ This functionality is currently in beta. If you're interested in joining our bet
 
 ### Concurrent CI checks
 
-When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same Slim CI job will get triggered. Since each run builds into a dedicated schema that’s tied to the pull request, dbt Cloud can safely execute Slim CI runs concurrently instead of sequentially (which is done with deployment dbt Cloud jobs). Because no one needs to wait for a Slim CI run to finish before another one can start with concurrent CI checks, your whole team can test and integrate dbt code faster.
+When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same Slim CI job will get triggered. Since each run builds into a dedicated (temp) schema that’s tied to the pull request, dbt Cloud can safely execute Slim CI runs concurrently instead of sequentially (which is what's done with deployment dbt Cloud jobs). Because no one needs to wait for a Slim CI run to finish before another one can start with concurrent CI checks, your whole team can test and integrate dbt code faster.
 
 Below describes the conditions when CI checks are run concurrently and when they’re not:  
 
