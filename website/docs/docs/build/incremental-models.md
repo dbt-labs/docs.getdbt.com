@@ -253,19 +253,17 @@ to build incremental models.
 
 ### Supported incremental strategies by adapter
 
-A checkmark (:heavy_check_mark:) in the below table indicates that a strategy is supported by an adapter.
+Click the name of the adapter in the below table for more information about supported incremental strategies.
 
-A white checkmark (:white_check_mark:) indicates the strategy used by default, when `materialization: "incremental"` is specified, but no strategy is specifed.
-
-| Adapter                                                                                          | `append`           | `merge`                       | `insert_overwrite` | `delete+insert`    |
-| ------------------------------------------------------------------------------------------------ | ------------------ | ----------------------------- | ------------------ | ------------------ |
-| dbt-postgres                                                                                     | :white_check_mark: |                               |                    |                    |
-| dbt-redshift                                                                                     | :white_check_mark: |                               |                    |                    |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)   |                    | :white_check_mark:            | :heavy_check_mark: |                    |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                        | :white_check_mark: | :heavy_check_mark: Delta only | :heavy_check_mark: |                    |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)              | :white_check_mark: | :heavy_check_mark: Delta only | :heavy_check_mark: | :heavy_check_mark: |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models) | :heavy_check_mark: | :white_check_mark:            |                    |                    |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                               | :heavy_check_mark: | :heavy_check_mark:            |                    | :heavy_check_mark: |
+| data platform adapter                                                                            | default strategy | additional supported strategies                                      |
+| :----------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------- |
+| dbt-postgres                                                                                     | `append` | `delete+insert`                                         |
+| dbt-redshift                                                                                     | `append` | `delete+insert`                                         |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)   | `merge`  | `insert_overwrite`                                      |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                        | `append` | `merge` (Delta only)                                    |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)              | `append` | `merge` (Delta only) `insert_overwrite` `delete+insert` |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models) | `merge`  | `append`                                                |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                               | `append` | `merge` `delete+insert`                                 |
 
 <VersionBlock firstVersion="1.3">
 
