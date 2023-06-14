@@ -72,7 +72,7 @@ company-name:
       role: # optional
       ra3_node: true # enables cross-database sources
       autocommit: true # enables autocommit after each statement
-      region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
+      region: # optional
 ```
 
 </File>
@@ -119,9 +119,7 @@ my-redshift-db:
       sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
       ra3_node: true # enables cross-database sources
       autocommit: true # optional, enables autocommit after each statement
-      region: # optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)
-
-
+      region: # optional
 ```
 
 </File>
