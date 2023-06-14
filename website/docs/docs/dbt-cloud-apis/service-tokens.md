@@ -55,6 +55,9 @@ The following permissions can be assigned to a service account token on an Enter
 **Account Admin** <br/>
 Account Admin service tokens have full `read + write` access to an account, so please use them with caution.  For more on these permissions, see [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin).
 
+**Security Admin** <br/>
+Security Admin service tokens have certain account-level permissions.  For more on these permissions, see [Security Admin](/docs/cloud/manage-access/enterprise-permissions#security-admin).
+
 **Metadata Only**<br/>
 Metadata only service tokens authorize requests to the Discovery API.
 

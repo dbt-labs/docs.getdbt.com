@@ -1,4 +1,3 @@
-## Auth0 Multi-tenant URIs
 
 The URI used for SSO connections on multi-tenant dbt Cloud instances will vary based on your dbt Cloud hosted region. Use your login URL (also referred to as your Access URL) to determine the correct Auth0 URI for your environment.
 
