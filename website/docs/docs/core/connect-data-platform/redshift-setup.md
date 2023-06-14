@@ -61,7 +61,7 @@ Click on one of these authentication methods for further details on how to confi
   defaultValue="database"
   values={[
     {label: 'database', value: 'database'},
-    {label: 'Kerberos', value: 'kerberos'},
+    {label: 'IAM', value: 'IAM'},
   ]}
 >
 
