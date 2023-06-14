@@ -240,16 +240,22 @@ Similarly, if you remove a column from your incremental model, and execute a `db
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-## About incremental_strategy
+## About `incremental_strategy`
 
-On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
-to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
-the reliability of your `unique_key`, or the availability of certain features.
+There are various ways (strategies) to implement the concept of an incremental materializations. The value of each strategy depends on:
 
-legend:
+* the volume of data,
+* the reliability of your `unique_key`, and
+* the support of certain features in your data platform
 
-- :white_check_mark: default supported strategy
-- :heavy_check_mark: optional supported strategy
+An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
+to build incremental models.
+
+### Supported incremental strategies by adapter
+
+A checkmark (:heavy_check_mark:) in the below table indicates that a strategy is supported by an adapter.
+
+A white checkmark (:white_check_mark:) indicates the strategy used by default, when `materialization: "incremental"` is specified, but no strategy is specifed.
 
 | Adapter                                                                                          | `append`           | `merge`                       | `insert_overwrite` | `delete+insert`    |
 | ------------------------------------------------------------------------------------------------ | ------------------ | ----------------------------- | ------------------ | ------------------ |
