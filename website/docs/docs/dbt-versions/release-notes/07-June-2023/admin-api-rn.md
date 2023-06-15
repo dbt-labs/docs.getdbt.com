@@ -1,5 +1,5 @@
 ---
-title: "Update: Administrative API docs for v2 and v3"
+title: "Update: dbt Cloud Administrative API docs for v2 and v3"
 description: "June 2023 release note: The Administrative API docs are now available for v2 and v3 with a different UI."
 sidebar_label: "Update: Admin API docs for v2 and v3 "
 tags: [June-2023, API]
