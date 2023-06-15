@@ -17,8 +17,6 @@ meta:
 
 <Snippet src="warehouse-setups-cloud-callout" />
 
-## Test
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
 <SetUpPages meta={frontMatter.meta} />
