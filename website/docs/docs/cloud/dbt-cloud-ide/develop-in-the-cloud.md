@@ -31,7 +31,7 @@ The Cloud IDE is a powerful tool that can help streamline and govern your data p
 
 - The IDE has syntax highlighting for SQL. This makes it easy to visually distinguish between different parts of your code. This helps prevent syntax errors and improve readability.
 - Use the IDE built-in auto-completion, which suggests table names, arguments, and column names as you type. This saves time and reduces the likelihood of typos or errors in your code.
-- The code formatting tools allow you to standardize your SQL code with ease. Use this to clean up your code and make it more consistent.
+- The code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) tools allow you to standardize and fix your SQL code with ease. 
 - The IDE has a range of navigation tools, making it easy to move around your code with ease. You can quickly jump to specific lines of code, find and replace text, and navigate between different files in your project. 
 - Use the version control menu and features to version-control your code with just a few clicks. 
 
@@ -62,7 +62,7 @@ To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), 
 | **Organize tabs and files**  | - Move your tabs around to reorganize your work in the IDE <br /> - Right-click on a tab to view and select a list of actions, including duplicate files  <br /> - Close multiple, unsaved tabs to batch save your work <br /> - Double click files to rename files |
 | **Find and replace** | - Press Command-F or Control-F to open the find-and-replace bar in the upper right corner of the current file in the IDE. The IDE highlights your search results in the current file and code outline<br /> - You can use the up and down arrows to see the match highlighted in the current file when there are multiple matches<br /> - Use the left arrow to replace the text with something else |
 | **Multiple selections**  | You can make multiple selections for small and simultaneous edits. The below commands are a common way to add more cursors and allow you to insert cursors below or above with ease.<br /><br /> - Option-Command-Down arrow or Ctrl-Alt-Down arrow<br /> - Option-Command-Up arrow or Ctrl-Alt-Up arrow<br /> - Press Option and click on an area or Press Ctrl-Alt and click on an area<br /> 
-| **Formatting** | Format your files with a click of a button, powered by [sqlfmt](http://sqlfmt.com/). 
+| **Lint and Format** | [Lint and format](/docs/cloud/dbt-cloud-ide/lint-format) your files with a click of a button, powered by SQLFluff, sqlfmt, Prettier, and Black.
 | **Git diff view**  | Ability to see what has been changed in a file before you make a pull request. 
 | **dbt autocomplete**  |  New autocomplete features to help you develop faster:<br /><br />  - Use `ref` to autocomplete your model names<br /> - Use `source` to autocomplete your source name + table name<br /> - Use `macro` to autocomplete your arguments<br /> - Use `env var` to autocomplete env var<br /> - Start typing a hyphen (-) to use in-line autocomplete in a YAML file |
 | **<Term id="dag" /> in the IDE** | You can see how models are used as building blocks from left to right to transform your data from raw sources into cleaned-up modular derived pieces and final outputs on the far right of the DAG. The default view is 2+model+2 (defaults to display 2 nodes away), however you can change it to +model+ (full  <Term id="dag" />). |
@@ -92,7 +92,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 :::info📌
 
-New to dbt? Check out our [quickstart guide](/docs/quickstarts/overview) to build your first dbt project in the Cloud IDE!
+New to dbt? Check out our [quickstart guide](/quickstarts) to build your first dbt project in the Cloud IDE!
 
 :::
 

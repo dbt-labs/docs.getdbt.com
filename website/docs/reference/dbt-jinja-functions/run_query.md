@@ -5,7 +5,7 @@ id: "run_query"
 description: "Use `run_query` macro to run queries and fetch results."
 ---
 
-The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](statement-blocks), which is more flexible, but also more complicated to use.
+The `run_query` macro provides a convenient way to run queries and fetch their results. It is a wrapper around the [statement block](/reference/dbt-jinja-functions/statement-blocks), which is more flexible, but also more complicated to use.
 
 __Args__:
  * `sql`: The SQL query to execute

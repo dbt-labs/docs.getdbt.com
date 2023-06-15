@@ -3,7 +3,7 @@ resource_types: [tests]
 datatype: integer
 ---
 
-Limit the number of failures that will be returned by a test query. We recommend using this config when working with large datasets and [storing failures in the database](store_failures).
+Limit the number of failures that will be returned by a test query. We recommend using this config when working with large datasets and [storing failures in the database](/reference/resource-configs/store_failures).
 
 <Tabs
   defaultValue="specific"

@@ -86,7 +86,7 @@ sources:
 
 The next step is to set up the staging models for each of the 8 source tables. Given the one-to-one relationship between staging models and their corresponding source tables, we'll build 8 staging models here. We know it’s a lot and in the future, we will seek to update the workshop to make this step less repetitive and more efficient. This step is also a good representation of the real world of data, where you have multiple hierarchical tables that you will need to join together!
 
-1. Let's go in alphabetical order to easily keep track of all our staging models! Create a new file called `stg_f1_circuits.sql` with this file path `models/staging/tpch/stg_f1_circuits.sql`. Then, paste the following code into the file before saving it:
+1. Let's go in alphabetical order to easily keep track of all our staging models! Create a new file called `stg_f1_circuits.sql` with this file path `models/staging/formula1/stg_f1_circuits.sql`. Then, paste the following code into the file before saving it:
 
     ```sql
     with
@@ -115,7 +115,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     All we're doing here is pulling the source data into the model using the `source` function, renaming some columns, and omitting the column `url` with a commented note since we don’t need it for our analysis.
 
-1. Create `stg_f1_constructors.sql` with this file path `models/staging/tpch/stg_f1_constructors.sql`. Paste the following code into it before saving the file:
+1. Create `stg_f1_constructors.sql` with this file path `models/staging/formula1/stg_f1_constructors.sql`. Paste the following code into it before saving the file:
 
     ```sql
     with
@@ -141,7 +141,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     We have 6 other stages models to create. We can do this by creating new files, then copy and paste the code into our `staging` folder.
 
-1. Create `stg_f1_drivers.sql` with this file path `models/staging/tpch/stg_f1_drivers.sql`:
+1. Create `stg_f1_drivers.sql` with this file path `models/staging/formula1/stg_f1_drivers.sql`:
 
     ```sql
     with
@@ -168,7 +168,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Create `stg_f1_lap_times.sql` with this file path `models/staging/tpch/stg_f1_lap_times.sql`:
+1. Create `stg_f1_lap_times.sql` with this file path `models/staging/formula1/stg_f1_lap_times.sql`:
 
     ```sql
     with
@@ -192,7 +192,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Create `stg_f1_pit_stops.sql` with this file path `models/staging/tpch/stg_f1_pit_stops.sql`:
+1. Create `stg_f1_pit_stops.sql` with this file path `models/staging/formula1/stg_f1_pit_stops.sql`:
 
     ```sql
     with
@@ -219,7 +219,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
     order by pit_stop_duration_seconds desc
     ```
 
-1. Create ` stg_f1_races.sql` with this file path `models/staging/tpch/stg_f1_races.sql`:
+1. Create ` stg_f1_races.sql` with this file path `models/staging/formula1/stg_f1_races.sql`:
 
     ```sql
     with
@@ -255,7 +255,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Create `stg_f1_results.sql` with this file path `models/staging/tpch/stg_f1_results.sql`:
+1. Create `stg_f1_results.sql` with this file path `models/staging/formula1/stg_f1_results.sql`:
 
     ```sql
     with
@@ -291,7 +291,7 @@ The next step is to set up the staging models for each of the 8 source tables. G
 
     select * from renamed
     ```
-1. Last one! Create `stg_f1_status.sql` with this file path: `models/staging/tpch/stg_f1_status.sql`:
+1. Last one! Create `stg_f1_status.sql` with this file path: `models/staging/formula1/stg_f1_status.sql`:
 
     ```sql
     with

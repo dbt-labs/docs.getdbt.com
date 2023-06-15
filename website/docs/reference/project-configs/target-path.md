@@ -22,7 +22,7 @@ By default, dbt will write compiled files to the `target` directory, i.e. `targe
 
 ## Configuration
 
-In the manner of a ["global" config](global-configs), the target path can be set in three places:
+In the manner of a ["global" config](/reference/global-configs/about-global-configs), the target path can be set in three places:
 1. `--target-path` CLI flag
 2. `DBT_TARGET_PATH` environment variable
 3. `target-path` in `dbt_project.yml`

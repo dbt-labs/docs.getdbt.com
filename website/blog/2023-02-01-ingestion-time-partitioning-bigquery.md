@@ -45,7 +45,7 @@ As a rule of thumb, you can consider that if your table partition length is less
 
 When we designed ingestion partitioning table support with the dbt Labs team, we focused on ease of use and how to have seamless integration with incremental materialization.
 
-One of the great features of incremental materialization is to be able to proceed with a full refresh. We added support for that feature and, luckily, `MERGE` statements are working as intended for ingestion-time partitioning tables. This is also the approach used by the [dbt BigQuery connector](/reference/warehouse-setups/bigquery-setup).
+One of the great features of incremental materialization is to be able to proceed with a full refresh. We added support for that feature and, luckily, `MERGE` statements are working as intended for ingestion-time partitioning tables. This is also the approach used by the [dbt BigQuery connector](/docs/core/connect-data-platform/bigquery-setup).
 
 The complexity is hidden in the connector and it’s very intuitive to use. For example, if you have a model with the following SQL:
 

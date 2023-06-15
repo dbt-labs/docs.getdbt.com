@@ -482,10 +482,7 @@ when matched then update ...
 when not matched then insert ...
 ```
 
-The `merge` approach has the benefit of automatically updating any late-arriving facts in the
-destination incremental table. The drawback of this approach is that BigQuery must scan all
-source tables referenced in the model SQL, as well as the entirety of the destination table.
-This can be slow and costly if the incremental model is transforming very large amounts of data.
+The 'merge' approach automatically updates new data in the destination incremental table but requires scanning all source tables referenced in the model SQL, as well as destination tables. This can be slow and expensive for large data volumes. [Partitioning and clustering](#using-table-partitioning-and-clustering) techniques mentioned earlier can help mitigate these issues.
 
 **Note:** The `unique_key` configuration is required when the `merge` incremental
 strategy is selected.
@@ -701,7 +698,7 @@ The `hours_to_expiration` only applies to initial creation of the underlying tab
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +hours_to_expiration: 6
 
 ```
@@ -737,7 +734,7 @@ for more details.
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +grant_access_to:
       - project: project_1
         dataset: dataset_1
