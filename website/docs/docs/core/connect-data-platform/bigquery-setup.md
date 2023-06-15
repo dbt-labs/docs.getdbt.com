@@ -17,31 +17,36 @@ meta:
 
 <Snippet src="warehouse-setups-cloud-callout" />
 
-<h2> Overview of {frontMatter.meta.pypi_package} </h2>
+## Test
 
-<ul>
-    <li><strong>Maintained by</strong>: {frontMatter.meta.maintained_by}</li>
-    <li><strong>Authors</strong>: {frontMatter.meta.authors}</li>
-    <li><strong>GitHub repo</strong>: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a>   <a href={`https://github.com/${frontMatter.meta.github_repo}`}><img src={`https://img.shields.io/github/stars/${frontMatter.meta.github_repo}?style=for-the-badge`}/></a></li>
-    <li><strong>PyPI package</strong>: <code>{frontMatter.meta.pypi_package}</code> <a href={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}`}><img src={`https://badge.fury.io/py/${frontMatter.meta.pypi_package}.svg`}/></a></li>
-    <li><strong>Slack channel</strong>: <a href={frontMatter.meta.slack_channel_link}>{frontMatter.meta.slack_channel_name}</a></li>
-    <li><strong>Supported dbt Core version</strong>: {frontMatter.meta.min_core_version} and newer</li>
-    <li><strong>dbt Cloud support</strong>: {frontMatter.meta.cloud_support}</li>
-    <li><strong>Minimum data platform version</strong>: {frontMatter.meta.min_supported_version}</li>
-    </ul>
+import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<Snippet src="setup-pages-intro" />
+<SetUpPages meta={frontMatter.meta} />
 
-## Authentication Methods
+## Prerequisites
 
-BigQuery targets can be specified using one of four methods:
+You need to have the required [BigQuery permissions](https://cloud.google.com/bigquery/docs/access-control) to create adapter-specific configurations in your dbt project. BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
 
-1. [oauth via `gcloud`](#oauth-via-gcloud)
-2. [oauth token-based](#oauth-token-based)
-3. [service account file](#service-account-file)
-4. [service account json](#service-account-json)
+  - BigQuery Data Editor
+  - BigQuery User
 
+This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
+## Authentication methods
+
+You can specify BigQuery targets using one of four methods:
+
+| Auth method | Description | Supported |
+| ----------- | ----------- | --------- |
+| OAuth via gcloud | Recommended for local development
+
+1. [Oauth via `gcloud`](#oauth-via-gcloud)
+2. [Oauth token-based](#oauth-token-based)
+3. [Service account file](#service-account-file)
+4. [Service account json](#service-account-json)
+
+:::tip
 For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+:::
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 
@@ -494,14 +499,6 @@ my-profile:
 ```
 
 </VersionBlock>
-
-## Required permissions
-
-BigQuery's permission model is dissimilar from more conventional databases like Snowflake and Redshift. The following permissions are required for dbt user accounts:
-- BigQuery Data Editor
-- BigQuery User
-
-This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 
 ## Local OAuth gcloud setup
 
