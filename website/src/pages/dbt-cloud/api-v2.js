@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import Layout from "@theme/Layout";
 import BrowserOnly from "@docusaurus/BrowserOnly";
 
-import "@stoplight/elements/styles.min.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const LazyStoplight = React.lazy(() => import("../../components/stoplight"));
