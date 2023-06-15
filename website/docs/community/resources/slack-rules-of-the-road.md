@@ -36,8 +36,9 @@ Vendors and recruiters are subject to additional rules to ensure this space rema
 
 As a vendor/dbt partner, you are also a member of this community, and we encourage you to participate fully in the space. We have seen folks grow fantastic user relationships for their products when they come in with the mindset to share rather than pushing a pitch. At the same time, active community members have a finely honed sense of when they are being reduced to an audience or a resource to be monetised, and their response is reliably negative.
 
-::info Who is a vendor?
+:::info Who is a vendor?
 Vendors are generally companies creating products or services primarily targeted at data professionals, but this title also includes recruiters, investors, open source maintainers (with or without a paid offering), consultants and freelancers. If in doubt, err on the side of caution. 
+:::
 
 ### Rule 1: Identify yourself 
 Include your company in your display name, e.g. "Alice (DataCo)". When joining a discussion about your product (after the waiting period below), be sure to note your business interests. 
