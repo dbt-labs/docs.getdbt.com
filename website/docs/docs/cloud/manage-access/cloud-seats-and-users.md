@@ -33,7 +33,7 @@ The following tabs detail steps on how to modify your user license count:
 
 <TabItem value="enterprise" label="Enterprise plans">
 
-If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count: 
+If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count (an IT license won't count towards seat usage): 
 
 - To remove a user, go to **Account Settings**, select **Users** under **Teams**. Select the user you want to remove, click **Edit**, and then **Delete**. This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
