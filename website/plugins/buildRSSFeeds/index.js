@@ -33,9 +33,6 @@ module.exports = function buildRSSFeedsPlugin() {
         feedItemObj.link = getLink(data)
 
         // Set post date
-        // If date not set within `date` or `tags` properties
-        // Set default date to oldest releast note date.
-        // 
         feedItemObj.date = data?.date || data?.tags 
           && getDate(data?.date ? data.date : data.tags) 
 
