@@ -260,7 +260,7 @@ Click the name of the adapter in the below table for more information about supp
 | dbt-postgres                                                                                     | `append` | `delete+insert`                                         |
 | dbt-redshift                                                                                     | `append` | `delete+insert`                                         |
 | [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)   | `merge`  | `insert_overwrite`                                      |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                        | `append` | `merge` (Delta only), `insert_overwrite`, `partition_by`|
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                        | `append` | `merge` (Delta only), `insert_overwrite` |
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)              | `append` | `merge` (Delta only) `insert_overwrite` `delete+insert` |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models) | `merge`  | `delete+insert`                                         |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                               | `append` | `merge` `delete+insert`                                 |
