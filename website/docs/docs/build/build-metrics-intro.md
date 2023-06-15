@@ -7,8 +7,7 @@ tags: [Metrics, Semantic Layer, Governance]
 hide_table_of_contents: true
 ---
 
-
-Define your metrics centrally in dbt using MetricFlow, which powers the dbt Semantic Layer. MetricFlow is one of the key components that makes up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction, and defines the specification for dbt semantic models and metrics. 
+Define your metrics centrally in dbt using MetricFlow, which powers the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) and is one of is key components. It handles SQL query construction, and defines the specification for dbt semantic models and metrics. 
 
 Use familiar constructs like semantic models and metric to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and consistency for data consumers.
 
