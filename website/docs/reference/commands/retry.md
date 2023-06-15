@@ -10,8 +10,6 @@ Retry works with the following commands:
 
 - [`build`](/reference/commands/build)
 - [`compile`](/reference/commands/compile)
-- [`clone`](/reference/commands/clone)
-- [`generate`](/reference/commands/generate)
 - [`seed`](/reference/commands/seed)
 - [`snapshot`](/reference/commands/build)
 - [`test`](/reference/commands/test)
