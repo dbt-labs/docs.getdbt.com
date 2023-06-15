@@ -379,17 +379,17 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "dbt Cloud Admin API",
+          label: "Administrative API",
           link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
           items: [
             {
               type: "link",
-              label: "v2 docs",
+              label: "API v2",
               href: "/dbt-cloud/api-v2",
             },
             {
               type: "link",
-              label: "v3 docs",
+              label: "API v3",
               href: "/dbt-cloud/api-v3",
             },
           ],
