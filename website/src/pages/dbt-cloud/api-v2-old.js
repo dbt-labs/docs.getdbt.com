@@ -7,7 +7,7 @@ function dbtCloudAPI() {
   return (
     <Layout permalink="/">
       <RedocStandalone
-        specUrl="https://raw.githubusercontent.com/dbt-labs/dbt-cloud-openapi-spec/mbarker/generated-docs/openapi-v2-old.yaml"
+        specUrl="https://raw.githubusercontent.com/dbt-labs/dbt-cloud-openapi-spec/master/openapi-v2-old.yaml"
         options={{
           requiredPropsFirst: true,
           noAutoAuth: true,

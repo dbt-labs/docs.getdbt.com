@@ -14,7 +14,7 @@ export default function Stoplight({ version }) {
       />
       <API
         apiDescriptionUrl={
-          "https://raw.githubusercontent.com/dbt-labs/dbt-cloud-openapi-spec/mbarker/generated-docs/openapi-" +
+          "https://raw.githubusercontent.com/dbt-labs/dbt-cloud-openapi-spec/master/openapi-" +
           version +
           ".yaml"
         }
