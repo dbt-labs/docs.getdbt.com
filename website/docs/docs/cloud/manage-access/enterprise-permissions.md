@@ -44,6 +44,23 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Run and cancel jobs
 - Use the IDE
 - View and modify Account Settings
+- Generate [service tokens](/docs/dbt-cloud-apis/service-tokens), such as for [API usage](/docs/dbt-cloud-apis/overview)
+
+### Security Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Security Admins have access to modify certain account-level settings. Users with Security Admin permissions can:
+
+- View and modify Account Settings such as:
+    - View, invite, and modify account users
+    - Create, delete, and modify Groups
+    - Create, delete, and modify License Mappings
+    - Create and modify SSO Configurations
+    - View and export Audit Logs
+    - Create, delete, and modify IP Restrictions
+
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
