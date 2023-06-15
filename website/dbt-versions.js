@@ -2,7 +2,7 @@ exports.versions = [
   {
     version: "1.6",
     EOLDate: "2024-07-20", // placeholder - need to confirm the final date
-    isPrerelease: true
+    isPrerelease: true,
   },
   {
     version: "1.5",
@@ -31,6 +31,10 @@ exports.versions = [
 ]
 
 exports.versionedPages = [
+  {
+    "page": "reference/commands/retry",
+    "firstVersion": "1.6",
+  },
   {
     "page": "docs/build/groups",
     "firstVersion": "1.5",
