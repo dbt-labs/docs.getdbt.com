@@ -51,10 +51,10 @@ pip is the easiest way to install the adapter:
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
 | `type` | redshift | The type of data warehouse you are connecting to|
-| `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster |
-| `port`  | `5439` |   |
-| `dbname`  | `my_db` | Database name|
-| `schema`  | `my_schema` | Schema name| 
+| `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
+| `port`  | 5439 |   |
+| `dbname`  | my_db | Database name|
+| `schema`  | my_schema | Schema name| 
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
 | `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below| 
 | `role`  | None | Optional| 
@@ -91,10 +91,10 @@ The following table contains the parameters for database (password-based) connec
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
-| `method` | `database`| Leave this parameter unconfigured, or set this to database |
-| `host` | `hostname.region.redshift.amazonaws.com`| Host of cluster |
-| `user`   | `username` | Account username to log into your cluster |
-| `password`  | `password1` | Password for authentication  |
+| `method` | database| Leave this parameter unconfigured, or set this to database |
+| `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
+| `user`   | username | Account username to log into your cluster |
+| `password`  | password1 | Password for authentication  |
 
 <br/>
 
@@ -144,10 +144,10 @@ please refer to the official AWS documentation on [Configuration and credential 
 
 | Profile field | Example | Description |
 | ------------- | ------- | ------------ |
-| `method` | `IAM`| use IAM to authenticate |
+| `method` |IAM| use IAM to authenticate |
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
-| `cluster_id` | `CLUSTER_ID`| Required for IAM |
-| `user`   | `username` | Account user to log into your cluster |
+| `cluster_id` | CLUSTER_ID| Required for IAM |
+| `user`   | username | Account user to log into your cluster |
 
 <br/>
 
