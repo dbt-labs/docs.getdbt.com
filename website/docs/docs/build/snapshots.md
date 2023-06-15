@@ -346,7 +346,7 @@ For the `timestamp` strategy, the configured `updated_at` column is used to popu
 <details>
 <summary>  Details for the timestamp strategy </summary>
 
-<summary>Snapshot query results at `2019-01-01 11:00`</summary>
+Snapshot query results at `2019-01-01 11:00`
 
 | id | status  | updated_at       |
 | -- | ------- | ---------------- |
@@ -368,7 +368,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 
 | id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
 | -- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1  | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 11:05 |
+| 1  | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 10:47 |
 | 1  | shipped | 2019-01-01 11:05 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
 
 </details>
@@ -380,7 +380,7 @@ For the `check` strategy, the current timestamp is used to populate each column.
 <details>
 <summary>  Details for the check strategy </summary>
 
-<summary>Snapshot query results at `2019-01-01 11:00`</summary>
+Snapshot query results at `2019-01-01 11:00`
 
 | id | status  |
 | -- | ------- |
@@ -402,7 +402,7 @@ Snapshot results:
 
 | id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
 | --- | ------- | ---------------- | ---------------- | ---------------- |
-| 1   | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:30 |
+| 1   | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:00 |
 | 1   | shipped | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
 
 </details>
