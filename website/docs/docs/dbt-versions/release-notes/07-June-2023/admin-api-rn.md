@@ -9,6 +9,6 @@ dbt Labs updated the docs for the dbt Cloud Administrative API and they are now 
 
 - Now using Spotlight for improved UI and UX.
 - All endpoints are now documented for v2 and v3. Added automation to the docs so they remain up to date.  
-- Many of the request and response bodies are documented
-- You can now test endpoints directly from with the API docs pages
-- With the new UI, you can more easily generate code for any endpoint
+- Documented many of the request and response bodies.
+- You can now test endpoints directly from within the API docs.
+- With the new UI, you can more easily generate code for any endpoint.
