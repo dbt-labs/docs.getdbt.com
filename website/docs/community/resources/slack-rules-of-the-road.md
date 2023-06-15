@@ -11,6 +11,10 @@ We are committed to maintaining the spirit of this community, and have written t
 ### Rule 1: Be respectful
 We want everyone in this community to have a fulfilling and positive experience and we are continuously grateful in your help ensuring that this is the case.
 
+Be courteous, respectful, and polite to fellow community members. Generally, don’t be a jerk.
+
+Be considerate of others’ time — many people in the community generously give their time for free.
+
 This first rule is serious and straightforward -- we simply will not tolerate disrespectful behavior of any kind.
 
 Everyone interacting on a dbt platform – including Slack, the forum, codebase, issue trackers, and mailing lists – is expected to follow the [Community Code of Conduct](code-of-conduct). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
@@ -38,13 +42,10 @@ Vendors are generally companies creating products or services primarily targeted
 ### Rule 1: Identify yourself 
 Include your company in your display name, e.g. "Alice (DataCo)". When joining a discussion about your product (after the waiting period below), be sure to note your business interests. 
 
-### Rule 2: Be yourself
-Speak in your own voice, and join in any or all of the conversations that interest you. Share your expertise as a data professional. Make a meme if you're so inclined. Get in a (friendly) debate. You are not limited to only your company's products and services, and making yourself known as a familiar face outside of commercial contexts is one of the most effective ways of building trust with the community. 
-
-### Rule 3: Let the community speak first
+### Rule 2: Let the community speak first
 If a community member asks a question about your product directly, or mentions that they have a problem that your product could help with, wait 1 business day before responding to allow other members to share their experiences and recommendations. (This doesn't apply in your `#tools-` channel if you have one.)
 
-### Rule 4: Keep promotional content to specified spaces
+### Rule 3: Keep promotional content to specified spaces
 As a space for professional practice, the dbt Community is primarily a non-commercial space. However, as a service to community members who want to be able to keep up to date with the data industry, there are several areas available on the Community Slack for vendors to share promotional material: 
 - #vendor-content
 - #events
@@ -54,4 +55,20 @@ Recruiters may also post in #jobs but may not solicit applications in DMs.
 
 The definition of "vendor content" can be blurry at the edges, and we defer to members' instincts in these scenarios. As a rule, if something is hosted on a site controlled by that company or its employees (including platforms like Substack and Medium), or contains a CTA such as signing up for a mailing list or trial account, it will likely be considered promotional. 
 
-Because unaffiliated community members are able to share vendor content in other channels, the most effective way to have your work reach a wider audience is to create things that are genuinely useful to the community. 
+### One more tip: Be yourself
+Speak in your own voice, and join in any or all of the conversations that interest you. Share your expertise as a data professional. Make a meme if you're so inclined. Get in a (friendly) debate. You are not limited to only your company's products and services, and making yourself known as a familiar face outside of commercial contexts is one of the most effective ways of building trust with the community. 
+
+Because unaffiliated community members are able to share links in any channel, the most effective way to have your work reach a wider audience is to create things that are genuinely useful to the community. 
+
+
+## Handling violations
+
+The point of these rules is not to find opportunities to punish people, but to ensure the longevity of the community. Participation in this community is a privilege, and we reserve the right to remove people from it. 
+
+To report an issue or appeal a judgement, email [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in #moderation-and-administration on Slack.
+
+Violations related to our anti-harassment policy will result in immediate removal. Other issues are handled in proportion to their impact, and may include:
+
+- a friendly, but public, reminder that the behavior is inappropriate according to our guidelines.
+- a private message with a warning that any additional violations will result in removal from the community.
+- temporary or permanent suspension of your account.
