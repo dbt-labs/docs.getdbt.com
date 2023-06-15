@@ -38,8 +38,6 @@ module.exports = function buildRSSFeedsPlugin() {
         feedItemObj.date = data?.date || data?.tags 
           ? getDate(data?.date ? data.date : data.tags) 
           : new Date()
-
-        console.log('feedItemObj.date', feedItemObj.date)
         
         return feedItemObj
       }).sort((a, b) => (a.date > b.date) ? -1 : 1)
@@ -107,12 +105,9 @@ function getLink(data) {
 }
 
 function getDate(tags) {
-  console.log('Running getDate')
   // Find tag with the format 'day-year'
   const expr = /(-\d{4})/g
   const dateTag = tags.find(str => expr.test(str))
-
-  console.log('dateTag', dateTag)
 
   return dateTag
     ? new Date(dateTag)
