@@ -44,6 +44,7 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Run and cancel jobs
 - Use the IDE
 - View and modify Account Settings
+- Generate [service tokens](/docs/dbt-cloud-apis/service-tokens), such as for [API usage](/docs/dbt-cloud-apis/overview)
 
 ### Security Admin
 
