@@ -3,7 +3,7 @@ title: "dbt Cloud Administrative API"
 id: "admin-cloud-api"
 ---
 
-The dbt Cloud Administrative API is enabled by default for [_Team_ and _Enterprise_ plans](https://www.getdbt.com/pricing/). It can be used to:
+The dbt Cloud Administrative API is enabled by default for [Team and Enterprise plans](https://www.getdbt.com/pricing/). It can be used to:
 
 - Download artifacts after a job has completed
 - Kick off a job run from an orchestration tool
