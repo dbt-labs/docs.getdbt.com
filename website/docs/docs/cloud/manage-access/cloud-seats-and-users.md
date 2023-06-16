@@ -33,7 +33,7 @@ The following tabs detail steps on how to modify your user license count:
 
 <TabItem value="enterprise" label="Enterprise plans">
 
-If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count: 
+If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
 
 - To remove a user, go to **Account Settings**, select **Users** under **Teams**. Select the user you want to remove, click **Edit**, and then **Delete**. This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
@@ -45,7 +45,7 @@ If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/
 
 <TabItem value="team" label="Team plans">
 
-If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers, you'll need to make two changes:
+If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
 
 - Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. AND
 - Adjust your developer billing seat count, which manages the number of billable seats. 
