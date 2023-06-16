@@ -4,7 +4,7 @@ sidebar_label: "retry"
 id: "retry"
 ---
 
-`dbt retry` re-executes the last `dbt` command from the node point of failure. If the previously executed `dbt` command was successful, `retry` will finish as a no op. 
+`dbt retry` re-executes the last `dbt` command from the node point of failure. If the previously executed `dbt` command was successful, `retry` will finish as no operation. 
 
 Retry works with the following commands:
 
