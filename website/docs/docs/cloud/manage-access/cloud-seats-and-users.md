@@ -45,7 +45,7 @@ If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/m
 
 <TabItem value="team" label="Team plans">
 
-If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers, you'll need to make two changes:
+If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. Note, an IT license does not count toward seat usage. You'll need to make two changes:
 
 - Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. AND
 - Adjust your developer billing seat count, which manages the number of billable seats. 
