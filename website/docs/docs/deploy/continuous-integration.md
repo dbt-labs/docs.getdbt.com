@@ -4,7 +4,7 @@ sidebar_label: "Continuous integration"
 description: "You can set up Slim continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
 
-With the continuous integration (CI) workflow in dbt Cloud, you can set up automation that tests code changes by using [Slim CI jobs](/docs/deploy/slim-ci-jobs). dbt Cloud tracks the state of what’s running in your production environment so, when you run a Slim CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your Git provider as soon as a Slim CI job completes. Additionally, the teams in your organization can enable settings with your Git provider that only allow PRs with successful CI checks be approved for merging.  
+To implement a continuous integration (CI) workflow in dbt Cloud, you can set up automation that tests code changes by running [Slim CI jobs](/docs/deploy/slim-ci-jobs) before merging to production. dbt Cloud tracks the state of what’s running in your production environment so, when you run a Slim CI job, only the modified data assets in your pull request (PR) and their downstream dependencies are built and tested in a staging schema. You can also view the status of the CI checks (tests) directly from within the PR; this information is posted to your Git provider as soon as a Slim CI job completes. Additionally, the teams in your organization can enable settings with your Git provider that allow PRs only with successful CI checks be approved for merging.  
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-workflow.png" width="90%" title="Workflow of continuous integration in dbt Cloud"/>
 
@@ -30,8 +30,8 @@ dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> w
 
 The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes Slim CI jobs differently from other deployment jobs in these important ways:
 
-- **Concurrent CI checks** &mdash; Slim CI runs triggered by the same dbt Cloud Slim CI job execute concurrently (in parrallel), when appropriate
-- **Smart cancellation of stale builds** &mdash; automatically cancels stale, in-flight Slim CI runs when there are new commits to the PR
+- **Concurrent CI checks** &mdash; Slim CI runs triggered by the same dbt Cloud Slim CI job execute concurrently (in parallel), when appropriate
+- **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight Slim CI runs when there are new commits to the PR
 - **Run slot treatment** &mdash; Slim CI runs don't consume a run slot
 
 :::tip Join our beta
@@ -53,8 +53,10 @@ Below describes the conditions when CI checks are run concurrently and when they
 
 When you push a new commit to a PR, dbt Cloud enqueues a new Slim CI run for the latest commit and cancels any Slim CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By cancelling runs in a safe and deliberate way, dbt Cloud helps improve productivity and reduce data platform spend on wasteful CI runs.
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-smart-cancel-job.png" width="70%" title="Example of an automatically cancelled run"/>
+
 ### Run slot treatment
 
-Your Slim CI runs don't consume run slots so a CI check will not block a production run.
+Your Slim CI runs don't consume run slots so a CI check will never block a production run.
 
 

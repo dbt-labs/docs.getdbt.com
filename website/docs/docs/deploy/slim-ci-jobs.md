@@ -4,7 +4,7 @@ sidebar_label: "Slim CI jobs"
 description: "Learn how to create and set up Slim CI checks to test code changes before deploying to production."
 ---
 
-Once you have a Git connection, you can set up Slim [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request in your dbt repository. By running and testing only modified models, the run times for jobs are shorter which helps with reducing unnecessary resource usage on your data platform.
+You can set up Slim [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request in your dbt repository. By running and testing only _modified_ models &mdash; which is what _slim_ refers to &mdash; dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
 ## Prerequisites
 
@@ -15,12 +15,11 @@ Once you have a Git connection, you can set up Slim [continuous integration](/do
 
 ## Set up Slim CI jobs
 
-1. Create a production deployment model in dbt Cloud. For details, see [Create a deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment).
+dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their Slim CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
 
-    For your dedicated Slim CI job, dbt Labs recommends you set up a separate dbt Cloud environment that's connected to a staging database. This ensures that you have good isolation on where your CI schemas build. Having a separate environment also allows you to set a [custom branch](/faqs/environments/custom-branch-settings) if you want to trigger CI checks off PRs to a pre-release branch.
 1. On your deployment environment page, click **Create One** to create a new CI job.
 2. In the **Execution Settings** section: 
-    - For the option **Defer to a previous run state**, choose **Production Job (Production)**. This tells dbt Cloud to compare the manifest of the current job against the project representation that was materialized the last time this job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
+    - For the option **Defer to a previous run state**, choose whichever production job that's set to run often. If you don't see any jobs to select from the dropdown, you first need to run a production job successfully. Deferral tells dbt Cloud to compare the manifest of the current CI job against the project representation that was materialized the last time the deferred job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
     - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](/docs/deploy/slim-ci-jobs#deferral-and-state-comparison)
 3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
 
@@ -47,19 +46,18 @@ To learn more about state comparison and deferral in dbt, read the docs on [stat
 
 ### Example pull requests
 
+The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
+
 #### GitHub pull request example
 
-The green checkmark means the dbt builds and tests were successful. The **Details** link shown here will navigate you to the relevant CI run in dbt Cloud.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="70%" title="GitHub pull request example"/>
 
 #### GitLab pull request example
 
-The green checkmark means the dbt builds and tests were successful. Clicking the dbt Cloud pop up will navigate you to the relevant CI run in dbt Cloud.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" width="70%" title="GitLab pull request"/>
 
 #### Azure DevOps pull request example
 
-The green checkmark means the dbt builds and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" width="70%" title="Azure DevOps pull request"/>
 
 
