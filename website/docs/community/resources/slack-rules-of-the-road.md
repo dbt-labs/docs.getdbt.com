@@ -9,13 +9,9 @@ We are committed to maintaining the spirit of this community, and have written t
 
 ## Expectations for all members
 ### Rule 1: Be respectful
-We want everyone in this community to have a fulfilling and positive experience and we are continuously grateful in your help ensuring that this is the case.
+We want everyone in this community to have a fulfilling and positive experience and we appreciate your help ensuring that this remains the case.
 
-Be courteous, respectful, and polite to fellow community members. Generally, don’t be a jerk.
-
-Be considerate of others’ time — many people in the community generously give their time for free.
-
-This first rule is serious and straightforward -- we simply will not tolerate disrespectful behavior of any kind.
+This rule is serious and straightforward; we simply will not tolerate disrespectful behavior of any kind.
 
 Everyone interacting on a dbt platform – including Slack, the forum, codebase, issue trackers, and mailing lists – is expected to follow the [Community Code of Conduct](code-of-conduct). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
 
@@ -25,7 +21,7 @@ Unless you have someone's express permission to contact them directly, do not di
 We highly value the time community members put into helping each other, and we have precisely zero tolerance for people who abuse their access to experienced professionals. If you are being directly messaged with requests for assistance without your consent, let us know in #moderation-and-administration. We will remove that person from the community. Your time and attention is valuable.
 
 ### Rule 3: Follow messaging etiquitte
-In short: put effort into your question, use threads, post in the right channel, and do not seek extra attention by tagging individuals or double-posting. For more information, see our [guide on getting help](https://docs.getdbt.com/guides/legacy/getting-help).
+In short: put effort into your question, use threads, post in the right channel, and do not seek extra attention by tagging individuals or double-posting. For more information, see our [guide on getting help](/community/resources/getting-help).
 
 ### Rule 4: Do not solicit community members
 This community is built for data practitioners to discuss the work that they do, the ideas that they have, and the things that they are learning. It is decidedly not intended to be lead generation for vendors or recruiters.
