@@ -18,7 +18,7 @@ Unless you have someone's express permission to contact them directly, do not di
 
 We highly value the time community members put into helping each other, and we have precisely zero tolerance for people who abuse their access to experienced professionals. If you are being directly messaged with requests for assistance without your consent, let us know in the [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) Slack channel. We will remove that person from the community. Your time and attention is valuable.
 
-### Rule 3: Follow messaging etiquitte
+### Rule 3: Follow messaging etiquette
 In short: put effort into your question, use threads, post in the right channel, and do not seek extra attention by tagging individuals or double-posting. For more information, see our [guide on getting help](/community/resources/getting-help).
 
 ### Rule 4: Do not solicit community members
