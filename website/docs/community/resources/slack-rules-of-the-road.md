@@ -13,12 +13,12 @@ We want everyone in this community to have a fulfilling and positive experience 
 
 This rule is serious and straightforward; we simply will not tolerate disrespectful behavior of any kind.
 
-Everyone interacting on a dbt platform – including Slack, the forum, codebase, issue trackers, and mailing lists – is expected to follow the [Community Code of Conduct](code-of-conduct). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
+Everyone interacting on a dbt platform – including Slack, the forum, codebase, issue trackers, and mailing lists – is expected to follow the [Community Code of Conduct](/community/resources/code-of-conduct). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
 
 ### Rule 2: Keep it in public spaces
 Unless you have someone's express permission to contact them directly, do not directly message other community members, whether on a dbt Community platform or other spaces like LinkedIn.
 
-We highly value the time community members put into helping each other, and we have precisely zero tolerance for people who abuse their access to experienced professionals. If you are being directly messaged with requests for assistance without your consent, let us know in #moderation-and-administration. We will remove that person from the community. Your time and attention is valuable.
+We highly value the time community members put into helping each other, and we have precisely zero tolerance for people who abuse their access to experienced professionals. If you are being directly messaged with requests for assistance without your consent, let us know in the [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) Slack channel. We will remove that person from the community. Your time and attention is valuable.
 
 ### Rule 3: Follow messaging etiquitte
 In short: put effort into your question, use threads, post in the right channel, and do not seek extra attention by tagging individuals or double-posting. For more information, see our [guide on getting help](/community/resources/getting-help).
@@ -28,12 +28,12 @@ This community is built for data practitioners to discuss the work that they do,
 
 Vendors and recruiters are subject to additional rules to ensure this space remains welcoming to everyone. These requirements are detailed below and are enforced vigorously.
 
-## Vendor Expectations
+## Vendor expectations
 
-As a vendor/dbt partner, you are also a member of this community, and we encourage you to participate fully in the space. We have seen folks grow fantastic user relationships for their products when they come in with the mindset to share rather than pushing a pitch. At the same time, active community members have a finely honed sense of when they are being reduced to an audience or a resource to be monetised, and their response is reliably negative.
+As a vendor/dbt partner, you are also a member of this community, and we encourage you to participate fully in the space. We have seen folks grow fantastic user relationships for their products when they come in with the mindset to share rather than pushing a pitch. At the same time, active community members have a finely honed sense of when they are being reduced to an audience or a resource to be monetized, and their response is reliably negative.
 
 :::info Who is a vendor?
-Vendors are generally companies creating products or services primarily targeted at data professionals, but this title also includes recruiters, investors, open source maintainers (with or without a paid offering), consultants and freelancers. If in doubt, err on the side of caution. 
+Vendors are generally individuals belonging to companies that are creating products or services primarily targeted at data professionals, but this title also includes recruiters, investors, open source maintainers (with or without a paid offering), consultants and freelancers. If in doubt, err on the side of caution. 
 :::
 
 ### Rule 1: Identify yourself 
@@ -62,7 +62,7 @@ Because unaffiliated community members are able to share links in any channel, t
 
 The point of these rules is not to find opportunities to punish people, but to ensure the longevity of the community. Participation in this community is a privilege, and we reserve the right to remove people from it. 
 
-To report an issue or appeal a judgement, email [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in #moderation-and-administration on Slack.
+To report an issue or appeal a judgement, email [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) on Slack.
 
 Violations related to our anti-harassment policy will result in immediate removal. Other issues are handled in proportion to their impact, and may include:
 
