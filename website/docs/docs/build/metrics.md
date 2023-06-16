@@ -19,7 +19,7 @@ dbt Metrics is no longer supported in v1.6 and higher. To build your semantic la
 
 :::info dbt Metrics not recommended
 
-dbt Metrics is currently transiting to MetricFlow and won't be supported in v1.6 and higher. [Defining metrics](/docs/build/build-semantic-layer-intro) with MetricFlow will help shape the future of the dbt Semantic Layer &mdash; let us know [your thoughts and join the convo](https://github.com/dbt-labs/dbt-core/discussions/7456) to help build it!
+dbt Metrics won't be supported in v1.6 and higher, and is being replaced with MetricFlow. [Defining metrics](/docs/build/build-semantic-layer-intro) with MetricFlow will help shape the future of the dbt Semantic Layer &mdash; let us know [your thoughts and join the convo](https://github.com/dbt-labs/dbt-core/discussions/7456) to help build it!
 
 :::
 
