@@ -16,7 +16,7 @@ Retry works with the following commands:
 - [`run`](/reference/commands/run)
 - [`run-operation`](/reference/commands/run-operation)
 
-`dbt retry` will execute from the node failures recorded in the run_results.json. Executing `dbt retry` without correcting the previous failures will garner idempotent results.
+`dbt retry` will execute from the node failures (recorded in the run_results.json). Executing `dbt retry` without correcting the previous failures will garner <Term id="idempotent" /> results.
 
 `dbt retry` reuses the selectors from the previously executed command.
 
