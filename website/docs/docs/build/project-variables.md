@@ -17,6 +17,13 @@ Variables can be defined in two ways:
 
 ### Defining variables in `dbt_project.yml`
 
+
+:::info
+
+`vars` does not support rendering Jinja.
+
+:::
+
 :::info New in v0.17.0
 
 The syntax for specifying vars in the `dbt_project.yml` file has changed in
