@@ -29,7 +29,7 @@ dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [d
 3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
 
 
-### Example pull requests
+## Example pull requests
 
 The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
 
