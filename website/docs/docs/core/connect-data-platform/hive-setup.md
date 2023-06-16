@@ -17,7 +17,9 @@ meta:
 ---
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
+
 <SetUpPages meta={frontMatter.meta} />
+
 
 
 ## Connection Methods

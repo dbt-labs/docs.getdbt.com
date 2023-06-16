@@ -23,7 +23,9 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
+
 <SetUpPages meta={frontMatter.meta} />
+
 
 
 This is an experimental plugin:

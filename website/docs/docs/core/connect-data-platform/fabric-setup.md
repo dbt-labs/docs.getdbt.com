@@ -22,7 +22,9 @@ To learn how to set up dbt with Azure Synapse Dedicated Pools, see [Microsoft Az
 :::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
+
 <SetUpPages meta={frontMatter.meta} />
+
 
 ### Prerequisites
 

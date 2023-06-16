@@ -22,7 +22,9 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
+
 <SetUpPages meta={frontMatter.meta} />
+
 
 
 ## Setting up fal with other adapter

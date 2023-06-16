@@ -23,7 +23,9 @@ Some core functionality may be limited. If you're interested in contributing, ch
 :::
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
+
 <SetUpPages meta={frontMatter.meta} />
+
 
 For further (and more likely up-to-date) info, see the [README](https://github.com/aws-samples/dbt-glue#readme)
 

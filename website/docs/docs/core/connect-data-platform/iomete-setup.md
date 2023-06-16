@@ -21,6 +21,7 @@ import SetUpPages from '/snippets/_setup-pages-intro.md';
 <SetUpPages meta={frontMatter.meta} />
 
 
+
 Set up a iomete Target
 
 iomete targets should be set up using the following configuration in your profiles.yml file.
