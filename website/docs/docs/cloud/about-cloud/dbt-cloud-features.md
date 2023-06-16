@@ -54,7 +54,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
    <Card
     title="Enable Continuous Integration"
     body="Configure dbt Cloud to run your dbt projects in a temporary schema when new commits are pushed to open pull requests. This build-on-PR functionality is a great way to catch bugs before deploying to production, and an essential tool in any analyst's belt."
-    link="/docs/deploy/cloud-ci-job"
+    link="/docs/deploy/continuous-integration"
     icon="pencil-paper"/>  
 
    <Card
