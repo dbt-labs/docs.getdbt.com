@@ -337,7 +337,14 @@ const sidebarSettings = {
             "docs/deploy/source-freshness",
             "docs/deploy/webhooks",
             "docs/deploy/dashboard-status-tiles",
-            "docs/deploy/cloud-ci-job",
+            {
+              type: "category",
+              label: "Continuous integration",
+              link: { type: "doc", id: "docs/deploy/continuous-integration" },
+              items: [
+                "docs/deploy/slim-ci-jobs",
+              ],
+            },
           ],
         },
         "docs/deploy/deployment-tools",
