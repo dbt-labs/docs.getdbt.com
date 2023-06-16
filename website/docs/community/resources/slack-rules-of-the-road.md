@@ -48,11 +48,11 @@ If a community member asks a question about your product directly, or mentions t
 
 ### Rule 3: Keep promotional content to specified spaces
 As a space for professional practice, the dbt Community is primarily a non-commercial space. However, as a service to community members who want to be able to keep up to date with the data industry, there are several areas available on the Community Slack for vendors to share promotional material: 
-- #vendor-content
-- #events
-- #tools-*
+- [#vendor-content](https://getdbt.slack.com/archives/C03B0Q4EBL3)
+- [#events](https://getdbt.slack.com/archives/C80RCAZ5E)
+- #tools-* (post in [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) to request a channel for your tool/product)
 
-Recruiters may also post in #jobs but may not solicit applications in DMs. 
+Recruiters may also post in [#jobs](https://getdbt.slack.com/archives/C7A7BARGT)/[#jobs-eu](https://getdbt.slack.com/archives/C04JMHHK6CD) but may not solicit applications in DMs. 
 
 The definition of "vendor content" can be blurry at the edges, and we defer to members' instincts in these scenarios. As a rule, if something is hosted on a site controlled by that company or its employees (including platforms like Substack and Medium), or contains a CTA such as signing up for a mailing list or trial account, it will likely be considered promotional. 
 

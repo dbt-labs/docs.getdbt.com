@@ -36,7 +36,7 @@ Some developer communities allow and even encourage anonymity — we prefer it w
 
 Ways to demonstrate this value:
 
-- Update your profile on any dbt Community platforms to include your name, and a clear picture. On Slack, use the "what I do" section to add your role title and current company
+- Update your profile on any dbt Community platforms to include your name, and a clear picture of yourself. On Slack, use the "what I do" section to add your role, title and current company
 - Write in your own voice, and offer your own advice, rather than speaking in your company’s marketing or support voice.
 
 ### Encourage diversity and participation.
