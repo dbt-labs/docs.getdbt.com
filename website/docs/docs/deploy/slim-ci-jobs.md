@@ -33,15 +33,15 @@ dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [d
 
 The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
 
-#### GitHub pull request example
+### GitHub pull request example
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-github-pr.png" width="70%" title="GitHub pull request example"/>
 
-#### GitLab pull request example
+### GitLab pull request example
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/GitLab-Pipeline.png" width="70%" title="GitLab pull request"/>
 
-#### Azure DevOps pull request example
+### Azure DevOps pull request example
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/Enabling-CI/ADO CI Check.png" width="70%" title="Azure DevOps pull request"/>
 
