@@ -113,7 +113,10 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Develop in the IDE",
-              link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+              link: {
+                type: "doc",
+                id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+              },
               items: [
                 "docs/cloud/dbt-cloud-ide/ide-user-interface",
                 "docs/cloud/dbt-cloud-ide/lint-format",
@@ -137,24 +140,27 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Core",
           collapsed: true,
-          link: { type: "doc", id: "docs/core/about-core-setup", },
+          link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-the-cli",
             {
               type: "category",
               label: "Install dbt",
-              link: { type: "doc", id: "docs/core/installation", },
+              link: { type: "doc", id: "docs/core/installation" },
               items: [
-              "docs/core/homebrew-install",
-              "docs/core/pip-install",
-              "docs/core/docker-install",
-              "docs/core/source-install",
-            ],
-          },
+                "docs/core/homebrew-install",
+                "docs/core/pip-install",
+                "docs/core/docker-install",
+                "docs/core/source-install",
+              ],
+            },
             {
               type: "category",
               label: "Connect data platform",
-              link: { type: "doc", id: "docs/core/connect-data-platform/about-core-connections" },
+              link: {
+                type: "doc",
+                id: "docs/core/connect-data-platform/about-core-connections",
+              },
               items: [
                 "docs/core/connect-data-platform/profiles.yml",
                 "docs/core/connect-data-platform/connection-profiles",
@@ -200,7 +206,7 @@ const sidebarSettings = {
               ],
             },
           ],
-          },
+        },
         "docs/running-a-dbt-project/run-your-dbt-projects",
         "docs/running-a-dbt-project/using-threads",
       ],
@@ -334,7 +340,10 @@ const sidebarSettings = {
           type: "category",
           label: "Model governance",
           collapsed: true,
-          link: { type: "doc", id: "docs/collaborate/govern/about-model-governance" },
+          link: {
+            type: "doc",
+            id: "docs/collaborate/govern/about-model-governance",
+          },
           items: [
             "docs/collaborate/govern/model-access",
             "docs/collaborate/govern/model-contracts",
@@ -368,7 +377,23 @@ const sidebarSettings = {
             "docs/dbt-cloud-apis/service-tokens",
           ],
         },
-        "docs/dbt-cloud-apis/admin-cloud-api",
+        {
+          type: "category",
+          label: "Administrative API",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
+          items: [
+            {
+              type: "link",
+              label: "API v2",
+              href: "/dbt-cloud/api-v2",
+            },
+            {
+              type: "link",
+              label: "API v3",
+              href: "/dbt-cloud/api-v3",
+            },
+          ],
+        },
         {
           type: "category",
           label: "Discovery API",
@@ -673,8 +698,8 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Global configs",
-          link: { 
-            type: "doc", 
+          link: {
+            type: "doc",
             id: "reference/global-configs/about-global-configs",
           },
           items: [
@@ -905,7 +930,7 @@ const sidebarSettings = {
               ],
             },
             "guides/migration/tools/migrating-from-spark-to-databricks",
-            "guides/migration/tools/refactoring-legacy-sql"
+            "guides/migration/tools/refactoring-legacy-sql",
           ],
         },
       ],
@@ -979,7 +1004,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Advanced",
-      items: ["guides/advanced/creating-new-materializations",
+      items: [
+        "guides/advanced/creating-new-materializations",
         "guides/advanced/using-jinja",
       ],
     },
