@@ -10,8 +10,6 @@ Retry works with the following commands:
 
 - [`build`](/reference/commands/build)
 - [`compile`](/reference/commands/compile)
-- [`clone`](/reference/commands/clone)
-- [`generate`](/reference/commands/generate)
 - [`seed`](/reference/commands/seed)
 - [`snapshot`](/reference/commands/build)
 - [`test`](/reference/commands/test)
@@ -21,3 +19,4 @@ Retry works with the following commands:
 `dbt retry` will execute from the node failures recorded in the run_results.json. Executing `dbt retry` without correcting the previous failures will garner idempotent results.
 
 `dbt retry` reuses the selectors from the previously executed command.
+
