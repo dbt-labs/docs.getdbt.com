@@ -38,7 +38,7 @@ Vendors are generally individuals belonging to companies that are creating produ
 Include your company in your display name, e.g. "Alice (DataCo)". When joining a discussion about your product (after the waiting period below), be sure to note your business interests. 
 
 ### Rule 2: Let the community speak first
-If a community member asks a question about your product directly, or mentions that they have a problem that your product could help with, wait 1 business day before responding to allow other members to share their experiences and recommendations. (This doesn't apply in your `#tools-` channel if you have one.)
+If a community member asks a question about your product directly, or mentions that they have a problem that your product could help with, wait 1 business day before responding to allow other members to share their experiences and recommendations. (This doesn't apply to unambiguously support-style questions from existing users, or in your `#tools-` channel if you have one).
 
 ### Rule 3: Keep promotional content to specified spaces
 As a space for professional practice, the dbt Community is primarily a non-commercial space. However, as a service to community members who want to be able to keep up to date with the data industry, there are several areas available on the Community Slack for vendors to share promotional material: 
