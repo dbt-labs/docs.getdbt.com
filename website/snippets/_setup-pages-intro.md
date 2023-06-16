@@ -1,3 +1,4 @@
+
 <ul>
     <li><strong>Maintained by</strong>: {props.meta.maintained_by}</li>
     <li><strong>Authors</strong>: {props.meta.authors}</li>
@@ -9,11 +10,9 @@
     <li><strong>Minimum data platform version</strong>: {props.meta.min_supported_version}</li>
     </ul>
 
-
 <h2> Installing {props.meta.pypi_package}</h2>
 
 Use `pip` to install the adapter, which automatically installs `dbt-core` and any additional dependencies. Use the following command for installation:
-
 <code>pip install {props.meta.pypi_package}</code>
 
 <h2> Configuring {props.meta.pypi_package} </h2>
