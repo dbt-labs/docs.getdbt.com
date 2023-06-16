@@ -35,7 +35,7 @@ In general, people are much more willing to help when they know you've already g
 #### Share the context of the problem you're trying to solve
 Sometimes you might hit a boundary of dbt because you're trying to use it in a way that doesn't align with the opinions we've built into dbt. By sharing the context of the problem you're trying to solve, we might be able to share insight into whether there's an alternative way to think about it.
 
-#### Post a single message, and use threads
+#### Post a single message and use threads
 The dbt Slack's culture revolves around threads. When posting a message, try drafting it to yourself first to make sure you have included all the context. Include big code blocks in a thread to avoid overwhelming the channel. 
 
 #### Don't tag individuals to demand help

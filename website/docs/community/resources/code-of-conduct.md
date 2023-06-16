@@ -5,7 +5,7 @@ id: "code-of-conduct"
 
 # dbt Community Code of Conduct
 
-This Code of Conduct applies to all dbt Community spaces both online and off. This includes: Slack, Discourse, code repositories (dbt Core, dbt packages etc), Office Hours and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
+This Code of Conduct applies to all dbt Community spaces, both online and offline. This includes Slack, Discourse, code repositories (dbt Core, dbt packages, etc.), Office Hours, and Meetups. Participants are responsible for knowing and abiding by this Code of Conduct.
 
 This Code of Conduct has two sections:
 
@@ -91,7 +91,7 @@ The dbt Community prioritizes marginalized people’s safety over privileged peo
 
 ### Reporting harassment
 
-If you are being harassed by a member of the dbt Community, notice that someone else is being harassed, or have any other concerns, please contact us at [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in #moderation-and-administration on Slack..
+If you are being harassed by a member of the dbt Community, notice that someone else is being harassed, or have any other concerns, please contact us at [community@dbtlabs.com](mailto:community@dbtlabs.com) or use the workflows in [#moderation-and-administration](https://getdbt.slack.com/archives/C02JJ8N822H) on Slack.
 
 We will respect confidentiality requests for the purpose of protecting victims of abuse. At our discretion, we may publicly name a person about whom we’ve received harassment complaints, or privately warn third parties about them, if we believe that doing so will increase the safety of dbt community members or the general public. We will not name harassment victims without their affirmative consent.
 
