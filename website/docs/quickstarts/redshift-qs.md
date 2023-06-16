@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Redshift"
 id: "redshift"
 platform: 'dbt-cloud'
+icon: 'redshift'
 hide_table_of_contents: true
 ---
 ## Introduction

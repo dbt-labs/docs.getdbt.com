@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Starburst Galaxy"
 id: "starburst-galaxy"
 platform: 'dbt-cloud'
+icon: 'starburst'
 hide_table_of_contents: true
 ---
 ## Introduction

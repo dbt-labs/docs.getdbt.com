@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Snowflake"
 id: "snowflake"
 platform: 'dbt-cloud'
+icon: 'snowflake'
 hide_table_of_contents: true
 ---
 ## Introduction
