@@ -42,7 +42,7 @@ Below describes the conditions when CI checks are run concurrently and when they
 
 - Slim CI runs with different PR numbers execute concurrently. 
 - Slim CI runs with the _same_ PR number and _different_ commit SHAs execute serially because they’re building into the same schema. dbt Cloud will run the latest commit and cancel any older, stale commits. For details, refer to [Smart cancellation of stale builds](#smart-cancellation). 
-- Slim CI runs with the same PR number and same commit SHA, but are from different dbt Cloud projects execute concurrently. This can happen when two CI jobs are set up in different dbt Cloud projects that share the same dbt repository.
+- Slim CI runs with the same PR number and same commit SHA, but originate from different dbt Cloud projects and jobs execute concurrently. This can happen when two CI jobs are set up in different dbt Cloud projects that share the same dbt repository.
 
 ### Smart cancellation of stale builds {#smart-cancellation}
 
