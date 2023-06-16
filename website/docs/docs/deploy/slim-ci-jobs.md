@@ -20,29 +20,14 @@ dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [d
 1. On your deployment environment page, click **Create One** to create a new CI job.
 2. In the **Execution Settings** section: 
     - For the option **Defer to a previous run state**, choose whichever production job that's set to run often. If you don't see any jobs to select from the dropdown, you first need to run a production job successfully. Deferral tells dbt Cloud to compare the manifest of the current CI job against the project representation that was materialized the last time the deferred job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
-    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. For more information, refer to [Deferral and state comparision](/docs/deploy/slim-ci-jobs#deferral-and-state-comparison)
+
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" width="70%" title="Example of the dropdown for Defer to a previous run state"/>
+
+    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
+
+
 3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
 
-### Deferral and state comparison  
-
-When creating a job in dbt Cloud, you can configure your **Execution Settings** to defer to a previous run state by using the dropdown menu to select which _production_ job you want to defer to.
-
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" width="70%" title="Jobs that run
-on pull requests can select another job from the same project for deferral and comparison"/>
-
-When a job is selected, dbt Cloud will look at the artifacts from that job's most recent successful run. dbt will then use those artifacts to determine the set of new and modified resources.
-
-In your job commands, you can signal to dbt to run only on these modified resources and their children by including the `state:modified+` argument.
-
-For example:
-
-```
-dbt build --select state:modified+
-```
-
-Because dbt Cloud manages deferral and state environment variables, there is no need to specify `--defer` or `--state` flags. 
-
-To learn more about state comparison and deferral in dbt, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
 ### Example pull requests
 

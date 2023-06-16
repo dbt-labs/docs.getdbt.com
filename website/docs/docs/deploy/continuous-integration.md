@@ -34,14 +34,9 @@ The [dbt Cloud scheduler](/docs/deploy/job-scheduler) executes Slim CI jobs diff
 - **Smart cancellation of stale builds** &mdash; Automatically cancels stale, in-flight Slim CI runs when there are new commits to the PR
 - **Run slot treatment** &mdash; Slim CI runs don't consume a run slot
 
-:::tip Join our beta
-This functionality is currently in beta. If you're interested in joining our beta, please [contact us](mailto:support@getdbt.com) for access.
-
-:::
-
 ### Concurrent CI checks
 
-When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same Slim CI job will get triggered. Since each run builds into a dedicated, temporary schema that’s tied to the pull request, dbt Cloud can safely execute Slim CI runs concurrently instead of sequentially (differing from what is done with deployment dbt Cloud jobs). Because no one needs to wait for a Slim CI run to finish before another one can start, with concurrent CI checks, your whole team can test and integrate dbt code faster.
+When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same Slim CI job will get triggered. Since each run builds into a dedicated, temporary schema that’s tied to the pull request, dbt Cloud can safely execute Slim CI runs _concurrently_ instead of _sequentially_ (differing from what is done with deployment dbt Cloud jobs). Because no one needs to wait for one Slim CI run to finish before another one can start, with concurrent CI checks, your whole team can test and integrate dbt code faster.
 
 Below describes the conditions when CI checks are run concurrently and when they’re not:  
 

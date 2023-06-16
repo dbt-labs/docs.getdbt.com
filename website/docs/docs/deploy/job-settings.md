@@ -40,7 +40,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 5. Under **Execution Settings**, you can configure the fields needed to execute your job:
 
     * **Run Timeout** &mdash; Configure the number of seconds a run will execute before dbt Cloud cancels it. Setting this to 0 means it'll never time out runs for that job.   
-    * **Defer to a previous run state** &mdash; Select a production job you want to [defer](/docs/deploy/slim-ci-jobs#deferral-and-state-comparison) to. This enables dbt Cloud to examine the artifacts from the most recent, successful run of that deferred job, enabling state comparison and rewiring of upstream dependencies to any model that doesn’t exist in the current run's schema. 
+    * **Defer to a previous run state** &mdash; Select a production job you want to defer to. This enables dbt Cloud to examine the artifacts from the most recent, successful run of that deferred job, enabling state comparison and rewiring of upstream dependencies to any model that doesn’t exist in the current run's schema. 
     * **Generate docs on run** checkbox &mdash; Configure the job to automatically [generate project docs](/docs/collaborate/build-and-view-your-docs) each time this job runs.
     * **Run on source freshness** checkbox &mdash;  Configure [dbt source freshness](/docs/deploy/source-freshness) as the first step of the job without breaking subsequent steps.
     * **Commands** &mdash; Add or remove [job commands](/docs/deploy/job-commands), which are specific tasks you set in your dbt Cloud jobs.
