@@ -1,5 +1,5 @@
 ---
-title: "Continuous integration for your jobs in dbt Cloud"
+title: "Continuous integration in dbt Cloud"
 sidebar_label: "Continuous integration"
 description: "You can set up Slim continuous integration (CI) checks to test every single change prior to deploying the code to production just like in a software development workflow."
 ---
