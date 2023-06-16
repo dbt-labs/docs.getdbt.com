@@ -18,7 +18,7 @@ Using Slim CI helps:
 
 When you [set up Slim CI jobs](/docs/deploy/slim-ci-jobs#set-up-slim-ci-jobs), dbt Cloud listens for webhooks from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these webhooks, it enqueues a new run of the Slim CI job. If you want CI checks to run on each new commit, you need to mark your PR as **Ready for review** &mdash; draft PRs _don't_ trigger CI jobs. 
 
-dbt Cloud builds and tests the models affected by the code change in a temporary schema using the prefix `dbt_cloud_pr_`. This process ensures that the code builds without error and that it matches the expectations as defined by the dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
+dbt Cloud builds and tests the models affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/using_ci_dbt_cloud.png" width="90%"title="Viewing the temporary schema name for a run triggered by a PR"/>
 
