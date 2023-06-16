@@ -54,11 +54,6 @@ The `resource_type` method is used to select nodes of a particular type (`model`
   $ dbt list --select +resource_type:test    # list all tests in your project
   ```
 
-
-  ```bash
-  $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
-  ```
-
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
 Model definitions are in SQL/Python files (not YAML), and source definitions are in YAML files.
