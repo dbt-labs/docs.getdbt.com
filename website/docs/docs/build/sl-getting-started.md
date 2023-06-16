@@ -31,7 +31,7 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 
-This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
+This step will guide you through setting up your semantic models, which consists of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
 
