@@ -685,6 +685,7 @@ const sidebarSettings = {
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",
+            "reference/commands/retry",
             "reference/commands/rpc",
             "reference/commands/run",
             "reference/commands/run-operation",
