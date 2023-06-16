@@ -9,9 +9,7 @@ We are committed to maintaining the spirit of this community, and have written t
 
 ## Expectations for all members
 ### Rule 1: Be respectful
-We want everyone in this community to have a fulfilling and positive experience and we appreciate your help ensuring that this remains the case.
-
-This rule is serious and straightforward; we simply will not tolerate disrespectful behavior of any kind.
+We want everyone in this community to have a fulfilling and positive experience. Therefore, this first rule is serious and straightforward; we simply will not tolerate disrespectful behavior of any kind.
 
 Everyone interacting on a dbt platform – including Slack, the forum, codebase, issue trackers, and mailing lists – is expected to follow the [Community Code of Conduct](/community/resources/code-of-conduct). If you are unable to abide by the code of conduct set forth here, we encourage you not to participate in the community.
 
