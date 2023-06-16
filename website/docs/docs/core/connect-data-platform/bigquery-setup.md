@@ -17,7 +17,7 @@ meta:
 
 <Snippet src="warehouse-setups-cloud-callout" />
 
-<!--The following code uses a component and the built-in docusaurus markdown partials file, which contains reusable content assigned in the meta frontmatter. For this page, the partial file is _setup-pages-intro.md. You have to include the 'import' code and then assign the component as needed.  -->
+<!--The following code uses a component and the built-in docusaurus markdown partials file, which contains reusable content assigned in the meta frontmatter. For this page, the partial file is _setup-pages-intro.md. You have to include the 'import' code and then assign the component as needed. -->
 
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 

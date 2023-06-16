@@ -18,10 +18,10 @@ meta:
 
 <Snippet src="warehouse-setups-cloud-callout" />
 
-
 import SetUpPages from '/snippets/_setup-pages-intro.md';
 
-<SetUpPages meta={frontMatter.meta} />
+<SetUpPages meta={frontMatter.meta}/>
+
 
 ## Authentication Methods
 
