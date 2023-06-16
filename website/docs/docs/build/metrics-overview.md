@@ -34,7 +34,7 @@ This page explains the different supported metric types you can add to your dbt 
 metrics:
 - name: wau_rolling_7
   owners:
-    - ssupport@getdbt.com
+    - support@getdbt.com
   type: cumulative
   type_params:
     measures:
