@@ -41,7 +41,7 @@ This functionality is currently in beta. If you're interested in joining our bet
 
 ### Concurrent CI checks
 
-When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same Slim CI job will get triggered. Since each run builds into a dedicated (temp) schema that’s tied to the pull request, dbt Cloud can safely execute Slim CI runs concurrently instead of sequentially (which is what's done with deployment dbt Cloud jobs). Because no one needs to wait for a Slim CI run to finish before another one can start with concurrent CI checks, your whole team can test and integrate dbt code faster.
+When you have teammates collaborating on the same dbt project creating pull requests on the same dbt repository, the same Slim CI job will get triggered. Since each run builds into a dedicated, temporary schema that’s tied to the pull request, dbt Cloud can safely execute Slim CI runs concurrently instead of sequentially (differing from what is done with deployment dbt Cloud jobs). Because no one needs to wait for a Slim CI run to finish before another one can start, with concurrent CI checks, your whole team can test and integrate dbt code faster.
 
 Below describes the conditions when CI checks are run concurrently and when they’re not:  
 
