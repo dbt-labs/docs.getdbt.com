@@ -52,7 +52,7 @@ Together, **wait time** plus **prep time** is the total time a run spends in the
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
-### Treatment of CI jobs (beta)
+### Treatment of CI jobs
 When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/continuous-integration). It queues a CI job to be processed when it's triggered to run by a Git pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
 
 - **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.
