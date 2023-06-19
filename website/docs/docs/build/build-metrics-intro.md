@@ -21,7 +21,7 @@ Before you start, keep the following considerations in mind:
 - You'll be able to define metrics in YAML and query them in the CLI using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on dbt Core version 1.6 beta or higher to use MetricFlow. [Upgrade your dbt version](/docs/core/pip-install#change-dbt-core-versions) to get started.
   * **Note**: Support for dbt Cloud and querying via external integrations coming soon.
-- MetricFlow supports Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB.
+- MetricFlow supports Snowflake, BigQuery, Databricks, and Redshift.
 - dbt Labs is working with [integration partners](https://www.getdbt.com/product/semantic-layer-integrations) to develop updated integrations for the new Semantic Layer, powered by MetricFlow, in addition to introducing other consumption methods like Python and JDBC. <br /><br />
 
 <div className="grid--4-col">
