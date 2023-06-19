@@ -17,7 +17,12 @@ You can assign as many permission sets as needed to one token. For more on permi
 
 ## Generating service account tokens
 
-To create a service token, go to the Account Settings page of dbt Cloud by clicking on the gear icon on the right hand side. Click on Service Tokens on the left sidebar and generate a new token. Create and save your token somewhere safe.
+To make a service token in dbt Cloud, follow these steps:
+
+1. Open the **Account Settings** page by clicking the gear icon on the right-hand side.
+2. On the left sidebar, click on **Service Tokens**.
+3. Click the **+ New Token** button to generate a new token.
+4. Once the token is generated, make sure to save it somewhere safe.
 
 :::caution Note
 
