@@ -27,7 +27,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## New and changed documentation
 
-- [Build your Semantic Layer](/docs/build/build-semantic-layer-intro) - Define your metrics with semantic models and MetricFlow using the command line (CLI) for dbt Core v1.6 beta. 
+- [Build your metrics](/docs/build/build-metrics-intro) - Define your metrics with semantic models and MetricFlow, a key component of the dbt Semantic Layer. Available on the command line (CLI) for dbt Core v1.6 beta or higher.
 **Coming Soon**
 
 ### Quick hits
