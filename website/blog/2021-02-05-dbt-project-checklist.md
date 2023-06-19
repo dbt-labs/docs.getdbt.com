@@ -200,7 +200,7 @@ Are you using the IDE and if so, how well?
 
 **Useful links**
 
-*   [dbt Cloud as a CI tool](/docs/deploy/cloud-ci-job)
+*   [dbt Cloud as a CI tool](/docs/deploy/continuous-integration)
 
 
 ## ✅ DAG Auditing
