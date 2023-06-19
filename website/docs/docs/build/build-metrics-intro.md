@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 Define your metrics centrally in dbt using MetricFlow, which powers the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer) and is one of is key components. It handles SQL query construction, and defines the specification for dbt semantic models and metrics. 
 
-Use familiar constructs like semantic models and metric to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and consistency for data consumers.
+Use familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 :::info
 MetricFlow is currently available on dbt Core v1.6 beta for [command line (CLI)](/docs/core/about-the-cli) users, with support for dbt Cloud and integrations coming soon. MetricFlow, a BSL package (code is source available), is a new way to define metrics in dbt and will replace the dbt_metrics package.
