@@ -9,8 +9,8 @@ tags: [Metrics, Semantic Layer]
 This getting started page recommends a workflow to help you get started creating your first metrics. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model)
-- [Create your metric](#create-your-metric)
-- [Test and upload your metric](#test-and-upload-your-metric)
+- [Create your metrics](#create-your-metrics)
+- [Test and query your metrics](#test-and-query-your-metrics)
 
 ## Prerequisites
 
@@ -78,7 +78,7 @@ from
   ```
 :::
 
-## Create your metric
+## Create your metrics
 
 Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
 
