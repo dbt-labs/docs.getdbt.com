@@ -54,13 +54,13 @@ For a semantic model, there are three main pieces of metadata:
 
 ### Metrics 
 
-Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures, such as average, sum, and count distinct, to create metrics.  Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
+Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures and various aggregation types, such as average, sum, and count distinct, to create metrics.  Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
 
 MetricFlow supports different metric types:
 
 - [Cumulative](/docs/build/cumulative) &mdash; Cumulative metrics aggregate a measure over a given window, like weekly active users.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Measure proxy](/docs/build/measure-proxy) &mdash; Metrics that refer directly to one measure. 
+- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 
 

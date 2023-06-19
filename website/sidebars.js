@@ -272,7 +272,7 @@ const sidebarSettings = {
               items: [
                 "docs/build/cumulative",
                 "docs/build/derived",
-                "docs/build/measure-proxy",
+                "docs/build/simple",
                 "docs/build/ratio",
               ]
             },

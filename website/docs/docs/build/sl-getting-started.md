@@ -14,14 +14,12 @@ This getting started page recommends a workflow to help you get started creating
 
 ## Prerequisites
 
-- You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up.
-    * **Note**:  Support for dbt Cloud and integrations coming soon.
-- You must have an understanding of key concepts in MetricFlow (which powers the revamped dbt Semantic Layer) like [measures](/docs/build/measures), [dimensions](/docs/build/dimensions), and [entities](/docs/build/entities) before creating your first metric. Refer to [About MetricFlow](/docs/build/about-metricflow) to learn more.
-- Your dbt environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher
+- You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up. Support for dbt Cloud and integrations coming soon.
+- You must have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
+- Your dbt production environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher. Support for the development environment coming soon.
 - You have a git repository set up and your git provider has write access enabled.
-- You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms) (Snowflake, BigQuery, Databricks, Redshift, Postgres, and DuckDB). 
-- You have a development [environment](/docs/collaborate/environments/dbt-core-environments) and development credentials set up
-- You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)
+- You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms) (Snowflake, BigQuery, Databricks, and Redshift).
+- Recommended &mdash; dbt Labs recommends you install the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow) to test your metrics.
 
 :::tip 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
@@ -82,9 +80,9 @@ from
 
 ## Create your metric
 
-Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [measure proxy](/docs/build/measure-proxy), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
+Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
 
-The example metric we'll create is a measure proxy, a metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
+The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 
 ```yaml
 ---

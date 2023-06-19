@@ -77,11 +77,11 @@ metrics:
 ```
 -->
 
-### Measure proxy metrics
+### Simple metrics
 
-[Measure proxies](/docs/build/measure-proxy) are metrics that point directly to a measure (you may think of the measure proxy as a function that takes only one measure as the input). 
+[Measure proxies](/docs/build/simple) are metrics that point directly to a measure (you may think of it as a function that takes only one measure as the input). 
 
-**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create measure proxies.  However, if you would like to include a constraint on top of the measure, you will need to create a measure proxy type metric. 
+**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create measure proxies.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
 
 ```yaml
 metrics: 

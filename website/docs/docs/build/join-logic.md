@@ -22,7 +22,7 @@ Joins use `entities` defined in your semantic model configs as the join keys bet
 ## Types of joins
 
 :::tip Joins are auto-generated
-MetricFlow automatically generates the necessary joins for you, so you don't need to create new semantic models or configuration files.
+MetricFlow automatically generates the necessary joins to the defined semantic objects, eliminating the need for you to create new semantic models or configuration files.
 
 This document explains the different types of joins that can be used with entities and how to query them using the CLI.
 :::
