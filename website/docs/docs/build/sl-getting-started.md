@@ -16,7 +16,7 @@ This getting started page recommends a workflow to help you get started creating
 
 - You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up. Support for dbt Cloud and integrations coming soon.
 - You must have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
-- Your dbt production environment must be on [dbt version 1.6](/docs/dbt-versions/core) or higher. Support for the development environment coming soon.
+- Your dbt production environment must be on [dbt Core v1.6](/docs/dbt-versions/core) or higher. Support for the development environment coming soon.
 - You have a git repository set up and your git provider has write access enabled.
 - You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms) (Snowflake, BigQuery, Databricks, and Redshift).
 - Recommended &mdash; dbt Labs recommends you install the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow) to test your metrics.
