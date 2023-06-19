@@ -9,7 +9,7 @@
 | [**v1.1**](/guides/migration/versions/upgrading-to-v1.1) ⚠️ | Apr 28, 2022    | End of Life* ⚠️ | Apr 28, 2023            | 
 | [**v1.0**](/guides/migration/versions/upgrading-to-v1.0) ⚠️ | Dec 3, 2021     | End of Life* ⚠️ | Dec 3, 2022 ⚠️           | 
 |  **v0.X** ⛔️                                                | (Various dates) | Deprecated ⛔️ | Deprecated ⛔️            | 
-_*All EOL dbt Core versions v1.0 and higher are available in dbt Cloud until further notice._
+_*All EOL dbt Core v1.0 and higher are available in dbt Cloud until further notice._
 ### Planned future releases
 
 _Future release dates are tentative and subject to change._

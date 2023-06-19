@@ -3,8 +3,6 @@ title: "Upgrade Core version in Cloud"
 id: "upgrade-core-in-cloud"
 ---
 
-## Upgrading to the latest version of dbt in Cloud
-
 In dbt Cloud, both jobs and environments are configured to use a specific version of dbt Core. The version can be upgraded at any time.
 
 ### Environments
@@ -31,11 +29,10 @@ dbt Labs have always encouraged our users to upgrade dbt Core versions whenever 
 
 We provides different support levels to different versions, which may include new features, bug fixes, or security patches:
 
-| Support level | Description |
-| ------------- | ----------- | 
-| [Active](/docs/dbt-versions/core#ongoing-patches) | A few months after a minor version's initial release, we will provide bug fix releases to address any regressions and new bugs found in the initial release. | 
-| [Critical](/docs/dbt-versions/core#ongoing-patches) | Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes. | 
-| [End of Life](/docs/dbt-versions/core#eol-version-support) | No longer receiving bug fixes and limited to receiving only security patches. <br /><br />All EOL dbt Core versions v1.0 and later are available in dbt Cloud until further notice. We plan to align dbt Cloud availability with dbt Core support and you'll receive advance notice before any changes take place. |
+- **[Active](/docs/dbt-versions/core#ongoing-patches)** &mdash; A few months after a minor version's initial release, we will provide bug fix releases to address any regressions and new bugs found in the initial release. 
+- **[Critical](/docs/dbt-versions/core#ongoing-patches)** &mdash; Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes.
+- **[End of Life](/docs/dbt-versions/core#eol-version-support)** &mdash; No longer receives bug fixes and limited to receiving only security patches. All EOL dbt Core v1.0 and later are available in dbt Cloud until further notice. 
+- **Deprecated** &mdash; Features in this state are not actively worked on or enhanced by dbt Labs.
 
 We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in dbt Cloud.
 
