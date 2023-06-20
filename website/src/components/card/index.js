@@ -2,11 +2,10 @@ import React from 'react';
 import styles from './styles.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
-import { useColorMode } from '@docusaurus/theme-common';
+import getIconType from "../../utils/get-icon-type";
 
 
 function Card({ title, body, link, icon }) {
-  const { colorMode } = useColorMode();
 
   // Set styles for icon if available in styles.module.css
   let imgClass = styles[icon] || ''
@@ -16,10 +15,7 @@ function Card({ title, body, link, icon }) {
       {link ? <Link
         to={useBaseUrl(link)}>
         <article className={styles.card}>
-          {icon && <img
-            src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
-            alt=""
-            className={`${styles.icon} ${imgClass}`} />}
+            {icon && getIconType(icon, styles.icon , imgClass)}
           <h3>{title}</h3>
           <div
             className={styles.cardBody}
@@ -27,10 +23,7 @@ function Card({ title, body, link, icon }) {
           ></div>
         </article>
       </Link> : <article className={styles.card}>
-        {icon && <img
-          src={colorMode === 'dark' ? `/img/icons/white/${icon}.svg` : `/img/icons/${icon}.svg`}
-          alt=""
-          className={`${styles.icon} ${imgClass}`} />}
+        {icon && getIconType(icon, styles.icon , imgClass)}
         <h3>{title}</h3>
         <div
           className={styles.cardBody}
