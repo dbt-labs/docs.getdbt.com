@@ -4,6 +4,7 @@ description: "June 2023 release note: Improvements to dbt Cloud continuous integ
 sidebar_label: "Update: Improvements to continuous integration"
 tags: [June-2023, CI]
 date: 2023-06-20
+sidebar_position: 8
 ---
 
 dbt Cloud Slim CI is a critical part of the analytics engineering workflow. Large teams rely on process to ensure code quality is high, and they look to dbt Cloud CI to automate testing code changes in an efficient way, enabling speed while keep the bar high. With status checks directly posted to their dbt PRs, developers gain the confidence that their code changes will work as expected in production, and once you’ve grown accustomed to seeing that green status check in your PR, you won’t be able to work any other way.
