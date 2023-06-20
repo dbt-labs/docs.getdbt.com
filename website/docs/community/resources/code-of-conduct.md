@@ -23,12 +23,10 @@ Each community member should strive to create more value in the community than t
 
 Ways to demonstrate this value:
 
-- Contribute to dbt or a dbt package
-- Participate in discussions on Slack and the Community Forum
-- Share things you have learned on the Community Forum
-- Host events
-
-Be mindful that others may not want their image or name on social media, and when attending or hosting an in-person event, ask permission prior to posting about another person.
+- [Coding contributions](/community/contributing/contributing-coding): Contribute to dbt Core, a package, or an adapter. Beyond implementing new functionality, you can also open issues or participate in discussions.
+- [Writing contributions](/community/contributing/contributing-writing): You can suggest edits to every page of the dbt documentation, or suggest a topic for the dbt Developer Blog. 
+- [Join in online](/community/contributing/contributing-online-community): Ask and answer questions on the Discourse forum, kick off a lively discussion in Slack, or even maintain a Slack channel of your own. 
+- [Participate in events](/community/contributing/contributing-realtime-events): Organise a community Meetup, speak at an event, or provide office space/sponsorship for an existing event. 
 
 ### Be you.
 
@@ -36,7 +34,8 @@ Some developer communities allow and even encourage anonymity — we prefer it w
 
 Ways to demonstrate this value:
 
-- Update your profile on any dbt Community platforms to include your name, and a clear picture of yourself. On Slack, use the "what I do" section to add your role, title and current company
+- Update your profile on dbt Community platforms to include your name and a clear picture of yourself. Where available, use the "what I do" section to add your role, title and current company.
+- Join your `#local-` channel in Slack, or if it doesn't exist then propose a new one. 
 - Write in your own voice, and offer your own advice, rather than speaking in your company’s marketing or support voice.
 
 ### Encourage diversity and participation.
@@ -81,6 +80,8 @@ Harassment includes:
 - Continued one-on-one communication after requests to cease.
 - Deliberate "outing" of any aspect of a person’s identity without their consent except as necessary to protect vulnerable people from intentional abuse.
 - Publication of non-harassing private communication.
+
+Be mindful that others may not want their image or name on social media. Ask permission prior to posting about another person at in-person events.
 
 The dbt Community prioritizes marginalized people’s safety over privileged people’s comfort. The dbt Community Admin team reserves the right not to act on complaints regarding:
 
