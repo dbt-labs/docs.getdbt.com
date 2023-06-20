@@ -78,7 +78,7 @@ The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/d
 
 The dbt Cloud scheduler prevents too many job runs from clogging the queue by canceling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to an ever-expanding queue with runs that don’t need to be processed (called _over-scheduled jobs_). 
 
-The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, any previous queued run for that job will be canceled and have an error message displayed:
+The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, the scheduler cancels any previously queued run for that job and displays an error message.
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
 
