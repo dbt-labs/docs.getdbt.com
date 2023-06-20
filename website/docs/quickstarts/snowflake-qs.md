@@ -407,7 +407,7 @@ Sources make it possible to name and describe the data loaded into your warehous
 - calculate the freshness of your source data
 
 1. Create a new YML file `models/sources.yml`.
-2. In order to declare the the sources, copy the following into the file and click **Save**.
+2. Declare the sources by copying the following into the file and clicking **Save**.
 
     <File name='models/sources.yml'>
 
