@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Core using GitHub Codespaces"
 id: codespace
 platform: 'dbt-core'
+icon: 'fa-github'
 hide_table_of_contents: true
 ---
 
