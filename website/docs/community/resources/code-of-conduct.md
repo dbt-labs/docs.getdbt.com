@@ -1,6 +1,7 @@
 ---
 title: "Code of Conduct"
 id: "code-of-conduct"
+description: "Learn about the community values that shape our rules, and review our anti-harassment policy."
 ---
 
 # dbt Community Code of Conduct
