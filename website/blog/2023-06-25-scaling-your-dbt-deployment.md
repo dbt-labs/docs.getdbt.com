@@ -1,3 +1,17 @@
+---
+title: "Scaling your dbt deployment: tips for governing dbt models"
+description: "Pro tips for model contracts, model access modifiers, and model versioning."
+slug: scaling-dbt-deployments
+
+authors: [doug_beatty]
+
+tags: [dbt product updates]
+hide_table_of_contents: false
+
+date: 2023-06-25
+is_featured: true
+---
+
 # Scaling your dbt deployment: tips for governing dbt models
 
 ## Intro
@@ -5,6 +19,8 @@
 Being an analytics hero is not easy work, and your wild successes will come with their own unique challenges. The more models you have, the harder it is to collaborate or find one model among many. The more consumers, the easier it is to cause data downtime for one of them when making changes. To avoid being the anti-hero, you need to keep development speedy while reducing risk of breaking things for downstream collaborators.
 
 To empower you with more tools to govern your data products, and to lay the groundwork for multi-project collaboration, we just introduced three powerful new features in dbt Core 1.5: model contracts, model access modifiers, and model versioning.
+
+<!--truncate-->
 
 Our [docs on model governance](https://docs.getdbt.com/docs/collaborate/govern/about-model-governance) are the best source of detailed information about each of these features.
 
