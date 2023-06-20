@@ -13,9 +13,11 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
   platform_name: 'Big Query'
   config_page: '/reference/resource-configs/bigquery-configs'
+  addl_frontmatter: 'hello world'
 ---
 
 <Snippet src="warehouse-setups-cloud-callout" />
+
 
 <!--The following code uses a component and the built-in docusaurus markdown partials file, which contains reusable content assigned in the meta frontmatter. For this page, the partial file is _setup-pages-intro.md. You have to include the 'import' code and then assign the component as needed. -->
 
@@ -33,25 +35,16 @@ You need to have the required [BigQuery permissions](https://cloud.google.com/bi
 This set of permissions will permit dbt users to read from and create tables and <Term id="view">views</Term> in a BigQuery project.
 ## Authentication methods
 
-You can specify BigQuery targets using one of four methods:
-
-| Auth method | Description | Supported |
-| ----------- | ----------- | --------- |
-| OAuth via gcloud | Recommended for local development
-
+You can specify BigQuery targets using four methods. BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 
 1. [OAuth via `gcloud`](#oauth-via-gcloud)
-2. [OAuth token-based](#oauth-token-based)
-3. [service account file](#service-account-file)
-4. [service account json](#service-account-json)
+2. [OAuth token-based](#oauth-token-based) 
+3. [Service account file](#service-account-file)
+4. [Service account json](#service-account-json) 
 
 :::tip
-For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 :::
-
-
-BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
-
 ### OAuth via gcloud
 
 This connection method requires [local OAuth via `gcloud`](#local-oauth-gcloud-setup).
@@ -79,7 +72,7 @@ my-bigquery-db:
 
 <Changelog>New in dbt v0.19.0</Changelog>
 
-If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
+If you do not specify a `project`/`database` and are using the `OAuth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
 
 ### OAuth Token-Based
 
@@ -208,6 +201,17 @@ my-bigquery-db:
 
 ## Optional configurations
 
+Use the following optional configurations to specify BigQuery targets in your `profiles.yml` file:
+
+- [**Priority**](#priority) &mdash; Configure the priority of dbt's BigQuery jobs using the `priority` configuration in your BigQuery profile.
+- [**Timeouts and retries**](#timeouts-and-retries) &mdash; The dbt-bigquery plugin utilizes the BigQuery Python client library to submit queries, which involves job creation and execution.
+- [**Dataset locations**](#dataset-locations) &mdash; Configure the location of BigQuery datasets using the location configuration in a BigQuery profile, specifying either a multi-regional location.
+- [**Maximum bytes billed**](#maximum-bytes-billed) &mdash; Set maximum_bytes_billed value in a BigQuery profile to ensure queries don't exceed the configured threshold.
+- [**OAuth 2.0 scopes for Google APIs**](#oauth-20-scopes-for-google-apis) &mdash; Use the scopes profile configuration to set up your own OAuth scopes for dbt
+- [**Service Account impersonation**](#service-account-impersonation) &mdash; Authenticate with local OAuth to access to BigQuery resources based on the service account permissions.
+- [**Execution project**](#execution-project) &mdash; You can optionally specify an execution_project for query execution billing.
+- [**Running Python models on Dataproc**](#running-python-models-on-dataproc) &mdash; Utilize the integrated services of Dataproc and Cloud Storage to run dbt Python models in GCP.
+
 ### Priority
 
 The `priority` for the BigQuery jobs that dbt executes can be configured with the `priority` configuration in your BigQuery profile. The `priority` field can be set to one of `batch` or `interactive`. For more information on query priority, consult the [BigQuery documentation](https://cloud.google.com/bigquery/docs/running-queries).
@@ -234,7 +238,8 @@ The `dbt-bigquery` plugin uses the BigQuery Python client library to submit quer
 
 Some queries inevitably fail, at different points in process. To handle these cases, dbt supports <Term id="grain">fine-grained</Term> configuration for query timeouts and retries.
 
-#### job_execution_timeout_seconds
+<Tabs>
+<TabItem value="jobexecution" label="job_execution_timeout_seconds">
 
 Use the `job_execution_timeout_seconds` configuration to set the number of seconds dbt should wait for queries to complete, after being submitted successfully. Of the four configurations that control timeout and retries, this one is the most common to use.
 
@@ -263,14 +268,14 @@ my-profile:
       dataset: my_dataset
       job_execution_timeout_seconds: 600 # 10 minutes
 ```
-
-#### job_creation_timeout_seconds
+</TabItem>
+<TabItem value="jobcreation" label="job_creation_timeout_seconds">
 
 It is also possible for a query job to fail to submit in the first place. You can configure the maximum timeout for the job creation step by configuring  `job_creation_timeout_seconds`. No timeout is set by default.
 
 In the job creation step, dbt is simply submitting a query job to BigQuery's `Jobs.Insert` API, and receiving a query job ID in return. It should take a few seconds at most. In some rare situations, it could take longer.
-
-#### job_retries
+</TabItem>
+<TabItem value="jobretries" label="job_retries">
 
 Google's BigQuery Python client has native support for retrying query jobs that time out, or queries that run into transient errors and are likely to succeed if run again. You can configure the maximum number of retries by configuring `job_retries`.
 
@@ -282,7 +287,8 @@ In older versions of `dbt-bigquery`, the `job_retries` config was just called `r
 
 The default value is 1, meaning that dbt will retry failing queries exactly once. You can set the configuration to 0 to disable retries entirely.
 
-#### job_retry_deadline_seconds
+</TabItem>
+<TabItem value="jobretrydeadline" label="job_retry_deadline_seconds">
 
 After a query job times out, or encounters a transient error, dbt will wait one second before retrying the same query. In cases where queries are repeatedly timing out, this can add up to a long wait. You can set the `job_retry_deadline_seconds` configuration to set the total number of seconds you're willing to wait ("deadline") while retrying the same query. If dbt hits the deadline, it will give up and return an error.
 
@@ -305,8 +311,10 @@ my-profile:
       job_retry_deadline_seconds: 1200
 
 ```
-
 </File>
+
+</TabItem>
+</Tabs>
 
 </VersionBlock>
 
@@ -504,7 +512,7 @@ my-profile:
 
 ## Local OAuth gcloud setup
 
-To connect to BigQuery using the `oauth` method, follow these steps:
+To connect to BigQuery using the `OAuth` method, follow these steps:
 
 1. Make sure the `gcloud` command is [installed on your computer](https://cloud.google.com/sdk/downloads)
 2. Activate the application-default account with
