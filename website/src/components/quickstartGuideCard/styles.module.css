@@ -16,6 +16,17 @@
   transform: translateY(-7px);
 }
 
+.quickstartCard .icon {
+  max-width: 25px;
+  font-size: 25px;
+  margin-bottom: .8rem;
+  color: var(--ifm-menu-color);
+}
+
+[data-theme='dark'] .quickstartCard .icon {
+  color: #fff;
+}
+
 .quickstartCard h3 {
   font-weight: 600;
   color:#262A38;

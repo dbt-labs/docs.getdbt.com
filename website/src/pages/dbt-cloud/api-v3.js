@@ -13,7 +13,7 @@ function dbtCloudAPI() {
       <BrowserOnly>
         {() => (
           <Suspense fallback={Fallback}>
-            <LazyStoplight version="v2" />
+            <LazyStoplight version="v3" />
           </Suspense>
         )}
       </BrowserOnly>

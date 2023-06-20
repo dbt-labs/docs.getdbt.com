@@ -4,6 +4,7 @@ id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
 sidebar_label: "Manual install quickstart"
 platform: 'dbt-core'
+icon: 'fa-light fa-square-terminal'
 hide_table_of_contents: true
 ---
 ## Introduction
