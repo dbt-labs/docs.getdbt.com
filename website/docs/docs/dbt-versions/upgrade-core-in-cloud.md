@@ -25,7 +25,7 @@ The example job seen in the screenshot above belongs to the environment "Prod". 
 
 dbt Labs have always encouraged our users to upgrade dbt Core versions whenever a new minor version is released. We released our first major version of dbt - `dbt 1.0` - in December 2021. Alongside this release, we updated our policy on which versions of dbt Core we will support in dbt Cloud.
 
- > **Starting with v1.0, any subsequent minor versions will be supported in dbt Cloud for 1 year post release. At the end of the 1 year window, accounts must upgrade to a supported version of dbt or risk service disruption.**
+> **Starting with v1.0, all subsequent minor versions are available in dbt Cloud. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version, for better ongoing maintenance and support.**
 
 We provides different support levels to different versions, which may include new features, bug fixes, or security patches:
 
