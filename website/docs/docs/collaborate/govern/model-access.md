@@ -163,16 +163,32 @@ Of course, dbt can facilitate this by means of [the `grants` config](/reference/
 
 As we continue to develop multi-project collaboration, `access: public` will mean that other teams are allowed to start taking a dependency on that model. This assumes that they've requested, and you've granted them access, to select from the underlying dataset.
 
-### What about referencing models from a package?
+### How do I ref a model from another project?
 
-For historical reasons, it is possible to `ref` a protected model from another project, _if that protected model is installed as a package_. This is useful for packages containing models for a common data source; you can install the package as source code, and run the models as if they were your own.
+<VersionBlock lastVersion="1.5">
 
-dbt Core v1.6 will introduce a new kind of `project` dependency, distinct from a `package` dependency, defined in `dependencies.yml`:
+In dbt Core v1.5, the only way to reference a model from another project is by installing that project as a package. There is no way to enforce access distinctions between `protected` and `public` models.
+
+This changes in v1.6. Select it from the dropdown above.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+It is possible to `ref` a model from another project in two ways:
+1. As a "project" dependency, via "cross-project `ref`" (a feature of dbt Cloud Enterprise)
+2. As a "package" dependency, whereby all source code from that project is installed into your own
+
+See ["Project Dependencies"](project-dependencies) for an explanation of the advantages of each approach.
+
+If referencing a model from a package, you have the option of restricting `ref` access (or not) to protected models in that package. For historical reasons, to avoid breaking existing projects, the default behavior is that models in another project can `ref` both protected and public models in an installed package. This is useful for packages containing models for a common data source; you can install the package as source code, and run the models as if they were your own.
+
+If you do wish to restrict `ref` access to _only_ public models in that package, you can set `enforce_access: True` in your package configuration:
+
 ```yml
-projects:
-  - project: jaffle_finance
+packages:
+  - git: https://my-org/upstream-project
+    enforce_access: True  # default is False
 ```
 
-Unlike installing a package, the models in the `jaffle_finance` project will not be pulled down as source code, or selected to run during `dbt run`. Instead, `dbt-core` will expect stateful input that enables it to resolve references to those public models.
-
-Models referenced from a `project`-type dependency must use [two-argument `ref`](#two-argument-variant), including the project name. Only public models can be accessed in this way. That holds true even if the `jaffle_finance` project is _also_ installed as a package (pulled down as source code), such as in a coordinated deployment. If `jaffle_finance` is listed under the `projects` in `dependencies.yml`, dbt will raise an error if a protected model is referenced from outside its project.
+</VersionBlock>
