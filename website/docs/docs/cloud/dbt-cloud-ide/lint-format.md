@@ -189,6 +189,12 @@ However, you can customize and include an additional child `.sqlfluff` configura
 Currently, running SQLFluff commands from the terminal isn't supported. 
 </details>
 
+<details>
+<summary>Why am I unable to see the Lint or Format button?</summary>
+
+Make sure that you are not on a branch that is "read-only".
+</details>
+
 ## Next steps
 
 - [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
