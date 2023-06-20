@@ -31,7 +31,6 @@ All dbt Core versions with an end-of-life (EOL) support level will no longer rec
 
 All dbt Core v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
 
-We have been backporting certain changes to the 1.0.latest and 1.1.latest branches of dbt-core, so that we can continue running automated tests, while those versions continue to be available in dbt Cloud.
 
 ## Current version support
 
