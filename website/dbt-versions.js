@@ -32,6 +32,10 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "reference/resource-properties/deprecation_date",
+    "firstVersion": "1.6",
+  }, 
+  {
     "page": "docs/build/groups",
     "firstVersion": "1.5",
   },
