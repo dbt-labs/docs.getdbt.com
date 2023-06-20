@@ -23,7 +23,7 @@ There are a few key principles:
 - **Simple with progressive complexity** &mdash; Make MetricFlow approachable by relying on known concepts and structures in data modeling. 
 - **Performant and efficient** &mdash; Allow for performance optimizations in centralized data engineering while still enabling distributed definition and ownership of logic.
 
-## Framework
+## MetricFlow
 
 - MetricFlow is a SQL query generation engine that helps you create metrics by constructing appropriate queries for different granularities and dimensions that are useful for various business applications. 
 
@@ -58,7 +58,6 @@ Metrics, which is a key concept, are functions that combine measures, constraint
 
 MetricFlow supports different metric types:
 
-- [Cumulative](/docs/build/cumulative) &mdash; Cumulative metrics aggregate a measure over a given window, like weekly active users.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.

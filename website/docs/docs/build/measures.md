@@ -14,7 +14,6 @@ Measures are aggregations performed on columns in your model. They can be used a
 | [`description`](#description) | Describes the calculated measure. | Optional |
 | [`agg`](#aggregation) | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
 | [`expr`](#expr) | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
-| [`create_metric`](#create_metric) | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
 | [`non_additive_dimension`](#non-additive-dimensions) | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
 
 ### Name 
@@ -57,11 +56,6 @@ For Snowflake users, if you use a week-level function in the `expr` parameter, i
 If you use the `dayofweek` function in the `expr` parameter with the legacy Snowflake default of `WEEK_START = 0`, it will now return ISO-standard values of 1 (Monday) through 7 (Sunday) instead of Snowflake's legacy default values of 0 (Monday) through 6 (Sunday).
 :::
 
-### Create_metric
-
-You can quickly create a metric from a measure by setting `create_metric: True`. The metric's description will default to the measure's description. You can also specify the metric's display name using `create_metric_display_name: "Your metric display name"`.
-
-**Note**: If you want to keep all your metric definitions in one place, we suggest avoiding the `create_metric: True `shortcut. Using this shortcut can result in metric definitions existing in multiples places across your semantic graph.
 
 ### Model with different aggregations
 
@@ -112,8 +106,6 @@ semantic_model:
      description: The average value of transactions 
      expr: transaction_amount_usd
      agg: average 
-     create_metric: True
-     create_metric_display_name: Avg Value of Transactions (Daily)
    - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
      description: The total USD value of valid transactions only
      expr: CASE WHEN is_valid = True then 1 else 0 end 
@@ -122,8 +114,6 @@ semantic_model:
      description: The average value of transactions.
      expr: transaction_amount_usd
      agg: average
-     create_metric: True 
-     create_metric_display_name: Avg Value of Transactions (Daily)
    - name: p99_transaction_value
      description: The 99th percentile transaction value
      expr: transaction_amount_usd
@@ -131,12 +121,10 @@ semantic_model:
      agg_params:
       percentile: .99
       use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
-     create_metric: True
    - name: median_transaction_value
      description: The median transaction value
      expr: transaction_amount_usd
      agg: median
-     create_metric: True
       
 # --- dimensions ---
  dimensions:
@@ -195,7 +183,6 @@ semantic_model:
       description: Count of users at the end of the month 
       expr: 1
       agg: sum 
-      create_metric: True 
       non_additive_dimension: 
         name: metric_time
         window_choice: min 
@@ -203,15 +190,13 @@ semantic_model:
       description: Aggregate by summing all users' active subscription plans at end of month 
       expr: subscription_value
       agg: sum 
-      create_metric: True 
       non_additive_dimension: 
         name: metric_time
         window_choice: max
     - name: mrr_by_user_end_of_month
       description: Group by user_id to achieve each user's MRR at the end of the month 
       expr: subscription_value
-      agg: sum 
-      create_metric: True 
+      agg: sum  
       non_additive_dimension: 
         name: metric_time
         window_choice: max
