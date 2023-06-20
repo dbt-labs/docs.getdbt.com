@@ -303,9 +303,11 @@ models:
 
 ## Temporary Tables
 
-Beginning in dbt version 1.3, incremental table merges for Snowflake utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
+Beginning in dbt version 1.3, incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
 
-However, many situations remain where a temporary table would achieve results faster. dbt v1.4 adds the `tmp_relation_type` configuration to leverage temporary tables for incremental builds. This is defined as part of the model configuration.
+However, some situations remain where a temporary table would achieve results faster or more safely. dbt v1.4 adds the `tmp_relation_type` configuration to allow you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
+
+To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
 
 Defined in the project YAML:
 
