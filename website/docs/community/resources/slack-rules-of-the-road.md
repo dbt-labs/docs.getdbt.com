@@ -51,7 +51,7 @@ Recruiters may also post in [#jobs](https://getdbt.slack.com/archives/C7A7BARGT)
 The definition of "vendor content" can be blurry at the edges, and we defer to members' instincts in these scenarios. As a rule, if something is hosted on a site controlled by that company or its employees (including platforms like Substack and Medium), or contains a CTA such as signing up for a mailing list or trial account, it will likely be considered promotional. 
 
 ### One more tip: Be yourself
-Speak in your own voice, and join in any or all of the conversations that interest you. Share your expertise as a data professional. Make a meme if you're so inclined. Get in a (friendly) debate. You are not limited to only your company's products and services, and making yourself known as a familiar face outside of commercial contexts is one of the most effective ways of building trust with the community. 
+Speak in your own voice, and join in any or all of the conversations that interest you. Share your expertise as a data professional. Make a meme if you're so inclined. Get in a (friendly) debate. You are not limited to only your company's products and services, and making yourself known as a familiar face outside of commercial contexts is one of the most effective ways of building trust with the community. Put another way, [create more value than you capture](/community/resources/code-of-conduct#create-more-value-than-you-capture). 
 
 Because unaffiliated community members are able to share links in any channel, the most effective way to have your work reach a wider audience is to create things that are genuinely useful to the community. 
 
