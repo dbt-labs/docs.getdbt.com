@@ -168,7 +168,7 @@ To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier
 
 You can add a configuration file to customize formatting rules for YAML, Markdown, or JSON files using Prettier. The IDE looks for the configuration file based on a order of precedence. For example, it first checks for a "prettier" key in your `package.json` file.
 
-For more info on the order of precedence and how to configure files, refer to [Prettier's documentation](https://prettier.io/docs/en/configuration.html). Please note, `.prettierrc.json`, `.prettier.js`, and `.prettierrc.toml` files aren't currently supported.
+For more info on the order of precedence and how to configure files, refer to [Prettier's documentation](https://prettier.io/docs/en/configuration.html). Please note, `.prettierrc.json5`, `.prettierrc.js`, and `.prettierrc.toml` files aren't currently supported.
 
 ### Format Python
 
