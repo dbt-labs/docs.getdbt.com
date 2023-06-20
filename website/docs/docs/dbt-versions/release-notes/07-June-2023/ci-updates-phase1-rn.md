@@ -3,13 +3,14 @@ title: "Update: Improvements to dbt Cloud continuous integration"
 description: "June 2023 release note: Improvements to dbt Cloud continuous integration (CI) that help improve your productivity."
 sidebar_label: "Update: Improvements to continuous integration"
 tags: [June-2023, CI]
+date: 2023-06-20
 ---
 
 dbt Cloud Slim CI is a critical part of the analytics engineering workflow. Large teams rely on process to ensure code quality is high, and they look to dbt Cloud CI to automate testing code changes in an efficient way, enabling speed while keep the bar high. With status checks directly posted to their dbt PRs, developers gain the confidence that their code changes will work as expected in production, and once you’ve grown accustomed to seeing that green status check in your PR, you won’t be able to work any other way.
 
 <Lightbox src="/img/docs/release-notes/ci-checks.png" width="75%" title="CI checks directly from within Git"/>
 
-What separates dbt Cloud CI from other CI providers is that dbt Cloud keeps track of state of what’s running in your production environment, so that when you run a Slim CI job, only the modified data assets in your pull request and their downstream dependencies get built and tested in a staging schema. dbt Cloud aims to make each CI check as efficient as possible, so as to not waste any data warehouse resources. As soon as the Slim CI run completes, its status posts directly back to the PR in GitHub, GitLab, or Azure DevOps, depending on which Git provider you’re using. Teams can set up guardrails to let only PRs with successful CI checks be approved for merging, and the peer review process is greatly streamlined because dbt Cloud does the first testing pass. 
+What separates dbt Cloud CI from other CI providers is its ability to keep track of state of what’s running in your production environment, so that when you run a Slim CI job, only the modified data assets in your pull request and their downstream dependencies get built and tested in a staging schema. dbt Cloud aims to make each CI check as efficient as possible, so as to not waste any data warehouse resources. As soon as the Slim CI run completes, its status posts directly back to the PR in GitHub, GitLab, or Azure DevOps, depending on which Git provider you’re using. Teams can set up guardrails to let only PRs with successful CI checks be approved for merging, and the peer review process is greatly streamlined because dbt Cloud does the first testing pass. 
 
 We're excited to introduce a few critical capabilities to dbt Cloud CI that will improve productivity and collaboration in your team’s testing and integration workflow. As of this week, you can now:
 
