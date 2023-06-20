@@ -6,7 +6,7 @@ hide_table_of_contents: true
 tags: ["scheduler"]
 ---
 
-dbt Cloud offers the easiest way to run your dbt project in production. [Deploying](docs/deploy/deployments) with dbt Cloud lets you:
+dbt Cloud offers the easiest way to run your dbt project in production. <Term id="deploying">Deploying</Term> with dbt Cloud lets you:
 - Keep production data fresh on a timely basis
 - Ensure CI and production pipelines are efficient
 - Identify the root cause of failures in deployment environments
@@ -80,7 +80,7 @@ Learn more about the features you can use in dbt Cloud to help your team ship ti
 <Card
     title="Continuous integration"
     body="Set up Slim CI checks so you can build and test any modified code in a staging environment when you open PRs and push new commits to your dbt repository."
-    link="/docs/deploy/cloud-ci-job"
+    link="/docs/deploy/continuous-integration"
     icon="pencil-paper"/>
 
 </div> <br />

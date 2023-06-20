@@ -1,3 +1,15 @@
+/docs/deploy/cloud-ci-job /docs/deploy/continuous-integration 301
+
+## quickstarts redirect again
+
+/docs/quickstarts/dbt-cloud/bigquery         /quickstarts/bigquery 301
+/docs/quickstarts/dbt-cloud/databricks       /quickstarts/databricks 301
+/docs/quickstarts/dbt-cloud/redshift         /quickstarts/redshift 301
+/docs/quickstarts/dbt-cloud/snowflake        /quickstarts/snowflake 301
+/docs/quickstarts/dbt-cloud/starburst-galaxy /quickstarts/starburst-galaxy 301
+/docs/quickstarts/dbt-core/codespace         /quickstarts/codespace 301
+/docs/quickstarts/dbt-core/manual-install    /quickstarts/manual-install 301
+
 /docs/deploy/project-state /reference/node-selection/syntax 301
 /reference/global-configs /reference/global-configs/about-global-configs 301
 
