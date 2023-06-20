@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Snowflake"
 id: "snowflake"
 platform: 'dbt-cloud'
+icon: 'snowflake'
 hide_table_of_contents: true
 ---
 ## Introduction
@@ -16,7 +17,7 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It w
 - Document your models.
 - Schedule a job to run.
 
-Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/data_teams_with_dbt_cloud/#0) in the Snowflake docs.
+Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
@@ -33,7 +34,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job triggers](/docs/deploy/job-triggers)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
