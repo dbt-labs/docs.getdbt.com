@@ -29,10 +29,7 @@ dbt Labs have always encouraged our users to upgrade dbt Core versions whenever 
 
 We provides different support levels to different versions, which may include new features, bug fixes, or security patches:
 
-- **[Active](/docs/dbt-versions/core#ongoing-patches)** &mdash; A few months after a minor version's initial release, we will provide bug fix releases to address any regressions and new bugs found in the initial release. 
-- **[Critical](/docs/dbt-versions/core#ongoing-patches)** &mdash; Newer minor versions transition the previous minor version into "Critical Support" with limited "security" releases for critical security and installation fixes.
-- **[End of Life](/docs/dbt-versions/core#eol-version-support)** &mdash; No longer receives bug fixes and limited to receiving only security patches. All EOL dbt Core v1.0 and later are available in dbt Cloud until further notice. 
-- **Deprecated** &mdash; Features in this state are not actively worked on or enhanced by dbt Labs.
+<Snippet src="core-version-support" />
 
 We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in dbt Cloud.
 
