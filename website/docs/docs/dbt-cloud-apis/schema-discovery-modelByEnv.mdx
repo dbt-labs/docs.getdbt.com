@@ -25,14 +25,15 @@ You can use the `environment_id` and `model_unique_id` to return the model and i
 
 
 ```graphql
-modelByEnvironment(environmentId: 834, uniqueId: "model.marketing.customers", lastRunCount: 20) {
-  runId, # Get historical results for a particular model
-  runGeneratedAt,
-  executionTime, # View build time across runs
-  status,
-  tests { name, status, executeCompletedAt } # View test results across runs
+query{
+  modelByEnvironment(environmentId: 834, uniqueId: "model.marketing.customers", lastRunCount: 20) {
+    runId, # Get historical results for a particular model
+    runGeneratedAt,
+    executionTime, # View build time across runs
+    status,
+    tests { name, status, executeCompletedAt } # View test results across runs
   }
-
+}
 ```
 
 ### Fields
