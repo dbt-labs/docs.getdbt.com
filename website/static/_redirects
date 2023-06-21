@@ -678,6 +678,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /reference/model-selection-syntax/#test-selection-examples /reference/node-selection/test-selection-examples 301
 /docs/building-a-dbt-project/building-models/using-custom-database /docs/building-a-dbt-project/building-models/using-custom-databases 301
 /dbt-cloud/api /dbt-cloud/api-v2 301
+/dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api
 /reference/project-configs/source-paths /reference/project-configs/model-paths 301
 /reference/project-configs/data-paths /reference/project-configs/seed-paths 301
 /reference/project-configs/modules-paths /reference/project-configs/packages-install-path 301
