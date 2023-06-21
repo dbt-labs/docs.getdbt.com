@@ -178,7 +178,7 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 </VersionBlock>
 
-`state:new`: There is no node with the same `unique_id` in the comparison manifest
+`state:new`: There is no node with the same `unique_id` in the comparison manifest.
 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
@@ -199,6 +199,16 @@ Because state comparison is complex, and everyone's project is different, dbt su
 - `state:modified.contract`: Changes to a model's [contract](/reference/resource-configs/contract), which currently include the `name` and `data_type` of `columns`. Removing or changing the type of an existing column is considered a breaking change, and will raise an error.
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
+
+<VersionBlock firstVersion="1.6">
+
+There are two additional `state` selectors that complement `state:new` and `state:modified` by representing the inverse of those functions:
+- `state:old`: a node with the same `unique_id` exists in the comparison manifest
+- `state:unmodified`: All existing nodes with no changes 
+
+The benefits for these selectors are primarily to exclude unchanged nodes to shorten run times. There are no subselectors available, but that may change as use cases evolve. 
+
+</VersionBlock>
 
 ### The "exposure" method
 
