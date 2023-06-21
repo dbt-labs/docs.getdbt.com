@@ -3,6 +3,7 @@ title: "Quickstart for dbt Cloud and BigQuery"
 id: "bigquery"
 time_to_complete: '30 minutes'
 platform: 'dbt-cloud'
+icon: 'bigquery'
 hide_table_of_contents: true
 ---
 
@@ -32,7 +33,7 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 ### Related content
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job triggers](/docs/deploy/job-triggers)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)

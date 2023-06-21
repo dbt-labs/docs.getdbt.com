@@ -52,8 +52,8 @@ Together, **wait time** plus **prep time** is the total time a run spends in the
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
-### Treatment of CI jobs (beta)
-When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/cloud-ci-job). It queues a CI job to be processed when it's triggered to run by a Git pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
+### Treatment of CI jobs
+When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/continuous-integration). It queues a CI job to be processed when it's triggered to run by a Git pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
 
 - **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.
 - **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity. Teammates never have to wait to get a CI check review.
@@ -78,9 +78,9 @@ The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/d
 
 The dbt Cloud scheduler prevents too many job runs from clogging the queue by canceling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to an ever-expanding queue with runs that don’t need to be processed (called _over-scheduled jobs_). 
 
-The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, any previous queued run for that job will be canceled and have a helpful error message displayed:
+The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, the scheduler cancels any previously queued run for that job and displays an error message.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display a helpful error message explaining why the run was cancelled and recommendations"/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
 
 To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/job-triggers).
 
@@ -89,4 +89,4 @@ To prevent over-scheduling, users will need to take action by either refactoring
 - [Job commands](/docs/deploy/job-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Webhooks](/docs/deploy/webhooks)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud continuous integration](/docs/deploy/continuous-integration)

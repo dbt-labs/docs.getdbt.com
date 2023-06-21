@@ -65,7 +65,7 @@ Let’s break down that `where` clause a bit, because this where the action is w
    2. check if it’s **greater than our cutoff,**
    3. if so it will satisfy our where clause, so we’re **selecting all the rows more recent than our cutoff.**
 
-This logic would let us isolate and apply our transformations to just the records that have come in since our last run, and I’ve got some great news: that magic `{{ this }}` keyword [does in fact exist in dbt](reference/dbt-jinja-functions/this), so we can write exactly this logic in our models.
+This logic would let us isolate and apply our transformations to just the records that have come in since our last run, and I’ve got some great news: that magic `{{ this }}` keyword [does in fact exist in dbt](/reference/dbt-jinja-functions/this), so we can write exactly this logic in our models.
 
 ### Configuring incremental models
 

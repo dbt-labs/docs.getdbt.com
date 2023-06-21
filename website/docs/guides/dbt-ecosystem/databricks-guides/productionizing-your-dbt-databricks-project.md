@@ -85,24 +85,7 @@ Your CI job will ensure that the models build properly and pass any tests applie
 - A service principal called *dbt_test_sp*
 - A new dbt Cloud environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend using dbt Cloud’s [defer](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) feature to set up a [Slim CI](/docs/deploy/cloud-ci-job#configuring-a-slim-ci-job) job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse.
-
-Let’s create the Slim CI job:
-
-1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
-2. **Name** the job “CI Check”
-3. Set the **Environment** to your *test* environment
-4. Under **Execution Settings**
-    - Use the dropdown under Defer to a previous run state? to select the “Daily Refresh” job.
-        - This will tell our CI job to look at the artifacts from our “Daily Refresh” job’s most recent run to determine which resources are new or modified.
-    
-    Add the following **Command:**
-    
-    - `dbt build –select state:modified+`
-        - Combining [state](/reference/node-selection/syntax#about-node-selection) with the defer option above, our job will use the production environment’s models upstream of the modified resources rather than rebuild models that have already been tested and are already running in production. The modified resources and downstream models will be built in a temporary schema in the *test* catalog.
-5. Under **Triggers**, select the **Continuous Integration (CI)** tab and check the **Run on Pull Requests?** box.
-    - This will automatically kick off the job when a developer creates a pull request via the dbt Cloud IDE and display the status of the job within the git provider’s interface.
-    - Note that this option will only be available if your git repo has a native integration with dbt Cloud (currently GitHub, GitLab, and Azure DevOps).
+We recommend setting up a dbt Cloud Slim CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a Slim CI job, refer to [Set up Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 
