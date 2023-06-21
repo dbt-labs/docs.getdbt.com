@@ -85,3 +85,41 @@ models:
 ```
 
 </File>
+
+## Materialized view
+
+The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html) and refreshes them for every subsequent `dbt run` that you execute. For more information, see [Refresh Materialized Views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) in the Redshift docs.
+
+Materialized views support the optional configuration `on_configuration_change` with the following values: 
+- `apply` (default) &mdash; attempts to update the existing database object if possible, avoiding a complete rebuild. The `auto_refresh` action can applied without the need to rebuild the materialized view.
+- `skip` &mdash; allows runs to continue while also providing a warning that the model was skipped
+- `fail` &mdash; forces runs to fail if a change is detected in a materialized view 
+
+You can create a materialized view by editing _one_ of these files:
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
+
+The following examples create a materialized view: 
+
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'materialized_view',
+    on_configuration_change ='apply',
+  )
+}}
+```
+
+</File>
+
+
+<File name='dbt_project.yml'>
+
+```yaml 
+models:
+  path:
+    materialized: materialized_view
+```
+</File>
