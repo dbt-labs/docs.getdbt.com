@@ -81,9 +81,9 @@ The most common causes of tunnel failures are:
  - The SSH daemon terminates the session due to an idle timeout
  - The connection is terminated by ELB or NLB due to an idle timeout
 
-dbt Cloud sets a value for its SSh tunnel called `ServerAliveInterval` and `ServerAliveCountMax` that polls the connection every 30 seconds and the underlying OS in our run "pods" will terminate the connection if the `sshd` process fails to respond after 300s. This will, in many cases, prevent an idle timeout entirely so longer as the customer is not using ELB with a firewall-level idle timeout of less than 30 seconds. However, if the customer is using ELB and is using an Idle Connection Timeout of less than 30s, this will be insufficient to prevent tunnels from being terminated. 
+dbt Cloud sets a value for its SSH tunnel called `ServerAliveInterval` and `ServerAliveCountMax` that polls the connection every 30 seconds and the underlying OS in our run "pods" will terminate the connection if the `sshd` process fails to respond after 300s. This will, in many cases, prevent an idle timeout entirely so longer as the customer is not using ELB with a firewall-level idle timeout of less than 30 seconds. However, if the customer is using ELB and is using an Idle Connection Timeout of less than 30s, this will be insufficient to prevent tunnels from being terminated. 
 
-Additionally, some versions of Linux used on bastion hosts use a verison of `sshd` with additional idle timeout settings:
+Some versions of Linux used on bastion hosts use a verison of `sshd` with additional idle timeout settings:
 `ClientAliveCountMax`
   This value sets the number of client alive messages which may be sent without `sshd` receiving any messages back from the client. If this threshold is reached while client alive messages are being sent, sshd will disconnect the client, terminating the session. The client alive mechanism is helpful when the client or server needs to know when a connection has become inactive. The default value is 3.
 `ClientAliveInterval`
@@ -92,7 +92,7 @@ Additionally, some versions of Linux used on bastion hosts use a verison of `ssh
 Using default values, tunnels could be terminated prematurely by `sshd`. To solve this problem, the `/etc/ssh/sshd_config` file on the bastion host can be configured with the following values:
 `ClientAliveCountMax` 10
 `ClientAliveInterval` 30
-where `ClientAliveCountMax` should be set to a non-zero value and `ClientAliveInterval` should be a value less than the ELB or NLB idle timeout value.
+where `ClientAliveCountMax` should be set to a non-zero value and `ClientAliveInterval` should be a value less than the ELB or NLB idle timeout value. Using the suggested values, unresponsive SSH clients will be disconnected after approximately 300 seconds.
     </div>
   </div>
 </details>
