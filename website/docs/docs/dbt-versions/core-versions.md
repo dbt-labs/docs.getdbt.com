@@ -6,7 +6,7 @@ description: "Learn about semantic versioning for dbt Core, and how long those v
 
 dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
 
-dbt Labs provides different support levels to different versions, which may include new features, bug fixes, or security patches:
+dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
 
 <Snippet src="core-version-support" />
 
