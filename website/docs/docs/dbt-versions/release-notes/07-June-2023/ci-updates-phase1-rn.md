@@ -1,6 +1,6 @@
 ---
 title: "Update: Improvements to dbt Cloud continuous integration"
-description: "June 2023 release note: Improvements to dbt Cloud continuous integration (CI) that help improve your productivity."
+description: "dbt Cloud's CI checks now run in parallel, will not block production runs, and stale runs are automatically cancelled when a newer commit is pushed."
 sidebar_label: "Update: Improvements to continuous integration"
 tags: [June-2023, CI]
 date: 2023-06-20
