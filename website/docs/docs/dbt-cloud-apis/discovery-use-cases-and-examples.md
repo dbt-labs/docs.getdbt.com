@@ -163,52 +163,56 @@ The API returns full identifier information (`database.schema.alias`) and the `e
 
 
   ```graphql
-  environment(id: $environmentId) {
-    applied {
-     models(first: $first) {
-       edges {
-          node {
-            uniqueId
-            compiledCode
-            database
-            schema
-            alias
-            materializedType
-            executionInfo {
-              executeCompletedAt
-              lastJobDefinitionId
-              lastRunGeneratedAt
-              lastRunId
-              lastRunStatus
-              lastRunError
-              lastSuccessJobDefinitionId
-              runGeneratedAt
-              lastSuccessRunId
-            }
-         }
-       }
-     }
-    }
-  }
+	query($environmentId: Int!, $first: Int!){
+	  environment(id: $environmentId) {
+	    applied {
+	     models(first: $first) {
+	       edges {
+	          node {
+	            uniqueId
+	            compiledCode
+	            database
+	            schema
+	            alias
+	            materializedType
+	            executionInfo {
+	              executeCompletedAt
+	              lastJobDefinitionId
+	              lastRunGeneratedAt
+	              lastRunId
+	              lastRunStatus
+	              lastRunError
+	              lastSuccessJobDefinitionId
+	              runGeneratedAt
+	              lastSuccessRunId
+	            }
+	         }
+	       }
+	     }
+	    }
+	  }
+	}
   ```
 
 </details>
 
 ### What happened with my job run?
 
-To review results for specific runs, you can query the metadata at the job level. This is helpful for historical analysis of deployment performance or optimizing particular jobs. 
+You can query the metadata at the job level to review results for specific runs. This is helpful for historical analysis of deployment performance or optimizing particular jobs. 
 
 <details>
 <summary>Example query</summary>
 
 ```graphql
-models(jobId: $jobId, runId: $runId) {
-  name
-  status
-  tests {
-    name
-    status
-  }
+query($jobId: Int!, $runId: Int!){
+	models(jobId: $jobId, runId: $runId) {
+	  name
+	  status
+	  tests {
+	    name
+	    status
+	  }
+	}
 }
 ```
     
@@ -224,39 +228,41 @@ With the API, you can compare the `rawCode` between the definition and applied s
 
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    models(first: $first, filter: {uniqueIds:"MODEL.PROJECT.MODEL_NAME"}) {
-      edges {
-        node {
-          rawCode
-          ancestors(types: [Source]){
-            ...on SourceAppliedStateNode {
-              freshness {
-                maxLoadedAt
-              }
-            }
-          }
-          executionInfo {
-            runGeneratedAt
-            executeCompletedAt
-          }
-          materializedType
-        }
-      }
-    }
-  }
-  definition {
-    models(first: $first, filter: {uniqueIds:"MODEL.PROJECT.MODEL_NAME"}) {
-      edges {
-        node {
-          rawCode
-          runGeneratedAt
-          materializedType
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    models(first: $first, filter: {uniqueIds:"MODEL.PROJECT.MODEL_NAME"}) {
+	      edges {
+	        node {
+	          rawCode
+	          ancestors(types: [Source]){
+	            ...on SourceAppliedStateNode {
+	              freshness {
+	                maxLoadedAt
+	              }
+	            }
+	          }
+	          executionInfo {
+	            runGeneratedAt
+	            executeCompletedAt
+	          }
+	          materializedType
+	        }
+	      }
+	    }
+	  }
+	  definition {
+	    models(first: $first, filter: {uniqueIds:"MODEL.PROJECT.MODEL_NAME"}) {
+	      edges {
+	        node {
+	          rawCode
+	          runGeneratedAt
+	          materializedType
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 
@@ -278,27 +284,30 @@ By filtering on the latest status, you can get lists of models that failed to bu
 
 
 ```graphql
-environment(id: $environmentId) {
-    applied {
-      models(first: $first, filter: {lastRunStatus:error}) {
-        edges {
-          node {
-            name
-            executionInfo {
-              lastRunId
-            }
-          }
-        }
-      }
-      tests(first: $first, filter: {status:"fail"}) {
-        edges {
-          node {
-            name
-            executionInfo {
-              lastRunId
-            }
-          }
-        }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+		applied {
+			models(first: $first, filter: {lastRunStatus:error}) {
+				edges {
+					node {
+						name
+						executionInfo {
+							lastRunId
+						}
+					}
+				}
+			}
+			tests(first: $first, filter: {status:"fail"}) {
+				edges {
+					node {
+						name
+						executionInfo {
+							lastRunId
+						}
+					}
+				}
+			}
+		}
 	}
 }
 ```
@@ -307,7 +316,7 @@ environment(id: $environmentId) {
 
 
 ```graphql
-query ModelByEnvironment($environmentId: Int!, $uniqueId: String!, $lastRunCount: Int) {
+query($environmentId: Int!, $uniqueId: String!, $lastRunCount: Int) {
   modelByEnvironment(environmentId: $environmentId, uniqueId: $uniqueId, lastRunCount: $lastRunCount) {
     name
     executeStartedAt
@@ -335,48 +344,50 @@ You can get the metadata on the latest execution for a particular model or acros
 
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    models(first: $first,filter:{uniqueIds:"MODEL.PROJECT.MODEL_NAME"}) {
-      edges {
-        node {
-          name
-          ancestors(types:[Model, Source, Seed, Snapshot]) {
-            ... on ModelAppliedStateNode {
-              name
-              resourceType
-              materializedType
-              executionInfo {
-                executeCompletedAt
-              }
-            }
-            ... on SourceAppliedStateNode {
-              sourceName
-							name
-              resourceType
-              freshness {
-                maxLoadedAt
-              }
-            }
-            ... on SnapshotAppliedStateNode {
-              name
-              resourceType
-              executionInfo {                  
-                executeCompletedAt
-              }
-            }
-            ... on SeedAppliedStateNode {
-              name
-              resourceType                
-              executionInfo {
-                executeCompletedAt
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    models(first: $first,filter:{uniqueIds:"MODEL.PROJECT.MODEL_NAME"}) {
+	      edges {
+	        node {
+	          name
+	          ancestors(types:[Model, Source, Seed, Snapshot]) {
+	            ... on ModelAppliedStateNode {
+	              name
+	              resourceType
+	              materializedType
+	              executionInfo {
+	                executeCompletedAt
+	              }
+	            }
+	            ... on SourceAppliedStateNode {
+	              sourceName
+								name
+	              resourceType
+	              freshness {
+	                maxLoadedAt
+	              }
+	            }
+	            ... on SnapshotAppliedStateNode {
+	              name
+	              resourceType
+	              executionInfo {                  
+	                executeCompletedAt
+	              }
+	            }
+	            ... on SeedAppliedStateNode {
+	              name
+	              resourceType                
+	              executionInfo {
+	                executeCompletedAt
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 
@@ -447,39 +458,41 @@ Checking [source freshness](/docs/build/sources#snapshotting-source-data-freshne
 <summary>Example query</summary>
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    sources(first: $first, filters:{freshnessChecked:true, database:"production"}) {
-      edges {
-        node {
-          sourceName
-          name
-          identifier
-          loader
-          freshness {
-            freshnessJobDefinitionId
-            freshnessRunId
-            freshnessRunGeneratedAt
-            freshnessStatus
-            freshnessChecked
-            maxLoadedAt
-            maxLoadedAtTimeAgoInS
-            snapshottedAt
-            criteria {
-              errorAfter {
-                count
-                period
-              }
-              warnAfter {
-                count
-                period
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    sources(first: $first, filters:{freshnessChecked:true, database:"production"}) {
+	      edges {
+	        node {
+	          sourceName
+	          name
+	          identifier
+	          loader
+	          freshness {
+	            freshnessJobDefinitionId
+	            freshnessRunId
+	            freshnessRunGeneratedAt
+	            freshnessStatus
+	            freshnessChecked
+	            maxLoadedAt
+	            maxLoadedAtTimeAgoInS
+	            snapshottedAt
+	            criteria {
+	              errorAfter {
+	                count
+	                period
+	              }
+	              warnAfter {
+	                count
+	                period
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 
@@ -496,27 +509,29 @@ environment(id: $environmentId) {
 For the following example, the `parents` are the nodes (code) that's being tested and `executionInfo` describes the latest test results: 
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    tests(first: $first) {
-      edges {
-        node {
-          name
-          columnName
-          parents {
-            name
-            resourceType
-          }
-          executionInfo {
-            lastRunStatus
-            lastRunError
-            executeCompletedAt
-            executionTime
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    tests(first: $first) {
+	      edges {
+	        node {
+	          name
+	          columnName
+	          parents {
+	            name
+	            resourceType
+	          }
+	          executionInfo {
+	            lastRunStatus
+	            lastRunError
+	            executeCompletedAt
+	            executionTime
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 
@@ -533,34 +548,36 @@ To enforce the shape of a model's definition, you can define contracts on models
 
 
 ```graphql
-environment(id:123) {
-	definition {
+query{
+	environment(id:123) {
+		definition {
 			models(first:100, filter:{access:public}) {
-			  edges {
-			    nodes {
-			      name
-			      latest_version
-			      contract_enforced
-			      constraints{
-			        name
-			        type
-			        expression
-			        columns
-			      }
-			      catalog {
-			        columns {
-			          name
-			          type
-			          constraints {
-			            name
-			            type
-			            expression
-			          }
-			        }
-			      }
-			    }
-			  }
+				edges {
+					nodes {
+						name
+						latest_version
+						contract_enforced
+						constraints{
+							name
+							type
+							expression
+							columns
+						}
+						catalog {
+							columns {
+								name
+								type
+								constraints {
+									name
+									type
+									expression
+								}
+							}
+						}
+					}
+				}
 			}
+		}
 	}
 }
 ```
@@ -584,26 +601,28 @@ Query the Discovery API to map a table/view in the data platform to the model in
 <summary>Example query</summary>
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    models(first: $first, filter: {database:"analytics", schema:"prod", identifier:"customers"}) {
-      edges {
-        node {
-          name
-          description
-          tags
-          meta
-          catalog {
-            columns {
-              name
-              description
-              type
-            }
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    models(first: $first, filter: {database:"analytics", schema:"prod", identifier:"customers"}) {
+	      edges {
+	        node {
+	          name
+	          description
+	          tags
+	          meta
+	          catalog {
+	            columns {
+	              name
+	              description
+	              type
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 </details>
@@ -863,25 +882,27 @@ Metric definitions are coming soon to the Discovery API with dbt v1.6. You’ll 
 <summary>Example query</summary>
 
 ```graphql
-environment(id: $environmentId) {
-  definition {
-    metrics(first: $first) {
-      edges {
-        node {
-          name
-          description
-          type
-          formula
-          filter
-          tags
-          parents {
-            name
-            resourceType
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  definition {
+	    metrics(first: $first) {
+	      edges {
+	        node {
+	          name
+	          description
+	          type
+	          formula
+	          filter
+	          tags
+	          parents {
+	            name
+	            resourceType
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 
@@ -905,35 +926,37 @@ You can define and surface the groups each model is associated with. Groups cont
 <summary>Example query</summary> 
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    model(first: $first, filter:{uniqueIds:["MODEL.PROJECT.NAME"]}) {
-      edges {
-        node {
-          name
-          description
-          resourceType
-          access
-          group
-        }
-      }
-    }
-  }
-  definition {
-    groups(first: $first) {
-      edges {
-        node {
-          name
-          resourceType
-          models {
-            name
-          }
-          owner_name
-          owner_email
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    model(first: $first, filter:{uniqueIds:["MODEL.PROJECT.NAME"]}) {
+	      edges {
+	        node {
+	          name
+	          description
+	          resourceType
+	          access
+	          group
+	        }
+	      }
+	    }
+	  }
+	  definition {
+	    groups(first: $first) {
+	      edges {
+	        node {
+	          name
+	          resourceType
+	          models {
+	            name
+	          }
+	          owner_name
+	          owner_email
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 </details>
@@ -947,31 +970,34 @@ You can enable users the ability to specify the level of access for a given mode
 <summary>Example query</summary> 
 
 ```graphql
-environment(id: $environmentId) {
-  definition {
-    models(first: $first) {
-      edges {
-        node {
-          name
-          access
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  definition {
+	    models(first: $first) {
+	      edges {
+	        node {
+	          name
+	          access
+	        }
+	      }
+	    }
+	  }
+	}
 }
 
 ---
-
-environment(id: $environmentId) {
-  definition {
-    models(first: $first, filters:{access:public}) {
-      edges {
-        node {
-          name
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  definition {
+	    models(first: $first, filters:{access:public}) {
+	      edges {
+	        node {
+	          name
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 </details>
@@ -996,35 +1022,37 @@ For development use cases, people typically query the historical or latest defin
 This example reviews an exposure and the models used in it, including when they were last executed and their test results: 
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    exposures(first: $first) {
-      edges {
-        node {
-          name
-          description
-          owner_name
-          url
-          parents {
-            name
-            resourceType
-            ... on ModelAppliedStateNode {
-              executionInfo {
-                executeCompletedAt
-                lastRunStatus
-              }
-              tests {
-                executionInfo {
-                  executeCompletedAt
-                  lastRunStatus
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    exposures(first: $first) {
+	      edges {
+	        node {
+	          name
+	          description
+	          owner_name
+	          url
+	          parents {
+	            name
+	            resourceType
+	            ... on ModelAppliedStateNode {
+	              executionInfo {
+	                executeCompletedAt
+	                lastRunStatus
+	              }
+	              tests {
+	                executionInfo {
+	                  executeCompletedAt
+	                  lastRunStatus
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 </details>
@@ -1039,16 +1067,18 @@ The Discovery API provides historical information about any resource in your pro
 Review the differences in `compiledCode` or `columns` between runs or plot the “Approximate Size” and “Row Count” `stats` over time:
 
 ```graphql
-modelByEnvironment(environmentId: $environmentId, uniqueId: $uniqueId, lastRunCount: $lastRunCount, withCatalog: $withCatalog) {
-  name
-  compiledCode
-	columns {
-		name
+query(environmentId: Int!, uniqueId: String!, lastRunCount: Int!, withCatalog: Boolean!){
+	modelByEnvironment(environmentId: $environmentId, uniqueId: $uniqueId, lastRunCount: $lastRunCount, withCatalog: $withCatalog) {
+	  name
+	  compiledCode
+		columns {
+			name
+		}
+	  stats {
+	    label
+	    value
+	  }
 	}
-  stats {
-    label
-    value
-  }
 }
 ```
 </details>
@@ -1061,28 +1091,30 @@ dbt lineage begins with data sources. For a given source, you can look at which 
 <summary>Example query</summary>
 
 ```graphql
-environment(id: $environmentId) {
-  applied {
-    sources(first: $first, filter:{uniqueIds:["SOURCE_NAME.TABLE_NAME"]}) {
-      edges {
-        node {
-          loader
-          children {
-            uniqueId
-            resourceType
-            ... on ModelAppliedStateNode {
-              database
-              schema
-              alias
-              children {
-                uniqueId
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+query($environmentId: Int!, $first: Int!){
+	environment(id: $environmentId) {
+	  applied {
+	    sources(first: $first, filter:{uniqueIds:["SOURCE_NAME.TABLE_NAME"]}) {
+	      edges {
+	        node {
+	          loader
+	          children {
+	            uniqueId
+	            resourceType
+	            ... on ModelAppliedStateNode {
+	              database
+	              schema
+	              alias
+	              children {
+	                uniqueId
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
 }
 ```
 </details>
