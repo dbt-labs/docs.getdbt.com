@@ -38,7 +38,7 @@ All artifacts produced by dbt include a `metadata` dictionary with these propert
 - [`invocation_id`](/reference/dbt-jinja-functions/invocation_id): Unique identifier for this dbt invocation
 
 In the manifest, the `metadata` may also include:
-- `send_anonymous_usage_stats`: Whether this invocation sent [anonymous usage statistics](reference/global-configs/usage-stats) while executing.
+- `send_anonymous_usage_stats`: Whether this invocation sent [anonymous usage statistics](/reference/global-configs/usage-stats) while executing.
 - `project_id`: Project identifier, hashed from `project_name`, sent with anonymous usage stats if enabled.
 - `user_id`: User identifier, stored by default in `~/dbt/.user.yml`, sent with anonymous usage stats if enabled.
 
