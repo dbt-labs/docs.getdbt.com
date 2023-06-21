@@ -79,6 +79,7 @@ The `file` or `fqn` method can be used to select a model by its filename, includ
 
 ```bash
 # These are equivalent
+dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
 dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
