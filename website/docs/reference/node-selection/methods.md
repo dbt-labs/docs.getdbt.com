@@ -50,8 +50,8 @@ The `source` method is used to select models that select from a specified [sourc
 The `resource_type` method is used to select nodes of a particular type (`model`, `source`, `exposure`, etc). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
 
   ```bash
-  $ dbt build --select +resource_type:exposure    # build all resources upstream of exposures
-  $ dbt list --select +resource_type:test    # list all tests in your project
+  $ dbt build --select resource_type:exposure    # build all resources upstream of exposures
+  $ dbt list --select resource_type:test    # list all tests in your project
   ```
 
 ### The "path" method
