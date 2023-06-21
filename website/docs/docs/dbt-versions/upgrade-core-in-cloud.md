@@ -27,7 +27,7 @@ dbt Labs have always encouraged our users to upgrade dbt Core versions whenever 
 
 > **Starting with v1.0, all subsequent minor versions are available in dbt Cloud. Versions are actively supported, with patches and bug fixes, for 1 year after their initial release. At the end of the 1-year window, we encourage all users to upgrade to a newer version for better ongoing maintenance and support.**
 
-We provides different support levels to different versions, which may include new features, bug fixes, or security patches:
+We provide different support levels for different versions, which may include new features, bug fixes, or security patches:
 
 <Snippet src="core-version-support" />
 
