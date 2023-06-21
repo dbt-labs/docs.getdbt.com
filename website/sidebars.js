@@ -270,10 +270,9 @@ const sidebarSettings = {
               label: "Metrics",
               link: { type: "doc", id: "docs/build/metrics-overview"},
               items: [
-                "docs/build/cumulative",
                 "docs/build/derived",
-                "docs/build/simple",
                 "docs/build/ratio",
+                "docs/build/simple",
               ]
             },
           ],

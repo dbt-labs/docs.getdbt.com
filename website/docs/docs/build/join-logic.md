@@ -60,7 +60,6 @@ semantic_models:
     - name: average_purchase_price
       agg: avg
       expr: purchase_price
-      create_metric: true
     - name: user_signup
   entities:
     - name: user
@@ -109,7 +108,6 @@ semantic_models:
     - name: average_purchase_price
       agg: avg
       expr: purchase_price
-      create_metric: true
 	dimensions:
     - name: metric_time
       type: time

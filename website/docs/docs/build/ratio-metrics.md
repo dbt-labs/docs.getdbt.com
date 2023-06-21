@@ -34,7 +34,6 @@ Ratio allows you to create a ratio between two measures. You simply specify a nu
       is_internal = false
   
 ```
-
 ### Different semantic models
 
 If the numerator and denominator in a ratio metric come from different semantic models, the system will compute their values in subqueries and then join the result set based on common dimensions to calculate the final ratio. Here's an example of the generated SQL for such a ratio metric.

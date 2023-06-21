@@ -106,11 +106,9 @@ measures:
     expr: 1
     agg: sum
     agg_time_dimension: deleted_at
-    create_metric: True 
   - name: users_created
     expr: 1
     agg: sum
-    create_metric: True 
 ```
 
 When querying one or more metrics in MetricFlow using the CLI, the default time dimensions for a single metric is the primary time dimension, which can be referred to as metric_time or the dimensions's name. Multiple time groups can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
@@ -151,11 +149,9 @@ measures:
     expr: 1
     agg: sum
     agg_time_dimension: deleted_at
-    create_metric: True 
   - name: users_created
     expr: 1
     agg: sum
-    create_metric: True 
 ```
 
 </TabItem>
@@ -193,11 +189,9 @@ measures:
     expr: 1
     agg: sum
     agg_time_dimension: deleted_at
-    create_metric: True 
   - name: users_created
     expr: 1
     agg: sum
-    create_metric: True 
 ```
 
 </TabItem>
@@ -315,15 +309,12 @@ semantic_model:
     - name: transactions
       expr: 1
       agg: sum
-      create_metric: True
     - name: gross_sales
       expr: sales_price
       agg: sum
-      create_metric: True
     - name: sales_persons_with_a_sale
       expr: sales_person_id
       agg: count_distinct
-      create_metric: True
 
   dimensions:
     - name: metric_time

@@ -59,10 +59,8 @@ Metrics, which is a key concept, are functions that combine measures, constraint
 MetricFlow supports different metric types:
 
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
-- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
-
-
+- [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
 ## Use case
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 

@@ -11,7 +11,7 @@ Once you've created your semantic models, it's time to start adding metrics! Met
 The keys for metrics definitions are: 
 
 * `name`: Provide the reference name for the metric. This name must be unique amongst all metrics.  
-* `type`: Define the type of metric, which can be a measure (`simple`), ratio (`ratio`), or cumulative (`cumulative`). 
+* `type`: Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)). 
 * `type_params`: Additional parameters used to configure metrics. `type_params` are different for each metric type. 
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 * `meta`: Additional metadata you want to add to your metric. 
@@ -25,6 +25,7 @@ This page explains the different supported metric types you can add to your dbt 
 - [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
 -->
 
+<!--not supported for this release
 ### Cumulative metrics 
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. Note that if no window is specified, the window would accumulate the measure over all time. 
@@ -42,7 +43,7 @@ metrics:
     #Omitting window will accumulate the measure over all time
     window: 7 days
 ```
-
+-->
 ### Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
@@ -59,7 +60,7 @@ metrics:
         filter: is_active # Optional additional constraint
         alias: active_users # Optional alias to use in the expr
 ```
-<!--
+<!-- not supported
 ### Expression metrics
 Use [expression metrics](/docs/build/expr) when you're building a metric that involves a SQL expression of multiple measures.
 
@@ -76,26 +77,6 @@ metrics:
       - alterations_usd
 ```
 -->
-
-### Simple metrics
-
-[Measure proxies](/docs/build/simple) are metrics that point directly to a measure (you may think of it as a function that takes only one measure as the input). 
-
-**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create measure proxies.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
-
-```yaml
-metrics: 
-# Define the reference name of the metric.  
-# This name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. 
-# This name is used to call the metric from the dbt Semantic Layer API.
-  name: cancellations 
-  type: simple 
-  type_params:
-  # Specify the measure you are creating a proxy for. 
-    measure: cancellations_usd 
-  filter: | 
-    value > 100 AND user__acquisition
-```
 
 ### Ratio metrics 
 
@@ -131,7 +112,26 @@ metrics:
     is_internal = false
   
 ```
+### Simple metrics
 
+[Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
+
+<!--create_metric not supported yet
+**Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
+-->
+```yaml
+metrics: 
+# Define the reference name of the metric.  
+# This name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. 
+# This name is used to call the metric from the dbt Semantic Layer API.
+  name: cancellations 
+  type: simple 
+  type_params:
+  # Specify the measure you are creating a proxy for. 
+    measure: cancellations_usd 
+  filter: | 
+    value > 100 AND user__acquisition
+```
 
 ### Further configuration 
 
@@ -145,7 +145,6 @@ You can set more metadata for your metrics, which can be used by other tools lat
 ## Related docs
 
 - [Semantic models](/docs/build/semantic-models)
-- [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
 
 

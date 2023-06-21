@@ -7,11 +7,12 @@ tags: [Metrics, Semantic Layer]
 ---
 
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved.
-
+<!-- create_metric not supported yet
 :::tip
 
 If you've already defined the measure using the `create_metric: true` parameter, you don't need to create simple metrics. However, if you want to include a filter or in the final metric, you'll need to define and create a simple metric.
 :::
+-->
 
 ``` yaml
 metrics: 
