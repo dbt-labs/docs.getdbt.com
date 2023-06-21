@@ -77,7 +77,7 @@ Then, run `dbt docs serve` to use these `.json` files to populate a local websit
 
 ## Using Docs Blocks
 ### Syntax
-To declare a docs block, use the jinja `docs` tag. Docs blocks must be uniquely named, and can contain arbitrary markdown. In practice, a docs block might look like this:
+To declare a docs block, use the jinja `docs` tag. Docs blocks can contain arbitrary markdown, but they must be uniquely named. Their names may contain uppercase and lowercase letters (A-Z, a-z), digits (0-9), and underscores (_), but can't start with a digit.
 
 <File name='events.md'>
 
