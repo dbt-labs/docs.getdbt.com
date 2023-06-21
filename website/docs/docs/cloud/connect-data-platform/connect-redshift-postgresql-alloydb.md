@@ -65,6 +65,40 @@ To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP
 
 The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
 
+#### Intermittent Connection Issues
+
+<details>
+  <summary>Database Error - could not connect to server: Connection timed out</summary>
+  <div>
+    <div>When you configure a connection to a database via an SSH tunnel -- typically you have the following components in play:
+ - An Elastic Load Balancer (ELB) or Network Load Balancing (NLB) instance.
+ - A bastion host (aka jump server) running the `sshd` process
+ - A Database (ex. Redshift cluster)
+dbt Cloud establishes an SSH tunnel by connecting through the ELB/NLB to the `sshd` process which then is responsible for passing traffic to the database.
+When dbt initiates a job run, it establishes an SSH tunnel at the beginning of the job run and if at any point the SSH tunnel fails, the job will fail.
+
+The most common causes of tunnel failures are:
+ - The SSH daemon terminates the session due to an idle timeout
+ - The connection is terminated by ELB or NLB due to an idle timeout
+
+dbt Cloud sets a value for its SSh tunnel called `ServerAliveInterval` and `ServerAliveCountMax` that polls the connection every 30 seconds and the underlying OS in our run "pods" will terminate the connection if the `sshd` process fails to respond after 300s. This will, in many cases, prevent an idle timeout entirely so longer as the customer is not using ELB with a firewall-level idle timeout of less than 30 seconds. However, if the customer is using ELB and is using an Idle Connection Timeout of less than 30s, this will be insufficient to prevent tunnels from being terminated. 
+
+Additionally, some versions of Linux used on bastion hosts use a verison of `sshd` with additional idle timeout settings:
+`ClientAliveCountMax`
+  This value sets the number of client alive messages which may be sent without `sshd` receiving any messages back from the client. If this threshold is reached while client alive messages are being sent, sshd will disconnect the client, terminating the session. The client alive mechanism is helpful when the client or server needs to know when a connection has become inactive. The default value is 3.
+`ClientAliveInterval`
+  This value sets a timeout interval in seconds after which if no data has been received from the client, `sshd` will send a message through the encrypted channel to request a response from the client. The default is 0, indicating that these messages will not be sent to the client.
+
+Using default values, tunnels could be terminated prematurely by `sshd`. To solve this problem, the `/etc/ssh/sshd_config` file on the bastion host can be configured with the following values:
+`ClientAliveCountMax` 10
+`ClientAliveInterval` 30
+where `ClientAliveCountMax` should be set to a non-zero value and `ClientAliveInterval` should be a value less than the ELB or NLB idle timeout value.
+    </div>
+  </div>
+</details>
+could not connect to server: Connection timed out
+
+
 ## Configuration
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).
