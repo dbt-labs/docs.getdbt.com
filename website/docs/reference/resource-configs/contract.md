@@ -101,7 +101,7 @@ When you use the `state:modified` selection method in Slim CI, dbt will detect c
 Breaking changes include:
 - Removing an existing column
 - Changing the `data_type` of an existing column
-- (Future) Removing or modifying one of the `constraints` on an existing column
+- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
 
 ```
 Breaking Change to Contract Error in model sometable (models/sometable.sql)
