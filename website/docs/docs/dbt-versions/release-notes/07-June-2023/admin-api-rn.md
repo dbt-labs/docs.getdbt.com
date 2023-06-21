@@ -3,6 +3,7 @@ title: "Update: dbt Cloud Administrative API docs for v2 and v3"
 description: "June 2023 release note: The Administrative API docs are now available for v2 and v3 with a different UI."
 sidebar_label: "Update: Admin API docs for v2 and v3 "
 tags: [June-2023, API]
+sidebar_position: 9
 ---
 
 dbt Labs updated the docs for the [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) and they are now available for both [v2](/dbt-cloud/api-v2#/) and [v3](/dbt-cloud/api-v3#/). 
