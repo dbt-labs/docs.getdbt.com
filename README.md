@@ -58,7 +58,6 @@ You can click a link available in a netlify bot PR comment to see and review you
 4. `cd` into the `website` subdirectory: `cd website`
 5. Install the required node packages: `npm install` (optional &mdash; install any updates)
 6. Build the website: `npm start`
-7. Before pushing your changes to a branch, check that all links work by using the `make build` script.
 
 Advisory:
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!
