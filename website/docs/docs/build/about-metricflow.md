@@ -230,8 +230,8 @@ metric:
   type_params:
     numerator: revenue
     denominator: active_customers
-  constraints: |
-    product__category in ("vegetables", "fruits", "dairy", "deli")
+  filter: |  
+  {{ dimension('country', entity_path=['customer']) }} = 'MX'
 ```
 </TabItem>
 </Tabs>
