@@ -4,6 +4,14 @@ description: "Postgres Configurations - Read this in-depth guide to learn about 
 id: "postgres-configs"
 ---
 
+## Incremental materialization strategies
+
+In dbt-postgres, the following incremental materialization strategies are supported:
+
+- `append` (default)
+- `merge`
+- `delete+insert`
+
 
 ## Performance Optimizations
 
