@@ -164,7 +164,7 @@ models:
 
 </File>
 
-Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create create a new model file (SQL or Python) encompassing those breaking changes.
+Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create a new model file (SQL or Python) encompassing those breaking changes.
 
 
 The default convention is naming the new file with a `_v<version>` suffix. Let's make a new file, named `dim_customers_v2.sql`. (We don't need to rename the existing model file just yet, while it's still the "latest" version.)
