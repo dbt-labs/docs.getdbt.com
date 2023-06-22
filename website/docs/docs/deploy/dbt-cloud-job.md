@@ -15,7 +15,7 @@ dbt Cloud offers the easiest way to run your dbt project in production. <Term id
 
 Learn how to use dbt Cloud's features to help your team ship timely and quality production data more easily.
 
-<div className="grid--3-col">
+<div className="grid--2-col">
 
 <Card
     title="Artifacts"
