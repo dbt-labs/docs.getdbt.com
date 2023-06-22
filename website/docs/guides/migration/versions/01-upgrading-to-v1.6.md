@@ -31,4 +31,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Quick hits
 
-**Coming Soon**
+More consistency and flexibility around packages! Resources defined in a package will respect variable and global macro definitions within the scope of that package.
+- `vars` defined in a package's `dbt_project.yml` are now available in the resolution order when compiling nodes in that package, though CLI `--vars` and the root project's `vars` will still take precedence. See ["Variable Precedence"](/docs/build/project-variables#variable-precedence) for details.
+- `generate_x_name` macros (defining custom rules for database, schema, alias naming) follow the same pattern as other "global" macros for package-scoped overrides. See [macro dispatch](/reference/dbt-jinja-functions/dispatch) for an overview of the patterns that are possible.
