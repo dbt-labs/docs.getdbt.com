@@ -10,7 +10,7 @@ To-do:
 - think about whether some of these should be outside of models
 --->
 
-## Incremental Materialization Strategies
+## Incremental materialization strategies
 
 In dbt-redshift, the following incremental materialization strategies are supported:
 
@@ -20,7 +20,7 @@ In dbt-redshift, the following incremental materialization strategies are suppor
 
 All of these strategies are inheirited via from dbt-postgres.
 
-## Performance Optimizations
+## Performance optimizations
 
 ### Using sortkey and distkey
 
