@@ -46,6 +46,13 @@ The `source` method is used to select models that select from a specified [sourc
   $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
   ```
 
+### The "resource_type" method
+Use the `resource_type` method to select nodes of a particular type (`model`, `source`, `exposure`, etc). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+
+  ```bash
+  $ dbt build --select resource_type:exposure    # build all resources upstream of exposures
+  $ dbt list --select resource_type:test    # list all tests in your project
+  ```
 
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
@@ -72,6 +79,7 @@ The `file` or `fqn` method can be used to select a model by its filename, includ
 
 ```bash
 # These are equivalent
+dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
 dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
