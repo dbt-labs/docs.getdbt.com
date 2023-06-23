@@ -1,5 +1,6 @@
 ---
-title: "show"
+title: "About dbt show command"
+sidebar_label: "show"
 id: "show"
 ---
 

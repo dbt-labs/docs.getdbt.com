@@ -1,5 +1,6 @@
 ---
 title: "About user access in dbt Cloud"
+description: "Learn how dbt Cloud administrators can use dbt Cloud's permissioning model to control user-level access in a dbt Cloud account."
 id: "about-user-access"
 ---
 
@@ -21,6 +22,7 @@ License-based and Role-based.
   a member of multiple groups, and those groups may have permissions on multiple
   projects.
 
+
 ## License-based access control
 
 Each user on an account is assigned a license type when the user is first
@@ -28,14 +30,15 @@ invited to a given account. This license type may change over time, but a
 user can only have one type of license at any given time.
 
 A user's license type controls the features in dbt Cloud that the user is able
-to access. dbt Cloud's two license types are:
+to access. dbt Cloud's three license types are:
  - **Read Only**
  - **Developer**
+ - **IT**
 
-For more information on these license types, see [Seats & Users](cloud-seats-and-users).
+For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
 At a high level, Developers may be granted _any_ permissions, whereas Read Only
 users will have read-only permissions applied to all dbt Cloud resources
-regardless of the role-based permissions that the user is assigned.
+regardless of the role-based permissions that the user is assigned. IT users will have Security Admin permissions applied regardless of the role-based permissions that the user is assigned.
 
 ## Role-based access control
 
@@ -140,12 +143,20 @@ sign-in time based on the user's IdP-provided group membership information.
 
 
 ## FAQs
+
 - **When are IdP group memberships updated for SSO Mapped groups?**  <br />
  Group memberships are updated whenever a user logs into dbt Cloud via a supported SSO provider. If you've changed group memberships in your identity provider or dbt Cloud, ask your users to log back into dbt Cloud to synchronize these group memberships.
 - **Can I set up SSO without RBAC?**  <br />
 Yes, see the documentation on [Manual Assignment](#manual-assignment) above for more information on using SSO without RBAC.
 - **Can I configure a user's License Type based on IdP Attributes?** <br />
-  Yes, see the docs on [managing license types](/cloud-seats-and-users#managing-license-types) for more information.
+  Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
 
 - **Why can't I edit a user's group membership?**  <br />
 Make sure you're not trying to edit your own user as this isn't allowed for security reasons. To edit the group membership of your own user, you'll need a different user to make those changes.
+
+- **How do I add or remove users**?  <br />
+Each dbt Cloud plan comes with a base number of Developer and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+  - If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
+  - If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
+
+ Refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses) for detailed steps.

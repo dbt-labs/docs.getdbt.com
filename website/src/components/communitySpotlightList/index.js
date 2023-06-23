@@ -6,7 +6,7 @@ import Hero from '@site/src/components/hero';
 import CommunitySpotlightCard from '../communitySpotlightCard'
 
 const communityTitle = 'Community spotlight'
-const communityDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
+const communityDescription = "The dbt Community is where analytics engineering lives and grows, and you're a part of it! Every quarter we'll be highlighting community members in the dbt Community Spotlight. These are individuals who have gone above and beyond to contribute to the community in a variety of ways. We all see you. We appreciate you. You are awesome."
 
 function CommunitySpotlightList({ spotlightData }) {
   const { siteConfig } = useDocusaurusContext()
@@ -27,6 +27,7 @@ function CommunitySpotlightList({ spotlightData }) {
         showGraphic={false} 
         customStyles={{marginBottom: 0}} 
         classNames='community-spotlight-hero'
+        colClassNames='col--8'
       />
       <section id='spotlight-members-section'>
         <div className='container'>   

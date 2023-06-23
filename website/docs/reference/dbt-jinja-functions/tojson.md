@@ -1,5 +1,6 @@
 ---
-title: "tojson"
+title: "About tojson context method"
+sidebar_label: "tojson"
 id: "tojson"
 description: "Use this context method to serialize a Python object primitive."
 ---
