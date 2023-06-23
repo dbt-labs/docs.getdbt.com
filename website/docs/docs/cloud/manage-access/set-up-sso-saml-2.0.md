@@ -8,6 +8,8 @@ id: "set-up-sso-saml-2.0"
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning
 more about an Enterprise plan, contact us at sales@getdbt.com.
 
+If you are a [single-tenant (virtual private)](/docs/cloud/about-cloud/tenancy#single-tenant) customer, these SSO config docs is not for you. If you wish to newly configure or update SSO, please [contact support](mailto:support@getdbt.com).
+
 :::
 
 dbt Cloud Enterprise supports single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
