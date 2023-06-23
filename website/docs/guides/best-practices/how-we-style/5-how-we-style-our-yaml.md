@@ -3,6 +3,8 @@ title: How we style our YAML
 id: 5-how-we-style-our-yaml
 ---
 
+## YAML Style Guide
+
 - Indents should be two spaces
 - List items should be indented
 - Use a new line to separate list items that are dictionaries where appropriate
