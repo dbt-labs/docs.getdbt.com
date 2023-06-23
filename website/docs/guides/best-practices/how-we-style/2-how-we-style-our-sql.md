@@ -5,34 +5,34 @@ id: 2-how-we-style-our-sql
 
 ## Basics
 
-- Use [SQLFluff](https://sqlfluff.com/) to maintain these style rules automatically.
+- ☁️ Use [SQLFluff](https://sqlfluff.com/) to maintain these style rules automatically.
   - Reference this [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we use.
-- Use Jinja comments (`{# #}`) for comments that should not be included in the compiled SQL.
-- Use trailing commas.
-- Indents should be four spaces.
-- Lines of SQL should be no longer than 80 characters.
-- Field names, keywords, and function names should all be lowercase.
-- The `as` keyword should be used explicitly when aliasing a field or table.
+- 👻 Use Jinja comments (`{# #}`) for comments that should not be included in the compiled SQL.
+- ⏭️ Use trailing commas.
+- 4️⃣ Indents should be four spaces.
+- 📏 Lines of SQL should be no longer than 80 characters.
+- ⬇️ Field names, keywords, and function names should all be lowercase.
+- 🫧 The `as` keyword should be used explicitly when aliasing a field or table.
 
 ## Fields, aggregations, and grouping
 
-- Fields should be stated before aggregates and window functions.
-- Aggregations should be executed as early as possible (on the smallest data set possible) before joining to another table to improve performance.
-- Ordering and grouping by a number (eg. group by 1, 2) is preferred over listing the column names (see [this classic rant](https://blog.getdbt.com/write-better-sql-a-defense-of-group-by-1/) for why). Note that if you are grouping by more than a few columns, it may be worth revisiting your model design.
+- 🔙 Fields should be stated before aggregates and window functions.
+- 🤏🏻 Aggregations should be executed as early as possible (on the smallest data set possible) before joining to another table to improve performance.
+- 🔢 Ordering and grouping by a number (eg. group by 1, 2) is preferred over listing the column names (see [this classic rant](https://blog.getdbt.com/write-better-sql-a-defense-of-group-by-1/) for why). Note that if you are grouping by more than a few columns, it may be worth revisiting your model design.
 
 ## Joins
 
-- Prefer `union all` to `union` unless you explicitly want to remove duplicates.
-- Avoid table aliases in join conditions (especially initialisms) — it's harder to understand what the table called "c" is as compared to "customers".
-- If joining two or more tables, _always_ prefix your column names with the table alias. If only selecting from one table, prefixes are not needed.
-- Be explicit about your join type (i.e. write `inner join` instead of `join`).
-- Always move left to right to make joins easy to reason about - `right joins` often indicate that you should change which table you select `from` and which one you `join` to.
+- 👭🏻 Prefer `union all` to `union` unless you explicitly want to remove duplicates.
+- 👭🏻 If joining two or more tables, _always_ prefix your column names with the table name. If only selecting from one table, prefixes are not needed.
+- 👭🏻 Be explicit about your join type (i.e. write `inner join` instead of `join`).
+- 🥸 Avoid table aliases in join conditions (especially initialisms) — it's harder to understand what the table called "c" is as compared to "customers".
+- ➡️ Always move left to right to make joins easy to reason about - `right joins` often indicate that you should change which table you select `from` and which one you `join` to.
 
 ## 'Import' CTEs
 
-- All `{{ ref('...') }}` statements should be placed in CTEs at the top of the file.
-- 'Import' CTEs should be named after the table they are referencing.
-- Limit the data scanned by CTEs as much as possible. Where possible, only select the columns you're actually using and use `where` clauses to filter out unneeded data.
+- 🔝 All `{{ ref('...') }}` statements should be placed in CTEs at the top of the file.
+- 📦 'Import' CTEs should be named after the table they are referencing.
+- 🤏🏻 Limit the data scanned by CTEs as much as possible. Where possible, only select the columns you're actually using and use `where` clauses to filter out unneeded data.
 - For example:
 
 ```sql
@@ -55,16 +55,16 @@ orders as (
 
 ## 'Functional' CTEs
 
-- Where performance permits, CTEs should perform a single, logical unit of work.
-- CTE names should be as verbose as needed to convey what they do e.g. `events_joined_to_users` instead of `user_events` (this could be a good model name, but does not describe a specific function or transformation).
-- CTEs that are duplicated across models should be pulled out into their own intermediate models. Look out for chunks of repeated logic that should be refactored into their own model.
-- The last line of a model should be a `select *` from your final output CTE. This makes it easy to materialize and audit the output from different steps in the model as you're developing it. You just change the CTE referenced in the `select` statement to see the output from that step.
+- ☝🏻 Where performance permits, CTEs should perform a single, logical unit of work.
+- 📖 CTE names should be as verbose as needed to convey what they do e.g. `events_joined_to_users` instead of `user_events` (this could be a good model name, but does not describe a specific function or transformation).
+- 🌉 CTEs that are duplicated across models should be pulled out into their own intermediate models. Look out for chunks of repeated logic that should be refactored into their own model.
+- 🔚 The last line of a model should be a `select *` from your final output CTE. This makes it easy to materialize and audit the output from different steps in the model as you're developing it. You just change the CTE referenced in the `select` statement to see the output from that step.
 
 ## Model configuration
 
-- Model-specific attributes (like sort/dist keys) should be specified in the model.
-- If a particular configuration applies to all models in a directory, it should be specified in the `dbt_project.yml` file.
-- In-model configurations should be specified like this for maximum readability:
+- 📝 Model-specific attributes (like sort/dist keys) should be specified in the model.
+- 📂 If a particular configuration applies to all models in a directory, it should be specified in the `dbt_project.yml` file.
+- 👓 In-model configurations should be specified like this for maximum readability:
 
 ```sql
 {{
