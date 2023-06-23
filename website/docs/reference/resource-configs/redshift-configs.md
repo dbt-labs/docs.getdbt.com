@@ -10,7 +10,17 @@ To-do:
 - think about whether some of these should be outside of models
 --->
 
-## Performance Optimizations
+## Incremental materialization strategies
+
+In dbt-redshift, the following incremental materialization strategies are supported:
+
+- `append` (default)
+- `merge`
+- `delete+insert`
+
+All of these strategies are inheirited via from dbt-postgres.
+
+## Performance optimizations
 
 ### Using sortkey and distkey
 
