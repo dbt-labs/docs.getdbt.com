@@ -22,6 +22,8 @@ Once you've established a clear style, stay consistent. This is the most importa
 
 You should style the project in the way you and your teammates or collaborators agree on. The most important thing is that you have a style guide and that you stick to it. This guide is just a suggestion to get you started and to give you a sense of what a style guide might look like. It covers various areas you may want to consider, with suggested rules. It emphasizes lots of whitespace, clarity, clear naming, and comments. We belive one of the strengths of SQL is that it reads like English, so we lean into that declarative nature throughout our projects. Even within dbt Labs though, there are differing opinions on how to style, even a small but passionate contingent of leading comma enthusiasts! So again, the important thing is not to follow this style guide, it's to make _your_ style guide and follow it. Lastly, be sure to include rules, tools, _and_ examples in your style guide to make it as easy as possible for your team to follow.
 
+
+
 ## Automation
 
 Use formatters and linters as much as possible. We're all human, we make mistakes. Not only that, but we all have different preferences and opinions while writing code. Automation is a great way to ensure that your project is styled consistently and correctly and that people can write in a way that's quick and comfortable for them, while still getting perfectly consistent output.
