@@ -302,9 +302,7 @@ const sidebarSettings = {
               type: "category",
               label: "Continuous integration",
               link: { type: "doc", id: "docs/deploy/continuous-integration" },
-              items: [
-                "docs/deploy/slim-ci-jobs",
-              ],
+              items: ["docs/deploy/slim-ci-jobs"],
             },
           ],
         },
@@ -812,6 +810,7 @@ const sidebarSettings = {
             "guides/best-practices/how-we-style/3-how-we-style-our-python",
             "guides/best-practices/how-we-style/4-how-we-style-our-jinja",
             "guides/best-practices/how-we-style/5-how-we-style-our-yaml",
+            "guides/best-practices/how-we-style/6-how-we-style-conclusion",
           ],
         },
         {
