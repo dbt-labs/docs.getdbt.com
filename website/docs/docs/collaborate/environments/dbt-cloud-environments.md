@@ -10,7 +10,7 @@ An environment determines how dbt Cloud will execute your project in both the db
 2. The warehouse connection information (including the target database/schema settings)
 3. The version of your code to execute
 
-For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments.md).
+For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments).
 
 ## Types of environments
 
@@ -45,7 +45,7 @@ By default, all environments will use the default branch in your repository (usu
 - **Development**: determines which branch in the dbt Cloud IDE developers create branches from and open PRs against
 - **Deployment:** determines the branch is cloned during job executions for each environment.
 
-For more info, check out this [FAQ page on this topic](/docs/faqs/Environments/custom-branch-settings)!
+For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
 ## Create a development environment
 
@@ -55,7 +55,7 @@ After setting the **General Settings** as above, there’s nothing more that nee
 
 ### Set developer credentials
 
-To use the IDE, each developer will need to set up [personal development credentials](/docs/cloud/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
+To use the IDE, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
 
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
@@ -123,7 +123,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 #### Editable fields
 
-- **Catalog** (optional): [Unity Catalog namespace](/reference/warehouse-setups/databricks-setup.md)
+- **Catalog** (optional): [Unity Catalog namespace](/docs/core/connect-data-platform/databricks-setup)
 
 </div>
 
@@ -217,5 +217,5 @@ This section allows you to determine the credentials that should be used when co
 ## Related docs
 
 - [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
-- [Delete a job or environment in dbt Cloud](/docs/faqs/Environments/delete-environment-job)
-- [Develop in Cloud](/docs/cloud/develop-in-the-cloud)
+- [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)
+- [Develop in Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)

@@ -22,7 +22,7 @@ Before I delve into what makes this particular solution "intelligent", let me ba
 
 <Lightbox src="/img/blog/2023-01-27-autoscaling-ci/01-yolo-prod.png" title="Don't try this at home kids!" />
 
-The way that we tackle continuous integration in dbt Cloud is something we call [Slim CI](https://docs.getdbt.com/docs/deploy/cloud-ci-job#slim-ci). This feature enables us to automatically run a dbt Cloud job anytime a pull request is opened against our primary branch or when a commit is added to that pull request. The real kicker though? This job will only run and test the code that's been modified within that specific pull request. Why is Slim CI important?
+The way that we tackle continuous integration in dbt Cloud is something we call [Slim CI](/docs/deploy/continuous-integration). This feature enables us to automatically run a dbt Cloud job anytime a pull request is opened against our primary branch or when a commit is added to that pull request. The real kicker though? This job will only run and test the code that's been modified within that specific pull request. Why is Slim CI important?
 
 - Ensures developers can work quickly by shortening the CI feedback loop
 - Reduce costs in your data warehouse by running only what's been modified
@@ -60,7 +60,7 @@ In the event your CI job is already running, the `trigger_autoscaling_ci_job` 
 
 ### Setup
 
-1. The first step is to create a dbt Cloud job for Slim CI. We’ll follow the [exact steps](https://docs.getdbt.com/docs/deploy/cloud-ci-job#configuring-a-dbt-cloud-ci-job) to create a normal Slim CI job except for one.
+1. The first step is to create a dbt Cloud job for Slim CI. We’ll follow the [exact steps](/docs/deploy/slim-ci-jobs) to create a normal Slim CI job except for one.
     
     
     | Do | Don’t |
@@ -125,8 +125,8 @@ jobs:
       GIT_SHA: ${{ github.event.pull_request.head.sha }}
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.9.x"
 

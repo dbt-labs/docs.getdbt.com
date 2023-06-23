@@ -1,5 +1,6 @@
 ---
 title: "Set up SSO with Google Workspace"
+description: "Learn how dbt Cloud administrators can use Single-Sign On (SSO) via Google GSuite to control access in a dbt Cloud account."
 id: "set-up-sso-google-workspace"
 ---
 
@@ -57,14 +58,14 @@ Client Secret for use in dbt Cloud.
 
 6. Save the **Consent screen** settings to navigate back to the **Create OAuth client
    id** page.
-7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
+7. Use the following configuration values when creating your Credentials, replacing `YOUR_ACCESS_URL` and `YOUR_AUTH0_URI`, which need to be replaced with the [appropriate Access URL and Auth0 URI](/docs/cloud/manage-access/sso-overview#auth0-multi-tenant-uris) for your region and plan.
 
 | Config | Value |
 | ------ | ----- |
 | **Application type** | Web application |
 | **Name** | dbt Cloud |
 | **Authorized Javascript origins** | `https://YOUR_ACCESS_URL` |
-| **Authorized Redirect URIs** | `https://YOUR_ACCESS_URL/complete/gsuite` |
+| **Authorized Redirect URIs** | `https://YOUR_AUTH0_URI/login/callback` |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-credentials.png" title="GSuite Credentials configuration"/>
 
@@ -97,7 +98,7 @@ Settings.
       account using GSuite auth. Optionally, you may specify a CSV of domains
       which are _all_ authorized to access your dbt Cloud account (eg. `dbtlabs.com, fishtowndata.com`)
     - **Slug**: Enter your desired login slug. Users will be able to log into dbt
-      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN_SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. The `LOGIN_SLUG` must
+      Cloud by navigating to `https://YOUR_ACCESS_URL/enterprise-login/LOGIN-SLUG`, replacing `YOUR_ACCESS_URL` with the [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. The `LOGIN-SLUG` must
       be unique across all dbt Cloud accounts, so pick a slug that uniquely
       identifies your company.
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-config.png" title="GSuite SSO Configuration"/>
@@ -112,10 +113,9 @@ Settings.
 
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-cloud-verify.png" title="GSuite verify groups"/>
 
-If the verification information looks appropriate, then you have completed
-- the configuration of GSuite SSO. 
--
-- <Snippet src="login_url_note" />
+If the verification information looks appropriate, then you have completed the configuration of GSuite SSO. 
+
+<Snippet src="login_url_note" />
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up

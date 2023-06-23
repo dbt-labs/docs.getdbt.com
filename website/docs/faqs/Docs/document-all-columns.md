@@ -1,5 +1,5 @@
 ---
-title: Do I need to add a yaml entry for column for it to appear in the docs site?
+title: Do I need to add a YAML entry for column for it to appear in the docs site?
 description: "All columns appear in your docs site"
 sidebar_label: 'Types of columns included in doc site'
 id: document-all-columns

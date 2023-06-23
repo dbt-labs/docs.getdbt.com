@@ -2,9 +2,9 @@
 title: "Incremental models in-depth"
 id: materializations-guide-4-incremental-models
 slug: 4-incremental-models
-description: Learn how to utilize materializations in dbt.
+description: Read this guide to understand the incremental models you can create in dbt.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand the incremental models you can create in dbt.
 ---
 
 So far we’ve looked at tables and views, which map to the traditional objects in the data warehouse. As mentioned earlier, incremental models are a little different. This where we start to deviate from this pattern with more powerful and complex materializations.
@@ -65,7 +65,7 @@ Let’s break down that `where` clause a bit, because this where the action is w
    2. check if it’s **greater than our cutoff,**
    3. if so it will satisfy our where clause, so we’re **selecting all the rows more recent than our cutoff.**
 
-This logic would let us isolate and apply our transformations to just the records that have come in since our last run, and I’ve got some great news: that magic `{{ this }}` keyword [does in fact exist in dbt](reference/dbt-jinja-functions/this), so we can write exactly this logic in our models.
+This logic would let us isolate and apply our transformations to just the records that have come in since our last run, and I’ve got some great news: that magic `{{ this }}` keyword [does in fact exist in dbt](/reference/dbt-jinja-functions/this), so we can write exactly this logic in our models.
 
 ### Configuring incremental models
 
@@ -89,7 +89,7 @@ First, let’s look at a config block for incremental materialization:
 ```sql
 {{
     config(
-        materialized='incremental'
+        materialized='incremental',
         unique_key='order_id'
     )
 }}
@@ -123,7 +123,7 @@ Let’s take a look at all these pieces together:
 ```sql
 {{
     config(
-        materialized='incremental'
+        materialized='incremental',
         unique_key='order_id'
     )
 }}

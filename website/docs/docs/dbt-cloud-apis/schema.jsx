@@ -1,7 +1,5 @@
 import React, { setState } from "react";
-
 import { useState, useEffect } from 'react'
-
 const queriesQuery = `{
   __schema {
     queryType {
@@ -27,27 +25,25 @@ const queriesQuery = `{
     }
   }
 }`
-
-
-export const ArgsTable = ({ queryName }) => {
+const metadataUrl = 'https://metadata.cloud.getdbt.com/graphql'
+const metadataBetaUrl = 'https://metadata.cloud.getdbt.com/beta/graphql'
+export const ArgsTable = ({ queryName, useBetaAPI }) => {
   const [data, setData] = useState(null)
   useEffect(() => {
     const fetchData = () => {
-      fetch('https://metadata.cloud.getdbt.com/graphql', {
+      fetch(useBetaAPI ? metadataBetaUrl : metadataUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: queriesQuery }),        
+        body: JSON.stringify({ query: queriesQuery }),
       })
         .then((result) => result.json())
         .then((data) => setData(data))
     }
     fetchData()
   }, [])
-
   if (!data) {
     return <h1>Fetching data...</h1>
   }
-
   return (
     <table>
       <thead>
@@ -59,13 +55,13 @@ export const ArgsTable = ({ queryName }) => {
         </tr>
       </thead>
       <tbody>
-        {data.data.__schema.queryType.fields.find(d=>d.name===queryName).args.map(function ({name, description, type} ) {
+        {data.data.__schema.queryType.fields.find(d => d.name === queryName).args.map(function ({ name, description, type }) {
           return (
             <tr key={name}>
               <td><code>{name}</code></td>
-              {type.ofType ? 
+              {type.ofType ?
                 <td><code title={type.description}>{type.ofType.name}</code></td> :
-                <td><code title={type.description}>{type.name}</code></td> 
+                <td><code title={type.description}>{type.name}</code></td>
               }
               <td>{type.kind === 'NON_NULL' ? `Yes` : `No`}</td>
               <td>{description || `No description provided`}</td>
@@ -76,17 +72,15 @@ export const ArgsTable = ({ queryName }) => {
     </table>
   )
 }
-
-
-
-export const SchemaTable = ({ nodeName }) => {
+export const SchemaTable = ({ nodeName, useBetaAPI }) => {
   const [data, setData] = useState(null)
   useEffect(() => {
     const fetchData = () => {
-      fetch('https://metadata.cloud.getdbt.com/graphql', {
+      fetch(useBetaAPI ? metadataBetaUrl : metadataUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: `{
+        body: JSON.stringify({
+          query: `{
           __type(name: "${nodeName}") {
             fields {
               name
@@ -106,18 +100,16 @@ export const SchemaTable = ({ nodeName }) => {
               }
             }
           }
-        }`}),        
+        }`}),
       })
         .then((result) => result.json())
         .then((data) => setData(data))
     }
     fetchData()
   }, [])
-
   if (!data) {
     return <h1>Fetching data...</h1>
   }
-
   return (
     <table>
       <thead>
@@ -126,18 +118,18 @@ export const SchemaTable = ({ nodeName }) => {
           <td>Type</td>
           <td>Description</td>
         </tr>
-      </thead>      
+      </thead>
       <tbody>
-        {data.data.__type.fields.map(function ({name, description, type} ) {
+        {data.data.__type.fields.map(function ({ name, description, type }) {
           return (
             <tr key={name}>
               <td><code>{name}</code></td>
-              {type.kind==='LIST' ? 
-                <td><code title={type.description}>[{type.ofType.ofType ? type.ofType.ofType.name : type.ofType.name }]</code></td> :
-                (type.ofType ? 
+              {type.kind === 'LIST' ?
+                <td><code title={type.description}>[{type.ofType.ofType ? type.ofType.ofType.name : type.ofType.name}]</code></td> :
+                (type.ofType ?
                   <td><code title={type.description}>{type.ofType.name}</code></td> :
-                  <td><code title={type.description}>{type.name}</code></td> 
-                ) 
+                  <td><code title={type.description}>{type.name}</code></td>
+                )
               }
               <td>{description}</td>
             </tr>
@@ -147,4 +139,3 @@ export const SchemaTable = ({ nodeName }) => {
     </table>
   )
 }
-

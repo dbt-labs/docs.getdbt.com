@@ -43,29 +43,7 @@ Starting with v1.0, dbt Cloud will ensure that you're always using the latest co
   - auto-upgrading users to the subsequent minor version when critical support ends
 --->
 
-For more on version support and future releases, see [Understanding dbt Core versions](core-versions).
-
-#### What will actually happen on the end of support date?
-
-1 year post a minor version release of v1.X, we will try to run our users' projects on the latest release of dbt if they have not already upgraded their projects themselves. In a post dbt v1.0 world, there won't be breaking changes between minor versions of dbt, so we might be reasonably successful at upgrading our users' versions for them. However, our strong preference is for accounts to try to manage the upgrade process themselves which is a more cautious way to prevent failures to their production pipelines. We will give accounts consistent communication that they're hitting the end of their supported window, so they can plan accordingly.
-
-#### What should you be doing today?
-
-You should **upgrade to v1.0 as soon as you can** - and we recommend that you proceed **slowly and steadily**.
-
-Why? Because attempting to upgrade 6 minor versions at one time (v0.15.0 —> v0.21.0) implies 6x the potential for breaking changes, versus upgrading a single minor version.
-
-Refactoring code is much easier when you're updating a well-defined, constrained surface area. Doing things incrementally is the way to go.
-
-Additionally upgrading to more recent versions of dbt Core will enable better performance and more features in dbt Cloud. Below is a compatability matrix between dbt versions and dbt Cloud features. Hopefully this provides more motivation to always update your environments and jobs to run the latest version of dbt.
-
-| dbt Cloud Feature | dbt Core Version Needed |
-| ------------- | -------------- |
-| [Environment variable secret scrubbing](/docs/build/environment-variables#handling-secrets)| v1.0+ |
-| DAG in the IDE | v0.20.0+|
-| [Metadata API](/docs/dbt-cloud-apis/metadata-api) |v0.19.0+|
-| [Dashboard status tiles](/docs/deploy/dashboard-status-tiles) | v0.19.0+ |
-| [Slim CI](/docs/deploy/cloud-ci-job) | v0.18.0+ |
+For more on version support and future releases, see [Understanding dbt Core versions](/docs/dbt-versions/core).
 
 #### Need help upgrading?
 
