@@ -4,12 +4,7 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 ---
 
-:::info Enterprise Feature
-
-This guide describes a feature of the dbt Cloud Enterprise plan.
-If you're interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
+<Snippet src="available-enterprise-only" />
 
 ## Overview
 

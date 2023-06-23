@@ -1,9 +1,11 @@
 ---
 title: "Configuring IP restrictions"
 id: ip-restrictions
-description: "Configuring IP retrictions to outside traffic from accessing your dbt Cloud environment"
+description: "Configuring IP restrictions to outside traffic from accessing your dbt Cloud environment"
 sidebar_label: "IP restrictions"
 ---
+
+<Snippet src="available-tiers-iprestrictions" />
 
 ## About IP Restrictions
 
