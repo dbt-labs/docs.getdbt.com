@@ -100,7 +100,7 @@ The console section, located below the File editor, includes various console tab
 
 7. **Lineage tab &mdash;** The Lineage tab in the File Editor displays the active model's lineage or  <Term id="dag" />. By default, it shows two degrees of lineage in both directions (`2+model_name+2`), however, you can change it to +model+ (full DAG).
     - Double-click a node in the DAG to open that file in a new tab
-    - Expand the DAG and use node selection syntax (select or exclude) to view a subset of your DAG
+    - Expand or shrink the DAG using node selection syntax.
     - Note, the `--exclude` flag isn't supported.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/lineage-console-tab.jpg" width="100%" title="View resource lineage in the Lineage tab"/>
