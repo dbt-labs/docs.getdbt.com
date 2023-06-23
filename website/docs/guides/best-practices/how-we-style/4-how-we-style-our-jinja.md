@@ -20,7 +20,7 @@ id: 4-how-we-style-our-jinja
 {% endmacro %}
 ```
 
-````sql
+```sql
 select
     entity_id,
     entity_type,
@@ -35,4 +35,3 @@ select
     {% endif %}
     {{ make_cool('uncool_id') }} as cool_id
 ```
-````

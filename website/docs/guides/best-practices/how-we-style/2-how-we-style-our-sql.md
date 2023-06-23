@@ -23,7 +23,7 @@ id: 2-how-we-style-our-sql
 ## Joins
 
 - Prefer `union all` to `union` unless you explicitly want to remove duplicates.
-- Avoid table aliases in join conditions (especially initialisms) — it's harder to understand what the table called "c" as compared to "customers".
+- Avoid table aliases in join conditions (especially initialisms) — it's harder to understand what the table called "c" is as compared to "customers".
 - If joining two or more tables, _always_ prefix your column names with the table alias. If only selecting from one table, prefixes are not needed.
 - Be explicit about your join type (i.e. write `inner join` instead of `join`).
 - Always move left to right to make joins easy to reason about - `right joins` often indicate that you should change which table you select `from` and which one you `join` to.
@@ -32,7 +32,7 @@ id: 2-how-we-style-our-sql
 
 - All `{{ ref('...') }}` statements should be placed in CTEs at the top of the file.
 - 'Import' CTEs should be named after the table they are referencing.
-- Limit the data scanned by CTEs as much as possible. Only select the columns you're actually using and use `where` clauses to filter out unneeded data.
+- Limit the data scanned by CTEs as much as possible. Where possible, only select the columns you're actually using and use `where` clauses to filter out unneeded data.
 - For example:
 
 ```sql
@@ -58,13 +58,13 @@ orders as (
 - Where performance permits, CTEs should perform a single, logical unit of work.
 - CTE names should be as verbose as needed to convey what they do e.g. `events_joined_to_users` instead of `user_events` (this could be a good model name, but does not describe a specific function or transformation).
 - CTEs that are duplicated across models should be pulled out into their own intermediate models. Look out for chunks of repeated logic that should be refactored into their own model.
+- The last line of a model should be a `select *` from your final output CTE. This makes it easy to materialize and audit the output from different steps in the model as you're developing it. You just change the CTE referenced in the `select` statement to see the output from that step.
 
 ## Model configuration
 
 - Model-specific attributes (like sort/dist keys) should be specified in the model.
 - If a particular configuration applies to all models in a directory, it should be specified in the `dbt_project.yml` file.
-
-- In-model configurations should be specified like this:
+- In-model configurations should be specified like this for maximum readability:
 
 ```sql
 {{
