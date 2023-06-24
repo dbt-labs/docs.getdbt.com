@@ -309,7 +309,7 @@ Supported in v1.5 or newer.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock firstVersion="1.5">
 
 The `access` method selects models based on their [access](/reference/resource-properties/access) property.
 
