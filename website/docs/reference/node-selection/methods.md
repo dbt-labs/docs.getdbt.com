@@ -292,7 +292,7 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-The `group` method is used to select models defined within a group.
+The `group` method is used to select models defined within a [group](/reference/resource-configs/group).
 
 
   ```bash
