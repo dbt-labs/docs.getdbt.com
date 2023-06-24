@@ -292,14 +292,32 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-Supported in v1.5 or newer.
-
 The `group` method is used to select models defined within a group.
 
 
   ```bash
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
+
+</VersionBlock>
+
+### The "access" method
+
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+
+```bash
+dbt list --select access:public       # list all public models
+dbt list --select access:private       # list all private models
+dbt list --select access:protected       # list all protected models
+```
 
 </VersionBlock>
 
@@ -321,26 +339,6 @@ dbt list --select version:prerelease  # versions newer than the 'latest' version
 dbt list --select version:old         # versions older than the 'latest' version
 
 dbt list --select version:none        # models that are *not* versioned
-```
-
-</VersionBlock>
-
-### The "access" method
-
-<VersionBlock lastVersion="1.5">
-
-Supported in v1.6 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
-The `access` method selects models based on their [access](/reference/resource-properties/access) property.
-
-```bash
-dbt list --select access:public       # list all public models
-dbt list --select access:private       # list all private models
-dbt list --select access:protected       # list all protected models
 ```
 
 </VersionBlock>
