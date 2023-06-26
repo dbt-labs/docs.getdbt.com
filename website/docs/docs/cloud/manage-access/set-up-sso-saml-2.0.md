@@ -3,12 +3,9 @@ title: "Set up SSO with SAML 2.0"
 id: "set-up-sso-saml-2.0"
 ---
 
-:::info Enterprise Feature
+import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning
-more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
+<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
 dbt Cloud Enterprise supports single-sign on (SSO) for any SAML 2.0-compliant identity provider (IdP).
 Currently supported features include:
