@@ -1,7 +1,9 @@
 :::info Limited to certain Enterprise tiers
 
-IP restrictions can be configured in organizations using these dbt Cloud Enterprise tiers:
+Organizations can configure IP restrictions using the following dbt Cloud Enterprise tiers:
  * Business Critical 
  * Virtual Private
+
+To learn more about these tiers, contact us at <sales@getdbt.com>.
 
 :::
