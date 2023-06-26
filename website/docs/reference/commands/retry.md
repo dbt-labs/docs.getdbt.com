@@ -18,5 +18,5 @@ Retry works with the following commands:
 
 `dbt retry` references **run_results.json** to determine where to start. Executing `dbt retry` without correcting the previous failures will garner <Term id="idempotent" /> results.
 
-`dbt retry` reuses the selectors from the previously executed command.
+`dbt retry` reuses the [selectors](/reference/node-selection/yaml-selectors) from the previously executed command.
 
