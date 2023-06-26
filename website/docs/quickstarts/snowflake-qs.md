@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Snowflake"
 id: "snowflake"
 platform: 'dbt-cloud'
+icon: 'snowflake'
 hide_table_of_contents: true
 ---
 ## Introduction
@@ -12,11 +13,12 @@ In this quickstart guide, you'll learn how to use dbt Cloud with Snowflake. It w
 - Load sample data into your Snowflake account.
 - Connect dbt Cloud to Snowflake.
 - Take a sample query and turn it into a model in your dbt project. A model in dbt is a select statement.
+- Add sources to your dbt project. Sources allow you to name and describe the raw data already loaded into Snowflake.
 - Add tests to your models.
 - Document your models.
 - Schedule a job to run.
 
-Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/data_teams_with_dbt_cloud/#0) in the Snowflake docs.
+Snowflake also provides a quickstart for you to learn how to use dbt Cloud. It makes use of a different public dataset (Knoema Economy Data Atlas) than what's shown in this guide. For more information, refer to [Accelerating Data Teams with dbt Cloud & Snowflake](https://quickstarts.snowflake.com/guide/accelerating_data_teams_with_snowflake_and_dbt_cloud_hands_on_lab/) in the Snowflake docs.
 
 :::tip Videos for you
 You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamentals) for free if you're interested in course learning with videos.
@@ -33,7 +35,7 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job triggers](/docs/deploy/job-triggers)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
@@ -396,6 +398,73 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 <FAQ src="Runs/run-one-model" />
 <FAQ src="Models/unique-model-names" />
 <FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+
+## Build models on top of sources
+
+Sources make it possible to name and describe the data loaded into your warehouse by your extract and load tools. By declaring these tables as sources in dbt, you can:
+- select from source tables in your models using the `{{ source() }}` function, helping define the lineage of your data
+- test your assumptions about your source data
+- calculate the freshness of your source data
+
+1. Create a new YML file `models/sources.yml`.
+2. Declare the sources by copying the following into the file and clicking **Save**.
+
+    <File name='models/sources.yml'>
+
+    ```yml
+    version: 2
+
+    sources:
+        - name: jaffle_shop
+          description: This is a replica of the Postgres database used by our app
+          database: raw
+          schema: jaffle_shop
+          tables:
+              - name: customers
+                description: One record per customer.
+              - name: orders
+                description: One record per order. Includes cancelled and deleted orders.
+    ```
+
+    </File>
+
+3. Edit the `models/stg_customers.sql` file to select from the `customers` table in the `jaffle_shop` source.
+
+    <File name='models/stg_customers.sql'>
+
+    ```sql
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from {{ source('jaffle_shop', 'customers') }}
+    ```
+
+    </File>
+
+4. Edit the `models/stg_orders.sql` file to select from the `orders` table in the `jaffle_shop` source.
+
+    <File name='models/stg_orders.sql'>
+
+    ```sql
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from {{ source('jaffle_shop', 'orders') }}
+    ```
+
+    </File>
+
+5. Execute `dbt run`. 
+
+    The results of your `dbt run` will be exactly the same as the previous step. Your `stg_cusutomers` and `stg_orders`
+    models will still query from the same raw data source in Snowflake. By using `source`, you can
+    test and document your raw data and also understand the lineage of your sources. 
+
 
 <Snippet src="quickstarts/test-and-document-your-project" />
 

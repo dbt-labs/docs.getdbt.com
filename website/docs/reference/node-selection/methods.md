@@ -46,6 +46,13 @@ The `source` method is used to select models that select from a specified [sourc
   $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
   ```
 
+### The "resource_type" method
+Use the `resource_type` method to select nodes of a particular type (`model`, `source`, `exposure`, etc). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+
+  ```bash
+  $ dbt build --select resource_type:exposure    # build all resources upstream of exposures
+  $ dbt list --select resource_type:test    # list all tests in your project
+  ```
 
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
@@ -72,6 +79,7 @@ The `file` or `fqn` method can be used to select a model by its filename, includ
 
 ```bash
 # These are equivalent
+dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
 dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
@@ -232,7 +240,7 @@ $ dbt test --select result:fail --state path/to/artifacts # run all tests that f
 $ dbt build --select 1+result:fail --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
 $ dbt seed --select result:error --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
-**Note** &mdash; When you define steps in your dbt Cloud jobs, please be aware that the `--state` parameter is automatically included when you click the [**Defer**](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) button.
+
 ### The "source_status" method
 <VersionBlock lastVersion="1.0">
 

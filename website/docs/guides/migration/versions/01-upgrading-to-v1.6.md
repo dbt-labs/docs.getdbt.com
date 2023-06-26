@@ -27,8 +27,9 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## New and changed documentation
 
-- [Build your metrics](/docs/build/build-metrics-intro) - Define your metrics with semantic models and MetricFlow, a key component of the dbt Semantic Layer. Available on the command line (CLI) for dbt Core v1.6 beta or higher.
-**Coming Soon**
+- [**Build your metrics**](/docs/build/build-metrics-intro) - Define your metrics with semantic models and MetricFlow, a key component of the dbt Semantic Layer. Available on the command line (CLI) for dbt Core v1.6 beta or higher.
+
+- [**Namespacing:**](/faqs/Models/unique-model-names) Model names can be duplicated across different namespaces (packages/projects), so long as they are unique within each package/project. We strongly encourage using [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant) when referencing a model from a different package/project.
 
 ### Quick hits
 
