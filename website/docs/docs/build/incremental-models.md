@@ -255,15 +255,15 @@ to build incremental models.
 
 Click the name of the adapter in the below table for more information about supported incremental strategies.
 
-| data platform adapter                                                                            | default strategy | additional supported strategies                                      |
-| :----------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------- |
-| dbt-postgres                                                                                     | `append` | `delete+insert`                                         |
-| dbt-redshift                                                                                     | `append` | `delete+insert`                                         |
-| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)   | `merge`  | `insert_overwrite`                                      |
-| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                        | `append` | `merge` (Delta only)  `insert_overwrite` |
-| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)              | `append` | `merge` (Delta only) `insert_overwrite` |
-| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models) | `merge`  | `append`, `delete+insert`                                        |
-| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                               | `append` | `merge` `delete+insert`                                 |
+| data platform adapter                                                                               | default strategy | additional supported strategies          |
+| :-------------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------- |
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `merge` , `delete+insert`                  |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `merge`, `delete+insert`                  |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         | `merge` (Delta only)  `insert_overwrite` |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `append`         | `merge` (Delta only) `insert_overwrite`  |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge` `delete+insert`                  |
 
 <VersionBlock firstVersion="1.3">
 
