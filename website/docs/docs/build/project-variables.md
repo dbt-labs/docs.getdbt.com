@@ -20,7 +20,7 @@ Variables can be defined in two ways:
 
 :::info
 
-`vars` doesn't support rendering Jinja.
+Jinja is not supported within the `vars` config, and all values will be interpreted literally.
 
 :::
 
