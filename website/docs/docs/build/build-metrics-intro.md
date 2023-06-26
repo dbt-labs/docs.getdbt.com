@@ -26,17 +26,16 @@ Before you start, keep the following considerations in mind:
 
 <div className="grid--4-col">
 
-
-<Card
-    title="Get started"
-    body="Learn how to create a semantic model, a metric, and test and upload your metric using MetricFlow."
-    link="/docs/build/sl-getting-started"
-    icon="rocket"/>
-
 <Card
     title="About MetricFlow"
     body="Understand MetricFlow's core concepts, key principles, and how to use this powerful tool."
     link="/docs/build/about-metricflow"
+    icon="rocket"/>
+
+<Card
+    title="Get started with MetricFlow"
+    body="Learn how to create a semantic model, a metric, and test and upload your metric using MetricFlow."
+    link="/docs/build/sl-getting-started"
     icon="rocket"/>
 
   <Card
@@ -57,6 +56,6 @@ Before you start, keep the following considerations in mind:
 ## Related docs
 
 - [The dbt Semantic Layer: what's next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog
-- [Getting started](/docs/build/sl-getting-started)
+- [Get started with MetricFlow](/docs/build/sl-getting-started)
 
 

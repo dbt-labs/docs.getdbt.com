@@ -245,7 +245,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro"},
           collapsed: true,
           items: [
-            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
@@ -255,6 +254,7 @@ const sidebarSettings = {
                 "docs/build/validation",
               ]
             },
+            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "Semantic models",

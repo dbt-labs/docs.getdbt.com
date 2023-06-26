@@ -1,8 +1,8 @@
 ---
 id: sl-getting-started
-title: Getting started
+title: Get started with MetricFlow
 description: "Learn how to create your first semantic model and metric."
-sidebar_label: Getting started
+sidebar_label: Get started with MetricFlow
 tags: [Metrics, Semantic Layer]
 ---
 
