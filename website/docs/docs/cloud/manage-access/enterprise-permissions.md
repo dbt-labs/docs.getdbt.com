@@ -4,9 +4,9 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 ---
 
-<Snippet src="available-enterprise-only" />
+import SetUpPages from '/snippets/_available-enterprise-only.md';
 
-## Overview
+<SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access

@@ -5,9 +5,9 @@ description: "Configuring IP restrictions to outside traffic from accessing your
 sidebar_label: "IP restrictions"
 ---
 
-<Snippet src="available-tiers-iprestrictions" />
+import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
 
-## About IP Restrictions
+<SetUpPages features={'/snippets/_available-tiers-iprestrictions.md'}/>
 
 IP Restrictions help control which IP addresses are allowed to connect to dbt Cloud. IP restrictions allow dbt Cloud customers to meet security and compliance controls by only allowing approved IPs to connect to their dbt Cloud environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
 
