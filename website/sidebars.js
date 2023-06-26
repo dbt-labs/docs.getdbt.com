@@ -283,29 +283,34 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
+        "docs/deploy/job-scheduler",
         {
           type: "category",
-          label: "Deploy with dbt Cloud",
-          link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
+          label: "Manage your jobs",
+          link: { type: "doc", id: "docs/deploy/job-settings", },
           items: [
-            "docs/deploy/artifacts",
-            "docs/deploy/job-scheduler",
-            "docs/deploy/job-settings",
             "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
+          ],
+        },
+        {
+          type: "category",
+          label: "Continuous integration",
+          link: { type: "doc", id: "docs/deploy/continuous-integration" },
+          items: [
+            "docs/deploy/slim-ci-jobs",
+          ],
+        },
+        {
+          type: "category",
+          label: "Monitor jobs and alerts",
+          link: { type: "doc", id: "docs/deploy/run-visibility", },
+          items: [
             "docs/deploy/job-notifications",
-            "docs/deploy/run-visibility",
-            "docs/deploy/source-freshness",
             "docs/deploy/webhooks",
+            "docs/deploy/artifacts",
+            "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
-            {
-              type: "category",
-              label: "Continuous integration",
-              link: { type: "doc", id: "docs/deploy/continuous-integration" },
-              items: [
-                "docs/deploy/slim-ci-jobs",
-              ],
-            },
           ],
         },
         "docs/deploy/deployment-tools",

@@ -1,7 +1,7 @@
 ---
-title: "Deploy with other tools"
+title: "Integrate with other orchestration tools"
 id: "deployment-tools"
-sidebar: "Deploy with other tools"
+sidebar_label: "Integrate with other tools"
 ---
 
 Alongside [dbt Cloud](/docs/deploy/dbt-cloud-job), discover other ways to schedule and run your dbt jobs with the help of tools such as Airflow, Prefect, Dagster, automation server, Cron, and Azure Data Factory (ADF), 

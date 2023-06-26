@@ -1,24 +1,108 @@
 ---
 title: "Deploy dbt jobs"
 id: "deployments"
-sidebar: "About job deployments"
+sidebar: "Use dbt Cloud's capabilities to run and seamlessly schedule a dbt job in production."
+hide_table_of_contents: true
 ---
 
 Use dbt Cloud's capabilities to run and seamlessly schedule a dbt job in production. Rather than run dbt commands manually from the command line, you can leverage the [dbt Cloud's in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute your dbt production jobs. 
 
-Your dbt production jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments/environments-in-dbt). 
+dbt Cloud offers the easiest way to run your dbt project in production. Your dbt production jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. <Term id="deploying">Deploying</Term> with dbt Cloud lets you:
+- Keep production data fresh on a timely basis
+- Ensure CI and production pipelines are efficient 
+- Identify the root cause of failures in deployment environments
+- Maintain high-quality code and data in production
+- Gain visibility into the health of deployment jobs, models, and tests
 
-In addition to setting up a schedule, there are other considerations when setting up dbt to run in production:
+Learn how to use dbt Cloud's features to help your team ship timely and quality production data more easily.
 
-* The seamless navigation helping you create a new dbt job or editing an existing one.
-* Setting up notifications if a step within your job returns an error code (for example, a model can't be built or a test fails).
-* Accessing logs to help debug any issues.
-* Pulling the latest version of your git repo before running dbt (continuous deployment).
-* Running, automating, and testing your dbt project before merging code into main (continuous integration).
-* Allowing access for team members that need to collaborate on your dbt project.
-* ...and more!
+Before continuing, make sure you understand dbt's approach to [managing environments](/docs/collaborate/environments/environments-in-dbt). 
+## Deploy with dbt
+
+<div className="grid--3-col">
+
+<Card
+    title="Job scheduler"
+    body="The job scheduler is the backbone of running jobs in dbt Cloud, bringing power and simplicity to building data pipelines in both continuous integration and production environments."
+    link="/docs/deploy/job-scheduler"
+    icon="dbt-bit"/>
+
+<Card
+    title="Continuous integration"
+    body="Set up Slim CI checks so you can build and test any modified code in a staging environment when you open PRs and push new commits to your dbt repository."
+    link="/docs/deploy/continuous-integration"
+    icon="dbt-bit"/>
+
+</div> <br /> 
+
+## Manage your jobs
+
+<div className="grid--3-col">
+
+<Card
+    title="Job settings"
+    body="Create and schedule jobs for the dbt Cloud scheduler to run."
+    link="/docs/deploy/job-settings"
+    icon="dbt-bit"/>
+
+<Card
+    title="Job commands"
+    body="Configure which dbt commands to execute when running a dbt job."
+    link="/docs/deploy/job-commands"
+    icon="dbt-bit"/>
+
+<Card
+    title="Job triggers"
+    body="Set up a cron-based schedule or an event-driven trigger by API or on pull requests for CI jobs."
+    link="/docs/deploy/job-triggers"
+    icon="dbt-bit"/>
+
+</div> <br />
+
+## Monitor jobs and alerts
+
+<div className="grid--3-col">
+
+<Card
+    title="Run visibility"
+    body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
+    link="/docs/deploy/run-visibility"
+    icon="dbt-bit"/>
+
+<Card
+    title="Job notifications"
+    body="Receive email or Slack channel notifications when a job run succeeds, fails, or is canceled so you can respond quickly and begin remediation if necessary."
+    link="/docs/deploy/job-notifications"
+    icon="dbt-bit"/>
+
+<Card
+    title="Webhooks for your jobs"
+    body="Create outbound webhooks to send events about your dbt jobs' statuses to other systems in your organization."
+    link="/docs/deploy/webhooks"
+    icon="dbt-bit"/>
+
+<Card
+    title="Artifacts"
+    body="dbt Cloud generates and saves artifacts for your project, which it uses to power features like creating docs for your project and reporting the freshness of your sources."
+    link="/docs/deploy/artifacts"
+    icon="dbt-bit"/>
+
+<Card
+    title="Source freshness"
+    body="Enable snapshots to capture the freshness of your data sources and configure how frequent these snapshots should be taken. This can help you determine whether your source data freshness is meeting your SLAs."
+    link="/docs/deploy/source-freshness"
+    icon="dbt-bit"/>
+
+<Card
+    title="Dashboard status tiles"
+    body="Set up status tiles to see the data freshness and quality checks whenever you view your data. "
+    link="/docs/deploy/dashboard-status-tiles"
+    icon="dbt-bit"/>
+
+</div> <br />
 
 
+<!--
 <a href="https://docs.getdbt.com/docs/deploy/dbt-cloud-job" target="_blank" class="pagination-nav__label nav-create-account button button--primary">Try deploying with dbt Cloud</a> 
 
 <DocCarousel slidesPerView={1}>
@@ -34,10 +118,11 @@ In addition to setting up a schedule, there are other considerations when settin
 
 </DocCarousel>
 
-<!--## Run dbt in production
+## Run dbt in production
 
 If you want to run dbt jobs on a schedule, you can use tools such as dbt Cloud, Airflow, Prefect, Dagster, automation server, or Cron.-->
 
-## Related docs
 
-- [Build your deployment with other tools](/docs/deploy/deployment-tools)
+## Related docs 
+
+- [Integrate with other orchestration tools](/docs/deploy/deployment-tools)
