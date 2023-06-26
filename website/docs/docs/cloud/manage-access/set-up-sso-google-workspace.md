@@ -4,13 +4,9 @@ description: "Learn how dbt Cloud administrators can use Single-Sign On (SSO) vi
 id: "set-up-sso-google-workspace"
 ---
 
-:::info Enterprise Feature
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re
-interested in learning more about an Enterprise plan, contact us at
-sales@getdbt.com.
+import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
-If you are a [single-tenant (virtual private)](/docs/cloud/about-cloud/tenancy#single-tenant) customer, this SSO config docs is not for you. Instead, please [contact support](mailto:support@getdbt.com), if you wish to newly configure your SSO config or update your SSO config.
-:::
+<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
 dbt Cloud Enterprise supports Single-Sign On (SSO) via Google GSuite. You will need
 permissions to create and manage a new Google OAuth2 application, as well as

@@ -5,13 +5,9 @@ id: "set-up-sso-azure-active-directory"
 sidebar_label: "Set up SSO with Azure AD"
 ---
 
-:::info Enterprise Feature
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re
-interested in learning more about an Enterprise plan, contact us at
-sales@getdbt.com.
+import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
-If you are a [single-tenant (virtual private)](/docs/cloud/about-cloud/tenancy#single-tenant) customer, this SSO config docs is not for you. Instead, please [contact support](mailto:support@getdbt.com), if you wish to newly configure your SSO config or update your SSO config.
-:::
+<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
 dbt Cloud Enterprise supports single-sign on via Azure Active Directory (Azure AD).
 You will need permissions to create and manage a new Azure AD application.

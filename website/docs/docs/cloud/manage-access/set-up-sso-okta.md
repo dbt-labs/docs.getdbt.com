@@ -3,13 +3,9 @@ title: "Set up SSO with Okta"
 id: "set-up-sso-okta"
 ---
 
-:::info Enterprise Feature
+import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-If you are a [single-tenant (virtual private)](/docs/cloud/about-cloud/tenancy#single-tenant) customer, this SSO config docs is not for you. Instead, please [contact support](mailto:support@getdbt.com), if you wish to newly configure your SSO config or update your SSO config.
-
-:::
+<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
 ## Okta SSO
 
