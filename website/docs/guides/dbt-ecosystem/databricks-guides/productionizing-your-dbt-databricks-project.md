@@ -85,24 +85,7 @@ Your CI job will ensure that the models build properly and pass any tests applie
 - A service principal called *dbt_test_sp*
 - A new dbt Cloud environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend using dbt Cloud’s [defer](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) feature to set up a [Slim CI](/docs/deploy/cloud-ci-job#configuring-a-slim-ci-job) job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse.
-
-Let’s create the Slim CI job:
-
-1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
-2. **Name** the job “CI Check”
-3. Set the **Environment** to your *test* environment
-4. Under **Execution Settings**
-    - Use the dropdown under Defer to a previous run state? to select the “Daily Refresh” job.
-        - This will tell our CI job to look at the artifacts from our “Daily Refresh” job’s most recent run to determine which resources are new or modified.
-    
-    Add the following **Command:**
-    
-    - `dbt build –select state:modified+`
-        - Combining [state](/docs/deploy/project-state) with the defer option above, our job will use the production environment’s models upstream of the modified resources rather than rebuild models that have already been tested and are already running in production. The modified resources and downstream models will be built in a temporary schema in the *test* catalog.
-5. Under **Triggers**, select the **Continuous Integration (CI)** tab and check the **Run on Pull Requests?** box.
-    - This will automatically kick off the job when a developer creates a pull request via the dbt Cloud IDE and display the status of the job within the git provider’s interface.
-    - Note that this option will only be available if your git repo has a native integration with dbt Cloud (currently GitHub, GitLab, and Azure DevOps).
+We recommend setting up a dbt Cloud Slim CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a Slim CI job, refer to [Set up Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 
@@ -142,9 +125,9 @@ The five key steps for troubleshooting dbt Cloud issues are:
 
 Consult the [Debugging errors documentation](/guides/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
 
-To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run History" tab in your dbt Cloud project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/dbt-cloud-job#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
+To troubleshoot issues with a dbt Cloud job, navigate to the "Deploy > Run History" tab in your dbt Cloud project and select the failed run. Then, expand the run steps to view [console and debug logs](/docs/deploy/run-visibility#access-logs) to review the detailed log messages. To obtain additional information, open the Artifacts tab and download the compiled files associated with the run.
 
-If your jobs are taking longer than expected, use the [model timing](https://docs.getdbt.com/docs/deploy/dbt-cloud-job#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
+If your jobs are taking longer than expected, use the [model timing](/docs/deploy/run-visibility#model-timing) dashboard to identify bottlenecks in your pipeline. Analyzing the time taken for each model execution helps you pinpoint the slowest components and optimize them for better performance. The Databricks [Query History](https://docs.databricks.com/sql/admin/query-history.html) lets you inspect granular details such as time spent in each task, rows returned, I/O performance, and execution plan.
 
 For more on performance tuning, see our guide on [How to Optimize and Troubleshoot dbt Models on Databricks](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 
@@ -202,5 +185,5 @@ To get the most out of both tools, you can use the [persist docs config](/refere
 - [Advanced deployments course](https://courses.getdbt.com/courses/advanced-deployment) if you want a deeper dive into these topics
 - [Autoscaling CI: The intelligent Slim CI](https://docs.getdbt.com/blog/intelligent-slim-ci)
 - [Trigger a dbt Cloud Job in your automated workflow with Python](https://discourse.getdbt.com/t/triggering-a-dbt-cloud-job-in-your-automated-workflow-with-python/2573)
-- [Databricks + dbt Cloud Quickstart Guide](/docs/quickstarts/dbt-cloud/databricks)
+- [Databricks + dbt Cloud Quickstart Guide](/quickstarts/databricks)
 - Reach out to your Databricks account team to get access to preview features on Databricks.

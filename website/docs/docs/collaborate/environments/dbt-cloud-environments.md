@@ -10,7 +10,7 @@ An environment determines how dbt Cloud will execute your project in both the db
 2. The warehouse connection information (including the target database/schema settings)
 3. The version of your code to execute
 
-For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments.md).
+For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments).
 
 ## Types of environments
 
@@ -123,7 +123,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 #### Editable fields
 
-- **Catalog** (optional): [Unity Catalog namespace](/reference/warehouse-setups/databricks-setup.md)
+- **Catalog** (optional): [Unity Catalog namespace](/docs/core/connect-data-platform/databricks-setup)
 
 </div>
 

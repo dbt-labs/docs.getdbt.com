@@ -3,7 +3,7 @@ title: "Project variables"
 id: "project-variables"
 ---
 
-dbt provides a mechanism, [variables](reference/dbt-jinja-functions/var), to provide data to models for
+dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for
 compilation. Variables can be used to [configure timezones](https://github.com/dbt-labs/snowplow/blob/0.3.9/dbt_project.yml#L22),
 [avoid hardcoding table names](https://github.com/dbt-labs/quickbooks/blob/v0.1.0/dbt_project.yml#L23)
 or otherwise provide data to models to configure how they are compiled.
@@ -16,6 +16,13 @@ Variables can be defined in two ways:
 2. On the command line
 
 ### Defining variables in `dbt_project.yml`
+
+
+:::info
+
+`vars` doesn't support rendering Jinja.
+
+:::
 
 :::info New in v0.17.0
 

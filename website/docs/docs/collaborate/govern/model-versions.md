@@ -57,7 +57,7 @@ Rather than constantly adding a new version for each small change, you should op
 
 [Version control](/docs/collaborate/git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
 
-When you make updates to a model's source code—its logical definition, in SQL or Python, or related configuration—dbt can [compare your project to previous state](/docs/deploy/project-state), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production—all coordinated via your version control system.
+When you make updates to a model's source code &mdash; its logical definition, in SQL or Python, or related configuration &mdash; dbt can [compare your project to the previous state](/reference/node-selection/syntax#about-node-selection), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production &mdash; all coordinated via your version control system.
 
 **Versioned models are different.** Defining model `versions` is appropriate when people, systems, and processes beyond your team's control, inside or outside of dbt, depend on your models. You can neither simply go migrate them all, nor break their queries on a whim. You need to offer a migration path, with clear diffs and deprecation dates.
 
@@ -164,7 +164,7 @@ models:
 
 </File>
 
-Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create create a new model file (SQL or Python) encompassing those breaking changes.
+Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create a new model file (SQL or Python) encompassing those breaking changes.
 
 
 The default convention is naming the new file with a `_v<version>` suffix. Let's make a new file, named `dim_customers_v2.sql`. (We don't need to rename the existing model file just yet, while it's still the "latest" version.)
