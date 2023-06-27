@@ -38,7 +38,7 @@ Vendors are generally individuals belonging to companies that are creating produ
 ### Rule 1: Identify yourself 
 Include your company in your display name, e.g. "Alice (DataCo)". When joining a discussion about your product (after the waiting period below), be sure to note your business interests. 
 
-### Rule 2: Let the community speak first
+### Rule 2: Let others speak first
 If a community member asks a question about your product directly, or mentions that they have a problem that your product could help with, wait 1 business day before responding to allow other members to share their experiences and recommendations. (This doesn't apply to unambiguously support-style questions from existing users, or in your `#tools-` channel if you have one).
 
 ### Rule 3: Keep promotional content to specified spaces
