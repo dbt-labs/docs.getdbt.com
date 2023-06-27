@@ -9,8 +9,6 @@ hide_table_of_contents: true
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, document, and investigate data models all in one browser-based UI. In addition to providing a hosted architecture for running dbt Core across your organization, dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated development environment (IDE).
 
 dbt Cloud's [flexible plans](https://www.getdbt.com/pricing/) and features make it well-suited for data teams of any size &mdash; sign up for your [free 14-day trial](https://www.getdbt.com/signup/)! 
-### Supported browsers
-To have the best experience using dbt Cloud, we recommend using the latest version of Google Chrome and Mozilla Firefox.
 
 <div className="grid--3-col">
 
