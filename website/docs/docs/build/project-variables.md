@@ -102,9 +102,9 @@ The order of precedence for variable declaration is as follows (highest priority
 
 <VersionBlock lastVersion="1.5">
 
-1. The variables defined on the command line with `--vars`.
+1. The variables defined on the command line with `--vars`
 2. The package-scoped variable declaration in the root `dbt_project.yml` file
-3. The global variable declaration in the root `dbt_project.yml` file.
+3. The global variable declaration in the root `dbt_project.yml` file
 4. The variable's default argument (if one is provided).
 
 </VersionBlock>
