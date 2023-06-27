@@ -181,7 +181,7 @@ By combining package-level overrides and `dispatch`, it is possible to achieve t
 
     - _Mechanism:_ Each package implements its "local" override by registering a candidate for dispatch with an adapter prefix, for example, `default__generate_schema_name` or `default__create_table_as`. The root-level project can then register its own candidate for dispatch (`default__generate_schema_name`), winning the default search order or by explicitly overriding the macro by name (`generate_schema_name`).
 
-3. **Same rules everywhere all the time.** As a member of the data platform team responsible for consistency across teams at my organization, I want to create a "macro package" that every team can install & use.
+3. **Same rules everywhere all the time** &mdash; As a member of the data platform team responsible for consistency across teams at your organization, you want to create a "macro package" that every team can install & use.
 
     - _Mechanism:_ Create a standalone package of candidate macros only, for example, `default__generate_schema_name` or `default__create_table_as`. Add a [project-level `dispatch` configuration](/reference/project-configs/dispatch-config) in every project's `dbt_project.yml`.
 
