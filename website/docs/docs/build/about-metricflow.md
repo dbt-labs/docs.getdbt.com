@@ -231,7 +231,7 @@ metric:
     numerator: revenue
     denominator: active_customers
   filter: |  
-  {{ dimension('country', entity_path=['customer']) }} = 'MX'
+  {{ dimension('country', entity_path=['customer']) }} = 'Mexico'
 ```
 </TabItem>
 </Tabs>

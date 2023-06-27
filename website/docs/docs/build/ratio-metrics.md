@@ -19,7 +19,7 @@ Ratio allows you to create a ratio between two measures. You simply specify a nu
       numerator: cancellations_usd
       denominator: transaction_amount_usd
     filter: | # add optional constraint string. This applies to both the numerator and denominator
-      is_internal = false
+      {{ dimension('country', entity_path=['customer']) }} = 'MX'
 
   - name: enterprise_cancellation_rate
     owners:
@@ -31,7 +31,7 @@ Ratio allows you to create a ratio between two measures. You simply specify a nu
         filter: tier = 'enterprise' #constraint only applies to the numerator
       denominator: transaction_amount_usd 
     filter: | # add optional constraint string. This applies to both the numerator and denominator
-      is_internal = false
+      {{ dimension('country', entity_path=['customer']) }} = 'MX'
   
 ```
 ### Different semantic models
