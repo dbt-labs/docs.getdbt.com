@@ -8,7 +8,7 @@ id: 4-how-we-style-our-jinja
 - 🫧 When using Jinja delimiters, use spaces on the inside of your delimiter, like `{{ this }}` instead of `{{this}}`
 - 🆕 Use newlines to visually indicate logical blocks of Jinja.
 - 4️⃣ Indent 4 spaces into a Jinja block to indicate visually that the code inside is wrapped by that block.
-- ❌ Don't worry about Jinja whitespace control, focus on your project code being readable. The time you save by not worrying about whitespace control will far outweigh the time you spend in your compiled code where it might not be perfect.
+- ❌ Don't worry (too much) about Jinja whitespace control, focus on your project code being readable. The time you save by not worrying about whitespace control will far outweigh the time you spend in your compiled code where it might not be perfect.
 
 ## Examples of Jinja style
 

@@ -5,7 +5,7 @@ id: 6-how-we-style-conclusion
 
 ## BYO Styles
 
-Now that you've seen how we style our dbt projects, it's time to build your own. Feel free to copy this guide and use it as a template for your own project. If you do, we'd love to hear about it! Reach out to us on LinkedIn or in the dbt Slack community to share your style guide. We recommend co-locating your style guide with your code to make sure contributors can easily follow it. If you're using GitHub, you can add your style guide to your repository's wiki, or include it in your README.
+Now that you've seen how we style our dbt projects, it's time to build your own. Feel free to copy this guide and use it as a template for your own project. If you do, we'd love to hear about it! Reach out to us on [the Community Forum](https://discourse.getdbt.com/c/show-and-tell/22) or [Slack](https://www.getdbt.com/community) to share your style guide. We recommend co-locating your style guide with your code to make sure contributors can easily follow it. If you're using GitHub, you can add your style guide to your repository's wiki, or include it in your README.
 
 ## Pre-commit hooks
 
