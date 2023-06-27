@@ -169,21 +169,21 @@ dispatch:
 
 ### Managing different global overrides across packages
 
-You can override global behaviors in different ways for each project that is installed as a package. This holds true for all global macros: `generate_schema_name`, `create_table_as`, etc. When parsing or running a resource defined in a package, the definition of the global macro within that package takes precedence over the definition in the root project, because it's more specific to those resources.
+You can override global behaviors in different ways for each project that is installed as a package. This holds true for all global macros: `generate_schema_name`, `create_table_as`, etc. When parsing or running a resource defined in a package, the definition of the global macro within that package takes precedence over the definition in the root project because it's more specific to those resources.
 
 By combining package-level overrides and `dispatch`, it is possible to achieve three different patterns:
 
-1. **Package always wins.** As the developer of dbt models in a project that will be deployed elsewhere as a package, I want full control over the macros used to define & materialize my models. My macros should always take precedence for my models, and there should not be any way to override them.
+1. **Package always wins** &mdash; As the developer of dbt models in a project that will be deployed elsewhere as a package, You want full control over the macros used to define & materialize my models. Your macros should always take precedence for your models, and there should not be any way to override them.
 
-_Mechanism:_ Each project/package fully overrides the macro by its name, e.g. `generate_schema_name` or `create_table_as`. Do not use dispatch.
+    - _Mechanism:_ Each project/package fully overrides the macro by its name, for example, `generate_schema_name` or `create_table_as`. Do not use dispatch.
 
-2. **Conditional application (root project wins).** As the maintainer of one dbt project in a mesh of multiple, my team wants conditional application of these rules. When running my project standalone (in development), I want my to apply my custom behavior; but when installed as a package and deployed alongside several other projects (in production), I want the root-level project's rules to apply.
+2. **Conditional application (root project wins)** &mdash; As the maintainer of one dbt project in a mesh of multiple, your team wants conditional application of these rules. When running your project standalone (in development), you want to apply custom behavior; but when installed as a package and deployed alongside several other projects (in production), you want the root-level project's rules to apply.
 
-_Mechanism:_ Each package implements its "local" override by registering a candidate for dispatch with an adapter prefix, e.g. `default__generate_schema_name` or `default__create_table_as`. Then, the root-level project can register its own candidate for dispatch (`default__generate_schema_name`), winning the default search order, or by explicitly overriding the macro by name (`generate_schema_name`).
+    - _Mechanism:_ Each package implements its "local" override by registering a candidate for dispatch with an adapter prefix, for example, `default__generate_schema_name` or `default__create_table_as`. The root-level project can then register its own candidate for dispatch (`default__generate_schema_name`), winning the default search order or by explicitly overriding the macro by name (`generate_schema_name`).
 
 3. **Same rules everywhere all the time.** As a member of the data platform team responsible for consistency across teams at my organization, I want to create a "macro package" that every team can install & use.
 
-_Mechanism:_ Create a standalone package of candidate macros only, e.g. `default__generate_schema_name` or `default__create_table_as`. Add a [project-level `dispatch` configuration](/reference/project-configs/dispatch-config) in every project's `dbt_project.yml`.
+    - _Mechanism:_ Create a standalone package of candidate macros only, for example, `default__generate_schema_name` or `default__create_table_as`. Add a [project-level `dispatch` configuration](/reference/project-configs/dispatch-config) in every project's `dbt_project.yml`.
 
 ## For adapter plugin maintainers
 
