@@ -201,6 +201,8 @@ your_profile_name:
       method: session
       schema: [database/schema name]
       host: NA                           # not used, but required by `dbt-core`
+      server_side_parameters:
+        "spark.sql.extensions": "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions"
 ```
 
 </File>
