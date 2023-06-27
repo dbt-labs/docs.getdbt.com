@@ -35,7 +35,7 @@ Before continuing, make sure you understand dbt's approach to [managing environm
 
 </div> <br /> 
 
-## Manage your jobs
+## dbt Cloud jobs
 
 <div className="grid--3-col">
 

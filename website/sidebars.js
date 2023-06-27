@@ -286,15 +286,6 @@ const sidebarSettings = {
         "docs/deploy/job-scheduler",
         {
           type: "category",
-          label: "Manage your jobs",
-          link: { type: "doc", id: "docs/deploy/job-settings", },
-          items: [
-            "docs/deploy/job-commands",
-            "docs/deploy/job-triggers",
-          ],
-        },
-        {
-          type: "category",
           label: "Continuous integration",
           link: { type: "doc", id: "docs/deploy/continuous-integration" },
           items: [
@@ -303,9 +294,20 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Monitor jobs and alerts",
-          link: { type: "doc", id: "docs/deploy/run-visibility", },
+          label: "Deploy dbt Cloud",
+          link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
+            "docs/deploy/job-settings",
+            "docs/deploy/job-commands",
+            "docs/deploy/job-triggers",
+          ],
+        },
+        {
+          type: "category",
+          label: "Monitor jobs and alerts",
+          link: { type: "doc", id: "docs/deploy/monitor-jobs" },
+          items: [
+            "docs/deploy/run-visibility",
             "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
