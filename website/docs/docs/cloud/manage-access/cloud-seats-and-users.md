@@ -10,7 +10,7 @@ In dbt Cloud, _licenses_ are used to allocate users to your account. There are t
 - Read-only
 - IT
 
-The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
+The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions (this license type is only available on Enterprise and Team plans).
 
 | Functionality | Developer User | Read Only Users | IT Users |
 | ------------- | -------------- | --------------- | -------- |
@@ -33,7 +33,7 @@ The following tabs detail steps on how to modify your user license count:
 
 <TabItem value="enterprise" label="Enterprise plans">
 
-If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
+If you're on an Enterprise or Team plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage on Enterprise plans.
 
 - To remove a user, go to **Account Settings**, select **Users** under **Teams**. Select the user you want to remove, click **Edit**, and then **Delete**. This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 

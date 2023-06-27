@@ -56,6 +56,17 @@ Security Admins have access to modify certain account-level settings. Users with
     - View and export Audit Logs
     - Create, delete, and modify IP Restrictions
 
+### Billing Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Billing Admins have access to modify certain account-level settings related to billing. Users with Billing Admin permissions can:
+
+- View and modify Account Settings such as:
+    - View billing information
+    - Modify billing information (accounts on the Team plan)
+        - This includes modifying Developer Seat counts for the Account
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings

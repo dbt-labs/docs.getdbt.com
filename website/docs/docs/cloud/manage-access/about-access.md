@@ -38,7 +38,7 @@ to access. dbt Cloud's three license types are:
 For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
 At a high level, Developers may be granted _any_ permissions, whereas Read Only
 users will have read-only permissions applied to all dbt Cloud resources
-regardless of the role-based permissions that the user is assigned. IT users will have Security Admin permissions applied regardless of the role-based permissions that the user is assigned.
+regardless of the role-based permissions that the user is assigned. IT users will have Security Admin and Billing Admin permissions applied regardless of the role-based permissions that the user is assigned.
 
 ## Role-based access control
 
