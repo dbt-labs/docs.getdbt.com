@@ -5,7 +5,7 @@
   * [Versioning entire pages](#versioning-entire-pages)
   * [Versioning blocks of content](#versioning-blocks-of-content)
 * [Using global variables](#using-global-variables)
-* [Reusing snippets of content](#reusing-snippets-of-content)
+* [Reusing content](#reusing-content)
 
 ## About versioning
 
@@ -219,20 +219,65 @@ To use the component at the beginning of a sentence, add a non-breaking space ch
 <Var name="dbt" /> is awesome!
 ```
 
-## Reusing snippets of content
+## Reusing content
 
-The Snippet component allows for content to be reusable throughout the Docs. This is very similar to the existing FAQ component.
+Use some techniques to share the same content on different pages, like partial files or snippets. 
+
+Using partial files, which is a built-in Docusaurus feature, is recommended over snippets.
+
+### Partial
+
+A partial file allows you to reuse content throughout the Docs. Here are the steps you can take to create and use a partial file:
+
+1. Create a new markdown partial file in the `website/snippets` directory. The file name must begin with an underscore, like `_filename.md`
+2. Go back to the Docs file that's pulling content from the partial file 
+3. Add the following import file: `import SetUpPages from '/snippets/_this-is-your-partial-file-name.md';`
+   * To use partials, you must always add an import file in that format. Note `SetUpPages` can be whatever makes sense for your purpose.
+   * `.md` needs to be added to the end of the filename. 
+3. Go to the next line and add `<SetUpPages anyname={'/snippets/_this-is-your-partial-file-name.md'}/>`. This fetches the reusable content in the partial file
+   * Note `anyname` can be whatever makes sense for your purpose.
+
+You can also use this for more advanced use cases like reusable frontmatter.
+
+#### Partial example
+
+To create a new partial to use throughout the site, first, we will create a new markdown partial file within the snippets directory:
+
+```markdown
+/snippets/_partial-name.md
+## Header 2
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum porttitor dui, id scelerisque enim scelerisque at.
+```
+
+Now, we can add this snippet to a Docs file with the Snippet component:
+
+```markdown
+Docs content here.
+
+import SetUpPages from 'import SetUpPages from '/snippets/_this-is-your-partial-file-name.md';
+
+<SetUpPages anyname={'/snippets/_this-is-your-partial-file-name.md'}/>
+
+Docs content here.
+```
+
+
+
+### Snippets
+
+The Snippet component allows for content to be reusable throughout the Docs. This is very similar to the existing FAQ component. Using partial files, which is a built-in Docusaurus feature, is recommended over snippets. 
 
 Creating and using a snippet requires two steps:
 
 1. Create a new markdown snippet file in the `website/snippets` directory.
 2. Use the `<Snippet src="filename" />` component within a Docs file.
 
-### Snippet properties
+#### Snippet properties
 
 **src:** Expects the file name of the snippet which lives in the snippets directory
 
-### Snippet example
+#### Snippet example
 
 To create a new snippet to use throughout the site, first we will create a new markdown snippet within the snippets directory:
 
