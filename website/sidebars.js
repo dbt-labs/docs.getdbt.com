@@ -294,7 +294,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Deploy dbt Cloud",
+          label: "dbt Cloud jobs",
           link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
             "docs/deploy/job-settings",

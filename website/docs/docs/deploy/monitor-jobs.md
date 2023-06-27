@@ -18,4 +18,13 @@ Monitoring and alerting with dbt Cloud allows you to:
 
 The docs in this section provide detailed information required for configuring and managing your dbt jobs in dbt Cloud. 
 
-<!-- maybe add carousel -->
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="98%" title="An overview of a dbt Cloud job run which contains Run Summary, Job Trigger, Run Duration, and more."/>
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-history.jpg" width="95%" title="Run History dashboard allows you to monitor the health of your dbt project and displays jobs, job status, environment, timing, and more."/>
+
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/access-logs.gif" width="85%" title="Access logs for run steps" />
+
+</DocCarousel>
