@@ -692,6 +692,7 @@ const sidebarSettings = {
             "reference/commands/init",
             "reference/commands/list",
             "reference/commands/parse",
+            "reference/commands/retry",
             "reference/commands/rpc",
             "reference/commands/run",
             "reference/commands/run-operation",
@@ -1021,7 +1022,6 @@ const sidebarSettings = {
       label: "Legacy",
       items: [
         "guides/legacy/debugging-schema-names",
-        "guides/legacy/getting-help",
         "guides/legacy/best-practices",
         "guides/legacy/building-packages",
         "guides/legacy/videos",
@@ -1068,10 +1068,10 @@ const sidebarSettings = {
       items: [
         "community/resources/viewpoint",
         "community/resources/code-of-conduct",
-        "community/resources/slack-rules-of-the-road",
+        "community/resources/community-rules-of-the-road",
         "community/resources/maintaining-a-channel",
-        "community/resources/vendor-guidelines",
         "community/resources/forum-guidelines",
+        "community/resources/getting-help",
         "community/resources/organizing-inclusive-events",
         "community/resources/oss-expectations",
         "community/resources/oss-projects",
