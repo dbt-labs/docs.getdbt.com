@@ -788,7 +788,7 @@ The following examples create a materialized view:
 {{
   config(
     materialized = 'materialized_view',
-    on_configuration_change ='apply',
+    on_configuration_change = 'apply',
   )
 }}
 ```
