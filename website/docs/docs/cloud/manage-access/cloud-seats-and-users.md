@@ -21,7 +21,8 @@ The user's assigned license determines the specific capabilities they can access
 | API Access | ✅ | ❌ | ❌ |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
-*Available on Enterprise and Team plans only.
+*Available on Enterprise and Team plans only and doesn't count toward seat usage.
+
 ## Licenses
 
 Each dbt Cloud plan comes with a base number of Developer, IT, and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
