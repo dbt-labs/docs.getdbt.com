@@ -13,7 +13,7 @@ date: 2023-06-01
 
 Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 13 new community contributors to docs.getdbt.com!
 
-What's new to [docs.getdbt.com](http://docs.getdbt.com/) in May:
+Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) in May:
 
 ## 🔎 Discoverability
 
