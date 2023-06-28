@@ -29,7 +29,6 @@ What's new to [docs.getdbt.com](http://docs.getdbt.com/) in May:
     - [About the Discovery API](/docs/dbt-cloud-apis/discovery-api)
     - [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
     - [Query the Discovery API](/docs/dbt-cloud-apis/discovery-querying)
-    - [Project state in dbt Cloud](/docs/deploy/project-state#project-state-in-dbt-cloud)
 
 ## 🎯 Core projects
 
