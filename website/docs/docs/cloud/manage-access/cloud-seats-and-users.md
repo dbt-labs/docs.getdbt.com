@@ -6,13 +6,14 @@ sidebar: "Users and licenses"
 ---
 
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
-- Developer
-- Read-only
-- IT
 
-The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
+- **Developer** &mdash; Granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud.
+- **Read-only** &mdash; Intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account.
+- **IT** &mdash; Can manage users, groups, and licenses, among other permissions. Available on Enterprise and Team plans only.
 
-| Functionality | Developer User | Read Only Users | IT Users |
+The user's assigned license determines the specific capabilities they can access in dbt Cloud.
+
+| Functionality | Developer User | Read Only Users | IT Users* |
 | ------------- | -------------- | --------------- | -------- |
 | Use the Developer IDE | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
@@ -20,6 +21,7 @@ The type of license a user is assigned controls which capabilities of dbt Cloud 
 | API Access | ✅ | ❌ | ❌ |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
+*Available on Enterprise and Team plans only and doesn't count toward seat usage.
 
 ## Licenses
 

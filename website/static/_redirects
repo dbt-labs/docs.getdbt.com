@@ -1,3 +1,5 @@
+/docs/cloud/manage-access/licenses-and-groups /docs/cloud/manage-access/about-user-access 301
+
 /docs/deploy/cloud-ci-job /docs/deploy/continuous-integration 301
 
 ## quickstarts redirect again
@@ -571,7 +573,6 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/setting-up-snowflake-sso /docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth 301
 /docs/setting-up-sso-with-google-gsuite /docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite 301
 /docs/setting-up-sso-with-okta /docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta 301
-/docs/slack-rules-of-the-road /docs/contributing/slack-rules-of-the-road 301
 /docs/snapshot /reference/commands/snapshot 301
 /docs/snapshots /docs/building-a-dbt-project/snapshots 301
 /docs/snowflake-configs /reference/resource-configs/snowflake-configs 301
@@ -826,11 +827,14 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/contributor-license-agreements /community/resources/contributor-license-agreements 301
 /community/maintaining-a-channel /community/resources/maintaining-a-channel 301
 /docs/contributing/oss-expectations /community/resources/oss-expectations 301
-/docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
+/docs/slack-rules-of-the-road /community/resources/community-rules-of-the-road 301
+/docs/contributing/slack-rules-of-the-road /community/resources/community-rules-of-the-road 301
+/community/resources/slack-rules-of-the-road /community/resources/community-rules-of-the-road 301
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
 /docs/getting-started/develop-in-the-cloud#creating-a-development-environment /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
 /docs/cloud-developer-ide /docs/build/custom-target-names#dbt-cloud-ide 301
 /website/docs/docs/contributing/building-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
+/guides/legacy/getting-help /community/resources/getting-help 301
 
 # Blog docs
 
