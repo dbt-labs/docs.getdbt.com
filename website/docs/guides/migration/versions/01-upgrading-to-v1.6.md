@@ -27,7 +27,16 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ## New and changed documentation
 
+[`dbt retry`](/reference/commands/retry) is a new command that executes the previously run command from the point of failure. This convenient command enables dbt users to continue a failed command without rebuilding all upstream dependencies. 
+
+**Materialize view** support (for model and project configs) has been added for three data warehouses:
+    - [Bigquery](/reference/resource-configs/bigquery-configs)
+    - [Postgres](/reference/resource-configs/postgres-configs)
+    - [Redshift](/reference/resource-configs/redshift-configs)
+
 [**Namespacing:**](/faqs/Models/unique-model-names) Model names can be duplicated across different namespaces (packages/projects), so long as they are unique within each package/project. We strongly encourage using [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant) when referencing a model from a different package/project.
+
+[`dbt retry`](/reference/commands/retry) executes the previously run command from the point of failure.
 
 ### Quick hits
 
