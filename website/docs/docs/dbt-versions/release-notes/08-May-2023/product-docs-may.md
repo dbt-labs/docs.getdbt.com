@@ -3,7 +3,7 @@ title: "May 2023 product docs updates"
 id: "May-product-docs"
 description: "May 2023: Find out what the product docs team has been busy doing in the month of May."
 sidebar_label: "Update: product docs changes"
-sidebar_position: 8
+sidebar_position: 1
 tags: [May-2023,product-docs]
 ---
 
