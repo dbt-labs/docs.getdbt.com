@@ -42,7 +42,7 @@ The `{{ ref }}` function returns a `Relation` object that has the same `table`, 
 The `ref` function supports an optional keyword argument - `version` (or `v`).
 When a version argument is provided to the `ref` function, dbt returns to the `Relation` object corresponding to the specified version of the referenced model.
 
-This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guaruntee no breaking changes to existing versions of the model.
+This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guarantees no breaking changes to existing versions of the model.
 
 If the `version` argument is not supplied to a `ref` of a versioned model, the latest version is. This has the benefit of automatically incorporating the latest changes of a referenced model, but there is a risk of incorporating breaking changes.
 
