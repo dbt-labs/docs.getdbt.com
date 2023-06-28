@@ -36,8 +36,6 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 [**Namespacing:**](/faqs/Models/unique-model-names) Model names can be duplicated across different namespaces (packages/projects), so long as they are unique within each package/project. We strongly encourage using [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant) when referencing a model from a different package/project.
 
-[`dbt retry`](/reference/commands/retry) executes the previously run command from the point of failure.
-
 ### Quick hits
 
 More consistency and flexibility around packages! Resources defined in a package will respect variable and global macro definitions within the scope of that package.
