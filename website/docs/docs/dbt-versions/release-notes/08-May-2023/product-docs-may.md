@@ -5,6 +5,7 @@ description: "May 2023: Find out what the product docs team has been busy doing 
 sidebar_label: "Update: product docs changes"
 sidebar_position: 1
 tags: [May-2023,product-docs]
+date: 06-01-2023
 ---
 
 
