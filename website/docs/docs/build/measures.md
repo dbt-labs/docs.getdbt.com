@@ -60,83 +60,84 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 ### Model with different aggregations
 
 ```yaml
-semantic_model:
- name: transactions
- description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU.
- model: ref('schema.transactions')
+semantic_models:
+ - name: transactions
+    description: A record for every transaction that takes place. Carts are considered  multiple transactions for each SKU.
+    model: ref('schema.transactions')
+    default:
+      agg_time_dimensions:
 
 # --- entities ---
- entities:
-   - name: transaction_id
-     type: primary
-   - name: customer_id
-     type: foreign
-   - name: store_id
-     type: foreign
-   - name: product_id
-     type: foreign
+  entities:
+    - name: transaction_id
+      type: primary
+    - name: customer_id
+      type: foreign
+    - name: store_id
+      type: foreign
+    - name: product_id
+      type: foreign
 
-# --- measures ---
- measures:
-   - name: transaction_amount_usd
-     description: Total USD value of transactions
-     expr: transaction_amount_usd
-     agg: sum
-   - name: transaction_amount_usd_avg
-     description: Average USD value of transactions
-     expr: transaction_amount_usd
-     agg: average
-   - name: transaction_amount_usd_max
-     description: Maximum USD value of transactions
-     expr: transaction_amount_usd
-     agg: max
-   - name: transaction_amount_usd_min
-     description: Minimum USD value of transactions
-     expr: transaction_amount_usd
-     agg: min
-   - name: quick_buy_transactions 
-     description: The total transactions bought as quick buy
-     expr: quick_buy_flag 
-     agg: sum_boolean 
-   - name: distinct_transactions_count
-     description: Distinct count of transactions 
-     expr: transaction_id
-     agg: count_distinct
-   - name: transactions 
-     description: The average value of transactions 
-     expr: transaction_amount_usd
-     agg: average 
-   - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
-     description: The total USD value of valid transactions only
-     expr: CASE WHEN is_valid = True then 1 else 0 end 
-     agg: sum
-   - name: transactions
-     description: The average value of transactions.
-     expr: transaction_amount_usd
-     agg: average
-   - name: p99_transaction_value
-     description: The 99th percentile transaction value
-     expr: transaction_amount_usd
-     agg: percentile
-     agg_params:
-      percentile: .99
-      use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
-   - name: median_transaction_value
-     description: The median transaction value
-     expr: transaction_amount_usd
-     agg: median
-      
+  # --- measures ---
+  measures:
+    - name: transaction_amount_usd
+      description: Total USD value of transactions
+      expr: transaction_amount_usd
+      agg: sum
+    - name: transaction_amount_usd_avg
+      description: Average USD value of transactions
+      expr: transaction_amount_usd
+      agg: average
+    - name: transaction_amount_usd_max
+      description: Maximum USD value of transactions
+      expr: transaction_amount_usd
+      agg: max
+    - name: transaction_amount_usd_min
+      description: Minimum USD value of transactions
+      expr: transaction_amount_usd
+      agg: min
+    - name: quick_buy_transactions 
+      description: The total transactions bought as quick buy
+      expr: quick_buy_flag 
+      agg: sum_boolean 
+    - name: distinct_transactions_count
+      description: Distinct count of transactions 
+      expr: transaction_id
+      agg: count_distinct
+    - name: transactions 
+      description: The average value of transactions 
+      expr: transaction_amount_usd
+      agg: average 
+    - name: transactions_amount_usd_valid #Notice here how we use expr to compute the aggregation based on a condition
+      description: The total USD value of valid transactions only
+      expr: CASE WHEN is_valid = True then 1 else 0 end 
+      agg: sum
+    - name: transactions
+      description: The average value of transactions.
+      expr: transaction_amount_usd
+      agg: average
+    - name: p99_transaction_value
+      description: The 99th percentile transaction value
+      expr: transaction_amount_usd
+      agg: percentile
+      agg_params:
+        percentile: .99
+        use_discrete_percentile: False #False will calculate the discrete percentile and True will calculate the continuous percentile
+    - name: median_transaction_value
+      description: The median transaction value
+      expr: transaction_amount_usd
+      agg: median
+        
 # --- dimensions ---
- dimensions:
-   - name: metric_time
-     type: time
-     expr: date_trunc('day', ts) #expr refers to underlying column ts
-     type_params:
-       is_primary: true
-       time_granularity: day
-   - name: is_bulk_transaction
-     type: categorical
-     expr: case when quantity > 10 then true else false end
+  dimensions:
+    - name: metric_time
+      type: time
+      expr: date_trunc('day', ts) #expr refers to underlying column ts
+      type_params:
+        time_granularity: day
+    - name: is_bulk_transaction
+      type: categorical
+      expr: case when quantity > 10 then true else false end
 
 ```
 
@@ -161,47 +162,55 @@ Parameters under the `non_additive_dimension` will specify dimensions that the m
 
 
 ```yaml
-semantic_model:
-  name: subscription_table
-  description: A subscription table with one row per date for each active user and their subscription plans. 
-  model: ref('your_schema.subscription_table') 
+semantic_models:
+  - name: subscription_table
+    description: A subscription table with one row per date for each active user and their subscription plans. 
+    model: ref('your_schema.subscription_table')
+    default:
+      agg_time_dimension: metric_time 
 
-  entities:
-    - name: user_id
-      type: foreign
+    entities:
+      - name: user_id
+        type: foreign
 
-  dimensions:
-    - name: metric_time
-      type: time
-      expr: date_transaction
-      type_params:
-        is_primary: True
-        time_granularity: day
+    dimensions:
+      - name: metric_time
+        type: time
+        expr: date_transaction
+        type_params:
+          is_primary: True
+          time_granularity: day
 
-  measures: 
-    - name: count_users_end_of_month 
-      description: Count of users at the end of the month 
-      expr: 1
-      agg: sum 
-      non_additive_dimension: 
-        name: metric_time
-        window_choice: min 
-    - name: mrr_end_of_month
-      description: Aggregate by summing all users' active subscription plans at end of month 
-      expr: subscription_value
-      agg: sum 
-      non_additive_dimension: 
-        name: metric_time
-        window_choice: max
-    - name: mrr_by_user_end_of_month
-      description: Group by user_id to achieve each user's MRR at the end of the month 
-      expr: subscription_value
-      agg: sum  
-      non_additive_dimension: 
-        name: metric_time
-        window_choice: max
-        window_groupings: 
-          - user_id 
+    measures: 
+      - name: count_users_end_of_month 
+        description: Count of users at the end of the month 
+        expr: 1
+        agg: sum 
+        non_additive_dimension: 
+          name: metric_time
+          window_choice: min 
+      - name: mrr_end_of_month
+        description: Aggregate by summing all users active subscription plans at end of month 
+        expr: subscription_value
+        agg: sum 
+        non_additive_dimension: 
+          name: metric_time
+          window_choice: max
+      - name: mrr_by_user_end_of_month
+        description: Group by user_id to achieve each users MRR at the end of the month 
+        expr: subscription_value
+        agg: sum  
+        non_additive_dimension: 
+          name: metric_time
+          window_choice: max
+          window_groupings: 
+            - user_id 
+---
+metrics:
+ - name: mrr_end_of_month
+   type: simple
+    type_params:
+       measure: mrr_end_of_month
 ```
 
 We can query the semi-additive metrics using the following syntax:

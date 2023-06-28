@@ -88,21 +88,19 @@ on
 Users can define constraints on input measures for a metric by applying a filter directly to the measure, like so:
 
 ```yaml
-metric:
-  name: frequent_purchaser_ratio
-  description: Fraction of active users who qualify as frequent purchasers
-  owners:
-    - support@getdbt.com
-  type: ratio
-  locked_metadata:
-    value_format: ".2%"
-  type_params:
-    numerator:
-      name: distinct_purchasers
-      filter: is_frequent_purchaser
-      alias: frequent_purchasers
-    denominator:
-      name: distinct_purchasers
+metrics:
+  - name: frequent_purchaser_ratio
+    description: Fraction of active users who qualify as frequent purchasers
+    owners:
+      - support@getdbt.com
+    type: ratio
+    type_params:
+      numerator:
+        name: distinct_purchasers
+        filter: {{dimension('is_frequent_purchaser')}}
+        alias: frequent_purchasers
+      denominator:
+        name: distinct_purchasers
 ```
 
 Note the `filter` and `alias` parameters for the measure referenced in the numerator. Use the `filter` parameter to apply a filter to the measure it's attached to. The `alias` parameter is used to avoid naming conflicts in the rendered SQL queries when the same measure is used with different filters. If there are no naming conflicts, the `alias` parameter can be left out.

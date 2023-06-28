@@ -122,50 +122,51 @@ In this example, a measure named revenue is defined based on two columns in the 
 
 
 ```yaml
-semantic_model:
-  name: transactions
-  description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU.
-  owners: support@getdbt.com
-  model: (ref('transactions'))
+semantic_models:
+  - name: transactions
+    description: "A record for every transaction that takes place. Carts are considered multiple transactions for each SKU."
+    owners: support@getdbt.com
+    model: (ref('transactions'))
+    default:
+        agg_time_dimension: metric_time
 
   # --- entities ---
-  entities:
-    - name: transaction_id
-      type: primary
-    - name: customer_id
-      type: foreign
-    - name: store_id
-      type: foreign
-    - name: product_id
-      type: foreign
+    entities:
+      - name: transaction_id
+        type: primary
+      - name: customer_id
+        type: foreign
+      - name: store_id
+        type: foreign
+      - name: product_id
+        type: foreign
 
-  # --- measures ---
-  measures:
-    - name: revenue
-      description:
-      expr: price * quantity
-      agg: sum
-    - name: quantity
-      description: Quantity of products sold
-      expr: quantity
-      agg: sum
-    - name: active_customers
-      description: A count of distinct customers completing transactions
-      expr: customer_id
-      agg: count_distinct
+    # --- measures ---
+    measures:
+      - name: revenue
+        description:
+        expr: price * quantity
+        agg: sum
+      - name: quantity
+        description: Quantity of products sold
+        expr: quantity
+        agg: sum
+      - name: active_customers
+        description: A count of distinct customers completing transactions
+        expr: customer_id
+        agg: count_distinct
 
-  # --- dimensions ---
-  dimensions:
-    - name: metric_time
-      type: time
-      expr: date_trunc('day', ts)
-      type_params:
-        is_primary: true
-        time_granularity: day
-    - name: is_bulk_transaction
-      type: categorical
-      expr: case when quantity > 10 then true else false end
-```
+    # --- dimensions ---
+    dimensions:
+      - name: metric_time
+        type: time
+        expr: date_trunc('day', ts)
+        type_params:
+          time_granularity: day
+      - name: is_bulk_transaction
+        type: categorical
+        expr: case when quantity > 10 then true else false end
+  ```
 
 </TabItem>
 <TabItem value="example2" label="Product example">
@@ -175,27 +176,27 @@ Similarly, you could then add a `products` semantic model on top of the `product
 Notice the identifiers present in the semantic models `products` and `transactions`. MetricFlow does the heavy-lifting for you by traversing the appropriate join keys to identify the available dimensions to slice and dice your `revenue` metric. 
 
 ```yaml
-semantic_model:
-  name: products
-  description: A record for every product available through our retail stores.
-  owners: support@getdbt.com
-  mode: ref('products')
+semantic_models:
+  - name: products
+    description: A record for every product available through our retail stores.
+    owners: support@getdbt.com
+    mode: ref('products')
 
   # --- identifiers ---
-  entities:
-    - name: product_id
-      type: primary
+    entities:
+      - name: product_id
+        type: primary
 
   # --- dimensions ---
-  dimensions:
-    - name: category
-      type: categorical
-    - name: brand
-      type: categorical
-    - name: is_perishable
-      type: categorical
-      expr: |
-        category in ("vegetables", "fruits", "dairy", "deli")
+    dimensions:
+      - name: category
+        type: categorical
+      - name: brand
+        type: categorical
+      - name: is_perishable
+        type: categorical
+        expr: |
+          category in ("vegetables", "fruits", "dairy", "deli")
 ```
 </TabItem>
 <TabItem value="example3" label="Advanced example">
@@ -223,15 +224,15 @@ group by 1, 2
 MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
 ```yaml
-metric:
-  name: perishables_revenue_per_active_customer
-  description: Revenue from perishable goods (vegetables, fruits, dairy, deli) for each active store.
-  type: ratio
-  type_params:
-    numerator: revenue
-    denominator: active_customers
-  filter: |  
-  {{ dimension('country', entity_path=['customer']) }} = 'Mexico'
+metrics:
+  - name: perishables_revenue_per_active_customer
+    description: Revenue from perishable goods (vegetables, fruits, dairy, deli) for each active store.
+    type: ratio
+    type_params:
+      numerator: revenue
+      denominator: active_customers
+    filter: |  
+      {{ dimension('country', entity_path=['customer']) }} = 'Mexico'
 ```
 </TabItem>
 </Tabs>

@@ -86,10 +86,10 @@ The example metric we'll create is a simple metric that refers directly to a mea
 
 ```yaml
 ---
-metric:
-  name: transaction_amount_usd
-  type: simple
-  type_params:
+metrics:
+  - name: transaction_amount_usd
+    type: simple
+    type_params:
     measure: transaction_amount_usd
 ```
 

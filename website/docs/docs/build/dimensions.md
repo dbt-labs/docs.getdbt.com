@@ -17,10 +17,12 @@ Groups are defined within semantic models, alongside entities and measures, and 
 Refer to the following semantic model example:
 
 ```yaml
-semantic_model:
+semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
     model: {{ ref("fact_transactions") }}
+    default:
+      agg_time_dimension: metric_time
 # --- entities ---
   entities: 
       ...
@@ -35,7 +37,6 @@ semantic_model:
       expr: date_trunc('day', ts)
       type_params:
         is_primary: true
-        time_granularity: day
     - name: is_bulk_transaction
       type: categorical
       expr: case when quantity > 10 then true else false end
@@ -251,81 +252,83 @@ This example shows how to create slowly changing dimensions (SCD) using a semant
 Take note of the extra arguments under `validity_params`: `is_start` and `is_end`. These arguments indicate the columns in the SCD table that contain the start and end dates for each tier (or beginning or ending timestamp column for a dimensional value).
 
 ```yaml 
-semantic_model:
-  name: sales_person_tiers
-  description: SCD Type II table of tiers for sales people 
-  model: {{ref(sales_person_tiers)}}
+semantic_models:
+  - name: sales_person_tiers
+    description: SCD Type II table of tiers for sales people 
+    model: {{ref(sales_person_tiers)}}
+    default:
+      agg_time_dimension: tier_start
 
-  dimensions:
-    - name: tier_start
-      type: time
-      expr: start_date
-      type_params:
-        time_granularity: day
-        validity_params:
-          is_start: True
-    - name: tier_end 
-      type: time
-      expr: end_date
-      type_params:
-        time_granularity: day
-        validity_params:
-          is_end: True
-    - name: tier
-      type: categorical
+    dimensions:
+      - name: tier_start
+        type: time
+        expr: start_date
+        type_params:
+          time_granularity: day
+          validity_params:
+            is_start: True
+      - name: tier_end 
+        type: time
+        expr: end_date
+        type_params:
+          time_granularity: day
+          validity_params:
+            is_end: True
+      - name: tier
+        type: categorical
 
-  entities:
-    - name: sales_person
-      type: natural 
-      expr: sales_person_id
+    entities:
+      - name: sales_person
+        type: natural 
+        expr: sales_person_id
 ```
 
 The following code represents a separate semantic model that holds a fact table for `transactions`:  
 
 ```yaml
-semantic_model: 
-  name: transactions 
-  description: |
-    Each row represents one transaction.
-    There is a transaction, product, sales_person, and customer id for 
-    every transaction. There is only one transaction id per 
-    transaction. The `metric_time` or date is reflected in UTC.
-  model: {{ ref(fact_transactions) }}
+semantic_models: 
+  - name: transactions 
+    description: |
+      Each row represents one transaction.
+      There is a transaction, product, sales_person, and customer id for 
+      every transaction. There is only one transaction id per 
+      transaction. The `metric_time` or date is reflected in UTC.
+    model: {{ ref(fact_transactions) }}
+    default:
+      agg_time_dimension: metric_time
 
-  entities:
-    - name: transaction_id
-      type: primary
-    - name: customer
-      type: foreign
-      expr: customer_id
-    - name: product
-      type: foreign
-      expr: product_id
-    - name: sales_person
-      type: foreign
-      expr: sales_person_id
+    entities:
+      - name: transaction_id
+        type: primary
+      - name: customer
+        type: foreign
+        expr: customer_id
+      - name: product
+        type: foreign
+        expr: product_id
+      - name: sales_person
+        type: foreign
+        expr: sales_person_id
 
-  measures:
-    - name: transactions
-      expr: 1
-      agg: sum
-    - name: gross_sales
-      expr: sales_price
-      agg: sum
-    - name: sales_persons_with_a_sale
-      expr: sales_person_id
-      agg: count_distinct
+    measures:
+      - name: transactions
+        expr: 1
+        agg: sum
+      - name: gross_sales
+        expr: sales_price
+        agg: sum
+      - name: sales_persons_with_a_sale
+        expr: sales_person_id
+        agg: count_distinct
 
-  dimensions:
-    - name: metric_time
-      type: time
-      is_partition: true
-      type_params:
-        is_primary: True
-        time_format: YYYY-MM-DD
-        time_granularity: day
-    - name: sales_geo
-      type: categorical
+    dimensions:
+      - name: metric_time
+        type: time
+        is_partition: true
+        type_params:
+          time_granularity: day
+      - name: sales_geo
+        type: categorical
 ```
 
 You can now access the metrics in the `transactions` semantic model organized by the slowly changing dimension of `tier`. 
