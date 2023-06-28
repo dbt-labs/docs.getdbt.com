@@ -63,7 +63,7 @@ Security Admins have access to modify certain account-level settings. Users with
 
 Billing Admins have access to modify certain account-level settings related to billing. Users with Billing Admin permissions can:
 
-- View and modify Account Settings such as:
+- View and modify **Account Settings** such as:
     - View billing information
     - Modify billing information (accounts on the Team plan)
         - This includes modifying Developer Seat counts for the Account

@@ -34,7 +34,7 @@ to access. dbt Cloud's three license types are:
 
  - **Developer** &mdash; User may be granted _any_ permissions.
  - **Read Only** &mdash; User has read-only permissions applied to all dbt Cloud resources regardless of the role-based permissions that the user is assigned.
- - **IT** &mdash; User has Security Admin and Billing Admin permissions applied regardless of the role-based permissions that the user is assigned.
+ - **IT** &mdash; User has [Security Admin](/docs/cloud/manage-access/enterprise-permissions#security-admin) and [Billing Admin](docs/cloud/manage-access/enterprise-permissions#billing-admin) permissions applied regardless of the role-based permissions that the user is assigned. 
 
 For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
 
@@ -76,7 +76,7 @@ page in your Account Settings.
 />
 
 
-### SSO Mappings
+### SSO mappings
 
 SSO Mappings connect Identity Provider (IdP) group membership to dbt Cloud group
 membership. When a user logs into dbt Cloud via a supported identity provider,
@@ -94,7 +94,7 @@ groups.
 :::
 
 
-### Permission Sets
+### Permission sets
 
 Permission sets are predefined collections of granular permissions. Permission
 sets combine low-level permission grants into high-level roles that can be
