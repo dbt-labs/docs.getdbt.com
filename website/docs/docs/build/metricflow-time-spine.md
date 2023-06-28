@@ -6,7 +6,9 @@ sidebar_label: "MetricFlow time spine"
 tags: [Metrics, Semantic Layer]
 ---
 
-MetricFlow uses a timespine table to construct cumulative metrics. The default name for this table is `metricflow_time_spine`. To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
+MetricFlow uses a timespine table to construct cumulative metrics. By default, MetricFlow expects the timespine table to be named `metricflow_time_spine` and doesn't support using a different name.
+
+To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
 
 ```sql
 -- metricflow_time_spine.sql
@@ -27,12 +29,4 @@ select *
 from final
 ```
 
-The only required column in this table is `date_day`, MetricFlow will handle coarser granularities. Finer grains are not supported at this time.
-
-FAQ:
-1. Can I use a different name for the time spine table?
-No, MetricFlow expects the table to be called `metricflow_time_spine`, and will not work with a different name.
-
-2. Can I use a different grain for the time spine table?
-MetricFlow will handel coarser grains, but finer grains are not supported at this time.
-
+You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but it doesn't currently support finer grains.

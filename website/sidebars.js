@@ -252,6 +252,7 @@ const sidebarSettings = {
               items: [
                 "docs/build/join-logic",
                 "docs/build/validation",
+                "docs/build/metricflow-time-spine",
               ]
             },
             "docs/build/sl-getting-started",
