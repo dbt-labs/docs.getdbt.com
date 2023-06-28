@@ -10,8 +10,8 @@ description: |
 image: /img/community/spotlight/bruno-de-lima.jpg
 pronouns: he/him
 location: Florianópolis, Brazil
-jobTitle: Analytics Engineer
-companyName: Indicium
+jobTitle: Data Engineer
+companyName: phData
 organization: ""
 socialLinks:
   - name: LinkedIn
