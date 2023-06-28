@@ -43,4 +43,4 @@ If you want to contribute to a blog post, we’re focusing on content
 - Published a blog post: [Accelerate your documentation workflow: Generate docs for whole folders at once](/blog/generating-dynamic-docs-dbt)
 - Published a blog post: [Data engineers + dbt v1.5: Evolving the craft for scale](/blog/evolving-data-engineer-craft)
 - Added an [FAQ](/faqs/Warehouse/db-connection-dbt-compile) to clarify the common question users have of *Why does dbt compile need to connect to the database?*
-- Published a [discourse article](https://discourse.getdbt.com/t/how-to-configure-external-user-email-notifications-in-dbt-cloud/8393) about configure job notifications for non-dbt Cloud users
+- Published a [discourse article](https://discourse.getdbt.com/t/how-to-configure-external-user-email-notifications-in-dbt-cloud/8393) about configuring job notifications for non-dbt Cloud users
