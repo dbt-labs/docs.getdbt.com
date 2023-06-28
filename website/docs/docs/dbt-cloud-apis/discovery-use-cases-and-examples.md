@@ -746,7 +746,7 @@ query Lineage($environmentId: Int!, $first: Int!) {
 }
 ```
 
-Then, extract the node definitions and create a lineage graph. You can traverse downstream from sources and seeds (adding an edge from each node with children to its children) or iterate through each node’s parents (if it has them). Keep in mind that models and snapshots can have parents and children, whereas sources and seeds have only children and exposures and metrics only have parents. 
+Then, extract the node definitions and create a lineage graph. You can traverse downstream from sources and seeds (adding an edge from each node with children to its children) or iterate through each node’s parents (if it has them). Keep in mind that models, snapshots, and metrics can have parents and children, whereas sources and seeds have only children and exposures only have parents. 
 
 
 2. Extract the node definitions, construct a lineage graph, and plot the graph.
