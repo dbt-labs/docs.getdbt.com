@@ -391,17 +391,17 @@ const sidebarSettings = {
           items: [
             {
               type: "link",
-              label: "API v2",
+              label: "API v2 (legacy docs)",
               href: "/dbt-cloud/api-v2-legacy",
             },
             {
               type: "link",
-              label: "API v2 (Beta docs)",
+              label: "API v2 (beta docs)",
               href: "/dbt-cloud/api-v2",
             },
             {
               type: "link",
-              label: "API v3 (Beta docs)",
+              label: "API v3 (beta docs)",
               href: "/dbt-cloud/api-v3",
             },
           ],
