@@ -19,6 +19,5 @@ To enable or disable experimental features:
 
 1. Navigate to Your Profile settings by clicking the gear icon in the top right.
 2. Find Experimental features at the bottom of the page.
-3. Click **Beta** to toggle the features on or off.
-
-![Screenshot 2023-06-13 at 09.35.12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c6da7aa7-1536-4a83-8ef0-25f2e79ce57e/Screenshot_2023-06-13_at_09.35.12.png)
+3. Click **Beta** to toggle the features on or off as shown in the following image.
+   ![Experimental features](/img/docs/dbt-versions/experimental-feats.png)
