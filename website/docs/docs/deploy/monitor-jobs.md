@@ -16,7 +16,7 @@ Monitoring and alerting with dbt Cloud allows you to:
 - [Use source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources. 
 - [Use dashboard status tiles](/docs/deploy/dashboard-status-tiles) &mdash; Set up and add status tiles to view data freshness and quality checks
 
-The docs in this section provide detailed information required for configuring and managing your dbt jobs in dbt Cloud. 
+To learn more about how to configure notifications and monitor dbt jobs in dbt Cloud, read the docs in this section.
 
 <DocCarousel slidesPerView={1}>
 

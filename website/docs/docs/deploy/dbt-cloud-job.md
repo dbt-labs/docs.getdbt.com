@@ -17,7 +17,7 @@ Managing your jobs with dbt Cloud allows you to:
 	* Setting up continuous integration (CI) to run when someone opens a new pull request in your dbt repository
 	* Using the API to trigger jobs.  
 
-The docs in this section provide detailed information required for configuring and managing your dbt jobs in dbt Cloud. 
+To learn more about how to configure and manage your dbt jobs in dbt Cloud, read the docs in this section.
 
 <DocCarousel slidesPerView={1}>
 

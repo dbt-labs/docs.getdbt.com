@@ -286,20 +286,20 @@ const sidebarSettings = {
         "docs/deploy/job-scheduler",
         {
           type: "category",
-          label: "Continuous integration",
-          link: { type: "doc", id: "docs/deploy/continuous-integration" },
-          items: [
-            "docs/deploy/slim-ci-jobs",
-          ],
-        },
-        {
-          type: "category",
           label: "dbt Cloud jobs",
           link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
             "docs/deploy/job-settings",
             "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
+          ],
+        },
+        {
+          type: "category",
+          label: "Continuous integration",
+          link: { type: "doc", id: "docs/deploy/continuous-integration" },
+          items: [
+            "docs/deploy/slim-ci-jobs",
           ],
         },
         {
