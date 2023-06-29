@@ -30,7 +30,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 [`dbt retry`](/reference/commands/retry) is a new command that executes the previously run command from the point of failure. This convenient command enables you to continue a failed command without rebuilding all upstream dependencies. 
 
 **Materialized view** support (for model and project configs) has been added for three data warehouses:
-    - [Bigquery](/reference/resource-configs/bigquery-configs)
+    - [Bigquery](/reference/resource-configs/bigquery-configs#materialized-view)
     - [Postgres](/reference/resource-configs/postgres-configs)
     - [Redshift](/reference/resource-configs/redshift-configs)
 
