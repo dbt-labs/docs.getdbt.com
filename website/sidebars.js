@@ -287,8 +287,8 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
-        "docs/collaborate/environments/dbt-cloud-environments",
         "docs/deploy/job-scheduler",
+        "docs/collaborate/environments/dbt-cloud-environments",
         {
           type: "category",
           label: "dbt Cloud jobs",
