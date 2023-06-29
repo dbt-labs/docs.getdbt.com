@@ -1,11 +1,13 @@
 
+## refocus deploy page
 /docs/deploy/dbt-cloud-job /docs/deploy/deployments 301
+/docs/collaborate/environments/environments-in-dbt /docs/environments-in-dbt 301
+/docs/collaborate/environments/dbt-cloud-environments /docs/deploy/dbt-cloud-environments 301
+/docs/collaborate/environments/dbt-core-environments /docs/core/dbt-core-environments 301
 
 /docs/cloud/manage-access/licenses-and-groups /docs/cloud/manage-access/about-user-access 301
 
-
 /docs/deploy/cloud-ci-job /docs/deploy/continuous-integration 301
-
 ## quickstarts redirect again
 
 /docs/quickstarts/dbt-cloud/bigquery         /quickstarts/bigquery 301

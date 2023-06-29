@@ -35,14 +35,14 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/about-setup",
-        "docs/collaborate/environments/environments-in-dbt",
+        "docs/environments-in-dbt",
         {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
           items: [
             "docs/cloud/about-cloud-setup",
-            "docs/collaborate/environments/dbt-cloud-environments",
+            "docs/dbt-cloud-environments",
             {
               type: "category",
               label: "Connect data platform",
@@ -146,7 +146,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-the-cli",
-            "docs/collaborate/environments/dbt-core-environments",
+            "docs/core/dbt-core-environments",
             {
               type: "category",
               label: "Install dbt",
@@ -288,7 +288,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
         "docs/deploy/job-scheduler",
-        "docs/collaborate/environments/dbt-cloud-environments",
+        "docs/deploy/deploy-environments",
         {
           type: "category",
           label: "dbt Cloud jobs",
@@ -327,15 +327,6 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate with others",
       items: [
-        {
-          type: "category",
-          label: "Environments",
-          items: [
-            "docs/collaborate/environments/environments-in-dbt",
-            "docs/collaborate/environments/dbt-cloud-environments",
-            "docs/collaborate/environments/dbt-core-environments",
-          ],
-        },
         {
           type: "category",
           label: "Git version control",

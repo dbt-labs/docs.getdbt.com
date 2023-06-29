@@ -1,9 +1,9 @@
 ---
 title: "dbt Cloud environments"
-id: "dbt-cloud-environments"
+id: "deploy-environments"
 ---
 
-THIS WILL NEED TWEAKING PENDING FEEDBACK!
+rephrase the below to deployment environment
 
 An environment determines how dbt Cloud will execute your project in both the dbt Cloud IDE and scheduled jobs. Critically, in order to execute dbt, environments define three variables:
 
@@ -11,7 +11,7 @@ An environment determines how dbt Cloud will execute your project in both the db
 2. The warehouse connection information (including the target database/schema settings)
 3. The version of your code to execute
 
-For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/collaborate/environments/dbt-core-environments).
+For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/core/dbt-core-environments).
 
 ## Types of environments
 
@@ -34,12 +34,13 @@ Both development and deployment environments have a section called **General Set
 | Default to Custom Branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
 | Custom Branch | dev | Custom Branch name | See below |
 
-**dbt Version notes**
+:::note About dbt version
 
 - dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
 - If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
+:::
 
-**Custom branch behavior**
+### Custom branch behavior
 
 By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting have will have slightly different behavior depending on the environment type:
 
@@ -48,22 +49,12 @@ By default, all environments will use the default branch in your repository (usu
 
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
-## Create a development environment
-
-To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Development** as the environment type.
-
-After setting the **General Settings** as above, there’s nothing more that needs to be done on the environments page. Click **Save** to create the environment.
-
-### Set developer credentials
-
-To use the IDE, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows users to set separate target information, as well as maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
-
-
-<Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="100" height="100" title="Creating a development environment"/>
 
 ## Create a deployment environment
 
 To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type.
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Enviornments to create a deployment environment" />
 
 ### Semantic Layer
 
@@ -96,7 +87,7 @@ This section will not appear if you are using Redshift, as all values are inferr
 
 <div warehouse="Snowflake">
 
-<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-connection.png" title="Snowflake Deployment Connection Settings"/>
+<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-connection.png" width="85%" title="Snowflake Deployment Connection Settings"/>
 
 #### Editable fields
 
@@ -120,7 +111,7 @@ This section will not appear if you are using Spark, as all values are inferred 
 
 <div warehouse="Databricks">
 
-<Lightbox src="/img/docs/collaborate/databricks-deploy-env-deploy-connection.png" title="Databricks Deployment Connection Settings"/>
+<Lightbox src="/img/docs/collaborate/databricks-deploy-env-deploy-connection.png" width="85%" title="Databricks Deployment Connection Settings"/>
 
 #### Editable fields
 
@@ -139,7 +130,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Postgres">
 
-<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" title="Postgres Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="85%" title="Postgres Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -151,7 +142,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Redshift">
 
-<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" title="Redshift Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/postgres-deploy-env-deploy-credentials.png" width="85%" title="Redshift Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -163,7 +154,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Snowflake">
 
-<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-credentials.png" title="Snowflake Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/snowflake-deploy-env-deploy-credentials.png" width="85%" title="Snowflake Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -182,7 +173,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Bigquery">
 
-<Lightbox src="/img/docs/collaborate/bigquery-deploy-env-deploy-credentials.png" title="Bigquery Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/bigquery-deploy-env-deploy-credentials.png" width="85%" title="Bigquery Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -192,7 +183,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Spark">
 
-<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" title="Spark Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="85%" title="Spark Deployment Credentials Settings"/>
 
 #### Editable fields
 
@@ -203,7 +194,7 @@ This section allows you to determine the credentials that should be used when co
 
 <div warehouse="Databricks">
 
-<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" title="Databricks Deployment Credentials Settings"/>
+<Lightbox src="/img/docs/collaborate/spark-deploy-env-deploy-credentials.png" width="85%" title="Databricks Deployment Credentials Settings"/>
 
 #### Editable fields
 

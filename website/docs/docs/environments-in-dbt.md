@@ -13,6 +13,8 @@ In traditional software engineering, different environments often use completely
 
 
 ## Related docs
+- [dbt Cloud environments](/docs/deploy/dbt-cloud-environments)
+- [dbt Core environments](/docs/core/dbt-core-environments)
 - [About dbt Core versions](/docs/dbt-versions/core)
 - [Set Environment variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)
 - [Use Environment variables in jinja](/reference/dbt-jinja-functions/env_var)
