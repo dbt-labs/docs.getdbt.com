@@ -32,7 +32,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 **Materialized view** support (for model and project configs) has been added for three data warehouses:
     - [Bigquery](/reference/resource-configs/bigquery-configs#materialized-view)
     - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
-    - [Redshift](/reference/resource-configs/redshift-configs)
+    - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
 
 [**Namespacing:**](/faqs/Models/unique-model-names) Model names can be duplicated across different namespaces (packages/projects), so long as they are unique within each package/project. We strongly encourage using [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant) when referencing a model from a different package/project.
 
