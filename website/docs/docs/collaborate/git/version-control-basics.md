@@ -72,7 +72,7 @@ target/
 **Note** &mdash; By using a trailing slash, these lines in the `gitignore` file serve as 'folder wildcards', excluding all files and folders within those folders from being tracked by git. 
 
 
-:::tip
+:::note
 
 - **dbt Cloud projects created after Dec 1, 2022** &mdash; If you use the **Initialize dbt Project** button in the dbt Cloud IDE to setup a new and empty dbt project, dbt Cloud will automatically add a `.gitignore` file with the required entries.  If a `.gitignore` file already exists, the necessary folders will be appended to the existing file.
 
