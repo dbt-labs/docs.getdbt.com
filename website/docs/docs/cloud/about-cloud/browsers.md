@@ -16,6 +16,9 @@ dbt Cloud provides two types of browser support:
 - Fully supported &mdash; dbt Cloud is fully tested and supported on these browsers. Features display and work as intended.
 - Best effort &mdash; You can access dbt Cloud on these browsers. Features may not display or work as intended.
 
-You can still access and use dbt Cloud even if you don't use the latest recommended browser or if your browser isn't listed, However, please note that some features may not display correctly as intended.
+You may still be able to access and use dbt Cloud even without using the latest recommended browser or an unlisted browser. However, some features might not display as intended.
 
-Note: To improve your experience using dbt Cloud, we suggest that you turn off ad blockers.
+:::note
+To improve your experience using dbt Cloud, we suggest that you turn off ad blockers.
+:::
+
