@@ -7,7 +7,7 @@ tags: ["scheduler"]
 
 Monitor your dbt Cloud jobs to help identify improvement and set up alerts to proactively alert the right people or team. 
 
-This portion of our documentation will go dbt Cloud's various capabilities that help you monitor your jobs and set up alerts to ensure seamless orchestration, including:
+This portion of our documentation will go over dbt Cloud's various capabilities that help you monitor your jobs and set up alerts to ensure seamless orchestration, including:
 
 - [Run visibility](/docs/deploy/run-visibility) &mdash; View your run history to help identify where improvements can be made to scheduled jobs.
 - [Job notifications](/docs/deploy/job-notifications) &mdash; Receive email or slack notifications when a job run succeeds, fails, or is canceled.
