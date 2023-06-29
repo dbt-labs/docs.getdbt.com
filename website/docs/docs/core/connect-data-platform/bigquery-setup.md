@@ -13,11 +13,12 @@ meta:
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
   platform_name: 'Big Query'
   config_page: '/reference/resource-configs/bigquery-configs'
-  addl_frontmatter: 'hello world'
+  addl_frontmatter: 'a link world'
 ---
 
 <Snippet src="warehouse-setups-cloud-callout" />
 
+<span>to join this channel, go to {frontMatter.meta.addl_frontmatter}</span> for more info
 
 <!--The following code uses a component and the built-in docusaurus markdown partials file, which contains reusable content assigned in the meta frontmatter. For this page, the partial file is _setup-pages-intro.md. You have to include the 'import' code and then assign the component as needed. -->
 
@@ -527,3 +528,5 @@ https://www.googleapis.com/auth/iam.test
 A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your OAuth'd credentials to connect to BigQuery!
 
 This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.
+
+
