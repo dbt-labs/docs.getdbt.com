@@ -21,6 +21,7 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
         "docs/cloud/about-cloud/about-cloud-ide",
+        "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
     {
@@ -391,12 +392,17 @@ const sidebarSettings = {
           items: [
             {
               type: "link",
-              label: "API v2",
+              label: "API v2 (legacy docs)",
+              href: "/dbt-cloud/api-v2-legacy",
+            },
+            {
+              type: "link",
+              label: "API v2 (beta docs)",
               href: "/dbt-cloud/api-v2",
             },
             {
               type: "link",
-              label: "API v3",
+              label: "API v3 (beta docs)",
               href: "/dbt-cloud/api-v3",
             },
           ],
@@ -1022,7 +1028,6 @@ const sidebarSettings = {
       label: "Legacy",
       items: [
         "guides/legacy/debugging-schema-names",
-        "guides/legacy/getting-help",
         "guides/legacy/best-practices",
         "guides/legacy/building-packages",
         "guides/legacy/videos",
@@ -1069,10 +1074,10 @@ const sidebarSettings = {
       items: [
         "community/resources/viewpoint",
         "community/resources/code-of-conduct",
-        "community/resources/slack-rules-of-the-road",
+        "community/resources/community-rules-of-the-road",
         "community/resources/maintaining-a-channel",
-        "community/resources/vendor-guidelines",
         "community/resources/forum-guidelines",
+        "community/resources/getting-help",
         "community/resources/organizing-inclusive-events",
         "community/resources/oss-expectations",
         "community/resources/oss-projects",
