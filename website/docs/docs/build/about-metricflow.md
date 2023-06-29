@@ -180,7 +180,7 @@ semantic_models:
   - name: products
     description: A record for every product available through our retail stores.
     owners: support@getdbt.com
-    mode: ref('products')
+    model: ref('products')
 
   # --- identifiers ---
     entities:
