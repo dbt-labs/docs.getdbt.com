@@ -486,6 +486,7 @@ const sidebarSettings = {
         "docs/dbt-versions/core",
         "docs/dbt-versions/upgrade-core-in-cloud",
         "docs/dbt-versions/product-lifecycles",
+        "docs/dbt-versions/experimental-features",
         {
           type: "category",
           label: "dbt Cloud Release Notes",
