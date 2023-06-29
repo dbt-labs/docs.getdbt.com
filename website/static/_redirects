@@ -1,6 +1,5 @@
 
 ## refocus deploy page
-/docs/deploy/dbt-cloud-job /docs/deploy/deployments 301
 /docs/collaborate/environments/environments-in-dbt /docs/environments-in-dbt 301
 /docs/collaborate/environments/dbt-cloud-environments /docs/deploy/dbt-cloud-environments 301
 /docs/collaborate/environments/dbt-core-environments /docs/core/dbt-core-environments 301
