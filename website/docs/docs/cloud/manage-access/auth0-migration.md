@@ -57,8 +57,6 @@ After the configuration is saved, your SAML settings will look something like th
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/new-okta-completed.png" title="New Okta configuration completed"/>
 
-Once you have saved this information in the SSO environment, you must update the single sign-on URL fields in the dbt Cloud migration window and provide the updated x.509 certificate.
-
 Toggle the `Enable new SSO authentication` option to ensure the traffic is routed correctly. _The new SSO migration action is final and cannot be undone_
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/saml-enable.png" title="Enable new SSO for SAML/Okta"/>
