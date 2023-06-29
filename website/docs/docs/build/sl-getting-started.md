@@ -14,11 +14,12 @@ This getting started page recommends a workflow to help you get started creating
 
 ## Prerequisites
 
-- You use dbt Core with the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project set up. Support for dbt Cloud and integrations coming soon.
-- You must have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
+- Use the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project and repository set up. 
+  * Note: Support for dbt Cloud and integrations coming soon.
 - Your dbt production environment must be on [dbt Core v1.6](/docs/dbt-versions/core) or higher. Support for the development environment coming soon.
-- You have a git repository set up and your git provider has write access enabled.
-- You have a dbt project connected to a [supported data platform](/docs/supported-data-platforms) (Snowflake, BigQuery, Databricks, and Redshift).
+- Have a dbt project connected to Snowflake or Postgres. 
+  * Note: Support for BigQuery, Databricks, and Redshift coming soon.
+- Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
 - Recommended &mdash; dbt Labs recommends you install the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow) to test your metrics.
 
 :::tip 
@@ -32,7 +33,7 @@ In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: 
 This step will guide you through setting up your semantic models, which consists of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
-
+f
 ```yaml
 semantic_models:
   name: transactions
@@ -99,12 +100,20 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 Follow these steps to test and query your metrics using MetricFlow:
 
-1. Make sure you have the `metricflow` and [dbt adapter](/docs/supported-data-platforms) installed in the CLI as you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake, BigQuery, Databricks, Redshift.
-    * When you install the adapter, add `[metricflow]` at the end of the command. For example, if your adapter is Snowflake, you'll run `pip install dbt-snowflake[metricflow]`
+1. Make sure you install `metricflow` and [dbt adapter](/docs/supported-data-platforms) in the CLI. This is because you're installing MetricFlow as an extension of the dbt adapter. 
+Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, Redshift coming soon).
+:::note
+When you install the adapter, add `[metricflow]` at the end of the command. For example, for a Snowflake adapter, run `pip install dbt-snowflake[metricflow]`
+:::
+
 2. Run `mf version` to see your CLI version. If you do not have the CLI installed run `pip install --upgrade metricflow`
+
 3. Save your files and run `mf validate-configs` to validate the changes before committing them
+
 4. Run `mf query --metrics <metric_name> --dimensions <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
+
 5. Verify that the metric values are what you expect. You can view the generated SQL if you enter `--explain` in the CLI. 
+
 6. Then commit your changes to push them to your git repo.
 
 <!--## Troubleshooting
