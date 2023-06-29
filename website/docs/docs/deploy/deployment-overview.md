@@ -3,6 +3,7 @@ title: "Deploy dbt jobs"
 id: "deployments"
 sidebar: "Use dbt Cloud's capabilities to run and seamlessly schedule a dbt job in production."
 hide_table_of_contents: true
+tags: ["scheduler"]
 ---
 
 Use dbt Cloud's capabilities to run and seamlessly schedule a dbt job in production. Rather than run dbt commands manually from the command line, you can leverage the [dbt Cloud's in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute your dbt production jobs. 

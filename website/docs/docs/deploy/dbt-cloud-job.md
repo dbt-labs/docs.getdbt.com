@@ -6,18 +6,16 @@ hide_table_of_contents: true
 tags: ["scheduler"]
 ---
 
-Manage, set up, and automate your dbt jobs with robust control over job settings and execution in production. You can use the job scheduler to configure when and how your jobs run. 
+Manage, set up, and automate your dbt jobs using robust custom job settings. You can use the job scheduler to configure when and how your jobs run, helping you keep production data fresh on a timely basis.
 
-Managing your jobs with dbt Cloud allows you to:
+This portion of our documentation will go dbt Cloud's various job settings, including:
 
-- [Create and schedule jobs](/docs/deploy/job-settings) &mdash; Intuitively navigate the user interface to create new dbt jobs or edit existing ones.
-- [Setup job commands](/docs/deploy/job-commands) &mdash; Use job commands to configure dbt commands on a schedule.
-- [Configure job triggers](/docs/deploy/job-triggers) &mdash; You can configure when and how dbt should run your job, including:
+- [Job settings](/docs/deploy/job-settings) &mdash; Intuitively navigate the user interface to create new dbt jobs or edit existing ones.
+- [Job commands](/docs/deploy/job-commands) &mdash; Use job commands to configure dbt commands on a schedule.
+- [Job triggers](/docs/deploy/job-triggers) &mdash; You can configure when and how dbt should run your job, including:
 	* Running on scheduled days or cron schedule, 
 	* Setting up continuous integration (CI) to run when someone opens a new pull request in your dbt repository
 	* Using the API to trigger jobs.  
-
-To learn more about how to configure and manage your dbt jobs in dbt Cloud, read the docs in this section.
 
 <DocCarousel slidesPerView={1}>
 

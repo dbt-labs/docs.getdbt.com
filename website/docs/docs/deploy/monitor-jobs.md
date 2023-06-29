@@ -5,18 +5,16 @@ description: "Monitor your dbt Cloud job and set up alerts to ensure seamless or
 tags: ["scheduler"]
 ---
 
-Manage, set up, and automate your dbt jobs with robust control over job settings and execution in production. Use in-app scheduling to configure when and how your jobs run, ensuring a seamless orchestration experience with control over your data transformations. 
+Monitor your dbt Cloud jobs to help identify improvement and set up alerts to proactively alert the right people or team. 
 
-Monitoring and alerting with dbt Cloud allows you to:
+This portion of our documentation will go dbt Cloud's various capabilities that help you monitor your jobs and set up alerts to ensure seamless orchestration, including:
 
-- [Improve run visibility](/docs/deploy/run-visibility) &mdash; View your run history to help identify where improvements can be made to scheduled jobs.
-- [Setup job notifications](/docs/deploy/job-notifications) &mdash; Receive email or slack notifications when a job run succeeds, fails, or is canceled.
-- [Create outbound webhooks](/docs/deploy/webhooks) &mdash; Use webhooks to send events about your dbt jobs' statuses to other systems.
+- [Run visibility](/docs/deploy/run-visibility) &mdash; View your run history to help identify where improvements can be made to scheduled jobs.
+- [Job notifications](/docs/deploy/job-notifications) &mdash; Receive email or slack notifications when a job run succeeds, fails, or is canceled.
+- [Webhooks](/docs/deploy/webhooks) &mdash; Use webhooks to send events about your dbt jobs' statuses to other systems.
 - [Leverage artifacts](/docs/deploy/artifacts) &mdash; dbt Cloud generates and saves artifacts for your project, which it uses to power features like creating docs for your project and reporting freshness of your sources.
-- [Use source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources. 
-- [Use dashboard status tiles](/docs/deploy/dashboard-status-tiles) &mdash; Set up and add status tiles to view data freshness and quality checks
-
-To learn more about how to configure notifications and monitor dbt jobs in dbt Cloud, read the docs in this section.
+- [Source freshness](/docs/deploy/source-freshness) &mdash; Monitor data governance by enabling snapshots to capture the freshness of your data sources. 
+- [Dashboard status tiles](/docs/deploy/dashboard-status-tiles) &mdash; Set up and add status tiles to view data freshness and quality checks
 
 <DocCarousel slidesPerView={1}>
 

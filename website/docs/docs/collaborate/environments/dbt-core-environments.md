@@ -1,5 +1,5 @@
 ---
-title: "dbt Core Environments"
+title: "dbt Core environments"
 id: "dbt-core-environments"
 ---
 

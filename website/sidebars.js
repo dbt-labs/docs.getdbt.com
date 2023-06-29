@@ -34,12 +34,14 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/about-setup",
+        "docs/collaborate/environments/environments-in-dbt",
         {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/collaborate/environments/dbt-cloud-environments",
             {
               type: "category",
               label: "Connect data platform",
@@ -143,6 +145,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-the-cli",
+            "docs/collaborate/environments/dbt-core-environments",
             {
               type: "category",
               label: "Install dbt",
@@ -283,6 +286,7 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
+        "docs/collaborate/environments/dbt-cloud-environments",
         "docs/deploy/job-scheduler",
         {
           type: "category",

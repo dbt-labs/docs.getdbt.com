@@ -1,5 +1,5 @@
 ---
-title: "Environments in dbt"
+title: "About dbt environments"
 id: "environments-in-dbt"
 ---
 
