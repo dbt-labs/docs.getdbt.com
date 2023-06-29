@@ -119,11 +119,67 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
+  {
+    "page": "docs/build/build-metrics-intro",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/sl-getting-started",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/about-metricflow",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/join-logic",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/validation",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/semantic-models",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/group-by",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/entities",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/metrics-overview",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/cumulative",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/derived",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/measure-proxy",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/ratio",
+    "firstVersion": "1.6",
+  },
 ]
 
 exports.versionedCategories = [
   {
     "category": "Model governance",
     "firstVersion": "1.5",
+  },
+  {
+    "category": "Build your metrics",
+    "firstVersion": "1.6",
   }
 ]
