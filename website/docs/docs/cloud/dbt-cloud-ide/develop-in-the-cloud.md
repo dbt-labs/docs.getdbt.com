@@ -141,6 +141,8 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 
 ## Related questions
 
+<FAQ src="Git/gitignore"/> <br />
+
 <details>
   <summary>Is there a cost to using the Cloud IDE?</summary>
   <div>
