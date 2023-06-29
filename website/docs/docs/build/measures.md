@@ -207,10 +207,10 @@ semantic_models:
             - user_id 
 ---
 metrics:
- - name: mrr_end_of_month
-   type: simple
+  - name: mrr_end_of_month
+    type: simple
     type_params:
-       measure: mrr_end_of_month
+        measure: mrr_end_of_month
 ```
 
 We can query the semi-additive metrics using the following syntax:
