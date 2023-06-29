@@ -1,5 +1,5 @@
 ---
-title: How we style our python
+title: How we style our Python
 id: 3-how-we-style-our-python
 ---
 
@@ -8,8 +8,13 @@ id: 3-how-we-style-our-python
 - 🐍 Python has a more mature and robust ecosystem for formatting and linting (helped by the fact that it doesn't have a million distinct dialects). We recommend using those tools to format and lint your code in the style you prefer.
 
 - 🛠️ Our current recommendations are
+
   - [black](https://pypi.org/project/black/) formatter
   - [ruff](https://pypi.org/project/ruff/) linter
+
+  :::info
+  ☁️ dbt Cloud comes with the [black formatter built-in](https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format) to automatically lint and format their SQL. You don't need to download or configure anything, just click `Format` in a Python model and you're good to go!
+  :::
 
 ## Example Python
 

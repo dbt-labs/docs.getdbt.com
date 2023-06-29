@@ -22,8 +22,6 @@ id: 1-how-we-style-our-dbt-models
 - 🔢 Versions of models should use the suffix `_v1`, `_v2`, etc for consistency (`customers_v1` and `customers_v2`).
 - 🗄️ Use a consistent ordering of data types and consider grouping and labeling columns by type, as in the example below. This will minimize join errors and make it easier to read the model, as well as help downstream consumers of the data understand the data types and scan models for the columns they need. We prefer to use the following order: ids, strings, numerics, booleans, dates, and timestamps.
 
-````sql
-
 ## Example model
 
 ```sql
@@ -65,4 +63,4 @@ renamed as (
 )
 
 select * from renamed
-````
+```
