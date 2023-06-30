@@ -3,7 +3,7 @@ title: "Data Vault 2.0 with dbt Cloud"
 description: "When to use, and when not to use Data Vault 2.0 data modeling, and why dbt Cloud is a great choice"
 slug: data-vault-with-dbt-cloud
 
-authors: [rastislav_zdechovan], [sean_mcintyre]
+authors: [rastislav_zdechovan, sean_mcintyre]
 
 tags: [data vault] 
 hide_table_of_contents: false
