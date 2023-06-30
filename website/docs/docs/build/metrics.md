@@ -1,15 +1,28 @@
 ---
-title: "Add metrics to your DAG"
-sidebar_label: "Metrics"
+title: "Metrics"
 id: "metrics"
 description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
 keywords:
   - dbt metrics layer
 ---
 
-:::info Coming soon
-The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+<VersionBlock firstVersion="1.6">
+
+:::info dbt Metrics isn't supported
+
+dbt Metrics is no longer supported in v1.6 and higher. To build your semantic layer, define and query metrics, and provide data governance - refer to [Build your Semantic Layer](/docs/build/build-semantic-layer-intro) for updated guidance.
+
 :::
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+
+:::info dbt Metrics not recommended
+
+dbt Metrics won't be supported in v1.6 and higher, and is being replaced with MetricFlow. [Defining metrics](/docs/build/build-semantic-layer-intro) with MetricFlow will help shape the future of the dbt Semantic Layer &mdash; let us know [your thoughts and join the convo](https://github.com/dbt-labs/dbt-core/discussions/7456) to help build it!
+
+:::
+
 
 <Changelog>
 
@@ -17,14 +30,13 @@ The dbt Semantic Layer is undergoing some sophisticated changes, enabling more c
 * **v1.0.0**: Metrics are new and experimental
 
 </Changelog>
-
-## About Metrics 
+ 
 
 A metric is an aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
 - monthly recurring revenue (mrr)
 
-In v1.0, dbt supports metric definitions as a new node type. Like [exposures](/docs/build/exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
+In v1.0, dbt supports metric definitions as a new node type. Like [exposures](exposures), metrics appear as nodes in the directed acyclic graph (DAG) and can be expressed in YAML files. Defining metrics in dbt projects encodes crucial business logic in tested, version-controlled code. Further, you can expose these metrics definitions to downstream tooling, which drives consistency and precision in metric reporting.
 
 Review the video below to learn more about metrics, why they're important, and how to get started:
     
@@ -33,10 +45,10 @@ Review the video below to learn more about metrics, why they're important, and h
 ### Benefits of defining metrics
 
 **Use metric specifications in downstream tools**  
-dbt's compilation context can access metrics via the [`graph.metrics` variable](/reference/dbt-jinja-functions/graph). The [manifest artifact](/reference/artifacts/manifest-json) includes metrics for downstream metadata consumption.
+dbt's compilation context can access metrics via the [`graph.metrics` variable](graph). The [manifest artifact](manifest-json) includes metrics for downstream metadata consumption.
 
 **See and select dependencies**   
-As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](/docs/collaborate/documentation). For more information, see "[The `metric:` selection method](/reference/node-selection/methods#the-metric-method)."
+As with Exposures, you can see everything that rolls up into a metric (`dbt ls -s +metric:*`), and visualize them in [dbt documentation](documentation). For more information, see "[The `metric:` selection method](node-selection/methods#the-metric-method)."
 
 <Lightbox src="/img/docs/building-a-dbt-project/dag-metrics.png" title="Metrics appear as pink nodes in the DAG (for now)"/>
 
@@ -68,7 +80,7 @@ metrics:
   - name: rolling_new_customers
     label: New Customers
     model: ref('dim_customers')
-    [description](/reference/resource-properties/description): "The 14 day rolling count of paying customers using the product"
+    [description](description): "The 14 day rolling count of paying customers using the product"
 
     calculation_method: count_distinct
     expression: user_id 
@@ -99,11 +111,11 @@ metrics:
         value: "'2020-01-01'"
         
     # general properties
-    [config](/reference/resource-properties/config):
+    [config](resource-properties/config):
       enabled: true | false
       treat_null_values_as_zero: true | false
 
-    [meta](/reference/resource-configs/meta): {team: Finance}
+    [meta](resource-configs/meta): {team: Finance}
 ```
 </VersionBlock> 
 
@@ -700,6 +712,7 @@ The above example will return a dataset that contains the metric provided in the
 
 **Important caveat** - You _must_ wrap the `expression` property for `derived` metrics in double quotes to render it. For example,  `expression: "{{ metric('develop_metric') }} - 1 "`.
 
+</VersionBlock>
 
 <Snippet src="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="metrics"/>
