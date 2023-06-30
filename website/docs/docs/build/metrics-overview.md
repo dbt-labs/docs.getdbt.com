@@ -130,7 +130,7 @@ metrics:
   # Specify the measure you are creating a proxy for. 
       measure: cancellations_usd 
       filter: | 
-      value > 100 AND user__acquisition
+      {{dimension('value')}} > 100 and {{dimension('acquisition', entity_path=['user'])}}
 ```
 
 ### Further configuration 
