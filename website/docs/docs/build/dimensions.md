@@ -35,8 +35,6 @@ semantic_models:
     - name: metric_time
       type: time
       expr: date_trunc('day', ts)
-      type_params:
-        is_primary: true
     - name: is_bulk_transaction
       type: categorical
       expr: case when quantity > 10 then true else false end

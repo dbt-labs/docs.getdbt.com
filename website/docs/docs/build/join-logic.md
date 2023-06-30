@@ -49,25 +49,25 @@ Let's say you have two semantic models, `transactions` and `user_signup` as seen
 
 ```yaml
 semantic_models:
-  name: transactions
-  entities:
-    - name: id
-      type: primary
-    - name: user
-      type: foreign
-      expr: user_id
-  measures:
-    - name: average_purchase_price
-      agg: avg
-      expr: purchase_price
-    - name: user_signup
-  entities:
-    - name: user
-      type: primary
-      expr: user_id
-  dimensions:
-    - name: type
-      type: categorical
+  - name: transactions
+    entities:
+      - name: id
+        type: primary
+      - name: user
+        type: foreign
+        expr: user_id
+    measures:
+      - name: average_purchase_price
+        agg: avg
+        expr: purchase_price
+      - name: user_signup
+    entities:
+      - name: user
+        type: primary
+        expr: user_id
+    dimensions:
+      - name: type
+        type: categorical
 ```
 
 MetricFlow will use `user_id` as the join key to join two semantic models, `transactions` and `user_signup`. This enables you to query the `average_purchase_price` metric in `transactions`, sliced by the `type` dimension in the `user_signup` semantic model.
@@ -98,39 +98,39 @@ Notice how this schema can be translated into the three MetricFlow semantic mode
 
 ```yaml
 semantic_models:
-  name: sales
-  entities:
-    - name: id
-      type: primary
-    - name: user_id
-      type: foreign
-	measures:
-    - name: average_purchase_price
-      agg: avg
-      expr: purchase_price
-	dimensions:
-    - name: metric_time
-      type: time
-      type_params:
-      is_primary: true
-    - name: user_signup
-  entities:
-    - name: user_id
-      type: primary
-    - name: country_id
-      type: Unique
-	dimensions:
-    - name: signup_date
-      type: time
-      type_params:
+  - name: sales
+    defaults:
+      agg_time_dimension: first_ordered_at
+    entities:
+      - name: id
+        type: primary
+      - name: user_id
+        type: foreign
+    measures:
+      - name: average_purchase_price
+        agg: avg
+        expr: purchase_price
+    dimensions:
+      - name: metric_time
+        type: time
+        type_params:
         is_primary: true
-    - name: country_dim
-  entities:
-    - name: country_id
-      type: primary
-  dimensions:
-    - name: country_name
-      type: categorical
+      - name: user_signup
+    entities:
+      - name: user_id
+        type: primary
+      - name: country_id
+        type: Unique
+    dimensions:
+      - name: signup_date
+        type: time
+      - name: country_dim
+    entities:
+      - name: country_id
+        type: primary
+    dimensions:
+      - name: country_name
+        type: categorical
 ```
 
 ### Query multi-hop joins

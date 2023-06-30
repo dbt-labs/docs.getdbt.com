@@ -16,11 +16,11 @@ If you've already defined the measure using the `create_metric: true` parameter,
 
 ``` yaml
 metrics: 
-- name: cancellations
-  type: simple # Pointers to a measure you created in a data source
-  type_params:
-    measure: cancellations_usd # The measure you're creating a proxy of.
+  - name: cancellations
+    type: simple # Pointers to a measure you created in a data source
+    type_params:
+      measure: cancellations_usd # The measure you're creating a proxy of.
   # For any metric optionally include a filter string which applies a dimensional filter when computing the metric
-  filter: | 
-    value > 100 and user__acquisition
+      filter: | 
+      {{dimension('value')}} > 100 and {{dimension('acquisition', entity_path=['user'])}}
 ```
