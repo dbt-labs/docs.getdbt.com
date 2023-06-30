@@ -6,7 +6,7 @@ hide_table_of_contents: true
 
 In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software. Typically, there are two types of environments in dbt:
 
-- **Production** (or _prod_) &mdash; Refers to the environment that end users interact with. 
+- **Deployment or Production** (or _prod_) &mdash; Refers to the environment that end users interact with. 
 
 - **Development** (or _dev_) &mdash; Refers to the environment that engineers work in. This means that engineers can work iteratively when writing and testing new code in _development_. Once they are confident in these changes, they can deploy their code to _production_.
 
@@ -18,20 +18,20 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 <Card
     title="Environments in dbt Cloud"
-    body="Seamlessly configure development and production environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE and scheduled jobs."
+    body="Seamlessly configure development and deployment environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE and scheduled jobs."
     link="/docs/dbt-cloud-environments"
     icon="dbt-bit"/>
 
 <Card
     title="Environments in dbt Core"
-    body="Setup and maintain separate production and development environments through the use of targets within a profile file"
+    body="Setup and maintain separate deployment and development environments through the use of targets within a profile file"
     link="/docs/core/dbt-core-environments"
     icon="command-line"/>
 
 </div> <br />
 
 ## Related docs
-- [Deploy environments](/docs/deploy/deploy-environments)
+- [Deployment environments](/docs/deploy/deploy-environments)
 - [About dbt Core versions](/docs/dbt-versions/core)
 - [Set Environment variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)
 - [Use Environment variables in jinja](/reference/dbt-jinja-functions/env_var)
