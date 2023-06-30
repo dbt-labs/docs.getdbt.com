@@ -242,6 +242,45 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "Build your metrics",
+          link: { type: "doc", id: "docs/build/build-metrics-intro"},
+          collapsed: true,
+          items: [
+            {
+              type: "category",
+              label: "About MetricFlow",
+              link: { type: "doc", id: "docs/build/about-metricflow" },
+              items: [
+                "docs/build/join-logic",
+                "docs/build/validation",
+                "docs/build/metricflow-time-spine",
+              ]
+            },
+            "docs/build/sl-getting-started",
+            {
+              type: "category",
+              label: "Semantic models",
+              link: { type: "doc", id: "docs/build/semantic-models" },
+              items: [
+                "docs/build/dimensions",
+                "docs/build/entities",
+                "docs/build/measures"
+              ]
+            },
+            {
+              type: "category",
+              label: "Metrics",
+              link: { type: "doc", id: "docs/build/metrics-overview"},
+              items: [
+                "docs/build/derived",
+                "docs/build/ratio",
+                "docs/build/simple",
+              ]
+            },
+          ],
+        },
+        {
+          type: "category",
           label: "Enhance your models",
           collapsed: true,
           items: [
@@ -447,6 +486,7 @@ const sidebarSettings = {
         "docs/dbt-versions/core",
         "docs/dbt-versions/upgrade-core-in-cloud",
         "docs/dbt-versions/product-lifecycles",
+        "docs/dbt-versions/experimental-features",
         {
           type: "category",
           label: "dbt Cloud Release Notes",

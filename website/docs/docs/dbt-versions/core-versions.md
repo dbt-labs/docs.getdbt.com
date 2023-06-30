@@ -4,7 +4,12 @@ id: "core"
 description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
 ---
 
-dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning).
+dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
+
+dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
+
+<Snippet src="core-version-support" />
+
 
 <Snippet src="core-versions-table" />
 
@@ -20,9 +25,12 @@ All dbt Core versions released prior to 1.0 and their version-specific documenta
 
 ## EOL version support 
 
-All dbt Core versions with an end-of-life (EOL) support level will no longer receive bug fixes. To continue receiving bug fixes, dbt Labs recommends upgrading to a newer version. 
+All dbt Core minor versions that have reached end-of-life (EOL) will have no new patch releases. This means they will no longer receive any fixes, including for known bugs that have been identified. Fixes for those bugs will instead be made in newer minor versions that are still under active support.
 
-All dbt Core versions v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
+We recommend upgrading to a newer version in [dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) or [dbt Core](/docs/core/installation#upgrading-dbt-core) to continue receiving support. 
+
+All dbt Core v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
+
 
 ## Current version support
 
