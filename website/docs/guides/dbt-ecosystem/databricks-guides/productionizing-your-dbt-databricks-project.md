@@ -16,7 +16,7 @@ If you don't have any of the following requirements, refer to the instructions i
 - You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 - You have created two catalogs in Databricks: *dev* and *prod*.
 - You have created  Databricks Service Principal to run your production jobs.
-- You have at least one [deployment environment]((/docs/deploy/deploy-environments)) in dbt Cloud.
+- You have at least one [deployment environment](/docs/deploy/deploy-environments) in dbt Cloud.
 
 To get started, let's revisit the deployment environment created for your production data.
 

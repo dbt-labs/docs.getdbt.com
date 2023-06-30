@@ -1,54 +1,22 @@
 ---
-title: "dbt Cloud environments"
+title: "Deployment environments"
 id: "deploy-environments"
+description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
-rephrase the below to deployment environment
+Deployment environments in dbt Cloud are crucial for executing scheduled jobs. To execute dbt, environments determine the settings used during job runs, including:
 
-An environment determines how dbt Cloud will execute your project in both the dbt Cloud IDE and scheduled jobs. Critically, in order to execute dbt, environments define three variables:
+- The version of dbt Core that will be used to run your project
+- The warehouse connection information (including the target database/schema settings)
+- The version of your code to execute
 
-1. The version of dbt Core that will be used to run your project
-2. The warehouse connection information (including the target database/schema settings)
-3. The version of your code to execute
+A dbt Cloud project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of scheduled jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/job-settings#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
-For users familiar with development on the CLI, each environment is roughly analogous to an entry in your `profiles.yml` file, with some additional information about your repository to ensure the proper version of code is executed. More info on dbt core environments [here](/docs/core/dbt-core-environments).
+This page will go over the different types of environments and how to intuitively configure your deployment environment in dbt Cloud. 
 
-## Types of environments
+import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
-In dbt Cloud, there are two types of environments: deployment and development. Deployment environments determine the settings used when jobs created within that environment are executed. Development environments determine the settings used in the dbt Cloud IDE for that particular dbt Cloud Project. Each dbt Cloud project can only have a single development environment but can have any number of deployment environments.
-
-|  | Development Environments | Deployment Environments |
-| --- | --- | --- |
-| Determines settings for | dbt Cloud IDE | dbt Cloud Job runs |
-| How many can I have in my project? | 1 | Any number |
-
-## Common environment settings
-
-Both development and deployment environments have a section called **General Settings**, which has some basic settings that all environments will define:
-
-| Setting | Example Value | Definition | Accepted Values |
-| --- | --- | --- | --- |
-| Name | Production  | The environment name  | Any string! |
-| Environment Type | Deployment | The type of environment | [Deployment, Development] |
-| dbt Version | 1.4 (latest) | The dbt version used  | Any dbt version in the dropdown |
-| Default to Custom Branch | ☑️ | Determines whether to use a branch other than the repository’s default  | See below |
-| Custom Branch | dev | Custom Branch name | See below |
-
-:::note About dbt version
-
-- dbt Cloud allows users to select any dbt release. At this time, **environments must use a dbt version greater than or equal to v1.0.0;** [lower versions are no longer supported](/docs/dbt-versions/upgrade-core-in-cloud).
-- If you select a current version with `(latest)` in the name, your environment will automatically install the latest stable version of the minor version selected.
-:::
-
-### Custom branch behavior
-
-By default, all environments will use the default branch in your repository (usually the `main` branch) when accessing your dbt code. This is overridable within each dbt Cloud Environment using the **Default to a custom branch** option. This setting have will have slightly different behavior depending on the environment type:
-
-- **Development**: determines which branch in the dbt Cloud IDE developers create branches from and open PRs against
-- **Deployment:** determines the branch is cloned during job executions for each environment.
-
-For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
-
+<CloudEnvInfo setup={'/snippets/_cloud-environments-info.md'} />
 
 ## Create a deployment environment
 
@@ -208,6 +176,8 @@ This section allows you to determine the credentials that should be used when co
 
 ## Related docs
 
-- [Upgrade Core version in Cloud](/docs/dbt-versions/upgrade-core-in-cloud)
+- [Setup dbt Cloud jobs](/docs/deploy/dbt-cloud-job)
+- [Continuous integration](/docs/deploy/continuous-integration)
+- [Monitor jobs and alerts](/docs/deploy/monitor-jobs)
 - [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)
-- [Develop in Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
+
