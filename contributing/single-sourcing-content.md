@@ -255,7 +255,7 @@ Now, we can add this snippet to a Docs file with the Snippet component:
 ```markdown
 Docs content here.
 
-import SetUpPages from 'import SetUpPages from '/snippets/_this-is-your-partial-file-name.md';
+`import SetUpPages from '/snippets/_this-is-your-partial-file-name.md';`
 
 <SetUpPages anyname={'/snippets/_this-is-your-partial-file-name.md'}/>
 
