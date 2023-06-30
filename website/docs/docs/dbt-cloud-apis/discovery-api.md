@@ -13,7 +13,7 @@ You can access the Discovery API through [ad hoc queries](/docs/dbt-cloud-apis/d
 
 You can query the dbt Cloud metadata:
 
-- At the [environment](/docs/collaborate/environments/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a dbt Cloud project in production.
+- At the [environment](/docs/docs/environments-in-dbt) level for both the latest state (use the `environment` endpoint) and historical run results (use `modelByEnvironment`) of a dbt Cloud project in production.
 - At the job level for results on a specific dbt Cloud job run for a given resource type, like `models` or `test`.
 
 :::tip Public Preview
