@@ -10,7 +10,7 @@ required: no
 models:
   - name: my_model
     description: deprecated
-    deprecation_date: 1999-01-01
+    deprecation_date: 1999-01-01 00:00:00.00+00:00
 ```
 </File>
 
