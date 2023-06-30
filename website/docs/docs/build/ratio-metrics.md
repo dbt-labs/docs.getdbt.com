@@ -11,26 +11,26 @@ Ratio allows you to create a ratio between two measures. You simply specify a nu
 ```yaml
 # Ratio Metric
   metrics:
-  - name: cancellation_rate
+    - name: cancellation_rate
     owners:
       - support@getdbt.com
     type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
     type_params:
       numerator: cancellations_usd
       denominator: transaction_amount_usd
-    filter: | # add optional constraint string. This applies to both the numerator and denominator
+        filter: | # add optional constraint string. This applies to both the numerator and denominator
       {{ dimension('country', entity_path=['customer']) }} = 'MX'
 
-  - name: enterprise_cancellation_rate
-    owners:
-      - support@getdbt.com
-    type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
-    type_params:
-      numerator: 
-        name: cancellations_usd
-        filter: tier = 'enterprise' #constraint only applies to the numerator
-      denominator: transaction_amount_usd 
-    filter: | # add optional constraint string. This applies to both the numerator and denominator
+    - name: enterprise_cancellation_rate
+      owners:
+        - support@getdbt.com
+      type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
+      type_params:
+        numerator: 
+          name: cancellations_usd
+          filter: tier = 'enterprise' #constraint only applies to the numerator
+        denominator: transaction_amount_usd 
+          filter: | # add optional constraint string. This applies to both the numerator and denominator
       {{ dimension('country', entity_path=['customer']) }} = 'MX'
   
 ```
