@@ -50,15 +50,15 @@ metrics:
 
 ```yaml
 metrics:
-- name: net_sales_per_user
-  type: derived
-  type_params:
+  - name: net_sales_per_user
+    type: derived
+    type_params: 
     metrics:
       - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
       - name: cogs
       - name: users
-        filter: is_active # Optional additional constraint
-        alias: active_users # Optional alias to use in the expr
+      filter: is_active # Optional additional constraint
+      alias: active_users # Optional alias to use in the expr
 ```
 <!-- not supported
 ### Expression metrics
@@ -85,31 +85,31 @@ metrics:
 ```yaml
 # Ratio Metric
 metrics:
-- name: cancellation_rate
-  owners:
-    - support@getdbt.com
+  - name: cancellation_rate
+    owners:
+      - support@getdbt.com
 # Ratio metrics create a ratio out of two measures.
 # Define the measures from the semantic model as numerator or denominator
-  type: ratio  
-  type_params:
-    numerator: cancellations_usd
-    denominator: transaction_amount_usd
-  filter: | # add optional constraint string. This applies to both the numerator and denominator
-    {{ dimension('country', entity_path=['customer']) }} = 'MX'
+    type: ratio  
+    type_params:
+      numerator: cancellations_usd
+      denominator: transaction_amount_usd
+      filter: | # add optional constraint string. This applies to both the numerator and denominator
+      {{ dimension('country', entity_path=['customer']) }} = 'MX'
 
-- name: enterprise_cancellation_rate
-  owners:
-    - support@getdbt.com
+  - name: enterprise_cancellation_rate
+    owners:
+      - support@getdbt.com
  # Ratio metrics create a ratio out of two measures. 
  # Define the measures from the semantic model as numerator or denominator
-  type: ratio 
-  type_params:
-    numerator: 
-      name: cancellations_usd
-      filter: tier = 'enterprise' #constraint only applies to the numerator
-    denominator: transaction_amount_usd 
-  filter: | # add optional constraint string. This applies to both the numerator and denominator
-    {{ dimension('country', entity_path=['customer']) }} = 'MX'
+    type: ratio 
+    type_params:
+      numerator: 
+        name: cancellations_usd
+        filter: tier = 'enterprise' #constraint only applies to the numerator
+      denominator: transaction_amount_usd 
+        filter: | # add optional constraint string. This applies to both the numerator and denominator
+        {{ dimension('country', entity_path=['customer']) }} = 'MX'
   
 ```
 ### Simple metrics
@@ -124,13 +124,13 @@ metrics:
 # Define the reference name of the metric.  
 # This name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. 
 # This name is used to call the metric from the dbt Semantic Layer API.
-  name: cancellations 
-  type: simple 
-  type_params:
+  - name: cancellations 
+    type: simple 
+    type_params:
   # Specify the measure you are creating a proxy for. 
-    measure: cancellations_usd 
-  filter: | 
-    value > 100 AND user__acquisition
+      measure: cancellations_usd 
+      filter: | 
+      {{dimension('value')}} > 100 and {{dimension('acquisition', entity_path=['user'])}}
 ```
 
 ### Further configuration 
