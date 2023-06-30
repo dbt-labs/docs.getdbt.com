@@ -13,9 +13,9 @@ This portion of our documentation will go over dbt Cloud's various job settings 
 - [Job settings](/docs/deploy/job-settings) &mdash; Intuitively navigate the user interface to create new dbt jobs or edit existing ones.
 - [Job commands](/docs/deploy/job-commands) &mdash; Use job commands to configure dbt commands on a schedule.
 - [Job triggers](/docs/deploy/job-triggers) &mdash; You can configure when and how dbt should run your job, such as:
-	* Running on scheduled days or cron schedule, 
+	* Running on scheduled days or cron schedules 
 	* Setting up continuous integration (CI) to run when someone opens a new pull request in your dbt repository
-	* Using the API to trigger jobs.  
+	* Using the API to trigger jobs
 
 <DocCarousel slidesPerView={1}>
 
