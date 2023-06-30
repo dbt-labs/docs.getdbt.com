@@ -22,5 +22,5 @@ metrics:
       measure: cancellations_usd # The measure you're creating a proxy of.
   # For any metric optionally include a filter string which applies a dimensional filter when computing the metric
       filter: | 
-      value > 100 and user__acquisition
+      {{dimension('value')}} > 100 and {{dimension('acquisition', entity_path=['user'])}}
 ```
