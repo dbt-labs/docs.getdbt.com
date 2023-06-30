@@ -1,6 +1,6 @@
 ---
 title: "Data Vault 2.0 with dbt Cloud"
-description: "Learn how to use dbt to build custom user segments and track them over time."
+description: "When to use, and when not to use Data Vault 2.0 data modeling, and why dbt Cloud is a great choice"
 slug: data-vault-with-dbt-cloud
 
 authors: [rastislav_zdechovan], [sean_mcintyre]
@@ -11,8 +11,6 @@ hide_table_of_contents: false
 date: 2023-06-30
 is_featured: true
 ---
-
-# Data Vault 2.0 on dbt Cloud
 
 Data Vault 2.0 is a data modelling technique designed to help scale large data warehousing projects. It is a rigid, prescriptive system detailed vigorously in [a book](https://www.amazon.com/Building-Scalable-Data-Warehouse-Vault/dp/0128025107) that has become the bible for this technique.
 
@@ -25,8 +23,6 @@ Think of a city’s water supply. Each house does not have a pipe directly from 
 A new development in the city? No problem! Just hook up the new pipes to the reservoir! Not enough water? Just find another water source and fill up the reservoir.
 
 Data Vault is the dam and reservoir: it is the well-engineered data model to structure an organisation’s data from source systems for use by downstream data projects – rather than each team collecting data straight from the source. The Data Vault data model is designed using a few well-applied principles, and in practice, pools source data so it is available for use by all downstream consumers. This promotes a scalable data warehouse through reusability and modularity.
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
 <Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/reservoir-dam-hallucination.png" width="85%" title="Artist depiction of Data Vault reservoir and dam analogy courtesy of Gwen Windflower and Midjourney" />
 
