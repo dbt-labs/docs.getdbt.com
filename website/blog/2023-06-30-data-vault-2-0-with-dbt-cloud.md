@@ -28,9 +28,7 @@ Data Vault is the dam and reservoir: it is the well-engineered data model to str
 
 <p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-![alt_text](images/image1.png "image_tooltip")
-
-_Artist depiction of Data Vault reservoir and dam analogy courtesy of Gwen Windflower and Midjourney_
+<Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/reservoir-dam-hallucination.png" width="85%" title="Artist depiction of Data Vault reservoir and dam analogy courtesy of Gwen Windflower and Midjourney" />
 
 ## Data Vault components
 
@@ -139,8 +137,7 @@ Within the [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) _p
 
 To help you get started, we have created a template GitHub project you can utilise to understand basic principles of building Data Vault with dbt Cloud using one of the abovementioned packages. But if you need help building your Data Vault, get in touch.
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-![alt_text](images/image2.png "image_tooltip")
+<Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/data-dungeon-meme.jpeg" width="85%" title="Don't let your friends make a data dungeon" />
 
 ### Entity Relation Diagrams (ERDs) and dbt
 
