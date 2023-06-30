@@ -18,7 +18,8 @@ metrics:
         - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
         - name: cogs
         - name: users
-          filter: is_active # Optional additional constraint
+          filter: | # Optional additional constraint
+          {{dimension('filter')}} is_active
           alias: active_users # Optional alias to use in the expr
 ```
 
