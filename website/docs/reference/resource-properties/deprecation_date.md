@@ -21,7 +21,7 @@ version: 2
 models:
   - name: my_model
     description: deprecating in the future
-    deprecation_date: 2999-01-01
+    deprecation_date: 2999-01-01 00:00:00.00+00:00
 ```
 
 </File>
