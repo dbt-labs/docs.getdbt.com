@@ -258,6 +258,7 @@ Click the name of the adapter in the below table for more information about supp
 The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
 
 <VersionBlock lastVersion="1.5">
+    
 | data platform adapter                                                                               | default strategy | additional supported strategies          |
 | :-------------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------- |
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
@@ -271,6 +272,7 @@ The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
+    
 | data platform adapter                                                                               | default strategy | additional supported strategies          |
 | :-------------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------- |
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `merge` , `delete+insert`                  |
