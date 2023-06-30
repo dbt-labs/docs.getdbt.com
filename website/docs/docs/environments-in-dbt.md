@@ -3,13 +3,15 @@ title: "About environments"
 id: "environments-in-dbt"
 ---
 
-In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software.
+In software engineering, environments are used to enable engineers to develop and test code without impacting the users of their software. Typically, there are two types of environments in dbt:
 
-“Production” (or _prod_) refers to the environment that end users interact with, while “development” (or _dev_) is the environment that engineers work in. This means that engineers can work iteratively when writing and testing new code in _development_, and once they are confident in these changes, deploy their code to _production_.
+- **Production** (or _prod_) &mdash; Refers to the environment that end users interact with.
+
+- **Development** (or _dev_) &mdash; Refers to the environment that engineers work in. This means that engineers can work iteratively when writing and testing new code in _development_. Once they are confident in these changes, they can deploy their code to _production_.
 
 In traditional software engineering, different environments often use completely separate architecture. For example, the dev and prod versions of a website may use different servers and databases.
 
-<Term id="data-warehouse">Data warehouses</Term> can also be designed to have separate environments – the _production_ environment refers to the relations (for example, schemas, tables, and <Term id="view">views</Term>) that your end users query (often through a BI tool).
+<Term id="data-warehouse">Data warehouses</Term> can also be designed to have separate environments &mdash; the _production_ environment refers to the relations (for example, schemas, tables, and <Term id="view">views</Term>) that your end users query (often through a BI tool).
 
 
 ## Related docs
