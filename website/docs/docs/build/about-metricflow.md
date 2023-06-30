@@ -33,7 +33,7 @@ There are a few key principles:
 
 - MetricFlow, as a part of the dbt Semantic Layer, allows organizations to define company metrics logic through YAML abstractions, as described in the following sections.
 
-- You can install the MetricFlow CLI as an extension of your [dbt adapter](/docs/supported-data-platforms) in the CLI. When you install the adapter, add your adapter name at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+- You can install the MetricFlow CLI as an extension of your [dbt adapter](/docs/supported-data-platforms) in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add your adapter name at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
 
 ### Semantic graph 
 
