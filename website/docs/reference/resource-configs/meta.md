@@ -31,7 +31,6 @@ version: 2
 
 models:
   - name: model_name
-    config:
       meta: {<dictionary>}
 
     columns:
