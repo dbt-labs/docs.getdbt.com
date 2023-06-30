@@ -10,16 +10,17 @@ Derived metrics in MetricFlow refer to metrics that are created by defining an e
 
 ```yaml
 metrics:
-- name: net_sales_per_user
-  type: derived
-  type_params:
-    expr: gross_sales - cogs / active_users
-    metrics:
-      - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
-      - name: cogs
-      - name: users
-        filter: is_active # Optional additional constraint
-        alias: active_users # Optional alias to use in the expr
+  - name: net_sales_per_user
+    type: derived
+    type_params:
+      expr: gross_sales - cogs / active_users
+      metrics:
+        - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
+        - name: cogs
+        - name: users
+          filter: | # Optional additional constraint
+          {{dimension('filter')}} is_active
+          alias: active_users # Optional alias to use in the expr
 ```
 
 ## Derived metric offset

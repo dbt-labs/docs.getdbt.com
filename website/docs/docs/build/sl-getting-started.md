@@ -36,10 +36,10 @@ This step will guide you through setting up your semantic models, which consists
 f
 ```yaml
 semantic_models:
-  name: transactions
-  description: |
+  - name: transactions
+    description: |
     This table captures every transaction starting July 02, 2014. Each row represents one transaction
-  model: ref('fact_transactions')
+    model: ref('fact_transactions')
   ```
 
 2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
