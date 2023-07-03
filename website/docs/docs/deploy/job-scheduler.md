@@ -1,7 +1,7 @@
 ---
 title: "Job scheduler"
 id: "job-scheduler"
-sidebar_label: "About the job scheduler"
+sidebar_label: "Job scheduler"
 description: "The dbt Cloud job scheduler queues scheduled or API-triggered runs, before preparing the job to enter cloud data platform. Build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
 tags: [scheduler]
 ---
