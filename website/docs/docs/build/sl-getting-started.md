@@ -106,7 +106,7 @@ Follow these steps to test and query your metrics using MetricFlow:
 When you install the adapter, add the adapter at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`
 :::
 
-2. Run `mf version` to see your CLI version. If you do not have the CLI installed run `pip install --upgrade "dbt-metricflow[your_adapter_name]".  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
+2. Run `mf version` to see your CLI version. If you do not have the CLI installed run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
 3. Save your files and run `mf validate-configs` to validate the changes before committing them
 
