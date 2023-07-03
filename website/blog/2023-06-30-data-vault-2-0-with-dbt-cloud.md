@@ -18,7 +18,7 @@ So why Data Vault? Have you experienced a data warehousing project with 50+ data
 
 Here’s an analogy to help illustrate Data Vault:
 
-Think of a city’s water supply. Each house does not have a pipe directly from the local river: there is a dam and a reservoir to collect water for the city from all of the sources – the lakes, streams, creeks, glaciers – before the water is redirected into each neighbourhood and finally into each home’s taps.
+Think of a city’s water supply. Each house does not have a pipe directly from the local river: there is a dam and a reservoir to collect water for the city from all of the sources – the lakes, streams, creeks, and glaciers – before the water is redirected into each neighborhood and finally into each home’s taps.
 
 A new development in the city? No problem! Just hook up the new pipes to the reservoir! Not enough water? Just find another water source and fill up the reservoir.
 
