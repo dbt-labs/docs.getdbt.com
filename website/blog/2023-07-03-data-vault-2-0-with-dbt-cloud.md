@@ -5,10 +5,10 @@ slug: data-vault-with-dbt-cloud
 
 authors: [rastislav_zdechovan, sean_mcintyre]
 
-tags: [data vault] 
+tags: [analytics_craft, data ecosystem] 
 hide_table_of_contents: true
 
-date: 2023-06-30
+date: 2023-07-03
 is_featured: true
 ---
 
