@@ -192,7 +192,9 @@ SQLFluff is a SQL code linter and formatter. This means that it analyzes your co
 
 sqlfmt is a SQL code formatter. This means it automatically formats your SQL code according to a set of formatting rules which isn't customizable. It focuses solely on the appearance and layout of the code, which helps ensure consistent indentation, line breaks, and spacing. sqlfmt doesn't analyze your code for errors or bugs and doesn't look at coding issues beyond code formatting. <br />
 
-So if you'd like to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling) with the flexibility to customize your own rules, use SQLFluff. However, if you don't want to have your code analyzed for errors/bugs and only want to have your code well-formatted without the ability to customize rules, use sqlfmt. 
+- Use SQLFluff &mdash; Use SQLFluff to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling). It allows you the flexibility to customize your own rules.
+
+- Use sqlfmt &mdash; Use sqlfmt to only have your code well-formatted, without analyzing your code for errors and bugs. You can't customize rules with it.
 
 </details>
 
