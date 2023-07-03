@@ -95,7 +95,7 @@ dbt Cloud includes **built-in Git** with accessible features directly from its I
 
 The biggest boon to Data Vault developer productivity in dbt Cloud are the **DataOps** and **Data Warehouse Automation** features of dbt Cloud. Each Data Vault developer gets their own development environment to work in and there is no complicated set up process to go through.
 
-Commit your work, create a penabled by **jobs** that can be defined for each environment separately and then scheduled or triggered by a specific event. Together with dbt **tags**, the feature allows you to orchestrate your project in an efficient and powerful way.
+Commit your work, create a pull request, and have automated code review enabled by dbt Cloud **jobs** that can be defined for each environment separately (e.g., testing, QA, production). Together with dbt **tags**, the feature allows you to orchestrate your project in an efficient and powerful way.
 
 ### Auditable data
 
