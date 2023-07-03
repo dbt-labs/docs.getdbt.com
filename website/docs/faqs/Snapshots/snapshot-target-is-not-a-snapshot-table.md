@@ -26,7 +26,7 @@ versions 1.4 and above, dbt now rases a Parsing Error (instead of silently treat
 A snapshot must have a materialized value of 'snapshot'
 ```
 
-This tells you to change your `materialzed` config to `snapshot`. However, as soon as you do that, you may run into the error above (missing "dbt_scd_id", etc). This is because, previously, when
+This tells you to change your `materialized` config to `snapshot`. However, as soon as you do that, you may run into the error above (missing "dbt_scd_id", etc). This is because, previously, when
 dbt treated snapshots like tables - there was no [snapshot meta-fields](https://docs.getdbt.com/docs/build/snapshots#snapshot-meta-fields) added to your snapshot target table - and because those
 meta-fields don't exist, dbt correctly identifies and tells you that you intend to snapshot into a table that isn't a snapshot.
 
