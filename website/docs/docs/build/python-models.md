@@ -679,6 +679,8 @@ models:
       submission_method: serverless
 ```
 
+Python models running on Dataproc Serverless can be further configured in your [BigQuery profile](/reference/warehouse-setups/bigquery-setup#running-python-models-on-dataproc).
+
 Any user or service account that runs dbt Python models will need the following permissions(in addition to the required BigQuery permissions) ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
 ```
 dataproc.batches.create
