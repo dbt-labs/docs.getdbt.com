@@ -1,6 +1,6 @@
 ---
-title: Debug "Snapshot target is not a snapshot table errors"
-description: "Debugging 'Snapshot target is not a snapshot table (missing "dbt_scd_id", "dbt_valid_from", "dbt_valid_to")' errors"
+title: "Debug Snapshot target is not a snapshot table errors"
+description: "Debugging Snapshot target is not a snapshot table (missing "dbt_scd_id", "dbt_valid_from", "dbt_valid_to") errors"
 sidebar_label: "Snapshot target is not a snapshot table"
 id: snapshot-target-is-not-a-snapshot-table
 ---
@@ -9,7 +9,7 @@ If you see the following error when trying to snapshot:
 
 > Snapshot target is not a snapshot table (missing `dbt_scd_id`, `dbt_valid_from`, `dbt_valid_to`)
 
-Double check that you have not inadvertently caused your snapshot to behave like table materializations by setting its `materialized` config to be `table`. Prior to dbt versions 1.4, it was possible to have a snapshot like this:
+Double check that you have not inadvertently caused your snapshot to behave like table materializations by setting its `materialized` config to be `table`. Prior to dbt version 1.4, it was possible to have a snapshot like this:
 
 ```sql
 {% snapshot snappy %}
