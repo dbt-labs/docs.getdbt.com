@@ -27,7 +27,7 @@ A snapshot must have a materialized value of 'snapshot'
 ```
 
 This tells you to change your `materialized` config to `snapshot`. However, as soon as you do that, you may run into the error above (missing "dbt_scd_id", etc). This is because, previously, when
-dbt treated snapshots like tables - there was no [snapshot meta-fields](https://docs.getdbt.com/docs/build/snapshots#snapshot-meta-fields) added to your snapshot target table - and because those
+dbt treated snapshots like tables - there were no [snapshot meta-fields](/docs/build/snapshots#snapshot-meta-fields) added to your snapshot target table - and because those
 meta-fields don't exist, dbt correctly identifies and tells you that you intend to snapshot into a table that isn't a snapshot.
 
 When this happens, it means you have to start from scratch - resnapshotting your source data as if it was the first time by dropping your "snapshot" that isn't a real snapshot table. Then dbt snapshot
