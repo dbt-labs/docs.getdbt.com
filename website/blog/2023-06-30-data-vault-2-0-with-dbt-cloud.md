@@ -34,9 +34,9 @@ The core components of Data Vault are hubs, links, and satellites. They allow fo
 
 Here is what you need to know about the main components:
 
-* **Hubs**: A hub is the central repository of all business keys identifying the same business entity. By separating data into hubs, we ensure each piece of business concept is as accurate and consistent as possible, while avoiding redundancy and ensuring referential integrity;
+* **Hubs**: A hub is the central repository of all business keys identifying the same business entity. By separating data into hubs, we ensure each piece of business concept is as accurate and consistent as possible while avoiding redundancy and ensuring referential integrity;
 * **Links**: Links connect your hubs in Data Vault. The relationship is stored as data, which makes it auditable and flexible to change. There are several special types of links, but in most cases, links are bidirectional, meaning you can easily navigate back and forth between business entities. This allows you to analyze complex relationships via connections created by hubs and links in your data model;
-* **Satellites**: Satellites store contextual, descriptive and historical information about the hubs and links they are attached to, depending on whether the data is related to a business object or a relationship. Each satellite in the Data Vault provides additional, valuable information about the main entity.
+* **Satellites**: Satellites store contextual, descriptive, and historical information about the hubs and links they are attached to, depending on whether the data is related to a business object or a relationship. Each satellite in the Data Vault provides additional, valuable information about the main entity.
 
 You can think of these Raw Vault components as LEGO bricks: they are modular and you can combine them in many different ways to build a wide variety of different, cohesive structures.
 
@@ -44,13 +44,13 @@ Given its modular structure that requires many joins to get the specific informa
 
 To further accelerate the creation of these layers and prevent the repetition of the same business logic, you can make use of Business Vault as a complementary layer of your data warehouse.
 
-The Business Vault is there to fill the gaps of generic, source-data-generated Raw Vault, which often does not cover all of the business processes of your organisation. You can easily address such challenges by applying soft rules applied in this.
+The Business Vault is there to fill the gaps of generic, source-data-generated Raw Vault, which often does not cover all of the business processes of your organization. You can easily address such challenges by applying soft rules applied in this.
 
-Business Vault can also help with performance issues that can arise due to presentation layer transformations having to do lots of joins on the fly. In such scenarios, a business vault becomes a central piece for your business logic populating all of the information marts.
+Business Vault can also help with performance issues that can arise due to presentation layer transformations having to do lots of joins on the fly. In such scenarios, a business vault becomes a central piece of your business logic populating all of the information marts.
 
 ### Should you consider Data Vault for your data warehouse?
 
-Data Vault is powerful modelling technique for middle-to-enterprise level data warehouses with the following attributes:
+Data Vault is a powerful modelling technique for middle-to-enterprise level data warehouses with the following attributes:
 
 * Integration of multiple dynamic source systems;
 * Long-term project with agile delivery requirements;
@@ -75,15 +75,15 @@ Let’s take a look at the most impactful features and explore how you can lever
 
 Don’t Repeat Yourself (DRY) software engineering principles can help you sleep better when you are dealing with complex projects, which Data Vault most often is.
 
-dbts’ **macros **feature is a life saver in terms of templating your code. It saves you headaches due to manual errors as well as defining transformation logic in one place in case you need to change it.
+dbt's **macros **feature is a lifesaver in terms of templating your code. It saves you headaches due to manual errors as well as defining transformation logic in one place in case you need to change it.
 
-Data Vault follows the insert only principle with incremental loading strategy. A built-in **jinja** functionality allows you to create one version of the dbt model for both incremental and full load of a table. The easy dependency management that this feature helps you achieve is a huge benefit for highly complex projects.
+Data Vault follows the insert-only principle with incremental loading strategy. A built-in **Jinja** functionality allows you to create one version of the dbt model for both incremental and full load of a table. The easy dependency management that this feature helps you achieve is a huge benefit for highly complex projects.
 
 If you are new to the framework, taking a look at already built Data Vault macros can be crucial, and even if you are an expert, it can still be beneficial. dbt’s rich set of community **packages** can be directly applied to your project or used as an inspiration for your own transformation templates.
 
-Building your transformation templates leveraging reusable macros and flexible jinja language can enhance your project development in a scalable way. When things get more complex, you are able to go back and change your templates in one place either completely, or using parameters to ensure you don’t mess with what already works well.
+Building your transformation templates leveraging reusable macros and flexible Jinja language can enhance your project development in a scalable way. When things get more complex, you are able to go back and change your templates in one place either completely, or using parameters to ensure you don’t mess with what already works well.
 
-Scalability also happens at the database layer. With **materialisations**, you have fine-grained control over whether a database object built by dbt is persisted as a view, table, or built incrementally, which gives you control over the performance and cost characteristics of each transformation. So if your data platform bill is growing, it’s easy to identify which Data Vault components are the most expensive, and make optimisations to reduce cost.
+Scalability also happens at the database layer. With **materializations**, you have fine-grained control over whether a database object built by dbt is persisted as a view, table, or built incrementally, which gives you control over the performance and cost characteristics of each transformation. So if your data platform bill is growing, it’s easy to identify which Data Vault components are the most expensive and make optimizations to reduce cost.
 
 With the active dbt open source community, there is a good chance you are facing a problem which was already solved by someone else. There are plenty of amazing packages available in the dbt [package hub](https://hub.getdbt.com/), which you can utilise to speed up your development even further.
 
@@ -97,17 +97,17 @@ Commit your work, create a penabled by **jobs** that can be defined for each env
 
 ### Auditable data
 
-One of the main selling points of Data Vault is its auditability. In addition to its own capabilities, dbt Cloud features enhance this advantage even further. Each job execution leaves an **audit log**, which can be leveraged to analyse trends in job performance among other things, allowing you to identify bottlenecks in your system. dbt Cloud stores **artifact **files after each execution for further processing and analysis as well.
+One of the main selling points of Data Vault is its auditability. In addition to its own capabilities, dbt Cloud features enhance this advantage even further. Each job execution leaves an **audit log**, which can be leveraged to analyze trends in job performance among other things, allowing you to identify bottlenecks in your system. dbt Cloud stores **artifact **files after each execution for further processing and analysis as well.
 
-dbt has the built-in **data lineage **which helps both developers and data consumers understand just how the data assets in the data warehouse are created. And with the self-serve and automatically generated **dbt docs**, you can spend less time answering questions about your data from across the organisation and more time building your Data Vault.
+dbt has the built-in **data lineage **which helps both developers and data consumers understand just how the data assets in the data warehouse are created. And with the self-serve and automatically generated **dbt docs**, you can spend less time answering questions about your data from across the organization and more time building your Data Vault.
 
 Last but not least, the built-in **dbt testing framework** allows Data Vault developers to test their assumptions about the data in their database. Not only are primary key checks and foreign key checks easy to add and simple to run, but more complex checks like integer range checks, anomaly detection, and highly sophisticated data quality checks are also possible expressed as SQL statements. Infinite Lambda have created two dbt packages for data quality, [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) and [dq_vault](https://hub.getdbt.com/infinitelambda/dq_vault/latest/), which are described later in this post.
 
 ## How to get started with dbt Cloud and Data Vault
 
-There are many decisions to make before you roll up your sleeves and start implementing your Data Vault data warehouse. Apart from data modelling work, you need to agree on naming conventions, hash algorithm, staging strategy and data types for standard metadata attributes, and make sure these are all well documented. Here, to save yourself some headaches in the long run, we recommend starting your own **decision log**.
+There are many decisions to make before you roll up your sleeves and start implementing your Data Vault data warehouse. Apart from data modelling work, you need to agree on naming conventions, hash algorithm, staging strategy, and data types for standard metadata attributes, and make sure these are all well documented. Here, to save yourself some headaches in the long run, we recommend starting your own **decision log**.
 
-In terms of the implementation of the Data Vault itself, we recommend familiarising yourself with the best practices well in advance, especially if you have no previous experience with the framework. There are two well known dbt packages focusing on Data Vault implementation, which you can take inspiration from to build your own templating system, or there can be used directly if they fit your use case.
+In terms of the implementation of the Data Vault itself, we recommend familiarising yourself with the best practices well in advance, especially if you have no previous experience with the framework. There are two well-known dbt packages focusing on Data Vault implementation, which you can take inspiration from to build your own templating system, or there can be used directly if they fit your use case.
 
 ### AutomateDV (formerly known as dbtvault)
 
@@ -115,32 +115,32 @@ AutomateDV is the most popular open source Data Vault package for dbt, with some
 
 ### datavault4dbt
 
-At first glance, this fairly new open source package works in a similar fashion, especially the usage of the macros provides the same experience (apart from names of some of the parameters). Diving deeper into documentation however, we can see it provides a higher level of customisation thanks to many global variables, which alters the behaviour of macros. It also supports any type of source data - CDC, transient or persistent, it can handle it all. We suggest looking into this package if you have a deeper understanding of Data Vault and need a complex, customisable system. It’s good to be aware of the fact that this package is new, so there is a risk of hidden unresolved issues. 
+At first glance, this fairly new open source package works in a similar fashion, especially since the usage of the macros provides the same experience (apart from the names of some of the parameters). Diving deeper into documentation, however, we can see it provides a higher level of customization thanks to many global variables, which alters the behavior of macros. It also supports any type of source data - CDC, transient or persistent, it can handle it all. We suggest looking into this package if you have a deeper understanding of Data Vault and need a complex, customizable system. It’s good to be aware of the fact that this package is new, so there is a risk of hidden unresolved issues. 
 
-### Customising the existing packages
+### Customizing the existing packages
 
-These two packages, AutomateDV and datavault4dbt, are the most popular approaches to building a Data Vault on dbt. However, sometimes these packages don’t quite match an organisation’s pre-existing Data Vault practices built with a different tool. At the surface, dbt looks quite simple, but deep down is extremely customisable: it’s possible to make minor modifications to the packages within your project using Jinja, which is a powerful templating language.
+These two packages, AutomateDV, and datavault4dbt, are the most popular approaches to building a Data Vault on dbt. However, sometimes these packages don’t quite match an organization’s pre-existing Data Vault practices built with a different tool. At the surface, dbt looks quite simple, but deep down is extremely customizable: it’s possible to make minor modifications to the packages within your project using Jinja, which is a powerful templating language.
 
-For example, some organisations choose different hashing algorithms to generate their Data Vault hash keys than what comes out-of-the-box with AutomateDV. So to change that, you can add a [dbt macro](https://docs.getdbt.com/docs/build/jinja-macros#macros) called [default__hash_alg_md5](https://github.com/Datavault-UK/automate-dv/blob/3db7cc285e110ae6976d0afe7a93adf9b776b449/macros/supporting/hash_components/select_hash_alg.sql#L32C1-L36) to your project with the custom logic you want. Much of the package logic can be overridden in this way to suit your needs.
+For example, some organizations choose different hashing algorithms to generate their Data Vault hash keys than what comes out-of-the-box with AutomateDV. So to change that, you can add a [dbt macro](https://docs.getdbt.com/docs/build/jinja-macros#macros) called [default__hash_alg_md5](https://github.com/Datavault-UK/automate-dv/blob/3db7cc285e110ae6976d0afe7a93adf9b776b449/macros/supporting/hash_components/select_hash_alg.sql#L32C1-L36) to your project with the custom logic you want. Much of the package logic can be overridden in this way to suit your needs.
 
 ### Build your own system
 
-Every project is different and needs its own set of features, special treatments tailored to your data or performance tuning mechanisms. Because of this, for any long term, high priority data warehouse solutions we at [Infinite Lambda](https://infinitelambda.com/) recommend working on your own templating system. It needs significant engineering effort before an actual implementation (and bug fixing during), but you’ll save the time later thanks to knowing where to look for a potential issue. If you are not comfortable creating such a system from scratch, you can always start with one of above open-source packages and build on them once you hit its limits.
+Every project is different and needs its own set of features, special treatments tailored to your data, or performance tuning mechanisms. Because of this, for any long term, high priority data warehouse solutions we at [Infinite Lambda](https://infinitelambda.com/) recommend working on your own templating system. It needs significant engineering effort before an actual implementation (and bug fixing during), but you’ll save time later thanks to knowing where to look for a potential issue. If you are not comfortable creating such a system from scratch, you can always start with one of the above open-source packages and build on them once you hit its limits.
 
 We at Infinite Lambda treat data quality very seriously and we push for high test coverage as well as overall data governance in every project. With the experience from multiple projects, we developed two data quality dbt packages, which can help business users raise trust in your data.
 
-Within the [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) _package, we aim for simple storing test results and visualisation of these in a BI dashboard. Leveraging this tool can help with making sure your system behaves in an expected way, all in a visual format of dashboard built on your favourite BI tool. [dq_vault](https://hub.getdbt.com/infinitelambda/dq_vault/latest/) package provides an overview of data quality for all Data Vault models in your dbt project. Complex as it is, Data Vault projects need detailed test coverage to make sure there are no holes in the system. This tool helps with governing your testing strategy and being able to identify issues very quickly.
+Within the [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) _package, we aim for simple storing test results and visualization of these in a BI dashboard. Leveraging this tool can help with making sure your system behaves in an expected way, all in a visual format of dashboard built on your favorite BI tool. [dq_vault](https://hub.getdbt.com/infinitelambda/dq_vault/latest/) package provides an overview of data quality for all Data Vault models in your dbt project. Complex as it is, Data Vault projects need detailed test coverage to make sure there are no holes in the system. This tool helps with governing your testing strategy and being able to identify issues very quickly.
 
-To help you get started, we have created a template GitHub project you can utilise to understand basic principles of building Data Vault with dbt Cloud using one of the abovementioned packages. But if you need help building your Data Vault, get in touch.
+To help you get started, we have created a template GitHub project you can utilize to understand the basic principles of building Data Vault with dbt Cloud using one of the abovementioned packages. But if you need help building your Data Vault, get in touch.
 
 <Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/data-dungeon-meme.jpeg" width="85%" title="Don't let your friends make a data dungeon" />
 
 ### Entity Relation Diagrams (ERDs) and dbt
 
-There are a few open source packages to visualise the entities in your Data Vault built with dbt. I recommend checking out the [dbterd ](https://dbterd.datnguyen.de/1.2/index.html) which turns your [dbt relationship data quality checks](https://docs.getdbt.com/docs/build/tests#generic-tests) into an ER diagram.
+There are a few open source packages to visualize the entities in your Data Vault built with dbt. I recommend checking out the [dbterd ](https://dbterd.datnguyen.de/1.2/index.html) which turns your [dbt relationship data quality checks](https://docs.getdbt.com/docs/build/tests#generic-tests) into an ER diagram.
 
 ## Summary
 
-By leveraging the building blocks of Data Vault, organisations can build data warehouses that are adaptable to changing business requirements, promote data quality and integrity, and enable efficient data management and analytics. This in turn drives better decision-making, competitive advantage and business growth.
+By leveraging the building blocks of Data Vault, organizations can build data warehouses that are adaptable to changing business requirements, promote data quality and integrity, and enable efficient data management and analytics. This in turn drives better decision-making, competitive advantage and business growth.
 
-Choosing the right methodology for building your data warehouse is crucial for your system’s capabilities in the long run. If you are exploring Data Vault and want to learn more, Infinite Lambda can help you make the right call for your organisation.
+Choosing the right methodology for building your data warehouse is crucial for your system’s capabilities in the long run. If you are exploring Data Vault and want to learn more, Infinite Lambda can help you make the right call for your organization.
