@@ -5,7 +5,7 @@ sidebar_label: "Snapshot target is not a snapshot table"
 id: snapshot-target-is-not-a-snapshot-table
 ---
 
-If you see the following error when trying to snapshot:
+If you see the following error when you try executing the snapshot command:
 
 > Snapshot target is not a snapshot table (missing `dbt_scd_id`, `dbt_valid_from`, `dbt_valid_to`)
 
