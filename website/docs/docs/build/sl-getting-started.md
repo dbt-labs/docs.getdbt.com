@@ -106,15 +106,15 @@ Follow these steps to test and query your metrics using MetricFlow:
 When you install the adapter, add the adapter at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`
 :::
 
-3. Run `mf version` to see your CLI version. If you do not have the CLI installed run `pip install --upgrade "dbt-metricflow[your_adapter_name]".  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
+2. Run `mf version` to see your CLI version. If you do not have the CLI installed run `pip install --upgrade "dbt-metricflow[your_adapter_name]".  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
-4. Save your files and run `mf validate-configs` to validate the changes before committing them
+3. Save your files and run `mf validate-configs` to validate the changes before committing them
 
-5. Run `mf query --metrics <metric_name> --dimensions <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
+4. Run `mf query --metrics <metric_name> --dimensions <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
 
-6. Verify that the metric values are what you expect. You can view the generated SQL if you enter `--explain` in the CLI. 
+5. Verify that the metric values are what you expect. You can view the generated SQL if you enter `--explain` in the CLI. 
 
-7. Then commit your changes to push them to your git repo.
+6. Then commit your changes to push them to your git repo.
 
 <!--## Troubleshooting
 
