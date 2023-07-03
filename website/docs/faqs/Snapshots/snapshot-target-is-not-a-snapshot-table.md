@@ -1,7 +1,7 @@
 ---
 title: Debug "Snapshot target is not a snapshot table errors"
 description: "Debugging 'Snapshot target is not a snapshot table (missing "dbt_scd_id", "dbt_valid_from", "dbt_valid_to")' errors"
-sidebar: "Snapshot target is not a snapshot table"
+sidebar_label: "Snapshot target is not a snapshot table"
 id: snapshot-target-is-not-a-snapshot-table
 ---
 
