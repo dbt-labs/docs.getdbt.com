@@ -10,7 +10,7 @@ Enhance your development workflow by integrating with popular linters and format
 
 <details>
 <summary>What are linters and formatters? </summary>
-Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules.  Read more about when to use linters or formatters in the <a href="https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format#faqs">FAQs</a>
+Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules.  Read more about when to use linters or formatters in the <a href="#faqs">FAQs</a>
 </details>
 
 
@@ -192,9 +192,11 @@ SQLFluff is a SQL code linter and formatter. This means that it analyzes your co
 
 sqlfmt is a SQL code formatter. This means it automatically formats your SQL code according to a set of formatting rules which isn't customizable. It focuses solely on the appearance and layout of the code, which helps ensure consistent indentation, line breaks, and spacing. sqlfmt doesn't analyze your code for errors or bugs and doesn't look at coding issues beyond code formatting. <br />
 
-- Use SQLFluff &mdash; Use SQLFluff to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling). It allows you the flexibility to customize your own rules.
+Based on your use case, you can:
 
-- Use sqlfmt &mdash; Use sqlfmt to only have your code well-formatted, without analyzing your code for errors and bugs. You can't customize rules with it.
+- Use SQLFluff to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling). It allows you the flexibility to customize your own rules.
+
+- Use sqlfmt to only have your code well-formatted, without analyzing your code for errors and bugs. You can't customize rules with it.
 
 </details>
 
