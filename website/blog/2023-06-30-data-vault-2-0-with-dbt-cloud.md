@@ -35,7 +35,7 @@ The core components of Data Vault are hubs, links, and satellites. They allow fo
 Here is what you need to know about the main components:
 
 * **Hubs**: A hub is the central repository of all business keys identifying the same business entity. By separating data into hubs, we ensure each piece of business concept is as accurate and consistent as possible, while avoiding redundancy and ensuring referential integrity;
-* **Links**: Links connect your hubs in Data Vault. The relationship is stored as data, which makes it auditable and flexible to change. There are several special types of links, but in most cases, links are bidirectional, meaning you can easily navigate back and forth between business entities. This allows you to analyse complex relationships via connections created by hubs and links in your data model;
+* **Links**: Links connect your hubs in Data Vault. The relationship is stored as data, which makes it auditable and flexible to change. There are several special types of links, but in most cases, links are bidirectional, meaning you can easily navigate back and forth between business entities. This allows you to analyze complex relationships via connections created by hubs and links in your data model;
 * **Satellites**: Satellites store contextual, descriptive and historical information about the hubs and links they are attached to, depending on whether the data is related to a business object or a relationship. Each satellite in the Data Vault provides additional, valuable information about the main entity.
 
 You can think of these Raw Vault components as LEGO bricks: they are modular and you can combine them in many different ways to build a wide variety of different, cohesive structures.
