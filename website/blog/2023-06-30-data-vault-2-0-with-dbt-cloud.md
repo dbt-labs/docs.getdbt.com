@@ -6,7 +6,7 @@ slug: data-vault-with-dbt-cloud
 authors: [rastislav_zdechovan, sean_mcintyre]
 
 tags: [data vault] 
-hide_table_of_contents: false
+hide_table_of_contents: true
 
 date: 2023-06-30
 is_featured: true
@@ -77,15 +77,17 @@ Let’s take a look at the most impactful features and explore how you can lever
 
 Don’t Repeat Yourself (DRY) software engineering principles can help you sleep better when you are dealing with complex projects, which Data Vault most often is.
 
-dbt's **macros **feature is a lifesaver in terms of templating your code. It saves you headaches due to manual errors as well as defining transformation logic in one place in case you need to change it.
+dbt's [**macros**](https://docs.getdbt.com/docs/build/jinja-macros) feature is a lifesaver in terms of templating your code. It saves you headaches due to manual errors as well as defining transformation logic in one place in case you need to change it.
 
-Data Vault follows the insert-only principle with incremental loading strategy. A built-in **Jinja** functionality allows you to create one version of the dbt model for both incremental and full load of a table. The easy dependency management that this feature helps you achieve is a huge benefit for highly complex projects.
+Data Vault follows the insert-only principle with incremental loading strategy. A built-in [**Jinja**](https://docs.getdbt.com/docs/build/jinja-macros) functionality allows you to create one version of the dbt model for both incremental and full load of a table. The easy dependency management that this feature helps you achieve is a huge benefit for highly complex projects.
 
-If you are new to the framework, taking a look at already built Data Vault macros can be crucial, and even if you are an expert, it can still be beneficial. dbt’s rich set of community **packages** can be directly applied to your project or used as an inspiration for your own transformation templates.
+If you are new to the framework, taking a look at already built Data Vault macros can be crucial, and even if you are an expert, it can still be beneficial. dbt’s rich set of community [**packages**](https://docs.getdbt.com/docs/build/packages) can be directly applied to your project or used as an inspiration for your own transformation templates.
 
 Building your transformation templates leveraging reusable macros and flexible Jinja language can enhance your project development in a scalable way. When things get more complex, you are able to go back and change your templates in one place either completely, or using parameters to ensure you don’t mess with what already works well.
 
-Scalability also happens at the database layer. With **materializations**, you have fine-grained control over whether a database object built by dbt is persisted as a view, table, or built incrementally, which gives you control over the performance and cost characteristics of each transformation. So if your data platform bill is growing, it’s easy to identify which Data Vault components are the most expensive and make optimizations to reduce cost.
+If you are someone who has practiced Data Vault data modeling in another tool, you might appreciate the dbt [**model contracts**](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) as a way to guarantee to your data end-users the exact shape of a dbt transformation. This is a similar practice to writing DDL and 
+
+Scalability also happens at the database layer. With [**materializations**](https://docs.getdbt.com/docs/build/materializations), you have fine-grained control over whether a database object built by dbt is persisted as a view, table, or built incrementally, which gives you control over the performance and cost characteristics of each transformation. So if your data platform bill is growing, it’s easy to identify which Data Vault components are the most expensive and make optimizations to reduce cost.
 
 With the active dbt open source community, there is a good chance you are facing a problem which was already solved by someone else. There are plenty of amazing packages available in the dbt [package hub](https://hub.getdbt.com/), which you can utilise to speed up your development even further.
 
@@ -95,15 +97,15 @@ dbt Cloud includes **built-in Git** with accessible features directly from its I
 
 The biggest boon to Data Vault developer productivity in dbt Cloud are the **DataOps** and **Data Warehouse Automation** features of dbt Cloud. Each Data Vault developer gets their own development environment to work in and there is no complicated set up process to go through.
 
-Commit your work, create a pull request, and have automated code review enabled by dbt Cloud **jobs** that can be defined for each environment separately (e.g., testing, QA, production). Together with dbt **tags**, the feature allows you to orchestrate your project in an efficient and powerful way.
+Commit your work, create a pull request, and have automated code review enabled by dbt Cloud [**jobs**](https://docs.getdbt.com/docs/deploy/dbt-cloud-job) that can be defined for each environment separately (e.g., testing, QA, production). Together with dbt [**tags**](https://docs.getdbt.com/reference/resource-configs/tags), the feature allows you to orchestrate your project in an efficient and powerful way.
 
 ### Auditable data
 
-One of the main selling points of Data Vault is its auditability. In addition to its own capabilities, dbt Cloud features enhance this advantage even further. Each job execution leaves an **audit log**, which can be leveraged to analyze trends in job performance among other things, allowing you to identify bottlenecks in your system. dbt Cloud stores **artifact **files after each execution for further processing and analysis as well.
+One of the main selling points of Data Vault is its auditability. In addition to its own capabilities, dbt Cloud features enhance this advantage even further. Each job execution leaves an [**audit log**](https://docs.getdbt.com/docs/cloud/manage-access/audit-log), which can be leveraged to analyze trends in job performance among other things, allowing you to identify bottlenecks in your system. dbt Cloud stores [**artifact**](https://docs.getdbt.com/docs/deploy/artifacts) files after each execution for further processing and analysis as well, and exposes them programmatically via the [Discovery API](https://www.getdbt.com/blog/introducing-the-discovery-api/).
 
-dbt has the built-in **data lineage **which helps both developers and data consumers understand just how the data assets in the data warehouse are created. And with the self-serve and automatically generated **dbt docs**, you can spend less time answering questions about your data from across the organization and more time building your Data Vault.
+dbt has the built-in **data lineage **which helps both developers and data consumers understand just how the data assets in the data warehouse are created. And with the self-serve and automatically generated [**dbt docs**](https://docs.getdbt.com/reference/commands/cmd-docs), you can spend less time answering questions about your data from across the organization and more time building your Data Vault.
 
-Last but not least, the built-in **dbt testing framework** allows Data Vault developers to test their assumptions about the data in their database. Not only are primary key checks and foreign key checks easy to add and simple to run, but more complex checks like integer range checks, anomaly detection, and highly sophisticated data quality checks are also possible expressed as SQL statements. Infinite Lambda have created two dbt packages for data quality, [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) and [dq_vault](https://hub.getdbt.com/infinitelambda/dq_vault/latest/), which are described later in this post.
+Last but not least, the built-in [**dbt testing framework**](https://docs.getdbt.com/guides/dbt-ecosystem/dbt-python-snowpark/13-testing) allows Data Vault developers to test their assumptions about the data in their database. Not only are primary key checks and foreign key checks easy to add and simple to run, but more complex checks like integer range checks, anomaly detection, and highly sophisticated data quality checks are also possible expressed as SQL statements. Infinite Lambda have created two dbt packages for data quality, [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) and [dq_vault](https://hub.getdbt.com/infinitelambda/dq_vault/latest/), which are described later in this post.
 
 ## How to get started with dbt Cloud and Data Vault
 
@@ -135,11 +137,11 @@ Within the [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) _p
 
 To help you get started, we have created a template GitHub project you can utilize to understand the basic principles of building Data Vault with dbt Cloud using one of the abovementioned packages. But if you need help building your Data Vault, get in touch.
 
-<Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/data-dungeon-meme.jpeg" width="85%" title="Don't let your friends make a data dungeon" />
+<Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/data-dungeon-meme.jpeg" width="85%" title="Friends don't let friends make a data dungeon" />
 
 ### Entity Relation Diagrams (ERDs) and dbt
 
-There are a few open source packages to visualize the entities in your Data Vault built with dbt. I recommend checking out the [dbterd ](https://dbterd.datnguyen.de/1.2/index.html) which turns your [dbt relationship data quality checks](https://docs.getdbt.com/docs/build/tests#generic-tests) into an ER diagram.
+Data lineage is dbt's strength, but sometimes it's not enough to help you to understand the relationships between Data Vault components like a classic ERD would. There are a few open source packages to visualize the entities in your Data Vault built with dbt. I recommend checking out the [dbterd](https://dbterd.datnguyen.de/1.2/index.html) which turns your [dbt relationship data quality checks](https://docs.getdbt.com/docs/build/tests#generic-tests) into an ERD.
 
 ## Summary
 
