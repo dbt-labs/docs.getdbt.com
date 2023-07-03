@@ -8,7 +8,7 @@ tags: ["scheduler"]
 
 Use dbt Cloud's capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [dbt Cloud's in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
 
-dbt Cloud offers the easiest way to run your dbt project in production. Your dbt production jobs should create the tables and <Term id="view">views</Term> that your business intelligence tools and end users query. <Term id="deploying">Deploying</Term> with dbt Cloud lets you:
+dbt Cloud offers the easiest and most reliable way to run your dbt project in production. Effortlessly promote high quality code from development to production and build fresh data assets that your business intelligence tools and end users query to make business decisions. <Term id="deploying">Deploying</Term> with dbt Cloud lets you:
 - Keep production data fresh on a timely basis
 - Ensure CI and production pipelines are efficient 
 - Identify the root cause of failures in deployment environments
