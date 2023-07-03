@@ -135,7 +135,7 @@ We at Infinite Lambda treat data quality very seriously and we push for high tes
 
 Within the [dq_tools](https://hub.getdbt.com/infinitelambda/dq_tools/latest/) _package, we aim for simple storing test results and visualization of these in a BI dashboard. Leveraging this tool can help with making sure your system behaves in an expected way, all in a visual format of dashboard built on your favorite BI tool. [dq_vault](https://hub.getdbt.com/infinitelambda/dq_vault/latest/) package provides an overview of data quality for all Data Vault models in your dbt project. Complex as it is, Data Vault projects need detailed test coverage to make sure there are no holes in the system. This tool helps with governing your testing strategy and being able to identify issues very quickly.
 
-To help you get started, we have created a template GitHub project you can utilize to understand the basic principles of building Data Vault with dbt Cloud using one of the abovementioned packages. But if you need help building your Data Vault, get in touch.
+To help you get started, [we have created a template GitHub project](https://github.com/IL-RASTI/dbt-cloud-data-vault-demo) you can utilize to understand the basic principles of building Data Vault with dbt Cloud using one of the abovementioned packages. But if you need help building your Data Vault, get in touch.
 
 <Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/data-dungeon-meme.jpeg" width="85%" title="Friends don't let friends make a data dungeon" />
 
