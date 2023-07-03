@@ -18,7 +18,7 @@ Double check that you haven't inadvertently caused your snapshot to behave like 
 {% endsnapshot %}
 ```
 
-What would happen then is dbt treated snapshots like tables (issuing `create or replace table ...` statements) **silently** instead of actually snapshotting data (SCD2 via `insert` / `merge` statements). When upgrading to dbt versions 1.4 and above, dbt now raises a Parsing Error (instead of silently treating snapshots like tables) that reads:
+dbt is treating snapshots like tables (issuing `create or replace table ...` statements) **silently** instead of actually snapshotting data (SCD2 via `insert` / `merge` statements). When upgrading to dbt versions 1.4 and higher, dbt now raises a Parsing Error (instead of silently treating snapshots like tables) that reads:
 
 ```
 A snapshot must have a materialized value of 'snapshot'
