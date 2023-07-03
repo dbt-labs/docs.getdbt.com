@@ -22,7 +22,7 @@ Think of a city’s water supply. Each house does not have a pipe directly from 
 
 A new development in the city? No problem! Just hook up the new pipes to the reservoir! Not enough water? Just find another water source and fill up the reservoir.
 
-Data Vault is the dam and reservoir: it is the well-engineered data model to structure an organisation’s data from source systems for use by downstream data projects – rather than each team collecting data straight from the source. The Data Vault data model is designed using a few well-applied principles, and in practice, pools source data so it is available for use by all downstream consumers. This promotes a scalable data warehouse through reusability and modularity.
+Data Vault is the dam and reservoir: it is the well-engineered data model to structure an organization’s data from source systems for use by downstream data projects – rather than each team collecting data straight from the source. The Data Vault data model is designed using a few well-applied principles, and in practice, pools source data so it is available for use by all downstream consumers. This promotes a scalable data warehouse through reusability and modularity.
 
 <Lightbox src="/img/blog/2023-06-30-data-vault-2-0-with-dbt-cloud/reservoir-dam-hallucination.png" width="85%" title="Artist depiction of Data Vault reservoir and dam analogy courtesy of Gwen Windflower and Midjourney" />
 
