@@ -10,7 +10,7 @@ Enhance your development workflow by integrating with popular linters and format
 
 <details>
 <summary>What are linters and formatters? </summary>
-Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules.  Read more about when to use linters or formatters in the [FAQs](#faqs).
+Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules.  Read more about when to use linters or formatters in the <a href="https://docs.getdbt.com/docs/cloud/dbt-cloud-ide/lint-format#faqs">FAQs</a>
 </details>
 
 
