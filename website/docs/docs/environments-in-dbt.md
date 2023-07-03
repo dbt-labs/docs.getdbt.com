@@ -18,7 +18,7 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 <Card
     title="Environments in dbt Cloud"
-    body="Seamlessly configure development and deployment environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE and scheduled jobs."
+    body="Seamlessly configure development and deployment environments in dbt Cloud to control how your project runs in both the dbt Cloud IDE and dbt jobs."
     link="/docs/dbt-cloud-environments"
     icon="dbt-bit"/>
 
@@ -32,7 +32,7 @@ Configure environments to tell dbt Cloud or dbt Core how to build and execute yo
 
 ## Related docs
 
-- [dbt Cloud environments best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
+- [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
 - [Deployment environments](/docs/deploy/deploy-environments)
 - [About dbt Core versions](/docs/dbt-versions/core)
 - [Set Environment variables in dbt Cloud](/docs/build/environment-variables#special-environment-variables)

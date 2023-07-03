@@ -4,13 +4,13 @@ id: "deploy-environments"
 description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
-Deployment environments in dbt Cloud are crucial for executing scheduled jobs. To execute dbt, environments determine the settings used during job runs, including:
+Deployment environments in dbt Cloud are crucial for deploying dbt jobs. To execute dbt, environments determine the settings used during job runs, including:
 
 - The version of dbt Core that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
 - The version of your code to execute
 
-A dbt Cloud project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of scheduled jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/job-settings#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
+A dbt Cloud project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/job-settings#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
 This page will go over the different types of environments and how to intuitively configure your deployment environment in dbt Cloud. 
 
@@ -176,7 +176,7 @@ This section allows you to determine the credentials that should be used when co
 
 ## Related docs
 
-- [dbt Cloud environments best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
+- [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
 - [Deploy dbt jobs](/docs/deploy/dbt-cloud-job)
 - [Deploy CI jobs](/docs/deploy/continuous-integration)
 - [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)
