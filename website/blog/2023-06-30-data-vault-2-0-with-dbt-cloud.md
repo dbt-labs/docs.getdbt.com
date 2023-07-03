@@ -30,7 +30,7 @@ Data Vault is the dam and reservoir: it is the well-engineered data model to str
 
 Loading your data directly from source systems without applying any business rules implies that you want them stored in a so-called **Raw Vault**. This is most of the time the first step in the journey of transforming your data. There are situations where you’d want to apply business logic before loading the data into your presentation layer, that’s where **Business Vault **comes into play. Performance enhancement or centralized business logic are a few of the reasons for doing so.
 
-The core components of Data Vault are hubs, links and satellites. They allow for more flexibility and extensibility, and can be used to model complex processes in an agile way.
+The core components of Data Vault are hubs, links, and satellites. They allow for more flexibility and extensibility and can be used to model complex processes in an agile way.
 
 Here is what you need to know about the main components:
 
