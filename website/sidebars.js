@@ -322,7 +322,7 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Deploy dbt jobs",
+      label: "Deploy dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
@@ -361,7 +361,7 @@ const sidebarSettings = {
         },
         "docs/deploy/deployment-tools",
       ],
-    }, // end of "Deploy dbt jobs"
+    }, // end of "Deploy dbt"
     {
       type: "category",
       label: "Collaborate with others",
