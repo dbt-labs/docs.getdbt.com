@@ -1,5 +1,5 @@
 ---
-title: "Deploy dbt jobs"
+title: "Deploy dbt"
 id: "deployments"
 sidebar: "Use dbt Cloud's capabilities to run and seamlessly schedule a dbt job in production."
 hide_table_of_contents: true
