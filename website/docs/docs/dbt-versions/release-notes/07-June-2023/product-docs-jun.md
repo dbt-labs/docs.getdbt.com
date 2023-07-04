@@ -1,6 +1,5 @@
 ---
 title: "June 2023 product docs updates"
-id: "product-docs-jun"
 description: "June 2023: The Product docs team merged 132 PRs, made various updates to dbt Cloud and Core, such as the Deploy sidebar, Supported platforms page, added a landing page on the References section, added an ADO example to the CI/CD guide, and more"
 sidebar_label: "Update: Product docs changes"
 tags: [June-2023, product-docs]
