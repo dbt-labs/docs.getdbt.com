@@ -85,7 +85,7 @@ If you are new to the framework, taking a look at already built Data Vault macro
 
 Building your transformation templates leveraging reusable macros and flexible Jinja language can enhance your project development in a scalable way. When things get more complex, you are able to go back and change your templates in one place either completely, or using parameters to ensure you don’t mess with what already works well.
 
-If you are someone who has practiced Data Vault data modeling in another tool, you might appreciate the dbt [**model contracts**](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) as a way to guarantee to your data end-users the exact shape of a dbt transformation. This is a similar practice to writing DDL and 
+If you are someone who has practiced Data Vault data modeling in another tool, you might appreciate the dbt [**model contracts**](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) as a way to guarantee to your data end-users the exact shape of a dbt transformation. This is a similar practice to writing DDL.
 
 Scalability also happens at the database layer. With [**materializations**](https://docs.getdbt.com/docs/build/materializations), you have fine-grained control over whether a database object built by dbt is persisted as a view, table, or built incrementally, which gives you control over the performance and cost characteristics of each transformation. So if your data platform bill is growing, it’s easy to identify which Data Vault components are the most expensive and make optimizations to reduce cost.
 
@@ -111,7 +111,7 @@ Last but not least, the built-in [**dbt testing framework**](https://docs.getdbt
 
 There are many decisions to make before you roll up your sleeves and start implementing your Data Vault data warehouse. Apart from data modelling work, you need to agree on naming conventions, hash algorithm, staging strategy, and data types for standard metadata attributes, and make sure these are all well documented. Here, to save yourself some headaches in the long run, we recommend starting your own **decision log**.
 
-In terms of the implementation of the Data Vault itself, we recommend familiarising yourself with the best practices well in advance, especially if you have no previous experience with the framework. There are two well-known dbt packages focusing on Data Vault implementation, which you can take inspiration from to build your own templating system, or there can be used directly if they fit your use case.
+In terms of the implementation of the Data Vault itself, we recommend familiarizing yourself with the best practices well in advance, especially if you have no previous experience with the framework. There are two well-known dbt packages focusing on Data Vault implementation, which you can take inspiration from to build your own templating system, or there can be used directly if they fit your use case.
 
 ### AutomateDV (formerly known as dbtvault)
 
