@@ -184,7 +184,7 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 ## FAQs
 
 <details>
-<summary>When to use SQLFluff and when to use sqlfmt?</summary>
+<summary>When should I use SQLFluff and when should I use sqlfmt?</summary>
 
 SQLFluff and sqlfmt are both tools used for formatting SQL code, but there are some differences that may make one preferable to the other depending on your use case. <br />
 
