@@ -22,7 +22,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Behavior changes
 
-:::info Action required if your project defines metrics 
+:::info Action required if your project defines `metrics`
 
 The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) has changed and now uses [MetricFlow](/docs/build/about-metricflow). 
 
