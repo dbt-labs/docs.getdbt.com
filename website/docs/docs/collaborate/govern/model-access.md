@@ -181,14 +181,20 @@ It is possible to `ref` a model from another project in two ways:
 
 See ["Project Dependencies"](project-dependencies) for an explanation of the advantages of each approach.
 
-If referencing a model from a package, you have the option of restricting `ref` access (or not) to protected models in that package. For historical reasons, to avoid breaking existing projects, the default behavior is that models in another project can `ref` both protected and public models in an installed package. This is useful for packages containing models for a common data source; you can install the package as source code, and run the models as if they were your own.
+#### How do I restrict access to models defined in a package?
 
-If you do wish to restrict `ref` access to _only_ public models in that package, you can set `enforce_access: True` in your package configuration:
+The maintainer of a project that can be installed as a package may choose whether to restrict other models' `ref` access to only its public models. The package maintainer does this by setting a `restrict_access` config to `True`. By default, the config is `False`, meaning that:
+- Models in the package with `access: protected` may be referenced by models in the root project, as if they were defined in the same project
+- Models in the package with `access: private` may be referenced by models in the root project, so long as they also have the same `group` config
+
+When `restrict_access: True`, any `ref` from outside the package to a protected or private model in that package will fail. Only models with `access: public` may be accessed outside the package.
+
+<File name="dbt_project.yml">
 
 ```yml
-packages:
-  - git: https://my-org/upstream-project
-    enforce_access: True  # default is False
+restrict_access: True
 ```
+
+</File>
 
 </VersionBlock>

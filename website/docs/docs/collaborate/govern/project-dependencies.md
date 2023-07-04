@@ -5,8 +5,8 @@ sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
 ---
 
-:::info
-Cross-project `ref` This is a feature of dbt Cloud Enterprise.
+:::info Cross-project `ref`
+This is a feature of dbt Cloud Enterprise.
 :::
 
 dbt Core v1.6 introduces a notion of `dependencies` between dbt projects. You're likely already familiar with installing other projects as [packages](/docs/build/packages), whereby you pull down another project's source code and treat it as your own.
@@ -27,4 +27,4 @@ The second is new. Unlike installing a package, the models in the `jaffle_financ
 
 Models referenced from a `project`-type dependency must use [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant), including the project name. Only public models can be accessed in this way.
 
-It's equally possible to install the `jaffle_finance` project as a `package` dependency. This will pull down its full source code., and require dbt to parse all its contents. dbt will expect you to configure and run those models as your own. This can be a useful pattern to achieve certain types of unified deployments in production. In development, it can add significant complexity and latency.
+It is equally possible to install the `jaffle_finance` project as a `package` dependency. This will pull down its full source code, and require dbt to parse all its contents. dbt will expect you to configure and run those models as your own. This can be a useful pattern to achieve certain types of unified deployments in production, or to make a coordinated change across multiple projects in development. It can add significant complexity and latency, however, when working within the narrower scope of a single project.
