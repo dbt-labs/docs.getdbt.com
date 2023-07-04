@@ -373,6 +373,15 @@ pat_kearns:
   name: Pat Kearns
   organization: dbt Labs
 
+rastislav_zdechovan:
+  image_url: /img/blog/authors/rastislav-zdechovan.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/rastislav-zdechovan/
+  name: Rastislav Zdechovan
+  organization: Infinite Lambda
+
 ross_turk:
   image_url: /img/blog/authors/ross-turk.png
   job_title: VP Marketing
