@@ -196,7 +196,7 @@ You can use either SQLFluff or sqlfmt depending on your preference and what work
 
 - Use SQLFluff to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling). It allows you the flexibility to customize your own rules.
 
-- Use sqlfmt to only have your code well-formatted, without analyzing your code for errors and bugs. You can't customize rules with it.
+- Use sqlfmt to only have your code well-formatted without analyzing it for errors and bugs. You can use sqlfmt out of the box, making it convenient to use right away without having to configure it.
 
 </details>
 
