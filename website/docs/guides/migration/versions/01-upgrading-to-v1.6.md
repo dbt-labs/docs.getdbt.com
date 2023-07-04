@@ -22,7 +22,15 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Behavior changes
 
-**Coming soon**
+:::info Action required if your project defines metrics 
+
+The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) has changed and now uses [MetricFlow](/docs/build/about-metricflow). 
+
+:::
+
+If your dbt project defines metrics, you'll need to migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to the MetricFlow. This means any tests you have won't compile on v1.5 or older. 
+
+NEED TO ADD MORE INFO RE: migration script
 
 
 ## New and changed documentation
