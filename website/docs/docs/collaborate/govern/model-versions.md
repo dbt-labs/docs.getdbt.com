@@ -326,7 +326,13 @@ We intend to build this into `dbt-core` as out-of-the-box functionality. (Upvote
     -- otherwise, it's a no-op
     {% if model.get('version') and model.get('version') == model.get('latest_version') %}
 
-        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}  
+        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}
+
+        {% set existing_relation = load_relation(new_relation) %}
+
+        {% if existing_relation and not existing_relation.is_view %}
+            {{ drop_relation_if_exists(existing_relation) }}
+        {% endif %}
         
         {% set create_view_sql -%}
             -- this syntax may vary by data platform
