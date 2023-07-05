@@ -233,8 +233,8 @@ metrics:
     type_params:
       numerator: revenue
       denominator: active_customers
-    filter: |  
-      {{ dimension('country', entity_path=['customer']) }} = 'Mexico'
+    filter: |
+      {{dimension('perishable_goods')}} in ('vegetables',' fruits', 'dairy', 'deli')
 ```
 </TabItem>
 </Tabs>
