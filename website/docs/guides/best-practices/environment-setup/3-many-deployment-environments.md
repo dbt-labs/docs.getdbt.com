@@ -24,7 +24,7 @@ hoverSnippet: Learn how to configure a many deployment environment setup in dbt 
 2. When code is ready, developer opens a PR to merge feature branch into `qa`.
 3. The **first Slim CI Job** automatically kicks off to test the changes introduced in the PR. This job will *defer to a regularly-scheduled job in the QA environment* and run in the QA deployment environment.
 4. When **Slim CI Job is successful** and team is ready to deploy changes, the **PR is merged into `qa`.**
-5. Scheduled jobs run in the QA deployment environment, running on `qa` branch to ensure the new changes work as indended.
+5. Scheduled jobs run in the QA deployment environment, running on `qa` branch to ensure the new changes work as intended.
 6. When **all feature branches** for a given release (e.g. sprint) have been **successfully merged** to `qa` and are **running without error** in the QA deployment environment, a team member opens a **PR to merge `qa` → `main`.**
 7. The **second Slim CI Job** automatically kicks off to test changes in PR. This job will *defer to a regularly-scheduled job in the Production environment* and run in the Production deployment environment.
 8. When **second Slim CI Job** is successful and team is ready to deploy changes, the **PR is merged into `main`**.
@@ -37,11 +37,11 @@ hoverSnippet: Learn how to configure a many deployment environment setup in dbt 
 
 ### dbt Cloud setup
 
-1. Create your [**development environment**](docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE.
+1. Create your [**development environment**](/docs/dbt-cloud-environments) to power the dbt Cloud IDE.
 
     Here, we’ll set a **custom branch** so that users in the IDE create their feature branches from `qa` instead of `main`. Click **Only run on a custom branch** in **General settings**, enter `qa` into **Custom Branch.**
 
-2. Set up your **QA [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
+2. Set up your **QA [deployment environment](/docs/deploy/deploy-environments)**
 
     Here, we’ll apply the same custom branch settings as the development environment in Step 1. All scheduled jobs in the QA deployment environment will use the code from the `qa` branch during execution.
 
@@ -51,7 +51,7 @@ hoverSnippet: Learn how to configure a many deployment environment setup in dbt 
 
         This job will also need to defer to one of the QA jobs created in step 3a. This enables the use of the `state` modifier in your selection syntax to only run changes introduced by your PR.
 
-4. Set up your **Production [deployment environment](docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**
+4. Set up your **Production [deployment environment](/docs/deploy/deploy-environments)**
 
     Here, we’ll *also* use the same custom branch settings as the other environments, but set the custom branch as `main`. Even thought the `main` branch is the default, setting this value enables us to properly set up the CI Job in the next step.
 
