@@ -16,7 +16,7 @@ If you don't have any of the following requirements, refer to the instructions i
 - You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 - You have created two catalogs in Databricks: *dev* and *prod*.
 - You have created  Databricks Service Principal to run your production jobs.
-- You have at least one [deployment environment](docs/collaborate/environments/dbt-cloud-environments) in dbt Cloud.
+- You have at least one [deployment environment](/docs/deploy/deploy-environments) in dbt Cloud.
 
 To get started, let's revisit the deployment environment created for your production data.
 
@@ -24,7 +24,7 @@ To get started, let's revisit the deployment environment created for your produc
 
 In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, you can design [data lakehouses](https://www.databricks.com/product/data-lakehouse) with separate environments. The _production_ environment includes the relations (schemas, tables, and views) that end users query or use, typically in a BI tool or ML model.
 
-In dbt Cloud, [environments](/docs/collaborate/environments/dbt-cloud-environments) come in two flavors:
+In dbt Cloud, [environments](/docs/dbt-cloud-environments) come in two flavors:
 
 - Deployment &mdash; Defines the settings used for executing jobs created within that environment.
 - Development &mdash; Determine the settings used in the dbt Cloud IDE for a particular dbt Cloud project. 
