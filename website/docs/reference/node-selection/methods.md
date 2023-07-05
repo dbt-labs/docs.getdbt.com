@@ -178,7 +178,7 @@ The `state` method is used to select nodes by comparing them against a previous 
 
 </VersionBlock>
 
-`state:new`: There is no node with the same `unique_id` in the comparison manifest.
+`state:new`: There is no node with the same `unique_id` in the comparison manifest
 
 `state:modified`: All new nodes, plus any changes to existing nodes.
 
