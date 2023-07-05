@@ -48,8 +48,8 @@ snapshots:
 
 <File name='snapshots/properties.yml'>
 
-**Note:** Required snapshot properties may not work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
-
+**Note:** Required snapshot properties will not work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+<!--
 ```yaml
 version: 2
 
@@ -64,7 +64,7 @@ snapshots:
       [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
-
+-->
 </File>
 
 </TabItem>
