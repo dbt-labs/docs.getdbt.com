@@ -41,6 +41,8 @@ exclude = [
   'https://img.shields.io',
   'https://gitlab.com',
   'https://dbtlabs.postman.co',
+  'https://mobile.twitter.com',
+  'https://twitter.com',
 ]
 
 # Exclude all mail addresses from checking
