@@ -3,7 +3,7 @@ title: "About tests property"
 sidebar_label: "tests"
 resource_types: all
 datatype: test
-keywords: [test, tests, custom tests]
+keywords: [test, tests, custom tests, custom test name, test name]
 ---
 
 <Tabs
