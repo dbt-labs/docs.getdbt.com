@@ -24,9 +24,13 @@ import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
 ## Create a development environment
 
-To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Development** as the environment type.
+To create a new dbt Cloud development environment:
 
-After setting the **General Settings** as above, there’s nothing more that needs to be done on the environments page. Click **Save** to create the environment.
+1. Navigate to **Deploy** -> **Environments** 
+2. Click **Create Environment**.
+3. Select **Development** as the environment type.
+4. Fill in the fields under **General Settings** and **Development Credentials**.
+5. Click **Save** to create the environment.
 
 ### Set developer credentials
 
