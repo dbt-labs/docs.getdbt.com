@@ -203,7 +203,7 @@ Remember that `state:modified` includes _all_ of the criteria above, as well as 
 <VersionBlock firstVersion="1.6">
 
 There are two additional `state` selectors that complement `state:new` and `state:modified` by representing the inverse of those functions:
-- `state:old`: a node with the same `unique_id` exists in the comparison manifest
+- `state:old` &mdash; a node with the same `unique_id` exists in the comparison manifest
 - `state:unmodified`: All existing nodes with no changes 
 
 The benefits for these selectors are primarily to exclude unchanged nodes to shorten run times. There are no subselectors available, but that may change as use cases evolve. 
