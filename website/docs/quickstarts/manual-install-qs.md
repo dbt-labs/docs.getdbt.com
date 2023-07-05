@@ -189,7 +189,7 @@ Check out a new git branch to work on new code:
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
 3. Paste the following query into the `models/customers.sql` file.
 
-    <Snippet src="tutorial-sql-query" />
+    <Snippet path="tutorial-sql-query" />
 
 4. From the command line, enter `dbt run`.
     <div style={{maxWidth: '400px'}}>
@@ -210,15 +210,15 @@ When you return to the BigQuery console, you can `select` from this model.
 
 
 
-<Snippet src="quickstarts/change-way-model-materialized" />
+<Snippet path="quickstarts/change-way-model-materialized" />
 
 ### Delete the example models
 
-<Snippet src="quickstarts/delete-example-models" />
+<Snippet path="quickstarts/delete-example-models" />
 
 ### Build models on top of other models
 
-<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+<Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
@@ -417,7 +417,7 @@ When you return to the BigQuery console, you can `select` from this model.
 
 ### Next steps
 
-<Snippet src="tutorial-next-steps-1st-model" />
+<Snippet path="tutorial-next-steps-1st-model" />
 
 You can also explore:
 
@@ -428,11 +428,11 @@ You can also explore:
 
 ### Add tests to your models
 
-<Snippet src="tutorial-add-tests-to-models" />
+<Snippet path="tutorial-add-tests-to-models" />
 
 ### Document your models
 
-<Snippet src="tutorial-document-your-models" />
+<Snippet path="tutorial-document-your-models" />
 
 3. Run `dbt docs serve` command to launch the documentation in a local website.
 
@@ -444,7 +444,7 @@ You can also explore:
 
 #### Next steps
 
-<Snippet src="tutorial-next-steps-tests" />
+<Snippet path="tutorial-next-steps-tests" />
 
 ### Commit updated changes
 

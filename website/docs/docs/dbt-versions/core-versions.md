@@ -8,10 +8,10 @@ dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. 
 
 dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
 
-<Snippet src="core-version-support" />
+<Snippet path="core-version-support" />
 
 
-<Snippet src="core-versions-table" />
+<Snippet path="core-versions-table" />
 
 ### Further reading
 

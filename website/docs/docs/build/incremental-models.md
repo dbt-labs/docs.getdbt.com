@@ -456,5 +456,5 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 </VersionBlock>
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>
