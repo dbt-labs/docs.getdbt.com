@@ -32,18 +32,18 @@ dbt --warn-error-options '{"include": "all"}' run
 ```
 
 ```text
-dbt --warn-error-options '{"include": "all", "exclude":[NoNodesForSelectionCriteria]}' run
+dbt --warn-error-options '{"include": "all", "exclude": ["NoNodesForSelectionCriteria"]}' run
 ...
 ```
 
 
 ```text
-dbt --warn-error-options '{"include": [NoNodesForSelectionCriteria]}' run
+dbt --warn-error-options '{"include": ["NoNodesForSelectionCriteria"]}' run
 ...
 ```
 
 ```text
-dbt_WARN_ERROR_OPTIONS='{"include": [NoNodesForSelectionCriteria]}' dbt run
+DBT_WARN_ERROR_OPTIONS='{"include": ["NoNodesForSelectionCriteria"]}' dbt run
 ...
 ```
 

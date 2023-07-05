@@ -140,7 +140,7 @@ select
   field_5,
   count(*)
 from my_table
-{{ dbt_utils.group_by(5) }}
+{{ dbt_utils.dimensions(5) }}
 
 ```
 

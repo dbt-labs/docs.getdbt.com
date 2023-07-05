@@ -10,7 +10,7 @@ Enhance your development workflow by integrating with popular linters and format
 
 <details>
 <summary>What are linters and formatters? </summary>
-Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules. 
+Linters analyze code for errors, bugs, and style issues, while formatters fix style and formatting rules.  Read more about when to use linters or formatters in the <a href="#faqs">FAQs</a>
 </details>
 
 
@@ -165,6 +165,11 @@ To format your YAML, Markdown, or JSON code, dbt Cloud integrates with [Prettier
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/prettier.gif" width="95%" title="Format YAML, Markdown, and JSON files using Prettier."/>
 
+
+You can add a configuration file to customize formatting rules for YAML, Markdown, or JSON files using Prettier. The IDE looks for the configuration file based on an order of precedence. For example, it first checks for a "prettier" key in your `package.json` file.
+
+For more info on the order of precedence and how to configure files, refer to [Prettier's documentation](https://prettier.io/docs/en/configuration.html). Please note, `.prettierrc.json5`, `.prettierrc.js`, and `.prettierrc.toml` files aren't currently supported.
+
 ### Format Python
 
 To format your Python code, dbt Cloud integrates with [Black](https://black.readthedocs.io/en/latest/), which is an uncompromising Python code formatter.
@@ -177,6 +182,23 @@ To format your Python code, dbt Cloud integrates with [Black](https://black.read
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/python-black.gif" width="95%" title="Format Python files using Black."/>
 
 ## FAQs
+
+<details>
+<summary>When should I use SQLFluff and when should I use sqlfmt?</summary>
+
+SQLFluff and sqlfmt are both tools used for formatting SQL code, but there are some differences that may make one preferable to the other depending on your use case. <br />
+
+SQLFluff is a SQL code linter and formatter. This means that it analyzes your code to identify potential issues and bugs, and follows coding standards. It also formats your code according to a set of rules, which are [customizable](#customize-linting), to ensure consistent coding practices. You can also use SQLFluff to keep your SQL code well-formatted and follow styling best practices. <br />
+
+sqlfmt is a SQL code formatter. This means it automatically formats your SQL code according to a set of formatting rules that aren't customizable. It focuses solely on the appearance and layout of the code, which helps ensure consistent indentation, line breaks, and spacing. sqlfmt doesn't analyze your code for errors or bugs and doesn't look at coding issues beyond code formatting. <br />
+
+You can use either SQLFluff or sqlfmt depending on your preference and what works best for you:
+
+- Use SQLFluff to have your code linted and formatted (meaning analyze fix your code for errors/bugs, and format your styling). It allows you the flexibility to customize your own rules.
+
+- Use sqlfmt to only have your code well-formatted without analyzing it for errors and bugs. You can use sqlfmt out of the box, making it convenient to use right away without having to configure it.
+
+</details>
 
 <details>
 <summary>Can I nest <code>.sqlfluff</code> files?</summary>
