@@ -20,6 +20,7 @@ export default function Stoplight({ version }) {
         }
         platformUrl={useBaseUrl("/")}
         basePath={useBaseUrl("/dbt-cloud/api-" + version) + "#"}
+        hideSchemas
       />
     </>
   );
