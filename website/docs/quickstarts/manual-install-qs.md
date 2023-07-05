@@ -130,11 +130,11 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 
 #### FAQs
 
-<FAQ src="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
-<FAQ src="Project/separate-profile" />
-<FAQ src="Environments/profile-name" />
-<FAQ src="Environments/target-names" />
-<FAQ src="Environments/profile-env-vars" />
+<FAQ path="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
+<FAQ path="Project/separate-profile" />
+<FAQ path="Environments/profile-name" />
+<FAQ path="Environments/target-names" />
+<FAQ path="Environments/profile-env-vars" />
 
 ### Perform your first dbt run
 
@@ -200,11 +200,11 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Project/which-schema" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
 
 ### Change the way your model is materialized
 
@@ -411,9 +411,9 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 ### Next steps
 
@@ -438,8 +438,8 @@ You can also explore:
 
 #### FAQs
 
-<FAQ src="Docs/long-descriptions" />
-<FAQ src="Docs/sharing-documentation" />
+<FAQ path="Docs/long-descriptions" />
+<FAQ path="Docs/sharing-documentation" />
 
 
 #### Next steps

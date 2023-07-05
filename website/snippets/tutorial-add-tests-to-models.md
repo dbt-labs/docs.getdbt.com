@@ -52,10 +52,10 @@ When you run `dbt test`, dbt iterates through your YAML files, and constructs a 
 
 #### FAQs
 
-<FAQ src="Tests/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
-<FAQ src="Tests/test-one-model" />
-<FAQ src="Runs/failed-tests" />
-<FAQ src="Project/schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
-<FAQ src="Project/why-version-2" />
-<FAQ src="Tests/recommended-tests" />
-<FAQ src="Tests/when-to-test" />
+<FAQ path="Tests/available-tests" alt_header="What tests are available for me to use in dbt? Can I add my own custom tests?" />
+<FAQ path="Tests/test-one-model" />
+<FAQ path="Runs/failed-tests" />
+<FAQ path="Project/schema-yml-name" alt_header="Does my test file need to be named `schema.yml`?" />
+<FAQ path="Project/why-version-2" />
+<FAQ path="Tests/recommended-tests" />
+<FAQ path="Tests/when-to-test" />

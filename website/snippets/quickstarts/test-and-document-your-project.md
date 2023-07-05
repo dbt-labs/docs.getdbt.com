@@ -10,6 +10,6 @@
 
 #### FAQs
 
-<FAQ src="Docs/long-descriptions" />
-<FAQ src="Docs/sharing-documentation" />
+<FAQ path="Docs/long-descriptions" />
+<FAQ path="Docs/sharing-documentation" />
 

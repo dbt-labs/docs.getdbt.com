@@ -257,11 +257,11 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Project/which-schema" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
 
 ## Change the way your model is materialized
 
@@ -365,9 +365,9 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 
 <Snippet src="quickstarts/test-and-document-your-project" />
