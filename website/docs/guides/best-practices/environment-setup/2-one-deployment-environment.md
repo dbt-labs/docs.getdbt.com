@@ -43,7 +43,7 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 
 ### When this works well
 
-This approach is the recommended approach for most use-cases as it allows changes to code to be quickly promoted to production, with confidence that they can be trusted. With this option, multiple developers can easily contributing to the same code base with confidence.
+This approach is recommended for most use cases because it enables you to quickly and safely implement code changes in the production environment. It also gives developers the confidence to trust and rely on these changes. With this option, multiple developers can easily contribute to and collaborate on the same codebase with confidence.
 
 :::info
 💡 Check out [Sunrun's Coalesce 2022 talk](https://www.youtube.com/watch?v=vmBAO2XN-fM) on Automating CI/CD in dbt Cloud, where they simplified their CI/CD process from several long-lived branches to a single long-lived main branch with feature branches.
