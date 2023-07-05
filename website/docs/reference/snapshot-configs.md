@@ -45,8 +45,9 @@ snapshots:
 </TabItem>
 
 <TabItem value="property-yaml">
-  
+
 **Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+
 
 <!--  
 <File name='snapshots/properties.yml'>
