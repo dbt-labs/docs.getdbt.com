@@ -278,7 +278,7 @@ models:
 
 </File>
 
-### Custom generic test
+### Use custom generic test
 
 If you've defined your own custom generic test, you can use that as the `test_name`:
 
