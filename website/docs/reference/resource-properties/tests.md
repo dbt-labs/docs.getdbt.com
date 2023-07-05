@@ -261,7 +261,7 @@ The `to` argument accepts a [Relation](/reference/dbt-classes#relation) – this
 
 ## Additional examples
 
-### Testing an expression
+### Test an expression
 Some tests require multiple columns, so it doesn't make sense to nest them under the `columns:` key. In this case, you can apply the test to the model (or source, seed, or snapshot) instead:
 
 <File name='models/orders.yml'>
