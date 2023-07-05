@@ -594,6 +594,7 @@ const sidebarSettings = {
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
+            "reference/resource-properties/deprecation_date",
             "reference/resource-properties/description",
             "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
