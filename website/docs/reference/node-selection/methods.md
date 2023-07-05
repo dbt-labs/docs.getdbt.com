@@ -206,7 +206,7 @@ There are two additional `state` selectors that complement `state:new` and `stat
 - `state:old` &mdash; a node with the same `unique_id` exists in the comparison manifest
 - `state:unmodified` &mdash; All existing nodes with no changes 
 
-The benefits for these selectors are primarily to exclude unchanged nodes to shorten run times. There are no subselectors available, but that may change as use cases evolve. 
+The primary benefit of these selectors is to exclude unchanged nodes to shorten run times. No subselectors are available at this time, but that may change as use cases evolve. 
 
 </VersionBlock>
 
