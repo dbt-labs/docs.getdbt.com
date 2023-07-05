@@ -32,10 +32,10 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 3. [**Slim CI Job**](/docs/deploy/continuous-integration) automatically kicks off, and tests the changes made in the PR
 4. When Slim CI Job is successful and team is ready to deploy changes to Production, the PR is merged directly into the `main` branch. The next time a production job runs, these changes will be incorporated and executed.
 
-### dbt Cloud setup
+### dbt Cloud setup 
 
-1. Create your [**development environment**](/docs/collaborate/environments/dbt-cloud-environments#create-a-development-environment) to power the dbt Cloud IDE. No extra customization needed!
-2. Create your **[production deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment)**.
+1. Create your [**development environment**](/docs/dbt-cloud-environments) to power the dbt Cloud IDE. No extra customization needed!
+2. Create your **[production deployment environment](/docs/deploy/deploy-environments)**.
 3. Define your **dbt Cloud jobs** in the production deployment environment from step 2.
     1. **Production job(s)**: You will need to set up **at least one scheduled job** that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
     2. **Slim CI Job**: Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Refer to [Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
