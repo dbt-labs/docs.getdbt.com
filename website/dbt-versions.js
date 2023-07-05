@@ -32,9 +32,9 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "reference/resource-properties/deprecation_date",
+    "page": "reference/resource-properties/deprecation_date", 
     "firstVersion": "1.6",
-  }, 
+  {
     "page": "reference/commands/retry",
     "firstVersion": "1.6",
   },
