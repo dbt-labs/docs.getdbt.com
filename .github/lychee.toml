@@ -43,6 +43,7 @@ exclude = [
   'https://dbtlabs.postman.co',
   'https://mobile.twitter.com',
   'https://twitter.com',
+  'https://www.twitter.com',
 ]
 
 # Exclude all mail addresses from checking
