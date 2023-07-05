@@ -1,7 +1,7 @@
 ---
 title: "Organizing dbt Cloud jobs"
 id: "organizing-dbt-cloud-jobs"
-slug: 1-how-to-organize
+slug: 1-types-of-jobs
 description: Learn how to organize your dbt Cloud jobs by category
 displayText: The types of jobs in dbt Cloud
 hoverSnippet: Learn how to organize your dbt Cloud jobs by category.
@@ -15,7 +15,7 @@ dbt Cloud jobs perform two main functions:
 dbt Cloud jobs can optionally run source freshness checks generate documentation as well.
 
 <callout>
-Make sure to leverage the dbt build command!
+Make sure to leverage the dbt build command to avoid wasteful spend! dbt build enables you to run tests for each individual model, before it's downstream dependencies start. When a test fails, the dependences of the model that failed testing are skipped. This enables you to avoid wasted spend on downstream node runs when an upstream node fails a test.
 </callout>
 
 ### Running Models in Production
