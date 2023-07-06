@@ -57,7 +57,7 @@ metadata = response.json()['data'][ENDPOINT]
 
 Every query will require an environment ID or job ID. You can get the ID from a dbt Cloud URL or using the Admin API.
 
-There are several illustrative example queries in this documentation. More examples are in the [use case guide](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
+There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
 
 
 ## Reasonable use
