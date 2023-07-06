@@ -1815,6 +1815,24 @@ section>h2:not(.resource-section) {
   font-weight: 800;
 }
 
+/* General Swiper Styles */
+.docswiper .swiper-pagination-bullet {
+  height: 10px;
+  width: 10px;
+}
+
+.docswiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--ifm-color-info);
+}
+
+[data-theme='dark'] .docswiper .swiper-pagination-bullet {
+  background: var(--color-off-white);
+}
+
+[data-theme='dark'] .docswiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--color-light-teal);
+}
+
 /* Community Home styles */
 .community-home section {
   margin: calc(5vh) auto calc(2vh);

@@ -108,6 +108,47 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="1.6">
+
+Models with `materialized` set to `ephemeral` cannot have the access property set to public.
+
+For example, if you have model confg set as:
+
+<File name="models/my_model.sql">
+
+```sql
+
+{{ config(materialized='ephemeral') }}
+
+```
+
+</File>
+
+And the model contract is defined:
+
+<File name="models/my_project.yml">
+
+```yaml
+
+models:
+  - name: my_model
+    access: public
+
+```
+
+</File>
+
+It will lead to the following error:
+
+```
+❯ dbt parse
+02:19:30  Encountered an error:
+Parsing Error
+  Node model.jaffle_shop.my_model with 'ephemeral' materialization has an invalid value (public) for the access field
+```
+
+</VersionBlock>
+
 ## FAQs
 
 ### How does model access relate to database permissions?

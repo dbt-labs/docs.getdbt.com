@@ -178,7 +178,7 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 
-#### Which vars are available in generate_schema_name?
+### Which vars are available in generate_schema_name?
 
 <Changelog>
 
@@ -190,6 +190,14 @@ for more information on these changes.
 Globally-scoped variables and variables defined on the command line with
 [--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.
 
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
+
 ## Managing environments
 
 In the `generate_schema_name` macro examples shown above, the `target.name` context variable is used to change the schema name that dbt generates for models. If the `generate_schema_name` macro in your project uses the `target.name` context variable, you must additionally ensure that your different dbt environments are configured appropriately. While you can use any naming scheme you'd like, we typically recommend:
@@ -199,4 +207,4 @@ In the `generate_schema_name` macro examples shown above, the `target.name` cont
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 
-For more information, consult the [managing environments in dbt Core](/docs/collaborate/environments/dbt-core-environments) guide.
+For more information, consult the [managing environments in dbt Core](/docs/core/dbt-core-environments) guide.

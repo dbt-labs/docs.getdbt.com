@@ -46,6 +46,13 @@ The `source` method is used to select models that select from a specified [sourc
   $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
   ```
 
+### The "resource_type" method
+Use the `resource_type` method to select nodes of a particular type (`model`, `source`, `exposure`, etc). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+
+  ```bash
+  $ dbt build --select resource_type:exposure    # build all resources upstream of exposures
+  $ dbt list --select resource_type:test    # list all tests in your project
+  ```
 
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
@@ -72,6 +79,7 @@ The `file` or `fqn` method can be used to select a model by its filename, includ
 
 ```bash
 # These are equivalent
+dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
 dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
@@ -294,14 +302,32 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-Supported in v1.5 or newer.
-
-The `group` method is used to select models defined within a group.
+The `group` method is used to select models defined within a [group](/reference/resource-configs/group).
 
 
   ```bash
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
+
+</VersionBlock>
+
+### The "access" method
+
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+
+```bash
+dbt list --select access:public       # list all public models
+dbt list --select access:private       # list all private models
+dbt list --select access:protected       # list all protected models
+```
 
 </VersionBlock>
 
@@ -323,26 +349,6 @@ dbt list --select version:prerelease  # versions newer than the 'latest' version
 dbt list --select version:old         # versions older than the 'latest' version
 
 dbt list --select version:none        # models that are *not* versioned
-```
-
-</VersionBlock>
-
-### The "access" method
-
-<VersionBlock lastVersion="1.5">
-
-Supported in v1.6 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
-The `access` method selects models based on their [access](/reference/resource-properties/access) property.
-
-```bash
-dbt list --select access:public       # list all public models
-dbt list --select access:private       # list all private models
-dbt list --select access:protected       # list all protected models
 ```
 
 </VersionBlock>
