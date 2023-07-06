@@ -19,7 +19,7 @@ The Scheduler takes care of preparing each dbt Cloud job to run in your cloud da
 
 For all its strengths, Kubernetes has challenges, especially with pod management impacting run execution time. We’ve rebuilt our scheduler by ensuring faster job execution with a ready pool of pods to execute customers’ jobs. This means you won't experience long prep times at the top of the hour, and we’re determined to keep runs starting near instantaneously. Don’t just take our word, review the data yourself.
 
-<Lightbox src="/img/prep-start.jpg" width="85%" title="Job prep time data has seen a 75% speed improvement since Jan 2023 to July 2023. Prep time took 106 secs in Jan and now takes 27 secs as of July."/>
+<Lightbox src="/img/prep-start.jpg" width="85%" title="Job prep time data has seen a 75% speed improvement from Jan 2023 to July 2023. Prep time took 106 secs in Jan and now takes 27 secs as of July."/>
 
 Jobs scheduled at the top-of-the-hour used to take over 106 seconds to prepare because of the volume of runs the scheduler has to process. Now, even with increased runs, we have reduced prep time to 27 secs (at a maximum) &mdash; a 75% speed improvement for runs at peak traffic times!
 
