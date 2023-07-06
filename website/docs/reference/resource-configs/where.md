@@ -154,7 +154,7 @@ models:
         tests:
           - unique:
               config:
-                where: "date_column > __last_three_days__"  # placeholder string for static config
+                where: "date_column > __three_days_ago__"  # placeholder string for static config
 ```
 
 </File>
