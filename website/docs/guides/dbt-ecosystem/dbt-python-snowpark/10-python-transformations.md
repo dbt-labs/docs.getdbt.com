@@ -144,7 +144,7 @@ Let’s take a step back before starting machine learning to both review and go 
         ```python 
         def model(dbt, session):
 
-        # setting configuration
-        dbt.config(materialized="table")
+            # setting configuration
+            dbt.config(materialized="table")
         ```
     - There's a limit to how complex you can get with the `dbt.config()` method. It accepts only literal values (strings, booleans, and numeric types). Passing another function or a more complex data structure is not possible. The reason is that dbt statically analyzes the arguments to `.config()` while parsing your model without executing your Python code. If you need to set a more complex configuration, we recommend you define it using the config property in a [YAML file](/reference/resource-properties/config). Learn more about configurations [here](/reference/model-configs).

@@ -164,7 +164,7 @@ models:
 
 </File>
 
-Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create create a new model file (SQL or Python) encompassing those breaking changes.
+Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create a new model file (SQL or Python) encompassing those breaking changes.
 
 
 The default convention is naming the new file with a `_v<version>` suffix. Let's make a new file, named `dim_customers_v2.sql`. (We don't need to rename the existing model file just yet, while it's still the "latest" version.)
@@ -326,7 +326,13 @@ We intend to build this into `dbt-core` as out-of-the-box functionality. (Upvote
     -- otherwise, it's a no-op
     {% if model.get('version') and model.get('version') == model.get('latest_version') %}
 
-        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}  
+        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}
+
+        {% set existing_relation = load_relation(new_relation) %}
+
+        {% if existing_relation and not existing_relation.is_view %}
+            {{ drop_relation_if_exists(existing_relation) }}
+        {% endif %}
         
         {% set create_view_sql -%}
             -- this syntax may vary by data platform
