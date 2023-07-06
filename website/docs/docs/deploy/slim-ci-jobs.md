@@ -8,7 +8,8 @@ You can set up Slim [continuous integration](/docs/deploy/continuous-integration
 
 ## Prerequisites
 
-- You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a dbt Cloud account.
+    - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be connected using dbt Cloud’s native integration with [GitHub account](/docs/cloud/git/connect-github), [GitLab account](/docs/cloud/git/connect-gitlab), or [Azure DevOps account](/docs/cloud/git/connect-azure-devops).
     - If you’re using GitLab, you must use a paid or self-hosted account which includes support for GitLab webhooks.
     - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
