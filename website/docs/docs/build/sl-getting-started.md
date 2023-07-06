@@ -26,14 +26,21 @@ This getting started page recommends a workflow to help you get started creating
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
 
+## Install MetricFlow
+
+Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) in the CLI using the `pip install "dbt-metricflow[your_adapter_name]"` command. This is because you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
+
+:::note
+When you install the adapter, add the adapter at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+:::
+
 ## Create a semantic model
 
-In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
+MetricFlow, which powers the dbt Semantic Layer, has two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 
 This step will guide you through setting up your semantic models, which consists of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
-f
 ```yaml
 semantic_models:
   - name: transactions
