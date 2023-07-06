@@ -4,7 +4,7 @@ description: "We have enhanced the dbt Cloud Scheduler by reducing prep time for
 sidebar_label: "Enhancement: Faster run starts and unlimited job concurrency"
 tags: [07-2023, scheduler]
 date: 2023-07-06
-sidebar_position: 09
+sidebar_position: 10
 ---
 
 We’ve introduced significant improvements to the dbt Cloud Scheduler, offering improved performance, durability, and scalability. 
