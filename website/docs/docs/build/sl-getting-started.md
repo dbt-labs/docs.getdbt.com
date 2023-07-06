@@ -108,11 +108,7 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 Follow these steps to test and query your metrics using MetricFlow:
 
-1. Make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) in the CLI using the `pip install "dbt-metricflow[your_adapter_name]"` command. This is because you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
-
-:::note
-When you install the adapter, add the adapter at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`
-:::
+1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow).
 
 2. Run `mf version` to see your CLI version. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
