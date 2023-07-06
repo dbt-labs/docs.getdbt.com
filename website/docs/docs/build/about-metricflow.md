@@ -33,6 +33,8 @@ There are a few key principles:
 
 - MetricFlow, as a part of the dbt Semantic Layer, allows organizations to define company metrics logic through YAML abstractions, as described in the following sections.
 
+- You can install the MetricFlow CLI as an extension of your [dbt adapter](/docs/supported-data-platforms) in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`.
+
 ### Semantic graph 
 
 We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that creates a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
@@ -231,8 +233,8 @@ metrics:
     type_params:
       numerator: revenue
       denominator: active_customers
-    filter: |  
-      {{ dimension('country', entity_path=['customer']) }} = 'Mexico'
+    filter: |
+      {{dimension('perishable_goods')}} in ('vegetables',' fruits', 'dairy', 'deli')
 ```
 </TabItem>
 </Tabs>
