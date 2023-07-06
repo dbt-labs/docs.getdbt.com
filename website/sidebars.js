@@ -35,12 +35,14 @@ const sidebarSettings = {
       collapsed: true,
       items: [
         "docs/about-setup",
+        "docs/environments-in-dbt",
         {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
           items: [
             "docs/cloud/about-cloud-setup",
+            "docs/dbt-cloud-environments",
             {
               type: "category",
               label: "Connect data platform",
@@ -144,6 +146,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-the-cli",
+            "docs/core/dbt-core-environments",
             {
               type: "category",
               label: "Install dbt",
@@ -319,51 +322,50 @@ const sidebarSettings = {
     },
     {
       type: "category",
-      label: "Deploy dbt jobs",
+      label: "Deploy dbt",
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
+        "docs/deploy/job-scheduler",
+        "docs/deploy/deploy-environments",
         {
           type: "category",
-          label: "Deploy with dbt Cloud",
+          label: "dbt Cloud jobs",
           link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
           items: [
-            "docs/deploy/artifacts",
-            "docs/deploy/job-scheduler",
             "docs/deploy/job-settings",
             "docs/deploy/job-commands",
             "docs/deploy/job-triggers",
-            "docs/deploy/job-notifications",
+          ],
+        },
+        {
+          type: "category",
+          label: "Continuous integration",
+          link: { type: "doc", id: "docs/deploy/continuous-integration" },
+          items: [
+            "docs/deploy/slim-ci-jobs",
+          ],
+        },
+        {
+          type: "category",
+          label: "Monitor jobs and alerts",
+          link: { type: "doc", id: "docs/deploy/monitor-jobs" },
+          items: [
             "docs/deploy/run-visibility",
-            "docs/deploy/source-freshness",
+            "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
+            "docs/deploy/artifacts",
+            "docs/deploy/source-freshness",
             "docs/deploy/dashboard-status-tiles",
-            {
-              type: "category",
-              label: "Continuous integration",
-              link: { type: "doc", id: "docs/deploy/continuous-integration" },
-              items: [
-                "docs/deploy/slim-ci-jobs",
-              ],
-            },
           ],
         },
         "docs/deploy/deployment-tools",
       ],
-    }, // end of "Deploy dbt jobs"
+    }, // end of "Deploy dbt"
     {
       type: "category",
       label: "Collaborate with others",
       items: [
-        {
-          type: "category",
-          label: "Environments",
-          items: [
-            "docs/collaborate/environments/environments-in-dbt",
-            "docs/collaborate/environments/dbt-cloud-environments",
-            "docs/collaborate/environments/dbt-core-environments",
-          ],
-        },
         {
           type: "category",
           label: "Git version control",
@@ -592,6 +594,7 @@ const sidebarSettings = {
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
+            "reference/resource-properties/deprecation_date",
             "reference/resource-properties/description",
             "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
@@ -844,6 +847,22 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/3-intermediate",
             "guides/best-practices/how-we-structure/4-marts",
             "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
+          ],
+        },
+        {
+          type: "category",
+          label: "How we style our dbt projects",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/how-we-style/0-how-we-style-our-dbt-projects",
+          },
+          items: [
+            "guides/best-practices/how-we-style/1-how-we-style-our-dbt-models",
+            "guides/best-practices/how-we-style/2-how-we-style-our-sql",
+            "guides/best-practices/how-we-style/3-how-we-style-our-python",
+            "guides/best-practices/how-we-style/4-how-we-style-our-jinja",
+            "guides/best-practices/how-we-style/5-how-we-style-our-yaml",
+            "guides/best-practices/how-we-style/6-how-we-style-conclusion",
           ],
         },
         {

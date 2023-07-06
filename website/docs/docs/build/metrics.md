@@ -10,7 +10,7 @@ keywords:
 
 :::info dbt Metrics isn't supported
 
-dbt Metrics is no longer supported in v1.6 and higher. To build your semantic layer, define and query metrics, and provide data governance - refer to [Build your Semantic Layer](/docs/build/build-semantic-layer-intro) for updated guidance.
+dbt Metrics is no longer supported in v1.6 and higher. To build your semantic layer, define and query metrics, and provide data governance - refer to [Build your Semantic Layer](/docs/build/build-metrics-intro) for updated guidance.
 
 :::
 </VersionBlock>
