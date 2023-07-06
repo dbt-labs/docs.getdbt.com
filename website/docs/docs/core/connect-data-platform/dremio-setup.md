@@ -52,7 +52,7 @@ pip is the easiest way to install the adapter:
 Follow the repository's link for OS dependencies.
 
 :::note 
-[Model contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts) are not supported.
+[Model contracts](/docs/collaborate/govern/model-contracts) are not supported.
 :::
 
 ## Prerequisites for Dremio Cloud
