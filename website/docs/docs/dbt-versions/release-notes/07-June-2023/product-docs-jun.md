@@ -19,7 +19,7 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) in June:
 - We enabled a connection between [dbt Cloud release notes](/docs/dbt-versions/dbt-cloud-release-notes) and the dbt Slack community. This means new dbt Cloud release notes are automatically sent to the slack community [#dbt-cloud channel](https://getdbt.slack.com/archives/CMZ2V0X8V) via RSS feed, keeping users up to date with changes that may affect them. 
 - We’ve added two new docs links in the dbt Cloud Job settings user interface (UI). This will provide additional guidance and help users succeed when setting up a dbt Cloud job: [job commands](/docs/deploy/job-commands) and [job triggers](/docs/deploy/job-triggers).    
 - We added information related to the newly created [IT license](/docs/cloud/manage-access/about-user-access#license-based-access-control), available for Team and Enterprise plans. 
-- We added a new [Supported browser page](/docs/cloud/about-cloud/browsers) which lists the recommended browsers to use in dbt Cloud.
+- We added a new [Supported browser page](/docs/cloud/about-cloud/browsers), which lists the recommended browsers for dbt Cloud.
 - We launched a new page informing users of [new Experimental features option](/docs/dbt-versions/experimental-features) in dbt Cloud.
 - We worked with dbt Engineering to help publish new beta versions of the dbt [dbt Cloud Administrative API docs](/docs/dbt-cloud-apis/admin-cloud-api). 
 
