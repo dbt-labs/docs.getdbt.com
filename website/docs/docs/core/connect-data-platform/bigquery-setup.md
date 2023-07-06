@@ -501,11 +501,43 @@ my-profile:
       project: abc-123
       dataset: my_dataset
       
-      # for dbt Python models
+      # for dbt Python models to be run on a Dataproc cluster
       gcs_bucket: dbt-python
       dataproc_cluster_name: dbt-python
       dataproc_region: us-central1
 ```
+
+Alternatively, Dataproc Serverless can be used:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      
+      # for dbt Python models to be run on Dataproc Serverless
+      gcs_bucket: dbt-python
+      dataproc_region: us-central1
+      submission_method: serverless
+      dataproc_batch:
+        environment_config:
+          execution_config:
+            service_account: dbt@abc-123.iam.gserviceaccount.com
+            subnetwork_uri: regions/us-central1/subnetworks/dataproc-dbt
+        labels:
+          project: my-project
+          role: dev
+        runtime_config:
+          properties:
+            spark.executor.instances: 3
+            spark.driver.memory: 1g
+```
+
+For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
 
 </VersionBlock>
 

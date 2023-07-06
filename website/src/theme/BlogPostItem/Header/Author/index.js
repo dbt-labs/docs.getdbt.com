@@ -15,7 +15,7 @@ function MaybeLink(props) {
 */
 
 export default function BlogPostItemHeaderAuthor({author, className}) {
-  const {name, title, url, imageURL, email, key} = author;
+  const {name, url, imageURL, email, key, job_title, organization} = author;
   const link = url || (email && `mailto:${email}`) || undefined;
   return (
     <div className={clsx('avatar margin-bottom--sm', className)}>
@@ -36,9 +36,9 @@ export default function BlogPostItemHeaderAuthor({author, className}) {
               <span itemProp="name">{name}</span>
             </Link>
           </div>
-          {title && (
+          {job_title && organization && (
             <small className="avatar__subtitle" itemProp="description">
-              {title}
+              {job_title && job_title} {organization && `@ ${organization}`} 
             </small>
           )}
         </div>
