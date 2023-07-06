@@ -7,7 +7,7 @@ date: 2023-07-04
 sidebar_position: 10
 ---
 
-Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 17 new community contributors to docs.getdbt.com!
+Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 17 new community contributors to docs.getdbt.com &mdash; ✨ aaronbini, sjaureguimodo, aranke, eiof, tlochner95, mani-dbt, iamtodor, monilondo, vrfn, raginjason, AndrewRTsao, MitchellBarker, ajaythomas, smitsrr, leoguyaux, GideonShils, michaelmherrera!
 
 Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) in June:
 
