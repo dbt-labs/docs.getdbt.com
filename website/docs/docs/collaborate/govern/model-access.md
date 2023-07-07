@@ -187,7 +187,7 @@ The maintainer of a project that can be installed as a package may choose whethe
 - Models in the package with `access: protected` may be referenced by models in the root project, as if they were defined in the same project
 - Models in the package with `access: private` may be referenced by models in the root project, so long as they also have the same `group` config
 
-When `restrict_access: True`, any `ref` from outside the package to a protected or private model in that package will fail. Only models with `access: public` may be accessed outside the package.
+When `restrict-access: True`, any `ref` from outside the package to a protected or private model in that package will fail. Only models with `access: public` may be accessed outside the package.
 
 <File name="dbt_project.yml">
 
