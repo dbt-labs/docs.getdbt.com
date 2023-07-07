@@ -1,10 +1,12 @@
 ---
 title: Tenancy
 id: tenancy
-description: "Information aboute single tenant and multi-tenant dbt Cloud instances"
+description: "Information about single tenant and multi-tenant dbt Cloud instances"
 ---
 
-dbt Cloud is available in both single (virtual private) and multi-tenant configurations.
+import AboutCloud from '/snippets/_test-tenancy.md';
+
+<AboutCloud tenancy={'/snippets/_test-tenancy.md'}/>
 
 ### Multi-tenant
 

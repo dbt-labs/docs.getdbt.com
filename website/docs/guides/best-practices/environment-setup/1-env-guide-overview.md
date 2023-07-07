@@ -24,7 +24,7 @@ This guide has three main goals:
 - At each stage, explain *why* we recommend the approach that we do, so that you're equipped to decide when and where to deviate from these recommendations to better fit your organization’s unique needs
 
 :::info
-☁️ This guide focuses on architecture for **dbt Cloud**. However, similar principles apply for developers using dbt Core. Before diving into this guide we recommend taking a look at our **[dbt Cloud environments](/docs/collaborate/environments/dbt-cloud-environments)** page for more context.
+☁️ This guide focuses on architecture for **dbt Cloud**. However, similar principles apply for developers using dbt Core. Before diving into this guide we recommend taking a look at our **[dbt Cloud environments](/docs/dbt-cloud-environments)** page for more context.
 
 :::
 
