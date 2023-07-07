@@ -68,9 +68,9 @@ The following are **Verified adapters** ✓ you can connect to either in dbt Clo
     icon="rocket"/>
 
 <Card
-    title="Dremio*"
-    body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/><br /> 🚧 Verification in progress"
-    icon="rocket"/>
+    title="Dremio"
+    body="<a href='/docs/core/connect-data-platform/dremio-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-dremio><img src=https://badge.fury.io/py/dbt-dremio.svg/><br />"
+    icon="dremio"/>
 
 </div>
 
