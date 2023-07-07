@@ -169,7 +169,7 @@ As we continue to develop multi-project collaboration, `access: public` will mea
 
 In dbt Core v1.5, the only way to reference a model from another project is by installing that project as a package. There is no way to enforce access distinctions between `protected` and `public` models.
 
-This changes in v1.6. Select it from the dropdown above.
+This changes in v1.6. Select v1.6 from the version dropdown to view more information. 
 
 </VersionBlock>
 
@@ -183,8 +183,8 @@ See ["Project Dependencies"](project-dependencies) for an explanation of the adv
 
 #### How do I restrict access to models defined in a package?
 
-The maintainer of a project that can be installed as a package may choose whether to restrict other models' `ref` access to only its public models. The package maintainer does this by setting a `restrict_access` config to `True`. By default, the config is `False`, meaning that:
-- Models in the package with `access: protected` may be referenced by models in the root project, as if they were defined in the same project
+The maintainer of a project that can be installed as a package may choose whether to restrict other models' `ref` access to only its public models. The package maintainer sets a `restrict_access` config to `True`. By default, the config is `False`, meaning that:
+- Models in the package with `access: protected` may be referenced by models in the root project as if they were defined in the same project
 - Models in the package with `access: private` may be referenced by models in the root project, so long as they also have the same `group` config
 
 When `restrict-access: True`, any `ref` from outside the package to a protected or private model in that package will fail. Only models with `access: public` may be accessed outside the package.
