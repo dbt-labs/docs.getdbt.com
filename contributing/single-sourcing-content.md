@@ -221,11 +221,9 @@ To use the component at the beginning of a sentence, add a non-breaking space ch
 
 ## Reusing content
 
-Use some techniques to share the same content on different pages, like partial files or snippets. 
+To reuse content on different pages, you can use some techniques like partial files or snippets. Partial files, a built-in Docusaurus feature, is the recommended method over snippets.
 
-Using partial files, which is a built-in Docusaurus feature, is recommended over snippets.
-
-### Partial
+### Partial file
 
 A partial file allows you to reuse content throughout the Docs. Here are the steps you can take to create and use a partial file:
 
