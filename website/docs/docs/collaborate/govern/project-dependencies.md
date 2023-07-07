@@ -21,7 +21,7 @@ projects:
   - name: jaffle_finance
 ```
 
-The first is familiar: I want to use macros from the `dbt_utils` package, and so I pull it down as source code. I can then call any macro from the package, just as if it were a macro defined in my own project.
+The first is familiar: you want to use macros from the `dbt_utils` package, so you pull it down as source code. You can then call any macro from the package as if it were a macro defined in your project.
 
 The second is new. Unlike installing a package, the models in the `jaffle_finance` project will not be pulled down as source code, or selected to run during `dbt run`. Instead, dbt Cloud will provide `dbt-core` with expect stateful input that enables it to resolve references to public models in the `jaffle_finance` project—and _only_ the public models.
 
