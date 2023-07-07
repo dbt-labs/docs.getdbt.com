@@ -225,37 +225,17 @@ To reuse content on different pages, you can use some techniques like partial fi
 
 ### Partial file
 
-A partial file allows you to reuse content throughout the Docs. Here are the steps you can take to create and use a partial file:
+A partial file allows you to reuse content throughout the docs. Here are the steps you can take to create and use a partial file:
 
 1. Create a new markdown partial file in the `website/snippets` directory. The file name must begin with an underscore, like `_filename.md`
-2. Go back to the Docs file that's pulling content from the partial file 
+2. Go back to the docs file that will pull content from the partial file.
 3. Add the following import file: `import ComponentName from '/snippets/_this-is-your-partial-file-name.md';`
-   * You must always add an import file in that format. Note you can name `ComponentName` can be whatever makes sense for your purpose.
+   * You must always add an import file in that format. Note you can name `ComponentName` (a partial component) can be whatever makes sense for your purpose.
    * `.md` needs to be added to the end of the filename. 
 4. To use the partial component, go to the next line and add `<ComponentName />`. This fetches the reusable content in the partial file
    * Note `anyname` can be whatever makes sense for your purpose.
 
 You can also use this for more advanced use cases like reusable frontmatter.
-
-<details>
-<summary>Using props to pass different content on multiple pages </summary>
-You can add props on the component only if you want to pass in data from the component into the partial file. This is useful for using the same partial component on
-multiple docs pages and displaying different values for each. For example, if we wanted to use a partial on multiple pages and pass in a different 'feature' for each
-docs page, you can write it as:
-
-`import SetUpPages from '/snippets/_available-enterprise-only.md';`
- 
-`<SetUpPages feature='A really cool feature' />`
-  
-Then in the `/snippets/_available-enterprise-only.md file`, you can display that feature prop with:
-  
->This feature: `{props.feature}` other content etc...
-
-This will then translate to:
-  
->This feature: A really cool feature other content etc...
-  
-</details>
 
 #### Partial example
 
@@ -279,6 +259,26 @@ Docs content here.
 
 Docs content here.
 ```
+
+<details>
+<summary>Using props to pass different content on multiple pages </summary>
+You can add props on the component only if you want to pass in data from the component into the partial file. This is useful for using the same partial component on
+multiple docs pages and displaying different values for each. For example, if we wanted to use a partial on multiple pages and pass in a different 'feature' for each
+docs page, you can write it as:
+
+`import SetUpPages from '/snippets/_available-enterprise-only.md';`
+ 
+`<SetUpPages feature='A really cool feature' />`
+  
+Then in the `/snippets/_available-enterprise-only.md file`, you can display that feature prop with:
+  
+>This feature: `{props.feature}` other content etc...
+
+This will then translate to:
+  
+>This feature: A really cool feature other content etc...
+  
+</details>
 
 ### Snippets
 
