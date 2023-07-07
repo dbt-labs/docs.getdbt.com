@@ -18,7 +18,7 @@ packages:
     version: 1.1.1
 
 projects:
-  - project: jaffle_finance
+  - name: jaffle_finance
 ```
 
 The first is familiar: I want to use macros from the `dbt_utils` package, and so I pull it down as source code. I can then call any macro from the package, just as if it were a macro defined in my own project.
