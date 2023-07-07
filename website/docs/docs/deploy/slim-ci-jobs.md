@@ -17,16 +17,28 @@ You can set up Slim [continuous integration](/docs/deploy/continuous-integration
 
 dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their Slim CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
 
-1. On your deployment environment page, click **Create One** to create a new CI job.
-2. In the **Execution Settings** section: 
-    - For the option **Defer to a previous run state**, choose whichever production job that's set to run often. If you don't see any jobs to select from the dropdown, you first need to run a production job successfully. Deferral tells dbt Cloud to compare the manifest of the current CI job against the project representation that was materialized the last time the deferred job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
+1. On your deployment environment page, click **Create Job** to create a job whose purpose is to snapshot the dbt code in the code branch linked to the job's parent environment. 
+    - set this job to run the command `dbt compile --exclude fqn:*` per the screenshot below.
+    - You can set this job to run on a frequent schedule (often, hourly is sufficient). You might also use the [dbt Cloud API](https://docs.getdbt.com/dbt-cloud/api-v2) to trigger it to run automatically as pull requests are merged to production.
+    - running `dbt compile` is faster and cheaper than doing a full `dbt build`, because it will not execute the dbt model code on your data warehouse.  
+      - **NOTE**: if your codebase includes custom macros which perform "introspective queries" against the warehouse as part of parsing / compilation, those queries will still run as part of the compilation process.
+
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-compilation.png" width="70%" title="Example of the codebase compilation job"/>
+
+2. Click **Save**
+
+3. Click **Run Now** to initialize the compilation job.
+
+4. On your deployment environment page, click **Create Job** to create a new CI job.
+
+5. In the **Execution Settings** section: 
+    - For the option **Defer to a previous run state**, choose the compilation job you just created. If you don't see any jobs to select from the dropdown, you first need to run the compilation job successfully per step 3. Deferral tells dbt Cloud to compare the manifest of the current CI job against the project representation that was materialized the last time the deferred job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
+
+    - For the option **Commands**, enter `dbt build --select @state:modified` in the field. This informs dbt Cloud to build only new or changed models and their upstream and downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" width="70%" title="Example of the dropdown for Defer to a previous run state"/>
 
-    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
-
-
-3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
+6. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
 
 
 ## Example pull requests
