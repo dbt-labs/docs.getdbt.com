@@ -9,7 +9,7 @@ description: "Reference public models across dbt projects"
 This is a feature of dbt Cloud Enterprise.
 :::
 
-dbt Core v1.6 introduces a notion of `dependencies` between dbt projects. You're likely already familiar with installing other projects as [packages](/docs/build/packages), whereby you pull down another project's source code and treat it as your own.
+dbt Core v1.6 introduces a notion of `dependencies` between dbt projects. You might already be familiar with installing other projects as [packages](/docs/build/packages), whereby you pull down another project's source code and treat it as your own.
 
 There is a new kind of `project` dependency. Both dependencies can be defined in `dependencies.yml`:
 ```yml
