@@ -231,13 +231,33 @@ A partial file allows you to reuse content throughout the Docs. Here are the ste
 
 1. Create a new markdown partial file in the `website/snippets` directory. The file name must begin with an underscore, like `_filename.md`
 2. Go back to the Docs file that's pulling content from the partial file 
-3. Add the following import file: `import SetUpPages from '/snippets/_this-is-your-partial-file-name.md';`
-   * To use partials, you must always add an import file in that format. Note `SetUpPages` can be whatever makes sense for your purpose.
+3. Add the following import file: `import ComponentName from '/snippets/_this-is-your-partial-file-name.md';`
+   * You must always add an import file in that format. Note you can name `ComponentName` can be whatever makes sense for your purpose.
    * `.md` needs to be added to the end of the filename. 
-3. Go to the next line and add `<SetUpPages anyname={'/snippets/_this-is-your-partial-file-name.md'}/>`. This fetches the reusable content in the partial file
+4. To use the partial component, go to the next line and add `<ComponentName />`. This fetches the reusable content in the partial file
    * Note `anyname` can be whatever makes sense for your purpose.
 
 You can also use this for more advanced use cases like reusable frontmatter.
+
+<details>
+<summary>Using props to pass different content on multiple pages </summary>
+You can add props on the component only if you want to pass in data from the component into the partial file. This is useful for using the same partial component on
+multiple docs pages and displaying different values for each. For example, if we wanted to use a partial on multiple pages and pass in a different 'feature' for each
+docs page, you can write it as:
+
+`import SetUpPages from '/snippets/_available-enterprise-only.md';`
+ 
+`<SetUpPages feature='A really cool feature' />`
+  
+Then in the `/snippets/_available-enterprise-only.md file`, you can display that feature prop with:
+  
+>This feature: `{props.feature}` other content etc...
+
+This will then translate to:
+  
+>This feature: A really cool feature other content etc...
+  
+</details>
 
 #### Partial example
 
@@ -250,19 +270,17 @@ To create a new partial to use throughout the site, first, we will create a new 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum porttitor dui, id scelerisque enim scelerisque at.
 ```
 
-Now, we can add this snippet to a Docs file with the Snippet component:
+Now, we can add this code to a Docs file:
 
 ```markdown
 Docs content here.
 
-`import SetUpPages from '/snippets/_this-is-your-partial-file-name.md';`
+`import SetUpPages from '/snippets/_partial-name.md';`
 
-<SetUpPages anyname={'/snippets/_this-is-your-partial-file-name.md'}/>
+<SetUpPages />
 
 Docs content here.
 ```
-
-
 
 ### Snippets
 
