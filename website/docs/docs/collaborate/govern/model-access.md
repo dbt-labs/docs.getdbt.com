@@ -177,7 +177,7 @@ This changes in v1.6. Select v1.6 from the version dropdown to view more informa
 
 It is possible to `ref` a model from another project in two ways:
 1. As a "project" dependency, via "cross-project `ref`" (a feature of dbt Cloud Enterprise)
-2. As a "package" dependency, whereby all source code from that project is installed into your own
+2. As a "package" dependency, whereby all source code from that project is installed into your own environment
 
 See ["Project Dependencies"](project-dependencies) for an explanation of the advantages of each approach.
 
