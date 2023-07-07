@@ -8,14 +8,15 @@ You can set up Slim [continuous integration](/docs/deploy/continuous-integration
 
 ## Prerequisites
 
-- You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
+- You have a dbt Cloud account.
+    - For the [Concurrent CI checks](/docs/deploy/continuous-integration#concurrent-ci-checks) and [Smart cancellation of stale builds](/docs/deploy/continuous-integration#smart-cancellation) features, your account must be on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You must be connected using dbt Cloud’s native integration with [GitHub account](/docs/cloud/git/connect-github), [GitLab account](/docs/cloud/git/connect-gitlab), or [Azure DevOps account](/docs/cloud/git/connect-azure-devops).
     - If you’re using GitLab, you must use a paid or self-hosted account which includes support for GitLab webhooks.
     - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
 
 ## Set up Slim CI jobs
 
-dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [deployment environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their Slim CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
+dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their Slim CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
 
 1. On your deployment environment page, click **Create Job** to create a job whose purpose is to snapshot the dbt code in the code branch linked to the job's parent environment. 
     - set this job to run the command `dbt compile --exclude fqn:*` per the screenshot below.

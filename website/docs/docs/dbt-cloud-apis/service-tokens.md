@@ -57,6 +57,9 @@ Account Admin service tokens have full `read + write` access to an account, so p
 **Security Admin** <br/>
 Security Admin service tokens have certain account-level permissions.  For more on these permissions, see [Security Admin](/docs/cloud/manage-access/enterprise-permissions#security-admin).
 
+**Billing Admin** <br/>
+Billing Admin service tokens have certain account-level permissions.  For more on these permissions, see [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin).
+
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.
 

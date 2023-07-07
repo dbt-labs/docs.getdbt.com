@@ -20,4 +20,4 @@ dbt Cloud is hosted in multiple regions around the world, and each region has a 
 
 :::
 
-For more info, refer to our [documentation](/dbt-cloud/api-v2#tag/Runs/operation/listRunsForAccount).
+For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).
