@@ -275,7 +275,8 @@ Docs content here.
 
 
 <details>
-<summary><b>How to use props to pass different content on multiple pages?</b></summary> 
+<summary><b>How to use props to pass different content on multiple pages?</b></summary><br />
+	
 You can add props on the component only if you want to pass in data from the component into the partial file. This is useful for using the same partial component on
 multiple docs pages and displaying different values for each. For example, if we wanted to use a partial on multiple pages and pass in a different 'feature' for each
 docs page, you can write it as:
