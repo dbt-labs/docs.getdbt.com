@@ -404,13 +404,21 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Use the dbt Semantic Layer",
-      collapsed: true,
+			link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
-        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
-        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
-        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+				"docs/use-dbt-semantic-layer/quickstart-sl",
+        "docs/use-dbt-semantic-layer/setup-dbt-sl",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
-      ],
+        {
+          type: "category",
+          label: "Semantic Layer APIs",
+					link: { type: "doc", id: "docs/use-dbt-semantic-layer/sl-api-overview" },
+          items: [
+            "docs/use-dbt-semantic-layer/jdbc",
+            "docs/use-dbt-semantic-layer/graphql",
+          ],
+        },
+		 ],
     },
     {
       type: "category",
