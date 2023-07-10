@@ -63,7 +63,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
     - First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the `customer` table:
 
         ```sql 
-        ​​create table raw.jaffle_shop.customers 
+        create table raw.jaffle_shop.customers 
         ( id integer,
           first_name varchar,
           last_name varchar
@@ -140,7 +140,7 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 
 Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. Click on your user, and then select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. In the Snowflake UI, click on the home icon in the upper left corner. Using the dropdown menu on the left, select Admin. Then select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
