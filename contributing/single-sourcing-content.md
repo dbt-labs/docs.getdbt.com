@@ -268,7 +268,7 @@ Docs content here.
 - `import SetUpPages from '/snippets/_partial-name.md';`  &mdash; A partial file that will be imported by other files
 - `<SetUpPages />` &mdash;  A component that imports content from the partial file. You can also use it to pass in data into the partial using props (See 'How to use props to pass different content on multiple pages?' below). 
 
-3. This will then render the content of the docs in the partial file.
+4. This will then render the content of the docs in the partial file.
 
 
 <br />
