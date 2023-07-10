@@ -275,7 +275,7 @@ Docs content here.
 
 
 <details>
-<summary>Using props to pass different content on multiple pages </summary>
+<summary><b>How to use props to pass different content on multiple pages?</b></summary> 
 You can add props on the component only if you want to pass in data from the component into the partial file. This is useful for using the same partial component on
 multiple docs pages and displaying different values for each. For example, if we wanted to use a partial on multiple pages and pass in a different 'feature' for each
 docs page, you can write it as:
@@ -283,7 +283,7 @@ docs page, you can write it as:
 ```
 import SetUpPages from '/snippets/_available-enterprise-only.md';
 
-`<SetUpPages feature='A really cool feature' />
+`<SetUpPages feature='A really cool feature' /> 
 ```
   
 Then in the `/snippets/_available-enterprise-only.md file`, you can display that feature prop with:
@@ -293,6 +293,8 @@ Then in the `/snippets/_available-enterprise-only.md file`, you can display that
 This will then translate to:
   
 >This feature: A really cool feature other content etc...
+
+In this example, the component `<SetUpPages feature='` is passing 'feature' into the partial. This is useful when using dynamic data (for example if you wanted to use the same partial on multiple docs pages, but change the values within the partial for each page)
   
 </details>
 
@@ -311,7 +313,7 @@ Creating and using a snippet requires two steps:
 
 #### Snippet example
 
-To create a new snippet to use throughout the site, first we will create a new markdown snippet within the snippets directory:
+To create a new snippet to use throughout the site, first, we will create a new markdown snippet within the snippets directory:
 
 ```markdown
 ## Header 2
