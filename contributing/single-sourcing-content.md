@@ -266,7 +266,7 @@ Docs content here.
 ```
 
 - `import SetUpPages from '/snippets/_partial-name.md';`  &mdash; A partial file that will be imported by other files
-- `<SetUpPages />` &mdash;  A component that passes in data into the partial. In this example, the component is passing 'feature' into the partial. This is useful when using dynamic data (for example if you wanted to use the same partial on multiple docs pages, but change the values within the partial for each page)
+- `<SetUpPages />` &mdash;  A component that imports content from the partial file. You can also use it to pass in data into the partial using props (See 'How to use props to pass different content on multiple pages?' below). 
 
 3. This will then render the content of the docs in the partial file.
 
