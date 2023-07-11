@@ -1,4 +1,4 @@
----
+ƒƒ---
 title: "Migrating to Auth0 for SSO"
 id: "auth0-migration"
 sidebar: "SSO Auth0 Migration"
@@ -47,7 +47,7 @@ The fields that will be updated are:
 - Single sign-on URL &mdash; `https://<YOUR_AUTH0_URI>/login/callback?connection={slug}`
 - Audience URI (SP Entity ID) &mdash; `urn:auth0:<YOUR_AUTH0_ENTITYID>:{slug}`
 
-Sample steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud):
+Sample steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud and should coordinate making these changes with your identity provider admin):
 
 1. Replace `{slug}` with your organization’s login slug. It must be unique across all dbt Cloud instances and is usually something like your company name separated by dashes (for example, `dbt-labs`).
 
@@ -69,7 +69,7 @@ Here is an example of an updated SAML 2.0 setup in Okta.
 
 Google Workspace admins updating their SSO APIs with the Auth0 URL won't have to do much if it is an existing setup. This can be done as a new project or by editing an existing SSO setup. No additional scopes are needed since this is migrating from an existing setup. All scopes were defined during the initial configuration. 
 
-Steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud):
+Steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud and should coordinate making these changes with your identity provider admin):
 
 1. Open the [Google Cloud console](https://console.cloud.google.com/) and select the project with your dbt Cloud single sign-on settings. From the project page **Quick Access**, select **APIs and Services**
 
@@ -99,7 +99,7 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 Azure Active Directory admins will need to make a slight adjustment to the existing authentication app in the Azure AD portal. This migration does not require that the entire app be deleted or recreated; you can edit the existing app. Start by opening the Azure portal and navigating to the Active Directory overview.
 
-Steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud):
+Steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud and should coordinate making these changes with your identity provider admin):
 
 1. Click **App Registrations** on the left side menu. 
 
