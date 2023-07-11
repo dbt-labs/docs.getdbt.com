@@ -69,7 +69,7 @@ Here is an example of an updated SAML 2.0 setup in Okta.
 
 Google Workspace admins updating their SSO APIs with the Auth0 URL won't have to do much if it is an existing setup. This can be done as a new project or by editing an existing SSO setup. No additional scopes are needed since this is migrating from an existing setup. All scopes were defined during the initial configuration. 
 
-Steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud and should coordinate making these changes with your identity provider admin):
+Below are steps to update. You must complete all of them to ensure uninterrupted access to dbt Cloud and you should coordinate with your identity provider admin when making these changes.
 
 1. Open the [Google Cloud console](https://console.cloud.google.com/) and select the project with your dbt Cloud single sign-on settings. From the project page **Quick Access**, select **APIs and Services**
 
