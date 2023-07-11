@@ -6,7 +6,7 @@ The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.c
 
 **Who does this affect?** The revamped dbt Semantic Layer is available for users on a [Team or Enterprise plans](https://www.getdbt.com/pricing/) on dbt v1.6 and higher. To learn more about it, make sure you select v1.6 or higher in the docs navigation header and [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud). 
 
-**What should you do?** We **highly** recommend you upgrade to dbt v1.6 and higher to use the new and most recent version of the dbt Semantic Layer, powered by MetricFlow. 
+**What should you do?** We **highly** recommend you upgrade to dbt v1.6 and higher to use the new and most recent version of the dbt Semantic Layer, powered by MetricFlow. ALSO ADD LINK TO MIGRATION GUIDE
 
 You can still use and configure the legacy dbt Semantic Layer using the deprecated dbt_metrics package on v1.5 or older, however, these versions are no longer supported and won't receive any code fixes. 
 
