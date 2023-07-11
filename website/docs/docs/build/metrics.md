@@ -6,19 +6,15 @@ keywords:
   - dbt metrics layer
 ---
 
-<VersionBlock firstVersion="1.6">
-
 :::info dbt metrics no longer supported
 
 dbt_metrics is no longer supported in v1.6 and higher, and has been [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics). [MetricFlow](/docs/build/about-metricflow?version=1.6), a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), is a new framework for defining metrics in dbt and has replaced dbt_metrics.
 
 You can still use the dbt Semantic Layer using the deprecated dbt_metrics package on v1.5 or older, however, these versions are no longer supported and don't receive any code fixes. 
 
-To build your metrics and semantic layer, we **highly** recommend you [upgrade to dbt v1.6 and higher](link to migration guide) to use the new and most recent version of the dbt Semantic Layer, powered by MetricFlow. 
+To build your metrics and semantic layer, we **highly** recommend you [upgrade to dbt v1.6 and higher](/guides/migration/versions/upgrading-to-v1.6) to use the new and most recent version of the dbt Semantic Layer, powered by MetricFlow. 
 
 :::
-
-</VersionBlock>
 
 <Changelog>
 
@@ -27,6 +23,7 @@ To build your metrics and semantic layer, we **highly** recommend you [upgrade t
 
 </Changelog>
  
+<VersionBlock lastVersion="1.5">
 
 A metric is an aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
@@ -214,9 +211,12 @@ Metrics can have many declared **properties**, which define aspects of your metr
 ### Available calculation methods
 
 <VersionBlock firstVersion="1.3">
+
 The method of calculation (aggregation or derived) that is applied to the expression.
 </VersionBlock> 
+
 <VersionBlock lastVersion="1.2">
+
 The type of calculation (aggregation or expression) that is applied to the sql property.
 </VersionBlock> 
  
@@ -537,6 +537,7 @@ The period to date secondary calculation performs an aggregation on a defined pe
 #### Rolling:
 
 <VersionBlock firstVersion="1.3" >
+
 The rolling secondary calculation performs an aggregation on a number of rows in metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4` then the value returned will be a rolling 4 week calculation of whatever aggregation type was selected. If the `interval` input is not provided then the rolling caclulation will be unbounded on all preceding rows.
 
 | Input                      | Example | Description | Required |
@@ -548,6 +549,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 </VersionBlock>
 
 <VersionBlock lastVersion="1.2" >
+
 The rolling secondary calculation performs an aggregation on a number of rows in the metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4`, then the value returned will be a rolling 4-week calculation of whatever aggregation type was selected.
 
 | Input                      | Example | Description | Required |
@@ -708,7 +710,7 @@ The above example will return a dataset that contains the metric provided in the
 
 **Important caveat** - You _must_ wrap the `expression` property for `derived` metrics in double quotes to render it. For example,  `expression: "{{ metric('develop_metric') }} - 1 "`.
 
-</VersionBlock>
-
 <Snippet src="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="metrics"/>
+
+</VersionBlock>
