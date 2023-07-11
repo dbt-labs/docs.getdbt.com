@@ -28,7 +28,7 @@ The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) ha
 
 :::
 
-If your dbt project defines metrics, you'll need to migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to the MetricFlow. This means any tests you have won't compile on v1.5 or older. 
+If your dbt project defines metrics, you'll need to migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. This means any tests you have won't compile on v1.5 or older. 
 
 NEED TO ADD MORE INFO RE: migration script
 
