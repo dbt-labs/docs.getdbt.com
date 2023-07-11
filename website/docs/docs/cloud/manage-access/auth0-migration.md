@@ -1,4 +1,4 @@
-ƒƒ---
+---
 title: "Migrating to Auth0 for SSO"
 id: "auth0-migration"
 sidebar: "SSO Auth0 Migration"
