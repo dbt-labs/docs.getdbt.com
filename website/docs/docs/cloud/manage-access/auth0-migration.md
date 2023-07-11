@@ -99,7 +99,7 @@ You must complete the domain authorization before you toggle `Enable New SSO Aut
 
 Azure Active Directory admins will need to make a slight adjustment to the existing authentication app in the Azure AD portal. This migration does not require that the entire app be deleted or recreated; you can edit the existing app. Start by opening the Azure portal and navigating to the Active Directory overview.
 
-Steps to update (you must complete all of them to ensure uninterrupted access to dbt Cloud and should coordinate making these changes with your identity provider admin):
+Below are steps to update. You must complete all of them to ensure uninterrupted access to dbt Cloud and you should coordinate with your identity provider admin when making these changes.
 
 1. Click **App Registrations** on the left side menu. 
 
