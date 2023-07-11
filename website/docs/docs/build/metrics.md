@@ -6,15 +6,9 @@ keywords:
   - dbt metrics layer
 ---
 
-:::info dbt metrics no longer supported
+import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
-dbt_metrics is no longer supported in v1.6 and higher, and has been [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics). [MetricFlow](/docs/build/about-metricflow?version=1.6), a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), is a new framework for defining metrics in dbt and has replaced dbt_metrics.
-
-You can still use the dbt Semantic Layer using the deprecated dbt_metrics package on v1.5 or older, however, these versions are no longer supported and don't receive any code fixes. 
-
-To build your metrics and semantic layer, we **highly** recommend you [upgrade to dbt v1.6 and higher](/guides/migration/versions/upgrading-to-v1.6) to use the new and most recent version of the dbt Semantic Layer, powered by MetricFlow. 
-
-:::
+<LegacyInfo />
 
 <Changelog>
 

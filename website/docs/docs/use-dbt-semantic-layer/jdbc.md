@@ -7,9 +7,9 @@ tags: ["semantic-layer, apis"]
 
 <VersionBlock lastVersion="1.5">
 
-:::info
-The dbt Semantic Layer APIs are available for users on a Team or Enterprise plans on dbt v1.6 and higher. To learn more about the Semantic APIs, make sure you select v1.6 or higher in the docs navigation header and upgrade your dbt version. 
-:::
+import UpgradeSL from '/snippets/_upgrade-new-sl.md';
+
+<UpgradeSL />
 
 ADD JDBC CONTENT HERE
 

@@ -6,8 +6,8 @@
 - Use Snowflake and Postgres, BigQuery, Databricks, and Redshift data platform
 - Install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow) package
   * Note &mdash; After installing the package, make sure you run at least one model.
-- Set up the [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated tool to import metric definitions 
-  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Discovery API <br />
+- Set up the [Semantic Layer API](/docs/use-dbt-semantic-layer/sl-api-overview) in the integrated tool to import metric definitions 
+  * Developer accounts will be able to query manually via the CLI using SQL, but will not be able to dynamically query or browse metrics in external tools, which requires access to the Semantic Layer APIs.<br />
 
 </VersionBlock>
 

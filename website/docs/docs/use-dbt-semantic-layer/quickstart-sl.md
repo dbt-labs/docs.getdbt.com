@@ -7,6 +7,10 @@ sidebar_label: "Getting started"
 
 <VersionBlock firstVersion="1.6">
 
+import NewSLChanges from '/snippets/_new-sl-changes.md';
+
+<NewSLChanges />
+
 This getting started page recommends a workflow to help you get started creating your first metrics. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model)

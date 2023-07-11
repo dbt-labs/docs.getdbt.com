@@ -7,13 +7,9 @@ sidebar_label: "About the dbt Semantic Layer"
 
 <VersionBlock firstVersion="1.6">
 
-:::info Revamped dbt Semantic Layer
+import NewSLChanges from '/snippets/_new-sl-changes.md';
 
-The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics.
-
-**What’s changed?** The dbt_metrics package has been [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), one of the Semantic Layer's key component and a new way framework for defining metrics in dbt.
-
-:::
+<NewSLChanges />
 
 The dbt Semantic Layer, powered by MetricFlow, allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice.
 

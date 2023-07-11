@@ -187,6 +187,10 @@ exports.versionedPages = [
     "category": "docs/use-dbt-semantic-layer/jdbc",
     "firstVersion": "1.6",
   },
+  {
+    "category": "docs/use-dbt-semantic-layer/sl-manifest",
+    "firstVersion": "1.6",
+  },
 ]
 
 exports.versionedCategories = [

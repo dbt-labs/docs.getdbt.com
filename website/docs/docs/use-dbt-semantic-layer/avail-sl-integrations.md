@@ -7,13 +7,9 @@ sidebar_label: "Available integrations"
 
 <VersionBlock firstVersion="1.6">
 
-:::info Revamped dbt Semantic Layer
+import NewSLChanges from '/snippets/_new-sl-changes.md';
 
-The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics.
-
-**What’s changed?** The dbt_metrics package has been [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), one of the Semantic Layer's key component and a new way framework for defining metrics in dbt.
-
-:::
+<NewSLChanges />>
 
 Query dbt metrics via external integrations using the sophisticated [dbt Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview) (Discovery, JDBC, and GraphQL API). With these APIs, you can query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
