@@ -1,5 +1,4 @@
 ---
-title: "About database configuration"
 sidebar_label: "database"
 resource_types: [models, seeds, tests]
 datatype: string
