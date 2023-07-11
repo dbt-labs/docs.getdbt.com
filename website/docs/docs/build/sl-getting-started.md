@@ -26,14 +26,21 @@ This getting started page recommends a workflow to help you get started creating
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
 
+## Install MetricFlow
+
+Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) via PyPI in the CLI. To install them, open the command line interface (CLI) and use the pip install command `pip install "dbt-metricflow[your_adapter_name]"`.
+
+Note that specifying `[your_adapter_name]` is required.  This is because you must install MetricFlow as an extension of a dbt adapter. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+ 
+Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
+
 ## Create a semantic model
 
-In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
+MetricFlow, which powers the dbt Semantic Layer, has two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 
 This step will guide you through setting up your semantic models, which consists of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
-f
 ```yaml
 semantic_models:
   - name: transactions
@@ -71,11 +78,12 @@ measures:
 If you're familiar with writing SQL, you can think of dimensions as the columns you would group by and measures as the columns you would aggregate.
 ```sql
 select
-  , metric_time_day --time
-  , country -- categorical dimension
-  , sum(revenue_usd) --measure
+  metric_time_day,  -- time
+  country,  -- categorical dimension
+  sum(revenue_usd) -- measure
 from
-  snowflake.fact_transactions -- sql table
+  snowflake.fact_transactions  -- sql table
+group by metric_time_day, country  -- dimensions
   ```
 :::
 
@@ -100,17 +108,13 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 Follow these steps to test and query your metrics using MetricFlow:
 
-1. Make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) in the CLI using the `pip install "dbt-metricflow[your_adapter_name]"` command. This is because you're installing MetricFlow as an extension of the dbt adapter. Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
+1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow).
 
-:::note
-When you install the adapter, add the adapter at the end of the command. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`
-:::
-
-2. Run `mf version` to see your CLI version. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
+2. Run `mf --help` to confirm you have MetricFlow installed, and to see the available commands. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
 3. Save your files and run `mf validate-configs` to validate the changes before committing them
 
-4. Run `mf query --metrics <metric_name> --dimensions <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
+4. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
 
 5. Verify that the metric values are what you expect. You can view the generated SQL if you enter `--explain` in the CLI. 
 

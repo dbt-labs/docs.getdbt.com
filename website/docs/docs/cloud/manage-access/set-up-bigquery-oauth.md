@@ -9,7 +9,6 @@ id: "set-up-bigquery-oauth"
 This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
 
 :::
-### Overview
 
 
 dbt Cloud supports developer [OAuth](https://cloud.google.com/bigquery/docs/authentication) with BigQuery, providing an additional layer of security for dbt enterprise users. When BigQuery OAuth is enabled for a dbt Cloud project, all dbt Cloud developers must authenticate with BigQuery in order to use the dbt Cloud IDE. The project's deployment environments will still leverage the BigQuery service account key set in the project credentials.
