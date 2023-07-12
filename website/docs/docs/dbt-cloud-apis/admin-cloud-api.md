@@ -15,14 +15,20 @@ Check out our dbt Cloud Admin API docs to help you access the API:
 <div className="grid--2-col">
 
 <Card
-    title="API v2 docs"
-    body="Our legacy API version, with limited endpoints and features (some features here are not available in v3)"
+    title="API v2 (legacy docs)"
+    body="Our legacy API version, with limited endpoints and features. Contains information not available in v3."
+link="/dbt-cloud/api-v2-legacy"
+    icon="pencil-paper"/>
+
+<Card
+    title="API v2 (beta docs)"
+    body="Our legacy API version, with limited endpoints and features. Contains information not available in v3. These docs are in beta and may not be complete."
 link="/dbt-cloud/api-v2"
     icon="pencil-paper"/>
 
 <Card
-    title="API v3 docs"
-    body="Our latest API version, with new endpoints and features"
+    title="API v3 (beta docs)"
+    body="Our latest API version, with new endpoints and features. These docs are in beta and may not be complete."
 link="/dbt-cloud/api-v3"
     icon="pencil-paper"/>
 

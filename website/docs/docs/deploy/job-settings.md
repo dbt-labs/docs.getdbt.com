@@ -21,7 +21,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
 - You must [create and schedule a dbt Cloud job](#create-and-schedule-jobs).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
-- You must set up a [deployment environment](/docs/collaborate/environments/dbt-cloud-environments). 
+- You must set up a [deployment environment](/docs/deploy/deploy-environments). 
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
 

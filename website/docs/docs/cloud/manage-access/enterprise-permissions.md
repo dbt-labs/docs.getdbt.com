@@ -4,14 +4,9 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 ---
 
-:::info Enterprise Feature
+import SetUpPages from '/snippets/_available-enterprise-only.md';
 
-This guide describes a feature of the dbt Cloud Enterprise plan.
-If you're interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
-
-## Overview
+<SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access
@@ -61,6 +56,17 @@ Security Admins have access to modify certain account-level settings. Users with
     - View and export Audit Logs
     - Create, delete, and modify IP Restrictions
 
+### Billing Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Billing Admins have access to modify certain account-level settings related to billing. Users with Billing Admin permissions can:
+
+- View and modify **Account Settings** such as:
+    - View billing information
+    - Modify billing information (accounts on the Team plan)
+        - This includes modifying Developer Seat counts for the Account
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
@@ -87,7 +93,7 @@ Users with Project Creator permissions can:
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
+Account Viewers have read-only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
 - View account-level artifacts
@@ -195,12 +201,12 @@ Analysts can perform the following actions in projects they are assigned to:
 
 ### Stakeholder
 - **Has permissions on:** Authorized projects
-- **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
+- **License restrictions:** Intended for use with Read-Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
 - View generated documentation
 - View generated source freshness reports
-- View the Read Only dashboard
+- View the Read-Only dashboard
 
 ## Diagram of the Permission Sets
 

@@ -87,8 +87,8 @@ Macro files can contain one or more macros — here's an example:
 
 ```sql
 
-{% macro cents_to_dollars(column_name, precision=2) %}
-    ({{ column_name }} / 100)::numeric(16, {{ precision }})
+{% macro cents_to_dollars(column_name, scale=2) %}
+    ({{ column_name }} / 100)::numeric(16, {{ scale }})
 {% endmacro %}
 
 ```
@@ -140,7 +140,7 @@ select
   field_5,
   count(*)
 from my_table
-{{ dbt_utils.group_by(5) }}
+{{ dbt_utils.dimensions(5) }}
 
 ```
 
