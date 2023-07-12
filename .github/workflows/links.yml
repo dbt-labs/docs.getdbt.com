@@ -1,4 +1,4 @@
-name: Check Docs Links
+name: Docs Link Checker
 
 on: [push]
   # schedule:
