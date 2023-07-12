@@ -3,7 +3,8 @@
 
 - Have a [multi-tenant dbt Cloud](/docs/deploy/regions) instance, hosted in North America
 - Have both your production and development environments running dbt version 1.6 or higher 
-- Use Snowflake and Postgres, BigQuery, Databricks, and Redshift data platform
+- Use Snowflake, BigQuery, Databricks, and Redshift data platform
+- A successful run in the environment where your Semantic Layer is configured
 - Install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow) package
   * Note &mdash; After installing the package, make sure you run at least one model.
 - Set up the [Semantic Layer API](/docs/use-dbt-semantic-layer/sl-api-overview) in the integrated tool to import metric definitions 

@@ -8,7 +8,7 @@ The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.c
 
 **What should you do?** If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
 
--is this correct? no right? 
+-is this correct? no right?-->
 Although you can still use the legacy dbt Semantic Layer using the deprecated dbt_metrics package on v1.5 or older, these versions are no longer supported and won't receive any code fixes. 
 
 :::

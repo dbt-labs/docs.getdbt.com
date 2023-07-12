@@ -29,18 +29,32 @@ import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
 You can set up the dbt Semantic Layer in dbt Cloud at the environment and  project level by following these steps:
 
+1. Create new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
+2. Navigate to **Account Settings** and select the specific project you want to enable the Semantic Layer for.
+3. In the **Project Details** page, navigate to **Configure Semantic Layer**.
+4. Enter the credentials you want the Semantic Layer to use specific to your data platform. 
+    * Note: We recommend using a less privileged set of credentials because your Semantic Layer users will be querying it in downstream applications. At a minimum, the Semantic Layer needs to have read access to the schema(s) that contains the dbt models that you used to build your semantic models.
+5. Select the deployment environment you want for the Semantic Layer
+6. Next, go back to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. 
+7. Save & copy your environment ID, service token, and host for inputting into a downstream tool
+8. You’ve configured the semantic layer 🎉! You can now define your [semantic models and metrics](/docs/build/build-metrics-intro) in your project.
 
+:::tip
+If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+:::
+
+<!--
 1. Create a new environment in dbt Cloud by selecting **Deploy** and then **Environments**.
 2. Select **dbt Version 1.6** (or the latest) and enter your deployment credentials.
 3. To configure the new Semantic Layer, you must have a successful run in your new environment. We recommend running `dbt ls` since `dbt build` won’t succeed until you’ve created and defined semantic models and metrics.
 4. To enable the dbt Semantic Layer, go to the **Account Settings** page and then select the specific project you want to enable the Semantic Layer for.
 5. In the **Project Details** page, select **Configure Semantic Layer.** This will prompt you to enter data platform connection credentials for the Semantic Layer and select the environment where you want to enable the Semantic Layer. We recommend using a less privileged set of credentials when setting up your connection. The semantic layer requires SELECT and CREATE TABLE permissions.
-6. After you’ve entered you’re credentials, you should see a **JDBC URL** connection string. Copy this string and save it in your password manager. This can be used to connect to the semantic layer JDBC.
+6. After you’ve entered your credentials, you should see a **JDBC URL** connection string. Copy this string and save it in your password manager. This can be used to connect to the semantic layer JDBC.
 7. Next, go back to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. Save this token for later.
 8. You’re done 🎉! The semantic layer should is now enabled for your project. 
+-->
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" width="85%" title="Set up dbt Semantic Layer in dbt Cloud" /><br />
-
 
 
 </VersionBlock>
@@ -64,6 +78,8 @@ Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 
 ## Set up dbt Semantic Layer
+
+If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
 
 Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud account hosted in North America. 
  * Team and Enterprise accounts can set up the Semantic Layer and [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated partner tool to import metric definitions. 
@@ -99,6 +115,10 @@ Note  - It is _not_ recommended that you use your dbt Cloud credentials due to e
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" title="Set up dbt Semantic Layer in dbt Cloud" /><br />
 
-
-
 </VersionBlock>
+
+- [Build your metrics](/docs/build/build-metrics-intro)
+- [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
+- [Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview)
+- [Migrate your legacy Semantic Layer](/guides/migration/sl-migration)
+- [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)

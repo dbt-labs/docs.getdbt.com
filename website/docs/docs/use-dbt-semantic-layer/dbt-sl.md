@@ -11,22 +11,20 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 <NewSLChanges />
 
-The dbt Semantic Layer, powered by MetricFlow, allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice.
+The dbt Semantic Layer, powered by MetricFlow, allows data teams to centrally define critical business metrics like `revenue`, in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and other data applications. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice. It automatically handles joins across your data.
 
 The result? You have less duplicate coding for data teams and more consistency for data consumers. 
 
-The dbt Semantic Layer has four main parts:
+The dbt Semantic Layer has the following major components:
 
-- Define your metrics in version-controlled dbt project code using MetricFlow
-- Import your metric definitions via the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
-- Query your metric data using the [Semantic Layer API](/docs/use-dbt-semantic-layer/sl-api-overview) (JDBC driver, GraphQL API, and the Discovery API)
-- Explore and analyze your metrics in downstream tools
-
-ADD ARCHITECTURE IMAGE
+- Use [MetricFlow](/docs/build/build-metrics-intro) to define and test your semantic models and metrics in version-controlled dbt project code 
+- Use [dbt Semantic Layer interfaces] to explore and analyze these metrics in downstream tools
 
 ### What makes the dbt Semantic Layer different?
 
-The dbt Semantic Layer reduces code duplication and inconsistency regarding your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. You can also use the dbt Semantic Layer to query models and use macros.
+The dbt Semantic Layer reduces code duplication and inconsistency regarding your business metrics. By moving metric definitions out of the BI layer and into the modeling layer, data teams can feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
+
+To read more about why you need a universal Semantic Layer, see this [blog post](https://www.getdbt.com/blog/universal-semantic-layer/).
 
 
 ## Prerequisites
@@ -62,11 +60,11 @@ The dbt Semantic Layer product architecture includes four primary components:
 | Components | Information | Developer plans | Team plans | Enterprise plans | License |
 | --- | --- | :---: | :---: | :---: | --- |
 | **[MetricFlow](/docs/build/about-metricflow)** | Use MetricFlow in dbt to centrally define your metrics. MetricFlow is a key component of the dbt Semantic Layer and is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. | ✅ | ✅ |  ✅  | BSL package (code is source available) |
-| **[dbt Server](https://github.com/dbt-labs/dbt-server)**| A persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. | ✅ | ✅ | ✅ | BSL |
-| **SQL Proxy** | Reverse-proxy that accepts dbt-SQL (SQL + Jinja like query models and metrics, use macros), compiles the query into pure SQL, and executes the query against the data platform. | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
-| **[Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview)**  | Use the Semantic Layer APIS, which includes the Discovery, JDBC, and GraphQL API, to access metric definitions using integrations. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise |
+| **MetricFlow Server Server** | A proprietary server that takes metric requests and turns.... | ✅ | ✅ | ✅ | BSL |
+| **Semantic Layer Gateway**| Reverse-proxy that accepts dbt-SQL (SQL + Jinja like query models and metrics, use macros), compiles the query into pure SQL, and executes the query against the data platform.  | ✅ <br></br>_* Available during Public Preview only_ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
+| **[Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview)**  | Use the Semantic Layer APIS, which includes the Discovery, JDBC, and GraphQL API, to access metric definitions using integrations. | ❌ | ✅ | ✅ | Proprietary, Cloud (Team & Enterprise) |
 
-ADD COMPONENT IMAGE
+ADD ARCHITECTURE IMAGE
 
 dbt Semantic Layer integrations will:
 
@@ -114,9 +112,9 @@ To read about best practices on structuring and organizing your metrics, review 
 ## Related questions
 
 <details>
-  <summary>How do I migrate from the old Semantic Layer to the new one?</summary>
+  <summary>How do I migrate from the legacy Semantic Layer to the new one?</summary>
   <div>
-    <div>ADD INFO HERE AND MIGRATION SCRIPT.</div>
+    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/migration/sl-migration"> migration guide</a> for more info.</div>
   </div>
 </details>
     
