@@ -74,7 +74,7 @@
 /reference/warehouse-setups/infer-setup /docs/core/connect-data-platform/infer-setup 301
 /reference/warehouse-setups/databend-setup /docs/core/connect-data-platform/databend-setup 301
 /reference/warehouse-setups/fal-setup /docs/core/connect-data-platform/fal-setup 301
-/reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup 
+/reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup
 
 # Discovery redirect
 /docs/dbt-cloud-apis/metadata-schema-source /docs/dbt-cloud-apis/discovery-schema-source 301
@@ -712,6 +712,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /tutorial/building-your-first-project/\* /guides/getting-started/building-your-first-project/:splat 301
 /tutorial/refactoring-legacy-sql /guides/migration/tools/refactoring-legacy-sql 301
 /blog/change-data-capture-metrics /blog/change-data-capture 301
+/blog/intelligent-slim-ci /docs/deploy/continuous-integration 301
 /blog/model-timing-tab /blog/how-we-shaved-90-minutes-off-model 301
 /reference/warehouse-setups/resource-configs/materialize-configs/indexes /reference/resource-configs/materialize-configs#indexes 301
 /docs/build/building-models /docs/build/models 301
