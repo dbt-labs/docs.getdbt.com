@@ -52,7 +52,7 @@ pip is the easiest way to install the adapter:
 | ------------- | ------- | ------------ |
 | `type` | redshift | The type of data warehouse you are connecting to|
 | `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
-| `port`  | 5439 |   |
+| `port`  | 5439 |  Optional. Defaults 5439 |
 | `dbname`  | my_db | Database name|
 | `schema`  | my_schema | Schema name| 
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
@@ -63,7 +63,6 @@ pip is the easiest way to install the adapter:
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
 | `autocommit`  | true | Optional, default True. Enables autocommit after each statement| 
 | `retries`  | 1 | Number of retries | 
-| `region`  | us-east-1 | Optional | 
 
 
 ## Authentication Parameters
@@ -111,10 +110,12 @@ company-name:
       host: hostname.region.redshift.amazonaws.com
       user: username
       password: password1
-      port: 5439
       dbname: analytics
       schema: analytics
       connect_timeout: None
+
+      # Optional Redshift configs:
+      port: 5439
       sslmode: prefer
       role: None
       ra3_node: true 
@@ -148,6 +149,8 @@ please refer to the official AWS documentation on [Configuration and credential 
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
 | `cluster_id` | CLUSTER_ID| Required for IAM |
 | `user`   | username | Account user to log into your cluster |
+| `region`  | us-east-1 | Required for IAM autentication | 
+
 
 <br/>
 
@@ -170,7 +173,7 @@ please refer to the official AWS documentation on [Configuration and credential 
       autocreate: true  
       db_groups: ['ANALYSTS']
 
-      # Other Redshift configs:
+      # Optional Redshift configs:
       port: 5439
       dbname: analytics
       schema: analytics
