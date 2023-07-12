@@ -52,7 +52,7 @@ pip is the easiest way to install the adapter:
 | ------------- | ------- | ------------ |
 | `type` | redshift | The type of data warehouse you are connecting to|
 | `host` | hostname.region.redshift.amazonaws.com| Host of cluster |
-| `port`  | 5439 |  Optional. Defaults 5439 |
+| `port`  | 5439 |  |
 | `dbname`  | my_db | Database name|
 | `schema`  | my_schema | Schema name| 
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
