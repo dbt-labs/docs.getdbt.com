@@ -57,7 +57,7 @@ pip is the easiest way to install the adapter:
 | `schema`  | my_schema | Schema name| 
 | `connect_timeout`  | `None` or 30 | Number of seconds before connection times out| 
 | `sslmode`  | prefer | optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect. For more information on `sslmode`, see Redshift note below| 
-| `role`  | None | Optional| 
+| `role`  | None | Optional, user identifier of the current session| 
 | `autocreate`  | false | Optional, default false. Creates user if they do not exist | 
 | `db_groups`  | ['ANALYSTS'] | Optional. A list of existing database group names that the DbUser joins for the current session | 
 | `ra3_node`  | true | Optional, default False. Enables cross-database sources| 
@@ -112,7 +112,6 @@ company-name:
       password: password1
       dbname: analytics
       schema: analytics
-      connect_timeout: None
 
       # Optional Redshift configs:
       port: 5439
@@ -121,6 +120,8 @@ company-name:
       ra3_node: true 
       autocommit: true 
       threads: 4
+      connect_timeout: None
+
 ```
 
 </File>
@@ -170,13 +171,11 @@ please refer to the official AWS documentation on [Configuration and credential 
       host: hostname.region.redshift.amazonaws.com
       user: alice
       iam_profile: analyst
-      autocreate: true  
-      db_groups: ['ANALYSTS']
+      dbname: analytics
+      schema: analytics
 
       # Optional Redshift configs:
       port: 5439
-      dbname: analytics
-      schema: analytics
       threads: 4
       connect_timeout: None 
       [retries](#retries): 1 
@@ -185,6 +184,8 @@ please refer to the official AWS documentation on [Configuration and credential 
       ra3_node: true  
       autocommit: true  
       region: us-east-1
+      autocreate: true  
+      db_groups: ['ANALYSTS']
 
 ```
 
