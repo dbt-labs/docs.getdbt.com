@@ -93,7 +93,7 @@ Users with Project Creator permissions can:
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
+Account Viewers have read-only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
 - View account-level artifacts
@@ -201,12 +201,12 @@ Analysts can perform the following actions in projects they are assigned to:
 
 ### Stakeholder
 - **Has permissions on:** Authorized projects
-- **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
+- **License restrictions:** Intended for use with Read-Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
 - View generated documentation
 - View generated source freshness reports
-- View the Read Only dashboard
+- View the Read-Only dashboard
 
 ## Diagram of the Permission Sets
 

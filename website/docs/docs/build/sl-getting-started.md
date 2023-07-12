@@ -110,11 +110,11 @@ Follow these steps to test and query your metrics using MetricFlow:
 
 1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow).
 
-2. Run `mf version` to see your CLI version. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
+2. Run `mf --help` to confirm you have MetricFlow installed, and to see the available commands. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
 3. Save your files and run `mf validate-configs` to validate the changes before committing them
 
-4. Run `mf query --metrics <metric_name> --dimensions <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
+4. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
 
 5. Verify that the metric values are what you expect. You can view the generated SQL if you enter `--explain` in the CLI. 
 
