@@ -1,11 +1,13 @@
 ---
-title: "target"
+title: "About target variable"
+sidebar_label: "target"
 id: "target"
+description: "Contains information about your connection to the warehouse."
 ---
 
 `target` contains information about your connection to the warehouse.
 
-* **dbt CLI:** These values are based on the target defined in your [`profiles.yml` file](reference/profiles.yml.md)
+* **dbt CLI:** These values are based on the target defined in your [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml)
 * **dbt Cloud Scheduler:**
     * `target.name` is defined per job as described [here](/docs/build/custom-target-names).
     * For all other attributes, the values are defined by the deployment connection. To check these values, click **Deploy** from the upper left and select **Environments**. Then, select the relevant deployment environment, and click **Settings**.

@@ -30,7 +30,6 @@ function dbtEditor({ project, tag }) {
   const [csvData, setCsvData] = useState()
   const [currentSql, setCurrentSql] = useState(defaultEditorValue)
   const [error, setError] = useState(false)
-  const [packageOpen, setPackageOpen] = useState(true)
   const [currentNodeId, setCurrentNodeId] = useState(null);
   const handle = useFullScreenHandle();
   useEffect(() => {

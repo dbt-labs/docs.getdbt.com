@@ -1,8 +1,12 @@
 exports.versions = [
   {
+    version: "1.6",
+    EOLDate: "2024-07-20", // placeholder - need to confirm the final date
+    isPrerelease: true
+  },
+  {
     version: "1.5",
-    EOLDate: "2024-04-26",
-    isPrerelease: true,
+    EOLDate: "2024-04-27",
   },
   {
     version: "1.4",
@@ -28,15 +32,35 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "docs/collaborate/publish/model-contracts",
+    "page": "reference/resource-properties/deprecation_date", 
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/commands/retry",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/groups",
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-access",
+    "page": "docs/collaborate/govern/model-contracts",
+    "firstVersion": "1.5",
+  },
+    {
+    "page": "reference/commands/show",
     "firstVersion": "1.5",
   },
   {
-    "page": "docs/collaborate/publish/model-versions",
+    "page": "docs/collaborate/govern/model-access",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "docs/collaborate/govern/model-versions",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "reference/programmatic-invocations",
     "firstVersion": "1.5",
   },
   {
@@ -44,17 +68,33 @@ exports.versionedPages = [
     "firstVersion": "1.5",
   },
   {
+    "page": "reference/resource-configs/group",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "reference/resource-properties/access",
+    "firstVersion": "1.5",
+  },
+  {
     "page": "reference/resource-properties/constraints",
     "firstVersion": "1.5",
   },
   {
+    "page": "reference/resource-properties/latest_version",
+    "firstVersion": "1.5",
+  },
+  {
+    "page": "reference/resource-properties/versions",
+    "firstVersion": "1.5",
+  },
+  {
     "page": "reference/dbt-jinja-functions/local-md5",
-     "firstVersion": "1.4",
-   },
-   {
-     "page": "reference/warehouse-setups/fal-setup",
-     "firstVersion": "1.3",
-   },
+    "firstVersion": "1.4",
+  },
+  {
+    "page": "reference/warehouse-setups/fal-setup",
+    "firstVersion": "1.3",
+  },
   {
     "page": "reference/dbt-jinja-functions/set",
     "firstVersion": "1.2",
@@ -67,7 +107,7 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/cross-database-macros",
     "firstVersion": "1.2",
   },
-    {
+  {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
   },
@@ -83,4 +123,67 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
+  {
+    "page": "docs/build/build-metrics-intro",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/sl-getting-started",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/about-metricflow",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/join-logic",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/validation",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/semantic-models",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/group-by",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/entities",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/metrics-overview",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/cumulative",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/derived",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/measure-proxy",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/ratio",
+    "firstVersion": "1.6",
+  },
+]
+
+exports.versionedCategories = [
+  {
+    "category": "Model governance",
+    "firstVersion": "1.5",
+  },
+  {
+    "category": "Build your metrics",
+    "firstVersion": "1.6",
+  }
 ]

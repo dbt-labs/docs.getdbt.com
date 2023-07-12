@@ -3,20 +3,70 @@ resource_types: [models]
 datatype: "{dictionary}"
 ---
 
-:::caution Under construction 🚧
-These docs are liable to change!
+:::info New functionality
+This functionality is new in v1.5.
 :::
 
-:::info Beta functionality
-This functionality is new in v1.5! These docs exist to provide a high-level overview of what's to come. Specific syntax is liable to change.
+Constraints are a feature of many data platforms. When specified, the platform will perform additional validation on data as it is being populated in a new table or inserted into a preexisting table. If the validation fails, the table creation or update fails, the operation is rolled back, and you will see a clear error message.
 
-For more details, and to leave your feedback, check out this GitHub issue:
-* ["Unify constraints and constraints_check configs" (dbt-core#6750)](https://github.com/dbt-labs/dbt-core/issues/6750)
-:::
+When enforced, a constraint guarantees that you will never see invalid data in the table materialized by your model. Enforcement varies significantly by data platform.
 
-In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. Because Postgres is a transactional database, it supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.
+Constraints require the declaration and enforcement of a model [contract](/reference/resource-configs/contract).
+
+**Constraints are never applied on `ephemeral` models or those materialized as `view`**. Only `table` and `incremental` models support applying and enforcing constraints.
+
+## Defining constraints
+
+Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
+
+The structure of a constraint is:
+- `type` (required): one of `not_null`, `primary_key`, `foreign_key`, `check`, `custom`
+- `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
+- `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
+- `columns` (model-level only): List of column names to apply the constraint over
+
+<File name='models/schema.yml'>
+
+```yml
+models:
+  - name: <model_name>
+    
+    # required
+    config:
+      contract:
+        enforced: true
+    
+    # model-level constraints
+    constraints:
+      - type: primary_key
+        columns: [<first_column>, <second_column>, ...]
+      - type: check
+        columns: [<first_column>, <second_column>, ...]
+        expression: "<first_column> != <second_column>"
+        name: human_friendly_name
+      - type: ...
+    
+    columns:
+      - name: <first_column>
+        data_type: <data_type>
+        
+        # column-level constraints
+        constraints:
+          - type: not_null
+          - type: ...
+```
+
+</File>
+
+## Platform-specific support
+
+In transactional databases, it is possible to define "constraints" on the allowed values of certain columns, stricter than just the data type of those values. For example, Postgres supports and enforces all the constraints in the ANSI SQL standard (`not null`, `unique`, `primary key`, `foreign key`), plus a flexible row-level `check` constraint that evaluates to a boolean expression.
 
 Most analytical data platforms support and enforce a `not null` constraint, but they either do not support or do not enforce the rest. It is sometimes still desirable to add an "informational" constraint, knowing it is _not_ enforced, for the purpose of integrating with legacy data catalog or entity-relation diagram tools ([dbt-core#3295](https://github.com/dbt-labs/dbt-core/issues/3295)).
+
+To that end, there are two optional fields you can specify on any filter:
+- `warn_unenforced: False` to skip warning on constraints that are supported, but not enforced, by this data platform. The constraint will be included in templated DDL.
+- `warn_unsupported: False` to skip warning on constraints that aren't supported by this data platform, and therefore won't be included in templated DDL.
 
 <WHCode>
 
@@ -35,8 +85,8 @@ Most analytical data platforms support and enforce a `not null` constraint, but 
 
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 ```
 
 </File>
@@ -45,22 +95,21 @@ select
 
 ```yml
 models:
-  - name: constraints_example
-    docs:
-      node_color: black
+  - name: dim_customers
     config:
-      constraints_enabled: true
+      contract:
+        enforced: true
     columns:
-      - name: id
-        data_type: integer
-        description: hello
-        constraints: ['not null','primary key']
-        constraints_check: (id > 0)
-        tests:
-          - unique
-      - name: color
+      - name: customer_id
+        data_type: int
+        constraints:
+          - type: not_null
+          - type: primary_key
+          - type: check
+            expression: "id > 0"
+      - name: customer_name
         data_type: text
-      - name: date_day
+      - name: first_transaction_date
         data_type: date
 ```
 
@@ -73,21 +122,21 @@ Expected DDL to enforce constraints:
 create table "database_name"."schema_name"."constraints_example__dbt_tmp"
 ( 
     id integer not null primary key check (id > 0),
-    color text,
-    date_day date    
+    customer_name text,
+    first_transaction_date date    
 )
 ;
 insert into "database_name"."schema_name"."constraints_example__dbt_tmp" 
 (   
     id,
-    color,  
-    date_day
+    customer_name,  
+    first_transaction_date
 ) 
 (
 select 
     1 as id, 
-    'blue' as color, 
-    cast('2019-01-01' as date) as date_day
+    'My Favorite Customer' as customer_name, 
+    cast('2019-01-01' as date) as first_transaction_date
 );
 ```
 
@@ -110,8 +159,8 @@ Redshift currently only enforces `not null` constraints; all other constraints a
 
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 ```
 
 </File>
@@ -120,22 +169,23 @@ select
 
 ```yml
 models:
-  - name: constraints_example
-    docs:
-      node_color: black
+  - name: dim_customers
     config:
-      constraints_enabled: true
+      contract:
+        enforced: true
     columns:
       - name: id
         data_type: integer
-        description: hello
-        constraints: ['not null','primary key']
-        constraints_check: (id > 0)
+        constraints:
+          - type: not_null
+          - type: primary_key # not enforced  -- will warn & include
+          - type: check       # not supported -- will warn & skip
+            expression: "id > 0"
         tests:
-          - unique
-      - name: color
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
         data_type: varchar
-      - name: date_day
+      - name: first_transaction_date
         data_type: date
 ```
 
@@ -150,8 +200,8 @@ create table "database_name"."schema_name"."constraints_example__dbt_tmp"
     
 (
     id integer not null,
-    color varchar,
-    date_day date,
+    customer_name varchar,
+    first_transaction_date date,
     primary key(id)
 )    
 ;
@@ -160,8 +210,8 @@ insert into "database_name"."schema_name"."constraints_example__dbt_tmp"
 (   
 select
     1 as id,
-    'blue' as color,
-    cast('2019-01-01' as date) as date_day
+    'My Favorite Customer' as customer_name,
+    cast('2019-01-01' as date) as first_transaction_date
 ); 
 ```
 
@@ -193,8 +243,8 @@ Currently, Snowflake doesn't support the `check` syntax and dbt will skip the `c
 
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 ```
 
 </File>
@@ -203,21 +253,24 @@ select
 
 ```yml
 models:
-  - name: constraints_example
-    docs:
-      node_color: black
+  - name: dim_customers
     config:
-      constraints_enabled: true
+      contract:
+        enforced: true
     columns:
       - name: id
         data_type: integer
         description: hello
-        constraints: ['not null','primary key']
+        constraints:
+          - type: not_null
+          - type: primary_key # not enforced  -- will warn & include
+          - type: check       # not supported -- will warn & skip
+            expression: "id > 0"
         tests:
-          - unique
-      - name: color
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
         data_type: text
-      - name: date_day
+      - name: first_transaction_date
         data_type: date
 ```
 
@@ -230,15 +283,15 @@ Expected DDL to enforce constraints:
 create or replace transient table <database>.<schema>.constraints_model        
 (
     id integer not null primary key,
-    color text,
-    date_day date  
+    customer_name text,
+    first_transaction_date date  
 )
 as
 (
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 );
 ```
 
@@ -265,8 +318,8 @@ Data types: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-t
 
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 ```
 
 </File>
@@ -275,21 +328,23 @@ select
 
 ```yml
 models:
-  - name: constraints_example
-    docs:
-      node_color: black
+  - name: dim_customers
     config:
-      constraints_enabled: true
+      contract:
+        enforced: true
     columns:
       - name: id
-        data_type: integer
-        description: hello
-        constraints: ['not null'] # 'primary key' is not supported
+        data_type: int
+        constraints:
+          - type: not_null
+          - type: primary_key # not enforced  -- will warn & include
+          - type: check       # not supported -- will warn & skip
+            expression: "id > 0"
         tests:
-          - unique
-      - name: color
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
         data_type: string
-      - name: date_day
+      - name: first_transaction_date
         data_type: date
 ```
 
@@ -302,15 +357,15 @@ Expected DDL to enforce constraints:
 create or replace table `<project>`.`<dataset>`.`constraints_model`        
 (
     id integer not null,
-    color string,
-    date_day date  
+    customer_name string,
+    first_transaction_date date  
 )
 as
 (
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 );
 ```
 
@@ -345,8 +400,8 @@ See [this page](https://docs.databricks.com/tables/constraints.html) with more d
 
 select 
   1 as id, 
-  'blue' as color, 
-  cast('2019-01-01' as date) as date_day
+  'My Favorite Customer' as customer_name, 
+  cast('2019-01-01' as date) as first_transaction_date
 ```
 
 </File>
@@ -355,22 +410,23 @@ select
 
 ```yml
 models:
-  - name: constraints_example
-    docs:
-      node_color: black
+  - name: dim_customers
     config:
-      constraints_enabled: true
+      contract:
+        enforced: true
     columns:
       - name: id
-        data_type: integer
-        description: hello
-        constraints: ['not null']
-        constraints_check: "(id > 0)"
+        data_type: int
+        constraints:
+          - type: not_null
+          - type: primary_key # not enforced  -- will warn & include
+          - type: check       # not supported -- will warn & skip
+            expression: "id > 0"
         tests:
-          - unique
-      - name: color
+          - unique            # primary_key constraint is not enforced
+      - name: customer_name
         data_type: text
-      - name: date_day
+      - name: first_transaction_date
         data_type: date
 ```
 
@@ -385,8 +441,8 @@ Expected DDL to enforce constraints:
   as
     select
       1 as id,
-      'blue' as color,
-      cast('2019-01-01' as date) as date_day
+      'My Favorite Customer' as customer_name,
+      cast('2019-01-01' as date) as first_transaction_date
 ```
 
 </File>

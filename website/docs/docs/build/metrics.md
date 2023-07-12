@@ -6,14 +6,31 @@ keywords:
   - dbt metrics layer
 ---
 
+<VersionBlock firstVersion="1.6">
+
+:::info dbt Metrics isn't supported
+
+dbt Metrics is no longer supported in v1.6 and higher. To build your semantic layer, define and query metrics, and provide data governance - refer to [Build your Semantic Layer](/docs/build/build-metrics-intro) for updated guidance.
+
+:::
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+
+:::info dbt Metrics not recommended
+
+dbt Metrics won't be supported in v1.6 and higher, and is being replaced with MetricFlow. [Defining metrics](/docs/build/build-semantic-layer-intro) with MetricFlow will help shape the future of the dbt Semantic Layer &mdash; let us know [your thoughts and join the convo](https://github.com/dbt-labs/dbt-core/discussions/7456) to help build it!
+
+:::
+
+
 <Changelog>
 
 * **v1.3.0**: Metrics have been moved out of the experimental phase
 * **v1.0.0**: Metrics are new and experimental
 
 </Changelog>
-
-## About Metrics 
+ 
 
 A metric is an aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
@@ -485,7 +502,7 @@ You may find some pieces of functionality, like secondary calculations, complica
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
 | <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
-| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`, `'all_time'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Required |
+| grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Optional |
 | dimensions  | [`'plan'`,<br /> `'country'`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
 | secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calculations, and period to date calculations. | Optional |
 | start_date  | `'2022-01-01'` | Limits the date range of data used in the metric calculation by not querying data before this date | Optional |
@@ -695,6 +712,7 @@ The above example will return a dataset that contains the metric provided in the
 
 **Important caveat** - You _must_ wrap the `expression` property for `derived` metrics in double quotes to render it. For example,  `expression: "{{ metric('develop_metric') }} - 1 "`.
 
+</VersionBlock>
 
 <Snippet src="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="metrics"/>

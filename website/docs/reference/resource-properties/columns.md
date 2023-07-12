@@ -26,11 +26,11 @@ models:
     columns:
       - name: <column_name>
         data_type: <string>
-        [description](description): <markdown_string>
-        [quote](quote): true | false
-        [tests](resource-properties/tests): ...
-        [tags](resource-configs/tags): ...
-        [meta](resource-configs/meta): ...
+        [description](/reference/resource-properties/description): <markdown_string>
+        [quote](/reference/resource-properties/quote): true | false
+        [tests](/reference/resource-properties/tests): ...
+        [tags](/reference/resource-configs/tags): ...
+        [meta](/reference/resource-configs/meta): ...
       - name: <another_column>
         ...
 ```
@@ -52,12 +52,12 @@ sources:
     - name: <table_name>
       columns:
         - name: <column_name>
-          [description](description): <markdown_string>
+          [description](/reference/resource-properties/description): <markdown_string>
           data_type: <string>
-          [quote](quote): true | false
-          [tests](resource-properties/tests): ...
-          [tags](resource-configs/tags): ...
-          [meta](resource-configs/meta): ...
+          [quote](/reference/resource-properties/quote): true | false
+          [tests](/reference/resource-properties/tests): ...
+          [tags](/reference/resource-configs/tags): ...
+          [meta](/reference/resource-configs/meta): ...
         - name: <another_column>
           ...
 
@@ -76,18 +76,15 @@ version: 2
 
 seeds:
   - name: <seed_name>
-
     columns:
       - name: <column_name>
-        columns:
-          - name: <column_name>
-            [description](description): <markdown_string>
-            data_type: <string>
-            [quote](quote): true | false
-            [tests](resource-properties/tests): ...
-            [tags](resource-configs/tags): ...
-            [meta](resource-configs/meta): ...
-          - name: <another_column>
+        [description](/reference/resource-properties/description): <markdown_string>
+        data_type: <string>
+        [quote](/reference/resource-properties/quote): true | false
+        [tests](/reference/resource-properties/tests): ...
+        [tags](/reference/resource-configs/tags): ...
+        [meta](/reference/resource-configs/meta): ...
+      - name: <another_column>
             ...
 ```
 
@@ -106,12 +103,12 @@ snapshots:
   - name: <snapshot_name>
     columns:
       - name: <column_name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         data_type: <string>
-        [quote](quote): true | false
-        [tests](resource-properties/tests): ...
-        [tags](resource-configs/tags): ...
-        [meta](resource-configs/meta): ...
+        [quote](/reference/resource-properties/quote): true | false
+        [tests](/reference/resource-properties/tests): ...
+        [tags](/reference/resource-configs/tags): ...
+        [meta](/reference/resource-configs/meta): ...
       - name: <another_column>
 
 ```
@@ -132,7 +129,7 @@ analyses:
   - name: <analysis_name>
     columns:
       - name: <column_name>
-        [description](description): <markdown_string>
+        [description](/reference/resource-properties/description): <markdown_string>
         data_type: <string>
       - name: <another_column>
 
@@ -150,6 +147,8 @@ Columns are not resources in and of themselves. Instead, they are child properti
 - `tests`
 - `description`
 
-Because columns are not resources, their `tags` and `meta` properties are not true configurations. They do not inherit the `tags` or `meta` values of their parent resources. However, you can select a generic test, defined on a column, using tags applied to its column or top-level resource; see [test selection examples](test-selection-examples#run-tests-on-tagged-columns).
+Because columns are not resources, their `tags` and `meta` properties are not true configurations. They do not inherit the `tags` or `meta` values of their parent resources. However, you can select a generic test, defined on a column, using tags applied to its column or top-level resource; see [test selection examples](/reference/node-selection/test-selection-examples#run-tests-on-tagged-columns).
 
-Columns may optionally define a `data_type`. This is for metadata purposes only, such as to use alongside the [`external`](resource-properties/external) property of sources.
+Columns may optionally define a `data_type`, which is necessary for:
+- Enforcing a model [contract](/reference/resource-configs/contract)
+- Use in other packages or plugins, such as the [`external`](/reference/resource-properties/external) property of sources and [`dbt-external-tables`](https://hub.getdbt.com/dbt-labs/dbt_external_tables/latest/)

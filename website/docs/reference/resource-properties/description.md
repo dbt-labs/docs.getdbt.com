@@ -157,13 +157,13 @@ A user-defined description. Can be used to document:
 - analyses, and analysis columns
 - macros, and macro arguments
 
-These descriptions are used in the documentation website rendered by dbt (see [the documentation guide](documentation)).
+These descriptions are used in the documentation website rendered by dbt (see [the documentation guide](/docs/collaborate/documentation)).
 
-Descriptions can include markdown, as well as the [`doc` jinja function](doc).
+Descriptions can include markdown, as well as the [`doc` jinja function](/reference/dbt-jinja-functions/doc).
 
 :::caution You may need to quote your YAML
 
-Be mindful of YAML semantics when providing a description. If your description contains special yaml characters like curly brackets, colons, or square brackets, you may need to quote your description. An example of a quoted description is shown [below](#use-some-markdown-in-a-description).
+Be mindful of YAML semantics when providing a description. If your description contains special YAML characters like curly brackets, colons, or square brackets, you may need to quote your description. An example of a quoted description is shown [below](#use-some-markdown-in-a-description).
 
 :::
 
@@ -235,7 +235,7 @@ models:
 
 ### Use a docs block in a description
 
-If you have a long description, especially if it contains markdown, it may make more sense to leverage a [`docs` block](doc). A benefit of this approach is that code editors will correctly highlight markdown, making it easier to debug as you write.
+If you have a long description, especially if it contains markdown, it may make more sense to leverage a [`docs` block](/reference/dbt-jinja-functions/doc). A benefit of this approach is that code editors will correctly highlight markdown, making it easier to debug as you write.
 
 <File name='models/schema.yml'>
 
@@ -307,7 +307,7 @@ models:
 ### Include an image from your repo in your descriptions
 To include an image from your repository in your descriptions:
 1. Add the file in a subdirectory, e.g. `assets/dbt-logo.svg`
-2. Set the [`asset-paths` config](project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
+2. Set the [`asset-paths` config](/reference/project-configs/asset-paths) in your `dbt_project.yml` file so that this directory gets copied to the `target/` directory as part of `dbt docs generate`
 
 <File name='dbt_project.yml'>
 

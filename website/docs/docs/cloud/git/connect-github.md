@@ -1,20 +1,21 @@
 ---
 title: "Connect to GitHub"
+description: "Learn how connecting your GitHub account provides convenience and another layer of security to dbt Cloud."
 id: "connect-github"
 sidebar_label: "Connect to GitHub"
 ---
 
-## Overview
 
 Connecting your GitHub account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
 - Log into dbt Cloud using OAuth through GitHub.
 - Import new GitHub repositories with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
-- Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when pull requests are opened in GitHub.
+- Trigger [Continuous integration](/docs/deploy/continuous-integration)(CI) builds when pull requests are opened in GitHub.
 
 ## Prerequisites
 
 - For On-Premises GitHub deployment, reference [importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) to set up your connection instead. Some git features are [limited](/docs/cloud/git/import-a-project-by-git-url#limited-integration) with this setup.
+  * **Note** &mdash; [Single tenant](/docs/cloud/about-cloud/tenancy#single-tenant) accounts offer enhanced connection options for integrating with an On-Premises GitHub deployment setup using the native integration.  This integration allows you to use all the features of the integration, such as triggering CI builds. The dbt Labs infrastructure team will coordinate with you to ensure any additional networking configuration requirements are met and completed. To discuss details, contact dbt Labs support or your dbt Cloud account team.
 - You _must_ be a **GitHub organization owner** in order to [install the dbt Cloud application](/docs/cloud/git/connect-github#installing-dbt-cloud-in-your-github-account) in your GitHub organization. To learn about GitHub organization roles, see the [GitHub documentation](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization). 
 - The GitHub organization owner requires [_Owner_](/docs/cloud/manage-access/self-service-permissions) or [_Account Admin_](/docs/cloud/manage-access/enterprise-permissions) permissions when they log into dbt Cloud to integrate with a GitHub environment using organizations.
 - You may need to temporarily provide an extra dbt Cloud user account with _Owner_ or _Account Admin_ [permissions](/docs/cloud/manage-access/self-service-permissions) for your GitHub organization owner until they complete the installation.
@@ -69,3 +70,8 @@ To connect a personal GitHub account:
 4. Once you approve authorization, you will be redirected to dbt Cloud, and you should now see your connected account. 
 
 The next time you log into dbt Cloud, you will be able to do so via OAuth through GitHub, and if you're on the Enterprise plan, you're ready to use the dbt Cloud IDE.
+
+
+## FAQs
+
+<FAQ src="Git/gitignore"/>

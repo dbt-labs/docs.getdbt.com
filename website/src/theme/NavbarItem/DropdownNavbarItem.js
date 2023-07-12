@@ -40,7 +40,7 @@ function DropdownNavbarItemDesktop({
   items,
   position,
   className,
-  onClick,
+  onClick, // eslint-disable-line
   versionContext,
   ...props
 }) {
@@ -153,7 +153,7 @@ function DropdownNavbarItemDesktop({
 function DropdownNavbarItemMobile({
   items,
   className,
-  position, // Need to destructure position from props so that it doesn't get passed on.
+  position, // eslint-disable-line
   onClick,
   versionContext,
   ...props

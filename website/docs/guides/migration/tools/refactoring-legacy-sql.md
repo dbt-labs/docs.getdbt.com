@@ -38,7 +38,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
-If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [quickstart guide](/docs/quickstarts/overview) before diving into refactoring.
+If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [quickstart guide](/quickstarts) before diving into refactoring.
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
@@ -81,7 +81,7 @@ sources:
 
 With a few lines of code in a `.yml` file in your dbt project's `/models` subfolder, you can now version control how your data sources (Snowplow, Shopify, etc) map to actual database tables.
 
-For example, let's say you migrate from one [ETL tool](https://getdbt.com/analytics-engineering/etl-tools-a-love-letter/) to another, and the new tool writes to a new schema in your warehouse. dbt sources allow you to make that update in a single config file, and flip on the change with one pull request to your dbt project.
+For example, let's say you migrate from one <Term id="etl">ETL tool</Term> to another, and the new tool writes to a new schema in your warehouse. dbt sources allow you to make that update in a single config file, and flip on the change with one pull request to your dbt project.
 
 ## Choose a refactoring strategy
 There are two ways you can choose to refactor: in-place or alongside.

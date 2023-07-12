@@ -1,5 +1,7 @@
 ---
+sidebar_label: "docs"
 resource_types: models
+description: "Docs - Read this in-depth guide to learn about configurations in dbt."
 datatype: "{dictionary}"
 default_value: {show: true}
 ---

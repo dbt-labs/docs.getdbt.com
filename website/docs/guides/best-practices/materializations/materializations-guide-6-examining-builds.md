@@ -2,9 +2,9 @@
 title: "Examining our builds"
 id: materializations-guide-6-examining-builds
 slug: 6-examining-builds
-description: Learn how to utilize materializations in dbt.
+description: Read this guide to understand how to examine your builds in dbt.
 displayText: Materializations best practices
-hoverSnippet: Learn how to utilize materializations in dbt.
+hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 ---
 
 ## Examining our builds
@@ -16,7 +16,7 @@ hoverSnippet: Learn how to utilize materializations in dbt.
 
 ### Model Timing
 
-That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/docs/quickstarts/dbt-cloud/bigquery#create-and-run-a-job) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
+That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/quickstarts/bigquery) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
 
 ![dbt Cloud's Model Timing diagram](/img/guides/best-practices/materializations/model-timing-diagram.png)
 

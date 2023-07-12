@@ -29,7 +29,7 @@
   .showGraphic{
     position: absolute;
     left: -50px;
-    top:150px;
+    top:125px;
     content:'';
     display: block;
     width: 25vw;

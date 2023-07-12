@@ -7,7 +7,7 @@ function Events() {
   return (
     <Layout>
       <Head>
-        <title>dbt Community Forum</title>
+        <title>Questions | dbt Developer Hub</title>
         <meta name="description" content="Recent interesting discussions from across the dbt Forum" />
       </Head>
       <section className='discourse-forum-page'>
