@@ -543,7 +543,7 @@ dbt_test:
 | Timeout in seconds only to be used with **_async_** mode (`min: 1800` and `max: 43200`) | Integer    | `dbt.config(timeout=1800)`  |
 
 In async mode, dbt-oracle will schedule a Python job, poll the job's status and wait for it to complete.
-Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner. Use async mode for long running Python job
+Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner. Use async mode for long-running Python jobs.
 
 ### Python model examples
 
