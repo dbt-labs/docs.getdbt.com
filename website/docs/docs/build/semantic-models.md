@@ -31,7 +31,7 @@ semantic_models:
   - name: transaction # A semantic model with the name Transactions
     model: ref('fact_transactions') # References the dbt model named `fact_transactions`
     description: "Transaction fact table at the transaction level. This table contains one row per transaction and includes the transaction timestamp."
-    default:
+    defaults:
       agg_time_dimension: transaction_date
 
     entities: # Entities included in the table are defined here. MetricFlow will use these columns as join keys.
