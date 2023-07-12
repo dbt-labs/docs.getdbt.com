@@ -216,9 +216,9 @@ Note that Oracle Client versions 21c and 19c are not supported on Windows 7.
 </TabItem>
 </Tabs>
 
-## Configure wallet for Oracle Autonomous Database in Cloud
+## Configure wallet for Oracle Autonomous Database (ADB-S) in Cloud
 
-dbt can connect to Oracle Autonomous Database (ADB) in Oracle Cloud using either TLS (Transport Layer Security) or mutual TLS (mTLS). TLS and mTLS provide enhanced security for authentication and encryption.
+dbt can connect to Oracle Autonomous Database (ADB-S) in Oracle Cloud using either TLS (Transport Layer Security) or mutual TLS (mTLS). TLS and mTLS provide enhanced security for authentication and encryption.
 A database username and password is still required for dbt connections which can be configured as explained in the next section [Connecting to Oracle Database](#connecting-to-oracle-database).
 
 <Tabs
@@ -481,6 +481,157 @@ dbt_test:
 
 </Tabs>
 
+<VersionBlock firstVersion="1.5.1">
+
+## Python Models using Oracle Autonomous Database (ADB-S)
+
+Oracle's Autonomous Database Serverless (ADB-S) users can run dbt-py models using Oracle Machine Learning (OML4PY) which is available without any extra setup required.
+
+### Features
+- User Defined Python function is run in an ADB-S spawned Python 3.10 runtime
+- Import [3rd party Python packages](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/omlug/oml4py-notebook.html#GUID-78225241-CD6B-4588-AD4B-799079FA1784) installed in the default Python runtime
+- Access to Database session in the Python function
+- DataFrame read API to read `TABLES`, `VIEWS` and ad-hoc `SELECT` queries as DataFrames
+- DataFrame write API to write DataFrames as `TABLES`
+- Supports both table and incremental materialization
+- Integration with conda (Coming Soon)
+
+### Setup
+
+#### Required roles
+
+- User must be non-ADMIN to execute the Python function
+- User must be granted the `OML_DEVELOPER` role
+
+#### OML Cloud Service URL
+
+OML Cloud Service URL is of the following format
+```text
+https://tenant1-dbt.adb.us-sanjose-1.oraclecloudapps.com
+```
+In this example, 
+  - `tenant1` is the tenancy ID 
+  - `dbt` is the database name 
+  - `us-sanjose-1` is the datacenter region 
+  - `oraclecloudapps.com` is the root domain
+
+Add `oml_cloud_service_url` to your existing `~/.dbt/profiles.yml`
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+dbt_test:
+   target: dev
+   outputs:
+      dev:
+         type: oracle
+         user: "{{ env_var('DBT_ORACLE_USER') }}"
+         pass: "{{ env_var('DBT_ORACLE_PASSWORD') }}"
+         tns_name: "{{ env_var('DBT_ORACLE_TNS_NAME') }}"
+         schema: "{{ env_var('DBT_ORACLE_SCHEMA') }}"
+         oml_cloud_service_url: "https://tenant1-dbt.adb.us-sanjose-1.oraclecloudapps.com"
+```
+</File>
+
+### Python model configurations
+
+| Configuration | Datatype | Examples                                                                                      |
+|--|--------|-----------------------------------------------------------------------------------------------|
+| Materialization | String | `dbt.config(materialized="incremental")` or `dbt.config(materialized="table")`                |
+| Service | String | `dbt.config(service="HIGH")` or `dbt.config(service="MEDIUM")` or `dbt.config(service="LOW")` |
+| Async Mode | Boolean    | `dbt.config(async_flag=True)`  
+| Timeout in seconds only to be used with **_async_** mode (`min: 1800` and `max: 43200`) | Integer    | `dbt.config(timeout=1800)`  |
+
+In async mode, dbt-oracle will schedule a Python job, poll the job's status and wait for it to complete.
+Without async mode, dbt-oracle will immediately invoke the Python job in a blocking manner. Use async mode for long-running Python jobs.
+
+### Python model examples
+
+#### Refer other model
+
+Use `dbt.ref(model_name)` to refer either SQL or Python model
+
+```python
+def model(dbt, session):
+    # Must be either table or incremental (view is not currently supported)
+    dbt.config(materialized="table")
+    # returns oml.core.DataFrame referring a dbt model
+    s_df = dbt.ref("sales_cost")
+    return s_df
+```
+
+#### Refer a source
+
+Use `dbt.source(source_schema, table_name)`
+
+```python
+def model(dbt, session):
+    # Must be either table or incremental (view is not currently supported)
+    dbt.config(materialized="table")
+    # oml.core.DataFrame representing a datasource
+    s_df = dbt.source("sh_database", "channels")
+    return s_df
+
+```
+
+#### Incremental materialization
+
+```python
+def model(dbt, session):
+    # Must be either table or incremental
+    dbt.config(materialized="incremental")
+    # oml.DataFrame representing a datasource
+    sales_cost_df = dbt.ref("sales_cost")
+
+    if dbt.is_incremental:
+        cr = session.cursor()
+        result = cr.execute(f"select max(cost_timestamp) from {dbt.this.identifier}")
+        max_timestamp = result.fetchone()[0]
+        # filter new rows
+        sales_cost_df = sales_cost_df[sales_cost_df["COST_TIMESTAMP"] > max_timestamp]
+
+    return sales_cost_df
+```
+
+#### Concatenate a new column in Dataframe
+
+```python
+
+def model(dbt, session):
+    dbt.config(materialized="table")
+    dbt.config(async_flag=True)
+    dbt.config(timeout=1800)
+
+    sql = f"""SELECT customer.cust_first_name,
+       customer.cust_last_name,
+       customer.cust_gender,
+       customer.cust_marital_status,
+       customer.cust_street_address,
+       customer.cust_email,
+       customer.cust_credit_limit,
+       customer.cust_income_level
+    FROM sh.customers customer, sh.countries country
+    WHERE country.country_iso_code = ''US''
+    AND customer.country_id = country.country_id"""
+
+    # session.sync(query) will run the sql query and returns a oml.core.DataFrame
+    us_potential_customers = session.sync(query=sql)
+
+    # Compute an ad-hoc anomaly score on the credit limit
+    median_credit_limit = us_potential_customers["CUST_CREDIT_LIMIT"].median()
+    mean_credit_limit = us_potential_customers["CUST_CREDIT_LIMIT"].mean()
+    anomaly_score = (us_potential_customers["CUST_CREDIT_LIMIT"] - median_credit_limit)/(median_credit_limit - mean_credit_limit)
+
+    # Add a new column "CUST_CREDIT_ANOMALY_SCORE"
+    us_potential_customers = us_potential_customers.concat({"CUST_CREDIT_ANOMALY_SCORE": anomaly_score.round(3)})
+
+    # Return potential customers dataset as a oml.core.DataFrame
+    return us_potential_customers
+
+```
+
+</VersionBlock>
+
 
 ## Supported Features
 
@@ -496,6 +647,7 @@ dbt_test:
 - Exposures
 - Document generation
 - Serve project documentation as a website
+- Python Models (from dbt-oracle version 1.5.1)
 - All dbt commands are supported
 
 ## Not Supported features

@@ -129,7 +129,7 @@ semantic_models:
     description: "A record for every transaction that takes place. Carts are considered multiple transactions for each SKU."
     owners: support@getdbt.com
     model: (ref('transactions'))
-    default:
+    defaults:
         agg_time_dimension: metric_time
 
   # --- entities ---

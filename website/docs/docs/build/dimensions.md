@@ -254,7 +254,7 @@ semantic_models:
   - name: sales_person_tiers
     description: SCD Type II table of tiers for sales people 
     model: {{ref(sales_person_tiers)}}
-    default:
+    defaults:
       agg_time_dimension: tier_start
 
     dimensions:
