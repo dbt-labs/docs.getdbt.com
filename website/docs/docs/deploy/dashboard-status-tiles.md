@@ -36,7 +36,7 @@ You can insert these three fields into the following iFrame, and then embed it *
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Users can embed an iFrame and replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the EMEA region, you would use the following iFrame code:
 
 ```
 <iframe src='https://metadata.emea.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>' title='Exposure Status Tile'></iframe>
@@ -56,7 +56,7 @@ Note that Mode has also built its own [integration](https://mode.com/get-dbt/) w
 Looker does not allow you to directly embed HTML and instead requires creating a [custom visualization](https://docs.looker.com/admin-options/platform/visualizations). One way to do this for admins is to:
 - Add a [new visualization](https://fishtown.looker.com/admin/visualizations) on the visualization page for Looker admins. You can use [this URL](https://metadata.cloud.getdbt.com/static/looker-viz.js) to configure a Looker visualization powered by the iFrame.  It will look like this:
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/looker-visualization.jpeg" width="85%" title="Configure a Looker visualization powered by the iFrame" />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/looker-visualization.jpeg" width="65%" title="Configure a Looker visualization powered by the iFrame" />
 
 - Once you have set up your custom visualization, you can use it on any dashboard! You can configure it with the exposure name, jobID, and token relevant to that dashboard.
 
@@ -71,7 +71,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Users can embed an iFrame and replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the North American region, you would use the following code:
 
 ```
 https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
@@ -79,7 +79,7 @@ https://metadata.cloud.getdbt.com/exposure-tile?name=<exposure_name>&jobId=<job_
 ```
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png" width="85%" title="Configure Tableau by using a Web page object." />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/tableau-object.png" width="65%" title="Configure Tableau by using a Web page object." />
 
 ### Sigma
 
@@ -91,7 +91,7 @@ https://metadata.YOUR_ACCESS_URL/exposure-tile?name=<exposure_name>&jobId=<job_i
 
 :::tip Replace `YOUR_ACCESS_URL` with your region and plan's Access URL
 
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Users can embed an iFrame and replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. Replace `YOUR_ACCESS_URL` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your account is hosted in the APAC region, you would use the following code:
 
 ```
 https://metadata.au.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&token=<metadata_only_token>
@@ -99,4 +99,4 @@ https://metadata.au.dbt.com/exposure-tile?name=<exposure_name>&jobId=<job_id>&to
 ```
 :::
 
-<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/sigma-embed.gif" width="85%" title="Configure Sigma by using an embedded UI element." />
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dashboard-status-tiles/sigma-embed.gif" width="65%" title="Configure Sigma by using an embedded UI element." />
