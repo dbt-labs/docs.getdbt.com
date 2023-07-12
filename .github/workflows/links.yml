@@ -1,9 +1,9 @@
 name: Docs Link Checker
 
-on: [push]
-  # schedule:
-  #   # Run every Monday morning at 6:00AM UTC
-  #   - cron: '0 6 * * 1'
+on:
+  schedule:
+    # Run every day at 12:00 UTC
+    - cron: '0 12 * * *'
 
 jobs:
   markdown-link-check:
