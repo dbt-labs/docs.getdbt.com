@@ -112,9 +112,9 @@ company-name:
       password: password1
       dbname: analytics
       schema: analytics
+      port: 5439
 
       # Optional Redshift configs:
-      port: 5439
       sslmode: prefer
       role: None
       ra3_node: true 
@@ -173,9 +173,9 @@ please refer to the official AWS documentation on [Configuration and credential 
       iam_profile: analyst
       dbname: analytics
       schema: analytics
+      port: 5439
 
       # Optional Redshift configs:
-      port: 5439
       threads: 4
       connect_timeout: None 
       [retries](#retries): 1 
