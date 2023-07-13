@@ -21,7 +21,7 @@ semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
     model: {{ ref("fact_transactions") }}
-    default:
+    defaults:
       agg_time_dimension: metric_time
 # --- entities ---
   entities: 
@@ -292,7 +292,7 @@ semantic_models:
       every transaction. There is only one transaction id per 
       transaction. The `metric_time` or date is reflected in UTC.
     model: {{ ref(fact_transactions) }}
-    default:
+    defaults:
       agg_time_dimension: metric_time
 
     entities:
