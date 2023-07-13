@@ -17,7 +17,7 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 - **Packages** are the familiar & preexisting type of dependency. You take this dependency by installing the package's full source code (like a software library).
 - **Projects** are a new way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. Since you don't need to parse or run those upstream models yourself, your dependency on those models is as an API that returns a dataset. It's the responsibility of that public model's maintainer to guarantee its quality and stability.
 
-Say I work on the Marketing team at the Jaffle Shop. The name of my project is `jaffle_marketing`:
+As an example, let's say I work on the Marketing team at the Jaffle Shop. The name of my project is `jaffle_marketing`:
 
 <File name="dbt_project.yml">
 
