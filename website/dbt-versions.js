@@ -32,7 +32,11 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "reference/resource-properties/deprecation_date", 
+    "page": "reference/dbt-jinja-functions/thread_id",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/resource-properties/deprecation_date",
     "firstVersion": "1.6",
   },
   {
