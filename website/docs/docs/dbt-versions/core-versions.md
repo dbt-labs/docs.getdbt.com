@@ -97,7 +97,7 @@ For example, you may find you're using `dbt-core==1.2.3` with `dbt-snowflake==1.
 ```
 $ dbt --version
 Core:
-  - installed: 1.5.3
+  - installed: 1.6.0
   - latest:    1.5.3 - Up to date!
 
 Plugins:
