@@ -22,7 +22,7 @@ In this guide, we're going to add a **Staging environment**, where proposed chan
 
 ## Step 1: Create a new Staging environment
 
-See [Create a new environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **Staging**. Just like your existing Production environment, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **Staging**. Just like your existing Production environment, it will be a Deployment-type environment.
 
 When setting a Schema in the **Deployment Credentials** area, remember that dbt Cloud will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
 

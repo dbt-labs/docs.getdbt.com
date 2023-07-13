@@ -27,7 +27,7 @@ See [Custom branch behavior](/docs/dbt-cloud-environments#custom-branch-behavior
 
 ## Create a new Release environment
 
-See [Create a new environment](/docs/collaborate/environments/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **Release**. Just like your existing Production and Staging environments, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **Release**. Just like your existing Production and Staging environments, it will be a Deployment-type environment.
 
 Set its branch to `release` as well.
 
