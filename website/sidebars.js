@@ -734,6 +734,7 @@ const sidebarSettings = {
           items: [
             "reference/commands/build",
             "reference/commands/clean",
+            "reference/commands/clone",
             "reference/commands/cmd-docs",
             "reference/commands/compile",
             "reference/commands/debug",

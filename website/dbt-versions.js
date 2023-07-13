@@ -32,6 +32,10 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "reference/commands/clone",
+    "firstVersion": "1.6",
+  },
+  {
     "page": "reference/resource-properties/deprecation_date", 
     "firstVersion": "1.6",
   },
@@ -47,7 +51,7 @@ exports.versionedPages = [
     "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
-    {
+  {
     "page": "reference/commands/show",
     "firstVersion": "1.5",
   },
