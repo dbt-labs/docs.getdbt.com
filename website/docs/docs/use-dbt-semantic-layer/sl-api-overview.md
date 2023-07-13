@@ -1,7 +1,7 @@
 ---
-title: "Semantic Layer APIs"
+title: "Semantic Layer API"
 id: sl-api-overview
-description: "Integrate and query using the Semantic Layer APIs."
+description: "Integrate and query using the Semantic Layer API."
 tags: ["semantic-layer, apis"]
 hide_table_of_contents: true
 ---
@@ -12,16 +12,26 @@ import UpgradeSL from '/snippets/_upgrade-new-sl.md';
 
 <UpgradeSL />
 
+</VersionBlock>
 
-With the Semantic Layer APIs, you can seamlessly query the metrics you built with [MetricFlow](/docs/build/about-metricflow) to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.  
+The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.
 
-The full dbt Semantic Layer lets you create systems for data consumption, automated reporting, easily feed metrics to downstream tools, and more. This can help you connect to a wide variety of data applications across the modern data stack and natively integrate with the dbt Semantic Layer and MetricFlow — from Business Intelligence tools to notebooks, spreadsheets, data catalogs, and more.
+The dbt Semantic Layer allows users to define metrics in code & dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics and models. Integrating with the dbt Semantic Layer will help the organizations that use your product make more efficient and trustworthy decisions with their data.
 
-The dbt Semantic Layer generates a [`semantic_manifest.json` artifact file](/docs/use-dbt-semantic-layer/sl-manifest). This artifact contains comprehensive information about your Semantic Layer. You can use it as a valuable reference to understand the structure and details of your data models.
+The dbt Semantic Layer can be used for a variety of tools and applications of data. Here are some common use cases:
 
-To query metrics using the dbt Semantic Lay API, accounts must be on a [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
+* Business intelligence (BI), reporting, and analytics
+* Data quality and monitoring
+* Governance and privacy
+* Data discovery and cataloging
+* Machine learning and data science
 
-The dbt Semantic Layer provides the following APIs, which you can refer to for more info:
+
+You can seamlessly query the metrics you built with [MetricFlow](/docs/build/about-metricflow) to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.  
+
+To query metrics using the dbt Semantic Layer API, accounts must be on a [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
+
+The dbt Semantic Layer provides the following APIs which you can use to query your metrics and build and integration, you can refer to for more info:
 
 <div className="grid--3-col">
 
@@ -47,54 +57,4 @@ The dbt Semantic Layer provides the following APIs, which you can refer to for m
 
 ## Authentication
 
-Requests to the dbt Semantic Layer APIs can be authorized through two types of API tokens: 
-
-- [User tokens](/docs/dbt-cloud-apis/user-tokens)  
-- [Service account tokens](/docs/dbt-cloud-apis/service-tokens)
-
-
-</VersionBlock>
-
-
-<VersionBlock firstVersion="1.6">
-
-With the Semantic Layer APIs, you can seamlessly query the metrics you built with [MetricFlow](/docs/build/about-metricflow) to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.  
-
-The full dbt Semantic Layer lets you create systems for data consumption, automated reporting, easily feed metrics to downstream tools, and more. This can help you connect to a wide variety of data applications across the modern data stack and natively integrate with the dbt Semantic Layer and MetricFlow — from Business Intelligence tools to notebooks, spreadsheets, data catalogs, and more.
-
-The dbt Semantic Layer generates a [`semantic_manifest.json` artifact file](/docs/use-dbt-semantic-layer/sl-manifest). This artifact contains comprehensive information about your Semantic Layer. You can use it as a valuable reference to understand the structure and details of your data models.
-
-To query metrics using the dbt Semantic Lay API, accounts must be on a [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
-
-The dbt Semantic Layer provides the following APIs, which you can refer to for more info:
-
-<div className="grid--3-col">
-
-<Card
-    title="JDBC API"
-    body="Use a JDBC driver to query metrics in downstream tools."
-    link="/docs/use-dbt-semantic-layer/jdbc"
-    icon="dbt-bit"/>
-
-<Card
-    title="GraphQL API"
-    body="Use GraphQL to query metrics in downstream tools."
-    link="/docs/use-dbt-semantic-layer/graphql"
-    icon="dbt-bit"/>
-
-<Card
-    title="Discovery API"
-    body="Uses the Discovery API to query metrics in downstream tools using metadata details about your project’s models, sources, and other nodes along with their execution results."
-    link="/docs/dbt-cloud-apis/discovery-api"
-    icon="dbt-bit"/>
-
-</div>
-
-## Authentication
-
-Requests to the dbt Semantic Layer APIs can be authorized through two types of API tokens: 
-
-- [User tokens](/docs/dbt-cloud-apis/user-tokens)  
-- [Service account tokens](/docs/dbt-cloud-apis/service-tokens)
-
-</VersionBlock>
+dbt Cloud authorizes requests to the dbt Semantic Layer APIs. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
