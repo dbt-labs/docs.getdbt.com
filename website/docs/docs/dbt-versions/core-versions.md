@@ -104,7 +104,7 @@ Plugins:
   - snowflake: 1.6.0 - Up to date!
 ```
 
-When running `dbt debug`, you can see which version of the registered adapter version that's being invoked. Below is an example of the message in the `logs/dbt.log` file: 
+When running `dbt debug`, you can see which version of the registered adapter that's being invoked. Below is an example of the message in the `logs/dbt.log` file: 
 ```
 [0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.6.0
 ```
