@@ -16,9 +16,9 @@ import UpgradeSL from '/snippets/_upgrade-new-sl.md';
 
 The rapid growth of different tools in the modern data stack has helped data professionals address the diverse needs of different teams. The downside of this growth is the fragmentation of business logic across teams, tools, and workloads.
 
-The dbt Semantic Layer allows users to define metrics in code & dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics and models. Integrating with the dbt Semantic Layer will help the organizations that use your product make more efficient and trustworthy decisions with their data.
+The dbt Semantic Layer allows users to define metrics in code (with [MetricFlow](/docs/build/about-metricflow)) and dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics and models. Integrating with the dbt Semantic Layer will help the organizations that uses your product make more efficient and trustworthy decisions with their data. It also helps avoid duplicative coding, optimizes development workflow, ensures data governance, and guarantee consistency for data consumers.  
 
-The dbt Semantic Layer can be used for a variety of tools and applications of data. Here are some common use cases:
+You can use the dbt Semantic Layer for a variety of tools and applications of data. Here are some common use cases:
 
 * Business intelligence (BI), reporting, and analytics
 * Data quality and monitoring
@@ -26,12 +26,7 @@ The dbt Semantic Layer can be used for a variety of tools and applications of da
 * Data discovery and cataloging
 * Machine learning and data science
 
-
-You can seamlessly query the metrics you built with [MetricFlow](/docs/build/about-metricflow) to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.  
-
-To query metrics using the dbt Semantic Layer API, accounts must be on a [Team or Enterprise plans](https://www.getdbt.com/pricing/). 
-
-The dbt Semantic Layer provides the following APIs which you can use to query your metrics and build and integration, you can refer to for more info:
+The dbt Semantic Layer APIs are available for accounts on [Team or Enterprise plans](https://www.getdbt.com/pricing/), allowing them to query metrics and build integrations.
 
 <div className="grid--3-col">
 

@@ -9,9 +9,9 @@ sidebar_label: "Available integrations"
 
 import NewSLChanges from '/snippets/_new-sl-changes.md';
 
-<NewSLChanges />>
+<NewSLChanges />
 
-Query dbt metrics via external integrations using the sophisticated [dbt Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview) (Discovery, JDBC, and GraphQL API). With these APIs, you can query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+Query dbt metrics via external integrations using the sophisticated [dbt Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview) (JDBC, GraphQL, and Discovery APIs). With these APIs, you can query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer, powered by MetricFlow &mdash; from Business Intelligence tools to notebooks, spreadsheets, data catalogs, and more.
 
@@ -24,12 +24,12 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 
 For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" width="85%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 
 ## Related docs
 
-- [dbt Semantic Layer API](/docs/use-dbt-semantic-layer/sl-api-overview) to learn how to integrate with the Discovery, JDBC, and GraphQL API to query your metrics in downstream tools.
+- [dbt Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview) to learn how to integrate with the JDBC, GraphQL, and Discovery APIs to query your metrics in downstream tools.
 
 </VersionBlock>
 
@@ -45,8 +45,7 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 
 For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
-
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" width="85%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 ## Related docs
 

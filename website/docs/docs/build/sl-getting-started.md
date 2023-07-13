@@ -126,6 +126,7 @@ ANY COMMON TROUBLESHOOTING QUESTIONS?-->
 
 ## Related docs
 
+- [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
 - [The dbt Semantic Layer: what’s next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog post
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Semantic models](/docs/build/semantic-models)

@@ -17,11 +17,14 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 </VersionBlock>
 
-The dbt Semantic Layer JDBC driver allows users to query their metrics and dimensions using the JDBC protocol. It also exposes standard metadata like any JDBC driver.
-* The Semantic Layer JDBC API uses the ArrowFlight SQL protocol, and we utilize the open-source JDBC driver.
-* The driver can be downloaded from [Maven](https://www.google.com/url?q=https://search.maven.org/remotecontent?filepath%3Dorg/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar&sa=D&source=docs&ust=1689208856858323&usg=AOvVaw2JfXh7rcmsxYkkdVNWo8PI)
-* The dbt Semantic Layer supports ArrowFlight SQL driver version 12.0.0 and higher.
-* You can embed this driver into your application stack however you wish, and we have an example project for your reference [here](https://www.google.com/url?q=https://github.com/dbt-labs/example-semantic-layer-clients&sa=D&source=docs&ust=1689208936518700&usg=AOvVaw141BhBSfphJ10M7b5ZhYs-)
+The dbt Semantic Layer Java Database Connectivity (JDBC) driver enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
+
+A JDBC driver is a software component enabling a Java application to interact with a data platform. Here's some more information about the JDBC:
+
+- The Semantic Layer JDBC API utilizes the open-source JDBC driver with ArrowFlight SQL protocol.
+- You can download the JDBC driver from [Maven](https://search.maven.org/remotecontent?filepath=org/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar). 
+- The dbt Semantic Layer supports ArrowFlight SQL driver version 12.0.0 and higher. 
+- You can embed the driver into your application stack as needed, and you can use dbt Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
 
 ## Installation
 

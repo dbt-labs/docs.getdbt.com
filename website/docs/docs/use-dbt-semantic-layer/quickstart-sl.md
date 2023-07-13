@@ -11,14 +11,17 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 <NewSLChanges />
 
-This getting started page recommends a workflow to help you get started creating your first metrics. Here are the following steps you'll take:
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools.  MetricFlow helps define and manage metric logic, offering efficient retrieval of metric datasets for data consumers.
 
-- [Create a semantic model](#create-a-semantic-model)
-- [Create your metrics](#create-your-metrics)
-- [Run your production job](#run-your-production-job)
-- [Set up dbt Semantic Layer](#setup)
+Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
+
+- [Create a semantic model](#create-a-semantic-model) with MetricFlow
+- [Create your metrics](#create-your-metrics) with MetricFlow
+- [Run your production job](#run-your-production-job) in dbt Cloud
+- [Set up dbt Semantic Layer](#setup) in dbt Cloud
 - [Connect to the Semantic Layer APIs](#connect-to-apis)
 - [Query your metrics using partner integrations](#query-metrics)
+
 
 ## Prerequisites
 
@@ -26,15 +29,13 @@ import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
 <SetUp />
 
-<Snippet src="sl-considerations-banner" />
-
 :::tip 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
 
 ## Create a semantic model
 
-In MetricFlow, which powers the dbt Semantic Layer, there are two main objects: 
+Before you begin, we recommend you learn about MetricFlow and its key concepts. There are two main objects: 
 
 - [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
@@ -110,7 +111,7 @@ metrics:
 2. Run `mf validate-configs` to validate the changes before committing them.
 3. Commit and merge the code changes that contain the metric definitions.
 
-Review the [MetricFlow](/docs/build/build-metrics-intro) documents to further build your own metrics. 
+If you'd lke to build out your metrics, read the [MetricFlow](/docs/build/build-metrics-intro) docs for more info.
 
 ## Run your production job
 
@@ -120,32 +121,31 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
 3. Your metric should appear as a red node in the dbt Cloud IDE and dbt directed acyclic graphs (DAG).
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" title="DAG with metrics appearing as a red node" />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" width="85%" title="DAG with metrics appearing as a red node" />
 
 
-**What’s happening internally?**
+<details>
 
-- Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run.
-- Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.
-- Your dbt Discovery API pulls in the most recent manifest and allows your integration information to extract metadata from it.
+<summary>What’s happening internally?</summary>
+- Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run. <br />
+- Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
+- The Semantic Layer APIs pulls in the most recent manifest and allows your integration information to extract metadata from it.
+</details>
 
 ## Set up dbt Semantic Layer
-    
-<Snippet src="sl-set-up-steps" />
 
-## Connect to the Semantic Layer APIs
+import SlSetUp from '/snippets/_new-sl-setup.md';  
+
+<SlSetUp/>
+
+
+## Connect to the APIs
 
 add content here
 
-## Query your metrics using partner integrations
+## Query your metrics 
 
 add content
-
-:::info 📌 
-
-**Note:** You will need access to dbt Cloud and the dbt Semantic Layer from your integrated partner tool of choice. 
-
-:::
 
 ## FAQs
 
@@ -175,12 +175,11 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
    
 ## Next steps
 
-Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer: 
+Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer.
 
 - [Set up dbt Semantic Layer](docs/use-dbt-semantic-layer/setup-dbt-sl)
 - [About MetricFlow](/docs/build/about-metricflow)
-- [Semantic models](/docs/build/semantic-models)
-- [Metrics](/docs/build/metrics-overview)
+- [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 
 </VersionBlock>
 
