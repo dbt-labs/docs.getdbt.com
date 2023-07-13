@@ -851,6 +851,22 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How we style our dbt projects",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/how-we-style/0-how-we-style-our-dbt-projects",
+          },
+          items: [
+            "guides/best-practices/how-we-style/1-how-we-style-our-dbt-models",
+            "guides/best-practices/how-we-style/2-how-we-style-our-sql",
+            "guides/best-practices/how-we-style/3-how-we-style-our-python",
+            "guides/best-practices/how-we-style/4-how-we-style-our-jinja",
+            "guides/best-practices/how-we-style/5-how-we-style-our-yaml",
+            "guides/best-practices/how-we-style/6-how-we-style-conclusion",
+          ],
+        },
+        {
+          type: "category",
           label: "Materializations best practices",
           link: {
             type: "doc",
