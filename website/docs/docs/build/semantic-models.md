@@ -161,6 +161,21 @@ For semantic models with a measure, you must have a primary time group.
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
 | `create_metric`* | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
 _*Coming soon_
+
+
+## Dependencies
+
+Metric nodes will reflect dependencies on semantic models for their _measures_. However, dependencies based on filters should not be reflected in:
+
+- [dbt selection syntax](/reference/node-selection/syntax)
+- Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (IDE).
+
+This is because metrics need to source nodes for their `depends_on` attribute from a few different places:
+
+- `RATIO` and `DERIVED` type metrics should reference `Metric.type_params.input_metrics`.
+- `SIMPLE` <!--and `CUMULATIVE`--> type metrics should reference `Metric.type_params.measure`.
+
+
 ## Related docs
 
 - [About MetricFlow](/docs/build/about-metricflow)

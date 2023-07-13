@@ -219,3 +219,15 @@ We can query the semi-additive metrics using the following syntax:
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
 ```
+
+## Dependencies
+
+Metric nodes will reflect dependencies on semantic models for their _measures_. However, dependencies based on filters should not be reflected in:
+
+- [dbt selection syntax](/reference/node-selection/syntax)
+- Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (IDE).
+
+This is because metrics need to source nodes for their `depends_on` attribute from a few different places:
+
+- `RATIO` and `DERIVED` type metrics should reference `Metric.type_params.input_metrics`.
+- `SIMPLE` <!--and `CUMULATIVE`--> type metrics should reference `Metric.type_params.measure`.
