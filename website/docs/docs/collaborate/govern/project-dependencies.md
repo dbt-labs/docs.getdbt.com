@@ -73,7 +73,7 @@ with monthly_revenue as (
 
 If I were to instead install the `jaffle_finance` project as a `package` dependency, this would pull down its full source code. Meaning:
 - dbt needs to parse and resolve more inputs (which is slower)
-- dbt expects me to configure these models as if they were my own (with `vars`, env vars, etc)
+- dbt expects you to configure these models as if they were your own (with `vars`, env vars, etc)
 - dbt will run these models as my own, unless I explicitly `--exclude` them
 - I could be using the project's models in a way that their maintainer (the Finance team) hasn't intended
 
