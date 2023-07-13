@@ -19,7 +19,7 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 
 ## Example
 
-As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of the project is `jaffle_marketing`:
+As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:
 
 <File name="dbt_project.yml">
 
@@ -29,9 +29,9 @@ name: jaffle_marketing
 
 </File>
 
-To take a dependency on two other projects:
-- `dbt_utils` as a [package](#packages-use-case): An open-source and public collection of utility macros. It's maintained by dbt Labs.
-- `jaffle_finance` as a [project use-case](#projects-use-case): Data models about the Jaffle Shop's revenue. It's maintained by our colleagues on the Finance team.
+As part of your modeling of marketing data, you need to take a dependency on two other projects:
+- `dbt_utils` as a [package](#packages-use-case): An collection of utility macros that you can use while writing the SQL for your own models. This package is, open-source public, and maintained by dbt Labs.
+- `jaffle_finance` as a [project use-case](#projects-use-case): Data models about the Jaffle Shop's revenue. This project is private and maintained by your colleagues on the Finance team. You want to select from some of this project's final models, as a starting point for your own work.
 
 <File name="dependencies.yml">
 
@@ -46,11 +46,15 @@ projects:
 
 </File>
 
-- The `dbt_utils` package &mdash; This is a familiar scenario, you want to use some of the macros that are already defined in `dbt_utils`. You pull down its full contents (100+ macros) as source code and add them to your environment. You can then call any macro from the package, just as you can call macros defined in your own project.
+What's happening here?
 
--  The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing a package, the models in the `jaffle_finance` project will not be pulled down as source code and parsed into your project. Instead, dbt Cloud provides a metadata service that resolves references to [**public models**](/docs/collaborate/govern/model-access) defined in the `jaffle_finance` project.
+The `dbt_utils` package &mdash; When you run `dbt deps`, dbt will pull down this package's full contents (100+ macros) as source code and add them to your environment. You can then call any macro from the package, just as you can call macros defined in your own project.
 
-Resolving the references in this way has several advantages:
+The `jaffle_finance` projects &mdash; This is a new scenario. Unlike installing a package, the models in the `jaffle_finance` project will _not_ be pulled down as source code and parsed into your project. Instead, dbt Cloud provides a metadata service that resolves references to [**public models**](/docs/collaborate/govern/model-access) defined in the `jaffle_finance` project.
+
+### Advantages
+
+When you're building on top of another team's work, resolving the references in this way has several advantages:
 - You're using an intentional interface designated by the model's maintainer with `access: public`.
 - You're keeping the scope of your project narrow, and avoiding unnecessary resources and complexity. This is faster for you and faster for dbt.
 - You don't need to mirror any conditional configuration of the upstream project such as `vars`, environment variables, or `target.name`. You can reference them directly wherever the Finance team is building their models in production. Even if the Finance team makes changes like renaming the model, changing the name of its schema, or [bumping its version](/docs/collaborate/govern/model-versions), your `ref` would still resolve successfully.
@@ -77,15 +81,15 @@ with monthly_revenue as (
 
 **Cycle detection:** Currently, "project" dependencies can only go in one direction, meaning that the `jaffle_finance` project could not add a new model that depends, in turn, on `jaffle_marketing.roi_by_channel`. dbt will check for cycles across projects and raise errors if any are detected. We are considering support for this pattern in the future, whereby dbt would still check for node-level cycles while allowing cycles at the project level.
 
-### Comparison to `package`
+### Comparison
 
-If you were to instead install the `jaffle_finance` project as a `package` dependency, this would pull down its full source code. This means:
+If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
 - dbt needs to parse and resolve more inputs (which is slower)
 - dbt expects you to configure these models as if they were your own (with `vars`, env vars, etc)
 - dbt will run these models as your own unless you explicitly `--exclude` them
 - You could be using the project's models in a way that their maintainer (the Finance team) hasn't intended
 
-Installing another internal project as a package can be a useful pattern for:
+There are a few cases where installing another internal project as a package can be a useful pattern:
 - Unified deployments &mdash; In a production environment, if the central data platform team of Jaffle Shop wanted to schedule the deployment of models across both `jaffle_finance` and `jaffle_marketing`,  they could use dbt's [selection syntax](/reference/node-selection/syntax) to create a new "passthrough" project that installed both projects as packages.
 - Coordinated changes &mdash; In development, if you wanted to test the effects of a change to a public model in an upstream project (`jaffle_finance.monthly_revenue`) on a downstream model (`jaffle_marketing.roi_by_channel`) _before_ introducing changes to a staging or production environment, you can install the `jaffle_finance` package as a package within `jaffle_marketing`.  The installation can point to a specific git branch, however, if you find yourself frequently needing to perform end-to-end testing across both projects, we recommend you re-examine if this represents a stable interface boundary. 
 
