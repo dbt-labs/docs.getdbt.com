@@ -403,6 +403,7 @@ models:
 ```
 
 </File>
+
 ### Expected DDL to enforce constraints:
 
 <File name='target/run/.../constraints_example.sql'>
