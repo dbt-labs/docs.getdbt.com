@@ -44,6 +44,37 @@ For the full set of information passed from the CLI—subcommand, flags, argumen
 
 ```
 
+<VersionBlock firstVersion="1.3" lastVersion="1.5">
+
+### invocation_args_dict
+
+For the full set of information passed from the CLI—subcommand, flags, arguments—you can use `invocation_args_dict`. This is equivalent to the `args` dictionary in [`run_results.json`](/reference/artifacts/run-results-json).
+
+```sql
+
+-- models/my_model.sql
+-- {{ invocation_args_dict }}
+-- {{ dbt_metadata_envs }}
+
+select 1 as id
+
+```
+<VersionBlock firstVersion="1.3" lastVersion="1.5">
+  
+Compiles to:
+
+```sql
+-- {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/Users/.../.dbt', 'send_anonymous_usage_stats': False, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
+
+select 1 as id
+```
+
+</VersionBlock>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
 Includes the entire subcommand and compiles to:
 
 ```sql
@@ -65,24 +96,4 @@ select 1 as id
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.3">
 
-### invocation_args_dict
-
-For the full set of information passed from the CLI—subcommand, flags, arguments—you can use `invocation_args_dict`. This is equivalent to the `args` dictionary in [`run_results.json`](/reference/artifacts/run-results-json).
-
-```sql
--- models/my_model.sql
--- {{ invocation_args_dict }}
--- {{ dbt_metadata_envs }}
-
-select 1 as id
-```
-Compiles to:
-```sql
--- {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/Users/.../.dbt', 'send_anonymous_usage_stats': False, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
-
-select 1 as id
-```
-
-</VersionBlock>
