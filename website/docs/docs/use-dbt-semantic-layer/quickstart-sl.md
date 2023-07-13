@@ -1,7 +1,7 @@
 ---
 title: "Get started with the dbt Semantic Layer"
 id: quickstart-sl
-description: "Go through this get started guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
+description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
 sidebar_label: "Getting started"
 ---
 

@@ -27,7 +27,7 @@ import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
 ## Set up dbt Semantic Layer
 
-You can set up the dbt Semantic Layer in dbt Cloud at the environment and  project level by following these steps:
+You can set up the dbt Semantic Layer in dbt Cloud at the environment and project level. To configure the new Semantic Layer, you must have a successful run in your new environment.
 
 1. Create new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
 2. Navigate to **Account Settings** and select the specific project you want to enable the Semantic Layer for.
@@ -38,6 +38,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment and  proje
 6. Next, go back to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. 
 7. Save & copy your environment ID, service token, and host for inputting into a downstream tool
 8. You’ve configured the semantic layer 🎉! You can now define your [semantic models and metrics](/docs/build/build-metrics-intro) in your project.
+
 
 :::tip
 If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
