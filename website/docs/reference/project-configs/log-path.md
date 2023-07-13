@@ -47,7 +47,7 @@ The precedence order is: CLI flag > env var > `dbt_project.yml`
 </VersionBlock>
 
 ## Examples
-### Write logs to a subdirectory named `dbt_logs` instead of `logs`
+### Specify subdirectory using the project config file
 
 <File name='dbt_project.yml'>
 
@@ -55,4 +55,9 @@ The precedence order is: CLI flag > env var > `dbt_project.yml`
 log-path: dbt_logs
 ```
 
+### Specify subdirectory from the command line 
+
+```bash
+dbt --log-path dbt_logs run
+```
 </File>

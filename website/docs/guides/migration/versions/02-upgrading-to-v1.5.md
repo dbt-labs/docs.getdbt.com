@@ -56,7 +56,16 @@ models:
     tests: [] # todo! add tests later
     config: ...
 ```
-Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
+Some options that could previously be specified _before_ a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`. The list of affected commands are:
+
+- 
+- 
+
+Also, there are some options that could be previously specified _after_ a sub-command can now only be specified before. For example, `dbt run --log-path foo` isn't valid anymore, and instead, you need to use `dbt --log-path foo run`. The list of affected commands are: 
+- 
+- 
+
+
 
 Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
