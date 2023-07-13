@@ -30,21 +30,7 @@ Recommended use cases include:
 **Note:** It is _not_ recommended to use flags as an input to parse-time configurations, properties, or dependencies (`ref` + `source`). Flags are likely to change in every invocation of dbt, and their parsed values will become stale (and yield incorrect results) in subsequent invocations that have partial parsing enabled. For more details, see [the docs on parsing](/reference/parsing).
 
 
-<VersionBlock firstVersion="1.6">
-
-### invocation_args_dict
-
-For the full set of information passed from the CLI—subcommand, flags, arguments—you can use `invocation_args_dict`. This is equivalent to the `args` dictionary in [`run_results.json`](/reference/artifacts/run-results-json).
-
-```sql
-
--- models/my_model.sql
--- {{ invocation_args_dict }}
--- {{ dbt_metadata_envs }}
-
-```
-
-<VersionBlock firstVersion="1.3" lastVersion="1.5">
+<VersionBlock firstVersion="1.3">
 
 ### invocation_args_dict
 
@@ -59,6 +45,7 @@ For the full set of information passed from the CLI—subcommand, flags, argumen
 select 1 as id
 
 ```
+
 <VersionBlock firstVersion="1.3" lastVersion="1.5">
   
 Compiles to:
@@ -71,7 +58,6 @@ select 1 as id
 
 </VersionBlock>
 
-</VersionBlock>
 
 <VersionBlock firstVersion="1.6">
 
@@ -93,6 +79,8 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 select 1 as id
 
 ```
+
+</VersionBlock>
 
 </VersionBlock>
 
