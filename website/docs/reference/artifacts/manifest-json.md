@@ -49,6 +49,7 @@ sidebar_label: "Manifest"
 **Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`parse`](commands/parse) [`run`](commands/run) [`run-operation`](commands/run-operation) [`seed`](commands/seed) [`show`](commands/show) [`snapshot`](commands/snapshot) [`source freshness`](commands/source) [`test`](commands/test) 
 
 </VersionBlock>
+
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
 Today, dbt uses this file to populate the [docs site](/docs/collaborate/documentation), and to perform [state comparison](/reference/node-selection/syntax#about-node-selection). Members of the community have used this file to run checks on how many models have descriptions and tests.
