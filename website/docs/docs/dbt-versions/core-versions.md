@@ -101,6 +101,6 @@ Core:
   - latest:    1.6.0 - Up to date!
 
 Plugins:
-  - snowflake: 1.5.2 - Up to date!
+  - snowflake: 1.6.0 - Up to date!
 ```
 It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!
