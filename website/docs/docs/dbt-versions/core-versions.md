@@ -96,12 +96,11 @@ That means that patch version numbers will likely differ between `dbt-core` and 
 For example, you may find you're using `dbt-core==1.2.3` with `dbt-snowflake==1.2.0`. It is critical that you're using the latest patch available for both core and the adapter (v1.2.x). Use the `dbt --version` command to see which versions you have installed:
 ```
 $ dbt --version
-installed version: 1.2.3
-   latest version: 1.2.3
-
-Up to date!
+Core:
+  - installed: 1.5.3
+  - latest:    1.5.3 - Up to date!
 
 Plugins:
-  - snowflake: 1.2.0 - Up to date!
+  - snowflake: 1.5.2 - Up to date!
 ```
 It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!
