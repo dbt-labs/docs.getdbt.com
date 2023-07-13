@@ -222,7 +222,7 @@ mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order me
 
 ## Dependencies
 
-Metric nodes will reflect dependencies on semantic models for their _measures_. However, dependencies based on filters should not be reflected in:
+Metric nodes will reflect dependencies on semantic models based on their _measures_. However, dependencies based on filters should not be reflected in:
 
 - [dbt selection syntax](/reference/node-selection/syntax)
 - Visualization of the <Term id="dag">DAG</Term> in dbt-docs and the [integrated development environment](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) (IDE).
