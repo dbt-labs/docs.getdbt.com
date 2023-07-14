@@ -46,7 +46,7 @@ To migrate to the new specification, you'll need to:
 To help ensure a smooth transition, you can use our [custom-built migration tool](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) that automates this process. 
 **Note**, this tool doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
 
-For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-semantic-layer). 
+For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-sl). 
 
 THIS IS INCORRECT BUT TO BE CONFIRMED- Please be aware that developing Metrics and Semantic Models in the IDE is not supported in the Beta release.
 
@@ -126,7 +126,7 @@ To migrate to the new specification, you'll need to:
 To help ensure a smooth transition, you can use our [custom-built migration tool](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) that automates this process. 
 **Note**, this tool doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
 
-For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-semantic-layer). 
+For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-sl). 
 
 THIS IS INCORRECT BUT TO BE CONFIRMED- Please be aware that developing Metrics and Semantic Models in the IDE is not supported in the Beta release.
 
