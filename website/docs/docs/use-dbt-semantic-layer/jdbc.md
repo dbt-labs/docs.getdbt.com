@@ -31,153 +31,187 @@ A JDBC driver is a software component enabling a Java application to interact wi
 - Install an AWS root CA to the Java Trust Store [documentation](https://www.amazontrust.com/repository/).
 
 ## Connection parameters
+
 The JDBC connection requires a few different connection parameters. We provide the full JDBC string that you can connect with as well as the individual components required.
 
-This is an example of a URL connection string: 
-
+This is an example of a URL connection string and the individual components: 
 
 ```
 jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=202339&token=SERVICE_TOKEN
 ```
 
-The components of the JDBC string are as follows:
+| JDBC parameter | Description | Example |
+| -------------- | ----------- | ------- |
+| `jdbc:arrow-flight-sql://` | The protocol for the JDBC driver.  | `jdbc:arrow-flight-sql://` |
+| `semantic-layer.cloud.getdbt.com` | The [access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your account's dbt Cloud region. You must always add the `semantic-layer` prefix before the access URL.  | For dbt Cloud deployment hosted in North America, use `semantic-layer.cloud.getdbt.com`  |
+| `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the dbt Cloud URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
+| `SERVICE_TOKEN` | dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” permission. Create a new service token in your **Account Settings** page. Encode the value before inserting it into the string.  | `token=SERVICE_TOKEN` |
 
-- `jdbc:arrow-flight-sql://` &mdash; The protocol for the JDBC driver.
-- `dbt Cloud access URL` &mdash; The [access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your account's dbt Cloud region. You must always add the `semantic-layer` prefix before the access URL. For example, `semantic-layer.cloud.getdbt.com`
-- `environmentId` &mdash; The unique identifier for the dbt environment, you can retrieve this from the dbt Cloud URL when you navigate to your environment under Deployments. 
-- `SERVICE_TOKEN` &mdash; dbt Cloud Service Token with “Semantic Layer Only” permissions at least. Customer can get the service token by navigating to your account settings and creating a new Service Token. The value must be encoded prior to being put into the string.
-
+*Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable into the JDBC URL `&disableCertificateVerification=true`
 
 ## Querying the API
-The Semantic Layer JDBC API has built-in metadata calls that can provide a user with information about their metrics and dimensions.
 
-**Metadata Commands and Examples**
+The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. Here are some metadata commands and examples:
 
+<Tabs>
 
-Fetching all metrics defined
+<TabItem value="allmetrics" label="Fetch all defined metrics">
 
-```
+Use this query to fetch all defined metrics in your dbt project:
+
+```bash
 select * from {{ 
 	semantic_layer.metrics() 
 }}
 ```
+</TabItem>
 
+<TabItem value="alldimensions" label="Fetch all dimensions for a metric">
 
-Fetching all dimensions for a metric
+Use this query to fetch all dimensions for a metric. 
 
-```
+Note, `metrics` is a required argument that lists with one or multiple metrics in it.
+
+```bash
 select * from {{ 
 	semantic_layer.dimensions(metrics=['food_order_amount'])}}
 ```
-Required arguments: `metrics` list with one or multiple metrics in it.
 
 
-Fetching dimension values for one or multiple metrics and single dimension
+</TabItem>
 
-```
+<TabItem value="dimensionvalueformetrics" label="Fetch dimension values metrics">
+
+Use this query to fetch dimension values for one or multiple metrics and single dimension. 
+
+Note, `metrics` is a required argument that lists with one or multiple metrics in it, and a single dimension. 
+
+```bash
 select * from {{ 
 semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="customer__customer_name")}}
 ```
-Required arguments: `metrics` list with one or multiple metrics in it, a single dimension
 
+</TabItem>
+
+</Tabs>
 
 ## Querying Parameters
 
-| Parameter | Description                                                                                                                                                                                                                    | Example                                                                         | Required or Optional |
-|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|----------------------|
-| metrics   | The metric name as defined in your dbt metric configuration                                                                                                                                                                    | `metrics=[revenue]`                                                             | Required             |
-| group_by  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=[user__country, metric_time]`                                         | Optional             |
-| grain     | A paremeter specific to any time dimension and changes the grain of the data from the default for the metric.                                                                                                                  | `group_by=[`Dimension('metric_time').grain('week\|day\|month\|quarter\|year')]` | Optional             |
-| where     | A where clause that allows you to filter on dimensions                                                                                                                                                                         | `where="metric_time >= '2022-03-08'"`                                           | Optional             |
-| limit     | Limit the data returned                                                                                                                                                                                                        | `limit=10`                                                                      | Optional             |
-| order     | Order the data returned                                                                                                                                                                                                        | `order_by=['-order_gross_profit']` (remove `-` for ascending order)             | Optional             |
-| explain   | If true, returns generated SQL for the data platform but does not execute it.                                                                                                                                                  | `explain=True`                                                                  | Optional             |
+Use the following query parameters to filter and sort data, along with examples:
 
+| Parameter | Description  | Example    | Type |
+| --------- | -----------| ------------ | -------------------- |
+| `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=[revenue]` | Required    |
+| `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=[user__country, metric_time]`     | Optional   |
+| `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | ```group_by=[`Dimension('metric_time').``` <br/> ```grain('week\|day\|month\|quarter\|year')]``` | Optional     |
+| `where`     | A where clause that allows you to filter on dimensions   | `where="metric_time >= '2022-03-08'"`   | Optional   |
+| `limit`   | Limit the data returned    | `limit=10` | Optional  |
+|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
+| `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
 
+## Additional examples
 
-## Examples
+Use the following examples to help you get started with the JDBC API
 
-**Fetching Metadata for Metrics. You can filter/add any SQL outside of the templating** 
+### Fetch metadata for metrics
 
-```
+You can filter/add any SQL outside of the templating syntax. For example, you can use the following query to fetch the name and dimensions for a metric: 
+
+```bash
 select name, dimensions from {{ 
 	semantic_layer.metrics() 
 	}}
-WHERE name='food_order_amount'
+	WHERE name='food_order_amount'
 ``` 
 
+### Query common dimensions
 
-**Selecting Common Dimensions for multiple metrics**
+You can select common dimensions for multiple metrics. Use the following query to fetch the name and dimensions for multiple metrics: 
 
-```
+```bash
 select * from {{ 
-semantic_layer.dimensions(metrics=['food_order_amount', 'order_gross_profit'])
-}}
+	semantic_layer.dimensions(metrics=['food_order_amount', 'order_gross_profit'])
+	}}
 ``` 
 
+### Query grouped by time
 
-**Querying Metrics**
-Revenue and new customers grouped by time
+Use the following example query to fetch revenue and new customers grouped by time: 
 
-```
+```bash
 select * from {{
-semantic_layer.query(metrics=['food_order_amount','order_gross_profit'],									    group_by=['metric_time'])
-    }}
+	semantic_layer.query(metrics=['food_order_amount','order_gross_profit'], 
+	group_by=['metric_time'])
+	}}
 ``` 
 
-**Multiple metrics and adding granularity** 
+### Query with a time grain
 
-```
+Use the following example query to fetch multiple metrics with a change time dimension granularities:
+
+```bash
 select * from {{
-semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+	semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'], 
 	group_by=[Dimension('metric_time').grain('month')])
-    }}
+	}}
 ```
 
-**Grouping by a categorical dimension**
+### Group by categorical dimension
 
-```
+Use the following query to group by a categorical dimension:
+
+```bash
 select * from {{
-semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
-group_by=[Dimension('metric_time').grain('month'), 'customer__customer_type'])
-    }}
+	semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'], 
+	group_by=[Dimension('metric_time').grain('month'), 'customer__customer_type'])
+	}}
 ``` 
 
+### Query with a filter
 
-**Where Filter Example**
+Use the following example to query using a `where` filter:
 
-``` 
+```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="metric_time__month >= '2017-03-09' AND customer__customer_type in ('new')")}}
+where="metric_time__month >= '2017-03-09' AND customer__customer_type in ('new')")
+}}
 ``` 
 
-**Limit & Order**
+### Query with a limit and order_by
 
-```
+Use the following example to query using a `limit` or `order_by` clauses:
+
+```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
   limit=10,
-  order_by=['order_gross_profit'])}}
+  order_by=['order_gross_profit'])
+  }}
 ``` 
+### Query with explain keyword
 
-**Explain a query**
+Use the following example to query using a `explain` keyword:
 
-```
+```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 		group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
 		where="metric_time__month >= '2017-03-09' AND customer__customer_type in ('new')",
 		explain=True)
-}}
+		}}
 ```
 
-## Remarks
+## FAQs
 
-* You may notice that sometimes we use dimensions on their own – like metric_time, and sometimes we use the object syntax you see like Dimension(’metric_time’). When we are selecting the item alone (e.g., metric_time), we don’t require the “Dimension” syntax, but when we are operating on the object (e.g., adding granularity), the object syntax is required.
-* You may see some dimensions include the following syntax with a double underscore "__" . This denotes a mapping from an entity to a dimension, and this signifies where the dimension in question lives — example (user__country), which indicates someone is looking at the country dimension from the user table.
-* The default output for when you add granularity is {time_dimension_name}__{granularity_level}. If you are doing yearly granularity and the time dimension name is ds, you can expect ds__year.
+- **Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?**<br />
+	When you select a dimension on its own, such as `metric_time` you don’t need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax (`[Dimension('metric_time')`) is required. 
 
+- **What does the double underscore `"__"` syntax in dimensions mean?**<br />
+	The double underscore `"__"` syntax indicates a mapping from an entity to a dimension, as well as where the dimension is located. For example, `user__country` means someone is looking at the `country` dimension from the `user` table.
+
+- **What is the default output when adding granularity?**<br />
+	The default output follows the format `{time_dimension_name}__{granularity_level}`. So for example, if the time dimension name is `ds` and the granularity level is yearly, the output is `ds__year`.
 
