@@ -30,10 +30,10 @@ Defining and installing dbt packages is different from [defining and installing 
 :::
 
 ## How do I add a package to my project?
-1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
+1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
 
-<File name='packages.yml'>
+<File>
 
 ```yaml
 packages:
