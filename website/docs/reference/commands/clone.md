@@ -5,8 +5,8 @@ id: "clone"
 ---
 
 The `dbt clone` command clones selected nodes from the specified state to the target schema(s). This command makes use of the `clone` materialization:
-- If using a data warehouses that support zero-copy cloning of tables, selected models that are tables will be created as clones
-- For views and warehouses that do not support zero-copy cloning, selected models will be created as simple `select * from ...` pointer views
+- If your data platform supports zero-copy cloning of tables, and this model exists as a table in the other environment, dbt will create it in your environment as a clone
+- Otherwise, dbt will create a simple pointer view (`select * from` the other object)
 
 Note: 
 - The state to clone from is based on the location of nodes in the manifest provided to `--state`.
