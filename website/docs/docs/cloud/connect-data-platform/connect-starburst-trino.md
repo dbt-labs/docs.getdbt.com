@@ -17,11 +17,11 @@ The following are the required fields for setting up a connection with a [Starbu
 
 ## Roles in Starburst Enterprise
 
-<Snippet src="connect-starburst-trino/roles-starburst-enterprise" />
+<Snippet path="connect-starburst-trino/roles-starburst-enterprise" />
 
 ## Catalogs and schemas
 
-<Snippet src="connect-starburst-trino/schema-db-fields" />
+<Snippet path="connect-starburst-trino/schema-db-fields" />
 
 ## Configuration
 
