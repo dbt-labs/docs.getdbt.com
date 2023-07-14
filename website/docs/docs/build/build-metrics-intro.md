@@ -25,31 +25,44 @@ Before you start, keep the following considerations in mind:
   * Note: Support for BigQuery, Databricks, and Redshift coming soon.
 - dbt Labs is working with [integration partners](https://www.getdbt.com/product/semantic-layer-integrations) to develop updated integrations for the new Semantic Layer, powered by MetricFlow, in addition to introducing other consumption methods like Python and JDBC. <br /><br />
 
-<div className="grid--4-col">
+<div className="grid--3-col">
 
 <Card
     title="About MetricFlow"
     body="Understand MetricFlow's core concepts, key principles, and how to use this powerful tool."
     link="/docs/build/about-metricflow"
-    icon="rocket"/>
-
-<Card
-    title="Get started with MetricFlow"
-    body="Learn how to create a semantic model, a metric, and test and upload your metric using MetricFlow."
-    link="/docs/build/sl-getting-started"
-    icon="rocket"/>
+    icon="dbt-bit"/>
 
   <Card
     title="Semantic model"
-    body="Use Semantic models as the basis for defining data. They act as nodes in the semantic graph, with entities connecting them."
+    body="Use semantic models as the basis for defining data. They act as nodes in the semantic graph, with entities connecting them."
     link="/docs/build/semantic-models"
-    icon="rocket"/>
+    icon="dbt-bit"/>
 
   <Card
     title="Metrics"
     body="Define metrics through the powerful combination of measures, constraints, or functions, effortlessly organized in either YAML files or separate files."
     link="/docs/build/metrics-overview"
-    icon="rocket"/>   
+    icon="dbt-bit"/>
+
+ <Card
+    title="Get started with the dbt Semantic Layer"
+    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs"
+    link="/docs/use-dbt-semantic-layer/quickstart-sl"
+    icon="dbt-bit"/>
+
+  <Card
+    title="About the dbt Semantic Layer"
+    body="Introducing the dbt Semantic Layer, the universal process that allows data teams to centrally define and query metrics"
+    link="/docs/use-dbt-semantic-layer/dbt-sl"
+    icon="dbt-bit"/>
+
+  <Card
+    title="Available integrations"
+    body="Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
+    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
+    icon="dbt-bit"/>
+  
 
 </div> <br />
 

@@ -13,9 +13,9 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 <NewSLChanges />
 
 
-The dbt Semantic Layer, powered by MetricFlow, simplifies the process of defining and using critical business metrics, like like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing you to define metrics on top of existing models and automatically handles data joins. 
+The dbt Semantic Layer, powered by MetricFlow, simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing you to define metrics on top of existing models and automatically handles data joins. 
 
-By leveraging the dbt Semantic Layer, data teams achieve reduced code duplication and increased consistency in business metrics across different applications. Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
+Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
 
 To read more about why you need a universal Semantic Layer, read this [blog post](https://www.getdbt.com/blog/universal-semantic-layer/).
 

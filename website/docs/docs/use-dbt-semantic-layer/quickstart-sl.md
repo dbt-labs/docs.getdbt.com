@@ -2,7 +2,7 @@
 title: "Get started with the dbt Semantic Layer"
 id: quickstart-sl
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
-sidebar_label: "Getting started"
+sidebar_label: "Get started with the dbt Semantic Layer"
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -11,7 +11,9 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 <NewSLChanges />
 
-The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools.  MetricFlow helps define and manage metric logic, offering efficient retrieval of metric datasets for data consumers.
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools. 
+
+MetricFlow is a powerful component within the dbt Semantic Layer that helps users define and manage company metrics efficiently. It provides flexible abstractions and SQL query generation, and also allows data consumers to retrieve metric datasets quickly and easily from a data platform.
 
 Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
 
@@ -21,6 +23,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud
 - [Connect to the Semantic Layer APIs](#connect-to-apis)
 - [Query your metrics using partner integrations](#query-metrics)
+
 
 
 ## Prerequisites
@@ -35,7 +38,7 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 ## Create a semantic model
 
-Before you begin, we recommend you learn about MetricFlow and its key concepts. There are two main objects: 
+Before you begin, we recommend you learn about more about [MetricFlow](/docs/build/about-metricflow) and its key concepts. There are two main objects: 
 
 - [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
 - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
@@ -91,7 +94,7 @@ group by metric_time_day, country  -- dimensions
   ```
 :::
 
-## Create your metrics
+## Define metrics
 
 Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
 
@@ -107,13 +110,13 @@ metrics:
 ```
  
 1. Click **Save** and then **Preview** the code in the dbt Cloud IDE.
-* Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions in the IDE.
-2. Run `mf validate-configs` to validate the changes before committing them.
-3. Commit and merge the code changes that contain the metric definitions.
+2. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions in the IDE.
+3. Run `mf validate-configs` to validate the changes before committing them.
+4. Commit and merge the code changes that contain the metric definitions.
 
-If you'd lke to build out your metrics, read the [MetricFlow](/docs/build/build-metrics-intro) docs for more info.
+To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 
-## Run your production job
+## Run a production job
 
 Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
 
@@ -178,6 +181,7 @@ During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (De
 Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer.
 
 - [Set up dbt Semantic Layer](docs/use-dbt-semantic-layer/setup-dbt-sl)
+- [Build your metrics](/docs/build/build-metrics-intro)
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 

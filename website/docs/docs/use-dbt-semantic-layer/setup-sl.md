@@ -1,8 +1,8 @@
 ---
 title: "Set up the dbt Semantic Layer"
 id: setup-sl
-description: "You can set up the dbt Semantic Layer in dbt Cloud."
-sidebar_label: "Set up the dbt Semantic Layer"
+description: "Seamlessly set up the dbt Semantic Layer in dbt Cloud using intuitive nagivation."
+sidebar_label: "Set up your Semantic Layer"
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -37,9 +37,6 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 7. Next, go back to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. Save this token for later.
 8. You’re done 🎉! The semantic layer should is now enabled for your project. 
 -->
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" width="85%" title="Set up dbt Semantic Layer in dbt Cloud" /><br />
-
 
 </VersionBlock>
 
@@ -98,6 +95,8 @@ Note  - It is _not_ recommended that you use your dbt Cloud credentials due to e
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" title="Set up dbt Semantic Layer in dbt Cloud" /><br />
 
 </VersionBlock>
+
+## Related docs
 
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)

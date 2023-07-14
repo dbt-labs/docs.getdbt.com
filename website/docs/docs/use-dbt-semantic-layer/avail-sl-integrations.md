@@ -1,7 +1,7 @@
 ---
 title: "Available integrations"
 id: avail-sl-integrations
-description: "Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
+description: "Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
 sidebar_label: "Available integrations"
 ---
 
@@ -11,9 +11,9 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 <NewSLChanges />
 
-Query dbt metrics via external integrations using the sophisticated [dbt Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview) (JDBC, GraphQL, and Discovery APIs). With these APIs, you can query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+Discover the diverse range of data applications that seamlessly integrate with the powerful dbt Semantic Layer, powered by MetricFlow &mdash; from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
-A wide variety of data applications across the modern data stack natively integrate with the dbt Semantic Layer, powered by MetricFlow &mdash; from Business Intelligence tools to notebooks, spreadsheets, data catalogs, and more.
+Query dbt metrics via external integrations using the sophisticated [dbt Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview) (JDBC, GraphQL, and Discovery APIs). With these APIs, you can query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more. Here are some of the integrations you can query from:
 
