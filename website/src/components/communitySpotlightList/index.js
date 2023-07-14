@@ -8,6 +8,11 @@ import CommunitySpotlightCard from '../communitySpotlightCard'
 const communityTitle = 'Community spotlight'
 const communityDescription = "The dbt Community is where analytics engineering lives and grows, and you're a part of it! Every quarter we'll be highlighting community members in the dbt Community Spotlight. These are individuals who have gone above and beyond to contribute to the community in a variety of ways. We all see you. We appreciate you. You are awesome."
 
+// This date determines where the 'Previously on the Spotlight" text will show.
+// Any spotlight members with a 'dateCreated' field before this date
+// will be under the 'Previously..' header.
+const currentSpotlightDate = new Date('2023-06-01') 
+
 function CommunitySpotlightList({ spotlightData }) {
   const { siteConfig } = useDocusaurusContext()
 
