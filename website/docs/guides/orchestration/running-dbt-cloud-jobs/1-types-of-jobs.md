@@ -15,7 +15,7 @@ dbt Cloud jobs perform two main functions:
 dbt Cloud jobs can optionally run source freshness checks and generate documentation as well.
 
 <callout>
-Make sure to leverage the dbt build command to avoid wasteful spend! dbt build enables you to run tests for each individual model, before it's downstream dependencies start. When a test fails, the dependences of the model that failed testing are skipped. This enables you to avoid wasted spend on downstream node runs when an upstream node fails a test.
+Make sure to leverage the dbt build command to avoid wasteful spend! dbt build enables you to run tests for each individual model, before its downstream dependencies start. When a test on a model fails, the dependences of that model are skipped. This enables you to avoid wasted spend on downstream node runs.
 </callout>
 
 ### Running Models in Production
