@@ -23,7 +23,7 @@ To read more about why you need a universal Semantic Layer, read this [blog post
 
 ## Explore the dbt Semantic Layer
 
-The dbt Semantic Layer is available to all dbt Cloud plans (Developer, Team, and Enterprise) during [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta). Start exploring the dbt Semantic Layer by visiting the following pages:
+The dbt Semantic Layer is available to all Team and Enterprise Plans during [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta). Those on dbt Cloud Developer plans or dbt core users can use MetricFlow for defining and testing metrics locally. Start exploring the dbt Semantic Layer by visiting the following pages:
 
 <div className="grid--3-col">
 
