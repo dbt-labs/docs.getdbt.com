@@ -28,7 +28,7 @@ Stores the networkx representation of the dbt resource DAG.
 <VersionBlock lastVersion="1.5">
 
 :::info New functionality
-This functionality is new in v1.6. You should upgrade to 1.6 or later if you want to use this artifact.
+This functionality is new in v1.6. 
 :::
 
 </VersionBlock>
