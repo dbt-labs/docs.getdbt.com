@@ -5,7 +5,7 @@ description: "Setup instructions for connecting Apache Spark to dbt Cloud"
 sidebar_label: "Connect Apache Spark"
 ---
 
-<Snippet src="dbt-databricks-for-databricks" />
+<Snippet path="dbt-databricks-for-databricks" />
 
 :::note
 See [Connect Databricks](#connect-databricks) for the Databricks version of this page.
