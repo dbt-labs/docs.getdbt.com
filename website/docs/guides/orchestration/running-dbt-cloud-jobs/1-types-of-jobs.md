@@ -24,7 +24,7 @@ Make sure to leverage the dbt build command to avoid wasteful spend! dbt build e
 
 Organizing your models in groups will allow you to create a successful orchestration strategy. Common classifications that users employ are:
 
-- Frequency: do they need to run Hourly, Daily, Weekly
+- Frequency: hourly, daily, weekly build schedules
 - Sensitivity: PII, GDPR, HIPAA
 - Domain: Marketing, Finance, Ops
 - Readiness: Staging, Intermediate, Marts / Bronze, Silver, Gold
