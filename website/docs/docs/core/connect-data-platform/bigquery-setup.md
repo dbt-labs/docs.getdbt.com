@@ -16,7 +16,7 @@ meta:
 ---
 
 
-<Snippet src="warehouse-setups-cloud-callout" />
+<Snippet path="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -457,8 +457,8 @@ my-profile:
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
 
-<FAQ src="Warehouse/bq-impersonate-service-account-why" />
-<FAQ src="Warehouse/bq-impersonate-service-account-setup" />
+<FAQ path="Warehouse/bq-impersonate-service-account-why" />
+<FAQ path="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
 <Changelog>New in v0.21.0</Changelog>
