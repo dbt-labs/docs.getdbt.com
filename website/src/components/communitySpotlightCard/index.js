@@ -139,15 +139,25 @@ function truncateText(str) {
   // Max length of string
   let maxLength = 300
 
-  // Exclude link html from content length count
-  // Otherwise href, title, rel values all counted as text.
-  const linkText = str.match(/(?<=<a ).*(?=<\/a>)/g)
-  if(linkText?.length && linkText[0]?.length) {
-    maxLength += linkText[0]?.length
+  // Check if anchor link starts within first 300 characters
+  let hasLinks = false
+  if(str.substring(0, maxLength - 3).match(/(?:<a)/g)) {
+    hasLinks = true
   }
 
+  // Exclude link html from content length count
+  // Otherwise href, title, rel values all counted as text.
+  if(hasLinks) {
+    const linkText = str.match(/(?<=<a ).*(?=<\/a>)/g)
+    if(linkText?.length && linkText[0]?.length) {
+      maxLength += linkText[0]?.length
+    }
+  }
+
+  const substring = str.substring(0, maxLength - 3)
+
   return str.length > maxLength
-    ? `${str.substring(0, maxLength - 3)}...`
+    ? `${substring}...`
     : str
 }
 
