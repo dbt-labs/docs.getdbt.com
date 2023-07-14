@@ -22,7 +22,7 @@ Make sure to leverage the dbt build command to avoid wasteful spend! dbt build e
 
 #### Organizing models using tags
 
-To better organize your models when developing the orchestration strategy, it's useful to classify the models in your DAG along dimensions such as:
+Organizing your models in groups will allow you to create a successful orchestration strategy. Common classifications that users employ are:
 
 - Frequency: do they need to run Hourly, Daily, Weekly
 - Sensitivity: PII, GDPR, HIPAA
