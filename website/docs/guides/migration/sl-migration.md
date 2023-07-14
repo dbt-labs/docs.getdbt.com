@@ -1,99 +1,101 @@
 ---
-title: "dbt Semantic Layer migration guide"
+title: "Legacy dbt Semantic Layer migration guide"
 id: sl-migration
-sidebar_label: "dbt Semantic Layer migration"
+sidebar_label: "Legacy dbt Semantic Layer migration"
 description: "This migration guide will help you migrate from the legacy dbt Semantic Layer to the new one."
 tags: ["semantic-layer"]
 ---
 
-WILL CLEAN THIS UP
+The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics. The new dbt Semantic Layer is in [public beta](docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta) and supported on dbt v1.6 or higher. It's available to all dbt Cloud plans (Developer, Team, and Enterprise) and introduces new semantic components, improved governance, enhanced efficiency, data accessibility, and new Semantic Layer APIs.
 
-add who the audience is, what they need to do, and what they need to know
+This guide is for users who have the legacy dbt Semantic Layer set up and would like to migrate to the new and revamped  [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). The legacy dbt Semantic Layer is supported on dbt v1.5 or lower, uses the dbt_metrics package, and will be deprecated. 
 
-**Technical resources:**
+**Note**: Migrating to the new semantic layer will require downtime and this guide will explain how to minimize it.
 
-- [Quickstart guide](/docs/build/sl-getting-started)
-- [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
-- Configuring SL docs
-- SL API docs
-- [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
-- Developer workflow demo
+## Migration components
 
-## Intro
-
-The legacy Semantic Layer is supported in dbt v1.5 or lower and will be deprecated.  The new Semantic Layer is in Beta and supported in dbt v1.6 or higher. If you’re a user of the legacy Semantic Layer and want to use the new one, follow this guide. NOTE: **This requires downtime of your Semantic Layer**
-
-There are 3 migration components: 
+In order to migrate from the legacy semantic layer to the new one, there are three migration components you'll need to complete: 
 
 - Create semantic models and migrate metric definitions
+- Setup the new dbt Semantic Layer in dbt Cloud
+- Update any applicable downstream integrations
 
-- Setup new Semantic Layer in dbt Cloud
+This guide assumes you have an environment with the legacy Semantic Layer enabled. There are two migration options for you to choose from, **both of which involve some downtime**:
 
-- Update applicable downstream integrations
+1. [Migrating an existing environment](#migrate-an-existing-environment) over to the new dbt Semantic Layer
+2. [Creating and configure a brand new environment](#creating-a-new-environment-running-the-new-semantic-layer) for the new dbt Semantic Layer
 
-This guide assumes you have an environment with the legacy Semantic Layer enabled. There are two migration paths available. **Note: Both migration paths involve some downtime:** 
-
-1. Migrating an existing environment to the new Semantic Layer. 
-2. Creating a net new environment running the Semantic Layer.
-
- 
 
 ## Migrate an existing environment
 
-This approach will be a hard cut to the new Semantic Layer. Once you update your metrics to the new spec in 1.6, the legacy Semantic Layer will no longer work. You will need to set up the semantic layer in your deployment environment after upgrading to the new metrics spec to avoid unnecessary downtime. 
+Switching to th new semantic layer requires a complete transition. This is because the legacy semantic layer will no longer work once you update your metrics to the new specifications in dbt v1.6 or higher. 
 
-### **Step 1: Migrate Metric configs to the new spec.**
+To avoid any disruptions or downtime, you _must_ set up the new semantic layer in your deployment environment after upgrading to the new metrics spec.
 
-The metrics specification in dbt core has changed in v1.6 in order to support the integration of MetricFlow. We’ve introduced two new objects that MetricFlow expects in order to build a semantic graph: [Semantic Models](/docs/build/semantic-models) and [Metrics](/docs/build/metrics-overview). You will need to migrate your Metrics configs to the new spec. There are two steps to this process:
+### Step 1: Migrate metrics
 
-- Creating net new Semantic Model configs. These will be YAML files in your dbt project.
-- Upgrading the Metrics configs in your project to the new spec.
+Starting from dbt v1.6, the metrics specification dbt Core has been updated to support the integration of MetricFlow. This introduces two new components that are essential for building a semantic graph:
 
-We’ve built a migration tool that automates this process for you. Check out the [README](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) for installation instructions. Derived metrics are not supported in the migration tool, and will have to be migrated manually.  
+- [Semantic Models](/docs/build/semantic-models)  
+- [Metrics](/docs/build/metrics-overview)
 
-To learn how to configure Semantic Models and Metrics, check out our [getting started guide]/docs/build/sl-getting-started). **Note: Developing Metrics and Semantic Models in the IDE is not supported in the Beta release.**
+To migrate to the new specification, you'll need to:
+- Create net new semantic model configs using YAML files in your dbt project
+- Upgrade your existing metrics configs to the new spec
 
-Once you’ve created your Semantic Models and created or updated your Metrics, you can test your updated configs using the MetricFlow CLI tools:
+To help ensure a smooth transition, you can use our [custom-built migration tool](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) that automates this process. 
+**Note**, this tool doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
 
-1. Install the CLI via `pip install "dbt-metricflow[your_adapter_name]`
-2. Run `dbt parse`. This will parse your project and create a semantic_manifest.json file in your target directory.
+For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-semantic-layer). 
+
+THIS IS INCORRECT BUT TO BE CONFIRMED- Please be aware that developing Metrics and Semantic Models in the IDE is not supported in the Beta release.
+
+#### Test your metrics
+
+Once you’ve created your semantic models and created or updated your metrics, you can test your updated configs using the MetricFlow CLI tools:
+
+1. Install the CLI via `pip install "dbt-metricflow[your_adapter_name]`.
+2. Run `dbt parse`. This will parse your project and create a `semantic_manifest.json` file in your target directory.
 3. Run `mf list metrics` to view the metrics in your project.
 4. Run `mf validate-configs` to run semantic and warehouse validations. This ensures are configs are valid, and the underlying objects exist in your warehouse. 
 5. Test querying a metric by running `mf query --metrics <metric_name> --group-by <dimensions_name>`
 
-When you have tested your metrics and are satisfied that they are correct, commit your changes and push them to your dbt repository. **When you merge the new configurations, the legacy semantic layer will no longer work.** It is recommended that you complete step 2 as soon as you merge the changes to minimize downtime.
+Once you've thoroughly tested and verified the accuracy of your metrics, commit and push the change to your dbt repository. After you merge the new configurations, **the legacy semantic layer will no longer work**. To minimize downtime, we recommend you promptly complete step 2 and set up your environment on the new semantic layer.
 
-### **Step 2: Switch to the new Semantic Layer in your existing Cloud environment**
+### Step 2: Switch to the new Semantic Layer
 
-The suggested workflow for upgrading your Cloud environment to use the new semantic layer is as follows:
+Now that you've migrated your metrics and created semantic models, it's time to set up your environment using the new semantic layer configuration. 
 
-- Upgrade the existing deployment environment for your project to v1.6 or higher. Ensure that all jobs are running correctly with the new dbt version. Make any necessary updates to jobs that are impacted by the version upgrade.
-- To set up the Semantic Layer, you need to run a dbt job in your deployment environment. You can use any dbt command, but it must be successful.
-- To activate the new Semantic Layer, go to the ***Account Settings*** page and then **Project Details.** Select the specific project you want to enable the Semantic Layer for.
-- In the **Project Details** page, select **Configure Semantic Layer.** This will prompt you to enter data platform connection credentials for the Semantic Layer and select the environment where you want to enable the Semantic Layer. We recommend using a less privileged set of credentials when setting up your connection. The semantic layer requires SELECT and CREATE TABLE permissions.
-- After you’ve entered you’re credentials, you should see a **JDBC URL** connection string. Copy this string and save it in your password manager. You can use this to connect to the Semantic Layer JDBC interface, which you will use in the next step. This interface allows you to connect and query your metrics in downstream tools.
-- Next, head back to the **Project Details** page and select **Generate Service Token** to create a semantic layer service token. Save this token for later.
-- You’re done! The Semantic Layer should now be enabled for your project! Time to start querying metrics.
+To upgrade your dbt Cloud environment to use the new semantic layer:
+
+1. [Upgrade](/docs/dbt-versions/upgrade-core-in-cloud) the existing deployment environment for your project to v1.6 or higher.
+Ensure that all jobs run successfully with the new version.
+2. Run a dbt job in your deployment environment to set up the new semantic layer. You can use any dbt command, as long as it completes successfully. 
+3. To activate the new Semantic Layer, go to the **Account Settings** page and select the specific project you want to enable the Semantic Layer for.
+3. On the **Project Details** page, select **Configure Semantic Layer** 
+4. Enter the connection details for the data platform and select the environment where you want to enable the semantic layer. It's recommended to use a set of credentials with limited privileges, granting SELECT and CREATE TABLE permissions.
+5. After you’ve entered your credentials, you should see a **JDBC URL** connection string. Copy this string and save it in your password manager. You can use this to connect to the Semantic Layer JDBC interface, which you will use in the next step. This interface allows you to connect and query your metrics in downstream tools.
+6. Go back to the **Project Details** page and select **Generate Service Token** to create a semantic layer service token. Save this token for later.
+7. You’re done 🎉! The new dbt Semantic Layer is now enabled for your project an you can start querying metrics.
 
 ## Step 3: Update connection in downstream integrations
 
 Now that your Semantic Layer is set up, you will need to update any downstream integrations that relied on the legacy Semantic Layer. To set up a new connection or update an existing connection, you should do so in the downstream tool and not in dbt Cloud.
 
-**Migration guide for Hex**
+**Link to migration guide for Hex**
 
-…
 
-**Migration guide for Mode**
 
-…
+**Link to migration guide for Mode**
 
-## **Creating a new environment running the new Semantic Layer**
 
-This approach will let you run the legacy Semantic Layer in your existing environment while you stage the metrics spec changes to your dbt project. You’ll set up a brand new deployment environment on dbt v1.6 or higher, which is essentially a clone of your current Semantic Layer environment. When you’re ready to merge your changes, the environment is already set up, and you can safely deprecate your old environment. This approach still involves downtime.
+## Create environment for the new Semantic Layer
 
-### **Step 1: Setup a new environment running 1.6 and enable the SL**
+This approach allows you to run the legacy semantic layer in your existing environment, while you stage the metrics spec changes to your dbt project. In this approach, you’ll set up a brand new deployment environment on dbt v1.6 or higher, which is a clone of your current semantic layer environment. When you’re ready to merge your changes, the new environment will be prepared, allowing you to safely deprecate the old Semantic Layer environment. Although some downtime may still be involved, this approach helps mitigate it.
 
-You will need to create a new environment for the Semantic Layer and migrate your existing jobs to this environment. The workflow is as follows:
+### Step 1: Setup a new environment
+
+You'll need to create a new environment for the new semantic layer and migrate your existing jobs to this environment. The workflow is as follows:
 
 - In dbt Cloud, select **Deploy** and then **Environments** to create a new environment.
 - Select **dbt Version 1.6** and enter your deployment credentials.
@@ -105,7 +107,7 @@ You will need to create a new environment for the Semantic Layer and migrate you
 - Next, head back to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. Save this token for later.
 - You’re done! The semantic layer should now be enabled for your project! The legacy Semantic Layer will still be running in your old environment.
 
-### **Step 2: Migrate metric configs to the new spec.**
+### Step 2: Migrate metric configs to the new spec
 
 The metrics specification in dbt core has changed in v1.6 in order to support the integration of MetricFlow. We’ve introduced two new objects that MetricFlow expects in order to build a semantic graph: [Semantic Models](/docs/build/semantic-models) and [Metrics](/docs/build/metrics-overview). You will need to migrate your Metrics configs to the new spec. The process broadly looks:
 
@@ -130,10 +132,20 @@ When you have tested your metrics and are satisfied that they are correct, commi
 
 Now that your semantic layer is set up, you will need to update any downstream integrations that relied on the legacy Semantic Layer. To set up a new connection or update an existing connection, you should do so in the downstream tool and not in dbt Cloud.
 
-**Migration guide for Hex**
+**Link to migration guide for Hex**
 
 …
 
-**Migration guide for Mode**
+**Link to migration guide for Mode**
 
 …
+
+
+## Resources
+
+- [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
+- [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
+- [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
+- [Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview)
+- [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
+- Developer workflow demo
