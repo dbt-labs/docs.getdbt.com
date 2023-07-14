@@ -35,4 +35,8 @@ This functionality is new in v1.6. You should upgrade to 1.6 or later if you wan
 
 **Produced by:** TODO
 
-TODO
+This file is useful for investigating performance issues in Core's graph algorithms.
+
+It is more anonymized and compact than [`manifest.json`](/reference/artifacts/manifest-json) and [`graph.gpickle`](#graph.gpickle).
+
+It contains only the `name` and `type` of each node along with ids of its child nodes (`succ`). It includes that information at two separate points in time: Immediately after the graph is linked together (`linked`), and then after test edges have been added (`with_test_edges`).
