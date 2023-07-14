@@ -11,7 +11,7 @@ The `dbt clone` command clones selected nodes from the specified state to the ta
 Note: 
 - The state to clone from is based on the location of nodes in the manifest provided to `--state`.
 - By default, `dbt clone` will not recreate pre-existing relations in the current target. To override this, use the `--full-refresh` flag. 
-- You may want to specify a higher number of [threads](website/docs/docs/running-a-dbt-project/using-threads.md) to decrease execution time since individual clone statements are independent of one another.
+- You may want to specify a higher number of [threads](/docs/running-a-dbt-project/using-threads) to decrease execution time since individual clone statements are independent of one another.
 
 The `clone` command is useful for:
 - blue/green deployment
