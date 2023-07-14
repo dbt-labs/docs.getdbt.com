@@ -26,9 +26,20 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 - As part of the Semantic layer re-launch (in beta), the spec for `metrics` has changed significantly. Migration guide coming soon: https://github.com/dbt-labs/docs.getdbt.com/pull/3705
 - Manifest schema version is now v10, reflecting [TODO] changes
 
-## New and changed documentation
+### For consumers of dbt artifacts (metadata)
 
-### 
+The [manifest](/reference/artifacts/manifest-json) schema version has updated to `v10`. Specific changes:
+- Addition of `semantic_models` and changes to `metrics` attributes
+- Addition of `deprecation_date` as a model property
+- Addition of `on_configuration_change` as default node configuration (to support materialized views)
+- Small type changes to `contracts` and `constraints`
+- Manifest `metadata` includes `project_name`
+
+### For maintainers of adapter plugins
+
+For more detailed information and to ask questions, please read and comment on the GH discussion: [dbt-labs/dbt-core#7958](https://github.com/dbt-labs/dbt-core/discussions/7958).
+
+## New and changed documentation
 
 ### Materialized views
 
@@ -42,9 +53,11 @@ Support for BigQuery and Databricks forthcoming.
 
 [`dbt retry`](/reference/commands/retry) executes the previously run command from the point of failure. Rebuild just the nodes that errored or skipped in a previous run/build/test, rather than starting over from scratch.
 
-[`dbt clone`](/reference/commands/clone) leverages each data platform's functionality for creating lightweight copies of dbt models from one environment into another. Useful when quickly spinning up a new development environment, or promoting specific models from a staging environment into production.
+`dbt clone` (TODO: will link to /reference/commands/clone) leverages each data platform's functionality for creating lightweight copies of dbt models from one environment into another. Useful when quickly spinning up a new development environment, or promoting specific models from a staging environment into production.
 
 ### Multi-project collaboration
+
+[**Deprecation date**](/reference/resource-properties/deprecation_date): Models can declare a deprecation date that will warn model producers and downstream consumers. This enables clear migration windows for versioned models, and provides a mechanism to facilitate removal of immature or little-used models, helping to avoid project bloat.
 
 [**Project dependencies**](/docs/collaborate/govern/project-dependencies): Introduces `dependencies.yml` and dependent `projects` as a feature of dbt Cloud Enterprise (currently in closed beta). Allows enforcing model access (public vs. protected/private) across project/package boundaries. Enables cross-project `ref` of public models, without requiring the installation of upstream source code.
 
