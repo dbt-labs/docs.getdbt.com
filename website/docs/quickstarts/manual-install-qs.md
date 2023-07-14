@@ -130,11 +130,11 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 
 #### FAQs
 
-<FAQ src="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
-<FAQ src="Project/separate-profile" />
-<FAQ src="Environments/profile-name" />
-<FAQ src="Environments/target-names" />
-<FAQ src="Environments/profile-env-vars" />
+<FAQ path="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
+<FAQ path="Project/separate-profile" />
+<FAQ path="Environments/profile-name" />
+<FAQ path="Environments/target-names" />
+<FAQ path="Environments/profile-env-vars" />
 
 ### Perform your first dbt run
 
@@ -189,7 +189,7 @@ Check out a new git branch to work on new code:
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
 3. Paste the following query into the `models/customers.sql` file.
 
-    <Snippet src="tutorial-sql-query" />
+    <Snippet path="tutorial-sql-query" />
 
 4. From the command line, enter `dbt run`.
     <div style={{maxWidth: '400px'}}>
@@ -200,25 +200,25 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Project/which-schema" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
 
 ### Change the way your model is materialized
 
 
 
-<Snippet src="quickstarts/change-way-model-materialized" />
+<Snippet path="quickstarts/change-way-model-materialized" />
 
 ### Delete the example models
 
-<Snippet src="quickstarts/delete-example-models" />
+<Snippet path="quickstarts/delete-example-models" />
 
 ### Build models on top of other models
 
-<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+<Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
@@ -411,13 +411,13 @@ When you return to the BigQuery console, you can `select` from this model.
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 ### Next steps
 
-<Snippet src="tutorial-next-steps-1st-model" />
+<Snippet path="tutorial-next-steps-1st-model" />
 
 You can also explore:
 
@@ -428,23 +428,23 @@ You can also explore:
 
 ### Add tests to your models
 
-<Snippet src="tutorial-add-tests-to-models" />
+<Snippet path="tutorial-add-tests-to-models" />
 
 ### Document your models
 
-<Snippet src="tutorial-document-your-models" />
+<Snippet path="tutorial-document-your-models" />
 
 3. Run `dbt docs serve` command to launch the documentation in a local website.
 
 #### FAQs
 
-<FAQ src="Docs/long-descriptions" />
-<FAQ src="Docs/sharing-documentation" />
+<FAQ path="Docs/long-descriptions" />
+<FAQ path="Docs/sharing-documentation" />
 
 
 #### Next steps
 
-<Snippet src="tutorial-next-steps-tests" />
+<Snippet path="tutorial-next-steps-tests" />
 
 ### Commit updated changes
 

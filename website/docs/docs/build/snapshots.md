@@ -408,10 +408,10 @@ Snapshot results:
 
 
 ## FAQs
-<FAQ src="Runs/run-one-snapshot" />
-<FAQ src="Runs/snapshot-frequency" />
-<FAQ src="Snapshots/snapshot-schema-changes" />
-<FAQ src="Snapshots/snapshot-hooks" />
-<FAQ src="Snapshots/snapshot-target-schema" />
-<FAQ src="Accounts/configurable-snapshot-path" />
-<FAQ src="Snapshots/snapshot-target-is-not-a-snapshot-table" />
+<FAQ path="Runs/run-one-snapshot" />
+<FAQ path="Runs/snapshot-frequency" />
+<FAQ path="Snapshots/snapshot-schema-changes" />
+<FAQ path="Snapshots/snapshot-hooks" />
+<FAQ path="Snapshots/snapshot-target-schema" />
+<FAQ path="Accounts/configurable-snapshot-path" />
+<FAQ path="Snapshots/snapshot-target-is-not-a-snapshot-table" />

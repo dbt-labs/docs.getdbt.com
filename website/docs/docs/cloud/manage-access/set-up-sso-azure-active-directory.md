@@ -156,7 +156,7 @@ To complete setup, follow the steps below in the dbt Cloud application.
     here, you can navigate to the login URL generated for your account's _slug_ to
     test logging in with Azure AD.
 
-<Snippet src="login_url_note" />
+<Snippet path="login_url_note" />
 
 
 
