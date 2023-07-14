@@ -410,6 +410,7 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
+        "docs/use-dbt-semantic-layer/sl-architecture",
         {
           type: "category",
           label: "Semantic Layer APIs",
