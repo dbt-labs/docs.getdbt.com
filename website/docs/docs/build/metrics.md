@@ -707,6 +707,6 @@ The above example will return a dataset that contains the metric provided in the
 </VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
+
 <DiscourseHelpFeed tags="metrics"/>
 
-</VersionBlock>
