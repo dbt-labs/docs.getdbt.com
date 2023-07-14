@@ -5,7 +5,7 @@ id: "debug"
 ---
 
 <Changelog>
-* **dbt v1.6**: The `dbt debug --connection` flag is introduced to _only_ test the data platform connection in your profile.
+* dbt v1.6: The <code>dbt debug --connection</code> flag is introduced to only test the data platform connection in your profile.
 </Changelog>
 
 <VersionBlock firstVersion="1.6">
