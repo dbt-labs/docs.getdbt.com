@@ -36,6 +36,10 @@ exports.versionedPages = [
     "firstVersion": "1.6",
   },
   {
+    "page": "docs/collaborate/govern/project-dependencies",
+    "firstVersion": "1.6",
+  },
+  {
     "page": "reference/resource-properties/deprecation_date", 
     "firstVersion": "1.6",
   },
