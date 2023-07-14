@@ -43,4 +43,4 @@ The command accesses the data platform to cache related metadata, and to run int
 
 
 ### FAQs
-<FAQ src="Warehouse/db-connection-dbt-compile" />
+<FAQ path="Warehouse/db-connection-dbt-compile" />

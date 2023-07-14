@@ -10,7 +10,7 @@ Use the Discovery API to evaluate data pipeline health and project state across 
 
 Since GraphQL describes the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.  
 
-<Snippet src="metadata-api-prerequisites" />
+<Snippet path="metadata-api-prerequisites" />
 
 ## Authorization
 

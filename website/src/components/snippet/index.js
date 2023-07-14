@@ -7,8 +7,8 @@ import clsx from 'clsx';
   Pass the filename of a snippet within the snippets directory
   as a prop to use throughout the docs.
 */}
-export default function Snippet({ src }) {
-  const file = require('../../../snippets/' + src + '.md')
+export default function Snippet({ path }) {
+  const file = require('../../../snippets/' + path + '.md')
   const contents = file.default({});
   return (
     <div className={clsx(styles.snippet, 'snippet')}>
