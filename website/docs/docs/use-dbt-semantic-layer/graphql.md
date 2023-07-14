@@ -28,7 +28,7 @@ Overall, GraphQL offers benefits such as being self-documenting, a strong typing
 
 The dbt Semantic Layer GraphQL API has the following capabilities, and has similarities to the calls available in our JDBC API.
 
-One benefit of GraphQL is its self documenting nature, so you can explore using our <schema explorer>. To give you an idea of the types of commands you can execute, we provide some available calls below.
+One benefit of GraphQL is its self documenting nature, so you can explore using our schema explorer(todolink). To give you an idea of the types of commands you can execute, we provide some available calls below.
 
 
 **Metric Metadata Calls**
