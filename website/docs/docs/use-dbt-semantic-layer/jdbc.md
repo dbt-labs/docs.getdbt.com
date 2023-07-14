@@ -17,18 +17,15 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 </VersionBlock>
 
-The dbt Semantic Layer Java Database Connectivity (JDBC) driver enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
+The dbt Semantic Layer Java Database Connectivity (JDBC) API enables users to query metrics and dimensions using the JDBC protocol, while also providing standard metadata functionality. 
 
-A JDBC driver is a software component enabling a Java application to interact with a data platform. Here's some more information about the JDBC:
+A JDBC driver is a software component enabling a Java application to interact with a data platform. Here's some more information about our JDBC API:
 
 - The Semantic Layer JDBC API utilizes the open-source JDBC driver with ArrowFlight SQL protocol.
 - You can download the JDBC driver from [Maven](https://search.maven.org/remotecontent?filepath=org/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar). 
 - The dbt Semantic Layer supports ArrowFlight SQL driver version 12.0.0 and higher. 
 - You can embed the driver into your application stack as needed, and you can use dbt Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
-
-## Installation
-
-- Install an AWS root CA to the Java Trust Store [documentation](https://www.amazontrust.com/repository/).
+- To call the JDBC API in an application, you should install an AWS root CA to the Java Trust Store [documentation](https://www.amazontrust.com/repository/).
 
 ## Connection parameters
 
@@ -49,7 +46,7 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 
 *Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable into the JDBC URL `&disableCertificateVerification=true`
 
-## Querying the API
+## Querying the API for Metric Metadata
 
 The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. Here are some metadata commands and examples:
 
@@ -95,9 +92,9 @@ semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="custome
 
 </Tabs>
 
-## Querying Parameters
+## Querying the API for Metric Values
 
-Use the following query parameters to filter and sort data, along with examples:
+To query metric values, here are the following parameters that are available:
 
 | Parameter | Description  | Example    | Type |
 | --------- | -----------| ------------ | -------------------- |
@@ -109,7 +106,7 @@ Use the following query parameters to filter and sort data, along with examples:
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
 | `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
 
-## Additional examples
+## Examples
 
 Use the following examples to help you get started with the JDBC API
 
