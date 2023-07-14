@@ -19,6 +19,18 @@ function CommunitySpotlightList({ spotlightData }) {
   // Build meta title from communityTitle and docusaurus config site title
   const metaTitle = `${communityTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`
 
+  // Split spotlight members into current and previous
+  let currentSpotlightMembers = []
+  let previousSpotlightMembers = []
+
+  spotlightData?.map(member => {
+    if(currentSpotlightDate > new Date(member?.data?.dateCreated)) {
+      previousSpotlightMembers.push(member)
+    } else {
+      currentSpotlightMembers.push(member)
+    }
+  })
+  
   return (
     <Layout>
       <Head>
@@ -36,11 +48,19 @@ function CommunitySpotlightList({ spotlightData }) {
       />
       <section id='spotlight-members-section'>
         <div className='container'>   
-          {spotlightData && spotlightData.length > 0 ? (
+          {currentSpotlightMembers?.length || previousSpotlightMembers?.length ? (
             <>
-              {spotlightData.map((member, i) => (
+              {currentSpotlightMembers?.map((member, i) => (
                 <CommunitySpotlightCard frontMatter={member.data} key={i} />
               ))}
+              {previousSpotlightMembers?.length ? (
+                <>
+                  <h2>Previously on the Spotlight</h2>
+                  {previousSpotlightMembers.map((member, i) => (
+                    <CommunitySpotlightCard frontMatter={member.data} key={i} />
+                  ))}
+                </>
+              ) : ''}
             </>
           ) : 
             <p>No community spotlight members are available at this time. 😕</p>
