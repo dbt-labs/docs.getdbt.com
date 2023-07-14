@@ -33,7 +33,7 @@ This functionality is new in v1.6. You should upgrade to 1.6 or later if you wan
 
 </VersionBlock>
 
-**Produced by:** TODO
+**Produced by:** [manifest commands](/reference/artifacts/manifest-json)
 
 This file is useful for investigating performance issues in Core's graph algorithms.
 
