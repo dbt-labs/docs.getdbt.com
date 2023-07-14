@@ -12,17 +12,19 @@ id: "debug"
 
 *Note: Not to be confused with [debug-level logging](/reference/global-configs/about-global-configs#debug-level-logging) via the `--debug` option which increases verbosity.
 
+### Example usage
+
 <VersionBlock firstVersion="1.6">
 
-### `--connection` option
+Only test the connection to the data platform and skip the other checks `dbt debug` looks for:
 
-To test the data platform connection _only_, add the `--connection` flag at the end of the command. For example, `dbt debug --connection` will only test the connection to the data platform and skip the other checks `dbt debug` looks for. 
+```shell
+$ dbt debug --connection
+```
 
 </VersionBlock>
 
-### `--config-dir` option
-
-The `--config-dir` option to `dbt debug` will show the configured location for the `profiles.yml` file and exit:
+Show the configured location for the `profiles.yml` file and exit:
 
 ```text
 $ dbt debug --config-dir
