@@ -100,7 +100,8 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           </div>
         )}
         {description && !isSpotlightMember && (
-          <p className={styles.spotlightMemberDescription}>{truncateText(description)}</p>
+          // <p className={styles.spotlightMemberDescription}>{truncateText(description)}</p>
+          <p className={styles.spotlightMemberDescription} dangerouslySetInnerHTML={{__html: truncateText(description)}} />
         )}
         {socialLinks && isSpotlightMember && socialLinks?.length > 0 && (
           <div className={styles.spotlightMemberSocial}>
@@ -137,7 +138,18 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
 // Truncate text
 function truncateText(str) {
   // Max length of string
-  const maxLength = 300
+  let maxLength = 300
+
+  // Get initial substring to check for link html
+  let substring = str?.substring(0, maxLength - 3)
+
+  // Exclude link html from content length count
+  // Otherwise href, title, rel values all counted as text.
+  const linkText = substring.match(/(?<=<a ).*(?=<\/a>)/g)
+  linkText?.length && linkText.map(l => {
+    if(l?.length) maxLength += l.length
+  })
+
   return str.length > maxLength
     ? `${str.substring(0, maxLength - 3)}...`
     : str
