@@ -203,9 +203,9 @@ To try out the features of the dbt Semantic Layer, you first need to have a dbt 
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-<Snippet src="sl-prerequisites" />
+<Snippet path="sl-prerequisites" />
 
-<Snippet src="sl-considerations-banner" />
+<Snippet path="sl-considerations-banner" />
 
 
 :::info 📌 
@@ -370,7 +370,7 @@ Once you’ve defined metrics in your dbt project, you can perform a job run in 
 
 ## Set up dbt Semantic Layer
     
-<Snippet src="sl-set-up-steps" />
+<Snippet path="sl-set-up-steps" />
 
       
 ## Troubleshooting

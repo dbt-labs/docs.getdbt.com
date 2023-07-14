@@ -704,7 +704,9 @@ The above example will return a dataset that contains the metric provided in the
 
 **Important caveat** - You _must_ wrap the `expression` property for `derived` metrics in double quotes to render it. For example,  `expression: "{{ metric('develop_metric') }} - 1 "`.
 
-<Snippet src="discourse-help-feed-header" />
+</VersionBlock>
+
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="metrics"/>
 
 </VersionBlock>

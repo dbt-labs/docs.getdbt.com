@@ -90,9 +90,9 @@ The dbt Semantic Layer reduces code duplication and inconsistency regarding your
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-<Snippet src="sl-prerequisites" />
+<Snippet path="sl-prerequisites" />
 
-<Snippet src="sl-considerations-banner" />
+<Snippet path="sl-considerations-banner" />
 
 
 ## Manage metrics
