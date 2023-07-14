@@ -211,7 +211,7 @@ We encourage you to read Google's documentation for more context:
 - [Understanding GCP roles](https://cloud.google.com/iam/docs/understanding-roles)
 - [How to format grantees](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#user_list)
 
-<Snippet src="grants-vs-access-to" />
+<Snippet path="grants-vs-access-to" />
 
 ### BigQuery examples
 
