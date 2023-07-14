@@ -766,6 +766,7 @@ The `grant_access_to` config is not thread-safe when multiple views need to be a
 
 <VersionBlock firstVersion="1.6">
 
+
 ## Materialized view
 
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro) and refreshes them for every subsequent `dbt run` you execute. For more information, see [Refresh Materialized Views](https://cloud.google.com/bigquery/docs/materialized-views-manage#refresh) in the Google docs.
