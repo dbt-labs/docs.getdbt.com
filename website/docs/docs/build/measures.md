@@ -64,7 +64,7 @@ semantic_models:
  - name: transactions
     description: A record for every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
-    default:
+    defaults:
       agg_time_dimensions:
 
 # --- entities ---
@@ -166,7 +166,7 @@ semantic_models:
   - name: subscription_table
     description: A subscription table with one row per date for each active user and their subscription plans. 
     model: ref('your_schema.subscription_table')
-    default:
+    defaults:
       agg_time_dimension: metric_time 
 
     entities:
