@@ -113,7 +113,7 @@ Settings.
 
 If the verification information looks appropriate, then you have completed the configuration of GSuite SSO. 
 
-<Snippet src="login_url_note" />
+<Snippet path="login_url_note" />
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up
