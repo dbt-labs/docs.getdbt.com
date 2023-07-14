@@ -221,3 +221,5 @@ mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order me
 ```
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';
+
+<SetUpPages /> 
