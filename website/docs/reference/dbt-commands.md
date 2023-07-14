@@ -23,6 +23,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 - [compile](/reference/commands/compile): compiles (but does not run) the models in a project
 - [deps](/reference/commands/deps): downloads dependencies for a project
 - [docs](/reference/commands/cmd-docs) : generates documentation for a project
+- [retry](/reference/commands/retry): retry the last run `dbt` command from the point of failure (requires dbt 1.6 or higher)
 - [run](/reference/commands/run): runs the models in a project
 - [run-operation](/reference/commands/run-operation): invoke a macro, including running arbitrary maintenance SQL against the database
 - [seed](/reference/commands/seed): loads CSV files into the database
@@ -46,6 +47,7 @@ Use the following dbt commands in the [CLI](/docs/core/about-the-cli) and use th
 - [init](/reference/commands/init): initializes a new dbt project
 - [list](/reference/commands/list): lists resources defined in a dbt project
 - [parse](/reference/commands/parse): parses a project and writes detailed timing info
+- [retry](/reference/commands/retry): retry the last run `dbt` command from the point of failure (requires dbt 1.6 or higher)
 - [rpc](/reference/commands/rpc): runs an RPC server that clients can submit queries to
 - [run](/reference/commands/run): runs the models in a project
 - [run-operation](/reference/commands/run-operation): invoke a macro, including running arbitrary maintenance SQL against the database

@@ -109,7 +109,7 @@ After the initial release I started to expand to cover the rest of the dbt Cloud
 
 In this example we’ll download a `catalog.json` artifact from the latest run of a dbt Cloud job using `dbt-cloud run list` and `dbt-cloud get-artifact` and then write a simple Data Catalog CLI application using the same tools that are used in `dbt-cloud-cli` (i.e., `click` and `pydantic`). Let’s dive right in!
 
-The first command we need is the `dbt-cloud run list` which uses an [API V4 endpoint](https://docs.getdbt.com/dbt-cloud/api-v4#operation/list-account-runs) that returns runs sorted by creation date, with the most recent run appearing first. The command returns a JSON response that has one top-level attribute `data` that contains a list of runs. We’ll need to extract the `id` attribute of the first one and to do that we use [jq](https://stedolan.github.io/jq/):
+The first command we need is the `dbt-cloud run list` which uses an [API endpoint](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#/operations/List%20Runs) that returns runs sorted by creation date, with the most recent run appearing first. The command returns a JSON response that has one top-level attribute `data` that contains a list of runs. We’ll need to extract the `id` attribute of the first one and to do that we use [jq](https://stedolan.github.io/jq/):
 
 ```
 latest_run_id=$(dbt-cloud run list --job-id $DBT_CLOUD_JOB_ID | jq .data[0].id -r)
