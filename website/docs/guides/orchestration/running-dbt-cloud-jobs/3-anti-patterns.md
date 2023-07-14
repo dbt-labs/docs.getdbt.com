@@ -38,7 +38,15 @@ In Job 2:
 In Job 3:
 `dbt run -s fct_orders`
 
-Issuing the separate `dbt run` commands for models `a` and `b` causes dbt to close the job session before opening a new one. This results in repeating the work to clone dependencies and parse the project before `stg_customers` is run and again before `stg_items`. It also creates some additional latency when dbt drops and then re-acquires the database connection.
+Creating distinct jobs to invoke a single model as shown in the above example is strongly discouraged because it creates a lot of overhead for each job run. Specifically for each job:
+- the run will queue to be processed by the dbt Cloud Scheduler
+- the dbt Cloud Scheduler will prepare an environment to execute dbt in
+- dbt will clone the repository
+- dbt will clone the packaage dependencies
+- dbt will parse the complete project
+- dbt will establish the connection with the warehouse
+all before the model build begins.
+This setup cost is efficient when dbt runs a large swath of the DAG, but every inefficient if dbt runs a single model at a time. dbt is optimized to process a graph of nodes, and it's important to not extract each model from the DAG separately in a job.
 
 ### Too many dbt run commands in a single dbt Cloud job
 
