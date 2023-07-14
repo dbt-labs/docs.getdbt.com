@@ -306,7 +306,7 @@ The Snippet component allows for content to be reusable throughout the Docs. Thi
 Creating and using a snippet requires two steps:
 
 1. Create a new markdown snippet file in the `website/snippets` directory.
-2. Use the `<Snippet src="filename" />` component within a Docs file.
+2. Use the `<Snippet path="filename" />` component within a Docs file.
 
 #### Snippet properties
 
@@ -327,7 +327,7 @@ Now, we can add this snippet to a Docs file with the Snippet component:
 ```markdown
 Docs content here.
 
-<Snippet src="lorem-ipsum" />
+<Snippet path="lorem-ipsum" />
 
 Docs content here.
 ```
