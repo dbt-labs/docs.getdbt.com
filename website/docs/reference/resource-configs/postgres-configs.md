@@ -105,6 +105,8 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="1.6">
+
 ## Materialized view
 
 The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html) and refreshes them for every subsequent `dbt run` you execute. For more information, see [Refresh Materialized Views](https://www.postgresql.org/docs/15/sql-refreshmaterializedview.html) in the Postgres docs.
@@ -145,3 +147,5 @@ models:
     materialized: materialized_view
 ```
 </File>
+
+</VersionBlock>
