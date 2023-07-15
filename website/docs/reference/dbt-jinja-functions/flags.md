@@ -71,8 +71,6 @@ select 1 as id
 
 <VersionBlock firstVersion="1.6">
 
-Includes the entire subcommand and compiles to:
-
 The `invocation_args_dict` includes the entire subcommand when it compiles:
 
 ```shell
