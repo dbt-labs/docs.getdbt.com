@@ -56,6 +56,8 @@ select 1 as id
 $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 ```
 
+<File name='target/compiled/my_project/models/my_model.sql'>
+
 ```sql
 -- invocation_args_dict:
 -- {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/Users/.../.dbt', 'send_anonymous_usage_stats': False, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'parse_only': False, 'which': 'compile', 'rpc_method': 'compile', 'indirect_selection': 'eager'}
@@ -65,6 +67,8 @@ $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
 
 select 1 as id
 ```
+
+</File>
 
 </VersionBlock>
 
