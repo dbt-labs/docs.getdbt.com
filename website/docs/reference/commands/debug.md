@@ -4,9 +4,6 @@ sidebar_label: "debug"
 id: "debug"
 ---
 
-<Changelog>
-* dbt v1.6: The <code>dbt debug --connection</code> flag is introduced to only test the data platform connection in your profile.
-</Changelog>
 
 `dbt debug` is a utility function to test the database connection and display information for debugging purposes, such as the validity of your project file and your installation of any requisite dependencies (like `git` when you run `dbt deps`).
 
