@@ -48,6 +48,8 @@ For the full set of information passed from the CLI—subcommand, flags, argumen
 select 1 as id
 ```
 
+</File>
+
 <VersionBlock firstVersion="1.3" lastVersion="1.5">
 
 ```shell
