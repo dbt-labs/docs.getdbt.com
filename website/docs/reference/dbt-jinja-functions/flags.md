@@ -75,7 +75,7 @@ select 1 as id
 
 <VersionBlock firstVersion="1.6">
 
-The `invocation_args_dict` includes the entire subcommand when it compiles:
+The `invocation_command` key within `invocation_args_dict` includes the entire subcommand when it compiles:
 
 ```shell
 $ DBT_ENV_CUSTOM_ENV_MYVAR=myvalue dbt compile -s my_model
