@@ -161,6 +161,12 @@ For semantic models with a measure, you must have a primary time group.
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
 | `create_metric`* | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
 _*Coming soon_
+
+
+import SetUpPages from '/snippets/_metrics-dependencies.md';
+
+<SetUpPages />
+
 ## Related docs
 
 - [About MetricFlow](/docs/build/about-metricflow)
