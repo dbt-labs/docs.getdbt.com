@@ -7,7 +7,14 @@ date: 2023-07-31
 sidebar_position: 9
 ---
 
-We are thrilled to announce the re-release of the dbt Semantic Layer, now available in [public beta](#public-beta). It revolutionizes data analysis by introducing new semantic components that lay the foundation for effective organization and interaction with data. With semantics at its core, the dbt Semantic Layer marks a crucial milestone towards a new era of centralized logic and data applications.
+We are thrilled to announce the re-release of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), now available in [public beta](#public-beta). It revolutionizes data analysis by introducing:
+
+- [MetricFlow](/docs/build/about-metricflow) &mdash;  a new way to define metrics in dbt and one of the key components of the dbt Semantic Layer
+- New semantic components like semantic models and metrics, which help lay the foundation for effective organization and interaction with data,
+- Improved governance, enhanced efficiency, and data accessibility
+- New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics and build integrations
+
+With semantics at its core, the dbt Semantic Layer marks a crucial milestone towards a new era of centralized logic and data applications.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
