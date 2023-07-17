@@ -47,7 +47,7 @@ The dbt Semantic Layer is currently available as a public beta, which means:
 
 - **When** &mdash; Public beta will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will make pricing information available.  DO WE MENTION THAT WE'LL BEGIN CHARGING?
 
-- **Where** &mdash; Experience the dbt Semantic Layer in dbt Cloud. Public beta is enabled at the account level so you don’t need to worry about enabling it per user.
+- **Where** &mdash; You can experience the dbt Semantic Layer in dbt Cloud. Public beta is enabled at the account level so you don’t need to worry about enabling it per user.
 
 ## Next steps
 
