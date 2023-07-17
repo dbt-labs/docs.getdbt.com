@@ -26,13 +26,13 @@ The dbt community also helped me expand my professional network, where I met so 
 
 ## What dbt community leader do you identify with? How are you looking to grow your leadership in the dbt community?
 
-Claire Carroll and Mila Page! My very first touchpoint with dbt was their articles in [The Analytics Engineering Guide](https://www.getdbt.com/analytics-engineering/). I remember relating to it so much that I was saying ""YES"" to every other line I read, and sending text snippets to my friends. 
+Claire Carroll and Mila Page! My very first touchpoint with dbt was their articles in [The Analytics Engineering Guide](https://www.getdbt.com/analytics-engineering/). I remember relating to it so much that I was saying "YES" to every other line I read, and sending text snippets to my friends. 
 
-To me, Analytics Engineering could help overcome certain challenges I face as an analyst, and make the job feels less like a ""hamster wheel."" As the concept of analytics engineering is fairly new in Singapore, I feel the need to spread the word and bring about a mindset shift among not just data teams, but anyone who needs to work with a data team.
+To me, Analytics Engineering could help overcome certain challenges I face as an analyst, and make the job feels less like a "hamster wheel." As the concept of analytics engineering is fairly new in Singapore, I feel the need to spread the word and bring about a mindset shift among not just data teams, but anyone who needs to work with a data team.
 
 ## What have you learned from community members? What do you hope others can learn from you?
 
-One of my favourite presentations from the Singapore dbt Meetup was [""How would the ideal Semantic Layer look like?""](https://docs.google.com/presentation/d/1t1ts04b7qA-BVlV3qbNZ4fI-MSZn0iL6_FhsaWhJk_0/edit?usp=sharing ) by fellow community member Thanh Dinh from Holistics. It taught me a new perspective on metrics: they could be like dbt models, where dependencies can be set up between metric models.
+One of my favourite presentations from the Singapore dbt Meetup was ["How would the ideal Semantic Layer look like?"](https://docs.google.com/presentation/d/1t1ts04b7qA-BVlV3qbNZ4fI-MSZn0iL6_FhsaWhJk_0/edit?usp=sharing ) by fellow community member Thanh Dinh from Holistics. It taught me a new perspective on metrics: they could be like dbt models, where dependencies can be set up between metric models.
 
 I definitely have so much more to learn as an individual, but I hope to share some of my tips and lessons in terms of data modelling with others.
 

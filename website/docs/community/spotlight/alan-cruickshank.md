@@ -15,7 +15,7 @@ socialLinks:
   - name: LinkedIn
     link: https://www.linkedin.com/in/amcruickshank/
   - name: SQLFluff
-    link: sqlfluff.com
+    link: https://sqlfluff.com
 dateCreated: 2023-06-30
 hide_table_of_contents: true
 ---
