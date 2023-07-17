@@ -18,7 +18,7 @@ provider in order to configure Single Sign On and [role-based access control](/d
 
 ## Auth0 Multi-tenant URIs
 
-<Snippet src="auth0-uri" />
+<Snippet path="auth0-uri" />
 
 ## Generic SAML 2.0 integrations
 
@@ -39,7 +39,7 @@ You'll need administrator access to your SAML 2.0 compliant identity provider to
 
 #### Configuring the application
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization. It should contain only letters, numbers, and dashes.
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
@@ -117,7 +117,7 @@ You can use the instructions in this section to configure Okta as your identity 
 
 ### Configure the Okta application
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization. It should contain only letters, numbers, and dashes.
 separated with dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
@@ -220,7 +220,7 @@ Use this section if you are configuring Google as your identity provider.
 
 ### Configure the Google application
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account
 can log into your application. Login slugs are typically the lowercased name of your organization
@@ -288,7 +288,7 @@ If you're using Azure Active Directory (Azure AD), the instructions below will h
 
 ### Create Azure AD Enterprise application
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
@@ -352,7 +352,7 @@ To configure OneLogin, you will need **Administrator** access.
 
 ### Configure the OneLogin application
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 To complete this section, you will need to create a login slug. This slug controls the URL where users on your account can log into your application. Login slugs are typically the lowercased name of your organization
 separated with dashes. It should contain only letters, numbers, and dashes. For example, the login slug for dbt Labs would be `dbt-labs`.
@@ -432,7 +432,7 @@ To complete setup, follow the steps below in dbt Cloud:
 5. After completing the setup, you can navigate to the URL generated for your account's _slug_ to test logging in with your identity provider. Additionally, users added the the SAML 2.0 app will be able to log in to dbt Cloud from the IdP directly.
 
 
-<Snippet src="login_url_note" />
+<Snippet path="login_url_note" />
 
 ### Setting up RBAC
 
