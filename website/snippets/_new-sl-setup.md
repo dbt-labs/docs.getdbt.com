@@ -5,6 +5,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 :::
 
 1. Create new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
+    * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 2. Navigate to **Account Settings** and select the specific project you want to enable the Semantic Layer for.
 3. In the **Project Details** page, navigate to **Configure Semantic Layer**.
 4. Enter the credentials you want the Semantic Layer to use specific to your data platform. 

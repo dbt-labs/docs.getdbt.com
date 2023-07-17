@@ -209,5 +209,9 @@ exports.versionedCategories = [
   {
     "category": "Build your metrics",
     "firstVersion": "1.6",
+  },
+  {
+    "category": "Semantic Layer APIs",
+    "firstVersion": "1.6",
   }
 ]

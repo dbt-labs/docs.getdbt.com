@@ -13,17 +13,19 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 <NewSLChanges />
 
 
-The dbt Semantic Layer, powered by MetricFlow, simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing you to define metrics on top of existing models and automatically handles data joins. 
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing you to define metrics on top of existing models and automatically handles data joins. 
 
 Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
 
 To read more about why you need a universal Semantic Layer, read this [blog post](https://www.getdbt.com/blog/universal-semantic-layer/).
 
-<Lightbox src="/img/sl-architecture.jpg" width="70%" title="Define and query metrics with the dbt Semantic Layer and seamlessly connect with integration tools for reliable organization-wide metrics." />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="65%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 ## Explore the dbt Semantic Layer
 
-The dbt Semantic Layer is available to all Team and Enterprise Plans during [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta). Those on dbt Cloud Developer plans or dbt core users can use MetricFlow for defining and testing metrics locally. Start exploring the dbt Semantic Layer by visiting the following pages:
+The universal dbt Semantic Layer is available to all Team and Enterprise Plans during [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta). Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally. 
+
+Start exploring the dbt Semantic Layer by visiting the following pages:
 
 <div className="grid--3-col">
 
@@ -44,17 +46,17 @@ The dbt Semantic Layer is available to all Team and Enterprise Plans during [pub
     body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
     icon="dbt-bit"/>
-    
-<Card
-    title="Semantic Layer APIs"
-    body="Use the Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
-    link="/docs/use-dbt-semantic-layer/sl-api-overview"
-    icon="dbt-bit"/>
 
 <Card
     title="Product architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"
+    icon="dbt-bit"/>
+
+<Card
+    title="Semantic Layer API"
+    body="Use the Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
+    link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>
 
 </div>
@@ -73,14 +75,11 @@ The result? You have less duplicate coding for data teams and more consistency f
 
 The dbt Semantic Layer has four main parts:
 
-- Define your metrics in version-controlled dbt project code using MetricFlow 
+- Define your metrics in version-controlled dbt project code using [MetricFlow](/docs/build/about-metricflow) 
 	* dbt_metrics is now deprecated
 - Import your metric definitions via the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
 - Query your metric data via the dbt Proxy Server
 - Explore and analyze dbt metrics in downstream tools
-
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" title="dbt Semantic Layer architecture" />
 
 ### What makes the dbt Semantic Layer different?
 
@@ -126,14 +125,10 @@ To read about best practices on structuring and organizing your metrics, review 
 **Define metrics**
 You can define your metrics in `.yml` files nested under a metrics key and to design or define your own metrics in your dbt project, review the following documents: <br />
 
-- [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](docs/build/metrics) for in-depth detail on attributes, filters, how to define and query your metrics, and [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics)
 - [dbt Semantic Layer quickstart](/docs/use-dbt-semantic-layer/quickstart-semantic-layer) to get started
 - [Understanding the components of the dbt Semantic Layer](https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer) blog post to see further examples
     
-Review our helpful metrics video below, which explains what metrics are, why they're important, and how you can get started:
-    
-<LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
 
 ## Related questions
 
