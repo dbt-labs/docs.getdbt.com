@@ -20,12 +20,6 @@ The following permission sets are available for assignment in dbt Cloud Enterpri
 can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
 can be associated with more than one permission sets.
 
-:::info Role permisisons
-
-The following table lists the standard roles and permissions associated with them in dbt Cloud. Some roles, such as _Stakeholder_ have more nuanced access to features. View the individual role descriptions for more information beyond the table definitions.
-
-::: 
-
 <Snippet src="enterprise-permissions-table" />
 
 ### Account Admin
