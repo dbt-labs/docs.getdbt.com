@@ -2,6 +2,7 @@
 title: "Enterprise permissions"
 id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
+hide_table_of_contents: true #For the sake of the tables on this page
 ---
 
 :::info Enterprise Feature
