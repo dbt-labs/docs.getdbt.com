@@ -15,8 +15,8 @@ You can also [further configure](/reference/resource-configs/postgres-configs) y
 You can [connect](/docs/connect-adapters) to adapters and data platforms either directly in the dbt Cloud user interface (UI) or install them manually using the command line (CLI). There are three types of adapters available today. The purpose of differentiation is to provide users with an easier means to evaluate adapter quality.
 
 - **Verified** &mdash; dbt Labs' strict [adapter program](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter) assures users of trustworthy, tested, and regularly updated adapters for production use. Verified adapters earn a "Verified" status, providing users with trust and confidence.
-- **Trusted** &mdash; Trusted adapters are those where the adapter maintainers have agreed to meet a higher standard of quality.
-- **Community** &mdash; [Community adapters](/docs/community-adapters) are open-source and maintained by community members. 
+- **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have agreed to meet a higher standard of quality.
+- **Community** &mdash; [Community adapters](community-adapters) are open-source and maintained by community members. 
 
 ### Verified adapters
 
