@@ -114,6 +114,14 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
+
 ### Caveats
 
 #### Ambiguous database identifiers

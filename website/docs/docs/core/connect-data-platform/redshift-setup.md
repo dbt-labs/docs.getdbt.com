@@ -16,7 +16,7 @@ meta:
   config_page: '/reference/resource-configs/redshift-configs'
 ---
 
-<Snippet src="warehouse-setups-cloud-callout" />
+<Snippet path="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -66,12 +66,13 @@ company-name:
       dbname: analytics
       schema: analytics
       threads: 4
-      keepalives_idle: 240 # default 240 seconds
-      connect_timeout: 10 # default 10 seconds
+      connect_timeout: None # optional, number of seconds before connection times out 
       # search_path: public # optional, not recommended
-      sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
+      role: # optional
       ra3_node: true # enables cross-database sources
-      region: [optional, if not provided, will be determined from host (e.g. host.123.us-east-1.redshift-serverless.amazonaws.com)]
+      autocommit: true # enables autocommit after each statement
+      region: # optional
 ```
 
 </File>
@@ -104,7 +105,6 @@ my-redshift-db:
       host: hostname.region.redshift.amazonaws.com
       user: alice
       iam_profile: data_engineer # optional
-      iam_duration_seconds: 900  # optional
       autocreate: true           # optional
       db_groups: ['ANALYSTS']    # optional
 
@@ -113,32 +113,87 @@ my-redshift-db:
       dbname: analytics
       schema: analytics
       threads: 4
-      [keepalives_idle](#keepalives_idle): 240 # default 240 seconds
-      connect_timeout: 10 # default 10 seconds
+      connect_timeout: None # optional, number of seconds before connection times out 
       [retries](#retries): 1 # default 1 retry on error/timeout when opening connections
-      # search_path: public # optional, but not recommended
-      sslmode: [optional, set the sslmode used to connect to the database (in case this parameter is set, will look for ca in ~/.postgresql/root.crt)]
+      role: # optional
+      sslmode: prefer # optional, set the sslmode to connect to the database. Default prefer, which will use 'verify-ca' to connect.
       ra3_node: true # enables cross-database sources
-
+      autocommit: true # optional, enables autocommit after each statement
+      region: # optional
 ```
 
 </File>
 
 ### Specifying an IAM Profile
 
-:::info New in dbt v0.18.0
-The `iam_profile` config option for Redshift profiles is new in dbt v0.18.0
-:::
-
 When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
 ## Redshift notes
+
+### `sslmode` change
+Before to dbt-redshift 1.5, `psycopg2` was used as the driver. `psycopg2` accepts `disable`, `prefer`, `allow`, `require`, `verify-ca`, `verify-full` as valid inputs of `sslmode`, and does not have an `ssl` parameter, as indicated in PostgreSQL [doc](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING:~:text=%2Dencrypted%20connection.-,sslmode,-This%20option%20determines). 
+
+In dbt-redshift 1.5, we switched to using `redshift_connector`, which accepts `verify-ca`, and `verify-full` as valid `sslmode` inputs, and has a `ssl` parameter of `True` or `False`, according to redshift [doc](https://docs.aws.amazon.com/redshift/latest/mgmt/python-configuration-options.html#:~:text=parameter%20is%20optional.-,sslmode,-Default%20value%20%E2%80%93%20verify). 
+
+For backward compatibility, dbt-redshift now supports valid inputs for `sslmode` in `psycopg2`. We've added conversion logic mapping each of `psycopg2`'s accepted `sslmode` values to the corresponding `ssl` and `sslmode` parameters in `redshift_connector`.
+
+The table below details accepted `sslmode` parameters and how the connection will be made according to each option:
+
+`sslmode` parameter | Expected behavior in dbt-redshift | Actions behind the scenes
+-- | -- | --
+disable | Connection will be made without using ssl | Set `ssl` = False
+allow | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+prefer | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+require | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+verify-ca | Connection will be made using verify-ca | Set `ssl` = True &  `sslmode` = verify-ca
+verify-full | Connection will be made using verify-full | Set `ssl` = True &  `sslmode` = verify-full
+
+When a connection is made using `verify-ca`, will look for the CA certificate in `~/redshift-ca-bundle.crt`.
+
+For more details on sslmode changes, our design choices, and reasoning &mdash; please refer to the [PR pertaining to this change](https://github.com/dbt-labs/dbt-redshift/pull/439).
+
+### `autocommit` parameter
+
+The[ autocommit mode](https://www.psycopg.org/docs/connection.html#connection.autocommit) is useful to execute commands that run outside a transaction. Connection objects used in Python must have `autocommit = True` to run operations such as `CREATE DATABASE`, and `VACUUM`. `autocommit` is off by default in `redshift_connector`, but we've changed this default to `True` to ensure certain macros run successfully in your dbt project.
+
+If desired, you can define a separate target with `autocommit=True` as such:
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+profile-to-my-RS-target:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      ...
+      autocommit: False
+      
+  
+  profile-to-my-RS-target-with-autocommit-enabled:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      ...
+      autocommit: True
+  ```
+</File>
+
+To run certain macros with autocommit, load the profile with autocommit using the `--profile` flag. For more context, please refer to this [PR](https://github.com/dbt-labs/dbt-redshift/pull/475/files).
+
+
+### Deprecated `profile` parameters in 1.5
+
+- `iam_duration_seconds`
+
+- `keepalives_idle`
+
 ### `sort` and `dist` keys
+
 Where possible, dbt enables the use of `sort` and `dist` keys. See the section on [Redshift specific configurations](/reference/resource-configs/redshift-configs).
 
-### `keepalives_idle`
-If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 
 
-[dbt's default setting](https://github.com/dbt-labs/dbt-redshift/blob/main/dbt/adapters/redshift/connections.py#L51) is 240 (seconds), but can be configured lower (perhaps 120 or 60), at the cost of a chattier network connection.
 
 <VersionBlock firstVersion="1.2">
 
