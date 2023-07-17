@@ -100,6 +100,6 @@ Note  - It is _not_ recommended that you use your dbt Cloud credentials due to e
 
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
-- [Semantic Layer APIs](/docs/use-dbt-semantic-layer/sl-api-overview)
+- [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
 - [Migrate your legacy Semantic Layer](/guides/migration/sl-migration)
 - [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
