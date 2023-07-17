@@ -6,6 +6,6 @@ The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.c
 
 **What should you do?** If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
 
-**Who does this affect?** Users on[Team or Enterprise plans](https://www.getdbt.com/pricing/) hosted on a multi-tenant North American [deployment region](/docs/cloud/about-cloud/regions-ip-addresses) and using dbt v1.6 or later can access the newly enhanced dbt Semantic Layer. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.
+**Who does this affect?** The new Semantic Layer is available to [Team or Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plans [hosted in North America](/docs/cloud/about-cloud/regions-ip-addresses). You must be on dbt v1.6 or higher to access it. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.
 
 :::

@@ -19,8 +19,6 @@ Moving metric definitions out of the BI layer and into the modeling layer allows
 
 To read more about why you need a universal Semantic Layer, read this [blog post](https://www.getdbt.com/blog/universal-semantic-layer/).
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="65%" title="The universal dbt Semantic Layer connecting to integration tools."/>
-
 ## Explore the dbt Semantic Layer
 
 The universal dbt Semantic Layer is available to all Team and Enterprise Plans during [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta). Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally. 

@@ -6,7 +6,7 @@
 - Use Snowflake, BigQuery, Databricks, and Redshift data platform
 - A successful run in the environment where your Semantic Layer is configured
   * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
-- Install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow) package
+- Install the [MetricFlow command line (CLI)](https://github.com/dbt-labs/metricflow) package
   * Note &mdash; After installing the package, make sure you run at least one model.
 - Set up the [Semantic Layer API](/docs/use-dbt-semantic-layer/sl-api-overview) in the integrated tool to import metric definitions 
   * Developer accounts will be able to query manually via the CLI using SQL. To dynamically query metrics using external tools, you'll need access to the Semantic Layer APIs.<br />
