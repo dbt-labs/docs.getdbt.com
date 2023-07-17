@@ -45,6 +45,12 @@ Before you start, keep the following considerations in mind:
     link="/docs/build/metrics-overview"
     icon="dbt-bit"/>
 
+  <Card
+    title="About the dbt Semantic Layer"
+    body="Introducing the dbt Semantic Layer, the universal process that allows data teams to centrally define and query metrics"
+    link="/docs/use-dbt-semantic-layer/dbt-sl"
+    icon="dbt-bit"/>
+
  <Card
     title="Get started with the dbt Semantic Layer"
     body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs"
@@ -52,17 +58,11 @@ Before you start, keep the following considerations in mind:
     icon="dbt-bit"/>
 
   <Card
-    title="About the dbt Semantic Layer"
-    body="Introducing the dbt Semantic Layer, the universal process that allows data teams to centrally define and query metrics"
-    link="/docs/use-dbt-semantic-layer/dbt-sl"
-    icon="dbt-bit"/>
-
-  <Card
     title="Available integrations"
     body="Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
     link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
     icon="dbt-bit"/>
-  
+
 
 </div> <br />
 

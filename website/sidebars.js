@@ -411,16 +411,6 @@ const sidebarSettings = {
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
         "docs/use-dbt-semantic-layer/sl-architecture",
-        {
-          type: "category",
-          label: "Semantic Layer APIs",
-          link: { type: "doc", id: "docs/use-dbt-semantic-layer/sl-api-overview" },
-          items: [
-            "docs/use-dbt-semantic-layer/jdbc",
-            "docs/use-dbt-semantic-layer/graphql",
-            "docs/use-dbt-semantic-layer/sl-manifest",
-          ],
-        },
       ],
     },
     {
@@ -488,6 +478,16 @@ const sidebarSettings = {
                 "docs/dbt-cloud-apis/discovery-schema-exposures",
               ],
             },
+          ],
+        },
+        {
+          type: "category",
+          label: "Semantic Layer APIs",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
+          items: [
+            "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-graphql",
+            "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
       ],

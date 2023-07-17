@@ -1,6 +1,6 @@
 ---
 title: "JDBC"
-id: jdbc
+id: sl-jdbc
 description: "Integrate and use the JDBC API to query your metrics."
 tags: ["semantic-layer, apis"]
 ---
@@ -25,7 +25,7 @@ A JDBC driver is a software component enabling a Java application to interact wi
 - You can download the JDBC driver from [Maven](https://search.maven.org/remotecontent?filepath=org/apache/arrow/flight-sql-jdbc-driver/12.0.0/flight-sql-jdbc-driver-12.0.0.jar). 
 - The dbt Semantic Layer supports ArrowFlight SQL driver version 12.0.0 and higher. 
 - You can embed the driver into your application stack as needed, and you can use dbt Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
-- To call the JDBC API in an application, you should install an AWS root CA to the Java Trust Store [documentation](https://www.amazontrust.com/repository/).
+- If you’re a partner or user building a homegrown application, you’ll need to install an AWS root CA to the Java Trust [documentation](https://www.amazontrust.com/repository/) (specific to Java and JDBC call).
 
 ## Connection parameters
 
@@ -44,9 +44,9 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 | `environmentId` | The unique identifier for the dbt production environment, you can retrieve this from the dbt Cloud URL <br /> when you navigate to **Environments** under **Deploy**. | If your URL ends with `.../environments/222222`, your `environmentId` is `222222`<br /><br />   |
 | `SERVICE_TOKEN` | dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” permission. Create a new service token in your **Account Settings** page. Encode the value before inserting it into the string.  | `token=SERVICE_TOKEN` |
 
-*Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable into the JDBC URL `&disableCertificateVerification=true`
+*Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable at the end or beginning of the JDBC URL `&disableCertificateVerification=true`.
 
-## Querying the API for Metric Metadata
+## Querying the API for metric metadata
 
 The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. Here are some metadata commands and examples:
 
@@ -92,7 +92,7 @@ semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="custome
 
 </Tabs>
 
-## Querying the API for Metric Values
+## Querying the API for metric values
 
 To query metric values, here are the following parameters that are available:
 
@@ -133,7 +133,7 @@ select * from {{
 
 ### Query grouped by time
 
-Use the following example query to fetch revenue and new customers grouped by time: 
+The following example query uses the [shorthand method](#faqs) to fetch revenue and new customers grouped by time:
 
 ```bash
 select * from {{
@@ -204,7 +204,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 ## FAQs
 
 - **Why do some dimensions use different syntax, like `metric_time` versus `[Dimension('metric_time')`?**<br />
-	When you select a dimension on its own, such as `metric_time` you don’t need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax (`[Dimension('metric_time')`) is required. 
+	When you select a dimension on its own, such as `metric_time` you can use the shorthand method which doesn't need the “Dimension” syntax. However, when you perform operations on the dimension, such as adding granularity, the object syntax `[Dimension('metric_time')` is required. 
 
 - **What does the double underscore `"__"` syntax in dimensions mean?**<br />
 	The double underscore `"__"` syntax indicates a mapping from an entity to a dimension, as well as where the dimension is located. For example, `user__country` means someone is looking at the `country` dimension from the `user` table.

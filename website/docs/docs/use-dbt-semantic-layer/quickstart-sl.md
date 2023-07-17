@@ -21,10 +21,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 - [Create your metrics](#create-your-metrics) with MetricFlow
 - [Run your production job](#run-your-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud
-- [Connect to the Semantic Layer APIs](#connect-to-apis)
-- [Query your metrics using partner integrations](#query-metrics)
-
-
+- [Connect and Query APIs](#connect-and-query-apis)
 
 ## Prerequisites
 
@@ -142,38 +139,21 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 <SlSetUp/>
 
 
-## Connect to the APIs
+## Connect and query APIs
 
 add content here
-
-## Query your metrics 
-
-add content
 
 ## FAQs
 
 If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
     
 <details>
-  <summary>How are you storing my data?</summary>
-  <div>
-    <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
-  </div>
+<summary>How are you storing my data?</summary>
+The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.
 </details>
 <details>
-    <summary>Is the dbt Semantic Layer open source?</summary>
-  <div>
-    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL-licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Discovery API are not open sources. <br></br><br></br>
-
-During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
-<ul>    
-<li>dbt Core users can define metrics in their dbt Core projects and calculate them using macros from the metrics package. To use the dbt Semantic Layer integrations, you will need to have a dbt Cloud account.</li><br></br><br></br>
-<li>Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Discovery API.</li><br></br><br></br>
-<li>Team and Enterprise accounts will be able to set up the Semantic Layer and Discovery API in the integrated partner tool to import metric definitions.</li>
-    </ul>
-    </div>
-    </div>
-</details>
+<summary>Is the dbt Semantic Layer open source?</summary>
+The dbt Semantic Layer is proprietary, however, some components of the dbt Semantic Layer are open source, like dbt-core and MetricFlow. <br /><br />The universal dbt Semantic Layer is available to all Team and Enterprise Plans during public beta. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.</details>
 
    
 ## Next steps

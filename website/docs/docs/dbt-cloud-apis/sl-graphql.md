@@ -1,6 +1,6 @@
 ---
 title: "GraphQL"
-id: graphql
+id: sl-graphql
 description: "Integrate and use the GraphQL API to query your metrics."
 tags: ["semantic-layer, apis"]
 ---
@@ -13,9 +13,8 @@ import UpgradeSL from '/snippets/_upgrade-new-sl.md';
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.6">
 
-## What is GraphQL?
+
 
 GraphQL is an open-source query language for APIs (Application Programming Interfaces). It provides a more efficient and flexible alternative to traditional RESTful APIs. 
 
@@ -26,7 +25,7 @@ Overall, GraphQL offers benefits such as being self-documenting, a strong typing
 
 ### dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API has the following capabilities, and has similarities to the calls available in our JDBC API.
+The dbt Semantic Layer GraphQL API has the following capabilities and has similarities to the calls available in our JDBC API.
 
 One benefit of GraphQL is its self documenting nature, so you can explore using our schema explorer(todolink). To give you an idea of the types of commands you can execute, we provide some available calls below.
 
@@ -91,4 +90,3 @@ order: [String!] = null
 ): String
 ```
 
-</VersionBlock>
