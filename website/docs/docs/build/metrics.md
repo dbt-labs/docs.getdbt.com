@@ -6,23 +6,9 @@ keywords:
   - dbt metrics layer
 ---
 
-<VersionBlock firstVersion="1.6">
+import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
-:::info dbt Metrics isn't supported
-
-dbt Metrics is no longer supported in v1.6 and higher. To build your semantic layer, define and query metrics, and provide data governance - refer to [Build your Semantic Layer](/docs/build/build-metrics-intro) for updated guidance.
-
-:::
-</VersionBlock>
-
-<VersionBlock lastVersion="1.5">
-
-:::info dbt Metrics not recommended
-
-dbt Metrics won't be supported in v1.6 and higher, and is being replaced with MetricFlow. [Defining metrics](/docs/build/build-semantic-layer-intro) with MetricFlow will help shape the future of the dbt Semantic Layer &mdash; let us know [your thoughts and join the convo](https://github.com/dbt-labs/dbt-core/discussions/7456) to help build it!
-
-:::
-
+<LegacyInfo />
 
 <Changelog>
 
@@ -31,6 +17,7 @@ dbt Metrics won't be supported in v1.6 and higher, and is being replaced with Me
 
 </Changelog>
  
+<VersionBlock lastVersion="1.5">
 
 A metric is an aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
@@ -218,9 +205,12 @@ Metrics can have many declared **properties**, which define aspects of your metr
 ### Available calculation methods
 
 <VersionBlock firstVersion="1.3">
+
 The method of calculation (aggregation or derived) that is applied to the expression.
 </VersionBlock> 
+
 <VersionBlock lastVersion="1.2">
+
 The type of calculation (aggregation or expression) that is applied to the sql property.
 </VersionBlock> 
  
@@ -541,6 +531,7 @@ The period to date secondary calculation performs an aggregation on a defined pe
 #### Rolling:
 
 <VersionBlock firstVersion="1.3" >
+
 The rolling secondary calculation performs an aggregation on a number of rows in metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4` then the value returned will be a rolling 4 week calculation of whatever aggregation type was selected. If the `interval` input is not provided then the rolling caclulation will be unbounded on all preceding rows.
 
 | Input                      | Example | Description | Required |
@@ -552,6 +543,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 </VersionBlock>
 
 <VersionBlock lastVersion="1.2" >
+
 The rolling secondary calculation performs an aggregation on a number of rows in the metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4`, then the value returned will be a rolling 4-week calculation of whatever aggregation type was selected.
 
 | Input                      | Example | Description | Required |
@@ -715,4 +707,6 @@ The above example will return a dataset that contains the metric provided in the
 </VersionBlock>
 
 <Snippet path="discourse-help-feed-header" />
+
 <DiscourseHelpFeed tags="metrics"/>
+

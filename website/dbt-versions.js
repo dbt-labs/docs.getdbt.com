@@ -183,6 +183,22 @@ exports.versionedPages = [
     "page": "docs/build/ratio",
     "firstVersion": "1.6",
   },
+  {
+    "category": "docs/use-dbt-semantic-layer/sl-api-overview",
+    "firstVersion": "1.6",
+  },
+	{
+    "category": "docs/use-dbt-semantic-layer/graphql",
+    "firstVersion": "1.6",
+  },
+	{
+    "category": "docs/use-dbt-semantic-layer/jdbc",
+    "firstVersion": "1.6",
+  },
+  {
+    "category": "docs/use-dbt-semantic-layer/sl-manifest",
+    "firstVersion": "1.6",
+  },
 ]
 
 exports.versionedCategories = [

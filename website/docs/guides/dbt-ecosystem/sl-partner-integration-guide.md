@@ -86,7 +86,7 @@ To build a successful and seamless dbt Semantic Layer integration, it should exp
 
 This section will explain how to connect to and query the [Discovery API](/docs/dbt-cloud-apis/discovery-api) for model and metric definitions. 
 
-To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-semantic-layer/dbt-semantic-layer#prerequisites). 
+To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-semantic-layer/dbt-sl#prerequisites). 
 
 <details>
   <summary><b>Discovery API authorization</b></summary>
@@ -652,7 +652,7 @@ If you'd like to become a formal partner, have product feedback/questions, or ar
 
 ## Related docs
 
-- [dbt Semantic Layer docs](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-semantic-layer) to learn about the product.
+- [dbt Semantic Layer docs](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [dbt Metrics docs](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) for more information about its components.
 - [dbt Semantic Layer intro blog](https://www.getdbt.com/blog/dbt-semantic-layer/) and [launch blog](https://www.getdbt.com/blog/frontiers-of-the-dbt-semantic-layer/) to learn more about the product vision and purpose. 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
