@@ -764,6 +764,9 @@ Views with this configuration will be able to select from objects in `project_1.
 
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
 
+<VersionBlock firstVersion="1.6">
+
+
 ## Materialized view
 
 The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro) and refreshes them for every subsequent `dbt run` you execute. For more information, see [Refresh Materialized Views](https://cloud.google.com/bigquery/docs/materialized-views-manage#refresh) in the Google docs.
@@ -804,3 +807,5 @@ models:
     materialized: materialized_view
 ```
 </File>
+
+</VersionBlock>
