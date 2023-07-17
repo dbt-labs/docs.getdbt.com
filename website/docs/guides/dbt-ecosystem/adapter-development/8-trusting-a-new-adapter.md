@@ -15,13 +15,14 @@ By opt-ing into the below, you agree to this, and we take you at your word. dbt 
 
 To be considered for the Trusted Adapter program, the adapter must cover the essential functionality of dbt Core given below, with best effort given to support the entire feature set.
 
+Essential functionality includes (but is not limited to the following features):
+
+- table, view, and seed materializations
+- dbt tests
+
 The adapter should have the required documentation for connecting and configuring the adapter. The dbt docs site should be the single source of truth for this information. These docs should be kept up-to-date.
 
-See [this guide](https://docs.getdbt.com/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter) for more information
-
-#### what is essential?
-
-tables, views, seeds, tests etc
+See [Documenting a new adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter) for more information.
 
 ### Release Cadence
 

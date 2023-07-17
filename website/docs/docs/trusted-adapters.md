@@ -5,20 +5,22 @@ id: "trusted-adapters"
 
 Trusted adapters are adapters not maintained by dbt Labs, that we feel comfortable recommending to users for use in production.
 
-### to be toggle heading'd
+Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a *good thing*, however it requires due dilligence that wasn't required in a paid-license, closed-source software world. As a user, there are questions to answer important before taking a dependency on an open-source project. The trusted adapter designation is meant to streamline this process for end users.
 
-Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a *good thing*, however it requires due dilligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source projet is is important to determine the answer to the following questions:
+<details><summary>Considerations for depending on an open-source project</summary>
 
 1. Does it work?
 2. Does anyone "own" the code, or is anyone liable for ensuring it works?
 3. Do bugs get fixed quickly?
 4. Does it stay up-to-date with new Core features?
 5. Is the usage substantial enough to self-sustain?
-6. What risks do I take on by taking a dependency on this library?
+pendency on this library?
 
-### for adapter maintainers
+</details>
 
-if you're an adapter maintainer interested in joining the trusted adapter program click [Building a Trusted Adapter](8-building-a-trusted-adapter).
+### Trusted adapter specifications
+
+See [Building a Trusted Adapter](/guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter) for more information, particularly if you are an adapter maintainer considering having your adapter be added to the trusted list.
 
 ### Trusted vs Verified
 
@@ -27,8 +29,7 @@ The Verification program (currently paused) exists to highlight adapters that me
 - the guidelines given in the Trusted program,
 - formal agreements required for integration with dbt Cloud
 
-For more information on the Verified Adapter program, reach out the [dbt Labs parnterships team](partnerships@dbtlabs.com)
-
+For more information on the Verified Adapter program, reach out the [dbt Labs partnerships team](mailto:partnerships@dbtlabs.com)
 
 ### Trusted adapters
 
