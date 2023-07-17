@@ -5,7 +5,7 @@ description: "You can set up your Azure DevOps by creating an Azure AD app and a
 sidebar_label: "Set up Azure DevOps"
 ---
 
-<Snippet src="available-enterprise-tier-only" />
+<Snippet path="available-enterprise-tier-only" />
 
 ## Overview
 

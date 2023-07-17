@@ -269,7 +269,7 @@ models:
 
 </Tabs>
 
-The configuration above says: Instead of two unrelated models, I have two versioned definitions of the same model: `dim_customers.v1` and `dim_customers.v2`.
+The configuration above says: Instead of two unrelated models, I have two versioned definitions of the same model: `dim_customers_v1` and `dim_customers_v2`.
 
 **Where are they defined?** dbt expects each model version to be defined in a file named `<model_name>_v<v>`. In this case: `dim_customers_v1.sql` and `dim_customers_v2.sql`. It's also possible to define the "latest" version in `dim_customers.sql` (no suffix), without additional configuration. Finally, you can override this convention by setting [`defined_in: any_file_name_you_want`](/reference/resource-properties/versions#defined_in)—but we strongly encourage you to follow the convention, unless you have a very good reason.
 
@@ -299,7 +299,7 @@ Like with all config inheritance, any configs set _within_ the versioned model's
 
 ### Configuring database location with `alias`
 
-Following the example, let's say you wanted `dim_customers.v1` to continue populating the database table named `dim_customers`. That's what the table was named previously, and you may have several other dashboards or tools expecting to read its data from `<dbname>.<schemaname>.dim_customers`.
+Following the example, let's say you wanted `dim_customers_v1` to continue populating the database table named `dim_customers`. That's what the table was named previously, and you may have several other dashboards or tools expecting to read its data from `<dbname>.<schemaname>.dim_customers`.
 
 You could use the `alias` configuration:
 
@@ -412,4 +412,4 @@ We expect to develop more opinionated recommendations as teams start adopting mo
 - Where possible, define other versions as `select` transformations, which take the latest version as their starting point
 - When bumping the `latest_version`, migrate the SQL and YAML accordingly.
 
-In the example above, the third point might be tricky. It's easier to _exclude_ `country_name`, than it is to add it back in. Instead, we might need to keep around the full original logic for `dim_customers.v1`—but materialize it as a `view`, to minimize the data warehouse cost of building it. If downstream queriers see slightly degraded performance, it's still significantly better than broken queries, and all the more reason to migrate to the new "latest" version.
+In the example above, the third point might be tricky. It's easier to _exclude_ `country_name`, than it is to add it back in. Instead, we might need to keep around the full original logic for `dim_customers_v1`—but materialize it as a `view`, to minimize the data warehouse cost of building it. If downstream queriers see slightly degraded performance, it's still significantly better than broken queries, and all the more reason to migrate to the new "latest" version.

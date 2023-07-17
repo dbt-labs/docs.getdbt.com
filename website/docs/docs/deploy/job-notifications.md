@@ -22,4 +22,4 @@ There are two options for setting up email notifications. As a **user**, you can
 
 ### Slack
 
-<Snippet src="slack-notifications-config-steps" />
+<Snippet path="slack-notifications-config-steps" />
