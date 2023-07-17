@@ -66,7 +66,7 @@ The adapter repository is:
 
 ## How to get an adapter verified?
 
-To submit your adapter for consideration as a Trusted adapter, use the "trusted adapter" issue template on the docs.getdbt.com repository. This will prompt you to agree to the following checkboxes:
+Open an issue on the [docs.getdbt.com GitHub repository](https://github.com/dbt-labs/docs.getdbt.com) using the "Add adapter to Trusted list" template. In addition to contact information, it will ask confirm that you agree to the following.
 
 1. my adapter meet the guidelines given above
 2. I will make best reasonable effort that this continues to be so
