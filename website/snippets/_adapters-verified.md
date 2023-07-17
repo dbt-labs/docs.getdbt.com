@@ -54,3 +54,5 @@
     icon="rocket"/>
 
 </div>
+
+* Install these adapters using the CLI as they're not currently supported in dbt Cloud. <br />

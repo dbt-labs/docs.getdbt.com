@@ -8,6 +8,7 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/connect-adapters",
+        "docs/verified-adapters",
         "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-core-adapters",

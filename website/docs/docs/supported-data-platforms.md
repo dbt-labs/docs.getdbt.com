@@ -26,9 +26,6 @@ import AdaptersVerified from '/snippets/_adapters-verified.md';
 
 <AdaptersVerified />
 
-<br />
-* Install these adapters using the CLI as they're not currently supported in dbt Cloud. <br />
-
 ### Trusted adapters
 
 The following are **Trusted adapters** ✓ you can connect to in dbt Core:
