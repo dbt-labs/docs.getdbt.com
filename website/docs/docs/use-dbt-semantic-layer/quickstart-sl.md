@@ -93,9 +93,11 @@ group by metric_time_day, country  -- dimensions
 
 ## Define metrics
 
-Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
+Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). 
 
-The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
+1. You can define metrics in the same YAML files as your semantic models, or create a new file.
+
+2. The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 
 ```yaml
 ---
@@ -106,10 +108,16 @@ metrics:
     measure: transaction_amount_usd
 ```
  
-1. Click **Save** and then **Preview** the code in the dbt Cloud IDE.
-2. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions in the IDE.
+3. Click **Save** and then **Preview** the code in the dbt Cloud IDE.
+
+
+### Test metrics
+
+The following steps explain how to query and test your metrics, which currently is only available via the CLI. However, IDE support will be available soon:
+
+1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions in the IDE.
 3. Run `mf validate-configs` to validate the changes before committing them.
-4. Commit and merge the code changes that contain the metric definitions.
+3. Commit and merge the code changes that contain the metric definitions.
 
 To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 

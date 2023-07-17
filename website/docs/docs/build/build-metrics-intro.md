@@ -12,18 +12,15 @@ Use MetricFlow in dbt to centrally define your metrics. MetricFlow is a key comp
 Use familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 :::info
-MetricFlow is currently available on dbt Core v1.6 beta for [command line (CLI)](/docs/core/about-the-cli) users, with support for dbt Cloud and integrations coming soon. MetricFlow, a BSL package (code is source available), is a new way to define metrics in dbt and will replace the dbt_metrics package.
+MetricFlow is currently available on dbt v1.6 beta for dbt Cloud users. MetricFlow, is a new way to define metrics in dbt and  replaces the dbt_metrics package.
 
 To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 :::
 
 Before you start, keep the following considerations in mind:
-- Use the CLI to define metrics in YAML and query them using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on dbt Core v1.6 beta or higher to use MetricFlow. [Upgrade your dbt version](/docs/core/pip-install#change-dbt-core-versions) to get started.
-  * Note: Support for dbt Cloud and querying via external integrations coming soon.
-- MetricFlow currently only supports Snowflake and Postgres.
-  * Note: Support for BigQuery, Databricks, and Redshift coming soon.
-- dbt Labs is working with [integration partners](https://www.getdbt.com/product/semantic-layer-integrations) to develop updated integrations for the new Semantic Layer, powered by MetricFlow, in addition to introducing other consumption methods like Python and JDBC. <br /><br />
+- Define metrics in YAML and query them using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
+- You must be on dbt v1.6 beta or higher to use MetricFlow. [Upgrade your dbt Cloud version](/docs/dbt-versions/upgrade-core-in-cloud) to get started.
+- MetricFlow currently only supports Snowflake, Postgres, BigQuery, Databricks, and Redshift
 
 <div className="grid--3-col">
 
