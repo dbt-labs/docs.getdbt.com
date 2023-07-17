@@ -14,30 +14,27 @@ import UpgradeSL from '/snippets/_upgrade-new-sl.md';
 </VersionBlock>
 
 
+[GraphQL](https://graphql.org/) is an open-source query language for APIs. It offers a more efficient and flexible approach compared to traditional RESTful APIs. 
 
+With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
 
-GraphQL is an open-source query language for APIs (Application Programming Interfaces). It provides a more efficient and flexible alternative to traditional RESTful APIs. 
+GraphQL has several advantages, such as self-documenting, having a strong typing system, supporting versioning and evolution, enabling rapid development, and having a robust ecosystem. These features make GraphQL a powerful choice for APIs that prioritize flexibility, performance, and developer productivity.
 
-With GraphQL, clients can request specific data requirements using a single query. GraphQL allows clients to retrieve all the needed data in a single request. This reduces the number of round trips to the server, minimizing network overhead and improving performance.
+## dbt Semantic Layer GraphQL API
 
-Overall, GraphQL offers benefits such as being self-documenting, a strong typing system, versioning and evolution support, enabling rapid development, and a robust ecosystem. These advantages make GraphQL a powerful choice for building APIs that prioritize flexibility, performance, and developer productivity.
+The dbt Semantic Layer GraphQL API offers capabilities like the JDBC API. It allows you to explore and execute commands conveniently through its self-documenting nature using the schema explorer (need link from roxi). 
 
+### Metric metadata calls
 
-### dbt Semantic Layer GraphQL API
+Use the following example calls to provide you with an idea of the types of commands you can use:
 
-The dbt Semantic Layer GraphQL API has the following capabilities and has similarities to the calls available in our JDBC API.
+**Fetch available metrics**
 
-One benefit of GraphQL is its self documenting nature, so you can explore using our schema explorer(todolink). To give you an idea of the types of commands you can execute, we provide some available calls below.
-
-
-**Metric Metadata Calls**
-
-Fetch available metrics
 ```graphql
 metrics(environmentId: Int!): [Metric!]!
 ```
 
-Fetch available dimensions for metrics
+**Fetch available dimensions for metrics**
 
 ```graphql
 dimensions(
@@ -46,7 +43,7 @@ metrics: [String!]!
 ): [Dimension!]!
 ```
 
-Fetch available time granularities given metrics
+**Fetch available time granularities given metrics**
 
 ```graphql
 queryableGranularities(
@@ -55,7 +52,7 @@ metrics: [String!]!
 ): [TimeGranularity!]!
 ```
 
-Fetch available metrics given a set of a dimensions
+**Fetch available metrics given a set of a dimensions**
 
 ```graphql
 metricsForDimensions(
@@ -64,7 +61,7 @@ dimensions: [String!]!
 ): [Metric!]!
 ```
 
-Fetch dimension values for metrics and a given dimension
+**Fetch dimension values for metrics and a given dimension**
 
 ```graphql
 dimensionValues(
@@ -73,7 +70,7 @@ metrics: [String!]!
 dimension: String!
 ```
 
-**Metric Value Query Parameters**
+### Metric value query parameters
 
 The mutation is `createQuery`. The parameters are as follows:
 

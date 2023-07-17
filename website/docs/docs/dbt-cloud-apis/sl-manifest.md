@@ -5,6 +5,14 @@ description: "Learn about the semantic manifest.json file and how you can use ar
 sidebar_label: "Semantic manifest"
 ---
 
+<VersionBlock lastVersion="1.5">
+
+import UpgradeSL from '/snippets/_upgrade-new-sl.md';
+
+<UpgradeSL />
+
+</VersionBlock>
+
 The dbt Semantic Layer creates an [artifact](/reference/artifacts/dbt-artifacts) file called the "Semantic Manifest" (`semantic_manifest.json`). This artifact contains comprehensive information about your Semantic Layer. You can use it as a valuable reference to understand the structure and details of your data models.
 
 Similar to the `manifest.json` file, the Semantic Manifest also lives in the `/target` directory of your dbt project. This is where dbt stores various artifacts (such as compiled models and tests) generated during the execution of your project.
