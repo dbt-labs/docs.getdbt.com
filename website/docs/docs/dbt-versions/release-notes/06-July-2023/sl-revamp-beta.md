@@ -9,16 +9,16 @@ sidebar_position: 9
 
 We are thrilled to announce the re-release of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), now available in [public beta](#public-beta). It revolutionizes data analysis by introducing:
 
-- [MetricFlow](/docs/build/about-metricflow) &mdash;  a new way to define metrics in dbt and one of the key components of the dbt Semantic Layer
+- [MetricFlow](/docs/build/about-metricflow), a new way to define metrics in dbt and one of the key components of the dbt Semantic Layer,
 - New semantic components like semantic models and metrics, which help lay the foundation for effective organization and interaction with data,
-- Improved governance, enhanced efficiency, and data accessibility
-- New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics and build integrations
+- Improved governance, enhanced efficiency, and data accessibility,
+- New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics and build integrations.
 
 With semantics at its core, the dbt Semantic Layer marks a crucial milestone towards a new era of centralized logic and data applications.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="The universal dbt Semantic Layer connecting to integration tools."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="75%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
-## Why the dbt Semantic Layer?
+## Enhanced dbt Semantic Layer
 
 What sets the dbt Semantic Layer apart is its ability to centralize logic and data applications, streamlining processes and enabling efficient management and utilization of data models. It provides a consistent view of data, incorporating context and historical information, simplifying complex tasks, and reducing costs.
 
@@ -38,15 +38,16 @@ By bringing these enhancements to the dbt Semantic Layer, we enable organization
 
 ## Public beta 
 
-THINKING OF TURNING INTO A TABLE ONCE I HAVE THE ACCURATE INFO AND MOVING ABOVE AFTER INTO (BEFORE 'WHY SL')
-
 The dbt Semantic Layer is currently available as a public beta, which means:
 
-- **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during public beta. 
-  * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which requires access to the Semantic Layer and Discovery APIs. 
-- **What?** Public Previews provide early access to new features. The Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to general availability. We may also introduce new functionality that isn't backwards compatible. dbt Labs provides support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer alongside the General Available (GA) release (future GA date to be announced).
-- **When?**  Public Preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
-- **Where?** Public Preview is enabled at the account level so you don’t need to worry about enabling it per user
+- **Who** &mdash; To experience the new dbt Semantic Layer, you must be on a dbt Cloud [Team and Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plan, [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America and on dbt v1.6 and higher. 
+  * Developer plans or dbt Core users can use MetricFlow to define and test metrics using the CLI only. 
+
+- **What** &mdash; Public beta provides early access to new features. The Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to general availability. We may also introduce new functionality that isn't backwards compatible. dbt Labs provides support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer alongside the General Available (GA) release (future GA date to be announced). DO WE MENTION THAT WE'RE NOT CHARGING?
+
+- **When** &mdash; Public beta will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will make pricing information available.  DO WE MENTION THAT WE'LL BEGIN CHARGING?
+
+- **Where** &mdash; You can experience the dbt Semantic Layer in dbt Cloud. Public beta is enabled at the account level so you don’t need to worry about enabling it per user.
 
 ## Next steps
 
