@@ -101,7 +101,8 @@ models:
       - name: FIRSTNAME
         description: First name of the staff member
         tests:
-          - not_null | - name: JOBTITLE
+          - not_null
+      - name: JOBTITLE
         description: Job title of the staff member
       - name: LASTNAME
         description: Last name of the staff member
