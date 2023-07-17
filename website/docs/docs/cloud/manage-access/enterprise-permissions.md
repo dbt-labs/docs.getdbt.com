@@ -20,7 +20,7 @@ The following permission sets are available for assignment in dbt Cloud Enterpri
 can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
 can be associated with more than one permission sets.
 
-<Snippet src="enterprise-permissions-table" />
+<Snippet path="enterprise-permissions-table" />
 
 ### Account Admin
 
