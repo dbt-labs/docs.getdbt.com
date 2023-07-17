@@ -14,8 +14,6 @@ import UpgradeSL from '/snippets/_upgrade-new-sl.md';
 </VersionBlock>
 
 
-
-
 GraphQL is an open-source query language for APIs (Application Programming Interfaces). It provides a more efficient and flexible alternative to traditional RESTful APIs. 
 
 With GraphQL, clients can request specific data requirements using a single query. GraphQL allows clients to retrieve all the needed data in a single request. This reduces the number of round trips to the server, minimizing network overhead and improving performance.
