@@ -1,20 +1,21 @@
 ---
 title: "Create dbt Documentation and Tests 10x faster with ChatGPT"
-description: "You can use ChatGPT to infer the context of verbosely named fields from database table schemas."
-slug: data-vault-with-dbt-cloud
+description: "You cangit s use ChatGPT to infer the context of verbosely named fields from database table schemas."
+slug: create-dbt-documentation-10x-faster-with-ChatGPT
 
-authors: []
+authors: [pedro_brito_de_sa]
 
 tags: [analytics craft, data ecosystem] 
 hide_table_of_contents: true
 
-date: 2023-07-17
+date: 2023-07-18
 is_featured: true
 ---
 
 Whether you are creating your pipelines into dbt for the first time or just adding a new model once in a while, **good documentation and testing should always be a priority** for you and your team. Why do we avoid it like the plague then? Because it’s a hassle having to write down each individual field, its description in layman terms and figure out what tests should be performed to ensure the data is fine and dandy. How can we make this process faster and less painful?
 
 By now, everyone knows the wonders of the GPT models for code generation and pair programming so this shouldn’t come as a surprise. But **ChatGPT really shines** at inferring the context of verbosely named fields from database table schemas. So in this post I am going to help you 10x your documentation and testing speed by using ChatGPT to do most of the leg work for you.
+<!--truncate-->
 
 As a one-person Analytics team at [Sage](http://www.hellosage.com/) I had to create our dbt pipelines from the ground up. This meant 30+ of facts and dimensions into a Staging Layer, plus all of the following layers of augmented models and Mart tables. After the fact, we are talking about 3500+ lines of YAML that I was NOT excited to get started on. Fortunately for me, this was February 2023 and ChatGPT had just come out and boy, was I glad to use it. After a good dose of “prompt engineering” I managed to get most of my documentation and tests written out, only needing a few extra tweaks.
 
@@ -24,7 +25,9 @@ Writing this article as of July 2023, and now powered by GPT-4 and not GPT 3.5, 
 
 ChatGPT can only infer so much, so tables with names and fields that resemble encryption keys are unlikely to be good for this approach. In this example we are going to use this table:
 
-**create** **or** **replace** TRANSIENT **TABLE** STAGING.BASE.STG_STAFF_MEMBER (
+
+```sql
+create or replace TRANSIENT TABLE STAGING.BASE.STG_STAFF_MEMBER (
 
 CREATEDATETIME TIMESTAMP_NTZ(9),
 
@@ -44,10 +47,11 @@ ISARCHIVED BOOLEAN,
 
 ADDRESSRID VARCHAR(16777216),
 
-RID VARCHAR(16777216),
+RID VARCHAR(16777216)
 
 );
 
+```
 ---
 
 I copied this definition from Snowflake, and I would recommend that you always include both the name and type of the fields to get better results. This is especially helpful if you want to make sure ChatGPT correctly distinguishes between text, number, boolean or array fields, which may not be clear from the name alone.
@@ -58,11 +62,10 @@ We all know how ChatGPT can digest very complex prompts, but as this is a tool f
 
 Opening ChatGPT with GPT4, my first prompt is usually along these lines:
 
-https://lh6.googleusercontent.com/Br3y0mrYrz3a6X2rESwtO0tdbgR54sI3oHjySWVRec6ypPilWlbKPgg_vEt-xvT0Uc0_CUwQajlzqySEy1zheZW3dFhRaXoYPPi5ZKkG0C9-SHzNqnxfhsbJ_uLsTVjxkSRJCGJmRt7YNX5l_3VrVpk
-
+![Alt text](../static/img/blog/2023-07-17-GPT-and-dbt-test/image3.png)
 And the output of this simple prompt is nothing short of amazing:
-
-| version: 2
+```yaml
+version: 2
 
 models:
   - name: stg_staff_member
@@ -124,13 +127,13 @@ models:
       - name: ISDELETED
         description: Flag to indicate if the staff member record is deleted |
 | --- | --- |
+```
 
 Back in my day (5 months ago), ChatGPT with GPT 3.5 didn’t have much context on what a dbt-style YAML file was, so the result was a funky, non-dbt YAML format. If you are using GPT 3.5 and the results you get from the first prompt don’t compile in dbt, I would recommend an extra step I took which is to pass your understanding of what a dbt-style YAML file is. You can do this simply by copy-pasting a piece of a publicly available YAML file like [this one from the Jaffle Shop example](https://github.com/dbt-labs/jaffle_shop/blob/main/models/schema.yml), or a piece of YAML from your own code base.
 
 A prompt for it would look something like:
 
-https://lh5.googleusercontent.com/nFJWamgMyNTBpk_mHUVAf8A1kFerVZNqpJ7ygim73_3MPB3bfOqJrdHTiNc-7TZ7bkkI4UXpoRd9z5aL2oGkahV8uj3A8_fEDk2bTH6npwpymhiwkH1KYP2a4EJgI23LVUZaOTc-uOiLdNBFbUARrgA
-
+![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image5.png)
 ## Specify details on generic tests in your prompts
 
 dbt has four built-in generic tests: unique, not_null, accepted_values and relationships. My approach to adding details on these to the prompts is one of ‘more is better’, as in it’s faster to just delete tests that I don’t need in certain fields than having to add them manually.
@@ -144,11 +147,12 @@ Accepted_values and relationships are slightly trickier but the model can be adj
 
 One way of doing this is with a prompt like this:
 
-https://lh5.googleusercontent.com/X1fjP0gWLJcwu4GhW9lyfnJmsPNhSkVuLQd6dxO8CTDHdjU06rWBxcHpZNTVbxWOBqehpWHn_mZu4nzFrKUZ0Po1jSKSvIrsbgUeuZzkdRcfNL4WjLEXYvHo86gxMVKS2ty11jVLLtGZvaAhEMXV6IA
+![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image4.png)
 
 Which results in the following output:
 
-| version: 2
+```yaml
+version: 2
 
 models:
   - name: stg_staff_member
@@ -236,6 +240,7 @@ models:
         tests:
           - not_null |  |
 | --- | --- | --- |
+```
 
 Even though it doesn’t magically guess the categories of your variables or your relationships, it is definitely helpful to have some placeholders in the right places.
 
@@ -247,16 +252,15 @@ This is where things get fun. If you don’t know it already, you can [create cu
 
 For example, while asking ChatGPT to help me write a test called ‘is_boolean’, the results are slightly underwhelming but still helpful as a starting point.
 
-https://lh6.googleusercontent.com/9qTZ8Iw-e8VSb24h3Nt7nBefkiOE7DUmSqEq16hWXIzPqJxnAbOd4hNDOfSIglTBv-UiRSLl27LudvKNtvUt_YqJug_4ABZPL4QdqWW_RdeJznYYRWMwWCSy51Mev5JcAoETxXo_X-vV2S9CEd-VZ6U
-
+![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image1.png)
 However, once you have your custom tests designed, if you have named them in an equally verbose way, you can actually add them to your prompt and ChatGPT will make some fairly accurate attributions.  In my case, I designed tests like is_boolean, is_integer, and string_max_length that takes a length input.
 
 So, a fully grown prompt for both documentation and testing could like this:
 
-https://lh5.googleusercontent.com/4NBPvwVbzTUNgYYqMJMiAJVM9dOsnc3JZY783-stFS8Ka_u4WRtnqidyo6FJe85WTBKgnmZ0k0rGbrl_RsAUvkX6JoQWZ-VmzE370-xVAEC_W9w-Vxgamt8q8lWU5Y5ca9PRqtWxcIDA0jD50DFVN_w
-
+![Example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image2.png)
 And the results of this query were:
 
+```yaml
 | version: 2
 
 models:
@@ -375,8 +379,7 @@ models:
         tests:
           - not_null
           - is_boolean |
-| --- | --- |
-
+```
 ## Wrap-Up
 
 Creating documentation is still a very manual job, and this approach only works for one table at a time (maybe you can be the one leveraging the OpenAI API and creating a webapp that processes multiple tables at once?). However, ChatGPT can clearly cut a lot of time in these tasks.
