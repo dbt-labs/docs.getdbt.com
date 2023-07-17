@@ -79,6 +79,7 @@ div.spotlightMemberCard {
   }
   div.spotlightMemberCard {
     margin-bottom: 0;
+    padding-left: 0 !important;
   }
   .spotlightMemberCard .spotlightMemberImgContainer {
     flex: 0 0 346px;
