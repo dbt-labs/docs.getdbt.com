@@ -12,7 +12,7 @@ Use MetricFlow in dbt to centrally define your metrics. MetricFlow is a key comp
 Use familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 :::info
-MetricFlow is currently available on dbt v1.6 beta for dbt Cloud users. MetricFlow, is a new way to define metrics in dbt and  replaces the dbt_metrics package.
+MetricFlow is currently available on dbt v1.6 or higher. MetricFlow, is a new way to define metrics in dbt and  replaces the dbt_metrics package.
 
 To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 :::

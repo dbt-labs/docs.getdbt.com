@@ -9,7 +9,7 @@ sidebar_position: 9
 
 We are thrilled to announce the re-release of the dbt Semantic Layer, now available in [public beta](#public-beta). It revolutionizes data analysis by introducing new semantic components that lay the foundation for effective organization and interaction with data. With semantics at its core, the dbt Semantic Layer marks a crucial milestone towards a new era of centralized logic and data applications.
 
-<Lightbox src="/img/sl-architecture.jpg" width="95%" title="The dbt Semantic Layer diagram displays how data flows from sources to your platform. Define and query metrics using with dbt Cloud for consistent organization-wide metrics." />
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 ## Why the dbt Semantic Layer?
 

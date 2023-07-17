@@ -22,7 +22,7 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
-- [semantic manifest](/docs/use-dbt-semantic-layer/sl-manifest): Lives in the `/target` directory of your dbt project and stores various artifacts (such as compiled models and tests) generated during the execution of your project.
+- [semantic manifest](/docs/dbt-cloud-apis/sl-manifest): Lives in the `/target` directory of your dbt project and stores various artifacts (such as compiled models and tests) generated during the execution of your project.
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
