@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Starburst Galaxy"
 id: "starburst-galaxy"
 platform: 'dbt-cloud'
+icon: 'starburst'
 hide_table_of_contents: true
 ---
 ## Introduction
@@ -37,7 +38,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 ### Related content
 
 - [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 - [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)    
@@ -213,7 +214,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 12. Click **Next** if the test succeeded. If it failed, you might need to check your Starburst Galaxy settings and credentials.
 
 ## Set up a dbt Cloud managed repository 
-<Snippet src="tutorial-managed-repo" />
+<Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
@@ -292,23 +293,23 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Project/which-schema" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
 
 ## Change the way your model is materialized
 
-<Snippet src="quickstarts/change-way-model-materialized" />
+<Snippet path="quickstarts/change-way-model-materialized" />
 
 ## Delete the example models
 
-<Snippet src="quickstarts/delete-example-models" />
+<Snippet path="quickstarts/delete-example-models" />
 
 ## Build models on top of other models
 
-<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+<Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
@@ -400,13 +401,13 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
-<Snippet src="quickstarts/test-and-document-your-project" />
+<Snippet path="quickstarts/test-and-document-your-project" />
 
-<Snippet src="quickstarts/schedule-a-job" />
+<Snippet path="quickstarts/schedule-a-job" />
 
 
 ## Connect to multiple data sources

@@ -6,7 +6,7 @@ id: "discovery-schema-environment"
 
 import { ArgsTable, SchemaTable } from "./schema";
 
-<Snippet src="discovery-public-preview-banner" />
+<Snippet path="discovery-public-preview-banner" />
 
 This environment object allows you to query information about a particular model based on `environmentId`.
 
@@ -43,7 +43,7 @@ query Example {
 				edges { node {
 					rawCode, # Compare to see if/how the model has changed since the last build
 					jobDefinitionId, runGeneratedAt,	# When the code was last compiled or run
-					contract_enforced, group, version}}} # Model governance
+					contractEnforced, group, version}}} # Model governance
 		}
 	}
 ```

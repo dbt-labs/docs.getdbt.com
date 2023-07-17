@@ -8,19 +8,19 @@ The Discovery API supports ad-hoc queries and integrations.. If you are new to t
 
 Use the Discovery API to evaluate data pipeline health and project state across runs or at a moment in time. dbt Labs provide a [GraphQL explorer](https://metadata.cloud.getdbt.com/graphql) for this API, enabling you to run queries and browse the schema. 
 
-Since GraphQL provides a description of the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.  
+Since GraphQL describes the data in the API, the schema displayed in the GraphQL explorer accurately represents the graph and fields available to query.  
 
-<Snippet src="metadata-api-prerequisites" />
+<Snippet path="metadata-api-prerequisites" />
 
 ## Authorization
 
-Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Discovery Only service token that is authorized to execute a specific query against the Discovery API.
+Currently, authorization of requests takes place [using a service token](/docs/dbt-cloud-apis/service-tokens). dbt Cloud admin users can generate a Metadata Only service token that is authorized to execute a specific query against the Discovery API.
 
-Once you've created a token, you can use it in the Authorization header of requests to the dbt Cloud Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used in place of `Token` in the Authorization header. Both syntaxes are equivalent. 
+Once you've created a token, you can use it in the Authorization header of requests to the dbt Cloud Discovery API. Be sure to include the Token prefix in the Authorization header, or the request will fail with a `401 Unauthorized` error. Note that `Bearer` can be used instead of `Token` in the Authorization header. Both syntaxes are equivalent. 
 
 ## Access the Discovery API 
 
-1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Discovery Only_ service token, which can be used to execute a specific query against the Discovery API for authorization of requests.
+1. Create a [service account token](/docs/dbt-cloud-apis/service-tokens) to authorize requests. dbt Cloud Admin users can generate a _Metadata Only_ service token, which can be used to execute a specific query against the Discovery API to authorize requests.
 
 2. Find your API URL using the endpoint `https://metadata.{YOUR_ACCESS_URL}/graphql`. 
 
@@ -57,14 +57,15 @@ metadata = response.json()['data'][ENDPOINT]
 
 Every query will require an environment ID or job ID. You can get the ID from a dbt Cloud URL or using the Admin API.
 
-There are several illustrative example queries in this documentation. You can see an examples in the [use case guide](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
+There are several illustrative example queries on this page. For more examples, refer to [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples).
 
 
 ## Reasonable use
 
-To maintain performance and stability, and prevent abuse, Discovery (GraphQL) API usage is subject to request rate and response size limits.
-- The current request rate limit is 200 requests within a minute for a given IP address. If a user exceeds this limit, they will receive an HTTP 429 response status.
+Discovery (GraphQL) API usage is subject to request rate and response size limits to maintain the performance and stability of the metadata platform and prevent abuse.
+- The current request rate limit is 200 requests for a given IP address within a minute. If you exceed this limit, you will receive an HTTP 429 response status.
 - Environment-level endpoints will be subject to response size limits in the future. The depth of the graph should not exceed three levels. A user can paginate up to 500 items per query.
+- Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a dbt Cloud project.
 
 ## Retention limits
 You can use the Discovery API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.

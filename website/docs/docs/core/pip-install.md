@@ -8,9 +8,9 @@ You need to use `pip` to install dbt Core on Windows or Linux operating systems.
 You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/). We recommend using virtual environments when installing with `pip`.
 
 
-<FAQ src="Core/install-pip-os-prereqs" />
-<FAQ src="Core/install-python-compatibility" />
-<FAQ src="Core/install-pip-best-practices" />
+<FAQ path="Core/install-pip-os-prereqs" />
+<FAQ path="Core/install-python-compatibility" />
+<FAQ path="Core/install-pip-best-practices" />
 
 
 Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For example, if using Postgres:
