@@ -1,5 +1,7 @@
 ## semantic layer
 
+https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer  https://www.getdbt.com/blog/new-dbt-semantic-layer-spec-dna/ 301
+https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  https://www.getdbt.com/blog/new-dbt-semantic-layer-spec-dna/ 301
 /guides/dbt-ecosystem/sl-partner-integration-guide  /docs/use-dbt-semantic-layer/avail-sl-integrations 301
 /docs/build/sl-getting-started  /docs/use-dbt-semantic-layer/quickstart-semantic-layer 301
 /docs/use-dbt-semantic-layer/dbt-semantic-layer /docs/use-dbt-semantic-layer/dbt-sl 301
