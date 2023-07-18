@@ -7,7 +7,7 @@ description: "You can configure when and how dbt should run your job"
 In dbt Cloud, you can use the options under **Triggers** to configure when and how dbt should [run your job](/docs/deploy/job-triggers#schedule-job):
 
 - **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on either [scheduled days](#schedule-days) or [custom cron-powered schedule](#custom-cron-schedule)
-- **Continuous Integration (CI)** tab &mdash; Configure [continuous integration](/docs/deploy/cloud-ci-job) to run when someone opens a new pull request in your dbt repository
+- **Continuous Integration (CI)** tab &mdash; Configure [continuous integration](/docs/deploy/continuous-integration) to run when someone opens a new pull request in your dbt repository
 - **API** tab &mdash; Use the [API](/docs/dbt-cloud-apis/admin-cloud-api) to trigger a job or send events to other systems
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>

@@ -4,7 +4,7 @@ id: "scheduler-optimized"
 description: "April 2023: "
 sidebar_label: "Update: Scheduler optimizes job queue"
 sidebar_position: 9
-tags: [Apr-12-2023, scheduler]
+tags: [Apr-2023, scheduler]
 ---
 
 The dbt Cloud Scheduler now prevents queue clog by canceling unnecessary runs of over-scheduled jobs. 

@@ -58,7 +58,7 @@ models:
 ```
 Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
 
-Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -98,4 +98,4 @@ Run `dbt --help` to see new & improved help documentation :)
 - The [`version: 2` top-level key](/reference/project-configs/version) is now **optional** in all YAML files. Also, the [`config-version: 2`](/reference/project-configs/config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
 - [Events and logging](/reference/events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
 - Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](/reference/dbt_project.yml)
-- More granular [configurations](/reference/global-configs) for logging (to set log format, log levels, and colorization) and cache population
+- More granular [configurations](/reference/global-configs/about-global-configs) for logging (to set log format, log levels, and colorization) and cache population

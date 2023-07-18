@@ -10,7 +10,6 @@ id: "snapshots"
 * [Snapshot properties](/reference/snapshot-properties)
 * [`snapshot` command](/reference/commands/snapshot)
 
-## Overview
 
 ### What are snapshots?
 Analysts often need to "look back in time" at previous data states in their mutable tables. While some source data systems are built in a way that makes accessing historical data possible, this is not always the case. dbt provides a mechanism, **snapshots**, which records changes to a mutable <Term id="table" /> over time.
@@ -346,7 +345,7 @@ For the `timestamp` strategy, the configured `updated_at` column is used to popu
 <details>
 <summary>  Details for the timestamp strategy </summary>
 
-<summary>Snapshot query results at `2019-01-01 11:00`</summary>
+Snapshot query results at `2019-01-01 11:00`
 
 | id | status  | updated_at       |
 | -- | ------- | ---------------- |
@@ -368,7 +367,7 @@ Snapshot results (note that `11:30` is not used anywhere):
 
 | id | status  | updated_at       | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
 | -- | ------- | ---------------- | ---------------- | ---------------- | ---------------- |
-| 1  | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 11:05 |
+| 1  | pending | 2019-01-01 10:47 | 2019-01-01 10:47 | 2019-01-01 11:05 | 2019-01-01 10:47 |
 | 1  | shipped | 2019-01-01 11:05 | 2019-01-01 11:05 |                  | 2019-01-01 11:05 |
 
 </details>
@@ -380,7 +379,7 @@ For the `check` strategy, the current timestamp is used to populate each column.
 <details>
 <summary>  Details for the check strategy </summary>
 
-<summary>Snapshot query results at `2019-01-01 11:00`</summary>
+Snapshot query results at `2019-01-01 11:00`
 
 | id | status  |
 | -- | ------- |
@@ -402,16 +401,17 @@ Snapshot results:
 
 | id | status  | dbt_valid_from   | dbt_valid_to     | dbt_updated_at   |
 | --- | ------- | ---------------- | ---------------- | ---------------- |
-| 1   | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:30 |
+| 1   | pending | 2019-01-01 11:00 | 2019-01-01 11:30 | 2019-01-01 11:00 |
 | 1   | shipped | 2019-01-01 11:30 |                  | 2019-01-01 11:30 |
 
 </details>
 
 
 ## FAQs
-<FAQ src="Runs/run-one-snapshot" />
-<FAQ src="Runs/snapshot-frequency" />
-<FAQ src="Snapshots/snapshot-schema-changes" />
-<FAQ src="Snapshots/snapshot-hooks" />
-<FAQ src="Snapshots/snapshot-target-schema" />
-<FAQ src="Accounts/configurable-snapshot-path" />
+<FAQ path="Runs/run-one-snapshot" />
+<FAQ path="Runs/snapshot-frequency" />
+<FAQ path="Snapshots/snapshot-schema-changes" />
+<FAQ path="Snapshots/snapshot-hooks" />
+<FAQ path="Snapshots/snapshot-target-schema" />
+<FAQ path="Accounts/configurable-snapshot-path" />
+<FAQ path="Snapshots/snapshot-target-is-not-a-snapshot-table" />

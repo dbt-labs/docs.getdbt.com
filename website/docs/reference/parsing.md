@@ -5,7 +5,7 @@ description: "Read this guide to understand the project parsing configuration in
 
 ## Related documentation
 - The `dbt parse` [command](/reference/commands/parse)
-- Partial parsing [profile config](/reference/profiles.yml#partial_parse) and [CLI flags](/reference/global-cli-flags#partial-parsing)
+- Partial parsing [profile config](/docs/core/connect-data-platform/profiles.yml#partial_parse) and [CLI flags](/reference/global-cli-flags#partial-parsing)
 - Experimental parser [CLI flag](/reference/global-cli-flags#experimental-parser)
 
 ## What is parsing?
@@ -35,7 +35,7 @@ After parsing your project, dbt stores an internal project manifest in a file ca
 
 Starting in v1.0, partial parsing is **on** by default. In development, partial parsing can significantly reduce the time spent waiting at the start of a run, which translates to faster dev cycles and iteration.
 
-The [`PARTIAL_PARSE` global config](/reference/global-configs#partial-parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
+The [`PARTIAL_PARSE` global config](/reference/global-configs/parsing) can be enabled or disabled via `profiles.yml`, environment variable, or CLI flag.
 
 ### Known limitations
 
@@ -59,10 +59,10 @@ If you ever get into a bad state, you can disable partial parsing and trigger a 
 
 At parse time, dbt needs to extract the contents of `ref()`, `source()`, and `config()` from all models in the project. Traditionally, dbt has extracted those values by rendering the Jinja in every model file, which can be slow. In v0.20, we introduced a new way to statically analyze model files, leveraging [`tree-sitter`](https://github.com/tree-sitter/tree-sitter), which we're calling an "experimental parser". You can see the code for an initial Jinja2 grammar [here](https://github.com/dbt-labs/tree-sitter-jinja2).
 
-Starting in v1.0, the experimental parser is **on** by default. We believe it can offer *some* speedup to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](/reference/global-configs#static-parser).
+Starting in v1.0, the experimental parser is **on** by default. We believe it can offer *some* speedup to 95% of projects. You may optionally turn it off using the [`STATIC_PARSER` global config](/reference/global-configs/parsing).
 
 For now, the static parser only works with models, and models whose Jinja is limited to those three special macros (`ref`, `source`, `config`). The experimental parser is at least 3x faster than a full Jinja render. Based on testing with data from dbt Cloud, we believe the current grammar can statically parse 60% of models in the wild. So for the average project, we'd hope to see a 40% speedup in the model parser.
 
 ## Experimental parser
 
-We plan to make iterative improvements to static parsing in future versions, and to use random sampling (via anonymous usage tracking) to verify that it yields correct results. You can opt into the latest "experimental" version of the static parser using the [`USE_EXPERIMENTAL_PARSER` global config](/reference/global-configs#experimental-parser).
+We plan to make iterative improvements to static parsing in future versions, and to use random sampling (via anonymous usage tracking) to verify that it yields correct results. You can opt into the latest "experimental" version of the static parser using the [`USE_EXPERIMENTAL_PARSER` global config](/reference/global-configs/parsing).

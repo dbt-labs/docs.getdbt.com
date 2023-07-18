@@ -83,6 +83,7 @@ vars:
   - macro_namespace: packagename
     search_order: [packagename]
 
+[restrict-access](/docs/collaborate/govern/model-access): true | false
 ```
 
 </File>

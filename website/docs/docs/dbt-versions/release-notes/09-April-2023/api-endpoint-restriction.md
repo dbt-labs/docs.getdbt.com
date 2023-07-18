@@ -3,7 +3,7 @@ title: "List Runs API Endpoint `order_by` restrictions"
 id: "api-endpoint-restriction"
 sidebar_label: "Deprecation: List Runs API Endpoint order_by restrictions"
 sidebar_position: 10
-tags: [Apr-6-2023, API]
+tags: [Apr-2023, API]
 ---
 
 Starting May 15, 2023, we will support only the following `order_by` functionality for the List Runs endpoint:
@@ -20,4 +20,4 @@ dbt Cloud is hosted in multiple regions around the world, and each region has a 
 
 :::
 
-For more info, refer to our [documentation](/dbt-cloud/api-v2#tag/Runs/operation/listRunsForAccount).
+For more info, refer to our [documentation](/dbt-cloud/api-v2-legacy#tag/Runs/operation/listRunsForAccount).

@@ -4,14 +4,9 @@ id: "enterprise-permissions"
 description: "Permission sets for Enterprise plans."
 ---
 
-:::info Enterprise Feature
+import SetUpPages from '/snippets/_available-enterprise-only.md';
 
-This guide describes a feature of the dbt Cloud Enterprise plan.
-If you're interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
-
-## Overview
+<SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
 
 The dbt Cloud Enterprise plan supports a number of pre-built permission sets to
 help manage access controls within a dbt Cloud account. See the docs on [access
@@ -22,7 +17,7 @@ control (RBAC).
 
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They
 can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
-can be associated with more than one permission sets.
+can be associated with more than one permission set.
 
 ### Account Admin
 
@@ -44,18 +39,46 @@ Account Admins have unrestricted access to dbt Cloud accounts. Users with Accoun
 - Run and cancel jobs
 - Use the IDE
 - View and modify Account Settings
+- Generate [service tokens](/docs/dbt-cloud-apis/service-tokens), such as for [API usage](/docs/dbt-cloud-apis/overview)
+
+### Security Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Security Admins have access to modify certain account-level settings. Users with Security Admin permissions can:
+
+- View and modify Account Settings such as:
+    - View, invite, and modify account users
+    - Create, delete, and modify Groups
+    - Create, delete, and modify License Mappings
+    - Create and modify SSO Configurations
+    - View and export Audit Logs
+    - Create, delete, and modify IP Restrictions
+
+### Billing Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Billing Admins have access to modify certain account-level settings related to billing. Users with Billing Admin permissions can:
+
+- View and modify **Account Settings** such as:
+    - View billing information
+    - Modify billing information (accounts on the Team plan)
+        - This includes modifying Developer Seat counts for the Account
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Project Creators have write and read-only access to dbt Cloud accounts, but do not have the permissions required to modify SSO settings and account integrations. 
+Project Creators can access, create, or modify projects and other settings in dbt Cloud. However, they don't have permission to modify SSO settings or account integrations.
 
 Users with Project Creator permissions can:
 
 - View Account Settings
 - View and modify project users
-- Create, delete and modify all projects in an account
+- Create, delete, and modify all projects in an account
 - Create, delete, and modify Connections
 - Create, delete, and modify Environments
 - Create, delete, and modify Jobs
@@ -70,7 +93,7 @@ Users with Project Creator permissions can:
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
+Account Viewers have read-only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
 - View account-level artifacts
@@ -125,7 +148,7 @@ Database Admins can perform the following actions in projects they are assigned 
 - **License restrictions:** must have a developer license
 
 Team Admins can perform the following actions in projects they are assigned to:
-- Create, delete, and modify group memberships
+- View Groups
 - View Environments
 - View Jobs
 - View project details
@@ -178,12 +201,12 @@ Analysts can perform the following actions in projects they are assigned to:
 
 ### Stakeholder
 - **Has permissions on:** Authorized projects
-- **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
+- **License restrictions:** Intended for use with Read-Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
 - View generated documentation
 - View generated source freshness reports
-- View the Read Only dashboard
+- View the Read-Only dashboard
 
 ## Diagram of the Permission Sets
 

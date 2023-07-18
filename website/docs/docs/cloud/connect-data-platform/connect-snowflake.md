@@ -5,11 +5,11 @@ description: "Configure Snowflake connection."
 sidebar_label: "Connect Snowflake"
 ---
 
-The following fields are required when creating a Snowflake connection:
+The following fields are required when creating a Snowflake connection
 
 | Field | Description | Examples |
 | ----- | ----------- | -------- |
-| Account | The Snowflake account to connect to. Take a look [here](/reference/warehouse-setups/snowflake-setup#account) to determine what the account field should look like based on your region.| <Snippet src="snowflake-acct-name" /> |
+| Account | The Snowflake account to connect to. Take a look [here](/docs/core/connect-data-platform/snowflake-setup#account) to determine what the account field should look like based on your region.| <Snippet path="snowflake-acct-name" /> |
 | Role | A mandatory field indicating what role should be assumed after connecting to Snowflake | `transformer` |
 | Database | The logical database to connect to and run queries against. | `analytics` |
 | Warehouse | The virtual warehouse to use for running queries. | `transforming` |
@@ -64,3 +64,7 @@ The OAuth auth method permits dbt Cloud to run development queries on behalf of
 a Snowflake user without the configuration of Snowflake password in dbt Cloud. For
 more information on configuring a Snowflake OAuth connection in dbt Cloud, please see [the docs on setting up Snowflake OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth).
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/database-connection-snowflake-oauth.png" title="Configuring Snowflake OAuth connection"/>
+
+## Configuration
+
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).

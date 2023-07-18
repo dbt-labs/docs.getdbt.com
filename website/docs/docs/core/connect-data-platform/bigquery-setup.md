@@ -15,7 +15,8 @@ meta:
   config_page: '/reference/resource-configs/bigquery-configs'
 ---
 
-<Snippet src="warehouse-setups-cloud-callout" />
+
+<Snippet path="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -49,12 +50,12 @@ pip is the easiest way to install the adapter:
 
 BigQuery targets can be specified using one of four methods:
 
-1. [oauth via `gcloud`](#oauth-via-gcloud)
-2. [oauth token-based](#oauth-token-based)
+1. [OAuth via `gcloud`](#oauth-via-gcloud)
+2. [OAuth token-based](#oauth-token-based)
 3. [service account file](#service-account-file)
 4. [service account json](#service-account-json)
 
-For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 
@@ -87,9 +88,9 @@ my-bigquery-db:
 
 If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
 
-### Oauth Token-Based
+### OAuth Token-Based
 
-See [docs](https://developers.google.com/identity/protocols/oauth2) on using Oauth 2.0 to access Google APIs.
+See [docs](https://developers.google.com/identity/protocols/oauth2) on using OAuth 2.0 to access Google APIs.
 
 <Tabs
   defaultValue="refresh"
@@ -440,7 +441,7 @@ my-profile:
 ### Service Account Impersonation
 <Changelog>New in v0.18.0</Changelog>
 
-This feature allows users authenticating via local oauth to access BigQuery resources based on the permissions of a service account.
+This feature allows users authenticating via local OAuth to access BigQuery resources based on the permissions of a service account.
 
 ```yaml
 my-profile:
@@ -456,8 +457,8 @@ my-profile:
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
 
-<FAQ src="Warehouse/bq-impersonate-service-account-why" />
-<FAQ src="Warehouse/bq-impersonate-service-account-setup" />
+<FAQ path="Warehouse/bq-impersonate-service-account-why" />
+<FAQ path="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
 <Changelog>New in v0.21.0</Changelog>
@@ -500,11 +501,43 @@ my-profile:
       project: abc-123
       dataset: my_dataset
       
-      # for dbt Python models
+      # for dbt Python models to be run on a Dataproc cluster
       gcs_bucket: dbt-python
       dataproc_cluster_name: dbt-python
       dataproc_region: us-central1
 ```
+
+Alternatively, Dataproc Serverless can be used:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      
+      # for dbt Python models to be run on Dataproc Serverless
+      gcs_bucket: dbt-python
+      dataproc_region: us-central1
+      submission_method: serverless
+      dataproc_batch:
+        environment_config:
+          execution_config:
+            service_account: dbt@abc-123.iam.gserviceaccount.com
+            subnetwork_uri: regions/us-central1/subnetworks/dataproc-dbt
+        labels:
+          project: my-project
+          role: dev
+        runtime_config:
+          properties:
+            spark.executor.instances: 3
+            spark.driver.memory: 1g
+```
+
+For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
 
 </VersionBlock>
 
@@ -530,6 +563,6 @@ https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test
 ```
 
-A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
+A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your OAuth'd credentials to connect to BigQuery!
 
 This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.
