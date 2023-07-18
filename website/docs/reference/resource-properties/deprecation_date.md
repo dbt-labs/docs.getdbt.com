@@ -48,9 +48,12 @@ Setting a `deprecation_date` works well in conjunction with other [model governa
 When a project references a model that's slated for deprecation or the deprecation date has passed, a warning is generated. If it's a versioned model, with a newer version available, then the warning says so. This added bit of cross-team communication, from producers to consumers, is an advantage of using dbt's built-in functionality around model versions to facilitate migrations.
 
 Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a mechanism whereby users can promote these warnings to actual runtime errors:
-- `DeprecatedModel` - warning when parsing a project that defines deprecated model(s)
-- `UpcomingDeprecationReference` - warning when referencing a model with a future deprecation date
-- `DeprecatedReference` - warning when referencing a model with a past deprecation date
+
+| Warning                        | Scenario                                           | Affected projects      |
+|--------------------------------|----------------------------------------------------|------------------------|
+|        `DeprecatedModel`       | Parsing a project that defines a deprecated model  | Producer               |
+| `DeprecatedReference`          | Referencing a model with a past deprecation date   | Producer and consumers |
+| `UpcomingDeprecationReference` | Referencing a model with a future deprecation date | Producer and consumers |
 
 ### Selection syntax
 
