@@ -1,0 +1,2 @@
+- `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. For example, success `code`, number of `rows_affected`, total `bytes_processed`, and so on. Not applicable for [tests](/docs/build/tests).
+    * `rows_affected` returns the number of rows modified by the last statement executed. In cases where the query's row count can't be determined or isn't applicable (such as when creating a <Term id="view">view</Term>), a [standard value](https://peps.python.org/pep-0249/#rowcount) of `-1` is returned for `rowcount`.
