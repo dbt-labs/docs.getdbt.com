@@ -28,7 +28,7 @@ The dbt Semantic Layer GraphQL API allows you to explore and query metrics and d
 
 ## Using the GraphQL API
 
-If you are a dbt user or partner with access to dbt Cloud and the Semantic Layer, you can setup and test this API in your oown instance by configuring the Semantic Layer and obtaining the right GQL onnection parameters provided. (PROVIDE link to set up?) 
+If you are a dbt user or partner with access to dbt Cloud and the Semantic Layer, you can setup and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. (PROVIDE link to set up?). 
 
 ### Authentication 
 
