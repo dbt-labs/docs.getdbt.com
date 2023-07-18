@@ -43,6 +43,7 @@ All artifacts produced by dbt include a `metadata` dictionary with these propert
 
 In the manifest, the `metadata` may also include:
 - `send_anonymous_usage_stats`: Whether this invocation sent [anonymous usage statistics](/reference/global-configs/usage-stats) while executing.
+- `project_name`: The `name` defined in the root project's `dbt_project.yml`. (Added in manifest v10 / dbt Core v1.6)
 - `project_id`: Project identifier, hashed from `project_name`, sent with anonymous usage stats if enabled.
 - `user_id`: User identifier, stored by default in `~/dbt/.user.yml`, sent with anonymous usage stats if enabled.
 
