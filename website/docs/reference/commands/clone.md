@@ -28,3 +28,11 @@ dbt clone --state path/to/artifacts --full-refresh
 # clone all of my models from specified state to my target schema(s), running up to 50 clone statements in parallel
 dbt clone --state path/to/artifacts --threads 50
 ```
+
+### When to use `dbt clone` instead of [deferral](/reference/node-selection/defer)?
+
+Unlike deferral, `dbt clone` requires some compute and creation of additional objects in your data warehouse. In many cases, deferral is a cheaper and simpler alternative to `dbt clone`. However, `dbt clone` covers additional use cases where deferral may not be possible.
+
+For example, by creating actual data warehouse objects, `dbt clone` allows you to test out your code changes on downstream dependencies _outside of dbt_ (such as a BI tool). 
+
+As another example, you could `clone` your modified incremental models as the first step of your dbt Cloud CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
