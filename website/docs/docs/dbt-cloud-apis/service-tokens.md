@@ -5,7 +5,7 @@ description: "Service account tokens help you define permissions for securing ac
 ---
 :::info Important service account token update
 
-If you have service tokens created prior to July 11, 2023, please read [this important update](/docs/dbt-cloud-apis/service-tokens#service-token-update).
+If you have service tokens created on or before July 18, 2023, please read [this important update](/docs/dbt-cloud-apis/service-tokens#service-token-update).
 
 :::
 
@@ -101,13 +101,13 @@ Stakeholder service tokens have all the permissions listed in [Stakeholder](/doc
 
 ## Service token update
 
-On July 11, 2023, dbt Labs made critical infrastructure changes to service account tokens. These enhancements improve the security and performance of all tokens created after July 11, 2023. To ensure security best practices are in place, we recommend you rotate your service tokens created before this date.
+On July 18, 2023, dbt Labs made critical infrastructure changes to service account tokens. These enhancements improve the security and performance of all tokens created after July 18, 2023. To ensure security best practices are in place, we recommend you rotate your service tokens created before this date.
 
 To rotate your token:
 1. Navigate to **Account settings** and click **Service tokens** on the left side pane.
-2. Verify the **Created** date for the token is _before_ July 11, 2023. 
+2. Verify the **Created** date for the token is _on or before_ July 18, 2023. 
     <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/service-token-date.png" title="Service token created date"/>
 3. Click **+ New Token** on the top right side of the screen. Ensure the new token has the same permissions as the old one. 
 4. Copy the new token and replace the old one in your systems. Store it in a safe place, as it will not be available again once the creation screen is closed.
-5. Delete the old token in dbt Cloud by clicking the **trash can icon**. -Only take this action before the new token is in place to avoid service disruptions_.
+5. Delete the old token in dbt Cloud by clicking the **trash can icon**. _Only take this action before the new token is in place to avoid service disruptions_.
 
