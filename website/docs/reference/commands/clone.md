@@ -4,7 +4,7 @@ sidebar_label: "clone"
 id: "clone"
 ---
 
-The `dbt clone` command clones selected nodes from the [specified state](/reference/node-selection/syntax#establishing-state) to the target schema(s). This command makes use of the `clone` materialization:
+The `dbt clone` command clones selected nodes from the [specified state](/reference/node-selection/syntax#establishing-state) to the target schema(s). You must always use different directories for source and target otherwise you will get an error message. This command makes use of the `clone` materialization:
 - If your data platform supports zero-copy cloning of tables, and this model exists as a table in the source environment, dbt will create it in your target environment as a clone
 - Otherwise, dbt will create a simple pointer view (`select * from` the source object)
 - By default, `dbt clone` will not recreate pre-existing relations in the current target. To override this, use the `--full-refresh` flag. 
