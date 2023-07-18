@@ -10,7 +10,7 @@ The dbt Cloud Administrative API is enabled by default for [Team and Enterprise 
 - Manage your dbt Cloud account
 - and more
 
-dbt Cloud currently supports two versions of the Administrative API: v2 and v3. In general, v3 is the recommended version to use, but we don't yet have all our v2 routes upgraded to v3. We're currently working on this. If you can't find what you're looking for in our v3 docs, check out the shorter list of v2 endpoints and see if that helps. 
+dbt Cloud currently supports two versions of the Administrative API: v2 and v3. In general, v3 is the recommended version to use, but we don't yet have all our v2 routes upgraded to v3. We're currently working on this. If you can't find something in our v3 docs, check out the shorter list of v2 endpoints because you might find it there. 
 
 <div className="grid--2-col">
 
