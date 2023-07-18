@@ -55,6 +55,16 @@ Additionally, [`WARN_ERROR_OPTIONS`](/reference/global-configs/warnings) gives a
 | `DeprecatedReference`          | Referencing a model with a past deprecation date   | Producer and consumers |
 | `UpcomingDeprecationReference` | Referencing a model with a future deprecation date | Producer and consumers |
 
+** Example **
+
+Example output for an `UpcomingDeprecationReference` warning:
+```
+$ dbt parse
+15:48:14  Running with dbt=1.6.0
+15:48:14  Registered adapter: postgres=1.6.0
+15:48:14  [WARNING]: While compiling 'my_model_ref': Found a reference to my_model, which is slated for deprecation on '2038-01-19T03:14:07-00:00'.
+```
+
 ### Selection syntax
 
 There is not specific [node selection syntax](/reference/node-selection/syntax) for `deprecation_date`. [Programmatic invocations](/reference/programmatic-invocations) is one way to identify deprecated models (potentially in conjunction with [dbt list](/reference/commands/list)). e.g., `dbt -q ls  --output json --output-keys database schema alias deprecation_date`.
