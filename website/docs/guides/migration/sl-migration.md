@@ -3,7 +3,7 @@ title: "Legacy dbt Semantic Layer migration guide"
 id: sl-migration
 sidebar_label: "Legacy dbt Semantic Layer migration"
 description: "This migration guide will help you migrate from the legacy dbt Semantic Layer to the new one."
-tags: ["semantic-layer"]
+tags: [Semantic Layer]
 ---
 
 The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics. The new dbt Semantic Layer is in [public beta](docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta) and supported on dbt v1.6 or higher. It's available to all dbt Cloud plans (Developer, Team, and Enterprise) and introduces new semantic components, improved governance, enhanced efficiency, data accessibility, and new Semantic Layer APIs.

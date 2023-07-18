@@ -2,15 +2,15 @@
 title: "JDBC"
 id: sl-jdbc
 description: "Integrate and use the JDBC API to query your metrics."
-tags: ["semantic-layer, apis"]
+tags: [Semantic Layer, APIs]
 ---
 
 
 <VersionBlock lastVersion="1.5">
 
-import UpgradeSL from '/snippets/_upgrade-new-sl.md';
+import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
-<UpgradeSL />
+<LegacyInfo />
 
 </VersionBlock>
 

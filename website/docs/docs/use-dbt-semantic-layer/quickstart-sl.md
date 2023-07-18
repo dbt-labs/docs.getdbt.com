@@ -3,6 +3,7 @@ title: "Get started with the dbt Semantic Layer"
 id: quickstart-sl
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
 sidebar_label: "Get started with the dbt Semantic Layer"
+tags: [Semantic Layer]
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -189,12 +190,14 @@ import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
 To try out the features of the dbt Semantic Layer, you first need to have a dbt project set up. This quickstart guide will lay out the following steps, and recommends a workflow that demonstrates some of its essential features:
 
-- Install dbt metrics package
+- Install dbt metrics package 
+  * Note: this package will be deprecated very soon and we highly recommend you to use the new [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl?version=1.6), available in dbt v 1.6 or higher. 
 - Define metrics
 - Query, and run metrics
 - Configure the dbt Semantic Layer
 
 ## Prerequisites
+
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
 <Snippet path="sl-prerequisites" />
@@ -209,6 +212,7 @@ New to dbt or metrics? Check out our [quickstart guide](/quickstarts) to build 
 :::
 
 ## Installing dbt metrics package
+
 The dbt Semantic Layer supports the calculation of metrics by using the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/). You can install the dbt metrics package in your dbt project by copying the below code blocks.
 
 <VersionBlock firstVersion="1.3" lastVersion="1.3">
@@ -255,11 +259,6 @@ Review our helpful metrics video below, which explains what metrics are, why the
     
 <LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
 
-### Design metrics
-    
-To read about best practices on structuring and organizing your metrics, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
-
-### Define metrics
 Now that you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
 1. Add the metric definitions found in the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example to your dbt project. For example, to add an expenses metric, reference the following metrics you can define directly in your metrics folder: 
@@ -331,8 +330,6 @@ metrics:
 3. If you'd like to further design and define your own metrics, review the following documentation:
 
     - [dbt metrics](/docs/build/metrics) will provide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
-   
-    - Review [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog to understand best practices for designing and structuring metrics in your dbt project.
 
 ## Develop and query metrics
 
@@ -449,9 +446,7 @@ The reason you're experiencing this error is because we changed the <code>type</
 
 Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer: 
 
-- [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/build/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
-- [Understanding the components of the dbt Semantic Layer](https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer) blog post to see further examples
 - [dbt Server repo](https://github.com/dbt-labs/dbt-server), which is a persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. 
 
 </VersionBlock>

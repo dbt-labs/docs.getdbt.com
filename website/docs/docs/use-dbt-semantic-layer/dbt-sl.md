@@ -3,6 +3,7 @@ title: "dbt Semantic Layer"
 id: dbt-sl
 description: "Introducing the improved dbt Semantic Layer, which allows data teams to centrally define and query metrics."
 sidebar_label: "About the dbt Semantic Layer"
+tags: [Semantic Layer]
 hide_table_of_contents: true
 ---
 
@@ -21,9 +22,7 @@ To read more about why you need a universal Semantic Layer, read this [blog post
 
 ## Explore the dbt Semantic Layer
 
-The universal dbt Semantic Layer is available to all Team and Enterprise Plans during [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta). Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally. 
-
-Start exploring the dbt Semantic Layer by visiting the following pages:
+During [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta), the dbt Semantic Layer is accessible to all dbt Cloud Team and Enterprise multi-tenant plans [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America. It's available on dbt v1.6 or newer. dbt Cloud Developer plans and dbt Core users can use MetricFlow to define and test metrics locally, but can't dynamically query them with integrated tools.
 
 <div className="grid--3-col">
 
@@ -52,7 +51,7 @@ Start exploring the dbt Semantic Layer by visiting the following pages:
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic Layer API"
+    title="Semantic Layer APIs"
     body="Use the Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
     link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>
@@ -117,16 +116,10 @@ A great example of this is **revenue** &mdash; it can be aggregated on multiple 
 
 ### Design and define metrics
 
-**Design metrics**
-To read about best practices on structuring and organizing your metrics, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
-
-**Define metrics**
-You can define your metrics in `.yml` files nested under a metrics key and to design or define your own metrics in your dbt project, review the following documents: <br />
+You can design and define your metrics in a `.yml` files nested under a metrics key in your dbt project, review the following documents: <br />
 
 - [dbt metrics](docs/build/metrics) for in-depth detail on attributes, filters, how to define and query your metrics, and [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics)
 - [dbt Semantic Layer quickstart](/docs/use-dbt-semantic-layer/quickstart-semantic-layer) to get started
-- [Understanding the components of the dbt Semantic Layer](https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer) blog post to see further examples
-    
 
 ## Related questions
 
