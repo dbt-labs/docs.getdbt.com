@@ -2,6 +2,7 @@
 title: "Available integrations"
 id: avail-sl-integrations
 description: "Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
+tags: [Semantic Layer]
 sidebar_label: "Available integrations"
 ---
 
@@ -45,7 +46,7 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 
 For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" width="85%" title="The universal dbt Semantic Layer connecting to integration tools."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl_architecture.png" width="75%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 ## Related docs
 

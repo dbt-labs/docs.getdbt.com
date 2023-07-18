@@ -2,14 +2,15 @@
 title: "Semantic manifest"
 id: sl-manifest
 description: "Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your Semantic Layer."
+tags: [Semantic Layer, APIs]
 sidebar_label: "Semantic manifest"
 ---
 
 <VersionBlock lastVersion="1.5">
 
-import UpgradeSL from '/snippets/_upgrade-new-sl.md';
+import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
-<UpgradeSL />
+<LegacyInfo />
 
 </VersionBlock>
 
