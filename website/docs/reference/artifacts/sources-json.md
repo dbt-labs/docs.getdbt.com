@@ -23,6 +23,10 @@ Each entry in `results` is a dictionary with the following keys:
 - `max_loaded_at_time_ago_in_s`: Interval between `max_loaded_at` and `snapshotted_at`, calculated in python to handle timezone complexity.
 - `criteria`: The freshness threshold(s) for this source, defined in the project.
 - `status`: The freshness status of this source, based on `max_loaded_at_time_ago_in_s` + `criteria`, reported on the CLI. One of `pass`, `warn`, or `error` if the query succeeds, `runtime error` if the query fails.
-- `adapter_response`: Dictionary of information returned from the database, which varies by adapter. Not populated by source freshness checks, as of v0.19.0; we plan to fix in a future release ([dbt#2580](https://github.com/dbt-labs/dbt-core/issues/2580)).
 - `execution_time`: Total time spent checking freshness for this source
 - `timing`: Array that breaks down execution time into steps (`compile` + `execute`)
+
+import RowsAffected from '/snippets/_run-result.md'; 
+
+<RowsAffected/>
+
