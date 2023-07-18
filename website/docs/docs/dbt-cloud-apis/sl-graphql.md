@@ -24,6 +24,16 @@ GraphQL has several advantages, such as self-documenting, having a strong typing
 
 The dbt Semantic Layer GraphQL API offers capabilities like the JDBC API. It allows you to explore and execute commands conveniently through its self-documenting nature using the schema explorer (need link from roxi). 
 
+
+### Authentication 
+
+Authentication uses a dbt Cloud Service token passed through a header as follows:
+
+```
+{"Authorization": "Bearer <SERVICE TOKEN>"}
+```
+
+
 ### Metric metadata calls
 
 Use the following example calls to provide you with an idea of the types of commands you can use:
