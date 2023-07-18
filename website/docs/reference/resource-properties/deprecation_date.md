@@ -41,7 +41,7 @@ When `deprecation_date` does not include an offset from UTC, then it is interpre
 
 Declaring a `deprecation_date` for a dbt model provides a mechanism to communicate plans and timelines for long-term support and maintenance and to facilitate change management.
 
-Setting a `deprecation_date` works well in conjunction with other [model governance](/collaborate/govern/about-model-governance) features like [model versions](/collaborate/govern/model-versions), but can also be used independently from them.
+Setting a `deprecation_date` works well in conjunction with other [model governance](/docs/collaborate/govern/about-model-governance) features like [model versions](/docs/collaborate/govern/model-versions), but can also be used independently from them.
 
 ### Warning messages
 
