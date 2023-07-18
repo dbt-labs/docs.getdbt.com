@@ -56,7 +56,7 @@ Support for BigQuery and Databricks forthcoming.
 
 [`dbt retry`](/reference/commands/retry) executes the previously run command from the point of failure. Rebuild just the nodes that errored or skipped in a previous run/build/test, rather than starting over from scratch.
 
-`dbt clone` ([#3742](https://github.com/dbt-labs/docs.getdbt.com/pull/3742)) leverages each data platform's functionality for creating lightweight copies of dbt models from one environment into another. Useful when quickly spinning up a new development environment, or promoting specific models from a staging environment into production.
+[`dbt clone`](/reference/commands/clone) leverages each data platform's functionality for creating lightweight copies of dbt models from one environment into another. Useful when quickly spinning up a new development environment, or promoting specific models from a staging environment into production.
 
 ### Multi-project collaboration
 
