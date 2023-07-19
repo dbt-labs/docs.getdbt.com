@@ -25,7 +25,7 @@ This page explains the different supported metric types you can add to your dbt 
 - [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
 -->
 
-<!--not supported for this release
+
 ### Cumulative metrics 
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. Note that if no window is specified, the window would accumulate the measure over all time. 
@@ -43,7 +43,6 @@ metrics:
     #Omitting window will accumulate the measure over all time
     window: 7 days
 ```
--->
 ### Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
@@ -145,7 +144,9 @@ You can set more metadata for your metrics, which can be used by other tools lat
 ## Related docs
 
 - [Semantic models](/docs/build/semantic-models)
+- [Cumulative](/docs/build/cumulative-metrics)
 - [Derived](/docs/build/derived)
+
 
 
 
