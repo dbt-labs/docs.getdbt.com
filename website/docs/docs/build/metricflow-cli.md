@@ -2,7 +2,7 @@
 title: MetricFlow CLI
 id: metricflow-cli
 description: "Query metrics and metadata in your dbt project with the metricflow cli"
-sidebar_label: "MetricFlow CLI"
+sidebar_label: "MetricFlow CLI commands"
 tags: [Metrics, Semantic Layer]
 ---
 
