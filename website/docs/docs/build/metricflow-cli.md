@@ -91,7 +91,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-### Validate-configs
+## Validate-configs
 
 This command performs validations against the defined semantic model configurations:
 
