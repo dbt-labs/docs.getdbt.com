@@ -28,7 +28,7 @@ This page explains the different supported metric types you can add to your dbt 
 
 ### Cumulative metrics 
 
-[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. Note that if no window is specified, the window would accumulate the measure over all time. 
+[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window would accumulate the measure over all time. **Note**m, you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 ```yaml
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
