@@ -41,6 +41,9 @@ For example, if you're trying to retrieve the `name` metadata value for a metric
 
 ## List metrics
 
+```bash
+mf list 
+
 This command lists the metrics with their available dimensions:
 
 ```bash
