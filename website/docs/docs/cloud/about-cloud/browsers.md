@@ -26,4 +26,4 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 A session is a period of time during which you’re signed in to a dbt Cloud account from a browser. dbt Cloud will not automatically log you out after a set time. However, if you close your browser, it will end your session and log you out. You'll need to log in again the next time you try to access dbt Cloud. 
 
-If you've logged in using [SSO](/docs/cloud/manage-access/sso-overview) or [OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth), you can customize your session time, which may vary depending on your identity provider (IdP).
+If you've logged in using [SSO](/docs/cloud/manage-access/sso-overview) or [OAuth](/docs/cloud/manage-access/set-up-snowflake-oauth), you can customize your session time, which might vary depending on your identity provider (IdP).
