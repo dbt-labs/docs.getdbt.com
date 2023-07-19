@@ -15,6 +15,26 @@ Measures are aggregations performed on columns in your model. They can be used a
 | [`agg`](#aggregation) | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
 | [`expr`](#expr) | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | [`non_additive_dimension`](#non-additive-dimensions) | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
+|[agg_params]| specific aggregation properties such as a percentile. | [Optional]|
+|[agg_time_dimension]| The time field. Defaults to the default agg time dimension for the semantic model.  | [Optional] |
+|[non_additive_dimension]| configs used if needing non-additive dimensions | [Optional]|
+|[label]| How the metric will be displayed in docs and downstream integrations. | [Required]|
+
+
+## Measyres Spec
+An example of the complete yaml measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
+
+```
+measures:
+      - name: The name of the measure # think transaction_total. If `expr` not present then this is the expected name of the column [Required]
+        description: same as always [Optional]
+        agg: the aggregation type.  #think average, sum, max, min, etc.[Required]
+        expr: the field # think transaction_total or some other name you might want to alias [Optional]
+        agg_params: specific aggregation properties such as a percentile [Optional]
+        agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. [Optional]
+        non_additive_dimension: configs used if needing non-additive dimensions [Optional]
+        label: How the metric will be displayed in docs and downstream integrations. [Required]
+`
 
 ### Name 
 
