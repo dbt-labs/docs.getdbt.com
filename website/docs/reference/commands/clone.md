@@ -23,7 +23,7 @@ dbt clone --state path/to/artifacts
 # clone one_specific_model of my models from specified state to my target schema(s)
 dbt clone --select one_specific_model --state path/to/artifacts
 
-# clone all of my models from specified state to my target schema(s) and recreate all pre-exisiting relations in the current target
+# clone all of my models from specified state to my target schema(s) and recreate all pre-existing relations in the current target
 dbt clone --state path/to/artifacts --full-refresh
 
 # clone all of my models from specified state to my target schema(s), running up to 50 clone statements in parallel
