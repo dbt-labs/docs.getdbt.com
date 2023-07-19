@@ -77,7 +77,7 @@ select ...
 
 ```
   
-In this example, you can set up a query tag to be applied to every query with the model's name. 
+In this example, you can set up a query tag to be applied to every query with the model's name.
   
 ```sql 
 
@@ -339,5 +339,70 @@ In the configuration format for the model SQL file:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+## Dynamic Tables
+
+[Dynamic Tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about) are Snowflake's flavor of Materialized Views. The `CREATE DYNAMIC TABLE` ([docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)) statement requires the following parameters `TARGET_LAG` and `WAREHOUSE`, so a dbt-snowflake user must also provide these.
+
+You can create a dynamic table by editing _one_ of these files:
+
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
+
+The following examples create a dynamic table:
+
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'dynamic_table',
+    warehouse = 'MY_WAREHOUSE',
+    target_lag = '10 min',
+  )
+}}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  path:
+    materialized: dynamic_table
+    warehouse: MY_WAREHOUSE
+    target_lag: '10 min'
+```
+
+</File>
+
+### Limitations
+
+#### Changing materialization to and from "dynamic_table"
+
+Swapping an already materialized model to be a dynamic table and vise versa. The workaround is the manually drop the existing materialization in the data warehouse before calling `dbt run` again.
+
+To illustrate, assume for the example model below, `my_model`, that it has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="dynamic_table"`, they will get an error. The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+<File name='my_model.sql'>
+
+```yaml
+
+{{ config(
+    materialized="table" # or any model type eg view, incremental
+) }}
+
+```
+
+</File>
+
+#### Altering `target_lag` or `warehouse`
+
+Currently, changing either the `target_lag` or `warehouse` parameters for a pre-existing Dynamic Table (DT) will result in the Dynamic Table being dropped and replaced, rather than altered.
 
 </VersionBlock>
