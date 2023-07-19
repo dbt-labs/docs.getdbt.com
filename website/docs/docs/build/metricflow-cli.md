@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
 
-## Installation
+# Installation
 
 You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install the MetricFlow CLI on Windows or Linux operating systems:
 
@@ -17,7 +17,7 @@ You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#gett
 
 The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
 
-## CLI commands
+# CLI commands
 
 The MetricFlow CLI provides the following commands to retrieve metadata and query metrics. 
 
@@ -33,13 +33,13 @@ To execute the commands, use the `mf` prefix before the command name. For exampl
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
 - [`query`](#query) &mdash; Query metrics and dimensions you want to see in the CLI. Refer to [query examples](#query-examples) to help you get started.
 
-### List
+## List
 
 This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
 
 For example, if you're trying to retrieve the `name` metadata value for a metric, you can use the following command:
 
-### List metrics
+## List metrics
 
 This command lists the metrics with their available dimensions:
 
@@ -51,7 +51,7 @@ Options:
   --help                 Show this message and exit.
 ```
 
-### List dimensions
+## List dimensions
 
 This command lists all unique dimensions for a metric or multiple metrics. It displays only common dimensions when querying multiple metrics:
 
@@ -63,7 +63,7 @@ Options:
   --help              Show this message and exit.
 ```
 
-### List dimension-values
+## List dimension-values
 
 This command lists all dimension values with the corresponding metric:
 
@@ -79,7 +79,7 @@ Options:
                       of the data (inclusive)
   --help              Show this message and exit.
 ```
-### List entities
+## List entities
 
 This command lists all unique entities:
 
@@ -114,7 +114,7 @@ Options:
   --help                          Show this message and exit.
 ```
 
-### Health checks
+## Health checks
 
 This command performs a health check against the data platform you provided in the configs:
 
@@ -122,7 +122,7 @@ This command performs a health check against the data platform you provided in t
 mf health-checks
 ```
 
-### Tutorial
+## Tutorial
 
 Follow the dedicated MetricFlow tutorial to help you get started:
 
@@ -130,7 +130,7 @@ Follow the dedicated MetricFlow tutorial to help you get started:
 mf tutorial
 ```
 
-### Query
+## Query
 
 Create a new query with MetricFlow, execute that query against the user's data platform, and return the result:
 
@@ -165,7 +165,7 @@ Options:
   ```
 
 
-### Query examples
+## Query examples
 
 The following tabs presents various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
@@ -219,6 +219,7 @@ mf query --metrics order_amount --group-by metric_time, is_food_order
 ```
 
 </TabItem>
+
 
 <TabItem value="eg3" label="Order/limit">
 
@@ -295,6 +296,17 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 ```
 
 </TabItem>
+
+
+</Tabs>
+
+
+### Additional query examples
+
+The following tabs presents additional query examples, like exporting to a CSV. Select the tab that best suits your needs:
+
+<Tabs>
+
 
 
 <TabItem value="eg6" label="--explain flag">
