@@ -2,56 +2,61 @@
 Key:
 
 * (W)rite &mdash; Create new or modify existing. Includes `send`, `create`, `delete`, `allocate`, `modify`, and `read`.
-* (M)odify &mdash; Change existing fields but can not create new. Includes `delete` and `read`.
-* (R)ead &mdash; Can view but canm not create or change any fields.
-* ❌ = No access to the feature
-* ✅ = Can access feature that does not use C/M/D/V permissions
+* (R)ead &mdash; Can view but can not create or change any fields.
 
-## Account role permissions
+Permissions: 
+
+* Account-level permissions &mdash; Permissions related to management of the dbt Cloud account. For example, billing and account settings.
+* Project-level permissions &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the IDE. 
+
+## Account roles
+Account roles are primarily designed for managing the dbt Cloud account. Permissions to alter the account settings (for example, generating service tokens, inviting users, configuring SSO). They may also have access to project-level permissions as well. The **Account Admin** role is the highest level of access that can be assigned.  
 
 ### Account permissions
 
-|                   | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
-|-------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
-| Account settings  |     W         |               |        R        |       R        |   R    |
-| Audit logs        |     R         |               |                 |       R        |        |
-| Auth provider     |     W         |               |                 |       W        |   R    |
-| Billing           |     W         |       W       |                 |                |   R    |
-| Invitations       |     W         |               |        W        |       W        |   R    |
-| IP restrictions   |     W         |               |                 |       W        |   R    |
-| Members           |     W         |               |        W        |       W        |   R    |
-| Project (create)  |     W         |               |        W        |                |        |
-| Public models     |     R         |       R       |        R        |       R        |   R    |
-| Service tokens    |     W         |               |                 |       R        |        |
-| Webhooks          |     W         |               |                 |                |        |
+| Account-level permission| Account Admin | Billing admin | Project creator | Security admin | Viewer | 
+|:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
+| Account settings        |     W         |               |        R        |       R        |   R    |
+| Audit logs              |     R         |               |                 |       R        |        |
+| Auth provider           |     W         |               |                 |       W        |   R    |
+| Billing                 |     W         |       W       |                 |                |   R    |
+| Invitations             |     W         |               |        W        |       W        |   R    |
+| IP restrictions         |     W         |               |                 |       W        |   R    |
+| Members                 |     W         |               |        W        |       W        |   R    |
+| Project (create)        |     W         |               |        W        |                |        |
+| Public models           |     R         |       R       |        R        |       R        |   R    |
+| Service tokens          |     W         |               |                 |       R        |        |
+| Webhooks                |     W         |               |                 |                |        |
 
 ### Project permissions
 
-|                   | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
-|-------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
-| Connections       |       W       |               |       W         |                |   R    |
-| Credentials       |       W       |               |       W         |                |   R    |
-| Custom environment variables|  W  |               |       W         |                |   R    |
-| dbt adapters      |       W       |               |       W         |                |   R    |
-| Develop (IDE)     |       W       |               |       W         |                |        |
-| Environments      |       W       |               |       W         |                |   R    |
-| Groups            |       W       |               |       R         |       W        |   R    |
-| Jobs              |       W       |               |       W         |                |   R    |
-| Licenses          |       W       |               |       W         |       W        |   R    |
-| Metadata          |       R       |               |       R         |                |   R    |
-| Permissions       |       W       |               |       W         |       W        |   R    |
-| Profile           |       W       |               |       W         |                |   R    |
-| Projects          |       W       |               |       W         |       R        |   R    |
-| Repositories      |       W       |               |       W         |                |   R    |
-| Runs              |       W       |               |       W         |                |   R    |
-| Semantic Layer Config|    W       |               |       W         |                |   R    |
+|Project-level permission | Account Admin | Billing admin | Project creator | Security admin | Viewer | 
+|:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
+| Connections             |       W       |               |       W         |                |   R    |
+| Credentials             |       W       |               |       W         |                |   R    |
+| Custom env variables    |       W       |               |       W         |                |   R    |
+| dbt adapters            |       W       |               |       W         |                |   R    |
+| Develop (IDE)           |       W       |               |       W         |                |        |
+| Environments            |       W       |               |       W         |                |   R    |
+| Groups                  |       W       |               |       R         |       W        |   R    |
+| Jobs                    |       W       |               |       W         |                |   R    |
+| Licenses                |       W       |               |       W         |       W        |   R    |
+| Metadata                |       R       |               |       R         |                |   R    |
+| Permissions             |       W       |               |       W         |       W        |   R    |
+| Profile                 |       W       |               |       W         |                |   R    |
+| Projects                |       W       |               |       W         |       R        |   R    |
+| Repositories            |       W       |               |       W         |                |   R    |
+| Runs                    |       W       |               |       W         |                |   R    |
+| Semantic Layer Config   |    W          |               |       W         |                |   R    |
 
 
 ## Project role permissions
 
+The project roles are intended for users who will be working within the projects in various capacities. They'll primarily have access to project-level permissions such as repos and the IDE, but may also have some account-level permisions.
+
 ### Account permissions
 
-|                          | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webook |
+| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
 | Account settings         |   R   |         |      R         |           |     R     |           |             |          |                |             |     R      |        |
 | Auth provider            |       |         |                |           |           |           |             |          |                |             |            |        |
@@ -65,11 +70,11 @@ Key:
 
 ### Project permissions
 
-|                          | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webook |
+|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
 | Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
 | Credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
-| Custom environment variables|  W |    W    |       W        |     W     |     W     |     W     |      R      |          |                |     R       |     W      |        |
+| Custom env variables     |  W    |    W    |       W        |     W     |     W     |     W     |      R      |          |                |     R       |     W      |        |
 | dbt adapters             |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
 | Develop (IDE)            |   W   |    W    |                |     W     |           |           |             |          |                |             |            |        |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |      R      |          |                |     R       |     R      |        |
