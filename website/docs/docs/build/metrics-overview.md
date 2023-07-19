@@ -144,7 +144,7 @@ You can set more metadata for your metrics, which can be used by other tools lat
 ## Related docs
 
 - [Semantic models](/docs/build/semantic-models)
-- [Cumulative](/docs/build/cumulative-metrics)
+- [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
 
 
