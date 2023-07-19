@@ -54,8 +54,8 @@ I copied this definition from Snowflake, and I would recommend that you always i
 We all know how ChatGPT can digest very complex prompts, but as this is a tool for you to get the best results for your use case, I would recommend starting with simple, but specific, prompts.
 
 Opening ChatGPT with GPT4, my first prompt is usually along these lines:
+<Lightbox src="/img/blog/2023-07-17-GPT-and-dbt-test/image1.png" title="ChatGPT request for YAML file" />
 
-![Alt text](../static/img/blog/2023-07-17-GPT-and-dbt-test/image1.png)
 And the output of this simple prompt is nothing short of amazing:
 
 ```yaml
@@ -117,7 +117,7 @@ Back in my day (5 months ago), ChatGPT with GPT 3.5 didn’t have much context o
 
 A prompt for it would look something like:
 
-![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image2.png)
+<Lightbox src="/img/blog/2023-07-17-GPT-and-dbt-test/image2.png" title="ChatGPT request to memorize dbt-style YAML" />
 
 ## Specify details on generic tests in your prompts
 
@@ -132,7 +132,7 @@ Accepted_values and relationships are slightly trickier but the model can be adj
 
 One way of doing this is with a prompt like this:
 
-![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image3.png)
+<Lightbox src="/img/blog/2023-07-17-GPT-and-dbt-test/image3.png" title="ChatGPT request to write dbt-style YAML with generic tests" />
 
 Which results in the following output:
 
