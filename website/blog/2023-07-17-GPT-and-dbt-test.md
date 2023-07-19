@@ -1,6 +1,6 @@
 ---
 title: "Create dbt Documentation and Tests 10x faster with ChatGPT"
-description: "You cangit s use ChatGPT to infer the context of verbosely named fields from database table schemas."
+description: "You can use ChatGPT to infer the context of verbosely named fields from database table schemas."
 slug: create-dbt-documentation-10x-faster-with-ChatGPT
 
 authors: [pedro_brito_de_sa]
@@ -18,7 +18,7 @@ By now, everyone knows the wonders of the GPT models for code generation and pai
 
 <!--truncate-->
 
-As a one-person Analytics team at [Sage](http://www.hellosage.com/) I had to create our dbt pipelines from the ground up. This meant 30+ tables of internal facts and dimensions + external data into a Staging Layer, plus all of the following layers of augmented models and Mart tables. After the fact, we are talking about 3500+ lines of YAML that I was NOT excited to get started on. Fortunately for me, this was February 2023 and ChatGPT had just come out and boy, was I glad to use it. After a good dose of “prompt engineering” I managed to get most of my documentation and tests written out, only needing a few extra tweaks.
+As a one-person Analytics team at [Sage](http://www.hellosage.com/) I had to create our dbt pipelines from the ground up. This meant 30+ tables of internal facts and dimensions + external data into a Staging Layer, plus all of the following layers of augmented models and Mart tables. After the fact, we are talking about 3500+ lines of YAML that I was NOT excited to get started on. Fortunately for me, this was February 2023 and ChatGPT had just come out. And boy, was I glad to have it. After a good dose of “prompt engineering” I managed to get most of my documentation and tests written out, only needing a few extra tweaks.
 
 Writing this article as of July 2023, and now powered by GPT-4 and not GPT 3.5, it is already easier to get the same results I did, so here are my learnings that I hope everyone can replicate.
 
@@ -54,6 +54,7 @@ I copied this definition from Snowflake, and I would recommend that you always i
 We all know how ChatGPT can digest very complex prompts, but as this is a tool for you to get the best results for your use case, I would recommend starting with simple, but specific, prompts.
 
 Opening ChatGPT with GPT4, my first prompt is usually along these lines:
+
 <Lightbox src="/img/blog/2023-07-17-GPT-and-dbt-test/image1.png" title="ChatGPT request for YAML file" />
 
 And the output of this simple prompt is nothing short of amazing:
