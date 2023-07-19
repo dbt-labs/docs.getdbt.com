@@ -23,18 +23,21 @@ The MetricFlow CLI provides the following commands to retrieve metadata and quer
 
 To execute the commands, use the `mf` prefix before the command name. For example, to list all metrics, run `mf list metrics`:
 
-- [`list`](#list) &mdash; Retrieves metadata values 
-- [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions
-- [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics
-- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics
-- [`list entities`](#list-entities) &mdash; Lists all unique entities
-- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations
-- [`health-checks`](#health-checks) &mdash; Performs data platform health check
-- [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started
-- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the CLI. You can also refer to [query examples](#query-examples) to help you get started.
+- [`list`](#list) &mdash; Retrieves metadata values.
+- [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
+- [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
+- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
+- [`list entities`](#list-entities) &mdash; Lists all unique entities.
+- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
+- [`health-checks`](#health-checks) &mdash; Performs data platform health check.
+- [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
+- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the CLI. Refer to [query examples](#query-examples) to help you get started.
+
 ### List
 
-Retrieve metadata values about metrics/dimensions/entities/dimension values
+This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
+
+For example, if you're trying to retrieve the `name` metadata value for a metric, you can use the following command:
 
 ### List metrics
 
