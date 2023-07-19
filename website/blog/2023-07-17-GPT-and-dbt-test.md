@@ -56,6 +56,7 @@ We all know how ChatGPT can digest very complex prompts, but as this is a tool f
 Opening ChatGPT with GPT4, my first prompt is usually along these lines:
 
 ![Alt text](../static/img/blog/2023-07-17-GPT-and-dbt-test/image1.png)
+
 And the output of this simple prompt is nothing short of amazing:
 
 ```yaml
