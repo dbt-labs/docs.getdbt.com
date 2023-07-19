@@ -1,7 +1,7 @@
 exports.versions = [
   {
     version: "1.6",
-    EOLDate: "2024-07-20", // placeholder - need to confirm the final date
+    EOLDate: "2024-07-31",
     isPrerelease: true
   },
   {
@@ -32,7 +32,19 @@ exports.versions = [
 
 exports.versionedPages = [
   {
-    "page": "reference/resource-properties/deprecation_date", 
+    "page": "reference/commands/clone",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/collaborate/govern/project-dependencies",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/dbt-jinja-functions/thread_id",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/resource-properties/deprecation_date",
     "firstVersion": "1.6",
   },
   {
@@ -47,7 +59,7 @@ exports.versionedPages = [
     "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
-    {
+  {
     "page": "reference/commands/show",
     "firstVersion": "1.5",
   },

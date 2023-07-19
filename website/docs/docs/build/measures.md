@@ -64,7 +64,7 @@ semantic_models:
  - name: transactions
     description: A record for every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
-    default:
+    defaults:
       agg_time_dimensions:
 
 # --- entities ---
@@ -166,7 +166,7 @@ semantic_models:
   - name: subscription_table
     description: A subscription table with one row per date for each active user and their subscription plans. 
     model: ref('your_schema.subscription_table')
-    default:
+    defaults:
       agg_time_dimension: metric_time 
 
     entities:
@@ -219,3 +219,7 @@ We can query the semi-additive metrics using the following syntax:
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
 ```
+
+import SetUpPages from '/snippets/_metrics-dependencies.md';
+
+<SetUpPages /> 
