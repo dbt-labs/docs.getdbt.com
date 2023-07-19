@@ -19,16 +19,17 @@ import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
 
 GraphQL has several advantages, such as self-documenting, having a strong typing system, supporting versioning and evolution, enabling rapid development, and having a robust ecosystem. These features make GraphQL a powerful choice for APIs that prioritize flexibility, performance, and developer productivity.
-
-dbt Partners can use the Semantic Layer GraphQL API to build and integration with the dbt Semantic Layer.
-
 ## dbt Semantic Layer GraphQL API
 
 The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to it's self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://cloud.getdbt.com/semantic-layer/api/graphql). 
 
+dbt Partners can use the Semantic Layer GraphQL API to build and integration with the dbt Semantic Layer.
+
 ## Using the GraphQL API
 
-If you are a dbt user or partner with access to dbt Cloud and the Semantic Layer, you can setup and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. (PROVIDE link to set up?). 
+If you're a dbt user or partner with access to dbt Cloud and the[dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right GQL connection parameters described in this document. 
+
+Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/quickstart-sl) for more info.
 
 ### Authentication 
 
@@ -38,7 +39,7 @@ Authentication uses a dbt Cloud Service token passed through a header as follows
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
-Each GQL request also comes with a dbt Cloud Environment Id. Our API will use the combination of the Service Token in the header and Environment Id to authenticate.
+Each GQL request also comes with a dbt Cloud environmentId. The API uses both the service token in the header and environmentId for authentication.
 
 
 ### Metric metadata calls
