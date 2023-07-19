@@ -28,27 +28,19 @@ ChatGPT can only infer so much, so tables with names and fields that resemble en
 
 ```sql
 create or replace TRANSIENT TABLE STAGING.BASE.STG_STAFF_MEMBER (
-
-CREATEDATETIME TIMESTAMP_NTZ(9),
-
-NEXT_UPDATEDATETIME TIMESTAMP_NTZ(9),
-
-LATEST_VERSION BOOLEAN,
-
-FIRSTNAME VARCHAR(16777216),
-
-LASTNAME VARCHAR(16777216),
-
-PHONENUMBER VARCHAR(16777216),
-
-SHOULDRECEIVEALLCAREMESSAGES BOOLEAN,
-
-ISARCHIVED BOOLEAN,
-
-ADDRESSRID VARCHAR(16777216),
-
-RID VARCHAR(16777216)
-
+      ID NUMBER(38,0),
+      CREATEDATETIME TIMESTAMP_NTZ(9),
+      UPDATEDATETIME TIMESTAMP_NTZ(9),
+      VERSION NUMBER(38,0),
+      FIRSTNAME VARCHAR(16777216),
+      JOBTITLE VARCHAR(16777216),
+      LASTNAME VARCHAR(16777216),
+      MIDDLENAME VARCHAR(16777216),
+      ISCAREADMIN BOOLEAN,
+      ISARCHIVED BOOLEAN,
+      ADDRESSID VARCHAR(16777216),
+      ENTERPRISEID VARCHAR(16777216),
+      ISDELETED BOOLEAN
 );
 
 ```
@@ -63,79 +55,69 @@ We all know how ChatGPT can digest very complex prompts, but as this is a tool f
 
 Opening ChatGPT with GPT4, my first prompt is usually along these lines:
 
-![Alt text](../static/img/blog/2023-07-17-GPT-and-dbt-test/image3.png)
+![Alt text](../static/img/blog/2023-07-17-GPT-and-dbt-test/image1.png)
 And the output of this simple prompt is nothing short of amazing:
 
 ```yaml
 version: 2
 
 models:
-  - name: stg_staff_member
-    description: This is a staging table for staff member data.
-    columns:
-      - name: ID
-        description: Unique identifier for the staff member
-        tests:
-          - not_null
-          - unique
-      - name: CREATEDATETIME
-        description: The date and time the staff member record was created
-        tests:
-          - not_null
-      - name: UPDATEDATETIME
-        description: The date and time the staff member record was last updated
-      - name: NEXT_UPDATEDATETIME
-        description: The next date and time the staff member record will be updated
-      - name: VERSION
-        description: Version number of the staff member record
-        tests:
-          - not_null
-      - name: LATEST_VERSION
-        description: Flag to indicate if the record is the latest version
-        tests:
-          - not_null
-      - name: EMAIL
-        description: Email address of the staff member
-        tests:
-          - not_null
-      - name: FIRSTNAME
-        description: First name of the staff member
-        tests:
-          - not_null
+  - name: STAFF_MEMBER
+    description: This table contains information about the staff members.
+    columns:
+      - name: ID
+        description: The unique identifier for the staff member.
+        tests:
+          - unique
+          - not_null
+      - name: CREATEDATETIME
+        description: The timestamp when the record was created.
+        tests:
+          - not_null
+      - name: UPDATEDATETIME
+        description: The timestamp when the record was last updated.
+      - name: VERSION
+        description: Version number of the record.
+      - name: FIRSTNAME
+        description: The first name of the staff member.
+        tests:
+          - not_null
       - name: JOBTITLE
-        description: Job title of the staff member
-      - name: LASTNAME
-        description: Last name of the staff member
-        tests:
-          - not_null - name: MIDDLENAME
-        description: Middle name of the staff member
-      - name: PHONENUMBER
-        description: Phone number of the staff member
-      - name: PROFILEPICTUREURL
-        description: URL of the staff member's profile picture
-      - name: SHOULDRECEIVEALLCAREMESSAGES
-        description: Flag to indicate if the staff member should receive all care messages
-      - name: ISARCHIVED
-        description: Flag to indicate if the staff member is archived
-      - name: ISCAREADMIN
-        description: Flag to indicate if the staff member is a care admin
-      - name: ISAGENCYSTAFF
-        description: Flag to indicate if the staff member is a agency staff
-      - name: ADDRESSRID
-        description: Address RID of the staff member
-      - name: ENTERPRISERID
-        description: Enterprise RID of the staff member
-      - name: RID
-        description: RID of the staff member
-      - name: ISDELETED
-        description: Flag to indicate if the staff member record is deleted
+        description: The job title of the staff member.
+        tests:
+          - not_null
+      - name: LASTNAME
+        description: The last name of the staff member.
+        tests:
+          - not_null
+      - name: MIDDLENAME
+        description: The middle name of the staff member.
+      - name: ISCARADMIN
+        description: Boolean value indicating if the staff member is a care administrator.
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+      - name: ISARCHIVED
+        description: Boolean value indicating if the staff member record is archived.
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+      - name: COMMUNITYID
+        description: Identifier for the community of the staff member.
+      - name: ENTERPRISEID
+        description: Identifier for the enterprise of the staff member.
+      - name: ISDELETED
+        description: Boolean value indicating if the staff member record is deleted.
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
 ```
 
 Back in my day (5 months ago), ChatGPT with GPT 3.5 didn’t have much context on what a dbt-style YAML file was, so the result was a funky, non-dbt YAML format. If you are using GPT 3.5 and the results you get from the first prompt don’t compile in dbt, I would recommend an extra step I took which is to pass your understanding of what a dbt-style YAML file is. You can do this simply by copy-pasting a piece of a publicly available YAML file like [this one from the Jaffle Shop example](https://github.com/dbt-labs/jaffle_shop/blob/main/models/schema.yml), or a piece of YAML from your own code base.
 
 A prompt for it would look something like:
 
-![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image5.png)
+![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image2.png)
 
 ## Specify details on generic tests in your prompts
 
@@ -150,7 +132,7 @@ Accepted_values and relationships are slightly trickier but the model can be adj
 
 One way of doing this is with a prompt like this:
 
-![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image4.png)
+![example prompt](../static/img/blog/2023-07-17-GPT-and-dbt-test/image3.png)
 
 Which results in the following output:
 
@@ -158,90 +140,65 @@ Which results in the following output:
 version: 2
 
 models:
-  - name: stg_staff_member
-    description: "This is the staging table for staff members."
-    columns:
-      - name: id
-        description: "Unique Identifier for each staff member."
-        tests:
-          - unique
-          - not_null
-      - name: createdatetime
-        description: "Timestamp when the staff member record was created."
-      - name: updatedatetime
-        description: "Timestamp when the staff member record was last updated."
-      - name: next_updatedatetime
-        description: "Timestamp for the next scheduled update for the staff member record."
-      - name: version
-        description: "Version number for the staff member record."
-        tests:
-          - not_null
-      - name: latest_version
-        description: "Boolean indicating if this is the latest version of the staff member record."
-        tests:
-          - not_null
-      - name: email
-        description: "Email address of the staff member."
-        tests:
-          - not_null
-          - unique
-      - name: firstname
-        description: "First name of the staff member."
-        tests:
-          - not_null
-      - name: jobtitle
-        description: "Job title of the staff member."
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['Job Title 1', 'Job Title 2', 'Job Title 3']  # Update this with your categorical job titles
-      - name: lastname
-        description: "Last name of the staff member."
-        tests:
-          - not_null
-      - name: middlename
-        description: "Middle name of the staff member."
-      - name: phonenumber
-        description: "Phone number of the staff member."
-      - name: profilepictureurl
-        description: "URL of the staff member's profile picture."
-      - name: shouldreceiveallcaremessages
-        description: "Boolean indicating if the staff member should receive all care messages."
-        tests:
-          - not_null
-      - name: iscareadmin
-        description: "Boolean indicating if the staff member is a care admin."
-        tests:
-          - not_null
-      - name: isarchived
-        description: "Boolean indicating if the staff member is archived."
-        tests:
-          - not_null
-      - name: isagencystaff
-        description: "Boolean indicating if the staff member is an agency staff member."
-        tests:
-          - not_null
-      - name: addressrid
-        description: "Foreign key referencing the address of the staff member."
-        tests:
-          - relationships:
-              to: staging.base.stg_address  # Update this with your staging address table
-              field: rid
-      - name: enterpriserid
-        description: "Foreign key referencing the enterprise of the staff member."
-        tests:
-          - relationships:
-              to: staging.base.stg_enterprise  # Update this with your staging enterprise table
-              field: rid
-      - name: rid
-        description: "Unique Identifier for the record."
-        tests:
-          - unique
-          - not_null
-      - name: isdeleted
-        description: "Boolean indicating if the staff member record is deleted."
-        tests:
-          - not_null
+  - name: STAFF_MEMBER
+    description: This table contains information about the staff members.
+    columns:
+      - name: ID
+        description: The unique identifier for the staff member.
+        tests:
+          - unique
+          - not_null
+      - name: CREATEDATETIME
+        description: The timestamp when the record was created.
+        tests:
+          - not_null
+      - name: UPDATEDATETIME
+        description: The timestamp when the record was last updated.
+      - name: VERSION
+        description: Version number of the record.
+      - name: FIRSTNAME
+        description: The first name of the staff member.
+        tests:
+          - not_null
+      - name: JOBTITLE
+        description: The job title of the staff member. This is a categorical field.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Job Title 1', 'Job Title 2', 'Job Title 3'] # replace these with actual job titles
+      - name: LASTNAME
+        description: The last name of the staff member.
+        tests:
+          - not_null
+      - name: MIDDLENAME
+        description: The middle name of the staff member.
+      - name: ISCARADMIN
+        description: Boolean value indicating if the staff member is a care administrator.
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+      - name: ISARCHIVED
+        description: Boolean value indicating if the staff member record is archived.
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+      - name: COMMUNITYID
+        description: Identifier for the community of the staff member.
+        tests:
+          - relationships:
+              to: STAGING.COMMUNITY.ID # replace with actual reference table
+              field: ID
+      - name: ENTERPRISEID
+        description: Identifier for the enterprise of the staff member.
+        tests:
+          - relationships:
+              to: STAGING.ENTERPRISE.ID # replace with actual reference table
+              field: ID
+      - name: ISDELETED
+        description: Boolean value indicating if the staff member record is deleted.
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
 ```
 
 Even though it doesn’t magically guess the categories of your variables or your relationships, it is definitely helpful to have some placeholders in the right places.
