@@ -21,3 +21,8 @@ To enable or disable experimental features:
 2. Find Experimental features at the bottom of Your Profile page.
 3. Click **Beta** to toggle the features on or off as shown in the following image.
    ![Experimental features](/img/docs/dbt-versions/experimental-feats.png)
+
+## Beta terms and conditions
+
+By using or enabling beta features/products, you agree to the Beta terms and conditions. Download the [Beta terms and conditions](/docs/cloud/about-cloud/assets/beta-t&c.docx) for more info.  
+
