@@ -6,7 +6,7 @@ sidebar_label: "MetricFlow CLI commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-After you have defined metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
+Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
 
 ## Installation
 
