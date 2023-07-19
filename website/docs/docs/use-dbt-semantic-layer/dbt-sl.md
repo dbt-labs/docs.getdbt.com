@@ -22,7 +22,7 @@ To read more about why you need a universal Semantic Layer, read this [blog post
 
 ## Explore the dbt Semantic Layer
 
-During [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta), the dbt Semantic Layer is accessible to all dbt Cloud Team and Enterprise multi-tenant plans [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America. It's available on dbt v1.6 or newer. dbt Cloud Developer plans and dbt Core users can use MetricFlow to define and test metrics locally, but can't dynamically query them with integrated tools.
+During [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta), the dbt Semantic Layer is accessible to all dbt Cloud Team and Enterprise multi-tenant plans [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America. It's available on dbt v1.6 or higher. dbt Cloud Developer plans and dbt Core users can use MetricFlow to define and test metrics locally, but can't dynamically query them with integrated tools.
 
 <div className="grid--3-col">
 

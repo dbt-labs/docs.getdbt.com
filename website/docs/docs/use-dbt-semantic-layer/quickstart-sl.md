@@ -150,7 +150,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query APIs
 
-add content here
+This step requires you to connect to the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview). Once you've connected to an API, you should then set up and query metrics in your downstream tool of choice. Refer to [dbt Semantic Layer Apis](/docs/dbt-cloud-apis/sl-api-overview) and [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## FAQs
 

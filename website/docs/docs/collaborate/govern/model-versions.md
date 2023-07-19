@@ -37,7 +37,7 @@ Instead, for mature models at larger organizations, powering queries inside & ou
 
 During that migration window, anywhere that model is being used downstream, it can continue to be referenced at a specific version.
 
-In the future, dbt will also offer first-class support for **deprecating models** ([dbt-core#7433](https://github.com/dbt-labs/dbt-core/issues/7433)). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
+dbt Core 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
 
 There is a real trade-off that exists here—the cost to frequently migrate downstream code, and the cost (and clutter) of materializing multiple versions of a model in the data warehouse. Model versions do not make that problem go away, but by setting a deprecation date, and communicating a clear window for consumers to gracefully migrate off old versions, they put a known boundary on the cost of that migration.
 
@@ -73,7 +73,7 @@ As the **producer** of a versioned model:
 - You keep track of all live versions in one place, rather than scattering them throughout the codebase
 - You can reuse the model's configuration, and highlight just the diffs between versions
 - You can select models to build (or not) based on whether they're a `latest`, `prerelease`, or `old` version
-- dbt will notify consumers of your versioned model when new versions become available, or (in the future) when they are slated for deprecation
+- dbt will notify consumers of your versioned model when new versions become available, or when they are slated for deprecation
 
 As the **consumer** of a versioned model:
 - You use a consistent `ref`, with the option of pinning to a specific live version
@@ -109,7 +109,7 @@ selectors:
 
 </File>
 
-Because dbt knows that these models are _actually the same model_, it can notify downstream consumers as new versions become available, and (in the future) as older versions are slated for deprecation.
+Because dbt knows that these models are _actually the same model_, it can notify downstream consumers as new versions become available, and as older versions are slated for deprecation.
 
 ```bash
 Found an unpinned reference to versioned model 'dim_customers'.
