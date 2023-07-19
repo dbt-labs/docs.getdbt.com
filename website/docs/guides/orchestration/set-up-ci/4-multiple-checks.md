@@ -1,6 +1,5 @@
 ---
-title: "Add an additional environment"
-id: get-started-with-ci-guide-2
+title: "Advanced option: Add an additional environment"
 slug: multiple-environments 
 description: tktk
 displayText: tktk

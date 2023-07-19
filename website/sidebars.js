@@ -246,7 +246,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Build your metrics",
-          link: { type: "doc", id: "docs/build/build-metrics-intro"},
+          link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
             {
@@ -273,7 +273,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Metrics",
-              link: { type: "doc", id: "docs/build/metrics-overview"},
+              link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/derived",
                 "docs/build/ratio",
@@ -922,16 +922,28 @@ const sidebarSettings = {
             "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
           ],
+        }, 
+        {
+          type: "category",
+          label: "Set up Continuous Integration",
+          link: {
+            type: "doc",
+            id: "guides/orchestration/set-up-ci/introduction",
+          },
+          items: [
+            "guides/orchestration/set-up-ci/quick-setup",
+            "guides/orchestration/set-up-ci/lint-on-push",
+            "guides/orchestration/set-up-ci/multiple-checks",
+          ],
         },
         {
           type: "category",
-          label: "Customizing CI/CD",
+          label: "Custom Continuous Deployment Workflows",
           link: {
             type: "doc",
             id: "guides/orchestration/custom-cicd-pipelines/1-cicd-background",
           },
           items: [
-            "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
             "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
             "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",

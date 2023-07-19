@@ -1,15 +1,10 @@
 ---
 title: "Get started with Continuous Integration tests"
-id: get-started-with-ci-guide-1
 slug: in-15-minutes
 description: tktk
 displayText: tktk
 hoverSnippet: tktk
 ---
-
-I'm hoping that I don't have to sell you on the benefits of validating your code _before_ it goes into production, rather than spending your afternoon fielding messages from people whose reports are suddenly broken.
-
-Let's skip ahead to how to actually do it. This guide focuses on using **sensible defaults** to make sure that everything works in a performance and cost-effective way. There's time to [get fancy later](/guides/orchestration/custom-cicd-pipelines/1-cicd-background), but let's walk before we run.
 
 ## Prerequisites
 
@@ -41,13 +36,15 @@ In the Execution Settings, your command will be preset to `dbt build --select st
 
 To be able to find modified nodes, dbt needs to have something to compare against. dbt Cloud uses the last successful run of any job in your Production environment as its [comparison state](/reference/node-selection/syntax#about-node-selection). As long as you identified your Production environment in Step 2, you won't need to touch this. If you didn't, pick the right environment from the dropdown.
 
-## Step 4: Step 4: Test your process
+## Step 4: Test your process
 
 That's it! There are other steps you can take to be even more confident in your work, but this covers the most critical checks.
 
 To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
 
-Other useful things to keep in mind:
+## Collaborate without conflicts
+
+Things to keep in mind when developing:
 
 - If you commit new code while a CI run based on older code is in progress, it will be automatically canceled and replaced with the fresh code.
 - An unlimited number of CI jobs can run at once. If 10 developers all commit code to different PRs at the same time, each person will get their own schema containing their changes. Once each PR is merged, dbt Cloud will drop that schema.

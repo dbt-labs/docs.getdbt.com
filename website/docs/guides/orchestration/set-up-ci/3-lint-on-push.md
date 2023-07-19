@@ -1,9 +1,8 @@
 ---
-title: Lint code on push
-id: 2-lint-on-push
+title: "Advanced option: Lint code on push"
 ---
 
-This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization. 
+This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization.
 
 The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specifically runs the rules L019, L020, L021, and L022. This is purely for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
 
@@ -21,8 +20,8 @@ The YAML files defined below are what tell your code hosting platform the steps 
 }>
 <TabItem value="github">
 
-In order for GitHub to know that you want to run an action, you need to have a few specific folders in your project. Add a new folder named `.github`, and within that folder add a new one named `workflows`. Your final folder structure will look like this: 
-    
+In order for GitHub to know that you want to run an action, you need to have a few specific folders in your project. Add a new folder named `.github`, and within that folder add a new one named `workflows`. Your final folder structure will look like this:
+
 ```sql
 my_awesome_project
 ├── .github
