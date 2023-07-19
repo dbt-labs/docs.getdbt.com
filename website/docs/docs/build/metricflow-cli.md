@@ -15,7 +15,11 @@ After you have defined metrics in your dbt project, you can easily query metrics
 ## CLI commands
 
 ## List
-Retrieve metadata values about metrics/dimensions/entities/dimension values
+
+This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entites](/docs/build/entities) values. 
+
+For example, if you're trying to retrieve the `name` metadata value for a metric, you can use the following command:
+
 
 # List metrics
 List the metrics with their available dimensions
