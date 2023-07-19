@@ -23,7 +23,6 @@ can be associated with more than one permission sets.
 
 <Snippet path="enterprise-permissions-table" />
 
-
 ## Diagram of the Permission Sets
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
