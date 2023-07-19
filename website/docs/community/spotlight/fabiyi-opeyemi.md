@@ -38,4 +38,4 @@ I've learned how to show empathy as a data professional and be a great engineer 
 
 ## Anything else interesting you want to tell us?
 
-Maybe, I will consider DevRel as a career sometime 😀 because of my innate passion and love for community and people. Several folks tell me I'm a strong DevRel talent any product-led company would be lucky to have, so you can reach out if you need someone to drive your community engagement, haha 😂.
+Maybe, I will consider DevRel as a career sometime because of my innate passion and love for community and people. Several folks tell me I'm a strong DevRel talent and a valuable asset for any product-led company. If you need someone to bounce ideas off of or discuss😃 your community engagement efforts, please feel free to reach out.
