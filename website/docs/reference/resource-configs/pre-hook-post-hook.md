@@ -16,7 +16,7 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -51,7 +51,7 @@ select ...
 
 <TabItem value="seeds">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -70,7 +70,7 @@ seeds:
 
 <TabItem value="snapshots">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -124,7 +124,7 @@ dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out
 
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock firstVersion="1.2">
 

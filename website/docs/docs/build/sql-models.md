@@ -103,11 +103,11 @@ Why a _view_ named `dbt_alice.customers`? By default dbt will:
 You can use _configurations_ to change any of these behaviors — more on that later.
 
 ### FAQs
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
-<FAQ src="Models/sql-dialect" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
+<FAQ path="Models/sql-dialect" />
 
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
@@ -158,8 +158,8 @@ It is important to note that configurations are applied hierarchically — a con
 You can learn more about configurations in the [reference docs](/reference/model-configs).
 
 ### FAQs
-<FAQ src="Models/available-materializations" />
-<FAQ src="Models/available-configurations" />
+<FAQ path="Models/available-materializations" />
+<FAQ path="Models/available-configurations" />
 
 
 ## Building dependencies between models
@@ -265,12 +265,12 @@ Additionally, the `ref` function encourages you to write modular transformations
 You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
 
 ## Additional FAQs
-<FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />
-<FAQ src="Models/configurable-model-path" />
-<FAQ src="Models/model-custom-schemas" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Models/removing-deleted-models" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
-<FAQ src="Models/insert-records" />
-<FAQ src="Project/why-not-write-dml" />
-<FAQ src="Models/specifying-column-types" />
+<FAQ path="Project/example-projects" alt_header="Are there any example dbt models?" />
+<FAQ path="Models/configurable-model-path" />
+<FAQ path="Models/model-custom-schemas" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Models/removing-deleted-models" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Models/insert-records" />
+<FAQ path="Project/why-not-write-dml" />
+<FAQ path="Models/specifying-column-types" />

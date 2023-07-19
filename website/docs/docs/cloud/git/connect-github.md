@@ -40,7 +40,12 @@ To connect your dbt Cloud account to your GitHub account:
 
 5. Assign the dbt Cloud GitHub App the following permissions:
    - Read access to metadata
-   - Read and write access to checks, code, commit statuses, pull requests, and workflows
+   - Read and write access to Checks
+   - Read and write access to Commit statuses
+   - Read and write access to Contents (Code)
+   - Read and write access to Pull requests
+   - Read and write access to Webhooks
+   - Read and write access to Workflows
 
 6. Once you grant access to the app, you will be redirected back to dbt Cloud and shown a linked account success state. You are now personally authenticated. 
 7. Ask your team members to [personally authenticate](/docs/cloud/git/connect-github#personally-authenticate-with-github) by connecting their GitHub profiles.
@@ -74,4 +79,4 @@ The next time you log into dbt Cloud, you will be able to do so via OAuth throug
 
 ## FAQs
 
-<FAQ src="Git/gitignore"/>
+<FAQ path="Git/gitignore"/>

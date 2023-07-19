@@ -397,6 +397,7 @@ const sidebarSettings = {
             "docs/collaborate/govern/model-access",
             "docs/collaborate/govern/model-contracts",
             "docs/collaborate/govern/model-versions",
+            "docs/collaborate/govern/project-dependencies",
           ],
         },
       ],
@@ -734,6 +735,7 @@ const sidebarSettings = {
           items: [
             "reference/commands/build",
             "reference/commands/clean",
+            "reference/commands/clone",
             "reference/commands/cmd-docs",
             "reference/commands/compile",
             "reference/commands/debug",

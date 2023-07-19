@@ -17,7 +17,7 @@ control (RBAC).
 
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They
 can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
-can be associated with more than one permission sets.
+can be associated with more than one permission set.
 
 ### Account Admin
 
@@ -72,13 +72,13 @@ Billing Admins have access to modify certain account-level settings related to b
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Project Creators have write and read-only access to dbt Cloud accounts, but do not have the permissions required to modify SSO settings and account integrations. 
+Project Creators can access, create, or modify projects and other settings in dbt Cloud. However, they don't have permission to modify SSO settings or account integrations.
 
 Users with Project Creator permissions can:
 
 - View Account Settings
 - View and modify project users
-- Create, delete and modify all projects in an account
+- Create, delete, and modify all projects in an account
 - Create, delete, and modify Connections
 - Create, delete, and modify Environments
 - Create, delete, and modify Jobs

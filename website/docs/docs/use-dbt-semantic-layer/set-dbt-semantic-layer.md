@@ -19,15 +19,15 @@ With the dbt Semantic Layer, you'll be able to centrally define business metrics
 
 Before you set up the dbt Semantic Layer, make sure you meet the following:
 
-<Snippet src="sl-prerequisites" />
+<Snippet path="sl-prerequisites" />
 
 
-<Snippet src="sl-considerations-banner" />
+<Snippet path="sl-considerations-banner" />
 
 
 ## Set up dbt Semantic Layer
 
-<Snippet src="sl-set-up-steps" />
+<Snippet path="sl-set-up-steps" />
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/configure_sl.png" title="Set up dbt Semantic Layer in dbt Cloud" /><br />
 

@@ -96,6 +96,8 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="1.6">
+
 ## Materialized view
 
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html) and refreshes them for every subsequent `dbt run` that you execute. For more information, see [Refresh Materialized Views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) in the Redshift docs.
@@ -133,3 +135,5 @@ models:
     materialized: materialized_view
 ```
 </File>
+
+</VersionBlock>

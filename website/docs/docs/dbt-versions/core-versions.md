@@ -8,10 +8,10 @@ dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. 
 
 dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
 
-<Snippet src="core-version-support" />
+<Snippet path="core-version-support" />
 
 
-<Snippet src="core-versions-table" />
+<Snippet path="core-versions-table" />
 
 ### Further reading
 
@@ -93,15 +93,20 @@ When you use dbt, you use a combination of `dbt-core` and an adapter plugin spec
 
 That means that patch version numbers will likely differ between `dbt-core` and the adapter plugin(s) you have installed. However, major and minor version numbers should always match.
 
-For example, you may find you're using `dbt-core==1.2.3` with `dbt-snowflake==1.2.0`. It is critical that you're using the latest patch available for both core and the adapter (v1.2.x). Use the `dbt --version` command to see which versions you have installed:
+For example, you may find you're using `dbt-core==1.6.0` with `dbt-snowflake==1.6.0`. It is critical that you're using the latest patch available for both core and the adapter. Use the `dbt --version` command to see which versions you have installed:
 ```
 $ dbt --version
-installed version: 1.2.3
-   latest version: 1.2.3
-
-Up to date!
+Core:
+  - installed: 1.6.0
+  - latest:    1.6.0 - Up to date!
 
 Plugins:
-  - snowflake: 1.2.0 - Up to date!
+  - snowflake: 1.6.0 - Up to date!
 ```
+
+You can see which version of the registered adapter that's being invoked in the [logs](/reference/global-configs/logs). Below is an example of the message in the `logs/dbt.log` file: 
+```
+[0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.6.0
+```
+
 It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!
