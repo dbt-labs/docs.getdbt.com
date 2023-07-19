@@ -2,24 +2,45 @@
 title: MetricFlow CLI
 id: metricflow-cli
 description: "Query metrics and metadata in your dbt project with the metricflow cli"
-sidebar_label: "CLI"
+sidebar_label: "MetricFlow CLI"
 tags: [Metrics, Semantic Layer]
 ---
 
-After you have defined metrics in your dbt project, you can easily query metrics, dimensions, dimension values, and validate your configs using the MetricFlow CLI.
+After you have defined metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
 
 ## Installation
+
+You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install the MetricFlow CLI on Windows or Linux operating systems:
+
 1. Create or activate your virtual environment.`python -m venv venv`
 2. Run `pip install dbt-metricflow`
 
+The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
+
 ## CLI commands
 
-## List
+The MetricFlow CLI provides the following commands to retrieve metadata and query metrics. 
+
+To execute the commands, use the `mf` prefix before the command name. For example, to list all metrics, run `mf list metrics`:
+
+- [`list`](#list) &mdash; Retrieves metadata values 
+- [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions
+- [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics
+- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics
+- [`list entities`](#list-entities) &mdash; Lists all unique entities
+- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations
+- [`health-checks`](#health-checks) &mdash; Performs data platform health check
+- [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started
+- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the CLI. You can also refer to [query examples](#query-examples) to help you get started.
+### List
+
 Retrieve metadata values about metrics/dimensions/entities/dimension values
 
-# List metrics
-List the metrics with their available dimensions
-```
+### List metrics
+
+This command lists the metrics with their available dimensions:
+
+```bash
 mf list metrics <metric_name>
 Options:
   --search TEXT          Filter available metrics by this search term
@@ -27,9 +48,11 @@ Options:
   --help                 Show this message and exit.
 ```
 
-# List dimensions
-List all unique dimensions for a metric or multiple metrics. Only common dimensions are shown if querying multiple metrics
-```
+### List dimensions
+
+This command lists all unique dimensions for a metric or multiple metrics. It displays only common dimensions when querying multiple metrics:
+
+```bash
 mf list dimensions --metrics <metric_name>
 Options:
   --metrics SEQUENCE  List dimensions by given metrics (intersection). Ex.
@@ -37,9 +60,11 @@ Options:
   --help              Show this message and exit.
 ```
 
-# List dimension-values
-List all dimension values with the corresponding metric
-```
+### List dimension-values
+
+This command lists all dimension values with the corresponding metric:
+
+```bash
 mf list dimension-values --metrics <metric_name> --dimension <dimension_name>
 Options:
   --dimension TEXT    Dimension to query values from  [required]
@@ -51,9 +76,11 @@ Options:
                       of the data (inclusive)
   --help              Show this message and exit.
 ```
-# List entities
-List all unique entities.
-```
+### List entities
+
+This command lists all unique entities:
+
+```bash
 mf list entities --metrics <metric_name>
 Options:
   --metrics SEQUENCE  List entities by given metrics (intersection). Ex.
@@ -61,9 +88,11 @@ Options:
   --help              Show this message and exit.
 ```
 
-## Validate configs
- Perform validations against the defined semantic model configurations.
-```
+### Validate-configs
+
+This command performs validations against the defined semantic model configurations:
+
+```bash
 mf validate-configs
 Options:
   --dw-timeout INTEGER            Optional timeout for data warehouse
@@ -82,22 +111,27 @@ Options:
   --help                          Show this message and exit.
 ```
 
-## Health checks
-Performs a health check against the DW provided in the configs.
-```
+### Health checks
+
+This command performs a health check against the data platform you provided in the configs:
+
+```bash
 mf health-checks
 ```
 
-## Tutorial
-Runs through a getting started tutorial. 
+### Tutorial
 
-```
+Follow the dedicated MetricFlow tutorial to help you get started:
+
+```bash
 mf tutorial
 ```
 
-## Query
-Create a new query with MetricFlow, execute that query agaisnt the users data platform and return the result. 
-```
+### Query
+
+Create a new query with MetricFlow, execute that query against the user's data platform, and return the result:
+
+```bash
 mf query --metrics <metric_name> --group-by <dimension_name>
 Options:
   --metrics SEQUENCE       Metrics to query for: syntax is --metrics bookings
@@ -116,7 +150,7 @@ Options:
   --order SEQUENCE         Metrics or group bys to order by ("-" prefix for
                            DESC). For example: --order -ds or --order
                            ds,-revenue
-  --csv FILENAME           Provide filepath for dataframe output to csv
+  --csv FILENAME           Provide filepath for data frame output to csv
   --explain                In the query output, show the query that was
                            executed against the data warehouse
   --show-dataflow-plan     Display dataflow plan in explain output
@@ -128,13 +162,23 @@ Options:
   ```
 
 
-## Query Examples
+### Query examples
 
-Query metrics by dimensions.
+The following tabs presents various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
-The following query will retrun the order_amount metric by metric time. 
-```
+<Tabs>
+
+<TabItem value="eg1" label="Metrics">
+
+**Example 1** &mdash; Use the example to query metrics by dimension and return the `order_amount` metric by `metric_time.` 
+
+**Query**
+```bash
 mf query --metrics order_amount --group-by metric_time
+```
+
+**Result**
+```bash
 ✔ Success 🦄 - query completed after 1.24 seconds
 | METRIC_TIME   |   ORDER_AMOUNT |
 |:--------------|---------------:|
@@ -145,11 +189,19 @@ mf query --metrics order_amount --group-by metric_time
 | 2017-06-20    |         712.51 |
 | 2017-06-21    |         541.65 |
 ```
+</TabItem>
 
-You can include multiple dimensions in a query. For example, we can also group by the `is_food_order` dimension to see if orders we're for food or not. 
+<TabItem value="eg2" label="Dimensions">
 
-```
+**Example 2** &mdash; You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not. 
+
+**Query**
+```bash
 mf query --metrics order_amount --group-by metric_time, is_food_order
+```
+
+**Result**
+```bash
  Success 🦄 - query completed after 1.70 seconds
 | METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
 |:--------------|:----------------|---------------:|
@@ -163,10 +215,19 @@ mf query --metrics order_amount --group-by metric_time, is_food_order
 | 2017-06-19    | True            |         448.11 |
 ```
 
-You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records, and orders by metric time descending. 
+</TabItem>
 
-```
+<TabItem value="eg3" label="Order/limit">
+
+**Example 3** &mdash; You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending.
+
+**Query**
+```bash
 mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time
+```
+
+**Result**
+```bash
 ✔ Success 🦄 - query completed after 1.41 seconds
 | METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
 |:--------------|:----------------|---------------:|
@@ -178,11 +239,19 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 | 2017-08-29    | False           |         333.65 |
 | 2017-08-28    | False           |         334.73 |
 ```
+</TabItem>
 
-You can futher filter the data set by adding a where clause to your query.
+<TabItem value="eg4" label="where clause">
 
-```
+**Example 4** &mdash; You can further filter the data set by adding a `where` clause to your query.
+
+**Query**
+```bash
  mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True"
+```
+
+**Result**
+```bash
  ✔ Success 🦄 - query completed after 1.06 seconds
 | METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
 |:--------------|:----------------|---------------:|
@@ -198,10 +267,19 @@ You can futher filter the data set by adding a where clause to your query.
 | 2017-08-22    | True            |         401.91 |
 ```
 
-To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
+</TabItem>
 
-```
+<TabItem value="eg5" label=" Filter by time">
+
+**Example 5** &mdash; To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
+
+**Query**
+```bash
  mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27'
+```
+
+ **Result**
+```bash
 ✔ Success 🦄 - query completed after 1.53 seconds
 | METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
 |:--------------|:----------------|---------------:|
@@ -213,10 +291,21 @@ To filter by time, there are dedicated start and end time options. Using these o
 | 2017-08-22    | True            |         401.91 |
 ```
 
-You can see the SQL metricflow is generating by adding --explain to your query. 
+</TabItem>
 
-```
+
+<TabItem value="eg6" label="--explain flag">
+
+**Example 6** &mdash; Add `--explain` to your query to view the SQL generated by MetricFlow. 
+
+**Query**
+
+```bash
  mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
+```
+
+ **Result**
+ ```bash
  ✔ Success 🦄 - query completed after 0.28 seconds
 🔎 SQL (remove --explain to see data or add --show-dataflow-plan to see the generated dataflow plan):
 SELECT
@@ -238,10 +327,24 @@ GROUP BY
 ORDER BY metric_time DESC
 LIMIT 10
 ```
-To export the results of your query to a csv, simply add the `--csv file_name.csv` flag.
 
-```
+</TabItem>
+
+<TabItem value="eg7" label=" Export to CSV">
+
+**Example 7** &mdash; Add the `--csv file_name.csv` flag to export the results of your query to a csv.
+
+**Query**
+
+```bash
 mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+```
+
+**Result**
+```bash
 ✔ Success 🦄 - query completed after 0.83 seconds
 🖨 Successfully written query output to query_example.csv
 ```
+
+</TabItem>
+</Tabs>
