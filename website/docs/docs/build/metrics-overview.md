@@ -16,7 +16,8 @@ The keys for metrics definitions are:
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 * `meta`: Additional metadata you want to add to your metric. 
 
-An example of the complete metrics spec configuration is below:
+Here's a complete example of the metrics spec configuration:
+
 ```
 metrics:
   - name: metric name
