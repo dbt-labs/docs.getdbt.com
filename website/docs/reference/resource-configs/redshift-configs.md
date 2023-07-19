@@ -136,4 +136,12 @@ models:
 ```
 </File>
 
+### Limitations
+
+#### Changing materialization from "materialized_view" to table or view
+
+Swapping a materialized view to be a table or view is not supported. The workaround is to manually drop the existing materialized view in the data warehouse before calling `dbt run` again.
+
+To illustrate, assume for a materialized view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="view"`, they will get an error. The workaround is to execute `DROP MATERIALIZE VIEW my_mv CASCASE` on the data warehouse before trying the model again.
+
 </VersionBlock>

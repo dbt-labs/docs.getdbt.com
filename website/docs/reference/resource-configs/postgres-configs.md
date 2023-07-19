@@ -148,4 +148,24 @@ models:
 ```
 </File>
 
+### Limitations
+
+#### Changing materialization to and from "materialized_view"
+
+Swapping an already materialized model to be a materialized view and vise versa. The workaround is the manually drop the existing materialization in the data warehouse before calling `dbt run` again.
+
+To illustrate, assume for the example model below, `my_model`, that it has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="materialized_view"`, they will get an error. The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+<File name='my_model.sql'>
+
+```yaml
+
+{{ config(
+    materialized="table" # or any model type eg view, incremental
+) }}
+
+```
+
+</File>
+
 </VersionBlock>
