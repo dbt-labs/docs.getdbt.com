@@ -37,7 +37,6 @@ To execute the commands, use the `mf` prefix before the command name. For exampl
 
 This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
 
-For example, if you're trying to retrieve the `name` metadata value for a metric, you can use the following command:
 
 ## List metrics
 
