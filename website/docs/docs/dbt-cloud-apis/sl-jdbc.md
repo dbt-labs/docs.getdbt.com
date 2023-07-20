@@ -2,7 +2,7 @@
 title: "JDBC"
 id: sl-jdbc
 description: "Integrate and use the JDBC API to query your metrics."
-tags: [Semantic Layer, APIs]
+tags: [Semantic Layer, API]
 ---
 
 
@@ -24,7 +24,7 @@ A JDBC driver is a software component enabling a Java application to interact wi
 - You can embed the driver into your application stack as needed, and you can use dbt Labs' [example project](https://github.com/dbt-labs/example-semantic-layer-clients) for reference.
 - If you’re a partner or user building a homegrown application, you’ll need to install an AWS root CA to the Java Trust [documentation](https://www.amazontrust.com/repository/) (specific to Java and JDBC call).
 
-Partners of dbt Labs can use the JDBC API to build integrations in their tools with the dbt Semantic Layer
+dbt Labs partners can use the JDBC API to build integrations in their tools with the dbt Semantic Layer
 
 
 ## Using the JDBC API

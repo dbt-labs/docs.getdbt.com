@@ -157,6 +157,6 @@ Now that your Semantic Layer is set up, you will need to update any downstream i
 - [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
 - [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)
 - [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
-- [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
+- [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
 - Developer workflow demo

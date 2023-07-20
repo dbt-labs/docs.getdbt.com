@@ -1,8 +1,8 @@
 ---
-title: "Semantic Layer APIs"
+title: "Semantic Layer API"
 id: sl-api-overview
 description: "Integrate and query using the Semantic Layer API."
-tags: [Semantic Layer, APIs]
+tags: [Semantic Layer, API]
 hide_table_of_contents: true
 ---
 
@@ -38,19 +38,22 @@ instance="hosted in North America"
 />
 <br /><br />
 
-<div className="grid--3-col">
+<div className="grid--2-col">
 
 <Card
     title="JDBC API"
-    body="Use a JDBC driver to query metrics in downstream tools."
+    body="Use a JDBC driver to query metrics and dimensions in downstream tools, while also providing standard metadata functionality."
     link="/docs/dbt-cloud-apis/sl-jdbc"
     icon="dbt-bit"/>
 
+<!-- 
+commenting out until it's available
 <Card
     title="GraphQL API"
     body="Use GraphQL to query metrics in downstream tools."
     link="/docs/dbt-cloud-apis/sl-graphql"
     icon="dbt-bit"/>
+-->
 
 <Card
     title="Semantic manifest"
@@ -62,4 +65,4 @@ instance="hosted in North America"
 
 ## Authentication
 
-dbt Cloud authorizes requests to the dbt Semantic Layer APIs. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
+dbt Cloud authorizes requests to the dbt Semantic Layer API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).

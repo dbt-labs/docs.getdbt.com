@@ -4,6 +4,8 @@ id: quickstart-sl
 description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
 sidebar_label: "Get started with the dbt Semantic Layer"
 tags: [Semantic Layer]
+meta:
+  api_name: dbt Semantic Layer API
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -150,7 +152,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query APIs
 
-This step requires you to connect to the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview). Once you've connected to an API, you should then set up and query metrics in your downstream tool of choice. Refer to [dbt Semantic Layer Apis](/docs/dbt-cloud-apis/sl-api-overview) and [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+<span>This step requires you to connect to the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC to query your metrics in downstream tools. <br /><br />
+
+Once you've connected to an API, you should then set up and query metrics in your downstream tool of choice. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## FAQs
 

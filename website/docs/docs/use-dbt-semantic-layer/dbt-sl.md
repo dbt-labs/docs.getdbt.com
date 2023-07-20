@@ -37,7 +37,7 @@ instance="hosted in North America"
 
 <Card
     title="Get started with the dbt Semantic Layer and MetricFlow"
-    body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
+    body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using the Semantic Layer API."
     link="/docs/use-dbt-semantic-layer/quickstart-sl"
     icon="dbt-bit"/>
 
@@ -60,8 +60,8 @@ instance="hosted in North America"
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic Layer APIs"
-    body="Use the Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
+    title="Semantic Layer API"
+    body="Use the Semantic Layer API to query metrics in downstream tools for consistent, reliable data metrics."
     link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>
 
