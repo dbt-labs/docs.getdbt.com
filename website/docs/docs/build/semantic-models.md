@@ -140,11 +140,11 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify dimensions parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
 
-dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups.
+Dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups.
 
 :::info For time groups
 
-For semantic models with a measure, you must have a primary time group.
+For semantic models with a measure, you must have a [primary time group](/docs/build/dimensions#time).
 
 :::
 
