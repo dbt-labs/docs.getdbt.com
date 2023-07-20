@@ -882,6 +882,6 @@ QUESTIONS:
 
 ## Related docs
 
-- [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview)
+- [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview)
 - [About dbt artifacts](/reference/artifacts/dbt-artifacts)
 

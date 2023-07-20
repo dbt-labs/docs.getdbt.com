@@ -21,14 +21,23 @@ Moving metric definitions out of the BI layer and into the modeling layer allows
 To read more about why you need a universal Semantic Layer, read this [blog post](https://www.getdbt.com/blog/universal-semantic-layer/).
 
 ## Explore the dbt Semantic Layer
+<!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
 
-During [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta), the dbt Semantic Layer is accessible to all dbt Cloud Team and Enterprise multi-tenant plans [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America. It's available on dbt v1.6 or higher. dbt Cloud Developer plans and dbt Core users can use MetricFlow to define and test metrics locally, but can't dynamically query them with integrated tools.
+import Features from '/snippets/_sl-plan-info.md'
+
+<Features
+cycle="public beta"
+product="dbt Semantic Layer"
+plan="dbt Cloud Team and Enterprise"
+instance="hosted in North America"
+/>
+<br /><br />
 
 <div className="grid--3-col">
 
 <Card
     title="Get started with the dbt Semantic Layer and MetricFlow"
-    body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
+    body="Build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using the Semantic Layer API."
     link="/docs/use-dbt-semantic-layer/quickstart-sl"
     icon="dbt-bit"/>
 
@@ -51,8 +60,8 @@ During [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#p
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic Layer APIs"
-    body="Use the Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
+    title="Semantic Layer API"
+    body="Use the Semantic Layer API to query metrics in downstream tools for consistent, reliable data metrics."
     link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>
 
