@@ -16,6 +16,21 @@ The keys for metrics definitions are:
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 * `meta`: Additional metadata you want to add to your metric. 
 
+Here's a complete example of the metrics spec configuration:
+
+```
+metrics:
+  - name: metric name
+    description: same as always
+    type: the type of the metric
+    type_params:
+        - specific properties for the metric type
+    configs: here for `enabled`
+    label: The display name for your metric. This value will be shown in downstream tools.
+    filter: |
+      {{  dimension('name') }} > 0 and {{ dimension(' another name') }} is not null
+
+```
 This page explains the different supported metric types you can add to your dbt project. 
 <!--
 - [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
