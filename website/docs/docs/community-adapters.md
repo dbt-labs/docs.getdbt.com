@@ -15,6 +15,6 @@ Community adapters are adapter plugins contributed and maintained by members of 
 | [Dremio](/docs/core/connect-data-platform/dremio-setup)    | [Layer](/docs/core/connect-data-platform/layer-setup)  | [Teradata](/docs/core/connect-data-platform/teradata-setup)    |
 | [Exasol Analytics](/docs/core/connect-data-platform/exasol-setup)  | [Materialize](/docs/core/connect-data-platform/materialize-setup) | [TiDB](/docs/core/connect-data-platform/tidb-setup)                    |
 | [Firebolt](/docs/core/connect-data-platform/firebolt-setup)  | [MindsDB](/docs/core/connect-data-platform/mindsdb-setup)  | [Vertica](/docs/core/connect-data-platform/vertica-setup)              |
-| [AWS Glue](/docs/core/connect-data-platform/glue-setup) | [MySQL](/docs/core/connect-data-platform/mysql-setup)|     |
+| [AWS Glue](/docs/core/connect-data-platform/glue-setup) | [MySQL](/docs/core/connect-data-platform/mysql-setup)|  [Upsolver](/docs/core/connect-data-platform/upsolver-setup) |
 | [Databend Cloud](/docs/core/connect-data-platform/databend-setup) | [fal - Python models](/docs/core/connect-data-platform/fal-setup) |      |
 

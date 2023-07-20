@@ -75,6 +75,7 @@
 /reference/warehouse-setups/databend-setup /docs/core/connect-data-platform/databend-setup 301
 /reference/warehouse-setups/fal-setup /docs/core/connect-data-platform/fal-setup 301
 /reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup
+/reference/warehouse-setups/upsolver-setup /docs/core/connect-data-platform/upsolver-setup 301
 
 # Discovery redirect
 /docs/dbt-cloud-apis/metadata-schema-source /docs/dbt-cloud-apis/discovery-schema-source 301
