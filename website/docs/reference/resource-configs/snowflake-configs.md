@@ -362,7 +362,7 @@ The following examples create a dynamic table:
   config(
     materialized = 'dynamic_table',
     warehouse = 'MY_WAREHOUSE',
-    target_lag = '10 min',
+    target_lag = '10 minutes',
   )
 }}
 ```
@@ -376,7 +376,7 @@ models:
   path:
     materialized: dynamic_table
     warehouse: MY_WAREHOUSE
-    target_lag: '10 min'
+    target_lag: '10 minutes'
 ```
 
 </File>
