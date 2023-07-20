@@ -21,10 +21,11 @@ MetricFlow is a powerful component within the dbt Semantic Layer that helps user
 Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model) with MetricFlow
-- [Create your metrics](#create-your-metrics) with MetricFlow
-- [Run your production job](#run-your-production-job) in dbt Cloud
-- [Set up dbt Semantic Layer](#setup) in dbt Cloud
-- [Connect and Query API](#connect-and-query-apis)
+- [Define metrics](#define-metrics) with MetricFlow
+- [Test metrics](#test-metrics) with MetricFlow 
+- [Run a production job](#run-a-production-job) in dbt Cloud
+- [Set up dbt Semantic Layer](#setup) in dbt Cloud 
+- [Connect and query API](#connect-and-query-api) with dbt Cloud
 
 ## Prerequisites
 
@@ -151,11 +152,12 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 <SlSetUp/>
 
 
-## Connect and query APIs
+## Connect and query API
 
-<span>This step requires you to connect to the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC to query your metrics in downstream tools. <br /><br />
+To connect and query your metrics using the dbt Semantic Layer and its API, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America.
 
-Once you've connected to an API, you should then set up and query metrics in your downstream tool of choice. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC. 
+2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## FAQs
 

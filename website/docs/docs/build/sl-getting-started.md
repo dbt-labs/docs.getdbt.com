@@ -17,7 +17,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 - [Test metrics](#test-metrics) with the MetricFlow
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud
-- [Connect and query API](#connect-and-query-api) in dbt Cloud
+- [Connect and query API](#connect-and-query-api) with dbt Cloud
 - [Test and query with the CLI](#test-and-query-with-the-cli) 
   * For Developer plans or dbt Core users only
 
