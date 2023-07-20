@@ -60,6 +60,7 @@ Metrics, which is a key concept, are functions that combine measures, constraint
 
 MetricFlow supports different metric types:
 
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a measure over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
