@@ -51,7 +51,7 @@ Before you start, keep the following considerations in mind:
 
  <Card
     title="Get started with the dbt Semantic Layer"
-    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs"
+    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer API"
     link="/docs/use-dbt-semantic-layer/quickstart-sl"
     icon="dbt-bit"/>
 

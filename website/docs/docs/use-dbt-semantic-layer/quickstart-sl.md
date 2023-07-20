@@ -24,7 +24,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 - [Create your metrics](#create-your-metrics) with MetricFlow
 - [Run your production job](#run-your-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud
-- [Connect and Query APIs](#connect-and-query-apis)
+- [Connect and Query API](#connect-and-query-apis)
 
 ## Prerequisites
 
@@ -113,14 +113,15 @@ metrics:
  
 3. Click **Save** and then **Preview** the code in the dbt Cloud IDE.
 
+## Test metrics
 
-### Test metrics
+The following steps explain how to test and manually query your metrics using the [MetricFlow CLI](/docs/build/metricflow-cli) only. dbt Cloud IDE support will be available soon.
 
-The following steps explain how to query and test your metrics, which currently is only available via the CLI. However, IDE support will be available soon:
-
-1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions in the IDE.
-3. Run `mf validate-configs` to validate the changes before committing them.
-3. Commit and merge the code changes that contain the metric definitions.
+1. Make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
+2. Run `mf validate-configs` to validate the changes before committing them.
+3. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
+4. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
+5. Commit and merge the code changes that contain the metric definitions.
 
 To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 

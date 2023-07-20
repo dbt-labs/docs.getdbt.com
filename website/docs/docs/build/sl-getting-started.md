@@ -4,43 +4,52 @@ title: Get started with MetricFlow
 description: "Learn how to create your first semantic model and metric."
 sidebar_label: Get started with MetricFlow
 tags: [Metrics, Semantic Layer]
+meta:
+  api_name: dbt Semantic Layer API
 ---
 
 This getting started page recommends a workflow to help you get started creating your first metrics. Here are the following steps you'll take:
 
-- [Create a semantic model](#create-a-semantic-model)
-- [Create your metrics](#create-your-metrics)
-- [Test and query your metrics](#test-and-query-your-metrics)
+Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
+
+- [Create a semantic model](#create-a-semantic-model) with MetricFlow
+- [Define metrics](#define-metrics) with MetricFlow
+- [Test metrics](#test-metrics) with the MetricFlow
+- [Run a production job](#run-a-production-job) in dbt Cloud
+- [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud
+- [Connect and query API](#connect-and-query-api) in dbt Cloud
+- [Test and query with the CLI](#test-and-query-with-the-cli) 
+  * For Developer plans or dbt Core users only
 
 ## Prerequisites
 
-- Use the [command line (CLI)](/docs/core/about-the-cli) and have a dbt project and repository set up. 
-  * Note: Support for dbt Cloud and integrations coming soon.
-- Your dbt production environment must be on [dbt Core v1.6](/docs/dbt-versions/core) or higher. Support for the development environment coming soon.
-- Have a dbt project connected to Snowflake or Postgres. 
-  * Note: Support for BigQuery, Databricks, and Redshift coming soon.
 - Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
-- Recommended &mdash; dbt Labs recommends you install the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow) to test your metrics.
+- Have both your production and development environments running dbt version 1.6 or higher 
+- Use Snowflake, BigQuery, Databricks, and Redshift data platform
+- A successful run in the environment where your Semantic Layer is configured
+  * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
+- To query with dbt Cloud:
+  * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America
+  * Set up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions.
+- To query locally:
+  * dbt Core or Developer accounts must manually install the [MetricFlow CLI package](/docs/build/metricflow-cli) to test or query their metrics. After installing the package, make sure you run at least one model. <br />
+
 
 :::tip 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
 
-## Install MetricFlow
-
-Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) via PyPI in the CLI. To install them, open the command line interface (CLI) and use the pip install command `pip install "dbt-metricflow[your_adapter_name]"`.
-
-Note that specifying `[your_adapter_name]` is required.  This is because you must install MetricFlow as an extension of a dbt adapter. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
- 
-Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
-
 ## Create a semantic model
 
-MetricFlow, which powers the dbt Semantic Layer, has two main objects: [semantic models](/docs/build/semantic-models) and [metrics](/docs/build/metrics-overview). You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
+Before you begin, we recommend you learn about more about [MetricFlow](/docs/build/about-metricflow) and its key concepts. There are two main objects: 
 
-This step will guide you through setting up your semantic models, which consists of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
+- [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
+- [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
+
+This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures),  in your editor of choice.
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
+
 ```yaml
 semantic_models:
   - name: transactions
@@ -87,11 +96,13 @@ group by metric_time_day, country  -- dimensions
   ```
 :::
 
-## Create your metrics
+## Define metrics
 
-Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). You can define metrics in the same YAML files as your semantic models, or create a new file.
+Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). 
 
-The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
+1. You can define metrics in the same YAML files as your semantic models, or create a new file.
+
+2. The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 
 ```yaml
 ---
@@ -101,28 +112,61 @@ metrics:
     type_params:
     measure: transaction_amount_usd
 ```
+ 
+3. Save your code and make sure you test your metrics before committing them to your repository.
 
-Interact and test your metric using the CLI before committing it to your MetricFlow repository.
+To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 
-## Test and query your metrics
+## Test metrics 
 
-Follow these steps to test and query your metrics using MetricFlow:
+The following steps explain how to test your metrics using the [MetricFlow CLI](/docs/build/metricflow-cli) (dbt Cloud IDE support coming soon).
 
-1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow).
+dbt Core or Developer plan user should refer to [Test and query with the CLI](#test-and-query-with-the-cli) for detailed steps. 
 
-2. Run `mf --help` to confirm you have MetricFlow installed, and to see the available commands. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
+1. To test your metrics, make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
+2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
+3. Run `mf validate-configs` to validate the changes before committing them
 
-3. Save your files and run `mf validate-configs` to validate the changes before committing them
+## Run a production job
 
-4. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions you want to see in the CLI.
+Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
 
-5. Verify that the metric values are what you expect. You can view the generated SQL if you enter `--explain` in the CLI. 
+1. Go to **Deploy** in the navigation header
+2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
+3. Your metric should appear as a red node in the dbt Cloud IDE and dbt directed acyclic graphs (DAG).
 
-6. Then commit your changes to push them to your git repo.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" width="85%" title="DAG with metrics appearing as a red node" />
 
-<!--## Troubleshooting
+## Set up dbt Semantic Layer
 
-ANY COMMON TROUBLESHOOTING QUESTIONS?-->
+import SlSetUp from '/snippets/_new-sl-setup.md';  
+
+<SlSetUp/>
+
+## Connect and query API
+
+To connect and query your metrics using the dbt Semantic Layer and its API, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America.
+
+1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC. 
+2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+
+## Test and query with the CLI
+
+Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) via PyPI in the CLI. To install them, open the command line interface (CLI) and use the pip install command `pip install "dbt-metricflow[your_adapter_name]"`.
+
+  * Note that specifying `[your_adapter_name]` is required.  This is because you must install MetricFlow as an extension of a dbt adapter. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+
+To test your metrics locally:
+
+1. Make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
+2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
+3. Run `mf validate-configs` to validate the changes before committing them
+
+To query your metrics locally:
+
+1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
+2. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
+3. Commit and merge the code changes that contain the metric definitions.
 
 ## Related docs
 

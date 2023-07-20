@@ -12,7 +12,7 @@ dbt Labs are thrilled to announce the re-release of the [dbt Semantic Layer](/do
 - [MetricFlow](/docs/build/about-metricflow) is a framework for constructing performant and legible SQL from an all new set of semantic constructs which include semantic models, entities, and metrics.
 - New Semantic Layer infrastructure that enables support for more data platforms (Snowflake, Databricks, BigQuery, Redshift, and soon more), along with improved performance.
 - New and improved [developer workflows](/guides/migration/sl-migration), governance, and collaboration features.
-- New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to query metrics and build integrations.
+- New [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) using JDBC to query metrics and build integrations.
 
 With semantics at its core, the dbt Semantic Layer marks a crucial milestone towards a new era of centralized logic and data applications.
 
