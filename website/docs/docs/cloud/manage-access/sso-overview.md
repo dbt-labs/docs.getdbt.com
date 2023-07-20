@@ -15,6 +15,9 @@ Once you configure SSO, even partially, you cannot disable or revert it. When yo
 
 - You have a dbt Cloud account enrolled in the Enterprise plan. [Contact us](mailto:sales@getdbt.com) to learn more and enroll.
 
+## Auth0 Multi-tenant URIs
+
+<Snippet path="auth0-uri" />
 
 ## SSO process
 
@@ -42,14 +45,6 @@ Then, assign all of these (and only these) to the user license. This step will a
 - **dbt Cloud Application**: After these steps, the user is redirected into the dbt Cloud application, and they can begin to use the application normally.
 
 ## SSO enforcement
-
-:::info Security Update
-
-Please read the following update if you've enabled SSO but still have non-admin users logging in with a password. The changes outlined here will be released after September 15, 2022.
-
-:::
-
-Starting September 15, 2022, we will be making these security changes to SSO to increase the security posture of your environment:
 
 * **SSO Enforcement:** If you have SSO turned on in your organization, dbt Cloud will enforce SSO-only logins for all non-admin users. If an Account Admin already has a password, they can continue logging in with a password.
 * **SSO Re-Authentication:** dbt Cloud will prompt you to re-authenticate using your SSO provider every 24 hours to ensure high security.

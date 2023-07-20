@@ -6,16 +6,20 @@ sidebar_label: "dbt Semantic Layer"
 ---
 
 :::info Coming soon
-The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+The dbt Semantic Layer is undergoing a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics.
+
+**What’s changing?** The dbt_metrics package will be [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), a new way framework for defining metrics in dbt.
+
+**What's new?**  Learn how to [Build your metrics](/docs/build/build-metrics-intro?version=1.6) using MetricFlow, one of the key components that makes up the revamped dbt Semantic Layer. It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
 :::
 
 The dbt Semantic Layer allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice.
 
-The result? You have less duplicative coding for data teams and more consistency for data consumers. 
+The result? You have less duplicate coding for data teams and more consistency for data consumers. 
 
 The dbt Semantic Layer has four main parts:
 
-- Define your metrics in version-controlled dbt project code
+- Define your metrics in version-controlled dbt project code using MetricFlow
 - Import your metric definitions via the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
 - Query your metric data via the dbt Proxy Server
 - Explore and analyze dbt metrics in downstream tools
@@ -31,9 +35,9 @@ The dbt Semantic Layer reduces code duplication and inconsistency regarding your
 ## Prerequisites
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
-<Snippet src="sl-prerequisites" />
+<Snippet path="sl-prerequisites" />
 
-<Snippet src="sl-considerations-banner" />
+<Snippet path="sl-considerations-banner" />
 
 ## Public Preview
 

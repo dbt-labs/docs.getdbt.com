@@ -87,8 +87,8 @@ Macro files can contain one or more macros — here's an example:
 
 ```sql
 
-{% macro cents_to_dollars(column_name, precision=2) %}
-    ({{ column_name }} / 100)::numeric(16, {{ precision }})
+{% macro cents_to_dollars(column_name, scale=2) %}
+    ({{ column_name }} / 100)::numeric(16, {{ scale }})
 {% endmacro %}
 
 ```
@@ -140,7 +140,7 @@ select
   field_5,
   count(*)
 from my_table
-{{ dbt_utils.group_by(5) }}
+{{ dbt_utils.dimensions(5) }}
 
 ```
 
@@ -148,13 +148,13 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## FAQs
 
-<FAQ src="Accounts/dbt-specific-jinja" />
-<FAQ src="Jinja/which-jinja-docs" />
-<FAQ src="Jinja/quoting-column-names" />
-<FAQ src="Jinja/jinja-whitespace" />
-<FAQ src="Project/debugging-jinja" />
-<FAQ src="Docs/documenting-macros" />
-<FAQ src="Project/why-so-many-macros" />
+<FAQ path="Accounts/dbt-specific-jinja" />
+<FAQ path="Jinja/which-jinja-docs" />
+<FAQ path="Jinja/quoting-column-names" />
+<FAQ path="Jinja/jinja-whitespace" />
+<FAQ path="Project/debugging-jinja" />
+<FAQ path="Docs/documenting-macros" />
+<FAQ path="Project/why-so-many-macros" />
 
 ## dbtonic Jinja
 
@@ -185,5 +185,5 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="wee"/>

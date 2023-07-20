@@ -24,7 +24,7 @@ This guide has three main goals:
 - At each stage, explain *why* we recommend the approach that we do, so that you're equipped to decide when and where to deviate from these recommendations to better fit your organization’s unique needs
 
 :::info
-☁️ This guide focuses on architecture for **dbt Cloud**. However, similar principles apply for developers using dbt Core. Before diving into this guide we recommend taking a look at our **[dbt Cloud environments](/docs/collaborate/environments/dbt-cloud-environments)** page for more context.
+☁️ This guide focuses on architecture for **dbt Cloud**. However, similar principles apply for developers using dbt Core. Before diving into this guide we recommend taking a look at our **[dbt Cloud environments](/docs/dbt-cloud-environments)** page for more context.
 
 :::
 
@@ -55,7 +55,7 @@ We usually recommended folks start with the basics; having one deployment enviro
 - You only need to have **scheduled jobs running in a single environment** within your data warehouse.
 - You use a **single primary branch** and follow a direct promotion (**Dev —> Prod**) strategy
 
-With this option, your production jobs and your [Slim CI jobs](docs/deploy/cloud-ci-job) that ensure code integrity are managed within one single deployment environment.
+With this option, your production jobs and your [Slim CI jobs](/docs/deploy/continuous-integration) that ensure code integrity are managed within one single deployment environment.
 
 ### TL;DR — Many deployment environments
 This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that can be worth the tradeoff. This approach works well if:

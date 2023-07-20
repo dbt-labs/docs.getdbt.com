@@ -16,7 +16,7 @@ If you don't have any of the following requirements, refer to the instructions i
 - You have [optimized your dbt models for peak performance](/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
 - You have created two catalogs in Databricks: *dev* and *prod*.
 - You have created  Databricks Service Principal to run your production jobs.
-- You have at least one [deployment environment](docs/collaborate/environments/dbt-cloud-environments) in dbt Cloud.
+- You have at least one [deployment environment](/docs/deploy/deploy-environments) in dbt Cloud.
 
 To get started, let's revisit the deployment environment created for your production data.
 
@@ -24,7 +24,7 @@ To get started, let's revisit the deployment environment created for your produc
 
 In software engineering, environments play a crucial role in allowing engineers to develop and test code without affecting the end users of their software. Similarly, you can design [data lakehouses](https://www.databricks.com/product/data-lakehouse) with separate environments. The _production_ environment includes the relations (schemas, tables, and views) that end users query or use, typically in a BI tool or ML model.
 
-In dbt Cloud, [environments](/docs/collaborate/environments/dbt-cloud-environments) come in two flavors:
+In dbt Cloud, [environments](/docs/dbt-cloud-environments) come in two flavors:
 
 - Deployment &mdash; Defines the settings used for executing jobs created within that environment.
 - Development &mdash; Determine the settings used in the dbt Cloud IDE for a particular dbt Cloud project. 
@@ -85,24 +85,7 @@ Your CI job will ensure that the models build properly and pass any tests applie
 - A service principal called *dbt_test_sp*
 - A new dbt Cloud environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend using dbt Cloud’s [defer](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) feature to set up a [Slim CI](/docs/deploy/cloud-ci-job#configuring-a-slim-ci-job) job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse.
-
-Let’s create the Slim CI job:
-
-1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
-2. **Name** the job “CI Check”
-3. Set the **Environment** to your *test* environment
-4. Under **Execution Settings**
-    - Use the dropdown under Defer to a previous run state? to select the “Daily Refresh” job.
-        - This will tell our CI job to look at the artifacts from our “Daily Refresh” job’s most recent run to determine which resources are new or modified.
-    
-    Add the following **Command:**
-    
-    - `dbt build –select state:modified+`
-        - Combining [state](/reference/node-selection/syntax#about-node-selection) with the defer option above, our job will use the production environment’s models upstream of the modified resources rather than rebuild models that have already been tested and are already running in production. The modified resources and downstream models will be built in a temporary schema in the *test* catalog.
-5. Under **Triggers**, select the **Continuous Integration (CI)** tab and check the **Run on Pull Requests?** box.
-    - This will automatically kick off the job when a developer creates a pull request via the dbt Cloud IDE and display the status of the job within the git provider’s interface.
-    - Note that this option will only be available if your git repo has a native integration with dbt Cloud (currently GitHub, GitLab, and Azure DevOps).
+We recommend setting up a dbt Cloud Slim CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a Slim CI job, refer to [Set up Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 
