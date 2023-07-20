@@ -29,7 +29,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 - A successful run in the environment where your Semantic Layer is configured
   * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 - To query with dbt Cloud:
-  * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America
+  * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America
   * Set up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions.
 - To query locally:
   * dbt Core or Developer accounts must manually install the [MetricFlow CLI](/docs/build/metricflow-cli) to test or query their metrics. After installing the package, make sure you run at least one model. <br />
