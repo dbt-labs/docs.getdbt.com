@@ -1084,7 +1084,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/databricks-guides/productionizing-your-dbt-databricks-project",
           ],
         },
-        "guides/dbt-ecosystem/databricks-guides/sl-partner-integration-guide",
+        "guides/dbt-ecosystem/sl-partner-integration-guide",
       ],
     },
     {

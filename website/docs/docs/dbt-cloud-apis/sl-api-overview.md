@@ -26,7 +26,17 @@ You can use the dbt Semantic Layer for a variety of tools and applications of da
 * Data discovery and cataloging
 * Machine learning and data science
 
-During [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta), the dbt Semantic Layer is accessible to all dbt Cloud Team and Enterprise multi-tenant plans [hosted](/docs/cloud/about-cloud/regions-ip-addresses) in North America. It's available on dbt v1.6 or higher. dbt Cloud Developer plans and dbt Core users can use MetricFlow to define and test metrics locally, but can't dynamically query them with integrated tools. 
+<!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
+
+import Features from '/snippets/_sl-plan-info.md'
+
+<Features
+cycle="public beta"
+product="dbt Semantic Layer"
+plan="dbt Cloud Team and Enterprise"
+instance="hosted in North America"
+/>
+<br /><br />
 
 <div className="grid--3-col">
 
