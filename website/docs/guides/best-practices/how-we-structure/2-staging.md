@@ -112,8 +112,8 @@ select * from renamed
     # dbt_project.yml
     
     models:
-      jaffle_shop:
-        staging:
+      staging:
+        jaffle_shop:
           +materialized: view
     ```
 
