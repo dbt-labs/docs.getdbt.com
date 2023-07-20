@@ -81,7 +81,6 @@ select * from {{
 	semantic_layer.dimensions(metrics=['food_order_amount'])}}
 ```
 
-
 </TabItem>
 
 <TabItem value="dimensionvalueformetrics" label="Fetch dimension values metrics">
@@ -93,6 +92,35 @@ Note, `metrics` is a required argument that lists with one or multiple metrics i
 ```bash
 select * from {{ 
 semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="customer__customer_name")}}
+```
+
+</TabItem>
+
+<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable time granularities for metrics">
+
+Use this query to fetch queryable granularities for a list of metrics. This argument allows you to only show the time granularities that make sense for the source model that the metrics are built off of.
+
+Note, `metrics` is a required argument that lists with one or multiple metrics in it.
+
+```bash
+select * from {{
+    semantic_layer.queryable_granularities(metrics=['food_order_amount', 'order_gross_profit'])}}
+```
+
+</TabItem>
+
+
+<TabItem value="metricsfordimensions" label="Fetch available metrics given dimensions">
+
+Use this query to fetch available metrics given dimensions. This command is essentially the opposite of getting dimensions given a list of metrics.
+
+Note, `group_by` is a required argument that lists one or multiple dimensions in it.
+
+```bash
+select * from {{
+    semantic_layer.metrics_for_dimensions(group_by=['customer__customer_type'])
+
+}}
 ```
 
 </TabItem>
