@@ -32,7 +32,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
   * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America
   * Set up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions.
 - To query locally:
-  * dbt Core or Developer accounts must manually install the MetricFlow CLI (WILL ADD LINK WHEN CLI PR IS LIVE)  to test or query their metrics. After installing the package, make sure you run at least one model. <br />
+  * dbt Core or Developer accounts must manually install the [MetricFlow CLI](/docs/build/metricflow-cli) to test or query their metrics. After installing the package, make sure you run at least one model. <br />
 
 
 :::tip 
@@ -119,7 +119,7 @@ To continue building out your metrics based on your organization's needs, refer 
 
 ## Test metrics 
 
-The following steps explain how to test your metrics using the MetricFlow CLI (WILL ADD LINK WHEN CLI PR IS LIVE) ) (dbt Cloud IDE support coming soon).
+The following steps explain how to test your metrics using the [MetricFlow CLI](/docs/build/metricflow-cli) (dbt Cloud IDE support coming soon).
 
 dbt Core or Developer plan user should refer to [Test and query with the CLI](#test-and-query-with-the-cli) for detailed steps. 
 
@@ -158,7 +158,7 @@ Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs
 
 To test your metrics locally:
 
-1. Make sure you have the MetricFlow CLI (WILL ADD LINK WHEN CLI PR IS LIVE) installed and up to date.
+1. Make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
 3. Run `mf validate-configs` to validate the changes before committing them
 
@@ -175,3 +175,4 @@ To query your metrics locally:
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Semantic models](/docs/build/semantic-models)
 - [Metrics](/docs/build/metrics-overview)
+- [MetricFlow CLI](/docs/build/metricflow-cli)
