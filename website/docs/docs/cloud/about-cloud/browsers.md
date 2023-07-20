@@ -22,3 +22,8 @@ You may still be able to access and use dbt Cloud even without using the latest 
 To improve your experience using dbt Cloud, we suggest that you turn off ad blockers.
 :::
 
+### Browser sessions
+
+A session is a period of time during which you’re signed in to a dbt Cloud account from a browser. If you close your browser, it will end your session and log you out. You'll need to log in again the next time you try to access dbt Cloud. 
+
+If you've logged in using [SSO](/docs/cloud/manage-access/sso-overview) or [OAuth](/docs/cloud/git/connect-github#personally-authenticate-with-github), you can customize your maximum session duration, which might vary depending on your identity provider (IdP).

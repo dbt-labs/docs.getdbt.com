@@ -16,6 +16,21 @@ The keys for metrics definitions are:
 * `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
 * `meta`: Additional metadata you want to add to your metric. 
 
+Here's a complete example of the metrics spec configuration:
+
+```
+metrics:
+  - name: metric name
+    description: same as always
+    type: the type of the metric
+    type_params:
+        - specific properties for the metric type
+    configs: here for `enabled`
+    label: The display name for your metric. This value will be shown in downstream tools.
+    filter: |
+      {{  dimension('name') }} > 0 and {{ dimension(' another name') }} is not null
+
+```
 This page explains the different supported metric types you can add to your dbt project. 
 <!--
 - [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
@@ -25,10 +40,10 @@ This page explains the different supported metric types you can add to your dbt 
 - [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
 -->
 
-<!--not supported for this release
+
 ### Cumulative metrics 
 
-[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. Note that if no window is specified, the window would accumulate the measure over all time. 
+[Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window would accumulate the measure over all time. **Note**m, you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 ```yaml
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
@@ -43,7 +58,6 @@ metrics:
     #Omitting window will accumulate the measure over all time
     window: 7 days
 ```
--->
 ### Derived metrics
 
 [Derived metrics](/docs/build/derived) are defined as an expression of other metrics. Derived metrics allow you to do calculations on top of metrics. 
@@ -145,7 +159,9 @@ You can set more metadata for your metrics, which can be used by other tools lat
 ## Related docs
 
 - [Semantic models](/docs/build/semantic-models)
+- [Cumulative](/docs/build/cumulative)
 - [Derived](/docs/build/derived)
+
 
 
 
