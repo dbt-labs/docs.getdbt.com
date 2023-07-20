@@ -346,7 +346,19 @@ In the configuration format for the model SQL file:
 
 ## Dynamic Tables
 
-[Dynamic Tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about) are Snowflake's flavor of Materialized Views. The `CREATE DYNAMIC TABLE` ([docs](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)) statement requires the following parameters `TARGET_LAG` and `WAREHOUSE`, so a dbt-snowflake user must also provide these.
+[Dynamic Tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about) are Snowflake's flavor of Materialized Views.
+
+### Parameters
+
+dbt-snowflake requires the following parameters:
+
+- `TARGET_LAG`
+- `WAREHOUSE`
+
+To learn more about each parameter and what values it can take, see 
+the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)
+
+### Usage
 
 You can create a dynamic table by editing _one_ of these files:
 
