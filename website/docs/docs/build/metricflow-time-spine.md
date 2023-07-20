@@ -19,11 +19,15 @@ To create this table, you need to create a model in your dbt project called `met
 }}
 
 with days as (
-    {{dbt_utils.date_spine('day'
-    , "to_date('01/01/2000','mm/dd/yyyy')"
-    , "to_date('01/01/2027','mm/dd/yyyy')"
-    )
+
+    {{
+        dbt_utils.date_spine(
+            'day',
+            "to_date('01/01/2000','mm/dd/yyyy')",
+            "to_date('01/01/2027','mm/dd/yyyy')"
+        )
     }}
+
 ),
 
 final as (
@@ -31,8 +35,7 @@ final as (
     from days
 )
 
-select *
-from final
+select * from final
 ```
 
 You only need to include the `date_day` column in the table. MetricFlow can handle broader levels of detail, but it doesn't currently support finer grains.
