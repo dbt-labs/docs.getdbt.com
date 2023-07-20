@@ -24,4 +24,4 @@ To enable or disable experimental features:
 
 ## Beta terms and conditions
 
-By using or enabling features that aren't yet in general release ("Beta Features"), you agree to its terms and conditions. Download the [Beta terms and conditions](/assets/beta-tc.pdf) for more info.  
+By using or enabling features that aren't yet in general release ("Beta Features"), you agree to the [Beta Features Terms and Conditions](/assets/beta-tc.pdf).
