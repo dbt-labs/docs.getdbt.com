@@ -10,6 +10,7 @@ import allBlogData from './../../.docusaurus/docusaurus-plugin-content-blog/defa
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { getSpotlightMember } from '../utils/get-spotlight-member';
 
+// Test
 
 const bannerAnimation = require('@site/static/img/banner-white.svg');
 
