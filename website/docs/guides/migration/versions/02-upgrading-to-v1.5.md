@@ -59,7 +59,7 @@ models:
 Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
 
 
-The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object, otherwise, some of your dbt commands will never finish. For example:
+The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
 
 ```sql
 {{ return(load_result('collect_freshness')) }}
