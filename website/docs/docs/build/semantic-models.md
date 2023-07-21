@@ -23,6 +23,21 @@ You can configure semantic models in your dbt project directory in a `YAML` file
 
 
 ## Semantic models components
+The complete spec for semantic models is below:
+```yaml
+semantic_models:
+  - name: the_name_of_the_semantic_model [Required]
+    description: same as always [Optional]
+    model: ref('some_model') [Required]
+    default: [Required]
+        agg_time_dimension: dimension_name [Required if the model contains dimensions]
+    entities: [Required]
+       - see more information in entities
+    measures:[Optional]
+       - see more information in measures section
+    dimensions:[Required]
+       - see more information in dimensions section
+```
 
 The following example displays a complete configuration and detailed descriptions of each field:
 

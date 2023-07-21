@@ -14,7 +14,16 @@ In a data platform, dimensions is part of a larger structure called a semantic m
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-Refer to the following semantic model example:
+The complete spec for dimensions is below:
+```yaml
+dimensions:
+    - name: The name [Required]
+      type: Categorical or Time [Required]
+      type_params: specific type params such as if the time is primary or used as a partition [Required]
+      description: same as always [Optional]
+      expr: the column name or expression. If not provided the defult is the dimension name [Optional]
+```
+Refer to the following example to see how dimensions are used in a semantic model:
 
 ```yaml
 semantic_models:

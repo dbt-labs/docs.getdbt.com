@@ -20,14 +20,14 @@ Here's a complete example of the metrics spec configuration:
 
 ```
 metrics:
-  - name: metric name
-    description: same as always
-    type: the type of the metric
-    type_params:
+  - name: metric name [Required]
+    description: same as always [Optional]
+    type: the type of the metric [Required]
+    type_params: [Required]
         - specific properties for the metric type
-    configs: here for `enabled`
-    label: The display name for your metric. This value will be shown in downstream tools.
-    filter: |
+    configs: here for `enabled`[Optional]
+    label: The display name for your metric. This value will be shown in downstream tools. [Required]
+    filter: | [Optional]
       {{  dimension('name') }} > 0 and {{ dimension(' another name') }} is not null
 
 ```
