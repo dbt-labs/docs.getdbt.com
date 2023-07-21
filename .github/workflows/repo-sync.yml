@@ -59,16 +59,6 @@ jobs:
               console.log('closed PR', prNumber)
             }
           
-            console.log('Closing any existing pull requests')
-            const { data: existingPulls } = await github.rest.pulls.list({ owner, repo, head, base })
-            if (existingPulls.length) {
-              console.log('Found existing pull requests', existingPulls.map(pull => pull.number))
-              for (const pull of existingPulls) {
-                await closePullRequest(pull.number)
-              }
-              console.log('Closed existing pull requests')
-            }
-          
             console.log('Creating new PR')
             let pull, pull_number
             try {
@@ -110,8 +100,8 @@ jobs:
               }
               console.log('No detected merge conflicts')
   
+              
               console.log('Merging the pull request')
-              // Admin merge pull request to avoid squash
               await github.rest.pulls.merge({
                 owner,
                 repo,
