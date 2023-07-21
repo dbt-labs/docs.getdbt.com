@@ -15,6 +15,8 @@ You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#gett
 1. Create or activate your virtual environment.`python -m venv venv`
 2. Run `pip install dbt-metricflow`
 
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+
 The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
 
 # CLI commands

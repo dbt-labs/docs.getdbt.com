@@ -1,14 +1,162 @@
 ---
-title: "dbt Semantic Layer integration" 
+title: "dbt Semantic Layer integration best practices" 
 id: "sl-partner-integration-guide"
 description: Learn about partner integration guidelines, roadmap, and connectivity. 
 ---
 
-# dbt Semantic Layer partner integration
+<VersionBlock firstVersion="1.6">
 
-:::info Coming soon
-The dbt Semantic Layer is undergoing some sophisticated changes, enabling more complex metric definitions and efficient querying. As part of these changes, the dbt_metrics package will be deprecated and replaced with MetricFlow. For more info, check out the [The dbt Semantic Layer: what's next?](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) and [dbt_metrics deprecation](https://docs.getdbt.com/blog/deprecating-dbt-metrics) blog.
+import NewChanges from '/snippets/_new-sl-changes.md';
+
+<NewChanges/>
+
+To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
+
+:::note
+This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it (email?)!
 :::
+
+
+## Requirements
+
+To build a dbt Semantic Layer integration: 
+
+-  Initially, we recommend building an integration with the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) followed by enhancements of additional features. Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+
+- Familiarize yourself with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
+
+  - [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
+  - [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
+
+### Connection parameters
+
+The dbt Semantic Layer authenticates with:
+- `environmentId`, 
+- `SERVICE_TOKEN`, 
+- `host`
+
+This applies to the dbt Semantic Layer APIs, which all currently use different host names.
+
+We recommend you provide users with separate input fields with these components (which dbt Cloud provides). 
+
+For [JDBC](/docs/dbt-cloud-apis/sl-jdbc), you can construct the JDBC URL from these inputs. Or, you could request the full URL string.
+
+If you use both Semantic Layer APIs, users will need to provide different host information for each one. In the future, we want to unify these host names.
+
+## Best practices on exposing metrics:
+
+Best practices for exposing metrics is summarized into five themes:
+
+- [Governance](#governance-and-traceability) &mdash;
+- [Discoverability](#discoverability) &mdash;
+- [Organization](#organization) &mdash;
+- [Context and interpretation](#context-and-interpretation) &mdash;
+- [Query flexibility](#query-flexibility) &mdash;
+
+### Governance and traceability
+
+When working with more governed data, it's essential to establish clear guardrails. Here are some recommendations:
+
+**Aggregations control** <br />
+Users shouldn't generally be allowed to modify aggregations unless they are performing post-processing calculations on data from the Semantic Layer (such as year over year analysis).
+
+**Traceability of metric and dimension changes** <br />
+When users change names of metrics and dimensions for reports, it's crucial to have a traceability mechanism in place to link back to the original source metric name.
+
+**Time series alignment**<br />
+Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes. 
+  
+Implementing guardrails in the application might help achieve this.
+
+**Units consistency**<br />
+If units are supported, it's vital to avoid plotting data incorrectly with different units. Ensuring consistency in unit representation will prevent confusion and misinterpretation of the data.
+
+### Discoverability 
+
+1. Consider treating [metrics](/docs/build/metrics-overview) as first-class objects rather than measures. Metrics offer a higher-level and more contextual way to interact with data, reducing the burden on end-users to manually aggregate data.
+
+2. Easy metric interactions: Provide users with an intuitive approach to:
+
+    * Search for Metrics &mdash; Users should be able to easily search and find relevant metrics. Metrics can serve as the starting point to lead users into exploring dimensions.
+    * Search for Dimensions &mdash; Users should be able to query metrics with associated dimensions, allowing them to gain deeper insights into the data.
+    * Filter by Dimension Values &mdash; Expose and enable users to filter metrics based on dimension values, encouraging data analysis and exploration.
+    * Filter additional metadata &mdash; Allow users to filter metrics based on other available metadata, such as metric type and default time granularity.
+
+3. Suggested Metrics: Ideally, the system should intelligently suggest relevant metrics to users based on their team's activities. This approach encourages user exposure, facilitates learning, and supports collaboration among team members.
+
+By implementing these recommendations, the data interaction process becomes more user-friendly, empowering users to gain valuable insights without the need for extensive data manipulation.
+
+### Organization 
+
+We recommend organizing metrics and dimensions in ways that a non-technical user can understand the data model, without needing much context:
+
+**Organizing Dimensions** 
+
+To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.  
+
+You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and makes them them more user-friendly and accessible.
+
+**Organizing Metrics** 
+
+The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list. 
+
+This hierarchy helps you organize metrics based on a specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
+
+### Context and interpretation
+
+For better analysis, it's best to have the context of the metrics close to where the analysis is happening. We recommend the following:
+
+- Expose business definitions of the metrics as well as logical definitions
+- Expose additional metadata from the Semantic layer (measures, type parameters)
+- Use the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to enhance the metric and build confidence in its accuracy:
+  * Check if the metric is fresh and when it was last updated.
+  * Include lineage information to understand the metric's origin.
+- Allow for creating other metadata that’s useful for the metric. We can provide some of this information in our configuration (Display name, Default Granularity for View, Default Time range), but there may be other metadata that your tool wants to provide to make the metric richer.
+
+### Query flexibility
+
+Allow users to query either one metric without dimensions or one or more metrics with dimensions
+
+- Allow toggling between metrics / dimensions seamlessly
+- Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply, and vice versa.
+- Include Presets for filtering date ranges and calendar for filtering time dimensions
+  * For example, last 30 days, last week etc.
+- Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
+  * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity" isn't available to the user.  
+
+### Example stages of an integration
+
+**Stage 1 - The basic**
+* Supporting and using the new [JDBC](/docs/dbt-cloud-apis/sl-jdbc) is the first step. Refer to the [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+
+**Stage 2 - More discoverability and basic querying**
+* Support listing metrics defined in project
+* Listing available dimensions based on one or many metrics
+* Querying defined metric values on their own or grouping by available dimensions
+* Display metadata from [Discovery API](/docs/dbt-cloud-apis/discovery-api) and other context
+
+**Stage 3 - More querying flexibility and better user experience (UX)**
+* More advanced filtering
+  * Time filters with good presets/calendar UX
+  * Filtering metrics on pre-populated set of dimensions values
+* Make dimension values more user-friendly by organizing them effectively
+* Intelligent filtering of metrics based on available dimensions and vice versa
+
+**Stage 4 - More custom user interface (UI) / Collaboration**
+* A place where users can see all the relevant information about a given metric
+* Organize metrics by hierarchy and more advanced search features (such as filter on the type of metric or other metadata)
+* Use and expose more metadata 
+* Querying dimensions without metrics and other more advanced querying functionality
+* Suggest metrics to users based on teams/identity, and so on.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.5">
+
+import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+
+<LegacyInfo/>
+
 
 This guide is for dbt Semantic Layer integration partners and explains integration guidelines, and connectivity.<br />
 
@@ -106,17 +254,6 @@ To use the dbt Semantic Layer, you must meet the [prerequisites](/docs/use-dbt-s
     </div>
     </details>
     <br></br>
-
-<!-- the following content was used for the <details> portion above. leaving this here for legacy purposes 
-**Metadata API authorization**
-
-To learn how to authorize requests to the Metadata API, review the [documentation](/docs/dbt-cloud-apis/discovery-querying#authorization) for more details. Metrics-specific queries work identically to existing Metadata API queries, so existing integrations used to query model metadata will work perfectly in the context of metrics. 
-
-**Query the Metadata API**
-
-Test out the Metadata API by using the [GraphQL sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fmetadata.cloud.getdbt.com%2Fgraphql) and use this [Python client](https://github.com/transform-data/dbt-metadata-client) as a starting point to develop. 
-
--->
 
 ### Query models for a project
 
@@ -412,7 +549,6 @@ from {{ ref('orders') }}
 </Tabs>
 
 ### Entities 
-<!-- rewrite a little and include a summary for each tab entry -->
 
 dbt Labs will introduce a new node type, **[entity](https://github.com/dbt-labs/dbt-core/issues/6379)**, when dbt Core version 1.5 launches. It introduces a new and efficient way to define metrics by reusing logic (for example, `time_grains`).  
 
@@ -650,11 +786,12 @@ If you'd like to become a formal partner, have product feedback/questions, or ar
 
 <!-- rewrite a little and would like to see if i can include a button -->
 
+</VersionBlock>
+
 ## Related docs
 
-- [dbt Semantic Layer docs](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
-- [dbt Metrics docs](https://docs.getdbt.com/docs/building-a-dbt-project/metrics) for more information about its components.
-- [dbt Semantic Layer intro blog](https://www.getdbt.com/blog/dbt-semantic-layer/) and [launch blog](https://www.getdbt.com/blog/frontiers-of-the-dbt-semantic-layer/) to learn more about the product vision and purpose. 
+- [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
+- [Build your metrics](/docs/build/build-metrics-intros) for more info about MetricFlow and its components. 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
 
 

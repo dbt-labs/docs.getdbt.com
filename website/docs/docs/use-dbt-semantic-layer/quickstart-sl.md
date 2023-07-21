@@ -117,7 +117,7 @@ metrics:
 
 ## Test metrics
 
-The following steps explain how to test and manually query your metrics using the [MetricFlow CLI](/docs/build/metricflow-cli) only. dbt Cloud IDE support will be available soon.
+The following steps explain how to test and manually query your metrics.
 
 1. Make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
 2. Run `mf validate-configs` to validate the changes before committing them.
@@ -158,7 +158,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 To connect and query your metrics using the dbt Semantic Layer and its API, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America.
 
 1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC. 
-2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice. 
+
+Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## FAQs
 
@@ -181,7 +183,7 @@ The dbt Semantic Layer is proprietary, however, some components of the dbt Seman
    
 ## Next steps
 
-Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer.
+Ready to define your own metrics and bring consistency to data consumers?  Review the following documents to get started:
 
 - [Set up dbt Semantic Layer](docs/use-dbt-semantic-layer/setup-dbt-sl)
 - [Build your metrics](/docs/build/build-metrics-intro)

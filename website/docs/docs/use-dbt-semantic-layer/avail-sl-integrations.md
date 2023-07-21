@@ -25,7 +25,9 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 - Hex &mdash;
 - Mode &mdash;
 - Google Sheets - Coming Soon!
-- Any tool that allows you to write SQL and meets one of the two criteria -- (a) supports a generic JDBC driver option (e.g., DataGrip) or (b) supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or greater.
+- Any tool that allows you to write SQL and meets one of the two criteria: 
+  * Supports a generic JDBC driver option (such as DataGrip) or 
+  * Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
 
 For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
 

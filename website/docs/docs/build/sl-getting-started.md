@@ -119,9 +119,10 @@ To continue building out your metrics based on your organization's needs, refer 
 
 ## Test metrics 
 
-The following steps explain how to test your metrics using the [MetricFlow CLI](/docs/build/metricflow-cli) (dbt Cloud IDE support coming soon).
-
-dbt Core or Developer plan user should refer to [Test and query with the CLI](#test-and-query-with-the-cli) for detailed steps. 
+:::note
+For public beta, you can't yet test metrics using the dbt Cloud IDE (support coming soon). To test metrics, you must install the [MetricFlow CLI](/docs/build/metricflow-cli).
+  * dbt Core or Developer plan users can skip to [Test and query with the CLI](#test-and-query-with-the-cli) for detailed steps. 
+:::
 
 1. To test your metrics, make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
@@ -145,24 +146,26 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query API
 
-To connect and query your metrics using the dbt Semantic Layer and its API, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
+Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
+
+To connect and query your metrics using the dbt Semantic Layer and its API:
 
 1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC. 
-2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice.
+
+Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## Test and query with the CLI
 
-Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) via PyPI in the CLI. To install them, open the command line interface (CLI) and use the pip install command `pip install "dbt-metricflow[your_adapter_name]"`.
+Before you begin, dbt Core or Developer plan users must first install the [MetricFlow CLI](/docs/build/metricflow-cli). 
 
-  * Note that specifying `[your_adapter_name]` is required.  This is because you must install MetricFlow as an extension of a dbt adapter. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+**Test using the CLI:**
 
-To test your metrics locally:
-
-1. Make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
+1. Make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
 3. Run `mf validate-configs` to validate the changes before committing them
 
-To query your metrics locally:
+**Query using the CLI:**
 
 1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
 2. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
@@ -173,6 +176,3 @@ To query your metrics locally:
 - [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
 - [The dbt Semantic Layer: what’s next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog post
 - [About MetricFlow](/docs/build/about-metricflow)
-- [Semantic models](/docs/build/semantic-models)
-- [Metrics](/docs/build/metrics-overview)
-- [MetricFlow CLI](/docs/build/metricflow-cli)
