@@ -20,7 +20,7 @@ This getting started page recommends a workflow to help you get started creating
 - Have a dbt project connected to Snowflake or Postgres. 
   * Note: Support for BigQuery, Databricks, and Redshift coming soon.
 - Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
-- Recommended &mdash; dbt Labs recommends you install the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow) to test your metrics.
+- Recommended &mdash; Install the [MetricFlow CLI](/docs/build/metricflow-cli) to query and test your metrics.
 
 :::tip 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
@@ -108,7 +108,7 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 Follow these steps to test and query your metrics using MetricFlow:
 
-1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow).
+1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow). Refer to [MetricFlow CLI](/docs/build/metricflow-cli) for more info on commands and how to install the CLI.
 
 2. Run `mf --help` to confirm you have MetricFlow installed, and to see the available commands. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
@@ -130,3 +130,4 @@ ANY COMMON TROUBLESHOOTING QUESTIONS?-->
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Semantic models](/docs/build/semantic-models)
 - [Metrics](/docs/build/metrics-overview)
+- [MetricFlow CLI](/docs/build/metricflow-cli)

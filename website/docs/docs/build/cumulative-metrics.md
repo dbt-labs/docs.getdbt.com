@@ -8,6 +8,12 @@ tags: [Metrics, Semantic Layer]
 
 Cumulative metrics aggregate a measure over a given window. If no window is specified, the window is considered infinite and accumulates values over all time.
 
+:::info MetricFlow time spine required
+
+You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
+
+:::
+
 ```yaml
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
 metrics:
@@ -24,7 +30,7 @@ metrics:
 
 ### Window options
 
-This section details examples for when you specify and don't specify window options.
+This section details examples of when you specify and don't specify window options.
 
 <Tabs>
 
@@ -56,7 +62,7 @@ metrics:
     window: 7 days
 ```
 
-From the sample yaml above, note the following: 
+From the sample YAML above, note the following: 
 
 * `type`: Specify cumulative to indicate the type of metric. 
 * `type_params`: Specify the measure you want to aggregate as a cumulative metric. You have the option of specifying a `window`, or a `grain to date`.  
@@ -142,7 +148,7 @@ metrics:
 ```yaml
 metrics: 
   name: revenue_monthly_grain_to_date #For this metric, we use a monthly grain to date 
-  description: Monthly revenue using a grain to date of 1 month (think of this as a monthly resetting point) 
+  description: Monthly revenue using grain to date of 1 month (think of this as a monthly resetting point) 
   type: cumulative 
   type_params: 
     measures: 
