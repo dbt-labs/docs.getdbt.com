@@ -12,6 +12,7 @@ To create this table, you need to create a model in your dbt project called `met
 
 ```sql
 -- metricflow_time_spine.sql
+{{config(materialized='table')}}
 with days as (
     {{dbt_utils.date_spine('day'
     , "to_date('01/01/2000','mm/dd/yyyy')"
@@ -30,6 +31,7 @@ from final
 ```
 ```sql
 --- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
+{{config(materialized='table')}}
 with days as (
     {{dbt_utils.date_spine('day'
     , "DATE(2000,01,01)"
