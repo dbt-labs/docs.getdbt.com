@@ -157,10 +157,11 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 To connect and query your metrics using the dbt Semantic Layer and its API, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/deploy/regions) deployment, hosted in North America.
 
-1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC. 
-2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice. 
+You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer.
 
-Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to use the JDBC API and what tools you can query it with.
+
+2. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## FAQs
 
