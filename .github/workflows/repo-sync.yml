@@ -59,23 +59,20 @@ jobs:
               console.log('closed PR', prNumber)
             }
           
-            console.log('Closing any existing PRs')
-            const { data: existingPRs } = await github.rest.pulls.list({
-              owner,
-              repo,
-              head,
-              base,
-            });
-          
-            for (const pr of existingPRs) {
-              if (pr.head.ref === head) {
-                await closePullRequest(pr.number);
+            console.log('Closing any existing pull requests')
+            const { data: existingPulls } = await github.rest.pulls.list({ owner, repo, head, base })
+            if (existingPulls.length) {
+              console.log('Found existing pull requests', existingPulls.map(pull => pull.number))
+              for (const pull of existingPulls) {
+                await closePullRequest(pull.number)
               }
+              console.log('Closed existing pull requests')
             }
           
+            console.log('Creating new PR')
+            let pull, pull_number
             try {
-              console.log('Creating new PR')
-              const { data: newPR } = await github.rest.pulls.create({
+              const response = await github.rest.pulls.create({
                 owner,
                 repo,
                 head,
@@ -87,7 +84,6 @@ jobs:
               pull_number = pull.number
               console.log('Created pull request successfully', pull.html_url)
           
-              console.log('Created new PR', newPR)
               } catch (err) {
                 // Don't error/alert if there's no commits to sync
                 if (err.message?.includes('No commits')) {
