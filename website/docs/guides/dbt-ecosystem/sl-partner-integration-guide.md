@@ -793,5 +793,3 @@ If you'd like to become a formal partner, have product feedback/questions, or ar
 - [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
 - [dbt Semantic Layer integrations page](https://www.getdbt.com/product/semantic-layer-integrations) for information about the available partner integrations.
-
-
