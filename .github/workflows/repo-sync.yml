@@ -69,8 +69,9 @@ jobs:
               console.log('Closed existing pull requests')
             }
           
+            console.log('Creating new PR')
+            let pull, pull_number
             try {
-              console.log('Creating new PR')
               const response = await github.rest.pulls.create({
                 owner,
                 repo,
