@@ -67,6 +67,13 @@ Also, there are some options that could be previously specified _after_ a sub-co
 
 
 
+
+The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
+
+```sql
+{{ return(load_result('collect_freshness')) }}
+```
+
 Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 ### For consumers of dbt artifacts (metadata)
