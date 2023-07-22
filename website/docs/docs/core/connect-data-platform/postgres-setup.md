@@ -66,6 +66,9 @@ company-name:
       dbname: [database name] # or database instead of dbname
       schema: [dbt schema]
       threads: [optional, 1 or more]
+      [method](#method): [optional, set the method used to authenticate the user]
+      [iam_profile](#iam_profile): [optional, overwrite the default iam_profile]
+      [region](#region): [optional, overwrite the default aws region]
       [keepalives_idle](#keepalives_idle): 0 # default 0, indicating the system default. See below
       connect_timeout: 10 # default 10 seconds
       [retries](#retries): 1  # default 1 retry on error/timeout when opening connections
@@ -81,6 +84,51 @@ company-name:
 </File>
 
 ### Configurations
+
+#### method
+
+To set up a Postgres profile using IAM Authentication, set the method parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication, consult the [AWS Documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html).
+
+If you receive the "You must specify a region" error when using IAM Authentication, then your aws credentials are likely misconfigured. Try running `aws configure` to set up AWS access keys, and pick a default region. If you have any questions, please refer to the official AWS documentation on [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+company-name:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      [method](#method): iam
+      host: [hostname]
+      user: [username]
+      port: [port]
+      dbname: [database name] # or database instead of dbname
+      schema: [dbt schema]
+      threads: [optional, 1 or more]
+      [iam_profile](#iam_profile): [optional, overwrite the default iam_profile]
+      [region](#region): [optional, overwrite the default aws region]
+      [keepalives_idle](#keepalives_idle): 0 # default 0, indicating the system default. See below
+      connect_timeout: 10 # default 10 seconds
+      [retries](#retries): 1  # default 1 retry on error/timeout when opening connections
+      [search_path](#search_path): [optional, override the default postgres search_path]
+      [role](#role): [optional, set the role dbt assumes when executing queries]
+      [sslmode](#sslmode): [optional, set the sslmode used to connect to the database]
+      [sslcert](#sslcert): [optional, set the sslcert to control the certifcate file location]
+      [sslkey](#sslkey): [optional, set the sslkey to control the location of the private key]
+      [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
+  
+```
+
+</File>
+
+#### iam_profile
+
+When the `iam_profile` configuration is set, dbt will use the specified profile from your `~/.aws/config` file instead of using the profile name `default`
+
+#### region
+
+The AWS region to use with IAM Authentication. Overrides AWS config and environment variables.
 
 #### search_path
 
