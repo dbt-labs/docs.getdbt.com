@@ -12,6 +12,29 @@ For information about selecting models on the command line, consult the docs on 
 
 ### Available commands
 
+Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [CLI](/docs/core/about-the-cli). Use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
+
+- [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
+- [clean](/reference/commands/clean): deletes artifacts present in the dbt project
+- [clone](/reference/commands/clone): clone selected models from specified state (requires dbt 1.6 or higher)
+- [compile](/reference/commands/compile): compiles (but does not run) the models in a project
+- [debug](/reference/commands/debug): debugs dbt connections and projects
+- [deps](/reference/commands/deps): downloads dependencies for a project
+- [docs](/reference/commands/cmd-docs) : generates documentation for a project
+- [list](/reference/commands/list): lists resources defined in a dbt project
+- [parse](/reference/commands/parse): parses a project and writes detailed timing info
+- [retry](/reference/commands/retry): retry the last run `dbt` command from the point of failure (requires dbt 1.6 or higher)
+- [run](/reference/commands/run): runs the models in a project
+- [run-operation](/reference/commands/run-operation): invoke a macro, including running arbitrary maintenance SQL against the database
+- [seed](/reference/commands/seed): loads CSV files into the database
+- [show](/reference/commands/show): preview table rows post-transformation
+- [snapshot](/reference/commands/snapshot): executes "snapshot" jobs defined in a project
+- [source](/reference/commands/source): provides tools for working with source data (including validating that sources are "fresh")
+- [test](/reference/commands/test): executes tests defined in a project
+- [init](/reference/commands/init): initializes a new dbt project (CLI only)
+- [rpc](/reference/commands/rpc): runs an RPC server that clients can submit queries to (CLI only)
+
+<!-- commenting out the 2nd iteration July 2023
 Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**. 
 
 <Tabs>
@@ -62,7 +85,7 @@ Use the following dbt commands in the [CLI](/docs/core/about-the-cli) and use th
 </TabItem>
 
 </Tabs>
-
+-->
 <!-- leaving original list here below for reference (as of April 2023)
 
 - [build](build): build and test all selected resources (models, seeds, snapshots, tests)
