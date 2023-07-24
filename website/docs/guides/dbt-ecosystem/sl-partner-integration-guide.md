@@ -35,13 +35,12 @@ The dbt Semantic Layer authenticates with:
 - `SERVICE_TOKEN`, 
 - `host`
 
-This applies to the dbt Semantic Layer APIs, which all currently use different host names.
+This applies to the dbt Semantic Layer APIs, which all currently use different host names. 
 
 We recommend you provide users with separate input fields with these components (which dbt Cloud provides). 
 
 For [JDBC](/docs/dbt-cloud-apis/sl-jdbc), you can construct the JDBC URL from these inputs. Or, you could request the full URL string.
 
-If you use both Semantic Layer APIs, users will need to provide different host information for each one. In the future, we want to unify these host names.
 
 ## Best practices on exposing metrics:
 
@@ -60,16 +59,18 @@ When working with more governed data, it's essential to establish clear guardrai
 **Aggregations control** <br />
 Users shouldn't generally be allowed to modify aggregations unless they are performing post-processing calculations on data from the Semantic Layer (such as year over year analysis).
 
-**Traceability of metric and dimension changes** <br />
-When users change names of metrics and dimensions for reports, it's crucial to have a traceability mechanism in place to link back to the original source metric name.
-
-**Time series alignment**<br />
+**Time series alignment and using metric_time**<br />
 Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes. 
   
-Implementing guardrails in the application might help achieve this.
+When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). As such, when building an application, we recommend exposing `metric_time` as a special time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the rest is clarifying as a way to separate out the primary one. 
+
+Also, when a user requests a time granularity change for the main time series, the query should use `metric_time`. Note that when looking at a single metric, the primary time dimension and `metric_time` are equivalent. 
 
 **Units consistency**<br />
 If units are supported, it's vital to avoid plotting data incorrectly with different units. Ensuring consistency in unit representation will prevent confusion and misinterpretation of the data.
+
+**Traceability of metric and dimension changes** <br />
+When users change names of metrics and dimensions for reports, it's crucial to have a traceability mechanism in place to link back to the original source metric name.
 
 ### Discoverability 
 
@@ -115,14 +116,15 @@ For better analysis, it's best to have the context of the metrics close to where
 
 ### Query flexibility
 
-Allow users to query either one metric without dimensions or one or more metrics with dimensions
+Allow users to query either one metric alone without dimensions or multiple metrics with dimensions
 
 - Allow toggling between metrics / dimensions seamlessly
 - Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply, and vice versa.
 - Include Presets for filtering date ranges and calendar for filtering time dimensions
   * For example, last 30 days, last week etc.
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
-  * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity" isn't available to the user.  
+  * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity" isn't available to the user.
+- We recommend that granularity is a dimension-specific concept and can be applied to more than just the primary aggregation or `metric_time`. Initially, as a starting point, it makes sense to only support `metric_time` or the primary time dimension, but we recommend expanding that as the solution evolves.
 
 ### Example stages of an integration
 
