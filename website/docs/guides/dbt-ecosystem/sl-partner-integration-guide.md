@@ -61,8 +61,10 @@ Users shouldn't generally be allowed to modify aggregations unless they are perf
 
 **Time series alignment and using metric_time**<br />
 Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes. 
-  
-When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). As such, when building an application, we recommend exposing `metric_time` as a separate, "special" time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the rest is clarifying as a way to separate out the primary one so that people do not confuse how metrics should be plotted.
+
+When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). 
+
+As such, when building an application, we recommend exposing `metric_time` as a separate, "special" time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the other time dimensions is clarifying so that people do not confuse how metrics should be plotted. 
 
 Also, when a user requests a time granularity change for the main time series, the query that your application runs should use `metric_time` as this will always give you the correct slice. Note that when looking at a single metric, the primary time dimension and `metric_time` are equivalent. 
 
@@ -110,7 +112,7 @@ Allow users to query either one metric alone without dimensions or multiple metr
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
   * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
 - We recommend that time granularity is treated as a general time dimension-specific concept and that it can be applied to more than just the primary aggregation (or `metric_time`). Consider a situation where a user wants to look at `sales` over time by `customer signup month`; in this situation, having the ability able to apply granularities to both time dimensions is crucial. Note: initially, as a starting point, it makes sense to only support `metric_time` or the primary time dimension, but we recommend expanding that as your solution evolves. 
-- You should allow users to filter on date ranges and expose a calendar and nice presets for filtering these
+- You should allow users to filter on date ranges and expose a calendar and nice presets for filtering these. 
   * For example: last 30 days, last week etc.
 
 ### Context and interpretation
