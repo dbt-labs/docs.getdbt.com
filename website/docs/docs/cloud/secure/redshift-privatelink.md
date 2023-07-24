@@ -63,6 +63,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
         - There will likely be only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ will still work, but the new NI IP can also be added to the Target Group if desired. If adding additional IPs, note that the NLB will need to add the corresponding AZ as well. Once created, the NI(s) shouldn't change (NOTE: this is our observation from testing, but is not officially documented by AWS).
 
+
         _Redshift Serverless_
         - To find the IP addresses for Redshift Serverless instance locate and copy the endpoint (only the URL listed before the port) in the Workgroup configuration section of the AWS console for the instance.
         <Lightbox src="/img/docs/dbt-cloud/redshiftserverless.png" title="Redshift Serverless endpoint"/>
