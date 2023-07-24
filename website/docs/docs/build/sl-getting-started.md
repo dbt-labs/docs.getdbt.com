@@ -39,6 +39,18 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
 
+## Install MetricFlow
+
+Before you begin, install the [MetricFlow CLI](/docs/build/metricflow-cli) as an extension of a dbt adapter from PyPI. The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
+
+Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platforms):
+
+- Create or activate your virtual environment. `python -m venv venv`
+- `pip install "dbt-metricflow[your_adapter_name]"`
+  * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
+ 
+Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon). 
+
 ## Create a semantic model
 
 Before you begin, we recommend you learn about more about [MetricFlow](/docs/build/about-metricflow) and its key concepts. There are two main objects: 
@@ -61,26 +73,26 @@ semantic_models:
 2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
 
 ```yaml
-  entities:
-    - name: transaction
-      type: primary
-      expr: id_transaction
-    - name: customer
-      type: foreign
-      expr: id_customer
+entities:
+  - name: transaction
+    type: primary
+    expr: id_transaction
+  - name: customer
+    type: foreign
+    expr: id_customer
   ```
 
 3. Define your dimensions and measures. dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
 ```yaml
 measures:
-    - name: transaction_amount_usd
-      description: The total USD value of the transaction.
-      agg: sum
-  dimensions:
-    - name: is_large
-      type: categorical
-      expr: case when transaction_amount_usd >= 30 then true else false end
+  - name: transaction_amount_usd
+    description: The total USD value of the transaction.
+    agg: sum
+dimensions:
+  - name: is_large
+    type: categorical
+    expr: case when transaction_amount_usd >= 30 then true else false end
 ```
 
 :::tip
@@ -105,11 +117,10 @@ Now that you've created your first semantic model, it's time to define your firs
 2. The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 
 ```yaml
----
 metrics:
   - name: transaction_amount_usd
     type: simple
-    type_params:
+    type_params: null
     measure: transaction_amount_usd
 ```
  
