@@ -60,7 +60,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
         - Use IP addresses from the Redshift cluster’s **Network Interfaces** whenever possible. While IPs listed in the **Node IP addresses** section will work, they are also more likely to change.
         <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
 
-        - There will likely be only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ will still work, but the new NI IP can also be added to the Target Group if desired. If adding additional IPs, note that the NLB will need to add the corresponding AZ as well. Once created, the NI(s) shouldn't change (NOTE: this is our observation from testing, but is not officially documented by AWS).
+        - There will likely be only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will also be created for that AZ. The NI IP from the original AZ will still work, but the new NI IP can also be added to the Target Group. If adding additional IPs, note that the NLB will also need to add the corresponding AZ. Once created, the NI(s) should stay the same (This is our observation from testing, but AWS does not officially document it).
 
         _Redshift Serverless_
 
