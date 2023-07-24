@@ -337,7 +337,6 @@ const sidebarSettings = {
           items: [
             "docs/deploy/job-settings",
             "docs/deploy/job-commands",
-            "docs/deploy/job-triggers",
           ],
         },
         {
