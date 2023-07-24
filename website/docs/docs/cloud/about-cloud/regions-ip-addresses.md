@@ -18,3 +18,13 @@ dbt Cloud is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions 
 
 
 [^1]: These regions support [multi-tenant](/docs/cloud/about-cloud/tenancy) deployment environments hosted by dbt Labs.
+
+## Static IP addresses
+
+dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructure for operations. Due to this, while we can offer exact URLs for access, we're unable to provide a list of static IP addresses to configure connections.
+
+1. Dynamic IP Addresses &mdash; Our cloud infrastructure is built upon Amazon Web Services (AWS). Due to the adaptive nature of cloud services, while dbt Cloud can provide exact URLs for streamlined access, the underlying IP addresses are dynamic and will change occasionally. AWS manages the IP ranges and may change them according to their operational requirements.
+
+2. Embracing Hostnames for Consistent Access &mdash; To ensure uninterrupted access to dbt Cloud services, we recommend using hostnames for configurations. Hostnames provide a stable reference point that remains consistent, regardless of any changes in underlying IP addresses. This is an industry-standard pattern that's also employed by organizations such as Snowflake.
+
+3. Optimizing VPN Connections &mdash; Customers who leverage VPN connections, we suggest integrating a proxy alongside the VPN. This strategy allows you to maintain consistent IP addresses for your connections, facilitating seamless traffic flow through the VPN and onward to dbt Cloud. By employing a proxy and a VPN, traffic can be directed through the VPN and then to dbt Cloud. If there's any need to integrate with additional services, it's crucial to set up the proxy accordingly.
