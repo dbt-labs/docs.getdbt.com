@@ -15,26 +15,25 @@ Measures are aggregations performed on columns in your model. They can be used a
 | [`agg`](#aggregation) | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
 | [`expr`](#expr) | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | [`non_additive_dimension`](#non-additive-dimensions) | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
-| [`agg_params`] | specific aggregation properties such as a percentile. | [Optional]|
-| [`agg_time_dimension`] | The time field. Defaults to the default agg time dimension for the semantic model.  | [Optional] |
-| [`non_additive_dimension`] | Use these configs when you need non-additive dimensions. | [Optional]|
-| [`label`] | How the metric appears in project docs and downstream integrations. | [Required]|
+| `agg_params` | specific aggregation properties such as a percentile. | Optional |
+| `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model.  | Optional |
+| `label` | How the metric appears in project docs and downstream integrations. | Required |
 
 
 ## Measure spec
 
 An example of the complete YAML measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
 
-```bash
+```yaml
 measures:
-      - name: The name of the measure # think transaction_total. If `expr` isn't present then this is the expected name of the column [Required]
-        description: same as always [Optional]
-        agg: the aggregation type.  #think average, sum, max, min, etc.[Required]
-        expr: the field # think transaction_total or some other name you might want to alias [Optional]
-        agg_params: specific aggregation properties such as a percentile [Optional]
-        agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. [Optional]
-        non_additive_dimension: Use these configs when you need non-additive dimensions. [Optional]
-        label: How the metric appears in project docs and downstream integrations. [Required]
+  - name: The name of the measure
+    description: 'same as always' ## Optional
+    agg: the aggregation type.
+    expr: the field
+    agg_params: 'specific aggregation properties such as a percentile'  ## Optional
+    agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
+    non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
+    label: How the metric appears in project docs and downstream integrations. ## Required
 ```
 
 ### Name 
@@ -226,7 +225,7 @@ semantic_models:
           window_choice: max
           window_groupings: 
             - user_id 
----
+
 metrics:
   - name: mrr_end_of_month
     type: simple
