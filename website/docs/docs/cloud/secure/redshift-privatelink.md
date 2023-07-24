@@ -11,7 +11,7 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 
 dbt Cloud supports both types of endpoints, but there are a number of [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a far simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, you will need to determine which is the right type for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
 
-:::info Redshift Serverless
+:::note Redshift Serverless
 While Redshift Serverless does support Redshift-managed type VPC endpoints, this functionality is not currently available across AWS accounts. Due to this limitation, an Interface-type VPC endpoint service must be used for Redshift Serverless cluster PrivateLink connectivity from dbt Cloud. 
 :::
 
