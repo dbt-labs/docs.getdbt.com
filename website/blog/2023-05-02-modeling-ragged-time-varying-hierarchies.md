@@ -1,6 +1,6 @@
 ---
 title: "Modeling ragged time-varying hierarchies"
-description: "Learn how maximize the utility of complex hierarchical data in your analytics warehouse."
+description: "Learn how to maximize the utility of complex hierarchical data in your analytics warehouse."
 slug: modeling-ragged-time-varying-hierarchies
 
 authors: [sterling_paramore]
@@ -28,7 +28,7 @@ Now let's take a look at how this data is represented in our source data systems
 
 ### Transactional model
 
-Our ERP system (Enterprise Resource Management) contains records that log when a specific component serial number (`component_id`) was installed in or removed from a parent assembly component (`assembly_id`).  The top-most assembly component is the eBike itself, which has no parent assembly.  So when an eBike (specifically, the eBike with serial number "Bike-1") is originally constructed, the ERP system would contain records that look like the following.
+Our ERP system (Enterprise Resource Planning) contains records that log when a specific component serial number (`component_id`) was installed in or removed from a parent assembly component (`assembly_id`).  The top-most assembly component is the eBike itself, which has no parent assembly.  So when an eBike (specifically, the eBike with serial number "Bike-1") is originally constructed, the ERP system would contain records that look like the following.
 
 **`erp_components`:**
 
@@ -48,10 +48,12 @@ Now let's suppose this bike has been ridden for a while, and on June 1, the user
 
 | `assembly_id` | `component_id` | `installed_at` | `removed_at` |
 | -             | -              | -              | -            |
-| Tire-1        | Tube-1         | 2023-01-01     | 2023-06-01   | # Record updated
-| Tire-1        | Tube-2         | 2023-06-01     |              | # New record
+| ...           | ...            | ...            | ...          |
+| Tire-1        | Tube-1         | 2023-01-01     | 2023-06-01   |
+| Tire-1        | Tube-2         | 2023-06-01     |              |
+| ...           | ...            | ...            | ...          |
 
-After a few more months, there is a small crash.  Don't worry, everyone's OK!  However, the wheel is totally broken and must be replaced.  When the technician updates the ERP, the entire hierarchy under the replaced wheel is also updated, as shown below.
+After a few more months, there is a small crash.  Don't worry, everyone's OK!  However, the wheel (`Wheel-1`)is totally broken and must be replaced (with `Wheel-2`).  When the technician updates the ERP, the entire hierarchy under the replaced wheel is also updated, as shown below.
 
 **`erp_components`:**
 
@@ -89,7 +91,7 @@ So that's all fine and good from the perspective of the ERP system.  But this da
 
 ### Multivalued dimensional model
 
-In dimensional modeling, we have *fact* tables that contain measurements and *dimension* tables that contain the context for those measurements (attributes).  In our eBike data warehouse, we have a fact table that contains one record for each eBike for each day it is ridden and the measured mileage accumulated during rides that day.
+In dimensional modeling, we have *fact* tables that contain measurements and *dimension* tables that contain the context for those measurements (attributes).  In our eBike data warehouse, we have a fact table that contains one record for each eBike for each day it is ridden and the measured mileage accumulated during rides that day.  This fact table contains *surrogate key* columns, indicated by the `_sk` suffix.  These are usually system-generated keys used to join to other tables in the database; the specific values of these keys are not important.
 
 **`fct_daily_mileage`:**
 
@@ -100,11 +102,11 @@ In dimensional modeling, we have *fact* tables that contain measurements and *di
 | bsk1      | csk1           | 2023-01-03   | 0       |
 | bsk1      | csk1           | 2023-01-04   | 0       |
 | ...       | ...            | ...          | ...     |
-| bsk1      | csk4           | 2023-08-01   | 7       |
-| bsk1      | csk4           | 2023-08-02   | 8       |
-| bsk1      | csk4           | 2023-08-03   | 4       |
+| bsk1      | csk3           | 2023-08-01   | 7       |
+| bsk1      | csk3           | 2023-08-02   | 8       |
+| bsk1      | csk3           | 2023-08-03   | 4       |
 
-In the table above the `_sk` fields are *surrogate keys* that link this fact table to the dimension tables.  One of the dimension tables is a simple table containing information about the individual bikes we have manufactured.
+One of the dimension tables is a simple table containing information about the individual bikes we have manufactured.
 
 **`dim_bikes`:**
 
@@ -186,7 +188,7 @@ One thing to be *very cautious* about when working with multivalued dimensions i
 
 ### Bonus: Finding components installed at the same time as other components
 
-This structure simplifies other kinds of interesting analysis.  Suppose we wanted to start exploring how one component affects another.  We can easily do this by partitioning the data into the segments of time where the components are not changing and looking for other components installed at the same time.  For example, to find all of the components that were ever installed at the same time "Tube-3" was installed, we can collect them with a simple window function.
+This structure simplifies other kinds of interesting analysis.  Suppose we wanted to start exploring how one component affects another, like whether certain brands of tube needed to be replaced more often if they were in a new brand of tire.  We can do this by partitioning the data into the segments of time where the components are not changing and looking for other components installed at the same time.  For example, to find all of the components that were ever installed at the same time "Tube-3" was installed, we can collect them with a simple window function.  We could then use the results of this query in a regression or other type of statistical analysis.
 
 ```sql
 select distinct
@@ -206,7 +208,7 @@ Now we get to the fun part!  This section shows how to take the ERP source data 
 
 The first step will be to traverse the hierarchy of components to find all components that belong to the same top assembly.  In our example above, we only had one bike and thus just one top assembly; in a real system, there will be many (and we may even swap components between different top assemblies!).
 
-The key here is to use a recursive join to move from the top of the hierarchy to all children and grandchildren.  The top of the hierarchy is easy to identify because they are the only records without any parents.
+The key here is to use a [recursive join](https://docs.snowflake.com/en/sql-reference/constructs/with#recursive-clause) to move from the top of the hierarchy to all children and grandchildren.  The top of the hierarchy is easy to identify because they are the only records without any parents.
 
 ```sql
 with recursive
@@ -267,7 +269,8 @@ traversal as (
 
         components.installed_at,
         components.removed_at,
-        -- As we recurse down the hierarchy, only want to consider time ranges that overlap
+        -- As we recurse down the hierarchy, only want to consider time ranges where both
+        -- parent and child are installed; so choose the latest "from" timestamp and the earliest "to".
         greatest(traversal.valid_from_at, components.valid_from_at) as valid_from_at,
         least(traversal.valid_to_at, components.valid_to_at) as valid_to_at
     from
@@ -310,14 +313,14 @@ select * from final
 
 At the end of the above step, we have a table that looks very much like the `erp_components` that it used as the source, but with a few additional valuable columns:
 
-* `top_assembly_id` - This is the most important output of the hierarchy traversal.  It ties all sub components to a their common parent.  We'll use this in the next step to chop up the hierarchy into all the distinct ranges of time where the components that share a common top assembly are constant.
+* `top_assembly_id` - This is the most important output of the hierarchy traversal.  It ties all sub components to a their common parent.  We'll use this in the next step to chop up the hierarchy into all the distinct ranges of time where the components that share a common top assembly are constant (and each distict range of time and `top_assembly_id` getting their own surrogate key).
 * `component_hierarchy_depth` - Indicates how far removed a component is from the top assembly.
 * `component_trace` - Contains an array of all the components linking this component to the top assembly.
 * `valid_from_at`/`valid_to_at` - If you have really high-quality source data, these will be identical to `installed_at`/`removed_at`.  However, in the real world, we've found cases where the installed and removal dates are not consistent between parent and child, either due to a data entry error or a technician forgetting to note when a component was removed.  So for example, we may have a parent assembly that was removed along with all of its children, but only the parent assembly has `removed_at` populated.  At this point, the `valid_from_at` and `valid_to_at` tidy up these kinds of scenarios.
 
 ### Temporal range join
 
-The last step is perform a [temporal range join](https://discourse.getdbt.com/t/joining-snapshot-tables-time-range-based-joins/3226) between the top assembly and all of its descendents.  This [temporal range join](https://gist.github.com/gnilrets/48886b4c8945dde1da13547c2373df73) is what splits out all of the time-varying component changes into distinct ranges of time where the component hierarchy is constant.  This range join makes use of a dbt macro, the operation of which is out-of-scope for this article, but you are encouraged to investigate it and the discourse post mentioned earlier.
+The last step is perform a [temporal range join](https://discourse.getdbt.com/t/joining-snapshot-tables-time-range-based-joins/3226) between the top assembly and all of its descendents.  This is what splits out all of the time-varying component changes into distinct ranges of time where the component hierarchy is constant.  This range join makes use of [the dbt macro in this gist](https://gist.github.com/gnilrets/48886b4c8945dde1da13547c2373df73), the operation of which is out-of-scope for this article, but you are encouraged to investigate it and the discourse post mentioned earlier.
 
 ```sql
 -- Start with all of the assemblies at the top (hierarchy depth = 0)
