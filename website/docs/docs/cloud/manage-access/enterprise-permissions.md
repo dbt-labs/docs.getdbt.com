@@ -17,7 +17,7 @@ control (RBAC).
 
 The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They
 can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
-can be associated with more than one permission sets.
+can be associated with more than one permission set.
 
 ### Account Admin
 
@@ -56,18 +56,29 @@ Security Admins have access to modify certain account-level settings. Users with
     - View and export Audit Logs
     - Create, delete, and modify IP Restrictions
 
+### Billing Admin
+
+- **Has permissions on:** Account-level settings
+- **License restrictions:** must have a Developer or an IT license
+
+Billing Admins have access to modify certain account-level settings related to billing. Users with Billing Admin permissions can:
+
+- View and modify **Account Settings** such as:
+    - View billing information
+    - Modify billing information (accounts on the Team plan)
+        - This includes modifying Developer Seat counts for the Account
 
 ### Project Creator
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Project Creators have write and read-only access to dbt Cloud accounts, but do not have the permissions required to modify SSO settings and account integrations. 
+Project Creators can access, create, or modify projects and other settings in dbt Cloud. However, they don't have permission to modify SSO settings or account integrations.
 
 Users with Project Creator permissions can:
 
 - View Account Settings
 - View and modify project users
-- Create, delete and modify all projects in an account
+- Create, delete, and modify all projects in an account
 - Create, delete, and modify Connections
 - Create, delete, and modify Environments
 - Create, delete, and modify Jobs
@@ -82,7 +93,7 @@ Users with Project Creator permissions can:
 - **Has permissions on:** Authorized projects, account-level settings
 - **License restrictions:** must have a developer license
 
-Account Viewers have read only access to dbt Cloud accounts. Users with Account Viewer permissions can:
+Account Viewers have read-only access to dbt Cloud accounts. Users with Account Viewer permissions can:
 - View all projects in an account
 - View Account Settings
 - View account-level artifacts
@@ -190,12 +201,12 @@ Analysts can perform the following actions in projects they are assigned to:
 
 ### Stakeholder
 - **Has permissions on:** Authorized projects
-- **License restrictions:** Intended for use with Read Only licenses, but may be used with Developer licenses.
+- **License restrictions:** Intended for use with Read-Only licenses, but may be used with Developer licenses.
 
 Stakeholders can perform the following actions in projects they are assigned to:
 - View generated documentation
 - View generated source freshness reports
-- View the Read Only dashboard
+- View the Read-Only dashboard
 
 ## Diagram of the Permission Sets
 

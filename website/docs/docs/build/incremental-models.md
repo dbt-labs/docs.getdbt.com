@@ -4,8 +4,6 @@ description: "Read this tutorial to learn how to use incremental models when bui
 id: "incremental-models"
 ---
 
-## Overview
-
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
 Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
@@ -59,6 +57,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses > to include records whose timestamp occurred since the last run of this model)
   where event_time > (select max(event_time) from {{ this }})
 
 {% endif %}
@@ -109,7 +108,7 @@ When you define a `unique_key`, you'll see this behavior for each row of "new" d
 * If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](#about-incremental_strategy), and [strategy specific configs](#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a `unique_key` with more than one row in either the existing target table or the new incremental rows, the incremental model run will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
+Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](#about-incremental_strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
 
 :::info
 While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
@@ -139,6 +138,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses >= to include records arriving later on the same day as the last run of this model)
   where date_day >= (select max(date_day) from {{ this }})
 
 {% endif %}
@@ -255,8 +255,28 @@ to build incremental models.
 
 Click the name of the adapter in the below table for more information about supported incremental strategies.
 
-| data platform adapter                                                                               | default strategy | additional supported strategies          |
-| :-------------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------- |
+The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
+
+<VersionBlock lastVersion="1.5">
+
+    
+| data platform adapter   | default strategy | additional supported strategies    |
+| :-------------------| ---------------- | -------------------- |
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         | `merge` (Delta only)  `insert_overwrite` |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `append`         | `merge` (Delta only) `insert_overwrite`  |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge` `delete+insert`                  |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+    
+| data platform adapter  | default strategy | additional supported strategies  |
+| :----------------- | :----------------| : ---------------------------------- |
 | [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `merge` , `delete+insert`                  |
 | [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `merge`, `delete+insert`                  |
 | [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
@@ -264,6 +284,8 @@ Click the name of the adapter in the below table for more information about supp
 | [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `append`         | `merge` (Delta only) `insert_overwrite`  |
 | [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
 | [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge` `delete+insert`                  |
+
+</VersionBlock>
 
 <VersionBlock firstVersion="1.3">
 
@@ -436,5 +458,5 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 </VersionBlock>
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>

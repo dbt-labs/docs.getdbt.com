@@ -13,9 +13,10 @@ Use dbt Cloud's Scheduler to deploy your production jobs confidently and build o
 
 1. In the upper left, select **Deploy**, then click **Environments**.
 2. Click **Create Environment**.
-3. Name your deployment environment. For example, "Production."
-4. Add a target dataset, for example, "Analytics." dbt will build into this dataset. For some warehouses this will be named "schema."
-5. Click **Save**.
+3. In the **Name** field, write the name of your deployment environment. For example, "Production."
+4. In the **dbt Version** field, select the latest version from the dropdown.
+5. Under **Deployment Credentials**, enter the name of the dataset you want to use as the target, such as "Analytics". This will allow dbt to build and work with that dataset. For some data warehouses, the target dataset may be referred to as a "schema".
+6. Click **Save**.
 
 ### Create and run a job
 
@@ -39,6 +40,6 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 #### FAQs
 
-<FAQ src="Runs/failed-prod-run" />
+<FAQ path="Runs/failed-prod-run" />
 
 

@@ -1,6 +1,6 @@
 ---
 resource_types: [models]
-description: "Read this guide to understand the contract configuration in dbt."
+description: "When the contract configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml, such as name and data_type, as well as any additional constraints supported by the data platform."
 datatype: "{<dictionary>}"
 default_value: {contract: false}
 id: "contract"
@@ -103,7 +103,7 @@ When you use the `state:modified` selection method in Slim CI, dbt will detect c
 Breaking changes include:
 - Removing an existing column
 - Changing the `data_type` of an existing column
-- (Future) Removing or modifying one of the `constraints` on an existing column
+- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
 
 ```
 Breaking Change to Contract Error in model sometable (models/sometable.sql)
