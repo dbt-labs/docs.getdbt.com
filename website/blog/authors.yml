@@ -340,6 +340,12 @@ matt_winkler:
   name: Matt Winkler
   organization: dbt Labs
 
+mikael_thorup:
+  image_url: /img/blog/authors/mikael-thorup.jpeg
+  job_title: Senior Analytics Engineer
+  name: Mikael Thorup
+  organization: Lunar
+
 nate_sooter:
   image_url: /img/blog/authors/nate-sooter.jpeg
   job_title: Manager of BI Operations
@@ -366,6 +372,25 @@ pat_kearns:
       url: https://www.linkedin.com/in/pat-kearns/
   name: Pat Kearns
   organization: dbt Labs
+
+pedro_brito_de_sa:
+  image_url: /img/blog/authors/pedro_brito.jpeg
+  job_title: Product Analyst
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/pbritosa/
+  name: Pedro Brito de Sa
+  organization: Sage
+
+
+rastislav_zdechovan:
+  image_url: /img/blog/authors/rastislav-zdechovan.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/rastislav-zdechovan/
+  name: Rastislav Zdechovan
+  organization: Infinite Lambda
 
 ross_turk:
   image_url: /img/blog/authors/ross-turk.png
@@ -498,4 +523,13 @@ jonathan_neo:
       url: https://www.linkedin.com/in/jonneo/
   name: Jonathan Neo
   organization: Canva & Data Engineer Camp
-  description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple.
+  description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple. 
+
+santiago_jauregui:
+  image_url: /img/blog/authors/santiago-jauregui.jpeg
+  job_title: Data Analytics Leader
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/santiago-jauregui/
+  name: Santiago Jauregui
+  organization: MODO

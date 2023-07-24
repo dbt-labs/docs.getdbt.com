@@ -30,10 +30,10 @@ Defining and installing dbt packages is different from [defining and installing 
 :::
 
 ## How do I add a package to my project?
-1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
+1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
 
-<File name='packages.yml'>
+<File>
 
 ```yaml
 packages:
@@ -50,7 +50,7 @@ packages:
 
 <Changelog>
 
-- **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
+- **v1.0.0:** The default [`packages-install-path`](/reference/project-configs/packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
 
 </Changelog>
 
@@ -302,7 +302,7 @@ Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt 
 
 ## Advanced package configuration
 ### Updating a package
-When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](run) of the models in this package.
+When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](/reference/commands/run) of the models in this package.
 
 ### Uninstalling a package
 When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:

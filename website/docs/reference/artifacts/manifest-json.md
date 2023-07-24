@@ -2,60 +2,26 @@
 title: "Manifest JSON file"
 sidebar_label: "Manifest"
 ---
-<VersionBlock firstVersion="1.5">
 
-**dbt Core v1.5 produces schema**: [`v9`](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
+| dbt Core version | Manifest version                                              |
+|------------------|---------------------------------------------------------------|
+| v1.6             | [v10](https://schemas.getdbt.com/dbt/manifest/v10/index.html) |
+| v1.5             | [v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)   |
+| v1.4             | [v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)   |
+| v1.3             | [v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)   |
+| v1.2             | [v6](https://schemas.getdbt.com/dbt/manifest/v6/index.html)   |
+| v1.1             | [v5](https://schemas.getdbt.com/dbt/manifest/v5/index.html)   |
+| v1.0             | [v4](https://schemas.getdbt.com/dbt/manifest/v4/index.html)   |
 
-</VersionBlock>
+**Produced by:** Any command that parses your project. This includes all commands **except** [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), [`init`](/reference/commands/init)
 
-<VersionBlock firstVersion="1.4" lastVersion="1.4">
-
-**dbt Core v1.4 produces schema**: [`v8`](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.3" lastVersion="1.3">
-
-**dbt Core v1.3 produces schema**: [`v7`](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.2" lastVersion="1.2">
-
-**dbt Core v1.2 produces schema**: [`v6`](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1" lastVersion="1.1">
-
-**dbt Core v1.1 produces schema**: [`v5`](https://schemas.getdbt.com/dbt/manifest/v5/index.html)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.0" lastVersion="1.0">
-
-**dbt Core v1.0 produces schema**: [`v4`](https://schemas.getdbt.com/dbt/manifest/v4/index.html)
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.5">
-
-**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`seed`](commands/seed) [`snapshot`](commands/snapshot) [`source freshness`](commands/source) [`test`](commands/test) [`run`](commands/run) [`run-operation`](commands/run-operation)
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.4">
-
-**Produced by:** [`build`](commands/build) [`compile`](commands/compile) [`docs generate`](commands/cmd-docs) [`list`](commands/list) [`parse`](commands/parse) [`run`](commands/run) [`run-operation`](commands/run-operation) [`seed`](commands/seed) [`show`](commands/show) [`snapshot`](commands/snapshot) [`source freshness`](commands/source) [`test`](commands/test) 
-
-</VersionBlock>
 This single file contains a full representation of your dbt project's resources (models, tests, macros, etc), including all node configurations and resource properties. Even if you're only running some models or tests, all resources will appear in the manifest (unless they are disabled) with most of their properties. (A few node properties, such as `compiled_sql`, only appear for executed nodes.)
 
-Today, dbt uses this file to populate the [docs site](documentation), and to perform [state comparison](/docs/deploy/about-state). Members of the community have used this file to run checks on how many models have descriptions and tests.
+Today, dbt uses this file to populate the [docs site](/docs/collaborate/documentation), and to perform [state comparison](/reference/node-selection/syntax#about-node-selection). Members of the community have used this file to run checks on how many models have descriptions and tests.
 
 ### Top-level keys
 
-- [`metadata`](dbt-artifacts#common-metadata)
+- [`metadata`](/reference/artifacts/dbt-artifacts#common-metadata)
 - `nodes`: Dictionary of all analyses, models, seeds, snapshots, and tests.
 - `sources`: Dictionary of sources.
 - `metrics`: Dictionary of metrics.
@@ -66,7 +32,7 @@ Today, dbt uses this file to populate the [docs site](documentation), and to per
 - `parent_map`: Dictionary that contains the first-order parents of each resource.
 - `child_map`: Dictionary that contains the first-order children of each resource.
 - `group_map`: Dictionary that maps group names to their resource nodes.
-- `selectors`: Expanded dictionary representation of [YAML `selectors`](yaml-selectors).
+- `selectors`: Expanded dictionary representation of [YAML `selectors`](/reference/node-selection/yaml-selectors).
 - `disabled`: Array of resources with `enabled: false`.
 
 ### Resource details

@@ -1,5 +1,10 @@
 exports.versions = [
   {
+    version: "1.6",
+    EOLDate: "2024-07-31",
+    isPrerelease: true
+  },
+  {
     version: "1.5",
     EOLDate: "2024-04-27",
   },
@@ -27,6 +32,26 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "reference/commands/clone",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/collaborate/govern/project-dependencies",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/dbt-jinja-functions/thread_id",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/resource-properties/deprecation_date",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/commands/retry",
+    "firstVersion": "1.6",
+  },
+  {
     "page": "docs/build/groups",
     "firstVersion": "1.5",
   },
@@ -34,7 +59,7 @@ exports.versionedPages = [
     "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
-    {
+  {
     "page": "reference/commands/show",
     "firstVersion": "1.5",
   },
@@ -110,11 +135,67 @@ exports.versionedPages = [
     "page": "reference/dbt-jinja-functions/print",
     "firstVersion": "1.1",
   },
+  {
+    "page": "docs/build/build-metrics-intro",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/sl-getting-started",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/about-metricflow",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/join-logic",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/validation",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/semantic-models",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/group-by",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/entities",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/metrics-overview",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/cumulative",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/derived",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/measure-proxy",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/ratio",
+    "firstVersion": "1.6",
+  },
 ]
 
 exports.versionedCategories = [
   {
     "category": "Model governance",
     "firstVersion": "1.5",
+  },
+  {
+    "category": "Build your metrics",
+    "firstVersion": "1.6",
   }
 ]

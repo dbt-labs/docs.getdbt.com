@@ -4,8 +4,6 @@ description: "Read this tutorial to learn how to use incremental models when bui
 id: "incremental-models"
 ---
 
-## Overview
-
 Incremental models are built as tables in your <Term id="data-warehouse" />. The first time a model is run, the <Term id="table" /> is built by transforming _all_ rows of source data. On subsequent runs, dbt transforms _only_ the rows in your source data that you tell dbt to filter for, inserting them into the target table which is the table that has already been built.
 
 Often, the rows you filter for on an incremental run will be the rows in your source data that have been created or updated since the last time dbt ran. As such, on each dbt run, your model gets built incrementally.
@@ -35,7 +33,7 @@ To use incremental models, you also need to tell dbt:
 
 To tell dbt which rows it should transform on an incremental run, wrap valid SQL that filters for these rows in the `is_incremental()` macro.
 
-Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](this)" variable.
+Often, you'll want to filter for "new" rows, as in, rows that have been created since the last time dbt ran this model. The best way to find the timestamp of the most recent run of this model is by checking the most recent timestamp in your target table. dbt makes it easy to query your target table by using the "[{{ this }}](/reference/dbt-jinja-functions/this)" variable.
 
 Also common is wanting to capture both new and updated records. For updated records, you'll need to [define a unique key](#defining-a-unique-key-optional) to ensure you don't bring in modified records as duplicates. Your `is_incremental()` code will check for rows created *or modified* since the last time dbt ran this model.
 
@@ -59,6 +57,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses > to include records whose timestamp occurred since the last run of this model)
   where event_time > (select max(event_time) from {{ this }})
 
 {% endif %}
@@ -139,6 +138,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses >= to include records arriving later on the same day as the last run of this model)
   where date_day >= (select max(date_day) from {{ this }})
 
 {% endif %}
@@ -160,7 +160,7 @@ $ dbt run --full-refresh --select my_incremental_model+
 ```
 It's also advisable to rebuild any downstream models, as indicated by the trailing `+`.
 
-For detailed usage instructions, check out the [dbt run](run) documentation.
+For detailed usage instructions, check out the [dbt run](/reference/commands/run) documentation.
 
 # Understanding incremental models
 ## When should I use an incremental model?
@@ -188,11 +188,7 @@ Transaction management is used to ensure this is executed as a single unit of wo
 
 ## What if the columns of my incremental model change?
 
-:::tip New `on_schema_change` config in dbt version `v0.21.0`
-
-Incremental models can now be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs.  
-
-:::
+Incremental models can be configured to include an optional `on_schema_change` parameter to enable additional control when incremental model columns change. These options enable dbt to continue running incremental models in the presence of schema changes, resulting in fewer `--full-refresh` scenarios and saving query costs. 
 
 You can configure the `on_schema_change` setting as follows.
 
@@ -244,15 +240,62 @@ Similarly, if you remove a column from your incremental model, and execute a `db
 
 Instead, whenever the logic of your incremental changes, execute a full-refresh run of both your incremental model and any downstream models.
 
-## About incremental_strategy
+## About `incremental_strategy`
 
-On some adapters, an optional `incremental_strategy` config controls the code that dbt uses
-to build incremental models. Different approaches may vary by effectiveness depending on the volume of data,
-the reliability of your `unique_key`, or the availability of certain features.
+There are various ways (strategies) to implement the concept of an incremental materializations. The value of each strategy depends on:
 
-* [Snowflake](snowflake-configs#merge-behavior-incremental-models): `merge` (default), `delete+insert` (optional), `append` (optional)
-* [BigQuery](bigquery-configs#merge-behavior-incremental-models): `merge` (default), `insert_overwrite` (optional)
-* [Spark](spark-configs#incremental-models): `append` (default), `insert_overwrite` (optional), `merge` (optional, Delta-only)
+* the volume of data,
+* the reliability of your `unique_key`, and
+* the support of certain features in your data platform
+
+An optional `incremental_strategy` config is provided in some adapters that controls the code that dbt uses
+to build incremental models.
+
+### Supported incremental strategies by adapter
+
+Click the name of the adapter in the below table for more information about supported incremental strategies.
+
+The `merge` strategy is available in dbt-postgres and dbt-redshift beginning in dbt v1.6.
+
+<VersionBlock lastVersion="1.5">
+
+    
+| data platform adapter   | default strategy | additional supported strategies    |
+| :-------------------| ---------------- | -------------------- |
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `delete+insert`                          |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         | `merge` (Delta only)  `insert_overwrite` |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `append`         | `merge` (Delta only) `insert_overwrite`  |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge` `delete+insert`                  |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+    
+| data platform adapter  | default strategy | additional supported strategies  |
+| :----------------- | :----------------| : ---------------------------------- |
+| [dbt-postgres](/reference/resource-configs/postgres-configs#incremental-materialization-strategies) | `append`         | `merge` , `delete+insert`                  |
+| [dbt-redshift](/reference/resource-configs/redshift-configs#incremental-materialization-strategies) | `append`         | `merge`, `delete+insert`                  |
+| [dbt-bigquery](/reference/resource-configs/bigquery-configs#merge-behavior-incremental-models)      | `merge`          | `insert_overwrite`                       |
+| [dbt-spark](/reference/resource-configs/spark-configs#incremental-models)                           | `append`         | `merge` (Delta only)  `insert_overwrite` |
+| [dbt-databricks](/reference/resource-configs/databricks-configs#incremental-models)                 | `append`         | `merge` (Delta only) `insert_overwrite`  |
+| [dbt-snowflake](/reference/resource-configs/snowflake-configs#merge-behavior-incremental-models)    | `merge`          | `append`, `delete+insert`                |
+| [dbt-trino](/reference/resource-configs/trino-configs#incremental)                                  | `append`         | `merge` `delete+insert`                  |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
+
+:::note Snowflake Configurations
+
+dbt v1.3 changed the default materialization for incremental table merges from `temporary table` to `view`. For more information about this change and instructions for setting the configuration to a temp table, please read about [Snowflake temporary tables](/reference/resource-configs/snowflake-configs#temporary-tables).
+
+:::
+
+</VersionBlock>
 
 ### Configuring incremental strategy
 
@@ -415,5 +458,5 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 </VersionBlock>
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>

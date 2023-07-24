@@ -9,9 +9,15 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
+<Snippet path="dbt-databricks-for-databricks" />
+
+:::note
+See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
+:::
+
 ## Configuring tables
 
-When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](model-configs).
+When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).
 
 | Option  | Description                                                                                                                        | Required?               | Example                  |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------|--------------------------|
@@ -280,7 +286,7 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 ## Persisting model descriptions
 
 Relation-level docs persistence is supported in dbt v0.17.0. For more
-information on configuring docs persistence, see [the docs](resource-configs/persist_docs).
+information on configuring docs persistence, see [the docs](/reference/resource-configs/persist_docs).
 
 When the `persist_docs` option is configured appropriately, you'll be able to
 see model descriptions in the `Comment` field of `describe [table] extended`
@@ -304,7 +310,7 @@ use the `schema` config and `generate_schema_name` macro _only_.
 ## Default file format configurations
 
 To access advanced incremental strategies features, such as 
-[snapshots](snapshots) and the `merge` incremental strategy, you will want to
+[snapshots](/docs/build/snapshots) and the `merge` incremental strategy, you will want to
 use the Delta, Iceberg or Hudi file format as the default file format when materializing models as tables.
 
 It's quite convenient to do this by setting a top-level configuration in your

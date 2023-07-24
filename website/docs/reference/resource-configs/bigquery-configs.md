@@ -482,10 +482,7 @@ when matched then update ...
 when not matched then insert ...
 ```
 
-The `merge` approach has the benefit of automatically updating any late-arriving facts in the
-destination incremental table. The drawback of this approach is that BigQuery must scan all
-source tables referenced in the model SQL, as well as the entirety of the destination table.
-This can be slow and costly if the incremental model is transforming very large amounts of data.
+The 'merge' approach automatically updates new data in the destination incremental table but requires scanning all source tables referenced in the model SQL, as well as destination tables. This can be slow and expensive for large data volumes. [Partitioning and clustering](#using-table-partitioning-and-clustering) techniques mentioned earlier can help mitigate these issues.
 
 **Note:** The `unique_key` configuration is required when the `merge` incremental
 strategy is selected.
@@ -701,7 +698,7 @@ The `hours_to_expiration` only applies to initial creation of the underlying tab
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +hours_to_expiration: 6
 
 ```
@@ -731,13 +728,13 @@ view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
 
-<Snippet src="grants-vs-access-to" />
+<Snippet path="grants-vs-access-to" />
 
 <File name='dbt_project.yml'>
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +grant_access_to:
       - project: project_1
         dataset: dataset_1
@@ -766,3 +763,49 @@ Views with this configuration will be able to select from objects in `project_1.
 #### Limitations
 
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
+
+<VersionBlock firstVersion="1.6">
+
+
+## Materialized view
+
+The BigQuery adapter supports [materialized views](https://cloud.google.com/bigquery/docs/materialized-views-intro) and refreshes them for every subsequent `dbt run` you execute. For more information, see [Refresh Materialized Views](https://cloud.google.com/bigquery/docs/materialized-views-manage#refresh) in the Google docs.
+
+Materialized views support the optional configuration `on_configuration_change` with the following values: 
+- `apply` (default) &mdash; attempts to update the existing database object if possible, avoiding a complete rebuild. The following changes can be applied without the need to rebuild the materialized view:
+  - enable_refresh 
+  - refresh_interval_minutes 
+  - max_staleness
+- `skip` &mdash; allows runs to continue while also providing a warning that the model was skipped
+- `fail` &mdash; forces runs to fail if a change is detected in a materialized view 
+
+You can create a materialized view by editing _one_ of these files:
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
+
+The following examples create a materialized view: 
+
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'materialized_view',
+    on_configuration_change = 'apply',
+  )
+}}
+```
+
+</File>
+
+
+<File name='dbt_project.yml'>
+
+```yaml 
+models:
+  path:
+    materialized: materialized_view
+```
+</File>
+
+</VersionBlock>

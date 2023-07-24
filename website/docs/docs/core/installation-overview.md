@@ -1,13 +1,13 @@
 ---
-title: "Installation overview"
+title: "About installing dbt"
 id: "installation"
 description: "You can install dbt Core using a few different tested methods."
 ---
 
-You can install dbt Core on the command line by using one of these recommended methods:
+You can install dbt Core on the command line by using one of these methods:
 
-- [Use Homebrew to install dbt](/docs/core/homebrew-install) (recommended for MacOS + most popular plugins)
-- [Use pip to install dbt](/docs/core/pip-install)
+- [Use pip to install dbt](/docs/core/pip-install) (recommended)
+- [Use Homebrew to install dbt](/docs/core/homebrew-install)
 - [Use a Docker image to install dbt](/docs/core/docker-install)
 - [Install dbt from source](/docs/core/source-install)
 
@@ -21,4 +21,4 @@ dbt provides a number of resources for understanding [general best practices](/b
 
 ## About dbt data platforms and adapters
 
-dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt Core, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](supported-data-platforms).
+dbt works with a number of different data platforms (databases, query engines, and other SQL-speaking technologies). It does this by using a dedicated _adapter_ for each. When you install dbt Core, you'll also want to install the specific adapter for your database. For more details, see [Supported Data Platforms](/docs/supported-data-platforms).

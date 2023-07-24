@@ -65,7 +65,7 @@ The `grants` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -83,7 +83,7 @@ seeds:
 
 </File>
 
-The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
+The `grants` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -106,7 +106,7 @@ The `grants` config can also be defined:
 - under the `snapshots` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a snapshot's SQL block
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 </Tabs>
@@ -211,7 +211,7 @@ We encourage you to read Google's documentation for more context:
 - [Understanding GCP roles](https://cloud.google.com/iam/docs/understanding-roles)
 - [How to format grantees](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#user_list)
 
-<Snippet src="grants-vs-access-to" />
+<Snippet path="grants-vs-access-to" />
 
 ### BigQuery examples
 

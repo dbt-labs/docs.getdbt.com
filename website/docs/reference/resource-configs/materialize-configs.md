@@ -14,7 +14,7 @@ id: "materialize-configs"
 
 </Changelog>
 
-The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that is used to maintain materialized views or indexes can be configured in your [profile](/reference/profiles.yml) using the `cluster` connection parameter. To override the cluster that is used for specific models (or groups of models), use the `cluster` configuration parameter.
+The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that is used to maintain materialized views or indexes can be configured in your [profile](/docs/core/connect-data-platform/profiles.yml) using the `cluster` connection parameter. To override the cluster that is used for specific models (or groups of models), use the `cluster` configuration parameter.
 
 <File name='my_view_cluster.sql'>
 
@@ -91,7 +91,7 @@ select ...
 
 </Changelog>
 
-If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view for each configured test that can keep track of failures over time. By default, test views are created in a schema suffixed with `dbt_test__audit`. To specify a custom suffix, use the `schema` config.
+If you set the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures), dbt will create a materialized view for each configured test that can keep track of failures over time. By default, test views are created in a schema suffixed with `dbt_test__audit`. To specify a custom suffix, use the `schema` config.
 <File name='dbt_project.yml'>
 
 ```yaml

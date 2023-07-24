@@ -6,4 +6,4 @@ id: sample-profiles
 
 ---
 
-The structure of a profile looks different on each warehouse. Check out the [Supported Data Platforms](supported-data-platforms) page, and navigate to the `Profile Setup` section for your warehouse.
+The structure of a profile looks different on each warehouse. Check out the [Supported Data Platforms](/docs/supported-data-platforms) page, and navigate to the `Profile Setup` section for your warehouse.

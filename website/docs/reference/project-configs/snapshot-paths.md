@@ -12,7 +12,7 @@ snapshot-paths: [directorypath]
 </File>
 
 ## Definition
-Optionally specify a custom list of directories where [snapshots](snapshots) are located. Note that you cannot co-locate models and snapshots.
+Optionally specify a custom list of directories where [snapshots](/docs/build/snapshots) are located. Note that you cannot co-locate models and snapshots.
 
 <Changelog>
 

@@ -18,7 +18,7 @@ models:
 
 </File>
 
-To apply a configuration to all models in _your_ project only, use your [project name](project-configs/name) as the `<resource-path>`:
+To apply a configuration to all models in _your_ project only, use your [project name](/reference/project-configs/name) as the `<resource-path>`:
 
 <File name='dbt_project.yml'>
 

@@ -3,7 +3,7 @@ title: "Enhancement: Support for cross-database sources on Redshift RA3 instance
 id: "support-redshift-ra3.md"
 description: "Adding support for cross-database queries for RA3"
 sidebar_label: "Enhancement: Support for RA3"
-tags: [Aug-31-2022, 1.1.61.5]
+tags: [Aug-2022, 1.1.61.5]
 
 ---
 

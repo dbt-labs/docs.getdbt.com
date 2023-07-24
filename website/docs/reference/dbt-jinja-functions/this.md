@@ -7,15 +7,15 @@ description: "Represents the current model in the database."
 
 `this` is the database representation of the current model. It is useful when:
 - Defining a `where` statement within [incremental models](/docs/build/incremental-models)
-- Using [pre or post hooks](pre-hook-post-hook)
+- Using [pre or post hooks](/reference/resource-configs/pre-hook-post-hook)
 
-`this` is a [Relation](dbt-classes#relation), and as such, properties such as `{{ this.database }}` and `{{ this.schema }}` compile as expected.
+`this` is a [Relation](/reference/dbt-classes#relation), and as such, properties such as `{{ this.database }}` and `{{ this.schema }}` compile as expected.
 
 `this` can be thought of as equivalent to `ref('<the_current_model>')`, and is a neat way to avoid circular dependencies.
 
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock lastVersion="1.1">
 

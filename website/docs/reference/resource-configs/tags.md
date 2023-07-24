@@ -1,5 +1,4 @@
 ---
-title: "About tags configuration"
 sidebar_label: "tags"
 resource_types: all
 datatype: string | [string]
@@ -20,15 +19,15 @@ datatype: string | [string]
 ```yml
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 ```
@@ -78,7 +77,7 @@ models:
 ## Definition
 Apply a tag (or list of tags) to a resource.
 
-These tags can be used as part of the [resource selection syntax](node-selection/syntax), when running the following commands:
+These tags can be used as part of the [resource selection syntax](/reference/node-selection/syntax), when running the following commands:
 - `dbt run --select tag:my_tag`
 - `dbt seed --select tag:my_tag`
 - `dbt snapshot --select tag:my_tag`
