@@ -141,6 +141,16 @@ To query metric values, here are the following parameters that are available:
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
 | `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
 
+
+## Note on time dimensions and `metric_time`
+
+You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`'. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
+
+You can look at a single metric or hundreds of metrics and if you group by `metric_time`, it will always give you the correct time series.
+
+Additionally, when performing granularity calculations, we recommend you always operate on `metric_time` and you will get the correct answer. Note `metric_time` should be available in addition to any other time dimensions that are available for the metric(s). In the case where you are looking at one metric (or multiple metrics from the same data source), the values in the series for the primary time dimension and `metric_time` are equivalent.
+
+
 ## Examples
 
 Use the following examples to help you get started with the JDBC API
