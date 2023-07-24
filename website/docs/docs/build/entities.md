@@ -31,10 +31,12 @@ MetricFlow's join logic depends on the entity `type` you use, and it also determ
 The complete spec for entities is below:
 ```yaml
 entities:
-  - name: the name # think transaction [Required]
-    type: primary # or natural or foreign or unique [Required]
-    description: a description of the field or role the entity takes in this table [Optional]
-    expr: the field that denotes that entity (transaction_id). If not specified will default to name [Optional]
+  - name: transaction     ## Required
+    type: primary or natural or foreign or unique ## Required
+    description: a description of the field or role the entity takes in this table ## Optional
+    expr: the field that denotes that entity (transaction_id).  ## Optional
+          If not specified will default to name 
+
 ```
 
 Here's an example of how to define entities in a semantic model:
