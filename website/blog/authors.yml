@@ -373,6 +373,16 @@ pat_kearns:
   name: Pat Kearns
   organization: dbt Labs
 
+pedro_brito_de_sa:
+  image_url: /img/blog/authors/pedro_brito.jpeg
+  job_title: Product Analyst
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/pbritosa/
+  name: Pedro Brito de Sa
+  organization: Sage
+
+
 rastislav_zdechovan:
   image_url: /img/blog/authors/rastislav-zdechovan.png
   job_title: Analytics Engineer

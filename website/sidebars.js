@@ -259,6 +259,7 @@ const sidebarSettings = {
                 "docs/build/join-logic",
                 "docs/build/validation",
                 "docs/build/metricflow-time-spine",
+                "docs/build/metricflow-cli",
               ]
             },
             "docs/build/sl-getting-started",
@@ -277,6 +278,7 @@ const sidebarSettings = {
               label: "Metrics",
               link: { type: "doc", id: "docs/build/metrics-overview"},
               items: [
+                "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",
                 "docs/build/simple",
@@ -737,6 +739,7 @@ const sidebarSettings = {
           items: [
             "reference/commands/build",
             "reference/commands/clean",
+            "reference/commands/clone",
             "reference/commands/cmd-docs",
             "reference/commands/compile",
             "reference/commands/debug",
