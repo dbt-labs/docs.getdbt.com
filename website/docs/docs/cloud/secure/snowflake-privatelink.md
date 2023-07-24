@@ -25,8 +25,10 @@ The following steps will walk you through the setup of a Snowflake AWS PrivateLi
 Subject: New Multi-Tenant PrivateLink Request
 - Type: Snowflake
 - SYSTEM$GET_PRIVATELINK_CONFIG output:
+- *Use privatelink-account-url or regionless-privatelink-account-url?: 
 - dbt Cloud multi-tenant environment (US, EMEA, AU):
 ```
+_*By default dbt Cloud will be configured to use `privatelink-account-url` from the provided `SYSTEM$GET_PRIVATELINK_CONFIG` as the PrivateLink endpoint. At the request of the customer, `regionless-privatelink-account-url` can be used instead._
 
 dbt Labs will work on your behalf to complete the PrivateLink setup. Please allow 1-2 business days for this process to complete. Support will contact you when the endpoint is available. 
 
