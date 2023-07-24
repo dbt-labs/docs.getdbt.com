@@ -14,12 +14,10 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 
 - [Create a semantic model](#create-a-semantic-model) with MetricFlow
 - [Define metrics](#define-metrics) with MetricFlow
-- [Test metrics](#test-metrics) with the MetricFlow
+- [Test and query metrics](#test-and-query-metrics) with MetricFlow
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud
 - [Connect and query API](#connect-and-query-api) with dbt Cloud
-- [Test and query with the CLI](#test-and-query-with-the-cli) 
-  * For Developer plans or dbt Core users only
 
 ## Prerequisites
 
@@ -41,12 +39,7 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 ## Create a semantic model
 
-Before you begin, we recommend you learn about more about [MetricFlow](/docs/build/about-metricflow) and its key concepts. There are two main objects: 
-
-- [Semantic models](/docs/build/semantic-models) &mdash; Nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that you can use to query metrics. 
-- [Metrics](/docs/build/metrics-overview) &mdash; Can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo).
-
-This step will guide you through setting up your semantic models, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures),  in your editor of choice.
+This step will guide you through setting up your semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
 
 1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
 
@@ -117,20 +110,32 @@ metrics:
 
 To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 
-## Test metrics 
+## Test and query metrics
 
 :::note
-For public beta, you can't yet test metrics using the dbt Cloud IDE (support coming soon). To test metrics, you must install the [MetricFlow CLI](/docs/build/metricflow-cli).
-  * dbt Core or Developer plan users can skip to [Test and query with the CLI](#test-and-query-with-the-cli) for detailed steps. 
+For public beta, testing and querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). However, install the [MetricFlow CLI](/docs/build/metricflow-cli) to test and query metrics locally.
+  * dbt Core or Developer plan users can only test and query metrics manually using the CLI, but won't be able to use the dbt Semantic Layer to dynamically query metrics.
 :::
 
-1. To test your metrics, make sure you have the MetricFlow CLI installed and up to date.
+Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for more detailed MetricFlow commands.
+
+**Test using the CLI:**
+
+1. Make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
 3. Run `mf validate-configs` to validate the changes before committing them
 
+**Query using the CLI:**
+
+1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
+2. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
+3. Commit and merge the code changes that contain the metric definitions.
+
 ## Run a production job
 
-Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
+Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
+
+Once you’ve defined metrics in your dbt project, you can perform a job run in your dbt Cloud deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
 
 1. Go to **Deploy** in the navigation header
 2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
@@ -146,7 +151,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query API
 
-Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
+You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer.
 
 To connect and query your metrics using the dbt Semantic Layer and its API:
 
@@ -155,21 +160,6 @@ To connect and query your metrics using the dbt Semantic Layer and its API:
 
 Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
-## Test and query with the CLI
-
-Before you begin, dbt Core or Developer plan users must first install the [MetricFlow CLI](/docs/build/metricflow-cli). 
-
-**Test using the CLI:**
-
-1. Make sure you have the MetricFlow CLI installed and up to date.
-2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
-3. Run `mf validate-configs` to validate the changes before committing them
-
-**Query using the CLI:**
-
-1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
-2. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
-3. Commit and merge the code changes that contain the metric definitions.
 
 ## Related docs
 

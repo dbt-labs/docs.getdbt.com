@@ -4,7 +4,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment and projec
 If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
 :::
 
-1. Create new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
+1. in dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
     * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 
 2. Navigate to **Account Settings** and select the specific project you want to enable the Semantic Layer for.
@@ -18,7 +18,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 5. Select the deployment environment you want for the Semantic Layer and click **Save**.
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="60%" title="Set Up your Semantic Layer configuration."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="50%" title="Set Up your Semantic Layer configuration."/>
 
 6. You should see connection information that allows you to connect to downstream tools. 
     * If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
