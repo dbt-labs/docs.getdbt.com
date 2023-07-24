@@ -24,7 +24,7 @@ See [Building a Trusted Adapter](/guides/dbt-ecosystem/adapter-development/8-bui
 
 ### Trusted vs Verified
 
-The Verification program (currently paused) exists to highlight adapters that meets both of the following criteria:
+The Verification program exists to highlight adapters that meets both of the following criteria:
 
 - the guidelines given in the Trusted program,
 - formal agreements required for integration with dbt Cloud

@@ -16,7 +16,7 @@ You can also further customize how dbt works with your specific data platform vi
 
 There are three types of adapters available today. The purpose of differentiation is to provide users with an easier means to evaluate adapter quality.
 
-- **Verified** &mdash; dbt Labs' strict [adapter program](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter) assures users of trustworthy, tested, and regularly updated adapters for production use. Verified adapters earn a "Verified" status, providing users with trust and confidence.
+- **Verified** &mdash; [Verified adapters](verified-adapters) are those that have completed a rigorous verification process in collaboration with dbt Labs.
 - **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have agreed to meet a higher standard of quality.
 - **Community** &mdash; [Community adapters](community-adapters) are open-source and maintained by community members. 
 
