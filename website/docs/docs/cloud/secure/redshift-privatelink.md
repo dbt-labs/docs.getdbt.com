@@ -55,10 +55,8 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     
     - Target Type: **IP**
 
-        **Notes:**
-
         _Standard Redshift_
-        
+
         - Use IP addresses from the Redshift cluster’s **Network Interfaces** whenever possible. While IPs listed in the **Node IP addresses** section will work, they are also more likely to change.
         <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
 
