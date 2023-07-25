@@ -56,6 +56,6 @@ For information on the partner integrations, their documentation, and more &mdas
 
 ## Related docs
 
-- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn more about the dbt Semantic Layer.
+- [About the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
 
 </VersionBlock>
