@@ -8,7 +8,7 @@ meta:
   api_name: dbt Semantic Layer API
 ---
 
-This getting started page recommends a workflow to help you get started creating your first metrics. This guide uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template). If you would like to use a sandbox project to follow the guide, you can clone the repo here. Otherwise, you can create semantic models and metrics for your own dbt project. 
+This getting started page recommends a workflow to help you get started creating your first metrics. This guide uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template). If you would like to use a sandbox project to follow the guide, you can clone the repo from GitHub. Otherwise, you can create semantic models and metrics for your own dbt project. 
 
 Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
 
@@ -46,13 +46,13 @@ Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platfor
 - `pip install "dbt-metricflow[your_adapter_name]"`
   * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
  
-Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon). 
+Currently, the supported adapters for querying locally are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon). If you use an adpater other then Snowflake you can still create metrics, but you will need to test querying them through the Semantic Layer.
 
 ## Create a semantic model
 
 This part of the guide will walk you through setting up semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures). It is reccomended that you read the overview of what a [semantic model](https://docs.getdbt.com/docs/build/semantic-models) is before getting started. If you're working in the Jaffle shop example, delete the `orders.yaml` semantic model or delete the yaml extension so it's ignored during parsing. We'll be rebuidling it step by step in this example. If you're following the guide in your own project, pick a model that you want to build a semantic manifest from and fill in the config values accordingly. 
 
-1. Create a new semantic model file i.e orders.yaml. We recomending creating semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name, appropriate metadata, map it to a model in your dbt project and specify model defaults for now only `default_agg_time_dimension` is supported. 
+1. Create a new semantic model file i.e orders.yaml. We recomending creating semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name, appropriate metadata, map it to a model in your dbt project and specify model defaults. For now `default_agg_time_dimension` is the only supported default. 
 
 ```yaml
 semantic_models:
@@ -88,7 +88,7 @@ semantic_models:
     measures:
           - name: order_total
             agg: sum
-  #Dimensions,either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
+  #Dimensions, either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
     dimensions:
       - name: location_name
         type: categorical
@@ -99,7 +99,7 @@ semantic_models:
           time_granularity: day
 ```
 
-Putting it all together, a complete semantic model configurations based on the order model would look like the example below. You can view this semantic model in the example repo. 
+Putting it all together, a complete semantic model configurations based on the order model would look like the example below.
 ```yaml
 semantic_models:
   #The name of the semantic model.
@@ -152,7 +152,7 @@ group by metric_time_day, country  -- dimensions
 
 Now that you've created your first semantic model, it's time to define your first metric! MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). It's recommended that you read the [metrics overview docs](https://docs.getdbt.com/docs/build/metrics-overview) before getting started. 
 
-1. You can define metrics in the same YAML files as your semantic models, or create a new file. If you want to create your metrics in a new file, we recomend creating another directory called `/models/metrics`. The file structure for metrics can become more complex from if you need to further organize your metrics, for example by data source or business line. 
+1. You can define metrics in the same YAML files as your semantic models, or create a new file. If you want to create your metrics in a new file, we recomend creating another directory called `/models/metrics`. The file structure for metrics can become more complex from here if you need to further organize your metrics, for example by data source or business line. 
 
 2. The example metric we'll create is a simple metric that refers directly to the the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, we recomend deleteing the `example_metrics` file, or removing the .yaml extension so it's ignored during parsing. We'll be rebuidling the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step. 
 
@@ -170,7 +170,7 @@ metrics:
 
 To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 
-## Configure the MetricFlow timespine
+## Configure the MetricFlow time spine model
 MetricFlow requires a time spine for certain metric types and join resolution patterns, like cumulative metrics. You will have to create this model in your dbt project. [This article walks thorough how to add the `metricflow_time_spine` model to your project.](/docs/build/metricflow-time-spine) 
 
 ## Test and query metrics
@@ -183,7 +183,8 @@ For public beta, querying metrics in the dbt Cloud IDE isn't yet supported (Comi
 Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on how to install the CLI, and a refrence for the CLI commands.
 
 **Query and commit your metrics using the CLI:**
-Metricflow needs a semantic_manifest.json in order to build a semantic graph. To generate a semantic_manifest.json artifact run `dbt parse`. This will create the file in your `/target` directory. If you're working in off off the example Jaffle shop example, run `dbt seed && dbt build` before preceding to ensure the data exists in your warehouse. 
+
+Metricflow needs a semantic_manifest.json in order to build a semantic graph. To generate a semantic_manifest.json artifact run `dbt parse`. This will create the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt build` before preceding to ensure the data exists in your warehouse. 
 
 1. Make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
