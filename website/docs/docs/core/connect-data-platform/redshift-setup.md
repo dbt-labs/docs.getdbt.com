@@ -150,7 +150,7 @@ please refer to the official AWS documentation on [Configuration and credential 
 | `iam_profile` | analyst | dbt will use the specified profile from your ~/.aws/config file |
 | `cluster_id` | CLUSTER_ID| Required for IAM |
 | `user`   | username | Account user to log into your cluster |
-| `region`  | us-east-1 | Required for IAM autentication | 
+| `region`  | us-east-1 | Required for IAM authentication | 
 
 
 <br/>
