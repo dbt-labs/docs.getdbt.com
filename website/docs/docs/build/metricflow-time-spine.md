@@ -11,7 +11,7 @@ MetricFlow uses a timespine table to construct cumulative metrics. By default, M
 To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
 
 ```sql
-filename: metricflow_time_spine.sql
+--filename: metricflow_time_spine.sql
 {{
     config(
         materialized = 'table',
@@ -38,12 +38,14 @@ final as (
 select * from final
 ```
 ```sql
---- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
+-- filename: metricflow_time_spine.sql
+-- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
 {{config(materialized='table')}}
 with days as (
-    {{dbt_utils.date_spine('day'
-    , "DATE(2000,01,01)"
-    , "DATE(2030,01,01)"
+    {{dbt_utils.date_spine(
+        'day',
+        "DATE(2000,01,01)",
+        "DATE(2030,01,01)"
     )
     }}
 ),

@@ -8,7 +8,7 @@ meta:
   api_name: dbt Semantic Layer API
 ---
 
-This getting started page recommends a workflow to help you get started creating your first metrics. Here are the following steps you'll take:
+This getting started page recommends a workflow to help you get started creating your first metrics. This guide uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template). If you would like to use a sandbox project to follow the guide, you can clone the repo here. Otherwise, you can create semantic models and metrics for your own dbt project. 
 
 Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
 
@@ -25,7 +25,6 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 - Have both your production and development environments running dbt version 1.6 or higher 
 - Use Snowflake, BigQuery, Databricks, and Redshift data platform
 - A successful run in the environment where your Semantic Layer is configured
-  * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 - To query with dbt Cloud:
   * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America
   * Set up the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions.
@@ -43,7 +42,7 @@ Before you begin, install the [MetricFlow CLI](/docs/build/metricflow-cli) as an
 
 Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platforms):
 
-- Create or activate your virtual environment. `python -m venv venv`
+- Create or activate your virtual environment. `python -m venv venv` or `source your-venv/bin/activate`
 - `pip install "dbt-metricflow[your_adapter_name]"`
   * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
  
@@ -51,41 +50,89 @@ Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databric
 
 ## Create a semantic model
 
-This step will guide you through setting up your semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
+This part of the guide will walk you through setting up semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures). It is reccomended that you read the overview of what a [semantic model](https://docs.getdbt.com/docs/build/semantic-models) is before getting started. If you're working in the Jaffle shop example, delete the `orders.yaml` semantic model or delete the yaml extension so it's ignored during parsing. We'll be rebuidling it step by step in this example. If you're following the guide in your own project, pick a model that you want to build a semantic manifest from and fill in the config values accordingly. 
 
-1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
+1. Create a new semantic model file i.e orders.yaml. We recomending creating semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name, appropriate metadata, map it to a model in your dbt project and specify model defaults for now only `default_agg_time_dimension` is supported. 
 
 ```yaml
 semantic_models:
-  - name: transactions
+  #The name of the semantic model.
+  - name: orders
     description: |
-    This table captures every transaction starting July 02, 2014. Each row represents one transaction
-    model: ref('fact_transactions')
+      Model containting order data. The grain of the table is the order id.
+    #The name of the dbt model and schema
+    model: ref('orders')
+    defaults:
+      agg_time_dimension: ordered_at
   ```
 
-2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
+2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `order_id`, and so on.
 
 ```yaml
-entities:
-  - name: transaction
-    type: primary
-    expr: id_transaction
-  - name: customer
-    type: foreign
-    expr: id_customer
+  #Entities. These usually corespond to keys in the table.
+    entities:
+      - name: order_id
+        type: primary
+      - name: location
+        type: foreign
+        expr: location_id
+      - name: customer
+        type: foreign
+        expr: customer_id
   ```
 
-3. Define your dimensions and measures. dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
+3. Define your dimensions and measures. Dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
 ```yaml
-measures:
-  - name: transaction_amount_usd
-    description: The total USD value of the transaction.
-    agg: sum
-dimensions:
-  - name: is_large
-    type: categorical
-    expr: case when transaction_amount_usd >= 30 then true else false end
+  #Measures. These are the aggregations on the columns in the table.
+    measures:
+          - name: order_total
+            agg: sum
+  #Dimensions,either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
+    dimensions:
+      - name: location_name
+        type: categorical
+      - name: ordered_at
+        expr: cast(ordered_at as date)
+        type: time
+        type_params:
+          time_granularity: day
+```
+
+Putting it all together, a complete semantic model configurations based on the order model would look like the example below. You can view this semantic model in the example repo. 
+```yaml
+semantic_models:
+  #The name of the semantic model.
+  - name: orders
+    description: |
+      Model containting order data. The grain of the table is the order id.
+    #The name of the dbt model and schema
+    model: ref('orders')
+    defaults:
+      agg_time_dimension: ordered_at
+    #Entities. These usually corespond to keys in the table.
+    entities:
+      - name: order_id
+        type: primary
+      - name: location
+        type: foreign
+        expr: location_id
+      - name: customer
+        type: foreign
+        expr: customer_id
+    #Measures. These are the aggregations on the columns in the table.
+    measures:
+      - name: order_total
+        agg: sum
+    #Dimensions,either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
+    dimensions:
+      - name: location_name
+        type: categorical
+      - name: ordered_at
+        expr: cast(ordered_at as date)
+        type: time
+        type_params:
+          time_granularity: day
 ```
 
 :::tip
@@ -103,44 +150,47 @@ group by metric_time_day, country  -- dimensions
 
 ## Define metrics
 
-Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). 
+Now that you've created your first semantic model, it's time to define your first metric! MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). It's recommended that you read the [metrics overview docs](https://docs.getdbt.com/docs/build/metrics-overview) before getting started. 
 
-1. You can define metrics in the same YAML files as your semantic models, or create a new file.
+1. You can define metrics in the same YAML files as your semantic models, or create a new file. If you want to create your metrics in a new file, we recomend creating another directory called `/models/metrics`. The file structure for metrics can become more complex from if you need to further organize your metrics, for example by data source or business line. 
 
-2. The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
+2. The example metric we'll create is a simple metric that refers directly to the the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, we recomend deleteing the `example_metrics` file, or removing the .yaml extension so it's ignored during parsing. We'll be rebuidling the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step. 
 
 ```yaml
 metrics:
-  - name: transaction_amount_usd
+  - name: order_total
+    description: "Sum of orders value"
     type: simple
-    type_params: null
-    measure: transaction_amount_usd
+    label: "Order Total"
+    type_params:
+      measure: order_total
 ```
  
-3. Save your code and make sure you test your metrics before committing them to your repository.
+3. Save your code and validate your configs (we'll do this in the next step of the guide 😀) before committing them to your repository.
 
 To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
+
+## Configure the MetricFlow timespine
+MetricFlow requires a time spine for certain metric types and join resolution patterns, like cumulative metrics. You will have to create this model in your dbt project. [This article walks thorough how to add the `metricflow_time_spine` model to your project.](/docs/build/metricflow-time-spine) 
 
 ## Test and query metrics
 
 :::note
-For public beta, testing and querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). However, install the [MetricFlow CLI](/docs/build/metricflow-cli) to test and query metrics locally.
+For public beta, querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). You'll still be able to run semantic validation on your metrics in the IDE to ensure they are defined correctly. However, you can install the [MetricFlow CLI](/docs/build/metricflow-cli) to test and query metrics locally.
   * dbt Core or Developer plan users can only test and query metrics manually using the CLI, but won't be able to use the dbt Semantic Layer to dynamically query metrics.
 :::
 
-Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for more detailed MetricFlow commands.
+Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on how to install the CLI, and a refrence for the CLI commands.
 
-**Test using the CLI:**
+**Query and commit your metrics using the CLI:**
+Metricflow needs a semantic_manifest.json in order to build a semantic graph. To generate a semantic_manifest.json artifact run `dbt parse`. This will create the file in your `/target` directory. If you're working in off off the example Jaffle shop example, run `dbt seed && dbt build` before preceding to ensure the data exists in your warehouse. 
 
 1. Make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
-3. Run `mf validate-configs` to validate the changes before committing them
-
-**Query using the CLI:**
-
-1. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
-2. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
-3. Commit and merge the code changes that contain the metric definitions.
+3. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. i.e `mf query --metrics order_total --group-by metric_time`
+4. Verify that the metric values are what you expect. To futher understand how the metric is being generated, you can view the generated SQL if you type `--explain` in the CLI.
+5. Run `mf validate-configs` to run validation on your semantic models and metrics. 
+6. Commit and merge the code changes that contain the metric definitions.
 
 ## Run a production job
 

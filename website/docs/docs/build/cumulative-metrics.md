@@ -6,7 +6,22 @@ sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
 
-Cumulative metrics aggregate a measure over a given window. If no window is specified, the window is considered infinite and accumulates values over all time.
+Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. This metric is common for calculating things like weekly active users, or month to date revenue. The full metrics spec, as well as examples of cumulative metric are given below.
+
+# Cumulative Metrics Spec
+```yaml
+metrics:
+  - name: the metric name # Required
+    description: the metric description # Optinal
+    type: simple # Required
+    label: The value that will be displayed in downstream tools # Required
+    type_params: # Required
+      measure: the measure you are refrencing # Required
+      window: the accumulation window i.e 1 month, 7 days, 1 year. # Optional. Can not be used with window
+      grain_to_date: sets the accumulation grain i.e month will accumulated data for one month, then restart at the beggining of the next. # Optional. Can not be used with grain_to_date. 
+
+
+```
 
 :::info MetricFlow time spine required
 
@@ -14,18 +29,31 @@ You will need to create the [time spine model](/docs/build/metricflow-time-spine
 
 :::
 
+# Cumulative Metrics Example
+
 ```yaml
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
 metrics:
-- name: wau_rolling_7
-  owners:
-    - support@getdbt.com
-  type: cumulative
-  type_params:
-    measures:
-      - distinct_users
-    #Omitting window will accumulate the measure over all time
-    window: 7 days
+  - name: cumulative_order_total
+    label: Cumulative Order total (All Time)    
+    description: The cumulative value of all orders
+    type: cumulative
+    type_params:
+      measure: order_total
+  - name: cumulative_order_total_l1m
+    label: Cumulative Order total (L1M)   
+    description: Trailing 1 month cumulative order amount
+    type: cumulative
+    type_params:
+      measure: order_total
+      window: 1 month
+  - name: cumulative_order_total_mtd
+    label: Cumulative Order total (MTD)
+    description: The month to date value of all orders
+    type: cumulative
+    type_params:
+      measure: order_total
+      grain_to_date: month
 ```
 
 ### Window options
@@ -38,27 +66,25 @@ This section details examples of when you specify and don't specify window optio
 
 If a window option is specified, the MetricFlow framework applies a sliding window to the underlying measure. 
 
-Suppose the underlying measure `distinct_users` is configured as such to reflect a count of distinct users by user_id and user_status. 
+Suppose the underlying measure `customers` which is configured to count the unique customers making orders at the Jaffle shop.
 
 ```yaml
 measures:
-  - name: distinct_users
-  description: The number of distinct users creating mql queries
-  expr: case when user_status in ('PENDING','ACTIVE') then user_id else null end
-  agg: count_distinct
+      - name: customers
+        expr: customer_id
+        agg: count_distinct
 ```
 
-We can write a cumulative metric `wau_rolling_7` as such: 
+We can write a cumulative metric `weekly_customers` as such: 
 
 ``` yaml
 metrics: 
-  name: wau_rolling_7
+  - name: weekly_customers
   # Define the measure and the window.
   type: cumulative
   type_params:
-    measures:
-      - distinct_users
-    # the default window is infinity - omitting window will accumulate the measure over all time
+    measure: customers
+    # Setting the window to 7 days since we want to track weekly active 
     window: 7 days
 ```
 
@@ -67,7 +93,7 @@ From the sample YAML above, note the following:
 * `type`: Specify cumulative to indicate the type of metric. 
 * `type_params`: Specify the measure you want to aggregate as a cumulative metric. You have the option of specifying a `window`, or a `grain to date`.  
 
-For example, in the `wau_rolling_7` cumulative metric, MetricFlow takes a sliding 7-day window of relevant users and applies a count distinct function.
+For example, in the `weekly_customers` cumulative metric, MetricFlow takes a sliding 7-day window of relevant customers and applies a count distinct function.
 
 If you omit the `window`, the measure will accumulate over all time. Otherwise, you can choose from granularities like day, week, quarter, or month, and describe the window using phrases like "7 days" or "1 month."
 
@@ -102,12 +128,14 @@ measures:
 metrics: 
 - name: current_revenue
   description: Current revenue 
+  label: Current Revenue
   type: cumulative 
   type_params: 
     measures: 
       - revenue
 - name: active_subscriptions 
   description: Count of active subscriptions 
+  label: Active Subscriptions
   type: cumulative 
   type_params: 
     measures: 
@@ -122,38 +150,32 @@ metrics:
 
 You can choose to specify a grain to date in your cumulative metric configuration to accumulate a metric from the start of a grain (such as week, month, or year). When using a window, such as a month, MetricFlow will go back one full calendar month. However, grain to date will always start accumulating from the beginning of the grain, regardless of the latest date of data.
 
-For example, let's consider an underlying measure of `total_revenue.`
+For example, let's consider an underlying measure of `order_total.`
 
 ```yaml
-measures: 
-  - name: total_revenue 
-    description: Total revenue (summed) 
-    agg: sum 
-    expr: revenue 
+    measures:
+      - name: order_total
+        agg: sum
 ```
 
 We can compare the difference between a 1-month window and a monthly grain to date. The cumulative metric in a window approach applies a sliding window of 1 month, whereas the grain to date by month resets at the beginning of each month.
 
 ```yaml
-metrics: 
-  name: revenue_monthly_window #For this metric, we use a window of 1 month 
-  description: Monthly revenue using a window of 1 month (think of this as a sliding window of 30 days)
-  type: cumulative 
-  type_params: 
-    measures: 
-      - total_revenue 
-    window: 1 month 
-```
-
-```yaml
-metrics: 
-  name: revenue_monthly_grain_to_date #For this metric, we use a monthly grain to date 
-  description: Monthly revenue using grain to date of 1 month (think of this as a monthly resetting point) 
-  type: cumulative 
-  type_params: 
-    measures: 
-      - total_revenue 
-    grain_to_date: month 
+metrics:
+ - name: cumulative_order_total_l1m #For this metric, we use a window of 1 month 
+    label: Cumulative Order total (L1M)   
+    description: Trailing 1 month cumulative order amount
+    type: cumulative
+    type_params:
+      measure: order_total
+      window: 1 month
+  - name: cumulative_order_total_mtd #For this metric, we use a monthly grain to date 
+    label: Cumulative Order total (MTD)
+    description: The month to date value of all orders
+    type: cumulative
+    type_params:
+      measure: order_total
+      grain_to_date: month
 ```
 
 ### Implementation
