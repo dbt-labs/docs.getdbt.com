@@ -20,7 +20,7 @@ dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [d
 
 :::tip Join our beta 
 
-dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs on this, click on the beta tab below.
+dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs on this, click on the **Beta version** tab below.
 
 If you're interested in joining our beta, please [contact us](mailto:support@getdbt.com).
 
