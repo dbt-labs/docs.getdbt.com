@@ -15,7 +15,7 @@ description: "Represents the current model in the database."
 
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock lastVersion="1.1">
 

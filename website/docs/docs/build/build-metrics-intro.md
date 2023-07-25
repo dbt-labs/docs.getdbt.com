@@ -18,7 +18,7 @@ To fully experience the dbt Semantic Layer, including the ability to query dbt m
 :::
 
 Before you start, keep the following considerations in mind:
-- Use the CLI to define metrics in YAML and query them using the [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
+- Define metrics in YAML and query them using the [MetricFlow CLI](/docs/build/metricflow-cli).
 - You must be on dbt Core v1.6 beta or higher to use MetricFlow. [Upgrade your dbt version](/docs/core/pip-install#change-dbt-core-versions) to get started.
   * Note: Support for dbt Cloud and querying via external integrations coming soon.
 - MetricFlow currently only supports Snowflake and Postgres.

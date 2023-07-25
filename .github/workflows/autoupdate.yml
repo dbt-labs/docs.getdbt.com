@@ -2,11 +2,11 @@ name: Auto Update
 
 on:
   # This will trigger on all pushes to all branches.
-  push: {}
+#  push: {}
   # Alternatively, you can only trigger if commits are pushed to certain branches, e.g.:
-  # push:
-  #   branches:
-  #     - current
+  push:
+    branches:
+      - current
   #     - unstable
 jobs:
   autoupdate:

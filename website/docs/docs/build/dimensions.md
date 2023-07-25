@@ -14,19 +14,39 @@ In a data platform, dimensions is part of a larger structure called a semantic m
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-Refer to the following semantic model example:
+All dimensions require a `name`, `type` and in most cases, an `expr` parameter. 
+
+| Name | Parameter | Field type |
+| --- | --- | --- |
+| `name` |  Refers to the name of the group that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> Dimension names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
+| `type` | Specifies the type of group created in the semantic model. There are three types:<br /><br />&mdash; Categorical: Group rows in a table by categories like geography, product type, color, and so on. <br />&mdash; Time: Point to a date field in the data platform, and must be of type TIMESTAMP or equivalent in the data platform engine. <br />&mdash; Slowly-changing dimensions: Analyze metrics over time and slice them by groups that change over time, like sales trends by a customer's country. | Required |
+| `type_params` | Specific type params such as if the time is primary or used as a partition | Required |
+| `description` | Description of the dimension | Optional |
+| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use column name itself to input a SQL expression. | Optional |
+
+Refer to the following for the complete specification for dimensions:
+
+```yaml
+dimensions:
+  - name: name of the group that will be visible to the user in downstream tools
+    type: Categorical or Time
+    type_params: specific type params such as if the time is primary or used as a partition
+    description: same as always
+    expr: the column name or expression. If not provided the default is the dimension name
+```
+
+Refer to the following example to see how dimensions are used in a semantic model:
 
 ```yaml
 semantic_models:
   - name: transactions
     description: A record for every transaction that takes place. Carts are considered multiple transactions for each SKU. 
     model: {{ ref("fact_transactions") }}
-    default:
+    defaults:
       agg_time_dimension: metric_time
 # --- entities ---
   entities: 
       ...
-
 # --- measures --- 
   measures: 
       ... 
@@ -40,17 +60,9 @@ semantic_models:
       expr: case when quantity > 10 then true else false end
 ```
 
-All dimensions require a `name`, `type` and in most cases, an `expr` parameter. 
-
-| Name | Parameter | Field type |
-| --- | --- | --- |
-| `name` |  Refers to the name of the group that will be visible to the user in downstream tools. It can also serve as an alias if the column name or SQL query reference is different and provided in the `expr` parameter. <br /><br /> &mdash; dimensions names should be unique within a semantic model, but they can be non-unique across different models as MetricFlow uses [joins](/docs/build/join-logic) to identify the right dimension. | Required |
-| `type` | Specifies the type of group created in the semantic model. There are three types:<br /><br />&mdash; Categorical: Group rows in a table by categories like geography, product type, color, and so on. <br />&mdash; Time: Point to a date field in the data platform, and must be of type TIMESTAMP or equivalent in the data platform engine. <br />&mdash; Slowly-changing dimensions: Analyze metrics over time and slice them by groups that change over time, like sales trends by a customer's country. | Required |
-| `expr` | Defines the underlying column or SQL query for a dimension. If no `expr` is specified, MetricFlow will use the column with the same name as the group. You can use column name itself to input a SQL expression. | Optional |
-
 ## Dimensions types
 
-Dimensions has three types. This section further explains the definitions and provides examples.
+Dimensions have three types. This section further explains the definitions and provides examples.
 
 1. [Categorical](#categorical)
 1. [Time](#time)
@@ -79,9 +91,9 @@ To use BigQuery as your data platform, time dimensions columns need to be in the
 
 <TabItem value="is_primary" label="is_primary">
 
-To specify the default time dimensions for a measure or metric in MetricFlow, set the `is_primary` parameter to True. If you have multiple time dimensions in your semantic model, the non-primary ones should have `is_primary` set to False. To assign a non-primary time dimensions to a measure, use the `agg_time_dimension` parameter and refer to the time dimensions defined in the section. 
+To specify the default time dimensions for a measure or metric in MetricFlow, set the `is_primary` parameter to True. If your semantic model has multiple time dimensions, the non-primary ones should have `is_primary` set to False. To assign non-primary time dimensions to a measure, use the `agg_time_dimension` parameter and refer to the time dimensions defined in the section. 
 
-In the provided example, the semantic model has two time groups, `created_at` and `deleted_at`, with `created_at` being the primary time dimensions through `is_primary: True`. The `users_created` measure defaults to the primary time dimensions, while the `users_deleted` measure uses `deleted_at` as its time group. 
+In the provided example, the semantic model has two-time groups, `created_at` and `deleted_at`, with `created_at` being the primary time dimension through `is_primary: True`. The `users_created` measure defaults to the primary time dimensions, while the `users_deleted` measure uses `deleted_at` as its time group. 
 
 ```yaml
 dimensions: 
@@ -110,7 +122,7 @@ measures:
     agg: sum
 ```
 
-When querying one or more metrics in MetricFlow using the CLI, the default time dimensions for a single metric is the primary time dimension, which can be referred to as metric_time or the dimensions's name. Multiple time groups can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
+When querying one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the primary time dimension, which can be referred to as metric_time or the dimensions' name. Multiple time groups can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
 
       ```
        mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
@@ -204,7 +216,7 @@ measures:
 Currently, there are limitations in supporting SCD's. 
 :::
 
-MetricFlow, supports joins against dimensions values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
+MetricFlow supports joins against dimensions values in a semantic model built on top of an SCD Type II table (slowly changing dimension) Type II table. This is useful when you need a particular metric sliced by a group that changes over time, such as the historical trends of sales by a customer's country. 
 
 As their name suggests SCD Type II are groups that change values at a coarser time granularity. This results in a range of valid rows with different dimensions values for a given metric or measure. MetricFlow associates the metric with the first (minimum) available dimensions value within a coarser time window, such as month. By default, MetricFlow uses the group that is valid at the beginning of the time granularity.
 
@@ -252,7 +264,7 @@ Take note of the extra arguments under `validity_params`: `is_start` and `is_end
 ```yaml 
 semantic_models:
   - name: sales_person_tiers
-    description: SCD Type II table of tiers for sales people 
+    description: SCD Type II table of tiers for salespeople 
     model: {{ref(sales_person_tiers)}}
     defaults:
       agg_time_dimension: tier_start
@@ -292,7 +304,7 @@ semantic_models:
       every transaction. There is only one transaction id per 
       transaction. The `metric_time` or date is reflected in UTC.
     model: {{ ref(fact_transactions) }}
-    default:
+    defaults:
       agg_time_dimension: metric_time
 
     entities:
@@ -337,7 +349,7 @@ In the sales tier example,  For instance, if a salesperson was Tier 1 from 2022-
 
 <TabItem value="example2" label="SCD table example 2">
 
-This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about sales persons' tier and the time length of that tier. Suppose you have the underlying SCD table:
+This example shows how to create slowly changing dimensions (SCD) using a semantic model. The SCD table contains information about salespersons' tier and the time length of that tier. Suppose you have the underlying SCD table:
 
 | sales_person_id | tier | start_date | end_date | 
 |-----------------|------|------------|----------|
