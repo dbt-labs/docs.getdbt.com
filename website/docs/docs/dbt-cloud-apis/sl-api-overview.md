@@ -63,6 +63,4 @@ commenting out until it's available
 
 </div>
 
-## Authentication
 
-dbt Cloud authorizes requests to the dbt Semantic Layer API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).

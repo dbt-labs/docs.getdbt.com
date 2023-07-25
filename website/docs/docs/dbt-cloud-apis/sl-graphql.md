@@ -19,6 +19,7 @@ import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
 
 GraphQL has several advantages, such as self-documenting, having a strong typing system, supporting versioning and evolution, enabling rapid development, and having a robust ecosystem. These features make GraphQL a powerful choice for APIs that prioritize flexibility, performance, and developer productivity.
+
 ## dbt Semantic Layer GraphQL API
 
 The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to it's self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://cloud.getdbt.com/semantic-layer/api/graphql). 
@@ -33,14 +34,13 @@ Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/q
 
 ### Authentication 
 
-Authentication uses a dbt Cloud Service token passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
+Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/service-tokens) passed through a header as follows. To explore the schema, you can enter this information in the "header" section.
 
 ```
 {"Authorization": "Bearer <SERVICE TOKEN>"}
 ```
 
 Each GQL request also comes with a dbt Cloud environmentId. The API uses both the service token in the header and environmentId for authentication.
-
 
 ### Metric metadata calls
 

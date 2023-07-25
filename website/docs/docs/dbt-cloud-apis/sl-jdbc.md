@@ -26,12 +26,15 @@ A JDBC driver is a software component enabling a Java application to interact wi
 
 dbt Labs partners can use the JDBC API to build integrations in their tools with the dbt Semantic Layer
 
-
 ## Using the JDBC API
 
 If you are a dbt user or partner with access to dbt Cloud and the[dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
 
 Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/quickstart-sl) for more info.
+
+## Authentication
+
+dbt Cloud authorizes requests to the dbt Semantic Layer API. You need to provide an environment ID, host, and [service account tokens](/docs/dbt-cloud-apis/service-tokens).
 
 ## Connection parameters
 
@@ -51,7 +54,6 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 | `SERVICE_TOKEN` | dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with “Semantic Layer Only” permission. Create a new service token in your **Account Settings** page. | `token=SERVICE_TOKEN` |
 
 *Note &mdash; If you're testing locally on a tool like DataGrip, you may also have to provide the following variable at the end or beginning of the JDBC URL `&disableCertificateVerification=true`.
-
 
 ## Querying the API for metric metadata
 
