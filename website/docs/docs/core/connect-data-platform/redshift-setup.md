@@ -130,7 +130,7 @@ company-name:
 
 <TabItem value="IAM">
 
-The following table lists the authentication parameters to use IAM autentication. 
+The following table lists the authentication parameters to use IAM authentication. 
   
 To set up a Redshift profile using IAM Authentication, set the `method` parameter to `iam` as shown below. Note that a password is not required when using IAM Authentication. For more information on this type of authentication,
 consult the [Redshift Documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
