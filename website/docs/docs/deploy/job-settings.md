@@ -19,11 +19,21 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 
 - You must have a dbt Cloud account and [Developer seat license](/docs/cloud/manage-access/seats-and-users). If you don't, you can [sign up](https://www.getdbt.com/signup/) for a [free account](https://www.getdbt.com/pricing/). 
 - You must have a dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections).
-- You must [create and schedule a dbt Cloud job](#create-and-schedule-jobs).
 - You must have [access permission](/docs/cloud/manage-access/about-user-access) to view, create, modify, or run jobs.
 - You must set up a [deployment environment](/docs/deploy/deploy-environments). 
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
+
+:::tip Join our beta 
+
+dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs on this, click on the beta tab below.
+
+If you're interested in joining our beta, please [contact us](mailto:support@getdbt.com).
+
+:::
+
+<Tabs queryString="version">
+<TabItem value="ga" label="Setup steps (GA version)" default>
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 1. Provide a job name, for example "Hourly Customer Job". 
@@ -56,6 +66,36 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
 7. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under **Run history**.
+
+</TabItem>
+
+<TabItem value="beta" label="Setup steps (beta version)">
+
+1. On your deployment environment page, click **Create Job** > **Deploy Job** to create a new deploy job. 
+2. Options in the **Job Description** section:
+    - **Job Name** &mdash; Specify the name for this deploy job. For example, `Daily build`.
+    - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
+3. Options in the **Execution Settings** section:
+    - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
+    - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this deploy job runs.
+    - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
+    - **Add API trigger** &mdash; Set up an [API](/docs/dbt-cloud-apis/overview) trigger to run this deploy job.
+4. Options in the **Schedule** section:
+    - **Run on schedule** &mdash; Enable this option to run this deploy job on a set schedule.
+    - **Timing** and **Run at** &mdash; Specify whether to [schedule](#schedule-days) this deploy job using **Exact Intervals** that runs the job at specific times of day, **Intervals** that runs the job every specified number of hours, or to **Enter custom cron schedule (UTC)** that runs the job specified using [cron syntax](#custom-cron-schedule).
+    - **Days of the Week** &mdash; By default, it’s set to every day.
+5. (optional) Options in the **Advanced Settings** section: 
+    - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this deploy job runs.
+    - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to correspond this deploy job to the settings in your project.
+    - **Run Timeout** &mdash; Cancel this deploy job if the run time exceeds the timeout value. 
+    - **Compare changes against an environment (Deferral)** option — By default, it’s set to **No deferral**.
+    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment.
+    - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
+
+
+</TabItem>
+
+</Tabs>
 
 ### Schedule days
 
@@ -98,6 +138,5 @@ Some examples are:
 
 - [Artifacts](/docs/deploy/artifacts)
 - [Build and view your docs with dbt Cloud](/docs/collaborate/build-and-view-your-docs)
-- [Source freshness](/docs/deploy/source-freshness)
-- [Job commands](/docs/deploy/job-commands)
-- [Webhooks for your jobs](/docs/deploy/webhooks)
+- [Webhooks](/docs/deploy/webhooks)
+- [CI jobs](/docs/deploy/slim-ci-jobs)
