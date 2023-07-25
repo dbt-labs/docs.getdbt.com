@@ -16,9 +16,9 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 
 
-Discover the diverse range of data applications that seamlessly integrate with the powerful dbt Semantic Layer, powered by MetricFlow &mdash; from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
+There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
-<span>Query dbt metrics via external integrations using the sophisticated <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>. Use the API to query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+<span>Query dbt metrics with external integrations using the sophisticated <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>. Use the API to query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more. Here are some of the integrations you can query from:
 
@@ -29,9 +29,9 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
   * Supports a generic JDBC driver option (such as DataGrip) or 
   * Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
 
-For information on the partner integrations, their documentation, and more &mdash; refer to the [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) page.
+Refer to [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) for information on the partner integrations, their documentation, and more. 
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="The universal dbt Semantic Layer connecting to integration tools."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="dbt Semantic Layer supports many different tool integrations."/>
 
 
 ## Related docs
@@ -56,6 +56,6 @@ For information on the partner integrations, their documentation, and more &mdas
 
 ## Related docs
 
-- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn more about the dbt Semantic Layer.
+- [About the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
 
 </VersionBlock>
