@@ -11,11 +11,13 @@ The following sections outline the commands supported by dbt and their relevant 
 
 ### Available commands
 
+<VersionBlock firstVersion="1.6">
+
 Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [CLI](/docs/core/about-the-cli). Use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [clean](/reference/commands/clean): deletes artifacts present in the dbt project
-- [clone](/reference/commands/clone): clone selected models from specified state (requires dbt 1.6 or higher)
+- [clone](/reference/commands/clone): clone selected models from the specified state (requires dbt 1.6 or higher)
 - [compile](/reference/commands/compile): compiles (but does not run) the models in a project
 - [debug](/reference/commands/debug): debugs dbt connections and projects
 - [deps](/reference/commands/deps): downloads dependencies for a project
@@ -31,10 +33,12 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 - [source](/reference/commands/source): provides tools for working with source data (including validating that sources are "fresh")
 - [test](/reference/commands/test): executes tests defined in a project
 - [init](/reference/commands/init): initializes a new dbt project (CLI only)
-- [rpc](/reference/commands/rpc): runs an RPC server that clients can submit queries to (CLI only)
 
-<!-- commenting out the 2nd iteration July 2023
-Select the tabs that are relevant to the your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**. 
+</VersionBlock>
+
+<VersionBlock lasttVersion="1.5">
+
+Select the tabs that are relevant to your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**.  
 
 <Tabs>
 <TabItem value="cloud" label="dbt Cloud">
@@ -84,4 +88,4 @@ Use the following dbt commands in the [CLI](/docs/core/about-the-cli) and use th
 </TabItem>
 
 </Tabs>
--->
+</VersionBlock>
