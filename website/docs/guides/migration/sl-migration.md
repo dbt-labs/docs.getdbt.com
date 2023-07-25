@@ -6,7 +6,7 @@ description: "This migration guide will help you migrate from the legacy dbt Sem
 tags: [Semantic Layer]
 ---
 
-The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics. The new dbt Semantic Layer is in [public beta](docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta) and supported on dbt v1.6 or higher. It's available to all dbt Cloud plans (Developer, Team, and Enterprise) and introduces new semantic components, improved governance, enhanced efficiency, data accessibility, and new Semantic Layer APIs.
+The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics. The new dbt Semantic Layer is in [public beta](/docs/dbt-versions/release-notes/July-2023/sl-revamp-beta#public-beta) and supported on dbt v1.6 or higher. It's available to all dbt Cloud plans (Developer, Team, and Enterprise) and introduces new semantic components, improved governance, enhanced efficiency, data accessibility, and new Semantic Layer APIs.
 
 This guide is for users who have the legacy dbt Semantic Layer set up and would like to migrate to the new and revamped  [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). The legacy dbt Semantic Layer is supported on dbt v1.5 or lower, uses the dbt_metrics package, and will be deprecated. 
 
@@ -40,19 +40,21 @@ Starting from dbt v1.6, the metrics specification dbt Core has been updated to s
 - [Metrics](/docs/build/metrics-overview)
 
 To migrate to the new specification, you'll need to:
+
 - Create net new semantic model configs using YAML files in your dbt project
 - Upgrade your existing metrics configs to the new spec
 
-To help ensure a smooth transition, you can use our [custom-built migration tool](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) that automates this process. 
-**Note**, this tool doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
+To help ensure a smooth transition, use our [custom-built migration tool](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) that automates this process. 
+
+**Note**, this doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
 
 For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-sl). 
 
-Please be aware that you will need to upgrade your development environment to dbt>1.6 if you're developing Metrics and Semantic Models in the IDE. This will upgrade the version for other analysts on your team who are using the IDE for that project, and may cause errors if they still have metrics defined using the spec in dbt 1.5 or below.
+* Note, if you're developing in metrics and semantic models in the dbt Cloud IDE, make sure to update your development environment to dbt version 1.6 or newer. This update will affect other analysts on your team who use the IDE for the same project. If they have metrics defined using dbt version 1.5 or older, it might cause errors.
 
 #### Test your metrics
 
-Once you’ve created your semantic models and created or updated your metrics, you can test your updated configs using the MetricFlow CLI tools. Note this is only available to users developing metrics locally:
+Once you’ve created your semantic models and created or updated your metrics, you can test your updated configs using the MetricFlow CLI tools. Note, this is only available to users developing metrics locally:
 
 1. Install the CLI via `pip install "dbt-metricflow[your_adapter_name]`.
 2. Run `dbt parse`. This will parse your project and create a `semantic_manifest.json` file in your target directory.
@@ -60,7 +62,7 @@ Once you’ve created your semantic models and created or updated your metrics, 
 4. Run `mf validate-configs` to run semantic and warehouse validations. This ensures are configs are valid, and the underlying objects exist in your warehouse. 
 5. Test querying a metric by running `mf query --metrics <metric_name> --group-by <dimensions_name>`
 
-If you are migrating using the IDE in cloud, we will run semantic validations whenever we parse or compile your project. This will ensure that your metrics and semantic models are configured correctly. You will need to test querying metrics values in downstream tools. 
+If you migrate using the dbt Cloud IDE, we will perform semantic validations every time we parse or compile your project. This will ensure correct configuration of your metrics and semantic models. You will need to test querying metrics values in downstream tools. 
 
 Once you've thoroughly tested and verified the accuracy of your metrics, commit and push the change to your dbt repository. After you merge the new configurations, **the legacy Semantic Layer will no longer work**. To minimize downtime, we recommend you promptly complete step 2 and set up your environment on the new Semantic Layer.
 
@@ -130,7 +132,7 @@ To help ensure a smooth transition, you can use our [custom-built migration tool
 
 For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-sl). 
 
-Please be aware that you will need to upgrade your development environment to dbt>1.6 if you're developing Metrics and Semantic Models in the IDE. This will upgrade the version for other analysts on your team who are using the IDE, and may cause errors if they still have metrics defined using the spec in dbt 1.5 or below.
+* Note, if you're developing in metrics and semantic models in the dbt Cloud IDE, make sure to update your development environment to dbt version 1.6 or newer. This update will affect other analysts on your team who use the IDE for the same project. If they have metrics defined using dbt version 1.5 or older, it might cause errors.
 
 #### Test your metrics
 
@@ -142,7 +144,7 @@ Once you’ve created your semantic models and created or updated your metrics, 
 4. Run `mf validate-configs` to run semantic and warehouse validations. This ensures are configs are valid, and the underlying objects exist in your warehouse. 
 5. Test querying a metric by running `mf query --metrics <metric_name> --group-by <dimensions_name>`
 
-If you are migrating using the IDE in cloud, we will run semantic validations whenever we parse or compile your project. This will ensure that your metrics and semantic models are configured correctly. You will need to test querying metrics values in downstream tools. 
+If you migrate using the dbt Cloud IDE, we will perform semantic validations every time we parse or compile your project. This will ensure correct configuration of your metrics and semantic models. You will need to test querying metrics values in downstream tools. 
 
 Once you've thoroughly tested and verified the accuracy of your metrics, commit and push the changes to your dbt repository. After you merge the new configurations, **the legacy Semantic Layer will no longer work**. 
 
@@ -163,4 +165,3 @@ Now that your Semantic Layer is set up, you will need to update any downstream i
 - [Set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl)
 - [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview)
 - [dbt metrics converter](https://github.com/dbt-labs/dbt-converter)
-- Developer workflow demo

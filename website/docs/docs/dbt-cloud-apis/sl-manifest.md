@@ -14,11 +14,14 @@ import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
 </VersionBlock>
 
-dbt creates an [artifact](/reference/artifacts/dbt-artifacts) file called the "Semantic Manifest" (`semantic_manifest.json`) that MetricFlow needs to build properly, and that the Semantic Layer needs to run metric queries. This artifact contains comprehensive information about your Semantic Layer. It is an internal file, that acts as the integration point with MetricFlow. MetricFlow will use the semantic manifest produced by core to instantiate a data flow plan, and ultimatley generate SQL from Semantic Layer query requests. You can use it as a valuable reference to understand the structure and details of your data models.
+dbt creates an [artifact](/reference/artifacts/dbt-artifacts) file called the "Semantic Manifest" (`semantic_manifest.json`), which MetricFlow requires to build and run metric queries properly for the Semantic Layer. This artifact contains comprehensive information about your Semantic Layer. It is an internal file, that acts as the integration point with MetricFlow. 
 
-Similar to the `manifest.json` file, the `semantic_manifest.json` also lives in the `/target` directory of your dbt project. This is where dbt stores various artifacts (such as compiled models and tests) generated during the execution of your project.
+By using the semantic manifest produced by dbt Core, MetricFlow will instantiate a data flow plan and generate SQL from Semantic Layer query requests. You can it as a valuable reference to understand the structure and details of your data models.
 
-# How is it Produced
+Similar to the [`manifest.json` file](/reference/artifacts/manifest-json), the `semantic_manifest.json` also lives in the `/target` directory of your dbt project. This is where dbt stores various artifacts (such as compiled models and tests) generated during the execution of your project.
+
+## How it's produced 
+
 The `semantic_manifest.json` is produced whenever your dbt project is parsed. The easiest way to generate the file yourself is to run `dbt parse`. Since `dbt run`, `dbt build`, and `dbt compile` all parse your dbt project, these commands will generate a semantic manifest as well. 
 
 

@@ -6,19 +6,22 @@ sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
 
-Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. This metric is common for calculating things like weekly active users, or month to date revenue. The full metrics spec, as well as examples of cumulative metric are given below.
+Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. 
 
-# Cumulative Metrics Spec
+This metric is common for calculating things like weekly active users, or month to date revenue. The following displays the full metrics spec, along with an example:
+
+
 ```yaml
 metrics:
   - name: the metric name # Required
-    description: the metric description # Optinal
+    description: the metric description # Optional
     type: simple # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      measure: the measure you are refrencing # Required
-      window: the accumulation window i.e 1 month, 7 days, 1 year. # Optional. Can not be used with window
-      grain_to_date: sets the accumulation grain i.e month will accumulated data for one month, then restart at the beggining of the next. # Optional. Can not be used with grain_to_date. 
+      measure: the measure you are referencing # Required
+      window: the accumulation window i.e 1 month, 7 days, 1 year. # Optional. Cannot be used with window
+      grain_to_date: sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next. 
+      # Optional. Can not be used with grain_to_date. 
 
 
 ```
@@ -29,10 +32,12 @@ You will need to create the [time spine model](/docs/build/metricflow-time-spine
 
 :::
 
-# Cumulative Metrics Example
+## Cumulative metrics example
+
+Cumulative metrics measure data over a given window and consider the window infinite when no window parameter is passed, accumulating the data over all time.
 
 ```yaml
-# Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
+
 metrics:
   - name: cumulative_order_total
     label: Cumulative Order total (All Time)    
@@ -79,13 +84,11 @@ We can write a cumulative metric `weekly_customers` as such:
 
 ``` yaml
 metrics: 
-  - name: weekly_customers
-  # Define the measure and the window.
+  - name: weekly_customers # Define the measure and the window.
   type: cumulative
   type_params:
     measure: customers
-    # Setting the window to 7 days since we want to track weekly active 
-    window: 7 days
+    window: 7 days # Setting the window to 7 days since we want to track weekly active 
 ```
 
 From the sample YAML above, note the following: 

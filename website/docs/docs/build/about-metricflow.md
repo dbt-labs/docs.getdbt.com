@@ -55,7 +55,6 @@ For a semantic model, there are three main pieces of metadata:
 * [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
 
-
 ### Metrics 
 
 Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures and various aggregation types, such as average, sum, and count distinct, to create metrics.  Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
@@ -66,11 +65,12 @@ MetricFlow supports different metric types:
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
+
 ## Use case
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
 
-The following example data is based off the Jaffle Shop repo. You can view the complete [dbt project here](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
+The following example data is based off the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
 
 - `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
@@ -80,7 +80,7 @@ The following example data is based off the Jaffle Shop repo. You can view the c
 To make this more concrete, consider the metric `order_total`, which is defined using the SQL expression:
 
 `select sum(order_total) as order_total from orders` 
-This expression caclulates the revenue from each order by summing the order_total column in the orders table. In a business setting, the metric order_total is often calcualted according to different categoris, such as"
+This expression calculates the revenue from each order by summing the order_total column in the orders table. In a business setting, the metric order_total is often calculated according to different categories, such as"
 - Time, for example `date_trunc(ordered_at, 'day')`
 - Order Type, using `is_food_order` dimension from the `orders` table.
 
@@ -119,49 +119,43 @@ In the following three example tabs, use MetricFlow to define a semantic model t
 <Tabs>
 <TabItem value="example1" label="Revenue example">
 
-In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. The time dimension `metric_time` provides daily granularity and can be aggregated to weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
+In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
+
+The time dimension `metric_time` provides daily granularity and can be aggregated to weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
 
 
 ```yaml
 semantic_models:
-  #The name of the semantic model.
-  - name: orders
+  - name: orders    #The name of the semantic model
     description: |
-      Model containting order data. The grain of the table is the order id.
-    
-    #The name of the dbt model and schema
-    model: ref('orders')
+      Model containing order data. The grain of the table is the order id.
+    model: ref('orders') #The name of the dbt model and schema
     defaults:
       agg_time_dimension: metric_time
-    #Entities. These usually corespond to keys in the table.table.
-    entities:
+    entities: #Entities. These usually correspond to keys in the table.table.
       - name: order_id
         type: primary
       - name: customer
         type: foreign
         expr: customer_id
-
-    #Measures. These are the aggregations on the columns in the table.
-    measures:
+    measures:   #Measures. These are the aggregations on the columns in the table.
       - name: order_total
         agg: sum
-   #Dimensions,either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
-    dimensions:
+    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
       - name: metric_time
         expr: cast(ordered_at as date)
         type: time
         type_params:
           time_granularity: day
- - name: customers
-    defaults:
-      agg_time_dimension: first_ordered_at
-    description: |
-      Customer dimension table. The grain of the table is one row per customer.
-    #The name of the dbt model and schema
-    model: ref('customers')
-    #Entities. These usually corespond to keys in the table.
-    entities:
-      - name: customer
+      - name: customers
+        defaults: null
+        agg_time_dimension: first_ordered_at
+        description: >
+          Customer dimension table. The grain of the table is one row per
+          customer.
+        model: ref('customers') # The name of the dbt model and schema
+    entities: #Entities. These usually correspond to keys in the table.
+      - name: customer 
         type: primary
         expr: customer_id
     dimensions:
@@ -169,7 +163,7 @@ semantic_models:
         type: categorical
         expr: case when first_ordered_at is not null then true else false end
       - name: first_ordered_at
-        type: time 
+        type: time
         type_params:
           time_granularity: day
 
@@ -178,39 +172,33 @@ semantic_models:
 </TabItem>
 <TabItem value="example2" label="More dimensions example">
 
-Similarly, you could then add additonal dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue order_total. 
+Similarly, you could then add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue order_total. 
 
 ```yaml
 semantic_models:
-- name: orders
+  - name: orders
     description: |
-      Model containting order data. The grain of the table is the order id.
-    
-    #The name of the dbt model and schema
-    model: ref('orders')
+      Model containing order data. The grain of the table is the order id.
+    model: ref('orders')  #The name of the dbt model and schema
     defaults:
       agg_time_dimension: metric_time
-    #Entities. These usually corespond to keys in the table.table.
-    entities:
+    entities: #Entities. These usually correspond to keys in the table.table.
       - name: order_id
         type: primary
       - name: customer
         type: foreign
         expr: customer_id
-
-    #Measures. These are the aggregations on the columns in the table.
-    measures:
+    measures: #Measures. These are the aggregations on the columns in the table.
       - name: order_total
         agg: sum
-   #Dimensions,either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.
-    dimensions:
+    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
       - name: metric_time
         expr: cast(ordered_at as date)
         type: time
         type_params:
           time_granularity: day
-       - name: is_food_order
-         type: categorical
+      - name: is_food_order
+        type: categorical
 ```
 </TabItem>
 <TabItem value="example3" label="Advanced example">

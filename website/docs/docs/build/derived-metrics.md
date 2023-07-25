@@ -6,26 +6,26 @@ sidebar_label: Derived
 tags: [Metrics, Semantic Layer]
 ---
 
-Derived metrics in MetricFlow refer to metrics that are created by defining an expression using other metrics. Derived metrics allow for calculations on top of metrics. This is useful when you want to combine metrics and perform arthematic fucntions ontop of aggregated columns. For example, defining a profit metric. Below, we'll show the full spec for derived metrics as well as an example.
+In MetricFlow, derived metrics are metrics created by defining an expression using other metrics. They allow performing calculations on top of existing metrics. This proves useful for combining metrics and applying arithmetic functions to aggregated columns, such as, you can define a profit metric. 
 
-# Derived Metrics Spec
+The following example presents the complete specification for derived metrics, along with an example.
+
 ```yaml
 metrics:
   - name: the metric name # Required
-    description: the metric description # Optinal
+    description: the metric description # Optional
     type: derived # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
       expr: the derived expression # Required
       metrics: # The list of metrics used in the derived metrics # Required
-        - name: the name of the metrics. must refrence a metric you have already defined # Required
+        - name: the name of the metrics. must reference a metric you have already defined # Required
           alias: optional alias for the metric that you can use in the expr # Optional
           filter: optional filter to apply to the metric # Optional
-          offset_window: set the period for the offset window i.e 1 month. This will retrun the value of the metric one month from the metric time. # Required.
-
-
-
+          offset_window: set the period for the offset window i.e 1 month. This will return the value of the metric one month from the metric time. # Required
 ```
+
+## Derived metrics example
 
 ```yaml
 metrics:
@@ -56,7 +56,7 @@ metrics:
           filter: |
             {{dimension('is_food_order')}} = True
   - name: order_total_growth_mom
-    description: "Percentage growth of orders total compated to 1 month ago"
+    description: "Percentage growth of orders total completed to 1 month ago"
     type: derived
     label: Order Total Growth % M/M
     type_params:
@@ -70,7 +70,7 @@ metrics:
 
 ## Derived metric offset
 
-You may want to use an offset value of a metric in the definition of a derived metric. For example, if you define retention rate as (active customers at the end of the month/active customers at the beginning of the month)-1 you can model this using a derived metric with an offset. 
+You may want to use an offset value of a metric in the definition of a derived metric. For example, you can model the retention rate by using a derived metric with an offset, which involves calculating (active customers at the end of the month/active customers at the beginning of the month) - 1.
 
 ```yaml
 metrics:
@@ -83,3 +83,4 @@ metrics:
       - name: active_customers
         offset_window: 1 month
         alias: active_customers_t1m
+```
