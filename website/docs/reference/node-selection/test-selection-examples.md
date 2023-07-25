@@ -74,7 +74,7 @@ The "buildable" and "cautious" modes can be useful in environments when you're o
 
 <VersionBlock firstVersion="1.5" >
 
-There are three modes to configure the behavior when performing indirect selection (with `eager` as the default):
+These are the modes to configure the behavior when performing indirect selection (with `eager` as the default):
 
 1. `eager` (default) - include ANY test that references the selected nodes
 1. `cautious` - restrict to tests that ONLY refer to selected nodes
