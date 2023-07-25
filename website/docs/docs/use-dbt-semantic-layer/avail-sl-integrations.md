@@ -31,7 +31,7 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 
 Refer to [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) for information on the partner integrations, their documentation, and more. 
 
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="The universal dbt Semantic Layer connecting to integration tools."/>
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="dbt Semantic Layer supports many different tool integrations."/>
 
 
 ## Related docs
