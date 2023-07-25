@@ -4,7 +4,7 @@ id: "deploy-environments"
 description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
-Deployment environments in dbt Cloud are crucial for deploying dbt jobs. To execute dbt, environments determine the settings used during job runs, including:
+Deployment environments in dbt Cloud are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata/results. To execute dbt, environments determine the settings used during job runs, including:
 
 - The version of dbt Core that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
@@ -16,7 +16,7 @@ A dbt Cloud project can have multiple deployment environments, providing you the
 To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview).
 ::: 
 
-This page will go over the different types of environments and how to intuitively configure your deployment environment in dbt Cloud. 
+This page reviews the different types of environments and how to configure your deployment environment in dbt Cloud. 
 
 import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
@@ -27,6 +27,10 @@ import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 To create a new dbt Cloud development environment, navigate to **Deploy** -> **Environments** and then click **Create Environment**. Select **Deployment** as the environment type.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
+
+### Set as production environment
+
+You can set one deployment environment per dbt Cloud project as its production environment. You must set a production environment to use features like dbt Explorer and cross-project references, since it represents the source of truth for the production state of a dbt Cloud project.
 
 ### Semantic Layer
 
