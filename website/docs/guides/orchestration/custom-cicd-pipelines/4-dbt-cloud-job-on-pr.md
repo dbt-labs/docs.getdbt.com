@@ -5,7 +5,7 @@ id: 4-dbt-cloud-job-on-pr
 
 :::info Run on PR
 
-If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/slim-ci-jobs).
+If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
 
 :::

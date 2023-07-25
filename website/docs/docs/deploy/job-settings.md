@@ -33,7 +33,7 @@ If you're interested in joining our beta, please [contact us](mailto:support@get
 :::
 
 <Tabs queryString="version">
-<TabItem value="ga" label="Setup steps (GA version)" default>
+<TabItem value="current" label="Current version" default>
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 1. Provide a job name, for example "Hourly Customer Job". 
@@ -69,7 +69,7 @@ If you're interested in joining our beta, please [contact us](mailto:support@get
 
 </TabItem>
 
-<TabItem value="beta" label="Setup steps (beta version)">
+<TabItem value="beta" label="Beta version">
 
 1. On your deployment environment page, click **Create Job** > **Deploy Job** to create a new deploy job. 
 2. Options in the **Job Description** section:

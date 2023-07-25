@@ -21,4 +21,4 @@ We're excited to introduce a few critical capabilities to dbt Cloud CI that will
 
 - **Run CI checks without blocking production runs**. CI checks will no longer consume run slots, meaning you can have as many CI checks running as you want, without impeding your production jobs.
 
-To learn more, refer to [Continuous integration](/docs/deploy/continuous-integration) and [Slim CI jobs](/docs/deploy/slim-ci-jobs).
+To learn more, refer to [Continuous integration](/docs/deploy/continuous-integration) and [CI jobs](/docs/deploy/ci-jobs).

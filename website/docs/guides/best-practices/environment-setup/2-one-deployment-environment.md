@@ -38,7 +38,7 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 2. Create your **[production deployment environment](/docs/deploy/deploy-environments)**.
 3. Define your **dbt Cloud jobs** in the production deployment environment from step 2.
     1. **Production job(s)**: You will need to set up **at least one scheduled job** that deploys your project to your production databases/schemas. You may create multiple jobs based on your business SLAs.
-    2. **Slim CI Job**: Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Refer to [Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
+    2. **CI Job**: Unlike the production jobs, which are triggered via the scheduler, this job will be triggered when PRs are opened in your repository. Refer to [CI jobs](/docs/deploy/ci-jobs) for details.
 
 
 ### When this works well

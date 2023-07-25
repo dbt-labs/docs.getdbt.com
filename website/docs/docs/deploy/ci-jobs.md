@@ -27,7 +27,7 @@ If you're interested in joining our beta, please [contact us](mailto:support@get
 :::
 
 <Tabs queryString="version">
-<TabItem value="ga" label="Setup steps (GA version)" default>
+<TabItem value="current" label="Current version" default>
 
 1. On your deployment environment page, click **Create One** to create a new CI job.
 2. In the **Execution Settings** section: 
@@ -42,7 +42,7 @@ If you're interested in joining our beta, please [contact us](mailto:support@get
 
 </TabItem>
 
-<TabItem value="beta" label="Setup steps (beta version)">
+<TabItem value="beta" label="Beta version">
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. You can change some of these defaults and there are some that you can’t (which are greyed out).
 
