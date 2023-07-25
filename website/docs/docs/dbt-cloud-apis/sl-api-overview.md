@@ -18,7 +18,7 @@ The rapid growth of different tools in the modern data stack has helped data pro
 
 The [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) allows you to define metrics in code (with [MetricFlow](/docs/build/about-metricflow)) and dynamically generate and query datasets in downstream tools based on their dbt governed assets, such as metrics and models. Integrating with the dbt Semantic Layer will help organizations that use your product make more efficient and trustworthy decisions with their data. It also helps you to avoid duplicative coding, optimize development workflow, ensure data governance, and guarantee consistency for data consumers.  
 
-You can use the dbt Semantic Layer for a variety of tools and applications of data. Here are some common use cases:
+You can use the dbt Semantic Layer for a variety of tools and applications of data. Some common use cases are:
 
 * Business intelligence (BI), reporting, and analytics
 * Data quality and monitoring
