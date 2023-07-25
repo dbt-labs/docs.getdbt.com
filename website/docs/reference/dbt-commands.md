@@ -36,7 +36,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 
 </VersionBlock>
 
-<VersionBlock lasttVersion="1.5">
+<VersionBlock lastVersion="1.5">
 
 Select the tabs that are relevant to your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**.  
 
