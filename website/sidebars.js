@@ -345,7 +345,7 @@ const sidebarSettings = {
           label: "Continuous integration",
           link: { type: "doc", id: "docs/deploy/continuous-integration" },
           items: [
-            "docs/deploy/slim-ci-jobs",
+            "docs/deploy/ci-jobs",
           ],
         },
         {
