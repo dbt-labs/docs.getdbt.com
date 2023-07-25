@@ -56,16 +56,17 @@ models:
     tests: [] # todo! add tests later
     config: ...
 ```
-Some options that could previously be specified _before_ a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`. The list of affected commands are:
 
-- 
-- 
+Some options that could previously be specified _after_ a sub-command can now only be specified _before__. This includes the inverse of the command, `--write-json` and `--no-write-json`, for example.  The list of affected commands are:
 
-Also, there are some options that could be previously specified _after_ a sub-command can now only be specified before. For example, `dbt run --log-path foo` isn't valid anymore, and instead, you need to use `dbt --log-path foo run`. The list of affected commands are: 
-- 
-- 
+| --cache-selected-only | --debug | --deprecated-print | --enable-legacy-logger| --fail-fast |
+|--------------|--------------|-----------------|-----------|---------------------------|
+| --log-cache-events  | --log-format | --log-level | --log-path | --macro-debugging |
+| --partial-parse      | --populate-cache | --print      | --printer-width | --quiet |
+| --record-timing-info | --send-anonymous-usage-stats | --single-threaded | --static-parser | --use-colors |
+| --use-experimental-parser  | --version | --version-check | --warn-error | --write-json | 
 
-
+Additionally, some options could be previously specified _before_ a sub-command can now only be specified _after_. Any command _not_ on the above list must appear _after_ the subcommand from v1.5 on. For example, `--profiles-dir`.
 
 
 The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
