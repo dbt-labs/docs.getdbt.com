@@ -7,6 +7,14 @@ sidebar_label: "PrivateLink for Snowflake"
 
 The following steps will walk you through the setup of a Snowflake AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
 
+:::note Snowflake SSO with PrivateLink
+Users connecting to Snowflake using SSO over a PrivateLink connection from dbt Cloud will also require access to a PrivateLink endpoint from their local workstation.
+
+>Currently, for any given Snowflake account, SSO works with only one account URL at a time: either the public account URL or the URL associated with the private connectivity service.
+
+- [Snowflake SSO with Private Connectivity](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-overview#label-sso-private-connectivity)
+:::
+
 ## Configure PrivateLink
 
 1. Open a Support case with Snowflake to allow access from the dbt Cloud AWS account
