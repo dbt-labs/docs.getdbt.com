@@ -38,7 +38,7 @@ Below I touch on the important pieces for running a dbt Cloud job, but if you wa
 
 - `on:` - this is used to filter when the pipeline is run. In this example we’re running it on every push except for pushes to branches named `main`. For more filters, checkout [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 - `runs-on: ubuntu-latest` - this defines the operating system we’re using to run the job
-- `uses:` - remember the virtual servers we coved in the background section? They’re just empty operating systems, so there are two pieces of setup that are needed in order to access the code in your repo, and setup Python correctly on the virtual server. These two actions are called from other repos in GitHub to provide those services. For more information on them, checkout their repos: [actions/checkout](https://github.com/actions/checkout#checkout-v3) and [actions/setup-python](https://github.com/actions/setup-python#setup-python-v3).
+- `uses:` - remember the virtual servers we covered in the background section? They’re just empty operating systems, so there are two pieces of setup that are needed in order to access the code in your repo, and setup Python correctly on the virtual server. These two actions are called from other repos in GitHub to provide those services. For more information on them, checkout their repos: [actions/checkout](https://github.com/actions/checkout#checkout-v3) and [actions/setup-python](https://github.com/actions/setup-python#setup-python-v3).
 - `run:` - this is how we’re telling the GitHub runner to execute the Python script we defined above.
 
 ```yaml
