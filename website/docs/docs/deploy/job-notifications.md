@@ -18,10 +18,11 @@ To set up job notifications, follow these steps:
 
 1. Click the gear menu in the top right corner and select **Notification Settings**.
 
-    - **As a user:** Select **Edit** and choose the Notification type (Succeeds, Fails, or Is Cancelled) for each Job you want to receive notifications for.
+2. Select **Edit** to begin editing the **Email Notifications** settings.
+    - **As a user:** Choose the Notification type (Succeeds, Fails, or Is Cancelled) for each Job you want to receive notifications for.
 
-    - **As an admin:**  Use the dropdown to select one or more users you'd like to set notifications for under **Configure notifications for**. If you only see your own name, then you might not have admin privileges. 
-        * Select **Edit** and choose the Notification type (Succeeds, Fails, or Is Cancelled) for each Job you want them to receive notifications for.
+    - **As an admin:**  Under **Configure notifications for**, use the dropdown to select one or more users you'd like to set notifications for. If you only see your own name, then you might not have admin privileges. <br /><br />
+    Choose the Notification type (Succeeds, Fails, or Is Cancelled) for each Job you want them to receive notifications for.
 
 3. Click **Save**.
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/email-notifications.png" title="Configuring Email Notifications"/>
