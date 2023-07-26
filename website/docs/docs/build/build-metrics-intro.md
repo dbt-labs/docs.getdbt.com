@@ -14,7 +14,7 @@ Use familiar constructs like semantic models and metrics to avoid duplicative co
 :::info
 MetricFlow is currently available on dbt v1.6 or higher. MetricFlow provides a new way to define metrics in dbt and replaces the dbt_metrics package.
 
-To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
+To use the dbt Semantic Layer, you must have a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 :::
 
 Before you start, keep the following considerations in mind:
