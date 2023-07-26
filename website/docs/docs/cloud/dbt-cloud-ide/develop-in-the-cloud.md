@@ -36,7 +36,7 @@ The Cloud IDE is a powerful tool that can help streamline and govern your data p
 
 All of these [features](#cloud-ide-features) work together to create a powerful editing environment that can help you write and maintain high-quality SQL code in less time. Whether you're a seasoned developer or just starting out, the Cloud IDE has everything you need to be productive, collaborative, and efficient.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right and command/console at the bottom"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right, and command/console at the bottom"/>
 
 ## Cloud IDE features
 
@@ -151,7 +151,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 <details>
   <summary>Can I be a contributor to dbt Cloud?</summary>
   <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
+    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open-source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
   </div>
 </details>
 <details>
