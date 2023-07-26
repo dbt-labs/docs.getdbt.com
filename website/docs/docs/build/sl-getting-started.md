@@ -43,7 +43,7 @@ Before you begin, install the [MetricFlow CLI](/docs/build/metricflow-cli) as an
 Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platforms):
 
 - Create or activate your virtual environment. `python -m venv venv` or `source your-venv/bin/activate`
-- `pip install "dbt-metricflow[your_adapter_name]"`
+- Run `pip install "dbt-metricflow[your_adapter_name]"`
   * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
  
 ## Create a semantic model
@@ -178,7 +178,7 @@ To continue building out your metrics based on your organization's needs, refer 
 
 ## Configure the MetricFlow time spine model
 
-MetricFlow requires a time spine for certain metric types and join resolution patterns, like cumulative metrics. You will have to create this model in your dbt project. [This article](/docs/build/metricflow-time-spine) walks thorough how to add the `metricflow_time_spine` model to your project.
+MetricFlow requires a time spine for certain metric types and join resolution patterns, like cumulative metrics. You will have to create this model in your dbt project. [This article](/docs/build/metricflow-time-spine) explains how to add the `metricflow_time_spine` model to your project.
 
 ## Test and query metrics
 
