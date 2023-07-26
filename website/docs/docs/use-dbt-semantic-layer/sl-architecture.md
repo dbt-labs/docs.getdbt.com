@@ -1,5 +1,5 @@
 ---
-title: "dbt Semantic Layer product architecture"
+title: "dbt Semantic Layer architecture"
 id: sl-architecture
 description: "dbt Semantic Layer product architecture and related questions."
 sidebar_label: "Architecture"
