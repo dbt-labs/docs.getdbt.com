@@ -15,24 +15,27 @@ The following sections outline the commands supported by dbt and their relevant 
 
 Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [CLI](/docs/core/about-the-cli). Use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
-- [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
-- [clean](/reference/commands/clean): deletes artifacts present in the dbt project
-- [clone](/reference/commands/clone): clone selected models from the specified state (requires dbt 1.6 or higher)
-- [compile](/reference/commands/compile): compiles (but does not run) the models in a project
-- [debug](/reference/commands/debug): debugs dbt connections and projects
-- [deps](/reference/commands/deps): downloads dependencies for a project
-- [docs](/reference/commands/cmd-docs) : generates documentation for a project
-- [list](/reference/commands/list): lists resources defined in a dbt project
-- [parse](/reference/commands/parse): parses a project and writes detailed timing info
-- [retry](/reference/commands/retry): retry the last run `dbt` command from the point of failure (requires dbt 1.6 or higher)
-- [run](/reference/commands/run): runs the models in a project
-- [run-operation](/reference/commands/run-operation): invoke a macro, including running arbitrary maintenance SQL against the database
-- [seed](/reference/commands/seed): loads CSV files into the database
-- [show](/reference/commands/show): preview table rows post-transformation
-- [snapshot](/reference/commands/snapshot): executes "snapshot" jobs defined in a project
-- [source](/reference/commands/source): provides tools for working with source data (including validating that sources are "fresh")
-- [test](/reference/commands/test): executes tests defined in a project
-- [init](/reference/commands/init): initializes a new dbt project (CLI only)
+| Command | Description | Version |
+| ------- | ----------- | ------- |
+| [build](/reference/commands/build) | Build and test all selected resources (models, seeds, snapshots, tests) | All [supported versions](/docs/dbt-versions/core) |
+| [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | All [supported versions](/docs/dbt-versions/core) |
+| [clone](/reference/commands/clone) | Clone selected models from the specified state | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
+| [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project | All [supported versions](/docs/dbt-versions/core) |
+| [debug](/reference/commands/debug) | Debugs dbt connections and projects  | All [supported versions](/docs/dbt-versions/core) |
+| [deps](/reference/commands/deps) | Downloads dependencies for a project  | All [supported versions](/docs/dbt-versions/core) |
+| [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All [supported versions](/docs/dbt-versions/core) |
+| [list](/reference/commands/list) | Lists resources defined in a dbt project | All [supported versions](/docs/dbt-versions/core) |
+| [parse](/reference/commands/parse) | Parses a project and writes detailed timing info | All [supported versions](/docs/dbt-versions/core) |
+| [retry](/reference/commands/retry) | Retry the last run `dbt` command from the point of failure | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
+| [run](/reference/commands/run) | Runs the models in a project | All [supported versions](/docs/dbt-versions/core) |
+| [run-operation](/reference/commands/run-operation) | Invoke a macro, including running arbitrary maintenance SQL against<br />  the database | All [supported versions](/docs/dbt-versions/core) |
+| [seed](/reference/commands/seed) | Loads CSV files into the database  | All [supported versions](/docs/dbt-versions/core) |
+| [show](/reference/commands/show) | Preview table rows post-transformation  | All [supported versions](/docs/dbt-versions/core) |
+| [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project  | All [supported versions](/docs/dbt-versions/core) |
+| [source](/reference/commands/source) | Provides tools for working with source data (including validating that<br /> sources are "fresh")  | All [supported versions](/docs/dbt-versions/core) |
+| [test](/reference/commands/test) | Executes tests defined in a project  | All [supported versions](/docs/dbt-versions/core) |
+| [init](/reference/commands/init) | Initializes a new dbt project (CLI only)  | All [supported versions](/docs/dbt-versions/core) |
+
 
 </VersionBlock>
 
