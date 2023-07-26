@@ -1,4 +1,6 @@
-You can set up the dbt Semantic Layer in dbt Cloud at the environment and project level. To configure the new Semantic Layer, you must have a successful run in your new environment.
+You can set up the dbt Semantic Layer in dbt Cloud at the environment and project level. Before you begin:
+- You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
+- You must have a successful run in your new environment.
 
 :::tip
 If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.

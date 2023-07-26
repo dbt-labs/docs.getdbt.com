@@ -23,7 +23,7 @@ Use this guide to fully experience the power of a universal dbt Semantic Layer. 
 
 - Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
 - Have both your production and development environments running dbt version 1.6 or higher 
-- Use Snowflake, BigQuery, Databricks, and Redshift data platform
+- Use Snowflake, BigQuery, Databricks, or Redshift data platform
 - A successful run in the environment where your Semantic Layer is configured
 - To query with dbt Cloud:
   * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America
@@ -46,8 +46,6 @@ Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platfor
 - `pip install "dbt-metricflow[your_adapter_name]"`
   * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
  
-Currently, Snowflake and Postgres are the supported adapters for querying locally (BigQuery, Databricks, and Redshift will be available soon). If you use an adapter other than Snowflake, you can still create metrics, but you will need to test querying them through the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl).
-
 ## Create a semantic model
 
 This part of the guide will walk you through setting up semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).  
@@ -184,12 +182,13 @@ MetricFlow requires a time spine for certain metric types and join resolution pa
 
 ## Test and query metrics
 
-:::note
-For public beta, querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). You'll still be able to run semantic validation on your metrics in the IDE to ensure they are defined correctly. However, you can install the [MetricFlow CLI](/docs/build/metricflow-cli) to test and query metrics locally.
-  * dbt Core or Developer plan users can only test and query metrics manually using the CLI, but won't be able to use the dbt Semantic Layer to dynamically query metrics.
-:::
+This section will explain how you can test and query metrics locally. Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on how to install it and a reference for the CLI commands.
 
-Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on how to install the CLI and a reference for the CLI commands.
+:::tip
+- dbt Cloud Team or Enterprise &mdash; For public beta, querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). You'll still be able to run semantic validation on your metrics in the IDE to ensure they are defined correctly. You can also use the MetricFlow CLI to test and query metrics locally. Alternative, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL.
+
+- dbt Core or Developer plan &mdash; Users can only test and query metrics manually using the CLI, but won't be able to use the dbt Semantic Layer to dynamically query metrics.
+:::
 
 **Query and commit your metrics using the CLI:**
 

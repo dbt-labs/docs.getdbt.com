@@ -54,7 +54,8 @@ The dbt Semantic Layer is currently available as a public beta, which means:
 
 To experience the universal dbt Semantic Layer and its enhanced beta capabilities, check out:
 
-- [New dbt Semantic Layer documents](/docs/use-dbt-semantic-layer/dbt-sl)
+- [Introducing the new dbt Semantic Layer](https://www.getdbt.com/blog/introducing-new-look-dbt-semantic-layer)
+- [dbt Semantic Layer docs](/docs/use-dbt-semantic-layer/dbt-sl)
 - [dbt Semantic Layer get started guide](/docs/use-dbt-semantic-layer/quickstart-sl)
 - [Build your metrics with MetricFlow](/docs/build/build-metrics-intro)
-- BLOG announcement link.
+
