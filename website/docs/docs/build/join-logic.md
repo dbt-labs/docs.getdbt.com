@@ -60,7 +60,7 @@ semantic_models:
       - name: average_purchase_price
         agg: avg
         expr: purchase_price
-      - name: user_signup
+  - name: user_signup
     entities:
       - name: user
         type: primary
