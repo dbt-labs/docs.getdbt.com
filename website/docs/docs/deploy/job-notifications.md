@@ -25,7 +25,8 @@ To set up job notifications, follow these steps:
     Choose the Notification type (Succeeds, Fails, or Is Cancelled) for each Job you want them to receive notifications for.
 
 3. Click **Save**.
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/email-notifications.png" title="Configuring Email Notifications"/>
+
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/email-notifications.png" width="75%" title="Configuring Email Notifications"/>
 
 ### Slack
 
