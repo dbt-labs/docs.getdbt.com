@@ -2,7 +2,7 @@
 title: "dbt Semantic Layer product architecture"
 id: sl-architecture
 description: "dbt Semantic Layer product architecture and related questions."
-sidebar_label: "Product architecture"
+sidebar_label: "Architecture"
 tags: [Semantic Layer]
 ---
 
