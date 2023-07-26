@@ -17,7 +17,7 @@ MetricFlow is currently available on dbt v1.6 or higher. MetricFlow provides a n
 To use the dbt Semantic Layer, you must have a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 :::
 
-Before you start, keep the following considerations in mind:
+Before you start, consider the following guidelines:
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
 - You must be on dbt v1.6 or higher to use MetricFlow. [Upgrade your dbt Cloud version](/docs/dbt-versions/upgrade-core-in-cloud) to get started.
