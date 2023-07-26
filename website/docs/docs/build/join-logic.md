@@ -115,7 +115,7 @@ semantic_models:
         type: time
         type_params:
         is_primary: true
-      - name: user_signup
+  - name: user_signup
     entities:
       - name: user_id
         type: primary
