@@ -13,7 +13,7 @@ import NewChanges from '/snippets/_new-sl-changes.md';
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
 
 :::note
-This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it (email?)!
+This is an evolving guide that is meant to provide recommendations based on our experience. If you have any feedback, we'd love to hear it!
 :::
 
 
@@ -30,14 +30,9 @@ To build a dbt Semantic Layer integration:
 
 ### Connection parameters
 
-The dbt Semantic Layer authenticates with:
-- `environmentId`, 
-- `SERVICE_TOKEN`, 
-- `host`
+The dbt Semantic Layer authenticates with `environmentId`, `SERVICE_TOKEN`, and `host`.
 
-This applies to the dbt Semantic Layer APIs, which all currently use different host names. 
-
-We recommend you provide users with separate input fields with these components (which dbt Cloud provides). 
+This applies to the dbt Semantic Layer APIs, which all currently use different host names. We recommend you provide users with separate input fields with these components (which dbt Cloud provides). 
 
 For [JDBC](/docs/dbt-cloud-apis/sl-jdbc), you can construct the JDBC URL from these inputs. Or, you could request the full URL string.
 
@@ -46,43 +41,35 @@ For [JDBC](/docs/dbt-cloud-apis/sl-jdbc), you can construct the JDBC URL from th
 
 Best practices for exposing metrics is summarized into five themes:
 
-- [Governance](#governance-and-traceability) &mdash;
-- [Discoverability](#discoverability) &mdash;
-- [Organization](#organization) &mdash;
-- [Context and interpretation](#context-and-interpretation) &mdash;
-- [Query flexibility](#query-flexibility) &mdash;
+- [Governance](#governance-and-traceability) &mdash; Recommendations on how to establish guardrails for governed data work.
+- [Discoverability](#discoverability) &mdash; Recommendations on how to make user-friendly data interactions.
+- [Organization](#organization) &mdash; Organize metrics and dimensions for all audiences.
+- [Query flexibility](#query-flexibility) &mdash; Allow users to query either one metric alone without dimensions or multiple metrics with dimensions.
+- [Context and interpretation](#context-and-interpretation) &mdash; Contextualize metrics for better analysis; expose definitions, metadata, lineage, and freshness.
 
 ### Governance and traceability
 
 When working with more governed data, it's essential to establish clear guardrails. Here are some recommendations:
 
-**Aggregations control** <br />
-Users shouldn't generally be allowed to modify aggregations unless they are performing post-processing calculations on data from the Semantic Layer (such as year over year analysis).
+- **Aggregations control** &mdash; Users shouldn't generally be allowed to modify aggregations unless they are performing post-processing calculations on data from the Semantic Layer (such as year over year analysis).
 
-**Time series alignment and using metric_time**<br />
-Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes. 
+- **Time series alignment and using metric_time** &mdash; Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes.<br /><br />When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). <br /><br /> As such, when building an application, we recommend exposing `metric_time` as a separate, "special" time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the other time dimensions is clarifying so that people do not confuse how metrics should be plotted. <br /><br /> Also, when a user requests a time granularity change for the main time series, the query that your application runs should use `metric_time` as this will always give you the correct slice. Note that when looking at a single metric, the primary time dimension and `metric_time` are equivalent. 
 
-When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). 
+- **Units consistency** &mdash; If units are supported, it's vital to avoid plotting data incorrectly with different units. Ensuring consistency in unit representation will prevent confusion and misinterpretation of the data.
 
-As such, when building an application, we recommend exposing `metric_time` as a separate, "special" time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the other time dimensions is clarifying so that people do not confuse how metrics should be plotted. 
-
-Also, when a user requests a time granularity change for the main time series, the query that your application runs should use `metric_time` as this will always give you the correct slice. Note that when looking at a single metric, the primary time dimension and `metric_time` are equivalent. 
-
-**Units consistency**<br />
-If units are supported, it's vital to avoid plotting data incorrectly with different units. Ensuring consistency in unit representation will prevent confusion and misinterpretation of the data.
-
-**Traceability of metric and dimension changes** <br />
-When users change names of metrics and dimensions for reports, it's crucial to have a traceability mechanism in place to link back to the original source metric name.
+- **Traceability of metric and dimension changes** &mdash; When users change names of metrics and dimensions for reports, it's crucial to have a traceability mechanism in place to link back to the original source metric name.
 
 
 ### Discoverability 
 
 - Consider treating [metrics](/docs/build/metrics-overview) as first-class objects rather than measures. Metrics offer a higher-level and more contextual way to interact with data, reducing the burden on end-users to manually aggregate data.
+
 - Easy metric interactions: Provide users with an intuitive approach to:
     * Search for Metrics &mdash; Users should be able to easily search and find relevant metrics. Metrics can serve as the starting point to lead users into exploring dimensions.
     * Search for Dimensions &mdash; Users should be able to query metrics with associated dimensions, allowing them to gain deeper insights into the data.
     * Filter by Dimension Values &mdash; Expose and enable users to filter metrics based on dimension values, encouraging data analysis and exploration.
     * Filter additional metadata &mdash; Allow users to filter metrics based on other available metadata, such as metric type and default time granularity.
+
 - Suggested Metrics: Ideally, the system should intelligently suggest relevant metrics to users based on their team's activities. This approach encourages user exposure, facilitates learning, and supports collaboration among team members.
 
 By implementing these recommendations, the data interaction process becomes more user-friendly, empowering users to gain valuable insights without the need for extensive data manipulation.
@@ -91,27 +78,23 @@ By implementing these recommendations, the data interaction process becomes more
 
 We recommend organizing metrics and dimensions in ways that a non-technical user can understand the data model, without needing much context:
 
-**Organizing Dimensions** 
+- **Organizing Dimensions** &mdash; To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.<br /><br />  You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and makes them them more user-friendly and accessible.
 
-To help non-technical users understand the data model better, we recommend organizing dimensions based on the entity they originated from. For example, consider dimensions like `user__country` and `product__category`.  
-
-You can create groups by extracting `user` and `product` and then nest the respective dimensions under each group. This way, dimensions align with the entity or semantic model they belong to and makes them them more user-friendly and accessible.
-
-**Organizing Metrics** 
-
-The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list. 
-
-This hierarchy helps you organize metrics based on a specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
+- **Organizing Metrics** &mdash; The goal is to organize metrics into a hierarchy in our configurations, instead of presenting them in a long list.<br /><br /> This hierarchy helps you organize metrics based on a specific criteria, such as business unit or team. By providing this structured organization, users can find and navigate metrics more efficiently, enhancing their overall data analysis experience.
 
 ### Query flexibility
 
-Allow users to query either one metric alone without dimensions or multiple metrics with dimensions
+Allow users to query either one metric alone without dimensions or multiple metrics with dimensions.
 
-- Allow toggling between metrics / dimensions seamlessly
+- Allow toggling between metrics / dimensions seamlessly.
+
 - Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply, and vice versa.
+
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
   * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
+
 - We recommend that time granularity is treated as a general time dimension-specific concept and that it can be applied to more than just the primary aggregation (or `metric_time`). Consider a situation where a user wants to look at `sales` over time by `customer signup month`; in this situation, having the ability able to apply granularities to both time dimensions is crucial. Note: initially, as a starting point, it makes sense to only support `metric_time` or the primary time dimension, but we recommend expanding that as your solution evolves. 
+
 - You should allow users to filter on date ranges and expose a calendar and nice presets for filtering these. 
   * For example: last 30 days, last week etc.
 
@@ -119,11 +102,14 @@ Allow users to query either one metric alone without dimensions or multiple metr
 
 For better analysis, it's best to have the context of the metrics close to where the analysis is happening. We recommend the following:
 
-- Expose business definitions of the metrics as well as logical definitions
-- Expose additional metadata from the Semantic layer (measures, type parameters)
+- Expose business definitions of the metrics as well as logical definitions.
+
+- Expose additional metadata from the Semantic layer (measures, type parameters).
+
 - Use the [Discovery API](/docs/dbt-cloud-apis/discovery-api) to enhance the metric and build confidence in its accuracy:
   * Check if the metric is fresh and when it was last updated.
   * Include lineage information to understand the metric's origin.
+
 - Allow for creating other metadata that’s useful for the metric. We can provide some of this information in our configuration (Display name, Default Granularity for View, Default Time range), but there may be other metadata that your tool wants to provide to make the metric richer.
 
 ### Example stages of an integration
