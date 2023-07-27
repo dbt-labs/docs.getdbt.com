@@ -56,7 +56,7 @@ If you're following the guide in your own project, pick a model that you want to
 
 1. Create a new semantic model file, such as `orders.yaml`. 
 
-We recommending creating semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name, appropriate metadata, map it to a model in your dbt project, and specify model defaults. For now `default_agg_time_dimension` is the only supported default. 
+It's best practice to create semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name and appropriate metadata, map it to a model in your dbt project, and specify model defaults. For now, `default_agg_time_dimension` is the only supported default. 
 
 ```yaml
 semantic_models:
