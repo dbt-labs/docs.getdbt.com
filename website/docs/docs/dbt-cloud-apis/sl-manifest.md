@@ -82,6 +82,8 @@ Top-level keys for the semantic manifest are:
         "dsi_package_version": {}
     }
 }
+    ]
+}
 ```
 
 </details>
