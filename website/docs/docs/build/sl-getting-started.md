@@ -205,7 +205,7 @@ MetricFlow needs a semantic_manifest.json in order to build a semantic graph. To
 
 Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
 
-Once you’ve defined metrics in your dbt project, you can perform a job run in your dbt Cloud deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
+Once you’ve defined metrics in your dbt project, you can perform a job run in your dbt Cloud deployment environment to materialize your metrics. Only the deployment environment is supported for the dbt Semantic Layer at this moment. 
 
 1. Go to **Deploy** in the navigation header
 2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
