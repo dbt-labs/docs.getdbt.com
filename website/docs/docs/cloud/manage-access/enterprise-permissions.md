@@ -5,6 +5,7 @@ description: "Permission sets for Enterprise plans."
 hide_table_of_contents: true #For the sake of the tables on this page
 ---
 
+import Permissions from '/snippets/_enterprise-permissions-table.md';
 import SetUpPages from '/snippets/_available-enterprise-only.md';
 
 <SetUpPages features={'/snippets/_available-enterprise-only.md'}/>
@@ -14,13 +15,11 @@ help manage access controls within a dbt Cloud account. See the docs on [access
 control](/docs/cloud/manage-access/about-user-access) for more information on Role-Based access
 control (RBAC).
 
-## Permission Sets
+## Roles and permissions
 
-The following permission sets are available for assignment in dbt Cloud Enterprise accounts. They
-can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group
-can be associated with more than one permission set.
+The following roles and permission sets are available for assignment in dbt Cloud Enterprise accounts. They can be granted to dbt Cloud groups which are then in turn granted to users. A dbt Cloud group can be associated with more than one role and permission set. Roles with more access take precedence. 
 
-<Snippet path="enterprise-permissions-table" />
+<Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 
 ## Diagram of the Permission Sets
 
