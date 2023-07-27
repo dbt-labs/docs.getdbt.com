@@ -79,7 +79,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment level by f
 
 :::info📌 
 
-Note  - It is _not_ recommended that you use your dbt Cloud credentials due to elevated permissions. Instead, you can use your specific integration tool permissions.
+It is _not_ recommended that you use your dbt Cloud credentials due to elevated permissions. Instead, you can use your specific integration tool permissions.
 
 :::
 
