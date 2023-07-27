@@ -23,7 +23,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="50%" title="Set Up your Semantic Layer configuration."/>
 
 6. You should see connection information that allows you to connect to downstream tools. 
-    * If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
+**Note:** If your tool supports JDBC, make sure to save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
 
 7. Next, go back to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. 
 
