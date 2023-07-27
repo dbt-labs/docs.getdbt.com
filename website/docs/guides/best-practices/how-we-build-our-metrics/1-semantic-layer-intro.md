@@ -23,9 +23,8 @@ We'll work through our learning goals via an example project, we encourage you t
 1. Getting setup with MetricFlow in your dbt project.
 2. Building your first semantic model and its fundamental parts: entities, dimensions, and measures.
 3. Building your first metric.
-4. Validating and querying with `mf`.
-5. Refactoring a mart into the Semantic Layer.
-6. Defining advanced metrics: Ratio and Derived types.
-7. Review best practices.
+4. Refactoring a mart into the Semantic Layer.
+5. Defining advanced metrics: Ratio and Derived types.
+6. Review best practices.
 
 If you're ready to ship your users more power with less code, let's dive in!
