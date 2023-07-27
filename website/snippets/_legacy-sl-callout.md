@@ -1,4 +1,4 @@
-:::tip Upgrade to access the new dbt Semantic Layer
+:::important Upgrade to access the new dbt Semantic Layer
 
 The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), improving governance, introducing a new API, and making it more efficient to define/query metrics. This means the legacy Semantic Layer, available in dbt v1.5 or lower, is no longer supported and won't receive any code fixes.
 
