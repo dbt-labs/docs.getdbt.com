@@ -67,7 +67,7 @@ If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you
 1. Log in to your dbt Cloud account.
 2. Go to **Account Settings**, and then **Service Tokens** to create a new [service account API token](/docs/dbt-cloud-apis/service-tokens). Save your token somewhere safe. 
 3. Assign permissions to service account tokens depending on the integration tool you choose. Refer to the [integration partner documentation](https://www.getdbt.com/product/semantic-layer-integrations) to determine the permission sets you need to assign.
-4. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
+4. Go to **Deploy** > **Environments**, and select your **Deployment** environment.
 5. Click **Settings** on the top right side of the page.
 6. Click **Edit** on the top right side of the page.
 7. Select dbt version 1.2 or higher.
