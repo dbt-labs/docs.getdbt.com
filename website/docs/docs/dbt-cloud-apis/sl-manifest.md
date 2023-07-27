@@ -1,7 +1,7 @@
 ---
 title: "Semantic manifest"
 id: sl-manifest
-description: "Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your Semantic Layer."
+description: "Learn about the semantic manifest.json file and how you can use artifacts to gain insights about your dbt Semantic Layer."
 tags: [Semantic Layer, APIs]
 sidebar_label: "Semantic manifest"
 ---
