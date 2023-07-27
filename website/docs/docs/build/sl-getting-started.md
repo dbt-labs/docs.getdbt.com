@@ -230,6 +230,23 @@ To connect and query your metrics using the dbt Semantic Layer and its API:
 
 Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
+## FAQs
+
+If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
+    
+<details>
+  <summary>How do I migrate from the legacy Semantic Layer to the new one?</summary>
+  <div>
+    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/migration/sl-migration"> migration guide</a> for more info.</div>
+  </div>
+</details>
+<details>
+<summary>How are you storing my data?</summary>
+User data passes through the Semantic Layer on its way back from the warehouse. dbt Labs ensures security by authenticating through the customer's data warehouse. Currently, we don't cache data for the long term, but it might temporarily stay in the system for up to 10 minutes, usually less. In the future, we'll introduce a caching feature that allows us to cache data on our infrastructure for up to 24 hours.
+</details>
+<details>
+<summary>Is the dbt Semantic Layer open source?</summary>
+The dbt Semantic Layer is proprietary, however, some components of the dbt Semantic Layer are open source, like dbt-core and MetricFlow. <br /><br />The universal dbt Semantic Layer is available to all Team and Enterprise Plans during public beta. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.</details>
 
 ## Related docs
 

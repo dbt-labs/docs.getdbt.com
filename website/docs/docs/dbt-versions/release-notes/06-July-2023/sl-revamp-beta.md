@@ -16,6 +16,10 @@ dbt Labs are thrilled to announce the re-release of the [dbt Semantic Layer](/do
 
 With semantics at its core, the dbt Semantic Layer marks a crucial milestone towards a new era of centralized logic and data applications.
 
+:::important
+If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+:::
+
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="75%" title="The universal dbt Semantic Layer connecting to integration tools."/>
 
 ## Enhanced dbt Semantic Layer
