@@ -69,7 +69,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment level by f
 2. Go to **Account Settings**, and then **Service Tokens** to create a new [service account API token](/docs/dbt-cloud-apis/service-tokens). Save your token somewhere safe. 
 3. Assign permissions to service account tokens depending on the integration tool you choose. You can review the [integration partner documentation](https://www.getdbt.com/product/semantic-layer-integrations) to determine the permission sets you need to assign.
 4. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
-5. Click on **Settings** on the top right side of the page.
+5. Click **Settings** on the top right side of the page.
 6. Click **Edit** on the top right side of the page.
 7. Select dbt version 1.2 or higher.
 8. Toggle the Semantic Layer **On**.
