@@ -196,7 +196,7 @@ MetricFlow needs a semantic_manifest.json in order to build a semantic graph. To
 
 1. Make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
-3. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. i.e `mf query --metrics order_total --group-by metric_time`
+3. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `mf query --metrics order_total --group-by metric_time`
 4. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--explain` in the CLI.
 5. Run `mf validate-configs` to run validation on your semantic models and metrics. 
 6. Commit and merge the code changes that contain the metric definitions.
