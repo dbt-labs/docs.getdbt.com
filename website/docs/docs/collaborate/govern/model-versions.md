@@ -3,8 +3,12 @@ title: "Model versions"
 id: model-versions
 sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
+keyword: governance, model version, model versioning, dbt model versioning
 ---
 
+import VersionsCallout from '/snippets/_version-callout.md;'
+
+<VersionsCallout />
 
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
