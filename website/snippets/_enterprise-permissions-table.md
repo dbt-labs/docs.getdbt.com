@@ -10,7 +10,7 @@ Permissions:
 * Project-level permissions &mdash; Permissions related to the projects in dbt Cloud. For example, repos and access to the IDE. 
 
 ### Account roles
-Account roles are primarily designed for managing the dbt Cloud account. Permissions to alter the account settings (for example, generating service tokens, inviting users, configuring SSO). They may also have access to project-level permissions as well. The **Account Admin** role is the highest level of access that can be assigned.  
+Account roles enable you to manage the dbt Cloud account and manage the account settings (for example, generating service tokens, inviting users, configuring SSO). They also provide project-level permissions. The **Account Admin** role is the highest level of access you can assign.  
 
 #### Account permissions for account roles
 
