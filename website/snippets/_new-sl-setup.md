@@ -29,5 +29,5 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 8. Save and copy your environment ID, service token, and host, which you'll need to use downstream tools.
 
-9. Great job, you've configured the Semantic Layer 🎉! 
+Great job, you've configured the Semantic Layer 🎉! 
 
