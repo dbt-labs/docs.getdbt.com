@@ -14,11 +14,11 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 <NewSLChanges />
 
 
-The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing you to define metrics on top of existing models and automatically handles data joins. 
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
 
 Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
 
-To read more about why you need a universal Semantic Layer, read this [blog post](https://www.getdbt.com/blog/universal-semantic-layer/).
+To learn more about why you need a universal Semantic Layer, refer to the [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post.
 
 ## Explore the dbt Semantic Layer
 <!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
@@ -42,7 +42,7 @@ instance="hosted in North America"
 
 <Card
     title="Set up the dbt Semantic Layer"
-    body="Seamlessly set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
+    body="Set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
     link="/docs/use-dbt-semantic-layer/setup-sl"
     icon="dbt-bit"/>
 
@@ -74,15 +74,15 @@ import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
 <LegacyInfo />
 
-The dbt Semantic Layer allows data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice.
+The dbt Semantic Layer allows your data teams to centrally define essential business metrics like `revenue`, `customer`, and `churn` in the modeling layer (your dbt project) for consistent self-service within downstream data tools like BI and metadata management solutions. The dbt Semantic Layer provides the flexibility to define metrics on top of your existing models and then query those metrics and models in your analysis tools of choice.
 
-The result? You have less duplicate coding for data teams and more consistency for data consumers. 
+Resulting in less duplicate coding for data teams and more consistency for data consumers. 
 
-The dbt Semantic Layer has four main parts:
+The dbt Semantic Layer has these main parts:
 
 - Define your metrics in version-controlled dbt project code using [MetricFlow](/docs/build/about-metricflow) 
 	* dbt_metrics is now deprecated
-- Import your metric definitions via the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
+- Import your metric definitions using the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
 - Query your metric data via the dbt Proxy Server
 - Explore and analyze dbt metrics in downstream tools
 
