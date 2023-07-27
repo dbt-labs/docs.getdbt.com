@@ -25,7 +25,12 @@ Similar to the [`manifest.json` file](/reference/artifacts/manifest-json), the `
 The `semantic_manifest.json` is produced whenever your dbt project is parsed. The easiest way to generate the file yourself is to run `dbt parse`. Since `dbt run`, `dbt build`, and `dbt compile` all parse your dbt project, these commands will generate a semantic manifest as well. 
 
 
-QUESTIONS:
+## Top level keys
+
+Top-level keys for the semantic manifest are:
+-  `semantic_models` &mdash; Starting points of data with entities, dimensions, and measures, and correspond to models in your dbt project. 
+-  `metrics` &mdash; Functions combining measures, constraints, and so on to define quantitative indicators.
+- `project_configuration` &mdash; Contains information around your project configurations 
 - WHAT IS IT PRODUCED BY?
 - WHAT ARE THE TOP LEVEL KEYS?
 - HOW DOES IT RELATED TO THE [JSON SCHEMA FILE](https://schemas.getdbt.com/)?
