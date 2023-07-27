@@ -52,7 +52,7 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 
 ### Project role permissions
 
-The project roles are intended for users who will be working within the projects in various capacities. They'll primarily have access to project-level permissions such as repos and the IDE, but may also have some account-level permisions.
+The project roles enable you to work within the projects in various capacities. They primarily provide access to project-level permissions such as repos and the IDE, but may also provide some account-level permissions.
 
 #### Account permissions for project roles
 
