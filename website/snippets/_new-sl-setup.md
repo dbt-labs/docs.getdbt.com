@@ -16,7 +16,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-initial-page.jpg" width="60%" title="Semantic Layer section in the Project Details page"/>
 
 4. In the **Set Up Semantic Layer Configuration** page, enter the credentials you want the Semantic Layer to use specific to your data platform. 
-    * Note: We recommend using a less privileged set of credentials because your Semantic Layer users will be querying it in downstream applications. At a minimum, the Semantic Layer needs to have read access to the schema(s) that contains the dbt models that you used to build your semantic models.
+**Note:** We recommend credentials have the least privileges required because your Semantic Layer users will be querying it in downstream applications. At a minimum, the Semantic Layer needs to have read access to the schema(s) that contains the dbt models that you used to build your semantic models.
 
 5. Select the deployment environment you want for the Semantic Layer and click **Save**.
 
