@@ -31,9 +31,6 @@ Top-level keys for the semantic manifest are:
 -  `semantic_models` &mdash; Starting points of data with entities, dimensions, and measures, and correspond to models in your dbt project. 
 -  `metrics` &mdash; Functions combining measures, constraints, and so on to define quantitative indicators.
 - `project_configuration` &mdash; Contains information around your project configurations 
-- WHAT IS IT PRODUCED BY?
-- WHAT ARE THE TOP LEVEL KEYS?
-- HOW DOES IT RELATED TO THE [JSON SCHEMA FILE](https://schemas.getdbt.com/)?
 
 <details>
 <summary>Example <code>target/semantic_manifest.json</code> file </summary>
