@@ -4,7 +4,7 @@ id: "deploy-environments"
 description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
-Deployment environments in dbt Cloud are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata/results. To execute dbt, environments determine the settings used during job runs, including:
+Deployment environments in dbt Cloud are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata or results. To execute dbt, environments determine the settings used during job runs, including:
 
 - The version of dbt Core that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
