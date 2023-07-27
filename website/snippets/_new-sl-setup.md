@@ -27,7 +27,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 7. Return to the **Project Details** page and select **Generate Service Token** to create a Semantic Layer service token. 
 
-8. Save and copy your environment ID, service token, and host for inputting into a downstream tool
+8. Save and copy your environment ID, service token, and host, which you'll need to use downstream tools.
 
 9. Great job, you've configured the Semantic Layer 🎉! 
 
