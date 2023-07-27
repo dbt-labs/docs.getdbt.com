@@ -83,6 +83,7 @@ Top-level keys for the semantic manifest are:
     }
 }
 ```
+
 </details>
 
 ## Related docs
