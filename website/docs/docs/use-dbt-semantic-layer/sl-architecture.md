@@ -6,6 +6,11 @@ sidebar_label: "Architecture"
 tags: [Semantic Layer]
 ---
 
+import NewSLChanges from '/snippets/_new-sl-changes.md';
+
+<NewSLChanges />
+
+
 <VersionBlock firstVersion="1.6">
 
 The dbt Semantic Layer allows you to define metrics and use various interfaces to query them. The Semantic Layer does the heavy lifting to find where the queried data exists in your data platform and generates the SQL to make the request (including performing joins). 

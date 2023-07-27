@@ -1,7 +1,7 @@
 ---
 title: "dbt Semantic Layer"
 id: dbt-sl
-description: "Introducing the improved dbt Semantic Layer, which allows data teams to centrally define and query metrics."
+description: "Learn how the dbt Semantic Layer enables data teams to centrally define and query metrics."
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: true
@@ -31,7 +31,6 @@ product="dbt Semantic Layer"
 plan="dbt Cloud Team and Enterprise"
 instance="hosted in North America"
 />
-<br /><br />
 
 <div className="grid--3-col">
 
