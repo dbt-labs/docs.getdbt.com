@@ -1,6 +1,8 @@
 
 <VersionBlock firstVersion="1.6">
 
+To use the Semantic Layer, you must:
+
 - Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America
 - Have both your production and development environments running dbt version 1.6 or higher 
 - Use Snowflake, BigQuery, Databricks, and Redshift data platform
