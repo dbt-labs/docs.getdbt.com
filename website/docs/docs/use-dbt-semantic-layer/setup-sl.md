@@ -64,7 +64,7 @@ If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you
  * Developer accounts can query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Discovery API.
 
 
-1. Login to your dbt Cloud account
+1. Log in to your dbt Cloud account.
 2. Go to **Account Settings**, and then **Service Tokens** to create a new [service account API token](/docs/dbt-cloud-apis/service-tokens). Save your token somewhere safe. 
 3. Assign permissions to service account tokens depending on the integration tool you choose. You can review the [integration partner documentation](https://www.getdbt.com/product/semantic-layer-integrations) to determine the permission sets you need to assign.
 4. Go to **Deploy** and then **Environment**, and select your **Deployment** environment.
