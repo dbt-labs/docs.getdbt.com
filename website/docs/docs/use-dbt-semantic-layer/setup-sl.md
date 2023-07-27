@@ -16,7 +16,6 @@ With the dbt Semantic Layer, you can centrally define business metrics, reduce c
 
 ## Prerequisites
 
-Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 import SetUp from '/snippets/_v2-sl-prerequisites.md';
 
