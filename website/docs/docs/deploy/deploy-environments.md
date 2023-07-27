@@ -30,7 +30,7 @@ To create a new dbt Cloud development environment, navigate to **Deploy** -> **E
 
 ### Set as production environment
 
-You can set one deployment environment per dbt Cloud project as its production environment. You must set a production environment to use features like dbt Explorer and cross-project references, since it represents the source of truth for the production state of a dbt Cloud project.
+In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like dbt Explorer and cross-project references. It acts as the source of truth for the project's production state in dbt Cloud.
 
 ### Semantic Layer
 

@@ -11,7 +11,8 @@ hoverSnippet: Learn how to configure a single deployment environment setup in db
 ## What this looks like
 
 1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code on feature branches created off of your default branch in your repository (most often the `main` branch).
-2. You have a **single *deployment* environment** (let’s call it “Production”) where your scheduled jobs run referencing the `main` branch. Be sure to set the environment as production to take advantage of features like dbt Explorer and cross-project refs. 
+2. You have a **single *deployment* environment** (let’s call it “Production”) where your scheduled jobs run referencing the `main` branch. 
+  * Make sure to set the environment to "Production" so you can take advantage of features like dbt Explorer and cross-project refs. 
 3. You also have a [**Slim CI job**](/docs/deploy/continuous-integration) that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment.
 
 :::info
