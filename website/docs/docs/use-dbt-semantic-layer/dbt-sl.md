@@ -123,7 +123,7 @@ A great example of this is **revenue**. It can be aggregated on multiple levels 
 
 ### Design and define metrics
 
-You can design and define your metrics in a `.yml` files nested under a metrics key in your dbt project, review the following documents: <br />
+You can design and define your metrics in `.yml` files nested under a metrics key in your dbt project. For more information, refer to these docs: <br />
 
 - [dbt metrics](docs/build/metrics) for in-depth detail on attributes, filters, how to define and query your metrics, and [dbt-metrics package](https://github.com/dbt-labs/dbt_metrics)
 - [dbt Semantic Layer quickstart](/docs/use-dbt-semantic-layer/quickstart-semantic-layer) to get started
