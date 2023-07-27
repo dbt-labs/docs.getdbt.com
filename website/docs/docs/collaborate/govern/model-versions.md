@@ -6,7 +6,7 @@ description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
 ---
 
-import VersionsCallout from '/snippets/_version-callout.md;'
+import VersionsCallout from '/snippets/_version-callout.md';
 
 <VersionsCallout />
 
