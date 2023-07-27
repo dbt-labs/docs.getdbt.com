@@ -258,13 +258,9 @@ semantic_models:
         type_params:
           is_primary: true
           time_granularity: day
-      - name: order_total_dim
+      - name: is_large_order
         type: categorical
-        expr: order_total
-      - name: is_food_order
-        type: categorical
-      - name: is_drink_order
-        type: categorical
+        expr: case when order_total > 50 then true else false end
 
     measures:
       - name: order_total
