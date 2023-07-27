@@ -63,7 +63,6 @@ If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you
  * Team and Enterprise accounts can set up the Semantic Layer and [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated partner tool to import metric definitions. 
  * Developer accounts can query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Discovery API.
 
-You can set up the dbt Semantic Layer in dbt Cloud at the environment level by following these steps:
 
 1. Login to your dbt Cloud account
 2. Go to **Account Settings**, and then **Service Tokens** to create a new [service account API token](/docs/dbt-cloud-apis/service-tokens). Save your token somewhere safe. 
