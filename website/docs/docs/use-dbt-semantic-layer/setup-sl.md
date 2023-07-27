@@ -56,7 +56,7 @@ With the dbt Semantic Layer, you can define business metrics, reduce code duplic
 ## Set up dbt Semantic Layer
 
 :::tip
-If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
 
 :::
 
