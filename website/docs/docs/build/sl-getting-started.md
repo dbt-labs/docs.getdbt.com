@@ -10,7 +10,7 @@ meta:
 
 This getting started page recommends a workflow to help you create your first metrics. This guide uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template). If you prefer using a sandbox project to follow the guide, you can clone the repo from GitHub. Otherwise, you can create semantic models and metrics for your own dbt project. 
 
-Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
+To fully experience the power of a universal dbt Semantic Layer, take the following steps:
 
 - [Create a semantic model](#create-a-semantic-model) with MetricFlow
 - [Define metrics](#define-metrics) with MetricFlow
