@@ -1,5 +1,5 @@
 
-:::important
+:::tip
 
 Take note that a [version tag](/reference/project-configs/version) (or `version`) is different to [`versions`](/reference/resource-properties/versions) or [Model versions](/docs/collaborate/govern/model-versions). A version tag refers to the compatibility of the dbt project with a specific version of dbt. A version tag isn't required for dbt v1.5 and higher. 
 
