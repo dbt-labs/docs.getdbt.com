@@ -50,7 +50,7 @@ Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platfor
 
 The following steps will walk you through setting up semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).  
 
-We highly recommend you read the overview of what a [semantic model](https://docs.getdbt.com/docs/build/semantic-models) is before getting started. If you're working in the Jaffle shop example, delete the `orders.yaml` semantic model or delete the yaml extension so it's ignored during parsing. We'll be rebuilding it step by step in this example. 
+It's highly recommended you read the overview of what a [semantic model](https://docs.getdbt.com/docs/build/semantic-models) is before getting started. If you're working in the Jaffle shop example, delete the `orders.yaml` semantic model or delete the .yaml extension so it's ignored during parsing. You'll be rebuilding it step by step in this example. 
 
 If you're following the guide in your own project, pick a model that you want to build a semantic manifest from and fill in the config values accordingly. 
 
