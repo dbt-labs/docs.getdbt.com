@@ -43,7 +43,7 @@ instance="hosted in North America"
 
 <Card
     title="Set up the dbt Semantic Layer"
-    body="Seamlessly set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
+    body="Set up the dbt Semantic Layer in dbt Cloud using intuitive navigation."
     link="/docs/use-dbt-semantic-layer/setup-sl"
     icon="dbt-bit"/>
 
