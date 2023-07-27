@@ -79,7 +79,7 @@ The dbt Semantic Layer allows your data teams to centrally define essential busi
 
 Resulting in less duplicate coding for data teams and more consistency for data consumers. 
 
-The dbt Semantic Layer has four main parts:
+The dbt Semantic Layer has these main parts:
 
 - Define your metrics in version-controlled dbt project code using [MetricFlow](/docs/build/about-metricflow) 
 	* dbt_metrics is now deprecated
