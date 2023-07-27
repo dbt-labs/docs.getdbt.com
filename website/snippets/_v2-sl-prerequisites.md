@@ -9,7 +9,7 @@ To use the Semantic Layer, you must:
 -  Create a successful run in the environment where you configure the Semantic Layer. <br/>
   * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 - Install the [MetricFlow CLI](/docs/build/metricflow-cli). After installing the package, make sure you run at least one model.
-- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions 
+- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. <br /> 
 **Note:** Developer accounts can only query data manually using the [MetricFlow CLI](/docs/build/metricflow-cli) and SQL. To dynamically query metrics using external tools, you must have a dbt Cloud Team or Enterprise account with access to the Semantic Layer API.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the revamped dbt Semantic Layer.
 
