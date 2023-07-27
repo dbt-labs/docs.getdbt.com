@@ -18,7 +18,7 @@ The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), s
 
 Moving metric definitions out of the BI layer and into the modeling layer allows data teams to feel confident that different business units are working from the same metric definitions, regardless of their tool of choice. If a metric definition changes in dbt, it’s refreshed everywhere it’s invoked and creates consistency across all applications. 
 
-To learn more about why you need a universal Semantic Layer, refer to the [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post.
+Refer to the [Why we need a universal semantic layer](https://www.getdbt.com/blog/universal-semantic-layer/)  blog post to learn more.
 
 ## Explore the dbt Semantic Layer
 <!-- this partial lives here: https://github.com/dbt-labs/docs.getdbt.com/website/snippets/_sl-plan-info. Use it on diff pages and to tailor the message depending which instance can access the SL and what product lifecycle we're in. -->
