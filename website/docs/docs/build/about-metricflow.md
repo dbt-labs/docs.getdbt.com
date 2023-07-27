@@ -33,7 +33,9 @@ There are a few key principles:
 
 - MetricFlow, as a part of the dbt Semantic Layer, allows organizations to define company metrics logic through YAML abstractions, as described in the following sections.
 
-- You can install MetricFlow via PyPI as an extension of your [dbt adapter](/docs/supported-data-platforms) in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`.
+- You can install MetricFlow using PyPI as an extension of your [dbt adapter](/docs/supported-data-platforms) in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`.
+
+- To query metrics dimensions, dimension values, and validate your configurations; install the [MetricFlow CLI](/docs/build/metricflow-cli).
 
 ### Semantic graph 
 
@@ -60,6 +62,7 @@ Metrics, which is a key concept, are functions that combine measures, constraint
 
 MetricFlow supports different metric types:
 
+- [Cumulative](/docs/build/cumulative) &mdash;  Aggregates a measure over a given window.
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 

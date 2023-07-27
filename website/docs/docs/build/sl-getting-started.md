@@ -20,7 +20,7 @@ This getting started page recommends a workflow to help you get started creating
 - Have a dbt project connected to Snowflake or Postgres. 
   * Note: Support for BigQuery, Databricks, and Redshift coming soon.
 - Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
-- Recommended &mdash; dbt Labs recommends you install the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow) to test your metrics.
+- Recommended &mdash; Install the [MetricFlow CLI](/docs/build/metricflow-cli) to query and test your metrics.
 
 :::tip 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
@@ -28,11 +28,15 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 ## Install MetricFlow
 
-Before you begin, make sure you install the `metricflow` and [dbt adapter](/docs/supported-data-platforms) via PyPI in the CLI. To install them, open the command line interface (CLI) and use the pip install command `pip install "dbt-metricflow[your_adapter_name]"`.
+Before you begin, install the [MetricFlow CLI](/docs/build/metricflow-cli) as an extension of a dbt adapter from PyPI. The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
 
-Note that specifying `[your_adapter_name]` is required.  This is because you must install MetricFlow as an extension of a dbt adapter. For example, for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
+Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platforms):
+
+- Create or activate your virtual environment. `python -m venv venv`
+- `pip install "dbt-metricflow[your_adapter_name]"`
+  * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
  
-Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
+Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon). 
 
 ## Create a semantic model
 
@@ -52,26 +56,26 @@ semantic_models:
 2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
 
 ```yaml
-  entities:
-    - name: transaction
-      type: primary
-      expr: id_transaction
-    - name: customer
-      type: foreign
-      expr: id_customer
+entities:
+  - name: transaction
+    type: primary
+    expr: id_transaction
+  - name: customer
+    type: foreign
+    expr: id_customer
   ```
 
 3. Define your dimensions and measures. dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
 ```yaml
 measures:
-    - name: transaction_amount_usd
-      description: The total USD value of the transaction.
-      agg: sum
-  dimensions:
-    - name: is_large
-      type: categorical
-      expr: case when transaction_amount_usd >= 30 then true else false end
+  - name: transaction_amount_usd
+    description: The total USD value of the transaction.
+    agg: sum
+dimensions:
+  - name: is_large
+    type: categorical
+    expr: case when transaction_amount_usd >= 30 then true else false end
 ```
 
 :::tip
@@ -94,11 +98,10 @@ Now that you've created your first semantic model, it's time to define your firs
 The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
 
 ```yaml
----
 metrics:
   - name: transaction_amount_usd
     type: simple
-    type_params:
+    type_params: null
     measure: transaction_amount_usd
 ```
 
@@ -108,7 +111,7 @@ Interact and test your metric using the CLI before committing it to your MetricF
 
 Follow these steps to test and query your metrics using MetricFlow:
 
-1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow).
+1. If you haven't done so already, make sure you [install MetricFlow](#install-metricflow). Refer to [MetricFlow CLI](/docs/build/metricflow-cli) for more info on commands and how to install the CLI.
 
 2. Run `mf --help` to confirm you have MetricFlow installed, and to see the available commands. If you don't have the CLI installed, run `pip install --upgrade "dbt-metricflow[your_adapter_name]"`.  For example, if you have a Snowflake adapter, run `pip install --upgrade "dbt-metricflow[snowflake]"`.
 
@@ -130,3 +133,4 @@ ANY COMMON TROUBLESHOOTING QUESTIONS?-->
 - [About MetricFlow](/docs/build/about-metricflow)
 - [Semantic models](/docs/build/semantic-models)
 - [Metrics](/docs/build/metrics-overview)
+- [MetricFlow CLI](/docs/build/metricflow-cli)

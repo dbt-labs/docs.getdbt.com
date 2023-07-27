@@ -57,6 +57,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses > to include records whose timestamp occurred since the last run of this model)
   where event_time > (select max(event_time) from {{ this }})
 
 {% endif %}
@@ -107,7 +108,7 @@ When you define a `unique_key`, you'll see this behavior for each row of "new" d
 * If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](#about-incremental_strategy), and [strategy specific configs](#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a `unique_key` with more than one row in either the existing target table or the new incremental rows, the incremental model run will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
+Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](#about-incremental_strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
 
 :::info
 While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
@@ -137,6 +138,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses >= to include records arriving later on the same day as the last run of this model)
   where date_day >= (select max(date_day) from {{ this }})
 
 {% endif %}
