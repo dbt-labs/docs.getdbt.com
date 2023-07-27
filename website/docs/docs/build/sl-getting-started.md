@@ -158,7 +158,7 @@ group by metric_time_day, country  -- dimensions
 
 Now that you've created your first semantic model, it's time to define your first metric! MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). It's recommended that you read the [metrics overview docs](https://docs.getdbt.com/docs/build/metrics-overview) before getting started. 
 
-1. You can define metrics in the same YAML files as your semantic models, or create a new file. If you want to create your metrics in a new file, we recommend creating another directory called `/models/metrics`. The file structure for metrics can become more complex from here if you need to further organize your metrics, for example by data source or business line. 
+1. You can define metrics in the same YAML files as your semantic models or create a new file. If you want to create your metrics in a new file, create another directory called `/models/metrics`. The file structure for metrics can become more complex from here if you need to further organize your metrics, for example, by data source or business line. 
 
 2. The example metric we'll create is a simple metric that refers directly to the the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, we recommend deleting the `example_metrics` file, or removing the .yaml extension so it's ignored during parsing. We'll be rebuilding the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step. 
 
