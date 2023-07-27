@@ -85,7 +85,7 @@ It is _not_ recommended that you use your dbt Cloud credentials due to elevated 
 
 12. Set up the [Discovery API](/docs/dbt-cloud-apis/discovery-api) (Team and Enterprise accounts only) in the integrated partner tool to import the metric definitions. The [integrated partner tool](https://www.getdbt.com/product/semantic-layer-integrations) will treat the dbt Server as another data source (like a data platform). This requires:
 
-- The account ID, environment ID, and job ID (visible in the job URL)
+- The account ID, environment ID, and job ID (which is visible in the job URL)
 - An [API service token](/docs/dbt-cloud-apis/service-tokens) with job admin and metadata permissions
 - Add the items above to the relevant fields in your integration tool
 
