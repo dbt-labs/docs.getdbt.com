@@ -140,7 +140,7 @@ You can design and define your metrics in `.yml` files nested under a metrics ke
 <details>
   <summary>How are you storing my data?</summary>
   <div>
-    <div>The dbt Semantic Layer does not store, or cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it is never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers, to your connecting data tool.</div>
+    <div>The dbt Semantic Layer doesn't store, cache, or log your data. On each query to the Semantic Layer, the resulting data passes through dbt Cloud servers where it's never stored, cached, or logged. The data from your data platform gets routed through dbt Cloud servers to your connecting data tool.</div>
   </div>
 </details>
 <details>
