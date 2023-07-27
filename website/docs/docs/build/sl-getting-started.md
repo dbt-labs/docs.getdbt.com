@@ -172,7 +172,7 @@ metrics:
       measure: order_total
 ```
  
-3. Save your code and validate your configs (we'll do this in the next step of the guide 😀) before committing them to your repository.
+3. Save your code, and in the next section, you'll validate your configs before committing them to your repository.
 
 To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
 
