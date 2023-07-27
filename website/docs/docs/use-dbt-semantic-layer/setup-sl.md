@@ -50,7 +50,6 @@ With the dbt Semantic Layer, you can define business metrics, reduce code duplic
 
 ## Prerequisites
 
-Before you set up the dbt Semantic Layer, make sure you meet the following:
 
 <Snippet path="sl-prerequisites" />
 
