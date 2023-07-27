@@ -182,7 +182,7 @@ MetricFlow requires a time spine for certain metric types and join resolution pa
 
 ## Test and query metrics
 
-This section will explain how you can test and query metrics locally. Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on how to install it and a reference for the CLI commands.
+This section will explain how you can test and query metrics locally. Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on installing it and a reference for the CLI commands.
 
 :::tip
 - dbt Cloud Team or Enterprise &mdash; For public beta, querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). You'll still be able to run semantic validation on your metrics in the IDE to ensure they are defined correctly. You can also use the MetricFlow CLI to test and query metrics locally. Alternative, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL.
