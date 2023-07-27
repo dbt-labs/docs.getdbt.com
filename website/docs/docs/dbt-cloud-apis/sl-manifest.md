@@ -31,7 +31,7 @@ QUESTIONS:
 - HOW DOES IT RELATED TO THE [JSON SCHEMA FILE](https://schemas.getdbt.com/)?
 
 <details>
-<summary><code>target/semantic_manifest.json</code> file </summary>
+<summary>Example <code>target/semantic_manifest.json</code> file </summary>
 
 ```json
 {
