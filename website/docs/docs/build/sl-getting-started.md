@@ -8,7 +8,7 @@ meta:
   api_name: dbt Semantic Layer API
 ---
 
-This getting started page recommends a workflow to help you create your first metrics. This guide uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template). If you prefer using a sandbox project to follow the guide, you can clone the repo from GitHub. Otherwise, you can create semantic models and metrics for your own dbt project. 
+This getting started page presents a sample workflow to help you create your first metrics. It uses the [Jaffle shop example](https://github.com/dbt-labs/jaffle-sl-template) as the project data source and is available for you to use. If you prefer, you can create semantic models and metrics for your own dbt project. 
 
 To fully experience the power of a universal dbt Semantic Layer, take the following steps:
 
