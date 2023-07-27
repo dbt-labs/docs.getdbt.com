@@ -83,7 +83,7 @@ The dbt Semantic Layer has these main parts:
 
 - Define your metrics in version-controlled dbt project code using [MetricFlow](/docs/build/about-metricflow) 
 	* dbt_metrics is now deprecated
-- Import your metric definitions via the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
+- Import your metric definitions using the [Discovery API](/docs/dbt-cloud-apis/discovery-api)
 - Query your metric data via the dbt Proxy Server
 - Explore and analyze dbt metrics in downstream tools
 
