@@ -60,7 +60,6 @@ If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you
 
 :::
 
-Before you continue with the following steps, you **must** have a multi-tenant dbt Cloud account hosted in North America. 
  * Team and Enterprise accounts can set up the Semantic Layer and [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated partner tool to import metric definitions. 
  * Developer accounts can query the Proxy Server using SQL but won't be able to browse dbt metrics in external tools, which requires access to the Discovery API.
 
