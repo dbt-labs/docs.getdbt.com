@@ -57,7 +57,11 @@ Top-level keys for the semantic manifest are:
             "description": "metric description",
             "type": "metric type",
             "type_params": {
-                "measure": {"measures for the metric"},
+                "measure": {
+                    "name": "name for measure",
+                    "filter": "filter for measure",
+                    "alias": "alias for measure"
+                },
                 "numerator": null,
                 "denominator": null,
                 "expr": null,
