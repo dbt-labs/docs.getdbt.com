@@ -15,7 +15,7 @@ The keys for metrics definitions are:
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
 | `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Optional |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `constraint` | For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.   | Required |
+| `filter` | For any type of metric, you may optionally include a filter string, which applies a dimensional filter when computing the metric. You can think of this as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. |
 
 
