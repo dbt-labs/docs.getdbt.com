@@ -932,6 +932,7 @@ const sidebarSettings = {
           },
           items: [
             "guides/orchestration/set-up-ci/quick-setup",
+            "guides/orchestration/set-up-ci/run-dbt-project-evaluator",
             "guides/orchestration/set-up-ci/lint-on-push",
             "guides/orchestration/set-up-ci/multiple-checks",
           ],

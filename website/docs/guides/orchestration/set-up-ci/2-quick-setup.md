@@ -1,5 +1,5 @@
 ---
-title: "Get started with Continuous Integration tests"
+title: "Quickstart: Enable CI in 15 minutes"
 slug: in-15-minutes
 description: tktk
 displayText: tktk

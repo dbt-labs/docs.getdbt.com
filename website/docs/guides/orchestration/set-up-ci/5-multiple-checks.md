@@ -1,18 +1,22 @@
 ---
-title: "Advanced option: Add an additional environment"
-slug: multiple-environments 
+title: "Advanced: Create a release train with additional environments"
+slug: multiple-environments
 description: tktk
 displayText: tktk
 hoverSnippet: tktk
 ---
 
-Before you dive into a multi-environment release process, keep in mind that this approach may slow down the time it takes to get new feature into production, since it requires additional manual steps in the deployment process and creates additional branches to maintain.
+:::caution Are you sure you need this?
+This approach creates additional manual steps in the deployment process as well as a greater maintenance burden.
 
-Complexity isn't the only option: the team at Sunrun maintained a SOX-compliant deployment while avoiding environment proliferation. Check out [their Coalesce presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
+As such, it may slow down the time it takes to get new features into production.
+
+The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing the number of environments. Check out [their Coalesce presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
+:::
 
 ## Prerequisites
 
-This section assumes you already have the **Development**, **Staging** and **Production** environments described in [Part 1](/guides/orchestration/set-up-ci/in-15-minutes).
+This section assumes you already have the **Development**, **Staging** and **Production** environments described in [the Quickstart](/guides/orchestration/set-up-ci/in-15-minutes).
 
 In this section, we will add a new **Release** environment. New features will branch off from and be merged back into the associated `release` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the Staging environment before going live.
 

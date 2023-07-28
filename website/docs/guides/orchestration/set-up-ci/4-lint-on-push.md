@@ -1,10 +1,11 @@
 ---
-title: "Advanced option: Lint code on push"
+title: "Run linting checks with SQLFluff"
+slug: lint-on-push
 ---
 
-This section shows a very basic example of linting a project every time a commit is pushed to the repo. While it is simple, it shows the power of CI and can be expanded on to meet the needs of your organization.
+By [linting](/docs/cloud/dbt-cloud-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
 
-The steps below use [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. In the example, it's set to use the `snowflake` dialect, and specifically runs the rules L019, L020, L021, and L022. This is purely for demonstration purposes. You should update this to reflect your code base's [dialect](https://docs.sqlfluff.com/en/stable/dialects.html) and the [rules](https://docs.sqlfluff.com/en/stable/rules.html) you've established for your repo.
+The steps below create an action/pipeline which uses [SQLFluff](https://docs.sqlfluff.com/en/stable/) to scan your code and look for linting errors. If you don't already have SQLFluff rules defined, check out [our recommended config file](/guides/best-practices/how-we-style/2-how-we-style-our-sql).
 
 ### 1. Create a YAML file to define your pipeline
 
@@ -20,7 +21,7 @@ The YAML files defined below are what tell your code hosting platform the steps 
 }>
 <TabItem value="github">
 
-In order for GitHub to know that you want to run an action, you need to have a few specific folders in your project. Add a new folder named `.github`, and within that folder add a new one named `workflows`. Your final folder structure will look like this:
+GitHub Actions are defined in the `.github/workflows` directory. To define the job for your action, add a new file named `lint_on_push.yml` under the `workflows` folder. Your final folder structure will look like this:
 
 ```sql
 my_awesome_project
@@ -29,16 +30,14 @@ my_awesome_project
 │   │   └── lint_on_push.yml
 ```
 
-To define the job for our action, let’s add a new file named `lint_on_push.yml` under the `workflows` folder. This file is how we tell the GitHub runner what to execute when the job is triggered.
-
-Below I touch on the important pieces for running a dbt Cloud job, but if you want a full run-down of all the components of this YAML file checkout [this GitHub article](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#understanding-the-workflow-file) on actions.
-
 **Key pieces:**
 
-- `on:` - this is used to filter when the pipeline is run. In this example we’re running it on every push except for pushes to branches named `main`. For more filters, checkout [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+- `on:` defines when the pipeline is run. This workflow will run whenever code is pushed to any branch except `main`. For other trigger options, check out [GitHub’s docs](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 - `runs-on: ubuntu-latest` - this defines the operating system we’re using to run the job
-- `uses:` - remember the virtual servers we coved in the background section? They’re just empty operating systems, so there are two pieces of setup that are needed in order to access the code in your repo, and setup Python correctly on the virtual server. These two actions are called from other repos in GitHub to provide those services. For more information on them, checkout their repos: [actions/checkout](https://github.com/actions/checkout#checkout-v3) and [actions/setup-python](https://github.com/actions/setup-python#setup-python-v3).
-- `run:` - this is how we’re telling the GitHub runner to execute the Python script we defined above.
+- `uses:` - When the Ubuntu server is created, it is completely empty. [`checkout`](https://github.com/actions/checkout#checkout-v3) and [`setup-python`](https://github.com/actions/setup-python#setup-python-v3) are public GitHub Actions which enable the server to access the code in your repo, and set up Python correctly.
+- `run:` - these steps are run at the command line, as though you typed them at a prompt yourself. This will install sqlfluff and lint the project. Be sure to set the correct `--dialect` for your project.
+
+For a full breakdown of the properties in a workflow file, see [Understanding the workflow file](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#understanding-the-workflow-file) on GitHub's website.
 
 ```yaml
 name: lint dbt project on push
@@ -49,7 +48,7 @@ on:
       - 'main'
 
 jobs:
-# this job runs SQLFluff with a specific set of rules
+  # this job runs SQLFluff with a specific set of rules
   # note the dialect is set to Snowflake, so make that specific to your setup
   # details on linter rules: https://docs.sqlfluff.com/en/stable/rules.html
   lint_project:
@@ -62,9 +61,9 @@ jobs:
         with:
           python-version: "3.9"
       - name: Install SQLFluff
-        run: "pip install sqlfluff==0.13.1"
+        run: "pip install sqlfluff"
       - name: Lint project
-        run: "sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022"
+        run: "sqlfluff lint models --dialect snowflake"
 
 ```
 
@@ -82,7 +81,7 @@ my_awesome_project
 **Key pieces:**
 
 - `image: python:3.9` - this defines the virtual image we’re using to run the job
-- `rules:` - this is used to filter when the pipeline runs. In this case we’re telling it to run on every push event except when the branch is named `main`. Filters are very powerful to run commands on specific events, and you can find a full list in [GitLab’s documentation](https://docs.gitlab.com/ee/ci/yaml/#rules).
+- `rules:` - defines when the pipeline is run. This workflow will run whenever code is pushed to any branch except `main`. For other rules, refer to [GitLab’s documentation](https://docs.gitlab.com/ee/ci/yaml/#rules).
 - `script:` - this is how we’re telling the GitLab runner to execute the Python script we defined above.
 
 ```yaml
@@ -99,8 +98,8 @@ lint-project:
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != 'main'
   script:
-    - pip install sqlfluff==0.13.1
-    - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
+    - pip install sqlfluff
+    - sqlfluff lint models --dialect snowflake
 ```
 
 </TabItem>
@@ -117,7 +116,7 @@ my_awesome_project
 **Key pieces:**
 
 - `image: python:3.11.1` - this defines the virtual image we’re using to run the job
-- `'**':` - this is used to filter when the pipeline runs. In this case we’re telling it to run on every push event, and you can see at line 12 we're creating a dummy pipeline for `master`. More information on filtering when a pipeline is run can be found in [Bitbucket's documentation](https://support.atlassian.com/bitbucket-cloud/docs/pipeline-triggers/)
+- `'**':` - this is used to filter when the pipeline runs. In this case we’re telling it to run on every push event, and you can see at line 12 we're creating a dummy pipeline for `main`. More information on filtering when a pipeline is run can be found in [Bitbucket's documentation](https://support.atlassian.com/bitbucket-cloud/docs/pipeline-triggers/)
 - `script:` - this is how we’re telling the Bitbucket runner to execute the Python script we defined above.
 
 ```yaml
@@ -133,7 +132,7 @@ pipelines:
             - pip install sqlfluff==0.13.1
             - sqlfluff lint models --dialect snowflake --rules L019,L020,L021,L022
 
-    'master': # override if your default branch doesn't run on a branch named "master"
+    'main': # override if your default branch doesn't run on a branch named "main"
       - step:
           script:
             - python --version
@@ -144,7 +143,7 @@ pipelines:
 
 ### 2. Commit and push your changes to make sure everything works
 
-After you finish creating the YAML files, commit and push your code. Doing this will trigger your pipeline for the first time! If everything goes well, you should see the pipeline in your code platform. When you click into the job you’ll get a log showing that SQLFluff was run. If your code failed linting you’ll get an error in the job with a description of what needs to be fixed. If everything passed the lint check, you’ll see a successful job run.
+After you finish creating the YAML files, commit and push your code to trigger your pipeline for the first time. If everything goes well, you should see the pipeline in your code platform. When you click into the job you’ll get a log showing that SQLFluff was run. If your code failed linting you’ll get an error in the job with a description of what needs to be fixed. If everything passed the lint check, you’ll see a successful job run.
 
 <Tabs
   defaultValue="github"
