@@ -1,9 +1,7 @@
 ---
 title: "Quickstart: Enable CI in 15 minutes"
 slug: in-15-minutes
-description: tktk
-displayText: tktk
-hoverSnippet: tktk
+description: Find issues before they are deployed to production with dbt Cloud's Slim CI.
 ---
 
 ## Prerequisites

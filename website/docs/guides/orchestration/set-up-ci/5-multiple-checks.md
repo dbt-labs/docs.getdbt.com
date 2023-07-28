@@ -1,9 +1,7 @@
 ---
 title: "Advanced: Create a release train with additional environments"
 slug: multiple-environments
-description: tktk
-displayText: tktk
-hoverSnippet: tktk
+description: Large and complex enterprises sometimes require additional layers of validation before deployment. Learn how to add these checks with dbt Cloud.
 ---
 
 :::caution Are you sure you need this?

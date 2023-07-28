@@ -1,9 +1,7 @@
 ---
 title: "Enforce best practices with dbt project evaluator"
 slug: run-dbt-project-evaluator
-description: tktk
-displayText: tktk
-hoverSnippet: tktk
+description: dbt Project Evaluator can be run from inside of your existing dbt Cloud CI job to identify common flaws in projects.
 ---
 
 dbt Project Evaluator is a package designed to identify deviations from best practices common to many dbt projects, including modeling, testing, documentation, structure and performance problems. For an introduction to the package, read its [launch blog post](/blog/align-with-dbt-project-evaluator).

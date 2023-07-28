@@ -1,6 +1,7 @@
 ---
 title: "Run linting checks with SQLFluff"
 slug: lint-on-push
+description: Enforce your organization's SQL style guide with by running SQLFluff in your git workflow whenever new code is pushed.
 ---
 
 By [linting](/docs/cloud/dbt-cloud-ide/lint-format#lint) your project during CI, you can ensure that code styling standards are consistently enforced, without spending human time nitpicking comma placement.
