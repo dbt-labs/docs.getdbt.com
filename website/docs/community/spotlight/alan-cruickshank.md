@@ -36,6 +36,8 @@ I also see SQLFluff as a vehicle to drive more consistency in the way we write S
 
 For better or worse, I spend most of my day job on people and organisational things, less on how to solve individual problems, and more on how to enable and support groups of people in being able to make great decisions themselves. In some ways, if I have to touch the keyboard too much, it's a sign that I've failed in that calling. dbt itself is a tool which enables better collaboration—and the community is full of people with great ideas on how to better enable other people around us. I hope that I'm able to pass some of that knowledge and the experience of applying it in a scaleup environment back to others also treading this path.
 
+More specifically from the dbt community, if I were to pick one recommendation, it would be Emilie Schario’s talk from Coalesce 2022 on [“Data Led is Dumb”](https://www.youtube.com/watch?v=WsMHPALc8Vg&t=1s). I think should be essential watching for anyone who’s hearing “Data Led” a lot, and wants to turn that excitement into practical action.
+
 ## Anything else interesting you want to tell us?
 
 If you're not using SQLFluff on your dbt project, you probably should be: https://github.com/sqlfluff/sqlfluff
