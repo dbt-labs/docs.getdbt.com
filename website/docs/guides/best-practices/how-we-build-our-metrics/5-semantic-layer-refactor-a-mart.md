@@ -43,9 +43,10 @@ So far we've been working in new files and pointing at a staging model to simpli
    - Does this semantic model have a primary timestamp?
    - If a semantic model has measures but no timestamp (for example, supplies in the example project, which has static costs of supplies), you'll likely want to sacrifice some normalization and join it on to another model that has a primary timestamp to allow for metric aggregation.
 4. If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations is a purely dimensional table
+5. Before we dive into implementing the refactor, lets use a new command `mf list dimensions` to check the dimensionality of our current mart for comparison to our refactor. We can use this to ensure we're **increasing the dimensionality as we refactor**, that's our goal.
 
 ## Checking your work
 
 - We always will start our auditing with a `dbt parse && mf validate-configs` to ensure our code works before we examine its output.
 - If we're working there, we'll move to trying out an `mf query` that replicates the logic of the output we're trying to refactor.
-<!-- - TODO: example  -->
+  <!-- - TODO: example  -->
