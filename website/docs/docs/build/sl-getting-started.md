@@ -50,11 +50,11 @@ Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platfor
 
 The following steps will walk you through setting up semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).  
 
-It's highly recommended you read the overview of what a [semantic model](https://docs.getdbt.com/docs/build/semantic-models) is before getting started. If you're working in the Jaffle shop example, delete the `orders.yaml` semantic model or delete the .yaml extension so it's ignored during parsing. You'll be rebuilding it step by step in this example. 
+We highly recommend you read the overview of what a [semantic model](https://docs.getdbt.com/docs/build/semantic-models) is before getting started. If you're working in the [Jaffle shop example]((https://github.com/dbt-labs/jaffle-sl-template)), delete the `orders.yml` config or delete the .yml extension so it's ignored during parsing. **We'll be rebuilding it step by step in this example.** 
 
 If you're following the guide in your own project, pick a model that you want to build a semantic manifest from and fill in the config values accordingly. 
 
-1. Create a new semantic model file, such as `orders.yaml`. 
+1. Create a new yml config file for the orders model, such as `orders.yml`. 
 
 It's best practice to create semantic models in the `/models/semantic_models` directory in your project. Semantic models are nested under the `semantic_models` key. First, fill in the name and appropriate metadata, map it to a model in your dbt project, and specify model defaults. For now, `default_agg_time_dimension` is the only supported default. 
 
@@ -62,12 +62,12 @@ It's best practice to create semantic models in the `/models/semantic_models` di
 semantic_models:
   #The name of the semantic model.
   - name: orders
-    description: |
-      Model containing order data. The grain of the table is the order id.
-    #The name of the dbt model and schema
-    model: ref('orders')
     defaults:
       agg_time_dimension: ordered_at
+    description: |
+      Order fact table. This table is at the order grain with one row per order. 
+    #The name of the dbt model and schema
+    model: ref('orders')
   ```
 
 2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `order_id`, and so on.
@@ -88,19 +88,41 @@ semantic_models:
 3. Define your dimensions and measures. Dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
 
 ```yaml
-  #Measures. These are the aggregations on the columns in the table.
-    measures:
-          - name: order_total
-            agg: sum
-  #Dimensions, either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
+    #Measures. These are the aggregations on the columns in the table.
+    measures: 
+      - name: order_total
+        description: The total revenue for each order.
+        agg: sum
+      - name: order_count
+        expr: 1
+        agg: sum
+      - name: tax_paid
+        description: The toal tax paid on each order. 
+        agg: sum
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        agg: count_distinct
+        expr: customer_id
+      - name: locations_with_orders
+        description: Distinct count of locations with order
+        expr: location_id
+        agg: count_distinct
+      - name: order_cost
+        description: The cost for each order item. Cost is calculated as a sum of the supply cost for each order item. 
+        agg: sum
+  #Dimensions. Either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.  
     dimensions:
-      - name: location_name
-        type: categorical
       - name: ordered_at
-        expr: cast(ordered_at as date)
         type: time
         type_params:
-          time_granularity: day
+          time_granularity: day 
+      - name: order_total_dim
+        type: categorical
+        expr: order_total
+      - name: is_food_order
+        type: categorical
+      - name: is_drink_order
+        type: categorical  
 ```
 
 Putting it all together, a complete semantic model configurations based on the order model would look like the following example:
@@ -109,13 +131,13 @@ Putting it all together, a complete semantic model configurations based on the o
 semantic_models:
   #The name of the semantic model.
   - name: orders
-    description: |
-      Model containing order data. The grain of the table is the order id.
-    #The name of the dbt model and schema
-    model: ref('orders')
     defaults:
       agg_time_dimension: ordered_at
-    #Entities. These usually correspond to keys in the table.
+    description: |
+      Order fact table. This table is at the order grain with one row per order. 
+    #The name of the dbt model and schema
+    model: ref('orders')
+    #Entities. These usually corespond to keys in the table.
     entities:
       - name: order_id
         type: primary
@@ -126,18 +148,40 @@ semantic_models:
         type: foreign
         expr: customer_id
     #Measures. These are the aggregations on the columns in the table.
-    measures:
+    measures: 
       - name: order_total
+        description: The total revenue for each order.
         agg: sum
-    #Dimensions, either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
+      - name: order_count
+        expr: 1
+        agg: sum
+      - name: tax_paid
+        description: The toal tax paid on each order. 
+        agg: sum
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        agg: count_distinct
+        expr: customer_id
+      - name: locations_with_orders
+        description: Distinct count of locations with order
+        expr: location_id
+        agg: count_distinct
+      - name: order_cost
+        description: The cost for each order item. Cost is calculated as a sum of the supply cost for each order item. 
+        agg: sum
+    #Dimensions. Either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.  
     dimensions:
-      - name: location_name
-        type: categorical
       - name: ordered_at
-        expr: cast(ordered_at as date)
         type: time
         type_params:
-          time_granularity: day
+          time_granularity: day 
+      - name: order_total_dim
+        type: categorical
+        expr: order_total
+      - name: is_food_order
+        type: categorical
+      - name: is_drink_order
+        type: categorical  
 ```
 
 :::tip
@@ -160,14 +204,14 @@ Now that you've created your first semantic model, it's time to define your firs
 
 1. You can define metrics in the same YAML files as your semantic models or create a new file. If you want to create your metrics in a new file, create another directory called `/models/metrics`. The file structure for metrics can become more complex from here if you need to further organize your metrics, for example, by data source or business line. 
 
-2. The example metric you'll create is a simple metric that refers directly to the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, delete the `example_metrics` file or remove the .yaml extension so it's ignored during parsing. You'll be rebuilding the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step. 
+2. The example metric we'll create is a simple metric that refers directly to the the `order_total` measure, which will be implemented as a `sum()` function in SQL. Again, if you're working in the Jaffle shop sandbox, we recommend deleting the original `orders.yml` file, or removing the .yml extension so it's ignored during parsing. We'll be rebuilding the `order_total` metric from scratch. If you're working in your own project, create a simple metric like the one below using one of the measures you created in the previous step. 
 
 ```yaml
 metrics:
   - name: order_total
-    description: "Sum of orders value"
+    description: Sum of total order amonunt. Includes tax + revenue.
     type: simple
-    label: "Order Total"
+    label: Order Total
     type_params:
       measure: order_total
 ```
@@ -192,7 +236,7 @@ This section will explain how you can test and query metrics locally. Before you
 
 **Query and commit your metrics using the CLI:**
 
-MetricFlow needs a semantic_manifest.json in order to build a semantic graph. To generate a semantic_manifest.json artifact run `dbt parse`. This will create the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt build` before preceding to ensure the data exists in your warehouse. 
+MetricFlow needs a semantic_manifest.json in order to build a semantic graph. To generate a semantic_manifest.json artifact run `dbt parse`. This will create the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt run` before preceding to ensure the data exists in your warehouse. 
 
 1. Make sure you have the MetricFlow CLI installed and up to date.
 2. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
