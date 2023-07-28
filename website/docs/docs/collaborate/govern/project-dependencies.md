@@ -5,8 +5,8 @@ sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
 ---
 
-:::info
-"Project" dependencies and cross-project `ref` is currently in closed beta and are features of dbt Cloud Enterprise. To access these features, please contact your account team.
+:::caution Closed Beta - dbt Cloud Enterprise
+"Project" dependencies and cross-project `ref` are features of dbt Cloud Enterprise, currently in Closed Beta. To access these features while they are in beta, please contact your account team at dbt Labs.
 :::
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
