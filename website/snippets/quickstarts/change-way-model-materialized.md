@@ -1,6 +1,6 @@
 One of the most powerful features of dbt is that you can change the way a model is materialized in your warehouse, simply by changing a configuration value.  You can change things between tables and views by changing a keyword rather than writing the data definition language (DDL) to do this behind the scenes.
 
-By default, everything gets created as a view. You can override that by materializing everything in jaffle_shop as a table.  Everything in the example project will still be materialized as a view.
+By default, everything gets created as a view. You can override that by materializing everything in jaffle_shop as a table. Everything in the example project will also be materialized as a table.
 
 1. Edit your `dbt_project.yml` file.
     - Update your project `name` to:
@@ -20,7 +20,7 @@ By default, everything gets created as a view. You can override that by material
         jaffle_shop:
           +materialized: table
           example:
-            +materialized: view
+            +materialized: table
       ```
 
       </File>
