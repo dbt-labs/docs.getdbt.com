@@ -751,6 +751,10 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
 
+/guides/best-practices/environment-setup/1-env-guide-overview /guides/orchestration/set-up-ci/overview 301
+/guides/best-practices/environment-setup/2-one-deployment-environment /guides/orchestration/set-up-ci/in-15-minutes 301
+/guides/best-practices/environment-setup/3-many-deployment-environments /guides/orchestration/set-up-ci/multiple-environments 301
+
 # adapter development docs
 
 /docs/contributing/what-are-adapters /guides/advanced/adapter-development/1-what-are-adapters 301
