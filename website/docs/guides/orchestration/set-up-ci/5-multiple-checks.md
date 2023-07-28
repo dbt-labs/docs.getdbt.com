@@ -18,6 +18,9 @@ This section assumes you already have the **Development**, **Staging** and **Pro
 
 In this section, we will add a new **Release** environment. New features will branch off from and be merged back into the associated `release` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the Staging environment before going live.
 
+The git flow will look like this:
+<Lightbox src="/img/guides/best-practices/environment-setup/many-branch-git.png" title="git flow diagram with an intermediary branch" />
+
 ## Create a `release` branch in your git repo
 
 As noted above, this branch will outlive any individual feature, and will be the base of all feature development for a period of time. Your team might choose to create a new branch for each sprint (`release/sprint-01`, `release/sprint-02`, etc), tie it to a version of your data product (`release/1.0`, `release/1.1`), or just have a single `release` branch which remains active indefinitely.

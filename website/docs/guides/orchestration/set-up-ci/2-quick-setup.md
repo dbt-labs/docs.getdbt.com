@@ -13,6 +13,9 @@ As part of your initial dbt Cloud setup, you should already have Development and
 
 In this guide, we're going to add a **Staging environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but staging models are built in a separate location to avoid impacting others (like the Dev environment).
 
+Your git flow will look like this:
+<Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
+
 ## Step 1: Create a new Staging environment
 
 See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **Staging**. Just like your existing Production environment, it will be a Deployment-type environment.
@@ -40,10 +43,8 @@ That's it! There are other steps you can take to be even more confident in your 
 
 To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
 
-## Collaborate without conflicts
+## Things to keep in mind
 
-Things to keep in mind when developing:
-
-- If you commit new code while a CI run based on older code is in progress, it will be automatically canceled and replaced with the fresh code.
+- If you make a new commit while a CI run based on older code is in progress, it will be automatically canceled and replaced with the fresh code.
 - An unlimited number of CI jobs can run at once. If 10 developers all commit code to different PRs at the same time, each person will get their own schema containing their changes. Once each PR is merged, dbt Cloud will drop that schema.
 - CI jobs will never block a production run.
