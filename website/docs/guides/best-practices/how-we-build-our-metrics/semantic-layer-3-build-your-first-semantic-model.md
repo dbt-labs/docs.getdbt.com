@@ -1,6 +1,5 @@
 ---
 title: "Build your first semantic model"
-id: 3-semantic-layer-build-semantic-model
 description: Getting started with the dbt Semantic Layer
 displayText: "dbt Cloud Semantic Layer best practices"
 hoverSnippet: Learn how to get started with the dbt Semantic Layer

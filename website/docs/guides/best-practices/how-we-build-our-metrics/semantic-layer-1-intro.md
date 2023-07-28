@@ -1,6 +1,5 @@
 ---
 title: "Intro to the Semantic Layer"
-id: 1-semantic-layer-intro
 description: Getting started with the dbt Semantic Layer
 displayText: "dbt Cloud Semantic Layer best practices"
 hoverSnippet: Learn how to get started with the dbt Semantic Layer
