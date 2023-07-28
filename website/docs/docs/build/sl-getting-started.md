@@ -8,7 +8,7 @@ meta:
   api_name: dbt Semantic Layer API
 ---
 
-This getting started page presents a sample workflow to help you create your first metrics. It uses the [Jaffle shop example](https://github.com/dbt-labs/jaffle-sl-template) as the project data source and is available for you to use. If you prefer, you can create semantic models and metrics for your own dbt project. 
+This getting started page presents a sample workflow to help you create your first metrics. It uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) as the project data source and is available for you to use. If you prefer, you can create semantic models and metrics for your own dbt project.
 
 To fully experience the power of a universal dbt Semantic Layer, take the following steps:
 
@@ -97,7 +97,7 @@ semantic_models:
         expr: 1
         agg: sum
       - name: tax_paid
-        description: The toal tax paid on each order. 
+        description: The total tax paid on each order. 
         agg: sum
       - name: customers_with_orders
         description: Distinct count of customers placing orders
@@ -110,7 +110,7 @@ semantic_models:
       - name: order_cost
         description: The cost for each order item. Cost is calculated as a sum of the supply cost for each order item. 
         agg: sum
-  #Dimensions. Either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.  
+  #Dimensions. Either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.  
     dimensions:
       - name: ordered_at
         type: time
@@ -156,7 +156,7 @@ semantic_models:
         expr: 1
         agg: sum
       - name: tax_paid
-        description: The toal tax paid on each order. 
+        description: The total tax paid on each order. 
         agg: sum
       - name: customers_with_orders
         description: Distinct count of customers placing orders
@@ -169,7 +169,7 @@ semantic_models:
       - name: order_cost
         description: The cost for each order item. Cost is calculated as a sum of the supply cost for each order item. 
         agg: sum
-    #Dimensions. Either categorical or time. These add additonal context to metrics. The typical querying pattern is Metric by Dimension.  
+    #Dimensions. Either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.  
     dimensions:
       - name: ordered_at
         type: time
@@ -200,7 +200,7 @@ group by metric_time_day, country  -- dimensions
 
 ## Define metrics
 
-Now that you've created your first semantic model, it's time to define your first metric! MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). It's recommended that you read the [metrics overview docs](https://docs.getdbt.com/docs/build/metrics-overview) before getting started. 
+Now that you've created your first semantic model, it's time to define your first metric! MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). It's recommended that you read the [metrics overview docs](/docs/build/metrics-overview) before getting started. 
 
 1. You can define metrics in the same YAML files as your semantic models or create a new file. If you want to create your metrics in a new file, create another directory called `/models/metrics`. The file structure for metrics can become more complex from here if you need to further organize your metrics, for example, by data source or business line. 
 
