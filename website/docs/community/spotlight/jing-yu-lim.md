@@ -9,7 +9,7 @@ image: /img/community/spotlight/jing-lim.jpg
 pronouns: she/her
 location: Singapore, Singapore
 jobTitle: I'm open to work!
-companyName: #
+companyName: ""
 organization: ""
 socialLinks:
   - name: LinkedIn
