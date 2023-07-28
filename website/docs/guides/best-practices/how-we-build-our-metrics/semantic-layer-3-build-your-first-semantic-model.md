@@ -206,7 +206,7 @@ from source
 - Here `order_total` and `tax paid` are the columns we want as measures.
 - We can describe them below, specifying a **name, description, aggregation, and expression**.
 - As before MetricFlow we default to the **name being the name of a column when no expression is supplied**.
-- TODO: link to agg docs
+- [Many different aggregations](https://docs.getdbt.com/docs/build/measures#aggregation) are available to us. Here we just want sums.
 
 ```YAML
 measures:
