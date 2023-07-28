@@ -50,7 +50,9 @@ To help ensure a smooth transition, use our [custom-built migration tool](https:
 
 For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-sl). 
 
-* Note, if you're developing in metrics and semantic models in the dbt Cloud IDE, make sure to update your development environment to dbt version 1.6 or newer. This update will affect other analysts on your team who use the IDE for the same project. If they have metrics defined using dbt version 1.5 or older, it might cause errors.
+:::info
+If you're developing in metrics and semantic models in the dbt Cloud IDE, make sure to update your development environment to dbt version 1.6 or newer. This update will affect other analysts on your team who use the IDE for the same project. If they have metrics defined using dbt version 1.5 or older, it might cause errors.
+:::
 
 #### Test your metrics
 
@@ -86,12 +88,14 @@ Ensure that all jobs run successfully with the new version.
 
 Now that your Semantic Layer is set up, you will need to update any downstream integrations that relied on the legacy Semantic Layer. To set up a new connection or update an existing connection, you should do so in the downstream tool and not in dbt Cloud.
 
-**Link to migration guide for Hex**
+<!---
+@mirnawong1 commenting out until these are available
 
+ **Link to migration guide for Hex**
 
 
 **Link to migration guide for Mode**
-
+----->
 
 ## Create environment for the new Semantic Layer
 
@@ -128,11 +132,12 @@ To migrate to the new specification, you'll need to:
 - Upgrade your existing metrics configs to the new spec
 
 To help ensure a smooth transition, you can use our [custom-built migration tool](https://github.com/dbt-labs/dbt-converter/blob/master/README.md) that automates this process. 
-**Note**, this tool doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
+**Note:** this tool doesn't support [derived metrics](/docs/build/derived) and you'll need to migrate them over manually. 
 
 For detailed instructions on how to configure semantic models and metrics, refer to our [getting started guide](/docs/use-dbt-semantic-layer/quickstart-sl). 
 
-* Note, if you're developing in metrics and semantic models in the dbt Cloud IDE, make sure to update your development environment to dbt version 1.6 or newer. This update will affect other analysts on your team who use the IDE for the same project. If they have metrics defined using dbt version 1.5 or older, it might cause errors.
+
+If you're developing in metrics and semantic models in the dbt Cloud IDE, make sure to update your development environment to dbt version 1.6 or newer. This update will affect other analysts on your team who use the IDE for the same project. If they have metrics defined using dbt version 1.5 or older, it might cause errors.
 
 #### Test your metrics
 
@@ -152,10 +157,13 @@ Once you've thoroughly tested and verified the accuracy of your metrics, commit 
 
 Now that your Semantic Layer is set up, you will need to update any downstream integrations that relied on the legacy Semantic Layer. To set up a new connection or update an existing connection, you should do so in the downstream tool and not in dbt Cloud.
 
-**Link to migration guide for Hex**
+<!---
+@mirnawong1 commenting out until these are available
 
+ **Link to migration guide for Hex**
 
 **Link to migration guide for Mode**
+----->
 
 
 ## Resources
