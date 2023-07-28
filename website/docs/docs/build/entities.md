@@ -28,6 +28,17 @@ MetricFlow's join logic depends on the entity `type` you use, and it also determ
 * **Foreign &mdash;** A foreign key can include zero, one, or multiple instances of the same record. Null values may also be present.
 * **Natural &mdash;** Natural keys are column or combination of columns in a table that uniquely identify a record based on real-world data. For instance, in a sales_person_department dimension table, the sales_person_id can serve as a natural key.
 
+The complete spec for entities is below:
+```yaml
+entities:
+  - name: transaction     ## Required
+    type: primary or natural or foreign or unique ## Required
+    description: a description of the field or role the entity takes in this table ## Optional
+    expr: the field that denotes that entity (transaction_id).  ## Optional
+          If not specified will default to name 
+
+```
+
 Here's an example of how to define entities in a semantic model:
 
 ``` yaml
