@@ -7,7 +7,9 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 
 ## Putting it all together
 
-- The finished state of your project should look like this.
+- We've created semantic models and metrics for basic coverage of a key business area.
+- In doing so we've refactored a 'static' mart into a dynamic, flexible new life in the Semantic Layer.
+- We encourage you to explore the `main` branch of the [example project repo](https://github.com/dbt-labs/jaffle-sl-template) to see even more metrics and semantic models in action within a project fully ported to the Semantic Layer.
 
 ## Best practices
 
