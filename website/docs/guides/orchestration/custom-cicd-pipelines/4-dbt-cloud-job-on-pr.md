@@ -89,7 +89,7 @@ As noted above, when the PR job runs it will create a new schema based on the PR
 
 Add this as a macro to your project. It takes 2 arguments that lets you control which schema get dropped:
   - `age_in_days`: The number of days since the schema was last altered before it should be dropped (default 10 days)
-  - `databse_to_clean`: The name of the database to remove schemas from
+  - `database_to_clean`: The name of the database to remove schemas from
   
 ```sql
 {# 
