@@ -5,15 +5,16 @@ description: Learn how to configure a many deployment environment setup in dbt C
 displayText: "dbt Cloud environment best practices"
 hoverSnippet: Learn how to configure a many deployment environment setup in dbt Cloud.
 ---
-
+import ExpNote from '/snippets/_explorer-beta-note.md';
 
 ## What this looks like
 
 1. You have a **single *development* environment** where dbt users can access the dbt Cloud IDE and make changes to their code. However, you’ll want to update the **[custom branch settings](faqs/Environments/custom-branch-settings)** to ensure that developers create feature branches off of the a non-production branch. For this example, we’ll refer to this as the `qa` branch.
 2. You have a **QA deployment environment**, running scheduled jobs from the `qa` branch that deploys your dbt project to a pre-production warehouse location.
-3. You have a **Production deployment environment,** running scheduled jobs from the `main` branch that deploys your dbt project to your production warehouse location. 
-  * Make sure to set the environment to "Production" so you can take advantage of features like dbt Explorer and cross-project refs. 
+3. You have a **Production deployment environment,** running scheduled jobs from the `main` branch that deploys your dbt project to your production warehouse location. <br />
 
+ <ExpNote/>
+ 
 4. You have **multiple Slim CI jobs** (one in each deployment environment) to ensure changes to each branch are tested.  
 
 <Lightbox src="/img/guides/best-practices/environment-setup/many-deployments-table.png" title="Table of basic setup for many deployment environment" />

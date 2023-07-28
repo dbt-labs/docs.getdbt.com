@@ -15,7 +15,7 @@ A dbt Cloud project can have multiple deployment environments, providing you the
 :::tip Learn how to manage dbt Cloud environments
 To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview).
 ::: 
-
+ 
 This page reviews the different types of environments and how to configure your deployment environment in dbt Cloud. 
 
 import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
@@ -28,7 +28,11 @@ To create a new dbt Cloud development environment, navigate to **Deploy** -> **E
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
 
-### Set as production environment
+### Set as production environment (Beta)
+
+import ExpBeta from '/snippets/_explorer-beta-banner.md';  
+
+<ExpBeta/>
 
 In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like dbt Explorer and cross-project references. It acts as the source of truth for the project's production state in dbt Cloud.
 
