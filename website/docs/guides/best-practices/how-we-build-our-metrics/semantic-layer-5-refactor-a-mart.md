@@ -21,19 +21,19 @@ Let's look at the differences we can observe in how we might approach this with 
 
 We recommend an incremental implementation process that looks something like this:
 
-1. Identify an important output (a revenue chart on a dashboard for example, and the mart model(s) that supplies this output.
-2. Examine all the entities that are components of this mart (for instance, an orders mart may include customers, shipping, and product data).
-3. Build semantic models and metrics for all the required components.
-4. Create a clone of the output on top of the Semantic Layer.
-5. Audit to ensure you get accurate outputs.
-6. Identify any other outputs that point to the mart and move them to the Semantic Layer.
-7. Put a deprecation plan in place for the mart.
+1. 👉 Identify **an important output** (a revenue chart on a dashboard for example, and the mart model(s) that supplies this output.
+2. 🔍 Examine all the **entities that are components** of this mart (for instance, an orders mart may include customers, shipping, and product data).
+3. 🛠️ **Build semantic models and metrics** for all the required components.
+4. 👯 Create a **clone of the output** on top of the Semantic Layer.
+5. 💻 Audit to **ensure you get accurate outputs**.
+6. 👉 Identify **any other outputs** that point to the mart and **move them to the Semantic Layer**.
+7. ✌️ Put a **deprecation plan** in place for the mart.
 
-You would then continue this process on other outputs and marts moving down a list of priorities. Each model as you go along will be faster and easier as you'll reuse many of the same components that will already have been semantically modeled.
+You would then **continue this process** on other outputs and marts moving down a list of **priorities**. Each model as you go along will be faster and easier as you'll **reuse many of the same components** that will already have been semantically modeled.
 
 ## Let's refactor `orders`
 
-So far we've been working in new files and pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
+So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
 
 1. Per the above steps, we've identified our target, now we need to identify all the components we need, these will be all the 'import' CTEs at the top our mart. For orders this is: `orders`, `order_items`, `products`, `locations`, and `supplies`.
 2. We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
@@ -48,4 +48,22 @@ So far we've been working in new files and pointing at a staging model to simpli
 
 - We always will start our auditing with a `dbt parse && mf validate-configs` to ensure our code works before we examine its output.
 - If we're working there, we'll move to trying out an `mf query` that replicates the logic of the output we're trying to refactor.
-  <!-- - TODO: example  -->
+- For our example we want to audit monthly revenue, to do that we'd run the query below. You can [read more about the MetricFlow CLI](https://docs.getdbt.com/docs/build/metricflow-cli).
+
+### Example query
+
+```shell
+mf query --metrics revenue --group-by metric_time__month
+```
+
+### Example query results
+
+```shell
+✔ Success 🦄 - query completed after 1.02 seconds
+| METRIC_TIME__MONTH   |   REVENUE |
+|:---------------------|----------:|
+| 2016-09-01 00:00:00  |  17032.00 |
+| 2016-10-01 00:00:00  |  20684.00 |
+| 2016-11-01 00:00:00  |  26338.00 |
+| 2016-12-01 00:00:00  |  10685.00 |
+```
