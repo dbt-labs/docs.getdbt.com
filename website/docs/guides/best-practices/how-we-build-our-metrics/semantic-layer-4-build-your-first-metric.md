@@ -7,9 +7,9 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 
 ## Our first metric
 
-- We'll start with one of the most important metrics for any business: **revenue**.
-- For now, our metric for revenue will be **defined as the sum of order totals excluding tax**.
-- Let's create a file called `metrics.yml` in our marts folder for now to write our first metric in.
+- 💹 We'll start with one of the most important metrics for any business: **revenue**.
+- 📖 For now, our metric for revenue will be **defined as the sum of order totals excluding tax**.
+- 🆕 Let's create a file called `metrics.yml` in our marts folder for now to write our first metric in.
 
 ## Defining revenue
 

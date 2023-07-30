@@ -15,6 +15,10 @@ A semantic model is the Semantic Layer equivalent to a logical layer model (what
   - 📏 **measures**: these are the **quantitative values you want to aggregate**
 - 📚 We define **columns as being an entity, dimension, or measure**.
 
+:::tip
+**File per model**. Given the interdependence of logical and semantic models, and semantic models and metrics, we've updated our best practice recommendation to a one YAML file per model approach if you're using the Semantic Layer. This houses everything related to a model in one place and preserves unique file names for quickly getting to the code you want.
+:::
+
 ## Defining orders
 
 - 🥪 The semantic model we're going to define is _orders_.
@@ -56,7 +60,7 @@ semantic_models:
 - ⛓️ Unlike many other semantic layers, in MetricFlow **we do not need to describe joins explicitly**, instead the **relationships are implicitly described by entities**.
 - 1️⃣ Each semantic model should have **one primary entity** defined for itself, and **any number of foreign entities** for other semantic models it may join to.
 - 🫂 Entities require a **name and type**
-  - Types available are primary, foreign, unique or natural — we'll be focused on the first two for now, but you can [read more about unique and natural keys](https://docs.getdbt.com/docs/build/entities#entity-types).
+  - 🔑 Types available are **primary**, **foreign**, **unique** or **natural** — we'll be focused on the first two for now, but you can [read more about unique and natural keys](https://docs.getdbt.com/docs/build/entities#entity-types).
 
 ### Entities in action
 
@@ -84,7 +88,7 @@ renamed as (
 
 - 👉 We add them with a **`name`, `type`, and optional `expr`** (expression). The expression can be any valid SQL expression on your platform.
 - 📛 If you **don't add an expression**, MetricFlow will **assume the name is equal to the column name** in the underlying logical model.
-- ➕ Our best practices pattern is to, whenever possible, provide a `name` that is the singular form of the subject or grain of the table, and use `expr` to specify the precise column name (with `_id` etc). This will let us write **more readable metrics** on top of these semantic models.
+- 👍 Our best practices pattern is to, whenever possible, provide a `name` that is the singular form of the subject or grain of the table, and use `expr` to specify the precise column name (with `_id` etc). This will let us write **more readable metrics** on top of these semantic models.
 
 ```YAML
 semantic_models:
@@ -183,7 +187,7 @@ dimensions:
 
 ### Measures in action
 
-- 👀 Lets look at our staging model one last time and see what fields we want to measure.
+- 👀 Lets look at **our staging model** one last time and see what **fields we want to measure**.
 
 ```SQL
 select
@@ -203,7 +207,7 @@ select
 from source
 ```
 
-- ➕ Here `order_total` and `tax paid` are the columns we want as measures.
+- ➕ Here `order_total` and `tax paid` are the **columns we want as measures**.
 - 📝 We can describe them via the code below, specifying a **name, description, aggregation, and expression**.
 - 👍 As before MetricFlow we default to the **name being the name of a column when no expression is supplied**.
 - 🧮 [Many different aggregations](https://docs.getdbt.com/docs/build/measures#aggregation) are available to us. Here we just want sums.
@@ -270,7 +274,7 @@ semantic_models:
         expr: 1
         agg: sum
       - name: tax_paid
-        description: The toal tax paid on each order.
+        description: The total tax paid on each order.
         agg: sum
 ```
 

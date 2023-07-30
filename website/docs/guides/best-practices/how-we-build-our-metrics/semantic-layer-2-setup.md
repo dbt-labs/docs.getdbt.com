@@ -7,7 +7,7 @@ hoverSnippet: Learn how to get started with the dbt Semantic Layer
 
 ## Getting started
 
-First, if you want to follow along, we'll need to clone the [example project](https://github.com/dbt-labs/jaffle-sl-template). You will need access to a Snowflake or Postgres warehouse for this, for the time being. The project is our classic Jaffle Shop, a simulated chain restaurant serving [jaffles](https://en.wikipedia.org/wiki/Pie_iron) and tasty beverages.
+First, if you want to follow along, we'll need to clone the [example project](https://github.com/dbt-labs/jaffle-sl-template). You will need access to a Snowflake, BigQuery, Databricks, or Postgres warehouse for this, for the time being. The project is our classic Jaffle Shop, a simulated chain restaurant serving [jaffles](https://en.wikipedia.org/wiki/Pie_iron) and tasty beverages.
 
 ```shell
 git clone git@github.com:dbt-labs/jaffle-sl-template.git
@@ -22,9 +22,10 @@ We'll use pip to install MetricFlow and our dbt adapter:
 # activate a virtual environment for your project,
 # if you don't have a name you like to use we suggest .venv
 python -m venv [virtual environment name]
-# e.g. dbt-metricflow[snowflake]
-# Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon).
+source [virtual environment name]/bin/activate
+# install dbt and MetricFlow
 pip install dbt-metricflow[adapter name]
+# e.g. dbt-metricflow[snowflake]
 ```
 
 Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-here` branch.
@@ -33,7 +34,7 @@ Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-her
 git checkout start-here
 ```
 
-For more information you can [look at the docs](/docs/build/metricflow-cli).
+For more information you can [look at the docs](/docs/build/metricflow-cli) or checkout a [Quickstart](https://docs.getdbt.com/quickstarts) to get more familiar with setting up a dbt project.
 
 ## Basic commands
 
