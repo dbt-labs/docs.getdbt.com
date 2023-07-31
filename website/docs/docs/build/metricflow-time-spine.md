@@ -9,9 +9,10 @@ tags: [Metrics, Semantic Layer]
 MetricFlow uses a timespine table to construct cumulative metrics. By default, MetricFlow expects the timespine table to be named `metricflow_time_spine` and doesn't support using a different name.
 
 To create this table, you need to create a model in your dbt project called `metricflow_time_spine` and add the following code:
+<File name='metricflow_time_spine.sql'>
 
 ```sql
-filename: metricflow_time_spine.sql
+
 {{
     config(
         materialized = 'table',
@@ -37,6 +38,8 @@ final as (
 
 select * from final
 ```
+</File>
+
 ```sql
 --- BigQuery supports DATE() instead of TO_DATE(). Use this model if you're using BigQuery
 {{config(materialized='table')}}
