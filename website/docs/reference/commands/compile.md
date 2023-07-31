@@ -33,14 +33,43 @@ dbt compile --select stg_payments
 dbt compile --inline "select * from {{ ref('raw_orders') }}"
 ```
 
-<Lightbox src="/img/docs/reference/dbt-compile.png" title="dbt compile --select stg_payments"/>
+returns the following:
+
+
+```bash
+dbt compile --select stg_orders
+21:17:09 Running with dbt=1.5.0-b5
+21:17:09 Found 5 models, 20 tests, 0 snapshots, 0 analyses, 425 macros, 0 operations, 3 seed files, 0 sources, 0 exposures, 0 metrics, 0 groups
+21:17:09
+21:17:09 Concurrency: 24 threads (target='dev')
+21:17:09
+21:17:09 Compiled node 'stg_orders' is:
+with source as (
+    select * from "jaffle_shop"."main"."raw_orders"
+
+),
+
+renamed as (
+
+    select
+        id as order_id
+        user_id as customer_id
+        order_date
+        status
+
+    from source
+
+)
+
+select * from renamed
+```
 
 </VersionBlock>
 
-The command accesses the data platform to cache related metadata, and to run introspective queries. Use the flags:
-- `--no-populate-cache` to disable initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query.
-- `--no-introspect` to disable instrospective queries. dbt will raise an error if a model's definition requires running one.
+The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
+- `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query.
+- `--no-introspect` to disable [introspective queries](/faqs/warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one.
 
 
 ### FAQs
-<FAQ src="Warehouse/db-connection-dbt-compile" />
+<FAQ path="Warehouse/db-connection-dbt-compile" />

@@ -1,6 +1,6 @@
 ---
 resource_types: [models]
-description: "Read this guide to understand the contract configuration in dbt."
+description: "When the contract configuration is enforced, dbt will ensure that your model's returned dataset exactly matches the attributes you have defined in yaml, such as name and data_type, as well as any additional constraints supported by the data platform."
 datatype: "{<dictionary>}"
 default_value: {contract: false}
 id: "contract"
@@ -25,7 +25,9 @@ This is to ensure that the people querying your model downstream—both inside a
 
 The `data_type` defined in your YAML file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
 
-That said, when dbt is comparing data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. If you need a more-precise assertion, it's always possible to accomplish by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
+When dbt is comparing data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. If you need a more-precise assertion, it's always possible to accomplish by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
+
+That said, on certain data platforms, you will need to specify a varchar size or numeric scale if you do not want it to revert to the default. This is most relevant for the `numeric` type on Snowflake, which defaults to a precision of 38 and a scale of 0 (zero digits after the decimal, such as rounded to an integer). To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`.
 
 ## Example
 
@@ -101,7 +103,7 @@ When you use the `state:modified` selection method in Slim CI, dbt will detect c
 Breaking changes include:
 - Removing an existing column
 - Changing the `data_type` of an existing column
-- (Future) Removing or modifying one of the `constraints` on an existing column
+- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
 
 ```
 Breaking Change to Contract Error in model sometable (models/sometable.sql)

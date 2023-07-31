@@ -31,7 +31,7 @@ A SQL statement (or list of SQL statements) to be run at the start, or end, of t
 
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock lastVersion="1.1">
 

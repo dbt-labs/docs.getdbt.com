@@ -9,6 +9,12 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
+<Snippet path="dbt-databricks-for-databricks" />
+
+:::note
+See [Databricks configuration](#databricks-configs) for the Databricks version of this page.
+:::
+
 ## Configuring tables
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-spark plugin, in addition to the standard [model configs](/reference/model-configs).

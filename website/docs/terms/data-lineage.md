@@ -79,7 +79,7 @@ DAGs shouldn’t be dependent on manual updates. Instead, your DAG should be aut
 
 ### Third-party tooling
 
-Data teams may also choose to use third-party tools  with  lineage capabilities such as [Atlan](https://ask.atlan.com/hc/en-us/articles/4433673207313-How-to-set-up-dbt-Cloud), Alation, [Collibra](https://marketplace.collibra.com/listings/dbt-lineage-to-collibra-integration/), Metaphor, [Monte Carlo](https://docs.getmontecarlo.com/docs/dbt-cloud), [Select Star](https://docs.selectstar.com/integrations/dbt/dbt-cloud), or [Stemma](https://docs.stemma.ai/docs/stemma/getting-started/what-we-need-from-you/dbt-integration/). These tools often integrate directly with your data pipelines and dbt workflows and offer zoomed-in data lineage capabilities such as column-level or business logic-level lineage.
+Data teams may also choose to use third-party tools with lineage capabilities such as [Atlan](https://ask.atlan.com/hc/en-us/articles/4433673207313-How-to-set-up-dbt-Cloud), Alation, [Collibra](https://marketplace.collibra.com/listings/dbt-lineage-to-collibra-integration/), [Datafold](https://www.datafold.com/column-level-lineage), Metaphor, [Monte Carlo](https://docs.getmontecarlo.com/docs/dbt-cloud), [Select Star](https://docs.selectstar.com/integrations/dbt/dbt-cloud), or [Stemma](https://docs.stemma.ai/docs/stemma/getting-started/what-we-need-from-you/dbt-integration/). These tools often integrate directly with your data pipelines and dbt workflows and offer zoomed-in data lineage capabilities such as column-level or business logic-level lineage.
 
 ## Data lineage challenges
 
