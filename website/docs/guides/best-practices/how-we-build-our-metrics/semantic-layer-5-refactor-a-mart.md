@@ -26,16 +26,17 @@ We recommend an incremental implementation process that looks something like thi
 3. 🛠️ **Build semantic models and metrics** for all the required components.
 4. 👯 Create a **clone of the output** on top of the Semantic Layer.
 5. 💻 Audit to **ensure you get accurate outputs**.
-6. 👉 Identify **any other outputs** that point to the mart and **move them to the Semantic Layer**.
-7. ✌️ Put a **deprecation plan** in place for the mart.
+6. 💎 Use `mf list dimensions --metrics [metric_name]` to check that your refactoring is increasing dimensionality (flexibility).
+7. 👉 Identify **any other outputs** that point to the mart and **move them to the Semantic Layer**.
+8. ✌️ Put a **deprecation plan** in place for the mart.
 
 You would then **continue this process** on other outputs and marts moving down a list of **priorities**. Each model as you go along will be faster and easier as you'll **reuse many of the same components** that will already have been semantically modeled.
 
-## Let's refactor `orders`
+## Let's make a `revenue` metric
 
 So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
 
-1. Per the above steps, we've identified our target, now we need to identify all the components we need, these will be all the 'import' CTEs at the top our mart. For orders this is: `orders`, `order_items`, `products`, `locations`, and `supplies`.
+1. Per the above steps, we've identified our target, now we need to identify all the components we need, these will be all the 'import' CTEs at the top our mart. Let's look at `orders` and `order_items`, the likely models to generate revenue, we see we'll need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
 2. We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
 3. We'll want to first decide if we need to do any joining to get this into the shape we want for our semantic model. The biggest determinants of this are two factors:
    - Does this semantic model contain measures?
@@ -236,78 +237,6 @@ mf query --metrics revenue --group-by metric_time__month
 ```
 
 - Try introducing some other dimensions from the semantic models into the `group-by` arguments to get a feel for this command.
-
-## Building `orders`
-
-1. Now we can build our `orders` mart and semantic model, leveraging the new `order_items` mart. Here we're just aggregating some measures up to the orders level. Note that we do end up using `stg_orders` twice, a conscious tradeoff based on source data to ensure we can feed all our data into MetricFlow optimally at different grains.
-
-   ```SQL
-   with
-
-   orders as (
-
-      select * from {{ ref('stg_orders')}}
-
-   ),
-
-   order_items as (
-
-      select * from {{ ref('stg_order_items')}}
-
-   ),
-
-   order_items_summary as (
-
-      select
-
-         order_items.order_id,
-
-         sum(supply_cost) as order_cost,
-         sum(is_food_item) as count_food_items,
-         sum(is_drink_item) as count_drink_items
-
-
-      from order_items
-
-      group by 1
-
-   ),
-
-
-   compute_booleans as (
-      select
-
-         orders.*,
-         count_food_items > 0 as is_food_order,
-         count_drink_items > 0 as is_drink_order,
-         order_cost
-
-      from orders
-
-      left join order_items_summary on orders.order_id = order_items_summary.order_id
-   )
-
-   select * from compute_booleans
-   ```
-
-2. TODO: indentation nightmare code --- Next let's make a semantic model on top of orders in `/models/marts/orders.yml`.
-
-3. Lastly, let's calculate a new order-level metric, `order_total`, which includes product revenue and taxes.
-
-```YAML
-metrics:
-  - name: order_total
-    description: Sum of total order amonunt. Includes tax + revenue.
-    type: simple
-    label: Order Total
-    type_params:
-      measure: order_total
-```
-
-4. Repeat the steps above checking the config and testing some metric queries out.
-<!-- TODO: queries and results when mf is fixed -->
-
-## Exploring dimensionality
 
 ## An alternate approach
 

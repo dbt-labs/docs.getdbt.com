@@ -1,11 +1,11 @@
 ---
-title: "Build your first metric"
+title: "Building metrics"
 description: Getting started with the dbt Semantic Layer
 displayText: "dbt Cloud Semantic Layer best practices"
 hoverSnippet: Learn how to get started with the dbt Semantic Layer
 ---
 
-## Our first metric
+## How to build metrics
 
 - 💹 We'll start with one of the most important metrics for any business: **revenue**.
 - 📖 For now, our metric for revenue will be **defined as the sum of order totals excluding tax**.

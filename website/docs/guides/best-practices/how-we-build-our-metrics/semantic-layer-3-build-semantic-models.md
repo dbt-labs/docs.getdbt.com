@@ -1,11 +1,11 @@
 ---
-title: "Build your first semantic model"
+title: "Building semantic models"
 description: Getting started with the dbt Semantic Layer
 displayText: "dbt Cloud Semantic Layer best practices"
 hoverSnippet: Learn how to get started with the dbt Semantic Layer
 ---
 
-## Our first semantic model
+## How to build a semantic model
 
 A semantic model is the Semantic Layer equivalent to a logical layer model (what historically has just been called a 'model' in dbt land). Just as configurations for models are defined on the `models:` YAML key, configurations for semantic models are housed under `semantic models:`. A key difference is that while a logical model consists of configuration and SQL or Python code, a **semantic model is defined purely via YAML**. Rather than encoding a specific dataset, a **semantic model describes relationships** that let your end users select and refine their own datasets reliably.
 
@@ -213,10 +213,10 @@ from source
 ```YAML
 measures:
   - name: order_total
-    description: The total revenue for each order.
+    description: The total amount for each order inlcuding taxes.
     agg: sum
   - name: tax_paid
-    description: The toal tax paid on each order.
+    description: The total tax paid on each order.
     agg: sum
 ```
 
