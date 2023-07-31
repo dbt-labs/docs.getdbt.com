@@ -27,7 +27,7 @@ We're not limited to just passing measures through to our metrics, we can also _
     type_params:
       measure: revenue
       filter: |
-        {{dimension('is_food_order')}} = true
+        {{ Dimension('order__is_food_order') }} = true
 ```
 
 - 📝 Now we can set up our ratio metric.
