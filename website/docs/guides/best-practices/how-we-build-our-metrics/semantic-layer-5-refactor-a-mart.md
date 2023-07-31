@@ -307,6 +307,8 @@ metrics:
 4. Repeat the steps above checking the config and testing some metric queries out.
 <!-- TODO: queries and results when mf is fixed -->
 
+## Exploring dimensionality
+
 ## An alternate approach
 
-If you don't have capacity to refactor some of your marts, they can still benefit from the Semantic Layer. The above process is about maximizing dimensionality for the long term, in the short term, making your marts as-is available to MetricFlow unlocks greatly increased functionality. For an example of this quicker approach check out the `customers` SQL and YAML files. This displays a typical denormalized dbt mart being hooked into MetricFlow.
+If you don't have capacity to refactor some of your marts, they can still benefit from the Semantic Layer. The above process is about maximizing dimensionality for the long term, in the short term, making your marts as-is available to MetricFlow unlocks greatly increased functionality. For an example of this quicker approach check out the `customers` SQL and YAML files on the `main` branch. This displays a typical denormalized dbt mart being hooked into MetricFlow.
