@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.5 (latest)"
+title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
 ---
 
