@@ -14,7 +14,7 @@ You can also further customize how dbt works with your specific data platform vi
 
 ## Types of Adapters
 
-There are three types of adapters available today. The purpose of differentiation is to provide users with an easier means to evaluate adapter quality.
+There are three types of adapters available today:
 
 - **Verified** &mdash; [Verified adapters](verified-adapters) are those that have completed a rigorous verification process in collaboration with dbt Labs.
 - **Trusted** &mdash; [Trusted adapters](trusted-adapters) are those where the adapter maintainers have agreed to meet a higher standard of quality.

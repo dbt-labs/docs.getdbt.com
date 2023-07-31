@@ -1,12 +1,12 @@
 name: Add adapter to Trusted list
 description: >
   For adapter maintainers who wish to have theirs added to the list of [Trusted adapters](https://docs.getdbt.com/docs/trusted-adapters)
-labels: ["adapter maintainers","developer blog"]
+labels: ["adapter maintainers"]
 body:
   - type: markdown
     attributes:
       value: |
-        We're excited that you'd like to support your adapter formally as "Trusted"! This template will ensure that you are aware of the process and the guidelines. Additionally, that you can vouch that your adapter currently what is expected of a Trusted adapter
+        We're excited that you'd like to support your adapter formally as "Trusted"! This template will ensure that you are aware of the process and the guidelines. Additionally, that you can vouch that your adapter currently meets the standards of a Trusted adapter
 
   - type: input
     id: adapter-repo
@@ -30,7 +30,7 @@ body:
     attributes:
       label: Which of these best describes you?
       options:
-        - label: I am a dbt Community member or partner contributing to the Developer Blog
+        - label: I am a dbt Community member
         - label: I work for the vendor on top of which the dbt adapter functions
 
   - type: checkboxes
@@ -41,7 +41,7 @@ body:
         - label: I am a maintainer of the adapter being submited for Trusted status
         - label: I have read both the [Trusted adapters](https://docs.getdbt.com/docs/trusted-adapters) and [Building a Trusted Adapter](https://docs.getdbt.com/guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter) pages.
         - label: I believe that the adapter currently meets the expectations given above
-        - label: I will ensure this adapter stays in compliance with the guidelines indefinitely
+- label: I will ensure this adapter stays in compliance with the guidelines 
         - label: I understand that dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met
     validations:
       required: true
