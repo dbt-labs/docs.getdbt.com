@@ -7,8 +7,6 @@ The Trusted adapter program exists to allow adapter maintainers to demonstrate t
 
 ## What does it mean to be trusted
 
-Below are some categories with stuff.
-
 By opting into the below, you agree to this, and we take you at your word. dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met.
 
 ### Feature Completeness
