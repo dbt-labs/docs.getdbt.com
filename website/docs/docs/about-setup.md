@@ -5,7 +5,7 @@ description: "About setup of dbt Core and Cloud"
 sidebar_label: "About dbt setup"
 ---
 
-dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. There are two options for using dbt:
+dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. There are two options for deploying dbt:
 
 **dbt Cloud** runs dbt Core in a hosted (single or multi-tenant) environment with a browser-based interface. The intuitive UI will aid you in setting up the various components. dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated developer environment (IDE).
 
