@@ -36,14 +36,14 @@ You would then **continue this process** on other outputs and marts moving down 
 
 So far we've been working in new pointing at a staging model to simplify things as we build new mental models for MetricFlow. In reality, unless you're implementing MetricFlow in a green-field dbt project, you probably are going to have some refactoring to do. So let's get into that in detail.
 
-1. Per the above steps, we've identified our target, now we need to identify all the components we need, these will be all the 'import' CTEs at the top our mart. Let's look at `orders` and `order_items`, the likely models to generate revenue, we see we'll need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
-2. We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
-3. We'll want to first decide if we need to do any joining to get this into the shape we want for our semantic model. The biggest determinants of this are two factors:
-   - Does this semantic model contain measures?
-   - Does this semantic model have a primary timestamp?
-   - If a semantic model has measures but no timestamp (for example, supplies in the example project, which has static costs of supplies), you'll likely want to sacrifice some normalization and join it on to another model that has a primary timestamp to allow for metric aggregation.
-4. If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go straight to the staging model here.
-5. We specify our primary entity (based on `location_id`), dimensions (one categorical, `location_name`, and one primary time dimension `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
+1. 📚 Per the above steps, we've identified our target, now we need to identify all the components we need, these will be all the 'import' CTEs at the top our mart. Let's look at `orders` and `order_items`, the likely models to generate revenue, we see we'll need: `orders`, `order_items`, `products`, `locations`, and `supplies`.
+2. 🗺️ We'll next make semantic models for all of these. Let's walk through a straightforward conversion first with `locations`.
+3. ⛓️ We'll want to first decide if we need to do any joining to get this into the shape we want for our semantic model. The biggest determinants of this are two factors:
+   - 📏 Does this semantic model **contain measures**?
+   - 🕥 Does this semantic model have a **primary timestamp**?
+   - 🫂 If a semantic model **has measures but no timestamp** (for example, supplies in the example project, which has static costs of supplies), you'll likely want to **sacrifice some normalization and join it on to another model** that has a primary timestamp to allow for metric aggregation.
+4. 🔄 If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go **straight to the staging model** here.
+5. 🥇 We specify our **primary entity** (based on `location_id`), dimensions (one categorical, `location_name`, and one **primary time dimension** `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
 
    ```YAML
    semantic_models:
@@ -75,13 +75,13 @@ Now, let's tackle a thornier situation. Products and supplies both have dimensio
 
 <Lightbox src='/img/guides/best-practices/semantic-layer/orders_erd.png' />
 
-So to calculate, for instance, the cost of ingredients and supplies for a given order, we'll need to do some joining and aggregating, but again we lack a time dimension for products and supplies. This is the signal to us that we'll need to build a logical mart and point our semantic model at that.
+So to calculate, for instance, the cost of ingredients and supplies for a given order, we'll need to do some joining and aggregating, but again we **lack a time dimension for products and supplies**. This is the signal to us that we'll **need to build a logical mart** and point our semantic model at that.
 
 :::tip
 **dbt 🧡 MetricFlow.** This is where integrating your semantic definitions into your dbt project really starts to pay dividends. The interaction between the logical and semantic layers is so dynamic, you either need to house them in one codebase or facilitate a lot of cross-project communication and dependency.
 :::
 
-1. Let's aim, to start, at building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. We'll write the following code in `models/marts/order_items.sql`.
+1. 🎯 Let's aim at, to start, building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. We'll write the following code in `models/marts/order_items.sql`.
 
    ```SQL
    {{
@@ -150,7 +150,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
    select * from joined
    ```
 
-2. Now we've got a table that looks more like what we want to feed into MetricFlow. Next, we'll build a semantic model on top of this new mart in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
+2. 🏗️ Now we've got a table that looks more like what we want to feed into MetricFlow. Next, we'll **build a semantic model on top of this new mart** in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
 
    ```YAML
    semantic_models:
@@ -200,7 +200,7 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
               expr: product_price
    ```
 
-3. Let's build a simple revenue metric on top of our semantic model now.
+3. 📏 Finally, Let's **build a simple revenue metric** on top of our semantic model now.
 
    ```YAML
    metrics:
@@ -214,9 +214,9 @@ So to calculate, for instance, the cost of ingredients and supplies for a given 
 
 ## Checking our work
 
-- We always will start our auditing with a `dbt parse && mf validate-configs` to ensure our code works before we examine its output.
-- If we're working there, we'll move to trying out an `mf query` that replicates the logic of the output we're trying to refactor.
-- For our example we want to audit monthly revenue, to do that we'd run the query below. You can [read more about the MetricFlow CLI](https://docs.getdbt.com/docs/build/metricflow-cli).
+- 🔍 We always will start our **auditing** with a `dbt parse && mf validate-configs` to **ensure our code works** before we examine its output.
+- 👯 If we're working there, we'll move to trying out an `mf query` that **replicates the logic of the output** we're trying to refactor.
+- 💸 For our example we want to **audit monthly revenue**, to do that we'd run the query below. You can [read more about the MetricFlow CLI](https://docs.getdbt.com/docs/build/metricflow-cli).
 
 ### Example query
 
@@ -240,4 +240,4 @@ mf query --metrics revenue --group-by metric_time__month
 
 ## An alternate approach
 
-If you don't have capacity to refactor some of your marts, they can still benefit from the Semantic Layer. The above process is about maximizing dimensionality for the long term, in the short term, making your marts as-is available to MetricFlow unlocks greatly increased functionality. For an example of this quicker approach check out the `customers` SQL and YAML files on the `main` branch. This displays a typical denormalized dbt mart being hooked into MetricFlow.
+If you **don't have capacity to refactor** some of your marts, they can **still benefit from the Semantic Layer**. The above process is about **maximizing dimensionality** for the long term. In the short term, making your **marts as-is available to MetricFlow** unlocks greatly increased functionality. For an example of this quicker approach check out the `customers` SQL and YAML files on the `main` branch. This displays a **typical denormalized dbt mart** being hooked into MetricFlow.
