@@ -2,7 +2,7 @@
 id: jing-yu-lim
 title: Jing Yu Lim
 description: |
-  For ~3 years, I was a Product Analyst at Grab, a ride-hailing and food delivery app in Southeast Asia, before taking on an Analytics Engineering role in Spenmo, a B2B Fintech startup. I joined a tech company in June 2023, but was recently impacted by a layoff. I'm also one of the co-organisers of the <a href="https://www.meetup.com/singapore-dbt-meetup/" title="Singapore dbt Meetup" rel="noopener noreferrer" target="_blank">Singapore dbt Meetup</a>! 
+  For ~3 years, I was a Product Analyst at Grab, a ride-hailing and food delivery app in Southeast Asia, before taking on an Analytics Engineering role in Spenmo, a B2B Fintech startup. I joined a tech company as an analyst in June 2023, but was recently impacted by a layoff. I'm also one of the co-organisers of the <a href="https://www.meetup.com/singapore-dbt-meetup/" title="Singapore dbt Meetup" rel="noopener noreferrer" target="_blank">Singapore dbt Meetup</a>! 
 
   My story with dbt started in Jan 2022, when I joined Spenmo where I taught myself dbt, mainly via <a href="https://docs.getdbt.com/docs/introduction" title="dbt's documentation">dbt's documentation</a> and <a href="https://www.getdbt.com/community/join-the-community/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_dbt-spotlight_aw&utm_content=____&utm_term=all___" title="Slack community" rel="noopener noreferrer" target="_blank">Slack community</a>. We used Snowflake as our data warehouse, and Holistics for BI. I spoke about data self-serve and Spenmo's journey with dbt at multiple meetups.
 image: /img/community/spotlight/jing-lim.jpg
