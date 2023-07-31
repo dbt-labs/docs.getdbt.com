@@ -57,7 +57,7 @@ models:
     config: ...
 ```
 
-Some options that could previously be specified _after_ a sub-command can now only be specified _before__. This includes the inverse of the command, `--write-json` and `--no-write-json`, for example.  The list of affected commands are:
+Some options that could previously be specified _after_ a sub-command can now only be specified _before_. This includes the inverse of the command, `--write-json` and `--no-write-json`, for example.  The list of affected commands are:
 
 | --cache-selected-only | --debug | --deprecated-print | --enable-legacy-logger| --fail-fast |
 |--------------|--------------|-----------------|-----------|---------------------------|
