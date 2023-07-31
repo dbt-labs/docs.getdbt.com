@@ -145,14 +145,13 @@ from source
 
 - ⏰ For now the only dimension to add is a **time dimension**.
 - 🕰️ At least one **primary time dimension** is **required** for any semantic models that **have measures**.
-- 1️⃣ We denote this with the `is_primary` property.
+- 1️⃣ We denote this with the `is_primary` property, or if there is only one time dimension supplied it is primary by default. Below we only have `ordered_at` as a timestamp so we don't need to specify anything except the maximum granularity we're bucketing to (in this case, day).
 
 ```YAML
 dimensions:
-      - name: ordered_at
+      - name: date_trunc('day', ordered_at)
         type: time
         type_params:
-          is_primary: true
           time_granularity: day
 ```
 
@@ -168,10 +167,9 @@ We'll discuss an alternate situation, dimensional tables that have static numeri
 ```YAML
 ...
 dimensions:
-  - name: ordered_at
+  - name: date_trunc('day', ordered_at)
     type: time
     type_params:
-      is_primary: true
       time_granularity: day
   - name: is_large_order
     type: categorical
@@ -233,7 +231,7 @@ measures:
 
 ## Validating configs
 
-Now we should have code that looks like this, our first complete semantic model!
+Our completed code should look like this, our first semantic model!
 
 ```orders
 semantic_models:
@@ -243,7 +241,7 @@ semantic_models:
     description: |
       Order fact table. This table is at the order grain with one row per order.
 
-    model: ref('orders')
+    model: ref('stg_orders')
 
     entities:
       - name: order_id
@@ -259,7 +257,6 @@ semantic_models:
       - name: ordered_at
         type: time
         type_params:
-          is_primary: true
           time_granularity: day
       - name: is_large_order
         type: categorical

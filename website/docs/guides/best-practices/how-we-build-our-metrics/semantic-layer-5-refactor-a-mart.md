@@ -41,10 +41,177 @@ So far we've been working in new pointing at a staging model to simplify things 
    - Does this semantic model contain measures?
    - Does this semantic model have a primary timestamp?
    - If a semantic model has measures but no timestamp (for example, supplies in the example project, which has static costs of supplies), you'll likely want to sacrifice some normalization and join it on to another model that has a primary timestamp to allow for metric aggregation.
-4. If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations is a purely dimensional table
-5. Before we dive into implementing the refactor, lets use a new command `mf list dimensions` to check the dimensionality of our current mart for comparison to our refactor. We can use this to ensure we're **increasing the dimensionality as we refactor**, that's our goal.
+4. If we _don't_ need any joins, we'll just go straight to the staging model for our semantic model's `ref`. Locations does have a `tax_rate` measure, but it also has an `ordered_at` timestamp, so we can go straight to the staging model here.
+5. We specify our primary entity (based on `location_id`), dimensions (one categorical, `location_name`, and one primary time dimension `opened_at`), and lastly our measures, in this case just `average_tax_rate`.
 
-## Checking your work
+   ```YAML
+   semantic_models:
+   - name: locations
+      description: |
+      Location dimension table. The grain of the table is one row per location.
+      model: ref('stg_locations')
+      entities:
+      - name: location
+         type: primary
+         expr: location_id
+      dimensions:
+      - name: location_name
+         type: categorical
+      - name: date_trunc('day', opened_at)
+         type: time
+         type_params:
+            time_granularity: day
+      measures:
+      - name: average_tax_rate
+         description: Average tax rate.
+         expr: tax_rate
+         agg: avg
+   ```
+
+## Semantic and logical interaction
+
+Now, let's tackle a thornier situation. Products and supplies both have dimensions and measures but no time dimension. Products has a one-to-one relationship with `order_items`, enriching that table, which is itself just a mapping table of products to orders. Additionally, products have a one-to-many relationship with supplies. The high-level ERD looks like the diagram below.
+
+<Lightbox src='/img/guides/best-practices/semantic-layer/orders_erd.png' />
+
+So to calculate, for instance, the cost of ingredients and supplies for a given order, we'll need to do some joining and aggregating, but again we lack a time dimension for products and supplies. This is the signal to us that we'll need to build a logical mart and point our semantic model at that.
+
+:::tip
+**dbt 🧡 MetricFlow.** This is where integrating your semantic definitions into your dbt project really starts to pay dividends. The interaction between the logical and semantic layers is so dynamic, you either need to house them in one codebase or facilitate a lot of cross-project communication and dependency.
+:::
+
+1. Let's aim, to start, at building a table at the `order_items` grain. We can aggregate supply costs up, map over the fields we want from products, such as price, and bring the `ordered_at` timestamp we need over from the orders table. We'll write the following code in `models/marts/order_items.sql`.
+
+   ```SQL
+   {{
+      config(
+         materialized = 'table',
+      )
+   }}
+
+   with
+
+   order_items as (
+
+      select * from {{ ref('stg_order_items') }}
+
+   ),
+
+   orders as (
+
+      select * from {{ ref('stg_orders')}}
+
+   ),
+
+   products as (
+
+      select * from {{ ref('stg_products') }}
+
+   ),
+
+   supplies as (
+
+      select * from {{ ref('stg_supplies') }}
+
+   ),
+
+   order_supplies_summary as (
+
+      select
+         product_id,
+         sum(supply_cost) as supply_cost
+
+      from supplies
+
+      group by 1
+   ),
+
+   joined as (
+
+      select
+         order_items.*,
+         products.product_price,
+         order_supplies_summary.supply_cost,
+         products.is_food_item,
+         products.is_drink_item,
+         orders.ordered_at
+
+      from order_items
+
+      left join orders on order_items.order_id  = orders.order_id
+
+      left join products on order_items.product_id = products.product_id
+
+      left join order_supplies_summary on order_items.product_id = order_supplies_summary.product_id
+
+   )
+
+   select * from joined
+   ```
+
+2. Now we've got a table that looks more like what we want to feed into MetricFlow. Next, we'll build a semantic model on top of this new mart in `models/marts/order_items.yml`. Again, we'll identify our **entities, then dimensions, then measures**.
+
+   ```YAML
+   semantic_models:
+      #The name of the semantic model.
+      - name: order_items
+         defaults:
+            agg_time_dimension: ordered_at
+         description: |
+            Items contatined in each order. The grain of the table is one row per order item.
+         model: ref('order_items')
+         entities:
+            - name: order_item
+              type: primary
+              expr: order_item_id
+            - name: order_id
+              type: foreign
+              expr: order_id
+            - name: product
+              type: foreign
+              expr: product_id
+         dimensions:
+            - name: ordered_at
+              expr: date_trunc('day', ordered_at)
+              type: time
+              type_params:
+                time_granularity: day
+            - name: is_food_item
+              type: categorical
+            - name: is_drink_item
+              type: categorical
+         measures:
+            - name: revenue
+              description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
+              agg: sum
+              expr: product_price
+            - name: food_revenue
+              description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
+              agg: sum
+              expr: case when is_food_item = 1 then product_price else 0 end
+            - name: drink_revenue
+              description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
+              agg: sum
+              expr: case when is_drink_item = 1 then product_price else 0 end
+            - name: median_revenue
+              description: The median revenue generated for each order item.
+              agg: median
+              expr: product_price
+   ```
+
+3. Let's build a simple revenue metric on top of our semantic model now.
+
+   ```YAML
+   metrics:
+      - name: revenue
+        description: Sum of the product revenue for each order item. Excludes tax.
+        type: simple
+        label: Revenue
+        type_params:
+          measure: revenue
+   ```
+
+## Checking our work
 
 - We always will start our auditing with a `dbt parse && mf validate-configs` to ensure our code works before we examine its output.
 - If we're working there, we'll move to trying out an `mf query` that replicates the logic of the output we're trying to refactor.
@@ -67,3 +234,79 @@ mf query --metrics revenue --group-by metric_time__month
 | 2016-11-01 00:00:00  |  26338.00 |
 | 2016-12-01 00:00:00  |  10685.00 |
 ```
+
+- Try introducing some other dimensions from the semantic models into the `group-by` arguments to get a feel for this command.
+
+## Building `orders`
+
+1. Now we can build our `orders` mart and semantic model, leveraging the new `order_items` mart. Here we're just aggregating some measures up to the orders level. Note that we do end up using `stg_orders` twice, a conscious tradeoff based on source data to ensure we can feed all our data into MetricFlow optimally at different grains.
+
+   ```SQL
+   with
+
+   orders as (
+
+      select * from {{ ref('stg_orders')}}
+
+   ),
+
+   order_items as (
+
+      select * from {{ ref('stg_order_items')}}
+
+   ),
+
+   order_items_summary as (
+
+      select
+
+         order_items.order_id,
+
+         sum(supply_cost) as order_cost,
+         sum(is_food_item) as count_food_items,
+         sum(is_drink_item) as count_drink_items
+
+
+      from order_items
+
+      group by 1
+
+   ),
+
+
+   compute_booleans as (
+      select
+
+         orders.*,
+         count_food_items > 0 as is_food_order,
+         count_drink_items > 0 as is_drink_order,
+         order_cost
+
+      from orders
+
+      left join order_items_summary on orders.order_id = order_items_summary.order_id
+   )
+
+   select * from compute_booleans
+   ```
+
+2. TODO: indentation nightmare code --- Next let's make a semantic model on top of orders in `/models/marts/orders.yml`.
+
+3. Lastly, let's calculate a new order-level metric, `order_total`, which includes product revenue and taxes.
+
+```YAML
+metrics:
+  - name: order_total
+    description: Sum of total order amonunt. Includes tax + revenue.
+    type: simple
+    label: Order Total
+    type_params:
+      measure: order_total
+```
+
+4. Repeat the steps above checking the config and testing some metric queries out.
+<!-- TODO: queries and results when mf is fixed -->
+
+## An alternate approach
+
+If you don't have capacity to refactor some of your marts, they can still benefit from the Semantic Layer. The above process is about maximizing dimensionality for the long term, in the short term, making your marts as-is available to MetricFlow unlocks greatly increased functionality. For an example of this quicker approach check out the `customers` SQL and YAML files. This displays a typical denormalized dbt mart being hooked into MetricFlow.
