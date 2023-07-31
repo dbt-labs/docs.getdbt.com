@@ -1,15 +1,7 @@
 ---
-title: "Upgrading to v1.6 (prerelease)"
+title: "Upgrading to v1.6 (latest)"
 description: New features and changes in dbt Core v1.6
 ---
-
-:::warning Prerelease
-
-dbt Core v1.6 is available as a release candidate. [Final release is planned for July 31.](https://github.com/dbt-labs/dbt-core/issues/7990)
-
-Test it out, and [let us know](https://github.com/dbt-labs/dbt-core/issues/new/choose) if you run into any issues!
-
-:::
 
 ## Resources
 
