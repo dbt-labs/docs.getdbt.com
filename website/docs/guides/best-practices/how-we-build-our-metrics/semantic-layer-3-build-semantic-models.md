@@ -55,7 +55,7 @@ semantic_models:
 
 ## Establishing our entities
 
-- 🫂 Entities are the **things** in our data that have dimensions and measures, you can think of them as the **nouns** of our project, the **spines** of our queries that we may want to aggregate by, or simply the **join keys**.
+- 🫂 Entities are the **objects and concepts** in our data that _have_ dimensions and measures. You can think of them as the **nouns** of our project, the **spines** of our queries that we may want to aggregate by, or simply the **join keys**.
 - 🔀 Entities help MetricFlow understand **how various semantic models relate to one another**.
 - ⛓️ Unlike many other semantic layers, in MetricFlow **we do not need to describe joins explicitly**, instead the **relationships are implicitly described by entities**.
 - 1️⃣ Each semantic model should have **one primary entity** defined for itself, and **any number of foreign entities** for other semantic models it may join to.
