@@ -353,7 +353,7 @@ In the configuration format for the model SQL file:
 dbt-snowflake requires the following parameters:
 
 - `target_lag`
-- `WAREHOUSE`
+- `snowflake_warehouse`
 
 To learn more about each parameter and what values it can take, see 
 the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table)
@@ -373,7 +373,7 @@ The following examples create a dynamic table:
 {{
   config(
     materialized = 'dynamic_table',
-    warehouse = 'MY_WAREHOUSE',
+    warehouse = 'snowflake_warehouse',
     target_lag = '10 minutes',
   )
 }}
@@ -387,7 +387,7 @@ The following examples create a dynamic table:
 models:
   path:
     materialized: dynamic_table
-    warehouse: MY_WAREHOUSE
+    warehouse: snowflake_warehouse
     target_lag: '10 minutes'
 ```
 
