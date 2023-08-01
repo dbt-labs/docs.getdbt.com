@@ -99,7 +99,7 @@ Some options that could previously be specified _after_ a subcommand can now onl
 </details>
 
 
-Additionally, some options that could be previously specified _before_ a subcommand can now only be specified _after_. Any command _not_ on the above list must appear _after_ the subcommand from v1.5 on. For example, `--profiles-dir`.
+Additionally, some options that could be previously specified _before_ a subcommand can now only be specified _after_. Any command _not_ in the above list must appear _after_ the subcommand from v1.5 on. For example, `--profiles-dir`.
 
 
 The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
