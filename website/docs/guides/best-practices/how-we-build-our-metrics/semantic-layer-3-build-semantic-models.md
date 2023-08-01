@@ -119,7 +119,7 @@ semantic_models:
   - **time**
   - slowly changing dimensions — [these are covered in the documentation](https://docs.getdbt.com/docs/build/dimensions#scd-type-ii), and a little more complex. To focus on building your mental models of MetricFlow's fundamentals, we won't be using SCDs this guide.
 - ➕ We're **not limited to existing columns**, we can use the `expr` property to add simple computations in our dimensions.
-- 📛 Categorical dimensions are the simplest, they simply require a `name` and `type`, **if the `name` matches the name of the dimension column**, that's it, **otherwise you would supply an `expr`** to evaluate for the dimension.
+- 📛 Categorical dimensions are the simplest, they simply require a `name` and `type` (type being categorical). **If the `name` property matches the name of the dimension column**, that's it, you're done. If you want or need to use a `name` other than the column name, or do some filtering or computation, **you can supply an optional `expr` property** to evaluate for the dimension.
 
 ### Dimensions in action
 
