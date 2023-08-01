@@ -57,7 +57,7 @@ models:
     config: ...
 ```
 
-Some options that could previously be specified _after_ a subcommand can now only be specified _before_. This includes the inverse of the option, `--write-json` and `--no-write-json`, for example.  The list of affected options are:
+Some options that could previously be specified _after_ a subcommand can now only be specified _before_. This includes the inverse of the option, `--write-json` and `--no-write-json`, for example. The list of affected options are:
 
 <details>
 <summary>List of affected options</summary>
