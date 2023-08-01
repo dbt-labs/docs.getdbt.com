@@ -138,7 +138,7 @@ models:
 
 ### Limitations
 
-Below are current limitations that we hope to address in a future release.
+We hope to address the following limitations in a future release.
 #### Changing materialization from "materialized_view" to table or view
 
 Swapping a materialized view to be a table or view is not supported. The workaround is to manually drop the existing materialized view in the data warehouse before calling `dbt run` again.
