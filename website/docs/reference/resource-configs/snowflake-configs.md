@@ -352,7 +352,7 @@ In the configuration format for the model SQL file:
 
 dbt-snowflake requires the following parameters:
 
-- `TARGET_LAG`
+- `target_lag`
 - `WAREHOUSE`
 
 To learn more about each parameter and what values it can take, see 
