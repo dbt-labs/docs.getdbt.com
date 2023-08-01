@@ -5,7 +5,7 @@ displayText: "dbt Cloud Semantic Layer best practices"
 hoverSnippet: Learn how to get started with the dbt Semantic Layer
 ---
 
-:::beta
+:::tip
 **This is a guide for a beta product.** We anticipate this guide will evolve alongside the Semantic Layer through community collaboration. We welcome discussions, ideas, issues, and contributions to refining best practices.
 :::
 
