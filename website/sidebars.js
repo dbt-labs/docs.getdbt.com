@@ -979,6 +979,7 @@ const sidebarSettings = {
       type: "category",
       label: "Migration",
       items: [
+        "guides/migration/sl-migration",
         {
           type: "category",
           label: "Versions",
