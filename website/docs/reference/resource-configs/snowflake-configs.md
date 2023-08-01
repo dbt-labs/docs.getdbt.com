@@ -354,6 +354,7 @@ dbt-snowflake requires the following parameters:
 
 - `target_lag`
 - `snowflake_warehouse`
+- `on_configuration_change`
 
 To learn more about each parameter and what values it can take, see 
 the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table). Note that `downstream` for `target_lag` is not supported. 
