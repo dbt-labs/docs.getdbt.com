@@ -59,8 +59,9 @@ models:
 
 Some options that could previously be specified _after_ a sub-command can now only be specified _before_. This includes the inverse of the command, `--write-json` and `--no-write-json`, for example.  The list of affected commands are:
 
-| --cache-selected-only | --debug | --deprecated-print | --enable-legacy-logger| --fail-fast |
+|              |              |                 |           |                           |
 |--------------|--------------|-----------------|-----------|---------------------------|
+| --cache-selected-only | --debug | --deprecated-print | --enable-legacy-logger| --fail-fast |
 | --log-cache-events  | --log-format | --log-level | --log-path | --macro-debugging |
 | --partial-parse      | --populate-cache | --print      | --printer-width | --quiet |
 | --record-timing-info | --send-anonymous-usage-stats | --single-threaded | --static-parser | --use-colors |
