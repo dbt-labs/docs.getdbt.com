@@ -397,7 +397,7 @@ models:
 
 #### Changing materialization to and from "dynamic_table"
 
-Swapping an already materialized model to be a dynamic table and vise versa. The workaround is the manually drop the existing materialization in the data warehouse before calling `dbt run` again.
+Swapping an already materialized model to be a dynamic table and vice versa. The workaround is manually dropping the existing materialization in the data warehouse before calling `dbt run` again.
 
 For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="dynamic_table"`, they will get an error. The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
 
