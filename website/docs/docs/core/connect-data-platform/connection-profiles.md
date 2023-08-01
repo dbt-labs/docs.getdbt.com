@@ -177,22 +177,9 @@ There are multiple ways to direct dbt to a different location for your `profiles
 ### 1. Use the `--profiles-dir` option when executing a dbt command
 This option can be used as follows:
 
-<VersionBlock lastVersion="1.4">
-
- ```
-$ dbt --profiles-dir path/to/directory run
- ```
-
- </VersionBlock>
-
-
-<VersionBlock firstVersion="1.5">
-
  ```
 $ dbt run --profiles-dir path/to/directory
  ```
-
- </VersionBlock>
 
 If using this method, the `--profiles-dir` option needs to be provided every time you run a dbt command.
 
