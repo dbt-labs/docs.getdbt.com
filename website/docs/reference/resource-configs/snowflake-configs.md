@@ -414,6 +414,5 @@ For example, assume for the example model below, `my_model`, has already been ma
 </File>
 
 
-Currently, changing either the `target_lag` or `warehouse` parameters for a pre-existing Dynamic Table (DT) will result in the Dynamic Table being dropped and replaced, rather than altered.
 
 </VersionBlock>
