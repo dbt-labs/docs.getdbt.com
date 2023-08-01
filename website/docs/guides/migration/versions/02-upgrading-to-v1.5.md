@@ -57,17 +57,49 @@ models:
     config: ...
 ```
 
-Some options that could previously be specified _after_ a sub-command can now only be specified _before_. This includes the inverse of the command, `--write-json` and `--no-write-json`, for example.  The list of affected commands are:
+Some options that could previously be specified _after_ a subcommand can now only be specified _before_. This includes the inverse of the command, `--write-json` and `--no-write-json`, for example.  The list of affected commands are:
 
-|              |              |                 |           |                           |
-|--------------|--------------|-----------------|-----------|---------------------------|
-| --cache-selected-only | --debug | --deprecated-print | --enable-legacy-logger| --fail-fast |
-| --log-cache-events  | --log-format | --log-level | --log-path | --macro-debugging |
-| --partial-parse      | --populate-cache | --print      | --printer-width | --quiet |
-| --record-timing-info | --send-anonymous-usage-stats | --single-threaded | --static-parser | --use-colors |
-| --use-experimental-parser  | --version | --version-check | --warn-error | --write-json | 
+<details>
+<summary>List of affected commands</summary>
 
-Additionally, some options could be previously specified _before_ a sub-command can now only be specified _after_. Any command _not_ on the above list must appear _after_ the subcommand from v1.5 on. For example, `--profiles-dir`.
+```bash
+--cache-selected-only | --no-cache-selected-only
+--debug, -d | --no-debug
+--deprecated-print | --deprecated-no-print
+--enable-legacy-logger | --no-enable-legacy-logger
+--fail-fast, -x | --no-fail-fast
+--log-cache-events | --no-log-cache-events
+--log-format
+--log-format-file
+--log-level
+--log-level-file
+--log-path
+--macro-debugging | --no-macro-debugging
+--partial-parse | --no-partial-parse
+--partial-parse-file-path
+--populate-cache | --no-populate-cache
+--print | --no-print
+--printer-width
+--quiet, -q | --no-quiet
+--record-timing-info, -r
+--send-anonymous-usage-stats | --no-send-anonymous-usage-stats
+--single-threaded | --no-single-threaded
+--static-parser | --no-static-parser
+--use-colors | --no-use-colors
+--use-colors-file | --no-use-colors-file
+--use-experimental-parser | --no-use-experimental-parser
+--version, -V, -v
+--version-check | --no-version-check
+--warn-error
+--warn-error-options
+--write-json | --no-write-json
+
+```
+
+</details>
+
+
+Additionally, some options that could be previously specified _before_ a subcommand can now only be specified _after_. Any command _not_ on the above list must appear _after_ the subcommand from v1.5 on. For example, `--profiles-dir`.
 
 
 The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
