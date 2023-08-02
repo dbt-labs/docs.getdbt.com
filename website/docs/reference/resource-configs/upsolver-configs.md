@@ -290,8 +290,8 @@ models:
 | Option | Storage   | Editable | Optional | Config Syntax |
 | -------| --------- | -------- | -------- | ------------- |
 | run_interval | s3 | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
-| start_from | s3 | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
-| end_at | s3 | True | True | 'end_at': `'<timestamp>/NOW'` |
+| start_from | s3 | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
+| end_at | s3 | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | s3 | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | comment | s3 | True | True | 'comment': `'<comment>'` |
 | allow_cartesian_products | s3 | False | True | 'allow_cartesian_products': True/False |
@@ -303,8 +303,8 @@ models:
 | output_offset | s3 | False | True | 'output_offset': `'<N MINUTES/HOURS/DAYS>'` |
 | location | s3 | False | False | 'location': `'<location>'` |
 | run_interval | elasticsearch | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
-| start_from | elasticsearch | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
-| end_at | elasticsearch | True | True | 'end_at': `'<timestamp>/NOW'` |
+| start_from | elasticsearch | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
+| end_at | elasticsearch | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | elasticsearch | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | elasticsearch | False | True | 'allow_cartesian_products': True/False |
 | aggregation_parallelism | elasticsearch | True | True | 'aggregation_parallelism': `<integer>` |
@@ -317,8 +317,8 @@ models:
 | keep_existing_values_when_null | snowflake | True | True | 'keep_existing_values_when_null': True/False |
 | add_missing_columns | snowflake | False | True | 'add_missing_columns': True/False |
 | run_interval | snowflake | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
-| start_from | snowflake | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
-| end_at | snowflake | True | True | 'end_at': `'<timestamp>/NOW'` |
+| start_from | snowflake | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
+| end_at | snowflake | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | snowflake | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | snowflake | False | True | 'allow_cartesian_products': True/False |
 | aggregation_parallelism | snowflake | True | True | 'aggregation_parallelism': `<integer>` |
@@ -326,16 +326,16 @@ models:
 | comment | snowflake | True | True | 'comment': `'<comment>'` |
 | add_missing_columns | datalake | False | True | 'add_missing_columns': True/False |
 | run_interval | datalake | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
-| start_from | datalake | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
-| end_at | datalake | True | True | 'end_at': `'<timestamp>/NOW'` |
+| start_from | datalake | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
+| end_at | datalake | True | True | 'end_at': `'<timestamp/NOW>' |
 | compute_cluster | datalake | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | datalake | False | True | 'allow_cartesian_products': True/False |
 | aggregation_parallelism | datalake | True | True | 'aggregation_parallelism': `<integer>` |
 | run_parallelism | datalake | True | True | 'run_parallelism': `<integer>` |
 | comment | datalake | True | True | 'comment': `'<comment>'` |
 | run_interval | redshift | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
-| start_from | redshift | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
-| end_at | redshift | True | True | 'end_at': `'<timestamp>/NOW'` |
+| start_from | redshift | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
+| end_at | redshift | True | True | 'end_at': `'<timestamp/NOW'>` |
 | compute_cluster | redshift | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | redshift | False | True | 'allow_cartesian_products': True/False |
 | aggregation_parallelism | redshift | True | True | 'aggregation_parallelism': `<integer>` |
@@ -356,7 +356,7 @@ models:
 | reader_shards | kafka | job_options | True | True | 'reader_shards': `<integer>` |
 | store_raw_data | kafka | job_options | False | True | 'store_raw_data': True/False |
 | start_from | kafka | job_options | False | True | 'start_from': 'BEGINNING/NOW' |
-| end_at | kafka | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
+| end_at | kafka | job_options | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | kafka | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | run_parallelism | kafka | job_options | True | True | 'run_parallelism': `<integer>` |
 | content_type | kafka | job_options | True | True | 'content_type': 'AUTO/CSV/...' |
@@ -367,7 +367,7 @@ models:
 | exclude_columns | mysql | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
 | column_transformations | mysql | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
 | skip_snapshots | mysql | job_options | True | True | 'skip_snapshots': True/False |
-| end_at | mysql | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
+| end_at | mysql | job_options | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | mysql | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | comment | mysql | job_options | True | True | 'comment': `'<comment>'` |
 | table_include_list | postgres | source_options | False | False | 'table_include_list': (`'<regexFilter>'`, ...) |
@@ -375,8 +375,8 @@ models:
 | heartbeat_table | postgres | job_options | False | True | 'heartbeat_table': `'<heartbeat_table>'` |
 | skip_snapshots | postgres | job_options | False | True | 'skip_snapshots': True/False |
 | publication_name | postgres | job_options | False | False | 'publication_name': `'<publication_name>'` |
-| end_at | postgres | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
-| start_from | postgres | job_options | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
+| end_at | postgres | job_options | True | True | 'end_at': `'<timestamp/NOW>'` |
+| start_from | postgres | job_options | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
 | compute_cluster | postgres | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | comment | postgres | job_options | True | True | 'comment': `'<comment>'` |
 | parse_json_columns | postgres | job_options | False | False | 'parse_json_columns': True/False |
@@ -389,20 +389,20 @@ models:
 | initial_load_prefix | s3 | job_options | False | True | 'initial_load_prefix': `'<initial_load_prefix>'` |
 | delete_files_after_load | s3 | job_options | False | True | 'delete_files_after_load': True/False |
 | deduplicate_with | s3 | job_options | False | True | 'deduplicate_with': {'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'} |
-| end_at | s3 | job_options | True | True | 'end_at': `'<timestamp>/NOW'` |
-| start_from | s3 | job_options | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
+| end_at | s3 | job_options | True | True | 'end_at': `'<timestamp/NOW>'` |
+| start_from | s3 | job_options | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
 | compute_cluster | s3 | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
-| run_parallelism | s3 | job_options | True | True | 'run_parallelism': `<integer>` |
+| run_parallelism | s3 | job_options | True | True | 'run_parallelism': <integer> |
 | content_type | s3 | job_options | True | True | 'content_type': 'AUTO/CSV...' |
 | compression | s3 | job_options | False | True | 'compression': 'AUTO/GZIP...' |
 | comment | s3 | job_options | True | True | 'comment': `'<comment>'` |
 | column_transformations | s3 | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
 | exclude_columns | s3 | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
 | stream | kinesis | source_options | False | False | 'stream': `'<stream>'` |
-| reader_shards | kinesis | job_optionas | True | True | 'reader_shards': `<integer>` |
+| reader_shards | kinesis | job_options | True | True | 'reader_shards': `<integer>` |
 | store_raw_data | kinesis | job_options | False | True | 'store_raw_data': True/False |
-| start_from | kinesis | job_options | False | True | 'start_from': `'<timestamp>/NOW/BEGINNING'` |
-| end_at | kinesis | job_options | False | True | 'end_at': `'<timestamp>/NOW'` |
+| start_from | kinesis | job_options | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
+| end_at | kinesis | job_options | False | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | kinesis | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | run_parallelism | kinesis | job_options | False | True | 'run_parallelism': `<integer>` |
 | content_type | kinesis | job_options | True | True | 'content_type': 'AUTO/CSV...' |
