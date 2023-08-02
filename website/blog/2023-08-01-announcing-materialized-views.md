@@ -14,13 +14,15 @@ is_featured: true
 
 ## What's happening?
 
-The year was 2020. I was a kitten-only household, and dbt Labs was still Fishtown Analytics. A major customer I was working with, Jetblue, asked me for help running their dbt models every 2 minutes to meet a 5 minute SLA.
+The year was 2020. I was a kitten-only household, and dbt Labs was still Fishtown Analytics. A enterprise customer I was working with, Jetblue, asked me for help running their dbt models every 2 minutes to meet a 5 minute SLA.
 
 After getting over the initial terror, we talked through the use case and soon realized there was a better option. Together with my team, I created [lambda views](https://discourse.getdbt.com/t/how-to-create-near-real-time-models-with-just-dbt-sql/1457%20?) to meet the need.
 
 Flash forward to 2023. I’m writing this as my giant dog snores next to me (don’t worry the cats have multiplied as well). Jetblue has outgrown lambda views due to performance constraints (a view can only be so performant) and we are at another milestone in dbt’s journey to support streaming. What. a. time.
 
 Today we are announcing that we now support Materialized Views in dbt. So, what does that mean?
+
+<!--truncate-->
 
 Materialized views are now an out of the box materialization in your dbt project once you upgrade to the latest version of dbt v1.6 on these following adapters:
 
@@ -44,13 +46,9 @@ For Postgres/Redshift/Databricks
 ```sql
 
 {{
-
 config(
-
     materialized = 'materialized_view',
-
 )
-
 }}
 
 ```
@@ -58,17 +56,11 @@ config(
 For Snowflake:
 
 ```sql
-
 {{
-
 config(
-
     materialized = 'dynamic_table',
-
 )
-
 }}
-
 ```
 
 :::note
@@ -127,15 +119,10 @@ Every time you run a `dbt run`, that will result in a manual refresh unless you 
 
 ```sql
 {{
-
 config(
-
     materialized = 'materialized_view',
-
     on_configuration_change = 'apply',
-
 )
-
 }}
 ```
 
@@ -144,15 +131,10 @@ For Redshift:
 ```sql
 
 {{
-
 config(
-
     materialized = 'materialized_view',
-
     on_configuration_change = 'apply',
-
-    uto_refresh =False
-
+    auto_refresh = False
 )
 
 }}
@@ -164,13 +146,9 @@ For Databricks:
 {{
 
 config(
-
 materialized='materialized_view',
-
 post_hook = 'alter materialized view {{this}} add SCHEDULE CRON "0 0 0 * * ? *" AT TIME ZONE "America/Los_Angeles";'
-
 )
-
 }}
 ```
 
@@ -180,19 +158,12 @@ For Snowflake:
 
 ```sql
 {{
-
 config(
-
 materialized = 'dynamic_table',
-
 snowflake_warehouse = ‘<warehouse>’,
-
 target_lag = ‘<desired_lag>`,
-
 on_configuration_change = 'apply',
-
 )
-
 }}
 ```
 
@@ -216,33 +187,21 @@ The code for having a conditional in your config block looks like this if you wa
 ```sql
 
 {% macro target_lag_environment() %}
-
 {% set lag = '1 minute' if target.name == "prod" else '35 days' %}
-
 {{ return(lag) }}
-
 {% endmacro %}
-
 ```
 
 ```sql
 
 {{
-
 config(
-
-materialized = 'dynamic_table',
-
-snowflake_warehouse = 'transforming',
-
-target_lag = target_lag_environment(),
-
-on_configuration_change = 'apply',
-
+    materialized = 'dynamic_table',
+    snowflake_warehouse = 'transforming',
+    target_lag = target_lag_environment(),
+    on_configuration_change = 'apply',
 )
-
 }}
-
 ```
 
 You will want a very long lag for development; I recommend the cadence you drop and refresh your development environment. Here I just chose my two favorite numbers.
