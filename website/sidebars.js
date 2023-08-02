@@ -850,7 +850,8 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/2-staging",
             "guides/best-practices/how-we-structure/3-intermediate",
             "guides/best-practices/how-we-structure/4-marts",
-            "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
+            "guides/best-practices/how-we-structure/5-semantic-layer-marts",
+            "guides/best-practices/how-we-structure/6-the-rest-of-the-project",
           ],
         },
         {
