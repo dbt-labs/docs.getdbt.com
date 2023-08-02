@@ -1,9 +1,9 @@
 ---
 title: "Enhancement: Revamped dbt Semantic Layer available in public beta"
-description: "July 2023: The revamped dbt Semantic Layer, now available in public beta, introduces new semantic components and evolves the semantic layer's capability."
+description: "August 2023: The revamped dbt Semantic Layer, now available in public beta, introduces new semantic components and evolves the semantic layer's capability."
 sidebar_label: "Enhancement: Revamped dbt Semantic Layer in public beta"
-tags: [July-2023, dbt Semantic Layer]
-date: 2023-07-31
+tags: [Aug-2023, dbt Semantic Layer]
+date: 2023-08-03
 sidebar_position: 9
 ---
 
