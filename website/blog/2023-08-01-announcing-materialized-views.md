@@ -44,7 +44,6 @@ Just like you would materialize your sql model as  `table` or `view`  today, y
 For Postgres/Redshift/Databricks
 
 ```sql
-
 {{
 config(
     materialized = 'materialized_view',
@@ -54,7 +53,6 @@ config(
 ```
 
 For Snowflake:
-
 ```sql
 {{
 config(
@@ -131,14 +129,12 @@ config(
 For Redshift:
 
 ```sql
-
 {{
 config(
     materialized = 'materialized_view',
     on_configuration_change = 'apply',
     auto_refresh = False
 )
-
 }}
 ```
 
@@ -146,7 +142,6 @@ For Databricks:
 
 ```sql
 {{
-
 config(
 materialized='materialized_view',
 post_hook = 'alter materialized view {{this}} add SCHEDULE CRON "0 0 0 * * ? *" AT TIME ZONE "America/Los_Angeles";'
@@ -162,8 +157,8 @@ For Snowflake:
 {{
 config(
 materialized = 'dynamic_table',
-snowflake_warehouse = ‘<warehouse>’,
-target_lag = ‘<desired_lag>`,
+snowflake_warehouse = '<warehouse>',
+target_lag = '<desired_lag>',
 on_configuration_change = 'apply',
 )
 }}
@@ -184,7 +179,7 @@ In order to promote materialized views into production, the process will look ve
 
 When you feel satisfied with your development and testing, for data platforms that offer scheduling via our dbt configurations, you have two options: hardcode the refresh cadence or write in conditional logic based on the environment for the refresh cadence. I recommend using the latter.
 
-The code for having a conditional in your config block looks like this if you want to include in a macro for either the lag or other fields (warehouse, auto-refresh,etc):
+The code for having a conditional in your config block looks like this if you want to include in a macro for either the lag or other fields (snowflake_warehouse, auto_refresh,etc):
 
 ```sql
 
@@ -195,7 +190,6 @@ The code for having a conditional in your config block looks like this if you wa
 ```
 
 ```sql
-
 {{
 config(
     materialized = 'dynamic_table',
