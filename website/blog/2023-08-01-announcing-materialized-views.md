@@ -92,6 +92,8 @@ Other factors to consider when deciding on when/how to use a materialized view:
 - How often do you need your query refreshed? What are your downstream dependencies and their stakeholders? (If near real time is important, MVs might be the right choice).
 - Do you have real time machine learning models training or applications using your transformed dataset?
 
+## Materialized Views in the dbt Workflow
+
 ### Development
 
 When we talk about using materialized views in development, the question to think about is not so much “should you execute your dbt models as materialized views in your sandbox?,” but rather “should you schedule them to refresh in your sandbox?”. For development, you do need to create them and test them out in your sandbox but how do you do this in a way that doesn’t drive up your cloud bill unnecessarily? Or keeping a post-it note on your laptop as a reminder to drop all of the running materialized views in your sandbox before you sign off? Let’s talk about it!
