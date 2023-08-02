@@ -12,7 +12,7 @@ date: 2023-08-01
 is_featured: true
 ---
 
-## What's happening?
+## Introduction
 
 The year was 2020. I was a kitten-only household, and dbt Labs was still Fishtown Analytics. A enterprise customer I was working with, Jetblue, asked me for help running their dbt models every 2 minutes to meet a 5 minute SLA.
 
@@ -34,8 +34,8 @@ Materialized views are now an out of the box materialization in your dbt project
 - dbt-trino*
 - dbt-bigquery**
 
-* These adapters have supported materialized views in their adapter prior 1.6.
-** dbt-bigquery support will be coming in 1.7.
+*These adapters have supported materialized views in their adapter prior 1.6.
+**dbt-bigquery support will be coming in 1.7.
 
 Just like you would materialize your sql model as  `table` or `view`  today, you can use `materialized_view` in your model configuration, dbt_project.yml, and resources.yml files. At release, python models will not be supported.
 
