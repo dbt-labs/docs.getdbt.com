@@ -182,7 +182,6 @@ When you feel satisfied with your development and testing, for data platforms th
 The code for having a conditional in your config block looks like this if you want to include in a macro for either the lag or other fields (snowflake_warehouse, auto_refresh,etc):
 
 ```sql
-
 {% macro target_lag_environment() %}
 {% set lag = '1 minute' if target.name == "prod" else '35 days' %}
 {{ return(lag) }}
