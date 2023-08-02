@@ -144,12 +144,12 @@ For Databricks:
 {{
 config(
 materialized='materialized_view',
-post_hook = 'alter materialized view {{this}} add SCHEDULE CRON "0 0 0 * * ? *" AT TIME ZONE "America/Los_Angeles";'
 )
 }}
 ```
 
 By default, materialized views are not refreshed on a schedule on Databricks in this materialization. To set up scheduling, you can use a post-hook to alter the MV with a cron schedule that will run in Databricks Workflows.
+```
 
 For Snowflake:
 
