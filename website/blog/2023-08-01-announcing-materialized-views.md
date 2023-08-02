@@ -3,9 +3,9 @@ title: "Introducing Materialized Views and how to use them"
 description: "In dbt v1.6, we introduce support for materialized views. In this blog post, Amy will review how to use them in your workflow"
 slug: announcing-materialized-views
 
-authors: [amy chen]
+authors: [amy_chen]
 
-tags: [analytics craft, dbt product updates]
+tags: [analytics craft, dbt product updates, data ecosystem]
 hide_table_of_contents: false
 
 date: 2023-08-01
