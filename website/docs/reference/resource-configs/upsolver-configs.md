@@ -231,19 +231,19 @@ models:
 | aws_secret_access_key | kinesis | True | True | 'aws_secret_access_key': `'<aws_secret_access_key>'` |
 | region | kinesis | False | False | 'region': `'<region>'` |
 | read_only | kinesis | False | True | 'read_only': True/False |
-| max_writers | kinesis | True | True | 'max_writers': `<integer>` |
+| max_writers | kinesis | True | True | 'max_writers': `'<integer>'` |
 | stream_display_filter | kinesis | True | True | 'stream_display_filter': `'<stream_display_filter>'` |
 | stream_display_filters | kinesis | True | True | 'stream_display_filters': (`'<filter>'`, ...) |
 | comment | kinesis | True | True | 'comment': `'<comment>'` |
 | connection_string | snowflake | True | False | 'connection_string': `'<connection_string>'` |
 | user_name | snowflake | True | False | 'user_name': `'<user_name>'` |
 | password | snowflake | True | False | 'password': `'<password>'` |
-| max_concurrent_connections | snowflake | True | True | 'max_concurrent_connections': `<integer>` |
+| max_concurrent_connections | snowflake | True | True | 'max_concurrent_connections': `'<integer>'` |
 | comment | snowflake | True | True | 'comment': `'<comment>'` |
 | connection_string | redshift | True | False | 'connection_string': `'<connection_string>'` |
 | user_name | redshift | True | False | 'user_name': `'<user_name>'` |
 | password | redshift | True | False | 'password': `'<password>'` |
-| max_concurrent_connections | redshift | True | True | 'max_concurrent_connections': `<integer>` |
+| max_concurrent_connections | redshift | True | True | 'max_concurrent_connections': `'<integer>'` |
 | comment | redshift | True | True | 'comment': `'<comment>'` |
 | connection_string | mysql | True | False | 'connection_string': `'<connection_string>'` |
 | user_name | mysql | True | False | 'user_name': `'<user_name>'` |
@@ -268,7 +268,7 @@ models:
 | storage_location | datalake | False | True | 'storage_location': `'<storage_location>'` |
 | compute_cluster | datalake | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | compression | datalake | True | True | 'compression': 'SNAPPY/GZIP' |
-| compaction_processes | datalake | True | True | 'compaction_processes': `<integer>` |
+| compaction_processes | datalake | True | True | 'compaction_processes': `'<integer>'` |
 | disable_compaction | datalake | True | True | 'disable_compaction': True/False |
 | retention_date_partition | datalake | False | True | 'retention_date_partition': `'<column>'` |
 | table_data_retention | datalake | True | True | 'table_data_retention': `'<N DAYS>'` |
@@ -295,8 +295,8 @@ models:
 | compute_cluster | s3 | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | comment | s3 | True | True | 'comment': `'<comment>'` |
 | allow_cartesian_products | s3 | False | True | 'allow_cartesian_products': True/False |
-| aggregation_parallelism | s3 | True | True | 'aggregation_parallelism': `<integer>` |
-| run_parallelism | s3 | True | True | 'run_parallelism': `<integer>` |
+| aggregation_parallelism | s3 | True | True | 'aggregation_parallelism': `'<integer>'` |
+| run_parallelism | s3 | True | True | 'run_parallelism': `'<integer>'` |
 | file_format | s3 | False | False | 'file_format': 'CSV/TSV ...' |
 | compression | s3 | False | True | 'compression': 'SNAPPY/GZIP ...' |
 | date_pattern | s3 | False | True | 'date_pattern': `'<date_pattern>'` |
@@ -307,9 +307,9 @@ models:
 | end_at | elasticsearch | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | elasticsearch | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | elasticsearch | False | True | 'allow_cartesian_products': True/False |
-| aggregation_parallelism | elasticsearch | True | True | 'aggregation_parallelism': `<integer>` |
-| run_parallelism | elasticsearch | True | True | 'run_parallelism': `<integer>` |
-| bulk_max_size_bytes | elasticsearch | True | True | 'bulk_max_size_bytes': `<integer>` |
+| aggregation_parallelism | elasticsearch | True | True | 'aggregation_parallelism': `'<integer>'` |
+| run_parallelism | elasticsearch | True | True | 'run_parallelism': `'<integer>'` |
+| bulk_max_size_bytes | elasticsearch | True | True | 'bulk_max_size_bytes': `'<integer>'` |
 | index_partition_size | elasticsearch | True | True | 'index_partition_size': 'HOURLY/DAILY ...' |
 | comment | elasticsearch | True | True | 'comment': `'<comment>'` |
 | custom_insert_expressions | snowflake | True | True | 'custom_insert_expressions': {'INSERT_TIME' : 'CURRENT_TIMESTAMP()','MY_VALUE': `'<value>'`} |
@@ -321,8 +321,8 @@ models:
 | end_at | snowflake | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | snowflake | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | snowflake | False | True | 'allow_cartesian_products': True/False |
-| aggregation_parallelism | snowflake | True | True | 'aggregation_parallelism': `<integer>` |
-| run_parallelism | snowflake | True | True | 'run_parallelism': `<integer>` |
+| aggregation_parallelism | snowflake | True | True | 'aggregation_parallelism': `'<integer>'` |
+| run_parallelism | snowflake | True | True | 'run_parallelism': `'<integer>'` |
 | comment | snowflake | True | True | 'comment': `'<comment>'` |
 | add_missing_columns | datalake | False | True | 'add_missing_columns': True/False |
 | run_interval | datalake | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
@@ -330,16 +330,16 @@ models:
 | end_at | datalake | True | True | 'end_at': `'<timestamp/NOW>' |
 | compute_cluster | datalake | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | datalake | False | True | 'allow_cartesian_products': True/False |
-| aggregation_parallelism | datalake | True | True | 'aggregation_parallelism': `<integer>` |
-| run_parallelism | datalake | True | True | 'run_parallelism': `<integer>` |
+| aggregation_parallelism | datalake | True | True | 'aggregation_parallelism': `'<integer>'` |
+| run_parallelism | datalake | True | True | 'run_parallelism': `'<integer>'` |
 | comment | datalake | True | True | 'comment': `'<comment>'` |
 | run_interval | redshift | False | True | 'run_interval': `'<N MINUTES/HOURS/DAYS>'` |
 | start_from | redshift | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
 | end_at | redshift | True | True | 'end_at': `'<timestamp/NOW'>` |
 | compute_cluster | redshift | True | True | 'compute_cluster': `'<compute_cluster>'` |
 | allow_cartesian_products | redshift | False | True | 'allow_cartesian_products': True/False |
-| aggregation_parallelism | redshift | True | True | 'aggregation_parallelism': `<integer>` |
-| run_parallelism | redshift | True | True | 'run_parallelism': `<integer>` |
+| aggregation_parallelism | redshift | True | True | 'aggregation_parallelism': `'<integer>'` |
+| run_parallelism | redshift | True | True | 'run_parallelism': `'<integer>'` |
 | skip_failed_files | redshift | False | True | 'skip_failed_files': True/False |
 | fail_on_write_error | redshift | False | True | 'fail_on_write_error': True/False |
 | comment | redshift | True | True | 'comment': `'<comment>'` |
@@ -353,12 +353,12 @@ models:
 | exclude_columns | kafka | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
 | deduplicate_with | kafka | job_options | False | True | 'deduplicate_with': {'COLUMNS' : ['col1', 'col2'],'WINDOW': 'N HOURS'} |
 | consumer_properties | kafka | job_options | True | True | 'comment': `'<comment>'` |
-| reader_shards | kafka | job_options | True | True | 'reader_shards': `<integer>` |
+| reader_shards | kafka | job_options | True | True | 'reader_shards': `'<integer>'` |
 | store_raw_data | kafka | job_options | False | True | 'store_raw_data': True/False |
 | start_from | kafka | job_options | False | True | 'start_from': 'BEGINNING/NOW' |
 | end_at | kafka | job_options | True | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | kafka | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
-| run_parallelism | kafka | job_options | True | True | 'run_parallelism': `<integer>` |
+| run_parallelism | kafka | job_options | True | True | 'run_parallelism': `'<integer>'` |
 | content_type | kafka | job_options | True | True | 'content_type': 'AUTO/CSV/...' |
 | compression | kafka | job_options | False | True | 'compression': 'AUTO/GZIP/...' |
 | comment | kafka | job_options | True | True | 'comment': `'<comment>'` |
@@ -392,19 +392,19 @@ models:
 | end_at | s3 | job_options | True | True | 'end_at': `'<timestamp/NOW>'` |
 | start_from | s3 | job_options | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
 | compute_cluster | s3 | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
-| run_parallelism | s3 | job_options | True | True | 'run_parallelism': <integer> |
+| run_parallelism | s3 | job_options | True | True | 'run_parallelism': `'<integer>'` |
 | content_type | s3 | job_options | True | True | 'content_type': 'AUTO/CSV...' |
 | compression | s3 | job_options | False | True | 'compression': 'AUTO/GZIP...' |
 | comment | s3 | job_options | True | True | 'comment': `'<comment>'` |
 | column_transformations | s3 | job_options | False | True | 'column_transformations': {`'<column>'` : `'<expression>'` , ...} |
 | exclude_columns | s3 | job_options | False | True | 'exclude_columns': (`'<exclude_column>'`, ...) |
 | stream | kinesis | source_options | False | False | 'stream': `'<stream>'` |
-| reader_shards | kinesis | job_options | True | True | 'reader_shards': `<integer>` |
+| reader_shards | kinesis | job_options | True | True | 'reader_shards': `'<integer>'` |
 | store_raw_data | kinesis | job_options | False | True | 'store_raw_data': True/False |
 | start_from | kinesis | job_options | False | True | 'start_from': `'<timestamp/NOW/BEGINNING>'` |
 | end_at | kinesis | job_options | False | True | 'end_at': `'<timestamp/NOW>'` |
 | compute_cluster | kinesis | job_options | True | True | 'compute_cluster': `'<compute_cluster>'` |
-| run_parallelism | kinesis | job_options | False | True | 'run_parallelism': `<integer>` |
+| run_parallelism | kinesis | job_options | False | True | 'run_parallelism': `'<integer>'` |
 | content_type | kinesis | job_options | True | True | 'content_type': 'AUTO/CSV...' |
 | compression | kinesis | job_options | False | True | 'compression': 'AUTO/GZIP...' |
 | comment | kinesis | job_options | True | True | 'comment': `'<comment>'` |
