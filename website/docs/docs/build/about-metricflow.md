@@ -234,7 +234,7 @@ metrics:
       numerator: food_order
       denominator: active_customers
     filter: |
-      {{dimension('is_new_customer')}} = true
+      {{ Dimension('customer__is_new_customer')}} = true
 ```
 </TabItem>
 </Tabs>

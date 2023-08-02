@@ -21,9 +21,11 @@ Semantic models have 6 components and this page explains the definitions with so
 | [Name](#name) | Unique name for the semantic model | Required |
 | [Description](#description) | Includes important details in the description | Optional |
 | [Model](#model) | Specifies the dbt model for the semantic model using the `ref` function | Required |
+| [Defaults](#defaults) | The defaults for the model, currently only `agg_time_dimension` is supported.  | Required |
 | [Entities](#entities) | Uses the columns from entities as join keys and indicate their type as primary, foreign, or unique keys with the `type` parameter | Required |
-| [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time-based` or `categorical` | Required |
+| [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time` or `categorical` | Required |
 | [Measures](#measures) | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics | Optional |
+| [Primary Entity](#primary) | If the semantic model has no primary entity, then this property is required. | Optional |
 
 ## Semantic models components
 
@@ -33,7 +35,7 @@ semantic_models:
   - name: the_name_of_the_semantic_model      ## Required
     description: same as always               ## Optional
     model: ref('some_model')                  ## Required
-    default:                                  ## Required
+    defaults:                                 ## Required
         agg_time_dimension: dimension_name    ## Required if the model contains dimensions
     entities:                                 ## Required
        - see more information in entities
@@ -41,6 +43,7 @@ semantic_models:
        - see more information in measures section
     dimensions:                               ## Required
        - see more information in dimensions section
+    primary_entity: if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
 
 The following example displays a complete configuration and detailed descriptions of each field:
@@ -113,9 +116,14 @@ Includes important details in the description of the semantic model. This descri
 
 Specify the dbt model for the semantic model using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
+### Defaults
+Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overriden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples. 
 ### Entities 
 
 To specify the [entities](/docs/build/entities) in your model, use their columns as join keys and indicate their `type` as primary, foreign, or unique keys with the type parameter.
+
+### Primary Entity
+If your data source does not have a primary entity, you need to manually specify one. Metricflow requers that all dimensions be tied to an entity.
 
 <Tabs>
 

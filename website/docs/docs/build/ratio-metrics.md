@@ -102,7 +102,7 @@ metrics:
     type_params:
       numerator:
         name: distinct_purchasers
-        filter: {{dimension('is_frequent_purchaser')}}
+        filter: {{Dimension('customer__is_frequent_purchaser')}}
         alias: frequent_purchasers
       denominator:
         name: distinct_purchasers

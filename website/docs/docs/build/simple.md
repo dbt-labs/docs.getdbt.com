@@ -31,20 +31,19 @@ If you've already defined the measure using the `create_metric: true` parameter,
 ## Simple metrics example
 
 ```yaml
-``` yaml
-metrics: 
-  - name: customers
-    description: Count of customers
-    type: simple # Pointers to a measure you created in a semantic model
-    label: Count of customers
-    type_params:
-      measure: customers # The measure you're creating a proxy of.
-  - name: large_orders
-    description: "Order with order values over 20."
-    type: SIMPLE
-    label: Large Orders
-    type_params:
-      measure: orders
-    filter: | # For any metric you can optionally include a filter on dimension values
-      {{dimension('order_total_dim')}} >= 20
+  metrics: 
+    - name: customers
+      description: Count of customers
+      type: simple # Pointers to a measure you created in a semantic model
+      label: Count of customers
+      type_params:
+        measure: customers # The measure youre creating a proxy of.
+    - name: large_orders
+      description: "Order with order values over 20."
+      type: SIMPLE
+      label: Large Orders
+      type_params:
+        measure: orders
+      filter: | # For any metric you can optionally include a filter on dimension values
+        {{Dimension('customer__order_total_dim')}} >= 20
 ```

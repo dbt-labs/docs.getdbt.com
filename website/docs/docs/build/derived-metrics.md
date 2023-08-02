@@ -50,11 +50,11 @@ metrics:
         - name: order_total
           alias: revenue
           filter: |
-            {{dimension('is_food_order')}} = True
+            {{ Dimension('order__is_food_order') }} = True
         - name: order_cost
           alias: cost
           filter: |
-            {{dimension('is_food_order')}} = True
+            {{ Dimension('order__is_food_order') }} = True
   - name: order_total_growth_mom
     description: "Percentage growth of orders total completed to 1 month ago"
     type: derived
