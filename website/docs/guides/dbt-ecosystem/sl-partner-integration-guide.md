@@ -112,6 +112,11 @@ For better analysis, it's best to have the context of the metrics close to where
 
 - Allow for creating other metadata that’s useful for the metric. We can provide some of this information in our configuration (Display name, Default Granularity for View, Default Time range), but there may be other metadata that your tool wants to provide to make the metric richer.
 
+### A note on transparency and using explain
+
+For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. You can do this by appending `explain=True` to any query. This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly a power user / technical user functionality.
+
+
 ### Example stages of an integration
 
 These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
