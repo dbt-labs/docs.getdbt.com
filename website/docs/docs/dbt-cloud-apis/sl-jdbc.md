@@ -213,7 +213,7 @@ select * from {{
 	}}
 ``` 
 
-### Querying with Where Filters
+### Query with where filters
 
 Where filters have three components: 
 
