@@ -346,8 +346,6 @@ In the configuration format for the model SQL file:
 
 ## Dynamic Tables
 
-[Dynamic Tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about) are Snowflake's version of Materialized Views.
-
 ### Parameters
 
 dbt-snowflake requires the following parameters:
