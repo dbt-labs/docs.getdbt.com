@@ -84,7 +84,10 @@ https://www.loom.com/share/118ca1a28e264cadaa531cc2f3c0af81
 
 
 NOTE: You will need to update your connection to your production environment once you merge your changes to main. Currently this connection will be pointing at the semantic layer migration environment
+**Migration guide for Mode**
+1. Setup a new connection for the semantic layer for your account. Follow [Mode's docs to setup your connect](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer).
 
+2. Re-create the dashboards/reports that we’re using the legacy semantic layer.
 ### Step 5: Merge your metrics migration branch to main, and upgrade your production environment to 1.6.
 
 1. Upgrade your production environment to 1.6. Note the old metrics definitions are no longer valid so your dbt jobs will not pass. 

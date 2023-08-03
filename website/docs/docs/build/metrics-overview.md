@@ -15,7 +15,7 @@ The keys for metrics definitions are:
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
 | `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Optional |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `filter` | For any type of metric, you may optionally include a filter string, which applies a dimensional filter when computing the metric. You can think of this as your WHERE clause.   | Optional |
+| `filter` | For any type of metric, you may optionally include a filter string, which applies a filter for a dimension, entity or time dimension when computing the metric. You can think of this as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. |
 
 
@@ -147,6 +147,16 @@ metrics:
         {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
 ```
 
+## Filters
+Filter are configured using jinja templating. Use the following syntax to refrence entites, dimensions and time dimensions in filters:
+```yaml
+filter: |
+  {{ Entity('entity_name') }} 
+filter: |
+  {{ Dimension('primary_entity__dimension_name') }}
+filter: |
+  {{ TimeDimension('time_dimension', 'granularity') }}
+```
 ### Further configuration 
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner
