@@ -374,7 +374,7 @@ The following examples create a dynamic table:
 {{
   config(
     materialized = 'dynamic_table',
-    warehouse = 'snowflake_warehouse',
+    snowflake_warehouse = 'snowflake_warehouse',
     target_lag = '10 minutes',
   )
 }}
@@ -388,7 +388,7 @@ The following examples create a dynamic table:
 models:
   path:
     materialized: dynamic_table
-    warehouse: snowflake_warehouse
+    snowflake_warehouse: snowflake_warehouse
     target_lag: '10 minutes'
 ```
 
