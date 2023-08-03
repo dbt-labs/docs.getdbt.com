@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Enable CI in 15 minutes"
+title: "Baseline: Enable CI in 15 minutes"
 slug: in-15-minutes
 description: Find issues before they are deployed to production with dbt Cloud's Slim CI.
 ---
@@ -11,14 +11,14 @@ As part of your initial dbt Cloud setup, you should already have Development and
 - Your **Development environment** powers the IDE. Each user has individual credentials, and builds into an individual dev schema. Nothing you do here impacts any of your colleagues.
 - Your **Production environment** brings the canonical version of your project to life for downstream consumers. There is a single set of deployment credentials, and everything is built into your production schema(s).
 
-In this guide, we're going to add a **Staging environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but staging models are built in a separate location to avoid impacting others (like the Dev environment).
+In this guide, we're going to add a **CI environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but models are built in a separate location to avoid impacting others (like the Dev environment).
 
 Your git flow will look like this:
 <Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
 
-## Step 1: Create a new Staging environment
+## Step 1: Create a new CI environment
 
-See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **Staging**. Just like your existing Production environment, it will be a Deployment-type environment.
+See [Create a new environment](/docs/dbt-cloud-environments#create-a-deployment-environment). The environment should be called **CI**. Just like your existing Production environment, it will be a Deployment-type environment.
 
 When setting a Schema in the **Deployment Credentials** area, remember that dbt Cloud will automatically generate a custom schema name for each PR to ensure that they don't interfere with your deployed models. This means you can safely set the same Schema name as your Production job.
 
@@ -26,7 +26,7 @@ When setting a Schema in the **Deployment Credentials** area, remember that dbt 
 
 Go into your existing Production environment, and ensure that the **Set as Production environment** checkbox is set. It'll make things easier later.
 
-## Step 3: Create a new job in the Staging environment
+## Step 3: Create a new job in the CI environment
 
 Use the **Continuous Integration Job** template, and call the job **CI Check**.
 
@@ -39,7 +39,7 @@ To be able to find modified nodes, dbt needs to have something to compare agains
 
 ## Step 4: Test your process
 
-That's it! There are other steps you can take to be even more confident in your work, but this covers the most critical checks.
+That's it! There are other steps you can take to be even more confident in your work, such as [validating your structure follows best practices](/guides/orchestration/set-up-ci/run-dbt-project-evaluator) and [linting your code](/guides/orchestration/set-up-ci/lint-on-push), but this covers the most critical checks.
 
 To test your new flow, create a new branch in the dbt Cloud IDE then add a new file or modify an existing one. Commit it, then create a new Pull Request (not a draft). Within a few seconds, you’ll see a new check appear in your git provider.
 

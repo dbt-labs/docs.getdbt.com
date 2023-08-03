@@ -14,7 +14,15 @@ As with all packages, add a reference to `dbt-labs/dbt_project_evaluator` to you
 
 As noted in the [documentation](https://dbt-labs.github.io/dbt-project-evaluator/latest/ci-check/), tests in the package are set to `warn` severity by default.
 
-To have these tests fail in CI, create a new environment variable whose project default is `warn` and is `error` in the Staging environment.
+To have these tests fail in CI, create a new environment called `DBT_PROJECT_EVALUATOR_SEVERITY`. Set the project-wide default to `warn`, and set it to `error` in the CI environment.
+
+In your `dbt_project.yml` file, override the severity configuration:
+
+```yaml
+tests:
+dbt_project_evaluator:
+    +severity: "{{ env_var('DBT_PROJECT_EVALUATOR_SEVERITY', 'warn') }}"
+```
 
 ## Step 3: Update your CI commands
 
