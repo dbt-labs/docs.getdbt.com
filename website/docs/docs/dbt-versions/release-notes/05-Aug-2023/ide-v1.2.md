@@ -1,5 +1,5 @@
 ---
-title: "Update: Cloud IDE v1.2 with dbt-server"
+title: "Update: Cloud IDE v1.2 with new service"
 description: "August 2023: Cloud IDE now uses dbt-server to provide more reliable service and dbt Core feature parity, including support for commands like `dbt list`."
 sidebar_label: "Update: Cloud IDE v1.2"
 tags: [Aug-2023, IDE]
@@ -9,7 +9,7 @@ sidebar_position: 8
 
 We're excited to announce that we replaced the backend service that powers the Cloud IDE with a more reliable server -- dbt-server. This significant update follows the rebuild of the IDE frontend last year. We're committed to improving our IDE to provide you with a better experience.
 
-Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to stay up-to-date with changes from dbt-core. The dbt-rpc integration used legacy dbt-core entry points and logging systems, causing it to be sluggish, brittle, and not well tested. At the high cost of maintenance, the Core team has been working around this outdated technology to avoid breaking it, which prevents them from developing with velocity and confidence.
+Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to stay up-to-date with changes from dbt-core. The dbt-rpc integration used legacy dbt-core entry points and logging systems, causing it to be sluggish, brittle, and poorly tested. The Core team had been working around this outdated technology to avoid breaking it, which prevented them from developing with velocity and confidence.
 
 ## New features
 
