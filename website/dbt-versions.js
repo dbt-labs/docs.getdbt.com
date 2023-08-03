@@ -185,7 +185,7 @@ exports.versionedPages = [
   {
     "page": "docs/build/ratio",
     "firstVersion": "1.6",
-  },
+  }
 ]
 
 exports.versionedCategories = [
