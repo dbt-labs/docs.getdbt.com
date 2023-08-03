@@ -217,9 +217,11 @@ select * from {{
 
 Where filters have three components: 
 
--`TimeDimension()` is used for any time dimension and requires a granularity argument - `TimeDimension('metric_time', 'DAY')`
--`Dimension()` - This is used for any categorical dimensions - `Dimension('customer__country')`
--`Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
+- `TimeDimension()` is used for any time dimension and requires a granularity argument - `TimeDimension('metric_time', 'DAY')`
+
+- `Dimension()` - This is used for any categorical dimensions - `Dimension('customer__country')`
+
+- `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
 
 Use the following example to query using a `where` filter:
 
