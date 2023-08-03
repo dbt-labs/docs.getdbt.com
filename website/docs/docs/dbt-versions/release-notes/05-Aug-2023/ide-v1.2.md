@@ -7,7 +7,7 @@ date: 2023-08-03
 sidebar_position: 8
 ---
 
-We're excited to announce that we replaced the backend service that powers the Cloud IDE with a more reliable server -- dbt-server. Because this release contains foundational changes, dbt Core 1.6 and higher will be using Cloud IDE v1.2 going forward. This significant update follows the rebuild of the IDE frontend last year. We're committed to improving the IDE to enable to provide you with a better experience.
+We're excited to announce that we replaced the backend service that powers the Cloud IDE with a more reliable server -- dbt-server. Because this release contains foundational changes, dbt Core 1.6 and higher will be using Cloud IDE v1.2 going forward. This significant update follows the rebuild of the IDE frontend last year. We're committed to improving the IDE to provide you with a better experience.
 
 Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to stay up-to-date with changes from dbt-core. The dbt-rpc integration used legacy dbt-core entry points and logging systems, causing it to be sluggish, brittle, and poorly tested. The Core team had been working around this outdated technology to avoid breaking it, which prevented them from developing with velocity and confidence.
 
