@@ -1,6 +1,6 @@
 ---
 title: "Update: Cloud IDE v1.2 with dbt-server"
-description: "August 2023: Cloud IDE is now powered with dbt-server which provides better dbt Core feature parity, including support for commands like `dbt list` and more reliable service.."
+description: "August 2023: Cloud IDE now uses dbt-server to provide more reliable service and dbt Core feature parity, including support for commands like `dbt list`."
 sidebar_label: "Update: Cloud IDE v1.2"
 tags: [Aug-2023, IDE]
 date: 2023-08-03
