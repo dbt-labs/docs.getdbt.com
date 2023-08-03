@@ -1,5 +1,5 @@
 ---
-title: "Introducing Materialized Views and how to use them"
+title: "Optimizing Materialized Views with dbt"
 description: "In dbt v1.6, we introduce support for materialized views. In this blog post, Amy will review how to use them in your workflow"
 slug: announcing-materialized-views
 
