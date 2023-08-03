@@ -26,7 +26,6 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 <AvailIntegrations/>
 
-
 ## Related docs
 
 - <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC to query your metrics in downstream tools.

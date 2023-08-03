@@ -14,4 +14,3 @@ The dbt Semantic Layer integrations are capable of querying dbt metrics, importi
 
     * **Note** before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-cloud-apis/service-tokens) to create a Semantic Layer Only service token. 
 
-For more info on the available partner integrations, refer [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations).
