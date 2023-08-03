@@ -23,9 +23,9 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-sl.jpg" width="50%" title="To set up your Semantic Layer configuration, enter your credentials and select the deployment environment. This example selects a deployment environment named 'Production.'"/>
 
 6. You should see connection information that allows you to connect to downstream tools. 
-**Note:** If your tool supports JDBC, make sure to save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
+**Note:** If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
 
-7. Return to the **Project Details** page, then  select **Generate Service Token** to create a [Semantic Layer Only service token](/docs/dbt-cloud-apis/service-tokens).  
+7. Return to the **Project Details** page, then  select **Generate Service Token** to create a [Semantic Layer Only an Metadata Only service token](/docs/dbt-cloud-apis/service-tokens).  
 
 8. Save and copy your environment ID, service token, and host, which you'll need to use downstream tools. For more info on how to integrate with partner integrations, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations).
 
