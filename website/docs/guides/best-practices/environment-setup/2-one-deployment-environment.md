@@ -15,11 +15,11 @@ import ExpNote from '/snippets/_explorer-beta-note.md';
  
  <ExpNote/>
 
-3. You also have a [**Slim CI job**](/docs/deploy/continuous-integration) that kicks off anytime you open a PR to merge a feature branch into `main`. This Slim CI job can run in your dbt “Production” environment.
+3. You also have a [**CI job**](/docs/deploy/continuous-integration) that kicks off anytime you open a PR to merge a feature branch into `main`. This CI job can run in your dbt “Production” environment.
 
 :::info
 
-☁️ Slim CI jobs run in a dedicated custom schema for each PR, so there will no collision with your production schemas.
+☁️ CI jobs run in a dedicated custom schema for each PR, so there will no collision with your production schemas.
 
 :::
 
@@ -32,8 +32,8 @@ import ExpNote from '/snippets/_explorer-beta-note.md';
 
 1. In the dbt Cloud IDE, developers work on feature branches, created from the `main` branch (`feature_a`, `feature_b`, `feature_c` above)
 2. When code is ready, developer opens a PR to merge feature branch into `main`
-3. [**Slim CI Job**](/docs/deploy/continuous-integration) automatically kicks off, and tests the changes made in the PR
-4. When Slim CI Job is successful and team is ready to deploy changes to Production, the PR is merged directly into the `main` branch. The next time a production job runs, these changes will be incorporated and executed.
+3. [**CI Job**](/docs/deploy/continuous-integration) automatically kicks off, and tests the changes made in the PR
+4. When CI Job is successful and team is ready to deploy changes to Production, the PR is merged directly into the `main` branch. The next time a production job runs, these changes will be incorporated and executed.
 
 ### dbt Cloud setup 
 

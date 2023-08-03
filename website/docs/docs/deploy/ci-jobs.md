@@ -16,13 +16,13 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 ## Set up CI jobs
 
-dbt Labs recommends that you create your Slim CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their Slim CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
+dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
 
 :::tip Join our beta 
 
 dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs on this, click on the **Beta version** tab below.
 
-If you're interested in joining our beta, please [contact us](mailto:support@getdbt.com).
+If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
 
 :::
 
@@ -38,7 +38,7 @@ If you're interested in joining our beta, please [contact us](mailto:support@get
     - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
 
 
-3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the Slim CI job.
+3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the CI job.
 
 </TabItem>
 
@@ -57,7 +57,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This option is disabled by default since doc generation testing isn't typically performed for every CI check.
-    - **Add API trigger** &mdash; Set up an [API](/docs/dbt-cloud-apis/overview) trigger to run this CI job. In the POST request method, you must also include the pull request ID and `get_sha` value.
+    - **Add API trigger** &mdash; Set up an [API](/docs/dbt-cloud-apis/overview) trigger to run this CI job. In the POST request method, you must also include the fields `github_pull_request_id` and `git_sha`.
 
 4. (optional) Options in the **Advanced Settings** section: 
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context.
@@ -111,7 +111,7 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Error messages that refer to schemas from previous PRs</summary>
    <div>
-      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the Slim CI job for the current PR is kicked off.<br></br> <br></br>
+      <div>If you receive a schema-related error message referencing a <i>previous</i> PR, this is usually an indicator that you are not using a production job for your deferral and are instead using <i>self</i>.  If the prior PR has already been merged, the prior PR's schema may have been dropped by the time the CI job for the current PR is kicked off.<br></br> <br></br>
       
       To fix this issue, select a production job run to defer to instead of self.
       </div>
