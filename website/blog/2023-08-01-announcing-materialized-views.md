@@ -8,7 +8,7 @@ authors: [amy_chen]
 tags: [analytics craft, dbt product updates, data ecosystem]
 hide_table_of_contents: false
 
-date: 2023-08-01
+date: 2023-08-03
 is_featured: true
 ---
 
