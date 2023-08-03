@@ -189,7 +189,8 @@ User data passes through the Semantic Layer on its way back from the warehouse. 
 <details>
 <summary>Is the dbt Semantic Layer open source?</summary>
 The dbt Semantic Layer is proprietary, however, some components of the dbt Semantic Layer are open source, like dbt-core and MetricFlow. <br /><br />The universal dbt Semantic Layer is available to all Team and Enterprise Plans during public beta. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.</details>
-   
+<br></br> 
+
 ## Next steps
 
 Ready to define your own metrics and bring consistency to data consumers?  Review the following documents to get started:
