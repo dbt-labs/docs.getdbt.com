@@ -3,12 +3,15 @@ title: "About dbt artifacts"
 sidebar_label: "About dbt artifacts"
 ---
 
-With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+With every invocation, dbt generates and saves one or more *artifacts*. Several of these are <Term id="json" /> files (`semantic_manifest.json`, `manifest.json`, `catalog.json`, `run_results.json`, and `sources.json`) that are used to power:
+
 - [documentation](/docs/collaborate/documentation)
 - [state](/reference/node-selection/syntax#about-node-selection)
 - [visualizing source freshness](/docs/build/sources#snapshotting-source-data-freshness)
 
 They could also be used to:
+
+- gain insights into your [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
 - calculate project-level test coverage
 - perform longitudinal analysis of run timing
 - identify historical changes in <Term id="table" /> structure
@@ -19,6 +22,7 @@ dbt has produced artifacts since the release of dbt-docs in v0.11.0. Starting in
 ## When are artifacts produced?
 
 Most dbt commands (and corresponding RPC methods) produce artifacts:
+- [semantic manifest](/docs/dbt-cloud-apis/sl-manifest): Lives in the `/target` directory of your dbt project and stores various artifacts (such as compiled models and tests) generated during the execution of your project.
 - [manifest](/reference/artifacts/manifest-json): produced by commands that read and understand your project
 - [run results](/reference/artifacts/run-results-json): produced by commands that run, compile, or catalog nodes in your DAG
 - [catalog](catalog-json): produced by `docs generate`
