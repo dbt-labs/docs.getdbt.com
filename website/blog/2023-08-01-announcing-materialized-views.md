@@ -62,7 +62,7 @@ config(
 ```
 
 :::note
-We are only supporting dynamic tables on Snowflake, not Snowflake’s materialized views (for a comparison between Snowflake Dynamic Tables and Materialized Views, refer docs). Dynamic tables are better suited for continuous transformations due to functionality like the ability to join, union, and aggregate on base tables, views , and other dynamic tables. Due to those features, they are also more aligned with what other data platforms are calling Materialized Views. For the sake of simplicity, when I refer to materialized views in this blog, I mean dynamic tables in Snowflake.
+We are only supporting dynamic tables on Snowflake, not Snowflake’s materialized views (for a comparison between Snowflake Dynamic Tables and Materialized Views, refer [docs](https://docs.snowflake.com/en/user-guide/dynamic-tables-comparison#dynamic-tables-compared-to-materialized-views). Dynamic tables are better suited for continuous transformations due to functionality like the ability to join, union, and aggregate on base tables, views , and other dynamic tables. Due to those features, they are also more aligned with what other data platforms are calling Materialized Views. For the sake of simplicity, when I refer to materialized views in this blog, I mean dynamic tables in Snowflake.
 :::
 
 Now that we support materialized views: how do you fit them into your dbt workflow? It’s easy to imagine a world of unregulated computation because you didn’t put in proper guardrails and now you have materialized views running rampant unbeknownst to you in your data platform.
