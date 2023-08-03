@@ -10,11 +10,30 @@ Once you've created your semantic models, it's time to start adding metrics! Met
 
 The keys for metrics definitions are: 
 
-* `name`: Provide the reference name for the metric. This name must be unique amongst all metrics.  
-* `type`: Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)). 
-* `type_params`: Additional parameters used to configure metrics. `type_params` are different for each metric type. 
-* `constraint`: For any type of metric, you may optionally include a constraint string, which applies a dimensional filter when computing the metric. You may think of this as your WHERE clause.  
-* `meta`: Additional metadata you want to add to your metric. 
+| Component | Description | Type |
+| --------- | ----------- | ---- |
+| `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
+| `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Optional |
+| `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
+| `filter` | For any type of metric, you may optionally include a filter string, which applies a filter for a dimension, entity or time dimension when computing the metric. You can think of this as your WHERE clause.   | Optional |
+|  `meta` | Additional metadata you want to add to your metric. |
+
+
+Here's a complete example of the metrics spec configuration:
+
+```yaml
+metrics:
+  - name: metric name                     ## Required
+    description: same as always           ## Optional
+    type: the type of the metric          ## Required
+    type_params:                          ## Required
+      - specific properties for the metric type
+    configs: here for `enabled`           ## Optional
+    label: The display name for your metric. This value will be shown in downstream tools. ## Required
+    filter: |                             ## Optional            
+      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another name') }} is not
+      null
+```
 
 This page explains the different supported metric types you can add to your dbt project. 
 <!--
@@ -25,7 +44,6 @@ This page explains the different supported metric types you can add to your dbt 
 - [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
 -->
 
-
 ### Cumulative metrics 
 
 [Cumulative metrics](/docs/build/cumulative) aggregate a measure over a given window. If no window is specified, the window would accumulate the measure over all time. **Note**m, you will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
@@ -33,15 +51,16 @@ This page explains the different supported metric types you can add to your dbt 
 ```yaml
 # Cumulative metrics aggregate a measure over a given window. The window is considered infinite if no window parameter is passed (accumulate the measure over all time)
 metrics:
-- name: wau_rolling_7
-  owners:
-    - support@getdbt.com
-  type: cumulative
-  type_params:
-    measures:
-      - distinct_users
+  - name: wau_rolling_7
+    owners:
+      - support@getdbt.com
+    type: cumulative
+    type_params:
+      measures:
+        - distinct_users
     #Omitting window will accumulate the measure over all time
-    window: 7 days
+      window: 7 days
+      
 ```
 ### Derived metrics
 
@@ -51,13 +70,13 @@ metrics:
 metrics:
   - name: net_sales_per_user
     type: derived
-    type_params: 
+    type_params: null
     metrics:
       - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
       - name: cogs
       - name: users
-      filter: is_active # Optional additional constraint
-      alias: active_users # Optional alias to use in the expr
+        filter: {{ Dimension('is_active')}} # Optional additional constraint
+        alias: active_users # Optional alias to use in the expr
 ```
 <!-- not supported
 ### Expression metrics
@@ -89,49 +108,55 @@ metrics:
       - support@getdbt.com
 # Ratio metrics create a ratio out of two measures.
 # Define the measures from the semantic model as numerator or denominator
-    type: ratio  
+    type: ratio
     type_params:
       numerator: cancellations_usd
       denominator: transaction_amount_usd
-      filter: | # add optional constraint string. This applies to both the numerator and denominator
-      {{ dimension('country', entity_path=['customer']) }} = 'MX'
-
+      filter: |     # add optional constraint string. This applies to both the numerator and denominator
+        {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
     owners:
       - support@getdbt.com
- # Ratio metrics create a ratio out of two measures. 
- # Define the measures from the semantic model as numerator or denominator
-    type: ratio 
+      # Ratio metrics create a ratio out of two measures. 
+      # Define the measures from the semantic model as numerator or denominator
+    type: ratio
     type_params:
-      numerator: 
+      numerator:
         name: cancellations_usd
-        filter: tier = 'enterprise' #constraint only applies to the numerator
-      denominator: transaction_amount_usd 
-        filter: | # add optional constraint string. This applies to both the numerator and denominator
-        {{ dimension('country', entity_path=['customer']) }} = 'MX'
-  
+        filter: {{ Dimension('company__tier' )}} = 'enterprise'  # constraint only applies to the numerator
+      denominator: transaction_amount_usd
+      filter: |   #  add optional constraint string. This applies to both the numerator and denominator
+        {{ Dimension('customer__country') }} = 'MX'  
 ```
 ### Simple metrics
 
 [Simple metrics](/docs/build/simple) point directly to a measure. You may think of it as a function that takes only one measure as the input.
 
+- `name`&mdash; Use this parameter to define the reference name of the metric. The name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. You can use this name to call the metric from the dbt Semantic Layer API.
+
 <!--create_metric not supported yet
 **Note:** If you've already defined the measure using the `create_metric: True` parameter, you don't need to create simple metrics.  However, if you would like to include a constraint on top of the measure, you will need to create a simple type metric. 
 -->
 ```yaml
-metrics: 
-# Define the reference name of the metric.  
-# This name must be unique amongst metrics and can include lowercase letters, numbers, and underscores. 
-# This name is used to call the metric from the dbt Semantic Layer API.
-  - name: cancellations 
-    type: simple 
+metrics:
+  - name: cancellations
+    type: simple
     type_params:
-  # Specify the measure you are creating a proxy for. 
-      measure: cancellations_usd 
-      filter: | 
-      {{dimension('value')}} > 100 and {{dimension('acquisition', entity_path=['user'])}}
+      measure: cancellations_usd  # Specify the measure you are creating a proxy for. 
+      filter: |
+        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
 ```
 
+## Filters
+Filter are configured using jinja templating. Use the following syntax to refrence entites, dimensions and time dimensions in filters:
+```yaml
+filter: |
+  {{ Entity('entity_name') }} 
+filter: |
+  {{ Dimension('primary_entity__dimension_name') }}
+filter: |
+  {{ TimeDimension('time_dimension', 'granularity') }}
+```
 ### Further configuration 
 
 You can set more metadata for your metrics, which can be used by other tools later on. The way this metadata is used will vary based on the specific integration partner

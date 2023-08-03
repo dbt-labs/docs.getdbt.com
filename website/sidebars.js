@@ -257,6 +257,7 @@ const sidebarSettings = {
                 "docs/build/join-logic",
                 "docs/build/validation",
                 "docs/build/metricflow-time-spine",
+                "docs/build/metricflow-cli",
               ]
             },
             "docs/build/sl-getting-started",
@@ -406,12 +407,12 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Use the dbt Semantic Layer",
-      collapsed: true,
+      link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
-        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
-        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
-        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/quickstart-sl",
+        "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
+        "docs/use-dbt-semantic-layer/sl-architecture",
       ],
     },
     {
@@ -479,6 +480,15 @@ const sidebarSettings = {
                 "docs/dbt-cloud-apis/discovery-schema-exposures",
               ],
             },
+          ],
+        },
+        {
+          type: "category",
+          label: "Semantic Layer APIs",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
+          items: [
+            "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
       ],
@@ -870,6 +880,22 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How we build our metrics",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+          },
+          items: [
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+          ],
+        },
+        {
+          type: "category",
           label: "Materializations best practices",
           link: {
             type: "doc",
@@ -883,7 +909,7 @@ const sidebarSettings = {
             "guides/best-practices/materializations/materializations-guide-6-examining-builds",
             "guides/best-practices/materializations/materializations-guide-7-conclusion",
           ],
-        },
+        }, 
         {
           type: "category",
           label: "dbt Cloud Environment best practices",
@@ -962,6 +988,7 @@ const sidebarSettings = {
       type: "category",
       label: "Migration",
       items: [
+        "guides/migration/sl-migration",
         {
           type: "category",
           label: "Versions",
