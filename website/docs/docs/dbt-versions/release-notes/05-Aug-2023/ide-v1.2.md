@@ -23,7 +23,7 @@ Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to s
 
 ### Bug fixes
 
-- [global page] can become "inert" and stop handling clicks
+- Global page can become "inert" and stop handling clicks
 - Switching back and forth between files in the git diff view can cause overwrite
 - Browser gets stuck during markdown preview for doc with large table
 - Editor right click menu is offset
