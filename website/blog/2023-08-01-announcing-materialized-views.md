@@ -158,12 +158,14 @@ For Snowflake:
 
 ```sql
 {{
+{{
 config(
-materialized = 'dynamic_table',
-snowflake_warehouse = '<warehouse>',
-target_lag = '<desired_lag>',
-on_configuration_change = 'apply',
+    materialized = 'dynamic_table',
+    snowflake_warehouse = '<warehouse>',
+    target_lag = '<desired_lag>',
+    on_configuration_change = 'apply',
 )
+}}
 }}
 ```
 
