@@ -143,7 +143,7 @@ For Databricks:
 ```sql
 {{
 config(
-       materialized='materialized_view',
+     materialized='materialized_view',
 )
 }}
 ```
