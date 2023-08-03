@@ -58,14 +58,14 @@ You might need to audit metric values during the migration to ensure that the hi
 
 1. Run the [dbt-audit](https://github.com/dbt-labs/dbt-audit-helper) helper on both models to compare the metric values.
 
-### Step 3: **Setup the Semantic Layer in a new environment**
+## Step 3: **Setup the Semantic Layer in a new environment**
 
 This step is only relevant to users who want the legacy and new semantic layer to run in parallel for a short time. This will let you recreate content in downstream tools like Hex and Mode with minimal downtime. If you do not need to recreate assets in these tools skip to step 5.
 
-1. Create a new deployment environment in dbt cloud and set the dbt version to 1.6.
+1. Create a new deployment environment in dbt Cloud and set the dbt version to 1.6.
 2. Choose `Only run on a custom branch` and point to the branch that has the updated metric definition
 3. Set the deployment schema to a temporary migration schema i.e `tmp_sl_migration`. Optional, you can create a new database for the migration. 
-4. Create a job to parse your project i.e `dbt parse` and run it. Make sure this job succeeds,  There needs to be a successful job in your environment in order to setup the semantic layer
+4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds,  There needs to be a successful job in your environment in order to set up the semantic layer
 5. In Account Settings > Projects > Project details click `Configure the Semantic Layer`. Under  **Environment**select the deployment environment you created in the previous step. Save your configuration.
 6. In the Project details page, click `Generate service token` and grant it `Semantic Layer Only` and `Metadata Only` permissions. Save this token securely - you will need it to connect to the semantic layer. 
 
@@ -77,21 +77,22 @@ Now that your Semantic Layer is set up, you will need to update any downstream i
 
 **Migration guide for Hex**
 
-1. Setup a new connection for the semantic layer for your account . Note your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
+1. Setup a new connection for the semantic layer for your account. Note your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
 
 <LoomVideo id="752e85aabfbf4fa585008a5598f3517a"/>
 
-2. Re-create the dashboards/reports that we’re using the legacy dbt Semantic Layer. 
+2. Re-create the dashboards/reports that you’re using the legacy dbt Semantic Layer. 
 
 
-NOTE: You will need to update your connection to your production environment once you merge your changes to main. Currently this connection will be pointing at the semantic layer migration environment
+NOTE: You will need to update your connection to your production environment once you merge your changes to main. Currently, this connection will be pointing at the semantic layer migration environment
 
 **Migration guide for Mode**
 
 1. Setup a new connection for the semantic layer for your account. Follow [Mode's docs to setup your connect](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer).
 
-2. Re-create the dashboards/reports that we’re using the legacy semantic layer.
-### Step 5: Merge your metrics migration branch to main, and upgrade your production environment to 1.6.
+2. Re-create the dashboards/reports that you’re using in the legacy semantic layer.
+   
+## Step 5: Merge your metrics migration branch to main, and upgrade your production environment to 1.6.
 
 1. Upgrade your production environment to 1.6. Note the old metrics definitions are no longer valid so your dbt jobs will not pass. 
 2. Merge your updated metrics definitions to main. **At this point the legacy semantic layer will no longer work.**
@@ -99,7 +100,7 @@ NOTE: You will need to update your connection to your production environment onc
 If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in-a-new-environment):
 
 1. Update your Environment in Account Settings > Project Details > Edit Semantic Layer Configuration to point to your production environment
-2. Delete your migration environment. Be sure to update your connections details in any down stream tools to account for the environment change.
+2. Delete your migration environment. Be sure to update your connections details in any downstream tools to account for the environment change.
 
 ## Related docs 
 
