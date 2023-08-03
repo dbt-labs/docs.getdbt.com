@@ -22,7 +22,7 @@ Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to s
 - Improved `Preview` capabilities with Core v1.6 + IDE v1.2. [This Loom](https://www.loom.com/share/12838feb77bf463c8585fc1fc6aa161b) provides more information.
 
 
-### Bug Fixes
+### Bug fixes
 
 - [global page] can become "inert" and stop handling clicks
 - Switching back and forth between files in the git diff view can cause overwrite
@@ -34,6 +34,6 @@ Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to s
 - Tooltips do not work for Format and Save
 - When a dbt invocation is in progress or if parsing is ongoing, attempting to switch branches will cause the `Git Branch` dropdown to close automatically
 
-### Known Issues
+### Known issues
 
 - `{{this}}` function does not display properly in preview/compile with dbt-server
