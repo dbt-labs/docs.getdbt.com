@@ -168,7 +168,7 @@ You can query your metrics in a JDBC-enabled tool or use existing first-class in
 
 1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to use the JDBC API and what tools you can query it with.
 
-    * **Note** To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) and create a Semantic Layer Only service token. 
+    * **Note** To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions. 
 
 2. Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
