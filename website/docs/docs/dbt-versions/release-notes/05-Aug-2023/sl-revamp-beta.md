@@ -48,7 +48,7 @@ The dbt Semantic Layer is currently available as a public beta, which means:
 
   - Developer plans or dbt Core users can use MetricFlow to define and test metrics using the dbt MetricFlow CLI only.
 
-- **What** &mdash; Public beta provides early access to new features. The dbt Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to general availability later this year. We may also introduce new functionality that isn't backwards compatible. We provide support, and relevant service level objectives (SLOs) apply. If you have any questions on pricing please, reach out to your account representative.
+- **What** &mdash; Public beta provides early access to new features. The dbt Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to general availability later this year. We may also introduce new functionality that isn't backwards compatible. We provide support, and relevant service level objectives (SLOs) apply. If you have any questions on pricing, please reach out to your account representative.
 
 - **When** &mdash; Public beta starts on August 1st, 2023.
 
