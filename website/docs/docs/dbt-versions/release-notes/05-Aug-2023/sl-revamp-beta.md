@@ -4,7 +4,7 @@ description: "August 2023: The revamped dbt Semantic Layer, now available in pub
 sidebar_label: "Enhancement: Revamped dbt Semantic Layer in public beta"
 tags: [Aug-2023, dbt Semantic Layer]
 date: 2023-08-03
-sidebar_position: 9
+sidebar_position: 7
 ---
 
 :::important
@@ -48,9 +48,9 @@ The dbt Semantic Layer is currently available as a public beta, which means:
 
   - Developer plans or dbt Core users can use MetricFlow to define and test metrics using the dbt MetricFlow CLI only.
 
-- **What** &mdash; Public beta provides early access to new features. The dbt Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to general availability later this year. We may also introduce new functionality that isn't backwards compatible. We provide support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer in October 2023. For now, there will be no billing for usage. If you have any questions on pricing please reach out to your account representative.
+- **What** &mdash; Public beta provides early access to new features. The dbt Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to general availability later this year. We may also introduce new functionality that isn't backwards compatible. We provide support, and relevant service level objectives (SLOs) apply. If you have any questions on pricing please, reach out to your account representative.
 
-- **When** &mdash; Public beta starts on July 31, 2023 and will end once the dbt Semantic Layer is available for GA in October 2023.
+- **When** &mdash; Public beta starts on August 1st, 2023.
 
 - **Where** &mdash; You can experience the dbt Semantic Layer in dbt Cloud. Public beta is enabled at the account level so you don’t need to worry about enabling it per user.
 
