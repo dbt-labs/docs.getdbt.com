@@ -1,6 +1,6 @@
 The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more.  These are the following tools that integrate with the dbt Semantic Layer:
 
-- **Hex** &mdash; Public docs coming soon, however, you can refer to a detailed [Loom video](https://www.loom.com/share/752e85aabfbf4fa585008a5598f3517a), which explains how to connect in more detail. 
+- **Hex** &mdash; Public docs are coming soon, however, you can refer to this [Loom video](https://www.loom.com/share/752e85aabfbf4fa585008a5598f3517a) for more info on how to integrate with Hex.
 
 - **Mode** &mdash; To connect to Mode, refer to [Mode documentation](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer).
 
