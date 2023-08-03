@@ -6,40 +6,45 @@ sidebar_label: Ratio
 tags: [Metrics, Semantic Layer]
 ---
 
-Ratio allows you to create a ratio between two measures. You simply specify a numerator and a denominator measure. Additionally, you can apply a dimensional filter to both the numerator and denominator using a constraint string when computing the metric.
+Ratio allows you to create a ratio between two measures. You simply specify a numerator and a denominator measure. Additionally, you can apply a dimensional filter to both the numerator and denominator using a constraint string when computing the metric. 
+
+The following displays the full spec for ratio metrics, along with an example:
+
+```yaml
+metrics:
+  - name: the metric name # Required
+    description: the metric description # Optional
+    type: ratio # Required
+    label: The value that will be displayed in downstream tools #Required
+    type_params: # Required
+      numerator: the measure used for the numerator # Required
+      filter: filter for the numerator# Optional
+      alias: alias for the numerator # Optional
+      denominator: the measure used for the denominator # Required
+      filter: filter for the denominator # Optional
+      alias: alias for the denominator # Optional
+```
+
+## Ratio metrics example
 
 ```yaml
 # Ratio Metric
-  metrics:
-    - name: cancellation_rate
-    owners:
-      - support@getdbt.com
-    type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
-    type_params:
-      numerator: cancellations_usd
-      denominator: transaction_amount_usd
-        filter: | # add optional constraint string. This applies to both the numerator and denominator
-      {{ dimension('country', entity_path=['customer']) }} = 'MX'
-
-    - name: enterprise_cancellation_rate
-      owners:
-        - support@getdbt.com
-      type: ratio # Ratio metrics create a ratio out of two measures. Define the measures from the semantic model as numerator or denominator
-      type_params:
-        numerator: 
-          name: cancellations_usd
-          filter: tier = 'enterprise' #constraint only applies to the numerator
-        denominator: transaction_amount_usd 
-          filter: | # add optional constraint string. This applies to both the numerator and denominator
-      {{ dimension('country', entity_path=['customer']) }} = 'MX'
+metrics:
+  - name: food_order_total_pct
+    description: "The food order total as the % of the total order"
+    label: Food Order Total % 
+    type: ratio
+    type_params: 
+      numerator: food_order_total
+      denominator: order_total
   
 ```
-### Different semantic models
+## Ratio metrics using different semantic models
 
-If the numerator and denominator in a ratio metric come from different semantic models, the system will compute their values in subqueries and then join the result set based on common dimensions to calculate the final ratio. Here's an example of the generated SQL for such a ratio metric.
+The system will simplify and turn the numerator and denominator in a ratio metric from different semantic models by computing their values in sub-queries. It will then join the result set based on common dimensions to calculate the final ratio. Here's an example of the SQL generated for such a ratio metric.
 
 
-```SQL
+```sql
 select
   subq_15577.metric_time as metric_time
   , cast(subq_15577.mql_queries_created_test as double) / cast(nullif(subq_15582.distinct_query_users, 0) as double) as mql_queries_per_active_user
@@ -83,7 +88,7 @@ on
   )
 ```
 
-### Add filter
+## Add filter
 
 Users can define constraints on input measures for a metric by applying a filter directly to the measure, like so:
 
@@ -97,7 +102,7 @@ metrics:
     type_params:
       numerator:
         name: distinct_purchasers
-        filter: {{dimension('is_frequent_purchaser')}}
+        filter: {{Dimension('customer__is_frequent_purchaser')}}
         alias: frequent_purchasers
       denominator:
         name: distinct_purchasers
