@@ -18,20 +18,13 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
-<span>Query dbt metrics with external integrations using the sophisticated <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>. Use the API to query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="dbt Semantic Layer diagram displays the variety of different integration tools it supports."/>
 
-The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more. Here are some of the integrations you can query from:
+<span>Query dbt metrics with external integrations using the sophisticated <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>. Use the API to query metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.<br /><br />
 
-- Hex &mdash;
-- Mode &mdash;
-- Google Sheets - Coming Soon!
-- Any tool that allows you to write SQL and meets one of the two criteria: 
-  * Supports a generic JDBC driver option (such as DataGrip) or 
-  * Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
+import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
-Refer to [dbt Semantic Layer integrations](https://www.getdbt.com/product/semantic-layer-integrations) for information on the partner integrations, their documentation, and more. 
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="95%" title="dbt Semantic Layer supports many different tool integrations."/>
+<AvailIntegrations/>
 
 
 ## Related docs
