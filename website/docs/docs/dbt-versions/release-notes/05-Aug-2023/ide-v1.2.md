@@ -14,7 +14,7 @@ Previously, the Cloud IDE used dbt-rpc, an outdated service that was unable to s
 ## New features
 
 - **Better dbt-core parity:** The Cloud IDE has better command parity with dbt-core, including support for commands like `dbt list` and improved treatment of flags like `--vars`, `--fail-fast`, etc. 
-- **Improved maintainability:** With the new dbt-server, it's easier to fix bugs and improve the overall quality of the product. The new backend service makes it much easier to fix bugs. With dbt-rpc, fixing bugs was a time-consuming and challenging process that required extensive testing. With the new service, we can identify and fix bugs more quickly, resulting in a more stable and reliable IDE.
+- **Improved maintainability:** With the new dbt-server, it's easier to fix bugs and improve the overall quality of the product. With dbt-rpc, fixing bugs was a time-consuming and challenging process that required extensive testing. With the new service, we can identify and fix bugs more quickly, resulting in a more stable and reliable IDE.
 - **A more reliable service:** Simplified architecture that's less prone to failure.
 
 ### Product refinements
