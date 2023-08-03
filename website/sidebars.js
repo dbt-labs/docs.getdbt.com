@@ -871,6 +871,22 @@ const sidebarSettings = {
         },
         {
           type: "category",
+          label: "How we build our metrics",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro",
+          },
+          items: [
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-2-setup",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-3-build-semantic-models",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-4-build-metrics",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-5-refactor-a-mart",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-6-advanced-metrics",
+            "guides/best-practices/how-we-build-our-metrics/semantic-layer-7-conclusion",
+          ],
+        },
+        {
+          type: "category",
           label: "Materializations best practices",
           link: {
             type: "doc",
@@ -964,6 +980,7 @@ const sidebarSettings = {
       type: "category",
       label: "Migration",
       items: [
+        "guides/migration/sl-migration",
         {
           type: "category",
           label: "Versions",
