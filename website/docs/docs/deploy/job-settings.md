@@ -13,7 +13,7 @@ Jobs make it easy to run dbt commands against a project in your cloud data platf
 - Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses
 
-You can create a job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). 
+You can create a deploy job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). 
 
 :::tip Join our beta 
 
@@ -35,7 +35,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 <Tabs queryString="version">
 <TabItem value="current" label="Current version" default>
 
-1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
+1. Create a new deploy job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 1. Provide a job name, for example "Hourly Customer Job". 
 1. Under **Environment**, add the following:
     * **Environment** &mdash; Link to an existing deployment environment.
@@ -57,7 +57,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/execution-settings.jpg" width="85%" title="Configuring your execution job settings"/>
 
-6. Under the **Triggers** section, you can configure when and how dbt will trigger the job. Refer to [job triggers](/docs/deploy/job-triggers) for more details.
+6. Under the **Triggers** section, you can configure when and how dbt will trigger the deploy job. Refer to [job triggers](/docs/deploy/job-triggers) for more details.
 
     * **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on [scheduled](/docs/deploy/job-triggers#schedule-days) days and time, or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules).
     * **Continuous Integration** tab &mdash; Configure [continuous integration (CI)](/docs/deploy/continuous-integration) to run when someone opens a new pull request in your dbt repository.
@@ -65,7 +65,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/triggers.jpg" width="85%" title="Configuring your job triggers"/>
 
-7. Select **Save**, then click **Run Now** to run your job. Click the run and watch its progress under **Run history**.
+7. Select **Save**, then click **Run Now** to run your deploy job. Click the run and watch its progress under **Run history**.
 
 </TabItem>
 
