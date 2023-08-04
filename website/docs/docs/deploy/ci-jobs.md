@@ -51,7 +51,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
 2. Options in the **Job Description** section:
     - **Job Name** &mdash; Specify the name for this CI job.
     - **Environment** &mdash; By default, it’s set to the environment you created the CI job from.
-    - **Triggered by pull requests** &mdash; By default, it’s enabled.
+    - **Triggered by pull requests** &mdash; By default, it’s enabled. Every time a developer opens up a pull request or pushes a commit to an existing pull request, this job will get triggered to run.
 
 3. Options in the **Execution Settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
