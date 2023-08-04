@@ -278,3 +278,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 - **What is the default output when adding granularity?**<br />
 	The default output follows the format `{time_dimension_name}__{granularity_level}`. So for example, if the time dimension name is `ds` and the granularity level is yearly, the output is `ds__year`.
 
+## Related docs
+
+- [dbt Semantic Layer integration best practices](/guides/dbt-ecosystem/sl-partner-integration-guide)
+
