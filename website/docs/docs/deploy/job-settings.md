@@ -1,6 +1,6 @@
 ---
 title: "Job settings"
-description: "Learn how to create and schedule jobs in dbt Cloud for the scheduler to run. When you run with dbt Cloud, you get built in observability, logging, and alerting." 
+description: "Learn how to create and schedule jobs in dbt Cloud for the scheduler to run. When you run with dbt Cloud, you get built-in observability, logging, and alerting." 
 tags: [scheduler]
 ---
 
@@ -91,7 +91,12 @@ If you're interested in joining our beta, please fill out our Google Form to [si
     - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to correspond this deploy job to the settings in your project.
     - **Run Timeout** &mdash; Cancel this deploy job if the run time exceeds the timeout value. 
     - **Compare changes against an environment (Deferral)** option — By default, it’s set to **No deferral**.
-    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting as mismatched versions can result in unexpected behavior.
+
+    :::info
+    Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. While deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ deploy jobs that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
+    :::
+
+    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting. This option to change the version at the job level is useful only when you upgrade a project to the next dbt version; otherwise, mismatched versions between the environment and job can lead to confusing behavior. 
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on Deploy Job page"/>
