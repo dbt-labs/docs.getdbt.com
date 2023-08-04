@@ -8,7 +8,7 @@ We want to build the best version of dbt possible, and a crucial part of that is
 
 Usage statistics are fired when dbt is invoked and when models are run. These events contain basic platform information (OS + python version) and metadata such as whether the invocation succeeded, how long it took, an anonymized hash key representing the raw model content, and number of nodes that were run. You can see all the event definitions in [`tracking.py`](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/tracking.py).
 
-By default this is enabled – dbt Core users can opt out of event tracking at any time by adding the following to your `profiles.yml` file:
+By default, this is enabled. dbt Core users can opt out of event tracking at any time by adding the following to your `profiles.yml` file:
 
 ```yaml
 config:
