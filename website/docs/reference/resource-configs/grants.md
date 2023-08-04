@@ -121,7 +121,7 @@ For example:
 
 ```yml
 models:
-  +grants: #In this case the + is not optional, you must include it for your project to parse.
+  +grants:  # In this case the + is not optional, you must include it for your project to parse.
     select: ['user_a', 'user_b']
 ```
 
