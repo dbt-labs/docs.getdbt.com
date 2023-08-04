@@ -4,14 +4,14 @@ description: "Learn how to create and schedule jobs in dbt Cloud for the schedul
 tags: [scheduler]
 ---
 
-Jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have a run history, run status, and a run overview, which provides you with:
+Jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have an entry in the job's run history and a detailed run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
 - Environment name
-- Sources and documentation info 
+- Sources and documentation info, if applicable
 - Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
-- Detailed run steps with logs and their statuses
+- Detailed run steps with logs and their run step statuses
 
 You can create a job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). 
 
