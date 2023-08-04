@@ -88,7 +88,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 
 5. (optional) Options in the **Advanced Settings** section: 
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this deploy job runs.
-    - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to correspond this deploy job to the settings in your project.
+    - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when this deploy job runs. Environment variables and target name are often used interchangeably. 
     - **Run Timeout** &mdash; Cancel this deploy job if the run time exceeds the timeout value. 
     - **Compare changes against an environment (Deferral)** option — By default, it’s set to **No deferral**.
     - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting as mismatched versions can result in unexpected behavior.
