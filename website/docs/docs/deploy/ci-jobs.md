@@ -8,7 +8,7 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 :::tip Join our beta 
 
-dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs on this, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs).
+dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs) on this page.
 
 If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
 
