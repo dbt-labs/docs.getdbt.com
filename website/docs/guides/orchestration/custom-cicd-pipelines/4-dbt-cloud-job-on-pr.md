@@ -5,12 +5,12 @@ id: 4-dbt-cloud-job-on-pr
 
 :::info Run on PR
 
-If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/slim-ci-jobs).
+If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
 
 :::
 
-If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of Slim CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
+If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
 
 The setup for this pipeline will use the same steps as the prior page. Before moving on, **follow steps 1-3 from the [prior page](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge)**
 
