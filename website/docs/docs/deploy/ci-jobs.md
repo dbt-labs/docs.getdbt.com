@@ -1,6 +1,6 @@
 ---
 title: "Continuous integration jobs in dbt Cloud"
-sidebar_label: "Continuous integration jobs"
+sidebar_label: "CI jobs"
 description: "Learn how to create and set up CI checks to test code changes before deploying to production."
 ---
 
@@ -16,7 +16,7 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 
 ## Set up CI jobs
 
-dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings), and accordingly the CI job in that dedicated environment will be triggered only when PRs are made to the specified, custom branch.
+dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch.
 
 :::tip Join our beta 
 
@@ -44,9 +44,9 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 
 <TabItem value="beta" label="Beta version">
 
-To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. You can change some of these defaults and there are some that you can’t (which are greyed out).
+To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
 
-1. On your **Staging** environment page, click **Create Job** > **Continuous Integration Job** to create a new CI job. 
+1. On your deployment environment page, click **Create Job** > **Continuous Integration Job** to create a new CI job. 
 
 2. Options in the **Job Description** section:
     - **Job Name** &mdash; Specify the name for this CI job.
@@ -54,19 +54,21 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Triggered by pull requests** &mdash; By default, it’s enabled.
 
 3. Options in the **Execution Settings** section:
-    - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
+    - **Compare changes against an environment (Deferral)** &mdash; By default, it’s set to the **Production** environment if you created one. This option allows dbt Cloud to check the state of the code in the PR against the code running in the deferred environment, so as to only check the modified code, instead of building the full table or the entire DAG.
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this job runs. This option is disabled by default since doc generation testing isn't typically performed for every CI check.
-    - **Add API trigger** &mdash; Set up an [API](/docs/dbt-cloud-apis/overview) trigger to run this CI job. In the POST request method, you must also include the fields `github_pull_request_id` and `git_sha`.
+
+  <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-ci-job.png" width="90%" title="Example of CI Job page in dbt Cloud UI"/>
 
 4. (optional) Options in the **Advanced Settings** section: 
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this CI job runs. You can specify that a CI job is running in a _Staging_ or _CI_ environment by setting an environment variable and modifying your project code to behave differently, depending on the context.
     - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to correspond this CI job to the settings in your project. Similar to **Environment Variables**, this option lets you customize the behavior of the project. You can use this option to specify that a CI job is running in a _Staging_ or _CI_ environment by setting the target name and modifying your project code to behave differently, depending on the context. 
     - **Run Timeout** &mdash; Cancel this CI job if the run time exceeds the timeout value. You can use this option to help ensure that a CI check doesn't consume too many of your warehouse resources.
-    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment.
+    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting as mismatched versions can result in unexpected behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the CI Job page"/>
 
 </TabItem>
 

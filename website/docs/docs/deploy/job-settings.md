@@ -79,19 +79,22 @@ If you're interested in joining our beta, please fill out our Google Form to [si
     - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this deploy job runs.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
-    - **Add API trigger** &mdash; Set up an [API](/docs/dbt-cloud-apis/overview) trigger to run this deploy job.
 4. Options in the **Schedule** section:
     - **Run on schedule** &mdash; Enable this option to run this deploy job on a set schedule.
-    - **Timing** and **Run at** &mdash; Specify whether to [schedule](#schedule-days) this deploy job using **Exact Intervals** that runs the job at specific times of day, **Intervals** that runs the job every specified number of hours, or to **Enter custom cron schedule (UTC)** that runs the job specified using [cron syntax](#custom-cron-schedule).
-    - **Days of the Week** &mdash; By default, it’s set to every day.
+    - **Timing** and **Run every (UTC)** &mdash; Specify whether to [schedule](#schedule-days) this deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or to **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
+    - **Days of the Week** &mdash; By default, it’s set to every day when **Frequency** or **Specific Intervals** is chosen for **Timing**.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-deploy-job.png" width="90%" title="Example of Deploy Job page in dbt Cloud UI"/>
+
 5. (optional) Options in the **Advanced Settings** section: 
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when this deploy job runs.
     - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to correspond this deploy job to the settings in your project.
     - **Run Timeout** &mdash; Cancel this deploy job if the run time exceeds the timeout value. 
     - **Compare changes against an environment (Deferral)** option — By default, it’s set to **No deferral**.
-    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment.
+    - **dbt Version** &mdash; By default, it’s set to inherit the [dbt version](/docs/dbt-versions/core) from the environment. dbt Labs strongly recommends that you don't change the default setting as mismatched versions can result in unexpected behavior.
     - **Threads** &mdash; By default, it’s set to 4 [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads). Increase the thread count to increase model execution concurrency.
 
+    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/deploy-job-adv-settings.png" width="90%" title="Example of Advanced Settings on Deploy Job page"/>
 
 </TabItem>
 
