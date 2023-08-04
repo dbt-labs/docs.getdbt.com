@@ -4,9 +4,11 @@ sidebar_label: "retry"
 id: "retry"
 ---
 
-:::warning dbt Cloud support coming soon
+:::info Support in dbt Cloud
 
-Native support for `dbt retry` is coming to dbt Cloud soon.
+`dbt retry` is supported in the dbt Cloud IDE.
+
+Native support for restarting scheduled runs from point of failure is currently in development & coming soon.
 
 :::
 
