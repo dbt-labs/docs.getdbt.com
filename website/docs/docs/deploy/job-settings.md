@@ -17,7 +17,7 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 
 :::tip Join our beta 
 
-dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs on this, click on the **Beta version** tab below.
+dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs on this, refer to [Create and schedule jobs (Beta version)](/docs/deploy/job-settings?version=beta#create-and-schedule-jobs).
 
 If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
 
