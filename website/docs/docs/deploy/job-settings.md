@@ -89,7 +89,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 5. (optional) Options in the **Advanced Settings** section: 
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
-    - **Run Timeout** &mdash; Cancel this deploy job if the run time exceeds the timeout value. 
+    - **Run Timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
     - **Compare changes against an environment (Deferral)** option — By default, it’s set to **No deferral**.
 
     :::info
