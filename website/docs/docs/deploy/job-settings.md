@@ -1,6 +1,6 @@
 ---
 title: "Job settings"
-description: "Learn how to create and schedule jobs in dbt Cloud for the scheduler to run. Jobs help you build observability into transformation workflows with the in-app scheduling, logging, and alerting." 
+description: "Learn how to create and schedule jobs in dbt Cloud for the scheduler to run. When you run with dbt Cloud, you get built in observability, logging, and alerting." 
 tags: [scheduler]
 ---
 
