@@ -35,7 +35,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 <Tabs queryString="version">
 <TabItem value="current" label="Current version" default>
 
-1. Create a new deploy job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
+1. Create a new deploy job by clicking **Deploy** in the header, click **Jobs**, and then **Create job**.
 1. Provide a job name, for example "Hourly Customer Job". 
 1. Under **Environment**, add the following:
     * **Environment** &mdash; Link to an existing deployment environment.
