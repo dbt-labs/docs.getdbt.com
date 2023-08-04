@@ -6,6 +6,14 @@ description: "Learn how to create and set up CI checks to test code changes befo
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request in your dbt repository. By running and testing only _modified_ models, dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
+:::tip Join our beta 
+
+dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs on this, click on the **Beta version** tab below.
+
+If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
+
+:::
+
 ## Prerequisites
 
 - You have a dbt Cloud account.
@@ -17,14 +25,6 @@ You can set up [continuous integration](/docs/deploy/continuous-integration) (CI
 ## Set up CI jobs
 
 dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. Having a separate environment dedicated for CI will provide better isolation between your temporary CI schemas builds and your production data builds. Additionally, sometimes teams need their CI jobs to be triggered when a PR is made to a branch other than main. If your team maintains a staging branch in your release process, having a separate environment will allow you to set a [custom branch](/faqs/environments/custom-branch-settings) and, accordingly, the CI job in that dedicated environment will be triggered only when PRs are made to the specified custom branch.
-
-:::tip Join our beta 
-
-dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs on this, click on the **Beta version** tab below.
-
-If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
-
-:::
 
 <Tabs queryString="version">
 <TabItem value="current" label="Current version" default>

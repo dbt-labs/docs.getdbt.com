@@ -15,6 +15,14 @@ Jobs make it easy to run dbt commands against a project in your cloud data platf
 
 You can create a job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). 
 
+:::tip Join our beta 
+
+dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs on this, click on the **Beta version** tab below.
+
+If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
+
+:::
+
 ## Prerequisites
 
 - You must have a dbt Cloud account and [Developer seat license](/docs/cloud/manage-access/seats-and-users). If you don't, you can [sign up](https://www.getdbt.com/signup/) for a [free account](https://www.getdbt.com/pricing/). 
@@ -23,14 +31,6 @@ You can create a job and configure it to run on [scheduled days and times](/docs
 - You must set up a [deployment environment](/docs/deploy/deploy-environments). 
 
 ## Create and schedule jobs {#create-and-schedule-jobs}
-
-:::tip Join our beta 
-
-dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs on this, click on the **Beta version** tab below.
-
-If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
-
-:::
 
 <Tabs queryString="version">
 <TabItem value="current" label="Current version" default>
