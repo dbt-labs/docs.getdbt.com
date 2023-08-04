@@ -81,7 +81,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Schedule** section:
     - **Run on schedule** &mdash; Enable this option to run this deploy job on a set schedule.
-    - **Timing** &mdash; Specify whether to [schedule](#schedule-days) this deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
+    - **Timing** &mdash; Specify whether to [schedule](/docs/deploy/job-triggers#schedule-days) this deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](/docs/deploy/job-triggers#custom-cron-schedule).
     - **Days of the Week** &mdash; By default, it’s set to every day when **Frequency** or **Specific Intervals** is chosen for **Timing**.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-deploy-job.png" width="90%" title="Example of Deploy Job page in dbt Cloud UI"/>
