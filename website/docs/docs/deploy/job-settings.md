@@ -76,7 +76,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
     - **Job Name** &mdash; Specify the name for the deploy job. For example, `Daily build`.
     - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
 3. Options in the **Execution Settings** section:
-    - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
+    - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when the job runs.
     - **Generate docs on run** &mdash; Enable this option if you want to [generate project docs](/docs/collaborate/build-and-view-your-docs) when this deploy job runs.
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Schedule** section:
