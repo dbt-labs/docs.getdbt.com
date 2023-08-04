@@ -73,7 +73,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 
 1. On your deployment environment page, click **Create Job** > **Deploy Job** to create a new deploy job. 
 2. Options in the **Job Description** section:
-    - **Job Name** &mdash; Specify the name for this deploy job. For example, `Daily build`.
+    - **Job Name** &mdash; Specify the name for the deploy job. For example, `Daily build`.
     - **Environment** &mdash;  By default, it’s set to the deployment environment you created the deploy job from.
 3. Options in the **Execution Settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build` command. Click **Add command** to add more [commands](/docs/deploy/job-commands) that you want to be invoked when this job runs.
