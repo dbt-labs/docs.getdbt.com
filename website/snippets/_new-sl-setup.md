@@ -6,7 +6,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment and projec
 If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
 :::
 
-1. in dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
+1. In dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
     * Note &mdash; Deployment environment is currently supported (_development experience coming soon_)
 
 2. Navigate to **Account Settings** and select the specific project you want to enable the Semantic Layer for.
@@ -25,7 +25,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 6. You should see connection information that allows you to connect to downstream tools. 
 **Note:** If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
 
-7. Return to the **Project Details** page, then  select **Generate Service Token** to create a [Semantic Layer Only an Metadata Only service token](/docs/dbt-cloud-apis/service-tokens).  
+7. Return to the **Project Details** page, then  select **Generate Service Token** to create a Semantic Layer Only and Metadata Only [service token](/docs/dbt-cloud-apis/service-tokens).  
 
 8. Save and copy your environment ID, service token, and host, which you'll need to use downstream tools. For more info on how to integrate with partner integrations, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations).
 
