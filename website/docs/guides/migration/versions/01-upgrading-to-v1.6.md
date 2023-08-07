@@ -47,8 +47,9 @@ Supported on:
 - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
 - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
 - Snowflake (docs forthcoming)
+- Databricks (docs forthcoming)
 
-Support for BigQuery and Databricks forthcoming.
+Support for BigQuery coming soon.
 
 ### New commands for mature deployment
 
