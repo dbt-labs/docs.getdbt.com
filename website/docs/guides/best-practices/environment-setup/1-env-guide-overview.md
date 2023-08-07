@@ -39,7 +39,7 @@ Environments define the way that dbt will execute your code, including:
   - **Development** — the environment settings in which you work in the IDE on a development branch.
   - **Deployment** — the environment settings in which a dbt Cloud job runs.
 
-In this guide, we’re going to focus on **deployment environments**, which determine how your project is executed when a **dbt Cloud job executes**.
+In this guide, we’re going to focus on **deployment environments**, which determine how your project is executed when a **dbt Cloud job executes**. When using both approaches, make sure to designate one environment as "Production." This will allow you to use features such as dbt Explorer and cross-project references. Refer to [Set product environment](/docs/deploy/deploy-environments#set-as-production-environment-beta) for details.
 
 Depending on your git workflow and testing strategy, you'll be choosing between one deployment environment or many deployment environments. We provide a high-level overview of how these two deployment strategies work here, but use each section of this guide to get a deep-dive into how these setups differ. 
 
@@ -55,7 +55,7 @@ We usually recommended folks start with the basics; having one deployment enviro
 - You only need to have **scheduled jobs running in a single environment** within your data warehouse.
 - You use a **single primary branch** and follow a direct promotion (**Dev —> Prod**) strategy
 
-With this option, your production jobs and your [Slim CI jobs](/docs/deploy/continuous-integration) that ensure code integrity are managed within one single deployment environment.
+With this option, your production jobs and your [CI jobs](/docs/deploy/continuous-integration) that ensure code integrity are managed within one single deployment environment.
 
 ### TL;DR — Many deployment environments
 This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that can be worth the tradeoff. This approach works well if:
