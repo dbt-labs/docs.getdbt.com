@@ -1,8 +1,7 @@
 ---
-title: "Intro to the Semantic Layer"
-description: Getting started with the dbt Semantic Layer
-displayText: "dbt Cloud Semantic Layer best practices"
-hoverSnippet: Learn how to get started with the dbt Semantic Layer
+title: "Intro to MetricFlow"
+description: Getting started with the dbt and MetricFlow
+hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
 
 :::tip
@@ -13,10 +12,10 @@ Flying cars, hoverboards, and true self-service analytics: this is the future we
 
 ## Learning goals
 
-- ❓ Understand the **purpose and capabilities** of the **dbt Semantic Layer**.
-- 🧱 Familiarity with the core components of the dbt Semantic Layer — **semantic models and metrics** — and how they work together.
+- ❓ Understand the **purpose and capabilities** of the **dbt Semantic Layer**, particularly MetricFlow as the engine that powers it.
+- 🧱 Familiarity with the core components of MetricFlow — **semantic models and metrics** — and how they work together.
 - 🛠️ Hands-on **experience building** semantic models and metrics in dbt Cloud.
-- 🔁 Know how to **refactor** models into the Semantic Layer.
+- 🔁 Know how to **refactor** models for MetricFlow.
 - 🏅 Aware of new **best practices** to take maximum advantage of the Semantic Layer.
 
 ## Guide structure overview
