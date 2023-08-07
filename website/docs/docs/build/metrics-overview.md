@@ -98,7 +98,7 @@ metrics:
 
 ### Ratio metrics 
 
-[Ratio metrics](/docs/build/ratio) involve a numerator measure and a denominator measure. A  `constraint` string  can be applied, to both numerator and denominator, or applied separately to the numerator or denominator. 
+[Ratio metrics](/docs/build/ratio) involve a numerator metric and a denominator metric. A  `constraint` string  can be applied, to both numerator and denominator, or applied separately to the numerator or denominator. 
 
 ```yaml
 # Ratio Metric
@@ -106,25 +106,25 @@ metrics:
   - name: cancellation_rate
     owners:
       - support@getdbt.com
-# Ratio metrics create a ratio out of two measures.
-# Define the measures from the semantic model as numerator or denominator
+# Ratio metrics create a ratio out of two metrics.
+# Define the metrics from the semantic manifest as numerator or denominator
     type: ratio
     type_params:
-      numerator: cancellations_usd
-      denominator: transaction_amount_usd
+      numerator: cancellations
+      denominator: transaction_amount
       filter: |     # add optional constraint string. This applies to both the numerator and denominator
         {{ Dimension('customer__country') }} = 'MX'
   - name: enterprise_cancellation_rate
     owners:
       - support@getdbt.com
       # Ratio metrics create a ratio out of two measures. 
-      # Define the measures from the semantic model as numerator or denominator
+      # Define the metrics from the semantic model as numerator or denominator
     type: ratio
     type_params:
       numerator:
-        name: cancellations_usd
+        name: cancellations
         filter: {{ Dimension('company__tier' )}} = 'enterprise'  # constraint only applies to the numerator
-      denominator: transaction_amount_usd
+      denominator: transaction_amount
       filter: |   #  add optional constraint string. This applies to both the numerator and denominator
         {{ Dimension('customer__country') }} = 'MX'  
 ```
@@ -142,9 +142,9 @@ metrics:
   - name: cancellations
     type: simple
     type_params:
-      measure: cancellations_usd  # Specify the measure you are creating a proxy for. 
-      filter: |
-        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
+      measure: cancellations_usd  # Specify the measure you are creating a proxy for.
+    filter: |
+      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
 ```
 
 ## Filters
