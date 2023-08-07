@@ -4,6 +4,14 @@ slug: in-15-minutes
 description: Find issues before they are deployed to production with dbt Cloud's Slim CI.
 ---
 
+:::tip Join the beta
+
+dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs). This guide assumes you are using the improvements available in the beta.
+
+If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
+
+:::
+
 ## Prerequisites
 
 As part of your initial dbt Cloud setup, you should already have Development and Production environments configured. Let's recap what each does:
