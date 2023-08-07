@@ -1,5 +1,5 @@
 ---
-title: "Setup the Semantic Layer"
+title: "Set up MetricFlow"
 description: Getting started with the dbt and MetricFlow
 hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
