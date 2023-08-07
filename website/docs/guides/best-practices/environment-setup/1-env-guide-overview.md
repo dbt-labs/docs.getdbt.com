@@ -55,7 +55,7 @@ We usually recommended folks start with the basics; having one deployment enviro
 - You only need to have **scheduled jobs running in a single environment** within your data warehouse.
 - You use a **single primary branch** and follow a direct promotion (**Dev —> Prod**) strategy
 
-With this option, your production jobs and your [Slim CI jobs](/docs/deploy/continuous-integration) that ensure code integrity are managed within one single deployment environment.
+With this option, your production jobs and your [CI jobs](/docs/deploy/continuous-integration) that ensure code integrity are managed within one single deployment environment.
 
 ### TL;DR — Many deployment environments
 This approach adds a bit more complexity and may slow down the development process, but adds a layer of security that can be worth the tradeoff. This approach works well if:

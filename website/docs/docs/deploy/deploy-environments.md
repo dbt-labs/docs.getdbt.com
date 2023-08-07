@@ -34,6 +34,8 @@ import ExpBeta from '/snippets/_explorer-beta-banner.md';
 
 <ExpBeta/>
 
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings.jpg" width="70%" title="Set your production environment as the default environment in your Environment Settings"/>
+
 In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like dbt Explorer and cross-project references. It acts as the source of truth for the project's production state in dbt Cloud.
 
 ### Semantic Layer
