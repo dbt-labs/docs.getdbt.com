@@ -20,7 +20,7 @@ dbt Labs recommends completing these steps in a local dev environment instead of
 1. Install the CLI with `pip install "dbt-metricflow[your_adapter_name]`. For example: 
 
     ```bash
-    pip install "dbt-metricflow[snowflake]
+    pip install "dbt-metricflow[snowflake]"
     ```
     The MetricFlow CLI is not available in the IDE at this time. Support for it is coming soon. 
 

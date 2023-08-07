@@ -11,6 +11,13 @@ meta:
 <VersionBlock firstVersion="1.6">
 
 import NewSLChanges from '/snippets/_new-sl-changes.md';
+import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
+import CreateModel from '/snippets/_sl-create-semanticmodel.md';
+import DefineMetrics from '/snippets/_sl-define-metrics.md';
+import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
+import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
+
+
 
 <NewSLChanges />
 
@@ -39,100 +46,19 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 ## Install MetricFlow
 
-Before you begin, install the [MetricFlow CLI](/docs/build/metricflow-cli) as an extension of a dbt adapter from PyPI. The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
-
-Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platforms):
-
-- Create or activate your virtual environment. `python -m venv venv`
-- `pip install "dbt-metricflow[your_adapter_name]"`
-  * You must specify `[your_adapter_name]`. For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
- 
-Currently, the supported adapters are Snowflake and Postgres (BigQuery, Databricks, and Redshift coming soon). 
+<InstallMetricFlow />
 
 ## Create a semantic model
 
-This step will guide you through setting up your semantic models in your dbt project, which consist of [entities](/docs/build/entities), [dimensions](/docs/build/dimensions), and [measures](/docs/build/measures).
-
-1. Name your semantic model, fill in appropriate metadata, and map it to a model in your dbt project. 
-
-```yaml
-semantic_models:
-  - name: transactions
-    description: |
-    This table captures every transaction starting July 02, 2014. Each row represents one transaction
-    model: ref('fact_transactions')
-  ```
-
-2. Define your entities. These are the keys in your table that MetricFlow will use to join other semantic models. These are usually columns like `customer_id`, `transaction_id`, and so on.
-
-```yaml
-  entities:
-    - name: transaction
-      type: primary
-      expr: id_transaction
-    - name: customer
-      type: foreign
-      expr: id_customer
-  ```
-
-3. Define your dimensions and measures. dimensions are properties of the records in your table that are non-aggregatable. They provide categorical or time-based context to enrich metrics. Measures are the building block for creating metrics. They are numerical columns that MetricFlow aggregates to create metrics.
-
-```yaml
-measures:
-    - name: transaction_amount_usd
-      description: The total USD value of the transaction.
-      agg: sum
-  dimensions:
-    - name: is_large
-      type: categorical
-      expr: case when transaction_amount_usd >= 30 then true else false end
-```
-
-:::tip
-
-If you're familiar with writing SQL, you can think of dimensions as the columns you would group by and measures as the columns you would aggregate.
-
-```sql
-select
-  metric_time_day,  -- time
-  country,  -- categorical dimension
-  sum(revenue_usd) -- measure
-from
-  snowflake.fact_transactions  -- sql table
-group by metric_time_day, country  -- dimensions
-  ```
-:::
+<CreateModel />
 
 ## Define metrics
 
-Now that you've created your first semantic model, it's time to define your first metric. MetricFlow supports different metric types like [simple](/docs/build/simple), [ratio](/docs/build/ratio), [cumulative](/docs/build/cumulative), and [derived](/docs/build/derived). 
+<DefineMetrics />
 
-1. You can define metrics in the same YAML files as your semantic models, or create a new file.
+## Test and query metrics
 
-2. The example metric we'll create is a simple metric that refers directly to a measure, based on the `transaction_amount_usd` measure, which will be implemented as a `sum()` function in SQL.
-
-```yaml
----
-metrics:
-  - name: transaction_amount_usd
-    type: simple
-    type_params:
-    measure: transaction_amount_usd
-```
- 
-3. Click **Save** and then **Preview** the code in the dbt Cloud IDE.
-
-## Test metrics
-
-The following steps explain how to test and manually query your metrics. Currently, you can only manually test your metrics using the CLI (dbt Cloud IDE support coming soon)
-
-1. Make sure you have the [MetricFlow CLI](/docs/build/metricflow-cli) installed and up to date.
-2. In the CLI, run `mf validate-configs` to validate the changes before committing them.
-3. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to manually query the metrics and dimensions.
-4. Verify that the metric values are what you expect. You can view the generated SQL if you type `--explain` in the CLI.
-5. Commit and merge the code changes that contain the metric definitions.
-
-To continue building out your metrics based on your organization's needs, refer to the [Build your metrics](/docs/build/build-metrics-intro) for detailed info on how to define different metric types and semantic models.
+<TestQuery />
 
 ## Run a production job
 

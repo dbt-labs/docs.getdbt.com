@@ -1,3 +1,5 @@
+/docs/deploy/slim-ci-jobs /docs/deploy/ci-jobs 301
+
 ## semantic layer
 
 https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer  /docs/use-dbt-semantic-layer/dbt-sl?version=1.6 301
@@ -5,6 +7,7 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /guides/dbt-ecosystem/sl-partner-integration-guide  /docs/use-dbt-semantic-layer/avail-sl-integrations 301
 /docs/use-dbt-semantic-layer/dbt-semantic-layer /docs/use-dbt-semantic-layer/dbt-sl 301
 /docs/use-dbt-semantic-layer/set-up-semantic-layer /docs/use-dbt-semantic-layer/setup-sl 301
+/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer /docs/use-dbt-semantic-layer/setup-sl 301
 /docs/use-dbt-semantic-layer/quickstart-semantic-layer /docs/use-dbt-semantic-layer/quickstart-sl 301
 
 ## refocus deploy page
