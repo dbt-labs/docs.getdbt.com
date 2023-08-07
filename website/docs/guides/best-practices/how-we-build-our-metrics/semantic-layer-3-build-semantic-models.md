@@ -43,7 +43,7 @@ semantic_models:
 semantic_models:
   - name: orders
     description: |
-      Model containting order data. The grain of the table is the order id.
+      Model containing order data. The grain of the table is the order id.
     model: ref('stg_orders')
     entities:
       ...
@@ -117,13 +117,13 @@ semantic_models:
 - 🧮 Dimensions are the columns that we want to **filter and group by**, **the adjectives of our project**. They come in three types:
   - **categorical**
   - **time**
-  - slowly changing dimensions — [these are covered in the documentation](https://docs.getdbt.com/docs/build/dimensions#scd-type-ii), and a little more complex. To focus on building your mental models of MetricFlow's fundamentals, we won't be using SCDs this guide.
+  - slowly changing dimensions — [these are covered in the documentation](https://docs.getdbt.com/docs/build/dimensions#scd-type-ii), and a little more complex. To focus on building your mental models of MetricFlow's fundamentals, we won't be using SCDs in this guide.
 - ➕ We're **not limited to existing columns**, we can use the `expr` property to add simple computations in our dimensions.
 - 📛 Categorical dimensions are the simplest, they simply require a `name` and `type` (type being categorical). **If the `name` property matches the name of the dimension column**, that's it, you're done. If you want or need to use a `name` other than the column name, or do some filtering or computation, **you can supply an optional `expr` property** to evaluate for the dimension.
 
 ### Dimensions in action
 
-- 👀 Lets look at our staging model again and see what fields we have available.
+- 👀 Let's look at our staging model again and see what fields we have available.
 
 ```SQL
 select
@@ -145,7 +145,7 @@ from source
 
 - ⏰ For now the only dimension to add is a **time dimension**.
 - 🕰️ At least one **primary time dimension** is **required** for any semantic models that **have measures**.
-- 1️⃣ We denote this with the `is_primary` property, or if there is only one time dimension supplied it is primary by default. Below we only have `ordered_at` as a timestamp so we don't need to specify anything except the maximum granularity we're bucketing to (in this case, day).
+- 1️⃣ We denote this with the `is_primary` property, or if there is only a one-time dimension supplied it is primary by default. Below we only have `ordered_at` as a timestamp so we don't need to specify anything except the maximum granularity we're bucketing to (in this case, day).
 
 ```YAML
 dimensions:
@@ -161,7 +161,7 @@ dimensions:
 We'll discuss an alternate situation, dimensional tables that have static numeric values like supply costs or tax rates but no time dimensions, later in the Guide.
 :::
 
-- 🔢 We can also **make a dimension out of numeric column** that would be typically be a measures.
+- 🔢 We can also **make a dimension out of a numeric column** that would typically be a measure.
 - 🪣 Using `expr` we can **create buckets of values that we label** for our dimension. We'll add one of these in for labeling 'large orders' as any order totals over $50.
 
 ```YAML
@@ -185,7 +185,7 @@ dimensions:
 
 ### Measures in action
 
-- 👀 Lets look at **our staging model** one last time and see what **fields we want to measure**.
+- 👀 Let's look at **our staging model** one last time and see what **fields we want to measure**.
 
 ```SQL
 select
@@ -213,7 +213,7 @@ from source
 ```YAML
 measures:
   - name: order_total
-    description: The total amount for each order inlcuding taxes.
+    description: The total amount for each order including taxes.
     agg: sum
   - name: tax_paid
     description: The total tax paid on each order.
@@ -275,17 +275,17 @@ semantic_models:
         agg: sum
 ```
 
-- 🦺 We can check that it's valid configuration and works with the real data our dbt project is generating by using the `mf validate-configs` command. This will:
+- 🦺 We can check that it's a valid configuration and works with the real data our dbt project is generating by using the `mf validate-configs` command. This will:
   1. **Parse the semantic manifest** our configuration describes out of the dbt project.
   2. Validate the **internal semantics** of the manifest as described by our code.
   3. Validate the **external semantics** of the manifest against your data warehouse (e.g. making sure that a column specified as a dimension exists on the proper table)
 
 ## Review and next steps
 
-Let's review what the basics of semantic models, they:
+Let's review the basics of semantic models:
 
 - 🧱 Consist off **entities, dimensions, and measures**.
 - 🫂 Describe the **semantics and relationships of objects** in the warehouse.
 - 1️⃣ Correspond to a **single logical model** in your dbt project.
 
-Next up, lets use our new semantic model to **build a metric**!
+Next up, let's use our new semantic model to **build a metric**!
