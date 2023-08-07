@@ -53,6 +53,9 @@ models:
         # column-level constraints
         constraints:
           - type: not_null
+          - type: unique
+          - type: foreign_key
+            expression: <other_model_schema>.<other_model_name> (<other_model_column>)
           - type: ...
 ```
 
