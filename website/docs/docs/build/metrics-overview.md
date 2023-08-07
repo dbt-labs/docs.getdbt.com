@@ -142,9 +142,9 @@ metrics:
   - name: cancellations
     type: simple
     type_params:
-      measure: cancellations_usd  # Specify the measure you are creating a proxy for. 
-      filter: |
-        {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
+      measure: cancellations_usd  # Specify the measure you are creating a proxy for.
+    filter: |
+      {{ Dimension('order__value')}} > 100 and {{Dimension('user__acquisition')}}
 ```
 
 ## Filters
