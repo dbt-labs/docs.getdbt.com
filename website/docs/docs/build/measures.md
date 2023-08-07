@@ -12,7 +12,7 @@ Measures are aggregations performed on columns in your model. They can be used a
 | --- | --- | --- |
 | [`name`](#name) | Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required |
 | [`description`](#description) | Describes the calculated measure. | Optional |
-| [`agg`](#aggregation) | dbt supports the following aggregations: `sum`, `min`, `max`, `average`, `sum_boolean`, `count_distinct`, `median`, and `percentile`. | Required |
+| [`agg`](#aggregation) | dbt supports aggregations such as `sum`, `min`, `max`, and more. Refer to [Aggregation](/docs/build/measures#aggregation) for the full list of supported aggregation types. | Required |
 | [`expr`](#expr) | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | [`non_additive_dimension`](#non-additive-dimensions) | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
 | `agg_params` | specific aggregation properties such as a percentile. | Optional |
