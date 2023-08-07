@@ -346,7 +346,7 @@ const sidebarSettings = {
           label: "Continuous integration",
           link: { type: "doc", id: "docs/deploy/continuous-integration" },
           items: [
-            "docs/deploy/slim-ci-jobs",
+            "docs/deploy/ci-jobs",
           ],
         },
         {
@@ -408,12 +408,12 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Use the dbt Semantic Layer",
-      collapsed: true,
+      link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
-        "docs/use-dbt-semantic-layer/quickstart-semantic-layer",
-        "docs/use-dbt-semantic-layer/dbt-semantic-layer",
-        "docs/use-dbt-semantic-layer/setup-dbt-semantic-layer",
+        "docs/use-dbt-semantic-layer/quickstart-sl",
+        "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/avail-sl-integrations",
+        "docs/use-dbt-semantic-layer/sl-architecture",
       ],
     },
     {
@@ -481,6 +481,15 @@ const sidebarSettings = {
                 "docs/dbt-cloud-apis/discovery-schema-exposures",
               ],
             },
+          ],
+        },
+        {
+          type: "category",
+          label: "Semantic Layer APIs",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
+          items: [
+            "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
       ],
