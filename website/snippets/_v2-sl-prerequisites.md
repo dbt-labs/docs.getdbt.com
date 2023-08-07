@@ -5,7 +5,7 @@ To use the Semantic Layer, you must:
 
 - Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
 - Have both your production and development environments running dbt version 1.6 or higher.
-- Use Snowflake, BigQuery, Databricks, and Redshift.
+- Use Snowflake, BigQuery, Databricks, or Redshift. (dbt Cloud Postgres support coming soon).
 -  Create a successful run in the environment where you configure the Semantic Layer. <br/>
   **Note:** Semantic Layer currently supports the Deployment environment. (_development experience coming soon_)
 - Install the [MetricFlow CLI](/docs/build/metricflow-cli). After installing the package, make sure you run at least one model.
