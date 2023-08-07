@@ -368,7 +368,7 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 </TabItem>
 </Tabs>
 
-## Time Granularity
+## Time granularity
 You can optionally specify the time granularity you want your data to be aggregated at by appending double underscore and the unit of granularity you want to the global time dimension `metric_time`. The granularity options to group by are: day, week, month, quarter year. 
 
 An example for querying metric data at a monthly grain would look like this
