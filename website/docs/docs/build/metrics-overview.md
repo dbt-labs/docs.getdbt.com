@@ -13,9 +13,9 @@ The keys for metrics definitions are:
 | Component | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
-| `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Optional |
+| `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
-| `filter` | For any type of metric, you may optionally include a filter string, which applies a filter for a dimension, entity or time dimension when computing the metric. You can think of this as your WHERE clause.   | Optional |
+| `filter` | For any type of metric, you may optionally include a filter string, which applies a filter for a dimension, entity, or time dimension when computing the metric. You can think of this as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. |
 
 
@@ -38,7 +38,7 @@ metrics:
 This page explains the different supported metric types you can add to your dbt project. 
 <!--
 - [Cumulative](#cumulative-metrics) — Cumulative metrics aggregate a measure over a given window.
-- [Derived](#derived-metrics) — An expression of other metrics, which allows you to do calculation on top of metrics.
+- [Derived](#derived-metrics) — An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Expression](#expression-metrics) — Allow measures to be modified using a SQL expression.
 - [Measure proxy](#measure-proxy-metrics) — Metrics that refer directly to one measure.
 - [Ratio](#ratio-metrics) — Create a ratio out of two measures. 
@@ -148,7 +148,8 @@ metrics:
 ```
 
 ## Filters
-Filter are configured using jinja templating. Use the following syntax to refrence entites, dimensions and time dimensions in filters:
+
+A filter is configured using Jinja templating. Use the following syntax to reference entities, dimensions, and time dimensions in filters:
 ```yaml
 filter: |
   {{ Entity('entity_name') }} 
@@ -163,7 +164,7 @@ You can set more metadata for your metrics, which can be used by other tools lat
 
 - **Description** &mdash;  Write a detailed description of the metric.
 
-<!--Provide a detailed description of the metric. This description is surfaced in the main “definition” section of the metric page using rich Markdown formatting in the Transform UI. [this includes transform and not sure how this looks in core and cloud]-->
+<!--Provide a detailed description of the metric. This description surfaced in the main “definition” section of the metric page using rich Markdown formatting in the Transform UI. [this includes transform and not sure how this looks in core and cloud]-->
 
 
 ## Related docs

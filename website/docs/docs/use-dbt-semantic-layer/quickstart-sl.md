@@ -23,7 +23,7 @@ import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools. 
 
-MetricFlow is a powerful component within the dbt Semantic Layer that helps users define and manage company metrics efficiently. It provides flexible abstractions and SQL query generation, and also allows data consumers to retrieve metric datasets quickly and easily from a data platform.
+MetricFlow is a powerful component within the dbt Semantic Layer that helps users define and manage company metrics efficiently. It provides flexible abstractions and SQL query generation and also allows data consumers to retrieve metric datasets quickly and easily from a data platform.
 
 Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
 
