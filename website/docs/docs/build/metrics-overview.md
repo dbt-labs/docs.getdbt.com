@@ -13,7 +13,10 @@ The keys for metrics definitions are:
 | Component | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
-| `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Optional |
+| `description` | Provide the description for your metric.   | Optional |
+| `configs` | Provide the specific configurations for your metric   | Optional |
+| `label` | PThe display name for your metric. This value will be shown in downstream tools.   | Required |
+| `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `filter` | For any type of metric, you may optionally include a filter string, which applies a filter for a dimension, entity or time dimension when computing the metric. You can think of this as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. |
