@@ -8,13 +8,14 @@ tags: [Metrics, Semantic Layer]
 
 Dimensions is a way to group or filter information based on categories or time. It's like a special label that helps organize and analyze data. 
 
-In a data platform, dimensions is part of a larger structure called a semantic model. It's created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures), and used to add more details to your data that can't be easily added up or combined.  In SQL, dimensions is typically included in the `dimensions` clause of your SQL query.
+In a data platform, dimensions is part of a larger structure called a semantic model. It's created along with other elements like [entities](/docs/build/entities) and [measures](/docs/build/measures), and used to add more details to your data that can't be easily added up or combined.  In SQL, dimensions is typically included in the `group by` clause of your SQL query.
+
 
 <!--dimensions are non-aggregatable expressions that define the level of aggregation for a metric used to define how data is sliced or grouped in a metric. Since groups can't be aggregated, they're considered to be a property of the primary or unique entity of the table.
 
 Groups are defined within semantic models, alongside entities and measures, and correspond to non-aggregatable columns in your dbt model that provides categorical or time-based context. In SQL, dimensions  is typically included in the GROUP BY clause.-->
 
-All dimensions require a `name`, `type` and in most cases, an `expr` parameter. 
+All dimensions require a `name`, `type` and in some cases, an `expr` parameter. 
 
 | Name | Parameter | Field type |
 | --- | --- | --- |
@@ -60,13 +61,28 @@ semantic_models:
       expr: case when quantity > 10 then true else false end
 ```
 
+Metricflow requires that all dimensions have a primary entity. If your data source does not have a primary entity, you will need to specfy one. 
+
+```yaml:
+semantic_model:
+  name: bookings_monthly_source
+  description: bookings_monthly_source
+  defaults:
+    agg_time_dimension: ds
+  model: ref('bookings_monthly_source')
+  measures:
+    - name: bookings_monthly
+      agg: sum
+      create_metric: true
+  primary_entity: booking_id
+  ```
+
 ## Dimensions types
 
-Dimensions have three types. This section further explains the definitions and provides examples.
+Dimensions have 2 types. This section further explains the definitions and provides examples.
 
 1. [Categorical](#categorical)
 1. [Time](#time)
-1. [Slowly changing](#scd-type-ii)
 
 ### Categorical
 
@@ -91,9 +107,9 @@ To use BigQuery as your data platform, time dimensions columns need to be in the
 
 <TabItem value="is_primary" label="is_primary">
 
-To specify the default time dimensions for a measure or metric in MetricFlow, set the `is_primary` parameter to True. If your semantic model has multiple time dimensions, the non-primary ones should have `is_primary` set to False. To assign non-primary time dimensions to a measure, use the `agg_time_dimension` parameter and refer to the time dimensions defined in the section. 
+To specify the default time dimensions for a measure or metric in MetricFlow, set the `agg_time_dimension` in the `defaults` section. To override the default and aggregation on diffrent time dimension, set the `agg_time_dimension` parameter on a measure.
 
-In the provided example, the semantic model has two-time groups, `created_at` and `deleted_at`, with `created_at` being the primary time dimension through `is_primary: True`. The `users_created` measure defaults to the primary time dimensions, while the `users_deleted` measure uses `deleted_at` as its time group. 
+In the provided example, the semantic model has two-time groups, `created_at` and `deleted_at`, with `created_at` being the default time dimension. The `users_deleted` measure overrides the default and uses `deleted_at` as its time group. 
 
 ```yaml
 dimensions: 
@@ -231,7 +247,7 @@ The following basic structure of an SCD Type II data platform table is supported
 
 **Note**: The SCD dimensions table must have `valid_to` and `valid_from` columns.
 
-This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a natural key made up of the `entity_key` and `timestamp` columns. 
+This is an example of SQL code that shows how a sample metric called `num_events` is joined with versioned dimensions data (stored in a table called `scd_dimensions`) using a primary key made up of the `entity_key` and `timestamp` columns. 
 
 
 ```sql
@@ -289,7 +305,7 @@ semantic_models:
 
     entities:
       - name: sales_person
-        type: natural 
+        type: primary 
         expr: sales_person_id
 ```
 
