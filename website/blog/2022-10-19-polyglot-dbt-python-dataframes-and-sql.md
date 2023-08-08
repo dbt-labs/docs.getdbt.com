@@ -5,7 +5,6 @@ slug: polyglot-dbt-python-dataframes-sql
 
 authors: [doug_beatty]
 
-tags: [dbt product updates]
 hide_table_of_contents: false
 
 date: 2022-10-18

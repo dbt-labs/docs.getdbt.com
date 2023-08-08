@@ -4,7 +4,6 @@ description: "dbt v1.0 is coming up! Don't forget to update your projects to the
 slug: dbt-product-update-2021-september
 authors: [lauren_craigie] 
 
-tags: [dbt updates]
 hide_table_of_contents: false
 
 date: 2021-09-15
