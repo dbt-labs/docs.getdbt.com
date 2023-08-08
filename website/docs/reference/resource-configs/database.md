@@ -43,4 +43,4 @@ seeds:
 
 ## Warehouse specific information
 * BigQuery: `project` and `database` are interchangeable
-* Redshift: Cross-database queries are not possible in Redshift. As such, dbt will return a Database Error if you use 'Database A' for a seed file and try to `{{ ref() }}` that seed file (or its database object) in a model using 'Database B'. This error would only be found at runtime.
+
