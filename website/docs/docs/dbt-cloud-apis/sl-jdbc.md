@@ -146,7 +146,7 @@ To query metric values, here are the following parameters that are available:
 
 ## Note on time dimensions and `metric_time`
 
-You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`'. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
+You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
 
 You can look at a single metric or hundreds of metrics, and if you group by `metric_time`, it will always give you the correct time series.
 
@@ -157,7 +157,7 @@ Note that `metric_time` should be available in addition to any other time dimens
 
 ## Examples
 
-Use the following examples to help you get started with the JDBC API
+Refer to the following examples to help you get started with the JDBC API.
 
 ### Fetch metadata for metrics
 
