@@ -5,7 +5,6 @@ slug: evolving-data-engineer-craft
 
 authors: [sung_chung, kira_furuichi]
 
-tags: [dbt product updates]
 hide_table_of_contents: false
 
 date: 2023-05-01
