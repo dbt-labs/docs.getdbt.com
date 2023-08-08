@@ -137,6 +137,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
+            "docs/cloud/billing",
           ],
         },
         {
