@@ -61,7 +61,7 @@ semantic_models:
       expr: case when quantity > 10 then true else false end
 ```
 
-Metricflow requires that all dimensions have a primary entity. If your data source does not have a primary entity, you will need to specfy one. 
+MetricFlow requires that all dimensions have a primary entity. If your data source does not have a primary entity, you will need to specify one. 
 
 ```yaml:
 semantic_model:
@@ -76,7 +76,6 @@ semantic_model:
       create_metric: true
   primary_entity: booking_id
   ```
-
 ## Dimensions types
 
 Dimensions have 2 types. This section further explains the definitions and provides examples.
@@ -97,19 +96,35 @@ dimensions:
 
 ### Time
 
-Time has additional parameters specified under the `type_params` section.
 
 :::tip use datetime data type if using BigQuery
 To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
 :::
 
+Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the primary time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
+
+You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
+
+
+```bash
+mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
+```
+
+You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like daily, weekly, and so on):
+
 <Tabs>
 
-<TabItem value="is_primary" label="is_primary">
+<TabItem value="is_partition" label="is_partition">
 
-To specify the default time dimensions for a measure or metric in MetricFlow, set the `agg_time_dimension` in the `defaults` section. To override the default and aggregation on diffrent time dimension, set the `agg_time_dimension` parameter on a measure.
+Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the dbt Semantic Layer uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
-In the provided example, the semantic model has two-time groups, `created_at` and `deleted_at`, with `created_at` being the default time dimension. The `users_deleted` measure overrides the default and uses `deleted_at` as its time group. 
+You can also use `is_partition` for [categorical](#categorical) dimensions as well.
+
+MetricFlow enables metric aggregation during query time. For example, you can aggregate the `messages_per_month` measure. If you originally had a `time_granularity` for the time dimensions `metric_time`, you can specify a yearly granularity for aggregation in your CLI query:
+
+```bash
+mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
+```
 
 ```yaml
 dimensions: 
@@ -118,14 +133,12 @@ dimensions:
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
-      is_primary: True
       time_granularity: day
   - name: deleted_at
     type: time
     expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
-      is_primary: False
       time_granularity: day
 
 measures:
@@ -137,12 +150,6 @@ measures:
     expr: 1
     agg: sum
 ```
-
-When querying one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the primary time dimension, which can be referred to as metric_time or the dimensions' name. Multiple time groups can be used in separate metrics, such as users_created which uses created_at, and users_deleted which uses deleted_at.
-
-      ```
-       mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
-      ```
 
 </TabItem>
 
@@ -161,60 +168,18 @@ dimensions:
     expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
     is_partition: True 
     type_params:
-      is_primary: True
       time_granularity: day
   - name: deleted_at
     type: time
     expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
     is_partition: True 
     type_params:
-      is_primary: False
       time_granularity: day
 
 measures:
   - name: users_deleted
     expr: 1
-    agg: sum
-    agg_time_dimension: deleted_at
-  - name: users_created
-    expr: 1
-    agg: sum
-```
-
-</TabItem>
-
-<TabItem value="is_partition" label="is_partition">
-
-Use `is_partition: True` to indicate that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the Semantic Layer will use this parameter to ensure that the correct dimensional values are joined to measures. 
-
-In addition, MetricFlow allows for easy aggregation of metrics at query time. For example, you can aggregate the `messages_per_month` measure, where the original `time_granularity` of the time dimensions `metrics_time`, at a yearly granularity by specifying it in the query in the CLI.
-
-```
-mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
-```
-
-
-```yaml
-dimensions: 
-  - name: created_at
-    type: time
-    expr: date_trunc('day', ts_created) #ts_created is the underlying column name from the table 
-    is_partition: True 
-    type_params:
-      is_primary: True
-      time_granularity: day
-  - name: deleted_at
-    type: time
-    expr: date_trunc('day', ts_deleted) #ts_deleted is the underlying column name from the table 
-    is_partition: True 
-    type_params:
-      is_primary: False
-      time_granularity: day
-
-measures:
-  - name: users_deleted
-    expr: 1
-    agg: sum
+    agg: sum 
     agg_time_dimension: deleted_at
   - name: users_created
     expr: 1
@@ -224,7 +189,6 @@ measures:
 </TabItem>
 
 </Tabs>
-
 
 ### SCD Type II 
 
