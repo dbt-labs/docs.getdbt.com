@@ -1,8 +1,7 @@
 ---
 title: "Best practices"
-description: Getting started with the dbt Semantic Layer
-displayText: "dbt Cloud Semantic Layer best practices"
-hoverSnippet: Learn how to get started with the dbt Semantic Layer
+description: Getting started with the dbt and MetricFlow
+hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
 
 ## Putting it all together
