@@ -7,7 +7,7 @@
   * **Note** &mdash; After installing the dbt metrics package and updating the `packages.yml` file, make sure you run at least one model.
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-api">Discovery API</a> in the integrated tool to import metric definitions 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Discovery API <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer">Understanding the components of the dbt Semantic Layer</a> blog <br />
+- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> <br />
 
 </VersionBlock>
 
@@ -20,7 +20,7 @@
   * **Note** &mdash; After installing the dbt metrics package and updating the `packages.yml` file, make sure you run at least one model.
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-api">Discovery API</a> in the integrated tool to import metric definitions 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Discovery API <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer">Understanding the components of the dbt Semantic Layer</a> blog <br />
+- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> <br />
 
 </VersionBlock>
 
@@ -33,6 +33,6 @@
   * **Note** &mdash; After installing the dbt metrics package and updating the `packages.yml` file, make sure you run at least one model.
 - Set up the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/discovery-api">Discovery API</a> in the integrated tool to import metric definitions 
   * Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse pre-populated dbt metrics in external tools, which requires access to the Discovery API <br />
-- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> and <a href="https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer">Understanding the components of the dbt Semantic Layer</a> blog <br />
+- Recommended - Review the <a href="https://docs.getdbt.com/docs/build/metrics">dbt metrics page</a> <br />
 
 </VersionBlock>
