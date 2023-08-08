@@ -30,25 +30,26 @@ Semantic models have 6 components and this page explains the definitions with so
 ## Semantic models components
 
 The complete spec for semantic models is below:
+
 ```yaml
 semantic_models:
-  - name: the_name_of_the_semantic_model      ## Required
-    description: same as always               ## Optional
-    model: ref('some_model')                  ## Required
-    defaults:                                 ## Required
-        agg_time_dimension: dimension_name    ## Required if the model contains dimensions
-    entities:                                 ## Required
-       - see more information in entities
-    measures:                                 ## Optional
-       - see more information in measures section
-    dimensions:                               ## Required
-       - see more information in dimensions section
-    primary_entity: if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
+  - name: the_name_of_the_semantic_model  ## Required
+    description: same as always           ## Optional
+    model: ref('some_model')              ## Required
+    defaults:                             ## Required
+      agg_time_dimension: dimension_name  ## Required if the model contains dimensions
+    entities:                             ## Required
+      - see more information in entities
+    measures:                             ## Optional
+      - see more information in measures section
+    dimensions:                           ## Required
+      - see more information in dimensions section
+    primary_entity: >-
+      if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
 ```
-
 The following example displays a complete configuration and detailed descriptions of each field:
 
-```yml
+```yaml
 semantic_models:
   - name: transaction # A semantic model with the name Transactions
     model: ref('fact_transactions') # References the dbt model named `fact_transactions`
@@ -63,7 +64,6 @@ semantic_models:
       - name: customer
         type: foreign
         expr: customer_id
-
 
     dimensions: # dimensions are qualitative values such as names, dates, or geographical data. They provide context to metrics and allow "metric by group" data slicing.
       - name: transaction_date
