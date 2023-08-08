@@ -23,7 +23,6 @@ metrics:
       grain_to_date: sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next. 
       # Optional. Can not be used with window. 
 
-
 ```
 
 :::info MetricFlow time spine required
@@ -75,9 +74,10 @@ Suppose the underlying measure `customers` which is configured to count the uniq
 
 ```yaml
 measures:
-      - name: customers
-        expr: customer_id
-        agg: count_distinct
+  - name: customers
+    expr: customer_id
+    agg: count_distinct
+
 ```
 
 We can write a cumulative metric `weekly_customers` as such: 
@@ -118,31 +118,29 @@ Suppose you (a subscription-based company for the sake of this example) have an 
 Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following configuration YAML displays creating such cumulative metrics to obtain current revenue or total number of active subscriptions as a cumulative sum:
 
 ```yaml
-measures: 
-  - name: revenue 
-    description: Total revenue 
-    agg: sum 
-    expr: revenue 
-  - name: subscription_count 
-    description: Count of active subscriptions 
-    agg: sum 
+measures:
+  - name: revenue
+    description: Total revenue
+    agg: sum
+    expr: revenue
+  - name: subscription_count
+    description: Count of active subscriptions
+    agg: sum
     expr: event_type
+metrics:
+  - name: current_revenue
+    description: Current revenue
+    label: Current Revenue
+    type: cumulative
+    type_params:
+      measure: revenue
+  - name: active_subscriptions
+    description: Count of active subscriptions
+    label: Active Subscriptions
+    type: cumulative
+    type_params:
+      measure: subscription_count
 
-metrics: 
-- name: current_revenue
-  description: Current revenue 
-  label: Current Revenue
-  type: cumulative 
-  type_params: 
-    measures: 
-      - revenue
-- name: active_subscriptions 
-  description: Count of active subscriptions 
-  label: Active Subscriptions
-  type: cumulative 
-  type_params: 
-    measures: 
-      - subscription_count
 ```
 
 </TabItem>
@@ -165,14 +163,14 @@ We can compare the difference between a 1-month window and a monthly grain to da
 
 ```yaml
 metrics:
- - name: cumulative_order_total_l1m #For this metric, we use a window of 1 month 
-    label: Cumulative Order total (L1M)   
+  - name: cumulative_order_total_l1m  #For this metric, we use a window of 1 month 
+    label: Cumulative Order total (L1M)
     description: Trailing 1 month cumulative order amount
     type: cumulative
     type_params:
       measure: order_total
       window: 1 month
-  - name: cumulative_order_total_mtd #For this metric, we use a monthly grain to date 
+  - name: cumulative_order_total_mtd   #For this metric, we use a monthly grain to date 
     label: Cumulative Order total (MTD)
     description: The month to date value of all orders
     type: cumulative

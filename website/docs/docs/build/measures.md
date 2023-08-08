@@ -198,7 +198,6 @@ semantic_models:
         type: time
         expr: date_transaction
         type_params:
-          is_primary: True
           time_granularity: day
 
     measures: 
