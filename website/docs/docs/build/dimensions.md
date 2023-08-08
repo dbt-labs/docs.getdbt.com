@@ -96,6 +96,11 @@ dimensions:
 
 ### Time
 
+
+:::tip use datetime data type if using BigQuery
+To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
+:::
+
 Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the primary time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
@@ -105,19 +110,21 @@ You can use multiple time groups in separate metrics. For example, the `users_cr
 mf query --metrics users_created,users_deleted --dimensions metric_time --order metric_time 
 ```
 
-:::tip use datetime data type if using BigQuery
-To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
-:::
+You can set `is_partition` for time or categorical dimensions to define specific time spans. Additionally, use the `type_params` section to set `time_granularity` to adjust aggregation detail (like daily, weekly, and so on):
 
 <Tabs>
 
-<TabItem value="time_gran" label="time_granularity">
+<TabItem value="is_partition" label="is_partition">
 
-`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric that is specified with weekly granularity couldn't be aggregated to a daily grain. 
+Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the dbt Semantic Layer uses this parameter to ensure that the correct dimensional values are joined to measures. 
 
-The current options for time granularity are day, week, month, quarter, and year. 
+You can also use `is_partition` for [categorical](#categorical) dimensions as well.
 
-Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
+MetricFlow enables metric aggregation during query time. For example, you can aggregate the `messages_per_month` measure. If you originally had a `time_granularity` for the time dimensions `metric_time`, you can specify a yearly granularity for aggregation in your CLI query:
+
+```bash
+mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
+```
 
 ```yaml
 dimensions: 
@@ -146,17 +153,13 @@ measures:
 
 </TabItem>
 
-<TabItem value="is_partition" label="is_partition">
+<TabItem value="time_gran" label="time_granularity">
 
-Use `is_partition: True` to show that a dimension exists over a specific time window. For example, a date-partitioned dimensional table. When you query metrics from different tables, the dbt Semantic Layer uses this parameter to ensure that the correct dimensional values are joined to measures. 
+`time_granularity` specifies the smallest level of detail that a measure or metric should be reported at, such as daily, weekly, monthly, quarterly, or yearly. Different granularity options are available, and each metric must have a specified granularity. For example, a metric that is specified with weekly granularity couldn't be aggregated to a daily grain. 
 
-You can also use `is_partition` for `type: categorical` [categorical](#categorical) dimensions as well.
+The current options for time granularity are day, week, month, quarter, and year. 
 
-MetricFlow enables metric aggregation during query time. For example, you can aggregate the `messages_per_month` measure. If you originally had a `time_granularity` for the time dimensions `metric_time`, you can specify a yearly granularity for aggregation in your CLI query:
-
-```bash
-mf query --metrics messages_per_month --dimensions metric_time --order metric_time --time-granularity year  
-```
+Aggregation between metrics with different granularities is possible, with the Semantic Layer returning results at the highest granularity by default. For example, when querying two metrics with daily and monthly granularity, the resulting aggregation will be at the monthly level.
 
 ```yaml
 dimensions: 
@@ -176,7 +179,7 @@ dimensions:
 measures:
   - name: users_deleted
     expr: 1
-    agg: sum
+    agg: sum 
     agg_time_dimension: deleted_at
   - name: users_created
     expr: 1
