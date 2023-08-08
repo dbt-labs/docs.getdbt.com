@@ -102,7 +102,7 @@ project-id: '123456'
 
 ## Using dbt Cloud CLI
 
-**More informaiton coming soon**
+**Coming soon**
 
 ### Glossary
 
