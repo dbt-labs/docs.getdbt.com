@@ -91,7 +91,7 @@ There are 2 options to disable models from being built and charged:
 2. Alternatively, you can delete some or all of your dbt Cloud jobs. This will ensure that no runs are kicked off, but you will permanently lose your job(s). 
 
 
-## FAQ
+## FAQs
 * What happens if I need more than 8 seats on the Team plan? 
 _If you need more than 8 developer seats, select the Contact Sales option from the billing settings to talk to our sales team about an Enterprise plan._  
 
