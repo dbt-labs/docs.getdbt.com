@@ -24,6 +24,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 - dbt Core v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
 - As part of the Semantic layer re-launch (in beta), the spec for `metrics` has changed significantly. Migration guide coming soon: https://github.com/dbt-labs/docs.getdbt.com/pull/3705
 - The manifest schema version is now v10.
+- dbt Labs is ending support for Homebrew installation of dbt-core and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -46,8 +47,9 @@ Supported on:
 - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
 - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
 - Snowflake (docs forthcoming)
+- Databricks (docs forthcoming)
 
-Support for BigQuery and Databricks forthcoming.
+Support for BigQuery coming soon.
 
 ### New commands for mature deployment
 
