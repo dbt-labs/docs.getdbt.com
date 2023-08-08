@@ -26,7 +26,7 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /docs/quickstarts/dbt-cloud/databricks       /quickstarts/databricks 301
 /docs/quickstarts/dbt-cloud/redshift         /quickstarts/redshift 301
 /docs/quickstarts/dbt-cloud/snowflake        /
-quickstarts/snowflake 301
+/quickstarts/snowflake 301
 /docs/quickstarts/dbt-cloud/starburst-galaxy /quickstarts/starburst-galaxy 301
 /docs/quickstarts/dbt-core/codespace         /quickstarts/codespace 301
 /docs/quickstarts/dbt-core/manual-install    /quickstarts/manual-install 301
