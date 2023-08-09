@@ -79,7 +79,7 @@ Now that your Semantic Layer is set up, you will need to update any downstream i
 
 :::important Hex integration coming soon
 
-Hex is currently working on an integration with the new dbt Semantic Layer. This section will have updated instructions once the integration is available.
+Hex’s Semantic Layer integration will be available for use in the coming weeks. This section will have updated instructions once the integration is available.
 :::
 
 1. Set up a new connection for the Semantic Layer for your account. Something to note is that your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
