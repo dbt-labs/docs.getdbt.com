@@ -470,7 +470,7 @@ const sidebarSettings = {
                   link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-job" },
                   items: [
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
-                    // "docs/dbt-cloud-apis/discovery-schema-job-models",
+                    "docs/dbt-cloud-apis/discovery-schema-job-models",
                     // "docs/dbt-cloud-apis/discovery-schema-job-metric",
                     // "docs/dbt-cloud-apis/discovery-schema-job-metrics",
                     // "docs/dbt-cloud-apis/discovery-schema-job-source",
