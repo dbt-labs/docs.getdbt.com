@@ -1,0 +1,44 @@
+---
+title: "Seed object schema"
+sidebar_label: "Seed"
+id: "discovery-schema-job-seed"
+---
+
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+The seed object allows you to query information about a particular seed in a given job.
+
+### Arguments
+
+When querying for a `seed`, the following arguments are available.
+
+<NodeArgsTable parent="JobNode" name="seed" />
+
+Below we show some illustrative example queries and outline the schema of this seed object.
+
+### Example Queries
+
+#### Seed information
+
+The query below pulls relevant information about a given seed. For example, we could see the load time.
+
+```graphql
+{
+  job(id: 123) {
+    seed(uniqueId: "seed.jaffle_shop.raw_customers") {
+      database
+      schema
+      uniqueId
+      name
+      status
+      error
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for a `seed`, the following fields are available:
+
+<SchemaTable nodeName="SeedNode" />
