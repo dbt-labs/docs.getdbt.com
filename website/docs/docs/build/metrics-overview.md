@@ -13,7 +13,7 @@ The keys for metrics definitions are:
 | Component | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
-| `type` | Define the type of metric, which can be a measure (`simple`) or ratio (`ratio`)).  | Required |
+| `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative` or `derived`.  | Required |
 | `type_params` | Additional parameters used to configure metrics. `type_params` are different for each metric type. | Required |
 | `filter` | For any type of metric, you may optionally include a filter string, which applies a filter for a dimension, entity, or time dimension when computing the metric. You can think of this as your WHERE clause.   | Optional |
 |  `meta` | Additional metadata you want to add to your metric. |
@@ -68,15 +68,17 @@ metrics:
 
 ```yaml
 metrics:
-  - name: net_sales_per_user
+  - name: order_gross_profit
+    description: Gross profit from each order.
     type: derived
-    type_params: null
-    metrics:
-      - name: gross_sales # these are all metrics (can be a derived metric, meaning building a derived metric with derived metrics)
-      - name: cogs
-      - name: users
-        filter: {{ Dimension('is_active')}} # Optional additional constraint
-        alias: active_users # Optional alias to use in the expr
+    label: Order Gross Profit
+    type_params:
+      expr: revenue - cost
+      metrics:
+        - name: order_total
+          alias: revenue
+        - name: order_cost
+          alias: cost
 ```
 <!-- not supported
 ### Expression metrics

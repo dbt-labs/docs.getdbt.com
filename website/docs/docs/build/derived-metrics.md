@@ -70,7 +70,7 @@ metrics:
 
 ## Derived metric offset
 
-You may want to use an offset value of a metric in the definition of a derived metric. For example, you can model the retention rate by using a derived metric with an offset, which involves calculating (active customers at the end of the month/active customers at the beginning of the month) - 1.
+You may want to use an offset value of a metric in the definition of a derived metric. For example, you can model the retention rate by using a derived metric with an offset, which involves calculating (active customers at the end of the month/active customers at the beginning of the month).
 
 ```yaml
 metrics:
