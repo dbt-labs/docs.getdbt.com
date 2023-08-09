@@ -15,10 +15,6 @@
   display_title: dbt tutorials
   description: Best practices in the usage of our favorite data transformation tool.
   is_featured: true    
-- name: dbt updates
-  display_title: dbt product updates
-  description: An archive of monthly product updates from the dbt Labs team.
-  is_featured: true
 - name: SQL magic
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses.
