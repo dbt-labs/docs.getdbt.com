@@ -1,5 +1,21 @@
 import React, { setState } from "react";
 import { useState, useEffect } from 'react'
+
+const getTypeString = (typeStructure) => {
+  // Helper function to represent GraphQL type
+  if (!typeStructure) return ''
+
+  if (typeStructure.kind === 'NON_NULL') {
+    return `${getTypeString(typeStructure.ofType)}!`;
+  } else if (typeStructure.kind === 'LIST') {
+    return `[${getTypeString(typeStructure.ofType)}]`;
+  } else if (['OBJECT', 'SCALAR'].includes(typeStructure.kind)) {
+    return `${typeStructure.name}${getTypeString(typeStructure.ofType)}`;
+  } else {
+    return '';
+  }
+}
+
 const queriesQuery = `{
   __schema {
     queryType {
@@ -18,7 +34,7 @@ const queriesQuery = `{
             name
             description
             kind
-            ofType { name description }
+            ofType { kind name description }
           }
         }
       }
@@ -59,10 +75,7 @@ export const ArgsTable = ({ queryName, useBetaAPI }) => {
           return (
             <tr key={name}>
               <td><code>{name}</code></td>
-              {type.ofType ?
-                <td><code title={type.description}>{type.ofType.name}</code></td> :
-                <td><code title={type.description}>{type.name}</code></td>
-              }
+              <td><code title={type.description}>{getTypeString(type)}</code></td>
               <td>{type.kind === 'NON_NULL' ? `Yes` : `No`}</td>
               <td>{description || `No description provided`}</td>
             </tr>
@@ -80,27 +93,60 @@ export const SchemaTable = ({ nodeName, useBetaAPI }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          query: `{
-          __type(name: "${nodeName}") {
-            fields {
+          query: `
+          query {
+            __type(name: "${nodeName}") {
+              ...FullType
+            }
+          }
+
+          fragment FullType on __Type {
+            kind
+            name
+            description
+            fields(includeDeprecated: true) {
               name
               description
-              type { 
-                name 
-                description 
-                kind 
-                ofType { 
-                  name 
-                  description
-                  ofType { 
-                    name 
-                    description
-                  }                   
-                } 
+              type {
+                ...TypeRef
               }
             }
           }
-        }`}),
+
+          # get several levels
+          fragment TypeRef on __Type {
+            kind
+            name
+            ofType {
+              kind
+              name
+              ofType {
+                kind
+                name
+                ofType {
+                  kind
+                  name
+                  ofType {
+                    kind
+                    name
+                    ofType {
+                      kind
+                      name
+                      ofType {
+                        kind
+                        name
+                        ofType {
+                          kind
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `}),
       })
         .then((result) => result.json())
         .then((data) => setData(data))
@@ -124,13 +170,7 @@ export const SchemaTable = ({ nodeName, useBetaAPI }) => {
           return (
             <tr key={name}>
               <td><code>{name}</code></td>
-              {type.kind === 'LIST' ?
-                <td><code title={type.description}>[{type.ofType.ofType ? type.ofType.ofType.name : type.ofType.name}]</code></td> :
-                (type.ofType ?
-                  <td><code title={type.description}>{type.ofType.name}</code></td> :
-                  <td><code title={type.description}>{type.name}</code></td>
-                )
-              }
+              <td><code title={type.description}>{getTypeString(type)}</code></td>
               <td>{description}</td>
             </tr>
           )
