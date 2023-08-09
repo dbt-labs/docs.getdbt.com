@@ -576,6 +576,8 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 To enforce the shape of a model's definition, you can define contracts on models and their columns. You can also specify model versions to keep track of discrete stages in its evolution and use the appropriate one.
 
+TODO: The description above is not accurate for the desired query below because only applied models can query catalogs, so the query is changed to `environment.applied`. We need to change the description to refer to the applied state, or do not query `catalog` from the definition state node.
+
 <details>
 <summary>Example query</summary>
 
