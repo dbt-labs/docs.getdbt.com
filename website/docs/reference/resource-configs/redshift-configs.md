@@ -14,9 +14,15 @@ To-do:
 
 In dbt-redshift, the following incremental materialization strategies are supported:
 
+<VersionBlock lastVersion="1.5">
+- `append` (default)
+- `delete+insert`
+</VersionBlock>
+<VersionBlock firstVersion="1.6">
 - `append` (default)
 - `merge`
 - `delete+insert`
+</VersionBlock>
 
 All of these strategies are inheirited via from dbt-postgres.
 
@@ -143,6 +149,6 @@ We hope to address the following limitations in a future release.
 
 Swapping a materialized view to a table or view is not supported. You must manually drop the existing materialized view in the data warehouse before calling `dbt run` again.
 
-For example, assume that a view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="table"`, they will get an error. The workaround is to execute `DROP MATERIALIZE VIEW my_mv CASCASE` on the data warehouse before trying the model again.
+For example, assume that a view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="table"`, they will get an error. The workaround is to execute `DROP MATERIALIZE VIEW my_mv CASCADE` on the data warehouse before trying the model again.
 
 </VersionBlock>
