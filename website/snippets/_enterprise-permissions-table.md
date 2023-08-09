@@ -56,7 +56,7 @@ The project roles enable you to work within the projects in various capacities. 
 
 #### Account permissions for project roles
 
-| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webook |
+| Account-level permission | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
 | Account settings         |   R   |         |      R         |           |     R     |           |             |          |                |             |     R      |        |
 | Auth provider            |       |         |                |           |           |           |             |          |                |             |            |        |
@@ -70,7 +70,7 @@ The project roles enable you to work within the projects in various capacities. 
 
 #### Project permissions for project roles
 
-|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webook |
+|Project-level permission  | Admin | Analyst | Database admin | Developer | Git Admin | Job admin | Job viewer  | Metadata | Semantic Layer | Stakeholder | Team admin | Webhook |
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
 | Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
 | Credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
