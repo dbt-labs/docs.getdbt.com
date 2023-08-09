@@ -15,12 +15,13 @@ The user's assigned license determines the specific capabilities they can access
 
 | Functionality | Developer User | Read-Only Users | IT Users* |
 | ------------- | -------------- | --------------- | -------- |
-| Use the Developer IDE | ✅ | ❌ | ❌ |
+| Use the dbt Cloud IDE | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
+| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅ |  ✅ | 
 *Available on Enterprise and Team plans only and doesn't count toward seat usage.
 
 ## Licenses

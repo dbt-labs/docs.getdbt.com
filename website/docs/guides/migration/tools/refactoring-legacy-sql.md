@@ -59,7 +59,7 @@ This allows you to call the same table in multiple places with `{{ src('my_sourc
 We start here for several reasons:
 
 #### Source freshness reporting
-Using sources unlocks the ability to run [source freshness reporting](docs/build/sources#snapshotting-source-data-freshness) to make sure your raw data isn't stale.
+Using sources unlocks the ability to run [source freshness reporting](/docs/build/sources#snapshotting-source-data-freshness) to make sure your raw data isn't stale.
 
 #### Easy dependency tracing
 If you're migrating multiple stored procedures into dbt, with sources you can see which queries depend on the same raw tables.

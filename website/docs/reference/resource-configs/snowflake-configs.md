@@ -346,8 +346,6 @@ In the configuration format for the model SQL file:
 
 ## Dynamic Tables
 
-[Dynamic Tables](https://docs.snowflake.com/en/user-guide/dynamic-tables-about) are Snowflake's version of Materialized Views.
-
 ### Parameters
 
 dbt-snowflake requires the following parameters:
@@ -374,7 +372,7 @@ The following examples create a dynamic table:
 {{
   config(
     materialized = 'dynamic_table',
-    warehouse = 'snowflake_warehouse',
+    snowflake_warehouse = 'snowflake_warehouse',
     target_lag = '10 minutes',
   )
 }}
@@ -388,7 +386,7 @@ The following examples create a dynamic table:
 models:
   path:
     materialized: dynamic_table
-    warehouse: snowflake_warehouse
+    snowflake_warehouse: snowflake_warehouse
     target_lag: '10 minutes'
 ```
 
