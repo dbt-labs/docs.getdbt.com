@@ -214,7 +214,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 You can query the metadata at the job level to review results for specific runs. This is helpful for historical analysis of deployment performance or optimizing particular jobs.
 
 :::caution
-dbt Labs is making changes to the Discovery API. These changes will take effect on August 15, 2023. 
+dbt Labs is making changes to the Discovery API. These changes will take effect on September 7, 2023. 
 
 The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Currently, both data types are supported. 
 
