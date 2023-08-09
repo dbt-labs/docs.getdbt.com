@@ -216,7 +216,9 @@ You can query the metadata at the job level to review results for specific runs.
 :::caution
 dbt Labs is making changes to the Discovery API to support multi-cell environments. These changes will take effect on September 7, 2023. 
 
-The value type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Currently, both value types are supported. For a multi-cell environment, you must use `BigInt`.  
+The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Currently, both data types are supported. For a multi-cell environment, you must use `BigInt`.  
+
+To nest job-based queries, you must do it within the `job` schema object. This is now supported so you can update your API calls accordingly.
 :::
 
 <details>

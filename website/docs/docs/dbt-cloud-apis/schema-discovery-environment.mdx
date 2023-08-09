@@ -22,7 +22,7 @@ When querying for `environment`, you can use the following arguments.
 
 dbt Labs is making changes to the Discovery API to support multi-cell environments. These changes will take effect on September 7, 2023. 
 
-The value type `Int` for `id` is being deprecated and will be replaced with `BigInt`. When the time comes, you will need to update your API call accordingly to avoid errors. 
+The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. When the time comes, you will need to update your API call accordingly to avoid errors. 
 :::
 
 ### Example Query
@@ -54,7 +54,7 @@ query Example {
 	}
 ```
 
-With the deprecation of the value type `Int`, below is an example of replacing it with `BigInt`: 
+With the deprecation of the data type `Int` for `id`, below is an example of replacing it with `BigInt`: 
 
 ```graphql
 query ($environmentId: BigInt!, $first: Int!) {
