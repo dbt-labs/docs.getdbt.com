@@ -1,4 +1,4 @@
-import React, { setState } from "react";
+import React from "react";
 import { useState, useEffect } from 'react'
 
 const getTypeString = (typeStructure) => {
@@ -16,7 +16,39 @@ const getTypeString = (typeStructure) => {
   }
 }
 
-const queriesQuery = `{
+export const ArgsTable = ({ data, name }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <td>Field</td>
+          <td>Type</td>
+          <td>Required?</td>
+          <td>Description</td>
+        </tr>
+      </thead>
+      <tbody>
+        {data.fields.find(d => d.name === name).args.map(function ({ name, description, type }) {
+          return (
+            <tr key={name}>
+              <td><code>{name}</code></td>
+              <td><code title={type.description}>{getTypeString(type)}</code></td>
+              <td>{type.kind === 'NON_NULL' ? `Yes` : `No`}</td>
+              <td>{description || `No description provided`}</td>
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
+}
+
+const metadataUrl = 'http://localhost:3333/graphql'
+const metadataBetaUrl = 'http://localhost:3333/beta/graphql'
+// const metadataUrl = 'https://metadata.cloud.getdbt.com/graphql'
+// const metadataBetaUrl = 'https://metadata.cloud.getdbt.com/beta/graphql'
+
+const queryArgsQuery = `{
   __schema {
     queryType {
       fields {
@@ -41,16 +73,15 @@ const queriesQuery = `{
     }
   }
 }`
-const metadataUrl = 'https://metadata.cloud.getdbt.com/graphql'
-const metadataBetaUrl = 'https://metadata.cloud.getdbt.com/beta/graphql'
-export const ArgsTable = ({ queryName, useBetaAPI }) => {
+
+export const QueryArgsTable = ({ queryName, useBetaAPI }) => {
   const [data, setData] = useState(null)
   useEffect(() => {
     const fetchData = () => {
       fetch(useBetaAPI ? metadataBetaUrl : metadataUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: queriesQuery }),
+        body: JSON.stringify({ query: queryArgsQuery }),
       })
         .then((result) => result.json())
         .then((data) => setData(data))
@@ -61,30 +92,89 @@ export const ArgsTable = ({ queryName, useBetaAPI }) => {
     return <h1>Fetching data...</h1>
   }
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>Field</td>
-          <td>Type</td>
-          <td>Required?</td>
-          <td>Description</td>
-        </tr>
-      </thead>
-      <tbody>
-        {data.data.__schema.queryType.fields.find(d => d.name === queryName).args.map(function ({ name, description, type }) {
-          return (
-            <tr key={name}>
-              <td><code>{name}</code></td>
-              <td><code title={type.description}>{getTypeString(type)}</code></td>
-              <td>{type.kind === 'NON_NULL' ? `Yes` : `No`}</td>
-              <td>{description || `No description provided`}</td>
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
+    <ArgsTable name={queryName} data={data.data.__schema.queryType} />
   )
 }
+
+export const NodeArgsTable = ({ parent, name, useBetaAPI }) => {
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    const fetchData = () => {
+      fetch(useBetaAPI ? metadataBetaUrl : metadataUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `
+          query {
+            __type(name: "${parent}") {
+              ...FullType
+            }
+          }
+
+          fragment FullType on __Type {
+            kind
+            fields(includeDeprecated: true) {
+              name
+              description
+              args {
+                name
+                description
+                defaultValue
+                type {
+                  ...TypeRef
+                }
+              }
+            }
+          }
+
+          # get several levels
+          fragment TypeRef on __Type {
+            kind
+            name
+            ofType {
+              kind
+              name
+              ofType {
+                kind
+                name
+                ofType {
+                  kind
+                  name
+                  ofType {
+                    kind
+                    name
+                    ofType {
+                      kind
+                      name
+                      ofType {
+                        kind
+                        name
+                        ofType {
+                          kind
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `})
+      })
+        .then((result) => result.json())
+        .then((data) => setData(data))
+    }
+    fetchData()
+  }, [])
+  if (!data) {
+    return <h1>Fetching data...</h1>
+  }
+  return (
+    <ArgsTable name={name} data={data.data.__type} />
+  )
+}
+
 export const SchemaTable = ({ nodeName, useBetaAPI }) => {
   const [data, setData] = useState(null)
   useEffect(() => {

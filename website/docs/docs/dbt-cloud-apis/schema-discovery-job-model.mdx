@@ -1,22 +1,18 @@
 ---
 title: "Model object schema"
 sidebar_label: "Model"
-id: "discovery-schema-model"
+id: "discovery-schema-job-model"
 ---
 
-import { QueryArgsTable, SchemaTable } from "./schema";
+import { NodeArgsTable, SchemaTable } from "./schema";
 
 The model object allows you to query information about a particular model in a given job.
 
-import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
-
-<DiscoveryApiJobDeprecationNotice />
-
 ### Arguments
 
-When querying for a `model`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for a `model`, the following arguments are available.
 
-<QueryArgsTable queryName="model" />
+<NodeArgsTable parent="JobNode" name="model" />
 
 Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this model object.
 
@@ -27,19 +23,22 @@ The example query below uses the `parentsModels` and `parentsSources` fields to 
 
 ```graphql
 {
-  model(jobId: 123, uniqueId: "model.jaffle_shop.dim_user") {
-    parentsModels {
-      runId
-      uniqueId
-      executionTime
-    }
-    parentsSources {
-      runId
-      uniqueId
-      state
+  job(id: 123) {
+    model(uniqueId: "model.jaffle_shop.dim_user") {
+      parentsModels {
+        runId
+        uniqueId
+        executionTime
+      }
+      parentsSources {
+        runId
+        uniqueId
+        state
+      }
     }
   }
 }
+
 ```
 
 #### Model Timing
@@ -48,15 +47,17 @@ The example query below could be useful if we wanted to understand information a
 
 ```graphql
 {
-  model(jobId: 123, uniqueId: "model.jaffle_shop.dim_user") {
-    runId
-    projectId
-    name
-    uniqueId
-    resourceType
-    executeStartedAt
-    executeCompletedAt
-    executionTime
+  job(id: 123) {
+    model(uniqueId: "model.jaffle_shop.dim_user") {
+      runId
+      projectId
+      name
+      uniqueId
+      resourceType
+      executeStartedAt
+      executeCompletedAt
+      executionTime
+    }
   }
 }
 ```
@@ -67,15 +68,17 @@ You can use the following example query to understand more about the columns of 
 
 ```graphql
 {
-  model(jobId: 123, uniqueId: "model.jaffle_shop.dim_user")  {
-    columns{
-      name
-      index
-      type
-      comment
-      description
-      tags
-      meta
+  job(id: 123) {
+    model(uniqueId: "model.jaffle_shop.dim_user") {
+      columns {
+        name
+        index
+        type
+        comment
+        description
+        tags
+        meta
+      }
     }
   }
 }
@@ -83,6 +86,7 @@ You can use the following example query to understand more about the columns of 
 
 
 ### Fields
+
 When querying for a `model`, the following fields are available:
 
 <SchemaTable nodeName="ModelNode" />

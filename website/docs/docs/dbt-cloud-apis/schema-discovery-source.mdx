@@ -4,7 +4,7 @@ sidebar_label: "Source"
 id: "discovery-schema-source"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 The source object allows you to query information about a particular source in a given job.
 
@@ -16,7 +16,7 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 When querying for a `source`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
 
-<ArgsTable queryName="source" />
+<QueryArgsTable queryName="source" />
 
 Below we show some illustrative example queries and outline the schema of this source object.
 

@@ -4,7 +4,7 @@ sidebar_label: "Seed"
 id: "discovery-schema-seed"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 The seed object allows you to query information about a particular seed in a given job.
 
@@ -16,7 +16,7 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 When querying for a `seed`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
 
-<ArgsTable queryName="seed" />
+<QueryArgsTable queryName="seed" />
 
 Below we show some illustrative example queries and outline the schema of this seed object.
 

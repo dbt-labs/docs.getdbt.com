@@ -4,7 +4,7 @@ sidebar_label: "Metric"
 id: "discovery-schema-metric"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 The metric object allows you to query information about [metrics](/docs/build/metrics).
 
@@ -16,7 +16,7 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 When querying for a `metric`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
 
-<ArgsTable queryName="metric" />
+<QueryArgsTable queryName="metric" />
 
 Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this metric object.
 
