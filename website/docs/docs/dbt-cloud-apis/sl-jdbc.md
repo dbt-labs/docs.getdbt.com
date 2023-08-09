@@ -138,7 +138,7 @@ To query metric values, here are the following parameters that are available:
 | `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | Required    |
 | `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`     | Optional   |
 | `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
-| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where="Dimension('customer__country') = 'US')"`   | Optional   |
+| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
 | `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
