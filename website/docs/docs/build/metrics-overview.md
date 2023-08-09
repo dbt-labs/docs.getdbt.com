@@ -10,7 +10,7 @@ Once you've created your semantic models, it's time to start adding metrics! Met
 
 The keys for metrics definitions are: 
 
-| Component | Description | Type |
+| Parameter | Description | Type |
 | --------- | ----------- | ---- |
 | `name` | Provide the reference name for the metric. This name must be unique amongst all metrics.   | Required |
 | `type` | Define the type of metric, which can be `simple`, `ratio`, `cumulative`, or `derived`.  | Required |
