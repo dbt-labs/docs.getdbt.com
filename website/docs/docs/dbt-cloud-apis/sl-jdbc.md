@@ -28,7 +28,7 @@ dbt Labs partners can use the JDBC API to build integrations in their tools with
 
 ## Using the JDBC API
 
-If you are a dbt user or partner with access to dbt Cloud and the[dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
+If you are a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
 
 Refer to [Get started with the dbt Semantic Layer](../use-dbt-semantic-layer/quickstart-sl) for more info.
 
