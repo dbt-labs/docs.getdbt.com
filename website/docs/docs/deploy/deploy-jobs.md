@@ -1,10 +1,10 @@
 ---
-title: "Job settings"
-description: "Learn how to create and schedule jobs in dbt Cloud for the scheduler to run. When you run with dbt Cloud, you get built-in observability, logging, and alerting." 
+title: "Deploy jobs"
+description: "Learn how to create and schedule deploy jobs in dbt Cloud for the scheduler to run. When you run with dbt Cloud, you get built-in observability, logging, and alerting." 
 tags: [scheduler]
 ---
 
-Jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have an entry in the job's run history and a detailed run overview, which provides you with:
+You can use deploy jobs to build production data assets. Deploy jobs make it easy to run dbt commands against a project in your cloud data platform, triggered either by schedule or events. Each job run in dbt Cloud will have an entry in the job's run history and a detailed run overview, which provides you with:
 
 - Job trigger type
 - Commit SHA
@@ -13,11 +13,11 @@ Jobs make it easy to run dbt commands against a project in your cloud data platf
 - Job run details, including run timing, [model timing data](#model-timing), and [artifacts](/docs/deploy/artifacts)
 - Detailed run steps with logs and their run step statuses
 
-You can create a deploy job and configure it to run on [scheduled days and times](/docs/deploy/job-triggers#schedule-days) or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules). 
+You can create a deploy job and configure it to run on [scheduled days and times](#schedule-days) or enter a [custom cron schedule](#custom-cron-schedules). 
 
 :::tip Join our beta 
 
-dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs, refer to [Create and schedule jobs (Beta version)](/docs/deploy/job-settings?version=beta#create-and-schedule-jobs) on this page.
+dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs. For docs, refer to [Create and schedule jobs (Beta version)](/docs/deploy/deploy-jobs?version=beta#create-and-schedule-jobs) on this page.
 
 If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
 
@@ -57,9 +57,9 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 
 <Lightbox src ="/img/docs/dbt-cloud/using-dbt-cloud/execution-settings.jpg" width="85%" title="Configuring your execution job settings"/>
 
-6. Under the **Triggers** section, you can configure when and how dbt will trigger the deploy job. Refer to [job triggers](/docs/deploy/job-triggers) for more details.
+6. Under the **Triggers** section, you can configure when and how dbt will trigger the deploy job.
 
-    * **Schedule** tab &mdash; Use the **Run on schedule** toggle to configure your job to run on [scheduled](/docs/deploy/job-triggers#schedule-days) days and time, or enter a [custom cron schedule](/docs/deploy/job-triggers#custom-cron-schedules).
+    * **Schedule** tab &mdash; Enable the **Run on schedule** option. Use either the [scheduled days](#schedule-days) or the [custom cron schedule](#custom-cron-schedule) method to configure your desired days, times, and intervals for running your deploy job.
     * **Continuous Integration** tab &mdash; Configure [continuous integration (CI)](/docs/deploy/continuous-integration) to run when someone opens a new pull request in your dbt repository.
     * **API** tab &mdash; Use the [dbt API](/docs/dbt-cloud-apis/overview) to trigger a job.
 
@@ -81,7 +81,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running the deploy job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 4. Options in the **Schedule** section:
     - **Run on schedule** &mdash; Enable this option to run the deploy job on a set schedule.
-    - **Timing** &mdash; Specify whether to [schedule](/docs/deploy/job-triggers#schedule-days) the deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](/docs/deploy/job-triggers#custom-cron-schedule).
+    - **Timing** &mdash; Specify whether to [schedule](#schedule-days) the deploy job using **Frequency** that runs the job at specific times of day, **Specific Intervals** that runs the job every specified number of hours, or **Cron Schedule** that runs the job specified using [cron syntax](#custom-cron-schedule).
     - **Days of the Week** &mdash; By default, it’s set to every day when **Frequency** or **Specific Intervals** is chosen for **Timing**.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/create-deploy-job.png" width="90%" title="Example of Deploy Job page in dbt Cloud UI"/>
@@ -104,3 +104,48 @@ If you're interested in joining our beta, please fill out our Google Form to [si
 </TabItem>
 
 </Tabs>
+
+### Schedule days
+
+To set your job's schedule, use the **Schedule Days** option to choose specific days of the week, and select customized hours or intervals.
+
+Under **Timing**, you can either use customizable hours for jobs that need to run frequently throughout the day or exact intervals for jobs that need to run at specific times:
+
+- **Every n hours** &mdash; Use this option to set how often your job runs, in hours. Enter a number between 1 and 23 to represent the interval between job runs. For example, if you set it to "every 2 hours", the job will run every 2 hours from midnight UTC. This option is useful if you need to run jobs multiple times per day at regular intervals.
+
+- **At exact intervals** &mdash; Use this option to set specific times when your job should run. You can enter a comma-separated list of hours (in UTC) when you want the job to run. For example, if you set it to `0,12,23,` the job will run at midnight, noon, and 11 PM UTC. This option is useful if you want your jobs to run at specific times of day and don't need them to run more frequently than once a day.
+
+:::info
+
+dbt Cloud uses [Coordinated Universal Time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (UTC) and does not account for translations to your specific timezone or take into consideration daylight savings time. For example:
+
+- 0 means 12am (midnight) UTC
+- 12 means 12pm (afternoon) UTC
+- 23 means 11pm UTC
+
+:::
+
+### Custom cron schedule
+
+To fully customize the scheduling of your job, choose the **Custom cron schedule** option and use the cron syntax. With this syntax, you can specify the minute, hour, day of the month, month, and day of the week, allowing you to set up complex schedules like running a job on the first Monday of each month.
+
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/job-schedule.png" title="Schedule your dbt job"/>
+
+Use tools such as [crontab.guru](https://crontab.guru/) to generate the correct cron syntax. This tool allows you to input cron snippets and returns their plain English translations.
+
+Refer to the following example snippets:
+
+
+- `0 * * * *`: Every hour, at minute 0
+- `*/5 * * * *`: Every 5 minutes
+- `5 4 * * *`: At exactly 4:05 AM UTC
+- `30 */4 * * *`: At minute 30 past every 4th hour (e.g. 4:30AM, 8:30AM, 12:30PM, etc., all UTC)
+- `0 0 */2 * *`: At midnight UTC every other day
+- `0 0 * * 1`: At midnight UTC every Monday.
+
+## Related docs
+
+- [Artifacts](/docs/deploy/artifacts)
+- [Job commands](/docs/deploy/job-commands)
+- [Webhooks](/docs/deploy/webhooks)

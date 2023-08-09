@@ -1,0 +1,21 @@
+---
+title: "Jobs in dbt Cloud"
+sidebar_label: "Jobs"
+description: "Learn about deploy jobs and continuous integration (CI) jobs in dbt Cloud and what their differences are." 
+tags: [scheduler]
+---
+
+In dbt Cloud, you can create and set up triggers for these jobs:
+- [Deploy jobs](/docs/deploy/deploy-jobs)
+- [Continuous integration (CI) jobs](/docs/deploy/continuous-integration)  
+
+Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
+
+|  | Deploy Jobs | CI Jobs |
+| --- | --- | --- |
+| Purpose | Building production data assets | Building and testing new code before merging changes into production |
+| Trigger types | Triggered by a schedule or by API | Triggered by a webhook from a commit to a PR or by API |
+| Destination | Builds into a production database and schema | Builds into a staging database and ephemeral schema, lived for the lifetime of the PR |
+| Execution Mode | Runs execute sequentially, so as to not have collisions on the underlying DAG. | Runs execute in parallel to promote team velocity. |
+| Efficiency run savings | Over scheduled jobs are detected and unnecessary runs are canceled to avoid queue clog. | Run cancellation happens when an in-flight run becomes stale due to a new commit of the PR being pushed. |
+| State comparison | Only sometimes needs to detect state | Almost always needs to compare state against the production environment to build on modified code and its dependents. |
