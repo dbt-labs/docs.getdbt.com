@@ -28,7 +28,7 @@ which dbt
 dbt --help
 ```
 
-### Upgrade the CLI
+#### Upgrade the CLI with Brew
 
 ```bash
 brew update
@@ -37,14 +37,10 @@ brew upgrade dbt-cloud-cli
 
 ### Manually install (Windows and Linux)
 
-1. Download the latest darwin release from [Github](https://github.com/dbt-labs/dbt-cli/releases).
+1. Download the latest release for your platform from [Github](https://github.com/dbt-labs/dbt-cli/releases).
 2. Add the `dbt` executable to your path.
-3. Navigate to your `dbt` path in Finder and double-click on the `dbt` executable:
-    1. You will receive a message that the executable is untrusted and cannot be run. Override this by right-clicking the executable and selecting “Open”. A new prompt will pop up, allowing you to open the executable.
-    2. After clicking “Open”, a terminal window will appear. The window can be closed, and you can now invoke `dbt` from any other terminal*.
-        - You may need to deal with conflicts due to other `dbt` installations. Run `which dbt` to see the location of the `dbt` installation you’re using. If you get `/usr/local/bin/dbt` from `which dbt`, you’re using the one you just installed. If not, you may need to uninstall other installations, directly invoke the executable, or handle path conflicts differently, such as using an alias for the new executable.
-4. Move to a directory with a dbt project, and create a `dbt_cloud.yml` file containing your `project-id` from dbt Cloud.
-5. Invoke `dbt --help` from your terminal to see a list of supported commands.
+3. Move to a directory with a dbt project, and create a `dbt_cloud.yml` file containing your `project-id` from dbt Cloud.
+4. Invoke `dbt --help` from your terminal to see a list of supported commands.
 
 #### Updating dbt Cloud installation (Windows + Linux)
 
