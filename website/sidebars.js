@@ -464,6 +464,7 @@ const sidebarSettings = {
               type: "category",
               label: "Schema",
               items: [
+                "docs/dbt-cloud-apis/discovery-schema-job",
                 "docs/dbt-cloud-apis/discovery-schema-environment",
                 "docs/dbt-cloud-apis/discovery-schema-model",
                 "docs/dbt-cloud-apis/discovery-schema-models",
@@ -939,7 +940,7 @@ const sidebarSettings = {
             "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
           ],
-        }, 
+        },
         {
           type: "category",
           label: "Set up Continuous Integration",
