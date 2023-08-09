@@ -9,7 +9,7 @@ const getTypeString = (typeStructure) => {
     return `${getTypeString(typeStructure.ofType)}!`;
   } else if (typeStructure.kind === 'LIST') {
     return `[${getTypeString(typeStructure.ofType)}]`;
-  } else if (['OBJECT', 'SCALAR'].includes(typeStructure.kind)) {
+  } else if (['OBJECT', 'SCALAR', 'ENUM'].includes(typeStructure.kind)) {
     return `${typeStructure.name}${getTypeString(typeStructure.ofType)}`;
   } else {
     return '';
