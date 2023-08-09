@@ -21,11 +21,11 @@ The following roles and permission sets are available for assignment in dbt Clou
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 
-## Diagram of the Permission Sets
+## Diagram of the permission sets
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
 
-## How to Set Up RBAC Groups in dbt Cloud
+## How to set up RBAC Groups in dbt Cloud
 
 Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
 
@@ -34,7 +34,7 @@ Role-Based Access Control (RBAC) is helpful for automatically assigning permissi
 <Lightbox src="/img/docs/dbt-cloud/Select-Groups-RBAC.png" title="Navigate to Groups"/>
 
 1. Select an existing group or create a new group to add RBAC. Name the group (this can be any name you like, but it's recommended to keep it consistent with the SSO groups). If you have configured SSO with SAML 2.0, you may have to use the GroupID instead of the name of the group.
-2. Configure the SSO provider groups you want to add RBAC by clicking **Add** in the **SSO** section. These fields are case sensitive and must match the source group formatting.
+2. Configure the SSO provider groups you want to add RBAC by clicking **Add** in the **SSO** section. These fields are case-sensitive and must match the source group formatting.
 3. Configure the permissions for users within those groups by clicking **Add** in the **Access** section of the window.
 <Lightbox src="/img/docs/dbt-cloud/Configure-SSO-Access.png" title="Configure SSO groups and Access permissions"/>
 

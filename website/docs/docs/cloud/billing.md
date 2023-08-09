@@ -92,11 +92,12 @@ There are 2 options to disable models from being built and charged:
 
 
 ## FAQs
+
 * What happens if I need more than 8 seats on the Team plan? 
 _If you need more than 8 developer seats, select the Contact Sales option from the billing settings to talk to our sales team about an Enterprise plan._  
 
 * What if I go significantly over my included free models on the Team or Developer plan?
-_Consider upgrading to a Team or Enterprise plan. Team plans include more models and allow you to exceed the monthly usage limit. Enterprise accounts are supported by a dedicated account management team and offer annual plans, custom configurations, and negotiated usage rates. 
+_Consider upgrading to a Team or Enterprise plan. Team plans include more models and allow you to exceed the monthly usage limit. Enterprise accounts are supported by a dedicated account management team and offer annual plans, custom configurations, and negotiated usage rates._ 
 
 * I want to upgrade my plan. Will all of my work carry over?
 _Yes. Your dbt Cloud account will be upgraded without impacting your existing projects and account settings._
