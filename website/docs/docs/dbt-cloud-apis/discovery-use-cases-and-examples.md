@@ -214,15 +214,32 @@ query ($environmentId: BigInt!, $first: Int!) {
 You can query the metadata at the job level to review results for specific runs. This is helpful for historical analysis of deployment performance or optimizing particular jobs.
 
 :::caution
-dbt Labs is making changes to the Discovery API. These changes will take effect on September 7, 2023. 
+dbt Labs is making changes to the Discovery API. These changes will take effect on September 7, 2023.
 
-The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Currently, both data types are supported. 
+The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Currently, both data types are supported.
 
-To nest job-based queries, you must do it within the `job` schema object. This is now supported so you can update your API calls accordingly.
+To perform job-based queries, you must do it within the `job` schema object, and move the `jobId` and `runId` arguments to `job(...)`. This is now supported so you can update your API calls accordingly.
 :::
 
 <details>
 <summary>Example query</summary>
+
+**Deprecated:**
+
+```graphql
+query ($jobId: Int!, $runId: Int!) {
+  models(jobId: $jobId, runId: $runId) {
+    name
+    status
+    tests {
+      name
+      status
+    }
+  }
+}
+```
+
+**New:**
 
 ```graphql
 query ($jobId: BigInt!, $runId: BigInt!) {
@@ -301,7 +318,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 You can use the Discovery API to monitor data source freshness and test results to diagnose and resolve issues and drive trust in data. When used with [webhooks](/docs/deploy/webhooks), can also help with detecting, investigating, and alerting issues. Below lists example questions the API can help you answer. Below are example questions and queries you can run.
 
-For quality use cases, people typically query the historical or latest applied state, often in the upstream part of the DAG (for example, sources), using the `environment` or `environment.applied.modelHistoricalRuns` endpoints.
+For quality use cases, people typically query the historical or latest applied state, often in the upstream part of the DAG (for example, sources), using the `environment` or `environment { applied { modelHistoricalRuns } }` endpoints.
 
 ### Which models and tests failed to run?
 

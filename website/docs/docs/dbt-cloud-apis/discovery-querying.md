@@ -181,7 +181,7 @@ pageInfo {
   endCursor
   hasNextPage
 }
-totalCount # Total number records across all pages
+totalCount # Total number of records across all pages
 ```
 
 ### Filters

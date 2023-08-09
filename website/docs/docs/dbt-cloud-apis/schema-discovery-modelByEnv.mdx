@@ -8,9 +8,9 @@ import { ArgsTable, SchemaTable } from "./schema";
 
 :::caution
 
-dbt Labs is making changes to the Discovery API. These changes will take effect on August 15, 2023. 
+dbt Labs is making changes to the Discovery API. These changes will take effect on August 15, 2023.
 
-The model by environment object is being deprecated and will be replaced with `environment { applied { modelHistoricalRuns } }`. When the time comes, you will need to update your API calls accordingly to avoid errors. Refer to the 
+The model by environment object is being deprecated and will be replaced with `environment { applied { modelHistoricalRuns } }`. When the time comes, you will need to update your API calls accordingly to avoid errors. Refer to the
 [Environment object schema](/docs/dbt-cloud-apis/discovery-schema-environment) for details.
 :::
 
@@ -27,7 +27,7 @@ When querying for `modelByEnvironment`, you can use the following arguments.
 
 ### Example Query
 
-You can use the `environment_id` and `model_unique_id` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
+You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
 
 
 ```graphql
