@@ -10,7 +10,7 @@ import { ArgsTable, SchemaTable } from "./schema";
 
 dbt Labs is making changes to the Discovery API to support multi-cell environment. These changes will take effect on September 7, 2023. 
 
-The model by environment object is being deprecated and will be replaced with `environment { applied { modelHistoricalRuns } }`. Refer to the 
+The model by environment object is being deprecated and will be replaced with `environment { applied { modelHistoricalRuns } }`. You will need to update your API calls accordingly to avoid errors. Refer to the 
 [Environment object schema](/docs/dbt-cloud-apis/discovery-schema-environment) for details.
 :::
 
