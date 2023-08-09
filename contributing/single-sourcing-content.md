@@ -15,9 +15,9 @@ Versions are managed in the `versions` array located in the `website/dbt-version
 
 ### Adding a new version
 
-To add a new version to the site, a new object must be added to the `versions` array in the same format as existing versions. This object holds two properties: **version** and **EOLDate (See End of Life Dates below)**. 
+To add a new version to the site, a new object must be added to the `versions` array in the same format as existing versions. This object holds two properties: **version** and **EOLDate (See End of Life Dates below)**.
 
-Example Version: 
+Example Version:
 
 ```jsx
 exports.versions = [
@@ -36,7 +36,7 @@ The **EOLDate** property determines when a version is no longer supported. A ver
 
 When a documentation page is viewed, the **EOLDate** property for the active version is compared to today’s date. If the current version has reached or is nearing the end of support, a banner will show atop the page, notifying the visitor of the end-of-life status.
 
-Two different versions of the banner will show depending on the end-of-life date: 
+Two different versions of the banner will show depending on the end-of-life date:
 
 - When the version is within 3 months of the **EOLDate.**
 - When the version has passed the **EOLDate.**
@@ -76,7 +76,7 @@ exports.versionedPages = [
 
 ## Versioning blocks of content
 
-The **VersionBlock** component provides the ability to version a specific piece of content on a docs page. 
+The **VersionBlock** component provides the ability to version a specific piece of content on a docs page.
 
 This component can be added directly to a markdown file in a similar way as other components (FAQ, File, Lightbox).
 
@@ -99,7 +99,7 @@ Both properties can be used together to set a range where the content should sho
 
 ### Example for versioning entire pages
 
-On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v0.21.0 and later** shows `--select`, while **v-.20.x and earlier** changes this to `--models`. 
+On the [Docs Defer page](https://docs.getdbt.com/reference/node-selection/defer), tabs are used to show different versions of a piece of code. **v0.21.0 and later** shows `--select`, while **v-.20.x and earlier** changes this to `--models`.
 
 ![oldway](https://user-images.githubusercontent.com/3880403/163254165-dea23266-2eea-4e65-b3f0-c7b6d3e51fc3.png)
 
@@ -149,7 +149,7 @@ Using a global variable requires two steps:
 exports.dbtVariables = {
   dbtCore: {
     name: "dbt Core"
-  } 
+  }
 }
 ```
 
@@ -198,13 +198,13 @@ In the above example, the **dbtCloud** property has a default name of “dbt Clo
 
 ### Global variables example
 
-The global `<Var />` component can be used inline, for example: 
+The global `<Var />` component can be used inline, for example:
 
 ```markdown
 This piece of markdown content explains why <Var name="dbt" /> is awesome.
 ```
 
-However, a Var component cannot start a new line of content. Fortunately, a workaround exists to use the Var component at the beginning of a line of content. 
+However, a Var component cannot start a new line of content. Fortunately, a workaround exists to use the Var component at the beginning of a line of content.
 
 To use the component at the beginning of a sentence, add a non-breaking space character before the component:
 
@@ -231,7 +231,7 @@ A partial file allows you to reuse content throughout the docs. Here are the ste
 2. Go back to the docs file that will pull content from the partial file.
 3. Add the following import file: `import ComponentName from '/snippets/_this-is-your-partial-file-name.md';`
    * You must always add an import file in that format. Note you can name `ComponentName` (a partial component) can be whatever makes sense for your purpose.
-   * `.md` needs to be added to the end of the filename. 
+   * `.md` needs to be added to the end of the filename.
 4. To use the partial component, go to the next line and add `<ComponentName />`. This fetches the reusable content in the partial file
    * Note `anyname` can be whatever makes sense for your purpose.
 
@@ -258,15 +258,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum portti
 ```markdown
 Docs content here.
 
-`import SetUpPages from '/snippets/_partial-name.md';`
-
-<SetUpPages />        					
+import SetUpPages from '/snippets/_partial-name.md';
+<!-- It is important to leave a blank line or a comment between import and usage, otherwise it won't work -->
+<SetUpPages />
 
 Docs content here.
 ```
 
 - `import SetUpPages from '/snippets/_partial-name.md';`  &mdash; A partial file that will be imported by other files
-- `<SetUpPages />` &mdash;  A component that imports content from the partial file. You can also use it to pass in data into the partial using props (See 'How to use props to pass different content on multiple pages?' below). 
+- `<SetUpPages />` &mdash;  A component that imports content from the partial file. You can also use it to pass in data into the partial using props (See 'How to use props to pass different content on multiple pages?' below).
 
 4. This will then render the content of the docs in the partial file.
 
@@ -276,32 +276,32 @@ Docs content here.
 
 <details>
 <summary><b>How to use props to pass different content on multiple pages?</b></summary><br />
-	
+
 You can add props on the component only if you want to pass in data from the component into the partial file. This is useful for using the same partial component on
 multiple docs pages and displaying different values for each. For example, if we wanted to use a partial on multiple pages and pass in a different 'feature' for each
 docs page, you can write it as:
 
-```
+```markdown
 import SetUpPages from '/snippets/_available-enterprise-only.md';
-
-`<SetUpPages feature='A really cool feature' /> 
+<!-- It is important to leave a blank line or a comment between import and usage, otherwise it won't work -->
+<SetUpPages feature='A really cool feature' />
 ```
-  
+
 Then in the `/snippets/_available-enterprise-only.md file`, you can display that feature prop with:
-  
+
 >This feature: `{props.feature}` other content etc...
 
 This will then translate to:
-  
+
 >This feature: A really cool feature other content etc...
 
 In this example, the component `<SetUpPages feature='` is passing 'feature' into the partial. This is useful when using dynamic data (for example if you wanted to use the same partial on multiple docs pages, but change the values within the partial for each page)
-  
+
 </details>
 
 ### Snippets
 
-The Snippet component allows for content to be reusable throughout the Docs. This is very similar to the existing FAQ component. Using partial files, which is a built-in Docusaurus feature, is recommended over snippets. 
+The Snippet component allows for content to be reusable throughout the Docs. This is very similar to the existing FAQ component. Using partial files, which is a built-in Docusaurus feature, is recommended over snippets.
 
 Creating and using a snippet requires two steps:
 

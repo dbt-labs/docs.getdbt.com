@@ -87,7 +87,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 4. Select **Authorization** in the **header key** drop-down list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should look like this `{"Authorization": "Bearer <YOUR_TOKEN>}`.
 
-TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment.applied.modelHistoricalRuns`
+TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }`
 
 <br />
 
@@ -95,7 +95,7 @@ TODO: Screenshot needs to be replaced with new one. If we want to show model his
 
 5. Run your query by pressing the blue query button in the top-right of the Operation editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
-TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment.applied.modelHistoricalRuns`
+TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }`
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql.jpg" width="85%" title="Run queries using the Apollo Server GraphQL explorer"/>
 
@@ -160,12 +160,11 @@ Use the `PageInfo` object to return information about the page. The following fi
 - `startCursor` string type - corresponds to the first `node` in the `edge`.
 - `endCursor` string type - corresponds to the last `node` in the `edge`.
 - `hasNextPage` boolean type - whether there are more `nodes` after the returned results.
-- `hasPreviousPage` boolean type - whether `nodes` exist before the returned results.
 
 There are connection variables available when making the query:
 
 - `first` integer type - will return the first 'n' `nodes` for each page, up to 500.
-- `after` string type sets the cursor to retrieve `nodes` after. It's best practice to set the `after` variable with the object ID defined in the `endcursor` of the previous page.
+- `after` string type sets the cursor to retrieve `nodes` after. It's best practice to set the `after` variable with the object ID defined in the `endCursor` of the previous page.
 
 The following example shows that we're returning the `first` 500 models `after` the specified Object ID in the variables. The `PageInfo` object will return where the object ID where the cursor starts, where it ends, and whether there is a next page.
 

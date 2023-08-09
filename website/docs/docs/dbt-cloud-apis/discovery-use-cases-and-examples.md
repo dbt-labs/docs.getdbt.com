@@ -213,13 +213,9 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 You can query the metadata at the job level to review results for specific runs. This is helpful for historical analysis of deployment performance or optimizing particular jobs.
 
-:::caution
-dbt Labs is making changes to the Discovery API. These changes will take effect on September 7, 2023.
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
 
-The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Currently, both data types are supported.
-
-To perform job-based queries, you must do it within the `job` schema object, and move the `jobId` and `runId` arguments to `job(...)`. This is now supported so you can update your API calls accordingly.
-:::
+<DiscoveryApiJobDeprecationNotice />
 
 <details>
 <summary>Example query</summary>
