@@ -35,7 +35,7 @@ brew update
 brew upgrade dbt-cloud-cli
 ```
 
-### Manually install (Windows only)
+### Manually install (Windows and Linux)
 
 1. Download the latest darwin release from [Github](https://github.com/dbt-labs/dbti/releases).
 2. Place the `dbt` executable in `/usr/local/bin` or `/usr/.local/bin` if `/usr/local/bin` doesn’t exist.
