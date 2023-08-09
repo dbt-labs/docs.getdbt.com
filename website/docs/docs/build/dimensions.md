@@ -61,9 +61,9 @@ semantic_models:
       expr: case when quantity > 10 then true else false end
 ```
 
-MetricFlow requires that all dimensions have a primary entity. If your data source does not have a primary entity, you will need to specify one. 
+MetricFlow requires that all dimensions have a primary entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity: entity_name` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation.
 
-```yaml:
+```yaml
 semantic_model:
   name: bookings_monthly_source
   description: bookings_monthly_source
@@ -75,7 +75,8 @@ semantic_model:
       agg: sum
       create_metric: true
   primary_entity: booking_id
-  ```
+```
+
 ## Dimensions types
 
 Dimensions have 2 types. This section further explains the definitions and provides examples.

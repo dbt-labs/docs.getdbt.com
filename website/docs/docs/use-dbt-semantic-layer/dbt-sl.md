@@ -53,7 +53,7 @@ instance="hosted in North America"
     icon="dbt-bit"/>
 
 <Card
-    title="Product architecture"
+    title="Architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"
     icon="dbt-bit"/>
