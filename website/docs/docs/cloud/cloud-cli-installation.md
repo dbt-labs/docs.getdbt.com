@@ -12,7 +12,7 @@ The following installation instructions are for the dbt Cloud CLI, currently in 
 
 ## Installing dbt Cloud CLI
 
-### Install and update with Brew (recommended)
+### Install and update with Brew on MacOS (recommended)
 
 Install the CLI: 
 
