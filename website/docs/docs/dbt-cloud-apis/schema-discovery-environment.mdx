@@ -16,6 +16,13 @@ The [example query](#example-query) illustrates a few fields you can query in th
 
 When querying for `environment`, you can use the following arguments.
 
+:::caution
+
+dbt Labs is making changes to the Discovery API to support multi-cell. These changes will take effect on September 7, 2023. 
+
+The value type `Int` for `id` is being deprecated and will be replaced with `BigInt`. Please update your API call accordingly to avoid API errors. 
+:::
+
 <ArgsTable queryName="environment" useBetaAPI />
 
 
@@ -46,6 +53,44 @@ query Example {
 					contractEnforced, group, version}}} # Model governance
 		}
 	}
+```
+
+With the deprecation of the value type `Int`, below is an example of replacing it with `BigInt`: 
+
+```graphql
+query ($environmentId: BigInt!, $first: Int!) {
+  environment(id: $environmentId) {
+    applied {
+      models(first: $first) {
+        edges {
+          node {
+            uniqueId
+            executionInfo {
+              lastRunId
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+```
+
+With the deprecation of `modelByEnvironment`, below is an example of replacing it with `environment`: 
+
+```graphql
+query ($environmentId: BigInt!, $uniqueId: String) {
+  environment(id: $environmentId) {
+    applied {
+      modelHistoricalRuns(uniqueId: $uniqueId) {
+        uniqueId
+        executionTime
+        executeCompletedAt
+      }
+    }
+  }
+}
 ```
 
 ### Fields

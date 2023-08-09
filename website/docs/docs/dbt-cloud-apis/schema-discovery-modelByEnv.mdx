@@ -6,7 +6,13 @@ id: "discovery-schema-modelByEnv"
 
 import { ArgsTable, SchemaTable } from "./schema";
 
-<Snippet path="discovery-public-preview-banner" />
+:::caution
+
+dbt Labs is making changes to the Discovery API to support multi-cell. These changes will take effect on September 7, 2023. 
+
+The model by environment object is being deprecated and will be replaced with `environment { applied { modelHistoricalRuns } }`. Refer to the 
+[Environment object schema](/docs/dbt-cloud-apis/discovery-schema-environment) for details.
+:::
 
 This model by environment object allows you to query information about a particular model based on `environmentId`.
 
