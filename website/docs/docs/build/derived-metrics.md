@@ -8,7 +8,22 @@ tags: [Metrics, Semantic Layer]
 
 In MetricFlow, derived metrics are metrics created by defining an expression using other metrics. They allow performing calculations on top of existing metrics. This proves useful for combining metrics and applying arithmetic functions to aggregated columns, such as, you can define a profit metric. 
 
-The following example presents the complete specification for derived metrics, along with an example.
+ The parameters, description, and type for derived metrics are: 
+
+| Parameter | Description | Type |
+| --------- | ----------- | ---- |
+| `name` | The name of the metric. | Required |
+| `description` | The description of the metric. | Optional |
+| `type` | The type of the metric (cumulative, derived, ration, or simple). | Required |
+| `label` | The value that will be displayed in downstream tools. | Required |
+| `type_params` | The type parameters of the metric. | Required |
+| `expr` | The derived expression. | Required |
+| `metrics` |  The list of metrics used in the derived metrics. | Required  |
+| `alias` | Optional alias for the metric that you can use in the expr. | Optional |
+| `filter` | Optional filter to apply to the metric. | Optional |
+| `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. | Required |
+
+The following displays the complete specification for derived metrics, along with an example.
 
 ```yaml
 metrics:
@@ -70,7 +85,7 @@ metrics:
 
 ## Derived metric offset
 
-You may want to use an offset value of a metric in the definition of a derived metric. For example, you can model the retention rate by using a derived metric with an offset, which involves calculating (active customers at the end of the month/active customers at the beginning of the month) - 1.
+You may want to use an offset value of a metric in the definition of a derived metric. For example, you can model the retention rate by using a derived metric with an offset, which involves calculating (active customers at the end of the month/active customers at the beginning of the month).
 
 ```yaml
 metrics:
