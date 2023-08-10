@@ -127,7 +127,7 @@ The following examples create a materialized view:
 {{
   config(
     materialized = 'materialized_view',
-    auto_refresh = false,
+    auto_refresh = False,
     on_configuration_change = 'apply',
   )
 }}
