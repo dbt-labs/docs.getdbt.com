@@ -331,22 +331,15 @@ const sidebarSettings = {
       items: [
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
+        "docs/deploy/continuous-integration",
         {
           type: "category",
-          label: "dbt Cloud jobs",
-          link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
+          label: "Jobs",
+          link: { type: "doc", id: "docs/deploy/jobs" },
           items: [
-            "docs/deploy/job-settings",
-            "docs/deploy/job-commands",
-            "docs/deploy/job-triggers",
-          ],
-        },
-        {
-          type: "category",
-          label: "Continuous integration",
-          link: { type: "doc", id: "docs/deploy/continuous-integration" },
-          items: [
+            "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
+            "docs/deploy/job-commands",
           ],
         },
         {
