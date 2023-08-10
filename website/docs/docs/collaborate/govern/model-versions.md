@@ -6,10 +6,13 @@ description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
 ---
 
+<VersionBlock firstVersion="1.5" lastVersion="1.8">
+  
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
 :::
 
+</VersionBlock>
 
 import VersionsCallout from '/snippets/_version-callout.md';
 
@@ -21,7 +24,7 @@ Versioning APIs is a hard problem in software engineering. The root of the chall
 
 When sharing a final dbt model with other teams or systems, that model is operating like an API. When the producer of that model needs to make significant changes, how can they avoid breaking the queries of its users downstream?
 
-Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal of is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
+Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
 
 ## Related documentation
 - [`versions`](/reference/resource-properties/versions)
