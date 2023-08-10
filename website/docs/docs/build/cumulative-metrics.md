@@ -14,7 +14,7 @@ This metric is common for calculating things like weekly active users, or month-
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
-| `type` | The type of the metric (cumulative, derived, ration, or simple). | Required |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | The value that will be displayed in downstream tools. | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `measure` | The measure you are referencing. | Required |
