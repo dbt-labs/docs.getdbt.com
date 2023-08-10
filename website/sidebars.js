@@ -487,7 +487,28 @@ const sidebarSettings = {
                     // "docs/dbt-cloud-apis/discovery-schema-job-macros",
                   ],
                 },
-                "docs/dbt-cloud-apis/discovery-schema-environment",
+                {
+                  type: "category",
+                  label: "Environment",
+                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Applied",
+                      items: [
+                        "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                      ],
+                    },
+                    // Uncomment to add Definition subpage, but need to make items non-empty
+                    // {
+                    //   type: "category",
+                    //   label: "Definition",
+                    //   items: [
+                    //     // insert pages here
+                    //   ],
+                    // },
+                  ],
+                },
                 "docs/dbt-cloud-apis/discovery-schema-model",
                 "docs/dbt-cloud-apis/discovery-schema-models",
                 "docs/dbt-cloud-apis/discovery-schema-modelByEnv",
