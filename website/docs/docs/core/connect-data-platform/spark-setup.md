@@ -207,8 +207,6 @@ your_profile_name:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.0">
-
 ## Optional configurations
 
 ### Retries
@@ -226,8 +224,6 @@ connect_retries: 3
 ```
 
 </File>
-
-</VersionBlock>
 
 ## Caveats
 
