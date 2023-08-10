@@ -48,7 +48,7 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 
 :::important This feature is currently in beta
 
-Extended Attributes allows users to enter YAML attributes in their Environment settings. It's currently in beta and if you're interested in getting access to the beta, please contact us -- HOW CAN USES TRY THIS BETA? IF IT'S FEATURE FLAG, HOW DO THEY JOIN THE BETA? DO WE NEED TO ADD A FORM LINK? OR EMAIL?
+Extended Attributes allow users to enter YAML attributes in their Environment settings. It's currently in beta and if you're interested in joining the beta, please contact us -- HOW CAN USES TRY THIS BETA? IF IT'S FEATURE FLAG, HOW DO THEY JOIN THE BETA? DO WE NEED TO ADD A FORM LINK? OR EMAIL?
 :::
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
