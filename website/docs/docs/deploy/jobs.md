@@ -25,5 +25,5 @@ Below is a comparison table that describes how deploy jobs and CI jobs behave di
 | Trigger types | Triggered by a schedule or by API | Triggered by a webhook from a commit to a PR or by API |
 | Destination | Builds into a production database and schema | Builds into a staging database and ephemeral schema, lived for the lifetime of the PR |
 | Execution Mode | Runs execute sequentially, so as to not have collisions on the underlying DAG. | Runs execute in parallel to promote team velocity. |
-| Efficiency run savings | Over scheduled jobs are detected and unnecessary runs are canceled to avoid queue clog. | Run cancellation happens when an in-flight run becomes stale due to a new commit of the PR being pushed. |
+| Efficiency run savings | Detects over scheduled jobs and cancels unnecessary runs to avoid queue clog. | Cancels runs when an in-flight run becomes stale when a new commit is pushed to the pull request. |
 | State comparison | Only sometimes needs to detect state | Almost always needs to compare state against the production environment to build on modified code and its dependents. |
