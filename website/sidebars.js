@@ -331,17 +331,17 @@ const sidebarSettings = {
       items: [
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
-        "docs/deploy/jobs",
-        "docs/deploy/deploy-jobs",
+        "docs/deploy/continuous-integration",
         {
           type: "category",
-          label: "Continuous integration",
-          link: { type: "doc", id: "docs/deploy/continuous-integration" },
+          label: "Jobs",
+          link: { type: "doc", id: "docs/deploy/jobs" },
           items: [
+            "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
+            "docs/deploy/job-commands",
           ],
         },
-        "docs/deploy/job-commands",
         {
           type: "category",
           label: "Monitor jobs and alerts",

@@ -9,6 +9,14 @@ In dbt Cloud, you can create and set up triggers for these jobs:
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Continuous integration (CI) jobs](/docs/deploy/continuous-integration)  
 
+:::tip Join our beta 
+
+dbt Labs is currently running a beta that provides improved UI updates for setting up deploy jobs and CI jobs. For docs on deploy jobs, refer to [Create and schedule jobs (Beta version)](/docs/deploy/deploy-jobs?version=beta#create-and-schedule-jobs). For docs on CI jobs, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs).
+
+If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
+
+:::
+
 Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
 
 |  | Deploy Jobs | CI Jobs |
