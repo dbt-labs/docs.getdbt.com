@@ -147,5 +147,5 @@ Refer to the following example snippets:
 ## Related docs
 
 - [Artifacts](/docs/deploy/artifacts)
-- [Job commands](/docs/deploy/job-commands)
+- [Continuous integration (CI) jobs](/docs/deploy/ci-jobs)
 - [Webhooks](/docs/deploy/webhooks)
