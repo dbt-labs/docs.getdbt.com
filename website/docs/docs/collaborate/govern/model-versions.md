@@ -6,7 +6,7 @@ description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
 ---
 
-<VersionBlock firstVersion="1.5" lastVersion="1.8">
+<VersionBlock firstVersion="1.5">
   
 :::info New functionality
 
