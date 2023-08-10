@@ -1,45 +1,148 @@
 ---
-title: "Quickstart"
-id: quickstart-semantic-layer
-description: "Define metrics and set up the dbt Semantic Layer"
-sidebar_label: "Quickstart"
+title: "Get started with the dbt Semantic Layer"
+id: quickstart-sl
+description: "Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer APIs."
+sidebar_label: "Get started with the dbt Semantic Layer"
+tags: [Semantic Layer]
+meta:
+  api_name: dbt Semantic Layer API
 ---
 
-:::info Coming soon
-The dbt Semantic Layer is undergoing a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), making it more efficient to define and query metrics.
+<VersionBlock firstVersion="1.6">
 
-**What’s changing?** The dbt_metrics package will be [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), a new framework for defining metrics in dbt.
+import NewSLChanges from '/snippets/_new-sl-changes.md';
+import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
+import CreateModel from '/snippets/_sl-create-semanticmodel.md';
+import DefineMetrics from '/snippets/_sl-define-metrics.md';
+import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
+import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 
-**What's new?**  Learn how to [Build your metrics](/docs/build/build-metrics-intro?version=1.6) using MetricFlow, one of the key components that makes up the revamped dbt Semantic Layer. It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
+
+
+<NewSLChanges />
+
+The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools. 
+
+MetricFlow is a powerful component within the dbt Semantic Layer that helps users define and manage company metrics efficiently. It provides flexible abstractions and SQL query generation and also allows data consumers to retrieve metric datasets quickly and easily from a data platform.
+
+Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
+
+- [Create a semantic model](#create-a-semantic-model) with MetricFlow
+- [Define metrics](#define-metrics) with MetricFlow
+- [Test and query metrics locally](#test-and-query-metrics) with MetricFlow 
+- [Run a production job](#run-a-production-job) in dbt Cloud
+- [Set up dbt Semantic Layer](#setup) in dbt Cloud 
+- [Connect and query API](#connect-and-query-api) with dbt Cloud
+
+## Prerequisites
+
+import SetUp from '/snippets/_v2-sl-prerequisites.md';
+
+<SetUp />
+
+:::tip 
+New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
 
-## Public Preview 
+## Install MetricFlow
+
+<InstallMetricFlow />
+
+## Create a semantic model
+
+<CreateModel />
+
+## Define metrics
+
+<DefineMetrics />
+
+## Test and query metrics
+
+<TestQuery />
+
+## Run a production job
+
+Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
+
+1. Go to **Deploy** in the navigation header
+2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
+3. Your metric should appear as a red node in the dbt Cloud IDE and dbt directed acyclic graphs (DAG).
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" width="85%" title="DAG with metrics appearing as a red node" />
+
+
+<details>
+
+<summary>What’s happening internally?</summary>
+- Merging the code into your main branch allows dbt Cloud to pull those changes and builds the definition in the manifest produced by the run. <br />
+- Re-running the job in the deployment environment helps materialize the models, which the metrics depend on, in the data platform. It also makes sure that the manifest is up to date.<br />
+- The Semantic Layer APIs pulls in the most recent manifest and allows your integration information to extract metadata from it.
+</details>
+
+## Set up dbt Semantic Layer
+
+import SlSetUp from '/snippets/_new-sl-setup.md';  
+
+<SlSetUp/>
+
+
+## Connect and query API
+
+You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. In order to do so, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
+
+- <span>To learn how to use the JDBC API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
+
+    * To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions.
+    * Refer to the [SQL query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.  
+
+- To learn more about the sophisticated integrations that connect to the dbt Semantic Layer, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+
+
+## FAQs
+
+If you're encountering some issues when defining your metrics or setting up the dbt Semantic Layer, check out a list of answers to some of the questions or problems you may be experiencing.
     
-We're excited to announce the dbt Semantic Layer is currently available for Public Preview, which means:
+<details>
+  <summary>How do I migrate from the legacy Semantic Layer to the new one?</summary>
+  <div>
+    <div>If you're using the legacy Semantic Layer, we highly recommend you <a href="https://docs.getdbt.com/docs/dbt-versions/upgrade-core-in-cloud">upgrade your dbt version </a> to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated <a href="https://docs.getdbt.com/guides/migration/sl-migration"> migration guide</a> for more info.</div>
+  </div>
+</details>
+<details>
+<summary>How are you storing my data?</summary>
+User data passes through the Semantic Layer on its way back from the warehouse. dbt Labs ensures security by authenticating through the customer's data warehouse. Currently, we don't cache data for the long term, but it might temporarily stay in the system for up to 10 minutes, usually less. In the future, we'll introduce a caching feature that allows us to cache data on our infrastructure for up to 24 hours.
+</details>
+<details>
+<summary>Is the dbt Semantic Layer open source?</summary>
+The dbt Semantic Layer is proprietary, however, some components of the dbt Semantic Layer are open source, like dbt-core and MetricFlow. <br /><br />The universal dbt Semantic Layer is available to all Team and Enterprise Plans during public beta. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.</details>
+<br></br> 
 
-&mdash; **Who?** The dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise) during Public Preview. Review [Product architecture](/docs/use-dbt-semantic-layer/dbt-semantic-layer#product-architecture) for more info on plan availability.
+## Next steps
 
-- Team and Enterprise accounts will be able to set up the Semantic Layer and [Discovery API](/docs/dbt-cloud-apis/discovery-api) in the integrated
-partner tool to import metric definition.
-- Developer accounts will be able to query the Proxy Server using SQL, but will not be able to browse dbt metrics in external tools, which                  requires access to the Discovery API. 
+Review the following documents to learn more and get started:
 
-&mdash; **What?** Public Previews provide early access to new features. The Semantic Layer is stable and you can use it for production deployments, but there may still be some planned additions and modifications to product behaviors before moving to General Availability. We may also introduce new functionality that is not backwards compatible. dbt Labs provides support, and relevant service level objectives (SLOs) apply. We will introduce pricing for the dbt Semantic Layer alongside the General Available (GA) release (future GA date to be announced).
-    
-&mdash; **When?** Public Preview will end once the dbt Semantic Layer is available for GA. After GA, the dbt Semantic Layer will only be available to dbt Cloud **Team** and **Enterprise** plans.
+- [Build your metrics](/docs/build/build-metrics-intro)
+- [Set up dbt Semantic Layer](docs/use-dbt-semantic-layer/setup-dbt-sl)
+- [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 
-&mdash; **Where?** Public Preview is enabled at the account level so you don’t need to worry about enabling it per user.
+</VersionBlock>
 
+<VersionBlock lastVersion="1.5">
 
-## Introduction
+import LegacyInfo from '/snippets/_legacy-sl-callout.md';
+
+<LegacyInfo />
 
 To try out the features of the dbt Semantic Layer, you first need to have a dbt project set up. This quickstart guide will lay out the following steps, and recommends a workflow that demonstrates some of its essential features:
 
-- Install dbt metrics package
+- Install dbt metrics package 
+  * Note: this package will be deprecated very soon and we highly recommend you to use the new [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl?version=1.6), available in dbt v 1.6 or higher. 
 - Define metrics
 - Query, and run metrics
 - Configure the dbt Semantic Layer
 
 ## Prerequisites
+
 To use the dbt Semantic Layer, you’ll need to meet the following:
 
 <Snippet path="sl-prerequisites" />
@@ -54,8 +157,8 @@ New to dbt or metrics? Check out our [quickstart guide](/quickstarts) to build 
 :::
 
 ## Installing dbt metrics package
-The dbt Semantic Layer supports the calculation of metrics by using the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/). You can install the dbt metrics package in your dbt project by copying the below code blocks.
 
+The dbt Semantic Layer supports the calculation of metrics by using the [dbt metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/). You can install the dbt metrics package in your dbt project by copying the below code blocks.
 
 <VersionBlock firstVersion="1.3" lastVersion="1.3">
 
@@ -101,11 +204,6 @@ Review our helpful metrics video below, which explains what metrics are, why the
     
 <LoomVideo id="b120ca9d042d46abad1d873a676bf20a" />    
 
-### Design metrics
-    
-To read about best practices on structuring and organizing your metrics, review our [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog post first.
-
-### Define metrics
 Now that you've organized your metrics folder and files, you can define your metrics in `.yml` files nested under a `metrics` key.  
 
 1. Add the metric definitions found in the [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example to your dbt project. For example, to add an expenses metric, reference the following metrics you can define directly in your metrics folder: 
@@ -176,9 +274,7 @@ metrics:
 2. Commit and merge the code changes that contain the metric definitions.
 3. If you'd like to further design and define your own metrics, review the following documentation:
 
-    - [dbt metrics](/docs/build/metrics) will povide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
-   
-    - Review [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) blog to understand best practices for designing and structuring metrics in your dbt project.
+    - [dbt metrics](/docs/build/metrics) will provide you in-depth detail on attributes, properties, filters, and how to define and query metrics.
 
 ## Develop and query metrics
 
@@ -226,7 +322,7 @@ If you're encountering some issues when defining your metrics or setting up the 
 <details>
     <summary>Is the dbt Semantic Layer open source?</summary>
   <div>
-    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Discovery API are not open source. <br></br><br></br>
+    <div>Some components of the dbt Semantic Layer are open source like dbt-core, the dbt_metrics package, and the BSL-licensed dbt-server. The dbt Proxy Server (what is actually compiling the dbt code) and the Discovery API are not open sources. <br></br><br></br>
 
 During Public Preview, the dbt Semantic Layer is open to all dbt Cloud tiers (Developer, Team, and Enterprise).<br></br><br></br>
 <ul>    
@@ -295,7 +391,7 @@ The reason you're experiencing this error is because we changed the <code>type</
 
 Are you ready to define your own metrics and bring consistency to data consumers? Review the following documents to understand how to structure, define, and query metrics, and set up the dbt Semantic Layer: 
 
-- [How to design and structure dbt metrics: Recommendations for getting started](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics) to understand best practices for designing and structuring metrics in your dbt project
 - [dbt metrics](/docs/build/metrics) for in-depth detail on attributes, properties, filters, and how to define and query metrics
-- [Understanding the components of the dbt Semantic Layer](https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer) blog post to see further examples
-- [dbt Server repo](https://github.com/dbt-labs/dbt-server), which is a persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations.
+- [dbt Server repo](https://github.com/dbt-labs/dbt-server), which is a persisted HTTP server that wraps dbt core to handle RESTful API requests for dbt operations. 
+
+</VersionBlock>

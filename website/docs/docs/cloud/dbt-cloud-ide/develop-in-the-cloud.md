@@ -6,8 +6,7 @@ sidebar_label: Develop in the IDE
 tags: [IDE]
 ---
 
-The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
-
+The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. 
 
 ## Prerequisites
 
@@ -75,7 +74,7 @@ To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), 
 There are three start-up states when using or launching the Cloud IDE:
 
 - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
 - **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
 
 ### Work retention
