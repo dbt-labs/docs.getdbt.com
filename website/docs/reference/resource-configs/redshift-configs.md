@@ -110,7 +110,7 @@ The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/r
 
 Materialized views support the optional configuration `on_configuration_change` with the following values: 
 - `apply` (default) &mdash; attempts to update the existing database object if possible, avoiding a complete rebuild. 
-- `skip` &mdash; allows runs to continue while also providing a warning that the model was skipped
+- `continue` &mdash; allows runs to continue while also providing a warning that the model was skipped
 - `fail` &mdash; forces runs to fail if a change is detected in a materialized view
 
 Additionally, you can apply the `auto_refresh` configuration to have Redshift [automatically refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) the materialized view for you. This action can applied without the need to rebuild the materialized view. 
