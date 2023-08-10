@@ -53,7 +53,7 @@ Extended Attributes allows users to enter YAML attributes in their Environment s
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings.
 
-It enhances user control over environments (deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.  
+It provides users with more control over environments (deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
 
 Extended Attributes is a text box extension at the environment level that overrides connection or environment credentials. It accepts any attributes accepted by a dbt adapter in its profiles.yml. However, it doesn't mask secret values, and we recommend avoiding setting secret values to prevent visibility in the text box and logs.
 
