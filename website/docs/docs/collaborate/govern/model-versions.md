@@ -6,12 +6,10 @@ description: "Version models to help with lifecycle management"
 keyword: governance, model version, model versioning, dbt model versioning
 ---
 
-<VersionBlock firstVersion="1.5">
-  
+<VersionBlock firstVersion="1.5" lastVersion="1.8">
+
 :::info New functionality
-
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
-
 :::
 
 </VersionBlock>
