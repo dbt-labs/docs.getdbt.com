@@ -87,9 +87,8 @@ query ModelHistoricalRuns(
 
 3. Use the query results to plot a graph of the longest running model’s historical run time and execution time trends.
 
+<!-- TODO: TEST THIS PYTHON CODE WORKS WITH NEW API AND DOCS! -->
 ```python
-# TODO: TEST THIS WORKS WITH NEW CODE!
-
 # Import libraries
 import os
 import matplotlib.pyplot as plt
@@ -441,9 +440,8 @@ query ($environmentId: BigInt!, $first: Int!) {
 }
 ```
 
+<!-- TODO: TEST THIS PYTHON CODE WORKS WITH NEW API AND DOCS! -->
 ```python
-# TODO: TEST THIS WORKS WITH NEW CODE!
-
 # Extract graph nodes from response
 def extract_nodes(data):
     models = []
@@ -597,7 +595,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 To enforce the shape of a model's definition, you can define contracts on models and their columns. You can also specify model versions to keep track of discrete stages in its evolution and use the appropriate one.
 
-TODO: The description above is not accurate for the desired query below because only applied models can query catalogs, so the query is changed to `environment.applied`. We need to change the description to refer to the applied state, or do not query `catalog` from the definition state node.
+<!-- TODO: The description above is not accurate for the desired query below because only applied models can query catalogs, so the query is changed to `environment.applied`. We need to change the description to refer to the applied state, or do not query `catalog` from the definition state node. -->
 
 <details>
 <summary>Example query</summary>
@@ -791,9 +789,8 @@ Then, extract the node definitions and create a lineage graph. You can traverse 
 2. Extract the node definitions, construct a lineage graph, and plot the graph.
 
 
+<!-- TODO: TEST THIS PYTHON CODE WORKS WITH NEW API AND DOCS! -->
 ```python
-# TODO: TEST THIS WORKS WITH NEW CODE!
-
 import networkx as nx
 import os
 import matplotlib.pyplot as plt
@@ -1065,8 +1062,6 @@ For development use cases, people typically query the historical or latest defin
 
 This example reviews an exposure and the models used in it, including when they were last executed.
 
-TODO: (REMOVE BEFORE MERGING!!) Previously, the data included the test results, but we don't support querying beyond 1 generation, so getting the test results of the models that these exposures depend on, would take another query from `environment.applied.models`
-
 ```graphql
 query ($environmentId: BigInt!, $first: Int!) {
   environment(id: $environmentId) {
@@ -1140,7 +1135,7 @@ query (
 
 dbt lineage begins with data sources. For a given source, you can look at which nodes are its children then iterate downstream to get the full list of dependencies.
 
-(PLEASE REVISE THIS SENTENCE) We do not support querying beyond 1 generation, so to see the grandchildren of a node, you need to make 2 queries: 1 to get the node and its childre, and another to get the children nodes and their children.
+Note that we do not support querying beyond 1 generation (defined as a direct parent-to-child), so to see the grandchildren of a node, you need to make 2 queries: 1 to get the node and its children, and another to get the children nodes and their children.
 
 <details>
 <summary>Example query</summary>
