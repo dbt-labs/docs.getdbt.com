@@ -85,7 +85,7 @@ Your CI job will ensure that the models build properly and pass any tests applie
 - A service principal called *dbt_test_sp*
 - A new dbt Cloud environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend setting up a dbt Cloud Slim CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a Slim CI job, refer to [Set up Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
+We recommend setting up a dbt Cloud CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a CI job, refer to [Set up CI jobs](/docs/deploy/ci-jobs) for details.
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 

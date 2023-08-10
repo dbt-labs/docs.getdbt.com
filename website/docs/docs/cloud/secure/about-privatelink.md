@@ -4,9 +4,6 @@ id: about-privatelink
 description: "Configuring PrivateLink for AWS"
 sidebar_label: "About PrivateLink"
 ---
-:::info 
-This feature is currently in Private Preview, and these instructions are specific to dbt Cloud multi-tenant Enterprise tier environments hosted on AWS. 
-:::
 
 PrivateLink enables a private connection from any dbt Cloud Multi-Tenant environment to your data platform hosted on AWS using [AWS PrivateLink](https://aws.amazon.com/privatelink/) technology. PrivateLink allows dbt Cloud customers to meet security and compliance controls as it allows connectivity between dbt Cloud and your data platform without traversing the public internet. This feature is supported in most regions across NA, Europe, and Asia, but [contact us](https://www.getdbt.com/contact/) if you have questions about availability. 
 

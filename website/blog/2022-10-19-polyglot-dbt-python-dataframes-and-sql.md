@@ -4,8 +4,7 @@ description: "Going polyglot is a major next step in the journey of dbt Core. It
 slug: polyglot-dbt-python-dataframes-sql
 
 authors: [doug_beatty]
-
-tags: [dbt product updates]
+tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2022-10-18
