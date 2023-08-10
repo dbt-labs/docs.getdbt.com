@@ -5,5 +5,4 @@ Take note that [model versions](/docs/collaborate/govern/model-versions) are dif
 
 Model versions is a _feature_ that enables better governance and data model management by allowing you to track changes and updates to models over time. dbt_project.yml versions refer to the compatibility of the dbt project with a specific version of dbt. Version numbers within .yml property files inform how dbt parses those YAML files. The latter two are completely optional starting from version 1.5.
 
-Model versions and `versions` are _features_ that enable better governance and data model management by allowing you to track changes and updates to models over time.  Model versions and `versions` are available in dbt v1.5 or higher.
 :::
