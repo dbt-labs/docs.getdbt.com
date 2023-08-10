@@ -57,7 +57,7 @@ query AppliedModels($environmentId: BigInt!, $first: Int!) {
 }
 ```
 
-2. Get the most recent 20 run results for the longest running model. Review the results of the model across runs, or you can go to the job/run or commit itself to investigate further.
+2. Get the most recent 20 run results for the longest running model. Review the results of the model across runs or you can go to the job/run or commit itself to investigate further.
 
 ```graphql
 query ModelHistoricalRuns(
@@ -219,8 +219,7 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 <details>
 <summary>Example query</summary>
 
-**Deprecated:**
-
+Deprecated example: 
 ```graphql
 query ($jobId: Int!, $runId: Int!) {
   models(jobId: $jobId, runId: $runId) {
@@ -234,7 +233,7 @@ query ($jobId: Int!, $runId: Int!) {
 }
 ```
 
-**New:**
+New example:
 
 ```graphql
 query ($jobId: BigInt!, $runId: BigInt!) {
@@ -783,7 +782,7 @@ query Lineage($environmentId: BigInt!, $first: Int!) {
 }
 ```
 
-Then, extract the node definitions and create a lineage graph. You can traverse downstream from sources and seeds (adding an edge from each node with children to its children) or iterate through each node’s parents (if it has them). Keep in mind that models, snapshots, and metrics can have parents and children, whereas sources and seeds have only children and exposures only have parents.
+Then, extract the node definitions and create a lineage graph. You can traverse downstream from sources and seeds (adding an edge from each node with children to its children) or iterate through each node’s parents (if it has them). Remember that models, snapshots, and metrics can have parents and children, whereas sources and seeds have only children and exposures only have parents.
 
 
 2. Extract the node definitions, construct a lineage graph, and plot the graph.
@@ -826,7 +825,7 @@ def query_discovery_api(auth_token, gql_query, variables):
 # Extract nodes for graph
 def extract_node_definitions(api_response):
     nodes = []
-    node_types = ["models", "sources", "seeds", "snapshots", "exposures"]  # metrics and semanticModels coming soon...
+    node_types = ["models", "sources", "seeds", "snapshots", "exposures"]  # support for metrics and semanticModels coming soon
     for node_type in node_types:
         if node_type in api_response["definition"]:
             for node_edge in api_response["definition"][node_type]["edges"]:
@@ -1001,7 +1000,7 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 ### Who can use this model?
 
-You can enable users the ability to specify the level of access for a given model. In the future, public models will function like APIs to unify project lineage and enable reuse of models using cross-project refs.
+You can enable people the ability to specify the level of access for a given model. In the future, public models will function like APIs to unify project lineage and enable reuse of models using cross-project refs.
 
 
 <details>
@@ -1060,7 +1059,7 @@ For development use cases, people typically query the historical or latest defin
 <details>
 <summary>Example query</summary>
 
-This example reviews an exposure and the models used in it, including when they were last executed.
+Below is an example that reviews an exposure and the models used in it including when they were last executed.
 
 ```graphql
 query ($environmentId: BigInt!, $first: Int!) {
@@ -1135,7 +1134,7 @@ query (
 
 dbt lineage begins with data sources. For a given source, you can look at which nodes are its children then iterate downstream to get the full list of dependencies.
 
-Note that we do not support querying beyond 1 generation (defined as a direct parent-to-child), so to see the grandchildren of a node, you need to make 2 queries: 1 to get the node and its children, and another to get the children nodes and their children.
+Currently, querying beyond 1 generation (defined as a direct parent-to-child) is not supported. To see the grandchildren of a node, you need to make two queries: one to get the node and its children, and another to get the children nodes and their children.
 
 <details>
 <summary>Example query</summary>
