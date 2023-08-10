@@ -1,0 +1,49 @@
+---
+title: "Snapshots object schema"
+sidebar_label: "Snapshots"
+id: "discovery-schema-job-snapshots"
+---
+
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+The snapshots object allows you to query information about all snapshots in a given job.
+
+### Arguments
+
+When querying for `snapshots`, the following arguments are available.
+
+<NodeArgsTable parent="JobNode" name="snapshots" />
+
+Below we show some illustrative example queries and outline the schema of this snapshots object.
+
+### Example Query
+
+As we noted above, database, schema, and identifier are all optional arguments. This means that with this endpoint, you can:
+
+- Find a specific snapshot by providing `<database>.<schema>.<identifier>`
+- Find all of the snapshots in a database and/or schema by providing `<database>` and/or `<schema>`
+
+#### Finding snapshots information for a job
+
+The example query returns information about all snapshots in this job.
+
+```graphql
+{
+  job(id: 123) {
+    snapshots {
+      uniqueId
+      name
+      executionTime
+      environmentId
+      executeStartedAt
+      executeCompletedAt
+    }
+  }
+}
+```
+
+### Fields
+
+When querying for `snapshots`, the following fields are available:
+
+<SchemaTable nodeName="SnapshotNode" />
