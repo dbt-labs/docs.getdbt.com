@@ -29,33 +29,21 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     icon="dbt-bit"/>
 
 <Card
+    title="Deploy jobs"
+    body="Create and schedule jobs for the dbt Cloud scheduler to run."
+    link="/docs/deploy/deploy-jobs"
+    icon="dbt-bit"/>
+
+<Card
     title="Continuous integration"
     body="Set up CI checks so you can build and test any modified code in a staging environment when you open PRs and push new commits to your dbt repository."
     link="/docs/deploy/continuous-integration"
-    icon="dbt-bit"/>
-
-</div> <br /> 
-
-## dbt Cloud jobs
-
-<div className="grid--3-col">
-
-<Card
-    title="Job settings"
-    body="Create and schedule jobs for the dbt Cloud scheduler to run."
-    link="/docs/deploy/job-settings"
     icon="dbt-bit"/>
 
 <Card
     title="Job commands"
     body="Configure which dbt commands to execute when running a dbt job."
     link="/docs/deploy/job-commands"
-    icon="dbt-bit"/>
-
-<Card
-    title="Job triggers"
-    body="Set up a cron-based schedule or an event-driven trigger by API or on pull requests for CI jobs."
-    link="/docs/deploy/job-triggers"
     icon="dbt-bit"/>
 
 </div> <br />
@@ -77,7 +65,7 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     icon="dbt-bit"/>
 
 <Card
-    title="Webhooks for your jobs"
+    title="Webhooks"
     body="Create outbound webhooks to send events about your dbt jobs' statuses to other systems in your organization."
     link="/docs/deploy/webhooks"
     icon="dbt-bit"/>
