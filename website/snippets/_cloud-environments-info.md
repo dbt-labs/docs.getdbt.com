@@ -42,3 +42,48 @@ By default, all environments will use the default branch in your repository (usu
 - **Deployment:** determines the branch is cloned during job executions for each environment.
 
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
+
+
+### Extended Attributes (Beta)
+
+:::important This feature is currently in beta
+
+Extended Attributes allows users to enter YAML attributes in their Environment settings. It's currently in beta and if you're interested in getting access to the beta, please contact us -- HOW CAN USES TRY THIS BETA? IF IT'S FEATURE FLAG, HOW DO THEY JOIN THE BETA? DO WE NEED TO ADD A FORM LINK? OR EMAIL?
+:::
+
+Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings.
+
+It enhances user control over environments (deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.  
+
+Extended Attributes is a text box extension at the environment level that overrides connection or environment credentials. It accepts any attributes accepted by a dbt adapter in its profiles.yml. However, it doesn't mask secret values, and we recommend avoiding setting secret values to prevent visibility in the text box and logs.
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
+
+The **Extended Attributes** text box must contain valid characters only. Any invalid characters will result in an error message. Invalid characters include:
+
+- `/` (forward slash)
+- `\` (backslash)
+- `$` (dollar sign)
+- `!` (exclamation point)
+- `@` (at sign)
+- `#` (hash) (NEED CONFIRMATION)
+- `+` (plus sign)
+- `%` (percentage sign)
+
+If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the keys. For each individual key:
+
+- If the key exists in another source (such as your project settings), it will replace its value in the profile.
+- If the key doesn't exist, it will add the key or value pair to the profile. 
+
+The following code is an example of the types of attributes you can add to the **Extended Attributes** text box:
+
+```yaml
+type: postgres      
+host: localhost      
+user: alice      
+password: <your_password>      
+port: 5432      
+dbname: jaffle_shop      
+schema: dbt_alice      
+threads: 4
+```
