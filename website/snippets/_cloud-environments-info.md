@@ -44,7 +44,7 @@ By default, all environments will use the default branch in your repository (usu
 For more info, check out this [FAQ page on this topic](/faqs/Environments/custom-branch-settings)!
 
 
-### Extended Attributes (Beta)
+### Extended attributes (Beta)
 
 :::important This feature is currently in beta
 
