@@ -109,9 +109,11 @@ models:
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html) and refreshes them for every subsequent `dbt run` that you execute. For more information, see [Refresh Materialized Views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) in the Redshift docs.
 
 Materialized views support the optional configuration `on_configuration_change` with the following values: 
-- `apply` (default) &mdash; attempts to update the existing database object if possible, avoiding a complete rebuild. The `auto_refresh` action can applied without the need to rebuild the materialized view.
-- `skip` &mdash; allows runs to continue while also providing a warning that the model was skipped
-- `fail` &mdash; forces runs to fail if a change is detected in a materialized view 
+- `apply` (default) &mdash; attempts to update the existing database object if possible, avoiding a complete rebuild. 
+- `continue` &mdash; allows runs to continue while also providing a warning that the model was not executed
+- `fail` &mdash; forces runs to fail if a change is detected in a materialized view
+
+Additionally, you can apply the `auto_refresh` configuration to have Redshift [automatically refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) the materialized view for you. This action can applied without the need to rebuild the materialized view. 
 
 You can create a materialized view by editing _one_ of these files:
 - the SQL file for your model
@@ -125,6 +127,7 @@ The following examples create a materialized view:
 {{
   config(
     materialized = 'materialized_view',
+    auto_refresh = False,
     on_configuration_change = 'apply',
   )
 }}
