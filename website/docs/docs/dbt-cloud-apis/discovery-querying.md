@@ -74,17 +74,17 @@ You can use the Discovery API to query data from the previous three months. For 
 
 ## Run queries with the GraphQL explorer
 
-You can run ad-hoc queries directly in the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and use the document explorer on the left-hand side, where you can see all possible nodes and fields.
+You can run ad-hoc queries directly in the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and use the document explorer on the left-hand side to see all possible nodes and fields.
 
 Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/graphos/explorer/explorer) for setup and authorization info.
 
-1. Access the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and select fields you'd like query.
+1. Access the [GraphQL API explorer](https://metadata.cloud.getdbt.com/graphql) and select fields you want to query.
 
-2. Go to **Variables** at the bottom of the explorer and replace any `null` fields with your unique values.
+2. Select **Variables** at the bottom of the explorer and replace any `null` fields with your unique values.
 
-3. [Authenticate](https://www.apollographql.com/docs/graphos/explorer/connecting-authenticating#authentication) via Bearer auth with `YOUR_TOKEN`. Go to **Headers** at the bottom of the explorer and select **+New header**.
+3. [Authenticate](https://www.apollographql.com/docs/graphos/explorer/connecting-authenticating#authentication) using Bearer auth with `YOUR_TOKEN`. Select **Headers** at the bottom of the explorer and select **+New header**.
 
-4. Select **Authorization** in the **header key** drop-down list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should look like this `{"Authorization": "Bearer <YOUR_TOKEN>}`.
+4. Select **Authorization** in the **header key** dropdown list and enter your Bearer auth token in the **value** field. Remember to include the Token prefix. Your header key should be in this format: `{"Authorization": "Bearer <YOUR_TOKEN>}`.
 
 <!-- TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
@@ -93,7 +93,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 <Lightbox src="/img/docs/dbt-cloud/discovery-api/graphql_header.jpg" width="85%" title="Enter the header key and Bearer auth token values"/>
 
-1. Run your query by pressing the blue query button in the top-right of the Operation editor (to the right of the query). You should see a successful query response on the right side of the explorer.
+1. Run your query by clicking the blue query button in the top right of the **Operation** editor (to the right of the query). You should see a successful query response on the right side of the explorer.
 
 <!-- TODO: Screenshot needs to be replaced with new one. If we want to show model historical runs, show `environment { applied { modelHistoricalRuns } }` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
@@ -102,7 +102,7 @@ Refer to the [Apollo explorer documentation](https://www.apollographql.com/docs/
 
 ### Fragments
 
-Use the [`...on`](https://www.apollographql.com/docs/react/data/fragments/) notation to query across lineage and retrieve results from specific node types.
+Use the [`... on`](https://www.apollographql.com/docs/react/data/fragments/) notation to query across lineage and retrieve results from specific node types.
 
 ```graphql
 query ($environmentId: BigInt!, $first: Int!) {
@@ -156,25 +156,25 @@ query ($environmentId: BigInt!, $first: Int!) {
 
 Querying large datasets can impact performance on multiple functions in the API pipeline. Pagination eases the burden by returning smaller data sets one page at a time. This is useful for returning a particular portion of the dataset or the entire dataset piece-by-piece to enhance performance. dbt Cloud utilizes cursor-based pagination, which makes it easy to return pages of constantly changing data.
 
-Use the `PageInfo` object to return information about the page. The following fields are available:
+Use the `PageInfo` object to return information about the page. The available fields are:
 
-- `startCursor` string type - corresponds to the first `node` in the `edge`.
-- `endCursor` string type - corresponds to the last `node` in the `edge`.
-- `hasNextPage` boolean type - whether there are more `nodes` after the returned results.
+- `startCursor` string type &mdash; Corresponds to the first `node` in the `edge`.
+- `endCursor` string type &mdash; Corresponds to the last `node` in the `edge`.
+- `hasNextPage` boolean type &mdash; Whether or not there are more `nodes` after the returned results.
 
 There are connection variables available when making the query:
 
-- `first` integer type - will return the first 'n' `nodes` for each page, up to 500.
-- `after` string type sets the cursor to retrieve `nodes` after. It's best practice to set the `after` variable with the object ID defined in the `endCursor` of the previous page.
+- `first` integer type &mdash; Returns the first n `nodes` for each page, up to 500.
+- `after` string type &mdash; Sets the cursor to retrieve `nodes` after. It's best practice to set the `after` variable with the object ID defined in the `endCursor` of the previous page.
 
-The following example shows that we're returning the `first` 500 models `after` the specified Object ID in the variables. The `PageInfo` object will return where the object ID where the cursor starts, where it ends, and whether there is a next page.
+Below is an example that returns the `first` 500 models `after` the specified Object ID in the variables. The `PageInfo` object returns where the object ID where the cursor starts, where it ends, and whether there is a next page.
 
 <!-- TODO: Update screenshot to use `$environmentId: BigInt!, or remove it` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
 
 <Lightbox src="/img/paginate.png" width="75%" title="Example of pagination"/>
 
-Here is a code example of the `PageInfo` object:
+Below is a code example of the `PageInfo` object:
 
 ```graphql
 pageInfo {
@@ -187,13 +187,13 @@ totalCount # Total number of records across all pages
 
 ### Filters
 
-Filtering helps to narrow down the results of an API query. Want to query and return only models and tests that are failing? Or find models that are taking too long to run? You can fetch execution details such as [`executionTime`](/docs/dbt-cloud-apis/discovery-schema-models#fields), [`runElapsedTime`](/docs/dbt-cloud-apis/discovery-schema-models#fields), or [`status`](/docs/dbt-cloud-apis/discovery-schema-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
+Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-cloud-apis/discovery-schema-models#fields), [`runElapsedTime`](/docs/dbt-cloud-apis/discovery-schema-models#fields), or [`status`](/docs/dbt-cloud-apis/discovery-schema-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
 
-In the following example, we can see that we're filtering results to models that have succeeded on their `lastRunStatus`:
+Below is an example that filters for results of models that have succeeded on their `lastRunStatus`:
 
 <Lightbox src="/img/filtering.png" width="75%" title="Example of filtering"/>
 
-Here is a code example that filters for models that have an error on their last run and tests that have failed:
+Below is an example that filters for models that have an error on their last run and tests that have failed:
 
 <!-- TODO: Update screenshot to use `$environmentId: BigInt!, or remove it` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
