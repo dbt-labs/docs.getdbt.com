@@ -6,33 +6,44 @@ sidebar_label: Cumulative
 tags: [Metrics, Semantic Layer]
 ---
 
-Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. 
+Cumulative metrics aggregate a measure over a given accumulation window. If no window is specified, the window is considered infinite and accumulates values over all time. You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
-This metric is common for calculating things like weekly active users, or month to date revenue. The following displays the full metrics spec, along with an example:
+This metric is common for calculating things like weekly active users, or month-to-date revenue.  The parameters, description, and type for cumulative metrics are: 
 
+| Parameter | Description | Type |
+| --------- | ----------- | ---- |
+| `name` | The name of the metric. | Required |
+| `description` | The description of the metric. | Optional |
+| `type` | The type of the metric (cumulative, derived, ration, or simple). | Required |
+| `label` | The value that will be displayed in downstream tools. | Required |
+| `type_params` | The type parameters of the metric. | Required |
+| `measure` | The measure you are referencing. | Required |
+| `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `window`. | Optional  |
+| `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with window. | Optional |
+
+The following displays the complete specification for cumulative metrics, along with an example:
 
 ```yaml
 metrics:
-  - name: the metric name # Required
-    description: the metric description # Optional
-    type: simple # Required
+  - name: The metric name # Required
+    description: The metric description # Optional
+    type: cumulative # Required
     label: The value that will be displayed in downstream tools # Required
     type_params: # Required
-      measure: the measure you are referencing # Required
-      window: the accumulation window i.e 1 month, 7 days, 1 year. # Optional. Cannot be used with grain_to_date
-      grain_to_date: sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next. 
-      # Optional. Can not be used with window. 
-
+      measure: The measure you are referencing # Required
+      window: The accumulation window, such as 1 month, 7 days, 1 year. # Optional. Can not be used with window. 
+      grain_to_date: Sets the accumulation grain, such as month will accumulate data for one month, then restart at the beginning of the next.  # Optional. Cannot be used with grain_to_date
 
 ```
 
-:::info MetricFlow time spine required
+## Cumulative metrics example
+
+
+:::tip MetricFlow time spine required
 
 You will need to create the [time spine model](/docs/build/metricflow-time-spine) before you add cumulative metrics.
 
 :::
-
-## Cumulative metrics example
 
 Cumulative metrics measure data over a given window and consider the window infinite when no window parameter is passed, accumulating the data over all time.
 
@@ -71,13 +82,14 @@ This section details examples of when you specify and don't specify window optio
 
 If a window option is specified, the MetricFlow framework applies a sliding window to the underlying measure. 
 
-Suppose the underlying measure `customers` which is configured to count the unique customers making orders at the Jaffle shop.
+Suppose the underlying measure `customers` is configured to count the unique customers making orders at the Jaffle shop.
 
 ```yaml
 measures:
-      - name: customers
-        expr: customer_id
-        agg: count_distinct
+  - name: customers
+    expr: customer_id
+    agg: count_distinct
+
 ```
 
 We can write a cumulative metric `weekly_customers` as such: 
@@ -115,34 +127,32 @@ Suppose you (a subscription-based company for the sake of this example) have an 
 * `event_type`: (integer) a column that populates with +1 to indicate an added subscription, or -1 to indicate a deleted subscription. 
 * `revenue`: (integer) a column that multiplies `event_type` and `subscription_revenue` to depict the amount of revenue added or lost for a specific date. 
 
-Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following configuration YAML displays creating such cumulative metrics to obtain current revenue or total number of active subscriptions as a cumulative sum:
+Using cumulative metrics without specifying a window, you can calculate running totals for metrics like the count of active subscriptions and revenue at any point in time. The following configuration YAML displays creating such cumulative metrics to obtain current revenue or the total number of active subscriptions as a cumulative sum:
 
 ```yaml
-measures: 
-  - name: revenue 
-    description: Total revenue 
-    agg: sum 
-    expr: revenue 
-  - name: subscription_count 
-    description: Count of active subscriptions 
-    agg: sum 
+measures:
+  - name: revenue
+    description: Total revenue
+    agg: sum
+    expr: revenue
+  - name: subscription_count
+    description: Count of active subscriptions
+    agg: sum
     expr: event_type
+metrics:
+  - name: current_revenue
+    description: Current revenue
+    label: Current Revenue
+    type: cumulative
+    type_params:
+      measure: revenue
+  - name: active_subscriptions
+    description: Count of active subscriptions
+    label: Active Subscriptions
+    type: cumulative
+    type_params:
+      measure: subscription_count
 
-metrics: 
-- name: current_revenue
-  description: Current revenue 
-  label: Current Revenue
-  type: cumulative 
-  type_params: 
-    measures: 
-      - revenue
-- name: active_subscriptions 
-  description: Count of active subscriptions 
-  label: Active Subscriptions
-  type: cumulative 
-  type_params: 
-    measures: 
-      - subscription_count
 ```
 
 </TabItem>
@@ -165,14 +175,14 @@ We can compare the difference between a 1-month window and a monthly grain to da
 
 ```yaml
 metrics:
- - name: cumulative_order_total_l1m #For this metric, we use a window of 1 month 
-    label: Cumulative Order total (L1M)   
+  - name: cumulative_order_total_l1m  #For this metric, we use a window of 1 month 
+    label: Cumulative Order total (L1M)
     description: Trailing 1 month cumulative order amount
     type: cumulative
     type_params:
       measure: order_total
       window: 1 month
-  - name: cumulative_order_total_mtd #For this metric, we use a monthly grain to date 
+  - name: cumulative_order_total_mtd   #For this metric, we use a monthly grain to date 
     label: Cumulative Order total (MTD)
     description: The month to date value of all orders
     type: cumulative

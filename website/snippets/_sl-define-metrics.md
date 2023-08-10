@@ -7,7 +7,7 @@ Now that you've created your first semantic model, it's time to define your firs
 ```yaml
 metrics:
   - name: order_total
-    description: Sum of total order amonunt. Includes tax + revenue.
+    description: Sum of total order amount. Includes tax + revenue.
     type: simple
     label: Order Total
     type_params:

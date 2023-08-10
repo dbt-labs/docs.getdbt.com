@@ -8,16 +8,28 @@ tags: [Metrics, Semantic Layer]
 
 Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform, and can be filtered by one or multiple dimensions.
 
-The following displays the full spec for ratio metrics, along with an example:
+ The parameters, description, and type for simple metrics are: 
+
+| Parameter | Description | Type |
+| --------- | ----------- | ---- |
+| `name` | The name of the metric. | Required |
+| `description` | The description of the metric. | Optional |
+| `type` | The type of the metric (cumulative, derived, ration, or simple). | Required |
+| `label` | The value that will be displayed in downstream tools. | Required |
+| `type_params` | The type parameters of the metric. | Required |
+| `measure` | The measure you're referencing. | Required |
+
+The following displays the complete specification for simple metrics, along with an example.
+
 
 ```yaml
 metrics:
-  - name: the metric name # Required
+  - name: The metric name # Required
     description: the metric description # Optional
     type: simple # Required
     label: The value that will be displayed in downstream tools #Required
     type_params: # Required
-      measure: the measure you're referencing # Required
+      measure: The measure you're referencing # Required
 
 ```
 

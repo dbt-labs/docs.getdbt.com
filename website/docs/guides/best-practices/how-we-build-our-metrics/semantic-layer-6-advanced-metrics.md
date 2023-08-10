@@ -1,8 +1,7 @@
 ---
 title: "More advanced metrics"
-description: Getting started with the dbt Semantic Layer
-displayText: "dbt Cloud Semantic Layer best practices"
-hoverSnippet: Learn how to get started with the dbt Semantic Layer
+description: Getting started with the dbt and MetricFlow
+hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
 
 ## More advanced metric types

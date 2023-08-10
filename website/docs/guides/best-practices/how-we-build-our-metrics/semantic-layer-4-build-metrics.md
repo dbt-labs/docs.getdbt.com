@@ -1,8 +1,7 @@
 ---
 title: "Building metrics"
-description: Getting started with the dbt Semantic Layer
-displayText: "dbt Cloud Semantic Layer best practices"
-hoverSnippet: Learn how to get started with the dbt Semantic Layer
+description: Getting started with the dbt and MetricFlow
+hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
 
 ## How to build metrics
@@ -37,6 +36,6 @@ metrics:
 
 - It's best practice any time we're updating our semantic layer code to run a `dbt parse && mf validate-configs`.
 - If everything passes, we can start querying this metric with `mf query`!
-- `mf query` is not how you would use the tool in production, that's handled by the dbt Semantic Layer's cloud features. It's available for testing results of various metric queries in development, exactly as we're using it now.
+- `mf query` is not how you would use the tool in production, that's handled by the dbt Cloud Semantic Layer's features. It's available for testing results of various metric queries in development, exactly as we're using it now.
 - Try `mf query --metrics revenue --group-by metric_time__day` and see a preview of the data come back.
 - Note the structure of the above query. We select the metric(s) we want and the dimensions to group them by — we use dunders (double underscores e.g.`metric_time__[time bucket]`) to designate time dimensions or other non-unique dimensions that need a specified entity path to resolve (e.g. if you have a orders location dimension and a employee location dimension both named 'location' you would need dunders to specify `orders__location` or `employee__location`).
