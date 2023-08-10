@@ -1,5 +1,5 @@
 
-:::info Model versioning is different to a version tag
+:::info Model versions, dbt_project.yml versions, and .yml versions
 
 Take note that [model versions](/docs/collaborate/govern/model-versions) are different from [dbt_project.yml versions](/reference/project-configs/version#dbt_projectyml-versions) and [.yml property file versions](/reference/project-configs/version#yml-property-file-versions).
 
