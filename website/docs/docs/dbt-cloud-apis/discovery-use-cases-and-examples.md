@@ -913,7 +913,7 @@ Graph example:
 
 ### Which metrics are available?
 
-Metric definitions are coming soon to the Discovery API with dbt v1.6. You’ll be able to query metrics using the dbt Semantic Layer, use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL).
+You can define and query metrics using the [dbt Semantic Layer](/docs/build/about-metricflow), use them for documentation purposes (like for a data catalog), and calculate aggregations (like in a BI tool that doesn’t query the SL). To learn more, refer to [Get started with MetricFlow](/docs/build/sl-getting-started).
 
 <details>
 <summary>Example query</summary>
