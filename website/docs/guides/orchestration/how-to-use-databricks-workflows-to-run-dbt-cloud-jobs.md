@@ -9,14 +9,14 @@ hoverSnippet: Learn how to use Databricks workflows to run dbt Cloud jobs
 Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:
 
 1. **Integration with other ETL processes** &mdash; If you're already running other ETL processes in Databricks, you can use a Databricks workflow to trigger a dbt Cloud job after those processes are done.
-2. **Utilizes dbt Cloud jobs features &mdash;** dbt Cloud gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/dbt-cloud-job).
+2. **Utilizes dbt Cloud jobs features &mdash;** dbt Cloud gives the ability to monitor job progress, manage historical logs and documentation, optimize model timing, and much [more](/docs/deploy/deploy-jobs).
 3. [**Separation of concerns &mdash;**](https://en.wikipedia.org/wiki/Separation_of_concerns) Detailed logs for dbt jobs in the dbt Cloud environment can lead to more modularity and efficient debugging. By doing so, it becomes easier to isolate bugs quickly while still being able to see the overall status in Databricks.
 4. **Custom job triggering &mdash;** Use a Databricks workflow to trigger dbt Cloud jobs based on custom conditions or logic that aren't natively supported by dbt Cloud's scheduling feature. This can give you more flexibility in terms of when and how your dbt Cloud jobs run.
 
 ## Prerequisites
 
 - Active [Teams or Enterprise dbt Cloud account](https://www.getdbt.com/pricing/)
-- You must have a configured and existing [dbt Cloud job](/docs/deploy/dbt-cloud-job)
+- You must have a configured and existing [dbt Cloud deploy job](/docs/deploy/deploy-jobs)
 - Active Databricks account with access to [Data Science and Engineering workspace](https://docs.databricks.com/workspace-index.html) and [Manage secrets](https://docs.databricks.com/security/secrets/index.html)
 - [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
   - **Note**: You only need to set up your authentication. Once you have set up your Host and Token and are able to run `databricks workspace ls /Users/<someone@example.com>`, you can proceed with the rest of this guide.
