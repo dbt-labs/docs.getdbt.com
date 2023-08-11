@@ -378,10 +378,10 @@ select
 version: 2
 
 models:
-  - name: double_nested_fields
+  - name: nested_column_constraints_example
     config:
-      contract: {enforced: true}
-      materialized: table
+      contract: 
+        enforced: true
     columns:
       - name: a
         data_type: string
