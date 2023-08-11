@@ -38,7 +38,7 @@ To unlock your account and select a plan, review the following guidance per plan
 2. To unlock your account and continue using the Team plan, you need to enter your payment details. 
 3. Go to **Payment Information** and click **Edit** on the right.
 4. Enter your payment details and click **Save**.
-5.  This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Team plan. 🎉
+5. This automatically unlocks your dbt Cloud account, and you can now enjoy the benefits of the Team plan. 🎉
 
 <Lightbox src="/img/docs/dbt-cloud/trial-team-flow.gif"/>
 
@@ -59,7 +59,7 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 <details>
   <summary>How does billing work?</summary>
   <div>
-    <div>Team plans are billed monthly on the credit card used to sign up, based on <a href="https://www.getdbt.com/pricing/">developer seat count</a>. You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> -> <b>Billing page</b>. <br></br><br></br>
+    <div>Team plans are billed monthly on the credit card used to sign up, based on [developer seat count and usage](/docs/cloud/billing). You’ll also be sent a monthly receipt to the billing email of your choice. You can change any billing information in your <b>Account Settings</b> -> <b>Billing page</b>. <br></br><br></br>
     
     Enterprise plan customers are billed annually based on the number of developer seats, as well as any additional services + features in your chosen plan. </div>
     </div>
@@ -75,7 +75,7 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 <details>
   <summary>Can I pay by invoice?</summary>
     <div>
-      <div>At present, dbt Cloud Team plan payments must be made via credit card, and by default they will be billed monthly based on the number of developer seats. <br></br><br></br>
+      <div>At present, dbt Cloud Team plan payments must be made via credit card, and by default they will be billed monthly based on the number of [developer seats and usage](/docs/cloud/billing). <br></br><br></br>
       
       We don’t have any plans to do invoicing for Team plan accounts in the near future, but we do currently support invoices for companies on the dbt Cloud Enterprise plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.</div> 
     </div> 
