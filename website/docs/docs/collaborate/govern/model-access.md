@@ -163,16 +163,44 @@ Of course, dbt can facilitate this by means of [the `grants` config](/reference/
 
 As we continue to develop multi-project collaboration, `access: public` will mean that other teams are allowed to start taking a dependency on that model. This assumes that they've requested, and you've granted them access, to select from the underlying dataset.
 
-### What about referencing models from a package?
+### How do I ref a model from another project?
 
-For historical reasons, it is possible to `ref` a protected model from another project, _if that protected model is installed as a package_. This is useful for packages containing models for a common data source; you can install the package as source code, and run the models as if they were your own.
+<VersionBlock lastVersion="1.5">
 
-dbt Core v1.6 will introduce a new kind of `project` dependency, distinct from a `package` dependency, defined in `dependencies.yml`:
+In dbt Core v1.5 (and earlier versions), the only way to reference a model from another project is by installing that project as a package, including its full source code. It is not possible to restrict references across projects based on model `access`.
+
+For more control over per-model access across projects, select v1.6 (or newer) from the version dropdown.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+You can `ref` a model from another project in two ways:
+1. [Project dependency](/docs/collaborate/govern/project-dependencies): In dbt Cloud Enterprise, you can use project dependencies to `ref`  a model. dbt Cloud uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
+2. ["Package" dependency](/docs/build/packages): Another way to `ref` a model from another project is to treat the other project as a package dependency. This requires installing the other project as a package, including its full source code, as well as its upstream dependencies.
+
+### How do I restrict access to models defined in a package?
+
+Source code installed from a package becomes part of your runtime environment. You can call macros and run models as if they were macros and models that you had defined in your own project.
+
+For this reason, model access restrictions are "off" by default for models defined in packages. You can reference models from that package regardless of their `access` modifier.
+
+The project being installed as a package can optionally restrict external `ref` access to just its public models. The package maintainer does this by setting a `restrict-access` config to `True` in `dbt_project.yml`.
+
+By default, the value of this config is `False`. This means that:
+- Models in the package with `access: protected` may be referenced by models in the root project, as if they were defined in the same project
+- Models in the package with `access: private` may be referenced by models in the root project, so long as they also have the same `group` config
+
+When `restrict-access: True`:
+- Any `ref` from outside the package to a protected or private model in that package will fail.
+- Only models with `access: public` can be referenced outside the package.
+
+<File name="dbt_project.yml">
+
 ```yml
-projects:
-  - project: jaffle_finance
+restrict-access: True  # default is False
 ```
 
-Unlike installing a package, the models in the `jaffle_finance` project will not be pulled down as source code, or selected to run during `dbt run`. Instead, `dbt-core` will expect stateful input that enables it to resolve references to those public models.
+</File>
 
-Models referenced from a `project`-type dependency must use [two-argument `ref`](#two-argument-variant), including the project name. Only public models can be accessed in this way. That holds true even if the `jaffle_finance` project is _also_ installed as a package (pulled down as source code), such as in a coordinated deployment. If `jaffle_finance` is listed under the `projects` in `dependencies.yml`, dbt will raise an error if a protected model is referenced from outside its project.
+</VersionBlock>

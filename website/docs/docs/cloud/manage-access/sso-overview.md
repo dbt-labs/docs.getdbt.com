@@ -17,7 +17,7 @@ Once you configure SSO, even partially, you cannot disable or revert it. When yo
 
 ## Auth0 Multi-tenant URIs
 
-<Snippet src="auth0-uri" />
+<Snippet path="auth0-uri" />
 
 ## SSO process
 

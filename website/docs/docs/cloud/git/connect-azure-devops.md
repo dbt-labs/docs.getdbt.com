@@ -3,7 +3,7 @@ title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
 ---
 
-<Snippet src="available-enterprise-tier-only" />
+<Snippet path="available-enterprise-tier-only" />
 
 
 ## About Azure DevOps and dbt Cloud

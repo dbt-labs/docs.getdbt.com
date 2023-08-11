@@ -60,7 +60,7 @@ semantic_models:
       - name: average_purchase_price
         agg: avg
         expr: purchase_price
-      - name: user_signup
+  - name: user_signup
     entities:
       - name: user
         type: primary
@@ -114,8 +114,7 @@ semantic_models:
       - name: metric_time
         type: time
         type_params:
-        is_primary: true
-      - name: user_signup
+  - name: user_signup
     entities:
       - name: user_id
         type: primary

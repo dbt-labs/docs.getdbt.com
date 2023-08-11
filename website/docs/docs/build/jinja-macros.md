@@ -126,7 +126,7 @@ from app_data.payments
 
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](/reference/dbt-jinja-functions/project_name):
 
@@ -148,13 +148,13 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## FAQs
 
-<FAQ src="Accounts/dbt-specific-jinja" />
-<FAQ src="Jinja/which-jinja-docs" />
-<FAQ src="Jinja/quoting-column-names" />
-<FAQ src="Jinja/jinja-whitespace" />
-<FAQ src="Project/debugging-jinja" />
-<FAQ src="Docs/documenting-macros" />
-<FAQ src="Project/why-so-many-macros" />
+<FAQ path="Accounts/dbt-specific-jinja" />
+<FAQ path="Jinja/which-jinja-docs" />
+<FAQ path="Jinja/quoting-column-names" />
+<FAQ path="Jinja/jinja-whitespace" />
+<FAQ path="Project/debugging-jinja" />
+<FAQ path="Docs/documenting-macros" />
+<FAQ path="Project/why-so-many-macros" />
 
 ## dbtonic Jinja
 
@@ -185,5 +185,5 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="wee"/>

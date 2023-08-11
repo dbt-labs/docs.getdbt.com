@@ -17,8 +17,8 @@ meta:
 ---
 
 
-<Snippet src="warehouse-setups-cloud-callout" />
-<Snippet src="dbt-databricks-for-databricks" />
+<Snippet path="warehouse-setups-cloud-callout" />
+<Snippet path="dbt-databricks-for-databricks" />
 
 :::note
 See [Databricks setup](#databricks-setup) for the Databricks version of this page.

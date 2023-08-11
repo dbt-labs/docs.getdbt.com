@@ -1,4 +1,4 @@
-<Snippet src="available-git-providers" />
+<Snippet path="available-git-providers" />
 
 To set up a managed repository:
 

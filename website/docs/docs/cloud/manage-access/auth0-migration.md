@@ -16,7 +16,7 @@ If you have not yet configured SSO in dbt Cloud, refer instead to our setup guid
 
 ## Auth0 Multi-tenant URIs
 
-<Snippet src="auth0-uri" />
+<Snippet path="auth0-uri" />
 
 ## Start the migration
 
