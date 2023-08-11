@@ -304,7 +304,7 @@ select
 
 <div warehouse="BigQuery">
 
-BigQuery allows defining `not null` constraints. However, it does _not_ support or enforce the definition of unenforced constraints, such as `primary key`.
+BigQuery allows defining `not null` constraints. However, it does _not_ support or enforce the definition of unenforced constraints, such as `primary key`. BigQuery supports column level contstraints on nested columns. 
 
 Documentation: https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language
 
@@ -374,6 +374,21 @@ select
 
 </File>
 
+Example of double nested fields: 
+
+<File name='target/run/.../double_nested_fields.sql'>
+
+```sql
+select
+  'string' as a,
+  struct(
+    1 as id,
+    'name' as name,
+    struct(2 as id, struct('test' as again, '2' as even_more) as another) as double_nested
+  ) as b
+```
+
+</File>
 </div>
 
 <div warehouse="Databricks">
