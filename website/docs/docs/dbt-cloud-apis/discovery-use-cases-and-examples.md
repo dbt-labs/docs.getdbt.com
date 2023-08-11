@@ -219,7 +219,7 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 <details>
 <summary>Example query</summary>
 
-Deprecated example: 
+Deprecated example:
 ```graphql
 query ($jobId: Int!, $runId: Int!) {
   models(jobId: $jobId, runId: $runId) {
@@ -681,6 +681,8 @@ query ($environmentId: BigInt!, $first: Int!) {
 ```
 </details>
 
+<!-- TODO: Revise this section to use the `environment.definition.lineage` endpoints instead of querying all nodes
+
 ### What’s the full data lineage?
 
 Lineage, enabled by the `ref` function, is at the core of dbt. Understanding lineage provides many benefits, such as understanding the structure and relationships of datasets (and metrics) and performing impact-and-root-cause analyses to resolve or present issues given changes to definitions or source data. With the Discovery API, you can construct lineage using the `parents` nodes or its `children` and query the entire upstream lineage using `ancestors`.
@@ -787,9 +789,8 @@ Then, extract the node definitions and create a lineage graph. You can traverse 
 
 2. Extract the node definitions, construct a lineage graph, and plot the graph.
 
-
-<!-- TODO: TEST THIS PYTHON CODE WORKS WITH NEW API AND DOCS! -->
 ```python
+# TODO: TEST THIS PYTHON CODE WORKS WITH NEW API AND DOCS!
 import networkx as nx
 import os
 import matplotlib.pyplot as plt
@@ -908,6 +909,8 @@ Graph example:
 
 
 </details>
+
+-->
 
 <VersionBlock firstVersion="1.6">
 
