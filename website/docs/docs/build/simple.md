@@ -6,7 +6,7 @@ sidebar_label: Simple
 tags: [Metrics, Semantic Layer]
 ---
 
-Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform, and can be filtered by one or multiple dimensions.
+Simple metrics are metrics that directly reference a single measure, without any additional measures involved. They are aggregations over a column in your data platform and can be filtered by one or multiple dimensions.
 
  The parameters, description, and type for simple metrics are: 
 
@@ -14,7 +14,7 @@ Simple metrics are metrics that directly reference a single measure, without any
 | --------- | ----------- | ---- |
 | `name` | The name of the metric. | Required |
 | `description` | The description of the metric. | Optional |
-| `type` | The type of the metric (cumulative, derived, ration, or simple). | Required |
+| `type` | The type of the metric (cumulative, derived, ratio, or simple). | Required |
 | `label` | The value that will be displayed in downstream tools. | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `measure` | The measure you're referencing. | Required |

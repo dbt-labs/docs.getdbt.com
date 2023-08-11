@@ -1,3 +1,6 @@
+/docs/deploy/job-triggers /docs/deploy/deploy-jobs 301
+/docs/deploy/job-settings /docs/deploy/deploy-jobs 301
+/docs/deploy/dbt-cloud-job /docs/deploy/deploy-jobs 301
 /faqs/environments/beta-release  /docs/dbt-versions/product-lifecycles 301
 
 /docs/deploy/slim-ci-jobs /docs/deploy/ci-jobs 301
@@ -148,7 +151,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
 /docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
 /docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
-/docs/cloud/manage-access/about-access 301 /docs/cloud/manage-access/about-user-access 301
+/docs/cloud/manage-access/about-access /docs/cloud/manage-access/about-user-access 301
 /docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
 /docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
 /docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
