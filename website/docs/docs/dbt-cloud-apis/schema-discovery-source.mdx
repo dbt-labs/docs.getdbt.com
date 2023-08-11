@@ -14,17 +14,15 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 ### Arguments
 
-When querying for a `source`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for a `source`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
 <QueryArgsTable queryName="source" />
 
-Below we show some illustrative example queries and outline the schema of this source object.
+Below we show some illustrative example queries and outline the schema of the source object.
 
-### Example Queries
+### Example query
 
-#### Source information
-
-The query below pulls relevant information about a given source. For example, we could see the load time and the state (“pass”, “fail”, “error”) of that source.
+The example query below pulls relevant information about a given source. For instance, you can view the load time and the state (“pass”, “fail”, “error”) of that source.
 
 ```graphql
 {

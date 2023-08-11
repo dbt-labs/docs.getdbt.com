@@ -6,7 +6,7 @@ id: "discovery-schema-exposures"
 
 import { QueryArgsTable, SchemaTable } from "./schema";
 
-The exposures object allows you to query information about all exposures in a given job. You can learn more about exposures [here](/docs/build/exposures).
+The exposures object allows you to query information about all exposures in a given job. To learn more, refer to [Add Exposures to your DAG](/docs/build/exposures).
 
 import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
 
@@ -14,16 +14,15 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 ### Arguments
 
-When querying for `exposures`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for `exposures`, the following arguments are available. If you don't include a `runId`, it defaults to the most recent run of the specified job:
 
 <QueryArgsTable queryName="exposure" />
 
 Below we show some illustrative example queries and outline the schema of this exposures object.
 
-### Example Queries
-#### Exposures information
+### Example queries
 
-The example query below queries information about all exposures in a given job, including, for each exposure, the owner's name and email, the url, and information about parent sources and parent models.
+The example query below queries information about all exposures in a given job including the owner's name and email, the URL, and information about parent sources and parent models for each exposure.
 
 ```graphql
 {

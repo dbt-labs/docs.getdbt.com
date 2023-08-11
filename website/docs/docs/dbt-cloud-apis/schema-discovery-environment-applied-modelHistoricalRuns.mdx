@@ -1,12 +1,14 @@
 ---
 title: "Model Historical Runs object schema"
-sidebar_label: "Model Historical Runs"
+sidebar_label: "Model historical runs"
 id: "discovery-schema-environment-applied-modelHistoricalRuns"
 ---
 
 import { NodeArgsTable, SchemaTable } from "./schema";
 
-The [example query](#example-query) illustrates a few fields you can query in this `modelHistoricalRuns` object. Refer to [Fields](#fields) to see the entire schema, which provides all possible fields you can query.
+The model historical runs object allows you to query information about a model's run history. 
+
+The [Example query](#example-query) illustrates a few fields you can query in this `modelHistoricalRuns` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
 ### Arguments
 
@@ -14,7 +16,7 @@ When querying for `modelHistoricalRuns`, you can use the following arguments.
 
 <NodeArgsTable parent="AppliedState" name="modelHistoricalRuns" />
 
-### Example Query
+### Example query
 
 You can use the `environmentId` and the model's `uniqueId` to return the model and its execution time for the last 20 times it was run, regardless of which job ran it.
 

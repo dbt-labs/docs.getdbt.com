@@ -14,16 +14,15 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 ### Arguments
 
-When querying for a `metric`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for a `metric`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
 <QueryArgsTable queryName="metric" />
 
-Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this metric object.
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the metric object.
 
-### Example Queries
-#### Metric information
+### Example query
 
-The example query below outputs information about a metric.  Note that you can also add any field from the Model endpoint -- here we are simply selecting name. This includes schema, database, uniqueId, columns and more -- find documentation [here](/docs/dbt-cloud-apis/discovery-schema-model).
+The example query below outputs information about a metric. You can also add any field from the model endpoint; this example simply selects name. This includes schema, database, uniqueId, columns, and more. To learn more, refer to [Model object schema](/docs/dbt-cloud-apis/discovery-schema-model).
 
 
 ```graphql

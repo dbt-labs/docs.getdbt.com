@@ -6,7 +6,7 @@ id: "discovery-schema-job-exposures"
 
 import { NodeArgsTable, SchemaTable } from "./schema";
 
-The exposures object allows you to query information about all exposures in a given job. You can learn more about exposures [here](/docs/build/exposures).
+The exposures object allows you to query information about all exposures in a given job. To learn more, refer to [Add Exposures to your DAG](/docs/build/exposures).
 
 
 ### Arguments
@@ -17,10 +17,9 @@ When querying for `exposures`, the following arguments are available.
 
 Below we show some illustrative example queries and outline the schema of this exposures object.
 
-### Example Queries
-#### Exposures information
+### Example query
 
-The example query below queries information about all exposures in a given job, including, for each exposure, the owner's name and email, the url, and information about parent sources and parent models.
+The example query below queries information about all exposures in a given job including the owner's name and email, the URL, and information about parent sources and parent models for each exposure.
 
 ```graphql
 {

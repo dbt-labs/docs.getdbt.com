@@ -15,14 +15,15 @@ When querying for `models`, the following arguments are available.
 
 <NodeArgsTable parent="JobNode" name="models" />
 
-Below we show some illustrative example queries and outline the schema of this models object.
+Below we show some illustrative example queries and outline the schema of the models object.
 
-### Example Queries
-As we noted above, database, schema, and identifier are all optional arguments.  This means that with this endpoint, you can:
+### Example queries
+The database, schema, and identifier arguments are all optional. This means that with this endpoint you can:
+
 - Find a specific model by providing `<database>.<schema>.<identifier>`
 - Find all of the models in a database and/or schema by providing `<database>` and/or `<schema>`
 
-#### Finding models by their database, schema, and identifier
+#### Find models by their database, schema, and identifier
 The example query below finds a model by its unique database, schema, and identifier.
 
 ```graphql
@@ -35,8 +36,8 @@ The example query below finds a model by its unique database, schema, and identi
 }
 ```
 
-#### Finding models by their schema
-The example query below finds all models in this schema, and their respective execution times.
+#### Find models by their schema
+The example query below finds all models in this schema and their respective execution times.
 
 ```graphql
 {
@@ -51,8 +52,7 @@ The example query below finds all models in this schema, and their respective ex
 
 
 ### Fields
-Models has access to the *same fields* as the [Model node](/docs/dbt-cloud-apis/discovery-schema-job-model).
-The difference is that Models can output a list, so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, etc.
+The models object has access to the _same fields_ as the [Model node](/docs/dbt-cloud-apis/discovery-schema-job-model). The difference is that the models object can output a list so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, and so on.
 
 When querying for `models`, the following fields are available:
 

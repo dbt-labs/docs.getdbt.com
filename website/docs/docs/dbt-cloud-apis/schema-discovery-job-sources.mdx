@@ -14,11 +14,11 @@ When querying for `sources`, the following arguments are available.
 
 <NodeArgsTable parent="JobNode" name="sources" />
 
-Below we show some illustrative example queries and outline the schema of this sources object.
+Below we show some illustrative example queries and outline the schema of the sources object.
 
-### Example Queries
+### Example queries
 
-As we noted above, database, schema, and identifier are all optional arguments. This means that with this endpoint, you can:
+The database, schema, and identifier arguments are optional. This means that with this endpoint you can:
 
 - Find a specific source by providing `<database>.<schema>.<identifier>`
 - Find all of the sources in a database and/or schema by providing `<database>` and/or `<schema>`
@@ -43,7 +43,7 @@ The example query below finds a source by its unique database, schema, and ident
 
 #### Finding sources by their schema
 
-The example query below finds all sources in this schema, and their respective states (pass, error, fail).
+The example query below finds all sources in this schema and their respective states (pass, error, fail).
 
 ```graphql
 {
@@ -58,7 +58,7 @@ The example query below finds all sources in this schema, and their respective s
 
 ### Fields
 
-Sources has access to the _same fields_ as the [Source node](/docs/dbt-cloud-apis/discovery-schema-job-source). The difference is that Sources can output a list, so instead of querying for fields for one specific source, you can query for those parameters for all sources within a jobID, database, etc.
+The sources object has access to the _same fields_ as the [source node](/docs/dbt-cloud-apis/discovery-schema-job-source). The difference is that the sources object can output a list so instead of querying for fields for one specific source, you can query for those parameters for all sources within a jobID, database, and so on.
 
 When querying for `sources`, the following fields are available:
 

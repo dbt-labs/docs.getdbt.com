@@ -14,12 +14,11 @@ When querying for a `model`, the following arguments are available.
 
 <NodeArgsTable parent="JobNode" name="model" />
 
-Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this model object.
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the model object.
 
-### Example Queries
-#### Finding parent models and sources
+### Example query for finding parent models and sources
 
-The example query below uses the `parentsModels` and `parentsSources` fields to fetch information about a model’s parent models and parent sources. Note that we put a placeholder jobID and uniqueID, which you will have to replace.
+The example query below uses the `parentsModels` and `parentsSources` fields to fetch information about a model’s parent models and parent sources. The jobID and uniqueID fields are placeholders that you will need to replace with your own values.
 
 ```graphql
 {
@@ -41,9 +40,9 @@ The example query below uses the `parentsModels` and `parentsSources` fields to 
 
 ```
 
-#### Model Timing
+### Example query for model timing
 
-The example query below could be useful if we wanted to understand information around execution timing on a given model (start, end, completion).
+The example query below could be useful if you want to understand information around execution timing on a given model (start, end, completion).
 
 ```graphql
 {
@@ -62,9 +61,9 @@ The example query below could be useful if we wanted to understand information a
 }
 ```
 
-#### Column-level information
+### Example query for column-level information
 
-You can use the following example query to understand more about the columns of a given model.  Note that this will only work if the job has generated documentation. For example it will work with the command `dbt docs generate`.
+You can use the following example query to understand more about the columns of a given model. This query will only work if the job has generated documentation; that is, it will work with the command `dbt docs generate`.
 
 ```graphql
 {

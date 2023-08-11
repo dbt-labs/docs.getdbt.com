@@ -14,16 +14,15 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 ### Arguments
 
-When querying for a `test`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for a `test`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
 <QueryArgsTable queryName="test" />
 
-Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this test object.
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the test object.
 
-### Example Queries
-#### Test result
+### Example query
 
-The example query below outputs information about a test, including the state of the test result. This can be one of, in order of severity, "error", "fail", "warn", "pass."
+The example query below outputs information about a test including the state of the test result. In order of severity, the result can be one of these: "error", "fail", "warn", "pass."
 
 ```graphql
 {
