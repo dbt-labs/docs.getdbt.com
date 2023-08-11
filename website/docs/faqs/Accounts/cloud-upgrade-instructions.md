@@ -75,7 +75,7 @@ For commonly asked billings questions, refer to the dbt Cloud [pricing page](htt
 <details>
   <summary>Can I pay by invoice?</summary>
     <div>
-      <div>At present, dbt Cloud Team plan payments must be made via credit card, and by default they will be billed monthly based on the number of [developer seats and usage](/docs/cloud/billing). <br></br><br></br>
+      <div>Currently, dbt Cloud Team plan payments must be made with a credit card, and by default they will be billed monthly based on the number of [developer seats and usage](/docs/cloud/billing). <br></br><br></br>
       
       We don’t have any plans to do invoicing for Team plan accounts in the near future, but we do currently support invoices for companies on the dbt Cloud Enterprise plan. Feel free to <a href="https://www.getdbt.com/contact/">contact</a> us to build your Enterprise pricing plan.</div> 
     </div> 
