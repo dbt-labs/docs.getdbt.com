@@ -14,15 +14,15 @@ import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_depre
 
 ### Arguments
 
-When querying for `exposures`, the following arguments are available. If you don't include a `runId`, it defaults to the most recent run of the specified job:
+When querying for `exposures`, the following arguments are available. If you don't include a `runId`, the API defaults to the most recent run of the specified job:
 
 <QueryArgsTable queryName="exposure" />
 
-Below we show some illustrative example queries and outline the schema of this exposures object.
+Below we show some illustrative example queries and outline the schema of the exposures object.
 
-### Example queries
+### Example query
 
-The example query below queries information about all exposures in a given job including the owner's name and email, the URL, and information about parent sources and parent models for each exposure.
+The example below queries information about all exposures in a given job including the owner's name and email, the URL, and information about parent sources and parent models for each exposure.
 
 ```graphql
 {
