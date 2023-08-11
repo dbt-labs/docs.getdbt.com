@@ -1,3 +1,19 @@
+/docs/deploy/job-triggers /docs/deploy/deploy-jobs 301
+/docs/deploy/job-settings /docs/deploy/deploy-jobs 301
+/docs/deploy/dbt-cloud-job /docs/deploy/deploy-jobs 301
+/faqs/environments/beta-release  /docs/dbt-versions/product-lifecycles 301
+
+/docs/deploy/slim-ci-jobs /docs/deploy/ci-jobs 301
+
+## semantic layer
+
+https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer  /docs/use-dbt-semantic-layer/dbt-sl?version=1.6 301
+https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-semantic-layer/dbt-sl?version=1.6  301
+/guides/dbt-ecosystem/sl-partner-integration-guide  /docs/use-dbt-semantic-layer/avail-sl-integrations 301
+/docs/use-dbt-semantic-layer/dbt-semantic-layer /docs/use-dbt-semantic-layer/dbt-sl 301
+/docs/use-dbt-semantic-layer/set-up-semantic-layer /docs/use-dbt-semantic-layer/setup-sl 301
+/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer /docs/use-dbt-semantic-layer/setup-sl 301
+/docs/use-dbt-semantic-layer/quickstart-semantic-layer /docs/use-dbt-semantic-layer/quickstart-sl 301
 
 ## refocus deploy page
 /docs/collaborate/environments/environments-in-dbt /docs/environments-in-dbt 301
@@ -135,7 +151,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
 /docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
 /docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
-/docs/cloud/manage-access/about-access 301 /docs/cloud/manage-access/about-user-access 301
+/docs/cloud/manage-access/about-access /docs/cloud/manage-access/about-user-access 301
 /docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
 /docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
 /docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
@@ -750,6 +766,10 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/getting-help /guides/legacy/getting-help 301
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
+
+/guides/best-practices/environment-setup/1-env-guide-overview /guides/orchestration/set-up-ci/overview 301
+/guides/best-practices/environment-setup/2-one-deployment-environment /guides/orchestration/set-up-ci/in-15-minutes 301
+/guides/best-practices/environment-setup/3-many-deployment-environments /guides/orchestration/set-up-ci/multiple-environments 301
 
 # adapter development docs
 

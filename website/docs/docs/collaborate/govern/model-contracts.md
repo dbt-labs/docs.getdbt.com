@@ -98,7 +98,7 @@ Any model meeting the criteria described above _can_ define a contract. We recom
 
 A model's contract defines the **shape** of the returned dataset. If the model's logic or input data doesn't conform to that shape, the model does not build.
 
-[Tests](docs/build/tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the test. Tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
+[Tests](/docs/build/tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the test. Tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
 
 In some cases, you can replace a test with its equivalent constraint. This has the advantage of guaranteeing the validation at build time, and it probably requires less compute (cost) in your data platform. The prerequisites for replacing a test with a constraint are:
 - Making sure that your data platform can support and enforce the constraint that you need. Most platforms only enforce `not_null`.

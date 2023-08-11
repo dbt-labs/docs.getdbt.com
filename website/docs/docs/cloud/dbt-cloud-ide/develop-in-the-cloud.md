@@ -6,8 +6,7 @@ sidebar_label: Develop in the IDE
 tags: [IDE]
 ---
 
-The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
-
+The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. 
 
 ## Prerequisites
 
@@ -37,7 +36,7 @@ The Cloud IDE is a powerful tool that can help streamline and govern your data p
 
 All of these [features](#cloud-ide-features) work together to create a powerful editing environment that can help you write and maintain high-quality SQL code in less time. Whether you're a seasoned developer or just starting out, the Cloud IDE has everything you need to be productive, collaborative, and efficient.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right and command/console at the bottom"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right, and command/console at the bottom"/>
 
 ## Cloud IDE features
 
@@ -75,8 +74,8 @@ To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), 
 There are three start-up states when using or launching the Cloud IDE:
 
 - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
--** Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
+- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
 
 ### Work retention
 
@@ -152,7 +151,7 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
 <details>
   <summary>Can I be a contributor to dbt Cloud?</summary>
   <div>
-    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
+    <div>Anyone can contribute to the dbt project. And whether it's a dbt package, a plugin, dbt-core, or this documentation site, contributing to the open-source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and give back to the community. See <a href="https://docs.getdbt.com/community/resources/oss-expectations">Contributing</a> for details on what to expect when contributing to the dbt open source software (OSS). </div>
   </div>
 </details>
 <details>

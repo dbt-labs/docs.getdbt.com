@@ -10,7 +10,7 @@ This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, 
 
 :::info
 
-MetricFlow is a new way to define metrics in dbt and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-semantic-layer). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
+MetricFlow is a new way to define metrics in dbt and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
 
 To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 
@@ -55,7 +55,6 @@ For a semantic model, there are three main pieces of metadata:
 * [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
 
-
 ### Metrics 
 
 Metrics, which is a key concept, are functions that combine measures, constraints, or other mathematical functions to define new quantitative indicators. MetricFlow uses measures and various aggregation types, such as average, sum, and count distinct, to create metrics.  Dimensions add context to metrics and without them, a metric is simply a number for all time. You can define metrics in the same YAML files as your semantic models, or create a new file.
@@ -66,27 +65,24 @@ MetricFlow supports different metric types:
 - [Derived](/docs/build/derived) &mdash; An expression of other metrics, which allows you to do calculations on top of metrics.
 - [Ratio](/docs/build/ratio) &mdash; Create a ratio out of two measures, like revenue per customer.
 - [Simple](/docs/build/simple) &mdash; Metrics that refer directly to one measure. 
+
 ## Use case
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
 
-The following example data schema image shows a number of different types of data tables:
+The following example data is based off the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
 
-- `transactions` is a production data platform export that has been cleaned up and organized for analytical consumption
-- `visits` is a raw event log
-- `stores` is a cleaned-up and fully normalized dimensional table from a daily production database export
-- `products` is a dimensional table that came from an external source such as a wholesale vendor of the goods this store sells.
-- `customers` is a partially denormalized table in this case with a column derived from the transactions table through some upstream process
+- `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
+- `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
 
-![MetricFlow-SchemaExample](/img/docs/building-a-dbt-project/MetricFlow-SchemaExample.jpeg)
+<!-- ![MetricFlow-SchemaExample](/img/docs/building-a-dbt-project/MetricFlow-SchemaExample.jpeg) -->
 
-To make this more concrete, consider the metric `revenue`, which is defined using the SQL expression:
+To make this more concrete, consider the metric `order_total`, which is defined using the SQL expression:
 
-`select sum(price * quantity) as revenue from transactions` 
-
-This expression calculates the total revenue by multiplying the price and quantity for each transaction and then adding up all the results. In business settings, the metric `revenue` is often calculated according to different categories, such as:
-- Time, for example `date_trunc(created_at, 'day')`
-- Product, using `product_category` from the `product` table.
+`select sum(order_total) as order_total from orders` 
+This expression calculates the revenue from each order by summing the order_total column in the orders table. In a business setting, the metric order_total is often calculated according to different categories, such as"
+- Time, for example `date_trunc(ordered_at, 'day')`
+- Order Type, using `is_food_order` dimension from the `orders` table.
 
 ### Calculate metrics
 
@@ -95,21 +91,21 @@ Next, we'll compare how data practitioners currently calculate metrics with mult
 <Tabs>
 <TabItem value="mulqueries" label="Calculate with multiple queries">
 
-The following example displays how data practitioners typically would calculate the revenue metric aggregated. It's also likely that analysts are asked for more details on a metric, like how much revenue came from bulk purchases. 
+The following example displays how data practitioners typically would calculate the order_total metric aggregated. It's also likely that analysts are asked for more details on a metric, like how much revenue came from new customers. 
 
 Using the following query creates a situation where multiple analysts working on the same data, each using their own query method &mdash; this can lead to confusion, inconsistencies, and a headache for data management.
 
 ```sql
 select
-    date_trunc(transactions.created_at, 'day') as day
-  , products.category as product_category
-  , sum(transactions.price * transactions.quantity) as revenue
+    date_trunc('day',orders.ordered_at) as day, 
+    case when customers.first_ordered_at is not null then true else false end as is_new_customer,
+    sum(orders.order_total) as order_total
 from
-  transactions
+  orders
 left join
-  products
+  customers
 on
-  transactions.product_id = products.product_id
+  orders.customer_id = customers.customer_id
 group by 1, 2
 ```
 
@@ -118,126 +114,127 @@ group by 1, 2
 
 > Introducing MetricFlow, a key component of the dbt Semantic Layer 🤩 - simplifying data collaboration and governance.
 
-In the following three example tabs, use MetricFlow to define a semantic model that uses revenue as a metric and a sample schema to create consistent and accurate results &mdash; eliminating confusion, code duplication, and streamlining your workflow.
+In the following three example tabs, use MetricFlow to define a semantic model that uses order_total as a metric and a sample schema to create consistent and accurate results &mdash; eliminating confusion, code duplication, and streamlining your workflow.
 
 <Tabs>
 <TabItem value="example1" label="Revenue example">
 
-In this example, a measure named revenue is defined based on two columns in the `schema.transactions` table. The time dimension `ds` provides daily granularity and can be aggregated to weekly or monthly time periods. Additionally, a categorical dimension called `is_bulk_transaction` is specified using a case statement to capture bulk purchases.
+In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
+
+The time dimension `metric_time` provides daily granularity and can be aggregated to weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
 
 
 ```yaml
 semantic_models:
-  - name: transactions
-    description: "A record for every transaction that takes place. Carts are considered multiple transactions for each SKU."
-    owners: support@getdbt.com
-    model: (ref('transactions'))
+  - name: orders    #The name of the semantic model
+    description: |
+      Model containing order data. The grain of the table is the order id.
+    model: ref('orders') #The name of the dbt model and schema
     defaults:
-        agg_time_dimension: metric_time
-
-  # --- entities ---
-    entities:
-      - name: transaction_id
+      agg_time_dimension: metric_time
+    entities: #Entities. These usually correspond to keys in the table.table.
+      - name: order_id
         type: primary
-      - name: customer_id
+      - name: customer
         type: foreign
-      - name: store_id
-        type: foreign
-      - name: product_id
-        type: foreign
-
-    # --- measures ---
-    measures:
-      - name: revenue
-        description:
-        expr: price * quantity
-        agg: sum
-      - name: quantity
-        description: Quantity of products sold
-        expr: quantity
-        agg: sum
-      - name: active_customers
-        description: A count of distinct customers completing transactions
         expr: customer_id
-        agg: count_distinct
-
-    # --- dimensions ---
-    dimensions:
+    measures:   #Measures. These are the aggregations on the columns in the table.
+      - name: order_total
+        agg: sum
+    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
       - name: metric_time
+        expr: cast(ordered_at as date)
         type: time
-        expr: date_trunc('day', ts)
         type_params:
           time_granularity: day
-      - name: is_bulk_transaction
+      - name: customers
+        defaults: null
+        agg_time_dimension: first_ordered_at
+        description: >
+          Customer dimension table. The grain of the table is one row per
+          customer.
+        model: ref('customers') # The name of the dbt model and schema
+    entities: #Entities. These usually correspond to keys in the table.
+      - name: customer 
+        type: primary
+        expr: customer_id
+    dimensions:
+      - name: is_new_customer
         type: categorical
-        expr: case when quantity > 10 then true else false end
+        expr: case when first_ordered_at is not null then true else false end
+      - name: first_ordered_at
+        type: time
+        type_params:
+          time_granularity: day
+
   ```
 
 </TabItem>
-<TabItem value="example2" label="Product example">
+<TabItem value="example2" label="More dimensions example">
 
-Similarly, you could then add a `products` semantic model on top of the `products` model to incorporate even more dimensions to slice and dice your revenue metric. 
-
-Notice the identifiers present in the semantic models `products` and `transactions`. MetricFlow does the heavy-lifting for you by traversing the appropriate join keys to identify the available dimensions to slice and dice your `revenue` metric. 
+Similarly, you could then add additional dimensions like `is_food_order` to your semantic models to incorporate even more dimensions to slice and dice your revenue order_total. 
 
 ```yaml
 semantic_models:
-  - name: products
-    description: A record for every product available through our retail stores.
-    owners: support@getdbt.com
-    model: ref('products')
-
-  # --- identifiers ---
-    entities:
-      - name: product_id
+  - name: orders
+    description: |
+      Model containing order data. The grain of the table is the order id.
+    model: ref('orders')  #The name of the dbt model and schema
+    defaults:
+      agg_time_dimension: metric_time
+    entities: #Entities. These usually correspond to keys in the table.table.
+      - name: order_id
         type: primary
-
-  # --- dimensions ---
-    dimensions:
-      - name: category
+      - name: customer
+        type: foreign
+        expr: customer_id
+    measures: #Measures. These are the aggregations on the columns in the table.
+      - name: order_total
+        agg: sum
+    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
+      - name: metric_time
+        expr: cast(ordered_at as date)
+        type: time
+        type_params:
+          time_granularity: day
+      - name: is_food_order
         type: categorical
-      - name: brand
-        type: categorical
-      - name: is_perishable
-        type: categorical
-        expr: |
-          category in ("vegetables", "fruits", "dairy", "deli")
 ```
 </TabItem>
 <TabItem value="example3" label="Advanced example">
 
-Imagine an even more difficult metric is needed, like the amount of money earned each day by selling perishable goods per active customer. Without MetricFlow the data practitioner's original SQL might look like this:
+Imagine an even more complex metric is needed, like the amount of money earned each day from food orders from returning customers. Without MetricFlow the data practitioner's original SQL might look like this:
 
 ```sql
 select
-    date_trunc(transactions.created_at, 'day') as day
-  , products.category as product_category
-  , sum(transactions.price * transactions.quantity) as revenue
-  , count(distinct customer_id) as active_customers
-  , sum(transactions.price * transactions.quantity)/count(distinct customer_id) as perishable_revenues_per_active_customer
+    date_trunc('day',orders.ordered_at) as day, 
+    sum(case when is_food_order = true then order_total else null end) as food_order,
+    sum(orders.order_total) as sum_order_total,
+    food_order/sum_order_total
 from
-  transactions
+  orders
 left join
-  products
+  customers
 on
-  transactions.product_id = products.product_id
-where 
-  products.category in ("vegetables", "fruits", "dairy", "deli")
-group by 1, 2
+  orders.customer_id = customers.customer_id
+where
+  case when customers.first_ordered_at is not null then true else false end = true
+group by 1
 ```
 
 MetricFlow simplifies the SQL process via metric YAML configurations as seen below. You can also commit them to your git repository to ensure everyone on the data and business teams can see and approve them as the true and only source of information.
 
 ```yaml
 metrics:
-  - name: perishables_revenue_per_active_customer
-    description: Revenue from perishable goods (vegetables, fruits, dairy, deli) for each active store.
+  - name: food_order_pct_of_order_total
+    description: Revenue from food orders in each store
+    label: "Food % of Order Total"
     type: ratio
     type_params:
-      numerator: revenue
+      numerator: food_order
       denominator: active_customers
     filter: |
-      {{dimension('perishable_goods')}} in ('vegetables',' fruits', 'dairy', 'deli')
+      {{ Dimension('customer__is_new_customer')}} = true
 ```
 </TabItem>
 </Tabs>

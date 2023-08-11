@@ -1,15 +1,12 @@
 ---
-title: "Upgrading to v1.6 (prerelease)"
+title: "Upgrading to v1.6 (latest)"
 description: New features and changes in dbt Core v1.6
 ---
 
-:::warning Prerelease
-
-dbt Core v1.6 is available as a release candidate. [Final release is planned for July 31.](https://github.com/dbt-labs/dbt-core/issues/7990)
-
-Test it out, and [let us know](https://github.com/dbt-labs/dbt-core/issues/new/choose) if you run into any issues!
-
-:::
+dbt Core v1.6 has three significant areas of focus:
+1. Next milestone of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725): improvements to contracts, groups/access, versions; and building blocks for cross-project `ref`
+1. Semantic layer re-launch: dbt Core and [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) integration
+1. Mechanisms to support mature deployment at scale (`dbt clone` and `dbt retry`)
 
 ## Resources
 
@@ -26,7 +23,8 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 - dbt Core v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
 - As part of the Semantic layer re-launch (in beta), the spec for `metrics` has changed significantly. Migration guide coming soon: https://github.com/dbt-labs/docs.getdbt.com/pull/3705
-- Manifest schema version is now v10, reflecting [TODO] changes
+- The manifest schema version is now v10.
+- dbt Labs is ending support for Homebrew installation of dbt-core and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 
@@ -49,8 +47,9 @@ Supported on:
 - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
 - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
 - Snowflake (docs forthcoming)
+- Databricks (docs forthcoming)
 
-Support for BigQuery and Databricks forthcoming.
+Support for BigQuery coming soon.
 
 ### New commands for mature deployment
 
