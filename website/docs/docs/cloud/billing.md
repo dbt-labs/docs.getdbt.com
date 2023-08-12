@@ -66,8 +66,6 @@ Included models that are not consumed do not roll over to future months. You can
 
 `($100 x number of developer seats) + ((models built - 15,000) x $0.01)`
 
-If you cancel your plan, the plan will remain active through the end of the current billing period and may continue to accrue usage. Please review the Managing usage section [#managing-usage] below to avoid further usage accruing. If your account has exceeded the 15,000 included successful models built during the month of cancellation, a usage invoice will be sent the following month.
-
 All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Team Plan, the included model entitlements may be different from what’s reflected above.
 
 :::note Legacy pricing plans
