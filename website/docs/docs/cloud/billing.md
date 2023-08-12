@@ -50,20 +50,25 @@ dbt Cloud offers several [plans](https://www.getdbt.com/pricing) with different 
 
 ### Developer plan billing
 
-Developer plans are free and include one Developer license and 5,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 5,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the dbt Cloud platform is still accessible, and no work will be lost. 
+Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the dbt Cloud platform is still accessible, and no work will be lost.
+
+All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Developer Plan, the included model entitlements may be different from what’s reflected above.
+
 
 ### Team plan billing 
 
-Team customers pay monthly via credit card for seats and usage, and accounts include 20,000 models monthly. Seats are charged upfront at the beginning of the month. If you add seats during the month, seats will be prorated and charged on the same day. Seats removed during the month will be reflected on the next invoice and are not eligible for refunds. You can change the credit card information and the number of seats from the billings section anytime. Accounts will receive one monthly invoice that includes the upfront charge for the seats and the usage charged in arrears from the previous month. 
+Team customers pay monthly via credit card for seats and usage, and accounts include 15,000 models monthly. Seats are charged upfront at the beginning of the month. If you add seats during the month, seats will be prorated and charged on the same day. Seats removed during the month will be reflected on the next invoice and are not eligible for refunds. You can change the credit card information and the number of seats from the billings section anytime. Accounts will receive one monthly invoice that includes the upfront charge for the seats and the usage charged in arrears from the previous month.
 
-Usage is calculated and charged in arrears for the previous month. If you exceed 20,000 models in any month, you will be billed for additional usage on your next invoice. Additional use is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
+Usage is calculated and charged in arrears for the previous month. If you exceed 15,000 models in any month, you will be billed for additional usage on your next invoice. Additional use is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
 
 
-Included models that are not consumed do not roll over to future months. You can estimate your bill with a simple formula: 
+Included models that are not consumed do not roll over to future months. You can estimate your bill with a simple formula:
 
-`($100 x number of developer seats) + ((models built - 20,000) x $0.01)`
+`($100 x number of developer seats) + ((models built - 15,000) x $0.01)`
 
-If you cancel your plan, the plan will remain active through the end of the current billing period and may continue to accrue usage. Please review the Managing usage section [#managing-usage] below to avoid further usage accruing. If your account has exceeded the 20,000 included successful models built during the month of cancellation, a usage invoice will be sent the following month.
+If you cancel your plan, the plan will remain active through the end of the current billing period and may continue to accrue usage. Please review the Managing usage section [#managing-usage] below to avoid further usage accruing. If your account has exceeded the 15,000 included successful models built during the month of cancellation, a usage invoice will be sent the following month.
+
+All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Team Plan, the included model entitlements may be different from what’s reflected above.
 
 :::note Legacy pricing plans
  
