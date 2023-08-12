@@ -96,7 +96,7 @@ metrics: [String!]!
 dimension: String!
 ```
 
-### Metric Query
+### Metric query
 
 ```graphql
 query(
