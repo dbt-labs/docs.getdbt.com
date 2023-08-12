@@ -106,7 +106,7 @@ query(
 ```
 
 
-**Create Query**
+**Create query**
 
 ```graphql
 createQuery(
