@@ -125,7 +125,7 @@ order: [String!] = null
 
 ```graphql
 compileSqlFromJinja(
-		environmentId: BigIn!
+		environmentId: BigInt!
 		query: String!
 ): CompileSqlFromJinjaResult!
 ```
