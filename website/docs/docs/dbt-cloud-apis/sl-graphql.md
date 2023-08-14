@@ -100,8 +100,8 @@ dimension: String!
 
 ```graphql
 query(
-		environmentId: BigInt!
-		queryId: String!
+environmentId: BigInt!
+queryId: String!
 ): QueryResult!
 ```
 
@@ -125,8 +125,8 @@ order: [String!] = null
 
 ```graphql
 compileSqlFromJinja(
-		environmentId: BigInt!
-		query: String!
+environmentId: BigInt!
+query: String!
 ): CompileSqlFromJinjaResult!
 ```
 
@@ -134,12 +134,12 @@ compileSqlFromJinja(
 
 ```graphql
 Metric {
-		name: String!
-		description: String
-		type: MetricType!
-		typeParams: MetricTypeParams!
-		filter: WhereFilter
-		dimensions: [Dimension!]!
+	name: String!
+	description: String
+	type: MetricType!
+	typeParams: MetricTypeParams!
+	filter: WhereFilter
+	dimensions: [Dimension!]!
 }
 ```
 
@@ -151,14 +151,14 @@ MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 
 ```graphql
 MetricTypeParams {
-		measure: MetricInputMeasure
-		inputMeasures: [MetricInputMeasure!]!
-		numerator: MetricInput
-		denominator: MetricInput
-		expr: String
-		window: MetricTimeWindow
-		grainToDate: TimeGranularity
-		metrics: [MetricInput!]
+	measure: MetricInputMeasure
+	inputMeasures: [MetricInputMeasure!]!
+	numerator: MetricInput
+	denominator: MetricInput
+	expr: String
+	window: MetricTimeWindow
+	grainToDate: TimeGranularity
+	metrics: [MetricInput!]
 }
 ```
 
@@ -166,7 +166,7 @@ MetricTypeParams {
 
 ```graphql
 WhereFilter {
-		whereSqlTemplate: String!
+	whereSqlTemplate: String!
 }
 ```
 
@@ -174,13 +174,13 @@ WhereFilter {
 
 ```graphql
 Dimension {
-		name: String!
-		qualifiedName: String!
-		description: String
-		type: DimensionType!
-		typeParams: DimensionTypeParams
-		isPartition: Boolean!
-		expr: String
+	name: String!
+	qualifiedName: String!
+	description: String
+	type: DimensionType!
+	typeParams: DimensionTypeParams
+	isPartition: Boolean!
+	expr: String
 }
 ```
 ```
