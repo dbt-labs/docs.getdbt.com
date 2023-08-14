@@ -72,8 +72,8 @@ The **Extended Attributes** text box must contain valid characters only. Any inv
 
 If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the profiles.yml attributes. For each individual attribute:
 
-- If the key exists in another source (such as your project settings), it will replace its value in the profile.
-- If the key doesn't exist, it will add the key or value pair to the profile. 
+- If the attribute exists in another source (such as your project settings), it will replace its value in the profile.
+- If the attribute doesn't exist, it will add the attribute or value pair to the profile. 
 
 The following code is an example of the types of attributes you can add to the **Extended Attributes** text box:
 
@@ -81,7 +81,6 @@ The following code is an example of the types of attributes you can add to the *
 type: postgres      
 host: localhost      
 user: alice      
-password: <your_password>      
 port: 5432      
 dbname: jaffle_shop      
 schema: dbt_alice      
