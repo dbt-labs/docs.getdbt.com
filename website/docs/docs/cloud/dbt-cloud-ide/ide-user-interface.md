@@ -59,7 +59,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 
    - **Version Control Options menu &mdash;** Below the Git Actions button, the **Changes** section, which lists all file changes since the last commit. You can click on a change to open the Git Diff View to see the inline changes. You can also right-click any file and use the file-specific options in the Version Control Options menu.
 
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title=" Right-click edited files to access Version Control Options menu"/>
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/version-control-options-menu.png" width="30%" title="Right-click edited files to access Version Control Options menu"/>
 
 ## Additional editing features
 
