@@ -2,8 +2,12 @@
 resource_types: [models]
 datatype: list
 required: no
+keyword: governance, model version, model versioning, dbt model versioning
 ---
 
+import VersionsCallout from '/snippets/_version-callout.md';
+
+<VersionsCallout />
 
 <File name='models/<schema>.yml'>
 

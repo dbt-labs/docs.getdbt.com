@@ -303,7 +303,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
 6. Click **Create**.
 7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
-8. Click the application you just created and follow the instructions for configuring it in [Configuring SAML endpoints in AD](#configuring-saml-endpoints-in-ad).
+8. Click the application you just created.
 9. Select **Single sign-on** under Manage in the left navigation.
 10. Click **Set up single sign on** under Getting Started.
 11. Click **SAML** in "Select a single sign-on method" section.
