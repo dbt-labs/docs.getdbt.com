@@ -70,7 +70,7 @@ The **Extended Attributes** text box must contain valid characters only. Any inv
 - `+` (plus sign)
 - `%` (percentage sign)
 
-If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the keys. For each individual key:
+If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the profiles.yml attributes. For each individual attribute:
 
 - If the key exists in another source (such as your project settings), it will replace its value in the profile.
 - If the key doesn't exist, it will add the key or value pair to the profile. 
