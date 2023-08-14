@@ -109,7 +109,7 @@ The console section, located below the File editor, includes various console tab
 
 ## Invocation history
 
-The Invocation History Drawer stores information on dbt invocations in the IDE. When you invoke a command (like executing a dbt command such as `dbt run`), the associated logs are displayed in the Invocation History Drawer. 
+The Invocation History Drawer stores information on dbt invocations in the IDE. When you invoke a command, like executing a dbt command such as `dbt run`, the associated logs are displayed in the Invocation History Drawer. 
 
 You can open the drawer in multiple ways: 
 - Clicking the `^` icon next to the Command bar on the lower left of the page
