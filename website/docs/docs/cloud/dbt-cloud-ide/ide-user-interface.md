@@ -84,9 +84,16 @@ The console section, located below the File editor, includes various console tab
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-console-overview.jpg" width="100%" title="The Console section is located below the File editor and has various tabs and buttons to help execute tasks"/>
 
 1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the Results console tab. 
-   * **500-row limit:** To prevent the IDE from returning too much data and causing browser problems, dbt automatically sets a 500-row limit when using the **Preview Button**. You can modify this by adding `limit your_number` at the end of your SQL statement. For example, `SELECT * FROM` table `limit 100` will return up to 100 rows. Remember that you must write the `limit your_number` explicitly and cannot derive it from a macro.
-   * **Change row limit default:** In dbt version 1.6 or higher, you have the ability to change the default limit of 500 rows shown in the **Results** tab when you run a query. To adjust the setting you can click on **Change row display** next to the displayed rows. Keep in mind that you can't set it higher than 10,000 rows. If you refresh the page or close your development session, the default limit will go back to 500 rows.
-   * **Specify records returned:** The IDE also supports `SELECT TOP #`, which specifies the number of records to return.
+
+<details>
+<summary>Row limits in IDE</summary>
+The dbt Cloud IDE returns default row limits, however, you can also specify the number of records returned. Refer to the following sub-bullets for more info: <br /><br />
+<ul>
+<li><b>500-row limit:</b> To prevent the IDE from returning too much data and causing browser problems, dbt automatically sets a 500-row limit when using the <b>Preview Button</b>. You can modify this by adding <code>limit your_number</code> at the end of your SQL statement. For example, <code>SELECT * FROM</code> table <code>limit 100</code> will return up to 100 rows. Remember that you must write the <code>limit your_number</code> explicitly and cannot derive it from a macro.</li>
+<li><b>Change row limit default:</b> In dbt version 1.6 or higher, you have the ability to change the default limit of 500 rows shown in the **Results** tab when you run a query. To adjust the setting you can click on <b>Change row display</b> next to the displayed rows. Keep in mind that you can't set it higher than 10,000 rows. If you refresh the page or close your development session, the default limit will go back to 500 rows.</li>
+<li><b>Specify records returned:</b> The IDE also supports <code>SELECT TOP #</code>, which specifies the number of records to return.</li>
+</ul>
+</details>
 
 2. **Compile button &mdash;** The Compile button compiles the SQL code from the active File Editor, irrespective of its save status, and outputs it to the Compiled Code tab.
 
