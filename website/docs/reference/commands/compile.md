@@ -68,7 +68,7 @@ select * from renamed
 
 The command accesses the data platform to cache-related metadata, and to run introspective queries. Use the flags:
 - `--no-populate-cache` to disable the initial cache population. If metadata is needed, it will be a cache miss, requiring dbt to run the metadata query. This is a `dbt` flag. 
-- `--no-introspect` to disable [introspective queries](/faqs/warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one. This is a `dbt compile` flag.
+- `--no-introspect` to disable [introspective queries](/faqs/warehouse/db-connection-dbt-compile#introspective-queries). dbt will raise an error if a model's definition requires running one. This is a `dbt compile` flag, which means you need to add `dbt compile` as a prefix: `dbt compile --no-introspect`.
 
 
 ### FAQs
