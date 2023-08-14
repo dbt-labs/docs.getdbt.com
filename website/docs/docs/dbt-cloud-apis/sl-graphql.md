@@ -30,7 +30,7 @@ dbt Partners can use the Semantic Layer GraphQL API to build and integration wit
 - A dbt cloud project on dbt v1.6 or higher
 - Metrics are defined and configured
 - A dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) that has Semantic Layer access
-- Connection to the data warehouse is configured in the project
+- Your dbt project is configured and connected to a data platform
 
 
 ## Using the GraphQL API
