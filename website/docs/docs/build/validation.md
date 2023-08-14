@@ -18,7 +18,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 ## Validations command
 
-You can run validations from the CLI with the following commands:
+You can run validations from the CLI with the following [MetricFlow commands](/docs/build/metricflow-cli):
 
 ```bash
 mf validate-configs

@@ -6,8 +6,7 @@ sidebar_label: Develop in the IDE
 tags: [IDE]
 ---
 
-The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
-
+The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. 
 
 ## Prerequisites
 
@@ -55,7 +54,7 @@ To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), 
 | **File state indicators**  |  Ability to see when changes or actions have been made to the file. The indicators **M, D, A,** and **•** appear to the right of your file or folder name and indicate the actions performed: <br /> <br /> - Unsaved **(•)** &mdash; The IDE detects unsaved changes to your file/folder<br /> - Modification **(M)** &mdash; The IDE detects a modification of existing files/folders<br /> - Added **(A)** &mdash; The IDE detects added files<br/> - Deleted **(D)** &mdash; The IDE detects deleted files.
 | **IDE version control** | The IDE version control section and git button allow you to apply the concept of [version control](/docs/collaborate/git/version-control-basics) to your project directly into the IDE. <br /><br /> - Create or change branches<br /> - Commit or revert individual files by right-clicking the edited file<br /> - [Resolve merge conflicts](/docs/collaborate/git/merge-conflicts)<br /> - Execute git commands using the git button <br /> - Link to the repo directly by clicking the branch name |
 | **Project documentation** | Generate and view your [project documentation](/docs/collaborate/build-and-view-your-docs) for your dbt project in real-time. You can inspect and verify what your project's documentation will look like before you deploy your changes to production. |
-| **Preview and Compile button** | You can run your code against your data platform by clicking the **Preview**. Use the **Compile** button in the IDE to generate executable SQL, which occurs locally within dbt. |
+| **Preview and Compile button** | You can run your code against your data platform by clicking the [**Preview**](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section). Use the [**Compile**](/docs/cloud/dbt-cloud-ide/ide-user-interface#console-section) button in the IDE to generate executable SQL, which occurs locally within dbt. |
 | **Build, test, and run button**  | Build, test, and run your project with a button click or by using the Cloud IDE command bar.  
 | **Command bar** | You can enter and run commands from the command bar at the bottom of the IDE. Use the [rich model selection syntax](/reference/node-selection/syntax) to execute [dbt commands](/reference/dbt-commands) directly within dbt Cloud. You can also view the history, status, and logs of previous runs by clicking History on the left of the bar.
 | **Drag and drop**  | Drag and drop files located in the file explorer, and use the file breadcrumb on the top of the IDE for quick, linear navigation. Access adjacent files in the same file by right-clicking on the breadcrumb file.  
@@ -75,7 +74,7 @@ To stay informed on IDE updates, read [dbt Cloud IDE release notes](/tags/ide), 
 There are three start-up states when using or launching the Cloud IDE:
 
 - **Creation start &mdash;** This is the state where you are starting the IDE for the first time. You can also view this as a *cold start* (see below), and you can expect this state to take longer because the git repository is being cloned.
-- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity with the rpc server. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
+- **Cold start &mdash;** This is the process of starting a new develop session, which will be available for you for three hours. The environment automatically turns off three hours after the last activity. This includes compile, preview, or any dbt invocation, however, it *does not* include editing and saving a file.
 - **Hot start &mdash;** This is the state of resuming an existing or active develop session within three hours of the last activity.
 
 ### Work retention

@@ -63,9 +63,8 @@ There are several illustrative example queries on this page. For more examples, 
 ## Reasonable use
 
 Discovery (GraphQL) API usage is subject to request rate and response size limits to maintain the performance and stability of the metadata platform and prevent abuse.
-- The current request rate limit is 200 requests for a given IP address within a minute. If you exceed this limit, you will receive an HTTP 429 response status.
-- Environment-level endpoints will be subject to response size limits in the future. The depth of the graph should not exceed three levels. A user can paginate up to 500 items per query.
-- Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a dbt Cloud project.
+
+Job-level endpoints are subject to query complexity limits. Nested nodes (like parents), code (like rawCode), and catalog columns are considered as most complex. Overly complex queries should be broken up into separate queries with only necessary fields included. dbt Labs recommends using the environment endpoint instead for most use cases to get the latest descriptive and result metadata for a dbt Cloud project.
 
 ## Retention limits
 You can use the Discovery API to query data from the previous three months. For example, if today was April 1st, you could query data back to January 1st.

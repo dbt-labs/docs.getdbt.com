@@ -13,7 +13,7 @@ The `dbt clone` command clones selected nodes from the [specified state](/refere
 The `clone` command is useful for:
 - blue/green continuous deployment (on data warehouses that support zero-copy cloning tables)
 - cloning current production state into development schema(s)
-- handling incremental models in Slim CI dbt Cloud jobs (on data warehouses that support zero-copy cloning tables)
+- handling incremental models in dbt Cloud CI jobs (on data warehouses that support zero-copy cloning tables)
 - testing code changes on downstream dependencies in your BI tool
 
 ```bash

@@ -8,10 +8,11 @@ id: "overview"
 
 Accounts on the _Team_ and _Enterprise_ plans can query the dbt Cloud APIs.
 
-dbt Cloud provides two APIs:
+dbt Cloud provides the following APIs:
 
 - The [dbt Cloud Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) can be used to administrate a dbt Cloud account.
 - The [dbt Cloud Discovery API](/docs/dbt-cloud-apis/discovery-api) can be used to fetch metadata related to the state and health of your dbt project.
+- The [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) provides multiple API options which allow you to query your metrics defined in the dbt Semantic Layer.
 
 If you want to learn more about webhooks, refer to [Webhooks for your jobs](/docs/deploy/webhooks).
 

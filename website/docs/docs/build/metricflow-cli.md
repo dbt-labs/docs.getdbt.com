@@ -15,6 +15,8 @@ You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#gett
 1. Create or activate your virtual environment.`python -m venv venv`
 2. Run `pip install dbt-metricflow`
 
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+
 The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
 
 # CLI commands
@@ -365,3 +367,11 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 
 </TabItem>
 </Tabs>
+
+## Time granularity
+Optionally, you can specify the time granularity you want your data to be aggregated at by appending two underscores and the unit of granularity you want to `metric_time`, the global time dimension . You can group the granularity by: `day`, `week`, `month`, `quarter`, and `year`. 
+
+Below is an example for querying metric data at a monthly grain:
+```bash
+mf query --metrics revenue --group-by metric_time__month
+```
