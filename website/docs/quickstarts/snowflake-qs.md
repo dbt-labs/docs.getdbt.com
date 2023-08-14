@@ -35,8 +35,8 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
-- [dbt Cloud CI job](/docs/deploy/continuous-integration)
-- [Job triggers](/docs/deploy/job-triggers)
+- [CI jobs](/docs/deploy/continuous-integration)
+- [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 
