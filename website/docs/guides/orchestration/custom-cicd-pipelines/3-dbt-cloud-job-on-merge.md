@@ -1,11 +1,11 @@
 ---
-title: Run a dbt Cloud job on merge
+title: Run a dbt Cloud job on merge 
 id: 3-dbt-cloud-job-on-merge
 ---
 
 This job will take a bit more to setup, but is a good example of how to call the dbt Cloud API from a CI/CD pipeline. The concepts presented here can be generalized and used in whatever way best suits your use case.
 
-The setup below shows how to call the dbt Cloud API to run a job every time there is a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
+The setup below shows how to call the dbt Cloud API to run a job every time there's a push to your main branch (The branch where pull requests are typically merged. Commonly referred to as the main, primary, or master branch, but can be named differently).
 
 
 ### 1. Get your dbt Cloud API key
