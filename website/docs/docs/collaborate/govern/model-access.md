@@ -29,7 +29,7 @@ The two concepts will be closely related, as we develop multi-project collaborat
 
 ## Groups
 
-Models can be grouped under a common designation with a shared owner. For example, you could group together all models owned by a particular team, related to modeling a specific data source (`github`), or 
+Models can be grouped under a common designation with a shared owner. For example, you could group together all models owned by a particular team, or related to modeling a specific data source (`github`).
 
 Why define model `groups`? There are two reasons:
 - It turns implicit relationships into an explicit grouping, with a defined owner. By thinking about the interface boundaries _between_ groups, you can have a cleaner (less entangled) DAG. In the future, those interface boundaries could be appropriate as the interfaces between separate projects.
