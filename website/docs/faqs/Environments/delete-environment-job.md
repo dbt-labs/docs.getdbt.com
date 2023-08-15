@@ -8,16 +8,7 @@ id: delete-environment-job
 
 To delete an environment or job in dbt Cloud, you must have a `developer` [license](/docs/cloud/manage-access/seats-and-users) and have the necessary [access permissions](/docs/cloud/manage-access/about-user-access). 
 
-:::info 📌 Delete a job first before deleting environment
-
-Deleting an environment doesn't automatically delete its associated job(s). If you delete an environment first without deleting the job, you won't be able to delete the job since it's without an environment. 
-
-To completely delete your environment, you _must_:
-1. First delete all jobs associated with that environment,
-2. Then, delete the environment. 
-:::
-
-**Delete a job**
+## Delete a job
 
 To delete a job or multiple jobs in dbt Cloud:
 
@@ -33,9 +24,9 @@ To delete a job or multiple jobs in dbt Cloud:
 
 5. Confirm your action in the **Confirm Delete** pop-up by clicking **Confirm Delete** in the bottom right to delete the job immediately. This action cannot be undone. However, you can create a new job with the same information if the deletion was made in error. 
 
-Refresh the page, and the deleted job should now be gone. If you want to delete multiple jobs, you'll need to perform these steps for each individual job. 
+Refresh the page, and the deleted job should now be gone. If you want to delete multiple jobs, you'll need to perform these steps for each job. 
 
-**Delete an environment**
+## Delete an environment
 
 To delete an environment in dbt Cloud:
 
