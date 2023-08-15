@@ -259,7 +259,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum portti
 Docs content here.
 
 import SetUpPages from '/snippets/_partial-name.md';
-<!-- It is important to leave a blank line or a comment between import and usage, otherwise it won't work -->
+<!-- It's important to leave a blank line or a comment between import and usage, otherwise it won't work -->
 <SetUpPages />
 
 Docs content here.
