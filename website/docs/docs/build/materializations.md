@@ -5,12 +5,13 @@ id: "materializations"
 ---
 
 ## Overview
-<Term id="materialization">Materializations</Term> are strategies for persisting dbt models in a warehouse. There are four types of materializations built into dbt. They are:
+<Term id="materialization">Materializations</Term> are strategies for persisting dbt models in a warehouse. There are five types of materializations built into dbt. They are:
 
 - <Term id="table" />
 - <Term id="view" />
 - incremental
 - ephemeral
+- materialized view
 
 
 ## Configuring materializations
@@ -102,6 +103,38 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
     * very light-weight transformations that are early on in your DAG
     * are only used in one or two downstream models, and
     * do not need to be queried directly
+
+### Materialized View
+
+The `materialized view` materialization allows the creation and maintenance of materialized views
+in the target database. This materialization makes use of the `on_configuration_change` config, which
+aligns with the incremental nature of the namesake database object. This setting tells dbt to attempt to
+make configuration changes directly to the object when possible, as opposed to completely recreating
+the object to implement the updated configuration. Using `dbt-postgres` as an example, indexes can
+be dropped and created on the materialized view without the need to recreate the materialized view itself.
+
+The `on_configuration_change` config has three settings:
+- `apply` (default) &mdash; attempt to update the existing database object if possible, avoiding a complete rebuild
+  - *Note:* if any individual configuration change requires a full refresh, a full refresh be performed in lieu of individual alter statements
+- `continue` &mdash; allow runs to continue while also providing a warning that the object was left untouched
+  - *Note:* this could result in downstream failures as those models may depend on these unimplemented changes
+- `fail` &mdash; force the entire run to fail if a change is detected
+
+Materialized views are a combination of a view and a table, and serve use cases similar to incremental models.
+
+* **Pros:**
+  * Materialized views combine the query performance of a table with the data freshness of a view
+  * Materialized views operate much like incremental materializations, however they are usually
+able to be refreshed on a regular cadence (depending on the database), forgoing the regular refresh
+required with incremental materializations
+  * `dbt run` on materialized views correspond to a code deployment, just like views
+* **Cons:**
+  * Due to the fact that materialized views are more complex database objects, they tend to have
+less configuration options
+  * Materialized views may not be supported by every database platform
+* **Advice:**
+    * Consider materialized views for use cases where incremental models are sufficient, 
+but you want to set the refresh to a schedule instead of running dbt
 
 ## Python materializations
 
