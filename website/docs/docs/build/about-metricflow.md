@@ -147,18 +147,18 @@ semantic_models:
         type: time
         type_params:
           time_granularity: day
-      - name: customers
-        defaults: null
-        agg_time_dimension: first_ordered_at
-        description: >
-          Customer dimension table. The grain of the table is one row per
-          customer.
-        model: ref('customers') # The name of the dbt model and schema
+  - name: customers    #The name of the second semantic model
+    description: >
+      Customer dimension table. The grain of the table is one row per
+        customer.
+    model: ref('customers') #The name of the dbt model and schema
+    defaults:
+      agg_time_dimension: first_ordered_at
     entities: #Entities. These usually correspond to keys in the table.
       - name: customer 
         type: primary
         expr: customer_id
-    dimensions:
+    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
       - name: is_new_customer
         type: categorical
         expr: case when first_ordered_at is not null then true else false end
