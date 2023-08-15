@@ -22,13 +22,13 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 ### Behavior changes
 
 - dbt Core v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
-- As part of the Semantic layer re-launch (in beta), the spec for `metrics` has changed significantly. Migration guide coming soon: https://github.com/dbt-labs/docs.getdbt.com/pull/3705
+- As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch (in beta), the spec for `metrics` has changed significantly. Refer to the [migration guide](/guides/migration/sl-migration) for more info on how to migrate to the re-launched dbt Semantic Layer.
 - The manifest schema version is now v10.
 - dbt Labs is ending support for Homebrew installation of dbt-core and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 
-The [manifest](/reference/artifacts/manifest-json) schema version has updated to `v10`. Specific changes:
+The [manifest](/reference/artifacts/manifest-json) schema version has been updated to `v10`. Specific changes:
 - Addition of `semantic_models` and changes to `metrics` attributes
 - Addition of `deprecation_date` as a model property
 - Addition of `on_configuration_change` as default node configuration (to support materialized views)
