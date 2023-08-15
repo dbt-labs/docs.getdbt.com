@@ -29,7 +29,7 @@ from {{ref('model_a')}}
 
 `ref()` is, under the hood, actually doing two important things. First, it is interpolating the schema into your model file to allow you to change your deployment schema via configuration. Second, it is using these references between models to automatically build the dependency graph. This will enable dbt to deploy models in the correct order when using `dbt run`.
 
-The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [{{ this }}](/reference/dbt-jinja-functions/this) variable.
+The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [{{ this }} variable](/reference/dbt-jinja-functions/this).
 
 ## Advanced ref usage
 
