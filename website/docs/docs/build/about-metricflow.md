@@ -158,7 +158,7 @@ semantic_models:
       - name: customer 
         type: primary
         expr: customer_id
-    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
+    dimensions: # Dimensions are either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
       - name: is_new_customer
         type: categorical
         expr: case when first_ordered_at is not null then true else false end
