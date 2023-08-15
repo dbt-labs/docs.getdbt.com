@@ -30,7 +30,7 @@ Invoking dbt Core jobs through the [BashOperator](https://registry.astronomer.io
 </TabItem>
 </Tabs>
 
-For more details on both of these methods, including example implementations, check out [this guide](https://www.astronomer.io/guides/airflow-dbt).
+For more details on both of these methods, including example implementations, check out [this guide](https://docs.astronomer.io/learn/airflow-dbt-cloud).
 
 ## Azure Data Factory
 
