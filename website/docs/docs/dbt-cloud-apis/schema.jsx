@@ -43,10 +43,8 @@ export const ArgsTable = ({ data, name }) => {
   )
 }
 
-const metadataUrl = 'http://localhost:3333/graphql'
-const metadataBetaUrl = 'http://localhost:3333/beta/graphql'
-// const metadataUrl = 'https://metadata.cloud.getdbt.com/graphql'
-// const metadataBetaUrl = 'https://metadata.cloud.getdbt.com/beta/graphql'
+const metadataUrl = 'https://metadata.cloud.getdbt.com/graphql'
+const metadataBetaUrl = 'https://metadata.cloud.getdbt.com/beta/graphql'
 
 const queryArgsQuery = `{
   __schema {
