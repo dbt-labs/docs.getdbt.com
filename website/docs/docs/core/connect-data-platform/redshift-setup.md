@@ -85,7 +85,7 @@ Click on one of these authentication methods for further details on how to confi
 
 <TabItem value="database">
 
-The following table contains the parameters for database (password-based) connection method.
+The following table contains the parameters for the database (password-based) connection method.
 
 
 | Profile field | Example | Description |
