@@ -61,7 +61,7 @@ Something to note, Extended Attributes doesn't mask secret values. We recommend 
 
 If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
-- If the attribute exists in another source (such as your project settings), it will replace its value (such as environment-level values) in the profile. It also overrides any custom environment variables.
+- If the attribute exists in another source (such as your project settings), it will replace its value (like environment-level values) in the profile. It also overrides any custom environment variables.
 
 - If the attribute doesn't exist, it will add the attribute or value pair to the profile. 
 
