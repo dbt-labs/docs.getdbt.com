@@ -4,25 +4,29 @@ sidebar_label: "Models"
 id: "discovery-schema-models"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 
 The models object allows you to query information about all models in a given job.
 
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
+
+<DiscoveryApiJobDeprecationNotice />
+
 ### Arguments
 
-When querying for `models`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for `models`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
-<ArgsTable queryName="models" />
+<QueryArgsTable queryName="models" />
 
-Below we show some illustrative example queries and outline the schema of this models object.
+Below we show some illustrative example queries and outline the schema of the models object.
 
-### Example Queries
-As we noted above, database, schema, and identifier are all optional arguments.  This means that with this endpoint, you can:
+### Example queries
+The database, schema, and identifier arguments are optional. This means that with this endpoint you can:
 - Find a specific model by providing `<database>.<schema>.<identifier>`
 - Find all of the models in a database and/or schema by providing `<database>` and/or `<schema>`
 
-#### Finding models by their database, schema, and identifier
+#### Find models by their database, schema, and identifier
 The example query below finds a model by its unique database, schema, and identifier.
 
 ```graphql
@@ -33,8 +37,8 @@ The example query below finds a model by its unique database, schema, and identi
 }
 ```
 
-#### Finding models by their schema
-The example query below finds all models in this schema, and their respective execution times.
+#### Find models by their schema
+The example query below finds all models in this schema and their respective execution times.
 
 ```graphql
 {
@@ -47,7 +51,7 @@ The example query below finds all models in this schema, and their respective ex
 
 
 ### Fields
-Models has access to the *same fields* as the [Model node](/docs/dbt-cloud-apis/discovery-schema-model).  The difference is that Models can output a list, so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, etc.
+The models object can access the _same fields_ as the [Model node](/docs/dbt-cloud-apis/discovery-schema-model). The difference is that the models object can output a list so instead of querying for fields for one specific model, you can query for those parameters for all models within a jobID, database, and so on.
 
 When querying for `models`, the following fields are available:
 

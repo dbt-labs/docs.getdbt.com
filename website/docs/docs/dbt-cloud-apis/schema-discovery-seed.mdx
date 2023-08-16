@@ -4,23 +4,25 @@ sidebar_label: "Seed"
 id: "discovery-schema-seed"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 The seed object allows you to query information about a particular seed in a given job.
 
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
+
+<DiscoveryApiJobDeprecationNotice />
+
 ### Arguments
 
-When querying for a `seed`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for a `seed`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
-<ArgsTable queryName="seed" />
+<QueryArgsTable queryName="seed" />
 
-Below we show some illustrative example queries and outline the schema of this seed object.
+Below we show some illustrative example queries and outline the schema of the seed object.
 
-### Example Queries
+### Example query
 
-#### Seed information
-
-The query below pulls relevant information about a given seed. For example, we could see the load time.
+The query below pulls relevant information about a given seed. For instance, you can view the load time.
 
 ```graphql
 {
