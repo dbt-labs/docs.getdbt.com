@@ -48,40 +48,26 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 
 :::important This feature is currently in beta
 
-Extended Attributes is currently in beta for select users and is subject to change.
+Extended Attributes is currently in [beta](/docs/dbt-versions/product-lifecycles?) for select users and is subject to change.
 :::
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
 
-Extended Attributes is a text box extension at the environment level that overrides connection or environment credentials. It accepts any attributes accepted by a dbt adapter in its `profiles.yml`. 
+Extended Attributes is a text box extension at the environment level that overrides connection or environment credentials, including any custom environment variables. It accepts any YAML attributes accepted by a dbt adapter in its `profiles.yml`. 
 
-However, something to note is that it doesn't mask secret values. We recommend avoiding setting secret values to prevent visibility in the text box and logs.
+However, something to note is that it doesn't mask secret values. We recommend avoiding setting secret values to prevent visibility in the text box and logs. 
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/extended-attributes.jpg" width="95%" title="Extended Attributes helps users add profiles.yml attributes to dbt Cloud Environment settings using a free form text box." /> <br />
 
-The **Extended Attributes** text box must contain valid characters only. Any invalid characters will result in an error message. Invalid characters include:
+If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the `profiles.yml` attributes. For each individual attribute:
 
-- `/` (forward slash)
-- `\` (backslash)
-- `$` (dollar sign)
-- `!` (exclamation point)
-- `@` (at sign)
-- `#` (hash) (NEED CONFIRMATION)
-- `+` (plus sign)
-- `%` (percentage sign)
+- If the attribute exists in another source (such as your project settings), it will replace its value in the profile (such as environment-level values). It also overrides any custom environment variables.
 
-If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [orchestrating job runs](/docs/deploy/deployments), Extended Attributes parses through the provided YAML and extracts the profiles.yml attributes. For each individual attribute:
-
-- If the attribute exists in another source (such as your project settings), it will replace its value in the profile.
 - If the attribute doesn't exist, it will add the attribute or value pair to the profile. 
 
 The following code is an example of the types of attributes you can add to the **Extended Attributes** text box:
 
 ```yaml
-type: postgres      
-host: localhost      
-user: alice      
-port: 5432      
 dbname: jaffle_shop      
 schema: dbt_alice      
 threads: 4
