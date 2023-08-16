@@ -52,7 +52,7 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
 
 2. Ensure that your personal [development credentials](https://cloud.getdbt.com/settings/profile/credentials) are set on the project.
 
-3. Navigate to [your profile](https://cloud.getdbt.com/settings/profile) and make sure the "beta features" flag under "Experimental Features" is enabled.
+3. Navigate to [your profile](https://cloud.getdbt.com/settings/profile) and enable the "beta features" flag under "Experimental Features."
 
 4. Create an environment variable with your [dbt cloud API key](https://cloud.getdbt.com/settings/profile#api-access):
 
