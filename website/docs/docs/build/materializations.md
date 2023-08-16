@@ -120,6 +120,13 @@ The `on_configuration_change` config has three settings:
   - *Note:* this could result in downstream failures as those models may depend on these unimplemented changes
 - `fail` &mdash; force the entire run to fail if a change is detected
 
+Materialized views are implemented following this "drop through" life cycle:
+1. If an object does not exist, create a materialized view
+2. If an object exists, other than a materialized view, that object is dropped and replaced with a materialized view
+3. If `--full-refresh` is supplied, replace the materialized view regardless of changes and the `on_configuration_change` setting
+4. If there are no configuration changes, refresh the materialized view
+5. At this point there are configuration changes, proceed according to the `on_configuration_change` setting
+
 Materialized views are a combination of a view and a table, and serve use cases similar to incremental models.
 
 * **Pros:**
