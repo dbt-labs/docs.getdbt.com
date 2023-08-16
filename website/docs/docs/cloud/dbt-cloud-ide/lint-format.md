@@ -63,7 +63,7 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 
 ### Customize linting
 
-SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE.  
+SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE. You can exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2).
 
 To configure your own linting rules:
 
