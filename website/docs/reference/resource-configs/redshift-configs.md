@@ -104,54 +104,57 @@ models:
 
 <VersionBlock firstVersion="1.6">
 
-## Materialized view
+## Materialized Views
 
-The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html) and refreshes them for every subsequent `dbt run` that you execute. For more information, see [Refresh Materialized Views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) in the Redshift docs.
+<Changelog>
 
-Materialized views support the optional configuration `on_configuration_change` with the following values: 
-- `apply` (default) &mdash; attempts to update the existing database object if possible, avoiding a complete rebuild. 
-- `continue` &mdash; allows runs to continue while also providing a warning that the model was not executed
-- `fail` &mdash; forces runs to fail if a change is detected in a materialized view
+  - **v1.6.0:** Introduced support for `materialized_view`
 
-Additionally, you can apply the `auto_refresh` configuration to have Redshift [automatically refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) the materialized view for you. This action can applied without the need to rebuild the materialized view. 
+</Changelog>
 
-You can create a materialized view by editing _one_ of these files:
-- the SQL file for your model
-- the `dbt_project.yml` configuration file
+The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html).
+Redshift-specific configuration includes the typical `dist`, `sort_type`, `sort`, and `backup`.
+For materialized views, there is also the `auto_refresh` setting, which allows Redshift to [automatically refresh](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-refresh.html) the materialized view for you.
+The remaining configuration follows the general [materialized view](/docs/build/materializations#Materialized-View) configuration.
+There are also some limitations that we hope to address in the next version.
 
-The following examples create a materialized view: 
+### Monitored Configuration Changes
 
-<File name='models/YOUR_MODEL_NAME.sql'>
+The settings below are monitored for changes applicable to `on_configuration_change`.
 
-```sql
-{{
-  config(
-    materialized = 'materialized_view',
-    auto_refresh = False,
-    on_configuration_change = 'apply',
-  )
-}}
-```
+#### Dist
 
-</File>
+Changes to `dist` will result in a full refresh. Redshift requires a materialized view to be
+dropped and recreated to apply a change to the `distkey` or `diststyle`.
 
+#### Sort Type, Sort
 
-<File name='dbt_project.yml'>
+Changes to `sort_type` or `sort` will result in a full refresh. Redshift requires a materialized
+view to be dropped and recreated to apply a change to the `sortkey` or `sortstyle`.
 
-```yaml 
-models:
-  path:
-    materialized: materialized_view
-```
-</File>
+#### Backup
+
+Changes to `backup` will result in a full refresh. Redshift requires a materialized
+view to be dropped and recreated to apply a change to the `backup` setting.
+
+#### Auto Refresh
+
+The `auto_refresh` setting can be updated via an `ALTER` statement. This setting effectively toggles
+automatic refreshes on or off. The default setting for this config is off (`False`). If this
+is the only configuration change for the materialized view, dbt will choose to apply
+an `ALTER` statement instead of issuing a full refresh,
 
 ### Limitations
 
-We hope to address the following limitations in a future release.
-#### Changing materialization from "materialized_view" to table or view
+#### Changing materialization from "materialized_view" to "table" or "view"
 
-Swapping a materialized view to a table or view is not supported. You must manually drop the existing materialized view in the data warehouse before calling `dbt run` again.
+Swapping a materialized view to a table or view is not supported.
+You must manually drop the existing materialized view in the data warehouse prior to calling `dbt run`.
+Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
+This would only need to be done once as the existing object would then be a materialized view.
 
-For example, assume that a view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="table"`, they will get an error. The workaround is to execute `DROP MATERIALIZE VIEW my_mv CASCADE` on the data warehouse before trying the model again.
+For example, assume that a materialized view, `my_mv.sql`, has already been materialized to the underlying data platform via `dbt run`.
+If the user changes the model's config to `materialized="table"`, they will get an error.
+The workaround is to execute `DROP MATERIALIZED VIEW my_mv CASCADE` on the data warehouse before trying the model again.
 
 </VersionBlock>
