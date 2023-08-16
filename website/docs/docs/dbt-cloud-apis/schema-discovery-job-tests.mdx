@@ -1,23 +1,18 @@
 ---
 title: "Tests object schema"
 sidebar_label: "Tests"
-id: "discovery-schema-tests"
+id: "discovery-schema-job-tests"
 ---
 
-import { QueryArgsTable, SchemaTable } from "./schema";
+import { NodeArgsTable, SchemaTable } from "./schema";
 
 The tests object allows you to query information about all tests in a given job.
 
-
-import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
-
-<DiscoveryApiJobDeprecationNotice />
-
 ### Arguments
 
-When querying for `tests`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
+When querying for `tests`, the following arguments are available.
 
-<QueryArgsTable queryName="tests" />
+<NodeArgsTable parent="JobNode" name="tests" />
 
 Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the tests object.
 
@@ -27,19 +22,22 @@ The example query below finds all tests in this job and includes information abo
 
 ```graphql
 {
-  tests(jobId: 123) {
-    runId
-    accountId
-    projectId
-    uniqueId
-    name
-    columnName
-    state
+  job(id: 123) {
+    tests {
+      runId
+      accountId
+      projectId
+      uniqueId
+      name
+      columnName
+      state
+    }
   }
 }
 ```
 
 ### Fields
+
 When querying for `tests`, the following fields are available:
 
 <SchemaTable nodeName="TestNode" />
