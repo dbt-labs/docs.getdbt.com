@@ -68,13 +68,8 @@ If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in
 The following code is an example of the types of attributes you can add in the **Extended Attributes** text box:
 
 ```yaml
-snowflake:
-  target: dev
-  outputs:
-    dev:
-      type: snowflake
-      dbname: jaffle_shop      
-      schema: dbt_alice      
-      threads: 4
+dbname: jaffle_shop      
+schema: dbt_alice      
+threads: 4
 ```
 
