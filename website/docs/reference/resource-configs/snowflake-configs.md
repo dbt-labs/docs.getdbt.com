@@ -346,16 +346,30 @@ In the configuration format for the model SQL file:
 
 ## Dynamic Tables
 
+<Changelog>
+
+  - **v1.6.0:** Introduced support for `dynamic_table`
+
+</Changelog>
+
+The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
+This materialization is specific to Snowflake, which means that any model configuration that
+would normally come along for the ride from `dbt-core` (e.g. as with a `view`) may not be available
+for dynamic tables. This gap will decrease in future patches and versions.
+While this materialization is specific to Snowflake, it very much follows the implementation
+of [materialized views](/docs/build/materializations#Materialized-View).
+In particular, dynamic tables have access to the `on_configuration_change` setting.
+There are also some limitations that we hope to address in the next version.
+
 ### Parameters
 
-dbt-snowflake requires the following parameters:
-
+Dynamic tables in `dbt-snowflake` require the following parameters:
 - `target_lag`
 - `snowflake_warehouse`
 - `on_configuration_change`
 
 To learn more about each parameter and what values it can take, see 
-the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table). Note that `downstream` for `target_lag` is not supported. 
+the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
 
 ### Usage
 
@@ -369,13 +383,11 @@ The following examples create a dynamic table:
 <File name='models/YOUR_MODEL_NAME.sql'>
 
 ```sql
-{{
-  config(
+{{ config(
     materialized = 'dynamic_table',
     snowflake_warehouse = 'snowflake_warehouse',
     target_lag = '10 minutes',
-  )
-}}
+) }}
 ```
 
 </File>
@@ -392,13 +404,31 @@ models:
 
 </File>
 
+### Monitored Configuration Changes
+
+The settings below are monitored for changes applicable to `on_configuration_change`.
+
+#### Target Lag
+
+Changes to `target_lag` can be applied via an `ALTER` statement. Refreshing is essentially
+always on for dynamic tables; this setting changes how frequently the dynamic table is updated.
+
+#### Warehouse
+
+Changes to `snowflake_warehouse` can be applied via an `ALTER` statement.
+
 ### Limitations
 
 #### Changing materialization to and from "dynamic_table"
 
-Swapping an already materialized model to be a dynamic table and vice versa. The workaround is manually dropping the existing materialization in the data warehouse before calling `dbt run` again.
+Swapping an already materialized model to be a dynamic table and vice versa.
+The workaround is manually dropping the existing materialization in the data warehouse prior to calling `dbt run`.
+Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
+This would only need to be done once as the existing object would then be a dynamic table.
 
-For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="dynamic_table"`, they will get an error. The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
+If the user changes the model's config to `materialized="dynamic_table"`, they will get an error.
+The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
 
 <File name='my_model.sql'>
 
@@ -411,7 +441,5 @@ For example, assume for the example model below, `my_model`, has already been ma
 ```
 
 </File>
-
-
 
 </VersionBlock>
