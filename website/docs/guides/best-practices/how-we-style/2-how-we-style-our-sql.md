@@ -7,7 +7,8 @@ id: 2-how-we-style-our-sql
 
 - ☁️ Use [SQLFluff](https://sqlfluff.com/) to maintain these style rules automatically.
   - Customize `.sqlfluff` configuration files to your needs.
-  - Reference this [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we use in our own projects.
+  - Refer to our [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we us in our own projects. 
+
   - We also support ignoring files and folders using a standard `.sqlfluffignore` file. Reference these docs for the syntax: [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2)
 - 👻 Use Jinja comments (`{# #}`) for comments that should not be included in the compiled SQL.
 - ⏭️ Use trailing commas.
