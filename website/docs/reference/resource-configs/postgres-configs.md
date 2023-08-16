@@ -113,7 +113,7 @@ models:
 
 <VersionBlock firstVersion="1.6">
 
-## Materialized views
+## Materialized Views
 
 <Changelog>
 
@@ -127,6 +127,8 @@ The remaining configuration follows the general [materialized view](/docs/build/
 There are also some limitations that we hope to address in the next version.
 
 ### Monitored Configuration Changes
+
+The settings below are monitored for changes applicable to `on_configuration_change`.
 
 #### Indexes
 
@@ -144,18 +146,8 @@ The workaround is to manually drop the existing materialization in the data ware
 Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
 This would only need to be done once as the existing object would then be a materialized view.
 
-For example, assume the model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
-If a user changes the model's config to `materialized="materialized_view"`, they will get an error.
+For example, assume a table, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
+If the user changes the model's config to `materialized="materialized_view"`, they will get an error.
 The solution is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
-
-<File name='my_model.sql'>
-
-```yaml
-{{ config(
-    materialized="table" # or any model type eg view, incremental
-) }}
-```
-
-</File>
 
 </VersionBlock>
