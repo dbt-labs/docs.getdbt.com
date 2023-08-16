@@ -4,25 +4,29 @@ sidebar_label: "Sources"
 id: "discovery-schema-sources"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 
 The sources object allows you to query information about all sources in a given job.
 
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
+
+<DiscoveryApiJobDeprecationNotice />
+
 ### Arguments
 
-When querying for `sources`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for `sources`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
-<ArgsTable queryName="sources" />
+<QueryArgsTable queryName="sources" />
 
-Below we show some illustrative example queries and outline the schema of this sources object.
+Below we show some illustrative example queries and outline the schema of the sources object.
 
-### Example Queries
-As we noted above, database, schema, and identifier are all optional arguments.  This means that with this endpoint, you can:
+### Example queries
+The database, schema, and identifier arguments are optional. This means that with this endpoint you can:
 - Find a specific source by providing `<database>.<schema>.<identifier>`
 - Find all of the sources in a database and/or schema by providing `<database>` and/or `<schema>`
 
-#### Finding sources by their database, schema, and identifier
+#### Find sources by their database, schema, and identifier
 The example query below finds a source by its unique database, schema, and identifier.
 
 ```graphql
@@ -33,8 +37,8 @@ The example query below finds a source by its unique database, schema, and ident
 }
 ```
 
-#### Finding sources by their schema
-The example query below finds all sources in this schema, and their respective states (pass, error, fail).
+#### Find sources by their schema
+The example query below finds all sources in this schema and their respective states (pass, error, fail).
 
 ```graphql
 {
@@ -46,7 +50,7 @@ The example query below finds all sources in this schema, and their respective s
 ```
 
 ### Fields
-Sources has access to the *same fields* as the [Source node](/docs/dbt-cloud-apis/discovery-schema-source).  The difference is that Sources can output a list, so instead of querying for fields for one specific source, you can query for those parameters for all sources within a jobID, database, etc.
+The sources object can access the _same fields_ as the [Source node](/docs/dbt-cloud-apis/discovery-schema-source). The difference is that the sources object can output a list so instead of querying for fields for one specific source, you can query for those parameters for all sources within a jobID, database, and so on.
 
 When querying for `sources`, the following fields are available:
 
