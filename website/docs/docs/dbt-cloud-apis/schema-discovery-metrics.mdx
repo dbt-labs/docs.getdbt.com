@@ -4,22 +4,25 @@ sidebar_label: "Metrics"
 id: "discovery-schema-metrics"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 The metrics object allows you to query information about [metrics](/docs/build/metrics).
 
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
+
+<DiscoveryApiJobDeprecationNotice />
+
 ### Arguments
 
-When querying for `metrics`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for `metrics`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
-<ArgsTable queryName="metrics" />
+<QueryArgsTable queryName="metrics" />
 
-Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this metrics object.
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the metrics object.
 
-### Example Queries
-#### Metrics information
+### Example query
 
-The example query returns information about all metrics in this job.
+The example query returns information about all metrics for the given job.
 
 ```graphql
 {
@@ -52,7 +55,7 @@ The example query returns information about all metrics in this job.
 ```
 
 ### Fields
-metrics has access to the *same fields* as the [metric node](/docs/dbt-cloud-apis/discovery-schema-metric).  The difference is that metrics can output a list, so instead of querying for fields for one specific metric, you can query for those parameters for all metrics in a run.
+The metrics object can access the _same fields_ as the [metric node](/docs/dbt-cloud-apis/discovery-schema-metric). The difference is that the metrics object can output a list so instead of querying for fields for one specific metric, you can query for those parameters for all metrics in a run.
 
 When querying for `metrics`, the following fields are available:
 
