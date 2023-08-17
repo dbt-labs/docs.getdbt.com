@@ -54,4 +54,22 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     link="/reference/snowflake-permissions"
     icon="computer"/>
 
+<Card
+    title="Databricks Permissions Artifacts"
+    body="Provides an example Databricks database role permissions."
+    link="/reference/databricks-permissions"
+    icon="computer"/>
+
+<Card
+    title="Redshift Permissions Artifacts"
+    body="Provides an example Redshift database role permissions."
+    link="/reference/redshift-permissions"
+    icon="computer"/>
+
+<Card
+    title="Postgres Permissions Artifacts"
+    body="Provides an example Postgres database role permissions."
+    link="/reference/postgres-permissions"
+    icon="computer"/>
+
 </div>
