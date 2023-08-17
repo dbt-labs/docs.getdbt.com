@@ -97,43 +97,43 @@ Select the adapter-specific tab for more info on adapter-specific constraint sup
 | Constraint type | Support       |
 |:----------------|:-------------|
 | not_null        | 🌕 Supported and enforced     |
-| primary_key     |  🌗 Supported and not enforced  |
+| primary_key     | 🌗 Supported and not enforced  |
 | foreign_key     | 🌗 Supported and not enforced  |
-| unique          | 🌗 supported; not enforced  |
-| check           | 🌑 not supported  |
+| unique          | 🌗 Supported and not enforced  |
+| check           | 🌑 Not supported  |
 
 </TabItem>
 <TabItem value="Snowflake" label="Snowflake">
 
 | Constraint type | Support       |
 |:----------------|:-------------|
-| not_null        | 🌕 supported & enforced     |
-| primary_key     | 🌗 supported; not enforced  |
-| foreign_key     | 🌗 supported; not enforced  |
-| unique          | 🌗 supported; not enforced  |
-| check           | 🌑 not supported |
+| not_null        | 🌕 Supported and enforced     |
+| primary_key     | 🌗 Supported and not enforced  |
+| foreign_key     | 🌗 Supported and not enforced  |
+| unique          | 🌗 Supported and not enforced  |
+| check           | 🌑 Not supported |
 
 </TabItem>
 <TabItem value="BigQuery" label="BigQuery">
 
 | Constraint type | Support       |
 |:-----------------|:-------------|
-| not_null        | 🌕 supported & enforced     |
-| primary_key     | 🌕 supported & enforced     |
-| foreign_key     | 🌕 supported & enforced     |
-| unique          | 🌑 not supported |
-| check           | 🌑 not supported |
+| not_null        | 🌕 Supported and enforced     |
+| primary_key     | 🌕 Supported and enforced     |
+| foreign_key     | 🌕 Supported and enforced     |
+| unique          | 🌑 Not supported |
+| check           | 🌑 Not supported |
 
 </TabItem>
 <TabItem value="Postgres" label="Postgres">
 
 | Constraint type | Support       |
 |:----------------|:-------------|
-| not_null        | 🌕 supported & enforced     |
-| primary_key     | 🌕 supported & enforced  |
-| foreign_key     | 🌕 supported & enforced  |
-| unique          | 🌕 supported & enforced |
-| check           | 🌕 supported & enforced |
+| not_null        | 🌕 Supported and enforced |
+| primary_key     | 🌕 Supported and enforced |
+| foreign_key     | 🌕 Supported and enforced |
+| unique          | 🌕 Supported and enforced |
+| check           | 🌕 Supported and enforced |
 
 </TabItem>
 <TabItem value="Spark" label="Spark">
@@ -142,25 +142,24 @@ Select the adapter-specific tab for more info on adapter-specific constraint sup
 
 | Constraint type | Support       |
 |:----------------|:------------|
-| not_null        | 🌗 supported; not enforced |
-| primary_key     | 🌗 supported; not enforced |
-| foreign_key     | 🌗 supported; not enforced |
-| unique          | 🌗 supported; not enforced |
-| check           | 🌗 supported; not enforced |
+| not_null        | 🌗 Supported and not enforced |
+| primary_key     | 🌗 Supported and not enforced |
+| foreign_key     | 🌗 Supported and not enforced |
+| unique          | 🌗 Supported and not enforced |
+| check           | 🌗 Supported and not enforced |
 
 </TabItem>
 <TabItem value="Databricks" label="Databricks">
 
-```suggestion
 `not_null` and `check` constraints are supported and enforced. Currently,  constraints are enforced only after a model builds. Because of this platform limitation, the constraints are considered `supported` but `not enforced` and not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
-| Constraint type | Support       |
+| Constraint type | Support     |
 |:----------------|:------------|
-| not_null        | 🌗 supported; not enforced |
-| primary_key     | 🌗 supported; not enforced |
-| foreign_key     | 🌗 supported; not enforced |
-| unique          | 🌗 supported; not enforced |
-| check           | 🌗 supported; not enforced |
+| not_null        | 🌗 Supported and not enforced |
+| primary_key     | 🌗 Supported and not enforced |
+| foreign_key     | 🌗 Supported and not enforced |
+| unique          | 🌗 Supported and not enforced |
+| check           | 🌗 Supported and not enforced |
 
 </TabItem>
 </Tabs>
