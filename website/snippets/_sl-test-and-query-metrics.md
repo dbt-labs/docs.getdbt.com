@@ -6,8 +6,6 @@ You can use the **Preview** or **Compile** buttons in the IDE to run semantic va
 
 You can currently only test metrics locally using the MetricFlow CLI. Alternatively, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL. 
 
-
-
 :::
 
 This section will explain how you can test and query metrics locally using the MetricFlow CLI (dbt Cloud IDE support coming soon).
