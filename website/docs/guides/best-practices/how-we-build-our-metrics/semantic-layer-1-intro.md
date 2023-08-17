@@ -1,8 +1,7 @@
 ---
-title: "Intro to the Semantic Layer"
-description: Getting started with the dbt Semantic Layer
-displayText: "dbt Cloud Semantic Layer best practices"
-hoverSnippet: Learn how to get started with the dbt Semantic Layer
+title: "Intro to MetricFlow"
+description: Getting started with the dbt and MetricFlow
+hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
 
 :::tip
@@ -13,10 +12,10 @@ Flying cars, hoverboards, and true self-service analytics: this is the future we
 
 ## Learning goals
 
-- ❓ Understand the **purpose and capabilities** of the **dbt Semantic Layer**.
-- 🧱 Familiarity with the core components of the dbt Semantic Layer — **semantic models and metrics** — and how they work together.
+- ❓ Understand the **purpose and capabilities** of the **dbt Semantic Layer**, particularly MetricFlow as the engine that powers it.
+- 🧱 Familiarity with the core components of MetricFlow — **semantic models and metrics** — and how they work together.
 - 🛠️ Hands-on **experience building** semantic models and metrics in dbt Cloud.
-- 🔁 Know how to **refactor** models into the Semantic Layer.
+- 🔁 Know how to **refactor** models for MetricFlow.
 - 🏅 Aware of new **best practices** to take maximum advantage of the Semantic Layer.
 
 ## Guide structure overview
@@ -31,3 +30,9 @@ We'll work through our learning goals via an [example project](https://github.co
 6. Review **best practices**.
 
 If you're ready to ship your users more power with less code, let's dive in!
+
+:::info
+MetricFlow is a new way to define metrics in dbt and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for dbt semantic models and metrics.
+
+To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
+:::

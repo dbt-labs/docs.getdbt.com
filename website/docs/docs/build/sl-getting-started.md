@@ -20,7 +20,7 @@ To fully experience the power of a universal dbt Semantic Layer, take the follow
 
 - [Create a semantic model](#create-a-semantic-model) with MetricFlow
 - [Define metrics](#define-metrics) with MetricFlow
-- [Test and query metrics](#test-and-query-metrics) with MetricFlow
+- [Test and query metrics locally](#test-and-query-metrics) with MetricFlow
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud
 - [Connect to and query the API](#connect-and-query-api) with dbt Cloud
@@ -29,7 +29,7 @@ To fully experience the power of a universal dbt Semantic Layer, take the follow
 
 - Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
 - Have both your production and development environments running dbt version 1.6 or higher. Refer to [upgrade in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) for more info.
-- Use Snowflake, BigQuery, Databricks, or Redshift data platform
+- Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (CLI only), or Redshift. (dbt Cloud Postgres support coming soon)
 - A successful run in the environment where your Semantic Layer is configured
 - To query with dbt Cloud:
   * Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America (Other regions coming soon)
@@ -82,14 +82,14 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query API
 
-You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer.
+You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. In order to do so, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
 
-To connect and query your metrics using the dbt Semantic Layer and its API:
+- <span>To learn how to use the JDBC API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
 
-1. <span>Refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC. 
-2. Once you've connected to the API, you should then set up and query metrics in your downstream tool of choice.
+    * To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions.
+    * Refer to the [SQL query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.  
 
-Refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+- To learn more about the sophisticated integrations that connect to the dbt Semantic Layer, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
 
 ## FAQs
 
@@ -109,8 +109,11 @@ User data passes through the Semantic Layer on its way back from the warehouse. 
 <summary>Is the dbt Semantic Layer open source?</summary>
 The dbt Semantic Layer is proprietary, however, some components of the dbt Semantic Layer are open source, like dbt-core and MetricFlow. <br /><br />The universal dbt Semantic Layer is available to all Team and Enterprise Plans during public beta. Users on dbt Cloud Developer plans or dbt Core users can use MetricFlow to only define and test metrics locally.</details>
 
-## Related docs
+## Next steps
 
-- [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
-- [The dbt Semantic Layer: what’s next](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/) blog post
+Review the following documents to learn more and get started:
+
 - [About MetricFlow](/docs/build/about-metricflow)
+- [Build your metrics](/docs/build/build-metrics-intro)
+- [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
+- [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)

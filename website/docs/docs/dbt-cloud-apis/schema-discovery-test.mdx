@@ -4,22 +4,25 @@ sidebar_label: "Test"
 id: "discovery-schema-test"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
 The test object allows you to query information about a particular test.
 
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
+
+<DiscoveryApiJobDeprecationNotice />
+
 ### Arguments
 
-When querying for a `test`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for a `test`, the following arguments are available. If you don't include a runId, the API defaults to the most recent run of the specified job:
 
-<ArgsTable queryName="test" />
+<QueryArgsTable queryName="test" />
 
-Below we show some illustrative example queries and outline the schema (all possible fields you can query) of this test object.
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the test object.
 
-### Example Queries
-#### Test result
+### Example query
 
-The example query below outputs information about a test, including the state of the test result. This can be one of, in order of severity, "error", "fail", "warn", "pass."
+The example query below outputs information about a test including the state of the test result. In order of severity, the result can be one of these: "error", "fail", "warn", or "pass".
 
 ```graphql
 {
