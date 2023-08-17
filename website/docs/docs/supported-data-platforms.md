@@ -35,3 +35,6 @@ The following are **Trusted adapters** ✓ you can connect to in dbt Core:
 import AdaptersTrusted from '/snippets/_adapters-trusted.md';
 
 <AdaptersTrusted />
+
+<br/> * Install these adapters using the CLI as they're not currently supported in dbt Cloud. <br />
+

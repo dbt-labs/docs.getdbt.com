@@ -20,7 +20,7 @@ Constraints require the declaration and enforcement of a model [contract](/refer
 Constraints may be defined for a single column, or at the model level for one or more columns. As a general rule, we recommend defining single-column constraints directly on those columns.
 
 The structure of a constraint is:
-- `type` (required): one of `not_null`, `primary_key`, `foreign_key`, `check`, `custom`
+- `type` (required): one of `not_null`, `unique`, `primary_key`, `foreign_key`, `check`, `custom`
 - `expression`: Free text input to qualify the constraint. Required for certain constraint types, and optional for others.
 - `name` (optional): Human-friendly name for this constraint. Supported by some data platforms.
 - `columns` (model-level only): List of column names to apply the constraint over
@@ -53,6 +53,9 @@ models:
         # column-level constraints
         constraints:
           - type: not_null
+          - type: unique
+          - type: foreign_key
+            expression: <other_model_schema>.<other_model_name> (<other_model_column>)
           - type: ...
 ```
 
@@ -350,7 +353,62 @@ models:
 
 </File>
 
-Expected DDL to enforce constraints:
+### Column-level constraint on nested column:
+
+<File name='models/nested_column_constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select
+  'string' as a,
+  struct(
+    1 as id,
+    'name' as name,
+    struct(2 as id, struct('test' as again, '2' as even_more) as another) as double_nested
+  ) as b
+```
+
+</File>
+
+<File name='models/nested_fields.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: nested_column_constraints_example
+    config:
+      contract: 
+        enforced: true
+    columns:
+      - name: a
+        data_type: string
+      - name: b.id
+        data_type: integer
+        constraints:
+          - type: not_null
+      - name: b.name
+        description: test description
+        data_type: string
+      - name: b.double_nested.id
+        data_type: integer
+      - name: b.double_nested.another.again
+        data_type: string
+      - name: b.double_nested.another.even_more
+        data_type: integer
+        constraints: 
+          - type: not_null
+```
+
+</File>
+
+### Expected DDL to enforce constraints:
+
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql

@@ -52,6 +52,10 @@
     title="Azure Synapse*"
     body="<a href='/docs/core/connect-data-platform/azuresynapse-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-synapse><img src=https://badge.fury.io/py/dbt-synapse.svg/><br /> 🚧 Verification in progress"
     icon="rocket"/>
+<Card
+    title="Teradata*"
+    body="<a href='/docs/core/connect-data-platform/teradata-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI  </a> <br /><br /> <a href=https://badge.fury.io/py/dbt-teradata><img src=https://badge.fury.io/py/dbt-teradata.svg/><br />"
+    icon="teradata"/>
 
 </div>
 

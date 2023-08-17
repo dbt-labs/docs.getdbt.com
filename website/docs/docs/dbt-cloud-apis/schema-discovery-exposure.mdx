@@ -4,22 +4,25 @@ sidebar_label: "Exposure"
 id: "discovery-schema-exposure"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
-The exposure object allows you to query information about a particular exposure. You can learn more about exposures [here](/docs/build/exposures).
+The exposure object allows you to query information about a particular exposure. To learn more, refer to [Add Exposures to your DAG](/docs/build/exposures).
+
+import DiscoveryApiJobDeprecationNotice from '/snippets/_discovery_api_job_deprecation_notice.md';
+
+<DiscoveryApiJobDeprecationNotice />
 
 ### Arguments
 
-When querying for an `exposure`, the following arguments are available. Note that if you do not include a runId, it will default to the most recent run of the specified job:
+When querying for an `exposure`, the following arguments are available. If you don't include a `runId`, the API defaults to the most recent run of the specified job:
 
-<ArgsTable queryName="exposure" />
+<QueryArgsTable queryName="exposure" />
 
-Below we show some illustrative example queries and outline the schema of this exposure object.
+Below we show some illustrative example queries and outline the schema of the exposure object.
 
-### Example Queries
-#### Exposure information
+### Example query
 
-The example query below queries information about an exposure, including the owner's name and email, the url, and information about parent sources and parent models.
+The example below queries information about an exposure including the owner's name and email, the URL, and information about parent sources and parent models.
 
 ```graphql
 {

@@ -1,7 +1,12 @@
 ---
 datatype: version
 required: True
+keyword: project version, project versioning, dbt project versioning
 ---
+
+import VersionsCallout from '/snippets/_version-callout.md';
+
+<VersionsCallout />
 
 <VersionBlock firstVersion="1.5">
 
