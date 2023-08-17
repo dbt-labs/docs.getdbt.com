@@ -123,7 +123,7 @@ models:
 
 The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html).
 Indexes are the only configuration that is specific to `dbt-postgres`.
-The remaining configuration follows the general [materialized view](/docs/build/materializations#Materialized-View) configuration.
+The remaining configuration follows the general [materialized view](/docs/build/materializations#materialized-view) configuration.
 There are also some limitations that we hope to address in the next version.
 
 ### Monitored Configuration Changes
