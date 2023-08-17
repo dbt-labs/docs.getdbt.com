@@ -1,13 +1,25 @@
-This section will explain how you can locally test and query metrics. Before you begin, refer to [MetricFlow CLI](/docs/build/metricflow-cli) for instructions on installing it and a reference for the CLI commands.
+:::important Testing and querying metrics in the dbt Cloud IDE not yet supported
 
-:::important
+For public beta, testing or querying metrics in the dbt Cloud IDE isn't supported yet, however support is coming soon. 
 
-- dbt Cloud Team or Enterprise &mdash; For public beta, querying metrics in the dbt Cloud IDE isn't yet supported (Coming soon). You'll still be able to run semantic validation on your metrics in the IDE to ensure they are defined correctly. You can also use the MetricFlow CLI to test and query metrics locally. Alternatively, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL.
+You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. And you can [dynamically query metrics](l#connect-and-query-api) with integrated tools on a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plan using the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview).
 
-- dbt Core or Developer plan &mdash; Users can only test and query metrics manually using the CLI, but won't be able to use the dbt Semantic Layer to dynamically query metrics.
+You can currently only test metrics locally using the MetricFlow CLI. Alternatively, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL. 
+
+
+
 :::
 
-**Query and commit your metrics using the CLI:**
+This section will explain how you can test and query metrics locally using the MetricFlow CLI (dbt Cloud IDE support coming soon).
+
+Before you begin, you'll need to install the [MetricFlow CLI](/docs/build/metricflow-cli) package and make sure you run at least one model.
+### Install MetricFlow
+
+import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
+
+<InstallMetricFlow />
+
+### Query and commit your metrics using the CLI
 
 MetricFlow needs a `semantic_manifest.json` in order to build a semantic graph. To generate a semantic_manifest.json artifact run `dbt parse`. This will create the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt run` before preceding to ensure the data exists in your warehouse.
 
