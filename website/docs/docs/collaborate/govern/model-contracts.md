@@ -88,24 +88,24 @@ When building a model with a defined contract, dbt will do two things differentl
 
 ## Platform constraint support
 
-Adapter-specific constraint support across platforms. 
+Select the adapter-specific tab for more info on adapter-specific constraint support across platforms. 
 
 <Tabs>
 
 <TabItem value="Redshift" label="Redshift">
 
-| constraint type | support       |
+| Constraint type | Support       |
 |:----------------|:-------------|
-| not_null        | 🌕 supported & enforced     |
-| primary_key     | 🌗 supported; not enforced  |
-| foreign_key     | 🌗 supported; not enforced  |
+| not_null        | 🌕 Supported and enforced     |
+| primary_key     |  🌗 Supported and not enforced  |
+| foreign_key     | 🌗 Supported and not enforced  |
 | unique          | 🌗 supported; not enforced  |
 | check           | 🌑 not supported  |
 
 </TabItem>
 <TabItem value="Snowflake" label="Snowflake">
 
-| constraint type | support       |
+| Constraint type | Support       |
 |:----------------|:-------------|
 | not_null        | 🌕 supported & enforced     |
 | primary_key     | 🌗 supported; not enforced  |
@@ -116,7 +116,7 @@ Adapter-specific constraint support across platforms.
 </TabItem>
 <TabItem value="BigQuery" label="BigQuery">
 
-| constraint type | support       |
+| Constraint type | Support       |
 |:-----------------|:-------------|
 | not_null        | 🌕 supported & enforced     |
 | primary_key     | 🌕 supported & enforced     |
@@ -127,7 +127,7 @@ Adapter-specific constraint support across platforms.
 </TabItem>
 <TabItem value="Postgres" label="Postgres">
 
-| constraint type | support       |
+| Constraint type | Support       |
 |:----------------|:-------------|
 | not_null        | 🌕 supported & enforced     |
 | primary_key     | 🌕 supported & enforced  |
@@ -138,9 +138,9 @@ Adapter-specific constraint support across platforms.
 </TabItem>
 <TabItem value="Spark" label="Spark">
 
-`not_null` and `check` constraints are supported and enforced. In the current implementation, however, these constraints are only enforced after a model builds. Due to this platform limitation, these are considered `supported` but `not enforced` and are not a part of the "model contract" since they can't be enforced at build time. This table will be updated as the features evolve.
+`not_null` and `check` constraints are supported and enforced. Currently,  constraints are enforced only after a model builds. Because of this platform limitation, the constraints are considered `supported` but `not enforced` and not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
-| constraint type | support      |
+| Constraint type | Support       |
 |:----------------|:------------|
 | not_null        | 🌗 supported; not enforced |
 | primary_key     | 🌗 supported; not enforced |
@@ -151,9 +151,10 @@ Adapter-specific constraint support across platforms.
 </TabItem>
 <TabItem value="Databricks" label="Databricks">
 
-`not_null` and `check` constraints are supported and enforced. In the current implementation, however, these constraints are only enforced after a model builds. Due to this platform limitation, these are considered `supported` but `not enforced` and are not a part of the "model contract" since they can't be enforced at build time. This table will be updated as the features evolve.
+```suggestion
+`not_null` and `check` constraints are supported and enforced. Currently,  constraints are enforced only after a model builds. Because of this platform limitation, the constraints are considered `supported` but `not enforced` and not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
-| constraint type | support      |
+| Constraint type | Support       |
 |:----------------|:------------|
 | not_null        | 🌗 supported; not enforced |
 | primary_key     | 🌗 supported; not enforced |
