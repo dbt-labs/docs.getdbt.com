@@ -353,7 +353,62 @@ models:
 
 </File>
 
-Expected DDL to enforce constraints:
+### Column-level constraint on nested column:
+
+<File name='models/nested_column_constraints_example.sql'>
+
+```sql
+{{
+  config(
+    materialized = "table"
+  )
+}}
+
+select
+  'string' as a,
+  struct(
+    1 as id,
+    'name' as name,
+    struct(2 as id, struct('test' as again, '2' as even_more) as another) as double_nested
+  ) as b
+```
+
+</File>
+
+<File name='models/nested_fields.yml'>
+
+```yml
+version: 2
+
+models:
+  - name: nested_column_constraints_example
+    config:
+      contract: 
+        enforced: true
+    columns:
+      - name: a
+        data_type: string
+      - name: b.id
+        data_type: integer
+        constraints:
+          - type: not_null
+      - name: b.name
+        description: test description
+        data_type: string
+      - name: b.double_nested.id
+        data_type: integer
+      - name: b.double_nested.another.again
+        data_type: string
+      - name: b.double_nested.another.even_more
+        data_type: integer
+        constraints: 
+          - type: not_null
+```
+
+</File>
+
+### Expected DDL to enforce constraints:
+
 <File name='target/run/.../constraints_example.sql'>
 
 ```sql
