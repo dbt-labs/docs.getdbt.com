@@ -113,7 +113,7 @@ models:
 
 <VersionBlock firstVersion="1.6">
 
-## Materialized Views
+## Materialized views
 
 <Changelog>
 
