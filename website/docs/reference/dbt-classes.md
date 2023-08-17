@@ -199,3 +199,7 @@ The execution of a resource in dbt generates a `Result` object. This object cont
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
 - `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc.
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
+
+import RowsAffected from '/snippets/_run-result.md'; 
+
+<RowsAffected/>

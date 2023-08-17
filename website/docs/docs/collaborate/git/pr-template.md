@@ -72,7 +72,7 @@ https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch
 
 ### BitBucket
 ```
-https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}
+https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}&dest={{destination}}
 ```
 
 ### AWS CodeCommit

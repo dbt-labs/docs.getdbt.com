@@ -16,7 +16,7 @@ meta:
   config_page: '/reference/resource-configs/trino-configs'
 ---
 
-<Snippet src="warehouse-setups-cloud-callout" />
+<Snippet path="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -70,10 +70,10 @@ The following profile fields are always required except for `user`, which is als
 |   `user`   | Format for Starburst Enterprise or Trino: <br/> <ul><li>`user.name`</li><li>`user.name@mydomain.com`</li></ul><br/>Format for Starburst Galaxy:<br/> <ul><li>`user.name@mydomain.com/role`</li></ul> | The username (of the account) to log in to your cluster. When connecting to Starburst Galaxy clusters, you must include the role of the user as a suffix to the username. |
 
 ### Roles in Starburst Enterprise
-<Snippet src="connect-starburst-trino/roles-starburst-enterprise" />
+<Snippet path="connect-starburst-trino/roles-starburst-enterprise" />
 
 ### Schemas and databases
-<Snippet src="connect-starburst-trino/schema-db-fields" />
+<Snippet path="connect-starburst-trino/schema-db-fields" />
 
 ## Additional parameters
 

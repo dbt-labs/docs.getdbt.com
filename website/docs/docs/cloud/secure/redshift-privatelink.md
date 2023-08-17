@@ -11,6 +11,10 @@ AWS provides two different ways to create a PrivateLink VPC endpoint for a Redsh
 
 dbt Cloud supports both types of endpoints, but there are a number of [considerations](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html#managing-cluster-cross-vpc-considerations) to take into account when deciding which endpoint type to use. Redshift-managed provides a far simpler setup with no additional cost, which might make it the preferred option for many, but may not be an option in all environments. Based on these criteria, you will need to determine which is the right type for your system. Follow the instructions from the section below that corresponds to your chosen endpoint type.
 
+:::note Redshift Serverless
+While Redshift Serverless does support Redshift-managed type VPC endpoints, this functionality is not currently available across AWS accounts. Due to this limitation, an Interface-type VPC endpoint service must be used for Redshift Serverless cluster PrivateLink connectivity from dbt Cloud. 
+:::
+
 ## Configuring Redshift-managed PrivateLink
 
 1. On the running Redshift cluster, select the **Properties** tab.
@@ -51,11 +55,19 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
     
     - Target Type: **IP**
 
-        Notes:
-        - Use IP addresses from the Redshift cluster’s **Network Interfaces**, _not_ IPs listed in the **Node IP addresses** section as those can change.
-        <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
+        - **Standard Redshift**
 
-        - There is likely only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will be created for that AZ as well. The NI IP from the original AZ should still work, but the new NI IP can also be added to the Target Group if desired. If adding additional IPs, note that the NLB will need to add the corresponding AZ as well. Once created, the NI(s) shouldn't change (NOTE: this is our observation from testing, but is not officially documented by AWS).
+            - Use IP addresses from the Redshift cluster’s **Network Interfaces** whenever possible. While IPs listed in the **Node IP addresses** section will work, they are also more likely to change.
+            <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink4.png" title="Target type: IP address"/>
+
+            - There will likely be only one Network Interface (NI) to start, but if the cluster fails over to another availability zone (AZ), a new NI will also be created for that AZ. The NI IP from the original AZ will still work, but the new NI IP can also be added to the Target Group. If adding additional IPs, note that the NLB will also need to add the corresponding AZ. Once created, the NI(s) should stay the same (This is our observation from testing, but AWS does not officially document it).
+
+        - **Redshift Serverless**
+
+            - To find the IP addresses for Redshift Serverless instance locate and copy the endpoint (only the URL listed before the port) in the Workgroup configuration section of the AWS console for the instance.
+            <Lightbox src="/img/docs/dbt-cloud/redshiftserverless.png" title="Redshift Serverless endpoint"/>
+
+            - From a command line run the command `nslookup <endpoint>` using the endpoint found in the previous step and use the associated IP(s) for the Target Group.
 
     - Target Group protocol: **TCP** 
 

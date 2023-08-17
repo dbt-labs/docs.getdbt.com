@@ -22,7 +22,7 @@ First, be sure to enable [source freshness](/docs/deploy/source-freshness) in th
 
 In order to set up your dashboard status tile, here is what you need:
 
-1. **Discovery Token.**  You can learn how to set up a Discovery only token [here](/docs/dbt-cloud-apis/service-tokens).
+1. **Metadata Only token.**  You can learn how to set up a Metadata-Only token [here](/docs/dbt-cloud-apis/service-tokens).
 
 2. **Exposure name.** You can learn more about how to set up exposures [here](/docs/build/exposures).
 

@@ -24,4 +24,4 @@ _To learn more about setting up a dbt Cloud single tenant deployment, [please co
 
 ### Available features
 
-<Snippet src="cloud-feature-parity" />
+<Snippet path="cloud-feature-parity" />

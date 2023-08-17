@@ -4,28 +4,34 @@ sidebar_label: "Environment"
 id: "discovery-schema-environment"
 ---
 
-import { ArgsTable, SchemaTable } from "./schema";
+import { QueryArgsTable, SchemaTable } from "./schema";
 
-<Snippet src="discovery-public-preview-banner" />
+<Snippet path="discovery-public-preview-banner" />
 
-This environment object allows you to query information about a particular model based on `environmentId`.
+The environment object allows you to query information about a particular model based on `environmentId`.
 
-The [example query](#example-query) illustrates a few fields you can query in this `environment` object. Refer to [Fields](#fields) to see the entire schema, which provides all possible fields you can query.
+The [Example queries](#example-queries) illustrate a few fields you can query with this `environment` object. Refer to [Fields](#fields) to view the entire schema, which provides all possible fields you can query.
 
 ### Arguments
 
 When querying for `environment`, you can use the following arguments.
 
-<ArgsTable queryName="environment" useBetaAPI />
+<QueryArgsTable queryName="environment" useBetaAPI />
 
+:::caution
 
-### Example Query
+dbt Labs is making changes to the Discovery API. These changes will take effect on August 15, 2023.
 
-You can use your production environment's `id`: 
+The data type `Int` for `id` is being deprecated and will be replaced with `BigInt`. When the time comes, you will need to update your API call accordingly to avoid errors.
+:::
+
+### Example queries
+
+You can use your production environment's `id`:
 
 ```graphql
 query Example {
-	environment(id: 834){ # Get the latest state of the production environment 
+	environment(id: 834){ # Get the latest state of the production environment
 		applied { # The state of an executed node as it exists as an object in the database
 			models(first: 100){ # Pagination to ensure manageable response for large projects
 				edges { node {
@@ -34,8 +40,8 @@ query Example {
 					executionInfo {executeCompletedAt, executionTime}, # Metadata from when the model was built
 					tests {name, executionInfo{lastRunStatus, lastRunError}}, # Latest test results
 					catalog {columns {name, description, type}, stats {label, value}}, # Catalog info
-					ancestors(types:[Source]) {name, ...on SourceAppliedStateNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness } 
-					children {name, resourceType}}} # Immediate dependencies in lineage	
+					ancestors(types:[Source]) {name, ...on SourceAppliedStateNode {freshness{maxLoadedAt, freshnessStatus}}}, # Source freshness }
+					children {name, resourceType}}} # Immediate dependencies in lineage
 				totalCount } # Number of models in the project
 		}
 		definition { # The logical state of a given project node given its most recent manifest generated
@@ -48,12 +54,50 @@ query Example {
 	}
 ```
 
+With the deprecation of the data type `Int` for `id`, below is an example of replacing it with `BigInt`:
+
+```graphql
+query ($environmentId: BigInt!, $first: Int!) {
+  environment(id: $environmentId) {
+    applied {
+      models(first: $first) {
+        edges {
+          node {
+            uniqueId
+            executionInfo {
+              lastRunId
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+```
+
+With the deprecation of `modelByEnvironment`, below is an example of replacing it with `environment`:
+
+```graphql
+query ($environmentId: BigInt!, $uniqueId: String) {
+  environment(id: $environmentId) {
+    applied {
+      modelHistoricalRuns(uniqueId: $uniqueId) {
+        uniqueId
+        executionTime
+        executeCompletedAt
+      }
+    }
+  }
+}
+```
+
 ### Fields
 When querying an `environment`, you can use the following fields.
 
 <SchemaTable nodeName="Environment" useBetaAPI />
 
-When querying the `applied` field of `environment`, you can use the following fields. 
+When querying the `applied` field of `environment`, you can use the following fields.
 <SchemaTable nodeName="AppliedState" useBetaAPI />
 
 When querying the `definition` field of `environment`, you can use the following fields.
