@@ -28,7 +28,7 @@ Refresh the page, and the deleted job should now be gone. If you want to delete 
 
 ## Delete an environment
 
-To delete an environment in dbt Cloud:
+Deleting an environment automatically deletes its associated job(s). If you want to keep those jobs, move them to a different environment first. To delete an environment in dbt Cloud:
 
 1. Click **Deploy** on the navigation header and then click **Environments** 
 2. Select the Environment you want to delete. 
