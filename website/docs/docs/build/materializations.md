@@ -141,7 +141,7 @@ less configuration options
   * Materialized views may not be supported by every database platform
 * **Advice:**
     * Consider materialized views for use cases where incremental models are sufficient, 
-but you want to set the refresh to a schedule instead of running dbt
+but you would like the data platform to manage the incremental logic and refresh.
 
 ## Python materializations
 
