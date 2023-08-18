@@ -124,7 +124,7 @@ The settings below are monitored for changes applicable to `on_configuration_cha
 
 #### Dist
 
-Changes to `dist` will result in a full refresh. Redshift requires a materialized view to be
+Changes to `dist` will result in a full refresh of the existing materialized view (applied at the time of the next `dbt run` of the model). Redshift requires a materialized view to be
 dropped and recreated to apply a change to the `distkey` or `diststyle`.
 
 #### Sort Type, Sort
