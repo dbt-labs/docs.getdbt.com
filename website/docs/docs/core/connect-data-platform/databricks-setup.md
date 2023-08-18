@@ -46,7 +46,7 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
-`dbt-databricks` is the recommend adapter for Databricks. It includes features not available in `dbt-spark`, such as:
+`dbt-databricks` is the recommended adapter for Databricks. It includes features not available in `dbt-spark`, such as:
 - Unity Catalog support
 - No need to install additional drivers or dependencies for use on the CLI
 - Use of Delta Lake for all models out of the box
