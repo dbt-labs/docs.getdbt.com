@@ -126,14 +126,16 @@ The following profile fields are always required.
 
 ## Authentication parameters
 
-The `dbt-databricks` adapter supports both [token-based authentication](/docs/core/connect-data-platform/databricks-setup?tokenoauth=token#examples) and [OAuth client-based authentication](/docs/core/connect-data-platform/databricks-setup?tokenoauth=oauth#examples).  Refer to the following parameters you can use to configure your profile for each type of authentication.
+The `dbt-databricks` adapter supports both [token-based authentication](/docs/core/connect-data-platform/databricks-setup?tokenoauth=token#examples) and [OAuth client-based authentication](/docs/core/connect-data-platform/databricks-setup?tokenoauth=oauth#examples).  
 
-| Field     | Description | Example | Authentication | Type |
-| --------- | ------- | ----------- | ---- | ---- | 
-|  `token`  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  | Token-based  | Required <br /> You don't need to include this value if you're using oauth-based. |
-|  `client_id`  | The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | OAuth-based |  Required  <br /> You don't need to include this value if you're using token-based.|
-|  `client_secret`  | The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  OAuth-based |  Required <br /> You don't need to include this value if you're using token-based.|
-|  `auth_type`  | This type of authorization to connect to Databricks. <br /> | `oauth`  | OAuth-based |  Required <br /> You don't need to include this value if you're using token-based. |
+Refer to the following **required** parameters to configure your profile for each type of authentication:
+
+| Field     | Description | Example | Authentication |
+| --------- | ------- | ----------- | ---- | 
+|  `token`  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  | Token-based  | 
+|  `client_id`  | The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | OAuth-based |  
+|  `client_secret`  | The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  OAuth-based | 
+|  `auth_type`  | This type of authorization to connect to Databricks. <br /> | `oauth`  | OAuth-based |  
 
 ## Additional parameters
 
