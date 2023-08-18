@@ -135,7 +135,7 @@ Refer to the following **required** parameters to configure your profile for eac
 |  `token`  |  Token-based  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |
 |  `client_id`  | OAuth-based |  The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | 
 |  `client_secret`  | OAuth-based |  The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  
-|  `auth_type`  |  OAuth-based |  This type of authorization to connect to Databricks. <br /> | `oauth`  |
+|  `auth_type`  |  OAuth-based |  The type of authorization needed to connect to Databricks. <br /> | `oauth`  |
 
 ## Additional parameters
 
