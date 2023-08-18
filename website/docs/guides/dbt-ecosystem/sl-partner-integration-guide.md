@@ -21,7 +21,7 @@ This is an evolving guide that is meant to provide recommendations based on our 
 
 To build a dbt Semantic Layer integration: 
 
--  Initially, we recommend building an integration with the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) followed by enhancements of additional features. Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API (and will soon offer a GraphQL API). Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
 
 - Familiarize yourself with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
@@ -30,11 +30,9 @@ To build a dbt Semantic Layer integration:
 
 ### Connection parameters
 
-The dbt Semantic Layer authenticates with `environmentId`, `SERVICE_TOKEN`, and `host`.
+The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, and `host`.
 
-This applies to the dbt Semantic Layer APIs, which all currently use different host names. We recommend you provide users with separate input fields with these components (which dbt Cloud provides). 
-
-For [JDBC](/docs/dbt-cloud-apis/sl-jdbc), you can construct the JDBC URL from these inputs. Or, you could request the full URL string.
+We recommend you provide users with separate input fields with these components for authentication (dbt Cloud will surface these parameters for the user). 
 
 
 ## Best practices on exposing metrics:
@@ -114,8 +112,12 @@ For better analysis, it's best to have the context of the metrics close to where
 
 ### A note on transparency and using explain
 
-For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. You can do this by appending `explain=True` to any query. This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly a power user / technical user functionality.
+For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. You can do this by appending `explain=True` to any query. This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly beneficial to a technical user.
 
+
+### A note on Where Filters
+
+In the cases where our APIs support either a string or a filter list for the `where` clause, we always recommend that your application utilizes the filter list in order to gain maximum pushdown benefits. The `where` string may be more intuititive for users writing queries during testing, but it will not have the performance benefits of the filter list in a production environment.
 
 ### Example stages of an integration
 
