@@ -2,7 +2,7 @@ You can set up the dbt Semantic Layer in dbt Cloud at the environment and projec
 
 - You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
 - You must be part of the Owner group, and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) to configure the Semantic Layer:
-    * Enterprise plan &mdash; Owner with a Developer license and assigned Project Creator, Database Admin, or Account Admin permissions.
+    * Enterprise plan &mdash; Owner with a Developer license and assigned Project Creator, Database Admin, Admin, or Account Admin permissions.
     * Team plan &mdash; Owner with a Developer license.
 - You must have a successful run in your new environment.
 
