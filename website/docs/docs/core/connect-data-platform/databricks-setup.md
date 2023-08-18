@@ -128,12 +128,12 @@ The following profile fields are always required.
 
 The `dbt-databricks` adapter supports both [token-based authentication](/docs/core/connect-data-platform/databricks-setup?tokenoauth=token#examples) and [OAuth client-based authentication](/docs/core/connect-data-platform/databricks-setup?tokenoauth=oauth#examples).  Refer to the following parameters you can use to configure your profile for each type of authentication.
 
-| Field     | Description | Example | Type |
+| Field     | Description | Example | Authentication | Type |
 | --------- | ------- | ----------- | ---- | 
-|  `token`  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  | Required if using token-based authentication. |
-|  `client_id`  | The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | Required if using OAuth-based authentication. |
-|  `client_secret`  | The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  Required if using OAuth-based authentication. |
-|  `auth_type`  | This type of authorization to connect to Databricks. <br /> | `oauth`  | Required if using OAuth-based authentication. <br /> You don't need to include this value if you're using token-based authentication. |
+|  `token`  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  | Token-based authentication| Required for token-based authentication. |
+|  `client_id`  | The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | OAuth-based authentication |  Required for OAuth-based authentication. |
+|  `client_secret`  | The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  OAuth-based authentication |  Required for OAuth-based authentication. |
+|  `auth_type`  | This type of authorization to connect to Databricks. <br /> | `oauth`  | OAuth-based authentication |  Required for OAuth-based authentication. <br /> You don't need to include this value if you're using token-based authentication. |
 
 ## Additional parameters
 
