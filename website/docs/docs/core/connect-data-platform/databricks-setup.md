@@ -61,7 +61,7 @@ To connect to a data platform with dbt Core, create appropriate _profile_ and _t
 `dbt-databricks` can connect to Databricks SQL Warehouses and all-purpose clusters. Databricks SQL Warehouses is the recommended way to get started with Databricks.
 
 
-See the [Databricks documentation](https://docs.databricks.com/dev-tools/dbt.html#) on how
+Refer to the [Databricks docs](https://docs.databricks.com/dev-tools/dbt.html#) for more info on how
 to obtain the credentials for configuring your profile.
 
 ## Host parameters
