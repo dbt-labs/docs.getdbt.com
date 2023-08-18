@@ -410,7 +410,7 @@ The settings below are monitored for changes applicable to `on_configuration_cha
 
 #### Target Lag
 
-Changes to `target_lag` can be applied via an `ALTER` statement. Refreshing is essentially
+Changes to `target_lag` can be applied by running an `ALTER` statement. Refreshing is essentially
 always on for dynamic tables; this setting changes how frequently the dynamic table is updated.
 
 #### Warehouse
