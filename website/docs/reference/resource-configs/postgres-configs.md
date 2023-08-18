@@ -143,7 +143,7 @@ directly to the materialized view in place.
 
 Swapping an already materialized model to a materialized view, and vice versa, is not supported.
 The workaround is to manually drop the existing materialization in the data warehouse prior to calling `dbt run`.
-Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
+Running with `--full-refresh` flag will not work to drop the existing table or view and create the materialized view (and vice versa).
 This would only need to be done once as the existing object would then be a materialized view.
 
 For example, assume a table, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
