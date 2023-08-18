@@ -130,10 +130,10 @@ The `dbt-databricks` adapter supports both [token-based authentication](/docs/co
 
 | Field     | Description | Example | Authentication | Type |
 | --------- | ------- | ----------- | ---- | ---- | 
-|  `token`  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  | Token-based authentication | Required for token-based authentication. |
-|  `client_id`  | The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | OAuth-based authentication |  Required for OAuth-based authentication. |
-|  `client_secret`  | The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  OAuth-based authentication |  Required for OAuth-based authentication. |
-|  `auth_type`  | This type of authorization to connect to Databricks. <br /> | `oauth`  | OAuth-based authentication |  Required for OAuth-based authentication. <br /> You don't need to include this value if you're using token-based authentication. |
+|  `token`  | The Personal Access Token (PAT) to connect to Databricks.  | `dapiXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  | Token-based  | Required <br /> You don't need to include this value if you're using oauth-based. |
+|  `client_id`  | The client ID for your Databricks OAuth application.<br />  | `<oauth-client-id>`  | OAuth-based |  Required  <br /> You don't need to include this value if you're using token-based.|
+|  `client_secret`  | The client secret for your Databricks OAuth application. <br />  | `XXXXXXXXXXXXX`<br /> `XXXXXXXXXXXXXX`  |  OAuth-based |  Required <br /> You don't need to include this value if you're using token-based.|
+|  `auth_type`  | This type of authorization to connect to Databricks. <br /> | `oauth`  | OAuth-based |  Required <br /> You don't need to include this value if you're using token-based. |
 
 ## Additional parameters
 
