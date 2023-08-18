@@ -54,7 +54,7 @@ pip is the easiest way to install the adapter:
 - Use of Delta Lake for all models out of the box
 - SQL macros that are optimized to run with [Photon](https://docs.databricks.com/runtime/photon.html)
 
-#### Connecting to Databricks
+## Connecting to Databricks
 
 To connect to a data platform with dbt Core, create the appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Databricks SQL Warehouse/cluster. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more information, refer to [Connection profiles](/docs/core/connect-data-platform/connection-profiles) and [profiles.yml](/docs/core/connect-data-platform/profiles.yml).
 
