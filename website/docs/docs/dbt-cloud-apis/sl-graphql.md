@@ -50,9 +50,11 @@ Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/se
 
 Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and environmentId for authentication.
 
-### Metric metadata calls
+### Output Format
 
-Use the following example calls to provide you with an idea of the types of commands you can use:
+By default, output is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. (Insert the paramater and an example here)
+
+### Metric metadata calls
 
 **Fetch available metrics**
 
@@ -96,7 +98,7 @@ metrics: [String!]!
 dimension: String!
 ```
 
-### Metric query
+### Metric queries
 
 ```graphql
 query(
@@ -114,20 +116,9 @@ environmentId: Int!
 metrics: [String!]!
 dimensions: [String!] = null
 limit: Int = null
-startTime: String = null
-endTime: String = null
-where: String = null
+where: [String] = null
 order: [String!] = null
 ): String
-```
-
-**Compile from Jinja**
-
-```graphql
-compileSqlFromJinja(
-environmentId: BigInt!
-query: String!
-): CompileSqlFromJinjaResult!
 ```
 
 **Metric Types**
@@ -163,12 +154,7 @@ MetricTypeParams {
 ```
 
 **Where filter**
-
-```graphql
-WhereFilter {
-	whereSqlTemplate: String!
-}
-```
+Update to what's decided
 
 **Dimension Types**
 
@@ -186,3 +172,10 @@ Dimension {
 ```
 DimensionType = [CATEGORICAL, TIME]
 ```
+
+### Examples 
+
+(insert examples akin to JDBC once we finalize format)
+
+
+
