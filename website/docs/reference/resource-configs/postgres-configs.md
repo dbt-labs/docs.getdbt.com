@@ -146,7 +146,7 @@ The workaround is to manually drop the existing materialization in the data ware
 Running with `--full-refresh` flag will not work to drop the existing table or view and create the materialized view (and vice versa).
 This would only need to be done once as the existing object would then be a materialized view.
 
-For example, assume a table, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
+For example,`my_model`, has already been materialized as a table in the underlying data platform via `dbt run`.
 If the user changes the model's config to `materialized="materialized_view"`, they will get an error.
 The solution is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
 
