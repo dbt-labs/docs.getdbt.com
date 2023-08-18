@@ -138,7 +138,7 @@ To query metric values, here are the following parameters that are available:
 | `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | Required    |
 | `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`     | Optional   |
 | `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
-| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
+| `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
 | `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
@@ -215,21 +215,33 @@ select * from {{
 
 ### Query with where filters
 
-Where filters have three components: 
+Where filters in API allow for a filter list or string. We recommend using the filter list for production application as this format will realize all benefits from predicate pushdown where possible. 
 
-- `TimeDimension()` is used for any time dimension and requires a granularity argument - `TimeDimension('metric_time', 'DAY')`
+Where Filters have a few objects that can be used:
 
-- `Dimension()` - This is used for any categorical dimensions - `Dimension('customer__country')`
+- `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
 - `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
 
-Use the following example to query using a `where` filter:
+Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension` to separate out categorical dimensions from time ones. The `TimeDimesion` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
+
+Use the following example to query using a `where` filter using the string format:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
+where="{{ Dimension('metric_time'.grain('month') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
+}}
+```
+
+Use the following example to query using a `where` filter with a filter list format:
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
+where=[{{ Dimension('metric_time'.grain('month') }} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
 }}
 ```
 
