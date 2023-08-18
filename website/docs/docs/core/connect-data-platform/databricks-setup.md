@@ -46,7 +46,7 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
 
-`dbt-databricks` is the recommend adapter for Databricks
+`dbt-databricks` is the recommend adapter for Databricks.
 
 `dbt-databricks` includes features not available in `dbt-spark`:
 - Unity Catalog support
@@ -54,9 +54,9 @@ pip is the easiest way to install the adapter:
 - Use of Delta Lake for all models out of the box
 - SQL macros that are optimized to run with [Photon](https://docs.databricks.com/runtime/photon.html)
 
-### Connecting to Databricks
+#### Connecting to Databricks
 
-To connect to a data platform with dbt Core, create appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Starburst/Trino clusters. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more information, refer to [Connection profiles](/docs/core/connect-data-platform/connection-profiles) and [profiles.yml](/docs/core/connect-data-platform/profiles.yml).
+To connect to a data platform with dbt Core, create the appropriate _profile_ and _target_ YAML keys/values in the `profiles.yml` configuration file for your Databricks SQL Warehouse/cluster. This dbt YAML file lives in the  `.dbt/` directory of your user/home directory. For more information, refer to [Connection profiles](/docs/core/connect-data-platform/connection-profiles) and [profiles.yml](/docs/core/connect-data-platform/profiles.yml).
 
 `dbt-databricks` can connect to Databricks SQL Warehouses and all-purpose clusters. Databricks SQL Warehouses is the recommended way to get started with Databricks.
 
@@ -76,7 +76,7 @@ The following profile fields are always required.
 
 ## Authentication parameters
 
-The `dbt-databricks` adapter supports both token-based authentication and OAuth client authentication. 
+The `dbt-databricks` adapter supports both token-based authentication and OAuth client-based authentication. 
 
 | Field     | Example | Description |
 | --------- | ------- | ----------- |
@@ -118,7 +118,7 @@ your_profile_name:
 
 </File>
 
-#### Example profiles.yml for OAuth-based authentication
+#### Example profiles.yml for OAuth client-based authentication
 
 <File name='~/.dbt/profiles.yml'>
 
