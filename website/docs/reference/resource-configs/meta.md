@@ -154,7 +154,6 @@ macros:
 
     arguments:
       - name: argument_name
-        meta: {<dictionary>}
 
 ```
 
