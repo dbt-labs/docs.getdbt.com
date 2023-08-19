@@ -59,11 +59,13 @@ version: 2
 
 sources:
   - name: model_name
-    meta: {<dictionary>}
+    config:
+      meta: {<dictionary>}
 
     tables:
       - name: table_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>}
 
         columns:
           - name: column_name
