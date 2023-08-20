@@ -24,15 +24,8 @@ brew install dbt-cloud-cli
 Verify the installation:
 
 ```bash
-which dbt
+which dbt  -- Should return your homebrew install path, not your dbt core installs. If not, you'll need to modify your PATH in ~.zshrc or create an alias.
 dbt --help
-```
-
-#### Upgrade the CLI with Brew
-
-```bash
-brew update
-brew upgrade dbt-cloud-cli
 ```
 
 ### Manually install (Windows and Linux)
@@ -79,8 +72,8 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
    > $ cd ~/dbt-projects/jaffle_shop
 ```
 
-7. Ensure that a `dbt_cloud.yml` file exists in the project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary):
-You can find your project ID by selecting your project and clicking on **documentation** in the navigation bar. Your project ID is the number in the URL: https://cloud.getdbt.com/documentation/1/projects/{project id}.
+7. Create a dbt_cloud.yml in the root project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary):
+
 ```bash
 > $ pwd
 /Users/user/dbt-projects/jaffle_shop
@@ -89,14 +82,17 @@ You can find your project ID by selecting your project and clicking on **documen
 project-id: '123456'
 ```
 
-8. The following commands are supported as of now (we will be adding more in the future):
+You can find your project ID by selecting your project and clicking on **develop** in the navigation bar. Your project ID is the number in the URL: https://cloud.getdbt.com/develop/26228/projects/__{project id}__.
 
-- `dbt run`
-- `dbt build`
-- `dbt deps`
-- `dbt cancel`
-- `dbt reattach`
-- `dbt --help`
+If dbt_cloud.yml already exists, edit it to ensure you have a project-id field with a valid project ID.
+
+
+#### Upgrade the CLI with Brew
+
+```bash
+brew update
+brew upgrade dbt-cloud-cli
+```
 
 ## Using dbt Cloud CLI
 
