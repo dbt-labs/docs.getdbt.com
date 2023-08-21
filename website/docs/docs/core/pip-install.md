@@ -17,7 +17,7 @@ We recommend using virtual environments to namespace pip modules. To create a ne
 python3 -m venv dbt-env				# create the environment
 ```
 
-If you install dbt in a virtual environment, you need to reactivate that same virtual environment each time you create a shell window or session.
+2. Activate that same virtual environment each time you create a shell window or session:
 
 ```shell
 source dbt-env/bin/activate			# activate the environment for Mac and Linux OR
