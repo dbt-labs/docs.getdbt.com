@@ -27,7 +27,11 @@ dbt-env\Scripts\activate			# activate the environment for Windows
 :::tip
 You can create an alias for the source command in your $HOME/.bashrc, $HOME/.zshrc, or whichever rc file your shell draws from. 
 
-For example, you can add a command like alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate', replacing <PATH_TO_VIRTUAL_ENV_CONFIG> with the path to your virtual environment configuration.
+For example, add the following, replacing <PATH_TO_VIRTUAL_ENV_CONFIG> with the path to your virtual environment configuration.
+
+```shell
+alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
+```
 :::
 
 ### Installing the adapter
