@@ -5,14 +5,32 @@ description: "You can use pip to install dbt Core and adapter plugins from the c
 
 You need to use `pip` to install dbt Core on Windows or Linux operating systems. You can use `pip` or [Homebrew](/docs/core/homebrew-install) for installing dbt Core on a MacOS. 
 
-You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/). We recommend using virtual environments when installing with `pip`.
-
+You can install dbt Core and plugins using `pip` because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/).
 
 <FAQ path="Core/install-pip-os-prereqs" />
 <FAQ path="Core/install-python-compatibility" />
-<FAQ path="Core/install-pip-best-practices" />
 
+### Using virtual environments
+We recommend using virtual environments to namespace pip modules. To create a new venv:
 
+```shell
+python3 -m venv dbt-env				# create the environment
+```
+
+If you install dbt in a virtual environment, you need to reactivate that same virtual environment each time you create a shell window or session.
+
+```shell
+source dbt-env/bin/activate			# activate the environment for Mac and Linux OR
+dbt-env\Scripts\activate			# activate the environment for Windows
+```
+
+:::tip
+You can create an alias for the source command in your $HOME/.bashrc, $HOME/.zshrc, or whichever rc file your shell draws from. 
+
+For example, you can add a command like alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate', replacing <PATH_TO_VIRTUAL_ENV_CONFIG> with the path to your virtual environment configuration.
+:::
+
+### Installing the adapter
 Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For example, if using Postgres:
 
 ```shell
