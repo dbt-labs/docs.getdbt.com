@@ -88,78 +88,84 @@ When building a model with a defined contract, dbt will do two things differentl
 
 ## Platform constraint support
 
-Select the adapter-specific tab for more info on adapter-specific constraint support across platforms. 
+Select the adapter-specific tab for more info on adapter-specific constraint support across platforms. Constraints fall into three categories based on support and platform enforcement:
+
+- **Supported and enforced** &mdash; The model won't build if it violates the constraint.
+- **Supported and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if it violates it. It's a constraint for metadata purposes only. This is common for modern cloud data warehouses and less common for legacy databases.
+- **Not supported and not enforced** &mdash; You can't specify the type of constraint for the platform.
+
+
 
 <Tabs>
 
 <TabItem value="Redshift" label="Redshift">
 
-| Constraint type | Support       |
-|:----------------|:-------------|
-| not_null        | 🌕 Supported and enforced     |
-| primary_key     | 🌗 Supported and not enforced  |
-| foreign_key     | 🌗 Supported and not enforced  |
-| unique          | 🌗 Supported and not enforced  |
-| check           | 🌑 Not supported  |
+| Constraint type | Support       | Platform enforcement |
+|:----------------|:-------------|:------------------|
+| not_null        | ✅  Supported | ✅ Enforced     |
+| primary_key     | ✅  Supported | ❌ Not enforced  |
+| foreign_key     | ✅  Supported | ❌ Not enforced  |
+| unique          | ✅  Supported | ❌ Not enforced  |
+| check           | ❌ Not supported | ❌  Not enforced |
 
 </TabItem>
 <TabItem value="Snowflake" label="Snowflake">
 
-| Constraint type | Support       |
-|:----------------|:-------------|
-| not_null        | 🌕 Supported and enforced     |
-| primary_key     | 🌗 Supported and not enforced  |
-| foreign_key     | 🌗 Supported and not enforced  |
-| unique          | 🌗 Supported and not enforced  |
-| check           | 🌑 Not supported |
+| Constraint type | Support      | Platform enforcement |
+|:----------------|:-------------|:---------------------|
+| not_null        | ✅  Supported | ✅ Enforced     |
+| primary_key     | ✅  Supported | ❌ Not enforced  |
+| foreign_key     | ✅  Supported | ❌ Not enforced  |
+| unique          | ✅  Supported | ❌ Not enforced  |
+| check           | ❌ Not supported | ❌ Not enforced |
 
 </TabItem>
 <TabItem value="BigQuery" label="BigQuery">
 
-| Constraint type | Support       |
-|:-----------------|:-------------|
-| not_null        | 🌕 Supported and enforced     |
-| primary_key     | 🌕 Supported and enforced     |
-| foreign_key     | 🌕 Supported and enforced     |
-| unique          | 🌑 Not supported |
-| check           | 🌑 Not supported |
+| Constraint type | Support       | Platform enforcement |
+|:-----------------|:-------------|:---------------------|
+| not_null        | ✅ Supported  | ✅ Enforced     |
+| primary_key     | ✅ Supported  | ✅ Enforced     |
+| foreign_key     | ✅ Supported  | ✅ Enforced     |
+| unique          | ❌ Not supported | ❌ Not enforced |
+| check           | ❌ Not supported | ❌ Not enforced |
 
 </TabItem>
 <TabItem value="Postgres" label="Postgres">
 
-| Constraint type | Support       |
-|:----------------|:-------------|
-| not_null        | 🌕 Supported and enforced |
-| primary_key     | 🌕 Supported and enforced |
-| foreign_key     | 🌕 Supported and enforced |
-| unique          | 🌕 Supported and enforced |
-| check           | 🌕 Supported and enforced |
+| Constraint type | Support      | Platform enforcement |
+|:----------------|:-------------|:--------------------|
+| not_null        | ✅  Supported |	✅  Enforced |
+| primary_key     | ✅  Supported |	✅  Enforced |
+| foreign_key     | ✅  Supported |	✅  Enforced |
+| unique          | ✅  Supported |	✅  Enforced |
+| check           | ✅  Supported |	✅  Enforced |
 
 </TabItem>
 <TabItem value="Spark" label="Spark">
 
 `not_null` and `check` constraints are supported and enforced. Currently,  constraints are enforced only after a model builds. Because of this platform limitation, the constraints are considered `supported` but `not enforced` and not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
-| Constraint type | Support       |
-|:----------------|:------------|
-| not_null        | 🌗 Supported and not enforced |
-| primary_key     | 🌗 Supported and not enforced |
-| foreign_key     | 🌗 Supported and not enforced |
-| unique          | 🌗 Supported and not enforced |
-| check           | 🌗 Supported and not enforced |
+| Constraint type | Support     | Platform enforcement |
+|:----------------|:------------|:---------------------|
+| not_null        |	✅  Supported | ❌ Not enforced |
+| primary_key     |	✅  Supported | ❌ Not enforced |
+| foreign_key     |	✅  Supported | ❌ Not enforced |
+| unique          |	✅  Supported | ❌ Not enforced |
+| check           |	✅  Supported | ❌ Not enforced |
 
 </TabItem>
 <TabItem value="Databricks" label="Databricks">
 
 `not_null` and `check` constraints are supported and enforced. Currently,  constraints are enforced only after a model builds. Because of this platform limitation, the constraints are considered `supported` but `not enforced` and not part of the "model contract" since they can't be enforced at build time. This table will change as the features evolve.
 
-| Constraint type | Support     |
-|:----------------|:------------|
-| not_null        | 🌗 Supported and not enforced |
-| primary_key     | 🌗 Supported and not enforced |
-| foreign_key     | 🌗 Supported and not enforced |
-| unique          | 🌗 Supported and not enforced |
-| check           | 🌗 Supported and not enforced |
+| Constraint type | Support      | Platform enforcement |
+|:----------------|:-------------|:---------------------|
+| not_null        |	✅  Supported | ❌ Not enforced |
+| primary_key     | ✅  Supported | ❌ Not enforced |
+| foreign_key     |	✅  Supported | ❌ Not enforced |
+| unique          |	✅  Supported | ❌ Not enforced |
+| check           |	✅  Supported | ❌ Not enforced |
 
 </TabItem>
 </Tabs>
