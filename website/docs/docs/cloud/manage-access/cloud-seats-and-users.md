@@ -22,7 +22,7 @@ The user's assigned license determines the specific capabilities they can access
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
 | Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅ |  ✅ | 
-*Available on Enterprise and Team plans only and doesn't count toward seat usage.
+*Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, IT seats is limited to 1 seat for a Team plan account.
 
 ## Licenses
 
