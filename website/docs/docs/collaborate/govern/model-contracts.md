@@ -88,7 +88,7 @@ When building a model with a defined contract, dbt will do two things differentl
 
 ## Platform constraint support
 
-Select the adapter-specific tab for more info on adapter-specific constraint support across platforms. Constraints fall into three categories based on support and platform enforcement:
+Select the adapter-specific tab for more information on constraint support across platforms. Constraints fall into three categories based on support and platform enforcement:
 
 - **Supported and enforced** &mdash; The model won't build if it violates the constraint.
 - **Supported and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if it violates it. It's a constraint for metadata purposes only. This is common for modern cloud data warehouses and less common for legacy databases.
