@@ -21,10 +21,10 @@ brew tap dbt-labs/dbt-cli
 brew install dbt-cloud-cli
 ```
 
-Verify the installation:
+Verify the installation by requesting your homebrew installation path (not your dbt core installs). If the `which dbt` command returns nothing, then you should modify your PATH in `~.zshrc` or create an alias.
 
 ```bash
-which dbt  -- Should return your homebrew install path, not your dbt core installs. If not, you'll need to modify your PATH in ~.zshrc or create an alias.
+which dbt
 dbt --help
 ```
 
@@ -82,10 +82,9 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
 project-id: '123456'
 ```
 
-You can find your project ID by selecting your project and clicking on **develop** in the navigation bar. Your project ID is the number in the URL: https://cloud.getdbt.com/develop/26228/projects/__{project id}__.
+You can find your project ID by selecting your project and clicking on **Develop** in the navigation bar. Your project ID is the number in the URL: https://cloud.getdbt.com/develop/26228/projects/`PROJECT_ID`.
 
-If dbt_cloud.yml already exists, edit it to ensure you have a project-id field with a valid project ID.
-
+If dbt_cloud.yml already exists, edit the file and verify the project ID field uses a valid project ID.
 
 #### Upgrade the CLI with Brew
 
