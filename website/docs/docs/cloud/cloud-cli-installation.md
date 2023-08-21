@@ -14,14 +14,14 @@ The following installation instructions are for the dbt Cloud CLI, currently in 
 
 ### Install and update with Brew on MacOS (recommended)
 
-Install the CLI: 
+1. Install the CLI: 
 
 ```bash
 brew tap dbt-labs/dbt-cli
 brew install dbt-cloud-cli
 ```
 
-Verify the installation by requesting your homebrew installation path (not your dbt core installs). If the `which dbt` command returns nothing, then you should modify your PATH in `~.zshrc` or create an alias.
+2. Verify the installation by requesting your homebrew installation path (not your dbt core installs). If the `which dbt` command returns nothing, then you should modify your PATH in `~.zshrc` or create an alias.
 
 ```bash
 which dbt
