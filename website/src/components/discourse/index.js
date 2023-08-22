@@ -38,10 +38,10 @@ export const DiscourseFeed = ({
         setLoading(true)
         setIsError(false)
 
-        // Build Netlify Function endpoint
-        const endpoint = window?.location?.hostname?.includes('localhost')
-          ? 'http://localhost:8888/.netlify/functions/get-discourse-topics'
-          : '/.netlify/functions/get-discourse-topics'
+        // Build function endpoint
+        const endpoint = process?.env?.VERCEL === '1'
+          ? `/api/get-discourse-topics`
+          : `/.netlify/functions/get-discourse-topics`
 
         // If 'after' prop not passed in, set relative after date
         let afterDate = after
