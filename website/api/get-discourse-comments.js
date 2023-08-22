@@ -35,7 +35,7 @@ async function getDiscourseComments(req, res) {
         : PREVIEW_ENV;
     const postTitle = `${env}${req.query.title}`;
     const postSlug = req.query.slug;
-    const cleanSlug = cleanUrl(postSlug);
+    const cleanSlug = cleanUrl(req.query.slug);
     const externalId = truncateString(`${env}${cleanSlug}`);
 
     console.table({
@@ -168,7 +168,7 @@ function truncateString(str) {
 
 // Remove query params and hash from URL to prevent duplicate topics
 function cleanUrl(url) {
-  return url?.split("?")[0].split("#")[0];
+  return url.split("?")[0].split("#")[0];
 }
 
 // Create a function to get the host name from the request and add /blog/ to the end
