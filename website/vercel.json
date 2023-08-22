@@ -1,5 +1,5 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }],
   "redirects": [
     {
       "source": "/docs/deploy/job-triggers",
