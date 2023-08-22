@@ -238,7 +238,7 @@ mutation {
   createQuery(
     environmentId: <env_id>
     metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month", "customer__customer_type")] - TODO update with syntax for object
+    groupBy: ["metric_time__month", "customer__customer_type"] - TODO update with syntax for object
   ) {
     queryId
   }
@@ -274,7 +274,7 @@ mutation {
   createQuery(
     environmentId: <env_id>
     metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month", "customer__customer_type)] - TODO update with syntax for object
+    groupBy: ["metric_time__month", "customer__customer_type")] - TODO update with syntax for object
     limit: TODO
     orderBy: TODO
 	
@@ -291,7 +291,7 @@ mutation {
   createQuery(
     environmentId: <env_id>
     metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month", "customer__customer_type)] - TODO update with syntax for object
+    groupBy: ["metric_time__month", "customer__customer_type"] - TODO update with syntax for object
     explain: TODO
   ) {
     queryId
