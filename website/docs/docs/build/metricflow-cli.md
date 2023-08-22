@@ -402,7 +402,7 @@ mf query --metrics revenue --group-by metric_time__month
 
 Before using the template wrapper, however, you will need to set up your terminal to escape curly braces {} for the filter template to work. 
 
-<details> How to set up your terminal to escape curly braces? </details>
+<details> How to set up your terminal to escape curly braces? 
 <summary>
  To configure your `.zshrc` profile to escape curly braces, you can use the `setopt` command to enable the `BRACECCL` option. This option will cause the shell to treat curly braces as literals and prevent brace expansion. Refer to the following steps to set it up:
 
@@ -428,6 +428,7 @@ source ~/.zshrc
 6. After making these changes, your Zsh shell will treat curly braces as literal characters and will not perform brace expansion. This means that you can use curly braces without worrying about unintended expansions.
 
 Keep in mind that modifying your shell configuration files can have an impact on how your shell behaves. If you're not familiar with shell configuration, it's a good idea to make a backup of your `.zshrc` file before making any changes. If you encounter any issues or unexpected behavior, you can revert to the backup.
-</summary>
 
+</summary>
+</details>
 
