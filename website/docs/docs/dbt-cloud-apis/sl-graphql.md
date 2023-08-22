@@ -167,8 +167,6 @@ MetricTypeParams {
 }
 ```
 
-**Where filter**
-Update to what's decided
 
 **Dimension Types**
 
@@ -217,20 +215,6 @@ mutation {
 }
 ```
 
-**Query with a time grain** 
-
-```graphql
-mutation {
-  createQuery(
-    environmentId: <env_id>
-    metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month"] - TODO update with syntax for object
-  ) {
-    queryId
-  }
-}
-```
-
 **Query with a categorical Dimension**
 
 ```graphql
@@ -247,12 +231,12 @@ mutation {
 
 **Query with a Where Filter** 
 
- The where filter takes a list argument (or a string for a single input). Depending on the object you are filtering on, there are a couple of parameters:
+The where filter takes a list argument (or a string for a single input). Depending on the object you are filtering on, there are a couple of parameters:
  
  - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 - `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
 
-Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
+Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
 
 ```graphql
 mutation {
