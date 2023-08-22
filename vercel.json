@@ -3321,7 +3321,7 @@
       "permanent": true
     },
     {
-      "source": "/faqs/_",
+      "source": "/faqs/:slug",
       "destination": "/docs/faqs/:slug*",
       "permanent": true
     },
@@ -3331,17 +3331,17 @@
       "permanent": true
     },
     {
-      "source": "/tutorial/learning-more/_",
+      "source": "/tutorial/learning-more/:slug",
       "destination": "/guides/getting-started/learning-more/:slug*",
       "permanent": true
     },
     {
-      "source": "/tutorial/getting-set-up/\\_",
+      "source": "/tutorial/getting-set-up/:slug",
       "destination": "/guides/getting-started/getting-set-up/:slug*",
       "permanent": true
     },
     {
-      "source": "/tutorial/building-your-first-project/\\*",
+      "source": "/tutorial/building-your-first-project/:slug",
       "destination": "/guides/getting-started/building-your-first-project/:slug*",
       "permanent": true
     },
@@ -3501,12 +3501,12 @@
       "permanent": true
     },
     {
-      "source": "/docs/guides/migration-guide/_",
+      "source": "/docs/guides/migration-guide/:slug",
       "destination": "/guides/migration/versions/:slug*",
       "permanent": true
     },
     {
-      "source": "/docs/guides/_",
+      "source": "/docs/guides/:slug",
       "destination": "/guides/legacy/:slug*",
       "permanent": true
     },
