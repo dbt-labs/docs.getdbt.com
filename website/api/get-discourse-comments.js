@@ -35,7 +35,7 @@ async function getDiscourseComments(req, res) {
         : PREVIEW_ENV;
     const postTitle = `${env}${req.query.title}`;
     const postSlug = req.query.slug;
-    const cleanSlug = cleanUrl(req.url);
+    const cleanSlug = cleanUrl(req.query.slug);
     const externalId = truncateString(`${env}${cleanSlug}`);
 
     console.table({
