@@ -1,6 +1,5 @@
 {
-  "trailingSlash": false,
-  "rewrites": [{ "source": "/[^.]+", "destination": "/" }],
+  "cleanUrls": true,
   "redirects": [
     {
       "source": "/docs/deploy/job-triggers",
