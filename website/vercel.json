@@ -1,5 +1,4 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "redirects": [
     {
       "source": "/docs/deploy/job-triggers",
