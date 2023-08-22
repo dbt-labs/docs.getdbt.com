@@ -158,7 +158,7 @@ Options:
 
   --where TEXT             SQL-like where statement provided as a string. For
                            example: --where "revenue > 100"
-                           To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model.                            Reference the [FAQ] for more info on how to do this using a template wrapper.
+                           To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model.                     Refer to the [FAQ](#faqs) for more info on how to do this using a template wrapper.
 
   --limit TEXT             Limit the number of rows out using an int or leave
                            blank for no limit. For example: --limit 100
@@ -398,16 +398,16 @@ mf query --metrics revenue --group-by metric_time__month
 ## FAQs
 
 - How can I add a dimension filter to a where filter? <be />
-  You have to indicate that the filter item is part of your model and use a template wrapper: `{{ Dimension(‘model_name1__model_name2’) }}`.  For example, `mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"`
+  To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: `{{ Dimension(‘model_name1__model_name2’) }}`.  Here's an example query: `mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"`
 
 Before using the template wrapper, however, you will need to set up your terminal to escape curly braces {} for the filter template to work. 
 
 <details> 
 <summary>How to set up your terminal to escape curly braces? </summary>
- To configure your `.zshrc` profile to escape curly braces, you can use the `setopt` command to enable the `BRACECCL` option. This option will cause the shell to treat curly braces as literals and prevent brace expansion. Refer to the following steps to set it up:
+ To configure your <code>.zshrc</code>profile to escape curly braces, you can use the <code>setopt</code> command to enable the <code>BRACECCL</code> option. This option will cause the shell to treat curly braces as literals and prevent brace expansion. Refer to the following steps to set it up: <br />
 
 1. Open your terminal.
-2. Open your `.zshrc` file using a text editor like `nano`, `vim`, or any other text editor you prefer. You can use the following command to open it with `nano`:
+2. Open your <code>.zshrc</code> file using a text editor like <code>nano</code>, <code>vim</code>, or any other text editor you prefer. You can use the following command to open it with `nano`:
 
 ```bash
 nano ~/.zshrc
