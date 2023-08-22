@@ -14,10 +14,10 @@ let headers = {
   'Api-Username': DISCOURSE_USER_SYSTEM,
 }    
 
-async function getDiscourseComments(event) {
+async function getDiscourseComments(req) {
   let topicId, comments, DISCOURSE_TOPIC_ID;
 
-  const blogUrl = await getBlogUrl(event)
+  const blogUrl = await getBlogUrl(req)
   
   if (blogUrl === DEVBLOG_PROD_URL) {
     DISCOURSE_TOPIC_ID = 21
@@ -32,8 +32,8 @@ async function getDiscourseComments(event) {
         : blogUrl.includes("localhost")
         ? DEV_ENV
         : PREVIEW_ENV;
-    const postTitle = `${env}${event.queryStringParameters.title}`;
-    const postSlug = event.queryStringParameters.slug;
+    const postTitle = `${env}${req.queryStringParameters.title}`;
+    const postSlug = req.queryStringParameters.slug;
     const cleanSlug = cleanUrl(postSlug);
     const externalId = truncateString(`${env}${cleanSlug}`);
 
