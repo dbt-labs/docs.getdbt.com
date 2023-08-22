@@ -229,7 +229,7 @@ Use the following example to query using a `where` filter:
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10)
+where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
 }}
 ```
 

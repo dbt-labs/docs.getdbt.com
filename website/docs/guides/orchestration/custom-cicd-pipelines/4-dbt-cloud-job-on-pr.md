@@ -12,9 +12,9 @@ This section is only for those projects that connect to their git repository usi
 
 If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
 
-The setup for this pipeline will use the same steps as the prior page. Before moving on, **follow steps 1-3 from the [prior page](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge)**
+The setup for this pipeline will use the same steps as the prior page. Before moving on, **follow steps 1-5 from the [prior page](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge)**
 
-### 4. Create a pipeline job that runs when PRs are created
+### 6. Create a pipeline job that runs when PRs are created
 <Tabs
   defaultValue="bitbucket"
   values={[
@@ -62,7 +62,7 @@ pipelines:
 </TabItem>
 </Tabs>
 
-### 5. Confirm the pipeline runs
+### 7. Confirm the pipeline runs
 
 Now that you have a new pipeline, it's time to run it and make sure it works. Since this only triggers when a PR is created, you'll need to create a new PR on a branch that contains the code above. Once you do that, you should see a pipeline that looks like this:
 
@@ -83,7 +83,7 @@ dbt Cloud job:
 </TabItem>
 </Tabs>
 
-### 6. Handle those extra schemas in your database
+### 8. Handle those extra schemas in your database
 
 As noted above, when the PR job runs it will create a new schema based on the PR. To avoid having your database overwhelmed with PR schemas, consider adding a "cleanup" job to your dbt Cloud account. This job can run on a scheduled basis to cleanup any PR schemas that haven't been updated/used recently. 
 
