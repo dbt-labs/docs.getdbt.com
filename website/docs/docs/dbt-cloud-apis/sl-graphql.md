@@ -52,7 +52,20 @@ Each GQL request also requires a dbt Cloud `environmentId`. The API uses both th
 
 ### Output Format
 
-By default, output is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. (Insert the paramater and an example here)
+By default, output provided is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. The JSON returned is a base64 encoded string. This means to access the JSON you must run it through a base64 decoder then you should receive the results in JSON. This is a JSON generated from pandas, this means you can either parse this back into a dataframe via pandas.read_json(json, orient="table") or just use the data directly with json["data"] and get the table schema with json["schema"]["fields"]
+
+
+```graphql
+{
+  query(environmentId: <env_id>, queryId: <query_id>) {
+    sql
+    status
+    error
+    arrowResult
+    jsonResult 
+  }
+}
+```
 
 ### Metric metadata calls
 
@@ -121,6 +134,7 @@ order: [String!] = null
 ): String
 ```
 
+
 **Metric Types**
 
 ```graphql
@@ -175,7 +189,113 @@ DimensionType = [CATEGORICAL, TIME]
 
 ### Examples 
 
-(insert examples akin to JDBC once we finalize format)
+**Query two metrics grouped by time**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: <env_id>
+    metrics: ["food_order_amount", "order_gross_profit"]
+    groupBy: ["metric_time"] - TODO update with syntax for object
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with a time grain** 
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: <env_id>
+    metrics: ["food_order_amount", "order_gross_profit"]
+    groupBy: ["metric_time__month"] - TODO update with syntax for object
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with a time grain** 
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: <env_id>
+    metrics: ["food_order_amount", "order_gross_profit"]
+    groupBy: ["metric_time__month"] - TODO update with syntax for object
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with a categorical Dimension**
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: <env_id>
+    metrics: ["food_order_amount", "order_gross_profit"]
+    groupBy: ["metric_time__month", "customer__customer_type")] - TODO update with syntax for object
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with a Where Filter** 
+
+ The where filter takes a list argument (or a string for a single input). Depending on the object you are filtering on, there are a couple of parameters:
+ 
+ - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
+
+Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
+
+```graphql
+mutation {
+	createQuery(
+		metrics:["order_total"]
+		groupBy:["customer__customer_type"]
+		where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ TimeDimension('metric_time', 'MONTH') }} > '2022-10-01'"] - TODO UPDATE THIS
+	) {
+	queryId
+	}
+}
+```
 
 
+**Query with Limit and Order By** 
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: <env_id>
+    metrics: ["food_order_amount", "order_gross_profit"]
+    groupBy: ["metric_time__month", "customer__customer_type)] - TODO update with syntax for object
+    limit: TODO
+    orderBy: TODO
+	
+  ) {
+    queryId
+  }
+}
+```
+
+**Query with Explain** 
+
+```graphql
+mutation {
+  createQuery(
+    environmentId: <env_id>
+    metrics: ["food_order_amount", "order_gross_profit"]
+    groupBy: ["metric_time__month", "customer__customer_type)] - TODO update with syntax for object
+    explain: TODO
+  ) {
+    queryId
+  }
+}
+```
 
