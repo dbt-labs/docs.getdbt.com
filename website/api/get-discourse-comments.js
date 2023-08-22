@@ -103,7 +103,7 @@ async function createDiscourseTopic(title, externalId, slug, blogUrl, DISCOURSE_
         return topicId
     
     } catch(err) {
-        console.log('err', err.response)
+        console.log('err', err)
         return await returnResponse(500, { error: 'Unable to create Discourse topic.'})
     }
 }
