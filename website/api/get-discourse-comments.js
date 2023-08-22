@@ -78,7 +78,7 @@ async function getDiscourseComments(req, res) {
     //return await returnResponse(200, comments);
     return await res.status(200).json(comments);
   } catch (err) {
-    console.log("err", err);
+    console.log("err on getDiscourseComments", err);
     return await res.status(500).json({ error: "Unable to get topics from Discourse." });
   }
 }
@@ -103,7 +103,7 @@ async function createDiscourseTopic(title, externalId, slug, blogUrl, DISCOURSE_
         return topicId
     
     } catch(err) {
-        console.log('err', err)
+        console.log('err on createDiscourseTopic', err)
         return await returnResponse(500, { error: 'Unable to create Discourse topic.'})
     }
 }
@@ -129,7 +129,7 @@ async function getDiscourseTopicbyID(topicId) {
         
         return post_stream.posts
     } catch(err) {
-        console.log('err', err.response)
+        console.log('err on getDiscourseTopicbyID', err)
         return await returnResponse(500, { error: 'Unable to get Discourse topic by ID.'})
     }
 }
