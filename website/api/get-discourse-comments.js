@@ -14,8 +14,9 @@ let headers = {
   'Api-Username': DISCOURSE_USER_SYSTEM,
 }    
 
-async function getDiscourseComments(req) {
+async function getDiscourseComments(req, res) {
   let topicId, comments, DISCOURSE_TOPIC_ID;
+  console.log(req)
 
   const blogUrl = await getBlogUrl(req)
   
@@ -34,7 +35,7 @@ async function getDiscourseComments(req) {
         : PREVIEW_ENV;
     const postTitle = `${env}${req.queryStringParameters.title}`;
     const postSlug = req.queryStringParameters.slug;
-    const cleanSlug = cleanUrl(postSlug);
+    const cleanSlug = cleanUrl(req);
     const externalId = truncateString(`${env}${cleanSlug}`);
 
     console.table({
@@ -77,7 +78,7 @@ async function getDiscourseComments(req) {
     return await returnResponse(200, comments);
   } catch (err) {
     console.log("err", err);
-    return await returnResponse(500, {error: "Unable to get topics from Discourse."});
+    return res.status(500).json({ error: "Unable to get topics from Discourse." });
   }
 }
 
@@ -171,10 +172,10 @@ function cleanUrl(url) {
 }
 
 // Create a function to get the host name from the request and add /blog/ to the end
-async function getBlogUrl(request) {
-  const host = request.headers.host
+async function getBlogUrl(req) {
+  const host = req.headers.host
   return `https://${host}/blog/`
 }
 
 
-exports.handler = getDiscourseComments
+module.exports = getDiscourseComments;

@@ -33,6 +33,9 @@ export const DiscourseBlogComments = ({title,slug}) => {
           : `/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
         
           const { data } = await axios.get(endpoint)
+
+          console.log('endpoint', endpoint)
+          console.log(data)
   
           // Set error state if data not available
           if(!data) throw new Error('Unable to get latest topics.')
