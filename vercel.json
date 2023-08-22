@@ -1711,7 +1711,7 @@
       "permanent": true
     },
     {
-      "source": "/useful*components",
+      "source": "/((?!useful).*components)",
       "destination": "https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/adding-page-components.md",
       "permanent": true
     },
