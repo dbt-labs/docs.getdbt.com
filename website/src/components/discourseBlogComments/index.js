@@ -31,8 +31,8 @@ export const DiscourseBlogComments = ({title,slug}) => {
           //const endpoint = process?.env?.VERCEL === '1'
           //? `/api/get-discourse-comments?title=${title}&slug=${slug}`
           //: `/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
-          
-          const endpoint = '/api/get-discourse-comments?title=${title}&slug=${slug}'
+
+          const endpoint = `/api/get-discourse-comments?title=${title}&slug=${slug}`
         
           const { data } = await axios.get(endpoint)
   
