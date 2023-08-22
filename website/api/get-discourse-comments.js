@@ -76,10 +76,10 @@ async function getDiscourseComments(req, res) {
     comments = { topicId, comments };
 
     //return await returnResponse(200, comments);
-    return res.status(200).json(comments);
+    return await res.status(200).json(comments);
   } catch (err) {
     console.log("err", err);
-    return res.status(500).json({ error: "Unable to get topics from Discourse." });
+    return await res.status(500).json({ error: "Unable to get topics from Discourse." });
   }
 }
 
