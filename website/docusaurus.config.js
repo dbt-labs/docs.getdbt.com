@@ -46,7 +46,7 @@ var siteSettings = {
   url: SITE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
-  trailingSlash: false,
+  trailingSlash: true,
   themeConfig: {
     docs:{
       sidebar: {
