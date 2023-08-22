@@ -178,6 +178,4 @@ async function getBlogUrl(req) {
   return `https://${host}/blog/`
 }
 
-// Test
-
 module.exports = getDiscourseComments;
