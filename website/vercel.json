@@ -1,6 +1,5 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
     {
       "source": "/docs/deploy/job-triggers",

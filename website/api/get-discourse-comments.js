@@ -16,7 +16,7 @@ let headers = {
 
 async function getDiscourseComments(req, res) {
   let topicId, comments, DISCOURSE_TOPIC_ID;
-  console.log(req)
+  console.log(req.query)
 
   const blogUrl = await getBlogUrl(req)
   
@@ -33,8 +33,8 @@ async function getDiscourseComments(req, res) {
         : blogUrl.includes("localhost")
         ? DEV_ENV
         : PREVIEW_ENV;
-    const postTitle = `${env}${req.queryStringParameters.title}`;
-    const postSlug = req.queryStringParameters.slug;
+    const postTitle = `${env}${req.query.title}`;
+    const postSlug = req.query.slug;
     const cleanSlug = cleanUrl(req);
     const externalId = truncateString(`${env}${cleanSlug}`);
 
