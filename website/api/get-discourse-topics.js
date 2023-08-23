@@ -74,12 +74,20 @@ async function returnResponse(status, res) {
     'Access-Control-Allow-Headers': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS' 
   }
-  const resObj = {
-    statusCode: status,
-    headers,
-    body: JSON.stringify(res)
+
+  try {
+    const resObj = {
+      statusCode: status,
+      headers,
+      body: JSON.stringify(res)
+    }
+    console.log('Response Object:', resObj);
+
+    return resObj;
+  } catch (error) {
+    console.error('Error:', error); 
+    throw error;
   }
-  return resObj
 }
 
 function buildQueryString(body) {
