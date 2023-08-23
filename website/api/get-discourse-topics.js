@@ -4,9 +4,6 @@ async function getDiscourseTopics({ body, res }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
   console.log(body)
-  const queryTest = buildQueryString(body)
-
-  console.log('Query String:', queryTest)
 
   try {
     // Set API endpoint and headers
@@ -17,7 +14,7 @@ async function getDiscourseTopics({ body, res }) {
       'Api-Username': DISCOURSE_USER,
     }
 
-    const query = buildQueryString(body)
+    const query = buildQueryString('status%3Asolved%20order%3Alatest_topic%20after%3A2000-01-01%20tags%3Awee%20%23help%20')
     if(!query) throw new Error('Unable to build query string.')
     
     // Get topics from Discourse
