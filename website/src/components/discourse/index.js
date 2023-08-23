@@ -43,7 +43,7 @@ export const DiscourseFeed = ({
         setIsError(false)
 
         // Build function endpoint
-        const endpoint = customFields?.isVercel
+        const endpoint = customFields?.isVercel === '1'
           ? `/api/get-discourse-topics`
           : `/.netlify/functions/get-discourse-topics`
 

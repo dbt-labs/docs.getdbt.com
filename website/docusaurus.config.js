@@ -48,7 +48,7 @@ var siteSettings = {
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
   customFields: {
-    isVercel: process.env.REACT_APP_VERCEL_ENV
+    isVercel: process.env.REACT_APP_VERCEL
   },
   themeConfig: {
     docs:{
