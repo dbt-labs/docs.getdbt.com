@@ -145,4 +145,4 @@ function validateItem({ key, value }) {
   }
 }
 
-exports.handler = getDiscourseTopics
+module.exports = getDiscourseTopics
