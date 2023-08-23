@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import feedStyles from './styles.module.css';
 
+const { VERCEL } = process.env
+
 // Bare component with no default props set
 export const DiscourseFeed = ({
   order,
@@ -39,11 +41,12 @@ export const DiscourseFeed = ({
         setIsError(false)
 
         // Build function endpoint
-        //const endpoint = process?.env?.VERCEL === '1'
-        //  ? `/api/get-discourse-topics`
-        //  : `/.netlify/functions/get-discourse-topics`
+        const endpoint = VERCEL
+          ? `/api/get-discourse-topics`
+          : `/.netlify/functions/get-discourse-topics`
 
-        const endpoint = `/api/get-discourse-topics`
+        console.log(endpoint)
+        console.log(process.env.VERCEL)
 
         // If 'after' prop not passed in, set relative after date
         let afterDate = after
