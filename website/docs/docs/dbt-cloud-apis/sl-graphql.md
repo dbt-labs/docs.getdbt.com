@@ -67,7 +67,21 @@ By default, output provided is in Arrow format. You can use the following parame
 }
 ```
 
-### Metric metadata calls
+
+
+### Metadata calls
+
+**Fetch Data Platform Dialect** 
+
+In some cases in your application, it may be useful to know the dialect/data platform that's being used under the hood for the dbt Semantic Layer connection (e.g., if you are building where filters from a GUI rather than user-inputted SQL) The GraphQL API has an easy way to fetch this via the following query: 
+
+```graphql
+{
+    environmentInfo(environmentId: 100) {
+            dialect
+    }
+}
+```
 
 **Fetch available metrics**
 
