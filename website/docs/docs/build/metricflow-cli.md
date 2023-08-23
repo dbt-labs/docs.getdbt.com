@@ -401,7 +401,7 @@ mf query --metrics revenue --group-by metric_time__month
 <details>
 <summary>How can I add a dimension filter to a where filter?</summary> 
 
-To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('model_name1__model_name2')}}</code>. 
+To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('primary_entity__dimension_name')}}</code>. 
 
 Here's an example query: <code>mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, you will need to set up your terminal to escape curly braces for the filter template to work. 
 
