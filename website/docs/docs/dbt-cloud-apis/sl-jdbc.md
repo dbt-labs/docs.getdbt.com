@@ -225,7 +225,7 @@ Where Filters have a few objects that you can use:
 
 Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension` to separate out categorical dimensions from time ones. The `TimeDimesion` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
 
-Use the following example to query using a `where` filter using the string format:
+Use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
