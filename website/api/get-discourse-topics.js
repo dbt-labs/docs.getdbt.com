@@ -83,7 +83,6 @@ async function returnResponse(status, res) {
       headers,
       body: JSON.stringify(res)
     }
-    console.log('Response Object:', resObj);
 
     return resObj;
   } catch (error) {
