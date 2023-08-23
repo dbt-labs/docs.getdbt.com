@@ -26,7 +26,6 @@ export const DiscourseFeed = ({
 }) => {
 
   const { siteConfig: {customFields} } = useDocusaurusContext();
-  const siteConfig = useDocusaurusContext();
 
   const [topics, setTopics] = useState([])
   const [loading, setLoading] = useState(true)
@@ -46,9 +45,6 @@ export const DiscourseFeed = ({
         const endpoint = customFields?.isVercel === '1'
           ? `/api/get-discourse-topics`
           : `/.netlify/functions/get-discourse-topics`
-
-        console.log(endpoint)
-        console.log(siteConfig)
 
         // If 'after' prop not passed in, set relative after date
         let afterDate = after
