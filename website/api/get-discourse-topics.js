@@ -14,7 +14,7 @@ async function getDiscourseTopics({ body, res }) {
       'Api-Username': DISCOURSE_USER,
     }
 
-    const query = buildQueryString('status%3Asolved%20order%3Alatest_topic%20after%3A2000-01-01%20tags%3Awee%20%23help%20')
+    const query = 'status%3Asolved%20order%3Alatest_topic%20after%3A2000-01-01%20tags%3Awee%20%23help%20'
     if(!query) throw new Error('Unable to build query string.')
     
     // Get topics from Discourse
