@@ -3,6 +3,8 @@ const axios = require('axios')
 async function getDiscourseTopics({ body, res }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
+  console.log(body)
+
   try {
     // Set API endpoint and headers
     let discourse_endpoint = `https://discourse.getdbt.com`
@@ -17,6 +19,7 @@ async function getDiscourseTopics({ body, res }) {
     
     // Get topics from Discourse
     let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
+    console.log('API Response:', posts, topics);
 
     // Return empty array if no topics found for search query
     // 200 status is used to prevent triggering Datadog alerts
