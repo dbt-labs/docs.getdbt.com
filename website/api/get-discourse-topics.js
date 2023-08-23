@@ -1,7 +1,9 @@
 const axios = require('axios')
 
-async function getDiscourseTopics({ body, res }) {
+async function getDiscourseTopics(request, response) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
+  
+  const body = request.body
 
   console.log(body)
 
@@ -62,8 +64,8 @@ async function getDiscourseTopics({ body, res }) {
     }
 
     // Return topics 
-    return await returnResponse(200, allTopics)
-    //return await res.status(200).json(allTopics)
+    //return await returnResponse(200, allTopics)
+    return await response.status(200).json(allTopics)
   } catch(err) {
     // Log and return the error
     console.log('err', err)
