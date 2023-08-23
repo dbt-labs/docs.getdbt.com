@@ -100,10 +100,6 @@ function buildQueryString(body) {
 
   // check param and apply to query if set
   for (const [key, value] of Object.entries(body)) {
-
-    console.log('key:', key);
-    console.log('value:', value);
-
     // validate categories
     // if valid, add to query string
     if(validateItem({ key, value })) {
