@@ -62,8 +62,8 @@ async function getDiscourseTopics({ body, res }) {
     }
 
     // Return topics 
-    //return await returnResponse(200, allTopics)
-    return await res.status(200).json(allTopics)
+    return await returnResponse(200, allTopics)
+    //return await res.status(200).json(allTopics)
   } catch(err) {
     // Log and return the error
     console.log('err', err)
