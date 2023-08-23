@@ -223,7 +223,7 @@ Where Filters have a few objects that you can use:
 
 - `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
 
-Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension` to separate out categorical dimensions from time ones. The `TimeDimesion` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
+Note: If you prefer a more strongly typed `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'MONTH')`.
 
 Use the following example to query using a `where` filter with the string format:
 
