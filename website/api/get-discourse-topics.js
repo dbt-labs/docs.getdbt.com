@@ -4,6 +4,9 @@ async function getDiscourseTopics({ body, res }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
   console.log(body)
+  const queryTest = buildQueryString(body)
+
+  console.log('Query String:', queryTest)
 
   try {
     // Set API endpoint and headers
@@ -16,8 +19,6 @@ async function getDiscourseTopics({ body, res }) {
 
     const query = buildQueryString(body)
     if(!query) throw new Error('Unable to build query string.')
-
-    console.log('Query String:', query)
     
     // Get topics from Discourse
     let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
