@@ -4,7 +4,7 @@ require("dotenv").config();
 const { DISCOURSE_DEVBLOG_API_KEY , DISCOURSE_USER_SYSTEM } = process.env
 const DEVBLOG_PROD_URL = 'https://docs.getdbt.com/blog/'
 const DEV_ENV = 'dev-'
-const PREVIEW_ENV = 'deploy-preview-'
+const PREVIEW_ENV = 'deploy-preview-vercel'
 
 // Set API endpoint and headers
 let discourse_endpoint = `https://discourse.getdbt.com`
