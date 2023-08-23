@@ -259,7 +259,7 @@ mutation {
     environmentId: <env_id>
     metrics: ["food_order_amount", "order_gross_profit"]
     groupBy: ["metric_time__month", "customer__customer_type")] - TODO update with syntax for object
-    order: [-order_gross_profit]
+    order: ["-order_gross_profit"]
     limit: 10	
   ) {
     queryId
