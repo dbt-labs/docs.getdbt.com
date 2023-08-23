@@ -39,9 +39,11 @@ export const DiscourseFeed = ({
         setIsError(false)
 
         // Build function endpoint
-        const endpoint = process?.env?.VERCEL === '1'
-          ? `/api/get-discourse-topics`
-          : `/.netlify/functions/get-discourse-topics`
+        //const endpoint = process?.env?.VERCEL === '1'
+        //  ? `/api/get-discourse-topics`
+        //  : `/.netlify/functions/get-discourse-topics`
+
+        const endpoint = `/api/get-discourse-topics`
 
         // If 'after' prop not passed in, set relative after date
         let afterDate = after
