@@ -5,6 +5,7 @@ async function getDiscourseTopics({ body, res }) {
 
   console.log(body)
 
+
   try {
     // Set API endpoint and headers
     let discourse_endpoint = `https://discourse.getdbt.com`
@@ -14,7 +15,7 @@ async function getDiscourseTopics({ body, res }) {
       'Api-Username': DISCOURSE_USER,
     }
 
-    const query = 'status%3Asolved%20order%3Alatest_topic%20after%3A2000-01-01%20tags%3Awee%20%23help%20'
+    const query = buildQueryString(body)
     if(!query) throw new Error('Unable to build query string.')
     
     // Get topics from Discourse
@@ -100,7 +101,11 @@ function buildQueryString(body) {
   let query = ''
 
   // check param and apply to query if set
-  for(const [key, value] of Object.entries(JSON.parse(body))) {
+  for (const [key, value] of Object.entries(body)) {
+
+    console.log('key:', key);
+    console.log('value:', value);
+
     // validate categories
     // if valid, add to query string
     if(validateItem({ key, value })) {
