@@ -14,11 +14,10 @@ let headers = {
   'Api-Username': DISCOURSE_USER_SYSTEM,
 }    
 
-async function getDiscourseComments(req, res) {
+async function getDiscourseComments(request, response) {
   let topicId, comments, DISCOURSE_TOPIC_ID;
-  console.log(req.query)
 
-  const blogUrl = await getBlogUrl(req)
+  const blogUrl = await getBlogUrl(request)
   
   if (blogUrl === DEVBLOG_PROD_URL) {
     DISCOURSE_TOPIC_ID = 21
@@ -33,9 +32,9 @@ async function getDiscourseComments(req, res) {
         : blogUrl.includes("localhost")
         ? DEV_ENV
         : PREVIEW_ENV;
-    const postTitle = `${env}${req.query.title}`;
-    const postSlug = req.query.slug;
-    const cleanSlug = cleanUrl(req.query.slug);
+    const postTitle = `${env}${request.query.title}`;
+    const postSlug = request.query.slug;
+    const cleanSlug = cleanUrl(request.query.slug);
     const externalId = truncateString(`${env}${cleanSlug}`);
 
     console.table({
@@ -75,10 +74,10 @@ async function getDiscourseComments(req, res) {
     comments.shift();
     comments = { topicId, comments };
 
-    return await res.status(200).json(comments);
+    return await response.status(200).json(comments);
   } catch (err) {
     console.log("err on getDiscourseComments", err);
-    return await res.status(500).json({ error: "Unable to get topics from Discourse." });
+    return await response.status(500).json({ error: "Unable to get topics from Discourse." });
   }
 }
 
