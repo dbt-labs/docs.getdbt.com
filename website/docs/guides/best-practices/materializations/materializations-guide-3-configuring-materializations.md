@@ -53,7 +53,7 @@ def model(dbt, session):
 </Tabs>
 
 :::info
-🐍 **Not all adapters support python yet**, check the [docs here to be sure](docs/build/python-models#specific-data-platforms) before spending time writing python models.
+🐍 **Not all adapters support python yet**, check the [docs here to be sure](/docs/build/python-models#specific-data-platforms) before spending time writing python models.
 :::
 
 - Configuring a model to materialize as a `table` is simple, and the same as a `view` for both SQL and python models.

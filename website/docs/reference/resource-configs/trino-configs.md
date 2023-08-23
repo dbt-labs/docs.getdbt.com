@@ -191,7 +191,7 @@ select * from {{ ref('events') }}
 
 Use the `+on_schema_change` property to define how dbt-trino should handle column changes. For more details about this property, see [column changes](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#what-if-the-columns-of-my-incremental-model-change). 
 
-If your connector doesn't support views, set the `+views_enabled` perperty to `false`.
+If your connector doesn't support views, set the `+views_enabled` property to `false`.
 
 #### append strategy
 

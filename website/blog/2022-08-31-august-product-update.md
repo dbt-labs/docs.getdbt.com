@@ -4,7 +4,6 @@ description: "Coalesce is less than 2 months away!"
 slug: dbt-product-update-2022-august
 authors: [lauren_craigie] 
 
-tags: [dbt updates]
 hide_table_of_contents: false
 
 date: 2022-08-31

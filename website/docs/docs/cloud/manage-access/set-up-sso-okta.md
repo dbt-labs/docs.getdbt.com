@@ -72,7 +72,7 @@ dashes. It should contain only letters, numbers, and dashes. For example, the _l
 `dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
 * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
@@ -187,7 +187,7 @@ configured in the steps above.
     test logging in with Okta. Additionally, users added the the Okta app
     will be able to log in to dbt Cloud from Okta directly.
 
-<Snippet src="login_url_note" />
+<Snippet path="login_url_note" />
 
 
 ## Setting up RBAC

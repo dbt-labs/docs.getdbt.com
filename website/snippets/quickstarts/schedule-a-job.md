@@ -40,6 +40,6 @@ Congratulations 🎉! You've just deployed your first dbt project!
 
 #### FAQs
 
-<FAQ src="Runs/failed-prod-run" />
+<FAQ path="Runs/failed-prod-run" />
 
 

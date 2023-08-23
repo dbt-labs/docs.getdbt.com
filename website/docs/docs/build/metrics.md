@@ -4,25 +4,34 @@ id: "metrics"
 description: "When you define metrics in dbt projects, you encode crucial business logic in tested, version-controlled code. The dbt metrics layer helps you standardize metrics within your organization."
 keywords:
   - dbt metrics layer
+tags: [Metrics]
 ---
 
+:::caution Upgrade to access MetricFlow and the new dbt Semantic Layer
+
+The dbt_metrics package has been deprecated and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6). If you're using the dbt_metrics package or the legacy Semantic Layer (available on v1.5 or lower), we **highly** recommend [upgrading your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to access MetricFlow and the new [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl?version=1.6).
+
+To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+
+:::
+ 
 <VersionBlock firstVersion="1.6">
 
-:::info dbt Metrics isn't supported
+The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.com/blog/dbt-semantic-layer-whats-next/), improving governance, introducing new APIs, and making it more efficient to define/query metrics. This revamp means the dbt_metrics package and the legacy Semantic Layer, available in dbt v1.5 or lower, are no longer supported and won't receive any code fixes.
 
-dbt Metrics is no longer supported in v1.6 and higher. To build your semantic layer, define and query metrics, and provide data governance - refer to [Build your Semantic Layer](/docs/build/build-metrics-intro) for updated guidance.
+**What’s changed?** <br /> <br />
+The dbt_metrics package has been [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), a new framework for defining metrics in dbt. This means dbt_metrics is no longer supported after dbt v1.5 and won't receive any code fixes. We will also remove the dbt_metrics spec and docs when it's fully deprecated. 
 
-:::
+**Who does this affect?** <br /> <br />
+Anyone who uses the dbt_metrics package or is integrated with the legacy Semantic Layer. The new Semantic Layer is available to [Team or Enterprise](https://www.getdbt.com/pricing/) multi-tenant dbt Cloud plans [hosted in North America](/docs/cloud/about-cloud/regions-ip-addresses). You must be on dbt v1.6 or higher to access it. All users can define metrics using MetricFlow. Users on dbt Cloud Developer plans or dbt Core can only use it to define and test metrics locally, but can't dynamically query them with integrated tools.
+
+**What should you do?** <br /> <br />
+If you've defined metrics using dbt_metrics or integrated with the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use MetricFlow or the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+
+
 </VersionBlock>
-
+ 
 <VersionBlock lastVersion="1.5">
-
-:::info dbt Metrics not recommended
-
-dbt Metrics won't be supported in v1.6 and higher, and is being replaced with MetricFlow. [Defining metrics](/docs/build/build-semantic-layer-intro) with MetricFlow will help shape the future of the dbt Semantic Layer &mdash; let us know [your thoughts and join the convo](https://github.com/dbt-labs/dbt-core/discussions/7456) to help build it!
-
-:::
-
 
 <Changelog>
 
@@ -30,7 +39,6 @@ dbt Metrics won't be supported in v1.6 and higher, and is being replaced with Me
 * **v1.0.0**: Metrics are new and experimental
 
 </Changelog>
- 
 
 A metric is an aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
@@ -59,7 +67,7 @@ You can define metrics in `.yml` files nested under a `metrics:` key. Metric nam
 - begin with a letter
 - contain no more than 250 characters
 
-For a short human-friendly name with title casing, spaces, and special characters, use the `label` property. More examples and guidance for how to [define and structure metrics can be found here.](https://docs.getdbt.com/blog/how-to-design-and-structure-metrics).
+For a short human-friendly name with title casing, spaces, and special characters, use the `label` property. 
 
 ### Example definition
 
@@ -218,9 +226,12 @@ Metrics can have many declared **properties**, which define aspects of your metr
 ### Available calculation methods
 
 <VersionBlock firstVersion="1.3">
+
 The method of calculation (aggregation or derived) that is applied to the expression.
 </VersionBlock> 
+
 <VersionBlock lastVersion="1.2">
+
 The type of calculation (aggregation or expression) that is applied to the sql property.
 </VersionBlock> 
  
@@ -428,6 +439,11 @@ The following is the list of currently accepted metric configs:
 </VersionBlock>
 
 ## Querying Your Metric
+
+:::caution dbt_metrics is no longer supported
+The dbt_metrics package has been deprecated and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), a new way framework for defining metrics in dbt. This means dbt_metrics is no longer supported after dbt v1.5 and won't receive any code fixes.
+:::
+
 You can dynamically query metrics directly in dbt and verify them before running a job in the deployment environment.  To query your defined metric, you must have the [dbt_metrics package](https://github.com/dbt-labs/dbt_metrics) installed. Information on how to [install packages can be found here](https://docs.getdbt.com/docs/build/packages#how-do-i-add-a-package-to-my-project).
 
 Use the following [metrics package](https://hub.getdbt.com/dbt-labs/metrics/latest/) installation code in your packages.yml file and run `dbt deps` to install the metrics package:
@@ -541,6 +557,7 @@ The period to date secondary calculation performs an aggregation on a defined pe
 #### Rolling:
 
 <VersionBlock firstVersion="1.3" >
+
 The rolling secondary calculation performs an aggregation on a number of rows in metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4` then the value returned will be a rolling 4 week calculation of whatever aggregation type was selected. If the `interval` input is not provided then the rolling caclulation will be unbounded on all preceding rows.
 
 | Input                      | Example | Description | Required |
@@ -552,6 +569,7 @@ The rolling secondary calculation performs an aggregation on a number of rows in
 </VersionBlock>
 
 <VersionBlock lastVersion="1.2" >
+
 The rolling secondary calculation performs an aggregation on a number of rows in the metric dataset. For example, if the user selects the `week` grain and sets a rolling secondary calculation to `4`, then the value returned will be a rolling 4-week calculation of whatever aggregation type was selected.
 
 | Input                      | Example | Description | Required |
@@ -714,5 +732,7 @@ The above example will return a dataset that contains the metric provided in the
 
 </VersionBlock>
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
+
 <DiscourseHelpFeed tags="metrics"/>
+

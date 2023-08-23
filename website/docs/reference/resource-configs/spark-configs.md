@@ -9,7 +9,7 @@ To-do:
 - use the reference doc structure for this article/split into separate articles
 --->
 
-<Snippet src="dbt-databricks-for-databricks" />
+<Snippet path="dbt-databricks-for-databricks" />
 
 :::note
 See [Databricks configuration](#databricks-configs) for the Databricks version of this page.

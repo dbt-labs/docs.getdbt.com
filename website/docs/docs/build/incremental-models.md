@@ -57,6 +57,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses > to include records whose timestamp occurred since the last run of this model)
   where event_time > (select max(event_time) from {{ this }})
 
 {% endif %}
@@ -107,7 +108,7 @@ When you define a `unique_key`, you'll see this behavior for each row of "new" d
 * If the same `unique_key` is present in the "new" and "old" model data, dbt will update/replace the old row with the new row of data. The exact mechanics of how that update/replace takes place will vary depending on your database, [incremental strategy](#about-incremental_strategy), and [strategy specific configs](#strategy-specific-configs).
 * If the `unique_key` is _not_ present in the "old" data, dbt will insert the entire row into the table.
 
-Please note that if there's a `unique_key` with more than one row in either the existing target table or the new incremental rows, the incremental model run will fail. Your database and [incremental strategy](#about-incremental_strategy) will determine the specific error that you see, so if you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
+Please note that if there's a unique_key with more than one row in either the existing target table or the new incremental rows, the incremental model may fail depending on your database and [incremental strategy](#about-incremental_strategy). If you're having issues running an incremental model, it's a good idea to double check that the unique key is truly unique in both your existing database table and your new incremental rows. You can [learn more about surrogate keys here](/terms/surrogate-key).
 
 :::info
 While common incremental strategies, such as`delete+insert` + `merge`, might use `unique_key`, others don't. For example, the `insert_overwrite` strategy does not use `unique_key`, because it operates on partitions of data rather than individual rows. For more information, see [About incremental_strategy](#about-incremental_strategy).
@@ -137,6 +138,7 @@ from raw_app_data.events
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
+  -- (uses >= to include records arriving later on the same day as the last run of this model)
   where date_day >= (select max(date_day) from {{ this }})
 
 {% endif %}
@@ -393,7 +395,7 @@ models:
       cluster_by: ['session_start']  
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
+      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"]
       # `incremental_predicates` accepts a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
@@ -410,7 +412,7 @@ Alternatively, here are the same same configurations configured within a model f
     cluster_by = ['session_start'],  
     incremental_strategy = 'merge',
     incremental_predicates = [
-      "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      "DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"
     ]
   )
 }}
@@ -428,7 +430,7 @@ merge into <existing_table> DBT_INTERNAL_DEST
         DBT_INTERNAL_DEST.id = DBT_INTERNAL_SOURCE.id
         and
         -- custom predicate: limits data scan in the "old" data / existing table
-        DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)
+        DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)
     when matched then update ...
     when not matched then insert ...
 ```
@@ -456,5 +458,5 @@ The syntax depends on how you configure your `incremental_strategy`:
 
 </VersionBlock>
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="incremental"/>
