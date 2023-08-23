@@ -1,5 +1,7 @@
 const axios = require('axios')
 
+const TIMEOUT_DURATION = 10000;
+
 async function getDiscourseTopics({ body, res }) {
   const { DISCOURSE_API_KEY , DISCOURSE_USER } = process.env
 
@@ -18,7 +20,7 @@ async function getDiscourseTopics({ body, res }) {
     if(!query) throw new Error('Unable to build query string.')
     
     // Get topics from Discourse
-    let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers })
+    let { data: { posts, topics } } = await axios.get(`${discourse_endpoint}/search?q=${query}`, { headers, timeout: TIMEOUT_DURATION })
     console.log('API Response:', posts, topics);
 
     // Return empty array if no topics found for search query
