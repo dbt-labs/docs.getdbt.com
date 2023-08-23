@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/docs/deploy/job-triggers",
@@ -899,11 +900,6 @@
     {
       "source": "/docs/quickstarts/dbt-cloud/bigquery",
       "destination": "/quickstarts/bigquery",
-      "permanent": true
-    },
-    {
-      "source": "/quickstarts/databricks",
-      "destination": "/quickstarts/databricks",
       "permanent": true
     },
     {
