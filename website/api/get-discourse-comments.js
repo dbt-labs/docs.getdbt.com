@@ -75,7 +75,6 @@ async function getDiscourseComments(req, res) {
     comments.shift();
     comments = { topicId, comments };
 
-    //return await returnResponse(200, comments);
     return await res.status(200).json(comments);
   } catch (err) {
     console.log("err on getDiscourseComments", err);
