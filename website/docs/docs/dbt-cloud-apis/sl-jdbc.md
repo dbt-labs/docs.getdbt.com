@@ -217,7 +217,7 @@ select * from {{
 
 Where filters in API allow for a filter list or string. We recommend using the filter list for production application as this format will realize all benefits from predicate pushdown where possible. 
 
-Where Filters have a few objects that can be used:
+Where Filters have a few objects that you can use:
 
 - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
