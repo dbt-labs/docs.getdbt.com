@@ -208,6 +208,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/databend-setup",
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/decodable-setup",
+                "docs/core/connect-data-platform/upsolver-setup",
               ],
             },
           ],
@@ -615,6 +616,7 @@ const sidebarSettings = {
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
         "reference/resource-configs/oracle-configs",
+        "reference/resource-configs/upsolver-configs",
       ],
     },
     {
