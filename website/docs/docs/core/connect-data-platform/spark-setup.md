@@ -119,9 +119,7 @@ your_profile_name:
       port: [port]              # default 443
       user: [user]
       server_side_parameters:
-        # cluster configuration parameters, otherwise applied via `SET` statements
-        # for example:
-        # "spark.databricks.delta.schema.autoMerge.enabled": True
+        "spark.driver.memory": "4g" 
 ```
 
 </File>
@@ -148,6 +146,8 @@ your_profile_name:
       auth: [e.g. KERBEROS]
       kerberos_service_name: [e.g. hive]
       use_ssl: [true|false]   # value of hive.server2.use.SSL, default false
+      server_side_parameters:
+        "spark.driver.memory": "4g" 
 ```
 
 </File>
@@ -176,6 +176,8 @@ your_profile_name:
       user: [user]
       connect_timeout: 60       # default 10
       connect_retries: 5        # default 0
+      server_side_parameters:
+        "spark.driver.memory": "4g" 
 ```
 
 </File>
@@ -201,6 +203,8 @@ your_profile_name:
       method: session
       schema: [database/schema name]
       host: NA                           # not used, but required by `dbt-core`
+      server_side_parameters:
+        "spark.driver.memory": "4g" 
 ```
 
 </File>
@@ -229,6 +233,11 @@ connect_retries: 3
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.7">
+### Server side configuration
+
+Spark can be customized using [Application Properties](https://spark.apache.org/docs/latest/configuration.html). Using these properties the execution can be customized, for example, to allocate more memory to the driver process. Also, the Spark SQL runtime can be set through these properties. For example, this allows the user to [set a Spark catalogs](https://spark.apache.org/docs/latest/configuration.html#spark-sql).
+</VersionBlock>
 ## Caveats
 
 ### Usage with EMR

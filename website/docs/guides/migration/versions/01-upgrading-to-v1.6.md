@@ -21,14 +21,22 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Behavior changes
 
+:::info Action required if your project defines `metrics`
+
+The [spec for metrics](https://github.com/dbt-labs/dbt-core/discussions/7456) has changed and now uses [MetricFlow](/docs/build/about-metricflow). 
+
+:::
+
+If your dbt project defines metrics, you must migrate to dbt v1.6 because the YAML spec has moved from dbt_metrics to MetricFlow. Any tests you have won't compile on v1.5 or older. 
+
 - dbt Core v1.6 does not support Python 3.7, which reached End Of Life on June 23. Support Python versions are 3.8, 3.9, 3.10, and 3.11.
-- As part of the Semantic layer re-launch (in beta), the spec for `metrics` has changed significantly. Migration guide coming soon: https://github.com/dbt-labs/docs.getdbt.com/pull/3705
+- As part of the [dbt Semantic layer](/docs/use-dbt-semantic-layer/dbt-sl) re-launch (in beta), the spec for `metrics` has changed significantly. Refer to the [migration guide](/guides/migration/sl-migration) for more info on how to migrate to the re-launched dbt Semantic Layer.
 - The manifest schema version is now v10.
 - dbt Labs is ending support for Homebrew installation of dbt-core and adapters. See [the discussion](https://github.com/dbt-labs/dbt-core/discussions/8277) for more details.
 
 ### For consumers of dbt artifacts (metadata)
 
-The [manifest](/reference/artifacts/manifest-json) schema version has updated to `v10`. Specific changes:
+The [manifest](/reference/artifacts/manifest-json) schema version has been updated to `v10`. Specific changes:
 - Addition of `semantic_models` and changes to `metrics` attributes
 - Addition of `deprecation_date` as a model property
 - Addition of `on_configuration_change` as default node configuration (to support materialized views)
@@ -41,14 +49,19 @@ For more detailed information and to ask questions, please read and comment on t
 
 ## New and changed documentation
 
+### MetricFlow
+
+- [**Build your metrics**](/docs/build/build-metrics-intro) with MetricFlow, a key component of the dbt Semantic Layer. You can define your metrics and build semantic models with MetricFlow, available on the command line (CLI) for dbt Core v1.6 beta or higher.
+
 ### Materialized views
 
 Supported on:
 - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
 - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
 - Snowflake (docs forthcoming)
+- Databricks (docs forthcoming)
 
-Support for BigQuery and Databricks forthcoming.
+Support for BigQuery coming soon.
 
 ### New commands for mature deployment
 
@@ -77,3 +90,4 @@ More consistency and flexibility around packages. Resources defined in a package
 - [`dbt debug --connection`](/reference/commands/debug) to test just the data platform connection specified in a profile
 - [`dbt docs generate --empty-catalog`](/reference/commands/cmd-docs) to skip catalog population while generating docs
 - [`--defer-state`](/reference/node-selection/defer) enables more-granular control 
+

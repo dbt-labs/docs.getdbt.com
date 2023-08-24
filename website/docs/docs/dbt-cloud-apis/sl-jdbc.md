@@ -28,9 +28,9 @@ dbt Labs partners can use the JDBC API to build integrations in their tools with
 
 ## Using the JDBC API
 
-If you are a dbt user or partner with access to dbt Cloud and the[dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
+If you are a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
 
-Refer to [Get started with the dbt Semantic Layer](docs/use-dbt-semantic-layer/quickstart-sl) for more info.
+Refer to [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl) for more info.
 
 ## Authentication
 
@@ -93,7 +93,7 @@ Note, `metrics` is a required argument that lists with one or multiple metrics i
 
 ```bash
 select * from {{ 
-semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="customer__customer_name")}}
+semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['customer__customer_name'])}}
 ```
 
 </TabItem>
@@ -135,10 +135,10 @@ To query metric values, here are the following parameters that are available:
 
 | Parameter | Description  | Example    | Type |
 | --------- | -----------| ------------ | -------------------- |
-| `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=[revenue]` | Required    |
-| `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=[user__country, metric_time]`     | Optional   |
-| `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | ```group_by=[`Dimension('metric_time').``` <br/> ```grain('week\|day\|month\|quarter\|year')]``` | Optional     |
-| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where="Dimension('customer__country') = 'US')"`   | Optional   |
+| `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | Required    |
+| `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`     | Optional   |
+| `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
+| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
 | `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
@@ -146,7 +146,7 @@ To query metric values, here are the following parameters that are available:
 
 ## Note on time dimensions and `metric_time`
 
-You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`'. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
+You will notice that in the list of dimensions for all metrics, there is a dimension called `metric_time`. `Metric_time` is a reserved keyword for the measure-specific aggregation time dimensions. For any time-series metric, the `metric_time` keyword should always be available for use in queries. This is a common dimension across *all* metrics in a semantic graph. 
 
 You can look at a single metric or hundreds of metrics, and if you group by `metric_time`, it will always give you the correct time series.
 
@@ -157,7 +157,7 @@ Note that `metric_time` should be available in addition to any other time dimens
 
 ## Examples
 
-Use the following examples to help you get started with the JDBC API
+Refer to the following examples to help you get started with the JDBC API.
 
 ### Fetch metadata for metrics
 
@@ -229,19 +229,9 @@ Use the following example to query using a `where` filter:
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10)
+where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
 }}
 ```
-
-Use the following example to query using a `where` filter:
-
-```bash
-select * from {{
-semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
-group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new')")
-}}
-``` 
 
 ### Query with a limit and order_by
 
@@ -277,4 +267,8 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 
 - **What is the default output when adding granularity?**<br />
 	The default output follows the format `{time_dimension_name}__{granularity_level}`. So for example, if the time dimension name is `ds` and the granularity level is yearly, the output is `ds__year`.
+
+## Related docs
+
+- [dbt Semantic Layer integration best practices](/guides/dbt-ecosystem/sl-partner-integration-guide)
 

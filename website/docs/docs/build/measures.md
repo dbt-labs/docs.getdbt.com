@@ -8,8 +8,8 @@ tags: [Metrics, Semantic Layer]
 
 Measures are aggregations performed on columns in your model. They can be used as final metrics or serve as building blocks for more complex metrics. Measures have several inputs, which are described in the following table along with their field types.
 
-| Parameter | Description | Field type |
-| --- | --- | --- |
+| Parameter | Description | Type |
+| --------- | ----------- | ---- |
 | [`name`](#name) | Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required |
 | [`description`](#description) | Describes the calculated measure. | Optional |
 | [`agg`](#aggregation) | dbt supports aggregations such as `sum`, `min`, `max`, and more. Refer to [Aggregation](/docs/build/measures#aggregation) for the full list of supported aggregation types. | Required |
@@ -198,7 +198,6 @@ semantic_models:
         type: time
         expr: date_transaction
         type_params:
-          is_primary: True
           time_granularity: day
 
     measures: 

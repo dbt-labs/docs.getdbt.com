@@ -395,7 +395,7 @@ models:
       cluster_by: ['session_start']  
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
+      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"]
       # `incremental_predicates` accepts a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
@@ -412,7 +412,7 @@ Alternatively, here are the same same configurations configured within a model f
     cluster_by = ['session_start'],  
     incremental_strategy = 'merge',
     incremental_predicates = [
-      "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      "DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"
     ]
   )
 }}
@@ -430,7 +430,7 @@ merge into <existing_table> DBT_INTERNAL_DEST
         DBT_INTERNAL_DEST.id = DBT_INTERNAL_SOURCE.id
         and
         -- custom predicate: limits data scan in the "old" data / existing table
-        DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)
+        DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)
     when matched then update ...
     when not matched then insert ...
 ```

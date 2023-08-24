@@ -1,3 +1,27 @@
+# Deprecating Discovery API (FKA Metadata API) legacy endpoints
+
+/docs/dbt-cloud-apis/discovery-schema-model /docs/dbt-cloud-apis/discovery-schema-job-model 301
+/docs/dbt-cloud-apis/discovery-schema-models /docs/dbt-cloud-apis/discovery-schema-job-models 301
+/docs/dbt-cloud-apis/discovery-schema-modelByEnv /docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns 301
+/docs/dbt-cloud-apis/discovery-schema-metric /docs/dbt-cloud-apis/discovery-schema-job-metric 301
+/docs/dbt-cloud-apis/discovery-schema-metrics /docs/dbt-cloud-apis/discovery-schema-job-metrics 301
+/docs/dbt-cloud-apis/discovery-schema-source /docs/dbt-cloud-apis/discovery-schema-job-source 301
+/docs/dbt-cloud-apis/discovery-schema-sources /docs/dbt-cloud-apis/discovery-schema-job-sources 301
+/docs/dbt-cloud-apis/discovery-schema-seed /docs/dbt-cloud-apis/discovery-schema-job-seed 301
+/docs/dbt-cloud-apis/discovery-schema-seeds /docs/dbt-cloud-apis/discovery-schema-job-seeds 301
+/docs/dbt-cloud-apis/discovery-schema-snapshots /docs/dbt-cloud-apis/discovery-schema-job-snapshots 301
+/docs/dbt-cloud-apis/discovery-schema-test /docs/dbt-cloud-apis/discovery-schema-job-test 301
+/docs/dbt-cloud-apis/discovery-schema-tests /docs/dbt-cloud-apis/discovery-schema-job-tests 301
+/docs/dbt-cloud-apis/discovery-schema-exposure /docs/dbt-cloud-apis/discovery-schema-job-exposure 301
+/docs/dbt-cloud-apis/discovery-schema-exposures /docs/dbt-cloud-apis/discovery-schema-job-exposures 301
+
+# deploy redirects
+
+/docs/deploy/job-triggers /docs/deploy/deploy-jobs 301
+/docs/deploy/job-settings /docs/deploy/deploy-jobs 301
+/docs/deploy/dbt-cloud-job /docs/deploy/deploy-jobs 301
+/faqs/environments/beta-release  /docs/dbt-versions/product-lifecycles 301
+
 /docs/deploy/slim-ci-jobs /docs/deploy/ci-jobs 301
 
 ## semantic layer
@@ -18,6 +42,7 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /docs/cloud/manage-access/licenses-and-groups /docs/cloud/manage-access/about-user-access 301
 
 /docs/deploy/cloud-ci-job /docs/deploy/continuous-integration 301
+
 ## quickstarts redirect again
 
 /docs/quickstarts/dbt-cloud/bigquery         /quickstarts/bigquery 301
@@ -106,7 +131,6 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /docs/dbt-cloud-apis/metadata-api /docs/dbt-cloud-apis/discovery-api 301
 /docs/dbt-cloud-apis/metadata-querying /docs/dbt-cloud-apis/discovery-querying 301
 
-
 /docs/core/connection-profiles#understanding-threads /docs/running-a-dbt-project/using-threads 301
 
 # PrivateLink to Secure redirects
@@ -146,7 +170,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
 /docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
 /docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
-/docs/cloud/manage-access/about-access 301 /docs/cloud/manage-access/about-user-access 301
+/docs/cloud/manage-access/about-access /docs/cloud/manage-access/about-user-access 301
 /docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
 /docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
 /docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
@@ -761,6 +785,10 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/getting-help /guides/legacy/getting-help 301
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
+
+/guides/best-practices/environment-setup/1-env-guide-overview /guides/orchestration/set-up-ci/overview 301
+/guides/best-practices/environment-setup/2-one-deployment-environment /guides/orchestration/set-up-ci/in-15-minutes 301
+/guides/best-practices/environment-setup/3-many-deployment-environments /guides/orchestration/set-up-ci/multiple-environments 301
 
 # adapter development docs
 
