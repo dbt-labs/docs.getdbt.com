@@ -30,7 +30,7 @@ Each command returns a `dbtRunnerResult` object, which has three attributes:
 - `result`: If the command completed (successfully or with handled errors), its result(s). Return type varies by command.
 - `exception`: If the dbt invocation encountered an unhandled error and did not complete, the exception it encountered.
 
-There is a 1:1 correspondence between [CLI exit codes](reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
+There is a 1:1 correspondence between [CLI exit codes](/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
 
 | Scenario                                                                                    | CLI Exit Code | `success` | `result`         | `exception` |
 |---------------------------------------------------------------------------------------------|--------------:|-----------|-------------------|-------------|
