@@ -6,7 +6,7 @@ description: "Upsolver Configurations - Read this in-depth guide to learn about 
 
 ## Supported Upsolver SQLake functionality:
 
-| COMMAND | STATE | MATERIALIZED |
+| Command | State | Materialized |
 | ------ | ------ | ------ |
 | SQL compute cluster| not supported | - |
 | SQL connections| supported | connection |
