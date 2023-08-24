@@ -93,7 +93,7 @@ Note, `metrics` is a required argument that lists with one or multiple metrics i
 
 ```bash
 select * from {{ 
-semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="customer__customer_name")}}
+semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['customer__customer_name'])}}
 ```
 
 </TabItem>
