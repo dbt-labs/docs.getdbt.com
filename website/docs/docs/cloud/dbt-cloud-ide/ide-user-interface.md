@@ -95,7 +95,7 @@ The dbt Cloud IDE returns default row limits, however, you can also specify the 
 </ul>
 </details>
 
-2. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code and displays it in the **Compiled Code** tab. From dbt version 1.6 onwards, when you save changes to a model, you can compile its code with the model's specific context. This context is similar to what you'd have when building the model and involves useful context variables like `{{ this }} `or `{{ is_incremental() }}`.
+2. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code and displays it in the **Compiled Code** tab.
 
 
 Starting from dbt v1.6 or higher, after saving changes to a model, you can compile its code with the context of that model — same as you would get while building it — which includes context variables like `{{ this }}` or `{{ is_incremental() }}`.
