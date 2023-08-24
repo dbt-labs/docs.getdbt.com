@@ -83,7 +83,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the <Term id="dag" />. Refer to the following sub-bullets for more details on the console tabs and buttons.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-console-overview.jpg" width="100%" title="The Console section is located below the File editor and has various tabs and buttons to help execute tasks"/>
 
-1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the **Results** console tab. Starting from dbt v1.6 or higher, you can preview a selected portion of saved or unsaved code by highlighting it before clicking the **Preview** button.
+1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the **Results** console tab. From dbt v1.6 or higher, you can preview a selected portion of saved or unsaved code by highlighting it and then clicking the **Preview** button.
 
 <details>
 <summary>Row limits in IDE</summary>
