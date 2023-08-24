@@ -63,7 +63,7 @@ async function getDiscourseComments(request, response) {
         comments.shift();
         comments = { topicId, comments };
 
-        return await returnResponse(200, comments);
+        return await response.status(200).json(comments);
       } else {
         return await returnResponse(500, {
           error: "Unable to create Discourse topic TopicID is not a number.",
