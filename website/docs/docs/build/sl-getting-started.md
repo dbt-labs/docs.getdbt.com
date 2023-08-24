@@ -14,7 +14,7 @@ import DefineMetrics from '/snippets/_sl-define-metrics.md';
 import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
 import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
 
-This getting started page presents a sample workflow to help you create your first metrics in dbt Cloud or the command line (CLI). It uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) as the project data source and is available for you to use. If you prefer, you can create semantic models and metrics for your own dbt project.
+This getting started page presents a sample workflow to help you create your first metrics in dbt Cloud or the command-line interface (CLI). It uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) as the project data source and is available for you to use. If you prefer, you can create semantic models and metrics for your own dbt project.
 
 This guide will cover the following sections and steps:
 
