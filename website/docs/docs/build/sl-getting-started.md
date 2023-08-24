@@ -33,7 +33,7 @@ To fully experience the power of a universal [dbt Semantic Layer](/docs/use-dbt-
 - Have both your production and development environments running dbt version 1.6 or higher. Refer to [upgrade in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) for more info.
 - Use Snowflake, BigQuery, Databricks, Postgres (CLI only), or Redshift. (dbt Cloud Postgres support coming soon)
 -  Create a successful run in the environment where you configure the Semantic Layer. 
-   - **Note:** Semantic Layer currently supports the Deployment environment. (_development experience coming soon_)
+   - **Note:** Semantic Layer currently supports the Deployment environment for querying. (_development querying experience coming soon_)
 - Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
   - **Note:** dbt Core or Developer accounts can only query data manually using the [MetricFlow CLI](/docs/build/metricflow-cli) and SQL. To dynamically query metrics using external tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account with access to the Semantic Layer API.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the revamped dbt Semantic Layer.
