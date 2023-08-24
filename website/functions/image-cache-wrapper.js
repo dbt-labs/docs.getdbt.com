@@ -1,7 +1,7 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-
 // This function is used to break the cache on images
 // preventing stale or broken images from being served
+
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const CACHE_VERSION = '2'
 
