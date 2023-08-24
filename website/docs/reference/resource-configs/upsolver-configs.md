@@ -70,7 +70,7 @@ As a dbt model copy job is model with materialized='incremental'
 }}
 SELECT * FROM {{ ref(<model>) }}
 ```
-Running this model will  compile CREATE TABLE SQL(or ALTER TABLE if exists) and CREATE COPY JOB(or ALTER COPY JOB if exists) SQL and send it to Upsolver engine. Name of the table will be name of the model. Name of the job will be name of the model plus '_job'
+Running this model will  compile CREATE TABLE SQL(or ALTER TABLE if exists) and CREATE COPY JOB(or ALTER COPY JOB if exists) SQL and send it to Upsolver engine. Name of the table will be name of the model. Name of the job will be the name of the model plus '_job'
 
 
 ## SQL insert job
@@ -97,7 +97,7 @@ GROUP BY ...
 HAVING COUNT(DISTINCT orderid::string) ...
 ```
 
-Running this model will compile CREATE TABLE SQL(or ALTER TABLE if exists) and CREATE INSERT JOB(or ALTER INSERT JOB if exists) SQL and send it to Upsolver engine. Name of the table will be name of the model. Name of the job will be name of the model plus '_job'
+Running this model will compile CREATE TABLE SQL(or ALTER TABLE if exists) and CREATE INSERT JOB(or ALTER INSERT JOB if exists) SQL and send it to Upsolver engine. Name of the table will be name of the model. Name of the job will be the name of the model plus '_job'
 
 
 ## SQL merge job
@@ -124,14 +124,14 @@ GROUP BY ...
 HAVING COUNT ...
 ```
 
-Running this model will compile CREATE TABLE SQL(or ALTER TABLE if exists) and CREATE MERGE JOB(or ALTER MERGE JOB if exists) SQL and send it to Upsolver engine. Name of the table will be name of the model. Name of the job will be name of the model plus '_job'
+Running this model will compile CREATE TABLE SQL(or ALTER TABLE if exists) and CREATE MERGE JOB(or ALTER MERGE JOB if exists) SQL and send it to Upsolver engine. Name of the table will be name of the model. Name of the job will be the name of the model plus '_job'
 
 ## SQL materialized views
 
 When transforming your data, you may find that you need data from multiple source tables in order to achieve your desired result.
 In such a case, you can create a materialized view from one SQLake table in order to join it with your other table (which in this case is considered the main table). More details on ["Upsolver SQL materialized views"](https://docs.upsolver.com/sqlake/sql-command-reference/sql-jobs/create-job/sql-transformation-jobs/sql-materialized-views).
 
-As a dbt model materialized views  is model with materialized='materializedview'.
+As a dbt model materialized views are models with materialized='materializedview'.
 
 ```sql
 {{ config(  materialized='materializedview',
@@ -145,9 +145,9 @@ WHERE ...
 GROUP BY ...
 ```
 
-Running this model will compile CREATE MATERIALIZED VIEW SQL(or ALTER MATERIALIZED VIEW if exists) and send it to Upsolver engine. Name of the materializedview  will be name of the model.
+Running this model will compile CREATE MATERIALIZED VIEW SQL(or ALTER MATERIALIZED VIEW if exists) and send it to Upsolver engine. Name of the materializedview  will be the name of the model.
 
-## Expectations/constraints
+## Expectations and constraints
 
 Data quality conditions can be added to your job to drop a row or trigger a warning when a column violates a predefined condition.
 
@@ -190,7 +190,7 @@ models:
 
 ## Projects examples
 
-> projects examples link: [github.com/dbt-upsolver/examples/](https://github.com/Upsolver/dbt-upsolver/tree/main/examples)
+> Refer to the projects examples link: [github.com/dbt-upsolver/examples/](https://github.com/Upsolver/dbt-upsolver/tree/main/examples)
 
 ## Connection options
 
