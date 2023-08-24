@@ -49,7 +49,7 @@ const metadataBetaUrl = 'https://metadata.cloud.getdbt.com/beta/graphql'
 const queryArgsQuery = `{
   __schema {
     queryType {
-      fields {
+      fields(includeDeprecated: true) {
         name
         type {
           name

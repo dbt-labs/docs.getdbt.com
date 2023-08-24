@@ -14,25 +14,18 @@ The following installation instructions are for the dbt Cloud CLI, currently in 
 
 ### Install and update with Brew on MacOS (recommended)
 
-Install the CLI: 
+1. Install the CLI: 
 
 ```bash
 brew tap dbt-labs/dbt-cli
 brew install dbt-cloud-cli
 ```
 
-Verify the installation:
+2. Verify the installation by requesting your homebrew installation path (not your dbt core installs). If the `which dbt` command returns nothing, then you should modify your PATH in `~.zshrc` or create an alias.
 
 ```bash
 which dbt
 dbt --help
-```
-
-#### Upgrade the CLI with Brew
-
-```bash
-brew update
-brew upgrade dbt-cloud-cli
 ```
 
 ### Manually install (Windows and Linux)
@@ -42,7 +35,7 @@ brew upgrade dbt-cloud-cli
 3. Move to a directory with a dbt project, and create a `dbt_cloud.yml` file containing your `project-id` from dbt Cloud.
 4. Invoke `dbt --help` from your terminal to see a list of supported commands.
 
-#### Updating dbt Cloud installation (Windows + Linux)
+#### Updating your dbt Cloud installation (Windows + Linux)
 
 Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-only) and replace the existing `dbt` executable with the new one. You should not have to go through the security steps again.
 
@@ -52,7 +45,9 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
 
 2. Ensure that your personal [development credentials](https://cloud.getdbt.com/settings/profile/credentials) are set on the project.
 
-3. Create an environment variable with your [dbt cloud API key](https://cloud.getdbt.com/settings/profile#api-access):
+3. Navigate to [your profile](https://cloud.getdbt.com/settings/profile) and enable the "beta features" flag under "Experimental Features."
+
+4. Create an environment variable with your [dbt cloud API key](https://cloud.getdbt.com/settings/profile#api-access):
 
 ```bash
 
@@ -65,20 +60,20 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
    
 ```
 
-4. Load the new environment variable. Note: you may need to reactivate your python virtual environment after sourcing your shell's dot file. Alternatively, restart your shell instead of sourcing the shell's dot file
+5. Load the new environment variable. Note: you may need to reactivate your python virtual environment after sourcing your shell's dot file. Alternatively, restart your shell instead of sourcing the shell's dot file
 
 ```bash
    > $ source ~/.zshrc
 ```
 
-5. Navigate to a dbt project
+6. Navigate to a dbt project
 
 ```bash
    > $ cd ~/dbt-projects/jaffle_shop
 ```
 
-6. Ensure that a `dbt_cloud.yml` file exists in the project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary):
-You can find your project ID by selecting your project and clicking on **documentation** in the navigation bar. Your project ID is the number in the URL: https://cloud.getdbt.com/documentation/1/projects/{project id}.
+7. Create a dbt_cloud.yml in the root project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary):
+
 ```bash
 > $ pwd
 /Users/user/dbt-projects/jaffle_shop
@@ -87,14 +82,16 @@ You can find your project ID by selecting your project and clicking on **documen
 project-id: '123456'
 ```
 
-7. The following commands are supported as of now (we will be adding more in the future):
+You can find your project ID by selecting your project and clicking on **Develop** in the navigation bar. Your project ID is the number in the URL: https://cloud.getdbt.com/develop/26228/projects/`PROJECT_ID`.
 
-- `dbt run`
-- `dbt build`
-- `dbt deps`
-- `dbt cancel`
-- `dbt reattach`
-- `dbt --help`
+If dbt_cloud.yml already exists, edit the file and verify the project ID field uses a valid project ID.
+
+#### Upgrade the CLI with Brew
+
+```bash
+brew update
+brew upgrade dbt-cloud-cli
+```
 
 ## Using dbt Cloud CLI
 

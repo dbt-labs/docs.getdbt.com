@@ -84,7 +84,7 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 - **Unsaved, local code &mdash;** The browser stores your code only in its local storage. In this state, you might need to commit any unsaved changes in order to switch branches or browsers. If you have saved and committed changes, you can access the "Change branch" option even if there are unsaved changes. But if you attempt to switch branches without saving changes, a warning message will appear, notifying you that you will lose any unsaved changes.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-unsaved-modal.jpg" width="85%" title="If you attempt to switch branches without saving changes, a warning message will appear, telling you that you will lose your changes."/>
 
-- **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage. To access the Change branch option, you must "Commit and sync" or "Revert" changes - changing branches isn't available for saved-but-uncommitted code.
+- **Saved but uncommitted code &mdash;** When you save a file, the data gets stored in durable, long-term storage, but isn't synced back to git. To switch branches using the **Change branch** option, you must "Commit and sync" or "Revert" changes. Changing branches isn't available for saved-but-uncommitted code. This is to ensure your uncommitted changes don't get lost.
 - **Committed code &mdash;** This is stored in the branch with your git provider and you can check out other (remote) branches.
 
 ## Access the Cloud IDE
