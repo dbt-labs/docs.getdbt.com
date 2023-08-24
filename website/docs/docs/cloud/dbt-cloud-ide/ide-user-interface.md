@@ -95,7 +95,7 @@ The dbt Cloud IDE returns default row limits, however, you can also specify the 
 </ul>
 </details>
 
-2. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code from the active file editor, and outputs it to the **Compiled Code** tab.  Starting from dbt v1.6 or higher, you can compile a selected portion of saved or unsaved code by highlighting it before clicking the **Compile** button.
+2. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code from the active file editor, and outputs it to the **Compiled Code** tab. Starting from dbt v1.6 or higher, after saving changes to a model, you can compile its code with the context of that model — same as you would get while building it — which includes context variables like `{{ this }}` or `{{ is_incremental() }}`.
 
 3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
 
