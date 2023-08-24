@@ -63,7 +63,7 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 
 ### Customize linting
 
-SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE.  
+SQLFluff is a configurable SQL linter, which means you can configure your own linting rules instead of using the default linting settings in the IDE. You can exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2). 
 
 To configure your own linting rules:
 
@@ -76,7 +76,7 @@ To configure your own linting rules:
 
 :::tip Configure dbtonic linting rules
 
-Use the following code example to incorporate well-written dbt code (or dbtonic) to your linting:
+Refer to the [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) to add the dbt code (or dbtonic) rules we use for our own projects:
 
 <details>
 <summary>dbtonic config code example provided by dbt Labs</summary>
@@ -122,6 +122,8 @@ capitalisation_policy = lower
 group_by_and_order_by_style = implicit
 ```
 </details>
+
+For more info on styling best practices, refer to [How we style our SQL](/guides/best-practices/how-we-style/2-how-we-style-our-sql).
 :::
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-sqlfluff-config.jpg" width="95%" title="Customize linting by configuring your own linting code rules, including dbtonic linting/styling."/>

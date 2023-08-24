@@ -70,7 +70,7 @@ All included successful models built numbers above reflect our most current pric
 
 :::note Legacy pricing plans
  
-Customers who purchased the dbt Cloud Team plan before August 8, 2023, may be on a legacy pricing plan that only includes seat-based charges. Legacy plan pricing will be supported through at least July 2024, although we may not release all new features to legacy plan subscribers. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. To ensure you have access to new features for each plan, you can upgrade now or [contact us](mailto:support@getdbt.com) with questions.
+Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain on a legacy pricing plan as long as their account is in good standing. The legacy pricing plan is based on seats and includes unlimited models subject to reasonable use. dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. 
 
 :::
 
