@@ -4,19 +4,19 @@ id: "deploy-environments"
 description: "Learn about dbt Cloud's deployment environment to seamlessly schedule jobs or enable CI."
 ---
 
-Deployment environments in dbt Cloud are crucial for deploying dbt jobs. To execute dbt, environments determine the settings used during job runs, including:
+Deployment environments in dbt Cloud are crucial for deploying dbt jobs in production and using features or integrations that depend on dbt metadata or results. To execute dbt, environments determine the settings used during job runs, including:
 
 - The version of dbt Core that will be used to run your project
 - The warehouse connection information (including the target database/schema settings)
 - The version of your code to execute
 
-A dbt Cloud project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/job-settings#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
+A dbt Cloud project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
 :::tip Learn how to manage dbt Cloud environments
 To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview).
 ::: 
-
-This page will go over the different types of environments and how to intuitively configure your deployment environment in dbt Cloud. 
+ 
+This page reviews the different types of environments and how to configure your deployment environment in dbt Cloud. 
 
 import CloudEnvInfo from '/snippets/_cloud-environments-info.md';
 
@@ -28,9 +28,19 @@ To create a new dbt Cloud development environment, navigate to **Deploy** -> **E
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/create-deploy-env.jpg" width="85%" title="Navigate to Deploy ->  Environments to create a deployment environment" />
 
+### Set as production environment (Beta)
+
+import ExpBeta from '/snippets/_explorer-beta-banner.md';  
+
+<ExpBeta/>
+
+<Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/prod-settings.jpg" width="70%" title="Set your production environment as the default environment in your Environment Settings"/>
+
+In dbt Cloud, each project can have one designated deployment environment, which serves as its production environment. This production environment is _essential_ for using features like dbt Explorer and cross-project references. It acts as the source of truth for the project's production state in dbt Cloud.
+
 ### Semantic Layer
 
-For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer) has the most up-to-date setup instructions!
+For Semantic Layer-eligible customers, the next section of environment settings is the Semantic Layer configurations. [The Semantic Layer setup guide](/docs/use-dbt-semantic-layer/setup-sl) has the most up-to-date setup instructions!
 
 ### Deployment connection
 
@@ -181,7 +191,7 @@ This section allows you to determine the credentials that should be used when co
 ## Related docs
 
 - [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
-- [Deploy dbt jobs](/docs/deploy/dbt-cloud-job)
-- [Deploy CI jobs](/docs/deploy/continuous-integration)
+- [Deploy jobs](/docs/deploy/deploy-jobs)
+- [CI jobs](/docs/deploy/continuous-integration)
 - [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)
 

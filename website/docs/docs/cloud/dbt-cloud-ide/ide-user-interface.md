@@ -28,7 +28,7 @@ The IDE streamlines your workflow, and features a popular user interface layout 
 4. **File Explorer &mdash;** The File Explorer shows the filetree of your repository. You can:
     - Click on any file in the filetree to open the file in the File Editor. 
     - Click and drag files between directories to move files. 
-    - Right click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
+    - Right-click a file to access the sub-menu options like duplicate file, copy file name, copy as `ref`, rename, delete.
     - **Note**: To perform these actions, the user must not be in `read-only` mode, which generally happens when the user is viewing the default branch.
     - Use file indicators, located to the right of your files or folder name, to see when changes or actions were made:
       * Unsaved (•) — The IDE detects unsaved changes to your file/folder
@@ -72,23 +72,32 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 - **Git Diff View &mdash;** Clicking on a file in the **Changes** section of the **Version Control Menu** will open the changed file with Git Diff view. The editor will show the previous version on the left and the in-line changes made on the right.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-git-diff-view-with-save.jpg" width="100%" title="The Git Diff View displays the previous version on the left and the changes made on the right of the Editor"/>
 
-- **Markdown Preview console tab &mdash;** The Markdown Preview console tab shows a preview of your .md file's markdown code in your repository, and updates it automatically as you edit your code.
+- **Markdown Preview console tab &mdash;** The Markdown Preview console tab shows a preview of your .md file's markdown code in your repository and updates it automatically as you edit your code.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-markdown-with-save.jpg" width="100%" title="The Markdown Preview console tab renders markdown code below the Editor tab."/>
 
 - **CSV Preview console tab &mdash;** The CSV Preview console tab displays the data from your CSV file in a table, which updates automatically as you edit the file in your seed directory.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-csv.jpg" width="100%" title="View csv code in the CSV Preview console tab below the Editor tab."/>
 
 ## Console section
+
 The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the <Term id="dag" />. Refer to the following sub-bullets for more details on the console tabs and buttons.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-console-overview.jpg" width="100%" title="The Console section is located below the File editor and has various tabs and buttons to help execute tasks"/>
 
-1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not, and sends the results to the Results console tab. 
-   * To prevent the IDE from returning too much data and causing browser problems, a limit of 500 is automatically added to queries executed via the Preview Button. However, you can change this by adding `limit your_number` at the end of your SQL statement. For example, `SELECT * FROM` table `limit 100` will return up to 100 rows. Remember that you must write the `limit your_number` explicitly and cannot derive it from a macro. 
-   * The IDE also supports `SELECT TOP #`, which specifies the number of records to return.
+1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the Results console tab. 
+
+<details>
+<summary>Row limits in IDE</summary>
+The dbt Cloud IDE returns default row limits, however, you can also specify the number of records returned. Refer to the following sub-bullets for more info: <br /><br />
+<ul>
+<li><b>500-row limit:</b> To prevent the IDE from returning too much data and causing browser problems, dbt automatically sets a 500-row limit when using the <b>Preview Button</b>. You can modify this by adding <code>limit your_number</code> at the end of your SQL statement. For example, <code>SELECT * FROM</code> table <code>limit 100</code> will return up to 100 rows. Remember that you must write the <code>limit your_number</code> explicitly and cannot derive it from a macro.</li>
+<li><b>Change row limit default:</b> In dbt version 1.6 or higher, you have the ability to change the default limit of 500 rows shown in the <b>Results</b> tab when you run a query. To adjust the setting you can click on <b>Change row display</b> next to the displayed rows. Keep in mind that you can't set it higher than 10,000 rows. If you refresh the page or close your development session, the default limit will go back to 500 rows.</li>
+<li><b>Specify records returned:</b> The IDE also supports <code>SELECT TOP #</code>, which specifies the number of records to return.</li>
+</ul>
+</details>
 
 2. **Compile button &mdash;** The Compile button compiles the SQL code from the active File Editor, irrespective of its save status, and outputs it to the Compiled Code tab.
 
-3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
+3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
 
 3. **Format button &mdash;** The editor has a **Format** button that can reformat the contents of your files. For SQL files, it uses either `sqlfmt` or `sqlfluff`, and for Python files, it uses `black`.
 
@@ -106,9 +115,10 @@ The console section, located below the File editor, includes various console tab
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/lineage-console-tab.jpg" width="100%" title="View resource lineage in the Lineage tab"/>
 
 ## Invocation history
-The Invocation History Drawer stores information on dbt invocations in the IDE. When you invoke a command (like execute a dbt command such as `dbt run`), the associated logs are displayed in the Invocation History Drawer. 
 
-You can open the drawer multiple ways: 
+The Invocation History Drawer stores information on dbt invocations in the IDE. When you invoke a command, like executing a dbt command such as `dbt run`, the associated logs are displayed in the Invocation History Drawer. 
+
+You can open the drawer in multiple ways: 
 - Clicking the `^` icon next to the Command bar on the lower left of the page
 - Typing a dbt command and pressing enter
 - Or pressing Control-backtick (or Ctrl + `)
@@ -117,15 +127,15 @@ You can open the drawer multiple ways:
 
 1. **Invocation History list &mdash;** The left-hand panel of the Invocation History Drawer displays a list of previous invocations in the IDE, including the command, branch name, command status, and elapsed time.
 
-2. **Invocation Summary &mdash;** The Invocation Summary, located above **System Logs**, displays information about a selected command from the Invocation History list , such as the command, its status (`Running` if it's still running), the git branch that was active during the command, and the time the command was invoked.
+2. **Invocation Summary &mdash;** The Invocation Summary, located above **System Logs**, displays information about a selected command from the Invocation History list, such as the command, its status (`Running` if it's still running), the git branch that was active during the command, and the time the command was invoked.
 
-3. **System Logs toggle &mdash;** The System Logs toggle, located under the Invocation Summary, allows the user to see the full stdout and debug logs for entirety of the invoked command. 
+3. **System Logs toggle &mdash;** The System Logs toggle, located under the Invocation Summary, allows the user to see the full stdout and debug logs for the entirety of the invoked command. 
 
-4. **Command Control button &mdash;** Use the Command Control button, located on the right-side, to control your invocation and cancel or rerun a selected run.
+4. **Command Control button &mdash;** Use the Command Control button, located on the right side, to control your invocation and cancel or rerun a selected run.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-results.jpg" width="100%" title="The Invocation History list displays a list of previous invocations in the IDE"/>
 
-5. **Node Summary tab &mdash;** Clicking on the Results Status Tabs will filter the Node Status List based on their corresponding status. The available statuses are Pass (successful invocation of a node), Warn (test executed with warning), Error (database error or test failure), Skip (nodes not run due to upstream error), and Queued (nodes that have not executed yet).
+5. **Node Summary tab &mdash;** Clicking on the Results Status Tabs will filter the Node Status List based on their corresponding status. The available statuses are Pass (successful invocation of a node), Warn (test executed with a warning), Error (database error or test failure), Skip (nodes not run due to upstream error), and Queued (nodes that have not executed yet).
 
 6. **Node result toggle &mdash;** After running a dbt command, information about each executed node can be found in a Node Result toggle, which includes a summary and debug logs. The Node Results List lists every node that was invoked during the command.
 
@@ -135,12 +145,12 @@ You can open the drawer multiple ways:
 ## Modals and Menus
 Use menus and modals to interact with IDE and access useful options to help your development workflow. 
 
-- **Editor tab menu &mdash;** To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.<Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.jpg" width="100%" title="Right click a tab to view the Editor tab menu options"/>
+- **Editor tab menu &mdash;** To interact with open editor tabs, right-click any tab to access the helpful options in the file tab menu.<Lightbox src="/img/docs/dbt-cloud/cloud-ide/editor-tab-menu-with-save.jpg" width="100%" title=" Right-click a tab to view the Editor tab menu options"/>
 
 - **File Search &mdash;** You can easily search for and navigate between files using the File Navigation menu, which can be accessed by pressing Command-O or Control-O or clicking on the 🔍 icon in the File Explorer.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-file-search-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
-- **Global Command Palette&mdash;** The Global Command Palette provides helpful shortcuts to interact with the IDE, such as git actions, specialized dbt commands, compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
+- **Global Command Palette&mdash;** The Global Command Palette provides helpful shortcuts to interact with the IDE, such as git actions, specialized dbt commands, and compile, and preview actions, among others. To open the menu, use Command-P or Control-P.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-global-command-palette-with-save.jpg" width="100%" title="The Command History returns a log and detail of all your dbt Cloud invocations."/>
 
 - **IDE Status modal &mdash;**  The IDE Status modal shows the current error message and debug logs for the server. This also contains an option to restart the IDE. Open this by clicking on the IDE Status button.
@@ -159,7 +169,7 @@ Use menus and modals to interact with IDE and access useful options to help your
 
   * Toggling between dark or light mode for a better viewing experience
   * Restarting the IDE
-  * Fully recloning your repository to refresh your git state and viewing status details
+  * Fully recloning your repository to refresh your git state and view status details
   * Viewing status details, including the IDE Status modal.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-options-menu-with-save.jpg" width="85%" title="Access the IDE Options menu to switch to dark or light mode, restart the IDE, reclone your repo, or view the IDE status"/>

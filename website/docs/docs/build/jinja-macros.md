@@ -126,7 +126,7 @@ from app_data.payments
 
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](/reference/dbt-jinja-functions/project_name):
 
