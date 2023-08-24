@@ -25,7 +25,7 @@ This guide will walk you through how to:
 - [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud
 - [Connect to and query the API](#connect-and-query-api) with dbt Cloud
 
-To fully experience the power of a universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+To experience the power of a universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 ## Prerequisites
 
