@@ -26,7 +26,7 @@ Once you've created a token, you can use it in the Authorization header of reque
 
     * Replace `{YOUR_ACCESS_URL}` with the appropriate [Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. For example, if your multi-tenant region is North America, your endpoint is `https://metadata.cloud.getdbt.com/graphql`. If your multi-tenant region is EMEA, your endpoint is `https://metadata.emea.dbt.com/graphql`.
 
-3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-model).
+3. For specific query points, refer to the [schema documentation](/docs/dbt-cloud-apis/discovery-schema-job).
 
 
 ## Run queries using HTTP requests
@@ -187,7 +187,7 @@ totalCount # Total number of records across all pages
 
 ### Filters
 
-Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-cloud-apis/discovery-schema-models#fields), [`runElapsedTime`](/docs/dbt-cloud-apis/discovery-schema-models#fields), or [`status`](/docs/dbt-cloud-apis/discovery-schema-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
+Filtering helps to narrow down the results of an API query. If you want to query and return only models and tests that are failing or find models that are taking too long to run, you can fetch execution details such as [`executionTime`](/docs/dbt-cloud-apis/discovery-schema-job-models#fields), [`runElapsedTime`](/docs/dbt-cloud-apis/discovery-schema-job-models#fields), or [`status`](/docs/dbt-cloud-apis/discovery-schema-job-models#fields). This helps data teams monitor the performance of their models, identify bottlenecks, and optimize the overall data pipeline.
 
 Below is an example that filters for results of models that have succeeded on their `lastRunStatus`:
 
@@ -230,4 +230,4 @@ query ModelsAndTests($environmentId: BigInt!, $first: Int!) {
 ## Related content
 
 - [Use cases and examples for the Discovery API](/docs/dbt-cloud-apis/discovery-use-cases-and-examples)
-- [Schema](/docs/dbt-cloud-apis/discovery-schema-model)
+- [Schema](/docs/dbt-cloud-apis/discovery-schema-job)
