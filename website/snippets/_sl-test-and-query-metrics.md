@@ -1,6 +1,6 @@
 :::important Testing and querying metrics in the dbt Cloud IDE not yet supported
 
-For public beta, testing or querying metrics in the dbt Cloud IDE isn't supported yet, however support is coming soon. 
+Support for testing or querying metrics in the dbt Cloud IDE is not available in the current beta but is coming soon. 
 
 You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. And you can [dynamically query metrics](#connect-and-query-api) with integrated tools on a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plan using the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview).
 
