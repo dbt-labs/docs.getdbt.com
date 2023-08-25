@@ -98,7 +98,7 @@ metrics: [String!]!
 ): [Dimension!]!
 ```
 
-**Fetch available time granularities given metrics**
+**Fetch available primary time granularities given metrics**
 
 ```graphql
 queryableGranularities(
@@ -207,8 +207,8 @@ DimensionType = [CATEGORICAL, TIME]
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time"] - TODO update with syntax for object
+    metrics: [{name: "food_order_amount"}]
+    groupBy: [{name: "metric_time}, {name:"customer__customer_type"}]
   ) {
     queryId
   }
@@ -221,22 +221,22 @@ mutation {
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month"] - TODO update with syntax for object
+    metrics: [{name:"order_total"}]
+    groupBy: [{name:"metric_time", grain:"month"}] 
   ) {
     queryId
   }
 }
 ```
 
-**Query with a categorical Dimension**
+**Query two metrics with a categorical Dimension**
 
 ```graphql
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month", "customer__customer_type"] - TODO update with syntax for object
+    metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
+    groupBy: [{name: "metric_time, grain: "month"}, {name:"customer__customer_type"}]
   ) {
     queryId
   }
@@ -271,8 +271,8 @@ mutation {
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month", "customer__customer_type")] - TODO update with syntax for object
+    metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
+    groupBy: [{name: "metric_time, grain: "month"}, {name:"customer__customer_type"}]
     order: ["-order_gross_profit"]
     limit: 10	
   ) {
@@ -287,8 +287,8 @@ mutation {
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: ["food_order_amount", "order_gross_profit"]
-    groupBy: ["metric_time__month", "customer__customer_type"] - TODO update with syntax for object
+    metrics: [{name: "food_order_amount"} {name: "order_gross_profit"}]
+    groupBy: [{name: "metric_time, grain: "month"}, {name:"customer__customer_type"}]
     explain: TODO
   ) {
     queryId
