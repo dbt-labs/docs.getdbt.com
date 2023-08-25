@@ -70,7 +70,7 @@ For more information on distkeys and sortkeys, view Amazon's docs:
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing a Data Distribution Style](https://docs.aws.amazon.com/redshift/latest/dg/t_Distributing_data.html)
 - [AWS Documentation » Amazon Redshift » Database Developer Guide » Designing Tables » Choosing Sort Keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
 
-## Late Binding Views
+## Late binding views
 
 Redshift supports <Term id="view">views</Term> unbound from their dependencies, or [late binding views](https://docs.aws.amazon.com/redshift/latest/dg/r_CREATE_VIEW.html#late-binding-views). This DDL option "unbinds" a view from the data it selects from. In practice, this means that if upstream views or tables are dropped with a cascade qualifier, the late-binding view does not get dropped as well.
 
@@ -104,13 +104,7 @@ models:
 
 <VersionBlock firstVersion="1.6">
 
-## Materialized Views
-
-<Changelog>
-
-  - **v1.6.0:** Introduced support for `materialized_view`
-
-</Changelog>
+## Materialized views
 
 The Redshift adapter supports [materialized views](https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html).
 Redshift-specific configuration includes the typical `dist`, `sort_type`, `sort`, and `backup`.
@@ -118,7 +112,7 @@ For materialized views, there is also the `auto_refresh` setting, which allows R
 The remaining configuration follows the general [materialized view](/docs/build/materializations#Materialized-View) configuration.
 There are also some limitations that we hope to address in the next version.
 
-### Monitored Configuration Changes
+### Monitored configuration changes
 
 The settings below are monitored for changes applicable to `on_configuration_change`.
 
@@ -127,7 +121,7 @@ The settings below are monitored for changes applicable to `on_configuration_cha
 Changes to `dist` will result in a full refresh of the existing materialized view (applied at the time of the next `dbt run` of the model). Redshift requires a materialized view to be
 dropped and recreated to apply a change to the `distkey` or `diststyle`.
 
-#### Sort Type, Sort
+#### Sort type, sort
 
 Changes to `sort_type` or `sort` will result in a full refresh. Redshift requires a materialized
 view to be dropped and recreated to apply a change to the `sortkey` or `sortstyle`.
@@ -137,7 +131,7 @@ view to be dropped and recreated to apply a change to the `sortkey` or `sortstyl
 Changes to `backup` will result in a full refresh. Redshift requires a materialized
 view to be dropped and recreated to apply a change to the `backup` setting.
 
-#### Auto Refresh
+#### Auto refresh
 
 The `auto_refresh` setting can be updated via an `ALTER` statement. This setting effectively toggles
 automatic refreshes on or off. The default setting for this config is off (`False`). If this

@@ -301,7 +301,7 @@ models:
 
 <VersionBlock firstVersion="1.3">
 
-## Temporary Tables
+## Temporary tables
 
 Beginning in dbt version 1.3, incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
 
@@ -344,13 +344,7 @@ In the configuration format for the model SQL file:
 
 <VersionBlock firstVersion="1.6">
 
-## Dynamic Tables
-
-<Changelog>
-
-  - **v1.6.0:** Introduced support for `dynamic_table`
-
-</Changelog>
+## Dynamic tables
 
 The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
 This materialization is specific to Snowflake, which means that any model configuration that
@@ -404,11 +398,11 @@ models:
 
 </File>
 
-### Monitored Configuration Changes
+### Monitored configuration changes
 
 The settings below are monitored for changes applicable to `on_configuration_change`.
 
-#### Target Lag
+#### Target lag
 
 Changes to `target_lag` can be applied by running an `ALTER` statement. Refreshing is essentially
 always on for dynamic tables; this setting changes how frequently the dynamic table is updated.

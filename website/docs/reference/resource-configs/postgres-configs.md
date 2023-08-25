@@ -19,7 +19,7 @@ In dbt-postgres, the following incremental materialization strategies are suppor
 </VersionBlock>
 
 
-## Performance Optimizations
+## Performance optimizations
 
 ### Unlogged
 
@@ -115,18 +115,12 @@ models:
 
 ## Materialized views
 
-<Changelog>
-
-  - **v1.6.0:** Introduced support for `materialized_view`
-
-</Changelog>
-
 The Postgres adapter supports [materialized views](https://www.postgresql.org/docs/current/rules-materializedviews.html).
 Indexes are the only configuration that is specific to `dbt-postgres`.
 The remaining configuration follows the general [materialized view](/docs/build/materializations#materialized-view) configuration.
 There are also some limitations that we hope to address in the next version.
 
-### Monitored Configuration Changes
+### Monitored configuration changes
 
 The settings below are monitored for changes applicable to `on_configuration_change`.
 
