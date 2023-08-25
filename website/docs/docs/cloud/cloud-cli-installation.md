@@ -41,6 +41,8 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
 
 ## Setting up the CLI
 
+The following instructions are for setting up the dbt Cloud CLI. The  `$` aren't part of the command, they tell you that you need to input this command. For example, `$ dbt run` means you should type `dbt run` into your terminal.
+
 1. Ensure that you have created a project in [dbt Cloud](https://cloud.getdbt.com/).
 
 2. Ensure that your personal [development credentials](https://cloud.getdbt.com/settings/profile/credentials) are set on the project.
@@ -72,7 +74,7 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
    > $ cd ~/dbt-projects/jaffle_shop
 ```
 
-7. Create a dbt_cloud.yml in the root project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary):
+7. Create a dbt_cloud.yml in the root project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary). Enter the following three commands:
 
 ```bash
 > $ pwd
