@@ -80,7 +80,7 @@ The following instructions are for setting up the dbt Cloud CLI. The  `$` aren't
 > $ pwd
 /Users/user/dbt-projects/jaffle_shop
 
-> $ echo "project-id: '<your project id>'" > test.yml
+> $ echo "project-id: '<your project id>'" > dbt_cloud.yml
 
 > $ cat dbt_cloud.yml
 project-id: '123456'
