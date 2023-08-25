@@ -254,13 +254,14 @@ Note: If you prefer more strongly typed `where` clause, you can optionally use `
 
 ```graphql
 mutation {
-	createQuery(
-		metrics:["order_total"]
-		groupBy:["customer__customer_type"]
-		where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ TimeDimension('metric_time', 'MONTH') }} > '2022-10-01'"] - TODO UPDATE THIS
-	) {
-	queryId
-	}
+  createQuery(
+    environmentId: <env_id>
+    metrics:[{name:"order_total"}]
+    groupBy:[{name:"customer__customer_type"}]
+    where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ TimeDimension('metric_time', 'MONTH') }} > '2022-10-01'"] - TODO UPDATE THIS
+    ) {
+     queryId
+    }
 }
 ```
 
@@ -271,8 +272,8 @@ mutation {
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: "month"}, {name:"customer__customer_type"}]
+    metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
+    groupBy: [{name:"metric_time, grain: "month"}, {name:"customer__customer_type"}]
     order: ["-order_gross_profit"]
     limit: 10	
   ) {
@@ -287,9 +288,9 @@ mutation {
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: [{name: "food_order_amount"} {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: "month"}, {name:"customer__customer_type"}]
-    explain: TODO
+    metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
+    groupBy: [{name:"metric_time, grain:"month"}, {name:"customer__customer_type"}]
+    explain: TODO ADD
   ) {
     queryId
   }
