@@ -78,6 +78,8 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
 > $ pwd
 /Users/user/dbt-projects/jaffle_shop
 
+> $ echo "project-id: '<your project id>'" > test.yml
+
 > $ cat dbt_cloud.yml
 project-id: '123456'
 ```
