@@ -35,8 +35,8 @@ You can also watch the [YouTube video on dbt and Snowflake](https://www.youtube.
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
 - [How we configure Snowflake](https://blog.getdbt.com/how-we-configure-snowflake/)
-- [dbt Cloud CI job](/docs/deploy/continuous-integration)
-- [Job triggers](/docs/deploy/job-triggers)
+- [CI jobs](/docs/deploy/continuous-integration)
+- [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 
@@ -63,7 +63,7 @@ The data used here is stored as CSV files in a public S3 bucket and the followin
     - First, delete all contents (empty) in the Editor of the Snowflake worksheet. Then, run this SQL command to create the `customer` table:
 
         ```sql 
-        ​​create table raw.jaffle_shop.customers 
+        create table raw.jaffle_shop.customers 
         ( id integer,
           first_name varchar,
           last_name varchar
@@ -138,9 +138,9 @@ There are two ways to connect dbt Cloud to Snowflake. The first option is Partne
 <Tabs>
 <TabItem value="partner-connect" label="Use Partner Connect" default>
 
-Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
+Using Partner Connect allows you to create a complete dbt account with your [Snowflake connection](/docs/cloud/connect-data-platform/connect-snowflake), [a managed repository](/docs/collaborate/git/managed-repository), [environments](/docs/build/custom-schemas#managing-environments), and credentials.
 
-1. In the Snowflake UI, click on the home icon in the upper left corner. Click on your user, and then select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
+1. In the Snowflake UI, click on the home icon in the upper left corner. In the left sidebar, select **Admin**. Then, select **Partner Connect**. Find the dbt tile by scrolling or by searching for dbt in the search bar. Click the tile to connect to dbt.
 
     <Lightbox src="/img/snowflake_tutorial/snowflake_partner_connect_box.png" title="Snowflake Partner Connect Box" />
 
@@ -185,7 +185,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 4. Enter your **Settings** for Snowflake with: 
     * **Account** &mdash; Find your account by using the Snowflake trial account URL and removing `snowflakecomputing.com`. The order of your account information will vary by Snowflake version. For example, Snowflake's Classic console URL might look like: `oq65696.west-us-2.azure.snowflakecomputing.com`. The AppUI or Snowsight URL might look more like: `snowflakecomputing.com/west-us-2.azure/oq65696`. In both examples, your account will be: `oq65696.west-us-2.azure`. For more information, see [Account Identifiers](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html) in the Snowflake docs.  
 
-        <Snippet src="snowflake-acct-name" />
+        <Snippet path="snowflake-acct-name" />
     
     * **Role** &mdash; Leave blank for now. You can update this to a default Snowflake role later.
     * **Database** &mdash; `analytics`.  This tells dbt to create new models in the analytics database.
@@ -211,7 +211,7 @@ Using Partner Connect allows you to create a complete dbt account with your [Sno
 ## Set up a dbt Cloud managed repository 
 If you used Partner Connect, you can skip to [initializing your dbt project](#initialize-your-dbt-project-and-start-developing) as the Partner Connect provides you with a managed repository. Otherwise, you will need to create your repository connection. 
 
-<Snippet src="tutorial-managed-repo" />
+<Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
@@ -295,15 +295,15 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 ## Change the way your model is materialized
 
-<Snippet src="quickstarts/change-way-model-materialized" />
+<Snippet path="quickstarts/change-way-model-materialized" />
 
 ## Delete the example models
 
-<Snippet src="quickstarts/delete-example-models" />
+<Snippet path="quickstarts/delete-example-models" />
 
 ## Build models on top of other models
 
-<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+<Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
@@ -395,9 +395,9 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 ## Build models on top of sources
 
@@ -466,6 +466,6 @@ Sources make it possible to name and describe the data loaded into your warehous
     test and document your raw data and also understand the lineage of your sources. 
 
 
-<Snippet src="quickstarts/test-and-document-your-project" />
+<Snippet path="quickstarts/test-and-document-your-project" />
 
-<Snippet src="quickstarts/schedule-a-job" />
+<Snippet path="quickstarts/schedule-a-job" />

@@ -77,7 +77,7 @@ select ...
 
 ```
   
-In this example, you can set up a query tag to be applied to every query with the model's name. 
+In this example, you can set up a query tag to be applied to every query with the model's name.
   
 ```sql 
 
@@ -339,5 +339,79 @@ In the configuration format for the model SQL file:
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+## Dynamic Tables
+
+### Parameters
+
+dbt-snowflake requires the following parameters:
+
+- `target_lag`
+- `snowflake_warehouse`
+- `on_configuration_change`
+
+To learn more about each parameter and what values it can take, see 
+the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table). Note that `downstream` for `target_lag` is not supported. 
+
+### Usage
+
+You can create a dynamic table by editing _one_ of these files:
+
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
+
+The following examples create a dynamic table:
+
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
+{{
+  config(
+    materialized = 'dynamic_table',
+    snowflake_warehouse = 'snowflake_warehouse',
+    target_lag = '10 minutes',
+  )
+}}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  path:
+    materialized: dynamic_table
+    snowflake_warehouse: snowflake_warehouse
+    target_lag: '10 minutes'
+```
+
+</File>
+
+### Limitations
+
+#### Changing materialization to and from "dynamic_table"
+
+Swapping an already materialized model to be a dynamic table and vice versa. The workaround is manually dropping the existing materialization in the data warehouse before calling `dbt run` again.
+
+For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`. If a user then changes the model's config to be `materialized="dynamic_table"`, they will get an error. The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+<File name='my_model.sql'>
+
+```yaml
+
+{{ config(
+    materialized="table" # or any model type eg view, incremental
+) }}
+
+```
+
+</File>
+
+
 
 </VersionBlock>

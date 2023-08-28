@@ -86,6 +86,91 @@ When building a model with a defined contract, dbt will do two things differentl
 1. dbt will run a "preflight" check to ensure that the model's query will return a set of columns with names and data types matching the ones you have defined. This check is agnostic to the order of columns specified in your model (SQL) or YAML spec.
 2. dbt will include the column names, data types, and constraints in the DDL statements it submits to the data platform, which will be enforced while building or updating the model's table.
 
+## Platform constraint support
+
+Select the adapter-specific tab for more information on [constraint](/reference/resource-properties/constraints) support across platforms. Constraints fall into three categories based on support and platform enforcement:
+
+- **Supported and enforced** &mdash; The model won't build if it violates the constraint.
+- **Supported and not enforced** &mdash; The platform supports specifying the type of constraint, but a model can still build even if building the model violates the constraint. This constraint exists for metadata purposes only. This is common for modern cloud data warehouses and less common for legacy databases.
+- **Not supported and not enforced** &mdash; You can't specify the type of constraint for the platform.
+
+
+
+<Tabs>
+
+<TabItem value="Redshift" label="Redshift">
+
+| Constraint type | Support       | Platform enforcement |
+|:----------------|:-------------|:------------------|
+| not_null        | ✅  Supported | ✅ Enforced     |
+| primary_key     | ✅  Supported | ❌ Not enforced  |
+| foreign_key     | ✅  Supported | ❌ Not enforced  |
+| unique          | ✅  Supported | ❌ Not enforced  |
+| check           | ❌ Not supported | ❌  Not enforced |
+
+</TabItem>
+<TabItem value="Snowflake" label="Snowflake">
+
+| Constraint type | Support      | Platform enforcement |
+|:----------------|:-------------|:---------------------|
+| not_null        | ✅  Supported | ✅ Enforced     |
+| primary_key     | ✅  Supported | ❌ Not enforced  |
+| foreign_key     | ✅  Supported | ❌ Not enforced  |
+| unique          | ✅  Supported | ❌ Not enforced  |
+| check           | ❌ Not supported | ❌ Not enforced |
+
+</TabItem>
+<TabItem value="BigQuery" label="BigQuery">
+
+| Constraint type | Support       | Platform enforcement |
+|:-----------------|:-------------|:---------------------|
+| not_null        | ✅ Supported  | ✅ Enforced     |
+| primary_key     | ✅ Supported  | ✅ Enforced     |
+| foreign_key     | ✅ Supported  | ✅ Enforced     |
+| unique          | ❌ Not supported | ❌ Not enforced |
+| check           | ❌ Not supported | ❌ Not enforced |
+
+</TabItem>
+<TabItem value="Postgres" label="Postgres">
+
+| Constraint type | Support      | Platform enforcement |
+|:----------------|:-------------|:--------------------|
+| not_null        | ✅  Supported |	✅  Enforced |
+| primary_key     | ✅  Supported |	✅  Enforced |
+| foreign_key     | ✅  Supported |	✅  Enforced |
+| unique          | ✅  Supported |	✅  Enforced |
+| check           | ✅  Supported |	✅  Enforced |
+
+</TabItem>
+<TabItem value="Spark" label="Spark">
+
+Currently, `not_null` and `check` constraints are supported and enforced only after a model builds. Because of this platform limitation, dbt considers these constraints `supported` but `not enforced`, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
+
+| Constraint type | Support     | Platform enforcement |
+|:----------------|:------------|:---------------------|
+| not_null        |	✅  Supported | ❌ Not enforced |
+| primary_key     |	✅  Supported | ❌ Not enforced |
+| foreign_key     |	✅  Supported | ❌ Not enforced |
+| unique          |	✅  Supported | ❌ Not enforced |
+| check           |	✅  Supported | ❌ Not enforced |
+
+</TabItem>
+<TabItem value="Databricks" label="Databricks">
+
+Currently, `not_null` and `check` constraints are supported and enforced only after a model builds. Because of this platform limitation, dbt considers these constraints `supported` but `not enforced`, which means they're not part of the "model contract" since these constraints can't be enforced at build time. This table will change as the features evolve.
+
+| Constraint type | Support      | Platform enforcement |
+|:----------------|:-------------|:---------------------|
+| not_null        |	✅  Supported | ❌ Not enforced |
+| primary_key     | ✅  Supported | ❌ Not enforced |
+| foreign_key     |	✅  Supported | ❌ Not enforced |
+| unique          |	✅  Supported | ❌ Not enforced |
+| check           |	✅  Supported | ❌ Not enforced |
+
+</TabItem>
+</Tabs>
+
+
 ## FAQs
 
 ### Which models should have contracts?
@@ -98,7 +183,7 @@ Any model meeting the criteria described above _can_ define a contract. We recom
 
 A model's contract defines the **shape** of the returned dataset. If the model's logic or input data doesn't conform to that shape, the model does not build.
 
-[Tests](docs/build/tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the test. Tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
+[Tests](/docs/build/tests) are a more flexible mechanism for validating the content of your model _after_ it's built. So long as you can write the query, you can run the test. Tests are more configurable, such as with [custom severity thresholds](/reference/resource-configs/severity). They are easier to debug after finding failures, because you can query the already-built model, or [store the failing records in the data warehouse](/reference/resource-configs/store_failures).
 
 In some cases, you can replace a test with its equivalent constraint. This has the advantage of guaranteeing the validation at build time, and it probably requires less compute (cost) in your data platform. The prerequisites for replacing a test with a constraint are:
 - Making sure that your data platform can support and enforce the constraint that you need. Most platforms only enforce `not_null`.

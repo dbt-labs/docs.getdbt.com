@@ -17,5 +17,5 @@ label.
 
 ## FAQs
 
-<FAQ src="API/rotate-token" />
-<FAQ src="Accounts/find-user-id" />
+<FAQ path="API/rotate-token" />
+<FAQ path="Accounts/find-user-id" />
