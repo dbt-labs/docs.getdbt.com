@@ -210,6 +210,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/databend-setup",
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/decodable-setup",
+                "docs/core/connect-data-platform/upsolver-setup",
               ],
             },
           ],
@@ -252,6 +253,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
+            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
@@ -263,7 +265,6 @@ const sidebarSettings = {
                 "docs/build/metricflow-cli",
               ]
             },
-            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "Semantic models",
@@ -504,20 +505,6 @@ const sidebarSettings = {
                     // },
                   ],
                 },
-                "docs/dbt-cloud-apis/discovery-schema-model",
-                "docs/dbt-cloud-apis/discovery-schema-models",
-                "docs/dbt-cloud-apis/discovery-schema-modelByEnv",
-                "docs/dbt-cloud-apis/discovery-schema-metric",
-                "docs/dbt-cloud-apis/discovery-schema-metrics",
-                "docs/dbt-cloud-apis/discovery-schema-source",
-                "docs/dbt-cloud-apis/discovery-schema-sources",
-                "docs/dbt-cloud-apis/discovery-schema-seed",
-                "docs/dbt-cloud-apis/discovery-schema-seeds",
-                "docs/dbt-cloud-apis/discovery-schema-snapshots",
-                "docs/dbt-cloud-apis/discovery-schema-test",
-                "docs/dbt-cloud-apis/discovery-schema-tests",
-                "docs/dbt-cloud-apis/discovery-schema-exposure",
-                "docs/dbt-cloud-apis/discovery-schema-exposures",
               ],
             },
           ],
@@ -631,6 +618,7 @@ const sidebarSettings = {
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
         "reference/resource-configs/oracle-configs",
+        "reference/resource-configs/upsolver-configs",
       ],
     },
     {
