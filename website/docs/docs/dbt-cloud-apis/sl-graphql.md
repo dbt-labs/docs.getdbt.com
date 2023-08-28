@@ -50,7 +50,9 @@ Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/se
 
 Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and environmentId for authentication.
 
-### Output Format
+### Output Format & Pagination
+
+**Output Format**
 
 By default, output provided is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. The JSON returned is a base64 encoded string. This means to access the JSON you must run it through a base64 decoder then you should receive the results in JSON. This is a JSON generated from pandas, this means you can either parse this back into a dataframe via pandas.read_json(json, orient="table") or just use the data directly with json["data"] and get the table schema with json["schema"]["fields"]
 
@@ -62,11 +64,17 @@ By default, output provided is in Arrow format. You can use the following parame
     status
     error
     arrowResult
-    jsonResult 
+    jsonResult (orient: table)
   }
 }
 ```
+The results default to table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
 
+**Pagination**
+
+By default, we return 1024 rows. If your result set exceeds this, you will have to increment the page by using the following argument: 
+
+TODO:We need to fill this in
 
 
 ### Metadata calls
@@ -106,6 +114,7 @@ environmentId: Int!
 metrics: [String!]!
 ): [TimeGranularity!]!
 ```
+TODO: add information on queryable granularities when we make the change.
 
 **Fetch available metrics given a set of a dimensions**
 
@@ -119,10 +128,13 @@ dimensions: [String!]!
 **Fetch dimension values for metrics and a given dimension**
 
 ```graphql
-dimensionValues(
-environmentId: Int!
-metrics: [String!]!
-dimension: String!
+{
+  createDimensionValuesquery(
+     environmentId: <env_id>
+     metrics:[String!]!
+     group_by:[String!] = null
+  }
+}
 ```
 
 ### Metric queries
@@ -141,7 +153,7 @@ queryId: String!
 createQuery(
 environmentId: Int!
 metrics: [String!]!
-dimensions: [String!] = null
+group_by: [String!] = null
 limit: Int = null
 where: [String] = null
 order: [String!] = null
@@ -183,11 +195,11 @@ MetricTypeParams {
 
 
 **Dimension Types**
+todo: add info on granularity
 
 ```graphql
 Dimension {
 	name: String!
-	qualifiedName: String!
 	description: String
 	type: DimensionType!
 	typeParams: DimensionTypeParams
@@ -195,6 +207,7 @@ Dimension {
 	expr: String
 }
 ```
+
 ```
 DimensionType = [CATEGORICAL, TIME]
 ```
@@ -208,7 +221,7 @@ mutation {
   createQuery(
     environmentId: <env_id>
     metrics: [{name: "food_order_amount"}]
-    groupBy: [{name: "metric_time}, {name:"customer__customer_type"}]
+    groupBy: [{name: "metric_time}, {name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -221,8 +234,8 @@ mutation {
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics: [{name:"order_total"}]
-    groupBy: [{name:"metric_time", grain:"month"}] 
+    metrics: [{name: "order_total"}]
+    groupBy: [{name: "metric_time", grain: "month"}] 
   ) {
     queryId
   }
@@ -236,7 +249,7 @@ mutation {
   createQuery(
     environmentId: <env_id>
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name: "metric_time, grain: "month"}, {name:"customer__customer_type"}]
+    groupBy: [{name: "metric_time, grain: "month"}, {name: "customer__customer_type"}]
   ) {
     queryId
   }
@@ -273,7 +286,7 @@ mutation {
   createQuery(
     environmentId: <env_id>
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
-    groupBy: [{name:"metric_time, grain: "month"}, {name:"customer__customer_type"}]
+    groupBy: [{name:"metric_time, grain: "month"}, {name: "customer__customer_type"}]
     order: ["-order_gross_profit"]
     limit: 10	
   ) {
@@ -282,17 +295,20 @@ mutation {
 }
 ```
 
+Todo; add example with order by and time dimension granularity change
+
 **Query with Explain** 
+
+This takes the same inputs as the `createQuery` mutation.
 
 ```graphql
 mutation {
-  createQuery(
+  compileSql(
     environmentId: <env_id>
     metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
     groupBy: [{name:"metric_time, grain:"month"}, {name:"customer__customer_type"}]
-    explain: TODO ADD
   ) {
-    queryId
+    sql
   }
 }
 ```
