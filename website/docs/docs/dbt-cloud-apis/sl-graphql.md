@@ -74,7 +74,7 @@ The results default to table but you can change it to any [pandas](https://panda
 
 By default, we return 1024 rows. If your result set exceeds this, you will have to increment the page by using the following argument: 
 
-TODO:We need to fill this in
+todo: add batching example
 
 
 ### Metadata calls
@@ -107,6 +107,7 @@ metrics: [String!]!
 ```
 
 **Fetch available primary time granularities given metrics**
+todo: change queryable granularities once it can apply to all time dimensions
 
 ```graphql
 queryableGranularities(
@@ -114,7 +115,7 @@ environmentId: Int!
 metrics: [String!]!
 ): [TimeGranularity!]!
 ```
-TODO: add information on queryable granularities when we make the change.
+
 
 **Fetch available metrics given a set of a dimensions**
 
@@ -195,7 +196,7 @@ MetricTypeParams {
 
 
 **Dimension Types**
-todo: add info on granularity
+todo: add info on granularity when we expose it
 
 ```graphql
 Dimension {
@@ -269,9 +270,9 @@ Note: If you prefer more strongly typed `where` clause, you can optionally use `
 mutation {
   createQuery(
     environmentId: <env_id>
-    metrics:[{name:"order_total"}]
-    groupBy:[{name:"customer__customer_type"}]
-    where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ TimeDimension('metric_time', 'MONTH') }} > '2022-10-01'"] - TODO UPDATE THIS
+    metrics:[{name: "order_total"}]
+    groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: "month"}]
+    where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"]
     ) {
      queryId
     }
@@ -295,7 +296,7 @@ mutation {
 }
 ```
 
-Todo; add example with order by and time dimension granularity change
+Todo: add example with order by and time dimension granularity change
 
 **Query with Explain** 
 
