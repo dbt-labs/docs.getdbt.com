@@ -1,7 +1,7 @@
 ---
 title: "dbt Cloud job examples"
 id: "dbt-cloud-job-examples"
-slug: 4-examples
+slug: examples
 description: Examples of configuring dbt Cloud jobs
 displayText: dbt Cloud job examples
 hoverSnippet: Examples of configuring dbt Cloud jobs.

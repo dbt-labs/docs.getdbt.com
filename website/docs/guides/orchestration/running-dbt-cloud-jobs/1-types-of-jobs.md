@@ -1,7 +1,7 @@
 ---
 title: "Organizing dbt Cloud jobs"
 id: "organizing-dbt-cloud-jobs"
-slug: 1-types-of-jobs
+slug: types-of-jobs
 description: Learn how to organize your dbt Cloud jobs by category
 displayText: The types of jobs in dbt Cloud
 hoverSnippet: Learn how to organize your dbt Cloud jobs by category.

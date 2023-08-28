@@ -1014,13 +1014,13 @@ const sidebarSettings = {
           label: "Organizing your dbt Cloud jobs",
           link: {
             type: "doc",
-            id: "guides/orchestration/running-dbt-cloud-jobs/1-types-of-dbt-cloud-jobs"
+            id: "guides/orchestration/running-dbt-cloud-jobs/organizing-dbt-cloud-jobs"
           },
           items: [
-            "guides/orchestration/running-dbt-cloud-jobs/2-fresh-rebuilds",
-            "guides/orchestration/running-dbt-cloud-jobs/3-anti-patterns",
-            "guides/orchestration/running-dbt-cloud-jobs/4-notifications-alerts",
-            "guides/orchestration/running-dbt-cloud-jobs/5-dbt-cloud-job-examples",
+            "guides/orchestration/running-dbt-cloud-jobs/fresh-rebuilds",
+            "guides/orchestration/running-dbt-cloud-jobs/dbt-cloud-job-anti-patterns",
+            "guides/orchestration/running-dbt-cloud-jobs/notifications-alerts",
+            "guides/orchestration/running-dbt-cloud-jobs/dbt-cloud-job-examples",
           ],
         },
         "guides/orchestration/how-to-use-databricks-workflows-to-run-dbt-cloud-jobs",

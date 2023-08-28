@@ -1,7 +1,7 @@
 ---
 title: "Running dbt Cloud jobs on fresh data"
-id: "running-dbt-cloud-jobs-on-fresh-data"
-slug: 2-fresh-rebuilds
+id: "fresh-rebuilds"
+slug: fresh-rebuilds
 description: Learn how to avoid running models on stale data
 displayText: Fresh data rebuilds
 hoverSnippet: Learn how to avoid running models on stale data.

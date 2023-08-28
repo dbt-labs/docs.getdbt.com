@@ -1,7 +1,7 @@
 ---
 title: "Anti Patterns for dbt Cloud jobs"
 id: "dbt-cloud-job-anti-patterns"
-slug: 3-anti-patterns
+slug: anti-patterns
 description: Recognize common anti-patterns in dbt Cloud jobs
 displayText: dbt Cloud job anti-patterns
 hoverSnippet: Recognize common anti-patterns in dbt Cloud jobs.
