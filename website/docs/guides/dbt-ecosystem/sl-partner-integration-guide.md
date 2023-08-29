@@ -34,7 +34,7 @@ The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, 
 We recommend you provide users with separate input fields with these components for authentication (dbt Cloud will surface these parameters for the user). 
 
 
-## Best practices on exposing metrics:
+## Best practices on exposing metrics
 
 Best practices for exposing metrics are summarized into five themes:
 
@@ -48,7 +48,7 @@ Best practices for exposing metrics are summarized into five themes:
 
 When working with more governed data, it's essential to establish clear guardrails. Here are some recommendations:
 
-- **Aggregations control** &mdash; Users shouldn't generally be allowed to modify aggregations unless they are performing post-processing calculations on data from the Semantic Layer (such as year-over-year analysis).
+- **Aggregations control** &mdash; Users shouldn't generally be allowed to modify aggregations unless they perform post-processing calculations on Semantic Layer data (such as year-over-year analysis).
 
 - **Time series alignment and using metric_time** &mdash; Make sure users view metrics across the correct time series. When displaying metric graphs, using a non-default time aggregation dimension might lead to misleading interpretations. While users can still group by other time dimensions, they should be careful not to create trend lines with incorrect time axes.<br /><br />When looking at one or multiple metrics, users should use `metric_time` as the main time dimension to guarantee they are looking at the right time series for the metric(s). <br /><br /> As such, when building an application, we recommend exposing `metric_time` as a separate, "special" time dimension on its own. This dimension is always going to align with all metrics and be common across them. Other time dimensions can still be looked at and grouped by, but having a clear delineation between the `metric_time` dimension and the other time dimensions is clarifying so that people do not confuse how metrics should be plotted. <br /><br /> Also, when a user requests a time granularity change for the main time series, the query that your application runs should use `metric_time` as this will always give you the correct slice. Note that when looking at a single metric, the primary time dimension and `metric_time` are equivalent. 
 
@@ -109,7 +109,7 @@ For better analysis, it's best to have the context of the metrics close to where
 
 - Allow for creating other metadata that’s useful for the metric. We can provide some of this information in our configuration (Display name, Default Granularity for View, Default Time range), but there may be other metadata that your tool wants to provide to make the metric richer.
 
-### Example stages of an integration
+## Example stages of an integration
 
 These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
 
