@@ -106,8 +106,9 @@ metrics: [String!]!
 ): [Dimension!]!
 ```
 
-**Fetch available primary time granularities given metrics**
-todo: change queryable granularities once it can apply to all time dimensions
+**Fetch available granularities given metrics**
+
+Note: This call for `queryableGranularities` returns only queryable granularities for metric time - the primary time dimension across all metrics selected.
 
 ```graphql
 queryableGranularities(
@@ -116,6 +117,29 @@ metrics: [String!]!
 ): [TimeGranularity!]!
 ```
 
+You can also get queryable granularities for dimensions using the `dimensions` call:
+
+```graphql
+{
+  dimensions(environmentId: <env_Id>, metrics:["order_total"]) {
+    name
+    queryableGranularities # --> ["DAY", "WEEK", "MONTH", "QUARTER", "YEAR"]
+  }
+}
+```
+
+You can also optionally access it from the metrics endpoint:
+
+```graphql
+{
+  metrics(environmentId: <env_id>) {
+    name
+    dimensions {
+      name
+      queryableGranularities
+    }
+  }
+```
 
 **Fetch available metrics given a set of a dimensions**
 
@@ -279,8 +303,10 @@ mutation {
 }
 ```
 
+**Query with Order**
+Todo: Add example 
 
-**Query with Limit and Order By** 
+**Query with Limit**
 
 ```graphql
 mutation {
@@ -288,15 +314,12 @@ mutation {
     environmentId: <env_id>
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name:"metric_time, grain: "month"}, {name: "customer__customer_type"}]
-    order: ["-order_gross_profit"]
     limit: 10	
   ) {
     queryId
   }
 }
 ```
-
-Todo: add example with order by and time dimension granularity change
 
 **Query with Explain** 
 
