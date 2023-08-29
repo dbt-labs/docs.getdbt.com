@@ -112,6 +112,28 @@ You can also optionally access it from the metrics endpoint:
       queryableGranularities
     }
   }
+}
+```
+
+**Fetch measures**
+```graphql
+{
+  measures(metrics: ["order_total"], environmentId: BigInt!) {
+    name
+    aggTimeDimension
+  }
+}
+```
+`aggTimeDimension` tells you the name of the dimension that maps to `metric_time` for a given measure. You can also query `measures` from the `metrics` endpoint, which allows you to see what dimensions map to `metric_time` for a given metric:
+```graphql
+{
+  metrics(environmentId: BigInt!) {
+    measures {
+      name
+      aggTimeDimension
+    }
+  }
+}
 ```
 
 **Fetch available metrics given a set of a dimensions**
