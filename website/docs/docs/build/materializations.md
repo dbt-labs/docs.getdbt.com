@@ -132,7 +132,7 @@ Materialized views are a combination of a view and a table, and serve use cases 
 * **Pros:**
   * Materialized views combine the query performance of a table with the data freshness of a view
   * Materialized views operate much like incremental materializations, however they are usually
-able to be refreshed on a regular cadence (depending on the database), forgoing the regular dbt batch refresh
+able to be refreshed without manual interference on a regular cadence (depending on the database), forgoing the regular dbt batch refresh
 required with incremental materializations
   * `dbt run` on materialized views correspond to a code deployment, just like views
 * **Cons:**
