@@ -71,6 +71,8 @@ Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
 
 
 Executing `dbt retry` without fixing the error(s) will result in another failed run:
+
+```
 Running with dbt=1.6.1
 Registered adapter: duckdb=1.6.0
 Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros, 0 groups, 0 semantic models
