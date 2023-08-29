@@ -4,13 +4,12 @@
 To use the Semantic Layer, you must:
 
 - Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America.
-- Have both your production and development environments running dbt version 1.6 or higher.
+- Have both your production and development environments running dbt version 1.6 or higher. Refer to [upgrade in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) for more info.
 - Use Snowflake, BigQuery, Databricks, or Redshift (dbt Cloud Postgres support coming soon).
--  Create a successful run in the environment where you configure the Semantic Layer. <br/>
-  **Note:** Semantic Layer currently supports the Deployment environment. (_development experience coming soon_)
-- Install the [MetricFlow CLI](/docs/build/metricflow-cli). After installing the package, make sure you run at least one model.
-- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. <br /> 
-**Note:** Developer accounts can only query data manually using the [MetricFlow CLI](/docs/build/metricflow-cli) and SQL. To dynamically query metrics using external tools, you must have a dbt Cloud Team or Enterprise account with access to the Semantic Layer API.<br />
+-  Create a successful run in the environment where you configure the Semantic Layer. 
+   - **Note:** Semantic Layer currently supports the Deployment environment for querying. (_development querying experience coming soon_) 
+- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
+  - **Note:** dbt Core or Developer accounts can only query data manually using the [MetricFlow CLI](/docs/build/metricflow-cli) and SQL. To dynamically query metrics using external tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account with access to the Semantic Layer API.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the revamped dbt Semantic Layer.
 
 
