@@ -142,6 +142,18 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 
 </TabItem>
 
+<TabItem value="fetchprimarytimedimensionnames" label="Determine what time dimension(s) make up metric_time for your metric(s)">
+
+It may be useful in your application to expose the names of the time dimensions that represent `metric_time` or the common thread across all metrics.
+You can first query the `metrics()` argument to fetch a list of measures, then use the `measures()` call which will return the name(s) of the time dimensions that make up metric time. 
+
+```bash
+select * from {{
+    semantic_layer.measures(metrics=['orders'])
+}}
+```
+</TabItem>
+
 </Tabs>
 
 ## Querying the API for metric values
