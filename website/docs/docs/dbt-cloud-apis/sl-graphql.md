@@ -336,7 +336,7 @@ By default, output provided is in Arrow format. You can use the following parame
     error
     totalPages
     arrowResult
-    jsonResult (orient: table)
+    jsonResult (orient: TABLE)
   }
 }
 ```
