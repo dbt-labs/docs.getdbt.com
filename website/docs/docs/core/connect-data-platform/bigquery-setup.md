@@ -251,7 +251,7 @@ In older versions of `dbt-bigquery`, this same config was called `timeout_second
 
 :::
   
-No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, takes longer than 300 seconds to return a result, the dbt-bigquery adapter will run into an exception:
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
 
 ```
  Operation did not complete within the designated timeout.
