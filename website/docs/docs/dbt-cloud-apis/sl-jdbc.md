@@ -98,9 +98,9 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 </TabItem>
 
-<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable time granularities for metrics">
+<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable primary time granularities for metrics">
 
-Use this query to fetch queryable granularities for a list of metrics. This argument allows you to only show the time granularities that make sense for the source model that the metrics are built off of.
+Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (e.g., `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
 Note, `metrics` is a required argument that lists with one or multiple metrics in it.
 
@@ -123,6 +123,21 @@ select * from {{
     semantic_layer.metrics_for_dimensions(group_by=['customer__customer_type'])
 
 }}
+```
+
+</TabItem>
+
+<TabItem value="queryablegranularitiesalltimedimensions" label="Fetch queryable granularities for all time dimensions">
+
+Use this example query to fetch available granularities for all time dimesensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics). The following call is a derivative of the `dimensions()` call and specifically selects the granularities field.
+
+```bash
+select NAME, QUERYABLE_GRANULARITIES from {{
+    semantic_layer.dimensions(
+        metrics=["order_total"]
+    )
+}}
+
 ```
 
 </TabItem>
@@ -245,7 +260,7 @@ where=[{{ Dimension('metric_time'.grain('month') }} >= '2017-03-09', {{ Dimensio
 }}
 ```
 
-### Query with a limit and order_by
+### Query with a limit and order by
 
 Use the following example to query using a `limit` or `order_by` clauses:
 
