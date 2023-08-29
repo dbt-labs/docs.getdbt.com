@@ -29,7 +29,7 @@ Retry works with the following commands:
 `dbt retry` reuses the [selectors](/reference/node-selection/yaml-selectors) from the previously executed command.
 
 
-If you run `dbt retry` after successfully executing `dbt run`, you'll get the following results.
+Executing `dbt retry` after a successful `dbt run` will yield the following results:
 
 ```
 Running with dbt=1.6.1
@@ -71,6 +71,7 @@ Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
 
 
 Executing `dbt retry` without fixing the error(s) will result in another failed run:
+
 ```
 Running with dbt=1.6.1
 Registered adapter: duckdb=1.6.0
