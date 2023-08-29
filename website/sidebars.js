@@ -208,6 +208,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/databend-setup",
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/decodable-setup",
+                "docs/core/connect-data-platform/upsolver-setup",
               ],
             },
           ],
@@ -250,6 +251,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
+            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
@@ -261,7 +263,6 @@ const sidebarSettings = {
                 "docs/build/metricflow-cli",
               ]
             },
-            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "Semantic models",
@@ -457,21 +458,51 @@ const sidebarSettings = {
               type: "category",
               label: "Schema",
               items: [
-                "docs/dbt-cloud-apis/discovery-schema-environment",
-                "docs/dbt-cloud-apis/discovery-schema-model",
-                "docs/dbt-cloud-apis/discovery-schema-models",
-                "docs/dbt-cloud-apis/discovery-schema-modelByEnv",
-                "docs/dbt-cloud-apis/discovery-schema-metric",
-                "docs/dbt-cloud-apis/discovery-schema-metrics",
-                "docs/dbt-cloud-apis/discovery-schema-source",
-                "docs/dbt-cloud-apis/discovery-schema-sources",
-                "docs/dbt-cloud-apis/discovery-schema-seed",
-                "docs/dbt-cloud-apis/discovery-schema-seeds",
-                "docs/dbt-cloud-apis/discovery-schema-snapshots",
-                "docs/dbt-cloud-apis/discovery-schema-test",
-                "docs/dbt-cloud-apis/discovery-schema-tests",
-                "docs/dbt-cloud-apis/discovery-schema-exposure",
-                "docs/dbt-cloud-apis/discovery-schema-exposures",
+                {
+                  type: "category",
+                  label: "Job",
+                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-job" },
+                  items: [
+                    "docs/dbt-cloud-apis/discovery-schema-job-model",
+                    "docs/dbt-cloud-apis/discovery-schema-job-models",
+                    "docs/dbt-cloud-apis/discovery-schema-job-metric",
+                    "docs/dbt-cloud-apis/discovery-schema-job-metrics",
+                    "docs/dbt-cloud-apis/discovery-schema-job-source",
+                    "docs/dbt-cloud-apis/discovery-schema-job-sources",
+                    "docs/dbt-cloud-apis/discovery-schema-job-seed",
+                    "docs/dbt-cloud-apis/discovery-schema-job-seeds",
+                    // "docs/dbt-cloud-apis/discovery-schema-job-snapshot",
+                    "docs/dbt-cloud-apis/discovery-schema-job-snapshots",
+                    "docs/dbt-cloud-apis/discovery-schema-job-test",
+                    "docs/dbt-cloud-apis/discovery-schema-job-tests",
+                    "docs/dbt-cloud-apis/discovery-schema-job-exposure",
+                    "docs/dbt-cloud-apis/discovery-schema-job-exposures",
+                    // "docs/dbt-cloud-apis/discovery-schema-job-macro",
+                    // "docs/dbt-cloud-apis/discovery-schema-job-macros",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Environment",
+                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Applied",
+                      items: [
+                        "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                      ],
+                    },
+                    // Uncomment to add Definition subpage, but need to make items non-empty
+                    // {
+                    //   type: "category",
+                    //   label: "Definition",
+                    //   items: [
+                    //     // insert pages here
+                    //   ],
+                    // },
+                  ],
+                },
               ],
             },
           ],
@@ -585,6 +616,7 @@ const sidebarSettings = {
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
         "reference/resource-configs/oracle-configs",
+        "reference/resource-configs/upsolver-configs",
       ],
     },
     {
@@ -932,7 +964,7 @@ const sidebarSettings = {
             "guides/orchestration/airflow-and-dbt-cloud/3-running-airflow-and-dbt-cloud",
             "guides/orchestration/airflow-and-dbt-cloud/4-airflow-and-dbt-cloud-faqs",
           ],
-        }, 
+        },
         {
           type: "category",
           label: "Set up Continuous Integration",
