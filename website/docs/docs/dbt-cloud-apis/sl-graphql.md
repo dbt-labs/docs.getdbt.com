@@ -50,33 +50,6 @@ Authentication uses a dbt Cloud [service account tokens](/docs/dbt-cloud-apis/se
 
 Each GQL request also requires a dbt Cloud `environmentId`. The API uses both the service token in the header and environmentId for authentication.
 
-### Output Format & Pagination
-
-**Output Format**
-
-By default, output provided is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. The JSON returned is a base64 encoded string. This means to access the JSON you must run it through a base64 decoder then you should receive the results in JSON. This is a JSON generated from pandas, this means you can either parse this back into a dataframe via pandas.read_json(json, orient="table") or just use the data directly with json["data"] and get the table schema with json["schema"]["fields"]
-
-
-```graphql
-{
-  query(environmentId: <env_id>, queryId: <query_id>) {
-    sql
-    status
-    error
-    arrowResult
-    jsonResult (orient: table)
-  }
-}
-```
-The results default to table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
-
-**Pagination**
-
-By default, we return 1024 rows. If your result set exceeds this, you will have to increment the page by using the following argument: 
-
-todo: add batching example
-
-
 ### Metadata calls
 
 **Fetch Data Platform Dialect** 
@@ -85,7 +58,7 @@ In some cases in your application, it may be useful to know the dialect/data pla
 
 ```graphql
 {
-    environmentInfo(environmentId: 100) {
+    environmentInfo(environmentId: BigInt!) {
             dialect
     }
 }
@@ -94,15 +67,15 @@ In some cases in your application, it may be useful to know the dialect/data pla
 **Fetch available metrics**
 
 ```graphql
-metrics(environmentId: Int!): [Metric!]!
+metrics(environmentId: BigInt!): [Metric!]!
 ```
 
 **Fetch available dimensions for metrics**
 
 ```graphql
 dimensions(
-environmentId: Int!
-metrics: [String!]!
+  environmentId: BigInt!
+  metrics: [String!]!
 ): [Dimension!]!
 ```
 
@@ -112,8 +85,8 @@ Note: This call for `queryableGranularities` returns only queryable granularitie
 
 ```graphql
 queryableGranularities(
-environmentId: Int!
-metrics: [String!]!
+  environmentId: BigInt!
+  metrics: [String!]!
 ): [TimeGranularity!]!
 ```
 
@@ -121,7 +94,7 @@ You can also get queryable granularities for dimensions using the `dimensions` c
 
 ```graphql
 {
-  dimensions(environmentId: <env_Id>, metrics:["order_total"]) {
+  dimensions(environmentId: BigInt!, metrics:["order_total"]) {
     name
     queryableGranularities # --> ["DAY", "WEEK", "MONTH", "QUARTER", "YEAR"]
   }
@@ -132,7 +105,7 @@ You can also optionally access it from the metrics endpoint:
 
 ```graphql
 {
-  metrics(environmentId: <env_id>) {
+  metrics(environmentId: BigInt!) {
     name
     dimensions {
       name
@@ -145,46 +118,43 @@ You can also optionally access it from the metrics endpoint:
 
 ```graphql
 metricsForDimensions(
-environmentId: Int!
-dimensions: [String!]!
+  environmentId: BigInt!
+  dimensions: [String!]!
 ): [Metric!]!
 ```
 
-**Fetch dimension values for metrics and a given dimension**
+**Create Dimension Values query**
 
 ```graphql
-{
-  createDimensionValuesquery(
-     environmentId: <env_id>
-     metrics:[String!]!
-     group_by:[String!] = null
-  }
-}
+
+mutation createDimensionValuesQuery(
+  environmentId: BigInt!
+  metrics: [String!]
+  groupBy: [String!]!
+): CreateDimensionValuesQueryResult!
+
 ```
 
-### Metric queries
-
-```graphql
-query(
-environmentId: BigInt!
-queryId: String!
-): QueryResult!
-```
-
-
-**Create query**
+**Create Metric query**
 
 ```graphql
 createQuery(
-environmentId: Int!
+environmentId: BigInt!
 metrics: [String!]!
 group_by: [String!] = null
 limit: Int = null
 where: [String] = null
 order: [String!] = null
-): String
+): CreateQueryResult
 ```
 
+**Fetch query result**
+```graphql
+query(
+  environmentId: BigInt!
+  queryId: String!
+): QueryResult!
+```
 
 **Metric Types**
 
@@ -196,6 +166,7 @@ Metric {
 	typeParams: MetricTypeParams!
 	filter: WhereFilter
 	dimensions: [Dimension!]!
+  queryableGranularities: [TimeGranularity!]!
 }
 ```
 
@@ -230,6 +201,7 @@ Dimension {
 	typeParams: DimensionTypeParams
 	isPartition: Boolean!
 	expr: String
+  queryableGranularities: [TimeGranularity!]!
 }
 ```
 
@@ -237,14 +209,14 @@ Dimension {
 DimensionType = [CATEGORICAL, TIME]
 ```
 
-### Examples 
+### Creating Query Examples 
 
 **Query two metrics grouped by time**
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: <env_id>
+    environmentId: BigInt!
     metrics: [{name: "food_order_amount"}]
     groupBy: [{name: "metric_time}, {name: "customer__customer_type"}]
   ) {
@@ -258,7 +230,7 @@ mutation {
 ```graphql
 mutation {
   createQuery(
-    environmentId: <env_id>
+    environmentId: BigInt!
     metrics: [{name: "order_total"}]
     groupBy: [{name: "metric_time", grain: "month"}] 
   ) {
@@ -272,7 +244,7 @@ mutation {
 ```graphql
 mutation {
   createQuery(
-    environmentId: <env_id>
+    environmentId: BigInt!
     metrics: [{name: "food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name: "metric_time, grain: "month"}, {name: "customer__customer_type"}]
   ) {
@@ -293,7 +265,7 @@ Note: If you prefer more strongly typed `where` clause, you can optionally use `
 ```graphql
 mutation {
   createQuery(
-    environmentId: <env_id>
+    environmentId: BigInt!
     metrics:[{name: "order_total"}]
     groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: "month"}]
     where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"]
@@ -304,14 +276,26 @@ mutation {
 ```
 
 **Query with Order**
-Todo: Add example 
+```graphql
+mutation {
+  createQuery(
+    environmentId: BigInt!
+    metrics: [{name: "order_total"}]
+    groupBy: [{name: "metric_time", grain: "month"}] 
+    orderBy: [{metric: {name: "order_total"}}, {groupBy: {name: "metric_time", grain: "month"}, descending:true}]
+  ) {
+    queryId
+  }
+}
+```
+
 
 **Query with Limit**
 
 ```graphql
 mutation {
   createQuery(
-    environmentId: <env_id>
+    environmentId: BigInt!
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name:"metric_time, grain: "month"}, {name: "customer__customer_type"}]
     limit: 10	
@@ -328,7 +312,7 @@ This takes the same inputs as the `createQuery` mutation.
 ```graphql
 mutation {
   compileSql(
-    environmentId: <env_id>
+    environmentId: BigInt!
     metrics: [{name:"food_order_amount"} {name:"order_gross_profit"}]
     groupBy: [{name:"metric_time, grain:"month"}, {name:"customer__customer_type"}]
   ) {
@@ -336,4 +320,29 @@ mutation {
   }
 }
 ```
+
+### Output Format & Pagination
+
+**Output Format**
+
+By default, output provided is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. The JSON returned is a base64 encoded string. This means to access the JSON you must run it through a base64 decoder then you should receive the results in JSON. This is a JSON generated from pandas, this means you can either parse this back into a dataframe via pandas.read_json(json, orient="table") or just use the data directly with json["data"] and get the table schema with json["schema"]["fields"]
+
+
+```graphql
+{
+  query(environmentId: BigInt!, queryId: Int!, pageNum: Int {
+    sql
+    status
+    error
+    totalPages
+    arrowResult
+    jsonResult (orient: table)
+  }
+}
+```
+The results default to table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
+
+**Pagination**
+
+By default, we return 1024 rows per page. If your result set exceeds this, you will have to increment the page by using the pageNum argument 
 
