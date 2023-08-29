@@ -90,7 +90,7 @@ queryableGranularities(
 ): [TimeGranularity!]!
 ```
 
-You can also get queryable granularities for dimensions using the `dimensions` call:
+You can also get queryable granularities for all other dimensions using the `dimensions` call:
 
 ```graphql
 {
