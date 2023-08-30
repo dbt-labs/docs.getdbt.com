@@ -15,7 +15,7 @@ To-do:
 In dbt-redshift, the following incremental materialization strategies are supported:
 
 <VersionBlock lastVersion="1.5">
-          
+
 - `append` (default)
 - `delete+insert`
   
@@ -29,13 +29,13 @@ In dbt-redshift, the following incremental materialization strategies are suppor
 
 </VersionBlock>
 
-All of these strategies are inherited via from dbt-postgres.
+All of these strategies are inherited from dbt-postgres.
 
 ## Performance optimizations
 
 ### Using sortkey and distkey
 
-Tables in Amazon Redshift have two powerful optimizations to improve query performance: distkeys and sortkeys. Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE` <Term id="ddl" />. Note that these settings will have no effect for models set to `view` or `ephemeral` models.
+Tables in Amazon Redshift have two powerful optimizations to improve query performance: distkeys and sortkeys. Supplying these values as model-level configurations apply the corresponding settings in the generated `CREATE TABLE` <Term id="ddl" />. Note that these settings will have no effect on models set to `view` or `ephemeral` models.
 
 - `dist` can have a setting of `all`, `even`, `auto`, or the name of a key.
 - `sort` accepts a list of sort keys, for example: `['timestamp', 'userid']`. dbt will build the sort key in the same order the fields are supplied.
