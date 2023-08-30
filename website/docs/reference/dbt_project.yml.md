@@ -18,11 +18,12 @@ By default, dbt will look for `dbt_project.yml` in your current working director
 
 </VersionBlock>
 
-The following is a list of all available configurations in the `dbt_project.yml` file.
-
 :::info YAML syntax
+
 dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
 :::
+
+The following is a list of all available configurations in the `dbt_project.yml` file. Something to note, [Macro properties](/reference/macro-properties) aren't supported in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 

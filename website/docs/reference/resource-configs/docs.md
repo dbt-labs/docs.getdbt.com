@@ -17,9 +17,27 @@ default_value: {show: true}
     { label: 'Macros', value: 'macros', },
   ]
 }>
+
 <TabItem value="models">
 
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+name: "your_dbt_project_name"
+version: "1.0.0"
+config-version: 2
+
+models:
+  - name: model_name
+    docs:
+      show: true | false
+```
+</File>
+
 <File name='models/schema.yml'>
+
 
 ```yml
 version: 2
@@ -28,7 +46,6 @@ models:
   - name: model_name
     docs:
       show: true | false
-
 ```
 
 </File>
@@ -43,6 +60,22 @@ This property is not implemented for sources.
 
 <TabItem value="seeds">
 
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+name: "your_dbt_project_name"
+version: "1.0.0"
+config-version: 2
+
+seeds:
+  - name: seed_name
+    docs:
+      show: true | false
+```
+</File>
+
 <File name='seeds/schema.yml'>
 
 ```yml
@@ -52,14 +85,28 @@ seeds:
   - name: seed_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
 
 <TabItem value="snapshots">
+
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+name: "your_dbt_project_name"
+version: "1.0.0"
+config-version: 2
+
+snapshots:
+  - name: snapshot_name
+    docs:
+      show: true | false
+```
+</File>
 
 <File name='snapshots/schema.yml'>
 
@@ -70,14 +117,28 @@ snapshots:
   - name: snapshot_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
 
 <TabItem value="analyses">
+
+You can use the docs property in YAML files, including the `dbt_project.yml`:
+
+<File name='dbt_project.yml'>
+
+```yml
+name: "your_dbt_project_name"
+version: "1.0.0"
+config-version: 2
+
+analyses:
+  - name: analysis_name
+    docs:
+      show: true | false
+```
+</File>
 
 <File name='analysis/schema.yml'>
 
@@ -89,16 +150,13 @@ analyses:
     docs:
       show: true | false
 ```
-
 </File>
 
 </TabItem>
 
 <TabItem value="macros">
 
-<!----
-To-do: check this
---->
+You can use the docs property in YAML files, _except_ in `dbt_project.yml`. [Macro properties](/reference/macro-properties) _are not_ supported in the `dbt_project.yml` file. 
 
 <File name='macros/schema.yml'>
 
@@ -109,9 +167,7 @@ macros:
   - name: macro_name
     docs:
       show: true | false
-
 ```
-
 </File>
 
 </TabItem>
