@@ -29,7 +29,7 @@ Retry works with the following commands:
 `dbt retry` reuses the [selectors](/reference/node-selection/yaml-selectors) from the previously executed command.
 
 
-Executing `dbt retry` after a successful `dbt run` will yield the following results:
+Example results of executing `dbt retry` after a successful `dbt run`:
 
 ```shell
 Running with dbt=1.6.1
