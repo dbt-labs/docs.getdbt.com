@@ -31,7 +31,7 @@ Retry works with the following commands:
 
 Executing `dbt retry` after a successful `dbt run` will yield the following results:
 
-```
+```shell
 Running with dbt=1.6.1
 Registered adapter: duckdb=1.6.0
 Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros, 0 groups, 0 semantic models
@@ -39,9 +39,9 @@ Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros
 Nothing to do. Try checking your model configs and model specification args
 ```
 
-In a scenario where `dbt run` has failed due to a syntax error in a model:
+Example of when `dbt run` encounters a syntax error in a model: 
 
-```
+```shell
 Running with dbt=1.6.1
 Registered adapter: duckdb=1.6.0
 Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros, 0 groups, 0 semantic models
@@ -70,9 +70,9 @@ Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
 ```
 
 
-Executing `dbt retry` without fixing the error(s) will result in another failed run:
+Example of a subsequent failed `dbt retry` run without fixing the error(s):
 
-```
+```shell
 Running with dbt=1.6.1
 Registered adapter: duckdb=1.6.0
 Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros, 0 groups, 0 semantic models
@@ -85,9 +85,9 @@ Concurrency: 24 threads (target='dev')
 Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
 ```
 
-Executing `dbt retry` after a failed run, but correcting the issue, will result in a completed run:
+Example of a successful `dbt retry` run after fixing error(s):
 
-```
+```shell
 Running with dbt=1.6.1
 Registered adapter: duckdb=1.6.0
 Found 5 models, 3 seeds, 20 tests, 0 sources, 0 exposures, 0 metrics, 348 macros, 0 groups, 0 semantic models
