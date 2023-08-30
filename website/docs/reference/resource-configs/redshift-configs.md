@@ -14,7 +14,7 @@ To-do:
 
 In dbt-redshift, the following incremental materialization strategies are supported:
 
-<VersionBlock firstVersion="1.0" lastVersion="1.5">
+<VersionBlock lastVersion="1.5">
           
 - `append` (default)
 - `delete+insert`
