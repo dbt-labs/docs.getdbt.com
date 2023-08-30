@@ -1,10 +1,12 @@
 ---
 title: "Add tests to your DAG"
-sidebar_title: "Tests"
+sidebar_label: "Tests"
 description: "Read this tutorial to learn how to use tests when building in dbt."
 id: "tests"
+keywords:
+  - test, tests, testing
 ---
-
+# Add tests to your DAG
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Test properties](/reference/resource-properties/tests)
