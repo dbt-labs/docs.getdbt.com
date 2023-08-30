@@ -1,5 +1,6 @@
 ---
-title: "Webhooks for your jobs"
+title: "Webhooks for your jobs" 
+sidebar_label: "Webhooks"
 description: "Get real-time notifications about your dbt jobs with webhooks."
 ---
 
@@ -17,7 +18,7 @@ You can create webhooks for these events from the [dbt Cloud web-based UI](#crea
 
 dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
-A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out.
+A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the dbt cloud webhooks system will interpret this as a failure.
 
 :::tip Videos 
 If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
@@ -27,9 +28,11 @@ You can also check out the free [dbt Fundamentals course](https://courses.getdbt
 
 ## Prerequisites
 - You have a dbt Cloud account that is on the [Team or Enterprise plan](https://www.getdbt.com/pricing/). 
-- You have a multi-tenant deployment in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
-- For Enterprise plan accounts, the user must have the Account Admin, Admin, or Developer [permission set](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions) within their user group to have `write` access to webhooks.
-- For Team plan accounts, as long as the user has a [Developer license](https://docs.getdbt.com/docs/cloud/manage-access/self-service-permissions), they will have `write` access to webhooks.
+- For `write` access to webhooks: 
+    - **Enterprise plan accounts** &mdash; Permission sets are the same for both API service tokens and the dbt Cloud UI. You, or the API service token, must have the [Account Admin](/docs/cloud/manage-access/enterprise-permissions#account-admin), [Admin](/docs/cloud/manage-access/enterprise-permissions#admin), or [Developer](/docs/cloud/manage-access/enterprise-permissions#developer) permission set.  
+    - **Team plan accounts** &mdash; For the dbt Cloud UI, you need to have a [Developer license](/docs/cloud/manage-access/self-service-permissions). For API service tokens, you must assign the service token to have the [Account Admin or Member](/docs/dbt-cloud-apis/service-tokens#team-plans-using-service-account-tokens) permission set. 
+- You have a multi-tenant deployment model in dbt Cloud. For more information, refer to [Tenancy](/docs/cloud/about-cloud/tenancy). 
+
 ## Create a webhook subscription {#create-a-webhook-subscription}
 
 From your **Account Settings** in dbt Cloud (using the gear menu in the top right corner), click **Create New Webhook** in the **Webhooks** section. You can find the appropriate dbt Cloud access URL for your region and plan with [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).
@@ -539,6 +542,6 @@ DELETE https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscripti
 ```
 
 ## Related docs 
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI](/docs/deploy/continuous-integration)
 - [Use dbt Cloud's webhooks with other SaaS apps](/guides/orchestration/webhooks)
 

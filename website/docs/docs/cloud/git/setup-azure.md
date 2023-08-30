@@ -5,7 +5,7 @@ description: "You can set up your Azure DevOps by creating an Azure AD app and a
 sidebar_label: "Set up Azure DevOps"
 ---
 
-<Snippet src="available-enterprise-tier-only" />
+<Snippet path="available-enterprise-tier-only" />
 
 ## Overview
 
@@ -13,7 +13,7 @@ To use our native integration with Azure DevOps in dbt Cloud, an account admin n
 
 1. [Register an Azure AD app](#register-an-azure-ad-app).
 2. [Add permissions to your new app](#add-permissions-to-your-new-app).
-3. [Add another redirect URI](#add-another-redirect-URI).
+3. [Add another redirect URI](#add-another-redirect-uri).
 4. [Connect Azure DevOps to your new app](#connect-azure-devops-to-your-new-app).
 5. [Add your Azure AD app to dbt Cloud](#add-your-azure-ad-app-to-dbt-cloud).
 

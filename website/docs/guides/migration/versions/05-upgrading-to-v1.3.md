@@ -13,7 +13,7 @@ description: New features and changes in dbt Core v1.3
 We are committed to providing backward compatibility for all versions 1.x. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
 There are three changes in dbt Core v1.3 that may require action from some users:
-1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/core/connection-profiles#advanced-customizing-a-profile-directory).
+1. If you have a `profiles.yml` file located in the root directory where you run dbt, dbt will start preferring that profiles file over the default location on your machine. [You can read more details here](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory).
 2. If you already have `.py` files defined in the `model-paths` of your dbt project, dbt will start trying to read them as Python models. You can use [the new `.dbtignore` file](/reference/dbtignore) to tell dbt to ignore those files.
 3. If you have custom code accessing the `raw_sql` property of models (with the [model](/reference/dbt-jinja-functions/model) or [graph](/reference/dbt-jinja-functions/graph) objects), it has been renamed to `raw_code`. This is a change to the manifest contract, described in more detail below.
 
@@ -33,7 +33,7 @@ We have updated the manifest schema version to `v7`. This includes the changes t
 - Renamed `compiled_sql` to `compiled_code`
 - A new top-level node property, `language` (`'sql'` or `'python'`)
 
-For users of [state-based selection](/docs/deploy/project-state): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
+For users of [state-based selection](/reference/node-selection/syntax#about-node-selection): This release includes logic providing backward and forward compatibility for older manifest versions. While running dbt Core v1.3, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 and higher.
 
 ### For maintainers of adapter plugins
 
@@ -46,7 +46,7 @@ GitHub discussion with details: [dbt-labs/dbt-core#6011](https://github.com/dbt-
 - Plus, a few related updates to **[exposure properties](/reference/exposure-properties)**: `config`, `label`, and `name` validation.
 
 - **[Custom `node_color`](/reference/resource-configs/docs.md)** in `dbt-docs`. For the first time, you can control the colors displayed in dbt's DAG. Want bronze, silver, and gold layers? It's at your fingertips.
-- **[`Profiles.yml`](/docs/core/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
+- **[`Profiles.yml`](/docs/core/connect-data-platform/connection-profiles#advanced-customizing-a-profile-directory)** search order now looks in the current working directory before `~/.dbt`.
 
 
 ### Quick hits

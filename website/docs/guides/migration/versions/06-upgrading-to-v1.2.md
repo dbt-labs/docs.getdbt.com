@@ -18,7 +18,7 @@ The manifest schema version has been updated to `v6`. The relevant changes are:
 - Change to `config` default, which includes a new `grants` property with default value `{}`
 - Addition of a `metrics` property, to any node which could reference metrics using the `metric()` function
 
-For users of [state-based selection](/docs/deploy/project-state): This release also includes new logic declaring forwards compatibility for older manifest versions. While running dbt Core v1.2, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 or v1.1.
+For users of [state-based selection](/reference/node-selection/syntax#about-node-selection): This release also includes new logic declaring forwards compatibility for older manifest versions. While running dbt Core v1.2, it should be possible to use `state:modified --state ...` selection against a manifest produced by dbt Core v1.0 or v1.1.
 
 ## For maintainers of adapter plugins
 
@@ -30,8 +30,8 @@ See GitHub discussion [dbt-labs/dbt-core#5468](https://github.com/dbt-labs/dbt-c
 - **[Metrics](/docs/build/metrics)** now support an `expression` type (metrics-on-metrics), as well as a `metric()` function to use when referencing metrics from within models, macros, or `expression`-type metrics. For more information on how to use expression metrics, check out the [**`dbt_metrics` package**](https://github.com/dbt-labs/dbt_metrics)
 - **[dbt-Jinja functions](/reference/dbt-jinja-functions)** now include the [`itertools` Python module](/reference/dbt-jinja-functions/modules#itertools), as well as the [set](/reference/dbt-jinja-functions/set) and [zip](/reference/dbt-jinja-functions/zip) functions.
 - **[Node selection](/reference/node-selection/syntax)** includes a [file selection method](/reference/node-selection/methods#the-file-method) (`-s model.sql`), and [yaml selector](/reference/node-selection/yaml-selectors) inheritance.
-- **[Global configs](/reference/global-configs)** now include CLI flag and environment variable settings for [`target-path`](/reference/project-configs/target-path) and [`log-path`](/reference/project-configs/log-path), which can be used to override the values set in `dbt_project.yml`
+- **[Global configs](/reference/global-configs/about-global-configs)** now include CLI flag and environment variable settings for [`target-path`](/reference/project-configs/target-path) and [`log-path`](/reference/project-configs/log-path), which can be used to override the values set in `dbt_project.yml`
 
 ### Specific adapters
 
-- [Postgres](/reference/warehouse-setups/postgres-setup) and [Redshift](/reference/warehouse-setups/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.
+- [Postgres](/docs/core/connect-data-platform/postgres-setup) and [Redshift](/docs/core/connect-data-platform/redshift-setup) profiles support a `retries` config, if dbt encounters an operational error or timeout when opening a connection. The default is 1 retry.

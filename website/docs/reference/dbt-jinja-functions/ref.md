@@ -29,11 +29,7 @@ from {{ref('model_a')}}
 
 `ref()` is, under the hood, actually doing two important things. First, it is interpolating the schema into your model file to allow you to change your deployment schema via configuration. Second, it is using these references between models to automatically build the dependency graph. This will enable dbt to deploy models in the correct order when using `dbt run`.
 
-:::info New in 0.9.0
-
-The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes at the [{{ this }}](/reference/dbt-jinja-functions/this) variable.
-
-:::
+The `{{ ref }}` function returns a `Relation` object that has the same `table`, `schema`, and `name` attributes as the [{{ this }} variable](/reference/dbt-jinja-functions/this).
 
 ## Advanced ref usage
 
@@ -42,7 +38,7 @@ The `{{ ref }}` function returns a `Relation` object that has the same `table`, 
 The `ref` function supports an optional keyword argument - `version` (or `v`).
 When a version argument is provided to the `ref` function, dbt returns to the `Relation` object corresponding to the specified version of the referenced model.
 
-This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guaruntee no breaking changes to existing versions of the model.
+This functionality is useful when referencing versioned models that make breaking changes by creating new versions, but guarantees no breaking changes to existing versions of the model.
 
 If the `version` argument is not supplied to a `ref` of a versioned model, the latest version is. This has the benefit of automatically incorporating the latest changes of a referenced model, but there is a risk of incorporating breaking changes.
 
@@ -73,13 +69,21 @@ select * from {{ ref('model_name') }}
 
 ### Two-argument variant
 
-There is also a two-argument variant of the `ref` function. With this variant, you can pass both a package name and model name to `ref` to avoid ambiguity. This functionality is not commonly required for typical dbt usage.
+There is also a two-argument variant of the `ref` function. With this variant, you can pass both a namespace (project or package) and model name to `ref` to avoid ambiguity.
 
 ```sql
-select * from {{ ref('package_name', 'model_name') }}
+select * from {{ ref('project_or_package', 'model_name') }}
 ```
 
-**Note:** The `package_name` should only include the name of the package, not the maintainer. For example, if you use the [`fivetran/stripe`](https://hub.getdbt.com/fivetran/stripe/latest/) package, type `stripe` in that argument, and not `fivetran/stripe`.
+We recommend using two-argument `ref` any time you are referencing a model defined in a different package or project. While not required in all cases, it's more explicit for you, for dbt, and for future readers of your code.
+
+<VersionBlock firstVersion="1.6">
+
+We especially recommend using two-argument `ref` to avoid ambiguity, in cases where a model name is duplicated across multiple projects or installed packages. If you use one-argument `ref` (just the `model_name`), dbt will look for a model by that name in the same namespace (package or project); if it finds none, it will raise an error.
+
+</VersionBlock>
+
+**Note:** The `project_or_package` should match the `name` of the project/package, as defined in its `dbt_project.yml`. This might be different from the name of the repository. It never includes the repository's organization name. For example, if you use the [`fivetran/stripe`](https://hub.getdbt.com/fivetran/stripe/latest/) package, the package name is `stripe`, not `fivetran/stripe`.
 
 ### Forcing Dependencies
 

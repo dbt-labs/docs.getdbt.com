@@ -45,6 +45,6 @@ dbt Core v0.21 has reached the end of critical support. No new patch versions wi
 - [`dispatch`](/reference/dbt-jinja-functions/dispatch) now supports reimplementing global macros residing in the `dbt` macro namespace with versions from installed packages, by leveraging `search_order` in the [`dispatch` project config](/reference/project-configs/dispatch-config)
 
 ### Plugins
-- **Postgres** [profile](/reference/warehouse-setups/postgres-setup) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
-- **Redshift**: [profile](/reference/warehouse-setups/redshift-setup) property `ra3_node: true` to support cross-database source definitions and read-only querying
-- **BigQuery**: [profile](/reference/warehouse-setups/bigquery-setup) property `execution_project` now configurable. [Snapshots](/docs/build/snapshots) support `target_project` and `target_dataset` config aliases.
+- **Postgres** [profile](/docs/core/connect-data-platform/postgres-setup) property `connect_timeout` now configurable. Also applicable to child plugins (e.g. `dbt-redshift`)
+- **Redshift**: [profile](/docs/core/connect-data-platform/redshift-setup) property `ra3_node: true` to support cross-database source definitions and read-only querying
+- **BigQuery**: [profile](/docs/core/connect-data-platform/bigquery-setup) property `execution_project` now configurable. [Snapshots](/docs/build/snapshots) support `target_project` and `target_dataset` config aliases.

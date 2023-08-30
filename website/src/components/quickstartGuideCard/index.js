@@ -1,16 +1,17 @@
 import React from "react";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
+import getIconType from "../../utils/get-icon-type";
 
 function QuickstartGuideCard({ frontMatter }) {
-  const { id, title, time_to_complete } = frontMatter;
-
+  const { id, title, time_to_complete, icon } = frontMatter;
   return (
     <Link
       to={`/quickstarts/${id}`}
-      frontMatter={frontMatter}
       className={styles.quickstartCard}
     >
+      {icon && getIconType(icon, styles.icon)}
+      
       <h3>{title}</h3>
 
       {time_to_complete && (

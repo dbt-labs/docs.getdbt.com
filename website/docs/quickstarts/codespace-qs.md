@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Core using GitHub Codespaces"
 id: codespace
 platform: 'dbt-core'
+icon: 'fa-github'
 hide_table_of_contents: true
 ---
 
@@ -65,7 +66,7 @@ If you'd like to work with a larger selection of Jaffle Shop data, you can gener
     ```shell
     /workspaces/test (main) $ jafgen --years NUMBER_OF_YEARS
     ``` 
-    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/reference/warehouse-setups/duckdb-setup) adapter.
+    Replace `NUMBER_OF_YEARS` with the number of years you want to simulate. This command builds the CSV files and stores them in the `jaffle-data` folder, and is automatically sourced based on the `sources.yml` file and the [dbt-duckdb](/docs/core/connect-data-platform/duckdb-setup) adapter.
 
 As you increase the number of years, it takes exponentially more time to generate the data because the Jaffle Shop stores grow in size and number. For a good balance of data size and time to build, dbt Labs suggests a maximum of 6 years.
 

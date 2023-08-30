@@ -5,7 +5,15 @@ sidebar_label: "Run results"
 
 **Current schema**: [`v4`](https://schemas.getdbt.com/dbt/run-results/v4/index.html)
 
-**Produced by:** [`build`](/reference/commands/build) [`compile`](/reference/commands/compile) [`docs generate`](/reference/commands/cmd-docs) [`seed`](/reference/commands/seed) [`snapshot`](/reference/commands/snapshot) [`test`](/reference/commands/test) [`run`](/reference/commands/run)
+ **Produced by:**
+ [`build`](/reference/commands/build)
+ [`compile`](/reference/commands/compile)
+ [`docs generate`](/reference/commands/cmd-docs)
+ [`run`](/reference/commands/run)
+ [`seed`](/reference/commands/seed)
+ [`snapshot`](/reference/commands/snapshot)
+ [`test`](/reference/commands/test) <VersionBlock firstVersion="1.6">[`run-operation`](/reference/commands/run-operation) </VersionBlock>
+ 
 
 This file contains information about a completed invocation of dbt, including timing and status info for each node (model, test, etc) that was executed. In aggregate, many `run_results.json` can be combined to calculate average model runtime, test failure rates, the number of record changes captured by snapshots, etc.
 
@@ -27,5 +35,12 @@ Each entry in `results` is a [`Result` object](/reference/dbt-classes#result-obj
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
-- `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Not populated by tests, as of v0.19.0; we plan to fix in a future release ([dbt#2580](https://github.com/dbt-labs/dbt-core/issues/2580)).
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
+
+import RowsAffected from '/snippets/_run-result.md'; 
+
+<RowsAffected/>
+
+<!-- this partial comes from https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/snippets/_run-result-->
+
+

@@ -16,7 +16,7 @@ We've codified our best practices in Git, in our [Git guide](https://github.com/
 :::
 
 ### Use separate development and production environments
-dbt makes it easy to maintain separate production and development environments through the use of targets within a profile. We recommend using a `dev` target when running dbt from your command line and only running against a `prod` target when running from a production deployment. You can read more [about managing environments here](/docs/collaborate/environments/environments-in-dbt).
+dbt makes it easy to maintain separate production and development environments through the use of targets within a profile. We recommend using a `dev` target when running dbt from your command line and only running against a `prod` target when running from a production deployment. You can read more [about managing environments here](/docs/environments-in-dbt).
 
 ### Use a style guide for your project
 SQL styles, field naming conventions, and other rules for your dbt project should be codified, especially on projects where multiple dbt users are writing code.
@@ -108,7 +108,7 @@ We often:
 When developing, it often makes sense to only run the model you are actively working on and any downstream models. You can choose which models to run by using the [model selection syntax](/reference/node-selection/syntax).
 
 ### Run only modified models to test changes ("slim CI")
-To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/cloud-ci-job).
+To merge code changes with confidence, you want to know that those changes will not cause breakages elsewhere in your project. For that reason, we recommend running models and tests in a sandboxed environment, separated from your production data, as an automatic check in your git workflow. (If you use GitHub and dbt Cloud, read about [how to set up CI jobs](/docs/deploy/ci-jobs).
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
@@ -159,10 +159,6 @@ dbt test --select result:fail --exclude <example test> --defer --state path/to/p
 
 > Note: If you're using the `--state target/` flag, `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command. `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
 
-:::caution Experimental functionality
-The `source_status` selection method is experimental and subject to change. During this time, ongoing improvements may limit this feature’s availability and cause breaking changes to its functionality.
-:::
-
 <VersionBlock lastVersion="1.0">
 
 Only supported by v1.1 or newer.
@@ -190,7 +186,7 @@ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 
 </VersionBlock>
 
-To learn more, read the docs on [state](/docs/deploy/project-state).
+To learn more, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
 ## Pro-tips for dbt Projects
 ### Limit the data processed when in development

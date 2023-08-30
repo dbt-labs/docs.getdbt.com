@@ -1,4 +1,117 @@
+# Deprecating Discovery API (FKA Metadata API) legacy endpoints
+
+/docs/dbt-cloud-apis/discovery-schema-model /docs/dbt-cloud-apis/discovery-schema-job-model 301
+/docs/dbt-cloud-apis/discovery-schema-models /docs/dbt-cloud-apis/discovery-schema-job-models 301
+/docs/dbt-cloud-apis/discovery-schema-modelByEnv /docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns 301
+/docs/dbt-cloud-apis/discovery-schema-metric /docs/dbt-cloud-apis/discovery-schema-job-metric 301
+/docs/dbt-cloud-apis/discovery-schema-metrics /docs/dbt-cloud-apis/discovery-schema-job-metrics 301
+/docs/dbt-cloud-apis/discovery-schema-source /docs/dbt-cloud-apis/discovery-schema-job-source 301
+/docs/dbt-cloud-apis/discovery-schema-sources /docs/dbt-cloud-apis/discovery-schema-job-sources 301
+/docs/dbt-cloud-apis/discovery-schema-seed /docs/dbt-cloud-apis/discovery-schema-job-seed 301
+/docs/dbt-cloud-apis/discovery-schema-seeds /docs/dbt-cloud-apis/discovery-schema-job-seeds 301
+/docs/dbt-cloud-apis/discovery-schema-snapshots /docs/dbt-cloud-apis/discovery-schema-job-snapshots 301
+/docs/dbt-cloud-apis/discovery-schema-test /docs/dbt-cloud-apis/discovery-schema-job-test 301
+/docs/dbt-cloud-apis/discovery-schema-tests /docs/dbt-cloud-apis/discovery-schema-job-tests 301
+/docs/dbt-cloud-apis/discovery-schema-exposure /docs/dbt-cloud-apis/discovery-schema-job-exposure 301
+/docs/dbt-cloud-apis/discovery-schema-exposures /docs/dbt-cloud-apis/discovery-schema-job-exposures 301
+
+# deploy redirects
+
+/docs/deploy/job-triggers /docs/deploy/deploy-jobs 301
+/docs/deploy/job-settings /docs/deploy/deploy-jobs 301
+/docs/deploy/dbt-cloud-job /docs/deploy/deploy-jobs 301
+/faqs/environments/beta-release  /docs/dbt-versions/product-lifecycles 301
+
+/docs/deploy/slim-ci-jobs /docs/deploy/ci-jobs 301
+
+## semantic layer
+
+https://docs.getdbt.com/blog/understanding-the-components-of-the-dbt-semantic-layer  /docs/use-dbt-semantic-layer/dbt-sl?version=1.6 301
+https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-semantic-layer/dbt-sl?version=1.6  301
+/guides/dbt-ecosystem/sl-partner-integration-guide  /docs/use-dbt-semantic-layer/avail-sl-integrations 301
+/docs/use-dbt-semantic-layer/dbt-semantic-layer /docs/use-dbt-semantic-layer/dbt-sl 301
+/docs/use-dbt-semantic-layer/set-up-semantic-layer /docs/use-dbt-semantic-layer/setup-sl 301
+/docs/use-dbt-semantic-layer/setup-dbt-semantic-layer /docs/use-dbt-semantic-layer/setup-sl 301
+/docs/use-dbt-semantic-layer/quickstart-semantic-layer /docs/use-dbt-semantic-layer/quickstart-sl 301
+
+## refocus deploy page
+/docs/collaborate/environments/environments-in-dbt /docs/environments-in-dbt 301
+/docs/collaborate/environments/dbt-cloud-environments /docs/deploy/dbt-cloud-environments 301
+/docs/collaborate/environments/dbt-core-environments /docs/core/dbt-core-environments 301
+
+/docs/cloud/manage-access/licenses-and-groups /docs/cloud/manage-access/about-user-access 301
+
+/docs/deploy/cloud-ci-job /docs/deploy/continuous-integration 301
+
+## quickstarts redirect again
+
+/docs/quickstarts/dbt-cloud/bigquery         /quickstarts/bigquery 301
+/docs/quickstarts/dbt-cloud/databricks       /quickstarts/databricks 301
+/docs/quickstarts/dbt-cloud/redshift         /quickstarts/redshift 301
+/docs/quickstarts/dbt-cloud/snowflake        /quickstarts/snowflake 301
+/docs/quickstarts/dbt-cloud/starburst-galaxy /quickstarts/starburst-galaxy 301
+/docs/quickstarts/dbt-core/codespace         /quickstarts/codespace 301
+/docs/quickstarts/dbt-core/manual-install    /quickstarts/manual-install 301
+
+/docs/deploy/project-state /reference/node-selection/syntax 301
+/reference/global-configs /reference/global-configs/about-global-configs 301
+
 /docs/quickstarts/overview /quickstarts 301
+
+## supported data platform
+
+/docs/supported-data-platforms#verified-adapters /docs/supported-data-platforms 301
+/docs/supported-data-platforms#community-adapters /docs/community-adapters 301
+/docs/supported-data-platforms#adapter-installation /docs/connect-adapters 301
+/docs/supported-data-platforms#adapter-taxonomy /docs/supported-data-platforms 301
+/docs/supported-data-platforms#verified-by-dbt-labs /docs/supported-data-platforms 301
+/docs/supported-data-platforms#maintainers /docs/connect-adapters#maintainers 301
+/docs/supported-data-platforms#contributing-to-dbt-core-adapters /docs/contribute-core-adapters 301
+/docs/supported-data-platforms#contributing-to-a-pre-existing-adapter /docs/contribute-core-adapters#contribute-to-a-pre-existing-adapter 301
+/docs/supported-data-platforms#creating-a-new-adapter /docs/contribute-core-adapters#create-a-new-adapter 301
+
+## dbt core setup changes
+
+/docs/core/connection-profiles /docs/core/connect-data-platform/connection-profiles 301
+/reference/warehouse-setups/bigquery-setup /docs/core/connect-data-platform/bigquery-setup 301
+/reference/warehouse-setups/postgres-setup /docs/core/connect-data-platform/postgres-setup 301
+/reference/warehouse-setups/redshift-setup /docs/core/connect-data-platform/redshift-setup 301
+/reference/warehouse-setups/snowflake-setup /docs/core/connect-data-platform/snowflake-setup 301
+/reference/warehouse-setups/mssql-setup /docs/core/connect-data-platform/mssql-setup 301
+/reference/warehouse-setups/trino-setup /docs/core/connect-data-platform/trino-setup 301
+/reference/warehouse-setups/singlestore-setup /docs/core/connect-data-platform/singlestore-setup 301
+/reference/warehouse-setups/spark-setup /docs/core/connect-data-platform/spark-setup 301
+/reference/warehouse-setups/databricks-setup /docs/core/connect-data-platform/databricks-setup 301
+/reference/warehouse-setups/hive-setup /docs/core/connect-data-platform/hive-setup 301
+/reference/warehouse-setups/exasol-setup /docs/core/connect-data-platform/exasol-setup 301
+/reference/warehouse-setups/oracle-setup /docs/core/connect-data-platform/oracle-setup 301
+/reference/warehouse-setups/azuresynapse-setup /docs/core/connect-data-platform/azuresynapse-setup 301
+/reference/warehouse-setups/dremio-setup /docs/core/connect-data-platform/dremio-setup 301
+/reference/warehouse-setups/clickhouse-setup /docs/core/connect-data-platform/clickhouse-setup 301
+/reference/warehouse-setups/materialize-setup /docs/core/connect-data-platform/materialize-setup 301
+/reference/warehouse-setups/rockset-setup /docs/core/connect-data-platform/rockset-setup 301
+/reference/warehouse-setups/firebolt-setup /docs/core/connect-data-platform/firebolt-setup 301
+/reference/warehouse-setups/teradata-setup /docs/core/connect-data-platform/teradata-setup 301
+/reference/warehouse-setups/athena-setup /docs/core/connect-data-platform/athena-setup 301
+/reference/warehouse-setups/vertica-setup /docs/core/connect-data-platform/vertica-setup 301
+/reference/warehouse-setups/tidb-setup /docs/core/connect-data-platform/tidb-setup 301
+/reference/warehouse-setups/glue-setup /docs/core/connect-data-platform/glue-setup 301
+/reference/warehouse-setups/mindsdb-setup /docs/core/connect-data-platform/mindsdb-setup 301
+/reference/warehouse-setups/greenplum-setup /docs/core/connect-data-platform/greenplum-setup 301
+/reference/warehouse-setups/impala-setup /docs/core/connect-data-platform/impala-setup 301
+/reference/warehouse-setups/layer-setup /docs/core/connect-data-platform/layer-setup 301
+/reference/warehouse-setups/iomete-setup /docs/core/connect-data-platform/iomete-setup 301
+/reference/warehouse-setups/duckdb-setup /docs/core/connect-data-platform/duckdb-setup 301
+/reference/warehouse-setups/sqlite-setup /docs/core/connect-data-platform/sqlite-setup 301
+/reference/warehouse-setups/mysql-setup /docs/core/connect-data-platform/mysql-setup 301
+/reference/warehouse-setups/ibmdb2-setup /docs/core/connect-data-platform/ibmdb2-setup 301
+/reference/warehouse-setups/alloydb-setup /docs/core/connect-data-platform/alloydb-setup 301
+/reference/warehouse-setups/doris-setup /docs/core/connect-data-platform/doris-setup 301
+/reference/warehouse-setups/infer-setup /docs/core/connect-data-platform/infer-setup 301
+/reference/warehouse-setups/databend-setup /docs/core/connect-data-platform/databend-setup 301
+/reference/warehouse-setups/fal-setup /docs/core/connect-data-platform/fal-setup 301
+/reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup
+/reference/warehouse-setups/upsolver-setup /docs/core/connect-data-platform/upsolver-setup 301
 
 # Discovery redirect
 /docs/dbt-cloud-apis/metadata-schema-source /docs/dbt-cloud-apis/discovery-schema-source 301
@@ -32,8 +145,10 @@
 /docs/cloud/dbt-cloud-tips /docs/cloud/dbt-cloud-ide/dbt-cloud-tips 301
 /docs/cloud/develop-in-the-cloud /docs/cloud/dbt-cloud-ide/develop-in-the-cloud 301
 /docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
+
 /docs/quickstarts/dbt-core/quickstart /quickstarts/manual-install 301
 docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job#model-timing 301
+
 /docs/dbt-versions/release-notes/January-2022/model-timing-more /docs/deploy/dbt-cloud-job#model-timing 301
 /docs/deploy/deployments#dbt-cloud /docs/deploy/dbt-cloud-job 301
 /docs/deploy/deployments#airflow /docs/deploy/deployment-tools 301
@@ -56,7 +171,7 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/deploy/architecture /docs/cloud/about-cloud/architecture 301
 /docs/deploy/single-tenant /docs/cloud/about-cloud/tenancy 301
 /docs/deploy/multi-tenant /docs/cloud/about-cloud/tenancy 301
-/docs/cloud/manage-access/about-access 301 /docs/cloud/manage-access/about-user-access 301
+/docs/cloud/manage-access/about-access /docs/cloud/manage-access/about-user-access 301
 /docs/collaborate/git/connect-github /docs/cloud/git/connect-github 301
 /docs/collaborate/git/connect-gitlab /docs/cloud/git/connect-gitlab 301
 /docs/collaborate/git/connect-azure-devops /docs/cloud/git/connect-azure-devops 301
@@ -499,7 +614,6 @@ docs/dbt-cloud/using-dbt-cloud/cloud-model-timing-tab /docs/deploy/dbt-cloud-job
 /docs/setting-up-snowflake-sso /docs/dbt-cloud/dbt-cloud-enterprise/setting-up-enterprise-snowflake-oauth 301
 /docs/setting-up-sso-with-google-gsuite /docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-google-gsuite 301
 /docs/setting-up-sso-with-okta /docs/dbt-cloud/dbt-cloud-enterprise/setting-up-sso-with-okta 301
-/docs/slack-rules-of-the-road /docs/contributing/slack-rules-of-the-road 301
 /docs/snapshot /reference/commands/snapshot 301
 /docs/snapshots /docs/building-a-dbt-project/snapshots 301
 /docs/snowflake-configs /reference/resource-configs/snowflake-configs 301
@@ -607,6 +721,8 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /reference/model-selection-syntax/#test-selection-examples /reference/node-selection/test-selection-examples 301
 /docs/building-a-dbt-project/building-models/using-custom-database /docs/building-a-dbt-project/building-models/using-custom-databases 301
 /dbt-cloud/api /dbt-cloud/api-v2 301
+/dbt-cloud/api-v2-old /dbt-cloud/api-v2-legacy 301
+/dbt-cloud/api-v4 /docs/dbt-cloud-apis/admin-cloud-api
 /reference/project-configs/source-paths /reference/project-configs/model-paths 301
 /reference/project-configs/data-paths /reference/project-configs/seed-paths 301
 /reference/project-configs/modules-paths /reference/project-configs/packages-install-path 301
@@ -632,6 +748,7 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /tutorial/building-your-first-project/\* /guides/getting-started/building-your-first-project/:splat 301
 /tutorial/refactoring-legacy-sql /guides/migration/tools/refactoring-legacy-sql 301
 /blog/change-data-capture-metrics /blog/change-data-capture 301
+/blog/intelligent-slim-ci /docs/deploy/continuous-integration 301
 /blog/model-timing-tab /blog/how-we-shaved-90-minutes-off-model 301
 /reference/warehouse-setups/resource-configs/materialize-configs/indexes /reference/resource-configs/materialize-configs#indexes 301
 /docs/build/building-models /docs/build/models 301
@@ -669,6 +786,10 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/guides/getting-help /guides/legacy/getting-help 301
 /docs/guides/migration-guide/_ /guides/migration/versions/:splat 301!
 /docs/guides/_ /guides/legacy/:splat 301!
+
+/guides/best-practices/environment-setup/1-env-guide-overview /guides/orchestration/set-up-ci/overview 301
+/guides/best-practices/environment-setup/2-one-deployment-environment /guides/orchestration/set-up-ci/in-15-minutes 301
+/guides/best-practices/environment-setup/3-many-deployment-environments /guides/orchestration/set-up-ci/multiple-environments 301
 
 # adapter development docs
 
@@ -752,11 +873,14 @@ https://tutorial.getdbt.com/* https://docs.getdbt.com/:splat 301!
 /docs/contributing/contributor-license-agreements /community/resources/contributor-license-agreements 301
 /community/maintaining-a-channel /community/resources/maintaining-a-channel 301
 /docs/contributing/oss-expectations /community/resources/oss-expectations 301
-/docs/contributing/slack-rules-of-the-road /community/resources/slack-rules-of-the-road 301
+/docs/slack-rules-of-the-road /community/resources/community-rules-of-the-road 301
+/docs/contributing/slack-rules-of-the-road /community/resources/community-rules-of-the-road 301
+/community/resources/slack-rules-of-the-road /community/resources/community-rules-of-the-road 301
 /blog/getting-started-with-the-dbt-semantic-layer /blog/understanding-the-components-of-the-dbt-semantic-layer 301!
 /docs/getting-started/develop-in-the-cloud#creating-a-development-environment /docs/get-started/develop-in-the-cloud#set-up-and-access-the-cloud-ide 301
 /docs/cloud-developer-ide /docs/build/custom-target-names#dbt-cloud-ide 301
 /website/docs/docs/contributing/building-a-new-adapter.md /guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter 301
+/guides/legacy/getting-help /community/resources/getting-help 301
 
 # Blog docs
 

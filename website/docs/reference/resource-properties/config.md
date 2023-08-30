@@ -124,11 +124,11 @@ version: 2
 sources:
   - name: <source_name>
     config:
-      [<source_config>](source-configs): <config_value>
+      [<source_config>](/reference/source-configs): <config_value>
     tables:
       - name: <table_name>
         config:
-          [<source_config>](source-configs): <config_value>
+          [<source_config>](/reference/source-configs): <config_value>
 ```
 
 </File>

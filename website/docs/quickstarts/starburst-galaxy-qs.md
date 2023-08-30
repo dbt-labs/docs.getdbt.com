@@ -2,6 +2,7 @@
 title: "Quickstart for dbt Cloud and Starburst Galaxy"
 id: "starburst-galaxy"
 platform: 'dbt-cloud'
+icon: 'starburst'
 hide_table_of_contents: true
 ---
 ## Introduction
@@ -37,7 +38,7 @@ You can also watch the [Build Better Data Pipelines with dbt and Starburst](http
 ### Related content
 
 - [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud CI job](/docs/deploy/continuous-integration)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 - [SQL overview for Starburst Galaxy](https://docs.starburst.io/starburst-galaxy/sql/index.html)    
@@ -67,7 +68,7 @@ Using Starburst Galaxy, you can create tables and also transform them with dbt. 
     ```
 
 ## Connect Starburst Galaxy to the Amazon S3 bucket {#connect-to-s3-bucket}
-If your Starburst Galaxy instance is not already connected to your S3 bucket, you need to create a cluster, create a catalog that connects to the S3 bucket, associate the new catalog (your data source) to your new cluster, and configure privilege settings. 
+If your Starburst Galaxy instance is not already connected to your S3 bucket, you need to create a cluster, configure a catalog that allows Starburst Galaxy to connect to the S3 bucket, add the catalog to your new cluster, and configure privilege settings.
 
 In addition to Amazon S3, Starburst Galaxy supports many other data sources. To learn more about them, you can refer to the [Catalogs overview](https://docs.starburst.io/starburst-galaxy/catalogs/index.html) in the Starburst Galaxy docs.  
 
@@ -78,11 +79,11 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
 
     When done, click **Create cluster**.
 
-1. Create a catalog. Click **Catalogs** on the left sidebar of the Starburst Galaxy UI, then click **Create catalog** in the main body of the page. 
-2. On the **Create a data source** page, select the Amazon S3 tile. 
-3. In the **Name and description** section of the **Amazon S3** page, fill out the fields. 
-4. In the **Authentication to S3** section of the **Amazon S3** page, select the [AWS (S3) authentication mechanism](#prerequisites) you chose to connect with.
-5. In the **Metastore configuration** section, set these options:
+3. Create a catalog. Click **Catalogs** on the left sidebar of the Starburst Galaxy UI, then click **Create catalog** in the main body of the page. 
+4. On the **Create a data source** page, select the Amazon S3 tile. 
+5. In the **Name and description** section of the **Amazon S3** page, fill out the fields. 
+6. In the **Authentication to S3** section of the **Amazon S3** page, select the [AWS (S3) authentication mechanism](#prerequisites) you chose to connect with.
+7. In the **Metastore configuration** section, set these options:
     - **Default S3 bucket name** &mdash; Enter the name of your S3 bucket you want to access.
     - **Default directory name** &mdash; Enter the folder name of where the Jaffle Shop data lives in the S3 bucket. This is the same folder name you used in [Load data to an Amazon S3 bucket](#load-data-to-s3).
     - **Allow creating external tables** &mdash; Enable this option.
@@ -92,19 +93,19 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
 
     <Lightbox src="/img/quickstarts/dbt-cloud/starburst-galaxy-config-s3.png" title="Amazon S3 connection settings in Starburst Galaxy" />
 
-7. Click **Test connection**. This verifies that Starburst Galaxy can access your S3 bucket. 
-8. Click **Connect catalog** if the connection test passes.
+8. Click **Test connection**. This verifies that Starburst Galaxy can access your S3 bucket. 
+9. Click **Connect catalog** if the connection test passes.
     <Lightbox src="/img/quickstarts/dbt-cloud/test-connection-success.png" title="Successful connection test" />
 
-9. On the **Set permissions** page, click **Skip**. You can add permissions later if you want.
-10. On the **Add to cluster** page, choose the cluster you want to add the data source to from the dropdown and click **Add to cluster**.
-11. Add the location privilege for your S3 bucket to your role in Starburst Galaxy. Click **Access control > Roles and privileges** on the left sidebar of the Starburst Galaxy UI. Then, in the **Roles** table, click the role name **accountadmin**. 
+10. On the **Set permissions** page, click **Skip**. You can add permissions later if you want.
+11. On the **Add to cluster** page, choose the cluster you want to add the catalog to from the dropdown and click **Add to cluster**.
+12. Add the location privilege for your S3 bucket to your role in Starburst Galaxy. Click **Access control > Roles and privileges** on the left sidebar of the Starburst Galaxy UI. Then, in the **Roles** table, click the role name **accountadmin**. 
 
     If you're using an existing Starburst Galaxy cluster and don't have access to the accountadmin role, then select a role that you do have access to.
 
     To learn more about access control, refer to [Access control](https://docs.starburst.io/starburst-galaxy/security/access-control.html) in the Starburst Galaxy docs. 
-1. On the **Roles** page, click the **Privileges** tab and click **Add privilege**.
-2. On the **Add privilege** page, set these options:
+13. On the **Roles** page, click the **Privileges** tab and click **Add privilege**.
+14. On the **Add privilege** page, set these options:
     - **What would you like to modify privileges for?** &mdash; Choose **Location**.
     - **Enter a storage location provide** &mdash; Enter the storage location of _your S3 bucket_ and the folder of where the Jaffle Shop data lives. Make sure to include the `/*` at the end of the location. 
     - **Create SQL** &mdash; Enable the option. 
@@ -114,7 +115,7 @@ In addition to Amazon S3, Starburst Galaxy supports many other data sources. To 
     <Lightbox src="/img/quickstarts/dbt-cloud/add-privilege.png" title="Add privilege to accountadmin role" />
 
 ## Create tables with Starburst Galaxy
-To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the Jaffle Shop data that you [loaded to your S3 bucket](#load-data-to-s3). You can do this (and run any SQL statement) from the [query editor](https://docs.starburst.io/starburst-galaxy/query/index.html). 
+To query the Jaffle Shop data with Starburst Galaxy, you need to create tables using the Jaffle Shop data that you [loaded to your S3 bucket](#load-data-to-s3). You can do this (and run any SQL statement) from the [query editor](https://docs.starburst.io/starburst-galaxy/query/query-editor.html). 
 
 1. Click **Query > Query editor** on the left sidebar of the Starburst Galaxy UI. The main body of the page is now the query editor. 
 2. Configure the query editor so it queries your S3 bucket. In the upper right corner of the query editor, select your cluster in the first gray box and select your catalog in the second gray box:
@@ -213,7 +214,7 @@ To query the Jaffle Shop data with Starburst Galaxy, you need to create tables u
 12. Click **Next** if the test succeeded. If it failed, you might need to check your Starburst Galaxy settings and credentials.
 
 ## Set up a dbt Cloud managed repository 
-<Snippet src="tutorial-managed-repo" />
+<Snippet path="tutorial-managed-repo" />
 
 ## Initialize your dbt project​ and start developing
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
@@ -292,23 +293,23 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Project/which-schema" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
 
 ## Change the way your model is materialized
 
-<Snippet src="quickstarts/change-way-model-materialized" />
+<Snippet path="quickstarts/change-way-model-materialized" />
 
 ## Delete the example models
 
-<Snippet src="quickstarts/delete-example-models" />
+<Snippet path="quickstarts/delete-example-models" />
 
 ## Build models on top of other models
 
-<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+<Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
@@ -400,13 +401,13 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
-<Snippet src="quickstarts/test-and-document-your-project" />
+<Snippet path="quickstarts/test-and-document-your-project" />
 
-<Snippet src="quickstarts/schedule-a-job" />
+<Snippet path="quickstarts/schedule-a-job" />
 
 
 ## Connect to multiple data sources

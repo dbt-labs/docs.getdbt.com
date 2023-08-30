@@ -1,8 +1,9 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 function DocCarousel({ slidesPerView = 3, children }) {
     if ( !children?.length > 0 ){      
@@ -21,8 +22,8 @@ function DocCarousel({ slidesPerView = 3, children }) {
                 slidesPerView={1}
                 effect="fade"
                 navigation
-                modules={[Navigation]}
-
+                modules={[Navigation, Pagination]}
+                pagination={{ clickable: true }}
                 breakpoints={{
                   640: {
                     slidesPerView: 2,

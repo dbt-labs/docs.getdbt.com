@@ -26,7 +26,7 @@ You must provide this Deploy Key in the Repository configuration of your Git hos
 
 :::info Use GitHub?
 
-If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub Application](/docs/cloud/git/connect-github). Connecting your repo via the GitHub Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub Application](/docs/cloud/git/connect-github). Connecting your repo via the GitHub Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 
@@ -41,7 +41,7 @@ If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub A
 
 :::info Use GitLab?
 
-If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab Application](/docs/cloud/git/connect-gitlab). Connecting your repo via the GitLab Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab Application](/docs/cloud/git/connect-gitlab). Connecting your repo via the GitLab Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 
@@ -99,7 +99,7 @@ CodeCommit uses `master` as its default branch, and to initialize your project, 
 ## Azure DevOps
 :::info Use Azure DevOps?
 
-If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 

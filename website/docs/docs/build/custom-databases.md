@@ -87,6 +87,14 @@ The default implementation of `generate_database_name` simply uses the supplied 
 
 </File>
 
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
+
 ## Considerations
 
 ### BigQuery

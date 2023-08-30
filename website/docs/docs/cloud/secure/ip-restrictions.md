@@ -1,11 +1,13 @@
 ---
 title: "Configuring IP restrictions"
 id: ip-restrictions
-description: "Configuring IP retrictions to outside traffic from accessing your dbt Cloud environment"
+description: "Configuring IP restrictions to outside traffic from accessing your dbt Cloud environment"
 sidebar_label: "IP restrictions"
 ---
 
-## About IP Restrictions
+import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';
+
+<SetUpPages features={'/snippets/_available-tiers-iprestrictions.md'}/>
 
 IP Restrictions help control which IP addresses are allowed to connect to dbt Cloud. IP restrictions allow dbt Cloud customers to meet security and compliance controls by only allowing approved IPs to connect to their dbt Cloud environment. This feature is supported in all regions across NA, Europe, and Asia-Pacific, but contact us if you have questions about availability.
 
@@ -62,3 +64,9 @@ It is possible to put an IP range on one list and then a sub-range or IP address
 ## Enabling Restrictions
 
 Once you are done adding all your ranges, IP restrictions can be enabled by selecting the **Enable IP restrictions** button and clicking **Save**. If your IP address is in any of the denylist ranges, you won’t be able to save or enable IP restrictions - this is done to prevent accidental account lockouts. If you do get locked out due to IP changes on your end, please reach out to support@dbtlabs.com
+
+Once enabled, when someone attempts to access dbt Cloud from a restricted IP, they will encounter one of the following messages depending on whether they use email & password or SSO login. 
+
+<Lightbox src="/img/docs/dbt-cloud/ip-restricted-email.png" title="IP restricted access denied message for email logins"/>
+
+<Lightbox src="/img/docs/dbt-cloud/ip-restricted-sso.png" title="IP restricted access denied message for SSO logins"/>

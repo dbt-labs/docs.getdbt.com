@@ -255,4 +255,4 @@ BigQuery:
 - [source overrides](/reference/resource-properties/overrides)
 
 **BigQuery**
-- [maximum_bytes_billed](/reference/warehouse-setups/bigquery-setup#maximum-bytes-billed)
+- [maximum_bytes_billed](/docs/core/connect-data-platform/bigquery-setup#maximum-bytes-billed)

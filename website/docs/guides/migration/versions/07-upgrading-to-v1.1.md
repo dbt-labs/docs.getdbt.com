@@ -22,7 +22,7 @@ The abstract methods `get_response` and `execute` now only return `connection.Ad
 
 The manifest schema version will be updated to v5. The only change is to the default value of `config` for parsed nodes.
 
-For users of [state-based functionality](/docs/deploy/project-state), such as the `state:modified` selector, recall that:
+For users of [state-based functionality](/reference/node-selection/syntax#about-node-selection), such as the `state:modified` selector, recall that:
 
 > The `--state` artifacts must be of schema versions that are compatible with the currently running dbt version.
 
@@ -42,23 +42,23 @@ Expected a schema version of "https://schemas.getdbt.com/dbt/manifest/v5.json" i
 
 ### Advanced and experimental functionality
 
-**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#the-source_status-method). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/docs/deploy/project-state) and [CI/CD in dbt Cloud](/docs/deploy/cloud-ci-job).
+**Fresh Rebuilds.** There's a new _experimental_ selection method in town: [`source_status:fresher`](/reference/node-selection/methods#the-source_status-method). Much like the `state:` and `result` methods, the goal is to use dbt metadata to run your DAG more efficiently. If dbt has access to previous and current results of `dbt source freshness` (the `sources.json` artifact), dbt can compare them to determine which sources have loaded new data, and select only resources downstream of "fresher" sources. Read more in [Understanding State](/reference/node-selection/syntax#about-node-selection) and [CI/CD in dbt Cloud](/docs/deploy/continuous-integration).
 
 
 [**dbt-Jinja functions**](/reference/dbt-jinja-functions) have a new landing page, and two new members:
 - [`print`](/reference/dbt-jinja-functions/print) exposes the Python `print()` function. It can be used as an alternative to `log()`, and together with the `QUIET` config, for advanced macro-driven workflows.
 - [`selected_resources`](/reference/dbt-jinja-functions/selected_resources) exposes, at runtime, the list of DAG nodes selected by the current task.
 
-[**Global configs**](/reference/global-configs) include some new additions:
+[**Global configs**](/reference/global-configs/about-global-configs) include some new additions:
 
 - `QUIET` and `NO_PRINT`, to control which log messages dbt prints to terminal output. For use in advanced macro-driven workflows, such as [codegen](https://hub.getdbt.com/dbt-labs/codegen/latest/).
 - `CACHE_SELECTED_ONLY` is an _experimental_ config that can significantly speed up dbt's start-of-run preparations, in cases where you're running only a few models from a large project that manages many schemas.
 
 ### For users of specific adapters
 
-**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/reference/warehouse-setups/bigquery-setup).
+**dbt-bigquery** added Support for <Term id="grain">finer-grained</Term> configuration of query timeout and retry when defining your [connection profile](/docs/core/connect-data-platform/bigquery-setup).
 
-**dbt-spark** added support for a [`session` connection method](/reference/warehouse-setups/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
+**dbt-spark** added support for a [`session` connection method](/docs/core/connect-data-platform/spark-setup#session), for use with a pySpark session, to support rapid iteration when developing advanced or experimental functionality. This connection method is not recommended for new users, and it is not supported in dbt Cloud.
 
 ### Dependencies
 
