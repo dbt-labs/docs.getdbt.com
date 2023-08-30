@@ -29,7 +29,7 @@ In dbt-redshift, the following incremental materialization strategies are suppor
 
 </VersionBlock>
 
-All of these strategies are inheirited via from dbt-postgres.
+All of these strategies are inherited via from dbt-postgres.
 
 ## Performance optimizations
 
