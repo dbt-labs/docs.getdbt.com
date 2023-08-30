@@ -4,7 +4,7 @@ sidebar_label: "Tests"
 description: "Read this tutorial to learn how to use tests when building in dbt."
 id: "tests"
 keywords:
-  - test, tests, testing
+  - test, tests, testing, dag
 ---
 # Add tests to your DAG
 ## Related reference docs
