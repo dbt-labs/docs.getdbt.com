@@ -6,7 +6,6 @@ id: "tests"
 keywords:
   - test, tests, testing, dag
 ---
-# Add tests to your DAG
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Test properties](/reference/resource-properties/tests)
