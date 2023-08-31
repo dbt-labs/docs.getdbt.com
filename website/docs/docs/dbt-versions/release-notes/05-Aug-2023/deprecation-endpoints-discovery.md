@@ -1,5 +1,5 @@
 ---
-title: "Query patterns and endpoints in the dbt Cloud Discovery API"
+title: "Deprecation: Query patterns and endpoints in the dbt Cloud Discovery API"
 description: "August 2023: Learn about the upcoming deprecation of certain endpoints and query patterns in the Discovery API."
 sidebar_position: 6
 sidebar_label: "Deprecation: Certain Dicovery API endpoints and query patterns"
