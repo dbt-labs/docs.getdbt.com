@@ -23,3 +23,4 @@ To connect Azure DevOps in dbt Cloud:
 2. dbt Cloud developers need to [personally authenticate with Azure DevOps](/docs/cloud/git/authenticate-azure) from dbt Cloud.
 
 
+If you're a Business Critical customer using IP restrictions ensure you've added the appropriate Azure DevOps CIDRs to your IP restriction rules, or else the Azure DevOps connection will fail.
