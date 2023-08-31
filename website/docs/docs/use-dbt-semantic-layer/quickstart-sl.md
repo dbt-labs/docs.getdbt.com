@@ -27,9 +27,9 @@ MetricFlow is a powerful component within the dbt Semantic Layer that helps user
 
 Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
 
-- [Create a semantic model](#create-a-semantic-model) with MetricFlow
-- [Define metrics](#define-metrics) with MetricFlow
-- [Test and query metrics locally](#test-and-query-metrics) with MetricFlow 
+- [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
+- [Define metrics](#define-metrics) in dbt Cloud using MetricFlow
+- [Test and query metrics locally](#test-and-query-metrics) using MetricFlow 
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud 
 - [Connect and query API](#connect-and-query-api) with dbt Cloud
@@ -43,10 +43,6 @@ import SetUp from '/snippets/_v2-sl-prerequisites.md';
 :::tip 
 New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) to help you get started!
 :::
-
-## Install MetricFlow
-
-<InstallMetricFlow />
 
 ## Create a semantic model
 
@@ -62,7 +58,7 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 ## Run a production job
 
-Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
+Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment in dbt Cloud to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
 
 1. Go to **Deploy** in the navigation header
 2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
@@ -88,7 +84,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query API
 
-You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. In order to do so, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
+You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. 
+
+Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America (cloud.getdbt.com login). 
 
 - <span>To learn how to use the JDBC API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
 

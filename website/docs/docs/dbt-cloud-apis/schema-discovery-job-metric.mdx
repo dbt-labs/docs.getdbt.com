@@ -1,0 +1,58 @@
+---
+title: "Metric object schema"
+sidebar_label: "Metric"
+id: "discovery-schema-job-metric"
+---
+
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+The metric object allows you to query information about [metrics](/docs/build/metrics).
+
+### Arguments
+
+When querying for a `metric`, the following arguments are available.
+
+<NodeArgsTable parent="JobNode" name="metric" />
+
+Below we show some illustrative example queries and outline the schema (all possible fields you can query) of the metric object.
+
+### Example query
+
+The example query below outputs information about a metric. You can also add any field from the model endpoint (the example simply selects name). This includes schema, database, uniqueId, columns, and more. For details, refer to [Model object schema](/docs/dbt-cloud-apis/discovery-schema-job-model).
+
+
+```graphql
+{
+  job(id: 123) {
+    metric(uniqueId: "metric.jaffle_shop.new_customers") {
+      uniqueId
+      name
+      packageName
+      tags
+      label
+      runId
+      description
+      type
+      sql
+      timestamp
+      timeGrains
+      dimensions
+      meta
+      resourceType
+      filters {
+        field
+        operator
+        value
+      }
+      model {
+        name
+      }
+    }
+  }
+}
+```
+
+### Fields
+When querying for a `metric`, the following fields are available:
+
+<SchemaTable nodeName="MetricNode" />
