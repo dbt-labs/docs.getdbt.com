@@ -7,7 +7,7 @@ tags: [Aug-2023, API]
 date: 2023-08-31
 ---
 
-dbt Labs has deprecated and will be deprecating certain query patterns and replacing them with new conventions that will enhance the performance of the dbt Cloud [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
+dbt Labs has deprecated and will be deprecating certain query patterns and replacing them with new conventions to enhance the performance of the dbt Cloud [Discovery API](/docs/dbt-cloud-apis/discovery-api). 
 
 All these changes will be in effect on _September 7, 2023_. 
 
@@ -44,7 +44,7 @@ query ($jobId: BigInt!) {
 
 ## modelByEnvironment queries 
 
-The `modelByEnvironment` object will be renamed and is being moved into the `environment` object. This change is in effect starting August 15, 2023.
+The `modelByEnvironment` object has been renamed and moved into the `environment` object. This change is in effect and has been since August 15, 2023.
 
 Example of query before deprecation: 
 
@@ -77,7 +77,7 @@ query ($environmentId: BigInt!, $uniqueId: String) {
 
 ## Environment and account queries
 
-Environment and account queries that use `Int` as a data type for ID is deprecated. IDs now must be in `BigInt`. This change is in effect starting on August 15, 2023.
+Environment and account queries that use `Int` as a data type for ID has been deprecated. IDs must now be in `BigInt`. This change is in effect and has been since August 15, 2023.
 
 
 Example of query before deprecation: 
