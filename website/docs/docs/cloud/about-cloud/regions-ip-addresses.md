@@ -21,7 +21,7 @@ dbt Cloud is [hosted](/docs/cloud/about-cloud/architecture) in multiple regions 
 
 ## Static IP addresses
 
-dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructure for operations. Due to this, while we can offer exact URLs for access, we're unable to provide a list of static IP addresses to configure connections.
+dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructure for operations. While we can offer exact URLs for access, we're unable to provide a list of static IP addresses to configure connections due to its cloud nature.
 
 1. Dynamic IP Addresses &mdash; Our cloud infrastructure is built upon Amazon Web Services (AWS). Due to the adaptive nature of cloud services, while dbt Cloud can provide exact URLs for streamlined access, the underlying IP addresses are dynamic and will change occasionally. AWS manages the IP ranges and may change them according to their operational requirements.
 
