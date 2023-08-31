@@ -41,11 +41,5 @@ body:
         - label: I am a maintainer of the adapter being submited for Trusted status
         - label: I have read both the [Trusted adapters](https://docs.getdbt.com/docs/trusted-adapters) and [Building a Trusted Adapter](https://docs.getdbt.com/guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter) pages.
         - label: I believe that the adapter currently meets the expectations given above
-- label: I will ensure this adapter stays in compliance with the guidelines 
+        - label: I will ensure this adapter stays in compliance with the guidelines 
         - label: I understand that dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met
-    validations:
-      required: true
-
-
-
-
