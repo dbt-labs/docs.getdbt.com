@@ -11,10 +11,11 @@ website/yarn.lock
 website/node_modules
 website/i18n/*
 
-# Local vs code 
+# IDE configs
 .vscode
+.idea
+
 # Local Netlify folder
 .netlify
 
-.vscode
 .eslintcache
