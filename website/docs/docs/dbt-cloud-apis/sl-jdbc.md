@@ -242,7 +242,7 @@ select * from {{
 
 ### Query with where filters
 
-Where filters in API allow for a filter list or string. We recommend using the filter list for production application as this format will realize all benefits from predicate pushdown where possible. 
+Where filters in API allow for a filter list or string. We recommend using the filter list for production application as this format will realize all benefits from the <Term id="predicate-pushdown"  /> where possible. 
 
 Where Filters have a few objects that you can use:
 
