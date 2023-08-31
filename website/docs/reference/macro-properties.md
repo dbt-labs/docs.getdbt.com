@@ -2,7 +2,7 @@
 title: Macro properties
 ---
 
-Macro properties can be declared in `.yml` files, except in the `dbt_project.yml` files.
+Macro properties can be declared in any `.yml` file except for the `dbt_project.yml` file.
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
 
