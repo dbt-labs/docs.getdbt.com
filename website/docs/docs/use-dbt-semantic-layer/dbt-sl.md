@@ -59,7 +59,7 @@ instance="hosted in North America"
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic Layer API"
+    title="Semantic Layer APIs"
     body="Use the Semantic Layer API to query metrics in downstream tools for consistent, reliable data metrics."
     link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>

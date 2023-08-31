@@ -5,7 +5,7 @@ description: "Learn how to create your first semantic model and metric."
 sidebar_label: Get started with MetricFlow
 tags: [Metrics, Semantic Layer]
 meta:
-  api_name: dbt Semantic Layer API
+  api_name: dbt Semantic Layer APIs
 ---
 
 import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
@@ -34,8 +34,8 @@ To experience the power of a universal [dbt Semantic Layer](/docs/use-dbt-semant
 - Use Snowflake, BigQuery, Databricks, Redshift, or  Postgres (CLI only. dbt Cloud support coming soon). 
 -  Create a successful run in the environment where you configure the Semantic Layer. 
    - **Note:** Semantic Layer currently supports the Deployment environment for querying. (_development querying experience coming soon_)
-- Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
-  - **Note:** dbt Core or Developer accounts can only query data manually using the [MetricFlow CLI](/docs/build/metricflow-cli) and SQL. To dynamically query metrics using external tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account with access to the Semantic Layer API.<br />
+- Set up the [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
+  - **Note:** dbt Core or Developer accounts can only query data manually using the [MetricFlow CLI](/docs/build/metricflow-cli) and SQL. To dynamically query metrics using external tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account with access to the Semantic Layer APIs.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the revamped dbt Semantic Layer.
 
 :::tip 
@@ -80,9 +80,9 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. 
 
-Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America (cloud.getdbt.com login). 
+Before you begin, you must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
 
-- <span>To learn how to use the JDBC API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
+- <span>To learn how to use the JDBC or GraphQL API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
 
     * To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions.
     * Refer to the [SQL query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.  

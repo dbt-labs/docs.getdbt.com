@@ -21,7 +21,7 @@ This is an evolving guide that is meant to provide recommendations based on our 
 
 To build a dbt Semantic Layer integration: 
 
--  Initially, we recommend building an integration with the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) followed by enhancements of additional features. Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+-  Initially, we recommend building an integration with the [JDBC](/docs/dbt-cloud-apis/sl-jdbc) followed by enhancements of additional features. Refer to the dedicated [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
 
 - Familiarize yourself with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
@@ -122,7 +122,7 @@ For transparency and additional context, we recommend you have an easy way for t
 These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
 
 **Stage 1 - The basic**
-* Supporting and using the new [JDBC](/docs/dbt-cloud-apis/sl-jdbc) is the first step. Refer to the [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+* Supporting and using the new [JDBC](/docs/dbt-cloud-apis/sl-jdbc) is the first step. Refer to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
 
 **Stage 2 - More discoverability and basic querying**
 * Support listing metrics defined in project

@@ -52,9 +52,11 @@ Each GQL request also requires a dbt Cloud `environmentId`. The API uses both th
 
 ### Metadata calls
 
-**Fetch Data Platform Dialect** 
+**Fetch data platform dialect** 
 
-In some cases in your application, it may be useful to know the dialect/data platform that's being used under the hood for the dbt Semantic Layer connection (e.g., if you are building where filters from a GUI rather than user-inputted SQL) The GraphQL API has an easy way to fetch this via the following query: 
+In some cases in your application, it may be useful to know the dialect or data platform that's internally used for the dbt Semantic Layer connection (such as if you are building `where` filters from a user interface rather than user-inputted SQL). 
+
+The GraphQL API has an easy way to fetch this with the following query: 
 
 ```graphql
 {
@@ -116,6 +118,7 @@ You can also optionally access it from the metrics endpoint:
 ```
 
 **Fetch measures**
+
 ```graphql
 {
   measures(metrics: ["order_total"], environmentId: BigInt!) {
@@ -124,7 +127,9 @@ You can also optionally access it from the metrics endpoint:
   }
 }
 ```
+
 `aggTimeDimension` tells you the name of the dimension that maps to `metric_time` for a given measure. You can also query `measures` from the `metrics` endpoint, which allows you to see what dimensions map to `metric_time` for a given metric:
+
 ```graphql
 {
   metrics(environmentId: BigInt!) {
@@ -171,6 +176,7 @@ order: [String!] = null
 ```
 
 **Fetch query result**
+
 ```graphql
 query(
   environmentId: BigInt!
@@ -196,7 +202,7 @@ Metric {
 MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 ```
 
-**Metric Type Parameters**
+**Metric Type parameters**
 
 ```graphql
 MetricTypeParams {
@@ -231,7 +237,9 @@ Dimension {
 DimensionType = [CATEGORICAL, TIME]
 ```
 
-### Creating Query Examples 
+### Create Query examples 
+
+The following section provides query examples for the GraphQL API, such as how to query metrics, dimensions, where filters, and more.
 
 **Query two metrics grouped by time**
 
@@ -261,7 +269,7 @@ mutation {
 }
 ```
 
-**Query two metrics with a categorical Dimension**
+**Query two metrics with a categorical dimension**
 
 ```graphql
 mutation {
@@ -275,14 +283,15 @@ mutation {
 }
 ```
 
-**Query with a Where Filter** 
+**Query with a where filter** 
 
-The where filter takes a list argument (or a string for a single input). Depending on the object you are filtering on, there are a couple of parameters:
+The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering on, there are a couple of parameters:
  
- - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
-- `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
+ - `Dimension()` &mdash; Used for any categorical or time dimensions. If used for a time dimension, granularity is required. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
+  
+- `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
 
-Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity - an example is `TimeDimension('metric_time', 'MONTH')`.
+Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
 
 ```graphql
 mutation {
@@ -298,6 +307,7 @@ mutation {
 ```
 
 **Query with Order**
+
 ```graphql
 mutation {
   createQuery(
@@ -343,11 +353,11 @@ mutation {
 }
 ```
 
-### Output Format & Pagination
+### Output format and pagination
 
-**Output Format**
+**Output format**
 
-By default, output provided is in Arrow format. You can use the following parameter to convert to JSON. Due to performance limitations, we recommend the JSON parameter be only used for testing and validation. The JSON returned is a base64 encoded string. This means to access the JSON you must run it through a base64 decoder then you should receive the results in JSON. This is a JSON generated from pandas, this means you can either parse this back into a dataframe via pandas.read_json(json, orient="table") or just use the data directly with json["data"] and get the table schema with json["schema"]["fields"]
+By default, the output is in Arrow format. You can switch to JASON format using the following parameter. However, due to performances limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`.
 
 
 ```graphql
@@ -362,9 +372,9 @@ By default, output provided is in Arrow format. You can use the following parame
   }
 }
 ```
+
 The results default to table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
 
 **Pagination**
 
-By default, we return 1024 rows per page. If your result set exceeds this, you will have to increment the page by using the pageNum argument 
-
+By default, we return 1024 rows per page. If your result set exceeds this, you need to increase the page number using the `pageNum` option.

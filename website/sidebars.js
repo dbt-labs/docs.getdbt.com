@@ -513,6 +513,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
             "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
