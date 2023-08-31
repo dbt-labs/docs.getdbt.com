@@ -1,3 +1,22 @@
+# Deprecating Discovery API (FKA Metadata API) legacy endpoints
+
+/docs/dbt-cloud-apis/discovery-schema-model /docs/dbt-cloud-apis/discovery-schema-job-model 301
+/docs/dbt-cloud-apis/discovery-schema-models /docs/dbt-cloud-apis/discovery-schema-job-models 301
+/docs/dbt-cloud-apis/discovery-schema-modelByEnv /docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns 301
+/docs/dbt-cloud-apis/discovery-schema-metric /docs/dbt-cloud-apis/discovery-schema-job-metric 301
+/docs/dbt-cloud-apis/discovery-schema-metrics /docs/dbt-cloud-apis/discovery-schema-job-metrics 301
+/docs/dbt-cloud-apis/discovery-schema-source /docs/dbt-cloud-apis/discovery-schema-job-source 301
+/docs/dbt-cloud-apis/discovery-schema-sources /docs/dbt-cloud-apis/discovery-schema-job-sources 301
+/docs/dbt-cloud-apis/discovery-schema-seed /docs/dbt-cloud-apis/discovery-schema-job-seed 301
+/docs/dbt-cloud-apis/discovery-schema-seeds /docs/dbt-cloud-apis/discovery-schema-job-seeds 301
+/docs/dbt-cloud-apis/discovery-schema-snapshots /docs/dbt-cloud-apis/discovery-schema-job-snapshots 301
+/docs/dbt-cloud-apis/discovery-schema-test /docs/dbt-cloud-apis/discovery-schema-job-test 301
+/docs/dbt-cloud-apis/discovery-schema-tests /docs/dbt-cloud-apis/discovery-schema-job-tests 301
+/docs/dbt-cloud-apis/discovery-schema-exposure /docs/dbt-cloud-apis/discovery-schema-job-exposure 301
+/docs/dbt-cloud-apis/discovery-schema-exposures /docs/dbt-cloud-apis/discovery-schema-job-exposures 301
+
+# deploy redirects
+
 /docs/deploy/job-triggers /docs/deploy/deploy-jobs 301
 /docs/deploy/job-settings /docs/deploy/deploy-jobs 301
 /docs/deploy/dbt-cloud-job /docs/deploy/deploy-jobs 301
@@ -23,6 +42,7 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /docs/cloud/manage-access/licenses-and-groups /docs/cloud/manage-access/about-user-access 301
 
 /docs/deploy/cloud-ci-job /docs/deploy/continuous-integration 301
+
 ## quickstarts redirect again
 
 /docs/quickstarts/dbt-cloud/bigquery         /quickstarts/bigquery 301
@@ -91,6 +111,7 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /reference/warehouse-setups/databend-setup /docs/core/connect-data-platform/databend-setup 301
 /reference/warehouse-setups/fal-setup /docs/core/connect-data-platform/fal-setup 301
 /reference/warehouse-setups/decodable-setup /docs/core/connect-data-platform/decodable-setup
+/reference/warehouse-setups/upsolver-setup /docs/core/connect-data-platform/upsolver-setup 301
 
 # Discovery redirect
 /docs/dbt-cloud-apis/metadata-schema-source /docs/dbt-cloud-apis/discovery-schema-source 301
@@ -110,7 +131,6 @@ https://docs.getdbt.com/blog/how-to-design-and-structure-metrics  /docs/use-dbt-
 /docs/dbt-cloud-apis/metadata-use-case-guides /docs/dbt-cloud-apis/discovery-use-cases-and-examples 301
 /docs/dbt-cloud-apis/metadata-api /docs/dbt-cloud-apis/discovery-api 301
 /docs/dbt-cloud-apis/metadata-querying /docs/dbt-cloud-apis/discovery-querying 301
-
 
 /docs/core/connection-profiles#understanding-threads /docs/running-a-dbt-project/using-threads 301
 
