@@ -228,7 +228,6 @@ const sidebarSettings = {
           label: "Build your DAG",
           collapsed: true,
           items: [
-            "docs/build/sources",
             {
               type: "category",
               label: "Models",
@@ -238,11 +237,15 @@ const sidebarSettings = {
                 "docs/build/python-models",
               ],
             },
-            "docs/build/seeds",
             "docs/build/snapshots",
+            "docs/build/seeds",
+            "docs/build/tests",
+            "docs/build/jinja-macros",
+            "docs/build/sources",
             "docs/build/exposures",
             "docs/build/metrics",
             "docs/build/groups",
+            "docs/build/analyses",
           ],
         },
         {
@@ -291,7 +294,6 @@ const sidebarSettings = {
           label: "Enhance your models",
           collapsed: true,
           items: [
-            "docs/build/tests",
             "docs/build/materializations",
             "docs/build/incremental-models",
           ],
@@ -301,11 +303,9 @@ const sidebarSettings = {
           label: "Enhance your code",
           collapsed: true,
           items: [
-            "docs/build/jinja-macros",
             "docs/build/project-variables",
             "docs/build/environment-variables",
             "docs/build/packages",
-            "docs/build/analyses",
             "docs/build/hooks-operations",
           ],
         },

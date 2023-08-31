@@ -4,7 +4,7 @@
 
 </Changelog>
 
-Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
+Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate your project.
 
 <VersionBlock lastVersion="1.4">
 
@@ -20,10 +20,14 @@ By default, dbt will look for `dbt_project.yml` in your current working director
 
 :::info YAML syntax
 
-dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries and strings are represented.
+dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries, and strings are represented.
 :::
 
-The following is a list of all available configurations in the `dbt_project.yml` file. Something to note, [Macro properties](/reference/macro-properties) aren't supported in the `dbt_project.yml` file:
+The following example is a list of all available configurations in the `dbt_project.yml` file. Something to note, the following properties aren't supported in in the `dbt_project.yml` file:
+
+- [Macro properties](/reference/macro-properties)
+- [Analysis properties](/reference/analysis-properties)
+- [Semantic model configs](/docs/build/semantic-models)
 
 <File name='dbt_project.yml'>
 
