@@ -1,6 +1,6 @@
 ---
 id: predicate-pushdown
-title: Predicate pushdown
+title: predicate pushdown
 description: A predicate pushdown is an expression used to determine what rows in a database apply to a particular query
 displayText: Predicate pushdown
 hoverSnippet: A predicate pushdown is an expression used to determine what rows in a database apply to a particular query
