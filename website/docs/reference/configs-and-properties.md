@@ -64,15 +64,18 @@ Previous versions of the docs referred to these as `schema.yml` files — we've 
 
 ### Which properties are _not_ also configs?
 
-dbt has the ability to define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. But the reverse isn't always true: there are some things in `.yml` files that can _only_ be defined there.
+In dbt, you can define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. However, some properties are exclusive to `.yml` files. 
+
 
 Certain properties are special, because:
+
 - They have a unique Jinja rendering context
 - They create new project resources
 - They don't make sense as hierarchical configuration
 - They're older properties that haven't yet been redefined as configs
 
-These properties are:
+This means "configs" can be set for multiple resources at once in the `dbt_project.yml` file, while "properties" can only be set for one resource at a time. The following properties _cannot_ be configured from `dbt_project.yml`:
+
 - [`description`](/reference/resource-properties/description)
 - [`tests`](/reference/resource-properties/tests)
 - [`docs`](/reference/resource-configs/docs)

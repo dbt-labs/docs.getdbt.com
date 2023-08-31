@@ -1,10 +1,13 @@
 ---
 title: Macro properties
+id: macro-properties
 ---
 
-Macro properties can be declared in `.yml` files, except in the `dbt_project.yml` files.
+import PropsCallout from '/snippets/_config-prop-callout.md';
 
-You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in sub-folders.
+Macro properties can be declared in `.yml` files, except in the `dbt_project.yml` files. <PropsCallout title={frontMatter.title}/>  <br /> 
+
+ You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in sub-folders:
 
 <File name='macros/<filename>.yml'>
 
