@@ -6,7 +6,7 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 
 :::warning Alpha functionality 
 
-The following installation instructions are for the dbt Cloud CLI, currently in Alpha product lifecycle (actively in development and being tested). 
+The following installation instructions are for the dbt Cloud CLI, currently in Alpha (actively in development and being tested). 
 
 These instructions are not intended for general audiences at this time. 
 
