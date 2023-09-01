@@ -2,7 +2,7 @@
 title: "Deprecation: Query patterns and endpoints in the dbt Cloud Discovery API"
 description: "August 2023: Learn about the upcoming deprecation of certain endpoints and query patterns in the Discovery API."
 sidebar_position: 6
-sidebar_label: "Deprecation: Certain Dicovery API endpoints and query patterns"
+sidebar_label: "Deprecation: Certain Discovery API endpoints and query patterns"
 tags: [Aug-2023, API]
 date: 2023-08-31
 ---
@@ -77,7 +77,7 @@ query ($environmentId: BigInt!, $uniqueId: String) {
 
 ## Environment and account queries
 
-Environment and account queries that use `Int` as a data type for ID has been deprecated. IDs must now be in `BigInt`. This change is in effect and has been since August 15, 2023.
+Environment and account queries that use `Int` as a data type for ID have been deprecated. IDs must now be in `BigInt`. This change is in effect and has been since August 15, 2023.
 
 
 Example of query before deprecation: 
