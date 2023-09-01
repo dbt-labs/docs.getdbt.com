@@ -72,7 +72,7 @@ source ~/.zshrc
 cd ~/dbt-projects/jaffle_shop
 ```
 
-6. Create a `dbt_cloud.yml` in the root project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary). Enter the following commands:
+7. Create a `dbt_cloud.yml` in the root project directory. The file is required to have a `project-id` field with a valid [project ID](#glossary). Enter the following commands:
 
 ```bash
 pwd # Input
