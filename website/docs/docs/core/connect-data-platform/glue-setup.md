@@ -58,14 +58,14 @@ For further (and more likely up-to-date) info, see the [README](https://github.c
 
 ### Configuring your AWS profile for Glue Interactive Session
 There are two IAM principals used with interactive sessions.
-- Client principal: The princpal (either user or role) calling the AWS APIs (Glue, Lake Formation, Interactive Sessions)
-from the local client. This is the principal configured in the AWS CLI and likely the same.
+- Client principal: The principal (either user or role) calling the AWS APIs (Glue, Lake Formation, Interactive Sessions)
+from the local client. This is the principal configured in the AWS CLI and is likely the same.
 - Service role: The IAM role that AWS Glue uses to execute your session. This is the same as AWS Glue
 ETL.
 
 Read [this documentation](https://docs.aws.amazon.com/glue/latest/dg/glue-is-security.html) to configure these principals.
 
-You will find bellow a least privileged policy to enjoy all features of **`dbt-glue`** adapter.
+You will find below a least privileged policy to enjoy all features of **`dbt-glue`** adapter.
 
 Please to update variables between **`<>`**, here are explanations of these arguments:
 
@@ -198,7 +198,7 @@ Please to update variables between **`<>`**, here are explanations of these argu
 
 ### Configuration of the local environment
 
-Because **`dbt`** and **`dbt-glue`** adapter are compatible with Python versions 3.7, 3.8, and 3.9, check the version of Python:
+Because **`dbt`** and **`dbt-glue`** adapters are compatible with Python versions 3.7, 3.8, and 3.9, check the version of Python:
 
 ```bash
 $ python3 --version
@@ -260,27 +260,27 @@ The table below describes all the options.
 | type	                                   | The driver to use.	                                                                                                                                                                                                                                                                               | yes       |
 | query-comment	                          | A string to inject as a comment in each query that dbt runs. 	                                                                                                                                                                                                                                    | no        |
 | role_arn	                               | The ARN of the glue interactive session IAM role.	                                                                                                                                                                                                                                                | yes       |
-| region	                                 | The AWS Region were you run the data pipeline.	                                                                                                                                                                                                                                                   | yes       |
+| region	                                 | The AWS Region where you run the data pipeline.	                                                                                                                                                                                                                                                   | yes       |
 | workers	                                | The number of workers of a defined workerType that are allocated when a job runs.	                                                                                                                                                                                                                | yes       |
 | worker_type	                            | The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.	                                                                                                                                                                                     | yes       |
 | schema	                                 | The schema used to organize data stored in Amazon S3.Additionally, is the database in AWS Lake Formation that stores metadata tables in the Data Catalog.	                                                                                                                                        | yes       |
 | session_provisioning_timeout_in_seconds | The timeout in seconds for AWS Glue interactive session provisioning.	                                                                                                                                                                                                                            | yes       |
 | location	                               | The Amazon S3 location of your target data.	                                                                                                                                                                                                                                                      | yes       |
-| query_timeout_in_minutes	               | The timeout in minutes for a signle query. Default is 300                                                                                                                                                                                                                                         | no        |
+| query_timeout_in_minutes	               | The timeout in minutes for a single query. Default is 300                                                                                                                                                                                                                                         | no        |
 | idle_timeout	                           | The AWS Glue session idle timeout in minutes. (The session stops after being idle for the specified amount of time)	                                                                                                                                                                              | no        |
 | glue_version	                           | The version of AWS Glue for this session to use. Currently, the only valid options are 2.0 and 3.0. The default value is 3.0.	                                                                                                                                                                    | no        |
 | security_configuration	                 | The security configuration to use with this session.	                                                                                                                                                                                                                                             | no        |
 | connections	                            | A comma-separated list of connections to use in the session.	                                                                                                                                                                                                                                     | no        |
 | conf	                                   | Specific configuration used at the startup of the Glue Interactive Session (arg --conf)	                                                                                                                                                                                                          | no        |
 | extra_py_files	                         | Extra python Libs that can be used by the interactive session.                                                                                                                                                                                                                                    | no        |
-| delta_athena_prefix	                    | A prefix used to create Athena compatible tables for Delta tables	(if not specified, then no Athena compatible table will be created)                                                                                                                                                             | no        |
-| tags	                                   | The map of key value pairs (tags) belonging to the session. Ex: `KeyName1=Value1,KeyName2=Value2`                                                                                                                                                                                                 | no        |
+| delta_athena_prefix	                    | A prefix used to create Athena-compatible tables for Delta tables	(if not specified, then no Athena-compatible table will be created)                                                                                                                                                             | no        |
+| tags	                                   | The map of key-value pairs (tags) belonging to the session. Ex: `KeyName1=Value1,KeyName2=Value2`                                                                                                                                                                                                 | no        |
 | seed_format	                            | By default `parquet`, can be Spark format compatible like `csv` or `json`                                                                                                                                                                                                                         | no        |
 | seed_mode	                              | By default `overwrite`, the seed data will be overwritten, you can set it to `append` if you just want to add new data in your dataset                                                                                                                                                            | no        |
-| default_arguments	                      | The map of key value pairs parameters belonging to the session. More information on [Job parameters used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html). Ex: `--enable-continuous-cloudwatch-log=true,--enable-continuous-log-filter=true` | no        |
+| default_arguments	                      | The map of key-value pairs parameters belonging to the session. More information on [Job parameters used by AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html). Ex: `--enable-continuous-cloudwatch-log=true,--enable-continuous-log-filter=true` | no        |
 | glue_session_id                         | re-use the glue-session to run multiple dbt run commands: set a glue session id you need to use                                                                                                                                                                                                   | no        | 
-| glue_session_reuse                      | re-use the glue-session to run multiple dbt run commands: If set to true, the glue session will not be closed for re-use. If set to false, the session will be closed                                                                                                                             | no        | 
-| datalake_formats	                      | The ACID datalake format that you want to use if you are doing merge, can be `hudi`, `ìceberg` or `delta`                                                                                                                                                                                          |no|
+| glue_session_reuse                      | Reuse the glue-session to run multiple dbt run commands: If set to true, the glue session will not be closed for re-use. If set to false, the session will be closed                                                                                                                             | no        | 
+| datalake_formats	                      | The ACID data lake format that you want to use if you are doing merge, can be `hudi`, `ìceberg` or `delta`                                                                                                                                                                                          |no|
 
 ## Configs
 
@@ -303,7 +303,7 @@ dbt seeks to offer useful and intuitive modeling abstractions by means of its bu
 For that reason, the dbt-glue plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the table with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (Apache Hudi and Apache Iceberg only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`merge`** (Apache Hudi and Apache Iceberg only): Match records based on a `unique_key`; update old records, and insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
@@ -346,7 +346,7 @@ insert into table analytics.spark_incremental
 
 This strategy is most effective when specified alongside a `partition_by` clause in your model config. dbt will run an [atomic `insert overwrite` statement](https://spark.apache.org/docs/latest/sql-ref-syntax-dml-insert-overwrite-table.html) that dynamically replaces all partitions included in your query. Be sure to re-select _all_ of the relevant data for a partition when using this incremental strategy.
 
-If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances, since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` + `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
+If no `partition_by` is specified, then the `insert_overwrite` strategy will atomically replace all contents of the table, overriding all existing data with only the new records. The column schema of the table remains the same, however. This can be desirable in some limited circumstances since it minimizes downtime while the table contents are overwritten. The operation is comparable to running `truncate` + `insert` on other databases. For atomic replacement of Delta-formatted tables, use the `table` materialization (which runs `create or replace`) instead.
 
 #### Source Code
 ```sql
@@ -408,7 +408,7 @@ insert overwrite table analytics.spark_incremental
     select `date_day`, `users` from spark_incremental__dbt_tmp
 ```
 
-Specifying `insert_overwrite` as the incremental strategy is optional, since it's the default strategy used when none is specified.
+Specifying `insert_overwrite` as the incremental strategy is optional since it's the default strategy used when none is specified.
 
 ### The `merge` strategy
 
@@ -420,7 +420,7 @@ Specifying `insert_overwrite` as the incremental strategy is optional, since it'
 
 NB: 
 
-- For Glue 3: you have to setup a [Glue connectors](https://docs.aws.amazon.com/glue/latest/ug/connectors-chapter.html).
+- For Glue 3: you have to set up a [Glue connectors](https://docs.aws.amazon.com/glue/latest/ug/connectors-chapter.html).
 
 - For Glue 4: use the `datalake_formats` option in your profile.yml
 
@@ -443,17 +443,17 @@ and that the managed policy `AmazonEC2ContainerRegistryReadOnly` is attached.
 Be sure that you follow the getting started instructions [here](https://docs.aws.amazon.com/glue/latest/ug/setting-up.html#getting-started-min-privs-connectors).
 
 
-This [blog post](https://aws.amazon.com/blogs/big-data/part-1-integrate-apache-hudi-delta-lake-apache-iceberg-datasets-at-scale-aws-glue-studio-notebook/) also explain how to setup and works with Glue Connectors
+This [blog post](https://aws.amazon.com/blogs/big-data/part-1-integrate-apache-hudi-delta-lake-apache-iceberg-datasets-at-scale-aws-glue-studio-notebook/) also explains how to set up and works with Glue Connectors
 
 #### Hudi
 
 **Usage notes:** The `merge` with Hudi incremental strategy requires:
 - To add `file_format: hudi` in your table configuration
 - To add a datalake_formats in your profile : `datalake_formats: hudi`
-  - Alternatively, to add a connections in your profile : `connections: name_of_your_hudi_connector`
+  - Alternatively, to add a connection in your profile: `connections: name_of_your_hudi_connector`
 - To add Kryo serializer in your Interactive Session Config (in your profile):  `conf: spark.serializer=org.apache.spark.serializer.KryoSerializer --conf spark.sql.hive.convertMetastoreParquet=false`
 
-dbt will run an [atomic `merge` statement](https://hudi.apache.org/docs/writing_data#spark-datasource-writer) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match on the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
+dbt will run an [atomic `merge` statement](https://hudi.apache.org/docs/writing_data#spark-datasource-writer) which looks nearly identical to the default merge behavior on Snowflake and BigQuery. If a `unique_key` is specified (recommended), dbt will update old records with values from new records that match the key column. If a `unique_key` is not specified, dbt will forgo match criteria and simply insert all new records (similar to `append` strategy).
 
 #### Profile config example
 ```yaml
@@ -512,14 +512,14 @@ You can also use Delta Lake to be able to use merge feature on tables.
 **Usage notes:** The `merge` with Delta incremental strategy requires:
 - To add `file_format: delta` in your table configuration
 - To add a datalake_formats in your profile : `datalake_formats: delta`
-  - Alternatively, to add a connections in your profile : `connections: name_of_your_delta_connector`
+  - Alternatively, to add a connection in your profile: `connections: name_of_your_delta_connector`
 - To add the following config in your Interactive Session Config (in your profile):  `conf: "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog`
 
 **Athena:** Athena is not compatible by default with delta tables, but you can configure the adapter to create Athena tables on top of your delta table. To do so, you need to configure the two following options in your profile:
 - For Delta Lake 2.1.0 supported natively in Glue 4.0: `extra_py_files: "/opt/aws_glue_connectors/selected/datalake/delta-core_2.12-2.1.0.jar"`
 - For Delta Lake 1.0.0 supported natively in Glue 3.0: `extra_py_files: "/opt/aws_glue_connectors/selected/datalake/delta-core_2.12-1.0.0.jar"`
 - `delta_athena_prefix: "the_prefix_of_your_choice"`
-- If your table is partitioned, then the add of new partition is not automatic, you need to perform an `MSCK REPAIR TABLE your_delta_table` after each new partition adding
+- If your table is partitioned, then the addition of new partition is not automatic, you need to perform an `MSCK REPAIR TABLE your_delta_table` after each new partition adding
 
 #### Profile config example
 ```yaml
@@ -576,7 +576,7 @@ group by 1
 
 **Usage notes:** The `merge` with Iceberg incremental strategy requires:
 - To attach the AmazonEC2ContainerRegistryReadOnly Manged policy to your execution role :
-- To add the following policy to your execution role to enable commit locking in a dynamodb table (more info [here](https://iceberg.apache.org/docs/latest/aws/#dynamodb-lock-manager)). Note that the DynamoDB table specified in the ressource field of this policy should be the one that is mentionned in your dbt profiles (`--conf spark.sql.catalog.glue_catalog.lock.table=myGlueLockTable`). By default, this table is named `myGlueLockTable` and is created automatically (with On-Demand Pricing) when running a dbt-glue model with Incremental Materialization and Iceberg file format. If you want to name the table differently or to create your own table without letting Glue do it on your behalf, please provide the `iceberg_glue_commit_lock_table` parameter with your table name (eg. `MyDynamoDbTable`) in your dbt profile.
+- To add the following policy to your execution role to enable commit locking in a dynamodb table (more info [here](https://iceberg.apache.org/docs/latest/aws/#dynamodb-lock-manager)). Note that the DynamoDB table specified in the resource field of this policy should be the one that is mentioned in your dbt profiles (`--conf spark.sql.catalog.glue_catalog.lock.table=myGlueLockTable`). By default, this table is named `myGlueLockTable` and is created automatically (with On-Demand Pricing) when running a dbt-glue model with Incremental Materialization and Iceberg file format. If you want to name the table differently or to create your own table without letting Glue do it on your behalf, please provide the `iceberg_glue_commit_lock_table` parameter with your table name (eg. `MyDynamoDbTable`) in your dbt profile.
 ```yaml
 iceberg_glue_commit_lock_table: "MyDynamoDbTable"
 ```
@@ -610,7 +610,7 @@ Make sure you update your conf with `--conf spark.sql.catalog.glue_catalog.lock.
 ```
 - To add `file_format: Iceberg` in your table configuration
 - To add a datalake_formats in your profile : `datalake_formats: iceberg`
-  - Alternatively, to add a connections in your profile : `connections: name_of_your_iceberg_connector` (
+  - Alternatively, to add connections in your profile: `connections: name_of_your_iceberg_connector` (
     - For Athena version 3: 
       - The adapter is compatible with the Iceberg Connector from AWS Marketplace with Glue 3.0 as Fulfillment option and 0.14.0 (Oct 11, 2022) as Software version)
       - the latest connector for iceberg in AWS marketplace uses Ver 0.14.0 for Glue 3.0, and Ver 1.2.1 for Glue 4.0 where Kryo serialization fails when writing iceberg, use "org.apache.spark.serializer.JavaSerializer" for spark.serializer instead, more info [here](https://github.com/apache/iceberg/pull/546) 
