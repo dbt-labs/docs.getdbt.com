@@ -447,7 +447,7 @@ You can also explore:
 
 <Snippet path="tutorial-next-steps-tests" />
 
-### Commit updated changes
+## Commit updated changes
 
 You need to commit the changes you made to the project so that the repository has your latest code.
 
