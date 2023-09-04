@@ -8,6 +8,8 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/connect-adapters",
+        "docs/verified-adapters",
+        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-core-adapters",
       ],
@@ -1091,6 +1093,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter",
           ],
         },
         {
