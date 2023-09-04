@@ -12,15 +12,18 @@ description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, 
 
 </Changelog>
 
+:::caution The dbt-rpc plugin is deprecated
+
+
+dbt Labs actively maintained `dbt-rpc` for compatibility with dbt-core versions up to v1.5. Starting with dbt-core v1.6 (released in July 2023), `dbt-rpc` is no longer supported for ongoing compatibility. 
+
+In the meantime, dbt Labs will be performing critical maintenance only for `dbt-rpc`, until the last compatible version of dbt-core has reached the [end of official support](/docs/dbt-versions/core#latest-releases). At that point, dbt Labs will archive this repository to be read-only.
+
+:::
+
 ### Overview
 
 You can use the `dbt-rpc` plugin to run a Remote Procedure Call (rpc) dbt server. This server compiles and runs queries in the context of a dbt project. Additionally, the RPC server provides methods that enable you to list and terminate running processes. We recommend running an rpc server from a directory containing a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
-
-:::caution Deprecation
-**The dbt-rpc plugin will be fully deprecated by the second half of 2023.**
-
-dbt Labs is actively maintaining `dbt-rpc` up to dbt v1.4. Starting in v1.5, we intend to break `dbt-rpc` compatibility in favor of [the new dbt Server](https://github.com/dbt-labs/dbt-server). dbt Labs will perform critical maintenance only on `dbt-rpc`, until the last compatible version of dbt has reached the end of official support (thus 12 months after release of v1.4; [see Core version policies](/docs/dbt-versions/core)).
-:::
 
 :::caution Running on Windows
 We do not recommend running the rpc server on Windows because of reliability issues. A Docker container may provide a useful workaround, if required.
