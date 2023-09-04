@@ -16,7 +16,9 @@ description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, 
 
 **The dbt-rpc plugin is deprecated.**
 
-dbt Labs actively maintained `dbt-rpc` for compatibility with dbt-core versions up to v1.5. Starting with dbt-core v1.6 (released in July 2023), `dbt-rpc` is no longer supported for ongoing compatibility. In the meantime, dbt Labs will be performing critical maintenance only for `dbt-rpc`, until the last compatible version of dbt-core has reached the end of official support (see [version policies](/docs/dbt-versions/core)). At that point, dbt Labs will archive this repository to be read-only.
+dbt Labs actively maintained `dbt-rpc` for compatibility with dbt-core versions up to v1.5. Starting with [dbt-core v1.6 (released in July 2023), `dbt-rpc` is no longer supported for ongoing compatibility. 
+
+In the meantime, dbt Labs will be performing critical maintenance only for `dbt-rpc`, until the last compatible version of dbt-core has reached the [end of official support](/docs/dbt-versions/core#latest-releases). At that point, dbt Labs will archive this repository to be read-only.
 
 :::
 
