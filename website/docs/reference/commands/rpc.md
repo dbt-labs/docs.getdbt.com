@@ -12,7 +12,7 @@ description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, 
 
 </Changelog>
 
-:::caution Deprecation
+:::caution The dbt-rpc plugin is deprecated
 
 **The dbt-rpc plugin is deprecated.**
 
