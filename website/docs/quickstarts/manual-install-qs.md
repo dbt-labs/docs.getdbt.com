@@ -18,11 +18,11 @@ When you use dbt Core to work with dbt, you will be editing files locally using 
 * Complete [Setting up (in BigQuery)](/quickstarts/bigquery?step=2) and [Loading data (BigQuery)](/quickstarts/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
 
-## Create a starter project
+### Create a starter project
 
 After setting up BigQuery to work with dbt, you are ready to create a starter project with example models, before building your own models.
 
-### Create a repository
+## Create a repository
 
 The following steps use [GitHub](https://github.com/) as the Git provider for this guide, but you can use any Git provider. You should have already [created a GitHub account](https://github.com/join).
 
@@ -32,7 +32,7 @@ The following steps use [GitHub](https://github.com/) as the Git provider for th
 4. Click **Create repository**.
 5. Save the commands from "…or create a new repository on the command line" to use later in [Commit your changes](#commit-your-changes).
 
-### Create a project
+## Create a project
 
 Learn how to use a series of commands using the command line of the Terminal to create your project. dbt Core includes an `init` command that helps scaffold a dbt project.
 
@@ -89,7 +89,7 @@ To create your dbt project:
 
     </File>
 
-### Connect to BigQuery
+## Connect to BigQuery
 
 When developing locally, dbt connects to your <Term id="data-warehouse" /> using a [profile](/docs/core/connect-data-platform/connection-profiles), which is a YAML file with all the connection details to your warehouse.
 
@@ -128,7 +128,7 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
     <Lightbox src="/img/successful-dbt-debug.png" title="A successful dbt debug command" />
     </div>
 
-#### FAQs
+### FAQs
 
 <FAQ path="Warehouse/sample-profiles" alt_header="My data team uses a different data warehouse. What should my profiles.yml file look like for my warehouse?"/>
 <FAQ path="Project/separate-profile" />
@@ -136,7 +136,7 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 <FAQ path="Environments/target-names" />
 <FAQ path="Environments/profile-env-vars" />
 
-### Perform your first dbt run
+## Perform your first dbt run
 
 Our sample project has some example models in it. We're going to check that we can run them to confirm everything is in order.
 
@@ -151,7 +151,7 @@ You should have an output that looks like this:
 <Lightbox src="/img/successful-dbt-run.png" title="A successful dbt run command" />
 </div>
 
-### Commit your changes
+## Commit your changes
 
 Commit your changes so that the repository contains the latest code.
 
@@ -170,9 +170,11 @@ Commit your changes so that the repository contains the latest code.
 
 ## Build your first models
 
-Now that you set up your sample project, you can get to the fun part — [building models](/docs/build/sql-models)! You will take a sample query and turn it into a model in your dbt project.
+Now that you set up your sample project, you can get to the fun part — [building models](/docs/build/sql-models)! 
 
-### Checkout a new git branch
+In the next steps, you will take a sample query and turn it into a model in your dbt project.
+
+## Checkout a new git branch
 
 Check out a new git branch to work on new code:
 
@@ -183,7 +185,8 @@ Check out a new git branch to work on new code:
     >  Switched to a new branch `add-customer-model`
     ```
 
-### Build your first model
+## Build your first model
+
 
 1. Open your project in your favorite code editor.
 2. Create a new SQL file in the `models` directory, named `models/customers.sql`.
@@ -198,7 +201,7 @@ Check out a new git branch to work on new code:
 
 When you return to the BigQuery console, you can `select` from this model.
 
-#### FAQs
+### FAQs
 
 <FAQ path="Runs/checking-logs" />
 <FAQ path="Project/which-schema" />
@@ -206,17 +209,17 @@ When you return to the BigQuery console, you can `select` from this model.
 <FAQ path="Models/run-downtime" />
 <FAQ path="Troubleshooting/sql-errors" />
 
-### Change the way your model is materialized
+## Change the way your model is materialized
 
 
 
 <Snippet path="quickstarts/change-way-model-materialized" />
 
-### Delete the example models
+## Delete the example models
 
 <Snippet path="quickstarts/delete-example-models" />
 
-### Build models on top of other models
+## Build models on top of other models
 
 <Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
@@ -409,7 +412,7 @@ When you return to the BigQuery console, you can `select` from this model.
 
     This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
-#### FAQs {#faq-2}
+### FAQs {#faq-2}
 
 <FAQ path="Runs/run-one-model" />
 <FAQ path="Models/unique-model-names" />
@@ -424,13 +427,11 @@ You can also explore:
 * The `target` directory to see all of the compiled SQL. The `run` directory shows the create or replace table statements that are running, which are the select statements wrapped in the correct DDL.
 * The `logs` file to see how dbt Core logs all of the action happening within your project. It shows the select statements that are running and the python logging happening when dbt runs.
 
-## Test and document your project
-
-### Add tests to your models
+## Add tests to your models
 
 <Snippet path="tutorial-add-tests-to-models" />
 
-### Document your models
+## Document your models
 
 <Snippet path="tutorial-document-your-models" />
 
@@ -457,4 +458,6 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using dbt Cloud to schedule a job. For more information about using dbt Core to schedule a job, see [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post or [deployments](/docs/deploy/deployments).
+We recommend using dbt Cloud as the easiest and most reliable way to schedule a job and automate your dbt project in production. Refer to [Deploy dbt](/docs/deploy/deployments) for more info. 
+
+For more information about using dbt Core to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.

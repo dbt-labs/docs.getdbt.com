@@ -1,3 +1,11 @@
+
+# Redirects for quickstarts sections that were split
+
+/quickstarts/manual-install?step=2 /quickstarts/manual-install?step=2 301
+/quickstarts/manual-install?step=3 /quickstarts/manual-install?step=7 301
+/quickstarts/manual-install?step=4 /quickstarts/manual-install?step=13 301
+/quickstarts/manual-install?step=5 /quickstarts/manual-install?step=15 301
+
 # Deprecating Discovery API (FKA Metadata API) legacy endpoints
 
 /docs/dbt-cloud-apis/discovery-schema-model /docs/dbt-cloud-apis/discovery-schema-job-model 301
