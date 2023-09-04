@@ -141,7 +141,7 @@ You can also optionally access it from the metrics endpoint:
 }
 ```
 
-**Fetch available metrics given a set of a dimensions**
+**Fetch available metrics given a set of dimensions**
 
 ```graphql
 metricsForDimensions(
@@ -219,7 +219,6 @@ MetricTypeParams {
 
 
 **Dimension Types**
-todo: add info on granularity when we expose it
 
 ```graphql
 Dimension {
@@ -291,7 +290,7 @@ The `where` filter takes a list argument (or a string for a single input). Depen
   
 - `Entity()` &mdash; Used for entities like primary and foreign keys, such as `Entity('order_id')`.
 
-Note: If you prefer more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
+Note: If you prefer a more strongly typed `where` clause, you can optionally use `TimeDimension()` to separate out categorical dimensions from time ones. The `TimeDimension` input takes the time dimension name and also requires granularity. For example, `TimeDimension('metric_time', 'MONTH')`.
 
 ```graphql
 mutation {
@@ -357,7 +356,7 @@ mutation {
 
 **Output format**
 
-By default, the output is in Arrow format. You can switch to JASON format using the following parameter. However, due to performances limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`.
+By default, the output is in Arrow format. You can switch to JSON format using the following parameter. However, due to performance limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`.
 
 
 ```graphql
@@ -373,7 +372,7 @@ By default, the output is in Arrow format. You can switch to JASON format using 
 }
 ```
 
-The results default to table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
+The results default to the table but you can change it to any [pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_json.html) supported value. 
 
 **Pagination**
 
