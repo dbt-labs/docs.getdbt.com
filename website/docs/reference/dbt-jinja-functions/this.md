@@ -3,7 +3,8 @@ title: "about this"
 sidebar_label: "this"
 id: "this"
 description: "Represents the current model in the database."
-keywords: relation, relation object, this function, this jinja, 
+keywords: 
+  relation, relation object, this function, this jinja, this
 ---
 
 `this` is the database representation of the current model. It is useful when:
