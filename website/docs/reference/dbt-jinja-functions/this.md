@@ -4,7 +4,7 @@ sidebar_label: "this"
 id: "this"
 description: "Represents the current model in the database."
 keywords: 
-  - relation, relation object, this function, this jinja, this
+  - relation, relation object, this function, this jinja, this.database, this.schema, this.identifier
 ---
 
 `this` is the database representation of the current model. It is useful when:
