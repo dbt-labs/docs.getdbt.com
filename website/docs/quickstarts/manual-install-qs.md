@@ -458,6 +458,13 @@ You need to commit the changes you made to the project so that the repository ha
 
 ## Schedule a job
 
-We recommend using dbt Cloud as the easiest and most reliable way to schedule a job and automate your dbt project in production. Refer to [Deploy dbt](/docs/deploy/deployments) for more info. 
+We recommend using dbt Cloud as the easiest and most reliable way to [deploy jobs](/docs/deploy/deployments) and automate your dbt project in production. 
+
+For more info on how to get started, refer to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs).
+
+
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-overview.jpg" width="90%" title="Overview of a dbt Cloud job run, which includes the job run details, trigger type, commit SHA, environment name, detailed run steps, logs, and more."/>
+
+
 
 For more information about using dbt Core to schedule a job, refer [dbt airflow](/blog/dbt-airflow-spiritual-alignment) blog post.
