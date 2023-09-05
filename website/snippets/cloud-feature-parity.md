@@ -10,5 +10,5 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Continuous Integration, including CI jobs                       | ✅           | ✅                     | ✅                   | 
 | Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
 | IP Restrictions               | ✅           | ✅                     | ✅                   | 
-| PrivateLink egress            | ✅           | ✅                     | ✅                   | 
+| PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                   | 
 | PrivateLink ingress           | ❌           | ✅                     | ✅                   | 
