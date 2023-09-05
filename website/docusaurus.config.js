@@ -54,6 +54,7 @@ var siteSettings = {
     docs:{
       sidebar: {
         hideable: true,
+        autoCollapseCategories: true,
       },
     },
     image: "/img/avatar.png",

@@ -83,7 +83,7 @@ The IDE features some delightful tools and layouts to make it easier for you to 
 The console section, located below the File editor, includes various console tabs and buttons to help you with tasks such as previewing, compiling, building, and viewing the <Term id="dag" />. Refer to the following sub-bullets for more details on the console tabs and buttons.
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-console-overview.jpg" width="100%" title="The Console section is located below the File editor and has various tabs and buttons to help execute tasks"/>
 
-1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the Results console tab. 
+1. **Preview button &mdash;** When you click on the Preview button, it runs the SQL in the active file editor regardless of whether you have saved it or not and sends the results to the **Results** console tab. You can preview a selected portion of saved or unsaved code by highlighting it and then clicking the **Preview** button.
 
 <details>
 <summary>Row limits in IDE</summary>
@@ -95,7 +95,10 @@ The dbt Cloud IDE returns default row limits, however, you can also specify the 
 </ul>
 </details>
 
-2. **Compile button &mdash;** The Compile button compiles the SQL code from the active File Editor, irrespective of its save status, and outputs it to the Compiled Code tab.
+2. **Compile button &mdash;** The **Compile** button compiles the saved or unsaved SQL code and displays it in the **Compiled Code** tab.
+
+
+Starting from dbt v1.6 or higher, when you save changes to a model, you can compile its code with the model's specific context. This context is similar to what you'd have when building the model and involves useful context variables like `{{ this }} `or `{{ is_incremental() }}`.
 
 3. **Build button &mdash;** The build button allows users to quickly access dbt commands related to the active model in the File Editor. The available commands include dbt build, dbt test, and dbt run, with options to include only the current resource, the resource and its upstream dependencies, the resource, and its downstream dependencies, or the resource with all dependencies. This menu is available for all executable nodes.
 

@@ -15,7 +15,7 @@ As a customer, you pay for the number of seats you have and the amount of usage 
 
 dbt Cloud considers a Successful Model Built as any model that is successfully built via a run through dbt Cloud’s orchestration functionality in a dbt Cloud deployment environment. Models are counted when built and run. This includes any jobs run via dbt Cloud's scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the dbt Cloud API, and any successor dbt Cloud tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
 
-Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, and snapshots also do not count. 
+Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
 
 
 ### What counts as a seat license? 
@@ -70,7 +70,7 @@ All included successful models built numbers above reflect our most current pric
 
 :::note Legacy pricing plans
  
-Customers who purchased the dbt Cloud Team plan before August 8, 2023, may be on a legacy pricing plan that only includes seat-based charges. Legacy plan pricing will be supported through at least July 2024, although we may not release all new features to legacy plan subscribers. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. To ensure you have access to new features for each plan, you can upgrade now or [contact us](mailto:support@getdbt.com) with questions.
+Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain on a legacy pricing plan as long as their account is in good standing. The legacy pricing plan is based on seats and includes unlimited models subject to reasonable use. dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. 
 
 :::
 
