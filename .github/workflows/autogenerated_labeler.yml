@@ -37,4 +37,4 @@ jobs:
         run: |
           gh issue edit ${{ github.event.issue.number }} --add-label "${{ steps.repo.outputs.labels }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.FISHTOWN_BOT_PAT }}
+          GH_TOKEN: ${{ secrets.DOCS_SECRET }}
