@@ -100,7 +100,7 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 <TabItem value="queryablegranularitiesformetrics" label="Fetch queryable primary time granularities for metrics">
 
-Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (e.g., `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
+Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
 Note, `metrics` is a required argument that lists with one or multiple metrics in it.
 
