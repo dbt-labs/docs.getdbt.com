@@ -65,9 +65,8 @@ async function getDiscourseComments(request, response) {
 
         return await response.status(200).json(comments);
       } else {
-        return await returnResponse(500, {
-          error: "Unable to create Discourse topic TopicID is not a number.",
-        });
+        console.log("Unable to create Discourse topic TopicID is not a number.");
+        return await response.status(500).json({ error: "Unable to create Discourse topic TopicID is not a number." });
       }
     }
 
@@ -82,7 +81,7 @@ async function getDiscourseComments(request, response) {
 }
 
 async function createDiscourseTopic(title, externalId, slug, blogUrl, DISCOURSE_TOPIC_ID) {
-    console.log(`No topics found. Creating a new topic in Discourse - ${title}`)
+    console.log(`Creating a new topic in Discourse - ${title}`)
     try  {
         const response = await axios.post(`${discourse_endpoint}/posts`, {
             title: title,
@@ -102,7 +101,7 @@ async function createDiscourseTopic(title, externalId, slug, blogUrl, DISCOURSE_
     
     } catch(err) {
         console.log('err on createDiscourseTopic', err)
-        return await returnResponse(500, { error: 'Unable to create Discourse topic.'})
+        return err
     }
 }
 
@@ -128,7 +127,7 @@ async function getDiscourseTopicbyID(topicId) {
         return post_stream.posts
     } catch(err) {
         console.log('err on getDiscourseTopicbyID', err)
-        return await returnResponse(500, { error: 'Unable to get Discourse topic by ID.'})
+        return err
     }
 }
 
@@ -138,24 +137,15 @@ async function searchDiscourseExternalId(externalId) {
         const data = await axios.get(`${discourse_endpoint}/t/external_id/${externalId}.json`, { headers });
         return data.data.id;
     } catch (err) {
-        return await returnResponse(500, { error: 'Unable to search Discourse topics.' });
+      if (err.response.status === 404) {
+        console.log("No topics found in Discourse.");
+        return null;
+      }
+        console.log("Unable to search Discourse for external_id.", err);
+        return err;
     }
 }
 
-async function returnResponse(status, res) {
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS, GET' 
-  }
-  const resObj = {
-    statusCode: status,
-    headers,
-    body: JSON.stringify(res)
-  }
-  return resObj
-}
 
 // Truncate external_id to 50 characters per Discourse API requirements
 function truncateString(str) {
