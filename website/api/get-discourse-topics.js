@@ -26,7 +26,7 @@ async function getDiscourseTopics(request, response) {
       // Log message with encoded query and end function
       console.log('Unable to get results from api request.')
       console.log(`Search query: ${query}`)
-      return returnResponse(200, [])
+      return await response.status(200).json([])
     }
 
     // Set author and like_count for topics if not querying by specific term
@@ -65,29 +65,7 @@ async function getDiscourseTopics(request, response) {
   } catch(err) {
     // Log and return the error
     console.log('err', err)
-    return await returnResponse(500, { error: 'Unable to get topics from Discourse.'})
-  }
-}
-
-async function returnResponse(status, res) {
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS' 
-  }
-
-  try {
-    const resObj = {
-      statusCode: status,
-      headers,
-      body: JSON.stringify(res)
-    }
-
-    return resObj;
-  } catch (error) {
-    console.error('Error:', error); 
-    throw error;
+    return await response.status(500).json({ error: 'Unable to get topics from Discourse.'})
   }
 }
 
