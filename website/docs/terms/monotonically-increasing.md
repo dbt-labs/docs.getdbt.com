@@ -1,7 +1,7 @@
 ---
 id: monotonically-increasing
 title: Monotonically increasing
-description: A monotonically-increasing sequence is a sequence whose values do not decrease, for example the sequences 1, 6, 7, 11, 131 or 2, 5, 5, 5, 6, 10.
+description: A monotonically increasing sequence is a sequence whose values are sorted in ascending order and do not decrease. For example, the sequences 1, 6, 7, 11, 131 or 2, 5, 5, 5, 6, 10.
 displayText: monotonically increasing 
 hoverSnippet: A monotonically-increasing sequence is a sequence whose values do not decrease, for example the sequences 1, 6, 7, 11, 131 or 2, 5, 5, 5, 6, 10.
 ---
