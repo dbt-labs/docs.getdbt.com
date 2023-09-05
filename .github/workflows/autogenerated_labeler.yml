@@ -23,8 +23,10 @@ jobs:
     steps:
       - name: "Determine appropriate labels by repo in title"
         id: repo
+        env:
+            ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
-          if [[ ${{ github.event.issue.title }} == *"dbt-core"* ]]; then
+          if [[ "$ISSUE_TITLE" == *"dbt-core"* ]]; then
             echo "labels='content,improvement,dbt Core'" >> $GITHUB_OUTPUT
           else
             echo "labels='content,improvement,adapters'" >> $GITHUB_OUTPUT
