@@ -44,8 +44,6 @@ Trusted adapters will not do any of the following:
 - Output to logs or file either access credentials information to or data from the underlying data platform itself.
 - Make API calls other than those expressly required for using dbt features (adapters may not add additional logging)
 - Obfuscate code and/or functionality so as to avoid detection
-- Use the Python runtime of dbt to execute arbitrary Python code
-- Draw a dependency on dbt’s Python API beyond what is required for core data transformation functionality as described in the Essential and Extended feature tiers
 
 Additionally, to avoid supply-chain attacks:
 
