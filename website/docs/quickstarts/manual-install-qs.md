@@ -169,10 +169,9 @@ git push -u origin main
 
 2. Return to your GitHub repository to verify your new files have been added.
 
-## Build your first models
+### Build your first models
 
 Now that you set up your sample project, you can get to the fun part — [building models](/docs/build/sql-models)! 
-
 In the next steps, you will take a sample query and turn it into a model in your dbt project.
 
 ## Checkout a new git branch
