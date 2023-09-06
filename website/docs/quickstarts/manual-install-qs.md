@@ -142,11 +142,12 @@ Our sample project has some example models in it. We're going to check that we c
 
 1. Enter the `run` command to build example models:
 
-    ```shell
-    dbt run
-    ```
+```shell
+dbt run
+```
 
 You should have an output that looks like this:
+
 <div style={{maxWidth: '400px'}}>
 <Lightbox src="/img/successful-dbt-run.png" title="A successful dbt run command" />
 </div>
