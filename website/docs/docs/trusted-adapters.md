@@ -1,6 +1,7 @@
 ---
 title: "Trusted adapters"
 id: "trusted-adapters"
+hide_table_of_contents: true
 ---
 
 Trusted adapters are adapters not maintained by dbt Labs, that we feel comfortable recommending to users for use in production.
