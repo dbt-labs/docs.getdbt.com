@@ -40,25 +40,25 @@ To create your dbt project:
 
 1. Make sure you have dbt Core installed and check the version using the `dbt --version` command:
 
-    ```terminal
+    ```shell
     dbt --version
     ```
 
 2. Initiate the `jaffle_shop` project using the `init` command:
 
-    ```terminal
+    ```shell
     dbt init jaffle_shop
     ```
 
 3. Navigate into your project's directory:
 
-    ```terminal
+    ```shell
     cd jaffle_shop
     ```
 
 4. Use `pwd` to confirm that you are in the right spot:
 
-    ```terminal
+    ```shell
     $ pwd
     > Users/BBaggins/dbt-tutorial/jaffle_shop
     ```
@@ -119,7 +119,7 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 
 4. Run the `debug` command from your project to confirm that you can successfully connect:
 
-    ```terminal
+    ```shell
    $ dbt debug
    > Connection test: OK connection ok
     ```
@@ -142,7 +142,7 @@ Our sample project has some example models in it. We're going to check that we c
 
 1. Enter the `run` command to build example models:
 
-    ```terminal
+    ```shell
     dbt run
     ```
 
@@ -157,7 +157,7 @@ Commit your changes so that the repository contains the latest code.
 
 1. Link the GitHub repository you created to your dbt project by running the following commands in Terminal. Make sure you use the correct git URL for your repository, which you should have saved from step 5 in [Create a repository](#create-a-repository).
 
-    ```terminal
+    ```shell
     git init
     git branch -M main
     git add .
@@ -180,7 +180,7 @@ Check out a new git branch to work on new code:
 
 1. Create a new branch by using the `checkout` command and passing the `-b` flag:
 
-    ```terminal
+    ```shell
     $ git checkout -b add-customers-model
     >  Switched to a new branch `add-customer-model`
     ```
