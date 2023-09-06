@@ -26,7 +26,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 
 <VersionBlock firstVersion="1.7">
 
-The following example is a list of all available configurations in the `dbt_project.yml` file. Something to note, the following properties aren't supported in in the `dbt_project.yml` file:
+Something to note, the following properties _aren't_ supported in in the `dbt_project.yml` file:
 
 - [Exposure properties](/reference/exposure-properties)
 - [Macro properties](/reference/macro-properties)
@@ -37,7 +37,7 @@ The following example is a list of all available configurations in the `dbt_proj
 
 <VersionBlock lastVersion="1.6">
 
-The following example is a list of all available configurations in the `dbt_project.yml` file. Something to note, the following properties aren't supported in in the `dbt_project.yml` file:
+Something to note, the following properties _aren't_ supported in in the `dbt_project.yml` file:
 
 - [Exposure properties](/reference/exposure-properties)
 - [Macro properties](/reference/macro-properties)
@@ -46,6 +46,8 @@ The following example is a list of all available configurations in the `dbt_proj
 - [Source properties](/reference/source-properties)
 
 </VersionBlock>
+
+The following example is a list of all available configurations in the `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 

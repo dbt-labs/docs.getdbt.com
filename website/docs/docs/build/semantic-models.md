@@ -8,11 +8,25 @@ sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 ---
 
+import PropsCallout from '/snippets/_config-prop-callout.md';
+
 Semantic models serve as the foundation for defining data in MetricFlow, which powers the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
 
 Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
 
-You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
+<VersionBlock firstVersion="1.7">
+
+You can configure semantic models in your dbt project directory in a `YAML` file, _except_ the `dbt_project.yml` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.6">
+
+You can configure semantic models in your dbt project directory in a `YAML` file, _except_ the `dbt_project.yml` file. <PropsCallout title={frontMatter.title}/> 
+
+Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources.
+
+</VersionBlock>
 
 Semantic models have 6 components and this page explains the definitions with some examples:
 
