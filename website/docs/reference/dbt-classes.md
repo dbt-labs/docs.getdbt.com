@@ -32,6 +32,8 @@ class Relation:
 
 ### Using relations
 
+Use relations in your SQL code by wrapping them in double curly brackets `{{ }}` (such as the [Jinja function {{ this }}](/reference/dbt-jinja-functions/this)). For example:
+
 <File name='relation_usage.sql'>
 
 ```jinja2
