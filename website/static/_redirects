@@ -1,7 +1,3 @@
-
-# Redirects for quickstarts sections that were split
-
-
 # Deprecating Discovery API (FKA Metadata API) legacy endpoints
 
 /docs/dbt-cloud-apis/discovery-schema-model /docs/dbt-cloud-apis/discovery-schema-job-model 301
