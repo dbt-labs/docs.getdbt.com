@@ -23,11 +23,29 @@ By default, dbt will look for `dbt_project.yml` in your current working director
 dbt uses YAML in a few different places. If you're new to YAML, it would be worth taking the time to learn how arrays, dictionaries, and strings are represented.
 :::
 
+
+<VersionBlock firstVersion="1.7">
+
 The following example is a list of all available configurations in the `dbt_project.yml` file. Something to note, the following properties aren't supported in in the `dbt_project.yml` file:
 
+- [Exposure properties](/reference/exposure-properties)
+- [Macro properties](/reference/macro-properties)
+- [Analysis properties](/reference/analysis-properties)
+- [Source properties](/reference/source-properties)
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.6">
+
+The following example is a list of all available configurations in the `dbt_project.yml` file. Something to note, the following properties aren't supported in in the `dbt_project.yml` file:
+
+- [Exposure properties](/reference/exposure-properties)
 - [Macro properties](/reference/macro-properties)
 - [Analysis properties](/reference/analysis-properties)
 - [Semantic model configs](/docs/build/semantic-models)
+- [Source properties](/reference/source-properties)
+
+</VersionBlock>
 
 <File name='dbt_project.yml'>
 
