@@ -1,5 +1,5 @@
-name: Improve the docs.getdbt.com site
-description: Make a suggestion or report a problem about the technical implementation of docs.getdbt.com.
+name: Report a docs.getdbt.com site issue
+description: Report a problem about the technical implementation of docs.getdbt.com.
 labels: ["engineering"]
 body:
   - type: markdown
