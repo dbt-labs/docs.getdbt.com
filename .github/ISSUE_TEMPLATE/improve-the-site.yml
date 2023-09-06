@@ -1,6 +1,6 @@
 name: Report a docs.getdbt.com site issue
 description: Report a problem about the technical implementation of docs.getdbt.com.
-labels: ["engineering"]
+labels: ["engineering","bug"]
 body:
   - type: markdown
     attributes:
