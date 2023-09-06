@@ -68,7 +68,7 @@ Note that the value of `defined_in` and the `alias` configuration of a model are
 
 ### Detecting breaking changes
 
-When you use the `state:modified` selection method in Slim CI, dbt will detect changes to model contracts, and raise an error if any of those changes could be breaking for downstream consumers.
+When you use the `state:modified` selection method in Slim CI, dbt will detect changes to versioned model contracts, and raise an error if any of those changes could be breaking for downstream consumers.
 
 Breaking changes include:
 - Removing an existing column
