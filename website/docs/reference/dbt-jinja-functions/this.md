@@ -60,7 +60,7 @@ from raw_app_data.events
 
 ### Using relation objects
 
-`{{ this }}` is a [relation object](/reference/dbt-classes#relation_) built in dbt that simplifies the handling of database schema and table names while ensuring appropriate quoting in SQL code. You can use `{{ this }}` for various tasks, such as accessing attributes or validating relation types. 
+Since `{{ this }}` is a [relation object](/reference/dbt-classes#relation_) included in dbt, you can use it to simplify the handling of database schema and table names. This also helps you ensure appropriate quoting in SQL code. You can use `{{ this }}` for various tasks, such as accessing attributes or validating relation types. 
 
 The following command examples print out the database, schema, and identifier and also validate the relation type using the **Compile** button.
 
