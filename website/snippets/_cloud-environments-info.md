@@ -65,7 +65,7 @@ If you're developing in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in
 
 - If the attribute doesn't exist, it will add the attribute or value pair to the profile. 
 
-- Only **top-level** keys are accepted in extended attributes. In other words, if you wish to update a particular *sub-key value*, you will need to update the entire top-level key as a JSON block in your resulting YAML. For example, assuming you wish to pass in a custom override for a specific individual [service account JSON field](/docs/core/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (e.g. `project_id` or `client_email`), you will need to pass in an override for the entire top-level `keyfile_json` key / attribute instead via extended attributes (with the sub-fields passed in as a nested JSON block).
+Only the **top-level keys** are accepted in extended attributes. This means that if you want to change a specific sub-key value, you must provide the entire top-level key as a JSON block in your resulting YAML. For example, if you want to customize a particular field within a [service account JSON](/docs/core/connect-data-platform/bigquery-setup#service-account-json) for your BigQuery connection (like 'project_id' or 'client_email'), you need to provide an override for the entire top-level 'keyfile_json' main key/attribute using extended attributes. Include the sub-fields as a nested JSON block.
 
 The following code is an example of the types of attributes you can add in the **Extended Attributes** text box:
 
