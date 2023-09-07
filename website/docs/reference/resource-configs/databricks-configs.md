@@ -285,7 +285,7 @@ snapshots:
 
 ## Advanced Materializations
 
-Starting with version 1.6.0, we are rolling out support for [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), alternatives to incremental tables that are powered by (Delta Live Tables)[https://docs.databricks.com/en/delta-live-tables/index.html].
+Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by (Delta Live Tables)[https://docs.databricks.com/en/delta-live-tables/index.html].
 Read their entries [here](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) to understand their use cases.
 These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
 In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
@@ -312,14 +312,14 @@ or
 
 </File>
 
-When a pre-existing relation of these types is detected, a `REFRESH` [command](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-refresh-full.html) is issued.
+When dbt detects a pre-existing relation of one of these types, it issues a `REFRESH` [command](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-refresh-full.html).
 
 ### Limitations
 
-As mentioned above, support for these materializations should be considered experimental.
+As mentioned above, support for these materializations in the Databricks adapter is still limited.
 At this time the following configuration options are not available:
 
 * Specifying a refresh schedule for these materializations
 * Specifying `on_configuration_change` settings.
   
-Both of these configuration settings are expected to be supported in the near future.
+These configuration settings will be supported in the near future.
