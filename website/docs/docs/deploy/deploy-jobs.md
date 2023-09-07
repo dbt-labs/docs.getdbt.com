@@ -90,7 +90,7 @@ If you're interested in joining our beta, please fill out our Google Form to [si
     - **Environment Variables** &mdash; Define [environment variables](/docs/build/environment-variables) to customize the behavior of your project when the deploy job runs.
     - **Target Name** &mdash; Define the [target name](/docs/build/custom-target-names) to customize the behavior of your project when the deploy job runs. Environment variables and target names are often used interchangeably. 
     - **Run Timeout** &mdash; Cancel the deploy job if the run time exceeds the timeout value. 
-    - **Compare changes against ** option — By default, it’s set to **No deferral**. For Deploy jobs, you can select either no deferral, deferral to an environment, or self defer (to the same job).
+    - **Compare changes against** — By default, it’s set to **No deferral**. Select either **Environment** or **This Job**  to let dbt Cloud know what it should compare the changes against.  
 
     :::info
     Older versions of dbt Cloud only allow you to defer to a specific job instead of an environment. Deferral to a job compares state against the project code that was run in the deferred job's last successful run. While deferral to an environment is more efficient as dbt Cloud will compare against the project representation (which is stored in the `manifest.json`) of the last successful deploy job run that executed in the deferred environment. By considering _all_ deploy jobs that run in the deferred environment, dbt Cloud will get a more accurate, latest project representation state.
