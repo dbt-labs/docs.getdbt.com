@@ -20,6 +20,7 @@ To configure IP restrictions, go to **Account Settings** → **IP Restrictions**
 - Allow only VPN traffic but make an exception for contractors’ IP addresses
 
 IP restrictions will block all service tokens, user requests done via the API (via personal user token), and the UI.
+
 ### Allowing IPs
 
 To add an IP to the allowlist, from the **IP Restrictions** page:
