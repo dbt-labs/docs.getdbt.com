@@ -18,7 +18,7 @@ The dbt Cloud audit log stores all the events that occurred in your organization
 
 To access the audit log, click the gear icon in the top right, then click **Audit Log**.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" width="60%" title="Audit log menu"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" width="45%" title="Audit log menu"/>
 
 ## Understanding the audit log
 
