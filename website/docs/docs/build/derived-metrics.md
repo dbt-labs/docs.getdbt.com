@@ -22,7 +22,6 @@ In MetricFlow, derived metrics are metrics created by defining an expression usi
 | `alias` | Optional alias for the metric that you can use in the expr. | Optional |
 | `filter` | Optional filter to apply to the metric. | Optional |
 | `offset_window` | Set the period for the offset window, such as 1 month. This will return the value of the metric one month from the metric time. This can't be used with `offset_to_grain`. | Required |
-| `offset_to_grain` | Specifies the granularity or level of detail for the offset, such as a day. This means if you set your `offset_to_grain: day`, the offset is applied at the daily level. If you set it to "hour," it means the offset is at the hourly level. This can't be used with `offset_window`. | Required |
 
 The following displays the complete specification for derived metrics, along with an example.
 
@@ -126,27 +125,6 @@ You can query any granularity and offset window combination. The following examp
 
 ```
 
-**Using `offset_to_grain`**
-
-You can set an `offset_to_grain` to specify the granularity or level of detail for the offset, such as a day or hour. Something to note is that you can't use this with `offset_window`. The following example queries a metric with an hourly offset and a monthly grain:
-
-```yaml
-- name: d7_booking_change
-    description: "Calculate bookings per hour for the current month"
-    type: derived
-    label: d7 Bookings Change
-    type_params:
-      expr: bookings * bookings_hourly
-      metrics:
-        - name: bookings
-          alias: current_bookings
-        - name: bookings
-          offset_to_grain: hour
-          alias: bookings_hourly
-```
-
-### Derived metric offset calculation
-
 When you run the query  `mf query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated:
 
 1. We retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
@@ -167,7 +145,7 @@ When you run the query  `mf query --metrics d7_booking_change --group-by metric_
 |   | Orders | Metric_time |
 | - | ---- | -------- |
 |   | 329 | 2017-07-24 |
-|   | 6840 | 2017-07-23  to 2017-06-35 |
+|   | 6840 | 2017-07-23  to 2017-06-30 |
 |   | 83 | 2017-06-24 |
 | Total  | 7252 | 2017-07-01 |
 
