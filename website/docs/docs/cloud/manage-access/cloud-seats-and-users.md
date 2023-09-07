@@ -21,7 +21,7 @@ The user's assigned license determines the specific capabilities they can access
 | API Access | ✅ | ❌ | ❌ |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
-| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅ Note, that Read-Only users can't set job notifications. |  ✅ Note, that IT users can't set job notifications.| 
+| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅ <br /> Can't set job notifications. |  ✅ <br /> Can't set job notifications.| 
 *Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.
 
 ## Licenses
