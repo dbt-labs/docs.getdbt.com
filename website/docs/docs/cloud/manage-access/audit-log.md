@@ -20,7 +20,7 @@ To access audit log, click the gear icon in the top right, then click **Audit Lo
 
 <div style={{maxWidth: '150px'}}>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" title="Audit log menu"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-menu.png" width="85%" title="Audit log menu"/>
 
 </div>
 
@@ -163,7 +163,7 @@ You can search the audit log to find a specific event or actor, which is limited
 
 <div style={{maxWidth: '600px'}}>
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" title="Use search bar to find content in the audit log"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-search.png" width="85%" title="Use search bar to find content in the audit log"/>
 
 </div>
 
@@ -174,6 +174,6 @@ You can use the audit log to export all historical audit results for security, c
 - For events within 90 days &mdash; dbt Cloud will automatically display the 90 days selectable date range. Select **Export Selection** to download a CSV file of all the events that occurred in your organization within 90 days.
 - For events beyond 90 days &mdash; Select **Export All**. The Account Admin will receive an email link to download a CSV file of all the events that occurred in your organization.
 
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" title="View audit log export options"/>
+<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/audit-log-section.jpg" width="85%" title="View audit log export options"/>
 
 
