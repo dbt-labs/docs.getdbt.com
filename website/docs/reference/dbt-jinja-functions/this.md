@@ -60,24 +60,9 @@ from raw_app_data.events
 
 ### Using relation objects
 
-`{{this}}` is a [relation object](/reference/dbt-classes#relation_) in dbt that simplifies the handling of database schema and table names while ensuring appropriate quoting in SQL code. You can use `{{this}}` for various tasks, such as accessing attributes or validating relation types. For example:
+`{{ this }}` is a [relation object](/reference/dbt-classes#relation_) built in dbt that simplifies the handling of database schema and table names while ensuring appropriate quoting in SQL code. You can use `{{ this }}` for various tasks, such as accessing attributes or validating relation types. 
 
-1. Open a new file and [create](/reference/dbt-classes#using-relations) a relation by calling the `create` class method on the `Relation` class.
-   
-2. In a separate file, set the  `{{this}}` relation object with specific database, schema, and identifier values:
-
-  <File name='relation_usage.sql'>
-
-   ```sql
-   {% set this = api.Relation.create(database='mydb', schema='public', identifier='my_table') %}
-   ```
-  </File>
-
-  This code creates a `{{this}}` object representing a table named "my_table" in the "public" schema of the "mydb" database. 
-
-2. Once you create a  `{{this}}` relation object, you can access its attributes using the double curly brackets `{{ }}` or validate the type of relation. 
-   
-   The following example commands prints out the database, schema, identifier, and validates the relation type using the **Compile** button:
+The following command examples print out the database, schema, and identifier and also validate the relation type using the **Compile** button.
 
    <VersionBlock firstVersion="1.6">
 
@@ -88,7 +73,7 @@ from raw_app_data.events
 
   {{ this.database }} # Fetches the database name
   {{ this.schema }} # Fetches the schema
-  {{ this.identifier }} # Fetches the identifier (table name in this case)
+  {{ this.identifier }} # Fetches the identifier (For example, table name)
 
   -- Validating relation type
   
