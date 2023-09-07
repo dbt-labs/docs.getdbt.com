@@ -108,7 +108,7 @@ The following example displays how you can calculate monthly revenue growth usin
 
 ### Offset windows and granularity
 
-You can query any granularity and offset window combination. The following examples queries a metric with a 7-day offset and a monthly grain:
+You can query any granularity and offset window combination. The following example queries a metric with a 7-day offset and a monthly grain:
 
 ```yaml
 - name: d7_booking_change
@@ -152,7 +152,7 @@ When you run the query  `mf query --metrics d7_booking_change --group-by metric_
 1. We retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
 2. Then, we perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
    For example, to calculate `d7_booking_change` for July 2017: 
-   - First we sum up all the booking values for each day in July to calculate the bookings metric.
+   - First, we sum up all the booking values for each day in July to calculate the bookings metric.
    - The following table displays the range of days that make up this monthly aggregation.
 
 |   | Orders | Metric_time |
