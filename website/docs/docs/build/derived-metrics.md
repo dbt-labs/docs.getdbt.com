@@ -93,16 +93,16 @@ The following example displays how you can calculate monthly revenue growth usin
 
 ```yaml
 - name: customer_retention
-    description: "Percentage of customers that are active now and those active 1 month ago"
-    label: customer_retention
-    type_params:
-      expr: (active_customers/ active_customers_prev_month)
-      metrics:
-        - name: active_customers
-          alias: current_active_customers
-        - name: active_customers
-          offset_window: 1 month
-          alias: active_customers_prev_month
+  description: Percentage of customers that are active now and those active 1 month ago
+  label: customer_retention
+  type_params:
+    expr: (active_customers/ active_customers_prev_month)
+    metrics:
+      - name: active_customers
+        alias: current_active_customers
+      - name: active_customers
+        offset_window: 1 month
+        alias: active_customers_prev_month
 ```
 
 ### Offset windows and granularity
@@ -111,18 +111,17 @@ You can query any granularity and offset window combination. The following examp
 
 ```yaml
 - name: d7_booking_change
-    description: "Difference between bookings now and 7 days ago"
-    type: derived
-    label: d7 Bookings Change
-    type_params:
-      expr: bookings - bookings_7_days_ago
-      metrics:
-        - name: bookings
-          alias: current_bookings
-        - name: bookings
-          offset_window: 7 days
-          alias: bookings_7_days_ago
-
+  description: Difference between bookings now and 7 days ago
+  type: derived
+  label: d7 Bookings Change
+  type_params:
+    expr: bookings - bookings_7_days_ago
+    metrics:
+      - name: bookings
+        alias: current_bookings
+      - name: bookings
+        offset_window: 7 days
+        alias: bookings_7_days_ago
 ```
 
 When you run the query  `mf query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated:
