@@ -1,6 +1,6 @@
 ---
 title: "Add groups to your DAG"
-sidebar_title: "Groups"
+sidebar_label: "Groups"
 id: "groups"
 description: "When you define groups in dbt projects, you turn implicit relationships into an explicit grouping."
 keywords:

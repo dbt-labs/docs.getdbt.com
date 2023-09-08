@@ -9,10 +9,10 @@ Setting up notifications in dbt Cloud will allow you to receive alerts via Email
 
 ### Email
 
-These are the following options for setting up email notifications:
+These are the following options for setting up email notifications. Refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users) for info on license types eligible for email notifications. 
 
-- As a **user** &mdash; You can set up email notifications for yourself under your Profile. 
-- As an **admin** &mdash; You can set up notifications on behalf of your team members. Refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users) for info on license types eligible for email notifications.
+- As a **user** &mdash; You can set up email notifications for yourself under your Profile.
+- As an **admin** &mdash; You can set up notifications on behalf of your team members. 
 
 To set up job notifications, follow these steps:
 

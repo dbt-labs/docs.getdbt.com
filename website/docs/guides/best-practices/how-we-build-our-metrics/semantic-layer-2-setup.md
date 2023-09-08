@@ -23,8 +23,8 @@ We'll use pip to install MetricFlow and our dbt adapter:
 python -m venv [virtual environment name]
 source [virtual environment name]/bin/activate
 # install dbt and MetricFlow
-pip install dbt-metricflow[adapter name]
-# e.g. dbt-metricflow[snowflake]
+pip install "dbt-metricflow[adapter name]"
+# e.g. pip install "dbt-metricflow[snowflake]"
 ```
 
 Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-here` branch.

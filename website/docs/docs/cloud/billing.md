@@ -15,7 +15,7 @@ As a customer, you pay for the number of seats you have and the amount of usage 
 
 dbt Cloud considers a Successful Model Built as any model that is successfully built via a run through dbt Cloud’s orchestration functionality in a dbt Cloud deployment environment. Models are counted when built and run. This includes any jobs run via dbt Cloud's scheduler, CI builds (jobs triggered by pull requests), runs kicked off via the dbt Cloud API, and any successor dbt Cloud tools with similar functionality. This also includes models that are successfully built even when a run may fail to complete. For example, you may have a job that contains 100 models and on one of its runs, 51 models are successfully built and then the job fails. In this situation, only 51 models would be counted.
 
-Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, and snapshots also do not count. 
+Any models built in a dbt Cloud development environment (for example, via the IDE) do not count towards your usage. Tests, seeds, ephemeral models, and snapshots also do not count. 
 
 
 ### What counts as a seat license? 
@@ -50,24 +50,27 @@ dbt Cloud offers several [plans](https://www.getdbt.com/pricing) with different 
 
 ### Developer plan billing
 
-Developer plans are free and include one Developer license and 5,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 5,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the dbt Cloud platform is still accessible, and no work will be lost. 
+Developer plans are free and include one Developer license and 3,000 models each month. Models are refreshed at the beginning of each calendar month. If you exceed 3,000 models, any subsequent runs will be canceled until models are refreshed or until you upgrade to a paid plan. The rest of the dbt Cloud platform is still accessible, and no work will be lost.
+
+All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Developer Plan, the included model entitlements may be different from what’s reflected above.
+
 
 ### Team plan billing 
 
-Team customers pay monthly via credit card for seats and usage, and accounts include 20,000 models monthly. Seats are charged upfront at the beginning of the month. If you add seats during the month, seats will be prorated and charged on the same day. Seats removed during the month will be reflected on the next invoice and are not eligible for refunds. You can change the credit card information and the number of seats from the billings section anytime. Accounts will receive one monthly invoice that includes the upfront charge for the seats and the usage charged in arrears from the previous month. 
+Team customers pay monthly via credit card for seats and usage, and accounts include 15,000 models monthly. Seats are charged upfront at the beginning of the month. If you add seats during the month, seats will be prorated and charged on the same day. Seats removed during the month will be reflected on the next invoice and are not eligible for refunds. You can change the credit card information and the number of seats from the billings section anytime. Accounts will receive one monthly invoice that includes the upfront charge for the seats and the usage charged in arrears from the previous month.
 
-Usage is calculated and charged in arrears for the previous month. If you exceed 20,000 models in any month, you will be billed for additional usage on your next invoice. Additional use is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
+Usage is calculated and charged in arrears for the previous month. If you exceed 15,000 models in any month, you will be billed for additional usage on your next invoice. Additional use is billed at the rates on our [pricing page](https://www.getdbt.com/pricing). 
 
 
-Included models that are not consumed do not roll over to future months. You can estimate your bill with a simple formula: 
+Included models that are not consumed do not roll over to future months. You can estimate your bill with a simple formula:
 
-`($100 x number of developer seats) + ((models built - 20,000) x $0.01)`
+`($100 x number of developer seats) + ((models built - 15,000) x $0.01)`
 
-If you cancel your plan, the plan will remain active through the end of the current billing period and may continue to accrue usage. Please review the Managing usage section [#managing-usage] below to avoid further usage accruing. If your account has exceeded the 20,000 included successful models built during the month of cancellation, a usage invoice will be sent the following month.
+All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Team Plan, the included model entitlements may be different from what’s reflected above.
 
 :::note Legacy pricing plans
  
-Customers who purchased the dbt Cloud Team plan before August 8, 2023, may be on a legacy pricing plan that only includes seat-based charges. Legacy plan pricing will be supported through at least July 2024, although we may not release all new features to legacy plan subscribers. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. To ensure you have access to new features for each plan, you can upgrade now or [contact us](mailto:support@getdbt.com) with questions.
+Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain on a legacy pricing plan as long as their account is in good standing. The legacy pricing plan is based on seats and includes unlimited models subject to reasonable use. dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. 
 
 :::
 
