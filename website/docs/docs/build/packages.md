@@ -301,7 +301,7 @@ Other patterns may work in some cases, but not always. For example, if you insta
 
 ```yaml
 packages:
-  # not recommended - these support for these patterns vary
+  # not recommended - the support for these patterns vary
   - local: /../../redshift   # relative path to a parent directory
   - local: /opt/dbt/redshift # absolute path on the system
 ```
