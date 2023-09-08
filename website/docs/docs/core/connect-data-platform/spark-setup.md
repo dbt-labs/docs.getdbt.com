@@ -211,8 +211,6 @@ your_profile_name:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.0">
-
 ## Optional configurations
 
 ### Retries
@@ -231,13 +229,14 @@ connect_retries: 3
 
 </File>
 
-</VersionBlock>
+
 
 <VersionBlock firstVersion="1.7">
 ### Server side configuration
 
 Spark can be customized using [Application Properties](https://spark.apache.org/docs/latest/configuration.html). Using these properties the execution can be customized, for example, to allocate more memory to the driver process. Also, the Spark SQL runtime can be set through these properties. For example, this allows the user to [set a Spark catalogs](https://spark.apache.org/docs/latest/configuration.html#spark-sql).
 </VersionBlock>
+
 ## Caveats
 
 ### Usage with EMR
