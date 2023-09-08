@@ -284,7 +284,7 @@ packages:
 </File>
 
 ### Local packages
-A "local" package is another dbt project that you have access to from within the local file system. It can be installed by specifying the path to the project. The best-supported pattern is when the project is nested within a subdirectory, relative to the current project's directory.
+A "local" package is a dbt project accessible from your local file system. You can install it by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory.
 
 <File name='packages.yml'>
 
