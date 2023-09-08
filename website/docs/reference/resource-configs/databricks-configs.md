@@ -283,10 +283,10 @@ snapshots:
 </File>
 
 
-## Advanced Materializations
+## Materialized views and streaming stables
 
-Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by (Delta Live Tables)[https://docs.databricks.com/en/delta-live-tables/index.html].
-Read their entries in the [Delta Live Tables documentation site](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) to understand their use cases.
+Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
+See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
 These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
 In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
 
