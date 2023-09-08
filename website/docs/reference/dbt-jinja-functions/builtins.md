@@ -41,7 +41,6 @@ The following macro extracts user-provided arguments, including `version`, and c
 
 {% endmacro %}
 ```
-
 </VersionBlock>
 
 <VersionBlock lastVersion="1.5">
