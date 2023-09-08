@@ -284,18 +284,35 @@ packages:
 </File>
 
 ### Local packages
-Packages that you have stored locally can be installed by specifying the path to the project, like so:
+A "local" package is another dbt project that you have access to from within the local file system. It can be installed by specifying the path to the project. The best-supported pattern is when the project is nested within a subdirectory, relative to the current project's directory.
 
 <File name='packages.yml'>
 
 ```yaml
 packages:
-  - local: /opt/dbt/redshift # use a local path
+  - local: relative/path/to/subdirectory
 ```
 
 </File>
 
-Local packages should only be used for specific situations, for example, when testing local changes to a package.
+Other patterns may work in some cases, but not always. For example, if you install this project as a package elsewhere, or try running it on a different system, the relative and absolute paths will yield the same results.
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  # not recommended - these support for these patterns vary
+  - local: /../../redshift   # relative path to a parent directory
+  - local: /opt/dbt/redshift # absolute path on the system
+```
+
+</File>
+
+As such, there are a few specific use cases where a "local" package is recommended:
+1. A monorepo containing multiple projects, each nested in a subdirectory. "Local" packages enable combining projects together, for coordinated development and deployment.
+2. Testing changes to one project/package within the context of a downstream project/package that uses it. By temporarily switching the installation to a "local" package, you can make changes to the former and immediately test them in the latter, enabling quicker iteration. This is similar to [editable installs](https://pip.pypa.io/en/stable/topics/local-project-installs/) in Python.
+3. A nested project that defines fixtures and tests for a project of utility macros — for example, [the integration tests within the `dbt-utils` package](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests)
+
 
 ## What packages are available?
 Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
