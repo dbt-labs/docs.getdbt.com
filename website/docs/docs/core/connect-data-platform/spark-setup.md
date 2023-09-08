@@ -230,7 +230,6 @@ connect_retries: 3
 </File>
 
 
-</VersionBlock>
 
 <VersionBlock firstVersion="1.7">
 ### Server side configuration
