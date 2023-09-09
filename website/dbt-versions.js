@@ -23,10 +23,6 @@ exports.versions = [
     version: "1.1",
     EOLDate: "2023-04-28",
   },
-  {
-    version: "1.0",
-    EOLDate: "2022-12-03"
-  },
 ]
 
 exports.versionedPages = [
