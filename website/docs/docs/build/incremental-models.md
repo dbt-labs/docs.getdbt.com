@@ -79,12 +79,6 @@ A `unique_key` enables updating existing rows instead of just appending new rows
 
 Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
-<VersionBlock lastVersion="1.0">
-
-The optional `unique_key` parameter specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as a unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.1">
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.

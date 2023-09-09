@@ -69,7 +69,7 @@ select * from {{ ref('model_name') }}
 
 ### Two-argument variant
 
-There is also a two-argument variant of the `ref` function. With this variant, you can pass both a namespace (project or package) and model name to `ref` to avoid ambiguity.
+You can also use a two-argument variant of the `ref` function. With this variant, you can pass both a namespace (project or package) and model name to `ref` to avoid ambiguity. When using two arguments with projects (not packages), you also need to set [cross project dependencies](/docs/collaborate/govern/project-dependencies).
 
 ```sql
 select * from {{ ref('project_or_package', 'model_name') }}
