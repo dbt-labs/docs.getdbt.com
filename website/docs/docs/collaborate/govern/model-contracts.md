@@ -197,3 +197,16 @@ In some cases, you can replace a test with its equivalent constraint. This has t
 Currently, dbt contracts apply to **all** columns defined in a model, and they require declaring explicit expectations about **all** of those columns. The explicit declaration of a contract is not an accident—it's very much the intent of this feature.
 
 At the same time, for models with many columns, we understand that this can mean a _lot_ of yaml. We are investigating the feasibility of supporting "inferred" contracts. This would enable you to define constraints and strict data typing for a subset of columns, while still detecting breaking changes on other columns by comparing against the same model in production. This isn't the same as a "partial" contract, because all columns in the model are still checked at runtime, and matched up with what's defined _explicitly_ in your yaml contract or _implicitly_ with the comparison state. If you're interested in "inferred" contract, please upvote or comment on [dbt-core#7432](https://github.com/dbt-labs/dbt-core/issues/7432).
+
+
+### How are breaking changes handled?
+
+When comparing to a previous project state, dbt will look for breaking changes that could impact downstream consumers. If breaking changes are detected, dbt will present a contract error. 
+
+Breaking changes include:
+- Removing an existing column
+- Changing the `data_type` of an existing column
+- Removing or modifying one of the `constraints` on an existing column (dbt v1.6 or higher)
+
+More details are available in the [contract reference](/reference/resource-configs/contract#detecting-breaking-changes).
+
