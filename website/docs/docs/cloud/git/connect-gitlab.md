@@ -71,7 +71,7 @@ The application form in GitLab should look as follows when completed:
 
 Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values will be available even if you close the app screen, so this is not the only chance you have to save them.
 
-If you're a Business Critical customer using IP restrictions ensure you've added the appropriate Gitlab CIDRs to your IP restriction rules, or else the Gitlab connection will fail.
+If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions) ensure you've added the appropriate Gitlab CIDRs to your IP restriction rules, or else the Gitlab connection will fail.
 
 ### Adding the GitLab OAuth application to dbt Cloud
 After you've created your GitLab application, you need to provide dbt Cloud information about the app. In dbt Cloud, account admins should navigate to **Account Settings**, click on the **Integrations** tab, and expand the GitLab section.
