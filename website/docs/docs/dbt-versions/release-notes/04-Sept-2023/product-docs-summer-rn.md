@@ -8,7 +8,7 @@ date: 2023-09-07
 sidebar_position: 09
 ---
 
-Hello from dbt's Product Documentation team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! We’d like to start by thanking the 22 new community contributors to docs.getdbt.com :pray: We'd also like to recognize all of the docs and support we get from the Developer Experience team: @jasnonaz @gwenwindflower @dbeatty10 @dataders @joellabes @Jstein77 @dave-connors-3! 
+Hello from dbt's Product Documentation team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! We'd like to recognize all of the docs and support from our partner team, Developer Experience: @jasnonaz @gwenwindflower @dbeatty10 @dataders @joellabes @Jstein77 @dave-connors-3! 
 
 What a busy summer! We merged 256 PRs between July 1st and August 31. Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/):
 
