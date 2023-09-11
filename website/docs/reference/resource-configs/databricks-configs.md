@@ -282,7 +282,7 @@ snapshots:
 
 </File>
 
-
+<VersionBlock firstVersion="1.6">
 ## Materialized views and streaming stables
 
 Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
@@ -321,5 +321,8 @@ At this time the following configuration options are not available:
 
 * Specifying a refresh schedule for these materializations
 * Specifying `on_configuration_change` settings.
-  
-These configuration settings will be supported in the near future.
+
+Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running dbt again; otherwise, you will get a refresh error.
+
+We plan to address these limitations during the 1.7.x timeframe.
+</VersionBlock>
