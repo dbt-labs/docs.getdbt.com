@@ -11,7 +11,7 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '#db-bigquery'
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
-  platform_name: 'Big Query'
+  platform_name: 'BigQuery'
   config_page: '/reference/resource-configs/bigquery-configs'
 ---
 
@@ -317,56 +317,6 @@ my-profile:
       job_retries: 5
       job_retry_deadline_seconds: 1200
 
-```
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
-
-```
- Operation did not complete within the designated timeout.
-```
-
-To change this timeout, use the `timeout_seconds` configuration:
-
-<File name='profiles.yml'>
-
-```yaml
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      timeout_seconds: 600 # 10 minutes
-```
-
-</File>
-
-The `retries` profile configuration designates the number of times dbt should retry queries that result in unhandled server errors. This configuration is only specified for BigQuery targets. Example:
-
-<File name='profiles.yml'>
-
-```yaml
-# This example target will retry BigQuery queries 5
-# times with a delay. If the query does not succeed
-# after the fifth attempt, then dbt will raise an error
-
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      retries: 5
 ```
 
 </File>
