@@ -121,7 +121,7 @@ select
     date_day,
     count(*) as users
 
-from events
+from new_events
 group by 1
 ```
 
