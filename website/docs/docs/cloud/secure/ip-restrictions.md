@@ -19,7 +19,9 @@ To configure IP restrictions, go to **Account Settings** → **IP Restrictions**
 - Deny IPs flagged by the Security team
 - Allow only VPN traffic but make an exception for contractors’ IP addresses
 
-IP restrictions will block all user requests done via the API (via personal user token) and the UI. Service tokens are exempt from IP restrictions and can still make requests to dbt Cloud API.
+IP restrictions will block all service tokens, user requests done via the API (via personal user token), and the UI if they come from blocked IP addresses.
+
+For any version control system integrations (Github, Gitlab, ADO, etc.) inbound into dbt Cloud, ensure their IP addresses are added to the allowed list.
 
 ### Allowing IPs
 
