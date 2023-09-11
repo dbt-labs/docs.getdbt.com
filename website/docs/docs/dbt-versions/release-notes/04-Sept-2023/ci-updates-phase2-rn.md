@@ -7,7 +7,7 @@ date: 2023-09-11
 sidebar_position: 10
 ---
 
-dbt Labs have separated out [deploy jobs](/docs/deploy/deploy-jobs), used to build production data assets, and [CI jobs](/docs/deploy/ci-jobs), used to check code changes, into two distinct types of jobs. These jobs perform fundamentally different tasks, and we’ve been improving the experience of both for you to have better fit for purpose tools. 
+dbt Labs have separated out [deploy jobs](/docs/deploy/deploy-jobs), used to build production data assets, and [CI jobs](/docs/deploy/ci-jobs), used to check code changes, into two distinct types of jobs. These jobs perform fundamentally different tasks so we’ve improved the setup experience with sensible defaults for each. 
 
 Since there are now two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
 
