@@ -11,6 +11,8 @@ dbt Cloud now separates [deploy jobs](/docs/deploy/deploy-jobs), used to build p
 
 Since there are now two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
 
+<Lightbox src="/img/docs/release-notes/ci-job-setup.gif" title="Example of setting up a CI job"/>
+
 And, we now have more efficient state comparisons on CI checks: Never waste a build or test on code that hasn’t been changed. We now diff between the PR code and what’s running in production more efficiently, with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration).
 
 Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
