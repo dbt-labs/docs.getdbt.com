@@ -60,9 +60,9 @@ The GraphQL API has an easy way to fetch this with the following query:
 
 ```graphql
 {
-    environmentInfo(environmentId: BigInt!) {
-            dialect
-    }
+  environmentInfo(environmentId: BigInt!) {
+    dialect
+  }
 }
 ```
 
@@ -77,7 +77,7 @@ metrics(environmentId: BigInt!): [Metric!]!
 ```graphql
 dimensions(
   environmentId: BigInt!
-  metrics: [String!]!
+  metrics: [MetricInput!]!
 ): [Dimension!]!
 ```
 
@@ -88,7 +88,7 @@ Note: This call for `queryableGranularities` returns only queryable granularitie
 ```graphql
 queryableGranularities(
   environmentId: BigInt!
-  metrics: [String!]!
+  metrics: [MetricInput!]!
 ): [TimeGranularity!]!
 ```
 
@@ -96,7 +96,7 @@ You can also get queryable granularities for all other dimensions using the `dim
 
 ```graphql
 {
-  dimensions(environmentId: BigInt!, metrics:["order_total"]) {
+  dimensions(environmentId: BigInt!, metrics:[{name:"order_total"}]) {
     name
     queryableGranularities # --> ["DAY", "WEEK", "MONTH", "QUARTER", "YEAR"]
   }
@@ -121,7 +121,7 @@ You can also optionally access it from the metrics endpoint:
 
 ```graphql
 {
-  measures(metrics: ["order_total"], environmentId: BigInt!) {
+  measures(environmentId: BigInt!, metrics: [{name:"order_total"}]) {
     name
     aggTimeDimension
   }
@@ -146,7 +146,7 @@ You can also optionally access it from the metrics endpoint:
 ```graphql
 metricsForDimensions(
   environmentId: BigInt!
-  dimensions: [String!]!
+  dimensions: [GroupByInput!]!
 ): [Metric!]!
 ```
 
@@ -156,8 +156,8 @@ metricsForDimensions(
 
 mutation createDimensionValuesQuery(
   environmentId: BigInt!
-  metrics: [String!]
-  groupBy: [String!]!
+  metrics: [MetricInput!]
+  groupBy: [GroupByInput!]!
 ): CreateDimensionValuesQueryResult!
 
 ```
@@ -166,13 +166,34 @@ mutation createDimensionValuesQuery(
 
 ```graphql
 createQuery(
-environmentId: BigInt!
-metrics: [String!]!
-group_by: [String!] = null
-limit: Int = null
-where: [String] = null
-order: [String!] = null
+  environmentId: BigInt!
+  metrics: [MetricInput!]!
+  groupBy: [GroupByInput!] = null
+  limit: Int = null
+  where: [WhereInput!] = null
+  order: [OrderByInput!] = null
 ): CreateQueryResult
+```
+
+```graphql
+MetricInput {
+  name: String!
+}
+
+GroupByInput {
+  name: String!
+  grain: TimeGranularity = null
+}
+
+WhereInput {
+  sql: String!
+}
+
+OrderByinput { # -- pass one and only one of metric or groupBy
+  metric: MetricInput = null
+  groupBy: GroupByInput = null
+  descending: Boolean! = false
+}
 ```
 
 **Fetch query result**
@@ -298,7 +319,7 @@ mutation {
     environmentId: BigInt!
     metrics:[{name: "order_total"}]
     groupBy:[{name: "customer__customer_type"}, {name: "metric_time", grain: "month"}]
-    where:["{{ Dimension('customer__customer_type') }} = 'new'", "{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"]
+    where:[{sql: "{{ Dimension('customer__customer_type') }} = 'new'"}, {sql:"{{ Dimension('metric_time').grain('month') }} > '2022-10-01'"}]
     ) {
      queryId
     }
@@ -356,18 +377,18 @@ mutation {
 
 **Output format**
 
-By default, the output is in Arrow format. You can switch to JSON format using the following parameter. However, due to performance limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`.
+By default, the output is in Arrow format. You can switch to JSON format using the following parameter. However, due to performance limitations, we recommend using the JSON parameter for testing and validation. The JSON received is a base64 encoded string. To access it, you can decode it using a base64 decoder. The JSON is created from pandas, which means you can change it back to a dataframe using `pandas.read_json(json, orient="table")`. Or you can work with the data directly using `json["data"]`, and find the table schema using `json["schema"]["fields"]`. Alternatively, you can pass `encoded:false` to the jsonResult field to get a raw JSON string directly.
 
 
 ```graphql
 {
-  query(environmentId: BigInt!, queryId: Int!, pageNum: Int {
+  query(environmentId: BigInt!, queryId: Int!, pageNum: Int! = 1) {
     sql
     status
     error
     totalPages
     arrowResult
-    jsonResult (orient: TABLE)
+    jsonResult(orient: PandasJsonOrient! = TABLE, encoded: Boolean! = true)
   }
 }
 ```
