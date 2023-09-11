@@ -14,7 +14,7 @@ What a busy summer! We merged 256 PRs between July 1st and August 31.
 
 Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) this summer:
 
-* Changes based on YOUR feedback: 
+* Changes based on YOUR feedback (you can reach us most directly by opening a pull request or issue in [our repo](https://github.com/dbt-labs/docs.getdbt.com) or reaching out in the dbt community Slack channel #dbt-product-docs): 
 	- [Permissions table](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions) for Enterprise accounts
 	- [Browser session page](https://docs.getdbt.com/docs/cloud/about-cloud/browsers#browser-sessions) that clarifies dbt Cloud’s browser session time and when it logs users off.
 * The docs site now collapses sections you’re not currently looking at. There were quite a few people who wanted this, and it bugged us too, so we were happy to get this shipped!
