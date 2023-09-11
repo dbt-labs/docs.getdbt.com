@@ -13,7 +13,7 @@ With two types of jobs, instead of one generic type, we can better guide you thr
 
 <Lightbox src="/img/docs/release-notes/ci-job-setup.gif" title="Example of setting up a CI job"/>
 
-And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the Git PR code and what’s running in production more efficiently, with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration) and [Get started with continuous integration tests](/guides/orchestration/set-up-ci/overview).
+And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the Git PR code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration) and [Get started with continuous integration tests](/guides/orchestration/set-up-ci/overview).
 
 Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
 
