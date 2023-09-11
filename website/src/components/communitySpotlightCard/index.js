@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
+import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 const SpotlightWrapper = ({ isSpotlightMember, frontMatter, children }) => {
   return isSpotlightMember ? (
@@ -55,13 +56,13 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
         <div className={styles.spotlightMemberImgContainer}>
           {id && isSpotlightMember ? (
             <img 
-              src={image} 
+              src={imageCacheWrapper(image)} 
               alt={title} 
             />
           ) : (
             <Link to={`/community/spotlight/${id}`} className={styles.spotlightMemberHeader}>
               <img 
-                src={image} 
+                src={imageCacheWrapper(image)} 
                 alt={title} 
               />
             </Link>
