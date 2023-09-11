@@ -148,7 +148,9 @@ from source
 
 ```YAML
 dimensions:
-      - name: date_trunc('day', ordered_at)
+      - name: ordered_at
+        expr: date_trunc('day', ordered_at)
+        # use date_trunc(ordered_at, DAY) if using [BigQuery](/docs/build/dimensions#time)
         type: time
         type_params:
           time_granularity: day
@@ -166,7 +168,9 @@ We'll discuss an alternate situation, dimensional tables that have static numeri
 ```YAML
 ...
 dimensions:
-  - name: date_trunc('day', ordered_at)
+  - name: ordered_at
+    expr: date_trunc('day', ordered_at)
+    # use date_trunc(ordered_at, DAY) if using BigQuery
     type: time
     type_params:
       time_granularity: day
@@ -254,6 +258,8 @@ semantic_models:
 
     dimensions:
       - name: ordered_at
+        expr: date_trunc('day', ordered_at)
+        # use date_trunc(ordered_at, DAY) if using BigQuery
         type: time
         type_params:
           time_granularity: day
