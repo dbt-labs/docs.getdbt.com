@@ -150,7 +150,7 @@ from source
 dimensions:
       - name: ordered_at
         expr: date_trunc('day', ordered_at)
-        # use date_trunc(ordered_at, DAY) if using BigQuery
+        # use date_trunc(ordered_at, DAY) if using [BigQuery](/docs/build/dimensions#time)
         type: time
         type_params:
           time_granularity: day
