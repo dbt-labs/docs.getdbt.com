@@ -17,7 +17,9 @@ The `builtins` variable is a dictionary containing the following keys:
 
 <VersionBlock firstVersion="1.6">
   
-From dbt v1.6 and higher, use the following macro to extract user-provided arguments, including <code>version</code>, and call the <code>builtins.ref()</code> function with either a single <code>modelname</code> argument or both <code>packagename</code> and <code>modelname</code> arguments, based on the number of positional arguments in <code>varargs</code> :
+From dbt v1.6 and higher, use the following macro to extract user-provided arguments, including <code>version</code>, and call the <code>builtins.ref()</code> function with either a single <code>modelname</code> argument or both <code>packagename</code> and <code>modelname</code> arguments, based on the number of positional arguments in <code>varargs</code>:
+
+<br /><br />
 
   
 ```jinja2
