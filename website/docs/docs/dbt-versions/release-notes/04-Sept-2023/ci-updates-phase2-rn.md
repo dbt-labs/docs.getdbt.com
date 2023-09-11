@@ -9,7 +9,7 @@ sidebar_position: 10
 
 dbt Cloud now has two distinct job types: [deploy jobs](/docs/deploy/deploy-jobs) for building production data assets, and [CI jobs](/docs/deploy/ci-jobs) for checking code changes. These jobs perform fundamentally different tasks so dbt Labs improved the setup experience with better defaults for each. 
 
-Since there are now two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
+With two types of jobs, instead of one generic type, we can better guide you through the setup flow. Best practices are built into the default settings so you can go from curious to being set up in seconds.
 
 <Lightbox src="/img/docs/release-notes/ci-job-setup.gif" title="Example of setting up a CI job"/>
 
