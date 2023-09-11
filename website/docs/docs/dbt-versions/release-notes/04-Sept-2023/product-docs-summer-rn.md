@@ -1,5 +1,5 @@
 ---
-title: "Summer 2023 product docs updates"
+title: "Summer 2023 product documentation updates"
 id: "product-docs-summer"
 description: "Summer 2023: The Product docs team merged 256 PRs, made various updates to dbt Cloud and Core, such as adding What's New, writing Semantic Layer beta docs, releasing dbt 1.6 docs and more!"
 sidebar_label: "Update: Product docs changes"
@@ -8,7 +8,9 @@ date: 2023-09-07
 sidebar_position: 09
 ---
 
-Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! First, we’d like to thank the 22 new community contributors to docs.getdbt.com :pray: What a busy summer! We merged 256 PRs between July 1st and August 31.
+Hello from dbt's Product Documentation team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleonarun! We’d like to start by thanking the 22 new community contributors to docs.getdbt.com :pray: We'd also like to recognize all of the docs and support we get from the Developer Experience team (@jasnonaz @gwenwindflower @dbeatty10 @dataders @joellabes @Jstein77 @dave-connors-3 )! 
+
+What a busy summer! We merged 256 PRs between July 1st and August 31.
 
 Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/) this summer:
 
