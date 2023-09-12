@@ -63,7 +63,7 @@ In the greater data world, you may often hear of data lineage systems based on t
 
 If you use a transformation tool such as dbt that automatically infers relationships between data sources and models, a DAG automatically populates to show you the lineage that exists for your [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
-<Lightbox src="/img/docs/terms/data-lineage/dag_example.png" title="dbt Cloud Project with generated DAG" />
+
 
 Your <Term id="dag" /> is used to visually show upstream dependencies, the nodes that must come before a current model, and downstream relationships, the work that is impacted by the current model. DAGs are also directional—they show a defined flow of movement and form non-cyclical loops.
 
