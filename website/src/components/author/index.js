@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import BlogLayout from '@theme/BlogLayout';
 import getAllPosts from '../../utils/get-all-posts';
+import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 function Author(props) {
   const { authorData } = props
@@ -38,7 +39,7 @@ function Author(props) {
         itemType="http://schema.org/Person">
         <section className="author-header row align-items-center">
           <div className="author-header-left">
-            <img src={image_url} alt={name} itemProp="image" />
+            <img src={imageCacheWrapper(image_url)} alt={name} itemProp="image" />
           </div>
           <div className="author-header-right">
             <h1 itemProp="name">{name}</h1>
