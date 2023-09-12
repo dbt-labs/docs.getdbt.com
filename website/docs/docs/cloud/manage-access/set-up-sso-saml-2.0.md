@@ -380,6 +380,7 @@ We recommend using the following values:
 
 | name | name format | value |
 | ---- | ----------- | ----- |
+| NameID | Unspecified | Email |
 | email | Unspecified | Email |
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
