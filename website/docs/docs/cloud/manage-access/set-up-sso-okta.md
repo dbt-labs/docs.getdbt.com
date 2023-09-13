@@ -95,9 +95,9 @@ Expected **User Attribute Statements**:
 
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
-| `email`        | Unspecified | `${user.email}`      | _The user's email address_ |
-| `first_name`   | Unspecified | `${user.firstName}`  | _The user's first name_    |
-| `last_name`    | Unspecified | `${user.lastName}`   | _The user's last name_     |
+| `email`        | Unspecified | `user.email`      | _The user's email address_ |
+| `first_name`   | Unspecified | `user.firstName`  | _The user's first name_    |
+| `last_name`    | Unspecified | `user.lastName`   | _The user's last name_     |
 
 
 Expected **Group Attribute Statements**:
