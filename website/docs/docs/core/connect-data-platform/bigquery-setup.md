@@ -11,7 +11,7 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '#db-bigquery'
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
-  platform_name: 'Big Query'
+  platform_name: 'BigQuery'
   config_page: '/reference/resource-configs/bigquery-configs'
 ---
 
@@ -251,11 +251,17 @@ In older versions of `dbt-bigquery`, this same config was called `timeout_second
 
 :::
   
-No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
 
 ```
  Operation did not complete within the designated timeout.
 ```
+
+:::caution Note
+
+The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. So, if dbt-bigquery ran into an exception at 300 seconds, the actual BigQuery job could still be running for the time set in BigQuery's own timeout settings.
+
+:::
   
 You can change the timeout seconds for the job execution step by configuring `job_execution_timeout_seconds` in the BigQuery profile:
 
@@ -311,56 +317,6 @@ my-profile:
       job_retries: 5
       job_retry_deadline_seconds: 1200
 
-```
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
-
-```
- Operation did not complete within the designated timeout.
-```
-
-To change this timeout, use the `timeout_seconds` configuration:
-
-<File name='profiles.yml'>
-
-```yaml
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      timeout_seconds: 600 # 10 minutes
-```
-
-</File>
-
-The `retries` profile configuration designates the number of times dbt should retry queries that result in unhandled server errors. This configuration is only specified for BigQuery targets. Example:
-
-<File name='profiles.yml'>
-
-```yaml
-# This example target will retry BigQuery queries 5
-# times with a delay. If the query does not succeed
-# after the fifth attempt, then dbt will raise an error
-
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      retries: 5
 ```
 
 </File>

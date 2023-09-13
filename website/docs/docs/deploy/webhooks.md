@@ -18,7 +18,7 @@ You can create webhooks for these events from the [dbt Cloud web-based UI](#crea
 
 dbt Cloud retries sending each event five times. dbt Cloud keeps a log of each webhook delivery for 30 days. Every webhook has its own **Recent Deliveries** section, which lists whether a delivery was successful or failed at a glance. 
 
-A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out.
+A webhook in dbt Cloud has a timeout of 10 seconds. This means that if the endpoint doesn't respond within 10 seconds, the webhook processor will time out. This can result in a situation where the client responds successfully after the 10 second timeout and records a success status while the dbt cloud webhooks system will interpret this as a failure.
 
 :::tip Videos 
 If you're interested in course learning with videos, check out the [Webhooks on-demand course](https://courses.getdbt.com/courses/webhooks) from dbt Labs.
@@ -167,7 +167,7 @@ An example of a webhook payload for an errored run:
 You can use the dbt Cloud API to create new webhooks that you want to subscribe to, get detailed information about your webhooks, and to manage the webhooks that are associated with your account. The following sections describe the API endpoints you can use for this. 
 
 :::info Access URLs
-dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. This section uses `cloud.getdbt.com` (which is for North America) as part of the endpoint but your access URL might be different. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).   
+dbt Cloud is hosted in multiple regions in the world and each region has a different access URL. People on Enterprise plans can choose to have their account hosted in any one of these regions. For a complete list of available dbt Cloud access URLs, refer to [Regions & IP addresses](/docs/cloud/about-cloud/regions-ip-addresses).   
 :::
 
 ### List all webhook subscriptions
@@ -175,12 +175,13 @@ List all webhooks that are available from a specific dbt Cloud account.
 
 #### Request 
 ```shell
-GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
+GET https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscriptions
 ```
 
 #### Path parameters
 | Name       | Description                          |
 |------------|--------------------------------------|
+| `your access URL` | The login URL for your dbt Cloud account. |
 | `account_id` | The dbt Cloud account the webhooks are associated with. |
 
 #### Response sample
@@ -265,11 +266,12 @@ Get detailed information about a specific webhook.
 
 #### Request
 ```shell
-GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
+GET https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
 ```
 #### Path parameters
 | Name       | Description                          |
 |------------|--------------------------------------|
+| `your access URL` | The login URL for your dbt Cloud account. |
 | `account_id` | The dbt Cloud account the webhook is associated with. |
 | `webhook_id` | The webhook you want detailed information on. |
 
@@ -322,7 +324,7 @@ Create a new outbound webhook and specify the endpoint URL that will be subscrib
 #### Request sample
 
 ```shell
-POST https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscriptions
+POST https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscriptions
 ```
 
 ```json
@@ -344,6 +346,7 @@ POST https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription
 #### Path parameters
 | Name | Description |
 | --- | --- |
+| `your access URL` | The login URL for your dbt Cloud account. |
 | `account_id` | The dbt Cloud account the webhook is associated with. |
 
 #### Request parameters
@@ -407,7 +410,7 @@ Update the configuration details for a specific webhook.
 
 #### Request sample
 ```shell
-PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
+PUT https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
 ```
 
 ```json
@@ -429,6 +432,7 @@ PUT https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/
 #### Path parameters
 | Name       | Description                          |
 |------------|--------------------------------------|
+| `your access URL` | The login URL for your dbt Cloud account. |
 | `account_id` | The dbt Cloud account the webhook is associated with. |
 | `webhook_id` | The webhook you want to update. |
 
@@ -491,12 +495,13 @@ Test a specific webhook.
 
 #### Request
 ```shell
-GET https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}/test
+GET https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}/test
 ```
 
 #### Path parameters
 | Name       | Description                          |
 |------------|--------------------------------------|
+| `your access URL` | The login URL for your dbt Cloud account. |
 | `account_id` | The dbt Cloud account the webhook is associated with. |
 | `webhook_id` | The webhook you want to test.  |
 
@@ -518,12 +523,13 @@ Delete a specific webhook.
 
 #### Request
 ```shell
-DELETE https://cloud.getdbt.com/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
+DELETE https://{your access URL}/api/v3/accounts/{account_id}/webhooks/subscription/{webhook_id}
 ```
 
 #### Path parameters
 | Name       | Description                          |
 |------------|--------------------------------------|
+| `your access URL` | The login URL for your dbt Cloud account. |
 | `account_id` | The dbt Cloud account the webhook is associated with. |
 | `webhook_id` | The webhook you want to delete. |
 

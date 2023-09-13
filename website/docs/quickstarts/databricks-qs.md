@@ -30,8 +30,8 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 ### Related content
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/continuous-integration)
-- [Job triggers](/docs/deploy/job-triggers)
+- [CI jobs](/docs/deploy/continuous-integration)
+- [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 

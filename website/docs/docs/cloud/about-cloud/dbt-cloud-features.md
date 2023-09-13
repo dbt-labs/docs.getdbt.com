@@ -63,7 +63,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
    <Card
     title="dbt Semantic Layer*"
     body="Use the dbt Semantic Layer to define metrics alongside your dbt models and query them from any integrated analytics tool. Get the same answers everywhere, every time."
-    link="/docs/use-dbt-semantic-layer/dbt-semantic-layer"
+    link="/docs/use-dbt-semantic-layer/dbt-sl"
     icon="pencil-paper"/>  
 
    <Card

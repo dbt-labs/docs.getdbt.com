@@ -79,12 +79,6 @@ A `unique_key` enables updating existing rows instead of just appending new rows
 
 Not specifying a `unique_key` will result in append-only behavior, which means dbt inserts all rows returned by the model's SQL into the preexisting target table without regard for whether the rows represent duplicates.
 
-<VersionBlock lastVersion="1.0">
-
-The optional `unique_key` parameter specifies a field that can uniquely identify each row within your model. You can define `unique_key` in a configuration block at the top of your model. If your model doesn't contain a single field that is unique, but rather a combination of columns, we recommend that you create a single column that can serve as a unique identifier (by concatenating and hashing those columns), and pass it into your model's configuration.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.1">
 
 The optional `unique_key` parameter specifies a field (or combination of fields) that define the grain of your model. That is, the field(s) identify a single unique row. You can define `unique_key` in a configuration block at the top of your model, and it can be a single column name or a list of column names.
@@ -395,7 +389,7 @@ models:
       cluster_by: ['session_start']  
       incremental_strategy: merge
       # this limits the scan of the existing table to the last 7 days of data
-      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"]
+      incremental_predicates: ["DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"]
       # `incremental_predicates` accepts a list of SQL statements. 
       # `DBT_INTERNAL_DEST` and `DBT_INTERNAL_SOURCE` are the standard aliases for the target table and temporary table, respectively, during an incremental run using the merge strategy. 
 ```
@@ -412,7 +406,7 @@ Alternatively, here are the same same configurations configured within a model f
     cluster_by = ['session_start'],  
     incremental_strategy = 'merge',
     incremental_predicates = [
-      "DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)"
+      "DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)"
     ]
   )
 }}
@@ -430,7 +424,7 @@ merge into <existing_table> DBT_INTERNAL_DEST
         DBT_INTERNAL_DEST.id = DBT_INTERNAL_SOURCE.id
         and
         -- custom predicate: limits data scan in the "old" data / existing table
-        DBT_INTERNAL_DEST.session_start > datediff(day, -7, current_date)
+        DBT_INTERNAL_DEST.session_start > dateadd(day, -7, current_date)
     when matched then update ...
     when not matched then insert ...
 ```

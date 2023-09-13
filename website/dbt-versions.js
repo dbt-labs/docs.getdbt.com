@@ -2,7 +2,6 @@ exports.versions = [
   {
     version: "1.6",
     EOLDate: "2024-07-31",
-    isPrerelease: true
   },
   {
     version: "1.5",
@@ -23,10 +22,6 @@ exports.versions = [
   {
     version: "1.1",
     EOLDate: "2023-04-28",
-  },
-  {
-    version: "1.0",
-    EOLDate: "2022-12-03"
   },
 ]
 
@@ -186,7 +181,7 @@ exports.versionedPages = [
   {
     "page": "docs/build/ratio",
     "firstVersion": "1.6",
-  },
+  }
 ]
 
 exports.versionedCategories = [
