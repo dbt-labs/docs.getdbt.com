@@ -14,7 +14,6 @@ We'd like to recognize all of the docs and support from our partner team, Develo
 
 We'd also like to give a special thanks to the 22 community members who contributed to the [dbt Product docs](https://docs.getdbt.com) for the first time :pray: 
 
-Based on YOUR feedback, we made these changes: 
 - Added a [permissions table](/docs/cloud/manage-access/enterprise-permissions) for Enterprise accounts
 - Added a [browser session page](/docs/cloud/about-cloud/browsers#browser-sessions) that clarifies dbt Cloud’s browser session time and when it logs users off.
 	
