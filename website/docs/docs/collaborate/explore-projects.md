@@ -139,4 +139,4 @@ An example of the details you might get for each source table within a source co
 - **Description** &mdash; A description of the source.
 - **Source freshness** &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
 - **Details** &mdash; Details like database, schema, and more.
-- **Relationships** &mdash;— A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
+- **Relationships** &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
