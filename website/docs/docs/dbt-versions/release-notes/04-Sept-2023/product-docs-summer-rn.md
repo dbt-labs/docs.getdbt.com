@@ -19,7 +19,8 @@ We'd also like to give a special thanks to the 22 community members who contribu
 	- Added a [browser session page](/docs/cloud/about-cloud/browsers#browser-sessions) that clarifies dbt Cloud’s browser session time and when it logs users off.<br />
 	
       You can provide feedback by opening a pull request or issue in [our repo](https://github.com/dbt-labs/docs.getdbt.com) or reaching out in the dbt community Slack channel [#dbt-product-docs](https://getdbt.slack.com/archives/C0441GSRU04)).
-	
+
+We also made the following changes this summer:
 * Added the ability to collapse sections you’re not currently looking at. There were quite a few people who wanted this, and it bugged us too, so we were happy to get this shipped!
 * Introduced the idea of [“Trusted” adapters](/docs/supported-data-platforms#types-of-adapters).
 
