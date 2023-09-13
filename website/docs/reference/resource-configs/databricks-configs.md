@@ -7,6 +7,21 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
+<VersionBlock lastVersion="1.5">
+
+| Option              | Description                                                                                                                                                                                                        | Required?                               | Example        |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|----------------|
+| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                | `delta`        |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                | `/mnt/root`    |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                | `date_day`     |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                | `date_day`     |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                | `country_code` |
+| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | `8`            |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+ 
 | Option              | Description                                                                                                                                                                                                        | Required?                               | Model Support | Example        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|----------------|
 | file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                | SQL, Python   | `delta`        |
@@ -15,6 +30,8 @@ When materializing a model as `table`, you may include several optional configs 
 | liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                | SQL           | `date_day`     |
 | clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                | SQL, Python   | `country_code` |
 | buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | SQL, Python   | `8`            |
+
+</VersionBlock>
 
 ## Incremental models
 
