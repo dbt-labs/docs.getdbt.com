@@ -13,7 +13,7 @@ To display the details about your [project state](/docs/dbt-cloud-apis/project-s
 - To view test results, you must run `dbt test` or `dbt build` within a job in the environment.
 - To view source freshness check results, you must run `dbt source freshness` within a job in the environment.
 
-The need to run these commands will diminish and richer, more timely metadata will become available as the Discovery API and its underlying platform evolve.
+The need to run these commands will diminish, and richer, more timely metadata will become available as the Discovery API and its underlying platform evolve.
 
 :::tip Join the beta
 
