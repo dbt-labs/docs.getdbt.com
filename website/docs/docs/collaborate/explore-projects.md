@@ -28,7 +28,7 @@ If you’re interested in joining the beta, please contact your account team.
 - You have a [multi-tenant](/docs/cloud/about-cloud/tenancy#multi-tenant) or AWS single-tenant dbt Cloud account on the [Team or Enterprise plan](https://www.getdbt.com/pricing/).
 - You have set up a [production deployment environment](/docs/deploy/deploy-environments#set-as-production-environment-beta) for each project you want to explore.
     - There has been at least one successful job run in the production deployment environment.
-- You are on the dbt Explorer page.
+- You are on the dbt Explorer page. This requires the feature to be enabled for your account. 
     - To go to the page, select **Explore (Beta)** from the top navigation bar in dbt Cloud.
 
 ## Explore the project’s lineage
@@ -49,7 +49,7 @@ To interact with the lineage graph, you can:
 - [View resource details](#view-resource-details) by selecting a node in the graph (double-clicking).
 
 
-<Lightbox src="/img/docs/collaborate/dbt-explorer/lineage-v1.gif" title="Explore the lineage graph" />
+<Lightbox src="/img/docs/collaborate/dbt-explorer/lineage-v1.gif" width="%" title="Explore the lineage graph" />
 
 
 ## Search for resources {#search-resources}
@@ -100,43 +100,43 @@ You can view the definition and latest run results of any resource in your proje
 
 An example of the details you might get for a model:
 
-- **General** — The model’s lineage graph that you can interact with.
-- **Code** — The source code and compiled code for the model.
-- **Columns** — The available columns in the model.
-- **Description** — A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
-- **Recent** — Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
-- **Tests** — [Tests](/docs/build/tests) for the model.
-- **Details** — Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
-- **Relationships** — The nodes the model **Depends On** and is **Referenced by.**
+- **General** &mdash; The model’s lineage graph that you can interact with.
+- **Code** &mdash; The source code and compiled code for the model.
+- **Columns** &mdash; The available columns in the model.
+- **Description** &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
+- **Recent** &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
+- **Tests** &mdash; [Tests](/docs/build/tests) for the model.
+- **Details** &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
+- **Relationships** &mdash; The nodes the model **Depends On** and is **Referenced by.**
 
 ### Example of exposure details
 
 An example of the details you might get for an exposure:
 
-- **Status** — The status on data freshness and data quality.
-- **Lineage** — The exposure’s lineage graph.
-- **Description** — A description of the exposure.
-- **Details** — Details like exposure type, maturity, owner information, and more.
-- **Relationships** — The nodes the exposure **Depends On**.
+- **Status** &mdash; The status on data freshness and data quality.
+- **Lineage** &mdash; The exposure’s lineage graph.
+- **Description** &mdash; A description of the exposure.
+- **Details** &mdash; Details like exposure type, maturity, owner information, and more.
+- **Relationships** &mdash; The nodes the exposure **Depends On**.
 
 ### Example of test details
 
 An example of the details you might get for a test:
 
-- **General** — The test’s lineage graph that you can interact with.
-- **Code** — The source code and compiled code for the test.
-- **Description** — A description of the test.
-- **Recent** — Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
-- **Details** — Details like schema, severity, package, and more.
-- **Relationships** — The nodes the test **Depends On**.
+- **General** &mdash; The test’s lineage graph that you can interact with.
+- **Code** &mdash; The source code and compiled code for the test.
+- **Description** &mdash; A description of the test.
+- **Recent** &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
+- **Details** &mdash; Details like schema, severity, package, and more.
+- **Relationships** &mdash; The nodes the test **Depends On**.
 
 ### Example of source details
 
 An example of the details you might get for each source table within a source collection:
 
-- **General** — The source’s lineage graph that you can interact with.
-- **Columns** — The available columns in the source.
-- **Description** — A description of the source.
-- **Source freshness** — Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
-- **Details** — Details like database, schema, and more.
-- **Relationships** — A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
+- **General** &mdash; The source’s lineage graph that you can interact with.
+- **Columns** &mdash; The available columns in the source.
+- **Description** &mdash; A description of the source.
+- **Source freshness** &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
+- **Details** &mdash; Details like database, schema, and more.
+- **Relationships** &mdash;— A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
