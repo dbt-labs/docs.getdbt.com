@@ -15,8 +15,8 @@ We'd like to recognize all of the docs and support from our partner team, Develo
 What a busy summer! We merged 256 PRs between July 1st and August 31. We’d like to thank the 22 community members who contributed to the [dbt Product docs](https://docs.getdbt.com) for the 1st time :pray: 
 
 * Based on YOUR feedback, we made the following changes: 
-	- [Permissions table](/docs/cloud/manage-access/enterprise-permissions) for Enterprise accounts
-	- [Browser session page](/docs/cloud/about-cloud/browsers#browser-sessions) that clarifies dbt Cloud’s browser session time and when it logs users off.<br />
+	- Added a [permissions table](/docs/cloud/manage-access/enterprise-permissions) for Enterprise accounts
+	- Added a [browser session page](/docs/cloud/about-cloud/browsers#browser-sessions) that clarifies dbt Cloud’s browser session time and when it logs users off.<br />
 	
 	You can reach us most directly by opening a pull request or issue in [our repo](https://github.com/dbt-labs/docs.getdbt.com) or reaching out in the dbt community Slack channel [#dbt-product-docs](https://getdbt.slack.com/archives/C0441GSRU04)).
 	
