@@ -163,9 +163,14 @@ my-snowflake-db:
 
 ### SSO Authentication
 
-To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. `authenticator` can be one of 'externalbrowser' or a valid Okta URL.
+To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
+`authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
 
-#### Via `externalbrowser`:
+Refer to the following tabs for more info and examples:
+
+<Tabs>
+<TabItem value="externalbrowser" label="externalbrowser">
+
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -174,15 +179,15 @@ my-snowflake-db:
   outputs:
     dev:
       type: snowflake
-      account: [account id] #Snowflake <account_name>
-      user: [username] #Snowflake user name
-      role: [user role] #Snowflake user role
+      account: [account id] # Snowflake <account_name>
+      user: [username] # Snowflake username
+      role: [user role] # Snowflake user role
 
       # SSO config
       authenticator: externalbrowser
 
-      database: [database name] #Snowflake DB name
-      warehouse: [warehouse name] #Snowflake WH name
+      database: [database name] # Snowflake database name
+      warehouse: [warehouse name] # Snowflake warehouse name
       schema: [dbt schema]
       threads: [between 1 and 8]
       client_session_keep_alive: False
@@ -198,7 +203,10 @@ my-snowflake-db:
 
 </File>
 
-#### Via Okta URL:
+</TabItem>
+
+<TabItem value="oktaurl" label="Okta URL">
+
 <File name='~/.dbt/profiles.yml'>
 
 ```yaml
@@ -207,17 +215,17 @@ my-snowflake-db:
   outputs:
     dev:
       type: snowflake
-      account: [account id] #Snowflake <account_name>
-      user: [username] #Snowflake user name
-      role: [user role] #Snowflake user role
+      account: [account id] # Snowflake <account_name>
+      user: [username] # Snowflake username
+      role: [user role] # Snowflake user role
 
-      # SSO config (all three fields below are REQUIRED)
+      # SSO config -- The three following fields are REQUIRED
       authenticator: [Okta account URL]
       username: [Okta username]
       password: [Okta password]
 
-      database: [database name] #Snowflake DB name
-      warehouse: [warehouse name] #Snowflake WH name
+      database: [database name] # Snowflake database name
+      warehouse: [warehouse name] # Snowflake warehouse name
       schema: [dbt schema]
       threads: [between 1 and 8]
       client_session_keep_alive: False
@@ -233,7 +241,12 @@ my-snowflake-db:
 
 </File>
 
-**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication). See [the Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for how to enable this feature in your account.
+</TabItem>
+</Tabs>
+
+**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
+
+Refer to  Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for how to enable this feature in your account.
 
 ## Configurations
 
