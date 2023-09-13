@@ -56,9 +56,9 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 
 | name | name format | value | description |
 | ---- | ----------- | ----- | ----------- |
-| email | Unspecified | ${user.email} | The user's email address |
-| first_name | Unspecified | ${user.first_name} | The user's first name |
-| last_name | Unspecified | ${user.last_name} | The user's last name |
+| email | Unspecified | user.email | The user's email address |
+| first_name | Unspecified | user.first_name | The user's first name |
+| last_name | Unspecified | user.last_name | The user's last name |
 
 dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
@@ -154,9 +154,9 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
 
    | Name           | Name format | Value                | Description                |
    | -------------- | ----------- | -------------------- | -------------------------- |
-   | `email`        | Unspecified | `${user.email}`      | _The user's email address_ |
-   | `first_name`   | Unspecified | `${user.firstName}`  | _The user's first name_    |
-   | `last_name`    | Unspecified | `${user.lastName}`   | _The user's last name_     |
+   | `email`        | Unspecified | `user.email`      | _The user's email address_ |
+   | `first_name`   | Unspecified | `user.firstName`  | _The user's first name_    |
+   | `last_name`    | Unspecified | `user.lastName`   | _The user's last name_     |
 
 4. The following table illustrates expected **Group Attribute Statements**:
 
@@ -380,6 +380,7 @@ We recommend using the following values:
 
 | name | name format | value |
 | ---- | ----------- | ----- |
+| NameID | Unspecified | Email |
 | email | Unspecified | Email |
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |
