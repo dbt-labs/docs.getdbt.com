@@ -4,7 +4,7 @@ id: "product-docs-summer"
 description: "Summer 2023: The Product docs team merged 256 PRs, made various updates to dbt Cloud and Core, such as adding What's New, writing Semantic Layer beta docs, releasing dbt 1.6 docs, and more!"
 sidebar_label: "Update: Product docs changes"
 tags: [July-2023, Aug-2023, product-docs]
-date: 2023-09-12
+date: 2023-09-13
 sidebar_position: 09
 ---
 
