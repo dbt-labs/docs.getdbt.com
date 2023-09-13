@@ -4,7 +4,7 @@ description: "Read this guide to learn about the DuckDB warehouse setup in dbt."
 meta:
   maintained_by: Community
   authors: 'Josh Wills (https://github.com/jwills)'
-  github_repo: 'jwills/dbt-duckdb'
+  github_repo: 'duckdb/dbt-duckdb'
   pypi_package: 'dbt-duckdb'
   min_core_version: 'v1.0.1'
   cloud_support: Not Supported
