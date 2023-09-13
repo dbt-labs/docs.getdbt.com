@@ -20,7 +20,7 @@ What a busy summer! We merged 256 PRs between July 1st and August 31. We’d lik
 	
 	You can reach us most directly by opening a pull request or issue in [our repo](https://github.com/dbt-labs/docs.getdbt.com) or reaching out in the dbt community Slack channel [#dbt-product-docs](https://getdbt.slack.com/archives/C0441GSRU04)).
 	
-* The docs site now collapses sections you’re not currently looking at. There were quite a few people who wanted this, and it bugged us too, so we were happy to get this shipped!
+* Added the ability to collapse sections you’re not currently looking at. There were quite a few people who wanted this, and it bugged us too, so we were happy to get this shipped!
 * Introduced the idea of [“Trusted” adapters](/docs/supported-data-platforms#types-of-adapters).
 
 ## ☁ Cloud projects
