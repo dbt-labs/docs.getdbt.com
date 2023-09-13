@@ -80,7 +80,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="pencil-paper"/> 
 
 <Card
-    title="dbt Explorer"
+    title="dbt Explorer*"
     body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
     link="/docs/collaborate/explore-projects"
     icon="pencil-paper"/> 

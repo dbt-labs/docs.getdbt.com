@@ -9,9 +9,9 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 To display the details about your [project state](/docs/dbt-cloud-apis/project-state), dbt Explorer utilizes the metadata provided through the [Discovery API](/docs/dbt-cloud-apis/discovery-api). The metadata that's available on your project depends on the [deployment environment](/docs/deploy/deploy-environments) you've designated as _production_ in your dbt Cloud project. dbt Explorer automatically retrieves the metadata updates after each job run in the production deployment environment so it will always have the latest state on your project. The metadata it displays depends on the [commands executed by the jobs](/docs/deploy/job-commands). For instance:
 
 - To update model details or results, you must run `dbt run` or `dbt build` on a given model within a job in the environment.
-- To view catalog statistics and columns, you must run `docs generate` within a job in the environment.
+- To view catalog statistics and columns, you must run `dbt docs generate` within a job in the environment.
 - To view test results, you must run `dbt test` or `dbt build` within a job in the environment.
-- To view source freshness check results, you must run `source freshness` within a job in the environment.
+- To view source freshness check results, you must run `dbt source freshness` within a job in the environment.
 
 The need to run these commands will diminish and richer, more timely metadata will become available as the Discovery API and its underlying platform evolve.
 
