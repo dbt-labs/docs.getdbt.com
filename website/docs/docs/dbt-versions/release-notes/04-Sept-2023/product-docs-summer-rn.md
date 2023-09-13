@@ -12,7 +12,7 @@ Hello from dbt's Product Documentation team (the stewards of the docs.getdbt.com
 
 We'd like to recognize all of the docs and support from our partner team, Developer Experience: @jasnonaz @gwenwindflower @dbeatty10 @dataders @joellabes @Jstein77 @dave-connors-3! 
 
-We'd also like to give a special thanks to the 22 community members who contributed to the [dbt Product docs](https://docs.getdbt.com) for the 1st time :pray: 
+We'd also like to give a special thanks to the 22 community members who contributed to the [dbt Product docs](https://docs.getdbt.com) for the first time :pray: 
 
 * Based on YOUR feedback, we made the following changes: 
 	- Added a [permissions table](/docs/cloud/manage-access/enterprise-permissions) for Enterprise accounts
