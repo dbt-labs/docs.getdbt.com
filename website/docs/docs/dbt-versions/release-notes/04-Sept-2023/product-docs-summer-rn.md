@@ -12,7 +12,7 @@ Hello from dbt's Product Documentation team (the stewards of the docs.getdbt.com
 
 We'd like to recognize all of the docs and support from our partner team, Developer Experience: @jasnonaz @gwenwindflower @dbeatty10 @dataders @joellabes @Jstein77 @dave-connors-3! 
 
-What a busy summer! We merged 256 PRs between July 1st and August 31. We’d like to thank the 22 community members who contributed to the [dbt Product docs](https://docs.getdbt.com) for the 1st time :pray: Here's what's new:
+What a busy summer! We merged 256 PRs between July 1st and August 31. We’d like to thank the 22 community members who contributed to the [dbt Product docs](https://docs.getdbt.com) for the 1st time :pray: 
 
 * Based on YOUR feedback, we've made the following changes: 
 	- [Permissions table](/docs/cloud/manage-access/enterprise-permissions) for Enterprise accounts
