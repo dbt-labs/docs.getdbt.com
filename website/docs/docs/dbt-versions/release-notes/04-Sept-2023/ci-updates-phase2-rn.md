@@ -1,9 +1,9 @@
 ---
 title: "Update: Improvements to dbt Cloud continuous integration"
-description: "September 2023: dbt Cloud now has two types of jobs &mdash; deploy jobs and CI jobs &mdash; with streamlined setup and improved efficiency. "
+description: "September 2023: dbt Cloud now has two types of jobs -- deploy jobs and CI jobs -- with streamlined setup and improved efficiency. "
 sidebar_label: "Update: Improvements to dbt jobs"
 tags: [Sept-2023, CI]
-date: 2023-09-11
+date: 2023-09-15
 sidebar_position: 10
 ---
 
@@ -13,7 +13,7 @@ With two types of jobs, instead of one generic type, we can better guide you thr
 
 <Lightbox src="/img/docs/release-notes/ci-job-setup.gif" title="Example of setting up a CI job"/>
 
-And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the Git PR code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration) and [Get started with continuous integration tests](/guides/orchestration/set-up-ci/overview).
+And, we now have more efficient state comparisons on CI checks: never waste a build or test on code that hasn’t been changed. We now diff between the Git PR code and what’s running in production more efficiently with the introduction of deferral to an environment versus a job. To learn more, refer to [Continuous integration in dbt Cloud](/docs/deploy/continuous-integration). 
 
 Below is a comparison table that describes how deploy jobs and CI jobs behave differently:
 
@@ -29,4 +29,8 @@ Below is a comparison table that describes how deploy jobs and CI jobs behave di
 
 ## What you need to update
 
-If you previously set up a job using the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint before September 11, 2023, you must re-create the job as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api). This is because you must set the `job_type` to be `ci`. 
+- If you want to set up a CI environment for your jobs, dbt Labs recommends that you create your CI job in a dedicated [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) that's connected to a staging database. To learn more about these environment best practices, refer to the guide [Get started with continuous integration tests](/guides/orchestration/set-up-ci/overview).
+
+- If you previously set up a job using the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint before September 11, 2023, you must re-create the job as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api). This is because you must set the `job_type` to be `ci`. 
+
+- If you previously set up a job using dbt Cloud before September 11, 2023, you must re-create the job as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs) and make sure to enable the option **Triggered by pull requests**.  
