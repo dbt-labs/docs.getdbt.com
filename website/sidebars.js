@@ -241,7 +241,7 @@ const sidebarSettings = {
             },
             "docs/build/snapshots",
             "docs/build/seeds",
-            "docs/build/tests",
+            "docs/build/data-tests",
             "docs/build/jinja-macros",
             "docs/build/sources",
             "docs/build/exposures",
@@ -298,6 +298,7 @@ const sidebarSettings = {
           items: [
             "docs/build/materializations",
             "docs/build/incremental-models",
+            "docs/build/unit-tests"
           ],
         },
         {
@@ -639,7 +640,7 @@ const sidebarSettings = {
             "reference/resource-properties/latest_version",
             "reference/resource-properties/include-exclude",
             "reference/resource-properties/quote",
-            "reference/resource-properties/tests",
+            "reference/resource-properties/data-tests",
             "reference/resource-properties/versions",
           ],
         },
@@ -701,7 +702,7 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "For tests",
+          label: "For data tests",
           items: [
             "reference/test-configs",
             "reference/resource-configs/fail_calc",
