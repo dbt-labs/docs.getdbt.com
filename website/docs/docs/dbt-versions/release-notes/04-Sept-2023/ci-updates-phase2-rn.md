@@ -25,3 +25,8 @@ Below is a comparison table that describes how deploy jobs and CI jobs behave di
 | Execution mode | Runs execute sequentially, so as to not have collisions on the underlying DAG. | Runs execute in parallel to promote team velocity. |
 | Efficiency run savings | Detects over-scheduled jobs and cancels unnecessary runs to avoid queue clog. | Cancels existing runs when a newer commit is pushed to avoid redundant work. |
 | State comparison | Only sometimes needs to detect state. | Almost always needs to compare state against the production environment to build on modified code and its dependents. |
+
+
+## What you need to update
+
+If you previously set up a job using the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint before September 11, 2023, you must re-create the job as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api). This is because you must set the `job_type` to be `ci`. 
