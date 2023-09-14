@@ -6,14 +6,6 @@ description: "Learn how to create and set up CI checks to test code changes befo
 
 You can set up [continuous integration](/docs/deploy/continuous-integration) (CI) jobs to run when someone opens a new pull request (PR) in your dbt Git repository. By running and testing only _modified_ models, dbt Cloud ensures these jobs are as efficient and resource conscientious as possible on your data platform.
 
-:::tip Join our beta 
-
-dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs) on this page.
-
-If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
-
-:::
-
 
 ## Set up CI jobs {#set-up-ci-jobs}
 
@@ -26,23 +18,6 @@ dbt Labs recommends that you create your CI job in a dedicated dbt Cloud [deploy
     - If you’re using GitLab, you must use a paid or self-hosted account which includes support for GitLab webhooks.
     - If you previously configured your dbt project by providing a generic git URL that clones using SSH, you must reconfigure the project to connect through dbt Cloud's native integration.
 
-<Tabs queryString="version">
-<TabItem value="current" label="Current version" default>
-
-1. On your deployment environment page, click **Create One** to create a new CI job.
-2. In the **Execution Settings** section: 
-    - For the option **Defer to a previous run state**, choose whichever production job that's set to run often. If you don't see any jobs to select from the dropdown, you first need to run a production job successfully. Deferral tells dbt Cloud to compare the manifest of the current CI job against the project representation that was materialized the last time the deferred job was run successfully. By setting this option, dbt Cloud only checks the modified code and compares the changes against what’s running in production, instead of building the full table or the entire DAG.
-
-    <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-deferral.png" width="70%" title="Example of the dropdown for Defer to a previous run state"/>
-
-    - For the option **Commands**, enter `dbt build --select state:modified+` in the field. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred job selected to compare state to.
-
-
-3. In the **Triggers** section, choose the **Continuous Integration** (CI) tab. Then, enable the **Run on Pull Requests** option. This configures pull requests and new commits to be a trigger for the CI job.
-
-</TabItem>
-
-<TabItem value="beta" label="Beta version">
 
 To make CI job creation easier, many options on the **CI job** page are set to default values that dbt Labs recommends that you use. If you don't want to use the defaults, you can change them.
 
@@ -74,10 +49,6 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Run source freshness** &mdash; Enable this option to invoke the `dbt source freshness` command before running this CI job. Refer to [Source freshness](/docs/deploy/source-freshness) for more details.
 
     <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/ci-job-adv-settings.png" width="90%" title="Example of Advanced Settings on the CI Job page"/>
-
-</TabItem>
-
-</Tabs>
 
 
 ## Trigger a CI job with the API
