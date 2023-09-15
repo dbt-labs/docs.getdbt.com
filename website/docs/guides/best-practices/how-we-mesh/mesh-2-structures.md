@@ -6,15 +6,22 @@ hoverSnippet: Learn how to get started with dbt Mesh
 
 ## Exploring mesh patterns
 
-Building a mesh is not a one-size-fits-all process. In fact, it's the opposite, it's about customizing your project structure to fit _your_ team and _your_ data. Often we've had to fit the data team and project structure into our company's org chart, or manage everything in one project to handle the constraints of our data and warehouse. dbt Mesh allows us to mold our organizational knowledge graph to our organizational people graph, bringing people and data closer together rather than compromising one for the other.
+Building a dbt Mesh is not a one-size-fits-all process. In fact, it's the opposite, it's about customizing your project structure to fit _your_ team and _your_ data. Often we've had to fit the data team and project structure into our company's org chart, or manage everything in one project to handle the constraints of our data and warehouse. dbt Mesh allows us to mold our organizational knowledge graph to our organizational people graph, bringing people and data closer together rather than compromising one for the other. Let's explore some language for discussing the design of these patterns.
 
 ## Vertical splits
 
-Vertical splits are about separating out layers of transformation in the DAG order. For example, splitting up staging and mart layers. Often the vertical separation will be based around security and governance requirements, such as separating out PII data from non-PII data and restricting raw data access to a platform team that's responsible for landing and cleaning data.
+Vertical splits are about separating out layers of transformation in the DAG order. Let's look at some examples.
+
+- **Splitting up staging and mart layers.** Creating a more tightly-controlled, shared set of components that other projects build on but can't edit.
+- **Isolating earlier models for security and governance requirements.** Separating out and masking PII data so that downstream consumers can't access it is a common use case for a vertical split.
+- **Protecting complex or expensive data.** If you have a large or complex model that's expensive to run, you might want to isolate it so that it's safer from accidental selection and easier to debug when it has issues.
 
 ## Horizontal splits
 
-Horizonal splits are about splitting up the data based on source or domain. Often the horizontal separation will be based around team consumption patterns, such as splitting out marketing data and financial data. Another common vector of horizontal splitting is data from different sources, such as click event data and transactional ecommerce data. These splits are often based around the shape and size of the data and how it's used, rather than the security or governance requirements.
+Horizonal splits are about splitting up the data based on source or domain. Let's consider some possibilites for horizontal splitting.
+
+- Often the horizontal separation will be based around team consumption patterns, such as splitting out marketing data and financial data.
+- Another common vector of horizontal splitting is data from different sources, such as click event data and transactional ecommerce data. These splits are often based around the shape and size of the data and how it's used, rather than the security or governance requirements.
 
 ## Combining these divisions
 

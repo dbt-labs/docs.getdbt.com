@@ -10,26 +10,26 @@ Historically, building data teams has involved two extremes, building a centrali
 
 dbt Mesh is not a product, but a pattern, enabled a convergence of several features in dbt Cloud. It’s inspired by dbt’s best practices and ideas from [data mesh](https://en.wikipedia.org/wiki/Data_mesh). These features include:
 
-- Cross-project references - this is the core feature that enables a mesh structure. `ref`s now work across projects in dbt Cloud-enabled projects on Enterprise plans.
-- Governance - dbt Cloud’s new governance features allow you to manage access and permissions across projects.
-  - Groups - groups allow you to assign models to subsets of models within a project.
-  - Access - access configs allow you to control who can view and reference models both within and across projects.
-- Versioning - building a dbt Mesh involves treating your data models as stable APIs. To achieve this you need mechanisms to version your models and allow graceful adoption and deprecation of models as they evolve.
-- Contracts - data contracts set strict expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers.
+- **Cross-project references** - this is the core feature that enables a mesh structure. `ref`s now work across projects in dbt Cloud-enabled projects on Enterprise plans.
+- **Governance** - dbt Cloud’s new governance features allow you to manage access and permissions across projects.
+  - **Groups** - groups allow you to assign models to subsets of models within a project.
+  - **Access** - access configs allow you to control who can view and reference models both within and across projects.
+- **Versioning** - building a dbt Mesh involves treating your data models as stable APIs. To achieve this you need mechanisms to version your models and allow graceful adoption and deprecation of models as they evolve.
+- **Contracts** - data contracts set strict expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream consumers.
 
 ## Who is dbt Mesh for?
 
 dbt Mesh is not for every organization! If you're just starting your dbt journey, don't worry about building a dbt Mesh right away, it increases some meta-complexity around managing your projects that could distract from building initial value in dbt. However, if you're already using dbt and your project has started to experience any of the following, you're likely ready to start exploring a dbt Mesh:
 
-- The number of models in your project is degrading performance and slowing down development.
-- Teams have developed separate workflows and need to decouple development.
-- Security and governance requirements are increasing and would benefit from increased isolation.
+- **The number of models** in your project is degrading performance and slowing down development.
+- Teams have developed **separate workflows** and need to decouple development.
+- **Security and governance** requirements are increasing and would benefit from increased isolation.
 
 dbt Cloud is designed to coordinate the features above and simplify the meta-complexities (such as scoped CI and multi-project lineage) to solve for these problems.
 
 ## Learning goals
 
-- Understand the purpose and tradeoffs of building a dbt Mesh.
-- Develop an intuition for various dbt Mesh patterns and how to design a dbt Mesh for your organization.
-- Establish recommended steps to incrementally adopt a dbt Mesh pattern in your dbt implementation.
-- Offer tooling to help you more quickly and easily implement your dbt Mesh plan.
+- Understand the **purpose and tradeoffs** of building a dbt Mesh.
+- Develop an intuition for various **dbt Mesh patterns** and how to design a dbt Mesh for your organization.
+- Establish recommended steps to **incrementally adopt** a dbt Mesh pattern in your dbt implementation.
+- Offer **tooling** to help you more quickly and easily implement your dbt Mesh plan.

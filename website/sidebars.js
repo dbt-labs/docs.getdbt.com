@@ -266,7 +266,7 @@ const sidebarSettings = {
                 "docs/build/validation",
                 "docs/build/metricflow-time-spine",
                 "docs/build/metricflow-cli",
-              ]
+              ],
             },
             {
               type: "category",
@@ -275,8 +275,8 @@ const sidebarSettings = {
               items: [
                 "docs/build/dimensions",
                 "docs/build/entities",
-                "docs/build/measures"
-              ]
+                "docs/build/measures",
+              ],
             },
             {
               type: "category",
@@ -287,7 +287,7 @@ const sidebarSettings = {
                 "docs/build/derived",
                 "docs/build/ratio",
                 "docs/build/simple",
-              ]
+              ],
             },
           ],
         },
@@ -463,7 +463,10 @@ const sidebarSettings = {
                 {
                   type: "category",
                   label: "Job",
-                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-job" },
+                  link: {
+                    type: "doc",
+                    id: "docs/dbt-cloud-apis/discovery-schema-job",
+                  },
                   items: [
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
                     "docs/dbt-cloud-apis/discovery-schema-job-models",
@@ -486,7 +489,10 @@ const sidebarSettings = {
                 {
                   type: "category",
                   label: "Environment",
-                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
+                  link: {
+                    type: "doc",
+                    id: "docs/dbt-cloud-apis/discovery-schema-environment",
+                  },
                   items: [
                     {
                       type: "category",
@@ -925,7 +931,20 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Materializations best practices",
+          label: "How we build our dbt Mesh projects",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/how-we-mesh/mesh-1-intro",
+          },
+          items: [
+            "guides/best-practices/how-we-mesh/mesh-2-structures",
+            "guides/best-practices/how-we-mesh/mesh-3-implementation",
+            "guides/best-practices/how-we-mesh/mesh-4-conclusion",
+          ],
+        },
+        {
+          type: "category",
+          label: "Materialization best practices",
           link: {
             type: "doc",
             id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
