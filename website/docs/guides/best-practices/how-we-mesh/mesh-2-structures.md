@@ -18,20 +18,22 @@ Vertical splits are about separating out layers of transformation in the DAG ord
 
 ## Horizontal splits
 
-Horizonal splits are about splitting up the data based on source or domain. Let's consider some possibilites for horizontal splitting.
+Horizonal splits are about splitting up the data based on source or domain. These splits are often based around the shape and size of the data and how it's used, rather than the security or governance requirements. Let's consider some possibilites for horizontal splitting.
 
-- Often the horizontal separation will be based around team consumption patterns, such as splitting out marketing data and financial data.
-- Another common vector of horizontal splitting is data from different sources, such as click event data and transactional ecommerce data. These splits are often based around the shape and size of the data and how it's used, rather than the security or governance requirements.
+- **Team consumption patterns.** For example, splitting out marketing data and financial data.
+- **Data from different sources.** For example, click event data and transactional ecommerce data.
+- **Team workflows.** If two embedded groups operate in different project management tools at different paces, or are staffed differently, you may want to split the projects up so they can move independently.
 
 ## Combining these divisions
 
-- These are not either/or techniques, you can and should combine them in any way that makes sense for your organization.
-
-- **DRY applies to underlying data not just code.** Regardless of your split, you should not be sourcing the same rows and columns into multiple meshes. Working within a mesh structure it becomes increasingly important that we don’t duplicate work, which creates surface error for conflicts and erodes the single source of truth we're trying to create in our dbt project.
+- **These are not either/or techniques**. You can and should combine them in any way that makes sense for your organization.
+- **Pick one type of split and focus on that first**. If you have a hub-and-spoke team topology for example, handle breaking out the central platform project before you split the remainder into domains. Then if you need to break those domains up vertically you can shift back to that.
+- **DRY applies to underlying data not just code.** Regardless of your splits, you should not be sourcing the same rows and columns into multiple nodes. Working within a mesh structure it becomes increasingly important that we don’t duplicate work, which creates surface error for conflicts and erodes the single source of truth we're trying to create in our dbt project.
 
 ## Monorepo vs multi-repo
 
-- A dbt Mesh can exist as multiple projects in a single repo (monorepo) or as multiple projects in their own repositories (multi-repo).
-- Monorepos are often easier to get started with, but can become unwieldy as the number of models and teams grow.
-- If you're a smaller team looking primarily to speed up and simplify development, a monorepo is likely the right choice.
-- If you're a larger team with multiple groups, and need to decouple projects for security and enablement of different development styles and rhythms, a multi-repo is your best bet.
+A dbt Mesh can exist as multiple projects in a single repo (monorepo) or as multiple projects in their own repositories (multi-repo).
+
+- **Monorepos are often easier to get started with**, but can become unwieldy as the number of models and teams grow.
+- If you're a **smaller team** looking primarily to speed up and simplify development, a **monorepo** is likely the right choice.
+- If you're a **larger team with multiple groups**, and need to decouple projects for security and enablement of different development styles and rhythms, a **multi-repo setup** is your best bet.
