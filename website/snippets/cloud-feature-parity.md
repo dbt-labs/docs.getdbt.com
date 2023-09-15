@@ -7,7 +7,7 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Audit logs                    | ✅           | ✅                     | ✅                   |  
 | Discovery API                 | ✅           | ✅                     | ❌                   | 
 | Webhooks (Outbound)           | ✅           | ✅                     | ❌                   |
-| Continuous Integration, including CI jobs                       | ✅           | ✅                     | ✅                   | 
+| Continuous Integration, including CI jobs                      | ✅           | ✅                     | ✅                   | 
 | Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
 | IP Restrictions               | ✅           | ✅                     | ✅                   | 
 | PrivateLink egress            | ✅ (AWS only)| ✅                     | ✅                   | 
