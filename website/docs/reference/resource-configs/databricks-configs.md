@@ -35,10 +35,11 @@ When materializing a model as `table`, you may include several optional configs 
 
 ## Incremental models
 
-dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
+dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of four values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (Delta and Hudi file format only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`merge`** (Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`replace_where`** (Delta file format only): Match records based on `incremental_predicates`, replacing all records that match the predicates from the existing table with records matching the predicates from the new data. (If no `incremental_predicates` are specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
@@ -264,6 +265,96 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 
 </TabItem>
 </Tabs>
+
+### The `replace_where` strategy
+
+The `replace_where` incremental strategy requires:
+- `file_format: delta`
+- Databricks Runtime 12.0 and above
+
+dbt will run an [atomic `replace where` statement](https://docs.databricks.com/en/delta/selective-overwrite.html#arbitrary-selective-overwrite-with-replacewhere) which selectively overwrites data matching one or more `incremental_predicates` specified as a string or array.  Only rows matching the predicates will be inserted.  If no `incremental_predicates` are specified, dbt will perform an atomic insert, as with `append`.  
+
+:::caution
+
+`replace_where` inserts data into columns in the order provided, rather than by column name.  If you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column.  If the incoming data is incompatible with the existing schema, you will instead receive an error.
+
+:::
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+]
+}>
+<TabItem value="source">
+
+<File name='replace_where_incremental.sql'>
+
+```sql
+{{ config(
+    materialized='incremental',
+    file_format='delta',
+    incremental_strategy = 'replace_where'
+    incremental_predicates = 'user_id >= 10000' # Never replace users with ids < 10000
+) }}
+
+with new_events as (
+
+    select * from {{ ref('events') }}
+
+    {% if is_incremental() %}
+    where date_day >= date_add(current_date, -1)
+    {% endif %}
+
+)
+
+select
+    user_id,
+    max(date_day) as last_seen
+
+from events
+group by 1
+```
+
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='target/run/replace_where_incremental.sql'>
+
+```sql
+create temporary view replace_where__dbt_tmp as
+
+    with new_events as (
+
+        select * from analytics.events
+
+
+        where date_day >= date_add(current_date, -1)
+
+
+    )
+
+    select
+        user_id,
+        max(date_day) as last_seen
+
+    from events
+    group by 1
+
+;
+
+insert into analytics.replace_where_incremental
+    replace where user_id >= 10000
+    table `replace_where__dbt_tmp`
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
 
 ## Persisting model descriptions
 
