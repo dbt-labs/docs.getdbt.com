@@ -13,12 +13,10 @@ meta:
 - Defining a `where` statement within [incremental models](/docs/build/incremental-models)
 - Using [pre or post hooks](/reference/resource-configs/pre-hook-post-hook)
 
-`this` is a [Relation](/reference/dbt-classes#relation), and as such, properties such as `{{ this.database }}` and `{{ this.schema }}` compile as expected. Refer to [using relation objects](#using-relation-objects) for more examples. 
+`this` is a [Relation](/reference/dbt-classes#relation), and as such, properties such as `{{ this.database }}` and `{{ this.schema }}` compile as expected. 
   - Note &mdash; Starting from dbt v1.6 or higher, `{{ {this.identifier }}` will fetch the identifier (such as table name). Previously it would only return the request.
 
 `this` can be thought of as equivalent to `ref('<the_current_model>')`, and is a neat way to avoid circular dependencies.
-
-
 
 ## Examples
 
