@@ -5,8 +5,8 @@ The following table outlines which dbt Cloud features are supported on the diffe
 | Scheduler                     | ✅           | ✅                     | ✅                   |  
 | Cloud IDE                     | ✅           | ✅                     | ✅                   |  
 | Audit logs                    | ✅           | ✅                     | ✅                   |  
-| Discovery API                 | ✅           | ✅ (select customers)  | ❌                   | 
-| Webhooks (Outbound)           | ✅           | ❌                     | ❌                   |
+| Discovery API                 | ✅           | ✅                     | ❌                   | 
+| Webhooks (Outbound)           | ✅           | ✅                     | ❌                   |
 | Continuous Integration, including CI jobs                       | ✅           | ✅                     | ✅                   | 
 | Semantic Layer                | ✅ (North America Only) | ❌          | ❌                   | 
 | IP Restrictions               | ✅           | ✅                     | ✅                   | 
