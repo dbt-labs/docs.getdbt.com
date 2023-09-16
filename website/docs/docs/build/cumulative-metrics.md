@@ -18,8 +18,8 @@ This metric is common for calculating things like weekly active users, or month-
 | `label` | The value that will be displayed in downstream tools. | Required |
 | `type_params` | The type parameters of the metric. | Required |
 | `measure` | The measure you are referencing. | Required |
-| `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `window`. | Optional  |
-| `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with window. | Optional |
+| `window` | The accumulation window, such as 1 month, 7 days, 1 year. This can't be used with `grain_to_date`. | Optional  |
+| `grain_to_date` | Sets the accumulation grain, such as month will accumulate data for one month. Then restart at the beginning of the next. This can't be used with `window`. | Optional |
 
 The following displays the complete specification for cumulative metrics, along with an example:
 

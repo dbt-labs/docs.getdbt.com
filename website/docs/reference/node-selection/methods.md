@@ -261,11 +261,6 @@ $ dbt seed --select result:error --state path/to/artifacts # run all seeds that 
 ```
 
 ### The "source_status" method
-<VersionBlock lastVersion="1.0">
-
-Supported in v1.1 or newer.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.1">
   

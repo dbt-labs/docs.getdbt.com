@@ -26,16 +26,6 @@ function QuickstartTOC() {
     const steps = quickstartContainer.querySelectorAll("h2");
     const snippetContainer = document.querySelectorAll(".snippet");
 
-    // Add snippet container to its parent step
-    snippetContainer.forEach((snippet) => {
-      const parent = snippet?.parentNode;
-      while (snippet?.firstChild && parent.className) {
-        if (parent) {
-          parent.insertBefore(snippet.firstChild, snippet);
-        }
-      }
-    });
-
     // Create an array of objects with the id and title of each step
     const data = Array.from(steps).map((step, index) => ({
       id: step.id,
@@ -49,6 +39,16 @@ function QuickstartTOC() {
 
     // Wrap all h2 (steps), along with all of their direct siblings, in a div until the next h2
     if (mounted) {
+      // Add snippet container to its parent step
+      snippetContainer.forEach((snippet) => {
+        const parent = snippet?.parentNode;
+        while (snippet?.firstChild && parent.className) {
+          if (parent) {
+            parent.insertBefore(snippet.firstChild, snippet);
+          }
+        }
+      });
+
       steps.forEach((step, index) => {
         const wrapper = document.createElement("div");
         wrapper.classList.add(style.stepWrapper);
