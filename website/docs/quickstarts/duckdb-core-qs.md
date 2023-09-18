@@ -99,10 +99,7 @@ dbt docs serve
 6. Select whether you'd like to use the Web IDE or open the codespace in your local environment.
 7. When the Codespaces opens, a **Task** pane will show up and call `dbt build` to show you how it's done.
 8. (Optional) Install the recommended extensions (like **dbt Power User extension**).
-9. Open up a new terminal and type:
-    ```
-    dbt build
-    ```
+9. Open up a new terminal and type: `dbt build`
 
 </TabItem>
 </Tabs>
