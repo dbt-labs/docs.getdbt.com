@@ -5,7 +5,7 @@ id: macro-properties
 
 import PropsCallout from '/snippets/_config-prop-callout.md';
 
-Macro properties can be declared in any `.yml` file. <PropsCallout title={frontMatter.title}/> 
+Macro properties can be declared in any `properties.yml` file. <PropsCallout title={frontMatter.title}/> 
 
 You can name these files `whatever_you_want.yml` and nest them arbitrarily deep in sub-folders.
 
