@@ -108,7 +108,7 @@ html[data-theme="dark"] {
 }
 
 /* Underline only for links in text body */
-html[data-theme="dark"] main a {
+html[data-theme="dark"] main a:not(article a) {
   text-decoration: underline;
 }
 
