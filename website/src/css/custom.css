@@ -109,10 +109,10 @@ html[data-theme="dark"] {
 }
 
 /* Underline only for links in text body */
-/* html[data-theme="dark"] main a:not(article a) {
+html[data-theme="dark"] main a:not(article a) {
   text-decoration: underline;
-  
-} */
+  --ifm-link-decoration: var(underline)
+}
 
 /* For /dbt-cloud/api REDOC Page */
 html[data-theme="dark"] .api-content h2,
