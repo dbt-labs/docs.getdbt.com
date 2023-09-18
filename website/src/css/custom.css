@@ -105,12 +105,14 @@ html[data-theme="dark"] {
 /* Darkmode Links */
 html[data-theme="dark"] {
   --ifm-link-color: var(--color-white);
+  --ifm-link-decoration: var(underline)
 }
 
 /* Underline only for links in text body */
-html[data-theme="dark"] main a:not(article a) {
+/* html[data-theme="dark"] main a:not(article a) {
   text-decoration: underline;
-}
+  
+} */
 
 /* For /dbt-cloud/api REDOC Page */
 html[data-theme="dark"] .api-content h2,
