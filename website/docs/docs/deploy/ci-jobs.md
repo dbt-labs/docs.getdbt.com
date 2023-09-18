@@ -94,7 +94,7 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
   <summary>Temporary schemas aren't dropping</summary>
   <div>
-    <div>If your temporary schemas aren't dropping after a PR merges or closes, it typically indicates you have overriden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix. To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example: 
+    <div>If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates you have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix. To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example: 
     <br></br>
       • ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>) <br></br>
       • ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
