@@ -248,7 +248,7 @@ Where Filters have a three components that you can use:
 
 - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
--`TimeDimension()` - This is used for all time dimensions and requires a granularity argument - `TimeDimension('metric_time', 'MONTH)`
+- `TimeDimension()` - This is used for all time dimensions and requires a granularity argument - `TimeDimension('metric_time', 'MONTH)`
 
 - `Entity()` - This is used for entities like primary and foreign keys - `Entity('order_id')`
 
@@ -269,7 +269,7 @@ Use the following example to query using a `where` filter with a filter list for
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where=[{{ TimeDimension('metric_time', 'month')}} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
+where=[{{ TimeDimension('metric_time', 'MONTH')}} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
 }}
 ```
 
