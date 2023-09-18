@@ -10,7 +10,6 @@ These classes are often useful when building advanced dbt models and macros.
 
 The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config](/reference/project-configs/quoting).
 
-dbt provides built-in relations, such as [`this`](/reference/dbt-jinja-functions/this), [`source`](/reference/dbt-jinja-functions/source), [`ref`](/reference/dbt-jinja-functions/ref).
 
 ### Creating relations
 
