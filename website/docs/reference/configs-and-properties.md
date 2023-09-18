@@ -3,7 +3,7 @@ title: Configs, properties, what are they?
 ---
 
 Resources in your project—models, snapshots, seeds, tests, and the rest—can have a number of declared **properties**. Resources can also define **configurations**, which are a special kind of property that bring extra abilities. What's the distinction?
-- Properties are declared for resources one-by-one in `.yml` files. Configs can be defined there, nested under a `config` property. They can also be set one-by-one via a `config()` macro (right within `.sql` files), and for many resources at once in `dbt_project.yml`.
+- Properties are declared for resources one-by-one in  `properties.yml` files. Configs can be defined there, nested under a `config` property. They can also be set one-by-one via a `config()` macro (right within `.sql` files), and for many resources at once in `dbt_project.yml`.
 - Because configs can be set in multiple places, they are also applied hierarchically. An individual resource might _inherit_ or _override_ configs set elsewhere.
 - You can select resources based on their config values using the `config:` selection method, but not the values of non-config properties
 
@@ -46,9 +46,7 @@ Most configurations are "clobbered" when applied hierarchically. Whenever a more
 
 ## Where can I define properties?
 
-In dbt, properties are declared in `.yml` files, in the same directory as your resources.
-
-You can name these files `whatever_you_want.yml` and nest them arbitrarily deeply in subfolders within each directory.
+In dbt, you can use `properties.yml` files to define properties for resources. You can declare properties in `.yml` files, in the same directory as your resources. You can name these files `whatever_you_want.yml` and nest them arbitrarily in sub-folders within each directory. 
 
 We highly recommend that you define properties in dedicated paths alongside the resources they're describing.
 
@@ -56,16 +54,15 @@ We highly recommend that you define properties in dedicated paths alongside the 
 
 #### schema.yml files
 
-Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`.
+Previous versions of the docs referred to these as `schema.yml` files — we've moved away from that terminology since the word `schema` is used to mean other things when talking about databases, and people often thought that you _had_ to name these files `schema.yml`. 
 
-(Of course, you're still free to name your files `schema.yml`)
+Instead, we now refer to these files as `properties.yml` files. (Of course, you're still free to name your files `schema.yml`)
 
 :::
 
 ### Which properties are _not_ also configs?
 
-In dbt, you can define node configs in `.yml` files, in addition to `config()` blocks and `dbt_project.yml`. However, some properties are exclusive to `.yml` files. 
-
+In dbt, you can define node configs in `properties.yml` files, in addition to `config()` blocks and `dbt_project.yml`. However, some properties are exclusive to `.yml` files. 
 
 Certain properties are special, because:
 

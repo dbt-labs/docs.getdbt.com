@@ -16,13 +16,13 @@ Each semantic model corresponds to a dbt model in your DAG. Therefore you will h
 
 <VersionBlock firstVersion="1.7">
 
-You can configure semantic models in your dbt project directory in a `YAML` file, _except_ the `dbt_project.yml` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
+You can configure semantic models in your dbt project directory in a [`properties.yml` file](/reference/configs-and-properties#where-can-i-define-properties). Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
 
 </VersionBlock>
 
 <VersionBlock lastVersion="1.6">
 
-You can configure semantic models in your dbt project directory in a `YAML` file, _except_ the `dbt_project.yml` file. <PropsCallout title={frontMatter.title}/> 
+You can configure semantic models in your dbt project directory in a [`.yml` file](/reference/configs-and-properties#where-can-i-define-properties), however, you cannot actually define their properties within the `dbt_project.yml` file. <PropsCallout title={frontMatter.title}/> 
 
 Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources.
 

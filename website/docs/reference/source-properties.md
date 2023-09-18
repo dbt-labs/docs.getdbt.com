@@ -11,7 +11,7 @@ description: "Learn how to use source properties in dbt."
 
 import PropsCallout from '/snippets/_config-prop-callout.md';
 
-Source properties can be declared in any `.yml` file in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)), except for the `dbt_project.yml` file. <PropsCallout title={frontMatter.title}/>  <br /> 
+Source properties can be declared in any `.yml` file in your `models/` directory (as defined by the [`model-paths` config](/reference/project-configs/model-paths)). <PropsCallout title={frontMatter.title}/>  <br /> 
 
 
 You can name these files `whatever_you_want.yml`, and nest them arbitrarily deeply in subfolders within the `models/` directory:
