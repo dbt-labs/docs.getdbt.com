@@ -102,6 +102,18 @@ html[data-theme="dark"] {
   --ifm-table-cell-color: var(--color-green-blue);
 }
 
+/* Darkmode Links */
+html[data-theme="dark"] {
+  --ifm-link-color: var(--color-white);
+}
+
+/* Underline only for links in text body */
+html[data-theme="dark"] main a {
+  text-decoration: underline;
+}
+
+
+
 /* For /dbt-cloud/api REDOC Page */
 html[data-theme="dark"] .api-content h2,
 html[data-theme="dark"] .api-content h3,
