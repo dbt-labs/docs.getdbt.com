@@ -29,9 +29,9 @@
   margin-bottom: 20px;
 }
 
-/* .cardBody a, .cardBody a:hover {
+.cardBody p a, .cardBody p a:hover {
   text-decoration: underline;
-} */
+}
 
 .icon {
   margin-bottom: 0.5rem;
