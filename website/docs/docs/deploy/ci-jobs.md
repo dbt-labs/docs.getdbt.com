@@ -155,5 +155,4 @@ If you're experiencing any issues, review some of the common questions and answe
 </details>
 
 
-If your temporary pull request schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
