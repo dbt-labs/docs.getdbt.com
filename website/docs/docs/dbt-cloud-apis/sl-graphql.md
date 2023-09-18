@@ -289,7 +289,7 @@ mutation {
 }
 ```
 
-Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes form of dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources).
+Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes form of dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources). It is encouraged to specify a granularity when using time dimensions so that there won't be any unexpected results with the output data.
 
 **Query two metrics with a categorical dimension**
 
