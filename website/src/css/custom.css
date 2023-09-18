@@ -111,6 +111,7 @@ html[data-theme="dark"] {
 /* Underline only for links in text body */
 html[data-theme="dark"] main a:not(.card--no-underline a) {
   text-decoration: underline;
+  --ifm-link-decoration: underline;
 }
 
 /* For /dbt-cloud/api REDOC Page */
