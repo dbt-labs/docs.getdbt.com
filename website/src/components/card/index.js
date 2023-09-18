@@ -11,7 +11,7 @@ function Card({ title, body, link, icon }) {
   let imgClass = styles[icon] || ''
 
   return (
-    <div className={styles.cardWrapper}>
+    <div className={`${styles.cardWrapper} ${link && 'card--no-underline'}`}>
       {link ? <Link
         to={useBaseUrl(link)}>
         <article className={styles.card}>
