@@ -191,7 +191,7 @@ Filtering helps to narrow down the results of an API query. If you want to query
 
 Below is an example that filters for results of models that have succeeded on their `lastRunStatus`:
 
-<Lightbox src="/img/filtering.png" width="75%" title="Example of filtering"/>
+<Lightbox src="/img/Filtering.png" width="75%" title="Example of filtering"/>
 
 Below is an example that filters for models that have an error on their last run and tests that have failed:
 
