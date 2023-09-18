@@ -112,8 +112,6 @@ html[data-theme="dark"] main a:not(article a) {
   text-decoration: underline;
 }
 
-
-
 /* For /dbt-cloud/api REDOC Page */
 html[data-theme="dark"] .api-content h2,
 html[data-theme="dark"] .api-content h3,
