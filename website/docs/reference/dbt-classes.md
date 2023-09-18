@@ -33,8 +33,7 @@ class Relation:
 
 ### Using relations
 
-Use relations in your SQL code by wrapping them in double curly brackets `{{ }}` (such as the [Jinja function {{ this }}](/reference/dbt-jinja-functions/this)). For example:
-
+In addition to `api.Relation.create`, dbt returns a Relation when you use [`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source) or  [`this`](/reference/dbt-jinja-functions/this).
 <File name='relation_usage.sql'>
 
 ```jinja2
