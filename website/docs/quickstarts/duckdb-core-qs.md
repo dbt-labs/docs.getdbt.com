@@ -30,7 +30,7 @@ Select the following format that applies to your environment. Copy and paste the
 - Install dbt Core and dependencies.
 - Install DuckDB and dependencies.
 - Build the Jaffle Shop project in dbt Core.
-- Generate and serve dbt docs.
+- Generate (`dbt docs generate`) and serve (`dbt docs serve`) dbt docs to your browser (localhost).
 
 For the complete list of dependencies that will be installed, read the [**requirements.txt**](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/requirements.txt) file in the jaffle_shop_duckdb Github repo. 
 
@@ -106,6 +106,31 @@ dbt docs serve
 
 </TabItem>
 </Tabs>
+
+## Query the data
+
+The Jaffle Shop project will seed the data set to DuckDB, which can then be manually queried from the duckcli tool. 
+
+Launch the DuckDB command-line interface (CLI):
+
+    ```shell
+    duckcli jaffle_shop.duckdb
+    ```
+
+    Run a query at the prompt and exit:
+
+    ```
+    select * from customers where customer_id = 42;
+    exit;
+    ```
+
+## Browsing the data
+
+There are a few options available to browse the data within DuckDB: 
+
+- [duckcli](https://pypi.org/project/duckcli/)
+- [DuckDB CLI](https://duckdb.org/docs/installation/?environment=cli)
+- [DBeaver SQL IDE for DuckDB](https://duckdb.org/docs/guides/sql_editors/dbeaver)
 
 ## Next steps
 
