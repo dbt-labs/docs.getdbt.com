@@ -13,7 +13,6 @@ select * from {{ source(source_name, table_name) }}
 
 This function:
 - Returns a [Relation](/reference/dbt-classes#relation) for a [source](/docs/build/sources)
-  - Note &mdash; Starting from dbt v1.6 or higher, `{{ {source.identifier }}` will fetch the identifier (such as table name). Previously it would only return the request.
 - Creates dependencies between a source and the current model, which is useful for documentation and model selection
 - Compiles to the full object name in the database
 
