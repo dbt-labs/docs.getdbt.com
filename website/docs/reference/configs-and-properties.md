@@ -62,7 +62,7 @@ Instead, we now refer to these files as `properties.yml` files. (Of course, you'
 
 ### Which properties are _not_ also configs?
 
-In dbt, you can define node configs in `properties.yml` files, in addition to `config()` blocks and `dbt_project.yml`. However, some properties are exclusive to `.yml` files. 
+In dbt, you can define node configs in `properties.yml` files, in addition to `config()` blocks and `dbt_project.yml`. However, some special properties can only be defined in the `.yml` file and you cannot configure them using `config()` blocks or the `dbt_project.yml` file:
 
 Certain properties are special, because:
 
@@ -71,7 +71,7 @@ Certain properties are special, because:
 - They don't make sense as hierarchical configuration
 - They're older properties that haven't yet been redefined as configs
 
-This means "configs" can be set for multiple resources at once in the `dbt_project.yml` file, while "properties" can only be set for one resource at a time. The following properties _cannot_ be configured from `dbt_project.yml`:
+These properties are:
 
 - [`description`](/reference/resource-properties/description)
 - [`tests`](/reference/resource-properties/tests)
