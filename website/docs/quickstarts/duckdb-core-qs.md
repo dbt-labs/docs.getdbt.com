@@ -1,0 +1,118 @@
+---
+title: "Quickstart for dbt Core using DuckDB"
+id: duckdb
+description: "Install dbt Core and DuckDB to begin testing within minutes"
+platform: 'dbt-core'
+icon: 'fa-light fa-square-terminal'
+hide_table_of_contents: true
+---
+
+## Introduction
+
+In this quickstart guide, you’ll learn how to install dbt Core and DuckDB, and import sample data from the fictional e-commerce Jaffle Shop data set within minutes. DuckDB is an in-process SQL OLAP database management system optimized for data analytics. Installing dbt Core and DuckDB together allows you to test all of the available features and functionality dbt has to offer locally on your computer (no data warehouse required), and the Jaffle Shop provides a pre-built dbt project ready to run out of the box. 
+
+## Prerequisites
+
+* To use the dbt CLI, you must know some command line basics. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer.
+* A Windows, Mac, or Linux computer with sufficient storage. The Jaffle Shop sample data set is small and lightweight, taking up less than 200MB. 
+* [Python 3.5](https://www.python.org/downloads/) or higher.
+* [Create a GitHub account](https://github.com/join) if you don't already have one. [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git) on your computer.
+* (Optional) [GitHub Codespace](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/enabling-or-disabling-github-codespaces-for-your-organization) enabled for your account.
+
+## Installation instructions
+
+Select the following format that applies to your environment. Copy and paste the commands (you can copy them all at once or line-by-line) into your command line interface(CLI) and execute them. The syntax may vary slightly for each, but the result of the commands is the same. They will: 
+
+- Clone the [jaffle_shop_duckdb github repo](https://github.com/dbt-labs/jaffle_shop_duckdb) to your local machine.
+- Change the directory to the Jaffle Shop.
+- Create a Python virtual environment.
+- Install and update pip.
+- Install dbt Core and dependencies.
+- Install DuckDB and dependencies.
+- Build the Jaffle Shop project in dbt Core.
+- Generate and serve dbt docs.
+
+For the complete list of dependencies that will be installed, read the [**requirements.txt**](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/requirements.txt) file in the jaffle_shop_duckdb Github repo. 
+
+<Tabs>
+<TabItem value="Bash" label="bash/zsh (Mac)">
+
+```shell
+git clone https://github.com/dbt-labs/jaffle_shop_duckdb.git
+cd jaffle_shop_duckdb
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
+source venv/bin/activate
+dbt build
+dbt docs generate
+dbt docs serve
+```
+
+</TabItem>
+<TabItem value="csh" label="csh/tcsh">
+
+```shell
+git clone https://github.com/dbt-labs/jaffle_shop_duckdb.git
+cd jaffle_shop_duckdb
+python3 -m venv venv
+source venv/bin/activate.csh
+python3 -m pip install --upgrade pip
+python3 -m pip install -r requirements.txt
+source venv/bin/activate.csh
+dbt build
+dbt docs generate
+dbt docs serve
+```
+
+</TabItem>
+<TabItem value="powershell" label="Windows Powershell">
+
+```shell
+git clone https://github.com/dbt-labs/jaffle_shop_duckdb.git
+cd jaffle_shop_duckdb
+python -m venv venv
+venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+venv\Scripts\Activate.ps1
+dbt build
+dbt docs generate
+dbt docs serve
+```
+
+</TabItem>
+<TabItem value="codespace" label="GitHub Codespaces">
+
+#### Steps:
+
+1. Ensure you have [Codespaces](https://github.com/features/codespaces) enabled for your GitHub organization or turned on as a beta feature if you're an individual user.
+2. Open the [jaffle_shop_duckdb](https://github.com/dbt-labs/jaffle_shop_duckdb) repo in your browser.
+3. Click the green **Code** button near the top right of the repo's homepage (you may already be on it).
+4. Rather than cloning the repo like you normally would, click the **Codespaces** tab of the pop-out and then click **Create codespace on `duckdb`**.
+<div style={{maxWidth: '400px'}}>
+    <Lightbox src="/img/codespace-quickstart/open_in_codespaces.png" title="Open in Codespaces" />
+    </div>
+
+5. Wait for Codespaces to boot (this may take a few minutes).
+6. Select whether you'd like to use the Web IDE or open the codespace in your local environment.
+7. When the Codespaces opens, a **Task** pane will show up and call `dbt build` to show you how it's done.
+8. (Optional) Install the recommended extensions (like **dbt Power User extension**).
+9. Open up a new terminal and type:
+    ```
+    dbt build
+    ```
+
+</TabItem>
+</Tabs>
+
+## Next steps
+
+Now that you've got dbt Core, DuckDB, and the Jaffle Shop data up and running, it's time to explore dbt's capabilities. Read through the following material to get a better understanding of dbt projects and commands:
+
+* [About projects](/docs/build/projects) will guide you through the structure of a dbt project and its components.
+* The [dbt Command reference](/reference/dbt-commands) will explain the various commands available and what they do.
+* The [Courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
+* Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [dbt Cloud](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
+* Check out our other [Quickstart guides](/quickstarts) to begin integrating into your existing data warehouse.
