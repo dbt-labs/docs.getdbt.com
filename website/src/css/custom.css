@@ -105,7 +105,6 @@ html[data-theme="dark"] {
 /* Darkmode Links */
 html[data-theme="dark"] {
   --ifm-link-color: var(--color-white);
-  --ifm-link-decoration: var(underline)
 }
 
 /* Underline only for links in text body */
