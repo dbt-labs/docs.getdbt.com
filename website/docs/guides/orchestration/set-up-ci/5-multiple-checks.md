@@ -12,22 +12,15 @@ As such, it may slow down the time it takes to get new features into production.
 The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing the number of environments. Check out [their Coalesce presentation](https://www.youtube.com/watch?v=vmBAO2XN-fM) to learn more.
 :::
 
-:::tip Join the beta
-
-dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs). This guide assumes you are using the improvements available in the beta.
-
-If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
-
-:::
-
-## Prerequisites
-
-This section assumes you already have the **Development**, **CI** and **Production** environments described in [the Baseline setup](/guides/orchestration/set-up-ci/in-15-minutes).
-
 In this section, we will add a new **QA** environment. New features will branch off from and be merged back into the associated `qa` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the CI environment before going live.
 
 The git flow will look like this:
 <Lightbox src="/img/guides/best-practices/environment-setup/many-branch-git.png" title="git flow diagram with an intermediary branch" />
+
+## Prerequisites
+
+- You have the **Development**, **CI**, and **Production** environments, as described in [the Baseline setup](/guides/orchestration/set-up-ci/in-15-minutes).
+
 
 ## Step 1: Create a `release` branch in your git repo
 

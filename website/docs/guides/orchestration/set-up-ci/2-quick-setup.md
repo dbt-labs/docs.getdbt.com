@@ -4,13 +4,10 @@ slug: in-15-minutes
 description: Find issues before they are deployed to production with dbt Cloud's Slim CI.
 ---
 
-:::tip Join the beta
+In this guide, we're going to add a **CI environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but models are built in a separate location to avoid impacting others (like the Dev environment).
 
-dbt Labs is currently running a beta that provides improved UI updates for setting up CI jobs. For docs, refer to [Set up CI jobs (Beta version)](/docs/deploy/ci-jobs?version=beta#set-up-ci-jobs). This guide assumes you are using the improvements available in the beta.
-
-If you're interested in joining our beta, please fill out our Google Form to [sign up](https://forms.gle/VxwBD1xjzouE84EQ6).
-
-:::
+Your git flow will look like this:
+<Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
 
 ## Prerequisites
 
@@ -18,11 +15,6 @@ As part of your initial dbt Cloud setup, you should already have Development and
 
 - Your **Development environment** powers the IDE. Each user has individual credentials, and builds into an individual dev schema. Nothing you do here impacts any of your colleagues.
 - Your **Production environment** brings the canonical version of your project to life for downstream consumers. There is a single set of deployment credentials, and everything is built into your production schema(s).
-
-In this guide, we're going to add a **CI environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but models are built in a separate location to avoid impacting others (like the Dev environment).
-
-Your git flow will look like this:
-<Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
 
 ## Step 1: Create a new CI environment
 

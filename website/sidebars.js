@@ -365,6 +365,7 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate with others",
       items: [
+        "docs/collaborate/explore-projects",
         {
           type: "category",
           label: "Git version control",
