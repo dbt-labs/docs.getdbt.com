@@ -4,6 +4,8 @@ const katex = require("rehype-katex");
 const { versions, versionedPages, versionedCategories } = require("./dbt-versions");
 require("dotenv").config();
 
+// Test Comment
+ 
 /* Debugging */
 var SITE_URL;
 if (!process.env.CONTEXT || process.env.CONTEXT == "production") {
