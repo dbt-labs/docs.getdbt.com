@@ -76,7 +76,7 @@ select * from {{
 
 Use this query to fetch all dimensions for a metric. 
 
-Note, `metrics` is a required argument that lists with one or multiple metrics in it.
+Note, `metrics` is a required argument that lists one or multiple metrics in it.
 
 ```bash
 select * from {{ 
@@ -89,7 +89,7 @@ select * from {{
 
 Use this query to fetch dimension values for one or multiple metrics and single dimension. 
 
-Note, `metrics` is a required argument that lists with one or multiple metrics in it, and a single dimension. 
+Note, `metrics` is a required argument that lists one or multiple metrics in it, and a single dimension. 
 
 ```bash
 select * from {{ 
@@ -102,7 +102,7 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
-Note, `metrics` is a required argument that lists with one or multiple metrics in it.
+Note, `metrics` is a required argument that lists one or multiple metrics in it.
 
 ```bash
 select * from {{
@@ -220,7 +220,7 @@ select * from {{
 
 ### Query with a time grain
 
-Use the following example query to fetch multiple metrics with a change time dimension granularities:
+Use the following example query to fetch multiple metrics with a change in time dimension granularities:
 
 ```bash
 select * from {{
@@ -242,9 +242,9 @@ select * from {{
 
 ### Query with where filters
 
-Where filters in API allow for a filter list or string. We recommend using the filter list for production application as this format will realize all benefits from the <Term id="predicate-pushdown"  /> where possible. 
+Where filters in API allow for a filter list or string. We recommend using the filter list for production applications as this format will realize all benefits from the <Term id="predicate-pushdown"  /> where possible. 
 
-Where Filters have a three components that you can use:
+Where Filters have the following components that you can use:
 
 - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
