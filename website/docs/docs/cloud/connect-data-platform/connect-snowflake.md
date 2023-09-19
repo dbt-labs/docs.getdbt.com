@@ -34,27 +34,31 @@ to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowfl
 
 The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development or Deployment credentials for a dbt Cloud project.
 
-After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
+1. After [generating an encrypted key pair](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication), be sure to set the `rsa_public_key` for the Snowflake user to authenticate in dbt Cloud:
 
 ```sql
 alter user jsmith set rsa_public_key='MIIBIjANBgkqh...';
 ```
 
-Finally, set the "Private Key" and "Private Key Passphrase" fields in the "Edit
-Credentials" page to finish configuring dbt Cloud to authenticate with Snowflake
-using a key pair.
+2. Finally, set the **Private Key** and **Private Key Passphrase** fields in the **Edit Credentials** page to finish configuring dbt Cloud to authenticate with Snowflake using a key pair.
+   
+   **Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud, and the keys must be of size 4096 or smaller.
 
-**Note:** At this time ONLY Encrypted Private Keys are supported by dbt Cloud, and the keys must be of size 4096 or smaller.
-
-In order to successfully fill in the Private Key field, you **must** include the commented lines below when you add the passphrase. Leaving the `PRIVATE KEY PASSPHRASE` field empty will return an error - have a look at the examples below:
+3. To successfully fill in the Private Key field, you **must** include commented lines when you add the passphrase. 
+   
+Leaving the **Private Key Passphrase** field empty will return an error.  If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to [Troubleshooting](#troubleshooting) for more info. 
 
 **Example:**
+
 ```sql
 -----BEGIN ENCRYPTED PRIVATE KEY-----
-< encrypted private key contents here >
+< encrypted private key contents here - line 1 >
+< encrypted private key contents here - line 2 >
+< ... >
 -----END ENCRYPTED PRIVATE KEY-----
 ```
-<Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" title="Snowflake keypair authentication"/>
+
+<Lightbox src="/img/docs/dbt-cloud/snowflake-keypair-auth.png" width="70%" title="Snowflake keypair authentication"/>
 
 ### Snowflake OAuth
 
@@ -68,3 +72,18 @@ more information on configuring a Snowflake OAuth connection in dbt Cloud, pleas
 ## Configuration
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Snowflake-specific configuration](/reference/resource-configs/snowflake-configs).
+
+## Troubleshooting
+<!--might need to turn this into details toggle if more troubleshooting items arise -->
+
+If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to the following causes and solutions:
+
+- **Error: `Could not deserialize key data`**
+  - Possible causes &mdash; This might be due incorrect copying or the not including dashes or commented lines. 
+  - Solution &mdash; You can either manually type the key values or copy the key from its source and paste it into a text editor to verify it before using it in dbt Cloud. 
+
+- **Error: `JWT token`**
+  - Possible causes &mdash; When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud. Snowflake's 60-second token rule can sometimes reveal issues like NTP server synchronization problems (server clocks not aligned), network latency, or token problems.
+  - Solution &mdash; Confirm mismatches between Snowflake's expected public or private keys or any Snowflake connection parameter errors (such as incorrect login details). Additionally, you can reach out to Snowflake for help or refer to this Snowflake doc for more info: [Key-Based Authentication Failed with JWT token is invalid Error](https://community.snowflake.com/s/article/Key-Based-Authentication-Failed-with-JWT-token-is-invalid-Error). 
+
+
