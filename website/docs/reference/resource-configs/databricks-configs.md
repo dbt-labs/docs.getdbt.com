@@ -393,6 +393,7 @@ snapshots:
 </File>
 
 <VersionBlock firstVersion="1.6">
+  
 ## Materialized views and streaming stables
 
 Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
