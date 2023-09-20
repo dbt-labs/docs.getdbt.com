@@ -21,6 +21,7 @@ When materializing a model as `table`, you may include several optional configs 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.6">
+
  
 | Option              | Description                                                                                                                                                                                                        | Required?                               | Model Support | Example        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|----------------|
@@ -30,6 +31,7 @@ When materializing a model as `table`, you may include several optional configs 
 | liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                | SQL           | `date_day`     |
 | clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                | SQL, Python   | `country_code` |
 | buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | SQL, Python   | `8`            |
+
 
 </VersionBlock>
 
