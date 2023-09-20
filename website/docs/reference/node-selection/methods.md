@@ -74,18 +74,27 @@ selectors unambiguous.
 
 <VersionBlock firstVersion="1.2">
 
-### The "file" or "fqn" method
-The `file` or `fqn` method can be used to select a model by its filename, including the file extension (`.sql`).
+### The "file" method
+The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
 # These are equivalent
 dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
-dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
 ```
 
 </VersionBlock>
+
+### The "fqn" method
+
+The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN.
+
+```
+dbt run --select fqn:some_model
+dbt run --select fqn:your_project.some_model
+dbt run --select fqn:some_package.some_other_model
+```
 
 ### The "package" method
 
@@ -252,11 +261,6 @@ $ dbt seed --select result:error --state path/to/artifacts # run all seeds that 
 ```
 
 ### The "source_status" method
-<VersionBlock lastVersion="1.0">
-
-Supported in v1.1 or newer.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.1">
   

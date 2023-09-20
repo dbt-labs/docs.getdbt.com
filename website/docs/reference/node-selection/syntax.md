@@ -174,12 +174,6 @@ $ dbt run --select result:<status>+ state:modified+ --defer --state ./<dbt-artif
 
 ### Fresh rebuilds
 
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.1">
 
 Only supported by v1.1 or newer.
@@ -199,11 +193,6 @@ dbt build --select source_status:fresher+
 For more example commands, refer to [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
 
 ### The "source_status" status
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
-
-</VersionBlock>
 
 <VersionBlock firstVersion="1.1">
 
