@@ -291,11 +291,10 @@ Note that for `order_by`, if you are operating on the object (e.g. changing gran
 ```bash
 ...
 order_by=[Dimension('metric_time').grain('month')]
-```
+``` 
 
-Descending: 
-...
 ```
+...
 order_by=[Dimension('metric_time').grain('month').descending(true)]
 ```
 
