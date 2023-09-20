@@ -165,9 +165,9 @@ To query metric values, here are the following parameters that are available:
 | `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | Required    |
 | `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`     | Optional   |
 | `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
-| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
+| `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
-|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
+|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order).   | Optional   |
 | `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
 
 
@@ -244,13 +244,13 @@ select * from {{
 
 Where filters in API allow for a filter list or string. We recommend using the filter list for production applications as this format will realize all benefits from the <Term id="predicate-pushdown"  /> where possible. 
 
-Where filters have the following components that you can use:
+Where Filters have a few objects that you can use:
 
 - `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
-- `TimeDimension()` - This is used for all time dimensions and requires a granularity argument - `TimeDimension('metric_time', 'MONTH)`
+- `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
 
-- `Entity()` - This is used for entities like primary and foreign keys - `Entity('order_id')`
+Note: If you prefer a more strongly typed `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'MONTH')`.
 
 
 Use the following example to query using a `where` filter with the string format:
@@ -259,7 +259,7 @@ Use the following example to query using a `where` filter with the string format
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
+where="{{ Dimension('metric_time').grain('month')  }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
 }}
 ```
 
@@ -269,7 +269,7 @@ Use the following example to query using a `where` filter with a filter list for
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where=[{{ TimeDimension('metric_time', 'MONTH')}} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
+where=[{{ Dimension('metric_time').grain('month') }} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
 }}
 ```
 
@@ -285,6 +285,21 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   order_by=['order_gross_profit'])
   }}
 ``` 
+
+Note that for `order_by`, if you are operating on the object (e.g. changing granularity), you should use the following syntax:
+
+```bash
+...
+order_by=[Dimension('metric_time').grain('month')]
+```
+
+Descending: 
+...
+```
+order_by=[Dimension('metric_time').grain('month').descending(true)]
+```
+
+
 ### Query with explain keyword
 
 Use the following example to query using a `explain` keyword:
