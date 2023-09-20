@@ -94,6 +94,90 @@ There are 2 options to disable models from being built and charged:
 2. Alternatively, you can delete some or all of your dbt Cloud jobs. This will ensure that no runs are kicked off, but you will permanently lose your job(s). 
 
 
+## Optimizing Costs within dbt Cloud
+
+dbt Cloud offers ways to optimize your model’s built usage and warehouse costs. 
+
+### Best practices for optimizing successful models built
+
+When thinking of ways to optimize your costs from successful models built, there are simple methods to reducing those costs while still adhering to best practices. To ensure that you are still utilizing tests and rebuilding views when logic is changed, it is best to implement a combination of the best practices that best suit your needs. More specifically, if you decide to exclude views from your regularly scheduled dbt Cloud job runs, it is imperative that you set up a merge job (with a link to the section) to deploy updated view logic when changes are detected.
+
+#### Excluding views in a dbt Cloud job
+
+Many dbt Cloud users are utilizing views, which don’t always need to be rebuilt every time you run a job. For any jobs that contain views that _do not_ include macros that dynamically generate code (for example, case statements) based on upstream tables and _do not_ have tests, you can implement the following steps:
+
+1. Go to your current production deployment job in dbt Cloud.
+2. Modify your command to include: `-exclude config.materialized:view`.
+3. Save your job changes.
+
+If you have views that contain macros with case statements based on upstream tables, these will need to be run each time to account for new values. If you still need to test your views with each run, please use the documentation in the next section to create a custom selector. 
+
+#### Excluding views while still running tests
+
+Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](https://docs.getdbt.com/reference/node-selection/yaml-selectors) for your job command. 
+
+1. Open your dbt project in the dbt Cloud IDE.
+2. add a file called `selectors.yml` in your top-level project folder.
+3. In the file, put the following code:
+
+   ```yaml 
+    `selectors:
+      - name: skip_views_but_test_views
+        description: >
+          A default selector that will exclude materializing views
+          without skipping tests on views.
+        default: true
+        definition:
+          union:
+            - union: 
+              - method: path
+                value: "*"
+              - exclude: 
+                - method: config.materialized
+                  value: view
+            - method: resource_type
+              value: test`
+
+    ```
+    
+4. Save the file and commit it to your project.
+5. Modify your dbt Cloud jobs to include `--selector skip_views_but_test_views`.
+
+#### Building only changed views
+
+If you would like to ensure that you are building views whenever the logic is changed, create a merge job that gets triggered when code is merged into main: 
+
+1. Ensure you have a Slim CI job setup in your environment.
+2. Create a new [dbt Cloud job](https://docs.getdbt.com/docs/deploy/deploy-jobs#create-and-schedule-jobs) and call it “Merge Job."
+3. Set the [environment](https://docs.getdbt.com/docs/deploy/deploy-environments#types-of-environments) to your CI environment. 
+4. Set Commands to: `dbt run -s state:modified+`.
+    - Note: It's not using dbt build because it already used Slim CI to both run and test the code that just got merged into main, so executing a build command in this context is unnecessary.
+5. Under the execution settings, select the default production job to compare changes against:
+    - Defer to a previous run state — Select the “Merge Job” you created so the job compares and identifies what has changed since the last merge.
+6. In your dbt project, follow the steps in this [guide](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge) to create a script to trigger the dbt Cloud API to run your job after a merge happens within your git repository or watch this [video](https://www.loom.com/share/e7035c61dbed47d2b9b36b5effd5ee78?sid=bcf4dd2e-b249-4e5d-b173-8ca204d9becb).
+
+The purpose of the merge job is to:
+
+- Immediately deploy any changes from PRs to production.
+- Ensure your production views remain up-to-date with how they’re defined in your codebase while remaining cost-efficient when running jobs in production.
+
+The merge action will optimize your cloud data platform spend and shorten job times, but you’ll need to decide if making the change is right for your dbt project.
+
+### Reworking inefficient models
+
+#### Job Insights Tab
+
+To reduce your warehouse spend, you can identify what models, on average, are taking the longest to build in the Job page under the **Insights** tab. This chart looks at the average run time for each model based on its last 20 runs. Any models that are taking longer than anticipated to build may be prime candidates for optimization, which will ultimately reduce cloud warehouse spending. 
+
+#### Model Timing Tab
+
+If you would like to understand better how long each model takes to run within the context of a specific run, you can look at our **Model Timing** tab. Select the run of interest on the **Run History** page to find the Model Timing tab. Within that Run page, click **Model Timing**. 
+
+Once you have identified which models could be optimized, be sure to check out some of our other resources that walk through how to optimize your work: 
+* [Build scalable and trustworthy data pipelines with dbt and BigQuery](https://services.google.com/fh/files/misc/dbt_bigquery_whitepaper.pdf) 
+* [Best Practices for Optimizing Your dbt and Snowflake Deployment](https://www.snowflake.com/wp-content/uploads/2021/10/Best-Practices-for-Optimizing-Your-dbt-and-Snowflake-Deployment.pdf) 
+* [How to optimize and troubleshoot dbt models on Databricks](https://docs.getdbt.com/guides/dbt-ecosystem/databricks-guides/how_to_optimize_dbt_models_on_databricks).
+
 ## FAQs
 
 * What happens if I need more than 8 seats on the Team plan? 
