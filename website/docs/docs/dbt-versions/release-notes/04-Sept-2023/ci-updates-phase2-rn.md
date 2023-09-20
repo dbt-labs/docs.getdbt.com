@@ -33,4 +33,4 @@ Below is a comparison table that describes how deploy jobs and CI jobs behave di
 
 - If you had set up a CI job before September 11, 2023 using the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint but didn't set `"triggers":triggers.git_provider_webhook`, you must re-create the job as described in [Trigger a CI job with the API](/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api). This is because the job was misclassified as a deploy job with this update.
 
-- If you previously set up a job using dbt Cloud before September 11, 2023, you must re-create the job as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs).
+- If you had set up a CI job using dbt Cloud before September 11, 2023 but didn't enable the **Run on Pull Requests** option that was in the **Continuous Integration** (CI) tab, you must re-create the job as described in [Set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs). This is because the job was misclassified as a deploy job with this update.
