@@ -9,13 +9,18 @@ id: "postgres-configs"
 In dbt-postgres, the following incremental materialization strategies are supported:
 
 <VersionBlock lastVersion="1.5">
+
 - `append` (default)
 - `delete+insert`
+
 </VersionBlock>
+
 <VersionBlock firstVersion="1.6">
+
 - `append` (default)
 - `merge`
 - `delete+insert`
+
 </VersionBlock>
 
 
