@@ -112,7 +112,7 @@ Many dbt Cloud users utilize views, which don’t always need to be rebuilt ever
 
 If you have views that contain macros with case statements based on upstream tables, these will need to be run each time to account for new values. If you still need to test your views with each run, follow the [Exclude views while still running tests](#exclude-views-while-running-tests) best practice to create a custom selector. 
 
-#### Excluding views while still running tests
+#### Exclude views while running tests
 
 Running tests for views in every job run can help keep data quality intact and save you from the need to rerun failed jobs. To exclude views from your job run while running tests, you can follow these steps to create a custom [selector](https://docs.getdbt.com/reference/node-selection/yaml-selectors) for your job command. 
 
