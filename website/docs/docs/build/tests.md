@@ -1,10 +1,12 @@
 ---
 title: "Add tests to your DAG"
-sidebar_title: "Tests"
+sidebar_label: "Tests"
 description: "Read this tutorial to learn how to use tests when building in dbt."
+search_weight: "heavy"
 id: "tests"
+keywords:
+  - test, tests, testing, dag
 ---
-
 ## Related reference docs
 * [Test command](/reference/commands/test)
 * [Test properties](/reference/resource-properties/tests)
@@ -261,11 +263,11 @@ Note that, if you elect to store test failures:
 
 ## FAQs
 
-<FAQ src="Tests/test-one-model" />
-<FAQ src="Runs/failed-tests" />
-<FAQ src="Tests/recommended-tests" />
-<FAQ src="Tests/when-to-test" />
-<FAQ src="Tests/configurable-data-test-path" />
-<FAQ src="Tests/testing-sources" />
-<FAQ src="Tests/custom-test-thresholds" />
-<FAQ src="Tests/uniqueness-two-columns" />
+<FAQ path="Tests/test-one-model" />
+<FAQ path="Runs/failed-tests" />
+<FAQ path="Tests/recommended-tests" />
+<FAQ path="Tests/when-to-test" />
+<FAQ path="Tests/configurable-data-test-path" />
+<FAQ path="Tests/testing-sources" />
+<FAQ path="Tests/custom-test-thresholds" />
+<FAQ path="Tests/uniqueness-two-columns" />

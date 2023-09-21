@@ -10,6 +10,7 @@ These classes are often useful when building advanced dbt models and macros.
 
 The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config](/reference/project-configs/quoting).
 
+
 ### Creating relations
 
 A `Relation` can be created by calling the `create` class method on the `Relation` class.
@@ -32,6 +33,7 @@ class Relation:
 
 ### Using relations
 
+In addition to `api.Relation.create`, dbt returns a Relation when you use [`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source) or  [`this`](/reference/dbt-jinja-functions/this).
 <File name='relation_usage.sql'>
 
 ```jinja2
@@ -197,5 +199,8 @@ The execution of a resource in dbt generates a `Result` object. This object cont
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node, measured in seconds.
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
-- `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc.
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
+
+import RowsAffected from '/snippets/_run-result.md'; 
+
+<RowsAffected/>

@@ -17,7 +17,7 @@ There are two ways to optionally modify this behavior:
 For example, to quickly compile a model that requires no database metadata or introspective queries:
 ```text
 
-dbt --skip-populate-cache compile --select my_model_name
+dbt --no-populate-cache compile --select my_model_name
 
 ```
 

@@ -63,7 +63,7 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
    <Card
     title="dbt Semantic Layer*"
     body="Use the dbt Semantic Layer to define metrics alongside your dbt models and query them from any integrated analytics tool. Get the same answers everywhere, every time."
-    link="/docs/use-dbt-semantic-layer/dbt-semantic-layer"
+    link="/docs/use-dbt-semantic-layer/dbt-sl"
     icon="pencil-paper"/>  
 
    <Card
@@ -77,6 +77,12 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     title="Run visibility"
     body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
     link="/docs/deploy/run-visibility"
+    icon="pencil-paper"/> 
+
+<Card
+    title="dbt Explorer*"
+    body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
+    link="/docs/collaborate/explore-projects"
     icon="pencil-paper"/> 
 </div> <br />
 

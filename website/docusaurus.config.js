@@ -47,10 +47,14 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
+  customFields: {
+    isVercel: process.env.REACT_APP_VERCEL
+  },
   themeConfig: {
     docs:{
       sidebar: {
         hideable: true,
+        autoCollapseCategories: true,
       },
     },
     image: "/img/avatar.png",
@@ -79,7 +83,7 @@ var siteSettings = {
     announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
-    communitySpotlightMember: "david-effiong",
+    communitySpotlightMember: "faith-lierheimer",
     prism: {
       theme: (() => {
         var theme = require("prism-react-renderer/themes/nightOwl");

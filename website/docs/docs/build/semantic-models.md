@@ -12,26 +12,50 @@ Semantic models serve as the foundation for defining data in MetricFlow, which p
 
 Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
 
-You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. Semantic models have 6 components and this page explains the definitions with some examples:
+You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
 
-1. [Name](#name) &mdash; Unique name for the semantic model. 
-1. [Description](#description) &mdash; Includes important details in the description.
-1. [Model](#model) &mdash;  Specifies the dbt model for the semantic model using the `ref` function.
-1. [Entities](#entities) &mdash;  Uses the columns from entities as join keys and indicate their type as primary, foreign, or unique keys with the `type` parameter.
-1. [Dimensions](#dimensions) &mdash; Different ways to group or slice data for a metric, they can be `time-based` or `categorical`.
-1. [Measures](#measures) &mdash; Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics.
+Semantic models have 6 components and this page explains the definitions with some examples:
 
+| Component | Description | Type |
+| --------- | ----------- | ---- |
+| [Name](#name) | Unique name for the semantic model | Required |
+| [Description](#description) | Includes important details in the description | Optional |
+| [Model](#model) | Specifies the dbt model for the semantic model using the `ref` function | Required |
+| [Defaults](#defaults) | The defaults for the model, currently only `agg_time_dimension` is supported.  | Required |
+| [Entities](#entities) | Uses the columns from entities as join keys and indicate their type as primary, foreign, or unique keys with the `type` parameter | Required |
+| [Primary Entity](#primary-entity) | If a primary entity exists, this component is Optional. If the semantic model has no primary entity, then this property is required. | Optional |
+| [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time` or `categorical` | Required |
+| [Measures](#measures) | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics | Optional |
 
 ## Semantic models components
 
+The complete spec for semantic models is below:
+
+```yaml
+semantic_models:
+  - name: the_name_of_the_semantic_model  ## Required
+    description: same as always           ## Optional
+    model: ref('some_model')              ## Required
+    defaults:                             ## Required
+      agg_time_dimension: dimension_name  ## Required if the model contains dimensions
+    entities:                             ## Required
+      - see more information in entities
+    measures:                             ## Optional
+      - see more information in measures section
+    dimensions:                           ## Required
+      - see more information in dimensions section
+    primary_entity: >-
+      if the semantic model has no primary entity, then this property is required. #Optional if a primary entity exists, otherwise Required
+```
+
 The following example displays a complete configuration and detailed descriptions of each field:
 
-```yml
+```yaml
 semantic_models:
   - name: transaction # A semantic model with the name Transactions
     model: ref('fact_transactions') # References the dbt model named `fact_transactions`
     description: "Transaction fact table at the transaction level. This table contains one row per transaction and includes the transaction timestamp."
-    default:
+    defaults:
       agg_time_dimension: transaction_date
 
     entities: # Entities included in the table are defined here. MetricFlow will use these columns as join keys.
@@ -41,7 +65,6 @@ semantic_models:
       - name: customer
         type: foreign
         expr: customer_id
-
 
     dimensions: # dimensions are qualitative values such as names, dates, or geographical data. They provide context to metrics and allow "metric by group" data slicing.
       - name: transaction_date
@@ -94,9 +117,32 @@ Includes important details in the description of the semantic model. This descri
 
 Specify the dbt model for the semantic model using the [`ref` function](/reference/dbt-jinja-functions/ref).
 
+### Defaults
+
+Defaults for the semantic model. Currently only `agg_time_dimension`. `agg_time_dimension` represents the default time dimensions for measures. This can be overridden by adding the `agg_time_dimension` key directly to a measure - see [Dimensions](/docs/build/dimensions) for examples. 
 ### Entities 
 
 To specify the [entities](/docs/build/entities) in your model, use their columns as join keys and indicate their `type` as primary, foreign, or unique keys with the type parameter.
+
+### Primary entity
+
+MetricFlow requires that all dimensions be tied to an entity. This is to guarantee unique dimension names. If your data source doesn't have a primary entity, you need to assign the entity a name using the `primary_entity: entity_name` key. It doesn't necessarily have to map to a column in that table and assigning the name doesn't affect query generation. 
+
+You can define a primary entity using the following configs:
+
+```yaml
+semantic_model:
+  name: bookings_monthly_source
+  description: bookings_monthly_source
+  defaults:
+    agg_time_dimension: ds
+  model: ref('bookings_monthly_source')
+  measures:
+    - name: bookings_monthly
+      agg: sum
+      create_metric: true
+  primary_entity: booking_id
+  ```
 
 <Tabs>
 
@@ -117,7 +163,7 @@ This example shows a semantic model with three entities and their entity types: 
 To reference a desired column, use the actual column name from the model in the `name` parameter. You can also use `name` as an alias to rename the column, and the `expr` parameter to refer to the original column name or a SQL expression of the column.
 
 
-```yml
+```yaml
 entity:
   - name: transaction
     type: primary
@@ -140,11 +186,11 @@ You can refer to entities (join keys) in a semantic model using the `name` param
 
 MetricFlow simplifies this by allowing you to query all metric groups and construct the join during the query. To specify dimensions parameters, include the `name` (either a column or SQL expression) and `type` (`categorical` or `time`). Categorical groups represent qualitative values, while time groups represent dates of varying granularity.
 
-dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups.
+Dimensions are identified using the name parameter, just like identifiers. The naming of groups must be unique within a semantic model, but not across semantic models since MetricFlow, uses entities to determine the appropriate groups. MetricFlow requires all dimensions be tied to a primary entity. 
 
 :::info For time groups
 
-For semantic models with a measure, you must have a primary time group.
+For semantic models with a measure, you must have a [primary time group](/docs/build/dimensions#time).
 
 :::
 
@@ -161,6 +207,12 @@ For semantic models with a measure, you must have a primary time group.
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
 | `create_metric`* | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
 _*Coming soon_
+
+
+import SetUpPages from '/snippets/_metrics-dependencies.md';
+
+<SetUpPages />
+
 ## Related docs
 
 - [About MetricFlow](/docs/build/about-metricflow)

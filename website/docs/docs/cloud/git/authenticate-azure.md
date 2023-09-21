@@ -25,4 +25,4 @@ You will be directed back to dbt Cloud, and your profile should be linked. You a
 
 ## FAQs
 
-<FAQ src="Git/gitignore"/>
+<FAQ path="Git/gitignore"/>

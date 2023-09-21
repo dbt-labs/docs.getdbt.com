@@ -121,7 +121,7 @@ For example:
 
 ```yml
 models:
-  +grants:
+  +grants:  # In this case the + is not optional, you must include it for your project to parse.
     select: ['user_a', 'user_b']
 ```
 
@@ -211,7 +211,7 @@ We encourage you to read Google's documentation for more context:
 - [Understanding GCP roles](https://cloud.google.com/iam/docs/understanding-roles)
 - [How to format grantees](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#user_list)
 
-<Snippet src="grants-vs-access-to" />
+<Snippet path="grants-vs-access-to" />
 
 ### BigQuery examples
 
@@ -243,6 +243,7 @@ models:
 - Databricks automatically enables `grants` on SQL endpoints. For interactive clusters, admins should enable grant functionality using these two setup steps in the Databricks documentation:
   - [Enable table access control for your workspace](https://docs.databricks.com/administration-guide/access-control/table-acl.html)
   - [Enable table access control for a cluster](https://docs.databricks.com/security/access-control/table-acls/table-acl.html)
+- In order to grant `READ_METADATA` or `USAGE`, use [post-hooks](https://docs.getdbt.com/reference/resource-configs/pre-hook-post-hook)
 
 </div>
 

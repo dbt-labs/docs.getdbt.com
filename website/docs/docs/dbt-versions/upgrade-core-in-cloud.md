@@ -29,11 +29,11 @@ dbt Labs has always encouraged users to upgrade dbt Core versions whenever a new
 
 We provide different support levels for different versions, which may include new features, bug fixes, or security patches:
 
-<Snippet src="core-version-support" />
+<Snippet path="core-version-support" />
 
 We'll continue to update the following release table so that users know when we plan to stop supporting different versions of Core in dbt Cloud.
 
-<Snippet src="core-versions-table" />
+<Snippet path="core-versions-table" />
 
 Starting with v1.0, dbt Cloud will ensure that you're always using the latest compatible patch release of `dbt-core` and plugins, including all the latest fixes. You may also choose to try prereleases of those patch releases before they are generally available.
 

@@ -1,5 +1,4 @@
 ---
-title: "About docs configuration"
 sidebar_label: "docs"
 resource_types: models
 description: "Docs - Read this in-depth guide to learn about configurations in dbt."

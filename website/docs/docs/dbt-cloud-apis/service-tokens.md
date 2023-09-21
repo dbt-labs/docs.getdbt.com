@@ -3,8 +3,11 @@ title: "Service account tokens"
 id: "service-tokens"
 description: "Service account tokens help you define permissions for securing access to your dbt Cloud account and its projects."
 ---
+:::info Important service account token update
 
-## About service tokens
+If you have service tokens created on or before July 18, 2023, please read [this important update](/docs/dbt-cloud-apis/service-tokens#service-token-update).
+
+:::
 
 Service account tokens enable you to securely authenticate with the dbt Cloud API by assigning each token a narrow set of permissions that more precisely manages access to the API. While similar to [User API tokens](user-tokens), service account tokens belong to an account rather than a user.
 
@@ -38,6 +41,9 @@ Account Admin service tokens have full `read + write` access to an account, so p
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.
 
+**Semantic Layer Only**<br/>
+Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
+
 **Job Admin**<br/>
 Job admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs.  
 
@@ -62,6 +68,9 @@ Billing Admin service tokens have certain account-level permissions.  For more o
 
 **Metadata Only**<br/>
 Metadata-only service tokens authorize requests to the Discovery API.
+
+**Semantic Layer Only**<br/>
+Semantic Layer-only service tokens authorize requests to the Semantic Layer APIs.
 
 **Job Admin**<br/>
 Job Admin service tokens can authorize requests for viewing, editing, and creating environments, triggering runs, and viewing historical runs. For more on these permissions, see [Job Admin](/docs/cloud/manage-access/enterprise-permissions#job-admin).
@@ -92,3 +101,17 @@ Analyst admin service tokens have all the permissions listed in [Analyst](/docs/
 
 **Stakeholder**<br/>
 Stakeholder service tokens have all the permissions listed in [Stakeholder](/docs/cloud/manage-access/enterprise-permissions#stakeholder) on the Enterprise Permissions page.
+
+
+## Service token update
+
+On July 18, 2023, dbt Labs made critical infrastructure changes to service account tokens. These enhancements improve the security and performance of all tokens created after July 18, 2023. To ensure security best practices are in place, we recommend you rotate your service tokens created before this date.
+
+To rotate your token:
+1. Navigate to **Account settings** and click **Service tokens** on the left side pane.
+2. Verify the **Created** date for the token is _on or before_ July 18, 2023. 
+    <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/service-token-date.png" title="Service token created date"/>
+3. Click **+ New Token** on the top right side of the screen. Ensure the new token has the same permissions as the old one. 
+4. Copy the new token and replace the old one in your systems. Store it in a safe place, as it will not be available again once the creation screen is closed.
+5. Delete the old token in dbt Cloud by clicking the **trash can icon**. _Only take this action after the new token is in place to avoid service disruptions_.
+

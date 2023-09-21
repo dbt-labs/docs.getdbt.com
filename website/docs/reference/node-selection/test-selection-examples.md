@@ -58,7 +58,7 @@ The "cautious" mode can be useful in environments when you're only building a su
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.4" lastVersion="1.4">
 
 There are three modes to configure the behavior when performing indirect selection (with `eager` as the default):
 
@@ -69,6 +69,21 @@ There are three modes to configure the behavior when performing indirect selecti
 Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
 
 The "buildable" and "cautious" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5" >
+
+These are the modes to configure the behavior when performing indirect selection (with `eager` as the default):
+
+1. `eager` (default) - include ANY test that references the selected nodes
+1. `cautious` - restrict to tests that ONLY refer to selected nodes
+1. `buildable` -  restrict to tests that ONLY refer to selected nodes (or their ancestors)
+1. `empty` - restrict to tests that are only for the selected node and ignore all tests from the attached nodes 
+
+Note that test exclusion is always greedy: if ANY parent is explicitly excluded, the test will be excluded as well.
+
+The "buildable", "cautious", and "empty" modes can be useful in environments when you're only building a subset of your DAG, and you want to avoid test failures in "eager" mode caused by unbuilt resources. (Another way to achieve this is with [deferral](/reference/node-selection/defer)).
 
 </VersionBlock>
 
@@ -109,7 +124,7 @@ $ dbt build --select orders --indirect-selection=cautious
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.4" lastVersion="1.4">
 
 <Tabs queryString="indirect-selection-mode">
 <TabItem value="eager" label="Eager mode (default)">
@@ -159,7 +174,68 @@ $ dbt build --select orders --indirect-selection=buildable
 
 </VersionBlock>
 
-<!--End of tabs for eager mode, cautious mode, and buildable mode -->
+<VersionBlock firstVersion="1.5">
+
+<Tabs queryString="indirect-selection-mode">
+<TabItem value="eager" label="Eager mode (default)">
+
+By default, a test will run when ANY parent is selected; we call this "eager" indirect selection. In this example, that would include any test that references orders, even if it references other models as well.
+
+In this mode, any test that depends on unbuilt resources will raise an error.
+
+```shell
+$ dbt test --select orders
+$ dbt build --select orders
+```
+
+</TabItem>
+
+<TabItem value="cautious" label="Cautious mode">
+
+It is possible to prevent tests from running if one or more of its parents is unselected (and therefore unbuilt); we call this "cautious" indirect selection.
+
+It will only include tests whose references are each within the selected nodes.
+
+Put another way, it will prevent tests from running if one or more of its parents is unselected.
+
+```shell
+$ dbt test --select orders --indirect-selection=cautious
+$ dbt build --select orders --indirect-selection=cautious
+```
+
+</TabItem>
+
+<TabItem value="buildable" label="Buildable mode">
+
+This mode is similarly conservative like "cautious", but is slightly more inclusive.
+
+It will only include tests whose references are each within the selected nodes (or their ancestors).
+
+This is useful in the same scenarios as "cautious", but also includes when a test depends on a model **and** a direct ancestor of that model (like confirming an aggregation has the same totals as its input).
+
+```shell
+$ dbt test --select orders --indirect-selection=buildable
+$ dbt build --select orders --indirect-selection=buildable
+```
+
+</TabItem>
+
+<TabItem value="empty" label="Empty mode">
+
+This mode will only include tests whose references are each within the selected nodes and will ignore all tests from attached nodes.
+
+```shell
+$ dbt test --select orders --indirect-selection=empty
+$ dbt build --select orders --indirect-selection=empty
+```
+
+</TabItem>
+
+</Tabs>
+
+</VersionBlock>
+
+<!--End of tabs for eager mode, cautious mode, buildable mode, and empty mode -->
 
 ### Syntax examples
 
