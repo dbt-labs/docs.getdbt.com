@@ -16,29 +16,27 @@ Lastly, to ensure your style guide's automated rules are being followed without 
 ```markdown
 # dbt Example Style Guide
 
-## SQL style
+## SQL Style
 
 - Use lowercase keywords.
 - Use trailing commas.
 
 ## Model Organization
 
-Our models (typically) fit into two main categories:
-- Staging &mdash; Contains models which clean and standardize data.        
+Our models (typically) fit into two main categories:\
+
+- Staging &mdash; Contains models that clean and standardize data.        
 - Marts &mdash; Contains models which combine or heavily transform data. 
 
 Things to note:
 
-- There are different types of models
-  that typically exist in each of the above categories.
-  See [Model Layers](#model-layers) for more information.
-
+- There are different types of models that typically exist in each of the above categories. See [Model Layers](#model-layers) for more information.
 - Read [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) for an example and more details around organization.
 
 ## Model Layers
 
 - Only models in `staging` should select from [sources](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources).
-- Models not within the `staging` folder should select from [refs](https://docs.getdbt.com/reference/dbt-jinja-functions/ref).
+- Models not in the `staging` folder should select from [refs](https://docs.getdbt.com/reference/dbt-jinja-functions/ref).
 
 ## Model File Naming and Coding
 
@@ -58,16 +56,16 @@ Things to note:
     - int_customers\_\_unioned.sql
     - fct_orders.sql
 
-- Schema, table and column names should be in `snake_case`.
+- Schema, table, and column names should be in `snake_case`.
 
-- Limit use of abbreviations that are related to domain knowledge. An onboarding
-  employee will understand `current_order_status` better than `current_os`.
+- Limit the use of abbreviations that are related to domain knowledge. An onboarding employee will understand `current_order_status` better than `current_os`.
 
-- Use names based on the _business_ terminology, rather than the source terminology.
+- Use names based on the _business_ rather than the source terminology.
 
-- Each model should have a primary key that can identify the unique row, and should be named `<object>_id`, e.g. `account_id` – this makes it easier to know what `id` is being referenced in downstream joined models.
+- Each model should have a primary key to identify the unique row and should be named `<object>_id`. For example, `account_id`. This makes it easier to know what `id` is referenced in downstream joined models.
 
-- For `base` or `staging` models, columns should be ordered in categories, where identifiers are first and date/time fields are at the end.- Date/time columns should be named according to these conventions:
+- For `base` or `staging` models, columns should be ordered in categories, where identifiers are first and date/time fields are at the end.
+- Date/time columns should be named according to these conventions:
 
   - Timestamps: `<event>_at`  
     Format: UTC  
@@ -80,12 +78,11 @@ Things to note:
 - Booleans should be prefixed with `is_` or `has_`.
   Example: `is_active_customer` and `has_admin_access`
 
-- Price/revenue fields should be in decimal currency (e.g. `19.99` for $19.99; many app databases store prices as integers in cents). If non-decimal currency is used, indicate this with suffix, e.g. `price_in_cents`.
+- Price/revenue fields should be in decimal currency (for example, `19.99` for $19.99; many app databases store prices as integers in cents). If a non-decimal currency is used, indicate this with suffixes. For example, `price_in_cents`.
 
 - Avoid using reserved words (such as [these](https://docs.snowflake.com/en/sql-reference/reserved-keywords.html) for Snowflake) as column names.
 
-- Consistency is key! Use the same field names across models where possible.
-  Example: a key to the `customers` table should be named `customer_id` rather than `user_id`.
+- Consistency is key! Use the same field names across models where possible. For example, a key to the `customers` table should be named `customer_id` rather than `user_id`.
 
 ## Model Configurations
 
@@ -101,13 +98,10 @@ Things to note:
 
 ## CTEs
 
-For more information about why we use so many CTEs, check out [this glossary entry](https://docs.getdbt.com/terms/cte).
+For more information about why we use so many CTEs, read [this glossary entry](https://docs.getdbt.com/terms/cte).
 
 - Where performance permits, CTEs should perform a single, logical unit of work.
-
 - CTE names should be as verbose as needed to convey what they do.
-
-- CTEs with confusing or noteable logic should be commented with SQL comments as you would with any complex functions, and should be located above the CTE.
-
-- CTEs that are duplicated across models should be pulled out and created as their own models.
+- CTEs with confusing or noteable logic should be commented with SQL comments as you would with any complex functions and should be located above the CTE.
+- CTEs duplicated across models should be pulled out and created as their own models.
 ```
