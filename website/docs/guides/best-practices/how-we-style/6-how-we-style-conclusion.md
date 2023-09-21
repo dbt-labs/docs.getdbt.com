@@ -24,11 +24,8 @@ Lastly, to ensure your style guide's automated rules are being followed without 
 ## Model Organization
 
 Our models (typically) fit into two main categories:
-
-| Category | Description                                             |
-| -------- | ------------------------------------------------------- |
-| Staging  | Contains models which clean and standardize data        |
-| Marts    | Contains models which combine or heavily transform data |
+- Staging &mdash; Contains models which clean and standardize data.        
+- Marts &mdash; Contains models which combine or heavily transform data. 
 
 Things to note:
 
