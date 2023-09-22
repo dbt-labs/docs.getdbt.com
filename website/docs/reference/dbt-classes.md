@@ -86,6 +86,7 @@ col = Column('name', 'varchar', 255)
 col.is_string() # True
 col.is_numeric() # False
 col.is_number() # False
+col.is_integer() # False
 col.is_float() # False
 col.string_type() # character varying(255)
 col.numeric_type('numeric', 12, 4) # numeric(12,4)
@@ -112,6 +113,7 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 - **is_string()**: Returns True if the column is a String type (eg. text, varchar), else False
 - **is_numeric()**: Returns True if the column is a fixed-precision Numeric type (eg. `numeric`), else False
 - **is_number()**: Returns True if the column is a number-y type (eg. `numeric`, `int`, `float`, or similar), else False
+- **is_integer()**: Returns True if the column is an integer (eg. `int`, `bigint`, `serial` or similar), else False
 - **is_float()**: Returns True if the column is a float type (eg. `float`, `float64`, or similar), else False
 - **string_size()**: Returns the width of the column if it is a string type, else, an exception is raised
 
@@ -136,6 +138,9 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 -- Return true if the column is a number
 {{ string_column.is_number() }}
 
+-- Return true if the column is an integer
+{{ string_column.is_integer() }}
+
 -- Return true if the column is a float
 {{ string_column.is_float() }}
 
@@ -150,6 +155,9 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 
 -- Return true if the column is a number
 {{ numeric_column.is_number() }}
+
+-- Return true if the column is an integer
+{{ numeric_column.is_integer() }}
 
 -- Return true if the column is a float
 {{ numeric_column.is_float() }}
