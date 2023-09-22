@@ -167,7 +167,7 @@ The merge action will optimize your cloud data platform spend and shorten job ti
 
 #### Job Insights tab
 
-To reduce your warehouse spend, you can identify what models, on average, are taking the longest to build in the Job page under the **Insights** tab. This chart looks at the average run time for each model based on its last 20 runs. Any models that are taking longer than anticipated to build might be prime candidates for optimization, which will ultimately reduce cloud warehouse spending. 
+To reduce your warehouse spend, you can identify what models, on average, are taking the longest to build in the **Job** page under the **Insights** tab. This chart looks at the average run time for each model based on its last 20 runs. Any models that are taking longer than anticipated to build might be prime candidates for optimization, which will ultimately reduce cloud warehouse spending. 
 
 #### Model Timing tab
 
