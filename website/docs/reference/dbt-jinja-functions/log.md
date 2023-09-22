@@ -12,7 +12,7 @@ __Args__:
 
 Logs a line to either the log file or stdout.
 
-([Source on GitHub](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L432))
+([Source on GitHub](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L549-L566))
 
 ```sql
 
