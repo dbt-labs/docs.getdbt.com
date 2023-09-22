@@ -286,7 +286,7 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   }}
 ``` 
 
-Note that for `order_by`, if you are operating on the object (e.g. changing granularity), you should use the following syntax:
+When using `order_by` and making changes to the object (like changing granularity), use this syntax:
 
 ```bash
 ...
