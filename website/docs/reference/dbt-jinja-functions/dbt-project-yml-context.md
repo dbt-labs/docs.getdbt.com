@@ -5,7 +5,7 @@ id: "dbt-project-yml-context"
 description: "The context methods and variables available when configuring resources in the dbt_project.yml file."
 ---
 
-The following context variables and methods are available when configuring
+The following context methods and variables are available when configuring
 resources in the `dbt_project.yml` file. This applies to the `models:`, `seeds:`,
 and `snapshots:` keys in the `dbt_project.yml` file.
 
