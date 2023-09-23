@@ -34,6 +34,19 @@ select * from ...
 
 </File>
 
+Or in a `schema.yml` file.
+
+<File name='models/google_analytics/schema.yml'>
+
+```yaml
+- models:
+  - name: ga_sessions
+    config:
+        alias: sessions
+```
+
+</File>
+
 When referencing the `ga_sessions` model above from a different model, use the `ref()` function with the model's _filename_ as usual. For example:
 
 <File name='models/combined_sessions.sql'>
@@ -114,11 +127,11 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock firstVersion="1.0">
 
-### Managing different behaviors across packages
+### Dispatch - Managing aliasing across SQL dialects, data platforms, and dbt packages
 
-See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch#managing-different-global-overrides-across-packages)
 
 </VersionBlock>
 
@@ -128,19 +141,22 @@ See docs on macro `dispatch`: ["Managing different global overrides across packa
 
 Using aliases, it's possible to accidentally create models with ambiguous identifiers. Given the following two models, dbt would attempt to create two <Term id="view">views</Term> with _exactly_ the same names in the database (ie. `sessions`):
 
-```sql
--- models/snowplow_sessions.sql
+<File name='models/snowplow_sessions.sql'>
 
+```sql
 {{ config(alias='sessions') }}
 
 select * from ...
 ```
+</File>
+
+<File name='models/sessions.sql'>
 
 ```sql
--- models/sessions.sql
-
 select * from ...
 ```
+
+</File>
 
 Whichever one of these models runs second would "win", and generally, the output of dbt would not be what you would expect. To avoid this failure mode, dbt will check if your model names and aliases are ambiguous in nature. If they are, you will be presented with an error message like this:
 
