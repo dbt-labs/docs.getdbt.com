@@ -114,7 +114,7 @@ macros:
 ```
 
 </File>
-
+Also see, [macro properties](reference/macro-properties).
 </TabItem>
 
 </Tabs>
