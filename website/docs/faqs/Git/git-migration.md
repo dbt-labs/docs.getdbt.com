@@ -1,6 +1,6 @@
 ---
 title: "How to migrate git providers"
-sidebar_label: "Git Migration"
+sidebar_label: "Git provider migration"
 id: "git-migration"
 description: "Learn how to migrate git providers in dbt Cloud with minimal disruption."
 tags: [Git]
@@ -8,9 +8,9 @@ tags: [Git]
 
 To migrate from one git provider to another, refer to the following steps to avoid minimal disruption:
 
-1. Outside of dbt Cloud, you'll need to import your existing repo into your new provider. 
+1. Outside of dbt Cloud, you'll need to import your existing repository into your new provider. 
    
-   As an example, if you're migrating from GitHub to Azure DevOps, you'll need to import your existing repo (GitHub) into your new git provider (Azure DevOps). For detailed steps on how to do this, refer to your git provider's documentation (Such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer), [GitLab](https://docs.gitlab.com/ee/user/project/import/repo_by_url.html), [Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/repos/git/import-git-repository?view=azure-devops)) 
+   As an example, if you're migrating from GitHub to Azure DevOps, you'll need to import your existing repository (GitHub) into your new git provider (Azure DevOps). For detailed steps on how to do this, refer to your git provider's documentation (Such as [GitHub](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer), [GitLab](https://docs.gitlab.com/ee/user/project/import/repo_by_url.html), [Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/repos/git/import-git-repository?view=azure-devops)) 
    
 2. Go back to dbt Cloud and set up your [integration for the new git provider](/docs/cloud/git/connect-github), if needed. 
 3. Disconnect the old repository in dbt Cloud by going to **Account Settings** and then **Projects**, click on the **Repository** link. Then click **Edit** and **Disconnect**. 
