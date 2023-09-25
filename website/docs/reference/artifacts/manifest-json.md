@@ -53,4 +53,4 @@ You can refer to [dbt JSON Schema](https://schemas.getdbt.com/) for info on desc
 
 **Note**: The `manifest.json` version number is related to (but not _equal_ to) your dbt version, so you _must_ use the correct `manifest.json` version for your dbt version. To find the correct `manifest.json` version, select the dbt version on the top navigation (such as `v1.5`). 
 
-Refer to the table at the beginning of this page to understand how the Manifest version matches the dbt version.
+Refer to the table at the beginning of [this page](/reference/artifacts/manifest-json) to understand how the Manifest version matches the dbt version.
