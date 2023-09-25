@@ -15,4 +15,4 @@ grant select on all tables in database database_name to user_name;
 grant select on all views in database database_name to user_name;
 ```
 
-Check out the [Official Documentation](https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html) for more information.
+Check out the [official documentation](https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html) for more information.
