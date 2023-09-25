@@ -14,9 +14,9 @@ Logs a line to either the log file or stdout.
 
 <details>
 	<summary>Code source</summary>
-	Refer to <a href="https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L549-L566">GitHub</a> or the following code as a source:
+	Refer to <a href="https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L549-L566">GitHub</a> or the following code as a source: <br />
 	<code>
-	def log(msg: str, info: bool = False) -> str:
+     def log(msg: str, info: bool = False) -> str:
         """Logs a line to either the log file or stdout.
 
         :param msg: The message to log
@@ -34,8 +34,9 @@ Logs a line to either the log file or stdout.
         else:
             fire_event(JinjaLogDebug(msg=msg, node_info=get_node_info()))
         return ""
-	
- </code>
+  
+	</code>
+
 </details>
 
 ```sql
