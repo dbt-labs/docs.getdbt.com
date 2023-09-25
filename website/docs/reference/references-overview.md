@@ -55,7 +55,7 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     icon="computer"/>
 
 <Card
-    title="Databricks Permissions Artifacts"
+    title="Databricks permissions artifacts"
     body="Provides an example Databricks database role permissions."
     link="/reference/database-permissions/databricks-permissions"
     icon="computer"/>
