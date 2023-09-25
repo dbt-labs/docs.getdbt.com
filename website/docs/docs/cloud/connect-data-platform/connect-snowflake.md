@@ -30,6 +30,7 @@ to authenticate dbt Cloud to run queries against Snowflake on behalf of a Snowfl
 <Lightbox src="/img/docs/dbt-cloud/snowflake-userpass-auth.png" title="Snowflake username/password authentication"/>
 
 ### Key Pair
+
 **Available in:** Development environments,  Deployment environments
 
 The `Keypair` auth method uses Snowflake's [Key Pair Authentication](https://docs.snowflake.com/en/user-guide/python-connector-example.html#using-key-pair-authentication) to authenticate Development or Deployment credentials for a dbt Cloud project.
@@ -79,11 +80,11 @@ To learn how to optimize performance with data platform-specific configurations 
 If you're receiving a `Could not deserialize key data` or `JWT token` error, refer to the following causes and solutions:
 
 - **Error: `Could not deserialize key data`**
-  - Possible causes &mdash; This might be due incorrect copying or the not including dashes or commented lines. 
+  - Possible causes &mdash; This could be because of mistakes like not copying correctly, missing dashes, or leaving out commented lines.
   - Solution &mdash; You can either manually type the key values or copy the key from its source and paste it into a text editor to verify it before using it in dbt Cloud. 
 
 - **Error: `JWT token`**
-  - Possible causes &mdash; When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud. Snowflake's 60-second token rule can sometimes reveal issues like NTP server synchronization problems (server clocks not aligned), network latency, or token problems.
-  - Solution &mdash; Confirm mismatches between Snowflake's expected public or private keys or any Snowflake connection parameter errors (such as incorrect login details). Additionally, you can reach out to Snowflake for help or refer to this Snowflake doc for more info: [Key-Based Authentication Failed with JWT token is invalid Error](https://community.snowflake.com/s/article/Key-Based-Authentication-Failed-with-JWT-token-is-invalid-Error). 
-
-
+  - Possible causes &mdash; This could be transient issue between Snowflake and dbt Cloud. When connecting to Snowflake, dbt gets a JWT token valid for only 60 seconds. If there's no response from Snowflake within this time, you might see a `JWT token is invalid` error in dbt Cloud.
+  - Solution &mdash; This requires dbt being able to retry connections to Snowflake.<br /><br />
+  - Possible causes &mdash; The public key was not entered correctly in Snowflake.
+  - Solution &mdash; You can confirm and enter Snowflake's public key. Additionally, you can reach out to Snowflake for help or refer to this Snowflake doc for more info: [Key-Based Authentication Failed with JWT token is invalid Error](https://community.snowflake.com/s/article/Key-Based-Authentication-Failed-with-JWT-token-is-invalid-Error).
