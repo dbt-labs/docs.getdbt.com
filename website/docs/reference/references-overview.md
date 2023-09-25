@@ -61,7 +61,7 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     icon="computer"/>
 
 <Card
-    title="Redshift Permissions Artifacts"
+    title="Redshift permissions artifacts"
     body="Provides an example Redshift database role permissions."
     link="/reference/database-permissions/redshift-permissions"
     icon="computer"/>
