@@ -8,6 +8,8 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/connect-adapters",
+        "docs/verified-adapters",
+        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-core-adapters",
       ],
@@ -228,7 +230,6 @@ const sidebarSettings = {
           label: "Build your DAG",
           collapsed: true,
           items: [
-            "docs/build/sources",
             {
               type: "category",
               label: "Models",
@@ -238,11 +239,15 @@ const sidebarSettings = {
                 "docs/build/python-models",
               ],
             },
-            "docs/build/seeds",
             "docs/build/snapshots",
+            "docs/build/seeds",
+            "docs/build/tests",
+            "docs/build/jinja-macros",
+            "docs/build/sources",
             "docs/build/exposures",
             "docs/build/metrics",
             "docs/build/groups",
+            "docs/build/analyses",
           ],
         },
         {
@@ -291,7 +296,6 @@ const sidebarSettings = {
           label: "Enhance your models",
           collapsed: true,
           items: [
-            "docs/build/tests",
             "docs/build/materializations",
             "docs/build/incremental-models",
           ],
@@ -301,11 +305,9 @@ const sidebarSettings = {
           label: "Enhance your code",
           collapsed: true,
           items: [
-            "docs/build/jinja-macros",
             "docs/build/project-variables",
             "docs/build/environment-variables",
             "docs/build/packages",
-            "docs/build/analyses",
             "docs/build/hooks-operations",
           ],
         },
@@ -363,6 +365,7 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate with others",
       items: [
+        "docs/collaborate/explore-projects",
         {
           type: "category",
           label: "Git version control",
@@ -1095,6 +1098,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter",
           ],
         },
         {

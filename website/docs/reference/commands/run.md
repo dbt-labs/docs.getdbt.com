@@ -77,7 +77,7 @@ For more information on running parents or children of specific models, see the 
 
 </Changelog>
 
-See [global configs](/reference/global-configs/failing-fast)
+See [global configs](/reference/global-configs/warnings)
 
 ## Failing fast
 
