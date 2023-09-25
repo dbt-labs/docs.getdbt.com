@@ -15,6 +15,7 @@ Logs a line to either the log file or stdout.
 <details>
 	<summary>Code source</summary>
 	Refer to <a href="https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L549-L566">GitHub</a> or the following code as a source: <br /><br />
+	
 	<code>
 		
      def log(msg: str, info: bool = False) -> str:
