@@ -19,3 +19,6 @@ website/i18n/*
 .netlify
 
 .eslintcache
+
+# Local Vercel folder
+.vercel

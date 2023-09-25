@@ -58,7 +58,7 @@ For more detailed information and to ask questions, please read and comment on t
 Supported on:
 - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
 - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
-- Snowflake (docs forthcoming)
+- [Snowflake](/reference/resource-configs/snowflake-configs#dynamic-tables)
 - Databricks (docs forthcoming)
 
 Support for BigQuery coming soon.

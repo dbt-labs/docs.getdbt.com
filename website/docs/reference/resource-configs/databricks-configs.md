@@ -7,21 +7,41 @@ id: "databricks-configs"
 
 When materializing a model as `table`, you may include several optional configs that are specific to the dbt-databricks plugin, in addition to the standard [model configs](/reference/model-configs).
 
-| Option  | Description                                                                                                                        | Required?               | Example                  |
-|---------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------|--------------------------|
-| file_format | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`). | Optional | `delta`|
-| location_root  | The created table uses the specified directory to store its data. The table alias is appended to it.                               | Optional                | `/mnt/root`              |
-| partition_by  | Partition the created table by the specified columns. A directory is created for each partition.                                   | Optional                | `date_day`              |
-| liquid_clustered_by  | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2.                                  | Optional                | `date_day`              |
-| clustered_by  | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                         | Optional               | `country_code`              |
-| buckets  | The number of buckets to create while clustering                                                                                   | Required if `clustered_by` is specified                | `8`              |
+<VersionBlock lastVersion="1.5">
+
+| Option              | Description                                                                                                                                                                                                        | Required?                               | Example        |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|----------------|
+| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                | `delta`        |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                | `/mnt/root`    |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                | `date_day`     |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                | `date_day`     |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                | `country_code` |
+| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | `8`            |
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+ 
+| Option              | Description                                                                                                                                                                                                        | Required?                               | Model Support | Example        |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|---------------|----------------|
+| file_format         | The file format to use when creating tables (`parquet`, `delta`, `hudi`, `csv`, `json`, `text`, `jdbc`, `orc`, `hive` or `libsvm`).                                                                                | Optional                                | SQL, Python   | `delta`        |
+| location_root       | The created table uses the specified directory to store its data. The table alias is appended to it.                                                                                                               | Optional                                | SQL, Python   | `/mnt/root`    |
+| partition_by        | Partition the created table by the specified columns. A directory is created for each partition.                                                                                                                   | Optional                                | SQL, Python   | `date_day`     |
+| liquid_clustered_by | Cluster the created table by the specified columns. Clustering method is based on [Delta's Liquid Clustering feature](https://docs.databricks.com/en/delta/clustering.html). Available since dbt-databricks 1.6.2. | Optional                                | SQL           | `date_day`     |
+| clustered_by        | Each partition in the created table will be split into a fixed number of buckets by the specified columns.                                                                                                         | Optional                                | SQL, Python   | `country_code` |
+| buckets             | The number of buckets to create while clustering                                                                                                                                                                   | Required if `clustered_by` is specified | SQL, Python   | `8`            |
+
+
+</VersionBlock>
 
 ## Incremental models
 
-dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of three values:
+dbt-databricks plugin leans heavily on the [`incremental_strategy` config](/docs/build/incremental-models#about-incremental_strategy). This config tells the incremental materialization how to build models in runs beyond their first. It can be set to one of four values:
  - **`append`** (default): Insert new records without updating or overwriting any existing data.
  - **`insert_overwrite`**: If `partition_by` is specified, overwrite partitions in the <Term id="table" /> with new data. If no `partition_by` is specified, overwrite the entire table with new data.
- - **`merge`** (Delta and Hudi file format only): Match records based on a `unique_key`; update old records, insert new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`merge`** (Delta and Hudi file format only): Match records based on a `unique_key`, updating old records, and inserting new ones. (If no `unique_key` is specified, all new data is inserted, similar to `append`.)
+ - **`replace_where`** (Delta file format only): Match records based on `incremental_predicates`, replacing all records that match the predicates from the existing table with records matching the predicates from the new data. (If no `incremental_predicates` are specified, all new data is inserted, similar to `append`.)
  
 Each of these strategies has its pros and cons, which we'll discuss below. As with any model config, `incremental_strategy` may be specified in `dbt_project.yml` or within a model file's `config()` block.
 
@@ -121,7 +141,7 @@ select
     date_day,
     count(*) as users
 
-from events
+from new_events
 group by 1
 ```
 
@@ -248,6 +268,96 @@ merge into analytics.merge_incremental as DBT_INTERNAL_DEST
 </TabItem>
 </Tabs>
 
+### The `replace_where` strategy
+
+The `replace_where` incremental strategy requires:
+- `file_format: delta`
+- Databricks Runtime 12.0 and above
+
+dbt will run an [atomic `replace where` statement](https://docs.databricks.com/en/delta/selective-overwrite.html#arbitrary-selective-overwrite-with-replacewhere) which selectively overwrites data matching one or more `incremental_predicates` specified as a string or array.  Only rows matching the predicates will be inserted.  If no `incremental_predicates` are specified, dbt will perform an atomic insert, as with `append`.  
+
+:::caution
+
+`replace_where` inserts data into columns in the order provided, rather than by column name.  If you reorder columns and the data is compatible with the existing schema, you may silently insert values into an unexpected column.  If the incoming data is incompatible with the existing schema, you will instead receive an error.
+
+:::
+
+<Tabs
+  defaultValue="source"
+  values={[
+    { label: 'Source code', value: 'source', },
+    { label: 'Run code', value: 'run', },
+]
+}>
+<TabItem value="source">
+
+<File name='replace_where_incremental.sql'>
+
+```sql
+{{ config(
+    materialized='incremental',
+    file_format='delta',
+    incremental_strategy = 'replace_where'
+    incremental_predicates = 'user_id >= 10000' # Never replace users with ids < 10000
+) }}
+
+with new_events as (
+
+    select * from {{ ref('events') }}
+
+    {% if is_incremental() %}
+    where date_day >= date_add(current_date, -1)
+    {% endif %}
+
+)
+
+select
+    user_id,
+    max(date_day) as last_seen
+
+from events
+group by 1
+```
+
+</File>
+</TabItem>
+<TabItem value="run">
+
+<File name='target/run/replace_where_incremental.sql'>
+
+```sql
+create temporary view replace_where__dbt_tmp as
+
+    with new_events as (
+
+        select * from analytics.events
+
+
+        where date_day >= date_add(current_date, -1)
+
+
+    )
+
+    select
+        user_id,
+        max(date_day) as last_seen
+
+    from events
+    group by 1
+
+;
+
+insert into analytics.replace_where_incremental
+    replace where user_id >= 10000
+    table `replace_where__dbt_tmp`
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+
 ## Persisting model descriptions
 
 Relation-level docs persistence is supported in dbt v0.17.0. For more
@@ -281,3 +391,49 @@ snapshots:
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.6">
+
+## Materialized views and streaming tables
+
+Starting with version 1.6.0, the dbt-databricks adapter supports [materialized views](https://docs.databricks.com/en/sql/user/materialized-views.html) and [streaming tables](https://docs.databricks.com/en/sql/load-data-streaming-table.html), as alternatives to incremental tables that are powered by [Delta Live Tables](https://docs.databricks.com/en/delta-live-tables/index.html).
+See [What are Delta Live Tables?](https://docs.databricks.com/en/delta-live-tables/index.html#what-are-delta-live-tables-datasets) for more information and use cases.
+These features are still in preview, and the support in the dbt-databricks adapter should, for now, be considered _experimental_.
+In order to adopt these materialization strategies, you will need a workspace that is enabled for Unity Catalog and serverless SQL Warehouses.
+
+<File name='materialized_view.sql'>
+
+```sql
+{{ config(
+   materialized = 'materialized_view'
+ ) }}
+```
+
+</File>
+
+or
+
+<File name='streaming_table.sql'>
+
+```sql
+{{ config(
+   materialized = 'streaming_table'
+ ) }}
+```
+
+</File>
+
+When dbt detects a pre-existing relation of one of these types, it issues a `REFRESH` [command](https://docs.databricks.com/en/sql/language-manual/sql-ref-syntax-ddl-refresh-full.html).
+
+### Limitations
+
+As mentioned above, support for these materializations in the Databricks adapter is still limited.
+At this time the following configuration options are not available:
+
+* Specifying a refresh schedule for these materializations
+* Specifying `on_configuration_change` settings.
+
+Additionally, if you change the model definition of your materialized view or streaming table, you will need to drop the materialization in your warehouse directly before running dbt again; otherwise, you will get a refresh error.
+
+We plan to address these limitations during the 1.7.x timeframe.
+</VersionBlock>
