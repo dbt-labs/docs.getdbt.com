@@ -15,4 +15,4 @@ grant select on all tables in database database_name to user_name;
 grant select on all views in database database_name to user_name;
 ```
 
-Check out the [Official Documentation](https://www.postgresql.org/docs/current/sql-grant.html) for more information.
+Check out the [official documentation](https://www.postgresql.org/docs/current/sql-grant.html) for more information.
