@@ -67,7 +67,7 @@ Learn how to add more configurations to your dbt project or adapter, use propert
     icon="computer"/>
 
 <Card
-    title="Postgres Permissions Artifacts"
+    title="Postgres permissions artifacts"
     body="Provides an example Postgres database role permissions."
     link="/reference/database-permissions/postgres-permissions"
     icon="computer"/>
