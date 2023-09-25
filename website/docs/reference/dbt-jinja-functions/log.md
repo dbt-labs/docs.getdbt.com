@@ -16,9 +16,9 @@ Logs a line to either the log file or stdout.
 	<summary>Code source</summary>
 	Refer to <a href="https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/context/base.py#L549-L566">GitHub</a> or the following code as a source: <br /><br />
 	
-	<code>
+<code>
 		
-     def log(msg: str, info: bool = False) -> str:
+     def log(msg: str, info: bool = False) -> str: <br />
      
         """Logs a line to either the log file or stdout.
 
