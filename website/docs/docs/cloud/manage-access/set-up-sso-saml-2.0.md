@@ -264,7 +264,7 @@ Expected **Attributes**:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
-| Name of groups | `MemberOf` |
+| Name of groups | `groups` |
 
 10. Click **Finish** to continue.
 
