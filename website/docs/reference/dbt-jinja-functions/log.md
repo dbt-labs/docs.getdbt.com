@@ -18,6 +18,7 @@ Logs a line to either the log file or stdout.
 	<code>
 		
      def log(msg: str, info: bool = False) -> str:
+     
         """Logs a line to either the log file or stdout.
 
         :param msg: The message to log
