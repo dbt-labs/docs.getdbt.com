@@ -14,4 +14,4 @@ grant create table on schema schema_name to principal;
 grant create view on schema schema_name to principal;
 ```
 
-Check out the [Official Documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog) for more information.
+Check out the [official documentation](https://docs.databricks.com/en/data-governance/unity-catalog/manage-privileges/privileges.html#privilege-types-by-securable-object-in-unity-catalog) for more information.
