@@ -26,3 +26,4 @@ You will be directed back to dbt Cloud, and your profile should be linked. You a
 ## FAQs
 
 <FAQ path="Git/gitignore"/>
+<FAQ path="Git/git-migration"/>
