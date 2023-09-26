@@ -2,6 +2,7 @@
 title: "How to migrate git providers"
 sidebar_label: "Git provider migration"
 id: "git-migration"
+hide_table_of_contents: true
 description: "Learn how to migrate git providers in dbt Cloud with minimal disruption."
 tags: [Git]
 ---
@@ -15,7 +16,7 @@ To migrate from one git provider to another, refer to the following steps to avo
 2. Go back to dbt Cloud and set up your [integration for the new git provider](/docs/cloud/git/connect-github), if needed. 
 3. Disconnect the old repository in dbt Cloud by going to **Account Settings** and then **Projects**, click on the **Repository** link. Then click **Edit** and **Disconnect**. 
    
-   <Lightbox src="/img/docs/dbt-cloud/disconnect-repo.gif" width="85%" title="Disconnect and reconnect you git repository in your dbt Cloud Account Settings pages."/>
+   <Lightbox src="/img/docs/dbt-cloud/disconnect-repo.gif" width="65%" title="Disconnect and reconnect you git repository in your dbt Cloud Account Settings pages."/>
 
 4. On the same page, connect to the new git provider repository by clicking **Configure Repository**
    - If you're using the native integration, you may need to OAuth to it.
