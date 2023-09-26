@@ -92,9 +92,19 @@ The green checkmark means the dbt build and tests were successful. Clicking on t
 If you're experiencing any issues, review some of the common questions and answers below.
 
 <details>
+  <summary>Temporary schemas aren't dropping</summary>
+  <div>
+    <div>If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates you have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.<br></br><br></br> To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example: 
+    <br></br><br></br>
+      • ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>) <br></br>
+      • ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
+    </div>
+  </div>
+</details>
+<details>
    <summary>Reconnecting your dbt project to use dbt Cloud's native integration with GitHub, GitLab, or Azure DevOps</summary>
    <div>
-      <div>If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud Slim CI.<br></br><br></br>
+      <div>If your dbt project relies the generic git clone method that clones using SSH and deploy keys to connect to your dbt repo, you need to disconnect your repo and reconnect it using the native GitHub, GitLab, or Azure DevOps integration in order to enable dbt Cloud CI.<br></br><br></br>
       First, make sure you have the <a href="https://docs.getdbt.com/docs/cloud/git/connect-github">native GitHub authentication</a>, <a href="https://docs.getdbt.com/docs/cloud/git/connect-gitlab">native GitLab authentication</a>, or <a href="https://docs.getdbt.com/docs/cloud/git/connect-azure-devops">native Azure DevOps authentication</a> set up depending on which git provider you use. After you have gone through those steps, go to <strong>Account Settings</strong>, select <strong>Projects</strong> and click on the project you'd like to reconnect through native GitHub, GitLab, or Azure DevOps auth. Then click on the repository link.<br></br><br></br>
       
       Once you're in the repository page, select <strong>Edit</strong> and then <strong>Disconnect Repository</strong> at the bottom.<br></br>
@@ -119,7 +129,7 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
    <summary>Production job runs failing at the <b>Clone Git Repository</b> step</summary>
    <div>
-      <div>dbt Cloud can only checkout commits that belong to the original repository. dbt Cloud _cannot_ checkout commits that belong to a fork of that repository.<br></br><br></br>
+      <div>dbt Cloud can only check out commits that belong to the original repository. dbt Cloud <i>cannot</i> checkout commits that belong to a fork of that repository.<br></br><br></br>
       
       If you receive the following error message at the <b>Clone Git Repository</b> step of your job run:<br></br>
          <code>
@@ -144,39 +154,5 @@ If you're experiencing any issues, review some of the common questions and answe
    </div>
 </details>
 
-### Temp PR schema limitations
 
-If your temporary pull request schemas aren't dropping after a merge or close of the PR, it's likely due to the below scenarios. Open and review the toggles below for recommendations on how to resolve this:
 
-<details>
-  <summary>You used dbt Cloud environment variables in your connection settings page </summary>
-  <div>
-    <div>To resolve this, remove environment variables in your <a href="https://docs.getdbt.com/docs/dbt-cloud/using-dbt-cloud/cloud-environment-variables">connections settings</a>.</div>
-  </div>
-</details>
-<details>
-  <summary>You have an empty/blank default schema</summary>
-  <div>
-    <div>To change this, edit and fill in your default schema.</div>
-  </div>
-</details>
-<details>
-  <summary>You have overridden the <code>generate_schema_name</code> macro</summary>
-  <div>
-    <div>To resolve this, change your macro so that the temporary PR schema name contains the default prefix and review the guidance below:
-    <br></br>
-      • ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>) <br></br>
-      • ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
-    </div>
-  </div>
-</details>
-<details>
-  <summary>You have overridden the <code>generate_database_name</code> macro</summary>
-  <div>
-    <div>If you assume that the project's default connection is to a database named <code>analytics</code>, review the guidance below to resolve this:
-      <br></br>
-       • ✅ Database remains the same as the connection default (like <code>analytics</code>) <br></br>
-       • ❌ Database has changed from the default connection (like <code>dev</code>). <br></br>
-    </div>
-  </div>
-</details>
