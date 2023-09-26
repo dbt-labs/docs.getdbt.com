@@ -25,7 +25,7 @@ The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), s
 
 MetricFlow, a powerful component of the dbt Semantic Layer, simplifies the creation and management of company metrics. It offers flexible abstractions, SQL query generation, and enables fast retrieval of metric datasets from a data platform.
 
-Use this guide to fully experience the power of a universal dbt Semantic Layer. Here are the following steps you'll take:
+Use this guide to fully experience the power of the universal dbt Semantic Layer. Here are the following steps you'll take:
 
 - [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
 - [Define metrics](#define-metrics) in dbt Cloud using MetricFlow
