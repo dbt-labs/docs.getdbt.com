@@ -12,7 +12,7 @@ This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, 
 
 MetricFlow is a new way to define metrics and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
 
-MetricFlow is currently available on dbt v1.6 or higher for all users. dbt Core users can use the MetricFlow CLI to define metrics in their local dbt Core project. However, to experience the power of a universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow is currently available on dbt v1.6 or higher for all users. dbt Core users can use the MetricFlow CLI to define metrics in their local dbt Core project. However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 :::
 
