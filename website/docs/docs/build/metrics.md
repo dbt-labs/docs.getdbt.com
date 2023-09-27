@@ -33,12 +33,6 @@ If you've defined metrics using dbt_metrics or integrated with the legacy Semant
  
 <VersionBlock lastVersion="1.5">
 
-<Changelog>
-
-* **v1.3.0**: Metrics have been moved out of the experimental phase
-* **v1.0.0**: Metrics are new and experimental
-
-</Changelog>
 
 A metric is an aggregation over a <Term id="table" /> that supports zero or more dimensions. Some examples of metrics include:
 - active users
@@ -236,7 +230,7 @@ The type of calculation (aggregation or expression) that is applied to the sql p
 </VersionBlock> 
  
 
-|  <VersionBlock firstVersion="1.3">Metric Calculation Method </VersionBlock>  <VersionBlock lastVersion="1.1">Metric Type </VersionBlock>    |  Description                                                               |
+|  <VersionBlock firstVersion="1.3">Metric Calculation Method </VersionBlock>   |  Description                                                               |
 |----------------|----------------------------------------------------------------------------|
 | count          | This metric type will apply the `count` aggregation to the specified field |
 | count_distinct | This metric type will apply the `count` aggregation to the specified field, with an additional distinct statement inside the aggregation |
@@ -468,16 +462,6 @@ packages:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1" lastVersion="1.1">
-
-```yml
-packages:
-  - package: dbt-labs/metrics
-    version: [">=0.2.0", "<0.3.0"]
-```
-
-</VersionBlock>
-
 Once the package has been installed with `dbt deps`, make sure to run the `dbt_metrics_default_calendar` model as this is required for macros used to query metrics. More information on this, and additional calendar functionality, can be found in the [project README](https://github.com/dbt-labs/dbt_metrics#calendar).
 
 ### Querying metrics with `metrics.calculate`
@@ -496,19 +480,6 @@ from {{ metrics.calculate(
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.1">
-
-```sql
-select * 
-from {{ metrics.calculate(
-    metric_name='new_customers',
-    grain='week',
-    dimensions=['plan', 'country']
-) }}
-``` 
-
-</VersionBlock>
-
 ### Supported inputs
 The example above doesn't display all the potential inputs you can provide to the macro.
 
@@ -517,7 +488,7 @@ You may find some pieces of functionality, like secondary calculations, complica
 
 | Input       | Example     | Description | Required   |
 | ----------- | ----------- | ----------- | -----------|
-| <VersionBlock firstVersion="1.2">metric_list</VersionBlock><VersionBlock lastVersion="1.1">metric_name</VersionBlock>  | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock><VersionBlock lastVersion="1.1">`'metric_name'`<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock><VersionBlock lastVersion="1.1">The name of the metric</VersionBlock>  | Required |
+| <VersionBlock firstVersion="1.2">metric_list</VersionBlock> | <VersionBlock firstVersion="1.2">`metric('some_metric)'`, <br />[`metric('some_metric)'`, <br />`metric('some_other_metric)'`]<br /></VersionBlock> | <VersionBlock firstVersion="1.2">The metric(s) to be queried by the macro. If multiple metrics required, provide in list format.</VersionBlock> | Required |
 | grain       | `'day'`, `'week'`, <br />`'month'`, `'quarter'`, <br />`'year'`<br /> | The time grain that the metric will be aggregated to in the returned dataset | Optional |
 | dimensions  | [`'plan'`,<br /> `'country'`] | The dimensions you want the metric to be aggregated by in the returned dataset | Optional |
 | secondary_calculations  | [`metrics.period_over_period( comparison_strategy="ratio", interval=1, alias="pop_1wk")`] | Performs the specified secondary calculation on the metric results. Examples include period over period calculations, rolling calculations, and period to date calculations. | Optional |
@@ -666,12 +637,6 @@ from {{ metrics.develop(
         )
     }}
 ```
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.1" >
-
-Functionality for `develop` is only supported in v1.2 and higher. Please navigate to those versions for information about this method of metric development.
 
 </VersionBlock>
 
