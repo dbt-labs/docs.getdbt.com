@@ -24,10 +24,3 @@ models:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.17.1`: Native rendering is disabled by default. The `as_bool` filter was 
-introduced.
-
-</Changelog>
