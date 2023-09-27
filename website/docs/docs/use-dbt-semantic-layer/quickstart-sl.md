@@ -180,16 +180,6 @@ packages:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1" lastVersion="1.1">
-
-```yml
-packages:
-  - package: dbt-labs/metrics
-    version: [">=0.2.0", "<0.3.0"]
-```
-
-</VersionBlock>  
-
 
 1. Paste the dbt metrics package code in your `packages.yml` file.
 2. Run the [`dbt deps` command](/reference/commands/deps) to install the package.

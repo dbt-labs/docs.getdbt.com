@@ -6,12 +6,6 @@ id: configurable-data-path
 
 ---
 
-<Changelog>
-
-- **v1.0.0:** The config 'data-paths' has been deprecated in favor of [`seed-paths`](/reference/project-configs/seed-paths).
-
-</Changelog>
-
 By default, dbt expects your seed files to be located in the `seeds` subdirectory
 of your project.
 
