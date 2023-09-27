@@ -18,9 +18,9 @@ You can use service account tokens for system-level integrations that do not run
 
 You can assign as many permission sets as needed to one token. For more on permissions sets, see "[Enterprise Permissions](/docs/cloud/manage-access/enterprise-permissions)."
 
-## Generating service account tokens
+## Generate service account tokens
 
-To make a service token in dbt Cloud, follow these steps:
+You can generate service tokens if you have a Developer [license](/docs/cloud/manage-access/seats-and-users) and account admin [permissions](#permissions-for-service-account-tokens). To make a service token in dbt Cloud, follow these steps:
 
 1. Open the **Account Settings** page by clicking the gear icon on the right-hand side.
 2. On the left sidebar, click on **Service Tokens**.
