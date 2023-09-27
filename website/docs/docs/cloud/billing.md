@@ -9,7 +9,7 @@ dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing
 
 ## How does dbt Cloud pricing work?
 
-As a customer, you pay for the number of seats you have and the amount of usage consumed each month. Usage is based on the number of Successful Models Built, and seats are billed primarily on the amount of Developer licenses purchased. All billing computations are conducted in Coordinated Universal Time (UTC).
+As a customer, you pay for the number of seats you have and the amount of usage consumed each month. Usage is based on the number of Successful Models Built, and seats are billed primarily on the amount of Developer licenses purchased. All billing computations are conducted in Coordinated Universal Time (UTC). Please note, Billing cycle starts on the 1st day of each month. That mean if you’re signing up on 20th of a current month you will be billed a prorated amount today and then the next payment will take place on the 1st of the next month.
 
 ### What counts as a Successful Model Built?
 
