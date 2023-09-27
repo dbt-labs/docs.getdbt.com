@@ -8,8 +8,8 @@ sidebar: "Users and licenses"
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
 
 - **Developer** &mdash; Granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud.
-- **Read-Only** &mdash; Intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account.
-- **IT** &mdash; Can manage users, groups, and licenses, among other permissions. Available on Enterprise and Team plans only.
+- **Read-Only** &mdash; Intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Read-Only users can receive job notifications but not configure them.
+- **IT** &mdash; Can manage users, groups, and licenses, among other permissions. IT users can receive job notifications but not configure them. Available on Enterprise and Team plans only.
 
 The user's assigned license determines the specific capabilities they can access in dbt Cloud.
 
@@ -21,8 +21,8 @@ The user's assigned license determines the specific capabilities they can access
 | API Access | ✅ | ❌ | ❌ |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
-| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅ |  ✅ | 
-*Available on Enterprise and Team plans only and doesn't count toward seat usage.
+| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
+*Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.
 
 ## Licenses
 

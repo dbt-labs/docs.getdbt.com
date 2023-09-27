@@ -56,9 +56,10 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 
 | name | name format | value | description |
 | ---- | ----------- | ----- | ----------- |
-| email | Unspecified | ${user.email} | The user's email address |
-| first_name | Unspecified | ${user.first_name} | The user's first name |
-| last_name | Unspecified | ${user.last_name} | The user's last name |
+| email | Unspecified | user.email | The user's email address |
+| first_name | Unspecified | user.first_name | The user's first name |
+| last_name | Unspecified | user.last_name | The user's last name |
+| NameID (if applicable) | Unspecified | user.email | The user's email address |
 
 dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
@@ -154,9 +155,9 @@ dbt Cloud expects by using the Attribute Statements and Group Attribute Statemen
 
    | Name           | Name format | Value                | Description                |
    | -------------- | ----------- | -------------------- | -------------------------- |
-   | `email`        | Unspecified | `${user.email}`      | _The user's email address_ |
-   | `first_name`   | Unspecified | `${user.firstName}`  | _The user's first name_    |
-   | `last_name`    | Unspecified | `${user.lastName}`   | _The user's last name_     |
+   | `email`        | Unspecified | `user.email`      | _The user's email address_ |
+   | `first_name`   | Unspecified | `user.firstName`  | _The user's first name_    |
+   | `last_name`    | Unspecified | `user.lastName`   | _The user's last name_     |
 
 4. The following table illustrates expected **Group Attribute Statements**:
 
@@ -263,7 +264,7 @@ Expected **Attributes**:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
-| Name of groups | `MemberOf` |
+| Name of groups | `groups` |
 
 10. Click **Finish** to continue.
 
@@ -303,7 +304,7 @@ Follow these steps to set up single sign-on (SSO) with dbt Cloud:
 5. Select **Integrate any other application you don't find in the gallery (Non-gallery)** as the application type.
 6. Click **Create**.
 7. You can find the new application by clicking **Enterprise applications** and selecting **All applications**.
-8. Click the application you just created and follow the instructions for configuring it in [Configuring SAML endpoints in AD](#configuring-saml-endpoints-in-ad).
+8. Click the application you just created.
 9. Select **Single sign-on** under Manage in the left navigation.
 10. Click **Set up single sign on** under Getting Started.
 11. Click **SAML** in "Select a single sign-on method" section.
@@ -380,6 +381,7 @@ We recommend using the following values:
 
 | name | name format | value |
 | ---- | ----------- | ----- |
+| NameID | Unspecified | Email |
 | email | Unspecified | Email |
 | first_name | Unspecified | First Name |
 | last_name | Unspecified | Last Name |

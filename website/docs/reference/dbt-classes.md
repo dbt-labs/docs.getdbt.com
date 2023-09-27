@@ -10,6 +10,7 @@ These classes are often useful when building advanced dbt models and macros.
 
 The `Relation` object is used to interpolate schema and <Term id="table" /> names into SQL code with appropriate quoting. This object should _always_ be used instead of interpolating values with `{{ schema }}.{{ table }}` directly. Quoting of the Relation object can be configured using the [`quoting` config](/reference/project-configs/quoting).
 
+
 ### Creating relations
 
 A `Relation` can be created by calling the `create` class method on the `Relation` class.
@@ -32,6 +33,7 @@ class Relation:
 
 ### Using relations
 
+In addition to `api.Relation.create`, dbt returns a Relation when you use [`ref`](/reference/dbt-jinja-functions/ref), [`source`](/reference/dbt-jinja-functions/source) or  [`this`](/reference/dbt-jinja-functions/this).
 <File name='relation_usage.sql'>
 
 ```jinja2
@@ -84,6 +86,7 @@ col = Column('name', 'varchar', 255)
 col.is_string() # True
 col.is_numeric() # False
 col.is_number() # False
+col.is_integer() # False
 col.is_float() # False
 col.string_type() # character varying(255)
 col.numeric_type('numeric', 12, 4) # numeric(12,4)
@@ -110,6 +113,7 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 - **is_string()**: Returns True if the column is a String type (eg. text, varchar), else False
 - **is_numeric()**: Returns True if the column is a fixed-precision Numeric type (eg. `numeric`), else False
 - **is_number()**: Returns True if the column is a number-y type (eg. `numeric`, `int`, `float`, or similar), else False
+- **is_integer()**: Returns True if the column is an integer (eg. `int`, `bigint`, `serial` or similar), else False
 - **is_float()**: Returns True if the column is a float type (eg. `float`, `float64`, or similar), else False
 - **string_size()**: Returns the width of the column if it is a string type, else, an exception is raised
 
@@ -134,6 +138,9 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 -- Return true if the column is a number
 {{ string_column.is_number() }}
 
+-- Return true if the column is an integer
+{{ string_column.is_integer() }}
+
 -- Return true if the column is a float
 {{ string_column.is_float() }}
 
@@ -148,6 +155,9 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 
 -- Return true if the column is a number
 {{ numeric_column.is_number() }}
+
+-- Return true if the column is an integer
+{{ numeric_column.is_integer() }}
 
 -- Return true if the column is a float
 {{ numeric_column.is_float() }}
@@ -197,7 +207,6 @@ The execution of a resource in dbt generates a `Result` object. This object cont
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node, measured in seconds.
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
-- `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc.
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
 
 import RowsAffected from '/snippets/_run-result.md'; 

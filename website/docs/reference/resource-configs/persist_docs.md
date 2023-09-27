@@ -151,7 +151,7 @@ Some known issues and limitations:
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.0" lastVersion="1.1">
+<VersionBlock lastVersion="1.1">
 
 - Column names that must be quoted, such as column names containing special characters, will cause runtime errors if column-level `persist_docs` is enabled. This is fixed in v1.2.
 

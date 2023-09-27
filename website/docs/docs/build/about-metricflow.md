@@ -10,9 +10,9 @@ This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, 
 
 :::info
 
-MetricFlow is a new way to define metrics in dbt and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
+MetricFlow is a new way to define metrics and one of the key components of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl). It handles SQL query construction and defines the specification for dbt semantic models and metrics. 
 
-To fully experience the dbt Semantic Layer, including the ability to query dbt metrics via external integrations, you'll need a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
+MetricFlow is currently available on dbt v1.6 or higher for all users. dbt Core users can use the MetricFlow CLI to define metrics in their local dbt Core project. However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 :::
 
@@ -70,7 +70,7 @@ MetricFlow supports different metric types:
 
 In the upcoming sections, we'll show how data practitioners currently calculate metrics and compare it to how MetricFlow makes defining metrics easier and more flexible. 
 
-The following example data is based off the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
+The following example data is based on the Jaffle Shop repo. You can view the complete [dbt project](https://github.com/dbt-labs/jaffle-sl-template). The tables we're using in our example model are:
 
 - `orders` is a production data platform export that has been cleaned up and organized for analytical consumption
 - `customers` is a partially denormalized table in this case with a column derived from the orders table through some upstream process
@@ -91,7 +91,7 @@ Next, we'll compare how data practitioners currently calculate metrics with mult
 <Tabs>
 <TabItem value="mulqueries" label="Calculate with multiple queries">
 
-The following example displays how data practitioners typically would calculate the order_total metric aggregated. It's also likely that analysts are asked for more details on a metric, like how much revenue came from new customers. 
+The following example displays how data practitioners typically would calculate the `order_total` metric aggregated. It's also likely that analysts are asked for more details on a metric, like how much revenue came from new customers. 
 
 Using the following query creates a situation where multiple analysts working on the same data, each using their own query method &mdash; this can lead to confusion, inconsistencies, and a headache for data management.
 
@@ -121,44 +121,44 @@ In the following three example tabs, use MetricFlow to define a semantic model t
 
 In this example, a measure named `order_total` is defined based on the order_total column in the `orders` table. 
 
-The time dimension `metric_time` provides daily granularity and can be aggregated to weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
+The time dimension `metric_time` provides daily granularity and can be aggregated into weekly or monthly time periods. Additionally, a categorical dimension called `is_new_customer` is specified in the `customers` semantic model.
 
 
 ```yaml
 semantic_models:
-  - name: orders    #The name of the semantic model
+  - name: orders    # The name of the semantic model
     description: |
-      Model containing order data. The grain of the table is the order id.
+      A model containing order data. The grain of the table is the order id.
     model: ref('orders') #The name of the dbt model and schema
     defaults:
       agg_time_dimension: metric_time
-    entities: #Entities. These usually correspond to keys in the table.table.
+    entities: # Entities, which usually correspond to keys in the table. 
       - name: order_id
         type: primary
       - name: customer
         type: foreign
         expr: customer_id
-    measures:   #Measures. These are the aggregations on the columns in the table.
+    measures:   # Measures, which are the aggregations on the columns in the table.
       - name: order_total
         agg: sum
-    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
+    dimensions: # Dimensions are either categorical or time. They add additional context to metrics and the typical querying pattern is Metric by Dimension.
       - name: metric_time
         expr: cast(ordered_at as date)
         type: time
         type_params:
           time_granularity: day
-      - name: customers
-        defaults: null
-        agg_time_dimension: first_ordered_at
-        description: >
-          Customer dimension table. The grain of the table is one row per
-          customer.
-        model: ref('customers') # The name of the dbt model and schema
-    entities: #Entities. These usually correspond to keys in the table.
+  - name: customers    # The name of the second semantic model
+    description: >
+      Customer dimension table. The grain of the table is one row per
+        customer.
+    model: ref('customers') #The name of the dbt model and schema
+    defaults:
+      agg_time_dimension: first_ordered_at
+    entities: # Entities, which  usually correspond to keys in the table.
       - name: customer 
         type: primary
         expr: customer_id
-    dimensions:
+    dimensions: # Dimensions are either categorical or time. They add additional context to metrics and the typical querying pattern is Metric by Dimension.
       - name: is_new_customer
         type: categorical
         expr: case when first_ordered_at is not null then true else false end
@@ -178,20 +178,20 @@ Similarly, you could then add additional dimensions like `is_food_order` to your
 semantic_models:
   - name: orders
     description: |
-      Model containing order data. The grain of the table is the order id.
+      A model containing order data. The grain of the table is the order id.
     model: ref('orders')  #The name of the dbt model and schema
     defaults:
       agg_time_dimension: metric_time
-    entities: #Entities. These usually correspond to keys in the table.table.
+    entities: # Entities, which usually correspond to keys in the table
       - name: order_id
         type: primary
       - name: customer
         type: foreign
         expr: customer_id
-    measures: #Measures. These are the aggregations on the columns in the table.
+    measures: # Measures, which are the aggregations on the columns in the table.
       - name: order_total
         agg: sum
-    dimensions: #Dimensions,either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.
+    dimensions: # Dimensions are either categorical or time. They add additional context to metrics and the typical querying pattern is Metric by Dimension.
       - name: metric_time
         expr: cast(ordered_at as date)
         type: time
@@ -265,7 +265,7 @@ metrics:
 <details>
   <summary>How does the Semantic Layer handle joins?</summary>
   <div>
-    <div>MetricFlow builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentations on join types.<br /><br />Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.</div>
+    <div>MetricFlow builds joins based on the types of keys and parameters that are passed to entities. To better understand how joins are constructed see our documentation on join types.<br /><br />Rather than capturing arbitrary join logic, MetricFlow captures the types of each identifier and then helps the user to navigate to appropriate joins. This allows us to avoid the construction of fan out and chasm joins as well as generate legible SQL.</div>
   </div>
 </details>
 <details>

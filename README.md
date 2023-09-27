@@ -42,7 +42,7 @@ You can add code snippets and other content in a tabbed view. To learn more abou
 
 # Running the Docs site locally
 
-You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
+You can click a link available in a Vercel bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
 ## Prerequisites
 

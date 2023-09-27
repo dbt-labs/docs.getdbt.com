@@ -24,7 +24,7 @@ dbt Cloud builds and tests the models affected by the code change in a temporary
 
 When the CI run completes, you can view the run status directly from within the pull request. dbt Cloud updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not. 
 
-dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has database or schema customization using the [generate_database_name](/docs/build/custom-databases#generate_database_name) or [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Temp PR schema limitations](/docs/deploy/ci-jobs#temp-pr-schema-limitations).
+dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
 
 ## Differences between CI jobs and other deployment jobs
 
