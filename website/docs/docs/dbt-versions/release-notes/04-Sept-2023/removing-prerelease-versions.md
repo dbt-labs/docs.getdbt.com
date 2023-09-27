@@ -1,7 +1,7 @@
 ---
-title: "Removing old (prerelease) versions of dbt from dbt Cloud when (latest) is available"
-description: "Improving the version selection options by removing prerelease versions whenever the latest version is available."
-sidebar_label: "Removing old prerelease versions from dbt Cloud"
+title: "Update: Removing old (prerelease) versions of dbt from dbt Cloud when (latest) is available"
+description: "Sept 2023: Improving the version selection options by removing prerelease versions whenever the latest version is available."
+sidebar_label: "Update: Removing old prerelease versions from dbt Cloud"
 tags: [Sept-2023, Versions]
 date: 2023-09-26
 sidebar_position: 07
