@@ -1,8 +1,3 @@
-<Changelog>
-
-- **v1.0.0:** The default config name for `data-paths` is now [`seed-paths`](/reference/project-configs/seed-paths), `source-paths` is now [`model-paths`](/reference/project-configs/model-paths) and `modules-path` is now [`packages-install-path`](/reference/project-configs/packages-install-path).
-
-</Changelog>
 
 Every [dbt project](/docs/build/projects) needs a `dbt_project.yml` file — this is how dbt knows a directory is a dbt project. It also contains important information that tells dbt how to operate on your project.
 

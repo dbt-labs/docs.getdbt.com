@@ -30,8 +30,6 @@ Most dbt commands (and corresponding RPC methods) produce artifacts:
 
 ## Common metadata
 
-<Changelog>New in v0.19.0</Changelog>
-
 All artifacts produced by dbt include a `metadata` dictionary with these properties:
 
 - `dbt_version`: Version of dbt that produced this artifact.
