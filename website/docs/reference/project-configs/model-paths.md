@@ -2,11 +2,6 @@
 datatype: [directorypath]
 default_value: [models]
 ---
-<Changelog>
-
-- **v1.0.0:** The config `source-paths` has been deprecated in favor of `model-paths`.
-
-</Changelog>
 
 <File name='dbt_project.yml'>
 

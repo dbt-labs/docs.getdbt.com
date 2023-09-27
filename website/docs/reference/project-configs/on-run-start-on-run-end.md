@@ -33,34 +33,6 @@ A SQL statement (or list of SQL statements) to be run at the start, or end, of t
 
 <Snippet path="hooks-to-grants" />
 
-<VersionBlock lastVersion="1.1">
-
-### Grant privileges at the end of a run
-
-<File name='dbt_project.yml'>
-
-```yml
-on-run-end: "grant select on all tables in schema {{ target.schema }} group transformer"
-
-```
-
-</File>
-
-### Grant multiple privileges at the end of a run
-
-<File name='dbt_project.yml'>
-
-```yml
-on-run-end:
-  - "grant usage on schema {{ target.schema }} to group reporter"
-  - "grant select on all tables in schema {{ target.schema }} group reporter"
-
-```
-
-</File>
-
-</VersionBlock>
-
 ### Grant privileges on all schemas that dbt uses at the end of a run
 This leverages the [schemas](/reference/dbt-jinja-functions/schemas) variable that is only available in an `on-run-end` hook.
 

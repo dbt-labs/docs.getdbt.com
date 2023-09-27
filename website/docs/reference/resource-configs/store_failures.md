@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: boolean
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `store_failures` config and functionality
-* `v0.21.0`: Introduced `config` property for tests
-
-</Changelog>
-
 The configured test(s) will store their failures when `dbt test --store-failures` is invoked.
 
 ## Description
