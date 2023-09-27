@@ -104,12 +104,6 @@ col.numeric_type('numeric', 12, 4) # numeric(12,4)
 
 ### Instance methods
 
-<Changelog>
-
- The `is_number` and `is_float` instance methods were added dbt v0.16.0
-
-</Changelog>
-
 - **is_string()**: Returns True if the column is a String type (eg. text, varchar), else False
 - **is_numeric()**: Returns True if the column is a fixed-precision Numeric type (eg. `numeric`), else False
 - **is_number()**: Returns True if the column is a number-y type (eg. `numeric`, `int`, `float`, or similar), else False
@@ -193,12 +187,6 @@ will be expanded to:
 ```
 
 ## Result objects
-
-<Changelog>
-
-* `v0.19.0`: The `Result` object significantly changed its schema. See https://schemas.getdbt.com/dbt/run-results/v1.json for the full specification.
-
-</Changelog>
 
 The execution of a resource in dbt generates a `Result` object. This object contains information about the executed node, timing, status, and metadata returned by the adapter. At the end of an invocation, dbt records these objects in [`run_results.json`](/reference/artifacts/run-results-json).
 

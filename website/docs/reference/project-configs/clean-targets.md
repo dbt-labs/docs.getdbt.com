@@ -3,12 +3,6 @@ datatype: [directorypath]
 default_value: [target_path]
 ---
 
-<Changelog>
-
-- **v1.0.0:** The `modules-path` has been updated to be [`packages-install-path`](/reference/project-configs/packages-install-path).  The default value has also been updated to be `dbt-packages` from `dbt-modules`.
-
-</Changelog>
-
 <File name='dbt_project.yml'>
 
 ```yml
