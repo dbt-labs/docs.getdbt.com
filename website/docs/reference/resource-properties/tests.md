@@ -300,8 +300,6 @@ models:
 
 Check out the guide on writing a [custom generic test](/guides/best-practices/writing-custom-generic-tests) for more information.
 
-<VersionBlock firstVersion="1.1">
-
 ### Custom test name
 
 By default, dbt will synthesize a name for your generic test by concatenating:
@@ -438,10 +436,6 @@ $ dbt test
 
 **If using [`store_failures`](/reference/resource-configs/store_failures):** dbt uses each test's name as the name of the table in which to store any failing records. If you have defined a custom name for one test, that custom name will also be used for its table of failures. You may optionally configure an [`alias`](/reference/resource-configs/alias) for the test, to separately control both the name of the test (for metadata) and the name of its database table (for storing failures).
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
-
 ### Alternative format for defining tests
 
 When defining a generic test with several arguments and configurations, the YAML can look and feel unwieldy. If you find it easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
@@ -470,5 +464,3 @@ models:
 ```
 
 </File>
-
-</VersionBlock>

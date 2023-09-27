@@ -168,7 +168,7 @@ To query metric values, here are the following parameters that are available:
 | `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
-| `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
+| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
 
 
 ## Note on time dimensions and `metric_time`
@@ -285,15 +285,15 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   order_by=['order_gross_profit'])
   }}
 ``` 
-### Query with explain keyword
+### Query with compile keyword
 
-Use the following example to query using a `explain` keyword:
+Use the following example to query using a `compile` keyword:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 		group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-		explain=True)
+		compile=True)
 		}}
 ```
 

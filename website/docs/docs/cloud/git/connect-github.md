@@ -78,5 +78,5 @@ The next time you log into dbt Cloud, you will be able to do so via OAuth throug
 
 
 ## FAQs
-
 <FAQ path="Git/gitignore"/>
+<FAQ path="Git/git-migration"/>

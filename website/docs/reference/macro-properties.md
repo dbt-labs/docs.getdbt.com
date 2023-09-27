@@ -27,9 +27,3 @@ macros:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.16.0`: The ability to declare macro properties was introduced.
-
-</Changelog>

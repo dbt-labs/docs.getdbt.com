@@ -88,13 +88,6 @@ This is particularly useful if:
 - You are using Snowflake, Databricks or Spark with large tables, and this results in a performance benefit
 
 
-<Changelog>
-
-* `v0.15.0`: This property was introduced
-
-</Changelog>
-
-
 ## Examples
 
 ### Complete example
