@@ -124,3 +124,4 @@ If you imported a repository using the dbt Cloud native integration with GitLab,
 <FAQ path="Git/gitignore"/>
 <FAQ path="Git/gitlab-authentication"/>
 <FAQ path="Git/gitlab-selfhosted"/>
+<FAQ path="Git/git-migration"/>
