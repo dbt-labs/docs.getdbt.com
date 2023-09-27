@@ -19,7 +19,7 @@ Then, it will:
 
 <VersionBlock firstVersion="1.7">
 
-If `--profile` flag is specified with `dbt init`, and the profile exists in `profiles.yml`, the project will initialize with that as the `profile:` key instead of creating a new one.
+Use the `--profile` flag with  `dbt init` to initialize the project with an existing `profiles.yml` as the `profile:` key instead of creating a new one.
 
 If the profile does not exist in profiles.yml or the command is run inside an existing project, the command raises an error.
 
