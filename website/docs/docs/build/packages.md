@@ -48,11 +48,7 @@ packages:
 
 </File>
 
-<Changelog>
-
-- **v1.0.0:** The default [`packages-install-path`](/reference/project-configs/packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
-
-</Changelog>
+The default [`packages-install-path`](/reference/project-configs/packages-install-path) is `dbt_packages`.
 
 3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
@@ -89,13 +85,6 @@ In comparison, other package installation methods are unable to handle the dupli
 
 #### Prerelease versions
 
-<Changelog>
-
-* `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
-* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
-
-</Changelog>
-
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
 By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
@@ -129,12 +118,6 @@ packages:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify commit hashes as package revisions
-
-</Changelog>
 
 Add the Git URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
@@ -264,12 +247,6 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 
 #### Configure subdirectory for packaged projects
-
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify `subdirectory`
-
-</Changelog>
 
 In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the packaged project is instead nested in a subdirectory—perhaps within a much larger mono repo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
