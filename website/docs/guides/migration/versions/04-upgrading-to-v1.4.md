@@ -59,5 +59,5 @@ For more detailed information and to ask any questions, please visit [dbt-core/d
 - Python models [running on Snowpark](/docs/build/python-models) will use "anonymous" stored procedures by default, enabling a small speedup and a cleaner query history.
 
 ## Notes
-- If you get the "unknown" blue oval when running a dbt command, run `dbt deps` and they will turn to a green `success` oval. Note prior command runs in the run history drawer will change their displayed status.
-- If you have any macros in sub-folders that are not tests, then you must move them to the macros root directory for dbt to find them. That is, all non-test macros have to be in /macros/, assuming that is your macro-path. adding paths to macro-path does not work.
+- If you get the "unknown" blue oval when running a dbt command, run `dbt deps` and they will turn to a green `success` oval. Prior command runs in the run history drawer will change their displayed status.
+- If you have any macros in sub-folders that are not tests, then you must move them to the macros root directory for dbt to find them. That is, all non-test macros have to be in /macros/, assuming that is your macro-path. Adding paths to macro-path does not work.
