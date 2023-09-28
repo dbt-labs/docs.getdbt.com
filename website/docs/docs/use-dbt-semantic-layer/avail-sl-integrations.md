@@ -17,7 +17,7 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
-<span>Query dbt metrics with external integrations using the sophisticated <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>. The API enables you to query metrics, avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.<br /><br />
+<span>Query dbt metrics with external integrations using the <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>, simplifying metric querying and reducing coding. This also ensures data governance and consistency for data consumers.<br /><br />
 
 <!-- turn these into cards for ga -->
 
