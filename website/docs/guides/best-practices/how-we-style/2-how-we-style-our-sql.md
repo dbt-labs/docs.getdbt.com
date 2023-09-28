@@ -25,7 +25,7 @@ id: 2-how-we-style-our-sql
 
 - 🔙 Fields should be stated before aggregates and window functions.
 - 🤏🏻 Aggregations should be executed as early as possible (on the smallest data set possible) before joining to another table to improve performance.
-- 🔢 Ordering and grouping by a number (eg. group by 1, 2) is preferred over listing the column names (see [this classic rant](https://blog.getdbt.com/write-better-sql-a-defense-of-group-by-1/) for why). Note that if you are grouping by more than a few columns, it may be worth revisiting your model design.
+- 🔢 Ordering and grouping by a number (eg. group by 1, 2) is preferred over listing the column names (see [this classic rant](https://www.getdbt.com/blog/write-better-sql-a-defense-of-group-by-1) for why). Note that if you are grouping by more than a few columns, it may be worth revisiting your model design.
 
 ## Joins
 

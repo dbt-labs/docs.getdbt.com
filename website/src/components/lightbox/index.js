@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
+import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 function Lightbox({
   src, 
@@ -35,7 +36,7 @@ function Lightbox({
               data-toggle="lightbox"
               alt={alt ? alt : title ? title : ''}
               title={title ? title : ''}
-              src={src}
+              src={imageCacheWrapper(src)}
             />
           </a>
         </span>

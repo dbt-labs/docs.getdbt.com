@@ -16,6 +16,7 @@ This function:
 - Creates dependencies between a source and the current model, which is useful for documentation and model selection
 - Compiles to the full object name in the database
 
+
 ## Related guides
 - [Using sources](/docs/build/sources)
 

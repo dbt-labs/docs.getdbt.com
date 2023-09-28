@@ -76,7 +76,7 @@ select * from {{
 
 Use this query to fetch all dimensions for a metric. 
 
-Note, `metrics` is a required argument that lists with one or multiple metrics in it.
+Note, `metrics` is a required argument that lists one or multiple metrics in it.
 
 ```bash
 select * from {{ 
@@ -89,20 +89,20 @@ select * from {{
 
 Use this query to fetch dimension values for one or multiple metrics and single dimension. 
 
-Note, `metrics` is a required argument that lists with one or multiple metrics in it, and a single dimension. 
+Note, `metrics` is a required argument that lists one or multiple metrics in it, and a single dimension. 
 
 ```bash
 select * from {{ 
-semantic_layer.dimension_values(metrics=["food_order_amount"], group_by="customer__customer_name")}}
+semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['customer__customer_name'])}}
 ```
 
 </TabItem>
 
-<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable time granularities for metrics">
+<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable primary time granularities for metrics">
 
-Use this query to fetch queryable granularities for a list of metrics. This argument allows you to only show the time granularities that make sense for the source model that the metrics are built off of.
+Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
-Note, `metrics` is a required argument that lists with one or multiple metrics in it.
+Note, `metrics` is a required argument that lists one or multiple metrics in it.
 
 ```bash
 select * from {{
@@ -127,6 +127,33 @@ select * from {{
 
 </TabItem>
 
+<TabItem value="queryablegranularitiesalltimedimensions" label="Fetch queryable granularities for all time dimensions">
+
+Use this example query to fetch available granularities for all time dimesensions (the similar queryable granularities API call only returns granularities for the primary time dimensions for metrics). The following call is a derivative of the `dimensions()` call and specifically selects the granularities field.
+
+```bash
+select NAME, QUERYABLE_GRANULARITIES from {{
+    semantic_layer.dimensions(
+        metrics=["order_total"]
+    )
+}}
+
+```
+
+</TabItem>
+
+<TabItem value="fetchprimarytimedimensionnames" label="Determine what time dimension(s) make up metric_time for your metric(s)">
+
+It may be useful in your application to expose the names of the time dimensions that represent `metric_time` or the common thread across all metrics.
+You can first query the `metrics()` argument to fetch a list of measures, then use the `measures()` call which will return the name(s) of the time dimensions that make up metric time. 
+
+```bash
+select * from {{
+    semantic_layer.measures(metrics=['orders'])
+}}
+```
+</TabItem>
+
 </Tabs>
 
 ## Querying the API for metric values
@@ -141,7 +168,7 @@ To query metric values, here are the following parameters that are available:
 | `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
 |`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
-| `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
+| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
 
 
 ## Note on time dimensions and `metric_time`
@@ -193,7 +220,7 @@ select * from {{
 
 ### Query with a time grain
 
-Use the following example query to fetch multiple metrics with a change time dimension granularities:
+Use the following example query to fetch multiple metrics with a change in time dimension granularities:
 
 ```bash
 select * from {{
@@ -215,15 +242,18 @@ select * from {{
 
 ### Query with where filters
 
-Where filters have three components: 
+Where filters in API allow for a filter list or string. We recommend using the filter list for production applications as this format will realize all benefits from the <Term id="predicate-pushdown"  /> where possible. 
 
-- `TimeDimension()` is used for any time dimension and requires a granularity argument - `TimeDimension('metric_time', 'DAY')`
+Where filters have the following components that you can use:
 
-- `Dimension()` - This is used for any categorical dimensions - `Dimension('customer__country')`
+- `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
-- `Entity()` - used for entities like primary and foreign keys - `Entity('order_id')`
+- `TimeDimension()` - This is used for all time dimensions and requires a granularity argument - `TimeDimension('metric_time', 'MONTH)`
 
-Use the following example to query using a `where` filter:
+- `Entity()` - This is used for entities like primary and foreign keys - `Entity('order_id')`
+
+
+Use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
@@ -233,7 +263,17 @@ where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimens
 }}
 ```
 
-### Query with a limit and order_by
+Use the following example to query using a `where` filter with a filter list format:
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
+where=[{{ TimeDimension('metric_time', 'MONTH')}} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
+}}
+```
+
+### Query with a limit and order by
 
 Use the following example to query using a `limit` or `order_by` clauses:
 
@@ -245,15 +285,15 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   order_by=['order_gross_profit'])
   }}
 ``` 
-### Query with explain keyword
+### Query with compile keyword
 
-Use the following example to query using a `explain` keyword:
+Use the following example to query using a `compile` keyword:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 		group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-		explain=True)
+		compile=True)
 		}}
 ```
 

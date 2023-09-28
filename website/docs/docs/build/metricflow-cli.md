@@ -140,54 +140,71 @@ Create a new query with MetricFlow, execute that query against the user's data p
 
 ```bash
 mf query --metrics <metric_name> --group-by <dimension_name>
+
 Options:
+
   --metrics SEQUENCE       Metrics to query for: syntax is --metrics bookings
-                           or for multiple metrics --metrics bookings,messages
+                           or for multiple metrics --metrics bookings, messages.
+
   --group-by SEQUENCE      Dimensions and/or entities to group by: syntax is
                            --group-by ds or for multiple group bys --group-by
-                           ds,org
+                           ds, org.
+
   --end-time TEXT          Optional iso8601 timestamp to constraint the end
                            time of the data (inclusive)
+
   --start-time TEXT        Optional iso8601 timestamp to constraint the start
                            time of the data (inclusive)
+
   --where TEXT             SQL-like where statement provided as a string. For
-                           example: --where "revenue > 100"
+                           example: --where "revenue > 100". To add a dimension filter to 
+                           a where filter, you have to indicate that the filter item is part of your model. 
+                           Refer to the [FAQ](#faqs) for more info on how to do this using a template wrapper.
+
   --limit TEXT             Limit the number of rows out using an int or leave
                            blank for no limit. For example: --limit 100
+
   --order SEQUENCE         Metrics or group bys to order by ("-" prefix for
                            DESC). For example: --order -ds or --order
                            ds,-revenue
+
   --csv FILENAME           Provide filepath for data frame output to csv
+
   --explain                In the query output, show the query that was
                            executed against the data warehouse
+
   --show-dataflow-plan     Display dataflow plan in explain output
-  --display-plans          Display plans (e.g. metric dataflow) in the browser
+
+  --display-plans          Display plans (such as metric dataflow) in the browser
+
   --decimals INTEGER       Choose the number of decimal places to round for
                            the numerical values
+
   --show-sql-descriptions  Shows inline descriptions of nodes in displayed SQL
+
   --help                   Show this message and exit.
   ```
 
 
 ## Query examples
 
-The following tabs presents various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
+The following tabs present various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
 <Tabs>
 
 <TabItem value="eg1" label="Metrics">
 
-**Example 1** &mdash; Use the example to query metrics by dimension and return the `order_amount` metric by `metric_time.` 
+Use the example to query metrics by dimension and return the `order_total` metric by `metric_time.` 
 
 **Query**
 ```bash
-mf query --metrics order_amount --group-by metric_time
+mf query --metrics order_total --group-by metric_time
 ```
 
 **Result**
 ```bash
 ✔ Success 🦄 - query completed after 1.24 seconds
-| METRIC_TIME   |   ORDER_AMOUNT |
+| METRIC_TIME   |   ORDER_TOTAL |
 |:--------------|---------------:|
 | 2017-06-16    |         792.17 |
 | 2017-06-17    |         458.35 |
@@ -200,17 +217,17 @@ mf query --metrics order_amount --group-by metric_time
 
 <TabItem value="eg2" label="Dimensions">
 
-**Example 2** &mdash; You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not. 
+You can include multiple dimensions in a query. For example, you can group by the `is_food_order` dimension to confirm if orders were for food or not. 
 
 **Query**
 ```bash
-mf query --metrics order_amount --group-by metric_time, is_food_order
+mf query --metrics order_total --group-by metric_time, is_food_order
 ```
 
 **Result**
 ```bash
  Success 🦄 - query completed after 1.70 seconds
-| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
+| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_TOTAL |
 |:--------------|:----------------|---------------:|
 | 2017-06-16    | True            |         499.27 |
 | 2017-06-16    | False           |         292.90 |
@@ -227,17 +244,17 @@ mf query --metrics order_amount --group-by metric_time, is_food_order
 
 <TabItem value="eg3" label="Order/limit">
 
-**Example 3** &mdash; You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending.
+You can add order and limit functions to filter and present the data in a readable format. The following query limits the data set to 10 records and orders them by `metric_time`, descending.
 
 **Query**
 ```bash
-mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time
 ```
 
 **Result**
 ```bash
 ✔ Success 🦄 - query completed after 1.41 seconds
-| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
+| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_TOTAL |
 |:--------------|:----------------|---------------:|
 | 2017-08-31    | True            |         459.90 |
 | 2017-08-31    | False           |         327.08 |
@@ -251,17 +268,18 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 
 <TabItem value="eg4" label="where clause">
 
-**Example 4** &mdash; You can further filter the data set by adding a `where` clause to your query.
+You can further filter the data set by adding a `where` clause to your query.
 
 **Query**
+
 ```bash
- mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True"
+mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"
 ```
 
 **Result**
 ```bash
  ✔ Success 🦄 - query completed after 1.06 seconds
-| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
+| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_TOTAL |
 |:--------------|:----------------|---------------:|
 | 2017-08-31    | True            |         459.90 |
 | 2017-08-30    | True            |         448.18 |
@@ -279,17 +297,17 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 
 <TabItem value="eg5" label=" Filter by time">
 
-**Example 5** &mdash; To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
+To filter by time, there are dedicated start and end time options. Using these options to filter by time allows MetricFlow to further optimize query performance by pushing down the where filter when appropriate. 
 
 **Query**
 ```bash
- mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27'
+ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27'
 ```
 
  **Result**
 ```bash
 ✔ Success 🦄 - query completed after 1.53 seconds
-| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_AMOUNT |
+| METRIC_TIME   | IS_FOOD_ORDER   |   ORDER_TOTAL |
 |:--------------|:----------------|---------------:|
 | 2017-08-27    | True            |         568.92 |
 | 2017-08-26    | True            |         471.95 |
@@ -307,7 +325,7 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 
 ### Additional query examples
 
-The following tabs presents additional query examples, like exporting to a CSV. Select the tab that best suits your needs:
+The following tabs present additional query examples, like exporting to a CSV. Select the tab that best suits your needs:
 
 <Tabs>
 
@@ -315,12 +333,12 @@ The following tabs presents additional query examples, like exporting to a CSV. 
 
 <TabItem value="eg6" label="--explain flag">
 
-**Example 6** &mdash; Add `--explain` to your query to view the SQL generated by MetricFlow. 
+Add `--explain` to your query to view the SQL generated by MetricFlow. 
 
 **Query**
 
 ```bash
- mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
+ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
 ```
 
  **Result**
@@ -330,7 +348,7 @@ The following tabs presents additional query examples, like exporting to a CSV. 
 SELECT
   metric_time
   , is_food_order
-  , SUM(order_cost) AS order_amount
+  , SUM(order_cost) AS order_total
 FROM (
   SELECT
     cast(ordered_at as date) AS metric_time
@@ -351,12 +369,12 @@ LIMIT 10
 
 <TabItem value="eg7" label=" Export to CSV">
 
-**Example 7** &mdash; Add the `--csv file_name.csv` flag to export the results of your query to a csv.
+Add the `--csv file_name.csv` flag to export the results of your query to a csv.
 
 **Query**
 
 ```bash
-mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 ```
 
 **Result**
@@ -369,9 +387,52 @@ mf query --metrics order_amount --group-by metric_time,is_food_order --limit 10 
 </Tabs>
 
 ## Time granularity
-Optionally, you can specify the time granularity you want your data to be aggregated at by appending two underscores and the unit of granularity you want to `metric_time`, the global time dimension . You can group the granularity by: `day`, `week`, `month`, `quarter`, and `year`. 
+
+Optionally, you can specify the time granularity you want your data to be aggregated at by appending two underscores and the unit of granularity you want to `metric_time`, the global time dimension. You can group the granularity by: `day`, `week`, `month`, `quarter`, and `year`. 
 
 Below is an example for querying metric data at a monthly grain:
+
 ```bash
 mf query --metrics revenue --group-by metric_time__month
 ```
+
+## FAQs
+
+<details>
+<summary>How can I add a dimension filter to a where filter?</summary> 
+
+To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('primary_entity__dimension_name')}}</code>. 
+
+Here's an example query: <code>mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, you will need to set up your terminal to escape curly braces for the filter template to work. 
+
+<details> 
+<summary>How to set up your terminal to escape curly braces? </summary>
+ To configure your <code>.zshrc</code>profile to escape curly braces, you can use the <code>setopt</code> command to enable the <code>BRACECCL</code> option. This option will cause the shell to treat curly braces as literals and prevent brace expansion. Refer to the following steps to set it up: <br />
+
+1. Open your terminal.
+2. Open your <code>.zshrc</code> file using a text editor like <code>nano</code>, <code>vim</code>, or any other text editor you prefer. You can use the following command to open it with <code>nano</code>:
+
+```bash
+nano ~/.zshrc
+```
+3. Add the following line to the file:
+
+```bash
+setopt BRACECCL
+```
+4. Save and exit the text editor (in `nano`, press Ctrl + O to save, and Ctrl + X to exit).
+
+5. Source your <code>.zshrc</code> file to apply the changes:
+
+```bash
+source ~/.zshrc
+```
+
+6. After making these changes, your Zsh shell will treat curly braces as literal characters and will not perform brace expansion. This means that you can use curly braces without worrying about unintended expansions.
+
+Keep in mind that modifying your shell configuration files can have an impact on how your shell behaves. If you're not familiar with shell configuration, it's a good idea to make a backup of your <code>.zshrc</code> file before making any changes. If you encounter any issues or unexpected behavior, you can revert to the backup.
+
+
+</details>
+
+</details>

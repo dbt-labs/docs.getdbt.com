@@ -16,11 +16,15 @@ We encourage you to:
 
 dbt Python (`dbt-py`) models can help you solve use cases that can't be solved with SQL. You can perform analyses using tools available in the open-source Python ecosystem, including state-of-the-art packages for data science and statistics. Before, you would have needed separate infrastructure and orchestration to run Python transformations in production. Python transformations defined in dbt are models in your project with all the same capabilities around testing, documentation, and lineage.
 
+<VersionBlock lastVersion="1.2">
 
 Python models are supported in dbt Core 1.3 and higher.  Learn more about [upgrading your version in dbt Cloud](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/cloud-upgrading-dbt-versions) and [upgrading dbt Core versions](https://docs.getdbt.com/docs/core-versions#upgrading-to-new-patch-versions).
 
 To read more about Python models, change the [docs version to 1.3](/docs/build/python-models?version=1.3) (or higher) in the menu bar.
 
+</VersionBlock>
+
+<VersionBlock firstVersion="1.3">
 
 <File name='models/my_python_model.py'>
 
@@ -687,3 +691,5 @@ models:
 </div>
 
 </WHCode>
+
+</VersionBlock>

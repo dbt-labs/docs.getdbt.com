@@ -4,19 +4,10 @@ sidebar_label: "seed"
 id: "seed"
 ---
 
-<Changelog>
-
-- **v1.0.0:** The default config for this command will now be `seed-paths` instead of `data-paths`.
-
-</Changelog>
-
-
 The `dbt seed` command will load `csv` files located in the `seed-paths` directory of your dbt project into your <Term id="data-warehouse" />.
 
 
 ### Selecting seeds to run
-
-<Changelog> Added in v0.16.0 </Changelog>
 
 Specific seeds can be run using the `--select` flag to `dbt seed`. Example:
 

@@ -74,18 +74,27 @@ selectors unambiguous.
 
 <VersionBlock firstVersion="1.2">
 
-### The "file" or "fqn" method
-The `file` or `fqn` method can be used to select a model by its filename, including the file extension (`.sql`).
+### The "file" method
+The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
 # These are equivalent
 dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
-dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
 ```
 
 </VersionBlock>
+
+### The "fqn" method
+
+The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN.
+
+```
+dbt run --select fqn:some_model
+dbt run --select fqn:your_project.some_model
+dbt run --select fqn:some_package.some_other_model
+```
 
 ### The "package" method
 
@@ -142,9 +151,6 @@ $ dbt ls -s config.transient:true
 </VersionBlock>
 
 ### The "test_type" method
-<Changelog>
-In v1.0.0, test types were renamed: "singular" (instead of "data") and "generic" (instead of "schema")
-</Changelog>
 
 The `test_type` method is used to select tests based on their type, `singular` or `generic`:
 
@@ -230,7 +236,6 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```
 
 ### The "metric" method
-<Changelog>New in v1.0.0</Changelog>
 
 The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
 
@@ -240,7 +245,6 @@ $ dbt ls    --select +metric:* --resource-type source  # list all source tables 
 ```
 
 ### The "result" method
-<Changelog>New in v1.0.0</Changelog>
 
 The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
 
@@ -252,13 +256,6 @@ $ dbt seed --select result:error --state path/to/artifacts # run all seeds that 
 ```
 
 ### The "source_status" method
-<VersionBlock lastVersion="1.0">
-
-Supported in v1.1 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
   
 Supported in v1.1 or higher.
 
@@ -286,9 +283,6 @@ $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 $ dbt source freshness # must be run again to compare current to previous state
 $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
-
-</VersionBlock>
-
 
 </VersionBlock>
 

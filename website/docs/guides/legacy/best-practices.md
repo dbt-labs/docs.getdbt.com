@@ -112,8 +112,6 @@ To merge code changes with confidence, you want to know that those changes will 
 
 At the same time, it costs time (and money) to run and test all the models in your project. This inefficiency feels especially painful if your PR only proposes changes to a handful of models.
 
-<Changelog>New in v0.18.0</Changelog>
-
 By comparing to artifacts from a previous production run, dbt can determine
 which models are modified and build them on top of of their unmodified parents.
 
@@ -121,8 +119,6 @@ which models are modified and build them on top of of their unmodified parents.
 dbt run -s state:modified+ --defer --state path/to/prod/artifacts
 dbt test -s state:modified+ --defer --state path/to/prod/artifacts
 ```
-
-<Changelog>New in v1.0.0</Changelog>
 
 By comparing to artifacts from a previous production run, dbt can determine model and test result statuses.
 
@@ -159,13 +155,6 @@ dbt test --select result:fail --exclude <example test> --defer --state path/to/p
 
 > Note: If you're using the `--state target/` flag, `result:error` and `result:fail` flags can only be selected concurrently(in the same command) if using the `dbt build` command. `dbt test` will overwrite the `run_results.json` from `dbt run` in a previous command invocation.
 
-<VersionBlock lastVersion="1.0">
-
-Only supported by v1.1 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
 
 Only supported by v1.1 or newer.
 
@@ -183,8 +172,6 @@ Test all my sources that are fresher than the previous run, and run and test all
 dbt source freshness # must be run again to compare current to previous state
 dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 ```
-
-</VersionBlock>
 
 To learn more, read the docs on [state](/reference/node-selection/syntax#about-node-selection).
 
