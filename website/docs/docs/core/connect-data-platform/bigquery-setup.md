@@ -84,8 +84,6 @@ my-bigquery-db:
 
 **Default project**
 
-<Changelog>New in dbt v0.19.0</Changelog>
-
 If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
 
 ### OAuth Token-Based
@@ -233,8 +231,6 @@ my-profile:
 
 ### Timeouts and Retries
 
-<VersionBlock firstVersion="1.1">
-
 The `dbt-bigquery` plugin uses the BigQuery Python client library to submit queries. Each query requires two steps:
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
 2. Job execution: Wait for the query job to finish executing, and receive its result.
@@ -321,7 +317,6 @@ my-profile:
 
 </File>
 
-</VersionBlock>
 
 ### Dataset locations
 
@@ -342,12 +337,6 @@ my-profile:
 ```
 
 ### Maximum Bytes Billed
-
-<Changelog>
-
-- New in dbt v0.17.0
-
-</Changelog>
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
 queries executed by dbt will fail if they exceed the configured maximum bytes
@@ -395,7 +384,6 @@ my-profile:
 ```
 
 ### Service Account Impersonation
-<Changelog>New in v0.18.0</Changelog>
 
 This feature allows users authenticating via local OAuth to access BigQuery resources based on the permissions of a service account.
 
@@ -417,7 +405,6 @@ For a general overview of this process, see the official docs for [Creating Shor
 <FAQ path="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
-<Changelog>New in v0.21.0</Changelog>
 
 By default, dbt will use the specified `project`/`database` as both:
 1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config
