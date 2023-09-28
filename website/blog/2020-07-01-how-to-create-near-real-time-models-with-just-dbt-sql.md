@@ -15,7 +15,9 @@ is_featured: false
 
 :::Caution More up-to-date information available
 
-The information contained in this blog post is outdated! You should now refer to the most recent blog post [about materialized views](/blog/announcing-materialized-views).
+The information contained in this blog post is outdated! You should now refer to the most recent blog post [about materialized views](/blog/announcing-materialized-views). 
+
+You can also see our official documentation about [materializations](/docs/build/materializations).
 
 :::
 
