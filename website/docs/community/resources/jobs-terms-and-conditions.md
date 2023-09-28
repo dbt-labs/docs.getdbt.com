@@ -1,7 +1,7 @@
 ---
 title: "dbt Labs Community #jobs Channels Terms and Conditions"
 id: "jobs-terms-and-conditions"
-description: "Before posting or applying for a job in the dbt Community, review these terms and conditions."
+description: "Before posting a job in the dbt Community or submitting an application, review these terms and conditions."
 ---
 
 I agree to abide by the [dbt Community Code of Conduct](community/resources/code-of-conduct) and all laws applicable to me in my use of the dbt Community's #jobs channels. I further agree:
