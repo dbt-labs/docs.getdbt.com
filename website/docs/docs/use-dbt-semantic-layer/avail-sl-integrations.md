@@ -25,6 +25,9 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 <AvailIntegrations/>
 
+### Custom integrations
+You can write a custom integration in a variety of languages and tools. We support connecting through JDBC, ADBC, and a GraphQL API. Refer to [some examples](https://github.com/dbt-labs/example-semantic-layer-clients/blob/main/python/src/adbc_example.py) for more info. (WILL TWEAK IN AN HOUR)
+
 ## Related docs
 
 - <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC to query your metrics in downstream tools.
