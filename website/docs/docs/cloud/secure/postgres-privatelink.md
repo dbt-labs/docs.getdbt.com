@@ -22,7 +22,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
             - Find the IP address of your RDS instance using a command line tool such as `nslookup <endpoint>` or `dig +short <endpoint>` with your RDS DNS endpoint
 
-            - _Note_: With RDS Multi-AZ failover capabilities the IP address of your RDS instance can change, at which point your Tagrat Group would need to be updated. See [this AWS blog post](https://aws.amazon.com/blogs/database/access-amazon-rds-across-vpcs-using-aws-privatelink-and-network-load-balancer/) for more details and a possible solution. 
+            - _Note_: With RDS Multi-AZ failover capabilities the IP address of your RDS instance can change, at which point your Target Group would need to be updated. See [this AWS blog post](https://aws.amazon.com/blogs/database/access-amazon-rds-across-vpcs-using-aws-privatelink-and-network-load-balancer/) for more details and a possible solution. 
 
         - _On-prem Postgres server_ -  **IP**
 
