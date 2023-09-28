@@ -136,32 +136,22 @@ The `search_path` config controls the Postgres "search path" that dbt configures
 
 #### role
 
-<Changelog> Added in v0.16.0 </Changelog>
-
 The `role` config controls the Postgres role that dbt assumes when opening new connections to the database.
 
 #### sslmode
-
-<Changelog> Added in v0.16.0 </Changelog>
 
 The `sslmode` config controls how dbt connectes to Postgres databases using SSL. See [the Postgres docs](https://www.postgresql.org/docs/9.1/libpq-ssl.html) on `sslmode` for usage information. When unset, dbt will connect to databases using the Postgres default, `prefer`, as the `sslmode`.
 
 
 #### sslcert
 
-<Changelog> Added in v0.21.0 </Changelog>
-
 The `sslcert` config controls the location of the certificate file used to connect to Postgres when using client SSL connections. To use a certificate file that is not in the default location, set that file path using this value. Without this config set, dbt uses the Postgres default locations. See [Client Certificates](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) in the Postgres SSL docs for the default paths.
 
 #### sslkey
 
-<Changelog> Added in v0.21.0 </Changelog>
-
 The `sslkey` config controls the location of the private key for connecting to Postgres using client SSL connections. If this config is omitted, dbt uses the default key location for Postgres. See [Client Certificates](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) in the Postgres SSL docs for the default locations.
 
 #### sslrootcert
-
-<Changelog> Added in v0.21.0 </Changelog>
 
 When connecting to a Postgres server using a client SSL connection, dbt verifies that the server provides an SSL certificate signed by a trusted root certificate. These root certificates are in the `~/.postgresql/root.crt` file by default. To customize the location of this file, set the `sslrootcert` config value to a new file path.
 

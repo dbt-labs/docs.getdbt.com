@@ -123,12 +123,6 @@ The docs field can be used to provide documentation-specific configuration to mo
 
 **Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
 
-<Changelog>
-
-* `v0.16.0`: This property was added
-
-</Changelog>
-
 ## Default
 The default value for `show` is `true`.
 

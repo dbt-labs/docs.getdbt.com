@@ -44,8 +44,7 @@ If your `generate_schema_name` macro looks like so:
     {{ generate_schema_name_for_env(custom_schema_name, node) }}
 {%- endmacro %}
 ```
-Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/etc/get_custom_schema.sql#L43-L56).
-
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47-L60).
 ```sql
 {% macro generate_schema_name_for_env(custom_schema_name, node) -%}
 

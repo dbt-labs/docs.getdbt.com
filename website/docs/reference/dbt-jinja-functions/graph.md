@@ -99,7 +99,7 @@ representations of those nodes. A simplified example might look like:
   },
   "exposures": {
     "exposure.my_project.traffic_dashboard": {
-      "unique_id": "source.my_project.traffic_dashboard",
+      "unique_id": "exposure.my_project.traffic_dashboard",
       "type": "dashboard",
       "maturity": "high",
       "path": "models/path/to/schema.yml",
