@@ -19,11 +19,7 @@ Tests are assertions you make about your models and other resources in your dbt 
 
 You can use tests to improve the integrity of the SQL in each model by making assertions about the results generated. Out of the box, you can test whether a specified column in a model only contains non-null values, unique values, or values that have a corresponding value in another model (for example, a `customer_id` for an `order` corresponds to an `id` in the `customers` model), and values from a specified list. You can extend tests to suit business logic specific to your organization – any assertion that you can make about your model in the form of a select query can be turned into a test.
 
-<Changelog>
-
-* `v0.20.0`: Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
-
-</Changelog>
+Both types of tests return a set of failing records. Previously, generic/schema tests returned a numeric value representing failures. Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`.
 
 Like almost everything in dbt, tests are SQL queries. In particular, they are `select` statements that seek to grab "failing" records, ones that disprove your assertion. If you assert that a column is unique in a model, the test query selects for duplicates; if you assert that a column is never null, the test seeks after nulls. If the test returns zero failing rows, it passes, and your assertion has been validated.
 
@@ -244,12 +240,6 @@ where {{ column_name }} is null
 </Tabs>
 
 ## Storing test failures
-
-<Changelog>
-
-* `v0.20.0`: Introduced storing test failures in the database
-
-</Changelog>
 
 Normally, a test query will calculate failures as part of its execution. If you set the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures), dbt will first save the results of a test query to a table in the database, and then query that table to calculate the number of failures.
 

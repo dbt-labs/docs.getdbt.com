@@ -22,24 +22,6 @@ meta:
 
 <Snippet path="hooks-to-grants" />
 
-<VersionBlock lastVersion="1.1">
-
-### Grant permissions on a model in a post-hook
-
-<File name='dbt_project.yml'>
-
-```yaml
-models:
-  project-name:
-    +post-hook:
-      - "grant select on {{ this }} to db_reader"
-```
-
-</File>
-
-</VersionBlock>
-
-
 ### Configuring incremental models
 
 <File name='models/stg_events.sql'>
