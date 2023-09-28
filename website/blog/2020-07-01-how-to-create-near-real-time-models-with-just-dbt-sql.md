@@ -13,7 +13,7 @@ date: 2020-07-01
 is_featured: false
 ---
 
-:::Caution More up-to-date information available
+:::caution More up-to-date information available
 
 The information contained in this blog post is outdated! You should now refer to the most recent blog post [about materialized views](/blog/announcing-materialized-views). 
 
