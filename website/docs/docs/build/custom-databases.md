@@ -54,8 +54,6 @@ select * from ...
 
 ### generate_database_name
 
-<Changelog>New in v0.16.0</Changelog>
-
 The database name generated for a model is controlled by a macro called `generate_database_name`. This macro can be overridden in a dbt project to change how dbt generates model database names. This macro works similarly to the [generate_schema_name](/docs/build/custom-schemas#advanced-custom-schema-configuration) macro.
 
 To override dbt's database name generation, create a macro named `generate_database_name` in your own dbt project. The `generate_database_name` macro accepts two arguments:
