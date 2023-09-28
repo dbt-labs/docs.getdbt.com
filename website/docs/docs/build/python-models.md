@@ -678,6 +678,8 @@ models:
 
 **Installing packages**: If you are using a Dataproc Cluster (as opposed to Dataproc Serverless), you can add third-party packages while creating the cluster with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). If you are using Dataproc Serverless, you can build your own [custom container image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers#python_packages) with the packages you need.
 
+**Additional setup:**: The user or role should have the adequate IAM permission to be able to trigger a job through Dataproc Cluster or Dataproc Serverless
+
 **Docs:**
 - [Dataproc overview](https://cloud.google.com/dataproc/docs/concepts/overview)
 - [PySpark DataFrame syntax](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html)
