@@ -5,13 +5,6 @@ id: "rpc"
 description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---
 
-<Changelog>
-
-  - **v0.14**: The `dbt rpc` command was introduced to dbt Core
-  - **v1.0**: We now distribute and package the Remote Procedure Call (rpc) server functionality separately from `dbt-core`. You can find the code in a dedicated [`dbt-rpc` repository](https://github.com/dbt-labs/dbt-rpc).
-
-</Changelog>
-
 :::caution The dbt-rpc plugin is deprecated
 
 

@@ -121,12 +121,6 @@ set on the _Internal Analytics_ project.
 
 ### Manual assignment
 
-<Changelog>
-
-- New in version 1.1.23 (March, 2021)
-
-</Changelog>
-
 dbt Cloud administrators can manually assign users to groups independently of
 IdP attributes. If a dbt Cloud group is configured _without_ any
 SSO Mappings, then the group will be _unmanaged_ and dbt Cloud will not adjust

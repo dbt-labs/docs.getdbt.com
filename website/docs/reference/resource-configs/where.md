@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: string
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `where` config
-* `v0.21.0`: Introduced `config` property for tests. Reimplemented `where` config with `get_where_subquery` macro
-
-</Changelog>
-
 ### Definition
 
 Filter the resource being tested (model, source, seed, or snapshot).
