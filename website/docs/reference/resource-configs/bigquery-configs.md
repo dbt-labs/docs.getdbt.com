@@ -598,7 +598,7 @@ with events as (
 
 #### Copying ingestion-time partitions
 
-If you have configured your incremental model to use "ingestion"-based partitioning (`partition_by.time_ingestion_partitioning: True`), you can opt to use a legacy mechanism for inserting and overwriting partitions. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets. Behind the scenes, dbt will add or replace each partition via the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators.
+If you are replacing entire partitions in your incremental runs, you can opt to do so with the [copy table API](https://cloud.google.com/bigquery/docs/managing-tables#copy-table) and partition decorators. While this mechanism doesn't offer the same visibility and ease of debugging as the SQL `merge` statement, it can yield significant savings in time and cost for large datasets because the copy table API does not incur any costs for inserting the data - it's equivalent to the `bq load` gcloud CLI command.
 
 You can enable this by switching on `copy_partitions: True` in the `partition_by` configuration. This approach works only in combination with "dynamic" partition replacement.
 
