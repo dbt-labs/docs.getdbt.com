@@ -11,21 +11,9 @@ Like all resource types, tests can be selected **directly**, by methods and oper
 
 Unlike other resource types, tests can also be selected **indirectly**. If a selection method or operator includes a test's parent(s), the test will also be selected. [See below](#indirect-selection) for more details.
 
-<Changelog>
-
- `v1.0.0`: Renamed the `--greedy` flag/property to `indirect_selection`, and set its default back to "eager" (pre-v0.20). You can achieve the "cautious" behavior introduced in v0.20 by setting the flag/property to `cautious`.
-
-</Changelog>
-
 Test selection is powerful, and we know it can be tricky. To that end, we've included lots of examples below:
 
 ### Direct selection
-
-<Changelog>
-
-`v1.0.0`: Renamed test types: "generic" (formerly "schema") and "singular" (formerly "data"). Removed support for the `--schema` and `--data` flags.
-
-</Changelog>
 
 Run generic tests only:
 
