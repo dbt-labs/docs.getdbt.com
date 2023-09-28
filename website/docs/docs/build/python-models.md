@@ -647,7 +647,6 @@ If not configured, `dbt-spark` will use the built-in defaults: the all-purpose c
 
 </div>
 
-<!-- 000000000000000000000000000000 BigQuery 000000000000000000000000000000 -->
 <div warehouse="BigQuery">
 
 **Submission methods:** The `dbt-bigquery` adapter uses [Dataproc](https://cloud.google.com/dataproc) to submit your Python models as PySpark jobs. Dataproc supports two submission methods: `cluster` and `serverless`.
