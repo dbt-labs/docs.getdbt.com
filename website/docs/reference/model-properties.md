@@ -17,6 +17,7 @@ models:
     [docs](/reference/resource-configs/docs):
       show: true | false
     [latest_version](/reference/resource-properties/latest_version): <version_identifier>
+    [deprecation_date](/reference/resource-properties/deprecation_date): <YAML_DateTime>
     [access](/reference/resource-properties/access): private | protected | public
     [config](/reference/resource-properties/config):
       [<model_config>](/reference/model-configs): <config_value>

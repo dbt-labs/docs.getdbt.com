@@ -3,12 +3,6 @@ datatype: [directorypath]
 default_value: [target_path]
 ---
 
-<Changelog>
-
-- **v1.0.0:** The `modules-path` has been updated to be [`packages-install-path`](/reference/project-configs/packages-install-path).  The default value has also been updated to be `dbt-packages` from `dbt-modules`.
-
-</Changelog>
-
 <File name='dbt_project.yml'>
 
 ```yml
@@ -27,7 +21,7 @@ If this configuration is not included in your `dbt_project.yml` file, the `clean
 ## Examples
 ### Remove packages and compiled files as part of `dbt clean`
 :::info
-This is our preferred configuration
+This is our preferred configuration, but is not the default.
 :::
 To remove packages as well as compiled files, include the value of your [packages-install-path](/reference/project-configs/packages-install-path) configuration in your `clean-targets` configuration.
 

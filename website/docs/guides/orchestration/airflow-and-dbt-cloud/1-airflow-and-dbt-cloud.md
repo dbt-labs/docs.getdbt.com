@@ -24,7 +24,7 @@ This has served as a bridge until the fabled Astronomer + dbt Labs-built dbt Clo
 There are many different permutations of this over time:
 
 - [Custom Python Scripts](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/archive/dbt_cloud_example.py): This is an airflow DAG based on custom python API utilities [here](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/archive/dbt_cloud_utils.py)
-- [Make API requests directly through the BashOperator based on the docs](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun): You can make cURL requests to invoke dbt Cloud to do what you want
+- [Make API requests directly through the BashOperator based on the docs](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#operation/triggerRun): You can make cURL requests to invoke dbt Cloud to do what you want
 - [Other ways to run dbt in airflow](/docs/deploy/deployments#airflow): Official dbt Docs on how teams are running dbt in airflow
 
 ## This guide's process

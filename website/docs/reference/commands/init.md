@@ -4,10 +4,6 @@ sidebar_label: "init"
 id: "init"
 ---
 
-:::info Improved in v1.0!
-The `init` command is interactive and responsive like never before.
-:::
-
 `dbt init` helps get you started using dbt Core!
 
 ## New project
@@ -33,6 +29,8 @@ If you've just cloned or downloaded an existing dbt project, `dbt init` can stil
 
 - **Existing project:** If you're the maintainer of an existing project, and you want to help new users get connected to your database quickly and easily, you can include your own custom `profile_template.yml` in the root of your project, alongside `dbt_project.yml`. For common connection attributes, set the values in `fixed`; leave user-specific attributes in `prompts`, but with custom hints and defaults as you'd like.
 
+<VersionBlock firstVersion="1.2">
+
 <File name='profile_template.yml'>
 
 ```yml
@@ -44,6 +42,9 @@ fixed:
   type: snowflake
   warehouse: transforming
 prompts:
+  target:
+    type: string
+    hint: your desired target name
   user:
     type: string
     hint: yourname@jaffleshop.com
@@ -58,9 +59,11 @@ prompts:
 
 </File>
 
+</VersionBlock>
+
 ```
 $ dbt init
-Running with dbt=1.0.0-b2
+Running with dbt=1.0.0
 Setting up your profile.
 user (yourname@jaffleshop.com): summerintern@jaffleshop.com
 schema (usually dbt_<yourname>): dbt_summerintern

@@ -16,6 +16,7 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Oxford comma](#Oxford-comma)
 * [Lists](#Lists)
 * [Tables](#Tables)
+* [Cards](#Cards)
 * [Word choice & terminology](#word-choice--terminology)
 * [Links](#Links)
 * [Images](#Images)
@@ -339,6 +340,76 @@ A table following an H3 heading:
 > | `-help` | Displays information on how to use the command. | Doesn't take any values. |
 > | `-readable` | Print output in human readable format. | <ul><li>`true`</li><li>`false`</li></ul> |
 > | `-file` | Print output to file instead of stdout. | Name of the file. |
+
+## Cards
+
+Use the `<Card` component to display content and actions on a single topic. Users should cards easy to scan for relevant and actionable information. Elements, like text, icons, and links can be used inside a card. 
+  
+You can configure a card in 2, 3, 4, or 5-column grids. To maintain a good user experience, be mindful of how the cards are displayed. Cards with multiple paragraphs may not work because the text and cards will appear too squished, making them hard to read and a bad user experience. 
+
+There won't be many instances where you need to display 4 or 5 cards on the docs site. While we recommend you use 2 or 3-column grids, you can use 4 or 5-column grids in the following scenarios:
+
+- For cards that contain little text and limited to under 15 words. (This is to make sure the text isn't squished)
+- Always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). 
+
+Otherwise, the text will appear squished and provide users with a bad experience.
+
+- `<divclassName="grid--2-col">`: creates 2 column cards
+- `<divclassName="grid--3-col">`: creates 3 columns cards
+- `<divclassName="grid--4-col">`: creates 4 columns cards (use sparingly)
+- `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
+- You can't create cards with 6 or more columns as that would provide users a poor experience.
+
+Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/quickstarts/overview) as examples. 
+
+### Create cards
+
+To create cards in markdown, you need to:
+
+- Start off by using the appropriate `<divclassName="grid--column_num-col">` for your use case 
+- Create a `<Card` component (which is wrapped within the div)
+- Add the props within the card component, including `title`,`body`,`link`,`icon`.
+- Close out the div by using `</div>`
+
+Refer to the following prop list for detailed explanation and examples:
+
+| Prop | Type | Info | Example |
+| ---- | ---- | ---- | ------- |
+| `title` | required | The title should be clear and explain an action the user should take or a product/feature. | `title: dbt Cloud IDE`
+| `body` | required | The body contains the actionable or informative text for the user. You can include `<a href="` link within the body of the text. However, if you do this, you must not include the `link` prop set as that'll override any `<a href's` within the body text.  | `body="The IDE is the easiest and most efficient way to develop dbt models`
+| `link` | optional | Add a link to the entire card component so when users click on the card, it'll trigger the link. Adding a link prop means it'll override any links within the body and if users click on the card, they'll be directed to the link set by the link prop. | `link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud`
+| `icon` | optional but recommended | You can add an icon to the card comonent by using any icons found in the [icons](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/static/img/icons) directory. <br /> * Icons are added in .svg format and you must add icons in two locations: website/static/img/icons and website/static/img/icons/white. This is so users can view the icons in dark or light mode on the docs.getdbt.com site. | ` icon="pencil-paper"/>` |
+
+The following is an example of a 4 card column:
+
+```
+<div className="grid--4-col">
+
+<Card
+    title="dbt Cloud IDE" 
+    body="The IDE is the easiest and most efficient way to develop dbt models." 
+    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    icon="pencil-paper"/> 
+    
+<Card  ## this card component has an <a href link within the body. Notice how there's no link prop set as it'll override any a href's within the body. 
+    title="New title"
+    body="more <a href='www.getdbt.com'>text text</a>"
+    icon="pencil-paper"/>
+
+<Card
+    title="New title"
+    body="more text text"
+    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    icon="pencil-paper"/>
+
+<Card
+    title="New title"
+    body="more text text"
+    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    icon="pencil-paper"/>
+
+</div>
+```
 
 ## Word choice & terminology
 Use active voice instead of passive. Active voice is clearer and more direct, making it easier to translate. 

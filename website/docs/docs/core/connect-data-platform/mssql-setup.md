@@ -98,7 +98,7 @@ A complete reference of all options can be found [at the end of this page](#refe
 ### Connection encryption
 
 Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured.
-To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default vallues of `encrypt` and `trust_cert` have changed.
+To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default values of `encrypt` and `trust_cert` have changed.
 Both of these settings will now **always** be included in the connection string to the server, regardless if you've left them out of your profile configuration or not.
 
 * The default value of `encrypt` is `true`, meaning that connections are encrypted by default.

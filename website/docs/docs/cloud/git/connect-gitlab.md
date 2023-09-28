@@ -4,13 +4,12 @@ description: "Learn how connecting your GitLab account provides convenience and 
 id: "connect-gitlab"
 ---
 
-## Overview
 
 Connecting your GitLab account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
 - Import new GitLab repos with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
 - Carry GitLab user permissions through to dbt Cloud IDE's git actions.
-- Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when merge requests are opened in GitLab.
+- Trigger [Continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
 
 The steps to integrate GitLab in dbt Cloud depend on your plan. If you are on:
 - the Developer or Team plan, read these [instructions](#for-dbt-cloud-developer-and-team-tiers).
@@ -72,6 +71,8 @@ The application form in GitLab should look as follows when completed:
 
 Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values will be available even if you close the app screen, so this is not the only chance you have to save them.
 
+If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate Gitlab CIDRs to your IP restriction rules, or else the Gitlab connection will fail.
+
 ### Adding the GitLab OAuth application to dbt Cloud
 After you've created your GitLab application, you need to provide dbt Cloud information about the app. In dbt Cloud, account admins should navigate to **Account Settings**, click on the **Integrations** tab, and expand the GitLab section.
 
@@ -117,3 +118,10 @@ If you do see your repository listed, but are unable to import the repository su
 - You are a maintainer of that repository. Only users with maintainer permissions can set up repository connections.
 
 If you imported a repository using the dbt Cloud native integration with GitLab, you should be able to see the clone strategy is using a `deploy_token`. If it's relying on an SSH key, this means the repository was not set up using the native GitLab integration, but rather using the generic git clone option. The repository must be reconnected in order to get the benefits described above.
+
+## FAQs
+
+<FAQ path="Git/gitignore"/>
+<FAQ path="Git/gitlab-authentication"/>
+<FAQ path="Git/gitlab-selfhosted"/>
+<FAQ path="Git/git-migration"/>

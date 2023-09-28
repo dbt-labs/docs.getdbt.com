@@ -5,7 +5,7 @@ slug: serverless-datadog
 description: Configure a serverless app to add Datadog logs
 ---
 
-This guide will teach you how to build and host a basic Python app which will add dbt Cloud job events to Datadog. To do this, when a dbt Cloud job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-models).
+This guide will teach you how to build and host a basic Python app which will add dbt Cloud job events to Datadog. To do this, when a dbt Cloud job completes it will create a log entry for each node that was run, containing all information about the node provided by the [Discovery API](/docs/dbt-cloud-apis/discovery-schema-job-models).
 
 In this example, we will use [fly.io](https://fly.io) for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
@@ -24,7 +24,7 @@ This guide assumes some familiarity with:
 
 ### 2. Install `flyctl` and sign up for fly.io
 
-Follow the directions for your OS in the [fly.io docs](https://fly.io/docs/hands-on/install-flyctl/), then from your command line, run the following commands: 
+Follow the directions for your OS in the [fly.io docs](https://fly.io/docs/hands-on/install-flyctl/), then from your command line, run the following commands:
 
 Switch to the directory containing the repo you cloned in step 1:
 ```shell
@@ -48,11 +48,11 @@ Launching your app publishes it to the web and makes it ready to catch webhook e
 flyctl launch
 ```
 
-You will see a message saying that an existing `fly.toml` file was found. Type `y` to copy its configuration to your new app. 
+You will see a message saying that an existing `fly.toml` file was found. Type `y` to copy its configuration to your new app.
 
 Choose an app name of your choosing, such as `YOUR_COMPANY-dbt-cloud-webhook-datadog`, or leave blank and one will be generated for you. Note that your name can only contain numbers, lowercase letters and dashes.
 
-Choose a deployment region, and take note of the hostname that is generated (normally `APP_NAME.fly.dev`). 
+Choose a deployment region, and take note of the hostname that is generated (normally `APP_NAME.fly.dev`).
 
 When asked if you would like to set up Postgresql or Redis databases, type `n` for each.
 

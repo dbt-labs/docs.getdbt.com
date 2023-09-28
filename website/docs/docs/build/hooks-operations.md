@@ -38,7 +38,7 @@ Hooks are snippets of SQL that are executed at different times:
 
 Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock firstVersion="1.2">
 
@@ -67,127 +67,6 @@ You can use hooks to provide database-specific functionality not available out-o
 
 </File>
 
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.1">
-
-### Examples using hooks
-
-Here's a minimal example of using hooks to grant privileges. For more information, see [`on-run-start` & `on-run-end` hooks](/reference/project-configs/on-run-start-on-run-end) and [`pre-hook` & `post-hook`](/reference/resource-configs/pre-hook-post-hook) reference sections.
-
-<File name='dbt_project.yml'>
-
-```yml
-on-run-end:
-  - "grant usage on {{ target.schema }} to role reporter"
-
-models:
-  +post-hook:
-    - "grant select on {{ this }} to role reporter"
-
-```
-
-</File>
-
-You can also apply the `post-hook` to individual models using a `config` block:
-
-<File name='models/<model_name>.sql'>
-
-```sql
-{{ config(
-    post_hook=[
-      "grant select on {{ this }} to role reporter"
-    ]
-) }}
-
-select ...
-
-```
-
-</File>
-
-You should use database-specific syntax when appropriate:
-
-<WHCode>
-
-<div warehouse="BigQuery">
-
-<File name='models/<model_name>.sql'>
-
-```sql
-{{ config(
-    post_hook=[
-      'grant `roles/bigquery.dataViewer` on {{ this.type }} {{ this }} to "user:someone@yourcompany.com"'
-    ]
-) }}
-
-select ...
-
-```
-
-</File>
-
-</div>
-
-<div warehouse="Databricks">
-
-<File name='models/<model_name>.sql'>
-
-```sql
-{{ config(
-    post_hook=[
-      "grant select on {{ this }} to `someone@yourcompany.com`"
-    ]
-) }}
-
-select ...
-
-```
-
-</File>
-
-</div>
-
-<div warehouse="Redshift">
-
-<File name='models/<model_name>.sql'>
-
-```sql
-{{ config(
-    post_hook=[
-      "grant select on {{ this }} to reporter"
-    ]
-) }}
-
-select ...
-
-```
-
-</File>
-
-</div>
-
-<div warehouse="Snowflake">
-
-<File name='models/<model_name>.sql'>
-
-```sql
-{{ config(
-    post_hook=[
-      "grant select on {{ this }} to role reporter"
-    ]
-) }}
-
-select ...
-
-```
-
-</File>
-
-</div>
-
-</WHCode>
 
 </VersionBlock>
 

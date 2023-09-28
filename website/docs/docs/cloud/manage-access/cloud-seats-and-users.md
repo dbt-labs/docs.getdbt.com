@@ -6,24 +6,27 @@ sidebar: "Users and licenses"
 ---
 
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
-- Developer
-- Read-only
-- IT
 
-The type of license a user is assigned controls which capabilities of dbt Cloud the user is permitted to access. Users with a Developer license can be granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud, whereas users with Read Only licenses are intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Users with an IT License can manage users, groups, and licenses, among other permissions.
+- **Developer** &mdash; Granted access to the Deployment and [Development](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) functionality in dbt Cloud.
+- **Read-Only** &mdash; Intended to view the [artifacts](/docs/deploy/artifacts) created in a dbt Cloud account. Read-Only users can receive job notifications but not configure them.
+- **IT** &mdash; Can manage users, groups, and licenses, among other permissions. IT users can receive job notifications but not configure them. Available on Enterprise and Team plans only.
 
-| Functionality | Developer User | Read Only Users | IT Users |
+The user's assigned license determines the specific capabilities they can access in dbt Cloud.
+
+| Functionality | Developer User | Read-Only Users | IT Users* |
 | ------------- | -------------- | --------------- | -------- |
-| Use the Developer IDE | ✅ | ❌ | ❌ |
+| Use the dbt Cloud IDE | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |
 | Use [Source Freshness](/docs/deploy/source-freshness) | ✅ | ✅ | ❌ |
 | Use [Docs](/docs/collaborate/build-and-view-your-docs) | ✅ | ✅ | ❌ |
+| Receive [Job notifications](/docs/deploy/job-notifications) |  ✅ |  ✅  |  ✅ | 
+*Available on Enterprise and Team plans only and doesn't count toward seat usage. Please note, that IT seats are limited to 1 seat per Team or Enterprise account.
 
 ## Licenses
 
-Each dbt Cloud plan comes with a base number of Developer, IT, and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+Each dbt Cloud plan comes with a base number of Developer, IT, and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
 
 If you have a Developer plan account and want to add more people to your team, you'll need to upgrade to the Team plan. Refer to [dbt Pricing Plans](https://www.getdbt.com/pricing/) for more information about licenses available with each plan.
 
@@ -33,7 +36,7 @@ The following tabs detail steps on how to modify your user license count:
 
 <TabItem value="enterprise" label="Enterprise plans">
 
-If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count: 
+If you're on an Enterprise plan and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove licenses by adjusting your user seat count. Note, an IT license does not count toward seat usage.
 
 - To remove a user, go to **Account Settings**, select **Users** under **Teams**. Select the user you want to remove, click **Edit**, and then **Delete**. This action cannot be undone. However, you can re-invite the user with the same info if you deleted the user in error.<br />
 
@@ -45,7 +48,7 @@ If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/
 
 <TabItem value="team" label="Team plans">
 
-If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers, you'll need to make two changes:
+If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers. You'll need to make two changes:
 
 - Adjust your developer user seat count, which manages the users invited to your dbt Cloud project. AND
 - Adjust your developer billing seat count, which manages the number of billable seats. 
@@ -142,19 +145,19 @@ If your account is connected to an Identity Provider (IdP) for [Single Sign
 On](/docs/cloud/manage-access/sso-overview), you can automatically map IdP user
 groups to specific license types in dbt Cloud. To configure license mappings,
 navigate to the Account Settings &gt; Team &gt; License Mappings page. From
-here, you can create or edit SSO mappings for both Read Only and Developer
+here, you can create or edit SSO mappings for both Read-Only and Developer
 license types.
 
 By default, all new members of a dbt Cloud account will be assigned a Developer
-license. To assign Read Only licenses to certain groups of users, create a new
-License Mapping for the Read Only license type and include a comma separated
-list of IdP group names that should receive a Read Only license at sign-in time.
+license. To assign Read-Only licenses to certain groups of users, create a new
+License Mapping for the Read-Only license type and include a comma separated
+list of IdP group names that should receive a Read-Only license at sign-in time.
 
 <Lightbox src="/img/docs/dbt-cloud/access-control/license-mapping.png"
           title="Configuring IdP group license mapping"/>
 
 Usage notes:
-- If a user's IdP groups match both a Developer and Read Only license type
+- If a user's IdP groups match both a Developer and Read-Only license type
   mapping, a Developer license type will be assigned
 - If a user's IdP groups do not match _any_ license type mappings, a Developer
   license will be assigned

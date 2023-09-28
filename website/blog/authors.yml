@@ -1,6 +1,6 @@
 amy_chen:
   image_url: /img/blog/authors/achen.png
-  job_title: Senior Partner Engineer
+  job_title: Staff Partner Engineer
   links:
     - icon: fa-linkedin
       url: https://www.linkedin.com/in/yuanamychen/
@@ -186,7 +186,7 @@ emily_riederer:
       url: https://twitter.com/emilyriederer
     - icon: fa-readme
       url: https://emilyriederer.com
-      
+
 grace_goheen:
   image_url: /img/blog/authors/grace-goheen.jpeg
   job_title: Analytics Engineer
@@ -373,6 +373,25 @@ pat_kearns:
   name: Pat Kearns
   organization: dbt Labs
 
+pedro_brito_de_sa:
+  image_url: /img/blog/authors/pedro_brito.jpeg
+  job_title: Product Analyst
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/pbritosa/
+  name: Pedro Brito de Sa
+  organization: Sage
+
+
+rastislav_zdechovan:
+  image_url: /img/blog/authors/rastislav-zdechovan.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/rastislav-zdechovan/
+  name: Rastislav Zdechovan
+  organization: Infinite Lambda
+
 ross_turk:
   image_url: /img/blog/authors/ross-turk.png
   job_title: VP Marketing
@@ -442,6 +461,17 @@ simon_podhajsky:
   name: Simon Podhajsky
   organization: iLife Technologies
 
+sterling_paramore:
+  description: |
+    Sterling Paramore started his career in theoretical and computation biophysics and learned that working with data was way more fun than being locked in the ivory tower.  He loves solving data engineering and data analytics problems and has been a long time evangelist for dbt.
+  image_url: /img/blog/authors/sterling-paramore.png
+  job_title: Sr Staff Data Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sterlingparamore/
+  name: Sterling Paramore
+  organization: Mainspring Energy
+
 sung_chung:
   image_url: /img/blog/authors/sung.jpeg
   job_title: Solutions Architect
@@ -494,3 +524,12 @@ jonathan_neo:
   name: Jonathan Neo
   organization: Canva & Data Engineer Camp
   description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple. 
+
+santiago_jauregui:
+  image_url: /img/blog/authors/santiago-jauregui.jpeg
+  job_title: Data Analytics Leader
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/santiago-jauregui/
+  name: Santiago Jauregui
+  organization: MODO

@@ -3,6 +3,7 @@ title: "About tests property"
 sidebar_label: "tests"
 resource_types: all
 datatype: test
+keywords: [test, tests, custom tests, custom test name, test name]
 ---
 
 <Tabs
@@ -260,8 +261,8 @@ The `to` argument accepts a [Relation](/reference/dbt-classes#relation) – this
 
 ## Additional examples
 
-### Testing an expression
-Some tests require multiple columns, so it doesn't make sense to nest them under the `columns:` key. In this case you can apply the test to the model (or source, seed or snapshot) instead:
+### Test an expression
+Some tests require multiple columns, so it doesn't make sense to nest them under the `columns:` key. In this case, you can apply the test to the model (or source, seed, or snapshot) instead:
 
 <File name='models/orders.yml'>
 
@@ -277,7 +278,7 @@ models:
 
 </File>
 
-### Define and use a custom generic test
+### Use custom generic test
 
 If you've defined your own custom generic test, you can use that as the `test_name`:
 
@@ -299,9 +300,7 @@ models:
 
 Check out the guide on writing a [custom generic test](/guides/best-practices/writing-custom-generic-tests) for more information.
 
-<VersionBlock firstVersion="1.1">
-
-### Define a custom name for one test
+### Custom test name
 
 By default, dbt will synthesize a name for your generic test by concatenating:
 - test name (`not_null`, `unique`, etc)
@@ -351,7 +350,7 @@ $ dbt test --select unexpected_order_status_today
 12:43:41  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
 ```
 
-A test's name must be unique for all tests defined on a given model-column combination. If you give the same name to tests defined on several different columns, or across several different models, then `dbt test --select <repeated_custom_name>` will select them all.
+A test's name must be unique for all tests defined on a given model-column combination. If you give the same name to tests defined on several different columns, or across several different models, then `dbt test --select <repeated_custom_name>` will select them all. 
 
 **When might you need this?** In cases where you have defined the same test twice, with only a difference in configuration, dbt will consider these tests to be duplicates:
 
@@ -390,7 +389,7 @@ Compilation Error
   - test.testy.accepted_values_orders_status__placed__shipped__completed__returned.69dce9e5d5 (models/one_file.yml)
 ```
 
-By providing a custom name, you enable dbt to disambiguate them:
+By providing a custom name, you help dbt differentiate tests:
 
 <File name='models/<filename>.yml'>
 
@@ -435,15 +434,11 @@ $ dbt test
 12:48:04  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 TOTAL=2
 ```
 
-**If using [`store_failures`](/reference/resource-configs/store_failures):** dbt uses each test's name as the name of the table in which to store any failing records. If you have defined a custom name for one test, that custom name will also be used for its table of failures. You may optionally configure an [`alias`](/reference/resource-configs/alias) for the test, in order to separately control both the name of the test (for metadata) and the name of its database table (for storing failures).
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
+**If using [`store_failures`](/reference/resource-configs/store_failures):** dbt uses each test's name as the name of the table in which to store any failing records. If you have defined a custom name for one test, that custom name will also be used for its table of failures. You may optionally configure an [`alias`](/reference/resource-configs/alias) for the test, to separately control both the name of the test (for metadata) and the name of its database table (for storing failures).
 
 ### Alternative format for defining tests
 
-When defining a generic test with a number of arguments and configurations, the YAML can look and feel unwieldy. If you find it easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
+When defining a generic test with several arguments and configurations, the YAML can look and feel unwieldy. If you find it easier, you can define the same test properties as top-level keys of a single dictionary, by providing the test name as `test_name` instead. It's totally up to you.
 
 This example is identical to the one above:
 
@@ -469,5 +464,3 @@ models:
 ```
 
 </File>
-
-</VersionBlock>

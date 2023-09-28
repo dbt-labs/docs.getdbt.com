@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: string
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `where` config
-* `v0.21.0`: Introduced `config` property for tests. Reimplemented `where` config with `get_where_subquery` macro
-
-</Changelog>
-
 ### Definition
 
 Filter the resource being tested (model, source, seed, or snapshot).
@@ -154,7 +147,7 @@ models:
         tests:
           - unique:
               config:
-                where: "date_column > __last_three_days__"  # placeholder string for static config
+                where: "date_column > __three_days_ago__"  # placeholder string for static config
 ```
 
 </File>
@@ -163,13 +156,13 @@ models:
 
 ```sql
 {% macro get_where_subquery(relation) -%}
-    {% set where = config.get('where', '') %}
-    {% if "__three_days_ago__" in where %}
-        {# replace placeholder string with result of custom macro #}
-        {% set three_days_ago = dbt.dateadd('day', -3, current_timestamp()) %}
-        {% set where = where | replace("__three_days_ago__", three_days_ago) %}
-    {% endif %}
+    {% set where = config.get('where') %}
     {% if where %}
+        {% if "__three_days_ago__" in where %}
+            {# replace placeholder string with result of custom macro #}
+            {% set three_days_ago = dbt.dateadd('day', -3, current_timestamp()) %}
+            {% set where = where | replace("__three_days_ago__", three_days_ago) %}
+        {% endif %}
         {%- set filtered -%}
             (select * from {{ relation }} where {{ where }}) dbt_subquery
         {%- endset -%}

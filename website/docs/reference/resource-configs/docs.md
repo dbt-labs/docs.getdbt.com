@@ -1,5 +1,4 @@
 ---
-title: "About docs configuration"
 sidebar_label: "docs"
 resource_types: models
 description: "Docs - Read this in-depth guide to learn about configurations in dbt."
@@ -123,12 +122,6 @@ macros:
 The docs field can be used to provide documentation-specific configuration to models. The only currently supported docs attribute is shown, which controls whether or not models are shown in the auto-generated documentation website.
 
 **Note:** hidden models will still appear in the dbt DAG visualization but will be identified as "hidden.”
-
-<Changelog>
-
-* `v0.16.0`: This property was added
-
-</Changelog>
 
 ## Default
 The default value for `show` is `true`.

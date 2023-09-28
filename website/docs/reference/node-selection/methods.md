@@ -46,6 +46,13 @@ The `source` method is used to select models that select from a specified [sourc
   $ dbt run --select source:snowplow+    # run all models that select from Snowplow sources
   ```
 
+### The "resource_type" method
+Use the `resource_type` method to select nodes of a particular type (`model`, `source`, `exposure`, etc). This is similar to the `--resource-type` flag used by the [`dbt ls` command](/reference/commands/list).
+
+  ```bash
+  $ dbt build --select resource_type:exposure    # build all resources upstream of exposures
+  $ dbt list --select resource_type:test    # list all tests in your project
+  ```
 
 ### The "path" method
 The `path` method is used to select models/sources defined at or under a specific path.
@@ -67,17 +74,27 @@ selectors unambiguous.
 
 <VersionBlock firstVersion="1.2">
 
-### The "file" or "fqn" method
-The `file` or `fqn` method can be used to select a model by its filename, including the file extension (`.sql`).
+### The "file" method
+The `file` method can be used to select a model by its filename, including the file extension (`.sql`).
 
 ```bash
 # These are equivalent
+dbt run --select file:some_model.sql
 dbt run --select some_model.sql
 dbt run --select some_model
-dbt run --select fqn:some_model # fqn is an abbreviation for "fully qualified name"
 ```
 
 </VersionBlock>
+
+### The "fqn" method
+
+The `fqn` method is used to select nodes based off their "fully qualified names" (FQN) within the dbt graph. The default output of [`dbt list`](/reference/commands/list) is a listing of FQN.
+
+```
+dbt run --select fqn:some_model
+dbt run --select fqn:your_project.some_model
+dbt run --select fqn:some_package.some_other_model
+```
 
 ### The "package" method
 
@@ -134,9 +151,6 @@ $ dbt ls -s config.transient:true
 </VersionBlock>
 
 ### The "test_type" method
-<Changelog>
-In v1.0.0, test types were renamed: "singular" (instead of "data") and "generic" (instead of "schema")
-</Changelog>
 
 The `test_type` method is used to select tests based on their type, `singular` or `generic`:
 
@@ -200,6 +214,16 @@ Because state comparison is complex, and everyone's project is different, dbt su
 
 Remember that `state:modified` includes _all_ of the criteria above, as well as some extra resource-specific criteria, such as modifying a source's `freshness` or `quoting` rules or an exposure's `maturity` property. (View the source code for the full set of checks used when comparing [sources](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L660-L681), [exposures](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L768-L783), and [executable nodes](https://github.com/dbt-labs/dbt-core/blob/9e796671dd55d4781284d36c035d1db19641cd80/core/dbt/contracts/graph/parsed.py#L319-L330).)
 
+<VersionBlock firstVersion="1.6">
+
+There are two additional `state` selectors that complement `state:new` and `state:modified` by representing the inverse of those functions:
+- `state:old` &mdash; A node with the same `unique_id` exists in the comparison manifest
+- `state:unmodified` &mdash; All existing nodes with no changes 
+
+These selectors can help you shorten run times by excluding unchanged nodes. Currently, no subselectors are available at this time, but that might change as use cases evolve. 
+
+</VersionBlock>
+
 ### The "exposure" method
 
 The `exposure` method is used to select parent resources of a specified [exposure](/docs/build/exposures). Use in conjunction with the `+` operator.
@@ -212,7 +236,6 @@ The `exposure` method is used to select parent resources of a specified [exposur
   ```
 
 ### The "metric" method
-<Changelog>New in v1.0.0</Changelog>
 
 The `metric` method is used to select parent resources of a specified [metric](/docs/build/metrics). Use in conjunction with the `+` operator.
 
@@ -222,7 +245,6 @@ $ dbt ls    --select +metric:* --resource-type source  # list all source tables 
 ```
 
 ### The "result" method
-<Changelog>New in v1.0.0</Changelog>
 
 The `result` method is related to the `state` method described above and can be used to select resources based on their result status from a prior run. Note that one of the dbt commands [`run`, `test`, `build`, `seed`] must have been performed in order to create the result on which a result selector operates. You can use `result` selectors in conjunction with the `+` operator. 
 
@@ -232,15 +254,8 @@ $ dbt test --select result:fail --state path/to/artifacts # run all tests that f
 $ dbt build --select 1+result:fail --state path/to/artifacts # run all the models associated with failed tests from the prior invocation of dbt build
 $ dbt seed --select result:error --state path/to/artifacts # run all seeds that generated errors on the prior invocation of dbt seed.
 ```
-**Note** &mdash; When you define steps in your dbt Cloud jobs, please be aware that the `--state` parameter is automatically included when you click the [**Defer**](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) button.
+
 ### The "source_status" method
-<VersionBlock lastVersion="1.0">
-
-Supported in v1.1 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
   
 Supported in v1.1 or higher.
 
@@ -272,9 +287,6 @@ $ dbt build --select source_status:fresher+ --state path/to/prod/artifacts
 </VersionBlock>
 
 
-</VersionBlock>
-
-
 ### The "group" method
 <VersionBlock lastVersion="1.4">
 
@@ -284,14 +296,32 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-Supported in v1.5 or newer.
-
-The `group` method is used to select models defined within a group.
+The `group` method is used to select models defined within a [group](/reference/resource-configs/group).
 
 
   ```bash
   dbt run --select group:finance # run all models that belong to the finance group.
   ```
+
+</VersionBlock>
+
+### The "access" method
+
+<VersionBlock lastVersion="1.4">
+
+Supported in v1.5 or newer.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+
+```bash
+dbt list --select access:public       # list all public models
+dbt list --select access:private       # list all private models
+dbt list --select access:protected       # list all protected models
+```
 
 </VersionBlock>
 
@@ -313,26 +343,6 @@ dbt list --select version:prerelease  # versions newer than the 'latest' version
 dbt list --select version:old         # versions older than the 'latest' version
 
 dbt list --select version:none        # models that are *not* versioned
-```
-
-</VersionBlock>
-
-### The "access" method
-
-<VersionBlock lastVersion="1.5">
-
-Supported in v1.6 or newer.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.6">
-
-The `access` method selects models based on their [access](/reference/resource-properties/access) property.
-
-```bash
-dbt list --select access:public       # list all public models
-dbt list --select access:private       # list all private models
-dbt list --select access:protected       # list all protected models
 ```
 
 </VersionBlock>

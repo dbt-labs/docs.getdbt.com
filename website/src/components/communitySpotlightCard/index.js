@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
+import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 const SpotlightWrapper = ({ isSpotlightMember, frontMatter, children }) => {
   return isSpotlightMember ? (
@@ -55,13 +56,13 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
         <div className={styles.spotlightMemberImgContainer}>
           {id && isSpotlightMember ? (
             <img 
-              src={image} 
+              src={imageCacheWrapper(image)} 
               alt={title} 
             />
           ) : (
             <Link to={`/community/spotlight/${id}`} className={styles.spotlightMemberHeader}>
               <img 
-                src={image} 
+                src={imageCacheWrapper(image)} 
                 alt={title} 
               />
             </Link>
@@ -100,7 +101,7 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
           </div>
         )}
         {description && !isSpotlightMember && (
-          <p className={styles.spotlightMemberDescription}>{truncateText(description)}</p>
+          <p className={styles.spotlightMemberDescription} dangerouslySetInnerHTML={{__html: truncateText(description)}} />
         )}
         {socialLinks && isSpotlightMember && socialLinks?.length > 0 && (
           <div className={styles.spotlightMemberSocial}>
@@ -137,9 +138,27 @@ function CommunitySpotlightCard({ frontMatter, isSpotlightMember = false }) {
 // Truncate text
 function truncateText(str) {
   // Max length of string
-  const maxLength = 300
+  let maxLength = 300
+
+  // Check if anchor link starts within first 300 characters
+  let hasLinks = false
+  if(str.substring(0, maxLength - 3).match(/(?:<a)/g)) {
+    hasLinks = true
+  }
+
+  // Exclude link html from content length count
+  // Otherwise href, title, rel values all counted as text.
+  if(hasLinks) {
+    const linkText = str.match(/(?<=<a ).*(?=<\/a>)/g)
+    if(linkText?.length && linkText[0]?.length) {
+      maxLength += linkText[0]?.length
+    }
+  }
+
+  const substring = str.substring(0, maxLength - 3)
+
   return str.length > maxLength
-    ? `${str.substring(0, maxLength - 3)}...`
+    ? `${substring}...`
     : str
 }
 

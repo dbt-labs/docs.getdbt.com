@@ -42,7 +42,7 @@ You can add code snippets and other content in a tabbed view. To learn more abou
 
 # Running the Docs site locally
 
-You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
+You can click a link available in a Vercel bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
 ## Prerequisites
 
@@ -56,9 +56,9 @@ You can click a link available in a netlify bot PR comment to see and review you
 2. Clone this repo: `git clone https://github.com/dbt-labs/docs.getdbt.com.git`
 3. `cd` into the repo: `cd docs.getdbt.com`
 4. `cd` into the `website` subdirectory: `cd website`
-5. Install the required node packages: `npm install` (optional &mdash; install any updates)
-6. Build the website: `npm start`
-7. Before pushing your changes to a branch, check that all links work by using the `make build` script.
+5. Install the required node packages: `make install` or `npm install` (optional &mdash; install any updates)
+6. Build the website: `make run` or `npm start`
+7. Before pushing your changes to a branch, run `make build` or `npm run build` and check that all links work
 
 Advisory:
 - If you run into an `fatal error: 'vips/vips8' file not found` error when you run `npm install`, you may need to run `brew install vips`. Warning: this one will take a while -- go ahead and grab some coffee!

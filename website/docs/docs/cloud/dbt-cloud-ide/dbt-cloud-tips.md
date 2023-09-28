@@ -52,7 +52,6 @@ There are default keyboard shortcuts that can help make development more product
 - Use `dir_name` to run all models in a package or directory.
 - Use the `@` operator on the left of a model in a non-state-aware CI setup to test it. This operator runs all of a selection’s parents and children, and also runs the parents of its children, which in a fresh CI schema will likely not exist yet.
 - Use the [--exclude flag](/reference/node-selection/exclude) to remove a subset of models out of a selection.
-- Use [state and deferral](/docs/deploy/cloud-ci-job#deferral-and-state-comparison) to create a slim CI setup.
 - Use the [--full-refresh](/reference/commands/run#refresh-incremental-models) flag to rebuild an incremental model from scratch.
 - Use [seeds](/docs/build/seeds) to create manual lookup tables, like zip codes to states or marketing UTMs to campaigns. `dbt seed` will build these from CSVs into your warehouse and make them `ref` able in your models.
 - Use [target.name](/docs/build/custom-schemas#an-alternative-pattern-for-generating-schema-names) to pivot logic based on what environment you’re using. For example, to build into a single development schema while developing, but use multiple schemas in production.

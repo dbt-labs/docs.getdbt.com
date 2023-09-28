@@ -4,11 +4,9 @@ description: "Learn how dbt Cloud administrators can use Single-Sign On (SSO) vi
 id: "set-up-sso-google-workspace"
 ---
 
-:::info Enterprise Feature
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re
-interested in learning more about an Enterprise plan, contact us at
-sales@getdbt.com.
-:::
+import SetUpPages from '/snippets/_sso-docs-mt-available.md';
+
+<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
 dbt Cloud Enterprise supports Single-Sign On (SSO) via Google GSuite. You will need
 permissions to create and manage a new Google OAuth2 application, as well as
@@ -51,7 +49,7 @@ Client Secret for use in dbt Cloud.
 | **Application type**   | internal     | required |
 | **Application name**   | dbt Cloud    | required |
 | **Application logo**   | Download the logo <a href="https://www.getdbt.com/ui/img/dbt-icon.png" target="_blank" rel="noopener noreferrer">here</a> | optional |
-| **Authorized domains** | `getdbt.com` | If deploying into a VPC, use the domain for your deployment |
+| **Authorized domains** | `getdbt.com` (US multi-tenant) `getdbt.com` and `dbt.com`(US Cell 1) `dbt.com` (EMEA or AU) | If deploying into a VPC, use the domain for your deployment |
 | **Scopes** | `email, profile, openid` | The default scopes are sufficient |
 
 <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/gsuite/gsuite-sso-consent-top.png" title="GSuite Consent Screen configuration"/>
@@ -115,7 +113,7 @@ Settings.
 
 If the verification information looks appropriate, then you have completed the configuration of GSuite SSO. 
 
-<Snippet src="login_url_note" />
+<Snippet path="login_url_note" />
 
 ## Setting up RBAC
 Now you have completed setting up SSO with GSuite, the next steps will be to set up

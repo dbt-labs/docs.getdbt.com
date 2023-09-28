@@ -48,12 +48,22 @@ The precedence order is: CLI flag > env var > `dbt_project.yml`
 </VersionBlock>
 
 ## Examples
-### Use a subdirectory named `compiled` for compiled files
+### Specify subdirectory using the project config file
 
 <File name='dbt_project.yml'>
 
 ```yml
-target-path: "compiled"
+target-path: "compiled_files"
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.5">
+
+### Specify subdirectory from the command line 
+
+```bash
+dbt run --target-path compiled_files
+```
+
+</VersionBlock>

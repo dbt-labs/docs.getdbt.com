@@ -103,7 +103,7 @@ To modify how dbt generates schema names, you should add a macro named `generate
 
 If you're modifying how dbt generates schema names, don't just replace ```{{ default_schema }}_{{ custom_schema_name | trim }}``` with ```{{ custom_schema_name | trim }}``` in the ```generate_schema_name``` macro. 
 
-Removing ```{{ default_schema }}``` causes developers to overriding each other's models when custom schemas are defined. This can also cause issues during development and continuous integration (CI).
+If you remove ```{{ default_schema }}```, it causes developers to override each other's models if they create their own custom schemas. This can also cause issues during development and continuous integration (CI).
 
 ❌ The following code block is an example of what your code _should not_ look like: 
 ```sql
@@ -178,17 +178,18 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your project | Macro | ✅ |
 | Other macros in your packages | Macro | ✅ |
 
-#### Which vars are available in generate_schema_name?
-
-<Changelog>
-
-Variable semantics have changed in dbt v0.17.0. See the [migration guide](/guides/migration/versions)
-for more information on these changes.
-
-</Changelog>
+### Which vars are available in generate_schema_name?
 
 Globally-scoped variables and variables defined on the command line with
 [--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.
+
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
 
 ## Managing environments
 
@@ -199,4 +200,4 @@ In the `generate_schema_name` macro examples shown above, the `target.name` cont
 
 If your schema names are being generated incorrectly, double check your target name in the relevant environment.
 
-For more information, consult the [managing environments in dbt Core](/docs/collaborate/environments/dbt-core-environments) guide.
+For more information, consult the [managing environments in dbt Core](/docs/core/dbt-core-environments) guide.

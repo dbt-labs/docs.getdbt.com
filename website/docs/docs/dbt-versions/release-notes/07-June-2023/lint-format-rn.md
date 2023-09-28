@@ -3,7 +3,7 @@ title: "New: You can now lint and format your code in the IDE"
 id: "lint-format-rn"
 description: "June 2023 release note: In the dbt Cloud IDE, you can perform linting and formatting on SQL, YAML, Markdown, Python, and JSON files using tools like SQLFluff, sqlfmt, Prettier, and Black."
 sidebar_label: "New: Lint and format in the IDE"
-sidebar_position: 1
+sidebar_position: 10
 tags: [June-2023, IDE]
 ---
 

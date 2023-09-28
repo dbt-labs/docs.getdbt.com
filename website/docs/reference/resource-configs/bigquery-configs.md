@@ -21,26 +21,6 @@ This will allow you to read and write from multiple BigQuery projects. Same for 
 
 ### Partition clause
 
-<Changelog>
-
-Before dbt v0.16.0, the `partition_by` configuration was supplied as string. While
-the string specification syntax is still supported in dbt v0.16.0, it has been
-deprecated and will be removed in a future release. **Note:** partitioning configs
-using a range bucket *must* be supplied using the dictionary-style configuration as of
-dbt v0.16.0.
-
-Example usage for versions of dbt < 0.16.0:
-
-```sql
--- Partitioning by a timestamp field
-{{ config( materialized='table', partition_by="date(created_at)" ) }}
-
--- Partitioning by a date field
-{{ config( materialized='table', partition_by="created_date" ) }}
-```
-
-</Changelog>
-
 BigQuery supports the use of a [partition by](https://cloud.google.com/bigquery/docs/data-definition-language#specifying_table_partitioning_options) clause to easily partition a <Term id="table" /> by a column or expression. This option can help decrease latency and cost when querying large tables. Note that partition pruning [only works](https://cloud.google.com/bigquery/docs/querying-partitioned-tables#pruning_limiting_partitions) when partitions are filtered using literal values (so selecting partitions using a <Term id="subquery" /> won't improve performance).
 
 The `partition_by` config can be supplied as a dictionary with the following format:
@@ -61,7 +41,6 @@ The `partition_by` config can be supplied as a dictionary with the following for
 ```
 
 #### Partitioning by a date or timestamp
-<Changelog>Partitioning by hour, month or year is new in v0.19.0</Changelog>
 
 When using a `datetime` or `timestamp` column to partition data, you can create partitions with a granularity of hour, day, month, or year. A `date` column supports granularity of day, month and year. Daily partitioning is the default for all column types.
 
@@ -266,12 +245,6 @@ as (
 
 #### Additional partition configs
 
-<Changelog>
-
-  - **v0.20.0:** Introduced `require_partition_filter` and `partition_expiration_days`
-
-</Changelog>
-
 If your model has `partition_by` configured, you may optionally specify two additional configurations:
 
 - `require_partition_filter` (boolean): If set to `true`, anyone querying this model _must_ specify a partition filter, otherwise their query will fail. This is recommended for very large tables with obvious partitioning schemes, such as event streams grouped by day. Note that this will affect other dbt models or tests that try to select from this model, too.
@@ -367,11 +340,7 @@ dbt supports the specification of BigQuery labels for the tables and <Term id="v
 
 The `labels` config can be provided in a model config, or in the `dbt_project.yml` file, as shown below.
   
-<Changelog>
-
-  - **v1.5.0:** BigQuery key-value pair entries for labels larger than 63 characters are truncated.
-
-</Changelog>
+ <VersionBlock firstVersion="1.5"> BigQuery key-value pair entries for labels larger than 63 characters are truncated. </VersionBlock>
 
 **Configuring labels in a model file**
 
@@ -489,12 +458,6 @@ strategy is selected.
 
 ### The `insert_overwrite` strategy
 
-<Changelog>
-
-  - **v0.16.0:** Introduced `insert_overwrite` incremental strategy
-
-</Changelog>
-
 The `insert_overwrite` strategy generates a merge statement that replaces entire partitions
 in the destination table. **Note:** this configuration requires that the model is configured
 with a [Partition clause](#partition-clause). The `merge` statement that dbt generates
@@ -586,12 +549,6 @@ This example model serves to replace the data in the destination table for both
 _today_ and _yesterday_ every day that it is run. It is the fastest and cheapest
 way to incrementally update a table using dbt. If we wanted this to run more dynamically—
 let’s say, always for the past 3 days—we could leverage dbt’s baked-in [datetime macros](https://github.com/dbt-labs/dbt-core/blob/dev/octavius-catto/core/dbt/include/global_project/macros/etc/datetime.sql) and write a few of our own.
-
-<Changelog>
-
-  - **v0.19.0:** With the advent of truncated timestamp partitions in BigQuery, `timestamp`-type partitions are now treated as timestamps instead of dates for the purposes of filtering. Update `partitions_to_replace` accordingly.
-
-</Changelog>
 
 Think of this as "full control" mode. You must ensure that expressions or literal values in the the `partitions` config have proper quoting when templated, and that they match the `partition_by.data_type` (`timestamp`, `datetime`, `date`, or `int64`). Otherwise, the filter in the incremental `merge` statement will raise an error.
 
@@ -685,7 +642,6 @@ from {{ ref('events') }}
 </VersionBlock>
 
 ## Controlling table expiration
-<Changelog>New in v0.18.0</Changelog>
 
 By default, dbt-created tables never expire. You can configure certain model(s)
 to expire after a set number of hours by setting `hours_to_expiration`.
@@ -721,14 +677,12 @@ select ...
 
 ## Authorized Views
 
-<Changelog>New in v0.18.0</Changelog>
-
 If the `grant_access_to` config is specified for a model materialized as a
 view, dbt will grant the view model access to select from the list of datasets
 provided. See [BQ docs on authorized views](https://cloud.google.com/bigquery/docs/share-access-views)
 for more details.
 
-<Snippet src="grants-vs-access-to" />
+<Snippet path="grants-vs-access-to" />
 
 <File name='dbt_project.yml'>
 
@@ -763,3 +717,4 @@ Views with this configuration will be able to select from objects in `project_1.
 #### Limitations
 
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
+

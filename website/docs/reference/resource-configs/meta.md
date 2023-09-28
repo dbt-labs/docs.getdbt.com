@@ -4,12 +4,6 @@ datatype: "{<dictionary>}"
 default_value: {}
 ---
 
-<Changelog>
-
-* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` YAML property for some resource types. It is applied hierarchically and merges on a per-key basis.
-
-</Changelog>
-
 <Tabs
   defaultValue="models"
   values={[
@@ -59,11 +53,13 @@ version: 2
 
 sources:
   - name: model_name
-    meta: {<dictionary>}
+    config:
+      meta: {<dictionary>}
 
     tables:
       - name: table_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>}
 
         columns:
           - name: column_name
@@ -152,7 +148,6 @@ macros:
 
     arguments:
       - name: argument_name
-        meta: {<dictionary>}
 
 ```
 

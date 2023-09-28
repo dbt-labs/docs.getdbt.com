@@ -49,7 +49,11 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
  
-Follow the repository's link for os dependencies.
+Follow the repository's link for OS dependencies.
+
+:::note 
+[Model contracts](/docs/collaborate/govern/model-contracts) are not supported.
+:::
 
 ## Prerequisites for Dremio Cloud
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:

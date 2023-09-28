@@ -3,11 +3,9 @@ title: "Set up SSO with Okta"
 id: "set-up-sso-okta"
 ---
 
-:::info Enterprise Feature
+import SetUpPages from '/snippets/_sso-docs-mt-available.md';
 
-This guide describes a feature of the dbt Cloud Enterprise plan. If you’re interested in learning more about an Enterprise plan, contact us at sales@getdbt.com.
-
-:::
+<SetUpPages features={'/snippets/_sso-docs-mt-available.md'}/>
 
 ## Okta SSO
 
@@ -74,7 +72,7 @@ dashes. It should contain only letters, numbers, and dashes. For example, the _l
 `dbt-labs`. Login slugs must be unique across all dbt Cloud accounts,
 so pick a slug that uniquely identifies your company.
 
-<Snippet src="access_url" />
+<Snippet path="access_url" />
 
 * **Single sign on URL**: `https://YOUR_AUTH0_URI/login/callback?connection=<login slug>`
 * **Audience URI (SP Entity ID)**: `urn:auth0:<YOUR_AUTH0_ENTITYID>:{login slug}`
@@ -97,9 +95,9 @@ Expected **User Attribute Statements**:
 
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
-| `email`        | Unspecified | `${user.email}`      | _The user's email address_ |
-| `first_name`   | Unspecified | `${user.firstName}`  | _The user's first name_    |
-| `last_name`    | Unspecified | `${user.lastName}`   | _The user's last name_     |
+| `email`        | Unspecified | `user.email`      | _The user's email address_ |
+| `first_name`   | Unspecified | `user.firstName`  | _The user's first name_    |
+| `last_name`    | Unspecified | `user.lastName`   | _The user's last name_     |
 
 
 Expected **Group Attribute Statements**:
@@ -189,7 +187,7 @@ configured in the steps above.
     test logging in with Okta. Additionally, users added the the Okta app
     will be able to log in to dbt Cloud from Okta directly.
 
-<Snippet src="login_url_note" />
+<Snippet path="login_url_note" />
 
 
 ## Setting up RBAC

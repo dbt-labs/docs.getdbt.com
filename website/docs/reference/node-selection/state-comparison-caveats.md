@@ -60,13 +60,6 @@ dbt will do its best to capture *only* changes that are the result of modificati
 - iterative improvements to dbt's built-in detective abilities
 - better options for more complex projects, in the form of more-specific subselectors (see [this issue](https://github.com/dbt-labs/dbt-core/issues/2704))
 
-<Changelog>
-
-- v0.18.0: All env-aware logic results in false positives during state comparison, when comparing against a manifest generated with a different target.
-- v0.19.0: dbt stores and compares unrendered Jinja expressions for configurations, allowing it to see past env-aware logic in `dbt_project.yml`.
-
-</Changelog>
-
 State comparison is now able to detect env-aware config in `dbt_project.yml`. For instance, this target-based config would register as a modification in v0.18.0, but in v0.19.0 it no longer will:
 
 <File name='dbt_project.yml'>

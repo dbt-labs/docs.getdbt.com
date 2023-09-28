@@ -22,3 +22,8 @@ Connect your dbt Cloud profile to Azure DevOps using OAuth:
    <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/OAuth Acceptance.png" title="Azure DevOps Authorization Screen"/>
 
 You will be directed back to dbt Cloud, and your profile should be linked. You are now ready to develop in dbt Cloud!
+
+## FAQs
+
+<FAQ path="Git/gitignore"/>
+<FAQ path="Git/git-migration"/>

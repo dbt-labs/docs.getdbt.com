@@ -67,17 +67,17 @@ First, run `dbt docs generate` — this command tells dbt to compile relevant in
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
 ## FAQs
-<FAQ src="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
-<FAQ src="Docs/document-all-columns" />
-<FAQ src="Docs/long-descriptions" />
-<FAQ src="Docs/sharing-documentation" />
-<FAQ src="Docs/document-other-resources" />
-<FAQ src="Project/docs-for-multiple-projects" />
+<FAQ path="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
+<FAQ path="Docs/document-all-columns" />
+<FAQ path="Docs/long-descriptions" />
+<FAQ path="Docs/sharing-documentation" />
+<FAQ path="Docs/document-other-resources" />
+<FAQ path="Project/docs-for-multiple-projects" />
 
 
 ## Using Docs Blocks
 ### Syntax
-To declare a docs block, use the jinja `docs` tag. Docs blocks must be uniquely named, and can contain arbitrary markdown. In practice, a docs block might look like this:
+To declare a docs block, use the jinja `docs` tag. Docs blocks can contain arbitrary markdown, but they must be uniquely named. Their names may contain uppercase and lowercase letters (A-Z, a-z), digits (0-9), and underscores (_), but can't start with a digit.
 
 <File name='events.md'>
 
@@ -147,7 +147,6 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-<Changelog>New in v0.18.0</Changelog>
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. For example, in order to define
