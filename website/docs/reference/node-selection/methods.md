@@ -352,3 +352,16 @@ dbt list --select version:none        # models that are *not* versioned
 ```
 
 </VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
+
+```bash
+
+dbt ls --resource-type semantic_model # lists the semantic model resource type
+dbt ls -s +semantic_model:number # lists the quantity of semantic models 
+
+```
+
+</VersionBlock>
