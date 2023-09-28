@@ -28,7 +28,7 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 ### Custom integration
 
-You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and a GraphQL API. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/blob/main/python/src/adbc_example.py).
+You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and a GraphQL API. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
 
 ## Related docs
 
