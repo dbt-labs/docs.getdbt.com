@@ -209,12 +209,12 @@ query(
 
 ```graphql
 Metric {
-	name: String!
-	description: String
-	type: MetricType!
-	typeParams: MetricTypeParams!
-	filter: WhereFilter
-	dimensions: [Dimension!]!
+  name: String!
+  description: String
+  type: MetricType!
+  typeParams: MetricTypeParams!
+  filter: WhereFilter
+  dimensions: [Dimension!]!
   queryableGranularities: [TimeGranularity!]!
 }
 ```
@@ -227,14 +227,14 @@ MetricType = [SIMPLE, RATIO, CUMULATIVE, DERIVED]
 
 ```graphql
 MetricTypeParams {
-	measure: MetricInputMeasure
-	inputMeasures: [MetricInputMeasure!]!
-	numerator: MetricInput
-	denominator: MetricInput
-	expr: String
-	window: MetricTimeWindow
-	grainToDate: TimeGranularity
-	metrics: [MetricInput!]
+  measure: MetricInputMeasure
+  inputMeasures: [MetricInputMeasure!]!
+  numerator: MetricInput
+  denominator: MetricInput
+  expr: String
+  window: MetricTimeWindow
+  grainToDate: TimeGranularity
+  metrics: [MetricInput!]
 }
 ```
 
@@ -243,12 +243,12 @@ MetricTypeParams {
 
 ```graphql
 Dimension {
-	name: String!
-	description: String
-	type: DimensionType!
-	typeParams: DimensionTypeParams
-	isPartition: Boolean!
-	expr: String
+  name: String!
+  description: String
+  type: DimensionType!
+  typeParams: DimensionTypeParams
+  isPartition: Boolean!
+  expr: String
   queryableGranularities: [TimeGranularity!]!
 }
 ```
@@ -352,7 +352,7 @@ mutation {
     environmentId: BigInt!
     metrics: [{name:"food_order_amount"}, {name: "order_gross_profit"}]
     groupBy: [{name:"metric_time, grain: "month"}, {name: "customer__customer_type"}]
-    limit: 10	
+    limit: 10 
   ) {
     queryId
   }
@@ -400,3 +400,63 @@ The results default to the table but you can change it to any [pandas](https://p
 **Pagination**
 
 By default, we return 1024 rows per page. If your result set exceeds this, you need to increase the page number using the `pageNum` option.
+
+### Execute a Query through Python
+
+The `arrowResult` from the GraphQL query response isn't all that useful visually as it's a byte dump. You can utilize any language that supports Arrow to convert that byte into a Arrow table. Here is an example of querying and decoding the arrow result in Python.
+
+```python
+import base64
+import pyarrow as pa
+
+headers = {"Authorization":"Bearer <token>"}
+query_result_request = """
+{
+  query(environmentId: 70, queryId: "12345678") {
+    sql
+    status
+    error
+    arrowResult
+  }
+}
+"""
+
+gql_response = requests.post(
+  "http://localhost:8000/graphql",
+  json={"query": query_result_request},
+  headers=headers,
+)
+
+"""
+gql_response.json() => 
+{
+  "data": {
+    "query": {
+      "sql": "SELECT\n  ordered_at AS metric_time__day\n  , SUM(order_total) AS order_total\nFROM semantic_layer.orders orders_src_1\nGROUP BY\n  ordered_at",
+      "status": "SUCCESSFUL",
+      "error": null,
+      "arrowResult": "arrow-byte-data"
+    }
+  }
+}
+"""
+
+def to_arrow_table(byte_string: str) -> pa.Table:
+  """Get a raw base64 string and convert to an Arrow Table."""
+  with pa.ipc.open_stream(base64.b64decode(res)) as reader:
+    return pa.Table.from_batches(reader, reader.schema)
+
+
+arrow_table = to_arrow_table(gql_response.json()["data"]["query"]["arrowResult"])
+
+# Perform whatever functionality is available e.g.,
+# Convert to a pandas table
+print(arrow_table.to_pandas())
+"""
+order_total  ordered_at
+          3  2023-08-07
+        112  2023-08-08
+         12  2023-08-09
+       5123  2023-08-10
+"""
+```
