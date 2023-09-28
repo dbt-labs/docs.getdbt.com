@@ -10,7 +10,8 @@ description: "Reference public models across dbt projects"
 
 **Prerequisites:** In order to add project dependencies and resolve cross-project `ref`, you must:
 - Have the feature enabled (speak to your account team)
-- Be using dbt v1.6 in **both** the upstream ("producer") project and the downstream ("consumer") project
+- Use dbt v1.6 for **both** the upstream ("producer") project and the downstream ("consumer") project.
+- ```
 - Have a deployment env in the upstream ("producer") project [that is set to be your production environment](docs/deploy/deploy-environments#set-as-production-environment-beta)
 - Have a successful run of the upstream ("producer") project
 :::
