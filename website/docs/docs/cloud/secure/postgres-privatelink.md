@@ -52,7 +52,7 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" title="Get service name field value"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" width="70%" title="Get service name field value"/>
 
 ### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 ```
