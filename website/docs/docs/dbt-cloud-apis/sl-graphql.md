@@ -450,7 +450,6 @@ def to_arrow_table(byte_string: str) -> pa.Table:
 arrow_table = to_arrow_table(gql_response.json()["data"]["query"]["arrowResult"])
 
 # Perform whatever functionality is available e.g.,
-# Convert to a pandas table
 print(arrow_table.to_pandas())
 """
 order_total  ordered_at
