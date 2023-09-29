@@ -2,7 +2,7 @@ name: Add/Remove Labels
 
 on:
   pull_request_target:
-    types: [ opened, closed ]
+    types: [ opened ]
     
 jobs:
   add_new_contributor_label:
