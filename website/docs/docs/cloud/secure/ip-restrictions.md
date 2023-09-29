@@ -34,7 +34,7 @@ To add an IP to the allowlist, from the **IP Restrictions** page:
 4. Select **Allow**
 5. Add the ranges in the CIDR notation
 	- For example, 1.1.1.1/8
-	- You can add multiple ranges followed by commas
+	- You cannot add multiple ranges in the same rule. Instead create a rule per CIDR range.
 6. Click **Save**
 
 Note that simply adding the IP Ranges will not enforce IP restrictions. For more information, see the section “Enabling Restrictions.”
