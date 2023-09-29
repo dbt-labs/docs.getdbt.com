@@ -401,7 +401,7 @@ The results default to the table but you can change it to any [pandas](https://p
 
 By default, we return 1024 rows per page. If your result set exceeds this, you need to increase the page number using the `pageNum` option.
 
-### Execute a Query through Python
+### Run a Python query
 
 The `arrowResult` in the GraphQL query response is a byte dump, which isn't visually useful. You can convert this byte data into an Arrow table using any Arrow-supported language. Refer to the following Python example explaining how to query and decode the arrow result:
 
