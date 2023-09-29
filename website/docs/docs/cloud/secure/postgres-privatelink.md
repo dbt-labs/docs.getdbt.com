@@ -9,7 +9,7 @@ A Postgres database, hosted either in AWS or in a properly connected on-prem dat
 
 ## Configuring Postgres interface-type PrivateLink
 
-### 1. Provision AWS Resources
+### 1. Provision AWS resources
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing, or connected to, the Postgres instance:
 
