@@ -79,7 +79,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
- - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin` (_or_ `arn:aws:iam::346425330055:root`)
+ - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
 
