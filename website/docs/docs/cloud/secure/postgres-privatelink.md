@@ -5,11 +5,11 @@ description: "Configuring PrivateLink for Postgres"
 sidebar_label: "PrivateLink for Postgres"
 ---
 
-A Postgres database, hosted either in AWS or in a properly connected on-prem data center, can be accessed via a private network connection using AWS Interface-type PrivateLink. The type of Target Group connected to the Network Load Balancer (NLB) may vary based on the location and type of Postgres instance being connected, as is noted in the steps below.
+A Postgres database, hosted either in AWS or in a properly connected on-prem data center, can be accessed through a private network connection using AWS Interface-type PrivateLink. The type of Target Group connected to the Network Load Balancer (NLB) may vary based on the location and type of Postgres instance being connected, as explained in the following steps.
 
-## Configuring Postgres Interface-type PrivateLink
+## Configuring Postgres interface-type PrivateLink
 
-### 1. Provision AWS Resources
+### 1. Provision AWS resources
 
 Creating an Interface VPC PrivateLink connection requires creating multiple AWS resources in the account containing, or connected to, the Postgres instance:
 
@@ -40,19 +40,19 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 - **VPC Endpoint Service** &mdash; Attach to the newly created NLB.
     - Acceptance required (optional) &mdash; Requires you to [accept our connection request](https://docs.aws.amazon.com/vpc/latest/privatelink/configure-endpoint-service.html#accept-reject-connection-requests) after dbt creates the endpoint.
 
-### 2. Grant dbt AWS Account access to the VPC Endpoint Service
+### 2. Grant dbt AWS account access to the VPC Endpoint Service
 
 On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" width="70%" title="Enter ARN"/>
 
 ### 3. Obtain VPC Endpoint Service Name
 
 Once the VPC Endpoint Service is provisioned, you can find the service name in the AWS console by navigating to **VPC** → **Endpoint Services** and selecting the appropriate endpoint service. You can copy the service name field value and include it in your communication to dbt Cloud support.
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" title="Get service name field value"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink6.png" width="70%" title="Get service name field value"/>
 
 ### 4. Add the required information to the template below, and submit your request to [dbt Support](https://docs.getdbt.com/community/resources/getting-help#dbt-cloud-support):
 ```
