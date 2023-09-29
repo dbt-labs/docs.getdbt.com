@@ -1204,6 +1204,7 @@ const sidebarSettings = {
         "community/resources/oss-expectations",
         "community/resources/oss-projects",
         "community/resources/contributor-license-agreements",
+        "community/resources/jobs-terms-and-conditions",
         "community/resources/speaking-at-a-meetup",
       ],
     },

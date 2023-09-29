@@ -108,7 +108,6 @@ version: 2
 
 <TabItem value="sources">
 
-<VersionBlock firstVersion="1.1">
 
 <File name='models/<filename>.yml'>
 
@@ -126,8 +125,6 @@ sources:
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

@@ -136,9 +136,9 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Querying dimensions without metrics and other more advanced querying functionality
 * Suggest metrics to users based on teams/identity, and so on.
 
-### A note on transparency and using explain
+### A note on transparency and using compile
 
-For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our explain parameter (JDBC) or compileSQL mutation (GraphQL). This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly beneficial to a technical user.
+For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our compile parameter. This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly beneficial to a technical user.
 
 
 ### A note on where filters

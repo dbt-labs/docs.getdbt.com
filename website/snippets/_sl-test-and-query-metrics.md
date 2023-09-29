@@ -4,11 +4,11 @@ Support for testing or querying metrics in the dbt Cloud IDE is not available in
 
 You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. You can [dynamically query metrics](#connect-and-query-api) with integrated tools on a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) plan using the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview).
 
-Currently, you can test metrics locally using the MetricFlow CLI. dbt Cloud IDE support is coming soon. Alternatively, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL. 
+Currently, you can define and test metrics using the MetricFlow CLI. dbt Cloud IDE support is coming soon. Alternatively, you can test using SQL client tools like DataGrip, DBeaver, or RazorSQL. 
 
 :::
 
-This section will explain how you can test and query metrics locally using the MetricFlow CLI (dbt Cloud IDE support coming soon).
+This section will explain how you can test and query metrics using the MetricFlow CLI (dbt Cloud IDE support coming soon).
 
 Before you begin, you'll need to install the [MetricFlow CLI](/docs/build/metricflow-cli) package and make sure you run at least one model.
 ### Install MetricFlow

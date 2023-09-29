@@ -12,15 +12,14 @@ Use MetricFlow in dbt to centrally define your metrics. As a key component of th
 Use familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
 :::info
-MetricFlow is currently available on dbt v1.6 or higher. MetricFlow provides a new way to define metrics in dbt and replaces the dbt_metrics package.
+MetricFlow is currently available on dbt v1.6 or higher and allows users to define metrics in their dbt project whether in dbt Cloud or dbt Core. dbt Core users can use the MetricFlow CLI to define metrics in their local dbt Core project. However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
-To use the dbt Semantic Layer, you must have a [dbt Cloud Team or Enterprise account](https://www.getdbt.com/pricing/).
 :::
 
 Before you start, consider the following guidelines:
 
 - Define metrics in YAML and query them using these [new metric specifications](https://github.com/dbt-labs/dbt-core/discussions/7456).
-- You must be on dbt v1.6 or higher to use MetricFlow. [Upgrade your dbt Cloud version](/docs/dbt-versions/upgrade-core-in-cloud) to get started.
+- You must be on dbt v1.6 or higher to use MetricFlow. [Upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to get started.
 - Use MetricFlow with Snowflake, BigQuery, Databricks, Postgres (CLI only), or Redshift. (dbt Cloud Postgres support coming soon)
 - Unlock insights and query your metrics using the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and its diverse range of [available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations).
 
