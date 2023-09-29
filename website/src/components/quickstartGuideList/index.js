@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -14,38 +14,31 @@ const quickstartDescription = 'dbt Core is a powerful open-source tool for data 
 
 
 function QuickstartList({ quickstartData }) {
-  const { siteConfig } = useDocusaurusContext()
-  const [filteredData, setFilteredData] = useState(quickstartData);
+  const { siteConfig } = useDocusaurusContext();
+  const [filteredData, setFilteredData] = useState(() => quickstartData);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState([]);
-  const [searchInput, setSearchInput] = useState(''); 
- 
+  const [searchInput, setSearchInput] = useState('');
+
   // Build meta title from quickstartTitle and docusaurus config site title
-  const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`
+  const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`;
 
-  // Array for the tag select dropdown
-  const tagOptions = [];
-  quickstartData?.forEach((guide) => {
-    if (guide?.data?.tags) {
-      guide?.data?.tags?.forEach((tag) => {
-        const tagOption = { value: tag, label: tag };
-        if (!tagOptions.find((option) => option?.value === tag)) {
-          tagOptions.push(tagOption);
-        }
-      });
-    }
-  });
+  // Memoized computation of tag and level options
+  const tagOptions = useMemo(() => {
+    const tags = new Set();
+    quickstartData.forEach(guide =>
+      guide?.data?.tags?.forEach(tag => tags.add(tag))
+    );
+    return Array.from(tags).map(tag => ({ value: tag, label: tag }));
+  }, [quickstartData]);
 
-  // Array for the level select dropdown
-  const levelOptions = []
-  quickstartData?.forEach((guide) => {
-    if (guide?.data?.level) {
-      const levelOption = { value: guide?.data?.level, label: guide?.data?.level };
-      if (!levelOptions.find((option) => option?.value === guide?.data?.level)) {
-        levelOptions.push(levelOption);
-      }
-    }
-  });
+  const levelOptions = useMemo(() => {
+    const levels = new Set();
+    quickstartData.forEach(guide =>
+      guide?.data?.level && levels.add(guide.data.level)
+    );
+    return Array.from(levels).map(level => ({ value: level, label: level }));
+  }, [quickstartData]);
 
   // Handle all filters
   const handleDataFilter = () => {
@@ -61,7 +54,7 @@ function QuickstartList({ quickstartData }) {
     });
     setFilteredData(filteredGuides);
   };
-  
+
   useEffect(() => {
     handleDataFilter();
   }, [selectedTags, selectedLevel, searchInput]);
@@ -73,28 +66,27 @@ function QuickstartList({ quickstartData }) {
         <meta property="og:title" content={metaTitle} />
         <meta property="og:description" content={quickstartDescription} />
       </Head>
-      <Hero 
-        heading={quickstartTitle} 
-        subheading={quickstartDescription} 
-        showGraphic={false} 
-        customStyles={{marginBottom: 0}} 
+      <Hero
+        heading={quickstartTitle}
+        subheading={quickstartDescription}
+        showGraphic={false}
+        customStyles={{ marginBottom: 0 }}
         classNames={styles.quickstartHero}
       />
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartFilterContainer} `}>
-        <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
-        <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
-        <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Quickstarts' />
-
+          <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
+          <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
+          <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Quickstarts' />
         </div>
-        <div className={`container ${styles.quickstartCardContainer} `}>   
+        <div className={`container ${styles.quickstartCardContainer} `}>
           {filteredData && filteredData.length > 0 ? (
             <>
-              {filteredData.map((guide, i) => (
-                <QuickstartGuideCard frontMatter={guide.data} key={i} />
+              {filteredData.map((guide) => (
+                <QuickstartGuideCard frontMatter={guide.data} key={guide.data.id || guide.index} />
               ))}
             </>
-          ) : 
+          ) :
             <p>No quickstarts are available with the selected filters.</p>
           }
         </div>
@@ -103,4 +95,4 @@ function QuickstartList({ quickstartData }) {
   )
 }
 
-export default QuickstartList
+export default QuickstartList;
