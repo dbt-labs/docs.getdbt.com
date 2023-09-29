@@ -19,11 +19,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1rem;
-    padding: 5rem 1rem;
+    padding: 2rem 1rem 5rem;
 }
 
 .quickstartFilterContainer  {
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    padding-top: 2rem;
 }
 
 .quickstartFilterContainer > div:first-child {

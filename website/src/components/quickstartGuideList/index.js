@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -15,41 +15,53 @@ const quickstartDescription = 'dbt Core is a powerful open-source tool for data 
 function QuickstartList({ quickstartData }) {
   const { siteConfig } = useDocusaurusContext()
   const [filteredData, setFilteredData] = useState(quickstartData);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedLevel, setSelectedLevel] = useState([]);
  
   // Build meta title from quickstartTitle and docusaurus config site title
   const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`
 
   // Create an options array for the tag select dropdown
   const tagOptions = [];
-  quickstartData.forEach((guide) => {
-    if (guide.data.tags) {
-      guide.data.tags.forEach((tag) => {
+  quickstartData?.forEach((guide) => {
+    if (guide?.data?.tags) {
+      guide?.data?.tags?.forEach((tag) => {
         const tagOption = { value: tag, label: tag };
-        if (!tagOptions.find((option) => option.value === tag)) {
+        if (!tagOptions.find((option) => option?.value === tag)) {
           tagOptions.push(tagOption);
         }
       });
     }
   });
 
-  // Filter the quickstart guides based on the selected tags
-  const onChange = (selectedOption) => {
-    // only return the quickstart guides that have the selected tag and match all of the selected tags
-    const filteredGuides = quickstartData.filter((guide) => {
-      if (guide.data.tags) {
-        return selectedOption.every((option) =>
-          guide.data.tags.includes(option.value)
-        );
+  // Create an options array for the level select dropdown
+  const levelOptions = []
+  quickstartData?.forEach((guide) => {
+    if (guide?.data?.level) {
+      const levelOption = { value: guide?.data?.level, label: guide?.data?.level };
+      if (!levelOptions.find((option) => option?.value === guide?.data?.level)) {
+        levelOptions.push(levelOption);
       }
+    }
+  });
+
+  const handleFilterChange = () => {
+    const filteredGuides = quickstartData.filter((guide) => {
+      const tagsMatch = selectedTags.length === 0 || (Array.isArray(guide?.data?.tags) && selectedTags.every((tag) =>
+        guide?.data?.tags.includes(tag.value)
+      ));
+      const levelMatch = selectedLevel.length === 0 || (guide?.data?.level && selectedLevel.some((level) =>
+        guide?.data?.level === level.value
+      ));
+      return tagsMatch && levelMatch;
     });
     setFilteredData(filteredGuides);
-
-    // If no tags are selected, show all quickstart guides
-    if (selectedOption.length === 0) {
-      setFilteredData(quickstartData);
-    }
-    
   };
+  
+
+  useEffect(() => {
+    handleFilterChange();
+  }, [selectedTags, selectedLevel]);
 
   return (
     <Layout>
@@ -67,7 +79,8 @@ function QuickstartList({ quickstartData }) {
       />
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartFilterContainer} `}>
-        <SelectDropdown options={tagOptions} onChange={onChange} />
+        <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
+        <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
         </div>
         <div className={`container ${styles.quickstartCardContainer} `}>   
           {filteredData && filteredData.length > 0 ? (
