@@ -22,7 +22,7 @@ and feed exports, while _excluding_ the biggest incremental models (and one othe
 
 
   ```bash
-dbt run --select "@source:snowplow,tag:nightly models/export" --exclude package:snowplow,config.materialized:incremental export_performance_timing
+dbt run --select "@source:snowplow,tag:nightly models/export" --exclude "package:snowplow,config.materialized:incremental export_performance_timing"
 ```
 
 
