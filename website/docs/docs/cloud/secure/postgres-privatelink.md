@@ -7,7 +7,7 @@ sidebar_label: "PrivateLink for Postgres"
 
 A Postgres database, hosted either in AWS or in a properly connected on-prem data center, can be accessed via a private network connection using AWS Interface-type PrivateLink. The type of Target Group connected to the Network Load Balancer (NLB) may vary based on the location and type of Postgres instance being connected, as is noted in the steps below.
 
-## Configuring Postgres Interface-type PrivateLink
+## Configuring Postgres interface-type PrivateLink
 
 ### 1. Provision AWS Resources
 
