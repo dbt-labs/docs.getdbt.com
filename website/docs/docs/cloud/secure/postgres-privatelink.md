@@ -46,7 +46,7 @@ On the provisioned VPC endpoint service, click the **Allow principals** tab. Cli
 
  - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin` (_or_ `arn:aws:iam::346425330055:root`)
 
-<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
+<Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" width="70%" title="Enter ARN"/>
 
 ### 3. Obtain VPC Endpoint Service Name
 
