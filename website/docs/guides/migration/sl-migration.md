@@ -77,10 +77,7 @@ Now that your Semantic Layer is set up, you will need to update any downstream i
 
 ### Migration guide for Hex
 
-:::important Hex integration coming soon
-
-Hex’s Semantic Layer integration will be available for use in the coming weeks. This section will have updated instructions once the integration is available.
-:::
+To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
 
 1. Set up a new connection for the Semantic Layer for your account. Something to note is that your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
 
