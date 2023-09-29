@@ -4,6 +4,7 @@ id: "databricks"
 platform: 'dbt-cloud'
 icon: 'databricks'
 hide_table_of_contents: true
+recently_updated: true
 ---
 ## Introduction
 

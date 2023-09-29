@@ -5,6 +5,8 @@ time_to_complete: '30 minutes'
 platform: 'dbt-cloud'
 icon: 'bigquery'
 hide_table_of_contents: true
+tags: ['BigQuery', 'dbt Cloud']
+level: 'Beginner'
 ---
 
 ## Introduction

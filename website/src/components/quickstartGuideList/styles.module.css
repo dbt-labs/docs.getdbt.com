@@ -18,8 +18,16 @@
 .quickstartCardContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     padding: 5rem 1rem;
+}
+
+.quickstartFilterContainer  {
+
+}
+
+.quickstartFilterContainer > div:first-child {
+    padding: 0;
 }
 
 @media (max-width: 996px) {

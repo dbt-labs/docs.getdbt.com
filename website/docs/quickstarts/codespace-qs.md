@@ -4,6 +4,7 @@ id: codespace
 platform: 'dbt-core'
 icon: 'fa-github'
 hide_table_of_contents: true
+tags: ['dbt Core']
 ---
 
 ## Introduction

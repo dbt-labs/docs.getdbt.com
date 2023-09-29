@@ -4,14 +4,15 @@ import styles from "./styles.module.css";
 import getIconType from "../../utils/get-icon-type";
 
 function QuickstartGuideCard({ frontMatter }) {
-  const { id, title, time_to_complete, icon } = frontMatter;
+  const { id, title, time_to_complete, icon, tags, level, recently_updated } = frontMatter;
+
   return (
-    <Link
-      to={`/quickstarts/${id}`}
-      className={styles.quickstartCard}
-    >
+    <Link to={`/quickstarts/${id}`} className={styles.quickstartCard}>
+      {recently_updated && (
+        <span className={styles.recently_updated}>Updated</span>
+      )}
       {icon && getIconType(icon, styles.icon)}
-      
+
       <h3>{title}</h3>
 
       {time_to_complete && (
@@ -21,6 +22,18 @@ function QuickstartGuideCard({ frontMatter }) {
       <span to={`/quickstarts/${id}`} className={styles.start}>
         Start
       </span>
+
+      {(tags || level) && (
+        <div className={styles.tag_container}>
+          {tags &&
+            tags.map((tag, i) => (
+              <div className={styles.tag} key={i}>
+                {tag}
+              </div>
+            ))}
+          {level && <div className={styles.tag}>{level}</div>}
+        </div>
+      )}
     </Link>
   );
 }
