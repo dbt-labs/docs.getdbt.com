@@ -24,7 +24,7 @@ We use the terms <a href="https://en.wikipedia.org/wiki/Vertex_(graph_theory)">"
 
 By default, `dbt run` executes _all_ of the models in the dependency graph; `dbt seed` creates all seeds, `dbt snapshot` performs every snapshot. The `--select` flag is used to specify a subset of nodes to execute.
 
-To follow [POSIX standards](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) and make things easier to understand, we recommend CLI users to quote unions/intersections passed to "multi-option" parameters. Not using quotes might not work reliably on all operating systems, terminals, and user interfaces. For example, `dbt run --select "my_dbt_project_name"` runs all models in your project. 
+To follow [POSIX standards](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) and make things easier to understand, we recommend CLI users use quotes when passing arguments to the `--select` or `--exclude` option (including single or multiple space-delimited, or comma-delimited arguments). Not using quotes might not work reliably on all operating systems, terminals, and user interfaces. For example, `dbt run --select "my_dbt_project_name"` runs all models in your project. 
 
 ### How does selection work?
 
