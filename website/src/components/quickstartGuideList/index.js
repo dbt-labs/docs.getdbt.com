@@ -7,6 +7,7 @@ import Hero from '@site/src/components/hero';
 import QuickstartGuideCard from '../quickstartGuideCard'
 import styles from './styles.module.css';
 import { SelectDropdown } from '../selectDropdown';
+import SearchInput from '../searchInput';
 
 const quickstartTitle = 'Quickstarts'
 const quickstartDescription = 'dbt Core is a powerful open-source tool for data transformations and dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.'
@@ -17,11 +18,12 @@ function QuickstartList({ quickstartData }) {
   const [filteredData, setFilteredData] = useState(quickstartData);
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedLevel, setSelectedLevel] = useState([]);
+  const [searchInput, setSearchInput] = useState(''); 
  
   // Build meta title from quickstartTitle and docusaurus config site title
   const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`
 
-  // Create an options array for the tag select dropdown
+  // Array for the tag select dropdown
   const tagOptions = [];
   quickstartData?.forEach((guide) => {
     if (guide?.data?.tags) {
@@ -34,7 +36,7 @@ function QuickstartList({ quickstartData }) {
     }
   });
 
-  // Create an options array for the level select dropdown
+  // Array for the level select dropdown
   const levelOptions = []
   quickstartData?.forEach((guide) => {
     if (guide?.data?.level) {
@@ -45,7 +47,8 @@ function QuickstartList({ quickstartData }) {
     }
   });
 
-  const handleFilterChange = () => {
+  // Handle all filters
+  const handleDataFilter = () => {
     const filteredGuides = quickstartData.filter((guide) => {
       const tagsMatch = selectedTags.length === 0 || (Array.isArray(guide?.data?.tags) && selectedTags.every((tag) =>
         guide?.data?.tags.includes(tag.value)
@@ -53,15 +56,15 @@ function QuickstartList({ quickstartData }) {
       const levelMatch = selectedLevel.length === 0 || (guide?.data?.level && selectedLevel.some((level) =>
         guide?.data?.level === level.value
       ));
-      return tagsMatch && levelMatch;
+      const titleMatch = searchInput === '' || guide?.data?.title?.toLowerCase().includes(searchInput.toLowerCase());
+      return tagsMatch && levelMatch && titleMatch;
     });
     setFilteredData(filteredGuides);
   };
   
-
   useEffect(() => {
-    handleFilterChange();
-  }, [selectedTags, selectedLevel]);
+    handleDataFilter();
+  }, [selectedTags, selectedLevel, searchInput]);
 
   return (
     <Layout>
@@ -81,6 +84,8 @@ function QuickstartList({ quickstartData }) {
         <div className={`container ${styles.quickstartFilterContainer} `}>
         <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
         <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
+        <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Quickstarts' />
+
         </div>
         <div className={`container ${styles.quickstartCardContainer} `}>   
           {filteredData && filteredData.length > 0 ? (
