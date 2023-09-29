@@ -403,6 +403,8 @@ By default, we return 1024 rows per page. If your result set exceeds this, you n
 
 ### Execute a Query through Python
 
+The `arrowResult` in the GraphQL query response is a byte dump, which isn't visually useful. You can convert this byte data into an Arrow table using any Arrow-supported language. Refer to the following Python example explaining how to query and decode the arrow result:
+
 The `arrowResult` from the GraphQL query response isn't all that useful visually as it's a byte dump. You can utilize any language that supports Arrow to convert that byte into a Arrow table. Here is an example of querying and decoding the arrow result in Python.
 
 ```python
