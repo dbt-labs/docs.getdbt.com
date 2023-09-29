@@ -114,7 +114,7 @@ For better analysis, it's best to have the context of the metrics close to where
 These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
 
 **Stage 1 - The basic**
-* Supporting and using the new [JDBC](/docs/dbt-cloud-apis/sl-jdbc) is the first step. Refer to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+* Supporting and using the new [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
 
 **Stage 2 - More discoverability and basic querying**
 * Support listing metrics defined in the project
