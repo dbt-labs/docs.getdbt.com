@@ -124,7 +124,14 @@ dbt --quiet run
 
 ### Color
 
-You can set the color preferences for the file logs only using the `--use-colors-file / --no-use-colors-file` flags.
+You can set the color preferences for the file logs only within `profiles.yml` or using the `--use-colors-file / --no-use-colors-file` flags.
+
+<File name='profiles.yml'>
+
+```yaml
+config:
+  use_colors_file: False
+```
 
 ```text
 dbt --use-colors-file run
