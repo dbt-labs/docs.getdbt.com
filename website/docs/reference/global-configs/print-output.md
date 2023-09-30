@@ -74,6 +74,8 @@ config:
   use_colors: False
 ```
 
+</File>
+
 ```text
 dbt --use-colors run
 dbt --no-use-colors run
@@ -89,11 +91,11 @@ config:
   use_colors_file: False
 ```
 
+</File>
+
 ```text
 dbt --use-colors-file run
 dbt --no-use-colors-file run
 ```
 
 </VersionBlock>
-
-</File>
