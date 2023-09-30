@@ -40,8 +40,6 @@ See [structured logging](/reference/events-logging#structured-logging) for more 
 
 :::
 
-</File>
-
 <VersionBlock firstVersion="1.5">
 
 ### Log Level
