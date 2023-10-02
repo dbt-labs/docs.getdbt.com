@@ -17,6 +17,8 @@ export const SelectDropdown = ({ options, value, onChange, isMulti, placeHolder 
       placeholder={placeHolder}
       aria-label="Multi Select Dropdown"
       unstyled
+      menuIsOpen
+
     />
   );
 };
