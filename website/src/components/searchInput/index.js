@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles.module.css';
 
 const SearchInput = ({ value, onChange, placeholder = "Search...", ...props }) => {
   return (
@@ -8,6 +9,7 @@ const SearchInput = ({ value, onChange, placeholder = "Search...", ...props }) =
       onChange={(e) => onChange && onChange(e.target.value)}
       placeholder={placeholder}
       {...props}
+      className={styles.inputContainer}
     />
   );
 };
