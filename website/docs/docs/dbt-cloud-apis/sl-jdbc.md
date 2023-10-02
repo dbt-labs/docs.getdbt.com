@@ -5,7 +5,6 @@ description: "Integrate and use the JDBC API to query your metrics."
 tags: [Semantic Layer, API]
 ---
 
-
 <VersionBlock lastVersion="1.5">
 
 import LegacyInfo from '/snippets/_legacy-sl-callout.md';
@@ -57,11 +56,13 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 
 ## Querying the API for metric metadata
 
-The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. Here are some metadata commands and examples:
+The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. 
+
+Refer to the following tabs for metadata commands and examples:
 
 <Tabs>
 
-<TabItem value="allmetrics" label="Fetch all defined metrics">
+<TabItem value="allmetrics" label="Fetch defined metrics">
 
 Use this query to fetch all defined metrics in your dbt project:
 
@@ -72,7 +73,7 @@ select * from {{
 ```
 </TabItem>
 
-<TabItem value="alldimensions" label="Fetch all dimensions for a metric">
+<TabItem value="alldimensions" label="Fetch dimensions for a metric">
 
 Use this query to fetch all dimensions for a metric. 
 
@@ -85,7 +86,7 @@ select * from {{
 
 </TabItem>
 
-<TabItem value="dimensionvalueformetrics" label="Fetch dimension values metrics">
+<TabItem value="dimensionvalueformetrics" label="Fetch dimension values">
 
 Use this query to fetch dimension values for one or multiple metrics and single dimension. 
 
@@ -98,7 +99,7 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 </TabItem>
 
-<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable primary time granularities for metrics">
+<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable granularities for metrics">
 
 Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
@@ -111,6 +112,9 @@ select * from {{
 
 </TabItem>
 
+</Tabs>
+
+<Tabs>
 
 <TabItem value="metricsfordimensions" label="Fetch available metrics given dimensions">
 
@@ -142,9 +146,10 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 
 </TabItem>
 
-<TabItem value="fetchprimarytimedimensionnames" label="Determine what time dimension(s) make up metric_time for your metric(s)">
+<TabItem value="fetchprimarytimedimensionnames" label="Fetch primary time dimension names">
 
 It may be useful in your application to expose the names of the time dimensions that represent `metric_time` or the common thread across all metrics.
+
 You can first query the `metrics()` argument to fetch a list of measures, then use the `measures()` call which will return the name(s) of the time dimensions that make up metric time. 
 
 ```bash
