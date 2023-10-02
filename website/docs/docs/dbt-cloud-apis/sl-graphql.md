@@ -18,18 +18,18 @@ import LegacyInfo from '/snippets/_legacy-sl-callout.md';
 
 With GraphQL, users can request specific data using a single query, reducing the need for many server round trips. This improves performance and minimizes network overhead.
 
-GraphQL has several advantages, such as self-documenting, having a strong typing system, supporting versioning and evolution, enabling rapid development, and having a robust ecosystem. These features make GraphQL a powerful choice for APIs that prioritize flexibility, performance, and developer productivity.
+GraphQL has several advantages, such as self-documenting, having a strong typing system, supporting versioning and evolution, enabling rapid development, and having a robust ecosystem. These features make GraphQL a powerful choice for APIs prioritizing flexibility, performance, and developer productivity.
 
 ## dbt Semantic Layer GraphQL API
 
-The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to it's self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://semantic-layer.cloud.getdbt.com/api/graphql).
+The dbt Semantic Layer GraphQL API allows you to explore and query metrics and dimensions. Due to its self-documenting nature, you can explore the calls conveniently through the [schema explorer](https://semantic-layer.cloud.getdbt.com/api/graphql).
 
-dbt Partners can use the Semantic Layer GraphQL API to build and integration with the dbt Semantic Layer.
+dbt Partners can use the Semantic Layer GraphQL API to build an integration with the dbt Semantic Layer.
 
 ## Requirements to use the GraphQL API
 - A dbt Cloud project on dbt v1.6 or higher
 - Metrics are defined and configured
-- A dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens with "Semantic Layer Only” and "Metadata Only" permissions
+- A dbt Cloud [service token](/docs/dbt-cloud-apis/service-tokens) with "Semantic Layer Only” and "Metadata Only" permissions
 - Your dbt project is configured and connected to a data platform
 
 
@@ -289,7 +289,7 @@ mutation {
 }
 ```
 
-Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes form of dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources). It is encouraged to specify a granularity when using time dimensions so that there won't be any unexpected results with the output data.
+Note that when using granularity in the query, the output of a time dimension with a time grain applied to it always takes the form of a dimension name appended with a double underscore and the granularity level - `{time_dimension_name}__{DAY|WEEK|MONTH|QUARTER|YEAR}`. Even if no granularity is specified, it will also always have a granularity appended to it and will default to the lowest available (usually daily for most data sources). It is encouraged to specify a granularity when using time dimensions so that there won't be any unexpected results with the output data.
 
 **Query two metrics with a categorical dimension**
 
@@ -307,7 +307,7 @@ mutation {
 
 **Query with a where filter** 
 
-The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering on, there are a couple of parameters:
+The `where` filter takes a list argument (or a string for a single input). Depending on the object you are filtering, there are a couple of parameters:
  
  - `Dimension()` &mdash; Used for any categorical or time dimensions. If used for a time dimension, granularity is required. For example, `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`.
   
