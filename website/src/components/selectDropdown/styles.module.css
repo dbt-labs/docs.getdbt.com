@@ -5,9 +5,9 @@
     border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
 }
 
-.selectContainer .select__menu {
-    background: purple;
-} 
+.selectContainer:focus-within, .selectContainer:active {
+    border: 2px solid var(--navy-200-c-6-ccd-4, red);
+}
 
 .selectContainer [class$="-control"]  {
     padding: 0rem 1rem
@@ -29,11 +29,31 @@
     padding: .5rem;
 }
 
-.selectContainer [class$="-option"]:hover {
+.selectContainer [class$="-option"]:hover, .selectContainer [class$="-option"]:active, .selectContainer [class$="-option"]:focus-within {
     background: #262a38;
     color: #fff;
 }
 
+.selectContainer [class$="-multiValue"] {
+    margin-right: .275rem;
+    background: #e6e6e6;
+    border-radius: 0.3125rem;
+    padding: 0 0 0 .5rem;
+}
+
 [data-theme='dark'] .selectContainer [class$="-option"]:hover {
-    background: #1F2937;
+    
+}
+
+.selectContainer [class$="-MultiValueRemove"] {
+    padding: .5rem;
+    border-radius: 0 0.3125rem 0.3125rem 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: .2rem;
+}
+
+.selectContainer [class$="-MultiValueRemove"]:hover {
+    background-color: rgb(255, 189, 173);
+    color: rgb(222, 53, 11);
 }
