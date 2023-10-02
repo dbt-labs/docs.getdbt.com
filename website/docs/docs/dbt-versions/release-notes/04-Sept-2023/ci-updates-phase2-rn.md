@@ -3,7 +3,7 @@ title: "Update: Improvements to dbt Cloud continuous integration"
 description: "September 2023: dbt Cloud now has two types of jobs -- deploy jobs and CI jobs -- with streamlined setup and improved efficiency. "
 sidebar_label: "Update: Improvements to dbt jobs"
 tags: [Sept-2023, CI]
-date: 2023-09-15
+date: 2023-09-11
 sidebar_position: 10
 ---
 
