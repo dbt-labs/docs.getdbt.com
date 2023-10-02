@@ -10,15 +10,30 @@
 } 
 
 .selectContainer [class$="-control"]  {
-    
+    padding: 0rem 1rem
 }
 
 .selectContainer [class$="-MenuList"] {
-    background: red;
-    margin-top: .275rem;
+    margin-top: .5rem;
     border-radius: 0.3125rem;
+    background: #fff;
+    border: solid 1px #e5e7eb;
+    box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
+}
+
+[data-theme='dark'] .selectContainer [class$="-MenuList"] {
+    background: #262a38;
+}
+
+.selectContainer [class$="-option"] {
+    padding: .5rem;
 }
 
 .selectContainer [class$="-option"]:hover {
-    background: blue;
+    background: #262a38;
+    color: #fff;
+}
+
+[data-theme='dark'] .selectContainer [class$="-option"]:hover {
+    background: #1F2937;
 }

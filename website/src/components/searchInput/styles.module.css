@@ -1,30 +1,6 @@
 .inputContainer {
-    -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: default;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  min-height: 38px;
-  outline: 0 !important;
-  position: relative;
-  -webkit-transition: all 100ms;
-  transition: all 100ms;
-  background-color: hsl(0, 0%, 100%);
-  border-color: hsl(0, 0%, 80%);
-  border-radius: 4px;
-  border-style: solid;
-  border-width: 1px;
-  box-sizing: border-box;
-  cursor: text;
+  padding: 0 1rem;
+  min-width: 25rem;
+  border-radius: 0.3125rem;
+  border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
 }
