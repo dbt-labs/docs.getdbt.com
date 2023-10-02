@@ -1,4 +1,4 @@
-<!-- turn this list into sections once more docs are provided -->
+<!-- turn this list into cards or sections once more docs are provided -->
 The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more.  These are the following tools that integrate with the dbt Semantic Layer:
 
 1. **Mode** &mdash; To learn more about integrating with Mode, check out their [documentation](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer) for more info.
