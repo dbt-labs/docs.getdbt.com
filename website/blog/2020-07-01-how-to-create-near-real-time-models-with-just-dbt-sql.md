@@ -15,7 +15,7 @@ is_featured: false
 
 :::caution More up-to-date information available
 
-The information contained in this blog post is outdated! You should now refer to the most recent blog post [about materialized views](/blog/announcing-materialized-views) or our official documentation about [materializations](/docs/build/materializations).
+Since this blog post was first published, many data platforms have added support for [materialized views](/blog/announcing-materialized-views), which are a superior way to achieve the goals outlined here. We recommend them over the below approach. 
 
 
 :::
