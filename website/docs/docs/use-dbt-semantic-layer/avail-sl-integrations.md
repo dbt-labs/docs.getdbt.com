@@ -5,7 +5,7 @@ description: "Discover the diverse range of partners that seamlessly integrate w
 tags: [Semantic Layer]
 sidebar_label: "Available integrations"
 meta:
-  api_name: dbt Semantic Layer API
+  api_name: dbt Semantic Layer APIs
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -32,8 +32,8 @@ You can create custom integrations using different languages and tools. We suppo
 
 ## Related docs
 
-- <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC to query your metrics in downstream tools.
-- [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
+- <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with JDBC and GraphQL to query your metrics in downstream tools.
+- [dbt Semantic Layer APIs query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
 
 </VersionBlock>
 
