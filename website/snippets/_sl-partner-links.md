@@ -1,10 +1,10 @@
 <!-- turn this list into cards or sections once more docs are provided -->
 The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more.  These are the following tools that integrate with the dbt Semantic Layer:
 
-1. **Mode** &mdash; Refer to the [Mode docs](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer) for info on how to integrate with Mode.
-1. **Hex** &mdash; Hex’s Semantic Layer integration will be available in the coming weeks. Until then, refer to [this Loom video](https://www.loom.com/share/752e85aabfbf4fa585008a5598f3517a) for more info. 
-1. **Google Sheets** &mdash; Google Sheets integration coming soon.
-1. **Tools that allows you to write SQL** &mdash; They must meet one of the two criteria: 
+1. **Mode** &mdash; To learn more about integrating with Mode, check out their [documentation](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer) for more info.
+2. **Hex** &mdash; To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
+3. **Google Sheets** &mdash; Google Sheets integration coming soon.
+4. **Tools that allows you to write SQL** &mdash; They must meet one of the two criteria: 
     * Supports a generic JDBC driver option (such as DataGrip) or 
     * Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
 
