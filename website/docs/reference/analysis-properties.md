@@ -28,10 +28,3 @@ analyses:
 ```
 
 </File>
-
-
-<Changelog>
-
-* `v0.16.0`: The ability to declare analysis properties was introduced.
-
-</Changelog>

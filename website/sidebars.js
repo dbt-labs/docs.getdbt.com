@@ -134,8 +134,9 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
-                "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -1203,6 +1204,7 @@ const sidebarSettings = {
         "community/resources/oss-expectations",
         "community/resources/oss-projects",
         "community/resources/contributor-license-agreements",
+        "community/resources/jobs-terms-and-conditions",
         "community/resources/speaking-at-a-meetup",
       ],
     },
