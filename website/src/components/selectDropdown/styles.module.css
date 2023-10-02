@@ -13,15 +13,16 @@
     padding: 0rem 1rem
 }
 
-.selectContainer [class$="-MenuList"] {
+.selectContainer [class$="-menu"] {
     margin-top: .5rem;
     border-radius: 0.3125rem;
     background: #fff;
     border: solid 1px #e5e7eb;
     box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
+    overflow: hidden;
 }
 
-[data-theme='dark'] .selectContainer [class$="-MenuList"] {
+[data-theme='dark'] .selectContainer [class$="-menu"] {
     background: #262a38;
 }
 
