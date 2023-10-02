@@ -30,6 +30,8 @@ dbt Labs partners can use the JDBC API to build integrations in their tools with
 
 If you are a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
 
+You *may* be able to use our JDBC API with tools that do not have an official integration with the dbt Semantic Layer. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the Semantic Layer API.
+
 Refer to [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl) for more info.
 
 ## Authentication
@@ -167,8 +169,9 @@ To query metric values, here are the following parameters that are available:
 | `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
 | `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
-|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order).   | Optional   |
-| `explain`   | If true, returns generated SQL for the data platform but does not execute | `explain=True`   | Optional |
+|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
+| `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
+
 
 
 ## Note on time dimensions and `metric_time`
@@ -286,28 +289,15 @@ semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   }}
 ``` 
 
-When using `order_by` and making changes to the object (like changing granularity), use this syntax:
+### Query with compile keyword
 
-```bash
-...
-order_by=[Dimension('metric_time').grain('month')]
-``` 
-
-```
-...
-order_by=[Dimension('metric_time').grain('month').descending(true)]
-```
-
-
-### Query with explain keyword
-
-Use the following example to query using a `explain` keyword:
+Use the following example to query using a `compile` keyword:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 		group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-		explain=True)
+		compile=True)
 		}}
 ```
 

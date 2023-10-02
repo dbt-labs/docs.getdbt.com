@@ -3,12 +3,6 @@ datatype: directorypath
 default_value: dbt_packages
 ---
 
-<Changelog>
-
-- **v1.0.0:** The default config has changed from `modules-path` to `packages-install-path` with a new default value of `dbt_packages`.
-
-</Changelog>
-
 <File name='dbt_project.yml'>
 
 ```yml

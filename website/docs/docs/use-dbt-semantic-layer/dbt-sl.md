@@ -28,7 +28,7 @@ import Features from '/snippets/_sl-plan-info.md'
 <Features
 cycle="public beta"
 product="dbt Semantic Layer"
-plan="dbt Cloud Team and Enterprise"
+plan="dbt Cloud Team or Enterprise"
 instance="hosted in North America"
 />
 

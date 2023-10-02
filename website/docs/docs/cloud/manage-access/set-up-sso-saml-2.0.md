@@ -75,7 +75,6 @@ provider to provide group membership information in user attribute called
 You may use a restricted group attribute statement to limit the groups set
 to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
-Please contact support if you have any questions.
 :::
 
 ### Collect integration secrets
