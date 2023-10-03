@@ -73,18 +73,20 @@ Run `brew upgrade dbt-cloud-cli` to update the Cloud CLI.  During the beta perio
 
 1. Download the latest Windows release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
 
-2. Extract the `dbt-cloud-cli.exe` file into the same folder as your dbt project.
+2. Extract the `dbt.exe` executeable into the same folder as your dbt project.
 
 :::info
 
 Advanced users can configure multiple projects to use the same Cloud CLI executeable by placing the executeable in the Program Files folder and [adding the Cloud CLI executeable to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
 
-Note that if you are using VS Code, you'll need to restart your IDE to pick up modified environment variables.
+Note that if you are using VS Code, you'll need to restart it to pick up modified environment variables.
 :::
+
+3. Verify the installation by running `./dbt --help` from the command line. If the help text does not indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and do not have a version of dbt globally installed.
 
 #### Updating your dbt Cloud installation - Windows
 
-Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-only) and replace the existing `dbt` executable with the new one. During the beta period, we recommend updating before filing a bug report, as the API is subject to breaking changes!
+Follow the same process in [Installing dbt Cloud CLI](#manually-install---windows) and replace the existing `dbt.exe` executable with the new one. During the beta period, we recommend updating before filing a bug report, as the API is subject to breaking changes!
 
 ### Manually install - Linux 
 
@@ -94,7 +96,7 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install-windows-
 
 ```bash
 tar -xf dbt_0.29.9_linux_amd64.tar.gz
-dbt --version
+./dbt --version
 ```
 
 :::info
@@ -106,7 +108,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI execute
 3. Verify the installation. If the help text does not indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and do not have a version of dbt globally installed.
 
 ```bash
-dbt --help
+./dbt --help
 ```
 
 ## Setting up the CLI - MacOS and Linux
