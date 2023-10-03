@@ -134,8 +134,9 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
-                "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -516,6 +517,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
             "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },

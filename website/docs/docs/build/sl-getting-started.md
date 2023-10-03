@@ -5,7 +5,7 @@ description: "Learn how to create your first semantic model and metric."
 sidebar_label: Get started with MetricFlow
 tags: [Metrics, Semantic Layer]
 meta:
-  api_name: dbt Semantic Layer API
+  api_name: dbt Semantic Layer APIs
 ---
 
 import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
@@ -34,7 +34,7 @@ However, to experience the power of the universal [dbt Semantic Layer](/docs/use
 
 - Have an understanding of key concepts in [MetricFlow](/docs/build/about-metricflow), which powers the revamped dbt Semantic Layer.
 - Have both your production and development environments running dbt version 1.6 or higher. Refer to [upgrade in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) for more info.
-- Use Snowflake, BigQuery, Databricks, Redshift, or  Postgres (CLI only. dbt Cloud support coming soon). 
+- Use Snowflake, BigQuery, Databricks, Redshift, or Postgres (Postgres available in the CLI only, dbt Cloud support coming soon). 
 -  Create a successful run in the environment where you configure the Semantic Layer. 
    - **Note:** Semantic Layer currently supports the Deployment environment for querying. (_development querying experience coming soon_)
 - Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
@@ -85,7 +85,7 @@ You can query your metrics in a JDBC-enabled tool or use existing first-class in
 
 You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. (Additional region support coming soon)
 
-- <span>To learn how to use the JDBC API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
+- <span>To learn how to use the JDBC or GraphQL API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
 
     * To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions.
     * Refer to the [SQL query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.  

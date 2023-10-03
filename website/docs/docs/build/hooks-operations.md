@@ -4,6 +4,8 @@ description: "Read this tutorial to learn how to use hooks and operations when b
 id: "hooks-operations"
 ---
 
+import OnRunCommands from '/snippets/_onrunstart-onrunend-commands.md';
+
 ## Related documentation
 * [pre-hook & post-hook](/reference/resource-configs/pre-hook-post-hook)
 * [on-run-start & on-run-end](/reference/project-configs/on-run-start-on-run-end)
@@ -33,8 +35,8 @@ dbt provides hooks and operations so you can version control and execute these s
 Hooks are snippets of SQL that are executed at different times:
   * `pre-hook`: executed _before_ a model, seed or snapshot is built.
   * `post-hook`: executed _after_ a model, seed or snapshot is built.
-  * `on-run-start`: executed at the _start_ of `dbt run`, `dbt test`, `dbt seed` or `dbt snapshot`
-  * `on-run-end`: executed at the _end_ of `dbt run`, `dbt test`, `dbt seed` or `dbt snapshot`
+  * `on-run-start`: executed at the _start_ of <OnRunCommands/>
+  * `on-run-end`: executed at the _end_ of <OnRunCommands/>
 
 Hooks are a more-advanced capability that enable you to run custom SQL, and leverage database-specific actions, beyond what dbt makes available out-of-the-box with standard materializations and configurations.
 
