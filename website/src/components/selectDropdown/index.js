@@ -3,8 +3,6 @@ import Select from "react-select";
 import styles from "./styles.module.css";
 
 export const SelectDropdown = ({ options, value, onChange, isMulti, placeHolder }) => {
-
-
   return (
     <Select
       isMulti={isMulti}
