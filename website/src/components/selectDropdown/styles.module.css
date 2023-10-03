@@ -8,6 +8,10 @@
     border: 2px solid #4f5d75;
 }
 
+.selectContainer [class$="-palceholder"] {
+    font-size: .875rem;
+}
+
 .selectContainer [class$="-control"]  {
     padding: 0rem 1rem
 }

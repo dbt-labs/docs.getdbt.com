@@ -3,9 +3,16 @@
   border-radius: 0.3125rem;
   border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
   min-height: 38px;
+  font-size: .875rem;
+  font-family: var(--ifm-font-family-base);
 }
 
 .inputContainer:active, .inputContainer:focus {
   border: 2px solid #4f5d75;
   outline: none;
+}
+
+.inputContainer::placeholder {
+  all: unset;
+  -webkit-text-security: initial;
 }
