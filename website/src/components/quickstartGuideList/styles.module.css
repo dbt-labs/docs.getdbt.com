@@ -34,7 +34,7 @@
 }
 
 @media (max-width: 996px) {
-    .quickstartCardContainer {
+    .quickstartCardContainer, .quickstartFilterContainer {
         grid-template-columns: 1fr;
     }
 }

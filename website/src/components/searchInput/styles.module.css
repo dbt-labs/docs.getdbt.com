@@ -1,6 +1,11 @@
 .inputContainer {
   padding: 0 1rem;
-  min-width: 25rem;
   border-radius: 0.3125rem;
   border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
+  min-height: 38px;
+}
+
+.inputContainer:active, .inputContainer:focus {
+  border: 2px solid #4f5d75;
+  outline: none;
 }
