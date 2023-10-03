@@ -50,8 +50,3 @@ When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the late
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
 
-### Run slot treatment
-
-Your CI runs don't consume run slots so a CI check will never block a production run.
-
-
