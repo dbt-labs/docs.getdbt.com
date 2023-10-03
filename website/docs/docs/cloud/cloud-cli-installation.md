@@ -70,16 +70,22 @@ dbt --help
 
 1. Download the latest Windows release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
 
-2. Extract the `dbt-cloud-cli.exe` file into the same folder as your dbt project.
+2. Extract the `dbt.exe` executeable into the same folder as your dbt project.
 
 :::info
 
 Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executeable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
 
-If you're using VS Code, remember to restart your IDE to pick up modified environment variables.
+Note that if you are using VS Code, you'll need to restart it to pick up modified environment variables.
 :::
 
-### Install manually (Linux) 
+3. Verify the installation by running `./dbt --help` from the command line. If the help text does not indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and do not have a version of dbt globally installed.
+
+#### Updating your dbt Cloud installation - Windows
+
+Follow the same process in [Installing dbt Cloud CLI](#manually-install---windows) and replace the existing `dbt.exe` executable with the new one. During the beta period, we recommend updating before filing a bug report, as the API is subject to breaking changes!
+
+### Manually install - Linux 
 
 1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
 
@@ -87,7 +93,7 @@ If you're using VS Code, remember to restart your IDE to pick up modified enviro
 
 ```bash
 tar -xf dbt_0.29.9_linux_amd64.tar.gz
-dbt --version
+./dbt --version
 ```
 
 :::info
@@ -99,7 +105,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI execute
 3. Run the following command to verify the installation:
 
 ```bash
-dbt --help
+./dbt --help
 ```
 
 - If the help text doesn't show you're using the dbt Cloud CLI, ensure you've deactivated pyenv or venv and don't have a global dbt version installed
