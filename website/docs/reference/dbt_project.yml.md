@@ -54,7 +54,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 [require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
 
 [dbt-cloud](/docs/cloud/cloud-cli-installation):
-  project-id: your_project_id 
+  project-id: project_id 
 
 [quoting](/reference/project-configs/quoting):
   database: true | false
