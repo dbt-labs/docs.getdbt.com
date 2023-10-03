@@ -35,11 +35,11 @@ Each dbt Cloud project can have multiple deployment environments, but only one d
 
 With your deployment environment set up, it's time to create a production job to run in your *prod* environment.
 
-To deploy our data transformation workflows, we will utilize [dbt Cloud’s built-in job scheduler](/docs/deploy/dbt-cloud-job). The job scheduler is designed specifically to streamline your dbt project deployments and runs, ensuring that your data pipelines are easy to create, monitor, and modify efficiently.
+To deploy our data transformation workflows, we will utilize [dbt Cloud’s built-in job scheduler](/docs/deploy/deploy-jobs). The job scheduler is designed specifically to streamline your dbt project deployments and runs, ensuring that your data pipelines are easy to create, monitor, and modify efficiently.
 
 Leveraging dbt Cloud's job scheduler allows data teams to own the entire transformation workflow. You don't need to learn and maintain additional tools for orchestration or rely on another team to schedule code written by your team. This end-to-end ownership simplifies the deployment process and accelerates the delivery of new data products.
 
-Let’s [create a job](/docs/deploy/dbt-cloud-job#create-and-schedule-jobs) in dbt Cloud that will transform data in our Databricks *prod* catalog.
+Let’s [create a job](/docs/deploy/deploy-jobs#create-and-schedule-jobs) in dbt Cloud that will transform data in our Databricks *prod* catalog.
 
 1. Create a new job by clicking **Deploy** in the header, click **Jobs** and then **Create job**.
 2. **Name** the job “Daily refresh”.
@@ -58,7 +58,7 @@ Let’s [create a job](/docs/deploy/dbt-cloud-job#create-and-schedule-jobs) in d
         - dbt build is more efficient than issuing separate commands for dbt run and dbt test separately because it will run then test each model before continuing.
         - We are excluding source data because we already tested it in step 2.
         - The fail-fast flag will make dbt exit immediately if a single resource fails to build. If other models are in-progress when the first model fails, then dbt will terminate the connections for these still-running models.
-5. Under **Triggers**, use the toggle to configure your job to [run on a schedule](/docs/deploy/job-triggers). You can enter specific days and timing or create a custom cron schedule. 
+5. Under **Triggers**, use the toggle to configure your job to [run on a schedule](/docs/deploy/deploy-jobs#schedule-days). You can enter specific days and timing or create a custom cron schedule. 
     - If you want your dbt Cloud job scheduled by another orchestrator, like Databricks Workflows, see the [Advanced Considerations](#advanced-considerations) section below.
 
 This is just one example of an all-or-nothing command list designed to minimize wasted computing. The [job command list](/docs/deploy/job-commands) and [selectors](/reference/node-selection/syntax) provide a lot of flexibility on how your DAG will execute. You may want to design yours to continue running certain models if others fail. You may want to set up multiple jobs to refresh models at different frequencies. See our [Job Creation Best Practices discourse](https://discourse.getdbt.com/t/job-creation-best-practices-in-dbt-cloud-feat-my-moms-lasagna/2980) for more job design suggestions.
@@ -85,7 +85,7 @@ Your CI job will ensure that the models build properly and pass any tests applie
 - A service principal called *dbt_test_sp*
 - A new dbt Cloud environment called *test* that defaults to the *test* catalog and uses the *dbt_test_sp* token in the deployment credentials
 
-We recommend setting up a dbt Cloud Slim CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a Slim CI job, refer to [Set up Slim CI jobs](/docs/deploy/slim-ci-jobs) for details.
+We recommend setting up a dbt Cloud CI job. This will decrease the job’s runtime by running and testing only modified models, which also reduces compute spend on the lakehouse. To create a CI job, refer to [Set up CI jobs](/docs/deploy/ci-jobs) for details.
 
 With dbt tests and SlimCI, you can feel confident that your production data will be timely and accurate even while delivering at high velocity.
 
@@ -93,7 +93,7 @@ With dbt tests and SlimCI, you can feel confident that your production data will
 
 Keeping a close eye on your dbt Cloud jobs is crucial for maintaining a robust and efficient data pipeline. By monitoring job performance and quickly identifying potential issues, you can ensure that your data transformations run smoothly. dbt Cloud provides three entry points to monitor the health of your project: run history, deployment monitor, and status tiles.
 
-The [run history](/docs/deploy/dbt-cloud-job) dashboard in dbt Cloud provides a detailed view of all your project's job runs, offering various filters to help you focus on specific aspects. This is an excellent tool for developers who want to check recent runs, verify overnight results, or track the progress of running jobs. To access it, select **Run History** from the **Deploy** menu.
+The [run history](/docs/deploy/run-visibility#run-history) dashboard in dbt Cloud provides a detailed view of all your project's job runs, offering various filters to help you focus on specific aspects. This is an excellent tool for developers who want to check recent runs, verify overnight results, or track the progress of running jobs. To access it, select **Run History** from the **Deploy** menu.
 
 The deployment monitor in dbt Cloud offers a higher-level view of your run history, enabling you to gauge the health of your data pipeline over an extended period of time. This feature includes information on run durations and success rates, allowing you to identify trends in job performance, such as increasing run times or more frequent failures. The deployment monitor also highlights jobs in progress, queued, and recent failures. To access the deployment monitor click on the dbt logo in the top left corner of the dbt Cloud UI.
 
@@ -121,7 +121,6 @@ The five key steps for troubleshooting dbt Cloud issues are:
 2. Inspect the problematic file and look for an immediate fix.
 3. Isolate the problem by running one model at a time in the IDE or undoing the code that caused the issue.
 4. Check for problems in compiled files and logs.
-5. Seek help from the [dbt Cloud support team](/docs/dbt-support) if needed.
 
 Consult the [Debugging errors documentation](/guides/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
 

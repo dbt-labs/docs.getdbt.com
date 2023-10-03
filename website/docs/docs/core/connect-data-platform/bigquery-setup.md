@@ -11,7 +11,7 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '#db-bigquery'
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
-  platform_name: 'Big Query'
+  platform_name: 'BigQuery'
   config_page: '/reference/resource-configs/bigquery-configs'
 ---
 
@@ -83,8 +83,6 @@ my-bigquery-db:
 </File>
 
 **Default project**
-
-<Changelog>New in dbt v0.19.0</Changelog>
 
 If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
 
@@ -233,8 +231,6 @@ my-profile:
 
 ### Timeouts and Retries
 
-<VersionBlock firstVersion="1.1">
-
 The `dbt-bigquery` plugin uses the BigQuery Python client library to submit queries. Each query requires two steps:
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
 2. Job execution: Wait for the query job to finish executing, and receive its result.
@@ -251,11 +247,17 @@ In older versions of `dbt-bigquery`, this same config was called `timeout_second
 
 :::
   
-No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
 
 ```
  Operation did not complete within the designated timeout.
 ```
+
+:::caution Note
+
+The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. So, if dbt-bigquery ran into an exception at 300 seconds, the actual BigQuery job could still be running for the time set in BigQuery's own timeout settings.
+
+:::
   
 You can change the timeout seconds for the job execution step by configuring `job_execution_timeout_seconds` in the BigQuery profile:
 
@@ -315,57 +317,6 @@ my-profile:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
-
-```
- Operation did not complete within the designated timeout.
-```
-
-To change this timeout, use the `timeout_seconds` configuration:
-
-<File name='profiles.yml'>
-
-```yaml
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      timeout_seconds: 600 # 10 minutes
-```
-
-</File>
-
-The `retries` profile configuration designates the number of times dbt should retry queries that result in unhandled server errors. This configuration is only specified for BigQuery targets. Example:
-
-<File name='profiles.yml'>
-
-```yaml
-# This example target will retry BigQuery queries 5
-# times with a delay. If the query does not succeed
-# after the fifth attempt, then dbt will raise an error
-
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      retries: 5
-```
-
-</File>
-
-</VersionBlock>
 
 ### Dataset locations
 
@@ -386,12 +337,6 @@ my-profile:
 ```
 
 ### Maximum Bytes Billed
-
-<Changelog>
-
-- New in dbt v0.17.0
-
-</Changelog>
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
 queries executed by dbt will fail if they exceed the configured maximum bytes
@@ -439,7 +384,6 @@ my-profile:
 ```
 
 ### Service Account Impersonation
-<Changelog>New in v0.18.0</Changelog>
 
 This feature allows users authenticating via local OAuth to access BigQuery resources based on the permissions of a service account.
 
@@ -461,7 +405,6 @@ For a general overview of this process, see the official docs for [Creating Shor
 <FAQ path="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
-<Changelog>New in v0.21.0</Changelog>
 
 By default, dbt will use the specified `project`/`database` as both:
 1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config

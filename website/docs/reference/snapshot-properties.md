@@ -40,9 +40,3 @@ snapshots:
 
 ```
 </File>
-
-<Changelog>
-
-* `v0.16.0`: The ability to declare snapshot properties was introduced.
-
-</Changelog>

@@ -63,7 +63,7 @@ In the greater data world, you may often hear of data lineage systems based on t
 
 If you use a transformation tool such as dbt that automatically infers relationships between data sources and models, a DAG automatically populates to show you the lineage that exists for your [data transformations](https://www.getdbt.com/analytics-engineering/transformation/).
 
-<Lightbox src="/img/docs/terms/data-lineage/dag_example.png" title="dbt Cloud Project with generated DAG" />
+<Lightbox src="/img/docs/terms/data-lineage/dag_example.jpg" width="80%" title="dbt Cloud Project with generated DAG" />
 
 Your <Term id="dag" /> is used to visually show upstream dependencies, the nodes that must come before a current model, and downstream relationships, the work that is impacted by the current model. DAGs are also directional—they show a defined flow of movement and form non-cyclical loops.
 
@@ -79,7 +79,7 @@ DAGs shouldn’t be dependent on manual updates. Instead, your DAG should be aut
 
 ### Third-party tooling
 
-Data teams may also choose to use third-party tools  with  lineage capabilities such as [Atlan](https://ask.atlan.com/hc/en-us/articles/4433673207313-How-to-set-up-dbt-Cloud), Alation, [Collibra](https://marketplace.collibra.com/listings/dbt-lineage-to-collibra-integration/), Metaphor, [Monte Carlo](https://docs.getmontecarlo.com/docs/dbt-cloud), [Select Star](https://docs.selectstar.com/integrations/dbt/dbt-cloud), or [Stemma](https://docs.stemma.ai/docs/stemma/getting-started/what-we-need-from-you/dbt-integration/). These tools often integrate directly with your data pipelines and dbt workflows and offer zoomed-in data lineage capabilities such as column-level or business logic-level lineage.
+Data teams may also choose to use third-party tools with lineage capabilities such as [Atlan](https://ask.atlan.com/hc/en-us/articles/4433673207313-How-to-set-up-dbt-Cloud), Alation, [Collibra](https://marketplace.collibra.com/listings/dbt-lineage-to-collibra-integration/), [Datafold](https://www.datafold.com/column-level-lineage), Metaphor, [Monte Carlo](https://docs.getmontecarlo.com/docs/dbt-cloud), [Select Star](https://docs.selectstar.com/integrations/dbt/dbt-cloud), or [Stemma](https://docs.stemma.ai/docs/stemma/getting-started/what-we-need-from-you/dbt-integration/). These tools often integrate directly with your data pipelines and dbt workflows and offer zoomed-in data lineage capabilities such as column-level or business logic-level lineage.
 
 ## Data lineage challenges
 

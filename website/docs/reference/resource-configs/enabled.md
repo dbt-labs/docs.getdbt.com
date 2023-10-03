@@ -150,7 +150,6 @@ sources:
 
 </File>
 
-<VersionBlock firstVersion="1.1">
 
 <File name='models/properties.yml'>
 
@@ -170,7 +169,6 @@ sources:
 
 </File>
 
-</VersionBlock>
 
 </TabItem>
 

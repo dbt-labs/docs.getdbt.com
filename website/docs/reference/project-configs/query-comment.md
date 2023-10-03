@@ -30,14 +30,6 @@ A string to inject as a comment in each query that dbt runs against your databas
 
 The `query-comment` configuration can also call a macro that returns a string.
 
-<Changelog>
-
-* `v0.15.0`: The `query-comment` configuration was introduced
-* `v0.16.1`: Dictionary syntax introduced to allow comments to be appended
-* `v0.20.0:` Introduced `job-label` argument for BigQuery job labels
-
-</Changelog>
-
 ## Default
 By default, dbt will insert a <Term id="json" /> comment at the top of your query containing the information including the dbt version, profile and target names, and node ids for the resources it runs. For example:
 
@@ -148,13 +140,6 @@ select ...
 ```
 
 ### BigQuery: include query comment items as job labels
-
-
-<Changelog>
-
-* `v0.20.0:` Introduced `job-label` argument for BigQuery job labels
-
-</Changelog>
 
 If `query-comment.job-label` is set to true, dbt will include the query comment items, if a dictionary, or the comment string, as job labels on the query it executes. These will be included in addition to labels specified in the [BigQuery-specific config](/reference/project-configs/query-comment#bigquery-include-query-comment-items-as-job-labels).
 

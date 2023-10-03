@@ -8,13 +8,33 @@ tags: [Metrics, Semantic Layer]
 
 Measures are aggregations performed on columns in your model. They can be used as final metrics or serve as building blocks for more complex metrics. Measures have several inputs, which are described in the following table along with their field types.
 
-| Parameter | Description | Field type |
-| --- | --- | --- |
+| Parameter | Description | Type |
+| --------- | ----------- | ---- |
 | [`name`](#name) | Provide a name for the measure, which must be unique and can't be repeated across all semantic models in your dbt project. | Required |
 | [`description`](#description) | Describes the calculated measure. | Optional |
-| [`agg`](#aggregation) | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
+| [`agg`](#aggregation) | dbt supports aggregations such as `sum`, `min`, `max`, and more. Refer to [Aggregation](/docs/build/measures#aggregation) for the full list of supported aggregation types. | Required |
 | [`expr`](#expr) | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | [`non_additive_dimension`](#non-additive-dimensions) | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
+| `agg_params` | specific aggregation properties such as a percentile. | Optional |
+| `agg_time_dimension` | The time field. Defaults to the default agg time dimension for the semantic model.  | Optional |
+| `label` | How the metric appears in project docs and downstream integrations. | Required |
+
+
+## Measure spec
+
+An example of the complete YAML measures spec is below. The actual configuration of your measures will depend on the aggregation you're using.
+
+```yaml
+measures:
+  - name: The name of the measure
+    description: 'same as always' ## Optional
+    agg: the aggregation type.
+    expr: the field
+    agg_params: 'specific aggregation properties such as a percentile'  ## Optional
+    agg_time_dimension: The time field. Defaults to the default agg time dimension for the semantic model. ##  Optional
+    non_additive_dimension: 'Use these configs when you need non-additive dimensions.' ## Optional
+    label: How the metric appears in project docs and downstream integrations. ## Required
+```
 
 ### Name 
 
@@ -62,7 +82,7 @@ If you use the `dayofweek` function in the `expr` parameter with the legacy Snow
 ```yaml
 semantic_models:
  - name: transactions
-    description: A record for every transaction that takes place. Carts are considered  multiple transactions for each SKU.
+    description: A record of every transaction that takes place. Carts are considered  multiple transactions for each SKU.
     model: ref('schema.transactions')
     defaults:
       agg_time_dimensions:
@@ -178,7 +198,6 @@ semantic_models:
         type: time
         expr: date_transaction
         type_params:
-          is_primary: True
           time_granularity: day
 
     measures: 
@@ -190,14 +209,14 @@ semantic_models:
           name: metric_time
           window_choice: min 
       - name: mrr_end_of_month
-        description: Aggregate by summing all users active subscription plans at end of month 
+        description: Aggregate by summing all users' active subscription plans at the end of month 
         expr: subscription_value
         agg: sum 
         non_additive_dimension: 
           name: metric_time
           window_choice: max
       - name: mrr_by_user_end_of_month
-        description: Group by user_id to achieve each users MRR at the end of the month 
+        description: Group by user_id to achieve each user's MRR at the end of the month 
         expr: subscription_value
         agg: sum  
         non_additive_dimension: 
@@ -205,7 +224,7 @@ semantic_models:
           window_choice: max
           window_groupings: 
             - user_id 
----
+
 metrics:
   - name: mrr_end_of_month
     type: simple

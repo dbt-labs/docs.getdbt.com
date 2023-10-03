@@ -28,10 +28,8 @@ export const DiscourseBlogComments = ({title,slug}) => {
       const fetchData = async () => {
         try {
 
-        const endpoint = window?.location?.hostname?.includes('localhost')
-        ? `http://localhost:8888/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
-        : `/.netlify/functions/get-discourse-comments?title=${title}&slug=${slug}`
-
+          const endpoint = `/api/get-discourse-comments?title=${title}&slug=${slug}`
+        
           const { data } = await axios.get(endpoint)
   
           // Set error state if data not available

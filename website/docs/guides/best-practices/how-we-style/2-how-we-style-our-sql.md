@@ -6,7 +6,10 @@ id: 2-how-we-style-our-sql
 ## Basics
 
 - ☁️ Use [SQLFluff](https://sqlfluff.com/) to maintain these style rules automatically.
-  - Reference this [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we use.
+  - Customize `.sqlfluff` configuration files to your needs.
+  - Refer to our [SQLFluff config file](https://github.com/dbt-labs/jaffle-shop-template/blob/main/.sqlfluff) for the rules we use in our own projects. 
+
+  - Exclude files and directories by using a standard `.sqlfluffignore` file. Learn more about the syntax in the [.sqlfluffignore syntax docs](https://docs.sqlfluff.com/en/stable/configuration.html#id2).
 - 👻 Use Jinja comments (`{# #}`) for comments that should not be included in the compiled SQL.
 - ⏭️ Use trailing commas.
 - 4️⃣ Indents should be four spaces.
@@ -22,7 +25,7 @@ id: 2-how-we-style-our-sql
 
 - 🔙 Fields should be stated before aggregates and window functions.
 - 🤏🏻 Aggregations should be executed as early as possible (on the smallest data set possible) before joining to another table to improve performance.
-- 🔢 Ordering and grouping by a number (eg. group by 1, 2) is preferred over listing the column names (see [this classic rant](https://blog.getdbt.com/write-better-sql-a-defense-of-group-by-1/) for why). Note that if you are grouping by more than a few columns, it may be worth revisiting your model design.
+- 🔢 Ordering and grouping by a number (eg. group by 1, 2) is preferred over listing the column names (see [this classic rant](https://www.getdbt.com/blog/write-better-sql-a-defense-of-group-by-1) for why). Note that if you are grouping by more than a few columns, it may be worth revisiting your model design.
 
 ## Joins
 
