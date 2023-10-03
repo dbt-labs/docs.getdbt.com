@@ -718,3 +718,41 @@ Views with this configuration will be able to select from objects in `project_1.
 
 The `grant_access_to` config is not thread-safe when multiple views need to be authorized for the same dataset. The initial `dbt run` operation after a new `grant_access_to` config is added should therefore be executed in a single thread. Subsequent runs using the same configuration will not attempt to re-apply existing access grants, and can make use of multiple threads.
 
+
+## Submitting a python model
+
+Just like SQL models, there are three ways to configure Python models:
+1. In `dbt_project.yml`, where you can configure many models at once
+2. In a dedicated `.yml` file, within the `models/` directory
+3. Within the model's `.py` file, using the `dbt.config()` method
+
+<File name='dbt_project.yml'>
+
+```yml
+# dbt_project.yml with a python model submitting jobs against a dataproc cluster
+models:
+  - name: my_python_model
+    config:
+      submission_method: cluster
+      dataproc_cluster_name: my-favorite-cluster
+      dataproc_region: us-central1
+      gcs_bucket: my-favorite-bucket
+```
+
+</File>
+
+<File name='models/serverless_model.py'>
+
+```python
+
+def model(dbt, session):
+    dbt.config(
+        submission_method="serverless",
+        dataproc_region="us-central1",
+        gcs_bucket="my-favorite-bucket"
+    )
+    ...
+
+```
+
+</File>

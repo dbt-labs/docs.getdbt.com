@@ -649,64 +649,27 @@ If not configured, `dbt-spark` will use the built-in defaults: the all-purpose c
 
 <div warehouse="BigQuery">
 
-The `dbt-bigquery` adapter uses a service called Dataproc to submit your Python models as PySpark jobs. That Python/PySpark code will read from your tables and views in BigQuery, perform all computation in Dataproc, and write the final result back to BigQuery.
+**Submission methods:** The `dbt-bigquery` adapter uses [Dataproc](https://cloud.google.com/dataproc) to submit your Python models as PySpark jobs. Dataproc supports two submission methods: `cluster` and `serverless`.
 
-**Submission methods.** Dataproc supports two submission methods: `serverless` and `cluster`. Dataproc Serverless does not require a ready cluster, which saves on hassle and cost—but it is slower to start up, and much more limited in terms of available configuration. For example, Dataproc Serverless supports only a small set of Python packages, though it does include `pandas`, `numpy`, and `scikit-learn`. (See the full list [here](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers#example_custom_container_image_build), under "The following packages are installed in the default image"). Whereas, by creating a Dataproc Cluster in advance, you can fine-tune the cluster's configuration, install any PyPI packages you want, and benefit from faster, more responsive runtimes.
+<File name='dbt_project.yml'>
 
-Use the `cluster` submission method with dedicated Dataproc clusters you or your organization manage. Use the `serverless` submission method to avoid managing a Spark cluster. The latter may be quicker for getting started, but both are valid for production.
-
-**Additional setup:**
-- Create or use an existing [Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets)
-- Enable Dataproc APIs for your project + region
-- If using the `cluster` submission method: Create or use an existing [Dataproc cluster](https://cloud.google.com/dataproc/docs/guides/create-cluster) with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). (Google recommends copying the action into your own Cloud Storage bucket, rather than using the example version shown in the screenshot)
-
-<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-connector-initialization.png" title="Add the Spark BigQuery connector as an initialization action"/>
-
-The following configurations are needed to run Python models on Dataproc. You can add these to your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc) or configure them on specific Python models:
-- `gcs_bucket`: Storage bucket to which dbt will upload your model's compiled PySpark code.
-- `dataproc_region`: GCP region in which you have enabled Dataproc (for example `us-central1`).
-- `dataproc_cluster_name`: Name of Dataproc cluster to use for running Python model (executing PySpark job). Only required if `submission_method: cluster`.
-
-```python
-def model(dbt, session):
-    dbt.config(
-        submission_method="cluster",
-        dataproc_cluster_name="my-favorite-cluster"
-    )
-    ...
-```
 ```yml
-version: 2
 models:
-  - name: my_python_model
-    config:
-      submission_method: serverless
+  config:
+    submission_method: serverless # or cluster
+    # dataproc_cluster_name
 ```
+</File>
 
-Python models running on Dataproc Serverless can be further configured in your [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup#running-python-models-on-dataproc).
 
-Any user or service account that runs dbt Python models will need the following permissions(in addition to the required BigQuery permissions) ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
-```
-dataproc.batches.create
-dataproc.clusters.use
-dataproc.jobs.create
-dataproc.jobs.get
-dataproc.operations.get
-dataproc.operations.list
-storage.buckets.get
-storage.objects.create
-storage.objects.delete
-```
+- Cluster Submission Method: Create or use an existing Dataproc Cluster [See example](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) within dbt_project.yml or yml file within the `models/` directory
 
-**Installing packages:** If you are using a Dataproc Cluster (as opposed to Dataproc Serverless), you can add third-party packages while creating the cluster.
+- Serverless Submission Method: Dataproc Serverless does not require a ready cluster, but it can also mean the cluster is slower to start. [See example](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) submitting a job to a serverless cluster in the `.py` file
 
-Google recommends installing Python packages on Dataproc clusters via initialization actions:
-- [How initialization actions are used](https://github.com/GoogleCloudDataproc/initialization-actions/blob/master/README.md#how-initialization-actions-are-used)
-- [Actions for installing via `pip` or `conda`](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/python)
 
-You can also install packages at cluster creation time by [defining cluster properties](https://cloud.google.com/dataproc/docs/tutorials/python-configuration#image_version_20): `dataproc:pip.packages` or `dataproc:conda.packages`.
+**Installing packages**: If you are using a Dataproc Cluster (as opposed to Dataproc Serverless), you can add third-party packages while creating the cluster with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). If you are using Dataproc Serverless, you can build your own [custom container image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers#python_packages) with the packages you need.
 
-<Lightbox src="/img/docs/building-a-dbt-project/building-models/python-models/dataproc-pip-packages.png" title="Adding packages to install via pip at cluster startup"/>
+**Additional setup:**: The user or role should have the adequate IAM permission to be able to trigger a job through Dataproc Cluster or Dataproc Serverless
 
 **Docs:**
 - [Dataproc overview](https://cloud.google.com/dataproc/docs/concepts/overview)
