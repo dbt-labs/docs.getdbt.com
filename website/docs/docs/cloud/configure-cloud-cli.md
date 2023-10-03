@@ -49,8 +49,6 @@ name:
 version:
 ...
 
-#IS IT CLOUD OR DBT-CLOUD PER ISSUE https://github.com/dbt-labs/docs.getdbt.com/issues/4014
-
 cloud: 
     project-id: PROJECT_ID
 ```
@@ -58,8 +56,8 @@ cloud:
 - To find your project ID, go to **Develop** in the navigation. Select the dbt Cloud project URL, such as `https://cloud.getdbt.com/develop/26228/projects123456`, where the project ID is `123456`.
 
 
-## Using dbt Cloud CLI
+## Use the dbt Cloud CLI
 
-The dbt Cloud CLI is a drop-in replacement for dbt Core. When you invoke a dbt command, that command is sent to dbt Cloud for processing. Since this is still invoking dbt under the hood, you'll still need to run `dbt deps`, followed by the same model build commands you typically run.
+The dbt Cloud CLI shares the same set of commands as dbt Core. When you invoke a dbt command, that command is sent to dbt Cloud for processing. Since this is still invoking dbt under the hood, you'll still need to run `dbt deps`, followed by the same model build commands you typically run.
 
 Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).

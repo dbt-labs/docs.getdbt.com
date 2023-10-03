@@ -87,7 +87,7 @@ Follow the same process in [Installing dbt Cloud CLI](#manually-install---window
 
 ### Manually install - Linux 
 
-1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
+1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases). (Pick the file based on your CPU architecture)
 
 2. Extract the `dbt-cloud-cli` binary to the same folder as your dbt project.
 
