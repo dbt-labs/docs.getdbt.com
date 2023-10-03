@@ -40,7 +40,7 @@ Once you install the dbt Cloud CLI, you need to configure the dbt Cloud CLI to c
 cd ~/dbt-projects/jaffle_shop
 ```
 
-4. In your `dbt_project.yml` file, ensure there is a section titled "Cloud". This section is required to have a `project-id` field with a valid [project ID](#glossary). 
+1. In your `dbt_project.yml` file, ensure there is a section titled `dbt-cloud`. This section is required to have a `project-id` field with a valid project ID. 
 
 ```yaml
 # dbt_project.yml
@@ -49,7 +49,7 @@ name:
 version:
 ...
 
-cloud: 
+dbt-cloud: 
     project-id: PROJECT_ID
 ```
 
