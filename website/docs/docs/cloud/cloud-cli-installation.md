@@ -30,12 +30,6 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 * [Install manually (Windows)](#install-manually-windows)<br />
 * [Install manually (Linux)](#install-manually-linux)<br />
 
-After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following commands to compile a project using dbt Cloud:
-
-```bash
-dbt deps
-dbt compile
-```
 
 :::caution
 
@@ -110,3 +104,13 @@ To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`.
 #### Update manually (Windows)
 
 To update, follow the same process explained in [Install manually (Windows)](#install-manually-windows) and replace the existing `dbt.exe` executable with the new one.
+
+
+## Next steps
+
+After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following commands to compile a project using dbt Cloud:
+
+```bash
+dbt deps
+dbt compile
+```
