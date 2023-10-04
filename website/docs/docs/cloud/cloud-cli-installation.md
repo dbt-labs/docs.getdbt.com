@@ -20,7 +20,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * Speedier, lower cost builds.
 * Significant platform improvements, to be released over the coming months.
 
-The dbt Cloud CLI, powered by [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features), is distinct from [dbt Core](https://github.com/dbt-labs/dbt-core), an open-source command-line tool for dbt. Both tools are command lines that use the same dbt commands, but the dbt Cloud CLI is tailored to run specifically on dbt Cloud's infrastructure.
+The dbt Cloud CLI and [dbt Core](https://github.com/dbt-labs/dbt-core), an open-source project, are both command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure.
 
 ## Install dbt Cloud CLI
 
