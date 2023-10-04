@@ -3,6 +3,8 @@ title: "What is dbt? "
 id: "overview"
 ---
 
+
+
 dbt is a productivity tool that helps analysts get more done and produce higher quality results.
 
 Analysts commonly spend 50-80% of their time modeling raw data—cleaning, reshaping, and applying fundamental business logic to it. dbt empowers analysts to do this work better and faster.
