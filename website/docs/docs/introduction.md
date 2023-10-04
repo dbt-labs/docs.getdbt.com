@@ -36,8 +36,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 ### dbt Cloud
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. dbt Cloud also natively supports developing using a command line to run dbt commands against your dbt Cloud development environment. 
-
+dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. It also natively supports developing using a command line with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
 Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/quickstarts).
 
 ### dbt Core
