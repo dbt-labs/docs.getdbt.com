@@ -40,7 +40,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 cd ~/dbt-projects/jaffle_shop
 ```
 
-1. In your `dbt_project.yml` file, ensure there is a section titled `dbt-cloud`. This section is required to have a `project-id` field with a valid project ID. 
+4. In your `dbt_project.yml` file, ensure there is a section titled `dbt-cloud`. This section is required to have a `project-id` field with a valid project ID. 
 
 ```yaml
 # dbt_project.yml
@@ -53,7 +53,7 @@ dbt-cloud:
     project-id: PROJECT_ID
 ```
 
-- To find your project ID, go to **Develop** in the navigation. Select the dbt Cloud project URL, such as `https://cloud.getdbt.com/develop/26228/projects123456`, where the project ID is `123456`.
+- To find your project ID, go to **Develop** in the navigation menu. Select the dbt Cloud project URL, such as `https://cloud.getdbt.com/develop/26228/projects123456`, where the project ID is `123456`.
 
 
 ## Use the dbt Cloud CLI
