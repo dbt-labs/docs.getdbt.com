@@ -2,10 +2,12 @@
 title: "dbt Command reference"
 ---
 
-dbt is typically run one of two ways:
+dbt is typically run using the following ways:
 
-* In [dbt Cloud](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)
-* On the [command line interface](/docs/core/about-the-cli) (CLI)
+* In dbt Cloud using the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
+* On the command line using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-sourced [dbt Core](https://github.com/dbt-labs/dbt-core)
+
+The dbt Cloud CLI and dbt Core are both command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure.
 
 The following sections outline the commands supported by dbt and their relevant flags. For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
 
@@ -13,7 +15,7 @@ The following sections outline the commands supported by dbt and their relevant 
 
 <VersionBlock firstVersion="1.6">
 
-Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [CLI](/docs/core/about-the-cli). Use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
+Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line. Use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 | Command | Description | Version |
 | ------- | ----------- | ------- |
@@ -34,7 +36,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project  | All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that<br /> sources are "fresh")  | All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  | All [supported versions](/docs/dbt-versions/core) |
-| [init](/reference/commands/init) | Initializes a new dbt project (CLI only)  | All [supported versions](/docs/dbt-versions/core) |
+| [init](/reference/commands/init) | Initializes a new dbt project (dbt Core only)  | All [supported versions](/docs/dbt-versions/core) |
 
 
 </VersionBlock>

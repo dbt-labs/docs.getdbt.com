@@ -18,7 +18,7 @@ The dbt Cloud CLI and dbt Core are both command line tools that allow you to run
 
 The command line is available from your computer's terminal application such as Terminal and iTerm. With the command line, you can run commands and do other work from the current working directory on your computer. Before running the dbt project from the command line, make sure you are working in your dbt project directory. Learning terminal commands such as `cd` (change directory), `ls` (list directory contents), and `pwd` (present working directory) can help you navigate the directory structure on your system.
 
-In dbt Cloud or dbt Cloud, the commands you commonly use are:
+In dbt Cloud or dbt Core, the commands you commonly use are:
 
 - [dbt run](/reference/commands/run) &mdash; Runs the models you defined in your project
 - [dbt build](/reference/commands/build) &mdash; Builds and tests your selected resources such as models, seeds, snapshots, and tests
