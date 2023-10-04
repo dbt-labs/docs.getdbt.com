@@ -21,7 +21,7 @@ The dbt Cloud CLI is currently in [public beta](/docs/dbt-versions/product-lifec
 
 ## Configure the dbt Cloud CLI
 
-Once you install the dbt Cloud CLI, you need to configure the dbt Cloud CLI to connect to a dbt Cloud project.
+Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project.
 
 1. Ensure you meet the prerequisites above.
 2. Create an environment variable with your [dbt Cloud API key](/docs/dbt-cloud-apis/user-tokens):

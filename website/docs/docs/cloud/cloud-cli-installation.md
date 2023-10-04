@@ -20,11 +20,17 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * Speedier, lower cost builds.
 * Significant platform improvements, to be released over the coming months.
 
-Note, the dbt Cloud CLI is a separate tool powered by [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features). It differs from [dbt Core](https://github.com/dbt-labs/dbt-core), which provides dbt through its open-source command-line tool.
+The dbt Cloud CLI, powered by [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features), is distinct from [dbt Core](https://github.com/dbt-labs/dbt-core), an open-source command-line tool for dbt. Both tools are command lines that use the same dbt commands, but the dbt Cloud CLI is tailored to run specifically on dbt Cloud's infrastructure.
 
 ## Install dbt Cloud CLI
 
-This document guides you on installing and using the dbt Cloud CLI. After installation, you can use it to run [dbt commands](/reference/dbt-commands) just like with dbt Core. For example, execute the following to compile a project using dbt Cloud:
+You can install the dbt Cloud CLI on the command line by using one of these methods:
+
+* [Install with Homebrew (MacOS)](#install-with-homebrew-macos)<br />
+* [Install manually (Windows)](#install-manually-windows)<br />
+* [Install manually (Linux)](#install-manually-linux)<br />
+
+After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following commands to compile a project using dbt Cloud:
 
 ```bash
 dbt deps
@@ -49,7 +55,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 ```bash
 which dbt
 ```
-   - This should return a `dbt not found`. If the dbt help text appears, use `pip uninstall dbt` to deactivate your dbt Core from your machine.
+   - This should return a `dbt not found`. If the dbt help text appears, use `pip uninstall dbt` to deactivate dbt Core from your machine.
   
 2. Install the dbt Cloud CLI with Homebrew: 
 
@@ -58,13 +64,7 @@ brew tap dbt-labs/dbt-cli
 brew install dbt-cloud-cli
 ```
 
-3. Run the following command to verify the installation:
-
-```bash
-dbt --help
-```
-
-- If the help text doesn't show you're using the dbt Cloud CLI, ensure you've deactivated pyenv or venv and don't have a global dbt version installed
+3. Verify the installation by running `dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
   
 ### Install manually (Windows)
 
@@ -79,13 +79,9 @@ Advanced users can configure multiple projects to use the same dbt Cloud CLI by 
 Note that if you are using VS Code, you'll need to restart it to pick up modified environment variables.
 :::
 
-3. Verify the installation by running `./dbt --help` from the command line. If the help text does not indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and do not have a version of dbt globally installed.
+3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
 
-#### Updating your dbt Cloud installation - Windows
-
-Follow the same process in [Installing dbt Cloud CLI](#manually-install---windows) and replace the existing `dbt.exe` executable with the new one. During the beta period, we recommend updating before filing a bug report, as the API is subject to breaking changes!
-
-### Manually install - Linux 
+### Install manually (Linux)
 
 1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases). (Pick the file based on your CPU architecture)
 
@@ -102,21 +98,15 @@ Advanced users can configure multiple projects to use the same Cloud CLI execute
 
 :::
 
-3. Run the following command to verify the installation:
-
-```bash
-./dbt --help
-```
-
-- If the help text doesn't show you're using the dbt Cloud CLI, ensure you've deactivated pyenv or venv and don't have a global dbt version installed
+3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
 
 ## Update dbt Cloud CLI
 
-The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the beta period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes
+The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the beta period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
 
 #### Update with Homebrew (MacOS)
 
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
 #### Update manually (Windows)
 
-To update, follow the same process explained in [Install manually (Windows)](#install-manually-windows) and replace the existing `dbt` executable with the new one.
+To update, follow the same process explained in [Install manually (Windows)](#install-manually-windows) and replace the existing `dbt.exe` executable with the new one.
