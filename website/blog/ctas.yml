@@ -10,3 +10,8 @@
   subheader: Check out guides on getting your warehouse set up and connected to dbt Cloud.
   button_text: Learn more
   url: https://docs.getdbt.com/quickstarts
+- name: coalesce_2023_signup
+  header: Join data practitioners worldwide at Coalesce 2023
+  subheader: Kicking off on October 16th, both online and in-person (Sydney, London, and San Diego)
+  button_text: Register now
+  url: https://coalesce.getdbt.com/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_coalesce-2023_aw&utm_content=coalesce____&utm_term=all___
