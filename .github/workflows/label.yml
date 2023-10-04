@@ -7,9 +7,6 @@ on:
 jobs:
   add_new_contributor_label:
     if: github.event.action == 'opened'
-    permissions:
-      contents: read
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - name: Add new contributor label
@@ -17,32 +14,39 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const creator = context.payload.sender.login;
-          const opts = github.rest.issues.listForRepo.endpoint.merge({
-            ...context.issue,
-            creator,
-            state: 'all',
-          });
-          
-          const issues = await github.paginate(opts);
-          
-          let isAlreadyContributor = false;
-          
-          for (const issue of issues) {
-            if (issue.number === context.issue.number) {
-              continue;
-            }
-            if (issue.pull_request && issue.user.login === creator) {
-              isAlreadyContributor = true;
-              break;
-            }
-          }
-          
-          if (!isAlreadyContributor) {
-            await github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['new contributor'],
+          async function run() {
+            const creator = github.context.payload.sender.login;
+            const opts = github.context.repo.issues.listForRepo.endpoint.merge({
+              ...github.context.issue,
+              creator,
+              state: 'all',
             });
+            
+            const issues = await github.paginate(opts);
+            
+            let isAlreadyContributor = false;
+            
+            for (const issue of issues) {
+              if (issue.number === github.context.issue.number) {
+                continue;
+              }
+              if (issue.pull_request && issue.user.login === creator) {
+                isAlreadyContributor = true;
+                break;
+              }
+            }
+            
+            if (!isAlreadyContributor) {
+              console.log('Adding label: new contributor');
+              await github.rest.issues.addLabels({
+                issue_number: github.context.issue.number,
+                owner: github.context.repo.owner,
+                repo: github.context.repo.repo,
+                labels: ['new contributor'],
+              });
+            } else {
+              console.log('User is already a contributor, no label added.');
+            }
           }
+          
+          run(); // Call the async function to execute the code
