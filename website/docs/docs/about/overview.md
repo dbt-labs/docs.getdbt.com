@@ -31,7 +31,7 @@ There are many other optimizations in the dbt to help you work quickly: macros, 
 
 It does. Here’s how:
 
-- Writing SQL frequently involves a lot of copy-paste, which leads to errors when logic changes. With dbt, analysts don’t need to copy-paste. Instead, they build reusable data models that then get pulled into subsequent models and analysis. Change a model once and everything that relies on it reflects that change.
+- Writing SQL frequently involves a lot of copy-paste, which leads to errors when logic changes. With dbt, analysts don’t need to copy-paste. Instead, they build reusable data models that  get pulled into subsequent models and analysis. Change a model once and everything that relies on it reflects that change.
 - dbt allows subject matter experts to publish the canonical version of a particular data model, encapsulating all complex business logic. All analysis on top of this model will incorporate the same business logic without needing to understand it.
 - dbt plays nicely with source control. Using dbt, analysts can use mature source control processes like branching, pull requests, and code reviews.
 - dbt makes it easy and fast to write functional tests on the underlying data. Many analytic errors are caused by edge cases in the data: testing helps analysts find and handle those edge cases.
