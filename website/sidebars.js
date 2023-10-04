@@ -118,7 +118,9 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Develop in dbt Cloud",
+              link: { type: "doc", id: "docs/cloud/about-cloud-develop" },
               items: [
+                "docs/cloud/about-cloud-develop",
                 {
                   type: "category",
                   label: "dbt Cloud CLI (beta)",
