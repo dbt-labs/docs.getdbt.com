@@ -1,16 +1,15 @@
 ---
-title: "Develop in the IDE"
+title: "About the dbt Cloud IDE"
 id: develop-in-the-cloud
 description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
-sidebar_label: Develop in the IDE
+sidebar_label: About the IDE
 tags: [IDE]
+pagination_next: "docs/cloud/dbt-cloud-ide/ide-user-interface"
 ---
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. 
 
 ## Prerequisites
-
-To develop in the Cloud IDE, make sure you have the following:
 
 - A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
 - A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
@@ -24,9 +23,9 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 :::
 
-## Develop in the Cloud IDE
+## Develop in the dbt Cloud IDE
 
-The Cloud IDE is a powerful tool that can help streamline and govern your data platform development process. It offers a range of [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) that can help make your data platform development process faster and more efficient. Some of the editing features include:
+The dbt Cloud IDE is a powerful tool that can help streamline and govern your data platform development process. It offers a range of [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) that can help make your data platform development process faster and more efficient. Some of the editing features include:
 
 - The IDE has syntax highlighting for SQL. This makes it easy to visually distinguish between different parts of your code. This helps prevent syntax errors and improve readability.
 - Use the IDE built-in auto-completion, which suggests table names, arguments, and column names as you type. This saves time and reduces the likelihood of typos or errors in your code.
@@ -38,7 +37,7 @@ All of these [features](#cloud-ide-features) work together to create a powerful 
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right, and command/console at the bottom"/>
 
-## Cloud IDE features
+## dbt Cloud IDE features
 
 The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) and [features](/docs/cloud/dbt-cloud-ide/ide-user-interface) that make it easier for you to develop, build, compile, run, and test data models. 
 
