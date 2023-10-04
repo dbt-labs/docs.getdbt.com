@@ -47,9 +47,6 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
-  customFields: {
-    isVercel: process.env.REACT_APP_VERCEL
-  },
   themeConfig: {
     docs:{
       sidebar: {
