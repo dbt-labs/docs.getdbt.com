@@ -5,7 +5,7 @@ sidebar_label: 'Document macros'
 id: documenting-macros
 ---
 
-To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
+To document macros, you can use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
 
 ## Example
 
