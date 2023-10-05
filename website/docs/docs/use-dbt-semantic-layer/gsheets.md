@@ -5,7 +5,9 @@ tags: [Semantic Layer]
 sidebar_label: "Google Sheets (beta)"
 ---
 
-
+:::info Beta functionality
+Google Sheets integration with the dbt Semantic Layer is a [beta feature](https://docs.getdbt.com/docs/dbt-versions/product-lifecycles#dbt-cloud) and is subject to change without notification.
+:::
 The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheet.
 
 ## Prerequisites
