@@ -456,7 +456,7 @@ We plan to address these limitations during the 1.7.x timeframe.
 
 :::caution
 
-These properties are sent directly to Databricks without validation in dbt, so be thoughtful with how you use this feature.  Yu will need to do a full refresh of incremental materializations if you change their `tblproperties`.
+These properties are sent directly to Databricks without validation in dbt, so be thoughtful with how you use this feature.  You will need to do a full refresh of incremental materializations if you change their `tblproperties`.
 
 :::
 
