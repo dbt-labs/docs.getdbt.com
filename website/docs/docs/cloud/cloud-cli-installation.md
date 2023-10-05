@@ -5,9 +5,9 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
-:::info Beta functionality
+:::info Public preview functionality
 
-The dbt Cloud CLI is currently in [public beta](/docs/dbt-versions/product-lifecycles#dbt-cloud). Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
+The dbt Cloud CLI is currently in [public preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
 
 ::: 
 
@@ -96,7 +96,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI execute
 
 ## Update dbt Cloud CLI
 
-The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the beta period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
+The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the public preview period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
 
 #### Update with Homebrew (MacOS)
 
