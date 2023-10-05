@@ -5,9 +5,9 @@ description: "Instructions for installing and configuring dbt Cloud CLI"
 pagination_next: "docs/cloud/configure-cloud-cli"
 ---
 
-:::info Beta functionality
+:::info Public preview functionality
 
-The dbt Cloud CLI is currently in [public beta](/docs/dbt-versions/product-lifecycles#dbt-cloud). Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
+The dbt Cloud CLI is currently in [public preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
 
 ::: 
 
@@ -18,6 +18,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * Secure credential storage in the dbt Cloud platform.
 * Automatic deferral of build artifacts to your Cloud project's production environment. 
 * Speedier, lower cost builds.
+* Support for dbt Mesh (cross-project `ref`),
 * Significant platform improvements, to be released over the coming months.
 
 The dbt Cloud CLI and [dbt Core](https://github.com/dbt-labs/dbt-core), an open-source project, are both command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure.
@@ -96,7 +97,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI execute
 
 ## Update dbt Cloud CLI
 
-The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the beta period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
+The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the public preview period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
 
 #### Update with Homebrew (MacOS)
 
