@@ -1,0 +1,29 @@
+---
+title: "New: Develop with the dbt Cloud CLI"
+description: "October 2023: Learn about the new beta CLI development experience, powered by dbt Cloud."
+sidebar_position: 6
+sidebar_label: "New: Develop with the dbt Cloud CLI"
+tags: [Oct-2023, CLI, dbt Cloud]
+date: 2023-10-17
+---
+
+We are excited to announce a **unified command line for dbt.** It’s a local development experience, powered by dbt Cloud. It’s easy to get started: `brew install dbt` and you’re ready to go.
+
+We will continue to invest in the dbt Cloud IDE as the easiest and most accessible way to get started using dbt, especially for data analysts who have never developed software using the CLI before. We will keep improving the speed, stability, and feature richness of the IDE, as we have been all year long [https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/].
+
+We also know that many people developing in dbt have a preference for local development, where they can use their favorite terminal, text editor, keybindings, color scheme, and so on. This includes people with data engineering backgrounds, as well as those analytics engineers who started writing code in the dbt Cloud IDE and have expanded their skillset. 
+
+The new dbt Cloud CLI offers the best of both worlds, including: 
+
+- The power of developing against the dbt Cloud platform 
+- The flexibility of your own local setup.
+
+Run whichever community-developed plugins, pre-commit hooks, or other arbitrary scripts you like.
+
+Some of the unique capabilities to this dbt Cloud CLI includes:
+
+- Auto-deferral, 
+- Support for dbt Mesh (cross-project `ref`),
+- Development workflow for dbt Semantic Layer
+
+For more info, check out the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) page.
