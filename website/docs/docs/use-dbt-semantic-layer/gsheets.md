@@ -49,4 +49,3 @@ To use the filter functionality, choose the dimension you want to filter by and 
    - If it's a categorical dimension, type in the dimension value you want to filter by (no quotes needed) and press enter. 
    - Continue adding additional filters as needed with AND and OR. If it's a time dimension, choose the operator and select from the calendar. 
 
-## Saving queries and refreshing data
