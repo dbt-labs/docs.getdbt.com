@@ -42,7 +42,7 @@ The custom menu provides the following capabilities:
 | Granularity   | Modify granularity of the primary time dimension      |
 | Where         | Filter your data. This includes categorical and time filters. |
 | Order By      | Return your data ordered.                              |
-| Limit         | Set a limit for the rows of your output               |
+| Limit         | Set a limit for the rows of your output.               |
 
 
 ## Filtering data 
