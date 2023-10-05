@@ -102,6 +102,14 @@ html[data-theme="dark"] {
   --ifm-table-cell-color: var(--color-green-blue);
 }
 
+/* Linked `code` tags visibility adjustment */
+html[data-theme=dark] a code {
+  color: var(--ifm-link-color);
+}
+html[data-theme=dark] a code:hover {
+  color: var(--ifm-link-hover-color);;
+}
+
 /* For /dbt-cloud/api REDOC Page */
 html[data-theme="dark"] .api-content h2,
 html[data-theme="dark"] .api-content h3,
@@ -226,10 +234,6 @@ code {
   border: none;
   background-color: var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-900);
-}
-
-html[data-theme="dark"] a code {
-  color: var(--color-white);
 }
 
 .main-wrapper .home .col>p {

@@ -34,12 +34,3 @@ The `@` operator is similar to `+`, but will also include _the parents of the ch
 ```bash
 $ dbt run --models @my_model          # select my_model, its children, and the parents of its children
 ```
-
-### The "star" operator
-The `*` operator matches all models within a package or directory.
-
-
-  ```bash
-  $ dbt run --select snowplow.*      # run all of the models in the snowplow package
-  $ dbt run --select finance.base.*  # run all of the models in models/finance/base
-  ```

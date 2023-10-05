@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.5 (latest)"
+title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
 ---
 
@@ -56,7 +56,50 @@ models:
     tests: [] # todo! add tests later
     config: ...
 ```
-Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
+
+Some options that could previously be specified _after_ a subcommand can now only be specified _before_. This includes the inverse of the option, `--write-json` and `--no-write-json`, for example. The list of affected options are:
+
+<details>
+<summary>List of affected options</summary>
+
+```bash
+--cache-selected-only | --no-cache-selected-only
+--debug, -d | --no-debug
+--deprecated-print | --deprecated-no-print
+--enable-legacy-logger | --no-enable-legacy-logger
+--fail-fast, -x | --no-fail-fast
+--log-cache-events | --no-log-cache-events
+--log-format
+--log-format-file
+--log-level
+--log-level-file
+--log-path
+--macro-debugging | --no-macro-debugging
+--partial-parse | --no-partial-parse
+--partial-parse-file-path
+--populate-cache | --no-populate-cache
+--print | --no-print
+--printer-width
+--quiet, -q | --no-quiet
+--record-timing-info, -r
+--send-anonymous-usage-stats | --no-send-anonymous-usage-stats
+--single-threaded | --no-single-threaded
+--static-parser | --no-static-parser
+--use-colors | --no-use-colors
+--use-colors-file | --no-use-colors-file
+--use-experimental-parser | --no-use-experimental-parser
+--version, -V, -v
+--version-check | --no-version-check
+--warn-error
+--warn-error-options
+--write-json | --no-write-json
+
+```
+
+</details>
+
+
+Additionally, some options that could be previously specified _before_ a subcommand can now only be specified _after_. Any option _not_ in the above list must appear _after_ the subcommand from v1.5 and later. For example, `--profiles-dir`.
 
 
 The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:

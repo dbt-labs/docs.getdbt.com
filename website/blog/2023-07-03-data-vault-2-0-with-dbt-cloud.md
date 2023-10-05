@@ -97,7 +97,7 @@ dbt Cloud includes **built-in Git** with accessible features directly from its I
 
 The biggest boon to Data Vault developer productivity in dbt Cloud are the **DataOps** and **Data Warehouse Automation** features of dbt Cloud. Each Data Vault developer gets their own development environment to work in and there is no complicated set up process to go through.
 
-Commit your work, create a pull request, and have automated code review enabled by dbt Cloud [**jobs**](https://docs.getdbt.com/docs/deploy/dbt-cloud-job) that can be defined for each environment separately (e.g., testing, QA, production). Together with dbt [**tags**](https://docs.getdbt.com/reference/resource-configs/tags), the feature allows you to orchestrate your project in an efficient and powerful way.
+Commit your work, create a pull request, and have automated code review enabled by dbt Cloud [**jobs**](https://docs.getdbt.com/docs/deploy/jobs) that can be defined for each environment separately (e.g., testing, QA, production). Together with dbt [**tags**](https://docs.getdbt.com/reference/resource-configs/tags), the feature allows you to orchestrate your project in an efficient and powerful way.
 
 ### Auditable data
 
@@ -115,7 +115,9 @@ In terms of the implementation of the Data Vault itself, we recommend familiariz
 
 ### AutomateDV (formerly known as dbtvault)
 
-AutomateDV is the most popular open source Data Vault package for dbt, with some users having over 5000 Data Vault components in their project. Here in Infinite Lambda, we’ve been using this package for quite some time now, even building on top of it (depending on the specifics of the project). This mature system provides a great way to start your Data Vault with dbt Cloud journey as the learning curve is quite manageable, it is well documented and even comes with tutorials and working examples built on top of Snowflake’s TPCH standard dataset. There is one limitation to using the package and that is _AutomateDV _expects your source data to contain only one delta load. In order to work around this issue, owners of the package came up with custom dbt materializations to help you with the initial load of your system, however, the performance of such load is in our experience not acceptable. 
+AutomateDV is the most popular open source Data Vault package for dbt, with some users having over 5000 Data Vault components in their project. Here in Infinite Lambda, we’ve been using this package for quite some time now, even building on top of it (depending on the specifics of the project). This mature system provides a great way to start your Data Vault with dbt Cloud journey as the learning curve is quite manageable, it is well documented and even comes with tutorials and working examples built on top of Snowflake’s TPCH standard dataset. There is one limitation to using the package and that is _AutomateDV_ expects your source data to contain only one delta load. In order to work around this issue, owners of the package came up with custom dbt materializations to help you with the initial load of your system, however, the performance of such load is in our experience not acceptable. 
+
+_(Editor's note: As of AutomateDV v0.10.0, this performance issue has been resolved and users may use the standard incremental configuration.)_
 
 ### datavault4dbt
 

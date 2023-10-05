@@ -1,0 +1,62 @@
+name: Add adapter to Trusted list
+description: For adapter maintainers who wish to have theirs added to the list of Trusted adapters.
+title: "Trust dbt-myadapter"
+labels: ["adapter maintainers"]
+assignees:
+  - dataders
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We're excited that you'd like to support your adapter formally as "Trusted"! This template will ensure that you are aware of the process and the guidelines. Additionally, that you can vouch that your adapter currently meets the standards of a Trusted adapter. For more information, see [Trusted adapters](https://docs.getdbt.com/docs/trusted-adapters)
+
+  - type: input
+    id: adapter-repo
+    attributes:
+      label: Link to adapter repo
+      description: Please link to the GitHub repo
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you?
+      placeholder: your preferred email and/or dbt Slack handle
+    validations:
+      required: true
+
+  - type: dropdown
+    id: author_type
+    attributes:
+      label: Which of these best describes you?
+      options:
+        - I am a dbt Community member
+        - I work for the vendor on top of which the dbt adapter functions
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: read-program-guide
+    attributes:
+      label: Please agree to the each of the following
+      options:
+        - label: I am a maintainer of the adapter being submited for Trusted status
+          required: true
+        - label: I have read both the [Trusted adapters](https://docs.getdbt.com/docs/trusted-adapters) and [Building a Trusted Adapter](https://docs.getdbt.com/guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter) pages.
+          required: true
+        - label: I believe that the adapter currently meets the expectations given above
+          required: true
+        - label: I will ensure this adapter stays in compliance with the guidelines
+          required: true
+        - label: I understand that dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met
+          required: true
+
+  - type: textarea
+    id: icon
+    attributes:
+      label: What icon should be used?
+      description: |
+        Please share an svg image that you'd like to be displayed in for your adapter. Normally, this is the logo for the data platform on top of which your adapter works. If there's a dark mode version, please also share that.
+        Pasting the image from your clipboard will upload the file to GitHub and create markdown formatting for it to be rendered inline

@@ -2,7 +2,7 @@
 title: "Enhancement: Faster run starts and unlimited job concurrency"
 description: "We have enhanced the dbt Cloud Scheduler by reducing prep time for all accounts and provided unlimited job concurrency for Enterprise accounts."
 sidebar_label: "Enhancement: Faster run starts and unlimited job concurrency"
-tags: [07-2023, scheduler]
+tags: [July-2023, scheduler]
 date: 2023-07-06
 sidebar_position: 10
 ---
