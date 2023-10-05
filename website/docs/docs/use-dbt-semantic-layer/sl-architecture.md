@@ -6,10 +6,6 @@ sidebar_label: "Architecture"
 tags: [Semantic Layer]
 ---
 
-import NewSLChanges from '/snippets/_new-sl-changes.md';
-
-<NewSLChanges />
-
 
 <VersionBlock firstVersion="1.6">
 

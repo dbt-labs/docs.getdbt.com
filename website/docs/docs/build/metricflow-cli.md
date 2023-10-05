@@ -8,6 +8,9 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
 
+:::info
+[dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or dbt Core users can use the [MetricFlow CLI](/docs/build/metricflow-cli) to define metrics in their local project. However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+:::
 # Installation
 
 You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install the MetricFlow CLI on Windows or Linux operating systems:
