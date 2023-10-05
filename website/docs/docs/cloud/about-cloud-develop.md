@@ -3,7 +3,7 @@ title: About developing in dbt Cloud
 id: about-cloud-develop
 description: "Learn how to develop your dbt projects using dbt Cloud."
 sidebar_label: "About developing in dbt Cloud"
-pagination_next: "docs/cloud/cloud-cli-installation"
+pagination_next: "docs/cloud/about-cloud-develop-defer"
 ---
 
 dbt Cloud offers a fast and reliable way to work on your dbt project. You can use it through an integrated development environment (IDE) in your browser or a dbt Cloud-powered command line interface (CLI):
