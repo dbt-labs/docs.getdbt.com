@@ -13,7 +13,7 @@ dbt compiles and runs your analytics code against your data platform, enabling y
 
 **dbt Core** is an open-source command line tool that can be installed locally in your environment, and communication with databases is facilitated through adapters.
 
-If you're not sure which is the right solution for you, read our [What is dbt?](/docs/introduction) and our [dbt Cloud features](/docs/cloud/about-cloud/about-dbt-cloud) articles to help you decide. If you still have questions, don't hesitate to [contact us](https://www.getdbt.com/contact/).
+If you're not sure which is the right solution for you, read our [What is dbt?](/docs/introduction) and our [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) articles to help you decide. If you still have questions, don't hesitate to [contact us](https://www.getdbt.com/contact/).
 
 To begin configuring dbt now, select the option that is right for you.
 
