@@ -182,6 +182,9 @@ insert overwrite table analytics.databricks_incremental
 </TabItem>
 </Tabs>
 
+#### Usage Notes
+* This strategy is not currently compatible with SQL Warehouses
+
 ### The `merge` strategy
 
 The `merge` incremental strategy requires:
