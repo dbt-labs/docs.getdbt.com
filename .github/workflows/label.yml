@@ -12,7 +12,7 @@ jobs:
     - name: Add new contributor label
       uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.DOCS_SECRET }}
         script: |
             const creator = context.payload.sender.login;
             const opts = github.rest.issues.listForRepo.endpoint.merge({
