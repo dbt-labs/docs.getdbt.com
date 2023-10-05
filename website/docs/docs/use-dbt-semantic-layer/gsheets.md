@@ -28,7 +28,7 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
    
 When querying your data with Google Sheets: 
 
-- It returns the data to the cell you have clicked on
+- It returns the data to the cell you have clicked on.
 - The custom menu operation has a timeout limit of six (6) minutes.
 
 ## Custom menu key functions
