@@ -41,7 +41,7 @@ The custom menu provides the following capabilities:
 | Group By      | Search and select dimensions to group by. Dimensions are grouped by the entity of the semantic model they come from. |
 | Granularity   | Modify granularity of the primary time dimension      |
 | Where         | Filter your data. This includes categorical and time filters. |
-| Order By      | Return your data ordered                              |
+| Order By      | Return your data ordered.                              |
 | Limit         | Set a limit for the rows of your output               |
 
 
