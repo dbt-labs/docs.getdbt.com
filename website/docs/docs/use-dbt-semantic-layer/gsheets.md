@@ -21,8 +21,9 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 2. Search for "dbt Semantic Layer for Sheets" and install it
 3. After installing, access it by opening the Add-On menu and finding "dbt Semantic Layer for Sheets". This will open a custom menu to the right hand side of your screen.
 4. Authenticate with the dbt Cloud Environment Id and Service Token 
-5. Start querying your metrics using the **Query Builder**! Refer to [Custom menu key functions](#custom-menu-key-functions) for more information on its capabilities.
-
+5. Start querying your metrics using the **Query Builder**! 
+   - For more info on the menu functions, refer to [Custom menu key functions](#custom-menu-key-functions).
+   
 When querying your data with Google Sheets: 
 
 - It returns the data to the cell you have clicked on
