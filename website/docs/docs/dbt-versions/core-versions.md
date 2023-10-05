@@ -2,6 +2,8 @@
 title: "About dbt Core versions"
 id: "core"
 description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
+pagination_next: "docs/dbt-versions/upgrade-core-in-cloud"
+pagination_prev: null
 ---
 
 dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 

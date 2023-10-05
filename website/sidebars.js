@@ -18,9 +18,9 @@ const sidebarSettings = {
     {
       type: "category",
       label: "About dbt Cloud",
-      link: { type: "doc", id: "docs/cloud/about-cloud/about-dbt-cloud" },
+      link: { type: "doc", id: "docs/cloud/about-cloud/dbt-cloud-features" },
       items: [
-        "docs/cloud/about-cloud/about-dbt-cloud",
+        "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
@@ -238,7 +238,7 @@ const sidebarSettings = {
           type: "category",
           label: "Build your DAG",
           collapsed: true,
-          link: { type: "doc", id: "docs/build/sources" },
+          link: { type: "doc", id: "docs/build/models" },
           items: [
             {
               type: "category",
@@ -267,12 +267,14 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
+            "docs/build/build-metrics-intro",
             "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
               link: { type: "doc", id: "docs/build/about-metricflow" },
               items: [
+                "docs/build/about-metricflow",
                 "docs/build/join-logic",
                 "docs/build/validation",
                 "docs/build/metricflow-time-spine",
@@ -284,6 +286,7 @@ const sidebarSettings = {
               label: "Semantic models",
               link: { type: "doc", id: "docs/build/semantic-models" },
               items: [
+                "docs/build/semantic-models",
                 "docs/build/dimensions",
                 "docs/build/entities",
                 "docs/build/measures"
@@ -294,6 +297,7 @@ const sidebarSettings = {
               label: "Metrics",
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
+                "docs/build/metrics-overview",
                 "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",
@@ -306,7 +310,7 @@ const sidebarSettings = {
           type: "category",
           label: "Enhance your models",
           collapsed: true,
-          link: { type: "doc", id: "docs/build/tests" },
+          link: { type: "doc", id: "docs/build/materializations" },
           items: [
             "docs/build/materializations",
             "docs/build/incremental-models",
@@ -316,7 +320,7 @@ const sidebarSettings = {
           type: "category",
           label: "Enhance your code",
           collapsed: true,
-          link: { type: "doc", id: "docs/build/jinja-macros" },
+          link: { type: "doc", id: "docs/build/project-variables" },
           items: [
             "docs/build/project-variables",
             "docs/build/environment-variables",
@@ -346,6 +350,7 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
+        "docs/deploy/deployments",
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
         "docs/deploy/continuous-integration",
@@ -354,6 +359,7 @@ const sidebarSettings = {
           label: "Jobs",
           link: { type: "doc", id: "docs/deploy/jobs" },
           items: [
+            "docs/deploy/jobs",
             "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
             "docs/deploy/job-commands",
@@ -364,6 +370,7 @@ const sidebarSettings = {
           label: "Monitor jobs and alerts",
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
+            "docs/deploy/monitor-jobs",
             "docs/deploy/run-visibility",
             "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
@@ -378,6 +385,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
+      link: { type: "doc", id: "docs/collaborate/explore-projects" },
       items: [
         "docs/collaborate/explore-projects",
         {
@@ -423,7 +431,7 @@ const sidebarSettings = {
       type: "category",
       label: "Use the dbt Semantic Layer",
       collapsed: true,
-      link: { type: "doc", id: "docs/use-dbt-semantic-layer/quickstart-semantic-layer" },
+      link: { type: "doc", id: "docs/use-dbt-semantic-layer/quickstart-sl" },
       items: [
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
@@ -452,6 +460,7 @@ const sidebarSettings = {
           label: "Administrative API",
           link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
           items: [
+            "docs/dbt-cloud-apis/admin-cloud-api",
             {
               type: "link",
               label: "API v2 (legacy docs)",
@@ -483,11 +492,13 @@ const sidebarSettings = {
               label: "Schema",
               link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
               items: [
+                "docs/dbt-cloud-apis/discovery-schema-environment",
                 {
                   type: "category",
                   label: "Job",
                   link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-job" },
                   items: [
+                    "docs/dbt-cloud-apis/discovery-schema-job",
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
                     "docs/dbt-cloud-apis/discovery-schema-job-models",
                     "docs/dbt-cloud-apis/discovery-schema-job-metric",
@@ -507,11 +518,6 @@ const sidebarSettings = {
                   ],
                 },
                 {
-                  type: "category",
-                  label: "Environment",
-                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
-                  items: [
-                    {
                       type: "category",
                       label: "Applied",
                       items: [
@@ -525,9 +531,7 @@ const sidebarSettings = {
                     //   items: [
                     //     // insert pages here
                     //   ],
-                    // },
-                  ],
-                },
+                    // }, 
               ],
             },
           ],
@@ -537,6 +541,7 @@ const sidebarSettings = {
           label: "Semantic Layer APIs",
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
+            "docs/dbt-cloud-apis/sl-api-overview",
             "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",

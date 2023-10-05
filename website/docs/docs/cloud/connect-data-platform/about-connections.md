@@ -3,6 +3,8 @@ title: "About data platform connections"
 id: about-connections
 description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
+pagination_next: "docs/cloud/connect-data-platform/connect-starburst-trino"
+pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 

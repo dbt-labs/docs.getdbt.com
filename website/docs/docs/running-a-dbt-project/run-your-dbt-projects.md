@@ -1,6 +1,7 @@
 ---
 title: "Run your dbt projects"
 id: "run-your-dbt-projects"
+pagination_prev: null
 ---
 You can run your dbt projects with [dbt Cloud](/docs/cloud/about-cloud/about-dbt-cloud) and [dbt Core](https://github.com/dbt-labs/dbt-core). dbt Cloud is a hosted application where you can develop directly from a web browser. dbt Core is an open source project where you can develop from the command line.
 

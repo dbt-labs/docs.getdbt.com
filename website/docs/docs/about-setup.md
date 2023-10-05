@@ -3,6 +3,8 @@ title: About dbt setup
 id: about-setup
 description: "About setup of dbt Core and Cloud"
 sidebar_label: "About dbt setup"
+pagination_next: "docs/environments-in-dbt"
+pagination_prev: null
 ---
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. There are two options for deploying dbt:

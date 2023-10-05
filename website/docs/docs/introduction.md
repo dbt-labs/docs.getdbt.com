@@ -1,6 +1,8 @@
 ---
 title: "What is dbt?"
 id: "introduction"
+pagination_next: null
+pagination_prev: null
 ---
 
 <Snippet path="what-is-dbt-intro" />

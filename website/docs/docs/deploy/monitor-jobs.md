@@ -3,6 +3,7 @@ title: "Monitor jobs and alerts"
 id: "monitor-jobs"
 description: "Monitor your dbt Cloud job and set up alerts to ensure seamless orchestration and optimize your data transformations"
 tags: ["scheduler"]
+pagination_next: "docs/deploy/run-visibility"
 ---
 
 Monitor your dbt Cloud jobs to help identify improvement and set up alerts to proactively alert the right people or team. 

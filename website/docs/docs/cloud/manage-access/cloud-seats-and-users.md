@@ -3,6 +3,8 @@ title: "Users and licenses"
 description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
 id: "seats-and-users"
 sidebar: "Users and licenses"
+pagination_next: "docs/cloud/manage-access/self-service-permissions"
+pagination_prev: null
 ---
 
 In dbt Cloud, _licenses_ are used to allocate users to your account. There are three different types of licenses in dbt Cloud:
