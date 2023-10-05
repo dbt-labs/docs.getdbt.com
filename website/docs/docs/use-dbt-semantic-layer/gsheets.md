@@ -37,7 +37,7 @@ The custom menu provides the following capabilities:
 
 | Menu items       | Description                                           |
 |---------------|-------------------------------------------------------|
-| Metrics       | Search and select metrics                             |
+| Metrics       | Search and select metrics.                             |
 | Group By      | Search and select dimensions to group by. Dimensions are grouped by the entity of the semantic model they come from. |
 | Granularity   | Modify granularity of the primary time dimension      |
 | Where         | Filter your data. This includes categorical and time filters. |
