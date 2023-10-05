@@ -101,7 +101,7 @@ The following instructions explain how to update the dbt CLoud CLI to the latest
 #### Update with Homebrew (MacOS)
 
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
-#### Update manually (Windows)
+#### Update manually (Windows and Linux)
 
 To update, follow the same process explained in [Install manually (Windows)](#install-manually-windows) and replace the existing `dbt.exe` executable with the new one.
 
