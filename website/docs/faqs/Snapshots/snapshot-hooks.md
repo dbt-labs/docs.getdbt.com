@@ -6,7 +6,7 @@ id: snapshot-hooks
 
 ---
 
-Yes! The following hooks are available for snapshots:
+Yes, you can use the following hooks for snapshots:
 - [pre-hooks](/reference/resource-configs/pre-hook-post-hook/)
 - [post-hooks](/reference/resource-configs/pre-hook-post-hook/)
 - [on-run-start](/reference/project-configs/on-run-start-on-run-end/)
