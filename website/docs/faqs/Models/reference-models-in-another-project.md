@@ -11,7 +11,7 @@ You Check out the [docs](/docs/build/packages)
 for more information!
 
 
-I dbt, you can manage dependencies across multiple dbt projects using:
+Im dbt, you can manage dependencies across multiple dbt projects using:
 
 1. **Packages**: You can import [packages](/docs/build/packages) as a way to add another project to your dbt project, including other projects you've created. When you install a project as a package, you bring in its entire source code, making its macros and models available in your own project.
 
