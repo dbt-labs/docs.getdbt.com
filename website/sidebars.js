@@ -123,7 +123,7 @@ const sidebarSettings = {
                 "docs/cloud/about-cloud-develop",
                 {
                   type: "category",
-                  label: "dbt Cloud CLI (public preview)",
+                  label: "dbt Cloud CLI",
                   link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
                   items: [
                     "docs/cloud/cloud-cli-installation",

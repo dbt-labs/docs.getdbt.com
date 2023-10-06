@@ -2,6 +2,7 @@
 title: Configure dbt Cloud CLI
 id: configure-cloud-cli
 description: "Instructions on how to configure the dbt Cloud CLI"
+sidebar_label: "Configure dbt Cloud CLI"
 ---
 
 :::info Public preview functionality
