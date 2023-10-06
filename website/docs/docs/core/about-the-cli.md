@@ -22,4 +22,4 @@ If you're using the command line, we recommend learning some basics of your term
 
 You can find more information on installing and setting up the dbt Core [here](/docs/core/installation).
 
-dbt also supports a [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and both dbt Core and the dbt Cloud CLI are command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure.
+dbt also supports a dbt Cloud CLI and dbt Core, both command line tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
