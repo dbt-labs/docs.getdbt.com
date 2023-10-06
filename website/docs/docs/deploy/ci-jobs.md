@@ -103,7 +103,7 @@ If you're experiencing any issues, review some of the common questions and answe
         </li>
         <br/>
         <li>
-          A macro is creating a schema, but no dbt models are writing to that schema. dbt Cloud does not drop temporary schemas that were not written to as a result of running a dbt model.
+          A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
         </li>
       </ul>
     </div>
