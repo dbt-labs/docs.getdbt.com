@@ -9,7 +9,7 @@ keywords:
 
 In dbt, you can manage dependencies across multiple dbt projects using:
 
-1. **Packages**: You can import [packages](/docs/build/packages) as a way to add another project to your dbt project, including other projects you've created. When you install a project as a package, you bring in its entire source code, making its macros and models available in your own project.
+1. **Packages**: You can install [packages](/docs/build/packages) as a way to add another project to your dbt project, including other projects you've created. When you install a project as a package, you bring in its entire source code, making its macros and models available in your own project.
 
 While this is useful for reusing code and sharing utility macros, it may not be the best approach for large-scale collaboration, especially in larger organizations.
 
