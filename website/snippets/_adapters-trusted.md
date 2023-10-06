@@ -13,7 +13,7 @@
     icon="materialize"/>
 
 <Card
-    title="Oracle*"
+    title="Oracle Autonomous Database*"
     body="<a href='/docs/core/connect-data-platform/oracle-setup'><img src='/img/icons/dbt-bit.svg' width='7%'/>Install using the CLI </a> <br /><br /><a 
     href=https://badge.fury.io/py/dbt-oracle><img src=https://badge.fury.io/py/dbt-oracle.svg/></a>"
     icon="oracle"/>
