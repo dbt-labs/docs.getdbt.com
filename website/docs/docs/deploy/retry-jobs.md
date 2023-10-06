@@ -23,7 +23,7 @@ If your dbt job run completed with a status of `result:error` , you can rerun it
     
     If you choose to rerun from the failure point, a **Rerun failed steps** modal will appear. It lists the run steps it will invoke which will include the failed step and the steps it previously wasn’t able to invoke (skipped steps). To confirm, click **Rerun from failure**. The job reruns from the failed command in the previously failed run. This is denoted at the top of the **Run Summary** tab by a message "This run resumed execution from last failed step".
 
-<Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in the dbt Cloud"/>
+<Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
 
 ## Related content
 
