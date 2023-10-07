@@ -307,7 +307,7 @@ semantic_models:
 </Tabs>
 
 ## Definition
-An optional configuration for grouping models, analysis, snapshots, tests, and metrics. When a resource is grouped, dbt will allow it to reference private models within the same group.
+An optional configuration for assigning a group to a resource. When a resource is grouped, dbt will allow it to reference private models within the same group.
 
 For more details on reference access between resources in groups, check out [model access](/docs/collaborate/govern/model-access#groups).
 
