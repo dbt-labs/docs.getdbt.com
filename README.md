@@ -17,7 +17,7 @@ Creating an inclusive and equitable environment for our documents is more import
 We welcome contributions from community members to this repo:
 - **Fixes**: When you notice an error, you can use the `Edit this page` button at the bottom of each page to suggest a change.
 - **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here! Please reach out in the dbt community if you need help finding a place for these docs.
-- **Major rewrites**: You can [file an issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new?assignees=&labels=content%2Cimprovement&template=improve-docs.yml) or [start a discussion](https://github.com/dbt-labs/docs.getdbt.com/discussions) to propose ideas for a content area that requires attention.
+- **Major rewrites**: You can [file an issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new?assignees=&labels=content%2Cimprovement&template=improve-docs.yml) or [start a discussion](https://discourse.getdbt.com) to propose ideas for a content area that requires attention.
 
 You can use components documented in the [docusaurus library](https://v2.docusaurus.io/docs/markdown-features/).
 
