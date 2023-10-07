@@ -176,6 +176,14 @@ exposures:
 
 <TabItem value="semantic_models">
 
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
 <File name='models/semantic_models.yml'>
 
 ```yml
@@ -189,6 +197,8 @@ semantic_models:
 ```
 
 </File>
+
+</VersionBlock>
 
 </TabItem>
 
