@@ -29,8 +29,6 @@ Support for grouping models was added in dbt Core v1.5
 
 <VersionBlock firstVersion="1.5">
 
-</VersionBlock>
-
 <File name='models/schema.yml'>
 
 ```yml
@@ -66,6 +64,8 @@ select ...
 
 ```
 
+</VersionBlock>
+
 </File>
 
 </TabItem>
@@ -79,8 +79,6 @@ Support for grouping seeds was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -102,6 +100,8 @@ seeds:
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
@@ -114,8 +114,6 @@ Support for grouping snapshots was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -143,6 +141,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 
 </TabItem>
 
@@ -155,8 +155,6 @@ Support for grouping tests was added in dbt Core v1.5
 </VersionBlock>
 
 <VersionBlock firstVersion="1.5">
-
-</VersionBlock>
 
 <File name='dbt_project.yml'>
 
@@ -210,6 +208,8 @@ select ...
 
 </File>
 
+</VersionBlock>
+
 </TabItem>
 
 <TabItem value="analyses">
@@ -239,8 +239,6 @@ Support for grouping metrics was added in dbt Core v1.5
 
 <VersionBlock firstVersion="1.5">
 
-</VersionBlock>
-
 <File name='dbt_project.yml'>
 
 ```yaml
@@ -263,6 +261,8 @@ metrics:
 ```
 
 </File>
+
+</VersionBlock>
 
 </TabItem>
 
