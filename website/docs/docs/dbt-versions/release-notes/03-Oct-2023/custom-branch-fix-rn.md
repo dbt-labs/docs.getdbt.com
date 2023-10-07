@@ -7,6 +7,6 @@ date: 2023-10-06
 sidebar_position: 09
 ---
 
-If you don't set a [custom branch](/docs/dbt-cloud-environments#custom-branch-behavior) for your dbt Cloud environment, it now defaults to the `main` branch of your Git repository. Previously, [CI jobs](/docs/deploy/ci-jobs) would run for pull requests (PRs) that were opened against any branch if **Custom Branch** wasn't set. 
+If you don't set a [custom branch](/docs/dbt-cloud-environments#custom-branch-behavior) for your dbt Cloud environment, it now defaults to the `main` branch of your Git repository. Previously, [CI jobs](/docs/deploy/ci-jobs) would run for pull requests (PRs) that were opened against _any branch_ if the **Custom Branch** option wasn't set. 
 
 
