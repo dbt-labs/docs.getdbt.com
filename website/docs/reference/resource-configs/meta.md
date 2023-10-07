@@ -14,6 +14,7 @@ default_value: {}
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
+    { label: 'Exposures', value: 'exposures', },
   ]
 }>
 <TabItem value="models">
