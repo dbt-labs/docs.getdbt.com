@@ -24,7 +24,8 @@ dbt docs generate
 Use the `--select` argument to limit the nodes included within `catalog.json`. When this flag is provided, step (3) will be restricted to the selected nodes. All other nodes will be excluded. Step (2) is unaffected.
 
 **Example**:
-```dbt docs generate --select +orders
+```shell
+dbt docs generate --select +orders
 ```
 
 </VersionBlock>
