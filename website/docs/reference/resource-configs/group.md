@@ -16,6 +16,7 @@ This functionality is new in v1.5.
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
+    { label: 'Semantic models', value: 'semantic_models', },
   ]
 }>
 <TabItem value="models">
@@ -262,6 +263,44 @@ metrics:
 ```
 
 </File>
+
+</TabItem>
+
+
+<TabItem value="semantic_models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='dbt_project.yml'>
+
+```yaml
+semantic_models:
+  [<resource-path>](resource-path):
+    [+](plus-prefix)group: finance
+```
+
+</File>
+
+<File name='models/semantic_models.yml'>
+
+```yaml
+version: 2
+
+semantic_models:
+  - name: [<semantic_model_name>]
+    group: finance
+
+```
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 
