@@ -15,6 +15,7 @@ default_value: {}
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic_models', },
   ]
 }>
 <TabItem value="models">
@@ -166,6 +167,24 @@ version: 2
 exposures:
   - name: exposure_name
     meta: {<dictionary>}
+
+```
+
+</File>
+
+</TabItem>
+
+<TabItem value="semantic_models">
+
+<File name='models/semantic_models.yml'>
+
+```yml
+version: 2
+
+semantic_models:
+  - name: semantic_model_name
+    config:
+      meta: {<dictionary>}
 
 ```
 
