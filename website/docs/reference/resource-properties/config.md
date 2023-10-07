@@ -16,6 +16,7 @@ datatype: "{dictionary}"
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic_models', },
   ]
 }>
 
@@ -172,6 +173,33 @@ version: 2
 
 exposures:
   - name: <exposure_name>
+    config:
+      enabled: true | false
+```
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="semantic_models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for the `config` property on `semantic_models` was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+semantic_models:
+  - name: <semantic_model_name>
     config:
       enabled: true | false
 ```
