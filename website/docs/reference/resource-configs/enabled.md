@@ -293,7 +293,7 @@ semantic_models:
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, snapshots, and tests.
+An optional configuration for enabling or disabling a resource.
 
 * Default: true
 
