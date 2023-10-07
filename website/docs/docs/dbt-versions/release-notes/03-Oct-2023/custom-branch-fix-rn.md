@@ -1,7 +1,7 @@
 ---
 title: "Fix: Default behavior for CI job runs without a custom branch"
 description: "October 2023: CI job runs now default to the main branch of the Git repository when a custom branch isn't set"
-sidebar_label: "Fix: Custom branches"
+sidebar_label: "Fix: Default behavior for CI job runs without a custom branch"
 tags: [Oct-2023]
 date: 2023-10-06
 sidebar_position: 09
