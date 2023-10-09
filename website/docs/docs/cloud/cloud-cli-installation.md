@@ -186,6 +186,11 @@ Share feedback or request features you'd like to see on the [dbt community Slack
 
 <details>
 
+<summary>What's the difference between the dbt Cloud CLI and dbt Core?</summary>
+The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
+
+</details>
+
 <summary>How do I solve for path conflicts</summary>
 For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
