@@ -10,7 +10,7 @@ If your dbt job run completed with a status of `result:error` , you can rerun it
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup).
 - You must be using [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.6 or newer.
-- There does not exist a more recent run of the job that completed successfully. The latest status of the run is `error`.
+- The more recent run of the job hasn't completed successfully. The latest status of the run is `error`.
     - The job command that failed in the run must be one that supports the [retry command](/reference/commands/retry).
 
 ## Rerun an errored job
@@ -21,7 +21,7 @@ If your dbt job run completed with a status of `result:error` , you can rerun it
 4. Examine the error message and determine how to fix it. After you have made your changes, save and commit them to your [Git repo](/docs/collaborate/git-version-control).
 5. Return to your job’s **Run** page. In the upper right corner, click **Rerun** and choose **Rerun from start** or **Rerun from failure**.
     
-    If you choose to rerun from the failure point, a **Rerun failed steps** modal will appear. It lists the run steps it will invoke which will include the failed step and the steps it previously wasn’t able to invoke (skipped steps). To confirm, click **Rerun from failure**. The job reruns from the failed command in the previously failed run. This is denoted at the top of the **Run Summary** tab by a message "This run resumed execution from last failed step".
+    If you chose to rerun from the failure point, a **Rerun failed steps** modal opens. It lists the run steps it will invoke: the failed step and any skipped steps. To confirm these run steps, click **Rerun from failure**. The job reruns from the failed command in the previously failed run. A banner at the top of the **Run Summary** tab captures this with the message, "This run resumed execution from last failed step".
 
 <Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
 
