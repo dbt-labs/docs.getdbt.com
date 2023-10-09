@@ -2,6 +2,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+
+    {
+      "source": "/faqs/Models/reference-models-in-another-project",
+      "destination": "/docs/collaborate/govern/project-dependencies",
+      "permanent": true
+    },
     {
       "source": "/docs/deploy/job-triggers",
       "destination": "/docs/deploy/deploy-jobs",
