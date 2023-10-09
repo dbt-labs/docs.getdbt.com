@@ -77,7 +77,7 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 <TabItem value="linux" label="Linux">
 
-If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases). (Pick the file based on your CPU architecture)
 
@@ -146,7 +146,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
         export DBT_CLOUD_API_KEY="1234" # Replace 1234 with your API key   
         ```
 
-   - In Powershell, add an environment variable: IS THIS MISSING SOMETHING?
+   - In Powershell, add an environment variable: 
      - Note that this variable resets if you restart your shell. To add an environment variable permanently, add a system environment variable in your platform.
 
 3. Navigate to a dbt project in your terminal:
