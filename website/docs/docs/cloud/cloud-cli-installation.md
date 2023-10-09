@@ -55,7 +55,7 @@ Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Download the latest Windows release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
 
-2. Extract the `dbt.exe` executeable into the same folder as your dbt project.
+2. Extract the `dbt.exe` executable into the same folder as your dbt project.
 
 :::info
 
