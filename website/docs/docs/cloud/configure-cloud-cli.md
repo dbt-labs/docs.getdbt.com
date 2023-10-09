@@ -24,15 +24,8 @@ The dbt Cloud CLI is currently in [public preview](/docs/dbt-versions/product-li
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project.
 
 1. Ensure you meet the prerequisites above.
-2. Create an environment variable with your [dbt Cloud API key](/docs/dbt-cloud-apis/user-tokens):
-   - On MacOS, Linux, or Windows add an environment variable:
 
-        ```bash
-        export DBT_CLOUD_API_KEY="1234" # Replace 1234 with your API key   
-        ```
-
-   - In Powershell, add an environment variable: IS THIS MISSING SOMETHING?
-     - Note that this variable resets if you restart your shell. To add an environment variable permanently, add a system environment variable in your platform.
+2. Download your credentials from dbt Cloud. Find the "Try the Cloud CLI" banner on the dbt homepage and click on it. Follow the instructions, downloading the config file to `~/.dbt/dbt_cloud.yml`.
 
 3. Navigate to a dbt project in your terminal:
 
@@ -40,7 +33,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 cd ~/dbt-projects/jaffle_shop
 ```
 
-4. In your `dbt_project.yml` file, ensure there is a section titled `dbt-cloud`. This section is required to have a `project-id` field with a valid project ID. 
+4. In your `dbt_project.yml` file, ensure there is a section titled `dbt-cloud`. This section is required to have a `project-id` field with the dbt-cloud project ID that you'd like to use. 
 
 ```yaml
 # dbt_project.yml
