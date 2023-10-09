@@ -10,7 +10,7 @@ If your dbt job run completed with a status of `result:error` , you can rerun it
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup).
 - You must be using [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.6 or newer.
-- The more recent run of the job hasn't completed successfully. The latest status of the run is `error`.
+- The most recent run of the job hasn't completed successfully. The latest status of the run is `error`.
     - The job command that failed in the run must be one that supports the [retry command](/reference/commands/retry).
 
 ## Rerun an errored job
