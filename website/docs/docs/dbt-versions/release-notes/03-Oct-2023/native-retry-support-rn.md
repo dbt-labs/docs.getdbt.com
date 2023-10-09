@@ -1,6 +1,6 @@
 ---
 title: "Enhancement: Native support for the dbt retry command"
-description: "October 2023: Rerun errored jobs from start and from the failure point"
+description: "October 2023: Rerun errored jobs from start or from the failure point"
 sidebar_label: "Enhancement: Support for dbt retry"
 tags: [Oct-2023, Scheduler]
 date: 2023-10-06
