@@ -12,12 +12,12 @@ Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleo
 
 Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/):
 
-* Migrated docs.getdbt.com from Netlify to Vercel
+* Migrated docs.getdbt.com from Netlify to Vercel.
 
 ## ☁ Cloud projects
 - Continuous integration jobs are now generally available and no longer in beta!
 - Added [Postgres PrivateLink set up page](/docs/cloud/secure/postgres-privatelink)
-- Beta docs for [dbt Explorer](/docs/collaborate/explore-projects)
+- Published beta docs for [dbt Explorer](/docs/collaborate/explore-projects).
 - Added a new Semantic Layer [GraphQL API doc](/docs/dbt-cloud-apis/sl-graphql) and updated the [integration docs](/docs/use-dbt-semantic-layer/avail-sl-integrations) to include Hex. Responded to dbt community feedback and clarified Metricflow use cases for dbt Core and dbt Cloud.
 - Added an [FAQ](/faqs/Git/git-migration) describing how to migrate from one git provider to another in dbt Cloud.
 - Clarified an example and added a [troubleshooting section](/docs/cloud/connect-data-platform/connect-snowflake#troubleshooting) to Snowflake connection docs to address common errors and provide solutions.
@@ -25,9 +25,9 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/):
 
 ## 🎯 Core projects
 
-- Deprecated dbt Core 1.0 and 1.1 from the docs.
-- Added [AWS Glue, community plugin](/docs/core/connect-data-platform/glue-setup)
-- Revised the dbt Core quickstart, making it easier to follow. Divided this guide into steps that align with our [other guides](/quickstarts/manual-install?step=1)
+- Deprecated dbt Core v1.0 and v1.1 from the docs.
+- Added configuration instructions for the [AWS Glue](/docs/core/connect-data-platform/glue-setup) community plugin.
+- Revised the dbt Core quickstart, making it easier to follow. Divided this guide into steps that align with the [other guides](/quickstarts/manual-install?step=1).
 
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 
@@ -35,4 +35,4 @@ Added a [style guide template](/guides/best-practices/how-we-style/6-how-we-styl
 
 ## Upcoming changes
 
-Stay tuned for our flurry of releases in October and a filterable guides section that will make our guides easier to find!
+Stay tuned for a flurry of releases in October and a filterable guides section that will make guides easier to find!
