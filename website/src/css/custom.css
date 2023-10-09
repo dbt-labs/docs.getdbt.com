@@ -975,6 +975,10 @@ html[data-theme="dark"] .blog-breadcrumbs a[href="#"] {
   filter: brightness(var(--filter-brightness-low));
 }
 
+html[data-theme="dark"] .blog-breadcrumbs a:hover {
+  filter: brightness(var(--filter-brightness-low));
+}
+
 html[data-theme="dark"] .blog-breadcrumbs a:not(:last-of-type):after,
 html[data-theme="dark"] .blog-breadcrumbs a {
   color: var(--darkmode-link-color);
