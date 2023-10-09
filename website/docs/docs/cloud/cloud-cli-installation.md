@@ -30,6 +30,7 @@ The dbt Cloud CLI and [dbt Core](https://github.com/dbt-labs/dbt-core), an open-
 You can install the dbt Cloud CLI on the command line by using one of these methods:
 
 <Tabs queryString="install">
+	
 <TabItem value="brew" label="macOS">
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
@@ -99,6 +100,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 * You no longer need to use the `dbt deps` command. Previously, you had to run that command.
 
 </TabItem>
+
 </Tabs>
 
 ## Update dbt Cloud CLI
@@ -106,16 +108,18 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. 
 
 <Tabs>
-<TabItem value="mac" label="Update with Homebrew (macOS)"
+	
+<TabItem value="mac" label="Update with Homebrew (macOS)">
 
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
 
 </TabItem>
-<TabItem value="windowslinux" label="Update manually (Windows and Linux)"
+<TabItem value="windowslinux" label="Update manually (Windows and Linux)">
 
 To update, follow the same process explained in [Install manually (Windows)](/docs/cloud/cloud-cli-installation?install=windows#install-dbt-cloud-cli) and replace the existing `dbt.exe` executable with the new one.
 
 </TabItem>
+
 </Tabs>
 
 ## Configure the dbt Cloud CLI
