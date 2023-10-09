@@ -14,6 +14,7 @@ default_value: {}
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
+    { label: 'Semantic Models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -172,6 +173,28 @@ exposures:
 
 </TabItem>
 
+<TabItem value="semantic models">
+
+<File name='semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_people
+    model: ref('people')
+    config:
+      meta: {<dictionary>}
+
+```
+<VersionBlock firstVersion="1.7"> 
+
+The `meta` configuration can be nested under the `config` key. 
+
+</VersionBlock>
+
+</File>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -248,3 +271,4 @@ select 1 as id
 ```
 
 </File>
+

@@ -15,6 +15,7 @@ default_value: true
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -245,6 +246,29 @@ exposures:
 ```
 
 </File>
+
+</VersionBlock>
+
+</TabItem>
+
+<TabItem value="semantic models">
+
+<File name='semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_people
+    model: ref('people')
+    config:
+      enabled: false
+
+```
+
+</File>
+
+<VersionBlock firstVersion="1.7">
+
+The `enabled` configuration can be nested under the `config` key.
 
 </VersionBlock>
 

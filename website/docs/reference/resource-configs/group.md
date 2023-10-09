@@ -16,6 +16,7 @@ This functionality is new in v1.5.
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Metrics', value: 'metrics', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -262,6 +263,37 @@ metrics:
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="semantic models">
+
+<File name='schema.yml'>
+
+```yml
+semantic_models:
+  - name: model_name
+    group: finance
+
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yml
+semantic_models:
+  [<resource-path>](resource-path):
+    +group: finance
+```
+
+</File>
+
+<VersionBlock firstVersion="1.7">
+
+The `group` configuration can be nested under the `config` key.
+
+</VersionBlock>
 
 </TabItem>
 
