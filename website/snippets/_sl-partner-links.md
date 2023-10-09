@@ -4,12 +4,14 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="grid--3-col">
 
  <Card
-    title="Tableau (beta) "
+    title="Tableau (beta)"
+    link="/docs/use-dbt-semantic-layer/gsheets"
     body="Learn how to connect to Tableau for querying metrics and collaborating with your team. Available in beta."
     icon="tableau-software"/>
 
 <Card
     title="Google Sheets (Available end of Oct)"
+    link="/docs/use-dbt-semantic-layer/tableau"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team. Available end of October."
     icon="google-sheets-logo-icon"/>
 
@@ -17,6 +19,7 @@ The following tools integrate with the dbt Semantic Layer:
   <div className="card-container">
     <Card
       title="Hex"
+      link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       body="Check out Hex's documentation to discover how to connect, analyze metrics, collaborate, and unlock more data possibilities."
       icon="hex"/>
     <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
@@ -31,7 +34,7 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Mode"
     body="Explore Mode's documentation to discover how to connect, access, and get trustworthy metrics and insights."
-    link=""
+    link="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
     icon="mode"/>
     <a href="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
     className="external-link"
