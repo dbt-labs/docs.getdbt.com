@@ -17,7 +17,7 @@ If your dbt job run completed with a status of `result:error` , you can rerun it
 
 1. Select **Deploy** from the top navigation bar and choose **Run History.** 
 2. Choose the job run that has errored. 
-3. In the **Run Summary** tab on the job’s **Run** page, expand the run step that failed. It’s denoted by an :x:. 
+3. In the **Run Summary** tab on the job’s **Run** page, expand the run step that failed. An :x: denotes the failed step. 
 4. Examine the error message and determine how to fix it. After you have made your changes, save and commit them to your [Git repo](/docs/collaborate/git-version-control).
 5. Go back to your job’s **Run** page. In the upper right corner, click **Rerun** and choose **Rerun from start** or **Rerun from failure**.
     
