@@ -28,7 +28,6 @@ The dbt Cloud CLI and [dbt Core](https://github.com/dbt-labs/dbt-core), an open-
 ## Install dbt Cloud CLI
 
 You can install the dbt Cloud CLI on the command line by using one of these methods:
-* Note, the `dbt deps` command is not required anymore.
 
 <Tabs>
 
