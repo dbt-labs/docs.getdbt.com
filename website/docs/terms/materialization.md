@@ -11,7 +11,7 @@ hoverSnippet: The exact Data Definition Language (DDL) that dbt will use when cr
 </head>
 
 :::important This page could use some love
-This term would benefit from additional depth and examples. Have knowledge to contribute? [Create a discussion in the DBT Community Forum](https://discourse.getdbt.com) to begin the process of becoming a glossary contributor!
+This term would benefit from additional depth and examples. Have knowledge to contribute? [Create an issue in the docs.getdbt.com repository](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose) to begin the process of becoming a glossary contributor!
 :::
 
 The exact <Term id="ddl">Data Definition Language (DDL)</Term> that dbt will use when creating the model’s equivalent in a <Term id="data-warehouse" />. It's the manner in which the data is represented, and each of those options is defined either canonically (tables, views, incremental), or bespoke. 
