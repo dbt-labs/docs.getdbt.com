@@ -107,13 +107,21 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. 
 
-#### Update with Homebrew (MacOS)
+<Tabs>
+	
+<TabItem value="mac" label="Update with Homebrew (macOS)"
 
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
-#### Update manually (Windows and Linux)
+
+</TabItem
+
+<TabItem value="windowslinux" label="Update manually (Windows and Linux)"
 
 To update, follow the same process explained in [Install manually (Windows)](#install-manually-windows) and replace the existing `dbt.exe` executable with the new one.
 
+</TabItem>
+
+</Tabs>
 
 ## Configure the dbt Cloud CLI
 
@@ -121,6 +129,7 @@ After installation, you can configure the dbt Cloud CLI for your dbt Cloud proje
 
 ```bash
 dbt compile
+```
 
 **Prerequisites**
 
