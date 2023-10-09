@@ -5,7 +5,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        * You can ask questions or submit ideas for the dbt docs in [Discussions](https://discourse.getdbt.com)
+        * You can ask questions or submit ideas for the dbt docs in [Discussions](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose)
         * Before you file an issue read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing).
         * Check to make sure someone hasn't already opened a similar [issue](https://github.com/dbt-labs/docs.getdbt.com/issues).
 
