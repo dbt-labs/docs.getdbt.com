@@ -7,7 +7,7 @@ date: 2023-10-06
 sidebar_position: 10
 ---
 
-Previously in dbt Cloud, you could only rerun an errored job from start but now you can also rerun it from its of failure. 
+Previously in dbt Cloud, you could only rerun an errored job from start but now you can also rerun it from its point of failure. 
 
 You can view which job failed to complete successully, which command failed in the run step, and choose how to rerun it. To learn more, refer to [Retry jobs](/docs/deploy/retry-jobs).
 
