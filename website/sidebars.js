@@ -124,7 +124,7 @@ const sidebarSettings = {
                 "docs/cloud/about-cloud-develop-defer",
                 {
                   type: "category",
-                  label: "dbt Cloud CLI (beta)",
+                  label: "dbt Cloud CLI",
                   link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
                   items: [
                     "docs/cloud/cloud-cli-installation",
@@ -425,8 +425,16 @@ const sidebarSettings = {
       items: [
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/avail-sl-integrations",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        {
+          type: "category",
+          label: "Integrations",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
+          items: [
+            "docs/use-dbt-semantic-layer/avail-sl-integrations",
+						//"docs/use-dbt-semantic-layer/gsheets",
+          ],
+        },
       ],
     },
     {
