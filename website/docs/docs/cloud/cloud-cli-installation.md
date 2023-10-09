@@ -117,7 +117,7 @@ To update, follow the same process explained in [Install manually (Windows)](#in
 
 ## Configure the dbt Cloud CLI
 
-After installation, you can configure the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following commands to compile a project using dbt Cloud:
+After installation, you can configure the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following command to compile a project using dbt Cloud:
 
 ```bash
 dbt compile
