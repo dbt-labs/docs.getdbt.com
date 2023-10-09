@@ -140,8 +140,7 @@ required with incremental materializations
 less configuration options available, see your database platform's docs for more details
   * Materialized views may not be supported by every database platform
 * **Advice:**
-    * Consider materialized views for use cases where incremental models are sufficient, 
-but you would like the data platform to manage the incremental logic and refresh.
+  * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
 
 ## Python materializations
 
