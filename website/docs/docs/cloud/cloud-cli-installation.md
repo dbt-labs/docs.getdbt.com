@@ -17,22 +17,19 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 
 * Secure credential storage in the dbt Cloud platform.
 * Automatic deferral of build artifacts to your Cloud project's production environment. 
-* Speedier, lower cost builds.
-* Support for dbt Mesh ([cross-project `ref`)](/docs/collaborate/govern/project-dependencies)),
+* Speedier, lower-cost builds.
+* Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
 * Significant platform improvements, to be released over the coming months.
-
-The dbt Cloud CLI and [dbt Core](https://github.com/dbt-labs/dbt-core), an open-source project, are both command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure and integrates those builds with all [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 ## Install dbt Cloud CLI
 
 You can install the dbt Cloud CLI on the command line by using one of these methods:
 
-
-<Tabs>
+<Tabs queryString="install">
 
 <TabItem value="brew" label="macOS">
 
-Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Run the following command to verify that there is no conflict with a dbt Core installation on your system:
    
@@ -54,7 +51,7 @@ brew install dbt-cloud-cli
 
 <TabItem value="windows" label="Windows">
 
-If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Download the latest Windows release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
 
@@ -62,9 +59,9 @@ If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
 
 :::info
 
-Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executeable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
+Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
 
-Note that if you are using VS Code, you'll need to restart it to pick up modified environment variables.
+Note that if you are using VS Code, you must restart it to pick up modified environment variables.
 :::
 
 3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
@@ -73,7 +70,7 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 <TabItem value="linux" label="Linux">
 
-If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases). (Pick the file based on your CPU architecture)
 
@@ -86,7 +83,7 @@ tar -xf dbt_0.29.9_linux_amd64.tar.gz
 
 :::info
 
-Advanced users can configure multiple projects to use the same Cloud CLI executeable by adding it to their PATH environment variable in their shell profile.
+Advanced users can configure multiple projects to use the same Cloud CLI executable by adding it to their PATH environment variable in their shell profile.
 
 :::
 
@@ -96,71 +93,24 @@ Advanced users can configure multiple projects to use the same Cloud CLI execute
 
 </Tabs>
 
-<!--
-### Install with Homebrew (MacOS)
-
-Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. 
-
-1. Run the following command to verify that there is no conflict with a dbt Core installation on your system:
-   
-```bash
-which dbt
-```
-   - This should return a `dbt not found`. If the dbt help text appears, use `pip uninstall dbt` to deactivate dbt Core from your machine.
-  
-2. Install the dbt Cloud CLI with Homebrew: 
-
-```bash
-brew tap dbt-labs/dbt-cli
-brew install dbt-cloud-cli
-```
-
-3. Verify the installation by running `dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
-  
-### Install manually (Windows)
-
-1. Download the latest Windows release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
-
-2. Extract the `dbt.exe` executeable into the same folder as your dbt project.
-
-:::info
-
-Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executeable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
-
-Note that if you are using VS Code, you'll need to restart it to pick up modified environment variables.
-:::
-
-3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
-
-### Install manually (Linux)
-
-1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases). (Pick the file based on your CPU architecture)
-
-2. Extract the `dbt-cloud-cli` binary to the same folder as your dbt project.
-
-```bash
-tar -xf dbt_0.29.9_linux_amd64.tar.gz
-./dbt --version
-```
-
-:::info
-
-Advanced users can configure multiple projects to use the same Cloud CLI executeable by adding it to their PATH environment variable in their shell profile.
-
-:::
-
-3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
--->
 ## Update dbt Cloud CLI
 
 The following instructions explain how to update the dbt CLoud CLI to the latest version depending on your operating system. During the public preview period, we recommend updating before filing a bug report. This is because the API is subject to breaking changes.
 
-#### Update with Homebrew (MacOS)
+<Tabs>
+	
+<TabItem value="mac" label="macOS">
 
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
-#### Update manually (Windows and Linux)
 
-To update, follow the same process explained in [Install manually (Windows)](#install-manually-windows) and replace the existing `dbt.exe` executable with the new one.
+</TabItem>
+<TabItem value="windowslinux" label="Windows and Linux">
+
+To update, follow the same process explained in [Install manually (Windows)](/docs/cloud/cloud-cli-installation?install=windows#install-dbt-cloud-cli) and replace the existing `dbt.exe` executable with the new one.
+
+</TabItem>
+
+</Tabs>
 
 
 ## Next steps
@@ -175,6 +125,12 @@ dbt compile
 
 <details>
 
+<summary>What's the difference between the dbt Cloud CLI and dbt Core?</summary>
+The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a>, an open-source project, are both command line tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">features</a>.
+
+</details>
+
+<details>
 <summary>How do I solve for path conflicts</summary>
 For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
