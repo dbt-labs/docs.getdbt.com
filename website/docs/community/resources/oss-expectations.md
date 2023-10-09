@@ -51,7 +51,7 @@ An issue could be a bug you’ve identified while using the product or reading t
 
 ### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the DBT Community Forum](https://discourse.getdbt.com), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-help` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
+- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the dbt Community Forum](https://discourse.getdbt.com), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-help` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
 - Many repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This will help other people understand your issue and respond.
 
