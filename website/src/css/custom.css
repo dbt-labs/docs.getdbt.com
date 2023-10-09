@@ -165,7 +165,7 @@ table td {
   vertical-align: top;
 }
 
-html[data-theme="dark"] main .row .col:first-of-type a {
+html[data-theme=dark] main .row .col:first-of-type a:not(.button) {
   color: var(--darkmode-link-color);
 }
 
