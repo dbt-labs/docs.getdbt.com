@@ -423,7 +423,7 @@ query_result_request = """
 """
 
 gql_response = requests.post(
-  "http://localhost:8000/graphql",
+  "https://semantic-layer.cloud.getdbt.com/api/graphql",
   json={"query": query_result_request},
   headers=headers,
 )
