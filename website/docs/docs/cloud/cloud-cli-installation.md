@@ -121,7 +121,6 @@ After installation, you can configure the dbt Cloud CLI for your dbt Cloud proje
 
 ```bash
 dbt compile
-```
 
 **Prerequisites**
 
