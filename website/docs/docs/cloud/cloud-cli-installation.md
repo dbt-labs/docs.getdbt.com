@@ -123,7 +123,7 @@ After installation, you can configure the dbt Cloud CLI for your dbt Cloud proje
 dbt compile
 ```
 
-### Prerequisites
+**Prerequisites**
 
 - You must set up a project in dbt Cloud.
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The dbt Cloud CLI will use these credentials, stored securely in dbt Cloud, to communicate with your data platform.
