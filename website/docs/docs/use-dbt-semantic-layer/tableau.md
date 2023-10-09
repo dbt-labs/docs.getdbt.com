@@ -5,18 +5,24 @@ tags: [Semantic Layer]
 sidebar_label: "Tableau (beta)"
 ---
 
-The Tableau integration is a live connection into the dbt Semantic Layer using Tableau Desktop. It allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.
+:::info Beta functionality
+The Tableau integration with the dbt Semantic Layer is a [beta feature](https://docs.getdbt.com/docs/dbt-versions/product-lifecycles#dbt-cloud) and is subject to change without notification.
+:::
+
+
+The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
 
 ## Prerequisites
 
-1. Tableau Desktop Installed and either an account with Tableau Server or Tableau Cloud that you can authenticate with
-2. A JDBC URL, or a dbt Cloud environment Id and a Service Token to authenticate with from a dbt Cloud account that has the Semantic Layer configured.
+1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
+2. Authenticate with either Tableau Server or Tableau Cloud
+3. You need either a [JDBC URL](/docs/dbt-cloud-apis/sl-jdbc#connection-parameters) or a dbt Cloud account's [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
 
 
 ## Installing
 
 1. Install this file () locally
-2. Install this jdbc driver (same exact link we have in jdbc docs) to the folder based on your operating system
+2. Install this [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system
 			`Windows: C:\Program Files\Tableau\Drivers`
 			`Mac: ~/Library/Tableau/Drivers`
 			`Linux: /opt/tableau/tableau_driver/jdbc`

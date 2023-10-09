@@ -417,7 +417,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
-						//"docs/use-dbt-semantic-layer/gsheets",
+						"docs/use-dbt-semantic-layer/gsheets",
+            "docs/use-dbt-semantic-layer/tableau",
           ],
         },
       ],
