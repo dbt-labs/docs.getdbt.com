@@ -72,6 +72,8 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
 
+* You no longer need to use the `dbt deps` command. Previously, you had to run that command.
+
 </TabItem>
 
 <TabItem value="linux" label="Linux">
