@@ -1,5 +1,5 @@
 ---
-title: Install the dbt Cloud CLI (Alpha)
+title: Installing the dbt Cloud CLI (Alpha)
 id: cloud-cli-installation
 description: "Instructions for installing and configuring dbt Cloud CLI"
 ---
@@ -190,6 +190,7 @@ The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a
 
 </details>
 
+<details>
 <summary>How do I solve for path conflicts</summary>
 For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running `dbt`. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
 
