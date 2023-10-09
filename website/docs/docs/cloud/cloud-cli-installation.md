@@ -77,7 +77,7 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 <TabItem value="linux" label="Linux">
 
-If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Download the latest Linux release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases). (Pick the file based on your CPU architecture)
 
@@ -126,6 +126,7 @@ To update, follow the same process explained in [Install manually (Windows)](/do
 ## Next steps
 
 After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following commands to compile a project using dbt Cloud:
+
 
 ```bash
 dbt compile
