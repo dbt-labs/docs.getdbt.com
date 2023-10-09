@@ -22,9 +22,10 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 ## Other integrations
 
-You can integrate the following tools with the dbt Semantic Layer:
-- Tool 1 + link
-- Tool 2 + link
+You can also integrate the following tools with the dbt Semantic Layer:
+- [Push.ai](https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer)
+- [Delphi](delphihq.com)
+- KlipFolio Power Metrics - waiting on docs
 
 ### Custom integration
 
