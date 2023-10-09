@@ -20,7 +20,13 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 <AvailIntegrations/>
 
-## Custom integration
+## Other integrations
+
+You can integrate the following tools with the dbt Semantic Layer:
+- Tool 1 + link
+- Tool 2 + link
+
+### Custom integration
 
 - You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and a GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
 - You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
