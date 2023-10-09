@@ -23,7 +23,6 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
 * Significant platform improvements, to be released over the coming months.
 
-The dbt Cloud CLI and [dbt Core](https://github.com/dbt-labs/dbt-core), an open-source project, are both command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure and integrates those builds with all [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 ## Install dbt Cloud CLI
 
