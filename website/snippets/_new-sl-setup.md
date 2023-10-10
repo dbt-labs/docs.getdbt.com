@@ -25,7 +25,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 5. Select the deployment environment you want for the Semantic Layer and click **Save**.
 
-6. After saving it, you'll be provided with the connection information that allows you to connect to downstream tools. If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
+6. After saving it, you'll be provided with the connection information that allows you to connect to downstream tools. If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). If it uses the GraphQL API, save the GraphQL API host information instead.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.jpg" width="50%" title="After you configure the Semantic Layer, you'll be provided with the connection information to connect to you downstream tools." />
 

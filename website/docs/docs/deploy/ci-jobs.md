@@ -94,10 +94,18 @@ If you're experiencing any issues, review some of the common questions and answe
 <details>
   <summary>Temporary schemas aren't dropping</summary>
   <div>
-    <div>If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates you have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.<br></br><br></br> To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example: 
+    <div>If your temporary schemas aren't dropping after a PR merges or closes, this typically indicates one of these issues:
+      <ul>
+        <li> You have overridden the <code>generate_schema_name</code> macro and it isn't using <code>dbt_cloud_pr_</code> as the prefix.<br></br><br></br> To resolve this, change your macro so that the temporary PR schema name contains the required prefix. For example:
     <br></br><br></br>
-      • ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>) <br></br>
-      • ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
+        ✅ Temporary PR schema name contains the prefix <code>dbt_cloud_pr_</code> (like <code>dbt_cloud_pr_123_456_marketing</code>). <br></br>
+        ❌ Temporary PR schema name doesn't contain the prefix <code>dbt_cloud_pr_</code> (like <code>marketing</code>). <br></br>
+        </li>
+        <br/>
+        <li>
+          A macro is creating a schema but there are no dbt models writing to that schema. dbt Cloud doesn't drop temporary schemas that weren't written to as a result of running a dbt model.
+        </li>
+      </ul>
     </div>
   </div>
 </details>
@@ -153,6 +161,3 @@ If you're experiencing any issues, review some of the common questions and answe
       If you're on a Virtual Private dbt Enterprise plan using security features like ingress PrivateLink or IP Allowlisting, registering CI hooks may not be available and can cause the job to fail silently.</div>
    </div>
 </details>
-
-
-
