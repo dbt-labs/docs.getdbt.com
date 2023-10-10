@@ -236,6 +236,9 @@ The following examples should feel somewhat familiar if you're used to executing
   # Run tests on a model (indirect selection)
   $ dbt test --select customers
 
+  # Run tests on two or more specific models (indirect selection)
+  $ dbt test --select customers orders
+
   # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
   $ dbt test --select staging.jaffle_shop
 
@@ -262,6 +265,9 @@ The following examples should feel somewhat familiar if you're used to executing
 
   # tests on one source
   $ dbt test --select source:jaffle_shop
+
+  # tests on two or more specific sources
+  $ dbt test --select source:jaffle_shop source:raffle_bakery 
 
   # tests on one source table
   $ dbt test --select source:jaffle_shop.customers
