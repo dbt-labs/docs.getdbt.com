@@ -134,8 +134,9 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
-                "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -351,6 +352,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
             "docs/deploy/run-visibility",
+            "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
@@ -409,8 +411,16 @@ const sidebarSettings = {
       items: [
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/avail-sl-integrations",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        {
+          type: "category",
+          label: "Integrations",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
+          items: [
+            "docs/use-dbt-semantic-layer/avail-sl-integrations",
+						//"docs/use-dbt-semantic-layer/gsheets",
+          ],
+        },
       ],
     },
     {
@@ -516,6 +526,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
             "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },

@@ -8,17 +8,20 @@ sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
 ---
 
-Semantic models serve as the foundation for defining data in MetricFlow, which powers the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
+Semantic models are the foundation for data definition in MetricFlow, which powers the dbt Semantic Layer:
 
-Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
-
-You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
+- Think of semantic models as nodes connected by entities in a semantic graph.
+- MetricFlow uses YAML configuration files to create this graph for querying metrics.
+- Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
+- You can create multiple semantic models from a single dbt model, as long as you give each semantic model a unique name.
+- Configure semantic models in a YAML file within your dbt project directory.
+- Organize them under a `metrics:` folder or within project sources as needed. 
 
 Semantic models have 6 components and this page explains the definitions with some examples:
 
 | Component | Description | Type |
 | --------- | ----------- | ---- |
-| [Name](#name) | Unique name for the semantic model | Required |
+| [Name](#name) | Choose a unique name for the semantic model. Avoid using double underscores (__) in the name as they're not supported. | Required |
 | [Description](#description) | Includes important details in the description | Optional |
 | [Model](#model) | Specifies the dbt model for the semantic model using the `ref` function | Required |
 | [Defaults](#defaults) | The defaults for the model, currently only `agg_time_dimension` is supported.  | Required |
@@ -130,7 +133,7 @@ semantic_models:
 
 ### Name 
 
-Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time.
+Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time. Avoid using double underscores (__) in the name as they're not supported.
 
 ### Description 
 
