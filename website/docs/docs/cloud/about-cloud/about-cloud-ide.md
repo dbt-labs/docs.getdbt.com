@@ -5,7 +5,7 @@ description: "about dbt Cloud Integrated Development Environment"
 sidebar_label: About dbt Cloud IDE
 ---
 
-The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. The IDE leverages the open-source [dbt-rpc](/reference/commands/rpc) plugin to recompile only the changes made in your project.
+The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly.
 
 
 With the Cloud IDE, you can:

@@ -83,7 +83,7 @@ When using the `table` materialization, your model is rebuilt as a <Term id="tab
 
 
 ### Incremental
-`incremental` models allow dbt to insert or update records into a table since the last time that dbt was run.
+`incremental` models allow dbt to insert or update records into a table since the last time that model was run.
 * **Pros:** You can significantly reduce the build time by just transforming new records
 * **Cons:** Incremental models require extra configuration and are an advanced usage of dbt. Read more about using incremental models [here](/docs/build/incremental-models).
 * **Advice:**
@@ -140,8 +140,7 @@ required with incremental materializations
 less configuration options available, see your database platform's docs for more details
   * Materialized views may not be supported by every database platform
 * **Advice:**
-    * Consider materialized views for use cases where incremental models are sufficient, 
-but you would like the data platform to manage the incremental logic and refresh.
+  * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
 
 ## Python materializations
 

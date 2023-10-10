@@ -40,35 +40,6 @@ If you've just cloned or downloaded an existing dbt project, `dbt init` can stil
 
 - **Existing project:** If you're the maintainer of an existing project, and you want to help new users get connected to your database quickly and easily, you can include your own custom `profile_template.yml` in the root of your project, alongside `dbt_project.yml`. For common connection attributes, set the values in `fixed`; leave user-specific attributes in `prompts`, but with custom hints and defaults as you'd like.
 
-<VersionBlock lastVersion="1.1">
-
-<File name='profile_template.yml'>
-
-```yml
-fixed:
-  account: abc123
-  authenticator: externalbrowser
-  database: analytics
-  role: transformer
-  type: snowflake
-  warehouse: transforming
-prompts:
-  user:
-    type: string
-    hint: yourname@jaffleshop.com
-  schema:
-    type: string
-    hint: usually dbt_<yourname>
-  threads:
-    hint: "your favorite number, 1-10"
-    type: int
-    default: 8
-```
-
-</File>
-
-</VersionBlock>
-
 <VersionBlock firstVersion="1.2">
 
 <File name='profile_template.yml'>
