@@ -6,7 +6,7 @@ sidebar_label: "About developing in dbt Cloud"
 pagination_next: "docs/cloud/cloud-cli-installation"
 ---
 
-dbt Cloud offers a fast and reliable way to work on your dbt project. You can use it through an integrated development environment (IDE) in your browser or a dbt Cloud-powered command line interface (CLI):
+dbt Cloud offers a fast and reliable way to work on your dbt project. You can develop in your browser using an integrated development environment (IDE) or in a dbt Cloud-powered command line interface (CLI):
 
 - **[dbt Cloud CLI](/docs/cloud/cloud-cli-installation)** &mdash; Allows you to develop and run dbt commands from your local command line or code editor against your dbt Cloud development environment.
 
