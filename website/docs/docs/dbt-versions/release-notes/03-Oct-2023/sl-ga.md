@@ -2,7 +2,7 @@
 title: "Update: dbt Cloud Semantic Layer is Generally Available"
 description: "October 2023: dbt Cloud Semantic Layer is Generally Available for all users"
 sidebar_label: "Update: dbt Cloud Semantic Layer is GA"
-sidebar_position: 10
+sidebar_position: 07
 date: 2023-10-17
 tags: [Oct-2023]
 ---
