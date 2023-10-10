@@ -35,7 +35,7 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 :::warning Use native packages or a virtual environment to avoid overriding dbt Core
 
-One of the benefits of the dbt Cloud CLI is that there is no need to manage Python environments. We provide this Python package for users who are using the Cloud CLI in place of dbt Core for easy compatibility with existing environments.
+One of the benefits of the dbt Cloud CLI is that there is no need to manage Python environments. We provide this Python package for users who are using the dbt Cloud CLI in place of dbt Core for easy compatibility with existing environments.
 
 Installing this package will override any dbt Core installation in the current Python environment. Avoid this by using the native install experience and configuring your PATH, or by creating a new virtual environment.
 
@@ -47,29 +47,31 @@ This guide is for users who already have a Python environment configured.
 
 1. Ensure you have Python installed and your local venv or pyenv activated.
 
-2. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later.
+2. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
 
 ```bash
 dbt --version
 ```
 
-3. Run the following command to install the Cloud CLI
+3. Run the following command to install the dbt Cloud CLI
 
 ```bash
 pip3 install dbt
 ```
 
-4. (Optional) To revert back to dbt core, first uninstall both the Cloud CLI and Core, then reinstall dbt-core, using the version from above.
+4. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
+5. Then reinstall dbt Core using the version from Step 2.
 
 ```bash
 pip3 uninstall dbt-core dbt
 pip3 install dbt-core==VERSION
 ```
+</TabItem>
 
 	
 <TabItem value="brew" label="macOS (brew)">
 
-Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 
 1. Run the following command to verify that there is no conflict with a dbt Core installation on your system:
@@ -91,19 +93,19 @@ brew install dbt
 
 </TabItem>
 
-<TabItem value="windows" label="Windows (native executeable)">
+<TabItem value="windows" label="Windows (native executable)">
 
-If your operating system runs into path conflicts, refer to the [FAQs](#faqs).
+Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
 1. Download the latest Windows release for your platform from [GitHub](https://github.com/dbt-labs/dbt-cli/releases).
 
-2. Extract the `dbt.exe` executeable into the same folder as your dbt project.
+2. Extract the `dbt.exe` executable into the same folder as your dbt project.
 
 :::info
 
 Advanced users can configure multiple projects to use the same dbt Cloud CLI by placing the executable in the Program Files folder and [adding it to their Windows PATH environment variable](https://medium.com/@kevinmarkvi/how-to-add-executables-to-your-path-in-windows-5ffa4ce61a53).
 
-Note that if you are using VS Code, you'll need to restart it to pick up modified environment variables.
+Note that if you are using VS Code, you must restart it to pick up modified environment variables.
 :::
 
 3. Verify the installation by running `./dbt --help` from the command line. If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
@@ -111,7 +113,7 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 </TabItem>
 
-<TabItem value="linux" label="Linux (native executeable)">
+<TabItem value="linux" label="Linux (native executable)">
 
 Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
@@ -154,7 +156,7 @@ To update, run `pip install --upgrade dbt`.
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
 
 </TabItem>
-<TabItem value="windowslinux" label="Windows and Linux (executeables)">
+<TabItem value="windowslinux" label="Windows and Linux (executables)">
 
 To update, follow the same process explained in [Install manually (Windows)](/docs/cloud/cloud-cli-installation?install=windows#install-dbt-cloud-cli) and replace the existing `dbt.exe` executable with the new one.
 
