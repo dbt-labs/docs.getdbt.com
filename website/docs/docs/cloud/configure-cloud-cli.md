@@ -53,6 +53,6 @@ dbt-cloud:
 
 The dbt Cloud CLI shares the same set of commands as dbt Core. dbt Cloud processes the dbt commands you invoke. 
 
-The dbt Cloud CLI supports [project dependencies](/docs/collaborate/govern/project-dependencies), which is an exciting way to depend on another project using the metadata service in dbt Cloud. It instantly resolves references (or  `ref`) to public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
+The dbt Cloud CLI supports [project dependencies](/docs/collaborate/govern/project-dependencies), which enables you to depend on another project using the metadata service in dbt Cloud. Project dependencies instantly resolves references (or  `ref`) to public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
 
 Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
