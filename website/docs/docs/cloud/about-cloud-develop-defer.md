@@ -15,7 +15,7 @@ Both the dbt Cloud IDE and the dbt Cloud CLI allow users to natively defer to pr
 
 Set your production environment using the [production environment checkbox](/docs/deploy/deploy-environments#set-as-production-environment-beta) in the environment settings page. This can be set for one deployment environment per dbt Cloud project. When using defer, the artifacts from the latest successful, non-CI job execution in the production environment will be compared to.
 
-### Defer in the IDE
+### Defer in the dbt Cloud IDE
 
 Defer in the IDE is as simple as toggling the `Defer to production` switch on the command bar! When enabled, dbt Cloud will:
 
