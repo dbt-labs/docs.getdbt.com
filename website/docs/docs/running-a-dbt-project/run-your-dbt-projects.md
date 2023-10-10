@@ -9,7 +9,7 @@ You can run your dbt projects with [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud
   - Development environment to help you build, test, run, and [version control](/docs/collaborate/git-version-control) your project faster.
   - Share your [dbt project's documentation](/docs/collaborate/build-and-view-your-docs) with your team.
   - Integrates with the dbt Cloud IDE, allowing you to run development tasks and environment in the dbt Cloud UI for a seamless experience.
-  - Use the dbt Cloud CLI to develop and run dbt commands against your dbt Cloud development environment from your local command line.
+  - The dbt Cloud CLI to develop and run dbt commands against your dbt Cloud development environment from your local command line.
   - For more details, refer to [Develop in the Cloud](/docs/cloud/about-cloud-develop).
 
 - **dbt Core**: An open source project where you can develop from the command line.
