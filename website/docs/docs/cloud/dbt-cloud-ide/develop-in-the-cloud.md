@@ -11,11 +11,11 @@ The dbt Cloud integrated development environment (IDE) is a single web-based int
 
 The dbt Cloud IDE offers several [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and more efficient data platform development and governance:
 
-- Syntax highlighting for SQL &mdash; Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
-- Auto-completion &mdash; Suggests table names, arguments, and column names as you type, saving time and reducing typos.
-- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) &mdash; Help standardize and fix your SQL code effortlessly.
-- Navigation tools &mdash; Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
-- Version control &mdash; Manage code versions with a few clicks.
+- Syntax highlighting for SQL: Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
+- Auto-completion: Suggests table names, arguments, and column names as you type, saving time and reducing typos.
+- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format): Help standardize and fix your SQL code effortlessly.
+- Navigation tools: Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
+- Version control: Manage code versions with a few clicks.
 
 These [features](#dbt-cloud-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
 
