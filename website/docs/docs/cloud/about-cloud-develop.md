@@ -12,7 +12,7 @@ dbt Cloud offers a fast and reliable way to work on your dbt project. You can de
 
   - Something to note is that the dbt Cloud CLI and the open-sourced dbt Core are both command line tools that let you run your dbt projects and use the same dbt commands. The key difference is that the dbt Cloud CLI is designed to work specifically with dbt Cloud's infrastructure and integrates those builds with all [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features).
 
-- **[dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)** &mdash; Develop directly in your browser, making dbt project development efficient by compiling code into SQL and managing project changes seamlessly using an intuitive user interface (UI).
+- **[dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)** &mdash; Develop directly in your browser, making dbt project development efficient by compiling code into SQL and managing project changes seamlessly using an intuitive user interface.
 
 The following sections provide detailed instructions on setting up the dbt Cloud CLI and dbt Cloud IDE. To get started with dbt development, you'll need a [developer](/docs/cloud/manage-access/seats-and-users) account. For a more comprehensive guide about developing in dbt, refer to our [quickstart guides](/quickstarts).
 
