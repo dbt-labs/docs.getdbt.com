@@ -26,7 +26,7 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 
 1. After creating your deployment environment, you should be directed to the page for new environment. If not, select **Deploy** in the upper left, then click **Jobs**.
 2. Click **Create one** and provide a name, for example "Production run", and link to the Environment you just created.
-3. Scroll down to "Execution Settings" Section:
+3. Scroll down to the **Execution Settings** section:
       * Under "Commands," add this command as part of your job if you don't see it:
         * `dbt build`
       * Select **Generate docs on run**.
