@@ -26,13 +26,14 @@ As the `jaffle_shop` business gains more customers, and those customers create m
 
 1. After creating your deployment environment, you should be directed to the page for new environment. If not, select **Deploy** in the upper left, then click **Jobs**.
 2. Click **Create one** and provide a name, for example "Production run", and link to the Environment you just created.
-3. Scroll down to "Execution Settings" and select **Generate docs on run**.
-4. Under "Commands," add this command as part of your job if you don't see them:
-      * `dbt build`
-5. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
-6. Select **Save**, then click **Run now** to run your job.
-7. Click the run and watch its progress under "Run history."
-8. Once the run is complete, click **View Documentation** to see the docs for your project.
+3. Scroll down to "Execution Settings" Section:
+      * Under "Commands," add this command as part of your job if you don't see it:
+        * `dbt build`
+      * Select **Generate docs on run**.
+4. For this exercise, do _not_ set a schedule for your project to run &mdash; while your organization's project should run regularly, there's no need to run this example project on a schedule. Scheduling a job is sometimes referred to as _deploying a project_.
+5. Select **Save**, then click **Run now** to run your job.
+6. Click the run and watch its progress under "Run history."
+7. Once the run is complete, click **View Documentation** to see the docs for your project.
 
 :::tip
 Congratulations 🎉! You've just deployed your first dbt project!
