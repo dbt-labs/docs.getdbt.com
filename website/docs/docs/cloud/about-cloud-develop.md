@@ -7,7 +7,7 @@ pagination_next: "docs/cloud/cloud-cli-installation"
 hide_table_of_contents: true
 ---
 
-dbt Cloud offers a fast and reliable way to work on your dbt project. It runs dbt Core in a hosted (single or multi-tenant) environment with a browser-based integrated development environment (IDE) or a dbt Cloud-powered command line interface (CLI)[^1]. This allows you to seamlessly develop, test, and run dbt commands in the dbt Cloud IDE or through the dbt Cloud CLI.
+dbt Cloud offers a fast and reliable way to work on your dbt project. It runs dbt Core in a hosted (single or multi-tenant) environment. You can develop in your browser using an integrated development environment (IDE) or in a dbt Cloud-powered command line interface (CLI):
 
 <div className="grid--3-col">
 
