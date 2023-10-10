@@ -33,7 +33,7 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="card-container">
   <Card
     title="Lightdash"
-    body="Read Lightdash's documentation to discover how to connect, access, and get trustworthy metrics and insights."
+    body="Read Lightdash's documentation to discover how to connect and query reliable metrics."
     link="https://docs.lightdash.com/guides/dbt-semantic-layer/"
     icon="lightdash"/>
     <a href="https://docs.lightdash.com/guides/dbt-semantic-layer/"
