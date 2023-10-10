@@ -365,6 +365,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
             "docs/deploy/run-visibility",
+            "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
