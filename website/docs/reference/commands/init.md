@@ -21,7 +21,7 @@ Then, it will:
 
 Use the `--profile` flag with  `dbt init` to initialize the project with an existing `profiles.yml` as the `profile:` key instead of creating a new one.
 
-If the profile does not exist in profiles.yml or the command is run inside an existing project, the command raises an error.
+If the profile does not exist in `profiles.yml` or the command is run inside an existing project, the command raises an error.
 
 </VersionBlock>
 
