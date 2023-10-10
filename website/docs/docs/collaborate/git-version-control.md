@@ -22,3 +22,4 @@ When you develop in the command line interface (CLI) or Cloud  integrated develo
 - [Merge conflicts](/docs/collaborate/git/merge-conflicts) 
 - [Connect to GitHub](/docs/cloud/git/connect-github)
 - [Connect to GitLab](/docs/cloud/git/connect-gitlab)
+- [Connect to Azure DevOps](/docs/cloud/git/connect-azure-devops)
