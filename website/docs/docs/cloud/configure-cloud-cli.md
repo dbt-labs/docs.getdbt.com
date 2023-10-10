@@ -3,13 +3,12 @@ title: Configure dbt Cloud CLI
 id: configure-cloud-cli
 description: "Instructions on how to configure the dbt Cloud CLI"
 sidebar_label: "Configure dbt Cloud CLI"
+pagination_next: null
 ---
 
-:::info Public preview functionality
+import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
-The dbt Cloud CLI is currently in [public preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
-
-::: 
+<CloudCLIFlag/>
 
 
 ## Prerequisites
@@ -26,34 +25,55 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 1. Ensure you meet the prerequisites above.
 
-2. Download your credentials from dbt Cloud. Find the "Try the Cloud CLI" banner on the dbt homepage and click on it. Follow the instructions, downloading the config file to `~/.dbt/dbt_cloud.yml`.
+2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage.
+3. Follow the banner instructions and download the config file to `~/.dbt/dbt_cloud.yml`. The config file looks like:
 
-3. Navigate to a dbt project in your terminal:
+    ```yaml
+    version: "1"
+    context:
+    active-project: "<project id from the list below>"
+    active-host: "<active host from the list>"
+    defer-env-id: "<optional defer environment id>"
+    projects:
+    - project-id: "<project-id>"
+        account-host: "<account-host>"
+        api-key: "<user-api-key>"
 
-```bash
-cd ~/dbt-projects/jaffle_shop
-```
+    - project-id: "<project-id>"
+        account-host: "<account-host>"
+        api-key: "<user-api-key>"
 
-4. In your `dbt_project.yml` file, ensure there is a section titled `dbt-cloud`. This section is required to have a `project-id` field with the dbt-cloud project ID that you'd like to use. 
+    ```
 
-```yaml
-# dbt_project.yml
-name:
+4. After downloading the config file, navigate to a dbt project in your terminal:
 
-version:
-...
+    ```bash
+    cd ~/dbt-projects/jaffle_shop
+    ```
 
-dbt-cloud: 
-    project-id: PROJECT_ID
-```
+5. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
 
-- To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use this URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects123456`, the project ID is `123456`.
+    ```yaml
+    # dbt_project.yml
+    name:
 
+    version:
+    ...
+
+    dbt-cloud: 
+        project-id: PROJECT_ID
+    ```
+
+   - To find your project ID, select **Develop** in the dbt Cloud navigation menu. You can use the URL to find the project ID. For example, in `https://cloud.getdbt.com/develop/26228/projects/123456`, the project ID is `123456`.
 
 ## Use the dbt Cloud CLI
 
-The dbt Cloud CLI shares the same set of commands as dbt Core. dbt Cloud processes the dbt commands you invoke. 
+- The dbt Cloud CLI shares the same set of commands as dbt Core and processes the dbt commands you invoke. 
+- It allows you to use automatic deferral of build artifacts to your Cloud project's production environment.
+- It also supports [project dependencies](/docs/collaborate/govern/project-dependencies), which allows you to depend on another project using the metadata service in dbt Cloud. 
+  - Project dependencies instantly connects to and references (or  `ref`) public models defined in other projects. This means you don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
 
-The dbt Cloud CLI supports [project dependencies](/docs/collaborate/govern/project-dependencies), which is an exciting way to depend on another project using the metadata service in dbt Cloud. It instantly resolves references (or  `ref`) to public models defined in other projects. You don't need to execute or analyze these upstream models yourself. Instead, you treat them as an API that returns a dataset.
 
-Share feedback or request features you'd like to see on the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
+:::infoShare feedback
+Share feedback or request features you'd like to see in the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
+:::
