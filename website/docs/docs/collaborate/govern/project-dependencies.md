@@ -100,3 +100,11 @@ There are a few cases where installing another internal project as a package can
 - Coordinated changes &mdash; In development, if you wanted to test the effects of a change to a public model in an upstream project (`jaffle_finance.monthly_revenue`) on a downstream model (`jaffle_marketing.roi_by_channel`) _before_ introducing changes to a staging or production environment, you can install the `jaffle_finance` package as a package within `jaffle_marketing`.  The installation can point to a specific git branch, however, if you find yourself frequently needing to perform end-to-end testing across both projects, we recommend you re-examine if this represents a stable interface boundary. 
 
 These are the exceptions, rather than the rule. Installing another team's project as a package adds complexity, latency, and risk of unnecessary costs. By defining clear interface boundaries across teams, by serving one team's public models as "APIs" to another, and by enabling practitioners to develop with a more narrowly-defined scope, we can enable more people to contribute, with more confidence, while requiring less context upfront.
+
+### FAQs
+
+<details>
+<summary>Can I define private packages in the `dependencies.yml` file?</summary>
+
+If you are attempting to use private packages via the [Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method) - you will need to continue defining them in the `packages.yml` file instead of in the `dependencies.yml` file as conditional rendering (i.e. Jinja-in-yaml) is not allowed.
+</details>
