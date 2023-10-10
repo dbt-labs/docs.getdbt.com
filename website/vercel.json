@@ -2,7 +2,11 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-
+    {
+      "source": "/faqs/models/reference-models-in-another-project",
+      "destination": "/docs/collaborate/govern/project-dependencies",
+      "permanent": true
+    },
     {
       "source": "/faqs/Models/reference-models-in-another-project",
       "destination": "/docs/collaborate/govern/project-dependencies",
