@@ -77,3 +77,4 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 :::infoShare feedback
 Share feedback or request features you'd like to see in the [dbt community Slack](https://getdbt.slack.com/archives/C05M77P54FL).
 :::
+
