@@ -111,7 +111,7 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 </TabItem>
 
-<TabItem value="linux" label="Linux (native executeable)">
+<TabItem value="linux" label="Linux (native executable)">
 
 Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
@@ -154,7 +154,7 @@ To update, run `pip install --upgrade dbt`.
 To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
 
 </TabItem>
-<TabItem value="windowslinux" label="Windows and Linux (executeables)">
+<TabItem value="windowslinux" label="Windows and Linux (executable)">
 
 To update, follow the same process explained in [Install manually (Windows)](/docs/cloud/cloud-cli-installation?install=windows#install-dbt-cloud-cli) and replace the existing `dbt.exe` executable with the new one.
 
