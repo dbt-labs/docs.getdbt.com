@@ -32,6 +32,20 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
+    title="Lightdash"
+    body="Read Lightdash's documentation to discover how to connect, access, and get trustworthy metrics and insights."
+    link="https://docs.lightdash.com/guides/dbt-semantic-layer/"
+    icon="lightdash"/>
+    <a href="https://docs.lightdash.com/guides/dbt-semantic-layer/"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <i className="fa fa-external-link"></i>
+    </a>
+</div>
+
+<div className="card-container">
+  <Card
     title="Mode"
     body="Explore Mode's documentation to discover how to connect, access, and get trustworthy metrics and insights."
     link="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
@@ -43,6 +57,7 @@ The following tools integrate with the dbt Semantic Layer:
       <i className="fa fa-external-link"></i>
     </a>
 </div>
+
 </div><br />
 
 
