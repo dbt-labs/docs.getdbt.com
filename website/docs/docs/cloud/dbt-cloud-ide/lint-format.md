@@ -223,6 +223,13 @@ Currently, running SQLFluff commands from the terminal isn't supported.
 Make sure you're on a development branch. Formatting or Linting isn't available on "main" or "read-only" branches. 
 </details>
 
+<details>
+<summary>Why is the lint operation inconsistent with running SQLFluff out of the dbt Cloud IDE (e.g. in a GitHub Action)?</summary>
+
+* Double check that your SQLFluff version that is running outside of the dbt Cloud IDE is consistent with the version used within the dbt Cloud IDE (which is usually printed out in the "Code Quality" tab after a lint operation).
+* If your lint operation is always passing when there exist clear rule violations - check that you are not linting a model that uses ephemeral models (dbt versions prior to 1.6 only).
+</details>
+
 ## Related docs
 
 - [User interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
