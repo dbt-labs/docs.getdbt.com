@@ -19,7 +19,7 @@ dbt Cloud offers a fast and reliable way to work on your dbt project. It runs db
 
   <Card
     title="dbt Cloud IDE"
-    body="Develop directly in your browser, making dbt project development efficient by compiling code into SQL and managing project changes seamlessly using an intuitive user interface (UI)."
+    body="Develop directly in your browser, making dbt project development efficient by compiling code into SQL and managing project changes seamlessly using an intuitive user interface."
     link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     icon="dbt-bit"/>
 
