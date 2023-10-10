@@ -4,7 +4,7 @@ title: "dbt Command reference"
 
 You can run dbt using the following tools:
 
-- In you browser with the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
+- In your browser with the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) 
 - On the command line interface using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or open-source [dbt Core](https://github.com/dbt-labs/dbt-core), both of which enable you to execute dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
 
 The following sections outline the commands supported by dbt and their relevant flags. For information about selecting models on the command line, consult the docs on [Model selection syntax](/reference/node-selection/syntax).
