@@ -1,6 +1,6 @@
 # Moving access page
 
-/reference/resource-configs/access /reference/resource-configs/access 301
+/reference/resource-properties/access /reference/resource-configs/access 301
 
 # Deprecating Discovery API (FKA Metadata API) legacy endpoints
 
