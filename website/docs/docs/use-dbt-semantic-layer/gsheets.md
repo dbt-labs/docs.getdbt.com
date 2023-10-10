@@ -55,6 +55,6 @@ To use the filter functionality, choose the dimension you want to filter by and 
 
 **Limited Use Policy Disclosure**
 
-The dbt Semantic Layer for Sheet's use and transfer to any other app of information received from Google APIs will adhere to Google API Services User Data Policy, including the [Limited Use requirements](https://developers.google.com/terms/api-services-user-data-policy)
+The dbt Semantic Layer for Sheet's use and transfer to any other app of information received from Google APIs will adhere to [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.
 
 
