@@ -30,14 +30,20 @@ One key difference between using `--defer` in the Cloud CLI vs the IDE is that d
 
 Cloud CLI offers additional flexibility for declaring which environment is used as the source of deferral artifacts. You can set a `defer-env-id` key in either your `dbt_project.yml` file or your `dbt_cloud.yml` file.
 
-**In the `dbt_cloud.yml` file:**
+<File name="dbt_cloud.yml">
 
-```yml
+  ```yml
 dever-env-id: '123456'
 ```
-**In the dbt_project.yml file:**
+
+</File>
+
+
+<File name="dbt_project.yml"> 
 
 ```yml
 dbt_cloud:
   dever-env-id: '123456'
 ```
+
+</File>
