@@ -22,7 +22,6 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
-        "docs/cloud/about-cloud/about-cloud-ide",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
@@ -123,7 +122,7 @@ const sidebarSettings = {
                 "docs/cloud/about-cloud-develop",
                 {
                   type: "category",
-                  label: "dbt Cloud CLI (public preview)",
+                  label: "dbt Cloud CLI",
                   link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
                   items: [
                     "docs/cloud/cloud-cli-installation",
