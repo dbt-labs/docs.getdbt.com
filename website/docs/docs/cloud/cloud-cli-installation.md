@@ -109,7 +109,7 @@ Note that if you are using VS Code, you'll need to restart it to pick up modifie
 
 </TabItem>
 
-<TabItem value="linux" label="Linux (native executeable)">
+<TabItem value="linux" label="Linux (native executable)">
 
 Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
 
