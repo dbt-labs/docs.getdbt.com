@@ -22,7 +22,6 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
-        "docs/cloud/about-cloud/about-cloud-ide",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
