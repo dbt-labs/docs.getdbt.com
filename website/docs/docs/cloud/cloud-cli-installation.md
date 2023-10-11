@@ -83,7 +83,6 @@ We recommend using virtual environments (venv) to namespace pip modules.
   ```
 
 </TabItem>
-
 	
 <TabItem value="brew" label="macOS (brew)">
 
@@ -164,7 +163,6 @@ During the public preview period, we recommend updating before filing a bug repo
 
 
 <Tabs>
-
 <TabItem value="existing" label="Existing dbt Core users (pip)">
 
 To update, run `pip install --upgrade dbt`.
