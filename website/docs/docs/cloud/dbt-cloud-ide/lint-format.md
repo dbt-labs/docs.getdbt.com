@@ -228,7 +228,7 @@ Make sure you're on a development branch. Formatting or Linting isn't available 
 </details>
 
 <details>
-<summary>Why is the lint operation inconsistent with running SQLFluff out of the dbt Cloud IDE (e.g. in a GitHub Action)?</summary>
+<summary>Why is there inconsistent SQLFluff behavior when running outside the dbt Cloud IDE (such as a GitHub Action)?</summary>
 
 * Double check that your SQLFluff version that is running outside of the dbt Cloud IDE is consistent with the version used within the dbt Cloud IDE (which is usually printed out in the "Code Quality" tab after a lint operation).
 * If your lint operation is always passing when there exist clear rule violations - check that you are not linting a model that uses ephemeral models (dbt versions prior to 1.6 only).
