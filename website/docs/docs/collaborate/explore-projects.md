@@ -12,7 +12,7 @@ You can also view all the different projects and public models in the account, w
 
 :::tip Public preview 
 
-Try dbt Explorer! It's available in [Public Preivew](/docs/dbt-versions/product-lifecycles#dbt-cloud) as of October 16, 2023 for dbt Cloud customers. More updates coming soon.
+Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) as of October 16, 2023 for dbt Cloud customers. More updates coming soon.
  
 :::
 
