@@ -6,10 +6,6 @@ description: "Learn about dbt Explorer and how to interact with it to understand
 
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.
 
-## Lineage for cross-project 
-
-You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources. For more details about a decentralized data management architecture, refer to the [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) blog.
-
 :::tip Public preview 
 
 Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) as of October 16, 2023 for dbt Cloud customers. More updates coming soon.
@@ -67,34 +63,6 @@ To interact with the full lineage graph, you can:
 
 <LoomVideo id='1c2224ee7d6e4bbca850345e9a7b79aa' />
 
-## Explore the cross-project lineage graph
-
-For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore the project full lineage](#project-lineage) but you can also interact with it at the project level and view the details. 
-
-To get a list view of all the projects, select the account name at the top of the **Explore** page near the navigation bar. This view includes a public model list, project list, and a search bar for project searches. You can also view the project-level lineage graph by clicking the Lineage view icon in the page's upper right corner. 
-
-To view the lineage graph at the _project level_, select **Back To All Projects** in the graph’s upper right corner. Each node in the cross-project graph shows how many public models it contains. You can also view the project-level list view by clicking the List view icon in the page's upper right corner.
-
-If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for a project where the models are defined.
-
-From the project-level lineage graph, you can:
-
-- Click the Lineage view icon (in the graph’s upper right corner) to view the cross-project lineage graph.
-- Click the List view icon (in the graph’s upper right corner) to view the project list.
-    - Select a project from the **Projects** tab to switch to that project’s main **Explore** page.
-    - Select a model from the **Public Models** tab to view the [model’s details page](#view-resource-details).
-    - Perform searches on your projects with the search bar.
-- Select a project node in the graph (double-clicking) to switch to that particular project’s lineage graph.
-
-When you select a project node in the graph, a project details panel opens on the graph’s right-hand side where you can:
-
-- View counts of the resources defined in the project.
-- View a list of its public models, if any.
-- View a list of other projects that uses the project, if any.
-- Click **Open Project Lineage** to switch to the project’s lineage graph.
-- Click the Share icon to copy the project panel link to your clipboard so you can share the graph with someone.
-
-<LoomVideo id='606f02e1cce343eba7e1061d6273ff0a?t=1' />
 
 ## Search for resources {#search-resources}
 With the search bar (on the upper left of the page or in a lineage graph), you can search with keywords or [node selection syntax](/reference/node-selection/syntax). The resources that match your search criteria will display as a lineage graph and a table in the main section of the page. 
@@ -210,3 +178,36 @@ An example of the details you might get for each source table within a source co
 - **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
 - **Details** section &mdash; Details like database, schema, and more.
 - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
+
+## Lineage for cross-project 
+
+You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources. For more details about a decentralized data management architecture, refer to the [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) blog.
+
+### Explore the cross-project lineage graph
+
+For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore the project full lineage](#project-lineage) but you can also interact with it at the project level and view the details. 
+
+To get a list view of all the projects, select the account name at the top of the **Explore** page near the navigation bar. This view includes a public model list, project list, and a search bar for project searches. You can also view the project-level lineage graph by clicking the Lineage view icon in the page's upper right corner. 
+
+To view the lineage graph at the _project level_, select **Back To All Projects** in the graph’s upper right corner. Each node in the cross-project graph shows how many public models it contains. You can also view the project-level list view by clicking the List view icon in the page's upper right corner.
+
+If you have permissions for a project in the account, you can view all public models used across the entire account. However, you can only view full public model details and private models if you have permissions for a project where the models are defined.
+
+From the project-level lineage graph, you can:
+
+- Click the Lineage view icon (in the graph’s upper right corner) to view the cross-project lineage graph.
+- Click the List view icon (in the graph’s upper right corner) to view the project list.
+    - Select a project from the **Projects** tab to switch to that project’s main **Explore** page.
+    - Select a model from the **Public Models** tab to view the [model’s details page](#view-resource-details).
+    - Perform searches on your projects with the search bar.
+- Select a project node in the graph (double-clicking) to switch to that particular project’s lineage graph.
+
+When you select a project node in the graph, a project details panel opens on the graph’s right-hand side where you can:
+
+- View counts of the resources defined in the project.
+- View a list of its public models, if any.
+- View a list of other projects that uses the project, if any.
+- Click **Open Project Lineage** to switch to the project’s lineage graph.
+- Click the Share icon to copy the project panel link to your clipboard so you can share the graph with someone.
+
+<LoomVideo id='606f02e1cce343eba7e1061d6273ff0a?t=1' />
