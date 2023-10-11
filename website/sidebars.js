@@ -163,7 +163,7 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
-            "docs/core/about-the-cli",
+            "docs/core/about-dbt-core",
             "docs/core/dbt-core-environments",
             {
               type: "category",
