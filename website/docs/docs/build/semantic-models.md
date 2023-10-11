@@ -29,6 +29,7 @@ Semantic models have 6 components and this page explains the definitions with so
 | [Primary Entity](#primary-entity) | If a primary entity exists, this component is Optional. If the semantic model has no primary entity, then this property is required. | Optional |
 | [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time` or `categorical` | Required |
 | [Measures](#measures) | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics | Optional |
+| Label | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures` | Optional |
 
 ## Semantic models components
 
