@@ -19,14 +19,14 @@ Run generic tests only:
 
 
   ```bash
-  dbt test --select "test_type:generic"
+    dbt test --select "test_type:generic"
   ```
 
 Run singular tests only:
 
 
   ```bash
-  dbt test --select "test_type:singular"
+    dbt test --select "test_type:singular"
   ```
 
 In both cases, `test_type` checks a property of the test itself. These are forms of "direct" test selection.
@@ -102,8 +102,10 @@ It will only include tests whose references are each within the selected nodes.
 Put another way, it will prevent tests from running if one or more of its parents is unselected.
 
 ```shell
+
 dbt test --select "orders" --indirect-selection=cautious
 dbt build --select "orders" --indirect-selection=cautious
+
 ```
 
 </TabItem>
@@ -137,8 +139,10 @@ It will only include tests whose references are each within the selected nodes.
 Put another way, it will prevent tests from running if one or more of its parents is unselected.
 
 ```shell
+
 dbt test --select "orders" --indirect-selection=cautious
 dbt build --select "orders" --indirect-selection=cautious
+
 ```
 
 </TabItem>
@@ -154,6 +158,7 @@ This is useful in the same scenarios as "cautious", but also includes when a tes
 ```shell
 dbt test --select "orders" --indirect-selection=buildable
 dbt build --select "orders" --indirect-selection=buildable
+
 ```
 
 </TabItem>
@@ -189,6 +194,7 @@ Put another way, it will prevent tests from running if one or more of its parent
 ```shell
 dbt test --select "orders" --indirect-selection=cautious
 dbt build --select "orders" --indirect-selection=cautious
+
 ```
 
 </TabItem>
@@ -213,8 +219,10 @@ dbt build --select "orders" --indirect-selection=buildable
 This mode will only include tests whose references are each within the selected nodes and will ignore all tests from attached nodes.
 
 ```shell
+
 dbt test --select "orders" --indirect-selection=empty
 dbt build --select "orders" --indirect-selection=empty
+
 ```
 
 </TabItem>
@@ -235,6 +243,9 @@ The following examples should feel somewhat familiar if you're used to executing
   ```bash
   # Run tests on a model (indirect selection)
   dbt test --select "customers"
+  
+  # Run tests on two or more specific models (indirect selection)
+  dbt test --select "customers orders"
 
   # Run tests on all models in the models/staging/jaffle_shop directory (indirect selection)
   dbt test --select "staging.jaffle_shop"
@@ -258,10 +269,14 @@ The following examples should feel somewhat familiar if you're used to executing
 
   ```bash
   # tests on all sources
+
   dbt test --select "source:*"
 
   # tests on one source
   dbt test --select "source:jaffle_shop"
+  
+  # tests on two or more specific sources
+   dbt test --select "source:jaffle_shop source:raffle_bakery"
 
   # tests on one source table
   dbt test --select "source:jaffle_shop.customers"
@@ -276,10 +291,12 @@ Through the combination of direct and indirect selection, there are many ways to
 
 
   ```bash
+
   dbt test --select "assert_total_payment_amount_is_positive" # directly select the test by name
   dbt test --select "payments,test_type:singular" # indirect selection, v1.2
   dbt test --select "payments,test_type:data" # indirect selection, v0.18.0
   dbt test --select "payments" --data  # indirect selection, earlier versions
+
   ```
 
 
@@ -295,6 +312,7 @@ Through the combination of direct and indirect selection, there are many ways to
 
   # Run tests on all snapshots, which use the 'snapshot' materialization
   dbt test --select "config.materialized:snapshot"
+
   ```
 
  Note that this functionality may change in future versions of dbt.
@@ -323,6 +341,7 @@ models:
 
   ```bash
   dbt test --select "tag:my_column_tag"
+
   ```
 
 Currently, tests "inherit" tags applied to columns, sources, and source tables. They do _not_ inherit tags applied to models, seeds, or snapshots. In all likelihood, those tests would still be selected indirectly, because the tag selects its parent. This is a subtle distinction, and it may change in future versions of dbt.
@@ -351,4 +370,5 @@ models:
 
   ```bash
   dbt test --select "tag:my_test_tag"
+
   ```
