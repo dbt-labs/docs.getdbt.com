@@ -67,7 +67,7 @@ To interact with the full lineage graph, you can:
 
 <LoomVideo id='1c2224ee7d6e4bbca850345e9a7b79aa' />
 
-## Explore the cross-project full lineage graph
+## Explore the cross-project lineage graph
 
 For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore the project full lineage](#project-lineage) but you can also interact with it at the project level and view the details. 
 
