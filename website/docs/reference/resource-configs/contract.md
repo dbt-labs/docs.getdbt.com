@@ -47,6 +47,8 @@ models:
           - type: not_null
       - name: customer_name
         data_type: string
+      - name: non_integer
+        data_type: numeric(38,3)
 ```
 
 </File>
