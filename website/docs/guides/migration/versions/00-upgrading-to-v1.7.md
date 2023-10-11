@@ -8,7 +8,7 @@ description: New features and changes in dbt Core v1.7
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/8aaed0e29f9560bc53d9d3e88325a9597318e375/CHANGELOG.md)
 - [CLI Installation guide](/docs/core/installation)
 - [Cloud upgrade guide](/docs/dbt-versions/upgrade-core-in-cloud)
-- [Release schedule](https://github.com/dbt-labs/dbt-core/issues/7481)
+- [Release schedule](https://github.com/dbt-labs/dbt-core/issues/8260)
 
 ## What to know before upgrading
 
