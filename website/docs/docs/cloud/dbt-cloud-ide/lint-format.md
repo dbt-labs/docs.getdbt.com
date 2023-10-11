@@ -48,7 +48,7 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 - Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management.
 
 :::Ephemeral models not supported
-Linting doesn't support ephemeral models in dbt versions 1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+Linting doesn't support ephemeral models in dbt v1.5 and lower. Refer to the [FAQs](#faqs) for more info.
 :::
 
 ### Enable linting
