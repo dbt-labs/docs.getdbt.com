@@ -15,7 +15,7 @@ MetricFlow allows you to define and query metrics in your dbt project in the [db
 To install and run MetricFlow commands in the dbt Cloud CLI, you'll need to install it in your local environment. Install the MetricFlow from [PyPI](https://pypi.org/project/dbt-metricflow/) using `pip` on Windows or Linux operating systems:
 
 1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)
-2. Create or activate your virtual environment.`python -m venv venv`
+2. Create or activate your virtual environment `python -m venv venv`
 3. Run `pip install metricflow`
 
 The MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
