@@ -26,7 +26,9 @@ To enable 'Defer' in the dbt Cloud IDE, toggle the **Defer to production** butto
 1. Pull down the most recent manifest from the Production environment for comparison
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)
 
-For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model would run. Any `{{ ref() }}` functions will point to the production location of the referenced models
+For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model would run. Any `{{ ref() }}` functions will point to the production location of the referenced models.
+
+<Lightbox src="/img/docs/dbt-cloud/defer-toggle.jpg" width="50%" title="Select the 'Defer to production' toggle to enable Defer in the dbt Cloud IDE."/>
 
 ### Defer in dbt Cloud CLI
 
