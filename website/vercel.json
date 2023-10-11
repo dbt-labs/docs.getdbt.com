@@ -4001,6 +4001,11 @@
       "source": "/docs/dbt-cloud/on-premises/upgrading-kots",
       "destination": "/docs/deploy/single-tenant",
       "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/access",
+      "destination": "/reference/resource-configs/access",
+      "permanent": true
     }
   ]
 }
