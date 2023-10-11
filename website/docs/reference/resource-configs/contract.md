@@ -25,9 +25,9 @@ This is to ensure that the people querying your model downstream—both inside a
 
 The `data_type` defined in your YAML file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
 
-When dbt is comparing data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. If you need a more-precise assertion, it's always possible to accomplish by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
+When dbt compares data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. You can accomplish a more-precise assertion by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
 
-Just remember, you need to specify a varchar size or numeric scale, otherwise dbt relies on default values. For example, if a `numeric` type defaults to a precision of 38 and a scale of 0, then the numeric column stores 0 digits to the right of the decimal (it only stores whole numbers), which might cause it to fail contract enforcement. To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`. dbt Core 1.7 and higher provides an error if you don't specify precision and scale when providing a numeric data type.
+Note that you need to specify a varchar size or numeric scale, otherwise dbt relies on default values. For example, if a `numeric` type defaults to a precision of 38 and a scale of 0, then the numeric column stores 0 digits to the right of the decimal (it only stores whole numbers), which might cause it to fail contract enforcement. To avoid this implicit coercion, specify your `data_type` with a nonzero scale, like `numeric(38, 6)`. dbt Core 1.7 and higher provides a warning if you don't specify precision and scale when providing a numeric data type.
 
 ## Example
 
@@ -47,6 +47,8 @@ models:
           - type: not_null
       - name: customer_name
         data_type: string
+      - name: non_integer
+        data_type: numeric(38,3)
 ```
 
 </File>
