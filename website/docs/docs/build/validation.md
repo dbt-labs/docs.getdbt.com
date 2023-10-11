@@ -14,14 +14,15 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 ## Prerequisites
 
-- You have installed the [MetricFlow CLI package](https://github.com/dbt-labs/metricflow)
+- You have installed [MetricFlow](https://github.com/dbt-labs/metricflow)
 
 ## Validations command
 
-You can run validations from the CLI with the following [MetricFlow commands](/docs/build/metricflow-cli):
+You can run validations from dbt Cloud or the command line with the following [MetricFlow commands](/docs/build/metricflow-cloud):
 
 ```bash
-mf validate-configs
+dbt sl validate-configs # dbt Cloud users
+mf validate-configs # dbt Core users
 ```
 
 ## Parsing

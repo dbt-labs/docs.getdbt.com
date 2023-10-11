@@ -14,7 +14,7 @@ MetricFlow allows you to define metrics in your dbt project whether in dbt Cloud
   - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) using the commands in [MetricFlow dbt Cloud](/docs/build/metricflow-cloud).
   
 - For dbt Core users:
-  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-cli).
+  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-core).
 
 However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 

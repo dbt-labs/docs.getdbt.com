@@ -14,7 +14,7 @@ MetricFlow handles SQL query construction and defines the specification for dbt 
   - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) using the commands in [MetricFlow dbt Cloud](/docs/build/metricflow-cloud).
   
 - For dbt Core users:
-  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-cli).
+  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-core).
 
 Before you start, consider the following guidelines:
 
