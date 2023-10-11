@@ -253,6 +253,14 @@ exposures:
 
 <TabItem value="semantic models">
 
+<VersionBlock lastVersion="1.7">
+
+Support for disabling semantic models has been added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
 <File name='semantic_models.yml'>
 
 ```yml
@@ -265,8 +273,6 @@ semantic_models:
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.7">
 
 The `enabled` configuration can be nested under the `config` key.
 

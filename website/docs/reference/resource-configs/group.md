@@ -268,6 +268,14 @@ metrics:
 
 <TabItem value="semantic models">
 
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models has been added in dbt Core v1.7.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
 <File name='schema.yml'>
 
 ```yml
@@ -288,8 +296,6 @@ semantic_models:
 ```
 
 </File>
-
-<VersionBlock firstVersion="1.7">
 
 The `group` configuration can be nested under the `config` key.
 

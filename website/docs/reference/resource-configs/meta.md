@@ -14,6 +14,7 @@ default_value: {}
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
+    { label: 'Exposures', value: 'exposures', },
     { label: 'Semantic Models', value: 'semantic models', },
   ]
 }>
@@ -175,6 +176,14 @@ exposures:
 
 <TabItem value="semantic models">
 
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7"> 
+
 <File name='semantic_models.yml'>
 
 ```yml
@@ -185,13 +194,11 @@ semantic_models:
       meta: {<dictionary>}
 
 ```
-<VersionBlock firstVersion="1.7"> 
-
-The `meta` configuration can be nested under the `config` key. 
-
-</VersionBlock>
+The `meta` configuration can be nusted under the `config` key. 
 
 </File>
+
+</VersionBlock>
 
 </TabItem>
 
