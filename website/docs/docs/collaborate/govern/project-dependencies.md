@@ -106,5 +106,5 @@ These are the exceptions, rather than the rule. Installing another team's projec
 <details>
 <summary>Can I define private packages in the <code>dependencies.yml</code> file?</summary>
 
-If you are attempting to use private packages via the [Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method) - you will need to continue defining them in the `packages.yml` file instead of in the `dependencies.yml` file as conditional rendering (i.e. Jinja-in-yaml) is not allowed.
+If you're using private packages with the [git token method](/docs/build/packages#git-token-method), you must define them in the `packages.yml` file instead of the `dependencies.yml` file. This is because conditional rendering (like Jinja-in-yaml) is not supported.
 </details>
