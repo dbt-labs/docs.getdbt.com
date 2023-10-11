@@ -17,7 +17,7 @@ Set your production environment using the [production environment checkbox](/doc
 
 ### Defer in the dbt Cloud IDE
 
-Defer in the IDE is as simple as toggling the `Defer to production` switch on the command bar! When enabled, dbt Cloud will:
+To enable 'Defer' in the dbt Cloud IDE, toggle the **Defer to production** button on the command bar. Once enabled, dbt Cloud will:
 
 1. Pull down the most recent manifest from the Production environment for comparison
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)
