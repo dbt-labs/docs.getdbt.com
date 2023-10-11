@@ -253,7 +253,7 @@ exposures:
 
 <TabItem value="semantic models">
 
-<VersionBlock lastVersion="1.7">
+<VersionBlock lastVersion="1.6">
 
 Support for disabling semantic models has been added in dbt Core v1.7
 
