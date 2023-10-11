@@ -17,13 +17,13 @@ models:
 
 <VersionBlock lastVersion="1.6">
 
-Access modifiers may be applied to models one-by-one in YAML properties. In v1.5 and v1.6, it is not possible to configure `access` for multiple models at once. Upgrade to v1.7 for additional configuration options. A group or subfolder contains models with a variety of access levels, and designating a model with `access: public` should always be a conscious and intentional choice.
+Access modifiers may be applied to models one-by-one in YAML properties. In v1.5 and v1.6, you are unable to configure `access` for multiple models at once. Upgrade to v1.7 for additional configuration options. A group or subfolder contains models with varying access levels, so when you designate a model with `access: public`, make sure you intend for this behavior.
 
 </VersionBlock>
 
 <VersionBlock firstVersion="1.7">
 
-Access modifiers can be applied in config files, including `the dbt_project.yml`, or to models one-by-one in YAML properties. Apply access configs to a subfolder, and it will configure the default for all models in that subfolder. When setting individual model access, a group or subfolder might contain a variety of access levels, and designating a model with `access: public` should always be a conscious and intentional choice.
+You can apply access modifiers in config files, including `the dbt_project.yml`, or to models one-by-one in YAML properties. Applying access configs to a subfolder modifies the default for all models in that subfolder, so make sure you intend for this behavior. When setting individual model access, a group or subfolder might contain a variety of access levels, so when you designate a model with `access: public` make sure you intend for this behavior.
 
 There are multiple approaches to configuring access:
 
