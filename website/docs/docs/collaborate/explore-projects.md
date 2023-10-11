@@ -128,8 +128,8 @@ You can use [graph operators](/reference/node-selection/graph-operators) on keyw
 ### Search with set operators 
 
 You can use multiple selector methods in your search query with [set operators](/reference/node-selection/set-operators). A space implies a union set operator and a comma for an intersection. For example:
-- `resource_type:metric,tag:nightly` &mdash; Returns the set of all metrics that also have the `nightly` tag
-- `+snowplow_sessions +fct_orders` &mdash; Returns the set of all resources that are parents of either `snowplow_sessions` or `fct_orders`
+- `resource_type:metric,tag:nightly` &mdash; Returns metrics with the tag `nightly`
+- `+snowplow_sessions +fct_orders` &mdash; Returns resources that are parent nodes of either `snowplow_sessions` or `fct_orders`
 
 ### Search with both keywords and selector methods
 
@@ -167,7 +167,7 @@ You can view the definition and latest run results of any resource in your proje
 An example of the details you might get for a model:
 
 - Status bar (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
-- **General** tab &mdash; The model’s lineage graph that you can interact with. The graph includes one parent level and one child level from the model.
+- **General** tab &mdash; The model’s lineage graph that you can interact with. The graph includes one parent node and one child node from the model.
 - **Code** tab &mdash; The source code and compiled code for the model.
 - **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. 
 - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
@@ -192,7 +192,7 @@ An example of the details you might get for an exposure:
 An example of the details you might get for a test:
 
 - Status bar (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
-- **General** &mdash; The test’s lineage graph that you can interact with. The graph includes one parent level and one child level from the test resource.
+- **General** &mdash; The test’s lineage graph that you can interact with. The graph includes one parent node and one child node from the test resource.
 - **Code** &mdash; The source code and compiled code for the test.
 - **Description** &mdash; A description of the test.
 - **Recent** &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
@@ -204,7 +204,7 @@ An example of the details you might get for a test:
 An example of the details you might get for each source table within a source collection:
 
 - Status bar (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
-- **General** &mdash; The source’s lineage graph that you can interact with. The graph includes one parent level and one child level from the source.
+- **General** &mdash; The source’s lineage graph that you can interact with. The graph includes one parent node and one child node from the source.
 - **Columns** &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
 - **Description** &mdash; A description of the source.
 - **Source freshness** &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
