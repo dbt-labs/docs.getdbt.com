@@ -283,7 +283,7 @@ The `enabled` configuration can be nested under the `config` key.
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, snapshots, and tests.
+An optional configuration for disabling models, seeds, snapshots, tests, and semantic models.
 
 * Default: true
 
