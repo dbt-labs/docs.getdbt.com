@@ -47,6 +47,6 @@ dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.
 ### Quick hits
 
 With these quick hits, you can now:
--  Configure a `delimiter` for a seed file.
+- Configure a `delimiter` for a seed file.
 - Use packages with the same git repo and unique subdirectory.
 - Moved the `date_spine` macro from dbt-utils to dbt-core.
