@@ -45,7 +45,11 @@ With the dbt Cloud IDE, you can seamlessly use [SQLFluff](https://sqlfluff.com/)
 - Works with Jinja and SQL, 
 - Comes with built-in [linting rules](https://docs.sqlfluff.com/en/stable/rules.html). You can also [customize](#customize-linting) your own linting rules.
 - Empowers you to [enable linting](#enable-linting) with options like **Lint** (displays linting errors and recommends actions) or **Fix** (auto-fixes errors in the IDE).
-- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management. 
+- Displays a **Code Quality** tab to view code errors, and provides code quality visibility and management.
+
+:::Ephemeral models not supported
+Linting doesn't support ephemeral models in dbt versions 1.5 and lower. Refer to the [FAQs](#faqs) for more info.
+:::
 
 ### Enable linting
 
