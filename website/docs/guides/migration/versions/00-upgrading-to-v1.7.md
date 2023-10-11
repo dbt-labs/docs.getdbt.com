@@ -37,7 +37,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Model governance
 
-Model governance was introduced in dbt Core v1.5 and it is continuing to be refined. The additional features and functionality have been added in v1.7 are as follows:
+dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.7 includes these additional features and functionality:
 
 - **[Breaking change detection](/reference/resource-properties/versions) for models with contracts enforced:** When dbt detects a breaking change to a model with an enforced contract during state comparison, it will now raise an error for versioned models and a warning for models that are not versioned.
 - **[Set `access` as a config](/reference/resource-configs/access):** It's now possible to set a model's `access` within config blocks in the model's file or the `dbt_project.yml` for an entire subfolder at once.
