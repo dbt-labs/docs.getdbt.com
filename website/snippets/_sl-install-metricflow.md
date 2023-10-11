@@ -1,8 +1,9 @@
-Install the [MetricFlow CLI](/docs/build/metricflow-cli) as an extension of a dbt adapter from PyPI. The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
+This step is for dbt Core users only.
 
-Use pip install `metricflow` and your [dbt adapter](/docs/supported-data-platforms):
+Install [MetricFlow dbt Core](/docs/build/metricflow-core) as an extension of a dbt adapter from PyPI. The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11. You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
 
-- Create or activate your virtual environment. `python -m venv venv` or `source your-venv/bin/activate`
-- Run `pip install "dbt-metricflow[your_adapter_name]"`
-  - You must specify `[your_adapter_name]`. 
-  - For example, run `pip install "dbt-metricflow[snowflake]"` if you use a Snowflake adapter.
+1. Create or activate your virtual environment. `python -m venv venv` or `source your-venv/bin/activate`
+2. Run `pip install dbt-metricflow`
+   - You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+
+**Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.

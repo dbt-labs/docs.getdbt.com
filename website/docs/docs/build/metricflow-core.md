@@ -1,32 +1,31 @@
 ---
-title: MetricFlow CLI
-id: metricflow-cli
-description: "Query metrics and metadata in your dbt project with the metricflow cli"
-sidebar_label: "MetricFlow CLI commands"
+title: MetricFlow dbt Core
+id: metricflow-core
+description: "Query metrics and metadata in your dbt project with MetricFlow"
+sidebar_label: "MetricFlow dbt Core"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
+Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow commands. 
 
-:::info
-[dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or dbt Core users can use the [MetricFlow CLI](/docs/build/metricflow-cli) to define metrics in their local project. However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
-:::
-# Installation
+MetricFlow allows you to define and query metrics in your dbt project in [dbt Core](/docs/core/about-core-setup). However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
-You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install the MetricFlow CLI on Windows or Linux operating systems:
+## Installation
+
+MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11 and you can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
 
 1. Create or activate your virtual environment.`python -m venv venv`
 2. Run `pip install dbt-metricflow`
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
 
-  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+**Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 
-The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
+## MetricFlow commands
 
-# CLI commands
+MetricFlow provides the following commands to retrieve metadata and query metrics. Use the `mf` prefix before the command name to execute them. For example, to list all metrics, run `mf list metrics`. 
 
-The MetricFlow CLI provides the following commands to retrieve metadata and query metrics. 
+This is different to dbt Cloud [MetricFlow commands](/docs/build/metricflow-cloud), which use an `dbt sl` prefix.
 
-To execute the commands, use the `mf` prefix before the command name. For example, to list all metrics, run `mf list metrics`:
 
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
@@ -36,41 +35,43 @@ To execute the commands, use the `mf` prefix before the command name. For exampl
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
-- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the CLI. Refer to [query examples](#query-examples) to help you get started.
+- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 
-## List
+### List
 
 This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
 
 
-## List metrics
+### List metrics
 
 ```bash
 mf list 
+```
 
 This command lists the metrics with their available dimensions:
 
 ```bash
 mf list metrics <metric_name>
+
 Options:
   --search TEXT          Filter available metrics by this search term
   --show-all-dimensions  Show all dimensions associated with a metric.
   --help                 Show this message and exit.
 ```
 
-## List dimensions
+### List dimensions
 
 This command lists all unique dimensions for a metric or multiple metrics. It displays only common dimensions when querying multiple metrics:
 
 ```bash
 mf list dimensions --metrics <metric_name>
+
 Options:
-  --metrics SEQUENCE  List dimensions by given metrics (intersection). Ex.
-                      --metrics bookings,messages
+  --metrics SEQUENCE  List dimensions by given metrics (intersection). Ex. --metrics bookings,messages
   --help              Show this message and exit.
 ```
 
-## List dimension-values
+### List dimension-values
 
 This command lists all dimension values with the corresponding metric:
 
@@ -86,19 +87,18 @@ Options:
                       of the data (inclusive)
   --help              Show this message and exit.
 ```
-## List entities
+### List entities
 
 This command lists all unique entities:
 
 ```bash
 mf list entities --metrics <metric_name>
 Options:
-  --metrics SEQUENCE  List entities by given metrics (intersection). Ex.
-                      --metrics bookings,messages
+  --metrics SEQUENCE  List entities by given metrics (intersection). Ex. --metrics bookings,messages
   --help              Show this message and exit.
 ```
 
-## Validate-configs
+### Validate-configs
 
 This command performs validations against the defined semantic model configurations:
 
@@ -121,7 +121,7 @@ Options:
   --help                          Show this message and exit.
 ```
 
-## Health checks
+### Health checks
 
 This command performs a health check against the data platform you provided in the configs:
 
@@ -129,7 +129,7 @@ This command performs a health check against the data platform you provided in t
 mf health-checks
 ```
 
-## Tutorial
+### Tutorial
 
 Follow the dedicated MetricFlow tutorial to help you get started:
 
@@ -137,7 +137,7 @@ Follow the dedicated MetricFlow tutorial to help you get started:
 mf tutorial
 ```
 
-## Query
+### Query
 
 Create a new query with MetricFlow, execute that query against the user's data platform, and return the result:
 
@@ -189,7 +189,7 @@ Options:
   ```
 
 
-## Query examples
+### Query examples
 
 The following tabs present various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
@@ -389,7 +389,7 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 </TabItem>
 </Tabs>
 
-## Time granularity
+### Time granularity
 
 Optionally, you can specify the time granularity you want your data to be aggregated at by appending two underscores and the unit of granularity you want to `metric_time`, the global time dimension. You can group the granularity by: `day`, `week`, `month`, `quarter`, and `year`. 
 

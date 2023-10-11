@@ -33,8 +33,12 @@ Use this guide to fully experience the power of the universal dbt Semantic Layer
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud 
 - [Connect and query API](#connect-and-query-api) with dbt Cloud
 
-
-MetricFlow allows users to define metrics in their dbt project in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or command line. [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or dbt Core users can use the [MetricFlow CLI](/docs/build/metricflow-cli) to define metrics in their local project.
+MetricFlow allows you to define metrics in your dbt project whether in dbt Cloud or dbt Core:
+- For dbt Cloud users:
+  - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) using the commands in [MetricFlow dbt Cloud](/docs/build/metricflow-cloud).
+  
+- For dbt Core users:
+  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-cli).
 
 However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 

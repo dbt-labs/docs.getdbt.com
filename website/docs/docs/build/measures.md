@@ -234,6 +234,15 @@ metrics:
 
 We can query the semi-additive metrics using the following syntax:
 
+**dbt Cloud users**:
+
+```bash
+dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
+dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
+```
+
+**dbt Core users**:
+
 ```bash
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 

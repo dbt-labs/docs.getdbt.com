@@ -124,7 +124,7 @@ You can query any granularity and offset window combination. The following examp
         alias: bookings_7_days_ago
 ```
 
-When you run the query  `mf query --metrics d7_booking_change --group-by metric_time__month` for the metric, here's how it's calculated:
+When you run the query  `dbt sl query --metrics d7_booking_change --group-by metric_time__month` (dbt Core users can use the `mf query` prefix) for the metric, here's how it's calculated:
 
 1. We retrieve the raw, unaggregated dataset with the specified measures and dimensions at the smallest level of detail, which is currently 'day'.
 2. Then, we perform an offset join on the daily dataset, followed by performing a date trunc and aggregation to the requested granularity.
