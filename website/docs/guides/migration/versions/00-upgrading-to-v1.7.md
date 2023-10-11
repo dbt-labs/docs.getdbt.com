@@ -24,7 +24,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 - Automatically create metrics on measures with `create_metric: true`.
 - Optional [`label`](/docs/build/semantic-models) in semantic_models, measures, dimensions and entities.
-- New configurations for semantic models - [enable/disable](/reference/resource-configs/enabled), [group](/reference/resource-configs/group_), and [meta](/reference/resource-configs/meta).
+- New configurations for semantic models - [enable/disable](/reference/resource-configs/enabled), [group](/reference/resource-configs/group), and [meta](/reference/resource-configs/meta).
 - Support `fill_nulls_with` and `join_to_timespine` for metric nodes.
 - `saved_queries` extends governance beyond the semantic objects to their consumption.
 
