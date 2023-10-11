@@ -109,6 +109,29 @@ semantic_models:
         type: categorical
 ```
 
+<VersionBlock firstVersion="1.7">
+
+Semantic models support configs in either the schema file or at the project level. 
+
+Semantic model config in `models/semantic.yml`:
+```yml
+semantic_models:
+  - name: orders
+    config:
+      enabled: true | false
+      group: some_group
+```
+
+Semantic model config in `dbt_project.yml`:
+```yml
+semantic_models:
+  my_project_name:
+    +enabled: true | false
+    +group: some_group
+```
+
+</VersionBlock>
+
 ### Name 
 
 Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time. Avoid using double underscores (__) in the name as they're not supported.
