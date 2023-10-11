@@ -24,6 +24,7 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project.
 
 1. Ensure you meet the prerequisites above.
+
 2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage.
 3. Follow the banner instructions and download the config file to `~/.dbt/dbt_cloud.yml` ( Mac and Linux users) or `C:\Users\yourusername\.dbt\dbt_cloud.yml` (Windows users). The config file looks like this:
 
@@ -41,9 +42,14 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     - project-id: "<project-id>"
         account-host: "<account-host>"
         api-key: "<user-api-key>"
+
     ```
 
 4. After downloading the config file, navigate to a dbt project in your terminal:
+
+    ```bash
+    cd ~/dbt-projects/jaffle_shop
+    ```
 
 5. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
 
