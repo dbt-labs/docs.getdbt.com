@@ -83,7 +83,7 @@ The following profile fields are optional to set up. They let you configure your
 | Profile field                 | Example                          | Description                                                                                                 |
 | ----------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `threads`                     | `8`                              | How many threads dbt should use (default is `1`)                                                            |
-| `roles`                       | `system: analyst`                | Catalog roles can be set under the optional `roles` parameter using following format: `catalog: role`.     |
+| `roles`                       | `system: analyst`                | Catalog roles can be set under the optional `roles` parameter using the following format: `catalog: role`.     |
 | `session_properties`          | `query_max_run_time: 4h`         | Sets Trino session properties used in the connection. Execute `SHOW SESSION` to see available options       |
 | `prepared_statements_enabled` | `true` or `false`                | Enable usage of Trino prepared statements (used in `dbt seed` commands) (default: `true`)                   |
 | `retries`                     | `10`                             | Configure how many times all database operation is retried when connection issues arise  (default: `3`)     |
