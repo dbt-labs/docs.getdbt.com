@@ -22,7 +22,7 @@ Defer in the IDE is as simple as toggling the `Defer to production` switch on th
 1. Pull down the most recent manifest from the Production environment for comparison
 2. Pass the `--defer` flag to the command (for any command that accepts the flag)
 
-For example, if you were to start developing with on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), make an edit to a single model, and run `dbt build -s state:modified` you would see *just* that model run, with any ` {{ ref() }}` functions resolve to the production location of the reffed models!
+For example, if you were to start developing on a new branch with [nothing in your development schema](/reference/node-selection/defer#usage), edit a single model, and run `dbt build -s state:modified` &mdash;  only the edited model would run. Any `{{ ref() }}` functions will point to the production location of the referenced models
 
 ### Defer in dbt Cloud CLI
 
