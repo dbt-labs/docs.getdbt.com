@@ -26,7 +26,7 @@ For example, if you were to start developing on a new branch with [nothing in yo
 
 ### Defer in dbt Cloud CLI
 
-One key difference between using `--defer` in the Cloud CLI vs the IDE is that defer is *automatically on by default for all invocations*, using artifacts from your production evironment to compare. You can pass the `--no-defer` flag to your dbt command to disable this behavior. This flag is unique to the dbt Cloud CLI only.
+One key difference between using `--defer` in the dbt Cloud CLI and the dbt Cloud IDE is that `--defer` is *automatically* enabled in the dbt Cloud CLI for all invocations, comparing with production artifacts. You can disable it with the `--no-defer` flag.
 
 The dbt Cloud CLI offers additional flexibility by letting you choose the source environment for deferral artifacts. You can set a `defer-env-id key` in either your `dbt_project.yml` or `dbt_cloud.yml` file.
 
