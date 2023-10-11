@@ -40,7 +40,7 @@ For a richer experience with dbt Explorer, you must:
 
 Richer and more timely metadata will become available as dbt, the Discovery API, and the underlying dbt Cloud platform evolves.
 
-## Explore the project full lineage graph {#project-lineage}
+## Explore your project's lineage graph {#project-lineage}
 
 dbt Explorer provides a visualization of your project’s <Term id="dag">DAG</Term> that you can interact with. To access it, select **Overview** in the left sidebar and click the **Explore Lineage** button on the main (center) section of the page. 
 
