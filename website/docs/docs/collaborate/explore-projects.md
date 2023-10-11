@@ -55,7 +55,7 @@ To interact with the full lineage graph, you can:
 - Hover over any item in the graph to display the resource’s name and type.
 - Zoom in and out on the graph by mouse-scrolling.
 - Grab and move the graph and the nodes.
-- Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph’s right-hand side that displays a high-level summary of the resource’s details. The side panel includes a **General** tab for information like description, materialized type, and other details; and also a **Relationships** tab that lists the resources it has a relationship with (if any). 
+- Select a resource to highlight its relationship with other resources in your project. A panel opens on the graph’s right-hand side that displays a high-level summary of the resource’s details. The side panel includes a **General** tab for information like description, materialized type, and other details.
     - Click the Share icon in the side panel to copy the graph’s link to your clipboard.
     - Click the View Resource icon in the side panel to [view the resource details](#view-resource-details). 
 - [Search and select specific resources](#search-resources) or a subset of the DAG using selectors and graph operators. For example:
