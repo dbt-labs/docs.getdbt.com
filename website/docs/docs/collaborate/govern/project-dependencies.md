@@ -101,7 +101,7 @@ There are a few cases where installing another internal project as a package can
 
 These are the exceptions, rather than the rule. Installing another team's project as a package adds complexity, latency, and risk of unnecessary costs. By defining clear interface boundaries across teams, by serving one team's public models as "APIs" to another, and by enabling practitioners to develop with a more narrowly-defined scope, we can enable more people to contribute, with more confidence, while requiring less context upfront.
 
-### FAQs
+## FAQs
 
 <details>
 <summary>Can I define private packages in the `dependencies.yml` file?</summary>
