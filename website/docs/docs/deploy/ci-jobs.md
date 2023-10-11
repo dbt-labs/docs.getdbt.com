@@ -70,6 +70,10 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
   This can make your code less human-readable but it will _not_ affect dbt functionality. 
 
+    :::info
+    If you are using a non-native integration and attempting to trigger the CI job, you will also need to include either `git_sha` or `git_branch` to the payload.
+    :::
+
 ## Example pull requests
 
 The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
