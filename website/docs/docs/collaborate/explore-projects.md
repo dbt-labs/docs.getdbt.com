@@ -192,21 +192,21 @@ An example of the details you might get for an exposure:
 An example of the details you might get for a test:
 
 - Status bar (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
-- **General** &mdash; The test’s lineage graph that you can interact with. The graph includes one parent node and one child node from the test resource.
-- **Code** &mdash; The source code and compiled code for the test.
-- **Description** &mdash; A description of the test.
-- **Recent** &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
-- **Details** &mdash; Details like schema, severity, package, and more.
-- **Relationships** &mdash; The nodes the test **Depends On**.
+- **General** tab &mdash; The test’s lineage graph that you can interact with. The graph includes one parent node and one child node from the test resource.
+- **Code** tab &mdash; The source code and compiled code for the test.
+- **Description** section &mdash; A description of the test.
+- **Recent** section &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
+- **Details** section &mdash; Details like schema, severity, package, and more.
+- **Relationships** section &mdash; The nodes the test **Depends On**.
 
 ### Example of source details
 
 An example of the details you might get for each source table within a source collection:
 
 - Status bar (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
-- **General** &mdash; The source’s lineage graph that you can interact with. The graph includes one parent node and one child node from the source.
-- **Columns** &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
-- **Description** &mdash; A description of the source.
-- **Source freshness** &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
-- **Details** &mdash; Details like database, schema, and more.
-- **Relationships** &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
+- **General** tab &mdash; The source’s lineage graph that you can interact with. The graph includes one parent node and one child node from the source.
+- **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
+- **Description** section &mdash; A description of the source.
+- **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
+- **Details** section &mdash; Details like database, schema, and more.
+- **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
