@@ -1,6 +1,6 @@
 ---
 title: "About dbt Core"
-id: "about-the-cli"
+id: "about-dbt-core"
 sidebar_label: "About dbt Core"
 ---
 
@@ -22,4 +22,4 @@ If you're using the command line, we recommend learning some basics of your term
 
 You can find more information on installing and setting up the dbt Core [here](/docs/core/installation).
 
-dbt also supports a dbt Cloud CLI and dbt Core, both command line tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).
+**Note** &mdash; dbt supports a dbt Cloud CLI and dbt Core, both command line interface tools that enable you to run dbt commands. The key distinction is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its [features](/docs/cloud/about-cloud/dbt-cloud-features).

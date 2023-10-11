@@ -9,7 +9,7 @@ dbt Core is an [open-source](https://github.com/dbt-labs/dbt-core) tool that ena
 
  This section of our docs will guide you through various settings to get started:
 
-- [About the CLI](/docs/core/about-the-cli)
+- [About dbt Core](/docs/core/about-the-cli)
 - [Installing dbt](/docs/core/installation)
 - [Connecting to a data platform](/docs/core/connect-data-platform/profiles.yml)
 - [How to run your dbt projects](/docs/running-a-dbt-project/run-your-dbt-projects)
