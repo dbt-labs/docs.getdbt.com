@@ -25,7 +25,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 1. Ensure you meet the prerequisites above.
 
-2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage. Or you can download the credentials from the following links depending on your region:
+2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage. Alternatively, if you're in dbt Cloud, you can download the credentials from the links provided based on your region:
    
     - North America: https://cloud.getdbt.com/cloud-cli
     - EMEA: https://emea.dbt.com/cloud-cli
