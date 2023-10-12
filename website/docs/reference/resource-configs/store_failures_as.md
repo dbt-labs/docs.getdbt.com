@@ -3,7 +3,7 @@ resource_types: [tests]
 id: "store_failures_as"
 ---
 
-For the `test` resource type, `store_failures_as` is an optional config that specifies how test failures should be stored in the database. If [`store_failures`](/reference/resource-configs/store_failures) is configured, `store_failures_as` takes precedence. 
+For the `test` resource type, `store_failures_as` is an optional config that specifies how test failures should be stored in the database. If [`store_failures`](/reference/resource-configs/store_failures) is also configured, `store_failures_as` takes precedence. 
 
 The three supported values are:
 
