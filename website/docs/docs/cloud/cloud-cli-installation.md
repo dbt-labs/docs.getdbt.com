@@ -173,9 +173,13 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 ## Next steps
 
-After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. 
+After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core.  
 
 For example, you can execute `dbt compile` to compile a project using dbt Cloud.
+
+Note, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+
+
 ## FAQs
 
 <details>
