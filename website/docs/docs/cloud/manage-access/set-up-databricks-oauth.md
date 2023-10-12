@@ -16,7 +16,7 @@ dbt Cloud supports developer OAuth ([OAuth for partner solutions](https://docs.d
 
 Databricks OAuth support in dbt Cloud is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud) and subject to change without notification. More updates to this feature coming soon.
 
-Current constraints / limitations:
+Current limitations:
 - Databricks OAuth applications are in public preview
 - The current experience requires the IDE to be restarted every hour (access tokens expire after 1 hour - [workaround](https://docs.databricks.com/en/integrations/manage-oauth.html#override-the-default-token-lifetime-policy-for-dbt-core-power-bi-or-tableau-desktop))
  
