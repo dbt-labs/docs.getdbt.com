@@ -23,7 +23,6 @@ seeds:
 </File>
 
 
-
 Or:
 
 <File name='seeds/properties.yml'>
