@@ -84,4 +84,4 @@ Use this configuration only when required. Otherwise you can omit this configura
 
 ## Troubleshooting
 
-The `delimiter` configuration should contain a value when set and not be empty. This value should not be set to a semicolon.
+The `delimiter` configuration should contain a value when set and not be empty.
