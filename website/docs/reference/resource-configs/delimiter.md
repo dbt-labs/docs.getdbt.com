@@ -20,7 +20,7 @@ Delimiter is new functionality available beginning with dbt Core v1.7.
   
 ## Usage
 
-Specify a custom delimiter in your `dbt_project.yml` file to override the global separator for all seed values:
+Specify a delimiter in your `dbt_project.yml` file to customize the global separator for all seed values:
 
 <File name='dbt_project.yml'>
 
@@ -58,7 +58,7 @@ For a project with:
 
 ### Use a custom delimiter to override global values
 
-You can make the default delimiter "|" for all seeds but have seed_a still use "," like this:
+You can set a default behavior for all seeds with an exception for one seed, `seed_a`, which uses a comma:
 
 <File name='dbt_project.yml'>
 
@@ -72,7 +72,7 @@ seeds:
 
 </File>
 
-Or you can configure the country_codes seed to use the "|" delimiter:
+Or you can configure custom behavior for one seed. The `country_codes` uses the "|" delimiter:
 
 <File name='seeds/properties.yml'>
 
@@ -87,7 +87,7 @@ seeds:
 
 </File>
 
-Which would result in a CSV that looks like this:
+And results in a CSV like this:
 
 <File name='seeds/country_codes.csv'>
 
