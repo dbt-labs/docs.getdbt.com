@@ -98,8 +98,8 @@ $ dbt ls --select snowplow.* --output json --output-keys name resource_type desc
 **Listing Semantic models**
 
 ```
-$ dbt ls -s +semantic_model:number                      
-
+# list all resources upstream of your orders semantic model
+dbt ls -s +semantic_model:orders
 ```
 
 </VersionBlock>
