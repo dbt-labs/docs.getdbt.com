@@ -37,12 +37,15 @@ This is different to dbt Core [MetricFlow commands](/docs/build/metricflow-core)
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
 - [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
-- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
+- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the dbt Cloud IDE or dbt Cloud CLI. Refer to [query examples](#query-examples) to help you get started.
+
+<!--- commenting out following commands as theyre not currently supported in cloud: 
+- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
-- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the dbt Cloud IDE or dbt Cloud CLI. Refer to [query examples](#query-examples) to help you get started.
+-->
 
 ### List
 
