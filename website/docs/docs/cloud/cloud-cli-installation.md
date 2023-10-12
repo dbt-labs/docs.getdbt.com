@@ -68,7 +68,7 @@ We recommend using virtual environments (venv) to namespace pip modules.
   dbt --version
   ```
 
-2. Run the following command to install the dbt Cloud CLI:
+2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
 
   ```bash
   pip3 install dbt
@@ -165,7 +165,9 @@ During the public preview period, we recommend updating before filing a bug repo
 <Tabs>
 <TabItem value="existing" label="Existing dbt Core users (pip)">
 
-To update, run `pip install --upgrade dbt`.
+To update:
+- Make sure you're in your virtual environment
+- Run `pip install --upgrade dbt`.
 	
 </TabItem>
 
