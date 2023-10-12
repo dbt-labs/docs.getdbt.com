@@ -13,7 +13,7 @@ An optional seed configuration used to customize how you separate values in a [s
 
 :::info New to dbt Core 1.7
 
-Delimiter is new functionality available in dbt Core v1.7+
+Delimiter is new functionality available beginning with dbt Core v1.7.
 
 :::
 
