@@ -362,10 +362,8 @@ Supported in v1.6 or newer.
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
 
 ```bash
-
-dbt ls --resource-type semantic_model # lists the semantic model resource type
-dbt ls -s +semantic_model:number # lists the quantity of semantic models 
-
+dbt list --select semantic_model:*        # list all semantic models 
+dbt list --select +semantic_model:orders  # list your semantic model named "orders" and all upstream resources
 ```
 
 </VersionBlock>
