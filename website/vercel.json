@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/build/metricflow-cli",
+      "destination": "/docs/build/metricflow-commands",
+      "permanent": true
+    },
+    {
       "source": "/faqs/models/reference-models-in-another-project",
       "destination": "/docs/collaborate/govern/project-dependencies",
       "permanent": true

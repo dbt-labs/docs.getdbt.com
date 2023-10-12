@@ -18,8 +18,6 @@ import RunProdJob from '/snippets/_sl-run-prod-job.md';
 
 This getting started page presents a sample workflow to help you create your first metrics in dbt Cloud or the command line interface (CLI). It uses the [Jaffle shop example project](https://github.com/dbt-labs/jaffle-sl-template) as the project data source and is available for you to use. 
 
-This guide uses [MetricFlow dbt Cloud commands](/docs/build/metricflow-cloud). If you're using dbt Core, refer to [MetricFlow dbt Core](/docs/build/metricflow-core) for relevant commands.
-
 If you prefer, you can create semantic models and metrics for your own dbt project. This page will guide you on how to:
 
 - [Create a semantic model](#create-a-semantic-model) using MetricFlow
@@ -31,10 +29,10 @@ If you prefer, you can create semantic models and metrics for your own dbt proje
 
 MetricFlow allows you to define metrics in your dbt project whether in dbt Cloud or dbt Core:
 - For dbt Cloud users:
-  - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) using the commands in [MetricFlow dbt Cloud](/docs/build/metricflow-cloud).
+  - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and query them with [MetricFlow commands](/docs/build/metricflow-commands).
   
 - For dbt Core users:
-  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-core).
+  - You can define metrics and query them using [MetricFlow commands](/docs/build/metricflow-commands).
 
 However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 

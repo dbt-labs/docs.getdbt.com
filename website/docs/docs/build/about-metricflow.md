@@ -11,10 +11,10 @@ This guide introduces MetricFlow's fundamental ideas for new users. MetricFlow, 
 MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics, whether in dbt Cloud or dbt Core:
 
 - For dbt Cloud users:
-  - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) using the commands in [MetricFlow dbt Cloud](/docs/build/metricflow-cloud).
+  - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and query them with [MetricFlow commands](/docs/build/metricflow-commands).
   
 - For dbt Core users:
-  - You can define metrics using commands in [MetricFlow dbt Core](/docs/build/metricflow-core).
+  - You can define metrics and query them using [MetricFlow commands](/docs/build/metricflow-commands).
 
 Before you start, consider the following guidelines:
 
@@ -29,7 +29,7 @@ MetricFlow is a SQL query generation tool designed to streamline metric creation
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
 - MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) code is source available, and compatible with dbt v1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
 - As a part of the dbt Semantic Layer, MetricFlow empowers organizations to define metrics using YAML abstractions.
-- To query metric dimensions, dimension values, and validate configurations, you can install MetricFlow in [dbt Cloud](/docs/build/metricflow-cloud) or [dbt Core](/docs/build/metricflow-core). 
+- To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
 MetricFlow abides by these principles:
 

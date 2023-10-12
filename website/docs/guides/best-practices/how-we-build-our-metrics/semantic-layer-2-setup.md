@@ -33,7 +33,7 @@ Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-her
 git checkout start-here
 ```
 
-For more information you can [look at the docs](/docs/build/metricflow-core) or checkout a [Quickstart](https://docs.getdbt.com/quickstarts) to get more familiar with setting up a dbt project.
+For more information you can [look at the docs](/docs/build/metricflow-commands) or checkout a [Quickstart](https://docs.getdbt.com/quickstarts) to get more familiar with setting up a dbt project.
 
 ## Basic commands
 

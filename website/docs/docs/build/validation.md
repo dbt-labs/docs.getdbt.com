@@ -18,7 +18,7 @@ The code that handles validation [can be found here](https://github.com/dbt-labs
 
 ## Validations command
 
-You can run validations from dbt Cloud or the command line with the following [MetricFlow commands](/docs/build/metricflow-cloud):
+You can run validations from dbt Cloud or the command line with the following [MetricFlow commands](/docs/build/metricflow-commands):
 
 ```bash
 dbt sl validate-configs # dbt Cloud users

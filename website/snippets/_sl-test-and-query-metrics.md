@@ -2,7 +2,7 @@ This section will explain how you can test and run MetricFlow commands with dbt 
 
 :::important Testing and querying metrics in the dbt Cloud IDE not yet supported
 
-Support for running [MetricFlow commands](/docs/build/metricflow-cloud) in the dbt Cloud IDE is not available but is coming soon. 
+Support for running [MetricFlow commands](/docs/build/metricflow-commands) in the dbt Cloud IDE is not available but is coming soon. 
 
 You can use the **Preview** or **Compile** buttons in the IDE to run semantic validations and make sure your metrics are defined. Alternatively, you can run commands with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) or with SQL client tools like DataGrip, DBeaver, or RazorSQL. 
 
