@@ -17,37 +17,43 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
 2. Authenticate with either Tableau Server or Tableau Cloud
 3. You need either a [JDBC URL](/docs/dbt-cloud-apis/sl-jdbc#connection-parameters) or a dbt Cloud account's [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
+4. Have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresse). (Single-Tenant coming soon)
 
 
 ## Installing
 
-1. Install this file () locally and add it to your default folder
-			`Windows: C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
-			`Mac: /Users/[user]/Documents/My Tableau Repository/Connectors`
-3. Install this [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system
-			`Windows: C:\Program Files\Tableau\Drivers`
-			`Mac: ~/Library/Tableau/Drivers`
-4. Open Tableau Desktop and find the connector in the lefthand side called "dbt Semantic Layer by dbt Labs" 
-5. Connect with your Host, Environment Id, and Service Token information that's provided to you in your dbt Cloud Semantic Layer configuration
+1. Install this file () locally and add it to your default folder:
+   - Windows: `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
+   - Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
+2. Install the [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system:
+   - Windows: `C:\Program Files\Tableau\Drivers`
+   - Mac: `~/Library/Tableau/Drivers`
+   - Linux: ` /opt/tableau/tableau_driver/jdbc`
+3. Open Tableau Desktop and find the connector in the left-hand side called **dbt Semantic Layer by dbt Labs**
+4. Connect with your Host, Environment ID, and service token information that's provided to you in your dbt Cloud Semantic Layer configuration.
 
 
 ## Using the integration
 
-Once you authenticate, you'll be directed to the data source page with all the metrics and dimensions configured in your Semantic Layer. 
+Once you authenticate, the system will direct you to the data source page with all the metrics and dimensions configured in your Semantic Layer. 
 
-From there, you can go directly to a worksheet in the bottom left hand corner, and you'll find all the metrics and dimensions that are available to query on the left hand side of your window.
+- From there, go directly to a worksheet in the bottom left hand corner.
+- Then, you'll find all the metrics and dimensions that are available to query on the left-hand side of your window.
 
-You can visit the [Tableau documentation] (https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
+Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
 
 ## Things to note
 
-1. You will notice that the aggregation type for all of your metrics is "SUM" and it cannot be changed. The dbt Semantic Layer controls aggregation type and it is deliberately immutable. Note that the underlying aggregation in the dbt Semantic Layer may not be "SUM" (SUM is the default selection in Tableau)
-2. We surface all metrics and dimensions from the dbt Semantic Layer in the left hand side, but it should be noted that not all of them can be combined with one another. You will recieve an error message if a particular dimension cannot be sliced with a metric (or vice versa). 
-3. Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (e.g., count distinct). T
+1. All metrics use the "SUM" aggregation type, and this can't be altered. The dbt Semantic Layer controls the aggregation type and it is intentionally fixed. Keep in mind that the underlying aggregation in the dbt Semantic Layer might not be "SUM" (even though "SUM" is Tableau's default).
+2. Tableau surfaces all metrics and dimensions from the dbt Semantic Layer on the left-hand side. Note, that not all metrics and dimensions can be combined with one another. You will receive an error message if a particular dimension cannot be sliced with a metric (or vice versa). 
+   - To display available metrics and dimensions, we return metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts. 
+   - Since this is treated as a table, we can't dynamically change what is available. This means we display ALL available metrics and dimensions even if a particular metric and dimension combination isn't available. 
+   
+3. Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 
 ## Unsupported functionality
 
-Note that we may support some of this functionality in a future release:
+The following features aren't supported at this time, however, we may support some of this functionality in a future release:
 
 1. Updating the data source page
 2. Using "Extract" Mode
