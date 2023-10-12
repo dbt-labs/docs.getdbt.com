@@ -120,6 +120,7 @@ const sidebarSettings = {
               link: { type: "doc", id: "docs/cloud/about-cloud-develop" },
               items: [
                 "docs/cloud/about-cloud-develop",
+                "docs/cloud/about-cloud-develop-defer",
                 {
                   type: "category",
                   label: "dbt Cloud CLI",

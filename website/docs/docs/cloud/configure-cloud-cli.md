@@ -26,7 +26,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 1. Ensure you meet the prerequisites above.
 
 2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage.
-3. Follow the banner instructions and download the config file to `~/.dbt/dbt_cloud.yml`. The config file looks like:
+3. Follow the banner instructions and download the config file to `~/.dbt/dbt_cloud.yml` ( Mac and Linux users) or `C:\Users\yourusername\.dbt\dbt_cloud.yml` (Windows users). The config file looks like this:
 
     ```yaml
     version: "1"
