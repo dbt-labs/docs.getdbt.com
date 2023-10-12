@@ -32,27 +32,27 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 :::info Use native packages or a virtual environment to avoid overriding dbt Core
 
-One of the benefits of the dbt Cloud CLI is that there is no need to manage Python environments. We provide this Python package for users who are using the dbt Cloud CLI in place of dbt Core for easy compatibility with existing environments.
+Installing the dbt Cloud CLI with pip replaces dbt Core, if it is installed. This change can be avoided by using the native install method and configuring your PATH or by installing with pip into a new virtual environment. 
 
-It replaces dbt Core, but this change can be avoided by using the native install method and configuring your PATH or by creating a new virtual environment. To switch back to dbt Core, follow the dbt Core installation instructions.
+To switch back to dbt Core, follow the dbt Core installation instructions.
 
 ::: 
 
 Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
 
-### Install a virtual environment
+### Create a virtual environment
 
-We recommend using virtual environments (venv) to namespace pip modules.
+We recommend using virtual environments (venv) to namespace the Cloud CLI.
 
 1. Create a new venv:
    ```shell
-   python3 -m venv dbt-env
+   python3 -m venv dbt-cloud
     ```
 
 2. Activate the virtual environment each time you create a shell window or session:
   ```shell   
-  source dbt-env/bin/activate         # activate the environment for Mac and Linux OR
-  dbt-env\Scripts\activate            # activate the environment for Windows
+  source dbt-cloud/bin/activate         # activate the environment for Mac and Linux OR
+  dbt-cloud\Scripts\activate            # activate the environment for Windows
   ```
 
 3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, $HOME/.bashrc, $HOME/.zshrc) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
