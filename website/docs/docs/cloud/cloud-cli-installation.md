@@ -32,50 +32,29 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 :::info Use native packages or a virtual environment to avoid overriding dbt Core
 
-One of the benefits of the dbt Cloud CLI is that there is no need to manage Python environments. We provide this Python package for users who are using the dbt Cloud CLI in place of dbt Core for easy compatibility with existing environments.
+Installing the dbt Cloud CLI with pip replaces dbt Core. This change can be avoided by using the native install method and configuring your PATH or by creating a new virtual environment.
 
-It replaces dbt Core, but this change can be avoided by using the native install method and configuring your PATH or by creating a new virtual environment. To switch back to dbt Core, follow the dbt Core installation instructions.
+Otherwise, to switch back to dbt Core, uninstall the Cloud CLI and follow the dbt Core installation instructions.
 
 ::: 
 
-Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
+1. We recommend [installing virtual environments (venv)](/docs/core/pip-install#using-virtual-environments) to namespace "cloud-cli"
+   - Venv name should be: `python3 -m venv dbt-cloud` and session should be activated with `source dbt-cloud/bin/activate`.
 
-### Install a virtual environment
-
-We recommend using virtual environments (venv) to namespace pip modules.
-
-1. Create a new venv:
-   ```shell
-   python3 -m venv dbt-env
-    ```
-
-2. Activate the virtual environment each time you create a shell window or session:
-  ```shell   
-  source dbt-env/bin/activate         # activate the environment for Mac and Linux OR
-  dbt-env\Scripts\activate            # activate the environment for Windows
-  ```
-
-3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, $HOME/.bashrc, $HOME/.zshrc) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
-   ```shell
-   alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
-   ```
-
-### Install dbt Cloud CLI in pip
-
-1. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
+2. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
 
   ```bash
   dbt --version
   ```
 
-2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
+3. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
 
   ```bash
   pip3 install dbt
   ```
 
-3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
-4. Reinstall dbt Core using the version from Step 2.
+4. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
+5. Reinstall dbt Core using the version from Step 2.
 
   ```bash
   pip3 uninstall dbt-core dbt
@@ -173,7 +152,7 @@ To update:
 
 <TabItem value="mac" label="macOS (brew)">
 
-To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`. 
+To update the dbt Cloud CLI, run `brew upgrade dbt`. (You can also use `brew install dbt`). 
 
 </TabItem>
 
@@ -194,12 +173,9 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 ## Next steps
 
-After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, you can execute the following commands to compile a project using dbt Cloud:
+After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. 
 
-  ```bash
-  dbt compile
-  ```
-
+For example, you can execute `dbt compile` to compile a project using dbt Cloud.
 ## FAQs
 
 <details>

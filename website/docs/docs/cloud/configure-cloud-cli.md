@@ -25,8 +25,19 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 1. Ensure you meet the prerequisites above.
 
-2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage.
-3. Follow the banner instructions and download the config file to `~/.dbt/dbt_cloud.yml` ( Mac and Linux users) or `C:\Users\yourusername\.dbt\dbt_cloud.yml` (Windows users). The config file looks like this:
+2. Download your credentials from dbt Cloud by clicking on the **Try the dbt Cloud CLI** banner on the dbt Cloud homepage. Or you can download the credentials from the following links depending on your region:
+   
+    - North America: https://cloud.getdbt.com/cloud-cli
+    - EMEA: https://emea.dbt.com/cloud-cli
+    - APAC: https://apac.dbt.com/cloud-cli
+    - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
+    - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
+  
+3. Follow the banner instructions and download the config file to:
+   - Mac or Linux:  `~/.dbt/dbt_cloud.yml`
+   - Windows:  `C:\Users\yourusername\.dbt\dbt_cloud.yml`  
+  
+  The config file looks like this:
 
     ```yaml
     version: "1"
@@ -45,13 +56,13 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
     ```
 
-4. After downloading the config file, navigate to a dbt project in your terminal:
+1. After downloading the config file, navigate to a dbt project in your terminal:
 
     ```bash
     cd ~/dbt-projects/jaffle_shop
     ```
 
-5. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
+2. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
 
     ```yaml
     # dbt_project.yml
