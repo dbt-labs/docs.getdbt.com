@@ -11,7 +11,7 @@ An optional seed configuration used to customize how you separate values in a [s
 * The delimiter defaults to a comma when not specified.
 * Explicitly set The `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";" (default is comma).
 
-:::info New to dbt Core 1.7
+:::info New in 1.7!
 
 Delimiter is new functionality available beginning with dbt Core v1.7.
 
