@@ -11,7 +11,7 @@ The `dbt ls` command lists resources in your dbt project. It accepts selector ar
 
 ```
 dbt ls
-     [--resource-type {model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
+     [--resource-type {model,semantic_model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
      [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
      [--exclude SELECTOR [SELECTOR ...]]
@@ -94,6 +94,16 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.6">
+
+**Listing Semantic models**
+
+List all resources upstream of your orders semantic model:
+```
+dbt ls -s +semantic_model:orders
+```
+
+</VersionBlock>
 
 **Listing file paths**
 ```
