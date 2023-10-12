@@ -18,7 +18,7 @@ Databricks OAuth support in dbt Cloud is a [beta feature](/docs/dbt-versions/pro
 
 Current constraints / limitations:
 - Databricks OAuth applications are in public preview
-- The current experience requires the IDE to be restarted every hour (refresh token limited to 1h)
+- The current experience requires the IDE to be restarted every hour (access tokens expire after 1 hour)
  
 :::
 
@@ -35,7 +35,7 @@ To get started, you will need to [add dbt as an OAuth application](https://docs.
 For that second step, here is a sample snippet with username/password:
 
 ```BASH
-curl -u USERNAME:PASSWORD https://accounts.cloud.databricks.com/api/2.0/accounts/ACCOUNT_ID/oauth2/custom-app-integrations -d '{"redirect_urls": ["https://YOUR_ACCESS_URL/callback", "https://YOUR_ACCESS_URL/complete/databricks"], "confidential": true, "name": "NAME", "scopes": ["sql", "offline_access"]}'
+curl -u USERNAME:PASSWORD https://accounts.cloud.databricks.com/api/2.0/accounts/ACCOUNT_ID/oauth2/custom-app-integrations -d '{"redirect_urls": ["https://YOUR_ACCESS_URL", "https://YOUR_ACCESS_URL/complete/databricks"], "confidential": true, "name": "NAME", "scopes": ["sql", "offline_access"]}'
 ```
 
 Replacing the parameters with:
