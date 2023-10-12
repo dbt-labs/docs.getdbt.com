@@ -4,13 +4,13 @@ sidebar_label: "Retry jobs"
 description: "Rerun your errored jobs from start or the failure point."
 ---
 
-If your dbt job run completed with a status of `result:error` , you can rerun it from start or from the point of failure in dbt Cloud.
+If your dbt job run completed with a status of **Error**, you can rerun it from start or from the point of failure in dbt Cloud.
 
 ## Prerequisites
 
 - You have a [dbt Cloud account](https://www.getdbt.com/signup).
 - You must be using [dbt version](/docs/dbt-versions/upgrade-core-in-cloud) 1.6 or newer.
-- The most recent run of the job hasn't completed successfully. The latest status of the run is `error`.
+- The most recent run of the job hasn't completed successfully. The latest status of the run is **Error**.
     - The job command that failed in the run must be one that supports the [retry command](/reference/commands/retry).
 
 ## Rerun an errored job
@@ -26,7 +26,7 @@ If your dbt job run completed with a status of `result:error` , you can rerun it
 <Lightbox src="/img/docs/deploy/native-retry.gif" width="70%" title="Example of the Rerun options in dbt Cloud"/>
 
 ## Related content
-
+- [Retry a failed run for a job](/dbt-cloud/api-v2#/operations/Retry%20a%20failed%20run%20for%20a%20job) API endpoint
 - [Run visibility](/docs/deploy/run-visibility)
 - [Jobs](/docs/deploy/jobs)
 - [Job commands](/docs/deploy/job-commands)
