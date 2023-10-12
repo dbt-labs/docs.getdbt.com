@@ -23,7 +23,30 @@ When the `contract` configuration is enforced, dbt will ensure that your model's
 
 This is to ensure that the people querying your model downstream—both inside and outside dbt—have a predictable and consistent set of columns to use in their analyses. Even a subtle change in data type, such as from `boolean` (`true`/`false`) to `integer` (`0`/`1`), could cause queries to fail in surprising ways.
 
+<VersionBlock lastVersion="1.6">
+
 The `data_type` defined in your YAML file must match a data type your data platform recognizes. dbt does not do any type aliasing itself. If your data platform recognizes both `int` and `integer` as corresponding to the same type, then they will return a match.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+dbt uses built-in type aliasing for the `data_type` defined in your YAML. For example, you can specify `string` in your contract, and on Postgres/Redshift, dbt will convert it to `text`. If dbt doesn't recognize the `data_type` name among its known aliases, it will pass it through as-is. This is enabled by default, but you can opt-out by setting `alias_types` to `false`.
+
+Example for disabling: 
+
+```yml
+
+models:
+  - name: my_model
+    config:
+      contract:
+        enforced: true
+        alias_types: false  # true by default
+
+```
+
+</VersionBlock>
 
 When dbt compares data types, it will not compare granular details such as size, precision, or scale. We don't think you should sweat the difference between `varchar(256)` and `varchar(257)`, because it doesn't really affect the experience of downstream queriers. You can accomplish a more-precise assertion by [writing or using a custom test](/guides/best-practices/writing-custom-generic-tests).
 
