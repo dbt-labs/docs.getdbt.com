@@ -21,7 +21,7 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 
 ## Configure the dbt Cloud CLI
 
-Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project.
+Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt Cloud project. Note, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 
 1. Ensure you meet the prerequisites above.
 
@@ -56,13 +56,13 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
     ```
 
-1. After downloading the config file, navigate to a dbt project in your terminal:
+4. After downloading the config file, navigate to a dbt project in your terminal:
 
     ```bash
     cd ~/dbt-projects/jaffle_shop
     ```
 
-2. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
+5. In your `dbt_project.yml` file, ensure you have or include a `dbt-cloud` section with a `project-id` field. The `project-id` field contains the dbt Cloud project ID you want to use.
 
     ```yaml
     # dbt_project.yml
