@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/models/reference-models-in-another-project",
+      "destination": "/docs/collaborate/govern/project-dependencies",
+      "permanent": true
+    },
+    {
+      "source": "/faqs/Models/reference-models-in-another-project",
+      "destination": "/docs/collaborate/govern/project-dependencies",
+      "permanent": true
+    },
+    {
       "source": "/docs/deploy/job-triggers",
       "destination": "/docs/deploy/deploy-jobs",
       "permanent": true
@@ -3990,6 +4000,11 @@
     {
       "source": "/docs/dbt-cloud/on-premises/upgrading-kots",
       "destination": "/docs/deploy/single-tenant",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/access",
+      "destination": "/reference/resource-configs/access",
       "permanent": true
     }
   ]

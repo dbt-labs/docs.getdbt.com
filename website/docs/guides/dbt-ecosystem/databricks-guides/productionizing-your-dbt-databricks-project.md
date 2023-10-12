@@ -121,7 +121,6 @@ The five key steps for troubleshooting dbt Cloud issues are:
 2. Inspect the problematic file and look for an immediate fix.
 3. Isolate the problem by running one model at a time in the IDE or undoing the code that caused the issue.
 4. Check for problems in compiled files and logs.
-5. Seek help from the [dbt Cloud support team](/docs/dbt-support) if needed.
 
 Consult the [Debugging errors documentation](/guides/best-practices/debugging-errors) for a comprehensive list of error types and diagnostic methods.
 

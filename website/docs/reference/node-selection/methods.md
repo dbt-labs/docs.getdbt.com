@@ -321,7 +321,7 @@ Supported in v1.5 or newer.
 
 <VersionBlock firstVersion="1.5">
 
-The `access` method selects models based on their [access](/reference/resource-properties/access) property.
+The `access` method selects models based on their [access](/reference/resource-configs/access) property.
 
 ```bash
 dbt list --select access:public       # list all public models
