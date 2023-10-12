@@ -9,14 +9,13 @@ hide_table_of_contents: true
 
 Use MetricFlow in dbt to centrally define your metrics. As a key component of the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), MetricFlow is responsible for SQL query construction and defining specifications for dbt semantic models and metrics. It uses familiar constructs like semantic models and metrics to avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.
 
-MetricFlow allows you to define metrics in your dbt project whether in dbt Cloud or dbt Core:
-- For dbt Cloud users:
-  - Define metrics in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and query them with [MetricFlow commands](/docs/build/metricflow-commands).
-  
-- For dbt Core users:
-  - You can define metrics and query them using [MetricFlow commands](/docs/build/metricflow-commands).
 
-However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to:
+- Intuitively define metrics in your dbt project
+- Develop from your preferred environment, whether that's the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation)
+- Use [MetricFlow commands](/docs/build/metricflow-commands) to query and test those metrics in your development environment 
+- Harness the true magic of the universal dbt Semantic Layer and dynamically query these metrics in downstream tools (Available for dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) accounts only).
+
 
 <div className="grid--3-col">
 
