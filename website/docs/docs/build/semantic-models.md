@@ -29,6 +29,7 @@ Semantic models have 6 components and this page explains the definitions with so
 | [Primary Entity](#primary-entity) | If a primary entity exists, this component is Optional. If the semantic model has no primary entity, then this property is required. | Optional |
 | [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time` or `categorical` | Required |
 | [Measures](#measures) | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics | Optional |
+| Label | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures` | Optional |
 
 ## Semantic models components
 
@@ -231,8 +232,7 @@ For semantic models with a measure, you must have a [primary time group](/docs/b
 | `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
 | `expr` | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
-| `create_metric`* | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
-_*Coming soon_
+| `create_metric` | You can create a metric directly from a measure with `create_metric: True` and specify its display name with create_metric_display_name. Default is false. | Optional |
 
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';
