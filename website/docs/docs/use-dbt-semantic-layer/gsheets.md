@@ -6,7 +6,7 @@ sidebar_label: "Google Sheets (beta)"
 ---
 
 :::info Beta functionality
-Google Sheets integration is a [beta](https://docs.getdbt.com/docs/dbt-versions/product-lifecycles#dbt-cloud) feature that will be available in beta by the end of October.
+Google Sheets integration is a [beta](https://docs.getdbt.com/docs/dbt-versions/product-lifecycles#dbt-cloud) feature.
 :::
 
 The dbt Semantic Layer offers a seamless integration with Google Sheets through a custom menu. This add-on allows you to build dbt Semantic Layer queries and return data on your metrics directly within Google Sheet.
@@ -20,11 +20,10 @@ The dbt Semantic Layer offers a seamless integration with Google Sheets through 
 
 ## Installing the add-on 
 
-1. In Google Sheets, navigate to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on).
-2. Search for "dbt Semantic Layer for Sheets" and install it.
-3. After installing, open the Add-On menu and select the "dbt Semantic Layer for Sheets". This will open a custom menu to the right-hand side of your screen.
-4. Authenticate with the dbt Cloud Environment ID and Service Token.
-5. Start querying your metrics using the **Query Builder**! 
+1. Navigate to the [dbt Semantic Layer for Sheets App](https://www.loom.com/share/2f09f98fae344b5bb0b22d684dd1082c). Note you can also find it in Google Sheets by going to [**Extensions -> Add-on -> Get add-ons**](https://support.google.com/docs/answer/2942256?hl=en&co=GENIE.Platform%3DDesktop&oco=0#zippy=%2Cinstall-add-ons%2Cinstall-an-add-on) and searching for it there
+2. After installing, open the Add-On menu and select the "dbt Semantic Layer for Sheets". This will open a custom menu to the right-hand side of your screen.
+3. Authenticate with your Host, dbt Cloud Environment ID, and Service Token.
+4. Start querying your metrics using the **Query Builder**! 
    - For more info on the menu functions, refer to [Custom menu key functions](#custom-menu-key-functions).
    
 When querying your data with Google Sheets: 
