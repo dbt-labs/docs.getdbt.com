@@ -62,4 +62,5 @@ The following features aren't supported at this time, however, we may support so
 5. Table Extensions
 6. Cross Database Joins
 7. All functions in Analysis --> Create Calculated Field
-8. Filtering on a time dimension that has Date Part applied to it
+8. Filtering on a Date Part time dimension for a Cumulative metric type
+
