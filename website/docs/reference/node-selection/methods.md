@@ -353,6 +353,10 @@ dbt list --select version:none        # models that are *not* versioned
 
 </VersionBlock>
 
+### The "semantic_model" method
+<VersionBlock lastVersion="1.5">
+Supported in v1.6 or newer.
+</VersionBlock>
 <VersionBlock firstVersion="1.6">
 
 The `semantic_model` method selects [semantic models](/docs/build/semantic-models).
