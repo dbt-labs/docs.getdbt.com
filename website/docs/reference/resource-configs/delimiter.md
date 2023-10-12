@@ -9,15 +9,18 @@ default_value: ","
 An optional seed configuration used to separate values in a [seed](/docs/build/seeds) with a string you provide. The delimiter defaults to comma.
 
 
+* The delimiter defaults to a comma.
+* Explicitly set this value if you want seed files to use a different delimiter (default is comma).
+* The `delimiter` configuration should contain a value and not be empty.
 ## Usage
-Specify delimiter in your `dbt_project.yml` file to globally separate all seed values:
+Specify a delimiter in your `dbt_project.yml` file to override the global separator for all seed values:
 
 <File name='dbt_project.yml'>
 
 ```yml
 seeds:
   +quote_columns: False
-  +delimiter: ","
+  +delimiter: ";"
 ```
 
 </File>
@@ -70,7 +73,5 @@ seeds:
 
 </File>
 
-## Recommended configuration
 
-* Explicitly set this value if using seed files.
 * The `delimiter` configuration should contain a value and not be empty.
