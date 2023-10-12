@@ -651,25 +651,13 @@ If not configured, `dbt-spark` will use the built-in defaults: the all-purpose c
 
 **Submission methods:** The `dbt-bigquery` adapter uses [Dataproc](https://cloud.google.com/dataproc) to submit your Python models as PySpark jobs. Dataproc supports two submission methods: `cluster` and `serverless`.
 
-<File name='dbt_project.yml'>
 
-```yml
-models:
-  config:
-    submission_method: serverless # or cluster
-    # dataproc_cluster_name
-```
-</File>
+> |  | `Cluster`  | `Serverless` |
+> | -------------------------- | -------------------------- | -------------------------- |
+> | Submission Method | Create or use an existing Dataproc Cluster, [Submit](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) a python model within dbt_project.yml or yml file within the `models/` directory | Dataproc Serverless does not require a ready cluster, but it can also mean the cluster is slower to start. [Submit](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) to a serverless cluster in the `.py` file
+> | Additional Packages | Add third-party packages while creating the cluster with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). | Build your own [custom container image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers#python_packages) with the packages you need |
 
-
-- Cluster Submission Method: Create or use an existing Dataproc Cluster [See example](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) within dbt_project.yml or yml file within the `models/` directory
-
-- Serverless Submission Method: Dataproc Serverless does not require a ready cluster, but it can also mean the cluster is slower to start. [See example](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) submitting a job to a serverless cluster in the `.py` file
-
-
-**Installing packages**: If you are using a Dataproc Cluster (as opposed to Dataproc Serverless), you can add third-party packages while creating the cluster with the [Spark BigQuery connector initialization action](https://github.com/GoogleCloudDataproc/initialization-actions/tree/master/connectors#bigquery-connectors). If you are using Dataproc Serverless, you can build your own [custom container image](https://cloud.google.com/dataproc-serverless/docs/guides/custom-containers#python_packages) with the packages you need.
-
-**Additional setup**: The user or role should have the adequate IAM permission to be able to trigger a job through Dataproc Cluster or Dataproc Serverless
+**Additional setup**: The user or role should have the adequate [IAM permission](/reference/resource-configs/bigquery-configs.md#submitting-a-python-model) to be able to trigger a job through Dataproc Cluster or Dataproc Serverless
 
 **Docs:**
 - [Dataproc overview](https://cloud.google.com/dataproc/docs/concepts/overview)

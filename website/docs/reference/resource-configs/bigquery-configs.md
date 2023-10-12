@@ -726,17 +726,48 @@ Just like SQL models, there are three ways to configure Python models:
 2. In a dedicated `.yml` file, within the `models/` directory
 3. Within the model's `.py` file, using the `dbt.config()` method
 
-<File name='dbt_project.yml'>
+Any user or service account that runs dbt Python models will need the following permissions(in addition to the required BigQuery permissions) ([docs](https://cloud.google.com/dataproc/docs/concepts/iam/iam)):
+```
+dataproc.batches.create
+dataproc.clusters.use
+dataproc.jobs.create
+dataproc.jobs.get
+dataproc.operations.get
+dataproc.operations.list
+storage.buckets.get
+storage.objects.create
+storage.objects.delete
+```
+
+Set up the profile to include the required parameters including `gcs_bucket` and `dataproc_region`
+<File name='profile.yml'>
 
 ```yml
-# dbt_project.yml with a python model submitting jobs against a dataproc cluster
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: <your_project>
+      dataset: <your_dataset> 
+      gcs_bucket: <your_bucket> # required for python models
+      dataproc_region: <your_region> # required for python models
+      threads: 4
+```
+</File>
+
+Then based on the submission method, you can configure the model in `dbt_project.yml` or `models/<modelname>.yml` or within the model's `.py` file.
+
+<File name='models.yml'>
+
+```yml
+# models.yml with a python model submitting jobs against a dataproc cluster
 models:
   - name: my_python_model
     config:
       submission_method: cluster
-      dataproc_cluster_name: my-favorite-cluster
-      dataproc_region: us-central1
-      gcs_bucket: my-favorite-bucket
+      dataproc_cluster_name: my-favorite-cluster # Need to supply dataproc_cluster_name in profile or config to submit python job with cluster submission method
 ```
 
 </File>
@@ -747,9 +778,7 @@ models:
 
 def model(dbt, session):
     dbt.config(
-        submission_method="serverless",
-        dataproc_region="us-central1",
-        gcs_bucket="my-favorite-bucket"
+        submission_method="serverless"
     )
     ...
 
