@@ -9,7 +9,7 @@ default_value: ","
 An optional seed configuration used to customize how you separate values in a [seed](/docs/build/seeds) with the one-character string you provide.
 
 * The delimiter defaults to a comma when not specified.
-* Explicitly set The `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";" (default is comma).
+* Explicitly set The `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";".
 
 :::info New in 1.7!
 
@@ -27,9 +27,9 @@ Specify a custom delimiter in your `dbt_project.yml` file to override the global
 ```yml
 seeds:
   <project_name>:
-     +delimiter: "|"
+     +delimiter: "|" # default project delimiter for seeds will be "|"
     <seed_directory_name>:
-      +delimiter: ","
+      +delimiter: "," # delimiter for seeds in seed_directory_name will be ","
 ```
 
 </File>
@@ -63,9 +63,9 @@ For a project with:
 ```yml
 seeds:
   jaffle_shop: 
-    +delimiter: "|"
+    +delimiter: "|"  # default delimiter for seeds in jaffle_shop project will be "|"
     seed_a:
-      +delimiter: ","
+      +delimiter: "," # delimiter for seed_a will be ","
 ```
 
 </File>
@@ -78,9 +78,9 @@ Or for certain seeds:
 version: 2
 
 seeds:
-  - name: seed_a
+  - name: seed_b
     config:
-      delimiter: "|"
+      delimiter: ";"
 ```
 
 </File>
