@@ -177,9 +177,15 @@ To update the dbt Cloud CLI, run `brew upgrade dbt-cloud-cli`.
 
 </TabItem>
 
-<TabItem value="windowslinux" label="Windows and Linux (executable)">
+<TabItem value="windows" label="Windows (executable)">
 
 To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-installation?install=windows#install-dbt-cloud-cli) and replace the existing `dbt.exe` executable with the new one.
+
+</TabItem>
+
+<TabItem value="linux" label="Linux (executable)">
+
+To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
 
 </TabItem>
 
