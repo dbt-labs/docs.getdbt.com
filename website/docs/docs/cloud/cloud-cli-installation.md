@@ -34,7 +34,7 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 Installing the dbt Cloud CLI with pip replaces dbt Core. This change can be avoided by using the native install method and configuring your PATH or by creating a new virtual environment.
 
-Otherwise, to switch back to dbt Core, uninstall the Cloud CLI and follow the dbt Core installation instructions.
+Otherwise, to switch back to dbt Core, uninstall the dbt Cloud CLI and follow the dbt Core installation instructions.
 
 ::: 
 
