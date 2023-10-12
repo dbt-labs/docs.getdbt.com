@@ -62,14 +62,6 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
 
 1. Set up a CI job with the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint using `"job_type": ci` or from the [dbt Cloud UI](#set-up-ci-jobs).
-1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. Provide the pull request (PR) ID to the payload using one of these fields, even if you're using a different Git provider (like Bitbucket):
-
-    - `github_pull_request_id`
-    - `gitlab_merge_request_id`
-    - `azure_devops_pull_request_id` 
-
-  This can make your code less human-readable but it will _not_ affect dbt functionality. 
-
 1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. Provide the target `git_sha` or `git_branch` in the payload. You must also include the pull request (PR) ID using one of these fields, even if you're using a different Git provider (like Bitbucket):
     - `github_pull_request_id`
     - `gitlab_merge_request_id`
