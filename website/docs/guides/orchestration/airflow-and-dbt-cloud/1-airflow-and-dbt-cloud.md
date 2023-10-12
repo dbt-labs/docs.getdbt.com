@@ -19,7 +19,7 @@ There are [so many great examples](https://gitlab.com/gitlab-data/analytics/-/bl
 
 ### Airflow + dbt Cloud API w/Custom Scripts
 
-This has served as a bridge until the fabled Astronomer + dbt Labs-built dbt Cloud provider became generally available [here](https://registry.astronomer.io/providers/dbt-cloud?type=Sensors&utm_campaign=Monthly%20Product%20Updates&utm_medium=email&_hsmi=208603877&utm_content=208603877&utm_source=hs_email).
+This has served as a bridge until the fabled Astronomer + dbt Labs-built dbt Cloud provider became generally available [here](https://registry.astronomer.io/providers/dbt%20Cloud/versions/latest).
 
 There are many different permutations of this over time:
 
