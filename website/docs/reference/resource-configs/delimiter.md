@@ -23,7 +23,7 @@ seeds:
 </File>
 
 
-Or:
+Or only separate values with a delimiter in the seeds/mappings directory:
 
 <File name='seeds/properties.yml'>
 
