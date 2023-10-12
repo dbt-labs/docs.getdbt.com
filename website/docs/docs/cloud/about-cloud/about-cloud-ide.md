@@ -25,7 +25,7 @@ With the Cloud IDE, you can:
 
 For more information, read the complete [Cloud IDE guide](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud).
 
-## Relatd docs
+## Related docs
 
 - [IDE user interface](/docs/cloud/dbt-cloud-ide/ide-user-interface)
 - [Tips and tricks](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips)
