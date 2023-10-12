@@ -43,7 +43,7 @@ This is a relatively small behavior change compared to previous versions. To exc
 
 - The [manifest](/reference/artifacts/manifest-json) schema version has been updated to v11.
 - The [run_results](/reference/artifacts/run-results-json) schema version has been updated to v5.
-- There were a handful of specific changes to the [catalog.json](/reference/artifacts/catalog-json):
+- There are a few specific changes to the [catalog.json](/reference/artifacts/catalog-json):
     - Added [node attributes](/reference/artifacts/run-results-json) related to compilation (`compiled`, `compiled_code`, `relation_name`) to the `catalog.json`. 
     - The nodes dictionary in the `catalog.json` can now be "partial" if `dbt docs generate` is run with a selector.
 
