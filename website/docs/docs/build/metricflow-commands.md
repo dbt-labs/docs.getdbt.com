@@ -8,24 +8,60 @@ tags: [Metrics, Semantic Layer]
 
 Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow commands. 
 
-MetricFlow allows you to define and query metrics in your dbt project in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). To experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+MetricFlow allows you to define and query metrics in your dbt project in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation),[dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation). To experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
 MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
 
 
-## Install MetricFlow
+## MetricFlow
+
+MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
+
+<!--
+### dbt Cloud CLI
+
+MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them in the dbt Cloud CLI. A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
+
+### dbt Cloud IDE
+
+:::info
+You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
+:::
+
+### dbt Core
+
+:::info Use dbt Cloud CLI for semantic layer development
+
+Use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. 
+
+A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning for you.
+:::
+
+
+You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
+
+1. Create or activate your virtual environment`python -m venv venv`
+2. Run `pip install dbt-metricflow`
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+
+**Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
+-->
 
 <Tabs>
 
-<TabItem value="cloudcli" label="dbt Cloud CLI (recommended)">
+<TabItem value="cloudcli" label="dbt Cloud CLI">
 
-To install and run MetricFlow commands in the dbt Cloud CLI, you'll need to install it in your local environment. Install the MetricFlow from [PyPI](https://pypi.org/project/dbt-metricflow/) using `pip` on Windows or Linux operating systems:
-
-1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)
-2. Create or activate your virtual environment `python -m venv venv`
-3. Run `pip install metricflow`
+MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them in the dbt Cloud CLI. 
 
 A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
+
+</TabItem>
+
+<TabItem value="cloud ide" label="dbt Cloud IDE">
+
+:::info
+You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
+:::
 
 </TabItem>
 
@@ -54,11 +90,8 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 
 ## MetricFlow commands
 
-:::info
-You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
-:::
-
 MetricFlow provides the following commands to retrieve metadata and query metrics. 
+
 <Tabs>
 <TabItem value="cloud" label="Commands for dbt Cloud">
 
