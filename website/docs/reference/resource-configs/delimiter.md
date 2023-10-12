@@ -28,8 +28,8 @@ Specify a custom delimiter in your `dbt_project.yml` file to override the global
 seeds:
   <project_name>:
      +delimiter: "|" # default project delimiter for seeds will be "|"
-    <seed_directory_name>:
-      +delimiter: "," # delimiter for seeds in seed_directory_name will be ","
+    <seed_name>:
+      +delimiter: "," # delimiter for seeds in seed_name will be ","
 ```
 
 </File>
@@ -43,7 +43,7 @@ Or use a custom delimiter to override the values for a specific seed:
 version: 2
 
 seeds:
-  - name: <seed_directory_name>
+  - name: <seed_name>
     config: 
       delimiter: "|"
 ```
@@ -56,7 +56,9 @@ For a project with:
 * `name: jaffle_shop` in the `dbt_project.yml` file
 * `seed-paths: ["seeds"]` in the `dbt_project.yml` file
 
-### Use a custom delimiter to overrride global values
+### Use a custom delimiter to override global values
+
+You can make the default delimiter "|" for all seeds but have seed_a still use "," like this:
 
 <File name='dbt_project.yml'>
 
@@ -70,7 +72,7 @@ seeds:
 
 </File>
 
-Or for certain seeds:
+Or you can configure the country_codes seed to use the "|" delimiter:
 
 <File name='seeds/properties.yml'>
 
@@ -78,9 +80,23 @@ Or for certain seeds:
 version: 2
 
 seeds:
-  - name: seed_b
+  - name: country_codes
     config:
       delimiter: ";"
+```
+
+</File>
+
+Which would result in a CSV that looks like this:
+
+<File name='seeds/country_codes.csv'>
+
+```text
+country_code|country_name
+US|United States
+CA|Canada
+GB|United Kingdom
+...
 ```
 
 </File>

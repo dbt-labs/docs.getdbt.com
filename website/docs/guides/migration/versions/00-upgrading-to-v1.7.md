@@ -22,7 +22,7 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### MetricFlow enhancements
 
-- Automatically create metrics on measures with `create_metric: true`.
+- Automatically create metrics on measures with [`create_metric: true`](/docs/build/semantic-models).
 - Optional [`label`](/docs/build/semantic-models) in semantic_models, measures, dimensions and entities.
 - New configurations for semantic models - [enable/disable](/reference/resource-configs/enabled), [group](/reference/resource-configs/group), and [meta](/reference/resource-configs/meta).
 - Support `fill_nulls_with` and `join_to_timespine` for metric nodes.
