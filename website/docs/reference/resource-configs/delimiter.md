@@ -9,11 +9,13 @@ default_value: ","
 An optional seed configuration used to separate values in a [seed](/docs/build/seeds) with a string you provide.
 
 
-* The delimiter defaults to a comma.
-* Explicitly set this value if you want seed files to use a different delimiter (default is comma).
-* The `delimiter` configuration should contain a value and not be empty.
+* The delimiter defaults to a comma when not speicfied.
+* Explicitly set The `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";" (default is comma).
+
+  
 ## Usage
-Specify a delimiter in your `dbt_project.yml` file to override the global separator for all seed values:
+
+Specify a custom delimiter in your `dbt_project.yml` file to override the global separator for all seed values:
 
 <File name='dbt_project.yml'>
 
@@ -26,7 +28,8 @@ seeds:
 </File>
 
 
-Or only separate values with a delimiter in the seeds/mappings directory:
+Or use a custom delimiter to overrid the values for a specific seed:
+
 <File name='seeds/properties.yml'>
 
 
@@ -46,14 +49,16 @@ For a project with:
 * `name: jaffle_shop` in the `dbt_project.yml` file
 * `seed-paths: ["seeds"]` in the `dbt_project.yml` file
 
-### Use a comma delimiter
+### Use a custom delimiter
+
 <File name='dbt_project.yml'>
 
 ```yml
 seeds:
-  jaffle_shop: # you must include the project name
+  jaffle_shop: 
+    +delimiter: "|"
     mappings:
-      +delimiter: ","
+      +delimiter: ";"
 ```
 
 </File>
@@ -68,10 +73,7 @@ version: 2
 seeds:
   - name: mappings
     config:
-      delimiter: ","
+      delimiter: "|"
 ```
 
 </File>
-
-
-* The `delimiter` configuration should contain a value and not be empty.
