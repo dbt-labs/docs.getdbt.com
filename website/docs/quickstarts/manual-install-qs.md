@@ -103,16 +103,16 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     target: dev
     outputs:
-    dev:
-        type: bigquery
-        method: service-account
-        keyfile: /Users/BBaggins/.dbt/dbt-tutorial-project-331118.json # replace this with the full path to your keyfile
-        project: grand-highway-265418 # Replace this with your project id
-        dataset: dbt_bbagins # Replace this with dbt_your_name, e.g. dbt_bilbo
-        threads: 1
-        timeout_seconds: 300
-        location: US
-        priority: interactive
+        dev:
+            type: bigquery
+            method: service-account
+            keyfile: /Users/BBaggins/.dbt/dbt-tutorial-project-331118.json # replace this with the full path to your keyfile
+            project: grand-highway-265418 # Replace this with your project id
+            dataset: dbt_bbagins # Replace this with dbt_your_name, e.g. dbt_bilbo
+            threads: 1
+            timeout_seconds: 300
+            location: US
+            priority: interactive
 ```
 
 </File>

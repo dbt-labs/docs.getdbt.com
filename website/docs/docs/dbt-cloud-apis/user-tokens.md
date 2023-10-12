@@ -13,7 +13,7 @@ permissions of the user the that they were created for.
 You can find your User API token in the Profile page under the `API Access`
 label.
 
-<Lightbox src="/img/api-access-profile.png" title="Finding your API token in your dbt Cloud Profile" />
+<Lightbox src="/img/api-access-profile.jpg" title="Finding your API token in your dbt Cloud Profile" />
 
 ## FAQs
 
