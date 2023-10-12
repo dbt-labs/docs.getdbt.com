@@ -70,10 +70,12 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
   This can make your code less human-readable but it will _not_ affect dbt functionality. 
 
-    :::info
-    If you are using a non-native integration and attempting to trigger the CI job, you will also need to include either `git_sha` or `git_branch` to the payload.
-    :::
+1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. Provide the target `git_sha` or `git_branch` in the payload. You must also include the pull request (PR) ID using one of these fields, even if you're using a different Git provider (like Bitbucket):
+    - `github_pull_request_id`
+    - `gitlab_merge_request_id`
+    - `azure_devops_pull_request_id` 
 
+  This can make your code less human-readable but it will _not_ affect dbt functionality. 
 ## Example pull requests
 
 The green checkmark means the dbt build and tests were successful. Clicking on the dbt Cloud section navigates you to the relevant CI run in dbt Cloud.
