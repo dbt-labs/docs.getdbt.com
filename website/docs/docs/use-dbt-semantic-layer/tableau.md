@@ -25,6 +25,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 1. Install this file () locally and add it to your default folder:
    - Windows: `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
    - Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
+   - Linux: `/opt/tableau/connectors`
 2. Install the [JDBC driver](/docs/dbt-cloud-apis/sl-jdbc) to the folder based on your operating system:
    - Windows: `C:\Program Files\Tableau\Drivers`
    - Mac: `~/Library/Tableau/Drivers`
