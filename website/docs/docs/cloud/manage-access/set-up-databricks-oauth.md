@@ -17,7 +17,7 @@ dbt Cloud supports developer OAuth ([OAuth for partner solutions](https://docs.d
 Databricks OAuth support in dbt Cloud is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud) and subject to change without notification. More updates to this feature coming soon.
 
 Current limitations:
-- Databricks OAuth applications are in public preview
+- Databrick's OAuth applications are in public preview
 - The current experience requires the IDE to be restarted every hour (access tokens expire after 1 hour - [workaround](https://docs.databricks.com/en/integrations/manage-oauth.html#override-the-default-token-lifetime-policy-for-dbt-core-power-bi-or-tableau-desktop))
  
 :::
@@ -26,21 +26,21 @@ Current limitations:
 
 To get started, you will need to [add dbt as an OAuth application](https://docs.databricks.com/en/integrations/configure-oauth-dbt.html) with Databricks, in 2 steps:
 
-- On your terminal, [authenticate to the Databricks Account API](https://docs.databricks.com/en/integrations/configure-oauth-dbt.html#authenticate-to-the-account-api) with the Databricks CLI. You authenticate via:
+1. From your terminal, [authenticate to the Databricks Account API](https://docs.databricks.com/en/integrations/configure-oauth-dbt.html#authenticate-to-the-account-api) with the Databricks CLI. You authenticate using:
   - OAuth for users ([prerequisites](https://docs.databricks.com/en/dev-tools/auth.html#oauth-u2m-auth))
   - Oauth for service principals ([prerequisites](https://docs.databricks.com/en/dev-tools/auth.html#oauth-m2m-auth))
   - Username and password (must be account admin)
-- In that terminal still, **add dbt Cloud as an OAuth application** using `curl` and the [OAuth Customm App Integration API](https://docs.databricks.com/api/account/customappintegration/create)
+2. In the same terminal, **add dbt Cloud as an OAuth application** using `curl` and the [OAuth Custom App Integration API](https://docs.databricks.com/api/account/customappintegration/create)
 
-For that second step, here is a sample snippet with username/password:
+For the second step, you can use this example `curl` to authenticate with your username and password, replacing values as defined in the following table:
 
-```BASH
+```shell
 curl -u USERNAME:PASSWORD https://accounts.cloud.databricks.com/api/2.0/accounts/ACCOUNT_ID/oauth2/custom-app-integrations -d '{"redirect_urls": ["https://YOUR_ACCESS_URL", "https://YOUR_ACCESS_URL/complete/databricks"], "confidential": true, "name": "NAME", "scopes": ["sql", "offline_access"]}'
 ```
 
-Replacing the parameters with:
+These parameters and descriptions will help you authenticate with your username and password:
 
-| Config | Value |
+| Parameter | Description |
 | ------ | ----- |
 | **USERNAME** | Your Databricks username (account admin level) |
 | **PASSWORD** | Your Databricks password (account admin level) |
@@ -58,7 +58,7 @@ Now that you have an OAuth app set up in Databricks, you'll need to add the clie
  - on the left, select **Projects** under **Account Settings**
  - choose your project from the list
  - select **Connection** to edit the connection details
- - add the `OAuth Client ID` and `OAuth Client Secret`` from the Databricks OAuth app under the **Optional Settings** section
+ - add the `OAuth Client ID` and `OAuth Client Secret` from the Databricks OAuth app under the **Optional Settings** section
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth.png" title="Adding Databricks OAuth application client ID and secret to dbt Cloud" />
 
@@ -69,7 +69,7 @@ Once the Databricks connection via OAuth is set up for a dbt Cloud project, each
 - Click the gear icon at the top right and select **Profile settings**.
 - Select **Credentials**.
 - Choose your project from the list
-- Select `OAuth` as the authentication method, save
+- Select `OAuth` as the authentication method, and click **Save**
 - Finalize by clicking the **Connect Databricks Account** button
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/DBX-auth/dbt-databricks-oauth-user.png" title="Connecting to Databricks from an IDE user profile" />
