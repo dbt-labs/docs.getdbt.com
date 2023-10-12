@@ -65,8 +65,7 @@ seeds:
 
 ## Examples
 
-### Use a varchar column type to preserve leading zeros in a zipcode
-(Note: preservation of leading zeros works for v0.16.0 onwards)
+### Use a comma delimiter
 <File name='dbt_project.yml'>
 
 ```yml
