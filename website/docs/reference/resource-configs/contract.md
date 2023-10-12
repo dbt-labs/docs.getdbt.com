@@ -33,7 +33,7 @@ The `data_type` defined in your YAML file must match a data type your data platf
 
 dbt uses built-in type aliasing for the `data_type` defined in your YAML. For example, you can specify `string` in your contract, and on Postgres/Redshift, dbt will convert it to `text`. If dbt doesn't recognize the `data_type` name among its known aliases, it will pass it through as-is. This is enabled by default, but you can opt-out by setting `alias_types` to `false`.
 
-Example: 
+Example for disabling: 
 
 ```yml
 
