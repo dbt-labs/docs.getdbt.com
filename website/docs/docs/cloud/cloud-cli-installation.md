@@ -58,7 +58,7 @@ We recommend using virtual environments (venv) to namespace pip modules.
 3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, $HOME/.bashrc, $HOME/.zshrc) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
    ```shell
    alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
-  ```
+   ```
 
 ### Install dbt Cloud CLI in pip
 
@@ -74,8 +74,8 @@ We recommend using virtual environments (venv) to namespace pip modules.
   pip3 install dbt
   ```
 
-4. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
-5. Reinstall dbt Core using the version from Step 2.
+3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
+4. Reinstall dbt Core using the version from Step 2.
 
   ```bash
   pip3 uninstall dbt-core dbt
