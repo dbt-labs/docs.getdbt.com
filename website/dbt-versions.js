@@ -28,6 +28,10 @@ exports.versions = [
 
 exports.versionedPages = [
   {
+    "page": "reference/resource-configs/store_failures_as",
+    "firstVersion": "1.7",
+  },
+  {
     "page": "docs/build/build-metrics-intro",
     "firstVersion": "1.6",
   },
