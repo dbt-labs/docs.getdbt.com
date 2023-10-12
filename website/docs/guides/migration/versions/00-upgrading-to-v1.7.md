@@ -22,7 +22,7 @@ As part of this change, the `loaded_at_field` is no longer required to generate 
 - If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (previous behavior).
 - If a `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new behavior).
 
-This is a relatively small behavior change compared to previous versions. To exclude a source from calculating source freshness:
+This is a relatively small behavior change, but worth calling out in case you notice that dbt is calculating freshness for _more_ sources than before. To exclude a source from freshness calculations, you have two options:
 - Don't add a `freshness:` block.
 - Explicitly set `freshness: null`
 
