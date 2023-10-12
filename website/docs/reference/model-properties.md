@@ -18,7 +18,7 @@ models:
       show: true | false
     [latest_version](/reference/resource-properties/latest_version): <version_identifier>
     [deprecation_date](/reference/resource-properties/deprecation_date): <YAML_DateTime>
-    [access](/reference/resource-properties/access): private | protected | public
+    [access](/reference/resource-configs/access): private | protected | public
     [config](/reference/resource-properties/config):
       [<model_config>](/reference/model-configs): <config_value>
     [constraints](/reference/resource-properties/constraints):
@@ -46,7 +46,7 @@ models:
         [description](/reference/resource-properties/description): <markdown_string>
         [docs](/reference/resource-configs/docs):
           show: true | false
-        [access](/reference/resource-properties/access): private | protected | public
+        [access](/reference/resource-configs/access): private | protected | public
         [constraints](/reference/resource-properties/constraints):
           - <constraint>
         [config](/reference/resource-properties/config):
