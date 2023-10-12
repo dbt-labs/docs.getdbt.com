@@ -10,7 +10,7 @@ An optional seed configuration used to separate values in a [seed](/docs/build/s
 
 
 ## Usage
-Specify delimiter in your `dbt_project.yml` file:
+Specify delimiter in your `dbt_project.yml` file to globally separate all seed values:
 
 <File name='dbt_project.yml'>
 
