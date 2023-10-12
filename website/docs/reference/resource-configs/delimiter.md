@@ -1,26 +1,23 @@
 ---
 resource_types: [seeds]
 datatype: <string>
+default_value: ","
 ---
 
-## Description
+## Definition
 
-Optionally specify a custom delimiter for [seed](/docs/build/seeds) by providing a string value. The delimiter defaults to comma.
+An optional seed configuration, used to delimit [seed](/docs/build/seeds) by providing a string value. The delimiter defaults to comma.
 
 
 ## Usage
-Specify column types in your `dbt_project.yml` file:
+Specify delimiter in your `dbt_project.yml` file:
 
 <File name='dbt_project.yml'>
 
 ```yml
 seeds:
-  jaffle_shop:
-    country_codes:
-      +column_types:
-        country_code: varchar(2)
-        country_name: varchar(32)
-      +delimiter: ","
+  +quote_columns: False
+  +delimiter: ","
 ```
 
 </File>
@@ -35,35 +32,17 @@ Or:
 version: 2
 
 seeds:
-  - name: country_codes
-    config:
-      column_types:
-        country_code: varchar(2)
-        country_name: varchar(32)
-      delimiter: ","
-```
-
-</File>
-
-If you have previously run `dbt seed`, you'll need to run `dbt seed --full-refresh` for the changes to take effect.
-
-Note that you will need to use the fully directory path of a seed when configuring `delimiter`. For example, for a seed file at `seeds/marketing/utm_mappings.csv`, you will need to configure it like so:
-
-<File name='dbt_project.yml'>
-
-```yml
-seeds:
-  jaffle_shop:
-    marketing:
-      utm_mappings:
-        +delimiter:
-          ...
-
+  quote_columns: False
+  delimiter: ","
 ```
 
 </File>
 
 ## Examples
+For a project with:
+
+* `name: jaffle_shop` in the `dbt_project.yml` file
+* `seed-paths: ["seeds"]` in the `dbt_project.yml` file
 
 ### Use a comma delimiter
 <File name='dbt_project.yml'>
@@ -71,16 +50,28 @@ seeds:
 ```yml
 seeds:
   jaffle_shop: # you must include the project name
-    warehouse_locations:
+    mappings:
       +delimiter: ","
 ```
 
 </File>
 
-## Recommendation
+Or
 
-Use this configuration only when required. Otherwise you can omit this configuration.
+<File name='seeds/properties.yml'>
 
-## Troubleshooting
+```yml
+version: 2
 
-The `delimiter` configuration should contain a value when set and not be empty.
+seeds:
+  - name: mappings
+    config:
+      delimiter: ","
+```
+
+</File>
+
+## Recommended configuration
+
+* Explicitly set this value if using seed files.
+* The `delimiter` configuration should contain a value and not be empty.
