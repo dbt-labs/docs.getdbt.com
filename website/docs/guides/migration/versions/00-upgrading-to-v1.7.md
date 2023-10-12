@@ -16,11 +16,11 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 ### Behavior changes
 
-1.7 expands the amount of sources folks can configure freshness for. Previously, freshness was limited to sources that had a `loaded_at_field`; but now, freshness can be generated from warehouse metadata tables when available. 
+dbt Core v1.7 expands the amount of sources you can configure freshness for. Previously, freshness was limited to sources with a `loaded_at_field`; now, freshness can be generated from warehouse metadata tables when available. 
 
-As part of this change, the `loaded_at_field` is **no longer required** in order to generate source freshness. If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
-- if a `loaded_at_field` is provided, dbt will calculate freshness via a select query (previous behavior)
-- if a `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new!)
+As part of this change, the `loaded_at_field` is no longer required to generate source freshness. If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
+- If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (previous behavior).
+- If a `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new behavior).
 
 This is technically a small behavior change comapared to previous versons. In order to _not_ calculate freshness for a source:
 - don't add a `freshness:` block
