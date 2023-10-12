@@ -5,9 +5,8 @@ datatype: <string>
 
 ## Description
 
-Optionally specify a delimiter for [seed](/docs/build/seeds), by providing a string value. The defaults to comma.
+Optionally specify a custom delimiter for [seed](/docs/build/seeds) by providing a string value. The delimiter defaults to comma.
 
-Without specifying this, dbt will infer the datatype based on the column values in your seed file.
 
 ## Usage
 Specify column types in your `dbt_project.yml` file:
