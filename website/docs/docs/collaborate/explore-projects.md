@@ -70,7 +70,7 @@ With the search bar (on the upper left corner of the page or in a lineage graph)
 Select a node (single-click) in the lineage graph to highlight its relationship with your other search results and to display which project contains the resource's definition. When you choose a node (double-click) in the lineage graph or when you select a resource in the table, dbt Explorer displays the [resource's details page](#view-resource-details).
 
 ### Search with keywords
-When searching with keywords, dbt Explorer searches through your resources' metadata (such as resource type, resource name, column name, source name, tags, schema, database, version, alias/identifier, and package name) and returns any matches.
+When searching with keywords, dbt Explorer searches through your resource metadata (such as resource type, resource name, column name, source name, tags, schema, database, version, alias/identifier, and package name) and returns any matches.
 
 ### Search with selector methods 
 
