@@ -4,10 +4,10 @@ description: Getting started with dbt Mesh patterns
 hoverSnippet: Learn how to get started with dbt Mesh
 ---
 
-As mentioned before, the key decision to migrating to a multi-project architecture is understanding how your project is already being grouped, built, and deployed. We can use this information to inform our decision to split our project apart.
+As mentioned before, the key decision in migrating to a multi-project architecture is understanding how your project is already being grouped, built, and deployed. We can use this information to inform our decision to split our project apart.
 
-- **Examine your jobs** which sets of models are most often built together?
-- **Look at your lineage graph** how are models connected?
+- **Examine your jobs** - which sets of models are most often built together?
+- **Look at your lineage graph** - how are models connected?
 - **Look at your selectors** defined in `selectors.yml` - how are people already defining resource groups?
 - **Talk to teams** about what sort of separation is naturally existing right now.
   - Are there various domains people are focused on?
@@ -30,7 +30,7 @@ groups:
         email: ben.jaffleck@jaffleshop.com
 ```
 
-- Then, we can add models to that group using the `group:` key in the model's yml entry.
+- Then, we can add models to that group using the `group:` key in the model's YAML entry.
 
 ```yml
 # in models/marketing/__models.yml
@@ -61,7 +61,7 @@ models:
 
 ## Split your projects
 
-1. **Move your grouped models into a subfolder**. This will include any model in the selected group, it's associated yml entry, as well as its parent or child resources as appropriate depending on where this group sits in your DAG.
+1. **Move your grouped models into a subfolder**. This will include any model in the selected group, it's associated YAML entry, as well as its parent or child resources as appropriate depending on where this group sits in your DAG.
    1. Note that just like in your dbt project, circular refereneces are not allowed! Project B cannot have parents and children in Project A, for example.
 2. **Create a new `dbt_project.yml` file** in the subdirectory.
 3. **Copy any macros** used by the resources you moved.
