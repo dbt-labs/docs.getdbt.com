@@ -3,7 +3,7 @@ title: "Packages"
 id: "packages"
 ---
 
-## What is a package?
+
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
@@ -22,12 +22,13 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
+* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
-:::note Using Python packages
 
-Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
-
+:::info Project Dependencies versus Packages
+ Packages are different to Project dependencies, a feature that allows cross-project `ref`. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info about the difference between `dependencies.yml` and `packages.yml`.
 :::
+
 
 ## How do I add a package to my project?
 1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
@@ -366,3 +367,18 @@ packages:
 ```
 
 </File>
+
+### About dependencies.yml
+
+There are some important differences between using a `dependencies.yml` compared to a `packages.yml` file:
+
+- `dependencies.yml`
+  - Primarily designed for dbt Mesh and cross-project reference workflow.
+  - Supports both Projects and non-private dbt packages (private packages aren't supported yet).
+  - Helps maintain your project's organization by allowing you to specify hub packages like `dbt_utils`, reducing the need for multiple YAML files.
+  - Does not support conditional configuration using Jinja-in-yaml (Refer to [FAQs](#faqs) for more info).
+
+- `packages.yml`
+  - Does not contribute to the dbt Mesh workflow.
+  - Serves as a list of dbt Packages (such as dbt projects) that you want to download into your root or parent dbt project.
+  - Can only include packages, including private packages (doesn't support Projects)

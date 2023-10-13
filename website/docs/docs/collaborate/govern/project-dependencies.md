@@ -5,8 +5,11 @@ sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
 ---
 
-:::caution Available in Publib Preview for dbt Cloud Enterprise accounts
-"Project" dependencies and cross-project `ref` are features of dbt Cloud Enterprise, currently in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). To access these features while they are in beta, please contact your account team at dbt Labs.
+:::info Available in Public Preview for dbt Cloud Enterprise accounts
+
+Project dependencies and cross-project `ref` are features available in [dbt Cloud Enterprise](https://www.getdbt.com/pricing), currently in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud). 
+
+Enterprise users can use these features by designating a [public model](/docs/collaborate/govern/model-access) and adding a [cross-project ref](#how-to-use-ref).
 :::
 
 
@@ -26,21 +29,22 @@ In order to add project dependencies and resolve cross-project `ref`, you must:
 - Use dbt v1.6 for **both** the upstream ("producer") project and the downstream ("consumer") project.
 - Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta)
 - Have a successful run of the upstream ("producer") project
+- Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account -- IS DEPLOYMENT /TENANCY INFO RIGHT?
 
 ### About dependencies.yml
 
-There are differences between using a `dependencies.yml` compared to a `packages.yml` file:
+There are some important differences between using a `dependencies.yml` compared to a `packages.yml` file:
 
-- **`dependencies.yml`**
+- `dependencies.yml`
   - Primarily designed for dbt Mesh and cross-project reference workflow.
-  - Supports Projects and non-private dbt Packages (private packages aren't supported yet. Refer to [FAQs](#faqs) for more info).
+  - Supports both Projects and non-private dbt packages (private packages aren't supported yet).
   - Helps maintain your project's organization by allowing you to specify hub packages like `dbt_utils`, reducing the need for multiple YAML files.
-  - Does not support conditional configuration using Jinja-in-yaml
+  - Does not support conditional configuration using Jinja-in-yaml (Refer to [FAQs](#faqs) for more info).
 
-- **`packages.yml`**
--   Does not contribute to the dbt Mesh workflow.
--   Serves as a list of dbt Packages (such as dbt projects) that you want to download into your root or parent dbt project.
--   Can only include packages, including private packages (doesn't support Projects)
+- `packages.yml`
+  - Does not contribute to the dbt Mesh workflow.
+  - Serves as a list of dbt Packages (such as dbt projects) that you want to download into your root or parent dbt project.
+  - Can only include packages, including private packages (doesn't support Projects)
 
 ## Example
 
@@ -85,7 +89,7 @@ When you're building on top of another team's work, resolving the references in 
 - You don't need to mirror any conditional configuration of the upstream project such as `vars`, environment variables, or `target.name`. You can reference them directly wherever the Finance team is building their models in production. Even if the Finance team makes changes like renaming the model, changing the name of its schema, or [bumping its version](/docs/collaborate/govern/model-versions), your `ref` would still resolve successfully.
 - You eliminate the risk of accidentally building those models with `dbt run` or `dbt build`. While you can select those models, you can't actually build them. This prevents unexpected warehouse costs and permissions issues. This also ensures proper ownership and cost allocation for each team's models.
 
-### Usage
+### How to use ref
 
 **Writing `ref`:** Models referenced from a `project`-type dependency must use [two-argument `ref`](/reference/dbt-jinja-functions/ref#two-argument-variant), including the project name:
 
