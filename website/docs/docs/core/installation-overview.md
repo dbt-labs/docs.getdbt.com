@@ -11,6 +11,14 @@ You can install dbt Core on the command line by using one of these methods:
 - [Use a Docker image to install dbt](/docs/core/docker-install)
 - [Install dbt from source](/docs/core/source-install)
 
+:::tip Pro tip: Using the --help flag
+
+Most command-line tools, including dbt, have a `--help` flag that you can use to show available commands and arguments. For example, you can use the `--help` flag with dbt in two ways:<br /><br />
+&mdash; `dbt --help`: Lists the commands available for dbt<br />
+&mdash; `dbt run --help`: Lists the flags available for the `run` command
+
+:::
+
 ## Upgrading dbt Core
 
 dbt provides a number of resources for understanding [general best practices](/blog/upgrade-dbt-without-fear) while upgrading your dbt project as well as detailed [migration guides](/guides/migration/versions/upgrading-to-v1.4) highlighting the changes required for each minor and major release, and [core versions](/docs/dbt-versions/core)
