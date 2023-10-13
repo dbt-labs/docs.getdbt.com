@@ -16,7 +16,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 
 1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
 2. Authenticate with either Tableau Server or Tableau Cloud
-3. You need either a [JDBC URL](/docs/dbt-cloud-apis/sl-jdbc#connection-parameters) or a dbt Cloud account's [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
+3. You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
 4. Have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
 
