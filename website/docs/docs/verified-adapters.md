@@ -13,6 +13,10 @@ The verification process serves as the on-ramp to integration with dbt Cloud. As
 
 To learn more, see [Verifying a new adapter](/guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter).
 
+import MSCallout from '/snippets/_microsoft-adapters-soon.md';
+
+<MSCallout />
+
 Here are the verified data platforms that connect to dbt and its latest version.
 
 import AdaptersVerified from '/snippets/_adapters-verified.md';
