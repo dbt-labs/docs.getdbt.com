@@ -69,7 +69,7 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
       - `github_pull_request_id`
       - `gitlab_merge_request_id`
       - `azure_devops_pull_request_id` 
-   - Provide the `git_sha` or `git_branch` to target the correct branch to run the job against. 
+   - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
 ## Example pull requests
 
