@@ -89,6 +89,28 @@ seeds:
 
 Your corresponding seed files would be formatted like so:
 
+<File name='seeds/my_seed.csv'>
+
+```text
+col_a|col_b|col_c
+1|2|3
+4|5|6
+...
+```
+
+</File>
+
+<File name='seeds/ seed_a.csv'>
+
+```text
+name,id
+luna,1
+doug,2
+...
+```
+
+</File>
+
 <File name='seeds/country_codes.csv'>
 
 ```text
