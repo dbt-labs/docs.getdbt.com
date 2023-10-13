@@ -110,6 +110,8 @@ with monthly_revenue as (
 
 **Cycle detection:** Currently, "project" dependencies can only go in one direction, meaning that the `jaffle_finance` project could not add a new model that depends, in turn, on `jaffle_marketing.roi_by_channel`. dbt will check for cycles across projects and raise errors if any are detected. We are considering support for this pattern in the future, whereby dbt would still check for node-level cycles while allowing cycles at the project level.
 
+For more guidance on how to use dbt Mesh, refer to the dedicated [dbt Mesh guide](/guides/best-practices/how-we-mesh/mesh-1-intro).
+
 ### Comparison
 
 If you were to instead install the `jaffle_finance` project as a `package` dependency, you would instead be pulling down its full source code and adding it to your runtime environment. This means:
@@ -131,3 +133,7 @@ These are the exceptions, rather than the rule. Installing another team's projec
 
 If you're using private packages with the [git token method](/docs/build/packages#git-token-method), you must define them in the `packages.yml` file instead of the `dependencies.yml` file. This is because conditional rendering (like Jinja-in-yaml) is not supported.
 </details>
+
+
+## Related docs
+- [dbt Mesh guide](/guides/best-practices/how-we-mesh/mesh-1-intro)
