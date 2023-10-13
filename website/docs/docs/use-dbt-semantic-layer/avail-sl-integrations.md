@@ -26,11 +26,11 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 ## Custom integration
 
-- You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and a GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
+- You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
 - You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
   
     - Supports a generic JDBC driver option (such as DataGrip) or
-    - Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
+    - Uses Arrow Flight SQL JDBC driver version 12.0.0 or higher.
 
 ## Related docs
 
