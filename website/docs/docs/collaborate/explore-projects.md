@@ -229,6 +229,6 @@ When you select a project node in the graph, a project details panel opens on th
 <LoomVideo id='606f02e1cce343eba7e1061d6273ff0a?t=1' />
 
 ## Related content
-- [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) blog
+- [Enterprise permissions](/docs/cloud/manage-access/enterprise-permissions) 
 - [About model governance](/docs/collaborate/govern/about-model-governance)
-- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
+- [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) blog
