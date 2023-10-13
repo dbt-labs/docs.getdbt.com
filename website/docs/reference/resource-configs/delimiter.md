@@ -65,7 +65,7 @@ You can set a default behavior for all seeds with an exception for one seed, `se
 ```yml
 seeds:
   jaffle_shop: 
-    +delimiter: "|"  # default delimiter for seeds in jaffle_shop project will be "|"
+    +delimiter: "|" # default delimiter for seeds in jaffle_shop project will be "|"
     seed_a:
       +delimiter: "," # delimiter for seed_a will be ","
 ```
