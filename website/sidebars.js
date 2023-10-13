@@ -90,6 +90,7 @@ const sidebarSettings = {
                   label: "OAuth with data platforms",
                   items: [
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
+                    "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
                   ],
                 }, // oauth
