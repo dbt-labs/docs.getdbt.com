@@ -72,6 +72,30 @@ seeds:
 
 </File>
 
+Your corresponding seed files would be formatted like this:
+
+<File name='seeds/my_seed.csv'>
+
+```text
+col_a|col_b|col_c
+1|2|3
+4|5|6
+...
+```
+
+</File>
+
+<File name='seeds/seed_a.csv'>
+
+```text
+name,id
+luna,1
+doug,2
+...
+```
+
+</File>
+
 Or you can configure custom behavior for one seed. The `country_codes` uses the ";" delimiter:
 
 <File name='seeds/properties.yml'>
@@ -87,29 +111,7 @@ seeds:
 
 </File>
 
-Your corresponding seed files would be formatted like so:
-
-<File name='seeds/my_seed.csv'>
-
-```text
-col_a|col_b|col_c
-1|2|3
-4|5|6
-...
-```
-
-</File>
-
-<File name='seeds/ seed_a.csv'>
-
-```text
-name,id
-luna,1
-doug,2
-...
-```
-
-</File>
+The `country_codes` seed file would be formatted like this:
 
 <File name='seeds/country_codes.csv'>
 
