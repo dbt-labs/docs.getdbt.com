@@ -15,7 +15,7 @@ dbt Mesh is not a single product: it is a pattern enabled by a convergence of se
 - **[Cross-project references](/docs/collaborate/govern/project-dependencies#usage)** - this is the foundational feature that enables the multi-project deployments. `{{ ref() }}`s now work across dbt Cloud projects on Enterprise plans.
 - **[dbt Explorer](/docs/collaborate/explore-projects)** - dbt Cloud's metadata-powered documentation platform, complete with full, cross-project lineage.
 - **Governance** - dbt's new governance features allow you to manage access to your dbt models both within and across projects.
-  - **[Groups](/docs/build/groups)** - groups allow you to assign models to subsets of models within a project.
+  - **[Groups](/docs/collaborate/govern/model-access#groups)** - groups allow you to assign models to subsets within a project.
   - **[Access](/docs/collaborate/govern/model-access)** - access configs allow you to control who can reference models.
 - **[Model Versions](/docs/collaborate/govern/model-versions)** - When coordinating across projects and teams, we recommend treating your data models as stable APIs. Model versioning is the mechanism to allow graceful adoption and deprecation of models as they evolve.
 - **[Model Contracts](/docs/collaborate/govern/model-contracts)** - data contracts set explicit expectations on the shape of the data to ensure data changes upstream of dbt or within a project's logic don't break downstream comsumers' data products.
