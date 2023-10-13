@@ -8,7 +8,6 @@ meta:
   api_name: dbt Semantic Layer APIs
 ---
 
-import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
 import CreateModel from '/snippets/_sl-create-semanticmodel.md';
 import DefineMetrics from '/snippets/_sl-define-metrics.md';
 import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
@@ -22,7 +21,7 @@ If you prefer, you can create semantic models and metrics for your own dbt proje
 
 - [Create a semantic model](#create-a-semantic-model) using MetricFlow
 - [Define metrics](#define-metrics) using MetricFlow
-- [Test and query metrics locally](#test-and-query-metrics) using MetricFlow
+- [Test and query metrics](#test-and-query-metrics) using MetricFlow
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#set-up-dbt-semantic-layer) in dbt Cloud
 - [Connect to and query the API](#connect-and-query-api) with dbt Cloud

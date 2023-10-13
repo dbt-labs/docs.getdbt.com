@@ -11,7 +11,6 @@ meta:
 <VersionBlock firstVersion="1.6">
 
 
-import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
 import CreateModel from '/snippets/_sl-create-semanticmodel.md';
 import DefineMetrics from '/snippets/_sl-define-metrics.md';
 import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
@@ -28,7 +27,7 @@ Use this guide to fully experience the power of the universal dbt Semantic Layer
 
 - [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
 - [Define metrics](#define-metrics) in dbt Cloud using MetricFlow
-- [Test and query metrics locally](#test-and-query-metrics) with MetricFlow 
+- [Test and query metrics](#test-and-query-metrics) with MetricFlow 
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud 
 - [Connect and query API](#connect-and-query-api) with dbt Cloud

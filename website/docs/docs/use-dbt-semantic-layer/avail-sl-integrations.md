@@ -33,7 +33,7 @@ You can also integrate the following tools with the dbt Semantic Layer:
 - You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
   
     - Supports a generic JDBC driver option (such as DataGrip) or
-    - Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
+    - Uses ArrowFlightSQL driver version 12.0.0 or higher.
 
 ## Related docs
 

@@ -6,7 +6,7 @@ sidebar_label: "Tableau (beta)"
 ---
 
 :::info Beta functionality
-The Tableau integration with the dbt Semantic Layer is a [beta feature](https://docs.getdbt.com/docs/dbt-versions/product-lifecycles#dbt-cloud) and is subject to change without notification.
+The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/dbt-versions/product-lifecycles#dbt-cloud).
 :::
 
 
@@ -17,7 +17,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
 2. Authenticate with either Tableau Server or Tableau Cloud
 3. You need either a [JDBC URL](/docs/dbt-cloud-apis/sl-jdbc#connection-parameters) or a dbt Cloud account's [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
-4. Have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresse). (Single-Tenant coming soon)
+4. Have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
 
 ## Installing
@@ -54,14 +54,14 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 
 ## Unsupported functionality
 
-The following features aren't supported at this time, however, we may support some of this functionality in a future release:
+The following Tableau features aren't supported at this time, however, we may support some of this functionality in a future release:
 
 1. Updating the data source page
 2. Using "Extract" Mode
+   - Including `week` extraction
 3. Unioning Tables
 4. Writing Custom SQL
 5. Table Extensions
 6. Cross Database Joins
 7. All functions in Analysis --> Create Calculated Field
 8. Filtering on a Date Part time dimension for a Cumulative metric type
-
