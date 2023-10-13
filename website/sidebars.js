@@ -952,7 +952,6 @@ const sidebarSettings = {
           items: [
             "guides/best-practices/how-we-mesh/mesh-2-structures",
             "guides/best-practices/how-we-mesh/mesh-3-implementation",
-            "guides/best-practices/how-we-mesh/mesh-4-conclusion",
           ],
         },
         {
