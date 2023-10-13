@@ -1,11 +1,27 @@
-<!-- turn this list into sections once more docs are provided -->
-The dbt Semantic Layer integrations are capable of querying dbt metrics, importing definitions, surfacing the underlying data in partner tools, and more.  These are the following tools that integrate with the dbt Semantic Layer:
+The following tools integrate with the dbt Semantic Layer:
 
-1. **Mode** &mdash; Refer to the [Mode docs](https://mode.com/help/articles/supported-databases/#dbt-semantic-layer) for info on how to integrate with Mode.
-1. **Hex** &mdash; Hex’s Semantic Layer integration will be available in the coming weeks. Until then, refer to [this Loom video](https://www.loom.com/share/752e85aabfbf4fa585008a5598f3517a) for more info. 
-1. **Google Sheets** &mdash; Google Sheets integration coming soon.
-1. **Tools that allows you to write SQL** &mdash; They must meet one of the two criteria: 
-    * Supports a generic JDBC driver option (such as DataGrip) or 
-    * Supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher.
+<div className="grid--3-col">
 
-Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-cloud-apis/service-tokens) to create a Semantic Layer Only and Metadata Only service token. 
+<Card
+    title="Hex"
+    body="Connect to Hex to query metrics, collaborate, and do more with data."
+    link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
+    icon="dbt-bit"/>
+
+<Card
+    title="Mode"
+    body="Connect to Mode to query metrics and deliver consistent insights."
+    link="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
+    icon="dbt-bit"/>
+
+<Card
+    title="Google Sheets (coming end of Oct)"
+    body="Connect to Google Sheets to query metrics and collaborate with teams. Available end of October."
+    icon="dbt-bit"/>
+    
+
+</div><br />
+
+Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-cloud-apis/service-tokens) to create **Semantic Layer Only** and **Metadata Only** permissions.
+
+

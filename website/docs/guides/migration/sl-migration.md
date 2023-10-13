@@ -65,8 +65,8 @@ This step is only relevant to users who want the legacy and new semantic layer t
 1. Create a new deployment environment in dbt Cloud and set the dbt version to 1.6 or higher.
 2. Choose `Only run on a custom branch` and point to the branch that has the updated metric definition
 3. Set the deployment schema to a temporary migration schema, such as `tmp_sl_migration`. Optional, you can create a new database for the migration. 
-4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds,  There needs to be a successful job in your environment in order to set up the semantic layer
-5. In Account Settings > Projects > Project details click `Configure the Semantic Layer`. Under  **Environment**select the deployment environment you created in the previous step. Save your configuration.
+4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds, there needs to be a successful job in your environment in order to set up the semantic layer
+5. In Account Settings > Projects > Project details click `Configure the Semantic Layer`. Under **Environment**, select the deployment environment you created in the previous step. Save your configuration.
 6. In the Project details page, click `Generate service token` and grant it `Semantic Layer Only` and `Metadata Only` permissions. Save this token securely - you will need it to connect to the semantic layer. 
 
 At this point, both the new semantic layer and the old semantic layer will be running. The new semantic layer will be pointing at your migration branch with the updated metrics definitions. 
@@ -77,10 +77,7 @@ Now that your Semantic Layer is set up, you will need to update any downstream i
 
 ### Migration guide for Hex
 
-:::important Hex integration coming soon
-
-Hex’s Semantic Layer integration will be available for use in the coming weeks. This section will have updated instructions once the integration is available.
-:::
+To learn more about integrating with Hex, check out their [documentation](https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration) for more info. Additionally, refer to [dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
 
 1. Set up a new connection for the Semantic Layer for your account. Something to note is that your old connection will still work. The following Loom video guides you in setting up your Semantic Layer with Hex:
 

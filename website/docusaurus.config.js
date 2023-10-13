@@ -47,9 +47,6 @@ var siteSettings = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: false,
-  customFields: {
-    isVercel: process.env.REACT_APP_VERCEL
-  },
   themeConfig: {
     docs:{
       sidebar: {
@@ -74,13 +71,13 @@ var siteSettings = {
     announcementBar: {
       id: "biweekly-demos",
       content:
-        "Join our weekly demos and see dbt Cloud in action!",
-      backgroundColor: "#047377",
+        "Register now for Coalesce 2023. The Analytics Engineering Conference!",
+      backgroundColor: "#7444FD",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
+    announcementBarLink: "https://coalesce.getdbt.com/",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "faith-lierheimer",

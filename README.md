@@ -17,7 +17,7 @@ Creating an inclusive and equitable environment for our documents is more import
 We welcome contributions from community members to this repo:
 - **Fixes**: When you notice an error, you can use the `Edit this page` button at the bottom of each page to suggest a change.
 - **New documentation**: If you contributed code in [dbt-core](https://github.com/dbt-labs/dbt-core), we encourage you to also write the docs here! Please reach out in the dbt community if you need help finding a place for these docs.
-- **Major rewrites**: You can [file an issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new?assignees=&labels=content%2Cimprovement&template=improve-docs.yml) or [start a discussion](https://github.com/dbt-labs/docs.getdbt.com/discussions) to propose ideas for a content area that requires attention.
+- **Major rewrites**: You can [file an issue](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose) to propose ideas for a content area that requires attention.
 
 You can use components documented in the [docusaurus library](https://v2.docusaurus.io/docs/markdown-features/).
 
@@ -42,7 +42,7 @@ You can add code snippets and other content in a tabbed view. To learn more abou
 
 # Running the Docs site locally
 
-You can click a link available in a netlify bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
+You can click a link available in a Vercel bot PR comment to see and review your changes rendered on a staging server. You are also able to see and review your proposed modifications locally on your computer. Our setup instructions use [homebrew](https://brew.sh/):
 
 ## Prerequisites
 

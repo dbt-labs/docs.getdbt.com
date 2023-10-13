@@ -134,8 +134,9 @@ const sidebarSettings = {
               items: [
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
-                "docs/cloud/secure/redshift-privatelink",
                 "docs/cloud/secure/databricks-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/postgres-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -351,6 +352,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
             "docs/deploy/run-visibility",
+            "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
@@ -365,6 +367,7 @@ const sidebarSettings = {
       type: "category",
       label: "Collaborate with others",
       items: [
+        "docs/collaborate/explore-projects",
         {
           type: "category",
           label: "Git version control",
@@ -408,8 +411,16 @@ const sidebarSettings = {
       items: [
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
-        "docs/use-dbt-semantic-layer/avail-sl-integrations",
         "docs/use-dbt-semantic-layer/sl-architecture",
+        {
+          type: "category",
+          label: "Integrations",
+          link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
+          items: [
+            "docs/use-dbt-semantic-layer/avail-sl-integrations",
+						//"docs/use-dbt-semantic-layer/gsheets",
+          ],
+        },
       ],
     },
     {
@@ -521,6 +532,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
             "docs/dbt-cloud-apis/sl-jdbc",
+            "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
@@ -636,7 +648,6 @@ const sidebarSettings = {
           type: "category",
           label: "General properties",
           items: [
-            "reference/resource-properties/access",
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
@@ -653,6 +664,7 @@ const sidebarSettings = {
           type: "category",
           label: "General configs",
           items: [
+            "reference/resource-configs/access",
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
@@ -714,6 +726,7 @@ const sidebarSettings = {
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",
             "reference/resource-configs/store_failures",
+            "reference/resource-configs/store_failures_as",
             "reference/resource-configs/where",
           ],
         },
@@ -1221,6 +1234,7 @@ const sidebarSettings = {
         "community/resources/oss-expectations",
         "community/resources/oss-projects",
         "community/resources/contributor-license-agreements",
+        "community/resources/jobs-terms-and-conditions",
         "community/resources/speaking-at-a-meetup",
       ],
     },

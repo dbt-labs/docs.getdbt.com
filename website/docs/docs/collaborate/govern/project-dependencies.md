@@ -7,6 +7,12 @@ description: "Reference public models across dbt projects"
 
 :::caution Closed Beta - dbt Cloud Enterprise
 "Project" dependencies and cross-project `ref` are features of dbt Cloud Enterprise, currently in Closed Beta. To access these features while they are in beta, please contact your account team at dbt Labs.
+
+**Prerequisites:** In order to add project dependencies and resolve cross-project `ref`, you must:
+- Have the feature enabled (speak to your account team)
+- Use dbt v1.6 for **both** the upstream ("producer") project and the downstream ("consumer") project.
+- Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta)
+- Have a successful run of the upstream ("producer") project
 :::
 
 For a long time, dbt has supported code reuse and extension by installing other projects as [packages](/docs/build/packages). When you install another project as a package, you are pulling in its full source code, and adding it to your own. This enables you to call macros and run models defined in that other project.
@@ -94,3 +100,11 @@ There are a few cases where installing another internal project as a package can
 - Coordinated changes &mdash; In development, if you wanted to test the effects of a change to a public model in an upstream project (`jaffle_finance.monthly_revenue`) on a downstream model (`jaffle_marketing.roi_by_channel`) _before_ introducing changes to a staging or production environment, you can install the `jaffle_finance` package as a package within `jaffle_marketing`.  The installation can point to a specific git branch, however, if you find yourself frequently needing to perform end-to-end testing across both projects, we recommend you re-examine if this represents a stable interface boundary. 
 
 These are the exceptions, rather than the rule. Installing another team's project as a package adds complexity, latency, and risk of unnecessary costs. By defining clear interface boundaries across teams, by serving one team's public models as "APIs" to another, and by enabling practitioners to develop with a more narrowly-defined scope, we can enable more people to contribute, with more confidence, while requiring less context upfront.
+
+## FAQs
+
+<details>
+<summary>Can I define private packages in the <code>dependencies.yml</code> file?</summary>
+
+If you're using private packages with the [git token method](/docs/build/packages#git-token-method), you must define them in the `packages.yml` file instead of the `dependencies.yml` file. This is because conditional rendering (like Jinja-in-yaml) is not supported.
+</details>

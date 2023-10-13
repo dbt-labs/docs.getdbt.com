@@ -59,6 +59,7 @@ Additionally, you may configure the IdP attributes passed from your identity pro
 | email | Unspecified | user.email | The user's email address |
 | first_name | Unspecified | user.first_name | The user's first name |
 | last_name | Unspecified | user.last_name | The user's last name |
+| NameID (if applicable) | Unspecified | user.email | The user's email address |
 
 dbt Cloud's [role-based access control](/docs/cloud/manage-access/about-user-access#role-based-access-control) relies
 on group mappings from the IdP to assign dbt Cloud users to dbt Cloud groups. To
@@ -74,7 +75,6 @@ provider to provide group membership information in user attribute called
 You may use a restricted group attribute statement to limit the groups set
 to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
-Please contact support if you have any questions.
 :::
 
 ### Collect integration secrets
@@ -263,7 +263,7 @@ Expected **Attributes**:
 
 | Google groups  | App attributes |
 | -------------- | -------------- |
-| Name of groups | `MemberOf` |
+| Name of groups | `groups` |
 
 10. Click **Finish** to continue.
 

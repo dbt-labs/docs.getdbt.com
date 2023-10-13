@@ -125,3 +125,7 @@ Don't see your git provider here? Please [contact dbt Support](mailto:support@ge
 
 ## Limited integration
 Some features of dbt Cloud require a tight integration with your git host, for example, updating GitHub pull requests with dbt Cloud run statuses. Importing your project by a URL prevents you from using these features. Once you give dbt Cloud access to your repository, you can continue to set up your project by adding a connection and creating and running your first dbt Cloud job.
+
+## FAQs
+<FAQ path="Git/gitignore"/>
+<FAQ path="Git/git-migration"/>

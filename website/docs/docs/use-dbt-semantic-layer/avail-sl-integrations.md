@@ -4,8 +4,9 @@ id: avail-sl-integrations
 description: "Discover the diverse range of partners that seamlessly integrate with the powerful dbt Semantic Layer, allowing you to query and unlock valuable insights from your data ecosystem."
 tags: [Semantic Layer]
 sidebar_label: "Available integrations"
+hide_table_of_contents: true
 meta:
-  api_name: dbt Semantic Layer API
+  api_name: dbt Semantic Layer APIs
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -17,18 +18,25 @@ import NewSLChanges from '/snippets/_new-sl-changes.md';
 
 There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
-<span>Query dbt metrics with external integrations using the sophisticated <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>. The API enables you to query metrics, avoid duplicative coding, optimize your development workflow, ensure data governance for company metrics, and guarantee consistency for data consumers.<br /><br />
-
-<!-- turn these into cards for ga -->
+Use the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to simplify metric queries, optimize your development workflow, and reduce coding. This approach also ensures data governance and consistency for data consumers.
 
 import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 <AvailIntegrations/>
 
+## Custom integration
+
+- You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
+- You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
+  
+    - Supports a generic JDBC driver option (such as DataGrip) or
+    - Uses Arrow Flight SQL JDBC driver version 12.0.0 or higher.
+
 ## Related docs
 
-- <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate with the JDBC to query your metrics in downstream tools.
+- <span><a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span> to learn how to integrate and query your metrics in downstream tools.
 - [dbt Semantic Layer API query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) 
+- [Hex dbt Semantic Layer cells](https://learn.hex.tech/docs/logic-cell-types/transform-cells/dbt-metrics-cells) to set up SQL cells in Hex.
 
 </VersionBlock>
 

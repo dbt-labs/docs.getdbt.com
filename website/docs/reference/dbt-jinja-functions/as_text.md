@@ -56,12 +56,3 @@ models:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.17.0`: Native rendering is enabled by default. The `as_text` filter was 
-introduced.
-* `v0.17.1`: Native rendering is disabled by default. The `as_text` filter works
-as before, with no functional effect.
-
-</Changelog>

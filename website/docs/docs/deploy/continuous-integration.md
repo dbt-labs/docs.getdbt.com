@@ -24,7 +24,7 @@ dbt Cloud builds and tests the models affected by the code change in a temporary
 
 When the CI run completes, you can view the run status directly from within the pull request. dbt Cloud updates the pull request in GitHub, GitLab, or Azure DevOps with a status message indicating the results of the run. The status message states whether the models and tests ran successfully or not. 
 
-dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has database or schema customization using the [generate_database_name](/docs/build/custom-databases#generate_database_name) or [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macros, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Temp PR schema limitations](/docs/deploy/ci-jobs#temp-pr-schema-limitations).
+dbt Cloud deletes the temporary schema from your <Term id="data-warehouse" /> when you close or merge the pull request. If your project has schema customization using the [generate_schema_name](/docs/build/custom-schemas#how-does-dbt-generate-a-models-schema-name) macro, dbt Cloud might not drop the temporary schema from your data warehouse. For more information, refer to [Troubleshooting](/docs/deploy/ci-jobs#troubleshooting).
 
 ## Differences between CI jobs and other deployment jobs
 
@@ -49,9 +49,4 @@ Below describes the conditions when CI checks are run concurrently and when they
 When you push a new commit to a PR, dbt Cloud enqueues a new CI run for the latest commit and cancels any CI run that is (now) stale and still in flight. This can happen when you’re pushing new commits while a CI build is still in process and not yet done. By cancelling runs in a safe and deliberate way, dbt Cloud helps improve productivity and reduce data platform spend on wasteful CI runs.
 
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/example-smart-cancel-job.png" width="70%" title="Example of an automatically canceled run"/>
-
-### Run slot treatment
-
-Your CI runs don't consume run slots so a CI check will never block a production run.
-
 

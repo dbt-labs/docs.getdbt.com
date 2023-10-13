@@ -78,6 +78,12 @@ link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
     body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
     link="/docs/deploy/run-visibility"
     icon="pencil-paper"/> 
+
+<Card
+    title="dbt Explorer*"
+    body="Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
+    link="/docs/collaborate/explore-projects"
+    icon="pencil-paper"/> 
 </div> <br />
 
 *These features are available on [selected plans](https://www.getdbt.com/pricing/).
