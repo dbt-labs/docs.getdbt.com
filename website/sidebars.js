@@ -733,6 +733,7 @@ const sidebarSettings = {
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",
             "reference/resource-configs/store_failures",
+            "reference/resource-configs/store_failures_as",
             "reference/resource-configs/where",
           ],
         },

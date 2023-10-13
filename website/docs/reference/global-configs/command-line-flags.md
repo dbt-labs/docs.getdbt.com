@@ -20,6 +20,10 @@ dbt run --no-populate-cache
 
 Historically, passing flags (such as "global flags") _before_ the subcommand is a legacy functionality that dbt Labs can remove at any time. We do not support using the same flag before and after the subcommand. 
 
+## Using boolean and non-boolean flags
+
+You can construct your commands with boolean flags to enable or disable or with non-boolean flags that use specific values, such as strings. 
+
 <Tabs>
 
 <TabItem value="nonboolean" label="Non-boolean config">

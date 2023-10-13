@@ -22,7 +22,7 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 :::
 
 
-<VersionBlock firstVersion="1.5">
+<VersionBlock firstVersion="1.6">
 
 <File name='dbt_project.yml'>
 
