@@ -7,7 +7,7 @@ tags: [Oct-2023, CLI, dbt Cloud]
 date: 2023-10-17
 ---
 
-We are excited to announce the dbt Cloud CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud. It’s easy to get started: `brew install dbt` and you’re ready to go.
+We are excited to announce the dbt Cloud CLI, **unified command line for dbt**, is available in public preview. It’s a local development experience, powered by dbt Cloud.  It’s easy to get started:  `pip3 install dbt` or `brew install dbt` and you’re ready to go.
 
 We will continue to invest in the dbt Cloud IDE as the easiest and most accessible way to get started using dbt, especially for data analysts who have never developed software using the command line before. We will keep improving the speed, stability, and feature richness of the IDE, as we have been [all year long](https://www.getdbt.com/blog/improvements-to-the-dbt-cloud-ide/).
 
