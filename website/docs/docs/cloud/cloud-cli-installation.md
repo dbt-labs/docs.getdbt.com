@@ -38,6 +38,8 @@ Otherwise, to switch back to dbt Core, uninstall the dbt Cloud CLI and follow th
 
 ::: 
 
+You can install dbt Core and plugins using pip because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/).
+
 1. We recommend [installing virtual environments (venv)](/docs/core/pip-install#using-virtual-environments) to namespace "cloud-cli"
    - Venv name should be: `python3 -m venv dbt-cloud` and session should be activated with `source dbt-cloud/bin/activate`.
 
