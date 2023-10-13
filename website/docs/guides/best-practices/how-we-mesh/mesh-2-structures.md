@@ -11,11 +11,11 @@ How should we organize our data workflows in a world where instead of having a s
 
 Adopting the dbt Mesh pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now we can mold our organizational knowledge graph to our organizational people graph, bringing people and data closer together rather than compromising one for the other.
 
-While there is not a single best way to implement this pattern, there are some common decisions points that will be helpful for you to consider.
+While there is not a single best way to implement this pattern, there are some common decision points that will be helpful for you to consider.
 
-At a high level you’ll need to decide:
+At a high level, you’ll need to decide:
 
-- Where to draw the lines between your dbt Projects -- ie how do you determine where to split your DAG and which models go in which project?
+- Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
 - How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
 
 ## Define your project interfaces by splitting your DAG
@@ -32,17 +32,17 @@ Vertical splits separate out layers of transformation in DAG order. Let's look a
 
 ### Horizontal splits
 
-Horizonal splits separate your DAG based on source or domain. These splits are often based around the shape and size of the data and how it's used. Let's consider some possibilites for horizontal splitting.
+Horizontal splits separate your DAG based on source or domain. These splits are often based around the shape and size of the data and how it's used. Let's consider some possibilities for horizontal splitting.
 
 - **Team consumption patterns.** For example, splitting out the marketing team's data flow into a separate project.
 - **Data from different sources.** For example, clickstream event data and transactional ecommerce data may need to be modeled independently of each other.
-- **Team workflows.** For example, if two embedded groups who operate at different paces, you may want to split the projects up so they can move independently.
+- **Team workflows.** For example, if two embedded groups operate at different paces, you may want to split the projects up so they can move independently.
 
 ### Combining these strategies
 
 - **These are not either/or techniques**. You should consider both types of splits, and combine them in any way that makes sense for your organization.
 - **Pick one type of split and focus on that first**. If you have a hub-and-spoke team topology for example, handle breaking out the central platform project before you split the remainder into domains. Then if you need to break those domains up horizontally you can focus on that after the fact.
-- **DRY applies to underlying data not just code.** Regardless of your strategy, you should not be sourcing the same rows and columns into multiple nodes. When working within a mesh pattern it becomes increasingly important that we don't duplicate logic or data.
+- **DRY applies to underlying data, not just code.** Regardless of your strategy, you should not be sourcing the same rows and columns into multiple nodes. When working within a mesh pattern it becomes increasingly important that we don't duplicate logic or data.
 
 ## Determine your git strategy
 
