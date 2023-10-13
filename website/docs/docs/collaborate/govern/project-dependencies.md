@@ -22,15 +22,18 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 - **Projects** &mdash; A _new_ way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
 
+Starting in dbt v1.6 or higher, `packages.yml` has been renamed to `dependencies.yml`. However, if you need use Jinja within your packages config, such as an environment variable for your private package, you need to keep using `packages.yml` for your packages for now. Refer to [FAQs](#faqs) for more info.
+
 ## Prerequisites
 
 In order to add project dependencies and resolve cross-project `ref`, you must:
 - Have the feature enabled (speak to your account team)
-- Use dbt v1.6 for **both** the upstream ("producer") project and the downstream ("consumer") project.
+- Use dbt v1.6 or higher for **both** the upstream ("producer") project and the downstream ("consumer") project.
 - Have a deployment environment in the upstream ("producer") project [that is set to be your production environment](/docs/deploy/deploy-environments#set-as-production-environment-beta)
 - Have a successful run of the upstream ("producer") project
-- Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account -- IS DEPLOYMENT /TENANCY INFO RIGHT?
+- Have a multi-tenant or single-tenant [dbt Cloud Enterprise](https://www.getdbt.com/pricing) account (Azure ST is not supported but coming soon)
 
+<!-- commenting out in case we can repurpose content
 ### About dependencies.yml
 
 There are some important differences between using a `dependencies.yml` compared to a `packages.yml` file:
@@ -39,13 +42,13 @@ There are some important differences between using a `dependencies.yml` compared
   - Primarily designed for dbt Mesh and cross-project reference workflow.
   - Supports both Projects and non-private dbt packages (private packages aren't supported yet).
   - Helps maintain your project's organization by allowing you to specify hub packages like `dbt_utils`, reducing the need for multiple YAML files.
-  - Does not support conditional configuration using Jinja-in-yaml (Refer to [FAQs](#faqs) for more info).
+  - Does not support conditional configuration using Jinja-in-yaml 
 
 - `packages.yml`
   - Does not contribute to the dbt Mesh workflow.
   - Serves as a list of dbt Packages (such as dbt projects) that you want to download into your root or parent dbt project.
   - Can only include packages, including private packages (doesn't support Projects)
-
+-->
 ## Example
 
 As an example, let's say you work on the Marketing team at the Jaffle Shop. The name of your team's project is `jaffle_marketing`:

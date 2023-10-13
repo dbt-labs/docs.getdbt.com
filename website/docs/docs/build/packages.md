@@ -25,8 +25,14 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
 
-:::info Project Dependencies versus Packages
- Packages are different to Project dependencies, a feature that allows cross-project `ref`. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info about the difference between `dependencies.yml` and `packages.yml`.
+:::info `dependencies.yml` has replaced `packages.yml`
+Starting from dbt v1.6, `dependencies.yml` has replaced `packages.yml`. It can include both types of dependencies: packages and projects.
+
+- "Package" dependencies are a way of adding the source code from someone else's dbt project into your own, like a library. 
+- "Project" dependencies are a different way of building on top of someone else's work in dbt. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info.
+- 
+You can rename `packages.yml` to `dependencies.yml`, _unless_ you need to use Jinja within your packages specification. For example,adding an environment variable with a git token in a private git package specification.
+
 :::
 
 
