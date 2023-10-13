@@ -21,6 +21,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
 * Significant platform improvements, to be released over the coming months.
 
+The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
 ## Install dbt Cloud CLI
 
