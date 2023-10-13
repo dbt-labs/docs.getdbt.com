@@ -48,7 +48,7 @@ These parameters and descriptions will help you authenticate with your username 
 | **YOUR_ACCESS_URL** | The [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your dbt Cloud account region and plan |
 | **NAME** | The integration name (i.e 'databricks-dbt-cloud')
 
-The API response will include the `client_id` and `client_secret` required in the following step. At this time this is the only way to get the secret, the integration will need to be [deleted](https://docs.databricks.com/api/account/customappintegration/delete) and re-created if the secret is lost.
+After running the `curl`, you'll get an API response that includes the `client_id` and `client_secret` required in the following section. At this time, this is the only way to retrieve the secret. If you lose the secret, then the integration needs to be [deleted](https://docs.databricks.com/api/account/customappintegration/delete) and re-created.
 
 
 ### Configure the Connection in dbt Cloud (dbt Cloud project admin)
