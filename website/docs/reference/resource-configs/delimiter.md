@@ -9,7 +9,7 @@ default_value: ","
 An optional seed configuration used to customize how you separate values in a [seed](/docs/build/seeds) with the one-character string you provide.
 
 * The delimiter defaults to a comma when not specified.
-* Explicitly set The `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";".
+* Explicitly set the `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";".
 
 :::info New in 1.7!
 
@@ -28,8 +28,8 @@ Specify a delimiter in your `dbt_project.yml` file to customize the global separ
 seeds:
   <project_name>:
      +delimiter: "|" # default project delimiter for seeds will be "|"
-    <seed_name>:
-      +delimiter: "," # delimiter for seeds in seed_name will be ","
+    <seed_subdirectory>:
+      +delimiter: "," # delimiter for seeds in seed_subdirectory will be ","
 ```
 
 </File>
@@ -72,7 +72,7 @@ seeds:
 
 </File>
 
-Or you can configure custom behavior for one seed. The `country_codes` uses the "|" delimiter:
+Or you can configure custom behavior for one seed. The `country_codes` uses the ";" delimiter:
 
 <File name='seeds/properties.yml'>
 
@@ -87,15 +87,15 @@ seeds:
 
 </File>
 
-And results in a CSV like this:
+Your corresponding seed files would be formatted like so:
 
 <File name='seeds/country_codes.csv'>
 
 ```text
-country_code|country_name
-US|United States
-CA|Canada
-GB|United Kingdom
+country_code;country_name
+US;United States
+CA;Canada
+GB;United Kingdom
 ...
 ```
 
