@@ -65,8 +65,8 @@ This step is only relevant to users who want the legacy and new semantic layer t
 1. Create a new deployment environment in dbt Cloud and set the dbt version to 1.6 or higher.
 2. Choose `Only run on a custom branch` and point to the branch that has the updated metric definition
 3. Set the deployment schema to a temporary migration schema, such as `tmp_sl_migration`. Optional, you can create a new database for the migration. 
-4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds,  There needs to be a successful job in your environment in order to set up the semantic layer
-5. In Account Settings > Projects > Project details click `Configure the Semantic Layer`. Under  **Environment**select the deployment environment you created in the previous step. Save your configuration.
+4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds, there needs to be a successful job in your environment in order to set up the semantic layer
+5. In Account Settings > Projects > Project details click `Configure the Semantic Layer`. Under **Environment**, select the deployment environment you created in the previous step. Save your configuration.
 6. In the Project details page, click `Generate service token` and grant it `Semantic Layer Only` and `Metadata Only` permissions. Save this token securely - you will need it to connect to the semantic layer. 
 
 At this point, both the new semantic layer and the old semantic layer will be running. The new semantic layer will be pointing at your migration branch with the updated metrics definitions. 
