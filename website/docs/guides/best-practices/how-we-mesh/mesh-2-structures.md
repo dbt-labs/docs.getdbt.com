@@ -46,7 +46,7 @@ Horizonal splits separate your DAG based on source or domain. These splits are o
 
 ## Determine your git strategy
 
-A multi-project architecture can exist in a single repo (monorepo) or as multiple projects in their own repositories (multi-repo).
+A multi-project architecture can exist in a single repo (monorepo) or as multiple projects, each in their own repositories (multi-repo).
 
 - If you're a **smaller team** looking primarily to speed up and simplify development, a **monorepo** is likely the right choice, but can become unwieldy as the number of projects, models and contributors grow.
 - If you’re a **larger team with multiple groups**, and need to decouple projects for security and enablement of different development styles and rhythms, a **multi-repo setup** is your best bet.
