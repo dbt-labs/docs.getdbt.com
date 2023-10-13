@@ -76,6 +76,7 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 7. In the **Project details** page, click **Generate service token** and grant it **Semantic Layer Only** and **Metadata Only** permissions. Save this token securely - you will need it to connect to the semantic layer. 
 
+
 At this point, both the new semantic layer and the old semantic layer will be running. The new semantic layer will be pointing at your migration branch with the updated metrics definitions. 
 
 ## Step 4: Update connection in downstream integrations
