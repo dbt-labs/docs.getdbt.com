@@ -22,7 +22,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 
 ## Installing
 
-1. Install this file () locally and add it to your default folder:
+1. Download our [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.0/dbt_semantic_layer.taco) locally and add it to your default folder:
    - Windows: `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
    - Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
    - Linux: `/opt/tableau/connectors`
@@ -31,7 +31,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
    - Mac: `~/Library/Tableau/Drivers`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
 3. Open Tableau Desktop and find the connector in the left-hand side called **dbt Semantic Layer by dbt Labs**
-4. Connect with your Host, Environment ID, and service token information that's provided to you in your dbt Cloud Semantic Layer configuration.
+4. Connect with your Host, Environment ID, and Service Token information that's provided to you in your dbt Cloud Semantic Layer configuration.
 
 
 ## Using the integration
