@@ -8,17 +8,17 @@ As mentioned before, the key decision in migrating to a multi-project architectu
 
 - **Examine your jobs** - which sets of models are most often built together?
 - **Look at your lineage graph** - how are models connected?
-- **Look at your selectors** defined in `selectors.yml` - how are people already defining resource groups?
-- **Talk to teams** about what sort of separation is naturally existing right now.
+- **Look at your selectors** defined in `selectors.yml` - how do people already define resource groups?
+- **Talk to teams** about what sort of separation naturally exists right now.
   - Are there various domains people are focused on?
   - Are there various sizes, shapes, and sources of data that get handled separately (such as click event data)?
   - Are there people focused on separate levels of transformation, such as landing and staging data or building marts?
 
 ## Add groups and access
 
-Once you have a sense of some initial groupings, the first step is to implement **group and access permissions** within a single project.
+Once you have a sense of some initial groupings, you can first implement **group and access permissions** within a single project.
 
-- First we'll create a [group](/docs/build/groups) to define the owner of a set of models.
+- First you can create a [group](/docs/build/groups) to define the owner of a set of models.
 
 ```yml
 # in models/__groups.yml
@@ -42,7 +42,7 @@ models:
     group: marketing
 ```
 
-- Once models are added to the group, we will **add [access](/docs/collaborate/govern/model-access) settings to the models** based on their connections between groups, *opting for the most private access that will maintain current functionality*. This means that any model that has *only* relationships to other models in the same group should be `private` , and any model that has cross-group relationships, or is a terminal node in the group DAG should be `protected` so that other parts of the DAG can continue to reference it.
+- Once you've added models to the group, you can **add [access](/docs/collaborate/govern/model-access) settings to the models** based on their connections between groups, *opting for the most private access that will maintain current functionality*. This means that any model that has *only* relationships to other models in the same group should be `private` , and any model that has cross-group relationships, or is a terminal node in the group DAG should be `protected` so that other parts of the DAG can continue to reference it.
 
 ```yml
 # in models/marketing/__models.yml

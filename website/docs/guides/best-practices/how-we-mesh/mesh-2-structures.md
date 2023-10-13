@@ -5,11 +5,11 @@ hoverSnippet: Learn how to get started with dbt Mesh
 ---
 ## Exploring mesh patterns
 
-When adopting a multi-project architecture, where do we draw the lines between our projects?
+When adopting a multi-project architecture, where do you draw the lines between projects?
 
-How should we organize our data workflows in a world where instead of having a single dbt DAG, we have multiple projects speaking to each other, each comprised of their own DAG?
+How should you organize data workflows in a world where instead of having a single dbt DAG, you have multiple projects speaking to each other, each comprised of their own DAG?
 
-Adopting the dbt Mesh pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now we can mold our organizational knowledge graph to our organizational people graph, bringing people and data closer together rather than compromising one for the other.
+Adopting the dbt Mesh pattern is not a one-size-fits-all process. In fact, it's the opposite! It's about customizing your project structure to fit _your_ team and _your_ data. Now you can mold your organizational knowledge graph to your organizational people graph, bringing people and data closer together rather than compromising one for the other.
 
 While there is not a single best way to implement this pattern, there are some common decision points that will be helpful for you to consider.
 
@@ -26,9 +26,9 @@ The first (and perhaps most difficult!) decision when migrating to a multi-proje
 
 Vertical splits separate out layers of transformation in DAG order. Let's look at some examples.
 
-- **Splitting up staging and mart layers.** to create a more tightly-controlled, shared set of components that other projects build on but can't edit.
-- **Isolating earlier models for security and governance requirements.** to separate out and mask PII data so that downstream consumers can't access it is a common use case for a vertical split.
-- **Protecting complex or expensive data.** to isolate large or complex models that are expensive to run so that they are safe from accidental selection, independently deployable, and easier to debug when they have issues.
+- **Splitting up staging and mart layers** to create a more tightly-controlled, shared set of components that other projects build on but can't edit.
+- **Isolating earlier models for security and governance requirements** to separate out and mask PII data so that downstream consumers can't access it is a common use case for a vertical split.
+- **Protecting complex or expensive data** to isolate large or complex models that are expensive to run so that they are safe from accidental selection, independently deployable, and easier to debug when they have issues.
 
 ### Horizontal splits
 
