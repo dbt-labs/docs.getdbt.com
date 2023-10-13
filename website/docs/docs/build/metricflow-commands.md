@@ -17,35 +17,7 @@ MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
 
 MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
 
-<!--
-### dbt Cloud CLI
-
-MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them in the dbt Cloud CLI. A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
-
-### dbt Cloud IDE
-
-:::info
-You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
-:::
-
-### dbt Core
-
-:::info Use dbt Cloud CLI for semantic layer development
-
-Use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. 
-
-A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning for you.
-:::
-
-
-You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
-
-1. Create or activate your virtual environment`python -m venv venv`
-2. Run `pip install dbt-metricflow`
-  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
-
-**Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
--->
+**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. If using GitHub Actions, you can `pip install metricflow` and run MetricFlow dbt Core commands as part of your CI checks on PRs.
 
 <Tabs>
 
@@ -87,6 +59,7 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 </TabItem>
 
 </Tabs>
+
 
 ## MetricFlow commands
 
