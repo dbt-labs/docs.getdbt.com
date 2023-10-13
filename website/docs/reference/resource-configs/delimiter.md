@@ -6,7 +6,7 @@ default_value: ","
 
 ## Definition
 
-An optional seed configuration used to customize how you separate values in a [seed](/docs/build/seeds) with the one-character string you provide.
+You can use this optional seed configuration to customize how you separate values in a [seed](/docs/build/seeds) by providing the one-character string.
 
 * The delimiter defaults to a comma when not specified.
 * Explicitly set the `delimiter` configuration value if you want seed files to use a different delimiter, such as "|" or ";".
