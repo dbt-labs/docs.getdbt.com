@@ -12,7 +12,7 @@ The following sections outline the commands supported by dbt and their relevant 
 ### Available commands
 
 
-<VersionBlock firstVersion="1.6">
+<VersionBlock firstVersion="1.5">
 
 All commands in the table are compatible with either the dbt Cloud IDE, dbt Cloud CLI, or dbt Core.  
 
