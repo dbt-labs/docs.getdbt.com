@@ -38,7 +38,7 @@ Richer and more timely metadata will become available as dbt, the Discovery API,
 
 ## Explore your project's lineage graph {#project-lineage}
 
-dbt Explorer provides a visualization of your project’s <Term id="dag">DAG</Term> that you can interact with. To access it, select **Overview** in the left sidebar and click the **Explore Lineage** button on the main (center) section of the page. 
+dbt Explorer provides a visualization of your project’s <Term id="dag">DAG</Term> that you can interact with. To access the project's full lineage graph, select **Overview** in the left sidebar and click the **Explore Lineage** button on the main (center) section of the page. 
 
 If you don't see the project lineage graph immediately, click **Render Lineage**. It can take some time for the graph to render depending on the size of your project and your computer’s available memory. The graph of very large projects might not render so you can select a subset of nodes by using selectors, instead.
 
@@ -65,7 +65,7 @@ To interact with the full lineage graph, you can:
 
 
 ## Search for resources {#search-resources}
-With the search bar (on the upper left of the page or in a lineage graph), you can search with keywords or [node selection syntax](/reference/node-selection/syntax). The resources that match your search criteria will display as a lineage graph and a table in the main section of the page. 
+With the search bar (on the upper left corner of the page or in a lineage graph), you can search with keywords or by using [node selection syntax](/reference/node-selection/syntax). The resources that match your search criteria will display as a lineage graph and a table in the main section of the page. 
 
 Select a node (single-click) in the lineage graph to highlight its relationship with your other search results and to display which project contains the resource's definition. When you choose a node (double-click) in the lineage graph or when you select a resource in the table, dbt Explorer displays the [resource's details page](#view-resource-details).
 
@@ -103,7 +103,7 @@ You can use multiple selector methods in your search query with [set operators](
 
 You can use keyword search to highlight results that are filtered by the selector search. For example, if you don't have a resource called `customers`, then `resource_type:metric customers` returns all the metrics in your project and highlights those that are related to the term `customers` in the name, in a column, tagged as customers, and so on.
 
-When searching in this way, think of selectors as filters that you can use to narrow the search and keywords as a way to find matches from those filtered results.
+When searching in this way, the selectors behave as filters that you can use to narrow the search and keywords as a way to find matches within those filtered results.
 
 <LoomVideo id='7ff433c392dd48d68311e17ce2adc57f' />
 
@@ -125,7 +125,9 @@ To browse using a different view, you can choose one of these options from the *
 If models in the project are versioned, you can see which [version of the model](/docs/collaborate/govern/model-versions) is being applied &mdash; `prerelease`, `latest`, and `old` &mdash; in the title of the model’s details page and in the model list from the sidebar.
 
 ## View resource details {#view-resource-details}
-You can view the definition and latest run results of any resource in your project. To find a resource and view its details, you can interact with the lineage graph, use search, or browse the catalog. The details (metadata) available to you depends on the resource’s type, its definition, and the [commands](/docs/deploy/job-commands) run within jobs in the production environment. 
+You can view the definition and latest run results of any resource in your project. To find a resource and view its details, you can interact with the lineage graph, use search, or browse the catalog. 
+
+The details (metadata) available to you depends on the resource’s type, its definition, and the [commands](/docs/deploy/job-commands) that run within jobs in the production environment. 
 
 
 <LoomVideo id='2b2ae3e376fa46e4b344eb5becfd730e' />
@@ -135,57 +137,73 @@ You can view the definition and latest run results of any resource in your proje
 An example of the details you might get for a model:
 
 - Status bar (below the page title) &mdash; Information on the last time the model ran, whether the run was successful, how the data is materialized, number of rows, and the size of the model. 
-- **General** tab &mdash; The model’s lineage graph that you can interact with. The graph includes one parent node and one child node from the model.
+- **General** tab includes:
+    - **Lineage** graph &mdash; The model’s lineage graph that you can interact with. The graph includes one parent node and one child node from the model. Click the Expand icon in the graph's upper right corner to view the model in full lineage graph mode.
+    - **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
+    - **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
+    - **Tests** section &mdash; [Tests](/docs/build/tests) for the model.
+    - **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
+    - **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
 - **Code** tab &mdash; The source code and compiled code for the model.
 - **Columns** tab &mdash; The available columns in the model. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test. 
-- **Description** section &mdash; A [description of the model](/docs/collaborate/documentation#adding-descriptions-to-your-project).
-- **Recent** section &mdash; Information on the last time the model ran, how long it ran for, whether the run was successful, the job ID, and the run ID.
-- **Tests** section &mdash; [Tests](/docs/build/tests) for the model.
-- **Details** section &mdash; Key properties like the model’s relation name (for example, how it’s represented and how you can query it in the data platform: `database.schema.identifier`); model governance attributes like access, group, and if contracted; and more.
-- **Relationships** section &mdash; The nodes the model **Depends On**, is **Referenced by**, and (if applicable) is **Used by** for projects that have declared the models' project as a dependency.
+
 
 ### Example of exposure details
 
 An example of the details you might get for an exposure:
 
 - Status bar (below the page title) &mdash; Information on the last time the exposure was updated. 
-- **Status** section &mdash; The status on data freshness and data quality.
-- **Lineage** section &mdash; The exposure’s lineage graph.
-- **Description** section &mdash; A description of the exposure.
-- **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
-- **Relationships** section &mdash; The nodes the exposure **Depends On**.
+- **General** tab includes:
+    - **Status** section &mdash; The status on data freshness and data quality.
+    - **Lineage** graph &mdash; The exposure’s lineage graph. Click the Expand icon in the graph's upper right corner to view the exposure in full lineage graph mode.
+    - **Description** section &mdash; A description of the exposure.
+    - **Details** section &mdash; Details like exposure type, maturity, owner information, and more.
+    - **Relationships** section &mdash; The nodes the exposure **Depends On**.
 
 ### Example of test details
 
 An example of the details you might get for a test:
 
 - Status bar (below the page title) &mdash; Information on the last time the test ran, whether the test passed, test name, test target, and column name. 
-- **General** tab &mdash; The test’s lineage graph that you can interact with. The graph includes one parent node and one child node from the test resource.
+- **General** tab includes:
+    - **Lineage** graph &mdash; The test’s lineage graph that you can interact with. The graph includes one parent node and one child node from the test resource. Click the Expand icon in the graph's upper right corner to view the test in full lineage graph mode.
+    - **Description** section &mdash; A description of the test.
+    - **Recent** section &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
+    - **Details** section &mdash; Details like schema, severity, package, and more.
+    - **Relationships** section &mdash; The nodes the test **Depends On**.
 - **Code** tab &mdash; The source code and compiled code for the test.
-- **Description** section &mdash; A description of the test.
-- **Recent** section &mdash; Information on the last time the test ran, how long it ran for, whether the test passed, the job ID, and the run ID.
-- **Details** section &mdash; Details like schema, severity, package, and more.
-- **Relationships** section &mdash; The nodes the test **Depends On**.
+
 
 ### Example of source details
 
 An example of the details you might get for each source table within a source collection:
 
 - Status bar (below the page title) &mdash; Information on the last time the source was updated and the number of tables the source uses. 
-- **General** tab &mdash; The source’s lineage graph that you can interact with. The graph includes one parent node and one child node from the source.
+- **General** tab includes:
+    - **Lineage** graph &mdash; The source’s lineage graph that you can interact with. The graph includes one parent node and one child node from the source. Click the Expand icon in the graph's upper right corner to view the source in full lineage graph mode.
+    - **Description** section &mdash; A description of the source.
+    - **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
+    - **Details** section &mdash; Details like database, schema, and more.
+    - **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
 - **Columns** tab &mdash; The available columns in the source. This tab also shows tests results (if any) that you can select to view the test's details page. A :white_check_mark: denotes a passing test.
-- **Description** section &mdash; A description of the source.
-- **Source freshness** section &mdash; Information on whether refreshing the data was successful, the last time the source was loaded, the timestamp of when a run generated data, and the run ID.
-- **Details** section &mdash; Details like database, schema, and more.
-- **Relationships** section &mdash; A table that lists all the sources used with their freshness status, the timestamp of when freshness was last checked, and the timestamp of when the source was last loaded.
 
-## Lineage for cross-project 
+## About project-level lineage
+You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources.
 
-You can also view all the different projects and public models in the account, where the public models are defined, and how they are used to gain a better understanding about your cross-project resources. For more details about a decentralized data management architecture, refer to the [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) blog.
+When viewing the resource-level lineage graph for a given project that uses cross-project references, you can see cross-project relationships represented in the DAG. The iconography is slightly different depending on whether you're viewing the lineage of an upstream producer project or a downstream consumer project. 
 
-### Explore the project level lineage graph
+When viewing an upstream (parent) project that produces public models that are imported by downstream (child) projects, public models will have a counter icon in their upper right corner that indicates the number of projects that declare the current project as a dependency. Selecting that model reveals the lineage to show the specific projects that are dependent on this model. Projects show up in this counter if they declare the parent project as a dependency in its `dependencies.yml` regardless of whether or not there's a direct `{{ ref() }}` against the public model. Selecting a project node from a public model opens the resource-level lineage graph for that project, which is subject to your permissions.  
 
-For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore the project full lineage](#project-lineage) but you can also interact with it at the project level and view the details. 
+<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="85%" height="100" title="Cross-project lineage in a parent project"/>
+
+When viewing a downstream (child) project that imports and refs public models from upstream (parent) projects, public models will show up in the lineage graph and display an icon on the graph edge that indicates what the relationship is to a model from another project. Hovering over this icon indicates the specific dbt Cloud project that produces that model. Double-clicking on a model from another project opens the resource-level lineage graph of the parent project, which is subject to your permissions.
+
+
+<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-child.png" width="85%" height="100" title="Cross-project lineage in a child project"/>
+
+### Explore the project-level lineage graph
+
+For cross-project collaboration, you can interact with the DAG in all the same ways as described in [Explore your project's lineage](#project-lineage) but you can also interact with it at the project level and view the details. 
 
 To get a list view of all the projects, select the account name at the top of the **Explore** page near the navigation bar. This view includes a public model list, project list, and a search bar for project searches. You can also view the project-level lineage graph by clicking the Lineage view icon in the page's upper right corner.
 
@@ -210,16 +228,7 @@ When you select a project node in the graph, a project details panel opens on th
 
 <LoomVideo id='606f02e1cce343eba7e1061d6273ff0a?t=1' />
 
-
-### Understanding cross project lineage
-
-When viewing the resource-level lineage graph for a given project that uses cross-project references, you will see cross-project relationships represented in the DAG. The iconography will be slighly different depending on whether you're viewing the lineage of an upstream, producer project or a downstream, consumer project. 
-
-When viewing an upstream project that produces public models that are imported by downstream projects, public models will have a counter icon in their upper right hand corner that indicates the number of projects that declare the current project as a dependency. Clicking on that model will expand the lineage to show the specific projects that are dependent on this model. Projects will show up in this counter if they declare the parent project as a dependency in its `dependencies.yml`, regardless of whether or not there is a direct `{{ ref() }}` against the public model. Clicking on a project node from a public model will open the resource-level lineage graph of that project, subject to your permissions.  
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-parent.png" width="85%" height="100" title="Cross project lineage in a parent project"/>
-
-When viewing an downstream project that imports and refs public models from an upstream projects, public models will show up in the lineage graph, and there will be an icon on the graph edge that indicates the relationship is to a model from another project. Hovering over this icon indicates the specific dbt Cloud project that produces that model. Double clicking on a model from another project will open the resource-level lineage graph of the parent project, subject to your permissions.
-
-
-<Lightbox src="/img/docs/collaborate/dbt-explorer/cross-project-lineage-child.png" width="85%" height="100" title="Cross project lineage in a child project"/>
+## Related content
+- [What is data mesh?](https://www.getdbt.com/blog/what-is-data-mesh-the-definition-and-importance-of-data-mesh) blog
+- [About model governance](/docs/collaborate/govern/about-model-governance)
+- [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl)
