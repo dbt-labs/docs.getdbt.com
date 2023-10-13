@@ -694,6 +694,7 @@ const sidebarSettings = {
             "reference/seed-properties",
             "reference/seed-configs",
             "reference/resource-configs/column_types",
+            "reference/resource-configs/delimiter",
             "reference/resource-configs/quote_columns",
           ],
         },
