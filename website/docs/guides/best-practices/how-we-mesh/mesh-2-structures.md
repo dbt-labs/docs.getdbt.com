@@ -31,7 +31,7 @@ Horizonal splits separate your DAG based on source or domain. These splits are o
 
 - **These are not either/or techniques**. You should consider both types of divisions, and combine them in any way that makes sense for your organization.
 - **Pick one type of split and focus on that first**. If you have a hub-and-spoke team topology for example, handle breaking out the central platform project before you split the remainder into domains. Then if you need to break those domains up horizontally you can focus on that after the fact.
-- **DRY applies to underlying data not just code.** Regardless of your splits, you should not be sourcing the same rows and columns into multiple nodes. Working within a mesh structure it becomes increasingly important that we don’t duplicate work, which creates surface area for conflicts and erodes the single source of truth we're trying to create in our dbt projects.
+- **DRY applies to underlying data not just code.** Regardless of your splits, you should not be sourcing the same rows and columns into multiple nodes. Working within a mesh structure it becomes increasingly important that we don’t duplicate work, which creates surface area for conflicts and erodes the single source of truth we're trying to create in our dbt project.
 
 ## Monorepo vs multi-repo
 
