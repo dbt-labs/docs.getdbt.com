@@ -26,12 +26,11 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 
 
 :::info `dependencies.yml` has replaced `packages.yml`
-Starting from dbt v1.6, `dependencies.yml` has replaced `packages.yml`. It can include both types of dependencies: packages and projects.
-
-- "Package" dependencies are a way of adding the source code from someone else's dbt project into your own, like a library. 
-- "Project" dependencies are a different way of building on top of someone else's work in dbt. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info.
+Starting from dbt v1.6, `dependencies.yml` has replaced `packages.yml`. This file can now contain both types of dependencies: "package" and "project" dependencies.
+- "Package" dependencies lets you add source code from someone else's dbt project into your own, like a library. 
+- "Project" dependencies provide a different way to build on top of someone else's work in dbt. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info.
 - 
-You can rename `packages.yml` to `dependencies.yml`, _unless_ you need to use Jinja within your packages specification. For example,adding an environment variable with a git token in a private git package specification.
+You can rename `packages.yml` to `dependencies.yml`, _unless_ you need to use Jinja within your packages specification. This could be necessary, for example, if you want to add an environment variable with a git token in a private git package specification.
 
 :::
 
