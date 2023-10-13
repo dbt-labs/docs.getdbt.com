@@ -57,11 +57,11 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 The following Tableau features aren't supported at this time, however, we may support some of this functionality in a future release:
 
 1. Updating the data source page
-2. Using "Extract" Mode
-   - Including `week` extraction
+2. Using "Extract" mode to view yur data
 3. Unioning Tables
 4. Writing Custom SQL
 5. Table Extensions
 6. Cross Database Joins
 7. All functions in Analysis --> Create Calculated Field
 8. Filtering on a Date Part time dimension for a Cumulative metric type
+9. Changing your date dimension to use "Week Number"
