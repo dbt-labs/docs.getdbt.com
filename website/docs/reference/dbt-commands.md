@@ -11,7 +11,6 @@ The following sections outline the commands supported by dbt and their relevant 
 
 ### Available commands
 
-
 <VersionBlock firstVersion="1.5">
 
 All commands in the table are compatible with either the dbt Cloud IDE, dbt Cloud CLI, or dbt Core.  
@@ -44,7 +43,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.5">
+<VersionBlock lastVersion="1.4">
 
 Select the tabs that are relevant to your development workflow. For example, if you develop in the dbt Cloud IDE, select **dbt Cloud**.  
 
@@ -54,7 +53,7 @@ Select the tabs that are relevant to your development workflow. For example, if 
 Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
-- [clone](/reference/commands/clone): clone selected nodes from specified state (requires dbt 1.6 or higher)
+- [clone](/reference/commands/clone): clone selected nodes from the specified state (requires dbt 1.6 or higher)
 - [compile](/reference/commands/compile): compiles (but does not run) the models in a project
 - [deps](/reference/commands/deps): downloads dependencies for a project
 - [docs](/reference/commands/cmd-docs) : generates documentation for a project
@@ -75,7 +74,7 @@ Use the following dbt commands in the [dbt COre](/docs/core/about-dbt-core) and 
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [clean](/reference/commands/clean): deletes artifacts present in the dbt project
-- [clone](/reference/commands/clone): clone selected models from specified state (requires dbt 1.6 or higher)
+- [clone](/reference/commands/clone): clone selected models from the specified state (requires dbt 1.6 or higher)
 - [compile](/reference/commands/compile): compiles (but does not run) the models in a project
 - [debug](/reference/commands/debug): debugs dbt connections and projects
 - [deps](/reference/commands/deps): downloads dependencies for a project
