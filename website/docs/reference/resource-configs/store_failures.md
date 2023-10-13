@@ -3,7 +3,7 @@ resource_types: [tests]
 datatype: boolean
 ---
 
-The configured test(s) will store their failures when `dbt test --store-failures` is invoked.
+The configured test(s) will store their failures when `dbt test --store-failures` is invoked. If you set this configuration as `false` but [`store_failures_as`](/reference/resource-configs/store_failures_as) is configured, it will be overriden. 
 
 ## Description
 Optionally set a test to always or never store its failures in the database.
