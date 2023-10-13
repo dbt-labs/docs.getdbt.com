@@ -1,5 +1,5 @@
 ---
-title: Deciding how to structure your mesh
+title: Deciding how to structure your dbt Mesh
 description: Getting started with dbt Mesh patterns
 hoverSnippet: Learn how to get started with dbt Mesh
 ---
