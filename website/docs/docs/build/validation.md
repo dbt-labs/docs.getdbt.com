@@ -12,9 +12,6 @@ These validations ensure that configuration files follow the expected schema, th
 
 The code that handles validation [can be found here](https://github.com/dbt-labs/dbt-semantic-interfaces/tree/main/dbt_semantic_interfaces/validations) for those who want to dive deeper into this topic. 
 
-## Prerequisites
-
-- You have installed [MetricFlow](https://github.com/dbt-labs/metricflow)
 
 ## Validations command
 
