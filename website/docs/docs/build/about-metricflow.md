@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 This guide introduces MetricFlow's fundamental ideas for people new to this feature. MetricFlow, which powers the dbt Semantic Layer, helps you define and manage the logic for your company's metrics. It's an opinionated set of abstractions and helps data consumers retrieve metric datasets from a data platform quickly and efficiently. 
 
-MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands), whether in dbt Cloud or dbt Core.
+MetricFlow handles SQL query construction and defines the specification for dbt semantic models and metrics. It allows you to define metrics in your dbt project and query them with [MetricFlow commands](/docs/build/metricflow-commands) whether in dbt Cloud or dbt Core.
 
 Before you start, consider the following guidelines:
 
