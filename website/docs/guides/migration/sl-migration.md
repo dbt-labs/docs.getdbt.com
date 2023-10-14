@@ -68,7 +68,7 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 3. Set the deployment schema to a temporary migration schema, such as `tmp_sl_migration`. Optional, you can create a new database for the migration. 
 
-4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds,  There needs to be a successful job in your environment in order to set up the semantic layer
+4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds. There needs to be a successful job in your environment in order to set up the semantic layer.
 
 5. In **Account Settings** -> **Projects** -> **Project details**, click **Configure the Semantic Layer**. 
 
