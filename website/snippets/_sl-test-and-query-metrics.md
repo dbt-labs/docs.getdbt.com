@@ -16,7 +16,7 @@ You can use the **Preview** or **Compile** buttons in the IDE to run semantic va
 
 This section is exclusive to dbt Cloud CLI users (support for dbt Cloud IDE is coming soon). With dbt Cloud, you can:
 
-- Run MetricFlow commands right after installing the dbt Cloud CLI. They're integrated with dbt Cloud so you can use them immediately.
+- You can run MetricFlow commands after installing the dbt Cloud CLI. They're integrated with dbt Cloud so you can use them immediately.
 - Your account will automatically manage version control for you.
 
 Refer to the following steps to get started: 
