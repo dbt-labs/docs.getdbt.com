@@ -1,7 +1,7 @@
 
 <VersionBlock firstVersion="1.6">
 
-- Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment. (Single-Tenant coming soon)
+- Have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment. Single-tenant coming soon.
 - Have both your production and development environments running dbt version 1.6 or higher. Refer to [upgrade in dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) for more info.
 - Use Snowflake, BigQuery, Databricks, or Redshift 
 -  Create a successful run in the environment where you configure the Semantic Layer. 
