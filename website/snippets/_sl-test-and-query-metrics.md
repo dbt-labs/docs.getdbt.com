@@ -52,7 +52,7 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
    - You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. As an example for a Snowflake adapter, run `pip install "dbt-metricflow[snowflake]"`.
    - You'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 4. Run `dbt parse`. This allows MetricFlow to build a semantic graph and generate a `semantic_manifest.json`.
-   - This will create the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt run` before preceding to ensure the data exists in your warehouse.
+   - This creates the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt run` before proceeding to ensure the data exists in your warehouse.
 5. Run `mf --help` to confirm you have MetricFlow installed and view the available commands.
 6. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `mf query --metrics order_total --group-by metric_time`
 7. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--explain` in the command line..
