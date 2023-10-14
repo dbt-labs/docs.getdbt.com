@@ -13,7 +13,7 @@ git clone git@github.com:dbt-labs/jaffle-sl-template.git
 cd path/to/project
 ```
 
-Next before we start writing code, we'll need to install MetricFlow as an extension of a dbt adapter from PyPI  (dbt Core users only). The MetricFlow is compatible with Python versions 3.8 through 3.11.
+Next, before you start writing code, you need to install MetricFlow as an extension of a dbt adapter from PyPI  (dbt Core users only). The MetricFlow is compatible with Python versions 3.8 through 3.11.
 
 We'll use pip to install MetricFlow and our dbt adapter:
 
