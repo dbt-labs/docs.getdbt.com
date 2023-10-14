@@ -19,7 +19,7 @@ This section is for people using the dbt Cloud CLI (support for dbt Cloud IDE is
 - You can run MetricFlow commands after installing the dbt Cloud CLI. They're integrated with dbt Cloud so you can use them immediately.
 - Your account will automatically manage version control for you.
 
-Refer to the following steps to get started: 
+To get started: 
 
 1. Make sure you've installed the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation). 
 2. Navigate to your dbt project directory.
