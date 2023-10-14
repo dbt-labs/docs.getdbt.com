@@ -64,7 +64,7 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 1. Create a new deployment environment in dbt Cloud and set the dbt version to 1.6 or higher.
    
-2. Select **Only run on a custom branch** and point to the branch that has the updated metric definition
+2. Select **Only run on a custom branch** and point to the branch that has the updated metric definition.
 
 3. Set the deployment schema to a temporary migration schema, such as `tmp_sl_migration`. Optional, you can create a new database for the migration. 
 
