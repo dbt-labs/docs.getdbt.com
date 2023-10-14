@@ -18,7 +18,7 @@ The following tools integrate with the dbt Semantic Layer:
     <Card
       title="Hex"
       link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
-      body="Check out Hex's documentation to discover how to connect, analyze metrics, collaborate, and unlock more data possibilities."
+      body="Check out Hex's documentation to learn how to connect, analyze metrics, collaborate, and discover more data possibilities."
       icon="hex"/>
     <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       className="external-link"
