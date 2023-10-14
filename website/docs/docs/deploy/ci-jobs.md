@@ -27,6 +27,7 @@ To make CI job creation easier, many options on the **CI job** page are set to d
     - **Job Name** &mdash; Specify the name for this CI job.
     - **Environment** &mdash; By default, it’s set to the environment you created the CI job from.
     - **Triggered by pull requests** &mdash; By default, it’s enabled. Every time a developer opens up a pull request or pushes a commit to an existing pull request, this job will get triggered to run.
+      - **Run on Draft Pull Request** &mdash; Enable this option if you want to also trigger the job to run every time a developer opens up a draft pull request or pushes a commit to that draft pull request. 
 
 3. Options in the **Execution Settings** section:
     - **Commands** &mdash; By default, it includes the `dbt build --select state:modified+` command. This informs dbt Cloud to build only new or changed models and their downstream dependents. Importantly, state comparison can only happen when there is a deferred environment selected to compare state to. Click **Add command** to add more [commands](/docs/deploy/job-commands)  that you want to be invoked when this job runs.
@@ -62,13 +63,13 @@ If you're not using dbt Cloud’s native Git integration with [GitHub](/docs/cl
 
 
 1. Set up a CI job with the [Create Job](/dbt-cloud/api-v2#/operations/Create%20Job) API endpoint using `"job_type": ci` or from the [dbt Cloud UI](#set-up-ci-jobs).
-1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. Provide the pull request (PR) ID to the payload using one of these fields, even if you're using a different Git provider (like Bitbucket):
+1. Call the [Trigger Job Run](/dbt-cloud/api-v2#/operations/Trigger%20Job%20Run) API endpoint to trigger the CI job. You must include these fields to the payload:
+   - Provide the pull request (PR) ID with one of these fields, even if you're using a different Git provider (like Bitbucket). This can make your code less human-readable but it will _not_ affect dbt functionality. 
 
-    - `github_pull_request_id`
-    - `gitlab_merge_request_id`
-    - `azure_devops_pull_request_id` 
-
-  This can make your code less human-readable but it will _not_ affect dbt functionality. 
+      - `github_pull_request_id`
+      - `gitlab_merge_request_id`
+      - `azure_devops_pull_request_id` 
+   - Provide the `git_sha` or `git_branch` to target the correct commit or branch to run the job against. 
 
 ## Example pull requests
 
