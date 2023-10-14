@@ -1,7 +1,7 @@
 ---
 title: "New: Develop with the dbt Cloud CLI"
 description: "October 2023: Learn about the new dbt Cloud CLI development experience, now in public preview,"
-sidebar_position: 06
+sidebar_position: 04
 sidebar_label: "New: Develop with the dbt Cloud CLI"
 tags: [Oct-2023, CLI, dbt Cloud]
 date: 2023-10-17
