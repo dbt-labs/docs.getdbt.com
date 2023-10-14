@@ -57,7 +57,7 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 6. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `mf query --metrics order_total --group-by metric_time`.
 7. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--explain` in the command line.
 8. Run `mf validate-configs` to run validation on your semantic models and metrics.
-9.  Commit and merge the code changes that contain the metric definitions.
+9. Commit and merge the code changes that contain the metric definitions.
 
 To streamline your metric querying process, you can connect to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) to access your metrics programmatically. For SQL syntax, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
 
