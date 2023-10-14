@@ -8,7 +8,7 @@
    - **Note:** Semantic Layer currently supports the Deployment environment for querying. (_development querying experience coming soon_) 
 - Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
   - To access the API and query metrics in downstream tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. dbt Core or Developer accounts can define metrics but won't be able to dynamically query them.<br />
-- Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the revamped dbt Semantic Layer. 
+- Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the latest dbt Semantic Layer. 
 
 </VersionBlock>
 
