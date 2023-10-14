@@ -45,7 +45,7 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="card-container">
   <Card
     title="Mode"
-    body="Explore Mode's documentation to discover how to connect, access, and get trustworthy metrics and insights."
+    body="Refer to Mode's documentation to learn how to connect, access, and get trustworthy metrics and insights."
     link="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
     icon="mode"/>
     <a href="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
