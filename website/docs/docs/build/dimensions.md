@@ -102,7 +102,7 @@ dimensions:
 To use BigQuery as your data platform, time dimensions columns need to be in the datetime data type. If they are stored in another type, you can cast them to datetime using the `expr` property. Time dimensions are used to group metrics by different levels of time, such as day, week, month, quarter, and year. MetricFlow supports these granularities, which can be specified using the `time_granularity` parameter.
 :::
 
-Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the primary time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
+Time has additional parameters specified under the `type_params` section. When you query one or more metrics in MetricFlow using the CLI, the default time dimension for a single metric is the aggregation time dimension, which you can refer to as `metric_time` or use the dimensions' name. 
 
 You can use multiple time groups in separate metrics. For example, the `users_created` metric uses `created_at`, and the `users_deleted` metric uses `deleted_at`:
 
