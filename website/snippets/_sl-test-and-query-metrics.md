@@ -1,6 +1,6 @@
 This section explains how you can test and run MetricFlow commands with dbt Cloud or dbt Core (dbt Cloud IDE support coming soon). dbt Cloud IDE users can skip to [Run a production job](#run-a-production-job) to run a model.
 
-:::important Testing and querying metrics in the dbt Cloud IDE not yet supported
+:::important Testing and querying metrics in the dbt Cloud IDE is currently not supported
 
 Support for running [MetricFlow commands](/docs/build/metricflow-commands) in the dbt Cloud IDE is not available but is coming soon. 
 
