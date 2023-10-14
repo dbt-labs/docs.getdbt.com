@@ -241,7 +241,7 @@ dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__month --ord
 dbt sl query --metrics mrr_by_end_of_month --dimensions metric_time__week --order metric_time__week 
 ```
 
-**dbt Core users**:
+For dbt Core:
 
 ```bash
 mf query --metrics mrr_by_end_of_month --dimensions metric_time__month --order metric_time__month 
