@@ -39,7 +39,7 @@ To streamline your metric querying process, you can connect to the [dbt Semantic
 <TabItem value="core" label="dbt Core">
 
 
-This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11. You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
+This step is for dbt Core users only. MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11. You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
 **Note** &mdash; The dbt Cloud CLI is highly recommended for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. If you're using dbt Core, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 
