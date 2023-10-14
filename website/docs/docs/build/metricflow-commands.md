@@ -17,7 +17,7 @@ MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
 
 MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
 
-**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. If using GitHub Actions, you can `pip install metricflow` and run MetricFlow dbt Core commands as part of your CI checks on PRs.
+**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`pip install metricflow`). This allows you to run MetricFlow commands as part of your CI checks on PRs.
 
 <Tabs>
 
