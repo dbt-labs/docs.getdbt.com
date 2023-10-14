@@ -21,7 +21,7 @@ Before you start, consider the following guidelines:
 
 MetricFlow is a SQL query generation tool designed to streamline metric creation across different data dimensions for diverse business needs. 
 - It operates through YAML files, where a semantic graph links language to data. This graph comprises [semantic models](/docs/build/semantic-models) (data entry points) and [metrics](/docs/build/metrics-overview) (functions for creating quantitative indicators).
-- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with dbt v1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
+- MetricFlow is a [BSL package](https://github.com/dbt-labs/metricflow) with code source available, and compatible with dbt version 1.6 and higher. Data practitioners and enthusiasts are highly encouraged to contribute.
 - As a part of the dbt Semantic Layer, MetricFlow empowers organizations to define metrics using YAML abstractions.
 - To query metric dimensions, dimension values, and validate configurations, use [MetricFlow commands](/docs/build/metricflow-commands).
 
