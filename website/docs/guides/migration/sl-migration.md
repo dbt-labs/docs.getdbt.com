@@ -72,7 +72,7 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 5. Select **Account Settings** -> **Projects** -> **Project details** and choose **Configure the Semantic Layer**. 
 
-6. Under  **Environment**, select the deployment environment you created in the previous step. Save your configuration.
+6. Under **Environment**, select the deployment environment you created in the previous step. Save your configuration.
 
 7. In the **Project details** page, click **Generate service token** and grant it **Semantic Layer Only** and **Metadata Only** permissions. Save this token securely - you will need it to connect to the semantic layer. 
 
