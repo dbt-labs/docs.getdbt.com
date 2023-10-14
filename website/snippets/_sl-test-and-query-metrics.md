@@ -54,7 +54,7 @@ The dbt Cloud CLI is strongly recommended to define and query metrics for your d
 4. Run `dbt parse`. This allows MetricFlow to build a semantic graph and generate a `semantic_manifest.json`.
    - This creates the file in your `/target` directory. If you're working from the Jaffle shop example, run `dbt seed && dbt run` before proceeding to ensure the data exists in your warehouse.
 5. Run `mf --help` to confirm you have MetricFlow installed and that you can view the available commands.
-6. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `mf query --metrics order_total --group-by metric_time`
+6. Run `mf query --metrics <metric_name> --group-by <dimension_name>` to query the metrics and dimensions. For example, `mf query --metrics order_total --group-by metric_time`.
 7. Verify that the metric values are what you expect. To further understand how the metric is being generated, you can view the generated SQL if you type `--explain` in the command line..
 8. Run `mf validate-configs` to run validation on your semantic models and metrics.
 9.  Commit and merge the code changes that contain the metric definitions.
