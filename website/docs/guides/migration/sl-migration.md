@@ -70,7 +70,7 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds. There needs to be a successful job in your environment in order to set up the semantic layer.
 
-5. In **Account Settings** -> **Projects** -> **Project details**, click **Configure the Semantic Layer**. 
+5. Select **Account Settings** -> **Projects** -> **Project details** and choose **Configure the Semantic Layer**. 
 
 6. Under  **Environment**, select the deployment environment you created in the previous step. Save your configuration.
 
