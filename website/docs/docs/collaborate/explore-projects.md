@@ -8,7 +8,7 @@ With dbt Explorer, you can view your project's [resources](/docs/build/projects)
 
 :::tip Public preview 
 
-Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) as of October 16, 2023 for dbt Cloud customers. More updates coming soon.
+Try dbt Explorer! It's available in [Public Preview](/docs/dbt-versions/product-lifecycles#dbt-cloud) as of October 17, 2023 for dbt Cloud customers. More updates coming soon.
  
 :::
 
