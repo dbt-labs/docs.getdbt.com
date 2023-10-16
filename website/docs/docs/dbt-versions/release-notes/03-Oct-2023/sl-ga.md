@@ -15,12 +15,12 @@ dbt Labs is thrilled to announce that the [dbt Semantic Layer](/docs/use-dbt-sem
 
 It aims to bring the best of modeling and semantics to downstream applications by introducing:
 
-- Brand new [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) with Tableau, Google Sheets, Hex, Mode, and Lightdash.
+- Brand new [integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) such as Tableau, Google Sheets, Hex, Mode, and Lightdash.
 - New [Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) using GraphQL and JDBC to query metrics and build integrations.
 - dbt Cloud [multi-tenant regional](/docs/cloud/about-cloud/regions-ip-addresses) support for North America, EMEA, and APAC. Single-tenant support coming soon.
 - Use the APIs to call an export (a way for you to build tables in your data platform), then access them in your preferred BI tool. Support for scheduling exports as part of your dbt job is coming soon with dbt version 1.7 or higher.
 
-The dbt Semantic Layer is available to [dbt Cloud Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. dbt Cloud Developer plans and dbt Core users can use the dbt Cloud IDE or MetricFlow CLI to define metrics, but won't be able to query them with integrated tools.
+The dbt Semantic Layer is available to [dbt Cloud Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. dbt Cloud Developer plans and dbt Core users can define metrics but won't be able to query them with integrated tools.
 
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="75%" title="The universal dbt Semantic Layer connecting to integration tools."/>
