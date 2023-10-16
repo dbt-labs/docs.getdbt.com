@@ -24,7 +24,7 @@ In this blog post, I’ll attempt to provide this guidance by answering these FA
 2. How is it different from deferral?
 3. Should I defer or should I clone?
 
-# What is `dbt clone`?
+## What is `dbt clone`?
 
 `dbt clone` is a new command in dbt 1.6 that leverages native zero-copy clone functionality on supported warehouses to **copy entire schemas for free, almost instantly**.
 
@@ -35,7 +35,7 @@ This metadata includes materialized objects like tables and views, which is why 
 
 In computer science jargon, `clone` makes a copy of the pointer from the `source` schema to the underlying data; after the operation there are now two pointers (`source` and `target` schemas) that each point to the same underlying data.
 
-# How is cloning different from deferral?
+## How is cloning different from deferral?
 
 On the surface, cloning and deferral seem similar – **they’re both ways to save costs in the data warehouse.**
 They do this by bypassing expensive model re-computations – clone by [eagerly copying](https://en.wikipedia.org/wiki/Evaluation_strategy#Eager_evaluation) an entire schema into the target schema, and defer by [lazily referencing](https://en.wikipedia.org/wiki/Lazy_evaluation) pre-built models in the source schema.
@@ -57,7 +57,7 @@ These first-order effects lead to the following second-order effects that truly 
 | **Will data in the target schema drift from data in the source schema?** | No, since deferral will always point to the latest version of the source schema                                                    | Yes, since clone is a point-in-time operation                                          |
 | **Can I use multiple source schemas at once?**                           | Yes, defer can dynamically switch between source schemas e.g. ref unchanged models from production and changed models from staging | No, clone copies objects from one source schema to one target schema                   |
 
-# Should I defer or should I clone?
+## Should I defer or should I clone?
 
 Putting together all the points above, here’s a handy cheat sheet for when to defer and when to clone:
 
@@ -75,7 +75,7 @@ To absolutely drive this point home:
 1. If you send someone this cheatsheet by linking to this page, you are deferring to this page
 2. If you print out this page and write notes in the margins, you have cloned this page
 
-# Putting it in practice
+## Putting it in practice
 
 Using the cheat sheet above, let’s explore a few common scenarios and explore whether we should use defer or clone for each:
 
@@ -107,7 +107,7 @@ Using the cheat sheet above, let’s explore a few common scenarios and explore 
 
 As a rule of thumb, deferral lends itself better to continuous integration (CI) use cases whereas cloning lends itself better to continuous deployment (CD) use cases.
 
-# Wrapping Up
+## Wrapping Up
 
 In this post, we covered what `dbt clone` is, how it is different from deferral, and when to use each. Often, they can be used together within the same project in different parts of the deployment lifecycle. 
 
