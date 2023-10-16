@@ -373,17 +373,3 @@ packages:
 
 </File>
 
-### About dependencies.yml
-
-There are some important differences between using a `dependencies.yml` compared to a `packages.yml` file:
-
-- `dependencies.yml`
-  - Primarily designed for dbt Mesh and cross-project reference workflow.
-  - Supports both Projects and non-private dbt packages (private packages aren't supported yet).
-  - Helps maintain your project's organization by allowing you to specify hub packages like `dbt_utils`, reducing the need for multiple YAML files.
-  - Does not support conditional configuration using Jinja-in-yaml (Refer to [FAQs](#faqs) for more info).
-
-- `packages.yml`
-  - Does not contribute to the dbt Mesh workflow.
-  - Serves as a list of dbt Packages (such as dbt projects) that you want to download into your root or parent dbt project.
-  - Can only include packages, including private packages (doesn't support Projects)
