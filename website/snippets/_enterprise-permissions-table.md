@@ -20,8 +20,10 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 | Audit logs              |     R         |               |                 |       R        |        |
 | Auth provider           |     W         |               |                 |       W        |   R    |
 | Billing                 |     W         |       W       |                 |                |   R    |
+| Groups                  |     W         |               |        R        |       W        |   R    |
 | Invitations             |     W         |               |        W        |       W        |   R    |
 | IP restrictions         |     W         |               |                 |       W        |   R    |
+| Licenses                |     W         |               |        W        |       W        |   R    |
 | Members                 |     W         |               |        W        |       W        |   R    |
 | Project (create)        |     W         |               |        W        |                |        |
 | Public models           |     R         |       R       |        R        |       R        |   R    |
@@ -34,20 +36,18 @@ Account roles enable you to manage the dbt Cloud account and manage the account 
 |:-------------------------|:-------------:|:-------------:|:---------------:|:--------------:|:------:| 
 | Connections             |       W       |               |       W         |                |   R    |
 | Credentials             |       W       |               |       W         |                |   R    |
-| Custom env. variables    |       W       |               |       W         |                |   R    |
+| Custom env. variables   |       W       |               |       W         |                |   R    |
 | dbt adapters            |       W       |               |       W         |                |   R    |
 | Develop (IDE or dbt Cloud CLI)           |       W       |               |       W         |                |        |
 | Environments            |       W       |               |       W         |                |   R    |
-| Groups                  |       W       |               |       R         |       W        |   R    |
 | Jobs                    |       W       |               |       W         |                |   R    |
-| Licenses                |       W       |               |       W         |       W        |   R    |
 | Metadata                |       R       |               |       R         |                |   R    |
 | Permissions             |       W       |               |       W         |       W        |   R    |
 | Profile                 |       W       |               |       W         |                |   R    |
 | Projects                |       W       |               |       W         |       R        |   R    |
 | Repositories            |       W       |               |       W         |                |   R    |
 | Runs                    |       W       |               |       W         |                |   R    |
-| Semantic Layer Config   |    W          |               |       W         |                |   R    |
+| Semantic Layer Config   |       W       |               |       W         |                |   R    |
 
 
 ### Project role permissions
@@ -61,12 +61,14 @@ The project roles enable you to work within the projects in various capacities. 
 | Account settings         |   R   |         |      R         |           |     R     |           |             |          |                |             |     R      |        |
 | Auth provider            |       |         |                |           |           |           |             |          |                |             |            |        |
 | Billing                  |       |         |                |           |           |           |             |          |                |             |            |        |
-| Invitations              |   W   |    R    |      R         |    R      |     R     |     R     |      R      |          |                |      R      |     R      |        |
-| Members                  |   W   |         |      R         |    R      |     R     |           |             |          |                |      R      |     R      |        |
+| Groups                   |   R   |         |      R         |     R     |     R     |           |             |          |                |      R      |     R      |        |
+| Invitations              |   W   |    R    |      R         |     R     |     R     |     R     |      R      |          |                |      R      |     R      |        |
+| Licenses                 |   W   |    R    |      R         |     R     |     R     |     R     |      R      |          |                |             |     R      |        |
+| Members                  |   W   |         |      R         |     R     |     R     |           |             |          |                |      R      |     R      |        |
 | Project (create)         |       |         |                |           |           |           |             |          |                |             |            |        |
-| Public models            |   R   |    R    |      R         |    R      |     R     |     R     |      R      |     R    |        R       |      R      |     R      |    R   |
+| Public models            |   R   |    R    |      R         |     R     |     R     |     R     |      R      |     R    |        R       |      R      |     R      |    R   |
 | Service tokens           |       |         |                |           |           |           |             |          |                |             |            |        |
-| Webhooks                 |   W   |         |                |    W      |           |           |             |          |                |             |            |    W   |
+| Webhooks                 |   W   |         |                |     W     |           |           |             |          |                |             |            |    W   |
 
 #### Project permissions for project roles
 
@@ -74,13 +76,11 @@ The project roles enable you to work within the projects in various capacities. 
 |--------------------------|:-----:|:-------:|:--------------:|:---------:|:---------:|:---------:|:-----------:|:--------:|:--------------:|:-----------:|:----------:|:------:|  
 | Connections              |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
 | Credentials              |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
-| Custom env. variables     |  W    |    W    |       W        |     W     |     W     |     W     |      R      |          |                |     R       |     W      |        |
+| Custom env. variables    |   W   |    W    |       W        |     W     |     W     |     W     |      R      |          |                |     R       |     W      |        |
 | dbt adapters             |   W   |    W    |       W        |     W     |     R     |     W     |             |          |                |     R       |     R      |        |
 | Develop (IDE or dbt Cloud CLI)            |   W   |    W    |                |     W     |           |           |             |          |                |             |            |        |
 | Environments             |   W   |    R    |       R        |     R     |     R     |     W     |      R      |          |                |     R       |     R      |        |
-| Groups                   |   R   |         |       R        |     R     |     R     |           |             |          |                |     R       |     R      |        |
 | Jobs                     |   W   |    R    |       R        |     W     |     R     |     W     |      R      |          |                |     R       |     R      |        |
-| Licenses                 |   W   |    R    |       R        |     R     |     R     |     R     |      R      |          |                |             |     R      |        |
 | Metadata                 |   R   |    R    |       R        |     R     |     R     |     R     |      R      |     R    |                |     R       |     R      |        |
 | Permissions              |   W   |         |       R        |     R     |     R     |           |             |          |                |             |     W      |        |
 | Profile                  |   W   |    R    |       W        |     R     |     R     |     R     |             |          |                |     R       |     R      |        |
