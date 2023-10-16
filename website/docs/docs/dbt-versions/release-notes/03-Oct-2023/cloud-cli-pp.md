@@ -28,4 +28,4 @@ Some of the unique capabilities of this dbt Cloud CLI include:
 - Development workflow for dbt Semantic Layer
 - Speedier, lower cost builds
 
-For more info, check out [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
+Refer to [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) to learn more.
