@@ -3,7 +3,7 @@ title: "Enhancement: dbt Cloud auto-installs 'dbt deps' on startup"
 description: "October 2023 :The dbt Cloud IDE and dbt Cloud CLI auto-handles 'dbt deps' on startup; manual run needed for 'packages.yml' changes. Available for multi-tenant users (single-tenant support coming soon) and applies to all dbt versions."
 sidebar_label: "Enhancement: dbt Cloud auto-installs 'dbt deps' on startup"
 tags: [Oct-2023, IDE]
-date: 2023-10-13
+date: 2023-10-17
 sidebar_position: 06
 ---
 
