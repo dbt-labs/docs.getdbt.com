@@ -61,6 +61,12 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     icon="dbt-bit"/>
 
 <Card
+    title="Retry jobs"
+    body="Rerun your errored jobs from start or the failure point."
+    link="/docs/deploy/retry-jobs"
+    icon="dbt-bit"/>
+
+<Card
     title="Job notifications"
     body="Receive email or Slack channel notifications when a job run succeeds, fails, or is canceled so you can respond quickly and begin remediation if necessary."
     link="/docs/deploy/job-notifications"

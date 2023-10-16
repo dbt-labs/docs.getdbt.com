@@ -15,6 +15,10 @@ dbt Cloud can connect with a variety of data platform providers including:
 - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
 
+import MSCallout from '/snippets/_microsoft-adapters-soon.md';
+
+<MSCallout />
+
 You can connect to your database in dbt Cloud by clicking the gear in the top right and selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/choose-a-connection.png" title="Choose a connection"/>
