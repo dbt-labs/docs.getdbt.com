@@ -11,6 +11,8 @@ dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. It conta
 - Configuring access to [GitHub](/docs/cloud/git/connect-github), [GitLab](/docs/cloud/git/connect-gitlab), or your own [git repo URL](/docs/cloud/git/import-a-project-by-git-url).
 - [Managing users and licenses](/docs/cloud/manage-access/seats-and-users)
 - [Configuring secure access](/docs/cloud/manage-access/about-user-access)
+- Configuring the [dbt Cloud IDE](/docs/cloud/about-cloud-develop)
+- Installing and configuring the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)
 
 These settings are intended for dbt Cloud administrators. If you need a more detailed first-time setup guide for specific data platforms, read our [quickstart guides](/quickstarts).
 

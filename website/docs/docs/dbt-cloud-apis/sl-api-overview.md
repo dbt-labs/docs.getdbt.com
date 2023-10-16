@@ -31,10 +31,8 @@ You can use the dbt Semantic Layer for a variety of tools and applications of da
 import Features from '/snippets/_sl-plan-info.md'
 
 <Features
-cycle="public beta"
 product="dbt Semantic Layer"
-plan="dbt Cloud Team and Enterprise"
-instance="hosted in North America"
+plan="dbt Cloud Team or Enterprise"
 />
 
 <div className="grid--3-col">

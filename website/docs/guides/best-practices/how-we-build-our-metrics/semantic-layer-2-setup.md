@@ -13,7 +13,7 @@ git clone git@github.com:dbt-labs/jaffle-sl-template.git
 cd path/to/project
 ```
 
-Next before we start writing code, we'll need to install the MetricFlow CLI as an extension of a dbt adapter from PyPI. The MetricFlow CLI is compatible with Python versions 3.8 through 3.11.
+Next, before you start writing code, you need to install MetricFlow as an extension of a dbt adapter from PyPI  (dbt Core users only). The MetricFlow is compatible with Python versions 3.8 through 3.11.
 
 We'll use pip to install MetricFlow and our dbt adapter:
 
@@ -33,7 +33,7 @@ Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-her
 git checkout start-here
 ```
 
-For more information you can [look at the docs](/docs/build/metricflow-cli) or checkout a [Quickstart](https://docs.getdbt.com/quickstarts) to get more familiar with setting up a dbt project.
+For more information, refer to the [MetricFlow commands](/docs/build/metricflow-commands) or a [quickstart](/quickstarts) to get more familiar with setting up a dbt project.
 
 ## Basic commands
 
