@@ -60,11 +60,11 @@ Update your versions in packages.yml, then run dbt deps
 
 <VersionBlock firstVersion="1.7">
 
-The first time you run `dbt deps`, dbt will generate the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded, containing all of the resolved packages. Each Subsequent run will record the packages installed in this file. If the subsequent `dbt deps` runs contain no updated packages in `depenedencies.yml` or `packages.yml`, dbt-core will install from `package-lock.yml`. 
+dbt generates the `package-lock.yml` file in the _project_root_ where `packages.yml` is recorded, which contains all the resolved packages, the first time you run `dbt deps`. Each subsequent run records the packages installed in this file. If the subsequent `dbt deps` runs contain no updated packages in `depenedencies.yml` or `packages.yml`, dbt-core installs from `package-lock.yml`. 
 
-When you update the package spec and run `dbt deps` again, the package-lock and package files will be updated accordingly. You can run `dbt deps --lock` to update the `package-lock.yml` with the most recent dependencies from `packages.
+When you update the package spec and run `dbt deps` again, the package-lock and package files update accordingly. You can run `dbt deps --lock` to update the `package-lock.yml` with the most recent dependencies from `packages`.
 
-The `--add` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default) will re-compile the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set it to `True` and the changes will not persist. 
+The `--add` flag allows you to add a package to the `packages.yml` with configurable `--version` and `--source` information. The `--dry-run` flag, when set to `False`(default), recompiles the `package-lock.yml` file after a new package is added to the `packages.yml` file. Set the flag to `True` for the changes to not persist. 
 
 Examples of the `--add` flag:
 ```shell
