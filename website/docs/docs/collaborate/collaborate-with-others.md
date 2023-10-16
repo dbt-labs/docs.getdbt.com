@@ -1,6 +1,8 @@
 ---
 title: "Collaborate with others"
 description: "Learn how dbt Cloud makes it easier to collaborate with others"
+pagination_next:  "docs/collaborate/explore-projects"
+pagination_prev: null
 ---
 
 <div className="grid--2-col">

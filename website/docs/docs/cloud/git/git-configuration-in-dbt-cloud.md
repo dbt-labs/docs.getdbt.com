@@ -1,6 +1,8 @@
 ---
 title: "Git configuration in dbt Cloud"
 description: "Learn about the Git providers supported in dbt Cloud"
+pagination_next: "docs/cloud/git/import-a-project-by-git-url"
+pagination_prev: null
 ---
 
 <div className="grid--2-col">

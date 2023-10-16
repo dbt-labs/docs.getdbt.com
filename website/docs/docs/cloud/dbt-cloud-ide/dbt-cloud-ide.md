@@ -1,6 +1,8 @@
 ---
 title: "dbt Cloud IDE"
 description: "Learn how to configure Git in dbt Cloud"
+pagination_next: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud"
+pagination_prev: null
 ---
 
 <div className="grid--2-col">

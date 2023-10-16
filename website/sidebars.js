@@ -105,6 +105,7 @@ const sidebarSettings = {
               label: "Configure Git",
               link: { type: "doc", id: "docs/cloud/git/git-configuration-in-dbt-cloud" },
               items: [
+                "docs/cloud/git/git-configuration-in-dbt-cloud",
                 "docs/cloud/git/import-a-project-by-git-url",
                 "docs/cloud/git/connect-github",
                 "docs/cloud/git/connect-gitlab",
@@ -128,6 +129,7 @@ const sidebarSettings = {
                 id: "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
               },
               items: [
+                "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
                 "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
                 "docs/cloud/dbt-cloud-ide/ide-user-interface",
                 "docs/cloud/dbt-cloud-ide/lint-format",
@@ -139,6 +141,7 @@ const sidebarSettings = {
               label: "Secure your tenant",
               link: { type: "doc", id: "docs/cloud/secure/secure-your-tenant" },
               items: [
+                "docs/cloud/secure/secure-your-tenant",
                 "docs/cloud/secure/ip-restrictions",
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
@@ -315,6 +318,7 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/build/enhance-your-models" },
           items: [
+            "docs/build/enhance-your-models",
             "docs/build/materializations",
             "docs/build/incremental-models",
           ],
@@ -325,6 +329,7 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/build/enhance-your-code" },
           items: [
+            "docs/build/enhance-your-code",
             "docs/build/project-variables",
             "docs/build/environment-variables",
             "docs/build/packages",
@@ -337,6 +342,7 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/build/organize-your-outputs" },
           items: [
+            "docs/build/organize-your-outputs",
             "docs/build/custom-schemas",
             "docs/build/custom-databases",
             "docs/build/custom-aliases",
@@ -391,6 +397,7 @@ const sidebarSettings = {
       label: "Collaborate with others",
       link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
       items: [
+        "docs/collaborate/collaborate-with-others",
         "docs/collaborate/explore-projects",
         {
           type: "category",
@@ -463,6 +470,7 @@ const sidebarSettings = {
           label: "Authentication",
           link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
+            "docs/dbt-cloud-apis/authentication",
             "docs/dbt-cloud-apis/user-tokens",
             "docs/dbt-cloud-apis/service-tokens",
           ],

@@ -1,6 +1,8 @@
 ---
 title: "Organize your outputs"
 description: "Learn how you can organize your outputs"
+pagination_next: "docs/build/custom-schemas"
+pagination_prev: null
 ---
 
 <div className="grid--2-col">
