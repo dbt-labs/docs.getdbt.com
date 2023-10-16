@@ -100,6 +100,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 2. Install the dbt Cloud CLI with Homebrew: 
 
   ```bash
+  brew untap dbt-labs/dbt
   brew tap dbt-labs/dbt-cli
   brew install dbt
   ```
