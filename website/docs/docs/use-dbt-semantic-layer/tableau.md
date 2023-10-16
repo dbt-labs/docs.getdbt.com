@@ -17,7 +17,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
 2. Authenticate with either Tableau Server or Tableau Cloud
 3. You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
-4. Have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
+4. You must a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
 
 ## Installing
@@ -30,8 +30,8 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
    - Windows: `C:\Program Files\Tableau\Drivers`
    - Mac: `~/Library/Tableau/Drivers`
    - Linux: ` /opt/tableau/tableau_driver/jdbc`
-3. Open Tableau Desktop and find the connector in the left-hand side called **dbt Semantic Layer by dbt Labs**
-4. Connect with your Host, Environment ID, and Service Token information that's provided to you in your dbt Cloud Semantic Layer configuration.
+3. Open Tableau Desktop and find the **dbt Semantic Layer by dbt Labs** connector on the left-hand side.
+4. Connect with your Host, Environment ID, and service token information that's provided to you in your dbt Cloud Semantic Layer configuration.
 
 
 ## Using the integration
@@ -45,23 +45,23 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 
 ## Things to note
 
-1. All metrics use the "SUM" aggregation type, and this can't be altered. The dbt Semantic Layer controls the aggregation type and it is intentionally fixed. Keep in mind that the underlying aggregation in the dbt Semantic Layer might not be "SUM" (even though "SUM" is Tableau's default).
-2. Tableau surfaces all metrics and dimensions from the dbt Semantic Layer on the left-hand side. Note, that not all metrics and dimensions can be combined with one another. You will receive an error message if a particular dimension cannot be sliced with a metric (or vice versa). 
-   - To display available metrics and dimensions, we return metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts. 
-   - Since this is treated as a table, we can't dynamically change what is available. This means we display ALL available metrics and dimensions even if a particular metric and dimension combination isn't available. 
+- All metrics use the "SUM" aggregation type, and this can't be altered. The dbt Semantic Layer controls the aggregation type and it is intentionally fixed. Keep in mind that the underlying aggregation in the dbt Semantic Layer might not be "SUM" (even though "SUM" is Tableau's default).
+- Tableau surfaces all metrics and dimensions from the dbt Semantic Layer on the left-hand side. Note, that not all metrics and dimensions can be combined with one another. You will receive an error message if a particular dimension cannot be sliced with a metric (or vice versa). 
+   - To display available metrics and dimensions, dbt Semantic Layer returns metadata for a fake table with the dimensions and metrics as 'columns' on this table. Because of this, you can't actually query this table for previews or extracts. 
+   - Since this is treated as a table, dbt Semantic Layer can't dynamically change what is available. This means we display _all_ available metrics and dimensions even if a particular metric and dimension combination isn't available. 
    
-3. Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
+- Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
 
 ## Unsupported functionality
 
-The following Tableau features aren't supported at this time, however, we may support some of this functionality in a future release:
+The following Tableau features aren't supported at this time, however, the dbt Semantic Layer may support some of this functionality in a future release:
 
-1. Updating the data source page
-2. Using "Extract" mode to view yur data
-3. Unioning Tables
-4. Writing Custom SQL
-5. Table Extensions
-6. Cross Database Joins
-7. All functions in Analysis --> Create Calculated Field
-8. Filtering on a Date Part time dimension for a Cumulative metric type
-9. Changing your date dimension to use "Week Number"
+- Updating the data source page
+- Using "Extract" mode to view yur data
+- Unioning Tables
+- Writing Custom SQL
+- Table Extensions
+- Cross Database Joins
+- All functions in Analysis --> Create Calculated Field
+- Filtering on a Date Part time dimension for a Cumulative metric type
+- Changing your date dimension to use "Week Number"
