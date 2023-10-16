@@ -34,6 +34,7 @@ Each `definition` is comprised of one or more arguments, which can be one of the
 Use the `union` and `intersection` operator-equivalent keywords to organize multiple arguments.
 
 ### CLI-style
+
 ```yml
 definition:
   'tag:nightly'
@@ -42,6 +43,7 @@ definition:
 This simple syntax supports use of the `+`, `@`, and `*` [graph](/reference/node-selection/graph-operators) operators, but it does not support [set](/reference/node-selection/set-operators) operators or `exclude`.
 
 ### Key-value
+
 ```yml
 definition:
   tag: nightly
@@ -317,7 +319,7 @@ selectors:
 
 Then in our job definition:
 ```bash
-$ dbt run --selector nightly_diet_snowplow
+dbt run --selector nightly_diet_snowplow
 ```
 
 ## Default
@@ -325,6 +327,7 @@ $ dbt run --selector nightly_diet_snowplow
 Selectors may define a boolean `default` property. If a selector has `default: true`, dbt will use this selector's criteria when tasks do not define their own selection criteria.
 
 Let's say we define a default selector that only selects resources defined in our root project:
+
 ```yml
 selectors:
   - name: root_project_only
@@ -338,16 +341,18 @@ selectors:
 ```
 
 If I run an "unqualified" command, dbt will use the selection criteria defined in `root_project_only`—that is, dbt will only build / freshness check / generate compiled SQL for resources defined in my root project.
+
 ```
-$ dbt build
-$ dbt source freshness
-$ dbt docs generate
+dbt build
+dbt source freshness
+dbt docs generate
 ```
 
 If I run a command that defines its own selection criteria (via `--select`, `--exclude`, or `--selector`), dbt will ignore the default selector and use the flag criteria instead. It will not try to combine the two.
-```
-$ dbt run --select  model_a
-$ dbt run --exclude model_a
+
+```bash
+dbt run --select  "model_a"
+dbt run --exclude model_a
 ```
 
 Only one selector may set `default: true` for a given invocation; otherwise, dbt will return an error. You may use a Jinja expression to adjust the value of `default` depending on the environment, however:

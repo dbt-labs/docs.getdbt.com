@@ -16,6 +16,7 @@ The user's assigned license determines the specific capabilities they can access
 | Functionality | Developer User | Read-Only Users | IT Users* |
 | ------------- | -------------- | --------------- | -------- |
 | Use the dbt Cloud IDE | ✅ | ❌ | ❌ |
+| Use the dbt Cloud CLI | ✅ | ❌ | ❌ |
 | Use Jobs | ✅ | ❌ | ❌ |
 | Manage Account | ✅ | ❌ | ✅ |
 | API Access | ✅ | ❌ | ❌ |

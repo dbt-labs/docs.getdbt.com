@@ -22,7 +22,6 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
-        "docs/cloud/about-cloud/about-cloud-ide",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
@@ -118,26 +117,41 @@ const sidebarSettings = {
             }, // Supported Git providers
             {
               type: "category",
-              label: "Develop in the IDE",
-              link: {
-                type: "doc",
-                id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-              },
+              label: "Develop in dbt Cloud",
+              link: { type: "doc", id: "docs/cloud/about-cloud-develop" },
               items: [
-                "docs/cloud/dbt-cloud-ide/ide-user-interface",
-                "docs/cloud/dbt-cloud-ide/lint-format",
-                "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+                "docs/cloud/about-cloud-develop",
+                "docs/cloud/about-cloud-develop-defer",
+                {
+                  type: "category",
+                  label: "dbt Cloud CLI",
+                  link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
+                  items: [
+                    "docs/cloud/cloud-cli-installation",
+                    "docs/cloud/configure-cloud-cli",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "dbt Cloud IDE",
+                  link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+                  items: [
+                    "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+                    "docs/cloud/dbt-cloud-ide/ide-user-interface",
+                    "docs/cloud/dbt-cloud-ide/lint-format",
+                    "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+                  ],
+                },
               ],
-            }, // dbt Cloud IDE directory
+            }, // dbt Cloud develop directory
             {
               type: "category",
               label: "Secure your tenant",
               items: [
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
-                "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/redshift-privatelink",
-                "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/databricks-privatelink",
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
@@ -150,7 +164,7 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
-            "docs/core/about-the-cli",
+            "docs/core/about-dbt-core",
             "docs/core/dbt-core-environments",
             {
               type: "category",
@@ -528,7 +542,6 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
             "docs/dbt-cloud-apis/sl-jdbc",
-            "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",
           ],
         },
@@ -1218,7 +1231,6 @@ const sidebarSettings = {
         "community/resources/oss-expectations",
         "community/resources/oss-projects",
         "community/resources/contributor-license-agreements",
-        "community/resources/jobs-terms-and-conditions",
         "community/resources/speaking-at-a-meetup",
       ],
     },
