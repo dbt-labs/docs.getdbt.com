@@ -90,6 +90,7 @@ const sidebarSettings = {
                   label: "OAuth with data platforms",
                   items: [
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
+                    "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
                   ],
                 }, // oauth
@@ -352,6 +353,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
             "docs/deploy/run-visibility",
+            "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
             "docs/deploy/webhooks",
             "docs/deploy/artifacts",
@@ -641,7 +643,6 @@ const sidebarSettings = {
           type: "category",
           label: "General properties",
           items: [
-            "reference/resource-properties/access",
             "reference/resource-properties/columns",
             "reference/resource-properties/config",
             "reference/resource-properties/constraints",
@@ -658,6 +659,7 @@ const sidebarSettings = {
           type: "category",
           label: "General configs",
           items: [
+            "reference/resource-configs/access",
             "reference/resource-configs/alias",
             "reference/resource-configs/database",
             "reference/resource-configs/enabled",
@@ -692,6 +694,7 @@ const sidebarSettings = {
             "reference/seed-properties",
             "reference/seed-configs",
             "reference/resource-configs/column_types",
+            "reference/resource-configs/delimiter",
             "reference/resource-configs/quote_columns",
           ],
         },
@@ -719,6 +722,7 @@ const sidebarSettings = {
             "reference/resource-configs/limit",
             "reference/resource-configs/severity",
             "reference/resource-configs/store_failures",
+            "reference/resource-configs/store_failures_as",
             "reference/resource-configs/where",
           ],
         },
