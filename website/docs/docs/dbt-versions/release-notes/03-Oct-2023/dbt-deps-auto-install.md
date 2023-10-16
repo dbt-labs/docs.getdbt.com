@@ -7,6 +7,15 @@ date: 2023-10-17
 sidebar_position: 06
 ---
 
-The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. However, you still need to run `dbt deps` if you modify your `packages.yml` or `dependencies.yml` file.
+The dbt Cloud IDE and dbt Cloud CLI now automatically installs `dbt deps` when your environment starts or when necessary. Previously, it would prompt you to run `dbt deps` during initialization. 
 
 This improved workflow is available to all multi-tenant dbt Cloud users (Single-tenant support coming next week) and applies to dbt versions.
+
+However, you should still run the `dbt deps` command in these situations:
+
+- When you make changes to the `packages.yml` or `dependencies.yml` file.
+- When you update the package version in the `packages.yml` or `dependencies.yml` file. (From dbt v1.7 or higher)
+- If you edit the `dependencies.yml` file and the number of packages remains the same, run `dbt deps`. (Note that this is a known bug dbt Labs will fix in the future.)
+
+
+
