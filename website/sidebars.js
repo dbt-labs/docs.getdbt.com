@@ -281,7 +281,7 @@ const sidebarSettings = {
                 "docs/build/join-logic",
                 "docs/build/validation",
                 "docs/build/metricflow-time-spine",
-                "docs/build/metricflow-cli",
+                "docs/build/metricflow-commands",
               ]
             },
             {
@@ -433,7 +433,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
-						//"docs/use-dbt-semantic-layer/gsheets",
+						"docs/use-dbt-semantic-layer/gsheets",
+            "docs/use-dbt-semantic-layer/tableau",
           ],
         },
       ],

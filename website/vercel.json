@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/build/metricflow-cli",
+      "destination": "/docs/build/metricflow-commands",
+      "permanent": true
+    },
+    {
       "source": "/docs/core/about-the-cli",
       "destination": "/docs/core/about-dbt-core",
       "permanent": true
