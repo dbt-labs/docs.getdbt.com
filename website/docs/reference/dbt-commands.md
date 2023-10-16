@@ -70,7 +70,7 @@ Use the following dbt commands in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/
 
 <TabItem value="cli" label="dbt Core">
 
-Use the following dbt commands in the [dbt COre](/docs/core/about-dbt-core) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
+Use the following dbt commands in [dbt Core](/docs/core/about-dbt-core) and use the `dbt` prefix. For example, to run the `test` command, type `dbt test`.
 
 - [build](/reference/commands/build): build and test all selected resources (models, seeds, snapshots, tests)
 - [clean](/reference/commands/clean): deletes artifacts present in the dbt project
