@@ -103,7 +103,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Configure Git",
-              link: { type: "doc", id: "docs/cloud/git/import-a-project-by-git-url" },
+              link: { type: "doc", id: "docs/cloud/git/git-configuration-in-dbt-cloud" },
               items: [
                 "docs/cloud/git/import-a-project-by-git-url",
                 "docs/cloud/git/connect-github",
@@ -125,7 +125,7 @@ const sidebarSettings = {
               label: "Develop in the IDE",
               link: {
                 type: "doc",
-                id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+                id: "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
               },
               items: [
                 "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
@@ -137,7 +137,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Secure your tenant",
-              link: { type: "doc", id: "docs/cloud/secure/ip-restrictions" },
+              link: { type: "doc", id: "docs/cloud/secure/secure-your-tenant" },
               items: [
                 "docs/cloud/secure/ip-restrictions",
                 "docs/cloud/secure/about-privatelink",
@@ -313,7 +313,7 @@ const sidebarSettings = {
           type: "category",
           label: "Enhance your models",
           collapsed: true,
-          link: { type: "doc", id: "docs/build/materializations" },
+          link: { type: "doc", id: "docs/build/enhance-your-models" },
           items: [
             "docs/build/materializations",
             "docs/build/incremental-models",
@@ -323,7 +323,7 @@ const sidebarSettings = {
           type: "category",
           label: "Enhance your code",
           collapsed: true,
-          link: { type: "doc", id: "docs/build/project-variables" },
+          link: { type: "doc", id: "docs/build/enhance-your-code" },
           items: [
             "docs/build/project-variables",
             "docs/build/environment-variables",
@@ -335,7 +335,7 @@ const sidebarSettings = {
           type: "category",
           label: "Organize your outputs",
           collapsed: true,
-          link: { type: "doc", id: "docs/build/custom-schemas" },
+          link: { type: "doc", id: "docs/build/organize-your-outputs" },
           items: [
             "docs/build/custom-schemas",
             "docs/build/custom-databases",
@@ -389,7 +389,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
-      link: { type: "doc", id: "docs/collaborate/explore-projects" },
+      link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
       items: [
         "docs/collaborate/explore-projects",
         {
@@ -461,7 +461,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Authentication",
-          link: { type: "doc", id: "docs/dbt-cloud-apis/user-tokens" },
+          link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
             "docs/dbt-cloud-apis/user-tokens",
             "docs/dbt-cloud-apis/service-tokens",
