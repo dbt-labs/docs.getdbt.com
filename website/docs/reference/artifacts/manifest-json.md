@@ -3,15 +3,9 @@ title: "Manifest JSON file"
 sidebar_label: "Manifest"
 ---
 
-| dbt Core version | Manifest version                                              |
-|------------------|---------------------------------------------------------------|
-| v1.6             | [v10](https://schemas.getdbt.com/dbt/manifest/v10/index.html) |
-| v1.5             | [v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)   |
-| v1.4             | [v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)   |
-| v1.3             | [v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)   |
-| v1.2             | [v6](https://schemas.getdbt.com/dbt/manifest/v6/index.html)   |
-| v1.1             | [v5](https://schemas.getdbt.com/dbt/manifest/v5/index.html)   |
-| v1.0             | [v4](https://schemas.getdbt.com/dbt/manifest/v4/index.html)   |
+import ManifestVersions from '/snippets/_manifest-versions.md';
+
+<ManifestVersions />
 
 **Produced by:** Any command that parses your project. This includes all commands **except** [`deps`](/reference/commands/deps), [`clean`](/reference/commands/clean), [`debug`](/reference/commands/debug), [`init`](/reference/commands/init)
 
