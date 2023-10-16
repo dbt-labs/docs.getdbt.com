@@ -1,5 +1,5 @@
 ---
-title: "New: Develop with the dbt Cloud CLI"
+title: "New: dbt Cloud CLI in Public Preview"
 description: "October 2023: Learn about the new dbt Cloud CLI development experience, now in public preview,"
 sidebar_position: 04
 sidebar_label: "New: Develop with the dbt Cloud CLI"
