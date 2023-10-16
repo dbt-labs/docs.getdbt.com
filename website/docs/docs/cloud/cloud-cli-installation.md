@@ -39,25 +39,44 @@ Otherwise, to switch back to dbt Core, uninstall the dbt Cloud CLI and follow th
 
 ::: 
 
-You can install dbt Core and plugins using pip because they are Python modules distributed on [PyPI](https://pypi.org/project/dbt/).
+Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
 
-1. We recommend [installing virtual environments (venv)](/docs/core/pip-install#using-virtual-environments) to namespace "cloud-cli"
-   - Venv name should be: `python3 -m venv dbt-cloud` and session should be activated with `source dbt-cloud/bin/activate`.
+### Install a virtual environment
 
-2. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
+We recommend using virtual environments (venv) to namespace `cloud-cli`.
+
+1. Create a new venv:
+   ```shell
+   python3 -m venv dbt-cloud
+    ```
+
+2. Activate the virtual environment each time you create a shell window or session:
+  ```shell   
+  source dbt-cloud/bin/activate         # activate the environment for Mac and Linux OR
+  dbt-env\Scripts\activate            # activate the environment for Windows
+  ```
+
+3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, $HOME/.bashrc, $HOME/.zshrc) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
+   ```shell
+   alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
+   ```
+   
+### Install dbt Cloud CLI in pip
+
+1. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
 
   ```bash
   dbt --version
   ```
 
-3. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
+2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
 
   ```bash
   pip3 install dbt
   ```
 
-4. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
-5. Reinstall dbt Core using the version from Step 2.
+3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
+4. Reinstall dbt Core using the version from Step 2.
 
   ```bash
   pip3 uninstall dbt-core dbt
