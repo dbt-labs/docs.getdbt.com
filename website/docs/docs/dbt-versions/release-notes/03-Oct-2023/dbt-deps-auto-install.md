@@ -13,8 +13,8 @@ This improved workflow is available to all multi-tenant dbt Cloud users (Single-
 
 However, you should still run the `dbt deps` command in these situations:
 
-- When you make changes to the `packages.yml` or `dependencies.yml` file.
-- When you update the package version in the `packages.yml` or `dependencies.yml` file. (From dbt v1.7 or higher)
+- When you make changes to the `packages.yml` or `dependencies.yml` file during a session
+- When you update the package version in the `packages.yml` or `dependencies.yml` file. 
 - If you edit the `dependencies.yml` file and the number of packages remains the same, run `dbt deps`. (Note that this is a known bug dbt Labs will fix in the future.)
 
 
