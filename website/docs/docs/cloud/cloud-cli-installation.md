@@ -200,7 +200,7 @@ After installation, you can [configure](/docs/cloud/configure-cloud-cli) the dbt
 
 For example, you can execute `dbt compile` to compile a project using dbt Cloud.
 
-Note, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+Note, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 
 
 ## FAQs
