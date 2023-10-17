@@ -9,9 +9,6 @@ hide_table_of_contents: true
 
 <VersionBlock firstVersion="1.6">
 
-import NewSLChanges from '/snippets/_new-sl-changes.md';
-
-<NewSLChanges />
 
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies the process of defining and using critical business metrics, like `revenue` in the modeling layer (your dbt project). By centralizing metric definitions, data teams can ensure consistent self-service access to these metrics in downstream data tools and applications. The dbt Semantic Layer eliminates duplicate coding by allowing data teams to define metrics on top of existing models and automatically handles data joins. 
@@ -26,10 +23,8 @@ Refer to the [Why we need a universal semantic layer](https://www.getdbt.com/blo
 import Features from '/snippets/_sl-plan-info.md'
 
 <Features
-cycle="public beta"
 product="dbt Semantic Layer"
 plan="dbt Cloud Team or Enterprise"
-instance="hosted in North America"
 />
 
 <div className="grid--3-col">
