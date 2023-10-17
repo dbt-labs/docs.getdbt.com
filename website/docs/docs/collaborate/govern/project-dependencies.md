@@ -23,7 +23,7 @@ This year, dbt Labs is introducing an expanded notion of `dependencies` across m
 - **Projects** &mdash; A _new_ way to take a dependency on another project. Using a metadata service that runs behind the scenes, dbt Cloud resolves references on-the-fly to public models defined in other projects. You don't need to parse or run those upstream models yourself. Instead, you treat your dependency on those models as an API that returns a dataset. The maintainer of the public model is responsible for guaranteeing its quality and stability.
 
 
-Starting in dbt v1.6 or higher, `packages.yml` has been renamed to `dependencies.yml`. However, if you need use Jinja within your packages config, such as an environment variable for your private package, you need to keep using `packages.yml` for your packages for now. Refer to [FAQs](#faqs) for more info.
+Starting in dbt v1.6 or higher, `packages.yml` has been renamed to `dependencies.yml`. However, if you need use Jinja within your packages config, such as an environment variable for your private package, you need to keep using `packages.yml` for your packages for now. Refer to the [FAQs](#faqs) for more info.
 
 ## Prerequisites
 
