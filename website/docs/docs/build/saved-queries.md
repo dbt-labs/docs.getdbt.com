@@ -35,4 +35,4 @@ saved_query:
 ```
 
 ### FAQs 
-* Dimensions refrenced in the group by or where must be common across all metrics in a saved query.
+* All metrics in a saved query need to use the same dimensions in the `group_by` or `where` clauses.
