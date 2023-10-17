@@ -297,6 +297,7 @@ const sidebarSettings = {
                 "docs/build/about-metricflow",
                 "docs/build/join-logic",
                 "docs/build/validation",
+                "docs/build/saved-queries",
                 "docs/build/metricflow-time-spine",
                 "docs/build/metricflow-commands",
               ],
