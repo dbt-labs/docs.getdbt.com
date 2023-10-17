@@ -21,6 +21,12 @@ MetricFlow allows you to:
 
 <div className="grid--3-col">
 
+ <Card
+    title="Get started with the dbt Semantic Layer"
+    body="Use this guide to build and define metrics with MetricFlow, set up the dbt Semantic Layer, and query them using downstream tools."
+    link="/docs/build/sl-getting-started"
+    icon="dbt-bit"/>
+
 <Card
     title="About MetricFlow"
     body="Understand MetricFlow's core concepts, key principles, and how to use this powerful tool."
@@ -43,12 +49,6 @@ MetricFlow allows you to:
     title="About the dbt Semantic Layer"
     body="Introducing the dbt Semantic Layer, the universal process that allows data teams to centrally define and query metrics"
     link="/docs/use-dbt-semantic-layer/dbt-sl"
-    icon="dbt-bit"/>
-
- <Card
-    title="Get started with the dbt Semantic Layer"
-    body="Use this guide to build and define metrics, set up the dbt Semantic Layer, and query them using the Semantic Layer API"
-    link="/docs/use-dbt-semantic-layer/quickstart-sl"
     icon="dbt-bit"/>
 
   <Card
