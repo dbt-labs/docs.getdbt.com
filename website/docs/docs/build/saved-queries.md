@@ -6,7 +6,9 @@ sidebar_label: "Saved Queries"
 tags: [Metrics, Semantic Layer]
 ---
 
-Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions and filters that are logically related into a saved query. The spec for defining a saved query is below:
+Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions and filters that are logically related into a saved query. 
+
+To define a saved query, refer to the following specification:
 
  Parameter | Description | Type |
 | --------- | ----------- | ---- |
