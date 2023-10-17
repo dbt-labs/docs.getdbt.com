@@ -28,12 +28,12 @@ This is a relatively small behavior change, but worth calling out in case you no
 
 ## New and changed features and functionality
 
-- [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate documentation for a subset of your project. Currently available for Snowflake and Postgres only, but other adapters are coming soon. 
+- [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate [catalog metadata](/reference/artifacts/catalog-json) for a subset of your project. Currently available for Snowflake and Postgres only, but other adapters are coming soon. 
 - [Source freshness](/docs/deploy/source-freshness) can now be generated from warehouse metadata tables, currently Snowflake only, but other adapters that have metadata tables are coming soon. 
 
 ### MetricFlow enhancements
 
-- Automatically create metrics on measures with `create_metric: true`.
+- Automatically create metrics on measures with [`create_metric: true`](/docs/build/semantic-models).
 - Optional [`label`](/docs/build/semantic-models) in semantic_models, measures, dimensions and entities.
 - New configurations for semantic models - [enable/disable](/reference/resource-configs/enabled), [group](/reference/resource-configs/group), and [meta](/reference/resource-configs/meta).
 - Support `fill_nulls_with` and `join_to_timespine` for metric nodes.
@@ -59,6 +59,6 @@ dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.
 ### Quick hits
 
 With these quick hits, you can now:
-- Configure a `delimiter` for a seed file.
+- Configure a [`delimiter`](/reference/resource-configs/delimiter) for a seed file.
 - Use packages with the same git repo and unique subdirectory.
 - Access the `date_spine` macro directly from dbt-core (moved over from dbt-utils).

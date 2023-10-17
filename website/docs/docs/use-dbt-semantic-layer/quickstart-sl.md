@@ -10,16 +10,14 @@ meta:
 
 <VersionBlock firstVersion="1.6">
 
-import NewSLChanges from '/snippets/_new-sl-changes.md';
-import InstallMetricFlow from '/snippets/_sl-install-metricflow.md';
+
 import CreateModel from '/snippets/_sl-create-semanticmodel.md';
 import DefineMetrics from '/snippets/_sl-define-metrics.md';
 import ConfigMetric from '/snippets/_sl-configure-metricflow.md';
 import TestQuery from '/snippets/_sl-test-and-query-metrics.md';
+import ConnectQueryAPI from '/snippets/_sl-connect-and-query-api.md';
+import RunProdJob from '/snippets/_sl-run-prod-job.md';
 
-
-
-<NewSLChanges />
 
 The dbt Semantic Layer, powered by [MetricFlow](/docs/build/about-metricflow), simplifies defining and using critical business metrics. It centralizes metric definitions, eliminates duplicate coding, and ensures consistent self-service access to metrics in downstream tools. 
 
@@ -29,15 +27,15 @@ Use this guide to fully experience the power of the universal dbt Semantic Layer
 
 - [Create a semantic model](#create-a-semantic-model) in dbt Cloud using MetricFlow
 - [Define metrics](#define-metrics) in dbt Cloud using MetricFlow
-- [Test and query metrics locally](#test-and-query-metrics) using MetricFlow 
+- [Test and query metrics](#test-and-query-metrics) with MetricFlow 
 - [Run a production job](#run-a-production-job) in dbt Cloud
 - [Set up dbt Semantic Layer](#setup) in dbt Cloud 
 - [Connect and query API](#connect-and-query-api) with dbt Cloud
 
-
-MetricFlow allows users to define metrics in their dbt project whether in dbt Cloud or in dbt Core. dbt Core users can use the [MetricFlow CLI](/docs/build/metricflow-cli) to define metrics in their local dbt Core project.
+MetricFlow allows you to define metrics in your dbt project and query them whether in dbt Cloud or dbt Core with [MetricFlow commands](/docs/build/metricflow-commands).
 
 However, to experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
+
 ## Prerequisites
 
 import SetUp from '/snippets/_v2-sl-prerequisites.md';
@@ -62,13 +60,8 @@ New to dbt or metrics? Try our [Jaffle shop example project](https://github.com/
 
 ## Run a production job
 
-Once you’ve defined metrics in your dbt project, you can perform a job run in your deployment environment in dbt Cloud to materialize your metrics. The deployment environment is only supported for the dbt Semantic Layer at this moment. 
 
-1. Go to **Deploy** in the navigation header
-2. Select **Jobs** to re-run the job with the most recent code in the deployment environment.
-3. Your metric should appear as a red node in the dbt Cloud IDE and dbt directed acyclic graphs (DAG).
-
-<Lightbox src="/img/docs/dbt-cloud/semantic-layer/metrics_red_nodes.png" width="85%" title="DAG with metrics appearing as a red node" />
+<RunProdJob/>
 
 
 <details>
@@ -88,16 +81,7 @@ import SlSetUp from '/snippets/_new-sl-setup.md';
 
 ## Connect and query API
 
-You can query your metrics in a JDBC-enabled tool or use existing first-class integrations with the dbt Semantic Layer. 
-
-You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America (Additional region support coming soon). 
-
-- <span>To learn how to use the JDBC or GraphQL API and what tools you can query it with, refer to the  <a href="https://docs.getdbt.com/docs/dbt-cloud-apis/sl-api-overview" target="_self">{frontMatter.meta.api_name}</a></span>.<br />
-
-    * To authenticate, you need to [generate a service token](/docs/dbt-cloud-apis/service-tokens) with Semantic Layer Only and Metadata Only permissions.
-    * Refer to the [SQL query syntax](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the APIs.  
-
-- To learn more about the sophisticated integrations that connect to the dbt Semantic Layer, refer to [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations) for more info.
+<ConnectQueryAPI/>
 
 
 ## FAQs

@@ -3,6 +3,8 @@ title: "The audit log for dbt Cloud Enterprise"
 id: audit-log
 description: "You can troubleshoot possible issues and provide security audits by reviewing event activity in your organization."
 sidebar_label: "Audit log"
+pagination_next: null
+pagination_prev: "docs/cloud/manage-access/about-user-access"
 ---
 
 To review actions performed by people in your organization, dbt provides logs of audited user and system events in real time. The audit log appears as events happen and includes details such as who performed the action, what the action was, and when it was performed. You can use these details to troubleshoot access issues, perform security audits, or analyze specific events. 

@@ -1,6 +1,8 @@
 ---
 title: "dbt support"
 id: "dbt-support"
+pagination_next: null
+pagination_prev: null
 ---
 
 ## dbt Core support

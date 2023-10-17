@@ -16,7 +16,7 @@ Using CI helps:
 
 ## How CI works
 
-When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud listens for webhooks from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these webhooks, it enqueues a new run of the CI job. If you want CI checks to run on each new commit, you need to mark your PR as **Ready for review** in your Git provider &mdash; draft PRs _don't_ trigger CI jobs. 
+When you [set up CI jobs](/docs/deploy/ci-jobs#set-up-ci-jobs), dbt Cloud listens for webhooks from your Git provider indicating that a new PR has been opened or updated with new commits. When dbt Cloud receives one of these webhooks, it enqueues a new run of the CI job. 
 
 dbt Cloud builds and tests the models affected by the code change in a temporary schema, unique to the PR. This process ensures that the code builds without error and that it matches the expectations as defined by the project's dbt tests. The unique schema name follows the naming convention `dbt_cloud_pr_<job_id>_<pr_id>` (for example, `dbt_cloud_pr_1862_1704`) and can be found in the run details for the given run, as shown in the following image:
 

@@ -4,6 +4,7 @@ id: metrics-overview
 description: "Metrics can be defined in the same or separate YAML files from semantic models within the same dbt project repo."
 sidebar_label: "Creating metrics"
 tags: [Metrics, Semantic Layer]
+pagination_next: "docs/build/cumulative"
 ---
   
 Once you've created your semantic models, it's time to start adding metrics! Metrics can be defined in the same YAML files as your semantic models, or split into separate YAML files into any other subdirectories (provided that these subdirectories are also within the same dbt project repo)
@@ -34,7 +35,7 @@ metrics:
     config: here for `enabled`            ## Optional
     label: The display name for your metric. This value will be shown in downstream tools. ## Required
     filter: |                             ## Optional            
-      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another name') }} is not
+      {{  Dimension('entity__name') }} > 0 and {{ Dimension(' entity__another_name') }} is not
       null
 ```
 
