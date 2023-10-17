@@ -3,6 +3,8 @@ title: About dbt Cloud setup
 id: about-cloud-setup
 description: "Configuration settings for dbt Cloud."
 sidebar_label: "About dbt Cloud setup"
+pagination_next: "docs/dbt-cloud-environments"
+pagination_prev: null
 ---
 
 dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. It contains a myriad of settings that can be configured by admins, from the necessities (data platform integration) to security enhancements (SSO) and quality-of-life features (RBAC). This portion of our documentation will take you through the various settings found by clicking on the gear icon in the dbt Cloud UI, including:

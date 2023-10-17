@@ -1,6 +1,7 @@
 ---
 title: "Run your dbt projects"
 id: "run-your-dbt-projects"
+pagination_prev: null
 ---
 You can run your dbt projects with [dbt Cloud](/docs/cloud/about-cloud/dbt-cloud-features) or [dbt Core](https://github.com/dbt-labs/dbt-core):
 
