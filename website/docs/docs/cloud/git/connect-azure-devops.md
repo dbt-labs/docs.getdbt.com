@@ -1,6 +1,7 @@
 ---
 title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
+pagination_next: "docs/cloud/git/setup-azure"
 ---
 
 <Snippet path="available-enterprise-tier-only" />
