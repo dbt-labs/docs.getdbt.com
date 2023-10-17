@@ -8,7 +8,7 @@ tags: [Metrics, Semantic Layer]
 
 :::info Saved queries coming soon
 Saved queries isn't currently available in MetricFlow but support is coming soon.
- :::
+:::
 
 Saved queries are a way to save commonly used queries in MetricFlow. You can group metrics, dimensions, and filters that are logically related into a saved query. 
 
