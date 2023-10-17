@@ -24,7 +24,6 @@ const sidebarSettings = {
         "docs/cloud/about-cloud/architecture",
         "docs/cloud/about-cloud/tenancy",
         "docs/cloud/about-cloud/regions-ip-addresses",
-        "docs/cloud/about-cloud/about-cloud-ide",
         "docs/cloud/about-cloud/browsers",
       ],
     }, // About dbt Cloud directory
@@ -123,19 +122,33 @@ const sidebarSettings = {
             }, // Supported Git providers
             {
               type: "category",
-              label: "Develop in the IDE",
-              link: {
-                type: "doc",
-                id: "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
-              },
+              label: "Develop in dbt Cloud",
+              link: { type: "doc", id: "docs/cloud/about-cloud-develop" },
               items: [
-                "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
-                "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
-                "docs/cloud/dbt-cloud-ide/ide-user-interface",
-                "docs/cloud/dbt-cloud-ide/lint-format",
-                "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+                "docs/cloud/about-cloud-develop",
+                "docs/cloud/about-cloud-develop-defer",
+                {
+                  type: "category",
+                  label: "dbt Cloud CLI",
+                  link: { type: "doc", id: "docs/cloud/cloud-cli-installation" },
+                  items: [
+                    "docs/cloud/cloud-cli-installation",
+                    "docs/cloud/configure-cloud-cli",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "dbt Cloud IDE",
+                  link: { type: "doc", id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud" },
+                  items: [
+                    "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+                    "docs/cloud/dbt-cloud-ide/ide-user-interface",
+                    "docs/cloud/dbt-cloud-ide/lint-format",
+                    "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
+                  ],
+                },
               ],
-            }, // dbt Cloud IDE directory
+            }, // dbt Cloud develop directory
             {
               type: "category",
               label: "Secure your tenant",
@@ -146,8 +159,9 @@ const sidebarSettings = {
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
                 "docs/cloud/secure/databricks-privatelink",
-		"docs/cloud/secure/redshift-privatelink",
-		"docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/redshift-privatelink",
+                "docs/cloud/secure/postgres-privatelink",
+                "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
             "docs/cloud/billing",
@@ -160,7 +174,7 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
             "docs/core/about-core-setup",
-            "docs/core/about-the-cli",
+            "docs/core/about-dbt-core",
             "docs/core/dbt-core-environments",
             {
               type: "category",
@@ -283,9 +297,10 @@ const sidebarSettings = {
                 "docs/build/about-metricflow",
                 "docs/build/join-logic",
                 "docs/build/validation",
+                "docs/build/saved-queries",
                 "docs/build/metricflow-time-spine",
-                "docs/build/metricflow-cli",
-              ]
+                "docs/build/metricflow-commands",
+              ],
             },
             {
               type: "category",
@@ -295,8 +310,8 @@ const sidebarSettings = {
                 "docs/build/semantic-models",
                 "docs/build/dimensions",
                 "docs/build/entities",
-                "docs/build/measures"
-              ]
+                "docs/build/measures",
+              ],
             },
             {
               type: "category",
@@ -308,7 +323,7 @@ const sidebarSettings = {
                 "docs/build/derived",
                 "docs/build/ratio",
                 "docs/build/simple",
-              ]
+              ],
             },
           ],
         },
@@ -442,8 +457,9 @@ const sidebarSettings = {
       type: "category",
       label: "Use the dbt Semantic Layer",
       collapsed: true,
-      link: { type: "doc", id: "docs/use-dbt-semantic-layer/quickstart-sl" },
+      link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
+        "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/sl-architecture",
@@ -453,7 +469,8 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/use-dbt-semantic-layer/avail-sl-integrations" },
           items: [
             "docs/use-dbt-semantic-layer/avail-sl-integrations",
-						//"docs/use-dbt-semantic-layer/gsheets",
+						"docs/use-dbt-semantic-layer/gsheets",
+            "docs/use-dbt-semantic-layer/tableau",
           ],
         },
       ],
@@ -516,7 +533,10 @@ const sidebarSettings = {
                 {
                   type: "category",
                   label: "Job",
-                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-job" },
+                  link: {
+                    type: "doc",
+                    id: "docs/dbt-cloud-apis/discovery-schema-job",
+                  },
                   items: [
                     "docs/dbt-cloud-apis/discovery-schema-job",
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
@@ -978,7 +998,19 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Materializations best practices",
+          label: "How we build our dbt Mesh projects",
+          link: {
+            type: "doc",
+            id: "guides/best-practices/how-we-mesh/mesh-1-intro",
+          },
+          items: [
+            "guides/best-practices/how-we-mesh/mesh-2-structures",
+            "guides/best-practices/how-we-mesh/mesh-3-implementation",
+          ],
+        },
+        {
+          type: "category",
+          label: "Materialization best practices",
           link: {
             type: "doc",
             id: "guides/best-practices/materializations/materializations-guide-1-guide-overview",
