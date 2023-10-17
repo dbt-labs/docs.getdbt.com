@@ -174,6 +174,10 @@ exports.versionedPages = [
   {
     "page": "reference/resource-configs/grants",
     "firstVersion": "1.2",
+  },
+  {
+    "page": "docs/build/saved-queries",
+    "firstVersion": "1.7",
   }
 ]
 
