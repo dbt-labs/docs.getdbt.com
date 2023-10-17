@@ -225,6 +225,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/decodable-setup",
                 "docs/core/connect-data-platform/upsolver-setup",
+                "docs/core/connect-data-platform/starrocks-setup",
               ],
             },
           ],
@@ -670,6 +671,7 @@ const sidebarSettings = {
         "reference/resource-configs/fal-configs",
         "reference/resource-configs/oracle-configs",
         "reference/resource-configs/upsolver-configs",
+        "reference/resource-configs/starrocks-configs",
       ],
     },
     {
