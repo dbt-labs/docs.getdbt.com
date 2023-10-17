@@ -5,6 +5,8 @@ description: "Learn how the dbt Semantic Layer enables data teams to centrally d
 sidebar_label: "About the dbt Semantic Layer"
 tags: [Semantic Layer]
 hide_table_of_contents: true
+pagination_next: "docs/use-dbt-semantic-layer/quickstart-sl"
+pagination_prev: null
 ---
 
 <VersionBlock firstVersion="1.6">
@@ -54,8 +56,8 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Semantic Layer APIs"
-    body="Use the Semantic Layer API to query metrics in downstream tools for consistent, reliable data metrics."
+    title="dbt Semantic Layer APIs"
+    body="Use the dbt Semantic Layer APIs to query metrics in downstream tools for consistent, reliable data metrics."
     link="/docs/dbt-cloud-apis/sl-api-overview"
     icon="dbt-bit"/>
 

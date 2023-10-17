@@ -457,8 +457,9 @@ const sidebarSettings = {
       type: "category",
       label: "Use the dbt Semantic Layer",
       collapsed: true,
-      link: { type: "doc", id: "docs/use-dbt-semantic-layer/quickstart-sl" },
+      link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
       items: [
+        "docs/use-dbt-semantic-layer/dbt-sl",
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
         "docs/use-dbt-semantic-layer/sl-architecture",

@@ -6,8 +6,6 @@ sidebar_label: "Get started with the dbt Semantic Layer"
 tags: [Semantic Layer]
 meta:
   api_name: dbt Semantic Layer APIs
-pagination_next: "docs/use-dbt-semantic-layer/setup-sl"
-pagination_prev: null
 ---
 
 <VersionBlock firstVersion="1.6">
