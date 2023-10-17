@@ -7,6 +7,7 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
+        "docs/supported-data-platforms",
         "docs/connect-adapters",
         "docs/verified-adapters",
         "docs/trusted-adapters",
@@ -17,6 +18,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "About dbt Cloud",
+      link: { type: "doc", id: "docs/cloud/about-cloud/dbt-cloud-features" },
       items: [
         "docs/cloud/about-cloud/dbt-cloud-features",
         "docs/cloud/about-cloud/architecture",
@@ -35,6 +37,7 @@ const sidebarSettings = {
       type: "category",
       label: "Set up dbt",
       collapsed: true,
+      link: { type: "doc", id: "docs/about-setup" },
       items: [
         "docs/about-setup",
         "docs/environments-in-dbt",
@@ -42,12 +45,14 @@ const sidebarSettings = {
           type: "category",
           label: "dbt Cloud",
           collapsed: true,
+          link: { type: "doc", id: "docs/cloud/about-cloud-setup" },
           items: [
             "docs/cloud/about-cloud-setup",
             "docs/dbt-cloud-environments",
             {
               type: "category",
               label: "Connect data platform",
+              link: { type: "doc", id: "docs/cloud/connect-data-platform/about-connections" },
               items: [
                 "docs/cloud/connect-data-platform/about-connections",
                 "docs/cloud/connect-data-platform/connect-starburst-trino",
@@ -61,13 +66,15 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Manage access",
+              link: { type: "doc", id: "docs/cloud/manage-access/about-user-access" },
               items: [
                 "docs/cloud/manage-access/about-user-access",
-                "docs/cloud/manage-access/seats-and-users",
                 {
                   type: "category",
-                  label: "Permissions",
+                  label: "User permissions and licenses",
+                  link: { type: "doc", id: "docs/cloud/manage-access/seats-and-users" },
                   items: [
+                    "docs/cloud/manage-access/seats-and-users",
                     "docs/cloud/manage-access/self-service-permissions",
                     "docs/cloud/manage-access/enterprise-permissions",
                   ],
@@ -75,7 +82,8 @@ const sidebarSettings = {
 
                 {
                   type: "category",
-                  label: "Single sign-on",
+                  label: "Single sign-on and Oauth",
+                  link: { type: "doc", id: "docs/cloud/manage-access/sso-overview" },
                   items: [
                     "docs/cloud/manage-access/sso-overview",
                     "docs/cloud/manage-access/auth0-migration",
@@ -83,17 +91,11 @@ const sidebarSettings = {
                     "docs/cloud/manage-access/set-up-sso-okta",
                     "docs/cloud/manage-access/set-up-sso-google-workspace",
                     "docs/cloud/manage-access/set-up-sso-azure-active-directory",
-                  ],
-                }, // SSO
-                {
-                  type: "category",
-                  label: "OAuth with data platforms",
-                  items: [
                     "docs/cloud/manage-access/set-up-snowflake-oauth",
                     "docs/cloud/manage-access/set-up-databricks-oauth",
                     "docs/cloud/manage-access/set-up-bigquery-oauth",
                   ],
-                }, // oauth
+                }, // SSO
                 "docs/cloud/manage-access/audit-log",
               ],
             }, // Manage access
@@ -101,19 +103,22 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Configure Git",
+              link: { type: "doc", id: "docs/cloud/git/git-configuration-in-dbt-cloud" },
               items: [
+                "docs/cloud/git/git-configuration-in-dbt-cloud",
+                "docs/cloud/git/import-a-project-by-git-url",
                 "docs/cloud/git/connect-github",
                 "docs/cloud/git/connect-gitlab",
                 {
                   type: "category",
                   label: "Azure DevOps",
+                  link: { type: "doc", id: "docs/cloud/git/connect-azure-devops" },
                   items: [
                     "docs/cloud/git/connect-azure-devops",
                     "docs/cloud/git/setup-azure",
                     "docs/cloud/git/authenticate-azure",
                   ],
                 },
-                "docs/cloud/git/import-a-project-by-git-url",
               ],
             }, // Supported Git providers
             {
@@ -121,9 +126,11 @@ const sidebarSettings = {
               label: "Develop in the IDE",
               link: {
                 type: "doc",
-                id: "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
+                id: "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
               },
               items: [
+                "docs/cloud/dbt-cloud-ide/dbt-cloud-ide",
+                "docs/cloud/dbt-cloud-ide/develop-in-the-cloud",
                 "docs/cloud/dbt-cloud-ide/ide-user-interface",
                 "docs/cloud/dbt-cloud-ide/lint-format",
                 "docs/cloud/dbt-cloud-ide/dbt-cloud-tips",
@@ -132,13 +139,15 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Secure your tenant",
+              link: { type: "doc", id: "docs/cloud/secure/secure-your-tenant" },
               items: [
+                "docs/cloud/secure/secure-your-tenant",
+                "docs/cloud/secure/ip-restrictions",
                 "docs/cloud/secure/about-privatelink",
                 "docs/cloud/secure/snowflake-privatelink",
                 "docs/cloud/secure/databricks-privatelink",
-                "docs/cloud/secure/redshift-privatelink",
-                "docs/cloud/secure/postgres-privatelink",
-                "docs/cloud/secure/ip-restrictions",
+		"docs/cloud/secure/redshift-privatelink",
+		"docs/cloud/secure/postgres-privatelink",
               ],
             }, // PrivateLink
             "docs/cloud/billing",
@@ -150,6 +159,7 @@ const sidebarSettings = {
           collapsed: true,
           link: { type: "doc", id: "docs/core/about-core-setup" },
           items: [
+            "docs/core/about-core-setup",
             "docs/core/about-the-cli",
             "docs/core/dbt-core-environments",
             {
@@ -157,6 +167,7 @@ const sidebarSettings = {
               label: "Install dbt",
               link: { type: "doc", id: "docs/core/installation" },
               items: [
+              "docs/core/installation", 
                 "docs/core/homebrew-install",
                 "docs/core/pip-install",
                 "docs/core/docker-install",
@@ -171,6 +182,7 @@ const sidebarSettings = {
                 id: "docs/core/connect-data-platform/about-core-connections",
               },
               items: [
+                "docs/core/connect-data-platform/about-core-connections",
                 "docs/core/connect-data-platform/profiles.yml",
                 "docs/core/connect-data-platform/connection-profiles",
                 "docs/core/connect-data-platform/bigquery-setup",
@@ -225,16 +237,19 @@ const sidebarSettings = {
       type: "category",
       label: "Build dbt projects",
       collapsed: true,
+      link: { type: "doc", id: "docs/build/projects" },
       items: [
         "docs/build/projects",
         {
           type: "category",
           label: "Build your DAG",
           collapsed: true,
+          link: { type: "doc", id: "docs/build/models" },
           items: [
             {
               type: "category",
               label: "Models",
+              link: { type: "doc", id: "docs/build/models" },
               items: [
                 "docs/build/models",
                 "docs/build/sql-models",
@@ -258,12 +273,14 @@ const sidebarSettings = {
           link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
+            "docs/build/build-metrics-intro",
             "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
               link: { type: "doc", id: "docs/build/about-metricflow" },
               items: [
+                "docs/build/about-metricflow",
                 "docs/build/join-logic",
                 "docs/build/validation",
                 "docs/build/metricflow-time-spine",
@@ -275,6 +292,7 @@ const sidebarSettings = {
               label: "Semantic models",
               link: { type: "doc", id: "docs/build/semantic-models" },
               items: [
+                "docs/build/semantic-models",
                 "docs/build/dimensions",
                 "docs/build/entities",
                 "docs/build/measures",
@@ -285,6 +303,7 @@ const sidebarSettings = {
               label: "Metrics",
               link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
+                "docs/build/metrics-overview",
                 "docs/build/cumulative",
                 "docs/build/derived",
                 "docs/build/ratio",
@@ -297,7 +316,9 @@ const sidebarSettings = {
           type: "category",
           label: "Enhance your models",
           collapsed: true,
+          link: { type: "doc", id: "docs/build/enhance-your-models" },
           items: [
+            "docs/build/enhance-your-models",
             "docs/build/materializations",
             "docs/build/incremental-models",
           ],
@@ -306,7 +327,9 @@ const sidebarSettings = {
           type: "category",
           label: "Enhance your code",
           collapsed: true,
+          link: { type: "doc", id: "docs/build/enhance-your-code" },
           items: [
+            "docs/build/enhance-your-code",
             "docs/build/project-variables",
             "docs/build/environment-variables",
             "docs/build/packages",
@@ -317,7 +340,9 @@ const sidebarSettings = {
           type: "category",
           label: "Organize your outputs",
           collapsed: true,
+          link: { type: "doc", id: "docs/build/organize-your-outputs" },
           items: [
+            "docs/build/organize-your-outputs",
             "docs/build/custom-schemas",
             "docs/build/custom-databases",
             "docs/build/custom-aliases",
@@ -334,6 +359,7 @@ const sidebarSettings = {
       collapsed: true,
       link: { type: "doc", id: "docs/deploy/deployments" },
       items: [
+        "docs/deploy/deployments",
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
         "docs/deploy/continuous-integration",
@@ -342,6 +368,7 @@ const sidebarSettings = {
           label: "Jobs",
           link: { type: "doc", id: "docs/deploy/jobs" },
           items: [
+            "docs/deploy/jobs",
             "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
             "docs/deploy/job-commands",
@@ -352,6 +379,7 @@ const sidebarSettings = {
           label: "Monitor jobs and alerts",
           link: { type: "doc", id: "docs/deploy/monitor-jobs" },
           items: [
+            "docs/deploy/monitor-jobs",
             "docs/deploy/run-visibility",
             "docs/deploy/retry-jobs",
             "docs/deploy/job-notifications",
@@ -367,11 +395,14 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Collaborate with others",
+      link: { type: "doc", id: "docs/collaborate/collaborate-with-others" },
       items: [
+        "docs/collaborate/collaborate-with-others",
         "docs/collaborate/explore-projects",
         {
           type: "category",
           label: "Git version control",
+          link: { type: "doc", id: "docs/collaborate/git-version-control" },
           items: [
             "docs/collaborate/git-version-control",
             "docs/collaborate/git/version-control-basics",
@@ -383,6 +414,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "Document your dbt projects",
+          link: { type: "doc", id: "docs/collaborate/documentation" },
           items: [
             "docs/collaborate/documentation",
             "docs/collaborate/build-and-view-your-docs",
@@ -397,6 +429,7 @@ const sidebarSettings = {
             id: "docs/collaborate/govern/about-model-governance",
           },
           items: [
+            "docs/collaborate/govern/about-model-governance",
             "docs/collaborate/govern/model-access",
             "docs/collaborate/govern/model-contracts",
             "docs/collaborate/govern/model-versions",
@@ -408,7 +441,8 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Use the dbt Semantic Layer",
-      link: { type: "doc", id: "docs/use-dbt-semantic-layer/dbt-sl" },
+      collapsed: true,
+      link: { type: "doc", id: "docs/use-dbt-semantic-layer/quickstart-sl" },
       items: [
         "docs/use-dbt-semantic-layer/quickstart-sl",
         "docs/use-dbt-semantic-layer/setup-sl",
@@ -428,12 +462,15 @@ const sidebarSettings = {
       type: "category",
       label: "dbt Cloud APIs",
       collapsed: true,
+      link: { type: "doc", id: "docs/dbt-cloud-apis/overview" },
       items: [
         "docs/dbt-cloud-apis/overview",
         {
           type: "category",
           label: "Authentication",
+          link: { type: "doc", id: "docs/dbt-cloud-apis/authentication" },
           items: [
+            "docs/dbt-cloud-apis/authentication",
             "docs/dbt-cloud-apis/user-tokens",
             "docs/dbt-cloud-apis/service-tokens",
           ],
@@ -443,6 +480,7 @@ const sidebarSettings = {
           label: "Administrative API",
           link: { type: "doc", id: "docs/dbt-cloud-apis/admin-cloud-api" },
           items: [
+            "docs/dbt-cloud-apis/admin-cloud-api",
             {
               type: "link",
               label: "API v2 (legacy docs)",
@@ -465,13 +503,16 @@ const sidebarSettings = {
           label: "Discovery API",
           link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-api" },
           items: [
+            "docs/dbt-cloud-apis/discovery-api",
             "docs/dbt-cloud-apis/discovery-use-cases-and-examples",
             "docs/dbt-cloud-apis/project-state",
             "docs/dbt-cloud-apis/discovery-querying",
             {
               type: "category",
               label: "Schema",
+              link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
               items: [
+                "docs/dbt-cloud-apis/discovery-schema-environment",
                 {
                   type: "category",
                   label: "Job",
@@ -480,6 +521,7 @@ const sidebarSettings = {
                     id: "docs/dbt-cloud-apis/discovery-schema-job",
                   },
                   items: [
+                    "docs/dbt-cloud-apis/discovery-schema-job",
                     "docs/dbt-cloud-apis/discovery-schema-job-model",
                     "docs/dbt-cloud-apis/discovery-schema-job-models",
                     "docs/dbt-cloud-apis/discovery-schema-job-metric",
@@ -499,14 +541,6 @@ const sidebarSettings = {
                   ],
                 },
                 {
-                  type: "category",
-                  label: "Environment",
-                  link: {
-                    type: "doc",
-                    id: "docs/dbt-cloud-apis/discovery-schema-environment",
-                  },
-                  items: [
-                    {
                       type: "category",
                       label: "Applied",
                       items: [
@@ -520,9 +554,7 @@ const sidebarSettings = {
                     //   items: [
                     //     // insert pages here
                     //   ],
-                    // },
-                  ],
-                },
+                    // }, 
               ],
             },
           ],
@@ -532,6 +564,7 @@ const sidebarSettings = {
           label: "Semantic Layer APIs",
           link: { type: "doc", id: "docs/dbt-cloud-apis/sl-api-overview" },
           items: [
+            "docs/dbt-cloud-apis/sl-api-overview",
             "docs/dbt-cloud-apis/sl-jdbc",
             "docs/dbt-cloud-apis/sl-graphql",
             "docs/dbt-cloud-apis/sl-manifest",
@@ -542,6 +575,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Available dbt versions",
+      link: { type: "doc", id: "docs/dbt-versions/core" },
       items: [
         "docs/dbt-versions/core",
         "docs/dbt-versions/upgrade-core-in-cloud",
@@ -550,6 +584,7 @@ const sidebarSettings = {
         {
           type: "category",
           label: "dbt Cloud Release Notes",
+          link: { type: "doc", id: "docs/dbt-versions/dbt-cloud-release-notes" },
           items: [
             "docs/dbt-versions/dbt-cloud-release-notes",
             {

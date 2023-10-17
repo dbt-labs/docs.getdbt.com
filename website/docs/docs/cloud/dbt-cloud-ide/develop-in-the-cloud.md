@@ -4,6 +4,8 @@ id: develop-in-the-cloud
 description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
 sidebar_label: Develop in the IDE
 tags: [IDE]
+pagination_next: "docs/cloud/dbt-cloud-ide/ide-user-interface"
+pagination_prev: null
 ---
 
 The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. 
