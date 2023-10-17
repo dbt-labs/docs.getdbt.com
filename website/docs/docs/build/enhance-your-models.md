@@ -9,7 +9,7 @@ pagination_prev: null
 
 <Card
     title="Materializations"
-    body="Learn how to use materializations to persist dbt models in a data platform."
+    body="Learn how to use materializations to make dbt models persist in a data platform."
     link="/docs/build/materializations"
     icon="dbt-bit"/>
 
