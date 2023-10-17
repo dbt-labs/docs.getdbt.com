@@ -34,5 +34,5 @@ saved_query:
     - "{{ Dimension('listing__capacity_latest') }} > 3"
 ```
 
-FAQs and Usage Notes:
+### FAQs 
 * Dimensions refrenced in the group by or where must be common across all metrics in a saved query.
