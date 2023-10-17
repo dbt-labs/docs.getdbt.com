@@ -25,7 +25,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 ## Prerequisites 
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
-- You must be on dbt version 1.5 or higher. To upgrade, refer to [dbt Cloud versions](/docs/cloud/dbt-versions/upgrade-core-in-cloud).
+You must be on dbt version 1.5 or higher. To upgrade, refer to [dbt Cloud versions](/docs/cloud/dbt-versions/upgrade-core-in-cloud).
 
 ## Install dbt Cloud CLI
 
