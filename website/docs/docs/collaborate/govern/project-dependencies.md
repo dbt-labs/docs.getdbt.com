@@ -139,4 +139,4 @@ If you're using private packages with the [git token method](/docs/build/package
 
 
 ## Related docs
-- [dbt Mesh guide](/guides/best-practices/how-we-mesh/mesh-1-intro)
+- Refer to the [dbt Mesh](/guides/best-practices/how-we-mesh/mesh-1-intro) guide for more guidance on how to use dbt Mesh.
