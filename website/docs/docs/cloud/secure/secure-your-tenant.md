@@ -9,7 +9,7 @@ pagination_prev: null
 
 <Card
     title="IP restrictions"
-    body="Learn about IP Restrictions and how it can help control which IP addresses are allowed to connect to dbt Cloud."
+    body="Learn about IP Restrictions and how it can help secure your dbt Cloud environment."
     link="/docs/cloud/secure/ip-restrictions"
     icon="dbt-bit"/>
 
