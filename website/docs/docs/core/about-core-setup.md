@@ -3,6 +3,8 @@ title: About dbt Core setup
 id: about-core-setup
 description: "Configuration settings for dbt Core."
 sidebar_label: "About dbt Core setup"
+pagination_next: "docs/core/about-the-cli"
+pagination_prev: null
 ---
 
 dbt Core is an [open-source](https://github.com/dbt-labs/dbt-core) tool that enables data teams to transform data using analytics engineering best practices. You can install dbt locally in your environment and use dbt Core on the command line. It can communicate with databases through adapters.

@@ -1,6 +1,7 @@
 ---
 title: "Install from source"
 description: "You can install dbt Core from its GitHub code source."
+pagination_next: null
 ---
 
 dbt Core and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install dbt from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.

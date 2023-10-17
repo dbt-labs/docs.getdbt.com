@@ -4,6 +4,7 @@ id: sl-architecture
 description: "dbt Semantic Layer product architecture and related questions."
 sidebar_label: "Architecture"
 tags: [Semantic Layer]
+pagination_next: null
 ---
 
 import NewSLChanges from '/snippets/_new-sl-changes.md';

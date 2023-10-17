@@ -3,6 +3,7 @@ title: "Authenticate with Azure DevOps"
 id: "authenticate-azure"
 description: "dbt Cloud developers need to authenticate with Azure DevOps."
 sidebar_label: "Authenticate with Azure DevOps"
+pagination_next: null
 ---
 
 

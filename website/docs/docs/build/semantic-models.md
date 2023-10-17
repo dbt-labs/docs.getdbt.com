@@ -6,6 +6,7 @@ keywords:
   - dbt metrics layer
 sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
+pagination_next: "docs/build/dimensions"
 ---
 
 Semantic models are the foundation for data definition in MetricFlow, which powers the dbt Semantic Layer:

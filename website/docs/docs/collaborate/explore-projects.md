@@ -2,6 +2,8 @@
 title: "Explore your dbt projects"
 sidebar_label: "Explore dbt projects"
 description: "Learn about dbt Explorer and how to interact with it to understand, improve, and leverage your data pipelines."
+pagination_next: null
+pagination_prev: null
 ---
 
 With dbt Explorer, you can view your project's [resources](/docs/build/projects) (such as models, tests, and metrics) and their <Term id="data-lineage">lineage</Term> to gain a better understanding of its latest production state. Navigate and manage your projects within dbt Cloud to help you and other data developers, analysts, and consumers discover and leverage your dbt resources.

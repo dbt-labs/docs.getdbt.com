@@ -2,6 +2,8 @@
 title: "About model governance"
 id: about-model-governance
 description: "Information about new features related to model governance"
+pagination_next: "docs/collaborate/govern/model-access"
+pagination_prev: null
 ---
 <VersionBlock lastVersion="1.5">
 
