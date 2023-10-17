@@ -18,7 +18,7 @@ To define a saved query, refer to the following specification:
 | `group_bys` | The value that will be displayed in downstream tools. | Required |
 | `where` | Filter applied to the query. | Optional |
 
-An example of a saved query is below:
+The following is an example of a saved query:
 
 ```yaml
 saved_query:
