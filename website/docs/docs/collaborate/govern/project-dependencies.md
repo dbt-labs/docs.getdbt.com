@@ -3,6 +3,7 @@ title: "Project dependencies"
 id: project-dependencies
 sidebar_label: "Project dependencies"
 description: "Reference public models across dbt projects"
+pagination_next: null
 ---
 
 :::info Available in Public Preview for dbt Cloud Enterprise accounts

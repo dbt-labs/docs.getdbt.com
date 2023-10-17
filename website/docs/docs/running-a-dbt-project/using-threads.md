@@ -3,7 +3,7 @@ title: "Using threads"
 id: "using-threads"
 sidebar_label: "Use threads"
 description: "Understand what threads mean and how to use them."
-
+pagination_next: null
 ---
 
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.

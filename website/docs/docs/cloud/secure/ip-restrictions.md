@@ -3,6 +3,8 @@ title: "Configuring IP restrictions"
 id: ip-restrictions
 description: "Configuring IP restrictions to outside traffic from accessing your dbt Cloud environment"
 sidebar_label: "IP restrictions"
+pagination_next: "docs/cloud/secure/about-privatelink"
+pagination_prev: null
 ---
 
 import SetUpPages from '/snippets/_available-tiers-iprestrictions.md';

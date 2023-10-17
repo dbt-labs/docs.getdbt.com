@@ -1,6 +1,7 @@
 ---
 title: "User tokens"
 id: "user-tokens"
+pagination_next: "docs/dbt-cloud-apis/service-tokens"
 ---
 
 ## User API tokens

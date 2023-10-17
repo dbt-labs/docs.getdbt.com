@@ -3,6 +3,7 @@ title: "Configuring Databricks PrivateLink"
 id: databricks-privatelink
 description: "Configuring PrivateLink for Databricks"
 sidebar_label: "PrivateLink for Databricks"
+pagination_next: null
 ---
 
 The following steps will walk you through the setup of a Databricks AWS PrivateLink endpoint in the dbt Cloud multi-tenant environment.
