@@ -121,12 +121,6 @@ Included models that are not consumed do not roll over to future months. You can
 
 All included successful models built numbers above reflect our most current pricing and packaging. Based on your usage terms when you signed up for the Team Plan, the included model entitlements may be different from what’s reflected above.
 
-:::note Legacy pricing plans
- 
-Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain on a legacy pricing plan as long as their account is in good standing. The legacy pricing plan is based on seats and includes unlimited models subject to reasonable use. dbt Labs may institute use limits if reasonable use is exceeded. Additional features, upgrades, or updates may be subject to separate charges. Any changes to your current plan pricing will be communicated in advance according to our Terms of Use. 
-
-:::
-
 ### Enterprise plan billing
 
 As an Enterprise customer, you pay annually via invoice, monthly in arrears for additional usage (if applicable), and may benefit from negotiated usage rates. Please refer to your order form or contract for your specific pricing details, or [contact the account team](https://www.getdbt.com/contact-demo) with any questions. 
@@ -137,7 +131,7 @@ Customers who purchased the dbt Cloud Team plan before August 11, 2023, remain o
 
 :::note Legacy Semantic Layer
 
-For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see prerequisites here) for a limited time on a free trial basis, subject to reasonable use.
+For customers using the legacy Semantic Layer with dbt_metrics package, this product will be deprecated in December 2023. Legacy users may choose to upgrade at any time to the revamped version, Semantic Layer powered by MetricFlow. The revamped version is available to most customers (see [prerequisites](/docs/use-dbt-semantic-layer/quickstart-sl#prerequisites)) for a limited time on a free trial basis, subject to reasonable use.
 
 :::
 
