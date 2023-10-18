@@ -90,14 +90,7 @@ If you do not specify a `project`/`database` and are using the `oauth` method, d
 
 See [docs](https://developers.google.com/identity/protocols/oauth2) on using OAuth 2.0 to access Google APIs.
 
-<Tabs
-  defaultValue="refresh"
-  values={[
-    {label: 'Refresh token', value: 'refresh'},
-    {label: 'Temporary token', value: 'temp'},
-  ]}>
-
-<TabItem value="refresh">
+#### Refresh token
 
 Using the refresh token and client information, dbt will mint new access tokens as necessary.
 
@@ -122,9 +115,7 @@ my-bigquery-db:
 
 </File>
 
-</TabItem>
-
-<TabItem value="temp">
+#### Temporary token
 
 dbt will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
 
@@ -146,9 +137,6 @@ my-bigquery-db:
 
 </File>
 
-</TabItem>
-
-</Tabs>
 
 ### Service Account File
 
