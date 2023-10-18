@@ -414,7 +414,7 @@ models:
   columns:
     - name: field
       policy_tags:
-        - 'projects/<gcp-project>/locations/<location>/taxonomies/<organization>/policyTags/<tag>'
+        - 'projects/<gcp-project>/locations/<location>/taxonomies/<taxonomy>/policyTags/<tag>'
 ```
 
 </File>

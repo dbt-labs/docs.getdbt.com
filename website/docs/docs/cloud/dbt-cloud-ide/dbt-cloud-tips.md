@@ -17,7 +17,7 @@ There are default keyboard shortcuts that can help make development more product
 - Press Fn-F1 to view a full list of the editor shortcuts
 - Command-O on macOS or Control-O on Windows to select a file to open
 - Command-P/Command-Shift-P on macOS or Control-P/Control-Shift-P on Windows to see the command palette
-- Hold Option-click-on-area on macOS or Hold-Alt-click-on-area on Windows to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
+- Hold Option-click-on-area or press Shift-Option-Command on macOS or Hold-Alt-click-on-area on Windows to select multiple lines and perform a multi-edit. You can also press Command-E to perform this operation on the command line.
 - Command-Enter on macOS or Control-Enter on Windows to Preview your code
 - Command-Shift-Enter on macOS or Control-Shift-Enter on Windows to Compile
 - Highlight a portion of code and use the above shortcuts to Preview or Compile code
