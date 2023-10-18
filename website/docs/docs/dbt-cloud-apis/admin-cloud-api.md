@@ -1,6 +1,7 @@
 ---
 title: "dbt Cloud Administrative API"
 id: "admin-cloud-api"
+pagination_next: "docs/dbt-cloud-apis/discovery-api"
 ---
 
 The dbt Cloud Administrative API is enabled by default for [Team and Enterprise plans](https://www.getdbt.com/pricing/). It can be used to:

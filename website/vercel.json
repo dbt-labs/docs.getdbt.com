@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/docs/build/metricflow-cli",
+      "destination": "/docs/build/metricflow-commands",
+      "permanent": true
+    },
+    {
+      "source": "/docs/core/about-the-cli",
+      "destination": "/docs/core/about-dbt-core",
+      "permanent": true
+    },
+    {
+      "source": "/docs/cloud/about-cloud/about-cloud-ide",
+      "destination": "/docs/cloud/about-cloud-develop",
+      "permanent": true
+    },
+    {
       "source": "/faqs/models/reference-models-in-another-project",
       "destination": "/docs/collaborate/govern/project-dependencies",
       "permanent": true
@@ -4000,6 +4015,11 @@
     {
       "source": "/docs/dbt-cloud/on-premises/upgrading-kots",
       "destination": "/docs/deploy/single-tenant",
+      "permanent": true
+    },
+    {
+      "source": "/reference/resource-properties/access",
+      "destination": "/reference/resource-configs/access",
       "permanent": true
     }
   ]
