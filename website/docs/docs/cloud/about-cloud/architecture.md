@@ -42,7 +42,7 @@ Some data warehouse providers offer advanced security features that can be lever
 
 ### Git sync
 
-dbt Cloud can sync with a variety of git providers, including [Github](/docs/cloud/git/connect-github), [Gitlab](/docs/cloud/git/connect-gitlab), and [Azure DevOps](/docs/cloud/git/connect-azure-devops) within its integrated development environment ([IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud). Communication takes place over HTTPS rather than SSH and is protected using the TLS 1.2 protocol for data in transit.
+dbt Cloud can sync with a variety of git providers, including [Github](/docs/cloud/git/connect-github), [Gitlab](/docs/cloud/git/connect-gitlab), and [Azure DevOps](/docs/cloud/git/connect-azure-devops) within its integrated development environment ([IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud)). Communication takes place over HTTPS rather than SSH and is protected using the TLS 1.2 protocol for data in transit.
 
 The git repo information is stored on dbt Cloud servers to make it accessible during the IDE sessions. When the git sync is disabled, you must [contact support](mailto:support@getdbt.com) to request the deletion of the synced data. 
 

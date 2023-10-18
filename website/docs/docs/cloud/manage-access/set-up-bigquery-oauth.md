@@ -1,7 +1,8 @@
 ---
 title: "Set up BigQuery OAuth"
-description: "Learn how dbt Cloud administrators can use licenses and seats to control access in a dbt Cloud account."
+description: "Learn how dbt Cloud administrators can use BigQuery OAuth to control access in a dbt Cloud account"
 id: "set-up-bigquery-oauth"
+pagination_next: null
 ---
 
 :::info Enterprise Feature

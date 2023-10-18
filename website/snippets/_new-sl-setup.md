@@ -1,13 +1,13 @@
 You can set up the dbt Semantic Layer in dbt Cloud at the environment and project level. Before you begin:
 
-- You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment, hosted in North America. 
+- You must have a dbt Cloud Team or Enterprise [multi-tenant](/docs/cloud/about-cloud/regions-ip-addresses) deployment. Single-tenant coming soon.
 - You must be part of the Owner group, and have the correct [license](/docs/cloud/manage-access/seats-and-users) and [permissions](/docs/cloud/manage-access/self-service-permissions) to configure the Semantic Layer:
     * Enterprise plan &mdash; Developer license with Account Admin permissions. Or Owner with a Developer license, assigned Project Creator, Database Admin, or Admin permissions.
     * Team plan &mdash; Owner with a Developer license.
 - You must have a successful run in your new environment.
 
 :::tip
-If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+If you're using the legacy Semantic Layer, dbt Labs strongly recommends that you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt version 1.6 or newer to use the latest dbt Semantic Layer. Refer to the dedicated [migration guide](/guides/migration/sl-migration) for details.
 :::
 
 1. In dbt Cloud, create a new [deployment environment](/docs/deploy/deploy-environments#create-a-deployment-environment) or use an existing environment on dbt 1.6 or higher.
@@ -25,7 +25,7 @@ If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade 
 
 5. Select the deployment environment you want for the Semantic Layer and click **Save**.
 
-6. After saving it, you'll be provided with the connection information that allows you to connect to downstream tools. If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). <!--If it uses the Semantic Layer GraphQL API, save the GraphQL API host information instead.-->
+6. After saving it, you'll be provided with the connection information that allows you to connect to downstream tools. If your tool supports JDBC, save the JDBC URL or individual components (like environment id and host). If it uses the GraphQL API, save the GraphQL API host information instead.
 
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-configure-example.jpg" width="50%" title="After you configure the Semantic Layer, you'll be provided with the connection information to connect to you downstream tools." />
 

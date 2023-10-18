@@ -15,6 +15,7 @@ default_value: true
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -150,7 +151,6 @@ sources:
 
 </File>
 
-<VersionBlock firstVersion="1.1">
 
 <File name='models/properties.yml'>
 
@@ -170,7 +170,6 @@ sources:
 
 </File>
 
-</VersionBlock>
 
 </TabItem>
 
@@ -252,10 +251,39 @@ exposures:
 
 </TabItem>
 
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for disabling semantic models has been added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_people
+    model: ref('people')
+    config:
+      enabled: false
+
+```
+
+</File>
+
+The `enabled` configuration can be nested under the `config` key.
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, snapshots, and tests.
+An optional configuration for disabling models, seeds, snapshots, tests, and semantic models.
 
 * Default: true
 

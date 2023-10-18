@@ -2,6 +2,8 @@
 title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
+pagination_next: "docs/collaborate/build-and-view-your-docs"
+pagination_prev: null
 ---
 
 ## Related documentation
@@ -147,7 +149,6 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-<Changelog>New in v0.18.0</Changelog>
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. For example, in order to define
