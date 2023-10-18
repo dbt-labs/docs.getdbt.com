@@ -12,7 +12,7 @@ The legacy Semantic Layer will be deprecated in H2 2023. Additionally, the `dbt_
 
 The metrics specification in dbt Core is changed in v1.6 to support the integration of MetricFlow. It's strongly recommended that you refer to [Build your metrics](/docs/build/build-metrics-intro) and before getting started so you understand the core concepts of the Semantic Layer. 
 
-dbt Labs recommends completing these steps in a local dev environment instead of the IDE: 
+dbt Labs recommends completing these steps in a local dev environment (such as the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation)) instead of the dbt Cloud IDE: 
 
 1. Create new Semantic Model configs as YAML files in your dbt project.*
 1. Upgrade the metrics configs in your project to the new spec.* 
@@ -63,11 +63,19 @@ You might need to audit metric values during the migration to ensure that the hi
 This step is only relevant to users who want the legacy and new semantic layer to run in parallel for a short time. This will let you recreate content in downstream tools like Hex and Mode with minimal downtime. If you do not need to recreate assets in these tools skip to step 5.
 
 1. Create a new deployment environment in dbt Cloud and set the dbt version to 1.6 or higher.
-2. Choose `Only run on a custom branch` and point to the branch that has the updated metric definition
+   
+2. Select **Only run on a custom branch** and point to the branch that has the updated metric definition.
+
 3. Set the deployment schema to a temporary migration schema, such as `tmp_sl_migration`. Optional, you can create a new database for the migration. 
-4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds,  There needs to be a successful job in your environment in order to set up the semantic layer
-5. In Account Settings > Projects > Project details click `Configure the Semantic Layer`. Under  **Environment**select the deployment environment you created in the previous step. Save your configuration.
-6. In the Project details page, click `Generate service token` and grant it `Semantic Layer Only` and `Metadata Only` permissions. Save this token securely - you will need it to connect to the semantic layer. 
+
+4. Create a job to parse your project, such as `dbt parse`, and run it. Make sure this job succeeds. There needs to be a successful job in your environment in order to set up the semantic layer.
+
+5. Select **Account Settings** -> **Projects** -> **Project details** and choose **Configure the Semantic Layer**. 
+
+6. Under **Environment**, select the deployment environment you created in the previous step. Save your configuration.
+
+7. In the **Project details** page, click **Generate service token** and grant it **Semantic Layer Only** and **Metadata Only** permissions. Save this token securely. You will need it to connect to the semantic layer. 
+
 
 At this point, both the new semantic layer and the old semantic layer will be running. The new semantic layer will be pointing at your migration branch with the updated metrics definitions. 
 
@@ -106,7 +114,7 @@ To learn more about integrating with Hex, check out their [documentation](https:
 
 If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in-a-new-environment):
 
-3. Update your Environment in Account Settings > Project Details > Edit Semantic Layer Configuration to point to your production environment
+3. Update your Environment in **Account Settings** -> **Project Details** -> **Edit Semantic Layer Configuration** to point to your production environment
 
 4. Delete your migration environment. Be sure to update your connection details in any downstream tools to account for the environment change.
 
