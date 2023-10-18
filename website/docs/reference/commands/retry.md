@@ -4,14 +4,6 @@ sidebar_label: "retry"
 id: "retry"
 ---
 
-:::info Support in dbt Cloud
-
-`dbt retry` is supported in the dbt Cloud IDE.
-
-Native support for restarting scheduled runs from point of failure is currently in development & coming soon.
-
-:::
-
 `dbt retry` re-executes the last `dbt` command from the node point of failure. If the previously executed `dbt` command was successful, `retry` will finish as `no operation`. 
 
 Retry works with the following commands:

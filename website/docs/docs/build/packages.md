@@ -3,7 +3,7 @@ title: "Packages"
 id: "packages"
 ---
 
-## What is a package?
+
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
@@ -22,12 +22,18 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
+* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
 
-:::note Using Python packages
 
-Defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages).
+:::info `dependencies.yml` has replaced `packages.yml`
+Starting from dbt v1.6, `dependencies.yml` has replaced `packages.yml`. This file can now contain both types of dependencies: "package" and "project" dependencies.
+- "Package" dependencies lets you add source code from someone else's dbt project into your own, like a library. 
+- "Project" dependencies provide a different way to build on top of someone else's work in dbt. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info.
+- 
+You can rename `packages.yml` to `dependencies.yml`, _unless_ you need to use Jinja within your packages specification. This could be necessary, for example, if you want to add an environment variable with a git token in a private git package specification.
 
 :::
+
 
 ## How do I add a package to my project?
 1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
@@ -366,3 +372,4 @@ packages:
 ```
 
 </File>
+

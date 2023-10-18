@@ -12,7 +12,8 @@ The permissions afforded to each role are described below:
 | ------ | ------ | ----- |
 | View and edit resources | ✅ | ✅ |
 | Trigger runs | ✅ | ✅ |
-| Access the IDE | ✅ | ✅ |
+| Access the dbt Cloud IDE | ✅ | ✅ |
+| Access the dbt Cloud CLI | ✅ | ✅ |
 | Invite Members to the account | ✅ | ✅ |
 | Manage billing | ❌ | ✅ |
 | Manage team permissions | ❌ | ✅ |
