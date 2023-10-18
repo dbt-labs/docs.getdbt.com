@@ -40,7 +40,12 @@ Adding [documentation](/docs/collaborate/documentation) to your project allows y
             tests:
               - accepted_values:
                   values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
-
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_customers')
+                  field: customer_id
     ```
 
     </File>

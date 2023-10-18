@@ -9,25 +9,24 @@ id: "postgres-configs"
 In dbt-postgres, the following incremental materialization strategies are supported:
 
 <VersionBlock lastVersion="1.5">
+
 - `append` (default)
 - `delete+insert`
+
 </VersionBlock>
+
 <VersionBlock firstVersion="1.6">
+
 - `append` (default)
 - `merge`
 - `delete+insert`
+
 </VersionBlock>
 
 
 ## Performance optimizations
 
 ### Unlogged
-
-<Changelog>
-
-  - **v0.14.1:** Introduced native support for `unlogged` config
-
-</Changelog>
 
 "Unlogged" tables can be considerably faster than ordinary tables, as they are not written to the write-ahead log nor replicated to read replicas. They are also considerably less safe than ordinary tables. See [Postgres docs](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED) for details.
 
@@ -53,12 +52,6 @@ models:
 ### Indexes
 
 While Postgres works reasonably well for datasets smaller than about 10m rows, database tuning is sometimes required. It's important to create indexes for columns that are commonly used in joins or where clauses.
-
-<Changelog>
-
-  - **v0.20.0:** Introduced native support for `indexes` config
-
-</Changelog>
 
 Table models, incremental models, seeds, snapshots, and materialized views may have a list of `indexes` defined. Each Postgres index can have three components:
 - `columns` (list, required): one or more columns on which the index is defined

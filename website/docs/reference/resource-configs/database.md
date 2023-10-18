@@ -22,14 +22,8 @@ The standard behavior of dbt is:
 
 To learn more about changing the way that dbt generates a relation's `database`, read [Using Custom Databases](/docs/build/custom-databases)
 
-<Changelog>
-
-* `v0.13.0`: Support for the `database` config is added
-* `v0.16.0`: The `generate_database_name` macro was added to control how the `database` config is used by dbt
-
-</Changelog>
-
 ## Usage
+
 ### Load seeds into the RAW database
 <File name='dbt_project.yml'>
 

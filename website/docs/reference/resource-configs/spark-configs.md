@@ -29,12 +29,6 @@ When materializing a model as `table`, you may include several optional configs 
 
 ## Incremental models
 
-<Changelog>
-
- - `dbt-spark==0.19.0`: Added the `append` strategy as default for all platforms, file types, and connection methods.
-
-</Changelog>
-
 dbt seeks to offer useful, intuitive modeling abstractions by means of its built-in configurations and <Term id="materialization">materializations</Term>. Because there is so much variance between Apache Spark clusters out in the world—not to mention the powerful features offered to Databricks users by the Delta file format and custom runtime—making sense of all the available options is an undertaking in its own right.
 
 Alternatively, you can use Apache Iceberg or Apache Hudi file format with Apache Spark runtime for building incremental models.
@@ -192,13 +186,6 @@ insert overwrite table analytics.spark_incremental
 
 ### The `merge` strategy
 
-<Changelog>
-
- - `dbt-spark==0.15.3`: Introduced `merge` incremental strategy
-
-</Changelog>
-
-
 **Usage notes:** The `merge` incremental strategy requires:
 - `file_format: delta, iceberg or hudi`
 - Databricks Runtime 5.1 and above for delta file format
@@ -293,12 +280,6 @@ see model descriptions in the `Comment` field of `describe [table] extended`
 or `show table extended in [database] like '*'`.
 
 ## Always `schema`, never `database`
-
-<Changelog>
-
- - `dbt-spark==0.17.0` ended use of `database` in all cases.
-
-</Changelog>
 
 Apache Spark uses the terms "schema" and "database" interchangeably. dbt understands
 `database` to exist at a higher level than `schema`. As such, you should _never_

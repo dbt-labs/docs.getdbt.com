@@ -58,8 +58,8 @@ For more detailed information and to ask questions, please read and comment on t
 Supported on:
 - [Postgres](/reference/resource-configs/postgres-configs#materialized-view)
 - [Redshift](/reference/resource-configs/redshift-configs#materialized-view)
-- Snowflake (docs forthcoming)
-- Databricks (docs forthcoming)
+- [Snowflake](/reference/resource-configs/snowflake-configs#dynamic-tables)
+- [Databricks](/reference/resource-configs/databricks-configs#materialized-views-and-streaming-tables)
 
 Support for BigQuery coming soon.
 
@@ -90,4 +90,5 @@ More consistency and flexibility around packages. Resources defined in a package
 - [`dbt debug --connection`](/reference/commands/debug) to test just the data platform connection specified in a profile
 - [`dbt docs generate --empty-catalog`](/reference/commands/cmd-docs) to skip catalog population while generating docs
 - [`--defer-state`](/reference/node-selection/defer) enables more-granular control 
+- [`dbt ls`](/reference/commands/list) adds the Semantic model selection method to allow for `dbt ls -s "semantic_model:*"` and the ability to execute `dbt ls --resource-type semantic_model`.
 

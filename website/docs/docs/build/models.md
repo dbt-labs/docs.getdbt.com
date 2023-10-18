@@ -2,6 +2,8 @@
 title: "About dbt models"
 description: "Read this tutorial to learn how to use models when building in dbt."
 id: "models"
+pagination_next: "docs/build/sql-models"
+pagination_prev: null
 ---
 
 ## Overview

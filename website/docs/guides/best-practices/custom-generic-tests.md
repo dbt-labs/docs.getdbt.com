@@ -6,13 +6,6 @@ displayText: Writing custom generic tests
 hoverSnippet: Learn how to define your own custom generic tests.
 ---
 
-<Changelog>
-
-* `v0.20.0`: Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`. They return a number of failing rows, rather than a single numeric value.
-* `v1.0.0`: Generic tests can be defined in the `tests/generic` subfolder, in addition to the `macros/` directory
-
-</Changelog>
-
 dbt ships with [Not Null](/reference/resource-properties/tests#not-null), [Unique](/reference/resource-properties/tests#unique), [Relationships](/reference/resource-properties/tests#relationships), and [Accepted Values](/reference/resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests in the [global project](https://github.com/dbt-labs/dbt-core/tree/main/core/dbt/include/global_project/macros/generic_test_sql).
 
 :::info
