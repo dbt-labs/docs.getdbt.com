@@ -18,7 +18,7 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The dbt Cloud CLI will use these credentials, stored securely in dbt Cloud, to communicate with your data platform.
 - You must [enroll](/docs/dbt-versions/experimental-features) in the dbt Cloud beta features. 
 	- To enroll, navigate to your **Profile Settings** and enable the **Beta** flag under **Experimental Features**.
-
+- You must be on dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
 
 ## Configure the dbt Cloud CLI
 
