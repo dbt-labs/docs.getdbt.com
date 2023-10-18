@@ -13,7 +13,7 @@ function BlogPostCard({ postMetaData }) {
         {image && <div className={styles.imageContentContainer} style={{ "background": `no-repeat center/100% url(${image})` }}></div>}
         <div className={`${styles.contentContainer} ${image ? styles.imageContentContainer : null}`}>
           <Link to={useBaseUrl(link)}><h3>{title}</h3></Link>
-          {readingTime && <span>{date} · {readingTime} minute read</span>}
+          {readingTime && <span className={styles.readingTime}>{date} · {readingTime} minute read</span>}
           <p>
             {createPostPreview(description, 140)}
           </p>

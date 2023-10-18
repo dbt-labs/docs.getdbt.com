@@ -12,7 +12,7 @@ hoverSnippet: DRY is a software development principle that stands for “Don’t
 
 DRY is a software development principle that stands for “Don’t Repeat Yourself.” Living by this principle means that your aim is to reduce repetitive patterns and duplicate code and logic in favor of modular and referenceable code.
 
-The DRY code principle was originally made with software engineering in mind and coined by Andy Hunt and Dave Thomas in their book, _The Pragmatic Programmer_. They believed that “every piece of knowledge must have a single, unambiguous, authoritative representation within a system.” As the field of analytics engineering and data transformation develops, there’s a growing need to adopt [software engineering best practices](https://www.getdbt.com/product/what-is-dbt/), including writing DRY code.
+The DRY code principle was originally made with software engineering in mind and coined by Andy Hunt and Dave Thomas in their book, _The Pragmatic Programmer_. They believed that “every piece of knowledge must have a single, unambiguous, authoritative representation within a system.” As the field of analytics engineering and [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) develops, there’s a growing need to adopt [software engineering best practices](https://www.getdbt.com/product/what-is-dbt/), including writing DRY code.
 
 ## Why write DRY code?
 
@@ -26,7 +26,7 @@ WET, which stands for “Write Everything Twice,” is the opposite of DRY. It's
 
 Well, how would you know if your code isn't DRY enough? That’s kind of subjective and will vary by the norms set within your organization. That said, a good rule of thumb is [the Rule of Three](https://en.wikipedia.org/wiki/Rule_of_three_(writing)#:~:text=The%20rule%20of%20three%20is,or%20effective%20than%20other%20numbers.). This rule states that the _third_ time you encounter a certain pattern, you should probably abstract it into some reusable unit.
 
-There is, of course, a tradeoff between simplicity and conciseness in code. The more abstractions you create, the harder it can be for others to understand and maintain your code without proper documentation. So, the moral of the story is: DRY code is great as long as you [write great documentation.](https://docs.getdbt.com/docs/building-a-dbt-project/documentation)
+There is, of course, a tradeoff between simplicity and conciseness in code. The more abstractions you create, the harder it can be for others to understand and maintain your code without proper documentation. So, the moral of the story is: DRY code is great as long as you [write great documentation.](https://docs.getdbt.com/docs/collaborate/documentation)
 
 ### Save time & energy
 
@@ -43,7 +43,7 @@ Most teams have essential business logic that defines the successes and failures
 By writing DRY definitions for key business logic and metrics that are referenced throughout a dbt project and/or BI (business intelligence) tool, data teams can create those single, unambiguous, and authoritative representations for their essential transformations. Gone are the days of 15 different definitions and values for churn, and in are the days of standardization and DRYness.
 
 :::note Experimental dbt Metrics!
-dbt v1.0 currently supports the use of experimental metrics, time series aggregations over a table that support zero or one dimensions. Using [dbt Metrics](https://docs.getdbt.com/docs/building-a-dbt-project/metrics), data teams can define metric calculations, ownerships, and definitions in a yaml file that lives within their dbt project. dbt Metrics are in their experimental stage; if you’re interesting in learning more about dbt Metrics, please make sure to join the #dbt-metrics-and-server channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
+dbt v1.0 currently supports the use of experimental metrics, time series aggregations over a table that support zero or one dimensions. Using [dbt Metrics](/docs/build/metrics), data teams can define metric calculations, ownerships, and definitions in a YAML file that lives within their dbt project. dbt Metrics are in their experimental stage; if you’re interesting in learning more about dbt Metrics, please make sure to join the #dbt-metrics-and-server channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 :::
 
 ## Tools to help you write DRY code
@@ -60,7 +60,7 @@ If you’re referencing a specific query, perhaps for aggregations that join bac
 
 ### View materializations
 
-View [materializations](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations) are also extremely useful for abstracting code that might otherwise be repeated often. A <Term id="view" /> is a defined passthrough SQL query that can be run against a database. Unlike a table, it doesn’t store data, but it defines the logic that you need to use to fetch the underlying data.
+View [materializations](https://docs.getdbt.com/docs/build/materializations) are also extremely useful for abstracting code that might otherwise be repeated often. A <Term id="view" /> is a defined passthrough SQL query that can be run against a database. Unlike a table, it doesn’t store data, but it defines the logic that you need to use to fetch the underlying data.
 
 If you’re referencing the same query, CTE, or block of code, throughout multiple data models, that’s probably a good sign that code should be its own view.
 
@@ -80,7 +80,7 @@ To make any subsequent references to this view DRY-er, you simply reference the 
 
 ### dbt macros and packages
 
-dbt also supports the use of [macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) and [packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) to help data folks write DRY code in their dbt projects. Macros are Jinja-supported functions that can be reused and applied throughout a dbt project. Packages are libraries of dbt code, typically models, macros, and/or tests, that can be referenced and used in a dbt project. They are a great way to use transformations for common data sources (like [ad platforms](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/)) or use more [custom tests for your data models](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) _without having to write out the code yourself_. At the end of the day, is there really anything more DRY than that?
+dbt also supports the use of [macros](/docs/build/jinja-macros) and [packages](https://docs.getdbt.com/docs/build/packages) to help data folks write DRY code in their dbt projects. Macros are Jinja-supported functions that can be reused and applied throughout a dbt project. Packages are libraries of dbt code, typically models, macros, and/or tests, that can be referenced and used in a dbt project. They are a great way to use transformations for common data sources (like [ad platforms](https://hub.getdbt.com/dbt-labs/facebook_ads/latest/)) or use more [custom tests for your data models](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) _without having to write out the code yourself_. At the end of the day, is there really anything more DRY than that?
 
 ## Conclusion
 

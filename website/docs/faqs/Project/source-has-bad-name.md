@@ -8,7 +8,7 @@ id: source-has-bad-name
 
 By default, dbt will use the `name:` parameters to construct the source reference.
 
-If these names are a little less-than-perfect, use the [schema](resource-properties/schema) and [identifier](identifier) properties to define the names as per the database, and use your `name:` property for the name that makes sense!
+If these names are a little less-than-perfect, use the [schema](/reference/resource-properties/schema) and [identifier](/reference/resource-properties/identifier) properties to define the names as per the database, and use your `name:` property for the name that makes sense!
 
 <File name='models/<filename>.yml'>
 

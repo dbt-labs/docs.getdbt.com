@@ -1,5 +1,6 @@
 ---
 resource_types: [snapshots]
+description: "Unique_key - Read this in-depth guide to learn about configurations in dbt."
 datatype: column_name_or_expression
 ---
 
@@ -18,7 +19,7 @@ datatype: column_name_or_expression
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +unique_key: column_name_or_expression
 
 ```
@@ -59,7 +60,7 @@ You can also write this in yaml. This might be a good idea if multiple snapshots
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +unique_key: id
 
 ```

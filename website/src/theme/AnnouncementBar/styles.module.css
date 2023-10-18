@@ -1,10 +1,3 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 :root {
   --docusaurus-announcement-bar-height: auto;
 }
@@ -13,6 +6,15 @@
   display: flex;
   align-items: center;
   height: auto;
+
+  /*
+  Unfortunately we can't make announcement bar render above the navbar
+  IE need to use border-bottom instead of shadow
+  See https://github.com/facebookincubator/infima/issues/275
+
+  box-shadow: var(--ifm-global-shadow-lw);
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+  */
 }
 
 html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
@@ -26,8 +28,6 @@ html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
 .announcementBarClose {
   flex: 0 0 30px;
   align-self: stretch;
-  padding: 0;
-  line-height: 0;
   color: var(--ifm-color-white);
   opacity: 1;
 }
@@ -45,11 +45,6 @@ html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
   }
 }
 
-.announcementBarContent a {
-  color: inherit;
-  text-decoration: underline;
-}
-
 @media (min-width: 997px) {
   .announcementBarPlaceholder,
   .announcementBarClose {
@@ -61,6 +56,7 @@ html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
   color: var(--ifm-color-white);
   width: 100%;
 }
+
 .announcementBarLink:hover {
   color: var(--ifm-color-white);
   text-decoration: none;

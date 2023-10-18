@@ -26,13 +26,13 @@ from {{ ref('table_a') }}
 
 At this point, you realize your will to continue typing out the next 52 columns has essentially dwindled down to nothing and you’re probably questioning the life choices that led you here.
 
-But what if there was a way to make these 56+ lines of code come down to a handful? Well, that’s where a handy [dbt macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) comes into play.
+But what if there was a way to make these 56+ lines of code come down to a handful? Well, that’s where a handy [dbt macro](/docs/build/jinja-macros) comes into play.
 
 <!--truncate-->
 
 ## The `star` dbt macro
 
-dbt supports [dbt_utils](https://github.com/dbt-labs/dbt-utils), a [package of macros and tests](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) that data folks can use to help them write more <Term id="dry" /> code in their dbt project. One of the macros dbt utils offers is the `star` generator.
+dbt supports [dbt_utils](https://github.com/dbt-labs/dbt-utils), a [package of macros and tests](https://docs.getdbt.com/docs/build/packages) that data folks can use to help them write more <Term id="dry" /> code in their dbt project. One of the macros dbt utils offers is the `star` generator.
 
 This macro:
 

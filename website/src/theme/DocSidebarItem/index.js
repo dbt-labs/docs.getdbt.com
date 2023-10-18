@@ -1,234 +1,46 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-import React, {useEffect, memo, useMemo, useContext} from 'react';
-import clsx from 'clsx';
-import {
-  isActiveSidebarItem,
-  usePrevious,
-  Collapsible,
-  useCollapsible,
-  findFirstCategoryLink,
-  ThemeClassNames,
-} from '@docusaurus/theme-common';
-import Link from '@docusaurus/Link';
-import isInternalUrl from '@docusaurus/isInternalUrl';
-import {translate} from '@docusaurus/Translate';
-import IconExternalLink from '@theme/IconExternalLink';
-import styles from './styles.module.css';
-import useIsBrowser from '@docusaurus/useIsBrowser'; // Optimize sidebar at each "level"
-// TODO this item should probably not receive the "activePath" props
-// TODO this triggers whole sidebar re-renders on navigation
+import React, { useContext } from 'react';
+import DocSidebarItemCategory from '@theme/DocSidebarItem/Category';
+import DocSidebarItemLink from '@theme/DocSidebarItem/Link';
+import DocSidebarItemHtml from '@theme/DocSidebarItem/Html';
 
+/* dbt Customizations:
+ * Import version context and utils
+ * Get versionedPages from website/dbt-versions.js
+ * Get version from context
+ * Hide sidebar item if not available for current version
+*/
 import {usePluginData} from '@docusaurus/useGlobalData';
 import VersionContext from '../../stores/VersionContext'
 import pageVersionCheck from '../../utils/page-version-check';
+import categoryVersionCheck from '../../utils/category-version-check';
 
-export const DocSidebarItems = memo(({items, ...props}) => {
-  const { versionedPages } = usePluginData('docusaurus-build-global-data-plugin');
-  return (
-    <>
-      {items.map((item, index) => (
-        <DocSidebarItem
-          key={index} // sidebar is static, the index does not change
-          item={item}
-          versionedPages={versionedPages}
-          {...props}
-        />
-      ))}
-    </>
-  );
-})
+export default function DocSidebarItem({item, ...props}) {
 
-export default function DocSidebarItem({item, versionedPages, ...props}) {
+  // dbt Custom
+  const { versionedPages, versionedCategories } = usePluginData('docusaurus-build-global-data-plugin');
   const { version } = useContext(VersionContext)
-  
+
+  // Hide versionedPages if they do not match the current version
   if(version && versionedPages) {
     const { pageAvailable } = pageVersionCheck(version, versionedPages, item.docId)
     if(!pageAvailable)
       return null
   }
 
+  // Hide versionedCategories if they do not match the current version
+  if(version && versionedCategories && item.type === 'category') {
+    const { categoryAvailable } = categoryVersionCheck(version, versionedCategories, item.label)
+    if(!categoryAvailable)
+      return null
+  }
+
   switch (item.type) {
     case 'category':
-      if (item.items.length === 0) {
-        return null;
-      }
-
       return <DocSidebarItemCategory item={item} {...props} />;
-
+    case 'html':
+      return <DocSidebarItemHtml item={item} {...props} />;
     case 'link':
     default:
       return <DocSidebarItemLink item={item} {...props} />;
   }
-} // If we navigate to a category and it becomes active, it should automatically expand itself
-
-function useAutoExpandActiveCategory({isActive, collapsed, setCollapsed}) {
-  const wasActive = usePrevious(isActive);
-  useEffect(() => {
-    const justBecameActive = isActive && !wasActive;
-
-    if (justBecameActive && collapsed) {
-      setCollapsed(false);
-    }
-  }, [isActive, wasActive, collapsed, setCollapsed]);
-} // When a collapsible category has no link, we still link it to its first child during SSR as a temporary fallback
-// This allows to be able to navigate inside the category even when JS fails to load, is delayed or simply disabled
-// React hydration becomes an optional progressive enhancement
-// see https://github.com/facebookincubator/infima/issues/36#issuecomment-772543188
-// see https://github.com/facebook/docusaurus/issues/3030
-
-function useCategoryHrefWithSSRFallback(item) {
-  const isBrowser = useIsBrowser();
-  return useMemo(() => {
-    if (item.href) {
-      return item.href;
-    } // In these cases, it's not necessary to render a fallback
-    // We skip the "findFirstCategoryLink" computation
-
-    if (isBrowser || !item.collapsible) {
-      return undefined;
-    }
-
-    return findFirstCategoryLink(item);
-  }, [item, isBrowser]);
-}
-
-function DocSidebarItemCategory({
-  item,
-  onItemClick,
-  activePath,
-  level,
-  ...props
-}) {
-  const {items, label, collapsible, className, href} = item;
-  const hrefWithSSRFallback = useCategoryHrefWithSSRFallback(item);
-  const isActive = isActiveSidebarItem(item, activePath);
-  const {collapsed, setCollapsed, toggleCollapsed} = useCollapsible({
-    // active categories are always initialized as expanded
-    // the default (item.collapsed) is only used for non-active categories
-    initialState: () => {
-      if (!collapsible) {
-        return false;
-      }
-
-      return isActive ? false : item.collapsed;
-    },
-  });
-  useAutoExpandActiveCategory({
-    isActive,
-    collapsed,
-    setCollapsed,
-  });
-  return (
-    <li
-      className={clsx(
-        ThemeClassNames.docs.docSidebarItemCategory,
-        ThemeClassNames.docs.docSidebarItemCategoryLevel(level),
-        'menu__list-item',
-        {
-          'menu__list-item--collapsed': collapsed,
-        },
-        className,
-      )}>
-      <div className="menu__list-item-collapsible">
-        <Link
-          className={clsx('menu__link', {
-            'menu__link--sublist': collapsible && !href,
-            'menu__link--active': isActive,
-            [styles.menuLinkText]: !collapsible,
-            [styles.hasHref]: !!hrefWithSSRFallback,
-          })}
-          onClick={
-            collapsible
-              ? (e) => {
-                  onItemClick?.(item);
-
-                  if (href) {
-                    setCollapsed(false);
-                  } else {
-                    e.preventDefault();
-                    toggleCollapsed();
-                  }
-                }
-              : () => {
-                  onItemClick?.(item);
-                }
-          }
-          href={collapsible ? hrefWithSSRFallback ?? '#' : hrefWithSSRFallback}
-          {...props}>
-          {label}
-        </Link>
-        {href && collapsible && (
-          <button
-            aria-label={translate(
-              {
-                id: 'theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel',
-                message: "Toggle the collapsible sidebar category '{label}'",
-                description:
-                  'The ARIA label to toggle the collapsible sidebar category',
-              },
-              {
-                label,
-              },
-            )}
-            type="button"
-            className="clean-btn menu__caret"
-            onClick={(e) => {
-              e.preventDefault();
-              toggleCollapsed();
-            }}
-          />
-        )}
-      </div>
-
-      <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
-        <DocSidebarItems
-          items={items}
-          tabIndex={collapsed ? -1 : 0}
-          onItemClick={onItemClick}
-          activePath={activePath}
-          level={level + 1}
-        />
-      </Collapsible>
-    </li>
-  );
-}
-
-function DocSidebarItemLink({item, onItemClick, activePath, level, ...props}) {
-  const {href, label, className} = item;
-  const isActive = isActiveSidebarItem(item, activePath);
-  return (
-    <li
-      className={clsx(
-        ThemeClassNames.docs.docSidebarItemLink,
-        ThemeClassNames.docs.docSidebarItemLinkLevel(level),
-        'menu__list-item',
-        className,
-      )}
-      key={label}>
-      <Link
-        className={clsx('menu__link', {
-          'menu__link--active': isActive,
-        })}
-        aria-current={isActive ? 'page' : undefined}
-        to={href}
-        {...(isInternalUrl(href) && {
-          onClick: onItemClick ? () => onItemClick(item) : undefined,
-        })}
-        {...props}>
-        {isInternalUrl(href) ? (
-          label
-        ) : (
-          <span>
-            {label}
-            <IconExternalLink />
-          </span>
-        )}
-      </Link>
-    </li>
-  );
 }

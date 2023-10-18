@@ -190,7 +190,7 @@ Below, you’ll find two solutions that are more effective than snapshotting a f
 
 ## Solution #1: Downstream Incremental Model
 
-Instead of using snapshots, Joanne could create an [incremental model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) downstream of `fct_income` to “grab” every point-in-time version of `fct_income` – let’s call this incremental model `int_income_history` and assume it has the following config block:
+Instead of using snapshots, Joanne could create an [incremental model](https://docs.getdbt.com/docs/build/incremental-models) downstream of `fct_income` to “grab” every point-in-time version of `fct_income` – let’s call this incremental model `int_income_history` and assume it has the following config block:
 
 ```sql
 {{

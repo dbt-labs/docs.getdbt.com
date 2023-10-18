@@ -1,5 +1,6 @@
 ---
 resource_types: [snapshots]
+description: "Updated_at - Read this in-depth guide to learn about configurations in dbt."
 datatype: column_name
 ---
 <File name='snapshots/<filename>.sql'>
@@ -18,7 +19,7 @@ datatype: column_name
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: timestamp
     +updated_at: column_name
 
@@ -29,7 +30,7 @@ snapshots:
 ## Description
 A column within the results of your snapshot query that represents when the record row was last updated.
 
-This parameter is **required if using the `timestamp` [strategy](strategy)**.
+This parameter is **required if using the `timestamp` [strategy](/reference/resource-configs/strategy)**.
 
 
 ## Default

@@ -5,6 +5,9 @@ Welcome to the content style guide for docs.getdbt.com! We aim to provide docs t
 This guide includes standards we want to emphasize, likely because we've made deliberate decisions about them. You can refer to [_The Microsoft Writing Style Guide_](https://docs.microsoft.com/en-us/style-guide/welcome/) and the [_Chicago Manual of Style_](https://www.chicagomanualofstyle.org/home.html) for those nagging questions like, "[Should I use an Em dash, En dash or hyphen?](https://docs.microsoft.com/en-us/style-guide/punctuation/dashes-hyphens/)"
 
 ### Table of Contents
+* [Folder Structure and TOC](#folder-structure-and-toc)
+* [Filenaming](#filenaming)
+* [Using Markdown](#using-markdown)
 * [Callouts](#callouts)
 * [Text formatting](#Text-formatting)
 * [UI elements](#UI-elements)
@@ -13,16 +16,75 @@ This guide includes standards we want to emphasize, likely because we've made de
 * [Oxford comma](#Oxford-comma)
 * [Lists](#Lists)
 * [Tables](#Tables)
-* [Word choice & terminology](#Word-choice-&-terminology)
+* [Cards](#Cards)
+* [Word choice & terminology](#word-choice--terminology)
 * [Links](#Links)
 * [Images](#Images)
 * [Talk to us](#Talk-to-us)
+
+## Folder Structure and TOC
+
+The folder structure for the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository is organized into several high-level categories under the main `website` folder such as `blog`, `cypress`, `docs`, `functions`, `plugins`, `snippets`, `src`, `static`, and so on.
+
+The left sidebar (leftbar) is managed in the `sidebar.js` file. You only need to edit the `sidebar.js` file when you are adding a new page or deleting an existing page. Editing the `sidebar.js` file can cause merge conflicts as it's updated often because content is being worked on daily. You will need to accept the changes from other contributors if you are committing a PR.
+
+Don't worry if you're not sure where in the leftbar a new topic belongs. Do your best and when you submit your PR, the dbt Labs Documentation team will edit it and help to find the right placement.
+
+The right sidebar (rightbar), also known as the page TOC, is created automatically for all the H2 and H3 headings on a page. For details, see [Headings and Table of contents](https://docusaurus.io/docs/markdown-features/toc) in Docusaurus. 
+
+## Filenaming
+
+If you're adding a new file in the [docs.getdbt.com](https://github.com/dbt-labs/docs.getdbt.com) repository, review the following file name guidance and examples: 
+
+- Keep the file name as short as possible since it becomes part of the URL and leave out any unnecessary words. Long URLs are hard to read and prone to errors.
+- Think about where you want to locate the file in the leftbar. This will help catch and avoid redundancy. Remain consistent with the surrounding leftbar items.
+- Be as descriptive as possible so readers have an idea as to what they’re about to read.
+
+| ✅ Use | ❌ Avoid|
+|:-------:|:-------:|
+|`/docs/cloud/about-cloud/architecture` | `/docs/deploy/how-we-think-about-architecture`|
+
+
+## Using Markdown
+
+docs.getdbt.com uses its own CSS, and Docusaurus supports its own specific Markdown syntax. Review the basic Markdown syntax [document](https://www.markdownguide.org/basic-syntax/) for the supported syntax elements. For custom syntaxes, review the following table: 
+
+| Element                                     | Syntax                                                |
+|---------------------------------------------|-------------------------------------------------------|
+| Link - external site                        | `[Title](https://www.example.com)`                    |
+| Link - topic in same folder                 | `[Title](/folder/file-name) without file extension`*   |
+| Link - topic in different folder            | `[Title](/folder/file-name) without file extension`*   |
+| Link - section in topic in same folder      | `[Title](/folder/file-name#section-name)`*             |
+| Link - section in topic in different folder | `[Title](/folder/file-name#section-name)`*            |
+| Image                                       | `<Lightbox src="/img/docs/<image-name>.jpg" title="Concise description of image"/>`|
+
+*docs.getdbt.com uses specific folders when linking to topics or sections. A successful link syntax begins with one of the following folder paths:
+
+- `/docs` 
+- `/guides` 
+- `/references`
+
+**Example**
+
+:white_check_mark: `[Title](/guides/file-name)` 
+
+:x: `[Title](/blog/file-name)` 
 
 ## Callouts
 
 Callouts highlight important or high-value information that readers need to know. We want callouts to stand out, so we should keep their content to a minimum, avoiding general information, permissions, or prerequisites. Too much information can make it difficult to absorb. Imagine driving down one block with five stop signs!?!
 
-Use callouts sparingly for high-value information &mdash; avoid including general information, permissions, or prerequisites in callouts.
+If you add text after the first code, like this `:::note This is a note title`, it shows up as a title for the note.
+
+Callout formats include:
+
+| Types of callouts | Callout formats |
+| ---- | ------ |
+| Note callouts are used for notices| ```:::note``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Info callouts are used to highlight info |```:::info``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Tip callouts are used for tips |```:::tip``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+| Caution callouts are used for warnings/considerations |```:::caution``` <br /> <br /> ```text``` <br /> <br /> ```:::``` |
+
 
 ## Text formatting
 You consider many elements when designing technical docs, and the way you format text can help you achieve a well-articulated design. With consistency of use, well-formatted text creates a single voice when there are multiple authors/contributors, increases the readability of the content, and further establishes an organization's branding.
@@ -58,6 +120,8 @@ Use [code blocks](#code-blocks) for longer or more complex commands. Do _not_ us
 ### Code blocks
 
 Keep lines in code samples to about 60 characters, to avoid requiring readers to scroll horizontally in the code block. Locate explanatory text before the code block, rather than using comments inside the code block.
+
+You can look at the different [languages you can use in code blocks](https://markdown.land/markdown-code-block#markdown-code-block-language-list), which will change how the code example is formatted (like highlighting). For example, `yaml` or `shell` are commonly used in the dbt product documentation. 
 
 Within code blocks:
 
@@ -277,7 +341,119 @@ A table following an H3 heading:
 > | `-readable` | Print output in human readable format. | <ul><li>`true`</li><li>`false`</li></ul> |
 > | `-file` | Print output to file instead of stdout. | Name of the file. |
 
+## Cards
+
+Use the `<Card` component to display content and actions on a single topic. Users should cards easy to scan for relevant and actionable information. Elements, like text, icons, and links can be used inside a card. 
+  
+You can configure a card in 2, 3, 4, or 5-column grids. To maintain a good user experience, be mindful of how the cards are displayed. Cards with multiple paragraphs may not work because the text and cards will appear too squished, making them hard to read and a bad user experience. 
+
+There won't be many instances where you need to display 4 or 5 cards on the docs site. While we recommend you use 2 or 3-column grids, you can use 4 or 5-column grids in the following scenarios:
+
+- For cards that contain little text and limited to under 15 words. (This is to make sure the text isn't squished)
+- Always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). 
+
+Otherwise, the text will appear squished and provide users with a bad experience.
+
+- `<divclassName="grid--2-col">`: creates 2 column cards
+- `<divclassName="grid--3-col">`: creates 3 columns cards
+- `<divclassName="grid--4-col">`: creates 4 columns cards (use sparingly)
+- `<divclassName="grid--5-col">`: creates 5 columns cards (use sparingly)
+- You can't create cards with 6 or more columns as that would provide users a poor experience.
+
+Refer to [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and [Quickstarts](/docs/quickstarts/overview) as examples. 
+
+### Create cards
+
+To create cards in markdown, you need to:
+
+- Start off by using the appropriate `<divclassName="grid--column_num-col">` for your use case 
+- Create a `<Card` component (which is wrapped within the div)
+- Add the props within the card component, including `title`,`body`,`link`,`icon`.
+- Close out the div by using `</div>`
+
+Refer to the following prop list for detailed explanation and examples:
+
+| Prop | Type | Info | Example |
+| ---- | ---- | ---- | ------- |
+| `title` | required | The title should be clear and explain an action the user should take or a product/feature. | `title: dbt Cloud IDE`
+| `body` | required | The body contains the actionable or informative text for the user. You can include `<a href="` link within the body of the text. However, if you do this, you must not include the `link` prop set as that'll override any `<a href's` within the body text.  | `body="The IDE is the easiest and most efficient way to develop dbt models`
+| `link` | optional | Add a link to the entire card component so when users click on the card, it'll trigger the link. Adding a link prop means it'll override any links within the body and if users click on the card, they'll be directed to the link set by the link prop. | `link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud`
+| `icon` | optional but recommended | You can add an icon to the card comonent by using any icons found in the [icons](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/static/img/icons) directory. <br /> * Icons are added in .svg format and you must add icons in two locations: website/static/img/icons and website/static/img/icons/white. This is so users can view the icons in dark or light mode on the docs.getdbt.com site. | ` icon="pencil-paper"/>` |
+
+The following is an example of a 4 card column:
+
+```
+<div className="grid--4-col">
+
+<Card
+    title="dbt Cloud IDE" 
+    body="The IDE is the easiest and most efficient way to develop dbt models." 
+    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    icon="pencil-paper"/> 
+    
+<Card  ## this card component has an <a href link within the body. Notice how there's no link prop set as it'll override any a href's within the body. 
+    title="New title"
+    body="more <a href='www.getdbt.com'>text text</a>"
+    icon="pencil-paper"/>
+
+<Card
+    title="New title"
+    body="more text text"
+    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    icon="pencil-paper"/>
+
+<Card
+    title="New title"
+    body="more text text"
+    link="/docs/cloud/dbt-cloud-ide/develop-in-the-cloud" 
+    icon="pencil-paper"/>
+
+</div>
+```
+
 ## Word choice & terminology
+Use active voice instead of passive. Active voice is clearer and more direct, making it easier to translate. 
+
+✅ Use: The contributor writes the documentation.
+
+❌ Avoid: The documentation is written by contributors.
+
+### Active voice
+
+Use the active voice most of the time. Use the passive voice sparingly. 
+
+- Passive voice: _Files are added by developers._
+- Active voice: _Developers add files._
+
+Active voice provides the following advantages:
+
+- Active voice is generally shorter than passive voice.
+- Active voice is easier for users to understand and often results in shorter content.
+- Most readers mentally convert passive voice to active voice. Why subjects readers to extra processing time? By sticking to active voice, you enable readers to skip the preprocessor stage and go straight to compilation.
+- Passive voice confuses your ideas and reports action indirectly.
+- Some passive voice sentences omit an actor altogether, which forces the reader to guess the actor's identity.
+
+
+Sometimes, using passive voice is appropriate. Make sure it’s an intentional choice that communicates the idea clearer than active voice would. For example, when the system is the actor, rather than a person.
+
+
+✅ Use |	❌ Avoid
+--- | ---|
+(Active voice) Ask someone with access to dbt Cloud to transform the data. | This data transformation can be done by someone with access to dbt Cloud. |
+(Passive voice &mdash; exceptions) The open-sourced rpc plugin is used by the Cloud IDE to recompile changes made in your project. |  We are using the open-sourced rpc plugin for the Cloud IDE to recompile changes made in your project. |
+
+### Spelling
+
+In general, when the spelling of English words varies by locale &mdash; use the US spelling. For example:
+
+✅ Use | ❌ Avoid
+-- | --
+standardize  | standardise 
+license | licence
+color | colour
+</div></b>
+
+Avoid regional idiomatic phrases as well.  For example, a common saying amongst English speakers in India is "do the needful," but this phrase may be unrecognizable to English speakers from other regions. 
 
 ### Abbreviations
 
@@ -304,7 +480,6 @@ Some common Latin abbreviations and other words to use instead:
 | e.g.               | <ul><li>for example</li><li>like</li></ul> | <ul><li>Join both the dedicated #adapter-ecosystem channel in dbt Slack and the channel for your adapter's data store (for example, #db-sqlserver and #db-athena)</li><li>Using Jinja in SQL provides a way to use control structures (like `if` statements and `for` loops) in your queries </li></ul> |
 | etc.               | <ul><li>and more</li><li>and so forth</li></ul> | <ul><li>A continuous integration environment running pull requests in GitHub, GitLab, and more</li><li>While reasonable defaults are provided for many such operations (like `create_schema`, `drop_schema`, `create_table`, and so forth), you might need to override one or more macros when building a new adapter</li></ul> |
 
-
 ### Prepositions
 
 Avoid ending a sentence with a preposition unless the rewritten sentence would sound awkward or too formal.
@@ -315,7 +490,7 @@ Product names, trademarks, services, and tools should be written as proper nouns
 
 ### Terms to use or avoid
 
-Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style.
+Use industry-specific terms and research new/improved terminology. Also refer to the Inclusive Language section of this style guide for inclusive and accessible language and style. 
 
 **DO NOT** use jargon or language familiar to a small subset of readers or assume that your readers understand ALL technical terms.
 
@@ -336,7 +511,42 @@ username | login
 
 ## Links
 
-Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it is important that links are transparent, up-to-date, and lead to legitimate resources.
+Links embedded in documentation are about trust. Users trust that we will lead them to sites or pages related to their reading content. In order to maintain that trust, it's important that links are transparent, up-to-date, and lead to legitimate resources.
+
+### Internal links
+
+All internal links should use relative and not absolute paths. We construct these paths in relation to the content root, which is`[_docs.getdbt.com repository_/website/docs](https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/docs)`.
+
+We require  either _file_ paths relative to the content root (these include the file extension, such as `.md`) or _URL_ paths relative to the content root (these don't include `.md`). We avoid paths relative to the document (for example, one directory above a document `../LinkedDocument`) because they won't work during local development and testing, and moving a document won't break the links it contains.  
+
+Markdown links in Docusaurus open in the same window rather than creating a new browser tab, but you can use HTML or full URLs to open a link in a new tab.
+
+The file or URL paths begin with:
+- /docs/
+- /guides/
+- /reference/
+- /community/
+
+Let's use the Regions & IP Addresses URL as an example: https://docs.getdbt.com/docs/cloud/about-cloud/regions-ip-addresses
+If we need to reference this on another page, we can remove the domain entirely:
+
+`For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)`
+
+The reader will see:
+
+For more information about server availability, please refer to our [Regions & IP Addresses page](/docs/cloud/about-cloud/regions-ip-addresses)
+
+You can link to a specific section of the doc with a `#` at the end of the path. Enter the section’s title after the `#`, with individual words separated by hyphens. Let's use the incremental models page, https://docs.getdbt.com/docs/build/incremental-models, as an example:
+
+`To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).`
+
+This will appear to the reader as follows:
+
+To better understand this model type, read our [incremental models page](/docs/build/incremental-models#understanding-incremental-models).
+
+When you click on the link, it automatically takes you to the section defined at the end of the path. If the path syntax is incorrect(or does not exist), the link will take the reader to the top of the page specified in the path. 
+
+There are different methods for handling this based on page location (and other nuances), so please reference the [Docusaurus docs site](https://docusaurus.io/docs/markdown-features/links) for more detailed information. 
 
 ### Link format
 
@@ -347,6 +557,11 @@ Hyperlinks should be text only, please avoid image-based links. The text should 
   :x: For more information, [_Click Here_](https://docs.getdbt.com/)
 
   ✅ For more information, visit the [_dbt Labs doc site_](https://docs.getdbt.com/).
+  
+  ✅ For more information, read the [_dbt Labs doc site_](https://docs.getdbt.com/).
+  
+  ✅ For more information, refer to the [_dbt Labs doc site_](https://docs.getdbt.com/).
+
 
 ### Link destinations
 
@@ -398,11 +613,16 @@ Both macOS and Windows include tools that allow you to capture and manipulate sc
 
 #### Screenshot guidelines
 
-Once you have determined that a screenshot will add value to the document where words alone can't, refer to these guidelines for capturing the information:
+Once you have determined that a screenshot will add value to the document where words alone can't, use the [Lightbox component](/contributing/lightbox) and the following guidelines to capture the information:
 
 * Use screenshots to highlight navigation, on-screen elements, and other noteworthy product visuals.
 * Avoid using screenshots to demonstrate inputs and outputs. All code snippets and sample results should be in the documents as text fields.
+* Add images are under the `static` -> `img` folder.
 * Use concise filenames that are relevant to the content contained within. Enumerate them if they are part of a sequence.
+* Use JPEG format, which renders a better quality and lossless compression. JPEG format has a white background and is accessible in light and dark mode. 
+* Add *title=""* for all images to write a concise title of the image. For accessibility, it's important to use succinct text that is clear and complete. 
+
+For more information about image-formatting, review the [Lightbox guidance](/contributing/lightbox), and the following examples:
 
   :x: screenshot-august0822.jpg
 

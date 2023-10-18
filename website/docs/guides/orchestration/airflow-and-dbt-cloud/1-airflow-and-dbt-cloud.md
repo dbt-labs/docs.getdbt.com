@@ -15,17 +15,17 @@ In some cases, [Airflow](https://airflow.apache.org/) may be the preferred orche
 
 ### Airflow + dbt Core
 
-There are so many great examples from Gitlab through their open source data engineering work. Example: [here](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_snowplow_backfill.py). This is especially appropriate if you are well-versed in Kubernetes, CI/CD, and docker task management when building your airflow pipelines. If this is you and your team, you’re in good hands reading through more details: [here](https://about.gitlab.com/handbook/business-technology/data-team/platform/infrastructure/#airflow) and [here](https://about.gitlab.com/handbook/business-technology/data-team/platform/dbt-guide/)
+There are [so many great examples](https://gitlab.com/gitlab-data/analytics/-/blob/master/dags/transformation/dbt_snowplow_backfill.py) from GitLab through their open source data engineering work. This is especially appropriate if you are well-versed in Kubernetes, CI/CD, and docker task management when building your airflow pipelines. If this is you and your team, you’re in good hands reading through more details [here](https://about.gitlab.com/handbook/business-technology/data-team/platform/infrastructure/#airflow) and [here](https://about.gitlab.com/handbook/business-technology/data-team/platform/dbt-guide/).
 
 ### Airflow + dbt Cloud API w/Custom Scripts
 
-This has served as a bridge until the fabled Astronomer + dbt Labs-built dbt Cloud provider became generally available: [here](https://registry.astronomer.io/providers/dbt-cloud?type=Sensors&utm_campaign=Monthly%20Product%20Updates&utm_medium=email&_hsmi=208603877&utm_content=208603877&utm_source=hs_email)
+This has served as a bridge until the fabled Astronomer + dbt Labs-built dbt Cloud provider became generally available [here](https://registry.astronomer.io/providers/dbt%20Cloud/versions/latest).
 
 There are many different permutations of this over time:
 
-- [Custom Python Scripts](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/archive/dbt_cloud_example.py): This is an airflow DAG based on custom python API utilities [here](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/archive/dbt_cloud_utils.py)
-- [Make API requests directly through the BashOperator based on the docs](https://docs.getdbt.com/dbt-cloud/api-v2#operation/triggerRun): You can make cURL requests to invoke dbt Cloud to do what you want
-- [Other ways to run dbt in airflow](https://docs.getdbt.com/docs/running-a-dbt-project/running-dbt-in-production/#using-airflow): Official dbt Docs on how teams are running dbt in airflow
+- [Custom Python Scripts](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/archive/dbt_cloud_example.py): This is an airflow DAG based on [custom python API utilities](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/archive/dbt_cloud_utils.py)
+- [Make API requests directly through the BashOperator based on the docs](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#operation/triggerRun): You can make cURL requests to invoke dbt Cloud to do what you want
+- For more options, check out the [official dbt Docs](/docs/deploy/deployments#airflow) on the various ways teams are running dbt in airflow
 
 ## This guide's process
 
@@ -48,7 +48,7 @@ While you’re learning the ropes, you’ll also gain a better understanding of 
 
 ### Prerequisites
 
-- [dbt Cloud Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](https://docs.getdbt.com/docs/collaborate/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
+- [dbt Cloud Teams or Enterprise account](https://www.getdbt.com/pricing/) (with [admin access](https://docs.getdbt.com/docs/cloud/manage-access/enterprise-permissions)) in order to create a service token. Permissions for service tokens can be found [here](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens#permissions-for-service-account-tokens).
 - A [free Docker account](https://hub.docker.com/signup) in order to sign in to Docker Desktop, which will be installed in the initial setup.
 - A local digital scratchpad for temporarily copy-pasting API keys and URLs
 

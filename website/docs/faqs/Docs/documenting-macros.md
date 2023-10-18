@@ -5,13 +5,11 @@ sidebar_label: 'Document macros'
 id: documenting-macros
 ---
 
-<Changelog>The `macros:` key is new in 0.16.0.</Changelog>
-
-To document macros, use a [schema file](macro-properties) and nest the configurations under a `macros:` key
+To document macros, use a [schema file](/reference/macro-properties) and nest the configurations under a `macros:` key
 
 ## Example
 
-<File name='models/schema.yml'>
+<File name='macros/schema.yml'>
 
 ```yml
 version: 2

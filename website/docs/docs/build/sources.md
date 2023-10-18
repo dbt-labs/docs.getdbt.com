@@ -1,14 +1,16 @@
 ---
-title: "Sources"
+title: "Add sources to your DAG"
+sidebar_label: "Sources"
+description: "Read this tutorial to learn how to use sources when building in dbt."
 id: "sources"
 search_weight: "heavy"
 ---
 
 ## Related reference docs
-* [Source properties](source-properties)
-* [Source configurations](source-configs)
+* [Source properties](/reference/source-properties)
+* [Source configurations](/reference/source-configs)
 * [`{{ source() }}` jinja function](/reference/dbt-jinja-functions/source)
-* [`source freshness` command](commands/source)
+* [`source freshness` command](/reference/commands/source)
 
 ## Using sources
 Sources make it possible to name and describe the data loaded into your warehouse by your Extract and Load tools. By declaring these tables as sources in dbt, you can then
@@ -27,6 +29,8 @@ version: 2
 
 sources:
   - name: jaffle_shop
+    database: raw  
+    schema: jaffle_shop  
     tables:
       - name: orders
       - name: customers
@@ -38,7 +42,9 @@ sources:
 
 </File>
 
-If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](configs-and-properties) before proceeding.
+*By default, `schema` will be the same as `name`. Add `schema` only if you want to use a source name that differs from the existing schema.
+
+If you're not already familiar with these files, be sure to check out [the documentation on schema.yml files](/reference/configs-and-properties) before proceeding.
 
 ### Selecting from a source
 
@@ -85,7 +91,7 @@ You can also:
 - Add tests to sources
 - Add descriptions to sources, that get rendered as part of your documentation site
 
-These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/tests) and [documentation](documentation)).
+These should be familiar concepts if you've already added tests and descriptions to your models (if not check out the guides on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation)).
 
 <File name='models/<filename>.yml'>
 
@@ -115,14 +121,14 @@ sources:
 
 </File>
 
-You can find more details on the available properties for sources in the [reference section](source-properties).
+You can find more details on the available properties for sources in the [reference section](/reference/source-properties).
 
 ### FAQs
-<FAQ src="Project/source-has-bad-name" />
-<FAQ src="Project/source-in-different-database" />
-<FAQ src="Models/source-quotes" />
-<FAQ src="Tests/testing-sources" />
-<FAQ src="Runs/running-models-downstream-of-source" />
+<FAQ path="Project/source-has-bad-name" />
+<FAQ path="Project/source-in-different-database" />
+<FAQ path="Models/source-quotes" />
+<FAQ path="Tests/testing-sources" />
+<FAQ path="Runs/running-models-downstream-of-source" />
 
 ## Snapshotting source data freshness
 With a couple of extra configs, dbt can optionally snapshot the "freshness" of the data in your source tables. This is useful for understanding if your data pipelines are in a healthy state, and is a critical component of defining SLAs for your warehouse.
@@ -162,16 +168,16 @@ In the `freshness` block, one or both of `warn_after` and `error_after` can be p
 
 Additionally, the `loaded_at_field` is required to calculate freshness for a table. If a `loaded_at_field` is not provided, then dbt will not calculate freshness for the table.
 
-These configs are applied hierarchically, so `freshness` and `loaded_at` field values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
+These configs are applied hierarchically, so `freshness` and `loaded_at_field` values specified for a `source` will flow through to all of the `tables` defined in that source. This is useful when all of the tables in a source have the same `loaded_at_field`, as the config can just be specified once in the top-level source definition.
 
 ### Checking source freshness
-To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](commands/source)):
+To snapshot freshness information for your sources, use the `dbt source freshness` command ([reference docs](/reference/commands/source)):
 
 ```
 $ dbt source freshness
 ```
 
-Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the logs.
+Behind the scenes, dbt uses the freshness properties to construct a `select` query, shown below. You can find this query in the [query logs](/faqs/runs/checking-logs).
 
 ```sql
 select
@@ -185,8 +191,19 @@ The results of this query are used to determine whether the source is fresh or n
 
 <Lightbox src="/img/docs/building-a-dbt-project/snapshot-freshness.png" title="Uh oh! Not everything is as fresh as we'd like!"/>
 
+### Filter
+
+Some databases can have tables where a filter over certain columns are required, in order prevent a full scan of the table, which could be costly. In order to do a freshness check on such tables a `filter` argument can be added to the configuration, e.g. `filter: _etl_loaded_at >= date_sub(current_date(), interval 1 day)`. For the example above, the resulting query would look like
+
+```sql
+select
+  max(_etl_loaded_at) as max_loaded_at,
+  convert_timezone('UTC', current_timestamp()) as snapshotted_at
+from raw.jaffle_shop.orders
+where _etl_loaded_at >= date_sub(current_date(), interval 1 day)
+```
 
 ### FAQs
-<FAQ src="Project/exclude-table-from-freshness" />
-<FAQ src="Snapshots/snapshotting-freshness-for-one-source" />
-<FAQ src="Project/dbt-source-freshness" />
+<FAQ path="Project/exclude-table-from-freshness" />
+<FAQ path="Snapshots/snapshotting-freshness-for-one-source" />
+<FAQ path="Project/dbt-source-freshness" />

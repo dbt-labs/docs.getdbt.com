@@ -1,4 +1,6 @@
 ---
+title: "Configuring quoting in sources"
+sidebar_label: "quoting"
 datatype: boolean # -ish, it's actually a dictionary of bools
 default: true
 ---

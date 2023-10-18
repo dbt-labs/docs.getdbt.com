@@ -13,7 +13,7 @@ The following section only applies to Snapshots running against Snowflake or Big
 
 :::
 
-When a [Snapshot](snapshots) is configured to use the `check` strategy, dbt will compare the specified `check_cols` between the source dataset and the snapshotted dataset to determine if a row in the Snapshot has changed. A logic error in the v0.14.0 release of dbt caused this strategy to fail if the values of the specified `check_cols` for a given row cycled back into a previously known state. Importantly, this issue only affects Snowflake and BigQuery due to their respective uses of the `merge` statement in Snapshots.
+When a [Snapshot](/docs/build/snapshots) is configured to use the `check` strategy, dbt will compare the specified `check_cols` between the source dataset and the snapshotted dataset to determine if a row in the Snapshot has changed. A logic error in the v0.14.0 release of dbt caused this strategy to fail if the values of the specified `check_cols` for a given row cycled back into a previously known state. Importantly, this issue only affects Snowflake and BigQuery due to their respective uses of the `merge` statement in Snapshots.
 
 In this failure mode, dbt would "finalize" existing records by setting a `dbt_valid_to` date for a changed record without correspondingly inserting a new record for the change. **In this state, the finalized records will no longer be tracked in the Snapshot <Term id="table" />**.
 

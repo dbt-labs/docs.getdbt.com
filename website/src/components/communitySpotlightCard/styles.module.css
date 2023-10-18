@@ -1,0 +1,106 @@
+.spotlightBreadcrumbs, [data-theme='dark'] .spotlightBreadcrumbs {
+  background: none !important;
+  padding: 0;
+}
+.spotlightBreadcrumbs > .spotlightBreadcrumbsContainer {
+  padding-left: 0;
+}
+.spotlightMemberCard {
+  display: flex;
+  flex-flow: row wrap;
+}
+header.spotlightMemberCard {
+  padding: 2rem 0 0;
+}
+div.spotlightMemberCard {
+  margin-bottom: 2.5rem;
+}
+.spotlightMemberCard .spotlightMemberImgContainer {
+  flex: 0 0 100%;
+}
+.spotlightMemberCard .spotlightMemberImgContainer img {
+  max-width: 346px;
+  width: 100%;
+  margin: 0 0 2rem;
+  display: block;
+}
+.spotlightMemberContent {
+  padding: 0;
+}
+.spotlightMemberContent .spotlightMemberHeader {
+  font-size: 2rem !important;
+  line-height: 2rem;
+  margin-top: 0 !important;
+  margin-bottom: .5rem !important;
+  color: #009999;
+  font-weight: 700;
+}
+[data-theme='dark'] .spotlightMemberContent .spotlightMemberHeader {
+  color: #fff;
+}
+
+.spotlightMemberContent .spotlightMemberHeaderContain {
+  border-top: 1px solid var(--color-nav-text);
+  margin-top: .5rem;
+  padding-top: .5rem;
+}
+.spotlightMemberContent .spotlightMemberPronouns {
+  font-size: 1rem;
+  display: block;
+}
+.spotlightMemberContent .spotlightMemberDescription {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+.spotlightMemberDescriptionFull {
+  margin-top: 1.5rem;
+}
+.spotlightMemberContent .spotlightMemberDescription, .spotlightMemberDescriptionFull .spotlightMemberDescription {
+  white-space: pre-line;
+}
+
+.spotlightMemberContent .spotlightMemberSocial {
+  margin-top: 1rem;  
+}
+
+.spotlightMemberContent .spotlightReadMore {
+  margin-top: 1rem;  
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.spotlightMemberContent .spotlightMemberInfo > span {
+  font-weight: 600;
+}
+
+@media (min-width: 778px) {
+  .spotlightMemberCard {
+    padding: 3rem 0;
+  }
+  :global(#spotlight-members-section) div.spotlightMemberCard {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  .spotlightMemberCard .spotlightMemberImgContainer {
+    flex: 0 0 346px;
+    margin-right: 2rem;
+  }
+  .spotlightMemberCard .spotlightMemberImgContainer img {
+    margin: 0;
+  }
+  .spotlightMemberContent {
+    flex: 0 0 calc(100% - 346px - 2rem);
+  }
+  .spotlightMemberContent .spotlightMemberHeader {
+    font-size: 2.813rem !important;
+    line-height: 2.5rem;
+  }
+  .spotlightMemberContent .spotlightMemberHeaderSmall {
+    font-size: 1.9rem !important;
+    line-height: 2rem;
+  }
+}
+
+
+
+

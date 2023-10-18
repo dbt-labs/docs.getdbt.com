@@ -1,7 +1,15 @@
 ---
-title: "statement blocks"
+title: "About statement blocks"
+sidebar_label: "statement blocks"
 id: "statement-blocks"
+description: "SQL queries that hit database and return results to your jinja context."
 ---
+
+:::tip Recommendation
+
+We recommend using the [`run_query` macro](/reference/dbt-jinja-functions/run_query) instead of `statement` blocks. The `run_query` macro provides a more convenient way to run queries and fetch their results by wrapping `statement` blocks. You can use this macro to write more concise code that is easier to maintain.
+
+:::
 
 `statement`s are sql queries that hit the database and return results to your Jinja context. Here’s an example of a `statement` which gets all of the states from a users <Term id="table" />.
 
@@ -29,15 +37,9 @@ __Args__:
  - `auto_begin` (bool): If True, open a transaction if one does not exist. If false, do not open a transaction.
 
 Once the statement block has executed, the result set is accessible via the `load_result` function. The result object includes three keys:
-- `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](dbt-classes#result-objects).
+- `response`: Structured object containing metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Comparable to `adapter_response` in the [Result object](/reference/dbt-classes#result-objects).
 - `data`: Pythonic representation of data returned by query (arrays, tuples, dictionaries).
 - `table`: [Agate](https://agate.readthedocs.io/page/api/table.html) table representation of data returned by query.
-
-<Changelog>
-
-* `v0.19.0`: The `response` structured object replaced a `status` string that contained similar information.
-
-</Changelog>
 
 For the above statement, that could look like:
 
@@ -67,11 +69,3 @@ The contents of the returned `data` field is a matrix. It contains a list rows, 
 ```
 
 </File>
-
-
-
-:::danger Volatile API
-
-While the `statement` and `load_result` setup works for now, we intend to improve this interface in the future. If you have questions or suggestions, please let us know in GitHub or on Slack.
-
-:::

@@ -1,9 +1,9 @@
 ---
-title: "dbt_version"
+title: "About dbt_version variable"
+sidebar_label: "dbt_version"
 id: "dbt_version"
+description: "Read this guide to understand the dbt_version Jinja function in dbt."
 ---
-
-<Changelog>New in 0.16.0</Changelog>
 
 The `dbt_version` variable returns the installed version of dbt that is
 currently running. It can be used for debugging or auditing purposes.

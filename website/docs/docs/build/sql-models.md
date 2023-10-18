@@ -1,19 +1,20 @@
 ---
 title: "SQL models"
+description: "Read this tutorial to learn how to use SQL models when building in dbt."
 id: "sql-models"
 ---
 
 ## Related reference docs
-* [Model configurations](model-configs)
-* [Model properties](model-properties)
-* [`run` command](run)
-* [`ref` function](ref)
+* [Model configurations](/reference/model-configs)
+* [Model properties](/reference/model-properties)
+* [`run` command](/reference/commands/run)
+* [`ref` function](/reference/dbt-jinja-functions/ref)
 
 ## Getting started
 
 :::info Building your first models
 
-If you're new to dbt, we recommend that you read the [Getting Started guide](/docs/get-started/getting-started/overview) to build your first dbt project with models.
+If you're new to dbt, we recommend that you read a [quickstart guide](/quickstarts) to build your first dbt project with models.
 
 :::
 
@@ -21,7 +22,7 @@ If you're new to dbt, we recommend that you read the [Getting Started guide](/do
 
 Starting in v1.3, dbt Core adds support for **Python models**.
 
-dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](python-models)
+dbt's Python capabilities are an extension of its capabilities with SQL models. If you're new to dbt, we recommend that you read this page first, before reading: ["Python Models"](/docs/building-a-dbt-project/building-models/python-models)
 
 </VersionBlock>
 
@@ -30,7 +31,7 @@ A SQL model is a `select` statement. Models are defined in `.sql` files (typical
 - The model name is inherited from the filename.
 - Models can be nested in subdirectories within the `models` directory
 
-When you execute the [`dbt run` command](run), dbt will build this model <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
+When you execute the [`dbt run` command](/reference/commands/run), dbt will build this model <Term id="data-warehouse" /> by wrapping it in a `create view as` or `create table as` statement.
 
 For example, consider this `customers` model:
 
@@ -102,18 +103,18 @@ Why a _view_ named `dbt_alice.customers`? By default dbt will:
 You can use _configurations_ to change any of these behaviors — more on that later.
 
 ### FAQs
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
-<FAQ src="Models/sql-dialect" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
+<FAQ path="Models/sql-dialect" />
 
 ## Configuring models
 Configurations are "model settings"  that can be set in your `dbt_project.yml` file, _and_ in your model file using a `config` block. Some example configurations include:
 
-* Changing the <Term id="materialization" /> that a model uses &mdash; a [materialization](materializations) determines the SQL that dbt uses to create the model in your warehouse.
+* Changing the <Term id="materialization" /> that a model uses &mdash; a [materialization](/docs/build/materializations) determines the SQL that dbt uses to create the model in your warehouse.
 * Build models into separate [schemas](/docs/build/custom-schemas).
-* Apply [tags](resource-configs/tags) to a model.
+* Apply [tags](/reference/resource-configs/tags) to a model.
 
 Here's an example of model configuration:
 
@@ -154,15 +155,15 @@ with customer_orders as ...
 
 It is important to note that configurations are applied hierarchically — a configuration applied to a subdirectory will override any general configurations.
 
-You can learn more about configurations in the [reference docs](model-configs).
+You can learn more about configurations in the [reference docs](/reference/model-configs).
 
 ### FAQs
-<FAQ src="Models/available-materializations" />
-<FAQ src="Models/available-configurations" />
+<FAQ path="Models/available-materializations" />
+<FAQ path="Models/available-configurations" />
 
 
 ## Building dependencies between models
-You can build dependencies between models by using the [`ref` function](ref) in place of table names in a query. Use the name of another model as the argument for `ref`.
+You can build dependencies between models by using the [`ref` function](/reference/dbt-jinja-functions/ref) in place of table names in a query. Use the name of another model as the argument for `ref`.
 
 <Tabs
   defaultValue="model"
@@ -264,12 +265,12 @@ Additionally, the `ref` function encourages you to write modular transformations
 You can also document and test models &mdash; skip ahead to the section on [testing](/docs/build/tests) and [documentation](/docs/collaborate/documentation) for more information.
 
 ## Additional FAQs
-<FAQ src="Project/example-projects" alt_header="Are there any example dbt models?" />
-<FAQ src="Models/configurable-model-path" />
-<FAQ src="Models/model-custom-schemas" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Models/removing-deleted-models" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
-<FAQ src="Models/insert-records" />
-<FAQ src="Project/why-not-write-dml" />
-<FAQ src="Models/specifying-column-types" />
+<FAQ path="Project/example-projects" alt_header="Are there any example dbt models?" />
+<FAQ path="Models/configurable-model-path" />
+<FAQ path="Models/model-custom-schemas" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Models/removing-deleted-models" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Models/insert-records" />
+<FAQ path="Project/why-not-write-dml" />
+<FAQ path="Models/specifying-column-types" />

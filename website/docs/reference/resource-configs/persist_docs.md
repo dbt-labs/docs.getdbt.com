@@ -1,5 +1,6 @@
 ---
 id: "persist_docs"
+description: "Persist_docs - Read this in-depth guide to learn about configurations in dbt."
 datatype: Dict[Str, Bool]
 ---
 
@@ -20,7 +21,7 @@ datatype: Dict[Str, Bool]
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -57,7 +58,7 @@ This config is not implemented for sources.
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -74,7 +75,7 @@ seeds:
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +persist_docs:
       relation: true
       columns: true
@@ -106,17 +107,10 @@ select ...
 
 ## Definition
 
-Optionally persist [resource descriptions](resource-properties/description) as
+Optionally persist [resource descriptions](/reference/resource-properties/description) as
 column and relation comments in the database. By default, documentation
 persistence is disabled, but it can be enabled for specific resources or groups of
 resources as needed.
-
-<Changelog>
-
- - Support for this config on Redshift, Postgres, and Snowflake is new in 0.17.0
- - Support for column-level docs persistence is new for all databases in 0.17.0
-
-</Changelog>
 
 ## Support
 
@@ -125,7 +119,8 @@ The `persist_docs` config is supported on the most widely used dbt adapters:
 - Redshift
 - Snowflake
 - BigQuery
-- Apache Spark & Databricks
+- Databricks 
+- Apache Spark
 
 However, some databases limit where and how descriptions can be added to database objects. Those database adapters might not support `persist_docs`, or might offer only partial support.
 
@@ -138,6 +133,7 @@ Some known issues and limitations:
 - Column-level comments require `file_format: delta` (or another "v2 file format")
 - Column-level comments aren't supported for models materialized as <Term id="view">views</Term> ([issue](https://github.com/dbt-labs/dbt-spark/issues/372))
 
+
 </div>
 
 <div warehouse="Snowflake">
@@ -145,18 +141,6 @@ Some known issues and limitations:
 <VersionBlock firstVersion="1.2">
 
 - No known issues
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.0" lastVersion="1.1">
-
-- Column names that must be quoted, such as column names containing special characters, will cause runtime errors if column-level `persist_docs` is enabled. This is fixed in v1.2.
-
-</VersionBlock>
-
-<VersionBlock lastVersion="0.21">
-
-- Column-level comments aren't supported for models materialized as <Term id="view">views</Term>
 
 </VersionBlock>
 
@@ -168,7 +152,7 @@ Some known issues and limitations:
 
 ### Documenting columns and relations
 
-Supply a [description](resource-properties/description) for a model:
+Supply a [description](/reference/resource-properties/description) for a model:
 
 <File name='models/schema.yml'>
 

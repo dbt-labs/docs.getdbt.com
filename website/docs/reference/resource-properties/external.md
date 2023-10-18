@@ -36,6 +36,6 @@ the Hive external <Term id="table" /> spec. You may define and use as many addit
 
 You may wish to define the `external` property in order to:
 - Power macros that introspect [`graph.sources`](/reference/dbt-jinja-functions/graph)
-- Define metadata that you can later extract from the [manifest](manifest-json)
+- Define metadata that you can later extract from the [manifest](/reference/artifacts/manifest-json)
 
 For an example of how this property can be used to power custom workflows, see the [`dbt-external-tables`](https://github.com/dbt-labs/dbt-external-tables) package.

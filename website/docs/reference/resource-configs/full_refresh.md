@@ -1,5 +1,6 @@
 ---
 resource_types: [models, seeds]
+description: "Full_Refresh - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 ---
 
@@ -17,7 +18,7 @@ datatype: boolean
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +full_refresh: false
 
 ```
@@ -48,7 +49,7 @@ The configured model(s) will not full-refresh when `dbt run --full-refresh` is i
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +full_refresh: false
 
 ```
@@ -84,7 +85,7 @@ This logic is encoded in the [`should_full_refresh()`](https://github.com/dbt-la
 
 ### Seeds
 
-<FAQ src="Seeds/full-refresh-seed" />
+<FAQ path="Seeds/full-refresh-seed" />
 
 ## Recommendation
 Set `full_refresh: false` for models of especially large datasets, which you would _never_ want dbt to fully drop and recreate.

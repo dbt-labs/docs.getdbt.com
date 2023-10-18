@@ -63,7 +63,7 @@ If you're struggling to do all the cleaning on your own, remember that dbt packa
 Enriching your data means enhancing it by supplementing incomplete or missing data. This could involve basic case or coalesce statements that use an already existing column in order to produce a new column. It could also look like joining an already existing date column with a date table that contains more extensive information about a certain date. Keep in mind that you don’t want to go overboard with enriching or joining here—you only want to add what will be repeatedly used in modeling and analysis.
 
 :::tip Python for enrichment?
-With the new capability of [Python in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models), will folks start using Python to help enrich their data? Only time will tell, but we’re eager to hear how you want to be using Python in dbt. Please join the [#dbt-core-python-models channel](https://www.getdbt.com/community/join-the-community/) to join in on the discussions happening around them.
+With the new capability of [Python in dbt](/docs/build/python-models), will folks start using Python to help enrich their data? Only time will tell, but we’re eager to hear how you want to be using Python in dbt. Please join the [#dbt-core-python-models channel](https://www.getdbt.com/community/join-the-community/) to join in on the discussions happening around them.
 :::
 
 ### Validating
@@ -151,7 +151,7 @@ For nested data types such as JSON, you’ll want to check out the JSON parsing 
 
 ### Validating
 
-dbt offers [generic tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests#more-generic-tests) in every dbt project that allows you to validate accepted, unique, and null values. They also allow you to validate the relationships between tables and that the primary key is unique.
+dbt offers [generic tests](/docs/build/tests#more-generic-tests) in every dbt project that allows you to validate accepted, unique, and null values. They also allow you to validate the relationships between tables and that the primary key is unique.
 
 If you can’t find what you need with the generic tests, you can download an additional dbt testing package called [dbt_expectations](https://hub.getdbt.com/calogica/dbt_expectations/0.1.2/) that dives even deeper into how you can test the values in your columns. This package has useful tests like `expect_column_values_to_be_in_type_list`, `expect_column_values_to_be_between`, and `expect_column_value_lengths_to_equal`. 
 

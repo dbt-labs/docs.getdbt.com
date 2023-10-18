@@ -1,123 +1,15 @@
-name: Add PR to project
+name: Add to projects
+
 on:
   pull_request_target:
-    types: [opened,reopened]
+   types: [opened, reopened]
 
 jobs:
-  track_pr:
+  add-to-project:
+    name: Add pr to project
     runs-on: ubuntu-latest
-
     steps:
-      - uses: octokit/graphql-action@v2.x
-        name: Get project data
-        id: get_project_info          
+      - uses: actions/add-to-project@v0.5.0
         with:
-          query: |
-            query($org: String!, $number: Int!) {
-              organization(login: $org){
-                projectNext(number: $number) {
-                  id
-                  fields(first:20) {
-                    nodes {
-                      id
-                      name
-                      settings
-                    }
-                  }
-                }
-              }
-            }
-          org: 'dbt-labs'
-          number: 14
-          headers: 'GraphQL-Features: projects_next_graphql'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
-
-      - uses: octokit/graphql-action@v2.x
-        name: Add PR to Project
-        id: add_pr
-        with:
-          query: |
-            mutation($project:ID!, $pr:ID!) {
-                addProjectNextItem(input: {projectId: $project, contentId: $pr}) {
-                  projectNextItem {
-                    id
-                  }
-                }
-              }
-          project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
-          pr: ${{ github.event.pull_request.node_id}}
-          headers: 'GraphQL-Features: projects_next_graphql'
-        env:
-          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
-
-      - name: create-json
-        id: create-json
-        uses: jsdaniell/create-json@1.1.2
-        with:
-          name: "data.json"
-          json: ${{ steps.get_project_info.outputs.data }}
-
-      - name: Extract date field ID
-        uses: sergeysova/jq-action@v2
-        id: date_field_id
-        with:
-          cmd: 
-            jq '.organization.projectNext.fields.nodes[] | select(.name == "Date") | .id' data.json
-
-      - name: Extract status field ID
-        uses: sergeysova/jq-action@v2
-        id: status_field_id
-        with:
-          cmd: 
-            jq '.organization.projectNext.fields.nodes[] | select(.name == "Status") | .id' data.json
-
-      - name: Extract status field value
-        uses: sergeysova/jq-action@v2
-        id: status_field_value
-        with:
-          cmd: 
-            jq '.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Triage") |.id' data.json
-
-      - name: Set fields
-        id: set_fields
-        uses: octokit/graphql-action@v2.x  
-        with:
-          query: |
-            mutation (
-              $project: ID!
-              $item: ID!
-              $status_field: ID!
-              $status_value: String!
-              $date_field: ID!
-              $date_value: String!
-            ) {
-              set_status: updateProjectNextItemField(input: {
-                projectId: $project
-                itemId: $item
-                fieldId: $status_field
-                value: $status_value
-              }) {
-                projectNextItem {
-                  id
-                  }
-              }
-              set_date_posted: updateProjectNextItemField(input: {
-                projectId: $project
-                itemId: $item
-                fieldId: $date_field
-                value: $date_value
-              }) {
-                projectNextItem {
-                  id
-                }
-              }
-            }
-          GITHUB_TOKEN: ${{ secrets.PROJECT_NEXT }}
-          project: ${{ fromJSON(steps.get_project_info.outputs.data).organization.projectNext.id }}
-          headers: 'GraphQL-Features: projects_next_graphql'
-          item: ${{ fromJSON(steps.add_pr.outputs.data).addProjectNextItem.projectNextItem.id }}
-          status_field: ${{ steps.status_field_id.outputs.value }}
-          status_value: ${{ steps.status_field_value.outputs.value }}
-          date_field: ${{ steps.date_field_id.outputs.value }}
-          date_value: ${{ github.event.pull_request.created_at }}
+          project-url: https://github.com/orgs/dbt-labs/projects/37
+          github-token: ${{ secrets.DOCS_SECRET }}

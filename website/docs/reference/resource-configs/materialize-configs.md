@@ -1,5 +1,6 @@
 ---
 title: "Materialize configurations"
+description: "Materialize Configurations- Read this in-depth guide to learn about configurations in dbt."
 id: "materialize-configs"
 ---
 
@@ -7,13 +8,11 @@ id: "materialize-configs"
 
 ### Clusters
 
-<Changelog>
 
-- **v1.2.0:** Enable the configuration of [clusters](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize/CHANGELOG.md#120---2022-08-31).
+Enable the configuration of [clusters](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize/CHANGELOG.md#120---2022-08-31).
 
-</Changelog>
 
-The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that is used to maintain materialized views or indexes can be configured in your [profile](/reference/profiles.yml) using the `cluster` connection parameter. To override the cluster that is used for specific models (or groups of models), use the `cluster` configuration parameter.
+The default [cluster](https://materialize.com/docs/overview/key-concepts/#clusters) that is used to maintain materialized views or indexes can be configured in your [profile](/docs/core/connect-data-platform/profiles.yml) using the `cluster` connection parameter. To override the cluster that is used for specific models (or groups of models), use the `cluster` configuration parameter.
 
 <File name='my_view_cluster.sql'>
 
@@ -44,11 +43,7 @@ Materialize, at its core, is a real-time database that delivers incremental view
 
 ### Indexes
 
-<Changelog>
-
-- **v1.2.0:** Enable additional configuration for [indexes](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize/CHANGELOG.md#120---2022-08-31).
-
-</Changelog>
+Enable additional configuration for [indexes](https://github.com/MaterializeInc/materialize/blob/main/misc/dbt-materialize/CHANGELOG.md#120---2022-08-31).
 
 Like in any standard relational database, you can use [indexes](https://materialize.com/docs/overview/key-concepts/#indexes) to optimize query performance in Materialize. Improvements can be significant, reducing response times down to single-digit milliseconds.
 
@@ -84,14 +79,7 @@ select ...
 
 ### Tests
 
-<Changelog>
-
-- **v1.1.1:** Provide support for storing the results of a test query in a materialized view, using the `store_failures` config.
-
-</Changelog>
-
-If you set the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures), dbt will create a materialized view using the test query. This view is a continuously updating representation of failures.
-
+If you set the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures), dbt will create a materialized view for each configured test that can keep track of failures over time. By default, test views are created in a schema suffixed with `dbt_test__audit`. To specify a custom suffix, use the `schema` config.
 <File name='dbt_project.yml'>
 
 ```yaml

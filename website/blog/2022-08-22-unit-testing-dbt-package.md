@@ -12,7 +12,7 @@ is_featured: true
 
 _Editors note - this post assumes working knowledge of dbt Package development. For an introduction to dbt Packages check out [So You Want to Build a dbt Package](https://docs.getdbt.com/blog/so-you-want-to-build-a-package)._
 
-It’s important to be able to test any dbt Project, but it’s even more important to make sure you have robust testing if you are developing a [dbt Package](https://docs.getdbt.com/docs/building-a-dbt-project/package-management).
+It’s important to be able to test any dbt Project, but it’s even more important to make sure you have robust testing if you are developing a [dbt Package](https://docs.getdbt.com/docs/build/packages).
 
 I love dbt Packages, because it makes it easy to extend dbt’s functionality and create reusable analytics resources. Even better, we can find and share dbt Packages which others developed, finding great packages in [dbt hub](https://hub.getdbt.com/). However, it is a bit difficult to develop complicated dbt macros, because dbt on top of [Jinja2](https://palletsprojects.com/p/jinja/) is lacking some of the functionality you’d expect for software development - like unit testing.
 
@@ -109,9 +109,9 @@ Your dbt Package may support multiple adapters. If you are a postgres user, you 
 
 {% endmacro %}
 
-{% macro postgress__to_literal(text) %}
+{% macro postgres__to_literal(text) %}
 
-    '{{- text -}}'
+    E'{{- text -}}'
 
 {% endmacro %}
 ```

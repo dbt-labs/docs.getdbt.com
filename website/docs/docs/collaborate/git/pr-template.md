@@ -2,16 +2,21 @@
 title: "PR template"
 id: "pr-template"
 ---
-
 ## Configure pull request (PR) template URLs
 
 When changes are committed on a branch in the IDE, dbt Cloud can prompt users to
 open a new Pull Request for the code changes. To enable this functionality, ensure
 that a PR Template URL is configured in the Repository details page in your
-Account Settings. **Note:** If this template URL is unset, then the IDE will
-instead show a prompt to merge the changes directly into the `master` branch.
+Account Settings. If this setting is blank, the IDE will prompt users to merge the changes directly into their default branch.
 
 <Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/configure-template-url-new-ide.png" title="Open a PR in the IDE"/>
+
+### PR Template URL by git provider
+
+The PR Template URL setting will be automatically set for most repositories, depending on the connection method.
+
+- If you connect to your repository via in-app integrations with your git provider or the "Git Clone" method via SSH, this URL setting will be auto-populated and editable.
+ - If you connect via a dbt Cloud [Managed repository](/docs/collaborate/git/managed-repository), this URL will not be set, and the IDE will prompt users to merge the changes directly into their default branch.
 
 The PR template URL supports two variables which can be used to build a URL string.
 These variables, `{{source}}` and `{{destination}}` return branch names based on the
@@ -44,14 +49,6 @@ https://github.com/dbt-labs/jaffle_shop/compare/master..my-branch
 </TabItem>
 </Tabs>
 
-## Configure custom branches
-
-By default in Development Environments, dbt Cloud attempts to reference the `main` branch in connected repositories. If you want to use a different default branch name, you can configure dbt Cloud with a custom branch setting.
-
-For example, you can use the `develop` branch of a connected repository. Edit an environment, then in "General settings" select  **Only run on a custom branch** , and in "Custom branch" type **develop** or the name of your custom branch.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-configuring-dbt-cloud/dev-environment-custom-branch.png" title="Configuring a custom base repository branch"/>
-
 ## Example templates
 
 Some common URL templates are provided below, but please note that the exact
@@ -75,7 +72,7 @@ https://gitlab.com/<org>/<repo>/-/merge_requests/new?merge_request[source_branch
 
 ### BitBucket
 ```
-https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}
+https://bitbucket.org/<org>/<repo>/pull-requests/new?source={{source}}&dest={{destination}}
 ```
 
 ### AWS CodeCommit

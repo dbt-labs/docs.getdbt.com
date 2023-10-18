@@ -1,11 +1,13 @@
 ---
-title: "Seeds"
+title: "Add Seeds to your DAG"
+sidebar_label: "Seeds"
+description: "Read this tutorial to learn how to use seeds when building in dbt."
 id: "seeds"
 ---
 ## Related reference docs
-* [Seed configurations](seed-configs)
-* [Seed properties](seed-properties)
-* [`seed` command](seed)
+* [Seed configurations](/reference/seed-configs)
+* [Seed properties](/reference/seed-properties)
+* [`seed` command](/docs/build/seeds)
 
 ## Overview
 Seeds are CSV files in your dbt project (typically in your `seeds` directory), that dbt can load into your <Term id="data-warehouse" /> using the `dbt seed` command.
@@ -41,7 +43,7 @@ GB,United Kingdom
 
 </File>
 
-2. Run the `dbt seed` [command](seed) command — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
+2. Run the `dbt seed` [command](/reference/commands/seed) — a new <Term id="table" /> will be created in your warehouse in your target schema, named `country_codes`
 ```
 $ dbt seed
 
@@ -75,15 +77,15 @@ Seeds are configured in your `dbt_project.yml`, check out the [seed configuratio
 
 
 ## Documenting and testing seeds
-You can document and test seeds in yaml by declaring properties — check out the docs on [seed properties](seed-properties) for more information.
+You can document and test seeds in YAML by declaring properties — check out the docs on [seed properties](/reference/seed-properties) for more information.
 
 ## FAQs
-<FAQ src="Seeds/load-raw-data-with-seed" />
-<FAQ src="Tests/configurable-data-path" />
-<FAQ src="Seeds/full-refresh-seed" />
-<FAQ src="Tests/testing-seeds" />
-<FAQ src="Seeds/seed-datatypes" />
-<FAQ src="Runs/run-downstream-of-seed" />
-<FAQ src="Seeds/leading-zeros-in-seed" />
-<FAQ src="Seeds/build-one-seed" />
-<FAQ src="Seeds/seed-hooks" />
+<FAQ path="Seeds/load-raw-data-with-seed" />
+<FAQ path="Tests/configurable-data-path" />
+<FAQ path="Seeds/full-refresh-seed" />
+<FAQ path="Tests/testing-seeds" />
+<FAQ path="Seeds/seed-datatypes" />
+<FAQ path="Runs/run-downstream-of-seed" />
+<FAQ path="Seeds/leading-zeros-in-seed" />
+<FAQ path="Seeds/build-one-seed" />
+<FAQ path="Seeds/seed-hooks" />

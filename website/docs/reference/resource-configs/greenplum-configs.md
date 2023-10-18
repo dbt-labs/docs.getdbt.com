@@ -1,5 +1,6 @@
 ---
 title: "Greenplum configurations"
+description: "Greenplum Configurations - Read this in-depth guide to learn about configurations in dbt."
 id: "greenplum-configs"
 ---
 

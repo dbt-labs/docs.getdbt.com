@@ -23,7 +23,7 @@ See the docs below for more details. We don't expect these to require action in 
 
 #### Deprecations
 
-Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](config-version) and the [v0.17.0 Migration Guide](/guides/migration/versions) for details.
+Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](/reference/project-configs/config-version) and the [v0.17.0 Migration Guide](/guides/migration/versions) for details.
 
 ### For dbt plugin maintainers
 
@@ -42,22 +42,22 @@ See [dbt#2961](https://github.com/dbt-labs/dbt-core/pull/2961) for full implemen
 ## New and changed documentation
 
 ### Core
-- [dbt Artifacts](dbt-artifacts): The <Term id="json" /> artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume and more clearly documented.
-- [dbt Classes](dbt-classes#result-objects), [on-run-end Context](on-run-end-context#results): The `Result` object has a new schema, in line with changes to `run_results.json`.
-- [Statement blocks](statement-blocks): The `call statement` result `status` string is now a structured object named `response`.
-- [Snapshots](snapshots#invalidate_hard_deletes): If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.
-- [YAML selectors](yaml-selectors) support a `description` property and record their expanded dictionary representations in the manifest.
-- [Modules](modules): The regex python module, `re`, is available in dbt's Jinja context.
-- [parse](parse): New command to parse a dbt project and write detailed timing info.
+- [dbt Artifacts](/docs/deploy/artifacts): The <Term id="json" /> artifacts produced by dbt—manifest, catalog, run results, and sources—are simpler to consume and more clearly documented.
+- [dbt Classes](/reference/dbt-classes#result-objects), [on-run-end Context](/reference/dbt-jinja-functions/on-run-end-context#results): The `Result` object has a new schema, in line with changes to `run_results.json`.
+- [Statement blocks](/reference/dbt-jinja-functions/statement-blocks): The `call statement` result `status` string is now a structured object named `response`.
+- [Snapshots](/docs/build/snapshots#snapshot-configurations): If the config `invalidate_hard_deletes` is enabled, `dbt snapshot` will update records whose unique key no longer exist in the snapshot query. Should those uniquely identified records "revive," `dbt snapshot` will re-add them.
+- [YAML selectors](/reference/node-selection/yaml-selectors) support a `description` property and record their expanded dictionary representations in the manifest.
+- [Modules](/reference/dbt-jinja-functions/modules): The regex python module, `re`, is available in dbt's Jinja context.
+- [parse](/reference/commands/parse): New command to parse a dbt project and write detailed timing info.
 
 #### State
-- [Understanding state](understanding-state): New docs outlining the conceptual background of state-informed runs, as well as the [known caveats](state-comparison-caveats) for state comparison. In v0.19.0, dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based configurations in `dbt_project`.
-- [Defer](defer) has changed: Instead of deferring all unselected node references, dbt now defers an unselected node reference _if and only if_ it does not exist in the current environment. Tests can defer their upstream references as well. This better supports the "Slim CI" use case by addressing the current environment's resources across `seed`, `run`, and `test` steps.
-- [RPC](rpc): Added `state` and `defer` as arguments to RPC methods for which it is supported on the CLI.
+- [About state](/reference/node-selection/syntax#about-node-selection): New docs outlining the conceptual background of state-informed runs, as well as the [known caveats](/reference/node-selection/state-comparison-caveats) for state comparison. In v0.19.0, dbt is a little bit smarter at identifying `state:modified` "false positives" that previously resulted from env-based configurations in `dbt_project`.
+- [Defer](/reference/node-selection/defer) has changed: Instead of deferring all unselected node references, dbt now defers an unselected node reference _if and only if_ it does not exist in the current environment. Tests can defer their upstream references as well. This better supports the "Slim CI" use case by addressing the current environment's resources across `seed`, `run`, and `test` steps.
+- [RPC](/reference/commands/rpc): Added `state` and `defer` as arguments to RPC methods for which it is supported on the CLI.
 
 ### BigQuery
-- [BigQuery profile](/reference/warehouse-setups/bigquery-setup): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
-- [Hourly, monthly and yearly partitions](bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize models as tables partitioned by hour, month, or year.
+- [BigQuery profile](/docs/core/connect-data-platform/bigquery-setup): dbt can connect via OAuth tokens (one-time or refresh), and it can use the default project when connecting via `gcloud` oauth.
+- [Hourly, monthly and yearly partitions](/reference/resource-configs/bigquery-configs#partitioning-by-a-date-or-timestamp): With a new `granularity` attribute of the `partition_by` config, dbt can materialize models as tables partitioned by hour, month, or year.
 
 ### Spark
-- [Spark profile](/reference/warehouse-setups/spark-setup): The `thrift` and `http` connection methods require installation of a `PyHive` extra.
+- [Spark profile](/docs/core/connect-data-platform/spark-setup): The `thrift` and `http` connection methods require installation of a `PyHive` extra.

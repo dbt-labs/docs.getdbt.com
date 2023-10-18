@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.css';
 
-function LoomVideo({children, id}) {
+function LoomVideo({id}) {
   return (
     <div style={{"margin": "40px 10px"}}>
         <div className={styles.loomWrapper}>

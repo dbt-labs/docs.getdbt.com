@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import BlogLayout from '@theme/BlogLayout';
 import getAllPosts from '../../utils/get-all-posts';
+import imageCacheWrapper from '../../../functions/image-cache-wrapper';
 
 function Author(props) {
   const { authorData } = props
@@ -24,7 +25,7 @@ function Author(props) {
   )
 
   return (
-    <BlogLayout blogPageTitle={name}>
+    <BlogLayout title={name}>
       <Head>
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={`${name} - ${blogData && blogData.blogTitle && blogData.blogTitle}`} />
@@ -38,7 +39,7 @@ function Author(props) {
         itemType="http://schema.org/Person">
         <section className="author-header row align-items-center">
           <div className="author-header-left">
-            <img src={image_url} alt={name} itemProp="image" />
+            <img src={imageCacheWrapper(image_url)} alt={name} itemProp="image" />
           </div>
           <div className="author-header-right">
             <h1 itemProp="name">{name}</h1>
@@ -53,6 +54,7 @@ function Author(props) {
                     href={link.url} 
                     title={`${name} - Social`} 
                     target="_blank"
+                    rel="noopener noreferrer"
                     key={i}
                   >
                     <i className={`fab ${link.icon}`}></i>
@@ -75,13 +77,13 @@ function Author(props) {
 }
 
 // Author Posts component
-function AuthorPosts({posts, siteImg}) {
+function AuthorPosts({posts}) {
   return (
     <section className="author-posts-section">
       <h2>Author Posts</h2>
       <div className="row author-posts">
         {posts.map((post, i) => {
-          const { authors, date, formattedDate, permalink, title, description } = post
+          const { permalink, title, description } = post
           return (
             <div className="author-post" key={i}>
               <Link to={permalink}>

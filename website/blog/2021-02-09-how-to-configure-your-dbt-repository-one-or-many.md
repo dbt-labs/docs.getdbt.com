@@ -60,7 +60,7 @@ This is the most common structure we see for dbt repository configuration. Thoug
 **Strengths**
 
 *   Easy to share and maintain the same core business logic
-*   Full dependency <Term id="data-lineage">lineage</Term> - your dbt generated DAG encompasses all of your data transformations for your entire company
+*   Full dependency <Term id="data-lineage">lineage</Term> - your dbt generated DAG encompasses all of your [data transformations](https://www.getdbt.com/analytics-engineering/transformation/) for your entire company
 
 **Weaknesses**
 
@@ -80,7 +80,7 @@ This is our most time tested option and our most recommended. However, we have s
 
 ![separate repository](/img/blog/monorepo-3d6f91c1ab275d953417d2239f66e8f81bad7078_2_600x217.png)
 
-This is one of the first structures we see people move toward when they “outgrow” the mono repo: there is one “core” repository that is incorporated into team specific repositories as a package. If you aren’t familiar with packages, [see the documentation](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/) for more information.
+This is one of the first structures we see people move toward when they “outgrow” the mono repo: there is one “core” repository that is incorporated into team specific repositories as a package. If you aren’t familiar with packages, [see the documentation](https://docs.getdbt.com/docs/build/packages/) for more information.
 
 How would the above function? While each team would work in their own repository, they would put shared items into the shared repository which is then installed in as a package to their repository. Some common things to put into that shared repository would be:
 
@@ -106,7 +106,7 @@ What doesn’t go into that shared repository?
 *   Maintaining downstream dependencies of macros and models. There is a need to create a CI/CD process that assures changes in the shared repository will not negatively impact the downstream repositories. It’s possible that you will have to introduce [semantic versioning](https://en.wikipedia.org/wiki/Software_versioning) to mitigate miscommunication about breaking changes.
 *   Incomplete lineage/documentation for objects not the shared repository
 
-This is the option I recommend the most when one must stray away from Option 2. This follows our [dbt viewpoint](https://docs.getdbt.com/docs/about/viewpoint/#analytics-is-collaborative) the best in terms of dry code and collaboration as opposed to Option 3 & 4.
+This is the option I recommend the most when one must stray away from Option 2. This follows our [dbt viewpoint](/community/resources/viewpoint#analytics-is-collaborative) the best in terms of dry code and collaboration as opposed to Option 3 & 4.
 
 ## Option 3: Completely Separate Repositories
 ------------------------------------------------------------------------------------------
@@ -159,4 +159,4 @@ All of the above configurations “work”. And as detailed, they each solve for
 2.  Figure out what may be a pain point in the future and try to plan for it from the beginning.
 3.  Don’t over-complicate things until you have the right reason. As I said in my Coalesce talk: **don’t drag your skeletons from one closet to another** 💀!
 
-**Note:** Our attempt in writing guides like this and [How we structure our dbt projects](/blog/how-we-structure-our-dbt-projects) aren’t to try to convince you that our way is right; it is to hopefully save you the hundreds of hours it has taken us to form those opinions!
+**Note:** Our attempt in writing guides like this and [How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview) aren’t to try to convince you that our way is right; it is to hopefully save you the hundreds of hours it has taken us to form those opinions!

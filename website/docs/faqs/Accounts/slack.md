@@ -5,4 +5,4 @@ sidebar_label: 'How to set up Slack'
 id: slack
 ---
 
-<Snippet src="slack-notifications-config-steps" />
+<Snippet path="slack-notifications-config-steps" />

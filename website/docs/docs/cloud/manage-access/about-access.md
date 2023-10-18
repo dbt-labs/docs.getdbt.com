@@ -1,0 +1,156 @@
+---
+title: "About user access in dbt Cloud"
+description: "Learn how dbt Cloud administrators can use dbt Cloud's permissioning model to control user-level access in a dbt Cloud account."
+id: "about-user-access"
+pagination_next: "docs/cloud/manage-access/seats-and-users"
+pagination_prev: null
+---
+
+:::info "User access" is not "Model access"
+
+**User groups and access** and **model groups and access** mean two different things. "Model groups and access" is a specific term used in the language of dbt-core. Refer to [Model access](/docs/collaborate/govern/model-access)  for more info on what it means in dbt-core.
+
+:::
+
+dbt Cloud administrators can use dbt Cloud's permissioning model to control
+user-level access in a dbt Cloud account. This access control comes in two flavors:
+License-based and Role-based.
+
+- **License-based Access Controls:** User are configured with account-wide
+  license types. These licenses control the specific parts of the dbt Cloud application
+  that a given user can access.
+- **Role-based Access Control (RBAC):** Users are assigned to _groups_ that have
+  specific permissions on specific projects or the entire account. A user may be
+  a member of multiple groups, and those groups may have permissions on multiple
+  projects.
+
+
+## License-based access control
+
+Each user on an account is assigned a license type when the user is first
+invited to a given account. This license type may change over time, but a
+user can only have one type of license at any given time.
+
+A user's license type controls the features in dbt Cloud that the user is able
+to access. dbt Cloud's three license types are:
+
+ - **Developer** &mdash; User may be granted _any_ permissions.
+ - **Read-Only** &mdash; User has read-only permissions applied to all dbt Cloud resources regardless of the role-based permissions that the user is assigned.
+ - **IT** &mdash; User has [Security Admin](/docs/cloud/manage-access/enterprise-permissions#security-admin) and [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin) permissions applied regardless of the role-based permissions that the user is assigned. 
+
+For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
+
+## Role-based access control
+
+:::info dbt Cloud Enterprise
+
+Role-based access control is a feature of the dbt Cloud Enterprise plan
+
+:::
+
+Role-based access control allows for <Term id="grain">fine-grained</Term> permissioning in the dbt Cloud
+application. With role-based access control, users can be assigned varying
+permissions to different projects within a dbt Cloud account. For teams on the
+Enterprise tier, role-based permissions can be generated dynamically from
+configurations in an [Identity Provider](sso-overview).
+
+Role-based permissions are applied to _groups_ and pertain to _projects_. The
+assignable permissions themselves are granted via _permission sets_.
+
+
+### Groups
+
+A group is a collection of users. Users may belong to multiple groups. Members
+of a group inherit any permissions applied to the group itself.
+
+Users can be added to a dbt Cloud group based on their group memberships in the
+configured [Identity Provider](sso-overview) for the account. In this way, dbt
+Cloud administrators can manage access to dbt Cloud resources via identity
+management software like Azure AD, Okta, or GSuite. See _SSO Mappings_ below for
+more information.
+
+You can view the groups in your account or create new groups from the **Team > Groups**
+page in your Account Settings.
+
+<Lightbox
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-list.png"
+    title="Viewing a list of groups in the Account Settings page."
+/>
+
+
+### SSO mappings
+
+SSO Mappings connect Identity Provider (IdP) group membership to dbt Cloud group
+membership. When a user logs into dbt Cloud via a supported identity provider,
+their IdP group memberships are synced with dbt Cloud. Upon logging in
+successfully, the user's group memberships (and therefore, permissions) are
+adjusted accordingly within dbt Cloud automatically.
+
+:::tip Creating SSO Mappings
+
+While dbt Cloud supports mapping multiple IdP groups to a single dbt Cloud
+group, we recommend using a 1:1 mapping to make administration as simple as
+possible. Consider using the same name for your dbt Cloud groups and your IdP
+groups.
+
+:::
+
+
+### Permission sets
+
+Permission sets are predefined collections of granular permissions. Permission
+sets combine low-level permission grants into high-level roles that can be
+assigned to groups. Some examples of existing permission sets are:
+ - Account Admin
+ - Git Admin
+ - Job Admin
+ - Job Viewer
+ - ...and more
+
+For a full list of enterprise permission sets, see [Enterprise Permissions](/docs/cloud/manage-access/enterprise-permissions).
+These permission sets are available for assignment to groups and control the ability
+for users in these groups to take specific actions in the dbt Cloud application.
+
+In the following example, the _dbt Cloud Owners_ group is configured with the
+**Account Admin** permission set on _All Projects_ and the **Job Admin** permission
+set on the _Internal Analytics_ project.
+
+<Lightbox
+    src="/img/docs/dbt-cloud/dbt-cloud-enterprise/access-control/group-permissions.png"
+    title="Configuring permissions for the Admins group"
+/>
+
+
+### Manual assignment
+
+dbt Cloud administrators can manually assign users to groups independently of
+IdP attributes. If a dbt Cloud group is configured _without_ any
+SSO Mappings, then the group will be _unmanaged_ and dbt Cloud will not adjust
+group membership automatically when users log into dbt Cloud via an identity
+provider. This behavior may be desirable for teams that have connected an identity
+provider, but have not yet configured SSO Mappings between dbt Cloud and the
+IdP.
+
+If an SSO Mapping is added to an _unmanaged_ group, then it will become
+_managed_, and dbt Cloud may add or remove users to the group automatically at
+sign-in time based on the user's IdP-provided group membership information.
+
+
+## FAQs
+
+- **When are IdP group memberships updated for SSO Mapped groups?**  <br />
+ Group memberships are updated whenever a user logs into dbt Cloud via a supported SSO provider. If you've changed group memberships in your identity provider or dbt Cloud, ask your users to log back into dbt Cloud to synchronize these group memberships.
+- **Can I set up SSO without RBAC?**  <br />
+Yes, see the documentation on [Manual Assignment](#manual-assignment) above for more information on using SSO without RBAC.
+- **Can I configure a user's License Type based on IdP Attributes?** <br />
+  Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
+
+- **Why can't I edit a user's group membership?**  <br />
+Make sure you're not trying to edit your own user as this isn't allowed for security reasons. To edit the group membership of your own user, you'll need a different user to make those changes.
+
+- **How do I add or remove users**?  <br />
+Each dbt Cloud plan comes with a base number of Developer and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+  - If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
+  - If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
+
+ Refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users#licenses) for detailed steps.

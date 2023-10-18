@@ -14,7 +14,7 @@ Access denied: BigQuery BigQuery: Permission denied while getting Drive credenti
 
 Usually this errors indicates that you haven't granted the BigQuery service account access to the specific Google Drive document. If you're seeing this error, try giving the service account (client email seen [here](https://docs.getdbt.com/docs/dbt-cloud/cloud-configuring-dbt-cloud/connecting-your-database#connecting-to-bigquery)) you are using for your BigQuery connection in dbt Cloud, permission to your Google Drive or Google Sheet. You'll want to do this directly in your Google Document and click the 'share' button and enter the client email there. 
 
-If you are experiencing this error when using oAuth, and you have verified your access to the Google Sheet, you may need to grant permissions for gcloud to access Google Drive:
+If you are experiencing this error when using OAuth, and you have verified your access to the Google Sheet, you may need to grant permissions for gcloud to access Google Drive:
 
 ```
 gcloud auth application-default login --scopes=openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/sqlservice.login,https://www.googleapis.com/auth/drive

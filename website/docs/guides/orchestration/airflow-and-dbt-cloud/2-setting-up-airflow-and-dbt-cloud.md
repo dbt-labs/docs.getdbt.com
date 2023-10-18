@@ -10,7 +10,7 @@ Astro is a managed software service that includes key features for teams working
 In this example, we’re using Homebrew to install Astro CLI. Follow the instructions to install the Astro CLI for your own operating system [here](https://docs.astronomer.io/astro/install-cli).
 
 ```bash
-brew install astronomer/cloud/astrocloud
+brew install astro
 ```
 
 <WistiaVideo id="uosszw1qul" paddingTweak="62.25%" />
@@ -40,32 +40,32 @@ You can initialize an Astronomer project in an empty local directory using a Doc
 
 1. Run the following commands to initialize your project and start your local Airflow deployment:
 
-    ```bash
-    astrocloud dev init
-    astrocloud dev start
-    ```
+   ```bash
+   astro dev init
+   astro dev start
+   ```
 
-    When this finishes, you should see a message similar to the following:
+   When this finishes, you should see a message similar to the following:
 
-    ```bash
-    Airflow is starting up! This might take a few minutes…
+   ```bash
+   Airflow is starting up! This might take a few minutes…
 
-    Project is running! All components are now available.
+   Project is running! All components are now available.
 
-    Airflow Webserver: http://localhost:8080
-    Postgres Database: localhost:5432/postgres
-    The default Airflow UI credentials are: admin:admin
-    The default Postrgres DB credentials are: postgres:postgres
-    ```
+   Airflow Webserver: http://localhost:8080
+   Postgres Database: localhost:5432/postgres
+   The default Airflow UI credentials are: admin:admin
+   The default Postrgres DB credentials are: postgres:postgres
+   ```
 
 2. Open the Airflow interface. Launch your web browser and navigate to the address for the **Airflow Webserver** from your output in Step 1.
 
-    This will take you to your local instance of Airflow. You’ll need to log in with the **default credentials**:
+   This will take you to your local instance of Airflow. You’ll need to log in with the **default credentials**:
 
-    - Username: admin
-    - Password: admin
+   - Username: admin
+   - Password: admin
 
-    ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-login.png)
+   ![Airflow login screen](/img/guides/orchestration/airflow-and-dbt-cloud/airflow-login.png)
 
 <WistiaVideo id="2rzsjo0uml" paddingTweak="62.25%" />
 
@@ -77,7 +77,7 @@ Create a service token from within dbt Cloud using the instructions [found here]
 
 ## 6. Create a dbt Cloud job
 
-In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](https://docs.getdbt.com/docs/get-started/getting-started/building-your-first-project/schedule-a-job).
+In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](/quickstarts/bigquery).
 
 - Configure the job with the commands that you want to include when this job kicks off, as Airflow will be referring to the job’s configurations for this rather than being explicitly coded in the Airflow DAG. This job will run a set of commands rather than a single command.
 - Ensure that the schedule is turned **off** since we’ll be using Airflow to kick things off.

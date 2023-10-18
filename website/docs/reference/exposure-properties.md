@@ -1,16 +1,11 @@
 ---
 title: Exposure properties
+description: "Read this guide to understand exposure properties in dbt."
 ---
 
-<Changelog>
-
-* Exposures are new in `v0.18.1`
-
-</Changelog>
-
 ## Related documentation
-- [Using exposures](exposures)
-- [Declaring resource properties](configs-and-properties)
+- [Using exposures](/docs/build/exposures)
+- [Declaring resource properties](/reference/configs-and-properties)
 
 ## Overview
 Exposures are defined in `.yml` files nested under an `exposures:` key. You may define `exposures` in YAML files that also define define `sources` or `models`.
@@ -23,6 +18,8 @@ Exposure names must contain only letters, numbers, and underscores (no spaces or
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.4">
+
 <File name='models/<filename>.yml'>
 
 ```yml
@@ -30,12 +27,47 @@ version: 2
 
 exposures:
   - name: <string_with_underscores>
-    [description](description): <markdown_string>
+    [description](/reference/resource-properties/description): <markdown_string>
     type: {dashboard, notebook, analysis, ml, application}
     url: <string>
     maturity: {high, medium, low}
-    [tags](resource-configs/tags): [<string>]
-    [meta](resource-configs/meta): {<dictionary>}
+    [tags](/reference/resource-configs/tags): [<string>]
+    [meta](/reference/resource-configs/meta): {<dictionary>}
+    owner:
+      name: <string>
+      email: <string>
+    
+    depends_on:
+      - ref('model')
+      - ref('seed')
+      - source('name', 'table')
+      - metric('metric_name')
+      
+    label: "Human-Friendly Name for this Exposure!"
+    [config](/reference/resource-properties/config):
+      enabled: true | false
+
+  - name: ... # declare properties of additional exposures
+```
+</File>
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.3">
+
+<File name='models/<filename>.yml'>
+
+```yml
+version: 2
+
+exposures:
+  - name: <string_with_underscores>
+    [description](/reference/resource-properties/description): <markdown_string>
+    type: {dashboard, notebook, analysis, ml, application}
+    url: <string>
+    maturity: {high, medium, low}
+    [tags](/reference/resource-configs/tags): [<string>]
+    [meta](/reference/resource-configs/meta): {<dictionary>}
     owner:
       name: <string>
       email: <string>
@@ -47,21 +79,24 @@ exposures:
       
     # added in dbt Core v1.3
     label: "Human-Friendly Name for this Exposure!"
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
   - name: ... # declare properties of additional exposures
 ```
 </File>
 
+</VersionBlock>
 
 ## Example
 
 <File name='models/jaffle/exposures.yml'>
 
 ```yaml
+version: 2
+
 exposures:
-  
+
   - name: weekly_jaffle_metrics
     label: Jaffles by the Week              # optional, new in dbt Core v1.3
     type: dashboard                         # required
@@ -69,15 +104,17 @@ exposures:
     url: https://bi.tool/dashboards/1       # optional
     description: >                          # optional
       Did someone say "exponential growth"?
-    
+
     depends_on:                             # expected
       - ref('fct_orders')
       - ref('dim_customers')
       - source('gsheets', 'goals')
+      - metric('count_orders')
 
     owner:
-      name: Claire from Data                # optional
-      email: data@jaffleshop.com            # required
+      name: Callum McData
+      email: data@jaffleshop.com
+
 
       
   - name: jaffle_recommender

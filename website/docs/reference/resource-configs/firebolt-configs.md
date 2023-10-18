@@ -270,7 +270,7 @@ To install and use `dbt-external-tables` with Firebolt, you must:
 
 To use external tables, you must define a table as `external` in your `dbt_project.yml` file. Every external table must contain the fields `url`, `type`, and `object_pattern`. Note that the Firebolt external table specification requires fewer fields than what is specified in the dbt documentation.
 
-In addition to specifying the columns, an external table may specify partitions. Partitions are not columns and they cannot have the same name as columns. To avoid yaml parsing errors, remember to encase string literals (such as the `url` and `object_pattern` values) in single quotation marks.
+In addition to specifying the columns, an external table may specify partitions. Partitions are not columns and they cannot have the same name as columns. To avoid YAML parsing errors, remember to encase string literals (such as the `url` and `object_pattern` values) in single quotation marks.
 
 
 #### dbt_project.yml Syntax For an External Table
@@ -315,7 +315,7 @@ $ dbt run-operation stage_external_sources --vars "ext_full_refresh: true"
 
 ## Incremental models
 
-The [`incremental_strategy` configuration](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Firebolt currently supports the `append` configuration. You can specify `incremental_strategy` in `dbt_project.yml` or within a model file's `config()` block. The `append` configuration is the default. Specifying this configuration is optional.
+The [`incremental_strategy` configuration](https://docs.getdbt.com/docs/build/incremental-models#about-incremental_strategy) controls how dbt builds incremental models. Firebolt currently supports the `append` configuration. You can specify `incremental_strategy` in `dbt_project.yml` or within a model file's `config()` block. The `append` configuration is the default. Specifying this configuration is optional.
 
 The `append` strategy performs an `INSERT INTO` statement with all the new data based on the model definition. This strategy doesn't update or delete existing rows, so if you do not filter the data to the most recent records only, it is likely that duplicate records will be inserted.
 

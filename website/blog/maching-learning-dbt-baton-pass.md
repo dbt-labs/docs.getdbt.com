@@ -48,7 +48,7 @@ The ML engineer stepped in from here. She was used to doing her statistics and p
 
 ![image of table with macro names and connector compatibility](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/macro-names.png)
 
-The ML engineer got the preprocessing steps (think: one-hot encoding, feature scaling, imputation) finalized. She used SQL to read the dbt models (tables) into a Jupyter notebook to perform model training. After iterating on the machine learning models and tracking model fit (think: AUC/Precision/Recall (for classification)), she ran the model over dbt-created tables and output the predicted results as a table in the database. To keep documentation clean, she [configured a source](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources/) within the dbt project to reflect this predicted results table. It wasn’t intuitive, but it was better than leaving it out of dbt docs.
+The ML engineer got the preprocessing steps (think: one-hot encoding, feature scaling, imputation) finalized. She used SQL to read the dbt models (tables) into a Jupyter notebook to perform model training. After iterating on the machine learning models and tracking model fit (think: AUC/Precision/Recall (for classification)), she ran the model over dbt-created tables and output the predicted results as a table in the database. To keep documentation clean, she [configured a source](/docs/build/sources) within the dbt project to reflect this predicted results table. It wasn’t intuitive, but it was better than leaving it out of dbt docs.
 
 Finally, she created a dashboard on top of this table to publicize model accuracy over time to end users. To schedule this, we went to the data engineer to string together the above in [Airflow](https://discourse.getdbt.com/t/orchestrating-fivetran-and-dbt-with-airflow/2079) everyday at 8am and called it done.
 
@@ -97,7 +97,7 @@ Gluing together notebooks and dbt isn’t the most elegant experience today. It�
 #### How would this change my story?
 
 My ML engineer would know the quality of input data created by dbt before starting machine learning development. I could schedule this notebook in sync with my dbt jobs and know instantly if my **ML model drift is caused by data quality vs. model logic.** 
-Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros/#macros)
+Also, I would create a data app (in Hex) where users plug in different input scenarios that feed into the predictive model. Even better, I could track versions of my ML models deployed over time in Modelbit + Hex and deploy ML external functions as [dbt macros](/docs/build/jinja-macros)
  (by the way: how is this not more normal?!).
 
 ![Image showing the notebook and dbt synchronization](/img/blog/2022-02-18-machine-learning-dbt-baton-pass/notebook-dbt-sync.png)

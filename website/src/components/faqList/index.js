@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './styles.module.css';
 
 const files = require.context(
   '../../../docs/faqs',
@@ -30,7 +29,7 @@ files.keys().forEach(function (key, i) {
   );
 });
 
-function FAQList({ children, style }) {
+function FAQList({ style }) {
   return (
     <div style={style}>
       {faqs}

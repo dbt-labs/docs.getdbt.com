@@ -26,7 +26,7 @@ It’s worth considering if an alternative approach with dbt might help.
 
 ## Why use modular dbt models instead of stored procedures?
 
-We work with many analytics teams to refactor their stored procedure code into dbt. Many of them come in thinking that the upfront effort to modernize their approach to data transformation will be too much to justify. However, we see that in the long term this isn’t the case. 
+We work with many analytics teams to refactor their stored procedure code into dbt. Many of them come in thinking that the upfront effort to modernize their approach to [data transformation](https://www.getdbt.com/analytics-engineering/transformation/) will be too much to justify. However, we see that in the long term this isn’t the case. 
 
 For example, a dbt Cloud user achieved the following results when moving away from the stored procedure approach:
 
@@ -79,10 +79,10 @@ In general, we've found that the recipe presented below is an effective conversi
 1. Map data flows in the stored procedure
 2. Identify raw source data
 3. Create a staging layer on top of raw sources for initial data transformations such as data type casting, renaming, etc.
-4. Replace hard-coded table references with dbt [source()](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources) and [ref()](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) statements. This enables 1) ensuring things are run in the right order and 2) automatic documentation!
+4. Replace hard-coded table references with dbt [source()](/docs/build/sources) and [ref()](https://docs.getdbt.com/reference/dbt-jinja-functions/ref) statements. This enables 1) ensuring things are run in the right order and 2) automatic documentation!
 5. Map INSERTS and UPDATES in the stored procedure to SELECT in dbt models
 6. Map DELETES in the stored procedure to WHERE filters in dbt models
-7. If necessary, use [variables](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/using-variables) in dbt to dynamically assign values at runtime, similar to arguments passed to a stored procedure.
+7. If necessary, use [variables](/docs/build/project-variables) in dbt to dynamically assign values at runtime, similar to arguments passed to a stored procedure.
 8. Iterate on your process to refine the dbt [DAG](https://docs.getdbt.com/docs/introduction#what-makes-dbt-so-powerful) further. You could continue optimizing forever, but typically we find a good stopping point when the outputs from the stored procedure and final dbt models are at parity.
 
 Sometimes, we find ourselves confronted with code that’s so complex, the end user isn’t able to understand exactly what it’s doing. In these cases, it may not be possible to perform an apples-to-apples mapping of the process embedded in the original stored procedure, and it’s actually more efficient to scrap the whole thing and focus on working backwards to reproduce the desired output in dbt. Note the section on auditing results below as a key success driver in this situation.
