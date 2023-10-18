@@ -4,11 +4,6 @@ id: "sl-partner-integration-guide"
 description: Learn about partner integration guidelines, roadmap, and connectivity. 
 ---
 
-
-import NewChanges from '/snippets/_new-sl-changes.md';
-
-<NewChanges/>
-
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
 
 :::note
@@ -20,7 +15,7 @@ This is an evolving guide that is meant to provide recommendations based on our 
 
 To build a dbt Semantic Layer integration: 
 
-- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API (and will soon offer a GraphQL API). Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
 
 - Familiarize yourself with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 
@@ -114,7 +109,7 @@ For better analysis, it's best to have the context of the metrics close to where
 These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
 
 **Stage 1 - The basic**
-* Supporting and using the new [JDBC](/docs/dbt-cloud-apis/sl-jdbc) is the first step. Refer to the [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
+* Supporting and using [JDBC](/docs/dbt-cloud-apis/sl-jdbc) or [GraphQL](/docs/dbt-cloud-apis/sl-graphql) is the first step. Refer to the [dbt Semantic Layer APIs](/docs/dbt-cloud-apis/sl-api-overview) for more technical details. 
 
 **Stage 2 - More discoverability and basic querying**
 * Support listing metrics defined in the project
@@ -136,9 +131,9 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Querying dimensions without metrics and other more advanced querying functionality
 * Suggest metrics to users based on teams/identity, and so on.
 
-### A note on transparency and using explain
+### A note on transparency and using compile
 
-For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our explain parameter (JDBC) or compileSQL mutation (GraphQL). This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly beneficial to a technical user.
+For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our compile parameter. This is incredibly powerful because we want to be very transparent to the user about what we're doing and do not want to be a black box. This would be mostly beneficial to a technical user.
 
 
 ### A note on where filters

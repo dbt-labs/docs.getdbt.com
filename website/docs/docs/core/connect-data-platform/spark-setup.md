@@ -57,14 +57,10 @@ $ pip install "dbt-spark[ODBC]"
 $ pip install "dbt-spark[PyHive]"
 ```
 
-<VersionBlock firstVersion="1.1">
-
 ```zsh
 # session connections
 $ pip install "dbt-spark[session]"
 ```
-
-</VersionBlock>
 
 <h2> Configuring {frontMatter.meta.pypi_package} </h2>
 
@@ -80,7 +76,6 @@ dbt-spark can connect to Spark clusters by three different methods:
 - [`thrift`](#thrift) connects directly to the lead node of a cluster, either locally hosted / on premise or in the cloud (e.g. Amazon EMR).
 - [`http`](#http) is a more generic method for connecting to a managed service that provides an HTTP endpoint. Currently, this includes connections to a Databricks interactive cluster.
 
-<VersionBlock firstVersion="1.1">
 
 - [`session`](#session) connects to a pySpark session, running locally or on a remote machine.
 
@@ -88,11 +83,8 @@ dbt-spark can connect to Spark clusters by three different methods:
 The `session` connection method is intended for advanced users and experimental dbt development. This connection method is not supported by dbt Cloud.
 :::
 
-</VersionBlock>
 
 ### ODBC
-
-<Changelog>New in v0.18.1</Changelog>
 
 Use the `odbc` connection method if you are connecting to a Databricks SQL endpoint or interactive cluster via ODBC driver. (Download the latest version of the official driver [here](https://databricks.com/spark/odbc-driver-download).)
 
@@ -186,8 +178,6 @@ Databricks interactive clusters can take several minutes to start up. You may
 include the optional profile configs `connect_timeout` and `connect_retries`,
 and dbt will periodically retry the connection.
 
-<VersionBlock firstVersion="1.1">
-
 ### Session
 
 Use the `session` method if you want to run `dbt` against a pySpark session. 
@@ -209,10 +199,6 @@ your_profile_name:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock firstVersion="1.0">
-
 ## Optional configurations
 
 ### Retries
@@ -231,13 +217,14 @@ connect_retries: 3
 
 </File>
 
-</VersionBlock>
+
 
 <VersionBlock firstVersion="1.7">
 ### Server side configuration
 
 Spark can be customized using [Application Properties](https://spark.apache.org/docs/latest/configuration.html). Using these properties the execution can be customized, for example, to allocate more memory to the driver process. Also, the Spark SQL runtime can be set through these properties. For example, this allows the user to [set a Spark catalogs](https://spark.apache.org/docs/latest/configuration.html#spark-sql).
 </VersionBlock>
+
 ## Caveats
 
 ### Usage with EMR

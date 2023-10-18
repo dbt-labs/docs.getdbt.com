@@ -41,12 +41,6 @@ Once the statement block has executed, the result set is accessible via the `loa
 - `data`: Pythonic representation of data returned by query (arrays, tuples, dictionaries).
 - `table`: [Agate](https://agate.readthedocs.io/page/api/table.html) table representation of data returned by query.
 
-<Changelog>
-
-* `v0.19.0`: The `response` structured object replaced a `status` string that contained similar information.
-
-</Changelog>
-
 For the above statement, that could look like:
 
 <File name='load_states.sql'>

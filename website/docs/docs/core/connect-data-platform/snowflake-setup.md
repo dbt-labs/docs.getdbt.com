@@ -124,7 +124,7 @@ Along with adding the `authenticator` parameter, be sure to run `alter account s
 
 To use key pair authentication, omit a `password` and instead provide a `private_key_path` and, optionally, a `private_key_passphrase` in your target. **Note:** Versions of dbt before 0.16.0 required that private keys were encrypted and a `private_key_passphrase` was provided. This behavior was changed in dbt v0.16.0.
 
-Starting from [dbt v1.5.0](/docs/dbt-versions/core), you have the option to use a `private_key` string instead of a `private_key_path`. The `private_key` string should be in Base64-encoded DER format, representing the key bytes. Refer to [Snowflake documentation](https://docs.snowflake.com/developer-guide/python-connector/python-connector-example#using-key-pair-authentication-key-pair-rotation) for more info on how they generate the key.
+Starting from [dbt v1.5.0](/docs/dbt-versions/core), you have the option to use a `private_key` string instead of a `private_key_path`. The `private_key` string should be in either Base64-encoded DER format, representing the key bytes, or a plain-text PEM format. Refer to [Snowflake documentation](https://docs.snowflake.com/developer-guide/python-connector/python-connector-example#using-key-pair-authentication-key-pair-rotation) for more info on how they generate the key.
 
 
 <File name='~/.dbt/profiles.yml'>
@@ -163,9 +163,13 @@ my-snowflake-db:
 
 ### SSO Authentication
 
-To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. `authenticator` can be one of 'externalbrowser' or a valid Okta URL.
+To use SSO authentication for Snowflake, omit a `password` and instead supply an `authenticator` config to your target. 
+`authenticator` can be one of 'externalbrowser' or a valid Okta URL. 
 
-**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication). See [the Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for how to enable this feature in your account.
+Refer to the following tabs for more info and examples:
+
+<Tabs>
+<TabItem value="externalbrowser" label="externalbrowser">
 
 <File name='~/.dbt/profiles.yml'>
 
@@ -175,15 +179,15 @@ my-snowflake-db:
   outputs:
     dev:
       type: snowflake
-      account: [account id]
-      user: [username]
-      role: [user role]
+      account: [account id] # Snowflake <account_name>
+      user: [username] # Snowflake username
+      role: [user role] # Snowflake user role
 
       # SSO config
       authenticator: externalbrowser
 
-      database: [database name]
-      warehouse: [warehouse name]
+      database: [database name] # Snowflake database name
+      warehouse: [warehouse name] # Snowflake warehouse name
       schema: [dbt schema]
       threads: [between 1 and 8]
       client_session_keep_alive: False
@@ -199,6 +203,50 @@ my-snowflake-db:
 
 </File>
 
+</TabItem>
+
+<TabItem value="oktaurl" label="Okta URL">
+
+<File name='~/.dbt/profiles.yml'>
+
+```yaml
+my-snowflake-db:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: [account id] # Snowflake <account_name>
+      user: [username] # Snowflake username
+      role: [user role] # Snowflake user role
+
+      # SSO config -- The three following fields are REQUIRED
+      authenticator: [Okta account URL]
+      username: [Okta username]
+      password: [Okta password]
+
+      database: [database name] # Snowflake database name
+      warehouse: [warehouse name] # Snowflake warehouse name
+      schema: [dbt schema]
+      threads: [between 1 and 8]
+      client_session_keep_alive: False
+      query_tag: [anything]
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: False # default: false
+```
+
+</File>
+
+</TabItem>
+</Tabs>
+
+**Note**: By default, every connection that dbt opens will require you to re-authenticate in a browser. The Snowflake connector package supports caching your session token, but it [currently only supports Windows and Mac OS](https://docs.snowflake.com/en/user-guide/admin-security-fed-auth-use.html#optional-using-connection-caching-to-minimize-the-number-of-prompts-for-authentication).
+
+Refer to the [Snowflake docs](https://docs.snowflake.com/en/sql-reference/parameters.html#label-allow-id-token) for info on how to enable this feature in your account.
 
 ## Configurations
 
@@ -224,7 +272,7 @@ The "base" configs for Snowflake targets are shown below. Note that you should a
 | reuse_connections | No | A boolean flag indicating whether to reuse idle connections to help reduce total connections opened. Default is `False`. |
 
 ### account
-For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1` or `abc123.eu-west-2.aws`. For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documentation: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)" and "[Account Identifier Formats by Cloud Platform and Region](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#account-identifier-formats-by-cloud-platform-and-region)".
+For AWS accounts in the US West default region, you can use `abc123` (without any other segments). For some AWS accounts you will have to append the region and/or cloud platform. For example, `abc123.eu-west-1` or `abc123.eu-west-2.aws`. For GCP and Azure-based accounts, you have to append the region and cloud platform, such as `gcp` or `azure`, respectively. For example, `abc123.us-central1.gcp`. For details, see Snowflake's documentation: "[Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#specifying-region-information-in-your-account-hostname)". Please also note that the Snowflake account name should only be the <account_name> without the prefixed <organization_name>.  Relevant documentation: "[Account Identifier Formats by Cloud Platform and Region](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#account-identifier-formats-by-cloud-platform-and-region)".
 
 ### client_session_keep_alive
 

@@ -1,11 +1,12 @@
 ---
 title: "Trusted adapters"
 id: "trusted-adapters"
+hide_table_of_contents: true
 ---
 
 Trusted adapters are adapters not maintained by dbt Labs, that we feel comfortable recommending to users for use in production.
 
-Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a *good thing*, however it requires due dilligence that wasn't required in a paid-license, closed-source software world. As a user, there are questions to answer important before taking a dependency on an open-source project. The trusted adapter designation is meant to streamline this process for end users.
+Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a *good thing*, however it requires due diligence that wasn't required in a paid-license, closed-source software world. As a user, there are questions to answer important before taking a dependency on an open-source project. The trusted adapter designation is meant to streamline this process for end users.
 
 <details><summary>Considerations for depending on an open-source project</summary>
 

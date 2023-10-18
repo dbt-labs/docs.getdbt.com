@@ -1,6 +1,7 @@
 ---
 title: "Contribute to adapters"
 id: "contribute-core-adapters"
+pagination_next: null
 ---
 
 The dbt Community exists to allow analytics practitioners share their knowledge, help others and collectively to drive forward the discipline of analytics engineering. There are opportunities here for everyone to contribute whether you're at the beginning your analytics engineering journey or you are a seasoned data professional.

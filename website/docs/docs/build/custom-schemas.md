@@ -1,6 +1,7 @@
 ---
 title: "Custom schemas"
 id: "custom-schemas"
+pagination_next: "docs/build/custom-databases"
 ---
 
 By default, all dbt models are built in the schema specified in your target. In dbt projects with lots of models, it may be useful to instead build some models in schemas other than your target schema – this can help logically group models together.
@@ -179,13 +180,6 @@ The following context methods _are_ available in the `generate_schema_name` macr
 | Other macros in your packages | Macro | ✅ |
 
 ### Which vars are available in generate_schema_name?
-
-<Changelog>
-
-Variable semantics have changed in dbt v0.17.0. See the [migration guide](/guides/migration/versions)
-for more information on these changes.
-
-</Changelog>
 
 Globally-scoped variables and variables defined on the command line with
 [--vars](/docs/build/project-variables) are accessible in the `generate_schema_name` context.

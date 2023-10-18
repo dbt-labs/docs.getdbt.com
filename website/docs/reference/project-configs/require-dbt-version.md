@@ -19,12 +19,6 @@ When you set this configuration, dbt sends a helpful error message for any user 
 
 If this configuration is not specified, no version check will occur.
 
-<Changelog>
-
-* `v0.13.0`: This configuration was introduced
-
-</Changelog>
-
 :::info YAML Quoting
 
 This configuration needs to be interpolated by the YAML parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:

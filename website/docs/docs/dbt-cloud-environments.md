@@ -2,9 +2,10 @@
 title: "dbt Cloud environments"
 id: "dbt-cloud-environments"
 description: "Learn about dbt Cloud's development environment to execute your project in the IDE"
+pagination_next: null
 ---
 
-An environment determines how dbt Cloud will execute your project in both the dbt Cloud IDE (for development) and scheduled jobs (for deployment).
+An environment determines how dbt Cloud will execute your project in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) or [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) (for development) and scheduled jobs (for deployment).
 
 Critically, in order to execute dbt, environments define three variables:
 
@@ -34,7 +35,7 @@ To create a new dbt Cloud development environment:
 
 ### Set developer credentials
 
-To use the IDE, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse via the dbt Cloud IDE.
+To use the dbt Cloud IDE or dbt Cloud CLI, each developer will need to set up [personal development credentials](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud#access-the-cloud-ide) to your warehouse connection in their **Profile Settings**. This allows you to set separate target information and maintain individual credentials to connect to your warehouse.
 
 
 <Lightbox src="/img/docs/dbt-cloud/refresh-ide/new-environment-fields.png" width="85%" height="100" title="Creating a development environment"/>

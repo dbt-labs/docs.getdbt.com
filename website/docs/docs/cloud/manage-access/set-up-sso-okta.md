@@ -16,8 +16,6 @@ dbt Cloud Enterprise supports single-sign on via Okta (using SAML). Currently su
 * Just-in-time provisioning
 
 This guide outlines the setup process for authenticating to dbt Cloud with Okta.
-If you have any questions during the setup process, please contact support
-(support@getdbt.com) for assistance.
 
 ## Configuration in Okta
 
@@ -63,7 +61,7 @@ Click **Next** to continue.
 
 ### Configure SAML Settings
 
-The SAML Settings page configures how Okta and dbt Cloud communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan. If you aren't sure which values you should use, please contact support (support@getdbt.com).
+The SAML Settings page configures how Okta and dbt Cloud communicate. You will want to use an [appropriate Access URL](/docs/cloud/about-cloud/regions-ip-addresses) for your region and plan.
 
 To complete this section, you will need a _login slug_. This slug controls the
 URL where users on your account can log into your application via Okta. Login
@@ -95,9 +93,9 @@ Expected **User Attribute Statements**:
 
 | Name           | Name format | Value                | Description                |
 | -------------- | ----------- | -------------------- | -------------------------- |
-| `email`        | Unspecified | `${user.email}`      | _The user's email address_ |
-| `first_name`   | Unspecified | `${user.firstName}`  | _The user's first name_    |
-| `last_name`    | Unspecified | `${user.lastName}`   | _The user's last name_     |
+| `email`        | Unspecified | `user.email`      | _The user's email address_ |
+| `first_name`   | Unspecified | `user.firstName`  | _The user's first name_    |
+| `last_name`    | Unspecified | `user.lastName`   | _The user's last name_     |
 
 
 Expected **Group Attribute Statements**:
