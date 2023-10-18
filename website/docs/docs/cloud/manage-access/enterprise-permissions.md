@@ -22,10 +22,6 @@ The following roles and permission sets are available for assignment in dbt Clou
 
 <Permissions feature={'/snippets/_enterprise-permissions-table.md'} />
 
-## Diagram of the permission sets
-
-<Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/enterprise-permission-sets-diagram.png" title="Enterprise Permission Sets & Requirements."/>
-
 ## How to set up RBAC Groups in dbt Cloud
 
 Role-Based Access Control (RBAC) is helpful for automatically assigning permissions to dbt admins based on their SSO provider group associations.
