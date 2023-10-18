@@ -4,6 +4,8 @@ id: "deployments"
 sidebar: "Use dbt Cloud's capabilities to seamlessly run a dbt job in production."
 hide_table_of_contents: true
 tags: ["scheduler"]
+pagination_next: "docs/deploy/job-scheduler"
+pagination_prev: null
 ---
 
 Use dbt Cloud's capabilities to seamlessly run a dbt job in production or staging environments. Rather than run dbt commands manually from the command line, you can leverage the [dbt Cloud's in-app scheduling](/docs/deploy/job-scheduler) to automate how and when you execute dbt. 
@@ -56,6 +58,12 @@ Learn how to use dbt Cloud's features to help your team ship timely and quality 
     title="Run visibility"
     body="View the history of your runs and the model timing dashboard to help identify where improvements can be made to the scheduled jobs."
     link="/docs/deploy/run-visibility"
+    icon="dbt-bit"/>
+
+<Card
+    title="Retry jobs"
+    body="Rerun your errored jobs from start or the failure point."
+    link="/docs/deploy/retry-jobs"
     icon="dbt-bit"/>
 
 <Card

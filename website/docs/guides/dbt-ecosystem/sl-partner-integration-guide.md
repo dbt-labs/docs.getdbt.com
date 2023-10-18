@@ -4,11 +4,6 @@ id: "sl-partner-integration-guide"
 description: Learn about partner integration guidelines, roadmap, and connectivity. 
 ---
 
-
-import NewChanges from '/snippets/_new-sl-changes.md';
-
-<NewChanges/>
-
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
 
 :::note
@@ -20,7 +15,7 @@ This is an evolving guide that is meant to provide recommendations based on our 
 
 To build a dbt Semantic Layer integration: 
 
-- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API (and will soon offer a GraphQL API). Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
+- We offer a [JDBC](/docs/dbt-cloud-apis/sl-jdbc) API and [GraphQL API](/docs/dbt-cloud-apis/sl-graphql). Refer to the dedicated [dbt Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) for more technical integration details.
 
 - Familiarize yourself with the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and [MetricFlow](/docs/build/about-metricflow)'s key concepts. There are two main objects: 
 

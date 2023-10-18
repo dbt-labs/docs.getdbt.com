@@ -1,6 +1,8 @@
 ---
 title: "About dbt projects"
 id: "projects"
+pagination_next: null
+pagination_prev: null
 ---
 
 A dbt project informs dbt about the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
