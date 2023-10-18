@@ -9,7 +9,7 @@ pagination_prev: null
 
 dbt compiles and runs your analytics code against your data platform, enabling you and your team to collaborate on a single source of truth for metrics, insights, and business definitions. There are two options for deploying dbt:
 
-**dbt Cloud** runs dbt Core in a hosted (single or multi-tenant) environment with a browser-based interface. The intuitive UI will aid you in setting up the various components. dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring & alerting, and an integrated developer environment (IDE).
+**dbt Cloud** runs dbt Core in a hosted (single or multi-tenant) environment with a browser-based interface. The intuitive user interface aids you in setting up the various components. dbt Cloud comes equipped with turnkey support for scheduling jobs, CI/CD, hosting documentation, monitoring, and alerting. It also offers an integrated development environment (IDE) and allows you to develop and run dbt commands from your local command line (CLI) or code editor.
 
 **dbt Core** is an open-source command line tool that can be installed locally in your environment, and communication with databases is facilitated through adapters.
 
@@ -21,7 +21,7 @@ To begin configuring dbt now, select the option that is right for you.
 
 <Card
     title="dbt Cloud setup"
-    body="Learn how to connect to a data platform, integrate with secure authentication methods, configure a sync with a git repo, and how to use the IDE."
+    body="Learn how to connect to a data platform, integrate with secure authentication methods, configure a sync with a git repo, how to use the IDE, and how to install the dbt Cloud CLI."
     link="/docs/cloud/about-cloud-setup"
     icon="dbt-bit"/>
 

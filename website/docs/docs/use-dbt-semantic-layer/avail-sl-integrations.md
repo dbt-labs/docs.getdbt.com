@@ -11,10 +11,6 @@ meta:
 
 <VersionBlock firstVersion="1.6">
 
-import NewSLChanges from '/snippets/_new-sl-changes.md';
-
-<NewSLChanges />
-
 
 There are a number of data applications that seamlessly integrate with the dbt Semantic Layer, powered by MetricFlow, from business intelligence tools to notebooks, spreadsheets, data catalogs, and more. These integrations allow you to query and unlock valuable insights from your data ecosystem.
 
@@ -24,7 +20,14 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 <AvailIntegrations/>
 
-## Custom integration
+## Other integrations
+
+You can also integrate the following tools with the dbt Semantic Layer:
+- [Push.ai](https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer)
+- [Delphi](delphihq.com)
+- KlipFolio Power Metrics - Documentation coming soon
+
+### Custom integration
 
 - You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).
 - You can also connect to tools that allow you to write SQL. These tools must meet one of the two criteria:
