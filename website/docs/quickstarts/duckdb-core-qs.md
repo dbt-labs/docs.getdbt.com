@@ -110,16 +110,20 @@ The Jaffle Shop project seeds the data set to DuckDB, which can then be manually
 
 Launch the DuckDB command-line interface (CLI):
 
-    ```shell
-    duckcli jaffle_shop.duckdb
-    ```
+```shell
 
-    Run a query at the prompt and exit:
+duckcli jaffle_shop.duckdb
 
-    ```
-    select * from customers where customer_id = 42;
-    exit;
-    ```
+```
+
+Run a query at the prompt and exit:
+
+```shell
+
+select * from customers where customer_id = 42;
+exit;
+
+```
 
 ## Browse the data
 
