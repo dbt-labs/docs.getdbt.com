@@ -180,7 +180,7 @@ my-bigquery-db:
       project: GCP_PROJECT_ID
       dataset: DBT_DATASET_NAME
       threads: 4 # Must be a value of 1 or greater
-      [OPTIONAL_CONFIG](#optional-configurations): <value>
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 
       # These fields come from the service account json keyfile
       keyfile_json:
