@@ -74,10 +74,10 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 #Value must be of 1 or greater
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
@@ -103,14 +103,14 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth-secrets
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      refresh_token: [token]
-      client_id: [client id]
-      client_secret: [client secret]
-      token_uri: [redirect URI]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater
+      refresh_token: TOKEN
+      client_id: CLIENT_ID
+      client_secret: CLIENT_SECRETS
+      token_uri: REDIRECT_URI
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
@@ -128,11 +128,11 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth-secrets
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      token: [temporary access token] # refreshed + updated by external process
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater
+      token: TEMPORARY_ACCESS_TOKEN # refreshed + updated by external process
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
@@ -149,11 +149,11 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: service-account
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      keyfile: [/path/to/bigquery/keyfile.json]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME
+      threads: 4 # Must be a value of 1 or greater
+      keyfile: /PATH/TO/BIGQUERY/keyfile.json
+      [OPTIONAL_CONFIG](#optional-configurations): <value>
 ```
 
 </File>
@@ -177,10 +177,10 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: service-account-json
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME
+      threads: 4 # Must be a value of 1 or greater
+      [OPTIONAL_CONFIG](#optional-configurations): <value>
 
       # These fields come from the service account json keyfile
       keyfile_json:
