@@ -106,7 +106,7 @@ dbt docs serve
 
 ## Query the data
 
-The Jaffle Shop project will seed the data set to DuckDB, which can then be manually queried from the duckcli tool. 
+The Jaffle Shop project seeds the data set to DuckDB, which can then be manually queried from the duckcli tool. 
 
 Launch the DuckDB command-line interface (CLI):
 
