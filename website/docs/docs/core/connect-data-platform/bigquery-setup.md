@@ -153,7 +153,7 @@ my-bigquery-db:
       dataset: DBT_DATASET_NAME
       threads: 4 # Must be a value of 1 or greater
       keyfile: /PATH/TO/BIGQUERY/keyfile.json
-      [OPTIONAL_CONFIG](#optional-configurations): <value>
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
