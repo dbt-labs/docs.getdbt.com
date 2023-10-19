@@ -15,7 +15,7 @@ In this quickstart guide, you’ll learn how to install dbt Core and DuckDB, and
 
 * You must know some command line basics to use dbt Core. In particular, you should be familiar with `cd`, `ls` and `pwd` so you can navigate through the directory structure of your computer.
 * You have a Windows, Mac, or Linux computer with sufficient storage. The Jaffle Shop sample data set is small and lightweight, taking up less than 200 MB. 
-* [Python 3.5](https://www.python.org/downloads/) or higher.
+* You must have [Python 3.5](https://www.python.org/downloads/) or newer.
 * [Create a GitHub account](https://github.com/join) if you don't already have one. [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git) on your computer.
 * (Optional) [GitHub Codespace](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/enabling-or-disabling-github-codespaces-for-your-organization) enabled for your account.
 
