@@ -8,9 +8,10 @@ id: "list"
 The `dbt ls` command lists resources in your dbt project. It accepts selector arguments that are similar to those provided in [dbt run](/reference/commands/run). `dbt list` is an alias for `dbt ls`. While `dbt ls` will read your [connection profile](/docs/core/connect-data-platform/connection-profiles) to resolve [`target`](/reference/dbt-jinja-functions/target)-specific logic, this command will not connect to your database or run any queries.
 
 ### Usage
+
 ```
 dbt ls
-     [--resource-type {model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
+     [--resource-type {model,semantic_model,source,seed,snapshot,metric,test,exposure,analysis,default,all}]
      [--select SELECTION_ARG [SELECTION_ARG ...]]
      [--models SELECTOR [SELECTOR ...]]
      [--exclude SELECTOR [SELECTOR ...]]
@@ -85,7 +86,7 @@ $ dbt ls --select snowplow.* --output json --output-keys "name resource_type des
 <VersionBlock firstVersion="1.5">
 
 ```
-$ dbt ls --select snowplow.* --output json --output-keys name resource_type description
+$ dbt ls --select snowplow.* --output json --output-keys "name resource_type description"
 {"name": "snowplow_events", "description": "This is a pretty cool model",  ...}
 {"name": "snowplow_page_views", "description": "This model is even cooler",  ...}
 ...
@@ -93,6 +94,16 @@ $ dbt ls --select snowplow.* --output json --output-keys name resource_type desc
 
 </VersionBlock>
 
+<VersionBlock firstVersion="1.6">
+
+**Listing Semantic models**
+
+List all resources upstream of your orders semantic model:
+```
+dbt ls -s +semantic_model:orders
+```
+
+</VersionBlock>
 
 **Listing file paths**
 ```
