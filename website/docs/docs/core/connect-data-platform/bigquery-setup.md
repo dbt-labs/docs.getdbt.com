@@ -76,7 +76,7 @@ my-bigquery-db:
       method: oauth
       project: GCP_PROJECT_ID
       dataset: DBT_DATASET_NAME # You can also use "schema" here
-      threads: 4 #Value must be of 1 or greater
+      threads: 4 # Must be a value of 1 or greater 
       [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
