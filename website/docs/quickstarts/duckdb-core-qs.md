@@ -135,6 +135,6 @@ Now that you've got dbt Core, DuckDB, and the Jaffle Shop data up and running, y
 
 * [About projects](/docs/build/projects) will guide you through the structure of a dbt project and its components.
 * The [dbt command reference](/reference/dbt-commands) explains the various commands available and what they do.
-* The [Courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
+* The [dbt Labs courses](https://courses.getdbt.com/collections) offer a variety of beginner, intermediate, and advanced learning modules designed to help you become a dbt expert. 
 * Once you see the potential of dbt and what it can do for your organization, sign up for a free trial of [dbt Cloud](https://www.getdbt.com/signup). It's the fastest and easiest way to deploy dbt today!
 * Check out our other [Quickstart guides](/quickstarts) to begin integrating into your existing data warehouse.
