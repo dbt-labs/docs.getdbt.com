@@ -131,7 +131,7 @@ There are a few options available to browse the data within DuckDB:
 
 ## Next steps
 
-Now that you've got dbt Core, DuckDB, and the Jaffle Shop data up and running, it's time to explore dbt's capabilities. Read through the following material to get a better understanding of dbt projects and commands:
+Now that you've got dbt Core, DuckDB, and the Jaffle Shop data up and running, you can explore dbt's capabilities. Refer to these materials to get a better understanding of dbt projects and commands:
 
 * [About projects](/docs/build/projects) will guide you through the structure of a dbt project and its components.
 * The [dbt Command reference](/reference/dbt-commands) will explain the various commands available and what they do.
