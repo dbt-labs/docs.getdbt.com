@@ -121,7 +121,7 @@ Launch the DuckDB command-line interface (CLI):
     exit;
     ```
 
-## Browsing the data
+## Browse the data
 
 There are a few options available to browse the data within DuckDB: 
 
