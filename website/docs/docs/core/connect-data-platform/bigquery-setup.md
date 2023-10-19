@@ -108,7 +108,7 @@ my-bigquery-db:
       threads: 4 # Must be a value of 1 or greater
       refresh_token: TOKEN
       client_id: CLIENT_ID
-      client_secret: CLIENT_SECRETS
+      client_secret: CLIENT_SECRET
       token_uri: REDIRECT_URI
       [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
