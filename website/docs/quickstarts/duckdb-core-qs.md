@@ -9,7 +9,7 @@ hide_table_of_contents: true
 
 ## Introduction
 
-In this quickstart guide, you’ll learn how to install dbt Core and DuckDB, and import sample data from the fictional e-commerce Jaffle Shop data set within minutes. DuckDB is an in-process SQL OLAP database management system optimized for data analytics. Installing dbt Core and DuckDB together allows you to test all of the available features and functionality dbt has to offer locally on your computer (no data warehouse required), and the Jaffle Shop provides a pre-built dbt project ready to run out of the box. 
+In this quickstart guide, you’ll learn how to install dbt Core and DuckDB, and import sample data from the fictional e-commerce Jaffle Shop data set within minutes. DuckDB is an in-process SQL OLAP database management system optimized for data analytics. Installing dbt and DuckDB together enables you to test all the available features and functionality dbt has to offer locally on your computer (no data warehouse required), and the Jaffle Shop Git repository provides a prebuilt dbt project that's ready to run out of the box.
 
 ## Prerequisites
 
