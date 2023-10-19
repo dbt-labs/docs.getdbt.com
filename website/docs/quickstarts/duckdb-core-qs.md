@@ -21,7 +21,7 @@ In this quickstart guide, you’ll learn how to install dbt Core and DuckDB, and
 
 ## Installation instructions
 
-Select the following format that applies to your environment. Copy and paste the commands (you can copy them all at once or line-by-line) into your command line interface(CLI) and execute them. The syntax may vary slightly for each, but the result of the commands is the same. They will: 
+Select a format below that applies to your environment. Copy and paste the commands (you can copy them all at once or line-by-line) into your command line interface (CLI) and execute them. The syntax varies slightly for each, but the result of the commands is the same. They will: 
 
 - Clone the [jaffle_shop_duckdb GitHub repo](https://github.com/dbt-labs/jaffle_shop_duckdb) to your local machine.
 - Change the directory to the Jaffle Shop.
