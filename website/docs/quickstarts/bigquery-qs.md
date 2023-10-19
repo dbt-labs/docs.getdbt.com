@@ -88,7 +88,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 4. Click **Upload a Service Account JSON File** in settings.
 5. Select the JSON file you downloaded in [Generate BigQuery credentials](#generate-bigquery-credentials) and dbt Cloud will fill in all the necessary fields.
 6. Click **Test Connection**. This verifies that dbt Cloud can access your BigQuery account.
-7. Click **Next** if the test succeeded. If it fails, you might need to go back and regenerate your BigQuery credentials.
+7. Click **Next** if the test succeeds. If it fails, you might need to go back and regenerate your BigQuery credentials.
 
 
 ## Set up a dbt Cloud managed repository 
