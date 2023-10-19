@@ -32,7 +32,7 @@ Select a format below that applies to your environment. Copy and paste the comma
 - Build the Jaffle Shop project in dbt Core.
 - Generate (`dbt docs generate`) and serve (`dbt docs serve`) dbt docs to your browser (localhost).
 
-For the complete list of dependencies that will be installed, read the [**requirements.txt**](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/requirements.txt) file in the jaffle_shop_duckdb Github repo. 
+For the complete list of installed dependencies, refer to the [requirements.txt](https://github.com/dbt-labs/jaffle_shop_duckdb/blob/duckdb/requirements.txt) file in the jaffle_shop_duckdb GitHub repo. 
 
 <Tabs>
 <TabItem value="Bash" label="bash/zsh (Mac)">
