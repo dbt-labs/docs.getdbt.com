@@ -118,7 +118,7 @@ duckcli jaffle_shop.duckdb
 
 Run a query at the prompt and exit:
 
-```shell
+```sql
 
 select * from customers where customer_id = 42;
 exit;
