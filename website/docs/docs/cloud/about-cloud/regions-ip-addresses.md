@@ -30,7 +30,7 @@ There are two ways to view your dbt Cloud IP addresses:
 
 dbt Cloud, like many cloud services, relies on underlying AWS cloud infrastructure for operations. While we can offer exact URLs for access, we're unable to provide a list of static IP addresses to configure connections due to its cloud nature.
 
-1. Dynamic IP addresses &mdash; Our cloud infrastructure uses Amazon Web Services (AWS). dbt Cloud offers exact URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. This is because AWS manages the IP ranges and may change them according to their operational needs.
+1. Dynamic IP addresses &mdash; dbt Cloud infrastructure uses Amazon Web Services (AWS). dbt Cloud offers static URLs for streamlined access, but the dynamic nature of cloud services means the underlying IP addresses change occasionally. AWS manages the IP ranges and may change them according to their operational and security needs.
 
 2. Embracing hostnames for consistent access &mdash; To ensure uninterrupted access to dbt Cloud services, we recommend using hostnames for configurations. Hostnames provide a stable reference point that remains consistent, regardless of any changes in underlying IP addresses. This is an industry-standard pattern that's also employed by organizations such as Snowflake.
 
