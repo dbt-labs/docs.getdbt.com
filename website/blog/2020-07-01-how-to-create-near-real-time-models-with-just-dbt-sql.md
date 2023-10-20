@@ -13,6 +13,13 @@ date: 2020-07-01
 is_featured: false
 ---
 
+:::caution More up-to-date information available
+
+Since this blog post was first published, many data platforms have added support for [materialized views](/blog/announcing-materialized-views), which are a superior way to achieve the goals outlined here. We recommend them over the below approach. 
+
+
+:::
+
 Before I dive into how to create this, I have to say this. **You probably don’t need this**. I, along with my other Fishtown colleagues, have spent countless hours working with clients that ask for near-real-time streaming data. However, when we start digging into the project, it is often realized that the use case is not there. There are a variety of reasons why near real-time streaming is not a good fit. Two key ones are:
 
 1.  The source data isn’t updating frequently enough.
