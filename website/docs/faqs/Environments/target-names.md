@@ -5,4 +5,4 @@ sidebar_label: 'Naming your target'
 id: target-names
 ---
 
-We typically use targets to differentiate between development and production runs of dbt, naming the targets `dev` and `prod` respectively. Check out the docs on [managing environments](/docs/collaborate/environments) for more information.
+We typically use targets to differentiate between development and production runs of dbt, naming the targets `dev` and `prod`, respectively. Check out the docs on [managing environments in dbt Core](/docs/core/dbt-core-environments) for more information.

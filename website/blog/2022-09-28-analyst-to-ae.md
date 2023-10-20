@@ -38,7 +38,7 @@ Analysts are experts at taking broad statements and turning them into specific p
 1. Users with a session longer than a certain amount of time
 1. Users that interacted with a particular feature
 
-From there, the analyst will build out the initial documentation and write down what they want the final dataset to look like. If your analyst is not trained as an analytics engineer, this is the point that they will need to hand the project over to a data engineer to build the [model](https://docs.getdbt.com/docs/building-a-dbt-project/building-models).
+From there, the analyst will build out the initial documentation and write down what they want the final dataset to look like. If your analyst is not trained as an analytics engineer, this is the point that they will need to hand the project over to a data engineer to build the [model](/docs/build/models).
 
 The first time that a team of analysts and data engineers builds a curated dataset, they will often expect this process to be a straight line to completion. Expectations are that the process will look something like this:
 
@@ -133,7 +133,7 @@ It’s much easier to keep to a naming guide when the writer has a deep understa
 
 If we want to know how certain logic was built technically, then we can reference the SQL code in dbt docs. If we want to know *why* a certain logic was built into that specific model, then that’s where we’d turn to the documentation.
 
-- Example of not-so-helpful documentation ([dbt docs can](https://docs.getdbt.com/docs/building-a-dbt-project/documentation) build this dynamically):
+- Example of not-so-helpful documentation ([dbt docs can](https://docs.getdbt.com/docs/collaborate/documentation) build this dynamically):
     - `Case when Zone = 1 and Level like 'A%' then 'True' else 'False' end as GroupB`
 - Example of better, more descriptive documentation (add to your dbt markdown file or column descriptions):
     - Group B is defined as Users in Zone 1 with a Level beginning with the letter 'A'. These users are accessing our new add-on product that began in Beta in August 2022. It's recommended to filter them out of the main Active Users metric.

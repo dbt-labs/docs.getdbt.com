@@ -1,6 +1,8 @@
 ---
-title: "env_var"
+title: " About env_var function"
+sidebar_label: "env_var"
 id: "env_var"
+description: "Incorporate environment variables using `en_var` function."
 ---
 
 The `env_var` function can be used to incorporate Environment Variables from the system into your dbt project. This `env_var` function can be used in your `profiles.yml` file, the `dbt_project.yml` file, the `sources.yml` file, your `schema.yml` files, and in model `.sql` files. Essentially `env_var` is available anywhere dbt processes jinja code.
@@ -34,7 +36,7 @@ If passing an environment variable for a property that uses an integer type (for
 
 :::caution Quoting, Curly Brackets, & You
 
-Be sure to quote the entire jinja string (as shown above), or else the yaml parser will be confused by the Jinja curly brackets.
+Be sure to quote the entire jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 
@@ -56,13 +58,6 @@ models:
 
 ### Secrets
 
-<Changelog>
-
-  - **v0.21.0:** Introduced `DBT_ENV_SECRET_` and log scrubbing
-  - **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
-
-</Changelog>
-
 For certain configurations, you can use "secret" env vars. Any env var named with the prefix `DBT_ENV_SECRET_` will be:
 - Available for use in `profiles.yml` + `packages.yml`, via the same `env_var()` function
 - Disallowed everywhere else, including `dbt_project.yml` and model SQL, to prevent accidentally writing these secret values to the <Term id="data-warehouse" /> or metadata artifacts
@@ -70,17 +65,20 @@ For certain configurations, you can use "secret" env vars. Any env var named wit
 
 The primary use case of secret env vars is git access tokens for [private packages](/docs/build/packages#private-packages).
 
-**Note:** When dbt is loading profile credentials and package configuration, secret env vars will be replaced with the string value of the environment variable. You cannot modify secrets using Jinja filters, including type-casting filters such as [`as_number`](as_number) or [`as_bool`](as_bool), or pass them as arguments into other Jinja macros.
+**Note:** When dbt is loading profile credentials and package configuration, secret env vars will be replaced with the string value of the environment variable. You cannot modify secrets using Jinja filters, including type-casting filters such as [`as_number`](/reference/dbt-jinja-functions/as_number) or [`as_bool`](/reference/dbt-jinja-functions/as_bool), or pass them as arguments into other Jinja macros. You can only use _one secret_ per configuration:
+```yml
+# works
+host: "{{ env_var('DBT_ENV_SECRET_HOST') }}"
+
+# does not work
+host: "www.{{ env_var('DBT_ENV_SECRET_HOST_DOMAIN') }}.com/{{ env_var('DBT_ENV_SECRET_HOST_PATH') }}"
+```
 
 ### Custom metadata
 
-<Changelog>
-
-  - **v0.19.0:** Introduced `DBT_ENV_CUSTOM_ENV_` prefix and artifact `metadata.env`
-
-</Changelog>
-
-Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in [dbt artifacts](dbt-artifacts#common-metadata), in a `metadata.env` dictionary, with its prefix-stripped name as its key.
+Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in two places, with its prefix-stripped name as the key:
+- [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata): `metadata` -> `env`
+- [events and structured logs](/reference/events-logging#info-fields): `info` -> `extra`
 
 <VersionBlock firstVersion="1.3">
 

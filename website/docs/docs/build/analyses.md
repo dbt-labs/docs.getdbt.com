@@ -1,6 +1,8 @@
 ---
 title: "Analyses"
+description: "Read this tutorial to learn how to use custom analyses when building in dbt."
 id: "analyses"
+pagination_next: null
 ---
 
 ## Overview
@@ -11,10 +13,10 @@ Any `.sql` files found in the `analyses/` directory of a dbt project will be com
 
 In practice, an analysis file might look like this (via the [open source Quickbooks models](https://github.com/dbt-labs/quickbooks)):
 
-<File name='running_total_by_account.sql'>
+<File name='analyses/running_total_by_account.sql'>
 
 ```sql
--- analysis/running_total_by_account.sql
+-- analyses/running_total_by_account.sql
 
 with journal_entries as (
 

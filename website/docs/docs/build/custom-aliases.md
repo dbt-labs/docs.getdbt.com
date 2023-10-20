@@ -1,5 +1,6 @@
 ---
 title: "Custom aliases"
+description: "Read this tutorial to learn how to use custom aliases when building in dbt."
 id: "custom-aliases"
 ---
 
@@ -59,6 +60,8 @@ To override dbt's alias name generation, create a macro named `generate_alias_na
 
 The default implementation of `generate_alias_name` simply uses the supplied `alias` config (if present) as the model alias, otherwise falling back to the model name. This implementation looks like this:
 
+<VersionBlock lastVersion="1.4">
+
 <File name='get_custom_alias.sql'>
 
 ```jinja2
@@ -79,6 +82,45 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 ```
 
 </File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+<File name='get_custom_alias.sql'>
+
+```jinja2
+{% macro generate_alias_name(custom_alias_name=none, node=none) -%}
+
+    {%- if custom_alias_name -%}
+
+        {{ custom_alias_name | trim }}
+
+    {%- elif node.version -%}
+
+        {{ return(node.name ~ "_v" ~ (node.version | replace(".", "_"))) }}
+
+    {%- else -%}
+
+        {{ node.name }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
 
 ### Caveats
 
@@ -114,3 +156,21 @@ Compilation Error
 ```
 
 If these models should indeed have the same database identifier, you can work around this error by configuring a [custom schema](/docs/build/custom-schemas) for one of the models.
+
+#### Model versions
+
+<VersionBlock lastVersion="1.4">
+
+New in v1.5
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.5">
+
+**Related documentation:**
+- [Model versions](/docs/collaborate/govern/model-versions)
+- [`versions`](/reference/resource-properties/versions#alias)
+
+By default, dbt will create versioned models with the alias `<model_name>_v<v>`, where `<v>` is that version's unique identifier. You can customize this behavior just like for non-versioned models by configuring a custom `alias` or re-implementing the `generate_alias_name` macro.
+
+</VersionBlock>

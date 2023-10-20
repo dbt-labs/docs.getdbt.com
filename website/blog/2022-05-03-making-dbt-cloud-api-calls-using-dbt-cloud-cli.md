@@ -44,7 +44,7 @@ curl -H "Authorization:Token $DBT_CLOUD_API_TOKEN" -H "Content-Type:application/
 </TabItem>
 <TabItem value="dbt-cloud-cli">
 
-```js
+```
 dbt-cloud job run --job-id 43167
 ```
 
@@ -71,7 +71,7 @@ I modified the script according to our needs and wrapped it in a `dbt-cloud job 
 
 Now we had exactly what we wanted and our CI workflow in GitHub actions looked slick:
 
-```js
+```
 - name: Trigger dbt Cloud job run
   run: |
     ./cool_script_bro.sh
@@ -109,15 +109,15 @@ After the initial release I started to expand to cover the rest of the dbt Cloud
 
 In this example we’ll download a `catalog.json` artifact from the latest run of a dbt Cloud job using `dbt-cloud run list` and `dbt-cloud get-artifact` and then write a simple Data Catalog CLI application using the same tools that are used in `dbt-cloud-cli` (i.e., `click` and `pydantic`). Let’s dive right in!
 
-The first command we need is the `dbt-cloud run list` which uses an [API V4 endpoint](https://docs.getdbt.com/dbt-cloud/api-v4#operation/list-account-runs) that returns runs sorted by creation date, with the most recent run appearing first. The command returns a JSON response that has one top-level attribute `data` that contains a list of runs. We’ll need to extract the `id` attribute of the first one and to do that we use [jq](https://stedolan.github.io/jq/):
+The first command we need is the `dbt-cloud run list` which uses an [API endpoint](https://docs.getdbt.com/dbt-cloud/api-v2-legacy#/operations/List%20Runs) that returns runs sorted by creation date, with the most recent run appearing first. The command returns a JSON response that has one top-level attribute `data` that contains a list of runs. We’ll need to extract the `id` attribute of the first one and to do that we use [jq](https://stedolan.github.io/jq/):
 
-```js
+```
 latest_run_id=$(dbt-cloud run list --job-id $DBT_CLOUD_JOB_ID | jq .data[0].id -r)
 ```
 
 Next, we use the `dbt-cloud get-artifact` command to download the `catalog.json` artifact:
 
-```js
+```
 dbt-cloud run get-artifact --run-id $latest_run_id --path catalog.json -f catalog.json
 ```
 

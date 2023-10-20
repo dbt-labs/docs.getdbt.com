@@ -2,7 +2,10 @@ developer blog:
 - website/blog/**/*
 
 guides:
-- website/docs/docs/guides/**/*
+- website/docs/guides/**/*
+- website/docs/quickstarts/**/*
 
 content:
 - website/docs/**/*
+- website/snippets/**/*
+- website/static/**/*

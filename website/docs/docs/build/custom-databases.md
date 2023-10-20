@@ -28,7 +28,7 @@ This config changes all models in the `jaffle_shop` project to be built into a d
 name: jaffle_shop
 
 models:
-  my_project:
+  jaffle_shop:
     +database: jaffle_shop
 
     # For BigQuery users:
@@ -53,8 +53,6 @@ select * from ...
 </File>
 
 ### generate_database_name
-
-<Changelog>New in v0.16.0</Changelog>
 
 The database name generated for a model is controlled by a macro called `generate_database_name`. This macro can be overridden in a dbt project to change how dbt generates model database names. This macro works similarly to the [generate_schema_name](/docs/build/custom-schemas#advanced-custom-schema-configuration) macro.
 
@@ -86,6 +84,14 @@ The default implementation of `generate_database_name` simply uses the supplied 
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.6">
+
+### Managing different behaviors across packages
+
+See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch)
+
+</VersionBlock>
 
 ## Considerations
 

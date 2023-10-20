@@ -1,5 +1,6 @@
 ---
 datatype: string
+description: "Read this guide to understand the name configuration in dbt."
 required: True
 ---
 

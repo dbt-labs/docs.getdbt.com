@@ -1,0 +1,1 @@
+The following steps use `YOUR_AUTH0_URI` and `YOUR_AUTH0_ENTITYID`, which need to be replaced with the [appropriate Auth0 SSO URI and Auth0 Entity ID](/docs/cloud/manage-access/set-up-sso-saml-2.0#auth0-multi-tenant-uris) for your region.

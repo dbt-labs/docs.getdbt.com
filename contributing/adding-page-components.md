@@ -1,6 +1,6 @@
 ## Using warehouse components
 
-You can use the following components to provide code snippets for each supported warehouse. You can see a real-life example in the docs page, "[Initialize your database](/docs/get-started/getting-started/getting-set-up/setting-up-databricks#initialize-your-dbt-project)."
+You can use the following components to provide code snippets for each supported warehouse. You can see a real-life example in the docs page [Initialize your project](/quickstarts/databricks?step=6).
 
 Identify code by labeling with the warehouse names:
 
@@ -62,7 +62,7 @@ Identify code and code files by labeling with the component they are describing:
 
         ```yml
         models:
-        [<resource-path>](resource-path):
+        [<resource-path>](/reference/resource-configs/resource-path):
 
 
         ```
@@ -77,7 +77,7 @@ Identify code and code files by labeling with the component they are describing:
 
         ```yml
         sources:
-        [<resource-path>](resource-path):
+        [<resource-path>](/reference/resource-configs/resource-path):
 
 
         ```
@@ -87,4 +87,21 @@ Identify code and code files by labeling with the component they are describing:
         </TabItem>
 
         </Tabs>
+```
+
+### Link to tabbed content
+
+You can use the [queryString](https://docusaurus.io/docs/next/markdown-features/tabs?current-os=ios#query-string) prop in the `<Tabs>` tag. This allows you to share a link to a page with a pre-selected tab so that clicking on a tab creates a unique hyperlink for that tab. However, this feature doesn't provide an anchor link, which means the browser won't scroll to the tab. Additionally, you can define the search parameter name to use. If the tabs content is under a header, you can alternatively link to the header itself, instaed of the `queryString` prop.
+
+In the following example, clicking a tab adds a search parameter to the end of the URL: `?current-os=android or ?current-os=ios`.
+
+```
+<Tabs queryString="current-os">
+  <TabItem value="android" label="Android">
+    Android
+  </TabItem>
+  <TabItem value="ios" label="iOS">
+    iOS
+  </TabItem>
+</Tabs>
 ```

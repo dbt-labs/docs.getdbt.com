@@ -1,6 +1,8 @@
 ---
-title: "run_started_at"
+title: "About run_started_at variable"
+sidebar_label: "run_started_at"
 id: "run_started_at"
+description: "Use `run_started_at` to output the timestamp the run started."
 ---
 
 `run_started_at` outputs the timestamp that this run started, e.g. `2017-04-21 01:23:45.678`.

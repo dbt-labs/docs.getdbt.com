@@ -10,6 +10,8 @@ date: 2022-08-03
 is_featured: true
 ---
 
+*Editor's note — since the creation of this post, the package pre-commit-dbt's ownership has moved to another team and it has been renamed to [dbt-checkpoint](https://github.com/dbt-checkpoint/dbt-checkpoint). A redirect has been set up, meaning that the code example below will still work. It is also  possible to replace `repo: https://github.com/offbi/pre-commit-dbt` with `repo: https://github.com/dbt-checkpoint/dbt-checkpoint` in your `.pre-commit-config.yaml` file.*
+
 At dbt Labs, we have [best practices](https://docs.getdbt.com/docs/guides/best-practices) we like to follow for the development of dbt projects. One of them, for example, is that all models should have at least `unique` and `not_null` tests on their primary key. But how can we enforce rules like this?
 
 That question becomes difficult to answer in large dbt projects. Developers might not follow the same conventions. They might not be aware of past decisions, and reviewing pull requests in git can become more complex. When dbt projects have hundreds of models, it's hard to know which models do not have any tests defined and aren't enforcing your conventions. 
@@ -91,7 +93,7 @@ A normal next step after installing pre-commit is to run a `pre-commit install` 
 
 Instead, we can do a `pre-commit run --all-files`, which will run all the tests defined in our configuration file on all the files in our dbt project.
 
-[![Animation showing the output in the Terminal after running the above commands](https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF.svg)](https://asciinema.org/a/lTmefht77ZEr6kmP7DymaxjRF)
+![Animation showing the output in the Terminal after running the above commands](/img/blog/2022-07-26-pre-commit-dbt/pre-commit-run-all-files.gif)
 
 In my case, I can see that my model called `customers.sql` has not been added to any YAML file and has no test defined.
 
@@ -165,7 +167,7 @@ jobs:
     steps:
 
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
     # Using bash and pip to install dbt and pre-commit
     # Update the dbt installation command to include the adapter you need

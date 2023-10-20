@@ -34,7 +34,7 @@ Our friends at Astronomer answer this question with this example: [here](https:/
 
 Check out these two resources for accomplishing your own CI/CD pipeline:
 
-- [Continuous Integration with dbt Cloud](/docs/deploy/cloud-ci-job)
+- [Continuous Integration with dbt Cloud](/docs/deploy/continuous-integration)
 - [Astronomer's CI/CD Example](https://docs.astronomer.io/software/ci-cd/#example-cicd-workflow)
 
 ## 6. Can dbt dynamically create tasks in the DAG like Airflow can?

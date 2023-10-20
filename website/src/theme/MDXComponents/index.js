@@ -1,19 +1,17 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-import React, { isValidElement } from "react";
-import Head from "@docusaurus/Head";
-import CodeBlock from "@theme/CodeBlock";
-import Heading from "@theme/Heading";
-import Details from "@theme/Details";
-import "./styles.css"; // MDX elements are wrapped through the MDX pragma. In some cases (notably usage
-// with Head/Helmet) we need to unwrap those elements.
+import React from 'react';
+import MDXHead from '@theme/MDXComponents/Head';
+import MDXCode from '@theme/MDXComponents/Code';
+import MDXPre from '@theme/MDXComponents/Pre';
+import MDXDetails from '@theme/MDXComponents/Details';
+import MDXHeading from '@theme/MDXComponents/Heading';
+import MDXUl from '@theme/MDXComponents/Ul';
+import MDXImg from '@theme/MDXComponents/Img';
+import MDXA from '@theme/MDXComponents/A';
+import Admonition from '@theme/Admonition';
+import Mermaid from '@theme/Mermaid';
 
-/*
- * docs.getdbt.com additions:
+/* dbt Customizations:
+ * Imports the following components below for export
  */
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem'
@@ -25,7 +23,6 @@ import FAQ from '@site/src/components/faqs';
 import FAQList from '@site/src/components/faqList';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
-import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
@@ -34,76 +31,33 @@ import VersionBlock from '@site/src/components/versionBlock';
 import Var from '@site/src/components/variable';
 import Term from '@site/src/components/term';
 import EventsFeed from '@site/src/components/events';
-import { DiscourseFeed, DiscourseHelpFeed }  from '@site/src/components/discourse';
+import { DiscourseFeed, DiscourseHelpFeed } from '@site/src/components/discourse';
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
+import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
-
-function unwrapMDXElement(element) {
-  if (element?.props?.mdxType && element?.props?.originalType) {
-    const { mdxType, originalType, ...newProps } = element.props;
-    return React.createElement(element.props.originalType, newProps);
-  }
-
-  return element;
-}
+import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
+import CommunitySpotlightList from '@site/src/components/communitySpotlightList';
+import dbtEditor from '@site/src/components/dbt-editor';
 
 const MDXComponents = {
-  head: (props) => {
-    const unwrappedChildren = React.Children.map(props.children, (child) =>
-      unwrapMDXElement(child)
-    );
-    return <Head {...props}>{unwrappedChildren}</Head>;
-  },
-  code: (props) => {
-    const inlineElements = [
-      "a",
-      "b",
-      "big",
-      "i",
-      "span",
-      "em",
-      "strong",
-      "sup",
-      "sub",
-      "small",
-    ];
-    const shouldBeInline = React.Children.toArray(props.children).every(
-      (el) =>
-        (typeof el === "string" && !el.includes("\n")) ||
-        (React.isValidElement(el) && inlineElements.includes(el.props.mdxType))
-    );
-    return shouldBeInline ? <code {...props} /> : <CodeBlock {...props} />;
-  },
-  a: (props) => <Link {...props} />,
-  pre: (props) => (
-    <CodeBlock // If this pre is created by a ``` fenced codeblock, unwrap the children
-      {...(isValidElement(props.children) &&
-      props.children.props.originalType === "code"
-        ? props.children?.props
-        : { ...props })}
-    />
-  ),
-  details: (props) => {
-    const items = React.Children.toArray(props.children); // Split summary item from the rest to pass it as a separate prop to the
-    // Details theme component
-
-    const summary = items.find((item) => item?.props?.mdxType === "summary");
-    const children = <>{items.filter((item) => item !== summary)}</>;
-    return (
-      <Details {...props} summary={summary}>
-        {children}
-      </Details>
-    );
-  },
-  h1: (props) => <Heading as="h1" {...props} />,
-  h2: (props) => <Heading as="h2" {...props} />,
-  h3: (props) => <Heading as="h3" {...props} />,
-  h4: (props) => <Heading as="h4" {...props} />,
-  h5: (props) => <Heading as="h5" {...props} />,
-  h6: (props) => <Heading as="h6" {...props} />,
+  head: MDXHead,
+  code: MDXCode,
+  a: MDXA,
+  pre: MDXPre,
+  details: MDXDetails,
+  ul: MDXUl,
+  img: MDXImg,
+  h1: (props) => <MDXHeading as="h1" {...props} />,
+  h2: (props) => <MDXHeading as="h2" {...props} />,
+  h3: (props) => <MDXHeading as="h3" {...props} />,
+  h4: (props) => <MDXHeading as="h4" {...props} />,
+  h5: (props) => <MDXHeading as="h5" {...props} />,
+  h6: (props) => <MDXHeading as="h6" {...props} />,
+  admonition: Admonition,
+  mermaid: Mermaid,
 
   BlogPostCard: BlogPostCard,
   Callout: Callout,
@@ -111,12 +65,12 @@ const MDXComponents = {
   Changelog: Changelog,
   CloudCore: CloudCore,
   Collapsible: Collapsible,
+  DocCarousel: DocCarousel,
   FAQ: FAQ,
   FAQList: FAQList,
   File: File,
   Hero: Hero,
   Lightbox: Lightbox,
-  Link: Link,
   LoomVideo: LoomVideo,
   PostCarousel: PostCarousel,
   Tabs: Tabs,
@@ -131,6 +85,8 @@ const MDXComponents = {
   EventsFeed: EventsFeed,
   DiscourseFeed: DiscourseFeed,
   DiscourseHelpFeed: DiscourseHelpFeed,
-  Card: Card,
+  CommunitySpotlightCard,
+  CommunitySpotlightList,
+  dbtEditor: dbtEditor,
 };
 export default MDXComponents;

@@ -1,6 +1,8 @@
 ---
-title: "exceptions"
+title: "About exceptions namespace"
+sidebar_label: "exceptions"
 id: "exceptions"
+description: "Raise warnings/errors with the `exceptions` namespace."
 ---
 
 The `exceptions` namespace can be used to raise warnings and errors in dbt userspace.
@@ -23,7 +25,7 @@ __Example usage__:
 
 ## warn
 
-The `exceptions.warn` method will raise a compiler warning with the provided message. If the `--warn-error`  flag is provided to dbt, then this warning will be elevated to an exception, which is raised.
+The `exceptions.warn` method will raise a compiler warning with the provided message, but any model will still be successful and be treated as a PASS. If the `--warn-error`  flag is provided to dbt, then this warning will be elevated to an exception, which is raised.
 
 __Example usage__:
 

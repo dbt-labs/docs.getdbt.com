@@ -38,10 +38,8 @@ export const DiscourseFeed = ({
         setLoading(true)
         setIsError(false)
 
-        // Build Netlify Function endpoint
-        const endpoint = window?.location?.hostname?.includes('localhost')
-          ? 'http://localhost:8888/.netlify/functions/get-discourse-topics'
-          : '/.netlify/functions/get-discourse-topics'
+        // Build function endpoint
+        const endpoint = `/api/get-discourse-topics`
 
         // If 'after' prop not passed in, set relative after date
         let afterDate = after
@@ -96,7 +94,7 @@ export const DiscourseFeed = ({
   // Set initial min-height
   // This is to avoid layout shifts
   // which affects Lighthouse performance scores
-  const setMinHeight = isError
+  const setMinHeight = isError || !topics?.length > 0
     ? 'auto'
     : 414
   
@@ -147,7 +145,7 @@ export const DiscourseFeed = ({
         </ul>
       )}
       {show_cta && (
-        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" data-testid='feed-cta'>{link_text}</a>
+        <a className={`button button--primary ${feedStyles.discourseCta}`} href={link_href} title={link_text} target="_blank" rel="noopener noreferrer" data-testid='feed-cta'>{link_text}</a>
       )}
     </div>
   )
@@ -201,7 +199,7 @@ export const DiscourseHelpFeed = ({
 function TopicWrapper({ topic, children }) {
   if(topic?.slug && topic?.id) {
     return (
-      <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank">{children}</a>
+      <a href={`https://discourse.getdbt.com/t/${topic.slug}/${topic.id}`} title={topic.title} target="_blank" rel="noopener noreferrer">{children}</a>
     )
   } else {
     return (

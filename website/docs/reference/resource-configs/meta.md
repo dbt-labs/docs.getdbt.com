@@ -4,12 +4,6 @@ datatype: "{<dictionary>}"
 default_value: {}
 ---
 
-<Changelog>
-
-* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` yaml property for some resource types. It is applied hierarchically and merges on a per-key basis.
-
-</Changelog>
-
 <Tabs
   defaultValue="models"
   values={[
@@ -20,6 +14,8 @@ default_value: {}
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
+    { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic Models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -46,7 +42,7 @@ The `meta` config can also be defined:
 - under the `models` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a model's SQL file
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -59,11 +55,13 @@ version: 2
 
 sources:
   - name: model_name
-    meta: {<dictionary>}
+    config:
+      meta: {<dictionary>}
 
     tables:
       - name: table_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>}
 
         columns:
           - name: column_name
@@ -95,7 +93,7 @@ seeds:
 
 </File>
 
-The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](configs-and-properties) for details.
+The `meta` config can also be defined under the `seeds` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
 
 </TabItem>
 
@@ -123,7 +121,13 @@ The `meta` config can also be defined:
 - under the `snapshots` config block in `dbt_project.yml`
 - in a `config()` Jinja macro within a snapshot's SQL block
 
-See [configs and properties](configs-and-properties) for details.
+See [configs and properties](/reference/configs-and-properties) for details.
+
+</TabItem>
+
+<TabItem value="tests">
+
+You can't add YAML `meta` configs for [generic tests](/docs/build/tests#generic-tests). However, you can add `meta` properties to [singular tests](/docs/build/tests#singular-tests) using `config()` at the top of the test file. 
 
 </TabItem>
 
@@ -146,7 +150,6 @@ macros:
 
     arguments:
       - name: argument_name
-        meta: {<dictionary>}
 
 ```
 
@@ -171,6 +174,34 @@ exposures:
 
 </TabItem>
 
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7"> 
+
+<File name='semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_people
+    model: ref('people')
+    config:
+      meta: {<dictionary>}
+
+```
+The `meta` configuration can be nusted under the `config` key. 
+
+</File>
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
@@ -178,12 +209,6 @@ The `meta` field can be used to set metadata for a resource. This metadata is co
 
 Depending on the resource you're configuring, `meta` may be available within the `config` property, or as a top-level key. (For backwards compatibility, `meta` is always supported as a top-level key, though without the capabilities of config inheritance.)
 
-<Changelog>
-
-* `v0.16.0`: This property was introduced
-* `v0.21.0`: Introduced the `config` property, and gave `meta` the capabilities of a config
-
-</Changelog>
 
 ## Examples
 ### Designate a model owner
@@ -268,3 +293,4 @@ models:
 ```
 
 </File>
+

@@ -300,7 +300,7 @@ You’re all done! Now it’s time to test that things work:
 
 ## Conclusion
 
-It’s important to remember that CI/CD is a convenience, not a panacea. You must still devise the model logic and determine the appropriate tests. Some things it can do, though: catch more mistakes early, make sure that the database always reflects the most up-to-date code, and decrease the friction in collaboration. By automating the steps that should *always* be taken, it frees you up to think about the unusual steps required (e.g., do your changes to [incremental models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models) require an additional deployment with `--full-refresh`?) and reduces the amount of review that others’ actions necessitate.
+It’s important to remember that CI/CD is a convenience, not a panacea. You must still devise the model logic and determine the appropriate tests. Some things it can do, though: catch more mistakes early, make sure that the database always reflects the most up-to-date code, and decrease the friction in collaboration. By automating the steps that should *always* be taken, it frees you up to think about the unusual steps required (e.g., do your changes to [incremental models](https://docs.getdbt.com/docs/build/incremental-models) require an additional deployment with `--full-refresh`?) and reduces the amount of review that others’ actions necessitate.
 
 Plus, it’s a good time, and it’s fun to watch the test lights turn green. Ding!
 

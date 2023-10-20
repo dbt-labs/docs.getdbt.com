@@ -3,13 +3,6 @@ resource_types: [tests]
 datatype: string
 ---
 
-<Changelog>
-
-* `v0.20.0`: Introduced `where` config
-* `v0.21.0`: Introduced `config` property for tests. Reimplemented `where` config with `get_where_subquery` macro
-
-</Changelog>
-
 ### Definition
 
 Filter the resource being tested (model, source, seed, or snapshot).
@@ -57,6 +50,10 @@ models:
               values: ["a", "b", "c"]
               config:
                 where: "date_column = current_date"
+      - name: other_column
+        tests:
+          - not_null:
+              where: "date_column < current_date"
 ```
 
 </File>
@@ -123,6 +120,8 @@ tests:
 
 ### Custom logic
 
+The rendering context for the `where` config is the same as for all configurations defined in `.yml` files. You have access to `{{ var() }}` and `{{ env_var() }}`, but you **do not** have access to custom macros for setting this config. If you do want to use custom macros to template out the `where` filter for certain tests, there is a workaround.
+
 As of v0.21, dbt defines a [`get_where_subquery` macro](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/materializations/tests/where_subquery.sql).
 
 dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subquery(relation) }}`, where `relation` is a `ref()` or `source()` for the resource being tested. The default implementation of this macro returns:
@@ -131,4 +130,47 @@ dbt replaces `{{ model }}` in generic test definitions with `{{ get_where_subque
 
 You can override this behavior by:
 - Defining a custom `get_where_subquery` in your root project
-- Defining a custom `<adapter>__get_where_subquery` [dispatch candidate](dispatch) in your package or adapter plugin
+- Defining a custom `<adapter>__get_where_subquery` [dispatch candidate](/reference/dbt-jinja-functions/dispatch) in your package or adapter plugin
+
+Within this macro definition, you can reference whatever custom macros you want, based on static inputs from the configuration. At simplest, this enables you to DRY up code that you'd otherwise need to repeat across many different `.yml` files. Because the `get_where_subquery` macro is resolved at runtime, your custom macros can also include [fetching the results of introspective database queries](https://docs.getdbt.com/reference/dbt-jinja-functions/run_query).
+
+**Example:** Filter your test to the past three days of data, using dbt's cross-platform [`dateadd()`](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#dateadd) utility macro.
+
+<File name='models/config.yml'>
+
+```yml
+version: 2
+models:
+  - name: my_model
+    columns:
+      - name: id
+        tests:
+          - unique:
+              config:
+                where: "date_column > __three_days_ago__"  # placeholder string for static config
+```
+
+</File>
+
+<File name='macros/custom_get_where_subquery.sql'>
+
+```sql
+{% macro get_where_subquery(relation) -%}
+    {% set where = config.get('where') %}
+    {% if where %}
+        {% if "__three_days_ago__" in where %}
+            {# replace placeholder string with result of custom macro #}
+            {% set three_days_ago = dbt.dateadd('day', -3, current_timestamp()) %}
+            {% set where = where | replace("__three_days_ago__", three_days_ago) %}
+        {% endif %}
+        {%- set filtered -%}
+            (select * from {{ relation }} where {{ where }}) dbt_subquery
+        {%- endset -%}
+        {% do return(filtered) %}
+    {%- else -%}
+        {% do return(relation) %}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+</File>

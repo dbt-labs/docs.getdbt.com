@@ -1,16 +1,15 @@
 import React from 'react';
 import styles from './styles.module.css';
-import { useColorMode } from '@docusaurus/theme-common';
 
-
-function Hero({ heading, subheading, showGraphic = false }) {
-  const { isDarkTheme } = useColorMode();
+function Hero({ heading, subheading, showGraphic = false, customStyles = {}, classNames = '', colClassNames = '' }) {
   return (
-    <header className={` ${styles.Hero} container-fluid`}>
-      <div className={styles.showGraphic}></div>
+    <header className={` ${styles.Hero} container-fluid ${classNames ? classNames : ''}`} style={customStyles && customStyles}>
+      {showGraphic && (
+        <div className={styles.showGraphic}></div>
+      )}
       <div className={`container`}>
         <div className="row justify-content-center">
-          <div className="col col--7">
+          <div className={`col col--7 ${colClassNames ? colClassNames : ''}`}>
             <h1>{heading}</h1>
             <p>{subheading}</p>
           </div>

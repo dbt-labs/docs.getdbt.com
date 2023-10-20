@@ -1,11 +1,11 @@
-name: Improve the docs.getdbt.com site
-description: Make a suggestion or report a problem about the technical implementation of docs.getdbt.com.
-labels: ["engineering"]
+name: Report a docs.getdbt.com site issue
+description: Report a problem about the technical implementation of docs.getdbt.com.
+labels: ["engineering","bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        * You can ask questions or submit ideas for the dbt docs in [Discussions](https://github.com/dbt-labs/docs.getdbt.com/discussions)
+        * You can ask questions or submit ideas for the dbt docs in [Issues](https://github.com/dbt-labs/docs.getdbt.com/issues/new/choose)
         * Before you file an issue read the [Contributing guide](https://github.com/dbt-labs/docs.getdbt.com#contributing).
         * Check to make sure someone hasn't already opened a similar [issue](https://github.com/dbt-labs/docs.getdbt.com/issues).
 

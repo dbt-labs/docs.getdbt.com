@@ -27,7 +27,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  flex-flow: wrap;
+  overflow-wrap: anywhere;
 }
 
 .imageContentContainer {
@@ -47,6 +47,10 @@
 .cardWrapper a:hover {
   text-decoration: none;
 }
+.cardWrapper h3 {
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
 
 [data-theme='dark'] a.ctaLink {
   color: #fff;
@@ -65,5 +69,10 @@ a.ctaLink:after {
 
 .icon {
   margin-bottom: 0.5rem;
-  max-width: 50px;
+  max-width: 25px;
 }
+
+.readingTime {
+  margin-bottom: 1.5rem;
+}
+

@@ -1,6 +1,8 @@
 ---
-title: "return"
+title: "About return function"
+sidebar_variable: "return"
 id: "return"
+description: "Read this guide to understand the return Jinja function in dbt."
 ---
 
 __Args__:
@@ -9,7 +11,7 @@ __Args__:
 
 The `return` function can be used in macros to return data to the caller. The type of the data (dict, list, int, etc) will be preserved through the `return` call.
 
-<File name='macros/example.sql'>
+<File name='macros/get_data.sql'>
 
 ```sql
 {% macro get_data() %}
@@ -29,7 +31,7 @@ The `return` function can be used in macros to return data to the caller. The ty
 
 select
   -- getdata() returns a list!
-  {% for i in getdata() %}
+  {% for i in get_data() %}
     {{ i }}
     {% if not loop.last %},{% endif %}
   {% endfor %}

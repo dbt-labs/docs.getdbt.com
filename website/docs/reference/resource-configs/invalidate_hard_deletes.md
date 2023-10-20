@@ -1,9 +1,9 @@
 ---
 resource_types: [snapshots]
+description: "Invalidate_hard_deletes - Read this in-depth guide to learn about configurations in dbt."
 datatype: column_name
 ---
 
-<Changelog>New in v0.19.0</Changelog>
 <File name='snapshots/<filename>.sql'>
 
 ```jinja2
@@ -22,7 +22,7 @@ datatype: column_name
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: timestamp
     +invalidate_hard_deletes: true
 

@@ -29,7 +29,10 @@
     margin-bottom: 10px;
     padding: 20px;
     background-color: #e3f8f8;
-    color: var(--ifm-color-gray-900);
+}
+
+:local(html[data-theme='dark'] .body) {
+  background: #333b47;
 }
 
 :local(.body > p:last-child) {

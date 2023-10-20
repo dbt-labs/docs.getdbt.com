@@ -4,7 +4,6 @@ description: "Coalesce is less than 2 months away!"
 slug: dbt-product-update-2022-august
 authors: [lauren_craigie] 
 
-tags: [dbt updates]
 hide_table_of_contents: false
 
 date: 2022-08-31
@@ -23,7 +22,7 @@ You’ll hear more in [Tristan’s keynote](https://coalesce.getdbt.com/agenda/k
 
 ## **What's new**
 
-- **dbt Core v1.3 beta:** Do you use Python for analytics? The first beta prerelease of dbt Core v1.3—including support for dbt models written in Python—is [ready to explore](https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.3)! Check it out, and read more about dbt supported Python models [in our docs](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models).
+- **dbt Core v1.3 beta:** Do you use Python for analytics? The first beta prerelease of dbt Core v1.3—including support for dbt models written in Python—is [ready to explore](https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.3)! Check it out, and read more about dbt supported Python models [in our docs](/docs/build/python-models).
 - **Technology Partner Program:** We just launched our new [Technology Partner Program](https://www.getdbt.com/blog/dbt-labs-technology-partner-program/) with 40+ friends in the Modern Data Stack to provide consistent support for seamless integrations joint-users can trust. Check our new [dbt Cloud integrations page](http://www.getdbt.com/product/integrations) for what’s available today!
 - **Single-tenant users:** dbt Cloud v1.1.60 is now available on dbt Cloud Enterprise.
 
@@ -54,7 +53,7 @@ You’ll hear more in [Tristan’s keynote](https://coalesce.getdbt.com/agenda/k
 
 I just discovered the treasure trove of excellent resources from dbt Labs consulting partners, and want to start sharing more here. Here’s a few you might have missed over the summer:
 
-- **Reduce ETL costs:** I’ve only just seen [this blog](https://www.mighty.digital/blog/how-dbt-helped-us-reduce-our-etl-costs-significantly) from Mighty Digital, but found it to be a super practical (and concise) introductory guide to rethinking your ETL pipeline with dbt.
+- **Reduce ETL costs:** I’ve only just seen [this blog](https://www.mighty.digital/blog/how-dbt-helped-us-reduce-our-etl-costs-significantly) from Mighty Digital, but found it to be a super practical (and concise) introductory guide to rethinking your <Term id="etl">ETL pipeline</Term> with dbt.
 - **Explore data:** [Part two of a series on exploring data](https://vivanti.com/2022/07/28/exploring-data-with-dbt-part-2-extracting/) brought to you by Vivanti. This post focuses on working with <Term id="json" /> objects in dbt, but I also recommend the preceding post if you want to see how they spun up their stack.
 - **Track historical changes:** [](https://blog.montrealanalytics.com/using-dbt-snapshots-with-dev-prod-environments-e5ed63b2c343)Snapshots are a pretty handy feature for tracking changes in dbt, but they’re often overlooked during initial onboarding. [Montreal Analytics explains how to set them up](https://blog.montrealanalytics.com/using-dbt-snapshots-with-dev-prod-environments-e5ed63b2c343) in dev/prod environments
 - **Learn dbt:** Have some new faces on the data team that might need an introduction to dbt? Our friends at GoDataDriven are hosting a [virtual dbt Learn Sept 12-14](https://www.tickettailor.com/events/dbtlabs/752537).

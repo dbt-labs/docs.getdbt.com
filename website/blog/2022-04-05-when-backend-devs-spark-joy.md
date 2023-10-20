@@ -65,7 +65,7 @@ Analytics engineers can catch release changes that may break their models prior 
 
 **Don’t forget the documentation.**
 
-Regularly maintained and well-written documentation for backend application database tables helps analytics engineers and backend developers alike unpack complex data and data models. Documentation for backend application database tables might look like an entity relationship diagram (ERD) or an ERD supplemented with a living text-document providing greater detail into tables and fields. Furthermore, strong documentation helps analytics engineers write more descriptive [documentation for source models in dbt](https://docs.getdbt.com/docs/building-a-dbt-project/using-sources#testing-and-documenting-sources).
+Regularly maintained and well-written documentation for backend application database tables helps analytics engineers and backend developers alike unpack complex data and data models. Documentation for backend application database tables might look like an entity relationship diagram (ERD) or an ERD supplemented with a living text-document providing greater detail into tables and fields. Furthermore, strong documentation helps analytics engineers write more descriptive [documentation for source models in dbt](/docs/build/sources#testing-and-documenting-sources).
 
 ## A match made in heaven
 

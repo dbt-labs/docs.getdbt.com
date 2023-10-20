@@ -1,5 +1,6 @@
 ---
 resource_types: [snapshots]
+description: "Strategy - Read this in-depth guide to learn about configurations in dbt."
 datatype: timestamp | check
 ---
 
@@ -34,7 +35,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: timestamp
     +updated_at: column_name
 
@@ -66,7 +67,7 @@ snapshots:
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +strategy: check
     +check_cols: [column_name] | all
 
@@ -79,7 +80,7 @@ snapshots:
 </Tabs>
 
 ## Description
-The snapshot strategy dbt should use to detect record changes. Read the guide to [snapshots](snapshots#detecting-row-changes) to understand the differences between the two.
+The snapshot strategy dbt should use to detect record changes. Read the guide to [snapshots](/docs/build/snapshots#detecting-row-changes) to understand the differences between the two.
 
 ## Default
 This is a **required configuration**. There is no default value.
@@ -136,7 +137,7 @@ Behind the scenes, snapshot strategies are implemented as macros, named `snapsho
 
 It's possible to implement your own snapshot strategy by adding a macro with the same naming pattern to your project. For example, you might choose to create a strategy which records hard deletes, named `timestamp_with_deletes`.
 
-1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code a guide and adjust as needed.
+1. Create a macro named `snapshot_timestamp_with_deletes_strategy`. Use the existing code as a guide and adjust as needed.
 2. Use this strategy via the `strategy` configuration:
 
 <File name='snapshots/<filename>.sql'>

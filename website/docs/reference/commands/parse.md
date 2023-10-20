@@ -1,34 +1,24 @@
 ---
-title: "parse"
+title: "About dbt parse command"
+sidebar_label: "parse"
+description: "Read this guide on how dbt's parse command can be used to parse your dbt project and write detailed timing information."
 id: "parse"
 ---
 
-<Changelog>
+The `dbt parse` command parses and validates the contents of your dbt project. If your project contains Jinja or YAML syntax errors, the command will fail.
 
-New in `v0.19.0`
+It will also produce an artifact with detailed timing information, which is useful to understand parsing times for large projects. Refer to [Project parsing](/reference/parsing) for more information.
 
-</Changelog>
+<VersionBlock firstVersion="1.5">
 
-## Overview
+Starting in v1.5, `dbt parse` will write or return a [manifest](/reference/artifacts/manifest-json), enabling you to introspect dbt's understanding of all the resources in your project.
 
-The `dbt parse` command parses your dbt project and writes detailed timing information. If your project contains Jinja or YAML syntax errors, the command will fail.
+</VersionBlock>
 
-### Usage
 ```
 $ dbt parse
-Running with dbt=0.19.0
-11:53:29 | Start parsing.
-11:53:29 | Macro manifest loaded
-11:53:29 | Dependencies loaded
-11:53:29 | ManifestLoader created
-11:53:29 | Manifest loaded
-11:53:29 | Parse results written
-11:53:29 | Manifest created
-11:53:29 | Manifest checked
-11:53:29 | Flat graph built
-11:53:29 | Manifest loaded
-11:53:29 | Performance info: target/perf_info.json
-11:53:29 | Done.
+13:02:52  Running with dbt=1.5.0
+13:02:53  Performance info: target/perf_info.json
 ```
 
 <File name='target/perf_info.json'>

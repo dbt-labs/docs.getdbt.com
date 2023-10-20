@@ -7,7 +7,7 @@ id: "contributing-coding"
 
 #### Overview
 
-[dbt Packages](https://docs.getdbt.com/docs/building-a-dbt-project/package-management) are the easiest way for analytics engineers to get involved with contributing code to the dbt Community, because dbt Packages are just standard [dbt Projects](https://docs.getdbt.com/docs/building-a-dbt-project/projects). If you can create a dbt Project, write a macro, and ref a model: you can make a dbt Package. Packages function much like libraries do in other programming languages. They allow for prewritten, modularized development of code to solve common problems in analytics engineering. You can view all dbt Packages on the [dbt Package Hub](https://hub.getdbt.com/).
+[dbt Packages](https://docs.getdbt.com/docs/build/packages) are the easiest way for analytics engineers to get involved with contributing code to the dbt Community, because dbt Packages are just standard [dbt Projects](/docs/build/projects). If you can create a dbt Project, write a macro, and ref a model: you can make a dbt Package. Packages function much like libraries do in other programming languages. They allow for prewritten, modularized development of code to solve common problems in analytics engineering. You can view all dbt Packages on the [dbt Package Hub](https://hub.getdbt.com/).
 
 #### Contribution opportunities
 
@@ -48,7 +48,7 @@ There are three primary ways to contribute to the dbt OSS projects. We’ll use 
 
 #### Get started
 
-- Read the dbt Core [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Open Source Software Expectations](https://docs.getdbt.com/docs/contributing/oss-expectations).
+- Read the dbt Core [contribution guide](https://github.com/dbt-labs/dbt-core/blob/main/CONTRIBUTING.md) and the [Open Source Software Expectations](/community/resources/oss-expectations).
 - If contributing to dbt Core, find an issue labeled “[good first issue](https://github.com/dbt-labs/dbt-core/issues?q=is%3Aopen+is%3Aissue+label%3Agood_first_issue)”, or look for similar labels on other repositories. If in doubt, also feel free to ask the maintainers for a good first issue, they’ll be excited to welcome you!
 
 #### Need help?

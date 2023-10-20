@@ -82,7 +82,7 @@ This boils down to the following steps:
 1. Get rid of dupes if needed
 2. Snapshot your data tables 
 3. Future-proof your `valid_to` dates
-4. Join all your tables to build a fanned out spine containing the grain ids onto which we will join the rest of the data
+4. Join your non-matching grain tables to build a fanned out spine containing the grain ids onto which we will join the rest of the data
 5. Join the snapshots to the data spine on the appropriate id in overlapping timespans, narrowing the valid timespans per row as more tables are joined
 6. Clean up your columns in final <Term id="cte" />
 7. Optional addition of global variable to filter to current values only 
@@ -152,15 +152,15 @@ coalesce(dbt_valid_to, cast('{{ var("future_proof_date") }}' as timestamp)) as v
 
 You will thank yourself later for building in a global variable. Adding important global variables will set your future-self up for success. Now, you can filter all your data to the current state by just filtering on `where valid_to = future_proof_date`*.* You can also ensure that all the data-bears with their data-paws in the data-honey jar are referencing the **same** `future_proof_date`, rather than `9998-12-31`, or `9999-12-31`, or `10000-01-01`, which will inevitably break something eventually. You know it will; don’t argue with me! Global vars for the win!
 
-## Step 4: Join all your tables together to build a fanned out id spine
+## Step 4: Join your tables together to build a fanned out id spine
 
 :::important What happens in this step?
-Step 4 walks you through how to do your first join, in which you need to fan out the data spine to the finest grain possible and to include all the id onto which we will join the rest of the data. This step is crucial to joining the snapshots in subsequent steps.
+Step 4 walks you through how to do your first join, in which you need to fan out the data spine to the finest grain possible and to include the id onto which we will join the rest of the data. This step is crucial to joining the snapshots in subsequent steps.
 :::
 
-Let’s look at how we’d do this with an example. You may have many events associated with a single `product_id`. Each `product_id` may have several `order_ids`, and each `order_id` may have another id associated with it. Which means that the grain of each table needs to be identified. The point here is that we need to build in an id at the finest grain. To do so, we’ll add in a [dbt_utils.surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/surrogate_key.sql) in the staging models that live on top of the snapshot tables. 
+Let’s look at how we’d do this with an example. You may have many events associated with a single `product_id`. Each `product_id` may have several `order_ids`, and each `order_id` may have another id associated with it. Which means that the grain of each table needs to be identified. The point here is that we need to build in an id at the finest grain. To do so, we’ll add in a [dbt_utils.generate_surrogate_key](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/generate_surrogate_key.sql) in the staging models that live on top of the snapshot tables. 
 
-Then, in your joining model, let’s add a CTE to build out our spine with all of our ids. 
+Then, in your joining model, let’s add a CTE to build out our spine with our ids of these different grains. 
 
 ```sql
 build_spine as (
@@ -178,7 +178,7 @@ left join
 ... )
 ```
 
-The result will be all the columns from your first table, fanned out as much as possible by the added id columns. We will use these id columns to join the historical data from our tables. 
+The result will be all the columns from your first table, fanned out as much as possible by the added `id` columns. We will use these `id` columns to join the historical data from our tables. It is extremely important to note that if you have tables as part of this pattern that are captured at the same grain as the original table, you **do not** want to join in that table and id as part of the spine. It will fan-out _too much_ and cause duplicates in your data. Instead, simply join the tables with the same grain as the original table (in this case, `historical_table_1` on `product_id`) in the next step, using the macro. 
 
 | product_id | important_status | dbt_valid_from | dbt_valid_to | product_order_id |
 | --- | --- | --- | --- | --- |
@@ -225,16 +225,14 @@ Your parameters are `cte_join`, the table that is creating the spine of your fin
   
    from {{cte_join}}
    left join {{cte_join_on}} on {{cte_join}}.{{cte_join_id}} = {{cte_join_on}}.{{cte_join_on_id}}
-       and (({{cte_join_on}}.{{cte_join_on_valid_from}} >= {{cte_join}}.{{cte_join_valid_from}}
-       and {{cte_join_on}}.{{cte_join_on_valid_from}} < {{cte_join}}.{{cte_join_valid_to}})
-       or ({{cte_join_on}}.{{cte_join_on_valid_to}} >= {{cte_join}}.{{cte_join_valid_from}}
-       and {{cte_join_on}}.{{cte_join_on_valid_to}} < {{cte_join}}.{{cte_join_valid_to}}))
+      and ({{cte_join_on}}.{{cte_join_on_valid_from}} <= {{cte_join}}.{{cte_join_valid_to}}
+      and {{cte_join_on}}.{{cte_join_on_valid_to}} >= {{cte_join}}.{{cte_join_valid_from}})
       
   
 {% endmacro %}
 ```
 
-The joining logic finds where the ids match and where the timestamps overlap between the two tables. We use the **greatest** `valid_from` and the **least** `valid_to` between the two tables to ensure that the new, narrowed timespan for the row is when the rows from both tables are valid.
+The joining logic finds where the ids match and where the timestamps overlap between the two tables. We use the **greatest** `valid_from` and the **least** `valid_to` between the two tables to ensure that the new, narrowed timespan for the row is when the rows from both tables are valid. _**Update: Special thank you to Allyn Opitz for simplifying this join logic! It's so much prettier now.**_
 
 You should see something like this as your end result:
 

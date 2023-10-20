@@ -4,8 +4,7 @@ description: "Going polyglot is a major next step in the journey of dbt Core. It
 slug: polyglot-dbt-python-dataframes-sql
 
 authors: [doug_beatty]
-
-tags: [dbt product updates]
+tags: [dbt tutorials]
 hide_table_of_contents: false
 
 date: 2022-10-18
@@ -59,7 +58,7 @@ Gaining **your own** sense of these differences will empower you to create your 
 
 ## Comparing dataframe libraries
 
-Before we get into our hands-on example, let’s take a look at the nuts and bolts of getting your project working with different dataframe types. Multiple data platforms and dataframe libraries are supported in dbt Core as of version 1.3, but not uniformly (see compatibility table below). See [here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models#specific-data-platforms) for platform-specific setup instructions.
+Before we get into our hands-on example, let’s take a look at the nuts and bolts of getting your project working with different dataframe types. Multiple data platforms and dataframe libraries are supported in dbt Core as of version 1.3, but not uniformly (see compatibility table below). See [here](/docs/build/python-models) for platform-specific setup instructions.
 
 | **Type of data frame**     | **Snowflake**                      | **Databricks**                    | **BigQuery**  |
 |----------------------------|------------------------------------|-----------------------------------|---------------|
@@ -72,7 +71,7 @@ Before we get into our hands-on example, let’s take a look at the nuts and bol
 <details>
   <summary>More detailed comparisons and trade-offs</summary>
 
-Snowpark DataFrames are only supported in Snowflake, while Spark DataFrames are only available on Databricks and BigQuery. It’s also worth keeping in mind that different types of dataframes use [different syntax](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/python-models#dataframe-api-and-syntax).
+Snowpark DataFrames are only supported in Snowflake, while Spark DataFrames are only available on Databricks and BigQuery. It’s also worth keeping in mind that different types of dataframes use [different syntax](/docs/build/python-models#dataframe-api-and-syntax).
 
 We’ve intentionally not included Jinja within Python models: a primary use of Jinja is for control flow and accessing dynamic-esque variables both of which you can just do within Python! The other main use for Jinja within dbt is for creating abstractions across differing database syntaxes. At this time, there’s no unified syntax abstraction across the different types of dataframes. (But someone will probably [make one](https://xkcd.com/927/)!)
 

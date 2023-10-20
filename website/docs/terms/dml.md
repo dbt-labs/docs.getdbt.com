@@ -85,7 +85,7 @@ UPDATE orders SET status = 'returned' WHERE order_id = 7;
 ```
 
 :::tip Tip
-The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. You'll see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/configuring-incremental-models#how-do-incremental-models-work-behind-the-scenes).
+The `UPDATE` statement is often compared to the `MERGE` statement. With `MERGE` statements, you can insert, update, *and* delete records in a single command. Merges are often utilized when there is data between two tables that needs to be reconciled or updated. You'll see merges most commonly executed when a source table is updated and a downstream table needs to be updated as a result of this change. Learn more about [how dbt uses merges in incremental models here](https://docs.getdbt.com/docs/build/incremental-models#how-do-incremental-models-work-behind-the-scenes).
 :::
 
 ## Conclusion

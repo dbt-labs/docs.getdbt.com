@@ -6,13 +6,7 @@ id: configurable-model-path
 
 ---
 
-<Changelog>
-
-- **v1.0.0:** The config 'source-path' has been deprecated in favor of [`model-paths`](model-paths).
-
-</Changelog>
-
-By default, dbt expects your seed files to be located in the `models` subdirectory of your project.
+By default, dbt expects the files defining your models to be located in the `models` subdirectory of your project.
 
 To change this, update the [model-paths](reference/project-configs/model-paths.md) configuration in your `dbt_project.yml`
 file, like so:

@@ -6,7 +6,7 @@ export default function getAllPosts() {
    */
   return ((ctx) => {
     const blogpostNames = ctx.keys();
-    return blogpostNames.reduce((blogposts, blogpostName, i) => {
+    return blogpostNames.reduce((blogposts, blogpostName) => {
       const module = ctx(blogpostName);
       const { image } = module.frontMatter
       const { date, formattedDate, title, permalink, authors, description, tags } = module.metadata;

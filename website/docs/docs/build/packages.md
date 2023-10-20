@@ -3,7 +3,7 @@ title: "Packages"
 id: "packages"
 ---
 
-## What is a package?
+
 Software engineers frequently modularize code into libraries. These libraries help programmers operate with leverage: they can spend more time focusing on their unique business logic, and less time implementing code that someone else has already spent the time perfecting.
 
 In dbt, libraries like these are called _packages_. dbt's packages are so powerful because so many of the analytic problems we encountered are shared across organizations, for example:
@@ -22,12 +22,24 @@ dbt _packages_ are in fact standalone dbt projects, with models and macros that 
 * Models in the package will be materialized when you `dbt run`.
 * You can use `ref` in your own models to refer to models from the package.
 * You can use macros in the package in your own project.
+* It's important to note that defining and installing dbt packages is different from [defining and installing Python packages](/docs/build/python-models#using-pypi-packages)
+
+
+:::info `dependencies.yml` has replaced `packages.yml`
+Starting from dbt v1.6, `dependencies.yml` has replaced `packages.yml`. This file can now contain both types of dependencies: "package" and "project" dependencies.
+- "Package" dependencies lets you add source code from someone else's dbt project into your own, like a library. 
+- "Project" dependencies provide a different way to build on top of someone else's work in dbt. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies) for more info.
+- 
+You can rename `packages.yml` to `dependencies.yml`, _unless_ you need to use Jinja within your packages specification. This could be necessary, for example, if you want to add an environment variable with a git token in a private git package specification.
+
+:::
+
 
 ## How do I add a package to my project?
-1. Add a `packages.yml` file to your dbt project. This should be at the same level as your `dbt_project.yml` file.
+1. Add a file named <VersionBlock firstVersion="1.6"> `dependencies.yml` or </VersionBlock> `packages.yml` to your dbt project. This should be at the same level as your `dbt_project.yml` file.
 2. Specify the package(s) you wish to add using one of the supported syntaxes, for example:
 
-<File name='packages.yml'>
+<File>
 
 ```yaml
 packages:
@@ -42,11 +54,7 @@ packages:
 
 </File>
 
-<Changelog>
-
-- **v1.0.0:** The default [`packages-install-path`](packages-install-path) has been updated to be `dbt_packages` instead of `dbt_modules`.
-
-</Changelog>
+The default [`packages-install-path`](/reference/project-configs/packages-install-path) is `dbt_packages`.
 
 3. Run `dbt deps` to install the package(s). Packages get installed in the `dbt_packages` directory – by default this directory is ignored by git, to avoid duplicating the source code for the package.
 
@@ -83,13 +91,6 @@ In comparison, other package installation methods are unable to handle the dupli
 
 #### Prerelease versions
 
-<Changelog>
-
-* `v0.20.1`: Fixed handling for prerelease versions. Introduced `install-prerelease` parameter.
-* `v1.0.0`: When you provide an explicit prerelease version, dbt will install that version.
-
-</Changelog>
-
 Some package maintainers may wish to push prerelease versions of packages to the dbt Hub, in order to test out new functionality or compatibility with a new version of dbt. A prerelease version is demarcated by a suffix, such as `a1` (first alpha), `b2` (second beta), or `rc3` (third release candidate).
 
 By default, `dbt deps` will not include prerelease versions when resolving package dependencies. You can enable the installation of prereleases in one of two ways:
@@ -124,16 +125,18 @@ packages:
 
 </File>
 
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify commit hashes as package revisions
-
-</Changelog>
-
 Add the Git URL for the package, and optionally specify a revision. The revision can be:
 - a branch name
 - a tagged release
 - a specific commit (full 40-character hash)
+
+Example of a revision specifying a 40-character hash:
+
+```yaml
+packages:
+  - git: "https://github.com/dbt-labs/dbt-utils.git"
+    revision: 4e28d6da126e2940d17f697de783a717f2503188
+```
 
 We **strongly recommend** "pinning" your package to a specific release by specifying a release name.
 
@@ -142,6 +145,23 @@ If you do not provide a revision, or if you use `master`, then any updates to th
 To find the latest release for a package, navigate to the `Releases` tab in the relevant GitHub repository. For example, you can find all of the releases for the dbt-utils package [here](https://github.com/dbt-labs/dbt-utils/releases).
 
 As of v0.14.0, dbt will warn you if you install a package using the `git` syntax without specifying a version (see below).
+
+<VersionBlock firstVersion="1.4">
+
+### Internally hosted tarball URL
+
+Some organizations have security requirements to pull resources only from internal services. To address the need to install packages from hosted environments such as Artifactory or cloud storage buckets, dbt Core enables you to install packages from internally-hosted tarball URLs. 
+
+
+```yaml
+packages:
+  - tarball: https://codeload.github.com/dbt-labs/dbt-utils/tar.gz/0.9.6
+    name: 'dbt_utils'
+```
+
+Where `name: 'dbt_utils'` specifies the subfolder of `dbt_packages` that's created for the package source code to be installed within.
+
+</VersionBlock>
 
 ### Private packages
 
@@ -160,7 +180,7 @@ packages:
 
 </File>
 
-If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/building-a-dbt-project/package-management#git-token-method).
+If you're using dbt Cloud, the SSH key method will not work, but you can use the [HTTPS Git Token Method](https://docs.getdbt.com/docs/build/packages#git-token-method).
 
 
 #### Git Token Method
@@ -177,7 +197,14 @@ In GitHub:
 
 ```yaml
 packages:
+  # use this format when accessing your repository via a github application token
   - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+
+  # use this format when accessing your repository via a classical personal access token
+  - git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+ 
+   # use this format when accessing your repository via a fine-grained personal access token (username sometimes required)
+  - git: "https://GITHUB_USERNAME:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
 ```
 
 </File>
@@ -225,15 +252,9 @@ Read more about creating a Personal Access Token [here](https://confluence.atlas
 
 
 
-#### Project subdirectories
+#### Configure subdirectory for packaged projects
 
-<Changelog>
-
-* `v0.20.0`: Introduced the ability to specify `subdirectory`
-
-</Changelog>
-
-In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the project is instead nested in a subdirectory—perhaps within a much larger monorepo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.25.0`).
+In general, dbt expects `dbt_project.yml` to be located as a top-level file in a package. If the packaged project is instead nested in a subdirectory—perhaps within a much larger mono repo—you can optionally specify the folder path as `subdirectory`. dbt will attempt a [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) of just the files located within that subdirectory. Note that you must be using a recent version of `git` (`>=2.26.0`).
 
 <File name='packages.yml'>
 
@@ -246,25 +267,42 @@ packages:
 </File>
 
 ### Local packages
-Packages that you have stored locally can be installed by specifying the path to the project, like so:
+A "local" package is a dbt project accessible from your local file system. You can install it by specifying the project's path. It works best when you nest the project within a subdirectory relative to your current project's directory.
 
 <File name='packages.yml'>
 
 ```yaml
 packages:
-  - local: /opt/dbt/redshift # use a local path
+  - local: relative/path/to/subdirectory
 ```
 
 </File>
 
-Local packages should only be used for specific situations, for example, when testing local changes to a package.
+Other patterns may work in some cases, but not always. For example, if you install this project as a package elsewhere, or try running it on a different system, the relative and absolute paths will yield the same results.
+
+<File name='packages.yml'>
+
+```yaml
+packages:
+  # not recommended - support for these patterns vary
+  - local: /../../redshift   # relative path to a parent directory
+  - local: /opt/dbt/redshift # absolute path on the system
+```
+
+</File>
+
+There are a few specific use cases where we recommend using a "local" package:
+1. **Monorepo** &mdash; When you have multiple projects, each nested in a subdirectory, within a monorepo. "Local" packages allow you to combine projects for coordinated development and deployment.
+2. **Testing changes** &mdash; To test changes in one project or package within the context of a downstream project or package that uses it. By temporarily switching the installation to a "local" package, you can make changes to the former and immediately test them in the latter for quicker iteration. This is similar to [editable installs](https://pip.pypa.io/en/stable/topics/local-project-installs/) in Python.
+3. **Nested project** &mdash; When you have a nested project that defines fixtures and tests for a project of utility macros, like [the integration tests within the `dbt-utils` package](https://github.com/dbt-labs/dbt-utils/tree/main/integration_tests).
+
 
 ## What packages are available?
 Check out [dbt Hub](https://hub.getdbt.com) to see the library of published dbt packages!
 
 ## Advanced package configuration
 ### Updating a package
-When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](run) of the models in this package.
+When you update a version or revision in your `packages.yml` file, it isn't automatically updated in your dbt project. You should run `dbt deps` to update the package. You may also need to run a [full refresh](/reference/commands/run) of the models in this package.
 
 ### Uninstalling a package
 When you remove a package from your `packages.yml` file, it isn't automatically deleted from your dbt project, as it still exists in your `dbt_packages/` directory. If you want to completely uninstall a package, you should either:
@@ -334,3 +372,4 @@ packages:
 ```
 
 </File>
+

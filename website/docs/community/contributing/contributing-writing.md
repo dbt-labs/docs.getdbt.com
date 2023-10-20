@@ -26,7 +26,7 @@ We appreciate these contributions because they contain context in the original p
 #### Get started
 
 - You can contribute to [docs.getdbt.com](http://docs.getdbt.com) by looking at our repository’s [README](https://github.com/dbt-labs/docs.getdbt.com#readme) or clicking **Edit this page** at the bottom of most pages at docs.getdbt.com.
-- Read the [OSS Expectations](https://docs.getdbt.com/docs/contributing/oss-expectations).
+- Read the [OSS Expectations](/community/resources/oss-expectations).
 - Find an issue labeled “[good first issue](https://github.com/dbt-labs/docs.getdbt.com/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22+).”
 - Need help: Visit #community-writers on the Community Slack or mention `@dbt-labs/product-docs` in a pull request or issue comment.
 

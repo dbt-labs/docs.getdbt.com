@@ -13,6 +13,11 @@
   height: 100%;
 }
 
+.cardWrapper h3 {
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
+
 .cardWrapper a {
   color: inherit;
 }
@@ -20,7 +25,19 @@
   text-decoration: none;
 }
 
+.cardBody {
+  margin-bottom: 20px;
+}
+
+.cardBody a, .cardBody a:hover {
+  text-decoration: underline;
+}
+
 .icon {
   margin-bottom: 0.5rem;
-  max-width: 50px;
+  max-width: 25px;
+  font-size: 25px;
+}
+.dbt-core {
+  max-width: 165px;
 }

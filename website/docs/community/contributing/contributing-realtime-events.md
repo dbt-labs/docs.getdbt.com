@@ -7,11 +7,15 @@ id: "contributing-realtime-events"
 
 #### Overview
 
-Meetups are a place to engage and interact with your fellow dbt Community members (in person when possible but sometimes online). We’ve got 21 Meetups in 16 countries.
+Meetups are all about knowledge sharing; they are a place to connect and learn with your fellow dbt Community members. They usually take place in person, with some happening virtually. The Meetups take place across the globe, and you can check them all out [here](https://www.meetup.com/pro/dbt/).
 
 #### Contribution opportunities
 
-Give a talk! Meetups are all about sharing your knowledge with other analytics practitioners. Have you recently solved a problem in your data organization, published a package or generally done something of interest to the dbt Community? Meet your local pals and share what you’ve done at a meetup.
+- Become a Meetup organizer
+- Speak at an event
+- Sponsor an event or provide your office space
+
+For all of these opportunities, please fill out an [interest form](https://docs.google.com/forms/d/e/1FAIpQLScdzuz9Ouo1b07BMHveEBJsJ3rJAYuFvbTKep2fXDL0iZTZUg/viewform) and we will get back to you.
 
 #### Sample contributions
 
@@ -22,7 +26,7 @@ Give a talk! Meetups are all about sharing your knowledge with other analytics p
 
 - Read [How to Deliver a Fantastic Meetup Talk](/community/resources/speaking-at-a-meetup).
 - Find a [Meetup near you](https://www.meetup.com/pro/dbt/), start attending and let the organizers know you are interested!
-
+ß
 ### Speak at Coalesce
 
 #### Overview

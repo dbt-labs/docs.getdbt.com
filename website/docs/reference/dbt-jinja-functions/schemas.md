@@ -1,6 +1,8 @@
 ---
-title: "schemas"
+title: "About schemas variable"
+sidebar_label: "schemas"
 id: "schemas"
+description: "A list of schemas where dbt built objects during the current run."
 ---
 
 `schemas` is a variable available in an `on-run-end` hook, representing a list of schemas that dbt built objects in on this run. 

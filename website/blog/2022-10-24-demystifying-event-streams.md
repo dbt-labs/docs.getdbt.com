@@ -28,7 +28,7 @@ Under the hood, the Merit platform consists of a series of microservices. Each o
 
 ![](/img/blog/2022-10-24-demystifying-event-streams/merit-platform.png)
 
-In the past we relied upon an ETL tool (Stitch) to pull data out of microservice databases and into Snowflake. This data would become the main dbt sources used by our report models in BI.
+In the past we relied upon an <Term id="etl" /> tool (Stitch) to pull data out of microservice databases and into Snowflake. This data would become the main dbt sources used by our report models in BI.
 
 ![](/img/blog/2022-10-24-demystifying-event-streams/merit-platform-stitch.png)
 
@@ -84,7 +84,7 @@ However, working with these <Term id="json" /> blobs is much less convenient tha
     1. One challenge is partial updates - we disallow those currently so that we never need to recreate the state of a domain model across multiple json blobs.
     1. Distributed systems folks will identify another problem: relying on timing. Due to clock skew, we can’t guarantee that event A’s timestamp being earlier than another B’s means that A occurred before B. If both messages are sent on the same Kafka topic then Kafka can ensure ordering (if configured properly), but we don’t want to limit all events to using the same topic. So we choose to ignore this problem since we have relatively low traffic and low machine volume compared to the Googles and Facebooks of the world. We can also verify the likelihood of clock skew affecting our data by looking for events with the same identifying ID happening within the same second - it doesn’t happen often for us.
 
-Instead of repeatedly working with the above challenges, we decided to create a relational layer on top of the raw event streams. This takes the form of [dbt macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros) that handle all of the above problems.
+Instead of repeatedly working with the above challenges, we decided to create a relational layer on top of the raw event streams. This takes the form of [dbt macros](/docs/build/jinja-macros) that handle all of the above problems.
 
 In order to make the dbt macros easier to write, we requested that engineering add some metadata to all of their events. This formalized the contract between engineering and data - any domain models that don’t comply with the contract will not be able to be used in reports unless the engineering team themself builds a custom pipeline. We named this the Obvious Model Generation (OMG) Contract since providing the metadata leads to obvious domain model generation. And we liked the acronym.
 
@@ -266,7 +266,7 @@ models:
 
 We learned a lot from both working with event streams and building these macros.
 
-One consideration that we haven’t discussed yet is [materialization](https://docs.getdbt.com/docs/building-a-dbt-project/building-models/materializations) strategy. Since event stream tables are append-only, this is a natural fit for incremental models. At Merit, we haven’t worked much with incremental models, so we’re opting to start with views. As we roll this out to production models we’ll be doing a ton of performance testing to figure out the perfect materialization strategy for us.
+One consideration that we haven’t discussed yet is [materialization](https://docs.getdbt.com/docs/build/materializations) strategy. Since event stream tables are append-only, this is a natural fit for incremental models. At Merit, we haven’t worked much with incremental models, so we’re opting to start with views. As we roll this out to production models we’ll be doing a ton of performance testing to figure out the perfect materialization strategy for us.
 
 We also plan on adding a dbt test that alerts whenever the columns of any domain model table changes. This may indicate that an unexpected change has happened to an event schema, which could affect dashboards.
 

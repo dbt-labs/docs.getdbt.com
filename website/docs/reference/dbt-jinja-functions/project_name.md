@@ -1,9 +1,9 @@
 ---
-title: "project_name"
+title: "About project_name context variable"
+sidebar_label: "project_name"
 id: "project_name"
+description: "Read this guide to understand the project_name Jinja function in dbt."
 ---
-
-<Changelog>New in 0.16.0</Changelog>
 
 The `project_name` context variable returns the `name` for the root-level project
 which is being run by dbt. This variable can be used to defer execution to a

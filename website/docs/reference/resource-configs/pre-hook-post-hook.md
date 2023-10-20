@@ -1,5 +1,6 @@
 ---
 title: pre-hook & post-hook
+description: "Pre-hook and Post-hook - Read this in-depth guide to learn about configurations in dbt."
 resource_types: [models, seeds, snapshots]
 datatype: sql-statement | [sql-statement]
 ---
@@ -15,14 +16,16 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
+
 <File name='dbt_project.yml'>
 
 ```yml
 
 models:
-  [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -33,8 +36,8 @@ models:
 ```sql
 
 {{ config(
-    pre_hook="<sql-statement>" | ["<sql-statement>"],
-    post_hook="<sql-statement>" | ["<sql-statement>"],
+    pre_hook="SQL-statement" | ["SQL-statement"],
+    post_hook="SQL-statement" | ["SQL-statement"],
 ) }}
 
 select ...
@@ -48,14 +51,16 @@ select ...
 
 <TabItem value="seeds">
 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
+
 <File name='dbt_project.yml'>
 
 ```yml
 
 seeds:
-  [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -65,14 +70,16 @@ seeds:
 
 <TabItem value="snapshots">
 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
+
 <File name='dbt_project.yml'>
 
 ```yml
 
 snapshots:
-  [<resource-path>](resource-path):
-    +pre-hook: <sql-statement> | [<sql-statement>]
-    +post-hook: <sql-statement> | [<sql-statement>]
+  [<resource-path>](/reference/resource-configs/resource-path):
+    +pre-hook: SQL-statement | [SQL-statement]
+    +post-hook: SQL-statement | [SQL-statement]
 
 ```
 
@@ -83,8 +90,8 @@ snapshots:
 ```sql
 {% snapshot snapshot_name %}
 {{ config(
-    pre_hook="<sql-statement>" | ["<sql-statement>"],
-    post_hook="<sql-statement>" | ["<sql-statement>"],
+    pre_hook="SQL-statement" | ["SQL-statement"],
+    post_hook="SQL-statement" | ["SQL-statement"],
 ) }}
 
 select ...
@@ -102,22 +109,15 @@ select ...
 ## Definition
 A SQL statement (or list of SQL statements) to be run before or after a model, seed, or snapshot is built.
 
-Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](dont-nest-your-curlies#an-exception).
+Pre- and post-hooks can also call macros that return SQL statements. If your macro depends on values available only at execution time, such as using model configurations or `ref()` calls to other resources as inputs, you will need to [wrap your macro call in an extra set of curly braces](/docs/building-a-dbt-project/dont-nest-your-curlies#an-exception).
 
 ### Why would I use hooks?
 
 dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out-of-the-box functionality, which you can configure quickly and concisely. In some cases, there may be SQL that you want or need to run, specific to functionality in your data platform, which dbt does not (yet) offer as a built-in feature. In those cases, you can write the exact SQL you need, using dbt's compilation context, and pass it into a `pre-` or `post-` hook to run before or after your model, seed, or snapshot.
 
-<Changelog>
-
-* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the alternative config syntax to apply pre- and post-hooks.
-
-</Changelog>
-
-
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock firstVersion="1.2">
 
@@ -143,7 +143,7 @@ See: [Redshift docs on `UNLOAD`](https://docs.aws.amazon.com/redshift/latest/dg/
 
 ```yml
 
-model:
+models:
   jaffle_shop: # this is the project name
     marts:
       finance:
@@ -160,71 +160,8 @@ See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest
 
 </VersionBlock>
 
-<VersionBlock lastVersion="1.1">
-
-### Grant privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook: "grant select on {{ this }} to group reporter"
-
-```
-
-</File>
-
-### Grant multiple privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook:
-    - "grant select on {{ this }} to group reporter"
-    - "grant select on {{ this }} to group transformer"
-
-```
-
-</File>
-
-### Call a macro to grant privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-model:
-  +post-hook: "{{ grant_select(this) }}"
-
-```
-
-</File>
-
-
-### Grant privileges on a directory of models
-
-<File name='dbt_project.yml'>
-
-```yml
-
-model:
-  jaffle_shop: # this is the project name
-    marts:
-      marketing:
-        # this will be applied to all models in marts/marketing/
-        +post-hook: "{{ grant_select(this) }}"
-
-```
-
-</File>
-
-</VersionBlock>
-
 ### Additional examples
-We've compiled some more in-depth examples [here](hooks-operations#additional-examples).
+We've compiled some more in-depth examples [here](/docs/build/hooks-operations#additional-examples).
 
 ## Usage notes
 ### Hooks are cumulative
@@ -233,7 +170,7 @@ If you define hooks in both your `dbt_project.yml` and in the `config` block of 
 ### Execution ordering
 If multiple instances of any hooks are defined, dbt will run each hook using the following ordering:
 1. Hooks from dependent packages will be run before hooks in the active package.
-2. Hooks defined within the model itself will be run before hooks defined in `dbt_project.yml`.
+2. Hooks defined within the model itself will be run after hooks defined in `dbt_project.yml`.
 3. Hooks within a given context will be run in the order in which they are defined.
 
 
@@ -253,8 +190,8 @@ To achieve this, you can use one of the following syntaxes. (Note: You should NO
 ```sql
 {{
   config(
-    pre_hook=before_begin("<sql-statement>"),
-    post_hook=after_commit("<sql-statement>")
+    pre_hook=before_begin("SQL-statement"),
+    post_hook=after_commit("SQL-statement")
   )
 }}
 
@@ -271,11 +208,11 @@ select ...
 {{
   config(
     pre_hook={
-      "sql": "<sql-statement>",
+      "sql": "SQL-statement",
       "transaction": False
     },
     post_hook={
-      "sql": "<sql-statement>",
+      "sql": "SQL-statement",
       "transaction": False
     }
   )
@@ -295,10 +232,10 @@ select ...
 
 models:
   +pre-hook:
-    sql: "<sql-statement>"
+    sql: "SQL-statement"
     transaction: false
   +post-hook:
-    sql: "<sql-statement>"
+    sql: "SQL-statement"
     transaction: false
 
 

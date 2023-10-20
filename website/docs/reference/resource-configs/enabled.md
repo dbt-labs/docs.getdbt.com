@@ -1,5 +1,6 @@
 ---
 resource_types: all
+description: "Enabled - Read this in-depth guide to learn about configurations in dbt."
 datatype: boolean
 default_value: true
 ---
@@ -14,6 +15,7 @@ default_value: true
     { label: 'Sources', value: 'sources', },
     { label: 'Metrics', value: 'metrics', },
     { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -37,7 +39,7 @@ select ...
 
 ```yml
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -53,7 +55,7 @@ models:
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -85,7 +87,7 @@ select ...
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -127,7 +129,7 @@ select ...
 
 ```yml
 tests:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +enabled: true | false
 
 ```
@@ -142,14 +144,13 @@ tests:
 
 ```yaml
 sources:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
 </File>
 
-<VersionBlock firstVersion="1.1">
 
 <File name='models/properties.yml'>
 
@@ -158,18 +159,17 @@ version: 2
 
 sources:
   - name: [<source-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
     tables:
       - name: [<source-table-name>]
-        [config](resource-properties/config):
+        [config](/reference/resource-properties/config):
           enabled: true | false
 
 ```
 
 </File>
 
-</VersionBlock>
 
 </TabItem>
 
@@ -187,8 +187,8 @@ Support for disabling metrics was added in dbt Core v1.3
 
 ```yaml
 metrics:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -201,7 +201,7 @@ version: 2
 
 metrics:
   - name: [<metric-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
 ```
@@ -226,8 +226,8 @@ Support for disabling exposures was added in dbt Core v1.3
 
 ```yaml
 exposures:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)enabled: true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)enabled: true | false
 
 ```
 
@@ -240,7 +240,7 @@ version: 2
 
 exposures:
   - name: [<exposure-name>]
-    [config](resource-properties/config):
+    [config](/reference/resource-properties/config):
       enabled: true | false
 
 ```
@@ -251,16 +251,45 @@ exposures:
 
 </TabItem>
 
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for disabling semantic models has been added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7">
+
+<File name='semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_people
+    model: ref('people')
+    config:
+      enabled: false
+
+```
+
+</File>
+
+The `enabled` configuration can be nested under the `config` key.
+
+</VersionBlock>
+
+</TabItem>
+
 </Tabs>
 
 ## Definition
-An optional configuration for disabling models, seeds, snapshots, and tests.
+An optional configuration for disabling models, seeds, snapshots, tests, and semantic models.
 
 * Default: true
 
 When a resource is disabled, dbt will not consider it as part of your project. Note that this can cause compilation errors.
 
-If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](node-selection/syntax)
+If you instead want to exclude a model from a particular run, consider using the `--exclude` parameter as part of the [model selection syntax](/reference/node-selection/syntax)
 
 If you are disabling models because they are no longer being used, but you want to version control their SQL, consider making them an [analysis](/docs/build/analyses) instead.
 

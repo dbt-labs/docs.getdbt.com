@@ -1,11 +1,8 @@
 ---
+sidebar_label: "tags"
 resource_types: all
 datatype: string | [string]
 ---
-
-<Changelog>
-    - **v0.21.0** introduced the `config` property, thereby allowing you to configure resources in all `.yml` files
-</Changelog>
 
 <Tabs
   defaultValue="project-yaml"
@@ -22,15 +19,15 @@ datatype: string | [string]
 ```yml
 
 models:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 seeds:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +tags: <string> | [<string>]
 
 ```
@@ -80,11 +77,11 @@ models:
 ## Definition
 Apply a tag (or list of tags) to a resource.
 
-These tags can be used as part of the [resource selection syntax](node-selection/syntax), when running the following commands:
+These tags can be used as part of the [resource selection syntax](/reference/node-selection/syntax), when running the following commands:
 - `dbt run --select tag:my_tag`
 - `dbt seed --select tag:my_tag`
 - `dbt snapshot --select tag:my_tag`
-- `dbt test --select tag:my_tag` (indirectly runs all tests accociated with the models that are tagged)
+- `dbt test --select tag:my_tag` (indirectly runs all tests associated with the models that are tagged)
 
 ## Examples
 ### Use tags to run parts of your project
@@ -201,7 +198,7 @@ sources:
 
     tables:
       - name: table_name
-        tags: [<string>]
+        tags: ['table_level']
 
         columns:
           - name: column_name
@@ -213,9 +210,10 @@ sources:
 
 </File>
 
-In the example above, the `unique` test would be selected by any of the three tags:
+In the example above, the `unique` test would be selected by any of these four tags:
 ```bash
 $ dbt test --select tag:top_level
+$ dbt test --select tag:table_level
 $ dbt test --select tag:column_level
 $ dbt test --select tag:test_level
 ```

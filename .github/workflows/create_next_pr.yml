@@ -5,9 +5,10 @@ on:
 
 jobs:
   pull-request:
+    if: github.repository == 'dbt-labs/docs.getdbt.com'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:

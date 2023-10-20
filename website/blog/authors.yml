@@ -1,372 +1,535 @@
-david_krevitt:
-  name: David Krevitt
-  job_title: Marketing
-  image_url: /img/blog/authors/dkrevitt.jpg
-  organization: dbt Labs
-  description: Laziness is a virtue
+amy_chen:
+  image_url: /img/blog/authors/achen.png
+  job_title: Staff Partner Engineer
   links:
-    - url: https://twitter.com/dkrevitt
-      icon: fa-twitter
-
-jason_ganz:
-  name: Jason Ganz
-  job_title: Developer Experience
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/yuanamychen/
+  name: Amy Chen
   organization: dbt Labs
-  image_url: /img/blog/authors/jasnonaz.jpeg
-  links:
-    - url: https://twitter.com/jasnonaz
-      icon: fa-twitter
-
-sanjana_sen:
-  name: Sanjana Sen
-  job_title: Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/sanjana.png
-  links:
-    - url: https://twitter.com/sqlsanj
-      icon: fa-twitter
-
-lauren_craigie:
-  name: Lauren Craigie
-  job_title: Product Marketing
-  organization: dbt Labs
-  image_url: /img/blog/authors/craigie.png
-  links:
-    - url: https://twitter.com/crai_fish
-      icon: fa-twitter
 
 andrew_escay:
-  name: Andrew Escay
-  job_title: Analytics Engineer
-  organization: dbt Labs
   image_url: /img/blog/authors/aescay.jpeg
-  links:
-    - url: https://twitter.com/_aescay
-      icon: fa-twitter
-
-jess_williams:
-  name: Jess Williams
-  job_title: Head of Professional Services
-  organization: dbt Labs
-  image_url: /img/blog/authors/jess.png
-  links:
-    - url: https://www.linkedin.com/in/jessdwilliams/
-      icon: fa-linkedin
-
-pat_kearns:
-  name: Pat Kearns
-  job_title: Senior Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/pkearns.png
-  links:
-    - url: https://www.linkedin.com/in/pat-kearns/
-      icon: fa-linkedin
-
-amy_chen:
-  name: Amy Chen
-  job_title: Senior Partner Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/achen.png
-  links:
-    - url: https://www.linkedin.com/in/yuanamychen/
-      icon: fa-linkedin
-
-joel_labes:
-  name: Joel Labes
-  job_title: Senior Developer Experience Advocate
-  organization: dbt Labs
-  image_url: /img/blog/authors/jlabes.png
-  links:
-    - url: https://www.linkedin.com/in/joel-labes/
-      icon: fa-linkedin
-    - url: https://twitter.com/joellabes
-      icon: fa-twitter
-
-claire_carroll:
-  name: Claire Carroll
   job_title: Analytics Engineer
-  organization: analyticsengineers.club
-  image_url: /img/blog/authors/claire.jpeg
   links:
-    - url: https://twitter.com/clairebcarroll
-      icon: fa-twitter
-    - url: https://github.com/clrcrl
-      icon: fa-github
-    - url: https://www.linkedin.com/in/clrcrl/
-      icon: fa-linkedin
-
-dave_connors:
-  name: Dave Connors
-  job_title: Senior Analytics Engineer
+    - icon: fa-twitter
+      url: https://twitter.com/_aescay
+  name: Andrew Escay
   organization: dbt Labs
-  image_url: /img/blog/authors/dconnors.jpeg
-  links:
-    - url: https://github.com/dave-connors-3
-      icon: fa-github
-    - url: https://www.linkedin.com/in/daveconnors3/
-      icon: fa-linkedin
 
-ross_turk:
-  name: Ross Turk
-  job_title: VP Marketing
-  organization: Datakin
-  image_url: /img/blog/authors/ross-turk.png
-  links:
-    - url: https://mobile.twitter.com/rossturk
-      icon: fa-twitter
-    - url: https://github.com/rossturk
-      icon: fa-github
-
-sung_chung:
-  name: Sung Won Chung
-  job_title: Solutions Architect
-  organization: dbt Labs
-  image_url: /img/blog/authors/sung.jpeg
-  links:
-    - url: https://www.linkedin.com/in/sungwonchung1/
-      icon: fa-linkedin
-
-seth_rosen:
-  name: Seth Rosen
-  job_title: Co-Founder & CEO
-  organization: TopCoat Data
-  description: Seth Rosen is co-founder and CEO of TopCoat Data - a platform for helping organizations build analytical applications. Prior to founding TopCoat, Seth helped companies of all sizes build custom data apps on top of the modern data stack through his consultancy, Hashpath. When he’s not tweeting and thinking about data, he’s tweeting while parenting two toddlers.
-  image_url: /img/blog/authors/seth-rosen.jpeg
-  links:
-    - url: https://twitter.com/sethrosen
-      icon: fa-twitter
-    - url: https://www.linkedin.com/in/sdrosen/
-      icon: fa-linkedin
-
-donny_flynn:
-  name: Donny Flynn
-  job_title: Customer Data Architect
-  organization: Census
-  description: Donny Flynn is a customer data architect at Census - a reverse ETL product that helps companies operationalize analytics. Prior to joining Census, Donny built out the data stack at Owner and led a data team at Chiper. When not doing data work, he's most likely watching Chicago sports.
-  image_url: /img/blog/authors/dflynn.jpeg
-  links:
-    - url: https://twitter.com/donmandonguy
-      icon: fa-twitter
-    - url: https://www.linkedin.com/in/donny-flynn-578149a4/
-      icon: fa-linkedin
-
-izzy_erekson:
-  name: Izzy Erekson
-  job_title: Solutions Architect
-  organization: dbt Labs
-  image_url: /img/blog/authors/izzy.jpeg
-
-nate_sooter:
-  name: Nate Sooter
-  job_title: Manager of BI Operations
-  organization: Smartsheet
-  image_url: /img/blog/authors/nate-sooter.jpeg
-  links:
-    - url: https://twitter.com/natesooter
-      icon: fa-twitter
-    - url: https://www.linkedin.com/in/nathansooter
-      icon: fa-linkedin
-
-kira_furuichi:
-  name: Kira Furuichi
-  job_title: Technical Writer
-  organization: dbt Labs
-  image_url: /img/blog/authors/kira-furuichi.png
-  links:
-    - url: https://www.linkedin.com/in/kira-furuichi/
-      icon: fa-linkedin
-
-simon_podhajsky:
-  name: Simon Podhajsky
-  job_title: Data Lead
-  organization: iLife Technologies
-  description: >
-    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife
-    Technologies, a startup that seeks to digitize the life insurance agency.
-  image_url: /img/blog/authors/simon-podhajsky.jpeg
-  links:
-    - url: https://www.linkedin.com/in/simonpodhajsky/
-      icon: fa-linkedin
-    - url: https://twitter.com/sim_pod
-      icon: fa-twitter
-
-viraj_parekh:
-  name: Viraj Parekh
-  job_title: Field CTO
-  organization: Astronomer
-  image_url: /img/blog/authors/viraj-parekh.jpeg
-  links:
-    - url: https://www.linkedin.com/in/viraj-parekh-46114689/
-      icon: fa-linkedin
-
-josh_fell:
-  name: Josh Fell
-  job_title: Ecosystem Engineer
-  organization: Astronomer
-  image_url: /img/blog/authors/josh-fell.jpeg
-  links:
-    - url: https://www.linkedin.com/in/josh-fell/
-      icon: fa-linkedin
-
-simo_tumelius:
-  name: Simo Tumelius
-  job_title: Freelance Data and Analytics Engineer
-  image_url: /img/blog/authors/simo-tumelius.jpeg
-  links:
-    - url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
-      icon: fa-linkedin
-
-matt_winkler:
-  name: Matt Winkler
-  job_title: Senior Solutions Architect
-  organization: dbt Labs
-  description: Matt is an ex-data scientist who chose to embrace the simplicity of using SQL to manage and testing data pipelines with dbt. He previously worked as a hands-on ML practitioner, and consulted with Fortune 500 clients to build and maintain ML Ops pipelines using (mostly) AWS Sagemaker. He lives in the Denver area, and you can say hello on dbt Slack or on LinkedIn.
-  image_url: /img/blog/authors/matt-winkler.jpeg
-  links:
-    - url: https://www.linkedin.com/in/matt-winkler-4024263a/
-
-jonathan_natkins:
-  name: Jon "Natty" Natkins
-  job_title: Regional Director, Solutions Architecture
-  organization: dbt Labs
-  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
-  image_url: /img/blog/authors/jonathan-natkins.jpeg
-  links:
-    - url: https://www.linkedin.com/in/nattyice/
-      icon: fa-linkedin
-    - url: https://twitter.com/nattyice
-      icon: fa-twitter
-
-lauren_benezra:
-  name: Lauren Benezra
+arthur_marcon:
+  image_url: /img/blog/authors/arthur-marcon.png
   job_title: Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/lauren-benezra.jpeg
-  links:
-    - url: https://www.linkedin.com/in/lbenezra/
-      icon: fa-linkedin
-
-christine_berger:
-  name: Christine Berger
-  job_title: Senior Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/christine-berger.jpeg
-
-grace_goheen:
-  name: Grace Goheen
-  job_title: Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/grace-goheen.jpeg
-  links:
-    - url: https://www.linkedin.com/in/gracegoheen/
-      icon: fa-linkedin
-
-jeremy_cohen:
-  name: Jeremy Cohen
-  job_title: Product Manager
-  organization: dbt Labs
-  image_url: /img/blog/authors/jerco.jpeg
-
-doug_beatty:
-  name: Doug Beatty
-  job_title: Senior Developer Experience Advocate
-  organization: dbt Labs
-  image_url: /img/blog/authors/dbeatty.jpeg
-
-callum_mccann:
-  name: Callum McCann
-  job_title: Senior Developer Experience Advocate
-  organization: dbt Labs
-  description: Callum works on metrics and is either talking about that or obsessing about his dog.
-  image_url: /img/blog/authors/callum-mccann.jpg
-  links:
-    - url: https://www.linkedin.com/in/callum-mccann-38628a89/
-      icon: fa-linkedin
-    - url: https://twitter.com/callumpmccann
-      icon: fa-twitter
-
-benoit_perigaud:
-  name: Benoit Perigaud
-  job_title: Senior Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/benoit-perigaud.jpeg
-  links:
-    - url: https://www.linkedin.com/in/benoit-perigaud/
-      icon: fa-linkedin
-
-bennie_regenold:
-  name: Bennie Regenold
-  job_title: Analytics Engineer
-  organization: dbt Labs
-  image_url: /img/blog/authors/bennie-regenold.png
-  links:
-    - url: https://www.linkedin.com/in/benjaminregenold/
-      icon: fa-linkedin
+  name: Arthur Marcon
+  organization: Indicium Tech
+  description: Arthur Marcon is an Analytics Engineer at Indicium, helping data-driven companies transition to the modern data analytics stack in the cloud through dbt. Arthur is also an enthusiast of technology and innovation. He is mainly interested in how data plays a key role to enable companies to achieve their full innovative and technological potential. Outside of work, he is a movie aficionado, and likes to hit the gym and read Agatha Christie's novels.
 
 barr_yaron:
-  name: Barr Yaron
-  job_title: Product Manager
-  organization: dbt Labs
   image_url: /img/blog/authors/barr-yaron.png
+  job_title: Product Manager
   links:
-    - url: https://www.linkedin.com/in/barryaron/
-      icon: fa-linkedin
-
-ian_fahey:
-  name: Ian Fahey
-  job_title: Analytics Engineer
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/barryaron/
+  name: Barr Yaron
   organization: dbt Labs
-  image_url: /img/blog/authors/ian-fahey.png
-  links:
-    - url: https://www.linkedin.com/in/ianmfahey/
-      icon: fa-linkedin
-    - url: https://twitter.com/Cavorax
-      icon: fa-twitter
 
-joe_markiewicz:
-  name: Joe Markiewicz
-  job_title: Analytics Engineering Manager (Fivetran dbt package maintainer)
-  description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
-  organization: Fivetran
-  image_url: /img/blog/authors/joe-markiewicz.jpeg
+bennie_regenold:
+  image_url: /img/blog/authors/bennie-regenold.png
+  job_title: Analytics Engineer
   links:
-    - url: https://www.linkedin.com/in/joseph-markiewicz-8224a990/
-      icon: fa-linkedin
-    - url: https://twitter.com/JoeMarkiewicz17
-      icon: fa-twitter
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/benjaminregenold/
+  name: Bennie Regenold
+  organization: dbt Labs
 
-yu_ishikawa:
-   name: Yu Ishikawa
-   job_title: Senior Data Privacy Engineer
-   organization: Ubie
-   image_url: /img/blog/authors/yu-ishikawa.jpg
-   links:
-   - url: https://www.linkedin.com/in/yuishikawa0301
-     icon: fa-linkedin
+benoit_perigaud:
+  image_url: /img/blog/authors/benoit-perigaud.jpeg
+  job_title: Staff Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/benoit-perigaud/
+  name: Benoit Perigaud
+  organization: dbt Labs
 
 brittany_krauth:
-   name: Brittany Krauth
-   job_title: Manager, Analytics & Insights
-   description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
-   organization: Degreed
-   image_url: /img/blog/authors/brittany-krauth.png
-   links:
-   - url: https://www.linkedin.com/in/brittanykrauth
-     icon: fa-linkedin
+  description: Brittany Krauth works as Manager, Analytics & Insights supporting Degreed's upskilling platform. Brittany is passionate about building a company-wide data-driven culture. She has worked in various analytical roles, from a focus on predictive analytics to data visualization to process improvements. In addition, she holds a BS in Industrial Engineering from Georgia Tech. In her spare time, Brittany competes in dog agility and trains donkeys.
+  image_url: /img/blog/authors/brittany-krauth.png
+  job_title: Manager, Analytics & Insights
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/brittanykrauth
+  name: Brittany Krauth
+  organization: Degreed
+
+callum_mccann:
+  description: Callum works on metrics and is either talking about that or obsessing about his dog.
+  image_url: /img/blog/authors/callum-mccann.jpg
+  job_title: Senior Developer Experience Advocate
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/callum-mccann-38628a89/
+    - icon: fa-twitter
+      url: https://twitter.com/callumpmccann
+  name: Callum McCann
+  organization: dbt Labs
+
+callie_white:
+  description: Callie White is a Senior Analytics Consultant at Montreal Analytics where she leads projects in partnership with client data teams to achieve the best-practice and best-suited results. She’s also passionate about mentoring developers and demystifying the complexity of a role in data. Callie uses data-driven decision-making in everything she does; mainly to maximize cuddle time with her rescue pup named Snacks, or to scope out her next hiking trip. Montreal Analytics is a full-stack data consultancy servicing North America, and are both a dbt Preferred Consulting Partner and Platinum dbt Certification Award winner. We help organizations on the whole data journey, from strategic advisory to hands-on development and enablement. Whether deploying greenfield data platforms, tackling complex migrations or auditing & refactoring entangled data models, we build scalable solutions for organizations of all sizes. If you are interested in learning more about how we help clients across the modern stack, contact us today.
+  image_url: /img/blog/authors/callie-white.jpg
+  job_title: Analytics Consultant
+  name: Callie White
+  organization: Montreal Analytics
 
 charlie_summers:
-   name: Charlie Summers
-   job_title: Staff Software Engineer
-   description: Charlie is the Data Engineer Tech Lead at Merit. He introduced Merit to dbt and it's been a fantastic fit for a wide variety of data pipelines. He likes thinking about the future of data - integrating event streams, analyzing encrypted data, capturing fine-grained lineage, and making it easy to build simple apps on top of data warehouses/lakes.
-   organization: Merit
-   image_url: /img/blog/authors/charlie-summers.jpeg
-   links:
-   - url: https://www.linkedin.com/in/charliesummers
-     icon: fa-linkedin
+  description: Charlie is the Data Engineer Tech Lead at Merit. He introduced Merit to dbt and it's been a fantastic fit for a wide variety of data pipelines. He likes thinking about the future of data - integrating event streams, analyzing encrypted data, capturing fine-grained lineage, and making it easy to build simple apps on top of data warehouses/lakes.
+  image_url: /img/blog/authors/charlie-summers.jpeg
+  job_title: Staff Software Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/charliesummers
+  name: Charlie Summers
+  organization: Merit
+
+christian_vanbellen:
+  image_url: /img/blog/authors/christian-van-bellen.JPG
+  job_title: Analytics Engineer
+  name: Christian van Bellen
+  organization: Indicium Tech
+  description: Christian van Bellen is an Analytics Engineer at Indicium Tech, acting mainly in projects focused on Enterprise-level data stack transition. Also works with the DataScience/ML stack. Christian started using dbt in 2022 to help implement a modern data stack within enterprises, and is a certified dbt developer.
+
+christine_berger:
+  image_url: /img/blog/authors/christine-berger.jpeg
+  job_title: Senior Analytics Engineer
+  name: Christine Berger
+  organization: dbt Labs
+
+christophe_oudar:
+  image_url: /img/blog/authors/christophe-oudar.png
+  job_title: Staff Software Engineer
+  name: Christophe Oudar
+  organization: Teads
+
+claire_carroll:
+  image_url: /img/blog/authors/claire.jpeg
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/clairebcarroll
+    - icon: fa-github
+      url: https://github.com/clrcrl
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/clrcrl/
+  name: Claire Carroll
+  organization: analyticsengineers.club
+
+dave_connors:
+  image_url: /img/blog/authors/dconnors.jpeg
+  job_title: Senior Developer Experience Advocate
+  links:
+    - icon: fa-github
+      url: https://github.com/dave-connors-3
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/daveconnors3/
+  name: Dave Connors
+  organization: dbt Labs
+
+david_krevitt:
+  description: Laziness is a virtue
+  image_url: /img/blog/authors/dkrevitt.jpg
+  job_title: Marketing
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/dkrevitt
+  name: David Krevitt
+  organization: dbt Labs
+
+donny_flynn:
+  description: Donny Flynn is a customer data architect at Census - a reverse ETL product that helps companies operationalize analytics. Prior to joining Census, Donny built out the data stack at Owner and led a data team at Chiper. When not doing data work, he's most likely watching Chicago sports.
+  image_url: /img/blog/authors/dflynn.jpeg
+  job_title: Customer Data Architect
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/donmandonguy
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/donny-flynn-578149a4/
+  name: Donny Flynn
+  organization: Census
+
+doug_beatty:
+  image_url: /img/blog/authors/dbeatty.jpeg
+  job_title: Senior Developer Experience Advocate
+  name: Doug Beatty
+  organization: dbt Labs
+
+doug_guthrie:
+  image_url: /img/blog/authors/dguthrie.jpeg
+  job_title: Solutions Architect
+  links:
+    - icon: fa-github
+      url: https://github.com/dpguthrie
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/doug-guthrie-07994a48/
+  name: Doug Guthrie
+  organization: dbt Labs
+
+emily_riederer:
+  description: Emily Riederer is a Senior Analytics Manager at Capital One where she leads a team delivering a portfolio of data products, enterprise analysis tools, and data science solutions to business partners. As part of the dbt community, she develops and maintains the dbtplyr package. In her spare time, Emily frequently writes about data (see emilyriederer.com, The R Markdown Cookbook, and 97 Things Every Data Engineer Should Know), reviews technical manuscripts for CRC Press, and supports open research software engineering as a member of the rOpenSci editorial board.
+  image_url: /img/blog/authors/emily-riederer.jpeg
+  job_title: Senior Manager Analytics
+  name: Emily Riederer
+  organization: Capital One
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/emilyriederer/
+    - icon: fa-twitter
+      url: https://twitter.com/emilyriederer
+    - icon: fa-github
+      url: https://twitter.com/emilyriederer
+    - icon: fa-readme
+      url: https://emilyriederer.com
+
+grace_goheen:
+  image_url: /img/blog/authors/grace-goheen.jpeg
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/gracegoheen/
+  name: Grace Goheen
+  organization: dbt Labs
+
+ian_fahey:
+  image_url: /img/blog/authors/ian-fahey.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/ianmfahey/
+    - icon: fa-twitter
+      url: https://twitter.com/Cavorax
+  name: Ian Fahey
+  organization: dbt Labs
+
+izzy_erekson:
+  image_url: /img/blog/authors/izzy.jpeg
+  job_title: Solutions Architect
+  name: Izzy Erekson
+  organization: dbt Labs
+
+jason_ganz:
+  image_url: /img/blog/authors/jasnonaz.jpeg
+  job_title: Developer Experience
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/jasnonaz
+  name: Jason Ganz
+  organization: dbt Labs
+
+jade_milaney:
+  description: Jade Milaney is an Analytics Consultant at Montreal Analytics where in with client data teams to implement data models and data engineering solutions. Jade studied mathematics in university, and has an interest in all things statistics and analytics. Montreal Analytics is a full-stack data consultancy servicing North America, and are both a dbt Preferred Consulting Partner and Platinum dbt Certification Award winner. We help organizations on the whole data journey, from strategic advisory to hands-on development and enablement. Whether deploying greenfield data platforms, tackling complex migrations or auditing & refactoring entangled data models, we build scalable solutions for organizations of all sizes. If you are interested in learning more about how we help clients across the modern stack, contact us today.
+  image_url: /img/blog/authors/jade-milaney.jpg
+  job_title: Analytics Consultant
+  name: Jade Milaney
+  organization: Montreal Analytics
+
+jeremy_cohen:
+  image_url: /img/blog/authors/jerco.jpeg
+  job_title: Product Manager
+  name: Jeremy Cohen
+  organization: dbt Labs
+
+jess_williams:
+  image_url: /img/blog/authors/jess.png
+  job_title: Head of Professional Services
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jessdwilliams/
+  name: Jess Williams
+  organization: dbt Labs
+
+joao_antunes:
+  image_url: /img/blog/authors/joao_antunes.jpg
+  job_title: Lead Data Engineer, Global Product Strategy
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jo%C3%A3o-bernardo-pires-antunes
+  name: João Antunes
+  organization: Roche
+
+joe_markiewicz:
+  description: Joe is a dbt package maintainer/manager at Fivetran by day, and a cat obsessed video game developer by night. Actually, Joe is cat obsessed all day.
+  image_url: /img/blog/authors/joe-markiewicz.jpeg
+  job_title: Analytics Engineering Manager (Fivetran dbt package maintainer)
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/joseph-markiewicz-8224a990/
+    - icon: fa-twitter
+      url: https://twitter.com/JoeMarkiewicz17
+  name: Joe Markiewicz
+  organization: Fivetran
+
+joel_labes:
+  image_url: /img/blog/authors/jlabes.png
+  job_title: Senior Developer Experience Advocate
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/joel-labes/
+    - icon: fa-twitter
+      url: https://twitter.com/joellabes
+  name: Joel Labes
+  organization: dbt Labs
+
+jonathan_natkins:
+  description: Natty also writes about startups, equity, data, and more in his Substack called [Semi-Structured](http://semistructured.substack.com/).
+  image_url: /img/blog/authors/jonathan-natkins.jpeg
+  job_title: Regional Director, Solutions Architecture
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/nattyice/
+    - icon: fa-twitter
+      url: https://twitter.com/nattyice
+  name: Jon "Natty" Natkins
+  organization: dbt Labs
+
+josh_fell:
+  image_url: /img/blog/authors/josh-fell.jpeg
+  job_title: Ecosystem Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/josh-fell/
+  name: Josh Fell
+  organization: Astronomer
+
+kira_furuichi:
+  image_url: /img/blog/authors/kira-furuichi.png
+  job_title: Technical Writer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/kira-furuichi/
+  name: Kira Furuichi
+  organization: dbt Labs
+
+lauren_benezra:
+  image_url: /img/blog/authors/lauren-benezra.jpeg
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/lbenezra/
+  name: Lauren Benezra
+  organization: dbt Labs
+
+lauren_craigie:
+  image_url: /img/blog/authors/craigie.png
+  job_title: Product Marketing
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/crai_fish
+  name: Lauren Craigie
+  organization: dbt Labs
+
+lucas_bergodias:
+  image_url: /img/blog/authors/lucas-dias.jpg
+  job_title: Analytics Engineer
+  name: Lucas Bergo Dias
+  organization: Indicium Tech
+  description: Lucas Dias works as an Analytics Engineer at Indicium Tech, a leading technology consultancy that specializes in data-driven solutions. Lucas brings a wealth of expertise and experience to the role, having worked in the analytics field for two years. At Indicium, he assists companies in transitioning to modern data stack through the use of dbt. He's passionate about using data to drive innovation and growth, and primarily works on enterprise-level projects.
+
+matt_winkler:
+  description: Matt is an ex-data scientist who chose to embrace the simplicity of using SQL to manage and testing data pipelines with dbt. He previously worked as a hands-on ML practitioner, and consulted with Fortune 500 clients to build and maintain ML Ops pipelines using (mostly) AWS Sagemaker. He lives in the Denver area, and you can say hello on dbt Slack or on LinkedIn.
+  image_url: /img/blog/authors/matt-winkler.jpeg
+  job_title: Senior Solutions Architect
+  links:
+    - url: https://www.linkedin.com/in/matt-winkler-4024263a/
+  name: Matt Winkler
+  organization: dbt Labs
+
+mikael_thorup:
+  image_url: /img/blog/authors/mikael-thorup.jpeg
+  job_title: Senior Analytics Engineer
+  name: Mikael Thorup
+  organization: Lunar
+
+nate_sooter:
+  image_url: /img/blog/authors/nate-sooter.jpeg
+  job_title: Manager of BI Operations
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/natesooter
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/nathansooter
+  name: Nate Sooter
+  organization: Smartsheet
+
+noah_kennedy:
+  image_url: /img/blog/authors/noah-kennedy.png
+  job_title: Software Developer
+  description: Noah Kennedy is a Software Developer at Tempus Labs, helping manage the worlds largest repository of clinical and molecular patient data. Noah picked up dbt at Tempus 2 years ago, and has worked extensively on internal dbt development for Tempus — creating macros, custom materializations, and testing frameworks that allow scientists to experiment more and data engineer less. Outside of Tempus, Noah spends his time running, biking, playing music, and exploring coffee shops. You can find more of his writing at https://noahkennedy.co/about/.
+  organization: Tempus
+  name: Noah Kennedy
+
+pat_kearns:
+  image_url: /img/blog/authors/pkearns.png
+  job_title: Senior Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/pat-kearns/
+  name: Pat Kearns
+  organization: dbt Labs
+
+pedro_brito_de_sa:
+  image_url: /img/blog/authors/pedro_brito.jpeg
+  job_title: Product Analyst
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/pbritosa/
+  name: Pedro Brito de Sa
+  organization: Sage
+
+
+rastislav_zdechovan:
+  image_url: /img/blog/authors/rastislav-zdechovan.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/rastislav-zdechovan/
+  name: Rastislav Zdechovan
+  organization: Infinite Lambda
+
+ross_turk:
+  image_url: /img/blog/authors/ross-turk.png
+  job_title: VP Marketing
+  links:
+    - icon: fa-twitter
+      url: https://mobile.twitter.com/rossturk
+    - icon: fa-github
+      url: https://github.com/rossturk
+  name: Ross Turk
+  organization: Datakin
+
+sam_harting:
+  description: Sam is a graduate of the inaugural Foundry Program. When Sam isn't helping clients build out their project, he is usually playing video games or making bad jokes to his friends, family, and coworkers.
+  image_url: /img/blog/authors/sam-harting.png
+  job_title: Associate Analytics Engineer
+  name: Samuel Harting
+  organization: dbt Labs
+
+sanjana_sen:
+  image_url: /img/blog/authors/sanjana.png
+  job_title: Analytics Engineer
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/sqlsanj
+  name: Sanjana Sen
+  organization: dbt Labs
+
+sean_mcintyre:
+  image_url: /img/blog/authors/sean_mcintyre.jpg
+  job_title: Senior Solutions Architect
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/boxysean
+  name: Sean McIntyre
+  organization: dbt Labs
+
+seth_rosen:
+  description: Seth Rosen is co-founder and CEO of TopCoat Data - a platform for helping organizations build analytical applications. Prior to founding TopCoat, Seth helped companies of all sizes build custom data apps on top of the modern data stack through his consultancy, Hashpath. When he’s not tweeting and thinking about data, he’s tweeting while parenting two toddlers.
+  image_url: /img/blog/authors/seth-rosen.jpeg
+  job_title: Co-Founder & CEO
+  links:
+    - icon: fa-twitter
+      url: https://twitter.com/sethrosen
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sdrosen/
+  name: Seth Rosen
+  organization: TopCoat Data
+
+simo_tumelius:
+  image_url: /img/blog/authors/simo-tumelius.jpeg
+  job_title: Freelance Data and Analytics Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/simo-tumelius-00a27a162/
+  name: Simo Tumelius
+
+simon_podhajsky:
+  description: |
+    Simon Podhajsky is a lapsed neuroscientist turned data everything at iLife Technologies, a startup that seeks to digitize the life insurance agency.
+  image_url: /img/blog/authors/simon-podhajsky.jpeg
+  job_title: Data Lead
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/simonpodhajsky/
+    - icon: fa-twitter
+      url: https://twitter.com/sim_pod
+  name: Simon Podhajsky
+  organization: iLife Technologies
+
+sterling_paramore:
+  description: |
+    Sterling Paramore started his career in theoretical and computation biophysics and learned that working with data was way more fun than being locked in the ivory tower.  He loves solving data engineering and data analytics problems and has been a long time evangelist for dbt.
+  image_url: /img/blog/authors/sterling-paramore.png
+  job_title: Sr Staff Data Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sterlingparamore/
+  name: Sterling Paramore
+  organization: Mainspring Energy
+
+sung_chung:
+  image_url: /img/blog/authors/sung.jpeg
+  job_title: Solutions Architect
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/sungwonchung1/
+  name: Sung Won Chung
+  organization: dbt Labs
+
+viraj_parekh:
+  image_url: /img/blog/authors/viraj-parekh.jpeg
+  job_title: Field CTO
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/viraj-parekh-46114689/
+  name: Viraj Parekh
+  organization: Astronomer
 
 wasila_quader:
-   name: Wasila Quader
-   job_title: Associate Analytics Engineer
-   description: After a winding road through healthcare spreadsheets and data science projects, Wasila discovered analytics engineering as an apprentice of dbt Labs' Foundry Program. She now works as an analytics engineer on dbt Labs' professional services team.
-   organization: dbt Labs
-   image_url: /img/blog/authors/wasila-quader.png
+  description: After a winding road through healthcare spreadsheets and data science projects, Wasila discovered analytics engineering as an apprentice of dbt Labs' Foundry Program. She now works as an analytics engineer on dbt Labs' professional services team.
+  image_url: /img/blog/authors/wasila-quader.png
+  job_title: Associate Analytics Engineer
+  name: Wasila Quader
+  organization: dbt Labs
+
+yannick_misteli:
+  image_url: /img/blog/authors/yannick_misteli.jpg
+  job_title: Head of Engineering, Global Product Strategy
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/yannick-misteli-b86129105/
+  name: Yannick Misteli
+  organization: Roche
+
+yu_ishikawa:
+  image_url: /img/blog/authors/yu-ishikawa.jpg
+  job_title: Senior Data Privacy Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/yuishikawa0301
+  name: Yu Ishikawa
+  organization: Ubie
+
+jonathan_neo:
+  image_url: /img/blog/authors/jonathan-neo.png
+  job_title: Data Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/jonneo/
+  name: Jonathan Neo
+  organization: Canva & Data Engineer Camp
+  description: Jonathan is a Data Engineer at Canva where he is building and maintaining petabyte-scale data platforms. Jonathan founded Data Engineer Camp, a bootcamp that empowers professionals to become proficient data engineers. He has since trained data and software professionals from around that are working at companies like Microsoft, Atlassian, and Apple. 
+
+santiago_jauregui:
+  image_url: /img/blog/authors/santiago-jauregui.jpeg
+  job_title: Data Analytics Leader
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/santiago-jauregui/
+  name: Santiago Jauregui
+  organization: MODO
