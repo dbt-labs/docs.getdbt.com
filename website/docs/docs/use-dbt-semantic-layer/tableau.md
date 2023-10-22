@@ -57,7 +57,7 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 The following Tableau features aren't supported at this time, however, the dbt Semantic Layer may support some of this functionality in a future release:
 
 - Updating the data source page
-- Using "Extract" mode to view yur data
+- Using "Extract" mode to view your data
 - Unioning Tables
 - Writing Custom SQL
 - Table Extensions
