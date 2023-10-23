@@ -1,6 +1,7 @@
 ---
 title: "Custom schemas"
 id: "custom-schemas"
+pagination_next: "docs/build/custom-databases"
 ---
 
 By default, all dbt models are built in the schema specified in your target. In dbt projects with lots of models, it may be useful to instead build some models in schemas other than your target schema – this can help logically group models together.

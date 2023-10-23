@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import feedStyles from './styles.module.css';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // Bare component with no default props set
 export const DiscourseFeed = ({
@@ -25,8 +24,6 @@ export const DiscourseFeed = ({
   styles = {}
 }) => {
 
-  const { siteConfig: {customFields} } = useDocusaurusContext();
-
   const [topics, setTopics] = useState([])
   const [loading, setLoading] = useState(true)
   const [isError, setIsError] = useState(false)
@@ -42,9 +39,7 @@ export const DiscourseFeed = ({
         setIsError(false)
 
         // Build function endpoint
-        const endpoint = customFields?.isVercel === '1'
-          ? `/api/get-discourse-topics`
-          : `/.netlify/functions/get-discourse-topics`
+        const endpoint = `/api/get-discourse-topics`
 
         // If 'after' prop not passed in, set relative after date
         let afterDate = after

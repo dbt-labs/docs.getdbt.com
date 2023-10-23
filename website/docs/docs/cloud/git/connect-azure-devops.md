@@ -1,6 +1,7 @@
 ---
 title: "Connect to Azure DevOps"
 id: "connect-azure-devops"
+pagination_next: "docs/cloud/git/setup-azure"
 ---
 
 <Snippet path="available-enterprise-tier-only" />
@@ -13,7 +14,7 @@ Connect your Azure DevOps cloud account in dbt Cloud to unlock new product exper
 - Import new Azure DevOps repos with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH
 - Enforce user authorization with OAuth 2.0.
-- Carry Azure DevOps user repository permissions (read / write access) through to dbt Cloud IDE's git actions.
+- Carry Azure DevOps user repository permissions (read / write access) through to dbt Cloud IDE or dbt Cloud CLI's git actions.
 - Trigger Continuous integration (CI) builds when pull requests are opened in Azure DevOps.
 
 
