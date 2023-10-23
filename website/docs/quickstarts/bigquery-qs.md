@@ -7,6 +7,7 @@ icon: 'bigquery'
 hide_table_of_contents: true
 tags: ['BigQuery', 'dbt Cloud']
 level: 'Beginner'
+recently_updated: true
 ---
 
 ## Introduction
