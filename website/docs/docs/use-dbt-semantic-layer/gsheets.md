@@ -31,6 +31,8 @@ When querying your data with Google Sheets:
 
 - It returns the data to the cell you have clicked on.
 - The custom menu operation has a timeout limit of six (6) minutes.
+- If you are logged into Chrome with a different Google user than the one you authenticated the Add-On with, it may not work. We recommend you are logged in with one Google profile at a time when using this extension.
+  
 
 ## Custom menu functions
 
