@@ -49,7 +49,7 @@
     
 }
 
-.selectContainer [class$="-MultiValueRemove"] {
+.selectContainer [aria-label^="Remove"] {
     padding: .5rem;
     border-radius: 0 0.3125rem 0.3125rem 0;
     padding-left: 4px;
@@ -57,7 +57,7 @@
     margin-left: .2rem;
 }
 
-.selectContainer [class$="-MultiValueRemove"]:hover {
+.selectContainer [aria-label^="Remove"]:hover {
     background-color: rgb(255, 189, 173);
     color: rgb(222, 53, 11);
 }
