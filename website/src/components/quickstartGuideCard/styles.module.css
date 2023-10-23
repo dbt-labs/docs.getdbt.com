@@ -85,14 +85,17 @@
 
 .infoContainer {
   display: flex;
-  gap: 1rem;
   margin-bottom: 4rem;
 }
 
-.infoContainer > *:not(:first-child):not(:last-child) {
-  border-right: solid #262A38 3px;
-  border-left: solid #262A38 3px;
+.infoContainer > * {
+  border-left: solid #e0e3e8 3px;
   padding: 0 1rem 0 1rem;
+}
+
+.infoContainer > *:first-child {
+  border: none;
+  padding-left: 0;
 }
 
 .infoContainer .tag_container {
@@ -120,9 +123,10 @@
 
 @media (max-width: 996px) {
   .infoContainer {
+    gap: 1rem;
     flex-direction: column;
   }
-  .infoContainer > *:not(:first-child):not(:last-child) {
+  .infoContainer > * {
     border: none;
     padding: 0;
   }
