@@ -8,14 +8,16 @@
     margin: 0;
     width: 370px;
     flex-shrink: 0;
-    padding-right: 3rem;
+    padding-right: 4rem;
+    margin-right: 4rem;
+    border-right: solid 5px #E0E3E8;
 }
 
 .tocList li {
     padding: 1rem;
     display: block;
     border: 1px solid #EFF2F3;
-    box-shadow: 0px 11px 24px rgba(138, 138, 138, 0.1), 0px 0px 0px rgba(138, 138, 138, 0.1);
+    box-shadow: 0px 10px 16px 0px rgba(31, 41, 55, 0.20);
     border-radius: 10px;
     margin-bottom: 1rem;
     display: grid;
