@@ -117,12 +117,26 @@ html[data-theme="dark"] .tocList .active span {
     display: none;
 }
 
+.toc_menu_btn {
+    display: none;
+}
+
+.toc_menu_btn i {
+    transform: rotate(-90deg);
+    vertical-align: middle;
+}
+
 @media (max-width: 996px) {
     .tocList {
         width: 100%;
         padding-right: 0;
         margin-bottom: 2rem;
-        height: 160px;
-        overflow-y: auto;
+        display: none;
+    }
+
+    .toc_menu_btn {
+        display: inline-block;
+        margin-bottom: 2rem;
+        cursor: pointer;
     }
 }

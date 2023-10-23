@@ -196,7 +196,24 @@ function QuickstartTOC() {
     updateStep(activeStep, stepNumber);
   };
 
+  // Handle TOC menu click
+  const handleTocMenuClick = () => {
+    const tocList = document.querySelector(`.${style.tocList}`);
+    const tocMenuBtn = document.querySelector(`.${style.toc_menu_btn}`);
+    const tocListStyles = window.getComputedStyle(tocList);
+
+    if (tocListStyles.display === "none") {
+      tocList.style.display = "block";
+      tocMenuBtn.querySelector("i").style.transform = "rotate(0deg)";
+    } else {
+      tocList.style.display = "none";
+      tocMenuBtn.querySelector("i").style.transform = "rotate(-90deg)";
+    }
+  };
+
   return (
+    <>
+    <a onClick={handleTocMenuClick} className={style.toc_menu_btn}>Menu <i className="fa-solid fa-caret-down"></i></a>
     <ul className={style.tocList}>
       {tocData.map((step) => (
         <li
@@ -209,6 +226,7 @@ function QuickstartTOC() {
         </li>
       ))}
     </ul>
+    </>
   );
 }
 
