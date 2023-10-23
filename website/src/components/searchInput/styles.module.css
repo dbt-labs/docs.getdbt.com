@@ -3,7 +3,7 @@
   border-radius: 0.3125rem;
   border: 2px solid var(--navy-200-c-6-ccd-4, #C6CCD4);
   min-height: 38px;
-  font-size: .875rem;
+  font-size: .975rem;
   font-family: var(--ifm-font-family-base);
 }
 
@@ -15,4 +15,9 @@
 .inputContainer::placeholder {
   all: unset;
   -webkit-text-security: initial;
+}
+
+[data-theme='dark'] .inputContainer {
+  background: #1b1b1d;
+  color: #e3e3e3;
 }

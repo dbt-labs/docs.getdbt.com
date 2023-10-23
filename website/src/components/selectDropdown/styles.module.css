@@ -45,8 +45,13 @@
     padding: 0 0 0 .5rem;
 }
 
+[data-theme='dark'] .selectContainer [class$="-multiValue"] {
+    background: var(--color-green-blue);
+    color: #fff;
+}
+
 [data-theme='dark'] .selectContainer [class$="-option"]:hover {
-    
+    background: var(--color-green-blue);
 }
 
 .selectContainer [aria-label^="Remove"] {

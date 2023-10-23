@@ -44,6 +44,10 @@
   color:var(--ifm-menu-color)
 }
 
+[data-theme='dark'] .quickstartCard .recently_updated {
+  color: #fff;
+}
+
 .quickstartCard .start {
   font-size: 1.125rem;
   margin-top: auto;
@@ -83,6 +87,11 @@
   padding: 0rem 0.75rem;
 }
 
+[data-theme='dark'] .quickstartCard .tag_container .tag {
+  background: #374151;
+  color: #fff;
+}
+
 .infoContainer {
   display: flex;
   margin-bottom: 4rem;
@@ -119,6 +128,10 @@
 
 .infoContainer .recently_updated {
   color: var(--color-green-blue);
+}
+
+[data-theme='dark'] .infoContainer .recently_updated {
+  color: #fff;
 }
 
 @media (max-width: 996px) {
