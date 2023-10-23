@@ -87,8 +87,6 @@ To set environment variables in the dbt Cloud CLI for your dbt project:
 3. Click on your project and scroll to the **Environment Variables** section.
 4. Click **Edit** on the lower right and then set the user-level environment variables.  
 
-If you're receiving an `Env var required but not provided: 'DBT_ENVIRONMENT'` error, you may be unintentionally running dbt Core. You can verify this by running `which dbt` to confirm if the output refers to the dbt Cloud CLI.
-
 ## Use the dbt Cloud CLI
 
 - The dbt Cloud CLI shares the same set of [dbt commands](/reference/dbt-commands) as dbt Core and processes the commands you invoke. 
