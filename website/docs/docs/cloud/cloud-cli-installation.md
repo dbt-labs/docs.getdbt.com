@@ -169,13 +169,6 @@ During the public preview period, we recommend updating before filing a bug repo
 
 
 <Tabs>
-<TabItem value="existing" label="Existing dbt Core users (pip)">
-
-To update:
-- Make sure you're in your virtual environment
-- Run `pip install --upgrade dbt`.
-	
-</TabItem>
 
 <TabItem value="mac" label="macOS (brew)">
 
@@ -193,6 +186,14 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
 
+</TabItem>
+
+<TabItem value="existing" label="Existing dbt Core users (pip)">
+
+To update:
+- Make sure you're in your virtual environment
+- Run `pip install --upgrade dbt`.
+	
 </TabItem>
 
 </Tabs>
