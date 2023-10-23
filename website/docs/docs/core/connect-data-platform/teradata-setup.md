@@ -198,40 +198,40 @@ For using cross DB macros, teradata-utils as a macro namespace will not be used,
 
 
 #### examples for cross DB macros
-Replace:
-{{ dbt.replace("string_text_column", "old_chars", "new_chars") }}
-{{ replace('abcgef', 'g', 'd') }}
+  ##### <a name="replace"></a>replace
+  {{ dbt.replace("string_text_column", "old_chars", "new_chars") }}
+  {{ replace('abcgef', 'g', 'd') }}
 
-Date truncate:
-{{ dbt.date_trunc("date_part", "date") }}
-{{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") }}
+  ##### <a name="date_trunc"></a>date_trunc
+  {{ dbt.date_trunc("date_part", "date") }}
+  {{ dbt.date_trunc("DD", "'2018-01-05 12:00:00'") }}
 
-#### <a name="datediff"></a>datediff
-`datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.
+  ##### <a name="datediff"></a>datediff
+  `datediff` macro in teradata supports difference between dates. Differece between timestamps is not supported.
 
-#### <a name="hash"></a>hash
+  ##### <a name="hash"></a>hash
 
-`Hash` macro needs an `md5` function implementation. Teradata doesn't support `md5` natively. You need to install a User Defined Function (UDF):
-1. Download the md5 UDF implementation from Teradata (registration required): https://downloads.teradata.com/download/extensibility/md5-message-digest-udf.
-1. Unzip the package and go to `src` directory.
-1. Start up `bteq` and connect to your database.
-1. Create database `GLOBAL_FUNCTIONS` that will host the UDF. You can't change the database name as it's hardcoded in the macro:
-    ```sql
-    CREATE DATABASE GLOBAL_FUNCTIONS AS PERMANENT = 60e6, SPOOL = 120e6;
-    ```
-1. Create the UDF. Replace `<CURRENT_USER>` with your current database user:
-    ```sql
-    GRANT CREATE FUNCTION ON GLOBAL_FUNCTIONS TO <CURRENT_USER>;
-    DATABASE GLOBAL_FUNCTIONS;
-    .run file = hash_md5.btq
-    ```
-1. Grant permissions to run the UDF with grant option.
-    ```sql
-    GRANT EXECUTE FUNCTION ON GLOBAL_FUNCTIONS TO PUBLIC WITH GRANT OPTION;
-    ```
-#### <a name="last_day"></a>last_day
+  `Hash` macro needs an `md5` function implementation. Teradata doesn't support `md5` natively. You need to install a User Defined Function (UDF):
+  1. Download the md5 UDF implementation from Teradata (registration required): https://downloads.teradata.com/download/extensibility/md5-message-digest-udf.
+  1. Unzip the package and go to `src` directory.
+  1. Start up `bteq` and connect to your database.
+  1. Create database `GLOBAL_FUNCTIONS` that will host the UDF. You can't change the database name as it's hardcoded in the macro:
+      ```sql
+      CREATE DATABASE GLOBAL_FUNCTIONS AS PERMANENT = 60e6, SPOOL = 120e6;
+      ```
+  1. Create the UDF. Replace `<CURRENT_USER>` with your current database user:
+      ```sql
+      GRANT CREATE FUNCTION ON GLOBAL_FUNCTIONS TO <CURRENT_USER>;
+      DATABASE GLOBAL_FUNCTIONS;
+      .run file = hash_md5.btq
+      ```
+  1. Grant permissions to run the UDF with grant option.
+      ```sql
+      GRANT EXECUTE FUNCTION ON GLOBAL_FUNCTIONS TO PUBLIC WITH GRANT OPTION;
+      ```
+  ##### <a name="last_day"></a>last_day
 
-`last_day` in `teradata_utils`, unlike the corresponding macro in `dbt_utils`, doesn't support `quarter` datepart.
+  `last_day` in `teradata_utils`, unlike the corresponding macro in `dbt_utils`, doesn't support `quarter` datepart.
 
 ## Limitations
 
