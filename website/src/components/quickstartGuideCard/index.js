@@ -3,8 +3,9 @@ import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
 import getIconType from "../../utils/get-icon-type";
 
-function QuickstartGuideCard({ frontMatter }) {
-  const { id, title, time_to_complete, icon, tags, level, recently_updated } = frontMatter;
+export default function QuickstartGuideCard({ frontMatter }) {
+  const { id, title, time_to_complete, icon, tags, level, recently_updated } =
+    frontMatter;
 
   return (
     <Link to={`/quickstarts/${id}`} className={styles.quickstartCard}>
@@ -38,4 +39,30 @@ function QuickstartGuideCard({ frontMatter }) {
   );
 }
 
-export default QuickstartGuideCard;
+export function QuickstartGuideTitle({ frontMatter }) {
+  const { id, title, time_to_complete, icon, tags, level, recently_updated } =
+    frontMatter;
+
+  return (
+    <div>
+      {recently_updated && (
+        <span className={styles.recently_updated}>Updated</span>
+      )}
+      {time_to_complete && (
+        <span className={styles.time_to_complete}>{time_to_complete}</span>
+      )}
+
+      {(tags || level) && (
+        <div className={styles.tag_container}>
+          {tags &&
+            tags.map((tag, i) => (
+              <div className={styles.tag} key={i}>
+                {tag}
+              </div>
+            ))}
+          {level && <div className={styles.tag}>{level}</div>}
+        </div>
+      )}
+    </div>
+  );
+}
