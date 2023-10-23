@@ -80,7 +80,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
 
 ### Set environment variables
 
-To set `DBT_ENVIRONMENT` in the dbt Cloud CLI for your dbt project:
+To set environment variables in the dbt Cloud CLI for your dbt project:
 
 1. Select the gear icon on the upper right of the page.
 2. Then select **Profile Settings**, then **Credentials**.
