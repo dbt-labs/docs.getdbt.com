@@ -90,8 +90,18 @@ html[data-theme="dark"] .tocList .active span {
     margin-right: auto;
 }
 
+.buttonContainer .prevButton i {
+    font-size: .8rem;
+    margin-right: .4rem;
+}
+
 .buttonContainer .nextButton {
     margin-left: auto;
+}
+
+.buttonContainer .nextButton i {
+    font-size: .8rem;
+    margin-left: .4rem;
 }
 
 .stepWrapper[data-step="1"] .nextButton {

@@ -81,13 +81,19 @@ function QuickstartTOC() {
         buttonContainer.classList.add(style.buttonContainer);
         const prevButton = document.createElement("a");
         const nextButton = document.createElement("a");
+        const nextButtonIcon = document.createElement("i");
+        const prevButtonIcon = document.createElement("i");
 
+        prevButtonIcon.classList.add("fa-regular", "fa-arrow-left");
         prevButton.textContent = "Back";
+        prevButton.prepend(prevButtonIcon);
         prevButton.classList.add(clsx(style.button, style.prevButton));
         prevButton.disabled = index === 0;
         prevButton.addEventListener("click", () => handlePrev(index + 1));
 
+        nextButtonIcon.classList.add("fa-regular", "fa-arrow-right");
         nextButton.textContent = "Next";
+        nextButton.appendChild(nextButtonIcon);
         nextButton.classList.add(clsx(style.button, style.nextButton));
         nextButton.disabled = index === stepWrappers.length - 1;
         nextButton.addEventListener("click", () => handleNext(index + 1));
