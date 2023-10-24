@@ -63,7 +63,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
    * If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a global dbt version installed.
    * You don't have to run the `dbt deps` command when your environment starts. Previously, you had to do it during initialization. However, you'll still need to run `dbt deps` if you make changes to your `packages.yml` file.
 
-4. After installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile`, to compile a project using dbt Cloud and confirm that it works.
+4. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
 
 **Note**, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 
