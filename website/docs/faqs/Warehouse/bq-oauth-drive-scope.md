@@ -1,7 +1,7 @@
 ---
 title: Why does the BigQuery OAuth application require scopes to Google Drive?
 description: "Learn more about Google Drive scopes in the BigQuery OAuth application"
-sidebar_label: "BigQuery OAuth GDrive Scopes"
+sidebar_label: "BigQuery OAuth Drive Scopes"
 id: bq-oauth-drive-scope
 ---
 
