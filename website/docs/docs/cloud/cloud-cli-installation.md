@@ -47,7 +47,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
   
 2. Install the dbt Cloud CLI with Homebrew: 
 
-   - First, remove a tap, which is like a separate repository for packages, from Homebrew. This stops Homebrew from installing packages from that repository:
+   - First, remove the dbt-labs tap, the separate repository for packages, from Homebrew. This prevents Homebrew from installing packages from that repository:
       ```bash
       brew untap dbt-labs/dbt
    -  Then run `brew tap` to add and install the dbt Cloud CLI as a package:
