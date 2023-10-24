@@ -1,29 +1,93 @@
 ---
-title: MetricFlow CLI
-id: metricflow-cli
-description: "Query metrics and metadata in your dbt project with the metricflow cli"
-sidebar_label: "MetricFlow CLI commands"
+title: MetricFlow commands
+id: metricflow-commands
+description: "Query metrics and metadata in your dbt project with the MetricFlow commands."
+sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow command line (CLI).
+Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow commands. 
 
-# Installation
+MetricFlow allows you to define and query metrics in your dbt project in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation). To experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
-You can install the [MetricFlow CLI](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install the MetricFlow CLI on Windows or Linux operating systems:
+MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
 
-1. Create or activate your virtual environment.`python -m venv venv`
+
+## MetricFlow
+
+MetricFlow is a dbt package that allows you to define and query metrics in your dbt project. You can use MetricFlow to query metrics in your dbt project in the dbt Cloud CLI, dbt Cloud IDE, or dbt Core.
+
+**Note** &mdash; MetricFlow commands aren't supported in dbt Cloud jobs yet. However, you can add MetricFlow validations with your git provider (such as GitHub Actions) by installing MetricFlow (`pip install metricflow`). This allows you to run MetricFlow commands as part of your continuous integration checks on PRs.
+
+<Tabs>
+
+<TabItem value="cloudcli" label="dbt Cloud CLI">
+
+MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI. 
+
+A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
+
+</TabItem>
+
+<TabItem value="cloud ide" label="dbt Cloud IDE">
+
+:::info
+You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
+:::
+
+</TabItem>
+
+<TabItem value="core" label="dbt Core">
+
+
+:::info Use dbt Cloud CLI for semantic layer development
+
+Use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. 
+
+A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning for you.
+:::
+
+
+You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
+
+1. Create or activate your virtual environment`python -m venv venv`
 2. Run `pip install dbt-metricflow`
+  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
 
-  * You can install MetricFlow using PyPI as an extension of your dbt adapter in the CLI. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
+**Note**, you'll need to manage versioning between dbt Core, your adapter, and MetricFlow.
 
-The MetricFlow CLI is compatible with Python versions 3.8, 3.9, 3.10 and 3.11
+</TabItem>
 
-# CLI commands
+</Tabs>
 
-The MetricFlow CLI provides the following commands to retrieve metadata and query metrics. 
 
-To execute the commands, use the `mf` prefix before the command name. For example, to list all metrics, run `mf list metrics`:
+## MetricFlow commands
+
+MetricFlow provides the following commands to retrieve metadata and query metrics. 
+
+<Tabs>
+<TabItem value="cloud" label="Commands for dbt Cloud">
+
+Use the `dbt sl` prefix before the command name to execute them in dbt Cloud. For example, to list all metrics, run `dbt sl list metrics`. 
+
+- [`list`](#list) &mdash; Retrieves metadata values.
+- [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
+- [`list dimensions`](#list) &mdash; Lists unique dimensions for metrics.
+- [`list dimension-values`](#list-dimension-values) &mdash; List dimensions with metrics.
+- [`list entities`](#list-entities) &mdash; Lists all unique entities.
+- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
+
+<!--below commands aren't support in dbt cloud yet
+- [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
+- [`health-checks`](#health-checks) &mdash; Performs data platform health check.
+- [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
+-->
+
+</TabItem>
+
+<TabItem value="core" label="Commands for dbt Core">
+
+Use the `mf` prefix before the command name to execute them in dbt Core. For example, to list all metrics, run `mf list metrics`.
 
 - [`list`](#list) &mdash; Retrieves metadata values.
 - [`list metrics`](#list-metrics) &mdash; Lists metrics with dimensions.
@@ -33,37 +97,46 @@ To execute the commands, use the `mf` prefix before the command name. For exampl
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
-- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the CLI. Refer to [query examples](#query-examples) to help you get started.
+- [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
+  
+</TabItem>
+</Tabs>
 
-## List
+### List
 
 This command retrieves metadata values related to [Metrics](/docs/build/metrics-overview), [Dimensions](/docs/build/dimensions), and [Entities](/docs/build/entities) values. 
 
 
-## List metrics
+### List metrics
 
 ```bash
-mf list 
-
+dbt sl list # In dbt Cloud
+mf list # In dbt Core
+```
 This command lists the metrics with their available dimensions:
 
 ```bash
-mf list metrics <metric_name>
+dbt sl list metrics <metric_name> # In dbt Cloud
+
+mf list metrics <metric_name> # In dbt Core
+
 Options:
   --search TEXT          Filter available metrics by this search term
   --show-all-dimensions  Show all dimensions associated with a metric.
   --help                 Show this message and exit.
 ```
 
-## List dimensions
+### List dimensions
 
 This command lists all unique dimensions for a metric or multiple metrics. It displays only common dimensions when querying multiple metrics:
 
 ```bash
-mf list dimensions --metrics <metric_name>
+dbt sl list dimensions --metrics <metric_name> # In dbt Cloud
+
+mf list dimensions --metrics <metric_name> # In dbt Core
+
 Options:
-  --metrics SEQUENCE  List dimensions by given metrics (intersection). Ex.
-                      --metrics bookings,messages
+  --metrics SEQUENCE  List dimensions by given metrics (intersection). Ex. --metrics bookings,messages
   --help              Show this message and exit.
 ```
 
@@ -72,7 +145,10 @@ Options:
 This command lists all dimension values with the corresponding metric:
 
 ```bash
-mf list dimension-values --metrics <metric_name> --dimension <dimension_name>
+dbt sl list dimension-values --metrics <metric_name> --dimension <dimension_name> # In dbt Cloud
+
+mf list dimension-values --metrics <metric_name> --dimension <dimension_name> # In dbt Core
+
 Options:
   --dimension TEXT    Dimension to query values from  [required]
   --metrics SEQUENCE  Metrics that are associated with the dimension
@@ -83,24 +159,30 @@ Options:
                       of the data (inclusive)
   --help              Show this message and exit.
 ```
-## List entities
+
+### List entities
 
 This command lists all unique entities:
 
 ```bash
-mf list entities --metrics <metric_name>
+dbt sl list entities --metrics <metric_name> # In dbt Cloud 
+
+mf list entities --metrics <metric_name> # In dbt Core
+
 Options:
-  --metrics SEQUENCE  List entities by given metrics (intersection). Ex.
-                      --metrics bookings,messages
+  --metrics SEQUENCE  List entities by given metrics (intersection). Ex. --metrics bookings,messages
   --help              Show this message and exit.
 ```
 
-## Validate-configs
+### Validate-configs
 
 This command performs validations against the defined semantic model configurations:
 
 ```bash
-mf validate-configs
+dbt sl validate-configs # In dbt Cloud
+
+mf validate-configs # In dbt Core
+
 Options:
   --dw-timeout INTEGER            Optional timeout for data warehouse
                                   validation steps. Default None.
@@ -118,28 +200,34 @@ Options:
   --help                          Show this message and exit.
 ```
 
-## Health checks
+### Health checks
 
 This command performs a health check against the data platform you provided in the configs:
 
 ```bash
-mf health-checks
+dbt sl health-checks #in dbt Cloud
+
+mf health-checks #in dbt Core
 ```
 
-## Tutorial
+### Tutorial
 
 Follow the dedicated MetricFlow tutorial to help you get started:
 
 ```bash
-mf tutorial
+dbt sl tutorial # In dbt Cloud
+
+mf tutorial # In dbt Core
 ```
 
-## Query
+### Query
 
 Create a new query with MetricFlow, execute that query against the user's data platform, and return the result:
 
 ```bash
-mf query --metrics <metric_name> --group-by <dimension_name>
+dbt sl query --metrics <metric_name> --group-by <dimension_name> # In dbt Cloud 
+
+mf query --metrics <metric_name> --group-by <dimension_name> # In dbt Core
 
 Options:
 
@@ -170,8 +258,9 @@ Options:
 
   --csv FILENAME           Provide filepath for data frame output to csv
 
-  --explain                In the query output, show the query that was
-                           executed against the data warehouse
+ --compile (dbt Cloud)    In the query output, show the query that was
+ --explain (dbt Core)     executed against the data warehouse         
+                           
 
   --show-dataflow-plan     Display dataflow plan in explain output
 
@@ -186,7 +275,7 @@ Options:
   ```
 
 
-## Query examples
+### Query examples
 
 The following tabs present various different types of query examples that you can use to query metrics and dimensions. Select the tab that best suits your needs:
 
@@ -198,7 +287,9 @@ Use the example to query metrics by dimension and return the `order_total` metri
 
 **Query**
 ```bash
-mf query --metrics order_total --group-by metric_time
+dbt sl query --metrics order_total --group-by metric_time # In dbt Cloud
+
+mf query --metrics order_total --group-by metric_time # In dbt Core
 ```
 
 **Result**
@@ -221,7 +312,9 @@ You can include multiple dimensions in a query. For example, you can group by th
 
 **Query**
 ```bash
-mf query --metrics order_total --group-by metric_time, is_food_order
+dbt sl query --metrics order_total --group-by metric_time, is_food_order # In dbt Cloud
+
+mf query --metrics order_total --group-by metric_time, is_food_order # In dbt Core
 ```
 
 **Result**
@@ -248,7 +341,11 @@ You can add order and limit functions to filter and present the data in a readab
 
 **Query**
 ```bash
-mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time
+# In dbt Cloud 
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time 
+
+# In dbt Core
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time 
 ```
 
 **Result**
@@ -273,7 +370,11 @@ You can further filter the data set by adding a `where` clause to your query.
 **Query**
 
 ```bash
-mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"
+# In dbt Cloud 
+dbt sl query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
+
+# In dbt Core
+mf query --metrics order_total --group-by metric_time --where "{{ Dimension('order_id__is_food_order') }} = True" 
 ```
 
 **Result**
@@ -301,7 +402,12 @@ To filter by time, there are dedicated start and end time options. Using these o
 
 **Query**
 ```bash
- mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27'
+
+# In dbt Cloud
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
+
+# In dbt Core
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' 
 ```
 
  **Result**
@@ -331,20 +437,24 @@ The following tabs present additional query examples, like exporting to a CSV. S
 
 
 
-<TabItem value="eg6" label="--explain flag">
+<TabItem value="eg6" label="--compile/--explain flag">
 
-Add `--explain` to your query to view the SQL generated by MetricFlow. 
+Add `--compile` (or `--explain` for dbt Core users) to your query to view the SQL generated by MetricFlow. 
 
 **Query**
 
 ```bash
- mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
+# In dbt Cloud
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --compile
+
+# In dbt Core
+mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --explain
 ```
 
  **Result**
  ```bash
  ✔ Success 🦄 - query completed after 0.28 seconds
-🔎 SQL (remove --explain to see data or add --show-dataflow-plan to see the generated dataflow plan):
+🔎 SQL (remove --compile to see data or add --show-dataflow-plan to see the generated dataflow plan):
 SELECT
   metric_time
   , is_food_order
@@ -374,6 +484,10 @@ Add the `--csv file_name.csv` flag to export the results of your query to a csv.
 **Query**
 
 ```bash
+# In dbt Cloud
+dbt sl query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
+
+# In dbt Core
 mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 --order -metric_time --where "is_food_order = True" --start-time '2017-08-22' --end-time '2017-08-27' --csv query_example.csv
 ```
 
@@ -386,14 +500,16 @@ mf query --metrics order_total --group-by metric_time,is_food_order --limit 10 -
 </TabItem>
 </Tabs>
 
-## Time granularity
+### Time granularity
 
 Optionally, you can specify the time granularity you want your data to be aggregated at by appending two underscores and the unit of granularity you want to `metric_time`, the global time dimension. You can group the granularity by: `day`, `week`, `month`, `quarter`, and `year`. 
 
 Below is an example for querying metric data at a monthly grain:
 
 ```bash
-mf query --metrics revenue --group-by metric_time__month
+dbt sl query --metrics revenue --group-by metric_time__month # In dbt Cloud
+
+mf query --metrics revenue --group-by metric_time__month # In dbt Core
 ```
 
 ## FAQs
@@ -403,7 +519,7 @@ mf query --metrics revenue --group-by metric_time__month
 
 To add a dimension filter to a where filter, you have to indicate that the filter item is part of your model and use a template wrapper: <code>{{Dimension('primary_entity__dimension_name')}}</code>. 
 
-Here's an example query: <code>mf query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, you will need to set up your terminal to escape curly braces for the filter template to work. 
+Here's an example query: <code>dbt sl query --metrics order_total --group-by metric_time --where "{{Dimension('order_id__is_food_order')}} = True"</code>.<br /><br /> Before using the template wrapper, however, you will need to set up your terminal to escape curly braces for the filter template to work. 
 
 <details> 
 <summary>How to set up your terminal to escape curly braces? </summary>
