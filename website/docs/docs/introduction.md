@@ -1,6 +1,8 @@
 ---
 title: "What is dbt?"
 id: "introduction"
+pagination_next: null
+pagination_prev: null
 ---
 
 <Snippet path="what-is-dbt-intro" />
@@ -28,6 +30,7 @@ Read more about why we want to enable analysts to work more like software engine
 You can access dbt using dbt Core or dbt Cloud. dbt Cloud is built around dbt Core, but it also provides:
 
 - Web-based UI so it’s more accessible
+- dbt Cloud-powered command line (CLI) to develop, test, version control dbt projects, and run dbt commands
 - Hosted environment so it’s faster to get up and running
 - Differentiated features, such as metadata, in-app job scheduler, observability, integrations with other tools, integrated development environment (IDE), and more.
 
@@ -35,7 +38,8 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 
 ### dbt Cloud
 
-dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/quickstarts).
+dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. It also natively supports developing using a command line with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
+Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/quickstarts).
 
 ### dbt Core
 

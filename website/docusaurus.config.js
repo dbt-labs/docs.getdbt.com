@@ -71,13 +71,13 @@ var siteSettings = {
     announcementBar: {
       id: "biweekly-demos",
       content:
-        "Join our weekly demos and see dbt Cloud in action!",
+        "Join our weekly demos and dbt Cloud in action!",
       backgroundColor: "#047377",
       textColor: "#fff",
       isCloseable: true,
     },
     announcementBarActive: true,
-    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts/?utm_medium=event&utm_source=docs&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
+    announcementBarLink: "https://www.getdbt.com/resources/dbt-cloud-demos-with-experts?utm_source=docs&utm_medium=event&utm_campaign=q1-2024_cloud-demos-with-experts_awareness",
     // Set community spotlight member on homepage
     // This is the ID for a specific file under docs/community/spotlight
     communitySpotlightMember: "faith-lierheimer",
