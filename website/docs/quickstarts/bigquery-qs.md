@@ -95,7 +95,7 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 <Snippet path="tutorial-managed-repo" />
 
 
-## Initialize your dbt project​ and start developing
+## Initialize your dbt project
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
