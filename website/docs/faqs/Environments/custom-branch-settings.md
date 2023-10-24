@@ -15,7 +15,7 @@ To specify a custom branch:
 
 ## Development
 
-In a development environment, the default branch (usually named `main`) is a read-only branch in your connected repositories, which allows you to create new branches for development based on it.  
+In a development environment, the default branch (usually named `main`) is a read-only branch in your connected repositories, which allows you to create new branches for development from it.  
 
 Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches based on it. This also means you can't edit this custom branch directly.
 
