@@ -330,8 +330,8 @@ models:
   - name: orders
     columns:
       - name: order_id
-        tests:
         tags: [my_column_tag]
+        tests:
           - unique
 
 ```

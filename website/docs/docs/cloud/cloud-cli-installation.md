@@ -21,69 +21,17 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
 * Significant platform improvements, to be released over the coming months.
 
+
+## Prerequisites 
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
+
+You must be on dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
 
 ## Install dbt Cloud CLI
 
 You can install the dbt Cloud CLI on the command line by using one of these methods:
 
 <Tabs queryString="install">
-
-<TabItem value="pip" label="Existing dbt Core users (pip)">
-
-:::info Use native packages or a virtual environment to avoid overriding dbt Core
-
-Installing the dbt Cloud CLI with pip replaces dbt Core. This change can be avoided by using the native install method and configuring your PATH or by creating a new virtual environment.
-
-Otherwise, to switch back to dbt Core, uninstall the dbt Cloud CLI and follow the dbt Core installation instructions.
-
-::: 
-
-Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
-
-### Install a virtual environment
-
-We recommend using virtual environments (venv) to namespace `cloud-cli`.
-
-1. Create a new venv:
-   ```shell
-   python3 -m venv dbt-cloud
-    ```
-
-2. Activate the virtual environment each time you create a shell window or session:
-  ```shell   
-  source dbt-cloud/bin/activate         # activate the environment for Mac and Linux OR
-  dbt-env\Scripts\activate            # activate the environment for Windows
-  ```
-
-3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, $HOME/.bashrc, $HOME/.zshrc) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
-   ```shell
-   alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
-   ```
-   
-### Install dbt Cloud CLI in pip
-
-1. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
-
-  ```bash
-  dbt --version
-  ```
-
-2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
-
-  ```bash
-  pip3 install dbt
-  ```
-
-3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
-4. Reinstall dbt Core using the version from Step 2.
-
-  ```bash
-  pip3 uninstall dbt-core dbt
-  pip3 install dbt-core==VERSION
-  ```
-
-</TabItem>
 	
 <TabItem value="brew" label="macOS (brew)">
 
@@ -154,6 +102,62 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 </TabItem>
 
+<TabItem value="pip" label="Existing dbt Core users (pip)">
+
+:::info Use native packages or a virtual environment to avoid overriding dbt Core
+
+Installing the dbt Cloud CLI with pip replaces dbt Core. This change can be avoided by using the native install method and configuring your PATH or by creating a new virtual environment.
+
+Otherwise, to switch back to dbt Core, uninstall the dbt Cloud CLI and follow the dbt Core installation instructions.
+
+::: 
+
+Before installing the dbt Cloud CLI, make sure you have Python installed and your virtual environment venv or pyenv . If you already have a Python environment configured, you can skip to the [pip installation step](#install-dbt-cloud-cli-in-pip).
+
+### Install a virtual environment
+
+We recommend using virtual environments (venv) to namespace `cloud-cli`.
+
+1. Create a new venv:
+   ```shell
+   python3 -m venv dbt-cloud
+    ```
+
+2. Activate the virtual environment each time you create a shell window or session:
+  ```shell   
+  source dbt-cloud/bin/activate         # activate the environment for Mac and Linux OR
+  dbt-env\Scripts\activate            # activate the environment for Windows
+  ```
+
+3. (Mac and Linux only) Create an alias to activate your dbt environment with every new shell window or session. You can add the following to your shell's configuration file (for example, $HOME/.bashrc, $HOME/.zshrc) while replacing `<PATH_TO_VIRTUAL_ENV_CONFIG>` with the path to your virtual environment configuration:
+   ```shell
+   alias env_dbt='source <PATH_TO_VIRTUAL_ENV_CONFIG>/bin/activate'
+   ```
+   
+### Install dbt Cloud CLI in pip
+
+1. (Optional) If you already have dbt Core installed, this installation will override that package. Note your dbt Core version in case you need to reinstall it later:
+
+  ```bash
+  dbt --version
+  ```
+
+2. Make sure you're in your virtual environment and run the following command to install the dbt Cloud CLI:
+
+  ```bash
+  pip3 install dbt
+  ```
+
+3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core
+4. Reinstall dbt Core using the version from Step 2.
+
+  ```bash
+  pip3 uninstall dbt-core dbt
+  pip3 install dbt-core==VERSION
+  ```
+
+</TabItem>
+
 </Tabs>
 
 
@@ -165,13 +169,6 @@ During the public preview period, we recommend updating before filing a bug repo
 
 
 <Tabs>
-<TabItem value="existing" label="Existing dbt Core users (pip)">
-
-To update:
-- Make sure you're in your virtual environment
-- Run `pip install --upgrade dbt`.
-	
-</TabItem>
 
 <TabItem value="mac" label="macOS (brew)">
 
@@ -189,6 +186,14 @@ To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-
 
 To update, follow the same process explained in [Windows](/docs/cloud/cloud-cli-installation?install=linux#install-dbt-cloud-cli) and replace the existing `dbt` executable with the new one.
 
+</TabItem>
+
+<TabItem value="existing" label="Existing dbt Core users (pip)">
+
+To update:
+- Make sure you're in your virtual environment
+- Run `pip install --upgrade dbt`.
+	
 </TabItem>
 
 </Tabs>
