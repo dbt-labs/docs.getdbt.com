@@ -25,6 +25,7 @@ function QuickstartList({ quickstartData }) {
 
   // UseMemo to prevent re-rendering on every filter change
   // Get tag options
+  // Populated from the tags frontmatter array
   const tagOptions = useMemo(() => {
     const tags = new Set();
     quickstartData.forEach(guide =>
@@ -34,6 +35,7 @@ function QuickstartList({ quickstartData }) {
   }, [quickstartData]);
 
   // Get level options
+  // Populated by the level frontmatter string
   const levelOptions = useMemo(() => {
     const levels = new Set();
     quickstartData.forEach(guide =>
