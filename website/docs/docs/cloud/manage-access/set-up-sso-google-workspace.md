@@ -90,7 +90,7 @@ Settings.
 2. Click the **Edit** button and supply the following SSO details:
     - **Log in with**: GSuite
     - **Client ID**: Paste the Client ID generated in the steps above
-    - **Client Secret**: Paste the Client Secret generated in the steps above
+    - **Client Secret**: Paste the Client Secret generated in the steps above; when the client secret expires, a Google Workspace admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access
     - **Domain in GSuite**: Enter the domain name for your GSuite account (eg. `dbtlabs.com`).
       Only users with an email address from this domain will be able to log into your dbt Cloud
       account using GSuite auth. Optionally, you may specify a CSV of domains
