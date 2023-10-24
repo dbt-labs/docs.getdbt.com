@@ -24,7 +24,7 @@
   font-family: var(--ifm-font-family-base);
 }
 
-[data-theme='dark'] .inputContainer {
+[data-theme='dark'] .input{
   background: #1b1b1d;
   color: #e3e3e3;
 }

@@ -121,6 +121,12 @@
   padding: 0rem 0.75rem;
 }
 
+[data-theme='dark'] .infoContainer .tag_container .tag {
+  background: #374151;
+  color: #fff;
+}
+
+
 .infoContainer .time_to_complete {
   font-weight: 700;
   
