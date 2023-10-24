@@ -65,7 +65,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
 
 4. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
 
-**Note**, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file locally on your machine.  
 
 </TabItem>
 
