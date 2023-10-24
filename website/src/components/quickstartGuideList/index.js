@@ -31,7 +31,8 @@ function QuickstartList({ quickstartData }) {
     quickstartData.forEach(guide =>
       guide?.data?.tags?.forEach(tag => tags.add(tag))
     );
-    return Array.from(tags).map(tag => ({ value: tag, label: tag }));
+    // Sort alphabetically
+    return Array.from(tags).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())).map(tag => ({ value: tag, label: tag }));
   }, [quickstartData]);
 
   // Get level options
