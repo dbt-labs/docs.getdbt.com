@@ -8,9 +8,6 @@ tags: [Semantic Layer]
 
 <VersionBlock firstVersion="1.6">
 
-import NewSLChanges from '/snippets/_new-sl-changes.md';
-
-<NewSLChanges />
 
 With the dbt Semantic Layer, you can centrally define business metrics, reduce code duplication and inconsistency, create self-service in downstream tools, and more. Configure the dbt Semantic Layer in dbt Cloud to connect with your integrated partner tool. 
 

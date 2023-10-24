@@ -11,7 +11,7 @@ Run snowplow_sessions, all ancestors of snowplow_sessions, fct_orders, and all a
 
 
   ```bash
-  $ dbt run --select +snowplow_sessions +fct_orders
+dbt run --select "+snowplow_sessions +fct_orders"
   ```
 
 ### Intersections
@@ -22,15 +22,15 @@ Run all the common ancestors of snowplow_sessions and fct_orders:
 
 
   ```bash
-  $ dbt run --select +snowplow_sessions,+fct_orders
-  ```
+dbt run --select "+snowplow_sessions,+fct_orders"
+```
 
 
 Run all the common descendents of stg_invoices and stg_accounts:
 
 
   ```bash
-  $ dbt run --select stg_invoices+,stg_accounts+
+dbt run --select "stg_invoices+,stg_accounts+"
   ```
 
 
@@ -38,5 +38,5 @@ Run models that are in the marts/finance subdirectory *and* tagged nightly:
 
 
   ```bash
-  $ dbt run --select marts.finance,tag:nightly
-  ```
+dbt run --select "marts.finance,tag:nightly"
+```
