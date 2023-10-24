@@ -76,7 +76,6 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 1. Start the [GCP credentials wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify you are using the correct email account. For **Credential Type**: 
     - From the **Select an API** dropdown, choose **BigQuery API**
     - Select **Application data** for the type of data you will be accessing
-    - Select **No, I’m not using them** and click **Next**.
     - Click **Next** to create a new service account.
 2. Create a service account for your new project from the [Service accounts page](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project). For more information, refer to [Create a service account](https://developers.google.com/workspace/guides/create-credentials#create_a_service_account) in the Google Cloud docs. As an example for this guide, you can:
     - Type `dbt-user` as the **Service account name**
