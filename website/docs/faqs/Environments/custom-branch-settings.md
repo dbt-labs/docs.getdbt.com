@@ -17,7 +17,7 @@ To specify a custom branch:
 
 In a development environment, the default branch (usually named `main`) is a read-only branch in your connected repositories, which allows you to create new branches for development from it.  
 
-Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches based on it. This also means you can't edit this custom branch directly.
+Specifying a **Custom branch** overrides the default behavior. It makes the custom branch 'read-only' and enables you to create new development branches from it. This also means you can't edit this custom branch directly.
 
 Only one branch can be read-only, which means when you set up a custom branch, your `main` branch (usually read-only) becomes editable. If you want to protect the `main` branch and prevent any commits on it, you need to set up branch protection rules in your git provider settings. This ensures your `main` branch remains secure and no new commits can be made to it.
 
