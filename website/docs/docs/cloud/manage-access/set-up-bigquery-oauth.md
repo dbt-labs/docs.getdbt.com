@@ -74,3 +74,7 @@ You will then be redirected to BigQuery and asked to approve the drive, cloud pl
 <Lightbox src="/img/docs/dbt-cloud/using-dbt-cloud/dbt-cloud-enterprise/BQ-auth/BQ-access.png" title="BigQuery access request" />
 
 Select **Allow**. This redirects you back to dbt Cloud. You should now be an authenticated BigQuery user, ready to use the dbt Cloud IDE.
+
+## FAQs
+
+<FAQ path="Warehouse/bg-oauth-drive-scope"/>
