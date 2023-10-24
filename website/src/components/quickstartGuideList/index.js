@@ -23,7 +23,8 @@ function QuickstartList({ quickstartData }) {
   // Build meta title from quickstartTitle and docusaurus config site title
   const metaTitle = `${quickstartTitle}${siteConfig?.title ? ` | ${siteConfig.title}` : ''}`;
 
-  // Memoized computation of tag and level options
+  // UseMemo to prevent re-rendering on every filter change
+  // Get tag options
   const tagOptions = useMemo(() => {
     const tags = new Set();
     quickstartData.forEach(guide =>
@@ -32,6 +33,7 @@ function QuickstartList({ quickstartData }) {
     return Array.from(tags).map(tag => ({ value: tag, label: tag }));
   }, [quickstartData]);
 
+  // Get level options
   const levelOptions = useMemo(() => {
     const levels = new Set();
     quickstartData.forEach(guide =>
@@ -75,8 +77,12 @@ function QuickstartList({ quickstartData }) {
       />
       <section id='quickstart-card-section'>
         <div className={`container ${styles.quickstartFilterContainer} `}>
-          <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
-          <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
+          {tagOptions && tagOptions.length > 0 && (
+            <SelectDropdown options={tagOptions} onChange={setSelectedTags} isMulti placeHolder={'Filter by topic'} />
+          )}
+          {levelOptions && levelOptions.length > 0 && (
+            <SelectDropdown options={levelOptions} onChange={setSelectedLevel} isMulti placeHolder={'Filter by level'} />
+          )}
           <SearchInput onChange={(value) => setSearchInput(value)} placeholder='Search Quickstarts' />
         </div>
         <div className={`container ${styles.quickstartCardContainer} `}>
