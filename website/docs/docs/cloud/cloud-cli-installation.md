@@ -29,7 +29,7 @@ You must be on dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/db
 
 ## Install dbt Cloud CLI
 
-You can install the dbt Cloud CLI on the command line by using one of these methods. For a video instruction step-by-step guide, refer to the [FAQs](#faqs).
+You can install the dbt Cloud CLI on the command line by using one of these methods. For a step-by-step video guide, refer to the [FAQs](#faqs).
 
 <Tabs queryString="install">
 	
