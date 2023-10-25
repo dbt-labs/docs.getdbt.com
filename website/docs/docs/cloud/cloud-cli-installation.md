@@ -25,20 +25,27 @@ https://github.com/dbt-labs/docs.getdbt.com/pull/4320* Significant platform impr
 ## Prerequisites 
 The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-cloud/regions-ip-addresses) and for both multi-tenant and single-tenant accounts (Azure single-tenant not supported at this time).
 
-You must be on dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
+- Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
+- Avoid using SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.
+- Avoid using [PrivateLink](/cloud/secure/about-privatelink).
 
 ## Install dbt Cloud CLI
 
 You can install the dbt Cloud CLI on the command line by using one of these methods. 
 
-For a step-by-step video guide, refer to the [FAQs](#faqs).
+<details>
+<summary>Watch a step-by-step video guide</summary>
+For a video walkthrough of the installation process, refer to the following video:
+
+<LoomVideo id="dd80828306c5432a996d4580135041b6?sid=fe1895b7-1281-4e42-9968-5f7d11768000"/>
+
+</details>
 
 <Tabs queryString="install">
 	
 <TabItem value="brew" label="macOS (brew)">
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
-
 
 1. Run the following command to verify that you don't already have dbt Core installed:
    
@@ -264,11 +271,4 @@ If you have dbt Core installed locally, either:
 You can always uninstall the dbt Cloud CLI to return to using dbt Core.
 </details>
 
-<details>
-<summary>Are there any instructional videos to help guide me through installation? </summary>
-For a video walkthrough of the installation process, refer to the following video:
-
-<LoomVideo id="dd80828306c5432a996d4580135041b6?sid=fe1895b7-1281-4e42-9968-5f7d11768000"/>
-
-</details>
 
