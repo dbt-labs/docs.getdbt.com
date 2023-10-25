@@ -33,7 +33,7 @@ The dbt Semantic Layer APIs authenticate with `environmentId`, `SERVICE_TOKEN`, 
 
 We recommend you provide users with separate input fields with these components for authentication (dbt Cloud will surface these parameters for the user). 
 
-### Exposing Metadata to dbt Labs 
+### Exposing metadata to dbt Labs 
 
 When building an integration, we recommend you expose certain metadata in the request for analytics purposes. Among other items, it is helpful to have the following: 
 
