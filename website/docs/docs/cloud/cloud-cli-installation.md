@@ -34,8 +34,7 @@ The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-clo
 You can install the dbt Cloud CLI on the command line by using one of these methods. 
 
 <details>
-<summary>Watch a step-by-step video guide</summary>
-For a video walkthrough of the installation process, refer to the following video:
+<summary>View a video tutorial for a step-by-step guide to installing</summary>
 
 <LoomVideo id="dd80828306c5432a996d4580135041b6?sid=fe1895b7-1281-4e42-9968-5f7d11768000"/>
 
