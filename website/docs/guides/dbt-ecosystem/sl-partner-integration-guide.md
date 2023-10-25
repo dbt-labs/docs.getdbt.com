@@ -93,7 +93,7 @@ Allow users to query either one metric alone without dimensions or multiple metr
 
 - Allow toggling between metrics/dimensions seamlessly.
 
-- Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply(our APIs provide calls for you to get relevant dimensions for metrics, and vice versa).
+- Be clear on exposing what dimensions are queryable with what metrics and hide things that don’t apply. (Our APIs provide calls for you to get relevant dimensions for metrics, and vice versa).
 
 - Only expose time granularities (monthly, daily, yearly) that match the available metrics. 
   * For example, if a dbt model and its resulting semantic model have a monthly granularity, make sure querying data with a 'daily' granularity isn't available to the user. Our APIs have functionality that will help you surface the correct granularities
