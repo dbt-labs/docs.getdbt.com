@@ -254,14 +254,14 @@ Where filters in API allow for a filter list or string. We recommend using the f
 
 Where Filters have a few objects that you can use:
 
-- `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Dimension()` - Used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
 Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'MONTH')`.
 
 
-Use the following example to query using a `where` filter with the string format:
+- Use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
@@ -271,13 +271,13 @@ where="{{ Dimension('metric_time').grain('month')  }} >= '2017-03-09' AND {{ Dim
 }}
 ```
 
-Use the following example to query using a `where` filter with a filter list format:
+- (Recommended for better performance) Use the following example to query using a `where` filter with a filter list format:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where=[{{ Dimension('metric_time').grain('month') }} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
+where=["{{ Dimension('metric_time').grain('month') }} >= '2017-03-09'", "{{ Dimension('customer__customer_type' }} in ('new')", "{{ Entity('order_id') }} = 10"]
 }}
 ```
 
