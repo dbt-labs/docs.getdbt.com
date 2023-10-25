@@ -122,7 +122,7 @@ For better analysis, it's best to have the context of the metrics close to where
 For transparency and additional context, we recommend you have an easy way for the user to obtain the SQL that MetricFlow generates. Depending on what API you are using, you can do this by using our `compile` parameter. This is incredibly powerful and emphasizes transparency and openness, particularly for technically inclined users.
 
 
-### Where filters and Optimization
+### Where filters and optimization
 
 In the cases where our APIs support either a string or a filter list for the `where` clause, we always recommend that your application utilizes the filter list in order to gain maximum pushdown benefits. The `where` string may be more intuitive for users writing queries during testing, but it will not have the performance benefits of the filter list in a production environment.
 
