@@ -37,24 +37,6 @@ MetricFlow abides by these principles:
 - **Simplicity with gradual complexity:** Approach MetricFlow using familiar data modeling concepts.
 - **Performance and efficiency**: Optimize performance while supporting centralized data engineering and distributed logic ownership.
 
-<!--MetricFlow is a SQL query generation engine that helps you create metrics by constructing appropriate queries for different granularities and dimensions that are useful for various business applications. 
-
-- It uses YAML files to define a semantic graph, which maps language to data. This graph consists of , which serve as data entry points, and [, which are functions used to create new quantitative indicators.
-
-- MetricFlow is a  () and available on dbt versions 1.6 and higher. 
-
-- MetricFlow, as a part of the dbt Semantic Layer, allows organizations to define company metrics logic through YAML abstractions, as described in the following sections.
-
-- To query metrics dimensions, dimension values, and validate your configurations; install MetricFlow in 
-
-MetricFlow has the following principles:
-
-- **Flexible, but complete** &mdash;  Ability to create any metric on any data model by defining logic in flexible abstractions.
-- **Don't Repeat Yourself (DRY)** &mdash; Avoid repetition by allowing metric definitions to be enabled whenever possible.
-- **Simple with progressive complexity** &mdash; Make MetricFlow approachable by relying on known concepts and structures in data modeling. 
-- **Performant and efficient** &mdash; Allow for performance optimizations in centralized data engineering while still enabling distributed definition and ownership of logic.
--->
-
 ### Semantic graph 
 
 We're introducing a new concept: a "semantic graph". It's the relationship between semantic models and YAML configurations that creates a data landscape for building metrics. You can think of it like a map, where tables are like locations, and the connections between them (edges) are like roads. Although it's under the hood, the semantic graph is a subset of the <Term id="dag" />, and you can see the semantic models as nodes on the DAG.
@@ -72,6 +54,8 @@ For a semantic model, there are three main pieces of metadata:
 * [Entities](/docs/build/entities) &mdash; The join keys of your semantic model (think of these as the traversal paths, or edges between semantic models).
 * [Dimensions](/docs/build/dimensions) &mdash; These are the ways you want to group or slice/dice your metrics.
 * [Measures](/docs/build/measures) &mdash; The aggregation functions that give you a numeric result and can be used to create your metrics.
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
 ### Metrics 
 
