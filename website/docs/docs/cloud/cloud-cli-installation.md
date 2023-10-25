@@ -61,7 +61,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
       brew install dbt
       ```
 
-3. Verify your installation by running `dbt --help` in the command line. If you see the following output, your installation is correct
+3. Verify your installation by running `dbt --help` in the command line. If you see the following output, your installation is correct:
       ```bash
       The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
       ```
@@ -90,7 +90,7 @@ Advanced users can configure multiple projects to use the same dbt Cloud CLI by 
 Note that if you are using VS Code, you must restart it to pick up modified environment variables.
 :::
 
-3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct
+3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
       ```bash
       The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
       ```
@@ -123,7 +123,7 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 :::
 
-3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct
+3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct:
       ```bash
       The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
       ```
