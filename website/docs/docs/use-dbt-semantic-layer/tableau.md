@@ -12,7 +12,7 @@ The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/db
 
 The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
 
-This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop. (Tableau Cloud or Tableau Server is not supported for this integration).
+This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
 
 ## Prerequisites
 
