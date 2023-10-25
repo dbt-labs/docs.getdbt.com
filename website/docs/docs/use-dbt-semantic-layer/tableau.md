@@ -17,7 +17,7 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 ## Prerequisites
 
 1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
-2. Authenticate in Tableau Desktop (you can authenticate with a license, or credentials used to login to Tableau Server or Online)
+2. Log in to Tableau Desktop using either your license or the login details you use for Tableau Server or Tableau Online.
 3. You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
 4. You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
