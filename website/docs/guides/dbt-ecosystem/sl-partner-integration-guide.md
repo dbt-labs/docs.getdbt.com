@@ -5,10 +5,6 @@ description: Learn about partner integration guidelines, roadmap, and connectivi
 ---
 
 
-import NewChanges from '/snippets/_new-sl-changes.md';
-
-<NewChanges/>
-
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
 
 :::note
