@@ -63,8 +63,7 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
      ```bash
      The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud. For more documentation on these commands, visit: docs.getdbt.com
      ```
-     This output confirms that you've successfully installed the dbt Cloud CLI. If you don't see this output, please ensure that you've deactivated your pyenv or venv and don't have a global dbt version
-     installed.
+     This output confirms that you've successfully installed the dbt Cloud CLI. If you don't see this output, please ensure that you've deactivated your pyenv or venv and don't have a global dbt version installed.
    
 Note that you no longer need to run the `dbt deps` command when your environment starts. This command was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
