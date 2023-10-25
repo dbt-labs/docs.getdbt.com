@@ -38,7 +38,7 @@ We recommend you provide users with separate input fields with these components 
 When building an integration, we recommend you expose certain metadata in the request for analytics purposes. Among other items, it is helpful to have the following: 
 
 - Your application's name (such as 'Tableau')
-- The user email of the person querying from your application
+- The email of the person querying your application
 - The version of dbt they are on.
 
 
