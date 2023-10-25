@@ -19,7 +19,7 @@ dbt commands are run against dbt Cloud's infrastructure and benefit from:
 * [Automatic deferral](/docs/cloud/about-cloud-develop-defer) of build artifacts to your Cloud project's production environment. 
 * Speedier, lower-cost builds.
 * Support for dbt Mesh ([cross-project `ref`](/docs/collaborate/govern/project-dependencies)),
-* Significant platform improvements, to be released over the coming months.
+https://github.com/dbt-labs/docs.getdbt.com/pull/4320* Significant platform improvements, to be released over the coming months.
 
 
 ## Prerequisites 
@@ -29,7 +29,9 @@ You must be on dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/db
 
 ## Install dbt Cloud CLI
 
-You can install the dbt Cloud CLI on the command line by using one of these methods. For a step-by-step video guide, refer to the [FAQs](#faqs).
+You can install the dbt Cloud CLI on the command line by using one of these methods. 
+
+For a step-by-step video guide, refer to the [FAQs](#faqs).
 
 <Tabs queryString="install">
 	
@@ -59,17 +61,17 @@ Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in yo
       brew install dbt
       ```
 
-3. To verify your installation, open the command line and run the command dbt --help. If your installation is correct, you should see the following output:
-     ```bash
-     The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud. For more documentation on these commands, visit: docs.getdbt.com
-     ```
-     This output confirms that you've successfully installed the dbt Cloud CLI. If you don't see this output, please ensure that you've deactivated your pyenv or venv and don't have a global dbt version installed.
+3. Verify your installation by running `dbt --help` in the command line. If you see the following output, your installation is correct
+      ```bash
+      The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
+      ```
+
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
    
-Note that you no longer need to run the `dbt deps` command when your environment starts. This command was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
+   * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
-7. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
-
-If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file locally on your machine.  
+4. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
+   * If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file locally on your machine.  
 
 </TabItem>
 
@@ -88,13 +90,17 @@ Advanced users can configure multiple projects to use the same dbt Cloud CLI by 
 Note that if you are using VS Code, you must restart it to pick up modified environment variables.
 :::
 
-3. Verify the installation by running `./dbt --help` from the command line. 
-   * If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
-   * You don't have to run the `dbt deps` command when your environment starts. Previously, you had to do it during initialization. However, you'll still need to run `dbt deps` if you make changes to your `packages.yml` file.
+3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct
+      ```bash
+      The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
+      ```
+
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
+   
+   * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
 4. After installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile`, to compile a project using dbt Cloud and confirm that it works.
-
-**Note**, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+   * If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 
 </TabItem>
 
@@ -117,13 +123,17 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 :::
 
-3. Verify the installation by running `./dbt --help` from the command line. 
-   * If the help text doesn't indicate that you're using the dbt Cloud CLI, make sure you've deactivated your pyenv or venv and don't have a version of dbt globally installed.
-   * You don't have to run the `dbt deps` command when your environment starts. Previously, you had to do it during initialization. However, you'll still need to run `dbt deps` if you make changes to your `packages.yml` file.
+3. Verify your installation by running `./dbt --help` in the command line. If you see the following output, your installation is correct
+      ```bash
+      The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud...
+      ```
+
+     If you don't see this output, check that you've deactivated pyenv or venv and don't have a global dbt version installed.
+   
+   * Note that you no longer need to run the `dbt deps` command when your environment starts. This step was previously required during initialization. However, you should still run `dbt deps` if you make any changes to your `packages.yml` file.
 
 4. After installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile`, to compile a project using dbt Cloud and confirm that it works.
-
-**Note**, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+   * If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 
 </TabItem>
 
@@ -186,8 +196,7 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
   ```
 
 4. After installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project and use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile`, to compile a project using dbt Cloud and confirm that it works.
-
-**Note**, that if you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
+   * If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 
 </TabItem>
 
