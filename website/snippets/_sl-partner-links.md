@@ -1,6 +1,8 @@
 The following tools integrate with the dbt Semantic Layer:
 
-<div className="grid--3-col">
+<!-- do not change card order unless specified by both SL PM and Partnerships team-->
+
+<div className="grid--4-col">
 
  <Card
     title="Tableau (beta)"
@@ -12,13 +14,13 @@ The following tools integrate with the dbt Semantic Layer:
     title="Google Sheets (beta)"
     link="/docs/use-dbt-semantic-layer/gsheets"
     body="Discover how to connect to Google Sheets for querying metrics and collaborating with your team."
-    icon="google-sheets-logo-icon"/>  
+    icon="google-sheets-logo-icon"/>
 
   <div className="card-container">
     <Card
       title="Hex"
       link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
-      body="Check out Hex's documentation to learn how to connect, analyze metrics, collaborate, and discover more data possibilities."
+      body="Check out how to connect, analyze metrics, collaborate, and discover more data possibilities."
       icon="hex"/>
     <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       className="external-link"
@@ -30,8 +32,22 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
+    title="KlipFolio Power Metrics"
+    body="Learn how to connect, and deliver a streamlined metrics catalog to your business users."
+    link="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
+    icon="klipfolio"/>
+    <a href="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <i className="fa fa-external-link"></i>
+    </a>
+</div>
+
+<div className="card-container">
+  <Card
     title="Lightdash"
-    body="Refer to Lightdash's documentation to learn how to connect and query reliable metrics."
+    body="Check out how to connect, query, and consume reliable dbt metrics in real time "
     link="https://docs.lightdash.com/guides/dbt-semantic-layer/"
     icon="lightdash"/>
     <a href="https://docs.lightdash.com/guides/dbt-semantic-layer/"
@@ -45,7 +61,7 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="card-container">
   <Card
     title="Mode"
-    body="Refer to Mode's documentation to learn how to connect, access, and get trustworthy metrics and insights."
+    body="Discover how to connect, access, and get trustworthy metrics and insights."
     link="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
     icon="mode"/>
     <a href="https://mode.com/help/articles/supported-databases/#dbt-semantic-layer"
@@ -56,7 +72,34 @@ The following tools integrate with the dbt Semantic Layer:
     </a>
 </div>
 
-</div><br />
+<div className="card-container">
+  <Card
+    title="Push.ai"
+    body="Explore how to connect and use metrics to power reports and insights that drive change."
+    link="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
+    icon="push"/>
+    <a href="https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <i className="fa fa-external-link"></i>
+    </a>
+</div>
 
+<div className="card-container">
+  <Card
+    title="Delphi"
+    body="Learn how to connect Delphi to the dbt Semantic Layer and access metrics from any integrated tool."
+    link="https://www.delphihq.com/integrations/dbt"
+    icon="delphi"/>
+    <a href="https://www.delphihq.com/integrations/dbt"
+    className="external-link"
+      target="_blank"
+      rel="noopener noreferrer">
+      <i className="fa fa-external-link"></i>
+    </a>
+</div>
+
+</div><br />
 
 Before you connect to these tools, you'll need to first [set up the dbt Semantic Layer](/docs/use-dbt-semantic-layer/setup-sl) and [generate a service token](/docs/dbt-cloud-apis/service-tokens) to create **Semantic Layer Only** and **Metadata Only** permissions.
