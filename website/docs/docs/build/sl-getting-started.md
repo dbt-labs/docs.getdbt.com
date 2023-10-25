@@ -94,3 +94,4 @@ The dbt Semantic Layer is proprietary, however, some components of the dbt Seman
 - [Build your metrics](/docs/build/build-metrics-intro)
 - [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
+- Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
