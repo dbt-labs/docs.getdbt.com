@@ -47,8 +47,11 @@ For more info, check out this [FAQ page on this topic](/faqs/Environments/custom
 ### Extended attributes (Beta)
 
 :::important This feature is currently in beta
-
 Extended Attributes is currently in [beta](/docs/dbt-versions/product-lifecycles?) for select users and is subject to change.
+:::
+
+:::note 
+Extended attributes are retrieved and applied at runtime only, that is when a `profiles.yml` is requested for a specific Cloud run. Extended attributes are currently **not** taken into consideration for Cloud specific features such as PrivateLink or SSH Tunneling that do not rely on `profiles.yml` values.
 :::
 
 Extended Attributes is a feature that allows users to set a flexible [profiles.yml](/docs/core/connect-data-platform/profiles.yml) snippet in their dbt Cloud Environment settings. It provides users with more control over environments (both deployment and development) and extends how dbt Cloud connects to the data platform within a given environment.
