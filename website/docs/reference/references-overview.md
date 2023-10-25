@@ -4,6 +4,8 @@ id: "references-overview"
 sidebar_label: "About References"
 description: "Connect dbt to any data platform in dbt Cloud or dbt Core, using a dedicated adapter plugin"
 hide_table_of_contents: true
+pagination_next: null
+pagination_prev: null
 ---
 
 The References section contains reference materials for developing with dbt, which includes dbt Cloud and dbt Core.

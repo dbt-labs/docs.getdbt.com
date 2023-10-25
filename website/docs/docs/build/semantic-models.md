@@ -6,6 +6,7 @@ keywords:
   - dbt metrics layer
 sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
+pagination_next: "docs/build/dimensions"
 ---
 
 Semantic models are the foundation for data definition in MetricFlow, which powers the dbt Semantic Layer:
@@ -16,6 +17,8 @@ Semantic models are the foundation for data definition in MetricFlow, which powe
 - You can create multiple semantic models from a single dbt model, as long as you give each semantic model a unique name.
 - Configure semantic models in a YAML file within your dbt project directory.
 - Organize them under a `metrics:` folder or within project sources as needed. 
+
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
 Semantic models have 6 components and this page explains the definitions with some examples:
 
