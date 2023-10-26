@@ -29,10 +29,10 @@ While this is ideal for quick and iterative development, for some models, consta
 
 At present, model contracts are supported for:
 - SQL models. 
-- Models materialized as one of the following
+- Models materialized as one of the following:
     - `table`
-    - `view`. Views offer limited support for column names and data types, but not `constraints`.
-    - `incremental` (with `on_schema_change: append_new_columns` or `on_schema_change: fail`).  
+    - `view` &mdash; Views offer limited support for column names and data types, but not `constraints`.
+    - `incremental` &mdash; with `on_schema_change: append_new_columns` or `on_schema_change: fail`.  
 - Certain data platforms, but the supported and enforced `constraints` vary by platform.
 
 Model contracts are **not** supported for:
