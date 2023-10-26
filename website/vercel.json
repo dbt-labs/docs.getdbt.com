@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/Accounts/slack",
+      "destination": "/docs/deploy/job-notifications",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/metricflow-cli",
       "destination": "/docs/build/metricflow-commands",
       "permanent": true
