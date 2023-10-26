@@ -32,8 +32,8 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
-    title="KlipFolio Power Metrics"
-    body="Learn how to connect, and deliver a streamlined metrics catalog to your business users."
+    title="Klipfolio PowerMetrics"
+    body="Learn how to connect and deliver a streamlined metrics catalog to your business users."
     link="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
     icon="klipfolio"/>
     <a href="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
