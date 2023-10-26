@@ -4,6 +4,8 @@ title: To defer or to clone, that is the question
 description: "In dbt v1.6, we introduce support for zero-copy cloning via the new dbt clone command. In this blog post, Kshitij will cover what clone is, how it is different from deferral, and when to use each."
 slug: to-defer-or-to-clone
 
+image: /img/blog/2023-10-31-to-defer-or-to-clone/preview.png
+
 authors: [kshitij_aranke, doug_beatty]
 
 tags: [analytics craft]
