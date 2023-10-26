@@ -22,7 +22,7 @@ The following tools integrate with the dbt Semantic Layer:
       link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       body="Check out how to connect, analyze metrics, collaborate, and discover more data possibilities."
       icon="hex"/>
-    <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
+      <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -33,7 +33,8 @@ The following tools integrate with the dbt Semantic Layer:
 <div className="card-container">
   <Card
     title="Klipfolio PowerMetrics"
-    body="Learn how to connect to a streamlined metrics catalog and deliver metric-centric analytics to your business users."
+    body="Learn how to connect to a streamlined metrics catalog and deliver metric-centric analytics to business users."
+    icon="klipfolio"
     link="https://www.klipfolio.com/dbt"/>
     <a href="https://www.klipfolio.com/dbt"
     className="external-link"
