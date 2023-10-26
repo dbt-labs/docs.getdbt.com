@@ -2,7 +2,7 @@ The following tools integrate with the dbt Semantic Layer:
 
 <!-- do not change card order unless specified by both SL PM and Partnerships team-->
 
-<div className="grid--4-col">
+<div className="grid--3-col">
 
  <Card
     title="Tableau (beta)"
