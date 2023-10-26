@@ -37,7 +37,7 @@ At present, model contracts are supported for:
 
 Model contracts are **not** supported for:
 - Python models.
-- `ephemeral`-materialized SQL models.
+- `ephemeral`&mdash; materialized SQL models.
 
 
 ## How to define a contract
