@@ -81,9 +81,9 @@ html[data-theme="dark"] .tocList .active span {
     text-align: center;
 }
 
-.buttonContainer a:hover {
+.stepWrapper .buttonContainer a {
     background: var(--color-light-teal);
-    color: var(--color-white)
+    color: var(--color-white) !important;
 }
 
 .buttonContainer .prevButton {
@@ -106,7 +106,7 @@ html[data-theme="dark"] .tocList .active span {
 
 .stepWrapper[data-step="1"] .nextButton {
     background: var(--color-light-teal);
-    color: var(--color-white)
+    color: var(--color-white) !important;
 }
 
 .stepWrapper.hidden {
