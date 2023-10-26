@@ -35,7 +35,7 @@ At present, model contracts are supported for:
     - `incremental` &mdash; with `on_schema_change: append_new_columns` or `on_schema_change: fail`.  
 - Certain data platforms, but the supported and enforced `constraints` vary by platform.
 
-Model contracts are **not** supported for:
+Model contracts are _not_ supported for:
 - Python models.
 - `ephemeral`-materialized SQL models.
 
