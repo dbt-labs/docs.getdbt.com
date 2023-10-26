@@ -15,3 +15,8 @@
   subheader: Kicking off on October 16th, both online and in-person (Sydney, London, and San Diego)
   button_text: Register now
   url: https://coalesce.getdbt.com/?utm_medium=internal&utm_source=docs&utm_campaign=q3-2024_coalesce-2023_aw&utm_content=coalesce____&utm_term=all___
+- name: coalesce_2023_catchup
+  header: Missed Coalesce 2023?
+  subheader: Watch the full sessions and highlights from Coalesce 2023, the annual analytics engineering conference sponsored by dbt Labs.
+  button_text: Watch the talks
+  url: https://www.youtube.com/playlist?list=PL0QYlrC86xQnT3HLh-XgvoTf9F3lbsADf
