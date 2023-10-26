@@ -43,9 +43,9 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     ```yaml
     version: "1"
     context:
-    active-project: "<project id from the list below>"
-    active-host: "<active host from the list>"
-    defer-env-id: "<optional defer environment id>"
+        active-project: "<project id from the list below>"
+        active-host: "<active host from the list>"
+        defer-env-id: "<optional defer environment id>"
     projects:
     - project-id: "<project-id>"
         account-host: "<account-host>"
