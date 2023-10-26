@@ -40,8 +40,6 @@ You can receive email alerts by configuring the dbt Cloud notification settings.
 
 ## Slack notifications
 
-<!-- <Snippet path="slack-notifications-config-steps" /> -->
-
 You can receive Slack alerts by setting up the Slack integration first, then configuring the dbt Cloud notification settings.
 
 :::note 
