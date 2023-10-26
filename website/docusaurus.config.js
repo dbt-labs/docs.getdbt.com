@@ -278,6 +278,11 @@ var siteSettings = {
     },
     {rel: 'icon', href: '/img/favicon.png', type: 'image/png'},
     {rel: 'icon', href: '/img/favicon.svg', type: 'image/svg+xml'},
+    {
+      href: "https://unpkg.com/@stoplight/elements/styles.min.css",
+      type: "text/css",
+      crossorigin: "anonymous"
+    },
   ],
 };
 
