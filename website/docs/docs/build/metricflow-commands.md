@@ -6,11 +6,11 @@ sidebar_label: "MetricFlow commands"
 tags: [Metrics, Semantic Layer]
 ---
 
-Once you define metrics in your dbt project, you can query metrics, dimensions, dimension values, and validate your configs using the MetricFlow commands. 
+Once you define metrics in your dbt project, you can query metrics, dimensions, and dimension values, and validate your configs using the MetricFlow commands. 
 
 MetricFlow allows you to define and query metrics in your dbt project in the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud), or [dbt Core](/docs/core/installation). To experience the power of the universal [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) and dynamically query those metrics in downstream tools, you'll need a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. 
 
-MetricFlow is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
+MetricFlow is compatible with Python versions 3.8, 3.9, 3.10, and 3.11.
 
 
 ## MetricFlow
@@ -25,7 +25,7 @@ MetricFlow is a dbt package that allows you to define and query metrics in your 
 
 MetricFlow commands are embedded in the dbt Cloud CLI, which means you can immediately run them once you install the dbt Cloud CLI. 
 
-A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning for you.
+A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
 
 </TabItem>
 
@@ -34,6 +34,8 @@ A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to 
 :::info
 You can create metrics using MetricFlow in the dbt Cloud IDE. However, support for running MetricFlow commands in the IDE will be available soon.
 :::
+
+A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
 
 </TabItem>
 
@@ -44,13 +46,13 @@ You can create metrics using MetricFlow in the dbt Cloud IDE. However, support f
 
 Use the dbt Cloud CLI for the experience in defining and querying metrics in your dbt project on dbt Cloud or dbt Core with MetricFlow. 
 
-A benefit to using the dbt Cloud CLI or dbt Cloud IDE is that you won't need to manage versioning — your dbt Cloud account will automatically manage the versioning for you.
+A benefit to using the dbt Cloud is that you won't need to manage versioning &mdash; your dbt Cloud account will automatically manage the versioning.
 :::
 
 
-You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to instal MetricFlow on Windows or Linux operating systems:
+You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-started) from [PyPI](https://pypi.org/project/dbt-metricflow/). You need to use `pip` to install MetricFlow on Windows or Linux operating systems:
 
-1. Create or activate your virtual environment`python -m venv venv`
+1. Create or activate your virtual environment `python -m venv venv`
 2. Run `pip install dbt-metricflow`
   * You can install MetricFlow using PyPI as an extension of your dbt adapter in the command line. To install the adapter, run `pip install "dbt-metricflow[your_adapter_name]"` and add the adapter name at the end of the command. For example, for a Snowflake adapter run `pip install "dbt-metricflow[snowflake]"`
 
@@ -60,6 +62,7 @@ You can install [MetricFlow](https://github.com/dbt-labs/metricflow#getting-star
 
 </Tabs>
 
+Something to note, MetricFlow `mf` commands return an error if you have a Metafont latex package installed. To run `mf` commands, uninstall the package.
 
 ## MetricFlow commands
 
@@ -77,7 +80,7 @@ Use the `dbt sl` prefix before the command name to execute them in dbt Cloud. Fo
 - [`list entities`](#list-entities) &mdash; Lists all unique entities.
 - [`query`](#query) &mdash; Query metrics and dimensions you want to see in the command line interface. Refer to [query examples](#query-examples) to help you get started.
 
-<!--below commands aren't support in dbt cloud yet
+<!--below commands aren't supported in dbt cloud yet
 - [`validate-configs`](#validate-configs) &mdash; Validates semantic model configurations.
 - [`health-checks`](#health-checks) &mdash; Performs data platform health check.
 - [`tutorial`](#tutorial) &mdash; Dedicated MetricFlow tutorial to help get you started.
@@ -552,3 +555,4 @@ Keep in mind that modifying your shell configuration files can have an impact on
 </details>
 
 </details>
+
