@@ -23,7 +23,7 @@ In this blog post, I’ll attempt to provide this guidance by answering these FA
 1. What is `dbt clone`?
 2. How is it different from deferral?
 3. Should I defer or should I clone?
-
+<!--truncate-->
 ## What is `dbt clone`?
 
 `dbt clone` is a new command in dbt 1.6 that leverages native zero-copy clone functionality on supported warehouses to **copy entire schemas for free, almost instantly**.
