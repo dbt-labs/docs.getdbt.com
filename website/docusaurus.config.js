@@ -130,7 +130,7 @@ var siteSettings = {
               href: 'https://courses.getdbt.com',
             },
             {
-              label: 'Guides',
+              label: 'Best Practices',
               to: '/guides/best-practices',
             },
             {
