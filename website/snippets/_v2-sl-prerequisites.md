@@ -11,8 +11,7 @@
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the latest dbt Semantic Layer. 
 - If developing with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation):
   - Avoid using SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.
-  - Avoid Single sign-on (SSO) for [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) development.
-
+  - Avoid Single sign-on (SSO)
 </VersionBlock>
 
 
