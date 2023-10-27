@@ -4023,6 +4023,11 @@
       "permanent": true
     },
     {
+      "source": "/quickstarts",
+      "destination": "/guides",
+      "permanent": true
+    },
+    {
       "source": "/quickstarts/bigquery",
       "destination": "/guides/bigquery",
       "permanent": true
