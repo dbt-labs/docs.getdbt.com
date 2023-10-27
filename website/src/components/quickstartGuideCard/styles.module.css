@@ -1,5 +1,5 @@
 .quickstartCard {
-  border: 1px solid #EFF2F3;
+  outline: 1px solid #EFF2F3;
   border-radius: var(--border-radius);
   box-shadow: 0px 11px 24px rgba(138, 138, 138, .1);
   padding: 2.5rem 2.5rem 1.5rem 2.5rem;
@@ -13,6 +13,11 @@
 
 .quickstartCard:hover {
   transform: translateY(-7px);
+  outline: 2px solid var(  --color-green-blue);
+}
+
+.quickstartCard:hover > .start {
+  text-decoration: underline;
 }
 
 .quickstartCard .icon {
@@ -52,19 +57,16 @@
   font-size: 1.125rem;
   margin-top: auto;
   padding-top: 2rem;
+  font-weight: 600;
 }
 
 [data-theme='dark'] .quickstartCard .start {
   color: #fff;
 }
 
-[data-theme='dark'] .quickstartCard:hover .start {
-  text-decoration: underline;
-}
-
-.quickstartCard .start:after {
-  content: " →";
-  margin-left: 5px;
+.quickstartCard .start i {
+  margin-left: 4px;
+  font-size: .9rem;
 }
 
 .quickstartCard .recently_updated {

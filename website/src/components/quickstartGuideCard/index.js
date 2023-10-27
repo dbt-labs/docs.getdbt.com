@@ -21,7 +21,7 @@ export default function QuickstartGuideCard({ frontMatter }) {
       )}
 
       <span to={`/guides/${id}`} className={styles.start}>
-        Start
+        Start <i className="fa-regular fa-arrow-right"></i>
       </span>
 
       {(tags || level) && (
