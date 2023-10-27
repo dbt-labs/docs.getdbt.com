@@ -81,7 +81,7 @@ html[data-theme="dark"] .tocList .active span {
     text-align: center;
 }
 
-.stepWrapper .buttonContainer a {
+.stepWrapper .buttonContainer a:hover {
     background: var(--color-light-teal);
     color: var(--color-white) !important;
 }
