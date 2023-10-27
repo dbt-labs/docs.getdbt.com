@@ -9,6 +9,9 @@
 - Set up the [Semantic Layer API](/docs/dbt-cloud-apis/sl-api-overview) in the integrated tool to import metric definitions. 
   - To access the API and query metrics in downstream tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. dbt Core or Developer accounts can define metrics but won't be able to dynamically query them.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the latest dbt Semantic Layer. 
+- If developing with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation):
+  - Avoid using SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.
+  - Avoid Single sign-on (SSO) for [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) development.
 
 </VersionBlock>
 
