@@ -2,7 +2,7 @@ The following tools integrate with the dbt Semantic Layer:
 
 <!-- do not change card order unless specified by both SL PM and Partnerships team-->
 
-<div className="grid--4-col">
+<div className="grid--3-col">
 
  <Card
     title="Tableau (beta)"
@@ -22,7 +22,7 @@ The following tools integrate with the dbt Semantic Layer:
       link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       body="Check out how to connect, analyze metrics, collaborate, and discover more data possibilities."
       icon="hex"/>
-    <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
+      <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -32,11 +32,11 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
-    title="KlipFolio Power Metrics"
-    body="Learn how to connect, and deliver a streamlined metrics catalog to your business users."
-    link="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
-    icon="klipfolio"/>
-    <a href="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
+    title="Klipfolio PowerMetrics"
+    body="Learn how to connect to a streamlined metrics catalog and deliver metric-centric analytics to business users."
+    icon="klipfolio"
+    link="https://www.klipfolio.com/dbt"/>
+    <a href="https://www.klipfolio.com/dbt"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
