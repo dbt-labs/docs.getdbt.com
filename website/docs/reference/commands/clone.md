@@ -43,7 +43,7 @@ As another example, you could `clone` your modified incremental models as the fi
 
 You can clone nodes between states in dbt Cloud using the `dbt clone` command. This is available in the [dbt Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) and the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) and  relies on the [`--defer`](/reference/node-selection/defer) feature. For more details on defer in dbt Cloud, read [Using defer in dbt Cloud](/docs/cloud/about-cloud-develop-defer).
 
-- **Using dbt Cloud CLI** &mdash; The `dbt clone` command in the dbt Cloud CLI automatically includes the `--defer` flag. This means you can use the `dbt clone` command in the dbt Cloud CLI without any additional setup.
+- **Using dbt Cloud CLI** &mdash; The `dbt clone` command in the dbt Cloud CLI automatically includes the `--defer` flag. This means you can use the `dbt clone` command without any additional setup.
 
 - **Using dbt Cloud IDE** &mdash; To use the `dbt clone` command in the dbt Cloud IDE, follow these steps before running the `dbt clone` command:
 
