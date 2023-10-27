@@ -174,7 +174,7 @@ To query metric values, here are the following parameters that are available:
 | `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
 | `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
-|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
+|`order`  | Order the data returned by a particular field     | `order_by=['order_gross_profit']`, use `-` for descending, or full object notation if the object is operated on: `order_by=[Metric('order_gross_profit').descending(True)`]   | Optional   |
 | `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
 
 
@@ -254,14 +254,14 @@ Where filters in API allow for a filter list or string. We recommend using the f
 
 Where Filters have a few objects that you can use:
 
-- `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Dimension()` - Used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
 - `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
 Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'MONTH')`.
 
 
-Use the following example to query using a `where` filter with the string format:
+- Use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
@@ -271,17 +271,17 @@ where="{{ Dimension('metric_time').grain('month')  }} >= '2017-03-09' AND {{ Dim
 }}
 ```
 
-Use the following example to query using a `where` filter with a filter list format:
+- (Recommended for better performance) Use the following example to query using a `where` filter with a filter list format:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where=[{{ Dimension('metric_time').grain('month') }} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
+where=["{{ Dimension('metric_time').grain('month') }} >= '2017-03-09'", "{{ Dimension('customer__customer_type' }} in ('new')", "{{ Entity('order_id') }} = 10"]
 }}
 ```
 
-### Query with a limit and order by
+### Query with a limit
 
 Use the following example to query using a `limit` or `order_by` clauses:
 
@@ -289,10 +289,54 @@ Use the following example to query using a `limit` or `order_by` clauses:
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
-  limit=10,
-  order_by=['order_gross_profit'])
+  limit=10)
   }}
 ``` 
+### Query with Order By Examples 
+
+Order By can take a basic string that's a Dimension, Metric, or Entity and this will default to ascending order
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time')],
+  limit=10,
+  order_by=['order_gross_profit']
+  }}
+``` 
+
+For descending order, you can add a `-` sign in front of the object. However, you can only use this short hand notation if you aren't operating on the object or using the full object notation. 
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time')],
+  limit=10,
+  order_by=[-'order_gross_profit']
+  }}
+``` 
+If you are ordering by an object that's been operated on (e.g., change granularity), or you are using the full object notation, descending order must look like:
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time').grain('week')],
+  limit=10,
+  order_by=[Metric('order_gross_profit').descending(True), Dimension('metric_time').grain('week').descending(True) ]
+  }}
+``` 
+
+Similarly, this will yield ascending order: 
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time').grain('week')],
+  limit=10,
+  order_by=[Metric('order_gross_profit'), Dimension('metric_time').grain('week')]
+  }}
+``` 
+
 
 ### Query with compile keyword
 
