@@ -196,7 +196,7 @@ $ git checkout -b add-customers-model
 
 4. From the command line, enter `dbt run`.
 <div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
+<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt Core CLI" />
 </div>
 
 When you return to the BigQuery console, you can `select` from this model.
