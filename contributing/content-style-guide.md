@@ -488,7 +488,9 @@ Avoid ending a sentence with a preposition unless the rewritten sentence would s
 
 Product names, trademarks, services, and tools should be written as proper nouns, unless otherwise specified by the company or trademark owner.
 
-As of October 2023, avoid using "dbt CLI" or "CLI" terminology. dbt officially provides two command line tools for running dbt commands:
+As of October 2023, avoid using "dbt CLI" or "CLI" terminology when referring to the dbt Cloud CLI or dbt Core.  However, if referring to the command line as a tool, CLI is acceptable.
+
+dbt officially provides two command line tools for running dbt commands:
 
 - [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; This tool allows you to develop locally and execute dbt commands against your dbt Cloud development environment from your local command line.
 - [dbt Core](https://github.com/dbt-labs/dbt-core) &mdash; This open-source tool is designed for local installation, enabling you to use dbt Core on the command line and communicate with databases through adapters.
