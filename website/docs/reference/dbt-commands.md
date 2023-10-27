@@ -24,7 +24,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [clean](/reference/commands/clean) | Deletes artifacts present in the dbt project | All | All [supported versions](/docs/dbt-versions/core) |
 | [clone](/reference/commands/clone) | Clone selected models from the specified state | All | Requires [dbt v1.6 or higher](/docs/dbt-versions/core)  |
 | [compile](/reference/commands/compile) | Compiles (but does not run) the models in a project | All | All [supported versions](/docs/dbt-versions/core) |
-| [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | All | All [supported versions](/docs/dbt-versions/core) |
+| [debug](/reference/commands/debug)  | Debugs dbt connections and projects  | dbt Cloud IDE <br /> dbt Core  | All [supported versions](/docs/dbt-versions/core) |
 | [deps](/reference/commands/deps) | Downloads dependencies for a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All | All [supported versions](/docs/dbt-versions/core) |
 | help | Displays help information for any command | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
