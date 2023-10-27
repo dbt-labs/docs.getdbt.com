@@ -184,5 +184,5 @@ To get the most out of both tools, you can use the [persist docs config](/refere
 - [Advanced deployments course](https://courses.getdbt.com/courses/advanced-deployment) if you want a deeper dive into these topics
 - [Autoscaling CI: The intelligent Slim CI](https://docs.getdbt.com/blog/intelligent-slim-ci)
 - [Trigger a dbt Cloud Job in your automated workflow with Python](https://discourse.getdbt.com/t/triggering-a-dbt-cloud-job-in-your-automated-workflow-with-python/2573)
-- [Databricks + dbt Cloud Quickstart Guide](/quickstarts/databricks)
+- [Databricks + dbt Cloud Quickstart Guide](/guides/databricks)
 - Reach out to your Databricks account team to get access to preview features on Databricks.

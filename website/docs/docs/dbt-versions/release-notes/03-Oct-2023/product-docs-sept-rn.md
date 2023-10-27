@@ -27,7 +27,7 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/):
 
 - Deprecated dbt Core v1.0 and v1.1 from the docs.
 - Added configuration instructions for the [AWS Glue](/docs/core/connect-data-platform/glue-setup) community plugin.
-- Revised the dbt Core quickstart, making it easier to follow. Divided this guide into steps that align with the [other guides](/quickstarts/manual-install?step=1).
+- Revised the dbt Core quickstart, making it easier to follow. Divided this guide into steps that align with the [other guides](/guides/manual-install?step=1).
 
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 

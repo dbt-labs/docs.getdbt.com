@@ -77,7 +77,7 @@ Create a service token from within dbt Cloud using the instructions [found here]
 
 ## 6. Create a dbt Cloud job
 
-In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](/quickstarts/bigquery).
+In your dbt Cloud account create a job, paying special attention to the information in the bullets below. Additional information for creating a dbt Cloud job can be found [here](/guides/bigquery).
 
 - Configure the job with the commands that you want to include when this job kicks off, as Airflow will be referring to the job’s configurations for this rather than being explicitly coded in the Airflow DAG. This job will run a set of commands rather than a single command.
 - Ensure that the schedule is turned **off** since we’ll be using Airflow to kick things off.

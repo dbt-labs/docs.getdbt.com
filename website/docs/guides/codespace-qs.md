@@ -20,10 +20,10 @@ dbt Labs provides a [GitHub Codespace](https://docs.github.com/en/codespaces/ove
 
 ## Related content
 
-- [Create a GitHub repository](/quickstarts/manual-install?step=2)
-- [Build your first models](/quickstarts/manual-install?step=3)
-- [Test and document your project](/quickstarts/manual-install?step=4)
-- [Schedule a job](/quickstarts/manual-install?step=5)
+- [Create a GitHub repository](/guides/manual-install?step=2)
+- [Build your first models](/guides/manual-install?step=3)
+- [Test and document your project](/guides/manual-install?step=4)
+- [Schedule a job](/guides/manual-install?step=5)
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
 
 ## Create a codespace

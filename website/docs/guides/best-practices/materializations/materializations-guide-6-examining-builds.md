@@ -16,7 +16,7 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 
 ### Model Timing
 
-That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/quickstarts/bigquery) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
+That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/guides/bigquery) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
 
 ![dbt Cloud's Model Timing diagram](/img/guides/best-practices/materializations/model-timing-diagram.png)
 

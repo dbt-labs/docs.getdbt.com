@@ -17,7 +17,7 @@ Hello from the dbt Docs team: @mirnawong1, @matthewshaver, @nghi-ly, and @runleo
 ## ☁ Cloud projects
 
 - Added Starburst/Trino adapter docs, including:
-  * [dbt Cloud quickstart guide](/quickstarts/starburst-galaxy), 
+  * [dbt Cloud quickstart guide](/guides/starburst-galaxy), 
   * [connection page](/docs/cloud/connect-data-platform/connect-starburst-trino), 
   * [set up page](/docs/core/connect-data-platform/trino-setup), and [config page](/reference/resource-configs/trino-configs). 
 - Enhanced [dbt Cloud jobs page](/docs/deploy/jobs) and section to include conceptual info on the queue time, improvements made around it, and about failed jobs. 

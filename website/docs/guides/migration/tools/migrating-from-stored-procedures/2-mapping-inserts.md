@@ -13,7 +13,7 @@ INSERT INTO returned_orders (order_id, order_date, total_return)
 SELECT order_id, order_date, total FROM orders WHERE type = 'return'
 ```
 
-Converting this with a first pass to a [dbt model](/quickstarts/bigquery?step=8) (in a file called returned_orders.sql) might look something like:
+Converting this with a first pass to a [dbt model](/guides/bigquery?step=8) (in a file called returned_orders.sql) might look something like:
 
 ```sql
 SELECT

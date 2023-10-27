@@ -43,7 +43,7 @@ Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features
 
 ### dbt Core
 
-dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Learn more with the [quickstart for dbt Core](/quickstarts/codespace).
+dbt Core is an open-source tool that enables data teams to transform data using analytics engineering best practices. You can install and use dbt Core on the command line. Learn more with the [quickstart for dbt Core](/guides/codespace).
 
 ## The power of dbt
 
