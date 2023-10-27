@@ -9,7 +9,7 @@ hide_table_of_contents: true
 ---
 ## Introduction
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/quickstarts). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
+When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/guides). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
 
 ### Prerequisites
 

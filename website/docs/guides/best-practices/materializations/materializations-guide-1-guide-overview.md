@@ -26,7 +26,7 @@ By the end of this guide you should have a solid understanding of:
 
 ### Prerequisites
 
-- 📒 You’ll want to have worked through the [quickstart guide](/quickstarts) and have a project setup to work through these concepts.
+- 📒 You’ll want to have worked through the [quickstart guide](/guides) and have a project setup to work through these concepts.
 - 🏃🏻‍♀️ Concepts like dbt runs, `ref()` statements, and models should be familiar to you.
 - 🔧 [**Optional**] Reading through the [How we structure our dbt projects](guides/best-practices/how-we-structure/1-guide-overview) Guide will be beneficial for the last section of this guide, when we review best practices for materializations using the dbt project approach of staging models and marts.
 

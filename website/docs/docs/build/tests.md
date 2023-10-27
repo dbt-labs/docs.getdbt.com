@@ -30,7 +30,7 @@ There are two ways of defining tests in dbt:
 Defining tests is a great way to confirm that your code is working correctly, and helps prevent regressions when your code changes. Because you can use them over and over again, making similar assertions with minor variations, generic tests tend to be much more common—they should make up the bulk of your dbt testing suite. That said, both ways of defining tests have their time and place.
 
 :::tip Creating your first tests
-If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project with models and tests.
+If you're new to dbt, we recommend that you check out our [quickstart guide](/guides) to build your first dbt project with models and tests.
 :::
 
 ## Singular tests

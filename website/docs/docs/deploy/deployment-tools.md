@@ -133,7 +133,7 @@ For more info, refer to the guide on [Databricks workflows and dbt Cloud jobs](/
 ## Related docs
 
 - [dbt Cloud plans and pricing](https://www.getdbt.com/pricing/)
-- [Quickstart guides](/quickstarts)
+- [Quickstart guides](/guides)
 - [Webhooks for your jobs](/docs/deploy/webhooks)
 - [Orchestration guides](https://docs.getdbt.com/guides/orchestration)
 - [Commands for your production deployment](https://discourse.getdbt.com/t/what-are-the-dbt-commands-you-run-in-your-production-deployment-of-dbt/366)

@@ -99,7 +99,7 @@ The dbt Semantic Layer reduces code duplication and inconsistency regarding your
 
 :::info 📌
 
-New to dbt or metrics? Check out our [quickstart guide](/quickstarts) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
+New to dbt or metrics? Check out our [quickstart guide](/guides) to build your first dbt project! If you'd like to define your first metrics, try our [Jaffle Shop](https://github.com/dbt-labs/jaffle_shop_metrics) example project.
 
 :::
 

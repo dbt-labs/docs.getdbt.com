@@ -25,7 +25,7 @@ dbt Cloud offers a fast and reliable way to work on your dbt project. It runs db
 
 </div><br />
 
-The following sections provide detailed instructions on setting up the dbt Cloud CLI and dbt Cloud IDE. To get started with dbt development, you'll need a [developer](/docs/cloud/manage-access/seats-and-users) account. For a more comprehensive guide about developing in dbt, refer to our [quickstart guides](/quickstarts).
+The following sections provide detailed instructions on setting up the dbt Cloud CLI and dbt Cloud IDE. To get started with dbt development, you'll need a [developer](/docs/cloud/manage-access/seats-and-users) account. For a more comprehensive guide about developing in dbt, refer to our [quickstart guides](/guides).
 
 
 ---------

@@ -39,7 +39,7 @@ You can learn about plans and pricing on [www.getdbt.com](https://www.getdbt.com
 ### dbt Cloud
 
 dbt Cloud is the fastest and most reliable way to deploy dbt. Develop, test, schedule, and investigate data models all in one web-based UI. It also natively supports developing using a command line with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation).
-Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/quickstarts).
+Learn more about [dbt Cloud features](/docs/cloud/about-cloud/dbt-cloud-features) and try one of the [dbt Cloud quickstarts](/guides).
 
 ### dbt Core
 
@@ -62,7 +62,7 @@ As a dbt user, your main focus will be on writing models (i.e. select queries) t
 
 ### Related docs
 
-- [Quickstarts for dbt](/quickstarts)
+- [Quickstarts for dbt](/guides)
 - [Best practice guides](/guides/best-practices)
 - [What is a dbt Project?](/docs/build/projects)
 - [dbt run](/docs/running-a-dbt-project/run-your-dbt-projects)

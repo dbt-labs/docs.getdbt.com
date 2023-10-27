@@ -38,7 +38,7 @@ To get going, you'll copy your legacy SQL query into your dbt project, by saving
 
 Once you've copied it over, you'll want to `dbt run` to execute the query and populate the <Term id="table" /> in your warehouse.
 
-If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [quickstart guide](/quickstarts) before diving into refactoring.
+If this is your first time running dbt, you may want to start with the [Introduction to dbt](/docs/introduction) and the earlier sections of the [quickstart guide](/guides) before diving into refactoring.
 
 This step may sound simple, but if you're porting over an existing set of SQL transformations to a new SQL dialect, you will need to consider how your legacy SQL dialect differs from your new SQL flavor, and you may need to modify your legacy code to get it to run at all.  
 
