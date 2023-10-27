@@ -28,7 +28,6 @@ The dbt Cloud CLI is available in all [deployment regions](/docs/cloud/about-clo
 - Ensure you are using dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
 - Avoid using SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections.
 - Avoid using [PrivateLink](/docs/cloud/secure/about-privatelink).
-- Avoid using Single sign-on (SSO) for Snowflake or SSH tunnels for Redshift
 
 ## Install dbt Cloud CLI
 
