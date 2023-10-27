@@ -349,7 +349,7 @@ You can configure a card in 2, 3, 4, or 5-column grids. To maintain a good user 
 
 There won't be many instances where you need to display 4 or 5 cards on the docs site. While we recommend you use 2 or 3-column grids, you can use 4 or 5-column grids in the following scenarios:
 
-- For cards that contain little text and are limited to under 15 words. (This is to make sure the text isn't squished)
+- For cards that contain little text and are limited to 15 words or less. This is to make sure the text isn't squished.
 - Always have the `hide_table_of_contents:` frontmatter set to `true` (This hides the right table of contents). 
 
 Otherwise, the text will appear squished and provide users with a bad experience.
