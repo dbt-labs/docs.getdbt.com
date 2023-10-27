@@ -4021,6 +4021,41 @@
       "source": "/reference/resource-properties/access",
       "destination": "/reference/resource-configs/access",
       "permanent": true
+    },
+    {
+      "source": "/quickstarts/bigquery",
+      "destination": "/guides/bigquery",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/databricks",
+      "destination": "/guides/databricks",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/redshift",
+      "destination": "/guides/redshift",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/snowflake",
+      "destination": "/guides/snowflake",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/starburst-galaxy",
+      "destination": "/guides/starburst-galaxy",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/codespace",
+      "destination": "/guides/codespace",
+      "permanent": true
+    },
+    {
+      "source": "/quickstarts/manual-install",
+      "destination": "/guides/manual-install",
+      "permanent": true
     }
   ]
 }
