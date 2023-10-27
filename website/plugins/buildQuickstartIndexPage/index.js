@@ -22,8 +22,12 @@ module.exports = function buildQuickstartIndexPage() {
         if(!fileData)
           return null
         
-        // convert frontmatter to json
+        // Convert frontmatter to json
         const fileJson = matter(fileData)
+
+        // Add the original directory to build links
+        fileJson.data.original_directory = quickstartDirectory.replace('docs/', '')
+
         if(!fileJson)
           return null
 

@@ -8,8 +8,8 @@ const SearchInput = ({
   ...props
 }) => {
   return (
-    <label for="search-input" className={styles.inputContainer}>
-      <i class="fa-regular fa-magnifying-glass"></i>
+    <label htmlFor="search-input" className={styles.inputContainer}>
+      <i className="fa-regular fa-magnifying-glass"></i>
       <input
         type="text"
         value={value}

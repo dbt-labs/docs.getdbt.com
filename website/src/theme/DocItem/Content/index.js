@@ -42,7 +42,7 @@ export default function DocItemContent({ children }) {
   // dbt Custom
   const { metadata, frontMatter } = useDoc();
   const isSpotlightMember = metadata?.id?.includes("community/spotlight/");
-  const isQuickstartGuide = metadata?.id?.startsWith("quickstarts/");
+  const isQuickstartGuide = metadata?.id?.startsWith("guides/");
 
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>
