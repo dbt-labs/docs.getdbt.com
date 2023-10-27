@@ -20,13 +20,6 @@ import AvailIntegrations from '/snippets/_sl-partner-links.md';
 
 <AvailIntegrations/>
 
-## Other integrations
-
-You can also integrate the following tools with the dbt Semantic Layer:
-- [Push.ai](https://docs.push.ai/semantic-layer-integrations/dbt-semantic-layer)
-- [Delphi](delphihq.com)
-- KlipFolio Power Metrics - Documentation coming soon
-
 ### Custom integration
 
 - You can create custom integrations using different languages and tools. We support connecting with JDBC, ADBC, and GraphQL APIs. For more info, check out [our examples on GitHub](https://github.com/dbt-labs/example-semantic-layer-clients/).

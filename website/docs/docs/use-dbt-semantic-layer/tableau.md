@@ -10,14 +10,16 @@ The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/db
 :::
 
 
-The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
+The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
+
+This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
 
 ## Prerequisites
 
 1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
-2. Authenticate with either Tableau Server or Tableau Cloud
+2. Log in to Tableau Desktop using either your license or the login details you use for Tableau Server or Tableau Online.
 3. You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
-4. You must a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
+4. You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
 
 ## Installing
@@ -38,7 +40,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 
 Once you authenticate, the system will direct you to the data source page with all the metrics and dimensions configured in your Semantic Layer. 
 
-- From there, go directly to a worksheet in the bottom left hand corner.
+- From there, go directly to a worksheet in the bottom left-hand corner.
 - Then, you'll find all the metrics and dimensions that are available to query on the left-hand side of your window.
 
 Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
@@ -57,7 +59,7 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
 The following Tableau features aren't supported at this time, however, the dbt Semantic Layer may support some of this functionality in a future release:
 
 - Updating the data source page
-- Using "Extract" mode to view yur data
+- Using "Extract" mode to view your data
 - Unioning Tables
 - Writing Custom SQL
 - Table Extensions
