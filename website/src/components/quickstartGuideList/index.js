@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 import { SelectDropdown } from '../selectDropdown';
 import SearchInput from '../searchInput';
 
-const quickstartTitle = 'Quickstarts'
+const quickstartTitle = 'Guides'
 const quickstartDescription = 'dbt Core is a powerful open-source tool for data transformations and dbt Cloud is the fastest and most reliable way to deploy your dbt jobs. With the help of a sample project, learn how to quickly start using dbt and one of the most common data platforms.'
 
 

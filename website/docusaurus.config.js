@@ -134,8 +134,8 @@ var siteSettings = {
               to: '/guides/best-practices',
             },
             {
-              label: "Quickstarts",
-              to: "/quickstarts",
+              label: "Guides",
+              to: "/guides",
             },
             {
               label: "Developer Blog",

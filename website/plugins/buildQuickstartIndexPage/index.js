@@ -42,7 +42,7 @@ module.exports = function buildQuickstartIndexPage() {
     async contentLoaded({content, actions}) {
       const {createData, addRoute} = actions;
 
-      // Sort quickstarts by platform if available
+      // Sort guides by platform if available
       const contentSorted = content.sort((a, b) => {
         if(!a?.data?.platform || !b?.data?.platform) return
 
