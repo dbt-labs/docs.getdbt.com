@@ -83,6 +83,10 @@ html[data-theme="dark"] .tocList .active span {
 
 .stepWrapper .buttonContainer a:hover {
     background: var(--color-light-teal);
+    color: var(--color-white);
+}
+
+html[data-theme="dark"] .stepWrapper .buttonContainer a:hover {
     color: var(--color-white) !important;
 }
 
@@ -104,8 +108,12 @@ html[data-theme="dark"] .tocList .active span {
     margin-left: .4rem;
 }
 
-.stepWrapper[data-step="1"] .nextButton {
+.stepWrapper[data-step="1"] a.nextButton {
     background: var(--color-light-teal);
+    color: var(--color-white);
+}
+
+html[data-theme="dark"] .stepWrapper[data-step="1"] a.nextButton {
     color: var(--color-white) !important;
 }
 
