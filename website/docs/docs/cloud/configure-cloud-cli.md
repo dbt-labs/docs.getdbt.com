@@ -30,7 +30,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
    
     - North America: https://cloud.getdbt.com/cloud-cli
     - EMEA: https://emea.dbt.com/cloud-cli
-    - APAC: https://apac.dbt.com/cloud-cli
+    - APAC: https://au.dbt.com/cloud-cli
     - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
     - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
   
@@ -43,9 +43,9 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
     ```yaml
     version: "1"
     context:
-    active-project: "<project id from the list below>"
-    active-host: "<active host from the list>"
-    defer-env-id: "<optional defer environment id>"
+        active-project: "<project id from the list below>"
+        active-host: "<active host from the list>"
+        defer-env-id: "<optional defer environment id>"
     projects:
     - project-id: "<project-id>"
         account-host: "<account-host>"
