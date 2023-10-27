@@ -29,8 +29,8 @@ const sidebarSettings = {
     }, // About dbt Cloud directory
     {
       type: "link",
-      label: "Quickstarts",
-      href: `/quickstarts`,
+      label: "Guides",
+      href: `/guides`,
     },
     {
       type: "category",
