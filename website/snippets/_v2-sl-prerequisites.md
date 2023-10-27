@@ -10,7 +10,7 @@
   - To access the API and query metrics in downstream tools, you must have a dbt Cloud [Team or Enterprise](https://www.getdbt.com/pricing/) account. dbt Core or Developer accounts can define metrics but won't be able to dynamically query them.<br />
 - Understand [MetricFlow's](/docs/build/about-metricflow) key concepts, which powers the latest dbt Semantic Layer. 
 - If developing with the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation):
-  - SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections and [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) isn't currently supported. 
+  - SSH tunneling for [Postgres and Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) connections and [Single sign-on (SSO)](/docs/cloud/manage-access/sso-overview) isn't supported yet.
   
 </VersionBlock>
 
