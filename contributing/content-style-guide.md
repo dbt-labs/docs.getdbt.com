@@ -307,7 +307,7 @@ A numbered list following an H2 heading:
 ## Tables
 Tables provide a great way to present complex information and can help the content be more scannable for users, too.
 
-There are many ways to construct a table, like row spanning and cell splitting. Make sure the content is clear, concise, and presented well on the web page (like avoiding awkward word wrapping).
+There are many ways to construct a table, such as row spanning and cell splitting. The content should be clear, concise, and presented well on the web page (for example, avoid awkward word wrapping).
 
 Guidelines for making tables are:
 - Introduce the table with a heading or, if it's within the text, as a complete sentence or as a sentence fragment followed by a colon.
