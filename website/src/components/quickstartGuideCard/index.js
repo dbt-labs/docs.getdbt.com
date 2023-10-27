@@ -8,7 +8,7 @@ export default function QuickstartGuideCard({ frontMatter }) {
     frontMatter;
 
   return (
-    <Link to={id} className={styles.quickstartCard}>
+    <Link to={`/guides/${id}`} className={styles.quickstartCard}>
       {recently_updated && (
         <span className={styles.recently_updated}>Updated</span>
       )}
@@ -20,7 +20,7 @@ export default function QuickstartGuideCard({ frontMatter }) {
         <span className={styles.time_to_complete}>{time_to_complete}</span>
       )}
 
-      <span to={id} className={styles.start}>
+      <span to={`/guides/${id}`} className={styles.start}>
         Start
       </span>
 
