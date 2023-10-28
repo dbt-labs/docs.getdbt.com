@@ -8,4 +8,11 @@ Global configs enable you to fine-tune _how_ dbt runs projects on your machineâ€
 
 Global configs control things like the visual output of logs, the manner in which dbt parses your project, and what to do when dbt finds a version mismatch or a failing model. These configs are "global" because they are available for all dbt commands, and because they can be set for all projects running on the same machine or in the same environment.
 
-Starting in v1.0, you can set global configs in three places. When all three are set, command line flags take precedence, then environment variables, and last yaml configs (usually `profiles.yml`).
+### Global config precedence
+
+Starting in v1.0, you can set global configs in three places. dbt will pick the config in the following order (lower takes priority):
+1. [user config](https://docs.getdbt.com/docs/core/connect-data-platform/profiles.yml#user-config)
+1. [environment variable](https://docs.getdbt.com/reference/global-configs/environment-variable-configs)
+1. [CLI flag](https://docs.getdbt.com/reference/global-cli-flags)
+
+i.e., if all three are provided, then the CLI flag takes precedence.
