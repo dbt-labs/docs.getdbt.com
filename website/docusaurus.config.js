@@ -131,7 +131,7 @@ var siteSettings = {
             },
             {
               label: 'Best Practices',
-              to: '/guides/best-practices',
+              to: '/best-practices',
             },
             {
               label: "Guides",

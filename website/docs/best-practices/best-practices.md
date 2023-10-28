@@ -1,11 +1,12 @@
 ---
-title: "Best practices"
+title: "Best practices for workflows"
 id: "best-practices"
 ---
 
 This page contains the collective wisdom of experienced users of dbt on how to best use it in your analytics work. Observing these best practices will help your analytics team work as effectively as possible, while implementing the pro-tips will add some polish to your dbt projects!
 
 ## Best practice workflows
+
 ### Version control your dbt project
 All dbt projects should be managed in version control. Git branches should be created to manage development of new features and bug fixes. All code changes should be reviewed by a colleague (or yourself) in a Pull Request prior to merging into `master`. 
 

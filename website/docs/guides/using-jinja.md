@@ -1,6 +1,13 @@
 ---
 title: "Using Jinja"
 id: "using-jinja"
+time_to_complete: '30 minutes'
+platform: 'dbt-core'
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['jinja', 'dbt Core']
+level: 'Advanced'
+recently_updated: true
 ---
 
 In this guide, we're going to take a common pattern used in SQL, and then use Jinja to improve our code.

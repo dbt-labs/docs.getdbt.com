@@ -5,7 +5,7 @@ platform: 'dbt-cloud'
 icon: 'redshift'
 hide_table_of_contents: true
 tags: ['Redshift', 'dbt Cloud']
-level: 'Expert'
+level: 'Advanced'
 ---
 ## Introduction
 

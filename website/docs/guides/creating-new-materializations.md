@@ -4,6 +4,13 @@ id: "creating-new-materializations"
 description: Learn how to create your own materializations.
 displayText: Creating new materializations
 hoverSnippet: Learn how to create your own materializations.
+time_to_complete: '30 minutes'
+platform: 'dbt-core'
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['materializations', 'dbt Core']
+level: 'Advanced'
+recently_updated: true
 ---
 
 ## Overview
@@ -109,13 +116,6 @@ The "cleanup" phase of the materialization typically renames or drops relations 
 Be sure to `commit` the transaction in the `cleanup` phase of the materialization with `{{ adapter.commit() }}`. If you do not commit this transaction, it will be rolled back by dbt and the transformations applied in your materialization will be discarded.
 
 ### Update the Relation cache
-
-
-:::info New in 0.15.0
-
-The ability to synchronize the Relation cache is new in dbt v0.15.0
-
-:::
 
 Materializations should [return](/reference/dbt-jinja-functions/return) the list of Relations that they have created at the end of execution. dbt will use this list of Relations to update the relation cache in order to reduce the number of queries executed against the database's `information_schema`. If a list of Relations is not returned, then dbt will raise a Deprecation Warning and infer the created relation from the model's configured database, schema, and alias.
 
