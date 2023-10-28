@@ -96,7 +96,7 @@ by comparing code in the current project against the state manifest.
 - [Deferring](/reference/node-selection/defer) to another environment, whereby dbt can identify upstream, unselected resources that don't exist in your current environment and instead "defer" their references to the environment provided by the state manifest.
 - The [`dbt clone` command](/reference/commands/clone), whereby dbt can clone nodes based on their location in the manifest provided to the `--state` flag.
 
-Together, the `state:` selector and deferral enable ["slim CI"](/guides/legacy/best-practices#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
+Together, the `state:` selector and deferral enable ["slim CI"](/best-practices/best-practices#run-only-modified-models-to-test-changes-slim-ci). We expect to add more features in future releases that can leverage artifacts passed to the `--state` flag.
 
 ### Establishing state
 
@@ -190,7 +190,7 @@ dbt build --select "source_status:fresher+"
 ```
 
 
-For more example commands, refer to [Pro-tips for workflows](/guides/legacy/best-practices.md#pro-tips-for-workflows).
+For more example commands, refer to [Pro-tips for workflows](/best-practices/best-practices.md#pro-tips-for-workflows).
 
 ### The "source_status" status
 

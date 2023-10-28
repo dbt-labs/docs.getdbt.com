@@ -156,7 +156,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**
 
-*   [Version control](/guides/legacy/best-practices#version-control-your-dbt-project)
+* [Version control](/best-practices/best-practices#version-control-your-dbt-project)
 *   [dbt Labs' PR Template](/blog/analytics-pull-request-template)
 
 ## ✅ Documentation

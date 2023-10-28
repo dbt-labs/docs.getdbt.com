@@ -68,5 +68,5 @@ Several under-the-hood changes from past minor versions, tagged with deprecation
 - [Parsing](/reference/parsing): partial parsing and static parsing have been turned on by default.
 - [Global configs](/reference/global-configs/about-global-configs) have been standardized. Related updates to [global CLI flags](/reference/global-cli-flags) and [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml).
 - [The `init` command](/reference/commands/init) has a whole new look and feel. It's no longer just for first-time users.
-- Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/guides/legacy/best-practices#pro-tips-for-workflows)
+- Add `result:<status>` subselectors for smarter reruns when dbt models have errors and tests fail. See examples: [Pro-tips for Workflows](/best-practices/best-practices#pro-tips-for-workflows)
 - Secret-prefixed [env vars](/reference/dbt-jinja-functions/env_var) are now allowed only in `profiles.yml` + `packages.yml`

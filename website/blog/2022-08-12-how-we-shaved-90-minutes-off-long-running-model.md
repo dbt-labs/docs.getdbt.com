@@ -286,7 +286,7 @@ Developing an analytic code base is an ever-evolving process. What worked well w
 
 4. **Test on representative data**
 
-    Testing on a [subset of data](https://docs.getdbt.com/guides/legacy/best-practices#limit-the-data-processed-when-in-development) is a great general practice. It allows you to iterate quickly, and doesn’t waste resources. However, there are times when you need to test on a larger dataset for problems like disk spillage to come to the fore. Testing on large data is hard and expensive, so make sure you have a good idea of the solution before you commit to this step.
+    Testing on a [subset of data](https://docs.getdbt.com/best-practices/best-practices#limit-the-data-processed-when-in-development) is a great general practice. It allows you to iterate quickly, and doesn’t waste resources. However, there are times when you need to test on a larger dataset for problems like disk spillage to come to the fore. Testing on large data is hard and expensive, so make sure you have a good idea of the solution before you commit to this step.
 
 5. **Repeat**
 
