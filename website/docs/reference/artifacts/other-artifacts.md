@@ -43,4 +43,4 @@ It includes that information at two separate points in time:
 1. `linked` - immediately after the graph is linked together, and
 2. `with_test_edges` - after test edges have been added.
 
-It contains the `name` and `type` of each node and `succ` contains the keys of its child nodes.
+Each of those points in time contains the `name` and `type` of each node and `succ` contains the keys of its child nodes.
