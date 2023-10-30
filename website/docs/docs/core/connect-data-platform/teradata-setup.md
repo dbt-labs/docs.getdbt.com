@@ -170,7 +170,7 @@ To learn more about dbt incremental strategies please check [the dbt incremental
 All dbt commands are supported.
 
 ## Support for model contracts
-Model constracts are not yet supported with dbt-teradata.
+Model contracts are not yet supported with dbt-teradata.
 
 ## Support for `dbt-utils` package
 `dbt-utils` package is supported through `teradata/teradata_utils` dbt package. The package provides a compatibility layer between `dbt_utils` and `dbt-teradata`. See [teradata_utils](https://hub.getdbt.com/teradata/teradata_utils/latest/) package for install instructions.
