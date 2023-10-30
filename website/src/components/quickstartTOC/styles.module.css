@@ -34,13 +34,13 @@
     height: 30px;
     text-align: center;
     line-height: 27px;
-    color: var(--color-light-teal);
-    border: solid 1px var(--color-light-teal);
+    color: var(--color-green-blue);
+    border: solid 1px var(--color-green-blue);
     margin-bottom: auto;
 }
 
 .tocList .active span {
-    background: var(--color-light-teal);
+    background: var( --color-green-blue);
     color: var(--color-white);
 }
 
@@ -54,7 +54,7 @@ html[data-theme="dark"] .tocList li span {
 }
 
 html[data-theme="dark"] .tocList .active span {
-    border-color: var(--color-light-teal);
+    border-color: var(--color-green-blue);
 }
 
 .tocItem {
@@ -75,14 +75,15 @@ html[data-theme="dark"] .tocList .active span {
     transition-property: color, background, border-color;
     transition-duration: var(--ifm-button-transition-duration);
     transition-timing-function: var(--ifm-transition-timing-default);
-    border: 2px solid var(--color-light-teal);
+    border: 2px solid var(--color-green-blue);
+    color: var(--color-green-blue);
     border-radius: 5px;
     width: 125px;
     text-align: center;
 }
 
 .stepWrapper .buttonContainer a:hover {
-    background: var(--color-light-teal);
+    background: var(--color-green-blue);
     color: var(--color-white);
 }
 
@@ -109,7 +110,7 @@ html[data-theme="dark"] .stepWrapper .buttonContainer a:hover {
 }
 
 .stepWrapper[data-step="1"] a.nextButton {
-    background: var(--color-light-teal);
+    background: var(--color-green-blue);
     color: var(--color-white);
 }
 
