@@ -3,6 +3,10 @@ title: "Upgrading to v1.6 (latest)"
 description: New features and changes in dbt Core v1.6
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 dbt Core v1.6 has three significant areas of focus:
 1. Next milestone of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725): improvements to contracts, groups/access, versions; and building blocks for cross-project `ref`
 1. Semantic layer re-launch: dbt Core and [MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow) integration

@@ -3,6 +3,10 @@ title: "Upgrading to v0.20"
 
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 :::caution Unsupported version
 dbt Core v0.20 has reached the end of critical support. No new patch versions will be released, and it will stop running in dbt Cloud on June 30, 2022. Read ["About dbt Core versions"](/docs/dbt-versions/core) for more details.
 :::

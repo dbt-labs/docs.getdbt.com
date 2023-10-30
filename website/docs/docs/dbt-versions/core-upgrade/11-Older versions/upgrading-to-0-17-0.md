@@ -4,6 +4,10 @@ id: "upgrading-to-0-17-0"
 
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 dbt v0.17.0 makes compilation more consistent, improves performance, and fixes a number of bugs.
 
 ## Articles:

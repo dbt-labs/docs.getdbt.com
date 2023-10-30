@@ -3,6 +3,10 @@ title: "Upgrading to 0.14.0"
 id: "upgrading-to-0-14-0"
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 This guide outlines migration instructions for:
 
 1. [Upgrading archives to snapshots](#upgrading-to-snapshot-blocks)

@@ -2,6 +2,11 @@
 title: "Upgrading to v1.3"
 description: New features and changes in dbt Core v1.3
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 ### Resources
 
 - [Changelog](https://github.com/dbt-labs/dbt-core/blob/1.3.latest/CHANGELOG.md)

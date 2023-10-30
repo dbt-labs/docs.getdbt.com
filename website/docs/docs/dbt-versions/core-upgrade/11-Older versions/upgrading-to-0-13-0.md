@@ -3,6 +3,10 @@ title: "Upgrading to 0.13.0"
 id: "upgrading-to-0-13-0"
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 ## Breaking changes
 
 ### on-run-start and on-run-end

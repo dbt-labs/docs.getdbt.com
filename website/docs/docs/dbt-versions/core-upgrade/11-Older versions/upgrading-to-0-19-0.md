@@ -3,6 +3,10 @@ title: "Upgrading to 0.19.0"
 
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/1951)

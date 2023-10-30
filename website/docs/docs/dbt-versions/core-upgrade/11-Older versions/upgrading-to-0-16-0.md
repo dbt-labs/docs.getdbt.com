@@ -3,6 +3,10 @@ title: "Upgrading to 0.16.0"
 id: "upgrading-to-0-16-0"
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 dbt v0.16.0 contains many new features, bug fixes, and improvements. This guide
 covers all of the important information to consider when upgrading from an earlier
 version of dbt to 0.16.0.

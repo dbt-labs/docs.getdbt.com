@@ -3,6 +3,10 @@ title: "Upgrading to 0.14.1"
 id: "upgrading-to-0-14-1"
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 The dbt v0.14.1 release _does not_ contain any breaking code changes for users upgrading from v0.14.0. If you are upgrading from a version less than 0.14.0, consult the [Upgrading to 0.14.0](upgrading-to-0-14-0) migration guide. The following section contains important information for users of the `check` strategy on Snowflake and BigQuery. Action may be required in your database.
 
 ## Changes to the Snapshot "check" algorithm
