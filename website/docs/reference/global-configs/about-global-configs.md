@@ -10,9 +10,9 @@ Global configs control things like the visual output of logs, the manner in whic
 
 ### Global config precedence
 
-Starting in v1.0, you can set global configs in three places. dbt will pick the config in the following order (lower takes priority):
+Starting in v1.0, you can set global configs in three places. dbt will evaluate the configs in the following order:
 1. [user config](https://docs.getdbt.com/reference/global-configs/yaml-configurations)
 1. [environment variable](https://docs.getdbt.com/reference/global-configs/environment-variable-configs)
 1. [CLI flag](https://docs.getdbt.com/reference/global-configs/command-line-flags)
 
-i.e., if all three are provided, then the CLI flag takes precedence.
+Each config is prioritized over the previous one. For example, if all three are provided, then the CLI flag takes precedence.
