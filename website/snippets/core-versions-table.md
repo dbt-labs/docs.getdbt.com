@@ -2,7 +2,7 @@
 
 | dbt Core                                                   | Initial Release | Support Level | Critical Support Until  | 
 |------------------------------------------------------------|-----------------|----------------|-------------------------|
-| [**v1.7**](/guides/migration/versions/upgrading-to-v1.7) (beta)| Oct 26, 2023 | -              | -                       |
+| [**v1.7**](/guides/migration/versions/upgrading-to-v1.7)   | Oct 31, 2023    | Active         | Oct 30, 2024            |
 | [**v1.6**](/guides/migration/versions/upgrading-to-v1.6)   | Jul 31, 2023    | Active         | Jul 30, 2024            |
 | [**v1.5**](/guides/migration/versions/upgrading-to-v1.5)   | Apr 27, 2023    | Critical       | Apr 27, 2024            | 
 | [**v1.4**](/guides/migration/versions/upgrading-to-v1.4)   | Jan 25, 2023    | Critical       | Jan 25, 2024            | 
@@ -18,6 +18,5 @@ _Future release dates are tentative and subject to change._
 
 | dbt Core | Planned Release | Critical & dbt Cloud Support Until  |
 |----------|-----------------|-------------------------------------|
-| **v1.7** | _Oct 2023_      | _Oct 2024_                          |
 | **v1.8** | _Jan 2024_      | _Jan 2025_                          |
 | **v1.9** | _Apr 2024_      | _Apr 2025_                          |

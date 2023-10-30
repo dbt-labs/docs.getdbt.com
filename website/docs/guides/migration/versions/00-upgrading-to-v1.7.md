@@ -1,5 +1,5 @@
 ---
-title: "Upgrading to v1.7 (beta)"
+title: "Upgrading to v1.7 (latest)"
 description: New features and changes in dbt Core v1.7
 ---
 
