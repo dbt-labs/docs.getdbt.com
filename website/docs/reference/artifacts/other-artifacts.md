@@ -39,6 +39,8 @@ This file is useful for investigating performance issues in dbt Core's graph alg
 
 It is more anonymized and compact than [`manifest.json`](/reference/artifacts/manifest-json) and [`graph.gpickle`](#graph.gpickle).
 
-It contains the `name` and `type` of each node and `succ` contains the IDs of its child nodes. It includes that information at two separate points in time:
+It includes that information at two separate points in time:
 1. `linked` - immediately after the graph is linked together, and
 2. `with_test_edges` - after test edges have been added.
+
+It contains the `name` and `type` of each node and `succ` contains the keys of its child nodes.
