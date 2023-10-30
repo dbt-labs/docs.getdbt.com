@@ -9,11 +9,11 @@ hide_table_of_contents: true
 ---
 ## Introduction
 
-When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using the dbt command line interface (dbt CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/quickstarts).
+When you use dbt Core to work with dbt, you will be editing files locally using a code editor, and running projects using a command line interface (CLI). If you'd rather edit files and run projects using the web-based Integrated Development Environment (IDE), you should refer to the [dbt Cloud quickstarts](/quickstarts). You can also develop and run dbt commands using the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation) &mdash; a dbt Cloud powered command line.
 
 ### Prerequisites
 
-* To use the dbt CLI, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
+* To use dbt Core, it's important that you know some basics of the Terminal. In particular, you should understand `cd`, `ls` and `pwd` to navigate through the directory structure of your computer easily.
 * Install dbt Core using the [installation instructions](/docs/core/installation) for your operating system.
 * Complete [Setting up (in BigQuery)](/quickstarts/bigquery?step=2) and [Loading data (BigQuery)](/quickstarts/bigquery?step=3).
 * [Create a GitHub account](https://github.com/join) if you don't already have one.
@@ -103,16 +103,16 @@ When developing locally, dbt connects to your <Term id="data-warehouse" /> using
 jaffle_shop: # this needs to match the profile in your dbt_project.yml file
     target: dev
     outputs:
-    dev:
-        type: bigquery
-        method: service-account
-        keyfile: /Users/BBaggins/.dbt/dbt-tutorial-project-331118.json # replace this with the full path to your keyfile
-        project: grand-highway-265418 # Replace this with your project id
-        dataset: dbt_bbagins # Replace this with dbt_your_name, e.g. dbt_bilbo
-        threads: 1
-        timeout_seconds: 300
-        location: US
-        priority: interactive
+        dev:
+            type: bigquery
+            method: service-account
+            keyfile: /Users/BBaggins/.dbt/dbt-tutorial-project-331118.json # replace this with the full path to your keyfile
+            project: grand-highway-265418 # Replace this with your project id
+            dataset: dbt_bbagins # Replace this with dbt_your_name, e.g. dbt_bilbo
+            threads: 1
+            timeout_seconds: 300
+            location: US
+            priority: interactive
 ```
 
 </File>
@@ -196,7 +196,7 @@ $ git checkout -b add-customers-model
 
 4. From the command line, enter `dbt run`.
 <div style={{maxWidth: '400px'}}>
-<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt CLI" />
+<Lightbox src="/img/first-model-dbt-cli.png" title="A successful run with the dbt Core CLI" />
 </div>
 
 When you return to the BigQuery console, you can `select` from this model.

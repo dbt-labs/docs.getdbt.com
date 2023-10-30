@@ -75,7 +75,6 @@ provider to provide group membership information in user attribute called
 You may use a restricted group attribute statement to limit the groups set
 to dbt Cloud for each authenticated user. For example, if all of your dbt Cloud groups start
 with `DBT_CLOUD_...`, you may optionally apply a filter like `Starts With: DBT_CLOUD_`.
-Please contact support if you have any questions.
 :::
 
 ### Collect integration secrets
@@ -425,7 +424,7 @@ To complete setup, follow the steps below in dbt Cloud:
    | Log&nbsp;in&nbsp;with | SAML 2.0 |
    | Identity&nbsp;Provider&nbsp;SSO&nbsp;Url | Paste the **Identity Provider Single Sign-On URL** shown in the IdP setup instructions |
    | Identity&nbsp;Provider&nbsp;Issuer | Paste the **Identity Provider Issuer** shown in the IdP setup instructions |
-   | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions |
+   | X.509&nbsp;Certificate | Paste the **X.509 Certificate** shown in the IdP setup instructions; <br />**Note:** When the certificate expires, an Idp admin will have to generate a new one to be pasted into dbt Cloud for uninterrupted application access. |
    | Slug | Enter your desired login slug. |
     <Lightbox src="/img/docs/dbt-cloud/dbt-cloud-enterprise/okta/okta-6-setup-integration.png"
         title="Configuring the application in dbt Cloud" />
