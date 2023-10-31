@@ -11,9 +11,6 @@ The following example provides you with the SQL statements you can use to manage
 **Note** that you can grant permissions on `securable_objects` to `principals` (This can be user, service principal, or group). For example, `grant privilege_type` on `securable_object` to `principal`.
 
 ```
--- NOTE: in general permissions can be granted on securable_objects to
-principals (can be user, service principal, or group)
--- e.g.: grant privilege_type on securable_object to principal
 
 grant all privileges on schema schema_name to principal;
 grant create table on schema schema_name to principal;
