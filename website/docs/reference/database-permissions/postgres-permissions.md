@@ -3,7 +3,7 @@ title: "Postgres Permissions"
 ---
 
 
-In Postgres, permissions are used to control who can perform certain actions on different database objects. Use SQL statements to manage permissions in a Databricks database.
+In Postgres, permissions are used to control who can perform certain actions on different database objects. Use SQL statements to manage permissions in a Postgres database.
 
 ## Example Postgres permissions
 
