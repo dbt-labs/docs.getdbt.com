@@ -128,7 +128,7 @@ The default implementation of `generate_alias_name` simply uses the supplied `al
 </VersionBlock>
 
 
-### Dispatch - Managing aliasing across SQL dialects, data platforms, and dbt packages
+### Dispatch macro - SQL alias management for databases and dbt packages
 
 See docs on macro `dispatch`: ["Managing different global overrides across packages"](/reference/dbt-jinja-functions/dispatch#managing-different-global-overrides-across-packages)
 
