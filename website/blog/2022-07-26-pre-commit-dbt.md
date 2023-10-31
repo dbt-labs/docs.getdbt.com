@@ -112,7 +112,7 @@ The last step of our flow is to make those pre-commit checks part of the day-to-
 
 Adding periodic pre-commit checks can be done in 2 different ways, through CI (Continuous Integration) actions, or as git hooks when running dbt locally
 
-#### a) Adding pre-commit-dbt to the CI flow (works for dbt Cloud and dbt CLI users)
+#### a) Adding pre-commit-dbt to the CI flow (works for dbt Cloud and dbt Core users)
 
 The example below will assume GitHub actions as the CI engine but similar behavior could be achieved in any other CI tool.
 
@@ -167,7 +167,7 @@ jobs:
     steps:
 
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
     # Using bash and pip to install dbt and pre-commit
     # Update the dbt installation command to include the adapter you need
@@ -237,9 +237,9 @@ With that information, I could now go back to dbt, document my model customers a
 
 We could set up rules that prevent any change to be merged if the GitHub action fails. Alternatively, this action step can be defined as merely informational. 
 
-#### b) Installing the pre-commit git hooks (for dbt CLI users)
+#### b) Installing the pre-commit git hooks (for dbt Core users)
 
-If we develop locally with the dbt CLI, we could also execute `pre-commit install` to install the git hooks. What it means then is that every time we want to commit code in git, the pre-commit hooks will run and will prevent us from committing if any step fails.
+If we develop locally with the dbt Core CLI, we could also execute `pre-commit install` to install the git hooks. What it means then is that every time we want to commit code in git, the pre-commit hooks will run and will prevent us from committing if any step fails.
 
 If we want to commit code without performing all the steps of the pre-hook we could use the environment variable SKIP or the git flag `--no-verify` as described [in the documentation](https://pre-commit.com/#temporarily-disabling-hooks). (e.g. we might want to skip the auto `dbt docs generate` locally to prevent it from running at every commit and rely on running it manually from time to time) 
 

@@ -12,7 +12,7 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Dremio'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor plugin
@@ -49,7 +49,11 @@ pip is the easiest way to install the adapter:
 
 <p>For further info, refer to the GitHub repository: <a href={`https://github.com/${frontMatter.meta.github_repo}`}>{frontMatter.meta.github_repo}</a></p>
  
-Follow the repository's link for os dependencies.
+Follow the repository's link for OS dependencies.
+
+:::note 
+[Model contracts](/docs/collaborate/govern/model-contracts) are not supported.
+:::
 
 ## Prerequisites for Dremio Cloud
 Before connecting from project to Dremio Cloud, follow these prerequisite steps:

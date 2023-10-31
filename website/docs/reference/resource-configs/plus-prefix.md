@@ -3,9 +3,9 @@ title: Using the + prefix
 
 ---
 
-The `+` prefix is a dbt syntax feature, introduced in dbt v0.17.0, which helps disambiguate between [resource paths](resource-path) and configs in `dbt_project.yml` files.
+The `+` prefix is a dbt syntax feature, introduced in dbt v0.17.0, which helps disambiguate between [resource paths](/reference/resource-configs/resource-path) and configs in `dbt_project.yml` files.
 
-It is only compatible with `dbt_project.yml` files that use [`config-version](config-version): 2`
+It is not compatible with `dbt_project.yml` files that use [`config-version`](/reference/project-configs/config-version) 1.
 
 For example:
 
@@ -29,7 +29,7 @@ models:
 Throughout this documentation, we've tried to be consistent in using the `+` prefix in `dbt_project.yml` files.
 
 However, the leading `+` is in fact _only required_ when you need to disambiguate between resource paths and configs, for example when:
-- A config accepts a dictionary as its inputs, for example, the [`persist_docs` config](persist_docs).
+- A config accepts a dictionary as its inputs, for example, the [`persist_docs` config](/reference/resource-configs/persist_docs).
 - Or, a config shares a key with part of a resource path, for example, if you had a directory of models named `tags`.
 
 <File name='dbt_project.yml'>
@@ -65,6 +65,6 @@ When adding configs in `dbt_project.yml`, it doesn't hurt to use the `+` prefix,
 
 <VersionBlock firstVersion="1.2">
 
-**Note:** This use of the `+` prefix, in `dbt_project.yml`, is distinct from the use of `+` to control config merge behavior (clobber vs. add) in other config settings (specific resource `.yml` and `.sql` files). Currently, the only config which supports `+` for controlling config merge behavior is [`grants`](grants#grant-config-inheritance).
+**Note:** This use of the `+` prefix, in `dbt_project.yml`, is distinct from the use of `+` to control config merge behavior (clobber vs. add) in other config settings (specific resource `.yml` and `.sql` files). Currently, the only config which supports `+` for controlling config merge behavior is [`grants`](/reference/resource-configs/grants#grant-config-inheritance).
 
 </VersionBlock>

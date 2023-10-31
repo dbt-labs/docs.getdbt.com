@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '##db-iomete'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03JFG22EP9'
   platform_name: 'iomete'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

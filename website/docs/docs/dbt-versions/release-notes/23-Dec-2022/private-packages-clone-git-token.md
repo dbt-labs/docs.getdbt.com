@@ -2,7 +2,7 @@
 title: "Private packages must be cloned using access tokens provided by environment variables"
 description: "Private GitHub packages must be cloned using access tokens provided by environment variables."
 sidebar_label: "Deprecation: Private packages must be cloned using access tokens"
-tags: [Dec-23-2022]
+tags: [Dec-2022]
 ---
 
 The supported method for cloning private GitHub packages is the [git token method](/docs/build/packages#git-token-method), where an appropriate access token is passed into the package repository URL with an environment variable. 

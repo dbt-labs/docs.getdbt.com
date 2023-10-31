@@ -29,7 +29,7 @@ version: 2
 models:
   - name: <model_name>
     config:
-      [<model_config>](model-configs): <config_value>
+      [<model_config>](/reference/model-configs): <config_value>
       ...
 ```
 
@@ -47,7 +47,7 @@ version: 2
 seeds:
   - name: <seed_name>
     config:
-      [<seed_config>](seed-configs): <config_value>
+      [<seed_config>](/reference/seed-configs): <config_value>
       ...
 ```
 
@@ -65,7 +65,7 @@ version: 2
 snapshots:
   - name: <snapshot_name>
     config:
-      [<snapshot_config>](snapshot-configs): <config_value>
+      [<snapshot_config>](/reference/snapshot-configs): <config_value>
       ...
 ```
 
@@ -90,14 +90,14 @@ version: 2
             <test_config>: <config-value>
             ...
 
-    [columns](columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name>
         tests:
           - [<test_name>](#test_name)
           - [<test_name>](#test_name):
               <argument_name>: <argument_value>
               config:
-                [<test_config>](test-configs): <config-value>
+                [<test_config>](/reference/test-configs): <config-value>
                 ...
 
 ```
@@ -108,13 +108,6 @@ version: 2
 
 <TabItem value="sources">
 
-<VersionBlock lastVersion="1.0">
-
-We have added support for the `config` property on sources in dbt Core v1.1
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
 
 <File name='models/<filename>.yml'>
 
@@ -124,16 +117,14 @@ version: 2
 sources:
   - name: <source_name>
     config:
-      [<source_config>](source-configs): <config_value>
+      [<source_config>](/reference/source-configs): <config_value>
     tables:
       - name: <table_name>
         config:
-          [<source_config>](source-configs): <config_value>
+          [<source_config>](/reference/source-configs): <config_value>
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
@@ -193,4 +184,4 @@ exposures:
 
 </Tabs>
 
-The `config` property allows you to configure resources at the same time you're defining properties in yaml files.
+The `config` property allows you to configure resources at the same time you're defining properties in YAML files.

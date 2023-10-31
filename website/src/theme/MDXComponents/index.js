@@ -6,6 +6,7 @@ import MDXDetails from '@theme/MDXComponents/Details';
 import MDXHeading from '@theme/MDXComponents/Heading';
 import MDXUl from '@theme/MDXComponents/Ul';
 import MDXImg from '@theme/MDXComponents/Img';
+import MDXA from '@theme/MDXComponents/A';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
 
@@ -22,7 +23,6 @@ import FAQ from '@site/src/components/faqs';
 import FAQList from '@site/src/components/faqList';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
-import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import Snippet from '@site/src/components/snippet';
 import YoutubeVideo from '@site/src/components/youtube';
@@ -31,11 +31,12 @@ import VersionBlock from '@site/src/components/versionBlock';
 import Var from '@site/src/components/variable';
 import Term from '@site/src/components/term';
 import EventsFeed from '@site/src/components/events';
-import { DiscourseFeed, DiscourseHelpFeed }  from '@site/src/components/discourse';
+import { DiscourseFeed, DiscourseHelpFeed } from '@site/src/components/discourse';
 import Hero from '@site/src/components/hero'
 import Card from '@site/src/components/card'
 import Callout from '@site/src/components/callout'
 import BlogPostCard from '@site/src/components/blogPostCard';
+import DocCarousel from '@site/src/components/docCarousel';
 import PostCarousel from '@site/src/components/postCarousel';
 import CommunitySpotlightCard from '@site/src/components/communitySpotlightCard';
 import CommunitySpotlightList from '@site/src/components/communitySpotlightList';
@@ -44,7 +45,7 @@ import dbtEditor from '@site/src/components/dbt-editor';
 const MDXComponents = {
   head: MDXHead,
   code: MDXCode,
-  a: (props) => <Link {...props} />,
+  a: MDXA,
   pre: MDXPre,
   details: MDXDetails,
   ul: MDXUl,
@@ -64,12 +65,12 @@ const MDXComponents = {
   Changelog: Changelog,
   CloudCore: CloudCore,
   Collapsible: Collapsible,
+  DocCarousel: DocCarousel,
   FAQ: FAQ,
   FAQList: FAQList,
   File: File,
   Hero: Hero,
   Lightbox: Lightbox,
-  Link: Link,
   LoomVideo: LoomVideo,
   PostCarousel: PostCarousel,
   Tabs: Tabs,

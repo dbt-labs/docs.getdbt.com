@@ -20,9 +20,10 @@ description: "Read this guide to learn about using seed configurations in dbt."
 
 ```yml
 seeds:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[quote_columns](resource-configs/quote_columns): true | false
-    [+](plus-prefix)[column_types](resource-configs/column_types): {column_name: datatype}
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[quote_columns](/reference/resource-configs/quote_columns): true | false
+    [+](/reference/resource-configs/plus-prefix)[column_types](/reference/resource-configs/column_types): {column_name: datatype}
+    [+](/reference/resource-configs/plus-prefix)[delimiter](/reference/resource-configs/delimiter): <string>
 
 ```
 
@@ -41,8 +42,9 @@ version: 2
 seeds:
   - name: [<seed-name>]
     config:
-      [quote_columns](resource-configs/quote_columns): true | false
-      [column_types](resource-configs/column_types): {column_name: datatype}
+      [quote_columns](/reference/resource-configs/quote_columns): true | false
+      [column_types](/reference/resource-configs/column_types): {column_name: datatype}
+      [delimiter](/reference/resource-configs/grants): <string>
 
 ```
 
@@ -69,18 +71,18 @@ seeds:
 
 ```yaml
 seeds:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[database](resource-configs/database): <string>
-    [+](plus-prefix)[schema](resource-configs/schema): <string>
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
-    [+](plus-prefix)[persist_docs](persist_docs): <dict>
-    [+](plus-prefix)[full_refresh](full_refresh): <boolean>
-    [+](plus-prefix)[meta](meta): {<dictionary>}
-    [+](plus-prefix)[grants](grants): {<dictionary>}
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[database](/reference/resource-configs/database): <string>
+    [+](/reference/resource-configs/plus-prefix)[schema](/reference/resource-properties/schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): <dict>
+    [+](/reference/resource-configs/plus-prefix)[full_refresh](/reference/resource-configs/full_refresh): <boolean>
+    [+](/reference/resource-configs/plus-prefix)[meta](/reference/resource-configs/meta): {<dictionary>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dictionary>}
 
 ```
 
@@ -99,17 +101,17 @@ version: 2
 seeds:
   - name: [<seed-name>]
     config:
-      [enabled](enabled): true | false
-      [tags](resource-configs/tags): <string> | [<string>]
-      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [database](resource-configs/database): <string>
-      [schema](resource-configs/schema): <string>
-      [alias](resource-configs/alias): <string>
-      [persist_docs](persist_docs): <dict>
-      [full_refresh](full_refresh): <boolean>
-      [meta](meta): {<dictionary>}
-      [grants](grants): {<dictionary>}
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [database](/reference/resource-configs/database): <string>
+      [schema](/reference/resource-properties/schema): <string>
+      [alias](/reference/resource-configs/alias): <string>
+      [persist_docs](/reference/resource-configs/persist_docs): <dict>
+      [full_refresh](/reference/resource-configs/full_refresh): <boolean>
+      [meta](/reference/resource-configs/meta): {<dictionary>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
 
 ```
 
@@ -120,7 +122,7 @@ seeds:
 </Tabs>
 
 ## Configuring seeds
-Seeds can only be configured from yaml files, either in `dbt_project.yml` or within an individual seed's yaml properties. It is not possible to configure a seed from within its CSV file.
+Seeds can only be configured from YAML files, either in `dbt_project.yml` or within an individual seed's YAML properties. It is not possible to configure a seed from within its CSV file.
 
 Seed configurations, like model configurations, are applied hierarchically — configurations applied to a `marketing` subdirectory will take precedence over configurations applied to the entire `jaffle_shop` project, and configurations defined in a specific seed's properties will override configurations defined in `dbt_project.yml`.
 
@@ -140,7 +142,7 @@ seeds:
 
 
 #### Apply the `schema` configuration to all seeds in your project
-To apply a configuration to all seeds in your project only (i.e. _excluding_ any seeds in installed packages), provide your [project name](project-configs/name.md) as part of the resource path.
+To apply a configuration to all seeds in your project only (i.e. _excluding_ any seeds in installed packages), provide your [project name](/reference/project-configs/name.md) as part of the resource path.
 
 For a project named `jaffle_shop`:
 

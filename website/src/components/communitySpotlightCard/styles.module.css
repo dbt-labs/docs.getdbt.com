@@ -77,8 +77,9 @@ div.spotlightMemberCard {
   .spotlightMemberCard {
     padding: 3rem 0;
   }
-  div.spotlightMemberCard {
+  :global(#spotlight-members-section) div.spotlightMemberCard {
     margin-bottom: 0;
+    padding-left: 0;
   }
   .spotlightMemberCard .spotlightMemberImgContainer {
     flex: 0 0 346px;

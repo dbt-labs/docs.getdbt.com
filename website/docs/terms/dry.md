@@ -43,7 +43,7 @@ Most teams have essential business logic that defines the successes and failures
 By writing DRY definitions for key business logic and metrics that are referenced throughout a dbt project and/or BI (business intelligence) tool, data teams can create those single, unambiguous, and authoritative representations for their essential transformations. Gone are the days of 15 different definitions and values for churn, and in are the days of standardization and DRYness.
 
 :::note Experimental dbt Metrics!
-dbt v1.0 currently supports the use of experimental metrics, time series aggregations over a table that support zero or one dimensions. Using [dbt Metrics](/docs/build/metrics), data teams can define metric calculations, ownerships, and definitions in a yaml file that lives within their dbt project. dbt Metrics are in their experimental stage; if you’re interesting in learning more about dbt Metrics, please make sure to join the #dbt-metrics-and-server channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
+dbt v1.0 currently supports the use of experimental metrics, time series aggregations over a table that support zero or one dimensions. Using [dbt Metrics](/docs/build/metrics), data teams can define metric calculations, ownerships, and definitions in a YAML file that lives within their dbt project. dbt Metrics are in their experimental stage; if you’re interesting in learning more about dbt Metrics, please make sure to join the #dbt-metrics-and-server channel in the [dbt Community Slack](https://www.getdbt.com/community/join-the-community/).
 :::
 
 ## Tools to help you write DRY code

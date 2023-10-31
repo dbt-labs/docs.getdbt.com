@@ -1,11 +1,11 @@
 ---
-title: "Upgrading to v1.5 (latest)"
+title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
 ---
 
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
-2. A Python entry point for [**programmatic invocations**](programmatic-invocations), at parity with the CLI
+2. A Python entry point for [**programmatic invocations**](/reference/programmatic-invocations), at parity with the CLI
 
 ## Resources
 
@@ -42,13 +42,77 @@ The following env vars have been renamed, for consistency with the convention fo
 
 As described in [dbt-core#7169](https://github.com/dbt-labs/dbt-core/pull/7169), command-line parameters that could be silent before will no longer be silent. See [dbt-labs/dbt-core#7158](https://github.com/dbt-labs/dbt-core/issues/7158) and [dbt-labs/dbt-core#6800](https://github.com/dbt-labs/dbt-core/issues/6800) for more examples of the behavior we are fixing.
 
-Some options that could previously be specified before a sub-command can now only be specified afterward. For example, `dbt --profiles-dir . run` isn't valid anymore, and instead, you need to use `dbt run --profiles-dir .`
+An empty `tests:` key in a yaml file will now raise a validation error, instead of being silently skipped. You can resolve this by removing the empty `tests:` key, or by setting it to an empty list explicitly:
+```yml
+#  ❌ this will raise an error
+models:
+  - name: my_model
+    tests:
+    config: ...
 
-Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](model-versions), you will need to update the logic in your macro. Note that, while this is **note** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
+# ✅ this is fine
+models:
+  - name: my_model
+    tests: [] # todo! add tests later
+    config: ...
+```
+
+Some options that could previously be specified _after_ a subcommand can now only be specified _before_. This includes the inverse of the option, `--write-json` and `--no-write-json`, for example. The list of affected options are:
+
+<details>
+<summary>List of affected options</summary>
+
+```bash
+--cache-selected-only | --no-cache-selected-only
+--debug, -d | --no-debug
+--deprecated-print | --deprecated-no-print
+--enable-legacy-logger | --no-enable-legacy-logger
+--fail-fast, -x | --no-fail-fast
+--log-cache-events | --no-log-cache-events
+--log-format
+--log-format-file
+--log-level
+--log-level-file
+--log-path
+--macro-debugging | --no-macro-debugging
+--partial-parse | --no-partial-parse
+--partial-parse-file-path
+--populate-cache | --no-populate-cache
+--print | --no-print
+--printer-width
+--quiet, -q | --no-quiet
+--record-timing-info, -r
+--send-anonymous-usage-stats | --no-send-anonymous-usage-stats
+--single-threaded | --no-single-threaded
+--static-parser | --no-static-parser
+--use-colors | --no-use-colors
+--use-colors-file | --no-use-colors-file
+--use-experimental-parser | --no-use-experimental-parser
+--version, -V, -v
+--version-check | --no-version-check
+--warn-error
+--warn-error-options
+--write-json | --no-write-json
+
+```
+
+</details>
+
+
+Additionally, some options that could be previously specified _before_ a subcommand can now only be specified _after_. Any option _not_ in the above list must appear _after_ the subcommand from v1.5 and later. For example, `--profiles-dir`.
+
+
+The built-in [collect_freshness](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/adapters/freshness.sql) macro now returns the entire `response` object, instead of just the `table` result. If you're using a custom override for `collect_freshness`, make sure you're also returning the `response` object; otherwise, some of your dbt commands will never finish. For example:
+
+```sql
+{{ return(load_result('collect_freshness')) }}
+```
+
+Finally: The [built-in `generate_alias_name` macro](https://github.com/dbt-labs/dbt-core/blob/1.5.latest/core/dbt/include/global_project/macros/get_custom_name/get_custom_alias.sql) now includes logic to handle versioned models. If your project has reimplemented the `generate_alias_name` macro with custom logic, and you want to start using [model versions](/docs/collaborate/govern/model-versions), you will need to update the logic in your macro. Note that, while this is **not** a prerequisite for upgrading to v1.5—only for using the new feature—we recommmend that you do this during your upgrade, whether you're planning to use model versions tomorrow or far in the future.
 
 ### For consumers of dbt artifacts (metadata)
 
-The [manifest](manifest-json) schema version will be updated to `v9`. Specific changes:
+The [manifest](/reference/artifacts/manifest-json) schema version will be updated to `v9`. Specific changes:
 - Addition of `groups` as a top-level key
 - Addition of `access`, `constraints`, `version`, `latest_version` as a top-level node attributes for models
 - Addition of `constraints` as a column-level attribute
@@ -63,25 +127,25 @@ For more detailed information and to ask questions, please read and comment on t
 
 ### Model governance
 
-The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](govern/about-model-governance), all of which is new in v1.5.
+The first phase of supporting dbt deployments at scale, across multiple projects with clearly defined ownership and interface boundaries. [Read about model governance](/docs/collaborate/govern/about-model-governance), all of which is new in v1.5.
 
 ### Revamped CLI
 
 Compile and preview dbt models and `--inline` dbt-SQL queries on the CLI using:
-- [`dbt compile`](commands/compile)
-- [`dbt show`](commands/show) (new!)
+- [`dbt compile`](/reference/commands/compile)
+- [`dbt show`](/reference/commands/show) (new!)
 
-[Node selection methods](node-selection/methods) can use Unix-style wildcards to glob nodes matching a pattern:
+[Node selection methods](/reference/node-selection/methods) can use Unix-style wildcards to glob nodes matching a pattern:
 ```
 dbt ls --select "tag:team_*"
 ```
 
-And (!): a first-ever entry point for [programmatic invocations](programmatic-invocations), at parity with CLI commands.
+And (!): a first-ever entry point for [programmatic invocations](/reference/programmatic-invocations), at parity with CLI commands.
 
 Run `dbt --help` to see new & improved help documentation :)
 
 ### Quick hits
-- The [`version: 2` top-level key](project-configs/version) is now **optional** in all yaml files. Also, the [`config-version: 2`](config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
-- [Events and logging](events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
-- Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](dbt_project.yml)
-- More granular [configurations](/reference/global-configs) for logging (to set log format, log levels, and colorization) and cache population
+- The [`version: 2` top-level key](/reference/project-configs/version) is now **optional** in all YAML files. Also, the [`config-version: 2`](/reference/project-configs/config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
+- [Events and logging](/reference/events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
+- Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](/reference/dbt_project.yml)
+- More granular configurations for logging (to set [log format](/reference/global-configs/logs#log-formatting), [log levels](/reference/global-configs/logs#log-level), and [colorization](/reference/global-configs/logs#color)) and [cache population](/reference/global-configs/cache#cache-population)

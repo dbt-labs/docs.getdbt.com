@@ -11,12 +11,12 @@ meta:
   min_supported_version: 'n/a'
   slack_channel_name: '#db-bigquery'
   slack_channel_link: 'https://getdbt.slack.com/archives/C99SNSRTK'
-  platform_name: 'Big Query'
-  config_page: 'bigquery-configs'
+  platform_name: 'BigQuery'
+  config_page: '/reference/resource-configs/bigquery-configs'
 ---
 
 
-<Snippet src="warehouse-setups-cloud-callout" />
+<Snippet path="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -50,12 +50,12 @@ pip is the easiest way to install the adapter:
 
 BigQuery targets can be specified using one of four methods:
 
-1. [oauth via `gcloud`](#oauth-via-gcloud)
-2. [oauth token-based](#oauth-token-based)
+1. [OAuth via `gcloud`](#oauth-via-gcloud)
+2. [OAuth token-based](#oauth-token-based)
 3. [service account file](#service-account-file)
 4. [service account json](#service-account-json)
 
-For local development, we recommend using the oauth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
+For local development, we recommend using the OAuth method. If you're scheduling dbt on a server, you should use the service account auth method instead.
 
 BigQuery targets should be set up using the following configuration in your `profiles.yml` file. There are a number of [optional configurations](#optional-configurations) you may specify as well.
 
@@ -74,32 +74,23 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater 
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
 
 **Default project**
 
-<Changelog>New in dbt v0.19.0</Changelog>
-
 If you do not specify a `project`/`database` and are using the `oauth` method, dbt will use the default `project` associated with your user, as defined by `gcloud config set`.
 
-### Oauth Token-Based
+### OAuth Token-Based
 
-See [docs](https://developers.google.com/identity/protocols/oauth2) on using Oauth 2.0 to access Google APIs.
+See [docs](https://developers.google.com/identity/protocols/oauth2) on using OAuth 2.0 to access Google APIs.
 
-<Tabs
-  defaultValue="refresh"
-  values={[
-    {label: 'Refresh token', value: 'refresh'},
-    {label: 'Temporary token', value: 'temp'},
-  ]}>
-
-<TabItem value="refresh">
+#### Refresh token
 
 Using the refresh token and client information, dbt will mint new access tokens as necessary.
 
@@ -112,21 +103,19 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth-secrets
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      refresh_token: [token]
-      client_id: [client id]
-      client_secret: [client secret]
-      token_uri: [redirect URI]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater
+      refresh_token: TOKEN
+      client_id: CLIENT_ID
+      client_secret: CLIENT_SECRET
+      token_uri: REDIRECT_URI
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
 
-</TabItem>
-
-<TabItem value="temp">
+#### Temporary token
 
 dbt will use the one-time access token, no questions asked. This approach makes sense if you have an external deployment process that can mint new access tokens and update the profile file accordingly.
 
@@ -139,18 +128,15 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: oauth-secrets
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset] # You can also use "schema" here
-      threads: [1 or more]
-      token: [temporary access token] # refreshed + updated by external process
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME # You can also use "schema" here
+      threads: 4 # Must be a value of 1 or greater
+      token: TEMPORARY_ACCESS_TOKEN # refreshed + updated by external process
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
 
-</TabItem>
-
-</Tabs>
 
 ### Service Account File
 
@@ -163,11 +149,11 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: service-account
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      keyfile: [/path/to/bigquery/keyfile.json]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME
+      threads: 4 # Must be a value of 1 or greater
+      keyfile: /PATH/TO/BIGQUERY/keyfile.json
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 ```
 
 </File>
@@ -191,10 +177,10 @@ my-bigquery-db:
     dev:
       type: bigquery
       method: service-account-json
-      project: [GCP project id]
-      dataset: [the name of your dbt dataset]
-      threads: [1 or more]
-      [<optional_config>](#optional-configurations): <value>
+      project: GCP_PROJECT_ID
+      dataset: DBT_DATASET_NAME
+      threads: 4 # Must be a value of 1 or greater
+      [OPTIONAL_CONFIG](#optional-configurations): VALUE
 
       # These fields come from the service account json keyfile
       keyfile_json:
@@ -233,8 +219,6 @@ my-profile:
 
 ### Timeouts and Retries
 
-<VersionBlock firstVersion="1.1">
-
 The `dbt-bigquery` plugin uses the BigQuery Python client library to submit queries. Each query requires two steps:
 1. Job creation: Submit the query job to BigQuery, and receive its job ID.
 2. Job execution: Wait for the query job to finish executing, and receive its result.
@@ -251,11 +235,17 @@ In older versions of `dbt-bigquery`, this same config was called `timeout_second
 
 :::
   
-No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set.) When `job_execution_timeout_seconds` is set, if any dbt query, including a model's SQL transformation, takes longer than 300 seconds to complete, BigQuery might cancel the query and issue the following error:
+No timeout is set by default. (For historical reasons, some query types use a default of 300 seconds when the `job_execution_timeout_seconds` configuration is not set). When you do set the `job_execution_timeout_seconds`, if any dbt query takes more than 300 seconds to finish, the dbt-bigquery adapter will run into an exception:
 
 ```
  Operation did not complete within the designated timeout.
 ```
+
+:::caution Note
+
+The `job_execution_timeout_seconds` represents the number of seconds to wait for the [underlying HTTP transport](https://cloud.google.com/python/docs/reference/bigquery/latest/google.cloud.bigquery.job.QueryJob#google_cloud_bigquery_job_QueryJob_result). It _doesn't_ represent the maximum allowable time for a BigQuery job itself. So, if dbt-bigquery ran into an exception at 300 seconds, the actual BigQuery job could still be running for the time set in BigQuery's own timeout settings.
+
+:::
   
 You can change the timeout seconds for the job execution step by configuring `job_execution_timeout_seconds` in the BigQuery profile:
 
@@ -315,57 +305,6 @@ my-profile:
 
 </File>
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-BigQuery supports query timeouts. By default, the timeout is set to 300 seconds. If a dbt model takes longer than this timeout to complete, then BigQuery may cancel the query and issue the following error:
-
-```
- Operation did not complete within the designated timeout.
-```
-
-To change this timeout, use the `timeout_seconds` configuration:
-
-<File name='profiles.yml'>
-
-```yaml
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      timeout_seconds: 600 # 10 minutes
-```
-
-</File>
-
-The `retries` profile configuration designates the number of times dbt should retry queries that result in unhandled server errors. This configuration is only specified for BigQuery targets. Example:
-
-<File name='profiles.yml'>
-
-```yaml
-# This example target will retry BigQuery queries 5
-# times with a delay. If the query does not succeed
-# after the fifth attempt, then dbt will raise an error
-
-my-profile:
-  target: dev
-  outputs:
-    dev:
-      type: bigquery
-      method: oauth
-      project: abc-123
-      dataset: my_dataset
-      retries: 5
-```
-
-</File>
-
-</VersionBlock>
 
 ### Dataset locations
 
@@ -386,12 +325,6 @@ my-profile:
 ```
 
 ### Maximum Bytes Billed
-
-<Changelog>
-
-- New in dbt v0.17.0
-
-</Changelog>
 
 When a `maximum_bytes_billed` value is configured for a BigQuery profile,
 queries executed by dbt will fail if they exceed the configured maximum bytes
@@ -439,9 +372,8 @@ my-profile:
 ```
 
 ### Service Account Impersonation
-<Changelog>New in v0.18.0</Changelog>
 
-This feature allows users authenticating via local oauth to access BigQuery resources based on the permissions of a service account.
+This feature allows users authenticating via local OAuth to access BigQuery resources based on the permissions of a service account.
 
 ```yaml
 my-profile:
@@ -457,11 +389,10 @@ my-profile:
 
 For a general overview of this process, see the official docs for [Creating Short-lived Service Account Credentials](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials).
 
-<FAQ src="Warehouse/bq-impersonate-service-account-why" />
-<FAQ src="Warehouse/bq-impersonate-service-account-setup" />
+<FAQ path="Warehouse/bq-impersonate-service-account-why" />
+<FAQ path="Warehouse/bq-impersonate-service-account-setup" />
 
 ### Execution project
-<Changelog>New in v0.21.0</Changelog>
 
 By default, dbt will use the specified `project`/`database` as both:
 1. The location to materialize resources (models, seeds, snapshots, etc), unless they specify a custom `project`/`database` config
@@ -501,11 +432,43 @@ my-profile:
       project: abc-123
       dataset: my_dataset
       
-      # for dbt Python models
+      # for dbt Python models to be run on a Dataproc cluster
       gcs_bucket: dbt-python
       dataproc_cluster_name: dbt-python
       dataproc_region: us-central1
 ```
+
+Alternatively, Dataproc Serverless can be used:
+
+```yaml
+my-profile:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: abc-123
+      dataset: my_dataset
+      
+      # for dbt Python models to be run on Dataproc Serverless
+      gcs_bucket: dbt-python
+      dataproc_region: us-central1
+      submission_method: serverless
+      dataproc_batch:
+        environment_config:
+          execution_config:
+            service_account: dbt@abc-123.iam.gserviceaccount.com
+            subnetwork_uri: regions/us-central1/subnetworks/dataproc-dbt
+        labels:
+          project: my-project
+          role: dev
+        runtime_config:
+          properties:
+            spark.executor.instances: 3
+            spark.driver.memory: 1g
+```
+
+For a full list of possible configuration fields that can be passed in `dataproc_batch`, refer to the [Dataproc Serverless Batch](https://cloud.google.com/dataproc-serverless/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.Batch) documentation.
 
 </VersionBlock>
 
@@ -531,6 +494,6 @@ https://www.googleapis.com/auth/drive.readonly,\
 https://www.googleapis.com/auth/iam.test
 ```
 
-A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your oauth'd credentials to connect to BigQuery!
+A browser window should open, and you should be prompted to log into your Google account. Once you've done that, dbt will use your OAuth'd credentials to connect to BigQuery!
 
 This command uses the `--scopes` flag to request access to Google Sheets. This makes it possible to transform data in Google Sheets using dbt. If your dbt project does not transform data in Google Sheets, then you may omit the `--scopes` flag.

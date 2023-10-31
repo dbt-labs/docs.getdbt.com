@@ -7,7 +7,7 @@ id: "source"
 The `dbt source` command provides subcommands that are useful when working with source data. This command provides one subcommand, `dbt source freshness`.
 
 :::info
-If you're using an older version of dbt Core (before v0.21), the old name of the `freshness` subcommand was `snapshot-freshness`. (It has nothing to do with [snapshots](snapshots), which is why we renamed it.) Each time you see the command below, you'll need to specify it as `dbt source snapshot-freshness` instead of `dbt source freshness`.
+If you're using an older version of dbt Core (before v0.21), the old name of the `freshness` subcommand was `snapshot-freshness`. (It has nothing to do with [snapshots](/docs/build/snapshots), which is why we renamed it.) Each time you see the command below, you'll need to specify it as `dbt source snapshot-freshness` instead of `dbt source freshness`.
 :::
 
 ### dbt source freshness
@@ -20,10 +20,10 @@ By default, `dbt source freshness` will calculate freshness information for all 
 
 ```bash
 # Snapshot freshness for all Snowplow tables:
-$ dbt source freshness --select source:snowplow
+$ dbt source freshness --select "source:snowplow"
 
 # Snapshot freshness for a particular source table:
-$ dbt source freshness --select source:snowplow.event
+$ dbt source freshness --select "source:snowplow.event"
 ```
 
 ### Configuring source freshness output

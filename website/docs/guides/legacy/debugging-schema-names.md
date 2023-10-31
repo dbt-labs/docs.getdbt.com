@@ -2,7 +2,7 @@
 title: Debugging schema names
 ---
 
-If a model uses the [`schema` config](resource-configs/schema) but builds under an unexpected schema, here are some steps for debugging the issue.
+If a model uses the [`schema` config](/reference/resource-properties/schema) but builds under an unexpected schema, here are some steps for debugging the issue.
 
 :::info
 The full explanation on custom schemas can be found [here](/docs/build/custom-schemas).
@@ -16,7 +16,7 @@ You can also follow along via this video:
 Do a file search to check if you have a macro named `generate_schema_name` in the `macros` directory of your project.
 
 #### I do not have a macro named `generate_schema_name` in my project
-This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L17-L30)
+This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47C1-L60)
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
@@ -44,8 +44,7 @@ If your `generate_schema_name` macro looks like so:
     {{ generate_schema_name_for_env(custom_schema_name, node) }}
 {%- endmacro %}
 ```
-Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/etc/get_custom_schema.sql#L43-L56).
-
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47-L60).
 ```sql
 {% macro generate_schema_name_for_env(custom_schema_name, node) -%}
 
@@ -70,11 +69,11 @@ In all cases take a moment to read through the Jinja to see if you can follow th
 
 
 ### 2. Confirm your `schema` config
-Check if you are using the [`schema` config](resource-configs/schema) in your model, either via a `{{ config() }}` block, or from `dbt_project.yml`. In both cases, dbt passes this value as the `custom_schema_name` parameter of the `generate_schema_name` macro.
+Check if you are using the [`schema` config](/reference/resource-properties/schema) in your model, either via a `{{ config() }}` block, or from `dbt_project.yml`. In both cases, dbt passes this value as the `custom_schema_name` parameter of the `generate_schema_name` macro.
 
 
 ### 3. Confirm your target values
-Most `generate_schema_name` macros incorporate logic from the [`target` variable](target), in particular `target.schema` and `target.name`. Use the docs [here](target) to help you find the values of each key in this dictionary.
+Most `generate_schema_name` macros incorporate logic from the [`target` variable](/reference/dbt-jinja-functions/target), in particular `target.schema` and `target.name`. Use the docs [here](/reference/dbt-jinja-functions/target) to help you find the values of each key in this dictionary.
 
 
 ### 4. Put the two together
@@ -84,7 +83,7 @@ Now, re-read through the logic of your `generate_schema_name` macro, and mentall
 You should find that the schema dbt is constructing for your model matches the output of your `generate_schema_name` macro.
 
 :::info
-Note that snapshots do not follow this behavior, check out the docs on [target_schema](resource-configs/target_schema) instead.
+Note that snapshots do not follow this behavior, check out the docs on [target_schema](/reference/resource-configs/target_schema) instead.
 :::
 
 ### 5. Adjust as necessary

@@ -12,7 +12,7 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Exasol'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Community plugin

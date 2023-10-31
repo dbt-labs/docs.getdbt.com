@@ -13,7 +13,7 @@ meta:
   slack_channel_name: 'db-singlestore'
   slack_channel_link: 'https://getdbt.slack.com/archives/C02V2QHFF7U'
   platform_name: 'SingleStore'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Vendor-supported plugin

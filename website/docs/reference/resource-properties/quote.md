@@ -115,12 +115,6 @@ analyses:
 ## Definition
 The `quote` field can be used to enable or disable quoting for column names.
 
-<Changelog>
-
-* `v0.16.0`: This configuration was added
-
-</Changelog>
-
 ## Default
 The default quoting value is `false`
 
@@ -129,7 +123,7 @@ This is particularly relevant to those using Snowflake, where quoting can be par
 
 This property is useful when:
 - A source <Term id="table" /> has a column that needs to be quoted to be selected, for example, to preserve column casing
-- A seed was created with `quote_columns: true` ([docs](quote_columns)) on Snowflake
+- A seed was created with `quote_columns: true` ([docs](/reference/resource-configs/quote_columns)) on Snowflake
 - A model uses quotes in the SQL, potentially to work around the use of reserved words
 ```sql
 select user_group as "group"

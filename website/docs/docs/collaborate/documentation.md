@@ -2,14 +2,16 @@
 title: "About documentation"
 description: "Learn how good documentation for your dbt models helps stakeholders discover and understand your datasets."
 id: "documentation"
+pagination_next: "docs/collaborate/build-and-view-your-docs"
+pagination_prev: null
 ---
 
 ## Related documentation
 
-* [Declaring properties](configs-and-properties)
-* [`dbt docs` command](cmd-docs)
+* [Declaring properties](/reference/configs-and-properties)
+* [`dbt docs` command](/reference/commands/cmd-docs)
 * [`doc` Jinja function](/reference/dbt-jinja-functions)
-* If you're new to dbt, we recommend that you check out our [quickstart guide](/docs/quickstarts/overview) to build your first dbt project, complete with documentation.
+* If you're new to dbt, we recommend that you check out our [quickstart guide](/quickstarts) to build your first dbt project, complete with documentation.
 
 ## Assumed knowledge
 
@@ -67,17 +69,17 @@ First, run `dbt docs generate` — this command tells dbt to compile relevant in
 Then, run `dbt docs serve` to use these `.json` files to populate a local website.
 
 ## FAQs
-<FAQ src="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
-<FAQ src="Docs/document-all-columns" />
-<FAQ src="Docs/long-descriptions" />
-<FAQ src="Docs/sharing-documentation" />
-<FAQ src="Docs/document-other-resources" />
-<FAQ src="Project/docs-for-multiple-projects" />
+<FAQ path="Project/example-projects" alt_header="Are there any example dbt documentation sites?"/>
+<FAQ path="Docs/document-all-columns" />
+<FAQ path="Docs/long-descriptions" />
+<FAQ path="Docs/sharing-documentation" />
+<FAQ path="Docs/document-other-resources" />
+<FAQ path="Project/docs-for-multiple-projects" />
 
 
 ## Using Docs Blocks
 ### Syntax
-To declare a docs block, use the jinja `docs` tag. Docs blocks must be uniquely named, and can contain arbitrary markdown. In practice, a docs block might look like this:
+To declare a docs block, use the jinja `docs` tag. Docs blocks can contain arbitrary markdown, but they must be uniquely named. Their names may contain uppercase and lowercase letters (A-Z, a-z), digits (0-9), and underscores (_), but can't start with a digit.
 
 <File name='events.md'>
 
@@ -100,11 +102,11 @@ The events in this table are recorded by [Snowplow](http://github.com/snowplow/s
 In the above example, a docs block named `table_events` is defined with some descriptive markdown contents. There is nothing significant about the name `table_events` — docs blocks can be named however you like, as long as the name only contains alphanumeric and underscore characters and does not start with a numeric character.
 
 ### Placement
-Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](model-paths), [seed-paths](seed-paths), [analysis-paths](analysis-paths), [macro-paths](macro-paths) and [snapshot-paths](snapshot-paths)) — you can adjust this behavior using the [docs-paths](docs-paths) config.
+Docs blocks should be placed in files with a `.md` file extension. By default, dbt will search in all resource paths for docs blocks (i.e. the combined list of [model-paths](/reference/project-configs/model-paths), [seed-paths](/reference/project-configs/seed-paths), [analysis-paths](/reference/project-configs/analysis-paths), [macro-paths](/reference/project-configs/macro-paths) and [snapshot-paths](/reference/project-configs/snapshot-paths)) — you can adjust this behavior using the [docs-paths](/reference/project-configs/docs-paths) config.
 
 
 ### Usage
-To use a docs block, reference it from your `schema.yml` file with the [doc()](doc) function in place of a markdown string. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown below:
+To use a docs block, reference it from your `schema.yml` file with the [doc()](/reference/dbt-jinja-functions/doc) function in place of a markdown string. Using the examples above, the `table_events` docs can be included in the `schema.yml` file as shown below:
 
 <File name='schema.yml'>
 
@@ -147,7 +149,6 @@ as well as the repo for this project \[here](https://github.com/dbt-labs/mrr-pla
 </File>
 
 ### Custom project-level overviews
-<Changelog>New in v0.18.0</Changelog>
 
 You can set different overviews for each dbt project/package included in your documentation site
 by creating a docs block named `__[project_name]__`. For example, in order to define
@@ -184,7 +185,7 @@ From a docs page, you can click the green button in the bottom-right corner of t
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ec77c45-Screen_Shot_2018-08-14_at_6.31.56_PM.png" title="Opening the DAG mini-map"/>
 
-In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full <Term id="data-lineage">lineage</Term> for our model. This lineage is filterable using the `--select` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
+In this example, the `fct_subscription_transactions` model only has one direct parent. By clicking the "Expand" button in the top-right corner of the window, we can pivot the graph horizontally and view the full <Term id="data-lineage">lineage</Term> for our model. This lineage is filterable using the `--select` and `--exclude` flags, which are consistent with the semantics of [model selection syntax](/reference/node-selection/syntax). Further, you can right-click to interact with the DAG, jump to documentation, or share links to your graph visualization with your coworkers.
 
 <Lightbox src="/img/docs/building-a-dbt-project/testing-and-documentation/ac97fba-Screen_Shot_2018-08-14_at_6.35.14_PM.png" title="The full lineage for a dbt model"/>
 

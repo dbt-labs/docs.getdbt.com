@@ -46,7 +46,7 @@ This video explores entering the IDE and compiling and running SQL for a dbt pro
 
 ### Running dbt projects
 
-This video explores running dbt projects in the dbt IDE. For a full list of the commands that can be run in the IDE, consult the [dbt Command reference](dbt-commands).
+This video explores running dbt projects in the dbt IDE. For a full list of the commands that can be run in the IDE, consult the [dbt Command reference](/reference/dbt-commands).
 
 <LoomVideo id="3f247c8ee0c7414b88eb64ac75b8918d" />
 

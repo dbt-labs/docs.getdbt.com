@@ -1,12 +1,12 @@
 ---
-title: "About source configurations"
+title: Source configurations
 description: "Learn how to use source configurations in dbt."
 id: source-configs
 ---
 
 ## Available configurations
 
-Sources only support one configuration, [`enabled`](enabled).
+Sources only support one configuration, [`enabled`](/reference/resource-configs/enabled).
 
 ### General configurations
 
@@ -25,8 +25,8 @@ Sources only support one configuration, [`enabled`](enabled).
 
 ```yaml
 sources:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
 
 ```
 
@@ -37,8 +37,6 @@ sources:
 
 <TabItem value="property-yaml">
 
-<VersionBlock firstVersion="1.1">
-
 <File name='models/properties.yml'>
 
 ```yaml
@@ -46,18 +44,16 @@ version: 2
 
 sources:
   - name: [<source-name>]
-    [config](resource-properties/config):
-      [enabled](enabled): true | false
+    [config](/reference/resource-properties/config):
+      [enabled](/reference/resource-configs/enabled): true | false
     tables:
       - name: [<source-table-name>]
-        [config](resource-properties/config):
-          [enabled](enabled): true | false
+        [config](/reference/resource-properties/config):
+          [enabled](/reference/resource-configs/enabled): true | false
 
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 
@@ -65,24 +61,13 @@ sources:
 
 ## Configuring sources
 
-<VersionBlock firstVersion="1.1">
-
 Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](/docs/build/packages). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
 
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-Sources can be configured from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](package-management). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
-
-Unlike other resource types, sources do not yet support a `config` property. It is not possible to (re)define source configs hierarchically across multiple yaml files.
-
-</VersionBlock>
 
 ### Examples
 #### Disable all sources imported from a package
 To apply a configuration to all sources included from a [package](/docs/build/packages),
-state your configuration under the [project name](project-configs/name.md) in the
+state your configuration under the [project name](/reference/project-configs/name.md) in the
 `sources:` config as a part of the resource path.
 
 
@@ -96,8 +81,6 @@ sources:
 
 </File>
 
-
-<VersionBlock firstVersion="1.1">
 
 #### Conditionally enable a single source
 
@@ -137,8 +120,6 @@ sources:
 ```
 
 </File>
-
-</VersionBlock>
 
 #### Disable a single source from a package
 

@@ -3,8 +3,8 @@ title: Snapshot configurations
 description: "Read this guide to learn about using snapshot configurations in dbt."
 ---
 ## Related documentation
-* [Snapshots](snapshots)
-* The `dbt snapshot` [command](snapshot)
+* [Snapshots](/docs/build/snapshots)
+* The `dbt snapshot` [command](/reference/commands/snapshot)
 
 <!--
 Parts of a snapshot:
@@ -30,13 +30,13 @@ Parts of a snapshot:
 
 ```yaml
 snapshots:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[target_schema](target_schema): <string>
-    [+](plus-prefix)[target_database](target_database): <string>
-    [+](plus-prefix)[unique_key](unique_key): <column_name_or_expression>
-    [+](plus-prefix)[strategy](strategy): timestamp | check
-    [+](plus-prefix)[updated_at](updated_at): <column_name>
-    [+](plus-prefix)[check_cols](check_cols): [<column_name>] | all
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[target_schema](/reference/resource-configs/target_schema): <string>
+    [+](/reference/resource-configs/plus-prefix)[target_database](/reference/resource-configs/target_database): <string>
+    [+](/reference/resource-configs/plus-prefix)[unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+    [+](/reference/resource-configs/plus-prefix)[strategy](/reference/resource-configs/strategy): timestamp | check
+    [+](/reference/resource-configs/plus-prefix)[updated_at](/reference/resource-configs/updated_at): <column_name>
+    [+](/reference/resource-configs/plus-prefix)[check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
 
@@ -46,26 +46,28 @@ snapshots:
 
 <TabItem value="property-yaml">
 
+**Note:** Required snapshot properties _will not_ work when defined in `config` YAML blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
+
+
+<!--  
 <File name='snapshots/properties.yml'>
-
-**Note:** Required snapshot properties may not work when defined in `config` yaml blocks. We recommend that you define these in `dbt_project.yml` or a `config()` block within the snapshot `.sql` file.
-
+  
 ```yaml
 version: 2
 
 snapshots:
   - name: [<snapshot-name>]
     config:
-      [target_schema](target_schema): <string>
-      [target_database](target_database): <string>
-      [unique_key](unique_key): <column_name_or_expression>
-      [strategy](strategy): timestamp | check
-      [updated_at](updated_at): <column_name>
-      [check_cols](check_cols): [<column_name>] | all
+      [target_schema](/reference/resource-configs/target_schema): <string>
+      [target_database](/reference/resource-configs/target_database): <string>
+      [unique_key](/reference/resource-configs/unique_key): <column_name_or_expression>
+      [strategy](/reference/resource-configs/strategy): timestamp | check
+      [updated_at](/reference/resource-configs/updated_at): <column_name>
+      [check_cols](/reference/resource-configs/check_cols): [<column_name>] | all
 
 ```
-
 </File>
+-->
 
 </TabItem>
 
@@ -75,12 +77,12 @@ snapshots:
 ```jinja
 
 {{ config(
-    [target_schema](target_schema)="<string>",
-    [target_database](target_database)="<string>",
-    [unique_key](unique_key)="<column_name_or_expression>",
-    [strategy](strategy)="timestamp" | "check",
-    [updated_at](updated_at)="<column_name>",
-    [check_cols](check_cols)=["<column_name>"] | "all"
+    [target_schema](/reference/resource-configs/target_schema)="<string>",
+    [target_database](/reference/resource-configs/target_database)="<string>",
+    [unique_key](/reference/resource-configs/unique_key)="<column_name_or_expression>",
+    [strategy](/reference/resource-configs/strategy)="timestamp" | "check",
+    [updated_at](/reference/resource-configs/updated_at)="<column_name>",
+    [check_cols](/reference/resource-configs/check_cols)=["<column_name>"] | "all"
 ) }}
 
 ```
@@ -108,14 +110,14 @@ snapshots:
 
 ```yaml
 snapshots:
-  [<resource-path>](resource-path):
-    [+](plus-prefix)[enabled](enabled): true | false
-    [+](plus-prefix)[tags](resource-configs/tags): <string> | [<string>]
-    [+](plus-prefix)[alias](resource-configs/alias): <string>
-    [+](plus-prefix)[pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-    [+](plus-prefix)[persist_docs](persist_docs): {<dict>}
-    [+](plus-prefix)[grants](grants): {<dict>}
+  [<resource-path>](/reference/resource-configs/resource-path):
+    [+](/reference/resource-configs/plus-prefix)[enabled](/reference/resource-configs/enabled): true | false
+    [+](/reference/resource-configs/plus-prefix)[tags](/reference/resource-configs/tags): <string> | [<string>]
+    [+](/reference/resource-configs/plus-prefix)[alias](/reference/resource-configs/alias): <string>
+    [+](/reference/resource-configs/plus-prefix)[pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+    [+](/reference/resource-configs/plus-prefix)[persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+    [+](/reference/resource-configs/plus-prefix)[grants](/reference/resource-configs/grants): {<dict>}
 ```
 </File>
 
@@ -131,13 +133,13 @@ version: 2
 snapshots:
   - name: [<snapshot-name>]
     config:
-      [enabled](enabled): true | false
-      [tags](resource-configs/tags): <string> | [<string>]
-      [alias](resource-configs/alias): <string>
-      [pre-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [post-hook](pre-hook-post-hook): <sql-statement> | [<sql-statement>]
-      [persist_docs](persist_docs): {<dict>}
-      [grants](grants): {<dictionary>}
+      [enabled](/reference/resource-configs/enabled): true | false
+      [tags](/reference/resource-configs/tags): <string> | [<string>]
+      [alias](/reference/resource-configs/alias): <string>
+      [pre-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [post-hook](/reference/resource-configs/pre-hook-post-hook): <sql-statement> | [<sql-statement>]
+      [persist_docs](/reference/resource-configs/persist_docs): {<dict>}
+      [grants](/reference/resource-configs/grants): {<dictionary>}
 ```
 
 </File>
@@ -150,13 +152,13 @@ snapshots:
 ```jinja
 
 {{ config(
-    [enabled](enabled)=true | false,
-    [tags](resource-configs/tags)="<string>" | ["<string>"],
-    [alias](resource-configs/alias)="<string>", 
-    [pre_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
-    [post_hook](pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
-    [persist_docs](persist_docs)={<dict>}
-    [grants](grants)={<dict>}
+    [enabled](/reference/resource-configs/enabled)=true | false,
+    [tags](/reference/resource-configs/tags)="<string>" | ["<string>"],
+    [alias](/reference/resource-configs/alias)="<string>", 
+    [pre_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"],
+    [post_hook](/reference/resource-configs/pre-hook-post-hook)="<sql-statement>" | ["<sql-statement>"]
+    [persist_docs](/reference/resource-configs/persist_docs)={<dict>}
+    [grants](/reference/resource-configs/grants)={<dict>}
 ) }}
 
 ```
@@ -170,7 +172,7 @@ snapshots:
 Snapshots can be configured in one of three ways:
 
 1. Using a `config` block within a snapshot
-2. Using a `config` [resource property](model-properties) in a `.yml` file
+2. Using a `config` [resource property](/reference/model-properties) in a `.yml` file
 3. From the `dbt_project.yml` file, under the `snapshots:` key. To apply a configuration to a snapshot, or directory of snapshots, define the resource path as nested dictionary keys.
 
 Snapshot configurations are applied hierarchically in the order above.

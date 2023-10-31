@@ -12,7 +12,7 @@ You might also be able to use Docker to install and develop locally if you don't
 ### Prerequisites
 * You've installed Docker. For more information, see the [Docker](https://docs.docker.com/) site.
 * You understand which database adapter(s) you need. For more information, see [About dbt adapters](/docs/core/installation#about-dbt-adapters).
-* You understand how dbt Core is versioned. For more information, see [About dbt Core versions](core-versions).
+* You understand how dbt Core is versioned. For more information, see [About dbt Core versions](/docs/dbt-versions/core).
 * You have a general understanding of the dbt, dbt workflow, developing locally in the command line interface (CLI). For more information, see [About dbt](/docs/introduction#how-do-i-use-dbt).
 
 ### Install a dbt Docker image from Github Packages
@@ -51,4 +51,4 @@ In particular, the Dockerfile supports building images:
 - Images that install one or more third-party adapters
 - Images against another system architecture
 
-Please note that, if you go the route of building your own Docker images, we are unable to offer dedicated support for custom use cases. If you run into problems, you are welcome to [ask the community for help](getting-help) or [open an issue](oss-expectations#issues) in the `dbt-core` repository. If many users are requesting the same enhancement, we will tag the issue `help_wanted` and invite community contribution.
+Please note that, if you go the route of building your own Docker images, we are unable to offer dedicated support for custom use cases. If you run into problems, you are welcome to [ask the community for help](/community/resources/getting-help) or [open an issue](/community/resources/oss-expectations#issues) in the `dbt-core` repository. If many users are requesting the same enhancement, we will tag the issue `help_wanted` and invite community contribution.

@@ -23,7 +23,7 @@ In this step, we’ll need to create a development branch and set up project lev
     profile: 'default'
 
     # These configurations specify where dbt should look for different types of files.
-    # The `source-paths` config, for example, states that models in this project can be
+    # The `model-paths` config, for example, states that models in this project can be
     # found in the "models/" directory. You probably won't need to change these!
     model-paths: ["models"]
     analysis-paths: ["analyses"]

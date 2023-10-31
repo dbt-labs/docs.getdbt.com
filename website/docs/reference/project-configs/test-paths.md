@@ -3,12 +3,6 @@ datatype: [directorypath]
 default_value: [test]
 ---
 
-<Changelog>
-
-* `v1.0.0`: Generic tests can be defined in the `tests/generic` subfolder, in addition to the `macros/` directory
-
-</Changelog>
-
 <File name='dbt_project.yml'>
 
 ```yml

@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-mysql-family'
   slack_channel_link: 'https://getdbt.slack.com/archives/C03BK0SHC64'
   platform_name: 'MySQL'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Community plugin

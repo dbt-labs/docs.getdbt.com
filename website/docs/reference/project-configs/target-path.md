@@ -22,7 +22,7 @@ By default, dbt will write compiled files to the `target` directory, i.e. `targe
 
 ## Configuration
 
-In the manner of a ["global" config](global-configs), the target path can be set in three places:
+In the manner of a ["global" config](/reference/global-configs/about-global-configs), the target path can be set in three places:
 1. `--target-path` CLI flag
 2. `DBT_TARGET_PATH` environment variable
 3. `target-path` in `dbt_project.yml`
@@ -48,12 +48,22 @@ The precedence order is: CLI flag > env var > `dbt_project.yml`
 </VersionBlock>
 
 ## Examples
-### Use a subdirectory named `compiled` for compiled files
+### Specify subdirectory using the project config file
 
 <File name='dbt_project.yml'>
 
 ```yml
-target-path: "compiled"
+target-path: "compiled_files"
 ```
 
 </File>
+
+<VersionBlock firstVersion="1.5">
+
+### Specify subdirectory from the command line 
+
+```bash
+dbt run --target-path compiled_files
+```
+
+</VersionBlock>

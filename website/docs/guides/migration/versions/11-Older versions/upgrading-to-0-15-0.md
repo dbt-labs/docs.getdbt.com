@@ -16,16 +16,16 @@ Compilation errors in .yml files are now treated as errors instead of warnings.
 
 The `table_name` field has been removed from Relations. Macros that
 expect this field will now return errors. See the latest
-[class reference](dbt-classes#relation) for details.
+[class reference](/reference/dbt-classes#relation) for details.
 
 ### Custom materializations
 
-All <Term id="materialization">materializations</Term> must now [manage dbt's Relation cache](creating-new-materializations#update-the-relation-cache).
+All <Term id="materialization">materializations</Term> must now [manage dbt's Relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache).
 
 ### dbt Server
 
 The existing `compile` and `execute` rpc tasks have been renamed to `compile_sql` and `execute_sql`.
-For more details, see the latest [rpc docs](rpc).
+For more details, see the latest [rpc docs](/reference/commands/rpc).
 
 ## Python requirements
 

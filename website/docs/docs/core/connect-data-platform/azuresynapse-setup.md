@@ -12,8 +12,17 @@ meta:
   slack_channel_name: '#db-synapse'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01DRQ178LQ'
   platform_name: 'Synapse'
-  config_page: 'azuresynapse-configs'
+  config_page: '/reference/resource-configs/azuresynapse-configs'
 ---
+
+:::info
+
+The following is a guide to using Azure Synapse Analytics Dedicated SQL Pools, formerly SQL DW. For more info, refer to [What is dedicated SQL pool (formerly SQL DW) in Azure Synapse Analytics?](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is) for more info.
+
+Refer to [Microsoft Fabric Synapse Data Warehouse](/docs/core/connect-data-platform/fabric-setup) to set it up with dbt.
+
+
+:::
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 

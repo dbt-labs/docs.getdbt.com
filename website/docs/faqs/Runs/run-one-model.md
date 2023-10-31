@@ -12,4 +12,4 @@ To run one model, use the `--select` flag (or `-s` flag), followed by the name o
 $ dbt run --select customers
 ```
 
-Check out the [model selection syntax documentation](node-selection/syntax) for more operators and examples.
+Check out the [model selection syntax documentation](/reference/node-selection/syntax) for more operators and examples.

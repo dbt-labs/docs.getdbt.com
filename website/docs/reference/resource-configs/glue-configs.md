@@ -11,7 +11,7 @@ To-do:
 
 ## Configuring tables
 
-When materializing a model as `table`, you may include several optional configs that are specific to the dbt-glue plugin, in addition to the [Apache Spark model configuration](spark-configs#configuring-tables).
+When materializing a model as `table`, you may include several optional configs that are specific to the dbt-glue plugin, in addition to the [Apache Spark model configuration](/reference/resource-configs/spark-configs#configuring-tables).
 
 | Option  | Description                                        | Required?               | Example                  |
 |---------|----------------------------------------------------|-------------------------|--------------------------|
@@ -234,8 +234,8 @@ group by 1
 
 ## Persisting model descriptions
 
-Relation-level docs persistence is inherited from dbt-spark, for more details, check [Apache Spark model configuration](spark-configs#persisting-model-descriptions).
+Relation-level docs persistence is inherited from dbt-spark, for more details, check [Apache Spark model configuration](/reference/resource-configs/spark-configs#persisting-model-descriptions).
 
 ## Always `schema`, never `database`
 
-This section is also inherited from dbt-spark, for more details, check [Apache Spark model configuration](spark-configs#always-schema-never-database).
+This section is also inherited from dbt-spark, for more details, check [Apache Spark model configuration](/reference/resource-configs/spark-configs#always-schema-never-database).

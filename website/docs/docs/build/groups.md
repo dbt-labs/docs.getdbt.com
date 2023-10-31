@@ -1,6 +1,6 @@
 ---
 title: "Add groups to your DAG"
-sidebar_title: "Groups"
+sidebar_label: "Groups"
 id: "groups"
 description: "When you define groups in dbt projects, you turn implicit relationships into an explicit grouping."
 keywords:
@@ -14,12 +14,12 @@ This functionality is new in v1.5.
 ## Related docs
 
 * [Model Access](/docs/collaborate/govern/model-access#groups)
-* [Group configuration](/docs/reference/resource-configs/group)
-* [Group selection](/docs/reference/node-selection/methods#the-group-method)
+* [Group configuration](/reference/resource-configs/group)
+* [Group selection](/reference/node-selection/methods#the-group-method)
 
 ## About groups 
 
-A group is a collection of nodes within a dbt DAG. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](access) models.
+A group is a collection of nodes within a dbt DAG. Groups are named, and every group has an `owner`. They enable intentional collaboration within and across teams by restricting [access to private](/reference/resource-configs/access) models.
 
 Group members may include models, tests, seeds, snapshots, analyses, and metrics. (Not included: sources and exposures.) Each node may belong to only one group.
 
@@ -94,7 +94,7 @@ select ...
 
 ### Referencing a model in a group
 
-By default, all models within a group have the `protected` [access modifier](access). This means they can be referenced by downstream resources in _any_ group in the same project, using the [`ref`](ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
+By default, all models within a group have the `protected` [access modifier](/reference/resource-configs/access). This means they can be referenced by downstream resources in _any_ group in the same project, using the [`ref`](/reference/dbt-jinja-functions/ref) function. If a grouped model's `access` property is set to `private`, only resources within its group can reference it. 
 
 <File name='models/schema.yml'>
 

@@ -158,13 +158,13 @@ Databricks is committed to continuously improving its performance. For example, 
 3. Improve key lookup by defining only *one* materialized key
 4. Only update important columns
 
-### dbt Cloud Metadata API
+### dbt Cloud Discovery API
 
-Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, dbt Cloud generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Metadata API](/docs/dbt-cloud-apis/metadata-api) is a GraphQL service that  supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. dbt Cloud users can also use the data from the [Model Timing tab](/docs/deploy/dbt-cloud-job#model-timing) to visually identify models that take the most time and may require refactoring.
+Now you might be wondering, how do you identify opportunities for performance improvement inside of dbt? Well, with each job run, dbt Cloud generates metadata on the timing, configuration, and freshness of models in your dbt project. The [dbt Discovery API](/docs/dbt-cloud-apis/discovery-api) is a GraphQL service that supports queries on this metadata, using  the [graphical explorer](https://metadata.cloud.getdbt.com/graphiql) or the endpoint itself. Teams can pipe this data into their data warehouse and analyze it like any other data source in a business intelligence platform. dbt Cloud users can also use the data from the [Model Timing tab](/docs/deploy/run-visibility#model-timing) to visually identify models that take the most time and may require refactoring.
 
 ### dbt Cloud Admin API
 
-With the [dbt Cloud Admin API](/docs/dbt-cloud-apis/metadata-api), you can  pull the dbt artifacts from your dbt Cloud run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
+With the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api), you can  pull the dbt artifacts from your dbt Cloud run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
 
 ## Conclusion
 

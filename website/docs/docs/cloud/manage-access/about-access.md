@@ -2,6 +2,8 @@
 title: "About user access in dbt Cloud"
 description: "Learn how dbt Cloud administrators can use dbt Cloud's permissioning model to control user-level access in a dbt Cloud account."
 id: "about-user-access"
+pagination_next: "docs/cloud/manage-access/seats-and-users"
+pagination_prev: null
 ---
 
 :::info "User access" is not "Model access"
@@ -30,14 +32,13 @@ invited to a given account. This license type may change over time, but a
 user can only have one type of license at any given time.
 
 A user's license type controls the features in dbt Cloud that the user is able
-to access. dbt Cloud's two license types are:
- - **Read Only**
- - **Developer**
+to access. dbt Cloud's three license types are:
 
-For more information on these license types, see [Seats & Users](cloud-seats-and-users).
-At a high level, Developers may be granted _any_ permissions, whereas Read Only
-users will have read-only permissions applied to all dbt Cloud resources
-regardless of the role-based permissions that the user is assigned.
+ - **Developer** &mdash; User may be granted _any_ permissions.
+ - **Read-Only** &mdash; User has read-only permissions applied to all dbt Cloud resources regardless of the role-based permissions that the user is assigned.
+ - **IT** &mdash; User has [Security Admin](/docs/cloud/manage-access/enterprise-permissions#security-admin) and [Billing Admin](/docs/cloud/manage-access/enterprise-permissions#billing-admin) permissions applied regardless of the role-based permissions that the user is assigned. 
+
+For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
 
 ## Role-based access control
 
@@ -77,7 +78,7 @@ page in your Account Settings.
 />
 
 
-### SSO Mappings
+### SSO mappings
 
 SSO Mappings connect Identity Provider (IdP) group membership to dbt Cloud group
 membership. When a user logs into dbt Cloud via a supported identity provider,
@@ -95,7 +96,7 @@ groups.
 :::
 
 
-### Permission Sets
+### Permission sets
 
 Permission sets are predefined collections of granular permissions. Permission
 sets combine low-level permission grants into high-level roles that can be
@@ -122,12 +123,6 @@ set on the _Internal Analytics_ project.
 
 ### Manual assignment
 
-<Changelog>
-
-- New in version 1.1.23 (March, 2021)
-
-</Changelog>
-
 dbt Cloud administrators can manually assign users to groups independently of
 IdP attributes. If a dbt Cloud group is configured _without_ any
 SSO Mappings, then the group will be _unmanaged_ and dbt Cloud will not adjust
@@ -148,13 +143,13 @@ sign-in time based on the user's IdP-provided group membership information.
 - **Can I set up SSO without RBAC?**  <br />
 Yes, see the documentation on [Manual Assignment](#manual-assignment) above for more information on using SSO without RBAC.
 - **Can I configure a user's License Type based on IdP Attributes?** <br />
-  Yes, see the docs on [managing license types](/cloud-seats-and-users#managing-license-types) for more information.
+  Yes, see the docs on [managing license types](/docs/cloud/manage-access/seats-and-users#managing-license-types) for more information.
 
 - **Why can't I edit a user's group membership?**  <br />
 Make sure you're not trying to edit your own user as this isn't allowed for security reasons. To edit the group membership of your own user, you'll need a different user to make those changes.
 
 - **How do I add or remove users**?  <br />
-Each dbt Cloud plan comes with a base number of Developer and Read Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
+Each dbt Cloud plan comes with a base number of Developer and Read-Only licenses. You can add or remove licenses by modifying the number of users in your account settings. 
   - If you're on an Enterprise plans and have the correct [permissions](/docs/cloud/manage-access/enterprise-permissions), you can add or remove developers by adjusting your developer user seat count in **Account settings** -> **Users**.
   - If you're on a Team plan and have the correct [permissions](/docs/cloud/manage-access/self-service-permissions), you can add or remove developers by making two changes: adjust your developer user seat count AND your developer billing seat count in **Account settings** -> **Users** and then in **Account settings** -> **Billing**.
 

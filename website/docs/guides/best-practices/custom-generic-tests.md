@@ -6,14 +6,7 @@ displayText: Writing custom generic tests
 hoverSnippet: Learn how to define your own custom generic tests.
 ---
 
-<Changelog>
-
-* `v0.20.0`: Generic tests (f.k.a. schema tests) are defined using `test` blocks instead of macros prefixed `test_`. They return a number of failing rows, rather than a single numeric value.
-* `v1.0.0`: Generic tests can be defined in the `tests/generic` subfolder, in addition to the `macros/` directory
-
-</Changelog>
-
-dbt ships with [Not Null](resource-properties/tests#not-null), [Unique](resource-properties/tests#unique), [Relationships](resource-properties/tests#relationships), and [Accepted Values](resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests in the [global project](https://github.com/dbt-labs/dbt-core/tree/main/core/dbt/include/global_project/macros/generic_test_sql).
+dbt ships with [Not Null](/reference/resource-properties/tests#not-null), [Unique](/reference/resource-properties/tests#unique), [Relationships](/reference/resource-properties/tests#relationships), and [Accepted Values](/reference/resource-properties/tests#accepted-values) generic tests. (These used to be called "schema tests," and you'll still see that name in some places.) Under the hood, these generic tests are defined as `test` blocks (like macros) in a globally accessible dbt project. You can find the source code for these tests in the [global project](https://github.com/dbt-labs/dbt-core/tree/main/core/dbt/include/global_project/macros/generic_test_sql).
 
 :::info
 There are tons of generic tests defined in open source packages, such as [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) and [dbt-expectations](https://hub.getdbt.com/calogica/dbt_expectations/latest/) — the test you're looking for might already be here!
@@ -22,7 +15,7 @@ There are tons of generic tests defined in open source packages, such as [dbt-ut
 ### Generic tests with standard arguments
 
 Generic tests are defined in SQL files. Those files can live in two places:
-- `tests/generic/`: that is, a special subfolder named `generic` within your [test paths](test-paths) (`tests/` by default)
+- `tests/generic/`: that is, a special subfolder named `generic` within your [test paths](/reference/project-configs/test-paths) (`tests/` by default)
 - `macros/`: Why? Generic tests work a lot like macros, and historically, this was the only place they could be defined. If your generic test depends on complex macro logic, you may find it more convenient to define the macros and the generic test in the same file.
 
 To define your own generic tests, simply create a `test` block called `<test_name>`. All generic tests should accept one or both of the standard arguments:

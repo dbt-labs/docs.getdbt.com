@@ -28,6 +28,6 @@ You can test your models, generate documentation, create snapshots, and more!
 
 #### You reduce your vendor lock in
 
-SQL dialects tend to diverge the most in DML and DDL (rather than in `select` statements) — check out the example [here](sql-dialect). By writing less SQL, it can make a migration to a new database technology easier.
+SQL dialects tend to diverge the most in DML and DDL (rather than in `select` statements) — check out the example [here](/faqs/models/sql-dialect). By writing less SQL, it can make a migration to a new database technology easier.
 
-If you do need to write custom DML, there are ways to do this in dbt using [custom materializations](creating-new-materializations).
+If you do need to write custom DML, there are ways to do this in dbt using [custom materializations](/guides/advanced/creating-new-materializations).

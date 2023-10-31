@@ -24,18 +24,18 @@ The two concepts will be closely related, as we develop multi-project collaborat
 
 
 ## Related documentation
-* [`groups`](build/groups)
-* [`access`](resource-properties/access)
+* [`groups`](/docs/build/groups)
+* [`access`](/reference/resource-configs/access)
 
 ## Groups
 
-Models can be grouped under a common designation with a shared owner. For example, you could group together all models owned by a particular team, related to modeling a specific data source (`github`), or 
+Models can be grouped under a common designation with a shared owner. For example, you could group together all models owned by a particular team, or related to modeling a specific data source (`github`).
 
 Why define model `groups`? There are two reasons:
 - It turns implicit relationships into an explicit grouping, with a defined owner. By thinking about the interface boundaries _between_ groups, you can have a cleaner (less entangled) DAG. In the future, those interface boundaries could be appropriate as the interfaces between separate projects.
 - It enables you to designate certain models as having "private" access—for use exclusively within that group. Other models will be restricted from referencing (taking a dependency on) those models. In the future, they won't be visible to other teams taking a dependency on your project—only "public" models will be.
 
-If you follow our [best practices for structuring a dbt project](how-we-structure/1-guide-overview), you're probably already using subdirectories to organize your dbt project. It's easy to apply a `group` label to an entire subdirectory at once:
+If you follow our [best practices for structuring a dbt project](/guides/best-practices/how-we-structure/1-guide-overview), you're probably already using subdirectories to organize your dbt project. It's easy to apply a `group` label to an entire subdirectory at once:
 
 <File name="dbt_project.yml">
 
@@ -51,7 +51,7 @@ models:
 
 </File>
 
-Each model can only belong to one `group`, and groups cannot be nested. If you set a different `group` in that model's yaml or in-file config, it will override the `group` applied at the project level.
+Each model can only belong to one `group`, and groups cannot be nested. If you set a different `group` in that model's YAML or in-file config, it will override the `group` applied at the project level.
 
 ## Access modifiers
 
@@ -108,6 +108,47 @@ models:
 
 </File>
 
+<VersionBlock firstVersion="1.6">
+
+Models with `materialized` set to `ephemeral` cannot have the access property set to public.
+
+For example, if you have model confg set as:
+
+<File name="models/my_model.sql">
+
+```sql
+
+{{ config(materialized='ephemeral') }}
+
+```
+
+</File>
+
+And the model contract is defined:
+
+<File name="models/my_project.yml">
+
+```yaml
+
+models:
+  - name: my_model
+    access: public
+
+```
+
+</File>
+
+It will lead to the following error:
+
+```
+❯ dbt parse
+02:19:30  Encountered an error:
+Parsing Error
+  Node model.jaffle_shop.my_model with 'ephemeral' materialization has an invalid value (public) for the access field
+```
+
+</VersionBlock>
+
 ## FAQs
 
 ### How does model access relate to database permissions?
@@ -116,22 +157,50 @@ These are different!
 
 Specifying `access: public` on a model does not trigger dbt to automagically grant `select` on that model to every user or role in your data platform when you materialize it. You have complete control over managing database permissions on every model/schema, as makes sense to you & your organization.
 
-Of course, dbt can facilitate this by means of [the `grants` config](resource-configs/grants), and other flexible mechanisms. For example:
+Of course, dbt can facilitate this by means of [the `grants` config](/reference/resource-configs/grants), and other flexible mechanisms. For example:
 - Grant access to downstream queriers on public models
 - Restrict access to private models, by revoking default/future grants, or by landing them in a different schema
 
 As we continue to develop multi-project collaboration, `access: public` will mean that other teams are allowed to start taking a dependency on that model. This assumes that they've requested, and you've granted them access, to select from the underlying dataset.
 
-### What about referencing models from a package?
+### How do I ref a model from another project?
 
-For historical reasons, it is possible to `ref` a protected model from another project, _if that protected model is installed as a package_. This is useful for packages containing models for a common data source; you can install the package as source code, and run the models as if they were your own.
+<VersionBlock lastVersion="1.5">
 
-dbt Core v1.6 will introduce a new kind of `project` dependency, distinct from a `package` dependency, defined in `dependencies.yml`:
+In dbt Core v1.5 (and earlier versions), the only way to reference a model from another project is by installing that project as a package, including its full source code. It is not possible to restrict references across projects based on model `access`.
+
+For more control over per-model access across projects, select v1.6 (or newer) from the version dropdown.
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+You can `ref` a model from another project in two ways:
+1. [Project dependency](/docs/collaborate/govern/project-dependencies): In dbt Cloud Enterprise, you can use project dependencies to `ref`  a model. dbt Cloud uses a behind-the-scenes metadata service to resolve the reference, enabling efficient collaboration across teams and at scale.
+2. ["Package" dependency](/docs/build/packages): Another way to `ref` a model from another project is to treat the other project as a package dependency. This requires installing the other project as a package, including its full source code, as well as its upstream dependencies.
+
+### How do I restrict access to models defined in a package?
+
+Source code installed from a package becomes part of your runtime environment. You can call macros and run models as if they were macros and models that you had defined in your own project.
+
+For this reason, model access restrictions are "off" by default for models defined in packages. You can reference models from that package regardless of their `access` modifier.
+
+The project being installed as a package can optionally restrict external `ref` access to just its public models. The package maintainer does this by setting a `restrict-access` config to `True` in `dbt_project.yml`.
+
+By default, the value of this config is `False`. This means that:
+- Models in the package with `access: protected` may be referenced by models in the root project, as if they were defined in the same project
+- Models in the package with `access: private` may be referenced by models in the root project, so long as they also have the same `group` config
+
+When `restrict-access: True`:
+- Any `ref` from outside the package to a protected or private model in that package will fail.
+- Only models with `access: public` can be referenced outside the package.
+
+<File name="dbt_project.yml">
+
 ```yml
-projects:
-  - project: jaffle_finance
+restrict-access: True  # default is False
 ```
 
-Unlike installing a package, the models in the `jaffle_finance` project will not be pulled down as source code, or selected to run during `dbt run`. Instead, `dbt-core` will expect stateful input that enables it to resolve references to those public models.
+</File>
 
-Models referenced from a `project`-type dependency must use [two-argument `ref`](#two-argument-variant), including the project name. Only public models can be accessed in this way. That holds true even if the `jaffle_finance` project is _also_ installed as a package (pulled down as source code), such as in a coordinated deployment. If `jaffle_finance` is listed under the `projects` in `dependencies.yml`, dbt will raise an error if a protected model is referenced from outside its project.
+</VersionBlock>

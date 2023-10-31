@@ -40,27 +40,27 @@ Make sure the location of the instance is the same Virtual Private Cloud (VPC) a
 </details>
 
 
-#### Configuring the Bastion Server in AWS:
+### Configuring the Bastion Server in AWS
 
 To configure the SSH tunnel in dbt Cloud, you'll need to provide the hostname/IP of your bastion server, username, and port, of your choosing, that dbt Cloud will connect to. Review the following steps:
 
 - Verify the bastion server has its network security rules set up to accept connections from the [dbt Cloud IP addresses](/docs/cloud/about-cloud/regions-ip-addresses) on whatever port you configured.
 - Set up the user account by using the bastion servers instance's CLI, The following example uses the username `dbtcloud:`
     
-    `sudo groupadd dbtcloud`<br/>
-    
-    `sudo useradd -m -g dbtcloud dbtcloud`<br/>
-    
-    `sudo su - dbtcloud`<br/>
-    
-    `mkdir ~/.ssh`<br/>
-    
-    `chmod 700 ~/.ssh`<br/>
-    
-    `touch ~/.ssh/authorized_keys`<br/>
-    
-    `chmod 600 ~/.ssh/authorized_keys`<br/>
-    
+```shell
+sudo groupadd dbtcloud
+sudo useradd -m -g dbtcloud dbtcloud
+sudo su - dbtcloud
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```  
+
 - Copy and paste the dbt Cloud generated public key, into the authorized_keys file.
 
 The Bastion server should now be ready for dbt Cloud to use as a tunnel into the Redshift environment.
+
+## Configuration
+
+To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Redshift-specific configuration](/reference/resource-configs/redshift-configs).

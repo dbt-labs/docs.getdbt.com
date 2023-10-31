@@ -3,7 +3,7 @@ title: "AlloyDB setup"
 meta:
   maintained_by: Community?
   authors: 'dbt-labs'
-  github_repo: 'dbt-labs/dbt-postgres'
+  github_repo: 'dbt-labs/dbt-core'
   pypi_package: 'dbt-postgres'
   min_core_version: 'v1.0.0'
   cloud_support: Not Supported
@@ -11,7 +11,7 @@ meta:
   slack_channel_name: '#db-postgres'
   slack_channel_link: 'https://getdbt.slack.com/archives/C0172G2E273'
   platform_name: 'AlloyDB'
-  config_page: 'postgres-configs'
+  config_page: '/reference/resource-configs/postgres-configs'
 ---
 
 ## Overview of AlloyDB support

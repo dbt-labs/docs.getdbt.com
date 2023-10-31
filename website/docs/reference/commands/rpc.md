@@ -5,22 +5,18 @@ id: "rpc"
 description: "Remote Procedure Call (rpc) dbt server compiles and runs queries, and provides methods that enable you to list and terminate running processes. "
 ---
 
-<Changelog>
+:::caution The dbt-rpc plugin is deprecated
 
-  - **v0.14**: The `dbt rpc` command was introduced to dbt Core
-  - **v1.0**: We now distribute and package the Remote Procedure Call (rpc) server functionality separately from `dbt-core`. You can find the code in a dedicated [`dbt-rpc` repository](https://github.com/dbt-labs/dbt-rpc).
 
-</Changelog>
+dbt Labs actively maintained `dbt-rpc` for compatibility with dbt-core versions up to v1.5. Starting with dbt-core v1.6 (released in July 2023), `dbt-rpc` is no longer supported for ongoing compatibility. 
+
+In the meantime, dbt Labs will be performing critical maintenance only for `dbt-rpc`, until the last compatible version of dbt-core has reached the [end of official support](/docs/dbt-versions/core#latest-releases). At that point, dbt Labs will archive this repository to be read-only.
+
+:::
 
 ### Overview
 
 You can use the `dbt-rpc` plugin to run a Remote Procedure Call (rpc) dbt server. This server compiles and runs queries in the context of a dbt project. Additionally, the RPC server provides methods that enable you to list and terminate running processes. We recommend running an rpc server from a directory containing a dbt project. The server will compile the project into memory, then accept requests to operate against that project's dbt context.
-
-:::caution Deprecation
-**The dbt-rpc plugin will be fully deprecated by the second half of 2023.**
-
-dbt Labs is actively maintaining `dbt-rpc` up to dbt v1.4. Starting in v1.5, we intend to break `dbt-rpc` compatibility in favor of [the new dbt Server](https://github.com/dbt-labs/dbt-server). dbt Labs will perform critical maintenance only on `dbt-rpc`, until the last compatible version of dbt has reached the end of official support (thus 12 months after release of v1.4; [see Core version policies](/docs/dbt-versions/core)).
-:::
 
 :::caution Running on Windows
 We do not recommend running the rpc server on Windows because of reliability issues. A Docker container may provide a useful workaround, if required.
@@ -241,11 +237,11 @@ All RPC requests accept the following parameters in addition to the parameters l
 Several of the following request types accept these additional parameters:
 - `threads`: The number of [threads](/docs/core/connect-data-platform/connection-profiles#understanding-threads) to use when compiling (optional)
 - `select`: The space-delimited set of resources to execute (optional). (`models` is also supported on some request types for backwards compatibility.)
-- `selector`: The name of a predefined [YAML selector](node-selection/yaml-selectors) that defines the set of resources to execute (optional)
+- `selector`: The name of a predefined [YAML selector](/reference/node-selection/yaml-selectors) that defines the set of resources to execute (optional)
 - `exclude`: The space-delimited set of resources to exclude from compiling, running, testing, seeding, or snapshotting (optional)
-- `state`: The filepath of artifacts to use when establishing [state](/docs/deploy/about-state) (optional)
+- `state`: The filepath of artifacts to use when establishing [state](/reference/node-selection/syntax#about-node-selection) (optional)
 
-### Compile a project ([docs](compile))
+### Compile a project ([docs](/reference/commands/compile))
 
 ```json
 {
@@ -262,7 +258,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run models ([docs](run))
+### Run models ([docs](/reference/commands/run))
 
 **Additional parameters:**
 - `defer`: Whether to defer references to upstream, unselected resources (optional, requires `state`)
@@ -283,7 +279,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run tests ([docs](commands/test))
+### Run tests ([docs](/reference/commands/test))
 
 **Additional parameters:**
  - `data`: If True, run data tests (optional, default=true)
@@ -306,7 +302,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Run seeds ([docs](seed))
+### Run seeds ([docs](/reference/commands/seed))
 
 **Parameters:**
  - `show`: If True, show a sample of the seeded data in the response (optional, default=false)
@@ -344,7 +340,7 @@ Several of the following request types accept these additional parameters:
 }
 ```
 
-### Build ([docs](build))
+### Build ([docs](/reference/commands/build))
 
 ```json
 {

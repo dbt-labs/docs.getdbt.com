@@ -4,7 +4,7 @@ sidebar_label: "snapshot"
 id: "snapshot"
 ---
 
-The `dbt snapshot` command executes the [Snapshots](snapshots) defined in your project.
+The `dbt snapshot` command executes the [Snapshots](/docs/build/snapshots) defined in your project.
 
 dbt will looks for Snapshots in the `snapshot-paths` paths defined in your `dbt_project.yml` file. By default, the `snapshot-paths` path is `snapshots/`.
 

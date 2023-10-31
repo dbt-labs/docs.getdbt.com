@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-materialize'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Materialize'
-  config_page: 'materialize-configs'
+  config_page: '/reference/resource-configs/materialize-configs'
 ---
 
 :::info Vendor-supported plugin
@@ -112,11 +112,11 @@ Materialized views (`materializedview`), views (`view`) and sources (`source`) m
 
 ### Seeds
 
-Running [`dbt seed`](commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created.
+Running [`dbt seed`](/reference/commands/seed) will create a static materialized <Term id="view" /> from a CSV file. You will not be able to add to or update this view after it has been created.
 
 ### Tests
 
-Running [`dbt test`](commands/test) with the optional `--store-failures` flag or [`store_failures` config](resource-configs/store_failures) will create a materialized view for each configured test that can keep track of failures over time.
+Running [`dbt test`](/reference/commands/test) with the optional `--store-failures` flag or [`store_failures` config](/reference/resource-configs/store_failures) will create a materialized view for each configured test that can keep track of failures over time.
 
 ## Resources
 

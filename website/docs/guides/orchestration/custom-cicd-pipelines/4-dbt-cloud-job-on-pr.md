@@ -5,16 +5,16 @@ id: 4-dbt-cloud-job-on-pr
 
 :::info Run on PR
 
-If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](https://docs.getdbt.com/docs/deploy/cloud-ci-job).
+If your git provider has a native integration with dbt Cloud, you can take advantage of the setup instructions [here](/docs/deploy/ci-jobs).
 This section is only for those projects that connect to their git repository using an SSH key.
 
 :::
 
-If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of Slim CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
+If your git provider is not one with a native integration with dbt Cloud, but you still want to take advantage of CI builds, you've come to the right spot! With just a bit of work it's possible to setup a job that will run a dbt Cloud job when a pull request (PR) is created.
 
-The setup for this pipeline will use the same steps as the prior page. Before moving on, **follow steps 1-3 from the [prior page](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge)**
+The setup for this pipeline will use the same steps as the prior page. Before moving on, **follow steps 1-5 from the [prior page](https://docs.getdbt.com/guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge)**
 
-### 4. Create a pipeline job that runs when PRs are created
+### 6. Create a pipeline job that runs when PRs are created
 <Tabs
   defaultValue="bitbucket"
   values={[
@@ -23,7 +23,7 @@ The setup for this pipeline will use the same steps as the prior page. Before mo
 }>
 <TabItem value="bitbucket">
 
-For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The yaml file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
+For this job, we'll set it up using the `bitbucket-pipelines.yml` file as in the prior step. The YAML file will look pretty similar to our earlier job, but we’ll pass in the required variables to the Python script using `export` statements. Update this section to match your setup based on the comments in the file.
 
 **What is this pipeline going to do?**  
 The setup below will trigger a dbt Cloud job to run every time a PR is opened in this repository. It will also run a fresh version of the pipeline for every commit that is made on the PR until it is merged. 
@@ -62,7 +62,7 @@ pipelines:
 </TabItem>
 </Tabs>
 
-### 5. Confirm the pipeline runs
+### 7. Confirm the pipeline runs
 
 Now that you have a new pipeline, it's time to run it and make sure it works. Since this only triggers when a PR is created, you'll need to create a new PR on a branch that contains the code above. Once you do that, you should see a pipeline that looks like this:
 
@@ -83,18 +83,18 @@ dbt Cloud job:
 </TabItem>
 </Tabs>
 
-### 6. Handle those extra schemas in your database
+### 8. Handle those extra schemas in your database
 
 As noted above, when the PR job runs it will create a new schema based on the PR. To avoid having your database overwhelmed with PR schemas, consider adding a "cleanup" job to your dbt Cloud account. This job can run on a scheduled basis to cleanup any PR schemas that haven't been updated/used recently. 
 
 Add this as a macro to your project. It takes 2 arguments that lets you control which schema get dropped:
   - `age_in_days`: The number of days since the schema was last altered before it should be dropped (default 10 days)
-  - `databse_to_clean`: The name of the database to remove schemas from
+  - `database_to_clean`: The name of the database to remove schemas from
   
 ```sql
 {# 
     This macro finds PR schemas older than a set date and drops them 
-    The maco defaults to 10 days old, but can be configued with the input argument age_in_days
+    The macro defaults to 10 days old, but can be configured with the input argument age_in_days
     Sample usage with different date:
         dbt run-operation pr_schema_cleanup --args "{'database_to_clean': 'analytics','age_in_days':'15'}"
 #}

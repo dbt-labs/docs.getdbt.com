@@ -5,7 +5,7 @@ id: "model"
 description: "`model` is the dbt graph object (or node) for the current model."
 ---
 
-`model` is the dbt [graph object](graph) (or node) for the current model. It can be used to:
+`model` is the dbt [graph object](/reference/dbt-jinja-functions/graph) (or node) for the current model. It can be used to:
 - Access `config` settings, say, in a post-hook
 - Access the path to the model
 
@@ -52,15 +52,9 @@ To view the structure of `models` and their definitions:
 
 Use the following table to understand how the versioning pattern works and match the Manifest version with the dbt version:
 
-| dbt version | Manifest version |
-| ----------- | ---------------- |
-| `v1.5` | [Manifest v9](https://schemas.getdbt.com/dbt/manifest/v9/index.html)
-| `v1.4` | [Manifest v8](https://schemas.getdbt.com/dbt/manifest/v8/index.html)
-| `v1.3` | [Manifest v7](https://schemas.getdbt.com/dbt/manifest/v7/index.html)
-| `v1.2` | [Manifest v6](https://schemas.getdbt.com/dbt/manifest/v6/index.html)
-| `v1.1` | [Manifest v5](https://schemas.getdbt.com/dbt/manifest/v5/index.html)
+import ManifestVersions from '/snippets/_manifest-versions.md';
 
-
+<ManifestVersions />
 
 ## Related docs
 

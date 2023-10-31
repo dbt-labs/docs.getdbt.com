@@ -36,7 +36,7 @@ If passing an environment variable for a property that uses an integer type (for
 
 :::caution Quoting, Curly Brackets, & You
 
-Be sure to quote the entire jinja string (as shown above), or else the yaml parser will be confused by the Jinja curly brackets.
+Be sure to quote the entire jinja string (as shown above), or else the YAML parser will be confused by the Jinja curly brackets.
 
 :::
 
@@ -58,12 +58,6 @@ models:
 
 ### Secrets
 
-<Changelog>
-
-  **v1.0.0:** Restricted use of secret env vars to `profiles.yml` and `packages.yml`
-
-</Changelog>
-
 For certain configurations, you can use "secret" env vars. Any env var named with the prefix `DBT_ENV_SECRET_` will be:
 - Available for use in `profiles.yml` + `packages.yml`, via the same `env_var()` function
 - Disallowed everywhere else, including `dbt_project.yml` and model SQL, to prevent accidentally writing these secret values to the <Term id="data-warehouse" /> or metadata artifacts
@@ -82,15 +76,9 @@ host: "www.{{ env_var('DBT_ENV_SECRET_HOST_DOMAIN') }}.com/{{ env_var('DBT_ENV_S
 
 ### Custom metadata
 
-<Changelog>
-
-  - **v0.19.0:** Introduced `DBT_ENV_CUSTOM_ENV_` prefix and artifact `metadata.env`
-
-</Changelog>
-
 Any env var named with the prefix `DBT_ENV_CUSTOM_ENV_` will be included in two places, with its prefix-stripped name as the key:
-- [dbt artifacts](dbt-artifacts#common-metadata): `metadata` -> `env`
-- [events and structured logs](events-logging#info-fields): `info` -> `extra`
+- [dbt artifacts](/reference/artifacts/dbt-artifacts#common-metadata): `metadata` -> `env`
+- [events and structured logs](/reference/events-logging#info-fields): `info` -> `extra`
 
 <VersionBlock firstVersion="1.3">
 

@@ -1,6 +1,8 @@
 ---
 title: "About dbt projects"
 id: "projects"
+pagination_next: null
+pagination_prev: null
 ---
 
 A dbt project informs dbt about the context of your project and how to transform your data (build your data sets). By design, dbt enforces the top-level structure of a dbt project such as the `dbt_project.yml` file, the `models` directory, the `snapshots` directory, and so on. Within the directories of the top-level, you can organize your project in any way that meets the needs of your organization and data pipeline.
@@ -18,6 +20,7 @@ At a minimum, all a project needs is the `dbt_project.yml` project configuration
 | [sources](/docs/build/sources) | A way to name and describe the data loaded into your warehouse by your Extract and Load tools. |
 | [exposures](/docs/build/exposures) | A way to define and describe a downstream use of your project. |
 | [metrics](/docs/build/metrics) | A way for you to define metrics for your project. |
+| [groups](/docs/build/groups) | Groups enable collaborative node organization in restricted collections. |
 | [analysis](/docs/build/analyses) | A way to organize analytical SQL queries in your project such as the general ledger from your QuickBooks. |
 
 When building out the structure of your project, you should consider these impacts on your organization's workflow:
@@ -76,7 +79,7 @@ After configuring the Project subdirectory option, dbt Cloud will use it as the 
 
 You can create new projects and [share them](/docs/collaborate/git-version-control) with other people by making them available on a hosted git repository like GitHub, GitLab, and BitBucket.
 
-After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/docs/quickstarts/overview) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
+After you set up a connection with your data platform, you can [initialize your new project in dbt Cloud](/quickstarts) and start developing. Or, run [dbt init from the command line](/reference/commands/init) to set up your new project.
 
 During project initialization, dbt creates sample model files in your project directory to help you start developing quickly.
 
@@ -89,5 +92,5 @@ If you want to see what a mature, production project looks like, check out the [
 
 ## Related docs
 * [Best practices: How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview)
-* [Quickstarts for dbt Cloud](/docs/quickstarts/overview)
-* [Quickstart for dbt Core](/docs/quickstarts/dbt-core/manual-install)
+* [Quickstarts for dbt Cloud](/quickstarts)
+* [Quickstart for dbt Core](/quickstarts/manual-install)

@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-teradata'
   slack_channel_link: 'https://getdbt.slack.com/archives/C027B6BHMT3'
   platform_name: 'Teradata'
-  config_page: 'teradata-configs'
+  config_page: '/reference/resource-configs/teradata-configs'
 ---
 
 Some core functionality may be limited. If you're interested in contributing, check out the source code for the repository listed below.

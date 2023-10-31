@@ -13,7 +13,7 @@ Your database communicates with dbt using an internal database adapter object. F
 
 For example, the adapter methods below will be translated into specific SQL statements depending on the type of adapter your project is using:
 
-- [adapter.dispatch](dispatch)
+- [adapter.dispatch](/reference/dbt-jinja-functions/dispatch)
 - [adapter.get_missing_columns](#get_missing_columns)
 - [adapter.expand_target_column_types](#expand_target_column_types)
 - [adapter.get_relation](#get_relation) or [load_relation](#load_relation)
@@ -33,15 +33,15 @@ The following adapter functions are deprecated, and will be removed in a future 
 
 ## dispatch
 
-Moved to separate page: [dispatch](dispatch)
+Moved to separate page: [dispatch](/reference/dbt-jinja-functions/dispatch)
 
 ## get_missing_columns
 __Args__:
 
- * `from_relation`: The source [Relation](dbt-classes#relation)
- * `to_relation`: The target [Relation](dbt-classes#relation)
+ * `from_relation`: The source [Relation](/reference/dbt-classes#relation)
+ * `to_relation`: The target [Relation](/reference/dbt-classes#relation)
 
-Returns a list of [Columns](dbt-classes#column) that is the difference of the columns in the `from_table`
+Returns a list of [Columns](/reference/dbt-classes#column) that is the difference of the columns in the `from_table`
 and the columns in the `to_table`, i.e. (`set(from_relation.columns) - set(to_table.columns)`).
 Useful for detecting new columns in a source <Term id="table" />.
 
@@ -66,8 +66,8 @@ Useful for detecting new columns in a source <Term id="table" />.
 ## expand_target_column_types
 __Args__:
 
- * `from_relation`: The source [Relation](dbt-classes#relation) to use as a template
- * `to_relation`: The [Relation](dbt-classes#relation) to mutate
+ * `from_relation`: The source [Relation](/reference/dbt-classes#relation) to use as a template
+ * `to_relation`: The [Relation](/reference/dbt-classes#relation) to mutate
 
 Expand the `to_relation` <Term id="table" />'s column types to match the schema of `from_relation`. Column expansion is constrained to string and numeric types on supported databases. Typical usage involves expanding column types (from eg. `varchar(16)` to `varchar(32)`) to support insert statements.
 
@@ -92,7 +92,7 @@ __Args__:
  * `schema`: The schema of the relation to fetch
  * `identifier`: The identifier of the relation to fetch
 
-Returns a cached [Relation](dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
+Returns a cached [Relation](/reference/dbt-classes#relation) object identified by the `database.schema.identifier` provided to the method, or `None` if the relation does not exist.
 
 **Usage**:
 
@@ -114,9 +114,9 @@ Returns a cached [Relation](dbt-classes#relation) object identified by the `data
 ## load_relation
 __Args__:
 
- * `relation`: The [Relation](dbt-classes#relation) to try to load
+ * `relation`: The [Relation](/reference/dbt-classes#relation) to try to load
 
-A convenience wrapper for [get_relation](#get_relation). Returns the cached version of the [Relation](dbt-classes#relation) object, or `None` if the relation does not exist.
+A convenience wrapper for [get_relation](#get_relation). Returns the cached version of the [Relation](/reference/dbt-classes#relation) object, or `None` if the relation does not exist.
 
 **Usage**:
 
@@ -139,9 +139,9 @@ A convenience wrapper for [get_relation](#get_relation). Returns the cached vers
 ## get_columns_in_relation
 __Args__:
 
- * `relation`: The [Relation](dbt-classes#relation) to find the columns for
+ * `relation`: The [Relation](/reference/dbt-classes#relation) to find the columns for
 
-Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
+Returns a list of [Columns](/reference/dbt-classes#column) in a <Term id="table" />.
 
 **Usage**:
 
@@ -277,7 +277,7 @@ __Args__:
  * `schema_name`: The schema to test
  * `table_name`: The <Term id="table" /> (or view) from which to select columns
 
-Returns a list of [Columns](dbt-classes#column) in a <Term id="table" />.
+Returns a list of [Columns](/reference/dbt-classes#column) in a <Term id="table" />.
 
 <File name='models/example.sql'>
 

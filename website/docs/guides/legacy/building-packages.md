@@ -23,13 +23,13 @@ Packages are _not_ a good fit for sharing models that contain business-specific 
 We tend to use the CLI for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present dbt Cloud is not designed for this workflow.
 :::
 
-1. Use the [dbt init](init) command to create a new dbt project, which will be your package:
+1. Use the [dbt init](/reference/commands/init) command to create a new dbt project, which will be your package:
 ```shell
 $ dbt init [package_name]
 ```
 2. Create a public GitHub¹ repo, named `dbt-<package-name>`, e.g. `dbt-mailchimp`. Follow the GitHub instructions to link this to the dbt project you just created.
 3. Update the `name:` of the project in `dbt_project.yml` to your package name, e.g. `mailchimp`.
-4. Define the allowed dbt versions by using the [`require-dbt-version` config](require-dbt-version).
+4. Define the allowed dbt versions by using the [`require-dbt-version` config](/reference/project-configs/require-dbt-version).
 
 ¹Currently, our package registry only supports packages that are hosted in GitHub.
 
@@ -74,8 +74,8 @@ Many SQL functions are specific to a particular database. For example, the funct
 
 If you wish to support multiple warehouses, we have a number of tricks up our sleeve:
 - We've written a number of macros that compile to valid SQL snippets on each of the original four adapters. Where possible, leverage these macros.
-- If you need to implement cross-database compatibility for one of your macros, use the [`adapter.dispatch` macro](dispatch) to achieve this. Check out the cross-database macros in dbt-utils for examples.
-- If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](enabled), in combination with [`target.type`](/reference/dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/main/dbt_project.yml#L11-L16) as an example.
+- If you need to implement cross-database compatibility for one of your macros, use the [`adapter.dispatch` macro](/reference/dbt-jinja-functions/dispatch) to achieve this. Check out the cross-database macros in dbt-utils for examples.
+- If you're working on a modeling package, you may notice that you need write different models for each warehouse (for example, if the EL tool you are working with stores data differently on each warehouse). In this case, you can write different versions of each model, and use the [`enabled` config](/reference/resource-configs/enabled), in combination with [`target.type`](/reference/dbt-jinja-functions/target) to enable the correct models — check out [this package](https://github.com/fivetran/dbt_facebook_ads_creative_history/blob/main/dbt_project.yml#L11-L16) as an example.
 
 
 If your package has only been written to work for one <Term id="data-warehouse" />, make sure you document this in your package README.
@@ -94,7 +94,7 @@ The major exception to this is when working with data sources that benefit from 
 ### Test and document your package
 It's critical that you [test](/docs/build/tests) your models and sources. This will give your end users confidence that your package is actually working on top of their dataset as intended.
 
-Further, adding [documentation](documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
+Further, adding [documentation](/docs/collaborate/documentation) via descriptions will help communicate your package to end users, and benefit their stakeholders that use the outputs of this package.
 ### Include useful GitHub artifacts
 Over time, we've developed a set of useful GitHub artifacts that make administering our packages easier for us. In particular, we ensure that we include:
 - A useful README, that has:
@@ -126,7 +126,7 @@ packages:
 </File>
 
 4. Add resources to the package (seeds, models, tests) so that you can successfully run your project, and compare the output with what you expect. The exact appraoch here will vary depending on your packages. In general you will find that you need to:
-    - Add mock data via a [seed](seeds) with a few sample (anonymized) records. Configure the `integration_tests` project to point to the seeds instead of raw data tables.
+    - Add mock data via a [seed](/docs/build/seeds) with a few sample (anonymized) records. Configure the `integration_tests` project to point to the seeds instead of raw data tables.
     - Add more seeds that represent the expected output of your models, and use the [dbt_utils.equality](https://github.com/dbt-labs/dbt-utils#equality-source) test to confirm the output of your package, and the expected output matches.
 
 

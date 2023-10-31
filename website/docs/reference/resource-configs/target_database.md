@@ -8,7 +8,7 @@ datatype: string
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +target_database: string
 
 ```
@@ -27,7 +27,7 @@ snapshots:
 </File>
 
 ## Description
-The database that dbt should build a [snapshot](snapshots) <Term id="table" /> into.
+The database that dbt should build a [snapshot](/docs/build/snapshots) <Term id="table" /> into.
 
 Notes:
 - The specified database must already exist
@@ -41,7 +41,7 @@ Runtime Error
 
 
 ## Default
-By default, dbt will use the [target](target) database associated with your profile/connection.
+By default, dbt will use the [target](/reference/dbt-jinja-functions/target) database associated with your profile/connection.
 
 ## Examples
 ### Build all snapshots in a database named `snapshots`
@@ -57,7 +57,7 @@ snapshots:
 </File>
 
 ### Use a target-aware database
-Use the [`{{ target }}` variable](target) to change which database a snapshot table is built in.
+Use the [`{{ target }}` variable](/reference/dbt-jinja-functions/target) to change which database a snapshot table is built in.
 
 Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots.
 

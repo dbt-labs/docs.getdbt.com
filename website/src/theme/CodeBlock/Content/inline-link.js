@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Link from '@site/src/components/link';
+import Link from '@docusaurus/Link';
 
 function isMarkdownLink(string) {
   const regex = /(?<escape>\\?)\[(?<text>.*?)\]\((?<url>.*?)\)/

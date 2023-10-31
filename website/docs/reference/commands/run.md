@@ -42,7 +42,7 @@ You can also supply the flag by its short name: `dbt run -f`.
 
 </VersionBlock>
 
-In the dbt compilation context, this flag will be available as [flags.FULL_REFRESH](flags). Further, the `is_incremental()` macro will return `false` for *all* models in response when the `--full-refresh` flag is specified.
+In the dbt compilation context, this flag will be available as [flags.FULL_REFRESH](/reference/dbt-jinja-functions/flags). Further, the `is_incremental()` macro will return `false` for *all* models in response when the `--full-refresh` flag is specified.
 
 <File name='models/example.sql'>
 
@@ -65,38 +65,18 @@ select * from all_events
 
 dbt will also allow you select which specific models you'd like to materialize. This can be useful during special scenarios where you may prefer running a different set of models at various intervals. This can also be helpful when you may want to limit the tables materialized while you develop and test new models.
 
-For more information, see the [Model Selection Syntax Documentation](node-selection/syntax).
+For more information, see the [Model Selection Syntax Documentation](/reference/node-selection/syntax).
 
-For more information on running parents or children of specific models, see the [Graph Operators Documentation](node-selection/graph-operators).
+For more information on running parents or children of specific models, see the [Graph Operators Documentation](/reference/node-selection/graph-operators).
 
 ## Treat warnings as errors
 
-<Changelog>
-
-- Moved to [global configs](global-configs) in v1.0
-
-</Changelog>
-
-See [global configs](global-configs#failing-fast)
+See [global configs](/reference/global-configs/warnings)
 
 ## Failing fast
 
-<Changelog>
-
-- The `--fail-fast` flag is new in dbt v0.17.0
-- Moved to [global configs](global-configs) in v1.0
-
-</Changelog>
-
-See [global configs](global-configs#failing-fast)
+See [global configs](/reference/global-configs/failing-fast)
 
 ## Enable or Disable Colorized Logs
 
-<Changelog>
-
-- The `--use-colors` and `--no-use-colors` flags are new in dbt v0.18.0
-- Moved to [global configs](global-configs) in v1.0
-
-</Changelog>
-
-See [global configs](global-configs#use-colors)
+See [global configs](/reference/global-configs/print-output#print-color)

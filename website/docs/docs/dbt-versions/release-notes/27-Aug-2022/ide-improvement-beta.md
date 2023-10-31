@@ -3,7 +3,7 @@ title: "Enhancement: New Cloud IDE beta"
 id: "ide-improvements-beta.md"
 description: "Aug 2022 release note: Launch of the IDE beta, which focuses on performance and reliability improvements."
 sidebar_label: "Enhancement: New cloud IDE beta"
-tags: [Aug-16-2022, IDE]
+tags: [Aug-2022, IDE]
 ---
 
 :::info Beta feature 

@@ -19,15 +19,9 @@ When you set this configuration, dbt sends a helpful error message for any user 
 
 If this configuration is not specified, no version check will occur.
 
-<Changelog>
-
-* `v0.13.0`: This configuration was introduced
-
-</Changelog>
-
 :::info YAML Quoting
 
-This configuration needs to be interpolated by the yaml parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
+This configuration needs to be interpolated by the YAML parser as a string. As such, you should quote the value of the configuration, taking care to avoid whitespace. For example:
 ```yml
 # ✅ These will work
 require-dbt-version: ">=1.0.0" # Double quotes are OK
@@ -118,7 +112,7 @@ Running with dbt=0.21.0
 Found 13 models, 2 tests, 1 archives, 0 analyses, 204 macros, 2 operations....
 ```
 
-See [global configs](global-configs#checking-version-compatibility) for usage details.
+See [global configs](/reference/global-configs/version-compatibility) for usage details.
 
 ## Recommendation
 * This is a recommended configuration

@@ -4,7 +4,6 @@ description: "dbt v1.0 is coming up! Don't forget to update your projects to the
 slug: dbt-product-update-2021-september
 authors: [lauren_craigie] 
 
-tags: [dbt updates]
 hide_table_of_contents: false
 
 date: 2021-09-15
@@ -34,7 +33,7 @@ Give Jeremy a win and check out the [blog](http://blog.getdbt.com/getting-ready
 ### dbt v0.21.0-rc1
 -	Check out the [#dbt-prereleases](https://getdbt.slack.com/archives/C016X6ABVUK?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8nIpohDBSr7SvpXrqY-5ONmnjdIgW0XMiAPkjQTb9Pgwt24nzqAWNX2Xgtj8LA0LrPoHpD) channel in the dbt Community Slack, and Jeremy's [Discourse post](https://discourse.getdbt.com/t/prerelease-dbt-core-v0-21-louis-kahn/3077?utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8nIpohDBSr7SvpXrqY-5ONmnjdIgW0XMiAPkjQTb9Pgwt24nzqAWNX2Xgtj8LA0LrPoHpD)!
 -   dbt build: Did you catch our teaser last month at [Staging](https://www.youtube.com/watch?v=-XRD_IjWX2U&utm_campaign=Monthly%20Product%20Updates&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-8nIpohDBSr7SvpXrqY-5ONmnjdIgW0XMiAPkjQTb9Pgwt24nzqAWNX2Xgtj8LA0LrPoHpD)?
--   Defining resource configs in all the places you'd expect (i.e. yaml files)
+-   Defining resource configs in all the places you'd expect (i.e. YAML files)
 -   Capture changes to macros in state:modified, for best-yet Slim CI
 
  ![Screen Shot 2021-09-20 at 11.34.47 AM (1)](https://hs-8698602.f.hubspotemail.net/hub/8698602/hubfs/Screen%20Shot%202021-09-20%20at%2011.34.47%20AM%20(1).png?upscale=true&width=600&upscale=true&name=Screen%20Shot%202021-09-20%20at%2011.34.47%20AM%20(1).png) 

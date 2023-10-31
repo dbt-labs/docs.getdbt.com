@@ -41,7 +41,7 @@ When your adapter becomes more popular, and people start using it, you may quick
 
 New minor version releases of `dbt-core` may include changes to the Python interface for adapter plugins, as well as new or updated test cases. The maintainers of `dbt-core` will clearly communicate these changes in documentation and release notes, and they will aim for backwards compatibility whenever possible.
 
-Patch releases of `dbt-core` will _not_ include breaking changes to adapter-facing code. For more details, see ["About dbt Core versions"](core-versions).
+Patch releases of `dbt-core` will _not_ include breaking changes to adapter-facing code. For more details, see ["About dbt Core versions"](/docs/dbt-versions/core).
 
 ### Versioning and releasing your adapter
 

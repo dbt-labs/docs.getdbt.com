@@ -3,12 +3,12 @@ title: "Starbust integration with public preview of dbt-trino in dbt Cloud"
 id: "public-preview-trino-in-dbt-cloud"
 description: "Public preview of dbt Cloud integrations with Starburst and Trino clusters is now available."
 sidebar_label: "New: Starbust integration with public preview of dbt-trino in dbt Cloud"
-tags: [March-30-2023]
+tags: [Mar-2023]
 ---
 
 dbt Labs is introducing the newest connection option in dbt Cloud: the `dbt-trino` adapter is now available in Public Preview. This allows you to connect to Starburst Galaxy, Starburst Enterprise, and self-hosted Trino from dbt Cloud.
 
-Check out our [Quickstart for dbt Cloud and Starburst Galaxy](/docs/quickstarts/dbt-cloud/starburst-galaxy) to explore more. 
+Check out our [Quickstart for dbt Cloud and Starburst Galaxy](/quickstarts/starburst-galaxy) to explore more. 
 
 ## What’s the reason users should be excited about this?
 

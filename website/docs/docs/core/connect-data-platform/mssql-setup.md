@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-sqlserver'
   slack_channel_link: 'https://getdbt.slack.com/archives/CMRMDDQ9W'
   platform_name: 'SQL Server'
-  config_page: 'mssql-configs'
+  config_page: '/reference/resource-configs/mssql-configs'
 ---
 
 :::info Community plugin
@@ -66,27 +66,39 @@ sudo apt install unixodbc-dev
 Download and install the [Microsoft ODBC Driver 18 for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15).
 If you already have ODBC Driver 17 installed, then that one will work as well.
 
-The adapter is tested with SQL Server 2017, SQL Server 2019, SQL Server 2022 and Azure SQL Database. These versions are tested with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
+#### Supported configurations
+
+* The adapter is tested with SQL Server 2017, SQL Server 2019, SQL Server 2022 and Azure SQL Database.
+* We test all combinations with Microsoft ODBC Driver 17 and Microsoft ODBC Driver 18.
+* The collations we run our tests on are `SQL_Latin1_General_CP1_CI_AS` and `SQL_Latin1_General_CP1_CS_AS`.
+
+The adapter support is not limited to the matrix of the above configurations. If you notice an issue with any other configuration, let us know by opening an issue on [GitHub](https://github.com/dbt-msft/dbt-sqlserver).
 
 ## Authentication methods & profile configuration
 
 ### Common configuration
 
-For all the authentication methods below, the following configuration options can be set in your `profiles.yml` file:
+For all the authentication methods, refer to the following configuration options that can be set in your `profiles.yml` file. 
+A complete reference of all options can be found [at the end of this page](#reference-of-all-connection-options).
 
-* `driver`: The ODBC driver to use. E.g. `ODBC Driver 18 for SQL Server`
-* `server`: The server hostname. E.g. `localhost`
-* `port`: The server port. E.g. `1433`
-* `database`: The database name.
-* `schema`: The schema name. E.g. `dbo`
-* `retries`: The number of automatic times to retry a query before failing. Defaults to `1`. Note that queries with syntax errors will not be retried. This setting can be used to overcome intermittent network issues.
-* `encrypt`: Whether to encrypt the connection to the server. Defaults to `true`. Read more about encryption [below](#connection-encryption).
-* `trust_cert`: Whether to trust the server certificate. Defaults to `false`. Read more about encryption [below](#connection-encryption).
+| Configuration option | Description | Type | Example |
+| --------------------- | ---- | ---- | ------- |
+| `driver` | The ODBC driver to use | Required | `ODBC Driver 18 for SQL Server` |
+| `server` | The server hostname | Required | `localhost` |
+| `port` |  The server port | Required | `1433` |
+| `database` | The database name | Required | Not applicable |
+| `schema` | The schema name | Required | `dbo` |
+| `retries` | The number of automatic times to retry a query before failing. Defaults to `1`. Queries with syntax errors will not be retried. This setting can be used to overcome intermittent network issues. | Optional |  Not applicable  |
+| `login_timeout` | The number of seconds used to establish a connection before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings. | Optional |  Not applicable  |
+| `query_timeout` | The number of seconds used to wait for a query before failing. Defaults to `0`, which means that the timeout is disabled or uses the default system settings. | Optional |  Not applicable  |
+| `schema_authorization` |  Optionally set this to the principal who should own the schemas created by dbt. [Read more about schema authorization](#schema-authorization). | Optional |  Not applicable  |
+| `encrypt` |  Whether to encrypt the connection to the server. Defaults to `true`. Read more about [connection encryption](#connection-encryption). | Optional |  Not applicable  |
+| `trust_cert` |   Whether to trust the server certificate. Defaults to `false`. Read more about [connection encryption](#connection-encryption).| Optional |  Not applicable  |
 
 ### Connection encryption
 
 Microsoft made several changes in the release of ODBC Driver 18 that affects how connection encryption is configured.
-To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default vallues of `encrypt` and `trust_cert` have changed.
+To accommodate these changes, starting in dbt-sqlserver 1.2.0 or newer the default values of `encrypt` and `trust_cert` have changed.
 Both of these settings will now **always** be included in the connection string to the server, regardless if you've left them out of your profile configuration or not.
 
 * The default value of `encrypt` is `true`, meaning that connections are encrypted by default.
@@ -427,25 +439,39 @@ In Azure SQL, you can sign in using AAD authentication, but to be able to grant 
 
 Note that principals will not be deleted automatically when they are removed from the `grants` block.
 
+### Schema authorization
+
+You can optionally set the principal who should own all schemas created by dbt. This is then used in the `CREATE SCHEMA` statement like so:
+
+```sql
+CREATE SCHEMA [schema_name] AUTHORIZATION [schema_authorization]
+```
+
+A common use case is to use this when you are authenticating with a principal who has permissions based on a group, such as an AAD group. When that principal creates a schema, the server will first try to create an individual login for this principal and then link the schema to that principal. If you would be using Azure AD in this case,
+then this would fail since Azure SQL can't create logins for individuals part of an AD group automatically.
+
 ### Reference of all connection options
 
-| configuration option | description                                                                                                                                     | required           | default value |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|---------------|
-| `driver`             | The ODBC driver to use.                                                                                                                         | :white_check_mark: |               |
-| `host`               | The hostname of the database server.                                                                                                            | :white_check_mark: |               |
-| `port`               | The port of the database server.                                                                                                                |                    | `1433`        |
-| `database`           | The name of the database to connect to.                                                                                                         | :white_check_mark: |               |
-| `schema`             | The schema to use.                                                                                                                              | :white_check_mark: |               |
-| `authentication`     | The authentication method to use. This is not required for Windows authentication.                                           |                    | `'sql'`       |                                                                                    |               |             |
-| `UID`                | Username used to authenticate. This can be left out depending on the authentication method.                                                     |                    |               |
-| `PWD`                | Password used to authenticate. This can be left out depending on the authentication method.                                                     |                    |               |
-| `windows_login`      | Set this to `true` to use Windows authentication. This is only available for SQL Server.                                                        |                    |               |
-| `tenant_id`          | The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.                  |                    |               |
-| `client_id`          | The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.    |                    |               |
-| `client_secret`      | The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal. |                    |               |
-| `encrypt`            | Set this to `false` to disable the use of encryption. See [above](#connection-encryption).                                                      |                    | `true`        |
-| `trust_cert`         | Set this to `true` to trust the server certificate. See [above](#connection-encryption).                                                        |                    | `false`       |
-| `retries`            | The number of times to retry a failed connection.                                                                                               |                    | `1`           |
+| Configuration option   | Description                                                                                                                                        | Required           | Default value |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ------------- |
+| `driver`               | The ODBC driver to use.                                                                                                                            | :white_check_mark: |               |
+| `host`                 | The hostname of the database server.                                                                                                               | :white_check_mark: |               |
+| `port`                 | The port of the database server.                                                                                                                   |                    | `1433`        |
+| `database`             | The name of the database to connect to.                                                                                                            | :white_check_mark: |               |
+| `schema`               | The schema to use.                                                                                                                                 | :white_check_mark: |               |
+| `authentication`       | The authentication method to use. This is not required for Windows authentication.                                                                 |                    | `'sql'`       |
+| `UID`                  | Username used to authenticate. This can be left out depending on the authentication method.                                                        |                    |               |
+| `PWD`                  | Password used to authenticate. This can be left out depending on the authentication method.                                                        |                    |               |
+| `windows_login`        | Set this to `true` to use Windows authentication. This is only available for SQL Server.                                                           |                    |               |
+| `tenant_id`            | The tenant ID of the Azure Active Directory instance. This is only used when connecting to Azure SQL with a service principal.                     |                    |               |
+| `client_id`            | The client ID of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.       |                    |               |
+| `client_secret`        | The client secret of the Azure Active Directory service principal. This is only used when connecting to Azure SQL with an AAD service principal.   |                    |               |
+| `encrypt`              | Set this to `false` to disable the use of encryption. See [above](#connection-encryption).                                                         |                    | `true`        |
+| `trust_cert`           | Set this to `true` to trust the server certificate. See [above](#connection-encryption).                                                           |                    | `false`       |
+| `retries`              | The number of times to retry a failed connection.                                                                                                  |                    | `1`           |
+| `schema_authorization` | Optionally set this to the principal who should own the schemas created by dbt. [Details above](#schema-authorization).                            |                    |               |
+| `login_timeout`        | The amount of seconds to wait until a response from the server is received when establishing a connection. `0` means that the timeout is disabled. |                    | `0`           |
+| `query_timeout`        | The amount of seconds to wait until a response from the server is received when executing a query. `0` means that the timeout is disabled.         |                    | `0`           |
 
 Valid values for `authentication`:
 

@@ -3,6 +3,13 @@ title: "Install with Homebrew"
 description: "You can use Homebrew to install dbt Core and adapter plugins from the command line."
 ---
 
+:::caution
+
+Starting with v1.6, dbt Labs will no longer maintain Homebrew formulae as a supported installation method for dbt-core and adapters. For more on our rationale, consult this discussion:
+- [Installing dbt Core: saying goodbye to brew and hello to "bundles"](https://github.com/dbt-labs/dbt-core/discussions/8277)
+
+:::
+
 dbt Labs maintains Homebrew formulae for the four oldest and most popular adapter plugins: Postgres, Redshift, Snowflake, and BigQuery.
 
 We recommend you use Homebrew if you meet these conditions:
@@ -28,7 +35,7 @@ brew install git
 brew tap dbt-labs/dbt
 ```
 
-Now you're ready to install dbt. Once you know [which adapter](supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For instance, if using Postgres:
+Now you're ready to install dbt. Once you know [which adapter](/docs/supported-data-platforms) you're using, you can install it as `dbt-<adapter>`. For instance, if using Postgres:
 
 ```shell
 brew install dbt-postgres

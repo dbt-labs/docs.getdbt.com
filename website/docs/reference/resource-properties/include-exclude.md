@@ -14,11 +14,11 @@ models:
   
   # top-level model properties
   - name: <model_name>
-    [columns](resource-properties/columns):
+    [columns](/reference/resource-properties/columns):
       - name: <column_name> # required
     
     # versions of this model
-    [versions](resource-properties/versions):
+    [versions](/reference/resource-properties/versions):
       - v: <version_identifier> # required
         columns:
           - include: '*' | 'all' | [<column_name>, ...]

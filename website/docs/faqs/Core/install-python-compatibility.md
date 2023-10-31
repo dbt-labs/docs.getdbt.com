@@ -1,25 +1,25 @@
 ---
 title: What version of Python can I use?
-description: "Python versions 3.7 and newer can be used with dbt Core"
+description: "Python versions 3.8 and newer can be used with dbt Core"
 sidebar_label: 'Python version'
 id: install-python-compatibility
 ---
 
-<VersionBlock firstVersion="1.4">
+<VersionBlock firstVersion="1.6">
 
-The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10, and 3.11.
+The latest version of `dbt-core` is compatible with Python versions 3.8, 3.9, 3.10 and 3.11.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1" lastVersion="1.3">
+<VersionBlock firstVersion="1.4" lastVersion="1.5">
+
+The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, 3.10 and 3.11.
+
+</VersionBlock>
+
+<VersionBlock lastVersion="1.3">
 
 The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, and 3.10
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-As of v1.0, `dbt-core` is compatible with Python versions 3.7, 3.8, and 3.9.
 
 </VersionBlock>
 

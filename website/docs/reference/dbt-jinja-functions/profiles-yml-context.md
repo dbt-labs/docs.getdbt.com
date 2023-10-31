@@ -1,16 +1,16 @@
 ---
-title: "About profiles.yml context variable"
+title: "About profiles.yml context"
 sidebar_label: "profiles.yml context"
 id: "profiles-yml-context"
-description: "Use these context variables to configure resources in `profiles.yml` file."
+description: "Use these context methods to configure resources in `profiles.yml` file."
 ---
 
-The following context variables and methods are available when configuring
+The following context methods are available when configuring
 resources in the `profiles.yml` file.
 
-**Available context variables:**
-- [env_var](env_var)
-- [vars](var) (_Note: only variables defined with `--vars` are available_)
+**Available context methods:**
+- [env_var](/reference/dbt-jinja-functions/env_var)
+- [var](/reference/dbt-jinja-functions/var) (_Note: only variables defined with `--vars` are available_)
 
 ### Example usage
 

@@ -1,6 +1,7 @@
 ---
 title: "Install from source"
 description: "You can install dbt Core from its GitHub code source."
+pagination_next: null
 ---
 
 dbt Core and almost all of its adapter plugins are open source software. As such, the codebases are freely available to download and build from source. You might install from source if you want the latest code or want to install dbt from a specific commit. This might be helpful when you are contributing changes, or if you want to debug a past change.
@@ -35,6 +36,6 @@ You do _not_ need to install `dbt-core` before installing an adapter plugin -- t
 
 To install in editable mode, such as while contributing, use `pip install -e .` instead.
 
-<FAQ src="Core/install-pip-os-prereqs" />
-<FAQ src="Core/install-python-compatibility" />
-<FAQ src="Core/install-pip-best-practices" />
+<FAQ path="Core/install-pip-os-prereqs" />
+<FAQ path="Core/install-python-compatibility" />
+<FAQ path="Core/install-pip-best-practices" />

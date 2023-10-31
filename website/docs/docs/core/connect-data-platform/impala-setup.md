@@ -13,7 +13,7 @@ meta:
   slack_channel_name: '#db-impala'
   slack_channel_link: 'https://getdbt.slack.com/archives/C01PWAH41A5'
   platform_name: 'Impala'
-  config_page: 'impala-configs'
+  config_page: '/reference/resource-configs/impala-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

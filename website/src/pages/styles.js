@@ -8,7 +8,6 @@ import Collapsible from '@site/src/components/collapsible';
 import FAQ from '@site/src/components/faqs';
 import File from '@site/src/components/file';
 import Lightbox from '@site/src/components/lightbox';
-import Link from '@site/src/components/link';
 import LoomVideo from '@site/src/components/loom';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -96,9 +95,9 @@ description: "this is \[an escaped link](docs.getdbt.com)"
 
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>FAQ</h1>
-<pre>{`<FAQ src='Troubleshooting/sql-errors' alt_header="a header" />`}</pre>
-                <FAQ src='Troubleshooting/sql-errors' />
-                <FAQ src='Troubleshooting/sql-errors' alt_header="an overriden header" />
+<pre>{`<FAQ path='Troubleshooting/sql-errors' alt_header="a header" />`}</pre>
+                <FAQ path='Troubleshooting/sql-errors' />
+                <FAQ path='Troubleshooting/sql-errors' alt_header="an overriden header" />
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>
@@ -127,7 +126,7 @@ password: hunter2
 
             <div className='section' style={{marginTop: '40px'}}>
                 <h1>Markdown Links</h1>
-                  Refer to the <Link href="https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md#Links">Links section</Link> of the Content Style Guide to read about how you can use links in the dbt product documentation.
+                  Refer to the <a href="https://github.com/dbt-labs/docs.getdbt.com/blob/current/contributing/content-style-guide.md#Links" target="_blank" rel="noreferrer">Links section</a> of the Content Style Guide to read about how you can use links in the dbt product documentation.
             </div>
 
             <div className='section' style={{marginTop: '40px'}}>

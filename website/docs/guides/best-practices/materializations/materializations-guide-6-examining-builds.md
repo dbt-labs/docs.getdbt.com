@@ -12,20 +12,20 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 - ⌚ dbt keeps track of how **long each model took to build**, when it started, when it finished, its completion status (error, warn, or success), its materialization type, and _much_ more.
 - 🖼️ This information is stored in a couple files which dbt calls **artifacts**.
 - 📊 Artifacts contain a ton of information in JSON format, so aren’t easy to read, but **dbt Cloud** packages the most useful bits of information into a tidy **visualization** for you.
-- ☁️ If you’re not using Cloud, we can still use the output of the **dbt CLI to understand our runs**.
+- ☁️ If you’re not using Cloud, we can still use the output of the **dbt Core CLI to understand our runs**.
 
 ### Model Timing
 
-That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/docs/quickstarts/dbt-cloud/bigquery#create-and-run-a-job) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
+That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/quickstarts/bigquery) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
 
 ![dbt Cloud's Model Timing diagram](/img/guides/best-practices/materializations/model-timing-diagram.png)
 
 - 🧵 This view lets us see our **mapped out in threads** (up to 64 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
 - ⌛ We can see above that `customer_status_histories` is **taking by far the most time**, so we may want to go ahead and **make that incremental**.
 
-If you aren’t using dbt Cloud, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the dbt CLI to check our model times, and it’s a great opportunity to become familiar with that output.
+If you aren’t using dbt Cloud, that’s okay! We don’t get a fancy visualization out of the box, but we can use the output from the dbt Core CLI to check our model times, and it’s a great opportunity to become familiar with that output.
 
-### dbt CLI output
+### dbt Core CLI output
 
 If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you’ve seen some output like below. Let’s take a closer look at how to read this.
 

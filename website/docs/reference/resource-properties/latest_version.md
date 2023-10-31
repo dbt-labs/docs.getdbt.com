@@ -10,7 +10,7 @@ required: no
 models:
   - name: model_name
     latest_version: 2
-    [versions](resource-properties/versions):
+    [versions](/reference/resource-properties/versions):
       - v: 2
       - v: 1
 ```
@@ -21,13 +21,13 @@ models:
 
 The latest version of this model. The "latest" version is relevant for:
 1. Resolving `ref()` calls to this model that are "unpinned" (a version is not explicitly specified)
-2. Selecting model versions using the [`version:` selection method](methods#the-version-method), based on whether a given model version is `latest`, `prerelease`, or `old`
+2. Selecting model versions using the [`version:` selection method](/reference/node-selection/methods#the-version-method), based on whether a given model version is `latest`, `prerelease`, or `old`
 
-This value can be a string or a numeric (integer or float) value. It must be one of the [version identifiers](resource-properties/versions#v) specified in this model's list of `versions`.
+This value can be a string or a numeric (integer or float) value. It must be one of the [version identifiers](/reference/resource-properties/versions#v) specified in this model's list of `versions`.
 
 ## Default
 
-If not specified for a versioned model, `latest_version` defaults to the largest [version identifier](resource-properties/versions#v): numerically greatest (if all version identifiers are numeric), otherwise the alphabetically last (if they are strings).
+If not specified for a versioned model, `latest_version` defaults to the largest [version identifier](/reference/resource-properties/versions#v): numerically greatest (if all version identifiers are numeric), otherwise the alphabetically last (if they are strings).
 
 For a non-versioned model (no `versions` list), `latest_version` has no value.
 
@@ -41,7 +41,7 @@ If `latest_version` is not specified for a versioned model, `latest_version` def
 ```yml
 models:
   - name: model_name
-    [versions](resource-properties/versions):
+    [versions](/reference/resource-properties/versions):
       - v: 3
       - v: 2
       - v: 1
@@ -57,7 +57,7 @@ If `latest_version` is not specified, the `latest_version` is `3`. Any unpinned 
 models:
   - name: model_name
     latest_version: 2
-    [versions](resource-properties/versions):
+    [versions](/reference/resource-properties/versions):
       - v: 3
       - v: 2
       - v: 1

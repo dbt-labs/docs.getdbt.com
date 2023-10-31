@@ -13,10 +13,10 @@ meta:
   slack_channel_name: '#db-postgres'
   slack_channel_link: 'https://getdbt.slack.com/archives/C0172G2E273'
   platform_name: 'Postgres'
-  config_page: 'postgres-configs'
+  config_page: '/reference/resource-configs/postgres-configs'
 ---
 
-<Snippet src="warehouse-setups-cloud-callout" />
+<Snippet path="warehouse-setups-cloud-callout" />
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>
 
@@ -72,7 +72,10 @@ company-name:
       [search_path](#search_path): [optional, override the default postgres search_path]
       [role](#role): [optional, set the role dbt assumes when executing queries]
       [sslmode](#sslmode): [optional, set the sslmode used to connect to the database]
-
+      [sslcert](#sslcert): [optional, set the sslcert to control the certifcate file location]
+      [sslkey](#sslkey): [optional, set the sslkey to control the location of the private key]
+      [sslrootcert](#sslrootcert): [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
+  
 ```
 
 </File>
@@ -85,15 +88,24 @@ The `search_path` config controls the Postgres "search path" that dbt configures
 
 #### role
 
-<Changelog> Added in v0.16.0 </Changelog>
-
 The `role` config controls the Postgres role that dbt assumes when opening new connections to the database.
 
 #### sslmode
 
-<Changelog> Added in v0.16.0 </Changelog>
-
 The `sslmode` config controls how dbt connectes to Postgres databases using SSL. See [the Postgres docs](https://www.postgresql.org/docs/9.1/libpq-ssl.html) on `sslmode` for usage information. When unset, dbt will connect to databases using the Postgres default, `prefer`, as the `sslmode`.
+
+
+#### sslcert
+
+The `sslcert` config controls the location of the certificate file used to connect to Postgres when using client SSL connections. To use a certificate file that is not in the default location, set that file path using this value. Without this config set, dbt uses the Postgres default locations. See [Client Certificates](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) in the Postgres SSL docs for the default paths.
+
+#### sslkey
+
+The `sslkey` config controls the location of the private key for connecting to Postgres using client SSL connections. If this config is omitted, dbt uses the default key location for Postgres. See [Client Certificates](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) in the Postgres SSL docs for the default locations.
+
+#### sslrootcert
+
+When connecting to a Postgres server using a client SSL connection, dbt verifies that the server provides an SSL certificate signed by a trusted root certificate. These root certificates are in the `~/.postgresql/root.crt` file by default. To customize the location of this file, set the `sslrootcert` config value to a new file path.
 
 ### `keepalives_idle`
 If the database closes its connection while dbt is waiting for data, you may see the error `SSL SYSCALL error: EOF detected`. Lowering the [`keepalives_idle` value](https://www.postgresql.org/docs/9.3/libpq-connect.html) may prevent this, because the server will send a ping to keep the connection active more frequently. 

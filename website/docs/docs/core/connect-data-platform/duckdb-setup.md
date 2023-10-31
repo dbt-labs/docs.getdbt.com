@@ -4,7 +4,7 @@ description: "Read this guide to learn about the DuckDB warehouse setup in dbt."
 meta:
   maintained_by: Community
   authors: 'Josh Wills (https://github.com/jwills)'
-  github_repo: 'jwills/dbt-duckdb'
+  github_repo: 'duckdb/dbt-duckdb'
   pypi_package: 'dbt-duckdb'
   min_core_version: 'v1.0.1'
   cloud_support: Not Supported
@@ -12,7 +12,7 @@ meta:
   slack_channel_name: '#db-duckdb'
   slack_channel_link: 'https://getdbt.slack.com/archives/C039D1J1LA2'
   platform_name: 'Duck DB'
-  config_page: 'no-configs'
+  config_page: '/reference/resource-configs/no-configs'
 ---
 
 :::info Community plugin

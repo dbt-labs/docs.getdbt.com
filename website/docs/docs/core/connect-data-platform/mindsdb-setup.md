@@ -12,7 +12,7 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'MindsDB'
-  config_page: 'mindsdb-configs'
+  config_page: '/reference/resource-configs/mindsdb-configs'
 ---
 
 :::info Vendor-supported plugin

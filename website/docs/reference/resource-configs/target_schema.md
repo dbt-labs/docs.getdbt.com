@@ -8,7 +8,7 @@ datatype: string
 
 ```yml
 snapshots:
-  [<resource-path>](resource-path):
+  [<resource-path>](/reference/resource-configs/resource-path):
     +target_schema: string
 
 ```
@@ -27,7 +27,7 @@ snapshots:
 </File>
 
 ## Description
-The schema that dbt should build a [snapshot](snapshots) <Term id="table" /> into. Snapshots build into the same `target_schema`, no matter who is running them.
+The schema that dbt should build a [snapshot](/docs/build/snapshots) <Term id="table" /> into. Snapshots build into the same `target_schema`, no matter who is running them.
 
 On **BigQuery**, this is analogous to a `dataset`.
 
@@ -35,7 +35,7 @@ On **BigQuery**, this is analogous to a `dataset`.
 This is a **required** parameter, no default is provided.
 
 ## FAQs
-<FAQ src="Snapshots/snapshot-target-schema" />
+<FAQ path="Snapshots/snapshot-target-schema" />
 
 ## Examples
 ### Build all snapshots in a schema named `snapshots`
@@ -51,7 +51,7 @@ snapshots:
 </File>
 
 ### Use a target-aware schema
-Use the [`{{ target }}` variable](target) to change which schema a snapshot <Term id="table" /> is built in.
+Use the [`{{ target }}` variable](/reference/dbt-jinja-functions/target) to change which schema a snapshot <Term id="table" /> is built in.
 
 Note: consider whether this use-case is right for you, as downstream `refs` will select from the `dev` version of a snapshot, which can make it hard to validate models that depend on snapshots (see above [FAQ](#faqs))
 

@@ -12,7 +12,7 @@ Currently, this variable is not accessible when using the command `run-operation
 
 :::danger Warning!
 
-dbt actively builds the graph during the [parsing phase](execute) of
+dbt actively builds the graph during the [parsing phase](/reference/dbt-jinja-functions/execute) of
 running dbt projects, so the `selected_resources` context variable will be
 empty during parsing. Please read the information on this page to effectively use this variable.
 
@@ -29,6 +29,8 @@ For a given run it will look like:
 ```json
 ["model.my_project.model1", "model.my_project.model2", "snapshot.my_project.my_snapshot"]
 ```
+
+Each value corresponds to a key in the `nodes` object within the [graph](/reference/dbt-jinja-functions/graph) context variable.
 
 It can be used in macros in a `pre-hook`, `post-hook`, `on-run-start` or `on-run-end` 
 to evaluate what nodes are selected and trigger different logic whether a particular node

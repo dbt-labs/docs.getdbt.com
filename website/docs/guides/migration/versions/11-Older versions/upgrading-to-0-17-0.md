@@ -131,7 +131,7 @@ This configuration will work in dbt v0.17.0 when `config-version: 2` is used, bu
 
 Support for version 1 will be removed in a future release of dbt.
 
-### NativeEnvironment rendering for yaml fields
+### NativeEnvironment rendering for YAML fields
 
 In dbt v0.17.0, dbt enabled use of Jinja's Native Environment to render values in
 YML files. This Native Environment coerces string values to their
@@ -142,8 +142,8 @@ string-oriented inputs, like environment variables or command line variables.
 :::danger Heads up
 
   In dbt v0.17.1, native rendering is not enabled by default. It is possible to
-  natively render specific values using the [`as_bool`](as_bool),
-  [`as_number`](as_number), and [`as_native`](as_native) filters.
+  natively render specific values using the [`as_bool`](/reference/dbt-jinja-functions/as_bool),
+  [`as_number`](/reference/dbt-jinja-functions/as_number), and [`as_native`](/reference/dbt-jinja-functions/as_native) filters.
 
   The examples below have been updated to reflect 0.17.1 functionality.
 
@@ -246,13 +246,13 @@ BigQuery:
 ## New and changed documentation
 
 **Core**
-- [`path:` selectors](node-selection/methods#the-path-method)
-- [`--fail-fast`](commands/run#failing-fast)
+- [`path:` selectors](/reference/node-selection/methods#the-path-method)
+- [`--fail-fast`](/reference/commands/run#failing-fast)
 - [as_text Jinja filter](/reference/dbt-jinja-functions/as_text)
 - [accessing nodes in the `graph` object](/reference/dbt-jinja-functions/graph)
-- [persist_docs](resource-configs/persist_docs)
+- [persist_docs](/reference/resource-configs/persist_docs)
 - [source properties](reference/source-properties)
-- [source overrides](resource-properties/overrides)
+- [source overrides](/reference/resource-properties/overrides)
 
 **BigQuery**
 - [maximum_bytes_billed](/docs/core/connect-data-platform/bigquery-setup#maximum-bytes-billed)

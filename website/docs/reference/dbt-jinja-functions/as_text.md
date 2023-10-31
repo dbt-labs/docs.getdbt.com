@@ -6,15 +6,15 @@ description: "Use this filter to convert Jinja-compiled output back to text."
 ---
 
 The `as_text` Jinja filter will coerce Jinja-compiled output back to text. It
-can be used in yaml rendering contexts where values _must_ be provided as
+can be used in YAML rendering contexts where values _must_ be provided as
 strings, rather than as the datatype that they look like.
 
 :::info Heads up
 In dbt v0.17.1, native rendering is not enabled by default. As such, 
 the `as_text` filter has no functional effect.
 
-It is still possible to natively render specific values using the [`as_bool`](as_bool), 
-[`as_number`](as_number), and [`as_native`](as_native) filters. 
+It is still possible to natively render specific values using the [`as_bool`](/reference/dbt-jinja-functions/as_bool), 
+[`as_number`](/reference/dbt-jinja-functions/as_number), and [`as_native`](/reference/dbt-jinja-functions/as_native) filters. 
 
 :::
 
@@ -56,12 +56,3 @@ models:
 ```
 
 </File>
-
-<Changelog>
-
-* `v0.17.0`: Native rendering is enabled by default. The `as_text` filter was 
-introduced.
-* `v0.17.1`: Native rendering is disabled by default. The `as_text` filter works
-as before, with no functional effect.
-
-</Changelog>

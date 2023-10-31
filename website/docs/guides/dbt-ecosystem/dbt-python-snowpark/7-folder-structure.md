@@ -10,7 +10,6 @@ dbt Labs has developed a [project structure guide](/guides/best-practices/how-we
 - Intermediate &mdash; This is where we will be joining some Formula staging models.
 - Marts models &mdash; Here is where we perform our major transformations. It contains these subfolders:
     - aggregates
-    - intermediate
     - core
     - ml
 1. In your file tree, use your cursor and hover over the `models` subdirectory, click the three dots **…** that appear to the right of the folder name, then select **Create Folder**. We're going to add two new folders to the file path, `staging` and `formula1` (in that order) by typing `staging/formula1` into the file path.

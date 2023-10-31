@@ -4,12 +4,6 @@ id: "connection-profiles"
 description: "Configure your profile using the command line."
 ---
 
-## Related documentation
-
-* [`profiles.yml` reference](/docs/core/connect-data-platform/profiles.yml): Learn more about profile configuration.
-
-## Connecting to your warehouse using the command line
-
 When you invoke dbt from the command line, dbt parses your `dbt_project.yml` and obtains the `profile` name, which dbt needs to connect to your <Term id="data-warehouse" />.
 
 <File name='dbt_project.yml'>
@@ -23,7 +17,7 @@ profile: 'jaffle_shop'
 
 </File>
 
-dbt then checks your `profiles.yml` file for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
+dbt then checks your [`profiles.yml` file](/docs/core/connect-data-platform/profiles.yml) for a profile with the same name. A profile contains all the details required to connect to your data warehouse.
 
 <VersionBlock lastVersion="1.2">
 
@@ -63,7 +57,7 @@ jaffle_shop:
 
 In your `profiles.yml` file, you can store as many profiles as you need. Typically, you would have one profile for each warehouse you use. Most organizations only have one profile.
 
-For information about configuring advanced options, see [the `profiles.yml` reference page](/docs/core/connect-data-platform/profiles.yml.md).
+For information about configuring advanced options, see [the `profiles.yml` reference page](/docs/core/connect-data-platform/profiles.yml).
 
 ## About profiles
 
@@ -71,7 +65,7 @@ A profile consists of _targets_, and a specified _default target_.
 
 Each _target_ specifies the type of warehouse you are connecting to, the credentials to connect to the warehouse, and some dbt-specific configurations.
 
-The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](supported-data-platforms) section.
+The credentials you need to provide in your target varies across warehouses &mdash; sample profiles for each supported warehouse are available in the [Supported Data Platforms](/docs/supported-data-platforms) section.
 
 **Pro Tip:** You may need to surround your password in quotes if it contains special characters. More details [here](https://stackoverflow.com/a/37015689/10415173).
 
@@ -91,13 +85,13 @@ You can find more information on which values to use in your targets below.
 
 :::info Validating your warehouse credentials
 
-Use the [debug](debug) command to check whether you can successfully connect to your warehouse. Simply run `dbt debug` from within a dbt project to test your connection.
+Use the [debug](/reference/dbt-jinja-functions/debug-method) command to check whether you can successfully connect to your warehouse. Simply run `dbt debug` from within a dbt project to test your connection.
 
 :::
 
 ## Understanding targets in profiles
 
-dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt Core Environments](/docs/collaborate/environments/dbt-core-environments).
+dbt supports multiple targets within one profile to encourage the use of separate development and production environments as discussed in [dbt Core Environments](/docs/core/dbt-core-environments).
 
 A typical profile for an analyst using dbt locally will have a target named `dev`, and have this set as the default.
 
@@ -143,15 +137,7 @@ While the target schema represents the default schema that dbt will use, it may 
 
 When dbt runs, it creates a directed acyclic graph (DAG) of links between models. The number of threads represents the maximum number of paths through the graph dbt may work on at once – increasing the number of threads can minimize the run time of your project.  The default value for threads in user profiles is [4 threads](/docs/dbt-versions/release-notes/Dec-2022/default-thread-value).
 
-For example, if you specify `threads: 1`, dbt will start building only one model, and finish it, before moving onto the next. Specifying `threads: 8` means that dbt will work on _up to_ 8 models at once without violating dependencies – the actual number of models it can work on will likely be constrained by the available paths through the dependency graph.
-
-There's no set limit of the maximum number of threads you can set – while increasing the number of threads generally decreases execution time, there are a number of things to consider:
-* Increasing the number of threads increases the load on your data platform, which may impact other tools in your data stack. For example, if your BI tool uses the same compute resources as dbt, their queries may get queued during a dbt run.
-* The number of concurrent queries your database will allow you to run may be a limiting factor in how many models can be actively built – some models may queue while waiting for an available query slot.
-
-Generally the optimal number of threads depends on your data warehouse and its configuration. It’s best to test different values to find the best number of threads for your project. We recommend setting this to 4 to start with.
-
-You can use a different number of threads than the value defined in your target by using the `--threads` option when executing a dbt command.
+For more information, check out [using threads](/docs/running-a-dbt-project/using-threads).
 
 ## Advanced: Customizing a profile directory
 
@@ -205,4 +191,8 @@ $ export DBT_PROFILES_DIR=path/to/directory
 
 ## Advanced: Using environment variables
 
-Credentials can be placed directly into the `profiles.yml` file or loaded from environment variables. Using environment variables is especially useful for production deployments of dbt. You can find more information about environment variables [here](env_var).
+Credentials can be placed directly into the `profiles.yml` file or loaded from environment variables. Using environment variables is especially useful for production deployments of dbt. You can find more information about environment variables [here](/reference/dbt-jinja-functions/env_var).
+
+## Related docs
+
+* [About `profiles.yml`](/docs/core/connect-data-platform/profiles.yml) to learn more about profile configuration.

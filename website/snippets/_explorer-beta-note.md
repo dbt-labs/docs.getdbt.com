@@ -1,0 +1,1 @@
+**Note:** Make sure to set the environment to "Production" so you can take advantage of features like dbt Explorer and cross-project references. Refer to [Set product environment](/docs/deploy/deploy-environments#set-as-production-environment-beta) for details.

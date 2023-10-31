@@ -13,7 +13,7 @@ meta:
   slack_channel_name: 'n/a'
   slack_channel_link: 'https://www.getdbt.com/community'
   platform_name: 'Greenplum'
-  config_page: 'greenplum-configs'
+  config_page: '/reference/resource-configs/greenplum-configs'
 ---
 
 <h2> Overview of {frontMatter.meta.pypi_package} </h2>

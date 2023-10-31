@@ -42,74 +42,77 @@ function useDocTOC() {
   const { version: dbtVersion } = useContext(VersionContext)
   const [currentToc, setCurrentToc] = useState(toc)
   const [tocReady, setTocReady] = useState(true)
-  useEffect(() => {
-    async function fetchElements() {
-      // get html elements
-      const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
-      
-      // if headings exist on page
-      // compare against toc
-      if(toc && headings && headings.length) {
-        // make new TOC object 
-        let updated = Array.from(headings).reduce((acc, item) => {
-          // If heading id and toc item id match found
-          // include in updated toc
-          let found = toc.find(heading =>
-            heading.id.includes(item.id)
-          )
-          // If toc item is not in headings
-          // do not include in toc
-          // This means heading is versioned
 
-          let makeToc = (heading) => {
-            let level;
-            if (heading.nodeName === "H2") {
-              level = 2
-            } else if (heading.nodeName === "H3") {
-              level = 3
-            } else {
-              level = null
-            }
+  async function fetchElements() {
+    // get html elements
+    const headings = await getElements(".markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6")
+    
+    // if headings exist on page
+    // compare against toc
+    if(toc && headings && headings.length) {
+      // make new TOC object 
+      let updated = Array.from(headings).reduce((acc, item) => {
+        // If heading id and toc item id match found
+        // include in updated toc
+        let found = toc.find(heading =>
+          heading.id.includes(item.id)
+        )
+        // If toc item is not in headings
+        // do not include in toc
+        // This means heading is versioned
 
-            return {
-              value: heading.innerHTML,
-              id: heading.id,
-              level: level && level
-            }
-          }
-
-          if (found) {
-            acc.push(makeToc(item))
-          } else if (!found) {
-            acc.push(makeToc(item))
+        let makeToc = (heading) => {
+          let level;
+          if (heading.nodeName === "H2") {
+            level = 2
+          } else if (heading.nodeName === "H3") {
+            level = 3
           } else {
-            null
+            level = null
           }
 
-          return acc
-        }, [])
-
-        // If updated toc different than current
-        // If so, show loader and update toc 
-        if(currentToc.length !== updated.length) {
-          setTocReady(false)
-          // This timeout provides enough time to show the loader
-          // Otherwise the content updates immediately
-          // and toc content appears to flash with updates
-          setTimeout(() => {
-            setCurrentToc(updated)
-            setTocReady(true)
-          }, 500)
-        } else {
-          setTocReady(true)
+          return {
+            value: heading.innerHTML,
+            id: heading.id,
+            level: level && level
+          }
         }
+
+        if (found) {
+          acc.push(makeToc(item))
+        } else if (!found) {
+          acc.push(makeToc(item))
+        } else {
+          null
+        }
+
+        return acc
+      }, [])
+
+      // If updated toc different than current
+      // If so, show loader and update toc 
+      if(currentToc !== updated) {
+        setTocReady(false)
+        // This timeout provides enough time to show the loader
+        // Otherwise the content updates immediately
+        // and toc content appears to flash with updates
+        setTimeout(() => {
+          setCurrentToc(updated)
+          setTocReady(true)
+        }, 500)
       } else {
         setTocReady(true)
       }
-      useHashLink()
+    } else {
+      setTocReady(true)
     }
-    fetchElements()
+    useHashLink()
+  }
+
+  useEffect(() => {
+      fetchElements()
   }, [toc, dbtVersion])
+
   // end dbt Custom
 
   const windowSize = useWindowSize();

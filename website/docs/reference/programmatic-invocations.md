@@ -2,7 +2,7 @@
 title: "Programmatic invocations"
 ---
 
-In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
+In v1.5, dbt-core added support for programmatic invocations. The intent is to expose the existing dbt Core CLI via a Python entry point, such that top-level commands are callable from within a Python script or application.
 
 The entry point is a `dbtRunner` class, which allows you to `invoke` the same commands as on the CLI.
 
@@ -30,7 +30,7 @@ Each command returns a `dbtRunnerResult` object, which has three attributes:
 - `result`: If the command completed (successfully or with handled errors), its result(s). Return type varies by command.
 - `exception`: If the dbt invocation encountered an unhandled error and did not complete, the exception it encountered.
 
-There is a 1:1 correspondence between [CLI exit codes](reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
+There is a 1:1 correspondence between [CLI exit codes](/reference/exit-codes) and the `dbtRunnerResult` returned by a programmatic invocation:
 
 | Scenario                                                                                    | CLI Exit Code | `success` | `result`         | `exception` |
 |---------------------------------------------------------------------------------------------|--------------:|-----------|-------------------|-------------|
@@ -42,7 +42,7 @@ There is a 1:1 correspondence between [CLI exit codes](reference/exit-codes) and
 
 From dbt Core v1.5 onward, we making an ongoing commitment to providing a Python entry point at functional parity with dbt-core's CLI. We reserve the right to change the underlying implementation used to achieve that goal. We expect that the current implementation will unlock real use cases, in the short & medium term, while we work on a set of stable, long-term interfaces that will ultimately replace it.
 
-In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
+In particular, the objects returned by each command in `dbtRunnerResult.result` are not fully contracted, and therefore liable to change. Some of the returned objects are partially documented, because they overlap in part with the contents of [dbt artifacts](/reference/artifacts/dbt-artifacts). As Python objects, they contain many more fields and methods than what's available in the serialized JSON artifacts. These additional fields and methods should be considered **internal and liable to change in future versions of dbt-core.**
 
 ## Advanced usage patterns
 

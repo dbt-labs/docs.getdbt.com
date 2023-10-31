@@ -3,7 +3,7 @@ title: "Jan IDE updates and fixes"
 id: "ide-updates"
 description: "Jan 2023 release note: We've enhanced the IDE with improved syntax highlighting, faster and snappier IDE, improved error messaging, view repo status, added an easter egg, and more."
 sidebar_label: "Update and fixes: IDE"
-tags: [Feb-1-2023, IDE]
+tags: [Jan-2023, IDE]
 ---
 
 In the spirit of continuing to improve our [Cloud IDE](/docs/cloud/dbt-cloud-ide/develop-in-the-cloud) experience, the dbt Labs team worked on fixing bugs, increasing reliability, and adding new features ✨.

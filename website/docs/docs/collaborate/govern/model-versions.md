@@ -3,12 +3,20 @@ title: "Model versions"
 id: model-versions
 sidebar_label: "Model versions"
 description: "Version models to help with lifecycle management"
+keyword: governance, model version, model versioning, dbt model versioning
 ---
 
+<VersionBlock firstVersion="1.5" lastVersion="1.8">
 
 :::info New functionality
 This functionality is new in v1.5 — if you have thoughts, participate in [the discussion on GitHub](https://github.com/dbt-labs/dbt-core/discussions/6736)!
 :::
+
+</VersionBlock>
+
+import VersionsCallout from '/snippets/_version-callout.md';
+
+<VersionsCallout />
 
 Versioning APIs is a hard problem in software engineering. The root of the challenge is that the producers and consumers of an API have competing incentives:
 - Producers of an API need the ability to modify its logic and structure. There is a real cost to maintaining legacy endpoints forever, but losing the trust of downstream users is far costlier.
@@ -16,17 +24,17 @@ Versioning APIs is a hard problem in software engineering. The root of the chall
 
 When sharing a final dbt model with other teams or systems, that model is operating like an API. When the producer of that model needs to make significant changes, how can they avoid breaking the queries of its users downstream?
 
-Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal of is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
+Model versioning is a tool to tackle this problem, thoughtfully and head-on. The goal is not to make the problem go away entirely, nor to pretend it's easier or simpler than it is.
 
 ## Related documentation
-- [`versions`](resource-properties/versions)
-- [`latest_version`](resource-properties/latest_version)
-- [`include` & `exclude`](resource-properties/include-exclude)
-- [`ref` with `version` argument](ref#versioned-ref)
+- [`versions`](/reference/resource-properties/versions)
+- [`latest_version`](/reference/resource-properties/latest_version)
+- [`include` & `exclude`](/reference/resource-properties/include-exclude)
+- [`ref` with `version` argument](/reference/dbt-jinja-functions/ref#versioned-ref)
 
 ## Why version a model?
 
-If a model defines a ["contract"](model-contracts) (a set of guarantees for its structure), it's also possible to change that model's structure in a way that breaks the previous set of guarantees. This could be as obvious as removing or renaming a column, or more subtle, like changing its data type or nullability.
+If a model defines a ["contract"](/docs/collaborate/govern/model-contracts) (a set of guarantees for its structure), it's also possible to change that model's structure in a way that breaks the previous set of guarantees. This could be as obvious as removing or renaming a column, or more subtle, like changing its data type or nullability.
 
 One approach is to force every model consumer to immediately handle the breaking change as soon as it's deployed to production. This is actually the appropriate answer at many smaller organizations, or while rapidly iterating on a not-yet-mature set of data models. But it doesn’t scale well beyond that.
 
@@ -37,7 +45,7 @@ Instead, for mature models at larger organizations, powering queries inside & ou
 
 During that migration window, anywhere that model is being used downstream, it can continue to be referenced at a specific version.
 
-In the future, dbt will also offer first-class support for **deprecating models** ([dbt-core#7433](https://github.com/dbt-labs/dbt-core/issues/7433)). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
+dbt Core 1.6 introduced first-class support for **deprecating models** by specifying a [`deprecation_date`](/reference/resource-properties/deprecation_date). Taken together, model versions and deprecation offer a pathway for model producers to _sunset_ old models, and consumers the time to _migrate_ across breaking changes. It's a way of managing change across an organization: develop a new version, bump the latest, slate the old version for deprecation, update downstream references, and then remove the old version.
 
 There is a real trade-off that exists here—the cost to frequently migrate downstream code, and the cost (and clutter) of materializing multiple versions of a model in the data warehouse. Model versions do not make that problem go away, but by setting a deprecation date, and communicating a clear window for consumers to gracefully migrate off old versions, they put a known boundary on the cost of that migration.
 
@@ -55,9 +63,9 @@ Rather than constantly adding a new version for each small change, you should op
 
 ## How is this different from "version control"?
 
-[Version control](git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
+[Version control](/docs/collaborate/git-version-control) allows your team to collaborate simultaneously on a single code repository, manage conflicts between changes, and review changes before deploying into production. In that sense, version control is an essential tool for versioning the deployment of an entire dbt project—always the latest state of the `main` branch. In general, only one version of your project code is deployed into an environment at a time. If something goes wrong, you have the ability to roll back changes by reverting a commit or pull request, or by leveraging data platform capabilities around "time travel." 
 
-When you make updates to a model's source code—its logical definition, in SQL or Python, or related configuration—dbt can [compare your project to previous state](project-state), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production—all coordinated via your version control system.
+When you make updates to a model's source code &mdash; its logical definition, in SQL or Python, or related configuration &mdash; dbt can [compare your project to the previous state](/reference/node-selection/syntax#about-node-selection), enabling you to rebuild only models that have changed, and models downstream of a change. In this way, it's possible to develop changes to a model, quickly test in CI, and efficiently deploy into production &mdash; all coordinated via your version control system.
 
 **Versioned models are different.** Defining model `versions` is appropriate when people, systems, and processes beyond your team's control, inside or outside of dbt, depend on your models. You can neither simply go migrate them all, nor break their queries on a whim. You need to offer a migration path, with clear diffs and deprecation dates.
 
@@ -73,7 +81,7 @@ As the **producer** of a versioned model:
 - You keep track of all live versions in one place, rather than scattering them throughout the codebase
 - You can reuse the model's configuration, and highlight just the diffs between versions
 - You can select models to build (or not) based on whether they're a `latest`, `prerelease`, or `old` version
-- dbt will notify consumers of your versioned model when new versions become available, or (in the future) when they are slated for deprecation
+- dbt will notify consumers of your versioned model when new versions become available, or when they are slated for deprecation
 
 As the **consumer** of a versioned model:
 - You use a consistent `ref`, with the option of pinning to a specific live version
@@ -91,7 +99,7 @@ Let's say that `dim_customers` has three versions defined: `v2` is the "latest",
 
 As you'll see in the implementation section below, a versioned model can reuse the majority of its YAML properties and configuration. Each version needs to only say how it _differs_ from the shared set of attributes. This gives you, as the producer of a versioned model, the opportunity to highlight the differences across versions—which is otherwise difficult to detect in models with dozens or hundreds of columns—and to clearly track, in one place, all versions of the model which are currently live.
 
-dbt also supports [`version`-based selection](node-selection/methods#the-version-method). For example, you could define a [default YAML selector](node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
+dbt also supports [`version`-based selection](/reference/node-selection/methods#the-version-method). For example, you could define a [default YAML selector](/reference/node-selection/yaml-selectors#default) that avoids running any old model versions in development, even while you continue to run them in production through a sunset and migration period. (You could accomplish something similar by applying `tags` to these models, and cycling through those tags over time.)
 
 <File name="selectors.yml">
 
@@ -109,7 +117,7 @@ selectors:
 
 </File>
 
-Because dbt knows that these models are _actually the same model_, it can notify downstream consumers as new versions become available, and (in the future) as older versions are slated for deprecation.
+Because dbt knows that these models are _actually the same model_, it can notify downstream consumers as new versions become available, and as older versions are slated for deprecation.
 
 ```bash
 Found an unpinned reference to versioned model 'dim_customers'.
@@ -164,7 +172,7 @@ models:
 
 </File>
 
-Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create create a new model file (SQL or Python) encompassing those breaking changes.
+Let's say you need to make a breaking change to the model: Removing the `country_name` column, which is no longer reliable. First, create a new model file (SQL or Python) encompassing those breaking changes.
 
 
 The default convention is naming the new file with a `_v<version>` suffix. Let's make a new file, named `dim_customers_v2.sql`. (We don't need to rename the existing model file just yet, while it's still the "latest" version.)
@@ -269,9 +277,9 @@ models:
 
 </Tabs>
 
-The configuration above says: Instead of two unrelated models, I have two versioned definitions of the same model: `dim_customers.v1` and `dim_customers.v2`.
+The configuration above says: Instead of two unrelated models, I have two versioned definitions of the same model: `dim_customers_v1` and `dim_customers_v2`.
 
-**Where are they defined?** dbt expects each model version to be defined in a file named `<model_name>_v<v>`. In this case: `dim_customers_v1.sql` and `dim_customers_v2.sql`. It's also possible to define the "latest" version in `dim_customers.sql` (no suffix), without additional configuration. Finally, you can override this convention by setting [`defined_in: any_file_name_you_want`](resource-properties/versions#defined_in)—but we strongly encourage you to follow the convention, unless you have a very good reason.
+**Where are they defined?** dbt expects each model version to be defined in a file named `<model_name>_v<v>`. In this case: `dim_customers_v1.sql` and `dim_customers_v2.sql`. It's also possible to define the "latest" version in `dim_customers.sql` (no suffix), without additional configuration. Finally, you can override this convention by setting [`defined_in: any_file_name_you_want`](/reference/resource-properties/versions#defined_in)—but we strongly encourage you to follow the convention, unless you have a very good reason.
 
 **Where will they be materialized?** Each model version will create a database relation with alias `<model_name>_v<v>`. In this case: `dim_customers_v1` and `dim_customers_v2`. See [the section below](#configuring-database-location-with-alias) for more details on configuring aliases.
 
@@ -299,7 +307,7 @@ Like with all config inheritance, any configs set _within_ the versioned model's
 
 ### Configuring database location with `alias`
 
-Following the example, let's say you wanted `dim_customers.v1` to continue populating the database table named `dim_customers`. That's what the table was named previously, and you may have several other dashboards or tools expecting to read its data from `<dbname>.<schemaname>.dim_customers`.
+Following the example, let's say you wanted `dim_customers_v1` to continue populating the database table named `dim_customers`. That's what the table was named previously, and you may have several other dashboards or tools expecting to read its data from `<dbname>.<schemaname>.dim_customers`.
 
 You could use the `alias` configuration:
 
@@ -326,7 +334,13 @@ We intend to build this into `dbt-core` as out-of-the-box functionality. (Upvote
     -- otherwise, it's a no-op
     {% if model.get('version') and model.get('version') == model.get('latest_version') %}
 
-        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}  
+        {% set new_relation = this.incorporate(path={"identifier": model['name']}) %}
+
+        {% set existing_relation = load_relation(new_relation) %}
+
+        {% if existing_relation and not existing_relation.is_view %}
+            {{ drop_relation_if_exists(existing_relation) }}
+        {% endif %}
         
         {% set create_view_sql -%}
             -- this syntax may vary by data platform
@@ -390,7 +404,7 @@ For example, if your new model version is only renaming or removing certain colu
 ```sql
 {{ config(materialized = 'view') }}
 
-{% set dim_customers_v1 = ref('dim_customers', v=1)}
+{% set dim_customers_v1 = ref('dim_customers', v=1) %}
 
 select
 {{ dbt_utils.star(from=dim_customers_v1, except=["country_name"]) }}
@@ -406,4 +420,4 @@ We expect to develop more opinionated recommendations as teams start adopting mo
 - Where possible, define other versions as `select` transformations, which take the latest version as their starting point
 - When bumping the `latest_version`, migrate the SQL and YAML accordingly.
 
-In the example above, the third point might be tricky. It's easier to _exclude_ `country_name`, than it is to add it back in. Instead, we might need to keep around the full original logic for `dim_customers.v1`—but materialize it as a `view`, to minimize the data warehouse cost of building it. If downstream queriers see slightly degraded performance, it's still significantly better than broken queries, and all the more reason to migrate to the new "latest" version.
+In the example above, the third point might be tricky. It's easier to _exclude_ `country_name`, than it is to add it back in. Instead, we might need to keep around the full original logic for `dim_customers_v1`—but materialize it as a `view`, to minimize the data warehouse cost of building it. If downstream queriers see slightly degraded performance, it's still significantly better than broken queries, and all the more reason to migrate to the new "latest" version.
