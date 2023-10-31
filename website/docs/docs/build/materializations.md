@@ -143,6 +143,8 @@ less configuration options available, see your database platform's docs for more
 * **Advice:**
   * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
 
+Note that `dbt-snowflake` does NOT support materialized views, but Dynamic Tables instead. See [Snowflake specific configurations.](/reference/resource-configs/snowflake-configs#dynamic-tables)
+
 ## Python materializations
 
 Python models support two materializations:
