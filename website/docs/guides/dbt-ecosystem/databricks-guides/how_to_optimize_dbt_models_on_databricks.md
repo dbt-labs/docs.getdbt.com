@@ -35,7 +35,7 @@ Because of the ability of serverless warehouses to spin up in a matter of second
 
 Now that we have a solid sense of the infrastructure components, we can shift our focus to best practices and design patterns on pipeline development.  We recommend the staging/intermediate/mart approach which is analogous to the medallion architecture bronze/silver/gold approach that’s recommended by Databricks. Let’s dissect each stage further.
 
-dbt has guidelines on how you can [structure your dbt project](/guides/best-practices/how-we-structure/1-guide-overview) which you can learn more about.
+dbt has guidelines on how you can [structure your dbt project](/best-practices/how-we-structure/1-guide-overview) which you can learn more about.
 
 ### Bronze / Staging Layer:
 
@@ -49,7 +49,7 @@ The main benefit of leveraging `COPY INTO` is that it's an incremental operation
 
 Now that we have our bronze table taken care of, we can proceed with the silver layer.
 
-For cost and performance reasons, many customers opt to implement an incremental pipeline approach. The main benefit with this approach is that you process a lot less data when you insert new records into the silver layer, rather than re-create the table each time with all the data from the bronze layer. However it should be noted that by default, [dbt recommends using views and tables](/guides/best-practices/materializations/1-guide-overview) to start out with and then moving to incremental as you require more performance optimization.
+For cost and performance reasons, many customers opt to implement an incremental pipeline approach. The main benefit with this approach is that you process a lot less data when you insert new records into the silver layer, rather than re-create the table each time with all the data from the bronze layer. However it should be noted that by default, [dbt recommends using views and tables](/best-practices/materializations/1-guide-overview) to start out with and then moving to incremental as you require more performance optimization.
 
 dbt has an [incremental model materialization](/reference/resource-configs/spark-configs#the-merge-strategy) to facilitate this framework. How this works at a high level is that Databricks will create a temp view with a snapshot of data and then merge that snapshot into the silver table. You can customize the time range of the snapshot to suit your specific use case by configuring the `where` conditional in your `is_incremental` logic. The most straightforward implementation is to merge data using a timestamp that’s later than the current max timestamp in the silver table, but there are certainly valid use cases for increasing the temporal range of the source snapshot.
 

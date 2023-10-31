@@ -4061,6 +4061,11 @@
       "source": "/quickstarts/manual-install",
       "destination": "/guides/manual-install",
       "permanent": true
+    },
+    {
+      "source": "TODO",
+      "destination": "TODO",
+      "permanent": true
     }
   ]
 }

@@ -139,7 +139,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 *   [Sources](/docs/build/sources/)
 *   [Refs](/reference/dbt-jinja-functions/ref/)
 *   [tags](/reference/resource-configs/tags/)
-* [Jinja docs](/guides/advanced/using-jinja)
+* [Jinja docs](/guides/using-jinja)
 
 ## ✅ Testing & Continuous Integration
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ This post is the checklist I created to guide our internal work, and I’m shari
 
 **Useful links**
 
-* [Version control](/best-practices/best-practices#version-control-your-dbt-project)
+* [Version control](/best-practices/best-practice-workflows#version-control-your-dbt-project)
 *   [dbt Labs' PR Template](/blog/analytics-pull-request-template)
 
 ## ✅ Documentation
@@ -252,7 +252,7 @@ Thanks to Christine Berger for her DAG diagrams!
 
 **Useful links**
 
-*   [How we structure our dbt Project](/guides/best-practices/how-we-structure/1-guide-overview)
+*   [How we structure our dbt Project](/best-practices/how-we-structure/1-guide-overview)
 *   [Coalesce DAG Audit Talk](https://www.youtube.com/watch?v=5W6VrnHVkCA&t=2s)
 *   [Modular Data Modeling Technique](https://getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 *   [Understanding Threads](/docs/running-a-dbt-project/using-threads)

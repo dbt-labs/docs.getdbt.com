@@ -31,7 +31,7 @@ Our models (typically) fit into two main categories:\
 Things to note:
 
 - There are different types of models that typically exist in each of the above categories. See [Model Layers](#model-layers) for more information.
-- Read [How we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) for an example and more details around organization.
+- Read [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) for an example and more details around organization.
 
 ## Model Layers
 

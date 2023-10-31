@@ -63,6 +63,6 @@ As a dbt user, your main focus will be on writing models (i.e. select queries) t
 ### Related docs
 
 - [Quickstarts for dbt](/guides)
-- [Best practice guides](/guides/best-practices)
+- [Best practice guides](/best-practices)
 - [What is a dbt Project?](/docs/build/projects)
 - [dbt run](/docs/running-a-dbt-project/run-your-dbt-projects)

@@ -28,7 +28,7 @@ dbt Core v0.20 has reached the end of critical support. No new patch versions wi
 - [Test Configs](/reference/test-configs)
 - [Test properties](/reference/resource-properties/tests)
 - [Node Selection](/reference/node-selection/syntax) (with updated [test selection examples](/reference/node-selection/test-selection-examples))
-- [Writing custom generic tests](/guides/best-practices/writing-custom-generic-tests)
+- [Writing custom generic tests](/best-practices/writing-custom-generic-tests)
 
 ### Elsewhere in Core
 - [Parsing](/reference/parsing): rework of partial parsing, introduction of experimental parser

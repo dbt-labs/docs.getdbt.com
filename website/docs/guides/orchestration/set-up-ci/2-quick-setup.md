@@ -7,7 +7,7 @@ description: Find issues before they are deployed to production with dbt Cloud's
 In this guide, we're going to add a **CI environment**, where proposed changes can be validated in the context of the entire project without impacting production systems. We will use a single set of deployment credentials (like the Prod environment), but models are built in a separate location to avoid impacting others (like the Dev environment).
 
 Your git flow will look like this:
-<Lightbox src="/img/guides/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
+<Lightbox src="/img/best-practices/environment-setup/one-branch-git.png" title="git flow diagram" />
 
 ## Prerequisites
 

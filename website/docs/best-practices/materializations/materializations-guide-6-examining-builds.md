@@ -18,7 +18,7 @@ hoverSnippet: Read this guide to understand how to examine your builds in dbt.
 
 That’s where dbt Cloud’s Model Timing visualization comes in extremely handy. If we’ve set up a [Job](/guides/bigquery) in dbt Cloud to run our models, we can use the Model Timing tab to pinpoint our longest-running models.
 
-![dbt Cloud's Model Timing diagram](/img/guides/best-practices/materializations/model-timing-diagram.png)
+![dbt Cloud's Model Timing diagram](/img/best-practices/materializations/model-timing-diagram.png)
 
 - 🧵 This view lets us see our **mapped out in threads** (up to 64 threads, we’re currently running with 4, so we get 4 tracks) over time. You can think of **each thread as a lane on a highway**.
 - ⌛ We can see above that `customer_status_histories` is **taking by far the most time**, so we may want to go ahead and **make that incremental**.
@@ -29,7 +29,7 @@ If you aren’t using dbt Cloud, that’s okay! We don’t get a fancy visualiza
 
 If you’ve ever run dbt, whether `build`, `test`, `run` or something else, you’ve seen some output like below. Let’s take a closer look at how to read this.
 
-![CLI output from a dbt build command](/img/guides/best-practices/materializations/dbt-build-output.png)
+![CLI output from a dbt build command](/img/best-practices/materializations/dbt-build-output.png)
 
 - There are two entries per model, the **start** of a model’s build and the **completion**, which will include **how long** the model took to run. The **type** of model is included as well. For example:
 

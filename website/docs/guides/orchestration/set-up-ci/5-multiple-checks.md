@@ -15,7 +15,7 @@ The team at Sunrun maintained a SOX-compliant deployment in dbt while reducing t
 In this section, we will add a new **QA** environment. New features will branch off from and be merged back into the associated `qa` branch, and a member of your team (the "Release Manager") will create a PR against `main` to be validated in the CI environment before going live.
 
 The git flow will look like this:
-<Lightbox src="/img/guides/best-practices/environment-setup/many-branch-git.png" title="git flow diagram with an intermediary branch" />
+<Lightbox src="/img/best-practices/environment-setup/many-branch-git.png" title="git flow diagram with an intermediary branch" />
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 ---
 title: "Best practices for workflows"
-id: "best-practices"
+id: "best-practice-workflows"
 ---
 
 This page contains the collective wisdom of experienced users of dbt on how to best use it in your analytics work. Observing these best practices will help your analytics team work as effectively as possible, while implementing the pro-tips will add some polish to your dbt projects!
@@ -58,7 +58,7 @@ All subsequent data models should be built on top of these models, reducing the 
 
 Earlier versions of this documentation recommended implementing “base models” as the first layer of transformation, and gave advice on the SQL within these models. We realized that while the reasons behind this convention were valid, the specific advice around "base models" represented an opinion, so we moved it out of the official documentation.
 
-You can instead find our opinions on [how we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+You can instead find our opinions on [how we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).
 
 :::
 

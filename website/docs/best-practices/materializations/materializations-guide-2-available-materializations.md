@@ -19,7 +19,7 @@ Views and tables and incremental models, oh my! In this section we’ll start ge
 
 **Views and Tables are the two basic categories** of object that we can create across warehouses. They exist natively as types of objects in the warehouse, as you can see from this screenshot of Snowflake (depending on your warehouse the interface will look a little different). **Incremental models** and other materializations types are a little bit different. They tell dbt to **construct tables in a special way**.
 
-![Tables and views in the browser on Snowflake.](/img/guides/best-practices/materializations/tables-and-views.png)
+![Tables and views in the browser on Snowflake.](/img/best-practices/materializations/tables-and-views.png)
 
 ### Views
 

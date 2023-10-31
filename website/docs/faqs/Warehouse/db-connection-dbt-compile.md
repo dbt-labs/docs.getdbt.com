@@ -22,7 +22,7 @@ To generate the compiled SQL for many models, dbt needs to run introspective que
 
 These introspective queries include:
 
-- Populating the [relation cache](/guides/advanced/creating-new-materializations#update-the-relation-cache). Caching speeds up the metadata checks, including whether an [incremental model](/docs/build/incremental-models) already exists in the data platform. 
+- Populating the [relation cache](/guides/creating-new-materializations#update-the-relation-cache). Caching speeds up the metadata checks, including whether an [incremental model](/docs/build/incremental-models) already exists in the data platform. 
 - Resolving [macros](/docs/build/jinja-macros#macros), such as `run_query` or `dbt_utils.get_column_values` that you're using to template out your SQL. This is because dbt needs to run those queries during model SQL compilation. 
 
 Without a data platform connection, dbt can't perform these introspective queries and won't be able to generate the compiled SQL needed for the next steps in the dbt workflow. You can [`parse`](/reference/commands/parse) a project and use the [`list`](/reference/commands/list) resources in the project, without an internet or data platform connection. Parsing a project is enough to produce a [manifest](/reference/artifacts/manifest-json), however, keep in mind that the written-out manifest won't include compiled SQL.

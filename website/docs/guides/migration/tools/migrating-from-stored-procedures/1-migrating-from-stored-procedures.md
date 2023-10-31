@@ -13,7 +13,7 @@ If your <Term id="data-warehouse" /> supports `SHOW CREATE TABLE`, that can be a
 
 As for ensuring that you have the right column types, since models materialized by dbt generally use `CREATE TABLE AS SELECT` or `CREATE VIEW AS SELECT` as the driver for object creation, tables can end up with unintended column types if the queries aren’t explicit. For example, if you care about `INT` versus `DECIMAL` versus `NUMERIC`, it’s generally going to be best to be explicit. The good news is that this is easy with dbt: you just cast the column to the type you intend.
 
-We also generally recommend that column renaming and type casting happen as close to the source tables as possible, typically in a layer of staging transformations, which helps ensure that future dbt modelers will know where to look for those transformations! See [How we structure our dbt projects](/guides/best-practices/how-we-structure/1-guide-overview) for more guidance on overall project structure.
+We also generally recommend that column renaming and type casting happen as close to the source tables as possible, typically in a layer of staging transformations, which helps ensure that future dbt modelers will know where to look for those transformations! See [How we structure our dbt projects](/best-practices/how-we-structure/1-guide-overview) for more guidance on overall project structure.
 
 ### Operations we need to map
 

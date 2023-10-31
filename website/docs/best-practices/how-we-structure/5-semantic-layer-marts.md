@@ -3,7 +3,7 @@ title: "Marts for the Semantic Layer"
 id: "5-semantic-layer-marts"
 ---
 
-The Semantic Layer alters some fundamental principles of how you organize your project. Using dbt without the Semantic Layer necessitates creating the most useful combinations of your building block components into wide, denormalized marts. On the other hand, the Semantic Layer leverages MetricFlow to denormalize every possible combination of components we've encoded dynamically. As such we're better served to bring more normalized models through from the logical layer into the Semantic Layer to maximize flexibility. This section will assume familiarity with the best practices laid out in the [How we build our metrics](https://docs.getdbt.com/guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) guide, so check that out first for a more hands-on introduction to the Semantic Layer.
+The Semantic Layer alters some fundamental principles of how you organize your project. Using dbt without the Semantic Layer necessitates creating the most useful combinations of your building block components into wide, denormalized marts. On the other hand, the Semantic Layer leverages MetricFlow to denormalize every possible combination of components we've encoded dynamically. As such we're better served to bring more normalized models through from the logical layer into the Semantic Layer to maximize flexibility. This section will assume familiarity with the best practices laid out in the [How we build our metrics](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) guide, so check that out first for a more hands-on introduction to the Semantic Layer.
 
 ## Semantic Layer: Files and folders
 
@@ -39,7 +39,7 @@ models
 ## When to make a mart
 
 - ❓ If we can go directly to staging models and it's better to serve normalized models to the Semantic Layer, then when, where, and why would we make a mart?
-  - 🕰️ We have models that have measures but no time dimension to aggregate against. The details of this are laid out in the [Semantic Layer guide](https://docs.getdbt.com/guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) but in short, we need a time dimension to aggregate against in MetricFlow. Dimensional tables that
+  - 🕰️ We have models that have measures but no time dimension to aggregate against. The details of this are laid out in the [Semantic Layer guide](https://docs.getdbt.com/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) but in short, we need a time dimension to aggregate against in MetricFlow. Dimensional tables that
   - 🧱 We want to **materialize** our model in various ways.
   - 👯 We want to **version** our model.
   - 🛒 We have various related models that make more sense as **one wider component**.

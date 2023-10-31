@@ -7,7 +7,7 @@ In this guide, we discuss how to set up your dbt project on the Databricks Lakeh
 
 ## Configuring the Databricks Environments
 
-To get started, we will use Databricks’s Unity Catalog. Without it, we would not be able to design separate [environments](https://docs.getdbt.com/docs/collaborate/environments) for development and production per our [best practices](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview). It also allows us to ensure the proper access controls have been applied using SQL. You will need to be using the dbt-databricks adapter to use it (as opposed to the dbt-spark adapter).
+To get started, we will use Databricks’s Unity Catalog. Without it, we would not be able to design separate [environments](https://docs.getdbt.com/docs/collaborate/environments) for development and production per our [best practices](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview). It also allows us to ensure the proper access controls have been applied using SQL. You will need to be using the dbt-databricks adapter to use it (as opposed to the dbt-spark adapter).
 
 We will set up two different *catalogs* in Unity Catalog: **dev** and **prod**. A catalog is a top-level container for *schemas* (previously known as databases in Databricks), which in turn contain tables and views.
 

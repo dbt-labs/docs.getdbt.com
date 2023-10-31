@@ -31,7 +31,7 @@ Here's what's new to [docs.getdbt.com](http://docs.getdbt.com/):
 
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 
-Added a [style guide template](/guides/best-practices/how-we-style/6-how-we-style-conclusion#style-guide-template) that you can copy & paste to make sure you adhere to best practices when styling dbt projects!
+Added a [style guide template](/best-practices/how-we-style/6-how-we-style-conclusion#style-guide-template) that you can copy & paste to make sure you adhere to best practices when styling dbt projects!
 
 ## Upcoming changes
 

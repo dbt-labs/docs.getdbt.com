@@ -13,7 +13,7 @@ Deployment environments in dbt Cloud are crucial for deploying dbt jobs in produ
 A dbt Cloud project can have multiple deployment environments, providing you the flexibility and customization to tailor the execution of dbt jobs. You can use deployment environments to [create and schedule jobs](/docs/deploy/deploy-jobs#create-and-schedule-jobs), [enable continuous integration](/docs/deploy/continuous-integration), or more based on your specific needs or requirements.
 
 :::tip Learn how to manage dbt Cloud environments
-To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview).
+To learn different approaches to managing dbt Cloud environments and recommendations for your organization's unique needs, read [dbt Cloud environment best practices](https://docs.getdbt.com/best-practices/environment-setup/1-env-guide-overview).
 ::: 
  
 This page reviews the different types of environments and how to configure your deployment environment in dbt Cloud. 
@@ -190,7 +190,7 @@ This section allows you to determine the credentials that should be used when co
 
 ## Related docs
 
-- [dbt Cloud environment best practices](https://docs.getdbt.com/guides/best-practices/environment-setup/1-env-guide-overview)
+- [dbt Cloud environment best practices](https://docs.getdbt.com/best-practices/environment-setup/1-env-guide-overview)
 - [Deploy jobs](/docs/deploy/deploy-jobs)
 - [CI jobs](/docs/deploy/continuous-integration)
 - [Delete a job or environment in dbt Cloud](/faqs/Environments/delete-environment-job)

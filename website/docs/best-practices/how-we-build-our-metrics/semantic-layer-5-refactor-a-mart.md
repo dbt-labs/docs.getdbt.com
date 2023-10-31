@@ -72,7 +72,7 @@ So far we've been working in new pointing at a staging model to simplify things 
 
 Now, let's tackle a thornier situation. Products and supplies both have dimensions and measures but no time dimension. Products has a one-to-one relationship with `order_items`, enriching that table, which is itself just a mapping table of products to orders. Additionally, products have a one-to-many relationship with supplies. The high-level ERD looks like the diagram below.
 
-<Lightbox src='/img/guides/best-practices/semantic-layer/orders_erd.png' />
+<Lightbox src='/img/best-practices/semantic-layer/orders_erd.png' />
 
 So to calculate, for instance, the cost of ingredients and supplies for a given order, we'll need to do some joining and aggregating, but again we **lack a time dimension for products and supplies**. This is the signal to us that we'll **need to build a logical mart** and point our semantic model at that.
 

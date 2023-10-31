@@ -10,7 +10,7 @@ Sources allow us to create a dependency between our source database object and o
 
 Staging models are the base of our project, where we bring all the individual components we're going to use to build our more complex and useful models into the project.
 
-Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/guides/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://courses.getdbt.com/collections) course which covers all of our core functionality).
+Since we want to focus on dbt and Python in this workshop, check out our [sources](/docs/build/sources) and [staging](/best-practices/how-we-structure/2-staging) docs if you want to learn more (or take our [dbt Fundamentals](https://courses.getdbt.com/collections) course which covers all of our core functionality).
 
 ## Create sources
 

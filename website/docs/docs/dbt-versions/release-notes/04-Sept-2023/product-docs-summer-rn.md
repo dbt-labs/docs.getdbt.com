@@ -40,4 +40,4 @@ You can provide feedback by opening a pull request or issue in [our repo](https:
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 * Check out how these community members use the dbt community in the [Community spotlight](/community/spotlight). 
 * Blog posts published this summer include [Optimizing Materialized Views with dbt](/blog/announcing-materialized-views),  [Data Vault 2.0 with dbt Cloud](/blog/data-vault-with-dbt-cloud), and [Create dbt Documentation and Tests 10x faster with ChatGPT](/blog/create-dbt-documentation-10x-faster-with-chatgpt) 
-* We now have two new best practice guides: [How we build our metrics](/guides/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) and [Set up Continuous Integration](/guides/orchestration/set-up-ci/overview).
+* We now have two new best practice guides: [How we build our metrics](/best-practices/how-we-build-our-metrics/semantic-layer-1-intro) and [Set up Continuous Integration](/guides/orchestration/set-up-ci/overview).

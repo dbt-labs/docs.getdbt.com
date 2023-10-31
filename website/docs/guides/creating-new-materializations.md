@@ -13,7 +13,7 @@ level: 'Advanced'
 recently_updated: true
 ---
 
-## Overview
+## Introduction
 
 The model <Term id="materialization">materializations</Term> you're familiar with, `table`, `view`, and `incremental` are implemented as macros in a package that's distributed along with dbt. You can check out the [source code for these materializations](https://github.com/dbt-labs/dbt-core/tree/main/core/dbt/include/global_project/macros/materializations). If you need to create your own materializations, reading these files is a good place to start. Continue reading below for a deep-dive into dbt materializations.
 

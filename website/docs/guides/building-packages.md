@@ -1,26 +1,39 @@
 ---
-title: "Building a dbt package" # to do: update this to creating
+title: "Building dbt packages" # to do: update this to creating
 id: "building-packages"
+description: When you have dbt code that might help others, you can create a package for dbt using a GitHub repository. 
+displayText: Building dbt packages
+hoverSnippet: Learn how to create packages for dbt.
+time_to_complete: '60 minutes'
+platform: 'dbt-core'
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['packages', 'dbt Core', 'legacy']
+level: 'Advanced'
+recently_updated: true
 ---
 
-## Assumed knowledge
-This article assumes you are familiar with:
+## Introduction
+
+Creating packages is an **advanced use of dbt**. If you're new to the tool, we recommend that you first use the product for your own analytics before attempting to create a package for others.
+
+### Prerequisites
+
+A strong understanding of:
 - [packages](/docs/build/packages)
 - administering a repository on GitHub
 - [semantic versioning](https://semver.org/)
 
-Heads up — developing a package is an **advanced use of dbt**. If you're new to the tool, we recommend that you first use the product for your own company's analytics before attempting to create a package.
-
-## 1. Assess whether a package is the right solution
+### Assess whether a package is the right solution
 Packages typically contain either:
 - macros that solve a particular analytics engineering problem — for example, [auditing the results of a query](https://hub.getdbt.com/dbt-labs/audit_helper/latest/), [generating code](https://hub.getdbt.com/dbt-labs/codegen/latest/), or [adding additional schema tests to a dbt project](https://hub.getdbt.com/calogica/dbt_expectations/latest/).
 - models for a common dataset — for example a dataset for software products like [MailChimp](https://hub.getdbt.com/fivetran/mailchimp/latest/) or [Snowplow](https://hub.getdbt.com/dbt-labs/snowplow/latest/), or even models for metadata about your data stack like [Snowflake query spend](https://hub.getdbt.com/gitlabhq/snowflake_spend/latest/) and [the artifacts produced by `dbt run`](https://hub.getdbt.com/tailsdotcom/dbt_artifacts/latest/). In general, there should be a shared set of industry-standard metrics that you can model (e.g. email open rate).
 
 Packages are _not_ a good fit for sharing models that contain business-specific logic, for example, writing code for marketing attribution, or monthly recurring revenue. Instead, consider sharing a blog post and a link to a sample repo, rather than bundling this code as a package (here's our blog post on [marketing attribution](https://blog.getdbt.com/modeling-marketing-attribution/) as an example).
 
-## 2. Create your new project
-:::note Using the CLI for package development
-We tend to use the CLI for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present dbt Cloud is not designed for this workflow.
+## Create your new project
+:::note Using the command line for package development
+We tend to use the command line interface for package development. The development workflow often involves installing a local copy of your package in another dbt project — at present dbt Cloud is not designed for this workflow.
 :::
 
 1. Use the [dbt init](/reference/commands/init) command to create a new dbt project, which will be your package:
@@ -33,15 +46,15 @@ $ dbt init [package_name]
 
 ¹Currently, our package registry only supports packages that are hosted in GitHub.
 
-## 3. Develop your package
+## Develop your package
 We recommend that first-time package authors first develop macros and models for use in their own dbt project. Once your new package is created, you can get to work on moving them across, implementing some additional package-specific design patterns along the way.
 
 When working on your package, we often find it useful to install a local copy of the package in another dbt project — this workflow is described [here](https://discourse.getdbt.com/t/contributing-to-an-external-dbt-package/657).
 
-### Follow our best practices
+### Follow best practices
 _Modeling packages only_
 
-Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
+Use our [dbt coding conventions](https://github.com/dbt-labs/corp/blob/main/dbt_style_guide.md), our article on [how we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview), and our [best practices](best-practices) for all of our advice on how to build your dbt project.
 
 This is where it comes in especially handy to have worked on your own dbt project previously.
 
@@ -103,7 +116,7 @@ Over time, we've developed a set of useful GitHub artifacts that make administer
     - Descriptions of the main models included in the package ([example](https://github.com/dbt-labs/snowplow))
 - GitHub templates, including PR templates and issue templates ([example](https://github.com/dbt-labs/dbt-audit-helper/tree/master/.github))
 
-## 4. Add integration tests
+## Add integration tests
 _Optional_
 
 We recommend that you implement integration tests to confirm that the package works as expected — this is an even _more_ advanced step, so you may find that you build up to this.
@@ -125,7 +138,7 @@ packages:
 
 </File>
 
-4. Add resources to the package (seeds, models, tests) so that you can successfully run your project, and compare the output with what you expect. The exact appraoch here will vary depending on your packages. In general you will find that you need to:
+4. Add resources to the package (seeds, models, tests) so that you can successfully run your project, and compare the output with what you expect. The exact approach here will vary depending on your packages. In general you will find that you need to:
     - Add mock data via a [seed](/docs/build/seeds) with a few sample (anonymized) records. Configure the `integration_tests` project to point to the seeds instead of raw data tables.
     - Add more seeds that represent the expected output of your models, and use the [dbt_utils.equality](https://github.com/dbt-labs/dbt-utils#equality-source) test to confirm the output of your package, and the expected output matches.
 
@@ -134,7 +147,7 @@ packages:
 
 5. (Optional) Use a CI tool, like CircleCI or GitHub Actions, to automate running your dbt project when you open a new Pull Request. For inspiration, check out one of our [CircleCI configs](https://github.com/dbt-labs/snowplow/blob/main/.circleci/config.yml), which runs tests against our four main warehouses. Note: this is an advanced step — if you are going down this path, you may find it useful to say hi on [dbt Slack](https://community.getdbt.com/).
 
-## 5. Deploy the docs for your package
+## Deploy the docs for your package
 _Optional_
 
 A dbt docs site can help a prospective user of your package understand the code you've written. As such, we recommend that you deploy the site generated by `dbt docs generate` and link to the deployed site from your package.
@@ -147,12 +160,13 @@ The easiest way we've found to do this is to use [GitHub Pages](https://pages.gi
 4. Enable GitHub pages on the repo in the settings tab, and point it to the “docs” subdirectory
 4. GitHub should then deploy the docs at `<org-name>.github.io/<repo-name>`, like so: [fivetran.github.io/dbt_ad_reporting](https://fivetran.github.io/dbt_ad_reporting/)
 
-## 6. Release your package
+## Release your package
 Create a new [release](https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository) once you are ready for others to use your work! Be sure to use [semantic versioning](https://semver.org/) when naming your release.
 
 In particular, if new changes will cause errors for users of earlier versions of the package, be sure to use _at least_ a minor release (e.g. go from `0.1.1` to `0.2.0`).
 
 The release notes should contain an overview of the changes introduced in the new version. Be sure to call out any changes that break the existing interface!
 
-## 7. Add the package to hub.getdbt.com
+## Add the package to hub.getdbt.com
+
 Our package registry, [hub.getdbt.com](https://hub.getdbt.com/), gets updated by the [hubcap script](https://github.com/dbt-labs/hubcap). To add your package to hub.getdbt.com, create a PR on the [hubcap repository](https://github.com/dbt-labs/hubcap) to include it in the `hub.json` file.

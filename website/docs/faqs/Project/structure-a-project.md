@@ -8,4 +8,4 @@ id: structure-a-project
 
 There's no one best way to structure a project! Every organization is unique.
 
-If you're just getting started, check out how we (dbt Labs) [structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview).
+If you're just getting started, check out how we (dbt Labs) [structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview).

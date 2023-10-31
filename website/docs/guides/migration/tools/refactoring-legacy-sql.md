@@ -206,7 +206,7 @@ This allows anyone after us to easily step through the CTEs when troubleshooting
 ## Port CTEs to individual data models
 Rather than keep our SQL code confined to one long SQL file, we'll now start splitting it into modular + reusable [dbt data models](https://docs.getdbt.com/docs/build/models).
 
-Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://docs.getdbt.com/guides/best-practices/how-we-structure/1-guide-overview) accordingly.
+Internally at dbt Labs, we follow roughly this [data modeling technique](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/) and we [structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview) accordingly.
 
 We'll follow those structures in this walkthrough, but your team's conventions may of course differ from ours.
 

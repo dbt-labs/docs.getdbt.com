@@ -58,7 +58,7 @@ models:
 
 As we’ve learned, views store only the logic of the transformation in the warehouse, so our runs take only a couple seconds per model (or less). What happens when we go to query the data though?
 
-![Long query time from Snowflake](/img/guides/best-practices/materializations/snowflake-query-timing.png)
+![Long query time from Snowflake](/img/best-practices/materializations/snowflake-query-timing.png)
 
 Our marts are slow to query!
 

@@ -3,7 +3,7 @@ title: "Folder structure"
 id: "7-folder-structure"
 description: "Folder structure"
 ---
-dbt Labs has developed a [project structure guide](/guides/best-practices/how-we-structure/1-guide-overview/) that contains a number of recommendations for how to build the folder structure for your project. Do check out that guide if you want to learn more. Right now we are going to create some folders to organize our files:
+dbt Labs has developed a [project structure guide](/best-practices/how-we-structure/1-guide-overview/) that contains a number of recommendations for how to build the folder structure for your project. Do check out that guide if you want to learn more. Right now we are going to create some folders to organize our files:
 
 - Sources &mdash; This is our Formula 1 dataset and it will be defined in a source YAML file.
 - Staging models &mdash; These models have a 1:1 with their source table.

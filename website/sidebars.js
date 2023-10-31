@@ -1027,6 +1027,7 @@ const sidebarSettings = {
         },
         "best-practices/debugging-errors",
         "best-practices/writing-custom-generic-tests",
+        "best-practices/best-practice-workflows",
       ],
     },
   ],
