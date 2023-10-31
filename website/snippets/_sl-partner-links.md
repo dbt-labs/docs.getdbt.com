@@ -2,7 +2,7 @@ The following tools integrate with the dbt Semantic Layer:
 
 <!-- do not change card order unless specified by both SL PM and Partnerships team-->
 
-<div className="grid--4-col">
+<div className="grid--3-col">
 
  <Card
     title="Tableau (beta)"
@@ -22,7 +22,7 @@ The following tools integrate with the dbt Semantic Layer:
       link="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       body="Check out how to connect, analyze metrics, collaborate, and discover more data possibilities."
       icon="hex"/>
-    <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
+      <a href="https://learn.hex.tech/docs/connect-to-data/data-connections/dbt-integration#dbt-semantic-layer-integration"
       className="external-link"
       target="_blank"
       rel="noopener noreferrer">
@@ -32,10 +32,10 @@ The following tools integrate with the dbt Semantic Layer:
 
 <div className="card-container">
   <Card
-    title="KlipFolio Power Metrics"
-    body="Learn how to connect, and deliver a streamlined metrics catalog to your business users."
-    link="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
-    icon="klipfolio"/>
+    title="Klipfolio PowerMetrics"
+    body="Learn how to connect to a streamlined metrics catalog and deliver metric-centric analytics to business users."
+    icon="klipfolio"
+    link="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"/>
     <a href="https://support.klipfolio.com/hc/en-us/articles/18164546900759-PowerMetrics-Adding-dbt-Semantic-Layer-metrics"
     className="external-link"
       target="_blank"
@@ -90,9 +90,9 @@ The following tools integrate with the dbt Semantic Layer:
   <Card
     title="Delphi"
     body="Learn how to connect Delphi to the dbt Semantic Layer and access metrics from any integrated tool."
-    link="https://www.delphihq.com/integrations/dbt"
+    link="https://docs.delphihq.com/getting-started"
     icon="delphi"/>
-    <a href="https://www.delphihq.com/integrations/dbt"
+    <a href="https://docs.delphihq.com/getting-started"
     className="external-link"
       target="_blank"
       rel="noopener noreferrer">
