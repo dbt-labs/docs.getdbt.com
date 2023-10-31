@@ -1125,6 +1125,20 @@ const sidebarSettings = {
         "guides/migration/sl-migration",
         {
           type: "category",
+          label: "Versions",
+          items: [
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.7",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.6",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.5",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.3",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.2",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.1",
+            "docs/dbt-versions/core-upgrade/upgrading-to-v1.0",
+             ],
+            },
+        {
+          type: "category",
           label: "Tools",
           link: {
             type: "generated-index",

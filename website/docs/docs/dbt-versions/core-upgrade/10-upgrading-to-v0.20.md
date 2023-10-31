@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to v0.20"
+id: "upgrading-to-v0.20"
 
 ---
 

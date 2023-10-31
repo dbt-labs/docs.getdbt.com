@@ -1,6 +1,7 @@
 ---
 title: "Upgrading to v1.3"
 description: New features and changes in dbt Core v1.3
+id: "upgrading-to-v1.3"
 ---
 
 import UpgradeMove from '/snippets/_upgrade-move.md';
