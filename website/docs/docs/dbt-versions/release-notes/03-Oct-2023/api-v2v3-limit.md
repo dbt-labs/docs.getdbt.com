@@ -8,7 +8,7 @@ tags: [Oct-2023, API]
 ---
 
 
-Beginning December 1, 2023, the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) v2 and v3 will limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. You can handle more than 100 results by using the `limit` and `offset` query paramters to paginate those results. Otherwise, exceeding the limit of `100` will cause an error. 
+Beginning December 1, 2023, the [Administrative API](/docs/dbt-cloud-apis/admin-cloud-api) v2 and v3 will expect you to limit all "list" or `GET` API methods to 100 results per API request. This limit enhances the efficiency and stability of our services. If you need to handle more than 100 results, then use the `limit` and `offset` query parameters to paginate those results; otherwise, you will receive an error. 
 
 This maximum limit applies to [multi-tenant instances](/docs/cloud/about-cloud/regions-ip-addresses) only, and _does not_ apply to single tenant instances.
 
