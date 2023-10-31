@@ -114,7 +114,7 @@ In the interest of getting a proof of concept out the door (I highly favor focus
 
 - Our own Dev, Prod & Publish databases
 - Our own code repository which we managed independently
-- dbt CLI
+- dbt Core CLI
 - Virtual Machine running dbt on a schedule
 
 None of us had used dbt before, but we’d heard amazing things about it. We hotly debated the choice between dbt and building our own lightweight stack, and looking back now, I couldn’t be happier with choosing dbt. While there was a learning curve that slowed us down initially, we’re now seeing the benefit of that decision. Onboarding new analysts is a breeze and much of the functionality we need is pre-built. The more we use the tool, the faster we are at using it and the more value we’re gaining from the product.
