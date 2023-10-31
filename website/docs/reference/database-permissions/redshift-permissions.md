@@ -2,7 +2,7 @@
 title: "Redshift permissions"
 ---
 
-In Redshift, permissions are used to control who can perform certain actions on different database objects. Use SQL statements to manage permissions in a Databricks database.
+In Redshift, permissions are used to control who can perform certain actions on different database objects. Use SQL statements to manage permissions in a Redshift database.
 
 ## Example Redshift permissions
 
