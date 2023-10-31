@@ -8,7 +8,7 @@ In Snowflake, permissions are used to control who can perform certain actions on
 
 The following example provides you with the SQL statements you can use to manage permissions. 
 
-**Notes that `warehouse_name`, `database_name`, and `role_name` are placeholders and you can replace them as-needed for your organization's naming convention.
+**Note** that `warehouse_name`, `database_name`, and `role_name` are placeholders and you can replace them as-needed for your organization's naming convention.
 
 ```
 
