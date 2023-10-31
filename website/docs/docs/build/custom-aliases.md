@@ -40,8 +40,8 @@ Or in a `schema.yml` file.
 
 ```yaml
 - models:
-  - name: ga_sessions
-    config:
+    - name: ga_sessions
+      config:
         alias: sessions
 ```
 
