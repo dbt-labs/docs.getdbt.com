@@ -5,7 +5,7 @@ description: "You can set up your Azure DevOps by creating an Azure AD app and a
 sidebar_label: "Set up Azure DevOps"
 ---
 
-<Snippet src="available-enterprise-tier-only" />
+<Snippet path="available-enterprise-tier-only" />
 
 ## Overview
 
@@ -93,7 +93,7 @@ Once you connect your Azure AD app and Azure DevOps, you need to provide dbt Clo
     - **Directory(tenant) ID:** Found in the Azure AD App.
         <Lightbox src="/img/docs/dbt-cloud/connecting-azure-devops/AzureDevopsAppdbtCloud.gif" title="Adding an Active Directory App to dbt Cloud"/>
 
-Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in dbt Cloud's IDE can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
+Your Azure AD app should now be added to your dbt Cloud Account. People on your team who want to develop in the dbt Cloud IDE or dbt Cloud CLI can now personally [authorize Azure DevOps from their profiles](/docs/cloud/git/authenticate-azure).
 
 ## Connect a service user
 

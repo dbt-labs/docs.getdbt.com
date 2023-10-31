@@ -1,6 +1,8 @@
 ---
 title: "Import a project by git URL"
 id: "import-a-project-by-git-url"
+pagination_next: "docs/cloud/git/connect-github"
+pagination_prev: null
 ---
 
 In dbt Cloud, you can import a git repository from any valid git URL that points to a dbt project. There are some important considerations to keep in mind when doing this.
@@ -26,7 +28,7 @@ You must provide this Deploy Key in the Repository configuration of your Git hos
 
 :::info Use GitHub?
 
-If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub Application](/docs/cloud/git/connect-github). Connecting your repo via the GitHub Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub Application](/docs/cloud/git/connect-github). Connecting your repo via the GitHub Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 
@@ -41,7 +43,7 @@ If you use GitHub, you can import your repo directly using [dbt Cloud's GitHub A
 
 :::info Use GitLab?
 
-If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab Application](/docs/cloud/git/connect-gitlab). Connecting your repo via the GitLab Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use GitLab, you can import your repo directly using [dbt Cloud's GitLab Application](/docs/cloud/git/connect-gitlab). Connecting your repo via the GitLab Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 
@@ -99,7 +101,7 @@ CodeCommit uses `master` as its default branch, and to initialize your project, 
 ## Azure DevOps
 :::info Use Azure DevOps?
 
-If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/cloud-ci-job).
+If you use Azure DevOps and you are on the dbt Cloud Enterprise plan, you can import your repo directly using [dbt Cloud's Azure DevOps Integration](/docs/cloud/git/connect-azure-devops). Connecting your repo via the Azure DevOps Application [enables Continuous Integration](/docs/deploy/continuous-integration).
 
 :::
 
@@ -125,3 +127,7 @@ Don't see your git provider here? Please [contact dbt Support](mailto:support@ge
 
 ## Limited integration
 Some features of dbt Cloud require a tight integration with your git host, for example, updating GitHub pull requests with dbt Cloud run statuses. Importing your project by a URL prevents you from using these features. Once you give dbt Cloud access to your repository, you can continue to set up your project by adding a connection and creating and running your first dbt Cloud job.
+
+## FAQs
+<FAQ path="Git/gitignore"/>
+<FAQ path="Git/git-migration"/>

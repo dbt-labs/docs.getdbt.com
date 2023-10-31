@@ -24,14 +24,15 @@ invited to a given account. This license type may change over time, but a
 user can only have one type of license at any given time.
 
 A user's license type controls the features in dbt Cloud that the user is able
-to access. dbt Cloud's two license types are:
- - **Read Only**
+to access. dbt Cloud's three license types are:
+ - **Read-Only**
  - **Developer**
+ - **IT**
 
 For more information on these license types, see [Seats & Users](/docs/cloud/manage-access/seats-and-users).
-At a high-level, Developers may be granted _any_ permissions, whereas Read Only
+At a high-level, Developers may be granted _any_ permissions, whereas Read-Only
 users will have read-only permissions applied to all dbt Cloud resources
-regardless of the role-based permissions that the user is assigned.
+regardless of the role-based permissions that the user is assigned. IT users will have Security Admin and Billing Admin permissions applied regardless of the role-based permissions that the user is assigned.
 
 ## Role-based access control
 
@@ -115,12 +116,6 @@ set on the _Internal Analytics_ project.
 
 
 ### Manual assignment
-
-<Changelog>
-
-- New in version 1.1.23 (March, 2021)
-
-</Changelog>
 
 dbt Cloud administrators can manually assign users to groups independently of
 IdP attributes. If a dbt Cloud group is configured _without_ any

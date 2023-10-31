@@ -1,8 +1,12 @@
 exports.versions = [
   {
+    version: "1.7",
+    EOLDate: "2024-07-31",
+    isPrerelease: "true"
+  },
+  {
     version: "1.6",
-    EOLDate: "2024-07-20", // placeholder - need to confirm the final date
-    isPrerelease: true
+    EOLDate: "2024-07-31",
   },
   {
     version: "1.5",
@@ -20,17 +24,85 @@ exports.versions = [
     version: "1.2",
     EOLDate: "2023-07-26",
   },
-  {
-    version: "1.1",
-    EOLDate: "2023-04-28",
-  },
-  {
-    version: "1.0",
-    EOLDate: "2022-12-03"
-  },
 ]
 
 exports.versionedPages = [
+  {
+    "page": "reference/resource-configs/store_failures_as",
+    "firstVersion": "1.7",
+  },
+  {
+    "page": "docs/build/build-metrics-intro",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/sl-getting-started",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/about-metricflow",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/join-logic",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/validation",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/semantic-models",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/group-by",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/entities",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/metrics-overview",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/cumulative",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/derived",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/measure-proxy",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/build/ratio",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/commands/clone",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "docs/collaborate/govern/project-dependencies",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/dbt-jinja-functions/thread_id",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/resource-properties/deprecation_date",
+    "firstVersion": "1.6",
+  },
+  {
+    "page": "reference/commands/retry",
+    "firstVersion": "1.6",
+  },
   {
     "page": "docs/build/groups",
     "firstVersion": "1.5",
@@ -39,7 +111,7 @@ exports.versionedPages = [
     "page": "docs/collaborate/govern/model-contracts",
     "firstVersion": "1.5",
   },
-    {
+  {
     "page": "reference/commands/show",
     "firstVersion": "1.5",
   },
@@ -104,22 +176,18 @@ exports.versionedPages = [
     "firstVersion": "1.2",
   },
   {
-    "page": "docs/contributing/testing-a-new-adapter",
-    "firstVersion": "1.1",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/selected_resources",
-    "firstVersion": "1.1",
-  },
-  {
-    "page": "reference/dbt-jinja-functions/print",
-    "firstVersion": "1.1",
-  },
+    "page": "docs/build/saved-queries",
+    "firstVersion": "1.7",
+  }
 ]
 
 exports.versionedCategories = [
   {
     "category": "Model governance",
     "firstVersion": "1.5",
+  },
+  {
+    "category": "Build your metrics",
+    "firstVersion": "1.6",
   }
 ]

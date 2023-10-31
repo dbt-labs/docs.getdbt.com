@@ -4,10 +4,6 @@ sidebar_label: "init"
 id: "init"
 ---
 
-:::info Improved in v1.0!
-The `init` command is interactive and responsive like never before.
-:::
-
 `dbt init` helps get you started using dbt Core!
 
 ## New project
@@ -21,9 +17,20 @@ Then, it will:
 - Create a new folder with your project name and sample files, enough to get you started with dbt
 - Create a connection profile on your local machine. The default location is `~/.dbt/profiles.yml`. Read more in [configuring your profile](/docs/core/connect-data-platform/connection-profiles).
 
+<VersionBlock firstVersion="1.7">
+
+When using `dbt init` to initialize your project, include the `--profile` flag to specify an existing `profiles.yml` as the `profile:` key to use instead of creating a new one. For example, `dbt init --profile`.
+
+
+
+If the profile does not exist in `profiles.yml` or the command is run inside an existing project, the command raises an error.
+
+</VersionBlock>
+
 ## Existing project
 
 If you've just cloned or downloaded an existing dbt project, `dbt init` can still help you set up your connection profile so that you can start working quickly. It will prompt you for connection information, as above, and add a profile (using the `profile` name from the project) to your local `profiles.yml`, or create the file if it doesn't already exist.
+
 
 ## profile_template.yml
 
@@ -32,6 +39,8 @@ If you've just cloned or downloaded an existing dbt project, `dbt init` can stil
 - **Adapter plugin:** What's the bare minumum Postgres profile? What's the type of each field, what are its defaults? This information is stored in a file called [`dbt/include/postgres/profile_template.yml`](https://github.com/dbt-labs/dbt-core/blob/main/plugins/postgres/dbt/include/postgres/profile_template.yml). If you're the maintainer of an adapter plugin, we highly recommend that you add a `profile_template.yml` to your plugin, too. See more details in [building-a-new-adapter](/guides/dbt-ecosystem/adapter-development/3-building-a-new-adapter).
 
 - **Existing project:** If you're the maintainer of an existing project, and you want to help new users get connected to your database quickly and easily, you can include your own custom `profile_template.yml` in the root of your project, alongside `dbt_project.yml`. For common connection attributes, set the values in `fixed`; leave user-specific attributes in `prompts`, but with custom hints and defaults as you'd like.
+
+<VersionBlock firstVersion="1.2">
 
 <File name='profile_template.yml'>
 
@@ -44,6 +53,9 @@ fixed:
   type: snowflake
   warehouse: transforming
 prompts:
+  target:
+    type: string
+    hint: your desired target name
   user:
     type: string
     hint: yourname@jaffleshop.com
@@ -58,9 +70,11 @@ prompts:
 
 </File>
 
+</VersionBlock>
+
 ```
 $ dbt init
-Running with dbt=1.0.0-b2
+Running with dbt=1.0.0
 Setting up your profile.
 user (yourname@jaffleshop.com): summerintern@jaffleshop.com
 schema (usually dbt_<yourname>): dbt_summerintern

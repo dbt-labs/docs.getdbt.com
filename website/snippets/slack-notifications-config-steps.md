@@ -9,17 +9,17 @@ If there have been changes to the user roles and you need to move ownership, ple
 
 1. Click the gear in the top right and select **Profile**.
 2. Click **Integrations**  to the left.
-    <Lightbox src="/img/docs/dbt-cloud/Navigate-to-integrations.png" title="Navigate to integrations"/>
+    <Lightbox src="/img/docs/dbt-cloud/Navigate-to-integrations.png" width="75%" title="Navigate to integrations"/>
 3. Click **Link your Slack profile**
-   <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" title="Link your Slack profile"/>
+   <Lightbox src="/img/docs/dbt-cloud/Link-your-Slack-Profile.png" width="75%" title="Link your Slack profile"/>
 4. Allow dbt Labs to access the Slack workspace. If you are a member of multiple, you can select the appropriate workspace from the dropdown menu in the top right corner.
-   <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" title="Allow dbt access to Slack"/>
+   <Lightbox src="/img/docs/dbt-cloud/Allow-dbt-to-access-slack.png" width="75%" title="Allow dbt access to Slack"/>
 
 ### Configure the notifications
 
 1. Click the gear in the top right and select **Account Settings**.
 2. Click **Slack Notifications** to the left and click **Edit** to the right.
-   <Lightbox src="/img/docs/dbt-cloud/Navigate-to-notifications.png" title="Navigate to notifications"/>
+   <Lightbox src="/img/docs/dbt-cloud/Navigate-to-notifications.png" width="75%" title="Navigate to notifications"/>
 3. You can find the Slack notification settings at the bottom of the page.
 
 ### Disabling the Slack integration

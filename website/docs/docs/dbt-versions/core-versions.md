@@ -2,11 +2,18 @@
 title: "About dbt Core versions"
 id: "core"
 description: "Learn about semantic versioning for dbt Core, and how long those versions are supported."
+pagination_next: "docs/dbt-versions/upgrade-core-in-cloud"
+pagination_prev: null
 ---
 
-dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning).
+dbt Core releases follow [semantic versioning](https://semver.org/) guidelines. For more on how we use semantic versions, see [How dbt Core uses semantic versioning](#how-dbt-core-uses-semantic-versioning). 
 
-<Snippet src="core-versions-table" />
+dbt Labs provides different support levels for different versions, which may include new features, bug fixes, or security patches:
+
+<Snippet path="core-version-support" />
+
+
+<Snippet path="core-versions-table" />
 
 ### Further reading
 
@@ -20,9 +27,12 @@ All dbt Core versions released prior to 1.0 and their version-specific documenta
 
 ## EOL version support 
 
-All dbt Core versions with an end-of-life (EOL) support level will no longer receive bug fixes. To continue receiving bug fixes, dbt Labs recommends upgrading to a newer version. 
+All dbt Core minor versions that have reached end-of-life (EOL) will have no new patch releases. This means they will no longer receive any fixes, including for known bugs that have been identified. Fixes for those bugs will instead be made in newer minor versions that are still under active support.
 
-All dbt Core versions v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
+We recommend upgrading to a newer version in [dbt Cloud](/docs/dbt-versions/upgrade-core-in-cloud) or [dbt Core](/docs/core/installation#upgrading-dbt-core) to continue receiving support. 
+
+All dbt Core v1.0 and later are available in dbt Cloud until further notice. In the future, we intend to align dbt Cloud availability with dbt Core ongoing support. You will receive plenty of advance notice before any changes take place.
+
 
 ## Current version support
 
@@ -85,15 +95,20 @@ When you use dbt, you use a combination of `dbt-core` and an adapter plugin spec
 
 That means that patch version numbers will likely differ between `dbt-core` and the adapter plugin(s) you have installed. However, major and minor version numbers should always match.
 
-For example, you may find you're using `dbt-core==1.2.3` with `dbt-snowflake==1.2.0`. It is critical that you're using the latest patch available for both core and the adapter (v1.2.x). Use the `dbt --version` command to see which versions you have installed:
+For example, you may find you're using `dbt-core==1.6.0` with `dbt-snowflake==1.6.0`. It is critical that you're using the latest patch available for both core and the adapter. Use the `dbt --version` command to see which versions you have installed:
 ```
 $ dbt --version
-installed version: 1.2.3
-   latest version: 1.2.3
-
-Up to date!
+Core:
+  - installed: 1.6.0
+  - latest:    1.6.0 - Up to date!
 
 Plugins:
-  - snowflake: 1.2.0 - Up to date!
+  - snowflake: 1.6.0 - Up to date!
 ```
+
+You can see which version of the registered adapter that's being invoked in the [logs](/reference/global-configs/logs). Below is an example of the message in the `logs/dbt.log` file: 
+```
+[0m13:13:48.572182 [info ] [MainThread]: Registered adapter: snowflake=1.6.0
+```
+
 It's likely that newer patches have become available since then, so it's always important to check and make sure you're up to date!

@@ -4,12 +4,6 @@ datatype: "{<dictionary>}"
 default_value: {}
 ---
 
-<Changelog>
-
-* `v0.21.0`: `meta` is now a config that can be set in `dbt_project.yml` and as a `config` YAML property for some resource types. It is applied hierarchically and merges on a per-key basis.
-
-</Changelog>
-
 <Tabs
   defaultValue="models"
   values={[
@@ -20,6 +14,8 @@ default_value: {}
     { label: 'Tests', value: 'tests', },
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
+    { label: 'Exposures', value: 'exposures', },
+    { label: 'Semantic Models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -59,11 +55,13 @@ version: 2
 
 sources:
   - name: model_name
-    meta: {<dictionary>}
+    config:
+      meta: {<dictionary>}
 
     tables:
       - name: table_name
-        meta: {<dictionary>}
+        config:
+          meta: {<dictionary>}
 
         columns:
           - name: column_name
@@ -152,7 +150,6 @@ macros:
 
     arguments:
       - name: argument_name
-        meta: {<dictionary>}
 
 ```
 
@@ -174,6 +171,34 @@ exposures:
 ```
 
 </File>
+
+</TabItem>
+
+<TabItem value="semantic models">
+
+<VersionBlock lastVersion="1.6">
+
+Support for grouping semantic models was added in dbt Core v1.7
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.7"> 
+
+<File name='semantic_models.yml'>
+
+```yml
+semantic_models:
+  - name: semantic_people
+    model: ref('people')
+    config:
+      meta: {<dictionary>}
+
+```
+The `meta` configuration can be nusted under the `config` key. 
+
+</File>
+
+</VersionBlock>
 
 </TabItem>
 
@@ -253,3 +278,19 @@ select 1 as id
 ```
 
 </File>
+  
+### Assign owner in the dbt_project.yml as a config property
+
+<File name='models/my_model.sql'>
+
+```yml
+models:
+  jaffle_shop:
+      materialized: table
+      config:
+        meta:
+          owner: "@alice"
+```
+
+</File>
+

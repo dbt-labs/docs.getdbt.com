@@ -35,5 +35,12 @@ Each entry in `results` is a [`Result` object](/reference/dbt-classes#result-obj
 - `thread_id`: Which thread executed this node? E.g. `Thread-1`
 - `execution_time`: Total time spent executing this node
 - `timing`: Array that breaks down execution time into steps (often `compile` + `execute`)
-- `adapter_response`: Dictionary of metadata returned from the database, which varies by adapter. E.g. success `code`, number of `rows_affected`, total `bytes_processed`, etc. Not populated by tests, as of v0.19.0; we plan to fix in a future release ([dbt#2580](https://github.com/dbt-labs/dbt-core/issues/2580)).
 - `message`: How dbt will report this result on the CLI, based on information returned from the database
+
+import RowsAffected from '/snippets/_run-result.md'; 
+
+<RowsAffected/>
+
+<!-- this partial comes from https://github.com/dbt-labs/docs.getdbt.com/tree/current/website/snippets/_run-result-->
+
+

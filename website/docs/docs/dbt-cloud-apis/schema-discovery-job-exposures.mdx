@@ -1,0 +1,65 @@
+---
+title: "Exposures object schema"
+sidebar_label: "Exposures"
+id: "discovery-schema-job-exposures"
+---
+
+import { NodeArgsTable, SchemaTable } from "./schema";
+
+The exposures object allows you to query information about all exposures in a given job. To learn more, refer to [Add Exposures to your DAG](/docs/build/exposures).
+
+
+### Arguments
+
+When querying for `exposures`, the following arguments are available.
+
+<NodeArgsTable parent="JobNode" name="exposures" />
+
+Below we show some illustrative example queries and outline the schema of the exposures object.
+
+### Example query
+
+The example below queries information about all exposures in a given job including the owner's name and email, the URL, and information about parent sources and parent models for each exposure.
+
+```graphql
+{
+  job(id: 123) {
+    exposures(jobId: 123) {
+      runId
+      projectId
+      name
+      uniqueId
+      resourceType
+      ownerName
+      url
+      ownerEmail
+      parentsSources {
+        uniqueId
+        sourceName
+        name
+        state
+        maxLoadedAt
+        criteria {
+          warnAfter {
+            period
+            count
+          }
+          errorAfter {
+            period
+            count
+          }
+        }
+        maxLoadedAtTimeAgoInS
+      }
+      parentsModels {
+        uniqueId
+      }
+    }
+  }
+}
+```
+
+### Fields
+When querying for `exposures`, the following fields are available:
+
+<SchemaTable nodeName="ExposureNode" />

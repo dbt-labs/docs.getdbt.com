@@ -108,13 +108,6 @@ version: 2
 
 <TabItem value="sources">
 
-<VersionBlock lastVersion="1.0">
-
-We have added support for the `config` property on sources in dbt Core v1.1
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.1">
 
 <File name='models/<filename>.yml'>
 
@@ -124,16 +117,14 @@ version: 2
 sources:
   - name: <source_name>
     config:
-      [<source_config>](source-configs): <config_value>
+      [<source_config>](/reference/source-configs): <config_value>
     tables:
       - name: <table_name>
         config:
-          [<source_config>](source-configs): <config_value>
+          [<source_config>](/reference/source-configs): <config_value>
 ```
 
 </File>
-
-</VersionBlock>
 
 </TabItem>
 

@@ -3,6 +3,7 @@ title: "Quickstart for dbt Cloud and BigQuery"
 id: "bigquery"
 time_to_complete: '30 minutes'
 platform: 'dbt-cloud'
+icon: 'bigquery'
 hide_table_of_contents: true
 ---
 
@@ -32,8 +33,8 @@ You can check out [dbt Fundamentals](https://courses.getdbt.com/courses/fundamen
 ### Related content
 
 - Learn more with [dbt Courses](https://courses.getdbt.com/collections)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
-- [Job triggers](/docs/deploy/job-triggers)
+- [CI jobs](/docs/deploy/continuous-integration)
+- [Deploy jobs](/docs/deploy/deploy-jobs)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Source freshness](/docs/deploy/source-freshness)
 
@@ -72,7 +73,6 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 1. Start the [GCP credentials wizard](https://console.cloud.google.com/apis/credentials/wizard). Make sure your new project is selected in the header. If you do not see your account or project, click your profile picture to the right and verify you are using the correct email account. For **Credential Type**: 
     - From the **Select an API** dropdown, choose **BigQuery API**
     - Select **Application data** for the type of data you will be accessing
-    - Select **No, I’m not using them** and click **Next**.
     - Click **Next** to create a new service account.
 2. Create a service account for your new project from the [Service accounts page](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project). For more information, refer to [Create a service account](https://developers.google.com/workspace/guides/create-credentials#create_a_service_account) in the Google Cloud docs. As an example for this guide, you can:
     - Type `dbt-user` as the **Service account name**
@@ -88,25 +88,22 @@ In order to let dbt connect to your warehouse, you'll need to generate a keyfile
 4. Click **Upload a Service Account JSON File** in settings.
 5. Select the JSON file you downloaded in [Generate BigQuery credentials](#generate-bigquery-credentials) and dbt Cloud will fill in all the necessary fields.
 6. Click **Test Connection**. This verifies that dbt Cloud can access your BigQuery account.
-7. Click **Next** if the test succeeded. If it failed, you might need to go back and regenerate your BigQuery credentials.
+7. Click **Next** if the test succeeds. If it fails, you might need to go back and regenerate your BigQuery credentials.
 
 
 ## Set up a dbt Cloud managed repository 
-<Snippet src="tutorial-managed-repo" />
+<Snippet path="tutorial-managed-repo" />
 
 
-## Initialize your dbt project​ and start developing
+## Initialize your dbt project
 Now that you have a repository configured, you can initialize your project and start development in dbt Cloud:
 
 1. Click **Start developing in the IDE**. It might take a few minutes for your project to spin up for the first time as it establishes your git connection, clones your repo, and tests the connection to the warehouse.
 2. Above the file tree to the left, click **Initialize dbt project**. This builds out your folder structure with example models.
 3. Make your initial commit by clicking **Commit and sync**. Use the commit message `initial commit` and click **Commit**. This creates the first commit to your managed repo and allows you to open a branch where you can add new dbt code.
 4. You can now directly query data from your warehouse and execute `dbt run`. You can try this out now:
-    - Click **+ Create new file**, add this query to the new file, and click **Save as** to save the new file:  
-        ```sql
-        select * from `dbt-tutorial.jaffle_shop.customers`
-        ```
     - In the command line bar at the bottom, enter `dbt run` and click **Enter**. You should see a `dbt run succeeded` message.
+    - To confirm the success of the above command, navigate to the BigQuery Console and discover the newly created models.
 
 ## Build your first model
 1. Under **Version Control** on the left, click **Create branch**. You can name it `add-customers-model`. You need to create a new branch since the main branch is set to read-only mode.
@@ -174,27 +171,27 @@ select * from final
 
 6. Enter `dbt run` in the command prompt at the bottom of the screen. You should get a successful run and see the three models.
 
-Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned up data rather than raw data in your BI tool.
+Later, you can connect your business intelligence (BI) tools to these views and tables so they only read cleaned-up data rather than raw data in your BI tool.
 
 #### FAQs
 
-<FAQ src="Runs/checking-logs" />
-<FAQ src="Project/which-schema" />
-<FAQ src="Models/create-a-schema" />
-<FAQ src="Models/run-downtime" />
-<FAQ src="Troubleshooting/sql-errors" />
+<FAQ path="Runs/checking-logs" />
+<FAQ path="Project/which-schema" />
+<FAQ path="Models/create-a-schema" />
+<FAQ path="Models/run-downtime" />
+<FAQ path="Troubleshooting/sql-errors" />
 
 ## Change the way your model is materialized
 
-<Snippet src="quickstarts/change-way-model-materialized" />
+<Snippet path="quickstarts/change-way-model-materialized" />
 
 ## Delete the example models
 
-<Snippet src="quickstarts/delete-example-models" />
+<Snippet path="quickstarts/delete-example-models" />
 
 ## Build models on top of other models
 
-<Snippet src="quickstarts/intro-build-models-atop-other-models" />
+<Snippet path="quickstarts/intro-build-models-atop-other-models" />
 
 1. Create a new SQL file, `models/stg_customers.sql`, with the SQL from the `customers` CTE in our original query.
 2. Create a second new SQL file, `models/stg_orders.sql`, with the SQL from the `orders` CTE in our original query.
@@ -282,17 +279,17 @@ Later, you can connect your business intelligence (BI) tools to these views and 
 
 4. Execute `dbt run`.
 
-    This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders` and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
+    This time, when you performed a `dbt run`, separate views/tables were created for `stg_customers`, `stg_orders`, and `customers`. dbt inferred the order to run these models. Because `customers` depends on `stg_customers` and `stg_orders`, dbt builds `customers` last. You do not need to explicitly define these dependencies.
 
 #### FAQs {#faq-2}
 
-<FAQ src="Runs/run-one-model" />
-<FAQ src="Models/unique-model-names" />
-<FAQ src="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
+<FAQ path="Runs/run-one-model" />
+<FAQ path="Models/unique-model-names" />
+<FAQ path="Project/structure-a-project" alt_header="As I create more models, how should I keep my project organized? What should I name my models?" />
 
 
-<Snippet src="quickstarts/test-and-document-your-project" />
+<Snippet path="quickstarts/test-and-document-your-project" />
 
-<Snippet src="quickstarts/schedule-a-job" />
+<Snippet path="quickstarts/schedule-a-job" />
 
 

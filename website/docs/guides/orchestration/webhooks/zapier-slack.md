@@ -25,7 +25,7 @@ In order to set up the integration, you should have familiarity with:
 ## Integration steps
 
 ### 1. Create a new Zap in Zapier
-Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
+Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](/docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
 
 Click **Continue**, then copy the webhook URL. 
 
@@ -46,7 +46,7 @@ In the next step, you will need the Webhook Secret Key from the prior step, and 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps). This prevents your keys from being displayed as plaintext in the Zap code. You can access them with the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
 
-<Snippet src="webhook_guide_zapier_secret_store" />
+<Snippet path="webhook_guide_zapier_secret_store" />
 
 ### 4. Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 

@@ -17,15 +17,9 @@ The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.1" lastVersion="1.3">
+<VersionBlock lastVersion="1.3">
 
 The latest version of `dbt-core` is compatible with Python versions 3.7, 3.8, 3.9, and 3.10
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.0">
-
-As of v1.0, `dbt-core` is compatible with Python versions 3.7, 3.8, and 3.9.
 
 </VersionBlock>
 

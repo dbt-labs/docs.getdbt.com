@@ -76,7 +76,7 @@ You can recognize Jinja based on the delimiters the language uses, which we refe
 
 When used in a dbt model, your Jinja needs to compile to a valid query. To check what SQL your Jinja compiles to:
 * **Using dbt Cloud:** Click the compile button to see the compiled SQL in the Compiled SQL pane
-* **Using the dbt CLI:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
+* **Using dbt Core:** Run `dbt compile` from the command line. Then open the compiled SQL file in the `target/compiled/{project name}/` directory. Use a split screen in your code editor to keep both files open at once.
 
 ### Macros
 [Macros](/docs/build/jinja-macros) in Jinja are pieces of code that can be reused multiple times – they are analogous to "functions" in other programming languages, and are extremely useful if you find yourself repeating code across multiple models. Macros are defined in `.sql` files, typically in your `macros` directory ([docs](/reference/project-configs/macro-paths)).
@@ -87,8 +87,8 @@ Macro files can contain one or more macros — here's an example:
 
 ```sql
 
-{% macro cents_to_dollars(column_name, precision=2) %}
-    ({{ column_name }} / 100)::numeric(16, {{ precision }})
+{% macro cents_to_dollars(column_name, scale=2) %}
+    ({{ column_name }} / 100)::numeric(16, {{ scale }})
 {% endmacro %}
 
 ```
@@ -126,7 +126,7 @@ from app_data.payments
 
 
 ### Using a macro from a package
-A number of useful macros have also been grouped together into [packages](docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
+A number of useful macros have also been grouped together into [packages](/docs/build/packages) — our most popular package is [dbt-utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/).
 
 After installing a package into your project, you can use any of the macros in your own project — make sure you qualify the macro by prefixing it with the [package name](/reference/dbt-jinja-functions/project_name):
 
@@ -140,7 +140,7 @@ select
   field_5,
   count(*)
 from my_table
-{{ dbt_utils.group_by(5) }}
+{{ dbt_utils.dimensions(5) }}
 
 ```
 
@@ -148,13 +148,13 @@ You can also qualify a macro in your own project by prefixing it with your [pack
 
 ## FAQs
 
-<FAQ src="Accounts/dbt-specific-jinja" />
-<FAQ src="Jinja/which-jinja-docs" />
-<FAQ src="Jinja/quoting-column-names" />
-<FAQ src="Jinja/jinja-whitespace" />
-<FAQ src="Project/debugging-jinja" />
-<FAQ src="Docs/documenting-macros" />
-<FAQ src="Project/why-so-many-macros" />
+<FAQ path="Accounts/dbt-specific-jinja" />
+<FAQ path="Jinja/which-jinja-docs" />
+<FAQ path="Jinja/quoting-column-names" />
+<FAQ path="Jinja/jinja-whitespace" />
+<FAQ path="Project/debugging-jinja" />
+<FAQ path="Docs/documenting-macros" />
+<FAQ path="Project/why-so-many-macros" />
 
 ## dbtonic Jinja
 
@@ -185,5 +185,5 @@ Writing a macro for the first time? Check whether we've open sourced one in [dbt
 {% endfor %}
 ```
 
-<Snippet src="discourse-help-feed-header" />
+<Snippet path="discourse-help-feed-header" />
 <DiscourseHelpFeed tags="wee"/>

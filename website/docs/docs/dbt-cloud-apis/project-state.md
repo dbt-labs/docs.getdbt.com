@@ -6,7 +6,7 @@ dbt Cloud provides a stateful way of deploying dbt. Artifacts are accessible pro
 
 With the implementation of the `environment` endpoint in the Discovery API, we've introduced the idea of multiple states. The Discovery API provides a single API endpoint that returns the latest state of models, sources, and other nodes in the DAG. 
 
-A single [deployment environment](/docs/collaborate/environments/environments-in-dbt) should represent the production state of a given dbt Cloud project.
+A single [deployment environment](/docs/environments-in-dbt) should represent the production state of a given dbt Cloud project.
 
 There are two states that can be queried in dbt Cloud:
 

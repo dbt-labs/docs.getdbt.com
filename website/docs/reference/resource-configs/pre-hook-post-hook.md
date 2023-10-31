@@ -16,7 +16,7 @@ datatype: sql-statement | [sql-statement]
 
 <TabItem value="models">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -51,7 +51,7 @@ select ...
 
 <TabItem value="seeds">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -70,7 +70,7 @@ seeds:
 
 <TabItem value="snapshots">
 
-<Snippet src="post-and-pre-hooks-sql-statement" /> 
+<Snippet path="post-and-pre-hooks-sql-statement" /> 
 
 <File name='dbt_project.yml'>
 
@@ -115,16 +115,9 @@ Pre- and post-hooks can also call macros that return SQL statements. If your mac
 
 dbt aims to provide all the boilerplate SQL you need (DDL, DML, and DCL) via out-of-the-box functionality, which you can configure quickly and concisely. In some cases, there may be SQL that you want or need to run, specific to functionality in your data platform, which dbt does not (yet) offer as a built-in feature. In those cases, you can write the exact SQL you need, using dbt's compilation context, and pass it into a `pre-` or `post-` hook to run before or after your model, seed, or snapshot.
 
-<Changelog>
-
-* `v0.12.2`: The `post_hook` alias for config blocks was introduced. Prior to this, users needed to use the alternative config syntax to apply pre- and post-hooks.
-
-</Changelog>
-
-
 ## Examples
 
-<Snippet src="hooks-to-grants" />
+<Snippet path="hooks-to-grants" />
 
 <VersionBlock firstVersion="1.2">
 
@@ -162,69 +155,6 @@ models:
 ```
 
 See: [Apache Spark docs on `ANALYZE TABLE`](https://spark.apache.org/docs/latest/sql-ref-syntax-aux-analyze-table.html)
-
-</File>
-
-</VersionBlock>
-
-<VersionBlock lastVersion="1.1">
-
-### Grant privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook: "grant select on {{ this }} to group reporter"
-
-```
-
-</File>
-
-### Grant multiple privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook:
-    - "grant select on {{ this }} to group reporter"
-    - "grant select on {{ this }} to group transformer"
-
-```
-
-</File>
-
-### Call a macro to grant privileges on a model
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  +post-hook: "{{ grant_select(this) }}"
-
-```
-
-</File>
-
-
-### Grant privileges on a directory of models
-
-<File name='dbt_project.yml'>
-
-```yml
-
-models:
-  jaffle_shop: # this is the project name
-    marts:
-      marketing:
-        # this will be applied to all models in marts/marketing/
-        +post-hook: "{{ grant_select(this) }}"
-
-```
 
 </File>
 

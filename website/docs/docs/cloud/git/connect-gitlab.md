@@ -4,13 +4,12 @@ description: "Learn how connecting your GitLab account provides convenience and 
 id: "connect-gitlab"
 ---
 
-## Overview
 
 Connecting your GitLab account to dbt Cloud provides convenience and another layer of security to dbt Cloud:
 - Import new GitLab repos with a couple clicks during dbt Cloud project setup.
 - Clone repos using HTTPS rather than SSH.
-- Carry GitLab user permissions through to dbt Cloud IDE's git actions.
-- Trigger [Continuous integration](/docs/deploy/cloud-ci-job) builds when merge requests are opened in GitLab.
+- Carry GitLab user permissions through to dbt Cloud or dbt Cloud CLI's git actions.
+- Trigger [Continuous integration](/docs/deploy/continuous-integration) builds when merge requests are opened in GitLab.
 
 The steps to integrate GitLab in dbt Cloud depend on your plan. If you are on:
 - the Developer or Team plan, read these [instructions](#for-dbt-cloud-developer-and-team-tiers).
@@ -36,7 +35,7 @@ Once you've accepted, you should be redirected back to dbt Cloud, and you'll see
 
 dbt Cloud enterprise customers have the added benefit of bringing their own GitLab OAuth application to dbt Cloud. This tier benefits from extra security, as dbt Cloud will:
 - Enforce user authorization with OAuth.
-- Carry GitLab's user repository permissions (read / write access) through to dbt Cloud IDE's git actions.
+- Carry GitLab's user repository permissions (read / write access) through to dbt Cloud or dbt Cloud CLI's git actions.
 
 In order to connect GitLab in dbt Cloud, a GitLab account admin must:
 1. [Set up a GitLab OAuth application](#setting-up-a-gitlab-oauth-application).
@@ -72,6 +71,8 @@ The application form in GitLab should look as follows when completed:
 
 Click **Save application** in GitLab, and GitLab will then generate an **Application ID** and **Secret**. These values will be available even if you close the app screen, so this is not the only chance you have to save them.
 
+If you're a Business Critical customer using [IP restrictions](/docs/cloud/secure/ip-restrictions), ensure you've added the appropriate Gitlab CIDRs to your IP restriction rules, or else the Gitlab connection will fail.
+
 ### Adding the GitLab OAuth application to dbt Cloud
 After you've created your GitLab application, you need to provide dbt Cloud information about the app. In dbt Cloud, account admins should navigate to **Account Settings**, click on the **Integrations** tab, and expand the GitLab section.
 
@@ -96,7 +97,7 @@ You will then be redirected to GitLab and prompted to sign into your account. Gi
 Once you've accepted, you should be redirected back to dbt Cloud, and your integration is ready for developers on your team to [personally authenticate with](#personally-authenticating-with-gitlab).
 
 ### Personally authenticating with GitLab
-dbt Cloud developers on the Enterprise plan must each connect their GitLab profiles to dbt Cloud, as every developer's read / write access for the dbt repo is checked in the dbt Cloud IDE.
+dbt Cloud developers on the Enterprise plan must each connect their GitLab profiles to dbt Cloud, as every developer's read / write access for the dbt repo is checked in the dbt Cloud IDE or dbt Cloud CLI.
 
 To connect a personal GitLab account, dbt Cloud developers should navigate to Your Profile settings by clicking the gear icon in the top right, then select **Linked Accounts** in the left menu.
 
@@ -104,7 +105,7 @@ If your GitLab account is not connected, you’ll see "No connected account". Se
 
 <Lightbox src="/img/docs/dbt-cloud/connecting-gitlab/GitLab-Auth.png" title="Authorizing the dbt Cloud app for developers" />
 
-Once you approve authorization, you will be redirected to dbt Cloud, and you should see your connected account. You're now ready to start developing in the dbt Cloud IDE.
+Once you approve authorization, you will be redirected to dbt Cloud, and you should see your connected account. You're now ready to start developing in the dbt Cloud IDE or dbt Cloud CLI.
 
 
 ## Troubleshooting
@@ -117,3 +118,10 @@ If you do see your repository listed, but are unable to import the repository su
 - You are a maintainer of that repository. Only users with maintainer permissions can set up repository connections.
 
 If you imported a repository using the dbt Cloud native integration with GitLab, you should be able to see the clone strategy is using a `deploy_token`. If it's relying on an SSH key, this means the repository was not set up using the native GitLab integration, but rather using the generic git clone option. The repository must be reconnected in order to get the benefits described above.
+
+## FAQs
+
+<FAQ path="Git/gitignore"/>
+<FAQ path="Git/gitlab-authentication"/>
+<FAQ path="Git/gitlab-selfhosted"/>
+<FAQ path="Git/git-migration"/>

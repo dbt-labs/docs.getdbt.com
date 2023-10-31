@@ -1,13 +1,13 @@
 ---
-title: "Deploy with other tools"
+title: "Integrate with other orchestration tools"
 id: "deployment-tools"
-sidebar: "Deploy with other tools"
+sidebar_label: "Integrate with other tools"
+pagination_next: null
 ---
 
-Discover additional ways to schedule and run your dbt jobs with the help of robust tools such as Airflow, Prefect, Dagster, automation server, Cron, and Azure Data Factory (ADF), alongside [dbt Cloud](/docs/deploy/dbt-cloud-job).
+Alongside [dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of tools such as Airflow, Prefect, Dagster, automation server, Cron, and Azure Data Factory (ADF), 
 
-Use these tools to automate your data workflows, trigger dbt jobs (including those hosted on dbt Cloud), and enjoy a hassle-free experience, saving time and increasing efficiency.
-
+Build and install these tools to automate your data workflows, trigger dbt jobs (including those hosted on dbt Cloud), and enjoy a hassle-free experience, saving time and increasing efficiency.
 
 ## Airflow
 
@@ -17,7 +17,7 @@ If your organization is using [Airflow](https://airflow.apache.org/), there are 
 
 <TabItem value="airflowcloud" label="dbt Cloud">
 
-Installing the [dbt Cloud Provider](https://registry.astronomer.io/providers/dbt-cloud) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
+Installing the [dbt Cloud Provider](https://airflow.apache.org/docs/apache-airflow-providers-dbt-cloud/stable/index.html) to orchestrate dbt Cloud jobs. This package contains multiple Hooks, Operators, and Sensors to complete various actions within dbt Cloud.
 
 <Lightbox src="/img/docs/running-a-dbt-project/airflow_dbt_connector.png" title="Airflow DAG using DbtCloudRunJobOperator"/>
 <Lightbox src="/img/docs/running-a-dbt-project/dbt_cloud_airflow_trigger.png" title="dbt Cloud job triggered by Airflow"/>
@@ -31,7 +31,7 @@ Invoking dbt Core jobs through the [BashOperator](https://registry.astronomer.io
 </TabItem>
 </Tabs>
 
-For more details on both of these methods, including example implementations, check out [this guide](https://www.astronomer.io/guides/airflow-dbt).
+For more details on both of these methods, including example implementations, check out [this guide](https://docs.astronomer.io/learn/airflow-dbt-cloud).
 
 ## Azure Data Factory
 
@@ -108,7 +108,11 @@ If your organization is using [Prefect](https://www.prefect.io/), the way you wi
 
 ## Dagster
 
-If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud, dbt CLI and the dbt RPC server. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Refer to the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
+If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud, dbt Core, and the dbt RPC server. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Refer to the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
+
+## Kestra
+
+If your organization uses [Kestra](http://kestra.io/), you can leverage the [dbt plugin](https://kestra.io/plugins/plugin-dbt) to orchestrate dbt Cloud and dbt Core jobs. Kestra's user interface (UI) has built-in [Blueprints](https://kestra.io/docs/user-interface-guide/blueprints), providing ready-to-use workflows. Navigate to the Blueprints page in the left navigation menu and [select the dbt tag](https://demo.kestra.io/ui/blueprints/community?selectedTag=36) to find several examples of scheduling dbt Core commands and dbt Cloud jobs as part of your data pipelines. After each scheduled or ad-hoc workflow execution, the Outputs tab in the Kestra UI allows you to download and preview all dbt build artifacts. The Gantt and Topology view additionally render the metadata to visualize dependencies and runtimes of your dbt models and tests. The dbt Cloud task provides convenient links to easily navigate between Kestra and dbt Cloud UI.
 
 ## Automation servers
 

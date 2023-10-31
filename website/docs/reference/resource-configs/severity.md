@@ -6,14 +6,6 @@ resource_types: [tests]
 datatype: string
 ---
 
-<Changelog>
-
-* `v0.14.0`: Introduced `severity` config
-* `v0.20.0`: Introduced `error_if` + `warn_if` configs. Enabled configuration of tests from `dbt_project.yml`
-* `v0.21.0`: Introduced `config` property for tests
-
-</Changelog>
-
 Tests return a number of failures—most often, this is the count of rows returned by the test query, but it could be a [custom calculation](/reference/resource-configs/fail_calc). Generally, if the number of failures is nonzero, the test returns an error. This makes sense, as test queries are designed to return all the rows you _don't_ want: duplicate records, null values, etc.
 
 It's possible to configure tests to return warnings instead of errors, or to make the test status conditional on the number of failures returned. Maybe 1 duplicate record can count as a warning, but 10 duplicate records should count as an error.

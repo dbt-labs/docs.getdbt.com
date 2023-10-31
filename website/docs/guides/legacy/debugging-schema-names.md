@@ -16,7 +16,7 @@ You can also follow along via this video:
 Do a file search to check if you have a macro named `generate_schema_name` in the `macros` directory of your project.
 
 #### I do not have a macro named `generate_schema_name` in my project
-This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L17-L30)
+This means that you are using dbt's default implementation of the macro, as defined [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47C1-L60)
 
 ```sql
 {% macro generate_schema_name(custom_schema_name, node) -%}
@@ -44,8 +44,7 @@ If your `generate_schema_name` macro looks like so:
     {{ generate_schema_name_for_env(custom_schema_name, node) }}
 {%- endmacro %}
 ```
-Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/HEAD/core/dbt/include/global_project/macros/etc/get_custom_schema.sql#L43-L56).
-
+Your project is switching out the `generate_schema_name` macro for another macro, `generate_schema_name_for_env`. Similar to the above example, this is a macro which is defined in dbt's global project, [here](https://github.com/dbt-labs/dbt-core/blob/main/core/dbt/include/global_project/macros/get_custom_name/get_custom_schema.sql#L47-L60).
 ```sql
 {% macro generate_schema_name_for_env(custom_schema_name, node) -%}
 

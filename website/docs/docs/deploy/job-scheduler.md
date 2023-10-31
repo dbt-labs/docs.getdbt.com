@@ -31,7 +31,7 @@ Familiarize yourself with these useful terms to help you understand how the job 
 | Over-scheduled job | A situation when a cron-scheduled job's run duration becomes longer than the frequency of the job’s schedule, resulting in a job queue that will grow faster than the scheduler can process the job’s runs. |
 | Prep time | The time dbt Cloud takes to create a short-lived environment to execute the job commands in the user's cloud data platform. Prep time varies most significantly at the top of the hour when the dbt Cloud Scheduler experiences a lot of run traffic. |
 | Run | A single, unique execution of a dbt job. |
-| Run slot | Run slots control the number of jobs that can run concurrently. Each account has a fixed number of run slots, depending on the plan tier, that are shared across projects in the account. Each running job occupies a run slot for the duration of the run, so purchasing more run slots enables more jobs to execute in parallel. |
+| Run slot | Run slots control the number of jobs that can run concurrently. Developer and Team plan accounts have a fixed number of run slots, and Enterprise users have [unlimited run slots](/docs/dbt-versions/release-notes/July-2023/faster-run#unlimited-job-concurrency-for-enterprise-accounts). Each running job occupies a run slot for the duration of the run. If you need more jobs to execute in parallel, consider the [Enterprise plan](https://www.getdbt.com/pricing/) |
 | Threads | When dbt builds a project's DAG, it tries to parallelize the execution by using threads. The [thread](/docs/running-a-dbt-project/using-threads) count is the maximum number of paths through the DAG that dbt can work on simultaneously. The default thread count in a job is 4. |
 | Wait time | Amount of time that dbt Cloud waits before running a job, either because there are no available slots or because a previous run of the same job is still in progress. |
 
@@ -52,8 +52,8 @@ Together, **wait time** plus **prep time** is the total time a run spends in the
 
 <Lightbox src="/img/docs/dbt-cloud/deployment/deploy-scheduler.jpg" width="85%" title="An overview of a dbt Cloud job run"/>
 
-### Treatment of CI jobs (beta)
-When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/cloud-ci-job). It queues a CI job to be processed when it's triggered to run by a Git pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
+### Treatment of CI jobs
+When compared to deployment jobs, the scheduler behaves differently when handling [continuous integration (CI) jobs](/docs/deploy/continuous-integration). It queues a CI job to be processed when it's triggered to run by a Git pull request, and the conditions the scheduler checks to determine if the run can start executing are also different: 
 
 - **Will the CI run consume a run slot?** &mdash; CI runs don't consume run slots and will never block production runs.
 - **Does this same job have a run already in progress?** &mdash; CI runs can execute concurrently (in parallel). CI runs build into unique temporary schemas, and CI checks execute in parallel to help increase team productivity. Teammates never have to wait to get a CI check review.
@@ -78,15 +78,15 @@ The scheduler will not cancel over-scheduled jobs triggered by the [API](/docs/d
 
 The dbt Cloud scheduler prevents too many job runs from clogging the queue by canceling unnecessary ones. If a job takes longer to run than its scheduled frequency, the queue will grow faster than the scheduler can process the runs, leading to an ever-expanding queue with runs that don’t need to be processed (called _over-scheduled jobs_). 
 
-The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, any previous queued run for that job will be canceled and have a helpful error message displayed:
+The scheduler prevents queue clog by canceling runs that aren't needed, ensuring there is only one run of the job in the queue at any given time. If a newer run is queued, the scheduler cancels any previously queued run for that job and displays an error message.
 
-<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display a helpful error message explaining why the run was cancelled and recommendations"/>
+<Lightbox src="/img/docs/dbt-cloud/deployment/run-error-message.jpg" width="85%" title="The cancelled runs display an error message explaining why the run was cancelled and recommendations"/>
 
-To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/job-triggers).
+To prevent over-scheduling, users will need to take action by either refactoring the job so it runs faster or modifying its [schedule](/docs/deploy/deploy-jobs#schedule-days).
 
 ## Related docs
-- [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#about-dbt-cloud-architecture)
+- [dbt Cloud architecture](/docs/cloud/about-cloud/architecture#dbt-cloud-features-architecture)
 - [Job commands](/docs/deploy/job-commands)
 - [Job notifications](/docs/deploy/job-notifications)
 - [Webhooks](/docs/deploy/webhooks)
-- [dbt Cloud CI job](/docs/deploy/cloud-ci-job)
+- [dbt Cloud continuous integration](/docs/deploy/continuous-integration)

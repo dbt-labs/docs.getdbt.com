@@ -1,8 +1,5 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Want to see new content? Open a discussion!
-    url: https://github.com/dbt-labs/docs.getdbt.com/discussions/new
-    about: You can open a discussion to propose new content for the dbt product documentation.
   - name: Have questions about dbt? Join the Community!
     url: https://www.getdbt.com/community/join-the-community
     about: You can join the dbt Labs Community to ask and answer questions.

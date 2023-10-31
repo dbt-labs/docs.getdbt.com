@@ -77,7 +77,7 @@ select ...
 
 ```
   
-In this example, you can set up a query tag to be applied to every query with the model's name. 
+In this example, you can set up a query tag to be applied to every query with the model's name.
   
 ```sql 
 
@@ -301,11 +301,13 @@ models:
 
 <VersionBlock firstVersion="1.3">
 
-## Temporary Tables
+## Temporary tables
 
-Beginning in dbt version 1.3, incremental table merges for Snowflake utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
+Beginning in dbt version 1.3, incremental table merges for Snowflake prefer to utilize a `view` rather than a `temporary table`. The reasoning was to avoid the database write step that a temporary table would initiate and save compile time. 
 
-However, many situations remain where a temporary table would achieve results faster. dbt v1.4 adds the `tmp_relation_type` configuration to leverage temporary tables for incremental builds. This is defined as part of the model configuration.
+However, some situations remain where a temporary table would achieve results faster or more safely. dbt v1.4 adds the `tmp_relation_type` configuration to allow you to opt in to temporary tables for incremental builds. This is defined as part of the model configuration. 
+
+To guarantee accuracy, an incremental model using the `delete+insert` strategy with a `unique_key` defined requires a temporary table; trying to change this to a view will result in an error.
 
 Defined in the project YAML:
 
@@ -332,6 +334,102 @@ In the configuration format for the model SQL file:
 
 {{ config(
     tmp_relation_type="table | view", ## If not defined, view is the default.
+) }}
+
+```
+
+</File>
+
+</VersionBlock>
+
+<VersionBlock firstVersion="1.6">
+
+## Dynamic tables
+
+The Snowflake adapter supports [dynamic tables](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
+This materialization is specific to Snowflake, which means that any model configuration that
+would normally come along for the ride from `dbt-core` (e.g. as with a `view`) may not be available
+for dynamic tables. This gap will decrease in future patches and versions.
+While this materialization is specific to Snowflake, it very much follows the implementation
+of [materialized views](/docs/build/materializations#Materialized-View).
+In particular, dynamic tables have access to the `on_configuration_change` setting.
+There are also some limitations that we hope to address in the next version.
+
+### Parameters
+
+Dynamic tables in `dbt-snowflake` require the following parameters:
+- `target_lag`
+- `snowflake_warehouse`
+- `on_configuration_change`
+
+To learn more about each parameter and what values it can take, see 
+the Snowflake docs page: [`CREATE DYNAMIC TABLE: Parameters`](https://docs.snowflake.com/en/sql-reference/sql/create-dynamic-table).
+
+### Usage
+
+You can create a dynamic table by editing _one_ of these files:
+
+- the SQL file for your model
+- the `dbt_project.yml` configuration file
+
+The following examples create a dynamic table:
+
+<File name='models/YOUR_MODEL_NAME.sql'>
+
+```sql
+{{ config(
+    materialized = 'dynamic_table',
+    snowflake_warehouse = 'snowflake_warehouse',
+    target_lag = '10 minutes',
+) }}
+```
+
+</File>
+
+<File name='dbt_project.yml'>
+
+```yaml
+models:
+  path:
+    materialized: dynamic_table
+    snowflake_warehouse: snowflake_warehouse
+    target_lag: '10 minutes'
+```
+
+</File>
+
+### Monitored configuration changes
+
+The settings below are monitored for changes applicable to `on_configuration_change`.
+
+#### Target lag
+
+Changes to `target_lag` can be applied by running an `ALTER` statement. Refreshing is essentially
+always on for dynamic tables; this setting changes how frequently the dynamic table is updated.
+
+#### Warehouse
+
+Changes to `snowflake_warehouse` can be applied via an `ALTER` statement.
+
+### Limitations
+
+#### Changing materialization to and from "dynamic_table"
+
+Swapping an already materialized model to be a dynamic table and vice versa.
+The workaround is manually dropping the existing materialization in the data warehouse prior to calling `dbt run`.
+Normally, re-running with the `--full-refresh` flag would resolve this, but not in this case.
+This would only need to be done once as the existing object would then be a dynamic table.
+
+For example, assume for the example model below, `my_model`, has already been materialized to the underlying data platform via `dbt run`.
+If the user changes the model's config to `materialized="dynamic_table"`, they will get an error.
+The workaround is to execute `DROP TABLE my_model` on the data warehouse before trying the model again.
+
+<File name='my_model.sql'>
+
+```yaml
+
+{{ config(
+    materialized="table" # or any model type eg view, incremental
 ) }}
 
 ```
