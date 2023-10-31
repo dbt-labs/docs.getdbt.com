@@ -1,8 +1,14 @@
 ---
-title: "Databricks Permissions"
+title: "Databricks permissions"
 ---
 
+In Databricks, permissions are used to control who can perform certain actions on different database objects. Use SQL statements to manage permissions in a Databricks database.
+
 ## Example Databricks permissions
+
+The following example provides you with the SQL statements you can use to manage permissions. 
+
+**Note that you can grant permissions on `securable_objects` to `principals` (This can be user, service principal, or group). For example, `grant privilege_type` on `securable_object` to `principal`.
 
 ```
 -- NOTE: in general permissions can be granted on securable_objects to
