@@ -17,8 +17,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      # Wait 10 minutes to allow Vercel build to complete
-      - run: sleep 600
+      # Wait 8 minutes to allow Vercel build to complete
+      - run: sleep 480
 
       # Once deploy URL is found, trigger Algolia crawl
       - name: Run Algolia Crawler
