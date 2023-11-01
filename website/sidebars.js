@@ -953,7 +953,13 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Database Permissions",
-      items: ["reference/snowflake-permissions"],
+      items: [
+	"reference/database-permissions/about-database-permissions",
+        "reference/database-permissions/databricks-permissions",
+        "reference/database-permissions/postgres-permissions",
+	"reference/database-permissions/redshift-permissions",
+	"reference/database-permissions/snowflake-permissions",
+      ],
     },
   ],
   guides: [
