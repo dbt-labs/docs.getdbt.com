@@ -1,4 +1,4 @@
-name: Vercel -> Algolia Crawler
+name: Algolia Crawler
 on:
   push:
     branches: [ current ]
