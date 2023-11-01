@@ -13,7 +13,7 @@ is_featured: true
 ---
 
 :::info Different from dbt Cloud CLI
-This blog explains how to use the `dbt-cloud-cli` Python library to create a data catalog app with dbt Cloud artifacts. This is different from the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), a tool that allows you to run dbt commands against your dbt Cloud development environment from your local command line
+This blog explains how to use the `dbt-cloud-cli` Python library to create a data catalog app with dbt Cloud artifacts. This is different from the [dbt Cloud CLI](/docs/cloud/cloud-cli-installation), a tool that allows you to run dbt commands against your dbt Cloud development environment from your local command line.
 :::
 
 dbt Cloud is a hosted service that many organizations use for their dbt deployments. Among other things, it provides an interface for creating and managing deployment jobs. When triggered (e.g., cron schedule, API trigger), the jobs generate various artifacts that contain valuable metadata related to the dbt project and the run results.
