@@ -69,8 +69,8 @@ When using the `view` materialization, your model is rebuilt as a view on each r
 * **Pros:** No additional data is stored, views on top of source data will always have the latest records in them.
 * **Cons:** Views that perform a significant transformation, or are stacked on top of other views, are slow to query.
 * **Advice:**
-    * Generally start with views for your models, and only change to another materialization when you're noticing performance problems.
-    * Views are best suited for models that do not do significant transformation, e.g. renaming, recasting columns.
+    * Generally start with views for your models, and only change to another materialization when you notice performance problems.
+    * Views are best suited for models that do not do significant transformation, e.g. renaming, or recasting columns.
 
 ### Table
 When using the `table` materialization, your model is rebuilt as a <Term id="table" /> on each run, via a `create table as` statement.
@@ -135,13 +135,15 @@ Materialized views are a combination of a view and a table, and serve use cases 
   * Materialized views operate much like incremental materializations, however they are usually
 able to be refreshed without manual interference on a regular cadence (depending on the database), forgoing the regular dbt batch refresh
 required with incremental materializations
-  * `dbt run` on materialized views correspond to a code deployment, just like views
+  * `dbt run` on materialized views corresponds to a code deployment, just like views
 * **Cons:**
   * Due to the fact that materialized views are more complex database objects, database platforms tend to have
 less configuration options available, see your database platform's docs for more details
   * Materialized views may not be supported by every database platform
 * **Advice:**
   * Consider materialized views for use cases where incremental models are sufficient, but you would like the data platform to manage the incremental logic and refresh.
+
+**Note:** `dbt-snowflake` _does not_ support materialized views, it uses Dynamic Tables instead. For details, refer to [Snowflake specific configurations](/reference/resource-configs/snowflake-configs#dynamic-tables).
 
 ## Python materializations
 
