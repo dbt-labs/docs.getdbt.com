@@ -23,6 +23,7 @@ ARE THEY DIFF FROM MODEL GOVERNANCE BC CONTROLS THE DATABASE PERMISSIONS?
   - Typical permissions include "SELECT" (read), "INSERT" (add data), "UPDATE" (modify data), "DELETE" (remove data), and administrative rights like "CREATE" and "DROP."
 - Users should be assigned permissions that ensure they have the necessary access to perform their tasks without overextending privileges.
 
+Something to note is that each data platform provider might have different approaches and names for privileges. Refer to their documentation for more details.
 ## Examples
 
 Refer to the following database permission pages for more info on examples and how to setup database permissions:
