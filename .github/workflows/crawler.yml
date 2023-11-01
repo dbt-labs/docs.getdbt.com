@@ -1,0 +1,35 @@
+name: Vercel -> Algolia Crawler
+on:
+  push:
+    branches: [ current ]
+
+jobs:
+  algolia_recrawl:
+    name: Trigger Algolia Crawl
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout repo
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      # Wait for deploy URL to be available from Vercel
+      - name: Get deployment URL
+        id: deployment
+        uses: dorshinar/get-deployment-url@master
+        timeout-minutes: 10
+        with:
+          token: ${{ github.token }}
+          # Check for deploy URL every 30 seconds
+          retryInterval: '30000'
+
+      # Once deploy URL is found, trigger Algolia crawl
+      - name: Run Algolia Crawler
+        uses: algolia/algoliasearch-crawler-github-actions@v1
+        id: crawler_push
+        with:
+          crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
+          crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
+          algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+          algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+          site-url: 'https://docs.getdbt.com'
+          crawler-name: ${{ secrets.CRAWLER_NAME }}
