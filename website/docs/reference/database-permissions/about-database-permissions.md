@@ -19,7 +19,7 @@ Database permissions are access rights and privileges granted to users or roles 
 
 ### How to use them
 
-- Users and administrators can grant and manage permissions using SQL statements or through the database system's interface.
+- Users and administrators can grant and manage permissions at various levels (such as table, schema, and so on) using SQL statements or through the database system's interface.
 - Assign permissions to individual users or roles (groups of users) based on their responsibilities.
   - Typical permissions include "SELECT" (read), "INSERT" (add data), "UPDATE" (modify data), "DELETE" (remove data), and administrative rights like "CREATE" and "DROP."
 - Users should be assigned permissions that ensure they have the necessary access to perform their tasks without overextending privileges.
