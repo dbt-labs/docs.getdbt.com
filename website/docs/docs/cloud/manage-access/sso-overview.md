@@ -1,7 +1,8 @@
 ---
-title: "SSO Overview"
+title: "Single sign-on (SSO) Overview"
 id: "sso-overview"
-
+pagination_next: "docs/cloud/manage-access/set-up-sso-saml-2.0"
+pagination_prev: null
 ---
 
 This overview explains how users are provisioned in dbt Cloud via Single Sign-On (SSO).

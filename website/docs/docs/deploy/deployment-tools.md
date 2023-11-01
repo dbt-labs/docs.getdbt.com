@@ -2,6 +2,7 @@
 title: "Integrate with other orchestration tools"
 id: "deployment-tools"
 sidebar_label: "Integrate with other tools"
+pagination_next: null
 ---
 
 Alongside [dbt Cloud](/docs/deploy/jobs), discover other ways to schedule and run your dbt jobs with the help of tools such as Airflow, Prefect, Dagster, automation server, Cron, and Azure Data Factory (ADF), 
@@ -107,11 +108,11 @@ If your organization is using [Prefect](https://www.prefect.io/), the way you wi
 
 ## Dagster
 
-If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud, dbt CLI and the dbt RPC server. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Refer to the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
+If your organization is using [Dagster](https://dagster.io/), you can use the [dagster_dbt](https://docs.dagster.io/_apidocs/libraries/dagster-dbt) library to integrate dbt commands into your pipelines. This library supports the execution of dbt through dbt Cloud, dbt Core, and the dbt RPC server. Running dbt from Dagster automatically aggregates metadata about your dbt runs. Refer to the [example pipeline](https://dagster.io/blog/dagster-dbt) for details.
 
 ## Kestra
 
-If your organization uses [Kestra](http://kestra.io/), you can leverage the [dbt plugin](https://kestra.io/plugins/plugin-dbt) to orchestrate dbt Cloud and dbt Core jobs. Kestra's user interface (UI) has built-in [Blueprints](https://kestra.io/docs/user-interface-guide/blueprints), providing ready-to-use workflows. Navigate to the Blueprints page in the left navigation menu and [select the dbt tag](https://demo.kestra.io/ui/blueprints/community?selectedTag=36) to find several examples of scheduling dbt CLI commands and dbt Cloud jobs as part of your data pipelines. After each scheduled or ad-hoc workflow execution, the Outputs tab in the Kestra UI allows you to download and preview all dbt build artifacts. The Gantt and Topology view additionally render the metadata to visualize dependencies and runtimes of your dbt models and tests. The dbt Cloud task provides convenient links to easily navigate between Kestra and dbt Cloud UI.
+If your organization uses [Kestra](http://kestra.io/), you can leverage the [dbt plugin](https://kestra.io/plugins/plugin-dbt) to orchestrate dbt Cloud and dbt Core jobs. Kestra's user interface (UI) has built-in [Blueprints](https://kestra.io/docs/user-interface-guide/blueprints), providing ready-to-use workflows. Navigate to the Blueprints page in the left navigation menu and [select the dbt tag](https://demo.kestra.io/ui/blueprints/community?selectedTag=36) to find several examples of scheduling dbt Core commands and dbt Cloud jobs as part of your data pipelines. After each scheduled or ad-hoc workflow execution, the Outputs tab in the Kestra UI allows you to download and preview all dbt build artifacts. The Gantt and Topology view additionally render the metadata to visualize dependencies and runtimes of your dbt models and tests. The dbt Cloud task provides convenient links to easily navigate between Kestra and dbt Cloud UI.
 
 ## Automation servers
 

@@ -14,15 +14,26 @@ description: New features and changes in dbt Core v1.7
 
 dbt Labs is committed to providing backward compatibility for all versions 1.x, with the exception of any changes explicitly mentioned below. If you encounter an error upon upgrading, please let us know by [opening an issue](https://github.com/dbt-labs/dbt-core/issues/new).
 
+### Behavior changes
+
+dbt Core v1.7 expands the amount of sources you can configure freshness for. Previously, freshness was limited to sources with a `loaded_at_field`; now, freshness can be generated from warehouse metadata tables when available. 
+
+As part of this change, the `loaded_at_field` is no longer required to generate source freshness. If a source has a `freshness:` block, dbt will attempt to calculate freshness for that source:
+- If a `loaded_at_field` is provided, dbt will calculate freshness via a select query (previous behavior).
+- If a `loaded_at_field` is _not_ provided, dbt will calculate freshness via warehouse metadata tables when possible (new behavior).
+
+This is a relatively small behavior change, but worth calling out in case you notice that dbt is calculating freshness for _more_ sources than before. To exclude a source from freshness calculations, you have two options:
+- Don't add a `freshness:` block.
+- Explicitly set `freshness: null`
+
 ## New and changed features and functionality
 
-- [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate documentation for a subset of your project. Currently available for Snowflake and Postgres only, but other adapters are coming soon. 
-- [Source freshness](/docs/deploy/source-freshness) can now be generated from warehouse metadata tables, currently snowflake only, but other adapters that have metadata tables are coming soon. If you configure source freshness without a `loaded_at_field`, dbt will try to determine freshness from warehouse metadata tables.
-- The nodes dictionary in the `catalog.json` can now be "partial" if `dbt docs generate` is run with a selector.
+- [`dbt docs generate`](/reference/commands/cmd-docs) now supports `--select` to generate [catalog metadata](/reference/artifacts/catalog-json) for a subset of your project. Currently available for Snowflake and Postgres only, but other adapters are coming soon. 
+- [Source freshness](/docs/deploy/source-freshness) can now be generated from warehouse metadata tables, currently Snowflake only, but other adapters that have metadata tables are coming soon. 
 
 ### MetricFlow enhancements
 
-- Automatically create metrics on measures with `create_metric: true`.
+- Automatically create metrics on measures with [`create_metric: true`](/docs/build/semantic-models).
 - Optional [`label`](/docs/build/semantic-models) in semantic_models, measures, dimensions and entities.
 - New configurations for semantic models - [enable/disable](/reference/resource-configs/enabled), [group](/reference/resource-configs/group), and [meta](/reference/resource-configs/meta).
 - Support `fill_nulls_with` and `join_to_timespine` for metric nodes.
@@ -32,8 +43,9 @@ dbt Labs is committed to providing backward compatibility for all versions 1.x, 
 
 - The [manifest](/reference/artifacts/manifest-json) schema version has been updated to v11.
 - The [run_results](/reference/artifacts/run-results-json) schema version has been updated to v5.
-- Added [node attributes](/reference/artifacts/run-results-json) related to compilation (`compiled`, `compiled_code`, `relation_name`).
-
+- There are a few specific changes to the [catalog.json](/reference/artifacts/catalog-json):
+    - Added [node attributes](/reference/artifacts/run-results-json) related to compilation (`compiled`, `compiled_code`, `relation_name`) to the `catalog.json`. 
+    - The nodes dictionary in the `catalog.json` can now be "partial" if `dbt docs generate` is run with a selector.
 
 ### Model governance
 
@@ -47,6 +59,6 @@ dbt Core v1.5 introduced model governance which we're continuing to refine.  v1.
 ### Quick hits
 
 With these quick hits, you can now:
-- Configure a `delimiter` for a seed file.
+- Configure a [`delimiter`](/reference/resource-configs/delimiter) for a seed file.
 - Use packages with the same git repo and unique subdirectory.
-- Moved the `date_spine` macro from dbt-utils to dbt-core.
+- Access the `date_spine` macro directly from dbt-core (moved over from dbt-utils).
