@@ -45,8 +45,6 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 
 Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
 
-To use both dbt Cloud CLI and dbt Core — Have both the dbt Cloud CLI and dbt Core installed simultaneously to meet your needs. To avoid conflicts, alias the dbt Cloud CLI as "dbt-cloud." For more details, check the FAQs if your operating system experiences path conflicts.
-
 1. Run the following command to verify that you don't already have dbt Core installed:
    
   ```bash
@@ -250,9 +248,9 @@ To update:
 
 ## Using VS Code extensions
 
-Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however it doesn't support some dbt Core APIs required by certain tools like VS Code extensions. 
+Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however it doesn't support some dbt Core APIs required by certain tools, for example VS Code extensions. 
 
-To use these extensions, such as dbt-power-user, with the dbt Cloud CLI, you can install it using Homebrew (along with dbt Core) and create an alias to run the dbt Cloud CLI as `dbt-cloud`. This allows dbt-power-user to continue to function alongside the dbt Cloud CLI.
+To use these extensions, such as dbt-power-user, with the dbt Cloud CLI, you can install it using Homebrew (along with dbt Core) and create an alias to run the dbt Cloud CLI as `dbt-cloud`. This allows dbt-power-user to continue to work alongside the dbt Cloud CLI.
 
 
 ## FAQs
@@ -266,16 +264,31 @@ The dbt Cloud CLI and <a href="https://github.com/dbt-labs/dbt-core">dbt Core</a
 
 <details>
 <summary>How do I run both the dbt Cloud CLI and dbt Core?</summary>
-For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running <code>dbt</code>. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).
+For compatibility, both the dbt Cloud CLI and dbt Core are invoked by running <code>dbt</code>. This can create path conflicts if your operating system selects one over the other based on your $PATH environment variable (settings).<br />
 
 If you have dbt Core installed locally, either:
 
-- Install using the <code>pip3 install dbt</code> [pip](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli) command, or
-- Install natively, however ensure you deactivate your Python environment or uninstall it using `pip uninstall dbt` before proceeding.  
-
-1. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the dbt Cloud CLI binary to use both dbt Cloud CLI and dbt Core together.
+1. Install using the <code>pip3 install dbt</code> [pip](/docs/cloud/cloud-cli-installation?install=pip#install-dbt-cloud-cli) command, or
+2. Install natively, ensuring you either deactivate the virtual environment containing dbt Core or create an alias for the dbt Cloud CLI. 
+3. (Advanced users) Install natively, but modify the $PATH environment variable to correctly point to the dbt Cloud CLI binary to use both dbt Cloud CLI and dbt Core together.
 
 You can always uninstall the dbt Cloud CLI to return to using dbt Core.
+</details>
+
+<details>
+<summary>How to create an alias?</summary>
+To create an alias for the dbt Cloud CLI: <br />
+
+1. Open your shell's profile configuration file. Deepending on your shell and system, this could be <code>~/.bashrc</code>, <code>~/.bash_profile</code>, <code>~/.zshrc</code>, or another file.<br />
+
+2. Add an alias that points to the dbt Cloud CLI binary. For example:<code>alias dbt-cloud="path_to_dbt_cloud_cli_binary</code>
+   
+   Replace <code>path_to_dbt_cloud_cli_binary</code> with the actual path to the dbt Cloud CLI binary. With this alias, you can use the command <code>dbt-cloud</code> to invoke the dbt Cloud CLI.<br />
+
+3. Save the file and then either restart your shell or run <code>source</code> on the profile file to apply the changes.
+As an example, in bash you would run: <code>source ~/.bashrc</code><br />
+
+This alias will allow you to use the <code>dbt-cloud</code> command to invoke the dbt Cloud CLI while having dbt Core installed natively.
 </details>
 
 <details>
