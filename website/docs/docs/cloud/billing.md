@@ -41,7 +41,7 @@ Any models built in a dbt Cloud development environment (for example, via the ID
 
 ### What counts as a Queried Metric?
 
-The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct queried metrics.
+The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct Queried Metrics.
 
 - Every successful request you make to render or run SQL to the Semantic Layer API counts as at least one queried metric, even if no data is returned. 
 - If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a queried metric.
