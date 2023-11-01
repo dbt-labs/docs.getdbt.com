@@ -7,7 +7,7 @@ In Postgres, permissions are used to control who can perform certain actions on 
 
 ## Example Postgres permissions
 
-The following example provides you with the SQL statements you can use to manage permissions. 
+The following example provides you with the SQL statements you can use to manage permissions. These examples allow you to run dbt smoothly without encountering permission issues, such as creating schemas, reading existing data, and accessing the information schema. 
 
 **Note** that `database_name`, `database.schema_name`, and `user_name` are placeholders and you can replace them as needed for your organization's naming convention.
 
