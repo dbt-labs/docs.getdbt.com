@@ -244,4 +244,4 @@ The adapter was originally created by [Doug Beatty](https://github.com/dbeatty10
 
 ## License
 
-The adapter is published using Apache-2.0 License. Please see the link (ADD LINK HERE) for terms and conditions, such as creating derivative work and the support model. 
+The adapter is published using Apache-2.0 License. Refer to the [terms and conditions](https://github.com/dbt-labs/dbt-core/blob/main/License.md) to understand items such as creating derivative work and the support model. 
