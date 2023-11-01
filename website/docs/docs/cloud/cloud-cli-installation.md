@@ -270,4 +270,7 @@ If you have dbt Core installed locally, either:
 You can always uninstall the dbt Cloud CLI to return to using dbt Core.
 </details>
 
-
+<details>
+<summary>Why am I receiving a <code>Session occupied</code> error?</summary>
+If you've ran a dbt command and receive a <code>Session occupied</code> error, you can reattach to your existing session with <code>dbt reattach</code> and then press <code>Control-C</code> and choose to cancel the invocation.
+</details>
