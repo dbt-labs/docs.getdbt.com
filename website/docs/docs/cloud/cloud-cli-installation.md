@@ -43,7 +43,9 @@ You can install the dbt Cloud CLI on the command line by using one of these meth
 	
 <TabItem value="brew" label="macOS (brew)">
 
-Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts.
+Before you begin, make sure you have [Homebrew installed](http://brew.sh/) in your code editor or command line terminal. Refer to the [FAQs](#faqs) if your operating system runs into path conflicts. 
+
+To use both dbt Cloud CLI and dbt Core — Have both the dbt Cloud CLI and dbt Core installed simultaneously to meet your needs. To avoid conflicts, alias the dbt Cloud CLI as "dbt-cloud." For more details, check the FAQs if your operating system experiences path conflicts.
 
 1. Run the following command to verify that you don't already have dbt Core installed:
    
@@ -144,14 +146,12 @@ Advanced users can configure multiple projects to use the same Cloud CLI executa
 
 <TabItem value="pip" label="Existing dbt Core users (pip)">
 
-If you already have dbt Core installed, you can install the dbt Cloud CLI using pip. Here are some considerations:
+If you already have dbt Core installed, the dbt Cloud CLI may conflict. Here are some considerations:
 
-- **Prevent conflicts**<br/>
-  To prevent overwriting dbt Core, avoid installing the dbt Cloud CLI with `pip`. Instead, consider using the native installation method (Homebrew) and configure your PATH or create a new virtual environment.<br/>
-- **Use both dbt Cloud CLI and dbt Core**<br/>
-  Have both the dbt Cloud CLI and dbt Core installed simultaneously to meet your needs. To avoid conflicts, alias the dbt Cloud CLI as "dbt-cloud." For more details, check the [FAQs](#faqs) if your operating system experiences path conflicts.<br/>
-- **Switch from the dbt Cloud CLI to dbt Core**<br/>
-  If you've already installed the dbt Cloud CLI and need to switch back to dbt Core:
+- **Prevent conflicts** <br /> If you want to use `pip`, create a new virtual environment.<br /><br />
+- **Use both dbt Cloud CLI and dbt Core** <br /> If you use Homebrew, consider aliasing the dbt Cloud CLI as "dbt-cloud" to avoid conflict. For more details, check the [FAQs](#faqs) if your operating system experiences path conflicts.<br /><br />
+- **Switch from the dbt Cloud CLI to dbt Core** <br />
+  If you've already installed the dbt Cloud CLI and need to switch back to dbt Core:<br />
   - Uninstall the dbt Cloud CLI using the command: `pip uninstall dbt`
   - Reinstall dbt Core using the following command, replacing "adapter_name" with the appropriate adapter name:
     ```shell
@@ -196,11 +196,11 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
   pip3 install dbt
   ```
 
-3. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core using the version from Step 1.
+1. (Optional) To revert back to dbt Core, first uninstall both the dbt Cloud CLI and dbt Core. Then reinstall dbt Core.
 
   ```bash
   pip3 uninstall dbt-core dbt
-  pip3 install dbt-core==VERSION
+  pip install dbt-adapter_name --force-reinstall
   ```
 
 4. After you've verified the installation, [configure](/docs/cloud/configure-cloud-cli) the dbt Cloud CLI for your dbt Cloud project. You can then use it to run [dbt commands](/reference/dbt-commands) similar to dbt Core. For example, execute `dbt compile` to compile a project using dbt Cloud and validate your models and tests.
@@ -210,8 +210,6 @@ We recommend using virtual environments (venv) to namespace `cloud-cli`.
 
 
 </Tabs>
-
-
 
 ## Update dbt Cloud CLI
 
@@ -250,10 +248,12 @@ To update:
 
 </Tabs>
 
-## dbt Cloud CLI extensions
-Command line extensions are additional functionalities that you can add to a command line tool or shell environment. These extensions expand the capabilities of the CLI, making it more versatile and efficient.
+## Using VS Code extensions
 
-The dbt Cloud CLI doesn't currently support extensions, such as SQLFluff or dbt-power-user, during the public preview period. This is because.....
+Visual Studio (VS) Code extensions enhance command line tools by adding extra functionalities. The dbt Cloud CLI is fully compatible with dbt Core, however it doesn't support some dbt Core APIs required by certain tools like VS Code extensions. 
+
+To use these extensions, such as dbt-power-user, with the dbt Cloud CLI, you can install it using Homebrew (along with dbt Core) and create an alias to run the dbt Cloud CLI as `dbt-cloud`. This allows dbt-power-user to continue to function alongside the dbt Cloud CLI.
+
 
 ## FAQs
 
