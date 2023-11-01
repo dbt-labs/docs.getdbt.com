@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/reference/snowflake-permissions",
+      "destination": "/reference/database-permissions/snowflake-permissions",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/metricflow-cli",
       "destination": "/docs/build/metricflow-commands",
       "permanent": true
