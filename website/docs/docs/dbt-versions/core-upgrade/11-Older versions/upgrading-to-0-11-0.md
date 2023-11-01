@@ -1,6 +1,7 @@
 ---
 title: "Upgrading to 0.11.0"
 id: "upgrading-to-0-11-0"
+displayed_sidebar: "docs"
 ---
 
 import UpgradeMove from '/snippets/_upgrade-move.md';

@@ -1,7 +1,7 @@
 ---
 title: "Upgrading to v0.20"
 id: "upgrading-to-v0.20"
-
+displayed_sidebar: "docs"
 ---
 
 import UpgradeMove from '/snippets/_upgrade-move.md';

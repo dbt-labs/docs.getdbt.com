@@ -1,5 +1,6 @@
 ---
 title: "Upgrading to 0.18.0"
+displayed_sidebar: "docs"
 
 ---
 

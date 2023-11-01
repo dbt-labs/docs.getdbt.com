@@ -1,6 +1,7 @@
 ---
 title: "Upgrading to v0.21"
 id: "upgrading-to-v0.21"
+displayed_sidebar: "docs"
 
 ---
 

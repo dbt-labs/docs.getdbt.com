@@ -1,6 +1,7 @@
 ---
 title: "Upgrading to 0.17.0"
 id: "upgrading-to-0-17-0"
+displayed_sidebar: "docs"
 
 ---
 
