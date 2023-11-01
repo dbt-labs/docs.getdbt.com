@@ -1,17 +1,13 @@
 name: Algolia Crawler
 on:
-  # Uncomment push to current branch trigger 
-  # if running on each merge to current
-  push:
-    branches: [ automate-crawler ]
   pull_request:
     types: 
-      # - closed
+      - closed
 
 jobs:
   algolia_recrawl:
-    # Comment out this if check if running on every merge to current branch
-    #if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && github.event.pull_request.merged == false }}
+    # Comment out the if check below if running on every merge to current branch
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && github.event.pull_request.merged == false }}
     name: Trigger Algolia Crawl
     runs-on: ubuntu-latest
     steps:
