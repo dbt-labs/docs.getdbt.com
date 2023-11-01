@@ -6,7 +6,7 @@ In Snowflake, permissions are used to control who can perform certain actions on
 
 ## Set up Snowflake account
 
-This section explains how to set up permissions and roles within Snowflake. In Snowflake, you would perform these actions using SQL commands to set up your data warehouse and access control within Snowflake's ecosystem. 
+This section explains how to set up permissions and roles within Snowflake. In Snowflake, you would perform these actions using SQL commands and set up your data warehouse and access control within Snowflake's ecosystem. 
 
 1. Set up databases
 ```
