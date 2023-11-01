@@ -1,10 +1,16 @@
 name: Algolia Crawler
 on:
+  # Uncomment push to current branch trigger 
+  # if running on each merge to current
+  # push:
+    # branches: [ current ]
   pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize']
+    types: 
+      - closed
 
 jobs:
   algolia_recrawl:
+    # Comment out this if check if running on every merge to current branch
     if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && github.event.pull_request.merged == true }}
     name: Trigger Algolia Crawl
     runs-on: ubuntu-latest
@@ -13,30 +19,24 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Dump GitHub context
-        env:
-          EVENT_CONTEXT: ${{ toJson(github.event.pull_request) }}
-        run: |
-          echo "$EVENT_CONTEXT"
-
       # Wait for deploy URL to be available from Vercel
-      # - name: Get deployment URL
-      #  id: deployment
-      #  uses: dorshinar/get-deployment-url@master
-      #  timeout-minutes: 15
-      #  with:
-      #    token: ${{ github.token }}
-      #    # Check for deploy URL every 20 seconds
-      #    retryInterval: '20000'
+      - name: Get deployment URL
+        id: deployment
+        uses: dorshinar/get-deployment-url@master
+        timeout-minutes: 15
+        with:
+          token: ${{ github.token }}
+          # Check for deploy URL every 20 seconds
+          retryInterval: '20000'
 
       # Once deploy URL is found, trigger Algolia crawl
-      #- name: Run Algolia Crawler
-      #  uses: algolia/algoliasearch-crawler-github-actions@v1
-      #  id: crawler_push
-      #  with:
-      #    crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
-      #    crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
-      #    algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
-      #    algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
-      #    site-url: 'https://docs.getdbt.com'
-      #    crawler-name: ${{ secrets.CRAWLER_NAME }}
+      - name: Run Algolia Crawler
+        uses: algolia/algoliasearch-crawler-github-actions@v1
+        id: crawler_push
+        with:
+          crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
+          crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
+          algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+          algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+          site-url: 'https://docs.getdbt.com'
+          crawler-name: ${{ secrets.CRAWLER_NAME }}
