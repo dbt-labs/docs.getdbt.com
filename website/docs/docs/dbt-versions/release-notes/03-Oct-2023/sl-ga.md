@@ -23,7 +23,5 @@ It aims to bring the best of modeling and semantics to downstream applications b
 <Lightbox src="/img/docs/dbt-cloud/semantic-layer/sl-architecture.jpg" width="80%" title="Use the universal dbt Semantic Layer to define and query metrics in integration tools."/>
 
 The dbt Semantic Layer is available to [dbt Cloud Team or Enterprise](https://www.getdbt.com/) multi-tenant plans on dbt v1.6 or higher. 
-- Team and Enterprise customers can use 1,000 Queried Units per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-query-unit) for more information.
+- Team and Enterprise customers can use 1,000 Queried Metrics per month for no additional cost on a limited trial basis, subject to reasonable use limitations. Refer to [Billing](/docs/cloud/billing#what-counts-as-a-query-metric) for more information.
 - dbt Cloud Developer plans and dbt Core users can define metrics but won't be able to query them with integrated tools.
-
-
