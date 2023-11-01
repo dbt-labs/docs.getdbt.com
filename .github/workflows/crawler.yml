@@ -6,7 +6,7 @@ on:
     # branches: [ current ]
   pull_request:
     types: 
-      - closed
+      # - closed
       - edited
 
 jobs:
