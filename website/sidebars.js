@@ -936,7 +936,7 @@ const sidebarSettings = {
     {
       type: "category",
       label: "Database Permissions",
-      link: { type: "doc", id: "reference/database-permissions/about-database-permissions" },
+      // link: { type: "doc", id: "reference/database-permissions/about-database-permissions" },
       items: [
 	"reference/database-permissions/about-database-permissions"
         "reference/database-permissions/databricks-permissions",
