@@ -7,13 +7,19 @@ on:
 jobs:
   algolia_recrawl:
     # Comment out the if check below if running on every merge to current branch
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && github.event.pull_request.merged == true }}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') }} && ${{ github.event.pull_request.merged == true }}
     name: Trigger Algolia Crawl
     runs-on: ubuntu-latest
     steps:
       # Checkout repo
       - name: Checkout Repo
         uses: actions/checkout@v3
+
+      - name: Dump GitHub context
+        env:
+          EVENT_CONTEXT: ${{ toJson(github.event.pull_request) }}
+        run: |
+          echo "$EVENT_CONTEXT"
 
       # Wait for deploy URL to be available from Vercel
       - name: Get deployment URL
