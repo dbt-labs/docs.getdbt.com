@@ -1,7 +1,12 @@
 ---
 title: "Upgrading to 0.19.0"
+displayed_sidebar: "docs"
 
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
 
 ### Resources
 
@@ -23,7 +28,7 @@ See the docs below for more details. We don't expect these to require action in 
 
 #### Deprecations
 
-Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](/reference/project-configs/config-version) and the [v0.17.0 Migration Guide](/guides/migration/versions) for details.
+Removed support for `config-version: 1` of dbt_project.yml, which was deprecated in v0.17.0. Use `config-version: 2` in all projects and installed packages. Otherwise, dbt will raise an error. See docs on [config-version](/reference/project-configs/config-version) and the [v0.17.0 Migration Guide](/docs/dbt-versions/core-upgrade) for details.
 
 ### For dbt plugin maintainers
 
