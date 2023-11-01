@@ -53,7 +53,7 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
    - Since this is treated as a table, dbt Semantic Layer can't dynamically change what is available. This means we display _all_ available metrics and dimensions even if a particular metric and dimension combination isn't available. 
    
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
-- In any of our Semantic Layer interfaces (not only Tableau), [any cumulative metric with a time window or grain *must* be looked at with a time dimension](/docs/build/cumulative#limitations)
+- In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
 
 ## Unsupported functionality
 
