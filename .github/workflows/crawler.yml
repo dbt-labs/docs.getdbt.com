@@ -7,7 +7,7 @@ on:
 jobs:
   algolia_recrawl:
     # Comment out the if check below if running on every merge to current branch
-    if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && github.event.pull_request.merged == false }}
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && github.event.pull_request.merged == true }}
     name: Trigger Algolia Crawl
     runs-on: ubuntu-latest
     steps:
