@@ -2,6 +2,8 @@ name: Vercel -> Algolia Crawler
 on:
   push:
     branches: [ current ]
+  pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
   algolia_recrawl:
