@@ -939,10 +939,10 @@ const sidebarSettings = {
       link: { type: "doc", id: "reference/database-permissions/about-database-permissions" },
       items: [
 	"reference/database-permissions/about-database-permissions"
-        "reference/database-permissions/snowflake-permissions",
         "reference/database-permissions/databricks-permissions",
-        "reference/database-permissions/redshift-permissions",
         "reference/database-permissions/postgres-permissions",
+	"reference/database-permissions/redshift-permissions",
+	"reference/database-permissions/snowflake-permissions",
       ],
     },
   ],
