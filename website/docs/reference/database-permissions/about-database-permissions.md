@@ -17,7 +17,7 @@ Database permissions are access rights and privileges granted to users or roles 
 - They help maintain data integrity, prevent unauthorized changes, and limit exposure to sensitive data.
 - Permissions also support compliance with data privacy regulations and auditing.
 
-## How to use them
+### How to use them
 
 - Users and administrators can grant and manage permissions using SQL statements or through the database system's interface.
 - Assign permissions to individual users or roles (groups of users) based on their responsibilities.
@@ -25,9 +25,10 @@ Database permissions are access rights and privileges granted to users or roles 
 - Users should be assigned permissions that ensure they have the necessary access to perform their tasks without overextending privileges.
 
 Something to note is that each data platform provider might have different approaches and names for privileges. Refer to their documentation for more details.
-## Examples
 
-Refer to the following database permission pages for more info on examples and how to setup database permissions:
+### Examples
+
+Refer to the following database permission pages for more info on examples and how to set up database permissions:
 
 - [Databricks](/reference/database-permissions/databricks-permissions)
 - [Postgres](/reference/database-permissions/postgres-permissions)
