@@ -13,7 +13,7 @@ schema¹
 `information_schema`)
 
 On Postgres, Redshift, Databricks, and Snowflake, use a series of `grants` to ensure that
-your user has the correct privileges. Check out [example permissions](/reference/database-permissions/snowflake-permissions) for these warehouses.
+your user has the correct privileges. Check out [example permissions](/reference/database-permissions/about-database-permissions) for these warehouses.
 
 On BigQuery, use the "BigQuery User" role to assign these privileges.
 
