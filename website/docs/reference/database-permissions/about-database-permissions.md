@@ -7,7 +7,6 @@ sidebar_label: "About database permissions"
 
 Database permissions are access rights and privileges granted to users or roles within a database or data platform. They help you specify what actions users or roles can perform on various database objects, like tables, views, schemas, or even the entire database.
 
-ARE THEY DIFF FROM MODEL GOVERNANCE BC CONTROLS THE DATABASE PERMISSIONS?
 
 ## Why are they useful
 
