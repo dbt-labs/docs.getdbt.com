@@ -3,13 +3,9 @@ on:
   push:
     branches: [ current, automate-crawler ]
 
-  # Only used for testing within PR, delete before merge
-  # pull_request:
-  #  types: ['opened', 'edited', 'reopened', 'synchronize']
-
 jobs:
   algolia_recrawl:
-    if: ${{ github.event.label.name == 'trigger-crawl' }}
+    # if: ${{ github.event.label.name == 'trigger-crawl' }}
     name: Trigger Algolia Crawl
     runs-on: ubuntu-latest
     steps:
@@ -17,15 +13,21 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
+      - name: Dump GitHub context
+        env:
+          EVENT_CONTEXT: ${{ toJson(github.event) }}
+        run: |
+          echo "$EVENT_CONTEXT"
+
       # Wait for deploy URL to be available from Vercel
-      - name: Get deployment URL
-        id: deployment
-        uses: dorshinar/get-deployment-url@master
-        timeout-minutes: 15
-        with:
-          token: ${{ github.token }}
-          # Check for deploy URL every 20 seconds
-          retryInterval: '20000'
+      # - name: Get deployment URL
+      #  id: deployment
+      #  uses: dorshinar/get-deployment-url@master
+      #  timeout-minutes: 15
+      #  with:
+      #    token: ${{ github.token }}
+      #    # Check for deploy URL every 20 seconds
+      #    retryInterval: '20000'
 
       # Once deploy URL is found, trigger Algolia crawl
       - name: Run Algolia Crawler
