@@ -1,11 +1,11 @@
 name: Algolia Crawler
 on:
   push:
-    branches: [ current ]
+    branches: [ current, automate-crawler ]
 
   # Only used for testing within PR, delete before merge
-  pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize']
+  # pull_request:
+  #  types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
   algolia_recrawl:
