@@ -10,7 +10,7 @@ pagination_prev: null
 Database permissions are access rights and privileges granted to users or roles within a database or data platform. They help you specify what actions users or roles can perform on various database objects, like tables, views, schemas, or even the entire database.
 
 
-## Why are they useful
+### Why are they useful
 
 - Database permissions are essential for security and data access control.
 - They ensure that only authorized users can perform specific actions.
