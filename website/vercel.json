@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/guides/migration/versions",
+      "destination": "/docs/dbt-versions/core-upgrade",
+      "permanent": true
+    },
+    {
       "source": "/guides/migration/versions/upgrading-to-v1.7",
       "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.7",
       "permanent": true
