@@ -3,6 +3,8 @@ title: "About git"
 id: git-version-control
 description: "Git overview"
 sidebar_label: "About git"
+pagination_next: "docs/collaborate/git/version-control-basics"
+pagination_prev: null
 ---
 
 A [version control](https://en.wikipedia.org/wiki/Version_control) system allows you and your teammates to work collaboratively, safely, and simultaneously on a single project. Version control helps you track all the code changes made in your dbt project.

@@ -1,22 +1,31 @@
 ---
-title: "Develop in the IDE"
+title: "About the dbt Cloud IDE"
 id: develop-in-the-cloud
 description: "Develop, test, run, and build in the Cloud IDE. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly"
-sidebar_label: Develop in the IDE
+sidebar_label: About the IDE
 tags: [IDE]
+pagination_next: "docs/cloud/dbt-cloud-ide/ide-user-interface"
+pagination_prev: null
 ---
 
-The dbt Cloud integrated development environment (IDE) is a single interface for building, testing, running, and version-controlling dbt projects from your browser. With the Cloud IDE, you can compile dbt code into SQL and run it against your database directly. 
+The dbt Cloud integrated development environment (IDE) is a single web-based interface for building, testing, running, and version-controlling dbt projects. It compiles dbt code into SQL and executes it directly on your database. 
 
-## Prerequisites
+The dbt Cloud IDE offers several [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) for faster and more efficient data platform development and governance:
 
-To develop in the Cloud IDE, make sure you have the following:
+- Syntax highlighting for SQL: Makes it easy to distinguish different parts of your code, reducing syntax errors and enhancing readability.
+- Auto-completion: Suggests table names, arguments, and column names as you type, saving time and reducing typos.
+- Code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format): Help standardize and fix your SQL code effortlessly.
+- Navigation tools: Easily move around your code, jump to specific lines, find and replace text, and navigate between project files.
+- Version control: Manage code versions with a few clicks.
 
-- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
-- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
-- A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
-- A [development environment and development credentials](#access-the-cloud-ide) set up
-- The environment must be on dbt version 1.0 or higher
+These [features](#dbt-cloud-ide-features) create a powerful editing environment for efficient SQL coding, suitable for both experienced and beginner developers.
+
+<DocCarousel slidesPerView={1}>
+
+<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The dbt Cloud IDE includes version control,files/folders, an editor, a command/console, and more."/>
+
+<Lightbox src src="/img/docs/dbt-cloud/cloud-ide/cloud-ide-v2.jpg" width="85%" title="Enable dark mode for a great viewing experience in low-light environments."/>
+</DocCarousel>
 
 :::tip Disable ad blockers
 
@@ -24,21 +33,16 @@ To improve your experience using dbt Cloud, we suggest that you turn off ad bloc
 
 :::
 
-## Develop in the Cloud IDE
+## Prerequisites
 
-The Cloud IDE is a powerful tool that can help streamline and govern your data platform development process. It offers a range of [editing features](/docs/cloud/dbt-cloud-ide/ide-user-interface#editing-features) that can help make your data platform development process faster and more efficient. Some of the editing features include:
+- A [dbt Cloud account](https://cloud.getdbt.com/) and [Developer seat license](/docs/cloud/manage-access/seats-and-users)
+- A git repository set up and git provider must have `write` access enabled. See [Connecting your GitHub Account](/docs/cloud/git/connect-github) or [Importing a project by git URL](/docs/cloud/git/import-a-project-by-git-url) for detailed setup instructions
+- A dbt project connected to a [data platform](/docs/cloud/connect-data-platform/about-connections)
+- A [development environment and development credentials](#access-the-cloud-ide) set up
+- The environment must be on dbt version 1.0 or higher
 
-- The IDE has syntax highlighting for SQL. This makes it easy to visually distinguish between different parts of your code. This helps prevent syntax errors and improve readability.
-- Use the IDE built-in auto-completion, which suggests table names, arguments, and column names as you type. This saves time and reduces the likelihood of typos or errors in your code.
-- The code [formatting and linting](/docs/cloud/dbt-cloud-ide/lint-format) tools allow you to standardize and fix your SQL code with ease. 
-- The IDE has a range of navigation tools, making it easy to move around your code with ease. You can quickly jump to specific lines of code, find and replace text, and navigate between different files in your project. 
-- Use the version control menu and features to version-control your code with just a few clicks. 
 
-All of these [features](#cloud-ide-features) work together to create a powerful editing environment that can help you write and maintain high-quality SQL code in less time. Whether you're a seasoned developer or just starting out, the Cloud IDE has everything you need to be productive, collaborative, and efficient.
-
-<Lightbox src="/img/docs/dbt-cloud/cloud-ide/ide-basic-layout.jpg" width="85%" title="The Cloud IDE layout includes version control on the upper left, files/folders on the left, editor on the right, and command/console at the bottom"/>
-
-## Cloud IDE features
+## dbt Cloud IDE features
 
 The dbt Cloud IDE comes with [tips](/docs/cloud/dbt-cloud-ide/dbt-cloud-tips) and [features](/docs/cloud/dbt-cloud-ide/ide-user-interface) that make it easier for you to develop, build, compile, run, and test data models. 
 
@@ -89,9 +93,9 @@ The Cloud IDE needs explicit action to save your changes. There are three ways y
 
 ## Access the Cloud IDE
 
-:::info📌
+:::tip Disable ad blockers
 
-New to dbt? Check out our [quickstart guides](/quickstarts) to build your first dbt project in the Cloud IDE!
+To improve your experience using dbt Cloud, we suggest that you turn off ad blockers. This is because some project file names, such as `google_adwords.sql`, might resemble ad traffic and trigger ad blockers.
 
 :::
 
@@ -155,13 +159,15 @@ The dbt Cloud IDE makes it possible to [build and view](/docs/collaborate/build-
   </div>
 </details>
 <details>
-  <summary>What is the difference between developing on the Cloud IDE and on the CLI?</summary>
+  <summary>What is the difference between developing on the dbt Cloud IDE, the dbt Cloud CLI, and dbt Core?</summary>
   <div>
-    <div>There are two main ways to develop with dbt: using the web-based IDE in dbt Cloud or using the command-line interface (CLI) in dbt Core: <br></br>
-      <span>&mdash;</span>
-      <b>dbt Cloud IDE</b> dbt Cloud is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project. <br></br>
-      <span>&mdash;</span>
-      <b>dbt Core CLI</b> The command line interface (CLI) uses <a href="https://docs.getdbt.com/docs/introduction">dbt Core</a>, an <a href="https://github.com/dbt-labs/dbt">open-source</a> software that’s freely available. You can build your dbt project in a code editor, like Jetbrains or VSCode, and run dbt commands from the command line.
+    <div>You can develop dbt using the web-based IDE in dbt Cloud or on the command line interface using the dbt Cloud CLI or open-source dbt Core, all of which enable you to execute dbt commands. The key distinction between the dbt Cloud CLI and dbt Core is the dbt Cloud CLI is tailored for dbt Cloud's infrastructure and integrates with all its features.<br /><br />
+      <span>&mdash; </span>
+      <b>dbt Cloud IDE:</b> <a href="https://docs.getdbt.com/docs/cloud/about-cloud/dbt-cloud-features">dbt Cloud</a> is a web-based application that allows you to develop dbt projects with the IDE, includes a purpose-built scheduler, and provides an easier way to share your dbt documentation with your team. The IDE is a faster and more reliable way to deploy your dbt models and provides a real-time editing and execution environment for your dbt project. <br /><br />
+      <span>&mdash; </span>
+      <b>dbt Cloud CLI: </b> <a href="https://docs.getdbt.com/docs/cloud/cloud-cli-installation">The dbt Cloud CLI</a> allows you to run dbt commands against your dbt Cloud development environment from your local command line or code editor. It supports cross-project ref, speedier, lower-cost builds, automatic deferral of build artifacts, and more. <br /><br />
+      <span>&mdash; </span>
+      <b>dbt Core:</b> dbt Core is an <a href="https://github.com/dbt-labs/dbt">open-sourced</a> software that’s freely available. You can build your dbt project in a code editor, and run dbt commands from the command line.
     </div>
   </div>
 </details>
