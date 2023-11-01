@@ -25,7 +25,7 @@ This integration provides a live connection to the dbt Semantic Layer through Ta
 
 ## Installing
 
-1. Download our [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.0/dbt_semantic_layer.taco) locally and add it to your default folder:
+1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.2/dbt_semantic_layer.taco) locally and add it to your default folder:
    - Windows: `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
    - Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
    - Linux: `/opt/tableau/connectors`
