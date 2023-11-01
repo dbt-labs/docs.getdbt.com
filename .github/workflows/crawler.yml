@@ -1,14 +1,14 @@
 name: Algolia Crawler
 on:
-  #push:
-    #branches: [ current, automate-crawler ]
   pull_request:
     types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
   algolia_recrawl:
-    # if: ${{ github.event.label.name == 'trigger-crawl' }}
-    # if: github.event.pull_request.merged == true
+    if: ${{ 
+      contains(github.event.pull_request.labels.*.name, 'trigger-crawl') && 
+      github.event.pull_request.merged == false 
+    }}
     name: Trigger Algolia Crawl
     runs-on: ubuntu-latest
     steps:
