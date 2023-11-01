@@ -18,7 +18,7 @@ jobs:
 
       - name: Dump GitHub context
         env:
-          EVENT_CONTEXT: ${{ toJson(github.event.pull_request.labels) }}
+          EVENT_CONTEXT: ${{ toJson(github.event.pull_request) }}
         run: |
           echo "$EVENT_CONTEXT"
 
