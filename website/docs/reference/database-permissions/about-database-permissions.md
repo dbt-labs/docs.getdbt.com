@@ -3,6 +3,8 @@ title: "Database permissions"
 id: about-database-permissions
 description: "Database permissions are access rights and privileges granted to users or roles within a database management system."
 sidebar_label: "About database permissions"
+pagination_next: "reference/database-permissions/databricks-permissions"
+pagination_prev: null
 ---
 
 Database permissions are access rights and privileges granted to users or roles within a database or data platform. They help you specify what actions users or roles can perform on various database objects, like tables, views, schemas, or even the entire database.
