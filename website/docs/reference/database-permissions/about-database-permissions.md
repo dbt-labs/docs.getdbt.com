@@ -25,7 +25,7 @@ ARE THEY DIFF FROM MODEL GOVERNANCE BC CONTROLS THE DATABASE PERMISSIONS?
 
 ## Examples
 
-For more info on examples and how to setup database permissions, refer to the following database permission pages:
+Refer to the following database permission pages for more info on examples and how to setup database permissions:
 
 - [Databricks](/reference/database-permissions/databricks-permissions)
 - [Postgres](/reference/database-permissions/postgres-permissions)
