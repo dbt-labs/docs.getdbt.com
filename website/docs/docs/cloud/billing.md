@@ -13,7 +13,7 @@ dbt Cloud offers a variety of [plans and pricing](https://www.getdbt.com/pricing
 
 As a customer, you pay for the number of seats you have and the amount of usage consumed each month.  Seats are billed primarily on the amount of Developer and Read licenses purchased. 
 
-Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, Semantic Layer [Queried Metrics](#what-counts-as-a-query-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
+Usage is based on the number of [Successful Models Built](#what-counts-as-a-successful-model-built) and, if purchased and used, Semantic Layer [Queried Metrics](#what-counts-as-a-queried-metric) subject to reasonable usage. All billing computations are conducted in Coordinated Universal Time (UTC).
 
 ### What counts as a seat license?
 
@@ -39,24 +39,24 @@ Any models built in a dbt Cloud development environment (for example, via the ID
 | Seeds                                       | ❌                  |
 | Snapshots                                   | ❌                  |
 
-### What counts as a Query Metric?
+### What counts as a Queried Metric?
 
-The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct queried metrics. 
+The dbt Semantic Layer, powered by MetricFlow, measures usage in distinct queried metrics.
 
-- Every successful request you make to render or run SQL to the Semantic Layer API counts as at least one query metric, even if no data is returned. 
-- If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a query metric.
-- If a request to run a query is not executed successfully in the data platform or if a query results in an error without completion, it is not counted as a query metric. 
+- Every successful request you make to render or run SQL to the Semantic Layer API counts as at least one queried metric, even if no data is returned. 
+- If the query calculates or renders SQL for multiple metrics, each calculated metric will be counted as a queried metric.
+- If a request to run a query is not executed successfully in the data platform or if a query results in an error without completion, it is not counted as a queried metric. 
 - Requests for metadata from the Semantic Layer are also not counted as queried metrics.
 
 Examples of queried metrics include:
 
-- Querying one metric, grouping by one dimension → 1 query metric 
+- Querying one metric, grouping by one dimension → 1 queried metric 
 
   ```shell
   dbt sl query --metrics revenue --group_by metric_time
   ```
 
-- Querying one metric, grouping by two dimensions → 1 query metric 
+- Querying one metric, grouping by two dimensions → 1 queried metric 
 
   ```shell
   dbt sl query --metrics revenue --group_by metric_time,user__country
@@ -68,7 +68,7 @@ Examples of queried metrics include:
   dbt sl query --metrics revenue,gross_sales --group_by metric_time,user__country
   ```
 
-- Running an explain for one metric → 1 query metric
+- Running an explain for one metric → 1 queried metric
 
   ```shell
   dbt sl query --metrics revenue --group_by metric_time --explain
@@ -254,7 +254,7 @@ _Yes. Your dbt Cloud account will be upgraded without impacting your existing pr
  _The best option is to consult with our sales team. They'll help you figure out what is right for your needs. We also offer a free two-week trial on the Team plan._
 
 * What are the Semantic Layer trial terms?
-_Team and Enterprise customers can sign up for a free trial of the dbt Semantic Layer, powered by MetricFlow, for use of up to 1,000 queried metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
+_Team and Enterprise customers can sign up for a free trial of the dbt Semantic Layer, powered by MetricFlow, for use of up to 1,000 Queried Metrics per month. The trial will be available at least through January 2024. dbt Labs may extend the trial period in its sole discretion. During the trial period, we may reach out to discuss pricing options or ask for feedback. At the end of the trial, free access may be removed and a purchase may be required to continue use. dbt Labs reserves the right to change limits in a free trial or institute pricing when required or at any time in its sole discretion._
 
 * What is the reasonable use limitation for the dbt Semantic Layer powered by MetricFlow during the trial? 
 _Each account will be limited to 1,000 Queried Metrics per month during the trial period and may be changed at the sole discretion of dbt Labs._
