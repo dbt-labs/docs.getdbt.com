@@ -1,7 +1,14 @@
 ---
 title: "Upgrading to v1.0"
 description: New features and changes in dbt Core v1.0
+id: "upgrading-to-v1.0"
+displayed_sidebar: "docs"
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 ### Resources
 
 - [Discourse](https://discourse.getdbt.com/t/3180)

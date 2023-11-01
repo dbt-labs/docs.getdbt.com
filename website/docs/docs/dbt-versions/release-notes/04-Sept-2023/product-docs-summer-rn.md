@@ -35,7 +35,7 @@ You can provide feedback by opening a pull request or issue in [our repo](https:
 * Added a section to introduce a new beta feature [**Extended Attributes**](/docs/dbt-cloud-environments#extended-attributes-beta), which allows users to set a flexible `profiles.yml` snippet in their dbt Cloud Environment settings.
 ## 🎯 Core projects
 
-* We released [dbt 1.6](/guides/migration/versions/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
+* We released [dbt 1.6](/docs/dbt-versions/core-upgrade/upgrading-to-v1.6)! We added docs for the new commands `dbt retry` and `dbt clone`
 
 ## New 📚 Guides, ✏️ blog posts, and FAQs
 * Check out how these community members use the dbt community in the [Community spotlight](/community/spotlight). 

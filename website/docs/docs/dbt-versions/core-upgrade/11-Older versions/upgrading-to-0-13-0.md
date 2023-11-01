@@ -1,7 +1,12 @@
 ---
 title: "Upgrading to 0.13.0"
 id: "upgrading-to-0-13-0"
+displayed_sidebar: "docs"
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
 
 ## Breaking changes
 
