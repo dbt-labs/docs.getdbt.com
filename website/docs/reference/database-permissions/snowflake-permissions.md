@@ -50,6 +50,7 @@ grant all on warehouse reporting to role reporter;
 ```
 
 4. Create users, assigning them to their roles
+
 Every person and application gets a separate user and is assigned to the correct role.
 
 ```
