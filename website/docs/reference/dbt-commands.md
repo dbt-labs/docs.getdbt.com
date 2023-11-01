@@ -28,6 +28,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [deps](/reference/commands/deps) | Downloads dependencies for a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [docs](/reference/commands/cmd-docs) | Generates documentation for a project | All | All [supported versions](/docs/dbt-versions/core) |
 | help | Displays help information for any command | dbt Core <br /> dbt Cloud CLI | All [supported versions](/docs/dbt-versions/core) |
+| [init](/reference/commands/init)  | Initializes a new dbt project  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
 | [list](/reference/commands/list) | Lists resources defined in a dbt project | All | All [supported versions](/docs/dbt-versions/core) |
 | [parse](/reference/commands/parse) | Parses a project and writes detailed timing info | All | All [supported versions](/docs/dbt-versions/core) |
 | reattach | Reattaches to the most recent invocation to retrieve logs and artifacts. | dbt Cloud CLI | Requires [dbt v1.6 or higher](/docs/dbt-versions/core) |
@@ -39,7 +40,7 @@ You can run dbt commands in your specific tool by prefixing them with `dbt`.  Fo
 | [snapshot](/reference/commands/snapshot) | Executes "snapshot" jobs defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
 | [source](/reference/commands/source) | Provides tools for working with source data (including validating that sources are "fresh")  | All | All [supported versions](/docs/dbt-versions/core) |
 | [test](/reference/commands/test) | Executes tests defined in a project  | All | All [supported versions](/docs/dbt-versions/core) |
-| [init](/reference/commands/init)  | Initializes a new dbt project  | dbt Core | All [supported versions](/docs/dbt-versions/core) |
+
 
 </VersionBlock>
 
