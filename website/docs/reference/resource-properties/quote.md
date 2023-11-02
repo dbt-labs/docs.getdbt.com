@@ -115,12 +115,6 @@ analyses:
 ## Definition
 The `quote` field can be used to enable or disable quoting for column names.
 
-<Changelog>
-
-* `v0.16.0`: This configuration was added
-
-</Changelog>
-
 ## Default
 The default quoting value is `false`
 

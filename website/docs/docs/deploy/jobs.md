@@ -1,8 +1,9 @@
 ---
 title: "Jobs in dbt Cloud"
-sidebar_label: "Jobs"
+sidebar_label: "About Jobs"
 description: "Learn about deploy jobs and continuous integration (CI) jobs in dbt Cloud and what their differences are." 
 tags: [scheduler]
+pagination_next: "docs/deploy/deploy-jobs"
 ---
 
 In dbt Cloud, there are two types of jobs: 

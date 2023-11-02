@@ -2,6 +2,7 @@
 title: "Query the Discovery API"
 id: "discovery-querying"
 sidebar_label: "Query the Discovery API"
+pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 ---
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.

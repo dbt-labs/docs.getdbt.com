@@ -4,60 +4,95 @@ id: "command-line-flags"
 sidebar: "Command line flags"
 ---
 
-Command line (CLI) flags immediately follow `dbt` and precede your subcommand. When set, CLI flags override environment variables and profile configs.
+For consistency, command-line interface (CLI) flags should come right after the `dbt` prefix and its subcommands. This includes "global" flags (supported for all commands). When set, CLI flags override environment variables and profile configs. 
 
-Use this non-boolean config structure, replacing  `<THIS-CONFIG>` with the config you are enabling or disabling, `<SETTING>` with the new setting for the config, and `<SUBCOMMAND>`  with the command this config applies to:
+For example, instead of using:
+
+```bash
+dbt --no-populate-cache run
+```
+
+You should use:
+
+```bash
+dbt run --no-populate-cache
+```
+
+Historically, passing flags (such as "global flags") _before_ the subcommand is a legacy functionality that dbt Labs can remove at any time. We do not support using the same flag before and after the subcommand. 
+
+## Using boolean and non-boolean flags
+
+You can construct your commands with boolean flags to enable or disable or with non-boolean flags that use specific values, such as strings. 
+
+<Tabs>
+
+<TabItem value="nonboolean" label="Non-boolean config">
+
+Use this non-boolean config structure:
+- Replacing `<SUBCOMMAND>`  with the command this config applies to.
+- `<THIS-CONFIG>` with the config you are enabling or disabling, and
+- `<SETTING>` with the new setting for the config.
 
 <File name='CLI flags'>
 
 
 ```text
 
-$ --<THIS-CONFIG>=<SETTING> <SUBCOMMAND>
+<SUBCOMMAND> --<THIS-CONFIG>=<SETTING> 
 
 ```
 
 </File>
 
-Non-boolean config examples:
+### Example
 
 <File name='CLI flags'>
 
 
 ```text
 
-dbt --printer-width=80 run
-dbt --indirect-selection=eager test
+dbt run --printer-width=80 
+dbt test --indirect-selection=eager
 
 ```
 
 </File>
 
-To turn on boolean configs, you would use the `--<THIS-CONFIG>` CLI flag, and a `--no-<THIS-CONFIG>` CLI flag to turn off boolean configs, replacing `<THIS-CONFIG>` with the config you are enabling or disabling and `<SUBCOMMAND>`  with the command this config applies to.
+</TabItem>
 
-Boolean config structure:
+<TabItem value="boolean" label="Boolean config">
+
+To enable or disable boolean configs:
+- Use `<SUBCOMMAND>` this config applies to.
+- Followed by `--<THIS-CONFIG>` to turn it on, or `--no-<THIS-CONFIG>` to turn it off.
+- Replace `<THIS-CONFIG>` with the config you are enabling or disabling
+
 
 <File name='CLI flags'>
 
 
 ```text
-dbt --<THIS-CONFIG> <SUBCOMMAND>
-dbt --no-<THIS-CONFIG> <SUBCOMMAND>
+dbt <SUBCOMMAND> --<THIS-CONFIG> 
+dbt <SUBCOMMAND> --no-<THIS-CONFIG> 
 
 ```
 
 </File>
 
-Boolean config example:
+### Example
 
 <File name='CLI flags'>
 
 
 ```text
 
-dbt --version-check run
-dbt --no-version-check run
+dbt run --version-check
+dbt run --no-version-check 
 
 ```
 
 </File>
+
+</TabItem>
+
+</Tabs>
