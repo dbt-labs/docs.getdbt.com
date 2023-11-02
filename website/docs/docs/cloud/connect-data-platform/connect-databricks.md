@@ -26,6 +26,8 @@ Unity Catalog allows Databricks users to centrally manage all data assets, simpl
 
 To learn how to optimize performance with data platform-specific configurations in dbt Cloud, refer to [Databricks-specific configuration](/reference/resource-configs/databricks-configs).
 
+To grant users or roles database permissions (access rights and privileges), refer to the [example permissions](/reference/database-permissions/databricks-permissions) page.
+
 
 To set up the Databricks connection, supply the following fields:
 
