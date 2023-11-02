@@ -6,6 +6,6 @@ The dbt Semantic Layer has undergone a [significant revamp](https://www.getdbt.c
 
 **What’s changed?** The dbt_metrics package has been [deprecated](https://docs.getdbt.com/blog/deprecating-dbt-metrics) and replaced with [MetricFlow](/docs/build/about-metricflow?version=1.6), a new framework for defining metrics in dbt. This means dbt_metrics is no longer supported after dbt v1.5 and won't receive any code fixes.
 
-**What should you do?** If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/migration/sl-migration) for more info.
+**What should you do?** If you're using the legacy Semantic Layer, we **highly** recommend you [upgrade your dbt version](/docs/dbt-versions/upgrade-core-in-cloud) to dbt v1.6 or higher to use the new dbt Semantic Layer. To migrate to the new Semantic Layer, refer to the dedicated [migration guide](/guides/sl-migration) for more info.
 
 :::

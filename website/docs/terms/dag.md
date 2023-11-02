@@ -108,4 +108,4 @@ Ready to restructure (or create your first) DAG? Check out some of the resources
 - [Data modeling techniques for more modularity](https://www.getdbt.com/analytics-engineering/modular-data-modeling-technique/)
 - [How we structure our dbt projects](https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview)
 - [How to audit your DAG](https://www.youtube.com/watch?v=5W6VrnHVkCA)
-- [Refactoring legacy SQL to dbt](/guides/migration/tools/refactoring-legacy-sql)
+- [Refactoring legacy SQL to dbt](/guides/refactoring-legacy-sql)
