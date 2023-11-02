@@ -1,18 +1,35 @@
 ---
 title: "Migrating from dbt-spark to dbt-databricks"
 id: "migrating-from-spark-to-databricks"
+description: Learn how to migrate from dbt-spark to dbt-databricks.
+displayText: Migrating from Spark to Databricks
+hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
+time_to_complete: '30 minutes'
+platform: ['dbt-core','dbt-cloud']
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['migration', 'dbt Core','dbt Cloud']
+level: 'Intermediate'
+recently_updated: true
 ---
+
+## Introduction
 
 You can [migrate your projects](#migrate-your-dbt-projects) from using the `dbt-spark` adapter to using the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks). In collaboration with dbt Labs, Databricks built this adapter using dbt-spark as the foundation and added some critical improvements. With it, you get an easier set up &mdash; requiring only three inputs for authentication &mdash; and more features such as support for [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
-## Simpler authentication
+### Prerequisites
+
+- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.3](/docs/dbt-versions/core-upgrade/upgrading-to-v1.3).
+- For dbt Cloud, you need administrative (admin) privileges to migrate dbt projects.
+
+### Simpler authentication
 
 Previously, you had to provide a `cluster` or `endpoint` ID which was hard to parse from the `http_path` that you were given. Now, it doesn't matter if you're using a cluster or an SQL endpoint because the [dbt-databricks setup](/docs/core/connect-data-platform/databricks-setup) requires the _same_ inputs for both. All you need to provide is:
 - hostname of the Databricks workspace
 - HTTP path of the Databricks SQL warehouse or cluster
 - appropriate credentials
 
-## Better defaults
+### Better defaults
 
 The `dbt-databricks` adapter provides better defaults than `dbt-spark` does. The defaults help optimize your workflow so you can get the fast performance and cost-effectiveness of Databricks. They are:
 
@@ -24,24 +41,14 @@ With dbt-spark, however, the default for `incremental_strategy` is `append`. If 
 
 For more information on defaults, see [Caveats](/docs/core/connect-data-platform/databricks-setup#caveats).
 
-## Pure Python
+### Pure Python
 
 If you use dbt Core, you no longer have to download an independent driver to interact with Databricks. The connection information is all embedded in a pure-Python library called `databricks-sql-connector`.
 
 
-## Migrate your dbt projects
+## Migrate your dbt projects in dbt Cloud
 
-In both dbt Core and dbt Cloud, you can migrate your projects to the Databricks-specific adapter from the generic Apache Spark adapter.
-
-### Prerequisites
-
-- Your project must be compatible with dbt 1.0 or greater. Refer to [Upgrading to v1.0](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0) for details. For the latest version of dbt, refer to [Upgrading to v1.3](/docs/dbt-versions/core-upgrade/upgrading-to-v1.3).
-- For dbt Cloud, you need administrative (admin) privileges to migrate dbt projects.
-
-<!-- tabs for dbt Cloud and dbt Core -->
-<Tabs>
-
-<TabItem value="cloud" label="dbt Cloud">
+You can migrate your projects to the Databricks-specific adapter from the generic Apache Spark adapter. If you're using dbt Core, then skip to Step 4.
 
 The migration to the `dbt-databricks` adapter from `dbt-spark` shouldn't cause any downtime for production jobs. dbt Labs recommends that you schedule the connection change when usage of the IDE is light to avoid disrupting your team.
 
@@ -60,7 +67,7 @@ To update your Databricks connection in dbt Cloud:
 
 Everyone in your organization who uses dbt Cloud must refresh the IDE before starting work again. It should refresh in less than a minute.
 
-#### About your credentials
+## Configure your credentials
 
 When you update the Databricks connection in dbt Cloud, your team will not lose their credentials. This makes migrating easier since it only requires you to delete the Databricks connection and re-add the cluster or endpoint information.
 
@@ -70,9 +77,7 @@ These credentials will not get lost when there's a successful connection to Data
 - The personal access tokens your team added in their dbt Cloud profile so they can develop in the IDE for a given project.
 - The access token you added for each deployment environment so dbt Cloud can connect to Databricks during production jobs.
 
-</TabItem>
-
-<TabItem value="core" label="dbt Core">
+## Migrate dbt projects in dbt Core
 
 To migrate your dbt Core projects to the `dbt-databricks` adapter from `dbt-spark`, you:
 1. Install the [dbt-databricks adapter](https://github.com/databricks/dbt-databricks) in your environment
@@ -80,13 +85,8 @@ To migrate your dbt Core projects to the `dbt-databricks` adapter from `dbt-spar
 
 Anyone who's using your project must also make these changes in their environment.
 
-</TabItem>
 
-</Tabs>
-
-<!-- End tabs for dbt Cloud and dbt Core -->
-
-### Examples
+## Try these examples
 
 You can use the following examples of the `profiles.yml` file to see the authentication setup with `dbt-spark` compared to the simpler setup with `dbt-databricks` when connecting to an SQL endpoint. A cluster example would look similar.
 

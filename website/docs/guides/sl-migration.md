@@ -1,14 +1,23 @@
 ---
 title: "Legacy dbt Semantic Layer migration guide"
+id: "sl-migration"
 sidebar_label: "Legacy dbt Semantic Layer migration"
 description: "Learn how to migrate from the legacy dbt Semantic Layer to the latest one."
+hoverSnippet: Learn how to migrate from the legacy dbt Semantic Layer to the latest one.
+time_to_complete: '30 minutes'
+icon: 'guides'
+hide_table_of_contents: true
 tags: [Semantic Layer]
+level: 'Intermediate'
+recently_updated: true
 ---
+
+## introduction
 
 The legacy Semantic Layer will be deprecated in H2 2023. Additionally, the `dbt_metrics` package will not be supported in dbt v1.6 and later. If you are using `dbt_metrics`, you'll need to upgrade your configurations before upgrading to v1.6. This guide is for people who have the legacy dbt Semantic Layer setup and would like to migrate to the new dbt Semantic Layer. The estimated migration time is two weeks. 
 
 
-## Step 1: Migrate metric configs to the new spec
+## Migrate metric configs to the new spec
 
 The metrics specification in dbt Core is changed in v1.6 to support the integration of MetricFlow. It's strongly recommended that you refer to [Build your metrics](/docs/build/build-metrics-intro) and before getting started so you understand the core concepts of the Semantic Layer. 
 
@@ -35,7 +44,7 @@ dbt Labs recommends completing these steps in a local dev environment (such as t
 
 **To make this process easier, dbt Labs provides a [custom migration tool](https://github.com/dbt-labs/dbt-converter) that automates these steps for you. You can find installation instructions in the [README](https://github.com/dbt-labs/dbt-converter/blob/master/README.md). Derived metrics aren’t supported in the migration tool, and will have to be migrated manually.*
 
-## Step 2: Audit metric values after the migration
+## Audit metric values after the migration
 
 You might need to audit metric values during the migration to ensure that the historical values of key business metrics are the same.
 
@@ -58,7 +67,7 @@ You might need to audit metric values during the migration to ensure that the hi
 
 1. Run the [dbt-audit](https://github.com/dbt-labs/dbt-audit-helper) helper on both models to compare the metric values.
 
-## Step 3: Setup the Semantic Layer in a new environment
+## Setup the Semantic Layer in a new environment
 
 This step is only relevant to users who want the legacy and new semantic layer to run in parallel for a short time. This will let you recreate content in downstream tools like Hex and Mode with minimal downtime. If you do not need to recreate assets in these tools skip to step 5.
 
@@ -79,7 +88,7 @@ This step is only relevant to users who want the legacy and new semantic layer t
 
 At this point, both the new semantic layer and the old semantic layer will be running. The new semantic layer will be pointing at your migration branch with the updated metrics definitions. 
 
-## Step 4: Update connection in downstream integrations
+## Update connection in downstream integrations
 
 Now that your Semantic Layer is set up, you will need to update any downstream integrations that used the legacy Semantic Layer. 
 
@@ -105,7 +114,7 @@ To learn more about integrating with Hex, check out their [documentation](https:
 
 3. For specific SQL syntax details, refer to [Querying the API for metric metadata](/docs/dbt-cloud-apis/sl-jdbc#querying-the-api-for-metric-metadata) to query metrics using the API.
    
-## Step 5: Merge your metrics migration branch to main, and upgrade your production environment to 1.6.
+## Merge your metrics migration branch to main, and upgrade your production environment to 1.6.
 
 1. Upgrade your production environment to 1.6 or higher. 
    * **Note** &mdash; The old metrics definitions are no longer valid so your dbt jobs will not pass. 
@@ -118,7 +127,7 @@ If you created a new environment in [Step 3](#step-3-setup-the-semantic-layer-in
 
 4. Delete your migration environment. Be sure to update your connection details in any downstream tools to account for the environment change.
 
-## Related docs 
+### Related docs 
 
 - [MetricFlow quickstart guide](/docs/build/sl-getting-started)
 - [Example dbt project](https://github.com/dbt-labs/jaffle-sl-template)

@@ -2,15 +2,24 @@
 title: Refactoring legacy SQL to dbt
 id: refactoring-legacy-sql
 description: This guide walks through refactoring a long SQL query (perhaps from a stored procedure) into modular dbt data models.
+displayText: Creating new materializations
+hoverSnippet: Learn how to refactoring a long SQL query into modular dbt data models.
+time_to_complete: '30 minutes'
+platform: 'dbt-cloud'
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['SQL', 'legacy']
+level: 'Advanced'
+recently_updated: true
 ---
 
-You may have already learned how to build dbt models from scratch.
+## Introduction
 
-But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt.
+You may have already learned how to build dbt models from scratch. But in reality, you probably already have some queries or stored procedures that power analyses and dashboards, and now you’re wondering how to port those into dbt.
 
 There are two parts to accomplish this: migration and refactoring. In this guide we’re going to learn a process to help us turn legacy SQL code into modular dbt models.
 
-When migrating and refactoring code, it’s of course important to stay organized. We'll do this by following several steps (jump directly from the right sidebar):
+When migrating and refactoring code, it’s of course important to stay organized. We'll do this by following several steps:
 
 1. Migrate your code 1:1 into dbt
 2. Implement dbt sources rather than referencing raw database tables
@@ -21,9 +30,10 @@ When migrating and refactoring code, it’s of course important to stay organize
 
 Let's get into it!
 
-:::info More resources.
+:::info More resources
 This guide is excerpted from the new dbt Learn On-demand Course, "Refactoring SQL for Modularity" - if you're curious, pick up the [free refactoring course here](https://courses.getdbt.com/courses/refactoring-sql-for-modularity), which includes example and practice refactoring projects. Or for a more in-depth look at migrating DDL and DML from stored procedures check out [this guide](/guides/migration/tools/migrating-from-stored-procedures/1-migrating-from-stored-procedures).
 :::
+
 ## Migrate your existing SQL code
 
 <WistiaVideo id="5u67ik9t66" />
@@ -243,7 +253,7 @@ Under the hood, it generates comparison queries between our before and after sta
 
 Sure, we could write our own query manually to audit these models, but using the dbt `audit_helper` package gives us a head start and allows us to identify variances more quickly.  
 
-## Ready for refactoring practice?
+### Ready for refactoring practice?
 Head to the free on-demand course, [Refactoring from Procedural SQL to dbt](https://courses.getdbt.com/courses/refactoring-sql-for-modularity) for a more in-depth refactoring example + a practice refactoring problem to test your skills.
 
 Questions on this guide or the course? Drop a note in #learn-on-demand in [dbt Community Slack](https://getdbt.com/community).
