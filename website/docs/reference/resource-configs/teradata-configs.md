@@ -35,14 +35,21 @@ id: "teradata-configs"
 
 ### <Term id="table" />
 * `table_kind` - define the table kind. Legal values are `MULTISET` (default for ANSI transaction mode required by `dbt-teradata`) and `SET`, e.g.:
-    ```yaml
-    {{
-      config(
-          materialized="table",
-          table_kind="SET"
-      )
-    }}
-    ```
+    * in sql materialization definition file:
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            table_kind="SET"
+        )
+      }}
+      ```
+    * in seed configuration:
+      ```yaml
+      seeds:
+        <project-name>:
+          table_kind: "SET"
+      ```
   For details, see [CREATE TABLE documentation](https://docs.teradata.com/r/76g1CuvvQlYBjb2WPIuk3g/B6Js16DRQVwPDjgJ8rz7hg).
 * `table_option` - defines table options. The config supports multiple statements. The definition below uses the Teradata syntax definition to explain what statements are allowed. Square brackets `[]` denote optional parameters. The pipe symbol `|` separates statements. Use commas to combine multiple statements as shown in the examples below:
     ```
@@ -87,37 +94,51 @@ id: "teradata-configs"
       ```
 
   Examples:
-
-  :::info Separators between statements
-  Note the commas that separate statements in `table_option` config.
-  :::
-
-  ```yaml
-  {{
-    config(
-        materialized="table",
-        table_option="NO FALLBACK"
-    )
-  }}
-  ```
-  ```yaml
-  {{
-    config(
-        materialized="table",
-        table_option="NO FALLBACK, NO JOURNAL"
-    )
-  }}
-  ```
-  ```yaml
-  {{
-    config(
-        materialized="table",
-        table_option="NO FALLBACK, NO JOURNAL, CHECKSUM = ON,
-          NO MERGEBLOCKRATIO,
-          WITH CONCURRENT ISOLATED LOADING FOR ALL"
-    )
-  }}
-  ```
+    * in sql materialization definition file:
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            table_option="NO FALLBACK"
+        )
+      }}
+      ```
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            table_option="NO FALLBACK, NO JOURNAL"
+        )
+      }}
+      ```
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            table_option="NO FALLBACK, NO JOURNAL, CHECKSUM = ON,
+              NO MERGEBLOCKRATIO,
+              WITH CONCURRENT ISOLATED LOADING FOR ALL"
+        )
+      }}
+      ```
+    * in seed configuration:
+      ```yaml
+      seeds:
+        <project-name>:
+          table_option:"NO FALLBACK"
+      ```
+      ```yaml
+      seeds:
+        <project-name>:
+          table_option:"NO FALLBACK, NO JOURNAL"
+      ```
+      ```yaml
+      seeds:
+        <project-name>:
+          table_option: "NO FALLBACK, NO JOURNAL, CHECKSUM = ON,
+            NO MERGEBLOCKRATIO,
+            WITH CONCURRENT ISOLATED LOADING FOR ALL"
+      ```
 
   For details, see [CREATE TABLE documentation](https://docs.teradata.com/r/76g1CuvvQlYBjb2WPIuk3g/B6Js16DRQVwPDjgJ8rz7hg).
 
@@ -160,46 +181,67 @@ id: "teradata-configs"
       ```
 
   Examples:
-
-  :::info Separators between statements
-  Note, unlike with `table_option` statements, there are no commas between statements in `index` config.
-  :::
-
-  ```yaml
-  {{
-    config(
-        materialized="table",
-        index="UNIQUE PRIMARY INDEX ( GlobalID )"
-    )
-  }}
-  ```
-
-  ```yaml
-  {{
-    config(
-        materialized="table",
-        index="PRIMARY INDEX(id)
-        PARTITION BY RANGE_N(create_date
-                      BETWEEN DATE '2020-01-01'
-                      AND     DATE '2021-01-01'
-                      EACH INTERVAL '1' MONTH)"
-    )
-  }}
-  ```
-
-  ```yaml
-  {{
-    config(
-        materialized="table",
-        index="PRIMARY INDEX(id)
-        PARTITION BY RANGE_N(create_date
-                      BETWEEN DATE '2020-01-01'
-                      AND     DATE '2021-01-01'
-                      EACH INTERVAL '1' MONTH)
-        INDEX index_attrA (attrA) WITH LOAD IDENTITY"
-    )
-  }}
-  ```
+    * in sql materialization definition file:
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            index="UNIQUE PRIMARY INDEX ( GlobalID )"
+        )
+      }}
+      ```
+      > :information_source: Note, unlike in `table_option`, there are no commas between index statements!
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            index="PRIMARY INDEX(id)
+            PARTITION BY RANGE_N(create_date
+                          BETWEEN DATE '2020-01-01'
+                          AND     DATE '2021-01-01'
+                          EACH INTERVAL '1' MONTH)"
+        )
+      }}
+      ```
+      ```yaml
+      {{
+        config(
+            materialized="table",
+            index="PRIMARY INDEX(id)
+            PARTITION BY RANGE_N(create_date
+                          BETWEEN DATE '2020-01-01'
+                          AND     DATE '2021-01-01'
+                          EACH INTERVAL '1' MONTH)
+            INDEX index_attrA (attrA) WITH LOAD IDENTITY"
+        )
+      }}
+      ```
+    * in seed configuration:
+      ```yaml
+      seeds:
+        <project-name>:
+          index: "UNIQUE PRIMARY INDEX ( GlobalID )"
+      ```
+      > :information_source: Note, unlike in `table_option`, there are no commas between index statements!
+      ```yaml
+      seeds:
+        <project-name>:
+          index: "PRIMARY INDEX(id)
+            PARTITION BY RANGE_N(create_date
+                          BETWEEN DATE '2020-01-01'
+                          AND     DATE '2021-01-01'
+                          EACH INTERVAL '1' MONTH)"
+      ```
+      ```yaml
+      seeds:
+        <project-name>:
+          index: "PRIMARY INDEX(id)
+            PARTITION BY RANGE_N(create_date
+                          BETWEEN DATE '2020-01-01'
+                          AND     DATE '2021-01-01'
+                          EACH INTERVAL '1' MONTH)
+            INDEX index_attrA (attrA) WITH LOAD IDENTITY"
+      ```
 ## Seeds
 
 :::info Using seeds to load raw data
@@ -219,6 +261,35 @@ Loading CSVs using dbt's seed functionality is not performant for large files. C
       <project-name>:
         +use_fastload: true
     ```
+
+#### Grants
+
+Grants are supported in dbt-teradata adapter with release version 1.2.0 and above. You can use grants to manage access to the datasets you're producing with dbt. To implement these permissions, define grants as resource configs on each model, seed, or snapshot. Define the default grants that apply to the entire project in your `dbt_project.yml`, and define model-specific grants within each model's SQL or YAML file.
+
+for e.g. :
+  models/schema.yml
+  ```yaml
+  models:
+    - name: model_name
+      config:
+        grants:
+          select: ['user_a', 'user_b']
+  ```
+
+Another e.g. for adding multiple grants:
+
+  ```yaml
+  models:
+  - name: model_name
+    config:
+      materialized: table
+      grants:
+        select: ["user_b"]
+        insert: ["user_c"]
+  ```
+> :information_source: `copy_grants` is not supported in Teradata.
+
+More on Grants can be found at https://docs.getdbt.com/reference/resource-configs/grants
 
 ## Common Teradata-specific tasks
 * *collect statistics* - when a table is created or modified significantly, there might be a need to tell Teradata to collect statistics for the optimizer. It can be done using `COLLECT STATISTICS` command. You can perform this step using dbt's `post-hooks`, e.g.:
