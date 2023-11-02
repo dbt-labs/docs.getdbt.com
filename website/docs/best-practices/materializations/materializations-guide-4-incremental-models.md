@@ -29,7 +29,7 @@ We did our last `dbt build` job on `2022-01-31`, so any new orders since that ru
 - 🏔️ build the table from the **beginning of time again — a _table materialization_**
   - Simple and solid, if we can afford to do it (in terms of time, compute, and money — which are all directly correlated in a cloud warehouse). It’s the easiest and most accurate option.
 - 🤏 find a way to run **just new and updated rows since our previous run — _an_ _incremental materialization_**
-  - If we _can’t_ realistically afford to run the whole table — due to complex transformations or big source data, it takes too long — then we want to build incrementally. We want to just transform and add the row with id 567 below, _not_ the previous two with ids 123 and 456 that are already in the table.
+  - If we _can’t_ realistically afford to run the whole table — due to complex transformations or big source data, it takes too long — then we want to build incrementally. We want to just transform and add the row with id 567 below, _not_ the previous two with ids 123 and 234 that are already in the table.
 
 | order_id | order_status | customer_id | order_item_id | ordered_at | updated_at |
 | -------- | ------------ | ----------- | ------------- | ---------- | ---------- |
