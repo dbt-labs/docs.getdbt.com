@@ -4,6 +4,7 @@ id: sl-api-overview
 description: "Integrate and query metrics and dimensions in downstream tools using the Semantic Layer APIs"
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
+pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 ---
 
 <VersionBlock lastVersion="1.5">
@@ -31,10 +32,8 @@ You can use the dbt Semantic Layer for a variety of tools and applications of da
 import Features from '/snippets/_sl-plan-info.md'
 
 <Features
-cycle="public beta"
 product="dbt Semantic Layer"
-plan="dbt Cloud Team and Enterprise"
-instance="hosted in North America"
+plan="dbt Cloud Team or Enterprise"
 />
 
 <div className="grid--3-col">

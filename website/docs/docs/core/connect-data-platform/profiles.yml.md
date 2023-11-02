@@ -3,7 +3,7 @@ title: "About profiles.yml"
 id: profiles.yml
 ---
 
-If you're using dbt from the [command line (CLI)](/docs/core/about-the-cli), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt from the CLI, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform. 
+If you're using [dbt Core](/docs/core/about-dbt-core), you'll need a `profiles.yml` file that contains the connection details for your data platform. When you run dbt Core from the command line, it reads your `dbt_project.yml` file to find the `profile` name, and then looks for a profile with the same name in your `profiles.yml` file. This profile contains all the information dbt needs to connect to your data platform. 
 
 For detailed info, you can refer to the [Connection profiles](/docs/core/connect-data-platform/connection-profiles).
 

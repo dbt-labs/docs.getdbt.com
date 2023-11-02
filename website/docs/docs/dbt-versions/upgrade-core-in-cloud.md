@@ -47,7 +47,7 @@ For more on version support and future releases, see [Understanding dbt Core ver
 
 #### Need help upgrading?
 
-If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/guides/migration/versions/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-core-in-cloud#upgrading-legacy-versions-under-10).
+If you want more advice on how to upgrade your dbt projects, check out our [migration guides](/docs/dbt-versions/core-upgrade/) and our [upgrading Q&A page](/docs/dbt-versions/upgrade-core-in-cloud#upgrading-legacy-versions-under-10).
 
 ## Upgrading legacy versions under 1.0
 
@@ -96,7 +96,7 @@ clean-targets:
 - Do you have custom scripts that parse dbt <Term id="json" /> artifacts?
 - (BigQuery only) Do you use dbt's legacy capabilities around ingestion-time-partitioned tables?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions/upgrading-to-v1.0).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade/upgrading-to-v1.0).
 
 </details>
 
@@ -109,7 +109,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have custom scripts that parse dbt JSON artifacts?
 - (Snowflake only) Do you have custom macros or <Term id="materialization">materializations</Term> that depend on using transactions, such as statement blocks with `auto_begin=True`?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 
 </details>
 
@@ -123,7 +123,7 @@ If you believe your project might be affected, read more details in the migratio
 - Does your project use `adapter.dispatch` or the `spark_utils` package?
 - Do you have custom scripts that parse dbt JSON artifacts?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 
 </details>
 
@@ -146,7 +146,7 @@ See **Upgrading to v0.17.latest from v0.16** below for more details.
 - Do you have custom scripts that parse dbt JSON artifacts?
 - Do you have any custom materializations?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 
 </details>
 
@@ -157,7 +157,7 @@ If you believe your project might be affected, read more details in the migratio
 
 - Do you directly call `adapter_macro`?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 
 </details>
 
@@ -235,7 +235,7 @@ models:
 ```
 </File>
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 
 </details>
 
@@ -247,7 +247,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use `partition_by` config for BigQuery models?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 </details>
 
 
@@ -259,7 +259,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you have a custom materialization?
 - Do you have a macro that accesses `Relations` directly?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 </details>
 
 <details>
@@ -270,7 +270,7 @@ If you believe your project might be affected, read more details in the migratio
 - Do you use the custom `generate_schema_name` macro?
 - Do you use the `—non-destructive` flag?
 
-If you believe your project might be affected, read more details in the migration guide [here](/guides/migration/versions).
+If you believe your project might be affected, read more details in the migration guide [here](/docs/dbt-versions/core-upgrade).
 </details>
 
 
