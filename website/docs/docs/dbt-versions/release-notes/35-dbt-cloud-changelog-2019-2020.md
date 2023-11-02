@@ -197,7 +197,7 @@ initial support for a GitLab integration and self-service RBAC configuration.
 ## dbt Cloud v1.1.7 [September 3, 2020]
 
 This release adds a Release Candidate for [dbt
-v0.18.0](/guides/migration/versions) and
+v0.18.0](/docs/dbt-versions/core-upgrade) and
 includes bugfixes and improvements to the Cloud IDE
 and job scheduler.
 

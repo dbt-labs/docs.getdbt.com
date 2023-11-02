@@ -306,6 +306,15 @@ kira_furuichi:
   name: Kira Furuichi
   organization: dbt Labs
 
+kshitij_aranke:
+  image_url: /img/blog/authors/kshitij-aranke.jpg
+  job_title: Senior Software Engineer
+  links:
+    - icon: fa-linkedin
+      url: https://www.linkedin.com/in/aranke/
+  name: Kshitij Aranke
+  organization: dbt Labs
+
 lauren_benezra:
   image_url: /img/blog/authors/lauren-benezra.jpeg
   job_title: Analytics Engineer

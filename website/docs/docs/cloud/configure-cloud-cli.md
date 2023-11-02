@@ -16,8 +16,6 @@ import CloudCLIFlag from '/snippets/_cloud-cli-flag.md';
 - You must set up a project in dbt Cloud.
   - **Note** &mdash; If you're using the dbt Cloud CLI, you can connect to your data platform directly in the dbt Cloud interface and don't need a [`profiles.yml`](/docs/core/connect-data-platform/profiles.yml) file. 
 - You must have your [personal development credentials](/docs/dbt-cloud-environments#set-developer-credentials) set for that project. The dbt Cloud CLI will use these credentials, stored securely in dbt Cloud, to communicate with your data platform.
-- You must [enroll](/docs/dbt-versions/experimental-features) in the dbt Cloud beta features.
-  - To enroll, navigate to your **Profile Settings** and enable the **Beta** flag under **Experimental Features**.
 - You must be on dbt version 1.5 or higher. Refer to [dbt Cloud versions](/docs/dbt-versions/upgrade-core-in-cloud) to upgrade.
 
 ## Configure the dbt Cloud CLI
@@ -30,7 +28,7 @@ Once you install the dbt Cloud CLI, you need to configure it to connect to a dbt
    
     - North America: https://cloud.getdbt.com/cloud-cli
     - EMEA: https://emea.dbt.com/cloud-cli
-    - APAC: https://apac.dbt.com/cloud-cli
+    - APAC: https://au.dbt.com/cloud-cli
     - North American Cell 1: `https:/ACCOUNT_PREFIX.us1.dbt.com/cloud-cli`
     - Single-tenant: `https://YOUR_ACCESS_URL/cloud-cli`
   
