@@ -1,7 +1,12 @@
 ---
 title: "Upgrading to 0.11.0"
 id: "upgrading-to-0-11-0"
+displayed_sidebar: "docs"
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
 
 ## Schema.yml v2 syntax
 dbt v0.11.0 adds an auto-generated docs site to your dbt project. To make effective use of the documentation site, you'll need to use the new "version 2" schema.yml syntax. For a full explanation of the version 2 syntax, check out the [schema.yml Files](/reference/configs-and-properties) section of the documentation.

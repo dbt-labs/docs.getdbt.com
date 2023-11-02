@@ -1,7 +1,12 @@
 ---
 title: "Upgrading to 0.18.0"
+displayed_sidebar: "docs"
 
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
 
 ### Resources
 

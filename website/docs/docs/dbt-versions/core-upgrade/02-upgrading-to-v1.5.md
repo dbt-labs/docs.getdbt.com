@@ -1,7 +1,13 @@
 ---
 title: "Upgrading to v1.5"
 description: New features and changes in dbt Core v1.5
+id: "upgrading-to-v1.5"
+displayed_sidebar: "docs"
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
 
 dbt Core v1.5 is a feature release, with two significant additions:
 1. [**Model governance**](/docs/collaborate/govern/about-model-governance) — access, contracts, versions — the first phase of [multi-project deployments](https://github.com/dbt-labs/dbt-core/discussions/6725)
@@ -148,4 +154,4 @@ Run `dbt --help` to see new & improved help documentation :)
 - The [`version: 2` top-level key](/reference/project-configs/version) is now **optional** in all YAML files. Also, the [`config-version: 2`](/reference/project-configs/config-version) and `version:` top-level keys are now optional in `dbt_project.yml` files.
 - [Events and logging](/reference/events-logging): Added `node_relation` (`database`, `schema`, `identifier`) to the `node_info` dictionary, available on node-specific events
 - Support setting `--project-dir` via environment variable: [`DBT_PROJECT_DIR`](/reference/dbt_project.yml)
-- More granular [configurations](/reference/global-configs/about-global-configs) for logging (to set log format, log levels, and colorization) and cache population
+- More granular configurations for logging (to set [log format](/reference/global-configs/logs#log-formatting), [log levels](/reference/global-configs/logs#log-level), and [colorization](/reference/global-configs/logs#color)) and [cache population](/reference/global-configs/cache#cache-population)
