@@ -5,7 +5,6 @@ description: "Integrate and use the JDBC API to query your metrics."
 tags: [Semantic Layer, API]
 ---
 
-
 <VersionBlock lastVersion="1.5">
 
 import LegacyInfo from '/snippets/_legacy-sl-callout.md';
@@ -29,6 +28,8 @@ dbt Labs partners can use the JDBC API to build integrations in their tools with
 ## Using the JDBC API
 
 If you are a dbt user or partner with access to dbt Cloud and the [dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl), you can [setup](/docs/use-dbt-semantic-layer/setup-sl) and test this API with data from your own instance by configuring the Semantic Layer and obtaining the right JDBC connection parameters described in this document.
+
+You *may* be able to use our JDBC API with tools that do not have an official integration with the dbt Semantic Layer. If the tool you use allows you to write SQL and either supports a generic JDBC driver option (such as DataGrip) or supports Dremio and uses ArrowFlightSQL driver version 12.0.0 or higher, you can access the Semantic Layer API.
 
 Refer to [Get started with the dbt Semantic Layer](/docs/use-dbt-semantic-layer/quickstart-sl) for more info.
 
@@ -57,11 +58,13 @@ jdbc:arrow-flight-sql://semantic-layer.cloud.getdbt.com:443?&environmentId=20233
 
 ## Querying the API for metric metadata
 
-The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. Here are some metadata commands and examples:
+The Semantic Layer JDBC API has built-in metadata calls which can provide a user with information about their metrics and dimensions. 
+
+Refer to the following tabs for metadata commands and examples:
 
 <Tabs>
 
-<TabItem value="allmetrics" label="Fetch all defined metrics">
+<TabItem value="allmetrics" label="Fetch defined metrics">
 
 Use this query to fetch all defined metrics in your dbt project:
 
@@ -72,7 +75,7 @@ select * from {{
 ```
 </TabItem>
 
-<TabItem value="alldimensions" label="Fetch all dimensions for a metric">
+<TabItem value="alldimensions" label="Fetch dimensions for a metric">
 
 Use this query to fetch all dimensions for a metric. 
 
@@ -85,7 +88,7 @@ select * from {{
 
 </TabItem>
 
-<TabItem value="dimensionvalueformetrics" label="Fetch dimension values metrics">
+<TabItem value="dimensionvalueformetrics" label="Fetch dimension values">
 
 Use this query to fetch dimension values for one or multiple metrics and single dimension. 
 
@@ -98,7 +101,7 @@ semantic_layer.dimension_values(metrics=['food_order_amount'], group_by=['custom
 
 </TabItem>
 
-<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable primary time granularities for metrics">
+<TabItem value="queryablegranularitiesformetrics" label="Fetch queryable granularities for metrics">
 
 Use this query to fetch queryable granularities for a list of metrics. This API request allows you to only show the time granularities that make sense for the primary time dimension of the metrics (such as `metric_time`), but if you want queryable granularities for other time dimensions, you can use the `dimensions()` call, and find the column queryable_granularities.
 
@@ -111,6 +114,9 @@ select * from {{
 
 </TabItem>
 
+</Tabs>
+
+<Tabs>
 
 <TabItem value="metricsfordimensions" label="Fetch available metrics given dimensions">
 
@@ -142,9 +148,10 @@ select NAME, QUERYABLE_GRANULARITIES from {{
 
 </TabItem>
 
-<TabItem value="fetchprimarytimedimensionnames" label="Determine what time dimension(s) make up metric_time for your metric(s)">
+<TabItem value="fetchprimarytimedimensionnames" label="Fetch primary time dimension names">
 
 It may be useful in your application to expose the names of the time dimensions that represent `metric_time` or the common thread across all metrics.
+
 You can first query the `metrics()` argument to fetch a list of measures, then use the `measures()` call which will return the name(s) of the time dimensions that make up metric time. 
 
 ```bash
@@ -165,10 +172,11 @@ To query metric values, here are the following parameters that are available:
 | `metrics`   | The metric name as defined in your dbt metric configuration   | `metrics=['revenue']` | Required    |
 | `group_by`  | Dimension names or entities to group by. We require a reference to the entity of the dimension (other than for the primary time dimension), which is pre-appended to the front of the dimension name with a double underscore. | `group_by=['user__country', 'metric_time']`     | Optional   |
 | `grain`   | A parameter specific to any time dimension and changes the grain of the data from the default for the metric. | `group_by=[Dimension('metric_time')` <br/> `grain('week\|day\|month\|quarter\|year')]` | Optional     |
-| `where`     | A where clause that allows you to filter on dimensions and entities using parameters  - comes with `TimeDimension`, `Dimension`, and `Entity` objects. Granularity is required with `TimeDimension`  | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
+| `where`     | A where clause that allows you to filter on dimensions and entities using parameters. This takes a filter list OR string. Inputs come with `Dimension`, and `Entity` objects. Granularity is required if the `Dimension` is a time dimension | `"{{ where=Dimension('customer__country') }} = 'US')"`   | Optional   |
 | `limit`   | Limit the data returned    | `limit=10` | Optional  |
-|`order`  | Order the data returned     | `order_by=['-order_gross_profit']` (remove `-` for ascending order)  | Optional   |
+|`order`  | Order the data returned by a particular field     | `order_by=['order_gross_profit']`, use `-` for descending, or full object notation if the object is operated on: `order_by=[Metric('order_gross_profit').descending(True)`]   | Optional   |
 | `compile`   | If true, returns generated SQL for the data platform but does not execute | `compile=True`   | Optional |
+
 
 
 ## Note on time dimensions and `metric_time`
@@ -244,36 +252,36 @@ select * from {{
 
 Where filters in API allow for a filter list or string. We recommend using the filter list for production applications as this format will realize all benefits from the <Term id="predicate-pushdown"  /> where possible. 
 
-Where filters have the following components that you can use:
+Where Filters have a few objects that you can use:
 
-- `Dimension()` - This is used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
+- `Dimension()` - Used for any categorical or time dimensions. If used for a time dimension, granularity is required -  `Dimension('metric_time').grain('week')` or `Dimension('customer__country')`
 
-- `TimeDimension()` - This is used for all time dimensions and requires a granularity argument - `TimeDimension('metric_time', 'MONTH)`
+- `Entity()` - Used for entities like primary and foreign keys - `Entity('order_id')`
 
-- `Entity()` - This is used for entities like primary and foreign keys - `Entity('order_id')`
+Note: If you prefer a more explicit path to create the `where` clause, you can optionally use the `TimeDimension` feature. This helps separate out categorical dimensions from time-related ones. The `TimeDimesion` input takes the time dimension name and also requires granularity, like this: `TimeDimension('metric_time', 'MONTH')`.
 
 
-Use the following example to query using a `where` filter with the string format:
-
-```bash
-select * from {{
-semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
-group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where="{{ TimeDimension('metric_time', 'MONTH') }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
-}}
-```
-
-Use the following example to query using a `where` filter with a filter list format:
+- Use the following example to query using a `where` filter with the string format:
 
 ```bash
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
 group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
-where=[{{ TimeDimension('metric_time', 'MONTH')}} >= '2017-03-09', {{ Dimension('customer__customer_type' }} in ('new'), {{ Entity('order_id') }} = 10])
+where="{{ Dimension('metric_time').grain('month')  }} >= '2017-03-09' AND {{ Dimension('customer__customer_type' }} in ('new') AND {{ Entity('order_id') }} = 10")
 }}
 ```
 
-### Query with a limit and order by
+- (Recommended for better performance) Use the following example to query using a `where` filter with a filter list format:
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+group_by=[Dimension('metric_time').grain('month'),'customer__customer_type'],
+where=["{{ Dimension('metric_time').grain('month') }} >= '2017-03-09'", "{{ Dimension('customer__customer_type' }} in ('new')", "{{ Entity('order_id') }} = 10"]
+}}
+```
+
+### Query with a limit
 
 Use the following example to query using a `limit` or `order_by` clauses:
 
@@ -281,10 +289,55 @@ Use the following example to query using a `limit` or `order_by` clauses:
 select * from {{
 semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
   group_by=[Dimension('metric_time')],
-  limit=10,
-  order_by=['order_gross_profit'])
+  limit=10)
   }}
 ``` 
+### Query with Order By Examples 
+
+Order By can take a basic string that's a Dimension, Metric, or Entity and this will default to ascending order
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time')],
+  limit=10,
+  order_by=['order_gross_profit']
+  }}
+``` 
+
+For descending order, you can add a `-` sign in front of the object. However, you can only use this short hand notation if you aren't operating on the object or using the full object notation. 
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time')],
+  limit=10,
+  order_by=[-'order_gross_profit']
+  }}
+``` 
+If you are ordering by an object that's been operated on (e.g., change granularity), or you are using the full object notation, descending order must look like:
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time').grain('week')],
+  limit=10,
+  order_by=[Metric('order_gross_profit').descending(True), Dimension('metric_time').grain('week').descending(True) ]
+  }}
+``` 
+
+Similarly, this will yield ascending order: 
+
+```bash
+select * from {{
+semantic_layer.query(metrics=['food_order_amount', 'order_gross_profit'],
+  group_by=[Dimension('metric_time').grain('week')],
+  limit=10,
+  order_by=[Metric('order_gross_profit'), Dimension('metric_time').grain('week')]
+  }}
+``` 
+
+
 ### Query with compile keyword
 
 Use the following example to query using a `compile` keyword:

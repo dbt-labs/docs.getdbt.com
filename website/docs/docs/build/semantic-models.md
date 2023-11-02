@@ -6,19 +6,25 @@ keywords:
   - dbt metrics layer
 sidebar_label: Semantic models
 tags: [Metrics, Semantic Layer]
+pagination_next: "docs/build/dimensions"
 ---
 
-Semantic models serve as the foundation for defining data in MetricFlow, which powers the dbt Semantic Layer. You can think of semantic models as nodes in your semantic graph, connected via entities as edges. MetricFlow takes semantic models defined in YAML configuration files as inputs and creates a semantic graph that can be used to query metrics.
+Semantic models are the foundation for data definition in MetricFlow, which powers the dbt Semantic Layer:
 
-Each semantic model corresponds to a dbt model in your DAG. Therefore you will have one YAML config for each semantic model in your dbt project. You can create multiple semantic models out of a single dbt model, as long as you give each semantic model a unique name. 
+- Think of semantic models as nodes connected by entities in a semantic graph.
+- MetricFlow uses YAML configuration files to create this graph for querying metrics.
+- Each semantic model corresponds to a dbt model in your DAG, requiring a unique YAML configuration for each semantic model.
+- You can create multiple semantic models from a single dbt model, as long as you give each semantic model a unique name.
+- Configure semantic models in a YAML file within your dbt project directory.
+- Organize them under a `metrics:` folder or within project sources as needed. 
 
-You can configure semantic models in your dbt project directory in a `YAML` file. Depending on your project structure, you can nest semantic models under a `metrics:` folder or organize them under project sources. 
+<Lightbox src="/img/docs/dbt-cloud/semantic-layer/semantic_foundation.jpg" width="70%" title="A semantic model is made up of different components: Entities, Measures, and Dimensions."/>
 
 Semantic models have 6 components and this page explains the definitions with some examples:
 
 | Component | Description | Type |
 | --------- | ----------- | ---- |
-| [Name](#name) | Unique name for the semantic model | Required |
+| [Name](#name) | Choose a unique name for the semantic model. Avoid using double underscores (__) in the name as they're not supported. | Required |
 | [Description](#description) | Includes important details in the description | Optional |
 | [Model](#model) | Specifies the dbt model for the semantic model using the `ref` function | Required |
 | [Defaults](#defaults) | The defaults for the model, currently only `agg_time_dimension` is supported.  | Required |
@@ -26,6 +32,7 @@ Semantic models have 6 components and this page explains the definitions with so
 | [Primary Entity](#primary-entity) | If a primary entity exists, this component is Optional. If the semantic model has no primary entity, then this property is required. | Optional |
 | [Dimensions](#dimensions) | Different ways to group or slice data for a metric, they can be `time` or `categorical` | Required |
 | [Measures](#measures) | Aggregations applied to columns in your data model. They can be the final metric or used as building blocks for more complex metrics | Optional |
+| Label | The display name for your semantic model `node`, `dimension`, `entity`, and/or `measures` | Optional |
 
 ## Semantic models components
 
@@ -105,9 +112,32 @@ semantic_models:
         type: categorical
 ```
 
+<VersionBlock firstVersion="1.7">
+
+Semantic models support configs in either the schema file or at the project level. 
+
+Semantic model config in `models/semantic.yml`:
+```yml
+semantic_models:
+  - name: orders
+    config:
+      enabled: true | false
+      group: some_group
+```
+
+Semantic model config in `dbt_project.yml`:
+```yml
+semantic_models:
+  my_project_name:
+    +enabled: true | false
+    +group: some_group
+```
+
+</VersionBlock>
+
 ### Name 
 
-Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time.
+Define the name of the semantic model. You must define a unique name for the semantic model. The semantic graph will use this name to identify the model, and you can update it at any time. Avoid using double underscores (__) in the name as they're not supported.
 
 ### Description 
 
@@ -205,8 +235,7 @@ For semantic models with a measure, you must have a [primary time group](/docs/b
 | `agg` | dbt supports the following aggregations: `sum`, `max`, `min`, `count_distinct`, and `sum_boolean`. | Required |
 | `expr` | You can either reference an existing column in the table or use a SQL expression to create or derive a new one. | Optional |
 | `non_additive_dimension` | Non-additive dimensions can be specified for measures that cannot be aggregated over certain dimensions, such as bank account balances, to avoid producing incorrect results. | Optional |
-| `create_metric`* | You can create a metric directly from a measure with create_metric: True and specify its display name with create_metric_display_name. | Optional |
-_*Coming soon_
+| `create_metric` | You can create a metric directly from a measure with `create_metric: True` and specify its display name with create_metric_display_name. Default is false. | Optional |
 
 
 import SetUpPages from '/snippets/_metrics-dependencies.md';
