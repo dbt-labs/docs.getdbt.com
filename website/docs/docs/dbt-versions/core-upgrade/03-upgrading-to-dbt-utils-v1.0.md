@@ -3,6 +3,10 @@ title: "Upgrading to dbt utils v1.0"
 description: New features and breaking changes to consider as you upgrade to dbt utils v1.0.
 ---
 
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
+
 # Upgrading to dbt utils v1.0
 
 For the first time, [dbt utils](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/) is crossing the major version boundary. From [last month’s blog post](https://www.getdbt.com/blog/announcing-dbt-v1.3-and-utils/): 
