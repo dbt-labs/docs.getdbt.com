@@ -1,7 +1,12 @@
 ---
 title: "Upgrading to 0.14.0"
 id: "upgrading-to-0-14-0"
+displayed_sidebar: "docs"
 ---
+
+import UpgradeMove from '/snippets/_upgrade-move.md';
+
+<UpgradeMove />
 
 This guide outlines migration instructions for:
 
