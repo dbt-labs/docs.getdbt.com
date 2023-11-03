@@ -186,7 +186,7 @@ To achieve this behavior, you can use one of the following syntaxes.
 Important note: Do not use this syntax if you are using a database where dbt does not use transactions by default. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
 
 <Tabs>
-<TabItem value="beforebegin" label="before_begin and 'after_commit">
+<TabItem value="beforebegin" label="Use before_begin and after_commit">
 
 #### Config block: use the `before_begin` and `after_commit` helper macros
 
@@ -207,7 +207,7 @@ select ...
 </File>
 </TabItem>
 
-<TabItem value="dictionary" label="dictionary'">
+<TabItem value="dictionary" label="Use a dictionary'">
 
 #### Config block: use a dictionary
 <File name='models/<modelname>.sql'>
@@ -234,7 +234,7 @@ select ...
 
 </TabItem>
 
-<TabItem value="dbt_project.yml" label="dbt_project.yml'">
+<TabItem value="dbt_project.yml" label="Use dbt_project.yml">
 
 #### `dbt_project.yml`: Use a dictionary
 
