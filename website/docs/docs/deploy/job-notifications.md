@@ -30,8 +30,10 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 1. Click **Edit** to configure the email notification settings. Choose one or more of the run statuses (**Succeeds**, **Fails**, **Is Canceled**) for each job you want to receive notifications about.
 
 1. When you're done with the settings, click **Save**.
+
+    If there is another person you also want to send the notifications to, as an account admin, you can select another **Notification email** from the dropdown, **Edit** the job notification settings, and **Save** the changes.
     
-    To set up alerts on jobs from a different environment, select another **Environment** from the dropdown, **Edit** those job notification settings, and **Save** the changes.
+    To set up alerts on jobs from a different environment, select another **Environment** from the dropdown, **Edit** those job notification settings, and **Save** the changes. 
 
     <Lightbox src="/img/docs/deploy/example-email-notification-settings-page.png" width="100%" title="Example of the Email notifications page"/>
 
