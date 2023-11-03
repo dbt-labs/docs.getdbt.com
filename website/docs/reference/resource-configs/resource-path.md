@@ -1,3 +1,10 @@
+---
+title: Resource path
+description: "Learn how to use resource paths to configure resource types in dbt."
+id: resource-path
+sidebar_label: "About resource paths"
+---
+
 The `<resource-path>` nomenclature is used in this documentation when documenting how to configure resource types like models, seeds, snapshots, tests, sources, and others, from your `dbt_project.yml` file. 
 
 It represents the nested dictionary keys that provide the path to a directory of that resource type, or a single instance of that resource type by name.
@@ -13,7 +20,7 @@ It represents the nested dictionary keys that provide the path to a directory of
 
 ## Example
 
-The following examples are for models, but the same concepts apply for seeds, snapshots, tests, sources, and other resource types.
+The following examples are mostly for models and a source, but the same concepts apply for seeds, snapshots, tests, sources, and other resource types.
 
 ### Apply config to all models
 
@@ -108,16 +115,19 @@ In the following project, this would only apply to the `payments` model:
             └── payments.sql
 
 ```
-**Note**: To disable a source nested in a YAML file in a subfolder, you will need to supply the path to that YAML file, as well as the source name in the `dbt_project.yml` file. For example:
+### Apply config source nested in a subfolder 
 
-<File name='dbt_project.yml'>
+To disable a source nested in a YAML file in a subfolder, you will need to supply the path to that YAML file, as well as the source name in the `dbt_project.yml` file.<br /><br /> 
+  The following example shows how to disable a source nested in a YAML file in a subfolder: 
 
-```yaml
-sources:
-  your_project_name:
-    subdirectory_name:
-      source_yaml_file_name:
-        source_name:
-          +enabled: false # This will apply to sources nested in subfolders.
-```
-</File>
+  <File name='dbt_project.yml'>
+
+  ```yaml
+  sources:
+    your_project_name:
+      subdirectory_name:
+        source_yaml_file_name:
+          source_name:
+            +enabled: false # This will apply to sources nested in subfolders.
+  ```
+  </File>

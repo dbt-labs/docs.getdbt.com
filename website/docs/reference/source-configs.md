@@ -67,17 +67,17 @@ You can disable sources imported from a package to prevent them from rendering i
 
 - **Note**: To disable a source nested in a YAML file in a subfolder, you will need to supply the path to that YAML file plus the source name in the dbt_project.yml file. For example:
 
-<File name='dbt_project.yml'>
+  <File name='dbt_project.yml'>
 
-```yml
-sources:
-  your_project_name:
-    subdirectory_name:
-      source_yaml_file_name:
-        source_name:
-          +enabled: false # This will apply to sources nested in subfolders.
-```
-</File>
+  ```yml
+  sources:
+    your_project_name:
+      subdirectory_name:
+        source_yaml_file_name:
+          source_name:
+            +enabled: false # This will apply to sources nested in subfolders.
+  ```
+  </File>
 
 
 
