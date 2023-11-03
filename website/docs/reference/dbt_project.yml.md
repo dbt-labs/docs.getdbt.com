@@ -11,7 +11,7 @@ By default, dbt will look for `dbt_project.yml` in your current working director
 
 By default, dbt will look for `dbt_project.yml` in your current working directory and its parents, but you can set a different directory using the `--project-dir` flag or the `DBT_PROJECT_DIR` environment variable.
 
-Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in the `dbt_project.yml` file using the `dbt-cloud` config, which doesn't require validation or storage in the project config class. To find your project ID, check your dbt Cloud project URL, such as `https://cloud.getdbt.com/11/projects/123456`, where the project ID is `123456`.
+Starting from dbt v1.5 and higher, you can specify your dbt Cloud project ID in the `dbt_project.yml` file using `project-id` under the `dbt-cloud` config. To find your project ID, check your dbt Cloud project URL, such as `https://cloud.getdbt.com/11/projects/123456`, where the project ID is `123456`.
 
 </VersionBlock>
 
@@ -54,8 +54,8 @@ dbt uses YAML in a few different places. If you're new to YAML, it would be wort
 [require-dbt-version](/reference/project-configs/require-dbt-version): version-range | [version-range]
 
 [dbt-cloud](/docs/cloud/cloud-cli-installation):
-  project-id: project_id #Required
-  defer-env-id: 5678 #Optional
+  [project-id](/docs/cloud/configure-cloud-cli#configure-the-dbt-cloud-cli): project_id # Required
+  [defer-env-id](/docs/cloud/about-cloud-develop-defer#defer-in-dbt-cloud-cli): environment_id # Optional
 
 [quoting](/reference/project-configs/quoting):
   database: true | false

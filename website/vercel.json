@@ -8,6 +8,116 @@
       "permanent": true
     },
     {
+      "source": "/guides/migration/versions",
+      "destination": "/docs/dbt-versions/core-upgrade",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.7",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.7",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.6",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.6",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.5",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.5",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.4",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.4",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.3",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.3",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.2",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.2",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.1",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v1.0",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v1.0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v0.21",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v0.21",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/upgrading-to-v0.20",
+      "destination": "/docs/dbt-versions/core-upgrade/upgrading-to-v0.20",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-11-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-11-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-12-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-12-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-13-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-13-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-14-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-14-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-14-1",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-14-1",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-15-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-15-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-16-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-16-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-17-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-17-0",
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-18-0",
+      "destination":"/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-18-0" ,
+      "permanent": true
+    },
+    {
+      "source": "/guides/migration/versions/Older%20versions/upgrading-to-0-19-0",
+      "destination": "/docs/dbt-versions/core-upgrade/Older%20versions/upgrading-to-0-19-0",
+      "permanent": true
+    },
+    {
+      "source": "/reference/snowflake-permissions",
+      "destination": "/reference/database-permissions/snowflake-permissions",
+      "permanent": true
+    },
+    {
       "source": "/docs/build/metricflow-cli",
       "destination": "/docs/build/metricflow-commands",
       "permanent": true
