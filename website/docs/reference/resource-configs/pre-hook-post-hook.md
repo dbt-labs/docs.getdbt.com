@@ -181,7 +181,7 @@ There may be occasions where you need to run these hooks _outside_ of a transact
 * You want to run a `VACUUM` in a `post-hook`, however, this cannot be executed within a transaction ([Redshift docs](https://docs.aws.amazon.com/redshift/latest/dg/r_VACUUM_command.html#r_VACUUM_usage_notes))
 * You want to insert a record into an audit <Term id="table" /> at the start of a run and do not want that statement rolled back if the model creation fails.
 
-To achieve this behavior, you can use one of the following syntaxes. (Important Note: Do not use this syntax if you are using a database where dbt does not use transactions by default. This includes databases like Snowflake, BigQuery, and Spark/Databricks.)
+To achieve this behavior, you can use one of the following syntaxes. (Important Note: Do not use this syntax if you are using a database where dbt does not use transactions by default. This includes databases like Snowflake, BigQuery, and Spark or Databricks.)
 
 <Tabs>
 <TabItem value="beforebegin" label="'before_begin' and 'after_commit'">
