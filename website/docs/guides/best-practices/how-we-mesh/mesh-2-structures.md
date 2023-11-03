@@ -20,7 +20,7 @@ At a high level, you’ll need to decide:
 
 ### Cycle detection
 
-Currently, project dependencies only work in a one-way direction. This helps you avoid indefinite project `ref` cycles (or loops) and issues with your data workflows. For example, the `jaffle_finance` project can't introduce a new model that depends on `jaffle_marketing.roi_by_channel`. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies#how-to-use-ref) for more information. 
+Like resource dependencies, project dependencies are acyclic, meaning they only move in one direction. This prevents `ref` cycles (or loops), which lead to issues with your data workflows. For example, if project B depends on project A, a new model in project A could not import and use a public model from project B. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies#how-to-use-ref) for more information. 
 
 ## Define your project interfaces by splitting your DAG
 
