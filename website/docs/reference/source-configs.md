@@ -61,7 +61,24 @@ sources:
 
 ## Configuring sources
 
-Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](/docs/build/packages). You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages.
+Sources can be configured via a `config:` block within their `.yml` definitions, or from the `dbt_project.yml` file under the `sources:` key. This configuration is most useful for configuring sources imported from [a package](/docs/build/packages). 
+
+You can disable sources imported from a package to prevent them from rendering in the documentation, or to prevent [source freshness checks](/docs/build/sources#snapshotting-source-data-freshness) from running on source tables imported from packages. 
+
+- **Note**: To disable a source nested in a YAML file in a subfolder, you will need to supply the path to that YAML file plus the source name in the dbt_project.yml file. For example:
+
+<File name='dbt_project.yml'>
+
+```yml
+sources:
+  your_project_name:
+    subdirectory_name:
+      source_yaml_file_name:
+        source_name:
+          +enabled: false # This will apply to sources nested in subfolders.
+```
+</File>
+
 
 
 ### Examples
