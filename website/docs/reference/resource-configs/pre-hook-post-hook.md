@@ -207,7 +207,7 @@ select ...
 </File>
 </TabItem>
 
-<TabItem value="dictionary" label="Use a dictionary'">
+<TabItem value="dictionary" label="Use a dictionary">
 
 #### Config block: use a dictionary
 <File name='models/<modelname>.sql'>
