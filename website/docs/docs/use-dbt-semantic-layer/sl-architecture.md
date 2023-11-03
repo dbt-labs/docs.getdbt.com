@@ -19,7 +19,6 @@ The dbt Semantic Layer allows you to define metrics and use various interfaces t
 The dbt Semantic Layer includes the following components:
 
 
-
 | Components | Information | dbt Core users | Developer plans |  Team plans | Enterprise plans | License |
 | --- | --- | :---: | :---: | :---: | --- |
 | **[MetricFlow](/docs/build/about-metricflow)** | MetricFlow in dbt allows users to centrally define their semantic models and metrics with YAML specifications. | ✅ | ✅ | ✅ |  ✅  | BSL package (code is source available) |
