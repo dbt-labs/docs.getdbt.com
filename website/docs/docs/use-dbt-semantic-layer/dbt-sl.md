@@ -44,15 +44,15 @@ plan="dbt Cloud Team or Enterprise"
     icon="dbt-bit"/>
 
 <Card
-    title="Available integrations"
-    body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
-    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
-    icon="dbt-bit"/>
-
-<Card
     title="Architecture"
     body="Learn about the powerful components that make up the dbt Semantic Layer."
     link="/docs/use-dbt-semantic-layer/sl-architecture"
+    icon="dbt-bit"/>
+
+<Card
+    title="Available integrations"
+    body="Review a wide range of partners you can integrate and query with the dbt Semantic Layer."
+    link="/docs/use-dbt-semantic-layer/avail-sl-integrations"
     icon="dbt-bit"/>
 
 <Card

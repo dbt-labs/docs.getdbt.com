@@ -10,19 +10,22 @@ The Tableau integration with the dbt Semantic Layer is a [beta feature](/docs/db
 :::
 
 
-The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
+The Tableau integration allows you to use worksheets to query the Semantic Layer directly and produce your dashboards with trusted data.  
+
+This integration provides a live connection to the dbt Semantic Layer through Tableau Desktop.
 
 ## Prerequisites
 
-1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed
-2. Authenticate with either Tableau Server or Tableau Cloud
+1. You must have [Tableau Desktop](https://www.tableau.com/en-gb/products/desktop) installed with version 2021.1 or greater
+   - Note that Tableau Online does not currently support custom connectors natively.
+2. Log in to Tableau Desktop using either your license or the login details you use for Tableau Server or Tableau Online.
 3. You need your dbt Cloud host, [Environment ID](/docs/use-dbt-semantic-layer/setup-sl#set-up-dbt-semantic-layer) and [service token](/docs/dbt-cloud-apis/service-tokens) to log in. This account should be set up with the dbt Semantic Layer.
-4. You must a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
+4. You must have a dbt Cloud Team or Enterprise [account](https://www.getdbt.com/pricing) and multi-tenant [deployment](/docs/cloud/about-cloud/regions-ip-addresses). (Single-Tenant coming soon)
 
 
 ## Installing
 
-1. Download our [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.0/dbt_semantic_layer.taco) locally and add it to your default folder:
+1. Download the GitHub [connector file](https://github.com/dbt-labs/semantic-layer-tableau-connector/releases/download/v1.0.2/dbt_semantic_layer.taco) locally and add it to your default folder:
    - Windows: `C:\Users\\[Windows User]\Documents\My Tableau Repository\Connectors`
    - Mac: `/Users/[user]/Documents/My Tableau Repository/Connectors`
    - Linux: `/opt/tableau/connectors`
@@ -38,7 +41,7 @@ The Tableau integration allows you to use worksheets to query the Semantic Layer
 
 Once you authenticate, the system will direct you to the data source page with all the metrics and dimensions configured in your Semantic Layer. 
 
-- From there, go directly to a worksheet in the bottom left hand corner.
+- From there, go directly to a worksheet in the bottom left-hand corner.
 - Then, you'll find all the metrics and dimensions that are available to query on the left-hand side of your window.
 
 Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/en-us/gettingstarted_overview.htm) to learn more about how to use Tableau worksheets and dashboards.
@@ -51,13 +54,14 @@ Visit the [Tableau documentation](https://help.tableau.com/current/pro/desktop/e
    - Since this is treated as a table, dbt Semantic Layer can't dynamically change what is available. This means we display _all_ available metrics and dimensions even if a particular metric and dimension combination isn't available. 
    
 - Certain Table calculations like "Totals" and "Percent Of" may not be accurate when using metrics aggregated in a non-additive way (such as count distinct)
+- In any of our Semantic Layer interfaces (not only Tableau), you must include a [time dimension](/docs/build/cumulative#limitations) when working with any cumulative metric that has a time window or granularity.
 
 ## Unsupported functionality
 
 The following Tableau features aren't supported at this time, however, the dbt Semantic Layer may support some of this functionality in a future release:
 
 - Updating the data source page
-- Using "Extract" mode to view yur data
+- Using "Extract" mode to view your data
 - Unioning Tables
 - Writing Custom SQL
 - Table Extensions
@@ -65,3 +69,4 @@ The following Tableau features aren't supported at this time, however, the dbt S
 - All functions in Analysis --> Create Calculated Field
 - Filtering on a Date Part time dimension for a Cumulative metric type
 - Changing your date dimension to use "Week Number"
+  

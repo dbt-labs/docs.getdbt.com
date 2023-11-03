@@ -26,7 +26,7 @@ Once you have a sense of some initial groupings, you can first implement **group
 groups: 
   - name: marketing
     owner:
-      - name: Ben Jaffleck 
+        name: Ben Jaffleck 
         email: ben.jaffleck@jaffleshop.com
 ```
 
