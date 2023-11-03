@@ -8,10 +8,10 @@ Set up notifications in dbt Cloud to receive email or Slack alerts when a job ru
 
 ## Email notifications
 
-You can receive email alerts about jobs by configuring the dbt Cloud email notification settings. Refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users) for details on license types that are eligible for email notifications.
+You can receive email alerts about jobs by configuring the dbt Cloud email notification settings.
 
 ### Prerequisites 
-- You must be either a _developer user_ or an _account admin_ to configure email notifications in dbt Cloud. 
+- You must be either a _developer user_ or an _account admin_ to configure email notifications in dbt Cloud. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
     - As a developer user, you can set up email notifications for yourself. 
     - As an account admin, you can set up notifications for yourself and other team members. 
 
@@ -49,7 +49,7 @@ Any account admin can edit the Slack notifications but they'll be limited to con
 
 ### Prerequisites 
 - You must be an administrator of the Slack workspace. 
-- You must be an account admin to configure Slack notifications in dbt Cloud.
+- You must be an account admin to configure Slack notifications in dbt Cloud. For more details, refer to [Users and licenses](/docs/cloud/manage-access/seats-and-users).
 
 ### Set up the Slack integration
 
