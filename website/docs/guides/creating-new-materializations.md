@@ -172,13 +172,6 @@ For more information on the `config` dbt Jinja function, see the [config](/refer
 
 ## Materialization precedence
 
-
-:::info New in 0.15.1
-
-The materialization resolution order was poorly defined in versions of dbt prior to 0.15.1. Please use this guide for versions of dbt greater than or equal to 0.15.1.
-
-:::
-
 dbt will pick the materialization macro in the following order (lower takes priority):
 
 1. global project - default

@@ -1,9 +1,18 @@
 ---
-title: How to optimize and troubleshoot dbt models on Databricks
-sidebar_label: "How to optimize and troubleshoot dbt models on Databricks"
+title: Optimize and troubleshoot dbt models on Databricks
+sidebar_label: "Optimize and troubleshoot dbt models on Databricks"
 description: "Learn more about optimizing and troubleshooting your dbt models on Databricks"
+displayText: Optimizing and troubleshooting your dbt models on Databricks
+hoverSnippet: Learn how to optimize and troubleshoot your dbt models on Databricks.
+time_to_complete: '30 minutes'
+icon: 'databricks'
+hide_table_of_contents: true
+tags: ['Databricks', 'dbt Core','dbt Cloud']
+level: 'Intermediate'
+recently_updated: true
 ---
 
+## Introduction
 
 Continuing our Databricks and dbt guide series from the last [guide](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project), it’s time to talk about performance optimization. In this follow-up post,  we outline simple strategies to optimize for cost, performance, and simplicity when architecting your data pipelines. We’ve encapsulated these strategies in this acronym-framework:
 
@@ -11,7 +20,7 @@ Continuing our Databricks and dbt guide series from the last [guide](/guides/dbt
 - Patterns & Best Practices
 - Performance Troubleshooting
 
-## 1. Platform Components
+## Platform Components
 
 As you start to develop your dbt projects, one of the first decisions you will make is what kind of backend infrastructure to run your models against. Databricks offers SQL warehouses, All-Purpose Compute, and Jobs Compute, each optimized to workloads they are catered to. Our recommendation is to use Databricks SQL warehouses for all your SQL workloads. SQL warehouses are optimized for SQL workloads when compared to other compute options, additionally, they can scale both vertically to support larger workloads and horizontally to support concurrency. Also, SQL warehouses are easier to manage and provide out-of-the-box features such as query history to help audit and optimize your SQL workloads. Between Serverless, Pro, and Classic SQL Warehouse types that Databricks offers, our standard recommendation for you is to leverage Databricks serverless warehouses. You can explore features of these warehouse types in the [Compare features section](https://www.databricks.com/product/pricing/databricks-sql?_gl=1*2rsmlo*_ga*ZmExYzgzZDAtMWU0Ny00N2YyLWFhYzEtM2RhZTQzNTAyZjZi*_ga_PQSEQ3RZQC*MTY3OTYwMDg0Ni4zNTAuMS4xNjc5NjAyMDMzLjUzLjAuMA..&_ga=2.104593536.1471430337.1679342371-fa1c83d0-1e47-47f2-aac1-3dae43502f6b) on the Databricks pricing page.
 
@@ -31,7 +40,7 @@ Another technique worth implementing is to provision separate SQL warehouses for
 
 Because of the ability of serverless warehouses to spin up in a matter of seconds, setting your auto-stop configuration to a lower threshold will not impact SLAs and end-user experience. From the SQL Workspace UI, the default value is 10 minutes and  you can set it to 5 minutes for a lower threshold with the UI. If you would like more custom settings, you can set the threshold to as low as 1 minute with the [API](https://docs.databricks.com/sql/api/sql-endpoints.html#).
 
-## 2. Patterns & Best Practices
+## Patterns & Best Practices
 
 Now that we have a solid sense of the infrastructure components, we can shift our focus to best practices and design patterns on pipeline development.  We recommend the staging/intermediate/mart approach which is analogous to the medallion architecture bronze/silver/gold approach that’s recommended by Databricks. Let’s dissect each stage further.
 
@@ -121,7 +130,7 @@ incremental_predicates = [
 }}
 ```
 
-## 3. Performance Troubleshooting
+## Performance Troubleshooting
 
 Performance troubleshooting refers to the process of identifying and resolving issues that impact the performance of your dbt models and overall data pipelines. By improving the speed and performance of your Lakehouse platform, you will be able to process data faster, process large and complex queries more effectively, and provide faster time to market.  Let’s go into detail the three effective strategies that you can implement.
 
@@ -166,7 +175,7 @@ Now you might be wondering, how do you identify opportunities for performance im
 
 With the [dbt Cloud Admin API](/docs/dbt-cloud-apis/admin-cloud-api), you can  pull the dbt artifacts from your dbt Cloud run,  put the generated `manifest.json` into an S3 bucket, stage it, and model the data using the [dbt artifacts package](https://hub.getdbt.com/brooklyn-data/dbt_artifacts/latest/). That package can help you identify inefficiencies in your dbt models and pinpoint where opportunities for improvement are.
 
-## Conclusion
+### Conclusion
 
 This concludes the second guide in our series on “Working with Databricks and dbt”, following [How to set up your Databricks and dbt Project](/guides/dbt-ecosystem/databricks-guides/how-to-set-up-your-databricks-dbt-project).
 

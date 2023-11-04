@@ -8,7 +8,7 @@ time_to_complete: '30 minutes'
 platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['materializations', 'dbt Core']
+tags: ['Migration', 'dbt Core']
 level: 'Beginner'
 recently_updated: true
 ---

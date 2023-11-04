@@ -8,7 +8,7 @@ time_to_complete: '30 minutes'
 platform: ['dbt-core','dbt-cloud']
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['migration', 'dbt Core','dbt Cloud']
+tags: ['Migration', 'dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---

@@ -1,5 +1,16 @@
-# How to set up your Databricks and dbt project
-
+---
+title: How to set up your Databricks and dbt project
+sidebar_label: "How to set up your Databricks and dbt project"
+description: "Learn more about setting up your dbt project with Databricks"
+displayText: Setting up your dbt project with Databricks
+hoverSnippet: Learn how to set up your dbt project with Databricks.
+time_to_complete: '30 minutes'
+icon: 'databricks'
+hide_table_of_contents: true
+tags: ['Databricks', 'dbt Core','dbt Cloud']
+level: 'Intermediate'
+recently_updated: true
+---
 
 Databricks and dbt Labs are partnering to help data teams think like software engineering teams and ship trusted data, faster. The dbt-databricks adapter enables dbt users to leverage the latest Databricks features in their dbt project. Hundreds of customers are now using dbt and Databricks to build expressive and reliable data pipelines on the Lakehouse, generating data assets that enable analytics, ML, and AI use cases throughout the business.
 
@@ -80,9 +91,9 @@ For your development credentials/profiles.yml:
 
 During your first invocation of `dbt run`, dbt will create the developer schema if it doesn't already exist in the dev catalog.
 
-### Defining your dbt deployment environment
+## Defining your dbt deployment environment
 
-Last, we need to give dbt a way to deploy code outside of development environments. To do so, we’ll use dbt [environments](https://docs.getdbt.com/docs/collaborate/environments) to define the production targets that end users will interact with.
+We need to give dbt a way to deploy code outside of development environments. To do so, we’ll use dbt [environments](https://docs.getdbt.com/docs/collaborate/environments) to define the production targets that end users will interact with.
 
 Core projects can use [targets in profiles](https://docs.getdbt.com/docs/core/connection-profiles#understanding-targets-in-profiles) to separate environments. [dbt Cloud environments](https://docs.getdbt.com/docs/cloud/develop-in-the-cloud#set-up-and-access-the-cloud-ide) allow you to define environments via the UI and [schedule jobs](/guides/databricks#create-and-run-a-job) for specific environments.
 
@@ -94,10 +105,10 @@ Let’s set up our deployment environment:
 4. Set the schema to the default for your prod environment. This can be overridden by [custom schemas](https://docs.getdbt.com/docs/build/custom-schemas#what-is-a-custom-schema) if you need to use more than one.
 5. Provide your Service Principal token.
 
-### Connect dbt to your git repository
+## Connect dbt to your git repository
 
 Next, you’ll need somewhere to store and version control your code that allows you to collaborate with teammates. Connect your dbt project to a git repository with [dbt Cloud](/guides/databricks#set-up-a-dbt-cloud-managed-repository). [Core](/guides/manual-install#create-a-repository) projects will use the git CLI.
 
-## Next steps
+### Next steps
 
-Now that your project is configured, you can start transforming your Databricks data with dbt. To help you scale efficiently, we recommend you follow our best practices, starting with the ["Unity Catalog best practices" guide](dbt-unity-catalog-best-practices).
+Now that your project is configured, you can start transforming your Databricks data with dbt. To help you scale efficiently, we recommend you follow our best practices, starting with the [Unity Catalog best practices](/best-practices/dbt-unity-catalog-best-practices), then you can [Optimize dbt models on Databricks](/guides/how_to_optimize_dbt_models_on_databricks) .

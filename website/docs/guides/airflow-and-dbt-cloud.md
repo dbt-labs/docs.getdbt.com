@@ -2,10 +2,9 @@
 title: Airflow and dbt Cloud
 id: airflow-and-dbt-cloud
 time_to_complete: '60 minutes'
-platform: 'dbt-cloud'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['airflow', 'dbt Cloud', 'orchestration']
+tags: ['dbt Cloud', 'Orchestration']
 level: 'Intermediate'
 recently_updated: true
 ---

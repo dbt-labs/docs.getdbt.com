@@ -5,10 +5,9 @@ description: When you have dbt code that might help others, you can create a pac
 displayText: Building dbt packages
 hoverSnippet: Learn how to create packages for dbt.
 time_to_complete: '60 minutes'
-platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['packages', 'dbt Core', 'legacy']
+tags: ['dbt Core', 'legacy']
 level: 'Advanced'
 recently_updated: true
 ---

@@ -7,7 +7,7 @@ hoverSnippet: Learn how to migrate from the legacy dbt Semantic Layer to the lat
 time_to_complete: '30 minutes'
 icon: 'guides'
 hide_table_of_contents: true
-tags: [Semantic Layer]
+tags: ['Semantic Layer']
 level: 'Intermediate'
 recently_updated: true
 ---
