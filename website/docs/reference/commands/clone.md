@@ -53,4 +53,4 @@ You can clone nodes between states in dbt Cloud using the `dbt clone` command. T
   - Run the `dbt clone` command from the command bar.
   
   
-
+Check out [this Developer blog post](https://docs.getdbt.com/blog/to-defer-or-to-clone) for more details on best practices when to use `dbt clone` vs. deferral.
