@@ -5,6 +5,10 @@ description: "Configuring PrivateLink for Redshift"
 sidebar_label: "PrivateLink for Redshift"
 ---
 
+import SetUpPages from '/snippets/_available-tiers-privatelink.md';
+
+<SetUpPages features={'/snippets/_available-tiers-privatelink.md'}/>
+
 AWS provides two different ways to create a PrivateLink VPC endpoint for a Redshift cluster that is running in another VPC: 
 - [Redshift-managed PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-cross-vpc.html)
 - [Redshift Interface-type PrivateLink Endpoints](https://docs.aws.amazon.com/redshift/latest/mgmt/security-private-link.html)
@@ -79,7 +83,7 @@ Creating an Interface VPC PrivateLink connection requires creating multiple AWS 
 
 On the provisioned VPC endpoint service, click the **Allow principals** tab. Click **Allow principals** to grant access. Enter the ARN of the root user in the appropriate production AWS account and save your changes.
 
- - Principal: `arn:aws:iam::346425330055:root`
+ - Principal: `arn:aws:iam::346425330055:role/MTPL_Admin`
 
 <Lightbox src="/img/docs/dbt-cloud/redshiftprivatelink5.png" title="Enter ARN"/>
 

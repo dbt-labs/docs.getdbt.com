@@ -2,6 +2,7 @@
 title: "Query the Discovery API"
 id: "discovery-querying"
 sidebar_label: "Query the Discovery API"
+pagination_next: "docs/dbt-cloud-apis/discovery-schema-environment"
 ---
 
 The Discovery API supports ad-hoc queries and integrations. If you are new to the API, refer to [About the Discovery API](/docs/dbt-cloud-apis/discovery-api) for an introduction.
@@ -172,7 +173,7 @@ Below is an example that returns the `first` 500 models `after` the specified Ob
 <!-- TODO: Update screenshot to use `$environmentId: BigInt!, or remove it` -->
 <!-- However we can choose to leave this be, since the important info from the screenshot is to show how the GraphQL API canbe used -- the content (request and response) doesn't matter too much` -->
 
-<Lightbox src="/img/paginate.png" width="75%" title="Example of pagination"/>
+<Lightbox src="/img/Paginate.png" width="75%" title="Example of pagination"/>
 
 Below is a code example of the `PageInfo` object:
 
@@ -191,7 +192,7 @@ Filtering helps to narrow down the results of an API query. If you want to query
 
 Below is an example that filters for results of models that have succeeded on their `lastRunStatus`:
 
-<Lightbox src="/img/filtering.png" width="75%" title="Example of filtering"/>
+<Lightbox src="/img/Filtering.png" width="75%" title="Example of filtering"/>
 
 Below is an example that filters for models that have an error on their last run and tests that have failed:
 

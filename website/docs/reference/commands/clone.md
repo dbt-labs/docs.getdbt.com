@@ -21,7 +21,7 @@ The `clone` command is useful for:
 dbt clone --state path/to/artifacts
 
 # clone one_specific_model of my models from specified state to my target schema(s)
-dbt clone --select one_specific_model --state path/to/artifacts
+dbt clone --select "one_specific_model" --state path/to/artifacts
 
 # clone all of my models from specified state to my target schema(s) and recreate all pre-existing relations in the current target
 dbt clone --state path/to/artifacts --full-refresh
@@ -37,3 +37,5 @@ Unlike deferral, `dbt clone` requires some compute and creation of additional ob
 For example, by creating actual data warehouse objects, `dbt clone` allows you to test out your code changes on downstream dependencies _outside of dbt_ (such as a BI tool). 
 
 As another example, you could `clone` your modified incremental models as the first step of your dbt Cloud CI job to prevent costly `full-refresh` builds for warehouses that support zero-copy cloning.
+
+Check out [this Developer blog post](https://docs.getdbt.com/blog/to-defer-or-to-clone) for more details on best practices when to use `dbt clone` vs. deferral.

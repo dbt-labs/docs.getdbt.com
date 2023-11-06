@@ -1,6 +1,7 @@
 ---
 title: "Project variables"
 id: "project-variables"
+pagination_next: "docs/build/environment-variables"
 ---
 
 dbt provides a mechanism, [variables](/reference/dbt-jinja-functions/var), to provide data to models for
@@ -27,7 +28,7 @@ Jinja is not supported within the `vars` config, and all values will be interpre
 :::info New in v0.17.0
 
 The syntax for specifying vars in the `dbt_project.yml` file has changed in
-dbt v0.17.0. See the [migration guide](/guides/migration/versions)
+dbt v0.17.0. See the [migration guide](/docs/dbt-versions/core-upgrade)
 for more information on these changes.
 
 :::

@@ -3,6 +3,8 @@ title: "About data platform connections"
 id: about-connections
 description: "Information about data platform connections"
 sidebar_label: "About data platform connections"
+pagination_next: "docs/cloud/connect-data-platform/connect-starburst-trino"
+pagination_prev: null
 ---
 dbt Cloud can connect with a variety of data platform providers including: 
 - [Amazon Redshift](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb) 
@@ -12,6 +14,10 @@ dbt Cloud can connect with a variety of data platform providers including:
 - [PostgreSQL](/docs/cloud/connect-data-platform/connect-redshift-postgresql-alloydb)
 - [Snowflake](/docs/cloud/connect-data-platform/connect-snowflake)
 - [Starburst or Trino](/docs/cloud/connect-data-platform/connect-starburst-trino)
+
+import MSCallout from '/snippets/_microsoft-adapters-soon.md';
+
+<MSCallout />
 
 You can connect to your database in dbt Cloud by clicking the gear in the top right and selecting **Account Settings**. From the Account Settings page, click **+ New Project**.
 

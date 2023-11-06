@@ -4,7 +4,7 @@ title: "Expectations for OSS contributors"
 
 Whether it's a dbt package, a plugin, `dbt-core`, or this very documentation site, contributing to the open source code that supports the dbt ecosystem is a great way to level yourself up as a developer, and to give back to the community. The goal of this page is to help you understand what to expect when contributing to dbt open source software (OSS). While we can only speak for our own experience as open source maintainers, many of these guidelines apply when contributing to other open source projects, too.
 
-Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on the Developer Hub](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
+Have you seen things in other OSS projects that you quite like, and think we could learn from? [Open a discussion on the dbt Community Forum](https://discourse.getdbt.com), or start a conversation in the dbt Community Slack (for example: `#community-strategy`, `#dbt-core-development`, `#package-ecosystem`, `#adapter-ecosystem`). We always appreciate hearing from you!
 
 ## Principles
 
@@ -51,7 +51,7 @@ An issue could be a bug you’ve identified while using the product or reading t
 
 ### Best practices for issues
 
-- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the Developer Hub](https://github.com/dbt-labs/docs.getdbt.com/discussions/new), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-help` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
+- Issues are **not** for support / troubleshooting / debugging help. Please [open a discussion on the dbt Community Forum](https://discourse.getdbt.com), so other future users can find and read proposed solutions. If you need help formulating your question, you can post in the `#advice-dbt-help` channel in the [dbt Community Slack](https://www.getdbt.com/community/).
 - Always search existing issues first, to see if someone else had the same idea / found the same bug you did.
 - Many repositories offer templates for creating issues, such as when reporting a bug or requesting a new feature. If available, please select the relevant template and fill it out to the best of your ability. This will help other people understand your issue and respond.
 
@@ -82,8 +82,8 @@ In some cases, the right resolution to an open issue might be tangential to the 
 | `triage`           | This is a new issue which has not yet been reviewed by a maintainer. This label is removed when a maintainer reviews and responds to the issue.                                                                                                                        |
 | `bug`              | This issue represents a defect or regression from the behavior that's documented, or that you reasonably expect                                                                                                                                                        |
 | `enhancement`      | This issue represents net-new functionality, including an extension of an existing capability                                                                                                                                                                          |
-| `good first issue` | This issue does not require deep knowledge of the codebase to implement. This issue is appropriate for a first-time contributor.                                                                                                                                       |
-| `help wanted`      | This issue is trickier than a "good first issue." The required changes are scattered across the codebase, or more difficult to test. The maintainers are happy to help an experienced community contributor; they aren't planning to prioritize this issue themselves. |
+| `good_first_issue` | This issue does not require deep knowledge of the codebase to implement. This issue is appropriate for a first-time contributor.                                                                                                                                       |
+| `help_wanted`      | This issue is trickier than a "good first issue." The required changes are scattered across the codebase, or more difficult to test. The maintainers are happy to help an experienced community contributor; they aren't planning to prioritize this issue themselves. |
 | `duplicate`        | This issue is functionally identical to another open issue. The maintainers will close this issue and encourage community members to focus conversation on the other one.                                                                                              |
 | `stale`            | This is an old issue which has not recently been updated. In repositories with a lot of activity, stale issues will periodically be closed.                                                                                                                            |
 | `wontfix`          | This issue does not require a code change in the repository, or the maintainers are unwilling to merge a change which implements the proposed behavior.                                                                                                                |

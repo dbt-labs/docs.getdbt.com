@@ -1,8 +1,8 @@
 ---
-title: "About builtins Jinja function"
+title: "About builtins Jinja variable"
 sidebar_label: "builtins"
 id: "builtins"
-description: "Read this guide to understand the builtins Jinja function in dbt."
+description: "Read this guide to understand the builtins Jinja variable in dbt."
 ---
 
 

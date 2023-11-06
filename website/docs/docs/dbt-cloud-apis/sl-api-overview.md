@@ -1,9 +1,10 @@
 ---
-title: "Semantic Layer API"
+title: "Semantic Layer APIs"
 id: sl-api-overview
-description: "Integrate and query using the Semantic Layer API."
+description: "Integrate and query metrics and dimensions in downstream tools using the Semantic Layer APIs"
 tags: [Semantic Layer, API]
 hide_table_of_contents: true
+pagination_next: "docs/dbt-cloud-apis/sl-jdbc"
 ---
 
 <VersionBlock lastVersion="1.5">
@@ -31,14 +32,11 @@ You can use the dbt Semantic Layer for a variety of tools and applications of da
 import Features from '/snippets/_sl-plan-info.md'
 
 <Features
-cycle="public beta"
 product="dbt Semantic Layer"
-plan="dbt Cloud Team and Enterprise"
-instance="hosted in North America"
+plan="dbt Cloud Team or Enterprise"
 />
-<br /><br />
 
-<div className="grid--2-col">
+<div className="grid--3-col">
 
 <Card
     title="JDBC API"
@@ -46,14 +44,11 @@ instance="hosted in North America"
     link="/docs/dbt-cloud-apis/sl-jdbc"
     icon="dbt-bit"/>
 
-<!-- 
-commenting out until it's available
 <Card
     title="GraphQL API"
-    body="Use GraphQL to query metrics in downstream tools."
+    body="Use GraphQL to query metrics and dimensions in downstream tools."
     link="/docs/dbt-cloud-apis/sl-graphql"
     icon="dbt-bit"/>
--->
 
 <Card
     title="Semantic manifest"
