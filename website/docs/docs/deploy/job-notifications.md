@@ -80,4 +80,4 @@ Any account admin can edit the Slack notifications but they'll be limited to con
 ### Disable the Slack integration
 
 1. Go to your [User profile](https://cloud.getdbt.com/settings/profile) page and scroll to the **Linked accounts** section.
-1. Find the Slack application in the **Linked accounts** section, click the trash can icon, and click **Unlink**. You will no longer receive Slack notifications. However, other account admins might still receive the notifications. If they want to stop receiving the notifications, they can update their [Slack notification configuration](#configure-slack-notifications) or disable the Slack integration on their dbt Cloud account. 
+1. Find the Slack application in the **Linked accounts** section, click the trash can icon, and click **Unlink**. Channels that you configured will no longer receive Slack notifications. Channels that are configured by other account admins will continue to receive Slack notifications if they still have active Slack integrations. To migrate ownership of a Slack channel notification configuration, have another account admin edit the configuration.
