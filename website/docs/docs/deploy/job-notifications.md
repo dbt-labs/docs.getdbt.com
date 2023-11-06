@@ -46,7 +46,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 You can receive Slack alerts about jobs by setting up the Slack integration, then configuring the dbt Cloud Slack notification settings.
 
 :::note 
-Any account admin can edit the Slack notifications but they'll be limited to configuring the channels that the Slack user has access to. If there has been a change in user roles or Slack permissions where you no longer have access to edit a configured Slack channel, please [contact support](mailto:support@getdbt.com) for assistance. 
+Any account admin can edit the Slack notifications but they'll be limited to configuring the channels that their Slack user has access to. If there has been a change in user roles or Slack permissions where you no longer have access to edit a configured Slack channel, please [contact support](mailto:support@getdbt.com) for assistance. 
 :::
 
 ### Prerequisites 
