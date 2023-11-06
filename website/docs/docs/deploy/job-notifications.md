@@ -20,7 +20,7 @@ You can receive email alerts about jobs by configuring the dbt Cloud email notif
 1. From the gear menu in the upper right corner, choose **Notification settings**.
 1. By default, dbt Cloud sends notifications to the email address that's in your [User profile](https://cloud.getdbt.com/settings/profile) page.
 
-    If you're an account admin, you can choose a different email address to send notifications to. Select the **Notification email** dropdown and choose another address from the list. The list includes **Internal Users** with access to the account and also **External Emails** that have been added. 
+    If you're an account admin, you can choose a different email address to receive notifications. Select the **Notification email** dropdown and choose another address from the list. The list includes **Internal Users** with access to the account and **External Emails** that have been added. 
     - To add an external email address, select the **Notification email** dropdown and choose **Add external email**. After you add the external email, it becomes available for selection in the **Notification email** dropdown list. External emails can be addresses that are outside of your dbt Cloud account and also for third-party integrations like [channels in Microsoft Teams](https://support.microsoft.com/en-us/office/tip-send-email-to-a-channel-2c17dbae-acdf-4209-a761-b463bdaaa4ca) and [PagerDuty email integration](https://support.pagerduty.com/docs/email-integration-guide).
 
     <Lightbox src="/img/docs/deploy/example-notification-external-email.png" width="50%" title="Example of the Notification email dropdown"/>
