@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faqs/Project/docs-for-multiple-projects",
+      "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "permanent": true
+    },
+    {
       "source": "/guides/migration/versions",
       "destination": "/docs/dbt-versions/core-upgrade",
       "permanent": true
