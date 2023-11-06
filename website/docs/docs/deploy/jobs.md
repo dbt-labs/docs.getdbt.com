@@ -6,7 +6,7 @@ tags: [scheduler]
 pagination_next: "docs/deploy/deploy-jobs"
 ---
 
-In dbt Cloud, these are two types of jobs 
+In dbt Cloud, there are two types of jobs: 
 - [Deploy jobs](/docs/deploy/deploy-jobs) &mdash; To create and set up triggers for building production data assets
 - [Continuous integration (CI) jobs](/docs/deploy/continuous-integration) &mdash; To create and set up triggers for checking code changes
 
