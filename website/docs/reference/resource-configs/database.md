@@ -5,10 +5,47 @@ datatype: string
 description: "Read this guide to understand the database configuration in dbt."
 ---
 
-:::caution Heads up!
-This is a work in progress document. While this configuration applies to multiple resource types, the documentation has only been written for seeds.
+<Tabs>
+<TabItem value="model" label="Model">
 
-:::
+Specify a custom database for a model in your `dbt_project.yml` file. 
+
+For example, if you have a model that you want to load into a database other than the target database, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  your_project:
+    sales_metrics:
+      +database: reporting
+```
+</File>
+
+This would result in the generated relation being located in the `reporting` database, so the full relation name would be `reporting.finance.sales_metrics` instead of the default target database.
+</TabItem>
+
+<TabItem value="seeds" label="Seeds">
+
+Configure a database in your `dbt_project.yml` file. 
+
+For example, to load a seed into a database called `staging` instead of the target database, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  your_project:
+    product_categories:
+      +database: staging
+```
+
+This would result in the generated relation being located in the `staging` database, so the full relation name would be `staging.finance.product_categories_data`.
+
+</File>
+</TabItem>
+</Tabs>
+
 
 ## Definition
 

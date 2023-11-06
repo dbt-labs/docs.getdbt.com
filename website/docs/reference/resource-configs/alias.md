@@ -4,10 +4,47 @@ description: "Read this guide to understand the alias configuration in dbt."
 datatype: string
 ---
 
-:::caution Heads up!
-This is a work in progress document. While this configuration applies to multiple resource types, the documentation has only been written for seeds.
 
-:::
+<Tabs>
+<TabItem value="model" label="Model">
+
+Specify a custom alias for a model in your `dbt_project.yml` file. 
+
+For example, if you have a model that calculates `sales_metric`s and want to give it a more user-friendly alias, you can alias it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+models:
+  your_project:
+    sales_metrics:
+      +alias: sales_dashboard
+```
+</File>
+
+This would return `analytics.finance.sales_dashboard` in the database, instead of the default `analytics.finance.sales_metrics`.
+</TabItem>
+
+<TabItem value="seeds" label="Seeds">
+
+Configure a seed's alias in your `dbt_project.yml` file. 
+
+For example, if you have a seed that represents `product_categories` and want to alias it as `categories_data`, you would alias like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+seeds:
+  your_project:
+    product_categories:
+      +alias: categories_data
+```
+
+This would return the name `analytics.finance.categories_data` in the database.
+
+</File>
+</TabItem>
+</Tabs>
 
 ## Definition
 
@@ -25,9 +62,8 @@ To learn more about changing the way that dbt generates a relation's `identifier
 ## Usage
 
 ### Seeds
-Configure a seed's alias in your `dbt_project.yml` file.
 
-The seed at `seeds/country_codes.csv` will be built as a <Term id="table" /> named `country_mappings`.
+In this example, the seed at `seeds/country_codes.csv` will be built as a <Term id="table" /> named `country_mappings`.
 
 <File name='dbt_project.yml'>
 
