@@ -1,7 +1,7 @@
 ---
 title: Airflow and dbt Cloud
 id: airflow-and-dbt-cloud
-time_to_complete: '60 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Cloud', 'Orchestration']

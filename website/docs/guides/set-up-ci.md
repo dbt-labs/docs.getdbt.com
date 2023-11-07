@@ -4,7 +4,7 @@ description: How to implement a CI environment for safe project validation.
 displayText: 
 hoverSnippet: Learn how to
 id: set-up-ci
-time_to_complete: '60 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Cloud', 'Orchestration']

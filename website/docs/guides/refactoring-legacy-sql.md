@@ -4,7 +4,7 @@ id: refactoring-legacy-sql
 description: This guide walks through refactoring a long SQL query (perhaps from a stored procedure) into modular dbt data models.
 displayText: Creating new materializations
 hoverSnippet: Learn how to refactoring a long SQL query into modular dbt data models.
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 platform: 'dbt-cloud'
 icon: 'guides'
 hide_table_of_contents: true

@@ -5,7 +5,7 @@ sidebar_label: "Productionizing your dbt Databricks project"
 description: "Learn how to deliver models to end users and use best practices to maintain production data" 
 displayText: Productionizing your dbt Databricks project
 hoverSnippet: Learn how to Productionizing your dbt Databricks project.
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Databricks', 'dbt Core','dbt Cloud']

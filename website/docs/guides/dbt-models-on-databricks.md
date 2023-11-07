@@ -5,7 +5,7 @@ sidebar_label: "Optimize and troubleshoot dbt models on Databricks"
 description: "Learn more about optimizing and troubleshooting your dbt models on Databricks"
 displayText: Optimizing and troubleshooting your dbt models on Databricks
 hoverSnippet: Learn how to optimize and troubleshoot your dbt models on Databricks.
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Databricks', 'dbt Core','dbt Cloud']

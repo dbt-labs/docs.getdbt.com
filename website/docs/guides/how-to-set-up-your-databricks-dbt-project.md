@@ -5,7 +5,7 @@ sidebar_label: "How to set up your Databricks and dbt project"
 description: "Learn more about setting up your dbt project with Databricks"
 displayText: Setting up your dbt project with Databricks
 hoverSnippet: Learn how to set up your dbt project with Databricks.
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
 tags: ['Databricks', 'dbt Core','dbt Cloud']

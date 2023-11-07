@@ -4,7 +4,7 @@ id: custom-cicd-pipelines
 description: "Learn the benefits of version-controlled analytics code and custom pipelines in dbt for enhanced code testing and workflow automation during the development process."
 displayText: Learn version-controlled code, custom pipelines, and enhanced code testing.
 hoverSnippet: Learn version-controlled code, custom pipelines, and enhanced code testing.
-time_to_complete: '60 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['dbt Cloud', 'Orchestration']

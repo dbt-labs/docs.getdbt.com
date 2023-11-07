@@ -1,7 +1,7 @@
 ---
 title: "Quickstart for dbt Cloud and BigQuery"
 id: "bigquery"
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 level: 'Beginner'
 icon: 'bigquery'
 hide_table_of_contents: true

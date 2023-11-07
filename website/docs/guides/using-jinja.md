@@ -1,7 +1,7 @@
 ---
 title: "Using Jinja"
 id: "using-jinja"
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Jinja', 'dbt Core']

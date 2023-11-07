@@ -4,7 +4,7 @@ id: "sl-migration"
 sidebar_label: "Legacy dbt Semantic Layer migration"
 description: "Learn how to migrate from the legacy dbt Semantic Layer to the latest one."
 hoverSnippet: Learn how to migrate from the legacy dbt Semantic Layer to the latest one.
-time_to_complete: '30 minutes'
+# time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Semantic Layer']
