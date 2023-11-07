@@ -1,6 +1,8 @@
 ---
-title: "Using Jinja"
+title: "Use Jinja to improve your SQL code"
 id: "using-jinja"
+description: "Learn how to improve your SQL code using Jinja."
+hoverSnippet: "Improve your SQL code with Jinja"
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true

@@ -1,7 +1,6 @@
 ---
 title: Optimize and troubleshoot dbt models on Databricks
 id: optimize-dbt-models-on-databricks
-sidebar_label: "Optimize and troubleshoot dbt models on Databricks"
 description: "Learn more about optimizing and troubleshooting your dbt models on Databricks"
 displayText: Optimizing and troubleshooting your dbt models on Databricks
 hoverSnippet: Learn how to optimize and troubleshoot your dbt models on Databricks.

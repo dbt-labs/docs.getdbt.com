@@ -1,9 +1,9 @@
 ---
-title: Debugging schema names
-id: debugging-schema-names
+title: Debug schema names
+id: debug-schema-names
 description: Learn how to debug schema names when models build under unexpected schemas
-displayText: Debugging schema names
-hoverSnippet: Learn how to debug schema names dbt.
+displayText: Debug schema names
+hoverSnippet: Learn how to debug schema names in dbt.
 # time_to_complete: '30 minutes' commenting out until we test
 platform: 'dbt-core'
 icon: 'guides'

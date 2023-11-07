@@ -1,6 +1,6 @@
 ---
-title: "Creating new materializations"
-id: creating-new-materializations
+title: "Create new materializations"
+id: create-new-materializations
 description: Learn how to create your own materializations.
 displayText: Creating new materializations
 hoverSnippet: Learn how to create your own materializations.

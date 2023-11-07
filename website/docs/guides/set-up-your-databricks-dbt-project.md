@@ -1,7 +1,6 @@
 ---
-title: How to set up your Databricks and dbt project
-id: how-to-set-up-your-databricks-dbt-project
-sidebar_label: "How to set up your Databricks and dbt project"
+title: Set up your dbt project with Databricks
+id: set-up-your-databricks-dbt-project
 description: "Learn more about setting up your dbt project with Databricks"
 displayText: Setting up your dbt project with Databricks
 hoverSnippet: Learn how to set up your dbt project with Databricks.

@@ -1,14 +1,13 @@
 ---
-title: Productionizing your dbt Databricks project
-id: "productionizing-your-dbt-databricks-project"
-sidebar_label: "Productionizing your dbt Databricks project"
+title: Productionize your dbt Databricks project
+id: "productionize-your-dbt-databricks-project"
 description: "Learn how to deliver models to end users and use best practices to maintain production data" 
-displayText: Productionizing your dbt Databricks project
-hoverSnippet: Learn how to Productionizing your dbt Databricks project.
+displayText: Productionize your dbt Databricks project
+hoverSnippet: Learn how to Productionize your dbt Databricks project.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'databricks'
 hide_table_of_contents: true
-tags: ['Databricks', 'dbt Core','dbt Cloud']
+tags: ['Databricks','dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---

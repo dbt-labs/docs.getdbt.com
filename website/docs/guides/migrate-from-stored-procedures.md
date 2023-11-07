@@ -1,8 +1,8 @@
 ---
-title: Migrating from DDL, DML, and stored procedures
-id: migrating-from-stored-procedures
+title: Migrate from DDL, DML, and stored procedures
+id: migrate-from-stored-procedures
 description:  Learn how to transform from a historical codebase of mixed DDL and DML statements to dbt models, including tips and patterns for the shift from a procedural to a declarative approach in defining datasets.
-displayText: Migrating from DDL, DML, and stored procedures
+displayText: Migrate from DDL, DML, and stored procedures
 hoverSnippet: Learn how to transform from a historical codebase of mixed DDL and DML statements to dbt models
 # time_to_complete: '30 minutes' commenting out until we test
 platform: 'dbt-core'

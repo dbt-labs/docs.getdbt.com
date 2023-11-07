@@ -1,8 +1,8 @@
 ---
-title: "Migrating from dbt-spark to dbt-databricks"
-id: "migrating-from-spark-to-databricks"
+title: "Migrate from dbt-spark to dbt-databricks"
+id: "migrate-from-spark-to-databricks"
 description: Learn how to migrate from dbt-spark to dbt-databricks.
-displayText: Migrating from Spark to Databricks
+displayText: Migrate from Spark to Databricks
 hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
