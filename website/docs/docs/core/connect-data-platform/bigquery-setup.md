@@ -464,7 +464,7 @@ my-profile:
           role: dev
         runtime_config:
           properties:
-            spark.executor.instances: 3
+            spark.executor.instances: "3"
             spark.driver.memory: 1g
 ```
 
