@@ -110,6 +110,12 @@ var siteSettings = {
       },
       items: [
         {
+          to: "/docs/cloud/about-cloud-develop",
+          label: "Install",
+          position: "left",
+          activeBaseRegex: "docs",
+        },
+        {
           to: "/docs/introduction",
           label: "Docs",
           position: "left",

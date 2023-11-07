@@ -1,5 +1,5 @@
 ---
-title: "About installing dbt"
+title: "About installing dbt Core"
 id: "installation"
 description: "You can install dbt Core using a few different tested methods."
 pagination_next: "docs/core/homebrew-install"
