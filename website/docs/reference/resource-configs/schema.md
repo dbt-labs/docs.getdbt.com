@@ -1,7 +1,7 @@
 ---
 sidebar_label: "schema"
 resource_types: [models, seeds, tests]
-description: "Schema - Read this in-depth guide to learn about configurations in dbt."
+description: "Override the default schema when dbt creates resources in your data platform."
 datatype: string
 ---
 

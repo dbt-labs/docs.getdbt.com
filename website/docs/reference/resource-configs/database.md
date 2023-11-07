@@ -44,12 +44,33 @@ This would result in the generated relation being located in the `staging` datab
 
 </File>
 </TabItem>
+
+<TabItem value="test" label="Tests">
+
+Configure a database in your `dbt_project.yml` file. 
+
+For example, to load a test into a database called `reporting` instead of the target database, you can configure it like this:
+
+<File name='dbt_project.yml'>
+
+```yml
+tests:
+  - my_not_null_test:
+      column_name: order_id
+      type: not_null
+      +database: reporting
+```
+
+This would result in the generated relation being located in the `reporting` database, so the full relation name would be `reporting.finance.my_not_null_test`.
+
+</File>
+</TabItem>
 </Tabs>
 
 
 ## Definition
 
-Optionally specify a custom database for a [model](/docs/build/sql-models) or [seed](/docs/build/seeds). (To specify a database for a [snapshot](/docs/build/snapshots), use the [`target_database` config](/reference/resource-configs/target_database)).
+Optionally specify a custom database for a [model](/docs/build/sql-models), [seed](/docs/build/seeds), or [tests](/docs/build/tests). (To specify a database for a [snapshot](/docs/build/snapshots), use the [`target_database` config](/reference/resource-configs/target_database)).
 
 When dbt creates a relation (<Term id="table" />/<Term id="view" />) in a database, it creates it as: `{{ database }}.{{ schema }}.{{ identifier }}`, e.g. `analytics.finance.payments`
 
@@ -59,18 +80,7 @@ The standard behavior of dbt is:
 
 To learn more about changing the way that dbt generates a relation's `database`, read [Using Custom Databases](/docs/build/custom-databases)
 
-## Usage
 
-### Load seeds into the RAW database
-<File name='dbt_project.yml'>
-
-```yml
-seeds:
-  +database: RAW
-
-```
-
-</File>
 
 ## Warehouse specific information
 * BigQuery: `project` and `database` are interchangeable
