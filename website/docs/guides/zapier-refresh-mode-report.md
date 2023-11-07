@@ -1,9 +1,17 @@
 ---
 title: "Refresh a Mode dashboard when a job completes"
-id: webhooks-guide-zapier-refresh-mode-report
-slug: zapier-refresh-mode-report
-description: Use Zapier to trigger a Mode dashboard refresh
+id: zapier-refresh-mode-report
+description: Use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes
+hoverSnippet: Learn how to use Zapier to trigger a Mode dashboard refresh when a dbt Cloud job completes.
+# time_to_complete: '30 minutes' commenting out until we test
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['Webhooks']
+level: 'Advanced'
+recently_updated: true
 ---
+
+## Introduction
 
 This guide will teach you how to refresh a Mode dashboard when a dbt Cloud job has completed successfully and there is fresh data available. The integration will:
 
@@ -12,23 +20,21 @@ This guide will teach you how to refresh a Mode dashboard when a dbt Cloud job h
 
 Although we are using the Mode API for a concrete example, the principles are readily transferrable to your [tool](https://learn.hex.tech/docs/develop-logic/hex-api/api-reference#operation/RunProject) [of](https://learn.microsoft.com/en-us/rest/api/power-bi/datasets/refresh-dataset) [choice](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm#update_workbook_now). 
 
-## Prerequisites
+### Prerequisites
 
 In order to set up the integration, you should have familiarity with:
 - [dbt Cloud Webhooks](/docs/deploy/webhooks)
 - Zapier
 - The [Mode API](https://mode.com/developer/api-reference/introduction/)
 
-## Integration steps
-
-### 1. Create a new Zap in Zapier
+## Create a new Zap in Zapier
 Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](/docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
 
 Press **Continue**, then copy the webhook URL. 
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-### 2. Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt Cloud
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain any jobs whose completion should trigger a report refresh.
 
 Make note of the Webhook Secret Key for later.
@@ -37,20 +43,19 @@ Once you've tested the endpoint in dbt Cloud, go back to Zapier and click **Test
 
 The sample body's values are hard-coded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
-### 3. Store secrets 
+## Store secrets 
 In the next step, you will need the Webhook Secret Key from the prior step, and a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens), as well as a [Mode API token and secret](https://mode.com/developer/api-reference/authentication/). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
-
 
 This guide assumes the names for the secret keys are: `DBT_WEBHOOK_KEY`, `MODE_API_TOKEN`, and `MODE_API_SECRET`. If you are using different names, make sure you update all references to them in the sample code.
 
 This guide uses a short-lived code action to store the secrets, but you can also use a tool like Postman to interact with the [REST API](https://store.zapier.com/) or create a separate Zap and call the [Set Value Action](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps#3-set-a-value-in-your-store-0-3).
 
-#### a. Create a Storage by Zapier connection
+### a. Create a Storage by Zapier connection
 If you haven't already got one, go to <https://zapier.com/app/connections/storage> and create a new connection. Remember the UUID secret you generate for later. 
 
-#### b. Add a temporary code step
+### b. Add a temporary code step
 Choose **Run Python** as the Event. Run the following code: 
 ```python 
 store = StoreClient('abc123') #replace with your UUID secret
@@ -60,7 +65,7 @@ store.set('MODE_API_SECRET', 'abc123') #replace with your Mode API Secret
 ```
 Test the step. You can delete this Action when the test succeeds. The key will remain stored as long as it is accessed at least once every three months.
 
-### 4. Add a code action
+## Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
@@ -124,5 +129,5 @@ if hook_data['runStatus'] == "Success":
 return
 ```
 
-### 5. Test and deploy
+## Test and deploy
 You can iterate on the Code step by modifying the code and then running the test again. When you're happy with it, you can publish your Zap.

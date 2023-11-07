@@ -1,9 +1,17 @@
 ---
-title: "Create PagerDuty alarms from failed dbt Cloud tasks"
-id: webhooks-guide-serverless-pagerduty
-slug: serverless-pagerduty
-description: Configure a serverless app to create PagerDuty alarms
+title: "Trigger PagerDuty alarms when dbt Cloud jobs fail"
+id: serverless-pagerduty 
+description: Use webhooks to configure a serverless app to trigger PagerDuty alarms
+hoverSnippet: Learn how to configure a serverless app that uses webhooks to trigger PagerDuty alarms.
+# time_to_complete: '30 minutes' commenting out until we test
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['Webhooks']
+level: 'Advanced'
+recently_updated: true
 ---
+
+## Introduction
 
 This guide will teach you how to build and host a basic Python app which will monitor dbt Cloud jobs and create PagerDuty alarms based on failure. To do this, when a dbt Cloud job completes it will:
  - Check for any failed nodes (e.g. non-passing tests or errored models), and
@@ -13,20 +21,20 @@ This guide will teach you how to build and host a basic Python app which will mo
 
 In this example, we will use fly.io for hosting/running the service. fly.io is a platform for running full stack apps without provisioning servers etc. This level of usage should comfortably fit inside of the Free tier. You can also use an alternative tool such as [AWS Lambda](https://adem.sh/blog/tutorial-fastapi-aws-lambda-serverless) or [Google Cloud Run](https://github.com/sekR4/FastAPI-on-Google-Cloud-Run).
 
-## Prerequisites
+### Prerequisites
+
 This guide assumes some familiarity with:
 - [dbt Cloud Webhooks](/docs/deploy/webhooks)
 - CLI apps
 - Deploying code to a serverless code runner like fly.io or AWS Lambda
 
-## Integration steps
 
-### 1. Clone the `dbt-cloud-webhooks-pagerduty` repo
+## Clone the `dbt-cloud-webhooks-pagerduty` repo
 
 [This repository](https://github.com/dpguthrie/dbt-cloud-webhooks-pagerduty) contains the sample code for validating a webhook and creating events in PagerDuty.
 
 
-### 2. Install `flyctl` and sign up for fly.io
+## Install `flyctl` and sign up for fly.io
 
 Follow the directions for your OS in the [fly.io docs](https://fly.io/docs/hands-on/install-flyctl/), then from your command line, run the following commands: 
 
@@ -46,7 +54,7 @@ Your console should show `successfully logged in as YOUR_EMAIL` when you're done
 flyctl auth login
 ```
 
-### 3. Launch your fly.io app
+## Launch your fly.io app
 Launching your app publishes it to the web and makes it ready to catch webhook events:
 ```shell
 flyctl launch
@@ -87,12 +95,12 @@ Wrote config file fly.toml<br/>
 </code>
 </details>
 
-### 4. Create a PagerDuty integration application
+## Create a PagerDuty integration application
 See [PagerDuty's guide](https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgw-events-api-v2-overview#getting-started) for full instructions. 
 
 Make note of the integration key for later. 
 
-### 5. Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt Cloud
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**.
 
 Set the webhook URL to the host name you created earlier (`APP_NAME.fly.dev`)
@@ -101,7 +109,7 @@ Make note of the Webhook Secret Key for later.
 
 *Do not test the endpoint*; it won't work until you have stored the auth keys (next step)
 
-### 6. Store secrets
+## Store secrets
 The application requires three secrets to be set, using these names:
 - `DBT_CLOUD_SERVICE_TOKEN`: a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens) with at least the `Metdata Only` permission.
 - `DBT_CLOUD_AUTH_TOKEN`: the Secret Key for the dbt Cloud webhook you created earlier.
@@ -112,5 +120,6 @@ Set these secrets as follows, replacing `abc123` etc with actual values:
 flyctl secrets set DBT_CLOUD_SERVICE_TOKEN=abc123 DBT_CLOUD_AUTH_TOKEN=def456 PD_ROUTING_KEY=ghi789
 ```
 
-### 7. Deploy your app
+## Deploy your app
+
 After you set your secrets, fly.io will redeploy your application. When it has completed successfully, go back to the dbt Cloud webhook settings and click **Test Endpoint**.

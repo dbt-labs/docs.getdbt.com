@@ -1,28 +1,34 @@
 ---
 title: "Trigger a dbt Cloud job after a run finishes" 
-id: webhooks-guide-zapier-new-cloud-job
-slug: zapier-new-cloud-job
-description: Use Zapier to interact with the dbt Cloud API
+id: zapier-new-cloud-job
+description: Use Zapier to trigger a dbt Cloud job once a run completes.
+hoverSnippet: Learn how to use Zapier to trigger a dbt Cloud job once a run completes.
+# time_to_complete: '30 minutes' commenting out until we test
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['Webhooks']
+level: 'Advanced'
+recently_updated: true
 ---
+
+## Introduction
 
 This guide will show you how to trigger a dbt Cloud job based on the successful completion of a different job. This can be useful when you need to trigger a job in a different project. Remember that dbt works best when it understands the whole context of the <Term id="dag"/> it has been asked to run, so use this ability judiciously.
 
-## Prerequisites
+### Prerequisites
 
 In order to set up the integration, you should have familiarity with:
 - [dbt Cloud Webhooks](/docs/deploy/webhooks)
 - Zapier
 
-## Integration steps
-
-### 1. Create a new Zap in Zapier
+## Create a new Zap in Zapier
 Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](/docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
 
 Press **Continue**, then copy the webhook URL. 
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-### 2. Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt Cloud
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Your event should be **Run completed**, and you need to change the **Jobs** list to only contain the job you want to trigger the next run.
 
 Make note of the Webhook Secret Key for later.
@@ -31,14 +37,14 @@ Once you've tested the endpoint in dbt Cloud, go back to Zapier and click **Test
 
 The sample body's values are hard-coded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
-### 3. Store secrets 
+## Store secrets 
 In the next step, you will need the Webhook Secret Key from the prior step, and a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps), which prevents your keys from being displayed in plaintext in the Zap code. You will be able to access them via the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
 
 <Snippet path="webhook_guide_zapier_secret_store" />
 
-### 4. Add a code action
+## Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
 In the **Set up action** area, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the **Catch Raw Hook** step above.
@@ -87,5 +93,6 @@ if hook_data['runStatus'] == "Success":
 return
 ```
 
-### 5. Test and deploy
+## Test and deploy
+
 When you're happy with it, remember to ensure that your `account_id` is no longer hardcoded, then publish your Zap.

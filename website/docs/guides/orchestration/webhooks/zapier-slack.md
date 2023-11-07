@@ -1,8 +1,14 @@
 ---
 title: "Post to Slack with error context when a job fails"
-id: webhooks-guide-zapier-slack
-slug: zapier-slack
+id: zapier-slack
 description: Use Zapier and the dbt Cloud API to post error context to Slack
+hoverSnippet: Learn how to use Zapier to trigger a dbt Cloud job once a run completes.
+# time_to_complete: '30 minutes' commenting out until we test
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['Webhooks']
+level: 'Advanced'
+recently_updated: true
 ---
 
 This guide will show you how to set up an integration between dbt Cloud jobs and Slack using [dbt Cloud webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/docs/deploy/job-notifications#slack-notifications) by attaching error message details of models and tests in a thread. 
