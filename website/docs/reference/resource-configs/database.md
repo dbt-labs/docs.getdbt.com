@@ -2,7 +2,7 @@
 sidebar_label: "database"
 resource_types: [models, seeds, tests]
 datatype: string
-description: "Read this guide to understand the database configuration in dbt."
+description: "Override the default database when dbt creates resources in your data platform."
 ---
 
 <Tabs>
