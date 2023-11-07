@@ -716,6 +716,7 @@ const sidebarSettings = {
       label: "Resource configs and properties",
       items: [
         "reference/configs-and-properties",
+        "reference/resource-configs/resource-path",
         {
           type: "category",
           label: "General properties",
