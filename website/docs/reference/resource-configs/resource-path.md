@@ -10,11 +10,11 @@ The `<resource-path>` nomenclature is used in this documentation when documentin
 It represents the nested dictionary keys that provide the path to a directory of that resource type, or a single instance of that resource type by name.
 
 ```yml
-<resource type>:
-  <project name>:
-    <directory name>:
-      <subdirectory name>:
-        <instance of resource type (by name)>:
+resource_type:
+  project_name:
+    directory_name:
+      subdirectory_name:
+        instance_of_resource_type (by name):
           ...
 ```
 
