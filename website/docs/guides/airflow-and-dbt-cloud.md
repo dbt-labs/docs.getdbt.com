@@ -164,7 +164,9 @@ Now you have all the working pieces to get up and running with Airflow + dbt Clo
 
 ![https://lh3.googleusercontent.com/sRxe5xbv_LYhIKblc7eiY7AmByr1OibOac2_fIe54rpU3TBGwjMpdi_j0EPEFzM1_gNQXry7Jsm8aVw9wQBSNs1I6Cyzpvijaj0VGwSnmVf3OEV8Hv5EPOQHrwQgK2RhNBdyBxN2](https://lh3.googleusercontent.com/sRxe5xbv_LYhIKblc7eiY7AmByr1OibOac2_fIe54rpU3TBGwjMpdi_j0EPEFzM1_gNQXry7Jsm8aVw9wQBSNs1I6Cyzpvijaj0VGwSnmVf3OEV8Hv5EPOQHrwQgK2RhNBdyBxN2)
 
-## Add your `job_id` and `account_id` config details to the python file: [dbt_cloud_provider_eltml.py](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py)
+## Add your `job_id` and `account_id` config details to the python file
+
+ Add your `job_id` and `account_id` config details to the python file: [dbt_cloud_provider_eltml.py](https://github.com/sungchun12/airflow-dbt-cloud/blob/main/dags/dbt_cloud_provider_eltml.py).
 
 1. You’ll find these details within the dbt Cloud job URL, see the comments in the code snippet below for an example.
 

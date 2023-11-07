@@ -1,5 +1,5 @@
 ---
-title: "Building dbt packages" # to do: update this to creating
+title: "Building dbt packages" 
 id: "building-packages"
 description: When you have dbt code that might help others, you can create a package for dbt using a GitHub repository. 
 displayText: Building dbt packages
@@ -7,7 +7,7 @@ hoverSnippet: Learn how to create packages for dbt.
 time_to_complete: '60 minutes'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core', 'legacy']
+tags: ['dbt Core']
 level: 'Advanced'
 recently_updated: true
 ---

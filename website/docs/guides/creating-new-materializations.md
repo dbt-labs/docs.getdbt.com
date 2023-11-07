@@ -1,14 +1,13 @@
 ---
 title: "Creating new materializations"
-id: "creating-new-materializations"
+id: creating-new-materializations
 description: Learn how to create your own materializations.
 displayText: Creating new materializations
 hoverSnippet: Learn how to create your own materializations.
 time_to_complete: '30 minutes'
-platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['materializations', 'dbt Core']
+tags: ['dbt Core']
 level: 'Advanced'
 recently_updated: true
 ---

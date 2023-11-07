@@ -3,8 +3,10 @@ title: "Quickstart for dbt Core from a manual install"
 id: manual-install
 description: "Connecting your warehouse to dbt Core using the CLI."
 sidebar_label: "Manual install quickstart"
+level: 'Beginner'
 platform: 'dbt-core'
 icon: 'fa-light fa-square-terminal'
+tags: ['dbt Core','Quickstart']
 hide_table_of_contents: true
 ---
 ## Introduction

@@ -1,5 +1,6 @@
 ---
 title: How to set up your Databricks and dbt project
+id: how-to-set-up-your-databricks-dbt-project
 sidebar_label: "How to set up your Databricks and dbt project"
 description: "Learn more about setting up your dbt project with Databricks"
 displayText: Setting up your dbt project with Databricks
@@ -11,6 +12,8 @@ tags: ['Databricks', 'dbt Core','dbt Cloud']
 level: 'Intermediate'
 recently_updated: true
 ---
+
+## Introduction
 
 Databricks and dbt Labs are partnering to help data teams think like software engineering teams and ship trusted data, faster. The dbt-databricks adapter enables dbt users to leverage the latest Databricks features in their dbt project. Hundreds of customers are now using dbt and Databricks to build expressive and reliable data pipelines on the Lakehouse, generating data assets that enable analytics, ML, and AI use cases throughout the business.
 

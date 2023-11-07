@@ -92,8 +92,6 @@ This next part will happen in you code hosting platform. We need to save your AP
 }>
 <TabItem value="github">
 
-In GitHub:
-
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
 - Click *Settings* to open up the repository options
 - On the left click the *Security* dropdown
@@ -112,8 +110,6 @@ Here’s a video showing these steps:
 </TabItem>
 
 <TabItem value="gitlab">
-
-In GitLab:
 
 - Open up your repository where you want to run the pipeline (the same one that houses your dbt project)
 - Click *Settings* > *CI/CD*

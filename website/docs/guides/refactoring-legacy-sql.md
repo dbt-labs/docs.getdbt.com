@@ -8,7 +8,7 @@ time_to_complete: '30 minutes'
 platform: 'dbt-cloud'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['SQL', 'legacy']
+tags: ['SQL']
 level: 'Advanced'
 recently_updated: true
 ---

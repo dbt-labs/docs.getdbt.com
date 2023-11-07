@@ -11,6 +11,7 @@ tags: ['Databricks', 'dbt Core','dbt Cloud','Orchestration']
 level: 'Intermediate'
 recently_updated: true
 ---
+
 ## Introduction
 
 Using Databricks workflows to call the dbt Cloud job API can be useful for several reasons:

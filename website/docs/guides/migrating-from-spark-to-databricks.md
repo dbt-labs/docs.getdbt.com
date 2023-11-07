@@ -5,7 +5,6 @@ description: Learn how to migrate from dbt-spark to dbt-databricks.
 displayText: Migrating from Spark to Databricks
 hoverSnippet: Learn how to migrate from dbt-spark to dbt-databricks.
 time_to_complete: '30 minutes'
-platform: ['dbt-core','dbt-cloud']
 icon: 'guides'
 hide_table_of_contents: true
 tags: ['Migration', 'dbt Core','dbt Cloud']

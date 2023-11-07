@@ -1,10 +1,11 @@
 ---
 title: "Quickstart for dbt Cloud and Databricks"
 id: "databricks"
-platform: 'dbt-cloud'
+level: 'Beginner'
 icon: 'databricks'
 hide_table_of_contents: true
 recently_updated: true
+tags: ['dbt Cloud', 'Quickstart']
 ---
 ## Introduction
 

@@ -8,7 +8,7 @@ time_to_complete: '45 minutes'
 platform: 'dbt-core'
 icon: 'guides'
 hide_table_of_contents: true
-tags: ['dbt Core', 'legacy']
+tags: ['dbt Core']
 level: 'Advanced'
 recently_updated: true
 ---
