@@ -5,7 +5,7 @@ id: resource-path
 sidebar_label: "About resource paths"
 ---
 
-The `<resource-path>` nomenclature is used in this documentation when documenting how to configure resource types like models, seeds, snapshots, tests, sources, and others, from your `dbt_project.yml` file. 
+The `resource-path` nomenclature is used in this documentation when documenting how to configure resource types like models, seeds, snapshots, tests, sources, and others, from your `dbt_project.yml` file. 
 
 It represents the nested dictionary keys that provide the path to a directory of that resource type, or a single instance of that resource type by name.
 
