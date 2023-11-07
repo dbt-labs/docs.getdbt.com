@@ -5,6 +5,7 @@
     {
       "source": "/faqs/Project/docs-for-multiple-projects",
       "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+      "permanent": true
     },
     {
       "source": "/faqs/Accounts/slack",
