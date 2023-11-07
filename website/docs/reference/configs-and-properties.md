@@ -11,7 +11,7 @@ A rule of thumb: properties declare things _about_ your project resources; confi
 
 For example, you can use resource **properties** to:
 * Describe models, snapshots, seed files, and their columns
-- Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
+* Assert "truths" about a model, in the form of [tests](/docs/build/tests), e.g. "this `id` column is unique"
 * Define pointers to existing tables that contain raw data, in the form of [sources](/docs/build/sources), and assert the expected "freshness" of this raw data
 * Define official downstream uses of your data models, in the form of [exposures](/docs/build/exposures)
 
@@ -20,6 +20,21 @@ Whereas you can use **configurations** to:
 * Declare where a seed will be created in the database (`<database>.<schema>.<alias>`)
 * Declare whether a resource should persist its descriptions as comments in the database
 * Apply tags and "meta" properties
+
+### Resource, properties, and configs table
+
+| Resource type | Description      | Supported properties  | Supported configurations    | Config inheritance   |
+|---------------|------------------|-----------------------|-----------------------------|----------------------|
+| Models        | Describes models and their columns | columns, tests, docs, macros   | tags, materialized, persist_docs, tags, etc. | `properties.yml` -> `.yml file` -> `dbt_project.yml`     |
+| Snapshots     |   Periodic snapshots of data              | tests, macros       | tags, materialized, etc.    |   In-file `config()` block -> `.yml file` -> `dbt_project.yml`            |
+| Seeds         |  Uploaded source data for models         | tests, macros            | tags, persist_docs, etc.     |    In-file `config()` block -> `.yml file` -> `dbt_project.yml`              |
+| Tests         | Asserts "truths" about models    | description, tags, macros       |     In-file `config()` block -> `.yml file` -> `dbt_project.yml`         |
+| Sources       | Pointers to tables with raw data    | description, columns, tests, docs, macros  | tags, persist_docs, etc.        | `properties.yml` -> `.yml file` -> `dbt_project.yml`     |
+| Exposures    | Official downstream uses of data models | description, columns, tests, docs, macros  | tags, materialized, etc.     | `properties.yml` -> `.yml file` -> `dbt_project.yml`  |
+|    |             |                  |            |         |
+| Configurations| Extra abilities for resources        |       |    | In-file `config()` block -> `.yml file` -> `dbt_project.yml`    |
+|    |     |           |     |            |
+| Special properties (not configs)| Special properties with unique rendering context | description, tests, docs, columns, quote, source properties, exposure properties, macro properties |  | `properties.yml`    |
 
 ## Where can I define configs?
 
@@ -202,3 +217,4 @@ Runtime Error
 ```
 
 This error occurred because a semicolon (`;`) was accidentally used instead of a colon (`:`) after the `description` field. To resolve issues like this, find the `.yml` file referenced in the error message and fix any syntax errors present in the file. There are online YAML validators that can be helpful here, but please be mindful of submitting sensitive information to third-party applications!
+
