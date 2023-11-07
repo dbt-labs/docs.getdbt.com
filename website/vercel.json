@@ -5,6 +5,10 @@
     {
       "source": "/faqs/Project/docs-for-multiple-projects",
       "destination": "/docs/collaborate/explore-projects#about-project-level-lineage",
+    },
+    {
+      "source": "/faqs/Accounts/slack",
+      "destination": "/docs/deploy/job-notifications",
       "permanent": true
     },
     {
