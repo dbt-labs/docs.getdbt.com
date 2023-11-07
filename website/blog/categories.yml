@@ -19,3 +19,5 @@
   display_title: SQL magic
   description: Stories of dbt developers making SQL sing across warehouses.
   is_featured: true
+- name: dbt Cloud
+  description: Using dbt Cloud to build for scale
