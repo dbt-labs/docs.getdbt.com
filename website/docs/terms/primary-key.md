@@ -73,9 +73,9 @@ The table below gives an overview of primary key support and enforcement in some
   <tr>
    <td><a href="https://docs.getdbt.com/blog/primary-key-testing#bigquery-primary-keys">Google BigQuery</a>
    </td>
-   <td>❌
+   <td>✅
    </td>
-   <td>❌
+   <td>✅
    </td>
   </tr>
   <tr>
