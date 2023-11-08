@@ -267,11 +267,11 @@ metrics:
 </TabItem>
 
 
-<TabItem value="semantic_models">
+<TabItem value="semantic models">
 
 <VersionBlock lastVersion="1.6">
 
-Support for grouping semantic models was added in dbt Core v1.7
+Support for grouping semantic models has been added in dbt Core v1.7.
 
 </VersionBlock>
 
@@ -299,43 +299,6 @@ semantic_models:
 ```
 
 </File>
-
-</VersionBlock>
-
-</TabItem>
-
-<TabItem value="semantic models">
-
-<VersionBlock lastVersion="1.6">
-
-Support for grouping semantic models has been added in dbt Core v1.7.
-
-</VersionBlock>
-
-<VersionBlock firstVersion="1.7">
-
-<File name='schema.yml'>
-
-```yml
-semantic_models:
-  - name: model_name
-    group: finance
-
-```
-
-</File>
-
-<File name='dbt_project.yml'>
-
-```yml
-semantic_models:
-  [<resource-path>](resource-path):
-    +group: finance
-```
-
-</File>
-
-The `group` configuration can be nested under the `config` key.
 
 </VersionBlock>
 
