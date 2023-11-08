@@ -282,7 +282,7 @@ Support for grouping semantic models has been added in dbt Core v1.7.
 ```yaml
 semantic_models:
   - name: [<semantic_model_name>]
-    group: finance
+    group: <group_name>
 
 ```
 
@@ -293,7 +293,7 @@ semantic_models:
 ```yaml
 semantic-models:
   [<resource-path>](resource-path):
-    [+](plus-prefix)group: finance
+    [+](plus-prefix)group: <group_name>
 ```
 
 </File>
