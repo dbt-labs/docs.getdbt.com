@@ -196,6 +196,8 @@ semantic_models:
 
 </File>
 
+The `meta` config can also be defined under the `semantic-models` config block in `dbt_project.yml`. See [configs and properties](/reference/configs-and-properties) for details.
+
 </VersionBlock>
 
 </TabItem>
