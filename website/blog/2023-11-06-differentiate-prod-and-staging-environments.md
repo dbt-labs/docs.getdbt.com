@@ -26,13 +26,13 @@ Environmental segmentation has always been an important part of the analytics en
 - By building your production-grade models into [a different schema and database](https://docs.getdbt.com/docs/build/custom-schemas#managing-environments), you can experiment in peace without being worried that your changes will accidentally impact downstream users.
 - Using dedicated credentials for production runs, instead of an analytics engineer's individual dev credentials, ensures that things don't break when that long-tenured employee finally hangs up their IDE.
 
-Historically, dbt Cloud insisted upon a separate environment for _Development_, but had no other specific requirements. Most constructs (such as deferral and documentation) relied on a single job, so as long as you didn't have anything more complex than a CI job mixed in with a couple of production jobs, they could coexist inside of a single Environment and everything would more-or-less work out OK.
+Historically, dbt Cloud required a separate environment for _Development_, but was otherwise unopinionated in how you configured your account. This mostly just worked – as long as you didn't have anything more complex than a CI job mixed in with a couple of production jobs – because important constructs like deferral in CI and documentation were only ever tied to a single job.
 
-But as companies' dbt deployments have grown more complex, it doesn't make sense to assume that a single job is enough anymore. We need to exchange a job-oriented strategy for a more mature and scalable environment-centric view of the world.
+But as companies' dbt deployments have grown more complex, it doesn't make sense to assume that a single job is enough anymore. We need to exchange a job-oriented strategy for a more mature and scalable environment-centric view of the world. To support this, a recent change in dbt Cloud enables project administrators to mark one of their environments as the Production environment, just as has long been possible for the Development environment.
 
-Environment-level thinking is particularly important for two new features in dbt Cloud: dbt Explorer and the revised CI workflows.
+Explicitly separating your Production workloads lets dbt Cloud be smarter with the metadata it creates, and is particularly important for two new features: dbt Explorer and the revised CI workflows.
 
-## Understand your project with dbt Explorer
+## dbt Explorer can always have the freshest information available
 
 **The old way**: Your dbt docs site was based on a single job's run.
 
@@ -46,7 +46,7 @@ To avoid this conflation, you need to mark an environment as the Production envi
 
 ## Run Slimmer CI than ever with environment-level deferral
 
-**The old way**: Slim CI deferred to a single job, and would only detect changes as of its last build time.
+**The old way**: [Slim CI](/guides/orchestration/set-up-ci/in-15-minutes) deferred to a single job, and would only detect changes as of that job's last build time.
 
 **The new way**: Changes are detected regardless of the job they were deployed in, removing false positives and overbuilding of models in CI.
 
@@ -63,3 +63,11 @@ For most projects, changing from a job-centric to environment-centric approach t
 1. Create a new dbt Cloud environment called Staging
 2. For each job that belongs to the Staging environment, edit the job and update its environment
 3. Tick the "Mark as Production environment" box in your original environment's settings
+
+## Conclusion
+
+Until very recently, I only thought of Environments in dbt Cloud as a way to use different authentication credentials in different contexts. And until very recently, I was mostly right.
+
+Not anymore. The metadata dbt creates is critical for effective data teams – whether you're concerned about cost savings, discoverability, increased development speed or reliable results across your organization – but is only fully effective if it's segmented by the environment that created it.
+
+Take a few minutes to clean up your environments - it'll make all the difference.
