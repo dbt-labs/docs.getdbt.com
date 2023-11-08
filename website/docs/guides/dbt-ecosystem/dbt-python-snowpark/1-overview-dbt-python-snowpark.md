@@ -46,3 +46,4 @@ As inputs, we are going to leverage Formula 1 datasets hosted on a dbt Labs publ
 
 Overall we are going to set up the environments, build scalable pipelines in dbt, establish data tests, and promote code to production.
 
+;'
