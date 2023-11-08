@@ -2,7 +2,16 @@
 title: "dbt Semantic Layer integration best practices" 
 id: "sl-partner-integration-guide"
 description: Learn about partner integration guidelines, roadmap, and connectivity. 
+hoverSnippet: Learn how to 
+# time_to_complete: '30 minutes' commenting out until we test
+icon: 'guides'
+hide_table_of_contents: true
+tags: ['Semantic layer']
+level: 'Advanced'
+recently_updated: true
 ---
+
+## Introduction
 
 To fit your tool within the world of the Semantic Layer, dbt Labs offers some best practice recommendations for how to expose metrics and allow users to interact with them seamlessly. 
 
@@ -11,7 +20,7 @@ This is an evolving guide that is meant to provide recommendations based on our 
 :::
 
 
-## Requirements
+### Prerequisites
 
 To build a dbt Semantic Layer integration: 
 
@@ -37,7 +46,7 @@ When building an integration, we recommend you expose certain metadata in the re
 - The version of dbt they are on.
 
 
-## Best practices on exposing metrics
+## Use best practices when exposing metrics
 
 Best practices for exposing metrics are summarized into five themes:
 
@@ -121,7 +130,7 @@ For transparency and additional context, we recommend you have an easy way for t
 
 In the cases where our APIs support either a string or a filter list for the `where` clause, we always recommend that your application utilizes the filter list in order to gain maximum pushdown benefits. The `where` string may be more intuitive for users writing queries during testing, but it will not have the performance benefits of the filter list in a production environment.
 
-## Example stages of an integration
+## Understand stages of an integration
 
 These are recommendations on how to evolve a Semantic Layer integration and not a strict runbook.
 
@@ -149,7 +158,7 @@ These are recommendations on how to evolve a Semantic Layer integration and not 
 * Suggest metrics to users based on teams/identity, and so on.
 
 
-## Related docs
+### Related docs
 
 - [Use the dbt Semantic Layer](/docs/use-dbt-semantic-layer/dbt-sl) to learn about the product.
 - [Build your metrics](/docs/build/build-metrics-intro) for more info about MetricFlow and its components. 
