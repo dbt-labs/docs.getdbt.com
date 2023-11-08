@@ -258,6 +258,8 @@ var siteSettings = {
       src: "https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js",
       defer: true,
     },
+    "https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js",
+    "/js/headerLinkCopy.js",
     "/js/gtm.js",
     "/js/onetrust.js",
     "https://kit.fontawesome.com/7110474d41.js",
