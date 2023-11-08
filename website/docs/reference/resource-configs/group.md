@@ -281,7 +281,7 @@ Support for grouping semantic models has been added in dbt Core v1.7.
 
 ```yaml
 semantic_models:
-  - name: [<semantic_model_name>]
+  - name: <semantic_model_name>
     group: <group_name>
 
 ```
