@@ -99,16 +99,16 @@ If you're encountering some issues when defining your metrics or setting up the 
 User data passes through the Semantic Layer on its way back from the warehouse. dbt Labs ensures security by authenticating through the customer's data warehouse. Currently, we don't cache data for the long term, but it might temporarily stay in the system for up to 10 minutes, usually less. In the future, we'll introduce a caching feature that allows us to cache data on our infrastructure for up to 24 hours.
 </details>
 <details>
-<summary>Is the dbt Semantic Layer open source?</summary>
-The dbt Semantic Layer is proprietary, however, some components of the dbt Semantic Layer are open source, like dbt-core and MetricFlow. <br /><br />dbt Cloud Developer or dbt Core users can define metrics in their project, including a local dbt Core project, using the dbt Cloud IDE or the MetricFlow CLI.  However, to experience the universal dbt Semantic Layer and access those metrics using the API or downstream tools, users will must be on a dbt Cloud <a href="https://www.getdbt.com/pricing/">Team or Enterprise plan.</a></details>
-<br></br> 
+  <summary>Is the dbt Semantic Layer open source?</summary>
+  The dbt Semantic Layer is proprietary; however, some components of the dbt Semantic Layer are open source, such as dbt-core and MetricFlow. <br /><br />dbt Cloud Developer or dbt Core users can define metrics in their project, including a local dbt Core project, using the dbt Cloud IDE, dbt Cloud CLI, or dbt Core CLI. However, to experience the universal dbt Semantic Layer and access those metrics using the API or downstream tools, users must be on a dbt Cloud <a href="https://www.getdbt.com/pricing/">Team or Enterprise</a> plan. <br /><br />Refer to <a href="https://docs.getdbt.com/docs/cloud/billing">Billing</a> for more information.
+</details>
+
 
 ## Next steps
-
-- [Build your metrics](/docs/build/build-metrics-intro)
 - [Set up dbt Semantic Layer](docs/use-dbt-semantic-layer/setup-dbt-sl)
 - [Available integrations](/docs/use-dbt-semantic-layer/avail-sl-integrations)
 - Demo on [how to define and query metrics with MetricFlow](https://www.loom.com/share/60a76f6034b0441788d73638808e92ac?sid=861a94ac-25eb-4fd8-a310-58e159950f5a)
+- [Billing](/docs/cloud/billing)
 
 </VersionBlock>
 
