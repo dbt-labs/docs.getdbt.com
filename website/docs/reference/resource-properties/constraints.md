@@ -103,7 +103,7 @@ models:
       contract:
         enforced: true
     columns:
-      - name: customer_id
+      - name: id
         data_type: int
         constraints:
           - type: not_null

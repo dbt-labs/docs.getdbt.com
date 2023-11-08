@@ -18,6 +18,10 @@ At a high level, you’ll need to decide:
 - Where to draw the lines between your dbt Projects -- i.e. how do you determine where to split your DAG and which models go in which project?
 - How to manage your code -- do you want multiple dbt Projects living in the same repository (mono-repo) or do you want to have multiple repos with one repo per project?
 
+### Cycle detection
+
+Like resource dependencies, project dependencies are acyclic, meaning they only move in one direction. This prevents `ref` cycles (or loops), which lead to issues with your data workflows. For example, if project B depends on project A, a new model in project A could not import and use a public model from project B. Refer to [Project dependencies](/docs/collaborate/govern/project-dependencies#how-to-use-ref) for more information. 
+
 ## Define your project interfaces by splitting your DAG
 
 The first (and perhaps most difficult!) decision when migrating to a multi-project architecture is deciding where to draw the line in your DAG to define the interfaces between your projects. Let's explore some language for discussing the design of these patterns.
