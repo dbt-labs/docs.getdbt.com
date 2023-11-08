@@ -1,8 +1,8 @@
 ---
 title: "Post to Slack with error context when a job fails"
 id: zapier-slack
-description: Use Zapier and the dbt Cloud API to post error context to Slack
-hoverSnippet: Learn how to use Zapier to trigger a dbt Cloud job once a run completes.
+description: Use a webhook or Slack message to trigger Zapier and post error context in Slack when a job fails
+hoverSnippet: Learn how to use a webhook or Slack message to trigger Zapier to post error context in Slack when a job fails.
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
 hide_table_of_contents: true
@@ -10,6 +10,8 @@ tags: ['Webhooks']
 level: 'Advanced'
 recently_updated: true
 ---
+
+## Introduction
 
 This guide will show you how to set up an integration between dbt Cloud jobs and Slack using [dbt Cloud webhooks](/docs/deploy/webhooks) and Zapier. It builds on the native [native Slack integration](/docs/deploy/job-notifications#slack-notifications) by attaching error message details of models and tests in a thread. 
 
@@ -23,21 +25,20 @@ When a dbt Cloud job finishes running, the integration will:
  - Create a threaded message attached to that post which contains any reasons that the job failed
 
 ![Screenshot of a message in Slack showing a summary of a dbt Cloud run which failed](/img/guides/orchestration/webhooks/zapier-slack/slack-thread-example.png)
-## Prerequisites
+
+### Prerequisites
 
 In order to set up the integration, you should have familiarity with:
 - [dbt Cloud webhooks](/docs/deploy/webhooks)
 - Zapier
-## Integration steps
 
-### 1. Create a new Zap in Zapier
-Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](/docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
-
-Click **Continue**, then copy the webhook URL. 
+## Create a new Zap in Zapier
+1. Use **Webhooks by Zapier** as the Trigger, and **Catch Raw Hook** as the Event. If you don't intend to [validate the authenticity of your webhook](/docs/deploy/webhooks#validate-a-webhook) (not recommended!) then you can choose **Catch Hook** instead. 
+2. Click **Continue**, then copy the webhook URL. 
 
 ![Screenshot of the Zapier UI, showing the webhook URL ready to be copied](/img/guides/orchestration/webhooks/zapier-common/catch-raw-hook.png)
 
-### 2. Configure a new webhook in dbt Cloud
+## Configure a new webhook in dbt Cloud
 See [Create a webhook subscription](/docs/deploy/webhooks#create-a-webhook-subscription) for full instructions. Choose **Run completed** as the Event. You can alternatively choose **Run errored**, but you will need to account for the fact that the necessary metadata [might not be available immediately](/docs/deploy/webhooks#completed-errored-event-difference). 
 
 Remember the Webhook Secret Key for later.
@@ -46,7 +47,7 @@ Once you've tested the endpoint in dbt Cloud, go back to Zapier and click **Test
 
 The sample body's values are hardcoded and not reflective of your project, but they give Zapier a correctly-shaped object during development. 
 
-### 3. Store secrets 
+## Store secrets 
 In the next step, you will need the Webhook Secret Key from the prior step, and a dbt Cloud [user token](https://docs.getdbt.com/docs/dbt-cloud-apis/user-tokens) or [service account token](https://docs.getdbt.com/docs/dbt-cloud-apis/service-tokens). 
 
 Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8496293271053-Save-and-retrieve-data-from-Zaps). This prevents your keys from being displayed as plaintext in the Zap code. You can access them with the [StoreClient utility](https://help.zapier.com/hc/en-us/articles/8496293969549-Store-data-from-code-steps-with-StoreClient).
@@ -54,7 +55,7 @@ Zapier allows you to [store secrets](https://help.zapier.com/hc/en-us/articles/8
 
 <Snippet path="webhook_guide_zapier_secret_store" />
 
-### 4. Add a code action
+## Add a code action
 Select **Code by Zapier** as the App, and **Run Python** as the Event. 
 
 In the **Set up action** section, add two items to **Input Data**: `raw_body` and `auth_header`. Map those to the `1. Raw Body` and `1. Headers Http Authorization` fields from the previous **Catch Raw Hook** step.
@@ -159,7 +160,7 @@ send_error_thread = len(threaded_errors_post) > 0
 output = {'step_summary_post': step_summary_post, 'send_error_thread': send_error_thread, 'threaded_errors_post': threaded_errors_post}
 ```
 
-### 5. Add Slack actions in Zapier
+## Add Slack actions in Zapier
 Select **Slack** as the App, and **Send Channel Message** as the Action.
 
 In the **Action** section, choose which **Channel** to post to. Set the **Message Text** field to **2. Step Summary Post** from the Run Python in Code by Zapier output.
@@ -176,11 +177,11 @@ Add another **Send Channel Message in Slack** action. In the **Action** section,
 
 ![Screenshot of the Zapier UI, showing the mappings of prior steps to a Slack message](/img/guides/orchestration/webhooks/zapier-slack/thread-slack-config.png)
 
-### 7. Test and deploy
+## Test and deploy
 
 When you're done testing your Zap, make sure that your `run_id` and `account_id` are no longer hardcoded in the Code step, then publish your Zap.
 
-## Alternate approach
+## Alternately, use a dbt Cloud app Slack message to trigger Zapier
 
 Instead of using a webhook as your trigger, you can keep the existing dbt Cloud app installed in your Slack workspace and use its messages being posted to your channel as the trigger. In this case, you can skip validating the webhook and only need to load the context from the thread. 
 
