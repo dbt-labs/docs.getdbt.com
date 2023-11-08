@@ -182,7 +182,7 @@ There may be occasions where you need to run these hooks _outside_ of a transact
 * You want to insert a record into an audit <Term id="table" /> at the start of a run and do not want that statement rolled back if the model creation fails.
 
 To achieve this behavior, you can use one of the following syntaxes:
-  - Important note: Do not use this syntax if you are using a database where dbt does not use transactions by default. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
+  - Important note: Do not use this syntax if you are using a database where dbt does not support transactions. This includes databases like Snowflake, BigQuery, and Spark or Databricks.
 
 <Tabs>
 <TabItem value="beforebegin" label="Use before_begin and after_commit">
