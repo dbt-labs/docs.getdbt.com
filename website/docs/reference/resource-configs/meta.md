@@ -15,7 +15,7 @@ default_value: {}
     { label: 'Analyses', value: 'analyses', },
     { label: 'Macros', value: 'macros', },
     { label: 'Exposures', value: 'exposures', },
-    { label: 'Semantic models', value: 'semantic_models', },
+    { label: 'Semantic Models', value: 'semantic models', },
   ]
 }>
 <TabItem value="models">
@@ -174,7 +174,7 @@ exposures:
 
 </TabItem>
 
-<TabItem value="semantic_models">
+<TabItem value="semantic models">
 
 <VersionBlock lastVersion="1.6">
 
@@ -182,13 +182,11 @@ Support for grouping semantic models was added in dbt Core v1.7
 
 </VersionBlock>
 
-<VersionBlock firstVersion="1.7">
+<VersionBlock firstVersion="1.7"> 
 
 <File name='models/semantic_models.yml'>
 
 ```yml
-version: 2
-
 semantic_models:
   - name: semantic_model_name
     config:
@@ -278,3 +276,19 @@ select 1 as id
 ```
 
 </File>
+  
+### Assign owner in the dbt_project.yml as a config property
+
+<File name='models/my_model.sql'>
+
+```yml
+models:
+  jaffle_shop:
+      materialized: table
+      config:
+        meta:
+          owner: "@alice"
+```
+
+</File>
+

@@ -1,0 +1,38 @@
+[data-theme="dark"] {
+    --stoplight-pre-background: #ebedf0;
+    --stoplight-pre-color: #333333;
+}
+
+[data-theme="light"] {
+    --stoplight-pre-background: var(--ifm-pre-background);
+    --stoplight-pre-color: var(--ifm-pre-color);
+}
+
+.sl-font-ui, .sl-font-prose, .sl-prose, .sl-button {
+    /* Ensure we use the same font in stoplight docs as in the rest of the docs site */
+    font-family: var(--ifm-font-family-base) !important;
+}
+
+.sl-text-base {
+    /* Bump font size to make up for slightly smaller font family (above) */
+    font-size: 13px !important;
+}
+
+.sl-font-ui {
+    /* Bump font size to make up for slightly smaller font family (above) */
+    font-size: 14px !important;
+
+    & a {
+        /* Ensure link colors aren't overriden by docusaurus css */
+        color: var(--color-text) !important;
+    }
+}
+
+/* Ensure codeblocks are legible when using darkmode */
+.sl-panel__content pre {
+    background-color: var(--stoplight-pre-background) !important;
+
+    & .plain, .sl-code-highlight__ln {
+        color: var(--stoplight-pre-color) !important;
+    }
+}
