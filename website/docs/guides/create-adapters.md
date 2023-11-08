@@ -1,6 +1,7 @@
 ---
 title: "Build, test, document, and promote adapters" 
 id: "adapter-creation"
+description: 
 hoverSnippet: Learn how to 
 # time_to_complete: '30 minutes' commenting out until we test
 icon: 'guides'
@@ -159,7 +160,7 @@ We strongly encourage you to adopt the following approach when versioning and re
 - While your plugin is new, and you're iterating on features, aim to offer backwards compatibility and deprecation notices for at least one minor version. As your plugin matures, aim to leave backwards compatibility and deprecation notices in place until the next major version (dbt Core v2).
 - Release patch versions of your plugins whenever needed. These patch releases should contain fixes _only_.
 
-## Building a new adapter
+## Build a new adapter
 
 This step will walk you through the first creating the necessary adapter classes and macros, and provide some resources to help you validate that your new adapter is working correctly. Make sure you've familiarized yourself with the previous steps in this guide.
 
@@ -564,7 +565,7 @@ To assure that `dbt --version` provides the latest dbt core version the adapter 
 
 It should be noted that both of these files are included in the bootstrapped output of the `dbt-database-adapter-scaffold` so when using the scaffolding, these files will be included.
 
-## Testing your adapter
+## Test your adapter
 
 :::info
 
@@ -1064,3 +1065,289 @@ Finally:
 python3 -m pytest tests/functional --profile apache_spark
 python3 -m pytest tests/functional --profile databricks_sql_endpoint
 ```
+
+## Document a new adapter
+
+If you've already [built](3-building-a-new-adapter), and [tested](4-testing-a-new-adapter) your adapter, it's time to document it so the dbt community will know that it exists and how to use it.
+
+### Making your adapter available
+
+Many community members maintain their adapter plugins under open source licenses. If you're interested in doing this, we recommend:
+
+- Hosting on a public git provider (for example, GitHub or Gitlab)
+- Publishing to [PyPI](https://pypi.org/)
+- Adding to the list of ["Supported Data Platforms"](/docs/supported-data-platforms#community-supported) (more info below)
+
+### General Guidelines
+
+To best inform the dbt community of the new adapter, you should contribute to the dbt's open-source documentation site, which uses the [Docusaurus project](https://docusaurus.io/). This is the site you're currently on!
+
+### Conventions
+
+Each `.md` file you create needs a header as shown below. The document id will also need to be added to the config file: `website/sidebars.js`.
+
+```md
+---
+title: "Documenting a new adapter"
+id: "documenting-a-new-adapter"
+---
+```
+
+### Single Source of Truth
+
+We ask our adapter maintainers to use the [docs.getdbt.com repo](https://github.com/dbt-labs/docs.getdbt.com) (i.e. this site) as the single-source-of-truth for documentation rather than having to maintain the same set of information in three different places. The adapter repo's `README.md` and the data platform's documentation pages should simply link to the corresponding page on this docs site. Keep reading for more information on what should and shouldn't be included on the dbt docs site.
+
+### Assumed Knowledge
+
+To simplify things, assume the reader of this documentation already knows how both dbt and your data platform works. There's already great material for how to learn dbt and the data platform out there. The documentation we're asking you to add should be what a user who is already profiecient in both dbt and your data platform would need to know in order to use both. Effectively that boils down to two things: how to connect, and how to configure.
+
+### Topics and Pages to Cover
+
+The following subjects need to be addressed across three pages of this docs site to have your data platform be listed on our documentation. After the corresponding pull request is merged, we ask that you link to these pages from your adapter repo's `REAMDE` as well as from your product documentation.
+
+ To contribute, all you will have to do make the changes listed in the table below.
+
+| How To...            | File to change within `/website/docs/`                       | Action | Info to Include                                                                                                                                                                                      |
+|----------------------|--------------------------------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Connect              | `/docs/core/connect-data-platform/{MY-DATA-PLATFORM}-setup.md` | Create | Give all information needed to define a target in `~/.dbt/profiles.yml` and get `dbt debug` to connect to the database successfully. All possible configurations should be mentioned.                |
+| Configure            | `reference/resource-configs/{MY-DATA-PLATFORM}-configs.md`   | Create | What options and configuration specific to your data platform do users need to know? e.g. table distribution and indexing options, column_quoting policy, which incremental strategies are supported |
+| Discover and Install | `docs/supported-data-platforms.md`                                 | Modify | Is it a vendor- or community- supported adapter? How to install Python adapter package? Ideally with pip and PyPI hosted package, but can also use `git+` link to GitHub Repo                             |
+| Add link to sidebar  | `website/sidebars.js`                                        | Modify | Add the document id to the correct location in the sidebar menu                                                                                                                                      |
+
+For example say I want to document my new adapter: `dbt-ders`. For the "Connect" page, I will make a new Markdown file, `ders-setup.md` and add it to the `/website/docs/core/connect-data-platform/` directory.
+
+### Example PRs to add new adapter documentation
+
+Below are some recent pull requests made by partners to document their data platform's adapter:
+
+- [TiDB](https://github.com/dbt-labs/docs.getdbt.com/pull/1309)
+- [SingleStore](https://github.com/dbt-labs/docs.getdbt.com/pull/1044)
+- [Firebolt](https://github.com/dbt-labs/docs.getdbt.com/pull/941)
+
+## Promote a new adapter
+
+The most important thing here is recognizing that people are successful in the community when they join, first and foremost, to engage authentically.
+
+What does authentic engagement look like? It’s challenging to define explicit rules. One good rule of thumb is to treat people with dignity and respect.
+
+Contributors to the community should think of contribution _as the end itself,_ not a means toward other business KPIs (leads, community members, etc.). [We are a mission-driven company.](https://www.getdbt.com/dbt-labs/values/) Some ways to know if you’re authentically engaging:
+
+- Is an engagement’s _primary_ purpose of sharing knowledge and resources or building brand engagement?
+- Imagine you didn’t work at the org you do &mdash; can you imagine yourself still writing this?
+- Is it written in formal / marketing language, or does it sound like you, the human?
+
+### Who should join the dbt community slack?
+
+- People who have insight into what it means to do hands-on [analytics engineering](https://www.getdbt.com/analytics-engineering/) work
+  The dbt Community Slack workspace is fundamentally a place for analytics practitioners to interact with each other &mdash; the closer the users are in the community to actual data/analytics engineering work, the more natural their engagement will be (leading to better outcomes for partners and the community).
+
+- DevRel practitioners with strong focus
+  DevRel practitioners often have a strong analytics background and a good understanding of the community. It’s essential to be sure they are focused on _contributing,_ not on driving community metrics for partner org (such as signing people up for their slack or events). The metrics will rise naturally through authentic engagement.
+
+- Founder and executives who are interested in directly engaging with the community
+  This is either incredibly successful or not at all depending on the profile of the founder. Typically, this works best when the founder has a practitioner-level of technical understanding and is interested in joining not to promote, but to learn and hear from users.
+
+- Software Engineers at partner products that are building and supporting integrations with either dbt Core or dbt Cloud
+  This is successful when the engineers are familiar with dbt as a product or at least have taken our training course. The Slack is often a place where end-user questions and feedback is initially shared, so it is recommended that someone technical from the team be present. There are also a handful of channels aimed at those building integrations, which tend to be a font of knowledge.
+
+### Who might struggle in the dbt community
+
+- People in marketing roles
+  dbt Slack is not a marketing channel. Attempts to use it as such invariably fall flat and can even lead to people having a negative view of a product. This doesn’t mean that dbt can’t serve marketing objectives, but a long-term commitment to engagement is the only proven method to do this sustainably.
+
+- People in product roles
+  The dbt Community can be an invaluable source of feedback on a product. There are two primary ways this can happen &mdash; organically (community members proactively suggesting a new feature) and via direct calls for feedback and user research. Immediate calls for engagement must be done in your dedicated #tools channel. Direct calls should be used sparingly, as they can overwhelm more organic discussions and feedback.
+
+### Who is the audience for an adapter release?
+
+  A new adapter is likely to drive huge community interest from several groups of people:
+    - People who are currently using the database that the adapter is supporting
+    - People who may be adopting the database in the near future.
+    - People who are interested in dbt development in general.
+
+The database users will be your primary audience and the most helpful in achieving success. Engage them directly in the adapter’s dedicated Slack channel. If one does not exist already, reach out in #channel-requests, and we will get one made for you and include it in an announcement about new channels.
+
+The final group is where non-slack community engagement becomes important. Twitter and LinkedIn are both great places to interact with a broad audience. A well-orchestrated adapter release can generate impactful and authentic engagement.
+
+### How to message the initial rollout and follow-up content
+
+Tell a story that engages dbt users and the community. Highlight new use cases and functionality unlocked by the adapter in a way that will resonate with each segment.
+
+- Existing users of your technology who are new to dbt
+  - Provide a general overview of the value dbt will deliver to your users. This can lean on dbt's messaging and talking points which are laid out in the [dbt viewpoint.](/community/resources/viewpoint)
+  - Give examples of a rollout that speaks to the overall value of dbt and your product.
+
+- Users who are already familiar with dbt and the community
+  - Consider unique use cases or advantages your adapter provide over existing adapters. Who will be excited for this?
+  - Contribute to the dbt Community and ensure that dbt users on your adapter are well supported (tutorial content, packages, documentation, etc).
+  - Example of a rollout that is compelling for those familiar with dbt: [Firebolt](https://www.linkedin.com/feed/update/urn:li:activity:6879090752459182080/)
+
+### Tactically manage distribution of content about new or existing adapters
+
+There are tactical pieces on how and where to share that help ensure success.
+
+- On slack:
+  - #i-made-this channel &mdash; this channel has a policy against “marketing” and “content marketing” posts, but it should be successful if you write your content with the above guidelines in mind. Even with that, it’s important to post here sparingly.
+  - Your own database / tool channel &mdash; this is where the people who have opted in to receive communications from you and always a great place to share things that are relevant to them.
+
+- On social media:
+  - Twitter
+  - LinkedIn
+  - Social media posts _from the author_ or an individual connected to the project tend to have better engagement than posts from a company or organization account.
+  - Ask your partner representative about:
+    - Retweets and shares from the official dbt Labs accounts.
+    - Flagging posts internally at dbt Labs to get individual employees to share.
+
+#### Measuring engagement
+
+You don’t need 1000 people in a channel to succeed, but you need at least a few active participants who can make it feel lived in. If you’re comfortable working in public, this could be members of your team, or it can be a few people who you know that are highly engaged and would be interested in participating. Having even 2 or 3 regulars hanging out in a channel is all that’s needed for a successful start and is, in fact, much more impactful than 250 people that never post.
+
+### How to announce a new adapter
+
+We’d recommend _against_ boilerplate announcements and encourage finding a unique voice. That being said, there are a couple of things that we’d want to include:
+
+- A summary of the value prop of your database / technology for users who aren’t familiar.
+- The personas that might be interested in this news.
+- A description of what the adapter _is_.  For example:
+  > With the release of our new dbt adapter, you’ll be able to to use dbt to model and transform your data in [name-of-your-org]
+- Particular or unique use cases or functionality unlocked by the adapter.
+- Plans for future / ongoing support / development.
+- The link to the documentation for using the adapter on the dbt Labs docs site.
+- An announcement blog.
+
+#### Announcing new release versions of existing adapters
+
+This can vary substantially depending on the nature of the release but a good baseline is the types of release messages that [we put out in the #dbt-releases](https://getdbt.slack.com/archives/C37J8BQEL/p1651242161526509) channel.
+
+![Full Release Post](/img/adapter-guide/0-full-release-notes.png)
+
+Breaking this down:
+
+- Visually distinctive announcement - make it clear this is a release
+    <Lightbox src="/img/adapter-guide/1-announcement.png" title="title"/>
+- Short written description of what is in the release
+    <Lightbox src="/img/adapter-guide/2-short-description.png" title="description"/>
+- Links to additional resources
+   <Lightbox src="/img/adapter-guide/3-additional-resources.png" title="more resources"/>
+- Implementation instructions:
+    <Lightbox src="/img/adapter-guide/4-installation.png" title="more installation"/>
+- Future plans
+    <Lightbox src="/img/adapter-guide/5-coming-up.png" title="coming soon"/>
+- Contributor recognition (if applicable)
+    <Lightbox src="/img/adapter-guide/6-thank-contribs.png" title="thank yous"/>
+
+
+## Verify a new adapter
+
+The very first data platform dbt supported was Redshift followed quickly by Postgres (([dbt-core#174](https://github.com/dbt-labs/dbt-core/pull/174)). In 2017, back when dbt Labs (née Fishtown Analytics) was still a data consultancy, we added support for Snowflake and BigQuery. We also turned dbt's database support into an adapter framework ([dbt-core#259](https://github.com/dbt-labs/dbt-core/pull/259/)), and a plugin system a few years later. For years, dbt Labs specialized in those four data platforms and became experts in them. However, the surface area of all possible databases, their respective nuances, and keeping them up-to-date and bug-free is a Herculean and/or Sisyphean task that couldn't be done by a single person or even a single team! Enter the dbt community which enables dbt Core to work on more than 30 different databases (32 as of Sep '22)!
+
+Free and open-source tools for the data professional are increasingly abundant. This is by-and-large a _good thing_, however it requires due dilligence that wasn't required in a paid-license, closed-source software world. Before taking a dependency on an open-source projet is is important to determine the answer to the following questions:
+
+1. Does it work?
+2. Does it meet my team's specific use case?
+3. Does anyone "own" the code, or is anyone liable for ensuring it works?
+4. Do bugs get fixed quickly?
+5. Does it stay up-to-date with new Core features?
+6. Is the usage substantial enough to self-sustain?
+7. What risks do I take on by taking a dependency on this library?
+
+These are valid, important questions to answer—especially given that `dbt-core` itself only put out its first stable release (major version v1.0) in December 2021! Indeed, up until now, the majority of new user questions in database-specific channels are some form of:
+
+- "How mature is `dbt-<ADAPTER>`? Any gotchas I should be aware of before I start exploring?"
+- "has anyone here used `dbt-<ADAPTER>` for production models?"
+- "I've been playing with  `dbt-<ADAPTER>` -- I was able to install and run my initial experiments. I noticed that there are certain features mentioned on the documentation that are marked as 'not ok' or 'not tested'. What are the risks?
+I'd love to make a statement on my team to adopt DBT [sic], but I'm pretty sure questions will be asked around the possible limitations of the adapter or if there are other companies out there using dbt [sic] with Oracle DB in production, etc."
+
+There has been a tendency to trust the dbt Labs-maintained adapters over community- and vendor-supported adapters, but repo ownership is only one among many indicators of software quality. We aim to help our users feel well-informed as to the caliber of an adapter with a new program.
+
+### Verified by dbt Labs
+
+The adapter verification program aims to quickly indicate to users which adapters can be trusted to use in production. Previously, doing so was uncharted territory for new users and complicated making the business case to their leadership team. We plan to give quality assurances by:
+
+1. appointing a key stakeholder for the adapter repository,
+2. ensuring that the chosen stakeholder fixes bugs and cuts new releases in a timely manner see maintainer your adapter (["Maintaining your new adapter"](2-prerequisites-for-a-new-adapter#maintaining-your-new-adapter)),
+3. demonstrating that it passes our adapter pytest suite tests,
+4. assuring that it works for us internally and ideally an existing team using the adapter in production .
+
+Every major & minor version of a adapter will be verified internally and given an official :white_check_mark: (custom emoji coming soon), on the ["Supported Data Platforms"](/docs/supported-data-platforms) page.
+
+### How to get an adapter verified?
+
+We envision that data platform vendors will be most interested in having their adapter versions verified, however we are open to community adapter verification. If interested, please reach out either to the `partnerships` at `dbtlabs.com` or post in the [#adapter-ecosystem Slack channel](https://getdbt.slack.com/archives/C030A0UF5LM).
+
+## Build a trusted adapter
+
+The Trusted adapter program exists to allow adapter maintainers to demonstrate to the dbt community that your adapter is trusted to be used in production.
+
+### What it means to be trusted
+
+By opting into the below, you agree to this, and we take you at your word. dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the below guidelines not be met.
+
+### Feature Completeness
+
+To be considered for the Trusted Adapter program, the adapter must cover the essential functionality of dbt Core given below, with best effort given to support the entire feature set.
+
+Essential functionality includes (but is not limited to the following features):
+
+- table, view, and seed materializations
+- dbt tests
+
+The adapter should have the required documentation for connecting and configuring the adapter. The dbt docs site should be the single source of truth for this information. These docs should be kept up-to-date.
+
+See [Documenting a new adapter](/guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter) for more information.
+
+### Release Cadence
+
+Keeping an adapter up-to-date with dbt Core is an integral part of being a trusted adapter. Therefore, we ask that adapter maintainers:
+
+- Release of new minor versions of the adapter with all tests passing within four weeks of dbt Core's release cut.
+- Release of new major versions of the adapter with all tests passing within eight weeks of dbt Core's release cut.
+
+### Community Responsiveness
+
+On a best effort basis, active participation and engagement with the dbt Community across the following forums:
+
+- Being responsive to feedback and supporting user enablement in dbt Community’s Slack workspace
+- Responding with comments to issues raised in public dbt adapter code repository
+- Merging in code contributions from community members as deemed appropriate
+
+### Security Practices
+
+Trusted adapters will not do any of the following:
+
+- Output to logs or file either access credentials information to or data from the underlying data platform itself.
+- Make API calls other than those expressly required for using dbt features (adapters may not add additional logging)
+- Obfuscate code and/or functionality so as to avoid detection
+
+Additionally, to avoid supply-chain attacks:
+
+- Use an automated service to keep Python dependencies up-to-date (such as  Dependabot or similar),
+- Publish directly to PyPI from the dbt adapter code repository by using trusted CI/CD process (such as GitHub actions)
+- Restrict admin access to both the respective code (GitHub) and package (PyPI) repositories
+- Identify and mitigate security vulnerabilities by use of a static code analyzing tool (such as Snyk) as part of a CI/CD process
+
+### Other considerations
+
+The adapter repository is:
+
+- open-souce licensed,
+- published to PyPI, and
+- automatically tests the codebase against dbt Lab's provided adapter test suite
+
+### How to get an adapter verified
+
+Open an issue on the [docs.getdbt.com GitHub repository](https://github.com/dbt-labs/docs.getdbt.com) using the "Add adapter to Trusted list" template. In addition to contact information, it will ask confirm that you agree to the following.
+
+1. my adapter meet the guidelines given above
+2. I will make best reasonable effort that this continues to be so
+3. checkbox: I acknowledge that dbt Labs reserves the right to remove an adapter from the trusted adapter list at any time, should any of the above guidelines not be met.
+
+The approval workflow is as follows:
+
+1. create and populate the template-created issue
+2. dbt Labs will respond as quickly as possible (maximally four weeks, though likely faster)
+3. If approved, dbt Labs will create and merge a Pull request to formally add the adapter to the list.
+
+### Getting help for my trusted adapter
+
+Ask your question in #adapter-ecosystem channel of the dbt community Slack.
