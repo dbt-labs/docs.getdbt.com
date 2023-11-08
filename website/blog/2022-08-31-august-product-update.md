@@ -22,7 +22,7 @@ You’ll hear more in [Tristan’s keynote](https://coalesce.getdbt.com/agenda/k
 
 ## **What's new**
 
-- **dbt Core v1.3 beta:** Do you use Python for analytics? The first beta prerelease of dbt Core v1.3—including support for dbt models written in Python—is [ready to explore](https://docs.getdbt.com/guides/migration/versions/upgrading-to-v1.3)! Check it out, and read more about dbt supported Python models [in our docs](/docs/build/python-models).
+- **dbt Core v1.3 beta:** Do you use Python for analytics? The first beta prerelease of dbt Core v1.3—including support for dbt models written in Python—is [ready to explore](https://docs.getdbt.com/docs/dbt-versions/core-upgrade/upgrading-to-v1.3)! Check it out, and read more about dbt supported Python models [in our docs](/docs/build/python-models).
 - **Technology Partner Program:** We just launched our new [Technology Partner Program](https://www.getdbt.com/blog/dbt-labs-technology-partner-program/) with 40+ friends in the Modern Data Stack to provide consistent support for seamless integrations joint-users can trust. Check our new [dbt Cloud integrations page](http://www.getdbt.com/product/integrations) for what’s available today!
 - **Single-tenant users:** dbt Cloud v1.1.60 is now available on dbt Cloud Enterprise.
 

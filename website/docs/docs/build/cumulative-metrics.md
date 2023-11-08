@@ -36,6 +36,13 @@ metrics:
 
 ```
 
+## Limitations
+Cumulative metrics are currently under active development and have the following limitations:
+
+1. You can only use the [`metric_time` dimension](/docs/build/dimensions#time) to check cumulative metrics. If you don't use `metric_time` in the query, the cumulative metric will return incorrect results because it won't perform the time spine join. This means you cannot reference time dimensions other than the `metric_time` in the query.
+2. If you use `metric_time` in your query filter but don't include "start_time" and "end_time," cumulative metrics will left-censor the input data. For example, if you query a cumulative metric with a 7-day window with the filter `{{ TimeDimension('metric_time') }} BETWEEN '2023-08-15' AND '2023-08-30' `, the values for `2023-08-15` to `2023-08-20` return missing or incomplete data. This is because we apply the `metric_time` filter to the aggregation input. To avoid this, you must use `start_time` and `end_time` in the query filter.
+
+
 ## Cumulative metrics example
 
 
